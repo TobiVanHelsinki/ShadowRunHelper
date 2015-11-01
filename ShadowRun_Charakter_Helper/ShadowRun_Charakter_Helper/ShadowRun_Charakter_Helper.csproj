@@ -99,10 +99,48 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Frame_App_Settings.xaml.cs">
+      <DependentUpon>Frame_App_Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frame_Char.xaml.cs">
+      <DependentUpon>Frame_Char.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frame_Char_Change.xaml.cs">
+      <DependentUpon>Frame_Char_Change.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frame_Char_Edit.xaml.cs">
+      <DependentUpon>Frame_Char_Edit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frame_Database_Edit.xaml.cs">
+      <DependentUpon>Frame_Database_Edit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Char.cs" />
+    <Compile Include="Models\CharList.cs" />
+    <Compile Include="Models\Char_Attribut.cs" />
+    <Compile Include="Models\Char_Connection.cs" />
+    <Compile Include="Models\Char_Drone_Fahrzeug.cs" />
+    <Compile Include="Models\Char_Fernkampfwaffe.cs" />
+    <Compile Include="Models\Char_Fertigkeit.cs" />
+    <Compile Include="Models\Char_Fähigkeit.cs" />
+    <Compile Include="Models\Char_Implantat.cs" />
+    <Compile Include="Models\Char_Item.cs" />
+    <Compile Include="Models\Char_Kommlink.cs" />
+    <Compile Include="Models\Char_Nachteil.cs" />
+    <Compile Include="Models\Char_Nahkampfwaffe.cs" />
+    <Compile Include="Models\Char_Panzerung.cs" />
+    <Compile Include="Models\Char_Programm.cs" />
+    <Compile Include="Models\Char_Sin.cs" />
+    <Compile Include="Models\Char_Summory.cs" />
+    <Compile Include="Models\Char_Vorteil.cs" />
+    <Compile Include="Models\Load_Data.cs" />
+    <Compile Include="Models\Store_Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TabHeader.xaml.cs">
+      <DependentUpon>TabHeader.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -111,6 +149,46 @@
     <None Include="ShadowRun_Charakter_Helper_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Logo1_100x100.png" />
+    <Content Include="Assets\Logo1_1240x1240.scale-100.png" />
+    <Content Include="Assets\Logo1_1240x1240.scale-200.png" />
+    <Content Include="Assets\Logo1_1240x1240.scale-400.png" />
+    <Content Include="Assets\Logo1_1240x600.scale-100.png" />
+    <Content Include="Assets\Logo1_1240x600.scale-200.png" />
+    <Content Include="Assets\Logo1_1240x600.scale-400.png" />
+    <Content Include="Assets\Logo1_142x142png.png" />
+    <Content Include="Assets\Logo1_150x150.png" />
+    <Content Include="Assets\Logo1_176x176.png" />
+    <Content Include="Assets\Logo1_200x200.png" />
+    <Content Include="Assets\Logo1_2480x1200.scale-200.png" />
+    <Content Include="Assets\Logo1_2480x1200.scale-400.png" />
+    <Content Include="Assets\Logo1_2500x2500.scale-400.png" />
+    <Content Include="Assets\Logo1_284x284.scale-100.png" />
+    <Content Include="Assets\Logo1_284x284.scale-200.png" />
+    <Content Include="Assets\Logo1_284x284.scale-400.png" />
+    <Content Include="Assets\Logo1_300x300.png" />
+    <Content Include="Assets\Logo1_310x150.png" />
+    <Content Include="Assets\Logo1_310x310.png" />
+    <Content Include="Assets\Logo1_44x44.png" />
+    <Content Include="Assets\Logo1_50x50.png" />
+    <Content Include="Assets\Logo1_600x600.scale-100.png" />
+    <Content Include="Assets\Logo1_600x600.scale-200.png" />
+    <Content Include="Assets\Logo1_600x600.scale-400.png" />
+    <Content Include="Assets\Logo1_620x300.png" />
+    <Content Include="Assets\Logo1_620x620.png" />
+    <Content Include="Assets\Logo1_63x63.png" />
+    <Content Include="Assets\Logo1_71x71.png" />
+    <Content Include="Assets\Logo1_75x75.png" />
+    <Content Include="Assets\Logo1_88x88.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -125,11 +203,44 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Dictionary_XAML_Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frame_App_Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frame_Char.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frame_Char_Change.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frame_Char_Edit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Frame_Database_Edit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="SplitViewStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TabHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
