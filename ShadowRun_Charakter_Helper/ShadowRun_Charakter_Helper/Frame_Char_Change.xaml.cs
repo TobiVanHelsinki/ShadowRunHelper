@@ -80,7 +80,7 @@ namespace ShadowRun_Charakter_Helper
                     Store_Data.Store_Char(ViewModel.DefaultChar);
                 }
                 Load_Data.Clear_Char(ViewModel.DefaultChar);
-
+            
 
                 ViewModel.DefaultChar.ID_Char = selected_Char_Summory.id;
             }
