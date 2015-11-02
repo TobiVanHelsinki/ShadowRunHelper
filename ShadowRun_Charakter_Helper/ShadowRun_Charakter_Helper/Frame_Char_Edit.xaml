@@ -28,14 +28,16 @@
                     </StackPanel>
                     <Grid RelativePanel.Below="Basisdaten_U" Name="Basisdaten" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource ListView_Item_Grid}" >
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -59,14 +61,14 @@
                         <TextBlock Text="Edge Aktuell:" Grid.Column="2" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBox Text="{x:Bind ViewModel.DefaultChar.Edgne_Aktuell, Mode=TwoWay}" Grid.Column="3" Grid.Row="3" Style="{StaticResource ListView_Item_TextBox}"/>
 
-                        <TextBlock Text="Standard Initiative (ohne Würfel):" Grid.Column="4" Grid.Row="0" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Initiative, Mode=TwoWay}" Grid.Column="5" Grid.Row="0" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Maximaler, geistiger Schaden:" Grid.Column="4" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_G_max, Mode=TwoWay}" Grid.Column="5" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Maximaler, physischer Schaden:" Grid.Column="4" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_K_max, Mode=TwoWay}" Grid.Column="5" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Maximaler, digitaler Schaden:" Grid.Column="4" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_M_max, Mode=TwoWay}" Grid.Column="5" Grid.Row="3" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBlock Text="Standard Initiative (ohne Würfel):" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Initiative, Mode=TwoWay}" Grid.Column="3" Grid.Row="4" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBlock Text="Maximaler, geistiger Schaden:" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5" Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_G_max, Mode=TwoWay}" Grid.Column="3" Grid.Row="5" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBlock Text="Maximaler, physischer Schaden:" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_K_max, Mode=TwoWay}" Grid.Column="3" Grid.Row="6" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBlock Text="Maximaler, digitaler Schaden:" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7" Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_M_max, Mode=TwoWay}" Grid.Column="3" Grid.Row="7" Style="{StaticResource ListView_Item_TextBox}"/>
                     </Grid>
                     <StackPanel RelativePanel.Below="Basisdaten" Name="Zusammenfassung_U" Style="{StaticResource ListView_U}">
                         <TextBlock Name="Zusammenfassung" Text="Zusammenfassung des Charachters:"  Style="{StaticResource ListView_U_Text}"/>
@@ -110,38 +112,41 @@
                     <ListView Name="Fähigkeiten" RelativePanel.Below="Fähigkeiten_E" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Fähigkeiten}" Style="{StaticResource ListView}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="data:Char_Fähigkeit">
-                                <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
+                                <Grid Style="{StaticResource ListView_Item_Grid}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition MinWidth="100" Width="3*"/>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <FlyoutBase.AttachedFlyout>
-                                        <Flyout>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <StackPanel Orientation="Vertical" Grid.Column="0">
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung"/>
-                                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Zusammensetzung, Mode=TwoWay}"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Vertical" Grid.Column="1">
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkung"/>
-                                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Anmerkung, Mode=TwoWay}"/>
-                                                </StackPanel>
-                                            </Grid>
-                                        </Flyout>
-                                    </FlyoutBase.AttachedFlyout>
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Fähigkeiten_Del"/>
                                     <TextBox Name="Bezeichnung" Grid.Column="1" Text="{x:Bind Bezeichnung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <TextBox Name="Pool_User" Grid.Column="2" Text="{x:Bind Pool_User, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <TextBox Name="Pool_Modifier" Grid.Column="3" Text="{x:Bind Pool_Modifier, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <TextBox Grid.Column="4" Text="{x:Bind Anmerkung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
+                                    <Button Grid.Column="5" Content="Weitere" Tapped="Item_Tapped">
+                                        <FlyoutBase.AttachedFlyout>
+                                            <Flyout>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel Orientation="Vertical" Grid.Column="0">
+                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung"/>
+                                                        <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Zusammensetzung, Mode=TwoWay}"/>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkung"/>
+                                                        <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Anmerkung, Mode=TwoWay}"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Flyout>
+                                        </FlyoutBase.AttachedFlyout>
+                                    </Button>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -164,37 +169,41 @@
                     <ListView Name="Fertigkeiten" RelativePanel.Below="Fertigkeiten_E" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Fertigkeiten}" Style="{StaticResource ListView}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="data:Char_Fertigkeit">
-                                <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
+                                <Grid Style="{StaticResource ListView_Item_Grid}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
+                                          <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <FlyoutBase.AttachedFlyout>
-                                        <Flyout>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <StackPanel Orientation="Vertical" Grid.Column="0">
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkung"/>
-                                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Anmerkung, Mode=TwoWay}"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Vertical" Grid.Column="1">
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Art"/>
-                                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Art, Mode=TwoWay}"/>
-                                                </StackPanel>
-                                            </Grid>
-                                        </Flyout>
-                                    </FlyoutBase.AttachedFlyout>
+                                  
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Fertigkeiten_Del"/>
                                     <TextBox Grid.Column="1" Text="{x:Bind Bezeichnung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <TextBox Grid.Column="2" Text="{x:Bind Stufe, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <TextBox Grid.Column="3" Text="{x:Bind Anmerkung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
+                                    <Button Grid.Column="5" Content="Weitere" Tapped="Item_Tapped">
+                                        <FlyoutBase.AttachedFlyout>
+                                            <Flyout>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel Orientation="Vertical" Grid.Column="0">
+                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkung"/>
+                                                        <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Anmerkung, Mode=TwoWay}"/>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Vertical" Grid.Column="1">
+                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Art"/>
+                                                        <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Art, Mode=TwoWay}"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Flyout>
+                                        </FlyoutBase.AttachedFlyout>
+                                    </Button>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -724,35 +733,37 @@
                             <ListView Name="Vorteile" RelativePanel.AlignLeftWith="Vorteile_U" RelativePanel.AlignRightWith="Vorteile_U" RelativePanel.Below="Vorteile_U" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Vorteile}" Style="{StaticResource ListView}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="data:Char_Vorteil">
-                                        <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
+                                        <Grid Style="{StaticResource ListView_Item_Grid}">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
-
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout>
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <StackPanel Orientation="Vertical" Grid.Column="0">
-                                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Auswirkungen"/>
-                                                            <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Auswirkungen, Mode=TwoWay}"/>
-                                                        </StackPanel>
-                                                        <StackPanel Orientation="Vertical" Grid.Column="1">
-                                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkungen"/>
-                                                            <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Anmerkungen, Mode=TwoWay}"/>
-                                                        </StackPanel>
-                                                    </Grid>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
                                             <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Vorteile_Del"/>
                                             <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
                                             <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
+                                            <Button Grid.Column="3" Content="Weitere" Tapped="Item_Tapped">
+                                                <FlyoutBase.AttachedFlyout>
+                                                    <Flyout>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition/>
+                                                                <ColumnDefinition/>
+                                                                <ColumnDefinition/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Orientation="Vertical" Grid.Column="0">
+                                                                <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Auswirkungen"/>
+                                                                <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Auswirkungen, Mode=TwoWay}"/>
+                                                            </StackPanel>
+                                                            <StackPanel Orientation="Vertical" Grid.Column="1">
+                                                                <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkungen"/>
+                                                                <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Anmerkungen, Mode=TwoWay}"/>
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </Flyout>
+                                                </FlyoutBase.AttachedFlyout>
+                                            </Button>
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -766,34 +777,39 @@
                             <ListView Name="Nachteile" RelativePanel.AlignLeftWith="Nachteile_U" RelativePanel.AlignRightWith="Nachteile_U" RelativePanel.Below="Nachteile_U" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Nachteile}" Style="{StaticResource ListView}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="data:Char_Nachteil">
-                                        <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
+                                        <Grid Style="{StaticResource ListView_Item_Grid}">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout>
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <StackPanel Orientation="Vertical" Grid.Column="0">
-                                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Auswirkungen"/>
-                                                            <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Auswirkungen, Mode=TwoWay}"/>
-                                                        </StackPanel>
-                                                        <StackPanel Orientation="Vertical" Grid.Column="1">
-                                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkungen"/>
-                                                            <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Anmerkungen, Mode=TwoWay}"/>
-                                                        </StackPanel>
-                                                    </Grid>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
+
                                             <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Nachteile_Del"/>
                                             <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
                                             <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
+                                            <Button Grid.Column="3" Content="Weitere" Tapped="Item_Tapped">
+                                                <FlyoutBase.AttachedFlyout>
+                                                    <Flyout>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition/>
+                                                                <ColumnDefinition/>
+                                                                <ColumnDefinition/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackPanel Orientation="Vertical" Grid.Column="0">
+                                                                <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Auswirkungen"/>
+                                                                <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Auswirkungen, Mode=TwoWay}"/>
+                                                            </StackPanel>
+                                                            <StackPanel Orientation="Vertical" Grid.Column="1">
+                                                                <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkungen"/>
+                                                                <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Anmerkungen, Mode=TwoWay}"/>
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </Flyout>
+                                                </FlyoutBase.AttachedFlyout>
+
+                                            </Button>
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
