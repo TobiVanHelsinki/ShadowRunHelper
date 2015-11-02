@@ -1,5 +1,4 @@
-﻿
-<Page
+﻿<Page
     x:Class="ShadowRun_Charakter_Helper.Frame_Char_Change"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -14,30 +13,24 @@
                 <ResourceDictionary Source="Dictionary_XAML_Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+
     </Page.Resources>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
-        <TextBlock Name="Einleitung" Text="Hier können Charachtäre ausgewählt werden" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" />
+        <TextBlock Name="Einleitung" RelativePanel.AlignTopWithPanel="True" Text="Hier können Charaktere verwaltet werden" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" />
+        <TextBlock Name="Einleitung2" RelativePanel.Below="Einleitung" Text="Vergiss nie, den Char zu speichern und sichere ihn am Besten immer in einer Datei!" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" />
+        <StackPanel Name="Buttons" RelativePanel.RightOf="Char_Sum" RelativePanel.Below="Einleitung2">
+            <Button Content="Ausgewählten Char Laden" Click="Click_Laden" Style="{StaticResource Char_Control_Btn}"/>
+            <Button Content="Aktuellen Char Speichern" Click="Click_Speichern" Style="{StaticResource Char_Control_Btn}"/>
+            <Button Content="Neuen Char Erstellen" Click="Click_Erstellen" Style="{StaticResource Char_Control_Btn}"/>
+            <Button Content="Ausgewählten Char Löschen" Click="Click_Löschen" Style="{StaticResource Char_Control_Btn}"/>
+            <Button Content="Char aus Datei Laden" Click="Click_Laden_Datei" Style="{StaticResource Char_Control_Btn}"/>
+            <Button Content="Char in Datei speichern" Click="Click_Speichern_Datei" Style="{StaticResource Char_Control_Btn}"/>
+            <Button Content="Alle Chars Löschen" Click="Click_Löschen_Alles" Style="{StaticResource Char_Control_Btn}"/>
+        </StackPanel>
 
-        <Button Content="Auswählen" Click="Char_Auswahl" Grid.Column="0" Grid.Row="1"/>
-        <Button Content="Speichern" Click="Speichern_Click" Grid.Column="1" Grid.Row="1"/>
-        <Button Content="Neu" Click="Neu_Click" Grid.Column="2" Grid.Row="1"/>
-        <Button Content="Löschen" Click="Löschen_Click" Grid.Column="3" Grid.Row="1"/>
-
-        <ListView ItemsSource="{x:Bind Char_List_Sum}" IsItemClickEnabled="True" ItemClick="CharSum_Auswahl" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2">
+        <ListView Name="Char_Sum" RelativePanel.Below="Einleitung2" ItemsSource="{x:Bind Char_List_Sum}" IsItemClickEnabled="True" ItemClick="CharSum_Auswahl" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="data:Char_Summory">
                     <Grid BorderThickness="1" BorderBrush="Black" >
@@ -48,15 +41,9 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Margin="5,2,5,2" Grid.Column="1" Text="{x:Bind char_summory}"/>
                     </Grid>
-
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
-
-        <Button Content="aus Datei Laden" Click="Datei_Laden_Click" Grid.Column="0" Grid.ColumnSpan="2"  Grid.Row="3"/>
-        <Button Content="in Datei speichern" Click="Datei_Speichern_Click" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3"/>
-
-
-    </Grid>
+       
+    </RelativePanel>
 </Page>

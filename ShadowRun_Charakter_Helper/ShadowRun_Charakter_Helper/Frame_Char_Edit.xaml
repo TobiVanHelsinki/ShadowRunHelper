@@ -339,7 +339,8 @@
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>
-                <local:TabHeader Label="Kampf" Glyph="&#xE804;" />
+                <local:TabHeader Label="Kampf" Glyph="&#xE730;" />
+                <!--730 814--> 
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
                 <RelativePanel Style="{StaticResource Pivot_Item_RelativePanel}">

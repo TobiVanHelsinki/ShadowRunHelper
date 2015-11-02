@@ -305,7 +305,7 @@ namespace ShadowRun_Charakter_Helper.Models
             int i = 0;
             int k = 0;
 
-            LoadChar.ID_Char = Int32.Parse(result[k]);
+            //LoadChar.ID_Char = Int32.Parse(result[k]);
             k++;
             LoadChar.Alias = result[k];
             k++;

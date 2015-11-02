@@ -385,5 +385,8 @@
         <Setter Property="HorizontalScrollMode" Value="Auto"/>
     </Style>
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
+    <Style TargetType="Button" x:Key="Char_Control_Btn">
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+    
 </ResourceDictionary>

@@ -8,6 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock>Database</TextBlock>
+        <TextBlock>Hier kann später die Datenbank bearbeitet werden, bitte komme nach einem der zukünftigen Updates wieder.</TextBlock>
     </Grid>
 </Page>

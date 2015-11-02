@@ -9,90 +9,63 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     class CharList
     {
-
         public static bool Add(int id)
         {
-
-            string Char_ID_String = CharList.Read();
-            try
+            if (id == 0) { return false; }
+            List<int> Char_ID_List = ReadSeperatedtoList();
+            if (!Char_ID_List.Contains(id))
             {
-                string[] Char_ID_Array = Char_ID_String.Split(',');
-                List<string> Char_ID_List = Char_ID_Array.OfType<string>().ToList();
-
-                if (!Char_ID_List.Contains(id.ToString()))
-                {
-                    Char_ID_String += ",";
-                    Char_ID_String += id.ToString();
-                }
+                Char_ID_List.Add(id);
             }
-            catch (NullReferenceException)
-            {
-                Char_ID_String += id.ToString();
-            }
-
-            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            localSettings.Values["CharList"] = Char_ID_String;
+            Write(Char_ID_List);
             return true;
         }
 
-        public static int Add()
+        public static void Write(List<int> Char_ID_List)
         {
-            string Char_ID_String = CharList.Read();
-            int new_ID = 0;
-            try
+            string Char_ID_String = "";
+            for (int i = 0; i < Char_ID_List.Count(); i++)
             {
-                string[] Char_ID_Array = Char_ID_String.Split(',');
-                List<string> Char_ID_List = Char_ID_Array.OfType<string>().ToList();
+                Char_ID_String += Char_ID_List[i].ToString();
 
-                if (Char_ID_List==null || Char_ID_List.Count == 0) {
-
-                    Char_ID_String += 0;
-                }
-                else { 
+                if (Char_ID_List.Count() - 1 != i)
+                {
                     Char_ID_String += ",";
-                    new_ID = (Int32.Parse(Char_ID_List[Char_ID_List.Count-1]) + 1);
-                    Char_ID_String += new_ID.ToString();
                 }
-            }
-            catch (NullReferenceException)
-            {
-               
             }
 
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             localSettings.Values["CharList"] = Char_ID_String;
-            return new_ID;
         }
 
-        public static string Read()
+        public static List<int> ReadSeperatedtoList()
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            string CharList = (string)localSettings.Values["CharList"];
-            return CharList;
-
-        }
-
-        public static string[] ReadSeperated()
-        {
-            try { 
-                return CharList.Read().Split(',');
-            }
-            catch(NullReferenceException)
-            {
-                return null;
-            }
-        }
-
-        public static List<string> ReadSeperatedtoList()
-        {
+            List<string> temp = new List<string>();
+            List<int> inte = new List<int>();
             try
             {
-                return CharList.Read().Split(',').OfType<string>().ToList();
+                temp = ((string)localSettings.Values["CharList"]).Split(',').OfType<string>().ToList();
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
-                return null;
+                return inte;
             }
+            
+            for (int i = 0; i < temp.Count(); i++)
+            {
+                try
+                {
+                    inte.Add(Int32.Parse(temp[i]));
+                }
+                catch
+                {
+
+                }
+            }
+
+            return inte;
+
         }
 
         public static bool Clear()
@@ -105,44 +78,20 @@ namespace ShadowRun_Charakter_Helper.Models
 
         public static bool Delete(int id)
         {
-            string Char_ID_String = CharList.Read();
-            try
+            List<int> Char_ID_List = ReadSeperatedtoList();
+            if (Char_ID_List.Contains(id))
             {
-                string[] Char_ID_Array = Char_ID_String.Split(',');
-                List<string> Char_ID_List = Char_ID_Array.OfType<string>().ToList();
-
-                if (Char_ID_List.Contains(id.ToString()))
-                {
-                    Char_ID_List.Remove(id.ToString());
-
-                    string Char_ID_NewString = "";
-                    for (int i = 0; i < Char_ID_List.Count; i++)
-                    {
-                        Char_ID_NewString += Char_ID_List[i].ToString();
-
-                        if (i+1!=Char_ID_List.Count) {
-                            Char_ID_NewString += ",";
-                        }
-                        
-
-                    }
-                    Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    localSettings.Values["CharList"] = Char_ID_NewString;
-                    return true;
-                }
+                Char_ID_List.Remove(id);
+                Write(Char_ID_List);
+                return true;
             }
-            catch (NullReferenceException)
-            {
-                return false;
-            }
-
             return false;
         }
 
         internal static bool Beinhaltet(int iD_Char)
         {
-            List<string> Char_ID_List = ReadSeperatedtoList();
-            if (Char_ID_List.Contains(iD_Char.ToString()))
+            List<int> Char_ID_List = ReadSeperatedtoList();
+            if (Char_ID_List.Contains(iD_Char))
             {
                 return true;
             }
@@ -155,16 +104,16 @@ namespace ShadowRun_Charakter_Helper.Models
 
         internal static int freieID()
         {
-            List<string> List_of_IDs = ReadSeperatedtoList();
+            List<int> List_of_IDs = ReadSeperatedtoList();
 
-            for (int i=0;i< List_of_IDs.Count();i++)
+            for (int i=1;i<=List_of_IDs.Count();i++)
             {
-                if (!List_of_IDs.Contains(i.ToString()))
+                if (!List_of_IDs.Contains(i))
                 {
                     return i;
                 }    
             }
-            return List_of_IDs.Count();
+            return List_of_IDs.Count()+1;
         }
     }
 }

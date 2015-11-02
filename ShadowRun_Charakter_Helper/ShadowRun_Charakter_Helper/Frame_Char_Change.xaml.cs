@@ -42,12 +42,15 @@ namespace ShadowRun_Charakter_Helper
         }
 
 
-        private void createSummorys() {
-            String[] Char_List = CharList.ReadSeperated();
-            try {  
-                for (int i = 0; i < Char_List.Length; i++)
+        private void createSummorys()
+        {
+            List<int> Char_List = CharList.ReadSeperatedtoList();
+            Char_List_Sum.Clear();
+            try
+            {
+                for (int i = 0; i < Char_List.Count; i++)
                 {
-                    Char_List_Sum.Add(Char_Summory.get_char_summory_by_id(Int32.Parse(Char_List[i])));
+                    Char_List_Sum.Add(Char_Summory.get_char_summory_by_id((Char_List[i])));
                 }
             }
             catch
@@ -55,7 +58,7 @@ namespace ShadowRun_Charakter_Helper
                 return;
             }
         }
-        
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -69,52 +72,82 @@ namespace ShadowRun_Charakter_Helper
             selected_Char_Summory = (Char_Summory)e.ClickedItem;
         }
 
-
-
-        private void Char_Auswahl(object sender, RoutedEventArgs e)
+        private void Laden(String inputstring, String Mode)
         {
-            try
+            //Store Current if exists (VGL mit CharList)
+            if (CharList.Beinhaltet(ViewModel.DefaultChar.ID_Char))
             {
-                if (ViewModel.DefaultChar.ID_Char != selected_Char_Summory.id)
-                {
-                    Store_Data.Store_Char(ViewModel.DefaultChar);
-                }
-                Load_Data.Clear_Char(ViewModel.DefaultChar);
-            
-
+                Store_Data.Store_Char(ViewModel.DefaultChar);
+            }
+            //Clear ViewModel
+            Load_Data.Clear_Char(ViewModel.DefaultChar);
+            //Load ID (Switch)
+            if (Mode == "Local")
+            {
                 ViewModel.DefaultChar.ID_Char = selected_Char_Summory.id;
+                
             }
-            catch (NullReferenceException)
+            else if (Mode == "String")
             {
-                return;
+                Load_Data.Load_Char_from_String(inputstring, ViewModel.DefaultChar);
+                ViewModel.DefaultChar.ID_Char = CharList.freieID();
+                Store_Data.Store_Char(ViewModel.DefaultChar);
+                CharList.Add(ViewModel.DefaultChar.ID_Char);
+                //Benachrichtige die Liste der Chars TODO: das automatisieren
+                createSummorys();
             }
+            else if (Mode == "Leer")
+            {
+                ViewModel.DefaultChar.ID_Char = CharList.freieID();
+                Store_Data.Store_Char(ViewModel.DefaultChar);
+                CharList.Add(ViewModel.DefaultChar.ID_Char);
+            }
+            else { return; }
+            //Load New
             Load_Data.Load_Char(ViewModel.DefaultChar);
-            Frame.Navigate(typeof(Frame_Char), ViewModel);
         }
 
-
-        private void Neu_Click(object sender, RoutedEventArgs e)
+        private async void Löschen(IUICommand command)
         {
+            // Char Löschen
+            CharList.Delete(selected_Char_Summory.id);
+            Char_List_Sum.Remove(selected_Char_Summory);
+
+            if (ViewModel.DefaultChar.ID_Char == selected_Char_Summory.id)
+            {
+                Load_Data.Clear_Char(ViewModel.DefaultChar);
+            }
+            // Nachicht Anzeigen
+            MessageDialog dialog = new MessageDialog("Er ist tot, Jim.", "Nachricht");
+            await dialog.ShowAsync();
+        }
+
+        private async void Löschen_Alles(IUICommand command)
+        {
+            // Char Löschen
+            CharList.Clear();
+            createSummorys();
             Load_Data.Clear_Char(ViewModel.DefaultChar);
+            // Nachicht Anzeigen
+            MessageDialog dialog = new MessageDialog("Alle sind tot, Jim.", "Nachricht");
+            await dialog.ShowAsync();
+        }
 
-            ViewModel.DefaultChar.ID_Char = CharList.Add();
-
-            Store_Data.Store_Char(ViewModel.DefaultChar);
-            CharList.Add(ViewModel.DefaultChar.ID_Char);
-            Load_Data.Clear_Char(ViewModel.DefaultChar);
-            Load_Data.Load_Char(ViewModel.DefaultChar);
-
+        private void Click_Erstellen(object sender, RoutedEventArgs e)
+        {
+            Laden("", "Leer");
             Frame.Navigate(typeof(Frame_Char_Edit), ViewModel);
         }
 
-        private async void Löschen_Click(object sender, RoutedEventArgs e)
+        private async void Click_Löschen(object sender, RoutedEventArgs e)
         {
+            if (selected_Char_Summory == null) { return; }
             var messageDialog = new MessageDialog("Damit zerstörst du die Existenz von " + selected_Char_Summory.char_summory + ", Chummer! Bist du sicher, dass du das machen willst?");
 
             // Add commands and set their callbacks; both buttons use the same callback function instead of inline event handlers
             messageDialog.Commands.Add(new UICommand(
                 "Wirklich Löschen",
-                new UICommandInvokedHandler(this.CommandInvokedHandler)));
+                new UICommandInvokedHandler(this.Löschen)));
             messageDialog.Commands.Add(new UICommand(
                 "Ach nein doch nicht"));
 
@@ -128,30 +161,41 @@ namespace ShadowRun_Charakter_Helper
             await messageDialog.ShowAsync();
         }
 
-        private async void CommandInvokedHandler(IUICommand command)
+        private async void Click_Löschen_Alles(object sender, RoutedEventArgs e)
         {
-            // Display message showing the label of the command that was invoked
-            CharList.Delete(selected_Char_Summory.id);
-            Char_List_Sum.Remove(selected_Char_Summory);
+            var messageDialog = new MessageDialog("Damit zerstörst du die Existenz von ... JEDEM!, Chummer! Bist du sicher, dass du das machen willst?");
 
-            if (ViewModel.DefaultChar.ID_Char == selected_Char_Summory.id)
-            {
-                Load_Data.Clear_Char(ViewModel.DefaultChar);
-            }
+            // Add commands and set their callbacks; both buttons use the same callback function instead of inline event handlers
+            messageDialog.Commands.Add(new UICommand(
+                "Wirklich Löschen",
+                new UICommandInvokedHandler(this.Löschen_Alles)));
+            messageDialog.Commands.Add(new UICommand(
+                "Ach nein doch nicht"));
 
-            MessageDialog dialog = new MessageDialog("Er ist tot, Jim.", "Nachricht");
-            await dialog.ShowAsync();
+            // Set the command that will be invoked by default
+            messageDialog.DefaultCommandIndex = 0;
+
+            // Set the command to be invoked when escape is pressed
+            messageDialog.CancelCommandIndex = 1;
+
+            // Show the message dialog
+            await messageDialog.ShowAsync();
         }
 
-        private void Speichern_Click(object sender, RoutedEventArgs e)
+        private void Click_Laden(object sender, RoutedEventArgs e)
+        {
+            if (selected_Char_Summory == null) { return; }
+            Laden("", "Local");
+            Frame.Navigate(typeof(Frame_Char), ViewModel);
+        }
+
+        private void Click_Speichern(object sender, RoutedEventArgs e)
         {
             Store_Data.Store_Char(ViewModel.DefaultChar);
-            //CharList.Add(ViewModel.DefaultChar.ID_Char);
             createSummorys();
         }
 
-
-        private async void Datei_Laden_Click(object sender, RoutedEventArgs e)
+        private async void Click_Laden_Datei(object sender, RoutedEventArgs e)
         {
             var picker = new Windows.Storage.Pickers.FileOpenPicker();
             picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
@@ -161,27 +205,15 @@ namespace ShadowRun_Charakter_Helper
             Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
             if (file != null)
             {
-                // Application now has read/write access to the picked file
-                // File -> string, Method in Load aufrufen, neuen char speichern, liste aktualisieren, 
-                string fileContent = await FileIO.ReadTextAsync(file);
-
-                Models.Char temp_char = new Models.Char();
-
-                Load_Data.Load_Char_from_String(fileContent, temp_char);
-                if (CharList.Beinhaltet(temp_char.ID_Char))
-                {
-                    temp_char.ID_Char = CharList.freieID();   
-                }
-                //id kann beibehalten werden, wenn es keine andere gibt
-                Store_Data.Store_Char(temp_char);
-                CharList.Add(temp_char.ID_Char);
-                Char_List_Sum.Add(Char_Summory.get_char_summory_by_id(temp_char.ID_Char));
-                temp_char = null;
+                string inputString = await FileIO.ReadTextAsync(file);
+                Laden(inputString, "String");
             }
+            Frame.Navigate(typeof(Frame_Char), ViewModel);
         }
 
-        private async void Datei_Speichern_Click(object sender, RoutedEventArgs e)
+        private async void Click_Speichern_Datei(object sender, RoutedEventArgs e)
         {
+            if (selected_Char_Summory == null) { return; }
             //Ordner Auswähler vorbereiten
             var folderPicker = new Windows.Storage.Pickers.FolderPicker();
             folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
