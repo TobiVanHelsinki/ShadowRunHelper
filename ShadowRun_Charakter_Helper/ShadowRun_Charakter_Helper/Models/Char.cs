@@ -378,110 +378,110 @@ namespace ShadowRun_Charakter_Helper.Models
             }
         }
 
-        private int konstitution;
-        public int Konstitution
-        {
-            get { return konstitution; }
-            set
-            {
-                if (value != this.konstitution)
-                {
-                    this.konstitution = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        private int geschicklichkeit;
-        public int Geschicklichkeit
-        {
-            get { return geschicklichkeit; }
-            set
-            {
-                if (value != this.geschicklichkeit)
-                {
-                    this.geschicklichkeit = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        private int reaktion;
-        public int Reaktion
-        {
-            get { return reaktion; }
-            set
-            {
-                if (value != this.reaktion)
-                {
-                    this.reaktion = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        private int stärke;
-        public int Stärke
-        {
-            get { return stärke; }
-            set
-            {
-                if (value != this.stärke)
-                {
-                    this.stärke = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        private int charisma;
-        public int Charisma
-        {
-            get { return charisma; }
-            set
-            {
-                if (value != this.charisma)
-                {
-                    this.charisma = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        private int intuition;
-        public int Intuition
-        {
-            get { return intuition; }
-            set
-            {
-                if (value != this.intuition)
-                {
-                    this.intuition = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        private int logik;
-        public int Logik
-        {
-            get { return logik; }
-            set
-            {
-                if (value != this.logik)
-                {
-                    this.logik = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        private int willenskraft;
-        public int Willenskraft
-        {
-            get { return willenskraft; }
-            set
-            {
-                if (value != this.willenskraft)
-                {
-                    this.willenskraft = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
+        //private int konstitution;
+        //public int Konstitution
+        //{
+        //    get { return konstitution; }
+        //    set
+        //    {
+        //        if (value != this.konstitution)
+        //        {
+        //            this.konstitution = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
+        //private int geschicklichkeit;
+        //public int Geschicklichkeit
+        //{
+        //    get { return geschicklichkeit; }
+        //    set
+        //    {
+        //        if (value != this.geschicklichkeit)
+        //        {
+        //            this.geschicklichkeit = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
+        //private int reaktion;
+        //public int Reaktion
+        //{
+        //    get { return reaktion; }
+        //    set
+        //    {
+        //        if (value != this.reaktion)
+        //        {
+        //            this.reaktion = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
+        //private int stärke;
+        //public int Stärke
+        //{
+        //    get { return stärke; }
+        //    set
+        //    {
+        //        if (value != this.stärke)
+        //        {
+        //            this.stärke = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
+        //private int charisma;
+        //public int Charisma
+        //{
+        //    get { return charisma; }
+        //    set
+        //    {
+        //        if (value != this.charisma)
+        //        {
+        //            this.charisma = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
+        //private int intuition;
+        //public int Intuition
+        //{
+        //    get { return intuition; }
+        //    set
+        //    {
+        //        if (value != this.intuition)
+        //        {
+        //            this.intuition = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
+        //private int logik;
+        //public int Logik
+        //{
+        //    get { return logik; }
+        //    set
+        //    {
+        //        if (value != this.logik)
+        //        {
+        //            this.logik = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
+        //private int willenskraft;
+        //public int Willenskraft
+        //{
+        //    get { return willenskraft; }
+        //    set
+        //    {
+        //        if (value != this.willenskraft)
+        //        {
+        //            this.willenskraft = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
 
         private int initiative;
         public int Initiative
@@ -497,7 +497,7 @@ namespace ShadowRun_Charakter_Helper.Models
             }
         }
 
-        
+        public ObservableCollection<Char_Attribut> Char_Attribute { get; set; }
         public ObservableCollection<Char_Fertigkeit> Char_Fertigkeiten { get; set; }
         public ObservableCollection<Char_Fähigkeit> Char_Fähigkeiten { get; set; }
         public ObservableCollection<Char_Connection> Char_Connections { get; set; }
@@ -519,7 +519,7 @@ namespace ShadowRun_Charakter_Helper.Models
             //this.MetaTyp = "";
             this.Char_Fertigkeiten = new ObservableCollection<Char_Fertigkeit>();
             this.Char_Fähigkeiten = new ObservableCollection<Char_Fähigkeit>();
-            //this.Char_Attribute = new ObservableCollection<Char_Attribut>();
+            this.Char_Attribute = new ObservableCollection<Char_Attribut>();
             this.Char_Items = new ObservableCollection<Char_Item>();
             this.Char_Connections = new ObservableCollection<Char_Connection> ();
             Char_Dronen_Fahrzeuge = new ObservableCollection<Char_Drone_Fahrzeug>();

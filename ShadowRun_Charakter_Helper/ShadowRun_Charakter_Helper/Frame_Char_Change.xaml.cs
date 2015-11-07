@@ -192,6 +192,7 @@ namespace ShadowRun_Charakter_Helper
         private void Click_Speichern(object sender, RoutedEventArgs e)
         {
             Store_Data.Store_Char(ViewModel.DefaultChar);
+            Char_Fähigkeit.Pool_Berechnen(ViewModel.DefaultChar);
             createSummorys();
         }
 

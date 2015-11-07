@@ -15,6 +15,9 @@ namespace ShadowRun_Charakter_Helper
     public sealed partial class Frame_Char_Edit : Page
     {
         public CharViewModel ViewModel { get; set; }
+        public string t_Zusammensetzung_F { get; set; }
+        public string t_Zusammensetzung_A { get; set; }
+
         public Frame_Char_Edit()
         {
             this.InitializeComponent();
@@ -179,6 +182,23 @@ namespace ShadowRun_Charakter_Helper
         private void Kommlinks_Del(object sender, RoutedEventArgs e)
         {
             ViewModel.DefaultChar.Char_Kommlinks.Remove((Char_Kommlink)((Button)sender).DataContext);
+        }
+
+        private void Attribute_Add(object sender, RoutedEventArgs e)
+        {
+            ViewModel.DefaultChar.Char_Attribute.Add(new Char_Attribut(ViewModel.DefaultChar.Char_Attribute));
+        }
+
+        private void Attribute_Del(object sender, RoutedEventArgs e)
+        {
+            ViewModel.DefaultChar.Char_Attribute.Remove((Char_Attribut)((Button)sender).DataContext);
+        }
+
+        private void Flyout_Fähig_Close(object sender, object e)
+        {
+            string temp = "";
+
+            
         }
     }
 }

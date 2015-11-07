@@ -28,6 +28,7 @@
             <Button Content="Char aus Datei Laden" Click="Click_Laden_Datei" Style="{StaticResource Char_Control_Btn}"/>
             <Button Content="Char in Datei speichern" Click="Click_Speichern_Datei" Style="{StaticResource Char_Control_Btn}"/>
             <Button Content="Alle Chars Löschen" Click="Click_Löschen_Alles" Style="{StaticResource Char_Control_Btn}"/>
+         
         </StackPanel>
 
         <ListView Name="Char_Sum" RelativePanel.Below="Einleitung2" ItemsSource="{x:Bind Char_List_Sum}" IsItemClickEnabled="True" ItemClick="CharSum_Auswahl" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2">

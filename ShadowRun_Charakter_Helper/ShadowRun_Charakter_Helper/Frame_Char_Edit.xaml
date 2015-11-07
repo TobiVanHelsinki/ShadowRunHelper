@@ -126,9 +126,9 @@
                                     <TextBox Name="Pool_User" Grid.Column="2" Text="{x:Bind Pool_User, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <TextBox Name="Pool_Modifier" Grid.Column="3" Text="{x:Bind Pool_Modifier, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <TextBox Grid.Column="4" Text="{x:Bind Anmerkung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
-                                    <Button Grid.Column="5" Content="Weitere" Tapped="Item_Tapped">
+                                    <Button Grid.Column="5" Content="Zusammensetzung" Tapped="Item_Tapped">
                                         <FlyoutBase.AttachedFlyout>
-                                            <Flyout>
+                                            <Flyout Closed="Flyout_Fähig_Close">
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="Auto"/>
@@ -139,10 +139,14 @@
                                                         <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung"/>
                                                         <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Zusammensetzung, Mode=TwoWay}"/>
                                                     </StackPanel>
-                                                    <StackPanel Orientation="Vertical" Grid.Column="1">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkung"/>
-                                                        <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Anmerkung, Mode=TwoWay}"/>
+                                                    <!--<StackPanel Orientation="Vertical" Grid.Column="1">
+                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung_F"/>
+                                                        <TextBox Name="Zusammensetzung_F_input"  Style="{StaticResource ListView_Item_TextBox}"/>
                                                     </StackPanel>
+                                                    <StackPanel Orientation="Vertical" Grid.Column="2">
+                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung_A"/>
+                                                        <TextBox Name="Zusammensetzung_A_input" Style="{StaticResource ListView_Item_TextBox}"/>
+                                                    </StackPanel>-->
                                                 </Grid>
                                             </Flyout>
                                         </FlyoutBase.AttachedFlyout>
@@ -562,9 +566,9 @@
                 <RelativePanel Style="{StaticResource Pivot_Item_RelativePanel}">
                     <StackPanel RelativePanel.AlignTopWithPanel="True" Name="Attribute_U" Style="{StaticResource ListView_U}">
                         <TextBlock Text="Attribute" Style="{StaticResource ListView_U_Text}"/>
-
+                        <Button Click="Attribute_Add" Style="{StaticResource ListView_U_BtnAdd}"/>
                     </StackPanel>
-                    <Grid RelativePanel.Below="Attribute_U" Name="Attribute" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource ListView_Item_Grid}" >
+                    <!--<Grid RelativePanel.Below="Attribute_U" Name="Attribute" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource ListView_Item_Grid}" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -601,7 +605,26 @@
                         <TextBox Text="{x:Bind ViewModel.DefaultChar.Edgne_Aktuell, Mode=TwoWay}" Grid.Column="5" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox}"/>
                         <TextBlock Text="Essenz: " Grid.Column="4" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBox Text="{x:Bind ViewModel.DefaultChar.Essenz, Mode=TwoWay}" Grid.Column="5" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox}"/>
-                    </Grid>
+                    </Grid>-->
+
+                    <GridView RelativePanel.Below="Attribute_U" Name="Attribute" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Attribute}" Style="{StaticResource GridView}">
+                        <GridView.ItemTemplate>
+                            <DataTemplate x:DataType="data:Char_Attribut">
+                                <Grid Style="{StaticResource ListView_Item_Grid}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Attribute_Del"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+
+
                     <StackPanel RelativePanel.Below="Attribute" Name="Connections_U" Style="{StaticResource ListView_U}">
                         <TextBlock Text="Connections" Style="{StaticResource ListView_U_Text}"/>
                         <Button Click="Connections_Add" Style="{StaticResource ListView_U_BtnAdd}"/>

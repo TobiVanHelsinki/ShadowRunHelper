@@ -43,16 +43,17 @@ namespace ShadowRun_Charakter_Helper.Models
             localSettings.Containers[Current_Char_Container_Name].Values["Hautfarbe"] = SaveChar.Hautfarbe;
             localSettings.Containers[Current_Char_Container_Name].Values["Bild"] = SaveChar.Bild;
             localSettings.Containers[Current_Char_Container_Name].Values["Zusammenfassung"] = SaveChar.Zusammenfassung;
-            localSettings.Containers[Current_Char_Container_Name].Values["Geschicklichkeit"] = (int)SaveChar.Geschicklichkeit;
-            localSettings.Containers[Current_Char_Container_Name].Values["Reaktion"] = (int)SaveChar.Reaktion;
-            localSettings.Containers[Current_Char_Container_Name].Values["Stärke"] = SaveChar.Stärke;
-            localSettings.Containers[Current_Char_Container_Name].Values["Charisma"] = (int)SaveChar.Charisma;
-            localSettings.Containers[Current_Char_Container_Name].Values["Intuition"] = (int)SaveChar.Intuition;
-            localSettings.Containers[Current_Char_Container_Name].Values["Konstitution"] = (int)SaveChar.Konstitution;
-            localSettings.Containers[Current_Char_Container_Name].Values["Logik"] = (int)SaveChar.Logik;
-            localSettings.Containers[Current_Char_Container_Name].Values["Willenskraft"] = (int)SaveChar.Willenskraft;
+            //localSettings.Containers[Current_Char_Container_Name].Values["Geschicklichkeit"] = (int)SaveChar.Geschicklichkeit;
+            //localSettings.Containers[Current_Char_Container_Name].Values["Reaktion"] = (int)SaveChar.Reaktion;
+            //localSettings.Containers[Current_Char_Container_Name].Values["Stärke"] = SaveChar.Stärke;
+            //localSettings.Containers[Current_Char_Container_Name].Values["Charisma"] = (int)SaveChar.Charisma;
+            //localSettings.Containers[Current_Char_Container_Name].Values["Intuition"] = (int)SaveChar.Intuition;
+            //localSettings.Containers[Current_Char_Container_Name].Values["Konstitution"] = (int)SaveChar.Konstitution;
+            //localSettings.Containers[Current_Char_Container_Name].Values["Logik"] = (int)SaveChar.Logik;
+            //localSettings.Containers[Current_Char_Container_Name].Values["Willenskraft"] = (int)SaveChar.Willenskraft;
 
             int i;
+            int k = 0;
             //Char_Fertigkeiten
             i = 0;
             if (SaveChar.Char_Fertigkeiten != null)
@@ -80,6 +81,27 @@ namespace ShadowRun_Charakter_Helper.Models
                     localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "_Pool_Calc"] = SaveChar.Char_Fähigkeiten[i].Pool_Calc;
                     localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "_Pool_Modifier"] = SaveChar.Char_Fähigkeiten[i].Pool_Modifier;
                     localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "_Pool_User"] = SaveChar.Char_Fähigkeiten[i].Pool_User;
+
+                    if (SaveChar.Char_Fähigkeiten[i].Zusammensetzung_F != null)
+                    {
+                        k = 0;
+                        for (k = 0; k < SaveChar.Char_Fähigkeiten[i].Zusammensetzung_F.Count; k++) //ToDo: Surrender with try catch
+                        {
+                            localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_F" + k] = SaveChar.Char_Fähigkeiten[i].Zusammensetzung_F[k];
+                        }
+                        localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_F_count"] = k;
+                    }
+                   
+                    if (SaveChar.Char_Fähigkeiten[i].Zusammensetzung_A != null)
+                    {
+                        k = 0;
+                        for (k = 0; k < SaveChar.Char_Fähigkeiten[i].Zusammensetzung_A.Count; k++) //ToDo: Surrender with try catch
+                        {
+                            localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_A" + k] = SaveChar.Char_Fähigkeiten[i].Zusammensetzung_A[k];
+                        }
+                        localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_A_count"] = k;
+                    }
+
                 }
                 localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeiten_Count"] = i;
             }
@@ -304,6 +326,21 @@ namespace ShadowRun_Charakter_Helper.Models
             }
             localSettings.Containers[Current_Char_Container_Name].Values["Char_Vorteile_Count"] = i;
 
+            //Char_Attribute
+            i = 0;
+            if (SaveChar.Char_Attribute != null)
+            {
+                for (i = 0; i < SaveChar.Char_Attribute.Count; i++)
+                {
+
+                    localSettings.Containers[Current_Char_Container_Name].Values["Char_Attribut_" + i + "_ID_Char_Vorteil"] = SaveChar.Char_Attribute[i].ID;
+                    localSettings.Containers[Current_Char_Container_Name].Values["Char_Attribut_" + i + "_Bezeichnung"] = SaveChar.Char_Attribute[i].Bezeichnung;
+                    localSettings.Containers[Current_Char_Container_Name].Values["Char_Attribut_" + i + "_Stufe"] = SaveChar.Char_Attribute[i].Stufe;
+                    localSettings.Containers[Current_Char_Container_Name].Values["Char_Attribut_" + i + "_Stufe_Modifier"] = SaveChar.Char_Attribute[i].Stufe_Modifier;
+                }
+            }
+            localSettings.Containers[Current_Char_Container_Name].Values["Char_Attribute_Count"] = i;
+
             return true;
         }
         public static string Store_Char_to_String(Models.Char SaveChar)
@@ -372,21 +409,21 @@ namespace ShadowRun_Charakter_Helper.Models
             FileString += Separator;
             FileString += SaveChar.Zusammenfassung;
             FileString += Separator;
-            FileString += (int)SaveChar.Geschicklichkeit;
+            //FileString += (int)SaveChar.Geschicklichkeit;
             FileString += Separator;
-            FileString += (int)SaveChar.Reaktion;
+            //FileString += (int)SaveChar.Reaktion;
             FileString += Separator;
-            FileString += SaveChar.Stärke;
+            //FileString += SaveChar.Stärke;
             FileString += Separator;
-            FileString += (int)SaveChar.Charisma;
+            //FileString += (int)SaveChar.Charisma;
             FileString += Separator;
-            FileString += (int)SaveChar.Intuition;
+            //FileString += (int)SaveChar.Intuition;
             FileString += Separator;
-            FileString += SaveChar.Konstitution;
+            //FileString += SaveChar.Konstitution;
             FileString += Separator;
-            FileString += (int)SaveChar.Logik;
+            //FileString += (int)SaveChar.Logik;
             FileString += Separator;
-            FileString += (int)SaveChar.Willenskraft;
+            //FileString += (int)SaveChar.Willenskraft;
 
             int i;
             //Char_Fertigkeiten
@@ -743,6 +780,24 @@ namespace ShadowRun_Charakter_Helper.Models
                     FileString += SaveChar.Char_Vorteile[i].Auswirkungen;
                     FileString += Separator;
                     FileString += SaveChar.Char_Vorteile[i].Anmerkungen;
+                }
+            }
+
+            //Char_Attribute
+            if (SaveChar.Char_Attribute != null)
+            {
+                FileString += Separator;
+                FileString += SaveChar.Char_Attribute.Count;
+                for (i = 0; i < SaveChar.Char_Attribute.Count; i++) //ToDo: Surrender with try catch
+                {
+                    FileString += Separator;
+                    FileString += SaveChar.Char_Attribute[i].ID;
+                    FileString += Separator;
+                    FileString += SaveChar.Char_Attribute[i].Bezeichnung;
+                    FileString += Separator;
+                    FileString += SaveChar.Char_Attribute[i].Stufe;
+                    FileString += Separator;
+                    FileString += SaveChar.Char_Attribute[i].Stufe_Modifier;
                 }
             }
 

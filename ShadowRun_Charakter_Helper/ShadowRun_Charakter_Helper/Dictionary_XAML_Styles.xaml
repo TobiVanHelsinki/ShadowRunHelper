@@ -347,6 +347,14 @@
         <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
         <Setter Property="Background" Value="Beige"/>
     </Style>
+    <Style TargetType="GridView" x:Key="GridView">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="Aqua"/>
+        <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
+        <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
+        <Setter Property="Background" Value="Beige"/>
+    </Style>
     <Style TargetType="Grid" x:Key="ListView_as_Grid">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -387,6 +395,7 @@
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <Style TargetType="Button" x:Key="Char_Control_Btn">
         <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="20,10,0,10"/>
     </Style>
     
 </ResourceDictionary>

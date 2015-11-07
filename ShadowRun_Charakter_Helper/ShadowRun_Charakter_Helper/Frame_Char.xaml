@@ -69,7 +69,7 @@
                                         </Flyout>
                                     </FlyoutBase.AttachedFlyout>
                                     <TextBlock Name="Bezeichnung" Grid.Column="0" Text="{x:Bind Bezeichnung}" Style="{StaticResource ListView_Item_Text}"/>
-                                    <TextBlock Name="Pool_User" Grid.Column="1" Text="{x:Bind Pool_User}" Style="{StaticResource ListView_Item_Text}"/>
+                                    <TextBlock Name="Pool_User" Grid.Column="1" Text="{x:Bind Pool_Calc}" Style="{StaticResource ListView_Item_Text}"/>
                                     <TextBlock Name="Pool_Modifier" Grid.Column="2" Text="{x:Bind Pool_Modifier}" Style="{StaticResource ListView_Item_Text}"/>
                                     <TextBlock Grid.Column="3" Text="{x:Bind Anmerkung}" Style="{StaticResource ListView_Item_Text}"/>
                                 </Grid>
@@ -442,7 +442,7 @@
                     <StackPanel RelativePanel.AlignTopWithPanel="True" Name="Attribute_U" Style="{StaticResource ListView_U}">
                         <TextBlock Text="Attribute" Style="{StaticResource ListView_U_Text}"/>
                     </StackPanel>
-                    <Grid RelativePanel.Below="Attribute_U" Name="Attribute" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource ListView_Item_Grid}" >
+                    <!--<Grid RelativePanel.Below="Attribute_U" Name="Attribute" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource ListView_Item_Grid}" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -479,7 +479,24 @@
                         <TextBlock Text="{x:Bind ViewModel.DefaultChar.Edgne_Aktuell, Mode=TwoWay}" Grid.Column="5" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBlock Text="Essenz: " Grid.Column="4" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBlock Text="{x:Bind ViewModel.DefaultChar.Essenz, Mode=TwoWay}" Grid.Column="5" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
-                    </Grid>
+                    </Grid>-->
+
+                    <GridView RelativePanel.Below="Attribute_U" Name="Attribute" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Attribute}" Style="{StaticResource GridView}">
+                        <GridView.ItemTemplate>
+                            <DataTemplate x:DataType="data:Char_Attribut">
+                                <Grid Style="{StaticResource ListView_Item_Grid}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="0" Grid.Row="0" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+
+
                     <StackPanel RelativePanel.Below="Attribute" Name="Connections_U" Style="{StaticResource ListView_U}">
                         <TextBlock Text="Connections" Style="{StaticResource ListView_U_Text}"/>
                     </StackPanel>

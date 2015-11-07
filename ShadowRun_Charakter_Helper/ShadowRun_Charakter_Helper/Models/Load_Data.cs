@@ -61,16 +61,17 @@ namespace ShadowRun_Charakter_Helper.Models
             LoadChar.Bild = (string)localSettings.Containers[Current_Char_Container_Name].Values["Bild"];
             LoadChar.Zusammenfassung = (string)localSettings.Containers[Current_Char_Container_Name].Values["Zusammenfassung"];
 
-            LoadChar.Geschicklichkeit = (int)localSettings.Containers[Current_Char_Container_Name].Values["Geschicklichkeit"];
-            LoadChar.Konstitution = (int)localSettings.Containers[Current_Char_Container_Name].Values["Konstitution"];
-            LoadChar.Reaktion = (int)localSettings.Containers[Current_Char_Container_Name].Values["Reaktion"];
-            LoadChar.Stärke = (int)localSettings.Containers[Current_Char_Container_Name].Values["Stärke"];
-            LoadChar.Charisma = (int)localSettings.Containers[Current_Char_Container_Name].Values["Charisma"];
-            LoadChar.Intuition = (int)localSettings.Containers[Current_Char_Container_Name].Values["Intuition"];
-            LoadChar.Logik = (int)localSettings.Containers[Current_Char_Container_Name].Values["Logik"];
-            LoadChar.Willenskraft = (int)localSettings.Containers[Current_Char_Container_Name].Values["Willenskraft"];
+            //LoadChar.Geschicklichkeit = (int)localSettings.Containers[Current_Char_Container_Name].Values["Geschicklichkeit"];
+            //LoadChar.Konstitution = (int)localSettings.Containers[Current_Char_Container_Name].Values["Konstitution"];
+            //LoadChar.Reaktion = (int)localSettings.Containers[Current_Char_Container_Name].Values["Reaktion"];
+            //LoadChar.Stärke = (int)localSettings.Containers[Current_Char_Container_Name].Values["Stärke"];
+            //LoadChar.Charisma = (int)localSettings.Containers[Current_Char_Container_Name].Values["Charisma"];
+            //LoadChar.Intuition = (int)localSettings.Containers[Current_Char_Container_Name].Values["Intuition"];
+            //LoadChar.Logik = (int)localSettings.Containers[Current_Char_Container_Name].Values["Logik"];
+           // LoadChar.Willenskraft = (int)localSettings.Containers[Current_Char_Container_Name].Values["Willenskraft"];
 
             int i;
+            int k = 0;
 
             //Char_Fertigkeiten
             i = 0;
@@ -101,6 +102,22 @@ namespace ShadowRun_Charakter_Helper.Models
                 Char_Fähigkeiten_Temp.Pool_Calc = (double)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "_Pool_Calc"];
                 Char_Fähigkeiten_Temp.Pool_Modifier = (string)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "_Pool_Modifier"];
                 Char_Fähigkeiten_Temp.Pool_User = (double)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "_Pool_User"];
+
+                k = 0;
+                Char_Fähigkeiten_Temp.Zusammensetzung_F = new List<int>();
+                try { 
+                    for (k = 0; k < (int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_F_count"]; k++)
+                    {
+                        Char_Fähigkeiten_Temp.Zusammensetzung_F.Add((int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_F" + k]);
+                    }
+                    k = 0;
+                    Char_Fähigkeiten_Temp.Zusammensetzung_A = new List<int>();
+                    for (k = 0; k < (int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_A_count"]; k++)
+                    {
+                        Char_Fähigkeiten_Temp.Zusammensetzung_A.Add((int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_A" + k]);
+                    }
+                }
+                catch (Exception) { }
                 LoadChar.Char_Fähigkeiten.Add(Char_Fähigkeiten_Temp);
             }
             //Char_Connections
@@ -291,10 +308,28 @@ namespace ShadowRun_Charakter_Helper.Models
                 Char_Vorteile_Temp.Anmerkungen = (string)localSettings.Containers[Current_Char_Container_Name].Values["Char_Vorteil_" + i + "_Anmerkungen"];
                 LoadChar.Char_Vorteile.Add(Char_Vorteile_Temp);
             }
+            //Char_Attribute
+            try { 
+                i = 0;
+                LoadChar.Char_Attribute = null;
+                LoadChar.Char_Attribute = new System.Collections.ObjectModel.ObservableCollection<Char_Attribut>();
+                for (i = 0; i < (int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Attribute_Count"]; i++)
+                {
+                    Char_Attribut Char_Attribute_Temp = new Char_Attribut();
+                    Char_Attribute_Temp.ID = (int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Attribut_" + i + "_ID_Char_Vorteil"];
+                    Char_Attribute_Temp.Bezeichnung = (string)localSettings.Containers[Current_Char_Container_Name].Values["Char_Attribut_" + i + "_Bezeichnung"];
+                    Char_Attribute_Temp.Stufe = (double)localSettings.Containers[Current_Char_Container_Name].Values["Char_Attribut_" + i + "_Stufe"];
+                    Char_Attribute_Temp.Stufe_Modifier = (string)localSettings.Containers[Current_Char_Container_Name].Values["Char_Attribut_" + i + "_Stufe_Modifier"];
+               
+                    LoadChar.Char_Attribute.Add(Char_Attribute_Temp);
+                }
+            }
+            catch (NullReferenceException)
+            {
 
+            }
 
-
-
+            Char_Fähigkeit.Pool_Berechnen(LoadChar);
             return true;
         }
 
@@ -365,21 +400,21 @@ namespace ShadowRun_Charakter_Helper.Models
             k++;
             LoadChar.Zusammenfassung = (result[k]);
             k++;
-            LoadChar.Geschicklichkeit = Int32.Parse(result[k]);
+            //LoadChar.Geschicklichkeit = Int32.Parse(result[k]);
             k++;
-            LoadChar.Reaktion = Int32.Parse(result[k]);
+            //LoadChar.Reaktion = Int32.Parse(result[k]);
             k++;
-            LoadChar.Stärke = Int32.Parse(result[k]);
+            //LoadChar.Stärke = Int32.Parse(result[k]);
             k++;
-            LoadChar.Charisma = Int32.Parse(result[k]);
+            //LoadChar.Charisma = Int32.Parse(result[k]);
             k++;
-            LoadChar.Intuition = Int32.Parse(result[k]);
+            //LoadChar.Intuition = Int32.Parse(result[k]);
             k++;
-            LoadChar.Konstitution = Int32.Parse(result[k]);
+            //LoadChar.Konstitution = Int32.Parse(result[k]);
             k++;
-            LoadChar.Logik = Int32.Parse(result[k]);
+            //LoadChar.Logik = Int32.Parse(result[k]);
             k++;
-            LoadChar.Willenskraft = Int32.Parse(result[k]);
+            //LoadChar.Willenskraft = Int32.Parse(result[k]);
             k++;
             int iteration_temp = 0;
 
@@ -763,7 +798,27 @@ namespace ShadowRun_Charakter_Helper.Models
                 }
             }
 
+            //Char_Attribute
 
+            if (result[k] != null || result[k] != "")
+            {
+                iteration_temp = Int32.Parse(result[k]);
+                k++;
+                for (i = 0; i < iteration_temp; i++) //ToDo: Surrender with try catch
+                {
+
+                    Char_Attribut Char_Attribute_Temp = new Char_Attribut();
+                    Char_Attribute_Temp.ID = Int32.Parse(result[k]);
+                    k++;
+                    Char_Attribute_Temp.Bezeichnung = (result[k]);
+                    k++;
+                    Char_Attribute_Temp.Stufe = Int32.Parse(result[k]);
+                    k++;
+                    Char_Attribute_Temp.Stufe_Modifier = (result[k]);
+                    k++;
+                    LoadChar.Char_Attribute.Add(Char_Attribute_Temp);
+                }
+            }
 
 
 
@@ -806,14 +861,14 @@ namespace ShadowRun_Charakter_Helper.Models
             ClearChar.Haarfarbe = null;
             ClearChar.Hautfarbe = null;
             ClearChar.Bild = null;
-            ClearChar.Geschicklichkeit = 0;
-            ClearChar.Konstitution = 0;
-            ClearChar.Reaktion = 0;
-            ClearChar.Stärke = 0;
-            ClearChar.Charisma = 0;
-            ClearChar.Intuition = 0;
-            ClearChar.Logik = 0;
-            ClearChar.Willenskraft = 0;
+            //ClearChar.Geschicklichkeit = 0;
+            //ClearChar.Konstitution = 0;
+            //ClearChar.Reaktion = 0;
+            //ClearChar.Stärke = 0;
+            //ClearChar.Charisma = 0;
+            //ClearChar.Intuition = 0;
+            //ClearChar.Logik = 0;
+            //ClearChar.Willenskraft = 0;
             ClearChar.Zusammenfassung = null;
 
             //Char_Fertigkeiten
@@ -880,12 +935,17 @@ namespace ShadowRun_Charakter_Helper.Models
 
             ClearChar.Char_Sins = null;
             ClearChar.Char_Sins = new System.Collections.ObjectModel.ObservableCollection<Char_Sin>();
-            
+
             //Char_Vorteile
 
             ClearChar.Char_Vorteile = null;
             ClearChar.Char_Vorteile = new System.Collections.ObjectModel.ObservableCollection<Char_Vorteil>();
-           
+
+            //Char_Attribute
+
+            ClearChar.Char_Attribute = null;
+            ClearChar.Char_Attribute = new System.Collections.ObjectModel.ObservableCollection<Char_Attribut>();
+
 
             return true;
         }
