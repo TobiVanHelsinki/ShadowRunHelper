@@ -139,6 +139,8 @@
                                                         <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung"/>
                                                         <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Zusammensetzung, Mode=TwoWay}"/>
                                                     </StackPanel>
+                                                   
+                                                    
                                                     <!--<StackPanel Orientation="Vertical" Grid.Column="1">
                                                         <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung_F"/>
                                                         <TextBox Name="Zusammensetzung_F_input"  Style="{StaticResource ListView_Item_TextBox}"/>
