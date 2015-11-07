@@ -223,7 +223,7 @@
                     <ListView RelativePanel.Below="Programme_E" Name="Programme" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Programme}" Style="{StaticResource ListView}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="data:Char_Programm">
-                                <Grid Tapped="Item_Tapped" Name="Programm_Grid" Style="{StaticResource ListView_Item_Grid}">
+                                <Grid Name="Programm_Grid" Style="{StaticResource ListView_Item_Grid}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
@@ -704,6 +704,12 @@
                         <TextBlock Text="Haarfarbe: " Grid.Column="4" Grid.Row="0" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBlock Text="{x:Bind ViewModel.DefaultChar.Haarfarbe, Mode=TwoWay}" Grid.Column="5" Grid.Row="0" Style="{StaticResource ListView_Item_Text}"/>
                     </Grid>
+
+                    <StackPanel RelativePanel.Below="Person" Name="Beschreibung_U" Style="{StaticResource ListView_U}">
+                        <TextBlock Text="Beschreibung" Style="{StaticResource ListView_U_Text}"/>
+                    </StackPanel>
+
+                    <TextBlock RelativePanel.Below="Beschreibung_U" Name="Beschreibung" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{x:Bind ViewModel.DefaultChar.Zusammenfassung,Mode=TwoWay}" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
                 </RelativePanel>
             </ScrollViewer>
         </PivotItem>

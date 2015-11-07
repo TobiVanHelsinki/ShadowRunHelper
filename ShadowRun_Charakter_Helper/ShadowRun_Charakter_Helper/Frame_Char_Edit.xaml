@@ -219,7 +219,7 @@
                 <RelativePanel Style="{StaticResource Pivot_Item_RelativePanel}">
                     <StackPanel Name="Items_U" RelativePanel.AlignTopWithPanel="True" Style="{StaticResource ListView_U}">
                         <TextBlock Text="Items"  Style="{StaticResource ListView_U_Text}"/>
-                        <Button Click="Fertigkeiten_Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                        <Button Click="Items_Add" Style="{StaticResource ListView_U_BtnAdd}"/>
                     </StackPanel>
                     <Grid Name="Items_E" RelativePanel.Below="Items_U" MaxWidth="{Binding Path=ActualWidth, ElementName=Items_Grid, Mode=TwoWay}" Style="{StaticResource ListView_E}">
                         <Grid.ColumnDefinitions>
@@ -322,7 +322,7 @@
                     <ListView RelativePanel.Below="Programme_E" Name="Programme" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Programme}" Style="{StaticResource ListView}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="data:Char_Programm">
-                                <Grid Tapped="Item_Tapped" Name="Programm_Grid" Style="{StaticResource ListView_Item_Grid}">
+                                <Grid Name="Programm_Grid" Style="{StaticResource ListView_Item_Grid}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>

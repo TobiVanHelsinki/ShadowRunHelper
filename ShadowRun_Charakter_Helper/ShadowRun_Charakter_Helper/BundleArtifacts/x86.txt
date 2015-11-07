@@ -1,1 +1,5 @@
-MainPackage=d:\Coden_Lokal\SR_Char_Helper_0\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\x86\Release\ShadowRun_Charakter_Helper_0.4.0.0_x86.appx
+MainPackage=d:\Coden_Lokal\SR_Char_Helper_0\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\x86\Release\ShadowRun_Charakter_Helper_0.4.2.0_x86.appx
+ResourcePack=d:\Coden_Lokal\SR_Char_Helper_0\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\x86\Release\ShadowRun_Charakter_Helper_0.4.2.0_scale-100.appx
+ResourcePack=d:\Coden_Lokal\SR_Char_Helper_0\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\x86\Release\ShadowRun_Charakter_Helper_0.4.2.0_scale-125.appx
+ResourcePack=d:\Coden_Lokal\SR_Char_Helper_0\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\x86\Release\ShadowRun_Charakter_Helper_0.4.2.0_scale-150.appx
+ResourcePack=d:\Coden_Lokal\SR_Char_Helper_0\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\x86\Release\ShadowRun_Charakter_Helper_0.4.2.0_scale-400.appx
