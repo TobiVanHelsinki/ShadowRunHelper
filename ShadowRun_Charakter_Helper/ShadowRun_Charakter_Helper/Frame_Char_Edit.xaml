@@ -128,7 +128,7 @@
                                     <TextBox Grid.Column="4" Text="{x:Bind Anmerkung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <Button Grid.Column="5" Content="Zusammensetzung" Tapped="Item_Tapped">
                                         <FlyoutBase.AttachedFlyout>
-                                            <Flyout Closed="Flyout_Fähig_Close">
+                                            <Flyout Closed="Flyout_Fähig_Close" Opened="Flyout_Fähig_Opened">
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="Auto"/>
@@ -139,8 +139,35 @@
                                                         <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung"/>
                                                         <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Zusammensetzung, Mode=TwoWay}"/>
                                                     </StackPanel>
-                                                   
-                                                    
+
+                                                    <ListView Name="Fähigkeiten_Zus" ItemsSource="{x:Bind Zusammensetzung_A_neu}" Grid.Column="1" Style="{StaticResource ListView}">
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate x:DataType="data:Attribut_ID">
+                                                                <Grid Style="{StaticResource ListView_Item_Grid}">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition MinWidth="100" Width="3*"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="*"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}"/>
+                                                                    <TextBox Name="ID" Grid.Column="1" Text="{x:Bind ID, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
+                                                                    <ComboBox Name="TestCombo" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Attribute}" SelectedIndex="0">
+                                                                        <ComboBox.ItemTemplate>
+                                                                            <DataTemplate x:DataType="data:Char_Attribut">
+                                                                                <TextBlock Text="{x:Bind Bezeichnung, Mode=TwoWay}" />
+                                                                            </DataTemplate>
+                                                                        </ComboBox.ItemTemplate>
+                                                                    </ComboBox>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+
+
+
                                                     <!--<StackPanel Orientation="Vertical" Grid.Column="1">
                                                         <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung_F"/>
                                                         <TextBox Name="Zusammensetzung_F_input"  Style="{StaticResource ListView_Item_TextBox}"/>
@@ -625,8 +652,6 @@
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
-
-
                     <StackPanel RelativePanel.Below="Attribute" Name="Connections_U" Style="{StaticResource ListView_U}">
                         <TextBlock Text="Connections" Style="{StaticResource ListView_U_Text}"/>
                         <Button Click="Connections_Add" Style="{StaticResource ListView_U_BtnAdd}"/>

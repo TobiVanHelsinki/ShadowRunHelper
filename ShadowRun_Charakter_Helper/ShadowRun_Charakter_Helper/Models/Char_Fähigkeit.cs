@@ -15,6 +15,8 @@ namespace ShadowRun_Charakter_Helper.Models
         public string Bezeichnung { get; set; }
         public string Zusammensetzung { get; set; }
         public List<int> Zusammensetzung_A { get; set; }
+        public List<Attribut_ID> Zusammensetzung_A_neu { get; set; }
+        public List<int> Zusammensetzung_I { get; set; }
         public List<int> Zusammensetzung_F { get; set; }
         public string Anmerkung { get; set; }
         public double Pool_Calc { get; set; }

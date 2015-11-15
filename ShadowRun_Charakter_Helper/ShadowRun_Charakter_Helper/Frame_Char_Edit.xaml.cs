@@ -4,6 +4,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -26,6 +28,13 @@ namespace ShadowRun_Charakter_Helper
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (CharViewModel)e.Parameter;
+            // Todo Testdaten ---------------------------------------------------
+            ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A_neu = null;
+            ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A_neu = new List<Attribut_ID>();
+            Attribut_ID Test = new Attribut_ID();
+            Test.ID = 1;
+            ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A_neu.Add(Test);
+            // Todo Testdaten ---------------------------------------------------
             this.InitializeComponent();
         }
 
@@ -199,6 +208,30 @@ namespace ShadowRun_Charakter_Helper
             string temp = "";
 
             
+        }
+
+        private void Flyout_Fähig_Opened(object sender, object e)
+        {
+            //           Todo Flyout_Open
+            //2 listen
+            //"Aktuelle Attribute"->DataContext für die ListView
+            //ID, Name := Join aus Fähigkeit.Zusammensetzung_A_neu & Char_Attribute
+            //"Alle Attribute"->DataContext für ComboBox, selectedItem = ID
+            //ID, Name:= aus Char_Attribute
+            //OrderBy : in jedem Fall nach ID
+
+            //Neu_BTN
+            //Aktuelle Attribute.add(ID = -1)
+
+            //ComboBox LoseContext
+            //Viewmodel.DefaultChar.Fähigkeit[e1].Zusammensetzung_A_neu[e2].ID:= ComboBox.Wert
+
+            Collection<Char_Attribut> A_Aktuelle = new Collection<Char_Attribut>();
+
+            A_Aktuelle.Add(new Char_Attribut(1, "", 5, ""));
+            Collection<Char_Attribut> A_Alle = ViewModel.DefaultChar.Char_Attribute;
+
+
         }
     }
 }

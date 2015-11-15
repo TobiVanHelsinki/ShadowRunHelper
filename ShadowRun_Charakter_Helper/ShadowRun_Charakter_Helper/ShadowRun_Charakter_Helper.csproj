@@ -122,6 +122,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Attribut_ID.cs" />
     <Compile Include="Models\Char.cs" />
     <Compile Include="Models\CharList.cs" />
     <Compile Include="Models\Char_Attribut.cs" />
