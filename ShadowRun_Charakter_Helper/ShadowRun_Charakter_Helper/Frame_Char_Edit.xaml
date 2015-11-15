@@ -129,7 +129,7 @@
                                     <Button Grid.Column="5" Content="Zusammensetzung" Tapped="Item_Tapped">
                                         <FlyoutBase.AttachedFlyout>
                                             <Flyout Closed="Flyout_Fähig_Close" Opened="Flyout_Fähig_Opened">
-                                                <Grid>
+                                                <!--<Grid>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="Auto"/>
                                                         <ColumnDefinition Width="Auto"/>
@@ -138,45 +138,33 @@
                                                     <StackPanel Orientation="Vertical" Grid.Column="0">
                                                         <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung"/>
                                                         <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Zusammensetzung, Mode=TwoWay}"/>
-                                                    </StackPanel>
-
-                                                    <ListView Name="Fähigkeiten_Zus" ItemsSource="{x:Bind Zusammensetzung_A_neu}" Grid.Column="1" Style="{StaticResource ListView}">
-                                                        <ListView.ItemTemplate>
-                                                            <DataTemplate x:DataType="data:Attribut_ID">
-                                                                <Grid Style="{StaticResource ListView_Item_Grid}">
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="Auto"/>
-                                                                        <ColumnDefinition MinWidth="100" Width="3*"/>
-                                                                        <ColumnDefinition Width="Auto"/>
-                                                                        <ColumnDefinition Width="Auto"/>
-                                                                        <ColumnDefinition Width="*"/>
-                                                                        <ColumnDefinition Width="Auto"/>
-                                                                    </Grid.ColumnDefinitions>
-                                                                    <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}"/>
-                                                                    <TextBox Name="ID" Grid.Column="1" Text="{x:Bind ID, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
-                                                                    <ComboBox Name="TestCombo" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Attribute}" SelectedIndex="0">
-                                                                        <ComboBox.ItemTemplate>
-                                                                            <DataTemplate x:DataType="data:Char_Attribut">
-                                                                                <TextBlock Text="{x:Bind Bezeichnung, Mode=TwoWay}" />
-                                                                            </DataTemplate>
-                                                                        </ComboBox.ItemTemplate>
-                                                                    </ComboBox>
-                                                                </Grid>
-                                                            </DataTemplate>
-                                                        </ListView.ItemTemplate>
-                                                    </ListView>
-
-
-
-                                                    <!--<StackPanel Orientation="Vertical" Grid.Column="1">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung_F"/>
-                                                        <TextBox Name="Zusammensetzung_F_input"  Style="{StaticResource ListView_Item_TextBox}"/>
-                                                    </StackPanel>
-                                                    <StackPanel Orientation="Vertical" Grid.Column="2">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung_A"/>
-                                                        <TextBox Name="Zusammensetzung_A_input" Style="{StaticResource ListView_Item_TextBox}"/>
                                                     </StackPanel>-->
-                                                </Grid>
+                                                <ListView Name="Fähigkeiten_Zus" ItemsSource="{Binding Path=local:A_Aktuelle}" Grid.Column="1">
+                                                    <ListView.ItemTemplate>
+                                                        <DataTemplate x:DataType="data:Attribut_ID">
+                                                            <Grid Style="{StaticResource ListView_Item_Grid}">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto"/>
+                                                                    <ColumnDefinition MinWidth="100" Width="3*"/>
+                                                                    <ColumnDefinition Width="Auto"/>
+                                                                    <ColumnDefinition Width="Auto"/>
+                                                                    <ColumnDefinition Width="*"/>
+                                                                    <ColumnDefinition Width="Auto"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}"/>
+                                                                <TextBox Name="ID" Grid.Column="1" Text="{x:Bind ID, Mode=TwoWay}"/>
+                                                                <ComboBox Name="TestCombo" ItemsSource="{Binding Path=A_Alle}" SelectedIndex="0">
+                                                                    <ComboBox.ItemTemplate>
+                                                                        <DataTemplate x:DataType="data:Char_Attribut">
+                                                                            <TextBlock Text="{x:Bind Bezeichnung, Mode=TwoWay}" />
+                                                                        </DataTemplate>
+                                                                    </ComboBox.ItemTemplate>
+                                                                </ComboBox>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </ListView.ItemTemplate>
+                                                </ListView>
+                                                <!--</Grid>-->
                                             </Flyout>
                                         </FlyoutBase.AttachedFlyout>
                                     </Button>

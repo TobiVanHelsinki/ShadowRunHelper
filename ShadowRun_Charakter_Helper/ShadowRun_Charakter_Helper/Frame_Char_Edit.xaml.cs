@@ -226,12 +226,15 @@ namespace ShadowRun_Charakter_Helper
             //ComboBox LoseContext
             //Viewmodel.DefaultChar.Fähigkeit[e1].Zusammensetzung_A_neu[e2].ID:= ComboBox.Wert
 
-            Collection<Char_Attribut> A_Aktuelle = new Collection<Char_Attribut>();
-
-            A_Aktuelle.Add(new Char_Attribut(1, "", 5, ""));
             Collection<Char_Attribut> A_Alle = ViewModel.DefaultChar.Char_Attribute;
+            Collection<Char_Attribut> A_Aktuelle = new Collection<Char_Attribut>(); //pro Fähigkeit
+            ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A.Add(1);
+            ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A.Add(4);
 
-
+            foreach (int x in ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A)
+            {
+                A_Aktuelle.Add(A_Alle[x]);
+            }
         }
     }
 }
