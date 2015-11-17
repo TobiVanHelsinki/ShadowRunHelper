@@ -17,7 +17,8 @@ namespace ShadowRun_Charakter_Helper
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (CharViewModel)e.Parameter;
-         //   this.DataContext = ViewModel.DefaultChar;
+            CB1.SelectedValue = 2;
+            //   this.DataContext = ViewModel.DefaultChar;
         }
         //private void StackPanel_Tapped(object sender, TappedRoutedEventArgs e)
         //{

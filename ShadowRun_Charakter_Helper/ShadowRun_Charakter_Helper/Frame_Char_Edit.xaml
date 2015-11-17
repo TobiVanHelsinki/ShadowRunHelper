@@ -153,6 +153,16 @@
                                                                 </Grid.ColumnDefinitions>
                                                                 <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}"/>
                                                                 <TextBlock Name="ID" Grid.Column="1" Text="{x:Bind ID, Mode=TwoWay}"/>
+                                                                <ComboBox Name="CB1" PlaceholderText="Nix ausgewählt" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Attribute}"
+                                                                   SelectedValuePath="Value" SelectedValue="{Binding DataType, Mode=TwoWay}">
+                                                                    <ComboBox.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="{Binding Bezeichnung}"></TextBlock>
+                                                                            </StackPanel>
+                                                                        </DataTemplate>
+                                                                    </ComboBox.ItemTemplate>
+                                                                </ComboBox>
                                                             </Grid>
                                                         </DataTemplate>
                                                     </ListView.ItemTemplate>
