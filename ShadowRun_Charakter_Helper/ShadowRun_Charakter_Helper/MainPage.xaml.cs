@@ -44,7 +44,7 @@ namespace ShadowRun_Charakter_Helper
             else if (Char_Edit.IsSelected) { MyFrame.Navigate(typeof(Frame_Char_Edit), ViewModel); }
             else if (Database_Edit.IsSelected) { MyFrame.Navigate(typeof(Frame_Database_Edit)); }
             else if (Char_Change.IsSelected) { MyFrame.Navigate(typeof(Frame_Char_Change), ViewModel); }
-            else if (App_Settings.IsSelected) { MyFrame.Navigate(typeof(Frame_App_Settings)); }
+            else if (App_Settings.IsSelected) { MyFrame.Navigate(typeof(TestPage)); }
             else
             {
                 MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;

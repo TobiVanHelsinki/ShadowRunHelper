@@ -16,6 +16,7 @@ namespace ShadowRun_Charakter_Helper.Models
         public string Zusammensetzung { get; set; }
         public List<int> Zusammensetzung_A { get; set; }
         public List<Attribut_ID> Zusammensetzung_A_neu { get; set; }
+        public ObservableCollection<Attribut_ID> Zusammensetzung_A_OL { get; set; }
         public List<int> Zusammensetzung_I { get; set; }
         public List<int> Zusammensetzung_F { get; set; }
         public string Anmerkung { get; set; }
