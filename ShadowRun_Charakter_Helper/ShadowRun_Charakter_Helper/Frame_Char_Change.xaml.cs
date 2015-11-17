@@ -137,6 +137,7 @@ namespace ShadowRun_Charakter_Helper
         {
             Laden("", "Leer");
             Frame.Navigate(typeof(Frame_Char_Edit), ViewModel);
+
         }
 
         private async void Click_Löschen(object sender, RoutedEventArgs e)
@@ -186,6 +187,18 @@ namespace ShadowRun_Charakter_Helper
         {
             if (selected_Char_Summory == null) { return; }
             Laden("", "Local");
+
+            // Test Daten ------------------------------------------------------------------------------------------------------------
+            Random r = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A_OL = new ObservableCollection<Attribut_ID>();
+                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A_OL.Add(new Attribut_ID(r.Next(0, 10)));
+                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A_OL.Add(new Attribut_ID(r.Next(0, 10)));
+                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A_OL.Add(new Attribut_ID(r.Next(0, 10)));
+            }
+            // Test Daten ------------------------------------------------------------------------------------------------------------
+
             Frame.Navigate(typeof(Frame_Char), ViewModel);
         }
 

@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using ShadowRun_Charakter_Helper.Models;
+﻿using ShadowRun_Charakter_Helper.Models;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -17,25 +16,27 @@ namespace ShadowRun_Charakter_Helper
     public sealed partial class Frame_Char_Edit : Page
     {
         public CharViewModel ViewModel { get; set; }
-        public string t_Zusammensetzung_F { get; set; }
-        public string t_Zusammensetzung_A { get; set; }
+        //public string t_Zusammensetzung_F { get; set; }
+        //public string t_Zusammensetzung_A { get; set; }
 
         public Frame_Char_Edit()
         {
             this.InitializeComponent();
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (CharViewModel)e.Parameter;
             // Todo Testdaten ---------------------------------------------------
-            ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A_neu = null;
-            ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A_neu = new List<Attribut_ID>();
-            Attribut_ID Test = new Attribut_ID();
-            Test.ID = 1;
-            ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A_neu.Add(Test);
-            // Todo Testdaten ---------------------------------------------------
+            //ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A_neu = null;
+            //ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A_neu = new List<Attribut_ID>();
+            //Attribut_ID Test = new Attribut_ID();
+            //Test.ID = 1;
+            //ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A_neu.Add(Test);
+            //// Todo Testdaten ---------------------------------------------------
             this.InitializeComponent();
+            //this.DataContext = ViewModel.DefaultChar;
         }
 
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
@@ -116,7 +117,6 @@ namespace ShadowRun_Charakter_Helper
         {
             ViewModel.DefaultChar.Char_Sins.Add(new Char_Sin(ViewModel.DefaultChar.Char_Sins));
         }
-
 
         private void Save_BTN(object sender, RoutedEventArgs e)
         {
@@ -206,8 +206,6 @@ namespace ShadowRun_Charakter_Helper
         private void Flyout_Fähig_Close(object sender, object e)
         {
             string temp = "";
-
-            
         }
 
         private void Flyout_Fähig_Opened(object sender, object e)
@@ -225,21 +223,14 @@ namespace ShadowRun_Charakter_Helper
 
             //ComboBox LoseContext
             //Viewmodel.DefaultChar.Fähigkeit[e1].Zusammensetzung_A_neu[e2].ID:= ComboBox.Wert
-            Char_Fähigkeit Data = (Char_Fähigkeit)((Windows.UI.Xaml.FrameworkElement)((Flyout)sender).Content).DataContext;
-
-            Collection<Char_Attribut> A_Alle = ViewModel.DefaultChar.Char_Attribute;
-            ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL = new ObservableCollection<Attribut_ID>();
-            ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL.Add(new Attribut_ID(1));
-            ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL.Add(new Attribut_ID(2));
-            ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL.Add(new Attribut_ID(3));
-            Collection<Char_Attribut> A_Aktuelle = new Collection<Char_Attribut>(); //pro Fähigkeit
-            ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A.Add(1);
-            ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A.Add(4);
-
-            foreach (int x in ViewModel.DefaultChar.Char_Fähigkeiten[0].Zusammensetzung_A)
-            {
-                A_Aktuelle.Add(A_Alle[x]);
-            }
+            //Char_Fähigkeit Data = (Char_Fähigkeit)((Windows.UI.Xaml.FrameworkElement)((Flyout)sender).Content).DataContext;
+            //if (ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL == null)
+            //{
+            //    ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL = new ObservableCollection<Attribut_ID>();
+            //}
+            //ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL.Add(new Attribut_ID(1));
+            //ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL.Add(new Attribut_ID(2));
+            //ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL.Add(new Attribut_ID(3));
         }
     }
 }

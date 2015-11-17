@@ -5,22 +5,24 @@
     xmlns:local="using:ShadowRun_Charakter_Helper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:ShadowRun_Charakter_Helper.Models"
     mc:Ignorable="d">
 
     <StackPanel Orientation="Vertical">
-        <ListView Name="groupListView" ItemsSource="{Binding TopMenuItems}" CanDragItems="True" CanReorderItems="True" AllowDrop="True" IsSwipeEnabled="True" SelectionMode="None">
+        <!--<ListView Name="groupListView" ItemsSource="{Binding ViewModel.DefaultChar.Char_Fähigkeiten}">-->
+        <ListView Name="groupListView" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Fähigkeiten}">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="data:Char_Fähigkeit">
                     <StackPanel>
                         <Border x:Name="bordermenu">
-                            <TextBlock Foreground="Red" Text="{Binding GroupName}"/>
+                            <TextBlock Foreground="Red" Text="{x:Bind Bezeichnung}"/>
                         </Border>
-                        <ListView Name="itemListViewss" ItemsSource="{Binding SubMenuItems}" CanDragItems="True" CanReorderItems="True" AllowDrop="True" IsSwipeEnabled="True" SelectionMode="None">
+                        <ListView Name="itemListViewss" ItemsSource="{x:Bind Zusammensetzung_A_OL}">
                             <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Tapped="StackPanel_Tapped">
+                                <DataTemplate x:DataType="data:Attribut_ID">
+                                    <StackPanel>
                                         <Border x:Name="bordersubmenu">
-                                            <TextBlock Foreground="Blue" Text="{Binding ItemName}" x:Name="submenu" />
+                                            <TextBlock Foreground="Blue" Text="{x:Bind ID}" x:Name="submenu" />
                                         </Border>
                                     </StackPanel>
                                 </DataTemplate>
