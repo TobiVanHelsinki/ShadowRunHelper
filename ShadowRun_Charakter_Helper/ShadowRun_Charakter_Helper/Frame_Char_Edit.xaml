@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ShadowRun_Charakter_Helper"
+    xmlns:Test="using:ShadowRun_Charakter_Helper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:ShadowRun_Charakter_Helper.Models"
@@ -13,7 +14,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Dictionary_XAML_Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Test:UI_Converter_Digit x:Key="UI_Converter_Digit"/>
         </ResourceDictionary>
+       
+
     </Page.Resources>
     <Pivot Style="{StaticResource TabsStylePivotStyle}" >
 
@@ -48,27 +52,27 @@
                         <TextBlock Text="Typ:" Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBox Text="{x:Bind ViewModel.DefaultChar.Char_Typ, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox}"/>
                         <TextBlock Text="Kontostand: " Grid.Column="0" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Kontostand, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Kontostand, Mode=TwoWay, Converter={StaticResource UI_Converter_Digit}}" Grid.Column="1" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                         <TextBlock Text="Essenz (von 10):" Grid.Column="0" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Essenz, Mode=TwoWay}" Grid.Column="1" Grid.Row="3"  Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Essenz, Mode=TwoWay, Converter={StaticResource UI_Converter_Digit}}" Grid.Column="1" Grid.Row="3"  Style="{StaticResource ListView_Item_TextBox_Digits}"/>
 
                         <TextBlock Text="Karma Gesamt:" Grid.Column="2" Grid.Row="0" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Karma_Gesamt, Mode=TwoWay}" Grid.Column="3" Grid.Row="0" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Karma_Gesamt, Mode=TwoWay, Converter={StaticResource UI_Converter_Digit}}" Grid.Column="3" Grid.Row="0" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                         <TextBlock Text="Karma Aktuell:" Grid.Column="2" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Karma_Aktuell, Mode=TwoWay}" Grid.Column="3" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Karma_Aktuell, Mode=TwoWay, Converter={StaticResource UI_Converter_Digit}}" Grid.Column="3" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                         <TextBlock Text="Edge Gesamt:" Grid.Column="2" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Edge_Gesamt, Mode=TwoWay}" Grid.Column="3" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Edge_Gesamt, Mode=TwoWay, Converter={StaticResource UI_Converter_Digit}}" Grid.Column="3" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                         <TextBlock Text="Edge Aktuell:" Grid.Column="2" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Edgne_Aktuell, Mode=TwoWay}" Grid.Column="3" Grid.Row="3" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Edgne_Aktuell, Mode=TwoWay, Converter={StaticResource UI_Converter_Digit}}" Grid.Column="3" Grid.Row="3" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
 
                         <TextBlock Text="Standard Initiative (ohne Würfel):" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Initiative, Mode=TwoWay}" Grid.Column="3" Grid.Row="4" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Initiative, Mode=TwoWay, Converter={StaticResource UI_Converter_Digit}}" Grid.Column="3" Grid.Row="4" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                         <TextBlock Text="Maximaler, geistiger Schaden:" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_G_max, Mode=TwoWay}" Grid.Column="3" Grid.Row="5" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_G_max, Mode=TwoWay, Converter={StaticResource UI_Converter_Digit}}" Grid.Column="3" Grid.Row="5" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                         <TextBlock Text="Maximaler, physischer Schaden:" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_K_max, Mode=TwoWay}" Grid.Column="3" Grid.Row="6" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_K_max, Mode=TwoWay, Converter={StaticResource UI_Converter_Digit}}" Grid.Column="3" Grid.Row="6" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                         <TextBlock Text="Maximaler, digitaler Schaden:" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_M_max, Mode=TwoWay}" Grid.Column="3" Grid.Row="7" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Schaden_M_max, Mode=TwoWay, Converter={StaticResource UI_Converter_Digit}}" Grid.Column="3" Grid.Row="7" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                     </Grid>
                     <StackPanel RelativePanel.Below="Basisdaten" Name="Zusammenfassung_U" Style="{StaticResource ListView_U}">
                         <TextBlock Name="Zusammenfassung" Text="Zusammenfassung des Charachters:"  Style="{StaticResource ListView_U_Text}"/>
@@ -123,51 +127,44 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Fähigkeiten_Del"/>
                                     <TextBox Name="Bezeichnung" Grid.Column="1" Text="{x:Bind Bezeichnung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
-                                    <TextBox Name="Pool_User" Grid.Column="2" Text="{x:Bind Pool_User, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
+                                    <TextBox Name="Pool_User" Grid.Column="2" Text="{x:Bind Pool_User, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                                     <TextBox Name="Pool_Modifier" Grid.Column="3" Text="{x:Bind Pool_Modifier, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <TextBox Grid.Column="4" Text="{x:Bind Anmerkung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <Button Grid.Column="5" Content="Zusammensetzung" Tapped="Item_Tapped">
                                         <FlyoutBase.AttachedFlyout>
                                             <Flyout Closed="Flyout_Fähig_Close" Opened="Flyout_Fähig_Opened">
-                                                <!--<Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <StackPanel Orientation="Vertical" Grid.Column="0">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung"/>
-                                                        <TextBox Style="{StaticResource ListView_Item_TextBox}" Text="{x:Bind Zusammensetzung, Mode=TwoWay}"/>
-                                                    </StackPanel>-->
-                                                <ListView Name="Fähigkeiten_Zus" ItemsSource="{x:Bind Zusammensetzung_A_OL, Mode=OneWay}"  Grid.Column="6">
-                                                    <ListView.ItemTemplate>
-                                                        <DataTemplate x:DataType="data:Attribut_ID">
-                                                            <Grid Style="{StaticResource ListView_Item_Grid}">
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="Auto"/>
-                                                                    <ColumnDefinition MinWidth="100" Width="3*"/>
-                                                                    <ColumnDefinition Width="Auto"/>
-                                                                    <ColumnDefinition Width="Auto"/>
-                                                                    <ColumnDefinition Width="*"/>
-                                                                    <ColumnDefinition Width="Auto"/>
-                                                                </Grid.ColumnDefinitions>
-                                                                <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}"/>
-                                                                <TextBlock Name="ID" Grid.Column="1" Text="{x:Bind ID, Mode=TwoWay}"/>
-                                                                <ComboBox Name="CB1" PlaceholderText="Nix ausgewählt" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Attribute}"
-                                                                   SelectedValuePath="Value" SelectedValue="{Binding DataType, Mode=TwoWay}">
-                                                                    <ComboBox.ItemTemplate>
-                                                                        <DataTemplate>
-                                                                            <StackPanel Orientation="Horizontal">
-                                                                                <TextBlock Text="{Binding Bezeichnung}"></TextBlock>
-                                                                            </StackPanel>
-                                                                        </DataTemplate>
-                                                                    </ComboBox.ItemTemplate>
-                                                                </ComboBox>
-                                                            </Grid>
-                                                        </DataTemplate>
-                                                    </ListView.ItemTemplate>
-                                                </ListView>
-                                                <!--</Grid>-->
+                                                <StackPanel>
+                                                    <!--<TextBox Text="{x:Bind Zusammensetzung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>-->
+                                                    <ListView Name="Fähigkeiten_Zus" ItemsSource="{x:Bind Zusammensetzung_A, Mode=OneWay}"  Grid.Column="6">
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate x:DataType="data:Attribut_ID">
+                                                                <Grid Style="{StaticResource ListView_Item_Grid}">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}"/>
+                                                                    <TextBlock Name="ID" Grid.Column="1" Text="{x:Bind ID, Mode=TwoWay}"/>
+                                                                    <ComboBox Name="Zusammensetzung_A_CBB" Grid.Column="3" PlaceholderText="Nix ausgewählt" 
+                                                                            SelectedValuePath="Value" SelectedValue="{Binding DataType, Mode=TwoWay}" 
+                                                                              ItemsSource="{Binding ItemsSource, ElementName=Attribute}"  
+                                                                              GotFocus="Zusammensetzung_A_CBB_GotFocus"
+                                                                              LostFocus="Zusammensetzung_A_CBB_LostFocus" 
+                                                                              >
+                                                                        <ComboBox.ItemTemplate>
+                                                                            <DataTemplate>
+                                                                                <StackPanel Orientation="Horizontal">
+                                                                                    <TextBlock Text="{Binding Bezeichnung}"></TextBlock>
+                                                                                </StackPanel>
+                                                                            </DataTemplate>
+                                                                        </ComboBox.ItemTemplate>
+                                                                    </ComboBox>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+                                                </StackPanel>
                                             </Flyout>
                                         </FlyoutBase.AttachedFlyout>
                                     </Button>
@@ -204,7 +201,7 @@
                                   
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Fertigkeiten_Del"/>
                                     <TextBox Grid.Column="1" Text="{x:Bind Bezeichnung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
-                                    <TextBox Grid.Column="2" Text="{x:Bind Stufe, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
+                                    <TextBox Grid.Column="2" Text="{x:Bind Stufe, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                                     <TextBox Grid.Column="3" Text="{x:Bind Anmerkung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <Button Grid.Column="5" Content="Weitere" Tapped="Item_Tapped">
                                         <FlyoutBase.AttachedFlyout>
@@ -268,7 +265,7 @@
 
                                     </Grid.ColumnDefinitions>
                                     <TextBox Grid.Column="1" Text="{x:Bind Bezeichnung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
-                                    <TextBox Grid.Column="2" Text="{x:Bind Stufe, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
+                                    <TextBox Grid.Column="2" Text="{x:Bind Stufe, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                                     <TextBox Grid.Column="3" Text="{x:Bind Anmerkung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Items_Del"/>
                                 </Grid>
@@ -315,13 +312,13 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Kommlinks_Del"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Text="{x:Bind Stufe, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="3" Text="{x:Bind AnzahlProgramme, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="2" Text="{x:Bind Stufe, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="3" Text="{x:Bind AnzahlProgramme, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="4" Text="{x:Bind GrundKonfiguration, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="5" Text="{x:Bind Angriff, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="6" Text="{x:Bind Schleicher, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="7" Text="{x:Bind Firewall, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="8" Text="{x:Bind Datenverarbeitung, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="5" Text="{x:Bind Angriff, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="6" Text="{x:Bind Schleicher, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="7" Text="{x:Bind Firewall, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="8" Text="{x:Bind Datenverarbeitung, Mode=TwoWay}"/>
 
                                 </Grid>
                             </DataTemplate>
@@ -418,10 +415,10 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="FernWaff_Del"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Schaden, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Schaden, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="3" Grid.Row="0" Text="{x:Bind Schaden_Typ, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="4" Grid.Row="0" Text="{x:Bind Modus, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="5" Grid.Row="0" Text="{x:Bind Rückstoß, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="5" Grid.Row="0" Text="{x:Bind Rückstoß, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="6" Grid.Row="0" Text="{x:Bind Munition, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="7" Grid.Row="0" Text="{x:Bind PB, Mode=TwoWay}"/>
                                 </Grid>
@@ -461,9 +458,9 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="NahWaff_Del"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Schaden, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Schaden, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="3" Grid.Row="0" Text="{x:Bind Schaden_Typ, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="4" Grid.Row="1" Text="{x:Bind Reichweite, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="4" Grid.Row="1" Text="{x:Bind Reichweite, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="5" Grid.Row="1" Text="{x:Bind PB, Mode=TwoWay}"/>
                                 </Grid>
                             </DataTemplate>
@@ -499,8 +496,8 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Panzerung_Del"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Text="{x:Bind Ballistik, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="3" Text="{x:Bind Stoß, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="2" Text="{x:Bind Ballistik, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="3" Text="{x:Bind Stoß, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="4" Text="{x:Bind Anmerkung, Mode=TwoWay}"/>
                                 </Grid>
                             </DataTemplate>
@@ -559,17 +556,17 @@
                                     <Button Grid.Column="0" Grid.Row="0" Grid.RowSpan="1"  Style="{StaticResource ListView_BtnDel}" Click="DroneFahrz_Del"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Name, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Typ, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="3" Grid.Row="0" Text="{x:Bind Schaden, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="4" Grid.Row="0" Text="{x:Bind Panzer, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="5" Grid.Row="0" Text="{x:Bind Rumpf, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="6" Grid.Row="0" Text="{x:Bind Geschwindigkeit, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="3" Grid.Row="0" Text="{x:Bind Schaden, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="4" Grid.Row="0" Text="{x:Bind Panzer, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="5" Grid.Row="0" Text="{x:Bind Rumpf, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="6" Grid.Row="0" Text="{x:Bind Geschwindigkeit, Mode=TwoWay}"/>
 
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="1" Text="{x:Bind Anmerkung, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="1" Text="{x:Bind Beschleunigung, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="3" Grid.Row="1" Text="{x:Bind Größe, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="4" Grid.Row="1" Text="{x:Bind Handling, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="5" Grid.Row="1" Text="{x:Bind Gewicht, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="6" Grid.Row="1" Text="{x:Bind Pilot, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="2" Grid.Row="1" Text="{x:Bind Beschleunigung, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="3" Grid.Row="1" Text="{x:Bind Größe, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="4" Grid.Row="1" Text="{x:Bind Handling, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="5" Grid.Row="1" Text="{x:Bind Gewicht, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="6" Grid.Row="1" Text="{x:Bind Pilot, Mode=TwoWay}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -588,45 +585,6 @@
                         <TextBlock Text="Attribute" Style="{StaticResource ListView_U_Text}"/>
                         <Button Click="Attribute_Add" Style="{StaticResource ListView_U_BtnAdd}"/>
                     </StackPanel>
-                    <!--<Grid RelativePanel.Below="Attribute_U" Name="Attribute" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource ListView_Item_Grid}" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Text="Konstitution: " Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Konstitution, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Geschicklichkeit: " Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Geschicklichkeit, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Reaktion: " Grid.Column="0" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Reaktion, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Stärke: " Grid.Column="0" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Stärke, Mode=TwoWay}" Grid.Column="1" Grid.Row="3" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Charisma: " Grid.Column="2" Grid.Row="0" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Charisma, Mode=TwoWay}" Grid.Column="3" Grid.Row="0" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Intuition: " Grid.Column="2" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Intuition, Mode=TwoWay}" Grid.Column="3" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Logik: " Grid.Column="2" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Logik, Mode=TwoWay}" Grid.Column="3" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Willenskraft: " Grid.Column="2" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Willenskraft, Mode=TwoWay}" Grid.Column="3" Grid.Row="3" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Edge Gesamt: " Grid.Column="4" Grid.Row="0" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Edge_Gesamt, Mode=TwoWay}" Grid.Column="5" Grid.Row="0" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Edge Aktuell: " Grid.Column="4" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Edgne_Aktuell, Mode=TwoWay}" Grid.Column="5" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox}"/>
-                        <TextBlock Text="Essenz: " Grid.Column="4" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Essenz, Mode=TwoWay}" Grid.Column="5" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox}"/>
-                    </Grid>-->
-
                     <GridView RelativePanel.Below="Attribute_U" Name="Attribute" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Attribute}" Style="{StaticResource GridView}">
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="data:Char_Attribut">
@@ -638,7 +596,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Attribute_Del"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
                                 </Grid>
                             </DataTemplate>
                         </GridView.ItemTemplate>
@@ -674,8 +632,8 @@
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Connection_Del"/>
 
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Name, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Loyal, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="3" Grid.Row="0" Text="{x:Bind Connection, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Loyal, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="3" Grid.Row="0" Text="{x:Bind Connection, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="4" Grid.Row="0" Text="{x:Bind Anmerkung, Mode=TwoWay}"/>
                                 </Grid>
                             </DataTemplate>
@@ -712,8 +670,8 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Implantat_Del"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="3" Grid.Row="0" Text="{x:Bind Essenz, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="3" Grid.Row="0" Text="{x:Bind Essenz, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="4" Grid.Row="0" Text="{x:Bind Anmerkung, Mode=TwoWay}"/>
                                 </Grid>
                             </DataTemplate>
@@ -753,8 +711,8 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Sins_Del"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Name, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
-                                    <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="3" Grid.Row="0" Text="{x:Bind Geburtstag, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource ListView_Item_TextBox_Date}" Grid.Column="3" Grid.Row="0" Text="{x:Bind Geburtstag, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="4" Grid.Row="0" Text="{x:Bind Verwendung, Mode=TwoWay}"/>
                                     <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="5" Grid.Row="0" Text="{x:Bind Zusätze, Mode=TwoWay}"/>
                                 </Grid>
@@ -783,7 +741,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Vorteile_Del"/>
                                             <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
-                                            <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
+                                            <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
                                             <Button Grid.Column="3" Content="Weitere" Tapped="Item_Tapped">
                                                 <FlyoutBase.AttachedFlyout>
                                                     <Flyout>
@@ -828,7 +786,7 @@
 
                                             <Button Grid.Column="0" Style="{StaticResource ListView_BtnDel}" Click="Nachteile_Del"/>
                                             <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="1" Grid.Row="0" Text="{x:Bind Bezeichnung, Mode=TwoWay}"/>
-                                            <TextBox Style="{StaticResource ListView_Item_TextBox}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
+                                            <TextBox Style="{StaticResource ListView_Item_TextBox_Digits}" Grid.Column="2" Grid.Row="0" Text="{x:Bind Stufe, Mode=TwoWay}"/>
                                             <Button Grid.Column="3" Content="Weitere" Tapped="Item_Tapped">
                                                 <FlyoutBase.AttachedFlyout>
                                                     <Flyout>
@@ -880,13 +838,13 @@
                         <TextBlock Text="Lebesstil: " Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBox Text="{x:Bind ViewModel.DefaultChar.Lebesstil, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox}"/>
                         <TextBlock Text="Geburtsdatum: " Grid.Column="0" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Geburtsdatum, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Geburtsdatum, Mode=TwoWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox_Date}"/>
                         <TextBlock Text="Geschlecht: " Grid.Column="0" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBox Text="{x:Bind ViewModel.DefaultChar.Geschlecht, Mode=TwoWay}" Grid.Column="1" Grid.Row="3" Style="{StaticResource ListView_Item_TextBox}"/>
                         <TextBlock Text="Größe: " Grid.Column="2" Grid.Row="0" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Größe, Mode=TwoWay}" Grid.Column="3" Grid.Row="0" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Größe, Mode=TwoWay}" Grid.Column="3" Grid.Row="0" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                         <TextBlock Text="Gewicht: " Grid.Column="2" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Gewicht, Mode=TwoWay}" Grid.Column="3" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBox Text="{x:Bind ViewModel.DefaultChar.Gewicht, Mode=TwoWay}" Grid.Column="3" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox_Digits}"/>
                         <TextBlock Text="Hautfarbe: " Grid.Column="2" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBox Text="{x:Bind ViewModel.DefaultChar.Hautfarbe, Mode=TwoWay}" Grid.Column="3" Grid.Row="2" Style="{StaticResource ListView_Item_TextBox}"/>
                         <TextBlock Text="Augenfarbe: " Grid.Column="2" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>

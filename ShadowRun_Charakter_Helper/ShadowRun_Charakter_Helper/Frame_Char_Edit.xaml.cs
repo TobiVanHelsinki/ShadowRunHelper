@@ -16,8 +16,11 @@ namespace ShadowRun_Charakter_Helper
     public sealed partial class Frame_Char_Edit : Page
     {
         public CharViewModel ViewModel { get; set; }
-        //public string t_Zusammensetzung_F { get; set; }
-        //public string t_Zusammensetzung_A { get; set; }
+        private int selected_Fähigkeit;
+        private bool selected_Fähigkeit_IsOn;
+        private int selected_Fähigkeit_OLD_ID;
+        private bool selected_Fähigkeit_OLD_ID_IsOn;
+
 
         public Frame_Char_Edit()
         {
@@ -205,32 +208,66 @@ namespace ShadowRun_Charakter_Helper
 
         private void Flyout_Fähig_Close(object sender, object e)
         {
-            string temp = "";
+            selected_Fähigkeit_IsOn = false;
+            selected_Fähigkeit_OLD_ID_IsOn = false;
         }
 
         private void Flyout_Fähig_Opened(object sender, object e)
         {
-            //           Todo Flyout_Open
-            //2 listen
-            //"Aktuelle Attribute"->DataContext für die ListView
-            //ID, Name := Join aus Fähigkeit.Zusammensetzung_A_neu & Char_Attribute
-            //"Alle Attribute"->DataContext für ComboBox, selectedItem = ID
-            //ID, Name:= aus Char_Attribute
-            //OrderBy : in jedem Fall nach ID
+            Char_Fähigkeit Data = (Char_Fähigkeit)((FrameworkElement)((Flyout)sender).Content).DataContext;
+            selected_Fähigkeit = Data.ID;
+            selected_Fähigkeit_IsOn = true;
+        }
 
-            //Neu_BTN
-            //Aktuelle Attribute.add(ID = -1)
+        //------------------------------------------------------------------------------------------------------------
+        private void Zusammensetzung_A_CBB_GotFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Attribut_ID Data = (Attribut_ID)(((ComboBox)sender).DataContext);
+                selected_Fähigkeit_OLD_ID = Data.ID;
+                selected_Fähigkeit_OLD_ID_IsOn = true;
+            }
+            catch (System.Exception)
+            {
+            }
+           
+        }
 
-            //ComboBox LoseContext
-            //Viewmodel.DefaultChar.Fähigkeit[e1].Zusammensetzung_A_neu[e2].ID:= ComboBox.Wert
-            //Char_Fähigkeit Data = (Char_Fähigkeit)((Windows.UI.Xaml.FrameworkElement)((Flyout)sender).Content).DataContext;
-            //if (ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL == null)
-            //{
-            //    ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL = new ObservableCollection<Attribut_ID>();
-            //}
-            //ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL.Add(new Attribut_ID(1));
-            //ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL.Add(new Attribut_ID(2));
-            //ViewModel.DefaultChar.Char_Fähigkeiten[ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Data)].Zusammensetzung_A_OL.Add(new Attribut_ID(3));
+        private void Zusammensetzung_A_CBB_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (selected_Fähigkeit_IsOn && selected_Fähigkeit_OLD_ID_IsOn)
+            {
+
+                int index_F = 0;
+                int index_AID = 0;
+                try
+                {
+                    index_F = ViewModel.DefaultChar.Char_Fähigkeiten.IndexOf(Char_Fähigkeit.findByID(selected_Fähigkeit, ViewModel.DefaultChar.Char_Fähigkeiten));
+                    index_AID = ViewModel.DefaultChar.Char_Fähigkeiten[index_F].Zusammensetzung_A.IndexOf(Attribut_ID.findByID(selected_Fähigkeit_OLD_ID, ViewModel.DefaultChar.Char_Fähigkeiten[index_F].Zusammensetzung_A));
+
+
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+
+                Char_Attribut Data = (Char_Attribut)(((ComboBox)sender).SelectedItem);
+
+                //try
+                //{
+                    ViewModel.DefaultChar.Char_Fähigkeiten[index_F].Zusammensetzung_A[index_AID].ID = Data.ID;
+                //}
+                //catch (System.Exception)
+                //{
+
+                   
+                //}
+                
+            }
+            selected_Fähigkeit_OLD_ID_IsOn = false;
         }
     }
 }

@@ -21,7 +21,6 @@ namespace ShadowRun_Charakter_Helper.Models
             String Current_Char_Container_Name = "Char_ID_" + LoadChar.ID_Char;
             Windows.Storage.ApplicationDataContainer container = localSettings.CreateContainer(Current_Char_Container_Name, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
-            //LoadChar.ID_Char = (int)localSettings.Containers[Current_Char_Container_Name].Values["ID_Char"];
             LoadChar.Alias = (string)localSettings.Containers[Current_Char_Container_Name].Values["Alias"];
             LoadChar.Char_Typ = (string)localSettings.Containers[Current_Char_Container_Name].Values["Char_Typ"];
             LoadChar.Kontostand = (double)localSettings.Containers[Current_Char_Container_Name].Values["Kontostand"];
@@ -61,17 +60,7 @@ namespace ShadowRun_Charakter_Helper.Models
             LoadChar.Bild = (string)localSettings.Containers[Current_Char_Container_Name].Values["Bild"];
             LoadChar.Zusammenfassung = (string)localSettings.Containers[Current_Char_Container_Name].Values["Zusammenfassung"];
 
-            //LoadChar.Geschicklichkeit = (int)localSettings.Containers[Current_Char_Container_Name].Values["Geschicklichkeit"];
-            //LoadChar.Konstitution = (int)localSettings.Containers[Current_Char_Container_Name].Values["Konstitution"];
-            //LoadChar.Reaktion = (int)localSettings.Containers[Current_Char_Container_Name].Values["Reaktion"];
-            //LoadChar.Stärke = (int)localSettings.Containers[Current_Char_Container_Name].Values["Stärke"];
-            //LoadChar.Charisma = (int)localSettings.Containers[Current_Char_Container_Name].Values["Charisma"];
-            //LoadChar.Intuition = (int)localSettings.Containers[Current_Char_Container_Name].Values["Intuition"];
-            //LoadChar.Logik = (int)localSettings.Containers[Current_Char_Container_Name].Values["Logik"];
-           // LoadChar.Willenskraft = (int)localSettings.Containers[Current_Char_Container_Name].Values["Willenskraft"];
-
             int i;
-            int k = 0;
 
             //Char_Fertigkeiten
             i = 0;
@@ -103,21 +92,21 @@ namespace ShadowRun_Charakter_Helper.Models
                 Char_Fähigkeiten_Temp.Pool_Modifier = (string)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "_Pool_Modifier"];
                 Char_Fähigkeiten_Temp.Pool_User = (double)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "_Pool_User"];
 
-                k = 0;
-                Char_Fähigkeiten_Temp.Zusammensetzung_F = new List<int>();
-                try { 
-                    for (k = 0; k < (int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_F_count"]; k++)
-                    {
-                        Char_Fähigkeiten_Temp.Zusammensetzung_F.Add((int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_F" + k]);
-                    }
-                    k = 0;
-                    Char_Fähigkeiten_Temp.Zusammensetzung_A = new List<int>();
-                    for (k = 0; k < (int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_A_count"]; k++)
-                    {
-                        Char_Fähigkeiten_Temp.Zusammensetzung_A.Add((int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_A" + k]);
-                    }
-                }
-                catch (Exception) { }
+            //    k = 0;
+            //    Char_Fähigkeiten_Temp.Zusammensetzung_F = new List<int>();
+            //    try { 
+            //        for (k = 0; k < (int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_F_count"]; k++)
+            //        {
+            //            Char_Fähigkeiten_Temp.Zusammensetzung_F.Add((int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_F" + k]);
+            //        }
+            //        k = 0;
+            //        Char_Fähigkeiten_Temp.Zusammensetzung_A = new List<int>();
+            //        for (k = 0; k < (int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_A_count"]; k++)
+            //        {
+            //            Char_Fähigkeiten_Temp.Zusammensetzung_A.Add((int)localSettings.Containers[Current_Char_Container_Name].Values["Char_Fähigkeit_" + i + "Zusammensetzung_A" + k]);
+            //        }
+            //    }
+            //    catch (Exception) { }
                 LoadChar.Char_Fähigkeiten.Add(Char_Fähigkeiten_Temp);
             }
             //Char_Connections
@@ -329,7 +318,7 @@ namespace ShadowRun_Charakter_Helper.Models
 
             }
 
-            Char_Fähigkeit.Pool_Berechnen(LoadChar);
+            //Char_Fähigkeit.Pool_Berechnen(LoadChar);
             return true;
         }
 
@@ -799,27 +788,28 @@ namespace ShadowRun_Charakter_Helper.Models
             }
 
             //Char_Attribute
-
-            if (result[k] != null || result[k] != "")
-            {
-                iteration_temp = Int32.Parse(result[k]);
-                k++;
-                for (i = 0; i < iteration_temp; i++) //ToDo: Surrender with try catch
+            try {
+                if (result[k] != null || result[k] != "")
                 {
+                    iteration_temp = Int32.Parse(result[k]);
+                    k++;
+                    for (i = 0; i < iteration_temp; i++) //ToDo: Surrender with try catch
+                    {
 
-                    Char_Attribut Char_Attribute_Temp = new Char_Attribut();
-                    Char_Attribute_Temp.ID = Int32.Parse(result[k]);
-                    k++;
-                    Char_Attribute_Temp.Bezeichnung = (result[k]);
-                    k++;
-                    Char_Attribute_Temp.Stufe = Int32.Parse(result[k]);
-                    k++;
-                    Char_Attribute_Temp.Stufe_Modifier = (result[k]);
-                    k++;
-                    LoadChar.Char_Attribute.Add(Char_Attribute_Temp);
+                        Char_Attribut Char_Attribute_Temp = new Char_Attribut();
+                        Char_Attribute_Temp.ID = Int32.Parse(result[k]);
+                        k++;
+                        Char_Attribute_Temp.Bezeichnung = (result[k]);
+                        k++;
+                        Char_Attribute_Temp.Stufe = Int32.Parse(result[k]);
+                        k++;
+                        Char_Attribute_Temp.Stufe_Modifier = (result[k]);
+                        k++;
+                        LoadChar.Char_Attribute.Add(Char_Attribute_Temp);
+                    }
                 }
             }
-
+            catch (Exception) { }
 
 
         }

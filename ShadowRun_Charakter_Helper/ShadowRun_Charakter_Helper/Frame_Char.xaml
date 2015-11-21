@@ -8,15 +8,15 @@
     xmlns:data="using:ShadowRun_Charakter_Helper.Models"
     mc:Ignorable="d">
     <Page.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="Dictionary_XAML_Styles.xaml" />
-                </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
-        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionary_XAML_Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Page.Resources>
 
-    <Pivot Style="{StaticResource TabsStylePivotStyle}" >
+    <Pivot x:Name="pivot" Style="{StaticResource TabsStylePivotStyle}" >
         <PivotItem >
             <PivotItem.Header>
                 <local:TabHeader Label="Aktionen" Glyph="&#xE945;" />
@@ -61,6 +61,28 @@
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusammensetzung}"/>
                                                 </StackPanel>
+                                                <ListView Name="Fähigkeiten_Zus" ItemsSource="{x:Bind Zusammensetzung_A, Mode=OneWay}"  Grid.Column="6">
+                                                    <ListView.ItemTemplate>
+                                                        <DataTemplate x:DataType="data:Attribut_ID">
+                                                            <StackPanel Orientation="Vertical">
+                                                                <TextBlock Name="Fähigkeiten_Zus_Attribute_ID" Text="{x:Bind ID, Mode=OneWay}"/>
+                                                                <!--<TextBlock Name="Fähigkeiten_Zus_Attribute" Text="{x:Bind ID, Mode=OneWay, Converter={StaticResource UI_Converter_Attribute}}" Style = "{StaticResource ListView_Item_Text}"/>-->
+                                                                <ComboBox Name="Zusammensetzung_A_CBB" Grid.Column="3" PlaceholderText="Nix ausgewählt" 
+                                                                            
+                                                                              ItemsSource="{Binding ItemsSource, ElementName=Attribute}" IsEnabled="False" Tapped="Zusammensetzung_A_CBB_Value">
+                                                                    <ComboBox.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Text="{Binding Bezeichnung}"/>
+                                                                            </StackPanel>
+                                                                        </DataTemplate>
+                                                                    </ComboBox.ItemTemplate>
+                                                                </ComboBox>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </ListView.ItemTemplate>
+                                                </ListView>
+
                                                 <StackPanel Orientation="Vertical" Grid.Column="1">
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkung"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anmerkung}"/>

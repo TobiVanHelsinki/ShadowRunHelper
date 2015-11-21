@@ -8,7 +8,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using ShadowRun_Charakter_Helper.Models;
-using ShadowRun_Charakter_Helper.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -105,7 +104,8 @@ namespace ShadowRun_Charakter_Helper
             else { return; }
             //Load New
             Load_Data.Load_Char(ViewModel.DefaultChar);
-        }
+            
+    }
 
         private async void Löschen(IUICommand command)
         {
@@ -190,12 +190,12 @@ namespace ShadowRun_Charakter_Helper
 
             // Test Daten ------------------------------------------------------------------------------------------------------------
             Random r = new Random();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < ViewModel.DefaultChar.Char_Fähigkeiten.Count(); i++)
             {
-                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A_OL = new ObservableCollection<Attribut_ID>();
-                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A_OL.Add(new Attribut_ID(r.Next(0, 10)));
-                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A_OL.Add(new Attribut_ID(r.Next(0, 10)));
-                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A_OL.Add(new Attribut_ID(r.Next(0, 10)));
+                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A = new ObservableCollection<Attribut_ID>();
+                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A.Add(new Attribut_ID(r.Next(0, 10)));
+                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A.Add(new Attribut_ID(r.Next(0, 10)));
+                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A.Add(new Attribut_ID(r.Next(0, 10)));
             }
             // Test Daten ------------------------------------------------------------------------------------------------------------
 
@@ -205,7 +205,7 @@ namespace ShadowRun_Charakter_Helper
         private void Click_Speichern(object sender, RoutedEventArgs e)
         {
             Store_Data.Store_Char(ViewModel.DefaultChar);
-            Char_Fähigkeit.Pool_Berechnen(ViewModel.DefaultChar);
+           // Char_Fähigkeit.Pool_Berechnen(ViewModel.DefaultChar);
             createSummorys();
         }
 

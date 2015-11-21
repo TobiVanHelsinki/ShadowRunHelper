@@ -3,6 +3,8 @@ using Windows.UI.Xaml.Controls;
 using ShadowRun_Charakter_Helper.Models;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Primitives;
+using System.ServiceModel.Channels;
+using Windows.UI.Xaml.Data;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -16,7 +18,16 @@ namespace ShadowRun_Charakter_Helper
         public CharViewModel ViewModel { get; set; }
         public Frame_Char()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+
+            //Windows.UI.Xaml.Data.Binding bindingOrig = BindingOperations.GetBinding(item, dp);
+
+
+            //TextBlock Fähigkeiten_Zus_Attribute;
+            //Fähigkeiten_Zus_Attribute.SetBinding(Text, new Binding("AnotherIntegerProperty")
+            //{
+            //    Converter = new UnitConverter()
+            //});
         }
        
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -34,6 +45,12 @@ namespace ShadowRun_Charakter_Helper
             }
         }
 
-   
+
+        private void Zusammensetzung_A_CBB_Value(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            ComboBox Zusammensetzung_A_CBB = new ComboBox();
+
+            Zusammensetzung_A_CBB.SelectedIndex = 1;
+        }
     }
 }

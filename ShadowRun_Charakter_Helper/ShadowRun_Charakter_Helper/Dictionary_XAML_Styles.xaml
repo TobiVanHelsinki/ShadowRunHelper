@@ -309,6 +309,16 @@
         <Setter Property="Margin" Value="5,2,5,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
+    <Style TargetType="TextBox" x:Key="ListView_Item_TextBox_Digits">
+        <Setter Property="Margin" Value="5,2,5,2"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="InputScope" Value="Digits" />
+    </Style>
+    <Style TargetType="TextBox" x:Key="ListView_Item_TextBox_Date">
+        <Setter Property="Margin" Value="5,2,5,2"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="InputScope" Value="Digits" />
+    </Style>
     <Style TargetType="Grid" x:Key="ListView_Item_Grid">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -397,5 +407,8 @@
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="Margin" Value="20,10,0,10"/>
     </Style>
+
+    <local:UI_Converter_Digit x:Key="UI_Converter_Digit"/>
+    <local:UI_Converter_Attribute x:Key="UI_Converter_Attribute"/>
     
 </ResourceDictionary>

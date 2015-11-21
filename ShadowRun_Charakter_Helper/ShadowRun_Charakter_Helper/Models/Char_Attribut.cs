@@ -18,6 +18,15 @@ namespace ShadowRun_Charakter_Helper.Models
         {
 
         }
+
+        internal static object getNAMEbyID(object value)
+        {
+
+            throw new NotImplementedException();
+
+
+        }
+
         public Char_Attribut(int ID, string Bezeichnung, double Stufe, string Stufe_Modifier)
         {
             this.ID = ID;

@@ -104,6 +104,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\MyException.cs" />
+    <Compile Include="UI_Converter_CB.cs" />
+    <Compile Include="UI_Converter_Attribute.cs" />
+    <Compile Include="UI_Converter_Digit.cs" />
     <Compile Include="Frame_App_Settings.xaml.cs">
       <DependentUpon>Frame_App_Settings.xaml</DependentUpon>
     </Compile>

@@ -29,7 +29,7 @@
                         <Border x:Name="bordermenu">
                             <TextBlock Foreground="Red" Text="{x:Bind Bezeichnung}"/>
                         </Border>
-                        <ListView Name="itemListViewss" ItemsSource="{x:Bind Zusammensetzung_A_OL}">
+                        <ListView Name="itemListViewss" ItemsSource="{x:Bind Zusammensetzung_A}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="data:Attribut_ID">
                                     <StackPanel>
