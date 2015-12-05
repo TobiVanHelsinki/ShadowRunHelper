@@ -164,6 +164,7 @@
                                                             </DataTemplate>
                                                         </ListView.ItemTemplate>
                                                     </ListView>
+                                                    <TextBox Name="Zusammensetzung_User" Grid.Column="3" Text="{x:Bind Zusammensetzung, Mode=TwoWay}" Style="{StaticResource ListView_Item_TextBox}"/>
                                                 </StackPanel>
                                             </Flyout>
                                         </FlyoutBase.AttachedFlyout>

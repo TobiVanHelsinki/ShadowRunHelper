@@ -51,17 +51,16 @@
                                     </Grid.ColumnDefinitions>
                                     <FlyoutBase.AttachedFlyout>
                                         <Flyout>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
+                                            <StackPanel Orientation="Vertical">
                                                 <StackPanel Orientation="Vertical" Grid.Column="0">
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Pool_Calc"/>
+                                                    <TextBlock Name="Pool_Calc" Text="{x:Bind Pool_Calc}" Style="{StaticResource ListView_Item_Text}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Vertical" Grid.Column="1">
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Zusammensetzung"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusammensetzung}"/>
                                                 </StackPanel>
-                                                <ListView Name="Fähigkeiten_Zus" ItemsSource="{x:Bind Zusammensetzung_A, Mode=OneWay}"  Grid.Column="6">
+                                                <ListView Name="Fähigkeiten_Zus" ItemsSource="{x:Bind Zusammensetzung_A, Mode=OneWay}"  Grid.Column="2">
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate x:DataType="data:Attribut_ID">
                                                             <StackPanel Orientation="Vertical">
@@ -82,16 +81,15 @@
                                                         </DataTemplate>
                                                     </ListView.ItemTemplate>
                                                 </ListView>
-
-                                                <StackPanel Orientation="Vertical" Grid.Column="1">
+                                                <StackPanel Orientation="Vertical" Grid.Column="3">
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkung"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anmerkung}"/>
                                                 </StackPanel>
-                                            </Grid>
+                                            </StackPanel>
                                         </Flyout>
                                     </FlyoutBase.AttachedFlyout>
                                     <TextBlock Name="Bezeichnung" Grid.Column="0" Text="{x:Bind Bezeichnung}" Style="{StaticResource ListView_Item_Text}"/>
-                                    <TextBlock Name="Pool_User" Grid.Column="1" Text="{x:Bind Pool_Calc}" Style="{StaticResource ListView_Item_Text}"/>
+                                    <TextBlock Name="Pool_User" Grid.Column="1" Text="{x:Bind Pool_User}" Style="{StaticResource ListView_Item_Text}"/>
                                     <TextBlock Name="Pool_Modifier" Grid.Column="2" Text="{x:Bind Pool_Modifier}" Style="{StaticResource ListView_Item_Text}"/>
                                     <TextBlock Grid.Column="3" Text="{x:Bind Anmerkung}" Style="{StaticResource ListView_Item_Text}"/>
                                 </Grid>
