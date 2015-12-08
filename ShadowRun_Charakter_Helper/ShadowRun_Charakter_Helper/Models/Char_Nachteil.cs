@@ -10,7 +10,6 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     public class Char_Nachteil
     {
-        private ObservableCollection<Char_Nachteil> char_Nachteile;
         public int ID { get; set; }
         public string Bezeichnung { get; set; }
         public double Stufe { get; set; }

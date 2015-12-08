@@ -9,7 +9,6 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     public class Char_Kommlink
     {
-        private ObservableCollection<Char_Kommlink> char_Kommlinks;
         public int ID { get; set; }
         public string Bezeichnung { get; set; }
         public double Stufe { get; set; }

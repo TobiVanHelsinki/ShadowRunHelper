@@ -10,7 +10,6 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     public class Char_Sin
     {
-        private ObservableCollection<Char_Sin> char_Sins;
         public int ID { get; set; }
         public string Name { get; set; }
         public double Stufe { get; set; }

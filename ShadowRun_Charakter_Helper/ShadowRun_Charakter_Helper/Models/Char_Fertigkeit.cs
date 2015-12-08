@@ -10,7 +10,7 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     public class Char_Fertigkeit
     {
-        private ObservableCollection<Char_Fertigkeit> char_Fertigkeiten;
+      
         public int ID { get; set; }
         public string Bezeichnung { get; set; }
         public double Stufe { get; set; }

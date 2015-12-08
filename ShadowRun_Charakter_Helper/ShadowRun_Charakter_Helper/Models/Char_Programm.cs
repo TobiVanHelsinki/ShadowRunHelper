@@ -10,7 +10,6 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     public class Char_Programm
     {
-        private ObservableCollection<Char_Programm> char_Programme;
         public int ID { get; set; }
         public string Bezeichnung { get; set; }
         public string Optionen { get; set; }

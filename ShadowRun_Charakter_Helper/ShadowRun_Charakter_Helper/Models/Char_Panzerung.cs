@@ -10,7 +10,6 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     public class Char_Panzerung
     {
-        private ObservableCollection<Char_Panzerung> char_Panzerungen;
         public int ID { get; set; }
         public string Bezeichnung { get; set; }
         public double Ballistik { get; set; }

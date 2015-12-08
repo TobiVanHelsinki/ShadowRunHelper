@@ -9,7 +9,6 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     public class Char_Connection
     {
-        private ObservableCollection<Char_Connection> char_Connections;
         public int ID { get; set; }
         public string Name { get; set; }
         public double Loyal { get; set; }

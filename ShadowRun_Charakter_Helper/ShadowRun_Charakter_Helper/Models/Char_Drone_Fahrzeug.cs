@@ -9,7 +9,7 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     public class Char_Drone_Fahrzeug
     {
-        private ObservableCollection<Char_Drone_Fahrzeug> char_Dronen_Fahrzeuge;
+        
         public int ID { get; set; }
         public string Name { get; set; }
         public string Typ { get; set; }

@@ -68,6 +68,14 @@ namespace ShadowRun_Charakter_Helper.Models
         //    }
         //}
 
+        public void del_Zusammensetzung_A_Item(Attribut_ID ID)
+        {
+
+            return;
+        }
+
+
+
         public Char_Fähigkeit(ObservableCollection<Char_Fähigkeit> Liste)
         {
             ID = 1 + maxID(Liste);

@@ -10,7 +10,6 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     public class Char_Vorteil
     {
-        private ObservableCollection<Char_Vorteil> char_Vorteile;
 
         public int ID { get; set; }
         public string Bezeichnung { get; set; }

@@ -10,7 +10,6 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     public class Char_Nahkampfwaffe
     {
-        private ObservableCollection<Char_Nahkampfwaffe> char_Nahkampfwaffen;
         public int ID { get; set; }
         public string Bezeichnung { get; set; }
         public double Schaden { get; set; }
