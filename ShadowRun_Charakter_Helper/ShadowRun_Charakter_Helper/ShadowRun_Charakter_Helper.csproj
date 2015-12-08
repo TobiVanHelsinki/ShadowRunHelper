@@ -18,7 +18,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>ShadowRun_Charakter_Helper_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>356B79C522426E5EFD43C83CB3A16FA592FCD45C</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>7F62D17A884C3F88E29007D8E51A0B3731AE7E43</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
