@@ -303,7 +303,6 @@
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <Style TargetType="TextBlock" x:Key="ListView_Item_Text">
         <Setter Property="Margin" Value="5,2,5,2"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
     <Style TargetType="TextBox" x:Key="ListView_Item_TextBox">
         <Setter Property="Margin" Value="5,2,5,2"/>
@@ -392,7 +391,7 @@
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <Style TargetType="RelativePanel" x:Key="Pivot_Item_RelativePanel">
         <Setter Property="RelativePanel.HorizontalAlignment" Value="Center"/>
-        <Setter Property="MinWidth" Value="300"/>
+       <Setter Property="MinWidth" Value="300"/>
         <!--<Setter Property="MaxWidth" Value="*"/>-->
         <Setter Property="Background" Value="Aquamarine"/>
     </Style>

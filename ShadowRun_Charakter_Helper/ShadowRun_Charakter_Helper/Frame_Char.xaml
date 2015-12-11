@@ -29,27 +29,28 @@
                     </StackPanel>
                     <Grid Name="Fähigkeiten_E" RelativePanel.Below="Fähigkeiten_U"  MaxWidth="{Binding Path=ActualWidth, ElementName=Fähigkeiten_Grid, Mode=TwoWay}" Style="{StaticResource ListView_E}">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition MinWidth="100" Width="3*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="15*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1,5*"/>
+                            <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Name="Bezeichnung_U" Text="Bezeichnung" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBlock Grid.Column="1" Name="Pool_Calc_U" Text="Pool" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBlock Grid.Column="1" Name="Pool_User_U" Text="Pool U" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBlock Grid.Column="2" Name="Pool_Modifier_U" Text="Modifier" Style="{StaticResource ListView_Item_Text}"/>
-                        <TextBlock Grid.Column="3" Text="Anmerkung" Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Grid.Column="2" Name="Pool_User_U" Text="Pool U" Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Grid.Column="3" Name="Pool_Modifier_U" Text="Modifier" Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Grid.Column="4" Text="Anmerkung" Style="{StaticResource ListView_Item_Text}"/>
                     </Grid>
                     <ListView Name="Fähigkeiten" RelativePanel.Below="Fähigkeiten_E" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Fähigkeiten}" Style="{StaticResource ListView}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="data:Char_Fähigkeit">
                                 <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition MinWidth="100" Width="3*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                        <ColumnDefinition MinWidth="50" Width="Auto"/>
+                                        <ColumnDefinition MinWidth="50" Width="Auto"/>
+                                        <ColumnDefinition MinWidth="100" Width="Auto"/>
+                                        <ColumnDefinition Width="5*"/>
                                     </Grid.ColumnDefinitions>
                                     <FlyoutBase.AttachedFlyout>
                                         <Flyout>
@@ -69,10 +70,15 @@
                                     <TextBlock Name="Pool_Calc" Grid.Column="1" Text="{x:Bind Pool_Calc}" Style="{StaticResource ListView_Item_Text}"/>
                                     <TextBlock Name="Pool_User" Grid.Column="2" Text="{x:Bind Pool_User}" Style="{StaticResource ListView_Item_Text}"/>
                                     <TextBlock Name="Pool_Modifier" Grid.Column="3" Text="{x:Bind Pool_Modifier}" Style="{StaticResource ListView_Item_Text}"/>
-                                    <TextBlock Grid.Column="4" Text="{x:Bind Anmerkung}" Style="{StaticResource ListView_Item_Text}"/>
+                                    <TextBlock Name="Anmerkung" Grid.Column="4" Text="{x:Bind Anmerkung}" Style="{StaticResource ListView_Item_Text}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
                     </ListView>
                     <StackPanel Name="Fertigkeiten_U" RelativePanel.Below="Fähigkeiten" Style="{StaticResource ListView_U}">
                         <TextBlock Text="Fertigkeiten"  Style="{StaticResource ListView_U_Text}"/>
