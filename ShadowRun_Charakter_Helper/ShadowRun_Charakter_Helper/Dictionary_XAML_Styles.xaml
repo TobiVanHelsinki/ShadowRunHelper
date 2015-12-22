@@ -321,7 +321,12 @@
     <Style TargetType="Grid" x:Key="ListView_Item_Grid">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Background" Value="White"/>
+        <!--<Setter Property="Background" Value="White"/>-->
+    </Style>
+    <Style TargetType="RelativePanel" x:Key="ListView_Item_Relativ">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <!--<Setter Property="Background" Value="White"/>-->
     </Style>
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <Style TargetType="TextBlock" x:Key="ListView_U_Text">
@@ -351,7 +356,7 @@
     <Style TargetType="ListView" x:Key="ListView">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Background" Value="Aqua"/>
+        <!--<Setter Property="Background" Value="Aqua"/>-->
         <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
         <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
         <Setter Property="Background" Value="Beige"/>
@@ -359,7 +364,7 @@
     <Style TargetType="GridView" x:Key="GridView">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Background" Value="Aqua"/>
+        <!--<Setter Property="Background" Value="Aqua"/>-->
         <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
         <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
         <Setter Property="Background" Value="Beige"/>
@@ -367,15 +372,15 @@
     <Style TargetType="Grid" x:Key="ListView_as_Grid">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Background" Value="Aqua"/>
+        <!--<Setter Property="Background" Value="Aqua"/>-->
         <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
         <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
-        <Setter Property="Background" Value="Beige"/>
+        
     </Style>
     <Style TargetType="Grid" x:Key="ListView_E">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Background" Value="Pink"/>
+        <!--<Setter Property="Background" Value="Pink"/>-->
         <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
         <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
     </Style>
@@ -384,7 +389,7 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
         <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
-        <Setter Property="Background" Value="Red"/>
+        <Setter Property="Background" Value="{ThemeResource SystemAltLowColor}"/>
         <Setter Property="Orientation" Value="Horizontal"/>
     </Style>
 
@@ -393,12 +398,12 @@
         <Setter Property="RelativePanel.HorizontalAlignment" Value="Center"/>
        <Setter Property="MinWidth" Value="300"/>
         <!--<Setter Property="MaxWidth" Value="*"/>-->
-        <Setter Property="Background" Value="Aquamarine"/>
+        <!--<Setter Property="Background" Value="Aquamarine"/>-->
     </Style>
     <Style TargetType="ScrollViewer" x:Key="Pivot_Item_ScrollViewer">
         <Setter Property="VerticalScrollMode" Value="Enabled"/>
         <Setter Property="VerticalScrollBarVisibility" Value="Visible"/>
-        <Setter Property="Background" Value="CornflowerBlue"/>
+        <!--<Setter Property="Background" Value="CornflowerBlue"/>-->
         <Setter Property="HorizontalScrollMode" Value="Auto"/>
     </Style>
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->

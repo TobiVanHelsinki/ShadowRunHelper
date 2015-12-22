@@ -1,1 +1,0 @@
-Die .ps1 Datei (PowerSehll) mit "rechtsklick->mit PowerShell Öffnen" Öffnen. GGF den anweisungen folgen, fertig ist die app installiert.
