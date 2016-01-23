@@ -852,6 +852,8 @@
                         <TextBox Text="{x:Bind ViewModel.DefaultChar.Augenfarbe, Mode=TwoWay}" Grid.Column="3" Grid.Row="3" Style="{StaticResource ListView_Item_TextBox}"/>
                         <TextBlock Text="Haarfarbe: " Grid.Column="4" Grid.Row="0" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBox Text="{x:Bind ViewModel.DefaultChar.Haarfarbe, Mode=TwoWay}" Grid.Column="5" Grid.Row="0" Style="{StaticResource ListView_Item_TextBox}"/>
+                        <TextBlock Text="Runs: " Grid.Column="4" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
+                       <TextBox Text="{x:Bind ViewModel.DefaultChar.Runs, Mode=TwoWay}" Grid.Column="5" Grid.Row="1" Style="{StaticResource ListView_Item_TextBox}"/>
                     </Grid>
                 </RelativePanel>
             </ScrollViewer>

@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ShadowRun_Charakter_Helper.IO;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -71,42 +72,7 @@ namespace ShadowRun_Charakter_Helper
             selected_Char_Summory = (Char_Summory)e.ClickedItem;
         }
 
-        private void Laden(String inputstring, String Mode)
-        {
-            //Store Current if exists (VGL mit CharList)
-            if (CharList.Beinhaltet(ViewModel.DefaultChar.ID_Char))
-            {
-                Store_Data.Store_Char(ViewModel.DefaultChar);
-            }
-            //Clear ViewModel
-            Load_Data.Clear_Char(ViewModel.DefaultChar);
-            //Load ID (Switch)
-            if (Mode == "Local")
-            {
-                ViewModel.DefaultChar.ID_Char = selected_Char_Summory.id;
-                
-            }
-            else if (Mode == "String")
-            {
-                Load_Data.Load_Char_from_String(inputstring, ViewModel.DefaultChar);
-                ViewModel.DefaultChar.ID_Char = CharList.freieID();
-                Store_Data.Store_Char(ViewModel.DefaultChar);
-                CharList.Add(ViewModel.DefaultChar.ID_Char);
-                //Benachrichtige die Liste der Chars TODO: das automatisieren
-                createSummorys();
-            }
-            else if (Mode == "Leer")
-            {
-                ViewModel.DefaultChar.ID_Char = CharList.freieID();
-                Store_Data.Store_Char(ViewModel.DefaultChar);
-                CharList.Add(ViewModel.DefaultChar.ID_Char);
-            }
-            else { return; }
-            //Load New
-            Load_Data.Load_Char(ViewModel.DefaultChar);
-            
-    }
-
+        
         private async void Löschen(IUICommand command)
         {
             // Char Löschen
@@ -115,7 +81,7 @@ namespace ShadowRun_Charakter_Helper
 
             if (ViewModel.DefaultChar.ID_Char == selected_Char_Summory.id)
             {
-                Load_Data.Clear_Char(ViewModel.DefaultChar);
+                ViewModel.DefaultChar.Säubern();
             }
             // Nachicht Anzeigen
             MessageDialog dialog = new MessageDialog("Er ist tot, Jim.", "Nachricht");
@@ -127,7 +93,8 @@ namespace ShadowRun_Charakter_Helper
             // Char Löschen
             CharList.Clear();
             createSummorys();
-            Load_Data.Clear_Char(ViewModel.DefaultChar);
+           
+            ViewModel.DefaultChar.Säubern();
             // Nachicht Anzeigen
             MessageDialog dialog = new MessageDialog("Alle sind tot, Jim.", "Nachricht");
             await dialog.ShowAsync();
@@ -135,7 +102,10 @@ namespace ShadowRun_Charakter_Helper
 
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
-            Laden("", "Leer");
+            ViewModel.DefaultChar.ID_Char = CharList.freieID();
+            CharIO.Save_JSONChar_to_Data(ViewModel.DefaultChar);
+            CharList.Add(ViewModel.DefaultChar.ID_Char);
+
             Frame.Navigate(typeof(Frame_Char_Edit), ViewModel);
 
         }
@@ -185,76 +155,36 @@ namespace ShadowRun_Charakter_Helper
 
         private void Click_Laden(object sender, RoutedEventArgs e)
         {
-            if (selected_Char_Summory == null) { return; }
-            Laden("", "Local");
-
-            // Test Daten ------------------------------------------------------------------------------------------------------------
-            Random r = new Random();
-            for (int i = 0; i < ViewModel.DefaultChar.Char_Fähigkeiten.Count(); i++)
-            {
-                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A = new ObservableCollection<Attribut_ID>();
-                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A.Add(new Attribut_ID(r.Next(0, 10)));
-                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A.Add(new Attribut_ID(r.Next(0, 10)));
-                ViewModel.DefaultChar.Char_Fähigkeiten[i].Zusammensetzung_A.Add(new Attribut_ID(r.Next(0, 10)));
+            if (selected_Char_Summory != null) {
+                ViewModel.DefaultChar = CharIO.Load_JSONChar_from_Data(ViewModel.DefaultChar.ID_Char);
+                Frame.Navigate(typeof(Frame_Char), ViewModel);
             }
-            // Test Daten ------------------------------------------------------------------------------------------------------------
-
-            Frame.Navigate(typeof(Frame_Char), ViewModel);
         }
 
         private void Click_Speichern(object sender, RoutedEventArgs e)
         {
-            Store_Data.Store_Char(ViewModel.DefaultChar);
-           // Char_Fähigkeit.Pool_Berechnen(ViewModel.DefaultChar);
+            CharIO.Save_JSONChar_to_Data(ViewModel.DefaultChar);
             createSummorys();
         }
 
         private async void Click_Laden_Datei(object sender, RoutedEventArgs e)
         {
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
-            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
-            picker.FileTypeFilter.Add(".SRWin");
 
-            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
-            if (file != null)
-            {
-                string inputString = await FileIO.ReadTextAsync(file);
-                Laden(inputString, "String");
-            }
+             ViewModel.DefaultChar = await CharIO.Load_JSONChar_from_IO();
             Frame.Navigate(typeof(Frame_Char), ViewModel);
         }
 
-        private async void Click_Speichern_Datei(object sender, RoutedEventArgs e)
+        private void Click_Speichern_Datei(object sender, RoutedEventArgs e)
         {
-            if (selected_Char_Summory == null) { return; }
-            //Ordner Auswähler vorbereiten
-            var folderPicker = new Windows.Storage.Pickers.FolderPicker();
-            folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
-            folderPicker.FileTypeFilter.Add(".SRWin");
-            //Ordner Auswähler rufen
-            Windows.Storage.StorageFolder folder = await folderPicker.PickSingleFolderAsync();
-            if (folder != null)
-            {
-                // Application now has read/write access to all contents in the picked folder
-                // (including other sub-folder contents)
-                Windows.Storage.AccessCache.StorageApplicationPermissions.
-                FutureAccessList.AddOrReplace("PickedFolderToken", folder);
-                
+            if (selected_Char_Summory != null) { 
+ 
                 //Richtigen Char auswählen
                 Models.Char temp_char = new Models.Char();
-                temp_char.ID_Char = selected_Char_Summory.id;
-                Load_Data.Load_Char(temp_char);
 
-                //Dateiname und Datei vorbereiten
-                String filename = temp_char.ID_Char + "_" + temp_char.Alias + "_" + temp_char.Karma_Gesamt + "_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second+ ".SRWin";
-                StorageFile Save_File = await folder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
-                Save_File = await folder.GetFileAsync(filename);
+                temp_char = CharIO.Load_JSONChar_from_Data(selected_Char_Summory.id);
+                CharIO.Save_JSONChar_to_IO(temp_char);
 
-                
-                //Ausgewählten Char auf schreiben
-                await FileIO.WriteTextAsync(Save_File, Store_Data.Store_Char_to_String(temp_char));
-                //Variable Befreien
+                 //var befreien
                 temp_char = null;
             }
         }

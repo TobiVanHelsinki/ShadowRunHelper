@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using ShadowRun_Charakter_Helper.IO;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -123,7 +124,7 @@ namespace ShadowRun_Charakter_Helper
 
         private void Save_BTN(object sender, RoutedEventArgs e)
         {
-            Store_Data.Store_Char(ViewModel.DefaultChar);
+            CharIO.Save_JSONChar_to_Data(ViewModel.DefaultChar);
         }
 
         private void Fähigkeiten_Del(object sender, RoutedEventArgs e)

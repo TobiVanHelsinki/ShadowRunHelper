@@ -104,6 +104,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IO\CharIO.cs" />
     <Compile Include="Models\MyException.cs" />
     <Compile Include="UI_Converter_CB.cs" />
     <Compile Include="UI_Converter_Attribute.cs" />

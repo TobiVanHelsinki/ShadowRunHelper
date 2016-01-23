@@ -392,6 +392,20 @@ namespace ShadowRun_Charakter_Helper.Models
             }
         }
 
+        private double runs;
+        public double Runs
+        {
+            get { return runs; }
+            set
+            {
+                if (value != this.runs)
+                {
+                    this.runs = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public ObservableCollection<Char_Attribut> Char_Attribute { get; set; }
         public ObservableCollection<Char_Fertigkeit> Char_Fertigkeiten { get; set; }
         public ObservableCollection<Char_Fähigkeit> Char_Fähigkeiten { get; set; }
@@ -410,8 +424,7 @@ namespace ShadowRun_Charakter_Helper.Models
 
         public Char()
         {
-            //this.Alias = "";
-            //this.MetaTyp = "";
+            
             this.Char_Fertigkeiten = new ObservableCollection<Char_Fertigkeit>();
             this.Char_Fähigkeiten = new ObservableCollection<Char_Fähigkeit>();
             this.Char_Attribute = new ObservableCollection<Char_Attribut>();
@@ -445,20 +458,165 @@ namespace ShadowRun_Charakter_Helper.Models
             }
         }
 
+        public static implicit operator char(Char v)
+        {
+            throw new NotImplementedException();
+        }
 
+
+        internal void Säubern()
+        {
+            ID_Char = 0;
+            Alias = null;
+            Char_Typ = null;
+            Kontostand = 0;
+            Karma_Gesamt = 0;
+            Karma_Aktuell = 0;
+            Edgne_Aktuell = 0;
+            Edge_Gesamt = 0;
+            Essenz = 0;
+            Schaden_K = 0;
+            Schaden_G = 0;
+            Schaden_M = 0;
+            Schaden_K_max = 0;
+            Schaden_G_max = 0;
+            Schaden_M_max = 0;
+            Notizen = null;
+            MetaTyp = null;
+            Lebesstil = null;
+            try
+            {
+                Geburtsdatum2 = new DateTime();
+            }
+            catch (NullReferenceException)
+            {
+
+            }
+            Geburtsdatum = null;
+            Geschlecht = null;
+            Größe = 0;
+            Gewicht = 0;
+            Augenfarbe = null;
+            Haarfarbe = null;
+            Hautfarbe = null;
+            Bild = null;
+            //Geschicklichkeit = 0;
+            //Konstitution = 0;
+            //Reaktion = 0;
+            //Stärke = 0;
+            //Charisma = 0;
+            //Intuition = 0;
+            //Logik = 0;
+            //Willenskraft = 0;
+            Zusammenfassung = null;
+
+            Runs = 0;
+
+            //Char_Fertigkeiten
+
+            Char_Fertigkeiten = null;
+            Char_Fertigkeiten = new System.Collections.ObjectModel.ObservableCollection<Char_Fertigkeit>();
+
+            //Char_Fähigkeiten
+
+            Char_Fähigkeiten = null;
+            Char_Fähigkeiten = new System.Collections.ObjectModel.ObservableCollection<Char_Fähigkeit>();
+
+            //Char_Connections
+
+            Char_Connections = null;
+            Char_Connections = new System.Collections.ObjectModel.ObservableCollection<Char_Connection>();
+
+            //Char_Dronen_Fahrzeuge
+
+            Char_Dronen_Fahrzeuge = null;
+            Char_Dronen_Fahrzeuge = new System.Collections.ObjectModel.ObservableCollection<Char_Drone_Fahrzeug>();
+
+            //Char_Fernkampfwaffen
+
+            Char_Fernkampfwaffen = null;
+            Char_Fernkampfwaffen = new System.Collections.ObjectModel.ObservableCollection<Char_Fernkampfwaffe>();
+
+            //Char_Implantate
+
+            Char_Implantate = null;
+            Char_Implantate = new System.Collections.ObjectModel.ObservableCollection<Char_Implantat>();
+
+            //Char_Items
+
+            Char_Items = null;
+            Char_Items = new System.Collections.ObjectModel.ObservableCollection<Char_Item>();
+
+            //Char_Kommlinks
+
+            Char_Kommlinks = null;
+            Char_Kommlinks = new System.Collections.ObjectModel.ObservableCollection<Char_Kommlink>();
+
+            //Char_Nachteile
+
+            Char_Nachteile = null;
+            Char_Nachteile = new System.Collections.ObjectModel.ObservableCollection<Char_Nachteil>();
+
+            //Char_Nahkampfwaffen
+
+            Char_Nahkampfwaffen = null;
+            Char_Nahkampfwaffen = new System.Collections.ObjectModel.ObservableCollection<Char_Nahkampfwaffe>();
+
+            //Char_Panzerungen
+
+            Char_Panzerungen = null;
+            Char_Panzerungen = new System.Collections.ObjectModel.ObservableCollection<Char_Panzerung>();
+
+            //Char_Programme
+
+            Char_Programme = null;
+            Char_Programme = new System.Collections.ObjectModel.ObservableCollection<Char_Programm>();
+
+            //Char_Sins
+
+            Char_Sins = null;
+            Char_Sins = new System.Collections.ObjectModel.ObservableCollection<Char_Sin>();
+
+            //Char_Vorteile
+
+            Char_Vorteile = null;
+            Char_Vorteile = new System.Collections.ObjectModel.ObservableCollection<Char_Vorteil>();
+
+            //Char_Attribute
+
+            Char_Attribute = null;
+            Char_Attribute = new System.Collections.ObjectModel.ObservableCollection<Char_Attribut>();
+
+        }
 
     }
 
-    public class CharViewModel
+    public class CharViewModel : INotifyPropertyChanged
     {
         private Char defaultChar = new Char();
-        public Char DefaultChar { get { return this.defaultChar; } }
+        public Char DefaultChar { get { return this.defaultChar; }
+                                                                    set
+                                                                    {
+                                                                        if (value != this.defaultChar)
+                                                                        {
+                                                                            this.defaultChar = value;
+                                                                            NotifyPropertyChanged();
+                }
+                                                                   }
+                                }
 
         public CharViewModel()
         {
 
         }
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
 
 
