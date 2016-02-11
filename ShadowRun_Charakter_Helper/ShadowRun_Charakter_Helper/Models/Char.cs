@@ -458,11 +458,6 @@ namespace ShadowRun_Charakter_Helper.Models
             }
         }
 
-        public static implicit operator char(Char v)
-        {
-            throw new NotImplementedException();
-        }
-
 
         internal void Säubern()
         {
@@ -591,35 +586,7 @@ namespace ShadowRun_Charakter_Helper.Models
 
     }
 
-    public class CharViewModel : INotifyPropertyChanged
-    {
-        private Char defaultChar = new Char();
-        public Char DefaultChar { get { return this.defaultChar; }
-                                                                    set
-                                                                    {
-                                                                        if (value != this.defaultChar)
-                                                                        {
-                                                                            this.defaultChar = value;
-                                                                            NotifyPropertyChanged();
-                }
-                                                                   }
-                                }
 
-        public CharViewModel()
-        {
-
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        public int test;
-    }
 
 
     

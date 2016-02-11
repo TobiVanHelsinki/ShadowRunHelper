@@ -36,6 +36,7 @@ namespace ShadowRun_Charakter_Helper
         {
             ViewModel = (CharViewModel)e.Parameter;
             this.InitializeComponent();
+            
         }
 
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)

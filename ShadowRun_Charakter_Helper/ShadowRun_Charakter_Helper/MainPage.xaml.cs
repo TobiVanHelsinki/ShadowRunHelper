@@ -13,6 +13,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ShadowRun_Charakter_Helper.CharModel;
+using ShadowRun_Charakter_Helper.CharController;
+using ShadowRun_Charakter_Helper.Controller;
 
 // Die Vorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 dokumentiert.
 
@@ -30,6 +33,11 @@ namespace ShadowRun_Charakter_Helper
             this.InitializeComponent();
             this.ViewModel = new CharViewModel();
             MyFrame.Navigate(typeof(Frame_Char_Change), ViewModel);
+
+            CharHolder Char_new = new CharHolder();
+            //Char_new.addHandlung();
+            //Char_new.addHandlung();
+
         }
 
         private void Hamburger_Click(object sender, RoutedEventArgs e)

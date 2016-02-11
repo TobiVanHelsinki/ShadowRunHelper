@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using ShadowRun_Charakter_Helper.Models;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -22,9 +10,14 @@ namespace ShadowRun_Charakter_Helper
     /// </summary>
     public sealed partial class Frame_App_Settings : Page
     {
+        public CharViewModel ViewModel { get; set; }
+
         public Frame_App_Settings()
         {
+            this.ViewModel = new CharViewModel();
             this.InitializeComponent();
+
+            int id = ViewModel.Current.Handlungen[1].DicCD_ID;
         }
     }
 }

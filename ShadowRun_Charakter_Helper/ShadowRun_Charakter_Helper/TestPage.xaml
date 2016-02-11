@@ -6,7 +6,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:ShadowRun_Charakter_Helper.Models"
+    xmlns:datan="using:ShadowRun_Charakter_Helper.CharModel"
     mc:Ignorable="d">
+
+  <Page.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Dictionary_XAML_Styles.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+
+
+  </Page.Resources>
 
     <StackPanel Orientation="Vertical">
 
@@ -21,15 +32,22 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <!--<ListView Name="groupListView" ItemsSource="{Binding ViewModel.DefaultChar.Char_Fähigkeiten}">-->
-        <ListView Name="groupListView" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Fähigkeiten}">
+      
+      <Button Click="Handlungen_Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+
+
+        <ListView Name="groupListView" ItemsSource="{x:Bind ViewModel.Current.Handlungen}">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="data:Char_Fähigkeit">
-                    <StackPanel>
+                <DataTemplate x:DataType="datan:Panzerung">
+                    <StackPanel Orientation ="Horizontal">
                         <Border x:Name="bordermenu">
-                            <TextBlock Foreground="Red" Text="{x:Bind Bezeichnung}"/>
+                            <TextBlock Foreground="Red" Text="{x:Bind Bezeichner, Mode=TwoWay}"/>
                         </Border>
-                        <ListView Name="itemListViewss" ItemsSource="{x:Bind Zusammensetzung_A}">
+                      <Border x:Name="bordermenu_edit">
+                        <TextBox Foreground="Red" Text="{x:Bind Bezeichner, Mode=TwoWay}"/>
+                      </Border>
+                      <Button Style="{StaticResource ListView_BtnDel}" Click="Handlungen_Del"/>
+                        <!--<ListView Name="itemListViewss" ItemsSource="{x:Bind Zusammensetzung_A}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="data:Attribut_ID">
                                     <StackPanel>
@@ -39,7 +57,7 @@
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                        </ListView>
+                        </ListView>-->
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

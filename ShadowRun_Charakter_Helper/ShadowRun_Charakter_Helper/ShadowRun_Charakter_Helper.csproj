@@ -104,7 +104,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CharController\Cyberdeck.cs" />
+    <Compile Include="CharController\Controller.cs" />
     <Compile Include="IO\CharIO.cs" />
+    <Compile Include="CharModel\Panzerung.cs" />
+    <Compile Include="CharModel\Item.cs" />
+    <Compile Include="CharController\Panzerung.cs" />
+    <Compile Include="Controller\CharHolder.cs" />
+    <Compile Include="CharModel\Model.cs" />
+    <Compile Include="CharModel\Fertigkeit.cs" />
+    <Compile Include="Models\DictionaryCharEntry.cs" />
+    <Compile Include="CharModel\Handlung.cs" />
+    <Compile Include="Models\CharViewModel.cs" />
     <Compile Include="Models\MyException.cs" />
     <Compile Include="UI_Converter_CB.cs" />
     <Compile Include="UI_Converter_Attribute.cs" />
