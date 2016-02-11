@@ -617,9 +617,11 @@ namespace ShadowRun_Charakter_Helper.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        public int test;
     }
 
 
-
+    
 
 }

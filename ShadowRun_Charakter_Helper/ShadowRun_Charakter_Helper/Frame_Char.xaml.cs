@@ -5,6 +5,8 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Primitives;
 using System.ServiceModel.Channels;
 using Windows.UI.Xaml.Data;
+using System.Collections;
+using System;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -51,6 +53,8 @@ namespace ShadowRun_Charakter_Helper
             ComboBox Zusammensetzung_A_CBB = new ComboBox();
 
             Zusammensetzung_A_CBB.SelectedIndex = 1;
+
+
         }
     }
 }
