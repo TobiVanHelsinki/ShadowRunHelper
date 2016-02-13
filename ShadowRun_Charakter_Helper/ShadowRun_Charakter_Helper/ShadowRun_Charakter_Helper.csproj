@@ -108,6 +108,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CharController\Connection.cs" />
+    <Compile Include="CharController\Sin.cs" />
+    <Compile Include="CharController\Nachteil.cs" />
+    <Compile Include="CharController\Vorteil.cs" />
+    <Compile Include="CharController\Eigenschaft.cs" />
+    <Compile Include="CharController\Implantat.cs" />
+    <Compile Include="CharController\Programm.cs" />
+    <Compile Include="CharController\Munition.cs" />
     <Compile Include="CharController\Kommlink.cs" />
     <Compile Include="CharController\Fernkampfwaffe.cs" />
     <Compile Include="CharController\Nahkampfwaffe.cs" />
@@ -122,7 +130,16 @@
     <Compile Include="CharController\Handlung.cs" />
     <Compile Include="CharModel\CyberDeck.cs" />
     <Compile Include="CharModel\Attribut.cs" />
+    <Compile Include="CharModel\Connection.cs" />
+    <Compile Include="CharModel\Person.cs" />
+    <Compile Include="CharModel\Sin.cs" />
+    <Compile Include="CharModel\Vorteil.cs" />
+    <Compile Include="CharModel\Nachteil.cs" />
     <Compile Include="CharModel\Fernkampfwaffe.cs" />
+    <Compile Include="CharModel\Eigenschaft.cs" />
+    <Compile Include="CharModel\Implantat.cs" />
+    <Compile Include="CharModel\Programm.cs" />
+    <Compile Include="CharModel\Munition.cs" />
     <Compile Include="CharModel\Vehikel.cs" />
     <Compile Include="CharModel\Kommlink.cs" />
     <Compile Include="CharModel\Nahkampfwaffe.cs" />
@@ -135,10 +152,11 @@
     <Compile Include="Controller\CharHolder.cs" />
     <Compile Include="CharModel\Model.cs" />
     <Compile Include="CharModel\Fertigkeit.cs" />
-    <Compile Include="Models\DictionaryCharEntry.cs" />
+    <Compile Include="Model\DictionaryCharEntry.cs" />
     <Compile Include="CharModel\Handlung.cs" />
-    <Compile Include="Models\CharViewModel.cs" />
+    <Compile Include="Model\CharViewModel.cs" />
     <Compile Include="Models\MyException.cs" />
+    <Compile Include="Processing\Loop.cs" />
     <Compile Include="UI_Converter_CB.cs" />
     <Compile Include="UI_Converter_Attribute.cs" />
     <Compile Include="UI_Converter_Digit.cs" />

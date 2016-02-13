@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ShadowRun_Charakter_Helper.CharModel
+{
+    public class Programm : Item
+    {
+        public double optionen;
+        public double Optionen
+        {
+            get { return optionen; }
+            set
+            {
+                if (value != this.optionen)
+                {
+                    this.optionen = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public Programm(int dicCD_ID)
+        {
+            this.DicCD_ID = dicCD_ID;
+        }
+        public Programm()
+        {
+            
+        }
+
+    }
+}
