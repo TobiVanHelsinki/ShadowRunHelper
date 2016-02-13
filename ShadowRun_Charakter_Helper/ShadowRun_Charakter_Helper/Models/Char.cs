@@ -424,12 +424,12 @@ namespace ShadowRun_Charakter_Helper.Models
 
         public Char()
         {
-            
+
             this.Char_Fertigkeiten = new ObservableCollection<Char_Fertigkeit>();
             this.Char_Fähigkeiten = new ObservableCollection<Char_Fähigkeit>();
             this.Char_Attribute = new ObservableCollection<Char_Attribut>();
             this.Char_Items = new ObservableCollection<Char_Item>();
-            this.Char_Connections = new ObservableCollection<Char_Connection> ();
+            this.Char_Connections = new ObservableCollection<Char_Connection>();
             Char_Dronen_Fahrzeuge = new ObservableCollection<Char_Drone_Fahrzeug>();
             Char_Fernkampfwaffen = new ObservableCollection<Char_Fernkampfwaffe>();
             Char_Implantate = new ObservableCollection<Char_Implantat>();
@@ -443,7 +443,7 @@ namespace ShadowRun_Charakter_Helper.Models
             Char_Vorteile = new ObservableCollection<Char_Vorteil>();
         }
 
-             public void Char_add_Aktion()
+        public void Char_add_Aktion()
         {
 
         }
@@ -457,8 +457,6 @@ namespace ShadowRun_Charakter_Helper.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-
         internal void Säubern()
         {
             ID_Char = 0;
@@ -583,12 +581,5 @@ namespace ShadowRun_Charakter_Helper.Models
             Char_Attribute = new System.Collections.ObjectModel.ObservableCollection<Char_Attribut>();
 
         }
-
     }
-
-
-
-
-    
-
 }

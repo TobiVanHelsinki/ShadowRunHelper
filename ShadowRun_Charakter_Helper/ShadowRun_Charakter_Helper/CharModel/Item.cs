@@ -10,8 +10,8 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Item : CharModel.Model
     {
-        public int besitz;
-        public int Besitz
+        public bool besitz;
+        public bool Besitz
         {
             get { return besitz; }
             set
@@ -24,8 +24,8 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
-        public int aktiv;
-        public int Aktiv
+        public bool aktiv;
+        public bool Aktiv
         {
             get { return aktiv; }
             set

@@ -1,4 +1,5 @@
-﻿using ShadowRun_Charakter_Helper.Models;
+﻿using ShadowRun_Charakter_Helper.CharModel;
+using ShadowRun_Charakter_Helper.Models;
 using System;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
@@ -25,7 +26,9 @@ namespace ShadowRun_Charakter_Helper
         private void Handlungen_Del(object sender, RoutedEventArgs e)
         {
 
-          //  ViewModel.Current.removeHandlung((Handlung)((Button)sender).DataContext);
+            //  ViewModel.Current.removeHandlung((Handlung)((Button)sender).DataContext);
+            //ViewModel.Current.PanzerungsController.remove((Panzerung)((Button)sender).DataContext);
+            ViewModel.Current.PanzerungsController.ToggleActive((CharModel.Panzerung)((Button)sender).DataContext);
         }
         private void Handlungen_Add(object sender, RoutedEventArgs e)
         {

@@ -36,12 +36,12 @@
       <Button Click="Handlungen_Add" Style="{StaticResource ListView_U_BtnAdd}"/>
 
 
-        <ListView Name="groupListView" ItemsSource="{x:Bind ViewModel.Current.Handlungen}">
+        <ListView Name="groupListView" ItemsSource="{x:Bind ViewModel.Current.PanzerungsController.DataList}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="datan:Panzerung">
                     <StackPanel Orientation ="Horizontal">
                         <Border x:Name="bordermenu">
-                            <TextBlock Foreground="Red" Text="{x:Bind Bezeichner, Mode=TwoWay}"/>
+                            <TextBlock Foreground="Red" Text="{x:Bind Bezeichner, Mode=OneWay}"/>
                         </Border>
                       <Border x:Name="bordermenu_edit">
                         <TextBox Foreground="Red" Text="{x:Bind Bezeichner, Mode=TwoWay}"/>

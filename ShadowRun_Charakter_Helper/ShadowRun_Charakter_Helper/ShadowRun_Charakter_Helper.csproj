@@ -106,6 +106,8 @@
     </Compile>
     <Compile Include="CharController\Cyberdeck.cs" />
     <Compile Include="CharController\Controller.cs" />
+    <Compile Include="CharModel\CyberDeck.cs" />
+    <Compile Include="Controller\HashDictionary.cs" />
     <Compile Include="IO\CharIO.cs" />
     <Compile Include="CharModel\Panzerung.cs" />
     <Compile Include="CharModel\Item.cs" />

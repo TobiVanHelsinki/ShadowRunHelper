@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 
 namespace ShadowRun_Charakter_Helper.CharController
 {
-    class Cyberdeck : CharController.Controller<CharModel.Cyberdeck>
+    class Cyberdeck : CharController.Controller<CharModel.CyberDeck>
     {
+
+        public Cyberdeck(int ID)
+        {
+            Dic_ID = ID;
+            //DataList = new ObservableCollection<CharModel.Cyberdeck>();
+        }
     }
 }

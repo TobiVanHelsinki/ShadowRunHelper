@@ -10,13 +10,13 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Panzerung : CharModel.Item
     {
-        public double ballistik;
+        public double ballistik { get; set; }
         public double Ballistik
         {
             get { return ballistik; }
             set
             {
-                if (value != this.besitz)
+                if (value != this.ballistik)
                 {
                     this.ballistik = value;
                     NotifyPropertyChanged();
@@ -27,7 +27,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
         public double stoß;
         public double Stoß
         {
-            get { return aktiv; }
+            get { return stoß; }
             set
             {
                 if (value != this.stoß)
@@ -46,5 +46,26 @@ namespace ShadowRun_Charakter_Helper.CharModel
 
             this.Bezeichner = "Tes" + rand.Next();
         }
+
+        public Panzerung()
+        {
+
+        }
+
+
+        //public static implicit operator int(Panzerung v)
+        //{
+        //    try
+        //    {
+        //        return v;
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw new Exception("Konvertierung von T in Panzerung fehlgeschlagen");
+        //    }
+                
+                
+        //}
     }
 }
