@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShadowRun_Charakter_Helper.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -36,8 +37,7 @@ namespace ShadowRun_Charakter_Helper
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-
-    }
+        }
 
         /// <summary>
         /// Wird aufgerufen, wenn die Anwendung durch den Endbenutzer normal gestartet wird. Weitere Einstiegspunkte

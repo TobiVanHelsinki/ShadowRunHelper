@@ -13,6 +13,9 @@ namespace ShadowRun_Charakter_Helper.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public string Typ { get; set; }
+        public string Anmerkung { get; set; }
+
+        public string Schaden { get; set; }
         public string Größe { get; set; }
         public string Handling { get; set; }
         public string Beschleunigung { get; set; }
@@ -21,8 +24,7 @@ namespace ShadowRun_Charakter_Helper.Models
         public string Rumpf { get; set; }
         public string Panzer { get; set; }
         public string Sensor { get; set; }
-        public string Anmerkung { get; set; }
-        public string Schaden { get; set; }
+
         public string Geschwindigkeit { get; set; }
 
         public Char_Drone_Fahrzeug()

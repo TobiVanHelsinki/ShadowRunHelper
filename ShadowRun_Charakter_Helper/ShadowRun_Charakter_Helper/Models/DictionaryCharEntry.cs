@@ -72,7 +72,7 @@ namespace ShadowRun_Charakter_Helper.Models
             }
         }
 
-        public DictionaryCharEntry(String bezeichner, String typ, int wert, String zusatz,  String notiz)
+        public DictionaryCharEntry(String bezeichner, String typ, double wert, String zusatz,  String notiz)
         {
             this.Bezeichner = bezeichner;
             this.Typ = typ;

@@ -38,34 +38,9 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
-        public Panzerung(int dicCD_ID)
-        {
-            this.DicCD_ID = dicCD_ID;
-            Random rand;
-            rand = new Random();
-
-            this.Bezeichner = "Tes" + rand.Next();
-        }
-
         public Panzerung()
         {
 
         }
-
-
-        //public static implicit operator int(Panzerung v)
-        //{
-        //    try
-        //    {
-        //        return v;
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw new Exception("Konvertierung von T in Panzerung fehlgeschlagen");
-        //    }
-                
-                
-        //}
     }
 }

@@ -2,13 +2,14 @@
 
 namespace ShadowRun_Charakter_Helper.CharController
 {
-    class Cyberdeck : CharController.Controller<CharModel.CyberDeck>
+    class CyberDeck : CharController.ControllerMultiItems<CharModel.CyberDeck>
     {
-
-        public Cyberdeck(int ID)
+        public CyberDeck()
         {
-            Dic_ID = ID;
-            //DataList = new ObservableCollection<CharModel.Cyberdeck>();
+        }
+
+        public CyberDeck(ObservableCollection<CharModel.CyberDeck> obj)
+        {
         }
     }
 }

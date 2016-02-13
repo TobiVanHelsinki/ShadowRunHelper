@@ -1,20 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Handlung : CharModel.Model
     {
+
+        public int zusammensetzung;
+        public int Zusammensetzung
+        {
+            get { return zusammensetzung; }
+            set
+            {
+                if (value != this.zusammensetzung)
+                {
+                    this.zusammensetzung = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        public int wert_Mod;
+        public int Wert_Mod
+        {
+            get { return wert_Mod; }
+            set
+            {
+                if (value != this.wert_Mod)
+                {
+                    this.wert_Mod = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public Handlung(int dicCD_ID)
         {
-            this.DicCD_ID = dicCD_ID;
-            Random rand;
-            rand = new Random();
 
-            this.Bezeichner = "Tes" + rand.Next();
+        }
+
+        public Handlung()
+        {
+
         }
     }
 }

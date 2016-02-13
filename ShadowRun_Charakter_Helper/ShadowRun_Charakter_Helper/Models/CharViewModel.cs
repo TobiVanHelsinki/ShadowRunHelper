@@ -11,7 +11,7 @@ namespace ShadowRun_Charakter_Helper.Models
 {
     public class CharViewModel : INotifyPropertyChanged
     {
-        private Char defaultChar = new Char();
+        private Char defaultChar;
         public Char DefaultChar
         {
             get { return this.defaultChar; }
@@ -25,7 +25,7 @@ namespace ShadowRun_Charakter_Helper.Models
             }
         }
 
-        private Controller.CharHolder current = new Controller.CharHolder();
+        private Controller.CharHolder current;
         public Controller.CharHolder Current
         {
             get { return this.current; }
@@ -41,7 +41,14 @@ namespace ShadowRun_Charakter_Helper.Models
 
         public CharViewModel()
         {
+            defaultChar = new Char();
+            current = new Controller.CharHolder();
+        }
 
+        public CharViewModel(Char x_defaultChar, Controller.CharHolder x_current)
+        {
+            defaultChar = x_defaultChar;
+            current = x_current;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

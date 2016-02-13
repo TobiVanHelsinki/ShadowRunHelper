@@ -98,15 +98,35 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="ClassDiagram4.cd" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CharController\Cyberdeck.cs" />
+    <Compile Include="CharController\Kommlink.cs" />
+    <Compile Include="CharController\Fernkampfwaffe.cs" />
+    <Compile Include="CharController\Nahkampfwaffe.cs" />
+    <Compile Include="CharController\Item.cs" />
+    <Compile Include="CharController\ControllerMultiItems.cs" />
+    <Compile Include="CharController\ControllerSingle.cs" />
+    <Compile Include="CharController\ControllerMulti.cs" />
+    <Compile Include="CharController\CyberDeck.cs" />
     <Compile Include="CharController\Controller.cs" />
+    <Compile Include="CharController\Attribut.cs" />
+    <Compile Include="CharController\Fertigkeit.cs" />
+    <Compile Include="CharController\Handlung.cs" />
     <Compile Include="CharModel\CyberDeck.cs" />
+    <Compile Include="CharModel\Attribut.cs" />
+    <Compile Include="CharModel\Fernkampfwaffe.cs" />
+    <Compile Include="CharModel\Vehikel.cs" />
+    <Compile Include="CharModel\Kommlink.cs" />
+    <Compile Include="CharModel\Nahkampfwaffe.cs" />
+    <Compile Include="CharModel\Waffe.cs" />
     <Compile Include="Controller\HashDictionary.cs" />
     <Compile Include="IO\CharIO.cs" />
     <Compile Include="CharModel\Panzerung.cs" />

@@ -33,11 +33,6 @@ namespace ShadowRun_Charakter_Helper
             this.InitializeComponent();
             this.ViewModel = new CharViewModel();
             MyFrame.Navigate(typeof(Frame_Char_Change), ViewModel);
-
-            CharHolder Char_new = new CharHolder();
-            //Char_new.addHandlung();
-            //Char_new.addHandlung();
-
         }
 
         private void Hamburger_Click(object sender, RoutedEventArgs e)

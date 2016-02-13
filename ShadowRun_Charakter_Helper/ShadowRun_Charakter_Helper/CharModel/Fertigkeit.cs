@@ -12,6 +12,10 @@ namespace ShadowRun_Charakter_Helper.CharModel
         {
             this.DicCD_ID = dicCD_ID;
         }
+        public Fertigkeit()
+        {
+            
+        }
 
     }
 }

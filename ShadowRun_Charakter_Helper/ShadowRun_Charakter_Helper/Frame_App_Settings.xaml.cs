@@ -16,8 +16,6 @@ namespace ShadowRun_Charakter_Helper
         {
             this.ViewModel = new CharViewModel();
             this.InitializeComponent();
-
-            int id = ViewModel.Current.Handlungen[1].DicCD_ID;
         }
     }
 }

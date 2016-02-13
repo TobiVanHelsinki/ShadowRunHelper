@@ -21,21 +21,19 @@ namespace ShadowRun_Charakter_Helper.Controller
             int temp = 0;
             try
             {
-                IDictionaryEnumerator Enum = Data.GetEnumerator();
-
-
-                while (Data.ContainsKey(temp))
+                if (Data.Keys.Count != 0)
                 {
-                    temp++;
+                    temp = Data.Keys.Max()+1;
                 }
-
             }
             catch (Exception)
             {
                 throw new Exception("Konnte keinen neuen Key aus dem Dictionary erhalten");
             }
-
-
+            if (temp == 0)
+            {
+                temp = 1; // da 0 als Zahl nicht vergeben wird
+            }
 
             return temp;
         }
