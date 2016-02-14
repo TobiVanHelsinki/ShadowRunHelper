@@ -16,6 +16,13 @@ namespace ShadowRun_Charakter_Helper.CharController
         public Controller.HashDictionary HD;
         public int HD_ID { get; set; }
 
+
+        /// <summary>
+        /// Gibt dem Controller DAS HashDictionary
+        /// Sucht sich aus dem HD eine neue ID, wenn er keine hat
+        /// Fügt sich selbst anschließend dem HD hinzu
+        /// </summary>
+        /// <param name="hD">HashDictionary des Chars</param>
         public void setHD(Controller.HashDictionary hD)
         {
             this.HD = hD;
@@ -25,36 +32,52 @@ namespace ShadowRun_Charakter_Helper.CharController
             }
             add_to_HD();
         }
-
+        /// <summary>
+        /// Fügt sich selbst dem HD hinzu
+        /// </summary>
         protected void add_to_HD()
         {
             HD.Data.Add(this.HD_ID, new Models.DictionaryCharEntry(DicCD_Bezeichner, DicCD_Typ, DicCD_Wert, DicCD_Zusatz, DicCD_Notiz));
         }
-
+        /// <summary>
+        /// löscht sich aus dem HD
+        /// </summary>
         public void remove_from_HD()
         {
             HD.Data.Remove(this.HD_ID);
         }
 
-
+        /// <summary>
+        /// Konstruktor für neu
+        /// </summary>
         public Controller()
         {
             addRessources();
             DicCD_Typ = this.GetType().ToString();
             Ressources.TryGetValue(DicCD_Typ, out DicCD_Typ);
         }
+        /// <summary>
+        /// Konstruktor für Laden
+        /// </summary>
+        /// <param name="obj"></param>
         public Controller(T obj)
         {
             addRessources();
             DicCD_Typ = this.GetType().ToString();
             Ressources.TryGetValue(DicCD_Typ, out DicCD_Typ);
         }
+        /// <summary>
+        /// Aktualisiert den Wert im HD
+        /// </summary>
+        //ToDo schreiben
         public void Aktualisierungen()
         {
-            //ToDo:
         }
 
-
+        /// <summary>
+        /// Hilfmethode zum Bennenen
+        /// </summary>
+        /// <completionlist cref=""/>
         private void addRessources()
         {
             Ressources.Add("ShadowRun_Charakter_Helper.CharController.Fertigkeit", "Fertigkeit");

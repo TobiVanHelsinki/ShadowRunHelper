@@ -6,6 +6,9 @@ using System.Runtime.CompilerServices;
 
 namespace ShadowRun_Charakter_Helper.Controller
 {
+    /// <summary>
+    /// Hält einen Char mit samst Controlern und Daten
+    /// </summary>
     public class CharHolder
     {
         public HashDictionary HD = new HashDictionary();
@@ -28,7 +31,9 @@ namespace ShadowRun_Charakter_Helper.Controller
         public CharController.Vehikel VehikelController { get; set; }
         public CharController.Panzerung PanzerungController { get; set; }
 
-        // für "neu"
+        /// <summary>
+        /// Konstruktor nutzen, um neue Controller und Objekte zu erhalten
+        /// </summary>
         public CharHolder()
         {
 
@@ -60,7 +65,25 @@ namespace ShadowRun_Charakter_Helper.Controller
 
         }
 
-        // für "laden"
+/// <summary>
+/// Konstruktor nutzen, wenn Daten der Controller und Objekte bereits vorhanden
+/// </summary>
+/// <param name="handlung"></param>
+/// <param name="fertigkeit"></param>
+/// <param name="attribut"></param>
+/// <param name="item"></param>
+/// <param name="munition"></param>
+/// <param name="implantat"></param>
+/// <param name="vorteil"></param>
+/// <param name="nachteil"></param>
+/// <param name="connection"></param>
+/// <param name="sin"></param>
+/// <param name="nahkampfwaffe"></param>
+/// <param name="fernkampfwaffe"></param>
+/// <param name="kommlink"></param>
+/// <param name="cyberdeck"></param>
+/// <param name="vehikel"></param>
+/// <param name="panzerung"></param>
         public CharHolder(
                         ObservableCollection<CharController.Handlung> handlung,
                         ObservableCollection<CharController.Fertigkeit> fertigkeit,
