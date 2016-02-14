@@ -98,10 +98,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
-    <None Include="ClassDiagram3.cd" />
-    <None Include="ClassDiagram4.cd" />
+    <None Include="Dok\ClassDiagram1.cd" />
+    <None Include="Dok\ClassDiagram2.cd" />
+    <None Include="Dok\ClassDiagram3.cd" />
+    <None Include="Dok\ClassDiagram4.cd" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -158,25 +158,25 @@
     <Compile Include="Model\CharViewModel.cs" />
     <Compile Include="Models\MyException.cs" />
     <Compile Include="Processing\Loop.cs" />
-    <Compile Include="UI_Converter_CB.cs" />
-    <Compile Include="UI_Converter_Attribute.cs" />
-    <Compile Include="UI_Converter_Digit.cs" />
-    <Compile Include="Frame_App_Settings.xaml.cs">
+    <Compile Include="UIConverter\UI_Converter_CB.cs" />
+    <Compile Include="UIConverter\UI_Converter_Attribute.cs" />
+    <Compile Include="UIConverter\UI_Converter_Digit.cs" />
+    <Compile Include="UIPages\Frame_App_Settings.xaml.cs">
       <DependentUpon>Frame_App_Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frame_Char.xaml.cs">
+    <Compile Include="UIPages\Frame_Char.xaml.cs">
       <DependentUpon>Frame_Char.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frame_Char_Change.xaml.cs">
+    <Compile Include="UIPages\Frame_Char_Change.xaml.cs">
       <DependentUpon>Frame_Char_Change.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frame_Char_Edit.xaml.cs">
+    <Compile Include="UIPages\Frame_Char_Edit.xaml.cs">
       <DependentUpon>Frame_Char_Edit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frame_Database_Edit.xaml.cs">
+    <Compile Include="UIPages\Frame_Database_Edit.xaml.cs">
       <DependentUpon>Frame_Database_Edit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="UIPages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Menu.cs" />
@@ -202,10 +202,10 @@
     <Compile Include="Models\Load_Data.cs" />
     <Compile Include="Models\Store_Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TabHeader.xaml.cs">
+    <Compile Include="UIParts\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TestPage.xaml.cs">
+    <Compile Include="UIPages\TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -269,43 +269,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Dictionary_XAML_Styles.xaml">
+    <Page Include="Ressourcen\Dictionary_XAML_Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Frame_App_Settings.xaml">
+    <Page Include="UIPages\Frame_App_Settings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Frame_Char.xaml">
+    <Page Include="UIPages\Frame_Char.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Frame_Char_Change.xaml">
+    <Page Include="UIPages\Frame_Char_Change.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Frame_Char_Edit.xaml">
+    <Page Include="UIPages\Frame_Char_Edit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Frame_Database_Edit.xaml">
+    <Page Include="UIPages\Frame_Database_Edit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="UIPages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SplitViewStyles.xaml">
+    <Page Include="UIParts\SplitViewStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TabHeader.xaml">
+    <Page Include="UIParts\TabHeader.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TestPage.xaml">
+    <Page Include="UIPages\TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

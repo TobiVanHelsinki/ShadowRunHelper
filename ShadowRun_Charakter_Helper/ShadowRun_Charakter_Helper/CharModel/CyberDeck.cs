@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShadowRun_Charakter_Helper.CharModel
 {
-    class CyberDeck : CharModel.Kommlink
+    public class CyberDeck : CharModel.Kommlink
     {
 
 

@@ -36,7 +36,7 @@
       <Button Click="Handlungen_Add" Style="{StaticResource ListView_U_BtnAdd}"/>
 
 
-        <ListView Name="groupListView" ItemsSource="{x:Bind ViewModel.Current.PanzerungsController.DataList}">
+        <ListView Name="groupListView" ItemsSource="{x:Bind ViewModel.Current.PanzerungController.DataList}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="datan:Panzerung">
                     <StackPanel Orientation ="Horizontal">

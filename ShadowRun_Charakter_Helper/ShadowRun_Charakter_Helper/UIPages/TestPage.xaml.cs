@@ -28,12 +28,12 @@ namespace ShadowRun_Charakter_Helper
 
             //  ViewModel.Current.removeHandlung((Handlung)((Button)sender).DataContext);
             //ViewModel.Current.PanzerungsController.remove((Panzerung)((Button)sender).DataContext);
-            ViewModel.Current.PanzerungsController.ToggleActive((CharModel.Panzerung)((Button)sender).DataContext);
+            ViewModel.Current.PanzerungController.ToggleActive((CharModel.Panzerung)((Button)sender).DataContext);
         }
         private void Handlungen_Add(object sender, RoutedEventArgs e)
         {
             // ViewModel.Current.addHandlung();
-            ViewModel.Current.PanzerungsController.add();
+            ViewModel.Current.PanzerungController.add();
         }
         //private void StackPanel_Tapped(object sender, TappedRoutedEventArgs e)
         //{
