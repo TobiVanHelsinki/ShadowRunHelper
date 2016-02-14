@@ -2,7 +2,7 @@
 
 namespace ShadowRun_Charakter_Helper.CharController
 {
-    class CyberDeck : CharController.ControllerMultiItems<CharModel.CyberDeck>
+    public class CyberDeck : CharController.ControllerMultiItems<CharModel.CyberDeck>
     {
         public CyberDeck()
         {

@@ -2,7 +2,7 @@
 
 namespace ShadowRun_Charakter_Helper.CharController
 {
-    class Sin : CharController.ControllerSingle<CharModel.Sin>
+    public class Sin : CharController.ControllerSingle<CharModel.Sin>
     {
         public Sin()
         {

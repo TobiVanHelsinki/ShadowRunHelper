@@ -9,64 +9,101 @@ namespace ShadowRun_Charakter_Helper.Controller
     public class CharHolder
     {
         public HashDictionary HD = new HashDictionary();
-        public List<String> RessourcesMultiple = new List<String>();
-        public List<String> RessourcesSingle = new List<String>();
 
-        public ObservableCollection<CharController.Handlung> HandlungsController { get; set; }
-        public ObservableCollection<CharController.Fertigkeit> FertigkeitenController { get; set; }
-        public ObservableCollection<CharController.Fertigkeit> AttributsController { get; set; }
-        public ObservableCollection<CharController.Handlung> ItemController { get; set; }
-        public ObservableCollection<CharController.Fertigkeit> MunitionsController { get; set; }
-        public ObservableCollection<CharController.Handlung> ImplantateController { get; set; }
-        public ObservableCollection<CharController.Fertigkeit> VorteilsController { get; set; }
-        public ObservableCollection<CharController.Handlung> NachteilsController { get; set; }
-        public ObservableCollection<CharController.Fertigkeit> ConnectionsController { get; set; }
-        public ObservableCollection<CharController.Handlung> SinsController { get; set; }
-        public CharController.Panzerung NahkampfwaffenController { get; set; }
-        public CharController.Panzerung FernkampfwaffenController { get; set; }
-        public CharController.Panzerung KommlinkController { get; set; }
-        public CharController.Panzerung DeckController { get; set; }
-        public CharController.Panzerung VehikelController { get; set; }
-        public CharController.Panzerung PanzerungsController { get; set; }
+        public ObservableCollection<CharController.Handlung> HandlungController { get; set; }
+        public ObservableCollection<CharController.Fertigkeit> FertigkeitController { get; set; }
+        public ObservableCollection<CharController.Attribut> AttributController { get; set; }
+        public ObservableCollection<CharController.Item> ItemController { get; set; }
+        public ObservableCollection<CharController.Munition> MunitionController { get; set; }
+        public ObservableCollection<CharController.Implantat> ImplantatController { get; set; }
+        public ObservableCollection<CharController.Vorteil> VorteilController { get; set; }
+        public ObservableCollection<CharController.Nachteil> NachteilController { get; set; }
+        public ObservableCollection<CharController.Connection> ConnectionController { get; set; }
+        public ObservableCollection<CharController.Sin> SinController { get; set; }
 
-
-        public static T GetInstance<T>(params object[] args)
-        {
-            return (T)Activator.CreateInstance(typeof(T), args);
-        }
-
+        public CharController.Nahkampfwaffe NahkampfwaffeController { get; set; }
+        public CharController.Fernkampfwaffe FernkampfwaffeController { get; set; }
+        public CharController.Kommlink KommlinkController { get; set; }
+        public CharController.CyberDeck CyberDeckController { get; set; }
+        public CharController.Vehikel VehikelController { get; set; }
+        public CharController.Panzerung PanzerungController { get; set; }
 
         // für "neu"
         public CharHolder()
         {
-            addRessources();
-            foreach (String element in RessourcesSingle)
-            {
-                Type loopType = Type.GetType(element);
-                var HandlungsController = Activator.CreateInstance(loopType);
-            }
-            foreach (String element in RessourcesMultiple)
-            {
-                Type loopType = Type.GetType(element);
-            }
+
+            HandlungController = new ObservableCollection<CharController.Handlung>();
+            FertigkeitController = new ObservableCollection<CharController.Fertigkeit>();
+            AttributController = new ObservableCollection<CharController.Attribut>();
+            ItemController = new ObservableCollection<CharController.Item>();
+            MunitionController = new ObservableCollection<CharController.Munition>();
+            ImplantatController = new ObservableCollection<CharController.Implantat>();
+            VorteilController = new ObservableCollection<CharController.Vorteil>();
+            NachteilController = new ObservableCollection<CharController.Nachteil>();
+            ConnectionController = new ObservableCollection<CharController.Connection>();
+            SinController = new ObservableCollection<CharController.Sin>();
+
+            NahkampfwaffeController = new CharController.Nahkampfwaffe();
+            FernkampfwaffeController = new CharController.Fernkampfwaffe();
+            KommlinkController = new CharController.Kommlink();
+            CyberDeckController = new CharController.CyberDeck();
+            VehikelController = new CharController.Vehikel();
+            PanzerungController = new CharController.Panzerung();
+
+            NahkampfwaffeController.setHD(HD);
+            FernkampfwaffeController.setHD(HD);
+            KommlinkController.setHD(HD);
+            CyberDeckController.setHD(HD);
+            VehikelController.setHD(HD);
+            PanzerungController.setHD(HD);
 
 
-
-            //HandlungsController = new ObservableCollection<CharController.Handlung>();
-            //PanzerungsController = new CharController.Panzerung();
-            //    PanzerungsController.setHD(HD);
         }
 
         // für "laden"
         public CharHolder(
-                ObservableCollection<CharController.Fertigkeit> F,
-                ObservableCollection<CharController.Handlung> H,
-                CharController.Panzerung P)
+                        ObservableCollection<CharController.Handlung> handlung,
+                        ObservableCollection<CharController.Fertigkeit> fertigkeit,
+                        ObservableCollection<CharController.Attribut> attribut,
+                        ObservableCollection<CharController.Item> item,
+                        ObservableCollection<CharController.Munition> munition,
+                        ObservableCollection<CharController.Implantat> implantat,
+                        ObservableCollection<CharController.Vorteil> vorteil,
+                        ObservableCollection<CharController.Nachteil> nachteil,
+                        ObservableCollection<CharController.Connection> connection,
+                        ObservableCollection<CharController.Sin> sin,
+                        CharController.Nahkampfwaffe nahkampfwaffe,
+                        CharController.Fernkampfwaffe fernkampfwaffe,
+                        CharController.Kommlink kommlink,
+                        CharController.CyberDeck cyberdeck,
+                        CharController.Vehikel vehikel,
+                        CharController.Panzerung panzerung
+            )
         {
-            FertigkeitenController = F;
-            HandlungsController = H;
-            PanzerungsController = P;
-            PanzerungsController.setHD(HD);
+            HandlungController = handlung;
+            FertigkeitController = fertigkeit;
+            AttributController = attribut;
+            ItemController = item;
+            MunitionController = munition;
+            ImplantatController = implantat;
+            VorteilController = vorteil;
+            NachteilController = nachteil;
+            ConnectionController = connection;
+            SinController = sin;
+
+            NahkampfwaffeController = nahkampfwaffe;
+            FernkampfwaffeController = fernkampfwaffe;
+            KommlinkController = kommlink;
+            CyberDeckController = cyberdeck;
+            VehikelController = vehikel;
+            PanzerungController = panzerung;
+
+            NahkampfwaffeController.setHD(HD);
+            FernkampfwaffeController.setHD(HD);
+            KommlinkController.setHD(HD);
+            CyberDeckController.setHD(HD);
+            VehikelController.setHD(HD);
+            PanzerungController.setHD(HD);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -76,24 +113,6 @@ namespace ShadowRun_Charakter_Helper.Controller
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-        }
-
-        private void addRessources()
-        {
-            RessourcesSingle.Add("ShadowRun_Charakter_Helper.CharController.Fertigkeit");
-            RessourcesSingle.Add("ShadowRun_Charakter_Helper.CharController.Handlung");
-            RessourcesSingle.Add("ShadowRun_Charakter_Helper.CharController.Attribut");
-            RessourcesSingle.Add("ShadowRun_Charakter_Helper.CharController.Item");
-            RessourcesSingle.Add("ShadowRun_Charakter_Helper.CharController.Programm");
-            RessourcesSingle.Add("ShadowRun_Charakter_Helper.CharController.Vorteil");
-            RessourcesSingle.Add("ShadowRun_Charakter_Helper.CharController.Nachteil");
-            RessourcesMultiple.Add("ShadowRun_Charakter_Helper.CharController.Panzerung");
-            RessourcesMultiple.Add("ShadowRun_Charakter_Helper.CharController.CyberDecks");
-            RessourcesMultiple.Add("ShadowRun_Charakter_Helper.CharController.Kommlink");
-            RessourcesMultiple.Add("ShadowRun_Charakter_Helper.CharController.Nahkampfwaffen");
-            RessourcesMultiple.Add("ShadowRun_Charakter_Helper.CharController.Fernkampfwaffen");
-
-            
         }
     }
 }

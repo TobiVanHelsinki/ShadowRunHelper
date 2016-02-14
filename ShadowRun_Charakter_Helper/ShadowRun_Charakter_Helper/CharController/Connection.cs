@@ -2,7 +2,7 @@
 
 namespace ShadowRun_Charakter_Helper.CharController
 {
-    class Connection
+    public class Connection
     {
         public Connection()
         {
