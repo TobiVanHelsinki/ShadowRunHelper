@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Handlung : CharModel.Model
     {
 
-        public int zusammensetzung;
-        public int Zusammensetzung
+        public List<int> zusammensetzung;
+        public List<int> Zusammensetzung
         {
             get { return zusammensetzung; }
             set
@@ -31,7 +32,19 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-
+        public String grenze;
+        public String Grenze
+        {
+            get { return grenze; }
+            set
+            {
+                if (value != this.grenze)
+                {
+                    this.grenze = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
         public Handlung(int dicCD_ID)
         {
 

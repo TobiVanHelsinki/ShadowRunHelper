@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ShadowRun_Charakter_Helper</RootNamespace>
     <AssemblyName>ShadowRun_Charakter_Helper</AssemblyName>
-    <DefaultLanguage>de-DE</DefaultLanguage>
+    <DefaultLanguage>de-de</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
@@ -103,6 +103,7 @@
     <None Include="Dok\ClassDiagram3.cd" />
     <None Include="Dok\ClassDiagram4.cd" />
     <None Include="project.json" />
+    <PRIResource Include="Strings\de-de\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
