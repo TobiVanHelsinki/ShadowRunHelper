@@ -5,7 +5,7 @@
     xmlns:local="using:ShadowRun_Charakter_Helper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:data="using:ShadowRun_Charakter_Helper.Models"
+    xmlns:data="using:ShadowRun_Charakter_Helper.CharModel"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
