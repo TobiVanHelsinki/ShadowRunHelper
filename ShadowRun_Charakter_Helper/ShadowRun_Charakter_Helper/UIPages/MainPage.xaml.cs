@@ -32,7 +32,7 @@ namespace ShadowRun_Charakter_Helper
         {
             this.InitializeComponent();
             this.ViewModel = new CharViewModel();
-            MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
+            MyFrame.Navigate(typeof(Char), ViewModel);
         }
 
         private void Hamburger_Click(object sender, RoutedEventArgs e)
@@ -42,10 +42,10 @@ namespace ShadowRun_Charakter_Helper
 
         private void IconsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Char.IsSelected) { MyFrame.Navigate(typeof(Frame_Char), ViewModel);}
+            if (Char.IsSelected) { MyFrame.Navigate(typeof(Char), ViewModel);}
             else if (Char_Edit.IsSelected) { MyFrame.Navigate(typeof(Frame_Char_Edit), ViewModel); }
             else if (Database_Edit.IsSelected) { MyFrame.Navigate(typeof(Frame_Database_Edit)); }
-            else if (Char_Change.IsSelected) { MyFrame.Navigate(typeof(Frame_Char_Change), ViewModel); }
+            else if (Char_Change.IsSelected) { MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel); }
             else if (App_Settings.IsSelected) { MyFrame.Navigate(typeof(TestPage), ViewModel); }
             else
             {

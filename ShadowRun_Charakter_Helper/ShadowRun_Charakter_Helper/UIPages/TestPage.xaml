@@ -12,7 +12,7 @@
   <Page.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Dictionary_XAML_Styles.xaml" />
+        <ResourceDictionary Source="Ressourcen/Dictionary_XAML_Styles.xaml" />
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
 

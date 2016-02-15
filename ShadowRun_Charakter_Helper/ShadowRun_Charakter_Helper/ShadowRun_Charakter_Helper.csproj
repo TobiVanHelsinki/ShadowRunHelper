@@ -161,11 +161,11 @@
     <Compile Include="UIConverter\UI_Converter_CB.cs" />
     <Compile Include="UIConverter\UI_Converter_Attribute.cs" />
     <Compile Include="UIConverter\UI_Converter_Digit.cs" />
-    <Compile Include="UIPages\Frame_App_Settings.xaml.cs">
-      <DependentUpon>Frame_App_Settings.xaml</DependentUpon>
+    <Compile Include="UIPages\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UIPages\Frame_Char.xaml.cs">
-      <DependentUpon>Frame_Char.xaml</DependentUpon>
+    <Compile Include="UIPages\Char.xaml.cs">
+      <DependentUpon>Char.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIPages\Char_Verwaltung.xaml.cs">
       <DependentUpon>Char_Verwaltung.xaml</DependentUpon>
@@ -269,15 +269,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Ressourcen\Dictionary_XAML_Styles.xaml">
+    <Page Include="UIPages\Ressourcen\Dictionary_XAML_Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIPages\Frame_App_Settings.xaml">
+    <Page Include="UIPages\Settings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIPages\Frame_Char.xaml">
+    <Page Include="UIPages\Char.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

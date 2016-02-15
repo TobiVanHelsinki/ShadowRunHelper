@@ -8,11 +8,11 @@ namespace ShadowRun_Charakter_Helper
     /// <summary>
     /// Eine leere Seite, die eigenständig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
-    public sealed partial class Frame_App_Settings : Page
+    public sealed partial class Settings : Page
     {
         public CharViewModel ViewModel { get; set; }
 
-        public Frame_App_Settings()
+        public Settings()
         {
             this.ViewModel = new CharViewModel();
             this.InitializeComponent();

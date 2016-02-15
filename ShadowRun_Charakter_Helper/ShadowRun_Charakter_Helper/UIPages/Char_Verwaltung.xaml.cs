@@ -2,39 +2,26 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 using ShadowRun_Charakter_Helper.Models;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ShadowRun_Charakter_Helper.IO;
 
-// Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
 namespace ShadowRun_Charakter_Helper
 {
     /// <summary>
     /// Eine leere Seite, die eigenständig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
-    public sealed partial class Frame_Char_Change : Page, INotifyPropertyChanged
+    public sealed partial class Char_Verwaltung : Page, INotifyPropertyChanged
     {
         public CharViewModel ViewModel { get; set; }
         private ObservableCollection<Char_Summory> Char_List_Sum = new ObservableCollection<Char_Summory>();
         private Char_Summory selected_Char_Summory;
 
-        public Frame_Char_Change()
+        public Char_Verwaltung()
         {
             createSummorys();
             this.ViewModel = new CharViewModel();
@@ -157,7 +144,7 @@ namespace ShadowRun_Charakter_Helper
         {
             if (selected_Char_Summory != null) {
                 ViewModel.DefaultChar = CharIO.Load_JSONChar_from_Data(ViewModel.DefaultChar.ID_Char);
-                Frame.Navigate(typeof(Frame_Char), ViewModel);
+                Frame.Navigate(typeof(Char), ViewModel);
             }
         }
 
@@ -171,7 +158,7 @@ namespace ShadowRun_Charakter_Helper
         {
 
              ViewModel.DefaultChar = await CharIO.Load_JSONChar_from_IO();
-            Frame.Navigate(typeof(Frame_Char), ViewModel);
+            Frame.Navigate(typeof(Char), ViewModel);
         }
 
         private void Click_Speichern_Datei(object sender, RoutedEventArgs e)

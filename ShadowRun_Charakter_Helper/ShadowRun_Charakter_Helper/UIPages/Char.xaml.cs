@@ -15,10 +15,10 @@ namespace ShadowRun_Charakter_Helper
     /// <summary>
     /// Eine leere Seite, die eigenständig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
-    public sealed partial class Frame_Char : Page
+    public sealed partial class Char : Page
     {
         public CharViewModel ViewModel { get; set; }
-        public Frame_Char()
+        public Char()
         {
             InitializeComponent();
 
