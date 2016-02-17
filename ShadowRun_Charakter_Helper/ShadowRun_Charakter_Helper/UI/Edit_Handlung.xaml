@@ -6,12 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title=""
-    PrimaryButtonText="Speichern"  
-    SecondaryButtonText="Abbrechen"
+    Title="{x:Bind data.Bezeichner, Mode=TwoWay}"
+    PrimaryButtonText="Fertig"  
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
-
+    >
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -27,18 +25,18 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock x:Uid="Model_Bezeichner" Grid.Column="0" Grid.Row="0"/>
-        <TextBox Name="Bezeichner" Grid.Column="1" Grid.Row="0"/>
+        <TextBox Name="Bezeichner" Text="{x:Bind data.Bezeichner, Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
         <TextBlock x:Uid="Model_Typ" Grid.Column="0" Grid.Row="1"/>
-        <TextBox Name="Typ" Grid.Column="1" Grid.Row="1"/>
+        <TextBox Name="Typ" Text="{x:Bind data.Typ, Mode=TwoWay}" Grid.Column="1" Grid.Row="1"/>
         <TextBlock x:Uid="Model_Wert" Grid.Column="0" Grid.Row="2"/>
-        <TextBox Name="Wert" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Name="Wert" Text="{x:Bind data.Wert, Mode=TwoWay}" Grid.Column="1" Grid.Row="2"/>
         <TextBlock x:Uid="Model_Zusatz" Grid.Column="0" Grid.Row="3"/>
-        <TextBox Name="Zusatz" Grid.Column="1" Grid.Row="3"/>
+        <TextBox Name="Zusatz" Text="{x:Bind data.Zusatz, Mode=TwoWay}" Grid.Column="1" Grid.Row="3"/>
         <TextBlock x:Uid="Model_Notiz" Grid.Column="0" Grid.Row="4"/>
-        <TextBox Name="Notiz" Grid.Column="1" Grid.Row="4"/>
+        <TextBox Name="Notiz" Text="{x:Bind data.Notiz, Mode=TwoWay}" Grid.Column="1" Grid.Row="4"/>
         <TextBlock x:Uid="Model_Handlung_Mod" Grid.Column="0" Grid.Row="5"/>
-        <TextBox Name="Mod" Grid.Column="1" Grid.Row="5"/>
+        <TextBox Name="Wert_Mod" Text="{x:Bind data.Wert_Mod, Mode=TwoWay}" Grid.Column="1" Grid.Row="5"/>
         <TextBlock x:Uid="Model_Handlung_Zusammensetzung" Grid.Column="0" Grid.Row="6"/>
-        <TextBox Name="Zusammensetzung" Grid.Column="1" Grid.Row="6"/>
+        <!--TextBox Name="Zusammensetzung" Text="{x:Bind data.Zusammensetzung, Mode=TwoWay}" Grid.Column="1" Grid.Row="6"/-->
     </Grid>
 </ContentDialog>

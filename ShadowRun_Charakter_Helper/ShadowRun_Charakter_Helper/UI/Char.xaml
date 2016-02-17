@@ -52,17 +52,16 @@
                                             <Flyout>
                                                 <StackPanel Orientation="Vertical">
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Zusammensetzung}"/>
+                                                    <!--TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Zusammensetzung, Mode=OneWay}"/-->
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Notiz"/>
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Notiz}"/>
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Notiz, Mode=OneWay}"/>
                                                     <Button x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="HandlungEditDialog_Click"/>
-<!-- Do Edit FlyOut (ContentDialog)-->
                                                 </StackPanel>
                                             </Flyout>
                                         </FlyoutBase.AttachedFlyout>
-                                        <TextBlock Name="Bezeichner" Grid.Column="0" Text="{x:Bind Data.Bezeichner}" Style="{StaticResource ListView_Item_Text}"/>
-                                        <TextBlock Name="Wert" Grid.Column="1" Text="{x:Bind Data.Wert}" Style="{StaticResource ListView_Item_Text}"/>
-                                        <TextBlock Name="Wert_Mod" Grid.Column="2" Text="{x:Bind Data.Wert_Mod}" Style="{StaticResource ListView_Item_Text}"/>
+                                        <TextBlock Name="Bezeichner" Grid.Column="0" Text="{x:Bind Data.Bezeichner, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
+                                        <TextBlock Name="Wert" Grid.Column="1" Text="{x:Bind Data.Wert, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
+                                        <TextBlock Name="Wert_Mod" Grid.Column="2" Text="{x:Bind Data.Wert_Mod, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
