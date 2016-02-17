@@ -25,7 +25,7 @@
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
                 <VariableSizedWrapGrid Width="Auto" Orientation="Vertical" MaximumRowsOrColumns="2">
                     <StackPanel Name="Hanlung_Block">
-                        <StackPanel Name="Handlung_U" Style="{StaticResource ListView_E}">
+                        <StackPanel Name="Handlung_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Handlung_" Style="{StaticResource ListView_U_Text}"/>
                             <Button Name="Handlung_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
                         </StackPanel>
@@ -55,7 +55,7 @@
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Zusammensetzung}"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Notiz"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Notiz}"/>
-                                                    <Button Content="Handlung_Edit"/>
+                                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="HandlungEditDialog_Click"/>
 <!-- Do Edit FlyOut (ContentDialog)-->
                                                 </StackPanel>
                                             </Flyout>

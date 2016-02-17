@@ -6,7 +6,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Model : INotifyPropertyChanged
     {
-        public int dicCD_ID;
+        private int dicCD_ID;
         public int DicCD_ID
         {
             get { return dicCD_ID; }
@@ -19,7 +19,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public int ordnung;
+        private int ordnung;
         public int Ordnung
         {
             get { return ordnung; }
@@ -32,7 +32,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public String bezeichner;
+        private String bezeichner;
         public String Bezeichner
         {
             get { return bezeichner; }
@@ -45,7 +45,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public String typ { get; set; }
+        private String typ { get; set; }
         public String Typ
         {
             get { return typ; }
@@ -58,7 +58,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public double wert { get; set; }
+        private double wert { get; set; }
         public double Wert
         {
             get { return wert; }
@@ -71,7 +71,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public String zusatz { get; set; }
+        private String zusatz { get; set; }
         public String Zusatz
         {
             get { return zusatz; }
@@ -84,7 +84,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public String notiz { get; set; }
+        private String notiz { get; set; }
         public String Notiz
         {
             get { return notiz; }
@@ -100,7 +100,12 @@ namespace ShadowRun_Charakter_Helper.CharModel
 
         public Model()
         {
-
+            Ordnung = 0;
+            Bezeichner = "";
+            Typ = "";
+            Wert = 0;
+            Zusatz = "";
+            Notiz = "";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

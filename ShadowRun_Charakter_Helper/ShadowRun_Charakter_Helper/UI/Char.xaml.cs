@@ -3,10 +3,8 @@ using Windows.UI.Xaml.Controls;
 using ShadowRun_Charakter_Helper.Models;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Primitives;
-using System.ServiceModel.Channels;
-using Windows.UI.Xaml.Data;
-using System.Collections;
 using System;
+using AppUIBasics.ControlPages;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -48,7 +46,6 @@ namespace ShadowRun_Charakter_Helper
             }
         }
 
-
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             FrameworkElement element = sender as FrameworkElement;
@@ -58,14 +55,30 @@ namespace ShadowRun_Charakter_Helper
             }
         }
 
-
         private void Zusammensetzung_A_CBB_Value(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             ComboBox Zusammensetzung_A_CBB = new ComboBox();
 
             Zusammensetzung_A_CBB.SelectedIndex = 1;
+        }
 
-
+        private async void HandlungEditDialog_Click(object sender, RoutedEventArgs e)
+        {
+            Edit_Handlung dialog = new Edit_Handlung(((CharController.Handlung)((Button)sender).DataContext).Data);
+            await dialog.ShowAsync();
+            dialog.data;
+            if (dialog.Result == SignInResult.SignInOK)
+            {
+                //DialogResult.Text = "Dialog result successful.";
+            }
+            else if (dialog.Result == SignInResult.SignInCancel)
+            {
+                //DialogResult.Text = "Dialog result canceled.";
+            }
+            else if (dialog.Result == SignInResult.Nothing)
+            {
+                //DialogResult.Text = "Dialog dismissed.";
+            }
         }
     }
 }

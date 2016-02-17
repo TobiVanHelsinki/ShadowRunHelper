@@ -6,7 +6,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
     public class Handlung : CharModel.Model
     {
 
-        public List<int> zusammensetzung;
+        private List<int> zusammensetzung;
         public List<int> Zusammensetzung
         {
             get { return zusammensetzung; }
@@ -19,7 +19,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public int wert_Mod;
+        private int wert_Mod;
         public int Wert_Mod
         {
             get { return wert_Mod; }
@@ -32,7 +32,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public String grenze;
+        private String grenze;
         public String Grenze
         {
             get { return grenze; }
@@ -52,7 +52,10 @@ namespace ShadowRun_Charakter_Helper.CharModel
 
         public Handlung()
         {
-
+            //todo alles auf null setzen schon im Kontruktor
+            Zusammensetzung = new List<int>();
+            Wert_Mod = 0;
+            Grenze = "";
         }
     }
 }

@@ -156,4 +156,7 @@
   <data name="Model_Zusatz.Text" xml:space="preserve">
     <value>Zusatz</value>
   </data>
+  <data name="UI_Btn_Bearbeiten.Content" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
 </root>
