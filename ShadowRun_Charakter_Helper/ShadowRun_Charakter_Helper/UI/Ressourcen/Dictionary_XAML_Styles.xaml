@@ -300,7 +300,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <Style TargetType="TextBlock" x:Key="ListView_Item_Text">
         <Setter Property="Margin" Value="5,2,5,2"/>
     </Style>
@@ -378,6 +378,13 @@
         
     </Style>
     <Style TargetType="Grid" x:Key="ListView_E">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <!--<Setter Property="Background" Value="Pink"/>-->
+        <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
+        <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
+    </Style>
+    <Style TargetType="Border" x:Key="ListView_E_neu">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
         <!--<Setter Property="Background" Value="Pink"/>-->

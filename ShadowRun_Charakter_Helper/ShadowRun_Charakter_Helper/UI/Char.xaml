@@ -5,218 +5,215 @@
     xmlns:local="using:ShadowRun_Charakter_Helper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:data="using:ShadowRun_Charakter_Helper.CharModel"
+    xmlns:data="using:ShadowRun_Charakter_Helper.CharController"
     mc:Ignorable="d">
-  <Page.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Ressourcen/Dictionary_XAML_Styles.xaml" />
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Ressourcen/Dictionary_XAML_Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
 
-  </Page.Resources>
+    </Page.Resources>
 
-  <Pivot x:Name="pivot" x:Uid="Char_View_Pivot_Aktion" Style="{StaticResource TabsStylePivotStyle}" >
-    <PivotItem >
-      <PivotItem.Header>
-        <local:TabHeader  Glyph="&#xE945;" />
-      </PivotItem.Header>
+    <Pivot x:Name="pivot" Style="{StaticResource TabsStylePivotStyle}" >
+        <PivotItem >
+            <PivotItem.Header>
+                <local:TabHeader x:Uid="Char_View_Pivot_Aktion" Glyph="&#xE945;" />
+            </PivotItem.Header>
 
-      <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
-        <RelativePanel Style="{StaticResource Pivot_Item_RelativePanel}">
-          <StackPanel Name="Handlung_U" RelativePanel.AlignTopWithPanel="True" Style="{StaticResource ListView_U}">
-            <TextBlock x:Uid="Model_Handlung_" Style="{StaticResource ListView_U_Text}"/>
-          </StackPanel>
-          <Grid Name="Handlung_E" RelativePanel.Below="Handlung_U"  MaxWidth="{Binding Path=ActualWidth, ElementName=Handlung_Grid, Mode=TwoWay}" Style="{StaticResource ListView_E}">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="10*"/>
-              <ColumnDefinition MinWidth="50" Width="Auto"/>
-              <ColumnDefinition MinWidth="100" Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Name="Bezeichnung_U" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
-            <TextBlock Grid.Column="1" Name="Pool_User_U"  x:Uid="Model_Wert" Style="{StaticResource ListView_Item_Text}"/>
-            <TextBlock Grid.Column="2" Name="Pool_Modifier_U"  x:Uid="Model_Handlung_Mod" Style="{StaticResource ListView_Item_Text}"/>
+            <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
+                <VariableSizedWrapGrid Width="Auto" Orientation="Vertical" MaximumRowsOrColumns="2">
+                    <StackPanel Name="Hanlung_Block">
+                        <StackPanel Name="Handlung_U" Style="{StaticResource ListView_E}">
+                            <TextBlock x:Uid="Model_Handlung_" Style="{StaticResource ListView_U_Text}"/>
+                            <Button Name="Handlung_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                        </StackPanel>
+                        <Grid Width="Auto" Name="Handlung_E" Style="{StaticResource ListView_E}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Name="Bezeichnung_U" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Grid.Column="1" Name="Pool_User_U"  x:Uid="Model_Wert" Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Grid.Column="2" Name="Pool_Modifier_U"  x:Uid="Model_Handlung_Mod" Style="{StaticResource ListView_Item_Text}"/>
+                        </Grid>
+                        <ListView Name="Handlung" RelativePanel.Below="Handlung_E" ItemsSource="{x:Bind ViewModel.Current.HandlungController}" Style="{StaticResource ListView}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="data:Handlung">
+                                    <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="100"/>
+                                        </Grid.ColumnDefinitions>
+                                        <FlyoutBase.AttachedFlyout>
+                                            <Flyout>
+                                                <StackPanel Orientation="Vertical">
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Zusammensetzung}"/>
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Notiz"/>
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Notiz}"/>
+                                                    <Button Content="Handlung_Edit"/>
+<!-- Do Edit FlyOut (ContentDialog)-->
+                                                </StackPanel>
+                                            </Flyout>
+                                        </FlyoutBase.AttachedFlyout>
+                                        <TextBlock Name="Bezeichner" Grid.Column="0" Text="{x:Bind Data.Bezeichner}" Style="{StaticResource ListView_Item_Text}"/>
+                                        <TextBlock Name="Wert" Grid.Column="1" Text="{x:Bind Data.Wert}" Style="{StaticResource ListView_Item_Text}"/>
+                                        <TextBlock Name="Wert_Mod" Grid.Column="2" Text="{x:Bind Data.Wert_Mod}" Style="{StaticResource ListView_Item_Text}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel Name="Fertigkeiten_Block">
+                        <StackPanel Name="Fertigkeiten_U" RelativePanel.Below="Handlung" Style="{StaticResource ListView_U}">
+                        <TextBlock x:Uid="Model_Fertigkeiten_"  Style="{StaticResource ListView_U_Text}"/>
+                    </StackPanel>
+                        <Grid Name="Fertigkeiten_E" RelativePanel.Below="Fertigkeiten_U"  MaxWidth="{Binding Path=ActualWidth, ElementName=Fertigkeiten_Grid, Mode=TwoWay}" Style="{StaticResource ListView_E}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Grid.Column="1" x:Uid="Model_Wert" Style="{StaticResource ListView_Item_Text}"/>
+                        </Grid>
+                        <ListView Name="Fertigkeiten" RelativePanel.Below="Fertigkeiten_E" ItemsSource="{x:Bind ViewModel.Current.FertigkeitController}" Style="{StaticResource ListView}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="data:Fertigkeit">
+                                <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <FlyoutBase.AttachedFlyout>
+                                        <Flyout>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Notiz"/>
+                                                    <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Notiz}"/>
+                                                <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Typ"/>
+                                                    <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Typ}"/>
+                                            </Grid>
+                                        </Flyout>
+                                    </FlyoutBase.AttachedFlyout>
+                                        <TextBlock Grid.Column="0" Text="{x:Bind Data.Bezeichner}" Style="{StaticResource ListView_Item_Text}"/>
+                                        <TextBlock Grid.Column="1" Text="{x:Bind Data.Wert}" Style="{StaticResource ListView_Item_Text}"/>
+                                </Grid>
 
-          </Grid>
-          <ListView Name="Handlung" RelativePanel.Below="Handlung_E" ItemsSource="{x:Bind ViewModel.Current.HandlungController}" Style="{StaticResource ListView}">
-            <ListView.ItemTemplate>
-              <DataTemplate x:DataType="data:Handlung">
-                <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition MinWidth="0" Width="Auto"/>
-                    <ColumnDefinition MinWidth="0" Width="Auto"/>
-                  </Grid.ColumnDefinitions>
-                  <FlyoutBase.AttachedFlyout>
-                    <Flyout>
-                      <StackPanel Orientation="Vertical">
-                          <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
-                          <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusammensetzung}"/>
-                          <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Notiz"/>
-                          <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz}"/>
-                      </StackPanel>
-                    </Flyout>
-                  </FlyoutBase.AttachedFlyout>
-                  <TextBlock Name="Bezeichner" Grid.Column="0" Text="{x:Bind Bezeichner}" Style="{StaticResource ListView_Item_Text}"/>
-                  <TextBlock Name="Wert" Grid.Column="1" Text="{x:Bind Wert}" Style="{StaticResource ListView_Item_Text}"/>
-                  <TextBlock Name="Wert_Mod" Grid.Column="2" Text="{x:Bind Wert_Mod}" Style="{StaticResource ListView_Item_Text}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
 
-                </Grid>
-              </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
-              <Style TargetType="ListViewItem">
-                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-              </Style>
-            </ListView.ItemContainerStyle>
-          </ListView>
-          <StackPanel Name="Fertigkeiten_U" RelativePanel.Below="Handlung" Style="{StaticResource ListView_U}">
-            <TextBlock x:Uid="Model_Fertigkeiten_"  Style="{StaticResource ListView_U_Text}"/>
-          </StackPanel>
-          <Grid Name="Fertigkeiten_E" RelativePanel.Below="Fertigkeiten_U"  MaxWidth="{Binding Path=ActualWidth, ElementName=Fertigkeiten_Grid, Mode=TwoWay}" Style="{StaticResource ListView_E}">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="Auto"/>
-              <ColumnDefinition Width="Auto"/>
-              <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
-            <TextBlock Grid.Column="1" x:Uid="Model_Wert" Style="{StaticResource ListView_Item_Text}"/>
-            <TextBlock Grid.Column="2" x:Uid="Model_Handlung_Mod" Style="{StaticResource ListView_Item_Text}"/>
-          </Grid>
-          <ListView Name="Fertigkeiten" RelativePanel.Below="Fertigkeiten_E" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Fertigkeiten}" Style="{StaticResource ListView}">
-            <ListView.ItemTemplate>
-              <DataTemplate x:DataType="data:Char_Fertigkeit">
-                <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Relativ}">
-                  <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    </ListView>
+                    </StackPanel>
+                </VariableSizedWrapGrid>
+            </ScrollViewer>
 
-                  <TextBlock Grid.Column="0" Text="{x:Bind Bezeichner}" Style="{StaticResource ListView_Item_Text}"/>
-                  <TextBlock Grid.Column="1" Text="{x:Bind Wert}" Style="{StaticResource ListView_Item_Text}"/>
-                </Grid>
-                <FlyoutBase.AttachedFlyout>
-                  <Flyout>
-                    <Grid>
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                      </Grid.ColumnDefinitions>
-                      <StackPanel Orientation="Vertical" Grid.Column="0">
-                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Anmerkung"/>
-                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anmerkung}"/>
-                      </StackPanel>
-                      <StackPanel Orientation="Vertical" Grid.Column="1">
-                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="Art"/>
-                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Art}"/>
-                      </StackPanel>
+        </PivotItem>
+        <PivotItem>
+            <PivotItem.Header>
+                <local:TabHeader x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
+            </PivotItem.Header>
+            <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
+                <RelativePanel Style="{StaticResource Pivot_Item_RelativePanel}">
+                    <StackPanel Name="Items_U" RelativePanel.AlignTopWithPanel="True" Style="{StaticResource ListView_U}">
+                        <TextBlock x:Uid="Model_Items_" Style="{StaticResource ListView_U_Text}"/>
+                    </StackPanel>
+                    <Grid Name="Items_E" RelativePanel.Below="Items_U" MaxWidth="{Binding Path=ActualWidth, ElementName=Items_Grid, Mode=TwoWay}" Style="{StaticResource ListView_E}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="100" Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Grid.Column="1" x:Uid="Model_Wert"  Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Grid.Column="3" x:Uid="Model_Notiz"  Style="{StaticResource ListView_Item_Text}"/>
                     </Grid>
-                  </Flyout>
-                </FlyoutBase.AttachedFlyout>
-              </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
-              <Style TargetType="ListViewItem">
-                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-              </Style>
-            </ListView.ItemContainerStyle>
-          </ListView>
-        </RelativePanel>
-      </ScrollViewer>
+                    <ListView RelativePanel.Below="Items_E" Name="Items" ItemsSource="{x:Bind ViewModel.Current.ItemController}" Style="{StaticResource ListView}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="data:Item">
+                                <Grid Style="{StaticResource ListView_Item_Grid}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition MinWidth="100" Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{x:Bind Data.Bezeichner}" Style="{StaticResource ListView_Item_Text}"/>
+                                    <TextBlock Grid.Column="1" Text="{x:Bind Data.Wert}" Style="{StaticResource ListView_Item_Text}"/>
+                                    <TextBlock Grid.Column="2" Text="{x:Bind Data.Notiz}" Style="{StaticResource ListView_Item_Text}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
 
-    </PivotItem>
-    <PivotItem>
-      <PivotItem.Header>
-        <local:TabHeader Label="Items" Glyph="&#xE960;" />
-      </PivotItem.Header>
-      <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
-        <RelativePanel Style="{StaticResource Pivot_Item_RelativePanel}">
-          <StackPanel Name="Items_U" RelativePanel.AlignTopWithPanel="True" Style="{StaticResource ListView_U}">
-            <TextBlock Text="Items"  Style="{StaticResource ListView_U_Text}"/>
-          </StackPanel>
-          <Grid Name="Items_E" RelativePanel.Below="Items_U" MaxWidth="{Binding Path=ActualWidth, ElementName=Items_Grid, Mode=TwoWay}" Style="{StaticResource ListView_E}">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition MinWidth="100" Width="*"/>
-              <ColumnDefinition Width="Auto"/>
-              <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Name="Item_Bezeichnung_U" Text="Bezeichnung" Style="{StaticResource ListView_Item_Text}"/>
-            <TextBlock Grid.Column="1" Name="Item_Stufe_U" Text="Stufe" Style="{StaticResource ListView_Item_Text}"/>
-            <TextBlock Grid.Column="3" Name="Item_Pool_Modifier_U" Text="Anmerkung" Style="{StaticResource ListView_Item_Text}"/>
-          </Grid>
-          <ListView RelativePanel.Below="Items_E" Name="Items" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Items}" Style="{StaticResource ListView}">
-            <ListView.ItemTemplate>
-              <DataTemplate x:DataType="data:Char_Item">
-                <Grid Style="{StaticResource ListView_Item_Grid}">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition MinWidth="100" Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                  </Grid.ColumnDefinitions>
-                  <TextBlock Grid.Column="0" Text="{x:Bind Bezeichnung}" Style="{StaticResource ListView_Item_Text}"/>
-                  <TextBlock Grid.Column="1" Text="{x:Bind Stufe}" Style="{StaticResource ListView_Item_Text}"/>
-                  <TextBlock Grid.Column="2" Text="{x:Bind Anmerkung}" Style="{StaticResource ListView_Item_Text}"/>
-                </Grid>
-              </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
-              <Style TargetType="ListViewItem">
-                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-              </Style>
-            </ListView.ItemContainerStyle>
-          </ListView>
-
-          <StackPanel RelativePanel.Below="Items" Name="Kommlinks_U" Style="{StaticResource ListView_U}">
-            <TextBlock Text="Kommlinks" Style="{StaticResource ListView_U_Text}"/>
-          </StackPanel>
-          <Grid RelativePanel.Below="Kommlinks_U" Name="Kommlinks_E" Style="{StaticResource ListView_E}">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition MinWidth="100" Width="*"/>
-              <ColumnDefinition Width="Auto"/>
-              <ColumnDefinition Width="Auto"/>
-              <ColumnDefinition Width="Auto"/>
-              <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="0" Text="Bezeichnung"/>
-            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="1" Text="Stufe"/>
-            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="Programmzahl"/>
-            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="Grundkonfiguration"/>
-            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="4" Text="Aktuelle Konfiguration"/>
-          </Grid>
-          <ListView RelativePanel.Below="Kommlinks_E" Name="Kommlinks"  ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Kommlinks}" Style="{StaticResource ListView}">
-            <ListView.ItemTemplate>
-              <DataTemplate x:DataType="data:Char_Kommlink">
-                <Grid Style="{StaticResource ListView_Item_Grid}">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition MinWidth="100" Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                  </Grid.ColumnDefinitions>
-                  <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="0" Text="{x:Bind Bezeichnung}"/>
-                  <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="1" Text="{x:Bind Stufe}"/>
-                  <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind AnzahlProgramme}"/>
-                  <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind GrundKonfiguration}"/>
-                  <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="4" Text="{x:Bind Angriff}"/>
-                  <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="5" Text="{x:Bind Schleicher}"/>
-                  <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="6" Text="{x:Bind Firewall}"/>
-                  <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="7" Text="{x:Bind Datenverarbeitung}"/>
-                </Grid>
-              </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
-              <Style TargetType="ListViewItem">
-                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-              </Style>
-            </ListView.ItemContainerStyle>
-          </ListView>
-          <StackPanel RelativePanel.Below="Kommlinks" Name="Programme_U" Style="{StaticResource ListView_U}">
+                    <StackPanel RelativePanel.Below="Items" Name="Kommlinks_U" Style="{StaticResource ListView_U}">
+                        <TextBlock x:Uid="Model_Kommlink_"  Style="{StaticResource ListView_U_Text}"/>
+                    </StackPanel>
+                    <Grid RelativePanel.Below="Kommlinks_U" Name="Kommlinks_E" Style="{StaticResource ListView_E}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="100" Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" x:Uid="Model_Programm_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Grid.Column="1" x:Uid="Model_Programm_Wert"  Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Grid.Column="2" x:Uid="Model_Programm_Programmanzahl" Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Grid.Column="3" x:Uid="Model_Programm_Firewall" Style="{StaticResource ListView_Item_Text}" />
+                        <TextBlock Grid.Column="4" x:Uid="Model_Programm_Datenverarbeitung" Style="{StaticResource ListView_Item_Text}" />
+                    </Grid>
+                    <ListView RelativePanel.Below="Kommlinks_E" Name="Kommlinks"  ItemsSource="{x:Bind ViewModel.Current.KommlinkController.DataList}" Style="{StaticResource ListView}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="data:Kommlink">
+                                <Grid Style="{StaticResource ListView_Item_Grid}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition MinWidth="100" Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="0" Text="{x:Bind Data.Bezeichner}"/>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="1" Text="{x:Bind Data.Wert}"/>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Data.Programmanzahl}"/>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind Data.Firewall}"/>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="4" Text="{x:Bind Data.Datenverarbeitung}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                    <!--<StackPanel RelativePanel.Below="Kommlinks" Name="Programme_U" Style="{StaticResource ListView_U}">
             <TextBlock Text="Programme" Style="{StaticResource ListView_U_Text}"/>
           </StackPanel>
           <Grid RelativePanel.Below="Programme_U" Name="Programme_E" Style="{StaticResource ListView_E}">
@@ -254,12 +251,12 @@
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
               </Style>
             </ListView.ItemContainerStyle>
-          </ListView>
+          </ListView>-->
 
-        </RelativePanel>
-      </ScrollViewer>
-    </PivotItem>
-    <PivotItem>
+                </RelativePanel>
+            </ScrollViewer>
+        </PivotItem>
+        <!--<PivotItem>
       <PivotItem.Header>
         <local:TabHeader Label="Kampf" Glyph="&#xE730;" />
       </PivotItem.Header>
@@ -761,6 +758,6 @@
           <TextBox Text="{x:Bind ViewModel.DefaultChar.Notizen,Mode=TwoWay}" PlaceholderText="Notizen" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True"/>
         </RelativePanel>
       </ScrollViewer>
-    </PivotItem>
-  </Pivot>
+    </PivotItem>-->
+    </Pivot>
 </Page>

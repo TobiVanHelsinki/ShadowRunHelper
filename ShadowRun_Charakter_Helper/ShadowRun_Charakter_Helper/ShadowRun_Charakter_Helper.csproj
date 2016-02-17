@@ -162,22 +162,22 @@
     <Compile Include="UIConverter\UI_Converter_CB.cs" />
     <Compile Include="UIConverter\UI_Converter_Attribute.cs" />
     <Compile Include="UIConverter\UI_Converter_Digit.cs" />
-    <Compile Include="UIPages\Settings.xaml.cs">
+    <Compile Include="UI\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UIPages\Char.xaml.cs">
+    <Compile Include="UI\Char.xaml.cs">
       <DependentUpon>Char.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UIPages\Char_Verwaltung.xaml.cs">
+    <Compile Include="UI\Char_Verwaltung.xaml.cs">
       <DependentUpon>Char_Verwaltung.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UIPages\Frame_Char_Edit.xaml.cs">
+    <Compile Include="UI\Frame_Char_Edit.xaml.cs">
       <DependentUpon>Frame_Char_Edit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UIPages\Frame_Database_Edit.xaml.cs">
+    <Compile Include="UI\Frame_Database_Edit.xaml.cs">
       <DependentUpon>Frame_Database_Edit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UIPages\MainPage.xaml.cs">
+    <Compile Include="UI\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Menu.cs" />
@@ -206,7 +206,7 @@
     <Compile Include="UIParts\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UIPages\TestPage.xaml.cs">
+    <Compile Include="UI\TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -270,31 +270,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="UIPages\Ressourcen\Dictionary_XAML_Styles.xaml">
+    <Page Include="UI\Ressourcen\Dictionary_XAML_Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIPages\Settings.xaml">
+    <Page Include="UI\Settings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIPages\Char.xaml">
+    <Page Include="UI\Char.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIPages\Char_Verwaltung.xaml">
+    <Page Include="UI\Char_Verwaltung.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIPages\Frame_Char_Edit.xaml">
+    <Page Include="UI\Frame_Char_Edit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIPages\Frame_Database_Edit.xaml">
+    <Page Include="UI\Frame_Database_Edit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIPages\MainPage.xaml">
+    <Page Include="UI\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -306,12 +306,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIPages\TestPage.xaml">
+    <Page Include="UI\TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UI\Parts\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

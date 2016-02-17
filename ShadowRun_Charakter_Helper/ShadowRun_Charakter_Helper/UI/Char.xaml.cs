@@ -31,13 +31,23 @@ namespace ShadowRun_Charakter_Helper
             //    Converter = new UnitConverter()
             //});
         }
-       
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (CharViewModel)e.Parameter;
             this.InitializeComponent();
-            
+
         }
+
+        private void Add(object sender, RoutedEventArgs e)
+        {
+            String test = ((String)((Button)sender).Name);
+            if (test.Contains("Handlung"))
+            {
+                ViewModel.Current.HandlungController.Add(new CharController.Handlung());
+            }
+        }
+
 
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {

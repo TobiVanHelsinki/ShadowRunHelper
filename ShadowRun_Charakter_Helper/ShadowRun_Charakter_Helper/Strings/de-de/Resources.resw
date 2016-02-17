@@ -117,23 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Char_View_Pivot_Aktion" xml:space="preserve">
+  <data name="Char_View_Pivot_Aktion.Label" xml:space="preserve">
     <value>Aktionen</value>
+  </data>
+  <data name="Char_View_Pivot_Item.Label" xml:space="preserve">
+    <value>Items</value>
   </data>
   <data name="Model_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Model_Fertigkeiten_" xml:space="preserve">
+  <data name="Model_Fertigkeiten_.Text" xml:space="preserve">
     <value>Fertigkeiten</value>
   </data>
   <data name="Model_Handlung_.Text" xml:space="preserve">
-    <value>Handlung</value>
+    <value>Handlungen</value>
   </data>
   <data name="Model_Handlung_Mod.Text" xml:space="preserve">
     <value>Modifier</value>
   </data>
   <data name="Model_Handlung_Zusammensetzung.Text" xml:space="preserve">
     <value>Zusammensetzung</value>
+  </data>
+  <data name="Model_Items_.Text" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="Model_Kommlink_.Text" xml:space="preserve">
+    <value>Kommlinks</value>
   </data>
   <data name="Model_Notiz.Text" xml:space="preserve">
     <value>Notiz</value>

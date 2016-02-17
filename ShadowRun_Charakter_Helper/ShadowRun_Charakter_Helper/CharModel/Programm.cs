@@ -8,8 +8,8 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Programm : Item
     {
-        public double optionen;
-        public double Optionen
+        public string optionen;
+        public string Optionen
         {
             get { return optionen; }
             set
