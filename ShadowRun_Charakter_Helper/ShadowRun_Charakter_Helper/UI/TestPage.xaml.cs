@@ -1,5 +1,5 @@
 ﻿using ShadowRun_Charakter_Helper.CharModel;
-using ShadowRun_Charakter_Helper.Models;
+using ShadowRun_Charakter_Helper.Model;
 using System;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
@@ -19,7 +19,7 @@ namespace ShadowRun_Charakter_Helper
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (CharViewModel)e.Parameter;
-            CB1.SelectedValue = 2;
+            
             //   this.DataContext = ViewModel.DefaultChar;
         }
 

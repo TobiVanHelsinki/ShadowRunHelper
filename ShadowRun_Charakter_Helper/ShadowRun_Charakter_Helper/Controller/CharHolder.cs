@@ -38,6 +38,7 @@ namespace ShadowRun_Charakter_Helper.Controller
         {
 
             HandlungController = new ObservableCollection<CharController.Handlung>();
+            HandlungController = new ObservableCollection<CharController.Handlung>();
             FertigkeitController = new ObservableCollection<CharController.Fertigkeit>();
             AttributController = new ObservableCollection<CharController.Attribut>();
             ItemController = new ObservableCollection<CharController.Item>();
@@ -61,8 +62,6 @@ namespace ShadowRun_Charakter_Helper.Controller
             CyberDeckController.setHD(HD);
             VehikelController.setHD(HD);
             PanzerungController.setHD(HD);
-
-
         }
 
 /// <summary>

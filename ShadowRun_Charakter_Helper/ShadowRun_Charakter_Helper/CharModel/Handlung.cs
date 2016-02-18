@@ -6,32 +6,23 @@ namespace ShadowRun_Charakter_Helper.CharModel
     public class Handlung : CharModel.Model
     {
 
-        private List<int> zusammensetzung;
-        public List<int> Zusammensetzung
+        private Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> zusammensetzung;
+        public Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> Zusammensetzung
         {
-            get { return zusammensetzung; }
+            get { return zusammensetzung;
+                // todo return zusammensetzung ohne handlungen
+            }
             set
             {
                 if (value != this.zusammensetzung)
                 {
-                    this.zusammensetzung = value;
-                    NotifyPropertyChanged();
+                        this.zusammensetzung = value;
+                        NotifyPropertyChanged();
                 }
             }
         }
-        private int wert_Mod;
-        public int Wert_Mod
-        {
-            get { return wert_Mod; }
-            set
-            {
-                if (value != this.wert_Mod)
-                {
-                    this.wert_Mod = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
+
+        //Todo darf in der zus liste nicht eigene HD Id beinhalten, sonst vermutlich crash
         private String grenze;
         public String Grenze
         {
@@ -53,8 +44,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
         public Handlung()
         {
             //todo alles auf null setzen schon im Kontruktor
-            Zusammensetzung = new List<int>();
-            Wert_Mod = 0;
+            Zusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
             Grenze = "";
         }
     }

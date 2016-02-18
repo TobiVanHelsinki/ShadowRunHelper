@@ -1,4 +1,4 @@
-﻿using ShadowRun_Charakter_Helper.Models;
+﻿using ShadowRun_Charakter_Helper.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;

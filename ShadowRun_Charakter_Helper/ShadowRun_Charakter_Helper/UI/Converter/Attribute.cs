@@ -1,11 +1,11 @@
-﻿using ShadowRun_Charakter_Helper.Models;
+﻿using ShadowRun_Charakter_Helper.Model;
 using System;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRun_Charakter_Helper
 {
     // Custom class implements the IValueConverter interface. 
-    public class UI_Converter_Attribute : IValueConverter
+    public class Attribute : IValueConverter
     {
         #region IValueConverter Members 
         public object Convert(object value, Type targetType,
@@ -40,7 +40,8 @@ namespace ShadowRun_Charakter_Helper
             try
             {
 
-                return Char_Attribut.getNAMEbyID(value);
+                // return Char_Attribut.getNAMEbyID(value);
+                return "";
             }
             catch (Exception)
             {

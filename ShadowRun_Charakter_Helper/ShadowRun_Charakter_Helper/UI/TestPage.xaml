@@ -21,7 +21,7 @@
 
     <StackPanel Orientation="Vertical">
 
-        <ComboBox Name="CB1" PlaceholderText="Nix ausgewählt" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Attribute}"
+        <!--<ComboBox Name="CB1" PlaceholderText="Nix ausgewählt" ItemsSource="{x:Bind ViewModel.DefaultChar.Char_Attribute}"
                   SelectedValuePath="Value" SelectedValue="{Binding DataType, Mode=TwoWay}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -30,13 +30,13 @@
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
-        </ComboBox>
+        </ComboBox>-->
 
       
       <Button Click="Handlungen_Add" Style="{StaticResource ListView_U_BtnAdd}"/>
 
 
-        <ListView Name="groupListView" ItemsSource="{x:Bind ViewModel.Current.PanzerungController.DataList}">
+        <!--<ListView Name="groupListView" ItemsSource="{x:Bind ViewModel.Current.PanzerungController.DataList}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="datan:Panzerung">
                     <StackPanel Orientation ="Horizontal">
@@ -47,7 +47,7 @@
                         <TextBox Foreground="Red" Text="{x:Bind Bezeichner, Mode=TwoWay}"/>
                       </Border>
                       <Button Style="{StaticResource ListView_BtnDel}" Click="Handlungen_Del"/>
-                        <!--<ListView Name="itemListViewss" ItemsSource="{x:Bind Zusammensetzung_A}">
+                        --><!--<ListView Name="itemListViewss" ItemsSource="{x:Bind Zusammensetzung_A}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="data:Attribut_ID">
                                     <StackPanel>
@@ -57,11 +57,11 @@
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                        </ListView>-->
+                        </ListView>--><!--
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
         <TextBlock Name="txtSubMenuTapped" FontSize="30" Tag="Sub Menu Selected - " Text="Sub menu tapped - None"/>
     </StackPanel>
 </Page>

@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:ShadowRun_Charakter_Helper.CharController"
+    xmlns:model="using:ShadowRun_Charakter_Helper.Model"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -32,36 +33,50 @@
                         <Grid Width="Auto" Name="Handlung_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Name="Bezeichnung_U" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
-                            <TextBlock Grid.Column="1" Name="Pool_User_U"  x:Uid="Model_Wert" Style="{StaticResource ListView_Item_Text}"/>
-                            <TextBlock Grid.Column="2" Name="Pool_Modifier_U"  x:Uid="Model_Handlung_Mod" Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Name="Pool" Grid.Column="1">
+                                <Run x:Uid="Model_Wert"/><Run x:Uid="Plus"/><Run x:Uid="Model_Handlung_Mod"/>
+                            </TextBlock>
                         </Grid>
-                        <ListView Name="Handlung" RelativePanel.Below="Handlung_E" ItemsSource="{x:Bind ViewModel.Current.HandlungController}" Style="{StaticResource ListView}">
+                        <ListView AllowDrop="True" Name="Handlung" ItemsSource="{x:Bind ViewModel.Current.HandlungController}" Style="{StaticResource ListView}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="data:Handlung">
                                     <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <FlyoutBase.AttachedFlyout>
                                             <Flyout>
                                                 <StackPanel Orientation="Vertical">
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
-                                                    <!--TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Zusammensetzung, Mode=OneWay}"/-->
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Notiz"/>
+                                                    <!--Zusammensetzung -->
+
+                                                    <ListView ItemsSource="{x:Bind Data.Zusammensetzung}">
+                                                        <ListView.ItemTemplate >
+                                                            <DataTemplate >
+                                                                <StackPanel>
+                                                                    <TextBlock Text="{Binding Value.Typ, Mode=OneWay}" />
+                                                                    <TextBlock Text="{Binding Value.Bezeichner, Mode=OneWay}" />
+
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+
+                                                    <!--/Zusammensetzung -->
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Notiz"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Notiz, Mode=OneWay}"/>
                                                     <Button x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="HandlungEditDialog_Click"/>
                                                 </StackPanel>
                                             </Flyout>
                                         </FlyoutBase.AttachedFlyout>
                                         <TextBlock Name="Bezeichner" Grid.Column="0" Text="{x:Bind Data.Bezeichner, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
-                                        <TextBlock Name="Wert" Grid.Column="1" Text="{x:Bind Data.Wert, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
-                                        <TextBlock Name="Wert_Mod" Grid.Column="2" Text="{x:Bind Data.Wert_Mod, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
+                                        <TextBlock Name="Wert+Zusatz" Grid.Column="1">
+                                            <Run Text="{x:Bind Data.Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Data.Zusatz, Mode=OneWay}"/>
+                                        </TextBlock>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

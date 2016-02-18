@@ -22,10 +22,6 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
-        public Eigenschaft(int dicCD_ID)
-        {
-            this.DicCD_ID = dicCD_ID;
-        }
         public Eigenschaft()
         {
             

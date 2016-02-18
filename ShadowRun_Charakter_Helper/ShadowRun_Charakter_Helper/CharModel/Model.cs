@@ -6,19 +6,6 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Model : INotifyPropertyChanged
     {
-        private int dicCD_ID;
-        public int DicCD_ID
-        {
-            get { return dicCD_ID; }
-            set
-            {
-                if (value != this.dicCD_ID)
-                {
-                    this.dicCD_ID = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
         private int ordnung;
         public int Ordnung
         {
@@ -116,8 +103,5 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
     }
-
-
 }

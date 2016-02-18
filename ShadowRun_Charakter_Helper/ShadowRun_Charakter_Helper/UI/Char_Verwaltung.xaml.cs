@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using ShadowRun_Charakter_Helper.Models;
+using ShadowRun_Charakter_Helper.Model;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using ShadowRun_Charakter_Helper.IO;
-
+using System.ComponentModel;
+using ShadowRun_Charakter_Helper.Models;
 
 namespace ShadowRun_Charakter_Helper
 {
@@ -66,10 +66,10 @@ namespace ShadowRun_Charakter_Helper
             CharList.Delete(selected_Char_Summory.id);
             Char_List_Sum.Remove(selected_Char_Summory);
 
-            if (ViewModel.DefaultChar.ID_Char == selected_Char_Summory.id)
-            {
-                ViewModel.DefaultChar.Säubern();
-            }
+     //       if (ViewModel.DefaultChar.ID_Char == selected_Char_Summory.id)
+     //       {
+        //        ViewModel.DefaultChar.Säubern();
+    //        }
             // Nachicht Anzeigen
             MessageDialog dialog = new MessageDialog("Er ist tot, Jim.", "Nachricht");
             await dialog.ShowAsync();
@@ -81,7 +81,7 @@ namespace ShadowRun_Charakter_Helper
             CharList.Clear();
             createSummorys();
            
-            ViewModel.DefaultChar.Säubern();
+      //      ViewModel.DefaultChar.Säubern();
             // Nachicht Anzeigen
             MessageDialog dialog = new MessageDialog("Alle sind tot, Jim.", "Nachricht");
             await dialog.ShowAsync();
@@ -89,11 +89,11 @@ namespace ShadowRun_Charakter_Helper
 
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.ID_Char = CharList.freieID();
-            CharIO.Save_JSONChar_to_Data(ViewModel.DefaultChar);
-            CharList.Add(ViewModel.DefaultChar.ID_Char);
+  //          ViewModel.DefaultChar.ID_Char = CharList.freieID();
+   //         CharIO.Save_JSONChar_to_Data(ViewModel.DefaultChar);
+  //          CharList.Add(ViewModel.DefaultChar.ID_Char);
 
-            Frame.Navigate(typeof(Frame_Char_Edit), ViewModel);
+            //Frame.Navigate(typeof(Frame_Char_Edit), ViewModel);
 
         }
 
@@ -143,21 +143,21 @@ namespace ShadowRun_Charakter_Helper
         private void Click_Laden(object sender, RoutedEventArgs e)
         {
             if (selected_Char_Summory != null) {
-                ViewModel.DefaultChar = CharIO.Load_JSONChar_from_Data(ViewModel.DefaultChar.ID_Char);
+        //        ViewModel.DefaultChar = CharIO.Load_JSONChar_from_Data(ViewModel.DefaultChar.ID_Char);
                 Frame.Navigate(typeof(Char), ViewModel);
             }
         }
 
         private void Click_Speichern(object sender, RoutedEventArgs e)
         {
-            CharIO.Save_JSONChar_to_Data(ViewModel.DefaultChar);
+    //        CharIO.Save_JSONChar_to_Data(ViewModel.DefaultChar);
             createSummorys();
         }
 
         private async void Click_Laden_Datei(object sender, RoutedEventArgs e)
         {
 
-             ViewModel.DefaultChar = await CharIO.Load_JSONChar_from_IO();
+     //        ViewModel.DefaultChar = await CharIO.Load_JSONChar_from_IO();
             Frame.Navigate(typeof(Char), ViewModel);
         }
 

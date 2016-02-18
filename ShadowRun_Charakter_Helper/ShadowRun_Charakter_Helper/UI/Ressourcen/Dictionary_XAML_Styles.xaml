@@ -419,7 +419,7 @@
         <Setter Property="Margin" Value="20,10,0,10"/>
     </Style>
 
-    <local:UI_Converter_Digit x:Key="UI_Converter_Digit"/>
-    <local:UI_Converter_Attribute x:Key="UI_Converter_Attribute"/>
+    <!--<local:Digit x:Key="Digit"/>
+    <local:Attribute x:Key="Attribute"/>-->
     
 </ResourceDictionary>

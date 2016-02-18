@@ -32,10 +32,5 @@
         public Fernkampfwaffe()
         {
         }
-
-        public Fernkampfwaffe(int dicCD_ID)
-        {
-            this.DicCD_ID = dicCD_ID;
-        }
     }
 }

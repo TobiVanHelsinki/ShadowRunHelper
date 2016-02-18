@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Data;
 namespace ShadowRun_Charakter_Helper
 {
     // Custom class implements the IValueConverter interface. 
-    public class UI_Converter_Digit : IValueConverter
+    public class Digit : IValueConverter
     {
         #region IValueConverter Members 
         public object Convert(object value, Type targetType,

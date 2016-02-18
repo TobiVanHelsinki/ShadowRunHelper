@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace ShadowRun_Charakter_Helper.CharController
 {
@@ -30,5 +32,8 @@ namespace ShadowRun_Charakter_Helper.CharController
         {
             DataList.Remove(obj);
         }
+
+       
+
     }
 }

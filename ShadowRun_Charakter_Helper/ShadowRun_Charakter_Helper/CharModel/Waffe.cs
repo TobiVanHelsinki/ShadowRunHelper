@@ -61,10 +61,5 @@
         public Waffe()
         {
         }
-
-        public Waffe(int dicCD_ID)
-        {
-            this.DicCD_ID = dicCD_ID;
-        }
     }
 }

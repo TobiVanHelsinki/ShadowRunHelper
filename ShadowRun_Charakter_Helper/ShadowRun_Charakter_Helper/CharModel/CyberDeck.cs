@@ -93,12 +93,6 @@ namespace ShadowRun_Charakter_Helper.CharModel
         {
 
         }
-
-
-        public CyberDeck(int dicCD_ID)
-        {
-            this.DicCD_ID = dicCD_ID;
-        }
     }
 
 }

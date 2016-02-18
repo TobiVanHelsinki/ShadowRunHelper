@@ -159,9 +159,9 @@
     <Compile Include="Model\CharViewModel.cs" />
     <Compile Include="Models\MyException.cs" />
     <Compile Include="Processing\Loop.cs" />
-    <Compile Include="UIConverter\UI_Converter_CB.cs" />
-    <Compile Include="UIConverter\UI_Converter_Attribute.cs" />
-    <Compile Include="UIConverter\UI_Converter_Digit.cs" />
+    <Compile Include="UI\Converter\CB.cs" />
+    <Compile Include="UI\Converter\Attribute.cs" />
+    <Compile Include="UI\Converter\Digit.cs" />
     <Compile Include="UI\Edit_Handlung.xaml.cs">
       <DependentUpon>Edit_Handlung.xaml</DependentUpon>
     </Compile>
@@ -173,9 +173,6 @@
     </Compile>
     <Compile Include="UI\Char_Verwaltung.xaml.cs">
       <DependentUpon>Char_Verwaltung.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Frame_Char_Edit.xaml.cs">
-      <DependentUpon>Frame_Char_Edit.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Frame_Database_Edit.xaml.cs">
       <DependentUpon>Frame_Database_Edit.xaml</DependentUpon>
@@ -206,7 +203,7 @@
     <Compile Include="Models\Load_Data.cs" />
     <Compile Include="Models\Store_Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UIParts\TabHeader.xaml.cs">
+    <Compile Include="UI\Parts\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\TestPage.xaml.cs">
@@ -293,10 +290,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Frame_Char_Edit.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UI\Frame_Database_Edit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -305,11 +298,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIParts\SplitViewStyles.xaml">
+    <Page Include="UI\Parts\SplitViewStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UIParts\TabHeader.xaml">
+    <Page Include="UI\Parts\TabHeader.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -318,9 +311,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\Parts\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

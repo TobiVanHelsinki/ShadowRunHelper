@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AppUIBasics.ControlPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:t="using:ShadowRun_Charakter_Helper.Controller"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="{x:Bind data.Bezeichner, Mode=TwoWay}"
@@ -22,21 +23,51 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock x:Uid="Model_Bezeichner" Grid.Column="0" Grid.Row="0"/>
         <TextBox Name="Bezeichner" Text="{x:Bind data.Bezeichner, Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
         <TextBlock x:Uid="Model_Typ" Grid.Column="0" Grid.Row="1"/>
         <TextBox Name="Typ" Text="{x:Bind data.Typ, Mode=TwoWay}" Grid.Column="1" Grid.Row="1"/>
         <TextBlock x:Uid="Model_Wert" Grid.Column="0" Grid.Row="2"/>
-        <TextBox Name="Wert" Text="{x:Bind data.Wert, Mode=TwoWay}" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Name="Wert" Text="{x:Bind data.Wert, Mode=TwoWay}" Grid.Column="1" Grid.Row="2"/>
         <TextBlock x:Uid="Model_Zusatz" Grid.Column="0" Grid.Row="3"/>
         <TextBox Name="Zusatz" Text="{x:Bind data.Zusatz, Mode=TwoWay}" Grid.Column="1" Grid.Row="3"/>
         <TextBlock x:Uid="Model_Notiz" Grid.Column="0" Grid.Row="4"/>
         <TextBox Name="Notiz" Text="{x:Bind data.Notiz, Mode=TwoWay}" Grid.Column="1" Grid.Row="4"/>
-        <TextBlock x:Uid="Model_Handlung_Mod" Grid.Column="0" Grid.Row="5"/>
-        <TextBox Name="Wert_Mod" Text="{x:Bind data.Wert_Mod, Mode=TwoWay}" Grid.Column="1" Grid.Row="5"/>
-        <TextBlock x:Uid="Model_Handlung_Zusammensetzung" Grid.Column="0" Grid.Row="6"/>
-        <!--TextBox Name="Zusammensetzung" Text="{x:Bind data.Zusammensetzung, Mode=TwoWay}" Grid.Column="1" Grid.Row="6"/-->
+        <TextBlock x:Uid="Model_Handlung_Zusammensetzung" Grid.Column="0" Grid.Row="5"/>
+
+        <ListView Name="Zus_ListVIew" ItemsSource="{x:Bind data.Zusammensetzung}" Grid.Column="1" Grid.Row="5">
+            <ListView.ItemTemplate >
+                <DataTemplate >
+                    <StackPanel Name="Zus_ListVIew_Stack">
+                        <TextBlock Name="CBTest" Text="{Binding Value.Bezeichner, Mode=OneWay}" />
+                        <ComboBox Name="CB1" PlaceholderText="Nix ausgewählt" ItemsSource="{Binding current.HD.Data.Value}" >
+                            <!--SelectedValuePath="Value" SelectedValue="{Binding DataType, Mode=TwoWay}">-->
+                            <!--..Binding="{Binding RelativeSource={RelativeSource FindAncestor, 
+AncestorType={x:Type Window}}, Path=DataContext.AllowItemCommand}" ...-->
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Bezeichner}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ComboBox Name="CB2" PlaceholderText="Nix ausgewählt">
+            <!--SelectedValuePath="Value" SelectedValue="{Binding DataType, Mode=TwoWay}">-->
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Bezeichner}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
     </Grid>
 </ContentDialog>

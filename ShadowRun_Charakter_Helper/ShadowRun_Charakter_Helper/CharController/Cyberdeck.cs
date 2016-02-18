@@ -11,5 +11,7 @@ namespace ShadowRun_Charakter_Helper.CharController
         public CyberDeck(ObservableCollection<CharModel.CyberDeck> obj)
         {
         }
+        //todo cyberdeck controller braucht 4 einträge im hd
+        //5 ! wert des Decks + attribute
     }
 }

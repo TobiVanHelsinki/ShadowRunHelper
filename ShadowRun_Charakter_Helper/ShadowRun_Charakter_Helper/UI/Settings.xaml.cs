@@ -1,4 +1,4 @@
-﻿using ShadowRun_Charakter_Helper.Models;
+﻿using ShadowRun_Charakter_Helper.Model;
 using Windows.UI.Xaml.Controls;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.

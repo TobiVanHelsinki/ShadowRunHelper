@@ -21,11 +21,6 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-
-        public Implantat(int dicCD_ID)
-        {
-            this.DicCD_ID = dicCD_ID;
-        }
         public Implantat()
         {
             

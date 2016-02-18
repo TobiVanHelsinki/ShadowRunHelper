@@ -1,21 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System.Collections.Generic;
 using ShadowRun_Charakter_Helper.CharModel;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
+using ShadowRun_Charakter_Helper.Controller;
 namespace AppUIBasics.ControlPages
 {
     /// <summary>
@@ -24,12 +10,23 @@ namespace AppUIBasics.ControlPages
     public sealed partial class Edit_Handlung : ContentDialog
     {
         public ShadowRun_Charakter_Helper.CharModel.Handlung data;
+        public ShadowRun_Charakter_Helper.Controller.HashDictionary hd;
+        private CharHolder current;
 
-        public Edit_Handlung(ShadowRun_Charakter_Helper.CharModel.Handlung param)
+        public List<string> MyStringOptions { get; set; }
+
+        public Edit_Handlung(Handlung data, CharHolder current)
         {
             this.InitializeComponent();
-            data = param;
+            this.data = data;
+            this.current = current;
+           // ComboBox CB1 = new ComboBox();
+         //   CB1.DataContext = current.HD.Data.Values;
+            // Set the DataContext of the TextBox MyTextBox.
+            //   CB1.ItemsSource=HD.Data;
+            CB2.DataContext = current.HD.Data.Values;
         }
+
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {

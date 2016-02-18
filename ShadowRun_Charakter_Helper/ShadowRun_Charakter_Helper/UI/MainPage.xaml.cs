@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using ShadowRun_Charakter_Helper.Models;
+using ShadowRun_Charakter_Helper.Model;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -43,7 +43,7 @@ namespace ShadowRun_Charakter_Helper
         private void IconsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (Char.IsSelected) { MyFrame.Navigate(typeof(Char), ViewModel);}
-            else if (Char_Edit.IsSelected) { MyFrame.Navigate(typeof(Frame_Char_Edit), ViewModel); }
+         //   else if (Char_Edit.IsSelected) { MyFrame.Navigate(typeof(Frame_Char_Edit), ViewModel); }
             else if (Database_Edit.IsSelected) { MyFrame.Navigate(typeof(Frame_Database_Edit)); }
             else if (Char_Change.IsSelected) { MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel); }
             else if (App_Settings.IsSelected) { MyFrame.Navigate(typeof(TestPage), ViewModel); }
@@ -56,62 +56,62 @@ namespace ShadowRun_Charakter_Helper
 
         private void Karma_Gesamt_Plus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Karma_Gesamt++;
+     //       ViewModel.DefaultChar.Karma_Gesamt++;
         }
 
         private void Karma_Gesamt_Minus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Karma_Gesamt--;
+    //        ViewModel.DefaultChar.Karma_Gesamt--;
         }
 
         private void Karma_Aktuell_Plus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Karma_Aktuell++;
+   //         ViewModel.DefaultChar.Karma_Aktuell++;
         }
 
         private void Karma_Aktuell_Minus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Karma_Aktuell--;
+    //        ViewModel.DefaultChar.Karma_Aktuell--;
         }
 
         private void Edgne_Aktuell_Plus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Edgne_Aktuell++;
+   //         ViewModel.DefaultChar.Edgne_Aktuell++;
         }
 
         private void Edgne_Aktuell_Minus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Edgne_Aktuell--;
+    //        ViewModel.DefaultChar.Edgne_Aktuell--;
         }
 
         private void Edge_Gesamt_Plus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Edge_Gesamt++;
+    //        ViewModel.DefaultChar.Edge_Gesamt++;
         }
 
         private void Edge_Gesamt_Minus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Edge_Gesamt--;
+    //        ViewModel.DefaultChar.Edge_Gesamt--;
         }
 
         private void Essenz_Plus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Essenz++;
+    //        ViewModel.DefaultChar.Essenz++;
         }
 
         private void Essenz_Minus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Essenz--;
+   //         ViewModel.DefaultChar.Essenz--;
         }
 
         private void Initiative_Plus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Initiative++;
+  //          ViewModel.DefaultChar.Initiative++;
         }
 
         private void Initiative_Minus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DefaultChar.Initiative--;
+  //          ViewModel.DefaultChar.Initiative--;
         }
     }
 }

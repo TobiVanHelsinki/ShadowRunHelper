@@ -2,11 +2,12 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ShadowRun_Charakter_Helper.Models
+namespace ShadowRun_Charakter_Helper.Model
 {
+
     public class DictionaryCharEntry : INotifyPropertyChanged
     {
-        public String bezeichner;
+        private String bezeichner;
         public String Bezeichner
         {
             get { return bezeichner; }
@@ -19,7 +20,7 @@ namespace ShadowRun_Charakter_Helper.Models
                 }
             }
         }
-        public String typ { get; set; }
+        private String typ { get; set; }
         public String Typ
         {
             get { return typ; }
@@ -32,7 +33,7 @@ namespace ShadowRun_Charakter_Helper.Models
                 }
             }
         }
-        public double wert { get; set; }
+        private double wert { get; set; }
         public double Wert
         {
             get { return wert; }
@@ -45,7 +46,7 @@ namespace ShadowRun_Charakter_Helper.Models
                 }
             }
         }
-        public String zusatz { get; set; }
+        private String zusatz { get; set; }
         public String Zusatz
         {
             get { return zusatz; }
@@ -58,7 +59,7 @@ namespace ShadowRun_Charakter_Helper.Models
                 }
             }
         }
-        public String notiz { get; set; }
+        private String notiz { get; set; }
         public String Notiz
         {
             get { return notiz; }

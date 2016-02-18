@@ -2,7 +2,7 @@
 {
     public class Item : CharModel.Model
     {
-        public bool besitz;
+        private bool besitz;
         public bool Besitz
         {
             get { return besitz; }
@@ -15,7 +15,7 @@
                 }
             }
         }
-        public bool aktiv;
+        private bool aktiv;
         public bool Aktiv
         {
             get { return aktiv; }
@@ -28,7 +28,7 @@
                 }
             }
         }
-        public double anzahl;
+        private double anzahl;
         public double Anzahl
         {
             get { return anzahl; }
@@ -46,9 +46,5 @@
         {
         }
 
-        public Item(int dicCD_ID)
-        {
-            this.DicCD_ID = dicCD_ID;
-        }
     }
 }

@@ -1,19 +1,62 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShadowRun_Charakter_Helper.CharController;
 
 namespace ShadowRun_Charakter_Helper.Controller
 {
+    public delegate void ChangedEventHandler(object sender, EventArgs e);
+
     public class HashDictionary
     {
-        public Dictionary<int, Models.DictionaryCharEntry> Data;
+        public event ChangedEventHandler Changed;
+
+        public Dictionary<int, Model.DictionaryCharEntry> Data { get; set; }
+
+        protected virtual void OnChanged(EventArgs e)
+        {
+            if (Changed != null)
+                Changed(this, e);
+            //todo oder hier nicht propagieren
+            Debug.WriteLine("This is OnChanged of HD " + this.Data.ToString());
+        }
+
+        public void Add(int key, Model.DictionaryCharEntry value)
+        {
+            Data.Add(key, value);
+        }
+
+        public void Remove(int key)
+        {
+            Data.Remove(key);
+            OnChanged(EventArgs.Empty);
+
+        }
+
+        public Model.DictionaryCharEntry this[int index]
+        {
+            set
+            {
+                Data[index] = value;
+                OnChanged(EventArgs.Empty);
+                //todo auf handlung üerprüfen und ggf nicht propagieren
+                //also wenn änderng von der handlung kommt
+            }
+
+            get
+            {
+                return Data[index];
+            }
+        }
 
         public HashDictionary()
         {
-            Data = new Dictionary<int, Models.DictionaryCharEntry>();
+            Data = new Dictionary<int, Model.DictionaryCharEntry>();
         }
 
         public int getFreeKey()
@@ -37,6 +80,5 @@ namespace ShadowRun_Charakter_Helper.Controller
 
             return temp;
         }
-
     }
 }

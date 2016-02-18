@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ShadowRun_Charakter_Helper.Controller;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace ShadowRun_Charakter_Helper.CharController
 {
@@ -16,11 +18,11 @@ namespace ShadowRun_Charakter_Helper.CharController
         public Controller.HashDictionary HD;
         public int HD_ID { get; set; }
 
-
         /// <summary>
-        /// Gibt dem Controller DAS HashDictionary
-        /// Sucht sich aus dem HD eine neue ID, wenn er keine hat
-        /// Fügt sich selbst anschließend dem HD hinzu
+        /// Gibt dem Controller DAS HashDictionary \n 
+        /// Sucht sich aus dem HD eine neue ID, wenn er keine hat \n 
+        /// Fügt sich selbst anschließend dem HD hinzu \n 
+        /// Registriert sich als Beobachter beim HD
         /// </summary>
         /// <param name="hD">HashDictionary des Chars</param>
         public void setHD(Controller.HashDictionary hD)
@@ -32,19 +34,20 @@ namespace ShadowRun_Charakter_Helper.CharController
             }
             add_to_HD();
         }
+
         /// <summary>
         /// Fügt sich selbst dem HD hinzu
         /// </summary>
         protected void add_to_HD()
         {
-            HD.Data.Add(this.HD_ID, new Models.DictionaryCharEntry(DicCD_Bezeichner, DicCD_Typ, DicCD_Wert, DicCD_Zusatz, DicCD_Notiz));
+            HD.Add(this.HD_ID, new Model.DictionaryCharEntry(DicCD_Bezeichner, DicCD_Typ, DicCD_Wert, DicCD_Zusatz, DicCD_Notiz));
         }
         /// <summary>
         /// löscht sich aus dem HD
         /// </summary>
         public void remove_from_HD()
         {
-            HD.Data.Remove(this.HD_ID);
+            HD.Remove(this.HD_ID);
         }
 
         /// <summary>
@@ -56,16 +59,7 @@ namespace ShadowRun_Charakter_Helper.CharController
             DicCD_Typ = this.GetType().ToString();
             Ressources.TryGetValue(DicCD_Typ, out DicCD_Typ);
         }
-        /// <summary>
-        /// Konstruktor für Laden
-        /// </summary>
-        /// <param name="obj"></param>
-        public Controller(T obj)
-        {
-            addRessources();
-            DicCD_Typ = this.GetType().ToString();
-            Ressources.TryGetValue(DicCD_Typ, out DicCD_Typ);
-        }
+        
         /// <summary>
         /// Aktualisiert den Wert im HD
         /// </summary>

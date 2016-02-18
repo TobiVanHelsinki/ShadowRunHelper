@@ -1,10 +1,11 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using ShadowRun_Charakter_Helper.Models;
+using ShadowRun_Charakter_Helper.Model;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Primitives;
 using System;
 using AppUIBasics.ControlPages;
+using System.Collections.Generic;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -15,19 +16,16 @@ namespace ShadowRun_Charakter_Helper
     /// </summary>
     public sealed partial class Char : Page
     {
+        protected List<DictionaryCharEntry> ZusTemp;
         public CharViewModel ViewModel { get; set; }
         public Char()
         {
             InitializeComponent();
 
-            //Windows.UI.Xaml.Data.Binding bindingOrig = BindingOperations.GetBinding(item, dp);
-
-
-            //TextBlock Fähigkeiten_Zus_Attribute;
-            //Fähigkeiten_Zus_Attribute.SetBinding(Text, new Binding("AnotherIntegerProperty")
-            //{
-            //    Converter = new UnitConverter()
-            //});
+            //todo testdaten
+            ZusTemp = new List<DictionaryCharEntry>();
+            //ZusTemp.Add(new DictionaryCharEntry);
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -63,8 +61,9 @@ namespace ShadowRun_Charakter_Helper
 
         private async void HandlungEditDialog_Click(object sender, RoutedEventArgs e)
         {
-            Edit_Handlung dialog = new Edit_Handlung(((CharController.Handlung)((Button)sender).DataContext).Data);
+            Edit_Handlung dialog = new Edit_Handlung(((CharController.Handlung)((Button)sender).DataContext).Data, ViewModel.Current);
             await dialog.ShowAsync();
+            
         }
     }
 }
