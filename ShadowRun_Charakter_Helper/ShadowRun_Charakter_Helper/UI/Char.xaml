@@ -49,27 +49,37 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <FlyoutBase.AttachedFlyout>
-                                            <Flyout>
+                                            <Flyout x:Name="FlyoutHandlung" Opened="FlyoutHandlung_Opened" Closed="FlyoutHandlung_Closed">
                                                 <StackPanel Orientation="Vertical">
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
-                                                    <!--Zusammensetzung -->
 
-                                                    <ListView ItemsSource="{x:Bind Data.Zusammensetzung}">
-                                                        <ListView.ItemTemplate >
-                                                            <DataTemplate >
-                                                                <StackPanel>
-                                                                    <TextBlock Text="{Binding Value.Typ, Mode=OneWay}" />
-                                                                    <TextBlock Text="{Binding Value.Bezeichner, Mode=OneWay}" />
-
-                                                                </StackPanel>
-                                                            </DataTemplate>
-                                                        </ListView.ItemTemplate>
-                                                    </ListView>
-
-                                                    <!--/Zusammensetzung -->
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Notiz"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Notiz, Mode=OneWay}"/>
                                                     <Button x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="HandlungEditDialog_Click"/>
+                                                    <!--Zusammensetzung -->
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
+                        
+                                                    <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind Data.Zusammensetzung}" >
+                                                        <GridView.ItemTemplate >
+                                                            <DataTemplate >
+                                                                <Grid Tapped="Zus_Tapped" Name="Zus_ListVIew_Stack">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition/>
+                                                                        <RowDefinition/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <TextBlock Text="{Binding Value.Bezeichner, Mode=OneWay}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
+                                                                    <TextBlock Text="{Binding Value.Wert, Mode=OneWay}"  Grid.Column="1" Grid.Row="1"/>
+                                                                    <TextBlock Text="{Binding Value.Typ, Mode=OneWay}"  Grid.Column="0" Grid.Row="1"/>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </GridView.ItemTemplate>
+                                                    </GridView>
+
+                                                    <!--/Zusammensetzung -->
+                                                   
                                                 </StackPanel>
                                             </Flyout>
                                         </FlyoutBase.AttachedFlyout>

@@ -2,6 +2,8 @@
 using ShadowRun_Charakter_Helper.CharModel;
 using Windows.UI.Xaml.Controls;
 using ShadowRun_Charakter_Helper.Controller;
+using System;
+
 namespace AppUIBasics.ControlPages
 {
     /// <summary>
@@ -10,23 +12,15 @@ namespace AppUIBasics.ControlPages
     public sealed partial class Edit_Handlung : ContentDialog
     {
         public ShadowRun_Charakter_Helper.CharModel.Handlung data;
-        public ShadowRun_Charakter_Helper.Controller.HashDictionary hd;
-        private CharHolder current;
-
+        public ShadowRun_Charakter_Helper.Controller.HashDictionary HD;
         public List<string> MyStringOptions { get; set; }
 
-        public Edit_Handlung(Handlung data, CharHolder current)
+        public Edit_Handlung(Handlung data, HashDictionary hd)
         {
             this.InitializeComponent();
             this.data = data;
-            this.current = current;
-           // ComboBox CB1 = new ComboBox();
-         //   CB1.DataContext = current.HD.Data.Values;
-            // Set the DataContext of the TextBox MyTextBox.
-            //   CB1.ItemsSource=HD.Data;
-            CB2.DataContext = current.HD.Data.Values;
+            this.HD = hd;
         }
-
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {

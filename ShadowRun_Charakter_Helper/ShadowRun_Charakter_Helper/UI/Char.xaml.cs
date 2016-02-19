@@ -18,6 +18,7 @@ namespace ShadowRun_Charakter_Helper
     {
         protected List<DictionaryCharEntry> ZusTemp;
         public CharViewModel ViewModel { get; set; }
+        private int CurrentOpenHandlung = 0;
         public Char()
         {
             InitializeComponent();
@@ -53,17 +54,31 @@ namespace ShadowRun_Charakter_Helper
             }
         }
 
-        private void Zusammensetzung_A_CBB_Value(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        private async void Zus_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            ComboBox Zusammensetzung_A_CBB = new ComboBox();
-            Zusammensetzung_A_CBB.SelectedIndex = 1;
+            HD_Wahl dialog = new HD_Wahl(((KeyValuePair<int, DictionaryCharEntry>)(((Grid)sender).DataContext)), ViewModel.Current.HD);
+            await dialog.ShowAsync();
+            //delete old
+            ViewModel.Current.HandlungController[CurrentOpenHandlung].Data.Zusammensetzung.Remove(dialog.ActiveElement_old.Key);
+            //create new
+            ViewModel.Current.HandlungController[CurrentOpenHandlung].Data.Zusammensetzung.Add(dialog.ActiveElement_new.Key, dialog.ActiveElement_new.Value);
         }
 
         private async void HandlungEditDialog_Click(object sender, RoutedEventArgs e)
         {
-            Edit_Handlung dialog = new Edit_Handlung(((CharController.Handlung)((Button)sender).DataContext).Data, ViewModel.Current);
+            Edit_Handlung dialog = new Edit_Handlung(((CharController.Handlung)((Button)sender).DataContext).Data, ViewModel.Current.HD);
             await dialog.ShowAsync();
             
+        }
+
+        private void FlyoutHandlung_Opened(object sender, object e)
+        {
+            CurrentOpenHandlung = ((CharController.Handlung)((StackPanel)((Flyout)sender).Content).DataContext).HD_ID;
+        }
+
+        private void FlyoutHandlung_Closed(object sender, object e)
+        {
+            CurrentOpenHandlung = 0;
         }
     }
 }

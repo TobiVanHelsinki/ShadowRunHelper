@@ -136,7 +136,7 @@
     <value>Modifier</value>
   </data>
   <data name="Model_Handlung_Zusammensetzung.Text" xml:space="preserve">
-    <value>Zusammensetzung</value>
+    <value>Zusammensetzung (klick zum bearbeiten)</value>
   </data>
   <data name="Model_Items_.Text" xml:space="preserve">
     <value>Items</value>

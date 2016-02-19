@@ -162,6 +162,9 @@
     <Compile Include="UI\Converter\CB.cs" />
     <Compile Include="UI\Converter\Attribute.cs" />
     <Compile Include="UI\Converter\Digit.cs" />
+    <Compile Include="UI\HD_Wahl.xaml.cs">
+      <DependentUpon>HD_Wahl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Edit_Handlung.xaml.cs">
       <DependentUpon>Edit_Handlung.xaml</DependentUpon>
     </Compile>
@@ -270,6 +273,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="UI\HD_Wahl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Edit_Handlung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
