@@ -11,10 +11,10 @@
     PrimaryButtonText="Fertig"  
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     >
-    <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind HD.Data}" Grid.Column="1" Grid.Row="5" SelectedItem="Active">
-        <GridView.ItemTemplate >
-            <DataTemplate >
-                <StackPanel Tapped="Auswahl_gemacht" Name="Zus_ListVIew_Stack">
+    <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind HD.Data}" Grid.Column="1" Grid.Row="5" SelectionMode="Multiple" Loaded="Zus_ListVIew_Loaded" Tapped="Zus_ListVIew_Tapped">
+        <GridView.ItemTemplate>
+            <DataTemplate>
+                <StackPanel Name="Zus_ListVIew_Stack">
                     <TextBlock Text="{Binding Value.Bezeichner, Mode=OneWay}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
                     <TextBlock Text="{Binding Value.Wert, Mode=OneWay}"  Grid.Column="1" Grid.Row="1"/>
                     <TextBlock Text="{Binding Value.Typ, Mode=OneWay}"  Grid.Column="0" Grid.Row="1"/>

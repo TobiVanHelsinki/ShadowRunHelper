@@ -49,19 +49,19 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <FlyoutBase.AttachedFlyout>
-                                            <Flyout x:Name="FlyoutHandlung" Opened="FlyoutHandlung_Opened" Closed="FlyoutHandlung_Closed">
+                                            <Flyout x:Name="FlyoutHandlung">
                                                 <StackPanel Orientation="Vertical">
 
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Notiz"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Notiz, Mode=OneWay}"/>
-                                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="HandlungEditDialog_Click"/>
+                                                    
                                                     <!--Zusammensetzung -->
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
                         
-                                                    <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind Data.Zusammensetzung}" >
+                                                    <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind Data.Zusammensetzung, Mode=OneWay}" >
                                                         <GridView.ItemTemplate >
                                                             <DataTemplate >
-                                                                <Grid Tapped="Zus_Tapped" Name="Zus_ListVIew_Stack">
+                                                                <Grid Name="Zus_ListVIew_Stack">
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition Width="Auto"/>
                                                                         <ColumnDefinition Width="Auto"/>
@@ -79,7 +79,8 @@
                                                     </GridView>
 
                                                     <!--/Zusammensetzung -->
-                                                   
+                                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="HandlungEditDialog_Click"/>
+                                                    <Button x:Uid="UI_Btn_Bearbeiten_Zus" Name="Handlung_Zus_Edit" Click="HandlungEditZusDialog_Click"/>
                                                 </StackPanel>
                                             </Flyout>
                                         </FlyoutBase.AttachedFlyout>

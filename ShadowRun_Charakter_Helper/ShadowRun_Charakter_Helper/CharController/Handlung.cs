@@ -7,13 +7,16 @@ namespace ShadowRun_Charakter_Helper.CharController
 
     public class Handlung : CharController.ControllerSingle<CharModel.Handlung>
     {
+        
         int[] templist;
         public Handlung()
         {
+            DicCD_Typ = "Handlung";
         }
 
         public Handlung(Controller.HashDictionary hD)
         {
+            DicCD_Typ = "Handlung";
             this.setHD(hD);
             HD.Changed += new ShadowRun_Charakter_Helper.Controller.ChangedEventHandler(HDChanged);
             Data.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(DataChanged);

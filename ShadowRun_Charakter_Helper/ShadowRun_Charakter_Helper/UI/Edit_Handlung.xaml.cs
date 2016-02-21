@@ -3,6 +3,8 @@ using ShadowRun_Charakter_Helper.CharModel;
 using Windows.UI.Xaml.Controls;
 using ShadowRun_Charakter_Helper.Controller;
 using System;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls.Primitives;
 
 namespace AppUIBasics.ControlPages
 {

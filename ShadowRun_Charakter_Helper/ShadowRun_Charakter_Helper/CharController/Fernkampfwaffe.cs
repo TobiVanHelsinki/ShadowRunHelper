@@ -6,10 +6,12 @@ namespace ShadowRun_Charakter_Helper.CharController
     {
         public Fernkampfwaffe()
         {
+            DicCD_Typ = "Fernkampfwaffe";
         }
 
         public Fernkampfwaffe(ObservableCollection<CharModel.Fernkampfwaffe> obj)
         {
+            DicCD_Typ = "Fernkampfwaffe";
         }
     }
 }

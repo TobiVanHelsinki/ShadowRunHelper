@@ -6,10 +6,12 @@ namespace ShadowRun_Charakter_Helper.CharController
     {
         public Vehikel()
         {
+            DicCD_Typ = "Vehikel";
         }
 
         public Vehikel(ObservableCollection<CharModel.Vehikel> obj)
         {
+            DicCD_Typ = "Vehikel";
         }
     }
 }

@@ -165,4 +165,7 @@
   <data name="UI_Btn_Bearbeiten.Content" xml:space="preserve">
     <value>Bearbeiten</value>
   </data>
+  <data name="UI_Btn_Bearbeiten_Zus.Content" xml:space="preserve">
+    <value>Zusammensetzung Bearbeiten</value>
+  </data>
 </root>

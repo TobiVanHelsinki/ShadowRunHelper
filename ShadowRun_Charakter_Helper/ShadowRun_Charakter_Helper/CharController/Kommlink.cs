@@ -6,10 +6,12 @@ namespace ShadowRun_Charakter_Helper.CharController
     {
         public Kommlink()
         {
+            DicCD_Typ = "Kommlink";
         }
 
         public Kommlink(ObservableCollection<CharModel.Kommlink> obj)
         {
+            DicCD_Typ = "Kommlink";
         }
     }
 }

@@ -9,8 +9,8 @@ namespace ShadowRun_Charakter_Helper.CharController
     public class Controller<T> where T : CharModel.Model, new()
     {
         public Dictionary<String, String> Ressources = new Dictionary<String, String>();
-        protected string DicCD_Bezeichner = "noch nicht benannt";
-        protected string DicCD_Typ = "";
+        protected string DicCD_Bezeichner = "nichts vorhanden";
+        protected string DicCD_Typ = "error";
         protected double DicCD_Wert = 0;
         protected string DicCD_Zusatz = "";
         protected string DicCD_Notiz = "";

@@ -6,10 +6,12 @@ namespace ShadowRun_Charakter_Helper.CharController
     {
         public Nahkampfwaffe()
         {
+            DicCD_Typ = "Nahkampfwaffe";
         }
 
         public Nahkampfwaffe(ObservableCollection<CharModel.Nahkampfwaffe> obj)
         {
+            DicCD_Typ = "Nahkampfwaffe";
         }
     }
 }
