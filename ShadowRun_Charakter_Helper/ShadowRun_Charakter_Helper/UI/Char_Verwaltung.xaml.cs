@@ -150,14 +150,15 @@ namespace ShadowRun_Charakter_Helper
 
         private void Click_Speichern(object sender, RoutedEventArgs e)
         {
-    //        CharIO.Save_JSONChar_to_Data(ViewModel.DefaultChar);
+          //  CharIO.Save_JSONChar_to_Data(ViewModel.Current);
+            CharIO.Save_JSONChar_to_IO(ViewModel.Current);
             createSummorys();
         }
 
         private async void Click_Laden_Datei(object sender, RoutedEventArgs e)
         {
 
-     //        ViewModel.DefaultChar = await CharIO.Load_JSONChar_from_IO();
+             ViewModel.Current = await CharIO.Load_JSONChar_from_IO();
             Frame.Navigate(typeof(Char), ViewModel);
         }
 
@@ -166,9 +167,9 @@ namespace ShadowRun_Charakter_Helper
             if (selected_Char_Summory != null) { 
  
                 //Richtigen Char auswählen
-                Models.Char temp_char = new Models.Char();
+                Controller.CharHolder temp_char = new Controller.CharHolder();
 
-                temp_char = CharIO.Load_JSONChar_from_Data(selected_Char_Summory.id);
+               // temp_char = CharIO.Load_JSONChar_from_Data(selected_Char_Summory.id);
                 CharIO.Save_JSONChar_to_IO(temp_char);
 
                  //var befreien

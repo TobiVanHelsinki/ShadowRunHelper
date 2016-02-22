@@ -12,22 +12,22 @@ namespace ShadowRun_Charakter_Helper.IO
     {
         static String Chars_Container_Name = "Char_Store";
 
-        private static string Save_Char_to_JSON(Models.Char SaveChar)
+        private static string Save_Char_to_JSON(Controller.CharHolder SaveChar)
         {
             return JsonConvert.SerializeObject(SaveChar);
         }
 
-        public static void Save_JSONChar_to_Data(Models.Char SaveChar)
+        public static void Save_JSONChar_to_Data(Controller.CharHolder SaveChar)
         {
 
 
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             Windows.Storage.ApplicationDataContainer container = localSettings.CreateContainer(Chars_Container_Name, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
-            localSettings.Containers[Chars_Container_Name].Values[SaveChar.ID_Char + ""] = Save_Char_to_JSON(SaveChar);
+            localSettings.Containers[Chars_Container_Name].Values[SaveChar.App_ID + ""] = Save_Char_to_JSON(SaveChar);
         }
 
-        public static async void Save_JSONChar_to_IO(Models.Char SaveChar)
+        public static async void Save_JSONChar_to_IO(Controller.CharHolder SaveChar)
         {
 
             //Ordner Auswähler vorbereiten
@@ -46,7 +46,7 @@ namespace ShadowRun_Charakter_Helper.IO
 
 
                 //Dateiname und Datei vorbereiten
-                String filename = SaveChar.Alias + "_" + SaveChar.Karma_Gesamt + "_Karma_" + SaveChar.Runs + "_Runs_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second + ".SRWin";
+                String filename = SaveChar.Person.Alias + "_" + SaveChar.Person.Karma_Gesamt + "_Karma_" + SaveChar.Person.Runs + "_Runs_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second + ".SRWin";
                 StorageFile Save_File = await folder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
                 Save_File = await folder.GetFileAsync(filename);
 
@@ -58,21 +58,23 @@ namespace ShadowRun_Charakter_Helper.IO
 
         }
 
-        private static Models.Char Load_Char_from_JSON(string fileContent)
+        private static Controller.CharHolder Load_Char_from_JSON(string fileContent)
         {
-            return JsonConvert.DeserializeObject<Models.Char>(fileContent);
+            return JsonConvert.DeserializeObject<Controller.CharHolder>(fileContent);
         }
 
-        public static Models.Char Load_JSONChar_from_Data(int LoadID)
+        public static Controller.CharHolder Load_JSONChar_from_Data(int LoadID)
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             return Load_Char_from_JSON((string)localSettings.Containers[Chars_Container_Name].Values[LoadID + ""]);
 
         }
 
-        public static async Task<Models.Char> Load_JSONChar_from_IO()
+        public static async Task<Controller.CharHolder> Load_JSONChar_from_IO()
         {
             String inputString = "";
+            inputString = await Load_JSONChar_from_IO_Async_Part();
+            return Load_Char_from_JSON(inputString);
             try
             {
                 inputString = await Load_JSONChar_from_IO_Async_Part();
@@ -80,7 +82,7 @@ namespace ShadowRun_Charakter_Helper.IO
             }
             catch (Exception)
             {
-                return new Models.Char();
+                return new Controller.CharHolder();
             }
         }
 

@@ -12,6 +12,7 @@ namespace ShadowRun_Charakter_Helper.Controller
     public class CharHolder
     {
         public HashDictionary HD = new HashDictionary();
+        public int App_ID = 0;
 
         public ObservableCollection<CharController.Handlung> HandlungController { get; set; }
         public ObservableCollection<CharController.Fertigkeit> FertigkeitController { get; set; }

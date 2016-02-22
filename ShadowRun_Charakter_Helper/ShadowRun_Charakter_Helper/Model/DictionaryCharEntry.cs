@@ -88,6 +88,12 @@ namespace ShadowRun_Charakter_Helper.Model
             this.Wert = wert;
         }
 
+        public DictionaryCharEntry()
+        {
+            this.Bezeichner = "File Load";
+            this.Wert = 0;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

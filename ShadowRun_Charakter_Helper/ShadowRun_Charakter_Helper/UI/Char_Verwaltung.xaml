@@ -21,8 +21,8 @@
         <TextBlock Name="Einleitung" RelativePanel.AlignTopWithPanel="True" Text="Hier können Charaktere verwaltet werden" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" />
         <TextBlock Name="Einleitung2" RelativePanel.Below="Einleitung" Text="Vergiss nie, den Char zu speichern und sichere ihn am Besten immer in einer Datei!" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" />
         <StackPanel Name="Buttons" RelativePanel.Below="Char_Sum" RelativePanel.AlignLeftWithPanel="True">
-            <!--<Button Content="Ausgewählten Char Laden" Click="Click_Laden" Style="{StaticResource Char_Control_Btn}"/>
-            <Button Content="Aktuellen Char Speichern" Click="Click_Speichern" Style="{StaticResource Char_Control_Btn}"/>-->
+            <Button Content="Ausgewählten Char Laden" Click="Click_Laden" Style="{StaticResource Char_Control_Btn}"/>
+            <Button Content="Aktuellen Char Speichern" Click="Click_Speichern" Style="{StaticResource Char_Control_Btn}"/>
             <Button Content="Neuen Char Erstellen" Click="Click_Erstellen" Style="{StaticResource Char_Control_Btn}"/>
             <Button Content="Ausgewählten Char Löschen" Click="Click_Löschen" Style="{StaticResource Char_Control_Btn}"/>
           <Button Content="Char aus Datei Laden" Click="Click_Laden_Datei" Style="{StaticResource Char_Control_Btn}"/>
