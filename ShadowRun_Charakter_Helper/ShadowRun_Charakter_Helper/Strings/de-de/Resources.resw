@@ -123,6 +123,12 @@
   <data name="Char_View_Pivot_Item.Label" xml:space="preserve">
     <value>Items</value>
   </data>
+  <data name="KlammerAufEck.Text" xml:space="preserve">
+    <value>[</value>
+  </data>
+  <data name="KlammerZuEck.Text" xml:space="preserve">
+    <value>]</value>
+  </data>
   <data name="Model_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -131,6 +137,9 @@
   </data>
   <data name="Model_Handlung_.Text" xml:space="preserve">
     <value>Handlungen</value>
+  </data>
+  <data name="Model_Handlung_Grenze.Text" xml:space="preserve">
+    <value>Grenze</value>
   </data>
   <data name="Model_Handlung_GrenzeZusammensetzung.Text" xml:space="preserve">
     <value>Zusammensetzung Grenze </value>

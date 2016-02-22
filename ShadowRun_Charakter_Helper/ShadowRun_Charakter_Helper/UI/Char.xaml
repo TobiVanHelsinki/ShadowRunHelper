@@ -37,7 +37,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Name="Bezeichnung_U" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Name="Pool" Grid.Column="1">
-                                <Run x:Uid="Model_Wert"/><Run x:Uid="Plus"/><Run x:Uid="Model_Handlung_Mod"/>
+                                <Run x:Uid="Model_Wert"/><Run x:Uid="Plus"/><Run x:Uid="Model_Handlung_Mod"/><Run x:Uid="KlammerAufEck"/><Run x:Uid="Model_Handlung_Grenze"/><Run x:Uid="KlammerZuEck"/>
                             </TextBlock>
                         </Grid>
                         <ListView AllowDrop="True" Name="Handlung" ItemsSource="{x:Bind ViewModel.Current.HandlungController}" Style="{StaticResource ListView}">
@@ -108,7 +108,7 @@
                                         </FlyoutBase.AttachedFlyout>
                                         <TextBlock Name="Bezeichner" Grid.Column="0" Text="{x:Bind Data.Bezeichner, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
                                         <TextBlock Name="Wert+Zusatz" Grid.Column="1">
-                                            <Run Text="{x:Bind Data.Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Data.Zusatz, Mode=OneWay}"/>
+                                            <Run Text="{x:Bind Data.Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Data.Zusatz, Mode=OneWay}"/><Run x:Uid="KlammerAufEck"/><Run Text="{x:Bind Data.Grenze, Mode=OneWay}"/><Run x:Uid="KlammerZuEck"/>
                                         </TextBlock>
                                     </Grid>
                                 </DataTemplate>

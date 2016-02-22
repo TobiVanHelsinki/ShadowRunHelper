@@ -41,8 +41,8 @@ namespace ShadowRun_Charakter_Helper.CharModel
         }
 
         //Todo darf in der zus liste nicht eigene HD Id beinhalten, sonst vermutlich crash
-        private String grenze;
-        public String Grenze
+        private int grenze;
+        public int Grenze
         {
             get { return grenze; }
             set
@@ -64,7 +64,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
             //todo alles auf null setzen schon im Kontruktor
             Zusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
             GrenzeZusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
-            Grenze = "";
+            Grenze = 0;
         }
     }
 }
