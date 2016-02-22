@@ -136,5 +136,77 @@ namespace ShadowRun_Charakter_Helper.Controller
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        public void Add(String Controller_Name)
+        {
+            if (Controller_Name.Contains("Handlung"))
+            {
+                HandlungController.Add(new CharController.Handlung(this.HD));
+            }
+            else if (Controller_Name.Contains("Fertigkeit"))
+            {
+                FertigkeitController.Add(new CharController.Fertigkeit(this.HD));
+            }
+            else if (Controller_Name.Contains("Attribut"))
+            {
+                AttributController.Add(new CharController.Attribut(this.HD));
+            }
+            else if (Controller_Name.Contains("Item"))
+            {
+                ItemController.Add(new CharController.Item(this.HD));
+            }
+            else if (Controller_Name.Contains("Munition"))
+            {
+                MunitionController.Add(new CharController.Munition(this.HD));
+            }
+            else if (Controller_Name.Contains("Implantat"))
+            {
+                ImplantatController.Add(new CharController.Implantat(this.HD));
+            }
+            else if (Controller_Name.Contains("Vorteil"))
+            {
+                VorteilController.Add(new CharController.Vorteil(this.HD));
+            }
+            else if (Controller_Name.Contains("Nachteil"))
+            {
+                NachteilController.Add(new CharController.Nachteil(this.HD));
+            }
+            else if (Controller_Name.Contains("Connection"))
+            {
+                ConnectionController.Add(new CharController.Connection());
+            }
+            else if (Controller_Name.Contains("Sin"))
+            {
+                SinController.Add(new CharController.Sin());
+            }
+            else if (Controller_Name.Contains("Nahkampfwaffe"))
+            {
+                NahkampfwaffeController.add();
+            }
+            else if (Controller_Name.Contains("Fernkampfwaffe"))
+            {
+                FernkampfwaffeController.add();
+            }
+            else if (Controller_Name.Contains("Kommlink"))
+            {
+                KommlinkController.add();
+            }
+            else if (Controller_Name.Contains("CyberDeck"))
+            {
+                CyberDeckController.add();
+            }
+            else if (Controller_Name.Contains("Vehikel"))
+            {
+                VehikelController.add();
+            }
+            else if (Controller_Name.Contains("Panzerung"))
+            {
+                PanzerungController.add();
+            }
+
+        }
     }
+
+
+
 }

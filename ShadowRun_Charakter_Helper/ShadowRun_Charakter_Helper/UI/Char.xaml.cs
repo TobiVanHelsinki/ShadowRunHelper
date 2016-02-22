@@ -30,11 +30,7 @@ namespace ShadowRun_Charakter_Helper
         private void Add(object sender, RoutedEventArgs e)
         {
             String test = ((String)((Button)sender).Name);
-            if (test.Contains("Handlung"))
-            {
-                ViewModel.Current.HandlungController.Add(new CharController.Handlung());
-                //spezifisches add über CharHolder machen
-            }
+            ViewModel.Current.Add(test);
         }
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
