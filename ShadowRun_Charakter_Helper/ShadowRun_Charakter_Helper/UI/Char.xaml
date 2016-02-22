@@ -78,9 +78,31 @@
                                                         </GridView.ItemTemplate>
                                                     </GridView>
 
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_GrenzeZusammensetzung"/>
+
+                                                    <GridView Name="GZus_ListVIew" ItemsSource="{x:Bind Data.GrenzeZusammensetzung, Mode=OneWay}" >
+                                                        <GridView.ItemTemplate >
+                                                            <DataTemplate >
+                                                                <Grid Name="GZus_ListVIew_Stack">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition/>
+                                                                        <RowDefinition/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <TextBlock Text="{Binding Value.Bezeichner, Mode=OneWay}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
+                                                                    <TextBlock Text="{Binding Value.Wert, Mode=OneWay}"  Grid.Column="1" Grid.Row="1"/>
+                                                                    <TextBlock Text="{Binding Value.Typ, Mode=OneWay}"  Grid.Column="0" Grid.Row="1"/>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </GridView.ItemTemplate>
+                                                    </GridView>
                                                     <!--/Zusammensetzung -->
                                                     <Button x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="HandlungEditDialog_Click"/>
                                                     <Button x:Uid="UI_Btn_Bearbeiten_Zus" Name="Handlung_Zus_Edit" Click="HandlungEditZusDialog_Click"/>
+                                                    <Button x:Uid="UI_Btn_Bearbeiten_GrenzeZus" Name="Handlung_GrenzeZus_Edit" Click="HandlungEditGrenzeZusDialog_Click"/>
                                                 </StackPanel>
                                             </Flyout>
                                         </FlyoutBase.AttachedFlyout>

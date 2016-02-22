@@ -14,12 +14,14 @@ namespace AppUIBasics.ControlPages
     {
         public ShadowRun_Charakter_Helper.Controller.HashDictionary HD;
         public ShadowRun_Charakter_Helper.CharModel.Handlung data;
+        int Modus;
 
-        public HD_Wahl(Handlung data, HashDictionary hD)
+        public HD_Wahl(Handlung data, HashDictionary hD, int modus)
         {
             this.InitializeComponent();
             this.data = data;
             HD = hD;
+            Modus = modus;
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -32,7 +34,15 @@ namespace AppUIBasics.ControlPages
                     tempDic.Add(item.FirstIndex + i + 1, HD[item.FirstIndex + i + 1]);
                 }
             }
-            data.Zusammensetzung = tempDic;
+            if (Modus == 1)
+            {
+                data.Zusammensetzung = tempDic;
+            }
+            else if(Modus == 2)
+            {
+                data.GrenzeZusammensetzung = tempDic;
+            }
+            
 
             ContentDialogButtonClickDeferral deferral = args.GetDeferral();
             deferral.Complete();
@@ -40,9 +50,19 @@ namespace AppUIBasics.ControlPages
 
         private void Zus_ListVIew_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            foreach (var item in data.Zusammensetzung)
+            if (Modus == 1)
             {
-                Zus_ListVIew.SelectRange(new ItemIndexRange(item.Key - 1, 1));
+                foreach (var item in data.Zusammensetzung)
+                {
+                    Zus_ListVIew.SelectRange(new ItemIndexRange(item.Key - 1, 1));
+                }
+            }
+            else if (Modus == 2)
+            {
+                foreach (var item in data.GrenzeZusammensetzung)
+                {
+                    Zus_ListVIew.SelectRange(new ItemIndexRange(item.Key - 1, 1));
+                }
             }
         }
 

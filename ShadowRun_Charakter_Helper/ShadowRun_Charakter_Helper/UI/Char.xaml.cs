@@ -48,9 +48,15 @@ namespace ShadowRun_Charakter_Helper
 
         private async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            HD_Wahl dialog = new HD_Wahl(((CharController.Handlung)((Button)sender).DataContext).Data, ViewModel.Current.HD);
+            HD_Wahl dialog = new HD_Wahl(((CharController.Handlung)((Button)sender).DataContext).Data, ViewModel.Current.HD, 1);
             await dialog.ShowAsync();
 
+        }
+
+        private async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
+        {
+            HD_Wahl dialog = new HD_Wahl(((CharController.Handlung)((Button)sender).DataContext).Data, ViewModel.Current.HD, 2);
+            await dialog.ShowAsync();
         }
     }
 }

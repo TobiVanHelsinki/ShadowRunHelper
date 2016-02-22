@@ -132,6 +132,9 @@
   <data name="Model_Handlung_.Text" xml:space="preserve">
     <value>Handlungen</value>
   </data>
+  <data name="Model_Handlung_GrenzeZusammensetzung.Text" xml:space="preserve">
+    <value>Zusammensetzung Grenze </value>
+  </data>
   <data name="Model_Handlung_Mod.Text" xml:space="preserve">
     <value>Modifier</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="UI_Btn_Bearbeiten.Content" xml:space="preserve">
     <value>Bearbeiten</value>
+  </data>
+  <data name="UI_Btn_Bearbeiten_GrenzeZus.Content" xml:space="preserve">
+    <value>Zusammensetzung Grenze Bearbeten</value>
   </data>
   <data name="UI_Btn_Bearbeiten_Zus.Content" xml:space="preserve">
     <value>Zusammensetzung Bearbeiten</value>

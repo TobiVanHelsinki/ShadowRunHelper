@@ -22,6 +22,24 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
+        private Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> grenzeZusammensetzung;
+        public Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> GrenzeZusammensetzung
+        {
+            get
+            {
+                return grenzeZusammensetzung;
+                // todo return zusammensetzung ohne handlungen
+            }
+            set
+            {
+                if (value != this.grenzeZusammensetzung)
+                {
+                    this.grenzeZusammensetzung = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         //Todo darf in der zus liste nicht eigene HD Id beinhalten, sonst vermutlich crash
         private String grenze;
         public String Grenze
@@ -45,6 +63,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
         {
             //todo alles auf null setzen schon im Kontruktor
             Zusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
+            GrenzeZusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
             Grenze = "";
         }
     }
