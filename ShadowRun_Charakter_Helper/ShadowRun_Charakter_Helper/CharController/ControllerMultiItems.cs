@@ -40,7 +40,7 @@ namespace ShadowRun_Charakter_Helper.CharController
 
                 foreach (var item in DataList)
                 {
-                    if (item.Aktiv)
+                    if (item.Aktiv == true)
                     {
                         temptry.Bezeichner = temp.Bezeichner;
                         temptry.Wert = temp.Wert;

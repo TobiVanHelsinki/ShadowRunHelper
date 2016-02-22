@@ -15,8 +15,8 @@
                 }
             }
         }
-        public double modi;
-        public double Modus
+        public string modi;
+        public string Modi
         {
             get { return modi; }
             set

@@ -17,6 +17,7 @@ namespace ShadowRun_Charakter_Helper.Controller
         public ObservableCollection<CharController.Fertigkeit> FertigkeitController { get; set; }
         public ObservableCollection<CharController.Attribut> AttributController { get; set; }
         public ObservableCollection<CharController.Item> ItemController { get; set; }
+        public ObservableCollection<CharController.Programm> ProgrammController { get; set; }
         public ObservableCollection<CharController.Munition> MunitionController { get; set; }
         public ObservableCollection<CharController.Implantat> ImplantatController { get; set; }
         public ObservableCollection<CharController.Vorteil> VorteilController { get; set; }
@@ -31,6 +32,8 @@ namespace ShadowRun_Charakter_Helper.Controller
         public CharController.Vehikel VehikelController { get; set; }
         public CharController.Panzerung PanzerungController { get; set; }
 
+        public CharModel.Person Person { get; set; }
+
         /// <summary>
         /// Konstruktor nutzen, um neue Controller und Objekte zu erhalten
         /// </summary>
@@ -42,6 +45,7 @@ namespace ShadowRun_Charakter_Helper.Controller
             FertigkeitController = new ObservableCollection<CharController.Fertigkeit>();
             AttributController = new ObservableCollection<CharController.Attribut>();
             ItemController = new ObservableCollection<CharController.Item>();
+            ProgrammController = new ObservableCollection<CharController.Programm>();
             MunitionController = new ObservableCollection<CharController.Munition>();
             ImplantatController = new ObservableCollection<CharController.Implantat>();
             VorteilController = new ObservableCollection<CharController.Vorteil>();
@@ -62,6 +66,15 @@ namespace ShadowRun_Charakter_Helper.Controller
             CyberDeckController.setHD(HD);
             VehikelController.setHD(HD);
             PanzerungController.setHD(HD);
+
+            //NahkampfwaffeController = new CharController.Nahkampfwaffe(HD);
+            //FernkampfwaffeController = new CharController.Fernkampfwaffe(HD);
+            //KommlinkController = new CharController.Kommlink(HD);
+            //CyberDeckController = new CharController.CyberDeck(HD);
+            //VehikelController = new CharController.Vehikel(HD);
+            //PanzerungController = new CharController.Panzerung(HD);
+
+            Person = new CharModel.Person();
         }
 
 /// <summary>
@@ -88,6 +101,7 @@ namespace ShadowRun_Charakter_Helper.Controller
                         ObservableCollection<CharController.Fertigkeit> fertigkeit,
                         ObservableCollection<CharController.Attribut> attribut,
                         ObservableCollection<CharController.Item> item,
+                        ObservableCollection<CharController.Programm> programm,
                         ObservableCollection<CharController.Munition> munition,
                         ObservableCollection<CharController.Implantat> implantat,
                         ObservableCollection<CharController.Vorteil> vorteil,
@@ -106,6 +120,7 @@ namespace ShadowRun_Charakter_Helper.Controller
             FertigkeitController = fertigkeit;
             AttributController = attribut;
             ItemController = item;
+            ProgrammController = programm;
             MunitionController = munition;
             ImplantatController = implantat;
             VorteilController = vorteil;
@@ -125,6 +140,7 @@ namespace ShadowRun_Charakter_Helper.Controller
             KommlinkController.setHD(HD);
             CyberDeckController.setHD(HD);
             VehikelController.setHD(HD);
+            //todo theoretisch müsste jder multiC für alle eigenschaften, auf die man würfelt ein eigenen HDE haben
             PanzerungController.setHD(HD);
         }
 
@@ -154,6 +170,10 @@ namespace ShadowRun_Charakter_Helper.Controller
             else if (Controller_Name.Contains("Item"))
             {
                 ItemController.Add(new CharController.Item(this.HD));
+            }
+            else if (Controller_Name.Contains("Programm"))
+            {
+                ProgrammController.Add(new CharController.Programm(this.HD));
             }
             else if (Controller_Name.Contains("Munition"))
             {

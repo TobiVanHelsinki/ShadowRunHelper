@@ -40,7 +40,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
-        //Todo darf in der zus liste nicht eigene HD Id beinhalten, sonst vermutlich crash
+        //Todo grenze berechnen fehlt
         private int grenze;
         public int Grenze
         {

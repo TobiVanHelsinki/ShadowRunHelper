@@ -2,8 +2,8 @@
 {
     public class Item : CharModel.Model
     {
-        private bool besitz;
-        public bool Besitz
+        private bool? besitz;
+        public bool? Besitz
         {
             get { return besitz; }
             set
@@ -15,8 +15,8 @@
                 }
             }
         }
-        private bool aktiv;
-        public bool Aktiv
+        private bool? aktiv;
+        public bool? Aktiv
         {
             get { return aktiv; }
             set
@@ -44,6 +44,9 @@
 
         public Item()
         {
+            Besitz = false;
+            Aktiv = false;
+            Anzahl = 0;
         }
 
     }

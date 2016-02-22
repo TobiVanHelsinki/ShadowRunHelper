@@ -123,20 +123,65 @@
   <data name="Char_View_Pivot_Item.Label" xml:space="preserve">
     <value>Items</value>
   </data>
+  <data name="Char_View_Pivot_Kampf.Label" xml:space="preserve">
+    <value>Kampf</value>
+  </data>
+  <data name="Char_View_Pivot_Notizen.Label" xml:space="preserve">
+    <value>Notizen</value>
+  </data>
+  <data name="Char_View_Pivot_Person.Label" xml:space="preserve">
+    <value>Person</value>
+  </data>
   <data name="KlammerAufEck.Text" xml:space="preserve">
     <value>[</value>
   </data>
   <data name="KlammerZuEck.Text" xml:space="preserve">
     <value>]</value>
   </data>
+  <data name="Model_Attribut_.Text" xml:space="preserve">
+    <value>Attribute</value>
+    <comment>Mehrzahl</comment>
+  </data>
   <data name="Model_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Model_Fertigkeiten_.Text" xml:space="preserve">
+  <data name="Model_Connection_.Text" xml:space="preserve">
+    <value>Connection</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Connection_Loyal.Text" xml:space="preserve">
+    <value>Loyal</value>
+  </data>
+  <data name="Model_Connection_Wert.Text" xml:space="preserve">
+    <value>Connection</value>
+  </data>
+  <data name="Model_CyberDeck_.Text" xml:space="preserve">
+    <value>CyberDecks</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_CyberDeck_Angriff.Text" xml:space="preserve">
+    <value>Angriff</value>
+  </data>
+  <data name="Model_CyberDeck_Schleicher.Text" xml:space="preserve">
+    <value>Schleicher</value>
+  </data>
+  <data name="Model_Fernkampfwaffe_.Text" xml:space="preserve">
+    <value>Fernkampfwaffen</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_FernKampfwaffe_Modi.Text" xml:space="preserve">
+    <value>Modi</value>
+  </data>
+  <data name="Model_FernKampfwaffe_Rückstoß.Text" xml:space="preserve">
+    <value>Rückstoß</value>
+  </data>
+  <data name="Model_Fertigkeit_.Text" xml:space="preserve">
     <value>Fertigkeiten</value>
+    <comment>Mehrzahl</comment>
   </data>
   <data name="Model_Handlung_.Text" xml:space="preserve">
     <value>Handlungen</value>
+    <comment>Mehrzahl</comment>
   </data>
   <data name="Model_Handlung_Grenze.Text" xml:space="preserve">
     <value>Grenze</value>
@@ -152,15 +197,99 @@
   </data>
   <data name="Model_Items_.Text" xml:space="preserve">
     <value>Items</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Item_Aktiv.Text" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="Model_Item_Anzahl.Text" xml:space="preserve">
+    <value>Anzahl</value>
+  </data>
+  <data name="Model_Item_Besitz.Text" xml:space="preserve">
+    <value>Besitz</value>
   </data>
   <data name="Model_Kommlink_.Text" xml:space="preserve">
     <value>Kommlinks</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Kommlink_Attribute.Text" xml:space="preserve">
+    <value>Attribute</value>
+  </data>
+  <data name="Model_Kommlink_Datenverarbeitung.Text" xml:space="preserve">
+    <value>Datenverarbeitung</value>
+  </data>
+  <data name="Model_Kommlink_Firewall.Text" xml:space="preserve">
+    <value>Firewall</value>
+  </data>
+  <data name="Model_Kommlink_Programmanzahl.Text" xml:space="preserve">
+    <value>Programmanzahl</value>
+  </data>
+  <data name="Model_Nahkampfwaffe_.Text" xml:space="preserve">
+    <value>Nahkampfwaffen</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Nahkampfwaffe_Reichweite.Text" xml:space="preserve">
+    <value>Reichweite</value>
   </data>
   <data name="Model_Notiz.Text" xml:space="preserve">
     <value>Notiz</value>
   </data>
+  <data name="Model_Panzerung_.Text" xml:space="preserve">
+    <value>Panzerung</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Panzerung_Ballistik.Text" xml:space="preserve">
+    <value>Ballistik</value>
+  </data>
+  <data name="Model_Panzerung_Stoß.Text" xml:space="preserve">
+    <value>Stoß</value>
+  </data>
+  <data name="Model_Programm_.Text" xml:space="preserve">
+    <value>Programme</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Programm_Optionen.Text" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
   <data name="Model_Typ.Text" xml:space="preserve">
     <value>Typ</value>
+  </data>
+  <data name="Model_Vehikel_.Text" xml:space="preserve">
+    <value>Vehikel</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Vehikel_Beschleunigung.Text" xml:space="preserve">
+    <value>Beschleunigung</value>
+  </data>
+  <data name="Model_Vehikel_Geschwindigkeit.Text" xml:space="preserve">
+    <value>Geschwindigkeit</value>
+  </data>
+  <data name="Model_Vehikel_Gewicht.Text" xml:space="preserve">
+    <value>Gewicht</value>
+  </data>
+  <data name="Model_Vehikel_Handling.Text" xml:space="preserve">
+    <value>Handling</value>
+  </data>
+  <data name="Model_Vehikel_Panzerung.Text" xml:space="preserve">
+    <value>Panzer</value>
+  </data>
+  <data name="Model_Vehikel_Pilot.Text" xml:space="preserve">
+    <value>Pilot</value>
+  </data>
+  <data name="Model_Vehikel_Rumpf.Text" xml:space="preserve">
+    <value>Rumpf</value>
+  </data>
+  <data name="Model_Vehikel_Sensor.Text" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="Model_Vehikel_Sitze.Text" xml:space="preserve">
+    <value>Sitze</value>
+  </data>
+  <data name="Model_Waffe_PB.Text" xml:space="preserve">
+    <value>PB</value>
+  </data>
+  <data name="Model_Waffe_Schaden.Text" xml:space="preserve">
+    <value>Schaden</value>
   </data>
   <data name="Model_Wert.Text" xml:space="preserve">
     <value>Wert</value>
@@ -170,6 +299,9 @@
   </data>
   <data name="Plus.Text" xml:space="preserve">
     <value> + </value>
+  </data>
+  <data name="Slash.Text" xml:space="preserve">
+    <value>/</value>
   </data>
   <data name="Space.Text" xml:space="preserve">
     <value> </value>
@@ -182,5 +314,48 @@
   </data>
   <data name="UI_Btn_Bearbeiten_Zus.Content" xml:space="preserve">
     <value>Zusammensetzung Bearbeiten</value>
+  </data>
+  <data name="Model_Person_Edge.Text" xml:space="preserve">
+    <value>Edge</value>
+  </data>
+  <data name="Model_Person_Essenz.Text" xml:space="preserve">
+    <value>Essenz</value>
+  </data>
+  <data name="Model_Person_Init.Text" xml:space="preserve">
+    <value>Initiative</value>
+  </data>
+  <data name="Model_Person_Karma.Text" xml:space="preserve">
+    <value>Karma</value>
+  </data>
+  <data name="Model_Person_Kontostand.Text" xml:space="preserve">
+    <value>Kontostand</value>
+  </data>
+  <data name="Model_Eigenschaften_Auswirkung.Text" xml:space="preserve">
+    <value>Auswirkungen</value>
+  </data>
+  <data name="Model_Implantat_.Text" xml:space="preserve">
+    <value>Implantate</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Implantat_Essenz.Text" xml:space="preserve">
+    <value>Essenz</value>
+  </data>
+  <data name="Model_Nachteil_.Text" xml:space="preserve">
+    <value>Nachteile</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Person_Alias.Text" xml:space="preserve">
+    <value>Alias</value>
+  </data>
+  <data name="Model_Person_Notizen.Text" xml:space="preserve">
+    <value>Notizen</value>
+  </data>
+  <data name="Model_SIN_.Text" xml:space="preserve">
+    <value>SystemIdentifikationsNummern</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Vorteil_.Text" xml:space="preserve">
+    <value>Vorteile</value>
+    <comment>Mehrzahl</comment>
   </data>
 </root>

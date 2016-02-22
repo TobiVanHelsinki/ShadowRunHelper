@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using System;
 using AppUIBasics.ControlPages;
 using System.Collections.Generic;
+using ShadowRun_Charakter_Helper.UI.Edit;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -51,13 +52,19 @@ namespace ShadowRun_Charakter_Helper
             }
             else if (Controller_Name.Contains("Fertigkeit"))
             {
-        //       Edit_Fertigkeit dialog = new Edit_Fertigkeit(((CharController.Fertigkeit)((Button)sender).DataContext).Data, ViewModel.Current.HD);
-        //        await dialog.ShowAsync();
+               Edit_Fertigkeit dialog = new Edit_Fertigkeit(((CharController.Fertigkeit)((Button)sender).DataContext).Data, ViewModel.Current.HD);
+               await dialog.ShowAsync();
+                //todo converter für zahlen einbinden in werte 
             }
             else if (Controller_Name.Contains("Attribut"))
             {
             }
             else if (Controller_Name.Contains("Item"))
+            {
+                Edit_Item dialog = new Edit_Item(((CharController.Item)((Button)sender).DataContext).Data, ViewModel.Current.HD);
+                await dialog.ShowAsync();
+            }
+            else if (Controller_Name.Contains("Programm"))
             {
             }
             else if (Controller_Name.Contains("Munition"))
@@ -105,7 +112,7 @@ namespace ShadowRun_Charakter_Helper
             }
             else if (Controller_Name.Contains("Panzerung"))
             {
-               
+               //ViewModel.Current.PanzerungController.DataList[0].Ballistik
             }
         }
 

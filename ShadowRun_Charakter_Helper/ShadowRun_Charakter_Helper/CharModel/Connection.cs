@@ -6,15 +6,15 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Connection : Person
     {
-        private double connect;
-        public double Connecti
+        private double wert;
+        public double Wert
         {
-            get { return connect; }
+            get { return wert; }
             set
             {
-                if (value != this.connect)
+                if (value != this.wert)
                 {
-                    this.connect = value;
+                    this.wert = value;
                     NotifyPropertyChanged();
                 }
             }

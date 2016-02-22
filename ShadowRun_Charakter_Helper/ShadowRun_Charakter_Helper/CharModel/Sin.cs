@@ -6,6 +6,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Sin : Model
     {
+
         public Sin()
         {
 

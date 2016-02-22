@@ -3,7 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ShadowRun_Charakter_Helper">
 
-
     <Style x:Key="TabsStylePivotStyle" TargetType="Pivot">
         <Setter Property="Template">
             <Setter.Value>
@@ -303,6 +302,10 @@
         <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <Style TargetType="TextBlock" x:Key="ListView_Item_Text">
         <Setter Property="Margin" Value="5,2,5,2"/>
+    </Style>
+    <Style TargetType="CheckBox" x:Key="ListView_Item_CheckBox">
+        <Setter Property="Margin" Value="5,2,5,2"/>
+        <!--<Setter Property="Width" Value="50"/>-->
     </Style>
     <Style TargetType="TextBox" x:Key="ListView_Item_TextBox">
         <Setter Property="Margin" Value="5,2,5,2"/>
