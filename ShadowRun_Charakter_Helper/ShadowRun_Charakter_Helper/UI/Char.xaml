@@ -54,10 +54,8 @@
 
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Notiz"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Notiz, Mode=OneWay}"/>
-                                                    
-                                                    <!--Zusammensetzung -->
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
-                        
+
                                                     <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind Data.Zusammensetzung, Mode=OneWay}" >
                                                         <GridView.ItemTemplate >
                                                             <DataTemplate >
@@ -99,7 +97,6 @@
                                                             </DataTemplate>
                                                         </GridView.ItemTemplate>
                                                     </GridView>
-                                                    <!--/Zusammensetzung -->
                                                     <Button x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="HandlungEditDialog_Click"/>
                                                     <Button x:Uid="UI_Btn_Bearbeiten_Zus" Name="Handlung_Zus_Edit" Click="HandlungEditZusDialog_Click"/>
                                                     <Button x:Uid="UI_Btn_Bearbeiten_GrenzeZus" Name="Handlung_GrenzeZus_Edit" Click="HandlungEditGrenzeZusDialog_Click"/>
@@ -121,10 +118,11 @@
                         </ListView>
                     </StackPanel>
                     <StackPanel Name="Fertigkeiten_Block">
-                        <StackPanel Name="Fertigkeiten_U" RelativePanel.Below="Handlung" Style="{StaticResource ListView_U}">
-                        <TextBlock x:Uid="Model_Fertigkeiten_"  Style="{StaticResource ListView_U_Text}"/>
-                    </StackPanel>
-                        <Grid Name="Fertigkeiten_E" RelativePanel.Below="Fertigkeiten_U"  MaxWidth="{Binding Path=ActualWidth, ElementName=Fertigkeiten_Grid, Mode=TwoWay}" Style="{StaticResource ListView_E}">
+                        <StackPanel Name="Fertigkeiten_U" Style="{StaticResource ListView_U}">
+                            <TextBlock x:Uid="Model_Fertigkeiten_"  Style="{StaticResource ListView_U_Text}"/>
+                            <Button Name="Fertigkeit_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                        </StackPanel>
+                        <Grid Name="Fertigkeiten_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="100"/>
@@ -132,50 +130,40 @@
                             <TextBlock Grid.Column="0" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="1" x:Uid="Model_Wert" Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Fertigkeiten" RelativePanel.Below="Fertigkeiten_E" ItemsSource="{x:Bind ViewModel.Current.FertigkeitController}" Style="{StaticResource ListView}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="data:Fertigkeit">
-                                <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="100"/>
-                                    </Grid.ColumnDefinitions>
-                                    <FlyoutBase.AttachedFlyout>
-                                        <Flyout>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                </Grid.RowDefinitions>
-                                                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Notiz"/>
+                        <ListView Name="Fertigkeiten" ItemsSource="{x:Bind ViewModel.Current.FertigkeitController, Mode=OneWay}" Style="{StaticResource ListView}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="data:Fertigkeit">
+                                    <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="100"/>
+                                        </Grid.ColumnDefinitions>
+                                        <FlyoutBase.AttachedFlyout>
+                                            <Flyout>
+                                                <StackPanel>
+ 
+                                                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Notiz"/>
                                                     <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Notiz}"/>
-                                                <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Typ"/>
+                                                    <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Typ"/>
                                                     <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Typ}"/>
-                                            </Grid>
-                                        </Flyout>
-                                    </FlyoutBase.AttachedFlyout>
+                                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Fertigkeit_Edit" Click="HandlungEditDialog_Click"/>
+                                                </StackPanel>
+                                            </Flyout>
+                                        </FlyoutBase.AttachedFlyout>
                                         <TextBlock Grid.Column="0" Text="{x:Bind Data.Bezeichner}" Style="{StaticResource ListView_Item_Text}"/>
                                         <TextBlock Grid.Column="1" Text="{x:Bind Data.Wert}" Style="{StaticResource ListView_Item_Text}"/>
-                                </Grid>
-
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                            </Style>
-                        </ListView.ItemContainerStyle>
-
-                    </ListView>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
                     </StackPanel>
                 </VariableSizedWrapGrid>
             </ScrollViewer>
-
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>

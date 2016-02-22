@@ -42,8 +42,71 @@ namespace ShadowRun_Charakter_Helper
         }
         private async void HandlungEditDialog_Click(object sender, RoutedEventArgs e)
         {
-            Edit_Handlung dialog = new Edit_Handlung(((CharController.Handlung)((Button)sender).DataContext).Data, ViewModel.Current.HD);
-            await dialog.ShowAsync();
+            String Controller_Name = ((String)((Button)sender).Name);
+
+            if (Controller_Name.Contains("Handlung"))
+            {
+                Edit_Handlung dialog = new Edit_Handlung(((CharController.Handlung)((Button)sender).DataContext).Data, ViewModel.Current.HD);
+                await dialog.ShowAsync();
+            }
+            else if (Controller_Name.Contains("Fertigkeit"))
+            {
+        //       Edit_Fertigkeit dialog = new Edit_Fertigkeit(((CharController.Fertigkeit)((Button)sender).DataContext).Data, ViewModel.Current.HD);
+        //        await dialog.ShowAsync();
+            }
+            else if (Controller_Name.Contains("Attribut"))
+            {
+            }
+            else if (Controller_Name.Contains("Item"))
+            {
+            }
+            else if (Controller_Name.Contains("Munition"))
+            {
+            }
+            else if (Controller_Name.Contains("Implantat"))
+            {
+                
+            }
+            else if (Controller_Name.Contains("Vorteil"))
+            {
+
+            }
+            else if (Controller_Name.Contains("Nachteil"))
+            {
+          
+            }
+            else if (Controller_Name.Contains("Connection"))
+            {
+      
+            }
+            else if (Controller_Name.Contains("Sin"))
+            {
+               
+            }
+            else if (Controller_Name.Contains("Nahkampfwaffe"))
+            {
+   
+            }
+            else if (Controller_Name.Contains("Fernkampfwaffe"))
+            {
+              
+            }
+            else if (Controller_Name.Contains("Kommlink"))
+            {
+              
+            }
+            else if (Controller_Name.Contains("CyberDeck"))
+            {
+              
+            }
+            else if (Controller_Name.Contains("Vehikel"))
+            {
+               
+            }
+            else if (Controller_Name.Contains("Panzerung"))
+            {
+               
+            }
         }
 
         private async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
