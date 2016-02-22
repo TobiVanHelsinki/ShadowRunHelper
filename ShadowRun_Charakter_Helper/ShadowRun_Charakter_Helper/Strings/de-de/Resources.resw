@@ -344,8 +344,15 @@
     <value>Nachteile</value>
     <comment>Mehrzahl</comment>
   </data>
+  <data name="Model_Person_.Text" xml:space="preserve">
+    <value>Personenangaben</value>
+    <comment>Mehrzahl?</comment>
+  </data>
   <data name="Model_Person_Alias.Text" xml:space="preserve">
     <value>Alias</value>
+  </data>
+  <data name="Model_Person_Beschreibung.Text" xml:space="preserve">
+    <value>Personbeschreibung</value>
   </data>
   <data name="Model_Person_Notizen.Text" xml:space="preserve">
     <value>Notizen</value>

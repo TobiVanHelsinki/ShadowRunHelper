@@ -51,41 +51,45 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <!--<TextBlock Grid.Row="0" Name="XAML_Header_Alias" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Alias,Mode=TwoWay}"/>
-                    <TextBlock Grid.Row="1" Name="XAML_Header_Char_Typ" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Char_Typ,Mode=TwoWay}"/>-->
+                    <TextBlock Grid.Row="0" Name="XAML_Header_Alias" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Alias,Mode=OneWay}"/>
+                    <TextBlock Grid.Row="1" Name="XAML_Header_Char_Typ" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Char_Typ,Mode=OneWay}"/>
                 </Grid>
                 <Button Grid.Column="1" RelativePanel.AlignRightWith="XAML_Header_Schaden_B" RelativePanel.LeftOf="XAML_Header_Schaden_B" RelativePanel.AlignLeftWithPanel="True">
-                    <!--StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Name="XAML_Header_Kontostand_Text" Margin="20,0,10,0" Text="Kontostand"/>
-                            <TextBlock Name="XAML_Header_Kontostand" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Kontostand,Mode=TwoWay}"/>
+                            <TextBlock Name="XAML_Header_Kontostand_Text" Margin="20,0,10,0" x:Uid="Model_Person_Kontostand">
+                            </TextBlock>
+                            <TextBlock Name="XAML_Header_Kontostand" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Kontostand,Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Name="XAML_Header_Karma_Gesamt_Text" Margin="20,0,10,0" Text="Karma Gesamt"/>
-                            <TextBlock Name="XAML_Header_Karma_Gesamt" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Karma_Gesamt,Mode=TwoWay}"/>
+                            <TextBlock Name="XAML_Header_Ini_Text" Margin="20,0,10,0" x:Uid="Model_Person_Init"/>
+                            <TextBlock Name="XAML_Header_Ini" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Initiative,Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Name="XAML_Header_Karma_Aktuell_Text" Margin="20,0,10,0" Text="Karma Aktuell"/>
-                            <TextBlock Name="XAML_Header_Karma_Aktuell" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Karma_Aktuell,Mode=TwoWay}"/>
+                            <TextBlock Name="XAML_Header_Karma_Text" x:Uid="Model_Person_Karma" Margin="20,0,10,0"/>
+                            <TextBlock Name="XAML_Header_Karma" Margin="20,0,10,0">
+                                <Run Text="{x:Bind ViewModel.Current.Person.Karma_Aktuell,Mode=OneWay}"/>
+                                <Run x:Uid="Slash"/>
+                                <Run Text="{x:Bind ViewModel.Current.Person.Karma_Gesamt,Mode=OneWay}"/>
+                            </TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Name="XAML_Header_Edgne_Aktuell_Text" Margin="20,0,10,0" Text="Edge Aktuell"/>
-                            <TextBlock Name="XAML_Header_Edgne_Aktuell" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Edgne_Aktuell,Mode=TwoWay}"/>
+                            <TextBlock Name="XAML_Header_Edge_Text" x:Uid="Model_Person_Edge" Margin="20,0,10,0"/>
+                            <TextBlock Name="XAML_Header_Edge" Margin="20,0,10,0">
+                                <Run Text="{x:Bind ViewModel.Current.Person.Edge_Aktuell,Mode=OneWay}"/>
+                                <Run x:Uid="Slash"/>
+                                <Run Text="{x:Bind ViewModel.Current.Person.Edge_Gesamt,Mode=OneWay}"/>
+                            </TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Name="XAML_Header_Edge_Gesamt_Text" Margin="20,0,10,0" Text="Edge Gesamt"/>
-                            <TextBlock Name="XAML_Header_Edge_Gesamt" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Edge_Gesamt,Mode=TwoWay}"/>
+                            <TextBlock Name="XAML_Header_Essenz_Text" Margin="20,0,10,0" x:Uid="Model_Person_Essenz"/>
+                            <TextBlock Name="XAML_Header_Essenz" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Essenz,Mode=OneWay}"/>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Name="XAML_Header_Essenz_Text" Margin="20,0,10,0" Text="Essenz"/>
-                            <TextBlock Name="XAML_Header_Essenz" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Essenz,Mode=TwoWay}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Name="XAML_Header_Ini_Text" Margin="20,0,10,0" Text="Initiative"/>
-                            <TextBlock Name="XAML_Header_Ini" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Initiative,Mode=TwoWay}"/>
-                        </StackPanel>
-                    </StackPane>
+
+                    </StackPanel>
                     <Button.Flyout>
                         <Flyout>
                             <Grid>
@@ -106,43 +110,43 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Grid.Column="0" Grid.Row="0" Name="XAML_Header_x_Kontostand_Text" Margin="20,0,10,0" Text="Kontostand"/>
-                                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Name="XAML_Header_x_Kontostand" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Kontostand,Mode=TwoWay}"/>
+                                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Name="XAML_Header_x_Kontostand" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Kontostand,Mode=TwoWay}"/>
 
                                 <TextBlock Grid.Column="0" Grid.Row="1"  Name="XAML_Header_x_Karma_Gesamt_Text" Margin="20,0,10,0" Text="Karma Gesamt"/>
-                                <TextBlock Grid.Column="1" Grid.Row="1" Name="XAML_Header_x_Karma_Gesamt" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Karma_Gesamt,Mode=TwoWay}"/>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Name="XAML_Header_x_Karma_Gesamt" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Karma_Gesamt,Mode=OneWay}"/>
                                 <Button Grid.Column="2" Grid.Row="1" Name="Karma_Gesamt_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Karma_Gesamt_Plus_Click"></Button>
                                 <Button Grid.Column="3" Grid.Row="1" Name="Karma_Gesamt_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Karma_Gesamt_Minus_Click"></Button>
 
                                 <TextBlock Grid.Column="0" Grid.Row="2" Name="XAML_Header_x_Karma_Aktuell_Text" Margin="20,0,10,0" Text="Karma Aktuell"/>
-                                <TextBlock Grid.Column="1" Grid.Row="2" Name="XAML_Header_x_Karma_Aktuell" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Karma_Aktuell,Mode=TwoWay}"/>
+                                <TextBlock Grid.Column="1" Grid.Row="2" Name="XAML_Header_x_Karma_Aktuell" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Karma_Aktuell,Mode=OneWay}"/>
                                 <Button Grid.Column="2" Grid.Row="2" Name="Karma_Aktuell_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Karma_Aktuell_Plus_Click"></Button>
                                 <Button Grid.Column="3" Grid.Row="2" Name="Karma_Aktuell_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Karma_Aktuell_Minus_Click"></Button>
 
                                 <TextBlock Grid.Column="0" Grid.Row="3" Name="XAML_Header_x_Edgne_Aktuell_Text" Margin="20,0,10,0" Text="Edge Aktuell"/>
-                                <TextBlock Grid.Column="1" Grid.Row="3" Name="XAML_Header_x_Edgne_Aktuell" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Edgne_Aktuell,Mode=TwoWay}"/>
+                                <TextBlock Grid.Column="1" Grid.Row="3" Name="XAML_Header_x_Edgne_Aktuell" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Edge_Aktuell,Mode=OneWay}"/>
                                 <Button Grid.Column="2" Grid.Row="3" Name="Edgne_Aktuell_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Edgne_Aktuell_Plus_Click"></Button>
                                 <Button Grid.Column="3" Grid.Row="3" Name="Edgne_Aktuell_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Edgne_Aktuell_Minus_Click"></Button>
 
                                 <TextBlock Grid.Column="0" Grid.Row="4" Name="XAML_Header_x_Edge_Gesamt_Text" Margin="20,0,10,0" Text="Edge Gesamt"/>
-                                <TextBlock Grid.Column="1" Grid.Row="4" Name="XAML_Header_x_Edge_Gesamt" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Edge_Gesamt,Mode=TwoWay}"/>
+                                <TextBlock Grid.Column="1" Grid.Row="4" Name="XAML_Header_x_Edge_Gesamt" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Edge_Gesamt,Mode=OneWay}"/>
                                 <Button Grid.Column="2" Grid.Row="4" Name="Edge_Gesamt_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Edge_Gesamt_Plus_Click"></Button>
                                 <Button Grid.Column="3" Grid.Row="4" Name="Edge_Gesamt_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Edge_Gesamt_Minus_Click"></Button>
 
                                 <TextBlock Grid.Column="0" Grid.Row="6"  Name="XAML_Header_x_Initiative_Text" Margin="20,0,10,0" Text="Initiative"/>
-                                <TextBlock Grid.Column="1" Grid.Row="6" Name="XAML_Header_x_Initiative" Margin="20,0,10,0" Text="{x:Bind ViewModel.DefaultChar.Initiative,Mode=TwoWay}"/>
+                                <TextBlock Grid.Column="1" Grid.Row="6" Name="XAML_Header_x_Initiative" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Initiative,Mode=OneWay}"/>
                                 <Button Grid.Column="2" Grid.Row="6" Name="Initiative_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Initiative_Plus_Click"></Button>
                                 <Button Grid.Column="3" Grid.Row="6" Name="Initiative_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Initiative_Minus_Click"></Button>
                             </Grid>
                         </Flyout>
-                    </Button.Flyout-->
+                    </Button.Flyout>
                 </Button>
                 <Button Grid.Column="2" Name="XAML_Header_Schaden_B" Margin="10,0,10,0" RelativePanel.LeftOf="XAML_Header_Bild" RelativePanel.AlignVerticalCenterWithPanel="True">
                     <StackPanel Name="XAML_Header_Schaden" RelativePanel.LeftOf="XAML_Header_Bild" Orientation="Vertical" >
                         <TextBlock Name="XAML_Header_Schaden_Name" Margin="5,0,5,0" Text="Schaden:" HorizontalAlignment="Center"/>
                         <StackPanel Name="XAML_Header_Schaden_2" RelativePanel.LeftOf="XAML_Header_Bild" Orientation="Horizontal" HorizontalAlignment="Center" >
-                            <!--<TextBlock Name="XAML_Header_Schaden_G_Wert" Margin="5,0,5,0" Text="{x:Bind ViewModel.DefaultChar.Schaden_G,Mode=TwoWay}"/>
-                            <TextBlock Name="XAML_Header_Schaden_K_Wert" Margin="5,0,5,0" Text="{x:Bind ViewModel.DefaultChar.Schaden_K,Mode=TwoWay}"/>
-                            <TextBlock Name="XAML_Header_Schaden_M_Wert" Margin="5,0,5,0" Text="{x:Bind ViewModel.DefaultChar.Schaden_M,Mode=TwoWay}"/>-->
+                            <TextBlock Name="XAML_Header_Schaden_G_Wert" Margin="5,0,5,0" Text="{x:Bind ViewModel.Current.Person.Schaden_G,Mode=OneWay}"/>
+                            <TextBlock Name="XAML_Header_Schaden_K_Wert" Margin="5,0,5,0" Text="{x:Bind ViewModel.Current.Person.Schaden_K,Mode=OneWay}"/>
+                            <TextBlock Name="XAML_Header_Schaden_M_Wert" Margin="5,0,5,0" Text="{x:Bind ViewModel.Current.Person.Schaden_M,Mode=OneWay}"/>
                         </StackPanel>
                     </StackPanel>
                     <Button.Flyout>
@@ -160,9 +164,9 @@
                                 <TextBlock HorizontalAlignment="Center" Text="Geist" Grid.Column="0" Grid.Row="1"/>
                                 <TextBlock HorizontalAlignment="Center" Text="Körper" Grid.Column="1" Grid.Row="1"/>
                                 <TextBlock HorizontalAlignment="Center" Text="Matrix" Grid.Column="2" Grid.Row="1"/>
-                                <!--<Slider HorizontalAlignment="Center" Name="XAML_Header_Schaden_G_Slider" Orientation="Vertical" Height="100" Grid.Row="0" Grid.Column="0" Value="{x:Bind Path=ViewModel.DefaultChar.Schaden_G, Mode=TwoWay}"  Maximum="{x:Bind ViewModel.DefaultChar.Schaden_G_max,Mode=TwoWay}"/>
-                                <Slider HorizontalAlignment="Center" Name="XAML_Header_Schaden_K_Slider" Orientation="Vertical" Height="100" Grid.Row="0" Grid.Column="1" Value="{x:Bind ViewModel.DefaultChar.Schaden_K,Mode=TwoWay}" Maximum="{x:Bind ViewModel.DefaultChar.Schaden_K_max,Mode=TwoWay}"/>
-                                <Slider HorizontalAlignment="Center"  Name="XAML_Header_Schaden_M_Slider" Orientation="Vertical" Height="100" Grid.Row="0" Grid.Column="2" Value="{x:Bind ViewModel.DefaultChar.Schaden_M,Mode=TwoWay}" Maximum="{x:Bind ViewModel.DefaultChar.Schaden_M_max,Mode=TwoWay}"/>-->
+                                <Slider HorizontalAlignment="Center" Name="XAML_Header_Schaden_G_Slider" Orientation="Vertical" Height="100" Grid.Row="0" Grid.Column="0" Value="{x:Bind Path=ViewModel.Current.Person.Schaden_G, Mode=TwoWay}"  Maximum="{x:Bind ViewModel.Current.Person.Schaden_G_max,Mode=TwoWay}"/>
+                                <Slider HorizontalAlignment="Center" Name="XAML_Header_Schaden_K_Slider" Orientation="Vertical" Height="100" Grid.Row="0" Grid.Column="1" Value="{x:Bind ViewModel.Current.Person.Schaden_K,Mode=TwoWay}" Maximum="{x:Bind ViewModel.Current.Person.Schaden_K_max,Mode=TwoWay}"/>
+                                <Slider HorizontalAlignment="Center"  Name="XAML_Header_Schaden_M_Slider" Orientation="Vertical" Height="100" Grid.Row="0" Grid.Column="2" Value="{x:Bind ViewModel.Current.Person.Schaden_M,Mode=TwoWay}" Maximum="{x:Bind ViewModel.Current.Person.Schaden_M_max,Mode=TwoWay}"/>
                             </Grid>
                         </Flyout>
                     </Button.Flyout>
@@ -187,20 +191,6 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="&#xE13D;" Style="{StaticResource TextBlock_Hamburger_Icon}"/>
                                 <TextBlock Text="Charachterbogen" Style="{StaticResource TextBlock_Hamburger_Font}"/>
-                            </StackPanel>
-                        </ListBoxItem>
-
-                        <ListBoxItem Name="Char_Edit" >
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xE1C2;" Style="{StaticResource TextBlock_Hamburger_Icon}"/>
-                                <TextBlock Text="Charachter Bearbeiten" Style="{StaticResource TextBlock_Hamburger_Font}"/>
-                            </StackPanel>
-                        </ListBoxItem>
-
-                        <ListBoxItem Name="Database_Edit">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xE8AC;" Style="{StaticResource TextBlock_Hamburger_Icon}"/>
-                                <TextBlock Text="Fähigkeiten Verwalten" Style="{StaticResource TextBlock_Hamburger_Font}"/>
                             </StackPanel>
                         </ListBoxItem>
 

@@ -182,9 +182,6 @@
     <Compile Include="UI\Char_Verwaltung.xaml.cs">
       <DependentUpon>Char_Verwaltung.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Frame_Database_Edit.xaml.cs">
-      <DependentUpon>Frame_Database_Edit.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -307,10 +304,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Char_Verwaltung.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Frame_Database_Edit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

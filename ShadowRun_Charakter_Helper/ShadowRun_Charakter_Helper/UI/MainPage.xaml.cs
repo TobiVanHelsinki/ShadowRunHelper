@@ -22,7 +22,7 @@ using ShadowRun_Charakter_Helper.Controller;
 namespace ShadowRun_Charakter_Helper
 {
     /// <summary>
-    /// Eine leere Seite, die eigenst├ñndig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
+    /// Eine leere Seite, die eigenständig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
     public sealed partial class MainPage : Page
     {
@@ -42,9 +42,7 @@ namespace ShadowRun_Charakter_Helper
 
         private void IconsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Char.IsSelected) { MyFrame.Navigate(typeof(Char), ViewModel);}
-         //   else if (Char_Edit.IsSelected) { MyFrame.Navigate(typeof(Frame_Char_Edit), ViewModel); }
-            else if (Database_Edit.IsSelected) { MyFrame.Navigate(typeof(Frame_Database_Edit)); }
+            if (Char.IsSelected) { MyFrame.Navigate(typeof(Char), ViewModel); }
             else if (Char_Change.IsSelected) { MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel); }
             else if (App_Settings.IsSelected) { MyFrame.Navigate(typeof(TestPage), ViewModel); }
             else
@@ -56,62 +54,62 @@ namespace ShadowRun_Charakter_Helper
 
         private void Karma_Gesamt_Plus_Click(object sender, RoutedEventArgs e)
         {
-     //       ViewModel.DefaultChar.Karma_Gesamt++;
+            ViewModel.Current.Person.Karma_Gesamt++;
         }
 
         private void Karma_Gesamt_Minus_Click(object sender, RoutedEventArgs e)
         {
-    //        ViewModel.DefaultChar.Karma_Gesamt--;
+            ViewModel.Current.Person.Karma_Gesamt--;
         }
 
         private void Karma_Aktuell_Plus_Click(object sender, RoutedEventArgs e)
         {
-   //         ViewModel.DefaultChar.Karma_Aktuell++;
+            ViewModel.Current.Person.Karma_Aktuell++;
         }
 
         private void Karma_Aktuell_Minus_Click(object sender, RoutedEventArgs e)
         {
-    //        ViewModel.DefaultChar.Karma_Aktuell--;
+            ViewModel.Current.Person.Karma_Aktuell--;
         }
 
         private void Edgne_Aktuell_Plus_Click(object sender, RoutedEventArgs e)
         {
-   //         ViewModel.DefaultChar.Edgne_Aktuell++;
+            ViewModel.Current.Person.Edge_Aktuell++;
         }
 
         private void Edgne_Aktuell_Minus_Click(object sender, RoutedEventArgs e)
         {
-    //        ViewModel.DefaultChar.Edgne_Aktuell--;
+            ViewModel.Current.Person.Edge_Aktuell--;
         }
 
         private void Edge_Gesamt_Plus_Click(object sender, RoutedEventArgs e)
         {
-    //        ViewModel.DefaultChar.Edge_Gesamt++;
+            ViewModel.Current.Person.Edge_Gesamt++;
         }
 
         private void Edge_Gesamt_Minus_Click(object sender, RoutedEventArgs e)
         {
-    //        ViewModel.DefaultChar.Edge_Gesamt--;
+            ViewModel.Current.Person.Edge_Gesamt--;
         }
 
         private void Essenz_Plus_Click(object sender, RoutedEventArgs e)
         {
-    //        ViewModel.DefaultChar.Essenz++;
+            ViewModel.Current.Person.Essenz++;
         }
 
         private void Essenz_Minus_Click(object sender, RoutedEventArgs e)
         {
-   //         ViewModel.DefaultChar.Essenz--;
+            ViewModel.Current.Person.Essenz--;
         }
 
         private void Initiative_Plus_Click(object sender, RoutedEventArgs e)
         {
-  //          ViewModel.DefaultChar.Initiative++;
+            ViewModel.Current.Person.Initiative++;
         }
 
         private void Initiative_Minus_Click(object sender, RoutedEventArgs e)
         {
-  //          ViewModel.DefaultChar.Initiative--;
+            ViewModel.Current.Person.Initiative--;
         }
     }
 }
