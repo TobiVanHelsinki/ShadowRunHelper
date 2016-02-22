@@ -119,19 +119,6 @@
                 }
             }
         }
-        public double schaden;
-        public double Schaden
-        {
-            get { return schaden; }
-            set
-            {
-                if (value != this.schaden)
-                {
-                    this.schaden = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
 
         public Vehikel()
         {

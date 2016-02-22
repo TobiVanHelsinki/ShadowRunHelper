@@ -1,5 +1,5 @@
 ﻿<ContentDialog
-    x:Class="ShadowRun_Charakter_Helper.UI.Edit.Edit_Item"
+    x:Class="ShadowRun_Charakter_Helper.UI.Edit.Edit_Vehikel"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ShadowRun_Charakter_Helper.UI.Edit"
@@ -22,6 +22,14 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock x:Uid="Model_Bezeichner" Grid.Column="0" Grid.Row="0"/>
         <TextBox Name="Bezeichner" Text="{x:Bind Data.Bezeichner, Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
@@ -35,5 +43,21 @@
         <TextBox Name="Notiz" Text="{x:Bind Data.Notiz, Mode=TwoWay}" Grid.Column="1" Grid.Row="4"/>
         <TextBlock x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="5"/>
         <TextBox Name="Anzahl" Text="{x:Bind Data.Anzahl, Mode=TwoWay}" Grid.Column="1" Grid.Row="5"/>
+        <TextBlock x:Uid="Model_Vehikel_Handling" Grid.Column="0" Grid.Row="6"/>
+        <TextBox Name="Handling" Text="{x:Bind Data.Handling, Mode=TwoWay}" Grid.Column="1" Grid.Row="6"/>
+        <TextBlock x:Uid="Model_Vehikel_Geschwindigkeit" Grid.Column="0" Grid.Row="7"/>
+        <TextBox Name="Geschwindigkeit" Text="{x:Bind Data.Geschwindigkeit, Mode=TwoWay}" Grid.Column="1" Grid.Row="7"/>
+        <TextBlock x:Uid="Model_Vehikel_Rumpf" Grid.Column="0" Grid.Row="8"/>
+        <TextBox Name="Rumpf" Text="{x:Bind Data.Rumpf, Mode=TwoWay}" Grid.Column="1" Grid.Row="8"/>
+        <TextBlock x:Uid="Model_Vehikel_Panzerung" Grid.Column="0" Grid.Row="9"/>
+        <TextBox Name="Panzerung" Text="{x:Bind Data.Panzerung, Mode=TwoWay}" Grid.Column="1" Grid.Row="9"/>
+        <TextBlock x:Uid="Model_Vehikel_Pilot" Grid.Column="0" Grid.Row="10"/>
+        <TextBox Name="Pilot" Text="{x:Bind Data.Pilot, Mode=TwoWay}" Grid.Column="1" Grid.Row="10"/>
+        <TextBlock x:Uid="Model_Vehikel_Sensor" Grid.Column="0" Grid.Row="11"/>
+        <TextBox Name="Sensor" Text="{x:Bind Data.Sensor, Mode=TwoWay}" Grid.Column="1" Grid.Row="11"/>
+        <TextBlock x:Uid="Model_Vehikel_Sitze" Grid.Column="0" Grid.Row="12"/>
+        <TextBox Name="Sitze" Text="{x:Bind Data.Sitze, Mode=TwoWay}" Grid.Column="1" Grid.Row="12"/>
+        <TextBlock x:Uid="Model_Vehikel_Gewicht" Grid.Column="0" Grid.Row="13"/>
+        <TextBox Name="Gewicht" Text="{x:Bind Data.Gewicht, Mode=TwoWay}" Grid.Column="1" Grid.Row="13"/>
     </Grid>
 </ContentDialog>

@@ -365,4 +365,7 @@
     <value>Vorteile</value>
     <comment>Mehrzahl</comment>
   </data>
+  <data name="UI_Btn_Loeschen.Content" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
 </root>

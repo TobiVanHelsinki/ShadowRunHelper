@@ -2,12 +2,12 @@
 
 namespace ShadowRun_Charakter_Helper.UI.Edit
 {
-    public sealed partial class Edit_Fertigkeit : ContentDialog
+    public sealed partial class Edit_Munition : ContentDialog
     {
-        public CharModel.Fertigkeit Data;
+        public CharModel.Munition Data;
         public Controller.HashDictionary HD;
-
-        public Edit_Fertigkeit(CharModel.Fertigkeit data, Controller.HashDictionary hd)
+        //todo munition in gui einfügen
+        public Edit_Munition(CharModel.Munition data, Controller.HashDictionary hd)
         {
             this.InitializeComponent();
             this.Data = data;

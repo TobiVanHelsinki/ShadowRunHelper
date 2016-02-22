@@ -2,12 +2,12 @@
 
 namespace ShadowRun_Charakter_Helper.UI.Edit
 {
-    public sealed partial class Edit_Fertigkeit : ContentDialog
+    public sealed partial class Edit_Vorteil : ContentDialog
     {
-        public CharModel.Fertigkeit Data;
+        public CharModel.Vorteil Data;
         public Controller.HashDictionary HD;
 
-        public Edit_Fertigkeit(CharModel.Fertigkeit data, Controller.HashDictionary hd)
+        public Edit_Vorteil(CharModel.Vorteil data, Controller.HashDictionary hd)
         {
             this.InitializeComponent();
             this.Data = data;

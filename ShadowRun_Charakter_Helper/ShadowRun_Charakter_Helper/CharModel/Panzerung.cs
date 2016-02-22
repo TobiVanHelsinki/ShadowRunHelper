@@ -10,20 +10,6 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Panzerung : CharModel.Item
     {
-        private double ballistik { get; set; }
-        public double Ballistik
-        {
-            get { return ballistik; }
-            set
-            {
-                if (value != this.ballistik)
-                {
-                    this.ballistik = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
         private double stoß;
         public double Stoß
         {

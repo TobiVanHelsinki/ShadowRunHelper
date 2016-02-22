@@ -2,7 +2,7 @@
 {
     public class Waffe : CharModel.Item
     {
-        public double pool;
+        private double pool;
         public double Pool
         {
             get { return pool; }
@@ -16,21 +16,8 @@
             }
         }
 
-        public double schaden;
-        public double Schaden
-        {
-            get { return schaden; }
-            set
-            {
-                if (value != this.schaden)
-                {
-                    this.schaden = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
 
-        public char schadenTyp;
+        private char schadenTyp;
         public char SchadenTyp
         {
             get { return schadenTyp; }
@@ -44,7 +31,7 @@
             }
         }
 
-        public double pB;
+        private double pB;
         public double PB
         {
             get { return pB; }

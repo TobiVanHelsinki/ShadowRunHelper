@@ -161,11 +161,56 @@
     <Compile Include="UI\Converter\CB.cs" />
     <Compile Include="UI\Converter\Attribute.cs" />
     <Compile Include="UI\Converter\Digit.cs" />
+    <Compile Include="UI\Edit\Edit_Attribut.xaml.cs">
+      <DependentUpon>Edit_Attribut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Connection.xaml.cs">
+      <DependentUpon>Edit_Connection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_CyberDeck.xaml.cs">
+      <DependentUpon>Edit_CyberDeck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Fernkampfwaffe.xaml.cs">
+      <DependentUpon>Edit_Fernkampfwaffe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Edit\Edit_Fertigkeit.xaml.cs">
       <DependentUpon>Edit_Fertigkeit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Edit\Edit_Implantat.xaml.cs">
+      <DependentUpon>Edit_Implantat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Edit\Edit_Item.xaml.cs">
       <DependentUpon>Edit_Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Kommlink.xaml.cs">
+      <DependentUpon>Edit_Kommlink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Munition.xaml.cs">
+      <DependentUpon>Edit_Munition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Nachteil.xaml.cs">
+      <DependentUpon>Edit_Nachteil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Nahkampfwaffe.xaml.cs">
+      <DependentUpon>Edit_Nahkampfwaffe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Panzerung.xaml.cs">
+      <DependentUpon>Edit_Panzerung.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Person.xaml.cs">
+      <DependentUpon>Edit_Person.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Programm.xaml.cs">
+      <DependentUpon>Edit_Programm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Vehikel.xaml.cs">
+      <DependentUpon>Edit_Vehikel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Vorteil.xaml.cs">
+      <DependentUpon>Edit_Vorteil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Sin.xaml.cs">
+      <DependentUpon>Edit_Sin.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\HD_Wahl.xaml.cs">
       <DependentUpon>HD_Wahl.xaml</DependentUpon>
@@ -275,11 +320,71 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="UI\Edit\Edit_Attribut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Connection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_CyberDeck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Fernkampfwaffe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Edit\Edit_Fertigkeit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Edit\Edit_Implantat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Edit\Edit_Item.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Kommlink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Munition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Nachteil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Nahkampfwaffe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Panzerung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Person.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Programm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Vehikel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Vorteil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Sin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

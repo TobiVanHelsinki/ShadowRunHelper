@@ -1,13 +1,17 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using System.Collections.Generic;
+using Windows.UI.Xaml.Controls;
+
+// Die Elementvorlage "Inhaltsdialog" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
 namespace ShadowRun_Charakter_Helper.UI.Edit
 {
-    public sealed partial class Edit_Fertigkeit : ContentDialog
+    public sealed partial class Edit_Attribut : ContentDialog
     {
-        public CharModel.Fertigkeit Data;
+        public CharModel.Attribut Data;
         public Controller.HashDictionary HD;
+        public List<string> MyStringOptions { get; set; }
 
-        public Edit_Fertigkeit(CharModel.Fertigkeit data, Controller.HashDictionary hd)
+        public Edit_Attribut(CharModel.Attribut data, Controller.HashDictionary hd)
         {
             this.InitializeComponent();
             this.Data = data;
