@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace ShadowRun_Charakter_Helper.CharController
 {
@@ -9,9 +11,16 @@ namespace ShadowRun_Charakter_Helper.CharController
             DicCD_Typ = "Vehikel";
         }
 
-        public Vehikel(ObservableCollection<CharModel.Vehikel> obj)
+        public Vehikel(Controller.HashDictionary hD, int hD_ID)
         {
-            DicCD_Typ = "Vehikel";
+            this.HD_ID = hD_ID;
+            this.setHD(hD);
+            DataList.CollectionChanged += new NotifyCollectionChangedEventHandler(DataChanged);
+        }
+
+        private void DataChanged(object sender, EventArgs e)
+        {
+            DataHasUpdatet(sender);
         }
     }
 }

@@ -8,6 +8,8 @@ namespace ShadowRun_Charakter_Helper.CharController
 {
     public class Controller<T> where T : CharModel.Model, new()
     {
+        public int HD_ID { get; set; }
+
         public Dictionary<String, String> Ressources = new Dictionary<String, String>();
         protected string DicCD_Bezeichner = "nichts vorhanden";
         protected string DicCD_Typ = "error";
@@ -16,7 +18,7 @@ namespace ShadowRun_Charakter_Helper.CharController
         protected string DicCD_Notiz = "";
 
         public Controller.HashDictionary HD;
-        public int HD_ID { get; set; }
+        
 
         /// <summary>
         /// Gibt dem Controller DAS HashDictionary \n 

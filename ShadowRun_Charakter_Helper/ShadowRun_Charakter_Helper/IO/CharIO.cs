@@ -60,7 +60,62 @@ namespace ShadowRun_Charakter_Helper.IO
 
         private static Controller.CharHolder Load_Char_from_JSON(string fileContent)
         {
-            return JsonConvert.DeserializeObject<Controller.CharHolder>(fileContent);
+            Controller.CharHolder tempChar = new Controller.CharHolder();
+            tempChar = JsonConvert.DeserializeObject<Controller.CharHolder>(fileContent);
+
+            Controller.CharHolder newChar = new Controller.CharHolder(tempChar.NahkampfwaffeController.HD_ID, tempChar.FernkampfwaffeController.HD_ID, tempChar.KommlinkController.HD_ID, tempChar.CyberDeckController.HD_ID, tempChar.VehikelController.HD_ID, tempChar.PanzerungController.HD_ID);
+            newChar.App_ID = tempChar.App_ID;
+
+            int maxID = 0;
+            foreach (var item in tempChar.FertigkeitController)
+            {
+                newChar.Add("Fertigkeit", item.HD_ID);
+                newChar.FertigkeitController[maxID].Data.Ordnung = item.Data.Ordnung;
+                newChar.FertigkeitController[maxID].Data.Bezeichner = item.Data.Bezeichner;
+                newChar.FertigkeitController[maxID].Data.Wert = item.Data.Wert;
+                newChar.FertigkeitController[maxID].Data.Typ = item.Data.Typ;
+                newChar.FertigkeitController[maxID].Data.Zusatz = item.Data.Zusatz;
+                newChar.FertigkeitController[maxID].Data.Notiz = item.Data.Notiz;
+                maxID++;
+            }
+            maxID = 0;
+            foreach (var item in tempChar.HandlungController)
+            {
+                newChar.Add("Handlung", item.HD_ID);
+                newChar.HandlungController[maxID].Data.Ordnung = item.Data.Ordnung;
+                newChar.HandlungController[maxID].Data.Bezeichner = item.Data.Bezeichner;
+                newChar.HandlungController[maxID].Data.Typ = item.Data.Typ;
+                newChar.HandlungController[maxID].Data.Zusatz = item.Data.Zusatz;
+                newChar.HandlungController[maxID].Data.Notiz = item.Data.Notiz;
+                newChar.HandlungController[maxID].Data.Zusammensetzung = item.Data.Zusammensetzung;
+                newChar.HandlungController[maxID].Data.GrenzeZusammensetzung = item.Data.GrenzeZusammensetzung;
+                maxID++;
+            }
+            maxID = 0;
+            foreach (var item in tempChar.AttributController)
+            {
+                newChar.Add("Handlung", item.HD_ID);
+                newChar.AttributController[maxID].Data.Ordnung = item.Data.Ordnung;
+                newChar.AttributController[maxID].Data.Bezeichner = item.Data.Bezeichner;
+                newChar.AttributController[maxID].Data.Typ = item.Data.Typ;
+                newChar.AttributController[maxID].Data.Zusatz = item.Data.Zusatz;
+                newChar.AttributController[maxID].Data.Notiz = item.Data.Notiz;
+                maxID++;
+            }
+            maxID = 0;
+            
+            foreach (var item in tempChar.PanzerungController.DataList)
+            {
+                newChar.Add("Panzerung", tempChar.PanzerungController.HD_ID);
+                newChar.PanzerungController.DataList[maxID].Ordnung = item.Ordnung;
+                newChar.PanzerungController.DataList[maxID].Bezeichner = item.Bezeichner;
+                newChar.PanzerungController.DataList[maxID].Typ = item.Typ;
+                newChar.PanzerungController.DataList[maxID].Zusatz = item.Zusatz;
+                newChar.PanzerungController.DataList[maxID].Notiz = item.Notiz;
+                maxID++;
+            }
+
+            return newChar;
         }
 
         public static Controller.CharHolder Load_JSONChar_from_Data(int LoadID)

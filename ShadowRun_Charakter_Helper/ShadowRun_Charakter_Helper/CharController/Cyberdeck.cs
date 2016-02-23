@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace ShadowRun_Charakter_Helper.CharController
 {
@@ -9,10 +11,16 @@ namespace ShadowRun_Charakter_Helper.CharController
             DicCD_Typ = "CyberDeck";
         }
 
-        public CyberDeck(ObservableCollection<CharModel.CyberDeck> obj)
+        public CyberDeck(Controller.HashDictionary hD, int hD_ID)
         {
-            DicCD_Typ = "CyberDeck";
-            
+            this.HD_ID = hD_ID;
+            this.setHD(hD);
+            DataList.CollectionChanged += new NotifyCollectionChangedEventHandler(DataChanged);
+        }
+
+        private void DataChanged(object sender, EventArgs e)
+        {
+            DataHasUpdatet(sender);
         }
         //todo cyberdeck controller braucht 4 einträge im hd
         //5 ! wert des Decks + attribute

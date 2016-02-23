@@ -54,95 +54,48 @@ namespace ShadowRun_Charakter_Helper.Controller
             ConnectionController = new ObservableCollection<CharController.Connection>();
             SinController = new ObservableCollection<CharController.Sin>();
 
-            NahkampfwaffeController = new CharController.Nahkampfwaffe();
-            FernkampfwaffeController = new CharController.Fernkampfwaffe();
-            KommlinkController = new CharController.Kommlink();
-            CyberDeckController = new CharController.CyberDeck();
-            VehikelController = new CharController.Vehikel();
-            PanzerungController = new CharController.Panzerung();
-
-            NahkampfwaffeController.setHD(HD);
-            FernkampfwaffeController.setHD(HD);
-            KommlinkController.setHD(HD);
-            CyberDeckController.setHD(HD);
-            VehikelController.setHD(HD);
-            PanzerungController.setHD(HD);
-
-            //NahkampfwaffeController = new CharController.Nahkampfwaffe(HD);
-            //FernkampfwaffeController = new CharController.Fernkampfwaffe(HD);
-            //KommlinkController = new CharController.Kommlink(HD);
-            //CyberDeckController = new CharController.CyberDeck(HD);
-            //VehikelController = new CharController.Vehikel(HD);
-            //PanzerungController = new CharController.Panzerung(HD);
+            NahkampfwaffeController = new CharController.Nahkampfwaffe(HD, 0);
+            FernkampfwaffeController = new CharController.Fernkampfwaffe(HD, 0);
+            KommlinkController = new CharController.Kommlink(HD, 0);
+            CyberDeckController = new CharController.CyberDeck(HD, 0);
+            VehikelController = new CharController.Vehikel(HD, 0);
+            PanzerungController = new CharController.Panzerung(HD, 0);
 
             Person = new CharModel.Person();
         }
 
 /// <summary>
-/// Konstruktor nutzen, wenn Daten der Controller und Objekte bereits vorhanden
+/// Konstruktor nutzen, wenn Daten der Controller und Objekte bereits vorhanden, Parmas sind die ID der MultiController
 /// </summary>
-/// <param name="handlung"></param>
-/// <param name="fertigkeit"></param>
-/// <param name="attribut"></param>
-/// <param name="item"></param>
-/// <param name="munition"></param>
-/// <param name="implantat"></param>
-/// <param name="vorteil"></param>
-/// <param name="nachteil"></param>
-/// <param name="connection"></param>
-/// <param name="sin"></param>
-/// <param name="nahkampfwaffe"></param>
-/// <param name="fernkampfwaffe"></param>
-/// <param name="kommlink"></param>
-/// <param name="cyberdeck"></param>
-/// <param name="vehikel"></param>
-/// <param name="panzerung"></param>
         public CharHolder(
-                        ObservableCollection<CharController.Handlung> handlung,
-                        ObservableCollection<CharController.Fertigkeit> fertigkeit,
-                        ObservableCollection<CharController.Attribut> attribut,
-                        ObservableCollection<CharController.Item> item,
-                        ObservableCollection<CharController.Programm> programm,
-                        ObservableCollection<CharController.Munition> munition,
-                        ObservableCollection<CharController.Implantat> implantat,
-                        ObservableCollection<CharController.Vorteil> vorteil,
-                        ObservableCollection<CharController.Nachteil> nachteil,
-                        ObservableCollection<CharController.Connection> connection,
-                        ObservableCollection<CharController.Sin> sin,
-                        CharController.Nahkampfwaffe nahkampfwaffe,
-                        CharController.Fernkampfwaffe fernkampfwaffe,
-                        CharController.Kommlink kommlink,
-                        CharController.CyberDeck cyberdeck,
-                        CharController.Vehikel vehikel,
-                        CharController.Panzerung panzerung
+                        int nahkampfwaffe,
+                        int fernkampfwaffe,
+                        int kommlink,
+                        int cyberdeck,
+                        int vehikel,
+                        int panzerung
             )
         {
-            HandlungController = handlung;
-            FertigkeitController = fertigkeit;
-            AttributController = attribut;
-            ItemController = item;
-            ProgrammController = programm;
-            MunitionController = munition;
-            ImplantatController = implantat;
-            VorteilController = vorteil;
-            NachteilController = nachteil;
-            ConnectionController = connection;
-            SinController = sin;
+            HandlungController = new ObservableCollection<CharController.Handlung>();
+            HandlungController = new ObservableCollection<CharController.Handlung>();
+            FertigkeitController = new ObservableCollection<CharController.Fertigkeit>();
+            AttributController = new ObservableCollection<CharController.Attribut>();
+            ItemController = new ObservableCollection<CharController.Item>();
+            ProgrammController = new ObservableCollection<CharController.Programm>();
+            MunitionController = new ObservableCollection<CharController.Munition>();
+            ImplantatController = new ObservableCollection<CharController.Implantat>();
+            VorteilController = new ObservableCollection<CharController.Vorteil>();
+            NachteilController = new ObservableCollection<CharController.Nachteil>();
+            ConnectionController = new ObservableCollection<CharController.Connection>();
+            SinController = new ObservableCollection<CharController.Sin>();
 
-            NahkampfwaffeController = nahkampfwaffe;
-            FernkampfwaffeController = fernkampfwaffe;
-            KommlinkController = kommlink;
-            CyberDeckController = cyberdeck;
-            VehikelController = vehikel;
-            PanzerungController = panzerung;
-
-            NahkampfwaffeController.setHD(HD);
-            FernkampfwaffeController.setHD(HD);
-            KommlinkController.setHD(HD);
-            CyberDeckController.setHD(HD);
-            VehikelController.setHD(HD);
+            NahkampfwaffeController = new CharController.Nahkampfwaffe(HD, nahkampfwaffe);
+            FernkampfwaffeController = new CharController.Fernkampfwaffe(HD, fernkampfwaffe);
+            KommlinkController = new CharController.Kommlink(HD, kommlink);
+            CyberDeckController = new CharController.CyberDeck(HD, cyberdeck);
+            VehikelController = new CharController.Vehikel(HD, vehikel);
+            PanzerungController = new CharController.Panzerung(HD, panzerung);
             //todo theoretisch müsste jder multiC für alle eigenschaften, auf die man würfelt ein eigenen HDE haben
-            PanzerungController.setHD(HD);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -154,43 +107,43 @@ namespace ShadowRun_Charakter_Helper.Controller
             }
         }
 
-        public void Add(String Controller_Name)
+        public void Add(String Controller_Name, int hd_ID)
         {
             if (Controller_Name.Contains("Handlung"))
             {
-                HandlungController.Add(new CharController.Handlung(this.HD));
+                HandlungController.Add(new CharController.Handlung(this.HD, hd_ID));
             }
             else if (Controller_Name.Contains("Fertigkeit"))
             {
-                FertigkeitController.Add(new CharController.Fertigkeit(this.HD));
+                FertigkeitController.Add(new CharController.Fertigkeit(this.HD, hd_ID));
             }
             else if (Controller_Name.Contains("Attribut"))
             {
-                AttributController.Add(new CharController.Attribut(this.HD));
+                AttributController.Add(new CharController.Attribut(this.HD, hd_ID));
             }
             else if (Controller_Name.Contains("Item"))
             {
-                ItemController.Add(new CharController.Item(this.HD));
+                ItemController.Add(new CharController.Item(this.HD, hd_ID));
             }
             else if (Controller_Name.Contains("Programm"))
             {
-                ProgrammController.Add(new CharController.Programm(this.HD));
+                ProgrammController.Add(new CharController.Programm(this.HD, hd_ID));
             }
             else if (Controller_Name.Contains("Munition"))
             {
-                MunitionController.Add(new CharController.Munition(this.HD));
+                MunitionController.Add(new CharController.Munition(this.HD, hd_ID));
             }
             else if (Controller_Name.Contains("Implantat"))
             {
-                ImplantatController.Add(new CharController.Implantat(this.HD));
+                ImplantatController.Add(new CharController.Implantat(this.HD, hd_ID));
             }
             else if (Controller_Name.Contains("Vorteil"))
             {
-                VorteilController.Add(new CharController.Vorteil(this.HD));
+                VorteilController.Add(new CharController.Vorteil(this.HD, hd_ID));
             }
             else if (Controller_Name.Contains("Nachteil"))
             {
-                NachteilController.Add(new CharController.Nachteil(this.HD));
+                NachteilController.Add(new CharController.Nachteil(this.HD, hd_ID));
             }
             else if (Controller_Name.Contains("Connection"))
             {

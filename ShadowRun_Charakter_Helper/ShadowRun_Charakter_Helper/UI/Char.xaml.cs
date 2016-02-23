@@ -33,7 +33,7 @@ namespace ShadowRun_Charakter_Helper
         private void Add(object sender, RoutedEventArgs e)
         {
             String test = ((String)((Button)sender).Name);
-            ViewModel.Current.Add(test);
+            ViewModel.Current.Add(test, 0);
         }
 
         private async void HandlungEditDialog_Click(object sender, RoutedEventArgs e)
@@ -98,32 +98,32 @@ namespace ShadowRun_Charakter_Helper
             }
             else if (Controller_Name.Contains("Nahkampfwaffe"))
             {
-                Edit_Nahkampfwaffe dialog = new Edit_Nahkampfwaffe(((CharController.Nahkampfwaffe)((Button)sender).DataContext).Data, ViewModel.Current.HD);
+                Edit_Nahkampfwaffe dialog = new Edit_Nahkampfwaffe(((CharModel.Nahkampfwaffe)((Button)sender).DataContext), ViewModel.Current.HD);
                 await dialog.ShowAsync();
             }
             else if (Controller_Name.Contains("Fernkampfwaffe"))
             {
-                Edit_Fernkampfwaffe dialog = new Edit_Fernkampfwaffe(((CharController.Fernkampfwaffe)((Button)sender).DataContext).Data, ViewModel.Current.HD);
+                Edit_Fernkampfwaffe dialog = new Edit_Fernkampfwaffe(((CharModel.Fernkampfwaffe)((Button)sender).DataContext), ViewModel.Current.HD);
                 await dialog.ShowAsync();
             }
             else if (Controller_Name.Contains("Kommlink"))
             {
-                Edit_Kommlink dialog = new Edit_Kommlink(((CharController.Kommlink)((Button)sender).DataContext).Data, ViewModel.Current.HD);
+                Edit_Kommlink dialog = new Edit_Kommlink(((CharModel.Kommlink)((Button)sender).DataContext), ViewModel.Current.HD);
                 await dialog.ShowAsync();
             }
             else if (Controller_Name.Contains("CyberDeck"))
             {
-                Edit_CyberDeck dialog = new Edit_CyberDeck(((CharController.CyberDeck)((Button)sender).DataContext).Data, ViewModel.Current.HD);
+                Edit_CyberDeck dialog = new Edit_CyberDeck(((CharModel.CyberDeck)((Button)sender).DataContext), ViewModel.Current.HD);
                 await dialog.ShowAsync();
             }
             else if (Controller_Name.Contains("Vehikel"))
             {
-                Edit_Vehikel dialog = new Edit_Vehikel(((CharController.Vehikel)((Button)sender).DataContext).Data, ViewModel.Current.HD);
+                Edit_Vehikel dialog = new Edit_Vehikel(((CharModel.Vehikel)((Button)sender).DataContext), ViewModel.Current.HD);
                 await dialog.ShowAsync();
             }
             else if (Controller_Name.Contains("Panzerung"))
             {
-                Edit_Panzerung dialog = new Edit_Panzerung(((CharController.Panzerung)((Button)sender).DataContext).Data, ViewModel.Current.HD);
+                Edit_Panzerung dialog = new Edit_Panzerung(((CharModel.Panzerung)((Button)sender).DataContext), ViewModel.Current.HD);
                 await dialog.ShowAsync();
             }
         }

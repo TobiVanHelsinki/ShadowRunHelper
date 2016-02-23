@@ -14,9 +14,9 @@ namespace ShadowRun_Charakter_Helper.CharController
             DicCD_Typ = "Handlung";
         }
 
-        public Handlung(Controller.HashDictionary hD)
+        public Handlung(Controller.HashDictionary hD, int hD_ID)
         {
-            DicCD_Typ = "Handlung";
+            this.HD_ID = hD_ID;
             this.setHD(hD);
             HD.Changed += new ShadowRun_Charakter_Helper.Controller.ChangedEventHandler(HDChanged);
             Data.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(DataChanged);

@@ -5,13 +5,13 @@ namespace ShadowRun_Charakter_Helper.CharController
     {
         public Fertigkeit()
         {
-            DicCD_Typ = "Fertigkeit";
         }
 
-        public Fertigkeit(Controller.HashDictionary hD)
+        public Fertigkeit(Controller.HashDictionary hD, int hD_ID)
         {
-            DicCD_Typ = "Fertigkeit";
+            this.HD_ID = hD_ID;
             this.setHD(hD);
+            
             Data.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(DataChanged);
         }
 

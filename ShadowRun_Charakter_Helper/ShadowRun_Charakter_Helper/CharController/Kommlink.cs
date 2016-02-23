@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace ShadowRun_Charakter_Helper.CharController
 {
@@ -6,12 +8,18 @@ namespace ShadowRun_Charakter_Helper.CharController
     {
         public Kommlink()
         {
-            DicCD_Typ = "Kommlink";
         }
 
-        public Kommlink(ObservableCollection<CharModel.Kommlink> obj)
+        public Kommlink(Controller.HashDictionary hD, int hD_ID)
         {
-            DicCD_Typ = "Kommlink";
+            this.HD_ID = hD_ID;
+            this.setHD(hD);
+            DataList.CollectionChanged += new NotifyCollectionChangedEventHandler(DataChanged);
+        }
+
+        private void DataChanged(object sender, EventArgs e)
+        {
+            DataHasUpdatet(sender);
         }
     }
 }

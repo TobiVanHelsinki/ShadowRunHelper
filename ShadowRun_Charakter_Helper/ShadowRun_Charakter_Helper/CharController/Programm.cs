@@ -8,8 +8,9 @@ namespace ShadowRun_Charakter_Helper.CharController
         {
         }
 
-        public Programm(Controller.HashDictionary hD)
+        public Programm(Controller.HashDictionary hD, int hD_ID)
         {
+            this.HD_ID = hD_ID;
             this.setHD(hD);
             Data.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(DataChanged);
         }

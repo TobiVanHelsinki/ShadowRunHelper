@@ -23,6 +23,7 @@ namespace ShadowRun_Charakter_Helper.CharController
 
         protected void DataHasUpdatet(object sender)
         {
+            //todo wird irgendwie nur bei erstellen und nicht bei bearbeiten aufgerufen
             Model.DictionaryCharEntry temptry = new Model.DictionaryCharEntry("", 0);
             try
             {
@@ -33,28 +34,29 @@ namespace ShadowRun_Charakter_Helper.CharController
                 throw new Exception("Konnte " + this.DicCD_Typ + " nicht an HD weiterleiten. - " + HD_ID + " nicht im HD.");
                 // todo typ sollte automatisch gesetzt werden 
             }
-            try
-            {
-                // for each loop over datalist, suche nach active dann daten prop
-                T temp = ((T)sender);
+            //try
+            //{
+            //    // for each loop over datalist, suche nach active dann daten prop
+            //    T temp = ((T)sender);
 
-                foreach (var item in DataList)
-                {
-                    if (item.Aktiv == true)
-                    {
-                        temptry.Bezeichner = temp.Bezeichner;
-                        temptry.Wert = temp.Wert;
-                      //  temptry.Typ = temp.Typ;
-                        temptry.Zusatz = temp.Zusatz;
-                        temptry.Notiz = temp.Notiz;
-                    }
-                }
+            //    foreach (var item in DataList)
+            //    {
+            //        if (item.Aktiv == true)
+            //        {
+            //            temptry.Bezeichner = temp.Bezeichner;
+            //            temptry.Wert = temp.Wert;
+            //          //  temptry.Typ = temp.Typ;
+            //            temptry.Zusatz = temp.Zusatz;
+            //            temptry.Notiz = temp.Notiz;
+            //            //todo müsste das nicht item sein ?
+            //        }
+            //    }
 
-            }
-            catch (Exception)
-            {
-                throw new Exception("Konnte " + this.DicCD_Typ + " nicht an HD weiterleiten.");
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    throw new Exception("Konnte " + this.DicCD_Typ + " nicht an HD weiterleiten.");
+            //}
             HD[HD_ID] = temptry;
             System.Diagnostics.Debug.WriteLine("Data has changed, HD wurde aktualisiert" + HD_ID + " " + DicCD_Bezeichner);
         }

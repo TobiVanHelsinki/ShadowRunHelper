@@ -8,17 +8,11 @@ namespace ShadowRun_Charakter_Helper.CharController
     {
         public Panzerung()
         {
-            DicCD_Typ = "Panzerung";
         }
 
-        public Panzerung(ObservableCollection<CharModel.Panzerung> obj)
+        public Panzerung(Controller.HashDictionary hD, int hD_ID)
         {
-            DicCD_Typ = "Panzerung";
-        }
-
-        public Panzerung(Controller.HashDictionary hD)
-        {
-            DicCD_Typ = "Panzerung";
+            this.HD_ID = hD_ID;
             this.setHD(hD);
             DataList.CollectionChanged += new NotifyCollectionChangedEventHandler(DataChanged);
         }
