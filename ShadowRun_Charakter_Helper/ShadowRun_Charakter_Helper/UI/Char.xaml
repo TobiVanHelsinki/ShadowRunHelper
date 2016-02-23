@@ -338,6 +338,10 @@
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Zusatz"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Kommlink_Attribute_o"/>
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" >
+                                                        <Run Text="{x:Bind Angriff_o, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Schleicher_o, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Firewall_o, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Datenverarbeitung_o, Mode=OneWay}"/>
+                                                    </TextBlock>
                                                     <Button x:Uid="UI_Btn_Bearbeiten" Name="CyberDeck_Edit" Click="HandlungEditDialog_Click"/>
                                                     <Button x:Uid="UI_Btn_Loeschen" Name="CyberDeck_Del" Click="Del_Click"/>
                                                 </StackPanel>

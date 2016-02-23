@@ -29,6 +29,7 @@ namespace ShadowRun_Charakter_Helper.Controller
         public void Add(int key, Model.DictionaryCharEntry value)
         {
             Data.Add(key, value);
+            //todo überprüfen, ob obj einen typ in range hat
         }
 
         public void Remove(int key)

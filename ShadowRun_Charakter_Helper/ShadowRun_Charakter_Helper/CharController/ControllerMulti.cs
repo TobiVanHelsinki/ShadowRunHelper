@@ -16,6 +16,7 @@ namespace ShadowRun_Charakter_Helper.CharController
         public ControllerMulti(ObservableCollection<T> obj)
         {
             DataList = obj;
+            //todo wird datacahnged auch aufgerufen, wenn dieser construktior genutzt wird? das wäre für das laden einfacher
         }
 
         public void add()
@@ -32,8 +33,6 @@ namespace ShadowRun_Charakter_Helper.CharController
         {
             DataList.Remove(obj);
         }
-
-       
 
     }
 }

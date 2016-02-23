@@ -368,4 +368,40 @@
   <data name="UI_Btn_Loeschen.Content" xml:space="preserve">
     <value>Löschen</value>
   </data>
+  <data name="Model_Waffe_SchadenTyp.Text" xml:space="preserve">
+    <value>Schadenstyp (G/K)</value>
+  </data>
+  <data name="Model_Kommlink_Attribute_o.Text" xml:space="preserve">
+    <value>Attribute Orginal</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Alle_Chars_Löschen.Content" xml:space="preserve">
+    <value>Alle Chars Löschen</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Datei_Laden.Content" xml:space="preserve">
+    <value>Char aus Datei laden</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Datei_Speichern.Content" xml:space="preserve">
+    <value>in Datei speichern</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Laden.Content" xml:space="preserve">
+    <value>Laden</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Löschen.Content" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Neu.Content" xml:space="preserve">
+    <value>Neuen Char erstellen</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Speichern.Content" xml:space="preserve">
+    <value>Aktuellen Char Speichern</value>
+  </data>
+  <data name="UI_CharVerwaltung_Einleitung1.Text" xml:space="preserve">
+    <value>Hier können Charaktere verwaltet werden</value>
+  </data>
+  <data name="UI_CharVerwaltung_Einleitung2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UI_CharVerwaltung_Einleitung3.Text" xml:space="preserve">
+    <value>Speichere deinen Aktuellen Char!</value>
+  </data>
 </root>

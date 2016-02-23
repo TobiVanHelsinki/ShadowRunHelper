@@ -10,7 +10,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Kommlink : CharModel.Item
     {
-        public double programmanzahl;
+        private double programmanzahl;
         public double Programmanzahl
         {
             get { return programmanzahl; }
@@ -23,7 +23,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public double firewall;
+        private double firewall;
         public double Firewall
         {
             get { return firewall; }
@@ -36,7 +36,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public double datenverarbeitung;
+        private double datenverarbeitung;
         public double Datenverarbeitung
         {
             get { return datenverarbeitung; }

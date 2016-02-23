@@ -2,7 +2,7 @@
 {
     public class Nahkampfwaffe : CharModel.Waffe
     {
-        public double reichweite;
+        private double reichweite;
         public double Reichweite
         {
             get { return reichweite; }

@@ -11,19 +11,7 @@ namespace ShadowRun_Charakter_Helper.Model
 {
     public class CharViewModel : INotifyPropertyChanged
     {
-        private Char defaultChar;
-        public Char DefaultChar
-        {
-            get { return this.defaultChar; }
-            set
-            {
-                if (value != this.defaultChar)
-                {
-                    this.defaultChar = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
+      
 
         private Controller.CharHolder current;
         public Controller.CharHolder Current
@@ -41,7 +29,6 @@ namespace ShadowRun_Charakter_Helper.Model
 
         public CharViewModel()
         {
-            defaultChar = new Char();
             current = new Controller.CharHolder();
             //todo entferne testdaten
             //Current.HandlungController.Add(new CharController.Handlung(Current.HD));
@@ -73,9 +60,8 @@ namespace ShadowRun_Charakter_Helper.Model
             // testdaten ende
         }
 
-        public CharViewModel(Char x_defaultChar, Controller.CharHolder x_current)
+        public CharViewModel(Controller.CharHolder x_current)
         {
-            defaultChar = x_defaultChar;
             current = x_current;
         }
 

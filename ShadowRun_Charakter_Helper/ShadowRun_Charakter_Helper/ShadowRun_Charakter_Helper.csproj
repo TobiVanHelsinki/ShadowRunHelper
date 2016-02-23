@@ -146,6 +146,7 @@
     <Compile Include="CharModel\Kommlink.cs" />
     <Compile Include="CharModel\Nahkampfwaffe.cs" />
     <Compile Include="CharModel\Waffe.cs" />
+    <Compile Include="Controller\Char_Verwaltung.cs" />
     <Compile Include="Controller\HashDictionary.cs" />
     <Compile Include="IO\CharIO.cs" />
     <Compile Include="CharModel\Panzerung.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Controller\CharHolder.cs" />
     <Compile Include="CharModel\Model.cs" />
     <Compile Include="CharModel\Fertigkeit.cs" />
+    <Compile Include="Model\CharSummoryViewModel.cs" />
     <Compile Include="Model\DictionaryCharEntry.cs" />
     <Compile Include="CharModel\Handlung.cs" />
     <Compile Include="Model\CharViewModel.cs" />
@@ -248,7 +250,7 @@
     <Compile Include="Models\Char_Panzerung.cs" />
     <Compile Include="Models\Char_Programm.cs" />
     <Compile Include="Models\Char_Sin.cs" />
-    <Compile Include="Models\Char_Summory.cs" />
+    <Compile Include="Model\Char_Summory.cs" />
     <Compile Include="Models\Char_Vorteil.cs" />
     <Compile Include="Models\Load_Data.cs" />
     <Compile Include="Models\Store_Data.cs" />

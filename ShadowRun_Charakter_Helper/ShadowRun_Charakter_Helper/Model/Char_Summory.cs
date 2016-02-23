@@ -1,11 +1,6 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace ShadowRun_Charakter_Helper.Models
+namespace ShadowRun_Charakter_Helper.Model
 {
     public class Char_Summory
     {

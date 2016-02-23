@@ -10,7 +10,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
     {
 
 
-        public double firewall_o;
+        private double firewall_o;
         public double Firewall_o
         {
             get { return firewall_o; }
@@ -23,7 +23,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public double datenverarbeitung_o;
+        private double datenverarbeitung_o;
         public double Datenverarbeitung_o
         {
             get { return datenverarbeitung_o; }
@@ -36,7 +36,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public double angriff;
+        private double angriff;
         public double Angriff
         {
             get { return angriff; }
@@ -49,7 +49,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public double angriff_o;
+        private double angriff_o;
         public double Angriff_o
         {
             get { return angriff_o; }
@@ -62,7 +62,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public double schleicher;
+        private double schleicher;
         public double Schleicher
         {
             get { return schleicher; }
@@ -75,7 +75,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        public double schleicher_o;
+        private double schleicher_o;
         public double Schleicher_o
         {
             get { return schleicher_o; }

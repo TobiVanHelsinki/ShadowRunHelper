@@ -2,7 +2,7 @@
 {
     public class Vehikel : CharModel.Item
     {
-        public double handling;
+        private double handling;
         public double Handling
         {
             get { return handling; }
@@ -15,7 +15,7 @@
                 }
             }
         }
-        public double geschwindigkeit;
+        private double geschwindigkeit;
         public double Geschwindigkeit
         {
             get { return geschwindigkeit; }
@@ -28,7 +28,7 @@
                 }
             }
         }
-        public double beschleunigung;
+        private double beschleunigung;
         public double Beschleunigung
         {
             get { return beschleunigung; }
@@ -41,7 +41,7 @@
                 }
             }
         }
-        public double rumpf;
+        private double rumpf;
         public double Rumpf
         {
             get { return rumpf; }
@@ -54,7 +54,7 @@
                 }
             }
         }
-        public double panzerung;
+        private double panzerung;
         public double Panzerung
         {
             get { return panzerung; }
@@ -67,7 +67,7 @@
                 }
             }
         }
-        public double pilot;
+        private double pilot;
         public double Pilot
         {
             get { return pilot; }
@@ -80,7 +80,7 @@
                 }
             }
         }
-        public double sensor;
+        private double sensor;
         public double Sensor
         {
             get { return sensor; }
@@ -93,7 +93,7 @@
                 }
             }
         }
-        public double sitze;
+        private double sitze;
         public double Sitze
         {
             get { return sitze; }
@@ -106,7 +106,7 @@
                 }
             }
         }
-        public double gewicht;
+        private double gewicht;
         public double Gewicht
         {
             get { return gewicht; }

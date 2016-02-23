@@ -10,32 +10,39 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-              <ResourceDictionary Source="Ressourcen/Dictionary_XAML_Styles.xaml" />
+                <ResourceDictionary Source="Ressourcen/Dictionary_XAML_Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
     </Page.Resources>
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button Name="Btn_load" x:Uid="UI_CharVerwaltung_Btn_Speichern" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Click="Click_Speichern" Style="{StaticResource Char_Control_Btn}"/>
+
+        <TextBlock Name="Einleitung" RelativePanel.Below="Btn_load" Grid.Column="0">
+            <Run x:Uid="UI_CharVerwaltung_Einleitung1" />
+            <Run x:Uid="UI_CharVerwaltung_Einleitung2" />
+            <Run x:Uid="UI_CharVerwaltung_Einleitung3" />
+        </TextBlock>
+        
+            <Button Name="Btn_Neu" RelativePanel.Below="Char_Sum" x:Uid="UI_CharVerwaltung_Btn_Neu" Click="Click_Erstellen" Style="{StaticResource Char_Control_Btn}"/>
+        <Button x:Uid="UI_CharVerwaltung_Btn_Datei_Laden" RelativePanel.RightOf="Btn_Neu" RelativePanel.AlignTopWith="Btn_Neu" Click="Click_Laden_Datei" Style="{StaticResource Char_Control_Btn}"/>
+            <Button x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" RelativePanel.AlignBottomWithPanel="True" Click="Click_Löschen_Alles" Style="{StaticResource Char_Control_Btn}"/>
 
 
-        <TextBlock Name="Einleitung" RelativePanel.AlignTopWithPanel="True" Text="Hier können Charaktere verwaltet werden" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" />
-        <TextBlock Name="Einleitung2" RelativePanel.Below="Einleitung" Text="Vergiss nie, den Char zu speichern und sichere ihn am Besten immer in einer Datei!" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" />
-        <StackPanel Name="Buttons" RelativePanel.Below="Char_Sum" RelativePanel.AlignLeftWithPanel="True">
-            <Button Content="Ausgewählten Char Laden" Click="Click_Laden" Style="{StaticResource Char_Control_Btn}"/>
-            <Button Content="Aktuellen Char Speichern" Click="Click_Speichern" Style="{StaticResource Char_Control_Btn}"/>
-            <Button Content="Neuen Char Erstellen" Click="Click_Erstellen" Style="{StaticResource Char_Control_Btn}"/>
-            <Button Content="Ausgewählten Char Löschen" Click="Click_Löschen" Style="{StaticResource Char_Control_Btn}"/>
-          <Button Content="Char aus Datei Laden" Click="Click_Laden_Datei" Style="{StaticResource Char_Control_Btn}"/>
 
-            <Button Content="Char in Datei speichern" Click="Click_Speichern_Datei" Style="{StaticResource Char_Control_Btn}"/>
-            <Button Content="Alle Chars Löschen" Click="Click_Löschen_Alles" Style="{StaticResource Char_Control_Btn}"/>
-         
-        </StackPanel>
-
-        <ListView Name="Char_Sum" RelativePanel.Below="Einleitung2" ItemsSource="{x:Bind Char_List_Sum}" IsItemClickEnabled="True" ItemClick="CharSum_Auswahl" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2">
+        <ListView Name="Char_Sum" RelativePanel.Below="Einleitung" ItemsSource="{x:Bind Char_List_Sum}" IsItemClickEnabled="True" ItemClick="CharSum_Auswahl" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="data:Char_Summory">
-                    <Grid BorderThickness="1" BorderBrush="Black" >
+                    <Grid Tapped="Item_Tapped" BorderThickness="1" BorderBrush="Black" >
+                        <FlyoutBase.AttachedFlyout>
+                            <Flyout>
+                                <StackPanel Orientation="Vertical">
+                                    <Button x:Uid="UI_CharVerwaltung_Btn_Laden" Click="Click_Laden" Style="{StaticResource Char_Control_Btn}"/>
+                                    <Button x:Uid="UI_CharVerwaltung_Btn_Löschen" Click="Click_Löschen" Style="{StaticResource Char_Control_Btn}"/>
+                                    <Button  x:Uid="UI_CharVerwaltung_Btn_Datei_Speichern" Click="Click_Speichern_Datei" Style="{StaticResource Char_Control_Btn}"/>
+                                </StackPanel>
+                            </Flyout>
+                        </FlyoutBase.AttachedFlyout>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition MinWidth="100" Width="*"/>
@@ -46,6 +53,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-       
+
     </RelativePanel>
 </Page>

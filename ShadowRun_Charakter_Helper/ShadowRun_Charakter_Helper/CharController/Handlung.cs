@@ -11,7 +11,6 @@ namespace ShadowRun_Charakter_Helper.CharController
         int[] templist;
         public Handlung()
         {
-            DicCD_Typ = "Handlung";
         }
 
         public Handlung(Controller.HashDictionary hD, int hD_ID)
@@ -41,6 +40,7 @@ namespace ShadowRun_Charakter_Helper.CharController
                 foreach (int i in templist)
                 {
                     this.Data.Zusammensetzung[i] = ((Controller.HashDictionary)sender)[i];
+                    // todo ich glaube, hier muss es i-1 sein
                     temp += this.Data.Zusammensetzung[i].Wert;
 
                     // += this.Data.Zusammensetzung[i].Wert;
