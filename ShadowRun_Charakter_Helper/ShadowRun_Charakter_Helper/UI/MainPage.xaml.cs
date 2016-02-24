@@ -1,21 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using ShadowRun_Charakter_Helper.Model;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using ShadowRun_Charakter_Helper.Model;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using ShadowRun_Charakter_Helper.CharModel;
-using ShadowRun_Charakter_Helper.CharController;
-using ShadowRun_Charakter_Helper.Controller;
 
 // Die Vorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 dokumentiert.
 

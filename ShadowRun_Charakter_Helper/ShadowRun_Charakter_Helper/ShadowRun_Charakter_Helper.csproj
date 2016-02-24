@@ -146,7 +146,7 @@
     <Compile Include="CharModel\Kommlink.cs" />
     <Compile Include="CharModel\Nahkampfwaffe.cs" />
     <Compile Include="CharModel\Waffe.cs" />
-    <Compile Include="Controller\Char_Verwaltung.cs" />
+    <Compile Include="Controller\CharVerwaltung.cs" />
     <Compile Include="Controller\HashDictionary.cs" />
     <Compile Include="IO\CharIO.cs" />
     <Compile Include="CharModel\Panzerung.cs" />
@@ -155,11 +155,10 @@
     <Compile Include="Controller\CharHolder.cs" />
     <Compile Include="CharModel\Model.cs" />
     <Compile Include="CharModel\Fertigkeit.cs" />
-    <Compile Include="Model\CharSummoryViewModel.cs" />
     <Compile Include="Model\DictionaryCharEntry.cs" />
     <Compile Include="CharModel\Handlung.cs" />
     <Compile Include="Model\CharViewModel.cs" />
-    <Compile Include="Models\MyException.cs" />
+    <Compile Include="Ressourcen\TypNamen.cs" />
     <Compile Include="UI\Converter\CB.cs" />
     <Compile Include="UI\Converter\Attribute.cs" />
     <Compile Include="UI\Converter\Digit.cs" />
@@ -214,6 +213,7 @@
     <Compile Include="UI\Edit\Edit_Sin.xaml.cs">
       <DependentUpon>Edit_Sin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Fehler\FehlerAnzeige.cs" />
     <Compile Include="UI\HD_Wahl.xaml.cs">
       <DependentUpon>HD_Wahl.xaml</DependentUpon>
     </Compile>
@@ -232,28 +232,7 @@
     <Compile Include="UI\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Menu.cs" />
-    <Compile Include="Models\Attribut_ID.cs" />
-    <Compile Include="Models\Char.cs" />
-    <Compile Include="Models\CharList.cs" />
-    <Compile Include="Models\Char_Attribut.cs" />
-    <Compile Include="Models\Char_Connection.cs" />
-    <Compile Include="Models\Char_Drone_Fahrzeug.cs" />
-    <Compile Include="Models\Char_Fernkampfwaffe.cs" />
-    <Compile Include="Models\Char_Fertigkeit.cs" />
-    <Compile Include="Models\Char_Fähigkeit.cs" />
-    <Compile Include="Models\Char_Implantat.cs" />
-    <Compile Include="Models\Char_Item.cs" />
-    <Compile Include="Models\Char_Kommlink.cs" />
-    <Compile Include="Models\Char_Nachteil.cs" />
-    <Compile Include="Models\Char_Nahkampfwaffe.cs" />
-    <Compile Include="Models\Char_Panzerung.cs" />
-    <Compile Include="Models\Char_Programm.cs" />
-    <Compile Include="Models\Char_Sin.cs" />
-    <Compile Include="Model\Char_Summory.cs" />
-    <Compile Include="Models\Char_Vorteil.cs" />
-    <Compile Include="Models\Load_Data.cs" />
-    <Compile Include="Models\Store_Data.cs" />
+    <Compile Include="Model\CharSummory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Parts\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>

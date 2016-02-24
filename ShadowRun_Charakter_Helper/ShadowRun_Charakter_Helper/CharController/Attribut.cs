@@ -18,5 +18,11 @@ namespace ShadowRun_Charakter_Helper.CharController
         {
             DataHasUpdatet(sender);
         }
+
+        ~Attribut()
+        {
+            Data.PropertyChanged -= new System.ComponentModel.PropertyChangedEventHandler(DataChanged);
+            //todo bei allen machen
+        }
     }
 }

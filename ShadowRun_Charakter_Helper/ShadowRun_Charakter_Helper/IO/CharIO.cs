@@ -5,66 +5,99 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using ShadowRun_Charakter_Helper.Model;
+using System.Collections.ObjectModel;
 
 namespace ShadowRun_Charakter_Helper.IO
 {
     class CharIO
     {
-        static String Chars_Container_Name = "Char_Store";
+        static String Container_Char = "Char_Store";
+        static String File_Char_Beschreibung = "_b";
 
-        private static string Save_Char_to_JSON(Controller.CharHolder SaveChar)
+        public static async Task<ObservableCollection<CharSummory>> getListofChars()
+        {
+            StorageFolder CharFolder = await getFolder();
+            IReadOnlyList<StorageFile> Liste = await CharFolder.GetFilesAsync();
+
+            ObservableCollection<CharSummory> templist = new ObservableCollection<CharSummory>();
+            String beschreibung = "";
+            foreach (var item in Liste)
+            {
+                if (!item.Name.Contains(File_Char_Beschreibung))
+                {
+                    StorageFile b_File = await CharFolder.GetFileAsync(item.Name+File_Char_Beschreibung);
+                    beschreibung = await FileIO.ReadTextAsync(b_File);
+                    templist.Add(new CharSummory(Int32.Parse(item.Name), beschreibung));
+                }
+                
+            }
+            return templist;
+        }
+
+        private static string Char_to_JSON(Controller.CharHolder SaveChar)
         {
             return JsonConvert.SerializeObject(SaveChar);
         }
 
-        public static void Save_JSONChar_to_Data(Controller.CharHolder SaveChar)
+        public static async void Speichern(Controller.CharHolder SaveChar, int SaveID)
         {
+            StorageFolder CharFolder = await getFolder();
 
+            String toSave = Char_to_JSON(SaveChar);
 
-            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            Windows.Storage.ApplicationDataContainer container = localSettings.CreateContainer(Chars_Container_Name, Windows.Storage.ApplicationDataCreateDisposition.Always);
-
-            localSettings.Containers[Chars_Container_Name].Values[SaveChar.Char_ID + ""] = Save_Char_to_JSON(SaveChar);
-        }
-
-        public static async void Save_JSONChar_to_IO(Controller.CharHolder SaveChar)
-        {
-
-            //Ordner Auswähler vorbereiten
-            var folderPicker = new Windows.Storage.Pickers.FolderPicker();
-            folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
-            folderPicker.FileTypeFilter.Add(".SRWin");
-            //Ordner Auswähler rufen
-            Windows.Storage.StorageFolder folder = await folderPicker.PickSingleFolderAsync();
-            if (folder != null)
+            String temp_Alias = "";
+            String temp_Char_Typ = "";
+            String temp_Karma = "";
+            try
             {
-                // Application now has read/write access to all contents in the picked folder
-                // (including other sub-folder contents)
-                Windows.Storage.AccessCache.StorageApplicationPermissions.
-                FutureAccessList.AddOrReplace("PickedFolderToken", folder);
-
-
-
-                //Dateiname und Datei vorbereiten
-                String filename = SaveChar.Person.Alias + "_" + SaveChar.Person.Karma_Gesamt + "_Karma_" + SaveChar.Person.Runs + "_Runs_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second + ".SRWin";
-                StorageFile Save_File = await folder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
-                Save_File = await folder.GetFileAsync(filename);
-
-
-                //Ausgewählten Char auf schreiben
-                await FileIO.WriteTextAsync(Save_File, CharIO.Save_Char_to_JSON(SaveChar));
+                temp_Alias = SaveChar.Person.Alias;
+                if (temp_Alias == "")
+                {
+                    throw new NullReferenceException();
+                }
             }
+            catch (NullReferenceException) { temp_Alias = "$ohne Namen$"; }
+            try
+            {
+                temp_Char_Typ = SaveChar.Person.Char_Typ;
+                if (temp_Char_Typ == "")
+                {
+                    throw new NullReferenceException();
+                }
+            }
+            catch (NullReferenceException) { temp_Char_Typ = "$ohne Beruf$"; }
+            try
+            {
+                temp_Karma = SaveChar.Person.Karma_Gesamt.ToString();
+                if (temp_Karma == "")
+                {
+                    throw new NullReferenceException();
+                }
+            }
+            catch (NullReferenceException) { temp_Karma = "$ohne Erfolg$"; }
 
+            String toSave_B = temp_Alias + ", " + temp_Char_Typ + ", Karma: " + temp_Karma;
 
+            StorageFile file_Char = await CharFolder.CreateFileAsync(SaveID.ToString());
+            StorageFile file_B = await CharFolder.CreateFileAsync(SaveID.ToString()+ File_Char_Beschreibung);
+            await FileIO.WriteTextAsync(file_Char, toSave);
+            await FileIO.WriteTextAsync(file_B, toSave_B);
         }
 
-        private static Controller.CharHolder Load_Char_from_JSON(string fileContent)
+        public static async void Speichern(Controller.CharHolder SaveChar, Windows.Storage.StorageFile file)
+        {
+            //Ausgewählten Char auf Plattensubsystem schreiben
+            await FileIO.WriteTextAsync(file, CharIO.Char_to_JSON(SaveChar));
+        }
+
+        private static Controller.CharHolder JSON_to_Char(string fileContent)
         {
             Controller.CharHolder tempChar = new Controller.CharHolder();
             tempChar = JsonConvert.DeserializeObject<Controller.CharHolder>(fileContent);
 
             Controller.CharHolder newChar = new Controller.CharHolder(tempChar.NahkampfwaffeController.HD_ID, tempChar.FernkampfwaffeController.HD_ID, tempChar.KommlinkController.HD_ID, tempChar.CyberDeckController.HD_ID, tempChar.VehikelController.HD_ID, tempChar.PanzerungController.HD_ID);
-            newChar.Char_ID = tempChar.Char_ID;
+        //    newChar.Char_ID = tempChar.Char_ID;
 
             int maxID = 0;
 
@@ -343,42 +376,62 @@ namespace ShadowRun_Charakter_Helper.IO
             return newChar;
         }
 
-        public static Controller.CharHolder Load_JSONChar_from_Data(int LoadID)
+        public static async Task<Controller.CharHolder> Lade(int LoadID)
         {
-            Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            return Load_Char_from_JSON((string)localSettings.Containers[Chars_Container_Name].Values[LoadID + ""]);
+            StorageFolder CharFolder = await getFolder();
+            StorageFile toLoadFile = await CharFolder.GetFileAsync(LoadID.ToString());
 
+            string fileContent = await FileIO.ReadTextAsync(toLoadFile);
+
+            return JSON_to_Char(fileContent);
         }
 
-        public static async Task<Controller.CharHolder> Load_JSONChar_from_IO()
+        public static async Task<Controller.CharHolder> Lade(Windows.Storage.StorageFile file)
         {
             String inputString = "";
             try
             {
-                inputString = await Load_JSONChar_from_IO_Async_Part();
-                return Load_Char_from_JSON(inputString);
+                inputString = await FileIO.ReadTextAsync(file);
+                return JSON_to_Char(inputString);
             }
             catch (Exception)
             {
-                return new Controller.CharHolder();
+                throw new Exception("Konnte nicht aus Datei lesen und oder laden");
             }
         }
 
-        private static async Task<String> Load_JSONChar_from_IO_Async_Part()
+        public static async void Löschen(int del_id)
         {
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
-            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
-            picker.FileTypeFilter.Add(".SRWin");
-
-            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
-            if (file != null)
+            StorageFolder CharFolder = await getFolder();
+            StorageFile toDelFile = await CharFolder.GetFileAsync(del_id.ToString());
+            StorageFile toDelFile_b = await CharFolder.GetFileAsync(del_id.ToString()+ File_Char_Beschreibung);
+            try
             {
-                return await FileIO.ReadTextAsync(file);
+                await toDelFile.DeleteAsync();
+                await toDelFile_b.DeleteAsync();
             }
-            return "";
+            catch (Exception)
+            {
+                throw;
+            }
            
         }
+
+        private static async Task<StorageFolder> getFolder()
+        {
+            StorageFolder RoamingFolder = ApplicationData.Current.RoamingFolder;
+            StorageFolder CharFolder = null;
+            try
+            {
+                CharFolder = await RoamingFolder.GetFolderAsync(Container_Char);
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                CharFolder = await RoamingFolder.CreateFolderAsync(Container_Char);
+            }
+            return CharFolder;
+        }
+
 
     }
 }

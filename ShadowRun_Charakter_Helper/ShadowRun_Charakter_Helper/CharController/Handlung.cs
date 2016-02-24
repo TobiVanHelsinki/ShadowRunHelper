@@ -1,13 +1,10 @@
-﻿using System;
+﻿using ShadowRun_Charakter_Helper.UI.Fehler;
+using System;
 using System.Diagnostics;
-
 namespace ShadowRun_Charakter_Helper.CharController
 {
-    
-
     public class Handlung : CharController.ControllerSingle<CharModel.Handlung>
     {
-        
         int[] templist;
         public Handlung()
         {
@@ -30,9 +27,9 @@ namespace ShadowRun_Charakter_Helper.CharController
         {
             // Zusammensetzung aktualisieren
             // neu berechnen
-            //in sender komplettes HD (HD.Data)
+            // in sender komplettes HD (HD.Data)
             // todo ignore if handlung
-                       double temp = 0;
+            double temp = 0;
             try
             {
                 templist = new int[this.Data.Zusammensetzung.Count];
@@ -40,24 +37,21 @@ namespace ShadowRun_Charakter_Helper.CharController
                 foreach (int i in templist)
                 {
                     this.Data.Zusammensetzung[i] = ((Controller.HashDictionary)sender)[i];
-                    // todo ich glaube, hier muss es i-1 sein
+                    // ich glaube, hier muss es i-1 sein, scheint aber zu gehen
                     temp += this.Data.Zusammensetzung[i].Wert;
-
-                    // += this.Data.Zusammensetzung[i].Wert;
                 }
                 if (this.Data.Wert != temp)
                 {
                     this.Data.Wert = temp;
                 }
             }
-            catch (Exception)
+            catch (System.Collections.Generic.KeyNotFoundException)
             {
-
-                throw new Exception("Neu Berechnng fehlgeschlagen");
+                FehlerAnzeige.showError("Neu Berechnng fehlgeschlagen, es konnte kein Key gefunden werden. Der Wert wird so gut es geht dargestellt.", 0);
+                this.Data.Wert = temp;
             }
-            
 
-            Debug.WriteLine("This is called when the event fires. - Handlung "+ HD_ID + " " +Data.Bezeichner);
+            Debug.WriteLine("This is called when the event fires. - Handlung " + HD_ID + " " + Data.Bezeichner);
         }
     }
 }

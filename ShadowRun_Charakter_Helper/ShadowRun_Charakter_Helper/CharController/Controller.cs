@@ -1,10 +1,4 @@
-﻿using ShadowRun_Charakter_Helper.Controller;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-
-namespace ShadowRun_Charakter_Helper.CharController
+﻿namespace ShadowRun_Charakter_Helper.CharController
 {
     public class Controller<T> where T : CharModel.Model, new()
     {
@@ -15,10 +9,7 @@ namespace ShadowRun_Charakter_Helper.CharController
         protected string HD_Zusatz = "";
         protected string HD_Notiz = "";
 
-        public Dictionary<String, String> Ressources = new Dictionary<String, String>();
-
         public Controller.HashDictionary HD;
-        
 
         /// <summary>
         /// Gibt dem Controller DAS HashDictionary \n 
@@ -57,9 +48,8 @@ namespace ShadowRun_Charakter_Helper.CharController
         /// </summary>
         public Controller()
         {
-            addRessources();
             HD_Typ = this.GetType().ToString();
-            Ressources.TryGetValue(HD_Typ, out HD_Typ);
+            HD_Typ = Ressourcen.TypNamen.GetName_Controller(HD_Typ);
         }
         
         /// <summary>
@@ -68,27 +58,6 @@ namespace ShadowRun_Charakter_Helper.CharController
         //ToDo schreiben
         public void Aktualisierungen()
         {
-        }
-
-        /// <summary>
-        /// Hilfmethode zum Bennenen
-        /// </summary>
-        /// <completionlist cref=""/>
-        private void addRessources()
-        {
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Fertigkeit", "Fertigkeit");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Handlung", "Handlung");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Attribut", "Attribut");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Item", "Item");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Programm", "Programm");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Vorteil", "Vorteil");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Nachteil", "Nachteil");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Panzerung", "Panzerung");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.CyberDeck", "CyberDeck");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Kommlink", "Kommlink");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Vehikel", "Vehikel");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Nahkampfwaffe", "Nahkampfwaffe");
-            Ressources.Add("ShadowRun_Charakter_Helper.CharController.Fernkampfwaffe", "Fernkampfwaffe");
         }
     }
 }

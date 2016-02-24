@@ -41,7 +41,7 @@ namespace ShadowRun_Charakter_Helper.CharController
                     {
                         temptry.Bezeichner = item.Bezeichner;
                         temptry.Wert = item.Wert;
-                        temptry.Typ = item.Typ;
+                        temptry.Typ = HD_Typ;
                         temptry.Zusatz = item.Zusatz;
                         temptry.Notiz = item.Notiz;
                     }
