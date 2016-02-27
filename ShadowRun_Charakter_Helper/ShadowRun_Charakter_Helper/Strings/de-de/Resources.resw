@@ -351,7 +351,7 @@
   <data name="Model_Person_Alias.Text" xml:space="preserve">
     <value>Alias</value>
   </data>
-  <data name="Model_Person_Beschreibung.Text" xml:space="preserve">
+  <data name="Model_Person_Beschreibung_.Text" xml:space="preserve">
     <value>Personbeschreibung</value>
   </data>
   <data name="Model_Person_Notizen.Text" xml:space="preserve">
@@ -403,5 +403,77 @@
   </data>
   <data name="UI_CharVerwaltung_Einleitung3.Text" xml:space="preserve">
     <value>Speichere deinen Aktuellen Char!</value>
+  </data>
+  <data name="Model_Person_Char_Typ.Text" xml:space="preserve">
+    <value>Char Typ</value>
+  </data>
+  <data name="Model_Person_Runs.Text" xml:space="preserve">
+    <value>Runs</value>
+  </data>
+  <data name="Model_Person_MetaTyp.Text" xml:space="preserve">
+    <value>MetaTyp</value>
+  </data>
+  <data name="Model_Person_MetaTyp_sub.Text" xml:space="preserve">
+    <value>MetaSubTyp</value>
+  </data>
+  <data name="Model_Person_Lebesstil.Text" xml:space="preserve">
+    <value>Lebesstil</value>
+  </data>
+  <data name="Model_Person_Geburtsdatum.Text" xml:space="preserve">
+    <value>Geburtsdatum</value>
+  </data>
+  <data name="Model_Person_Geschlecht.Text" xml:space="preserve">
+    <value>Geschlecht</value>
+  </data>
+  <data name="Model_Person_Größe.Text" xml:space="preserve">
+    <value>Größe</value>
+  </data>
+  <data name="Model_Person_Gewicht.Text" xml:space="preserve">
+    <value>Gewicht</value>
+  </data>
+  <data name="Model_Person_Augenfarbe.Text" xml:space="preserve">
+    <value>Augenfarbe</value>
+  </data>
+  <data name="Model_Person_Haarfarbe.Text" xml:space="preserve">
+    <value>Haarfarbe</value>
+  </data>
+  <data name="Model_Person_Hautfarbe.Text" xml:space="preserve">
+    <value>Hautfarbe</value>
+  </data>
+  <data name="Model_Person_Zusammenfassung.Text" xml:space="preserve">
+    <value>Zusammenfassung</value>
+  </data>
+  <data name="Model_Person_Karma_Aktuell.Text" xml:space="preserve">
+    <value>Karma Aktuell</value>
+  </data>
+  <data name="Model_Person_Karma_Gesamt.Text" xml:space="preserve">
+    <value>Karma Gesamt</value>
+  </data>
+  <data name="Model_Person_Edge_Aktuell.Text" xml:space="preserve">
+    <value>Edge Aktuell</value>
+  </data>
+  <data name="Model_Person_Edge_Gesamt.Text" xml:space="preserve">
+    <value>Edge Gesamt</value>
+  </data>
+  <data name="Model_Person_Schaden_K.Text" xml:space="preserve">
+    <value>KörperSchaden</value>
+  </data>
+  <data name="Model_Person_Schaden_K_max.Text" xml:space="preserve">
+    <value>KörperSchaden maximal</value>
+  </data>
+  <data name="Model_Person_Schaden_G.Text" xml:space="preserve">
+    <value>GeistSchaden</value>
+  </data>
+  <data name="Model_Person_Schaden_G_max.Text" xml:space="preserve">
+    <value>GeistSchaden maximal</value>
+  </data>
+  <data name="Model_Person_Schaden_M.Text" xml:space="preserve">
+    <value>MatrixSchaden</value>
+  </data>
+  <data name="Model_Person_Schaden_M_max.Text" xml:space="preserve">
+    <value>MatrixSchaden maximal</value>
+  </data>
+  <data name="Model_Person_Initiative.Text" xml:space="preserve">
+    <value>Initiative</value>
   </data>
 </root>

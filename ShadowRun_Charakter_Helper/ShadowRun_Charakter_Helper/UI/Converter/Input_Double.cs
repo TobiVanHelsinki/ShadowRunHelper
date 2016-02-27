@@ -1,10 +1,10 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 
-namespace ShadowRun_Charakter_Helper
+namespace ShadowRun_Charakter_Helper.UI.Converter
 {
     // Custom class implements the IValueConverter interface. 
-    public class Digit : IValueConverter
+    public class Input_Double : IValueConverter
     {
         #region IValueConverter Members 
         public object Convert(object value, Type targetType,

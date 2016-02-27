@@ -96,5 +96,14 @@ namespace ShadowRun_Charakter_Helper
         {
             ViewModel.Current.Person.Initiative--;
         }
+
+        private void Runs_Minus_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Current.Person.Runs--;
+        }
+        private void Runs_Plus_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Current.Person.Runs++;
+        }
     }
 }

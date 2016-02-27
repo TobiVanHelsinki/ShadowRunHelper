@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="ShadowRun-564fe49b-f507-4665-9f57-b4dc07c68fd4" Publisher="CN=Tobiv" Version="0.4.8.0" />
+  <Identity Name="ShadowRun-564fe49b-f507-4665-9f57-b4dc07c68fd4" Publisher="CN=Tobiv" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="564fe49b-f507-4665-9f57-b4dc07c68fd4" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>ShadowRun Charakter-Helper</DisplayName>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ShadowRun_Charakter_Helper.App">
-      <uap:VisualElements DisplayName="ShadowRun V0.5" Square150x150Logo="Assets\Logo1_600x600.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Die beste App, um deine ShadowRun Charachter zu hegen und pflegen!" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="ShadowRun V1.0" Square150x150Logo="Assets\Logo1_600x600.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Die beste App, um deine ShadowRun Charachter zu hegen und pflegen!" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Logo1_1240x600.png" Square310x310Logo="Assets\Logo1_1240x1240.png" Square71x71Logo="Assets\Logo1_284x284.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -32,19 +32,19 @@
         </uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
-        <uap:Extension Category="windows.fileSavePicker">
-          <uap:FileSavePicker>
-            <uap:SupportedFileTypes>
-              <uap:FileType>.SRWin</uap:FileType>
-            </uap:SupportedFileTypes>
-          </uap:FileSavePicker>
-        </uap:Extension>
         <uap:Extension Category="windows.fileOpenPicker">
           <uap:FileOpenPicker>
             <uap:SupportedFileTypes>
               <uap:FileType>.SRWin</uap:FileType>
             </uap:SupportedFileTypes>
           </uap:FileOpenPicker>
+        </uap:Extension>
+        <uap:Extension Category="windows.fileSavePicker">
+          <uap:FileSavePicker>
+            <uap:SupportedFileTypes>
+              <uap:FileType>.SRWin</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileSavePicker>
         </uap:Extension>
       </Extensions>
     </Application>

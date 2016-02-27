@@ -357,6 +357,12 @@ namespace ShadowRun_Charakter_Helper.IO
                 newChar.PanzerungController.DataList[maxID].Stoß = item.Stoß;
                 maxID++;
             }
+            
+            newChar.Person = tempChar.Person;
+            if (newChar.Person == null)
+            {
+                newChar.Person = new CharModel.Person();
+            }
             // handlung muss als letztes in dieser liste erscheinen, da es abhängigkeiten besitzt
             maxID = 0;
             foreach (var item in tempChar.HandlungController)

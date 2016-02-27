@@ -126,6 +126,16 @@ namespace ShadowRun_Charakter_Helper
                 Edit_Panzerung dialog = new Edit_Panzerung(((CharModel.Panzerung)((Button)sender).DataContext), ViewModel.Current.HD);
                 await dialog.ShowAsync();
             }
+            else if (Controller_Name.Contains("Person1"))
+            {
+                Edit_Person dialog = new Edit_Person(ViewModel.Current.Person, ViewModel.Current.HD);
+                await dialog.ShowAsync();
+            }
+            else if (Controller_Name.Contains("Person2"))
+            {
+                Edit_Person2 dialog = new Edit_Person2(ViewModel.Current.Person, ViewModel.Current.HD);
+                await dialog.ShowAsync();
+            }
         }
 
 

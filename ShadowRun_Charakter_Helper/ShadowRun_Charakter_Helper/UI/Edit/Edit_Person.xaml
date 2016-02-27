@@ -9,22 +9,64 @@
     Title="{x:Bind Data.Alias, Mode=TwoWay}"
     PrimaryButtonText="Fertig"  
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    
     >
-    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Uid="Model_Person_Alias" Grid.Column="0" Grid.Row="0"/>
-        <TextBox Name="Alias" Text="{x:Bind Data.Alias, Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
-        <TextBlock x:Uid="Model_Person_Notizen" Grid.Column="0" Grid.Row="3"/>
-        <TextBox Name="Notizen" Text="{x:Bind Data.Notizen, Mode=TwoWay}" Grid.Column="1" Grid.Row="3"/>
-    </Grid>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Disabled">
+    <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Width="Auto">
+                <TextBox Name="Alias" Text="{x:Bind Data.Alias, Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
+                <TextBlock x:Uid="Model_Person_Alias" Grid.Column="0" Grid.Row="0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Char_Typ" Text="{x:Bind Data.Char_Typ, Mode=TwoWay}" Grid.Column="1" Grid.Row="1"/>
+                <TextBlock x:Uid="Model_Person_Char_Typ" Grid.Column="0" Grid.Row="1"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Runs" Text="{x:Bind Data.Runs, Mode=TwoWay}" Grid.Column="1" Grid.Row="2"/>
+                <TextBlock x:Uid="Model_Person_Runs" Grid.Column="0" Grid.Row="2"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="MetaTyp" Text="{x:Bind Data.MetaTyp, Mode=TwoWay}" Grid.Column="1" Grid.Row="3"/>
+                <TextBlock x:Uid="Model_Person_MetaTyp" Grid.Column="0" Grid.Row="3"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="MetaTyp_sub" Text="{x:Bind Data.MetaTyp_sub, Mode=TwoWay}" Grid.Column="1" Grid.Row="4"/>
+                <TextBlock x:Uid="Model_Person_MetaTyp_sub" Grid.Column="0" Grid.Row="4"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Lebesstil" Text="{x:Bind Data.Lebesstil, Mode=TwoWay}" Grid.Column="1" Grid.Row="5"/>
+                <TextBlock x:Uid="Model_Person_Lebesstil" Grid.Column="0" Grid.Row="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Geschlecht" Text="{x:Bind Data.Geschlecht, Mode=TwoWay}" Grid.Column="1" Grid.Row="6"/>
+                <TextBlock x:Uid="Model_Person_Geschlecht" Grid.Column="0" Grid.Row="6"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Größe" Text="{x:Bind Data.Größe, Mode=TwoWay}" Grid.Column="1" Grid.Row="7"/>
+                <TextBlock x:Uid="Model_Person_Größe" Grid.Column="0" Grid.Row="7"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Gewicht" Text="{x:Bind Data.Gewicht, Mode=TwoWay}" Grid.Column="1" Grid.Row="8"/>
+                <TextBlock x:Uid="Model_Person_Gewicht" Grid.Column="0" Grid.Row="8"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Augenfarbe" Text="{x:Bind Data.Augenfarbe, Mode=TwoWay}" Grid.Column="1" Grid.Row="9"/>
+                <TextBlock x:Uid="Model_Person_Augenfarbe" Grid.Column="0" Grid.Row="9"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Haarfarbe" Text="{x:Bind Data.Haarfarbe, Mode=TwoWay}" Grid.Column="1" Grid.Row="10"/>
+                <TextBlock x:Uid="Model_Person_Haarfarbe" Grid.Column="0" Grid.Row="10"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Hautfarbe" Text="{x:Bind Data.Hautfarbe, Mode=TwoWay}" Grid.Column="1" Grid.Row="11"/>
+                <TextBlock x:Uid="Model_Person_Hautfarbe" Grid.Column="0" Grid.Row="11"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Essenz" Text="{x:Bind Data.Essenz, Mode=TwoWay}" Grid.Column="1" Grid.Row="12"/>
+                <TextBlock x:Uid="Model_Person_Essenz" Grid.Column="0" Grid.Row="12"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
 </ContentDialog>

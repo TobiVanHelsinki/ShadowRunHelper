@@ -160,8 +160,7 @@
     <Compile Include="Model\CharViewModel.cs" />
     <Compile Include="Ressourcen\TypNamen.cs" />
     <Compile Include="UI\Converter\CB.cs" />
-    <Compile Include="UI\Converter\Attribute.cs" />
-    <Compile Include="UI\Converter\Digit.cs" />
+    <Compile Include="UI\Converter\Input_Double.cs" />
     <Compile Include="UI\Edit\Edit_Attribut.xaml.cs">
       <DependentUpon>Edit_Attribut.xaml</DependentUpon>
     </Compile>
@@ -197,6 +196,9 @@
     </Compile>
     <Compile Include="UI\Edit\Edit_Panzerung.xaml.cs">
       <DependentUpon>Edit_Panzerung.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Person2.xaml.cs">
+      <DependentUpon>Edit_Person2.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Edit\Edit_Person.xaml.cs">
       <DependentUpon>Edit_Person.xaml</DependentUpon>
@@ -348,6 +350,10 @@
     <Page Include="UI\Edit\Edit_Panzerung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Person2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Edit\Edit_Person.xaml">
       <SubType>Designer</SubType>

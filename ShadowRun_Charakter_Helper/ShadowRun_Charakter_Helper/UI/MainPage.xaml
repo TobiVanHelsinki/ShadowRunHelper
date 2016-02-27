@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ShadowRun_Charakter_Helper"
     xmlns:model="using:System.ComponentModel"
-    xmlns:char="using:ShadowRun_Charakter_Helper.Models"
+    xmlns:char="using:ShadowRun_Charakter_Helper.Model"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -64,10 +64,7 @@
                             </TextBlock>
                             <TextBlock Name="XAML_Header_Kontostand" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Kontostand,Mode=OneWay}"/>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Name="XAML_Header_Ini_Text" Margin="20,0,10,0" x:Uid="Model_Person_Init"/>
-                            <TextBlock Name="XAML_Header_Ini" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Initiative,Mode=OneWay}"/>
-                        </StackPanel>
+                       
                         <StackPanel Orientation="Vertical">
                             <TextBlock Name="XAML_Header_Karma_Text" x:Uid="Model_Person_Karma" Margin="20,0,10,0"/>
                             <TextBlock Name="XAML_Header_Karma" Margin="20,0,10,0">
@@ -85,9 +82,14 @@
                             </TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Name="XAML_Header_Essenz_Text" Margin="20,0,10,0" x:Uid="Model_Person_Essenz"/>
-                            <TextBlock Name="XAML_Header_Essenz" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Essenz,Mode=OneWay}"/>
+                            <TextBlock Name="XAML_Header_Ini_Text" Margin="20,0,10,0" x:Uid="Model_Person_Init"/>
+                            <TextBlock Name="XAML_Header_Ini" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Initiative,Mode=OneWay}"/>
                         </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Name="XAML_Header_Runs_Text" Margin="20,0,10,0" x:Uid="Model_Person_Runs"/>
+                            <TextBlock Name="XAML_Header_Runs" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Runs,Mode=OneWay}"/>
+                        </StackPanel>
+
 
                     </StackPanel>
                     <Button.Flyout>
@@ -112,15 +114,15 @@
                                 <TextBlock Grid.Column="0" Grid.Row="0" Name="XAML_Header_x_Kontostand_Text" Margin="20,0,10,0" Text="Kontostand"/>
                                 <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Name="XAML_Header_x_Kontostand" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Kontostand,Mode=TwoWay}"/>
 
-                                <TextBlock Grid.Column="0" Grid.Row="1"  Name="XAML_Header_x_Karma_Gesamt_Text" Margin="20,0,10,0" Text="Karma Gesamt"/>
-                                <TextBlock Grid.Column="1" Grid.Row="1" Name="XAML_Header_x_Karma_Gesamt" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Karma_Gesamt,Mode=OneWay}"/>
-                                <Button Grid.Column="2" Grid.Row="1" Name="Karma_Gesamt_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Karma_Gesamt_Plus_Click"></Button>
-                                <Button Grid.Column="3" Grid.Row="1" Name="Karma_Gesamt_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Karma_Gesamt_Minus_Click"></Button>
+                                <TextBlock Grid.Column="0" Grid.Row="2"  Name="XAML_Header_x_Karma_Gesamt_Text" Margin="20,0,10,0" Text="Karma Gesamt"/>
+                                <TextBlock Grid.Column="1" Grid.Row="2" Name="XAML_Header_x_Karma_Gesamt" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Karma_Gesamt,Mode=OneWay}"/>
+                                <Button Grid.Column="2" Grid.Row="2" Name="Karma_Gesamt_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Karma_Gesamt_Plus_Click"></Button>
+                                <Button Grid.Column="3" Grid.Row="2" Name="Karma_Gesamt_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Karma_Gesamt_Minus_Click"></Button>
 
-                                <TextBlock Grid.Column="0" Grid.Row="2" Name="XAML_Header_x_Karma_Aktuell_Text" Margin="20,0,10,0" Text="Karma Aktuell"/>
-                                <TextBlock Grid.Column="1" Grid.Row="2" Name="XAML_Header_x_Karma_Aktuell" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Karma_Aktuell,Mode=OneWay}"/>
-                                <Button Grid.Column="2" Grid.Row="2" Name="Karma_Aktuell_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Karma_Aktuell_Plus_Click"></Button>
-                                <Button Grid.Column="3" Grid.Row="2" Name="Karma_Aktuell_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Karma_Aktuell_Minus_Click"></Button>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Name="XAML_Header_x_Karma_Aktuell_Text" Margin="20,0,10,0" Text="Karma Aktuell"/>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Name="XAML_Header_x_Karma_Aktuell" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Karma_Aktuell,Mode=OneWay}"/>
+                                <Button Grid.Column="2" Grid.Row="1" Name="Karma_Aktuell_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Karma_Aktuell_Plus_Click"></Button>
+                                <Button Grid.Column="3" Grid.Row="1" Name="Karma_Aktuell_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Karma_Aktuell_Minus_Click"></Button>
 
                                 <TextBlock Grid.Column="0" Grid.Row="3" Name="XAML_Header_x_Edgne_Aktuell_Text" Margin="20,0,10,0" Text="Edge Aktuell"/>
                                 <TextBlock Grid.Column="1" Grid.Row="3" Name="XAML_Header_x_Edgne_Aktuell" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Edge_Aktuell,Mode=OneWay}"/>
@@ -132,10 +134,16 @@
                                 <Button Grid.Column="2" Grid.Row="4" Name="Edge_Gesamt_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Edge_Gesamt_Plus_Click"></Button>
                                 <Button Grid.Column="3" Grid.Row="4" Name="Edge_Gesamt_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Edge_Gesamt_Minus_Click"></Button>
 
-                                <TextBlock Grid.Column="0" Grid.Row="6"  Name="XAML_Header_x_Initiative_Text" Margin="20,0,10,0" Text="Initiative"/>
-                                <TextBlock Grid.Column="1" Grid.Row="6" Name="XAML_Header_x_Initiative" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Initiative,Mode=OneWay}"/>
-                                <Button Grid.Column="2" Grid.Row="6" Name="Initiative_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Initiative_Plus_Click"></Button>
-                                <Button Grid.Column="3" Grid.Row="6" Name="Initiative_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Initiative_Minus_Click"></Button>
+
+                                <TextBlock Grid.Column="0" Grid.Row="5"  Name="XAML_Header_x_Initiative_Text" Margin="20,0,10,0" Text="Initiative"/>
+                                <TextBlock Grid.Column="1" Grid.Row="5" Name="XAML_Header_x_Initiative" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Initiative,Mode=OneWay}"/>
+                                <Button Grid.Column="2" Grid.Row="5" Name="Initiative_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Initiative_Plus_Click"></Button>
+                                <Button Grid.Column="3" Grid.Row="5" Name="Initiative_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Initiative_Minus_Click"></Button>
+
+                                <TextBlock Grid.Column="0" Grid.Row="6"  Name="XAML_Header_x_Runs_Text" Margin="20,0,10,0" Text="Runs"/>
+                                <TextBlock Grid.Column="1" Grid.Row="6" Name="XAML_Header_x_Runs" Margin="20,0,10,0" Text="{x:Bind ViewModel.Current.Person.Runs,Mode=OneWay}"/>
+                                <Button Grid.Column="2" Grid.Row="6" Name="Runs_Plus" Content="&#xE109;" FontFamily="Segoe MDL2 Assets" Click="Runs_Plus_Click"></Button>
+                                <Button Grid.Column="3" Grid.Row="6" Name="Runs_Minus" Content="&#xE108;" FontFamily="Segoe MDL2 Assets" Click="Runs_Minus_Click"></Button>
                             </Grid>
                         </Flyout>
                     </Button.Flyout>
