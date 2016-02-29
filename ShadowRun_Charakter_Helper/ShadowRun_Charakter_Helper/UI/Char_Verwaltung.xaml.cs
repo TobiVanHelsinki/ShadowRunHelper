@@ -13,7 +13,7 @@ namespace ShadowRun_Charakter_Helper
     public sealed partial class Char_Verwaltung : Page
     {
         private CharViewModel ViewModel { get; set; }
-        private Controller.CharVerwaltung Verwaltung { get; set; }
+        private IO.CharVerwaltung Verwaltung { get; set; }
 
         public Char_Verwaltung()
         {
@@ -22,7 +22,7 @@ namespace ShadowRun_Charakter_Helper
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (CharViewModel)e.Parameter;
-            this.Verwaltung = new Controller.CharVerwaltung(1);
+            this.Verwaltung = new IO.CharVerwaltung(1);
         }
 
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
@@ -42,7 +42,7 @@ namespace ShadowRun_Charakter_Helper
 
         private void Click_Löschen(object sender, RoutedEventArgs e)
         {
-            int id = ((CharSummory)((Button)sender).DataContext).ID;
+            string id = ((CharSummory)((Button)sender).DataContext).ID;
             Verwaltung.Lösche(id);
             //todo if to delete == current
         }
@@ -54,26 +54,26 @@ namespace ShadowRun_Charakter_Helper
 
         private async void Click_Laden(object sender, RoutedEventArgs e)
         {
-            int id = ((CharSummory)((Button)sender).DataContext).ID;
-            ViewModel.Current = await Verwaltung.Laden(id);
+            string id = ((CharSummory)((Button)sender).DataContext).ID;
+            ViewModel.Current = await Verwaltung.LadenIntern(id);
             Frame.Navigate(typeof(Char), ViewModel);
         }
 
         private void Click_Speichern(object sender, RoutedEventArgs e)
         {
-            Verwaltung.Speichern(ViewModel.Current);
+            Verwaltung.SpeichernIntern(ViewModel.Current);
 
         }
 
         private void Click_Laden_Datei(object sender, RoutedEventArgs e)
         {
-            Verwaltung.LadenDatei();
+            Verwaltung.LadenExtern();
         }
 
         private void Click_Speichern_Datei(object sender, RoutedEventArgs e)
         {
-            int id = ((CharSummory)((Button)sender).DataContext).ID;
-            Verwaltung.SpeichernDatei(id);
+            string id = ((CharSummory)((Button)sender).DataContext).ID;
+            Verwaltung.SpeichernExtern(id);
         }
     }
 }

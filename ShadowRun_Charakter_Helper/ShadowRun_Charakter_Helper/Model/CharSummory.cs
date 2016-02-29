@@ -6,8 +6,8 @@ namespace ShadowRun_Charakter_Helper.Model
 {
     public class CharSummory : INotifyPropertyChanged
     {
-        private int iD;
-        public int ID
+        private string iD;
+        public string ID
         {
             get { return this.iD; }
             set
@@ -38,7 +38,7 @@ namespace ShadowRun_Charakter_Helper.Model
         }
 
 
-        public CharSummory(int id, string sum)
+        public CharSummory(string id, string sum)
         {
             this.ID = id;
             this.Summory = sum;

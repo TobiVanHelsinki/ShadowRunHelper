@@ -47,7 +47,6 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Margin="5,2,5,2" Grid.Column="0" Text="{x:Bind ID, Mode=OneWay}"/>
                         <TextBlock Margin="5,2,5,2" Grid.Column="1" Text="{x:Bind Summory, Mode=OneWay}"/>
                     </Grid>
                 </DataTemplate>

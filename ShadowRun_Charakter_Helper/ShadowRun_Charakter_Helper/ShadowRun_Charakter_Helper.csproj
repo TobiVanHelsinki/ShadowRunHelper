@@ -98,6 +98,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Dok\ClassDiagram5.cd" />
     <None Include="Dok\ClassDiagram1.cd" />
     <None Include="Dok\ClassDiagram2.cd" />
     <None Include="Dok\ClassDiagram3.cd" />
@@ -146,7 +147,7 @@
     <Compile Include="CharModel\Kommlink.cs" />
     <Compile Include="CharModel\Nahkampfwaffe.cs" />
     <Compile Include="CharModel\Waffe.cs" />
-    <Compile Include="Controller\CharVerwaltung.cs" />
+    <Compile Include="IO\CharVerwaltung.cs" />
     <Compile Include="Controller\HashDictionary.cs" />
     <Compile Include="IO\CharIO.cs" />
     <Compile Include="CharModel\Panzerung.cs" />
@@ -242,6 +243,7 @@
     <Compile Include="UI\TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Variablen.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

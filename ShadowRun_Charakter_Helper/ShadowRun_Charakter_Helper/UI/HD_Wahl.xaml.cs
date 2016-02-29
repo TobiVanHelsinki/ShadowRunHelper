@@ -21,6 +21,10 @@ namespace AppUIBasics.ControlPages
             this.InitializeComponent();
             this.data = data;
             HD = hD;
+            foreach (var item in HD.Data)
+            {
+                //todo scrollviweer an bildschirmbreite/2 oderso binden
+            }
             Modus = modus;
         }
 
@@ -68,11 +72,13 @@ namespace AppUIBasics.ControlPages
 
         private void Zus_ListVIew_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
+            KeyValuePair<System.Int32, DictionaryCharEntry> temp;
             foreach (var item in Zus_ListVIew.SelectedRanges)
             {
                 for (int i = 0; i < item.Length; i++)
                 {
-                    if (HD[item.FirstIndex+1+i].Typ.Contains("Handlung") || HD[item.FirstIndex+1+i].Typ.Contains("error"))
+                    temp = (KeyValuePair<System.Int32, DictionaryCharEntry>)Zus_ListVIew.SelectedItem;
+                    if (temp.Value.Typ.Contains("Handlung") || temp.Value.Typ.Contains("error"))
                     {
                         Zus_ListVIew.DeselectRange(new ItemIndexRange(item.FirstIndex + i, 1));
                     }

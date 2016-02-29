@@ -12,92 +12,17 @@ namespace ShadowRun_Charakter_Helper.IO
 {
     class CharIO
     {
-        static String Container_Char = "Char_Store";
-        static String File_Char_Beschreibung = "_b";
-
-        public static async Task<ObservableCollection<CharSummory>> getListofChars()
-        {
-            StorageFolder CharFolder = await getFolder();
-            IReadOnlyList<StorageFile> Liste = await CharFolder.GetFilesAsync();
-
-            ObservableCollection<CharSummory> templist = new ObservableCollection<CharSummory>();
-            String beschreibung = "";
-            foreach (var item in Liste)
-            {
-                if (!item.Name.Contains(File_Char_Beschreibung))
-                {
-                    StorageFile b_File = await CharFolder.GetFileAsync(item.Name+File_Char_Beschreibung);
-                    beschreibung = await FileIO.ReadTextAsync(b_File);
-                    templist.Add(new CharSummory(Int32.Parse(item.Name), beschreibung));
-                }
-                
-            }
-            return templist;
-        }
-
         private static string Char_to_JSON(Controller.CharHolder SaveChar)
         {
             return JsonConvert.SerializeObject(SaveChar);
         }
-
-        public static async void Speichern(Controller.CharHolder SaveChar, int SaveID)
-        {
-            StorageFolder CharFolder = await getFolder();
-
-            String toSave = Char_to_JSON(SaveChar);
-
-            String temp_Alias = "";
-            String temp_Char_Typ = "";
-            String temp_Karma = "";
-            try
-            {
-                temp_Alias = SaveChar.Person.Alias;
-                if (temp_Alias == "")
-                {
-                    throw new NullReferenceException();
-                }
-            }
-            catch (NullReferenceException) { temp_Alias = "$ohne Namen$"; }
-            try
-            {
-                temp_Char_Typ = SaveChar.Person.Char_Typ;
-                if (temp_Char_Typ == "")
-                {
-                    throw new NullReferenceException();
-                }
-            }
-            catch (NullReferenceException) { temp_Char_Typ = "$ohne Beruf$"; }
-            try
-            {
-                temp_Karma = SaveChar.Person.Karma_Gesamt.ToString();
-                if (temp_Karma == "")
-                {
-                    throw new NullReferenceException();
-                }
-            }
-            catch (NullReferenceException) { temp_Karma = "$ohne Erfolg$"; }
-
-            String toSave_B = temp_Alias + ", " + temp_Char_Typ + ", Karma: " + temp_Karma;
-
-            StorageFile file_Char = await CharFolder.CreateFileAsync(SaveID.ToString());
-            StorageFile file_B = await CharFolder.CreateFileAsync(SaveID.ToString()+ File_Char_Beschreibung);
-            await FileIO.WriteTextAsync(file_Char, toSave);
-            await FileIO.WriteTextAsync(file_B, toSave_B);
-        }
-
-        public static async void Speichern(Controller.CharHolder SaveChar, Windows.Storage.StorageFile file)
-        {
-            //Ausgewählten Char auf Plattensubsystem schreiben
-            await FileIO.WriteTextAsync(file, CharIO.Char_to_JSON(SaveChar));
-        }
-
         private static Controller.CharHolder JSON_to_Char(string fileContent)
         {
             Controller.CharHolder tempChar = new Controller.CharHolder();
             tempChar = JsonConvert.DeserializeObject<Controller.CharHolder>(fileContent);
 
             Controller.CharHolder newChar = new Controller.CharHolder(tempChar.NahkampfwaffeController.HD_ID, tempChar.FernkampfwaffeController.HD_ID, tempChar.KommlinkController.HD_ID, tempChar.CyberDeckController.HD_ID, tempChar.VehikelController.HD_ID, tempChar.PanzerungController.HD_ID);
-        //    newChar.Char_ID = tempChar.Char_ID;
+            //    newChar.Char_ID = tempChar.Char_ID;
 
             int maxID = 0;
 
@@ -357,7 +282,7 @@ namespace ShadowRun_Charakter_Helper.IO
                 newChar.PanzerungController.DataList[maxID].Stoß = item.Stoß;
                 maxID++;
             }
-            
+
             newChar.Person = tempChar.Person;
             if (newChar.Person == null)
             {
@@ -381,18 +306,28 @@ namespace ShadowRun_Charakter_Helper.IO
 
             return newChar;
         }
-
-        public static async Task<Controller.CharHolder> Lade(int LoadID)
+        public static async Task<ObservableCollection<CharSummory>> getListofChars(StorageFolder CharFolder)
         {
-            StorageFolder CharFolder = await getFolder();
-            StorageFile toLoadFile = await CharFolder.GetFileAsync(LoadID.ToString());
+            IReadOnlyList<StorageFile> Liste = await CharFolder.GetFilesAsync();
 
-            string fileContent = await FileIO.ReadTextAsync(toLoadFile);
-
-            return JSON_to_Char(fileContent);
+            ObservableCollection<CharSummory> templist = new ObservableCollection<CharSummory>();
+            foreach (var item in Liste)
+            {
+                if (item.FileType == Variablen.DATEIENDUNG)
+                {
+                    templist.Add(new CharSummory(item.Name, item.Name));
+                }
+            }
+            return templist;
         }
 
-        public static async Task<Controller.CharHolder> Lade(Windows.Storage.StorageFile file)
+        public static async void Speichern(Controller.CharHolder SaveChar, StorageFile file)
+        {
+            //Ausgewählten Char auf Plattensubsystem schreiben
+            await FileIO.WriteTextAsync(file, CharIO.Char_to_JSON(SaveChar));
+        }
+
+        public static async Task<Controller.CharHolder> Laden(StorageFile file)
         {
             String inputString = "";
             try
@@ -406,15 +341,11 @@ namespace ShadowRun_Charakter_Helper.IO
             }
         }
 
-        public static async void Löschen(int del_id)
+        public static async void Löschen(StorageFile toDelFile)
         {
-            StorageFolder CharFolder = await getFolder();
-            StorageFile toDelFile = await CharFolder.GetFileAsync(del_id.ToString());
-            StorageFile toDelFile_b = await CharFolder.GetFileAsync(del_id.ToString()+ File_Char_Beschreibung);
             try
             {
                 await toDelFile.DeleteAsync();
-                await toDelFile_b.DeleteAsync();
             }
             catch (Exception)
             {
@@ -422,22 +353,5 @@ namespace ShadowRun_Charakter_Helper.IO
             }
            
         }
-
-        private static async Task<StorageFolder> getFolder()
-        {
-            StorageFolder RoamingFolder = ApplicationData.Current.RoamingFolder;
-            StorageFolder CharFolder = null;
-            try
-            {
-                CharFolder = await RoamingFolder.GetFolderAsync(Container_Char);
-            }
-            catch (System.IO.FileNotFoundException)
-            {
-                CharFolder = await RoamingFolder.CreateFolderAsync(Container_Char);
-            }
-            return CharFolder;
-        }
-
-
     }
 }
