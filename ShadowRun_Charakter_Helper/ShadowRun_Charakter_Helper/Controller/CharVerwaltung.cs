@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Popups;
@@ -57,8 +58,23 @@ namespace ShadowRun_Charakter_Helper.Controller
         }
         private async void Summorys_Aktualisieren()
         {
+           //todo in der io klasse kann man vereinfachen, da beides ordner sind
+           //die files im systemordner auch als SRCHChar klassifizieren.
+
+            AutoResetEvent autoEvent = new AutoResetEvent(false);
+
+            StatusChecker statusChecker = new StatusChecker(10);
+
+            // Create an inferred delegate that invokes methods for the timer.
+            TimerCallback tcb = statusChecker.CheckStatus;
+            Timer stateTimer = new Timer(tcb, autoEvent, 1000, 1000);
+
+            System.Diagnostics.Debug.WriteLine("{0} Creating timer.\n",
+    DateTime.Now.ToString("h:mm:ss.fff"));
+           
             Summorys.Clear();
             // system unauthorized abfangen
+
             foreach (var item in await IO.CharIO.getListofChars())
             {
 
@@ -177,4 +193,32 @@ namespace ShadowRun_Charakter_Helper.Controller
             this.Summorys_Aktualisieren();
         }
     }
-}
+    class StatusChecker
+    {
+        private int invokeCount;
+        private int maxCount;
+
+        public StatusChecker(int count)
+        {
+            invokeCount = 0;
+            maxCount = count;
+        }
+
+        // This method is called by the timer delegate.
+        public void CheckStatus(Object stateInfo)
+        {
+            AutoResetEvent autoEvent = (AutoResetEvent)stateInfo;
+            System.Diagnostics.Debug.WriteLine("{0} Checking status {1,2}.",
+                DateTime.Now.ToString("h:mm:ss.fff"),
+                (++invokeCount).ToString());
+
+            if (invokeCount == maxCount)
+            {
+                // Reset the counter and signal Main.
+                invokeCount = 0;
+                autoEvent.Set();
+                autoEvent.Dispose();
+            }
+        }
+    }
+    }
