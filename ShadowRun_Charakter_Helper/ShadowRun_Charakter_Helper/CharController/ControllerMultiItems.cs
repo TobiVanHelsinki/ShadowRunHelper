@@ -36,8 +36,7 @@ namespace ShadowRun_Charakter_Helper.CharController
             {
                 foreach (var item in DataList)
                 {
-                    if ( true) //item.Aktiv ==
-                        //todo aktiv wird irgendwie nicht gebunden
+                    if (item.Aktiv == true)
                     {
                         temptry.Bezeichner = item.Bezeichner;
                         temptry.Wert = item.Wert;

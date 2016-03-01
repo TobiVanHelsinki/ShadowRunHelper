@@ -8,8 +8,8 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Eigenschaft : Model
     {
-        private double auswirkungen;
-        public double Auswirkungen
+        private string auswirkungen = "";
+        public string Auswirkungen
         {
             get { return auswirkungen; }
             set

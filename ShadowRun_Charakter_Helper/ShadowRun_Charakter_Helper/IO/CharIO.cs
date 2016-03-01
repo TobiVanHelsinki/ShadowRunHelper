@@ -239,7 +239,6 @@ namespace ShadowRun_Charakter_Helper.IO
                 newChar.CyberDeckController.DataList[maxID].Firewall_o = item.Firewall_o;
                 newChar.CyberDeckController.DataList[maxID].Angriff_o = item.Angriff_o;
                 newChar.CyberDeckController.DataList[maxID].Schleicher_o = item.Schleicher_o;
-                //todo gui anpassen für attribute (o und derzeit) am besten in eigenem grid
                 maxID++;
             }
             maxID = 0;
@@ -313,7 +312,7 @@ namespace ShadowRun_Charakter_Helper.IO
             ObservableCollection<CharSummory> templist = new ObservableCollection<CharSummory>();
             foreach (var item in Liste)
             {
-                if (item.FileType == Variablen.DATEIENDUNG)
+                if (item.FileType == Variablen.DATEIENDUNG_CHAR_2)
                 {
                     templist.Add(new CharSummory(item.Name, item.Name));
                 }

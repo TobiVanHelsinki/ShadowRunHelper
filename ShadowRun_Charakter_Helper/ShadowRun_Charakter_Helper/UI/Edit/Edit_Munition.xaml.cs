@@ -6,7 +6,6 @@ namespace ShadowRun_Charakter_Helper.UI.Edit
     {
         public CharModel.Munition Data;
         public Controller.HashDictionary HD;
-        //todo munition in gui einfügen
         public Edit_Munition(CharModel.Munition data, Controller.HashDictionary hd)
         {
             this.InitializeComponent();

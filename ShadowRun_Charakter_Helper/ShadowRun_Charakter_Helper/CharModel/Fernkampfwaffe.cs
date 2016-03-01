@@ -2,7 +2,7 @@
 {
     public class Fernkampfwaffe : CharModel.Waffe
     {
-        private double rückstoß;
+        private double rückstoß = 0;
         public double Rückstoß
         {
             get { return rückstoß; }
@@ -15,7 +15,7 @@
                 }
             }
         }
-        private string modi;
+        private string modi = "";
         public string Modi
         {
             get { return modi; }

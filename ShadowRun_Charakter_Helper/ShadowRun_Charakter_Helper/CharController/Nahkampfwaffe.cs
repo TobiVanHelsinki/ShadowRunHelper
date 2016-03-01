@@ -30,5 +30,9 @@ namespace ShadowRun_Charakter_Helper.CharController
         {
             DataHasUpdatet(sender);
         }
+        ~Nahkampfwaffe()
+        {
+            if (Data!=null){Data.PropertyChanged -= new System.ComponentModel.PropertyChangedEventHandler(DataChanged);}
+        }
     }
 }

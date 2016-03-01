@@ -32,7 +32,6 @@ namespace ShadowRun_Charakter_Helper.CharController
             catch (Exception)
             {
                 throw new Exception("Konnte " + this.Data.Typ + " nicht an HD weiterleiten. - " + HD_ID + " nicht im HD.");
-                // todo typ sollte automatisch gesetzt werden 
             }
             try
             {

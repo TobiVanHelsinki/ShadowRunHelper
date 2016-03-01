@@ -10,10 +10,10 @@ namespace ShadowRun_Charakter_Helper.CharModel
     {
 
 
-        private double firewall_o;
+        private double firewall_o =0;
         public double Firewall_o
         {
-            get { return firewall_o; }
+            get { return firewall_o=0; }
             set
             {
                 if (value != this.firewall_o)
@@ -23,10 +23,10 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double datenverarbeitung_o;
+        private double datenverarbeitung_o=0;
         public double Datenverarbeitung_o
         {
-            get { return datenverarbeitung_o; }
+            get { return datenverarbeitung_o=0; }
             set
             {
                 if (value != this.datenverarbeitung_o)
@@ -36,7 +36,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double angriff;
+        private double angriff = 0;
         public double Angriff
         {
             get { return angriff; }
@@ -49,10 +49,10 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double angriff_o;
+        private double angriff_o=0;
         public double Angriff_o
         {
-            get { return angriff_o; }
+            get { return angriff_o=0; }
             set
             {
                 if (value != this.angriff_o)
@@ -62,7 +62,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double schleicher;
+        private double schleicher = 0;
         public double Schleicher
         {
             get { return schleicher; }
@@ -75,10 +75,10 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double schleicher_o;
+        private double schleicher_o=0;
         public double Schleicher_o
         {
-            get { return schleicher_o; }
+            get { return schleicher_o=0; }
             set
             {
                 if (value != this.schleicher_o)

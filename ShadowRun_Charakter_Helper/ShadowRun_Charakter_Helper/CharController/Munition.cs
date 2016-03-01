@@ -18,5 +18,10 @@ namespace ShadowRun_Charakter_Helper.CharController
         {
             DataHasUpdatet(sender);
         }
+
+        ~Munition()
+        {
+            if (Data!=null){Data.PropertyChanged -= new System.ComponentModel.PropertyChangedEventHandler(DataChanged);}
+        }
     }
 }

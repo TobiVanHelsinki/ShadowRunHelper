@@ -21,8 +21,7 @@ namespace ShadowRun_Charakter_Helper.CharController
 
         ~Attribut()
         {
-            Data.PropertyChanged -= new System.ComponentModel.PropertyChangedEventHandler(DataChanged);
-            //todo bei allen machen
+            if (Data!=null){Data.PropertyChanged -= new System.ComponentModel.PropertyChangedEventHandler(DataChanged);}
         }
     }
 }

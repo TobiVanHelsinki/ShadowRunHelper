@@ -6,11 +6,10 @@ namespace ShadowRun_Charakter_Helper.CharModel
     public class Handlung : CharModel.Model
     {
 
-        private Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> zusammensetzung;
+        private Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> zusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
         public Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> Zusammensetzung
         {
             get { return zusammensetzung;
-                // todo return zusammensetzung ohne handlungen
             }
             set
             {
@@ -22,13 +21,12 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
-        private Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> grenzeZusammensetzung;
+        private Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> grenzeZusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
         public Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> GrenzeZusammensetzung
         {
             get
             {
                 return grenzeZusammensetzung;
-                // todo return zusammensetzung ohne handlungen
             }
             set
             {
@@ -40,9 +38,8 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
-        //Todo grenze berechnen fehlt
-        private int grenze;
-        public int Grenze
+        private double grenze = 0;
+        public double Grenze
         {
             get { return grenze; }
             set
@@ -61,10 +58,8 @@ namespace ShadowRun_Charakter_Helper.CharModel
 
         public Handlung()
         {
-            //todo alles auf null setzen schon im Kontruktor
             Zusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
             GrenzeZusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
-            Grenze = 0;
         }
     }
 }

@@ -217,8 +217,8 @@
                                                 </StackPanel>
                                             </Flyout>
                                         </FlyoutBase.AttachedFlyout>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Data.Aktiv, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Data.Besitz, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Data.Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Data.Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
                                         <TextBlock Grid.Column="2" Text="{x:Bind Data.Bezeichner, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
                                         <TextBlock  Grid.Column="3">
                                             <Run Text="{x:Bind Data.Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Data.Zusatz, Mode=OneWay}"/>
@@ -282,8 +282,8 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
                                         <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Bezeichner, Mode=OneWay}"/>
                                         <TextBlock  Grid.Column="3">
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
@@ -355,8 +355,8 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
                                         <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Bezeichner, Mode=OneWay}"/>
                                         <TextBlock  Grid.Column="3">
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
@@ -425,8 +425,8 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="3*"/>
                                             </Grid.ColumnDefinitions>
-                                            <CheckBox Grid.Column="0" IsChecked="{x:Bind Data.Aktiv, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                            <CheckBox Grid.Column="1" IsChecked="{x:Bind Data.Besitz, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                            <CheckBox Grid.Column="0" IsChecked="{x:Bind Data.Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                            <CheckBox Grid.Column="1" IsChecked="{x:Bind Data.Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
                                             <TextBlock Grid.Column="2" Text="{x:Bind Data.Bezeichner, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
                                             <TextBlock Grid.Column="3" Text="{x:Bind Data.Wert, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
                                             <TextBlock Grid.Column="4" Text="{x:Bind Data.Optionen, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
@@ -499,8 +499,8 @@
                                             <ColumnDefinition Width="4*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
                                         <TextBlock Grid.Column="2" Text="{x:Bind Bezeichner, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
                                         <TextBlock Grid.Column="3" Style="{StaticResource ListView_Item_Text}">
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind SchadenTyp, Mode=OneWay}"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
@@ -562,8 +562,8 @@
                                             <ColumnDefinition Width="4*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
                                         <TextBlock Grid.Column="2" Text="{x:Bind Bezeichner, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
                                         <TextBlock Grid.Column="3" Style="{StaticResource ListView_Item_Text}">
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind SchadenTyp, Mode=OneWay}"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
@@ -627,8 +627,8 @@
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
                                         <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Bezeichner, Mode=OneWay}"/>
                                                                                 <TextBlock Grid.Column="3" Style="{StaticResource ListView_Item_Text}">
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
@@ -663,7 +663,7 @@
                             <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="2" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="3" x:Uid="Model_Waffe_Schaden"  Style="{StaticResource ListView_Item_Text}"/>
-                            <TextBlock Grid.Column="3" x:Uid="Model_Vehikel_Panzerung"  Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Grid.Column="4" x:Uid="Model_Vehikel_Panzerung"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
                         <ListView  Name="Vehikel" ItemsSource="{x:Bind ViewModel.Current.VehikelController.DataList}" Style="{StaticResource ListView}">
                             <ListView.ItemTemplate>
@@ -708,13 +708,68 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=OneWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
                                         <TextBlock Grid.Column="2" Text="{x:Bind Bezeichner, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
                                         <TextBlock Grid.Column="3" Style="{StaticResource ListView_Item_Text}">
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                                         </TextBlock>
-                                        <TextBlock Grid.Column="3" Text="{x:Bind Panzerung, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
+                                        <TextBlock Grid.Column="4" Text="{x:Bind Panzerung, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel Name="Munition_Block">
+                        <StackPanel Name="Munition_U" Style="{StaticResource ListView_U}">
+                            <TextBlock x:Uid="Model_Munition_" Style="{StaticResource ListView_U_Text}"/>
+                            <Button Name="Munition_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                        </StackPanel>
+                        <Grid Name="Munition_E" Style="{StaticResource ListView_E}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Grid.Column="2" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Grid.Column="3" x:Uid="Model_Item_Anzahl"  Style="{StaticResource ListView_Item_Text}"/>
+                        </Grid>
+                        <ListView  Name="Munition" ItemsSource="{x:Bind ViewModel.Current.MunitionController}" Style="{StaticResource ListView}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="CharController:Munition">
+                                    <Grid Tapped="Item_Tapped" Style="{StaticResource ListView_Item_Grid}">
+                                        <FlyoutBase.AttachedFlyout>
+                                            <Flyout>
+                                                <StackPanel Orientation="Vertical">
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Typ"/>
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Typ, Mode=OneWay}"/>
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Notiz"/>
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Notiz, Mode=OneWay}"/>
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Zusatz"/>
+                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Zusatz, Mode=OneWay}"/>
+                                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Munition_Edit" Click="HandlungEditDialog_Click"/>
+                                                    <Button x:Uid="UI_Btn_Loeschen" Name="Munition_Del" Click="Del_Click"/>
+                                                </StackPanel>
+                                            </Flyout>
+                                        </FlyoutBase.AttachedFlyout>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="45"/>
+                                            <ColumnDefinition Width="45"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="100"/>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Data.Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Data.Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                                        <TextBlock Grid.Column="2" Text="{x:Bind Data.Bezeichner, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
+                                        <TextBlock Grid.Column="3" Text="{x:Bind Data.Anzahl, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

@@ -8,7 +8,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Implantat : Item
     {
-        private double essenz;
+        private double essenz = 0;
         public double Essenz
         {
             get { return essenz; }

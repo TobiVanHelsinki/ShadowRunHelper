@@ -12,7 +12,7 @@ namespace ShadowRun_Charakter_Helper.Controller
     public class CharHolder
     {
         public HashDictionary HD = new HashDictionary();
-    //    public int Char_ID = 0;
+        public string APP_VERSION_NUMBER = Variablen.APP_VERSION_NUMBER;
 
         public ObservableCollection<CharController.Handlung> HandlungController { get; set; }
         public ObservableCollection<CharController.Fertigkeit> FertigkeitController { get; set; }
@@ -64,9 +64,9 @@ namespace ShadowRun_Charakter_Helper.Controller
             Person = new CharModel.Person();
         }
 
-/// <summary>
-/// Konstruktor nutzen, wenn Daten der Controller und Objekte bereits vorhanden, Parmas sind die ID der MultiController
-/// </summary>
+        /// <summary>
+        /// Konstruktor nutzen, wenn Daten der Controller und Objekte bereits vorhanden, Parmas sind die ID der MultiController
+        /// </summary>
         public CharHolder(
                         int nahkampfwaffe,
                         int fernkampfwaffe,
@@ -95,7 +95,6 @@ namespace ShadowRun_Charakter_Helper.Controller
             CyberDeckController = new CharController.CyberDeck(HD, cyberdeck);
             VehikelController = new CharController.Vehikel(HD, vehikel);
             PanzerungController = new CharController.Panzerung(HD, panzerung);
-            //todo theoretisch müsste jder multiC für alle eigenschaften, auf die man würfelt ein eigenen HDE haben
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -106,7 +105,11 @@ namespace ShadowRun_Charakter_Helper.Controller
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
+        /// <summary>
+        /// wird zum sauberen hinzufügen eines objectes zum Holer benutzt
+        /// </summary>
+        /// <param name="Controller_Name"></param>
+        /// <param name="hd_ID"></param>
         public void Add(String Controller_Name, int hd_ID)
         {
             if (Controller_Name.Contains("Handlung"))
@@ -179,8 +182,98 @@ namespace ShadowRun_Charakter_Helper.Controller
             }
 
         }
+        /// <summary>
+        /// Diese Methode wird zum sauberen Entfernen eines Object aus dem Holder verwendet
+        /// </summary>
+        /// <param name="Controller_Name"></param>
+        /// <param name="hd_ID"></param>
+        /// <param name="Controller_Item"></param>
+        public void Remove(String Controller_Name, int hd_ID, object Controller_Item)
+        {
+            if (Controller_Name.Contains("Handlung"))
+            {
+                ((CharController.Handlung)Controller_Item).remove_from_HD();
+                HandlungController.Remove((CharController.Handlung)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Fertigkeit"))
+            {
+                ((CharController.Fertigkeit)Controller_Item).remove_from_HD();
+                FertigkeitController.Remove((CharController.Fertigkeit)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Attribut"))
+            {
+                ((CharController.Attribut)Controller_Item).remove_from_HD();
+                AttributController.Remove((CharController.Attribut)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Item"))
+            {
+                ((CharController.Item)Controller_Item).remove_from_HD();
+                ItemController.Remove((CharController.Item)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Programm"))
+            {
+                ((CharController.Programm)Controller_Item).remove_from_HD();
+                ProgrammController.Remove((CharController.Programm)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Munition"))
+            {
+                ((CharController.Munition)Controller_Item).remove_from_HD();
+                MunitionController.Remove((CharController.Munition)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Implantat"))
+            {
+                ((CharController.Implantat)Controller_Item).remove_from_HD();
+                ImplantatController.Remove((CharController.Implantat)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Vorteil"))
+            {
+                ((CharController.Vorteil)Controller_Item).remove_from_HD();
+                VorteilController.Remove((CharController.Vorteil)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Nachteil"))
+            {
+                ((CharController.Nachteil)Controller_Item).remove_from_HD();
+                NachteilController.Remove((CharController.Nachteil)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Connection"))
+            {
+                ConnectionController.Remove((CharController.Connection)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Sin"))
+            {
+                SinController.Remove((CharController.Sin)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Nahkampfwaffe"))
+            {
+                ((CharController.Nahkampfwaffe)Controller_Item).remove_from_HD();
+                NahkampfwaffeController.Remove((CharModel.Nahkampfwaffe)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Fernkampfwaffe"))
+            {
+                ((CharController.Fernkampfwaffe)Controller_Item).remove_from_HD();
+                FernkampfwaffeController.Remove((CharModel.Fernkampfwaffe)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Kommlink"))
+            {
+                ((CharController.Kommlink)Controller_Item).remove_from_HD();
+                KommlinkController.Remove((CharModel.Kommlink)Controller_Item);
+            }
+            else if (Controller_Name.Contains("CyberDeck"))
+            {
+                ((CharController.CyberDeck)Controller_Item).remove_from_HD();
+                CyberDeckController.Remove((CharModel.CyberDeck)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Vehikel"))
+            {
+                ((CharController.Vehikel)Controller_Item).remove_from_HD();
+                VehikelController.Remove((CharModel.Vehikel)Controller_Item);
+            }
+            else if (Controller_Name.Contains("Panzerung"))
+            {
+                ((CharController.Panzerung)Controller_Item).remove_from_HD();
+                PanzerungController.Remove((CharModel.Panzerung)Controller_Item);
+            }
+
+        }
     }
-
-
-
 }

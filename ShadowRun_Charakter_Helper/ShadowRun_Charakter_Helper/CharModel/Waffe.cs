@@ -2,7 +2,7 @@
 {
     public class Waffe : CharModel.Item
     {
-        private double pool;
+        private double pool = 0;
         public double Pool
         {
             get { return pool; }
@@ -17,7 +17,7 @@
         }
 
 
-        private char schadenTyp;
+        private char schadenTyp = ' ';
         public char SchadenTyp
         {
             get { return schadenTyp; }
@@ -31,7 +31,7 @@
             }
         }
 
-        private double pB;
+        private double pB = 0;
         public double PB
         {
             get { return pB; }

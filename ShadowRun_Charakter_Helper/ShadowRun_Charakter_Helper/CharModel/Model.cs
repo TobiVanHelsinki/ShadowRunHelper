@@ -6,7 +6,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Model : INotifyPropertyChanged
     {
-        private int ordnung;
+        private int ordnung = 0;
         public int Ordnung
         {
             get { return ordnung; }
@@ -19,7 +19,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private String bezeichner;
+        private String bezeichner ="";
         public String Bezeichner
         {
             get { return bezeichner; }
@@ -45,7 +45,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double wert { get; set; }
+        private double wert = 0;
         public double Wert
         {
             get { return wert; }
@@ -58,7 +58,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private String zusatz { get; set; }
+        private String zusatz = "";
         public String Zusatz
         {
             get { return zusatz; }
@@ -71,7 +71,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private String notiz { get; set; }
+        private String notiz = "";
         public String Notiz
         {
             get { return notiz; }

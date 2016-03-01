@@ -12,18 +12,18 @@ namespace AppUIBasics.ControlPages
     /// </summary>
     public sealed partial class HD_Wahl : ContentDialog
     {
-        public ShadowRun_Charakter_Helper.Controller.HashDictionary HD;
         public ShadowRun_Charakter_Helper.CharModel.Handlung data;
+        private List<KeyValuePair<System.Int32, DictionaryCharEntry>> HD_List = new List<KeyValuePair<int, DictionaryCharEntry>>();
         int Modus;
+        private int tepmindex;
 
         public HD_Wahl(Handlung data, HashDictionary hD, int modus)
         {
             this.InitializeComponent();
             this.data = data;
-            HD = hD;
-            foreach (var item in HD.Data)
+            foreach (var item in hD.Data)
             {
-                //todo scrollviweer an bildschirmbreite/2 oderso binden
+                HD_List.Add(item);
             }
             Modus = modus;
         }
@@ -35,7 +35,7 @@ namespace AppUIBasics.ControlPages
             {
                 for (int i = 0; i < item.Length; i++)
                 {
-                    tempDic.Add(item.FirstIndex + i + 1, HD[item.FirstIndex + i + 1]);
+                    tempDic.Add(HD_List[item.FirstIndex + i].Key, HD_List[item.FirstIndex + i].Value);
                 }
             }
             if (Modus == 1)
@@ -58,7 +58,9 @@ namespace AppUIBasics.ControlPages
             {
                 foreach (var item in data.Zusammensetzung)
                 {
-                    Zus_ListVIew.SelectRange(new ItemIndexRange(item.Key - 1, 1));
+                    tepmindex= HD_List.FindIndex(x => x.Key==item.Key);
+
+                    Zus_ListVIew.SelectRange(new ItemIndexRange(tepmindex, 1));
                 }
             }
             else if (Modus == 2)
@@ -77,7 +79,7 @@ namespace AppUIBasics.ControlPages
             {
                 for (int i = 0; i < item.Length; i++)
                 {
-                    temp = (KeyValuePair<System.Int32, DictionaryCharEntry>)Zus_ListVIew.SelectedItem;
+                    temp = HD_List[item.FirstIndex + i];
                     if (temp.Value.Typ.Contains("Handlung") || temp.Value.Typ.Contains("error"))
                     {
                         Zus_ListVIew.DeselectRange(new ItemIndexRange(item.FirstIndex + i, 1));

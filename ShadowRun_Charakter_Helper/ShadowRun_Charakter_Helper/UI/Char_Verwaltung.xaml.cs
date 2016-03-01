@@ -44,7 +44,6 @@ namespace ShadowRun_Charakter_Helper
         {
             string id = ((CharSummory)((Button)sender).DataContext).ID;
             Verwaltung.Lösche(id);
-            //todo if to delete == current
         }
 
         private void Click_Löschen_Alles(object sender, RoutedEventArgs e)

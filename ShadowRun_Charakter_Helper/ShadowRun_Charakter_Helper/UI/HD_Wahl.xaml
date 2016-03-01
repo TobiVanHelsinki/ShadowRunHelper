@@ -12,7 +12,7 @@
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     >
     <ScrollViewer Height="500" Width="500">
-        <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind HD.Data}" Grid.Column="1" Grid.Row="5" SelectionMode="Multiple" Loaded="Zus_ListVIew_Loaded" Tapped="Zus_ListVIew_Tapped">
+        <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind HD_List}" Grid.Column="1" Grid.Row="5" SelectionMode="Multiple" Loaded="Zus_ListVIew_Loaded" Tapped="Zus_ListVIew_Tapped">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Name="Zus_ListVIew_Stack">

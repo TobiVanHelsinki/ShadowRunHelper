@@ -22,13 +22,14 @@ namespace ShadowRun_Charakter_Helper.CharController
         {
             DataHasUpdatet(sender);
         }
-
+        /// <summary>
+        /// Wenn das HD geändert wurde, ändert sich auch die Zusammensetzung, diese Änderung wird hier an das kleine HD in der Handlung propagiert und gleichzeitig die NeuBerechung der Werte ausgeführt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void HDChanged(object sender, EventArgs e)
         {
-            // Zusammensetzung aktualisieren
-            // neu berechnen
-            // in sender komplettes HD (HD.Data)
-            // todo ignore if handlung
+            
             double temp = 0;
             try
             {
@@ -36,14 +37,34 @@ namespace ShadowRun_Charakter_Helper.CharController
                 this.Data.Zusammensetzung.Keys.CopyTo(templist, 0);
                 foreach (int i in templist)
                 {
-                    this.Data.Zusammensetzung[i] = ((Controller.HashDictionary)sender)[i];
-                    // ich glaube, hier muss es i-1 sein, scheint aber zu gehen
+                    if (((Controller.HashDictionary)sender)[i].Typ != "Handlung")
+                    {
+                        // ignore if handlung
+                        this.Data.Zusammensetzung[i] = ((Controller.HashDictionary)sender)[i];
+                    }
                     temp += this.Data.Zusammensetzung[i].Wert;
                 }
                 if (this.Data.Wert != temp)
                 {
                     this.Data.Wert = temp;
                 }
+                temp = 0;
+                templist = new int[this.Data.GrenzeZusammensetzung.Count];
+                this.Data.GrenzeZusammensetzung.Keys.CopyTo(templist, 0);
+                foreach (int i in templist)
+                {
+                    if (((Controller.HashDictionary)sender)[i].Typ!="Handlung")
+                    {
+                        // ignore if handlung
+                        this.Data.GrenzeZusammensetzung[i] = ((Controller.HashDictionary)sender)[i];
+                    }
+                    temp += this.Data.GrenzeZusammensetzung[i].Wert;
+                }
+                if (this.Data.Grenze != temp)
+                {
+                    this.Data.Grenze = temp;
+                }
+                temp = 0;
             }
             catch (System.Collections.Generic.KeyNotFoundException)
             {
@@ -53,5 +74,13 @@ namespace ShadowRun_Charakter_Helper.CharController
 
             Debug.WriteLine("This is called when the event fires. - Handlung " + HD_ID + " " + Data.Bezeichner);
         }
+
+
+        ~Handlung()
+        {
+            if (Data!=null){Data.PropertyChanged -= new System.ComponentModel.PropertyChangedEventHandler(DataChanged);}
+
+        }
+
     }
 }

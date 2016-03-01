@@ -32,8 +32,8 @@ namespace ShadowRun_Charakter_Helper
         }
         private void Add(object sender, RoutedEventArgs e)
         {
-            String test = ((String)((Button)sender).Name);
-            ViewModel.Current.Add(test, 0);
+            String Controller_Name = ((String)((Button)sender).Name);
+            ViewModel.Current.Add(Controller_Name, 0);
         }
 
         private async void HandlungEditDialog_Click(object sender, RoutedEventArgs e)
@@ -49,7 +49,6 @@ namespace ShadowRun_Charakter_Helper
             {
                 Edit_Fertigkeit dialog = new Edit_Fertigkeit(((CharController.Fertigkeit)((Button)sender).DataContext).Data, ViewModel.Current.HD);
                 await dialog.ShowAsync();
-                //todo converter für zahlen einbinden in werte 
             }
             else if (Controller_Name.Contains("Attribut"))
             {
@@ -142,75 +141,8 @@ namespace ShadowRun_Charakter_Helper
         private void Del_Click(object sender, RoutedEventArgs e)
         {
             String Controller_Name = ((String)((Button)sender).Name);
-
-            if (Controller_Name.Contains("Handlung"))
-            {
-                ViewModel.Current.HandlungController.Remove(((CharController.Handlung)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Fertigkeit"))
-            {
-                ViewModel.Current.FertigkeitController.Remove(((CharController.Fertigkeit)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Attribut"))
-            {
-                ViewModel.Current.AttributController.Remove(((CharController.Attribut)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Item"))
-            {
-                ViewModel.Current.ItemController.Remove(((CharController.Item)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Programm"))
-            {
-                ViewModel.Current.ProgrammController.Remove(((CharController.Programm)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Munition"))
-            {
-                ViewModel.Current.MunitionController.Remove(((CharController.Munition)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Implantat"))
-            {
-                ViewModel.Current.ImplantatController.Remove(((CharController.Implantat)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Vorteil"))
-            {
-                ViewModel.Current.VorteilController.Remove(((CharController.Vorteil)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Nachteil"))
-            {
-                ViewModel.Current.NachteilController.Remove(((CharController.Nachteil)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Connection"))
-            {
-                ViewModel.Current.ConnectionController.Remove(((CharController.Connection)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Sin"))
-            {
-                ViewModel.Current.SinController.Remove(((CharController.Sin)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Nahkampfwaffe"))
-            {
-                ViewModel.Current.NahkampfwaffeController.remove(((CharModel.Nahkampfwaffe)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Fernkampfwaffe"))
-            {
-                ViewModel.Current.FernkampfwaffeController.remove(((CharModel.Fernkampfwaffe)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Kommlink"))
-            {
-                ViewModel.Current.KommlinkController.remove(((CharModel.Kommlink)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("CyberDeck"))
-            {
-                ViewModel.Current.CyberDeckController.remove(((CharModel.CyberDeck)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Vehikel"))
-            {
-                ViewModel.Current.VehikelController.remove(((CharModel.Vehikel)((Button)sender).DataContext));
-            }
-            else if (Controller_Name.Contains("Panzerung"))
-            {
-                ViewModel.Current.PanzerungController.remove(((CharModel.Panzerung)((Button)sender).DataContext));
-            }
+            object Controller_Item = ((Button)sender).DataContext;
+            ViewModel.Current.Remove(Controller_Name, 0, Controller_Item);
         }
 
 

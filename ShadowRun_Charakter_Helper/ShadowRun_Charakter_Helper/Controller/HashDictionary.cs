@@ -22,14 +22,12 @@ namespace ShadowRun_Charakter_Helper.Controller
         {
             if (Changed != null)
                 Changed(this, e);
-            //todo oder hier nicht propagieren
             Debug.WriteLine("This is OnChanged of HD " + this.Data.ToString());
         }
 
         public void Add(int key, Model.DictionaryCharEntry value)
         {
             Data.Add(key, value);
-            //todo überprüfen, ob obj einen typ in range hat
         }
 
         public void Remove(int key)
@@ -45,8 +43,6 @@ namespace ShadowRun_Charakter_Helper.Controller
             {
                 Data[index] = value;
                 OnChanged(EventArgs.Empty);
-                //todo auf handlung üerprüfen und ggf nicht propagieren
-                //also wenn änderng von der handlung kommt
             }
 
             get

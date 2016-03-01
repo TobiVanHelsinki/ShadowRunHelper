@@ -46,13 +46,7 @@ namespace ShadowRun_Charakter_Helper.IO
             }
         }
 
-        /// <summary>
-        /// Nutzen für ohne Liste
-        /// </summary>
-        public CharVerwaltung()
-        {
-            //todo nur einen konstruktor, den aber mit einem enum zur unterscheidung
-        }
+
         /// <summary>
         /// Nutzen für mit Liste
         /// </summary>
@@ -108,6 +102,7 @@ namespace ShadowRun_Charakter_Helper.IO
             String temp_Alias = "";
             String temp_Char_Typ = "";
             String temp_Karma = "";
+            String temp_Runs = "";
             try
             {
                 temp_Alias = SaveChar.Person.Alias;
@@ -135,8 +130,17 @@ namespace ShadowRun_Charakter_Helper.IO
                 }
             }
             catch (NullReferenceException) { temp_Karma = "$ohne Erfolg$"; }
+            try
+            {
+                temp_Runs = SaveChar.Person.Runs.ToString();
+                if (temp_Runs == "")
+                {
+                    throw new NullReferenceException();
+                }
+            }
+            catch (NullReferenceException) { temp_Runs = "$ohne Erfolg$"; }
 
-            return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + Variablen.DATEIENDUNG;
+            return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + Variablen.DATEIENDUNG_CHAR_2;
 
         }
 
@@ -159,7 +163,7 @@ namespace ShadowRun_Charakter_Helper.IO
         {
             var folderPicker = new Windows.Storage.Pickers.FolderPicker();
             folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
-            folderPicker.FileTypeFilter.Add(Variablen.DATEIENDUNG);
+            folderPicker.FileTypeFilter.Add(Variablen.DATEIENDUNG_CHAR_2);
             //Ordner Auswähler rufen
             StorageFolder CharFolder = await folderPicker.PickSingleFolderAsync();
             Windows.Storage.AccessCache.StorageApplicationPermissions.
@@ -193,7 +197,7 @@ namespace ShadowRun_Charakter_Helper.IO
             var picker = new Windows.Storage.Pickers.FileOpenPicker();
             picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
             picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
-            picker.FileTypeFilter.Add(Variablen.DATEIENDUNG);
+            picker.FileTypeFilter.Add(Variablen.DATEIENDUNG_CHAR_2);
 
             StorageFile file = await picker.PickSingleFileAsync();
             CharHolder temp = await IO.CharIO.Laden(file);

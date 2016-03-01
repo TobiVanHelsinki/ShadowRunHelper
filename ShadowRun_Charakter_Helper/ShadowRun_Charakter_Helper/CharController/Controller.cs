@@ -25,6 +25,11 @@
             {
                 this.HD_ID = HD.getFreeKey();
             }
+            else if (HD.Data.ContainsKey(HD_ID))
+            {
+                this.HD_ID = HD.getFreeKey();
+                System.Diagnostics.Debug.WriteLine("Fehler, es kam zu multiplen HD IDs");
+            }
             add_to_HD();
         }
 
@@ -51,13 +56,10 @@
             HD_Typ = this.GetType().ToString();
             HD_Typ = Ressourcen.TypNamen.GetName_Controller(HD_Typ);
         }
-        
-        /// <summary>
-        /// Aktualisiert den Wert im HD
-        /// </summary>
-        //ToDo schreiben
-        public void Aktualisierungen()
+
+        public void remove()
         {
+            remove_from_HD();
         }
     }
 }

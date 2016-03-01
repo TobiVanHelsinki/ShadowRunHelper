@@ -6,7 +6,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Person : INotifyPropertyChanged
     {
-        private string alias;
+        private string alias = "";
         public string Alias
         {
             get { return alias; }
@@ -19,7 +19,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private string char_Typ;
+        private string char_Typ = "";
         public string Char_Typ
         {
             get { return char_Typ; }
@@ -32,7 +32,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double kontostand;
+        private double kontostand = 0;
         public double Kontostand
         {
             get { return kontostand; }
@@ -45,7 +45,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double karma_Gesamt;
+        private double karma_Gesamt = 0;
         public double Karma_Gesamt
         {
             get { return karma_Gesamt; }
@@ -58,7 +58,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double karma_Aktuell;
+        private double karma_Aktuell = 0;
         public double Karma_Aktuell
         {
             get { return karma_Aktuell; }
@@ -71,7 +71,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double edge_Aktuell;
+        private double edge_Aktuell = 0;
         public double Edge_Aktuell
         {
             get { return edge_Aktuell; }
@@ -84,7 +84,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double edge_Gesamt;
+        private double edge_Gesamt = 0;
         public double Edge_Gesamt
         {
             get { return edge_Gesamt; }
@@ -97,7 +97,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double essenz;
+        private double essenz = 0;
         public double Essenz
         {
             get { return essenz; }
@@ -110,7 +110,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double schaden_K;
+        private double schaden_K = 0;
         public double Schaden_K
         {
             get { return schaden_K; }
@@ -123,7 +123,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double schaden_G;
+        private double schaden_G = 0;
         public double Schaden_G
         {
             get { return schaden_G; }
@@ -136,7 +136,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double schaden_M;
+        private double schaden_M = 0;
         public double Schaden_M
         {
             get { return schaden_M; }
@@ -149,7 +149,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double schaden_K_max;
+        private double schaden_K_max = 0;
         public double Schaden_K_max
         {
             get { return schaden_K_max; }
@@ -162,7 +162,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double schaden_G_max;
+        private double schaden_G_max = 0;
         public double Schaden_G_max
         {
             get { return schaden_G_max; }
@@ -175,7 +175,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double schaden_M_max;
+        private double schaden_M_max = 0;
         public double Schaden_M_max
         {
             get { return schaden_M_max; }
@@ -188,7 +188,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private string notizen;
+        private string notizen = "";
         public string Notizen
         {
             get { return notizen; }
@@ -201,7 +201,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private string metaTyp;
+        private string metaTyp = "";
         public string MetaTyp
         {
             get { return metaTyp; }
@@ -214,7 +214,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private string metaTyp_sub;
+        private string metaTyp_sub = "";
         public string MetaTyp_sub
         {
             get { return metaTyp_sub; }
@@ -227,7 +227,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private string lebesstil;
+        private string lebesstil = "";
         public string Lebesstil
         {
             get { return lebesstil; }
@@ -240,7 +240,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private string geburtsdatum;
+        private string geburtsdatum = "";
         public string Geburtsdatum
         {
             get { return geburtsdatum; }
@@ -253,7 +253,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private DateTime geburtsdatum2;
+        private DateTime geburtsdatum2 = new DateTime();
         public DateTime Geburtsdatum2
         {
             get { return geburtsdatum2; }
@@ -266,7 +266,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private string geschlecht;
+        private string geschlecht = "";
         public string Geschlecht
         {
             get { return geschlecht; }
@@ -279,7 +279,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double größe;
+        private double größe = 0;
         public double Größe
         {
             get { return größe; }
@@ -292,7 +292,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private double gewicht;
+        private double gewicht = 0;
         public double Gewicht
         {
             get { return gewicht; }
@@ -305,7 +305,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private string augenfarbe;
+        private string augenfarbe = "";
         public string Augenfarbe
         {
             get { return augenfarbe; }
@@ -318,7 +318,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private string haarfarbe;
+        private string haarfarbe = "";
         public string Haarfarbe
         {
             get { return haarfarbe; }
@@ -331,7 +331,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private string hautfarbe;
+        private string hautfarbe = "";
         public string Hautfarbe
         {
             get { return hautfarbe; }
@@ -344,7 +344,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
-        private string bild;
+        private string bild = "";
         public string Bild
         {
             get { return bild; }
@@ -358,7 +358,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
-        private string zusammenfassung;
+        private string zusammenfassung = "";
         public string Zusammenfassung
         {
             get { return zusammenfassung; }
@@ -372,7 +372,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
-        private double initiative;
+        private double initiative = 0;
         public double Initiative
         {
             get { return initiative; }
@@ -386,7 +386,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
-        private double runs;
+        private double runs = 0;
         public double Runs
         {
             get { return runs; }

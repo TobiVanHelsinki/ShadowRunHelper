@@ -10,7 +10,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Panzerung : CharModel.Item
     {
-        private double stoß;
+        private double stoß = 0;
         public double Stoß
         {
             get { return stoß; }

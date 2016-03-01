@@ -476,4 +476,7 @@
   <data name="Model_Person_Initiative.Text" xml:space="preserve">
     <value>Initiative</value>
   </data>
+  <data name="Model_Munition_.Text" xml:space="preserve">
+    <value>Munition</value>
+  </data>
 </root>

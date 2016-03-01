@@ -6,7 +6,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
 {
     public class Connection : Person
     {
-        private double wert;
+        private double wert = 0;
         public double Wert
         {
             get { return wert; }
@@ -20,7 +20,7 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
-        private double loyal;
+        private double loyal = 0;
         public double Loyal
         {
             get { return loyal; }
