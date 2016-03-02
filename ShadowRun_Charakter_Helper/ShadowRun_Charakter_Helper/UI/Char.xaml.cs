@@ -12,6 +12,8 @@ namespace ShadowRun_Charakter_Helper
     public sealed partial class Char : Page
     {
         public CharViewModel ViewModel { get; set; }
+        public Windows.System.Display.DisplayRequest Char_DisplayRequest;
+
         public Char()
         {
             InitializeComponent();
@@ -20,8 +22,16 @@ namespace ShadowRun_Charakter_Helper
         {
             ViewModel = (CharViewModel)e.Parameter;
             this.InitializeComponent();
-
+            Char_DisplayRequest = new Windows.System.Display.DisplayRequest();
+            Char_DisplayRequest.RequestActive();
         }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            Char_DisplayRequest.RequestRelease();
+            base.OnNavigatedFrom(e);
+        }
+
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             FrameworkElement element = sender as FrameworkElement;

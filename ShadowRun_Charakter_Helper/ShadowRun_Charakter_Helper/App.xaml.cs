@@ -23,6 +23,9 @@ namespace ShadowRun_Charakter_Helper
     /// </summary>
     sealed partial class App : Application
     {
+       
+
+
         /// <summary>
         /// Initialisiert das Singletonanwendungsobjekt.  Dies ist die erste Zeile von erstelltem Code
         /// und daher das logische Äquivalent von main() bzw. WinMain().
