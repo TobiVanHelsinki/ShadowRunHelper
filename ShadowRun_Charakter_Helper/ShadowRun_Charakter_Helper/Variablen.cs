@@ -20,5 +20,11 @@ namespace ShadowRun_Charakter_Helper
 
         private static PackageVersion version = Package.Current.Id.Version;
         public static string APP_VERSION_NUMBER = "" + version.Build + version.Major + version.Minor + version.Revision;
+
+        public static string LAST_CHAR = "Last_Char";
+
+        public static string CONTAINER_SETTINGS = "Char_Settings";
+
+        public static string CONTAINER_SETTINGS_SAVE_CHAR_ON_EXIT = "SAVE_CHAR_ON_EXIT";
     }
 }

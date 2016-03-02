@@ -23,7 +23,7 @@ namespace ShadowRun_Charakter_Helper
     /// </summary>
     sealed partial class App : Application
     {
-       
+        public CharViewModel ViewModel { get; set; }
 
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace ShadowRun_Charakter_Helper
         /// werden z. B. verwendet, wenn die Anwendung gestartet wird, um eine bestimmte Datei zu öffnen.
         /// </summary>
         /// <param name="e">Details über Startanforderung und -prozess.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 
 #if DEBUG
@@ -58,6 +58,7 @@ namespace ShadowRun_Charakter_Helper
 #endif
 
             Frame rootFrame = Window.Current.Content as Frame;
+            this.ViewModel = new CharViewModel();
 
             // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthält.
             // Nur sicherstellen, dass das Fenster aktiv ist.
@@ -65,12 +66,13 @@ namespace ShadowRun_Charakter_Helper
             {
                 // Frame erstellen, der als Navigationskontext fungiert und zum Parameter der ersten Seite navigieren
                 rootFrame = new Frame();
-
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated || Optionen.SAVE_CHAR_ON_EXIT())
                 {
-                    //TODO: Zustand von zuvor angehaltener Anwendung laden
+                    IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
+                    ViewModel.Current = await VerwaltungTemp.LadenIntern(Variablen.LAST_CHAR);
+                    VerwaltungTemp = null;
                 }
 
                 // Den Frame im aktuellen Fenster platzieren
@@ -82,7 +84,8 @@ namespace ShadowRun_Charakter_Helper
                 // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
                 // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
                 // übergeben werden
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+
+                rootFrame.Navigate(typeof(MainPage), ViewModel);
             }
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();
@@ -105,10 +108,25 @@ namespace ShadowRun_Charakter_Helper
         /// </summary>
         /// <param name="sender">Die Quelle der Anhalteanforderung.</param>
         /// <param name="e">Details zur Anhalteanforderung.</param>
-        private void OnSuspending(object sender, SuspendingEventArgs e)
+        private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: Anwendungszustand speichern und alle Hintergrundaktivitäten beenden
+            if (Optionen.SAVE_CHAR_ON_EXIT())
+            {
+                try
+                {
+                    IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
+                    string savename = await VerwaltungTemp.SpeichernIntern(ViewModel.Current);
+
+                    Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                    localSettings.Values[Variablen.LAST_CHAR] = savename;
+
+                    VerwaltungTemp = null;
+                }
+                catch (Exception)
+                {
+                }
+            }
             deferral.Complete();
         }
     }

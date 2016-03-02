@@ -7,10 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel>
         <TextBlock>hier werden bald Einstellungen sein</TextBlock>
         <TextBlock>App Inhaber: Tobias Pabst</TextBlock>
         <TextBlock>ShadowRun ist eine eingetragene Marke von Pegasus Games</TextBlock>
-        
+        <TextBlock>Optionen</TextBlock>
+        <TextBlock></TextBlock>
+        <ToggleSwitch x:Name="UI_Optionen_SaveOnExit" x:Uid="UI_Optionen_SaveOnExit" IsOn="{Binding Path=Optionen.Save_char_on_exit, Mode=TwoWay}"/>
+
     </StackPanel>
 </Page>

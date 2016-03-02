@@ -22,9 +22,11 @@ namespace ShadowRun_Charakter_Helper
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (CharViewModel)e.Parameter;
-            this.Verwaltung = new IO.CharVerwaltung(1);
+            ProgressRing_Char.IsActive = true;
+            this.Verwaltung = new IO.CharVerwaltung();
+            ProgressRing_Char.IsActive = false;
         }
-
+        
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             FrameworkElement element = sender as FrameworkElement;
@@ -53,14 +55,16 @@ namespace ShadowRun_Charakter_Helper
 
         private async void Click_Laden(object sender, RoutedEventArgs e)
         {
+            ProgressRing_Char.IsActive = true;
             string id = ((CharSummory)((Button)sender).DataContext).ID;
             ViewModel.Current = await Verwaltung.LadenIntern(id);
+            ProgressRing_Char.IsActive = false;
             Frame.Navigate(typeof(Char), ViewModel);
         }
 
-        private void Click_Speichern(object sender, RoutedEventArgs e)
+        private async void Click_Speichern(object sender, RoutedEventArgs e)
         {
-            Verwaltung.SpeichernIntern(ViewModel.Current);
+            await Verwaltung.SpeichernIntern(ViewModel.Current);
 
         }
 
@@ -69,10 +73,10 @@ namespace ShadowRun_Charakter_Helper
             Verwaltung.LadenExtern();
         }
 
-        private void Click_Speichern_Datei(object sender, RoutedEventArgs e)
+        private async void Click_Speichern_Datei(object sender, RoutedEventArgs e)
         {
             string id = ((CharSummory)((Button)sender).DataContext).ID;
-            Verwaltung.SpeichernExtern(id);
+            await Verwaltung.SpeichernExtern(id);
         }
     }
 }

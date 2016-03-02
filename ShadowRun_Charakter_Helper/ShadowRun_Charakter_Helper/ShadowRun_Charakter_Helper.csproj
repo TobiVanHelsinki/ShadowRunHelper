@@ -159,6 +159,8 @@
     <Compile Include="Model\DictionaryCharEntry.cs" />
     <Compile Include="CharModel\Handlung.cs" />
     <Compile Include="Model\CharViewModel.cs" />
+    <Compile Include="Optionen.cs" />
+    <Compile Include="OptionViewModel.cs" />
     <Compile Include="Ressourcen\TypNamen.cs" />
     <Compile Include="UI\Converter\CB.cs" />
     <Compile Include="UI\Converter\Input_Double.cs" />

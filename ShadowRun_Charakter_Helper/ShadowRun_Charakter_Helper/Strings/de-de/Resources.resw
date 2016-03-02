@@ -479,4 +479,7 @@
   <data name="Model_Munition_.Text" xml:space="preserve">
     <value>Munition</value>
   </data>
+  <data name="UI_Optionen_SaveOnExit.Header" xml:space="preserve">
+    <value>Char beim verlassen der App automatisch Speichern? (gilt für manuelles und automatisches beenden)</value>
+  </data>
 </root>

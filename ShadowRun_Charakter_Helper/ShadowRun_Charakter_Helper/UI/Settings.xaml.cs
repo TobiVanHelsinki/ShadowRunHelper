@@ -10,11 +10,11 @@ namespace ShadowRun_Charakter_Helper
     /// </summary>
     public sealed partial class Settings : Page
     {
-        public CharViewModel ViewModel { get; set; }
+        private OptionViewModel Optionen = new OptionViewModel();
+
 
         public Settings()
         {
-            this.ViewModel = new CharViewModel();
             this.InitializeComponent();
         }
     }

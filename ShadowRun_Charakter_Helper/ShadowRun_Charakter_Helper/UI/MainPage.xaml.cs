@@ -1,6 +1,7 @@
 ﻿using ShadowRun_Charakter_Helper.Model;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // Die Vorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 dokumentiert.
 
@@ -16,7 +17,12 @@ namespace ShadowRun_Charakter_Helper
         public MainPage()
         {
             this.InitializeComponent();
-            this.ViewModel = new CharViewModel();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            ViewModel = (CharViewModel)e.Parameter;
             MyFrame.Navigate(typeof(Char), ViewModel);
         }
 
@@ -29,7 +35,7 @@ namespace ShadowRun_Charakter_Helper
         {
             if (Char.IsSelected) { MyFrame.Navigate(typeof(Char), ViewModel); }
             else if (Char_Change.IsSelected) { MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel); }
-            else if (App_Settings.IsSelected) { MyFrame.Navigate(typeof(TestPage), ViewModel); }
+            else if (App_Settings.IsSelected) { MyFrame.Navigate(typeof(Settings)); }
             else
             {
                 MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;

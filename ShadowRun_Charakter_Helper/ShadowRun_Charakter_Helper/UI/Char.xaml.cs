@@ -21,7 +21,6 @@ namespace ShadowRun_Charakter_Helper
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (CharViewModel)e.Parameter;
-            this.InitializeComponent();
             Char_DisplayRequest = new Windows.System.Display.DisplayRequest();
             Char_DisplayRequest.RequestActive();
         }

@@ -51,7 +51,7 @@ namespace ShadowRun_Charakter_Helper.IO
         /// Nutzen für mit Liste
         /// </summary>
         /// <param name="id"></param>
-        public CharVerwaltung(int id)
+        public CharVerwaltung()
         {
             summorys = new ObservableCollection<Model.CharSummory>();
             // List erstellen, entweder aus dem App Container oder aus dem Ordner oder beidem 
@@ -97,7 +97,7 @@ namespace ShadowRun_Charakter_Helper.IO
             System.Diagnostics.Debug.WriteLine("{0} Timer kommt.", DateTime.Now.ToString("h:mm:ss.fff"));
         }
 
-        private static string makeName(CharHolder SaveChar)
+        public string makeName(CharHolder SaveChar)
         {
             String temp_Alias = "";
             String temp_Char_Typ = "";
@@ -201,25 +201,26 @@ namespace ShadowRun_Charakter_Helper.IO
 
             StorageFile file = await picker.PickSingleFileAsync();
             CharHolder temp = await IO.CharIO.Laden(file);
-            this.SpeichernIntern(temp);
+            await this.SpeichernIntern(temp);
         }
 
-        public async void SpeichernIntern(CharHolder SaveChar)
+        public async Task<string> SpeichernIntern(CharHolder SaveChar)
         {
             StorageFolder CharFolder = await getInternFolder();
 
-            Speichern(SaveChar, CharFolder);
+            return await Speichern(SaveChar, CharFolder);
+
         }
 
-        public async void SpeichernExtern(string id)
+        public async Task<string> SpeichernExtern(string id)
         {
             CharHolder SaveChar = await LadenIntern(id);
             StorageFolder CharFolder = await getExternFolder();
 
-            Speichern(SaveChar, CharFolder);
+            return await Speichern(SaveChar, CharFolder);
         }
 
-        private async void Speichern(CharHolder SaveChar, StorageFolder CharFolder)
+        private async Task<string> Speichern(CharHolder SaveChar, StorageFolder CharFolder)
         {
             String filename = makeName(SaveChar);
             StorageFile Save_File = await CharFolder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
@@ -227,6 +228,7 @@ namespace ShadowRun_Charakter_Helper.IO
 
             IO.CharIO.Speichern(SaveChar, Save_File);
             this.Summorys_Aktualisieren();
+            return filename;
         }
 
         public async void Lösche(string id)
