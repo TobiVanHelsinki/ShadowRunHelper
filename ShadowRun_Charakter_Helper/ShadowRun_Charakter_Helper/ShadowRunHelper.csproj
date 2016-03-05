@@ -17,8 +17,8 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>ShadowRun_Charakter_Helper_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>7F62D17A884C3F88E29007D8E51A0B3731AE7E43</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>ShadowRunHelper_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>B5DA1E7EDF0DC839432941899E1F96026F3D5C9D</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
@@ -251,7 +251,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="ShadowRun_Charakter_Helper_TemporaryKey.pfx" />
+    <None Include="ShadowRunHelper_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo1_100x100.png" />

@@ -8,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -68,7 +69,7 @@ namespace ShadowRun_Charakter_Helper
                 rootFrame = new Frame();
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated || Optionen.SAVE_CHAR_ON_EXIT())
+                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated || Optionen.LOAD_CHAR_ON_START() || Optionen.IS_FILE_IN_PROGRESS())
                 {
                     IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
                     try
@@ -80,7 +81,7 @@ namespace ShadowRun_Charakter_Helper
 
                         ViewModel.Current = new Controller.CharHolder();
                     }
-                    
+
                     VerwaltungTemp = null;
                 }
 
@@ -138,5 +139,80 @@ namespace ShadowRun_Charakter_Helper
             }
             deferral.Complete();
         }
+
+        protected override async void OnFileActivated(FileActivatedEventArgs args)
+        {
+            if (args.Files.Count != 1)
+            {
+                System.Diagnostics.Debug.WriteLine("Falscha anzahl an Datein");
+            }
+            else
+            {
+                IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
+                try
+                {
+                    VerwaltungTemp.LadenExtern((Windows.Storage.StorageFile)(args.Files[0]));
+                    Variablen.LAST_CHAR = args.Files[0].Name;
+                    Optionen.IS_FILE_IN_PROGRESS(true);
+                }
+                catch (Exception)
+                {
+
+                    ViewModel.Current = new Controller.CharHolder();
+                }
+
+                var messageDialog = new MessageDialog("Der Char wurde in den Internen Speicher kopiert.");
+                messageDialog.Commands.Add(new UICommand("Close"));
+                await messageDialog.ShowAsync();
+
+                //
+                Frame rootFrame = Window.Current.Content as Frame;
+                this.ViewModel = new CharViewModel();
+
+                // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthält.
+                // Nur sicherstellen, dass das Fenster aktiv ist.
+                if (rootFrame == null)
+                {
+                    // Frame erstellen, der als Navigationskontext fungiert und zum Parameter der ersten Seite navigieren
+                    rootFrame = new Frame();
+                    rootFrame.NavigationFailed += OnNavigationFailed;
+
+                    if (Optionen.LOAD_CHAR_ON_START() || Optionen.IS_FILE_IN_PROGRESS())
+                    {
+                        
+                        try
+                        {
+                            ViewModel.Current = await VerwaltungTemp.LadenIntern(Variablen.LAST_CHAR);
+                        }
+                        catch (Exception)
+                        {
+
+                            ViewModel.Current = new Controller.CharHolder();
+                        }
+
+                        VerwaltungTemp = null;
+                    }
+
+                    // Den Frame im aktuellen Fenster platzieren
+                    Window.Current.Content = rootFrame;
+                }
+
+                if (rootFrame.Content == null)
+                {
+                    // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
+                    // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
+                    // übergeben werden
+
+                    rootFrame.Navigate(typeof(MainPage), ViewModel);
+                }
+                // Sicherstellen, dass das aktuelle Fenster aktiv ist
+                Window.Current.Activate();
+                //
+            }
+
+
     }
+
+    }
+
 }

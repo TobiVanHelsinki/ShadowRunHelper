@@ -140,7 +140,7 @@ namespace ShadowRun_Charakter_Helper.IO
             }
             catch (NullReferenceException) { temp_Runs = "$ohne Erfolg$"; }
 
-            return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + Variablen.DATEIENDUNG_CHAR_2;
+            return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + Variablen.DATEIENDUNG_CHAR;
 
         }
 
@@ -163,7 +163,7 @@ namespace ShadowRun_Charakter_Helper.IO
         {
             var folderPicker = new Windows.Storage.Pickers.FolderPicker();
             folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
-            folderPicker.FileTypeFilter.Add(Variablen.DATEIENDUNG_CHAR_2);
+            folderPicker.FileTypeFilter.Add(Variablen.DATEIENDUNG_CHAR);
             //Ordner Auswähler rufen
             StorageFolder CharFolder = await folderPicker.PickSingleFolderAsync();
             Windows.Storage.AccessCache.StorageApplicationPermissions.
@@ -205,9 +205,15 @@ namespace ShadowRun_Charakter_Helper.IO
             var picker = new Windows.Storage.Pickers.FileOpenPicker();
             picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
             picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
-            picker.FileTypeFilter.Add(Variablen.DATEIENDUNG_CHAR_2);
+            picker.FileTypeFilter.Add(Variablen.DATEIENDUNG_CHAR);
 
             StorageFile file = await picker.PickSingleFileAsync();
+            CharHolder temp = await IO.CharIO.Laden(file);
+            await this.SpeichernIntern(temp);
+        }
+
+        public async void LadenExtern(StorageFile file)
+        {
             CharHolder temp = await IO.CharIO.Laden(file);
             await this.SpeichernIntern(temp);
         }

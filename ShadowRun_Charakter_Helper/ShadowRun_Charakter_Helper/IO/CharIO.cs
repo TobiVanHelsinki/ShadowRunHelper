@@ -14,7 +14,14 @@ namespace ShadowRun_Charakter_Helper.IO
     {
         private static string Char_to_JSON(Controller.CharHolder SaveChar)
         {
-            return JsonConvert.SerializeObject(SaveChar);
+
+            JsonSerializerSettings test = new JsonSerializerSettings();
+            test.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+
+            //return JsonConvert.SerializeObject(SaveChar);
+            return JsonConvert.SerializeObject(SaveChar, test);
+
+                
         }
         private static Controller.CharHolder JSON_to_Char(string fileContent)
         {
@@ -312,7 +319,7 @@ namespace ShadowRun_Charakter_Helper.IO
             ObservableCollection<CharSummory> templist = new ObservableCollection<CharSummory>();
             foreach (var item in Liste)
             {
-                if (item.FileType == Variablen.DATEIENDUNG_CHAR_2)
+                if (item.FileType == Variablen.DATEIENDUNG_CHAR)
                 {
                     templist.Add(new CharSummory(item.Name, item.Name));
                 }
