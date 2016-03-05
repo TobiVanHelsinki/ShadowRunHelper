@@ -1,1 +1,1 @@
-MainPackage=d:\###Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\x86\Release\ShadowRunHelper_1.1.1.0_x86.appx
+MainPackage=d:\###Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\x86\Release\ShadowRunHelper_1.1.2.0_x86.appx
