@@ -1,6 +1,5 @@
-MainPackage=d:\##Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\ARM\Release\ShadowRun_Charakter_Helper_0.4.8.0_ARM.appx
-SymbolPackage=d:\##Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\AppPackages\ShadowRun_Charakter_Helper_0.4.8.0_Test\ShadowRun_Charakter_Helper_0.4.8.0_ARM.appxsym
-ResourcePack=d:\##Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\ARM\Release\ShadowRun_Charakter_Helper_0.4.8.0_scale-100.appx
-ResourcePack=d:\##Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\ARM\Release\ShadowRun_Charakter_Helper_0.4.8.0_scale-125.appx
-ResourcePack=d:\##Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\ARM\Release\ShadowRun_Charakter_Helper_0.4.8.0_scale-150.appx
-ResourcePack=d:\##Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\ARM\Release\ShadowRun_Charakter_Helper_0.4.8.0_scale-400.appx
+MainPackage=d:\###Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\ARM\Release\ShadowRunHelper_1.1.1.0_ARM.appx
+ResourcePack=d:\###Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\ARM\Release\ShadowRunHelper_1.1.1.0_scale-100.appx
+ResourcePack=d:\###Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\ARM\Release\ShadowRunHelper_1.1.1.0_scale-125.appx
+ResourcePack=d:\###Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\ARM\Release\ShadowRunHelper_1.1.1.0_scale-150.appx
+ResourcePack=d:\###Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\ARM\Release\ShadowRunHelper_1.1.1.0_scale-400.appx

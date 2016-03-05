@@ -482,4 +482,7 @@
   <data name="UI_Optionen_SaveOnExit.Header" xml:space="preserve">
     <value>Char beim verlassen der App automatisch Speichern? (gilt für manuelles und automatisches beenden)</value>
   </data>
+  <data name="Model__Kapazität.Text" xml:space="preserve">
+    <value>Kapazität</value>
+  </data>
 </root>

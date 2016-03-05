@@ -20,7 +20,7 @@
     <PackageCertificateKeyFile>ShadowRunHelper_TemporaryKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>B5DA1E7EDF0DC839432941899E1F96026F3D5C9D</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-    <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
   </PropertyGroup>

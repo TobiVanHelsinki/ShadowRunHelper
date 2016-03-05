@@ -21,6 +21,20 @@ namespace ShadowRun_Charakter_Helper.CharModel
                 }
             }
         }
+
+        private double kapazität = 0;
+        public double Kapazität
+        {
+            get { return kapazität; }
+            set
+            {
+                if (value != this.kapazität)
+                {
+                    this.kapazität = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
         public Implantat()
         {
             

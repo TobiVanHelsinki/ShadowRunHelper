@@ -27,6 +27,7 @@ xmlns:Converter="using:ShadowRun_Charakter_Helper.UI.Converter"
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock x:Uid="Model_Bezeichner" Grid.Column="0" Grid.Row="0"/>
         <TextBox Name="Bezeichner" Text="{x:Bind Data.Bezeichner, Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
@@ -40,5 +41,7 @@ xmlns:Converter="using:ShadowRun_Charakter_Helper.UI.Converter"
         <TextBox Name="Notiz" Text="{x:Bind Data.Notiz, Mode=TwoWay}" Grid.Column="1" Grid.Row="4"/>
         <TextBlock x:Uid="Model_Panzerung_Stoß" Grid.Column="0" Grid.Row="5"/>
         <TextBox Name="Stoß" Text="{x:Bind Data.Stoß, Mode=TwoWay, Converter={StaticResource Input_Double}}" Grid.Column="1" Grid.Row="5"/>
+        <TextBlock x:Uid="Model__Kapazität" Grid.Column="0" Grid.Row="6"/>
+        <TextBox Name="Kapazität" Text="{x:Bind Data.Kapazität, Mode=TwoWay, Converter={StaticResource Input_Double}}" Grid.Column="1" Grid.Row="6"/>
     </Grid>
 </ContentDialog>
