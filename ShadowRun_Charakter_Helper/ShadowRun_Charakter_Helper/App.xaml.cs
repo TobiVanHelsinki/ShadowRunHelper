@@ -71,7 +71,16 @@ namespace ShadowRun_Charakter_Helper
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated || Optionen.SAVE_CHAR_ON_EXIT())
                 {
                     IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
-                    ViewModel.Current = await VerwaltungTemp.LadenIntern(Variablen.LAST_CHAR);
+                    try
+                    {
+                        ViewModel.Current = await VerwaltungTemp.LadenIntern(Variablen.LAST_CHAR);
+                    }
+                    catch (Exception)
+                    {
+
+                        ViewModel.Current = new Controller.CharHolder();
+                    }
+                    
                     VerwaltungTemp = null;
                 }
 

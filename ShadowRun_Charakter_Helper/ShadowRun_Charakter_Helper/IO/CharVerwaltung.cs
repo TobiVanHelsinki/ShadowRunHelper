@@ -187,8 +187,16 @@ namespace ShadowRun_Charakter_Helper.IO
             {
                 throw new Exception("");
             }
+            try
+            {
+                CharFile = await CharFolder.GetFileAsync(id);
+            }
+            catch (Exception)
+            {
 
-            CharFile = await CharFolder.GetFileAsync(id);
+                throw new Exception("Konnte Char nciht laden");
+            }
+            
             return await IO.CharIO.Laden(CharFile);
         }
 
