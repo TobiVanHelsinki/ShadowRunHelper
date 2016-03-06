@@ -117,6 +117,7 @@ namespace ShadowRun_Charakter_Helper.IO
                 newChar.ImplantatController[maxID].Data.Aktiv = item.Data.Aktiv;
                 newChar.ImplantatController[maxID].Data.Anzahl = item.Data.Anzahl;
                 newChar.ImplantatController[maxID].Data.Essenz = item.Data.Essenz;
+                newChar.ImplantatController[maxID].Data.Kapazität = item.Data.Kapazität;
                 maxID++;
             }
             maxID = 0;

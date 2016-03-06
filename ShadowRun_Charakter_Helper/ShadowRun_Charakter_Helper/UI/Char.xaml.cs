@@ -34,10 +34,10 @@ namespace ShadowRun_Charakter_Helper
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             FrameworkElement element = sender as FrameworkElement;
-            if (element != null)
-            {
-                FlyoutBase.ShowAttachedFlyout(element);
-            }
+                if (element != null)
+                {
+                    FlyoutBase.ShowAttachedFlyout(element);
+                }
         }
         private void Add(object sender, RoutedEventArgs e)
         {
