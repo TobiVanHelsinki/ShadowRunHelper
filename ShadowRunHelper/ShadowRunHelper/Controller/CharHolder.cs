@@ -245,32 +245,32 @@ namespace ShadowRunHelper.Controller
             }
             else if (Controller_Name.Contains("Nahkampfwaffe"))
             {
-                ((CharController.Nahkampfwaffe)Controller_Item).remove_from_HD();
+              //  ((CharController.Nahkampfwaffe)Controller_Item).remove_from_HD();
                 NahkampfwaffeController.Remove((CharModel.Nahkampfwaffe)Controller_Item);
             }
             else if (Controller_Name.Contains("Fernkampfwaffe"))
             {
-                ((CharController.Fernkampfwaffe)Controller_Item).remove_from_HD();
+               // ((CharController.Fernkampfwaffe)Controller_Item).remove_from_HD();
                 FernkampfwaffeController.Remove((CharModel.Fernkampfwaffe)Controller_Item);
             }
             else if (Controller_Name.Contains("Kommlink"))
             {
-                ((CharController.Kommlink)Controller_Item).remove_from_HD();
+               // ((CharController.Kommlink)Controller_Item).remove_from_HD();
                 KommlinkController.Remove((CharModel.Kommlink)Controller_Item);
             }
             else if (Controller_Name.Contains("CyberDeck"))
             {
-                ((CharController.CyberDeck)Controller_Item).remove_from_HD();
+             //   ((CharController.CyberDeck)Controller_Item).remove_from_HD();
                 CyberDeckController.Remove((CharModel.CyberDeck)Controller_Item);
             }
             else if (Controller_Name.Contains("Vehikel"))
             {
-                ((CharController.Vehikel)Controller_Item).remove_from_HD();
+                //((CharController.Vehikel)Controller_Item).remove_from_HD();
                 VehikelController.Remove((CharModel.Vehikel)Controller_Item);
             }
             else if (Controller_Name.Contains("Panzerung"))
             {
-                ((CharController.Panzerung)Controller_Item).remove_from_HD();
+              //  ((CharController.Panzerung)Controller_Item).remove_from_HD();
                 PanzerungController.Remove((CharModel.Panzerung)Controller_Item);
             }
 
