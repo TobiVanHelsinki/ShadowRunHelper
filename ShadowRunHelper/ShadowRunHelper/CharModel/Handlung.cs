@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ShadowRun_Charakter_Helper.CharModel
+namespace ShadowRunHelper.CharModel
 {
     public class Handlung : CharModel.Model
     {
 
-        private Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> zusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
-        public Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> Zusammensetzung
+        private Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> zusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();
+        public Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> Zusammensetzung
         {
             get { return zusammensetzung;
             }
@@ -21,8 +21,8 @@ namespace ShadowRun_Charakter_Helper.CharModel
             }
         }
 
-        private Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> grenzeZusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
-        public Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry> GrenzeZusammensetzung
+        private Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> grenzeZusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();
+        public Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> GrenzeZusammensetzung
         {
             get
             {
@@ -58,8 +58,8 @@ namespace ShadowRun_Charakter_Helper.CharModel
 
         public Handlung()
         {
-            Zusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
-            GrenzeZusammensetzung = new Dictionary<int, ShadowRun_Charakter_Helper.Model.DictionaryCharEntry>();
+            Zusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();
+            GrenzeZusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();
         }
     }
 }

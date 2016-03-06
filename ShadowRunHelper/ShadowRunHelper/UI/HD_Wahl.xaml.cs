@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
-using ShadowRun_Charakter_Helper.Controller;
-using ShadowRun_Charakter_Helper.Model;
-using ShadowRun_Charakter_Helper.CharModel;
+using ShadowRunHelper.Controller;
+using ShadowRunHelper.Model;
+using ShadowRunHelper.CharModel;
 using Windows.UI.Xaml.Data;
 
 namespace AppUIBasics.ControlPages
@@ -12,7 +12,7 @@ namespace AppUIBasics.ControlPages
     /// </summary>
     public sealed partial class HD_Wahl : ContentDialog
     {
-        public ShadowRun_Charakter_Helper.CharModel.Handlung data;
+        public ShadowRunHelper.CharModel.Handlung data;
         private List<KeyValuePair<System.Int32, DictionaryCharEntry>> HD_List = new List<KeyValuePair<int, DictionaryCharEntry>>();
         int Modus;
         private int tepmindex;

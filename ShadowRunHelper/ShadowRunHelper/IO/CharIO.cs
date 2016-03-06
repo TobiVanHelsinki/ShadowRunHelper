@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
-using ShadowRun_Charakter_Helper.Model;
+using ShadowRunHelper.Model;
 using System.Collections.ObjectModel;
 
-namespace ShadowRun_Charakter_Helper.IO
+namespace ShadowRunHelper.IO
 {
     class CharIO
     {

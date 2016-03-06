@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace ShadowRun_Charakter_Helper.CharController
+namespace ShadowRunHelper.CharController
 {
     public class ControllerSingle<T> : CharController.Controller<T> where T : CharModel.Model, new()
     {

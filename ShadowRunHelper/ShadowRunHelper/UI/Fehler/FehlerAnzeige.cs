@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 
-namespace ShadowRun_Charakter_Helper.UI.Fehler
+namespace ShadowRunHelper.UI.Fehler
 {
     public class FehlerAnzeige
     {

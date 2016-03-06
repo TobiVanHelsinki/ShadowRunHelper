@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
-namespace ShadowRun_Charakter_Helper.CharController
+namespace ShadowRunHelper.CharController
 {
     public class Kommlink : CharController.ControllerMultiItems<CharModel.Kommlink>
     {

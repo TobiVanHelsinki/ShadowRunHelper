@@ -1,5 +1,5 @@
-﻿using ShadowRun_Charakter_Helper.CharModel;
-using ShadowRun_Charakter_Helper.Model;
+﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
-namespace ShadowRun_Charakter_Helper
+namespace ShadowRunHelper
 {
     public sealed partial class TestPage : Page
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace ShadowRun_Charakter_Helper.CharController
+namespace ShadowRunHelper.CharController
 {
     public class Sin
     {

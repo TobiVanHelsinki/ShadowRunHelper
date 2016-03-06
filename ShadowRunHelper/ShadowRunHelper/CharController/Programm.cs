@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ShadowRun_Charakter_Helper.CharController
+namespace ShadowRunHelper.CharController
 {
     public class Programm : CharController.ControllerSingle<CharModel.Programm>
     {

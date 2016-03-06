@@ -1,13 +1,13 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using ShadowRun_Charakter_Helper.Model;
+using ShadowRunHelper.Model;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Primitives;
 using System;
 using AppUIBasics.ControlPages;
-using ShadowRun_Charakter_Helper.UI.Edit;
+using ShadowRunHelper.UI.Edit;
 
-namespace ShadowRun_Charakter_Helper
+namespace ShadowRunHelper
 {
     public sealed partial class Char : Page
     {

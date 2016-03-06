@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ShadowRun_Charakter_Helper
+namespace ShadowRunHelper
 {
     public class OptionViewModel : INotifyPropertyChanged
     {

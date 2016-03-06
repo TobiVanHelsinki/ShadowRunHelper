@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ShadowRun_Charakter_Helper.Controller
+namespace ShadowRunHelper.Controller
 {
     /// <summary>
     /// Hält einen Char mit samst Controlern und Daten

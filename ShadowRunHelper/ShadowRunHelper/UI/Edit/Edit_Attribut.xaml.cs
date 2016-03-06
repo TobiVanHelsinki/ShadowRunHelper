@@ -3,7 +3,7 @@ using Windows.UI.Xaml.Controls;
 
 // Die Elementvorlage "Inhaltsdialog" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
-namespace ShadowRun_Charakter_Helper.UI.Edit
+namespace ShadowRunHelper.UI.Edit
 {
     public sealed partial class Edit_Attribut : ContentDialog
     {

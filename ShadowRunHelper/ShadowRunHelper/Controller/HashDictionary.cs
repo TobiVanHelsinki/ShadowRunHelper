@@ -6,9 +6,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ShadowRun_Charakter_Helper.CharController;
+using ShadowRunHelper.CharController;
 
-namespace ShadowRun_Charakter_Helper.Controller
+namespace ShadowRunHelper.Controller
 {
     public delegate void ChangedEventHandler(object sender, EventArgs e);
 

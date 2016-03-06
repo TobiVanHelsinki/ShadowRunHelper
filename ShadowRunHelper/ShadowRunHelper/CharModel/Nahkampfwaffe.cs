@@ -1,4 +1,4 @@
-﻿namespace ShadowRun_Charakter_Helper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public class Nahkampfwaffe : CharModel.Waffe
     {

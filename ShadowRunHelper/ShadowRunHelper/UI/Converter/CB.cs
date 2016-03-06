@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 
-namespace ShadowRun_Charakter_Helper
+namespace ShadowRunHelper
 {
     // Custom class implements the IValueConverter interface. 
     public class CB : IValueConverter

@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 
-namespace ShadowRun_Charakter_Helper.UI.Converter
+namespace ShadowRunHelper.UI.Converter
 {
     // Custom class implements the IValueConverter interface. 
     public class Input_Double : IValueConverter

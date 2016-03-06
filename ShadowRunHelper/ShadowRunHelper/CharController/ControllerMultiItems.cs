@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 
-namespace ShadowRun_Charakter_Helper.CharController
+namespace ShadowRunHelper.CharController
 {
     public class ControllerMultiItems<T> : CharController.ControllerMulti<T> where T : CharModel.Item, new()
     {

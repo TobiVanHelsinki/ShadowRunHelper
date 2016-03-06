@@ -1,4 +1,4 @@
-﻿using ShadowRun_Charakter_Helper.Model;
+﻿using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace ShadowRun_Charakter_Helper
+namespace ShadowRunHelper
 {
     /// <summary>
     /// Stellt das anwendungsspezifische Verhalten bereit, um die Standardanwendungsklasse zu ergänzen.

@@ -1,11 +1,11 @@
-﻿using ShadowRun_Charakter_Helper.Model;
+﻿using ShadowRunHelper.Model;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 // Die Vorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 dokumentiert.
 
-namespace ShadowRun_Charakter_Helper
+namespace ShadowRunHelper
 {
     /// <summary>
     /// Eine leere Seite, die eigenständig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.

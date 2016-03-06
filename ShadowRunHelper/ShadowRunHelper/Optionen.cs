@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShadowRun_Charakter_Helper
+namespace ShadowRunHelper
 {
     public static class Optionen
     {

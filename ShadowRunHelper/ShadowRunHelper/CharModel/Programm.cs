@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShadowRun_Charakter_Helper.CharModel
+namespace ShadowRunHelper.CharModel
 {
     public class Programm : Item
     {

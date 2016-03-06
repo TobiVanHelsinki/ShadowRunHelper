@@ -1,5 +1,5 @@
 ﻿using System;
-namespace ShadowRun_Charakter_Helper.CharController
+namespace ShadowRunHelper.CharController
 {
     public class Attribut : CharController.ControllerSingle<CharModel.Attribut>
     {

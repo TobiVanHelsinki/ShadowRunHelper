@@ -1,4 +1,4 @@
-﻿using ShadowRun_Charakter_Helper.Controller;
+﻿using ShadowRunHelper.Controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShadowRun_Charakter_Helper.Model
+namespace ShadowRunHelper.Model
 {
     public class CharViewModel : INotifyPropertyChanged
     {

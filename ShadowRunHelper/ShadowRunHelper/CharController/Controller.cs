@@ -1,4 +1,4 @@
-﻿namespace ShadowRun_Charakter_Helper.CharController
+﻿namespace ShadowRunHelper.CharController
 {
     public class Controller<T> where T : CharModel.Model, new()
     {

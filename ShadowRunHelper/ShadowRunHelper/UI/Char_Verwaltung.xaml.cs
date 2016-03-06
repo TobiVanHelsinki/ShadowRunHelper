@@ -1,11 +1,11 @@
-﻿using System;
-using ShadowRun_Charakter_Helper.Model;
+﻿using Windows.System;
+using ShadowRunHelper.Model;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Primitives;
 
-namespace ShadowRun_Charakter_Helper
+namespace ShadowRunHelper
 {
     /// <summary>
     /// Eine leere Seite, die eigenständig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.

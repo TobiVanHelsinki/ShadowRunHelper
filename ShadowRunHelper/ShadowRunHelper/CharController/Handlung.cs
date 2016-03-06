@@ -1,7 +1,7 @@
-﻿using ShadowRun_Charakter_Helper.UI.Fehler;
+﻿using ShadowRunHelper.UI.Fehler;
 using System;
 using System.Diagnostics;
-namespace ShadowRun_Charakter_Helper.CharController
+namespace ShadowRunHelper.CharController
 {
     public class Handlung : CharController.ControllerSingle<CharModel.Handlung>
     {
@@ -14,7 +14,7 @@ namespace ShadowRun_Charakter_Helper.CharController
         {
             this.HD_ID = hD_ID;
             this.setHD(hD);
-            HD.Changed += new ShadowRun_Charakter_Helper.Controller.ChangedEventHandler(HDChanged);
+            HD.Changed += new ShadowRunHelper.Controller.ChangedEventHandler(HDChanged);
             Data.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(DataChanged);
         }
 

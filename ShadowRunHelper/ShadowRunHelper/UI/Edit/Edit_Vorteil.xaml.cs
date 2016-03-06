@@ -1,6 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
 
-namespace ShadowRun_Charakter_Helper.UI.Edit
+namespace ShadowRunHelper.UI.Edit
 {
     public sealed partial class Edit_Vorteil : ContentDialog
     {

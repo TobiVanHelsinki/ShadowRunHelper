@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ShadowRun_Charakter_Helper.Model
+namespace ShadowRunHelper.Model
 {
 
     public class DictionaryCharEntry : INotifyPropertyChanged

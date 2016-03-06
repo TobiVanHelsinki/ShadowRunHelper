@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShadowRun_Charakter_Helper.CharModel
+namespace ShadowRunHelper.CharModel
 {
     public class Kommlink : CharModel.Item
     {

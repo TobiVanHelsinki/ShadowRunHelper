@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 
-namespace ShadowRun_Charakter_Helper
+namespace ShadowRunHelper
 {
     public enum FolderMode
     {

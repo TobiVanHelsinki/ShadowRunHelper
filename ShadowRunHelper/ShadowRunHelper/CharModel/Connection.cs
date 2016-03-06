@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ShadowRun_Charakter_Helper.CharModel
+namespace ShadowRunHelper.CharModel
 {
     public class Connection : Person
     {

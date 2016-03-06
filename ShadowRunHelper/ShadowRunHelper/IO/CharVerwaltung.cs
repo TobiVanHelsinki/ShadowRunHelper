@@ -1,4 +1,4 @@
-﻿using ShadowRun_Charakter_Helper.Controller;
+﻿using ShadowRunHelper.Controller;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Popups;
 
-namespace ShadowRun_Charakter_Helper.IO
+namespace ShadowRunHelper.IO
 {
     class CharVerwaltung : INotifyPropertyChanged
     {
