@@ -1,0 +1,38 @@
+﻿<ContentDialog
+    x:Class="ShadowRun_Charakter_Helper.UI.Edit.Edit_Connection"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ShadowRun_Charakter_Helper.UI.Edit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Converter="using:ShadowRun_Charakter_Helper.UI.Converter"
+    mc:Ignorable="d"
+    Title="{x:Bind Data.Alias, Mode=TwoWay}"
+    PrimaryButtonText="Fertig"  
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    >
+    <ContentDialog.Resources>
+        <Converter:Input_Double x:Key="Input_Double"/>
+    </ContentDialog.Resources>
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Uid="Model_Person_Alias" Grid.Column="0" Grid.Row="0"/>
+        <TextBox Name="Alias" Text="{x:Bind Data.Alias, Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
+        <TextBlock x:Uid="Model_Wert" Grid.Column="0" Grid.Row="1"/>
+        <TextBox Name="Wert" Text="{x:Bind Data.Wert, Converter={StaticResource Input_Double}, Mode=TwoWay}" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock x:Uid="Model_Loyal" Grid.Column="0" Grid.Row="2"/>
+        <TextBox Name="Loyal" Text="{x:Bind Data.Loyal, Mode=TwoWay}" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock x:Uid="Model_Person_Notizen" Grid.Column="0" Grid.Row="3"/>
+        <TextBox Name="Notizen" Text="{x:Bind Data.Notizen, Mode=TwoWay}" Grid.Column="1" Grid.Row="3"/>
+    </Grid>
+</ContentDialog>

@@ -1,2 +1,0 @@
-MainPackage=d:\##Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\bin\x86\Release\ShadowRun_Charakter_Helper_0.4.8.0_x86.appx
-SymbolPackage=d:\##Coden\SR_Char_Helper\ShadowRun_Charakter_Helper\ShadowRun_Charakter_Helper\AppPackages\ShadowRun_Charakter_Helper_0.4.8.0_Test\ShadowRun_Charakter_Helper_0.4.8.0_x86.appxsym

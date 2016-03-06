@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{E06A5E09-D625-4773-86F0-9FC1EE974B69}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShadowRun_Charakter_Helper</RootNamespace>
+    <AssemblyName>ShadowRun_Charakter_Helper</AssemblyName>
+    <DefaultLanguage>de-de</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>ShadowRunHelper_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>B5DA1E7EDF0DC839432941899E1F96026F3D5C9D</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Dok\ClassDiagram5.cd" />
+    <None Include="Dok\ClassDiagram1.cd" />
+    <None Include="Dok\ClassDiagram2.cd" />
+    <None Include="Dok\ClassDiagram3.cd" />
+    <None Include="Dok\ClassDiagram4.cd" />
+    <None Include="project.json" />
+    <PRIResource Include="Strings\de-de\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CharController\Connection.cs" />
+    <Compile Include="CharController\Vehikel.cs" />
+    <Compile Include="CharController\Sin.cs" />
+    <Compile Include="CharController\Nachteil.cs" />
+    <Compile Include="CharController\Vorteil.cs" />
+    <Compile Include="CharController\Eigenschaft.cs" />
+    <Compile Include="CharController\Implantat.cs" />
+    <Compile Include="CharController\Programm.cs" />
+    <Compile Include="CharController\Munition.cs" />
+    <Compile Include="CharController\Kommlink.cs" />
+    <Compile Include="CharController\Fernkampfwaffe.cs" />
+    <Compile Include="CharController\Nahkampfwaffe.cs" />
+    <Compile Include="CharController\Item.cs" />
+    <Compile Include="CharController\ControllerMultiItems.cs" />
+    <Compile Include="CharController\ControllerSingle.cs" />
+    <Compile Include="CharController\ControllerMulti.cs" />
+    <Compile Include="CharController\CyberDeck.cs" />
+    <Compile Include="CharController\Controller.cs" />
+    <Compile Include="CharController\Attribut.cs" />
+    <Compile Include="CharController\Fertigkeit.cs" />
+    <Compile Include="CharController\Handlung.cs" />
+    <Compile Include="CharModel\CyberDeck.cs" />
+    <Compile Include="CharModel\Attribut.cs" />
+    <Compile Include="CharModel\Connection.cs" />
+    <Compile Include="CharModel\Person.cs" />
+    <Compile Include="CharModel\Sin.cs" />
+    <Compile Include="CharModel\Vorteil.cs" />
+    <Compile Include="CharModel\Nachteil.cs" />
+    <Compile Include="CharModel\Fernkampfwaffe.cs" />
+    <Compile Include="CharModel\Eigenschaft.cs" />
+    <Compile Include="CharModel\Implantat.cs" />
+    <Compile Include="CharModel\Programm.cs" />
+    <Compile Include="CharModel\Munition.cs" />
+    <Compile Include="CharModel\Vehikel.cs" />
+    <Compile Include="CharModel\Kommlink.cs" />
+    <Compile Include="CharModel\Nahkampfwaffe.cs" />
+    <Compile Include="CharModel\Waffe.cs" />
+    <Compile Include="IO\CharVerwaltung.cs" />
+    <Compile Include="Controller\HashDictionary.cs" />
+    <Compile Include="IO\CharIO.cs" />
+    <Compile Include="CharModel\Panzerung.cs" />
+    <Compile Include="CharModel\Item.cs" />
+    <Compile Include="CharController\Panzerung.cs" />
+    <Compile Include="Controller\CharHolder.cs" />
+    <Compile Include="CharModel\Model.cs" />
+    <Compile Include="CharModel\Fertigkeit.cs" />
+    <Compile Include="Model\DictionaryCharEntry.cs" />
+    <Compile Include="CharModel\Handlung.cs" />
+    <Compile Include="Model\CharViewModel.cs" />
+    <Compile Include="Optionen.cs" />
+    <Compile Include="OptionViewModel.cs" />
+    <Compile Include="Ressourcen\TypNamen.cs" />
+    <Compile Include="UI\Converter\CB.cs" />
+    <Compile Include="UI\Converter\Input_Double.cs" />
+    <Compile Include="UI\Edit\Edit_Attribut.xaml.cs">
+      <DependentUpon>Edit_Attribut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Connection.xaml.cs">
+      <DependentUpon>Edit_Connection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_CyberDeck.xaml.cs">
+      <DependentUpon>Edit_CyberDeck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Fernkampfwaffe.xaml.cs">
+      <DependentUpon>Edit_Fernkampfwaffe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Fertigkeit.xaml.cs">
+      <DependentUpon>Edit_Fertigkeit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Implantat.xaml.cs">
+      <DependentUpon>Edit_Implantat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Item.xaml.cs">
+      <DependentUpon>Edit_Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Kommlink.xaml.cs">
+      <DependentUpon>Edit_Kommlink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Munition.xaml.cs">
+      <DependentUpon>Edit_Munition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Nachteil.xaml.cs">
+      <DependentUpon>Edit_Nachteil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Nahkampfwaffe.xaml.cs">
+      <DependentUpon>Edit_Nahkampfwaffe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Panzerung.xaml.cs">
+      <DependentUpon>Edit_Panzerung.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Person2.xaml.cs">
+      <DependentUpon>Edit_Person2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Person.xaml.cs">
+      <DependentUpon>Edit_Person.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Programm.xaml.cs">
+      <DependentUpon>Edit_Programm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Vehikel.xaml.cs">
+      <DependentUpon>Edit_Vehikel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Vorteil.xaml.cs">
+      <DependentUpon>Edit_Vorteil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Sin.xaml.cs">
+      <DependentUpon>Edit_Sin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fehler\FehlerAnzeige.cs" />
+    <Compile Include="UI\HD_Wahl.xaml.cs">
+      <DependentUpon>HD_Wahl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Edit\Edit_Handlung.xaml.cs">
+      <DependentUpon>Edit_Handlung.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Char.xaml.cs">
+      <DependentUpon>Char.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Char_Verwaltung.xaml.cs">
+      <DependentUpon>Char_Verwaltung.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CharSummory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Parts\TabHeader.xaml.cs">
+      <DependentUpon>TabHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Variablen.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="ShadowRunHelper_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Logo1_100x100.png" />
+    <Content Include="Assets\Logo1_1240x1240.scale-100.png" />
+    <Content Include="Assets\Logo1_1240x1240.scale-200.png" />
+    <Content Include="Assets\Logo1_1240x1240.scale-400.png" />
+    <Content Include="Assets\Logo1_1240x600.scale-100.png" />
+    <Content Include="Assets\Logo1_1240x600.scale-200.png" />
+    <Content Include="Assets\Logo1_1240x600.scale-400.png" />
+    <Content Include="Assets\Logo1_142x142png.png" />
+    <Content Include="Assets\Logo1_150x150.png" />
+    <Content Include="Assets\Logo1_176x176.png" />
+    <Content Include="Assets\Logo1_200x200.png" />
+    <Content Include="Assets\Logo1_2480x1200.scale-200.png" />
+    <Content Include="Assets\Logo1_2480x1200.scale-400.png" />
+    <Content Include="Assets\Logo1_2500x2500.scale-400.png" />
+    <Content Include="Assets\Logo1_284x284.scale-100.png" />
+    <Content Include="Assets\Logo1_284x284.scale-200.png" />
+    <Content Include="Assets\Logo1_284x284.scale-400.png" />
+    <Content Include="Assets\Logo1_300x300.png" />
+    <Content Include="Assets\Logo1_310x150.png" />
+    <Content Include="Assets\Logo1_310x310.png" />
+    <Content Include="Assets\Logo1_44x44.png" />
+    <Content Include="Assets\Logo1_50x50.png" />
+    <Content Include="Assets\Logo1_600x600.scale-100.png" />
+    <Content Include="Assets\Logo1_600x600.scale-200.png" />
+    <Content Include="Assets\Logo1_600x600.scale-400.png" />
+    <Content Include="Assets\Logo1_620x300.png" />
+    <Content Include="Assets\Logo1_620x620.png" />
+    <Content Include="Assets\Logo1_63x63.png" />
+    <Content Include="Assets\Logo1_71x71.png" />
+    <Content Include="Assets\Logo1_75x75.png" />
+    <Content Include="Assets\Logo1_88x88.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="UI\Edit\Edit_Attribut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Connection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_CyberDeck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Fernkampfwaffe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Fertigkeit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Implantat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Item.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Kommlink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Munition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Nachteil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Nahkampfwaffe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Panzerung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Person2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Edit\Edit_Person.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Programm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Vehikel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Vorteil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Edit\Edit_Sin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\HD_Wahl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Edit\Edit_Handlung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Ressourcen\Dictionary_XAML_Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Char.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Char_Verwaltung.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Parts\SplitViewStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Parts\TabHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\TestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
