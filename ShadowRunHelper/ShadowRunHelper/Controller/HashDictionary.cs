@@ -77,5 +77,27 @@ namespace ShadowRunHelper.Controller
 
             return temp;
         }
+
+        public int getFreeMaxKey()
+        {
+            int o_ntemp = int.MaxValue;
+            try
+            {
+                while (Data.Keys.Contains(o_ntemp))
+                {
+                    o_ntemp--;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Konnte keinen neuen Key aus dem Dictionary erhalten");
+            }
+            if (o_ntemp == 0)
+            {
+                o_ntemp = int.MaxValue; // da 0 als Zahl nicht vergeben wird
+            }
+
+            return o_ntemp;
+        }
     }
 }

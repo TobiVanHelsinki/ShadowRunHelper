@@ -11,6 +11,42 @@ namespace ShadowRunHelper.Controller
     /// </summary>
     public class CharHolder
     {
+        /// <summary>
+        /// <paramref name="Alter Eintrag"/>
+        /// <paramref name="Neuer Eintrag"/>
+        /// </summary>
+        private Dictionary<int, int> AlteHDEntrys { get; set; }
+        // noch ein event einbauen, damit fehler nach hier oben gegeben wreden können
+        // außerdem eine klasse für dinge wie kö und geist limit machen
+        public void Probleme_Lösen()
+        {
+            foreach (var itemFehlerEintrag in AlteHDEntrys)
+            {
+                foreach (var itemHandlung in HandlungController)
+                {
+                    foreach (var itemZusammensetzung in itemHandlung.Data.Zusammensetzung)
+                    {
+                        if (itemZusammensetzung.Key == itemFehlerEintrag.Key)
+                        {
+                            Model.DictionaryCharEntry Value = itemZusammensetzung.Value;
+                            itemHandlung.Data.Zusammensetzung.Remove(itemFehlerEintrag.Key);
+                            itemHandlung.Data.Zusammensetzung.Add(itemFehlerEintrag.Value, Value);
+                        }
+                    }
+                    foreach (var itemZusammensetzungGrenze in itemHandlung.Data.GrenzeZusammensetzung)
+                    {
+                        if (itemZusammensetzungGrenze.Key == itemFehlerEintrag.Key)
+                        {
+                            Model.DictionaryCharEntry Value = itemZusammensetzungGrenze.Value;
+                            itemHandlung.Data.Zusammensetzung.Remove(itemFehlerEintrag.Key);
+                            itemHandlung.Data.Zusammensetzung.Add(itemFehlerEintrag.Value, Value);
+                        }
+                    }
+                }
+            }
+        }
+
+
         public HashDictionary HD = new HashDictionary();
         public string APP_VERSION_NUMBER = Variablen.APP_VERSION_NUMBER;
 
@@ -62,6 +98,8 @@ namespace ShadowRunHelper.Controller
             PanzerungController = new CharController.Panzerung(HD, 0);
 
             Person = new CharModel.Person();
+
+            Probleme_Lösen();
         }
 
         /// <summary>
