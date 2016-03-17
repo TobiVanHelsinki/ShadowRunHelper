@@ -11,16 +11,16 @@ namespace ShadowRunHelper.Controller
     /// </summary>
     public class CharHolder
     {
-        /// <summary>
-        /// <paramref name="Alter Eintrag"/>
-        /// <paramref name="Neuer Eintrag"/>
-        /// </summary>
-        private Dictionary<int, int> AlteHDEntrys { get; set; }
+        TSystem TSystem;
+
+
+        
         // noch ein event einbauen, damit fehler nach hier oben gegeben wreden können
         // außerdem eine klasse für dinge wie kö und geist limit machen
-        public void Probleme_Lösen()
+        private void Probleme_Lösen(object sender, EventArgs e)
         {
-            foreach (var itemFehlerEintrag in AlteHDEntrys)
+            System.Diagnostics.Debug.WriteLine("Probleme_Lösen");
+            foreach (var itemFehlerEintrag in HD.AlteHDEntrys)
             {
                 foreach (var itemHandlung in HandlungController)
                 {
@@ -44,6 +44,9 @@ namespace ShadowRunHelper.Controller
                     }
                 }
             }
+            //TODO evtl. prüfen, ob alles geklappt hat
+            HD.AlteHDEntrys.Clear();
+            HD.Toggle -= new HDlockedHandler(Probleme_Lösen);
         }
 
 
@@ -76,8 +79,10 @@ namespace ShadowRunHelper.Controller
         /// </summary>
         public CharHolder()
         {
+            TSystem = new TSystem();
+            System.Diagnostics.Debug.WriteLine("CharHolder(): Probleme_Lösen Registrieren");
+            HD.Toggle += new HDlockedHandler(Probleme_Lösen);
 
-            HandlungController = new ObservableCollection<CharController.Handlung>();
             HandlungController = new ObservableCollection<CharController.Handlung>();
             FertigkeitController = new ObservableCollection<CharController.Fertigkeit>();
             AttributController = new ObservableCollection<CharController.Attribut>();
@@ -99,7 +104,12 @@ namespace ShadowRunHelper.Controller
 
             Person = new CharModel.Person();
 
-            Probleme_Lösen();
+            
+        }
+
+        private void HD_Toggle(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -114,6 +124,10 @@ namespace ShadowRunHelper.Controller
                         int panzerung
             )
         {
+            TSystem = new TSystem();
+            System.Diagnostics.Debug.WriteLine("CharHolder(): Probleme_Lösen Registrieren");
+            HD.Toggle += new HDlockedHandler(Probleme_Lösen);
+
             HandlungController = new ObservableCollection<CharController.Handlung>();
             HandlungController = new ObservableCollection<CharController.Handlung>();
             FertigkeitController = new ObservableCollection<CharController.Fertigkeit>();
@@ -133,6 +147,8 @@ namespace ShadowRunHelper.Controller
             CyberDeckController = new CharController.CyberDeck(HD, cyberdeck);
             VehikelController = new CharController.Vehikel(HD, vehikel);
             PanzerungController = new CharController.Panzerung(HD, panzerung);
+
+            Person = new CharModel.Person();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

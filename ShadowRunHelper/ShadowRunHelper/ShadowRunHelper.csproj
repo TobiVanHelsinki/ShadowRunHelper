@@ -147,6 +147,8 @@
     <Compile Include="CharModel\Kommlink.cs" />
     <Compile Include="CharModel\Nahkampfwaffe.cs" />
     <Compile Include="CharModel\Waffe.cs" />
+    <Compile Include="Controller\Error.cs" />
+    <Compile Include="Controller\TSystem.cs" />
     <Compile Include="IO\CharVerwaltung.cs" />
     <Compile Include="Controller\HashDictionary.cs" />
     <Compile Include="IO\CharIO.cs" />

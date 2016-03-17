@@ -59,7 +59,6 @@ namespace ShadowRunHelper
 #endif
 
             Frame rootFrame = Window.Current.Content as Frame;
-            this.ViewModel = new CharViewModel();
 
             // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthält.
             // Nur sicherstellen, dass das Fenster aktiv ist.
@@ -69,22 +68,20 @@ namespace ShadowRunHelper
                 rootFrame = new Frame();
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated || Optionen.LOAD_CHAR_ON_START() || Optionen.IS_FILE_IN_PROGRESS())
+                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated || Optionen.LOAD_CHAR_ON_START || Optionen.IS_FILE_IN_PROGRESS)
                 {
                     IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
                     try
                     {
-                        ViewModel.Current = await VerwaltungTemp.LadenIntern(Variablen.LAST_CHAR);
+                        ViewModel = new CharViewModel(await VerwaltungTemp.LadenIntern(Optionen.LAST_CHAR_IS));
+                        //ViewModel.Current = await VerwaltungTemp.LadenIntern(Optionen.LAST_CHAR_IS);
                     }
                     catch (Exception)
                     {
-
-                        ViewModel.Current = new Controller.CharHolder();
+                        ViewModel = new CharViewModel();
                     }
-
                     VerwaltungTemp = null;
                 }
-
                 // Den Frame im aktuellen Fenster platzieren
                 Window.Current.Content = rootFrame;
             }
@@ -95,7 +92,13 @@ namespace ShadowRunHelper
                 // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
                 // übergeben werden
 
+                if (ViewModel == null)
+                {
+                    ViewModel = new CharViewModel();
+                }
                 rootFrame.Navigate(typeof(MainPage), ViewModel);
+               
+               
             }
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();
@@ -121,7 +124,7 @@ namespace ShadowRunHelper
         private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            if (Optionen.SAVE_CHAR_ON_EXIT())
+            if (Optionen.SAVE_CHAR_ON_EXIT)
             {
                 try
                 {
@@ -129,7 +132,8 @@ namespace ShadowRunHelper
                     string savename = await VerwaltungTemp.SpeichernIntern(ViewModel.Current);
 
                     Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    localSettings.Values[Variablen.LAST_CHAR] = savename;
+                    Optionen.LAST_CHAR_IS = savename;
+                    
 
                     VerwaltungTemp = null;
                 }
@@ -140,78 +144,78 @@ namespace ShadowRunHelper
             deferral.Complete();
         }
 
-        protected override async void OnFileActivated(FileActivatedEventArgs args)
-        {
-            if (args.Files.Count != 1)
-            {
-                System.Diagnostics.Debug.WriteLine("Falscha anzahl an Datein");
-            }
-            else
-            {
-                IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
-                try
-                {
-                    VerwaltungTemp.LadenExtern((Windows.Storage.StorageFile)(args.Files[0]));
-                    Variablen.LAST_CHAR = args.Files[0].Name;
-                    Optionen.IS_FILE_IN_PROGRESS(true);
-                }
-                catch (Exception)
-                {
+    //    protected override async void OnFileActivated(FileActivatedEventArgs args)
+    //    {
+    //        if (args.Files.Count != 1)
+    //        {
+    //            System.Diagnostics.Debug.WriteLine("Falscha anzahl an Datein");
+    //        }
+    //        else
+    //        {
+    //            IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
+    //            try
+    //            {
+    //                VerwaltungTemp.LadenExtern((Windows.Storage.StorageFile)(args.Files[0]));
+    //                Variablen.LAST_CHAR = args.Files[0].Name;
+    //                Optionen.IS_FILE_IN_PROGRESS(true);
+    //            }
+    //            catch (Exception)
+    //            {
 
-                    ViewModel.Current = new Controller.CharHolder();
-                }
+    //                ViewModel.Current = new Controller.CharHolder();
+    //            }
 
-                var messageDialog = new MessageDialog("Der Char wurde in den Internen Speicher kopiert.");
-                messageDialog.Commands.Add(new UICommand("Close"));
-                await messageDialog.ShowAsync();
+    //            var messageDialog = new MessageDialog("Der Char wurde in den Internen Speicher kopiert.");
+    //            messageDialog.Commands.Add(new UICommand("Close"));
+    //            await messageDialog.ShowAsync();
 
-                //
-                Frame rootFrame = Window.Current.Content as Frame;
-                this.ViewModel = new CharViewModel();
+    //            //
+    //            Frame rootFrame = Window.Current.Content as Frame;
+    //            this.ViewModel = new CharViewModel();
 
-                // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthält.
-                // Nur sicherstellen, dass das Fenster aktiv ist.
-                if (rootFrame == null)
-                {
-                    // Frame erstellen, der als Navigationskontext fungiert und zum Parameter der ersten Seite navigieren
-                    rootFrame = new Frame();
-                    rootFrame.NavigationFailed += OnNavigationFailed;
+    //            // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthält.
+    //            // Nur sicherstellen, dass das Fenster aktiv ist.
+    //            if (rootFrame == null)
+    //            {
+    //                // Frame erstellen, der als Navigationskontext fungiert und zum Parameter der ersten Seite navigieren
+    //                rootFrame = new Frame();
+    //                rootFrame.NavigationFailed += OnNavigationFailed;
 
-                    if (Optionen.LOAD_CHAR_ON_START() || Optionen.IS_FILE_IN_PROGRESS())
-                    {
+    //                if (Optionen.LOAD_CHAR_ON_START() || Optionen.IS_FILE_IN_PROGRESS())
+    //                {
                         
-                        try
-                        {
-                            ViewModel.Current = await VerwaltungTemp.LadenIntern(Variablen.LAST_CHAR);
-                        }
-                        catch (Exception)
-                        {
+    //                    try
+    //                    {
+    //                        ViewModel.Current = await VerwaltungTemp.LadenIntern(Variablen.LAST_CHAR);
+    //                    }
+    //                    catch (Exception)
+    //                    {
 
-                            ViewModel.Current = new Controller.CharHolder();
-                        }
+    //                        ViewModel.Current = new Controller.CharHolder();
+    //                    }
 
-                        VerwaltungTemp = null;
-                    }
+    //                    VerwaltungTemp = null;
+    //                }
 
-                    // Den Frame im aktuellen Fenster platzieren
-                    Window.Current.Content = rootFrame;
-                }
+    //                // Den Frame im aktuellen Fenster platzieren
+    //                Window.Current.Content = rootFrame;
+    //            }
 
-                if (rootFrame.Content == null)
-                {
-                    // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
-                    // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
-                    // übergeben werden
+    //            if (rootFrame.Content == null)
+    //            {
+    //                // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
+    //                // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
+    //                // übergeben werden
 
-                    rootFrame.Navigate(typeof(MainPage), ViewModel);
-                }
-                // Sicherstellen, dass das aktuelle Fenster aktiv ist
-                Window.Current.Activate();
-                //
-            }
+    //                rootFrame.Navigate(typeof(MainPage), ViewModel);
+    //            }
+    //            // Sicherstellen, dass das aktuelle Fenster aktiv ist
+    //            Window.Current.Activate();
+    //            //
+    //        }
 
 
-    }
+    //}
 
     }
 

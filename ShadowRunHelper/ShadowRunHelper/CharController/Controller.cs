@@ -1,4 +1,6 @@
-﻿namespace ShadowRunHelper.CharController
+﻿using System;
+
+namespace ShadowRunHelper.CharController
 {
     public class Controller<T> where T : CharModel.Model, new()
     {
@@ -10,6 +12,8 @@
         protected string HD_Notiz = "";
 
         public Controller.HashDictionary HD;
+
+   //     public event EventHandler OnHDError;
 
         /// <summary>
         /// Gibt dem Controller DAS HashDictionary \n 
@@ -27,22 +31,35 @@
             }
             else if (HD.Data.ContainsKey(HD_ID))
             {
-                int o_nOldID = HD_ID;
-                int o_nNewID = HD.getFreeMaxKey();
-                this.HD_ID = o_nNewID;
-
-                //todo altes speichern und benachrichtigen
-                //beim speichern/laden brauchen auch multi-c eine ID
-                //beim init bekommen sie zwar eine neue zugewiesen, aber die wird dann überschrieben
-                // so hat schonmal jeder seine ID
-
-                //mit einem spezialergebnis beide werte nach oben geben nach oben geben
-
-                // dort werden die paare in einer list gesammelt
-
-                System.Diagnostics.Debug.WriteLine("Fehler, es kam zu multiplen HD IDs");
+                Error_Occured();
             }
             add_to_HD();
+        }
+
+        protected void Error_Occured()
+        {
+            int o_nOldID = HD_ID;
+            int o_nNewID = HD.getFreeMaxKey();
+            this.HD_ID = o_nNewID;
+
+            //todo altes speichern und benachrichtigen
+            //beim speichern/laden brauchen auch multi-c eine ID
+            //beim init bekommen sie zwar eine neue zugewiesen, aber die wird dann überschrieben
+            // so hat schonmal jeder seine ID
+
+            //mit einem spezialergebnis beide werte nach oben geben nach oben geben
+
+            // dort werden die paare in einer list gesammelt
+
+            HD.AlteHDEntrys.Add(o_nOldID, o_nNewID);
+           
+
+        }
+
+        protected void NotifyForErrors()
+        {
+   //         OnHDError(EventArgs.Empty, EventArgs.Empty);
+            System.Diagnostics.Debug.WriteLine("Fehler, es kam zu multiplen HD IDs");
         }
 
         /// <summary>

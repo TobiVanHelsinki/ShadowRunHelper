@@ -39,7 +39,7 @@ namespace ShadowRunHelper
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
            ViewModel = new CharViewModel();
-           Frame.Navigate(typeof(Char), ViewModel);
+           //Frame.Navigate(typeof(Char), ViewModel);
         }
 
         private void Click_Löschen(object sender, RoutedEventArgs e)
@@ -59,7 +59,7 @@ namespace ShadowRunHelper
             string id = ((CharSummory)((Button)sender).DataContext).ID;
             ViewModel.Current = await Verwaltung.LadenIntern(id);
             ProgressRing_Char.IsActive = false;
-            Frame.Navigate(typeof(Char), ViewModel);
+          //  Frame.Navigate(typeof(Char), ViewModel);
         }
 
         private async void Click_Speichern(object sender, RoutedEventArgs e)

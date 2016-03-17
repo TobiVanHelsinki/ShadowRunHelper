@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.Model;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -23,7 +24,32 @@ namespace ShadowRunHelper
         {
             base.OnNavigatedTo(e);
             ViewModel = (CharViewModel)e.Parameter;
-            MyFrame.Navigate(typeof(Char), ViewModel);
+            if (ViewModel.Current == null)
+            {
+                disableUI();
+                MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
+            }
+            else
+            {
+                enableUI();
+                MyFrame.Navigate(typeof(Char), ViewModel);
+            }
+           
+        }
+
+        void disableUI() {
+            Header_Kontostand.IsEnabled = false;
+            XAML_Header_Schaden_G_Slider.IsEnabled = false;
+            XAML_Header_Schaden_K_Slider.IsEnabled = false;
+            XAML_Header_Schaden_M_Slider.IsEnabled = false;
+        }
+
+        void enableUI()
+        {
+            Header_Kontostand.IsEnabled = true;
+            XAML_Header_Schaden_G_Slider.IsEnabled = true;
+            XAML_Header_Schaden_K_Slider.IsEnabled = true;
+            XAML_Header_Schaden_M_Slider.IsEnabled = true;
         }
 
         private void Hamburger_Click(object sender, RoutedEventArgs e)
@@ -33,83 +59,95 @@ namespace ShadowRunHelper
 
         private void IconsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Char.IsSelected) { MyFrame.Navigate(typeof(Char), ViewModel); }
-            else if (Char_Change.IsSelected) { MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel); }
-            else if (App_Settings.IsSelected) { MyFrame.Navigate(typeof(Settings)); }
-            else
+            if (Char.IsSelected)
             {
-                MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
-                return;
+                if (ViewModel.Current != null)
+                {
+                    enableUI();
+                    //todo event implementieren um vond en kindern eine nav zu erbitten
+                    MyFrame.Navigate(typeof(Char), ViewModel);
+                }
+                Char.IsSelected = false;
+            }
+            else if (Char_Change.IsSelected)
+            {
+                Char_Change.IsSelected = false;
+                MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
+            }
+            else if (App_Settings.IsSelected)
+            {
+                App_Settings.IsSelected = false;
+                MyFrame.Navigate(typeof(Settings));
+            }
+
+            MySplitView.IsPaneOpen = false;
+            return;
+        }
+
+        private void Plus_Click(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.Current != null)
+            {
+                string Controller_Name = ((string)((Button)sender).Name);
+
+                if (Controller_Name.Contains("Karma_Gesamt"))
+                {
+                    ViewModel.Current.Person.Karma_Gesamt++;
+                }
+                if (Controller_Name.Contains("Karma_Aktuell"))
+                {
+                    ViewModel.Current.Person.Karma_Aktuell++;
+                }
+                if (Controller_Name.Contains("Edge_Gesamt"))
+                {
+                    ViewModel.Current.Person.Edge_Gesamt++;
+                }
+                if (Controller_Name.Contains("Edge_Aktuell"))
+                {
+                    ViewModel.Current.Person.Edge_Aktuell++;
+                }
+                if (Controller_Name.Contains("Initiative"))
+                {
+                    ViewModel.Current.Person.Initiative++;
+                }
+                if (Controller_Name.Contains("Runs"))
+                {
+                    ViewModel.Current.Person.Runs++;
+                }
             }
         }
 
-        private void Karma_Gesamt_Plus_Click(object sender, RoutedEventArgs e)
+        private void Minus_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.Current.Person.Karma_Gesamt++;
-        }
+            if (ViewModel.Current != null)
+            {
+                string Controller_Name = ((string)((Button)sender).Name);
 
-        private void Karma_Gesamt_Minus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Karma_Gesamt--;
-        }
-
-        private void Karma_Aktuell_Plus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Karma_Aktuell++;
-        }
-
-        private void Karma_Aktuell_Minus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Karma_Aktuell--;
-        }
-
-        private void Edgne_Aktuell_Plus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Edge_Aktuell++;
-        }
-
-        private void Edgne_Aktuell_Minus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Edge_Aktuell--;
-        }
-
-        private void Edge_Gesamt_Plus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Edge_Gesamt++;
-        }
-
-        private void Edge_Gesamt_Minus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Edge_Gesamt--;
-        }
-
-        private void Essenz_Plus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Essenz++;
-        }
-
-        private void Essenz_Minus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Essenz--;
-        }
-
-        private void Initiative_Plus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Initiative++;
-        }
-
-        private void Initiative_Minus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Initiative--;
-        }
-
-        private void Runs_Minus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Runs--;
-        }
-        private void Runs_Plus_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Current.Person.Runs++;
+                if (Controller_Name.Contains("Karma_Gesamt"))
+                {
+                    ViewModel.Current.Person.Karma_Gesamt--;
+                }
+                if (Controller_Name.Contains("Karma_Aktuell"))
+                {
+                    ViewModel.Current.Person.Karma_Aktuell--;
+                }
+                if (Controller_Name.Contains("Edge_Gesamt"))
+                {
+                    ViewModel.Current.Person.Edge_Gesamt--;
+                }
+                if (Controller_Name.Contains("Edge_Aktuell"))
+                {
+                    ViewModel.Current.Person.Edge_Aktuell--;
+                }
+                if (Controller_Name.Contains("Initiative"))
+                {
+                    ViewModel.Current.Person.Initiative--;
+                }
+                if (Controller_Name.Contains("Runs"))
+                {
+                    ViewModel.Current.Person.Runs--;
+                }
+            }
         }
     }
 }

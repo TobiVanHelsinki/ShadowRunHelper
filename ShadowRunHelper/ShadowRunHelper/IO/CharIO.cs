@@ -23,6 +23,7 @@ namespace ShadowRunHelper.IO
 
                 
         }
+
         private static Controller.CharHolder JSON_to_Char(string fileContent)
         {
             Controller.CharHolder tempChar = new Controller.CharHolder();
@@ -32,8 +33,10 @@ namespace ShadowRunHelper.IO
             //    newChar.Char_ID = tempChar.Char_ID;
 
             int maxID = 0;
-
             maxID = 0;
+
+            newChar.HD.toggleHDEdit(false);
+
             foreach (var item in tempChar.FertigkeitController)
             {
                 newChar.Add("Fertigkeit", item.HD_ID);
@@ -310,9 +313,11 @@ namespace ShadowRunHelper.IO
                 newChar.HandlungController[maxID].Data.GrenzeZusammensetzung = item.Data.GrenzeZusammensetzung;
                 maxID++;
             }
-
+            newChar.HD.toggleHDEdit(true);
             return newChar;
         }
+
+
         public static async Task<ObservableCollection<CharSummory>> getListofChars(StorageFolder CharFolder)
         {
             IReadOnlyList<StorageFile> Liste = await CharFolder.GetFilesAsync();

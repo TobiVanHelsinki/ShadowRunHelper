@@ -8,33 +8,54 @@ namespace ShadowRunHelper
 {
     public static class Optionen
     {
-        public static bool SAVE_CHAR_ON_EXIT()
+        public static string LAST_CHAR_IS
         {
-            Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
-
-            bool temp = false;
-            try
+            get
             {
-                temp = (bool)container.Values[Variablen.CONTAINER_SETTINGS_SAVE_CHAR_ON_EXIT];
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                return Settings.Values[Variablen.LAST_CHAR].ToString();
             }
-            catch (Exception)
+            set
             {
-                temp = false;
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                Settings.Values[Variablen.LAST_CHAR] = value;
             }
-            return temp;
-        }
-        public static void SAVE_CHAR_ON_EXIT(bool obj)
-        {
-            Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
-
-            container.Values[Variablen.CONTAINER_SETTINGS_SAVE_CHAR_ON_EXIT] = obj;
-            Optionen.LOAD_CHAR_ON_START(true);
         }
 
-        public static bool LOAD_CHAR_ON_START()
+        public static bool SAVE_CHAR_ON_EXIT
         {
+            get
+            {
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+                bool temp = false;
+                try
+                {
+                    temp = (bool)container.Values[Variablen.CONTAINER_SETTINGS_SAVE_CHAR_ON_EXIT];
+                }
+                catch (Exception)
+                {
+                    temp = false;
+                }
+                return temp;
+            }
+            set
+            {
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+                container.Values[Variablen.CONTAINER_SETTINGS_SAVE_CHAR_ON_EXIT] = value;
+                Optionen.LOAD_CHAR_ON_START = true;
+            }
+        }
+        
+
+        public static bool LOAD_CHAR_ON_START
+        {
+            get
+            {
+                
             Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
             Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
@@ -49,38 +70,41 @@ namespace ShadowRunHelper
             }
             return temp;
         }
+            set
+            {
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
-        public static void LOAD_CHAR_ON_START(bool obj)
-        {
-            Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
-
-            container.Values[Variablen.CONTAINER_SETTINGS_LOAD_CHAR_ON_START] = obj;
+                container.Values[Variablen.CONTAINER_SETTINGS_LOAD_CHAR_ON_START] = value;
+            }
         }
 
-        public static bool IS_FILE_IN_PROGRESS()
+
+        public static bool IS_FILE_IN_PROGRESS
         {
-            Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
-
-            bool temp = false;
-            try
+            get
             {
-                temp = (bool)container.Values[Variablen.CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS];
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+                bool temp = false;
+                try
+                {
+                    temp = (bool)container.Values[Variablen.CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS];
+                }
+                catch (Exception)
+                {
+                    temp = false;
+                }
+                return temp;
             }
-            catch (Exception)
+            set
             {
-                temp = false;
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+                container.Values[Variablen.CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS] = value;
             }
-            return temp;
-        }
-
-        public static void IS_FILE_IN_PROGRESS(bool obj)
-        {
-            Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
-
-            container.Values[Variablen.CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS] = obj;
         }
     }
 }

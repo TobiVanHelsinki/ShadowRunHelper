@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+//todo appuibasic ist immernoch ein namespace
 namespace ShadowRunHelper.Model
 {
     public class CharViewModel : INotifyPropertyChanged
@@ -29,8 +29,8 @@ namespace ShadowRunHelper.Model
 
         public CharViewModel()
         {
-            current = new Controller.CharHolder();
-                }
+           // current = new Controller.CharHolder();
+        }
 
         public CharViewModel(Controller.CharHolder x_current)
         {
@@ -46,5 +46,7 @@ namespace ShadowRunHelper.Model
             }
         }
 
+        
+        
     }
 }

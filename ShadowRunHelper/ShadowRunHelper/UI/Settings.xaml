@@ -13,7 +13,8 @@
         <TextBlock>ShadowRun ist eine eingetragene Marke von Pegasus Games</TextBlock>
         <TextBlock>Optionen</TextBlock>
         <TextBlock></TextBlock>
-        <ToggleSwitch x:Name="UI_Optionen_SaveOnExit" x:Uid="UI_Optionen_SaveOnExit" IsOn="{Binding Path=Optionen.Save_char_on_exit, Mode=TwoWay}"/>
+        <ToggleSwitch x:Name="UI_Optionen_SaveOnExit" x:Uid="UI_Optionen_SaveOnExit" IsOn="{x:Bind Path=Optionen.SAVE_CHAR_ON_EXIT, Mode=TwoWay}"/>
+        <ToggleSwitch x:Name="UI_Optionen_LoadOnStart" x:Uid="UI_Optionen_LoadOnStart" IsOn="{x:Bind Path=Optionen.LOAD_CHAR_ON_START, Mode=TwoWay}"/>
 
     </StackPanel>
 </Page>

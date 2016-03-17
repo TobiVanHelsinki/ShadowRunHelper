@@ -53,10 +53,11 @@
         <TextBlock x:Uid="Model_Kommlink_Programmanzahl" Grid.Column="0" Grid.Row="6"/>
         <TextBox Name="Programmanzahl" Text="{x:Bind Data.Programmanzahl, Mode=TwoWay, Converter={StaticResource Input_Double}}"  Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="6"/>
 
-        <TextBlock x:Uid="Model_Kommlink_Firewall" Grid.Column="1" Grid.Row="7"/>
-        <TextBlock x:Uid="Model_Kommlink_Datenverarbeitung" Grid.Column="2" Grid.Row="7"/>
-        <TextBlock x:Uid="Model_CyberDeck_Angriff" Grid.Column="3" Grid.Row="7"/>
-        <TextBlock x:Uid="Model_CyberDeck_Schleicher" Grid.Column="4" Grid.Row="7"/>
+        
+        <TextBlock x:Uid="Model_CyberDeck_Angriff" Grid.Column="1" Grid.Row="7"/>
+        <TextBlock x:Uid="Model_CyberDeck_Schleicher" Grid.Column="2" Grid.Row="7"/>
+        <TextBlock x:Uid="Model_Kommlink_Firewall" Grid.Column="3" Grid.Row="7"/>
+        <TextBlock x:Uid="Model_Kommlink_Datenverarbeitung" Grid.Column="4" Grid.Row="7"/>
 
         <TextBlock x:Uid="Model_Kommlink_Attribute" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="4"/>
 

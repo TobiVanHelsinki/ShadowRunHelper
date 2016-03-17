@@ -49,38 +49,34 @@ namespace ShadowRunHelper.CharController
             }
             else if (HD.Data.ContainsKey(HD_ID))
             {
-                this.HD_ID = HD.getFreeKey();
-                System.Diagnostics.Debug.WriteLine("Fehler, es kam zu multiplen HD IDs");
+                Error_Occured();
             }
             HD.Add(this.HD_ID, new Model.DictionaryCharEntry(HD_Bezeichner, HD_Typ, HD_Wert, HD_Zusatz, HD_Notiz));
             if (this.HD_ID_A == 0)
             {
                 this.HD_ID_A = HD.getFreeKey();
             }
-            else if (HD.Data.ContainsKey(HD_ID_A))
+            else if (HD.Data.ContainsKey(HD_ID))
             {
-                this.HD_ID_A = HD.getFreeKey();
-                System.Diagnostics.Debug.WriteLine("Fehler, es kam zu multiplen HD IDs");
+                Error_Occured();
             }
             HD.Add(this.HD_ID_A, new Model.DictionaryCharEntry(HD_Bezeichner_A, HD_Typ, HD_Wert, HD_Zusatz, HD_Notiz));
             if (this.HD_ID_S == 0)
             {
                 this.HD_ID_S = HD.getFreeKey();
             }
-            else if (HD.Data.ContainsKey(HD_ID_S))
+            else if (HD.Data.ContainsKey(HD_ID))
             {
-                this.HD_ID_S = HD.getFreeKey();
-                System.Diagnostics.Debug.WriteLine("Fehler, es kam zu multiplen HD IDs");
+                Error_Occured();
             }
             HD.Add(this.HD_ID_S, new Model.DictionaryCharEntry(HD_Bezeichner_S, HD_Typ, HD_Wert, HD_Zusatz, HD_Notiz));
             if (this.HD_ID_F == 0)
             {
                 this.HD_ID_F = HD.getFreeKey();
             }
-            else if (HD.Data.ContainsKey(HD_ID_F))
+            else if (HD.Data.ContainsKey(HD_ID))
             {
-                this.HD_ID_F = HD.getFreeKey();
-                System.Diagnostics.Debug.WriteLine("Fehler, es kam zu multiplen HD IDs");
+                Error_Occured();
             }
             HD.Add(this.HD_ID_F, new Model.DictionaryCharEntry(HD_Bezeichner_F, HD_Typ, HD_Wert, HD_Zusatz, HD_Notiz));
 
@@ -88,10 +84,9 @@ namespace ShadowRunHelper.CharController
             {
                 this.HD_ID_D = HD.getFreeKey();
             }
-            else if (HD.Data.ContainsKey(HD_ID_D))
+            else if (HD.Data.ContainsKey(HD_ID))
             {
-                this.HD_ID_D = HD.getFreeKey();
-                System.Diagnostics.Debug.WriteLine("Fehler, es kam zu multiplen HD IDs");
+                Error_Occured();
             }
             HD.Add(this.HD_ID_D, new Model.DictionaryCharEntry(HD_Bezeichner_D, HD_Typ, HD_Wert, HD_Zusatz, HD_Notiz));
         }

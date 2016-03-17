@@ -12,10 +12,11 @@ namespace ShadowRunHelper
     {
         private OptionViewModel Optionen = new OptionViewModel();
 
-
         public Settings()
         {
             this.InitializeComponent();
+            
+            
         }
     }
 }

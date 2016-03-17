@@ -11,10 +11,19 @@ using ShadowRunHelper.CharController;
 namespace ShadowRunHelper.Controller
 {
     public delegate void ChangedEventHandler(object sender, EventArgs e);
+    public delegate void HDlockedHandler(object sender, EventArgs e);
+
 
     public class HashDictionary
     {
         public event ChangedEventHandler Changed;
+        public event HDlockedHandler Toggle;
+        private bool HDConsistendState = true;
+        /// <summary>
+        /// <paramref name="Alter Eintrag"/>
+        /// <paramref name="Neuer Eintrag"/>
+        /// </summary>
+        public Dictionary<int, int> AlteHDEntrys { get; set; }
 
         public Dictionary<int, Model.DictionaryCharEntry> Data { get; set; }
 
@@ -25,8 +34,16 @@ namespace ShadowRunHelper.Controller
             Debug.WriteLine("This is OnChanged of HD " + this.Data.ToString());
         }
 
+        protected virtual void OnToggle(EventArgs e)
+        {
+            if (Toggle != null)
+                Toggle(this, e);
+            Debug.WriteLine("This is OnToggle of HD ");
+        }
+
         public void Add(int key, Model.DictionaryCharEntry value)
         {
+            //key überprüfen
             Data.Add(key, value);
         }
 
@@ -51,30 +68,45 @@ namespace ShadowRunHelper.Controller
             }
         }
 
+
+        public TSystem.TResult toggleHDEdit(bool state)
+        {
+            System.Diagnostics.Debug.WriteLine("toggleHDEdit");
+            HDConsistendState = state;
+            if (HDConsistendState)
+            {
+                System.Diagnostics.Debug.WriteLine("HD ist im ConsistendState, OnToggle wird ausgeführt");
+                OnToggle(EventArgs.Empty);
+            }
+            return TSystem.TResult.NO_ERROR;
+        }
+
         public HashDictionary()
         {
             Data = new Dictionary<int, Model.DictionaryCharEntry>();
+            AlteHDEntrys = new Dictionary<int, int>();
         }
 
         public int getFreeKey()
         {
             int temp = 0;
-            try
+            //try
+            //{
+
+            //}
+            //catch (Exception)
+            //{
+            //    throw new Exception("Konnte keinen neuen Key aus dem Dictionary erhalten");
+            //}
+
+
+            for (temp = 1; temp < Data.Count + 1; temp++)
             {
-                if (Data.Keys.Count != 0)
+                if (!Data.ContainsKey(temp))
                 {
-                    temp = Data.Keys.Max()+1;
+                    return temp;
                 }
             }
-            catch (Exception)
-            {
-                throw new Exception("Konnte keinen neuen Key aus dem Dictionary erhalten");
-            }
-            if (temp == 0)
-            {
-                temp = 1; // da 0 als Zahl nicht vergeben wird
-            }
-
             return temp;
         }
 

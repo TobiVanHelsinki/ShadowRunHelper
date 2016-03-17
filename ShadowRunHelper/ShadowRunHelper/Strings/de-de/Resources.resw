@@ -485,4 +485,19 @@
   <data name="Model__Kapazität.Text" xml:space="preserve">
     <value>Kapazität</value>
   </data>
+  <data name="UI_Optionen_LoadOnStart.Header" xml:space="preserve">
+    <value>Zuletzt verwendeten Char beim Starten der App automatisch laden? (gilt für manuelles und automatisches beenden)</value>
+  </data>
+  <data name="UI_Char_Schaden.Text" xml:space="preserve">
+    <value>Schaden:</value>
+  </data>
+  <data name="UI_Char_Schaden_Geist.Text" xml:space="preserve">
+    <value>Geistig</value>
+  </data>
+  <data name="UI_Char_Schaden_Körper.Text" xml:space="preserve">
+    <value>Körper</value>
+  </data>
+  <data name="UI_Char_Schaden_Matrix.Text" xml:space="preserve">
+    <value>Matrix</value>
+  </data>
 </root>

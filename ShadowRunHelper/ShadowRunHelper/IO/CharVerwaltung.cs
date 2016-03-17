@@ -86,7 +86,7 @@ namespace ShadowRunHelper.IO
             }
             foreach (var item in await IO.CharIO.getListofChars(CharFolder))
             {
-                item.Summory.Replace('_', ' ');
+                item.Summory.Replace('_', ' '); //todo klappt nicht
                 Summorys.Add(item);
             }
 
@@ -198,6 +198,7 @@ namespace ShadowRunHelper.IO
             }
             
             return await IO.CharIO.Laden(CharFile);
+
         }
 
         public async void LadenExtern()
