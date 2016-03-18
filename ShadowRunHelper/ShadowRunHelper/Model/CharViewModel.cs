@@ -1,13 +1,7 @@
-﻿using ShadowRunHelper.Controller;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using static ShadowRunHelper.Controller.TApp;
-//todo appuibasic ist immernoch ein namespace
 namespace ShadowRunHelper.Model
 {
     public class CharViewModel : INotifyPropertyChanged

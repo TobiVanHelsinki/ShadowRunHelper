@@ -24,6 +24,12 @@
             <ToggleSwitch x:Name="UI_Optionen_SaveOnExit" x:Uid="UI_Optionen_SaveOnExit" IsOn="{x:Bind Path=Optionen.SAVE_CHAR_ON_EXIT, Mode=TwoWay}"/>
             <TextBlock x:Uid="UI_Optionen_LoadOnStart_Header" Style="{StaticResource TextInhaltKlein}"/>
             <ToggleSwitch x:Name="UI_Optionen_LoadOnStart" x:Uid="UI_Optionen_LoadOnStart" IsOn="{x:Bind Path=Optionen.LOAD_CHAR_ON_START, Mode=TwoWay}"/>
+            <TextBlock x:Uid="UI_Optionen_Ordnermode_Header" Style="{StaticResource TextInhaltKlein}"/>
+            <ToggleSwitch x:Name="UI_Optionen_OrdnerMode" x:Uid="UI_Optionen_OrdnerMode"  Toggled="UI_Optionen_OrdnerMode_Toggled" IsOn="{x:Bind Path=Optionen.ORDNERMODE, Mode=TwoWay}" GotFocus="UI_Optionen_OrdnerMode_GotFocus"/>
+            <TextBlock x:Name="UI_Optionen_OrdnerModePfad" Style="{StaticResource TextInhaltKlein}" Visibility="Collapsed">
+                <Run x:Uid="UI_Optionen_Ordnermode_Pfad"/>
+                <Run Text="{x:Bind Path=Optionen.ORDNERMODE_PFAD, Mode=OneWay}"/>
+            </TextBlock>
 
             <TextBlock x:Uid="UI_Optionen_U_Hilfe" Style="{StaticResource Überschrift2}"/>
             <TextBlock x:Uid="UI_Optionen_Hilfe" Style="{StaticResource TextInhaltGroß}"/>

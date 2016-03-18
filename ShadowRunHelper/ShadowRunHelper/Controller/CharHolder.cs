@@ -44,7 +44,6 @@ namespace ShadowRunHelper.Controller
                     }
                 }
             }
-            //TODO evtl. prüfen, ob alles geklappt hat
             HD.AlteHDEntrys.Clear();
             HD.Toggle -= new HDlockedHandler(Probleme_Lösen);
         }

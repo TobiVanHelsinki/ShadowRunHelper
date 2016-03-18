@@ -327,7 +327,8 @@ namespace ShadowRunHelper.IO
             {
                 if (item.FileType == Variablen.DATEIENDUNG_CHAR)
                 {
-                    templist.Add(new CharSummory(item.Name, item.Name));
+                    Windows.Storage.FileProperties.BasicProperties basicProperties = await item.GetBasicPropertiesAsync();
+                    templist.Add(new CharSummory(item.Name, "", basicProperties.DateModified));
                 }
             }
             return templist;

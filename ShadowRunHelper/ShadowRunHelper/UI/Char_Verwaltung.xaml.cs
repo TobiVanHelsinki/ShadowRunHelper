@@ -72,7 +72,7 @@ namespace ShadowRunHelper
 
         private async void Click_Speichern(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.Current!=null)
+            if (ViewModel.currentState!=Controller.TApp.TCharState.EMPTY_CHAR)
             {
                 await Verwaltung.SpeichernIntern(ViewModel.Current);
             }

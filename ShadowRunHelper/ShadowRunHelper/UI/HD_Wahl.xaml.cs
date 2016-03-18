@@ -5,7 +5,7 @@ using ShadowRunHelper.Model;
 using ShadowRunHelper.CharModel;
 using Windows.UI.Xaml.Data;
 
-namespace AppUIBasics.ControlPages
+namespace ShadowRunHelper
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

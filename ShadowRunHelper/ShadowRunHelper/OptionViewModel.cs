@@ -25,6 +25,26 @@ namespace ShadowRunHelper
             }
         }
 
+        public bool ORDNERMODE
+        {
+            get { return Optionen.ORDNERMODE; }
+            set
+            {
+                Optionen.ORDNERMODE = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public string ORDNERMODE_PFAD
+        {
+            get { return Optionen.ORDNERMODE_PFAD; }
+            set
+            {
+                Optionen.ORDNERMODE_PFAD = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public OptionViewModel()
         {
 

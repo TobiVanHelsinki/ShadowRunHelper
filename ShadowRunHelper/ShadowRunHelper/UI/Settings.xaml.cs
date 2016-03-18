@@ -12,11 +12,45 @@ namespace ShadowRunHelper
     {
         private OptionViewModel Optionen = new OptionViewModel();
 
+        bool OrdnerModeGeladen = false;
+
         public Settings()
         {
             this.InitializeComponent();
             
             
+        }
+
+        private async void UI_Optionen_OrdnerMode_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            if (((ToggleSwitch)sender).IsOn && OrdnerModeGeladen)
+            {
+                try
+                {
+                    Windows.Storage.StorageFolder StoreFolder = await IO.CharVerwaltung.getExternFolder();
+                    Optionen.ORDNERMODE_PFAD = StoreFolder.Path;
+                    
+                }
+                catch (System.Exception)
+                {
+                    throw;
+                }
+            }
+
+            if (((ToggleSwitch)sender).IsOn)
+            {
+                UI_Optionen_OrdnerModePfad.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
+            else
+            {
+                UI_Optionen_OrdnerModePfad.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            }
+           
+        }
+
+        private void UI_Optionen_OrdnerMode_GotFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            OrdnerModeGeladen = true;
         }
     }
 }

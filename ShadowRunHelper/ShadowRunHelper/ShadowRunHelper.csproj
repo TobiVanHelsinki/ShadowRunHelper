@@ -166,7 +166,9 @@
     <Compile Include="OptionViewModel.cs" />
     <Compile Include="Ressourcen\TypNamen.cs" />
     <Compile Include="UI\Converter\CB.cs" />
-    <Compile Include="UI\Converter\Input_Double.cs" />
+    <Compile Include="UI\Converter\o_ZahlenYen.cs" />
+    <Compile Include="UI\Converter\o_ModelTyp.cs" />
+    <Compile Include="UI\Converter\io_ZahlenDouble.cs" />
     <Compile Include="UI\Edit\Edit_Attribut.xaml.cs">
       <DependentUpon>Edit_Attribut.xaml</DependentUpon>
     </Compile>
@@ -391,6 +393,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Ressourcen\ResourceDictionary_App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Ressourcen\ResourceDictionary_MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

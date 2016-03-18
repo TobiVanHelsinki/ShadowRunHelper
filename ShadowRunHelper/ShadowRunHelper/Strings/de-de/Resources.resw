@@ -521,4 +521,16 @@
   <data name="UI_Optionen_U_Rechtliches.Text" xml:space="preserve">
     <value>Rechtliches</value>
   </data>
+  <data name="UI_Optionen_Ordnermode.OffContent" xml:space="preserve">
+    <value>Intern Speichern</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode.OnContent" xml:space="preserve">
+    <value>Extern Speichern</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode_Header.Text" xml:space="preserve">
+    <value>In Ordner Speichern?</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode_Pfad.Text" xml:space="preserve">
+    <value>Pfad</value>
+  </data>
 </root>

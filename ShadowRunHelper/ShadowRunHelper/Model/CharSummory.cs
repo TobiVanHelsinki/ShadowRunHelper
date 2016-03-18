@@ -21,9 +21,6 @@ namespace ShadowRunHelper.Model
         }
 
         private string summory;
-
-       
-
         public string Summory
         {
             get { return this.summory; }
@@ -37,11 +34,25 @@ namespace ShadowRunHelper.Model
             }
         }
 
+        private DateTimeOffset dateCreated;
+        public DateTimeOffset DateCreated
+        {
+            get { return this.dateCreated; }
+            set
+            {
+                if (value != this.dateCreated)
+                {
+                    this.dateCreated = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
-        public CharSummory(string id, string sum)
+        public CharSummory(string id, string sum, DateTimeOffset dateCreated)
         {
             this.ID = id;
             this.Summory = sum;
+            this.DateCreated = dateCreated;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

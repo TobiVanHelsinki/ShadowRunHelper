@@ -13,7 +13,7 @@
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     >
     <ContentDialog.Resources>
-        <Converter:Input_Double x:Key="Input_Double"/>
+        <Converter:io_ZahlenDouble x:Key="Input_Double"/>
     </ContentDialog.Resources>
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.ColumnDefinitions>

@@ -15,9 +15,11 @@ namespace ShadowRunHelper.IO
 {
     class CharVerwaltung : INotifyPropertyChanged
     {
-        
-        int Mode = (int)FolderMode.Intern;
-
+        private enum Ort
+        {
+            InternSpeichern = 0,
+            ExternSpeichern = 1
+        }
 
         private ObservableCollection<Model.CharSummory> summorys;
 
@@ -46,7 +48,6 @@ namespace ShadowRunHelper.IO
             }
         }
 
-
         /// <summary>
         /// Nutzen für mit Liste
         /// </summary>
@@ -57,6 +58,7 @@ namespace ShadowRunHelper.IO
             // List erstellen, entweder aus dem App Container oder aus dem Ordner oder beidem 
             Summorys_Aktualisieren();
         }
+
         private async void Summorys_Aktualisieren()
         {
             AutoResetEvent autoEvent = new AutoResetEvent(false);
@@ -72,21 +74,13 @@ namespace ShadowRunHelper.IO
 
             // system unauthorized abfangen
             StorageFolder CharFolder;
-            if (Mode == (int)FolderMode.Intern)
-            {
-                CharFolder = await getInternFolder();
-            }
-            else if (Mode == (int)FolderMode.Extern)
-            {
-                CharFolder = await getExternFolder();
-            }
-            else
-            {
-                throw new Exception("");
-            }
+            CharFolder = await getInternFolder();
+
             foreach (var item in await IO.CharIO.getListofChars(CharFolder))
             {
-                item.Summory.Replace('_', ' '); //todo klappt nicht
+                item.Summory = item.ID.Replace('_', ' ');
+                item.Summory = item.Summory.Replace(Variablen.DATEIENDUNG_CHAR, "");
+                item.Summory += " (" + item.DateCreated.Day + "." + item.DateCreated.Month +"."+ item.DateCreated.Year + ")";
                 Summorys.Add(item);
             }
 
@@ -94,10 +88,10 @@ namespace ShadowRunHelper.IO
 
         private void noob(object state)
         {
-            System.Diagnostics.Debug.WriteLine("{0} Timer kommt.", DateTime.Now.ToString("h:mm:ss.fff"));
+            //System.Diagnostics.Debug.WriteLine("{0} Timer kommt.", DateTime.Now.ToString("h:mm:ss.fff"));
         }
 
-        public string makeName(CharHolder SaveChar)
+        private string makeName(CharHolder SaveChar, Ort SpeicherOrt)
         {
             String temp_Alias = "";
             String temp_Char_Typ = "";
@@ -140,32 +134,52 @@ namespace ShadowRunHelper.IO
             }
             catch (NullReferenceException) { temp_Runs = "$ohne Erfolg$"; }
 
-            return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + Variablen.DATEIENDUNG_CHAR;
-
+            if (SpeicherOrt == Ort.InternSpeichern)
+            {
+                return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + Variablen.DATEIENDUNG_CHAR;
+            }
+            else
+            {
+                return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + "_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second + Variablen.DATEIENDUNG_CHAR;
+            }
         }
 
         private static async Task<StorageFolder> getInternFolder()
         {
             StorageFolder RoamingFolder = ApplicationData.Current.RoamingFolder;
             StorageFolder CharFolder = null;
-            try
+            string path = "";
+            if (Optionen.ORDNERMODE)
             {
-                CharFolder = await RoamingFolder.GetFolderAsync(Variablen.CONTAINER_CHAR);
+                path = Optionen.ORDNERMODE_PFAD; 
+                CharFolder = await Windows.Storage.StorageFolder.GetFolderFromPathAsync(path);
             }
-            catch (System.IO.FileNotFoundException)
+            else
             {
-                CharFolder = await RoamingFolder.CreateFolderAsync(Variablen.CONTAINER_CHAR);
+                path = Variablen.CONTAINER_CHAR;
+                CharFolder = await RoamingFolder.GetFolderAsync(path);
             }
+
             return CharFolder;
+
         }
 
-        private static async Task<StorageFolder> getExternFolder()
+        public static async Task<StorageFolder> getExternFolder()
         {
             var folderPicker = new Windows.Storage.Pickers.FolderPicker();
             folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
             folderPicker.FileTypeFilter.Add(Variablen.DATEIENDUNG_CHAR);
             //Ordner Auswähler rufen
-            StorageFolder CharFolder = await folderPicker.PickSingleFolderAsync();
+            StorageFolder CharFolder;
+            try
+            {
+                CharFolder = await folderPicker.PickSingleFolderAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
             Windows.Storage.AccessCache.StorageApplicationPermissions.
                 FutureAccessList.AddOrReplace("PickedFolderToken", CharFolder);
             return CharFolder;
@@ -175,18 +189,7 @@ namespace ShadowRunHelper.IO
         {
             StorageFolder CharFolder;
             StorageFile CharFile;
-            if (Mode == (int)FolderMode.Intern)
-            {
-                CharFolder = await getInternFolder();
-            }
-            else if (Mode == (int)FolderMode.Extern)
-            {
-                CharFolder = await getExternFolder();
-            }
-            else
-            {
-                throw new Exception("");
-            }
+            CharFolder = await getInternFolder();
             try
             {
                 CharFile = await CharFolder.GetFileAsync(id);
@@ -221,46 +224,41 @@ namespace ShadowRunHelper.IO
 
         public async Task<string> SpeichernIntern(CharHolder SaveChar)
         {
-            StorageFolder CharFolder = await getInternFolder();
-
-            return await Speichern(SaveChar, CharFolder);
-
+            StorageFolder SaveFolder = await getInternFolder();
+            String SaveName = makeName(SaveChar, Ort.InternSpeichern);
+            return await Speichern(SaveChar, SaveFolder, SaveName);
         }
 
         public async Task<string> SpeichernExtern(string id)
         {
             CharHolder SaveChar = await LadenIntern(id);
-            StorageFolder CharFolder = await getExternFolder();
-
-            return await Speichern(SaveChar, CharFolder);
+            String SaveName = "";
+            try
+            {
+                SaveName = makeName(SaveChar, Ort.ExternSpeichern);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            StorageFolder SaveFolder = await getExternFolder();
+            return await Speichern(SaveChar, SaveFolder, SaveName);
         }
 
-        private async Task<string> Speichern(CharHolder SaveChar, StorageFolder CharFolder)
+        private async Task<string> Speichern(CharHolder SaveChar, StorageFolder SaveFolder, String SaveName )
         {
-            String filename = makeName(SaveChar);
-            StorageFile Save_File = await CharFolder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
-            Save_File = await CharFolder.GetFileAsync(filename);
+            StorageFile Save_File = await SaveFolder.CreateFileAsync(SaveName, CreationCollisionOption.ReplaceExisting);
+            Save_File = await SaveFolder.GetFileAsync(SaveName);
 
             IO.CharIO.Speichern(SaveChar, Save_File);
             this.Summorys_Aktualisieren();
-            return filename;
+            return SaveName;
         }
 
         public async void Lösche(string id)
         {
             StorageFolder CharFolder;
-            if (Mode == (int)FolderMode.Intern)
-            {
-                CharFolder = await getInternFolder();
-            }
-            else if (Mode == (int)FolderMode.Extern)
-            {
-                CharFolder = await getExternFolder();
-            }
-            else
-            {
-                throw new Exception("");
-            }
+            CharFolder = await getInternFolder();
             StorageFile toDelFile = await CharFolder.GetFileAsync(id);
             IO.CharIO.Löschen(toDelFile);
             this.Summorys_Aktualisieren();

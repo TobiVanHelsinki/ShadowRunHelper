@@ -4,7 +4,6 @@ using ShadowRunHelper.Model;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Primitives;
 using System;
-using AppUIBasics.ControlPages;
 using ShadowRunHelper.UI.Edit;
 
 namespace ShadowRunHelper
@@ -45,7 +44,7 @@ namespace ShadowRunHelper
             ViewModel.Current.Add(Controller_Name, 0);
         }
 
-        private async void HandlungEditDialog_Click(object sender, RoutedEventArgs e)
+        private async void Edit_Click(object sender, RoutedEventArgs e)
         {
             String Controller_Name = ((String)((Button)sender).Name);
 
@@ -166,6 +165,15 @@ namespace ShadowRunHelper
         {
             HD_Wahl dialog = new HD_Wahl(((CharController.Handlung)((Button)sender).DataContext).Data, ViewModel.Current.HD, 2);
             await dialog.ShowAsync();
+        }
+
+        private void Item_RightTapped(object sender, Windows.UI.Xaml.Input.RightTappedRoutedEventArgs e)
+        {
+            FrameworkElement element = sender as FrameworkElement;
+            if (element != null)
+            {
+                FlyoutBase.ShowAttachedFlyout(element);
+            }
         }
     }
 }

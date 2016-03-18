@@ -56,15 +56,6 @@ namespace ShadowRunHelper.CharController
             this.HD_ID = o_nNewID;
             this.HD_ID_P = o_nNewID_P;
 
-            //todo altes speichern und benachrichtigen
-            //beim speichern/laden brauchen auch multi-c eine ID
-            //beim init bekommen sie zwar eine neue zugewiesen, aber die wird dann überschrieben
-            // so hat schonmal jeder seine ID
-
-            //mit einem spezialergebnis beide werte nach oben geben nach oben geben
-
-            // dort werden die paare in einer list gesammelt
-
             HD.AlteHDEntrys.Add(o_nOldID, o_nNewID);
             HD.AlteHDEntrys.Add(o_nOldID_P, o_nNewID_P);
 

@@ -32,5 +32,7 @@ namespace ShadowRunHelper
         public static string CONTAINER_SETTINGS_LOAD_CHAR_ON_START = "LOAD_CHAR_ON_START";
 
         public static string CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS = "IS_FILE_IN_PROGRESS";
+        public static string CONTAINER_SETTINGS_ORDNERMODE = "ORDNERMODE";
+        public static string CONTAINER_SETTINGS_ORDNERMODE_PFAD = "ORDNERMODE_PFAD";
     }
 }

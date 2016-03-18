@@ -42,18 +42,7 @@ namespace ShadowRunHelper.CharController
             int o_nNewID = HD.getFreeMaxKey();
             this.HD_ID = o_nNewID;
 
-            //todo altes speichern und benachrichtigen
-            //beim speichern/laden brauchen auch multi-c eine ID
-            //beim init bekommen sie zwar eine neue zugewiesen, aber die wird dann überschrieben
-            // so hat schonmal jeder seine ID
-
-            //mit einem spezialergebnis beide werte nach oben geben nach oben geben
-
-            // dort werden die paare in einer list gesammelt
-
             HD.AlteHDEntrys.Add(o_nOldID, o_nNewID);
-           
-
         }
 
         protected void NotifyForErrors()

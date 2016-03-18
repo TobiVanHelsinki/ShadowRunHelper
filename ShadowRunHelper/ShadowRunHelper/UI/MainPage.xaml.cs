@@ -67,7 +67,6 @@ namespace ShadowRunHelper
                 if (ViewModel.currentState != TApp.TCharState.EMPTY_CHAR)
                 {
                     enableUI();
-                    //todo event implementieren um vond en kindern eine nav zu erbitten
                     MyFrame.Navigate(typeof(Char), ViewModel);
                 }
                 Char.IsSelected = false;

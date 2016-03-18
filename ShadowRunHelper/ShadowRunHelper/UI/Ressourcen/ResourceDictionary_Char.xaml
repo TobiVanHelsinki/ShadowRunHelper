@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ShadowRunHelper"
-    xmlns:conv="using:ShadowRunHelper.UI.Converter">
+
+    >
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ResourceDictionary_App.xaml"/>
@@ -316,17 +317,16 @@
         <Setter Property="Margin" Value="5,2,5,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
-    <Style TargetType="TextBox" x:Key="ListView_Item_TextBox_Input_Doubles">
+    <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="ListView_Item_TextBox_Input_Doubles">
         <Setter Property="Margin" Value="5,2,5,2"/>
         <Setter Property="Width" Value="100"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="InputScope" Value="Digits"/>
     </Style>
-    
-    <Style TargetType="TextBox" x:Key="ListView_Item_TextBox_Date">
+
+    <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="ListView_Item_TextBox_Date">
         <Setter Property="Margin" Value="5,2,5,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="InputScope" Value="Digits"/>
+      
     </Style>
     <Style TargetType="Grid" x:Key="ListView_Item_Grid">
         <Setter Property="BorderBrush" Value="Black"/>

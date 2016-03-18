@@ -50,7 +50,6 @@ namespace ShadowRunHelper
             }
         }
         
-
         public static bool LOAD_CHAR_ON_START
         {
             get
@@ -79,7 +78,6 @@ namespace ShadowRunHelper
             }
         }
 
-
         public static bool IS_FILE_IN_PROGRESS
         {
             get
@@ -104,6 +102,62 @@ namespace ShadowRunHelper
                 Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
                 container.Values[Variablen.CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS] = value;
+            }
+        }
+
+        public static bool ORDNERMODE
+        {
+            get
+            {
+
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+                bool temp = false;
+                try
+                {
+                    temp = (bool)container.Values[Variablen.CONTAINER_SETTINGS_ORDNERMODE];
+                }
+                catch (Exception)
+                {
+                    temp = false;
+                }
+                return temp;
+            }
+            set
+            {
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+                container.Values[Variablen.CONTAINER_SETTINGS_ORDNERMODE] = value;
+            }
+        }
+
+        public static string ORDNERMODE_PFAD
+        {
+            get
+            {
+
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+                string temp = "";
+                try
+                {
+                    temp = (string)container.Values[Variablen.CONTAINER_SETTINGS_ORDNERMODE_PFAD];
+                }
+                catch (Exception)
+                {
+                    temp = "";
+                }
+                return temp;
+            }
+            set
+            {
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+                container.Values[Variablen.CONTAINER_SETTINGS_ORDNERMODE_PFAD] = value;
             }
         }
     }
