@@ -148,6 +148,7 @@
     <Compile Include="CharModel\Nahkampfwaffe.cs" />
     <Compile Include="CharModel\Waffe.cs" />
     <Compile Include="Controller\Error.cs" />
+    <Compile Include="Controller\TApp.cs" />
     <Compile Include="Controller\TSystem.cs" />
     <Compile Include="IO\CharVerwaltung.cs" />
     <Compile Include="Controller\HashDictionary.cs" />
@@ -389,7 +390,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Ressourcen\Dictionary_XAML_Styles.xaml">
+    <Page Include="UI\Ressourcen\ResourceDictionary_App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Ressourcen\ResourceDictionary_Char_Verwaltung.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Ressourcen\ResourceDictionary_Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Ressourcen\ResourceDictionary_Char.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

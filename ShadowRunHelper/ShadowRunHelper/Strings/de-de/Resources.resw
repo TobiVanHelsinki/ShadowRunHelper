@@ -399,9 +399,6 @@
     <value>Hier können Charaktere verwaltet werden</value>
   </data>
   <data name="UI_CharVerwaltung_Einleitung2.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="UI_CharVerwaltung_Einleitung3.Text" xml:space="preserve">
     <value>Speichere deinen Aktuellen Char!</value>
   </data>
   <data name="Model_Person_Char_Typ.Text" xml:space="preserve">
@@ -479,13 +476,13 @@
   <data name="Model_Munition_.Text" xml:space="preserve">
     <value>Munition</value>
   </data>
-  <data name="UI_Optionen_SaveOnExit.Header" xml:space="preserve">
+  <data name="UI_Optionen_SaveOnExit_Header.Text" xml:space="preserve">
     <value>Char beim verlassen der App automatisch Speichern? (gilt für manuelles und automatisches beenden)</value>
   </data>
   <data name="Model__Kapazität.Text" xml:space="preserve">
     <value>Kapazität</value>
   </data>
-  <data name="UI_Optionen_LoadOnStart.Header" xml:space="preserve">
+  <data name="UI_Optionen_LoadOnStart_Header.Text" xml:space="preserve">
     <value>Zuletzt verwendeten Char beim Starten der App automatisch laden? (gilt für manuelles und automatisches beenden)</value>
   </data>
   <data name="UI_Char_Schaden.Text" xml:space="preserve">
@@ -499,5 +496,29 @@
   </data>
   <data name="UI_Char_Schaden_Matrix.Text" xml:space="preserve">
     <value>Matrix</value>
+  </data>
+  <data name="UI_Optionen_Hilfe.Text" xml:space="preserve">
+    <value>Über das Menü zur linken kann zwischen den verschiedenen Seiten navigiert werden.Zuerst muss über Seite ein Charachter erstellt oder geladen werden. Danach kann auf der ersten Seite mit diesem Charachter gespielt werden.Die "+" Symbole fügen in der entsprechenden Kategorie eine Eigenschaft hinzu. Klicke oder berühre eine Eigenschaft, um sie zu bearbeiten oder weitere Informationen zu erhalten. Bei Einer Handlung kannst du unter "Zusammensetzung" aus allen anderen Einträgen auswählen. Ausnahmen sind hier Kategorien (Waffen, Decks, Panzer, Vehikel) die zu je zu einem Eintrag zusammengefasst werden und zwar zu dem, das als "Aktiv" markiert ist.</value>
+  </data>
+  <data name="UI_Optionen_Inhaber.Text" xml:space="preserve">
+    <value>App-Inhaber: Tobias Pabst</value>
+  </data>
+  <data name="UI_Optionen_Kontakt.Text" xml:space="preserve">
+    <value>Kontakt: TobiVanHelsik@live.de</value>
+  </data>
+  <data name="UI_Optionen_Pegasus.Text" xml:space="preserve">
+    <value>ShadowRun ist eine eingetragene Marke von Pegasus Games</value>
+  </data>
+  <data name="UI_Optionen_U_.Text" xml:space="preserve">
+    <value>Einstellungen und Infos</value>
+  </data>
+  <data name="UI_Optionen_U_Einstellungen.Text" xml:space="preserve">
+    <value>Einsetllungen</value>
+  </data>
+  <data name="UI_Optionen_U_Hilfe.Text" xml:space="preserve">
+    <value>Bedienungshilfe</value>
+  </data>
+  <data name="UI_Optionen_U_Rechtliches.Text" xml:space="preserve">
+    <value>Rechtliches</value>
   </data>
 </root>

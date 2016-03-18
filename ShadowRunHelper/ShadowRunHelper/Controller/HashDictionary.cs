@@ -69,7 +69,7 @@ namespace ShadowRunHelper.Controller
         }
 
 
-        public TSystem.TResult toggleHDEdit(bool state)
+        public TApp.TResult toggleHDEdit(bool state)
         {
             System.Diagnostics.Debug.WriteLine("toggleHDEdit");
             HDConsistendState = state;
@@ -78,7 +78,7 @@ namespace ShadowRunHelper.Controller
                 System.Diagnostics.Debug.WriteLine("HD ist im ConsistendState, OnToggle wird ausgeführt");
                 OnToggle(EventArgs.Empty);
             }
-            return TSystem.TResult.NO_ERROR;
+            return TApp.TResult.NO_ERROR;
         }
 
         public HashDictionary()

@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using static ShadowRunHelper.Controller.TApp;
+
 
 namespace ShadowRunHelper
 {
@@ -68,13 +70,14 @@ namespace ShadowRunHelper
                 rootFrame = new Frame();
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated || Optionen.LOAD_CHAR_ON_START || Optionen.IS_FILE_IN_PROGRESS)
+                if (/*e.PreviousExecutionState == ApplicationExecutionState.Terminated || */Optionen.LOAD_CHAR_ON_START || Optionen.IS_FILE_IN_PROGRESS)
                 {
+                    Optionen.IS_FILE_IN_PROGRESS = false;
                     IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
                     try
                     {
                         ViewModel = new CharViewModel(await VerwaltungTemp.LadenIntern(Optionen.LAST_CHAR_IS));
-                        //ViewModel.Current = await VerwaltungTemp.LadenIntern(Optionen.LAST_CHAR_IS);
+                        ViewModel.currentState = TCharState.LOAD_CHAR;
                     }
                     catch (Exception)
                     {

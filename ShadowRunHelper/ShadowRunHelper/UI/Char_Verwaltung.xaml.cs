@@ -18,13 +18,18 @@ namespace ShadowRunHelper
         public Char_Verwaltung()
         {
             this.InitializeComponent();
+            ProgressRing_Char.IsActive = true;
+            this.Verwaltung = new IO.CharVerwaltung();
+            ProgressRing_Char.IsActive = false;
+        }
+
+        ~Char_Verwaltung()
+        {
+            this.Verwaltung = null;
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (CharViewModel)e.Parameter;
-            ProgressRing_Char.IsActive = true;
-            this.Verwaltung = new IO.CharVerwaltung();
-            ProgressRing_Char.IsActive = false;
         }
         
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
@@ -38,8 +43,8 @@ namespace ShadowRunHelper
 
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
-           ViewModel = new CharViewModel();
-           //Frame.Navigate(typeof(Char), ViewModel);
+           ViewModel = new CharViewModel(new Controller.CharHolder());
+           Frame.Navigate(typeof(Char), ViewModel);
         }
 
         private void Click_Löschen(object sender, RoutedEventArgs e)
@@ -57,15 +62,20 @@ namespace ShadowRunHelper
         {
             ProgressRing_Char.IsActive = true;
             string id = ((CharSummory)((Button)sender).DataContext).ID;
+            ViewModel.Current = null;
+            
             ViewModel.Current = await Verwaltung.LadenIntern(id);
+            ViewModel.currentState = Controller.TApp.TCharState.LOAD_CHAR;
             ProgressRing_Char.IsActive = false;
-          //  Frame.Navigate(typeof(Char), ViewModel);
+            Frame.Navigate(typeof(Char), ViewModel);
         }
 
         private async void Click_Speichern(object sender, RoutedEventArgs e)
         {
-            await Verwaltung.SpeichernIntern(ViewModel.Current);
-
+            if (ViewModel.Current!=null)
+            {
+                await Verwaltung.SpeichernIntern(ViewModel.Current);
+            }
         }
 
         private void Click_Laden_Datei(object sender, RoutedEventArgs e)

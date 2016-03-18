@@ -7,14 +7,31 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel>
-        <TextBlock>hier werden bald Einstellungen sein</TextBlock>
-        <TextBlock>App Inhaber: Tobias Pabst</TextBlock>
-        <TextBlock>ShadowRun ist eine eingetragene Marke von Pegasus Games</TextBlock>
-        <TextBlock>Optionen</TextBlock>
-        <TextBlock></TextBlock>
-        <ToggleSwitch x:Name="UI_Optionen_SaveOnExit" x:Uid="UI_Optionen_SaveOnExit" IsOn="{x:Bind Path=Optionen.SAVE_CHAR_ON_EXIT, Mode=TwoWay}"/>
-        <ToggleSwitch x:Name="UI_Optionen_LoadOnStart" x:Uid="UI_Optionen_LoadOnStart" IsOn="{x:Bind Path=Optionen.LOAD_CHAR_ON_START, Mode=TwoWay}"/>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Ressourcen/ResourceDictionary_Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
 
-    </StackPanel>
+    </Page.Resources>
+
+    <ScrollViewer Style="{StaticResource ScrollViewer}">
+        <StackPanel>
+            <TextBlock x:Uid="UI_Optionen_U_" Style="{StaticResource Überschrift1}"/>
+            <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource Überschrift2}"/>
+            <TextBlock x:Uid="UI_Optionen_SaveOnExit_Header" Style="{StaticResource TextInhaltKlein}"/>
+            <ToggleSwitch x:Name="UI_Optionen_SaveOnExit" x:Uid="UI_Optionen_SaveOnExit" IsOn="{x:Bind Path=Optionen.SAVE_CHAR_ON_EXIT, Mode=TwoWay}"/>
+            <TextBlock x:Uid="UI_Optionen_LoadOnStart_Header" Style="{StaticResource TextInhaltKlein}"/>
+            <ToggleSwitch x:Name="UI_Optionen_LoadOnStart" x:Uid="UI_Optionen_LoadOnStart" IsOn="{x:Bind Path=Optionen.LOAD_CHAR_ON_START, Mode=TwoWay}"/>
+
+            <TextBlock x:Uid="UI_Optionen_U_Hilfe" Style="{StaticResource Überschrift2}"/>
+            <TextBlock x:Uid="UI_Optionen_Hilfe" Style="{StaticResource TextInhaltGroß}"/>
+            <TextBlock x:Uid="UI_Optionen_U_Rechtliches"  Style="{StaticResource Überschrift2}"/>
+            <TextBlock x:Uid="UI_Optionen_Inhaber"  Style="{StaticResource TextInhaltKlein}"/>
+            <TextBlock x:Uid="UI_Optionen_Kontakt"  Style="{StaticResource TextInhaltKlein}"/>
+            <TextBlock x:Uid="UI_Optionen_Pegasus"  Style="{StaticResource TextInhaltKlein}"/>
+
+        </StackPanel>
+    </ScrollViewer>
 </Page>

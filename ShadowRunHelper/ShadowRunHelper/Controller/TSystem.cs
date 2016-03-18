@@ -1,17 +1,10 @@
-﻿namespace ShadowRunHelper.Controller
+﻿using static ShadowRunHelper.Controller.TApp;
+
+namespace ShadowRunHelper.Controller
 {
     public class TSystem
     {
-        public enum TResult
-        {
-            NO_ERROR = 0,
-            NOT_IMPLEMENTED = 1,
-            SYSTEM_ERROR = 2,
-            IO_ERROR = 3
-        }
-
-
-
+        
         private System.Collections.ObjectModel.ObservableCollection<Error> TError;
 
         public TSystem()

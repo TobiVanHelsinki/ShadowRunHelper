@@ -3,8 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ShadowRunHelper"
     xmlns:conv="using:ShadowRunHelper.UI.Converter">
-    <conv:Input_Double x:Key="Input_Double"/>
-    
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ResourceDictionary_App.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
     <Style x:Key="TabsStylePivotStyle" TargetType="Pivot">
         <Setter Property="Template">
             <Setter.Value>
@@ -408,22 +411,9 @@
     </Style>
 
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-    <Style TargetType="RelativePanel" x:Key="Pivot_Item_RelativePanel">
-        <Setter Property="RelativePanel.HorizontalAlignment" Value="Center"/>
-       <Setter Property="MinWidth" Value="300"/>
-        <!--<Setter Property="MaxWidth" Value="*"/>-->
-        <!--<Setter Property="Background" Value="Aquamarine"/>-->
+    <Style BasedOn="{StaticResource RelativePanel}" TargetType="RelativePanel" x:Key="Pivot_Item_RelativePanel">
     </Style>
-    <Style TargetType="ScrollViewer" x:Key="Pivot_Item_ScrollViewer">
-        <Setter Property="VerticalScrollMode" Value="Enabled"/>
-        <Setter Property="VerticalScrollBarVisibility" Value="Visible"/>
-        <!--<Setter Property="Background" Value="CornflowerBlue"/>-->
-        <Setter Property="HorizontalScrollMode" Value="Auto"/>
-    </Style>
-    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-    <Style TargetType="Button" x:Key="Char_Control_Btn">
-        <Setter Property="FontSize" Value="20"/>
-        <Setter Property="Margin" Value="20,10,0,10"/>
+    <Style BasedOn="{StaticResource ScrollViewer}" TargetType="ScrollViewer" x:Key="Pivot_Item_ScrollViewer">
     </Style>
 
     
