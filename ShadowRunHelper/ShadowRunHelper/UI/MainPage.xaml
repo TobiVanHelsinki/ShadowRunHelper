@@ -90,7 +90,7 @@
                                 </Grid.RowDefinitions>
 
                                 <TextBlock x:Uid="Model_Person_Kontostand" Grid.Column="0" Grid.Row="0"  />
-                                <TextBox Name="Header_Kontostand" Text="{x:Bind ViewModel.Current.Person.Kontostand, Mode=TwoWay, Converter={StaticResource Input_Double}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Style="{StaticResource Panel_Oben_Kontostand}"  />
+                                <TextBox Name="Header_Kontostand" Text="{x:Bind ViewModel.Current.Person.Kontostand, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Style="{StaticResource Panel_Oben_Kontostand}"  />
 
                                 <TextBlock x:Uid="Model_Person_Karma_Aktuell" Grid.Column="0" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_1}"/>
                                 <TextBlock Text="{x:Bind ViewModel.Current.Person.Karma_Aktuell,Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_1}" />

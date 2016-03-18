@@ -23,7 +23,7 @@ namespace ShadowRunHelper.UI.Converter
             }
             catch (Exception)
             {
-               
+                retvalue = 0;
             }
             return retvalue;
         }

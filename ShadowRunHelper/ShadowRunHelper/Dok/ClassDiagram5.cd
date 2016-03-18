@@ -434,11 +434,11 @@
       <FileName>Ressourcen\TypNamen.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.UI.Converter.Input_Double" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="ShadowRunHelper.UI.Converter.io_ZahlenDouble" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="47" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>UI\Converter\Input_Double.cs</FileName>
+      <FileName>UI\Converter\io_ZahlenDouble.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>

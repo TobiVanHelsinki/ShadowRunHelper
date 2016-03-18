@@ -317,7 +317,7 @@
         <Setter Property="Margin" Value="5,2,5,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
-    <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="ListView_Item_TextBox_Input_Doubles">
+    <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="ListView_Item_TextBox_io_ZahlenDoubles">
         <Setter Property="Margin" Value="5,2,5,2"/>
         <Setter Property="Width" Value="100"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />

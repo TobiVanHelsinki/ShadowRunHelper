@@ -12,7 +12,12 @@
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     >
     <ContentDialog.Resources>
-        <Converter:io_ZahlenDouble x:Key="Input_Double"/>
+       <ResourceDictionary>
+           
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </ContentDialog.Resources>
 
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -35,16 +40,16 @@
         <TextBlock x:Uid="Model_Typ" Grid.Column="0" Grid.Row="1"/>
         <TextBox Name="Typ" Text="{x:Bind Data.Typ, Mode=TwoWay}" Grid.Column="1" Grid.Row="1"/>
         <TextBlock x:Uid="Model_Wert" Grid.Column="0" Grid.Row="2"/>
-        <TextBox Name="Wert" Text="{x:Bind Data.Wert, Mode=TwoWay, Converter={StaticResource Input_Double}}" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Name="Wert" Text="{x:Bind Data.Wert, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.Row="2"/>
         <TextBlock x:Uid="Model_Zusatz" Grid.Column="0" Grid.Row="3"/>
         <TextBox Name="Zusatz" Text="{x:Bind Data.Zusatz, Mode=TwoWay}" Grid.Column="1" Grid.Row="3"/>
         <TextBlock x:Uid="Model_Notiz" Grid.Column="0" Grid.Row="4"/>
         <TextBox Name="Notiz" Text="{x:Bind Data.Notiz, Mode=TwoWay}" Grid.Column="1" Grid.Row="4"/>
         <TextBlock x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="5"/>
-        <TextBox Name="Anzahl" Text="{x:Bind Data.Anzahl, Mode=TwoWay, Converter={StaticResource Input_Double}}" Grid.Column="1" Grid.Row="5"/>
+        <TextBox Name="Anzahl" Text="{x:Bind Data.Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.Row="5"/>
         <TextBlock x:Uid="Model_Implantat_Essenz" Grid.Column="0" Grid.Row="6"/>
-        <TextBox Name="Essenz" Text="{x:Bind Data.Essenz, Mode=TwoWay, Converter={StaticResource Input_Double}}" Grid.Column="1" Grid.Row="6"/>
+        <TextBox Name="Essenz" Text="{x:Bind Data.Essenz, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.Row="6"/>
         <TextBlock x:Uid="Model__Kapazität" Grid.Column="0" Grid.Row="7"/>
-        <TextBox Name="Kapazität" Text="{x:Bind Data.Kapazität, Mode=TwoWay, Converter={StaticResource Input_Double}}" Grid.Column="1" Grid.Row="7"/>
+        <TextBox Name="Kapazität" Text="{x:Bind Data.Kapazität, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.Row="7"/>
     </Grid>
 </ContentDialog>

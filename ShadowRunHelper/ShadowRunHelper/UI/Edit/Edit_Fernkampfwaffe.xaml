@@ -14,7 +14,12 @@
     >
 
     <ContentDialog.Resources>
-        <Converter:io_ZahlenDouble x:Key="Input_Double"/>
+       
+        <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Settings.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
     </ContentDialog.Resources>
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.ColumnDefinitions>
@@ -38,19 +43,19 @@
         <TextBlock x:Uid="Model_Typ" Grid.Column="0" Grid.Row="1"/>
         <TextBox x:Name="Typ" Text="{x:Bind Data.Typ, Mode=TwoWay}" Grid.Column="1" Grid.Row="1"/>
         <TextBlock x:Uid="Model_Wert" Grid.Column="0" Grid.Row="2"/>
-        <TextBox x:Name="Wert" Text="{x:Bind Data.Wert, Converter={StaticResource Input_Double}, Mode=OneWay}" Grid.Column="1" Grid.Row="2"/>
+        <TextBox x:Name="Wert" Text="{x:Bind Data.Wert, Converter={StaticResource io_ZahlenDouble}, Mode=OneWay}" Grid.Column="1" Grid.Row="2"/>
         <TextBlock x:Uid="Model_Zusatz" Grid.Column="0" Grid.Row="3"/>
         <TextBox x:Name="Zusatz" Text="{x:Bind Data.Zusatz, Mode=TwoWay}" Grid.Column="1" Grid.Row="3"/>
         <TextBlock x:Uid="Model_Notiz" Grid.Column="0" Grid.Row="4"/>
         <TextBox x:Name="Notiz" Text="{x:Bind Data.Notiz, Mode=TwoWay}" Grid.Column="1" Grid.Row="4"/>
         <TextBlock x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="5"/>
-        <TextBox x:Name="Anzahl" Text="{x:Bind Data.Anzahl, Converter={StaticResource Input_Double}, Mode=TwoWay}" Grid.Column="1" Grid.Row="5"/>
+        <TextBox x:Name="Anzahl" Text="{x:Bind Data.Anzahl, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Grid.Column="1" Grid.Row="5"/>
         <TextBlock x:Uid="Model_Waffe_SchadenTyp" Grid.Column="0" Grid.Row="6"/>
-        <TextBox x:Name="SchadenTyp" Text="{x:Bind Data.SchadenTyp, Mode=TwoWay}" Grid.Column="1" Grid.Row="6"/>
+        <TextBox x:Name="SchadenTyp" Text="{x:Bind Data.SchadenTyp, Mode=TwoWay, Converter={StaticResource i_char}}" Grid.Column="1" Grid.Row="6"/>
         <TextBlock x:Uid="Model_Waffe_PB" Grid.Column="0" Grid.Row="7"/>
-        <TextBox x:Name="PB" Text="{x:Bind Data.PB, Converter={StaticResource Input_Double}, Mode=TwoWay}" Grid.Column="1" Grid.Row="7"/>
+        <TextBox x:Name="PB" Text="{x:Bind Data.PB, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Grid.Column="1" Grid.Row="7"/>
         <TextBlock x:Uid="Model_Fernkampfwaffe_Rückstoß" Grid.Column="0" Grid.Row="8"/>
-        <TextBox x:Name="Rückstoß" Text="{x:Bind Data.Rückstoß, Converter={StaticResource Input_Double}, Mode=TwoWay}" Grid.Column="1" Grid.Row="8"/>
+        <TextBox x:Name="Rückstoß" Text="{x:Bind Data.Rückstoß, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Grid.Column="1" Grid.Row="8"/>
         <TextBlock x:Uid="Model_Fernkampfwaffe_Modi" Grid.Column="0" Grid.Row="9"/>
         <TextBox x:Name="Modi" Text="{x:Bind Data.Modi, Mode=TwoWay}" Grid.Column="1" Grid.Row="9"/>
     </Grid>

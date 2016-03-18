@@ -12,7 +12,12 @@
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     >
     <ContentDialog.Resources>
-        <Converter:io_ZahlenDouble x:Key="Input_Double"/>
+       <ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </ContentDialog.Resources>
 
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -32,7 +37,7 @@
         <TextBlock x:Uid="Model_Typ" Grid.Column="0" Grid.Row="1"/>
         <TextBox Name="Typ" Text="{x:Bind Data.Typ, Mode=TwoWay}" Grid.Column="1" Grid.Row="1"/>
         <TextBlock x:Uid="Model_Wert" Grid.Column="0" Grid.Row="2"/>
-        <TextBox Name="Wert" Text="{x:Bind Data.Wert, Mode=TwoWay, Converter={StaticResource Input_Double}}" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Name="Wert" Text="{x:Bind Data.Wert, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.Row="2"/>
         <TextBlock x:Uid="Model_Zusatz" Grid.Column="0" Grid.Row="3"/>
         <TextBox Name="Zusatz" Text="{x:Bind Data.Zusatz, Mode=TwoWay}" Grid.Column="1" Grid.Row="3"/>
         <TextBlock x:Uid="Model_Notiz" Grid.Column="0" Grid.Row="4"/>

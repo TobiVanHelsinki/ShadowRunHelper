@@ -9,7 +9,21 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return value.ToString()+ " ¥";
+            string returnvalue = "";
+            int j = 1;
+            for (int i = (value.ToString()).Length-1; i >= 0 ; i--)
+            {
+                returnvalue += (value.ToString())[i];
+                if (j%3==0 && i>0)
+                {
+                    returnvalue += ".";//todo lokalisiern
+                }
+                j++;
+            }
+            char[] c = returnvalue.ToCharArray();
+            Array.Reverse(c);
+            returnvalue = new string(c);
+            return returnvalue  + " ¥";
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {

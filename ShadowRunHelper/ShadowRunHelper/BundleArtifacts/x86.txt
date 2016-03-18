@@ -1,1 +1,1 @@
-MainPackage=d:\###Coden\ShadowRunHelper\ShadowRunHelper\ShadowRunHelper\bin\x86\Release\ShadowRunHelper_1.1.4.0_x86.appx
+MainPackage=D:\###Coden\ShadowRunHelper\ShadowRunHelper\ShadowRunHelper\bin\x86\Release\ShadowRunHelper_1.1.7.0_x86.appx
