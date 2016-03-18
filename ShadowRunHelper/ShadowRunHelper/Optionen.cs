@@ -26,7 +26,7 @@ namespace ShadowRunHelper
         {
             get
             {
-                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
                 Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
                 bool temp = false;
@@ -42,7 +42,7 @@ namespace ShadowRunHelper
             }
             set
             {
-                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
                 Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
                 container.Values[Variablen.CONTAINER_SETTINGS_SAVE_CHAR_ON_EXIT] = value;
@@ -55,7 +55,7 @@ namespace ShadowRunHelper
             get
             {
                 
-            Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
             Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
             bool temp = false;
@@ -71,7 +71,7 @@ namespace ShadowRunHelper
         }
             set
             {
-                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
                 Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
                 container.Values[Variablen.CONTAINER_SETTINGS_LOAD_CHAR_ON_START] = value;
@@ -82,7 +82,7 @@ namespace ShadowRunHelper
         {
             get
             {
-                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
                 Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
                 bool temp = false;
@@ -98,7 +98,7 @@ namespace ShadowRunHelper
             }
             set
             {
-                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
                 Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
                 container.Values[Variablen.CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS] = value;
@@ -126,7 +126,7 @@ namespace ShadowRunHelper
             }
             set
             {
-                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
                 Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
                 container.Values[Variablen.CONTAINER_SETTINGS_ORDNERMODE] = value;
@@ -154,7 +154,7 @@ namespace ShadowRunHelper
             }
             set
             {
-                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+                Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
                 Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
                 container.Values[Variablen.CONTAINER_SETTINGS_ORDNERMODE_PFAD] = value;
