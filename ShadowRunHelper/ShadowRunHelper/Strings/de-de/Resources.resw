@@ -533,4 +533,10 @@
   <data name="UI_Optionen_Ordnermode_Pfad.Text" xml:space="preserve">
     <value>Pfad</value>
   </data>
+  <data name="Model_Handlung_GegenZusammensetzung.Text" xml:space="preserve">
+    <value>Wehren mit:</value>
+  </data>
+  <data name="UI_Btn_Bearbeiten_GegenZus.Content" xml:space="preserve">
+    <value>Wehren Bearbeiten</value>
+  </data>
 </root>

@@ -311,6 +311,7 @@ namespace ShadowRunHelper.IO
                 newChar.HandlungController[maxID].Data.Notiz = item.Data.Notiz;
                 newChar.HandlungController[maxID].Data.Zusammensetzung = item.Data.Zusammensetzung;
                 newChar.HandlungController[maxID].Data.GrenzeZusammensetzung = item.Data.GrenzeZusammensetzung;
+                newChar.HandlungController[maxID].Data.GegenZusammensetzung = item.Data.GegenZusammensetzung;
                 maxID++;
             }
             newChar.HD.toggleHDEdit(true);

@@ -175,5 +175,11 @@ namespace ShadowRunHelper
                 FlyoutBase.ShowAttachedFlyout(element);
             }
         }
+
+        private async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)
+        {
+            HD_Wahl dialog = new HD_Wahl(((CharController.Handlung)((Button)sender).DataContext).Data, ViewModel.Current.HD, 3);
+            await dialog.ShowAsync();
+        }
     }
 }

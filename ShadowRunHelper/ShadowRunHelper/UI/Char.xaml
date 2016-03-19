@@ -97,9 +97,38 @@
                                                             </DataTemplate>
                                                         </GridView.ItemTemplate>
                                                     </GridView>
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_GegenZusammensetzung"/>
+
+                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Data.Gegen, Mode=OneWay}"/>
+
+                                                    </StackPanel>
+                                          
+
+                                                    <GridView Name="GegZus_ListVIew" ItemsSource="{x:Bind Data.GegenZusammensetzung, Mode=OneWay}" >
+                                                        <GridView.ItemTemplate >
+                                                            <DataTemplate >
+                                                                <Grid Name="GeGZus_ListVIew_Stack">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition/>
+                                                                        <RowDefinition/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <TextBlock Text="{Binding Value.Bezeichner, Mode=OneWay}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
+                                                                    <TextBlock Text="{Binding Value.Wert, Mode=OneWay}"  Grid.Column="1" Grid.Row="1"/>
+                                                                    <TextBlock Text="{Binding Value.Typ, Mode=OneWay}"  Grid.Column="0" Grid.Row="1"/>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </GridView.ItemTemplate>
+                                                    </GridView>
                                                     <Button x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="Edit_Click"/>
                                                     <Button x:Uid="UI_Btn_Bearbeiten_Zus" Name="Handlung_Zus_Edit" Click="HandlungEditZusDialog_Click"/>
                                                     <Button x:Uid="UI_Btn_Bearbeiten_GrenzeZus" Name="Handlung_GrenzeZus_Edit" Click="HandlungEditGrenzeZusDialog_Click"/>
+                                                    <Button x:Uid="UI_Btn_Bearbeiten_GegenZus" Name="Handlung_GegenZus_Edit" Click="HandlungEditGegenZusDialog_Click"/>
                                                     <Button x:Uid="UI_Btn_Loeschen" Name="Handlung_Del" Click="Del_Click"/>
                                                 </StackPanel>
                                             </Flyout>

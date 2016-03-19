@@ -65,6 +65,21 @@ namespace ShadowRunHelper.CharController
                     this.Data.Grenze = temp;
                 }
                 temp = 0;
+                templist = new int[this.Data.GegenZusammensetzung.Count];
+                this.Data.GegenZusammensetzung.Keys.CopyTo(templist, 0);
+                foreach (int i in templist)
+                {
+                    if (((Controller.HashDictionary)sender)[i].Typ != "Handlung")
+                    {
+                        this.Data.GegenZusammensetzung[i] = ((Controller.HashDictionary)sender)[i];
+                    }
+                    temp += this.Data.GegenZusammensetzung[i].Wert;
+                }
+                if (this.Data.Gegen != temp)
+                {
+                    this.Data.Gegen = temp;
+                }
+                temp = 0;
             }
             catch (System.Collections.Generic.KeyNotFoundException)
             {

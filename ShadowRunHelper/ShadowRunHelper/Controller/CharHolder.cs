@@ -38,8 +38,17 @@ namespace ShadowRunHelper.Controller
                         if (itemZusammensetzungGrenze.Key == itemFehlerEintrag.Key)
                         {
                             Model.DictionaryCharEntry Value = itemZusammensetzungGrenze.Value;
-                            itemHandlung.Data.Zusammensetzung.Remove(itemFehlerEintrag.Key);
-                            itemHandlung.Data.Zusammensetzung.Add(itemFehlerEintrag.Value, Value);
+                            itemHandlung.Data.GrenzeZusammensetzung.Remove(itemFehlerEintrag.Key);
+                            itemHandlung.Data.GrenzeZusammensetzung.Add(itemFehlerEintrag.Value, Value);
+                        }
+                    }
+                    foreach (var itemZusammensetzungGegen in itemHandlung.Data.GegenZusammensetzung)
+                    {
+                        if (itemZusammensetzungGegen.Key == itemFehlerEintrag.Key)
+                        {
+                            Model.DictionaryCharEntry Value = itemZusammensetzungGegen.Value;
+                            itemHandlung.Data.GegenZusammensetzung.Remove(itemFehlerEintrag.Key);
+                            itemHandlung.Data.GegenZusammensetzung.Add(itemFehlerEintrag.Value, Value);
                         }
                     }
                 }

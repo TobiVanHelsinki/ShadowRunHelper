@@ -49,13 +49,13 @@
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Notiz" Grid.Column="0" Grid.Row="4"/>
         <TextBox x:Name="Notiz" Text="{x:Bind Data.Notiz, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="4"/>
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="5"/>
-        <TextBox x:Name="Anzahl" Text="{x:Bind Data.Anzahl, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="5"/>
+        <TextBox x:Name="Anzahl" Text="{x:Bind Data.Anzahl, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="5"/>
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Waffe_SchadenTyp" Grid.Column="0" Grid.Row="6"/>
         <TextBox x:Name="SchadenTyp" Text="{x:Bind Data.SchadenTyp, Mode=TwoWay, Converter={StaticResource i_char}}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="6"/>
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Waffe_PB" Grid.Column="0" Grid.Row="7"/>
-        <TextBox x:Name="PB" Text="{x:Bind Data.PB, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="7"/>
+        <TextBox x:Name="PB" Text="{x:Bind Data.PB, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="7"/>
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Fernkampfwaffe_Rückstoß" Grid.Column="0" Grid.Row="8"/>
-        <TextBox x:Name="Rückstoß" Text="{x:Bind Data.Rückstoß, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="8"/>
+        <TextBox x:Name="Rückstoß" Text="{x:Bind Data.Rückstoß, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="8"/>
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Fernkampfwaffe_Modi" Grid.Column="0" Grid.Row="9"/>
         <TextBox x:Name="Modi" Text="{x:Bind Data.Modi, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="9"/>
     </Grid>

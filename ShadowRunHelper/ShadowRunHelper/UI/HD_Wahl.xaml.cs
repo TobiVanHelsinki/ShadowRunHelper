@@ -46,7 +46,11 @@ namespace ShadowRunHelper
             {
                 data.GrenzeZusammensetzung = tempDic;
             }
-            
+            else if (Modus == 3)
+            {
+                data.GegenZusammensetzung = tempDic;
+            }
+
 
             ContentDialogButtonClickDeferral deferral = args.GetDeferral();
             deferral.Complete();
@@ -66,6 +70,13 @@ namespace ShadowRunHelper
             else if (Modus == 2)
             {
                 foreach (var item in data.GrenzeZusammensetzung)
+                {
+                    Zus_ListVIew.SelectRange(new ItemIndexRange(item.Key - 1, 1));
+                }
+            }
+            else if (Modus == 3)
+            {
+                foreach (var item in data.GegenZusammensetzung)
                 {
                     Zus_ListVIew.SelectRange(new ItemIndexRange(item.Key - 1, 1));
                 }

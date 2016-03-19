@@ -49,10 +49,10 @@
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="5"/>
         <TextBox Name="Anzahl" Text="{x:Bind Data.Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="5"/>
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Kommlink_Programmanzahl" Grid.Column="0" Grid.Row="6"/>
-        <TextBox Name="Programmanzahl" Text="{x:Bind Data.Programmanzahl, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="6"/>
+        <TextBox Name="Programmanzahl" Text="{x:Bind Data.Programmanzahl, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="6"/>
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Kommlink_Firewall" Grid.Column="0" Grid.Row="7"/>
-        <TextBox Name="Firewall" Text="{x:Bind Data.Firewall, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="7"/>
+        <TextBox Name="Firewall" Text="{x:Bind Data.Firewall, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="7"/>
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Kommlink_Datenverarbeitung" Grid.Column="0" Grid.Row="8"/>
-        <TextBox Name="Datenverarbeitung" Text="{x:Bind Data.Datenverarbeitung, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="8"/>
+        <TextBox Name="Datenverarbeitung" Text="{x:Bind Data.Datenverarbeitung, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="8"/>
     </Grid>
 </ContentDialog>
