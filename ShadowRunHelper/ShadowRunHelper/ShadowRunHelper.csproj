@@ -17,8 +17,8 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>ShadowRunHelper_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>B2659757D8736A6ECB48D6E5CF262300D93A180B</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>ShadowRunHelper_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>1E02514428AD2E8AC9A7FA2EE4EA1E9D7E251A45</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
@@ -254,6 +254,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="ShadowRunHelper_StoreKey.pfx" />
     <None Include="ShadowRunHelper_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +307,7 @@
     <Content Include="Assets\Logo\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Logo\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Logo\Wide310x150Logo.scale-400.png" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>

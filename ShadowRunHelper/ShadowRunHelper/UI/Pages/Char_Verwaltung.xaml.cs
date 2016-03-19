@@ -30,6 +30,7 @@ namespace ShadowRunHelper
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+
             ViewModel = (CharViewModel)e.Parameter;
             await Verwaltung.Summorys_Aktualisieren();
         }
@@ -45,7 +46,7 @@ namespace ShadowRunHelper
 
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
-           ViewModel = new CharViewModel(new Controller.CharHolder());
+           ViewModel.Current = new Controller.CharHolder();
            Frame.Navigate(typeof(Char), ViewModel);
         }
 
