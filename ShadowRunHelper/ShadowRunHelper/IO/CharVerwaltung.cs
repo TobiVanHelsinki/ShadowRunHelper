@@ -77,7 +77,7 @@ namespace ShadowRunHelper.IO
             {
                 item.Summory = item.ID.Replace('_', ' ');
                 item.Summory = item.Summory.Replace(Variablen.DATEIENDUNG_CHAR, "");
-                item.Summory += " (" + item.DateCreated.Day + "." + item.DateCreated.Month +"."+ item.DateCreated.Year + ")";
+                item.Summory += " (" + item.DateCreated.Day + "." + item.DateCreated.Month +"."+ item.DateCreated.Year + " " + item.DateCreated.Hour + ":" + item.DateCreated.Minute +")";
                 Summorys.Add(item);
             }
 
