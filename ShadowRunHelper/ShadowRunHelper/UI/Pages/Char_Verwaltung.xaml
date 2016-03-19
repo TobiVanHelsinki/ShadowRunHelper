@@ -10,7 +10,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Ressourcen/ResourceDictionary_Char_Verwaltung.xaml"/>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char_Verwaltung.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

@@ -539,4 +539,16 @@
   <data name="UI_Btn_Bearbeiten_GegenZus.Content" xml:space="preserve">
     <value>Wehren Bearbeiten</value>
   </data>
+  <data name="UI_Optionen_Bewerten.Text" xml:space="preserve">
+    <value>Diese App im Store Bewerten</value>
+  </data>
+  <data name="UI_Optionen_Datenschutz.Text" xml:space="preserve">
+    <value>Diese App sammelt keine Daten - warum auch?</value>
+  </data>
+  <data name="UI_Optionen_KontaktBtn.Content" xml:space="preserve">
+    <value>E-Mail Schreiben</value>
+  </data>
+  <data name="UI_Optionen_U_Datenschutz.Text" xml:space="preserve">
+    <value>Datenschutzerklärung:</value>
+  </data>
 </root>

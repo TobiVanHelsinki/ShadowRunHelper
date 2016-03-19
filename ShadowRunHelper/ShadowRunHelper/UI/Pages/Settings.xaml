@@ -10,7 +10,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Ressourcen/ResourceDictionary_Settings.xaml" />
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Settings.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
@@ -35,8 +35,15 @@
             <TextBlock x:Uid="UI_Optionen_Hilfe" Style="{StaticResource TextInhaltGroß}"/>
             <TextBlock x:Uid="UI_Optionen_U_Rechtliches"  Style="{StaticResource Überschrift2}"/>
             <TextBlock x:Uid="UI_Optionen_Inhaber"  Style="{StaticResource TextInhaltKlein}"/>
+
+            <HyperlinkButton NavigateUri="mailto:TobiVanHelsinki@live.de" x:Uid="UI_Optionen_KontaktBtn"/>
+
+
+
             <TextBlock x:Uid="UI_Optionen_Kontakt"  Style="{StaticResource TextInhaltKlein}"/>
             <TextBlock x:Uid="UI_Optionen_Pegasus"  Style="{StaticResource TextInhaltKlein}"/>
+            <TextBlock x:Uid="UI_Optionen_U_Datenschutz" Style="{StaticResource Überschrift2}"/>
+            <TextBlock x:Uid="UI_Optionen_Datenschutz"  Style="{StaticResource TextInhaltKlein}"/>
 
         </StackPanel>
     </ScrollViewer>

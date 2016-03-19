@@ -162,8 +162,8 @@
     <Compile Include="Model\DictionaryCharEntry.cs" />
     <Compile Include="CharModel\Handlung.cs" />
     <Compile Include="Model\CharViewModel.cs" />
-    <Compile Include="Optionen.cs" />
-    <Compile Include="OptionViewModel.cs" />
+    <Compile Include="Model\Optionen.cs" />
+    <Compile Include="Model\OptionViewModel.cs" />
     <Compile Include="Ressourcen\TypNamen.cs" />
     <Compile Include="UI\Converter\CB.cs" />
     <Compile Include="UI\Converter\i_char.cs" />
@@ -225,22 +225,22 @@
       <DependentUpon>Edit_Sin.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Fehler\FehlerAnzeige.cs" />
-    <Compile Include="UI\HD_Wahl.xaml.cs">
+    <Compile Include="UI\Parts\HD_Wahl.xaml.cs">
       <DependentUpon>HD_Wahl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Edit\Edit_Handlung.xaml.cs">
       <DependentUpon>Edit_Handlung.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Settings.xaml.cs">
+    <Compile Include="UI\Pages\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Char.xaml.cs">
+    <Compile Include="UI\Pages\Char.xaml.cs">
       <DependentUpon>Char.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Char_Verwaltung.xaml.cs">
+    <Compile Include="UI\Pages\Char_Verwaltung.xaml.cs">
       <DependentUpon>Char_Verwaltung.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\MainPage.xaml.cs">
+    <Compile Include="UI\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\CharSummory.cs" />
@@ -248,10 +248,10 @@
     <Compile Include="UI\Parts\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\TestPage.xaml.cs">
+    <Compile Include="UI\Pages\TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Variablen.cs" />
+    <Compile Include="Model\Variablen.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -388,7 +388,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\HD_Wahl.xaml">
+    <Page Include="UI\Parts\HD_Wahl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -416,19 +416,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Settings.xaml">
+    <Page Include="UI\Pages\Settings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Char.xaml">
+    <Page Include="UI\Pages\Char.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Char_Verwaltung.xaml">
+    <Page Include="UI\Pages\Char_Verwaltung.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\MainPage.xaml">
+    <Page Include="UI\Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -440,7 +440,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\TestPage.xaml">
+    <Page Include="UI\Pages\TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
