@@ -959,10 +959,10 @@
                         </StackPanel>
                         <Grid Name="Implantat_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="1" x:Uid="Model_Wert" Style="{StaticResource ListView_Item_Text}"/>
@@ -974,10 +974,10 @@
                                 <DataTemplate x:DataType="CharController:Implantat">
                                     <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
                                         <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="4*"/>
                                         </Grid.ColumnDefinitions>
                                         <FlyoutBase.AttachedFlyout>
                                             <Flyout>
@@ -1018,9 +1018,9 @@
                         </StackPanel>
                         <Grid Name="Sin_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="1" x:Uid="Model_Wert" Style="{StaticResource ListView_Item_Text}"/>
@@ -1031,9 +1031,9 @@
                                 <DataTemplate x:DataType="CharController:Sin">
                                     <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="100"/>
                                             <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="1*"/>
                                         </Grid.ColumnDefinitions>
                                         <FlyoutBase.AttachedFlyout>
                                             <Flyout>

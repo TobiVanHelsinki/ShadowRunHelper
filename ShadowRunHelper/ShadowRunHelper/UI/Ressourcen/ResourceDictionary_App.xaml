@@ -36,6 +36,14 @@
         <Setter Property="InputScope" Value="Digits"/>
     </Style>
 
+    <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="EditZahlen">
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="EditTextBox">
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="EditTextBlock">
+    </Style>
 
 </ResourceDictionary>
 

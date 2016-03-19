@@ -11,59 +11,65 @@
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     
     >
-
+    <ContentDialog.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentDialog.Resources>
     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                     VerticalScrollBarVisibility="Disabled">
     <StackPanel Orientation="Vertical">
    
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Kontostand" Text="{x:Bind Data.Kontostand, Mode=TwoWay}" Grid.Column="1" Grid.Row="15"/>
-                <TextBlock x:Uid="Model_Person_Kontostand" Grid.Column="0" Grid.Row="15"/>
+                <TextBox Name="Kontostand" Text="{x:Bind Data.Kontostand, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="15"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Kontostand" Grid.Column="0" Grid.Row="15"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Karma_Aktuell" Text="{x:Bind Data.Karma_Aktuell, Mode=TwoWay}" Grid.Column="1" Grid.Row="16"/>
-                <TextBlock x:Uid="Model_Person_Karma_Aktuell" Grid.Column="0" Grid.Row="16"/>
+                <TextBox Name="Karma_Aktuell" Text="{x:Bind Data.Karma_Aktuell, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="16"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Karma_Aktuell" Grid.Column="0" Grid.Row="16"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Karma_Gesamt" Text="{x:Bind Data.Karma_Gesamt, Mode=TwoWay}" Grid.Column="1" Grid.Row="17"/>
-                <TextBlock x:Uid="Model_Person_Karma_Gesamt" Grid.Column="0" Grid.Row="17"/>
+                <TextBox Name="Karma_Gesamt" Text="{x:Bind Data.Karma_Gesamt, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="17"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Karma_Gesamt" Grid.Column="0" Grid.Row="17"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Edge_Aktuell" Text="{x:Bind Data.Edge_Aktuell, Mode=TwoWay}" Grid.Column="1" Grid.Row="18"/>
-                <TextBlock x:Uid="Model_Person_Edge_Aktuell" Grid.Column="0" Grid.Row="18"/>
+                <TextBox Name="Edge_Aktuell" Text="{x:Bind Data.Edge_Aktuell, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="18"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Edge_Aktuell" Grid.Column="0" Grid.Row="18"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Edge_Gesamt" Text="{x:Bind Data.Edge_Gesamt, Mode=TwoWay}" Grid.Column="1" Grid.Row="19"/>
-                <TextBlock x:Uid="Model_Person_Edge_Gesamt" Grid.Column="0" Grid.Row="19"/>
+                <TextBox Name="Edge_Gesamt" Text="{x:Bind Data.Edge_Gesamt, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="19"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Edge_Gesamt" Grid.Column="0" Grid.Row="19"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_K" Text="{x:Bind Data.Schaden_K, Mode=TwoWay}" Grid.Column="1" Grid.Row="20"/>
-                <TextBlock x:Uid="Model_Person_Schaden_K" Grid.Column="0" Grid.Row="20"/>
+                <TextBox Name="Schaden_K" Text="{x:Bind Data.Schaden_K, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="20"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_K" Grid.Column="0" Grid.Row="20"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_K_max" Text="{x:Bind Data.Schaden_K_max, Mode=TwoWay}" Grid.Column="1" Grid.Row="21"/>
-                <TextBlock x:Uid="Model_Person_Schaden_K_max" Grid.Column="0" Grid.Row="21"/>
+                <TextBox Name="Schaden_K_max" Text="{x:Bind Data.Schaden_K_max, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="21"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_K_max" Grid.Column="0" Grid.Row="21"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_G" Text="{x:Bind Data.Schaden_G, Mode=TwoWay}" Grid.Column="1" Grid.Row="22"/>
-                <TextBlock x:Uid="Model_Person_Schaden_G" Grid.Column="0" Grid.Row="22"/>
+                <TextBox Name="Schaden_G" Text="{x:Bind Data.Schaden_G, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="22"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_G" Grid.Column="0" Grid.Row="22"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_G_max" Text="{x:Bind Data.Schaden_G_max, Mode=TwoWay}" Grid.Column="1" Grid.Row="23"/>
-                <TextBlock x:Uid="Model_Person_Schaden_G_max" Grid.Column="0" Grid.Row="23"/>
+                <TextBox Name="Schaden_G_max" Text="{x:Bind Data.Schaden_G_max, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="23"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_G_max" Grid.Column="0" Grid.Row="23"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_M" Text="{x:Bind Data.Schaden_M, Mode=TwoWay}" Grid.Column="1" Grid.Row="24"/>
-                <TextBlock x:Uid="Model_Person_Schaden_M" Grid.Column="0" Grid.Row="24"/>
+                <TextBox Name="Schaden_M" Text="{x:Bind Data.Schaden_M, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="24"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_M" Grid.Column="0" Grid.Row="24"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_M_max" Text="{x:Bind Data.Schaden_M_max, Mode=TwoWay}" Grid.Column="1" Grid.Row="25"/>
-                <TextBlock x:Uid="Model_Person_Schaden_M_max" Grid.Column="0" Grid.Row="25"/>
+                <TextBox Name="Schaden_M_max" Text="{x:Bind Data.Schaden_M_max, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="25"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_M_max" Grid.Column="0" Grid.Row="25"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-               
-                <TextBox Name="Initiative" Text="{x:Bind Data.Initiative, Mode=TwoWay}" Grid.Column="1" Grid.Row="26"/>
-                <TextBlock x:Uid="Model_Person_Initiative" Grid.Column="0" Grid.Row="26"/>
+
+                <TextBox Name="Initiative" Text="{x:Bind Data.Initiative, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="26"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Initiative" Grid.Column="0" Grid.Row="26"/>
             </StackPanel>
         </StackPanel>
     </ScrollViewer>
