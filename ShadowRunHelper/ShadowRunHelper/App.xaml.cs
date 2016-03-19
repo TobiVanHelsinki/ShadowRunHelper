@@ -2,6 +2,7 @@
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -26,6 +27,13 @@ namespace ShadowRunHelper
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+
+            StorageFolder RoamingFolder = ApplicationData.Current.RoamingFolder;
+            RoamingFolder.CreateFolderAsync(Variablen.CONTAINER_CHAR);
+            ApplicationDataContainer LocalSettings = ApplicationData.Current.LocalSettings;
+            LocalSettings.CreateContainer(Variablen.CONTAINER_SETTINGS, 0);
+               
         }
 
         /// <summary>

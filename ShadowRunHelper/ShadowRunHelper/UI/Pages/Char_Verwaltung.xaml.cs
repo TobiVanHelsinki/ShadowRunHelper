@@ -20,6 +20,7 @@ namespace ShadowRunHelper
             this.InitializeComponent();
             ProgressRing_Char.IsActive = true;
             this.Verwaltung = new IO.CharVerwaltung();
+            
             ProgressRing_Char.IsActive = false;
         }
 
@@ -27,11 +28,12 @@ namespace ShadowRunHelper
         {
             this.Verwaltung = null;
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (CharViewModel)e.Parameter;
+            await Verwaltung.Summorys_Aktualisieren();
         }
-        
+
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             FrameworkElement element = sender as FrameworkElement;

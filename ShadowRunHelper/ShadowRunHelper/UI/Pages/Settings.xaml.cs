@@ -33,7 +33,7 @@ namespace ShadowRunHelper
                 }
                 catch (System.Exception)
                 {
-                    throw;
+
                 }
             }
 

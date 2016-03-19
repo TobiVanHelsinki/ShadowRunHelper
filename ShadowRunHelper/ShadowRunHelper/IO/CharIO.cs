@@ -321,16 +321,21 @@ namespace ShadowRunHelper.IO
 
         public static async Task<ObservableCollection<CharSummory>> getListofChars(StorageFolder CharFolder)
         {
-            IReadOnlyList<StorageFile> Liste = await CharFolder.GetFilesAsync();
-
             ObservableCollection<CharSummory> templist = new ObservableCollection<CharSummory>();
-            foreach (var item in Liste)
+            try
             {
-                if (item.FileType == Variablen.DATEIENDUNG_CHAR)
+                IReadOnlyList<StorageFile> Liste = await CharFolder.GetFilesAsync();
+                foreach (var item in Liste)
                 {
-                    Windows.Storage.FileProperties.BasicProperties basicProperties = await item.GetBasicPropertiesAsync();
-                    templist.Add(new CharSummory(item.Name, "", basicProperties.DateModified));
+                    if (item.FileType == Variablen.DATEIENDUNG_CHAR)
+                    {
+                        Windows.Storage.FileProperties.BasicProperties basicProperties = await item.GetBasicPropertiesAsync();
+                        templist.Add(new CharSummory(item.Name, "", basicProperties.DateModified));
+                    }
                 }
+            }
+            catch (Exception)
+            {
             }
             return templist;
         }
@@ -363,7 +368,7 @@ namespace ShadowRunHelper.IO
             }
             catch (Exception)
             {
-                throw;
+                
             }
            
         }
