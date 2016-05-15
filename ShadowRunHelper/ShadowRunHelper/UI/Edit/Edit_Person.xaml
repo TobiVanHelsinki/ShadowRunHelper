@@ -73,6 +73,9 @@
                 <TextBox Name="Essenz" Text="{x:Bind Data.Essenz, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="12"/>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Essenz" Grid.Column="0" Grid.Row="12"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <DatePicker x:Uid="Model_Person_Essenz_birthDatePicker" Name="GebDatePicker" Date="{Binding Data.GeburtsdatumDateTimeOffset, Mode=TwoWay}" DateChanged="DatePicker_DateChanged" Header="Date of birth" Grid.Column="1" Grid.Row="12"/>
+            </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </ContentDialog>

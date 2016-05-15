@@ -27,7 +27,16 @@ namespace ShadowRunHelper.IO
         private static Controller.CharHolder JSON_to_Char(string fileContent)
         {
             Controller.CharHolder tempChar = new Controller.CharHolder();
-            tempChar = JsonConvert.DeserializeObject<Controller.CharHolder>(fileContent);
+            try
+            {
+                tempChar = JsonConvert.DeserializeObject<Controller.CharHolder>(fileContent);
+            }
+            catch (Exception)
+            {
+                tempChar = new Controller.CharHolder();
+                //TODO Message system
+            }
+            
 
             Controller.CharHolder newChar = new Controller.CharHolder(tempChar.NahkampfwaffeController.HD_ID, tempChar.FernkampfwaffeController.HD_ID, tempChar.KommlinkController.HD_ID, tempChar.CyberDeckController.HD_ID, tempChar.VehikelController.HD_ID, tempChar.PanzerungController.HD_ID);
             //    newChar.Char_ID = tempChar.Char_ID;

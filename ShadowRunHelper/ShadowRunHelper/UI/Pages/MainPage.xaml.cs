@@ -151,5 +151,18 @@ namespace ShadowRunHelper
                 }
             }
         }
+
+
+        private async void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            String Controller_Name = ((String)((Button)sender).Name);
+
+            if (Controller_Name.Contains("Person2"))
+            {
+                UI.Edit.Edit_Person2 dialog = new UI.Edit.Edit_Person2(ViewModel.Current.Person, ViewModel.Current.HD);
+                await dialog.ShowAsync();
+            }
+        }
+
     }
 }

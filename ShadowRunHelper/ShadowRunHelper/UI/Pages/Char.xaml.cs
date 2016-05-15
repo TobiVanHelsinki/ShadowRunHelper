@@ -138,11 +138,6 @@ namespace ShadowRunHelper
                 Edit_Person dialog = new Edit_Person(ViewModel.Current.Person, ViewModel.Current.HD);
                 await dialog.ShowAsync();
             }
-            else if (Controller_Name.Contains("Person2"))
-            {
-                Edit_Person2 dialog = new Edit_Person2(ViewModel.Current.Person, ViewModel.Current.HD);
-                await dialog.ShowAsync();
-            }
         }
 
 

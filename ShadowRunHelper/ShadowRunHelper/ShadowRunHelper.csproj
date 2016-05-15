@@ -167,6 +167,7 @@
     <Compile Include="Ressourcen\TypNamen.cs" />
     <Compile Include="UI\Converter\CB.cs" />
     <Compile Include="UI\Converter\i_char.cs" />
+    <Compile Include="UI\Converter\io_GebDatum.cs" />
     <Compile Include="UI\Converter\o_ZahlenYen.cs" />
     <Compile Include="UI\Converter\o_ModelTyp.cs" />
     <Compile Include="UI\Converter\io_ZahlenDouble.cs" />

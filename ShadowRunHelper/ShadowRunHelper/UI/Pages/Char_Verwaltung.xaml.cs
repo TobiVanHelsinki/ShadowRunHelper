@@ -47,6 +47,7 @@ namespace ShadowRunHelper
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
            ViewModel.Current = new Controller.CharHolder();
+            ViewModel.currentState = Controller.TApp.TCharState.NEW_CHAR;
            Frame.Navigate(typeof(Char), ViewModel);
         }
 

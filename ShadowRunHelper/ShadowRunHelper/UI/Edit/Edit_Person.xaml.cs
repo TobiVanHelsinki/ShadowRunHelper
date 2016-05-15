@@ -12,12 +12,29 @@ namespace ShadowRunHelper.UI.Edit
             this.InitializeComponent();
             this.Data = data;
             this.HD = hd;
+            //System.DateTimeOffset GebDatePickerNew = new System.DateTimeOffset();
+            //GebDatePickerNew.DateTime = new System.DateTimeOffset(this.Data.Geburtsdatum2);
+            //GebDatePickerNew.Date = 
+            try
+            {
+                this.GebDatePicker.Date = this.Data.GeburtsdatumDateTimeOffset;
+            }
+            catch (System.Exception)
+            {
+                System.Diagnostics.Debug.WriteLine("Faihler");
+            }
+
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             ContentDialogButtonClickDeferral deferral = args.GetDeferral();
             deferral.Complete();
+        }
+
+        private void DatePicker_DateChanged(object sender, DatePickerValueChangedEventArgs e)
+        {
+            this.Data.GeburtsdatumDateTimeOffset = ((DatePicker)sender).Date;
         }
     }
 }

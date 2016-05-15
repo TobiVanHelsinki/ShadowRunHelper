@@ -7,6 +7,7 @@
     <conv:io_ZahlenDouble x:Key="io_ZahlenDouble"/>
     <conv:o_ZahlenYen x:Key="io_ZahlenYen"/>
     <conv:o_ModelTyp x:Key="o_ModelTyp"/>
+    <conv:io_GebDatum x:Key="io_GebDatum"/>
     <conv:i_char x:Key="i_char"/>
     
  

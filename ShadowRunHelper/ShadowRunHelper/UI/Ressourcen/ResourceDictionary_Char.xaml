@@ -370,6 +370,8 @@
         <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
         <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
         <Setter Property="Background" Value="Beige"/>
+        <Setter Property="CanReorderItems" Value="True"/>
+        <Setter Property="AllowDrop" Value="True"/>
     </Style>
     <Style TargetType="GridView" x:Key="GridView">
         <Setter Property="BorderBrush" Value="Black"/>

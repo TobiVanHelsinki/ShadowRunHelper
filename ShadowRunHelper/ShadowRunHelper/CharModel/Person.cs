@@ -266,6 +266,19 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+        private DateTimeOffset geburtsdatum3 = new DateTimeOffset(2060, 1, 1, 0, 0, 0, new System.TimeSpan(0));
+        public DateTimeOffset GeburtsdatumDateTimeOffset
+        {
+            get { return geburtsdatum3; }
+            set
+            {
+                if (value != this.geburtsdatum3)
+                {
+                    this.geburtsdatum3 = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
         private string geschlecht = "";
         public string Geschlecht
         {
