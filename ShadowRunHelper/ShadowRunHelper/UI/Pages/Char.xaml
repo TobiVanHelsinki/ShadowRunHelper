@@ -41,6 +41,18 @@
                             </TextBlock>
                         </Grid>
                         <ListView Name="Handlung" ItemsSource="{x:Bind ViewModel.Current.HandlungController}" Style="{StaticResource ListView}">
+                            <ListView.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
+                                    <TextBlock  Grid.Column="1">
+                                <Run x:Uid="Model_Wert"/><Run x:Uid="Plus"/><Run x:Uid="Model_Handlung_Mod"/><Run x:Uid="KlammerAufEck"/><Run x:Uid="Model_Handlung_Grenze"/><Run x:Uid="KlammerZuEck"/>
+                                    </TextBlock>
+                                </Grid>
+                            </ListView.Header>
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharController:Handlung">
                                     <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
