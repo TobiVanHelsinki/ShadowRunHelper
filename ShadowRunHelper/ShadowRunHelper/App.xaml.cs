@@ -15,6 +15,7 @@ namespace ShadowRunHelper
     /// </summary>
     sealed partial class App : Application
     {
+
         public CharViewModel ViewModel { get; set; }
         /// <summary>
         /// Initialisiert das Singletonanwendungsobjekt.  Dies ist die erste Zeile von erstelltem Code

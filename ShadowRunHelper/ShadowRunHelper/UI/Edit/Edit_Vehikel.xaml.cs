@@ -1,13 +1,16 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using System.Collections.ObjectModel;
+using ShadowRunHelper.CharModel;
+using Windows.UI.Xaml.Controls;
 
 namespace ShadowRunHelper.UI.Edit
 {
     public sealed partial class Edit_Vehikel : ContentDialog
     {
         public CharModel.Vehikel Data;
-        public Controller.HashDictionary HD;
+        private ObservableCollection<Thing> HD;
 
-        public Edit_Vehikel(CharModel.Vehikel data, Controller.HashDictionary hd)
+        
+        public Edit_Vehikel(CharModel.Vehikel data, ObservableCollection<Thing> hd)
         {
             this.InitializeComponent();
             this.Data = data;

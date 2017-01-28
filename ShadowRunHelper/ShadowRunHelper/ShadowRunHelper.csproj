@@ -11,7 +11,7 @@
     <AssemblyName>ShadowRunHelper</AssemblyName>
     <DefaultLanguage>de-de</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
@@ -98,6 +98,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Dok\ClassDiagram5.cd" />
     <None Include="Dok\ClassDiagram1.cd" />
     <None Include="Dok\ClassDiagram2.cd" />
@@ -110,27 +111,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CharController\Connection.cs" />
+    <Compile Include="CharController\IController.cs" />
     <Compile Include="CharController\Vehikel.cs" />
-    <Compile Include="CharController\Sin.cs" />
-    <Compile Include="CharController\Nachteil.cs" />
-    <Compile Include="CharController\Vorteil.cs" />
     <Compile Include="CharController\Eigenschaft.cs" />
-    <Compile Include="CharController\Implantat.cs" />
-    <Compile Include="CharController\Programm.cs" />
-    <Compile Include="CharController\Munition.cs" />
     <Compile Include="CharController\Kommlink.cs" />
     <Compile Include="CharController\Fernkampfwaffe.cs" />
     <Compile Include="CharController\Nahkampfwaffe.cs" />
-    <Compile Include="CharController\Item.cs" />
-    <Compile Include="CharController\ControllerMultiItems.cs" />
-    <Compile Include="CharController\ControllerSingle.cs" />
-    <Compile Include="CharController\ControllerMulti.cs" />
     <Compile Include="CharController\CyberDeck.cs" />
     <Compile Include="CharController\Controller.cs" />
     <Compile Include="CharController\Attribut.cs" />
-    <Compile Include="CharController\Fertigkeit.cs" />
-    <Compile Include="CharController\Handlung.cs" />
     <Compile Include="CharModel\CyberDeck.cs" />
     <Compile Include="CharModel\Attribut.cs" />
     <Compile Include="CharModel\Connection.cs" />
@@ -157,7 +146,7 @@
     <Compile Include="CharModel\Item.cs" />
     <Compile Include="CharController\Panzerung.cs" />
     <Compile Include="Controller\CharHolder.cs" />
-    <Compile Include="CharModel\Model.cs" />
+    <Compile Include="CharModel\Thing.cs" />
     <Compile Include="CharModel\Fertigkeit.cs" />
     <Compile Include="Model\DictionaryCharEntry.cs" />
     <Compile Include="CharModel\Handlung.cs" />
@@ -172,8 +161,8 @@
     <Compile Include="UI\Converter\o_ZahlenYen.cs" />
     <Compile Include="UI\Converter\o_ModelTyp.cs" />
     <Compile Include="UI\Converter\io_ZahlenDouble.cs" />
-    <Compile Include="UI\Edit\Edit_Attribut.xaml.cs">
-      <DependentUpon>Edit_Attribut.xaml</DependentUpon>
+    <Compile Include="UI\Edit\Edit_Dialog.xaml.cs">
+      <DependentUpon>Edit_Dialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Edit\Edit_Connection.xaml.cs">
       <DependentUpon>Edit_Connection.xaml</DependentUpon>
@@ -317,7 +306,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="UI\Edit\Edit_Attribut.xaml">
+    <Page Include="UI\Edit\Edit_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

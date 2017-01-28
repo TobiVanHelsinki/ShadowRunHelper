@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 
 namespace ShadowRunHelper.Controller
 {
@@ -11,74 +13,26 @@ namespace ShadowRunHelper.Controller
     /// </summary>
     public class CharHolder
     {
-        TSystem TSystem;
-
-
-        
-        // noch ein event einbauen, damit fehler nach hier oben gegeben wreden können
-        // außerdem eine klasse für dinge wie kö und geist limit machen
-        private void Probleme_Lösen(object sender, EventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Probleme_Lösen");
-            foreach (var itemFehlerEintrag in HD.AlteHDEntrys)
-            {
-                foreach (var itemHandlung in HandlungController)
-                {
-                    foreach (var itemZusammensetzung in itemHandlung.Data.Zusammensetzung)
-                    {
-                        if (itemZusammensetzung.Key == itemFehlerEintrag.Key)
-                        {
-                            Model.DictionaryCharEntry Value = itemZusammensetzung.Value;
-                            itemHandlung.Data.Zusammensetzung.Remove(itemFehlerEintrag.Key);
-                            itemHandlung.Data.Zusammensetzung.Add(itemFehlerEintrag.Value, Value);
-                        }
-                    }
-                    foreach (var itemZusammensetzungGrenze in itemHandlung.Data.GrenzeZusammensetzung)
-                    {
-                        if (itemZusammensetzungGrenze.Key == itemFehlerEintrag.Key)
-                        {
-                            Model.DictionaryCharEntry Value = itemZusammensetzungGrenze.Value;
-                            itemHandlung.Data.GrenzeZusammensetzung.Remove(itemFehlerEintrag.Key);
-                            itemHandlung.Data.GrenzeZusammensetzung.Add(itemFehlerEintrag.Value, Value);
-                        }
-                    }
-                    foreach (var itemZusammensetzungGegen in itemHandlung.Data.GegenZusammensetzung)
-                    {
-                        if (itemZusammensetzungGegen.Key == itemFehlerEintrag.Key)
-                        {
-                            Model.DictionaryCharEntry Value = itemZusammensetzungGegen.Value;
-                            itemHandlung.Data.GegenZusammensetzung.Remove(itemFehlerEintrag.Key);
-                            itemHandlung.Data.GegenZusammensetzung.Add(itemFehlerEintrag.Value, Value);
-                        }
-                    }
-                }
-            }
-            HD.AlteHDEntrys.Clear();
-            HD.Toggle -= new HDlockedHandler(Probleme_Lösen);
-        }
-
-
-        public HashDictionary HD = new HashDictionary();
         public string APP_VERSION_NUMBER = Variablen.APP_VERSION_NUMBER;
+        public ObservableCollection<CharModel.Thing> lstAll;
+        public CharController.cController<CharModel.Handlung> CTRLHandlung { get; set; }
+        public CharController.cController<CharModel.Fertigkeit> CTRLFertigkeit { get; set; }
+        public CharController.cController<CharModel.Item> CTRLItem { get; set; }
+        public CharController.cController<CharModel.Programm> CTRLProgramm { get; set; }
+        public CharController.cController<CharModel.Munition> CTRLMunition { get; set; }
+        public CharController.cController<CharModel.Implantat> CTRLImplantat { get; set; }
+        public CharController.cController<CharModel.Vorteil> CTRLVorteil { get; set; }
+        public CharController.cController<CharModel.Nachteil> CTRLNachteil { get; set; }
+        public CharController.cController<CharModel.Connection> CTRLConnection { get; set; }
+        public CharController.cController<CharModel.Sin> CTRLSin { get; set; }
 
-        public ObservableCollection<CharController.Handlung> HandlungController { get; set; }
-        public ObservableCollection<CharController.Fertigkeit> FertigkeitController { get; set; }
-        public ObservableCollection<CharController.Attribut> AttributController { get; set; }
-        public ObservableCollection<CharController.Item> ItemController { get; set; }
-        public ObservableCollection<CharController.Programm> ProgrammController { get; set; }
-        public ObservableCollection<CharController.Munition> MunitionController { get; set; }
-        public ObservableCollection<CharController.Implantat> ImplantatController { get; set; }
-        public ObservableCollection<CharController.Vorteil> VorteilController { get; set; }
-        public ObservableCollection<CharController.Nachteil> NachteilController { get; set; }
-        public ObservableCollection<CharController.Connection> ConnectionController { get; set; }
-        public ObservableCollection<CharController.Sin> SinController { get; set; }
-
-        public CharController.Nahkampfwaffe NahkampfwaffeController { get; set; }
-        public CharController.Fernkampfwaffe FernkampfwaffeController { get; set; }
-        public CharController.Kommlink KommlinkController { get; set; }
-        public CharController.CyberDeck CyberDeckController { get; set; }
-        public CharController.Vehikel VehikelController { get; set; }
-        public CharController.Panzerung PanzerungController { get; set; }
+        public CharController.cAttributController CTRLAttribut { get; set; }
+        public CharController.cNahkampfwaffeController CTRLNahkampfwaffe { get; set; }
+        public CharController.cFernkampfwaffeController CTRLFernkampfwaffe { get; set; }
+        public CharController.cKommlinkController CTRLKommlink { get; set; }
+        public CharController.cCyberDeckController CTRLCyberDeck { get; set; }
+        public CharController.cVehikelController CTRLVehikel { get; set; }
+        public CharController.cPanzerungController CTRLPanzerung { get; set; }
 
         public CharModel.Person Person { get; set; }
 
@@ -87,77 +41,89 @@ namespace ShadowRunHelper.Controller
         /// </summary>
         public CharHolder()
         {
-            TSystem = new TSystem();
-            System.Diagnostics.Debug.WriteLine("CharHolder(): Probleme_Lösen Registrieren");
-            HD.Toggle += new HDlockedHandler(Probleme_Lösen);
+            lstAll = new ObservableCollection<CharModel.Thing>();
+            CTRLHandlung = new CharController.cController<CharModel.Handlung>();
+            CTRLFertigkeit = new CharController.cController<CharModel.Fertigkeit>();
+            CTRLItem= new CharController.cController<CharModel.Item>();
+            CTRLProgramm = new CharController.cController<CharModel.Programm>();
+            CTRLMunition = new CharController.cController<CharModel.Munition>();
+            CTRLImplantat = new CharController.cController<CharModel.Implantat>();
+            CTRLVorteil = new CharController.cController<CharModel.Vorteil>();
+            CTRLNachteil = new CharController.cController<CharModel.Nachteil>();
+            CTRLConnection = new CharController.cController<CharModel.Connection>();
+            CTRLSin = new CharController.cController<CharModel.Sin>();
 
-            HandlungController = new ObservableCollection<CharController.Handlung>();
-            FertigkeitController = new ObservableCollection<CharController.Fertigkeit>();
-            AttributController = new ObservableCollection<CharController.Attribut>();
-            ItemController = new ObservableCollection<CharController.Item>();
-            ProgrammController = new ObservableCollection<CharController.Programm>();
-            MunitionController = new ObservableCollection<CharController.Munition>();
-            ImplantatController = new ObservableCollection<CharController.Implantat>();
-            VorteilController = new ObservableCollection<CharController.Vorteil>();
-            NachteilController = new ObservableCollection<CharController.Nachteil>();
-            ConnectionController = new ObservableCollection<CharController.Connection>();
-            SinController = new ObservableCollection<CharController.Sin>();
-
-            NahkampfwaffeController = new CharController.Nahkampfwaffe(HD, 0);
-            FernkampfwaffeController = new CharController.Fernkampfwaffe(HD, 0);
-            KommlinkController = new CharController.Kommlink(HD, 0);
-            CyberDeckController = new CharController.CyberDeck(HD, 0);
-            VehikelController = new CharController.Vehikel(HD, 0);
-            PanzerungController = new CharController.Panzerung(HD, 0);
+            CTRLAttribut = new CharController.cAttributController();
+            CTRLNahkampfwaffe = new CharController.cNahkampfwaffeController();
+            CTRLFernkampfwaffe = new CharController.cFernkampfwaffeController();
+            CTRLKommlink = new CharController.cKommlinkController();
+            CTRLCyberDeck = new CharController.cCyberDeckController();
+            CTRLVehikel = new CharController.cVehikelController();
+            CTRLPanzerung = new CharController.cPanzerungController();
 
             Person = new CharModel.Person();
 
             
         }
 
-        private void HD_Toggle(object sender, EventArgs e)
+
+        internal void Add(ThingDefs thingDefs)
         {
-            throw new NotImplementedException();
+            CharModel.Thing tToAdd = null;
+            switch (thingDefs)
+            {
+                case ThingDefs.Handlung:
+                    tToAdd = CTRLHandlung.AddNewThing();
+                    break;
+                case ThingDefs.Fertigkeit:
+                    tToAdd = CTRLFertigkeit.AddNewThing();
+                    break;
+                case ThingDefs.Item:
+                    break;
+                case ThingDefs.Programm:
+                    break;
+                case ThingDefs.Munition:
+                    break;
+                case ThingDefs.Implantat:
+                    break;
+                case ThingDefs.Vorteil:
+                    break;
+                case ThingDefs.Nachteil:
+                    break;
+                case ThingDefs.Connection:
+                    break;
+                case ThingDefs.Sin:
+                    break;
+                case ThingDefs.Attribut:
+                    tToAdd = CTRLAttribut.AddNewThing();
+                    break;
+                case ThingDefs.Nahkampfwaffe:
+                    break;
+                case ThingDefs.Fernkampfwaffe:
+                    break;
+                case ThingDefs.Kommlink:
+                    break;
+                case ThingDefs.CyberDeck:
+                    tToAdd = CTRLCyberDeck.AddNewThing();
+                    break;
+                case ThingDefs.Vehikel:
+                    break;
+                case ThingDefs.Panzerung:
+                    break;
+                default:
+                    break;
+            }
+            if (tToAdd == null)
+            {
+                throw new NotImplementedException();
+            }
+            lstAll.Add(tToAdd);
+                throw new NotImplementedException();
         }
 
         /// <summary>
         /// Konstruktor nutzen, wenn Daten der Controller und Objekte bereits vorhanden, Parmas sind die ID der MultiController
         /// </summary>
-        public CharHolder(
-                        int nahkampfwaffe,
-                        int fernkampfwaffe,
-                        int kommlink,
-                        int cyberdeck,
-                        int vehikel,
-                        int panzerung
-            )
-        {
-            TSystem = new TSystem();
-            System.Diagnostics.Debug.WriteLine("CharHolder(): Probleme_Lösen Registrieren");
-            HD.Toggle += new HDlockedHandler(Probleme_Lösen);
-
-            HandlungController = new ObservableCollection<CharController.Handlung>();
-            HandlungController = new ObservableCollection<CharController.Handlung>();
-            FertigkeitController = new ObservableCollection<CharController.Fertigkeit>();
-            AttributController = new ObservableCollection<CharController.Attribut>();
-            ItemController = new ObservableCollection<CharController.Item>();
-            ProgrammController = new ObservableCollection<CharController.Programm>();
-            MunitionController = new ObservableCollection<CharController.Munition>();
-            ImplantatController = new ObservableCollection<CharController.Implantat>();
-            VorteilController = new ObservableCollection<CharController.Vorteil>();
-            NachteilController = new ObservableCollection<CharController.Nachteil>();
-            ConnectionController = new ObservableCollection<CharController.Connection>();
-            SinController = new ObservableCollection<CharController.Sin>();
-
-            NahkampfwaffeController = new CharController.Nahkampfwaffe(HD, nahkampfwaffe);
-            FernkampfwaffeController = new CharController.Fernkampfwaffe(HD, fernkampfwaffe);
-            KommlinkController = new CharController.Kommlink(HD, kommlink);
-            CyberDeckController = new CharController.CyberDeck(HD, cyberdeck);
-            VehikelController = new CharController.Vehikel(HD, vehikel);
-            PanzerungController = new CharController.Panzerung(HD, panzerung);
-
-            Person = new CharModel.Person();
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -167,175 +133,58 @@ namespace ShadowRunHelper.Controller
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        /// <summary>
-        /// wird zum sauberen hinzufügen eines objectes zum Holer benutzt
-        /// </summary>
-        /// <param name="Controller_Name"></param>
-        /// <param name="hd_ID"></param>
-        public void Add(String Controller_Name, int hd_ID)
-        {
-            if (Controller_Name.Contains("Handlung"))
-            {
-                HandlungController.Add(new CharController.Handlung(this.HD, hd_ID));
-            }
-            else if (Controller_Name.Contains("Fertigkeit"))
-            {
-                FertigkeitController.Add(new CharController.Fertigkeit(this.HD, hd_ID));
-            }
-            else if (Controller_Name.Contains("Attribut"))
-            {
-                AttributController.Add(new CharController.Attribut(this.HD, hd_ID));
-            }
-            else if (Controller_Name.Contains("Item"))
-            {
-                ItemController.Add(new CharController.Item(this.HD, hd_ID));
-            }
-            else if (Controller_Name.Contains("Programm"))
-            {
-                ProgrammController.Add(new CharController.Programm(this.HD, hd_ID));
-            }
-            else if (Controller_Name.Contains("Munition"))
-            {
-                MunitionController.Add(new CharController.Munition(this.HD, hd_ID));
-            }
-            else if (Controller_Name.Contains("Implantat"))
-            {
-                ImplantatController.Add(new CharController.Implantat(this.HD, hd_ID));
-            }
-            else if (Controller_Name.Contains("Vorteil"))
-            {
-                VorteilController.Add(new CharController.Vorteil(this.HD, hd_ID));
-            }
-            else if (Controller_Name.Contains("Nachteil"))
-            {
-                NachteilController.Add(new CharController.Nachteil(this.HD, hd_ID));
-            }
-            else if (Controller_Name.Contains("Connection"))
-            {
-                ConnectionController.Add(new CharController.Connection());
-            }
-            else if (Controller_Name.Contains("Sin"))
-            {
-                SinController.Add(new CharController.Sin());
-            }
-            else if (Controller_Name.Contains("Nahkampfwaffe"))
-            {
-                NahkampfwaffeController.add();
-            }
-            else if (Controller_Name.Contains("Fernkampfwaffe"))
-            {
-                FernkampfwaffeController.add();
-            }
-            else if (Controller_Name.Contains("Kommlink"))
-            {
-                KommlinkController.add();
-            }
-            else if (Controller_Name.Contains("CyberDeck"))
-            {
-                CyberDeckController.add();
-            }
-            else if (Controller_Name.Contains("Vehikel"))
-            {
-                VehikelController.add();
-            }
-            else if (Controller_Name.Contains("Panzerung"))
-            {
-                PanzerungController.add();
-            }
 
-        }
-        /// <summary>
-        /// Diese Methode wird zum sauberen Entfernen eines Object aus dem Holder verwendet
-        /// </summary>
-        /// <param name="Controller_Name"></param>
-        /// <param name="hd_ID"></param>
-        /// <param name="Controller_Item"></param>
-        public void Remove(String Controller_Name, int hd_ID, object Controller_Item)
+        internal void Remove(Thing tToRemove)
         {
-            if (Controller_Name.Contains("Handlung"))
+            switch (tToRemove.ThingType)
             {
-                ((CharController.Handlung)Controller_Item).remove_from_HD();
-                HandlungController.Remove((CharController.Handlung)Controller_Item);
+                case ThingDefs.Handlung:
+                    CTRLHandlung.RemoveThing((Handlung)tToRemove);
+                    break;
+                case ThingDefs.Fertigkeit:
+                    CTRLFertigkeit.RemoveThing((Fertigkeit)tToRemove);
+                    break;
+                case ThingDefs.Item:
+                    break;
+                case ThingDefs.Programm:
+                    break;
+                case ThingDefs.Munition:
+                    break;
+                case ThingDefs.Implantat:
+                    break;
+                case ThingDefs.Vorteil:
+                    break;
+                case ThingDefs.Nachteil:
+                    break;
+                case ThingDefs.Connection:
+                    break;
+                case ThingDefs.Sin:
+                    break;
+                case ThingDefs.Attribut:
+                    CTRLAttribut.RemoveThing((Attribut)tToRemove);
+                    break;
+                case ThingDefs.Nahkampfwaffe:
+                    break;
+                case ThingDefs.Fernkampfwaffe:
+                    break;
+                case ThingDefs.Kommlink:
+                    break;
+                case ThingDefs.CyberDeck:
+                    CTRLCyberDeck.RemoveThing((CyberDeck)tToRemove);
+                    break;
+                case ThingDefs.Vehikel:
+                    break;
+                case ThingDefs.Panzerung:
+                    break;
+                default:
+                    break;
             }
-            else if (Controller_Name.Contains("Fertigkeit"))
+            if (tToRemove == null)
             {
-                ((CharController.Fertigkeit)Controller_Item).remove_from_HD();
-                FertigkeitController.Remove((CharController.Fertigkeit)Controller_Item);
+                throw new NotImplementedException();
             }
-            else if (Controller_Name.Contains("Attribut"))
-            {
-                ((CharController.Attribut)Controller_Item).remove_from_HD();
-                AttributController.Remove((CharController.Attribut)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Item"))
-            {
-                ((CharController.Item)Controller_Item).remove_from_HD();
-                ItemController.Remove((CharController.Item)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Programm"))
-            {
-                ((CharController.Programm)Controller_Item).remove_from_HD();
-                ProgrammController.Remove((CharController.Programm)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Munition"))
-            {
-                ((CharController.Munition)Controller_Item).remove_from_HD();
-                MunitionController.Remove((CharController.Munition)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Implantat"))
-            {
-                ((CharController.Implantat)Controller_Item).remove_from_HD();
-                ImplantatController.Remove((CharController.Implantat)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Vorteil"))
-            {
-                ((CharController.Vorteil)Controller_Item).remove_from_HD();
-                VorteilController.Remove((CharController.Vorteil)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Nachteil"))
-            {
-                ((CharController.Nachteil)Controller_Item).remove_from_HD();
-                NachteilController.Remove((CharController.Nachteil)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Connection"))
-            {
-                ConnectionController.Remove((CharController.Connection)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Sin"))
-            {
-                SinController.Remove((CharController.Sin)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Nahkampfwaffe"))
-            {
-              //  ((CharController.Nahkampfwaffe)Controller_Item).remove_from_HD();
-                NahkampfwaffeController.Remove((CharModel.Nahkampfwaffe)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Fernkampfwaffe"))
-            {
-               // ((CharController.Fernkampfwaffe)Controller_Item).remove_from_HD();
-                FernkampfwaffeController.Remove((CharModel.Fernkampfwaffe)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Kommlink"))
-            {
-               // ((CharController.Kommlink)Controller_Item).remove_from_HD();
-                KommlinkController.Remove((CharModel.Kommlink)Controller_Item);
-            }
-            else if (Controller_Name.Contains("CyberDeck"))
-            {
-             //   ((CharController.CyberDeck)Controller_Item).remove_from_HD();
-                CyberDeckController.Remove((CharModel.CyberDeck)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Vehikel"))
-            {
-                //((CharController.Vehikel)Controller_Item).remove_from_HD();
-                VehikelController.Remove((CharModel.Vehikel)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Panzerung"))
-            {
-              //  ((CharController.Panzerung)Controller_Item).remove_from_HD();
-                PanzerungController.Remove((CharModel.Panzerung)Controller_Item);
-            }
-
+            lstAll.Remove(tToRemove);
+            throw new NotImplementedException();
         }
     }
 }

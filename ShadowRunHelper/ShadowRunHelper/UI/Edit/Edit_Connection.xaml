@@ -38,6 +38,6 @@
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Loyal" Grid.Column="0" Grid.Row="2"/>
         <TextBox Name="Loyal" Text="{x:Bind Data.Loyal, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="2"/>
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Notizen" Grid.Column="0" Grid.Row="3"/>
-        <TextBox Name="Notizen" Text="{x:Bind Data.Notizen, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="3"/>
+        <TextBox Name="Notizen" Text="{x:Bind Data.Notiz, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="3"/>
     </Grid>
 </ContentDialog>

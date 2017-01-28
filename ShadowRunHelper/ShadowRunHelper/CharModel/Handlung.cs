@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Handlung : CharModel.Model
+    public class Handlung : CharModel.Thing
     {
         private Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> zusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();
         public Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> Zusammensetzung

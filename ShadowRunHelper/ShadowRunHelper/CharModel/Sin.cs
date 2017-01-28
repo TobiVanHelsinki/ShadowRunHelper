@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Sin : Model
+    public class Sin : Thing
     {
 
         public Sin()

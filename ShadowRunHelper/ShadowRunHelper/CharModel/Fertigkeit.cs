@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Fertigkeit : Model
+    public class Fertigkeit : Thing
     {
         public Fertigkeit()
         {

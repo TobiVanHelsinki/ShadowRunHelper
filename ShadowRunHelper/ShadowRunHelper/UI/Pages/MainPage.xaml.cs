@@ -159,7 +159,7 @@ namespace ShadowRunHelper
 
             if (Controller_Name.Contains("Person2"))
             {
-                UI.Edit.Edit_Person2 dialog = new UI.Edit.Edit_Person2(ViewModel.Current.Person, ViewModel.Current.HD);
+                UI.Edit.Edit_Person2 dialog = new UI.Edit.Edit_Person2(ViewModel.Current.Person);
                 await dialog.ShowAsync();
             }
         }

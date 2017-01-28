@@ -4,8 +4,21 @@ using System.Runtime.CompilerServices;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Model : INotifyPropertyChanged
+    public class Thing : INotifyPropertyChanged
     {
+        private Model.ThingDefs thingType = 0;
+        public Model.ThingDefs ThingType
+        {
+            get { return thingType; }
+            set
+            {
+                if (value != this.ThingType)
+                {
+                    this.ThingType = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
         private int ordnung = 0;
         public int Ordnung
         {
@@ -85,7 +98,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public Model()
+        public Thing()
         {
             Ordnung = 0;
             Bezeichner = "";

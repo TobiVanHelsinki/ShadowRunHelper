@@ -5,13 +5,11 @@ namespace ShadowRunHelper.UI.Edit
     public sealed partial class Edit_Person2 : ContentDialog
     {
         public CharModel.Person Data;
-        public Controller.HashDictionary HD;
 
-        public Edit_Person2(CharModel.Person data, Controller.HashDictionary hd)
+        public Edit_Person2(CharModel.Person data)
         {
             this.InitializeComponent();
             this.Data = data;
-            this.HD = hd;
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

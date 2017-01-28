@@ -4,22 +4,22 @@ using System.Runtime.CompilerServices;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Connection : Person
+    public class Connection : Thing
     {
-        private double wert = 0;
-        public double Wert
+        private string alias = "";
+        public string Alias
         {
-            get { return wert; }
+            get { return alias; }
             set
             {
-                if (value != this.wert)
+                if (value != this.alias)
                 {
-                    this.wert = value;
+                    this.alias = value;
                     NotifyPropertyChanged();
                 }
             }
         }
-
+        
         private double loyal = 0;
         public double Loyal
         {

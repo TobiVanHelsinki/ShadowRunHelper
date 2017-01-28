@@ -4,6 +4,7 @@ using ShadowRunHelper.Controller;
 using ShadowRunHelper.Model;
 using ShadowRunHelper.CharModel;
 using Windows.UI.Xaml.Data;
+using System.Collections.ObjectModel;
 
 namespace ShadowRunHelper
 {
@@ -17,13 +18,13 @@ namespace ShadowRunHelper
         int Modus;
         private int tepmindex;
 
-        public HD_Wahl(Handlung data, HashDictionary hD, int modus)
+        public HD_Wahl(Handlung data, ObservableCollection<CharModel.Thing> lstAll, int modus)
         {
             this.InitializeComponent();
             this.data = data;
-            foreach (var item in hD.Data)
+            foreach (var item in lstAll)
             {
-                HD_List.Add(item);
+                //HD_List.Add(item);
             }
             Modus = modus;
         }

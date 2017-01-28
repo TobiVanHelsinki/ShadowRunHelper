@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Item : CharModel.Model
+    public class Item : CharModel.Thing
     {
         private bool? besitz = false;
         public bool? Besitz

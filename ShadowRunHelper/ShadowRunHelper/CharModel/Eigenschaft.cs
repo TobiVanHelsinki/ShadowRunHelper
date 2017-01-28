@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Eigenschaft : Model
+    public class Eigenschaft : Thing
     {
         private string auswirkungen = "";
         public string Auswirkungen
