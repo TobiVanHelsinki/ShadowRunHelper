@@ -2,6 +2,10 @@
 {
     public class Eigenschaft : Thing
     {
+        //public override double GetValue(string ID = "")
+        //{
+        //    return Wert;
+        //}
         private string auswirkungen = "";
         public string Auswirkungen
         {

@@ -1,7 +1,13 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿using System;
+
+namespace ShadowRunHelper.CharModel
 {
     public class Item : CharModel.Thing
     {
+        //public override double GetValue(string ID = "")
+        //{
+        //    return Wert;
+        //}
         private bool? besitz = false;
         public bool? Besitz
         {
@@ -47,5 +53,25 @@
             this.ThingType = Ressourcen.TypNamen.ThingDefs.Item;
         }
 
+        public Item Copy(ref Item target)
+        {
+            if (target == null)
+            {
+                target = new Item();
+            }
+            base.Copy((Thing)target);
+            target.Aktiv = Aktiv;
+            target.Anzahl = Anzahl;
+            target.Besitz = Besitz;
+            return target;
+        }
+
+        public void Reset()
+        {
+            base.Reset();
+            Aktiv = false;
+            Anzahl = 0;
+            Besitz = false;
+        }
     }
 }

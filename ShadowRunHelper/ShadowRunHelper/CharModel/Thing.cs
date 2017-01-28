@@ -5,7 +5,7 @@ using static ShadowRunHelper.Ressourcen.TypNamen;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Thing : INotifyPropertyChanged
+    public abstract class Thing : INotifyPropertyChanged, IThing
     {
         private ThingDefs thingType = 0;
         public ThingDefs ThingType
@@ -72,6 +72,8 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
+
         private string zusatz = "";
         public string Zusatz
         {
@@ -99,11 +101,17 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        public double Value
+        {
+            get { return this.GetValue(); }
+            private set {            }
+        }
+
         public Thing()
         {
         }
 
-        public double GetValue()
+        public virtual double GetValue([CallerMemberNameAttribute] string ID = "")
         {
             return Wert;
         }
@@ -115,5 +123,32 @@ namespace ShadowRunHelper.CharModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        public Thing Copy(Thing target)
+        {
+            if (target == null)
+            {
+                target = new Item();
+            }
+            target.Bezeichner = Bezeichner;
+            target.Notiz = Notiz;
+            target.Ordnung = Ordnung;
+            target.ThingType= ThingType;
+            target.Typ= Typ;
+            target.Wert = Wert;
+            target.Zusatz = Zusatz;
+            return target;
+        }
+        public void Reset()
+        {
+            Bezeichner = "";
+            Notiz = "";
+            Ordnung = 0;
+            //ThingType = 0;
+            Typ = "";
+            Wert = 0;
+            Zusatz = "";
+        }
+
     }
 }

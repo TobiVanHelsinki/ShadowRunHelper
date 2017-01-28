@@ -1,4 +1,6 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿using System;
+
+namespace ShadowRunHelper.CharModel
 {
     public class CyberDeck : CharModel.Kommlink
     {
@@ -87,6 +89,53 @@
         {
             this.ThingType = Ressourcen.TypNamen.ThingDefs.CyberDeck;
         }
+
+
+        public override double GetValue(string ID = "")
+        {
+            switch (ID)
+            {
+                case "Angriff":
+                    return this.Angriff;
+                case "Schleicher":
+                    return this.Schleicher;
+                case "Datenverarbeitung":
+                    return this.Datenverarbeitung;
+                case "Firewall":
+                    return this.Firewall;
+                default:
+                    break;
+            }
+            return Wert;
+        }
+
+        public CyberDeck Copy(CyberDeck target = null)
+        {
+            if (target == null)
+            {
+                target = new CyberDeck();
+            }
+            base.Copy(target);
+            target.Angriff = Angriff;
+            target.Angriff_o = Angriff_o;
+            target.Schleicher = Schleicher;
+            target.Schleicher_o = Schleicher_o;
+            target.Firewall_o = Firewall_o;
+            target.Datenverarbeitung_o = Datenverarbeitung_o;
+            return target;
+        }
+
+        public void Reset()
+        {
+            base.Reset();
+            Angriff = 0;
+            Angriff_o = 0;
+            Schleicher = 0;
+            Schleicher_o = 0;
+            Firewall_o = 0;
+            Datenverarbeitung_o = 0;
+        }
+
     }
 
 }

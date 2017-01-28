@@ -15,11 +15,11 @@ namespace ShadowRunHelper
     {
         public ShadowRunHelper.CharModel.Handlung data;
         //private List<KeyValuePair<System.Int32, DictionaryCharEntry>> HD_List = new List<KeyValuePair<int, DictionaryCharEntry>>();
-        private ObservableCollection<CharModel.Thing> lstAll;
+        private List<KeyValuePair<CharModel.Thing, string>> lstAll;
         int Modus;
         //private int tepmindex;
 
-        public HD_Wahl(Handlung data, ObservableCollection<CharModel.Thing> i_lstAll, int modus)
+        public HD_Wahl(Handlung data, List<KeyValuePair<CharModel.Thing, string>> i_lstAll, int modus)
         {
             this.lstAll = i_lstAll;
             //lstAll = new ObservableCollection<Thing>();
@@ -35,8 +35,8 @@ namespace ShadowRunHelper
         /// <param name="args"></param>
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            ObservableCollection<Thing> tempDic = new ObservableCollection<CharModel.Thing>();
-            foreach (Thing item in Zus_ListVIew.SelectedItems)
+            List<KeyValuePair<CharModel.Thing, string>> tempDic = new List<KeyValuePair<CharModel.Thing, string>>();
+            foreach (KeyValuePair<CharModel.Thing, string> item in Zus_ListVIew.SelectedItems)
             {
                 tempDic.Add(item);
             }
@@ -58,10 +58,10 @@ namespace ShadowRunHelper
             deferral.Complete();
         }
 
-        private void RefreshList(ObservableCollection<Thing> lstTarget, ObservableCollection<Thing> lstSource)
+        private void RefreshList(ObservableCollection<KeyValuePair<CharModel.Thing, string>> lstTarget, List<KeyValuePair<CharModel.Thing, string>> lstSource)
         {
             lstTarget.Clear();
-            foreach (Thing item in lstSource)
+            foreach (KeyValuePair<CharModel.Thing, string> item in lstSource)
             {
                 lstTarget.Add(item);
             }

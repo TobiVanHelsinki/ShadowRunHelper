@@ -123,6 +123,7 @@
     <Compile Include="CharModel\CyberDeck.cs" />
     <Compile Include="CharModel\Attribut.cs" />
     <Compile Include="CharModel\Connection.cs" />
+    <Compile Include="CharModel\IThing.cs" />
     <Compile Include="CharModel\Person.cs" />
     <Compile Include="CharModel\Sin.cs" />
     <Compile Include="CharModel\Vorteil.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Ressourcen\TypNamen.cs" />
     <Compile Include="UI\Converter\CB.cs" />
     <Compile Include="UI\Converter\io_ListView.cs" />
+    <Compile Include="UI\Converter\o_IDWAhl.cs" />
     <Compile Include="UI\Converter\i_char.cs" />
     <Compile Include="UI\Converter\io_GebDatum.cs" />
     <Compile Include="UI\Converter\o_ZahlenYen.cs" />

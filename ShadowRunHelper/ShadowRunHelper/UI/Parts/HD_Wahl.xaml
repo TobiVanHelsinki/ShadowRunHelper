@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ShadowRunHelper"
     xmlns:model="using:ShadowRunHelper.CharModel"
+    xmlns:conv="using:ShadowRunHelper.UI.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:t="using:ShadowRunHelper.Controller"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -12,17 +13,36 @@
     PrimaryButtonText="Fertig"  
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     >
+    <ContentDialog.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_App.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentDialog.Resources>
     <ScrollViewer Height="500" Width="500">
-        <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind lstAll}" Grid.Column="1" Grid.Row="5" SelectionMode="Multiple" Loaded="Zus_ListVIew_Loaded" Tapped="Zus_ListVIew_Tapped">
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="model:Thing">
-                    <StackPanel Name="Zus_ListVIew_Stack">
-                        <TextBlock Text="{x:Bind Bezeichner, Mode=OneWay}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
-                        <TextBlock Text="{x:Bind Wert, Mode=OneWay}"  Grid.Column="1" Grid.Row="1"/>
-                        <TextBlock Text="{x:Bind Typ, Mode=OneWay}"  Grid.Column="0" Grid.Row="1"/>
-                    </StackPanel>
+        <ListView Name="Zus_ListVIew" ItemsSource="{x:Bind lstAll}" Grid.Column="1" Grid.Row="5" SelectionMode="Multiple" Loaded="Zus_ListVIew_Loaded" Tapped="Zus_ListVIew_Tapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Name="Zus_ListVIew_Stack" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <!--<ColumnDefinition Width="1*"/>-->
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Key.Bezeichner, Mode=OneWay}" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Value, Mode=OneWay}" Grid.Column="1"/>
+                        <!--<TextBlock Text="{Binding Key.Wert, Mode=OneWay}" Grid.Column="2"/>-->
+                        <TextBlock Text="{Binding Key.Typ, Mode=OneWay}" Grid.Column="3"/>
+                    </Grid>
                 </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
     </ScrollViewer>
 </ContentDialog>

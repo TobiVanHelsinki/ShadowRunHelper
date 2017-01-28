@@ -16,7 +16,7 @@ namespace ShadowRunHelper.Controller
     public class CharHolder
     {
         public string APP_VERSION_NUMBER = Variablen.APP_VERSION_NUMBER;
-        public ObservableCollection<CharModel.Thing> lstAll;
+        public List<KeyValuePair<CharModel.Thing, string>> lstAll;
         public CharController.cController<CharModel.Handlung> CTRLHandlung { get; set; }
         public CharController.cController<CharModel.Fertigkeit> CTRLFertigkeit { get; set; }
         public CharController.cController<CharModel.Item> CTRLItem { get; set; }
@@ -43,7 +43,7 @@ namespace ShadowRunHelper.Controller
         /// </summary>
         public CharHolder()
         {
-            lstAll = new ObservableCollection<CharModel.Thing>();
+            lstAll = new List<KeyValuePair<CharModel.Thing, string>>();
             CTRLHandlung = new CharController.cController<CharModel.Handlung>();
             CTRLFertigkeit = new CharController.cController<CharModel.Fertigkeit>();
             CTRLItem= new CharController.cController<CharModel.Item>();
@@ -71,68 +71,86 @@ namespace ShadowRunHelper.Controller
 
         internal void Add(ThingDefs thingDefs)
         {
-            CharModel.Thing tToAdd = null;
             switch (thingDefs)
             {
                 case ThingDefs.Handlung:
-                    tToAdd = CTRLHandlung.AddNewThing();
+                    CTRLHandlung.AddNewThing();
                     break;
                 case ThingDefs.Fertigkeit:
-                    tToAdd = CTRLFertigkeit.AddNewThing();
+                    CTRLFertigkeit.AddNewThing();
                     break;
                 case ThingDefs.Item:
-                    tToAdd = CTRLItem.AddNewThing();
+                    CTRLItem.AddNewThing();
                     break;
                 case ThingDefs.Programm:
-                    tToAdd = CTRLProgramm.AddNewThing();
+                    CTRLProgramm.AddNewThing();
                     break;
                 case ThingDefs.Munition:
-                    tToAdd = CTRLMunition.AddNewThing();
+                    CTRLMunition.AddNewThing();
                     break;
                 case ThingDefs.Implantat:
-                    tToAdd = CTRLImplantat.AddNewThing();
+                    CTRLImplantat.AddNewThing();
                     break;
                 case ThingDefs.Vorteil:
-                    tToAdd = CTRLVorteil.AddNewThing();
+                    CTRLVorteil.AddNewThing();
                     break;
                 case ThingDefs.Nachteil:
-                    tToAdd = CTRLNachteil.AddNewThing();
+                    CTRLNachteil.AddNewThing();
                     break;
                 case ThingDefs.Connection:
-                    tToAdd = CTRLConnection.AddNewThing();
+                    CTRLConnection.AddNewThing();
                     break;
                 case ThingDefs.Sin:
-                    tToAdd = CTRLSin.AddNewThing();
+                    CTRLSin.AddNewThing();
                     break;
                 case ThingDefs.Attribut:
-                    tToAdd = CTRLAttribut.AddNewThing();
+                    CTRLAttribut.AddNewThing();
                     break;
                 case ThingDefs.Nahkampfwaffe:
-                    tToAdd = CTRLNahkampfwaffe.AddNewThing();
+                    CTRLNahkampfwaffe.AddNewThing();
                     break;
                 case ThingDefs.Fernkampfwaffe:
-                    tToAdd = CTRLFernkampfwaffe.AddNewThing();
+                    CTRLFernkampfwaffe.AddNewThing();
                     break;
                 case ThingDefs.Kommlink:
-                    tToAdd = CTRLKommlink.AddNewThing();
+                    CTRLKommlink.AddNewThing();
                     break;
                 case ThingDefs.CyberDeck:
-                    tToAdd = CTRLCyberDeck.AddNewThing();
+                    CTRLCyberDeck.AddNewThing();
                     break;
                 case ThingDefs.Vehikel:
-                    tToAdd = CTRLVehikel.AddNewThing();
+                    CTRLVehikel.AddNewThing();
                     break;
                 case ThingDefs.Panzerung:
-                    tToAdd = CTRLPanzerung.AddNewThing();
+                    CTRLPanzerung.AddNewThing();
                     break;
                 default:
                     break;
             }
-            if (tToAdd == null)
-            {
-                throw new WrongTypeException();
-            }
-            lstAll.Add(tToAdd);
+            RefreshAllList();
+        }
+
+        public void RefreshAllList()
+        {
+            lstAll.Clear();
+            lstAll.AddRange(CTRLHandlung.GetElements());
+            lstAll.AddRange(CTRLFertigkeit.GetElements());
+            lstAll.AddRange(CTRLItem.GetElements());
+            lstAll.AddRange(CTRLProgramm.GetElements());
+            lstAll.AddRange(CTRLMunition.GetElements());
+            lstAll.AddRange(CTRLImplantat.GetElements());
+            lstAll.AddRange(CTRLVorteil.GetElements());
+            lstAll.AddRange(CTRLNachteil.GetElements());
+            lstAll.AddRange(CTRLConnection.GetElements());
+            lstAll.AddRange(CTRLSin.GetElements());
+            //liefern immer das selbe
+            lstAll.AddRange(CTRLAttribut.GetElements());
+            lstAll.AddRange(CTRLNahkampfwaffe.GetElements());
+            lstAll.AddRange(CTRLFernkampfwaffe.GetElements());
+            lstAll.AddRange(CTRLKommlink.GetElements());
+            lstAll.AddRange(CTRLCyberDeck.GetElements());
+            lstAll.AddRange(CTRLVehikel.GetElements());
+            lstAll.AddRange(CTRLPanzerung.GetElements());
         }
 
         /// <summary>
@@ -206,12 +224,7 @@ namespace ShadowRunHelper.Controller
                 default:
                     break;
             }
-            if (tToRemove == null)
-            {
-                throw new NotImplementedException();
-            }
-            lstAll.Remove(tToRemove);
-            throw new NotImplementedException();
+            lstAll.Remove(lstAll.Find((x) => x.Key == tToRemove));
         }
     }
 }

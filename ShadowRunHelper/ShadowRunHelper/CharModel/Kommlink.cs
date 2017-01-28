@@ -55,5 +55,26 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = Ressourcen.TypNamen.ThingDefs.Kommlink;
 
         }
+
+        public Kommlink Copy(Kommlink target = null)
+        {
+            if (target == null)
+            {
+                target = new Kommlink();
+            }
+            base.Copy(target);
+            target.Programmanzahl = Programmanzahl;
+            target.Firewall = Firewall;
+            target.Datenverarbeitung = Datenverarbeitung;
+            return target;
+        }
+
+        public void Reset()
+        {
+            base.Reset();
+            Programmanzahl = 0;
+            Firewall = 0;
+            Datenverarbeitung = 0;
+        }
     }
 }

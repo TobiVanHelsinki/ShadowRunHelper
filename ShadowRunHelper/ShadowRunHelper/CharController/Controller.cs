@@ -16,16 +16,21 @@ namespace ShadowRunHelper.CharController
         {
             T newTee = new T();
             Data.Add(newTee);
-            return newTee;
+            return null;
         }
         public void RemoveThing(T tRem)
         {
             Data.Remove(tRem);
         }
 
-        public ObservableCollection<T> GetElements()
+        public List<KeyValuePair<Thing, string>> GetElements()
         {
-            return Data;
+            List<KeyValuePair<Thing, string>> lstReturn = new List<KeyValuePair<Thing, string>>();
+            foreach (var item in Data)
+            {
+                lstReturn.Add(new KeyValuePair<Thing, string>(item, ""));
+            }
+            return lstReturn;
         }
 
         /// <summary>

@@ -8,6 +8,11 @@ namespace ShadowRunHelper.CharModel
 {
     public class Handlung : CharModel.Thing, INotifyPropertyChanged
     {
+        //public override double GetValue(string ID = "")
+        //{
+        //    return Wert;
+        //}
+
         //private Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> zusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();
         //public Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> Zusammensetzung
         //{
@@ -57,9 +62,9 @@ namespace ShadowRunHelper.CharModel
         //    }
         //}
 
-        public ObservableCollection<CharModel.Thing> Zusammensetzung;
-        public ObservableCollection<CharModel.Thing> GrenzeZusammensetzung;
-        public ObservableCollection<CharModel.Thing> GegenZusammensetzung;
+        public ObservableCollection<KeyValuePair<Thing, string>> Zusammensetzung;
+        public ObservableCollection<KeyValuePair<Thing, string>> GrenzeZusammensetzung;
+        public ObservableCollection<KeyValuePair<Thing, string>> GegenZusammensetzung;
 
         private double grenze = 0;
         public double Grenze
@@ -93,19 +98,35 @@ namespace ShadowRunHelper.CharModel
         {
             ThingType = ThingDefs.Handlung;
 
-            Zusammensetzung = new ObservableCollection<CharModel.Thing>();
-            GrenzeZusammensetzung = new ObservableCollection<CharModel.Thing>();
-            GegenZusammensetzung = new ObservableCollection<CharModel.Thing>();
-            GrenzeZusammensetzung.CollectionChanged += (u, c) => { double temp; Recalculate(GrenzeZusammensetzung, out temp); Wert = temp; };
-            GegenZusammensetzung.CollectionChanged += (u, c) => { double temp; Recalculate(GegenZusammensetzung, out temp); Wert = temp; };
-            Zusammensetzung.CollectionChanged += (u, c) => { double temp; Recalculate(Zusammensetzung, out temp); Wert = temp; };
+            Zusammensetzung = new ObservableCollection<KeyValuePair<Thing, string>>();
+            GrenzeZusammensetzung = new ObservableCollection<KeyValuePair<Thing, string>>();
+            GegenZusammensetzung = new ObservableCollection<KeyValuePair<Thing, string>>();
+            Zusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(Zusammensetzung); };
+            GrenzeZusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(GrenzeZusammensetzung); };
+            GegenZusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(GegenZusammensetzung); };
+
         }
 
-        private void Recalculate(ObservableCollection<Thing> List, out double o_Value) {
-            double temp = 0;
-            foreach (Thing item in List)
+        private void CollectionChanged(ObservableCollection<KeyValuePair<Thing, string>> lst)
+        {
+            double temp;
+            Recalculate(lst, out temp);
+            Wert = temp;
+
+            foreach (var item in Zusammensetzung)
             {
-                temp += item.GetValue();
+                temp = 0;
+                item.Key.PropertyChanged -= (u, c) => { Recalculate(lst, out temp); Wert = temp; };
+                temp = 0;
+                item.Key.PropertyChanged += (u, c) => { Recalculate(lst, out temp); Wert = temp; };
+            }
+        }
+
+        private void Recalculate(ObservableCollection<KeyValuePair<Thing, string>> List, out double o_Value) {
+            double temp = 0;
+            foreach (KeyValuePair<Thing, string> item in List)
+            {
+                temp += item.Key.GetValue(item.Value);
             }
             o_Value = temp;
         }

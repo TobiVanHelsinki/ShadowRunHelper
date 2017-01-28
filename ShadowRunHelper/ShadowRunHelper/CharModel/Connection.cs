@@ -6,6 +6,10 @@ namespace ShadowRunHelper.CharModel
 {
     public class Connection : Thing
     {
+        //public override double GetValue(string ID = "")
+        //{
+        //    return Wert;
+        //}
         private string alias = "";
         public string Alias
         {

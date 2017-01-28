@@ -10,6 +10,7 @@
     <conv:io_GebDatum x:Key="io_GebDatum"/>
     <conv:i_char x:Key="i_char"/>
     <conv:io_ListView x:Key="io_ListView"/>
+    <conv:o_IDWahl x:Key="o_IDWahl"/>
 
     <Style TargetType="ScrollViewer" x:Key="ScrollViewer">
         <Setter Property="VerticalScrollMode" Value="Enabled"/>
