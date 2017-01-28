@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using static ShadowRunHelper.Ressourcen.TypNamen;
 
 namespace ShadowRunHelper.CharModel
 {

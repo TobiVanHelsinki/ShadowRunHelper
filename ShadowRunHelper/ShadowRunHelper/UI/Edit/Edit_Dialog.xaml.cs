@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Controls;
-using static ShadowRunHelper.Ressourcen.TypNamen;
 
 // Die Elementvorlage "Inhaltsdialog" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 

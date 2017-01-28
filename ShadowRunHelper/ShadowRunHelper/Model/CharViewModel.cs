@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using static ShadowRunHelper.Controller.TApp;
 namespace ShadowRunHelper.Model
 {
 
@@ -9,8 +8,8 @@ namespace ShadowRunHelper.Model
     public class CharViewModel : INotifyPropertyChanged
     {
         public TCharState currentState;
-        private Controller.CharHolder current;
-        public Controller.CharHolder Current
+        private Model.CharHolder current;
+        public Model.CharHolder Current
         {
             get { return this.current; }
             set
@@ -27,10 +26,10 @@ namespace ShadowRunHelper.Model
         public CharViewModel()
         {
             currentState = TCharState.EMPTY_CHAR;
-            current = new Controller.CharHolder();
+            current = new Model.CharHolder();
         }
 
-        public CharViewModel(Controller.CharHolder x_current)
+        public CharViewModel(Model.CharHolder x_current)
         {
             currentState = TCharState.NEW_CHAR;
             current = x_current;

@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
-using ShadowRunHelper.Controller;
-using ShadowRunHelper.Model;
 using ShadowRunHelper.CharModel;
-using Windows.UI.Xaml.Data;
 using System.Collections.ObjectModel;
 
 namespace ShadowRunHelper

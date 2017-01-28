@@ -6,7 +6,6 @@ using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using static ShadowRunHelper.Controller.TApp;
 
 namespace ShadowRunHelper
 {

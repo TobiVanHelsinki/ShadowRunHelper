@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Eigenschaft : Thing
+    public abstract class Eigenschaft : Thing
     {
         //public override double GetValue(string ID = "")
         //{
@@ -25,11 +25,12 @@
             this.ThingType = Ressourcen.TypNamen.ThingDefs.Eigenschaft;
         }
 
-        public Eigenschaft Copy(Eigenschaft target = null)
+        private Eigenschaft Copy(Eigenschaft target = null)
         {
             if (target == null)
             {
-                target = new Eigenschaft();
+                throw new System.ArgumentNullException();
+                //target = new Eigenschaft();
             }
             base.Copy(target);
             target.Auswirkungen = Auswirkungen;

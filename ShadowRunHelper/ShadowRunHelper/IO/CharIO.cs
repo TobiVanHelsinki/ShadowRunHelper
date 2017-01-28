@@ -12,7 +12,7 @@ namespace ShadowRunHelper.IO
 {
     class CharIO
     {
-        private static string Char_to_JSON(Controller.CharHolder SaveChar)
+        private static string Char_to_JSON(CharHolder SaveChar)
         {
 
             JsonSerializerSettings test = new JsonSerializerSettings();
@@ -30,25 +30,25 @@ namespace ShadowRunHelper.IO
             //a.ErrorContext.Error.Data;
         }
 
-        private static Controller.CharHolder JSON_to_Char(string fileContent)
+        private static CharHolder JSON_to_Char(string fileContent)
         {
-            Controller.CharHolder tempChar = new Controller.CharHolder();
+            CharHolder tempChar = new CharHolder();
             try
             {
                 JsonSerializerSettings test = new JsonSerializerSettings();
                 test.Error = ErrorHandler;
                 test.PreserveReferencesHandling = PreserveReferencesHandling.All;
-                tempChar = JsonConvert.DeserializeObject<Controller.CharHolder>(fileContent, test);
+                tempChar = JsonConvert.DeserializeObject<CharHolder>(fileContent, test);
             }
             catch (Exception)
             {
-                tempChar = new Controller.CharHolder();
+                tempChar = new CharHolder();
                 //TODO Message system
             }
             //tempChar.CTRLCyberDeck.Data[0].Angriff++;
 
             return tempChar;
-            //Controller.CharHolder newChar = new Controller.CharHolder();
+            //CharHolder newChar = new CharHolder();
             ////    newChar.Char_ID = tempChar.Char_ID;
 
             //int maxID = 0;
@@ -191,124 +191,124 @@ namespace ShadowRunHelper.IO
             //    maxID++;
             //}
             //maxID = 0;
-            //foreach (var item in tempChar.NahkampfwaffeController.DataList)
+            //foreach (var item in tempChar.NahkampfwaffeDataList)
             //{
-            //    newChar.Add("Nahkampfwaffe", tempChar.NahkampfwaffeController.HD_ID);
-            //    newChar.NahkampfwaffeController.DataList[maxID].Ordnung = item.Ordnung;
-            //    newChar.NahkampfwaffeController.DataList[maxID].Bezeichner = item.Bezeichner;
-            //    newChar.NahkampfwaffeController.DataList[maxID].Wert = item.Wert;
-            //    newChar.NahkampfwaffeController.DataList[maxID].Typ = item.Typ;
-            //    newChar.NahkampfwaffeController.DataList[maxID].Zusatz = item.Zusatz;
-            //    newChar.NahkampfwaffeController.DataList[maxID].Notiz = item.Notiz;
-            //    newChar.NahkampfwaffeController.DataList[maxID].Aktiv = item.Aktiv;
-            //    newChar.NahkampfwaffeController.DataList[maxID].Anzahl = item.Anzahl;
-            //    newChar.NahkampfwaffeController.DataList[maxID].Besitz = item.Besitz;
-            //    newChar.NahkampfwaffeController.DataList[maxID].PB = item.PB;
-            //    newChar.NahkampfwaffeController.DataList[maxID].Pool = item.Pool;
-            //    newChar.NahkampfwaffeController.DataList[maxID].Reichweite = item.Reichweite;
-            //    newChar.NahkampfwaffeController.DataList[maxID].SchadenTyp = item.SchadenTyp;
+            //    newChar.Add("Nahkampfwaffe", tempChar.NahkampfwaffeHD_ID);
+            //    newChar.NahkampfwaffeDataList[maxID].Ordnung = item.Ordnung;
+            //    newChar.NahkampfwaffeDataList[maxID].Bezeichner = item.Bezeichner;
+            //    newChar.NahkampfwaffeDataList[maxID].Wert = item.Wert;
+            //    newChar.NahkampfwaffeDataList[maxID].Typ = item.Typ;
+            //    newChar.NahkampfwaffeDataList[maxID].Zusatz = item.Zusatz;
+            //    newChar.NahkampfwaffeDataList[maxID].Notiz = item.Notiz;
+            //    newChar.NahkampfwaffeDataList[maxID].Aktiv = item.Aktiv;
+            //    newChar.NahkampfwaffeDataList[maxID].Anzahl = item.Anzahl;
+            //    newChar.NahkampfwaffeDataList[maxID].Besitz = item.Besitz;
+            //    newChar.NahkampfwaffeDataList[maxID].PB = item.PB;
+            //    newChar.NahkampfwaffeDataList[maxID].Pool = item.Pool;
+            //    newChar.NahkampfwaffeDataList[maxID].Reichweite = item.Reichweite;
+            //    newChar.NahkampfwaffeDataList[maxID].SchadenTyp = item.SchadenTyp;
             //    maxID++;
             //}
             //maxID = 0;
-            //foreach (var item in tempChar.FernkampfwaffeController.DataList)
+            //foreach (var item in tempChar.FernkampfwaffeDataList)
             //{
-            //    newChar.Add("Fernkampfwaffe", tempChar.FernkampfwaffeController.HD_ID);
-            //    newChar.FernkampfwaffeController.DataList[maxID].Ordnung = item.Ordnung;
-            //    newChar.FernkampfwaffeController.DataList[maxID].Bezeichner = item.Bezeichner;
-            //    newChar.FernkampfwaffeController.DataList[maxID].Wert = item.Wert;
-            //    newChar.FernkampfwaffeController.DataList[maxID].Typ = item.Typ;
-            //    newChar.FernkampfwaffeController.DataList[maxID].Zusatz = item.Zusatz;
-            //    newChar.FernkampfwaffeController.DataList[maxID].Notiz = item.Notiz;
-            //    newChar.FernkampfwaffeController.DataList[maxID].Aktiv = item.Aktiv;
-            //    newChar.FernkampfwaffeController.DataList[maxID].Anzahl = item.Anzahl;
-            //    newChar.FernkampfwaffeController.DataList[maxID].Besitz = item.Besitz;
-            //    newChar.FernkampfwaffeController.DataList[maxID].PB = item.PB;
-            //    newChar.FernkampfwaffeController.DataList[maxID].Pool = item.Pool;
-            //    newChar.FernkampfwaffeController.DataList[maxID].Modi = item.Modi;
-            //    newChar.FernkampfwaffeController.DataList[maxID].Rückstoß = item.Rückstoß;
-            //    newChar.FernkampfwaffeController.DataList[maxID].SchadenTyp = item.SchadenTyp;
+            //    newChar.Add("Fernkampfwaffe", tempChar.FernkampfwaffeHD_ID);
+            //    newChar.FernkampfwaffeDataList[maxID].Ordnung = item.Ordnung;
+            //    newChar.FernkampfwaffeDataList[maxID].Bezeichner = item.Bezeichner;
+            //    newChar.FernkampfwaffeDataList[maxID].Wert = item.Wert;
+            //    newChar.FernkampfwaffeDataList[maxID].Typ = item.Typ;
+            //    newChar.FernkampfwaffeDataList[maxID].Zusatz = item.Zusatz;
+            //    newChar.FernkampfwaffeDataList[maxID].Notiz = item.Notiz;
+            //    newChar.FernkampfwaffeDataList[maxID].Aktiv = item.Aktiv;
+            //    newChar.FernkampfwaffeDataList[maxID].Anzahl = item.Anzahl;
+            //    newChar.FernkampfwaffeDataList[maxID].Besitz = item.Besitz;
+            //    newChar.FernkampfwaffeDataList[maxID].PB = item.PB;
+            //    newChar.FernkampfwaffeDataList[maxID].Pool = item.Pool;
+            //    newChar.FernkampfwaffeDataList[maxID].Modi = item.Modi;
+            //    newChar.FernkampfwaffeDataList[maxID].Rückstoß = item.Rückstoß;
+            //    newChar.FernkampfwaffeDataList[maxID].SchadenTyp = item.SchadenTyp;
             //    maxID++;
             //}
             //maxID = 0;
-            //foreach (var item in tempChar.KommlinkController.DataList)
+            //foreach (var item in tempChar.KommlinkDataList)
             //{
-            //    newChar.Add("Kommlink", tempChar.KommlinkController.HD_ID);
-            //    newChar.KommlinkController.DataList[maxID].Ordnung = item.Ordnung;
-            //    newChar.KommlinkController.DataList[maxID].Bezeichner = item.Bezeichner;
-            //    newChar.KommlinkController.DataList[maxID].Wert = item.Wert;
-            //    newChar.KommlinkController.DataList[maxID].Typ = item.Typ;
-            //    newChar.KommlinkController.DataList[maxID].Zusatz = item.Zusatz;
-            //    newChar.KommlinkController.DataList[maxID].Notiz = item.Notiz;
-            //    newChar.KommlinkController.DataList[maxID].Aktiv = item.Aktiv;
-            //    newChar.KommlinkController.DataList[maxID].Anzahl = item.Anzahl;
-            //    newChar.KommlinkController.DataList[maxID].Besitz = item.Besitz;
-            //    newChar.KommlinkController.DataList[maxID].Datenverarbeitung = item.Datenverarbeitung;
-            //    newChar.KommlinkController.DataList[maxID].Firewall = item.Firewall;
-            //    newChar.KommlinkController.DataList[maxID].Programmanzahl = item.Programmanzahl;
+            //    newChar.Add("Kommlink", tempChar.KommlinkHD_ID);
+            //    newChar.KommlinkDataList[maxID].Ordnung = item.Ordnung;
+            //    newChar.KommlinkDataList[maxID].Bezeichner = item.Bezeichner;
+            //    newChar.KommlinkDataList[maxID].Wert = item.Wert;
+            //    newChar.KommlinkDataList[maxID].Typ = item.Typ;
+            //    newChar.KommlinkDataList[maxID].Zusatz = item.Zusatz;
+            //    newChar.KommlinkDataList[maxID].Notiz = item.Notiz;
+            //    newChar.KommlinkDataList[maxID].Aktiv = item.Aktiv;
+            //    newChar.KommlinkDataList[maxID].Anzahl = item.Anzahl;
+            //    newChar.KommlinkDataList[maxID].Besitz = item.Besitz;
+            //    newChar.KommlinkDataList[maxID].Datenverarbeitung = item.Datenverarbeitung;
+            //    newChar.KommlinkDataList[maxID].Firewall = item.Firewall;
+            //    newChar.KommlinkDataList[maxID].Programmanzahl = item.Programmanzahl;
             //    maxID++;
             //}
             //maxID = 0;
-            //foreach (var item in tempChar.CyberDeckController.DataList)
+            //foreach (var item in tempChar.CyberDeckDataList)
             //{
-            //    newChar.Add("CyberDeck", tempChar.CyberDeckController.HD_ID);
-            //    newChar.CyberDeckController.DataList[maxID].Ordnung = item.Ordnung;
-            //    newChar.CyberDeckController.DataList[maxID].Bezeichner = item.Bezeichner;
-            //    newChar.CyberDeckController.DataList[maxID].Wert = item.Wert;
-            //    newChar.CyberDeckController.DataList[maxID].Typ = item.Typ;
-            //    newChar.CyberDeckController.DataList[maxID].Zusatz = item.Zusatz;
-            //    newChar.CyberDeckController.DataList[maxID].Notiz = item.Notiz;
-            //    newChar.CyberDeckController.DataList[maxID].Aktiv = item.Aktiv;
-            //    newChar.CyberDeckController.DataList[maxID].Anzahl = item.Anzahl;
-            //    newChar.CyberDeckController.DataList[maxID].Besitz = item.Besitz;
-            //    newChar.CyberDeckController.DataList[maxID].Programmanzahl = item.Programmanzahl;
-            //    newChar.CyberDeckController.DataList[maxID].Datenverarbeitung = item.Datenverarbeitung;
-            //    newChar.CyberDeckController.DataList[maxID].Firewall = item.Firewall;
-            //    newChar.CyberDeckController.DataList[maxID].Angriff = item.Angriff;
-            //    newChar.CyberDeckController.DataList[maxID].Schleicher = item.Schleicher;
-            //    newChar.CyberDeckController.DataList[maxID].Datenverarbeitung_o = item.Datenverarbeitung_o;
-            //    newChar.CyberDeckController.DataList[maxID].Firewall_o = item.Firewall_o;
-            //    newChar.CyberDeckController.DataList[maxID].Angriff_o = item.Angriff_o;
-            //    newChar.CyberDeckController.DataList[maxID].Schleicher_o = item.Schleicher_o;
+            //    newChar.Add("CyberDeck", tempChar.CyberDeckHD_ID);
+            //    newChar.CyberDeckDataList[maxID].Ordnung = item.Ordnung;
+            //    newChar.CyberDeckDataList[maxID].Bezeichner = item.Bezeichner;
+            //    newChar.CyberDeckDataList[maxID].Wert = item.Wert;
+            //    newChar.CyberDeckDataList[maxID].Typ = item.Typ;
+            //    newChar.CyberDeckDataList[maxID].Zusatz = item.Zusatz;
+            //    newChar.CyberDeckDataList[maxID].Notiz = item.Notiz;
+            //    newChar.CyberDeckDataList[maxID].Aktiv = item.Aktiv;
+            //    newChar.CyberDeckDataList[maxID].Anzahl = item.Anzahl;
+            //    newChar.CyberDeckDataList[maxID].Besitz = item.Besitz;
+            //    newChar.CyberDeckDataList[maxID].Programmanzahl = item.Programmanzahl;
+            //    newChar.CyberDeckDataList[maxID].Datenverarbeitung = item.Datenverarbeitung;
+            //    newChar.CyberDeckDataList[maxID].Firewall = item.Firewall;
+            //    newChar.CyberDeckDataList[maxID].Angriff = item.Angriff;
+            //    newChar.CyberDeckDataList[maxID].Schleicher = item.Schleicher;
+            //    newChar.CyberDeckDataList[maxID].Datenverarbeitung_o = item.Datenverarbeitung_o;
+            //    newChar.CyberDeckDataList[maxID].Firewall_o = item.Firewall_o;
+            //    newChar.CyberDeckDataList[maxID].Angriff_o = item.Angriff_o;
+            //    newChar.CyberDeckDataList[maxID].Schleicher_o = item.Schleicher_o;
             //    maxID++;
             //}
             //maxID = 0;
-            //foreach (var item in tempChar.VehikelController.DataList)
+            //foreach (var item in tempChar.VehikelDataList)
             //{
-            //    newChar.Add("Vehikel", tempChar.VehikelController.HD_ID);
-            //    newChar.VehikelController.DataList[maxID].Ordnung = item.Ordnung;
-            //    newChar.VehikelController.DataList[maxID].Bezeichner = item.Bezeichner;
-            //    newChar.VehikelController.DataList[maxID].Wert = item.Wert;
-            //    newChar.VehikelController.DataList[maxID].Typ = item.Typ;
-            //    newChar.VehikelController.DataList[maxID].Zusatz = item.Zusatz;
-            //    newChar.VehikelController.DataList[maxID].Notiz = item.Notiz;
-            //    newChar.VehikelController.DataList[maxID].Aktiv = item.Aktiv;
-            //    newChar.VehikelController.DataList[maxID].Anzahl = item.Anzahl;
-            //    newChar.VehikelController.DataList[maxID].Besitz = item.Besitz;
-            //    newChar.VehikelController.DataList[maxID].Beschleunigung = item.Beschleunigung;
-            //    newChar.VehikelController.DataList[maxID].Geschwindigkeit = item.Geschwindigkeit;
-            //    newChar.VehikelController.DataList[maxID].Gewicht = item.Gewicht;
-            //    newChar.VehikelController.DataList[maxID].Handling = item.Handling;
-            //    newChar.VehikelController.DataList[maxID].Panzerung = item.Panzerung;
-            //    newChar.VehikelController.DataList[maxID].Pilot = item.Pilot;
-            //    newChar.VehikelController.DataList[maxID].Rumpf = item.Rumpf;
-            //    newChar.VehikelController.DataList[maxID].Sensor = item.Sensor;
-            //    newChar.VehikelController.DataList[maxID].Sitze = item.Sitze;
+            //    newChar.Add("Vehikel", tempChar.VehikelHD_ID);
+            //    newChar.VehikelDataList[maxID].Ordnung = item.Ordnung;
+            //    newChar.VehikelDataList[maxID].Bezeichner = item.Bezeichner;
+            //    newChar.VehikelDataList[maxID].Wert = item.Wert;
+            //    newChar.VehikelDataList[maxID].Typ = item.Typ;
+            //    newChar.VehikelDataList[maxID].Zusatz = item.Zusatz;
+            //    newChar.VehikelDataList[maxID].Notiz = item.Notiz;
+            //    newChar.VehikelDataList[maxID].Aktiv = item.Aktiv;
+            //    newChar.VehikelDataList[maxID].Anzahl = item.Anzahl;
+            //    newChar.VehikelDataList[maxID].Besitz = item.Besitz;
+            //    newChar.VehikelDataList[maxID].Beschleunigung = item.Beschleunigung;
+            //    newChar.VehikelDataList[maxID].Geschwindigkeit = item.Geschwindigkeit;
+            //    newChar.VehikelDataList[maxID].Gewicht = item.Gewicht;
+            //    newChar.VehikelDataList[maxID].Handling = item.Handling;
+            //    newChar.VehikelDataList[maxID].Panzerung = item.Panzerung;
+            //    newChar.VehikelDataList[maxID].Pilot = item.Pilot;
+            //    newChar.VehikelDataList[maxID].Rumpf = item.Rumpf;
+            //    newChar.VehikelDataList[maxID].Sensor = item.Sensor;
+            //    newChar.VehikelDataList[maxID].Sitze = item.Sitze;
             //    maxID++;
             //}
             //maxID = 0;
-            //foreach (var item in tempChar.PanzerungController.DataList)
+            //foreach (var item in tempChar.PanzerungDataList)
             //{
-            //    newChar.Add("Panzerung", tempChar.PanzerungController.HD_ID);
-            //    newChar.PanzerungController.DataList[maxID].Ordnung = item.Ordnung;
-            //    newChar.PanzerungController.DataList[maxID].Bezeichner = item.Bezeichner;
-            //    newChar.PanzerungController.DataList[maxID].Wert = item.Wert;
-            //    newChar.PanzerungController.DataList[maxID].Typ = item.Typ;
-            //    newChar.PanzerungController.DataList[maxID].Zusatz = item.Zusatz;
-            //    newChar.PanzerungController.DataList[maxID].Notiz = item.Notiz;
-            //    newChar.PanzerungController.DataList[maxID].Aktiv = item.Aktiv;
-            //    newChar.PanzerungController.DataList[maxID].Anzahl = item.Anzahl;
-            //    newChar.PanzerungController.DataList[maxID].Besitz = item.Besitz;
-            //    newChar.PanzerungController.DataList[maxID].Stoß = item.Stoß;
+            //    newChar.Add("Panzerung", tempChar.PanzerungHD_ID);
+            //    newChar.PanzerungDataList[maxID].Ordnung = item.Ordnung;
+            //    newChar.PanzerungDataList[maxID].Bezeichner = item.Bezeichner;
+            //    newChar.PanzerungDataList[maxID].Wert = item.Wert;
+            //    newChar.PanzerungDataList[maxID].Typ = item.Typ;
+            //    newChar.PanzerungDataList[maxID].Zusatz = item.Zusatz;
+            //    newChar.PanzerungDataList[maxID].Notiz = item.Notiz;
+            //    newChar.PanzerungDataList[maxID].Aktiv = item.Aktiv;
+            //    newChar.PanzerungDataList[maxID].Anzahl = item.Anzahl;
+            //    newChar.PanzerungDataList[maxID].Besitz = item.Besitz;
+            //    newChar.PanzerungDataList[maxID].Stoß = item.Stoß;
             //    maxID++;
             //}
 
@@ -359,13 +359,13 @@ namespace ShadowRunHelper.IO
             return templist;
         }
 
-        public static async void Speichern(Controller.CharHolder SaveChar, StorageFile file)
+        public static async void Speichern(CharHolder SaveChar, StorageFile file)
         {
             //Ausgewählten Char auf Plattensubsystem schreiben
             await FileIO.WriteTextAsync(file, CharIO.Char_to_JSON(SaveChar));
         }
 
-        public static async Task<Controller.CharHolder> Laden(StorageFile file)
+        public static async Task<CharHolder> Laden(StorageFile file)
         {
             String inputString = "";
             try

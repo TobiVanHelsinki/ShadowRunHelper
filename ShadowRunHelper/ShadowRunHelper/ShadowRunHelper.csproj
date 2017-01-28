@@ -113,7 +113,6 @@
     </Compile>
     <Compile Include="CharController\IController.cs" />
     <Compile Include="CharController\Vehikel.cs" />
-    <Compile Include="CharController\Eigenschaft.cs" />
     <Compile Include="CharController\Kommlink.cs" />
     <Compile Include="CharController\Fernkampfwaffe.cs" />
     <Compile Include="CharController\Nahkampfwaffe.cs" />
@@ -136,19 +135,14 @@
     <Compile Include="CharModel\Kommlink.cs" />
     <Compile Include="CharModel\Nahkampfwaffe.cs" />
     <Compile Include="CharModel\Waffe.cs" />
-    <Compile Include="Controller\Error.cs" />
-    <Compile Include="Controller\TApp.cs" />
-    <Compile Include="Controller\TSystem.cs" />
     <Compile Include="IO\CharVerwaltung.cs" />
-    <Compile Include="Controller\HashDictionary.cs" />
     <Compile Include="IO\CharIO.cs" />
     <Compile Include="CharModel\Panzerung.cs" />
     <Compile Include="CharModel\Item.cs" />
     <Compile Include="CharController\Panzerung.cs" />
-    <Compile Include="Controller\CharHolder.cs" />
+    <Compile Include="Model\CharHolder.cs" />
     <Compile Include="CharModel\Thing.cs" />
     <Compile Include="CharModel\Fertigkeit.cs" />
-    <Compile Include="Model\DictionaryCharEntry.cs" />
     <Compile Include="CharModel\Handlung.cs" />
     <Compile Include="Model\CharViewModel.cs" />
     <Compile Include="Model\Optionen.cs" />

@@ -6,7 +6,6 @@ using Windows.UI.Xaml.Controls.Primitives;
 using System;
 using ShadowRunHelper.UI.Edit;
 using ShadowRunHelper.Ressourcen;
-using static ShadowRunHelper.Ressourcen.TypNamen;
 
 namespace ShadowRunHelper
 {
