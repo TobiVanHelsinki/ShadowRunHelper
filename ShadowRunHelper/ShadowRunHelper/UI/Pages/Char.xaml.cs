@@ -5,7 +5,6 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Primitives;
 using System;
 using ShadowRunHelper.UI.Edit;
-using ShadowRunHelper.Ressourcen;
 
 namespace ShadowRunHelper
 {

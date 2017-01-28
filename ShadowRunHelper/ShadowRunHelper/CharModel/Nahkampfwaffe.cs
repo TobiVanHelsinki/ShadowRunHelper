@@ -20,5 +20,23 @@
         {
             this.ThingType = ThingDefs.Nahkampfwaffe;
         }
+
+
+        public Nahkampfwaffe Copy(ref Nahkampfwaffe target)
+        {
+            if (target == null)
+            {
+                target = new Nahkampfwaffe();
+            }
+            base.Copy((Thing)target);
+            target.Reichweite = Reichweite;
+            return target;
+        }
+
+        public new void Reset()
+        {
+            base.Reset();
+            Reichweite = 0;
+        }
     }
 }

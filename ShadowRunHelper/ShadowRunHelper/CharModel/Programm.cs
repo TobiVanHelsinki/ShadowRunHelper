@@ -27,5 +27,23 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Programm;
 
         }
+
+
+        public Programm Copy(ref Programm target)
+        {
+            if (target == null)
+            {
+                target = new Programm();
+            }
+            base.Copy((Thing)target);
+            target.Optionen = Optionen;
+            return target;
+        }
+
+        public new void Reset()
+        {
+            base.Reset();
+            Optionen = "";
+        }
     }
 }

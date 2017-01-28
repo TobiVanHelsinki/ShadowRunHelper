@@ -11,22 +11,6 @@ namespace ShadowRunHelper.CharModel
         public Nachteil()
         {
             this.ThingType = ThingDefs.Nachteil;
-
-        }
-
-        public Nachteil Copy(Nachteil target = null)
-        {
-            if (target == null)
-            {
-                target = new Nachteil();
-            }
-            base.Copy(target);
-            return target;
-        }
-
-        public new void Reset()
-        {
-            base.Reset();
         }
     }
 }

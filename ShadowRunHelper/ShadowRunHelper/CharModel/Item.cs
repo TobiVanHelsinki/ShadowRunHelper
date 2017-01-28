@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -51,6 +52,11 @@ namespace ShadowRunHelper.CharModel
         public Item()
         {
             this.ThingType = ThingDefs.Item;
+        }
+
+        public override double GetValue([CallerMemberName] string ID = "")
+        {
+            return  (this.Aktiv == true) ? base.GetValue(ID) : 0;
         }
 
         public Item Copy(ref Item target)

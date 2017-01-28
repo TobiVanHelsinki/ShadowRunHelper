@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ShadowRunHelper.Ressourcen
+namespace ShadowRunHelper
 {
-    class Exceptions
+    internal static class ExceptionMessages
     {
-
+        internal const string AllListChooser_AllList_Empty = "Error at AllList, List was empty";
+        internal const string AllListChooser_AllList_Null = "Error at AllList, List was null";
+        internal const string AllListChooser_Data_Null = "Error at AllList, data was null";
+        internal const string IO_Deserialize_Error = "Something went wrong with des your char";
     }
 
     //[System.Serializable]

@@ -13,20 +13,5 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Vorteil;
 
         }
-
-        public Vorteil Copy(Vorteil target = null)
-        {
-            if (target == null)
-            {
-                target = new Vorteil();
-            }
-            base.Copy(target);
-            return target;
-        }
-
-        public new void Reset()
-        {
-            base.Reset();
-        }
     }
 }

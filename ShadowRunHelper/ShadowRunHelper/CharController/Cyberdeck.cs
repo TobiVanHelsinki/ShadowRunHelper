@@ -6,14 +6,14 @@ using System.Collections.Specialized;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cCyberDeckController : CharController.cController<CharModel.CyberDeck>
+    public class cCyberDeckController : cController<CyberDeck>
     {
         private KeyValuePair<Thing, string> MI_V;
         private KeyValuePair<Thing, string> MI_A;
         private KeyValuePair<Thing, string> MI_S;
         private KeyValuePair<Thing, string> MI_F;
         private KeyValuePair<Thing, string> MI_D;
-        private CyberDeck ActiveDeck; // active deck nach json kaputt
+        public CyberDeck ActiveDeck; // active deck nach json kaputt
 
         public cCyberDeckController()
         {

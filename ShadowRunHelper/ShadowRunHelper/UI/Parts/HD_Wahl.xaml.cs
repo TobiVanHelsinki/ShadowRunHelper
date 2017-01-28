@@ -18,8 +18,19 @@ namespace ShadowRunHelper
 
         public HD_Wahl(Handlung data, List<KeyValuePair<CharModel.Thing, string>> i_lstAll, int modus)
         {
+            if (i_lstAll == null)
+            {
+                throw new System.ArgumentNullException(ExceptionMessages.AllListChooser_AllList_Null);
+            }
+            if (i_lstAll.Count <= 0)
+            {
+                throw new System.ArgumentNullException(ExceptionMessages.AllListChooser_AllList_Empty);
+            }
+            if (data == null)
+            {
+                throw new System.ArgumentNullException(ExceptionMessages.AllListChooser_Data_Null);
+            }
             this.lstAll = i_lstAll;
-            //lstAll = new ObservableCollection<Thing>();
             this.data = data;
             this.Modus = modus;
             this.InitializeComponent();

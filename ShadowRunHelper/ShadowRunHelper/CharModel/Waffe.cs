@@ -16,7 +16,6 @@
             }
         }
 
-
         private char schadenTyp = ' ';
         public char SchadenTyp
         {

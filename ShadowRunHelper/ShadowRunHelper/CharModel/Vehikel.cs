@@ -125,5 +125,38 @@
             this.ThingType = ThingDefs.Vehikel;
 
         }
+
+        public Vehikel Copy(ref Vehikel target)
+        {
+            if (target == null)
+            {
+                target = new Vehikel();
+            }
+            base.Copy((Thing)target);
+            target.Beschleunigung = Beschleunigung;
+            target.Geschwindigkeit = Geschwindigkeit;
+            target.Gewicht = Gewicht;
+            target.Handling = Handling;
+            target.Panzerung = Panzerung;
+            target.Rumpf = Rumpf;
+            target.Pilot = Pilot;
+            target.Sensor = Sensor;
+            target.Sitze = Sitze;
+            return target;
+        }
+
+        public new void Reset()
+        {
+            base.Reset();
+            Beschleunigung = 0;
+            Geschwindigkeit = 0;
+            Gewicht = 0;
+            Handling = 0;
+            Panzerung = 0;
+            Rumpf = 0;
+            Pilot = 0;
+            Sensor = 0;
+            Sitze = 0;
+        }
     }
 }

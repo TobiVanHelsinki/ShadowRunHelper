@@ -219,7 +219,7 @@ namespace ShadowRunHelper.IO
                // throw new Exception("Konnte Char nciht laden");
             }
             
-            return await IO.CharIO.Laden(CharFile);
+            return await IO.CharIO.Laden(CharFile); //TODO introduce user notification system and surround with try catch
 
         }
 
@@ -231,13 +231,13 @@ namespace ShadowRunHelper.IO
             picker.FileTypeFilter.Add(Konstanten.DATEIENDUNG_CHAR);
 
             StorageFile file = await picker.PickSingleFileAsync();
-            CharHolder temp = await IO.CharIO.Laden(file);
+            CharHolder temp = await IO.CharIO.Laden(file); //TODO introduce user notification system and surround with try catch
             await this.SpeichernIntern(temp);
         }
 
         public async void LadenExtern(StorageFile file)
         {
-            CharHolder temp = await IO.CharIO.Laden(file);
+            CharHolder temp = await IO.CharIO.Laden(file); //TODO introduce user notification system and surround with try catch
             await this.SpeichernIntern(temp);
         }
 

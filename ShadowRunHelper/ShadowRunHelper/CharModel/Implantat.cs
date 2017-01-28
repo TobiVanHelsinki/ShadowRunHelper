@@ -40,5 +40,23 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Implantat;
         }
 
+        public Implantat Copy(ref Implantat target)
+        {
+            if (target == null)
+            {
+                target = new Implantat();
+            }
+            base.Copy((Thing)target);
+            target.Essenz = Essenz;
+            target.Kapazität = Kapazität;
+            return target;
+        }
+
+        public new void Reset()
+        {
+            base.Reset();
+            Kapazität = 0;
+            Essenz = 0;
+        }
     }
 }

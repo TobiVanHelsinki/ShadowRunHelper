@@ -6,7 +6,6 @@
     xmlns:model="using:ShadowRunHelper.CharModel"
     xmlns:conv="using:ShadowRunHelper.UI.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:t="using:ShadowRunHelper.Controller"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="Auswahl"
