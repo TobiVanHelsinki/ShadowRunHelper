@@ -5,16 +5,11 @@ namespace ShadowRunHelper.UI.Edit
     public sealed partial class Edit_Person : ContentDialog
     {
         public CharModel.Person Data;
-        public Controller.HashDictionary HD;
 
-        public Edit_Person(CharModel.Person data, Controller.HashDictionary hd)
+        public Edit_Person(CharModel.Person data)
         {
             this.InitializeComponent();
             this.Data = data;
-            this.HD = hd;
-            //System.DateTimeOffset GebDatePickerNew = new System.DateTimeOffset();
-            //GebDatePickerNew.DateTime = new System.DateTimeOffset(this.Data.Geburtsdatum2);
-            //GebDatePickerNew.Date = 
             try
             {
                 this.GebDatePicker.Date = this.Data.GeburtsdatumDateTimeOffset;

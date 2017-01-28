@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharController
 {
@@ -37,18 +38,32 @@ namespace ShadowRunHelper.CharController
         private KeyValuePair<Thing, string> MI_Limit_S;
         public cAttributController()
         {
+            var res = ResourceLoader.GetForCurrentView();
+
             Konsti = new Attribut();
+            Konsti.Bezeichner = res.GetString("Model_Attribut_Konsti/Text");
             Geschick = new Attribut();
+            Geschick.Bezeichner = res.GetString("Model_Attribut_Geschick/Text");
             Reaktion = new Attribut();
+            Reaktion.Bezeichner = res.GetString("Model_Attribut_Reaktion/Text");
             Staerke = new Attribut();
+            Staerke.Bezeichner = res.GetString("Model_Attribut_Staerke/Text");
             Charisma = new Attribut();
+            Charisma.Bezeichner = res.GetString("Model_Attribut_Charisma/Text");
             Logik= new Attribut();
-            Intuition= new Attribut();
+            Logik.Bezeichner = res.GetString("Model_Attribut_Logik/Text");
+            Intuition = new Attribut();
+            Intuition.Bezeichner = res.GetString("Model_Attribut_Intuition/Text");
             Willen= new Attribut();
+            Willen.Bezeichner = res.GetString("Model_Attribut_Willen/Text");
             Essenz= new Attribut();
+            Essenz.Bezeichner = res.GetString("Model_Attribut_Essenz/Text");
             Limit_K= new Attribut();
+            Limit_K.Bezeichner = res.GetString("Model_Attribut_Limit_K/Text");
             Limit_G= new Attribut();
+            Limit_G.Bezeichner = res.GetString("Model_Attribut_Limit_G/Text");
             Limit_S= new Attribut();
+            Limit_S.Bezeichner = res.GetString("Model_Attribut_Limit_S/Text");
 
             MI_Konsti = new KeyValuePair<Thing, string>(Konsti, "");
             MI_Geschick = new KeyValuePair<Thing, string>(Geschick, "");

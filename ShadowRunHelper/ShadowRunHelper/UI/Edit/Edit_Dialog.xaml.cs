@@ -36,29 +36,40 @@ namespace ShadowRunHelper.UI.Edit
                     EditType.ContentTemplate = Fertigkeit;
                     break;
                 case ThingDefs.Item:
+                    EditType.ContentTemplate = Item;
                     break;
                 case ThingDefs.Programm:
+                    EditType.ContentTemplate = Programm;
                     break;
                 case ThingDefs.Munition:
+                    EditType.ContentTemplate = Munition;
                     break;
                 case ThingDefs.Implantat:
+                    EditType.ContentTemplate = Implantat;
                     break;
                 case ThingDefs.Vorteil:
+                    EditType.ContentTemplate = Vorteil;
                     break;
                 case ThingDefs.Nachteil:
+                    EditType.ContentTemplate = Nachteil;
                     break;
                 case ThingDefs.Connection:
+                    EditType.ContentTemplate = Connection;
                     break;
                 case ThingDefs.Sin:
+                    EditType.ContentTemplate = Sin;
                     break;
                 case ThingDefs.Attribut:
                     EditType.ContentTemplate = Attribut;
                     break;
                 case ThingDefs.Nahkampfwaffe:
+                    EditType.ContentTemplate = Nahkampfwaffe;
                     break;
                 case ThingDefs.Fernkampfwaffe:
+                    EditType.ContentTemplate = Fernkampfwaffe;
                     break;
                 case ThingDefs.Kommlink:
+                    EditType.ContentTemplate = Kommlink;
                     break;
                 case ThingDefs.CyberDeck:
                     EditType.ContentTemplate = CyberDeck;

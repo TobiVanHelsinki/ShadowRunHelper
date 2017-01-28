@@ -551,4 +551,37 @@
   <data name="UI_Optionen_U_Datenschutz.Text" xml:space="preserve">
     <value>Datenschutzerklärung:</value>
   </data>
+  <data name="Model_Attribut_Charisma.Text" xml:space="preserve">
+    <value>Charisma</value>
+  </data>
+  <data name="Model_Attribut_Essenz.Text" xml:space="preserve">
+    <value>Essenz</value>
+  </data>
+  <data name="Model_Attribut_Intuition.Text" xml:space="preserve">
+    <value>Intuition</value>
+  </data>
+  <data name="Model_Attribut_Konsti.Text" xml:space="preserve">
+    <value>Konstitution</value>
+  </data>
+  <data name="Model_Attribut_Limit_G.Text" xml:space="preserve">
+    <value>Geistiges Limit</value>
+  </data>
+  <data name="Model_Attribut_Limit_K.Text" xml:space="preserve">
+    <value>Körperliches limit</value>
+  </data>
+  <data name="Model_Attribut_Limit_S.Text" xml:space="preserve">
+    <value>Soziales Limit</value>
+  </data>
+  <data name="Model_Attribut_Logik.Text" xml:space="preserve">
+    <value>Logik</value>
+  </data>
+  <data name="Model_Attribut_Reaktion.Text" xml:space="preserve">
+    <value>Reaktion</value>
+  </data>
+  <data name="Model_Attribut_Staerke.Text" xml:space="preserve">
+    <value>Stärke</value>
+  </data>
+  <data name="Model_Attribut_Willen.Text" xml:space="preserve">
+    <value>Willenskraft</value>
+  </data>
 </root>
