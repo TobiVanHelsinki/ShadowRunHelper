@@ -17,14 +17,10 @@ namespace ShadowRunHelper.CharController
             T newTee = new T();
             Data.Add(newTee);
             return newTee;
-            //TODO invoke Event Data Changed (Adding, tAdd)
-            throw new NotImplementedException();
         }
         public void RemoveThing(T tRem)
         {
             Data.Remove(tRem);
-            //TODO invoke Event Data Changed (Removing, tRem)
-            throw new NotImplementedException();
         }
 
         public ObservableCollection<T> GetElements()
@@ -38,7 +34,11 @@ namespace ShadowRunHelper.CharController
         public cController()
         {
             Data = new ObservableCollection<T>();
+            Data.CollectionChanged += Data_CollectionChanged;
         }
 
+        private void Data_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+        }
     }
 }

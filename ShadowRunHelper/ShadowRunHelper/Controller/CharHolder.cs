@@ -81,36 +81,49 @@ namespace ShadowRunHelper.Controller
                     tToAdd = CTRLFertigkeit.AddNewThing();
                     break;
                 case ThingDefs.Item:
+                    tToAdd = CTRLItem.AddNewThing();
                     break;
                 case ThingDefs.Programm:
+                    tToAdd = CTRLProgramm.AddNewThing();
                     break;
                 case ThingDefs.Munition:
+                    tToAdd = CTRLMunition.AddNewThing();
                     break;
                 case ThingDefs.Implantat:
+                    tToAdd = CTRLImplantat.AddNewThing();
                     break;
                 case ThingDefs.Vorteil:
+                    tToAdd = CTRLVorteil.AddNewThing();
                     break;
                 case ThingDefs.Nachteil:
+                    tToAdd = CTRLNachteil.AddNewThing();
                     break;
                 case ThingDefs.Connection:
+                    tToAdd = CTRLConnection.AddNewThing();
                     break;
                 case ThingDefs.Sin:
+                    tToAdd = CTRLSin.AddNewThing();
                     break;
                 case ThingDefs.Attribut:
                     tToAdd = CTRLAttribut.AddNewThing();
                     break;
                 case ThingDefs.Nahkampfwaffe:
+                    tToAdd = CTRLNahkampfwaffe.AddNewThing();
                     break;
                 case ThingDefs.Fernkampfwaffe:
+                    tToAdd = CTRLFernkampfwaffe.AddNewThing();
                     break;
                 case ThingDefs.Kommlink:
+                    tToAdd = CTRLKommlink.AddNewThing();
                     break;
                 case ThingDefs.CyberDeck:
                     tToAdd = CTRLCyberDeck.AddNewThing();
                     break;
                 case ThingDefs.Vehikel:
+                    tToAdd = CTRLVehikel.AddNewThing();
                     break;
                 case ThingDefs.Panzerung:
+                    tToAdd = CTRLPanzerung.AddNewThing();
                     break;
                 default:
                     break;
@@ -146,36 +159,49 @@ namespace ShadowRunHelper.Controller
                     CTRLFertigkeit.RemoveThing((Fertigkeit)tToRemove);
                     break;
                 case ThingDefs.Item:
+                    CTRLItem.RemoveThing((Item)tToRemove);
                     break;
                 case ThingDefs.Programm:
+                    CTRLProgramm.RemoveThing((Programm)tToRemove);
                     break;
                 case ThingDefs.Munition:
+                    CTRLMunition.RemoveThing((Munition)tToRemove);
                     break;
                 case ThingDefs.Implantat:
+                    CTRLImplantat.RemoveThing((Implantat)tToRemove);
                     break;
                 case ThingDefs.Vorteil:
+                    CTRLVorteil.RemoveThing((Vorteil)tToRemove);
                     break;
                 case ThingDefs.Nachteil:
+                    CTRLNachteil.RemoveThing((Nachteil)tToRemove);
                     break;
                 case ThingDefs.Connection:
+                    CTRLConnection.RemoveThing((Connection)tToRemove);
                     break;
                 case ThingDefs.Sin:
+                    CTRLSin.RemoveThing((Sin)tToRemove);
                     break;
                 case ThingDefs.Attribut:
                     CTRLAttribut.RemoveThing((Attribut)tToRemove);
                     break;
                 case ThingDefs.Nahkampfwaffe:
+                    CTRLNahkampfwaffe.RemoveThing((Nahkampfwaffe)tToRemove);
                     break;
                 case ThingDefs.Fernkampfwaffe:
+                    CTRLFernkampfwaffe.RemoveThing((Fernkampfwaffe)tToRemove);
                     break;
                 case ThingDefs.Kommlink:
+                    CTRLKommlink.RemoveThing((Kommlink)tToRemove);
                     break;
                 case ThingDefs.CyberDeck:
                     CTRLCyberDeck.RemoveThing((CyberDeck)tToRemove);
                     break;
                 case ThingDefs.Vehikel:
+                    CTRLVehikel.RemoveThing((Vehikel)tToRemove);
                     break;
                 case ThingDefs.Panzerung:
+                    CTRLPanzerung.RemoveThing((Panzerung)tToRemove);
                     break;
                 default:
                     break;

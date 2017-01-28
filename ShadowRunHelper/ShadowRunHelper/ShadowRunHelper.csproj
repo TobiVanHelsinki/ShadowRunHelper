@@ -168,14 +168,8 @@
     <Compile Include="UI\Edit\Edit_Connection.xaml.cs">
       <DependentUpon>Edit_Connection.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Edit\Edit_CyberDeck.xaml.cs">
-      <DependentUpon>Edit_CyberDeck.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Edit\Edit_Fernkampfwaffe.xaml.cs">
       <DependentUpon>Edit_Fernkampfwaffe.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Edit\Edit_Fertigkeit.xaml.cs">
-      <DependentUpon>Edit_Fertigkeit.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Edit\Edit_Implantat.xaml.cs">
       <DependentUpon>Edit_Implantat.xaml</DependentUpon>
@@ -219,9 +213,6 @@
     <Compile Include="UI\Fehler\FehlerAnzeige.cs" />
     <Compile Include="UI\Parts\HD_Wahl.xaml.cs">
       <DependentUpon>HD_Wahl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Edit\Edit_Handlung.xaml.cs">
-      <DependentUpon>Edit_Handlung.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -315,15 +306,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Edit\Edit_CyberDeck.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\Edit\Edit_Fernkampfwaffe.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Edit\Edit_Fertigkeit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -382,10 +365,6 @@
     <Page Include="UI\Parts\HD_Wahl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Edit\Edit_Handlung.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Ressourcen\ResourceDictionary_App.xaml">
       <Generator>MSBuild:Compile</Generator>

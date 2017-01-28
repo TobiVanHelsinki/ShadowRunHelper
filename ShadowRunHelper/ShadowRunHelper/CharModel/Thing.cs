@@ -59,7 +59,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double wert = 0;
+        private double wert = 5;
         public double Wert
         {
             get { return wert; }
@@ -103,6 +103,10 @@ namespace ShadowRunHelper.CharModel
         {
         }
 
+        public double GetValue()
+        {
+            return Wert;
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {

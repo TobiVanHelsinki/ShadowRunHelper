@@ -33,6 +33,7 @@ namespace ShadowRunHelper.UI.Edit
                     EditType.ContentTemplate = Handlung;
                     break;
                 case ThingDefs.Fertigkeit:
+                    EditType.ContentTemplate = Fertigkeit;
                     break;
                 case ThingDefs.Item:
                     break;
