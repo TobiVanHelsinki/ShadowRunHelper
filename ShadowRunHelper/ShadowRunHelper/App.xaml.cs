@@ -30,9 +30,9 @@ namespace ShadowRunHelper
 
 
             StorageFolder RoamingFolder = ApplicationData.Current.RoamingFolder;
-            RoamingFolder.CreateFolderAsync(Variablen.CONTAINER_CHAR);
+            RoamingFolder.CreateFolderAsync(Konstanten.CONTAINER_CHAR);
             ApplicationDataContainer LocalSettings = ApplicationData.Current.LocalSettings;
-            LocalSettings.CreateContainer(Variablen.CONTAINER_SETTINGS, 0);
+            LocalSettings.CreateContainer(Konstanten.CONTAINER_SETTINGS, 0);
                
         }
 

@@ -15,7 +15,7 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    return Settings.Values[Variablen.LAST_CHAR].ToString();
+                    return Settings.Values[Konstanten.LAST_CHAR].ToString();
                 }
                 catch (Exception)
                 {
@@ -27,7 +27,7 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Settings.Values[Variablen.LAST_CHAR] = value;
+                    Settings.Values[Konstanten.LAST_CHAR] = value;
                 }
                 catch (Exception)
                 {
@@ -45,8 +45,8 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
-                    temp = (bool)container.Values[Variablen.CONTAINER_SETTINGS_SAVE_CHAR_ON_EXIT];
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    temp = (bool)container.Values[Konstanten.CONTAINER_SETTINGS_SAVE_CHAR_ON_EXIT];
                 }
                 catch (Exception)
                 {
@@ -59,9 +59,9 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
-                    container.Values[Variablen.CONTAINER_SETTINGS_SAVE_CHAR_ON_EXIT] = value;
+                    container.Values[Konstanten.CONTAINER_SETTINGS_SAVE_CHAR_ON_EXIT] = value;
                     Optionen.LOAD_CHAR_ON_START = true;
                 }
                 catch (Exception)
@@ -78,8 +78,8 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
-                    temp = (bool)container.Values[Variablen.CONTAINER_SETTINGS_LOAD_CHAR_ON_START];
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    temp = (bool)container.Values[Konstanten.CONTAINER_SETTINGS_LOAD_CHAR_ON_START];
                 }
                 catch (Exception)
                 {
@@ -92,9 +92,9 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
-                    container.Values[Variablen.CONTAINER_SETTINGS_LOAD_CHAR_ON_START] = value;
+                    container.Values[Konstanten.CONTAINER_SETTINGS_LOAD_CHAR_ON_START] = value;
                 }
                 catch (Exception)
                 {
@@ -110,8 +110,8 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
-                    temp = (bool)container.Values[Variablen.CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS];
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    temp = (bool)container.Values[Konstanten.CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS];
                 }
                 catch (Exception)
                 {
@@ -124,8 +124,8 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
-                    container.Values[Variablen.CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS] = value;
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    container.Values[Konstanten.CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS] = value;
                 }
                 catch (Exception)
                 {
@@ -141,8 +141,8 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
-                    temp = (bool)container.Values[Variablen.CONTAINER_SETTINGS_ORDNERMODE];
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    temp = (bool)container.Values[Konstanten.CONTAINER_SETTINGS_ORDNERMODE];
                 }
                 catch (Exception)
                 {
@@ -155,9 +155,9 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
-                    container.Values[Variablen.CONTAINER_SETTINGS_ORDNERMODE] = value;
+                    container.Values[Konstanten.CONTAINER_SETTINGS_ORDNERMODE] = value;
                 }
                 catch (Exception)
                 {
@@ -173,8 +173,8 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
-                    temp = container.Values[Variablen.CONTAINER_SETTINGS_ORDNERMODE_PFAD].ToString();
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    temp = container.Values[Konstanten.CONTAINER_SETTINGS_ORDNERMODE_PFAD].ToString();
                 }
                 catch (Exception)
                 {
@@ -187,9 +187,9 @@ namespace ShadowRunHelper
                 try
                 {
                     Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Variablen.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
-                    container.Values[Variablen.CONTAINER_SETTINGS_ORDNERMODE_PFAD] = value;
+                    container.Values[Konstanten.CONTAINER_SETTINGS_ORDNERMODE_PFAD] = value;
                 }
                 catch (Exception)
                 {

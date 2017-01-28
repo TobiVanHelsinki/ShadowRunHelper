@@ -7,7 +7,7 @@ namespace ShadowRunHelper.Model
 
     public class CharViewModel : INotifyPropertyChanged
     {
-        public TCharState currentState;
+        internal TCharState currentState;
         private Model.CharHolder current;
         public Model.CharHolder Current
         {

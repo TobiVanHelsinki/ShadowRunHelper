@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using Windows.ApplicationModel;
+
 namespace ShadowRunHelper
 {
-    public enum TCharState
+    internal enum TCharState
     {
         EMPTY_CHAR = 0,
         LOAD_CHAR = 1,
         NEW_CHAR = 2,
     }
-    public enum ThingDefs
+    internal enum ThingDefs
     {
         UndefTemp = -2,
         Undef = -1,
@@ -32,5 +34,9 @@ namespace ShadowRunHelper
         Panzerung = 17,
         Eigenschaft = 18,
     }
-    
+
+    internal enum FolderMode
+    {
+        Intern, Extern
+    }
 }

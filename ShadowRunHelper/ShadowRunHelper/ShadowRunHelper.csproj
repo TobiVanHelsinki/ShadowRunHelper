@@ -98,7 +98,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="Dok\ClassDiagram7.cd" />
+    <None Include="Dok\ClassDiagram8.cd" />
+    <None Include="Dok\ClassDiagram6.cd" />
     <None Include="Dok\ClassDiagram5.cd" />
     <None Include="Dok\ClassDiagram1.cd" />
     <None Include="Dok\ClassDiagram2.cd" />
@@ -145,10 +147,11 @@
     <Compile Include="CharModel\Fertigkeit.cs" />
     <Compile Include="CharModel\Handlung.cs" />
     <Compile Include="Model\CharViewModel.cs" />
-    <Compile Include="Model\Optionen.cs" />
+    <Compile Include="Ressourcen\Optionen.cs" />
     <Compile Include="Model\OptionViewModel.cs" />
     <Compile Include="Ressourcen\Exceptions.cs" />
-    <Compile Include="Ressourcen\TypNamen.cs" />
+    <Compile Include="Ressourcen\Typen.cs" />
+    <Compile Include="Ressourcen\Konstanten.cs" />
     <Compile Include="UI\Converter\CB.cs" />
     <Compile Include="UI\Converter\io_ListView.cs" />
     <Compile Include="UI\Converter\o_IDWAhl.cs" />
@@ -166,7 +169,6 @@
     <Compile Include="UI\Edit\Edit_Person2.xaml.cs">
       <DependentUpon>Edit_Person2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Fehler\FehlerAnzeige.cs" />
     <Compile Include="UI\Parts\HD_Wahl.xaml.cs">
       <DependentUpon>HD_Wahl.xaml</DependentUpon>
     </Compile>
@@ -187,7 +189,6 @@
     <Compile Include="UI\Parts\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Variablen.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

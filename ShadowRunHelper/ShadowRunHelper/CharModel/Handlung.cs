@@ -1,66 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Handlung : CharModel.Thing, INotifyPropertyChanged
+    public class Handlung : Thing
     {
-        //public override double GetValue(string ID = "")
-        //{
-        //    return Wert;
-        //}
-
-        //private Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> zusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();
-        //public Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> Zusammensetzung
-        //{
-        //    get { return zusammensetzung;
-        //    }
-        //    set
-        //    {
-        //        if (value != this.zusammensetzung)
-        //        {
-        //                this.zusammensetzung = value;
-        //                NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
-
-        //private Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> grenzeZusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();
-        //public Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> GrenzeZusammensetzung
-        //{
-        //    get
-        //    {
-        //        return grenzeZusammensetzung;
-        //    }
-        //    set
-        //    {
-        //        if (value != this.grenzeZusammensetzung)
-        //        {
-        //            this.grenzeZusammensetzung = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
-
-        //private Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> gegenZusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();
-        //public Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry> GegenZusammensetzung
-        //{
-        //    get
-        //    {
-        //        return gegenZusammensetzung;
-        //    }
-        //    set
-        //    {
-        //        if (value != this.gegenZusammensetzung)
-        //        {
-        //            this.gegenZusammensetzung = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
-
         public ObservableCollection<KeyValuePair<Thing, string>> Zusammensetzung;
         public ObservableCollection<KeyValuePair<Thing, string>> GrenzeZusammensetzung;
         public ObservableCollection<KeyValuePair<Thing, string>> GegenZusammensetzung;

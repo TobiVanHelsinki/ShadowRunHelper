@@ -81,7 +81,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in await IO.CharIO.getListofChars(CharFolder))
             {
                 item.Summory = item.ID.Replace('_', ' ');
-                item.Summory = item.Summory.Replace(Variablen.DATEIENDUNG_CHAR, "");
+                item.Summory = item.Summory.Replace(Konstanten.DATEIENDUNG_CHAR, "");
                 item.Summory += " (" + item.DateCreated.Day + "." + item.DateCreated.Month +"."+ item.DateCreated.Year + " " + item.DateCreated.Hour + ":" + item.DateCreated.Minute +")";
                 Summorys.Add(item);
             }
@@ -138,11 +138,11 @@ namespace ShadowRunHelper.IO
 
             if (SpeicherOrt == Ort.InternSpeichern)
             {
-                return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + Variablen.DATEIENDUNG_CHAR;
+                return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + Konstanten.DATEIENDUNG_CHAR;
             }
             else
             {
-                return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + "_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second + Variablen.DATEIENDUNG_CHAR;
+                return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + "_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second + Konstanten.DATEIENDUNG_CHAR;
             }
         }
 
@@ -160,7 +160,7 @@ namespace ShadowRunHelper.IO
                 }
                 else
                 {
-                    path = Variablen.CONTAINER_CHAR;
+                    path = Konstanten.CONTAINER_CHAR;
                     CharFolder = await RoamingFolder.GetFolderAsync(path);
                 }
             }
@@ -172,7 +172,7 @@ namespace ShadowRunHelper.IO
                 }
                 else
                 {
-                    path = Variablen.CONTAINER_CHAR;
+                    path = Konstanten.CONTAINER_CHAR;
                     await RoamingFolder.CreateFolderAsync(path);
                     CharFolder = await RoamingFolder.GetFolderAsync(path);
                 }
@@ -186,7 +186,7 @@ namespace ShadowRunHelper.IO
         {
             var folderPicker = new Windows.Storage.Pickers.FolderPicker();
             folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
-            folderPicker.FileTypeFilter.Add(Variablen.DATEIENDUNG_CHAR);
+            folderPicker.FileTypeFilter.Add(Konstanten.DATEIENDUNG_CHAR);
             //Ordner Auswähler rufen
             StorageFolder CharFolder;
             try
@@ -228,7 +228,7 @@ namespace ShadowRunHelper.IO
             var picker = new Windows.Storage.Pickers.FileOpenPicker();
             picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
             picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
-            picker.FileTypeFilter.Add(Variablen.DATEIENDUNG_CHAR);
+            picker.FileTypeFilter.Add(Konstanten.DATEIENDUNG_CHAR);
 
             StorageFile file = await picker.PickSingleFileAsync();
             CharHolder temp = await IO.CharIO.Laden(file);

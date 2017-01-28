@@ -346,7 +346,7 @@ namespace ShadowRunHelper.IO
                 IReadOnlyList<StorageFile> Liste = await CharFolder.GetFilesAsync();
                 foreach (var item in Liste)
                 {
-                    if (item.FileType == Variablen.DATEIENDUNG_CHAR)
+                    if (item.FileType == Konstanten.DATEIENDUNG_CHAR)
                     {
                         Windows.Storage.FileProperties.BasicProperties basicProperties = await item.GetBasicPropertiesAsync();
                         templist.Add(new CharSummory(item.Name, "", basicProperties.DateModified));
