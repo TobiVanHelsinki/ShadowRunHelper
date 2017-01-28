@@ -13,5 +13,28 @@ namespace ShadowRunHelper.CharModel
         {
             ThingType = ThingDefs.Attribut;
         }
+
+
+        public override double GetValue(string ID = "")
+        {
+            return Wert;
+        }
+
+        public Attribut Copy(Attribut target = null)
+        {
+            if (target == null)
+            {
+                target = new Attribut();
+            }
+            base.Copy(target);
+            return target;
+        }
+
+        public new void Reset()
+        {
+            base.Reset();
+        }
+
+
     }
 }

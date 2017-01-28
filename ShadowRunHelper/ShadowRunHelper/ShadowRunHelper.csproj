@@ -123,7 +123,6 @@
     <Compile Include="CharModel\CyberDeck.cs" />
     <Compile Include="CharModel\Attribut.cs" />
     <Compile Include="CharModel\Connection.cs" />
-    <Compile Include="CharModel\IThing.cs" />
     <Compile Include="CharModel\Person.cs" />
     <Compile Include="CharModel\Sin.cs" />
     <Compile Include="CharModel\Vorteil.cs" />

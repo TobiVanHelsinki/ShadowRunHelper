@@ -69,7 +69,7 @@ namespace ShadowRunHelper.CharModel
             return target;
         }
 
-        public void Reset()
+        public new void Reset()
         {
             base.Reset();
             Programmanzahl = 0;

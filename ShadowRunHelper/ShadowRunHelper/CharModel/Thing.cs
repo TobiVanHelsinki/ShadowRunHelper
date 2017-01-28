@@ -5,7 +5,7 @@ using static ShadowRunHelper.Ressourcen.TypNamen;
 
 namespace ShadowRunHelper.CharModel
 {
-    public abstract class Thing : INotifyPropertyChanged, IThing
+    public class Thing : INotifyPropertyChanged
     {
         private ThingDefs thingType = 0;
         public ThingDefs ThingType
@@ -59,7 +59,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double wert = 5;
+        private double wert = 0;
         public double Wert
         {
             get { return wert; }
@@ -109,6 +109,7 @@ namespace ShadowRunHelper.CharModel
 
         public Thing()
         {
+
         }
 
         public virtual double GetValue([CallerMemberNameAttribute] string ID = "")

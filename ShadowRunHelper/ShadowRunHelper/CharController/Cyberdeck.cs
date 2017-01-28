@@ -8,20 +8,12 @@ namespace ShadowRunHelper.CharController
 {
     public class cCyberDeckController : CharController.cController<CharModel.CyberDeck>
     {
-        //public class CyberDeck_A : CharModel.CyberDeck{ }
-        //public class CyberDeck_S : CharModel.CyberDeck { }
-        //public class CyberDeck_F : CharModel.CyberDeck { }
-        //public class CyberDeck_D : CharModel.CyberDeck { }
-        //private CyberDeck MI_V;
         private KeyValuePair<Thing, string> MI_V;
         private KeyValuePair<Thing, string> MI_A;
         private KeyValuePair<Thing, string> MI_S;
         private KeyValuePair<Thing, string> MI_F;
         private KeyValuePair<Thing, string> MI_D;
-        private CyberDeck ActiveDeck;
-        //private CyberDeck MI_S;
-        //private CyberDeck MI_F;
-        //private CyberDeck MI_D;
+        private CyberDeck ActiveDeck; // active deck nach json kaputt
 
         public cCyberDeckController()
         {
@@ -52,10 +44,7 @@ namespace ShadowRunHelper.CharController
             {
                 if (item.Aktiv == true)
                 {
-
                     item.Copy(ActiveDeck);
-                    //ActiveDeck.Schleicher = item.Schleicher;
-                    //ActiveDeck.Bezeichner = item.Bezeichner;
                     return;
                 }
             }

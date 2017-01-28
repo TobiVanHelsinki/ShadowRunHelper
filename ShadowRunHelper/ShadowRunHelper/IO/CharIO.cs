@@ -16,12 +16,18 @@ namespace ShadowRunHelper.IO
         {
 
             JsonSerializerSettings test = new JsonSerializerSettings();
-            test.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+            test.PreserveReferencesHandling = PreserveReferencesHandling.All; //war vorher objects
+            test.Error = ErrorHandler;
 
             //return JsonConvert.SerializeObject(SaveChar);
             return JsonConvert.SerializeObject(SaveChar, test);
+        }
 
-                
+        private static void ErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
+        {
+            //((Newtonsoft.Json.JsonSerializer)o).
+            a.ErrorContext.Handled = true;
+            //a.ErrorContext.Error.Data;
         }
 
         private static Controller.CharHolder JSON_to_Char(string fileContent)
@@ -29,16 +35,20 @@ namespace ShadowRunHelper.IO
             Controller.CharHolder tempChar = new Controller.CharHolder();
             try
             {
-                tempChar = JsonConvert.DeserializeObject<Controller.CharHolder>(fileContent);
+                JsonSerializerSettings test = new JsonSerializerSettings();
+                test.Error = ErrorHandler;
+                test.PreserveReferencesHandling = PreserveReferencesHandling.All;
+                tempChar = JsonConvert.DeserializeObject<Controller.CharHolder>(fileContent, test);
             }
             catch (Exception)
             {
                 tempChar = new Controller.CharHolder();
                 //TODO Message system
             }
+            //tempChar.CTRLCyberDeck.Data[0].Angriff++;
 
-
-            Controller.CharHolder newChar = new Controller.CharHolder();
+            return tempChar;
+            //Controller.CharHolder newChar = new Controller.CharHolder();
             ////    newChar.Char_ID = tempChar.Char_ID;
 
             //int maxID = 0;
@@ -324,7 +334,7 @@ namespace ShadowRunHelper.IO
             //    maxID++;
             //}
             //newChar.HD.toggleHDEdit(true);
-            return newChar;
+            //return newChar;
         }
 
 

@@ -104,6 +104,9 @@ namespace ShadowRunHelper.CharModel
             Zusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(Zusammensetzung); };
             GrenzeZusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(GrenzeZusammensetzung); };
             GegenZusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(GegenZusammensetzung); };
+            CollectionChanged(Zusammensetzung);
+            CollectionChanged(GrenzeZusammensetzung);
+            CollectionChanged(GegenZusammensetzung);
 
         }
 

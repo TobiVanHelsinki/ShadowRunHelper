@@ -16,8 +16,6 @@ namespace ShadowRunHelper.Controller
     public class CharHolder
     {
         public string APP_VERSION_NUMBER = Variablen.APP_VERSION_NUMBER;
-        public List<KeyValuePair<CharModel.Thing, string>> lstAll;
-        public CharController.cController<CharModel.Handlung> CTRLHandlung { get; set; }
         public CharController.cController<CharModel.Fertigkeit> CTRLFertigkeit { get; set; }
         public CharController.cController<CharModel.Item> CTRLItem { get; set; }
         public CharController.cController<CharModel.Programm> CTRLProgramm { get; set; }
@@ -35,6 +33,10 @@ namespace ShadowRunHelper.Controller
         public CharController.cCyberDeckController CTRLCyberDeck { get; set; }
         public CharController.cVehikelController CTRLVehikel { get; set; }
         public CharController.cPanzerungController CTRLPanzerung { get; set; }
+        public CharController.cController<CharModel.Handlung> CTRLHandlung { get; set; }
+
+        [System.Runtime.Serialization.IgnoreDataMember]
+        public List<KeyValuePair<CharModel.Thing, string>> lstAll;
 
         public CharModel.Person Person { get; set; }
 
@@ -43,8 +45,6 @@ namespace ShadowRunHelper.Controller
         /// </summary>
         public CharHolder()
         {
-            lstAll = new List<KeyValuePair<CharModel.Thing, string>>();
-            CTRLHandlung = new CharController.cController<CharModel.Handlung>();
             CTRLFertigkeit = new CharController.cController<CharModel.Fertigkeit>();
             CTRLItem= new CharController.cController<CharModel.Item>();
             CTRLProgramm = new CharController.cController<CharModel.Programm>();
@@ -62,10 +62,12 @@ namespace ShadowRunHelper.Controller
             CTRLCyberDeck = new CharController.cCyberDeckController();
             CTRLVehikel = new CharController.cVehikelController();
             CTRLPanzerung = new CharController.cPanzerungController();
+            CTRLHandlung = new CharController.cController<CharModel.Handlung>();
 
             Person = new CharModel.Person();
+            lstAll = new List<KeyValuePair<CharModel.Thing, string>>();
 
-            
+
         }
 
 

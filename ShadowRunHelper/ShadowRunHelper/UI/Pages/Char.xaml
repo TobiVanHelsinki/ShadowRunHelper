@@ -445,7 +445,7 @@
                     <StackPanel Name="Programm_Block">
                         <StackPanel RelativePanel.Below="Kommlinks" Name="Programme_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Programm_" Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Programm_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="3"/>
+                            <Button Name="Programm_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="4"/>
                         </StackPanel>
                         <Grid Name="Programme_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>

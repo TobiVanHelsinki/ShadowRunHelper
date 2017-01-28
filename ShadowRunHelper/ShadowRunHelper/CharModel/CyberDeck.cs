@@ -4,8 +4,6 @@ namespace ShadowRunHelper.CharModel
 {
     public class CyberDeck : CharModel.Kommlink
     {
-
-
         private double firewall_o =0;
         public double Firewall_o
         {
@@ -125,7 +123,7 @@ namespace ShadowRunHelper.CharModel
             return target;
         }
 
-        public void Reset()
+        public new void Reset()
         {
             base.Reset();
             Angriff = 0;
