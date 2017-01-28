@@ -22,20 +22,20 @@ namespace ShadowRunHelper.CharController
         public Attribut Limit_K;
         protected void RefreshLimitK()
         {
-            this.Limit_K.Wert = (this.Staerke.GetValue() * 2 + this.Konsti.GetValue() + this.Reaktion.GetValue()) / 3;
+            this.Limit_K.Wert = Math.Ceiling( (this.Staerke.GetValue() * 2 + this.Konsti.GetValue() + this.Reaktion.GetValue()) / 3);
         }
 
         //Mental Limit: (LOG x2 + INT +WIL) / 3
         public Attribut Limit_G;
         protected void RefreshLimitG()
         {
-            this.Limit_G.Wert = (this.Logik.GetValue() * 2 + this.Intuition.GetValue() + this.Willen.GetValue()) / 3;
+            this.Limit_G.Wert = Math.Ceiling((this.Logik.GetValue() * 2 + this.Intuition.GetValue() + this.Willen.GetValue()) / 3);
         }
         //Social Limit: (CHA x2 + WIL + Essence) /3
         public Attribut Limit_S;
         protected void RefreshLimitS()
         {
-            this.Limit_S.Wert = (this.Charisma.GetValue() * 2 + this.Willen.GetValue() + this.Essenz.GetValue()) / 3;
+            this.Limit_S.Wert = Math.Ceiling((this.Charisma.GetValue() * 2 + this.Willen.GetValue() + this.Essenz.GetValue()) / 3);
         }
 
 

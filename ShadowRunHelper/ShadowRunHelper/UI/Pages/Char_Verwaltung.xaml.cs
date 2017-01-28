@@ -46,8 +46,8 @@ namespace ShadowRunHelper
 
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
-           ViewModel.Current = new Controller.CharHolder();
-            ViewModel.currentState = Controller.TApp.TCharState.NEW_CHAR;
+           ViewModel.Current = new CharHolder();
+            ViewModel.currentState = TCharState.NEW_CHAR;
            Frame.Navigate(typeof(Char), ViewModel);
         }
 
@@ -69,14 +69,14 @@ namespace ShadowRunHelper
             ViewModel.Current = null;
             
             ViewModel.Current = await Verwaltung.LadenIntern(id);
-            ViewModel.currentState = Controller.TApp.TCharState.LOAD_CHAR;
+            ViewModel.currentState = TCharState.LOAD_CHAR;
             ProgressRing_Char.IsActive = false;
             Frame.Navigate(typeof(Char), ViewModel);
         }
 
         private async void Click_Speichern(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.currentState!=Controller.TApp.TCharState.EMPTY_CHAR)
+            if (ViewModel.currentState!=TCharState.EMPTY_CHAR)
             {
                 await Verwaltung.SpeichernIntern(ViewModel.Current);
             }

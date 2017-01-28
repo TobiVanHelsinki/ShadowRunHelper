@@ -85,7 +85,7 @@ namespace ShadowRunHelper.CharModel
 
         public CyberDeck()
         {
-            this.ThingType = Ressourcen.TypNamen.ThingDefs.CyberDeck;
+            this.ThingType = ThingDefs.CyberDeck;
         }
 
 

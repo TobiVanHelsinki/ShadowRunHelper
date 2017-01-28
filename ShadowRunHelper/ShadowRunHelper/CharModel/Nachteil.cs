@@ -10,7 +10,7 @@ namespace ShadowRunHelper.CharModel
     {
         public Nachteil()
         {
-            this.ThingType = Ressourcen.TypNamen.ThingDefs.Nachteil;
+            this.ThingType = ThingDefs.Nachteil;
 
         }
 

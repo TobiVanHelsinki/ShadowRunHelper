@@ -4,13 +4,13 @@ using Windows.ApplicationModel;
 
 namespace ShadowRunHelper
 {
-    internal enum TCharState
+    public enum TCharState
     {
         EMPTY_CHAR = 0,
         LOAD_CHAR = 1,
         NEW_CHAR = 2,
     }
-    internal enum ThingDefs
+    public enum ThingDefs
     {
         UndefTemp = -2,
         Undef = -1,
@@ -35,7 +35,7 @@ namespace ShadowRunHelper
         Eigenschaft = 18,
     }
 
-    internal enum FolderMode
+    public enum FolderMode
     {
         Intern, Extern
     }

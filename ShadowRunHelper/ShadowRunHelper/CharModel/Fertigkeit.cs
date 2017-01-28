@@ -9,7 +9,7 @@
         //}
         public Fertigkeit()
         {
-            this.ThingType = Ressourcen.TypNamen.ThingDefs.Fertigkeit;
+            this.ThingType = ThingDefs.Fertigkeit;
         }
     }
 }

@@ -32,7 +32,7 @@
         public Fernkampfwaffe()
         {
 
-            this.ThingType = Ressourcen.TypNamen.ThingDefs.Fernkampfwaffe;
+            this.ThingType = ThingDefs.Fernkampfwaffe;
         }
 
         public Fernkampfwaffe Copy(Fernkampfwaffe target = null)

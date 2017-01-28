@@ -47,7 +47,7 @@
 
         public Waffe()
         {
-            this.ThingType = Ressourcen.TypNamen.ThingDefs.UndefTemp;
+            this.ThingType = ThingDefs.UndefTemp;
         }
     }
 }

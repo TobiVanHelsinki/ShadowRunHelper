@@ -1,5 +1,4 @@
-﻿using ShadowRunHelper.Controller;
-using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.Model;
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -26,11 +25,11 @@ namespace ShadowRunHelper
             base.OnNavigatedTo(e);
             ViewModel = (CharViewModel)e.Parameter;
 
-            if (ViewModel.currentState == TApp.TCharState.EMPTY_CHAR)
+            if (ViewModel.currentState == TCharState.EMPTY_CHAR)
             {
                 MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
             }
-            else if (ViewModel.currentState == TApp.TCharState.LOAD_CHAR || ViewModel.currentState == TApp.TCharState.NEW_CHAR)
+            else if (ViewModel.currentState == TCharState.LOAD_CHAR || ViewModel.currentState == TCharState.NEW_CHAR)
             {
                 MyFrame.Navigate(typeof(Char), ViewModel);
             }
@@ -64,7 +63,7 @@ namespace ShadowRunHelper
         {
             if (Char.IsSelected)
             {
-                if (ViewModel.currentState != TApp.TCharState.EMPTY_CHAR)
+                if (ViewModel.currentState != TCharState.EMPTY_CHAR)
                 {
                     enableUI();
                     MyFrame.Navigate(typeof(Char), ViewModel);

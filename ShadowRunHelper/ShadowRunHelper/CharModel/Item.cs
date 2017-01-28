@@ -50,7 +50,7 @@ namespace ShadowRunHelper.CharModel
 
         public Item()
         {
-            this.ThingType = Ressourcen.TypNamen.ThingDefs.Item;
+            this.ThingType = ThingDefs.Item;
         }
 
         public Item Copy(ref Item target)

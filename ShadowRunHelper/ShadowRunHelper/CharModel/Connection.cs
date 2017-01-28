@@ -40,7 +40,7 @@ namespace ShadowRunHelper.CharModel
 
         public Connection()
         {
-            this.ThingType = Ressourcen.TypNamen.ThingDefs.Connection;
+            this.ThingType = ThingDefs.Connection;
         }
 
         public Connection Copy(Connection target = null)

@@ -10,7 +10,7 @@ namespace ShadowRunHelper.CharModel
     {
         public Munition()
         {
-            this.ThingType = Ressourcen.TypNamen.ThingDefs.Munition;
+            this.ThingType = ThingDefs.Munition;
         }
 
     }

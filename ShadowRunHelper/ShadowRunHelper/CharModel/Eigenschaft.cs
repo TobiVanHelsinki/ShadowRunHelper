@@ -22,7 +22,7 @@
 
         public Eigenschaft()
         {
-            this.ThingType = Ressourcen.TypNamen.ThingDefs.Eigenschaft;
+            this.ThingType = ThingDefs.Eigenschaft;
         }
 
         private Eigenschaft Copy(Eigenschaft target = null)

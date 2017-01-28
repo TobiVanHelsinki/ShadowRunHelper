@@ -122,7 +122,7 @@
 
         public Vehikel()
         {
-            this.ThingType = Ressourcen.TypNamen.ThingDefs.Vehikel;
+            this.ThingType = ThingDefs.Vehikel;
 
         }
     }
