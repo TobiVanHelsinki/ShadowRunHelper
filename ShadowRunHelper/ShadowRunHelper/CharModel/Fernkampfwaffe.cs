@@ -34,5 +34,24 @@
 
             this.ThingType = Ressourcen.TypNamen.ThingDefs.Fernkampfwaffe;
         }
+
+        public Fernkampfwaffe Copy(Fernkampfwaffe target = null)
+        {
+            if (target == null)
+            {
+                target = new Fernkampfwaffe();
+            }
+            base.Copy(target);
+            target.Rückstoß = Rückstoß;
+            target.Modi = Modi;
+            return target;
+        }
+
+        public new void Reset()
+        {
+            Rückstoß = 0;
+            Modi = "";
+            base.Reset();
+        }
     }
 }

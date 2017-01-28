@@ -42,5 +42,24 @@ namespace ShadowRunHelper.CharModel
         {
             this.ThingType = Ressourcen.TypNamen.ThingDefs.Connection;
         }
+
+        public Connection Copy(Connection target = null)
+        {
+            if (target == null)
+            {
+                target = new Connection();
+            }
+            base.Copy(target);
+            target.Loyal = Loyal;
+            target.Alias = Alias;
+            return target;
+        }
+
+        public new void Reset()
+        {
+            Alias = "";
+            Loyal = 0;
+            base.Reset();
+        }
     }
 }

@@ -6,21 +6,37 @@ using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cAttributController : CharController.cController<CharModel.Attribut>
+    public class cAttributController : CharController.cController<Attribut>
     {
-        public CharModel.Attribut Konsti;// those have to point at a sepcific list element
-        public CharModel.Attribut Geschick;
-        public CharModel.Attribut Reaktion;
-        public CharModel.Attribut Staerke;
-        public CharModel.Attribut Charisma;
-        public CharModel.Attribut Logik;
-        public CharModel.Attribut Intuition;
-        public CharModel.Attribut Willen;
+        public Attribut Konsti;// those have to point at a sepcific list element
+        public Attribut Geschick;
+        public Attribut Reaktion;
+        public Attribut Staerke;
+        public Attribut Charisma;
+        public Attribut Logik;
+        public Attribut Intuition;
+        public Attribut Willen;
+        public Attribut Essenz;
 
-        public CharModel.Attribut Essenz;
-        public CharModel.Attribut Limit_K;
-        public CharModel.Attribut Limit_G;
-        public CharModel.Attribut Limit_S;
+        //Physical Limit: (STR x2 + BOD + REA) / 3
+        public Attribut Limit_K;
+        protected void RefreshLimitK()
+        {
+            this.Limit_K.Wert = (this.Staerke.GetValue() * 2 + this.Konsti.GetValue() + this.Reaktion.GetValue()) / 3;
+        }
+
+        //Mental Limit: (LOG x2 + INT +WIL) / 3
+        public Attribut Limit_G;
+        protected void RefreshLimitG()
+        {
+            this.Limit_G.Wert = (this.Logik.GetValue() * 2 + this.Intuition.GetValue() + this.Willen.GetValue()) / 3;
+        }
+        //Social Limit: (CHA x2 + WIL + Essence) /3
+        public Attribut Limit_S;
+        protected void RefreshLimitS()
+        {
+            this.Limit_S.Wert = (this.Charisma.GetValue() * 2 + this.Willen.GetValue() + this.Essenz.GetValue()) / 3;
+        }
 
 
         private KeyValuePair<Thing, string> MI_Konsti;
@@ -50,19 +66,19 @@ namespace ShadowRunHelper.CharController
             Staerke.Bezeichner = res.GetString("Model_Attribut_Staerke/Text");
             Charisma = new Attribut();
             Charisma.Bezeichner = res.GetString("Model_Attribut_Charisma/Text");
-            Logik= new Attribut();
+            Logik = new Attribut();
             Logik.Bezeichner = res.GetString("Model_Attribut_Logik/Text");
             Intuition = new Attribut();
             Intuition.Bezeichner = res.GetString("Model_Attribut_Intuition/Text");
-            Willen= new Attribut();
+            Willen = new Attribut();
             Willen.Bezeichner = res.GetString("Model_Attribut_Willen/Text");
-            Essenz= new Attribut();
+            Essenz = new Attribut();
             Essenz.Bezeichner = res.GetString("Model_Attribut_Essenz/Text");
-            Limit_K= new Attribut();
+            Limit_K = new Attribut();
             Limit_K.Bezeichner = res.GetString("Model_Attribut_Limit_K/Text");
-            Limit_G= new Attribut();
+            Limit_G = new Attribut();
             Limit_G.Bezeichner = res.GetString("Model_Attribut_Limit_G/Text");
-            Limit_S= new Attribut();
+            Limit_S = new Attribut();
             Limit_S.Bezeichner = res.GetString("Model_Attribut_Limit_S/Text");
 
             MI_Konsti = new KeyValuePair<Thing, string>(Konsti, "");
@@ -78,15 +94,15 @@ namespace ShadowRunHelper.CharController
             MI_Limit_G = new KeyValuePair<Thing, string>(Charisma, "");
             MI_Limit_S = new KeyValuePair<Thing, string>(Charisma, "");
 
-            //Konsti.PropertyChanged += (x, y) => Refresh();
+            Konsti.PropertyChanged += (x, y) => RefreshLimitK();
             //Geschick.PropertyChanged += (x, y) => Refresh();
-            //Reaktion.PropertyChanged += (x, y) => Refresh();
-            //Staerke.PropertyChanged += (x, y) => Refresh();
-            //Charisma.PropertyChanged += (x, y) => Refresh();
-            //Logik.PropertyChanged += (x, y) => Refresh();
-            //Intuition.PropertyChanged += (x, y) => Refresh();
-            //Willen.PropertyChanged += (x, y) => Refresh();
-            //Essenz.PropertyChanged += (x, y) => Refresh();
+            Reaktion.PropertyChanged += (x, y) => RefreshLimitK();
+            Staerke.PropertyChanged += (x, y) => RefreshLimitK();
+            Charisma.PropertyChanged += (x, y) => RefreshLimitS();
+            Logik.PropertyChanged += (x, y) => RefreshLimitG();
+            Intuition.PropertyChanged += (x, y) => RefreshLimitG();
+            Willen.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); };
+            Essenz.PropertyChanged += (x, y) => RefreshLimitS();
             //Limit_K.PropertyChanged += (x, y) => Refresh();
             //Limit_G.PropertyChanged += (x, y) => Refresh();
             //Limit_S.PropertyChanged += (x, y) => Refresh();

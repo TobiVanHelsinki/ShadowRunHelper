@@ -25,5 +25,21 @@
             this.ThingType = Ressourcen.TypNamen.ThingDefs.Eigenschaft;
         }
 
+        public Eigenschaft Copy(Eigenschaft target = null)
+        {
+            if (target == null)
+            {
+                target = new Eigenschaft();
+            }
+            base.Copy(target);
+            target.Auswirkungen = Auswirkungen;
+            return target;
+        }
+
+        public new void Reset()
+        {
+            Auswirkungen = "";
+            base.Reset();
+        }
     }
 }
