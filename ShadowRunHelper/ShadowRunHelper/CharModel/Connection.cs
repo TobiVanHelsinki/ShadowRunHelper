@@ -36,7 +36,7 @@ namespace ShadowRunHelper.CharModel
 
         public Connection()
         {
-
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Connection;
         }
     }
 }

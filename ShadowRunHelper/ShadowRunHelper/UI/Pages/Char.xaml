@@ -28,7 +28,7 @@
                     <StackPanel Name="Hanlung_Block">
                         <StackPanel Name="Handlung_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Handlung_" Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Handlung_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Handlung_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="1"/>
                         </StackPanel>
                         <Grid Width="Auto" Name="Handlung_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -40,7 +40,7 @@
                                 <Run x:Uid="Model_Wert"/><Run x:Uid="Plus"/><Run x:Uid="Model_Handlung_Mod"/><Run x:Uid="KlammerAufEck"/><Run x:Uid="Model_Handlung_Grenze"/><Run x:Uid="KlammerZuEck"/>
                             </TextBlock>
                         </Grid>
-                        <ListView Name="Handlung" ItemsSource="{x:Bind ViewModel.Current.CTRLHandlung}" Style="{StaticResource ListView}">
+                        <ListView Name="Handlung" ItemsSource="{x:Bind ViewModel.Current.CTRLHandlung.Data}" Style="{StaticResource ListView}">
                             <ListView.Header>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -162,7 +162,7 @@
                     <StackPanel Name="Fertigkeit_Block">
                         <StackPanel Name="Fertigkeit_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Fertigkeit_"  Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Fertigkeit_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Fertigkeit_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="2"/>
                         </StackPanel>
                         <Grid Name="Fertigkeit_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -172,7 +172,7 @@
                             <TextBlock Grid.Column="0" x:Uid="Model_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="1" x:Uid="Model_Wert" Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Fertigkeit" ItemsSource="{x:Bind ViewModel.Current.CTRLFertigkeit, Mode=OneWay}" Style="{StaticResource ListView}">
+                        <ListView Name="Fertigkeit" ItemsSource="{x:Bind ViewModel.Current.CTRLFertigkeit.Data, Mode=OneWay}" Style="{StaticResource ListView}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Fertigkeit">
                                     <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
@@ -210,6 +210,7 @@
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
+        
         <PivotItem>
             <PivotItem.Header>
                 <local:TabHeader x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
@@ -219,7 +220,7 @@
                     <StackPanel Name="Item_Block">
                         <StackPanel Name="Items_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Items_" Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Item_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Item_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="3"/>
                         </StackPanel>
                         <Grid Name="Items_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -286,7 +287,7 @@
                     <StackPanel Name="Kommlink_Block">
                         <StackPanel Name="Kommlinks_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Kommlink_"  Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Kommlink_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Kommlink_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="14"/>
                         </StackPanel>
                         <Grid Name="Kommlinks_E" Style="{StaticResource ListView_E}">
 
@@ -362,7 +363,7 @@
                     <StackPanel Name="CyberDeck_Block">
                         <StackPanel Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_CyberDeck_"  Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="CyberDeck_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="CyberDeck_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="15"/>
                         </StackPanel>
                         <Grid Style="{StaticResource ListView_E}">
 
@@ -444,7 +445,7 @@
                     <StackPanel Name="Programm_Block">
                         <StackPanel RelativePanel.Below="Kommlinks" Name="Programme_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Programm_" Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Programm_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Programm_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="3"/>
                         </StackPanel>
                         <Grid Name="Programme_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -460,7 +461,7 @@
                             <TextBlock Grid.Column="3" x:Uid="Model_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="4" x:Uid="Model_Programm_Optionen"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Programme" ItemsSource="{x:Bind ViewModel.Current.CTRLProgramm}" Style="{StaticResource ListView}">
+                        <ListView Name="Programme" ItemsSource="{x:Bind ViewModel.Current.CTRLProgramm.Data}" Style="{StaticResource ListView}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Programm">
                                     <Grid>
@@ -526,7 +527,7 @@
                     <StackPanel Name="Fernkampfwaffe_Block">
                         <StackPanel Name="Fernkampfwaffen_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Fernkampfwaffe_" Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Fernkampfwaffe_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Fernkampfwaffe_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="13"/>
                         </StackPanel>
                         <Grid Name="Fernkampfwaffen_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -599,7 +600,7 @@
                     <StackPanel Name="Nahkampfwaffe_Block">
                         <StackPanel Name="Nahkampfwaffen_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Nahkampfwaffe_" Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Nahkampfwaffe_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Nahkampfwaffe_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="12"/>
                         </StackPanel>
                         <Grid Name="Nahkampfwaffen_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -670,7 +671,7 @@
                     <StackPanel Name="Panzerung_Block">
                         <StackPanel Name="Panzerung_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Panzerung_" Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Panzerung_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Panzerung_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="17"/>
                         </StackPanel>
                         <Grid Name="Panzerung_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -748,7 +749,7 @@
                     <StackPanel Name="Vehikel_Block">
                         <StackPanel Name="Vehikel_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Vehikel_" Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Vehikel_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Vehikel_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="16"/>
                         </StackPanel>
                         <Grid Name="Vehikel_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -835,7 +836,7 @@
                     <StackPanel Name="Munition_Block">
                         <StackPanel Name="Munition_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Munition_" Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Munition_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Munition_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="5"/>
                         </StackPanel>
                         <Grid Name="Munition_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -906,7 +907,7 @@
                     <StackPanel Name="Attribut_Block">
                         <StackPanel Name="Attribut_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Attribut_"  Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Attribut_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Attribut_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="11"/>
                         </StackPanel>
                         <GridView Name="Attribut" ItemsSource="{x:Bind ViewModel.Current.CTRLAttribut.Data, Mode=OneWay}" Style="{StaticResource GridView}">
                             <GridView.ItemTemplate>
@@ -942,7 +943,7 @@
                     <StackPanel Name="Connection_Block">
                         <StackPanel Name="Connection_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Connection_"  Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Connection_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Connection_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="9"/>
                         </StackPanel>
                         <Grid Name="Connection_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -996,7 +997,7 @@
                     <StackPanel Name="Implantat_Block">
                         <StackPanel Name="Implantat_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Implantat_"  Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Implantat_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Implantat_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="6"/>
                         </StackPanel>
                         <Grid Name="Implantat_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -1055,7 +1056,7 @@
                     <StackPanel Name="Sin_Block">
                         <StackPanel Name="Sin_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_Sin_"  Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Sin_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                            <Button Name="Sin_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="10"/>
                         </StackPanel>
                         <Grid Name="Sin_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
@@ -1111,7 +1112,7 @@
                         <StackPanel Grid.Column="0">
                             <StackPanel Name="Vorteil_U" Style="{StaticResource ListView_U}">
                                 <TextBlock x:Uid="Model_Vorteil_" Style="{StaticResource ListView_U_Text}"/>
-                                <Button Name="Vorteil_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                                <Button Name="Vorteil_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="7"/>
                             </StackPanel>
                             <ListView Name="Vorteil" ItemsSource="{x:Bind ViewModel.Current.CTRLVorteil.Data}" Style="{StaticResource ListView}">
                                 <ListView.ItemTemplate>
@@ -1152,7 +1153,7 @@
                         <StackPanel Grid.Column="1">
                             <StackPanel Name="Nachteile_U" Style="{StaticResource ListView_U}">
                                 <TextBlock x:Uid="Model_Nachteil_" Style="{StaticResource ListView_U_Text}"/>
-                                <Button Name="Nachteil_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}"/>
+                                <Button Name="Nachteil_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="8"/>
                             </StackPanel>
                             <ListView Name="Nachteile" ItemsSource="{x:Bind ViewModel.Current.CTRLNachteil.Data}" Style="{StaticResource ListView}">
                                 <ListView.ItemTemplate>
@@ -1263,7 +1264,7 @@
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
-        <PivotItem>
+        <!--<PivotItem>
             <PivotItem.Header>
                 <local:TabHeader x:Uid="Char_View_Pivot_Notizen" Glyph="&#xE193;" />
             </PivotItem.Header>
@@ -1272,6 +1273,6 @@
                     <TextBox AcceptsReturn="True"  Text="{x:Bind ViewModel.Current.Person.Notizen, Mode=TwoWay}" PlaceholderText="Notizen" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True"/>
                 </RelativePanel>
             </ScrollViewer>
-        </PivotItem>
+        </PivotItem>-->
     </Pivot>
 </Page>

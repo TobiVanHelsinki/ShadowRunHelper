@@ -5,6 +5,8 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Primitives;
 using System;
 using ShadowRunHelper.UI.Edit;
+using ShadowRunHelper.Ressourcen;
+using static ShadowRunHelper.Ressourcen.TypNamen;
 
 namespace ShadowRunHelper
 {
@@ -40,8 +42,16 @@ namespace ShadowRunHelper
         }
         private void Add(object sender, RoutedEventArgs e)
         {
-            Model.ThingDefs Controller = ((Model.ThingDefs)((Button)sender).Tag); //TODO Add Tag with the correospedenting number
-            ViewModel.Current.Add(Controller);
+            ThingDefs Controller = 0;
+            long test = Int64.Parse((((Button)sender).Tag).ToString()); //TODO Add Tag with the correospedenting number
+            Controller = (ThingDefs)test;
+            try
+            {
+                ViewModel.Current.Add(Controller);
+            }
+            catch (WrongTypeException)
+            {
+            }    
         }
 
         private async void Edit_Click(object sender, RoutedEventArgs e)

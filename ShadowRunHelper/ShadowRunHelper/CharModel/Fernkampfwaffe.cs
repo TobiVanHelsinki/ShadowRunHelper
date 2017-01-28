@@ -31,6 +31,8 @@
 
         public Fernkampfwaffe()
         {
+
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Fernkampfwaffe;
         }
     }
 }

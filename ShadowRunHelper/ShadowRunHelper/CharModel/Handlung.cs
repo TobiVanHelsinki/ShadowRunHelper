@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static ShadowRunHelper.Ressourcen.TypNamen;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -82,14 +83,11 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-
-        public Handlung(int dicCD_ID)
-        {
-
-        }
-
+        
         public Handlung()
         {
+            ThingType = ThingDefs.Handlung;
+
             Zusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();
             GrenzeZusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();
             GegenZusammensetzung = new Dictionary<int, ShadowRunHelper.Model.DictionaryCharEntry>();

@@ -18,7 +18,7 @@
 
         public Eigenschaft()
         {
-            
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Eigenschaft;
         }
 
     }

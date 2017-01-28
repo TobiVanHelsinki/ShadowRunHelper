@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+using ShadowRunHelper.Ressourcen;
+using static ShadowRunHelper.Ressourcen.TypNamen;
 
 namespace ShadowRunHelper.Controller
 {
@@ -115,10 +117,9 @@ namespace ShadowRunHelper.Controller
             }
             if (tToAdd == null)
             {
-                throw new NotImplementedException();
+                throw new WrongTypeException();
             }
             lstAll.Add(tToAdd);
-                throw new NotImplementedException();
         }
 
         /// <summary>

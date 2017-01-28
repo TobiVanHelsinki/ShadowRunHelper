@@ -37,7 +37,7 @@ namespace ShadowRunHelper.CharModel
         }
         public Implantat()
         {
-            
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Implantat;
         }
 
     }

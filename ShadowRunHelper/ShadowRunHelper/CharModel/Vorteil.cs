@@ -10,7 +10,8 @@ namespace ShadowRunHelper.CharModel
     {
         public Vorteil()
         {
-            
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Vorteil;
+
         }
     }
 }

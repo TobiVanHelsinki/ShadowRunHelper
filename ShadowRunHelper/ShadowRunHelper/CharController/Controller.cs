@@ -37,6 +37,7 @@ namespace ShadowRunHelper.CharController
         /// </summary>
         public cController()
         {
+            Data = new ObservableCollection<T>();
         }
 
     }

@@ -153,6 +153,7 @@
     <Compile Include="Model\CharViewModel.cs" />
     <Compile Include="Model\Optionen.cs" />
     <Compile Include="Model\OptionViewModel.cs" />
+    <Compile Include="Ressourcen\Exceptions.cs" />
     <Compile Include="Ressourcen\TypNamen.cs" />
     <Compile Include="UI\Converter\CB.cs" />
     <Compile Include="UI\Converter\io_ListView.cs" />

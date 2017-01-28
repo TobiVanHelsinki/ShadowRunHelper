@@ -4,7 +4,7 @@
     {
         public Fertigkeit()
         {
-            
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Fertigkeit;
         }
     }
 }

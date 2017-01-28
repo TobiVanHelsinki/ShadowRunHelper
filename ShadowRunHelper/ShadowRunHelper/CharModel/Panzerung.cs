@@ -40,6 +40,7 @@ namespace ShadowRunHelper.CharModel
 
         public Panzerung()
         {
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Panzerung;
 
         }
 

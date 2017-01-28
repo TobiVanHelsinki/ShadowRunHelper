@@ -18,6 +18,7 @@
 
         public Nahkampfwaffe()
         {
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Nahkampfwaffe;
         }
     }
 }

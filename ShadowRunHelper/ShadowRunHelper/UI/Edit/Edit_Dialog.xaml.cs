@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Controls;
+using static ShadowRunHelper.Ressourcen.TypNamen;
 
 // Die Elementvorlage "Inhaltsdialog" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -9,13 +10,13 @@ namespace ShadowRunHelper.UI.Edit
     public sealed partial class Edit_Dialog : ContentDialog
     {
         public CharModel.Thing Data;
-        //public ObservableCollection<CharModel.Thing> lstAll;
+        //public ObservableCollection<CharThing> lstAll;
         public List<string> MyStringOptions { get; set; }
 
         public Edit_Dialog(CharModel.Thing data)
         {
-            this.InitializeComponent();
             this.Data = data;
+            this.InitializeComponent();
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -28,45 +29,51 @@ namespace ShadowRunHelper.UI.Edit
         {
             switch (Data.ThingType)
             {
-                case Model.ThingDefs.Handlung:
+                case ThingDefs.Handlung:
+                    EditType.ContentTemplate = Handlung;
                     break;
-                case Model.ThingDefs.Fertigkeit:
+                case ThingDefs.Fertigkeit:
                     break;
-                case Model.ThingDefs.Item:
+                case ThingDefs.Item:
                     break;
-                case Model.ThingDefs.Programm:
+                case ThingDefs.Programm:
                     break;
-                case Model.ThingDefs.Munition:
+                case ThingDefs.Munition:
                     break;
-                case Model.ThingDefs.Implantat:
+                case ThingDefs.Implantat:
                     break;
-                case Model.ThingDefs.Vorteil:
+                case ThingDefs.Vorteil:
                     break;
-                case Model.ThingDefs.Nachteil:
+                case ThingDefs.Nachteil:
                     break;
-                case Model.ThingDefs.Connection:
+                case ThingDefs.Connection:
                     break;
-                case Model.ThingDefs.Sin:
+                case ThingDefs.Sin:
                     break;
-                case Model.ThingDefs.Attribut:
+                case ThingDefs.Attribut:
                     EditType.ContentTemplate = Attribut;
                     break;
-                case Model.ThingDefs.Nahkampfwaffe:
+                case ThingDefs.Nahkampfwaffe:
                     break;
-                case Model.ThingDefs.Fernkampfwaffe:
+                case ThingDefs.Fernkampfwaffe:
                     break;
-                case Model.ThingDefs.Kommlink:
+                case ThingDefs.Kommlink:
                     break;
-                case Model.ThingDefs.CyberDeck:
+                case ThingDefs.CyberDeck:
                     EditType.ContentTemplate = CyberDeck;
                     break;
-                case Model.ThingDefs.Vehikel:
+                case ThingDefs.Vehikel:
                     break;
-                case Model.ThingDefs.Panzerung:
+                case ThingDefs.Panzerung:
                     break;
                 default:
                     break;
             }
+        }
+        
+        private void MainGrid_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ((Grid)sender).DataContext = Data;
         }
     }
 }

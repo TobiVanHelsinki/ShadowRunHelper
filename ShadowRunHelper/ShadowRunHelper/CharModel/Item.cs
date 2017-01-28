@@ -44,9 +44,7 @@
 
         public Item()
         {
-            Besitz = false;
-            Aktiv = false;
-            Anzahl = 0;
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Item;
         }
 
     }

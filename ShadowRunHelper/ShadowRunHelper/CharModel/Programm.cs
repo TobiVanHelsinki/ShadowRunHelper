@@ -24,7 +24,8 @@ namespace ShadowRunHelper.CharModel
 
         public Programm()
         {
-            
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Programm;
+
         }
     }
 }

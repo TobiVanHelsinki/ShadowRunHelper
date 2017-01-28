@@ -9,6 +9,10 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
+            if (value == null)
+            {
+                return "Fehler Test TODO";
+            }
             string strTemp = value.ToString();
             if (strTemp != "")
             {

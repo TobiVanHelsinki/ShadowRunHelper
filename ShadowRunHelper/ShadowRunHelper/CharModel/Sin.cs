@@ -9,6 +9,7 @@ namespace ShadowRunHelper.CharModel
 
         public Sin()
         {
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Sin;
 
         }
     }

@@ -1,20 +1,21 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using static ShadowRunHelper.Ressourcen.TypNamen;
 
 namespace ShadowRunHelper.CharModel
 {
     public class Thing : INotifyPropertyChanged
     {
-        private Model.ThingDefs thingType = 0;
-        public Model.ThingDefs ThingType
+        private ThingDefs thingType = 0;
+        public ThingDefs ThingType
         {
             get { return thingType; }
-            set
+            protected set
             {
-                if (value != this.ThingType)
+                if (value != this.thingType)
                 {
-                    this.ThingType = value;
+                    this.thingType = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -32,8 +33,8 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private String bezeichner ="";
-        public String Bezeichner
+        private string bezeichner ="foo";
+        public string Bezeichner
         {
             get { return bezeichner; }
             set
@@ -45,8 +46,8 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private String typ { get; set; }
-        public String Typ
+        private string typ = "";
+        public string Typ
         {
             get { return typ; }
             set
@@ -71,8 +72,8 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private String zusatz = "";
-        public String Zusatz
+        private string zusatz = "";
+        public string Zusatz
         {
             get { return zusatz; }
             set
@@ -84,8 +85,8 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private String notiz = "";
-        public String Notiz
+        private string notiz = "";
+        public string Notiz
         {
             get { return notiz; }
             set
@@ -100,16 +101,10 @@ namespace ShadowRunHelper.CharModel
 
         public Thing()
         {
-            Ordnung = 0;
-            Bezeichner = "";
-            Typ = "";
-            Wert = 0;
-            Zusatz = "";
-            Notiz = "";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)
             {

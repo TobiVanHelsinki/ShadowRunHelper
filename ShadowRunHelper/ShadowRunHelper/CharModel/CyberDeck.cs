@@ -85,7 +85,7 @@
 
         public CyberDeck()
         {
-
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.CyberDeck;
         }
     }
 

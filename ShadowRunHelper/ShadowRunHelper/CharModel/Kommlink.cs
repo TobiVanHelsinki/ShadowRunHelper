@@ -52,6 +52,7 @@ namespace ShadowRunHelper.CharModel
 
         public Kommlink()
         {
+            this.ThingType = Ressourcen.TypNamen.ThingDefs.Kommlink;
 
         }
     }
