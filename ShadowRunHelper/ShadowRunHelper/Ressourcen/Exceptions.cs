@@ -8,6 +8,7 @@ namespace ShadowRunHelper
         internal const string AllListChooser_AllList_Null = "Error at AllList, List was null";
         internal const string AllListChooser_Data_Null = "Error at AllList, data was null";
         internal const string IO_Deserialize_Error = "Something went wrong with des your char";
+        internal const string IO_DeserializeVersion_Error = "Version of file unknown";
     }
 
     //[System.Serializable]

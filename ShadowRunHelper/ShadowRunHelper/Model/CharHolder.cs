@@ -11,7 +11,8 @@ namespace ShadowRunHelper.Model
     /// </summary>
     public class CharHolder
     {
-        public string APP_VERSION_NUMBER = Konstanten.APP_VERSION_NUMBER;
+        public string APP_VERSION_NUMBER = Konstanten.APP_VERSION_NUMBER_1_5;
+        public string FILE_VERSION_NUMBER = Konstanten.CHARFILE_VERSION_1_5;
         public CharController.cController<Fertigkeit> CTRLFertigkeit { get; set; }
         public CharController.cController<Item> CTRLItem { get; set; }
         public CharController.cController<Programm> CTRLProgramm { get; set; }

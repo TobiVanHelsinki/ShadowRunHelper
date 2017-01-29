@@ -427,6 +427,48 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        public Person Copy(Person Source = null)
+        {
+            if (Source == null)
+            {
+                Source = this;
+            }
+            Person ReturnPerson = new Person();
+            ReturnPerson.Alias = Source.Alias;
+            ReturnPerson.Augenfarbe = Source.Augenfarbe;
+            ReturnPerson.Bild = Source.Bild;
+            ReturnPerson.Char_Typ = Source.Char_Typ;
+            ReturnPerson.Edge_Aktuell = Source.Edge_Aktuell;
+            ReturnPerson.Edge_Gesamt = Source.Edge_Gesamt;
+            ReturnPerson.Essenz = Source.Essenz;
+            ReturnPerson.Geburtsdatum = Source.Geburtsdatum;
+            ReturnPerson.Geburtsdatum2 = Source.Geburtsdatum2;
+            ReturnPerson.GeburtsdatumDateTimeOffset = Source.GeburtsdatumDateTimeOffset;
+            ReturnPerson.Geschlecht = Source.Geschlecht;
+            ReturnPerson.Gewicht = Source.Gewicht;
+            ReturnPerson.Größe = Source.Größe;
+            ReturnPerson.Haarfarbe = Source.Haarfarbe;
+            ReturnPerson.Hautfarbe = Source.Hautfarbe;
+            ReturnPerson.Initiative = Source.Initiative;
+            ReturnPerson.Karma_Aktuell = Source.Karma_Aktuell;
+            ReturnPerson.Karma_Gesamt = Source.Karma_Gesamt;
+            ReturnPerson.Kontostand = Source.Kontostand;
+            ReturnPerson.Lebesstil = Source.Lebesstil;
+            ReturnPerson.MetaTyp = Source.MetaTyp;
+            ReturnPerson.MetaTyp_sub = Source.MetaTyp_sub;
+            ReturnPerson.Notizen = Source.Notizen;
+            ReturnPerson.Runs = Source.Runs;
+            ReturnPerson.Schaden_G = Source.Schaden_G;
+            ReturnPerson.Schaden_G_max = Source.Schaden_G_max;
+            ReturnPerson.Schaden_K = Source.Schaden_K;
+            ReturnPerson.Schaden_K_max = Source.Schaden_K_max;
+            ReturnPerson.Schaden_M = Source.Schaden_M;
+            ReturnPerson.Schaden_M_max = Source.Schaden_M_max;
+            ReturnPerson.Zusammenfassung = Source.Zusammenfassung;
+            return ReturnPerson;
+        }
+
+
     }
 
 

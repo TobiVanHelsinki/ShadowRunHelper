@@ -584,4 +584,7 @@
   <data name="Model_Attribut_Willen.Text" xml:space="preserve">
     <value>Willenskraft</value>
   </data>
+  <data name="Model_Attribut_Geschick.Text" xml:space="preserve">
+    <value>Geschicklichkeit</value>
+  </data>
 </root>

@@ -20,7 +20,7 @@ namespace ShadowRunHelper.CharController
         public Attribut Logik;
         public Attribut Intuition;
         public Attribut Willen;
-        public Attribut Essenz;
+        public Attribut Essenz; //TODO Essenz berechnen aus Implantaten (+ ein bonus feld?)
 
         //Physical Limit: (STR x2 + BOD + REA) / 3
         public Attribut Limit_K;

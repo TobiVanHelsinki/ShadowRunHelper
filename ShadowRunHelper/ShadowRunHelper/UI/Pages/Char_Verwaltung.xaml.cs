@@ -68,7 +68,7 @@ namespace ShadowRunHelper
             string id = ((CharSummory)((Button)sender).DataContext).ID;
             ViewModel.Current = null;
             
-            ViewModel.Current = await Verwaltung.LadenIntern(id);
+            ViewModel.Current = await Verwaltung.LadenIntern(id); //todo try catch?
             ViewModel.currentState = TCharState.LOAD_CHAR;
             ProgressRing_Char.IsActive = false;
             Frame.Navigate(typeof(Char), ViewModel);

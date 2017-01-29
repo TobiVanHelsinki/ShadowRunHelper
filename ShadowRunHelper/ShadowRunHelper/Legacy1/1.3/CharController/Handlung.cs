@@ -1,5 +1,4 @@
-﻿using ShadowRunHelper1_3.UI.Fehler;
-using System;
+﻿using System;
 using System.Diagnostics;
 namespace ShadowRunHelper1_3.CharController
 {
@@ -83,7 +82,7 @@ namespace ShadowRunHelper1_3.CharController
             }
             catch (System.Collections.Generic.KeyNotFoundException)
             {
-                FehlerAnzeige.showError("Neu Berechnng fehlgeschlagen, es konnte kein Key gefunden werden. Der Wert wird so gut es geht dargestellt.", 0);
+                //FehlerAnzeige.showError("Neu Berechnng fehlgeschlagen, es konnte kein Key gefunden werden. Der Wert wird so gut es geht dargestellt.", 0);
                 this.Data.Wert = temp;
             }
 
