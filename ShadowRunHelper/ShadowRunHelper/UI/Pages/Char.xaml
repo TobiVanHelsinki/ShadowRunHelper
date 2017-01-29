@@ -112,9 +112,7 @@
 
                                                     <StackPanel Orientation="Horizontal">
                                                         <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_GegenZusammensetzung"/>
-
                                                         <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Gegen, Mode=OneWay}"/>
-
                                                     </StackPanel>
                                           
 
@@ -980,7 +978,7 @@
                                                 </StackPanel>
                                             </Flyout>
                                         </FlyoutBase.AttachedFlyout>
-                                        <TextBlock Grid.Column="0" Text="{x:Bind Alias, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
+                                        <TextBlock Grid.Column="0" Text="{x:Bind Bezeichner, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
                                         <TextBlock Grid.Column="1" Text="{x:Bind Wert, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
                                         <TextBlock Grid.Column="2" Text="{x:Bind Loyal, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
                                         <TextBlock Grid.Column="3" Text="{x:Bind Notiz, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>

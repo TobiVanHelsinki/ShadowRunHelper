@@ -6,24 +6,7 @@ namespace ShadowRunHelper.CharModel
 {
     public class Connection : Thing
     {
-        //public override double GetValue(string ID = "")
-        //{
-        //    return Wert;
-        //}
-        private string alias = "";
-        public string Alias
-        {
-            get { return alias; }
-            set
-            {
-                if (value != this.alias)
-                {
-                    this.alias = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        
+       
         private double loyal = 0;
         public double Loyal
         {
@@ -51,13 +34,13 @@ namespace ShadowRunHelper.CharModel
             }
             base.Copy(target);
             target.Loyal = Loyal;
-            target.Alias = Alias;
+            //target.Alias = Alias;
             return target;
         }
 
         public new void Reset()
         {
-            Alias = "";
+            //Alias = "";
             Loyal = 0;
             base.Reset();
         }

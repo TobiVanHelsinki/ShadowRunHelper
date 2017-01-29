@@ -40,7 +40,7 @@ namespace ShadowRunHelper
             {
                 var query = from item in lstThings
                             group item by item.Key.ThingType into g
-                            orderby g.Key
+                            //orderby g.Key
                             select new { GroupName = g.Key, Items = g };
 
                 foreach (var g in query)

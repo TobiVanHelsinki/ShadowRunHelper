@@ -164,8 +164,8 @@ namespace ShadowRunHelper.IO
                 var temp = ReturnCharHolder.CTRLConnection.AddNewThing();
                 temp.Wert = item.Data.Wert;
                 temp.Loyal = item.Data.Loyal;
-                temp.Alias = item.Data.Alias;
-                //temp.Notizen = item.Data.Notizen;
+                temp.Bezeichner = item.Data.Alias;
+                temp.Notiz = item.Data.Notizen;
             }
 
             foreach (var item in cH1_3.SinController)

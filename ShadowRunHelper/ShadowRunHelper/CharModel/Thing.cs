@@ -32,7 +32,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private string bezeichner ="foo";
+        private string bezeichner ="";
         public string Bezeichner
         {
             get { return bezeichner; }

@@ -133,9 +133,18 @@ namespace ShadowRunHelper.Model
         public void RefreshThingList()
         {
             lstThings.Clear();
-            lstThings.AddRange(CTRLHandlung.GetElementsForThingList());
-            lstThings.AddRange(CTRLFertigkeit.GetElementsForThingList());
+            lstThings.AddRange(CTRLAttribut.GetElementsForThingList()); //liefert immer das selbe
+            lstThings.AddRange(CTRLFertigkeit.GetElementsForThingList()); //liefert immer das selbe
+            lstThings.AddRange(CTRLFernkampfwaffe.GetElementsForThingList()); //liefert immer das selbe
+            lstThings.AddRange(CTRLNahkampfwaffe.GetElementsForThingList()); //liefert immer das selbe
+            lstThings.AddRange(CTRLPanzerung.GetElementsForThingList()); //liefert immer das selbe
+
             lstThings.AddRange(CTRLItem.GetElementsForThingList());
+
+            lstThings.AddRange(CTRLCyberDeck.GetElementsForThingList()); //liefert immer das selbe
+            lstThings.AddRange(CTRLKommlink.GetElementsForThingList()); //liefert immer das selbe
+            lstThings.AddRange(CTRLVehikel.GetElementsForThingList()); //liefert immer das selbe
+
             lstThings.AddRange(CTRLProgramm.GetElementsForThingList());
             lstThings.AddRange(CTRLMunition.GetElementsForThingList());
             lstThings.AddRange(CTRLImplantat.GetElementsForThingList());
@@ -143,14 +152,8 @@ namespace ShadowRunHelper.Model
             lstThings.AddRange(CTRLNachteil.GetElementsForThingList());
             lstThings.AddRange(CTRLConnection.GetElementsForThingList());
             lstThings.AddRange(CTRLSin.GetElementsForThingList());
-            //liefern immer das selbe
-            lstThings.AddRange(CTRLAttribut.GetElementsForThingList());
-            lstThings.AddRange(CTRLNahkampfwaffe.GetElementsForThingList());
-            lstThings.AddRange(CTRLFernkampfwaffe.GetElementsForThingList());
-            lstThings.AddRange(CTRLKommlink.GetElementsForThingList());
-            lstThings.AddRange(CTRLCyberDeck.GetElementsForThingList());
-            lstThings.AddRange(CTRLVehikel.GetElementsForThingList());
-            lstThings.AddRange(CTRLPanzerung.GetElementsForThingList());
+            
+            //lstThings.AddRange(CTRLHandlung.GetElementsForThingList()); // nötig?
         }
 
         /// <summary>
