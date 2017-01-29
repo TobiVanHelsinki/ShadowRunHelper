@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -105,6 +108,19 @@ namespace ShadowRunHelper.CharModel
                     break;
             }
             return Wert;
+        }
+
+        public override List<KeyValuePair<string, double>> GetValueList([CallerMemberNameAttribute] string ID = "")
+        {
+            var res = ResourceLoader.GetForCurrentView();
+
+            List<KeyValuePair<string, double>> lst = new List<KeyValuePair<string, double>>();
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Thing_Wert/Text"), Wert));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_CyberDeck_Angriff/Text"), Angriff));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_CyberDeck_Schleicher/Text"), Schleicher));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_CyberDeck_Firewall/Text"), Firewall));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_CyberDeck_Datenverarbeitung/Text"), Datenverarbeitung));
+            return lst;
         }
 
         public CyberDeck Copy(CyberDeck target = null)
