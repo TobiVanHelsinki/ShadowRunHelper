@@ -14,34 +14,59 @@
     >
     <ContentDialog.Resources>
         <ResourceDictionary>
+            <CollectionViewSource x:Name="GroupedList" IsSourceGrouped="True" />
+            <!--lstThings-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_App.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentDialog.Resources>
-    <ScrollViewer Height="500" Width="500">
-        <ListView Name="Zus_ListVIew" ItemsSource="{x:Bind lstThings}" Grid.Column="1" Grid.Row="5" SelectionMode="Multiple" Loaded="Zus_ListVIew_Loaded">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Name="Zus_ListVIew_Stack" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Key.Bezeichner, Mode=OneWay}" Grid.Column="0"/>
-                        <TextBlock Text="{Binding Value, Mode=OneWay}" Grid.Column="1"/>
-                        <TextBlock Text="{Binding Key.Wert, Mode=OneWay}" Grid.Column="2"/>
-                        <TextBlock Text="{Binding Key.Typ, Mode=OneWay}" Grid.Column="3"/>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                </Style>
-            </ListView.ItemContainerStyle>
-        </ListView>
+    <ScrollViewer >
+    <ListView Name="Zus_ListVIew" ItemsSource="{x:Bind GroupedList.View}" 
+                  Grid.Column="1" Grid.Row="5" 
+                  MinWidth="400"
+                  Width="500"
+                  SelectionMode="Multiple" 
+                  Loaded="Zus_ListVIew_Loaded">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <Grid Name="Zus_ListVIew_Stack" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Loaded="BezeichnerTextBlock_Loaded" Grid.Column="0"/>
+                    <TextBlock Loaded="WertTextBlock_Loaded" Grid.Column="1"/>
+                </Grid>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+        <ListView.GroupStyle>
+            <GroupStyle >
+                <GroupStyle.HeaderTemplate>
+                        <DataTemplate x:DataType="local:CustomList">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                            <!--<Grid.ColumnDefinitions>-->
+                                <!--<ColumnDefinition Width="*"/>-->
+                                <!--<ColumnDefinition Width="Auto"/>-->
+                            <!--</Grid.ColumnDefinitions>-->
+                            <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0"/>
+                            <!--<TextBlock x:Uid="Space" Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0"/>-->
+                            <!--<TextBlock x:Uid="Bindestrich" Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0"/>-->
+                            <!--<TextBlock x:Uid="Space" Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0"/>-->
+                            <!--<TextBlock Text="{x:Bind Zahl}" Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="1" HorizontalAlignment="Right"/>-->
+                        </StackPanel>
+                    </DataTemplate>
+                    
+                </GroupStyle.HeaderTemplate>
+                
+            </GroupStyle>
+        </ListView.GroupStyle>
+        <ListView.ItemContainerStyle>
+            <Style TargetType="ListViewItem">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            </Style>
+        </ListView.ItemContainerStyle>
+    </ListView>
     </ScrollViewer>
 </ContentDialog>

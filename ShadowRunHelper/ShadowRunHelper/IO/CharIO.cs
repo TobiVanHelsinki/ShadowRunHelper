@@ -108,7 +108,7 @@ namespace ShadowRunHelper.IO
                 inputString = await FileIO.ReadTextAsync(file);
                 return String_to_Char(inputString);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Konnte nicht aus Datei lesen und oder laden");
             }

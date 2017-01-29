@@ -16,8 +16,8 @@ namespace ShadowRunHelper1_3.Controller
 
     public class HashDictionary
     {
-        public event ChangedEventHandler Changed;
-        public event HDlockedHandler Toggle;
+        //public event ChangedEventHandler Changed;
+        //public event HDlockedHandler Toggle;
         private bool HDConsistendState = true;
         /// <summary>
         /// <paramref name="Alter Eintrag"/>

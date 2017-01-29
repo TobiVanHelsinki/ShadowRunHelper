@@ -4,6 +4,8 @@ using ShadowRunHelper.CharModel;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Data;
 using System;
+using System.Linq;
+using Windows.UI.Xaml;
 
 namespace ShadowRunHelper
 {
@@ -33,7 +35,29 @@ namespace ShadowRunHelper
             this.lstThings = i_lstAll;
             this.data = data;
             this.Modus = modus;
+
+                ObservableCollection<List<KeyValuePair<Thing, string>>> groups = new ObservableCollection<List<KeyValuePair<Thing, string>>>();
+            {
+                var query = from item in lstThings
+                            group item by item.Key.ThingType into g
+                            orderby g.Key
+                            select new { GroupName = g.Key, Items = g };
+
+                foreach (var g in query)
+                {
+                    CustomList info = new CustomList();
+                    info.Key = g.GroupName;
+                    info.Zahl = g.Items.Count() ;
+                    foreach (var item in g.Items)
+                    {
+                        info.Add(item);
+                    }
+                    groups.Add(info);
+                }
+            }
             this.InitializeComponent();
+            GroupedList.Source = groups;
+
         }
 
         /// <summary>
@@ -102,5 +126,37 @@ namespace ShadowRunHelper
                 Zus_ListVIew.SelectRange(new ItemIndexRange(tepmindex, 1));
             }
         }
+
+        private void BezeichnerTextBlock_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            if (((TextBlock)sender).DataContext == null)
+            {
+                return;
+            }
+            if (((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value == "")
+            {
+                ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Key.Bezeichner;
+            }
+            else
+            {
+                ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value;
+            }
+        }
+
+        private void WertTextBlock_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            if (((TextBlock)sender).DataContext == null)
+            {
+                return;
+            }
+              ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Key.GetValue(((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value).ToString();
+        }
+
+        
+    }
+    internal class CustomList : List<KeyValuePair<Thing, string>>
+    {
+        public object Key { get; set; }
+        public object Zahl { get; set; }
     }
 }

@@ -587,4 +587,7 @@
   <data name="Model_Attribut_Geschick.Text" xml:space="preserve">
     <value>Geschicklichkeit</value>
   </data>
+  <data name="Bindestrich.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
 </root>

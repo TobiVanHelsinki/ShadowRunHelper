@@ -51,7 +51,7 @@ namespace ShadowRunHelper1_3.Controller
                 }
             }
             HD.AlteHDEntrys.Clear();
-            HD.Toggle -= new HDlockedHandler(Probleme_Lösen);
+            //HD.Toggle -= new HDlockedHandler(Probleme_Lösen);
         }
 
 
@@ -127,7 +127,7 @@ namespace ShadowRunHelper1_3.Controller
             )
         {
             System.Diagnostics.Debug.WriteLine("CharHolder(): Probleme_Lösen Registrieren");
-            HD.Toggle += new HDlockedHandler(Probleme_Lösen);
+            //HD.Toggle += new HDlockedHandler(Probleme_Lösen);
 
             HandlungController = new ObservableCollection<CharController.Handlung>();
             HandlungController = new ObservableCollection<CharController.Handlung>();

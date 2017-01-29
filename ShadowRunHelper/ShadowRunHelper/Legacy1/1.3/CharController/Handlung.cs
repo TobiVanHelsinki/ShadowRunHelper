@@ -13,7 +13,7 @@ namespace ShadowRunHelper1_3.CharController
         {
             this.HD_ID = hD_ID;
             this.setHD(hD);
-            HD.Changed += new ShadowRunHelper1_3.Controller.ChangedEventHandler(HDChanged);
+            //HD.Changed += new ShadowRunHelper1_3.Controller.ChangedEventHandler(HDChanged);
             Data.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(DataChanged);
         }
 
