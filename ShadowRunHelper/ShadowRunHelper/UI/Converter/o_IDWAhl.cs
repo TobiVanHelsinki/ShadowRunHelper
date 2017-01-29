@@ -10,12 +10,14 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (parameter == null)
+            if (((string)value) == "")
             {
-                return "?";
+                return "";
             }
-            return ((Thing)value).GetValue(((string)parameter));
-            //return value.ToString();
+            else
+            {
+                return " - " + value;
+            }
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {

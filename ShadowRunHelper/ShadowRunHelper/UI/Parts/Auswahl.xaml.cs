@@ -131,7 +131,13 @@ namespace ShadowRunHelper
         {
             if (((TextBlock)sender).DataContext == null)
             {
-                return;
+                ((TextBlock)sender).DataContext = null;
+                ((Grid)((TextBlock)sender).Parent).DataContext = null;
+                var Temp = Zus_ListVIew.IndexFromContainer((Grid)((TextBlock)sender).Parent);
+                Temp = 6;
+                //((List<KeyValuePair<Thing, string>>)Zus_ListVIew.ItemsSource).inde
+               ((TextBlock)sender).DataContext= lstThings[Temp];
+                //return;
             }
             if (((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value == "")
             {
