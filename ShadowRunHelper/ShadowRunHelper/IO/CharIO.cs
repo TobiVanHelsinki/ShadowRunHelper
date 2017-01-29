@@ -28,8 +28,22 @@ namespace ShadowRunHelper.IO
             //a.ErrorContext.Error.Data;
         }
 
-        private static CharHolder JSON_to_Char(string fileContent)
+        private static CharHolder String_to_Char(string fileContent)
         {
+            string strVersion = "";
+            //get version
+            switch (strVersion)
+            {
+                case Konstanten.CHARFILE_VERSION_1_3:
+                    ShadowRunHelper1_3.Controller.CharHolder CH = new ;
+                    CH = ShadowRunHelper1_3.IO.CharIO.JSON_to_Char(fileContent);
+                    break;
+                case Konstanten.CHARFILE_VERSION_1_5:
+
+                    break;
+                default:
+                    break;
+            }
             CharHolder tempChar;
             try
             {
@@ -80,7 +94,7 @@ namespace ShadowRunHelper.IO
             try
             {
                 inputString = await FileIO.ReadTextAsync(file);
-                return JSON_to_Char(inputString);
+                return String_to_Char(inputString);
             }
             catch (Exception)
             {

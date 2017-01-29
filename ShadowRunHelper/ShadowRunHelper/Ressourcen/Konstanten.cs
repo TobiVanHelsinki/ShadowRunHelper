@@ -13,6 +13,8 @@ namespace ShadowRunHelper
 
         private static PackageVersion version = Package.Current.Id.Version;
         public static string APP_VERSION_NUMBER = "" + version.Build + version.Major + version.Minor + version.Revision;
+        public const string CHARFILE_VERSION_1_3 = "1.3";
+        public const string CHARFILE_VERSION_1_5 = "1.5";
 
         public const string LAST_CHAR = "Last_Char";
 
