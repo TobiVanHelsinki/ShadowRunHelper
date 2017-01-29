@@ -15,7 +15,7 @@ namespace ShadowRunHelper.CharController
         public cNahkampfwaffeController()
         {
             ActiveItem = new Nahkampfwaffe();
-            ActiveItem.Bezeichner = "Active";
+            ActiveItem.Bezeichner = "ActiveNahkampfwaffe";
             MI_1 = new KeyValuePair<Thing, string>(ActiveItem, "Waffe1");
             MI_2 = new KeyValuePair<Thing, string>(ActiveItem, "Waffe2");
 

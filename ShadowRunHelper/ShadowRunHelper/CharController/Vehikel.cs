@@ -16,7 +16,7 @@ namespace ShadowRunHelper.CharController
         public cVehikelController()
         {
             ActiveItem = new Vehikel();
-            ActiveItem.Bezeichner = "Active";
+            ActiveItem.Bezeichner = "ActiveCar";
             MI_1 = new KeyValuePair<Thing, string>(ActiveItem, "Auto1");
             MI_2 = new KeyValuePair<Thing, string>(ActiveItem, "Auto2");
 

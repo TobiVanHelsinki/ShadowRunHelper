@@ -20,7 +20,7 @@
         </ResourceDictionary>
     </ContentDialog.Resources>
     <ScrollViewer Height="500" Width="500">
-        <ListView Name="Zus_ListVIew" ItemsSource="{x:Bind lstAll}" Grid.Column="1" Grid.Row="5" SelectionMode="Multiple" Loaded="Zus_ListVIew_Loaded">
+        <ListView Name="Zus_ListVIew" ItemsSource="{x:Bind lstThings}" Grid.Column="1" Grid.Row="5" SelectionMode="Multiple" Loaded="Zus_ListVIew_Loaded">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Name="Zus_ListVIew_Stack" >

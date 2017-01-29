@@ -15,7 +15,7 @@ namespace ShadowRunHelper.CharController
         public cFernkampfwaffeController()
         {
             ActiveItem = new Fernkampfwaffe();
-            ActiveItem.Bezeichner = "Active";
+            ActiveItem.Bezeichner = "ActiveFernkampfwaffe";
             MI_1 = new KeyValuePair<Thing, string>(ActiveItem, "Waffe1");
             MI_2 = new KeyValuePair<Thing, string>(ActiveItem, "Waffe2");
 

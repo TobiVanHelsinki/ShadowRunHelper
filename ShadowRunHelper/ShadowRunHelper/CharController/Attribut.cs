@@ -90,13 +90,13 @@ namespace ShadowRunHelper.CharController
             MI_Reaktion = new KeyValuePair<Thing, string>(Reaktion, "");
             MI_Staerke = new KeyValuePair<Thing, string>(Staerke, "");
             MI_Charisma = new KeyValuePair<Thing, string>(Charisma, "");
-            MI_Logik = new KeyValuePair<Thing, string>(Charisma, "");
-            MI_Intuition = new KeyValuePair<Thing, string>(Charisma, "");
-            MI_Willen = new KeyValuePair<Thing, string>(Charisma, "");
-            MI_Essenz = new KeyValuePair<Thing, string>(Charisma, "");
-            MI_Limit_K = new KeyValuePair<Thing, string>(Charisma, "");
-            MI_Limit_G = new KeyValuePair<Thing, string>(Charisma, "");
-            MI_Limit_S = new KeyValuePair<Thing, string>(Charisma, "");
+            MI_Logik = new KeyValuePair<Thing, string>(Logik, "");
+            MI_Intuition = new KeyValuePair<Thing, string>(Intuition, "");
+            MI_Willen = new KeyValuePair<Thing, string>(Willen, "");
+            MI_Essenz = new KeyValuePair<Thing, string>(Essenz, "");
+            MI_Limit_K = new KeyValuePair<Thing, string>(Limit_K, "");
+            MI_Limit_G = new KeyValuePair<Thing, string>(Limit_G, "");
+            MI_Limit_S = new KeyValuePair<Thing, string>(Limit_S, "");
 
             Konsti.PropertyChanged += (x, y) => RefreshLimitK();
             Reaktion.PropertyChanged += (x, y) => RefreshLimitK();

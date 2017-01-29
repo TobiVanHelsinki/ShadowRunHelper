@@ -14,7 +14,7 @@ namespace ShadowRunHelper.CharController
         public cPanzerungController()
         {
             ActiveItem = new Panzerung();
-            ActiveItem.Bezeichner = "Active";
+            ActiveItem.Bezeichner = "ActivePanzer";
             MI_1 = new KeyValuePair<Thing, string>(ActiveItem, "Panzer1");
             MI_2 = new KeyValuePair<Thing, string>(ActiveItem, "Panzer2");
 
