@@ -29,16 +29,16 @@ namespace ShadowRunHelper1_3.Controller
 
         protected virtual void OnChanged(EventArgs e)
         {
-            if (Changed != null)
-                Changed(this, e);
-            Debug.WriteLine("This is OnChanged of HD " + this.Data.ToString());
+            //if (Changed != null)
+            //    Changed(this, e);
+            //Debug.WriteLine("This is OnChanged of HD " + this.Data.ToString());
         }
 
         protected virtual void OnToggle(EventArgs e)
         {
-            if (Toggle != null)
-                Toggle(this, e);
-            Debug.WriteLine("This is OnToggle of HD ");
+            //if (Toggle != null)
+            //    Toggle(this, e);
+            //Debug.WriteLine("This is OnToggle of HD ");
         }
 
         public void Add(int key, Model.DictionaryCharEntry value)
@@ -69,7 +69,7 @@ namespace ShadowRunHelper1_3.Controller
         }
 
 
-        public TApp.TResult toggleHDEdit(bool state)
+        public void toggleHDEdit(bool state)
         {
             System.Diagnostics.Debug.WriteLine("toggleHDEdit");
             HDConsistendState = state;
@@ -78,7 +78,6 @@ namespace ShadowRunHelper1_3.Controller
                 System.Diagnostics.Debug.WriteLine("HD ist im ConsistendState, OnToggle wird ausgeführt");
                 OnToggle(EventArgs.Empty);
             }
-            return TApp.TResult.NO_ERROR;
         }
 
         public HashDictionary()

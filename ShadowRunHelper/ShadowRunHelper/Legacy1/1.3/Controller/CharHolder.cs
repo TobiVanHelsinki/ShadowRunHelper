@@ -11,9 +11,6 @@ namespace ShadowRunHelper1_3.Controller
     /// </summary>
     public class CharHolder
     {
-        TSystem TSystem;
-
-
         
         // noch ein event einbauen, damit fehler nach hier oben gegeben wreden können
         // außerdem eine klasse für dinge wie kö und geist limit machen
@@ -87,9 +84,6 @@ namespace ShadowRunHelper1_3.Controller
         /// </summary>
         public CharHolder()
         {
-            TSystem = new TSystem();
-            System.Diagnostics.Debug.WriteLine("CharHolder(): Probleme_Lösen Registrieren");
-            HD.Toggle += new HDlockedHandler(Probleme_Lösen);
 
             HandlungController = new ObservableCollection<CharController.Handlung>();
             FertigkeitController = new ObservableCollection<CharController.Fertigkeit>();
@@ -132,7 +126,6 @@ namespace ShadowRunHelper1_3.Controller
                         int panzerung
             )
         {
-            TSystem = new TSystem();
             System.Diagnostics.Debug.WriteLine("CharHolder(): Probleme_Lösen Registrieren");
             HD.Toggle += new HDlockedHandler(Probleme_Lösen);
 

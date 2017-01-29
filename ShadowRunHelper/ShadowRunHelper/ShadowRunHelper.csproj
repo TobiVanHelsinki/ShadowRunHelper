@@ -193,17 +193,9 @@
     <Compile Include="Legacy1\1.3\CharModel\Vorteil.cs" />
     <Compile Include="Legacy1\1.3\CharModel\Waffe.cs" />
     <Compile Include="Legacy1\1.3\Controller\CharHolder.cs" />
-    <Compile Include="Legacy1\1.3\Controller\Error.cs" />
     <Compile Include="Legacy1\1.3\Controller\HashDictionary.cs" />
-    <Compile Include="Legacy1\1.3\Controller\TApp.cs" />
-    <Compile Include="Legacy1\1.3\Controller\TSystem.cs" />
     <Compile Include="Legacy1\1.3\IO\CharIO.cs" />
-    <Compile Include="Legacy1\1.3\IO\CharVerwaltung.cs" />
-    <Compile Include="Legacy1\1.3\Model\CharSummory.cs" />
-    <Compile Include="Legacy1\1.3\Model\CharViewModel.cs" />
     <Compile Include="Legacy1\1.3\Model\DictionaryCharEntry.cs" />
-    <Compile Include="Legacy1\1.3\Model\Optionen.cs" />
-    <Compile Include="Legacy1\1.3\Model\OptionViewModel.cs" />
     <Compile Include="Legacy1\1.3\Model\Variablen.cs" />
     <Compile Include="Legacy1\1.3\Ressourcen\TypNamen.cs" />
     <Compile Include="Model\CharHolder.cs" />

@@ -52,6 +52,7 @@ namespace ShadowRunHelper.IO
                         ShadowRunHelper1_3.Controller.CharHolder CH1_3 = new ShadowRunHelper1_3.Controller.CharHolder();
                         CH1_3 = ShadowRunHelper1_3.IO.CharIO.JSON_to_Char(fileContent);
                         ReturnCharHolder = OldConverter.ConvertVersion1_3to1_5(CH1_3);
+                        GC.Collect();
                         break;
                     case Konstanten.CHARFILE_VERSION_1_5:
                         JsonSerializerSettings test = new JsonSerializerSettings();

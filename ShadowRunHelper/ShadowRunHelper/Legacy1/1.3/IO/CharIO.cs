@@ -1,12 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
-using ShadowRunHelper1_3.Model;
-using System.Collections.ObjectModel;
 
 namespace ShadowRunHelper1_3.IO
 {
@@ -327,27 +322,7 @@ namespace ShadowRunHelper1_3.IO
             return newChar;
         }
 
-
-        public static async Task<ObservableCollection<CharSummory>> getListofChars(StorageFolder CharFolder)
-        {
-            ObservableCollection<CharSummory> templist = new ObservableCollection<CharSummory>();
-            try
-            {
-                IReadOnlyList<StorageFile> Liste = await CharFolder.GetFilesAsync();
-                foreach (var item in Liste)
-                {
-                    if (item.FileType == Variablen.DATEIENDUNG_CHAR)
-                    {
-                        Windows.Storage.FileProperties.BasicProperties basicProperties = await item.GetBasicPropertiesAsync();
-                        templist.Add(new CharSummory(item.Name, "", basicProperties.DateModified));
-                    }
-                }
-            }
-            catch (Exception)
-            {
-            }
-            return templist;
-        }
+        
 
         public static async void Speichern(Controller.CharHolder SaveChar, StorageFile file)
         {
