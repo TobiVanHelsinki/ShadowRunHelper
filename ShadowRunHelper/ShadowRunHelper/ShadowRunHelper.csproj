@@ -98,6 +98,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Zusätze\Screenshots\V1.9\2016.03.19 23.00.03.png" />
+    <Content Include="Zusätze\Screenshots\V1.9\wp_ss_20160319_0001.png" />
+    <Content Include="Zusätze\Screenshots\V1.9\wp_ss_20160319_0002.png" />
+    <Content Include="Zusätze\Screenshots\V1.9\wp_ss_20160319_0003.png" />
     <None Include="Dok\ClassDiagram7.cd" />
     <None Include="Dok\ClassDiagram8.cd" />
     <None Include="Dok\ClassDiagram6.cd" />
@@ -106,6 +110,8 @@
     <None Include="Dok\ClassDiagram2.cd" />
     <None Include="Dok\ClassDiagram3.cd" />
     <None Include="Dok\ClassDiagram4.cd" />
+    <None Include="Zusätze\Hilfe.xlsx" />
+    <PRIResource Include="Legacy1\1.3\Strings\de-de\Resources.resw" />
     <None Include="project.json" />
     <PRIResource Include="Strings\de-de\Resources.resw" />
   </ItemGroup>
@@ -142,6 +148,146 @@
     <Compile Include="CharModel\Panzerung.cs" />
     <Compile Include="CharModel\Item.cs" />
     <Compile Include="CharController\Panzerung.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Attribut.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Connection.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Controller.cs" />
+    <Compile Include="Legacy1\1.3\CharController\ControllerMulti.cs" />
+    <Compile Include="Legacy1\1.3\CharController\ControllerMultiItems.cs" />
+    <Compile Include="Legacy1\1.3\CharController\ControllerSingle.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Cyberdeck.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Eigenschaft.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Fernkampfwaffe.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Fertigkeit.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Handlung.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Implantat.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Item.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Kommlink.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Munition.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Nachteil.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Nahkampfwaffe.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Panzerung.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Programm.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Sin.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Vehikel.cs" />
+    <Compile Include="Legacy1\1.3\CharController\Vorteil.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Attribut.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Connection.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\CyberDeck.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Eigenschaft.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Fernkampfwaffe.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Fertigkeit.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Handlung.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Implantat.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Item.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Kommlink.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Model.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Munition.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Nachteil.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Nahkampfwaffe.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Panzerung.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Person.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Programm.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Sin.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Vehikel.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Vorteil.cs" />
+    <Compile Include="Legacy1\1.3\CharModel\Waffe.cs" />
+    <Compile Include="Legacy1\1.3\Controller\CharHolder.cs" />
+    <Compile Include="Legacy1\1.3\Controller\Error.cs" />
+    <Compile Include="Legacy1\1.3\Controller\HashDictionary.cs" />
+    <Compile Include="Legacy1\1.3\Controller\TApp.cs" />
+    <Compile Include="Legacy1\1.3\Controller\TSystem.cs" />
+    <Compile Include="Legacy1\1.3\IO\CharIO.cs" />
+    <Compile Include="Legacy1\1.3\IO\CharVerwaltung.cs" />
+    <Compile Include="Legacy1\1.3\Model\CharSummory.cs" />
+    <Compile Include="Legacy1\1.3\Model\CharViewModel.cs" />
+    <Compile Include="Legacy1\1.3\Model\DictionaryCharEntry.cs" />
+    <Compile Include="Legacy1\1.3\Model\Optionen.cs" />
+    <Compile Include="Legacy1\1.3\Model\OptionViewModel.cs" />
+    <Compile Include="Legacy1\1.3\Model\Variablen.cs" />
+    <Compile Include="Legacy1\1.3\Ressourcen\TypNamen.cs" />
+    <Compile Include="Legacy1\1.3\UI\Converter\CB.cs" />
+    <Compile Include="Legacy1\1.3\UI\Converter\io_GebDatum.cs" />
+    <Compile Include="Legacy1\1.3\UI\Converter\io_ListView.cs" />
+    <Compile Include="Legacy1\1.3\UI\Converter\io_ZahlenDouble.cs" />
+    <Compile Include="Legacy1\1.3\UI\Converter\i_char.cs" />
+    <Compile Include="Legacy1\1.3\UI\Converter\o_ModelTyp.cs" />
+    <Compile Include="Legacy1\1.3\UI\Converter\o_ZahlenYen.cs" />
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Attribut.xaml.cs">
+      <DependentUpon>Edit_Attribut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Connection.xaml.cs">
+      <DependentUpon>Edit_Connection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_CyberDeck.xaml.cs">
+      <DependentUpon>Edit_CyberDeck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Fernkampfwaffe.xaml.cs">
+      <DependentUpon>Edit_Fernkampfwaffe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Fertigkeit.xaml.cs">
+      <DependentUpon>Edit_Fertigkeit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Handlung.xaml.cs">
+      <DependentUpon>Edit_Handlung.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Implantat.xaml.cs">
+      <DependentUpon>Edit_Implantat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Item.xaml.cs">
+      <DependentUpon>Edit_Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Kommlink.xaml.cs">
+      <DependentUpon>Edit_Kommlink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Munition.xaml.cs">
+      <DependentUpon>Edit_Munition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Nachteil.xaml.cs">
+      <DependentUpon>Edit_Nachteil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Nahkampfwaffe.xaml.cs">
+      <DependentUpon>Edit_Nahkampfwaffe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Panzerung.xaml.cs">
+      <DependentUpon>Edit_Panzerung.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Person.xaml.cs">
+      <DependentUpon>Edit_Person.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Person2.xaml.cs">
+      <DependentUpon>Edit_Person2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Programm.xaml.cs">
+      <DependentUpon>Edit_Programm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Sin.xaml.cs">
+      <DependentUpon>Edit_Sin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Vehikel.xaml.cs">
+      <DependentUpon>Edit_Vehikel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Edit\Edit_Vorteil.xaml.cs">
+      <DependentUpon>Edit_Vorteil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Fehler\FehlerAnzeige.cs" />
+    <Compile Include="Legacy1\1.3\UI\Pages\Char.xaml.cs">
+      <DependentUpon>Char.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Pages\Char_Verwaltung.xaml.cs">
+      <DependentUpon>Char_Verwaltung.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Pages\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Parts\HD_Wahl.xaml.cs">
+      <DependentUpon>HD_Wahl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Legacy1\1.3\UI\Parts\TabHeader.xaml.cs">
+      <DependentUpon>TabHeader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\CharHolder.cs" />
     <Compile Include="CharModel\Thing.cs" />
     <Compile Include="CharModel\Fertigkeit.cs" />
@@ -255,6 +401,130 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Attribut.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Connection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_CyberDeck.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Fernkampfwaffe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Fertigkeit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Handlung.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Implantat.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Item.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Kommlink.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Munition.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Nachteil.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Nahkampfwaffe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Panzerung.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Person.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Person2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Programm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Sin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Vehikel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Edit\Edit_Vorteil.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Pages\Char.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Pages\Char_Verwaltung.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Pages\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Pages\Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Parts\HD_Wahl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Parts\SplitViewStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Parts\TabHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Ressourcen\ResourceDictionary_App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Ressourcen\ResourceDictionary_Char.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Ressourcen\ResourceDictionary_Char_Verwaltung.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Ressourcen\ResourceDictionary_MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Legacy1\1.3\UI\Ressourcen\ResourceDictionary_Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Edit\Edit_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

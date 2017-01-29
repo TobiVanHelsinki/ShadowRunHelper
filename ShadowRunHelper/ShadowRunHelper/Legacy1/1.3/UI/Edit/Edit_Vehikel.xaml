@@ -1,0 +1,73 @@
+﻿<ContentDialog
+    x:Class="ShadowRunHelper1_3.UI.Edit.Edit_Vehikel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ShadowRunHelper1_3.UI.Edit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Converter="using:ShadowRunHelper1_3.UI.Converter"
+    mc:Ignorable="d"
+    Title="{x:Bind Data.Bezeichner, Mode=TwoWay}"
+    PrimaryButtonText="Fertig"  
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    >
+    <ContentDialog.Resources>
+                <ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentDialog.Resources>
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Bezeichner" Grid.Column="0" Grid.Row="0"/>
+        <TextBox Name="Bezeichner" Text="{x:Bind Data.Bezeichner, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="0"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Typ" Grid.Column="0" Grid.Row="1"/>
+        <TextBox Name="Typ" Text="{x:Bind Data.Typ, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Wert" Grid.Column="0" Grid.Row="2"/>
+        <TextBox Name="Wert" Text="{x:Bind Data.Wert, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Zusatz" Grid.Column="0" Grid.Row="3"/>
+        <TextBox Name="Zusatz" Text="{x:Bind Data.Zusatz, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="3"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Notiz" Grid.Column="0" Grid.Row="4"/>
+        <TextBox Name="Notiz" Text="{x:Bind Data.Notiz, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="4"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="5"/>
+        <TextBox Name="Anzahl" Text="{x:Bind Data.Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="5"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Handling" Grid.Column="0" Grid.Row="6"/>
+        <TextBox Name="Handling" Text="{x:Bind Data.Handling, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="6"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Geschwindigkeit" Grid.Column="0" Grid.Row="7"/>
+        <TextBox Name=" Geschwindigkeit" Text="{x:Bind Data.Geschwindigkeit, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="7"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Rumpf" Grid.Column="0" Grid.Row="8"/>
+        <TextBox Name="Rumpf" Text="{x:Bind Data.Rumpf, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="8"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Panzerung" Grid.Column="0" Grid.Row="9"/>
+        <TextBox Name="Panzerung" Text="{x:Bind Data.Panzerung, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="9"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Pilot" Grid.Column="0" Grid.Row="10"/>
+        <TextBox Name="Pilot" Text="{x:Bind Data.Pilot, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="10"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Sensor" Grid.Column="0" Grid.Row="11"/>
+        <TextBox Name="Sensor" Text="{x:Bind Data.Sensor, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="11"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Sitze" Grid.Column="0" Grid.Row="12"/>
+        <TextBox Name="Sitze" Text="{x:Bind Data.Sitze, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="12"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Gewicht" Grid.Column="0" Grid.Row="13"/>
+        <TextBox Name=" Gewicht" Text="{x:Bind Data.Gewicht, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="13"/>
+    </Grid>
+</ContentDialog>
