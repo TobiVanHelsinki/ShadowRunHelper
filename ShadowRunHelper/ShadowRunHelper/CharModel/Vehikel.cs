@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Vehikel : CharModel.Item
+    public class Vehikel : Item
     {
         private double handling = 0;
         public double Handling

@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cController<T> : IController<T> where T : CharModel.Thing, new()
+    public class cController<T> : IController<T> where T : Thing, new()
     {
         /// <summary>
         /// GUI-Binding Target
@@ -16,14 +16,14 @@ namespace ShadowRunHelper.CharController
         {
             T newTee = new T();
             Data.Add(newTee);
-            return null;
+            return newTee;
         }
         public void RemoveThing(T tRem)
         {
             Data.Remove(tRem);
         }
 
-        public List<KeyValuePair<Thing, string>> GetElements()
+        public List<KeyValuePair<Thing, string>> GetElementsForThingList()
         {
             List<KeyValuePair<Thing, string>> lstReturn = new List<KeyValuePair<Thing, string>>();
             foreach (var item in Data)

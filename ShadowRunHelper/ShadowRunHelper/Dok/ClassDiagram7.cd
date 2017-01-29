@@ -129,105 +129,105 @@
       <FileName>CharController\Vehikel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Attribut" Collapsed="true">
+  <Class Name="ShadowRunHelper.Attribut" Collapsed="true">
     <Position X="12.75" Y="1.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAIAAABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CharModel\Attribut.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Connection" Collapsed="true">
+  <Class Name="ShadowRunHelper.Connection" Collapsed="true">
     <Position X="1.5" Y="1.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAIABAAAAAAAAAAAAgBAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>CharModel\Connection.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.CyberDeck" Collapsed="true">
+  <Class Name="ShadowRunHelper.CyberDeck" Collapsed="true">
     <Position X="15" Y="4.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAwQAAIIFABAIAQAACAAAAAgAAAAAAAAAAAAAAAEE=</HashCode>
       <FileName>CharModel\CyberDeck.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Eigenschaft" Collapsed="true">
+  <Class Name="ShadowRunHelper.Eigenschaft" Collapsed="true">
     <Position X="4.75" Y="1.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAEgAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>CharModel\Eigenschaft.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Fernkampfwaffe" Collapsed="true">
+  <Class Name="ShadowRunHelper.Fernkampfwaffe" Collapsed="true">
     <Position X="21.75" Y="4.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>EAAAAAAACAAABAgAAAAAAAAAAgAAAAAAAAAAABAAAAA=</HashCode>
       <FileName>CharModel\Fernkampfwaffe.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Fertigkeit" Collapsed="true">
+  <Class Name="ShadowRunHelper.Fertigkeit" Collapsed="true">
     <Position X="8.25" Y="1.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CharModel\Fertigkeit.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Handlung" Collapsed="true">
+  <Class Name="ShadowRunHelper.Handlung" Collapsed="true">
     <Position X="10.5" Y="1.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAAAABAgAAgIAAAAAAAAkAAAAIAAAACAA=</HashCode>
       <FileName>CharModel\Handlung.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Implantat" Collapsed="true">
+  <Class Name="ShadowRunHelper.Implantat" Collapsed="true">
     <Position X="28.5" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAgAAAA=</HashCode>
       <FileName>CharModel\Implantat.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Item" Collapsed="true">
+  <Class Name="ShadowRunHelper.Item" Collapsed="true">
     <Position X="22.75" Y="1.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>IAAAAABAAAAARAAAAAAQAAAAEgAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>CharModel\Item.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Kommlink" Collapsed="true">
+  <Class Name="ShadowRunHelper.Kommlink" Collapsed="true">
     <Position X="15" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>CgAAgAgAAAAABAIAAAACAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CharModel\Kommlink.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Munition" Collapsed="true">
+  <Class Name="ShadowRunHelper.Munition" Collapsed="true">
     <Position X="17.25" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CharModel\Munition.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Nachteil" Collapsed="true">
+  <Class Name="ShadowRunHelper.Nachteil" Collapsed="true">
     <Position X="3.75" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CharModel\Nachteil.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Nahkampfwaffe" Collapsed="true">
+  <Class Name="ShadowRunHelper.Nahkampfwaffe" Collapsed="true">
     <Position X="24" Y="4.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CharModel\Nahkampfwaffe.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Panzerung" Collapsed="true">
+  <Class Name="ShadowRunHelper.Panzerung" Collapsed="true">
     <Position X="26.25" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>CAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>CharModel\Panzerung.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Person" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="ShadowRunHelper.Person" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="37.25" Y="4.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>kgQgooQWJKZF2oAAQUoAgAgigIQIoAAAEASEAhIEhAI=</HashCode>
@@ -235,21 +235,21 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Programm" Collapsed="true">
+  <Class Name="ShadowRunHelper.Programm" Collapsed="true">
     <Position X="30.75" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAA=</HashCode>
       <FileName>CharModel\Programm.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Sin" Collapsed="true">
+  <Class Name="ShadowRunHelper.Sin" Collapsed="true">
     <Position X="33" Y="1.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CharModel\Sin.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Thing" Collapsed="true">
+  <Class Name="ShadowRunHelper.Thing" Collapsed="true">
     <Position X="17.25" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAIAAoBIAAKEAAAABAggAAQAAAAAAoBAAACAU=</HashCode>
@@ -257,21 +257,21 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Vehikel" Collapsed="true">
+  <Class Name="ShadowRunHelper.Vehikel" Collapsed="true">
     <Position X="19.5" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>gAAFACAAFQAgAAAAAAAkAAACJAAAAgAAAAAEAIAQBAA=</HashCode>
       <FileName>CharModel\Vehikel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Vorteil" Collapsed="true">
+  <Class Name="ShadowRunHelper.Vorteil" Collapsed="true">
     <Position X="6" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CharModel\Vorteil.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShadowRunHelper.CharModel.Waffe" Collapsed="true">
+  <Class Name="ShadowRunHelper.Waffe" Collapsed="true">
     <Position X="22.75" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAGAAAAAgAAAAAAAAAAAAAAAAAAACAAAAAgAAAABAAA=</HashCode>

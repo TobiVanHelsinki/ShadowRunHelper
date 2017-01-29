@@ -80,9 +80,9 @@
                                                                         <RowDefinition/>
                                                                         <RowDefinition/>
                                                                     </Grid.RowDefinitions>
-                                                                    <TextBlock Text="{Binding Value.Bezeichner, Mode=OneWay}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
-                                                                    <TextBlock Text="{Binding Value.Wert, Mode=OneWay}"  Grid.Column="1" Grid.Row="1"/>
-                                                                    <TextBlock Text="{Binding Value.Typ, Mode=OneWay}"  Grid.Column="0" Grid.Row="1"/>
+                                                                    <TextBlock Text="{Binding Key.Bezeichner, Mode=OneWay}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
+                                                                    <TextBlock Text="{Binding Key.Wert, Mode=OneWay}"  Grid.Column="1" Grid.Row="1"/>
+                                                                    <TextBlock Text="{Binding Key.Typ, Mode=OneWay}"  Grid.Column="0" Grid.Row="1"/>
                                                                 </Grid>
                                                             </DataTemplate>
                                                         </GridView.ItemTemplate>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ShadowRunHelper.CharModel;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Controls;
 
@@ -8,11 +9,11 @@ namespace ShadowRunHelper.UI.Edit
 {
     public sealed partial class Edit_Dialog : ContentDialog
     {
-        public CharModel.Thing Data;
+        public Thing Data;
         //public ObservableCollection<CharThing> lstAll;
         public List<string> MyStringOptions { get; set; }
 
-        public Edit_Dialog(CharModel.Thing data)
+        public Edit_Dialog(Thing data)
         {
             this.Data = data;
             this.InitializeComponent();

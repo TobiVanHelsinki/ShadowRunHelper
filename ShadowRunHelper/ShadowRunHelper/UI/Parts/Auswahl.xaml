@@ -1,5 +1,5 @@
 ﻿<ContentDialog
-    x:Class="ShadowRunHelper.HD_Wahl"
+    x:Class="ShadowRunHelper.Auswahl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ShadowRunHelper"
@@ -20,21 +20,21 @@
         </ResourceDictionary>
     </ContentDialog.Resources>
     <ScrollViewer Height="500" Width="500">
-        <ListView Name="Zus_ListVIew" ItemsSource="{x:Bind lstAll}" Grid.Column="1" Grid.Row="5" SelectionMode="Multiple" Loaded="Zus_ListVIew_Loaded" Tapped="Zus_ListVIew_Tapped">
+        <ListView Name="Zus_ListVIew" ItemsSource="{x:Bind lstAll}" Grid.Column="1" Grid.Row="5" SelectionMode="Multiple" Loaded="Zus_ListVIew_Loaded">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Name="Zus_ListVIew_Stack" >
+                    <!--<Grid Name="Zus_ListVIew_Stack" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="Auto"/>
-                            <!--<ColumnDefinition Width="1*"/>-->
+                            --><!--<ColumnDefinition Width="1*"/>--><!--
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding Key.Bezeichner, Mode=OneWay}" Grid.Column="0"/>
                         <TextBlock Text="{Binding Value, Mode=OneWay}" Grid.Column="1"/>
-                        <!--<TextBlock Text="{Binding Key.Wert, Mode=OneWay}" Grid.Column="2"/>-->
+                        --><!--<TextBlock Text="{Binding Key.Wert, Mode=OneWay}" Grid.Column="2"/>--><!--
                         <TextBlock Text="{Binding Key.Typ, Mode=OneWay}" Grid.Column="3"/>
-                    </Grid>
+                    </Grid>-->
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.ItemContainerStyle>

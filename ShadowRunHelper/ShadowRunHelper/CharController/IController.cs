@@ -13,7 +13,7 @@ namespace ShadowRunHelper.CharController
         /// To populate the "All Things" List - will be overridden by singlecontroller
         /// </summary>
         /// <returns></returns>
-        List<KeyValuePair<Thing, string>> GetElements();
+        List<KeyValuePair<Thing, string>> GetElementsForThingList();
 
     }
 }

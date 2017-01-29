@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Fernkampfwaffe : CharModel.Waffe
+    public class Fernkampfwaffe : Waffe
     {
         private double rückstoß = 0;
         public double Rückstoß

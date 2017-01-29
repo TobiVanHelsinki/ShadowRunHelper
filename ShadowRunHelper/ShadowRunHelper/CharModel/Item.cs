@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Item : CharModel.Thing
+    public class Item : Thing
     {
         //public override double GetValue(string ID = "")
         //{

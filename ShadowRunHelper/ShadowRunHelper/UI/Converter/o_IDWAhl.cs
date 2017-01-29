@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShadowRunHelper.CharModel;
+using System;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter
@@ -13,7 +14,7 @@ namespace ShadowRunHelper.UI.Converter
             {
                 return "?";
             }
-            return ((CharModel.Thing)value).GetValue(((string)parameter));
+            return ((Thing)value).GetValue(((string)parameter));
             //return value.ToString();
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)

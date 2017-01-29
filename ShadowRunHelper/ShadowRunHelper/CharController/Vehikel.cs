@@ -46,7 +46,7 @@ namespace ShadowRunHelper.CharController
             ActiveItem.Reset();
         }
 
-        public new List<KeyValuePair<Thing, string>> GetElements()
+        public new List<KeyValuePair<Thing, string>> GetElementsForThingList()
         {
             List<KeyValuePair<Thing, string>> lstReturn = new List<KeyValuePair<Thing, string>>();
             lstReturn.Add(MI_1);

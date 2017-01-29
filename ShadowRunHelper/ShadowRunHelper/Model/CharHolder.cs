@@ -12,15 +12,15 @@ namespace ShadowRunHelper.Model
     public class CharHolder
     {
         public string APP_VERSION_NUMBER = Konstanten.APP_VERSION_NUMBER;
-        public CharController.cController<CharModel.Fertigkeit> CTRLFertigkeit { get; set; }
-        public CharController.cController<CharModel.Item> CTRLItem { get; set; }
-        public CharController.cController<CharModel.Programm> CTRLProgramm { get; set; }
-        public CharController.cController<CharModel.Munition> CTRLMunition { get; set; }
-        public CharController.cController<CharModel.Implantat> CTRLImplantat { get; set; }
-        public CharController.cController<CharModel.Vorteil> CTRLVorteil { get; set; }
-        public CharController.cController<CharModel.Nachteil> CTRLNachteil { get; set; }
-        public CharController.cController<CharModel.Connection> CTRLConnection { get; set; }
-        public CharController.cController<CharModel.Sin> CTRLSin { get; set; }
+        public CharController.cController<Fertigkeit> CTRLFertigkeit { get; set; }
+        public CharController.cController<Item> CTRLItem { get; set; }
+        public CharController.cController<Programm> CTRLProgramm { get; set; }
+        public CharController.cController<Munition> CTRLMunition { get; set; }
+        public CharController.cController<Implantat> CTRLImplantat { get; set; }
+        public CharController.cController<Vorteil> CTRLVorteil { get; set; }
+        public CharController.cController<Nachteil> CTRLNachteil { get; set; }
+        public CharController.cController<Connection> CTRLConnection { get; set; }
+        public CharController.cController<Sin> CTRLSin { get; set; }
 
         public CharController.cAttributController CTRLAttribut { get; set; }
         public CharController.cNahkampfwaffeController CTRLNahkampfwaffe { get; set; }
@@ -29,27 +29,27 @@ namespace ShadowRunHelper.Model
         public CharController.cCyberDeckController CTRLCyberDeck { get; set; }
         public CharController.cVehikelController CTRLVehikel { get; set; }
         public CharController.cPanzerungController CTRLPanzerung { get; set; }
-        public CharController.cController<CharModel.Handlung> CTRLHandlung { get; set; }
+        public CharController.cController<Handlung> CTRLHandlung { get; set; }
 
         [System.Runtime.Serialization.IgnoreDataMember]
-        public List<KeyValuePair<CharModel.Thing, string>> lstAll;
+        public List<KeyValuePair<Thing, string>> lstThings;
 
-        public CharModel.Person Person { get; set; }
+        public Person Person { get; set; }
 
         /// <summary>
         /// Konstruktor nutzen, um neue Controller und Objekte zu erhalten
         /// </summary>
         public CharHolder()
         {
-            CTRLFertigkeit = new CharController.cController<CharModel.Fertigkeit>();
-            CTRLItem= new CharController.cController<CharModel.Item>();
-            CTRLProgramm = new CharController.cController<CharModel.Programm>();
-            CTRLMunition = new CharController.cController<CharModel.Munition>();
-            CTRLImplantat = new CharController.cController<CharModel.Implantat>();
-            CTRLVorteil = new CharController.cController<CharModel.Vorteil>();
-            CTRLNachteil = new CharController.cController<CharModel.Nachteil>();
-            CTRLConnection = new CharController.cController<CharModel.Connection>();
-            CTRLSin = new CharController.cController<CharModel.Sin>();
+            CTRLFertigkeit = new CharController.cController<Fertigkeit>();
+            CTRLItem= new CharController.cController<Item>();
+            CTRLProgramm = new CharController.cController<Programm>();
+            CTRLMunition = new CharController.cController<Munition>();
+            CTRLImplantat = new CharController.cController<Implantat>();
+            CTRLVorteil = new CharController.cController<Vorteil>();
+            CTRLNachteil = new CharController.cController<Nachteil>();
+            CTRLConnection = new CharController.cController<Connection>();
+            CTRLSin = new CharController.cController<Sin>();
 
             CTRLAttribut = new CharController.cAttributController();
             CTRLNahkampfwaffe = new CharController.cNahkampfwaffeController();
@@ -58,10 +58,10 @@ namespace ShadowRunHelper.Model
             CTRLCyberDeck = new CharController.cCyberDeckController();
             CTRLVehikel = new CharController.cVehikelController();
             CTRLPanzerung = new CharController.cPanzerungController();
-            CTRLHandlung = new CharController.cController<CharModel.Handlung>();
+            CTRLHandlung = new CharController.cController<Handlung>();
 
-            Person = new CharModel.Person();
-            lstAll = new List<KeyValuePair<CharModel.Thing, string>>();
+            Person = new Person();
+            lstThings = new List<KeyValuePair<Thing, string>>();
 
 
         }
@@ -125,30 +125,30 @@ namespace ShadowRunHelper.Model
                 default:
                     break;
             }
-            RefreshAllList();
+            RefreshThingList();
         }
 
-        public void RefreshAllList()
+        public void RefreshThingList()
         {
-            lstAll.Clear();
-            lstAll.AddRange(CTRLHandlung.GetElements());
-            lstAll.AddRange(CTRLFertigkeit.GetElements());
-            lstAll.AddRange(CTRLItem.GetElements());
-            lstAll.AddRange(CTRLProgramm.GetElements());
-            lstAll.AddRange(CTRLMunition.GetElements());
-            lstAll.AddRange(CTRLImplantat.GetElements());
-            lstAll.AddRange(CTRLVorteil.GetElements());
-            lstAll.AddRange(CTRLNachteil.GetElements());
-            lstAll.AddRange(CTRLConnection.GetElements());
-            lstAll.AddRange(CTRLSin.GetElements());
+            lstThings.Clear();
+            lstThings.AddRange(CTRLHandlung.GetElementsForThingList());
+            lstThings.AddRange(CTRLFertigkeit.GetElementsForThingList());
+            lstThings.AddRange(CTRLItem.GetElementsForThingList());
+            lstThings.AddRange(CTRLProgramm.GetElementsForThingList());
+            lstThings.AddRange(CTRLMunition.GetElementsForThingList());
+            lstThings.AddRange(CTRLImplantat.GetElementsForThingList());
+            lstThings.AddRange(CTRLVorteil.GetElementsForThingList());
+            lstThings.AddRange(CTRLNachteil.GetElementsForThingList());
+            lstThings.AddRange(CTRLConnection.GetElementsForThingList());
+            lstThings.AddRange(CTRLSin.GetElementsForThingList());
             //liefern immer das selbe
-            lstAll.AddRange(CTRLAttribut.GetElements());
-            lstAll.AddRange(CTRLNahkampfwaffe.GetElements());
-            lstAll.AddRange(CTRLFernkampfwaffe.GetElements());
-            lstAll.AddRange(CTRLKommlink.GetElements());
-            lstAll.AddRange(CTRLCyberDeck.GetElements());
-            lstAll.AddRange(CTRLVehikel.GetElements());
-            lstAll.AddRange(CTRLPanzerung.GetElements());
+            lstThings.AddRange(CTRLAttribut.GetElementsForThingList());
+            lstThings.AddRange(CTRLNahkampfwaffe.GetElementsForThingList());
+            lstThings.AddRange(CTRLFernkampfwaffe.GetElementsForThingList());
+            lstThings.AddRange(CTRLKommlink.GetElementsForThingList());
+            lstThings.AddRange(CTRLCyberDeck.GetElementsForThingList());
+            lstThings.AddRange(CTRLVehikel.GetElementsForThingList());
+            lstThings.AddRange(CTRLPanzerung.GetElementsForThingList());
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace ShadowRunHelper.Model
                 default:
                     break;
             }
-            lstAll.Remove(lstAll.Find((x) => x.Key == tToRemove));
+            lstThings.Remove(lstThings.Find((x) => x.Key == tToRemove));
         }
     }
 }

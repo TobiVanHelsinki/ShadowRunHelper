@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Nahkampfwaffe : CharModel.Waffe
+    public class Nahkampfwaffe : Waffe
     {
         private double reichweite = 0;
         public double Reichweite

@@ -1,12 +1,13 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using ShadowRunHelper.CharModel;
+using Windows.UI.Xaml.Controls;
 
 namespace ShadowRunHelper.UI.Edit
 {
     public sealed partial class Edit_Person : ContentDialog
     {
-        public CharModel.Person Data;
+        public Person Data;
 
-        public Edit_Person(CharModel.Person data)
+        public Edit_Person(Person data)
         {
             this.InitializeComponent();
             this.Data = data;

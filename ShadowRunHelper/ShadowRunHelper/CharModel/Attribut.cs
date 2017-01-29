@@ -2,7 +2,7 @@
 namespace ShadowRunHelper.CharModel
 {
 
-    public class Attribut : CharModel.Thing
+    public class Attribut : Thing
     {
         //public override double GetValue(string ID = "")
         //{

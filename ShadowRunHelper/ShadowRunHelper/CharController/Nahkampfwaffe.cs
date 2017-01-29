@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cNahkampfwaffeController : CharController.cController<CharModel.Nahkampfwaffe>
+    public class cNahkampfwaffeController : CharController.cController<Nahkampfwaffe>
     {
         private KeyValuePair<Thing, string> MI_1;
         private KeyValuePair<Thing, string> MI_2;
@@ -45,7 +45,7 @@ namespace ShadowRunHelper.CharController
             ActiveItem.Reset();
         }
 
-        public new List<KeyValuePair<Thing, string>> GetElements()
+        public new List<KeyValuePair<Thing, string>> GetElementsForThingList()
         {
             List<KeyValuePair<Thing, string>> lstReturn = new List<KeyValuePair<Thing, string>>();
             lstReturn.Add(MI_1);

@@ -37,7 +37,7 @@ namespace ShadowRunHelper.IO
                 test.Error = ErrorHandler;
                 test.PreserveReferencesHandling = PreserveReferencesHandling.All;
                 tempChar = JsonConvert.DeserializeObject<CharHolder>(fileContent, test);
-                tempChar.RefreshAllList();
+                tempChar.RefreshThingList();
             }
             catch (Exception)
             {

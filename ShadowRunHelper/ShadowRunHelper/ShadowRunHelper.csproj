@@ -169,8 +169,8 @@
     <Compile Include="UI\Edit\Edit_Person2.xaml.cs">
       <DependentUpon>Edit_Person2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Parts\HD_Wahl.xaml.cs">
-      <DependentUpon>HD_Wahl.xaml</DependentUpon>
+    <Compile Include="UI\Parts\Auswahl.xaml.cs">
+      <DependentUpon>Auswahl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -267,7 +267,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Parts\HD_Wahl.xaml">
+    <Page Include="UI\Parts\Auswahl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

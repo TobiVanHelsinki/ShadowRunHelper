@@ -2,7 +2,7 @@
 
 namespace ShadowRunHelper.CharModel
 {
-    public class CyberDeck : CharModel.Kommlink
+    public class CyberDeck : Kommlink
     {
         private double firewall_o =0;
         public double Firewall_o

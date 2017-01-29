@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Waffe : CharModel.Item
+    public class Waffe : Item
     {
         private double pool = 0;
         public double Pool

@@ -1,13 +1,17 @@
 ﻿using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cAttributController : CharController.cController<Attribut>
+    public class cAttributController : cController<Attribut>
     {
+        [System.Runtime.Serialization.IgnoreDataMember]
+        public new ObservableCollection<Attribut> Data;
+
         public Attribut Konsti;// those have to point at a sepcific list element
         public Attribut Geschick;
         public Attribut Reaktion;
@@ -106,9 +110,19 @@ namespace ShadowRunHelper.CharController
             //Limit_K.PropertyChanged += (x, y) => Refresh();
             //Limit_G.PropertyChanged += (x, y) => Refresh();
             //Limit_S.PropertyChanged += (x, y) => Refresh();
-            Refresh();
+            Data = new ObservableCollection<Attribut>();
+            RefreshDataList();
     }
 
+        public new Attribut AddNewThing()
+        {
+            RefreshDataList();
+            return null;
+        }
+        public new void RemoveThing(Attribut tRem)
+        {
+            RefreshDataList();
+        }
         //private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         //{
         //    Refresh();
@@ -119,7 +133,7 @@ namespace ShadowRunHelper.CharController
         //    }
         //}
 
-        private void Refresh()
+        private void RefreshDataList()
         {
             Data.Clear();
             Data.Add(Charisma);
@@ -136,7 +150,7 @@ namespace ShadowRunHelper.CharController
             Data.Add(Limit_S);
         }
 
-        public new List<KeyValuePair<Thing, string>> GetElements()
+        public new List<KeyValuePair<Thing, string>> GetElementsForThingList()
         {
             List<KeyValuePair<Thing, string>> lstReturn = new List<KeyValuePair<Thing, string>>();
             lstReturn.Add(MI_Charisma);

@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Primitives;
 using System;
 using ShadowRunHelper.UI.Edit;
+using ShadowRunHelper.CharModel;
 
 namespace ShadowRunHelper
 {
@@ -62,7 +63,7 @@ namespace ShadowRunHelper
             }
             else
             {
-                await new Edit_Dialog(((CharModel.Thing)((Button)sender).DataContext)).ShowAsync();
+                await new Edit_Dialog(((Thing)((Button)sender).DataContext)).ShowAsync();
             }
 
         }
@@ -71,7 +72,7 @@ namespace ShadowRunHelper
         private void Del_Click(object sender, RoutedEventArgs e)
         {
             //String Controller_Name = ((String)((Button)sender).Name);
-            CharModel.Thing Controller_Item = (CharModel.Thing)((Button)sender).DataContext;
+            Thing Controller_Item = (Thing)((Button)sender).DataContext;
             ViewModel.Current.Remove(Controller_Item);
         }
 
@@ -79,15 +80,21 @@ namespace ShadowRunHelper
         private async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
         {
             ((Button)sender).DataContext.GetType();
-            HD_Wahl dialog = new HD_Wahl(((CharModel.Handlung)((Button)sender).DataContext), ViewModel.Current.lstAll, 1);
-            await dialog.ShowAsync();
+            //Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Wert);
+            //await dialog.ShowAsync();
 
         }
 
         private async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            HD_Wahl dialog = new HD_Wahl(((CharModel.Handlung)((Button)sender).DataContext), ViewModel.Current.lstAll, 2);
-            await dialog.ShowAsync();
+            //Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Grenze);
+            //await dialog.ShowAsync();
+        }
+
+        private async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)
+        {
+            //Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Gegen);
+            //await dialog.ShowAsync();
         }
 
         private void Item_RightTapped(object sender, Windows.UI.Xaml.Input.RightTappedRoutedEventArgs e)
@@ -97,12 +104,6 @@ namespace ShadowRunHelper
             {
                 FlyoutBase.ShowAttachedFlyout(element);
             }
-        }
-
-        private async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)
-        {
-            HD_Wahl dialog = new HD_Wahl(((CharModel.Handlung)((Button)sender).DataContext), ViewModel.Current.lstAll, 3);
-            await dialog.ShowAsync();
         }
     }
 }

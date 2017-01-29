@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Panzerung : CharModel.Item
+    public class Panzerung : Item
     {
         private double stoß = 0;
         public double Stoß
