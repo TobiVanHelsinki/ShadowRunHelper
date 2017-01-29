@@ -79,22 +79,21 @@ namespace ShadowRunHelper
 
         private async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            ((Button)sender).DataContext.GetType();
-            //Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Wert);
-            //await dialog.ShowAsync();
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Wert);
+            await dialog.ShowAsync();
 
         }
 
         private async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            //Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Grenze);
-            //await dialog.ShowAsync();
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Grenze);
+            await dialog.ShowAsync();
         }
 
         private async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            //Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Gegen);
-            //await dialog.ShowAsync();
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Gegen);
+            await dialog.ShowAsync();
         }
 
         private void Item_RightTapped(object sender, Windows.UI.Xaml.Input.RightTappedRoutedEventArgs e)

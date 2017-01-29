@@ -9,8 +9,8 @@ namespace ShadowRunHelper.CharController
 {
     public class cAttributController : cController<Attribut>
     {
-        [System.Runtime.Serialization.IgnoreDataMember]
-        public new ObservableCollection<Attribut> Data;
+        //[System.Runtime.Serialization.IgnoreDataMember]
+        //public new ObservableCollection<Attribut> Data;
 
         public Attribut Konsti;// those have to point at a sepcific list element
         public Attribut Geschick;
@@ -99,7 +99,6 @@ namespace ShadowRunHelper.CharController
             MI_Limit_S = new KeyValuePair<Thing, string>(Charisma, "");
 
             Konsti.PropertyChanged += (x, y) => RefreshLimitK();
-            //Geschick.PropertyChanged += (x, y) => Refresh();
             Reaktion.PropertyChanged += (x, y) => RefreshLimitK();
             Staerke.PropertyChanged += (x, y) => RefreshLimitK();
             Charisma.PropertyChanged += (x, y) => RefreshLimitS();
@@ -107,12 +106,9 @@ namespace ShadowRunHelper.CharController
             Intuition.PropertyChanged += (x, y) => RefreshLimitG();
             Willen.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); };
             Essenz.PropertyChanged += (x, y) => RefreshLimitS();
-            //Limit_K.PropertyChanged += (x, y) => Refresh();
-            //Limit_G.PropertyChanged += (x, y) => Refresh();
-            //Limit_S.PropertyChanged += (x, y) => Refresh();
-            Data = new ObservableCollection<Attribut>();
+            //Data = new ObservableCollection<Attribut>();
             RefreshDataList();
-    }
+        }
 
         public new Attribut AddNewThing()
         {
@@ -123,15 +119,6 @@ namespace ShadowRunHelper.CharController
         {
             RefreshDataList();
         }
-        //private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        //{
-        //    Refresh();
-        //    foreach (var item in Data)
-        //    {
-        //        item.PropertyChanged -= (x, y) => Refresh();
-        //        item.PropertyChanged += (x, y) => Refresh();
-        //    }
-        //}
 
         private void RefreshDataList()
         {

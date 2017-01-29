@@ -68,7 +68,7 @@
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
 
-                                                    <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind Zusammensetzung, Mode=OneWay}" >
+                                                    <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind WertZusammensetzung, Mode=OneWay}" >
                                                         <GridView.ItemTemplate >
                                                             <DataTemplate >
                                                                 <Grid Name="Zus_ListVIew_Stack">

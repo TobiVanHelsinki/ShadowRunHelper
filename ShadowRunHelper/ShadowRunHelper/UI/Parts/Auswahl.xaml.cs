@@ -13,12 +13,10 @@ namespace ShadowRunHelper
     public sealed partial class Auswahl : ContentDialog
     {
         public Handlung data;
-        //private List<KeyValuePair<System.Int32, DictionaryCharEntry>> HD_List = new List<KeyValuePair<int, DictionaryCharEntry>>();
         private List<KeyValuePair<Thing, string>> lstAll;
-        //Handlung.Mode Modus;
-        //private int tepmindex;
+        Handlung.Mode Modus;
 
-        public Auswahl(Handlung data, List<KeyValuePair<Thing, string>> i_lstAll)
+        public Auswahl(Handlung data, List<KeyValuePair<Thing, string>> i_lstAll, Handlung.Mode modus)
         {
             if (i_lstAll == null)
             {
@@ -34,7 +32,7 @@ namespace ShadowRunHelper
             }
             this.lstAll = i_lstAll;
             this.data = data;
-            //this.Modus = modus;
+            this.Modus = modus;
             this.InitializeComponent();
         }
 
@@ -50,20 +48,20 @@ namespace ShadowRunHelper
             {
                 tempDic.Add(item);
             }
-            //switch (Modus)
-            //{
-            //    case Handlung.Mode.Wert:
-            //        RefreshList(data.WertZusammensetzung, tempDic);
-            //        break;
-            //    case Handlung.Mode.Grenze:
-            //        RefreshList(data.GrenzeZusammensetzung, tempDic);
-            //        break;
-            //    case Handlung.Mode.Gegen:
-            //        RefreshList(data.GegenZusammensetzung, tempDic);
-            //        break;
-            //    default:
-            //        break;
-            //}
+            switch (Modus)
+            {
+                case Handlung.Mode.Wert:
+                    RefreshList(data.WertZusammensetzung, tempDic);
+                    break;
+                case Handlung.Mode.Grenze:
+                    RefreshList(data.GrenzeZusammensetzung, tempDic);
+                    break;
+                case Handlung.Mode.Gegen:
+                    RefreshList(data.GegenZusammensetzung, tempDic);
+                    break;
+                default:
+                    break;
+            }
 
             ContentDialogButtonClickDeferral deferral = args.GetDeferral();
             deferral.Complete();
