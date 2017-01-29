@@ -13,7 +13,7 @@ namespace ShadowRunHelper
     public sealed partial class Auswahl : ContentDialog
     {
         public Handlung data;
-        private List<KeyValuePair<Thing, string>> lstAll;
+        private List<KeyValuePair<Thing, string>> lstThings;
         Handlung.Mode Modus;
 
         public Auswahl(Handlung data, List<KeyValuePair<Thing, string>> i_lstAll, Handlung.Mode modus)
@@ -30,7 +30,7 @@ namespace ShadowRunHelper
             {
                 throw new System.ArgumentNullException(ExceptionMessages.AllListChooser_Data_Null);
             }
-            this.lstAll = i_lstAll;
+            this.lstThings = i_lstAll;
             this.data = data;
             this.Modus = modus;
             this.InitializeComponent();
@@ -78,27 +78,27 @@ namespace ShadowRunHelper
 
         private void Zus_ListVIew_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            //switch (Modus)
-            //{
-            //    case Handlung.Mode.Wert:
-            //        SelectGui(data.WertZusammensetzung);
-            //        break;
-            //    case Handlung.Mode.Grenze:
-            //        SelectGui(data.GrenzeZusammensetzung);
-            //        break;
-            //    case Handlung.Mode.Gegen:
-            //        SelectGui(data.GegenZusammensetzung);
-            //        break;
-            //    default:
-            //        break;
-            //}
+            switch (Modus)
+            {
+                case Handlung.Mode.Wert:
+                    SelectGui(data.WertZusammensetzung);
+                    break;
+                case Handlung.Mode.Grenze:
+                    SelectGui(data.GrenzeZusammensetzung);
+                    break;
+                case Handlung.Mode.Gegen:
+                    SelectGui(data.GegenZusammensetzung);
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void SelectGui(ObservableCollection<KeyValuePair<Thing, string>> SourceList)
         {
             foreach (var item in SourceList)
             {
-                var tepmindex = lstAll.FindIndex(x => (x.Key == item.Key && x.Value == item.Value));
+                var tepmindex = lstThings.FindIndex(x => (x.Key == item.Key && x.Value == item.Value));
                 Zus_ListVIew.SelectRange(new ItemIndexRange(tepmindex, 1));
             }
         }
