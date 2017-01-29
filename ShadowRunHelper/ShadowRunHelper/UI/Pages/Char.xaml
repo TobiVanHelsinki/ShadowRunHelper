@@ -1264,7 +1264,7 @@
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
-        <!--<PivotItem>
+        <PivotItem>
             <PivotItem.Header>
                 <local:TabHeader x:Uid="Char_View_Pivot_Notizen" Glyph="&#xE193;" />
             </PivotItem.Header>
@@ -1273,6 +1273,6 @@
                     <TextBox AcceptsReturn="True"  Text="{x:Bind ViewModel.Current.Person.Notizen, Mode=TwoWay}" PlaceholderText="Notizen" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True"/>
                 </RelativePanel>
             </ScrollViewer>
-        </PivotItem>-->
+        </PivotItem>
     </Pivot>
 </Page>

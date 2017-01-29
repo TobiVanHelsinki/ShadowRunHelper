@@ -18,8 +18,10 @@ namespace ShadowRunHelper.UI.Converter
             double retvalue = 0;
             try
             {
-                string digitstr = new string(((string)value).Where(r => char.IsDigit(r)).ToArray());
-                retvalue = ((IConvertible)digitstr).ToDouble(null);
+                //string digitstr = new string(((string)value).Where(r => char.IsDigit(r)).ToArray());
+                //retvalue = ((IConvertible)digitstr).ToDouble(null);
+                retvalue = Double.Parse((string)value); //TODO format specific?
+                //retvalue = ((IConvertible)digitstr).ToDouble(null);
             }
             catch (Exception)
             {

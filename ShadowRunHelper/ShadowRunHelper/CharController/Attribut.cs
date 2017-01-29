@@ -9,8 +9,8 @@ namespace ShadowRunHelper.CharController
 {
     public class cAttributController : cController<Attribut>
     {
-        //[System.Runtime.Serialization.IgnoreDataMember]
-        //public new ObservableCollection<Attribut> Data;
+        [System.Runtime.Serialization.IgnoreDataMember] //caused once an very übel Bug
+        public new ObservableCollection<Attribut> Data;
 
         public Attribut Konsti;// those have to point at a sepcific list element
         public Attribut Geschick;
@@ -21,6 +21,40 @@ namespace ShadowRunHelper.CharController
         public Attribut Intuition;
         public Attribut Willen;
         public Attribut Essenz; //TODO Essenz berechnen aus Implantaten (+ ein bonus feld?)
+
+        CharModel.Person PersonRef;
+        ObservableCollection<Implantat> lstImplantateRef;
+        public cAttributController(CharModel.Person P, ObservableCollection<Implantat> I) : this()
+        {
+            SetDependencies(P, I);
+        }
+
+        public void SetDependencies(Person p, ObservableCollection<Implantat> i)
+        {
+            PersonRef = p;
+            lstImplantateRef = i;
+            PersonRef.PropertyChanged += (x, y) => RefreshEssenz();
+            lstImplantateRef.CollectionChanged += (x, y) => RegisterRefreshers();
+        }
+
+        private void RegisterRefreshers()
+        {
+            foreach (var item in lstImplantateRef)
+            {
+                item.PropertyChanged -= (x, y) => RefreshEssenz();
+                item.PropertyChanged += (x, y) => RefreshEssenz();
+            }
+            RefreshEssenz();
+        }
+
+        protected void RefreshEssenz()
+        {
+            this.Essenz.Wert = PersonRef.Essenz;
+            foreach (var item in lstImplantateRef)
+            {
+                this.Essenz.Wert -= item.Essenz;
+            }
+        }
 
         //Physical Limit: (STR x2 + BOD + REA) / 3
         public Attribut Limit_K;
@@ -41,7 +75,6 @@ namespace ShadowRunHelper.CharController
         {
             this.Limit_S.Wert = Math.Ceiling((this.Charisma.GetValue() * 2 + this.Willen.GetValue() + this.Essenz.GetValue()) / 3);
         }
-
 
         private KeyValuePair<Thing, string> MI_Konsti;
         private KeyValuePair<Thing, string> MI_Geschick;
@@ -106,7 +139,7 @@ namespace ShadowRunHelper.CharController
             Intuition.PropertyChanged += (x, y) => RefreshLimitG();
             Willen.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); };
             Essenz.PropertyChanged += (x, y) => RefreshLimitS();
-            //Data = new ObservableCollection<Attribut>();
+            Data = new ObservableCollection<Attribut>();
             RefreshDataList();
         }
 

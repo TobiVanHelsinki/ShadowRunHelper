@@ -53,6 +53,8 @@ namespace ShadowRunHelper.Model
             CTRLSin = new CharController.cController<Sin>();
 
             CTRLAttribut = new CharController.cAttributController();
+            Person = new Person();
+            CTRLAttribut.SetDependencies(Person, CTRLImplantat.Data);
             CTRLNahkampfwaffe = new CharController.cNahkampfwaffeController();
             CTRLFernkampfwaffe = new CharController.cFernkampfwaffeController();
             CTRLKommlink = new CharController.cKommlinkController();
@@ -61,7 +63,6 @@ namespace ShadowRunHelper.Model
             CTRLPanzerung = new CharController.cPanzerungController();
             CTRLHandlung = new CharController.cController<Handlung>();
 
-            Person = new Person();
             lstThings = new List<KeyValuePair<Thing, string>>();
 
 
