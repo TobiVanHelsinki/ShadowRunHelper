@@ -55,25 +55,75 @@ namespace ShadowRunHelper
 
         private async void Edit_Click(object sender, RoutedEventArgs e)
         {
-            string Controller_Name = ((String)((Button)sender).Name);
+            string Name = ((String)((Button)sender).Name);
+            string Tag = ((String)((Button)sender).Tag);
 
-            if (Controller_Name.Contains("Person1"))
+            if (Name.Contains("Person1"))
             {
                 await new Edit_Person(ViewModel.Current.Person).ShowAsync();
             }
+            else if (Tag != "")
+            {
+                Thing Attribute = null;
+                switch (Tag)
+                {
+                    case "Konsti":
+                        Attribute = ViewModel.Current.CTRLAttribut.Konsti;
+                        break;
+                    case "Reaktion":
+                        Attribute = ViewModel.Current.CTRLAttribut.Reaktion;
+                        break;
+                    case "Intuition":
+                        Attribute = ViewModel.Current.CTRLAttribut.Intuition;
+                        break;
+                    case "Staerke":
+                        Attribute = ViewModel.Current.CTRLAttribut.Staerke;
+                        break;
+                    case "Willen":
+                        Attribute = ViewModel.Current.CTRLAttribut.Willen;
+                        break;
+                    case "Logik":
+                        Attribute = ViewModel.Current.CTRLAttribut.Logik;
+                        break;
+                    case "Geschick":
+                        Attribute = ViewModel.Current.CTRLAttribut.Geschick;
+                        break;
+                    case "Charisma":
+                        Attribute = ViewModel.Current.CTRLAttribut.Charisma;
+                        break;
+                    default:
+                        break;
+                }
+                try
+                {
+                    if (Attribute != null)
+                    {
+                        await new Edit_Dialog(Attribute).ShowAsync();
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
             else
             {
-                await new Edit_Dialog(((Thing)((Button)sender).DataContext)).ShowAsync();
+                try
+                {
+                    await new Edit_Dialog(((Thing)((Button)sender).DataContext)).ShowAsync();
+
+                }
+                catch (Exception)
+                {
+                }
             }
-
         }
-
 
         private void Del_Click(object sender, RoutedEventArgs e)
         {
-            //String Controller_Name = ((String)((Button)sender).Name);
-            Thing Controller_Item = (Thing)((Button)sender).DataContext;
-            ViewModel.Current.Remove(Controller_Item);
+            if ((Thing)((Button)sender).DataContext != null)
+            {
+                ViewModel.Current.Remove((Thing)((Button)sender).DataContext);
+            }
         }
 
 
@@ -103,6 +153,11 @@ namespace ShadowRunHelper
             {
                 FlyoutBase.ShowAttachedFlyout(element);
             }
+        }
+
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

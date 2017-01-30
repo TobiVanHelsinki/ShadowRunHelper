@@ -9,8 +9,8 @@ namespace ShadowRunHelper.CharController
 {
     public class cAttributController : cController<Attribut>
     {
-        [System.Runtime.Serialization.IgnoreDataMember] //caused once an very übel Bug
-        public new ObservableCollection<Attribut> Data;
+        //[System.Runtime.Serialization.IgnoreDataMember] //cause sometimes an very übel Bug
+        //public new ObservableCollection<Attribut> Data; //cause sometimes an very übel Bug
 
         public Attribut Konsti;// those have to point at a sepcific list element
         public Attribut Geschick;
