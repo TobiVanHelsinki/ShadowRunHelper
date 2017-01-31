@@ -184,16 +184,16 @@
     <comment>Mehrzahl</comment>
   </data>
   <data name="Model_Handlung_Grenze.Text" xml:space="preserve">
-    <value>Grenze</value>
+    <value>Limit</value>
   </data>
   <data name="Model_Handlung_GrenzeZusammensetzung.Text" xml:space="preserve">
-    <value>Zusammensetzung Grenze </value>
+    <value>Zusammensetzung Limit</value>
   </data>
   <data name="Model_Handlung_Mod.Text" xml:space="preserve">
     <value>Modifier</value>
   </data>
   <data name="Model_Handlung_Zusammensetzung.Text" xml:space="preserve">
-    <value>Zusammensetzung (klick zum bearbeiten)</value>
+    <value>Zusammensetzung Stufe</value>
   </data>
   <data name="Model_Items_.Text" xml:space="preserve">
     <value>Items</value>
@@ -290,9 +290,6 @@
   </data>
   <data name="Model_Waffe_Schaden.Text" xml:space="preserve">
     <value>Schaden</value>
-  </data>
-  <data name="Model_Wert.Text" xml:space="preserve">
-    <value>Wert</value>
   </data>
   <data name="Model_Zusatz.Text" xml:space="preserve">
     <value>Zusatz</value>
@@ -534,7 +531,7 @@
     <value>Pfad</value>
   </data>
   <data name="Model_Handlung_GegenZusammensetzung.Text" xml:space="preserve">
-    <value>Wehren mit:</value>
+    <value>Zusammensetzung Wehre</value>
   </data>
   <data name="UI_Btn_Bearbeiten_GegenZus.Content" xml:space="preserve">
     <value>Wehren Bearbeiten</value>
@@ -591,6 +588,6 @@
     <value>-</value>
   </data>
   <data name="Model_Thing_Wert.Text" xml:space="preserve">
-    <value>Wert</value>
+    <value>Stufe</value>
   </data>
 </root>

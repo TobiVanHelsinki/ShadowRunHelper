@@ -39,10 +39,7 @@ namespace ShadowRunHelper.IO
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifySummoryChanged([CallerMemberName] String summoryName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(summoryName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(summoryName));
         }
 
         /// <summary>
@@ -56,94 +53,15 @@ namespace ShadowRunHelper.IO
             // Summorys_Aktualisieren();
         }
 
-        public async Task<bool> Summorys_Aktualisieren()
+        public async void Summorys_Aktualisieren()
         {
-            AutoResetEvent autoEvent = new AutoResetEvent(false);
-
-            Timer stateTimer = new Timer(noob, autoEvent, 500, 0);
-
-            System.Diagnostics.Debug.WriteLine("{0} Creating timer.", DateTime.Now.ToString("h:mm:ss.fff"));
-            autoEvent.WaitOne(500);
-            stateTimer.Dispose();
-            System.Diagnostics.Debug.WriteLine("{0} Deleting timer.", DateTime.Now.ToString("h:mm:ss.fff"));
-
             Summorys.Clear();
-
-            // system unauthorized abfangen
-            StorageFolder CharFolder;
-            
-            CharFolder = await getInternFolder();
-            if (CharFolder == null)
+            StorageFolder CharFolder = await getInternFolder();
+            foreach (var item in await CharIO.getListofChars(CharFolder))
             {
-                return false;
-            }
-
-            foreach (var item in await IO.CharIO.getListofChars(CharFolder))
-            {
-                item.Summory = item.ID.Replace('_', ' ');
-                item.Summory = item.Summory.Replace(Konstanten.DATEIENDUNG_CHAR, "");
-                item.Summory += " (" + item.DateCreated.Day + "." + item.DateCreated.Month +"."+ item.DateCreated.Year + " " + item.DateCreated.Hour + ":" + item.DateCreated.Minute +")";
                 Summorys.Add(item);
             }
-            return true;
-        }
-
-        private void noob(object state)
-        {
-            //System.Diagnostics.Debug.WriteLine("{0} Timer kommt.", DateTime.Now.ToString("h:mm:ss.fff"));
-        }
-
-        private string makeName(CharHolder SaveChar, Ort SpeicherOrt)
-        {
-            String temp_Alias = "";
-            String temp_Char_Typ = "";
-            String temp_Karma = "";
-            String temp_Runs = "";
-            try
-            {
-                temp_Alias = SaveChar.Person.Alias;
-                if (temp_Alias == "")
-                {
-                    throw new NullReferenceException();
-                }
-            }
-            catch (NullReferenceException) { temp_Alias = "$ohne Namen$"; }
-            try
-            {
-                temp_Char_Typ = SaveChar.Person.Char_Typ;
-                if (temp_Char_Typ == "")
-                {
-                    throw new NullReferenceException();
-                }
-            }
-            catch (NullReferenceException) { temp_Char_Typ = "$ohne Beruf$"; }
-            try
-            {
-                temp_Karma = SaveChar.Person.Karma_Gesamt.ToString();
-                if (temp_Karma == "")
-                {
-                    throw new NullReferenceException();
-                }
-            }
-            catch (NullReferenceException) { temp_Karma = "$ohne Erfolg$"; }
-            try
-            {
-                temp_Runs = SaveChar.Person.Runs.ToString();
-                if (temp_Runs == "")
-                {
-                    throw new NullReferenceException();
-                }
-            }
-            catch (NullReferenceException) { temp_Runs = "$ohne Erfolg$"; }
-
-            if (SpeicherOrt == Ort.InternSpeichern)
-            {
-                return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + Konstanten.DATEIENDUNG_CHAR;
-            }
-            else
-            {
-                return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + "_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second + Konstanten.DATEIENDUNG_CHAR;
-            }
+            // system unauthorized abfangen?
         }
 
         private static async Task<StorageFolder> getInternFolder()
@@ -156,7 +74,7 @@ namespace ShadowRunHelper.IO
                 if (Optionen.ORDNERMODE)
                 {
                     path = Optionen.ORDNERMODE_PFAD;
-                    CharFolder = await Windows.Storage.StorageFolder.GetFolderFromPathAsync(path);
+                    CharFolder = await StorageFolder.GetFolderFromPathAsync(path);
                 }
                 else
                 {
@@ -203,14 +121,14 @@ namespace ShadowRunHelper.IO
             return CharFolder;
         }
 
-        public async Task<CharHolder> LadenIntern(string id)
+        public async Task<CharHolder> LadenIntern(string fileName)
         {
             StorageFolder CharFolder;
             StorageFile CharFile;
             CharFolder = await getInternFolder();
             try
             {
-                CharFile = await CharFolder.GetFileAsync(id);
+                CharFile = await CharFolder.GetFileAsync(fileName);
             }
             catch (Exception)
             {
@@ -244,17 +162,17 @@ namespace ShadowRunHelper.IO
         public async Task<string> SpeichernIntern(CharHolder SaveChar)
         {
             StorageFolder SaveFolder = await getInternFolder();
-            String SaveName = makeName(SaveChar, Ort.InternSpeichern);
+            String SaveName = SaveChar.MakeName(false);
             return await Speichern(SaveChar, SaveFolder, SaveName);
         }
 
-        public async Task<string> SpeichernExtern(string id)
+        public async Task<string> SpeichernExtern(string filename)
         {
-            CharHolder SaveChar = await LadenIntern(id);
+            CharHolder SaveChar = await LadenIntern(filename);
             String SaveName = "";
             try
             {
-                SaveName = makeName(SaveChar, Ort.ExternSpeichern);
+                SaveName = SaveChar.MakeName(true);
             }
             catch (Exception)
             {
@@ -278,13 +196,13 @@ namespace ShadowRunHelper.IO
             return SaveName;
         }
 
-        public async void Lösche(string id)
+        public async void Lösche(string filename)
         {
             StorageFolder CharFolder;
             CharFolder = await getInternFolder();
             try
             {
-                StorageFile toDelFile = await CharFolder.GetFileAsync(id);
+                StorageFile toDelFile = await CharFolder.GetFileAsync(filename);
                 IO.CharIO.Löschen(toDelFile);
             }
             catch (Exception)
@@ -320,7 +238,7 @@ namespace ShadowRunHelper.IO
         {
             foreach (var item in Summorys)
             {
-                Lösche(item.ID);
+                Lösche(item.strFileName);
             }
             this.Summorys_Aktualisieren();
         }

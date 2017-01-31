@@ -28,11 +28,11 @@ namespace ShadowRunHelper
         {
             this.Verwaltung = null;
         }
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
 
             ViewModel = (CharViewModel)e.Parameter;
-            await Verwaltung.Summorys_Aktualisieren();
+            Verwaltung.Summorys_Aktualisieren();
         }
 
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
@@ -53,7 +53,7 @@ namespace ShadowRunHelper
 
         private void Click_Löschen(object sender, RoutedEventArgs e)
         {
-            string id = ((CharSummory)((Button)sender).DataContext).ID;
+            string id = ((CharSummory)((Button)sender).DataContext).strFileName;
             Verwaltung.Lösche(id);
         }
 
@@ -65,7 +65,7 @@ namespace ShadowRunHelper
         private async void Click_Laden(object sender, RoutedEventArgs e)
         {
             ProgressRing_Char.IsActive = true;
-            string id = ((CharSummory)((Button)sender).DataContext).ID;
+            string id = ((CharSummory)((Button)sender).DataContext).strFileName;
             ViewModel.Current = null;
             
             ViewModel.Current = await Verwaltung.LadenIntern(id); //todo try catch?
@@ -89,7 +89,7 @@ namespace ShadowRunHelper
 
         private async void Click_Speichern_Datei(object sender, RoutedEventArgs e)
         {
-            string id = ((CharSummory)((Button)sender).DataContext).ID;
+            string id = ((CharSummory)((Button)sender).DataContext).strFileName;
             await Verwaltung.SpeichernExtern(id);
         }
     }

@@ -84,7 +84,7 @@ namespace ShadowRunHelper.IO
                     if (item.FileType == Konstanten.DATEIENDUNG_CHAR)
                     {
                         Windows.Storage.FileProperties.BasicProperties basicProperties = await item.GetBasicPropertiesAsync();
-                        templist.Add(new CharSummory(item.Name, "", basicProperties.DateModified));
+                        templist.Add(new CharSummory(item.Name, basicProperties.DateModified));
                     }
                 }
             }

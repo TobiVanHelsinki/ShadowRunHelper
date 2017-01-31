@@ -12,9 +12,11 @@ namespace ShadowRunHelper.UI.Edit
         public Thing Data;
         //public ObservableCollection<CharThing> lstAll;
         public List<string> MyStringOptions { get; set; }
+        //public List<TextBox> CurrentTextBoxes { get; set; }
 
         public Edit_Dialog(Thing data)
         {
+            //CurrentTextBoxes = new List<TextBox>();
             this.Data = data;
             this.InitializeComponent();
         }
@@ -30,10 +32,11 @@ namespace ShadowRunHelper.UI.Edit
             switch (Data.ThingType)
             {
                 case ThingDefs.Handlung:
-                    EditType.ContentTemplate = Handlung;
+                    //EditType.ContentTemplate = Handlung;
+                    Wert.IsEnabled = false;
                     break;
                 case ThingDefs.Fertigkeit:
-                    EditType.ContentTemplate = Fertigkeit;
+                    //EditType.ContentTemplate = Fertigkeit;
                     break;
                 case ThingDefs.Item:
                     EditType.ContentTemplate = Item;
@@ -48,19 +51,20 @@ namespace ShadowRunHelper.UI.Edit
                     EditType.ContentTemplate = Implantat;
                     break;
                 case ThingDefs.Vorteil:
-                    EditType.ContentTemplate = Vorteil;
+                    EditType.ContentTemplate = Eigenschaft;
                     break;
                 case ThingDefs.Nachteil:
-                    EditType.ContentTemplate = Nachteil;
+                    EditType.ContentTemplate = Eigenschaft;
                     break;
                 case ThingDefs.Connection:
                     EditType.ContentTemplate = Connection;
                     break;
                 case ThingDefs.Sin:
-                    EditType.ContentTemplate = Sin;
+                    //EditType.ContentTemplate = Sin;
                     break;
                 case ThingDefs.Attribut:
-                    EditType.ContentTemplate = Attribut;
+                    //EditType.ContentTemplate = Attribut;
+                    Wert.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     break;
                 case ThingDefs.Nahkampfwaffe:
                     EditType.ContentTemplate = Nahkampfwaffe;
@@ -75,8 +79,10 @@ namespace ShadowRunHelper.UI.Edit
                     EditType.ContentTemplate = CyberDeck;
                     break;
                 case ThingDefs.Vehikel:
+                    EditType.ContentTemplate = Vehikel;
                     break;
                 case ThingDefs.Panzerung:
+                    EditType.ContentTemplate = Panzerung;
                     break;
                 default:
                     break;

@@ -118,7 +118,7 @@ namespace ShadowRunHelper
         private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            if (Optionen.SAVE_CHAR_ON_EXIT)
+            if (Optionen.SAVE_CHAR_ON_EXIT && ViewModel.currentState != TCharState.EMPTY_CHAR)
             {
                 try
                 {

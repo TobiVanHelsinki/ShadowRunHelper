@@ -62,7 +62,7 @@ namespace ShadowRunHelper
             {
                 await new Edit_Person(ViewModel.Current.Person).ShowAsync();
             }
-            else if (Tag != "")
+            else if (Tag != null)
             {
                 Thing Attribute = null;
                 switch (Tag)
@@ -110,7 +110,6 @@ namespace ShadowRunHelper
                 try
                 {
                     await new Edit_Dialog(((Thing)((Button)sender).DataContext)).ShowAsync();
-
                 }
                 catch (Exception)
                 {

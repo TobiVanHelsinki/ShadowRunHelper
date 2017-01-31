@@ -127,36 +127,36 @@ namespace ShadowRunHelper
             }
         }
 
-        private void BezeichnerTextBlock_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            if (((TextBlock)sender).DataContext == null)
-            {
-                ((TextBlock)sender).DataContext = null;
-                ((Grid)((TextBlock)sender).Parent).DataContext = null;
-                var Temp = Zus_ListVIew.IndexFromContainer((Grid)((TextBlock)sender).Parent);
-                Temp = 6;
-                //((List<KeyValuePair<Thing, string>>)Zus_ListVIew.ItemsSource).inde
-               ((TextBlock)sender).DataContext= lstThings[Temp];
-                //return;
-            }
-            if (((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value == "")
-            {
-                ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Key.Bezeichner;
-            }
-            else
-            {
-                ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value;
-            }
-        }
+        //private void BezeichnerTextBlock_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        //{
+        //    if (((TextBlock)sender).DataContext == null)
+        //    {
+        //        ((TextBlock)sender).DataContext = null;
+        //        ((Grid)((TextBlock)sender).Parent).DataContext = null;
+        //        var Temp = Zus_ListVIew.IndexFromContainer((Grid)((TextBlock)sender).Parent);
+        //        Temp = 6;
+        //        //((List<KeyValuePair<Thing, string>>)Zus_ListVIew.ItemsSource).inde
+        //       ((TextBlock)sender).DataContext= lstThings[Temp];
+        //        //return;
+        //    }
+        //    if (((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value == "")
+        //    {
+        //        ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Key.Bezeichner;
+        //    }
+        //    else
+        //    {
+        //        ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value;
+        //    }
+        //}
 
-        private void WertTextBlock_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            if (((TextBlock)sender).DataContext == null)
-            {
-                return;
-            }
-              ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Key.GetValue(((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value).ToString();
-        }
+        //private void WertTextBlock_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        //{
+        //    if (((TextBlock)sender).DataContext == null)
+        //    {
+        //        return;
+        //    }
+        //      ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Key.GetValue(((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value).ToString();
+        //}
 
         
     }

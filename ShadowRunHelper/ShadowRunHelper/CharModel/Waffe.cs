@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Waffe : Item
+    public abstract class Waffe : Item
     {
         private double pool = 0;
         public double Pool
@@ -42,11 +42,6 @@
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Waffe()
-        {
-            this.ThingType = ThingDefs.UndefTemp;
         }
     }
 }
