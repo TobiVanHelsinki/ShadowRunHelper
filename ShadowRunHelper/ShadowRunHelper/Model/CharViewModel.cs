@@ -8,15 +8,15 @@ namespace ShadowRunHelper.Model
     public class CharViewModel : INotifyPropertyChanged
     {
         internal TCharState currentState;
-        private Model.CharHolder _CurrentChar;
-        public Model.CharHolder CurrentChar
+        private Model.CharHolder current;
+        public Model.CharHolder Current
         {
-            get { return this._CurrentChar; }
+            get { return this.current; }
             set
             {
-                if (value != this._CurrentChar)
+                if (value != this.current)
                 {
-                    this._CurrentChar = value;
+                    this.current = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -25,14 +25,14 @@ namespace ShadowRunHelper.Model
    
         public CharViewModel()
         {
-            currentState = TCharState.EMPTY;
-            _CurrentChar = new Model.CharHolder();
+            currentState = TCharState.EMPTY_CHAR;
+            current = new Model.CharHolder();
         }
 
         public CharViewModel(Model.CharHolder x_current)
         {
-            currentState = TCharState.IN_USE;
-            _CurrentChar = x_current;
+            currentState = TCharState.NEW_CHAR;
+            current = x_current;
         }
 
 

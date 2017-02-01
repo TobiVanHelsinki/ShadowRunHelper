@@ -7,8 +7,9 @@ namespace ShadowRunHelper
 {
     public enum TCharState
     {
-        EMPTY = 0,
-        IN_USE = 1,
+        EMPTY_CHAR = 0,
+        LOAD_CHAR = 1,
+        NEW_CHAR = 2,
     }
     public enum ThingDefs
     {
