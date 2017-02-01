@@ -61,9 +61,7 @@ namespace ShadowRunHelper
 
         private void Click_Löschen_Alles(object sender, RoutedEventArgs e)
         {
-            ViewModel.Current = null;
-
-            //Verwaltung.LöscheAlles();
+            Verwaltung.LöscheAlles();
         }
 
         private async void Click_Laden(object sender, RoutedEventArgs e)

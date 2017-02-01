@@ -28,7 +28,7 @@
         <Button x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" RelativePanel.AlignBottomWithPanel="True" Click="Click_Löschen_Alles" Style="{StaticResource Char_Control_Btn}"/>
 
 
-        <ProgressRing x:Name="ProgressRing_Char" RelativePanel.AlignTopWith="Char_Sum" RelativePanel.AlignBottomWith="Char_Sum" Width="{x:Bind Char_Sum.ActualWidth, Mode=OneWay}"/>
+        <ProgressRing x:Name="ProgressRing_Char" RelativePanel.AlignTopWith="Char_Sum" RelativePanel.AlignBottomWith="Char_Sum" Width="500"/>
         <ListView Name="Char_Sum" RelativePanel.Below="Einleitung2" ItemsSource="{x:Bind Verwaltung.Summorys, Mode=OneWay}" IsItemClickEnabled="True" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="data:CharSummory">

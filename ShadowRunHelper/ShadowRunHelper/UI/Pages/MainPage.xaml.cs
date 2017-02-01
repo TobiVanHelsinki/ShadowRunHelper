@@ -40,29 +40,27 @@ namespace ShadowRunHelper
 
         private void RefreshGui()
         {
-            if (ViewModel != null && ViewModel.Current != null)
-            {
-                enableUI();
-            }
-            else
-            {
-                disableUI();
-            }
+            ChangeUI( (ViewModel == null || ViewModel.Current == null) ? false : true) ;
         }
 
-        void disableUI() {
-            Header_Kontostand.IsEnabled = false;
-            XAML_Header_Schaden_G_Slider.IsEnabled = false;
-            XAML_Header_Schaden_K_Slider.IsEnabled = false;
-            XAML_Header_Schaden_M_Slider.IsEnabled = false;
-        }
-
-        void enableUI()
-        {
-            Header_Kontostand.IsEnabled = true;
-            XAML_Header_Schaden_G_Slider.IsEnabled = true;
-            XAML_Header_Schaden_K_Slider.IsEnabled = true;
-            XAML_Header_Schaden_M_Slider.IsEnabled = true;
+        void ChangeUI(bool bState) {
+            Header_Kontostand.IsEnabled = bState;
+            XAML_Header_Schaden_G_Slider.IsEnabled = bState;
+            XAML_Header_Schaden_K_Slider.IsEnabled = bState;
+            XAML_Header_Schaden_M_Slider.IsEnabled = bState;
+            Karma_Aktuell_Plus.IsEnabled = bState;
+            Karma_Aktuell_Minus.IsEnabled = bState;
+            Karma_Gesamt_Plus.IsEnabled = bState;
+            Karma_Gesamt_Minus.IsEnabled = bState;
+            Edge_Aktuell_Plus.IsEnabled = bState;
+            Edge_Aktuell_Minus.IsEnabled = bState;
+            Edge_Gesamt_Plus.IsEnabled = bState;
+            Edge_Gesamt_Minus.IsEnabled = bState;
+            Runs_Minus.IsEnabled = bState;
+            Runs_Plus.IsEnabled = bState;
+            Initiative_Plus.IsEnabled = bState;
+            Initiative_Minus.IsEnabled = bState;
+            Person2_Edit.IsEnabled = bState;
         }
 
         private void Hamburger_Click(object sender, RoutedEventArgs e)
@@ -76,7 +74,6 @@ namespace ShadowRunHelper
             {
                 if (ViewModel.Current != null)
                 {
-                    enableUI();
                     MyFrame.Navigate(typeof(Char), ViewModel);
                 }
                 Char.IsSelected = false;
@@ -161,7 +158,6 @@ namespace ShadowRunHelper
                 }
             }
         }
-
 
         private async void Edit_Click(object sender, RoutedEventArgs e)
         {
