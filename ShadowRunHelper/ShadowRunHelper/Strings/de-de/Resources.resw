@@ -158,10 +158,7 @@
     <comment>Einzahl</comment>
   </data>
   <data name="Model_Connection_Loyal.Text" xml:space="preserve">
-    <value>Loyal</value>
-  </data>
-  <data name="Model_Connection_Wert.Text" xml:space="preserve">
-    <value>Connection</value>
+    <value>Loyalität</value>
   </data>
   <data name="Model_CyberDeckM_.Text" xml:space="preserve">
     <value>CyberDecks</value>
@@ -661,5 +658,32 @@
   </data>
   <data name="Model_Thing_ThingTyp.Text" xml:space="preserve">
     <value>Eigenschaftstyp</value>
+  </data>
+  <data name="Model_Connection_Einfluss.Text" xml:space="preserve">
+    <value>Einfluss</value>
+  </data>
+  <data name="Model_CyberDeck_Angriff_o.Text" xml:space="preserve">
+    <value>Angriff Original</value>
+  </data>
+  <data name="Model_CyberDeck_Datenverarbeitung_o.Text" xml:space="preserve">
+    <value>Datenverarbeitung Original</value>
+  </data>
+  <data name="Model_CyberDeck_Firewall_o.Text" xml:space="preserve">
+    <value>Firewall Original</value>
+  </data>
+  <data name="Model_CyberDeck_Schleicher_o.Text" xml:space="preserve">
+    <value>Schleicher Original</value>
+  </data>
+  <data name="Model_Eigenschaft_Auswirkungen.Text" xml:space="preserve">
+    <value>Auswirkungen</value>
+  </data>
+  <data name="Model_Implantat_Kapazität.Text" xml:space="preserve">
+    <value>Kapazität</value>
+  </data>
+  <data name="Model_Panzerung_Kapazität.Text" xml:space="preserve">
+    <value>Kapazität</value>
+  </data>
+  <data name="Model_Waffe_Pool.Text" xml:space="preserve">
+    <value>Pool</value>
   </data>
 </root>

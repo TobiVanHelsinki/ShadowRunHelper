@@ -99,7 +99,7 @@ namespace ShadowRunHelper.CharModel
             strReturn += Delimiter;
             strReturn += res.GetString("Model_Item_Anzahl/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_Item_Besitzt/Text");
+            strReturn += res.GetString("Model_Item_Besitz/Text");
             strReturn += Delimiter;
             return strReturn;
         }

@@ -51,6 +51,8 @@ namespace ShadowRunHelper.CharModel
             string strReturn = base.ToCSV(Delimiter);
             strReturn += Loyal;
             strReturn += Delimiter;
+            //strReturn += Einfluss;
+            //strReturn += Delimiter;
             return strReturn;
         }
         public override string HeaderToCSV(string Delimiter)
@@ -59,6 +61,8 @@ namespace ShadowRunHelper.CharModel
             string strReturn = base.HeaderToCSV(Delimiter);
             strReturn += res.GetString("Model_Connection_Loyal/Text");
             strReturn += Delimiter;
+            //strReturn += res.GetString("Model_Connection_Einfluss/Text");
+            //strReturn += Delimiter;
             return strReturn;
         }
 

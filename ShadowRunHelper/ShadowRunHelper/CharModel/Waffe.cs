@@ -63,11 +63,11 @@ namespace ShadowRunHelper.CharModel
         {
             var res = ResourceLoader.GetForCurrentView();
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += res.GetString("Model_Waffe_PB/Text");
-            strReturn += Delimiter;
             strReturn += res.GetString("Model_Waffe_Pool/Text");
             strReturn += Delimiter;
             strReturn += res.GetString("Model_Waffe_SchadenTyp/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Waffe_PB/Text");
             strReturn += Delimiter;
             return strReturn;
         }

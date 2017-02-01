@@ -45,7 +45,7 @@ namespace ShadowRunHelper.CharModel
         }
         public override string ToCSV(string Delimiter)
         {
-            string strReturn = base.HeaderToCSV(Delimiter);
+            string strReturn = base.ToCSV(Delimiter);
             strReturn += Auswirkungen;
             strReturn += Delimiter;
             return strReturn;
