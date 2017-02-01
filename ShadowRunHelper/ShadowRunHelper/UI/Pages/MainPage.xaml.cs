@@ -25,11 +25,11 @@ namespace ShadowRunHelper
             base.OnNavigatedTo(e);
             ViewModel = (CharViewModel)e.Parameter;
 
-            if (ViewModel.currentState == TCharState.EMPTY_CHAR)
+            if (ViewModel.Current == null)
             {
                 MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
             }
-            else if (ViewModel.currentState == TCharState.IN_USE || ViewModel.currentState == TCharState.IN_USE)
+            else if (ViewModel.Current != null)
             {
                 MyFrame.Navigate(typeof(Char), ViewModel);
             }
@@ -63,7 +63,7 @@ namespace ShadowRunHelper
         {
             if (Char.IsSelected)
             {
-                if (ViewModel.currentState != TCharState.EMPTY_CHAR)
+                if (ViewModel.Current != null)
                 {
                     enableUI();
                     MyFrame.Navigate(typeof(Char), ViewModel);

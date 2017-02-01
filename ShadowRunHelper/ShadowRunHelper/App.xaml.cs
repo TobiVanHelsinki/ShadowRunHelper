@@ -68,7 +68,7 @@ namespace ShadowRunHelper
                     try
                     {
                         ViewModel = new CharViewModel(await VerwaltungTemp.LadenIntern(Optionen.LAST_CHAR_IS));
-                        ViewModel.currentState = TCharState.IN_USE;
+                        //ViewModel.currentState = TCharState.IN_USE;
                     }
                     catch (Exception)
                     {
@@ -118,7 +118,7 @@ namespace ShadowRunHelper
         private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            if (Optionen.SAVE_CHAR_ON_EXIT && ViewModel.currentState != TCharState.EMPTY_CHAR)
+            if (Optionen.SAVE_CHAR_ON_EXIT && ViewModel.Current!= null)
             {
                 try
                 {

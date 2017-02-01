@@ -49,7 +49,7 @@ namespace ShadowRunHelper
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
            ViewModel.Current = new CharHolder();
-            ViewModel.currentState = TCharState.IN_USE;
+            //ViewModel.currentState = TCharState.IN_USE;
            Frame.Navigate(typeof(Char), ViewModel);
         }
 
@@ -61,24 +61,26 @@ namespace ShadowRunHelper
 
         private void Click_Löschen_Alles(object sender, RoutedEventArgs e)
         {
-            Verwaltung.LöscheAlles();
+            ViewModel.Current = null;
+
+            //Verwaltung.LöscheAlles();
         }
 
         private async void Click_Laden(object sender, RoutedEventArgs e)
         {
             ProgressRing_Char.IsActive = true;
             string id = ((CharSummory)((Button)sender).DataContext).strFileName;
-            ViewModel.Current = null;
+            //ViewModel.Current = null;
             
             ViewModel.Current = await Verwaltung.LadenIntern(id); //todo try catch?
-            ViewModel.currentState = TCharState.IN_USE;
+            //ViewModel.currentState = TCharState.IN_USE;
             ProgressRing_Char.IsActive = false;
             Frame.Navigate(typeof(Char), ViewModel);
         }
 
         private async void Click_Speichern(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.currentState!=TCharState.EMPTY_CHAR)
+            if (ViewModel.Current!=null)
             {
                 await Verwaltung.SpeichernIntern(ViewModel.Current);
             }
