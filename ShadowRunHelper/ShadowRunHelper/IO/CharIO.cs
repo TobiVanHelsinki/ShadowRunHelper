@@ -67,7 +67,6 @@ namespace ShadowRunHelper.IO
             }
             catch (Exception)
             {
-                ReturnCharHolder = new CharHolder();
                 throw new Exception(ExceptionMessages.IO_Deserialize_Error);
             }
             return ReturnCharHolder;
