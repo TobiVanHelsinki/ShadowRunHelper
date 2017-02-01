@@ -68,7 +68,6 @@ namespace ShadowRunHelper
                     try
                     {
                         ViewModel.Current=(await VerwaltungTemp.LadenIntern(Optionen.LAST_CHAR_IS));
-                        //ViewModel.currentState = TCharState.IN_USE;
                     }
                     catch (Exception)
                     {

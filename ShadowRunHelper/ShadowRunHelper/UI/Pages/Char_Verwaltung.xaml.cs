@@ -19,16 +19,8 @@ namespace ShadowRunHelper
 
         public Char_Verwaltung()
         {
-            this.InitializeComponent();
-            ProgressRing_Char.IsActive = true;
-            this.Verwaltung = new IO.CharVerwaltung();
-            
-            ProgressRing_Char.IsActive = false;
-        }
-
-        ~Char_Verwaltung()
-        {
-            this.Verwaltung = null;
+            InitializeComponent();
+            Verwaltung = new IO.CharVerwaltung();
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -49,7 +41,6 @@ namespace ShadowRunHelper
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
            ViewModel.Current = new CharHolder();
-            //ViewModel.currentState = TCharState.IN_USE;
            Frame.Navigate(typeof(Char), ViewModel);
         }
 
@@ -68,10 +59,8 @@ namespace ShadowRunHelper
         {
             ProgressRing_Char.IsActive = true;
             string id = ((CharSummory)((Button)sender).DataContext).strFileName;
-            //ViewModel.Current = null;
             
             ViewModel.Current = await Verwaltung.LadenIntern(id); //todo try catch?
-            //ViewModel.currentState = TCharState.IN_USE;
             ProgressRing_Char.IsActive = false;
             Frame.Navigate(typeof(Char), ViewModel);
         }

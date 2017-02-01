@@ -13,13 +13,12 @@ namespace ShadowRunHelper
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public CharViewModel ViewModel { get; set; }
+        CharViewModel ViewModel { get; set; }
 
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
-
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -169,6 +168,5 @@ namespace ShadowRunHelper
                 await dialog.ShowAsync();
             }
         }
-
     }
 }
