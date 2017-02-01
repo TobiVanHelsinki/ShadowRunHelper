@@ -20,22 +20,33 @@ namespace ShadowRunHelper
             this.InitializeComponent();
         }
 
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            RefreshGui();
             ViewModel = (CharViewModel)e.Parameter;
+            ViewModel.PropertyChanged += (x, y) => RefreshGui();
 
-            if (ViewModel.Current == null)
-            {
-                MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
-            }
-            else if (ViewModel.Current != null)
+            if (ViewModel.Current != null)
             {
                 MyFrame.Navigate(typeof(Char), ViewModel);
             }
             else
             {
-                MyFrame.Navigate(typeof(Char), ViewModel);
+                MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
+            }
+        }
+
+        private void RefreshGui()
+        {
+            if (ViewModel != null && ViewModel.Current != null)
+            {
+                enableUI();
+            }
+            else
+            {
+                disableUI();
             }
         }
 
