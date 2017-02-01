@@ -193,5 +193,20 @@ namespace ShadowRunHelper.CharModel
             strReturn += Delimiter;
             return strReturn;
         }
+
+        internal virtual void FromCSV(Dictionary<string, string> dic)
+        {
+            //string[] neu = strArrayInput[3-4];
+            //if (strArrayInput.Length != 6)
+            //{
+            //    throw new ArgumentException();
+            //}
+            //Bezeichner = strArrayInput[0];
+            //Notiz = strArrayInput[1];
+            //Typ = strArrayInput[3];
+            //Wert = Int32.Parse(strArrayInput[4]);
+            //Zusatz = strArrayInput[5];
+        }
+        
     }
 }

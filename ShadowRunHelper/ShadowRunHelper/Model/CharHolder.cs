@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.CharController;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace ShadowRunHelper.Model
 {
@@ -287,27 +288,27 @@ namespace ShadowRunHelper.Model
             const string strNewLine = "\n";
             string strNew = "sep="+strDelimiter+strNewLine;
         
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Attribut, CTRLAttribut));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Connection, CTRLConnection));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.CyberDeck, CTRLCyberDeck));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Fernkampfwaffe, CTRLFernkampfwaffe));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Fertigkeit, CTRLFertigkeit));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Handlung, CTRLHandlung));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Implantat, CTRLImplantat));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Item, CTRLItem));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Kommlink, CTRLKommlink));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Munition, CTRLMunition));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Nachteil, CTRLNachteil));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Nahkampfwaffe, CTRLNahkampfwaffe));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Panzerung, CTRLPanzerung));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Programm, CTRLProgramm));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Sin, CTRLSin));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Vehikel, CTRLVehikel));
-            lstReturn.Add(Part(strDelimiter, strNewLine, strNew, ThingDefs.Vorteil, CTRLVorteil));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Attribut, CTRLAttribut));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Connection, CTRLConnection));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.CyberDeck, CTRLCyberDeck));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Fernkampfwaffe, CTRLFernkampfwaffe));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Fertigkeit, CTRLFertigkeit));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Handlung, CTRLHandlung));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Implantat, CTRLImplantat));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Item, CTRLItem));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Kommlink, CTRLKommlink));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Munition, CTRLMunition));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Nachteil, CTRLNachteil));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Nahkampfwaffe, CTRLNahkampfwaffe));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Panzerung, CTRLPanzerung));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Programm, CTRLProgramm));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Sin, CTRLSin));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Vehikel, CTRLVehikel));
+            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Vorteil, CTRLVorteil));
             return lstReturn;
         }
 
-        KeyValuePair<string, string> Part<T>(string strDelimiter, string strNewLine, string strNew, ThingDefs eDef, cController<T> CTRL) where T: Thing, new()
+        static KeyValuePair<string, string> PartExport<T>(string strDelimiter, string strNewLine, string strNew, ThingDefs eDef, cController<T> CTRL) where T: Thing, new()
         {
             string strTemp = strNew;
             if (CTRL.Data.Count >=1)
@@ -323,5 +324,44 @@ namespace ShadowRunHelper.Model
             return new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(eDef, true));
         }
 
+        public void FromCSV(char strDelimiter, string strImport)
+        {
+            const char strNewLine = '\n';
+            PartImport(strDelimiter, strNewLine, strImport, CTRLAttribut);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLConnection);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLCyberDeck);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLFernkampfwaffe);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLFertigkeit);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLHandlung);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLImplantat);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLItem);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLKommlink);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLMunition);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLNachteil);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLNahkampfwaffe);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLPanzerung);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLProgramm);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLSin);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLVehikel);
+            PartImport(strDelimiter, strNewLine, strImport, CTRLVorteil);
+        }
+
+        static void PartImport<T>(char strDelimiter, char strNewLine, string strReadFile, cController<T> CTRL) where T : Thing, new()
+        {
+            string[] Lines = strReadFile.Split(strNewLine);
+            string[] Headar = Lines[0].Split(strDelimiter);
+            for (int i = 1; i < Lines.Length; i++) //start at 1 to overjump first line
+            {
+                // key = propertie name, value = value
+                Dictionary<string, string> Dic = new Dictionary<string, string>();
+                int j = 0;
+                foreach (var itemstring in Lines[i].Split(strDelimiter))
+                {
+                    Dic.Add(Headar[j], itemstring);
+                    j++;
+                }
+                (CTRL.AddNewThing()).FromCSV(Dic);
+            }
+        }
     }
 }
