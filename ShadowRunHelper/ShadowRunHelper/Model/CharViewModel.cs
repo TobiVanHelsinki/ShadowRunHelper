@@ -5,15 +5,15 @@ namespace ShadowRunHelper.Model
 {
     public class CharViewModel : INotifyPropertyChanged
     {
-        private CharHolder current;
-        public CharHolder Current
+        private CharHolder _currentChar;
+        public CharHolder CurrentChar
         {
-            get { return this.current; }
+            get { return this._currentChar; }
             set
             {
-                if (value != this.current)
+                if (value != this._currentChar)
                 {
-                    this.current = value;
+                    this._currentChar = value;
                     NotifyPropertyChanged();
                 }
             }

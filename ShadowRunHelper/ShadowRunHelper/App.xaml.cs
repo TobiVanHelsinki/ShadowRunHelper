@@ -67,7 +67,7 @@ namespace ShadowRunHelper
                     IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
                     try
                     {
-                        ViewModel.Current=(await VerwaltungTemp.LadenIntern(Optionen.LAST_CHAR_IS));
+                        ViewModel.CurrentChar=(await VerwaltungTemp.LadenIntern(Optionen.LAST_CHAR_IS));
                     }
                     catch (Exception)
                     {
@@ -111,12 +111,12 @@ namespace ShadowRunHelper
         private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            if (Optionen.SAVE_CHAR_ON_EXIT && ViewModel.Current!= null)
+            if (Optionen.SAVE_CHAR_ON_EXIT && ViewModel.CurrentChar!= null)
             {
                 try
                 {
                     IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
-                    string savename = await VerwaltungTemp.SpeichernIntern(ViewModel.Current);
+                    string savename = await VerwaltungTemp.SpeichernIntern(ViewModel.CurrentChar);
 
                     Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
                     Optionen.LAST_CHAR_IS = savename;

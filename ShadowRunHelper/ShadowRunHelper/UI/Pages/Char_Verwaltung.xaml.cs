@@ -40,7 +40,7 @@ namespace ShadowRunHelper
 
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
-           ViewModel.Current = new CharHolder();
+           ViewModel.CurrentChar = new CharHolder();
            Frame.Navigate(typeof(Char), ViewModel);
         }
 
@@ -60,16 +60,16 @@ namespace ShadowRunHelper
             ProgressRing_Char.IsActive = true;
             string id = ((CharSummory)((Button)sender).DataContext).strFileName;
             
-            ViewModel.Current = await Verwaltung.LadenIntern(id); //todo try catch?
+            ViewModel.CurrentChar = await Verwaltung.LadenIntern(id); //todo try catch?
             ProgressRing_Char.IsActive = false;
             Frame.Navigate(typeof(Char), ViewModel);
         }
 
         private async void Click_Speichern(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.Current!=null)
+            if (ViewModel.CurrentChar!=null)
             {
-                await Verwaltung.SpeichernIntern(ViewModel.Current);
+                await Verwaltung.SpeichernIntern(ViewModel.CurrentChar);
             }
         }
 
@@ -87,7 +87,7 @@ namespace ShadowRunHelper
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             StorageFolder Folder = await IO.CharVerwaltung.getExternFolder();
-            foreach (var item in ViewModel.Current.TOCSV(";"))
+            foreach (var item in ViewModel.CurrentChar.TOCSV(";"))
             {
                 StorageFile File = await Folder.CreateFileAsync(item.Value+".csv", CreationCollisionOption.ReplaceExisting);
                 //System.ArgumentException

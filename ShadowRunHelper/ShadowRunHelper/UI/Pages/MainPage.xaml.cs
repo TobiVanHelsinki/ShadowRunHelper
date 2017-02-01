@@ -27,7 +27,7 @@ namespace ShadowRunHelper
             ViewModel = (CharViewModel)e.Parameter;
             ViewModel.PropertyChanged += (x, y) => RefreshGui();
 
-            if (ViewModel.Current != null)
+            if (ViewModel.CurrentChar != null)
             {
                 MyFrame.Navigate(typeof(Char), ViewModel);
             }
@@ -39,7 +39,7 @@ namespace ShadowRunHelper
 
         private void RefreshGui()
         {
-            ChangeUI( (ViewModel == null || ViewModel.Current == null) ? false : true) ;
+            ChangeUI( (ViewModel == null || ViewModel.CurrentChar == null) ? false : true) ;
         }
 
         void ChangeUI(bool bState) {
@@ -71,7 +71,7 @@ namespace ShadowRunHelper
         {
             if (Char.IsSelected)
             {
-                if (ViewModel.Current != null)
+                if (ViewModel.CurrentChar != null)
                 {
                     MyFrame.Navigate(typeof(Char), ViewModel);
                 }
@@ -94,66 +94,66 @@ namespace ShadowRunHelper
 
         private void Plus_Click(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.Current != null)
+            if (ViewModel.CurrentChar != null)
             {
                 string Controller_Name = ((string)((Button)sender).Name);
 
                 if (Controller_Name.Contains("Karma_Gesamt"))
                 {
-                    ViewModel.Current.Person.Karma_Gesamt++;
+                    ViewModel.CurrentChar.Person.Karma_Gesamt++;
                 }
                 if (Controller_Name.Contains("Karma_Aktuell"))
                 {
-                    ViewModel.Current.Person.Karma_Aktuell++;
+                    ViewModel.CurrentChar.Person.Karma_Aktuell++;
                 }
                 if (Controller_Name.Contains("Edge_Gesamt"))
                 {
-                    ViewModel.Current.Person.Edge_Gesamt++;
+                    ViewModel.CurrentChar.Person.Edge_Gesamt++;
                 }
                 if (Controller_Name.Contains("Edge_Aktuell"))
                 {
-                    ViewModel.Current.Person.Edge_Aktuell++;
+                    ViewModel.CurrentChar.Person.Edge_Aktuell++;
                 }
                 if (Controller_Name.Contains("Initiative"))
                 {
-                    ViewModel.Current.Person.Initiative++;
+                    ViewModel.CurrentChar.Person.Initiative++;
                 }
                 if (Controller_Name.Contains("Runs"))
                 {
-                    ViewModel.Current.Person.Runs++;
+                    ViewModel.CurrentChar.Person.Runs++;
                 }
             }
         }
 
         private void Minus_Click(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.Current != null)
+            if (ViewModel.CurrentChar != null)
             {
                 string Controller_Name = ((string)((Button)sender).Name);
 
                 if (Controller_Name.Contains("Karma_Gesamt"))
                 {
-                    ViewModel.Current.Person.Karma_Gesamt--;
+                    ViewModel.CurrentChar.Person.Karma_Gesamt--;
                 }
                 if (Controller_Name.Contains("Karma_Aktuell"))
                 {
-                    ViewModel.Current.Person.Karma_Aktuell--;
+                    ViewModel.CurrentChar.Person.Karma_Aktuell--;
                 }
                 if (Controller_Name.Contains("Edge_Gesamt"))
                 {
-                    ViewModel.Current.Person.Edge_Gesamt--;
+                    ViewModel.CurrentChar.Person.Edge_Gesamt--;
                 }
                 if (Controller_Name.Contains("Edge_Aktuell"))
                 {
-                    ViewModel.Current.Person.Edge_Aktuell--;
+                    ViewModel.CurrentChar.Person.Edge_Aktuell--;
                 }
                 if (Controller_Name.Contains("Initiative"))
                 {
-                    ViewModel.Current.Person.Initiative--;
+                    ViewModel.CurrentChar.Person.Initiative--;
                 }
                 if (Controller_Name.Contains("Runs"))
                 {
-                    ViewModel.Current.Person.Runs--;
+                    ViewModel.CurrentChar.Person.Runs--;
                 }
             }
         }
@@ -164,7 +164,7 @@ namespace ShadowRunHelper
 
             if (Controller_Name.Contains("Person2"))
             {
-                UI.Edit.Edit_Person2 dialog = new UI.Edit.Edit_Person2(ViewModel.Current.Person);
+                UI.Edit.Edit_Person2 dialog = new UI.Edit.Edit_Person2(ViewModel.CurrentChar.Person);
                 await dialog.ShowAsync();
             }
         }
