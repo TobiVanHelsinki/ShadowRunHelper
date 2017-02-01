@@ -25,7 +25,7 @@ namespace ShadowRunHelper.CharModel
             return target;
         }
 
-        public new void Reset()
+        public override void Reset()
         {
             base.Reset();
         }

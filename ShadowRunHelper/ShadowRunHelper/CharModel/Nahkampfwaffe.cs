@@ -1,4 +1,6 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿using Windows.ApplicationModel.Resources;
+
+namespace ShadowRunHelper.CharModel
 {
     public class Nahkampfwaffe : Waffe
     {
@@ -33,16 +35,25 @@
             return target;
         }
 
-        public new void Reset()
+        public override void Reset()
         {
             base.Reset();
             Reichweite = 0;
         }
 
-        public new string ToCSV(string Delimiter)
+        public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
             strReturn += Reichweite;
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
+        public override string HeaderToCSV(string Delimiter)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strReturn = base.HeaderToCSV(Delimiter);
+            strReturn += res.GetString("Model_Nahkampfwaffe_Reichweite/Text");
             strReturn += Delimiter;
             return strReturn;
         }

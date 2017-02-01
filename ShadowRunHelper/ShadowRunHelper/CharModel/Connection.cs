@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -38,19 +39,29 @@ namespace ShadowRunHelper.CharModel
             return target;
         }
 
-        public new void Reset()
+        public override void Reset()
         {
             //Alias = "";
             Loyal = 0;
             base.Reset();
         }
 
-        public new string ToCSV(string Delimiter)
+        public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
             strReturn += Loyal;
             strReturn += Delimiter;
             return strReturn;
         }
+        public override string HeaderToCSV(string Delimiter)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strReturn = base.HeaderToCSV(Delimiter);
+            strReturn += res.GetString("Model_Connection_Loyal/Text");
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
+
     }
 }

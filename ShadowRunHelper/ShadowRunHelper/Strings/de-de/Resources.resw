@@ -146,7 +146,7 @@
     <value>Attribute</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Model_Bezeichner.Text" xml:space="preserve">
+  <data name="Model_Thing_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="Model_ConnectionM_.Text" xml:space="preserve">
@@ -267,7 +267,7 @@
   <data name="Model_Nahkampfwaffe_Reichweite.Text" xml:space="preserve">
     <value>Reichweite</value>
   </data>
-  <data name="Model_Notiz.Text" xml:space="preserve">
+  <data name="Model_Thing_Notiz.Text" xml:space="preserve">
     <value>Notiz</value>
   </data>
   <data name="Model_Panzerung_.Text" xml:space="preserve">
@@ -295,7 +295,7 @@
   <data name="Model_Programm_Optionen.Text" xml:space="preserve">
     <value>Optionen</value>
   </data>
-  <data name="Model_Typ.Text" xml:space="preserve">
+  <data name="Model_Thing_Typ.Text" xml:space="preserve">
     <value>Typ</value>
   </data>
   <data name="Model_Vehikel_.Text" xml:space="preserve">
@@ -339,7 +339,7 @@
   <data name="Model_Waffe_Schaden.Text" xml:space="preserve">
     <value>Schaden</value>
   </data>
-  <data name="Model_Zusatz.Text" xml:space="preserve">
+  <data name="Model_Thing_Zusatz.Text" xml:space="preserve">
     <value>Zusatz</value>
   </data>
   <data name="Plus.Text" xml:space="preserve">
@@ -658,5 +658,8 @@
   </data>
   <data name="Model_Thing_Wert.Text" xml:space="preserve">
     <value>Stufe</value>
+  </data>
+  <data name="Model_Thing_ThingTyp.Text" xml:space="preserve">
+    <value>Eigenschaftstyp</value>
   </data>
 </root>

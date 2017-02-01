@@ -1,4 +1,6 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿using Windows.ApplicationModel.Resources;
+
+namespace ShadowRunHelper.CharModel
 {
     public class Kommlink : Item
     {
@@ -61,7 +63,7 @@
             return target;
         }
 
-        public new void Reset()
+        public override void Reset()
         {
             base.Reset();
             Programmanzahl = 0;
@@ -69,7 +71,7 @@
             Datenverarbeitung = 0;
         }
 
-        public new string ToCSV(string Delimiter)
+        public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
             strReturn += Programmanzahl;
@@ -77,6 +79,19 @@
             strReturn += Firewall;
             strReturn += Delimiter;
             strReturn += Datenverarbeitung;
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
+        public override string HeaderToCSV(string Delimiter)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strReturn = base.HeaderToCSV(Delimiter);
+            strReturn += res.GetString("Model_Kommlink_Programmanzahl/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Kommlink_Firewall/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Kommlink_Datenverarbeitung/Text");
             strReturn += Delimiter;
             return strReturn;
         }

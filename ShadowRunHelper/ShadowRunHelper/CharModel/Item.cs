@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
     public class Item : Thing
     {
-        //public override double GetValue(string ID = "")
-        //{
-        //    return Wert;
-        //}
+
         private bool? besitz = false;
         public bool? Besitz
         {
@@ -72,7 +70,7 @@ namespace ShadowRunHelper.CharModel
             return target;
         }
 
-        public new void Reset()
+        public override void Reset()
         {
             base.Reset();
             Aktiv = false;
@@ -81,7 +79,7 @@ namespace ShadowRunHelper.CharModel
         }
 
 
-        public new string ToCSV(string Delimiter)
+        public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
             strReturn += Aktiv;
@@ -89,6 +87,19 @@ namespace ShadowRunHelper.CharModel
             strReturn += Anzahl;
             strReturn += Delimiter;
             strReturn += Besitz;
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
+        public override string HeaderToCSV(string Delimiter)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strReturn = base.HeaderToCSV(Delimiter);
+            strReturn += res.GetString("Model_Item_Aktiv/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Item_Anzahl/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Item_Besitzt/Text");
             strReturn += Delimiter;
             return strReturn;
         }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -44,7 +45,7 @@ namespace ShadowRunHelper.CharModel
 
         }
 
-        public new string ToCSV(string Delimiter)
+        public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
             strReturn += Stoß;
@@ -54,5 +55,15 @@ namespace ShadowRunHelper.CharModel
             return strReturn;
         }
 
+        public override string HeaderToCSV(string Delimiter)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strReturn = base.HeaderToCSV(Delimiter);
+            strReturn += res.GetString("Model_Panzerung_Stoß/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Panzerung_Kapazität/Text");
+            strReturn += Delimiter;
+            return strReturn;
+        }
     }
 }

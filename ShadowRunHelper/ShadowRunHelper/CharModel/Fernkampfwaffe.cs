@@ -1,4 +1,6 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿using Windows.ApplicationModel.Resources;
+
+namespace ShadowRunHelper.CharModel
 {
     public class Fernkampfwaffe : Waffe
     {
@@ -47,19 +49,31 @@
             return target;
         }
 
-        public new void Reset()
+        public override void Reset()
         {
             Rückstoß = 0;
             Modi = "";
             base.Reset();
         }
 
-        public new string ToCSV(string Delimiter)
+        public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
             strReturn += Rückstoß;
             strReturn += Delimiter;
             strReturn += Modi;
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
+
+        public override string HeaderToCSV(string Delimiter)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strReturn = base.HeaderToCSV(Delimiter);
+            strReturn += res.GetString("Model_Fernkampfwaffe_Rückstoß/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Fernkampfwaffe_Modi/Text");
             strReturn += Delimiter;
             return strReturn;
         }

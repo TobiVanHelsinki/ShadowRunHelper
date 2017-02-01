@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -52,19 +53,30 @@ namespace ShadowRunHelper.CharModel
             return target;
         }
 
-        public new void Reset()
+        public override void Reset()
         {
             base.Reset();
             Kapazität = 0;
             Essenz = 0;
         }
 
-        public new string ToCSV(string Delimiter)
+        public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
             strReturn += Essenz;
             strReturn += Delimiter;
             strReturn += Kapazität;
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
+        public override string HeaderToCSV(string Delimiter)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strReturn = base.HeaderToCSV(Delimiter);
+            strReturn += res.GetString("Model_Implantat_Essenz/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Implantat_Kapazität/Text");
             strReturn += Delimiter;
             return strReturn;
         }

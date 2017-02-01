@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -106,12 +107,7 @@ namespace ShadowRunHelper.CharModel
             get { return this.GetValueList(); }
             private set {            }
         }
-
-        public Thing()
-        {
-
-        }
-
+        
         public virtual double GetValue([CallerMemberNameAttribute] string ID = "")
         {
             return Wert;
@@ -131,6 +127,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+
         public Thing Copy(Thing target)
         {
             if (target == null)
@@ -146,7 +143,7 @@ namespace ShadowRunHelper.CharModel
             target.Zusatz = Zusatz;
             return target;
         }
-        public void Reset()
+        public virtual void Reset()
         {
             Bezeichner = "";
             Notiz = "";
@@ -157,7 +154,7 @@ namespace ShadowRunHelper.CharModel
             Zusatz = "";
         }
 
-        public string ToCSV(string Delimiter)
+        public virtual string ToCSV(string Delimiter)
         {
             string strReturn = "";
             strReturn += Bezeichner;
@@ -173,6 +170,26 @@ namespace ShadowRunHelper.CharModel
             strReturn += Wert;
             strReturn += Delimiter;
             strReturn += Zusatz;
+            strReturn += Delimiter;
+            return strReturn;
+        }
+        public virtual string HeaderToCSV(string Delimiter)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strReturn = "";
+            strReturn += res.GetString("Model_Thing_Bezeichner/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Thing_Notiz/Text");
+            //strReturn += Delimiter;
+            //strReturn += Ordnung;
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Thing_ThingTyp/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Thing_Typ/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Thing_Wert/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Thing_Zusatz/Text");
             strReturn += Delimiter;
             return strReturn;
         }

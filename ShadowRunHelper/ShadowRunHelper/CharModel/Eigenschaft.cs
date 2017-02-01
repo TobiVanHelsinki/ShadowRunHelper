@@ -1,4 +1,6 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿using Windows.ApplicationModel.Resources;
+
+namespace ShadowRunHelper.CharModel
 {
     public abstract class Eigenschaft : Thing
     {
@@ -21,17 +23,32 @@
             if (target == null)
             {
                 throw new System.ArgumentNullException();
-                //target = new Eigenschaft();
             }
             base.Copy(target);
             target.Auswirkungen = Auswirkungen;
             return target;
         }
 
-        public new void Reset()
+        public override void Reset()
         {
             Auswirkungen = "";
             base.Reset();
+        }
+
+        public override string HeaderToCSV(string Delimiter)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strReturn = base.HeaderToCSV(Delimiter);
+            strReturn += res.GetString("Model_Eigenschaft_Auswirkungen/Text");
+            strReturn += Delimiter;
+            return strReturn;
+        }
+        public override string ToCSV(string Delimiter)
+        {
+            string strReturn = base.HeaderToCSV(Delimiter);
+            strReturn += Auswirkungen;
+            strReturn += Delimiter;
+            return strReturn;
         }
     }
 }

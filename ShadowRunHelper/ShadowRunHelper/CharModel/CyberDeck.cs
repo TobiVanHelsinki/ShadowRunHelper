@@ -139,7 +139,7 @@ namespace ShadowRunHelper.CharModel
             return target;
         }
 
-        public new void Reset()
+        public override void Reset()
         {
             base.Reset();
             Angriff = 0;
@@ -151,7 +151,7 @@ namespace ShadowRunHelper.CharModel
         }
 
 
-        public new string ToCSV(string Delimiter)
+        public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
             strReturn += Angriff;
@@ -165,6 +165,25 @@ namespace ShadowRunHelper.CharModel
             strReturn += Firewall_o;
             strReturn += Delimiter;
             strReturn += Datenverarbeitung_o;
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
+        public override string HeaderToCSV(string Delimiter)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strReturn = base.HeaderToCSV(Delimiter);
+            strReturn += res.GetString("Model_CyberDeck_Angriff/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_CyberDeck_Angriff_o/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_CyberDeck_Schleicher/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_CyberDeck_Schleicher_o/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_CyberDeck_Firewall_o/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_CyberDeck_Datenverarbeitung_o/Text");
             strReturn += Delimiter;
             return strReturn;
         }
