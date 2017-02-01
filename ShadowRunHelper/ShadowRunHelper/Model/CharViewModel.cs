@@ -3,8 +3,6 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 namespace ShadowRunHelper.Model
 {
-
-
     public class CharViewModel : INotifyPropertyChanged
     {
         private CharHolder current;
@@ -21,32 +19,10 @@ namespace ShadowRunHelper.Model
             }
         }
 
-   
-        public CharViewModel()
-        {
-            current = new Model.CharHolder();
-            current = null;
-            //currentState = TCharState.EMPTY_CHAR;
-        }
-
-        public CharViewModel(Model.CharHolder x_current)
-        {
-            current = x_current;
-            //currentState = TCharState.IN_USE;
-        }
-
-
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        
-        
     }
 }
