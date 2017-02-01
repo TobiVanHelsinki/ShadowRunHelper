@@ -29,7 +29,7 @@ namespace ShadowRunHelper
             {
                 MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
             }
-            else if (ViewModel.currentState == TCharState.LOAD_CHAR || ViewModel.currentState == TCharState.NEW_CHAR)
+            else if (ViewModel.currentState == TCharState.IN_USE || ViewModel.currentState == TCharState.IN_USE)
             {
                 MyFrame.Navigate(typeof(Char), ViewModel);
             }

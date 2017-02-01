@@ -49,7 +49,7 @@ namespace ShadowRunHelper
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
            ViewModel.Current = new CharHolder();
-            ViewModel.currentState = TCharState.NEW_CHAR;
+            ViewModel.currentState = TCharState.IN_USE;
            Frame.Navigate(typeof(Char), ViewModel);
         }
 
@@ -71,7 +71,7 @@ namespace ShadowRunHelper
             ViewModel.Current = null;
             
             ViewModel.Current = await Verwaltung.LadenIntern(id); //todo try catch?
-            ViewModel.currentState = TCharState.LOAD_CHAR;
+            ViewModel.currentState = TCharState.IN_USE;
             ProgressRing_Char.IsActive = false;
             Frame.Navigate(typeof(Char), ViewModel);
         }

@@ -8,8 +8,7 @@ namespace ShadowRunHelper
     public enum TCharState
     {
         EMPTY_CHAR = 0,
-        LOAD_CHAR = 1,
-        NEW_CHAR = 2,
+        IN_USE = 1,
     }
     public enum ThingDefs
     {

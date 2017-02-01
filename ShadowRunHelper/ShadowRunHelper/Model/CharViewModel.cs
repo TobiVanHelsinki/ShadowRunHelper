@@ -31,7 +31,7 @@ namespace ShadowRunHelper.Model
 
         public CharViewModel(Model.CharHolder x_current)
         {
-            currentState = TCharState.NEW_CHAR;
+            currentState = TCharState.IN_USE;
             current = x_current;
         }
 
