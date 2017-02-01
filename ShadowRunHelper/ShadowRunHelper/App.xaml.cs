@@ -43,7 +43,7 @@ namespace ShadowRunHelper
         /// <param name="e">Details über Startanforderung und -prozess.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-
+            ViewModel = new CharViewModel();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -67,14 +67,12 @@ namespace ShadowRunHelper
                     IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
                     try
                     {
-                        ViewModel = new CharViewModel(await VerwaltungTemp.LadenIntern(Optionen.LAST_CHAR_IS));
+                        ViewModel.Current=(await VerwaltungTemp.LadenIntern(Optionen.LAST_CHAR_IS));
                         //ViewModel.currentState = TCharState.IN_USE;
                     }
                     catch (Exception)
                     {
-                        ViewModel = new CharViewModel();
                     }
-                    VerwaltungTemp = null;
                 }
                 // Den Frame im aktuellen Fenster platzieren
                 Window.Current.Content = rootFrame;
@@ -86,10 +84,6 @@ namespace ShadowRunHelper
                 // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
                 // übergeben werden
 
-                if (ViewModel == null)
-                {
-                    ViewModel = new CharViewModel();
-                }
                 rootFrame.Navigate(typeof(MainPage), ViewModel);
                
                
