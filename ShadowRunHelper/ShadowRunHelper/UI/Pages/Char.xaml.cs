@@ -46,7 +46,7 @@ namespace ShadowRunHelper
             Controller = (ThingDefs)test;
             try
             {
-                ViewModel.Current.Add(Controller);
+                ViewModel.CurrentChar.Add(Controller);
             }
             catch (WrongTypeException)
             {
@@ -60,7 +60,7 @@ namespace ShadowRunHelper
 
             if (Name.Contains("Person1"))
             {
-                await new Edit_Person(ViewModel.Current.Person).ShowAsync();
+                await new Edit_Person(ViewModel.CurrentChar.Person).ShowAsync();
             }
             else if (Tag != null)
             {
@@ -68,28 +68,28 @@ namespace ShadowRunHelper
                 switch (Tag)
                 {
                     case "Konsti":
-                        Attribute = ViewModel.Current.CTRLAttribut.Konsti;
+                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Konsti;
                         break;
                     case "Reaktion":
-                        Attribute = ViewModel.Current.CTRLAttribut.Reaktion;
+                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Reaktion;
                         break;
                     case "Intuition":
-                        Attribute = ViewModel.Current.CTRLAttribut.Intuition;
+                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Intuition;
                         break;
                     case "Staerke":
-                        Attribute = ViewModel.Current.CTRLAttribut.Staerke;
+                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Staerke;
                         break;
                     case "Willen":
-                        Attribute = ViewModel.Current.CTRLAttribut.Willen;
+                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Willen;
                         break;
                     case "Logik":
-                        Attribute = ViewModel.Current.CTRLAttribut.Logik;
+                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Logik;
                         break;
                     case "Geschick":
-                        Attribute = ViewModel.Current.CTRLAttribut.Geschick;
+                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Geschick;
                         break;
                     case "Charisma":
-                        Attribute = ViewModel.Current.CTRLAttribut.Charisma;
+                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Charisma;
                         break;
                     default:
                         break;
@@ -121,27 +121,27 @@ namespace ShadowRunHelper
         {
             if ((Thing)((Button)sender).DataContext != null)
             {
-                ViewModel.Current.Remove((Thing)((Button)sender).DataContext);
+                ViewModel.CurrentChar.Remove((Thing)((Button)sender).DataContext);
             }
         }
 
 
         private async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Wert);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.CurrentChar.lstThings, CharModel.Handlung.Mode.Wert);
             await dialog.ShowAsync();
 
         }
 
         private async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Grenze);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.CurrentChar.lstThings, CharModel.Handlung.Mode.Grenze);
             await dialog.ShowAsync();
         }
 
         private async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.Current.lstThings, CharModel.Handlung.Mode.Gegen);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.CurrentChar.lstThings, CharModel.Handlung.Mode.Gegen);
             await dialog.ShowAsync();
         }
 

@@ -48,8 +48,8 @@ namespace ShadowRunHelper
 
         private void Click_Erstellen(object sender, RoutedEventArgs e)
         {
-           ViewModel.Current = new CharHolder();
-            ViewModel.currentState = TCharState.NEW_CHAR;
+           ViewModel.CurrentChar = new CharHolder();
+            ViewModel.currentState = TCharState.IN_USE;
            Frame.Navigate(typeof(Char), ViewModel);
         }
 
@@ -68,19 +68,19 @@ namespace ShadowRunHelper
         {
             ProgressRing_Char.IsActive = true;
             string id = ((CharSummory)((Button)sender).DataContext).strFileName;
-            ViewModel.Current = null;
+            ViewModel.CurrentChar = null;
             
-            ViewModel.Current = await Verwaltung.LadenIntern(id); //todo try catch?
-            ViewModel.currentState = TCharState.LOAD_CHAR;
+            ViewModel.CurrentChar = await Verwaltung.LadenIntern(id); //todo try catch?
+            ViewModel.currentState = TCharState.IN_USE;
             ProgressRing_Char.IsActive = false;
             Frame.Navigate(typeof(Char), ViewModel);
         }
 
         private async void Click_Speichern(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.currentState!=TCharState.EMPTY_CHAR)
+            if (ViewModel.currentState!=TCharState.EMPTY)
             {
-                await Verwaltung.SpeichernIntern(ViewModel.Current);
+                await Verwaltung.SpeichernIntern(ViewModel.CurrentChar);
             }
         }
 
@@ -98,7 +98,7 @@ namespace ShadowRunHelper
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             StorageFolder Folder = await IO.CharVerwaltung.getExternFolder();
-            foreach (var item in ViewModel.Current.TOCSV(";"))
+            foreach (var item in ViewModel.CurrentChar.TOCSV(";"))
             {
                 StorageFile File = await Folder.CreateFileAsync(item.Value+".csv", CreationCollisionOption.ReplaceExisting);
                 //System.ArgumentException
