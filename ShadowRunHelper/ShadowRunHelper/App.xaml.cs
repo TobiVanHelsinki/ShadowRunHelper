@@ -15,7 +15,7 @@ namespace ShadowRunHelper
     sealed partial class App : Application
     {
 
-        public CharViewModel ViewModel { get; set; }
+        internal CharViewModel ViewModel { get; private set; }
         /// <summary>
         /// Initialisiert das Singletonanwendungsobjekt.  Dies ist die erste Zeile von erstelltem Code
         /// und daher das logische Äquivalent von main() bzw. WinMain().
