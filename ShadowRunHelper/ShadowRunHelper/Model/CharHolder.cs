@@ -156,17 +156,10 @@ namespace ShadowRunHelper.Model
             //lstThings.AddRange(CTRLHandlung.GetElementsForThingList()); // nötig?
         }
 
-        /// <summary>
-        /// Konstruktor nutzen, wenn Daten der Controller und Objekte bereits vorhanden, Parmas sind die ID der MultiController
-        /// </summary>
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         internal void Remove(Thing tToRemove)
@@ -281,6 +274,142 @@ namespace ShadowRunHelper.Model
             {
                 return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + "_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second + Konstanten.DATEIENDUNG_CHAR;
             }
+        }
+
+        /// <summary>
+        /// retval: List of Pairs: Key is Name for waht is at the string (attribut or cyberdeck orso)
+        /// </summary>
+        /// <param name="strDelimiter"></param>
+        /// <returns></returns>
+        /// 
+        public List<KeyValuePair<string, string>> TOCSV(string strDelimiter)
+        {
+            var lstReturn = new List<KeyValuePair<string, string>>();
+            const string strNewLine = "\n";
+            string strNew = "sep="+strDelimiter+strNewLine;
+            string strTemp = strNew;
+            //strTemp += "";
+            //strTemp += strNewLine;
+            foreach (var item in CTRLAttribut.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Attribut, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLFertigkeit.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Fertigkeit, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLFernkampfwaffe.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Fernkampfwaffe, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLNahkampfwaffe.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Nahkampfwaffe, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLPanzerung.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Panzerung, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLItem.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Item, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLCyberDeck.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.CyberDeck, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLKommlink.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Kommlink, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLVehikel.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Vehikel, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLProgramm.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Programm, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLMunition.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Munition, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLImplantat.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Implantat, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLVorteil.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Vorteil, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLNachteil.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Nachteil, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLConnection.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Connection, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLSin.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Sin, true)));
+            strTemp = strNew;
+            foreach (var item in CTRLHandlung.Data)
+            {
+                strTemp += item.ToCSV(strDelimiter);
+                strTemp += strNewLine;
+            }
+            lstReturn.Add(new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(ThingDefs.Handlung, true)));
+
+            return lstReturn;
         }
 
     }

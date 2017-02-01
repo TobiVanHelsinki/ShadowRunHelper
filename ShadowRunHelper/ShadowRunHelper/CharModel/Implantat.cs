@@ -58,5 +58,16 @@ namespace ShadowRunHelper.CharModel
             Kapazität = 0;
             Essenz = 0;
         }
+
+        public new string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Essenz;
+            strReturn += Delimiter;
+            strReturn += Kapazität;
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
     }
 }

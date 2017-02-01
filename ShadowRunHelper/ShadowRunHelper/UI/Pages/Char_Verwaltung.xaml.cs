@@ -1,9 +1,11 @@
-﻿using Windows.System;
+﻿using System;
 using ShadowRunHelper.Model;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls.Primitives;
+using System.Collections.Generic;
+using Windows.Storage;
 
 namespace ShadowRunHelper
 {
@@ -91,6 +93,17 @@ namespace ShadowRunHelper
         {
             string id = ((CharSummory)((Button)sender).DataContext).strFileName;
             await Verwaltung.SpeichernExtern(id);
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            StorageFolder Folder = await IO.CharVerwaltung.getExternFolder();
+            foreach (var item in ViewModel.Current.TOCSV(";"))
+            {
+                StorageFile File = await Folder.CreateFileAsync(item.Value+".csv", CreationCollisionOption.ReplaceExisting);
+                //System.ArgumentException
+                await FileIO.WriteTextAsync(File, item.Key,Windows.Storage.Streams.UnicodeEncoding.Utf8);
+            }
         }
     }
 }

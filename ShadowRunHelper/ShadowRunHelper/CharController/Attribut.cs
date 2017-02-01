@@ -9,8 +9,8 @@ namespace ShadowRunHelper.CharController
 {
     public class cAttributController : cController<Attribut>
     {
-        //[System.Runtime.Serialization.IgnoreDataMember] //cause sometimes an very übel Bug
-        //public new ObservableCollection<Attribut> Data; //cause sometimes an very übel Bug
+        [System.Runtime.Serialization.IgnoreDataMember] //cause sometimes an very übel Bug
+        public new ObservableCollection<Attribut> Data; //cause sometimes an very übel Bug
 
         public Attribut Konsti;// those have to point at a sepcific list element
         public Attribut Geschick;
@@ -140,7 +140,18 @@ namespace ShadowRunHelper.CharController
             Willen.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); };
             Essenz.PropertyChanged += (x, y) => RefreshLimitS();
             Data = new ObservableCollection<Attribut>();
+            Data.CollectionChanged += Data_CollectionChanged;
             RefreshDataList();
+        }
+        bool m_MutexDataColectionChange = false;
+        private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (!m_MutexDataColectionChange && e.Action == NotifyCollectionChangedAction.Add && Data.Count >= 12)
+            {
+                m_MutexDataColectionChange = true;
+                RefreshDataList();
+                m_MutexDataColectionChange = false;
+            }
         }
 
         public new Attribut AddNewThing()

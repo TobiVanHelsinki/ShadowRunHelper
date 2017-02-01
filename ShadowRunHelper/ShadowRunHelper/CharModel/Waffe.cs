@@ -43,5 +43,17 @@
                 }
             }
         }
+
+        public new string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Pool;
+            strReturn += Delimiter;
+            strReturn += SchadenTyp;
+            strReturn += Delimiter;
+            strReturn += PB;
+            strReturn += Delimiter;
+            return strReturn;
+        }
     }
 }

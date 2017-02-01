@@ -158,5 +158,29 @@
             Sensor = 0;
             Sitze = 0;
         }
+
+        public new string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Beschleunigung;
+            strReturn += Delimiter;
+            strReturn += Geschwindigkeit;
+            strReturn += Delimiter;
+            strReturn += Gewicht;
+            strReturn += Delimiter;
+            strReturn += Handling;
+            strReturn += Delimiter;
+            strReturn += Panzerung;
+            strReturn += Delimiter;
+            strReturn += Rumpf;
+            strReturn += Delimiter;
+            strReturn += Pilot;
+            strReturn += Delimiter;
+            strReturn += Sensor;
+            strReturn += Delimiter;
+            strReturn += Sitze;
+            strReturn += Delimiter;
+            return strReturn;
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace ShadowRunHelper.IO
     {
         private static void CopyAttribute(CharModel.Attribut Target, ShadowRunHelper1_3.CharModel.Attribut Source)
         {
-            Target.Ordnung = Source.Ordnung;
+            //Target.Ordnung = Source.Ordnung;
             Target.Bezeichner = Source.Bezeichner;
             Target.Wert = Source.Wert;
             Target.Typ = Source.Typ;
@@ -27,7 +27,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.FertigkeitController)
             {
                 var temp = ReturnCharHolder.CTRLFertigkeit.AddNewThing();
-                temp.Ordnung = item.Data.Ordnung;
+                //temp.Ordnung = item.Data.Ordnung;
                 temp.Bezeichner = item.Data.Bezeichner;
                 temp.Wert = item.Data.Wert;
                 temp.Typ = item.Data.Typ;
@@ -73,7 +73,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.ItemController)
             {
                 var temp = ReturnCharHolder.CTRLItem.AddNewThing();
-                temp.Ordnung = item.Data.Ordnung;
+                //temp.Ordnung = item.Data.Ordnung;
                 temp.Bezeichner = item.Data.Bezeichner;
                 temp.Wert = item.Data.Wert;
                 temp.Typ = item.Data.Typ;
@@ -88,7 +88,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.ProgrammController)
             {
                 var temp = ReturnCharHolder.CTRLProgramm.AddNewThing();
-                temp.Ordnung = item.Data.Ordnung;
+                //temp.Ordnung = item.Data.Ordnung;
                 temp.Bezeichner = item.Data.Bezeichner;
                 temp.Wert = item.Data.Wert;
                 temp.Typ = item.Data.Typ;
@@ -104,7 +104,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.MunitionController)
             {
                 var temp = ReturnCharHolder.CTRLMunition.AddNewThing();
-                temp.Ordnung = item.Data.Ordnung;
+                //temp.Ordnung = item.Data.Ordnung;
                 temp.Bezeichner = item.Data.Bezeichner;
                 temp.Wert = item.Data.Wert;
                 temp.Typ = item.Data.Typ;
@@ -119,7 +119,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.ImplantatController)
             {
                 var temp = ReturnCharHolder.CTRLImplantat.AddNewThing();
-                temp.Ordnung = item.Data.Ordnung;
+                //temp.Ordnung = item.Data.Ordnung;
                 temp.Bezeichner = item.Data.Bezeichner;
                 temp.Wert = item.Data.Wert;
                 temp.Typ = item.Data.Typ;
@@ -136,7 +136,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.VorteilController)
             {
                 var temp = ReturnCharHolder.CTRLVorteil.AddNewThing();
-                temp.Ordnung = item.Data.Ordnung;
+                //temp.Ordnung = item.Data.Ordnung;
                 temp.Bezeichner = item.Data.Bezeichner;
                 temp.Wert = item.Data.Wert;
                 temp.Typ = item.Data.Typ;
@@ -149,7 +149,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.NachteilController)
             {
                 var temp = ReturnCharHolder.CTRLNachteil.AddNewThing();
-                temp.Ordnung = item.Data.Ordnung;
+                //temp.Ordnung = item.Data.Ordnung;
                 temp.Bezeichner = item.Data.Bezeichner;
                 temp.Wert = item.Data.Wert;
                 temp.Typ = item.Data.Typ;
@@ -171,7 +171,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.SinController)
             {
                 var temp = ReturnCharHolder.CTRLSin.AddNewThing();
-                temp.Ordnung = item.Data.Ordnung;
+                //temp.Ordnung = item.Data.Ordnung;
                 temp.Bezeichner = item.Data.Bezeichner;
                 temp.Wert = item.Data.Wert;
                 temp.Typ = item.Data.Typ;
@@ -183,7 +183,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.NahkampfwaffeController.DataList)
             {
                 var temp = ReturnCharHolder.CTRLNahkampfwaffe.AddNewThing();
-                temp.Ordnung = item.Ordnung;
+                //temp.Ordnung = item.Ordnung;
                 temp.Bezeichner = item.Bezeichner;
                 temp.Wert = item.Wert;
                 temp.Typ = item.Typ;
@@ -202,7 +202,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.FernkampfwaffeController.DataList)
             {
                 var temp = ReturnCharHolder.CTRLFernkampfwaffe.AddNewThing();
-                temp.Ordnung = item.Ordnung;
+                //temp.Ordnung = item.Ordnung;
                 temp.Bezeichner = item.Bezeichner;
                 temp.Wert = item.Wert;
                 temp.Typ = item.Typ;
@@ -222,7 +222,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.KommlinkController.DataList)
             {
                 var temp = ReturnCharHolder.CTRLKommlink.AddNewThing();
-                temp.Ordnung = item.Ordnung;
+                //temp.Ordnung = item.Ordnung;
                 temp.Bezeichner = item.Bezeichner;
                 temp.Wert = item.Wert;
                 temp.Typ = item.Typ;
@@ -240,7 +240,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.CyberDeckController.DataList)
             {
                 var temp = ReturnCharHolder.CTRLCyberDeck.AddNewThing();
-                temp.Ordnung = item.Ordnung;
+                //temp.Ordnung = item.Ordnung;
                 temp.Bezeichner = item.Bezeichner;
                 temp.Wert = item.Wert;
                 temp.Typ = item.Typ;
@@ -264,7 +264,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.VehikelController.DataList)
             {
                 var temp = ReturnCharHolder.CTRLVehikel.AddNewThing();
-                temp.Ordnung = item.Ordnung;
+                //temp.Ordnung = item.Ordnung;
                 temp.Bezeichner = item.Bezeichner;
                 temp.Wert = item.Wert;
                 temp.Typ = item.Typ;
@@ -287,7 +287,7 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.PanzerungController.DataList)
             {
                 var temp = ReturnCharHolder.CTRLPanzerung.AddNewThing();
-                temp.Ordnung = item.Ordnung;
+                //temp.Ordnung = item.Ordnung;
                 temp.Bezeichner = item.Bezeichner;
                 temp.Wert = item.Wert;
                 temp.Typ = item.Typ;
@@ -335,7 +335,7 @@ namespace ShadowRunHelper.IO
             {
                 var temp = ReturnCharHolder.CTRLHandlung.AddNewThing();
                 temp.Bezeichner = item.Data.Bezeichner;
-                temp.Ordnung = item.Data.Ordnung;
+                //temp.Ordnung = item.Data.Ordnung;
                 temp.Typ = item.Data.Typ;
                 temp.Zusatz = item.Data.Zusatz;
                 temp.Notiz = item.Data.Notiz;

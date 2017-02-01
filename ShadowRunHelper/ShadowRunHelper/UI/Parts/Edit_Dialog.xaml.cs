@@ -64,7 +64,7 @@ namespace ShadowRunHelper.UI.Edit
                     break;
                 case ThingDefs.Attribut:
                     //EditType.ContentTemplate = Attribut;
-                    Wert.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    //Wert.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                     break;
                 case ThingDefs.Nahkampfwaffe:
                     EditType.ContentTemplate = Nahkampfwaffe;

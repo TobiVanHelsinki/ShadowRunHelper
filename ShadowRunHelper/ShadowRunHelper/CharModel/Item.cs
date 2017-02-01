@@ -79,5 +79,19 @@ namespace ShadowRunHelper.CharModel
             Anzahl = 0;
             Besitz = false;
         }
+
+
+        public new string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Aktiv;
+            strReturn += Delimiter;
+            strReturn += Anzahl;
+            strReturn += Delimiter;
+            strReturn += Besitz;
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
     }
 }

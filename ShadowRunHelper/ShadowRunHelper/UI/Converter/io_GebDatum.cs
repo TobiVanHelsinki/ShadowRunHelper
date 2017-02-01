@@ -21,7 +21,7 @@ namespace ShadowRunHelper.UI.Converter
             //TODO regionales datumsformat einführen
 
             return dateTemp.Date.ToString("dd.MM.yyyy");
-            }
+        }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             return (Type)value;

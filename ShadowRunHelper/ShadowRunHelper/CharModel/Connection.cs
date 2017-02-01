@@ -44,5 +44,13 @@ namespace ShadowRunHelper.CharModel
             Loyal = 0;
             base.Reset();
         }
+
+        public new string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Loyal;
+            strReturn += Delimiter;
+            return strReturn;
+        }
     }
 }

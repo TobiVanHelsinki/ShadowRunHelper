@@ -208,21 +208,18 @@
     <Compile Include="Ressourcen\Exceptions.cs" />
     <Compile Include="Ressourcen\Typen.cs" />
     <Compile Include="Ressourcen\Konstanten.cs" />
-    <Compile Include="UI\Converter\CB.cs" />
-    <Compile Include="UI\Converter\io_ListView.cs" />
-    <Compile Include="UI\Converter\o_IDWAhl.cs" />
-    <Compile Include="UI\Converter\i_char.cs" />
+    <Compile Include="UI\Converter\o_ThingList.cs" />
     <Compile Include="UI\Converter\io_GebDatum.cs" />
     <Compile Include="UI\Converter\o_ZahlenYen.cs" />
     <Compile Include="UI\Converter\o_ModelTyp.cs" />
     <Compile Include="UI\Converter\io_ZahlenDouble.cs" />
-    <Compile Include="UI\Edit\Edit_Dialog.xaml.cs">
+    <Compile Include="UI\Parts\Edit_Dialog.xaml.cs">
       <DependentUpon>Edit_Dialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Edit\Edit_Person.xaml.cs">
+    <Compile Include="UI\Parts\Edit_Person.xaml.cs">
       <DependentUpon>Edit_Person.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Edit\Edit_Person2.xaml.cs">
+    <Compile Include="UI\Parts\Edit_Person2.xaml.cs">
       <DependentUpon>Edit_Person2.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Parts\Auswahl.xaml.cs">
@@ -311,15 +308,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="UI\Edit\Edit_Dialog.xaml">
+    <Page Include="UI\Parts\Edit_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Edit\Edit_Person.xaml">
+    <Page Include="UI\Parts\Edit_Person.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Edit\Edit_Person2.xaml">
+    <Page Include="UI\Parts\Edit_Person2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -363,7 +360,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Parts\SplitViewStyles.xaml">
+    <Page Include="UI\Ressourcen\SplitViewStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

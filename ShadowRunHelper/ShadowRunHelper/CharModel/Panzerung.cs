@@ -44,5 +44,15 @@ namespace ShadowRunHelper.CharModel
 
         }
 
+        public new string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Stoß;
+            strReturn += Delimiter;
+            strReturn += Kapazität;
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
     }
 }

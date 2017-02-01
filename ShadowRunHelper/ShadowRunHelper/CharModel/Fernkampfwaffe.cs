@@ -53,5 +53,15 @@
             Modi = "";
             base.Reset();
         }
+
+        public new string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Rückstoß;
+            strReturn += Delimiter;
+            strReturn += Modi;
+            strReturn += Delimiter;
+            return strReturn;
+        }
     }
 }

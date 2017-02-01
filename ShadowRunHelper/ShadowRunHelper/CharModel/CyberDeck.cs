@@ -150,6 +150,24 @@ namespace ShadowRunHelper.CharModel
             Datenverarbeitung_o = 0;
         }
 
+
+        public new string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Angriff;
+            strReturn += Delimiter;
+            strReturn += Angriff_o;
+            strReturn += Delimiter;
+            strReturn += Schleicher;
+            strReturn += Delimiter;
+            strReturn += Schleicher_o;
+            strReturn += Delimiter;
+            strReturn += Firewall_o;
+            strReturn += Delimiter;
+            strReturn += Datenverarbeitung_o;
+            strReturn += Delimiter;
+            return strReturn;
+        }
     }
 
 }

@@ -23,7 +23,8 @@
 
 
         <Button Name="Btn_Neu" RelativePanel.Below="Char_Sum" x:Uid="UI_CharVerwaltung_Btn_Neu" Click="Click_Erstellen" Style="{StaticResource Char_Control_Btn}"/>
-        <Button x:Uid="UI_CharVerwaltung_Btn_Datei_Laden" RelativePanel.RightOf="Btn_Neu" RelativePanel.AlignTopWith="Btn_Neu" Click="Click_Laden_Datei" Style="{StaticResource Char_Control_Btn}"/>
+        <Button Name="Btn_DateiImport" x:Uid="UI_CharVerwaltung_Btn_Datei_Laden" RelativePanel.RightOf="Btn_Neu" RelativePanel.AlignTopWith="Btn_Neu" Click="Click_Laden_Datei" Style="{StaticResource Char_Control_Btn}"/>
+        <Button Content="TestExport" RelativePanel.RightOf="Btn_DateiImport" RelativePanel.AlignTopWith="Btn_DateiImport" Click="Button_Click" Style="{StaticResource Char_Control_Btn}"/>
         <Button x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" RelativePanel.AlignBottomWithPanel="True" Click="Click_Löschen_Alles" Style="{StaticResource Char_Control_Btn}"/>
 
 
@@ -45,7 +46,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Margin="5,2,5,2" Grid.Column="1" Text="{x:Bind Summory, Mode=OneWay}"/>
+                        <TextBlock Margin="5,2,5,2" Grid.Column="1" Text="{x:Bind strCharSummory, Mode=OneWay}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

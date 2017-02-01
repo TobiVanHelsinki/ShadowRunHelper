@@ -45,5 +45,13 @@ namespace ShadowRunHelper.CharModel
             base.Reset();
             Optionen = "";
         }
+
+        public new string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Optionen;
+            strReturn += Delimiter;
+            return strReturn;
+        }
     }
 }

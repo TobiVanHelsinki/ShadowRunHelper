@@ -38,5 +38,13 @@
             base.Reset();
             Reichweite = 0;
         }
+
+        public new string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Reichweite;
+            strReturn += Delimiter;
+            return strReturn;
+        }
     }
 }

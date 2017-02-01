@@ -8,9 +8,9 @@
     <conv:o_ZahlenYen x:Key="io_ZahlenYen"/>
     <conv:o_ModelTyp x:Key="o_ModelTyp"/>
     <conv:io_GebDatum x:Key="io_GebDatum"/>
-    <conv:i_char x:Key="i_char"/>
-    <conv:io_ListView x:Key="io_ListView"/>
-    <conv:o_IDWahl x:Key="o_IDWahl"/>
+    <!--<conv:i_char x:Key="i_char"/>-->
+    <!--<conv:io_ListView x:Key="io_ListView"/>-->
+    <conv:o_ThingList x:Key="o_ThingList"/>
 
     <Style TargetType="ScrollViewer" x:Key="ScrollViewer">
         <Setter Property="VerticalScrollMode" Value="Enabled"/>

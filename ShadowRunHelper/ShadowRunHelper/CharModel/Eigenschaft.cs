@@ -2,10 +2,6 @@
 {
     public abstract class Eigenschaft : Thing
     {
-        //public override double GetValue(string ID = "")
-        //{
-        //    return Wert;
-        //}
         private string auswirkungen = "";
         public string Auswirkungen
         {
@@ -19,12 +15,7 @@
                 }
             }
         }
-
-        public Eigenschaft()
-        {
-            this.ThingType = ThingDefs.Eigenschaft;
-        }
-
+        
         private Eigenschaft Copy(Eigenschaft target = null)
         {
             if (target == null)

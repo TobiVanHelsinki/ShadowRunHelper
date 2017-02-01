@@ -11,7 +11,7 @@ namespace ShadowRunHelper.UI.Converter
         {
             if (value == null)
             {
-                return "Fehler Test TODO";
+                return "";
             }
             string strTemp = value.ToString();
             if (strTemp != "")

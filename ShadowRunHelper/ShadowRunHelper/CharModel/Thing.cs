@@ -20,19 +20,19 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private int ordnung = 0;
-        public int Ordnung
-        {
-            get { return ordnung; }
-            set
-            {
-                if (value != this.ordnung)
-                {
-                    this.ordnung = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
+        //private int ordnung = 0;
+        //public int Ordnung
+        //{
+        //    get { return ordnung; }
+        //    set
+        //    {
+        //        if (value != this.ordnung)
+        //        {
+        //            this.ordnung = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
         private string bezeichner ="";
         public string Bezeichner
         {
@@ -139,7 +139,7 @@ namespace ShadowRunHelper.CharModel
             }
             target.Bezeichner = Bezeichner;
             target.Notiz = Notiz;
-            target.Ordnung = Ordnung;
+            //target.Ordnung = Ordnung;
             target.ThingType= ThingType;
             target.Typ= Typ;
             target.Wert = Wert;
@@ -150,12 +150,31 @@ namespace ShadowRunHelper.CharModel
         {
             Bezeichner = "";
             Notiz = "";
-            Ordnung = 0;
+            //Ordnung = 0;
             //ThingType = 0;
             Typ = "";
             Wert = 0;
             Zusatz = "";
         }
 
+        public string ToCSV(string Delimiter)
+        {
+            string strReturn = "";
+            strReturn += Bezeichner;
+            strReturn += Delimiter;
+            strReturn += Notiz;
+            //strReturn += Delimiter;
+            //strReturn += Ordnung;
+            strReturn += Delimiter;
+            strReturn += ThingType;
+            strReturn += Delimiter;
+            strReturn += Typ;
+            strReturn += Delimiter;
+            strReturn += Wert;
+            strReturn += Delimiter;
+            strReturn += Zusatz;
+            strReturn += Delimiter;
+            return strReturn;
+        }
     }
 }

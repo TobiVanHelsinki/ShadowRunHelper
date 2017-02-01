@@ -68,5 +68,17 @@
             Firewall = 0;
             Datenverarbeitung = 0;
         }
+
+        public new string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Programmanzahl;
+            strReturn += Delimiter;
+            strReturn += Firewall;
+            strReturn += Delimiter;
+            strReturn += Datenverarbeitung;
+            strReturn += Delimiter;
+            return strReturn;
+        }
     }
 }
