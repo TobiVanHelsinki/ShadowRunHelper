@@ -13,7 +13,7 @@ namespace ShadowRunHelper
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        CharViewModel ViewModel { get; set; }
+        ViewModel_Char ViewModel { get; set; }
 
         public MainPage()
         {
@@ -24,7 +24,7 @@ namespace ShadowRunHelper
         {
             base.OnNavigatedTo(e);
             RefreshGui();
-            ViewModel = (CharViewModel)e.Parameter;
+            ViewModel = (ViewModel_Char)e.Parameter;
             ViewModel.PropertyChanged += (x, y) => RefreshGui();
 
             if (ViewModel.CurrentChar != null)

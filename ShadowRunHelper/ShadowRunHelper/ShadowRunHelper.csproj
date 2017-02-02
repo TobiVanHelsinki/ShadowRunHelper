@@ -143,7 +143,7 @@
     <Compile Include="CharModel\Kommlink.cs" />
     <Compile Include="CharModel\Nahkampfwaffe.cs" />
     <Compile Include="CharModel\Waffe.cs" />
-    <Compile Include="IO\CharVerwaltung.cs" />
+    <Compile Include="IO\GeneralIO.cs" />
     <Compile Include="IO\CharIO.cs" />
     <Compile Include="CharModel\Panzerung.cs" />
     <Compile Include="CharModel\Item.cs" />
@@ -202,9 +202,9 @@
     <Compile Include="CharModel\Thing.cs" />
     <Compile Include="CharModel\Fertigkeit.cs" />
     <Compile Include="CharModel\Handlung.cs" />
-    <Compile Include="Model\CharViewModel.cs" />
+    <Compile Include="Model\ViewModel_Char.cs" />
     <Compile Include="Ressourcen\Optionen.cs" />
-    <Compile Include="Model\OptionViewModel.cs" />
+    <Compile Include="Model\ViewModel_Settings.cs" />
     <Compile Include="Ressourcen\Exceptions.cs" />
     <Compile Include="Ressourcen\Typen.cs" />
     <Compile Include="Ressourcen\Konstanten.cs" />

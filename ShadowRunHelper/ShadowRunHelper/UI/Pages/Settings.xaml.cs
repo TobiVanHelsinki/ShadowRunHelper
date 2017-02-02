@@ -10,15 +10,13 @@ namespace ShadowRunHelper
     /// </summary>
     public sealed partial class Settings : Page
     {
-        private OptionViewModel Optionen = new OptionViewModel();
+        private ViewModel_Settings Optionen = new ViewModel_Settings();
 
         bool OrdnerModeGeladen = false;
 
         public Settings()
         {
             this.InitializeComponent();
-            
-            
         }
 
         private async void UI_Optionen_OrdnerMode_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -27,9 +25,7 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    Windows.Storage.StorageFolder StoreFolder = await IO.CharVerwaltung.getExternFolder();
-                    Optionen.ORDNERMODE_PFAD = StoreFolder.Path;
-                    
+                    Optionen.ORDNERMODE_PFAD = (await IO.GeneralIO.FolderPicker()).Path;
                 }
                 catch (System.Exception)
                 {
@@ -45,7 +41,6 @@ namespace ShadowRunHelper
             {
                 UI_Optionen_OrdnerModePfad.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
-           
         }
 
         private void UI_Optionen_OrdnerMode_GotFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)

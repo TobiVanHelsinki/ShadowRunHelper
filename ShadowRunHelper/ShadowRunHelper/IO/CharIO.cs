@@ -1,18 +1,73 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using ShadowRunHelper.Model;
-using System.Collections.ObjectModel;
-
+using static ShadowRunHelper.IO.GeneralIO;
 namespace ShadowRunHelper.IO
 {
+    enum Place
+    {
+        //Intern = 1,
+        Extern = 2,
+        Roaming = 3,
+        Local = 3,
+    }
+
     internal static class CharIO
     {
-        private static string Char_to_JSON(CharHolder SaveChar)
+        internal async static Task<string> GetCurrentSavePath()
+        {
+            if (Optionen.ORDNERMODE)
+            {
+                if (Optionen.ORDNERMODE_PFAD == "")
+                {
+                    Optionen.ORDNERMODE_PFAD = (await FolderPicker()).Path;
+                }
+                return Optionen.ORDNERMODE_PFAD;
+            }
+            else
+            {
+                return Konstanten.CONTAINER_CHAR;
+            }
+
+        }
+
+        internal static Place GetCurrentSavePlace()
+        {
+            if (Optionen.ORDNERMODE)
+            {
+                return Place.Extern;
+            }
+            else
+            {
+                return Place.Roaming;
+            }
+        }
+
+        internal static async Task<CharHolder> LoadCharAtCurrentPlace(string strLoadChar)
+        {
+            StorageFile file = await GetFile(GetCurrentSavePlace(), await GetCurrentSavePath(), strLoadChar);
+            return await CharIO.LoadCharFromFile(file);
+        }
+
+        internal static async Task SaveCharAtCurrentPlace(CharHolder SaveChar)
+        {
+            if (SaveChar == null)
+            {
+                throw new ArgumentNullException("Char was Empty");
+            }
+            StorageFile Save_File = await GetFile(GetCurrentSavePlace(), await GetCurrentSavePath(), SaveChar.MakeName());
+            CharIO.SaveCharToFile(SaveChar, Save_File);
+        }
+
+        internal static async Task RemoveCharAtCurrentPlace(string strDelChar)
+        {
+            StorageFile toDelFile = await GetFile(GetCurrentSavePlace(), await GetCurrentSavePath(), strDelChar);
+            Remove(toDelFile);
+        }
+
+        private static string Char_to_String(CharHolder SaveChar)
         {
 
             JsonSerializerSettings test = new JsonSerializerSettings();
@@ -31,22 +86,25 @@ namespace ShadowRunHelper.IO
         private static CharHolder String_to_Char(string fileContent)
         {
             CharHolder ReturnCharHolder;
-            string strVersion = "";
-            {//check if it is old version 1.3
-                var Length = fileContent.IndexOf(Konstanten.STRING_APP_VERSION_NUMBER);
-                if (fileContent.Substring(Length+ Konstanten.STRING_APP_VERSION_NUMBER.Length+ Konstanten.JSON_FILE_GAP, Konstanten.CHARFILE_VERSION_1_3.Length) == Konstanten.CHARFILE_VERSION_1_3)
-                {
-                    strVersion = Konstanten.CHARFILE_VERSION_1_3;
-                }
-            }
-            if (strVersion.Length == 0) // get version number
+            string strAppVersion = "";
+            string strFileVersion = "";
+            int nAppVersionPos = fileContent.IndexOf(Konstanten.STRING_APP_VERSION_NUMBER);
+            if (nAppVersionPos >=0)
             {
-                var Length = fileContent.IndexOf(Konstanten.STRING_FILE_VERSION_NUMBER);
-                strVersion = fileContent.Substring(Length + Konstanten.STRING_FILE_VERSION_NUMBER.Length+ Konstanten.JSON_FILE_GAP, Konstanten.STRING_CHARFILEVERSION_LENGTH);
+                strAppVersion = fileContent.Substring(nAppVersionPos + Konstanten.STRING_APP_VERSION_NUMBER.Length + Konstanten.JSON_FILE_GAP, Konstanten.CHARFILE_VERSION_1_3.Length);
+            }
+            int nFileVersionPos = fileContent.IndexOf(Konstanten.STRING_FILE_VERSION_NUMBER);
+            if (nFileVersionPos >=0)
+            {
+                strFileVersion = fileContent.Substring(nFileVersionPos + Konstanten.STRING_FILE_VERSION_NUMBER.Length + Konstanten.JSON_FILE_GAP, Konstanten.STRING_CHARFILEVERSION_LENGTH);
+            }
+            else // old version
+            {
+                strFileVersion = Konstanten.CHARFILE_VERSION_1_3;
             }
             try
             {
-                switch (strVersion)
+                switch (strFileVersion)
                 {
                     case Konstanten.CHARFILE_VERSION_1_3:
                         ShadowRunHelper1_3.Controller.CharHolder CH1_3 = new ShadowRunHelper1_3.Controller.CharHolder();
@@ -72,34 +130,13 @@ namespace ShadowRunHelper.IO
             return ReturnCharHolder;
         }
 
-        public static async Task<ObservableCollection<CharSummory>> getListofChars(StorageFolder CharFolder)
-        {
-            ObservableCollection<CharSummory> templist = new ObservableCollection<CharSummory>();
-            try
-            {
-                IReadOnlyList<StorageFile> Liste = await CharFolder.GetFilesAsync();
-                foreach (var item in Liste)
-                {
-                    if (item.FileType == Konstanten.DATEIENDUNG_CHAR)
-                    {
-                        Windows.Storage.FileProperties.BasicProperties basicProperties = await item.GetBasicPropertiesAsync();
-                        templist.Add(new CharSummory(item.Name, basicProperties.DateModified));
-                    }
-                }
-            }
-            catch (Exception)
-            {
-            }
-            return templist;
-        }
-
-        public static async void Speichern(CharHolder SaveChar, StorageFile file)
+        public static async void SaveCharToFile(CharHolder SaveChar, StorageFile file)
         {
             //Ausgewählten Char auf Plattensubsystem schreiben
-            await FileIO.WriteTextAsync(file, CharIO.Char_to_JSON(SaveChar));
+            await FileIO.WriteTextAsync(file, CharIO.Char_to_String(SaveChar));
         }
 
-        public static async Task<CharHolder> Laden(StorageFile file)
+        public static async Task<CharHolder> LoadCharFromFile(StorageFile file)
         {
             String inputString = "";
             try
@@ -111,19 +148,6 @@ namespace ShadowRunHelper.IO
             {
                 throw new Exception("Konnte nicht aus Datei lesen und oder laden");
             }
-        }
-
-        public static async void Löschen(StorageFile toDelFile)
-        {
-            try
-            {
-                await toDelFile.DeleteAsync();
-            }
-            catch (Exception)
-            {
-                
-            }
-           
         }
     }
 }

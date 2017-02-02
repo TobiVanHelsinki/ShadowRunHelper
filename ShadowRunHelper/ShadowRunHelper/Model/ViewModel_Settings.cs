@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace ShadowRunHelper
 {
-    public class OptionViewModel : INotifyPropertyChanged
+    public class ViewModel_Settings : INotifyPropertyChanged
     {
         public bool SAVE_CHAR_ON_EXIT
         {
@@ -45,7 +45,7 @@ namespace ShadowRunHelper
             }
         }
 
-        public OptionViewModel()
+        public ViewModel_Settings()
         {
 
         }

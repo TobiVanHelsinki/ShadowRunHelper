@@ -15,7 +15,7 @@ namespace ShadowRunHelper
     sealed partial class App : Application
     {
 
-        internal CharViewModel ViewModel { get; private set; }
+        internal ViewModel_Char ViewModel { get; private set; }
         /// <summary>
         /// Initialisiert das Singletonanwendungsobjekt.  Dies ist die erste Zeile von erstelltem Code
         /// und daher das logische Äquivalent von main() bzw. WinMain().
@@ -43,7 +43,7 @@ namespace ShadowRunHelper
         /// <param name="e">Details über Startanforderung und -prozess.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            ViewModel = new CharViewModel();
+            ViewModel = new ViewModel_Char();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -64,10 +64,10 @@ namespace ShadowRunHelper
                 if (/*e.PreviousExecutionState == ApplicationExecutionState.Terminated || */Optionen.LOAD_CHAR_ON_START || Optionen.IS_FILE_IN_PROGRESS)
                 {
                     Optionen.IS_FILE_IN_PROGRESS = false;
-                    IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
+                    //ViewModel_CharVerwaltung VerwaltungTemp = new ViewModel_CharVerwaltung();
                     try
                     {
-                        ViewModel.CurrentChar=(await VerwaltungTemp.LadenIntern(Optionen.LAST_CHAR_IS));
+                        ViewModel.CurrentChar=(await IO.CharIO.LoadCharAtCurrentPlace(Optionen.LAST_CHAR_IS));
                     }
                     catch (Exception)
                     {
@@ -115,14 +115,8 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    IO.CharVerwaltung VerwaltungTemp = new IO.CharVerwaltung();
-                    string savename = await VerwaltungTemp.SpeichernIntern(ViewModel.CurrentChar);
-
-                    Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                    Optionen.LAST_CHAR_IS = savename;
-                    
-
-                    VerwaltungTemp = null;
+                    await IO.CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar);
+                    Optionen.LAST_CHAR_IS = ViewModel.CurrentChar.MakeName();
                 }
                 catch (Exception)
                 {

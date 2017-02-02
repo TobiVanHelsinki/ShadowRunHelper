@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 namespace ShadowRunHelper.Model
 {
-    public class CharViewModel : INotifyPropertyChanged
+    public class ViewModel_Char : INotifyPropertyChanged
     {
         private CharHolder _currentChar;
         public CharHolder CurrentChar

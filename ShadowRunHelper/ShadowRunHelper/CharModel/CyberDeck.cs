@@ -187,6 +187,45 @@ namespace ShadowRunHelper.CharModel
             strReturn += Delimiter;
             return strReturn;
         }
+
+        public override void FromCSV(Dictionary<string, string> dic)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            base.FromCSV(dic);
+            foreach (var item in dic)
+            {
+                if (item.Key == res.GetString("Model_CyberDeck_Angriff/Text"))
+                {
+                    this.Angriff = Int64.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_CyberDeck_Angriff_o/Text"))
+                {
+                    this.Angriff_o = Int64.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_CyberDeck_Schleicher/Text"))
+                {
+                    this.Schleicher = Int64.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_CyberDeck_Schleicher_o/Text"))
+                {
+                    this.Schleicher_o = Int64.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_CyberDeck_Firewall_o/Text"))
+                {
+                    this.Firewall_o = Int64.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_CyberDeck_Datenverarbeitung_o/Text"))
+                {
+                    this.Datenverarbeitung_o = Int64.Parse(item.Value);
+                    continue;
+                }
+            }
+        }
     }
 
 }

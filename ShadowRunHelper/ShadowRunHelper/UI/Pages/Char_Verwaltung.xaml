@@ -24,12 +24,16 @@
 
         <Button Name="Btn_Neu" RelativePanel.Below="Char_Sum" x:Uid="UI_CharVerwaltung_Btn_Neu" Click="Click_Erstellen" Style="{StaticResource Char_Control_Btn}"/>
         <Button Name="Btn_DateiImport" x:Uid="UI_CharVerwaltung_Btn_Datei_Laden" RelativePanel.RightOf="Btn_Neu" RelativePanel.AlignTopWith="Btn_Neu" Click="Click_Laden_Datei" Style="{StaticResource Char_Control_Btn}"/>
-        <Button Content="TestExport" RelativePanel.RightOf="Btn_DateiImport" RelativePanel.AlignTopWith="Btn_DateiImport" Click="Button_Click" Style="{StaticResource Char_Control_Btn}"/>
+        <StackPanel  RelativePanel.RightOf="Btn_DateiImport" RelativePanel.AlignTopWith="Btn_DateiImport" >
+            
+        <Button Content="TestExport" Click="Export_Click" Style="{StaticResource Char_Control_Btn}"/>
+        <Button Content="TestImport" Click="Import_Click" Style="{StaticResource Char_Control_Btn}"/>
+        </StackPanel>
         <Button x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" RelativePanel.AlignBottomWithPanel="True" Click="Click_Löschen_Alles" Style="{StaticResource Char_Control_Btn}"/>
 
 
         <ProgressRing x:Name="ProgressRing_Char" RelativePanel.AlignTopWith="Char_Sum" RelativePanel.AlignBottomWith="Char_Sum" Width="500"/>
-        <ListView Name="Char_Sum" RelativePanel.Below="Einleitung2" ItemsSource="{x:Bind Verwaltung.Summorys, Mode=OneWay}" IsItemClickEnabled="True" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2">
+        <ListView Name="Char_Sum" RelativePanel.Below="Einleitung2" ItemsSource="{x:Bind Summorys, Mode=OneWay}" IsItemClickEnabled="True" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="data:CharSummory">
                     <Grid Tapped="Item_Tapped" BorderThickness="1" BorderBrush="Black" >

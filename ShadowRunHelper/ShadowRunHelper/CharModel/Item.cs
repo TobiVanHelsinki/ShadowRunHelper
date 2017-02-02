@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Windows.ApplicationModel.Resources;
 
@@ -104,5 +105,29 @@ namespace ShadowRunHelper.CharModel
             return strReturn;
         }
 
+
+        public override void FromCSV(Dictionary<string, string> dic)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            base.FromCSV(dic);
+            foreach (var item in dic)
+            {
+                if (item.Key == res.GetString("Model_Item_Aktiv/Text"))
+                {
+                    this.Aktiv = Boolean.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_Item_Anzahl/Text"))
+                {
+                    this.Anzahl = Int64.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_Item_Besitz/Text"))
+                {
+                    this.Besitz = Boolean.Parse(item.Value);
+                    continue;
+                }
+            }
+        }
     }
 }

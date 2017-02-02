@@ -1,4 +1,6 @@
-﻿using Windows.ApplicationModel.Resources;
+﻿using System;
+using System.Collections.Generic;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -94,6 +96,30 @@ namespace ShadowRunHelper.CharModel
             strReturn += res.GetString("Model_Kommlink_Datenverarbeitung/Text");
             strReturn += Delimiter;
             return strReturn;
+        }
+
+        public override void FromCSV(Dictionary<string, string> dic)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            base.FromCSV(dic);
+            foreach (var item in dic)
+            {
+                if (item.Key == res.GetString("Model_Kommlink_Programmanzahl/Text"))
+                {
+                    this.Programmanzahl = Int64.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_Kommlink_Firewall/Text"))
+                {
+                    this.Firewall = Int64.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_Kommlink_Datenverarbeitung/Text"))
+                {
+                    this.Datenverarbeitung = Int64.Parse(item.Value);
+                    continue;
+                }
+            }
         }
     }
 }

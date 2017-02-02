@@ -282,86 +282,100 @@ namespace ShadowRunHelper.Model
         /// <param name="strDelimiter"></param>
         /// <returns></returns>
         /// 
-        public List<KeyValuePair<string, string>> TOCSV(string strDelimiter)
+        public List<KeyValuePair<string, string>> ToCSV(string strDelimiter)
         {
             var lstReturn = new List<KeyValuePair<string, string>>();
             const string strNewLine = "\n";
             string strNew = "sep="+strDelimiter+strNewLine;
         
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Attribut, CTRLAttribut));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Connection, CTRLConnection));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.CyberDeck, CTRLCyberDeck));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Fernkampfwaffe, CTRLFernkampfwaffe));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Fertigkeit, CTRLFertigkeit));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Handlung, CTRLHandlung));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Implantat, CTRLImplantat));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Item, CTRLItem));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Kommlink, CTRLKommlink));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Munition, CTRLMunition));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Nachteil, CTRLNachteil));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Nahkampfwaffe, CTRLNahkampfwaffe));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Panzerung, CTRLPanzerung));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Programm, CTRLProgramm));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Sin, CTRLSin));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Vehikel, CTRLVehikel));
-            lstReturn.Add(PartExport(strDelimiter, strNewLine, strNew, ThingDefs.Vorteil, CTRLVorteil));
+            lstReturn.Add( CTRLAttribut.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLConnection.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLCyberDeck.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLFernkampfwaffe.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLFertigkeit.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLHandlung.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLImplantat.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLItem.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLKommlink.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLMunition.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLNachteil.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLNahkampfwaffe.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLPanzerung.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLProgramm.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLSin.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLVehikel.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add( CTRLVorteil.MultipleCSVExport(strDelimiter, strNewLine, strNew));
             return lstReturn;
         }
 
-        static KeyValuePair<string, string> PartExport<T>(string strDelimiter, string strNewLine, string strNew, ThingDefs eDef, cController<T> CTRL) where T: Thing, new()
-        {
-            string strTemp = strNew;
-            if (CTRL.Data.Count >=1)
-            {
-                strTemp += CTRL.Data[0].HeaderToCSV(strDelimiter);
-            }
-            strTemp += strNewLine;
-            foreach (T item in CTRL.Data)
-            {
-                strTemp += item.ToCSV(strDelimiter);
-                strTemp += strNewLine;
-            }
-            return new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(eDef, true));
-        }
-
-        public void FromCSV(char strDelimiter, string strImport)
+        public void FromCSV(char strDelimiter, string strImport, ThingDefs eThing)
         {
             const char strNewLine = '\n';
-            PartImport(strDelimiter, strNewLine, strImport, CTRLAttribut);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLConnection);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLCyberDeck);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLFernkampfwaffe);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLFertigkeit);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLHandlung);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLImplantat);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLItem);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLKommlink);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLMunition);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLNachteil);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLNahkampfwaffe);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLPanzerung);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLProgramm);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLSin);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLVehikel);
-            PartImport(strDelimiter, strNewLine, strImport, CTRLVorteil);
+            switch (eThing)
+            {
+                case ThingDefs.UndefTemp:
+                    break;
+                case ThingDefs.Undef:
+                    break;
+                case ThingDefs.Handlung:
+                    CTRLHandlung.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Fertigkeit:
+                    CTRLFertigkeit.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Item:
+                    CTRLItem.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Programm:
+                    CTRLProgramm.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Munition:
+                    CTRLMunition.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Implantat:
+                    CTRLImplantat.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Vorteil:
+                    CTRLVorteil.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Nachteil:
+                    CTRLNachteil.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Connection:
+                    CTRLConnection.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Sin:
+                    CTRLSin.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Attribut:
+                    CTRLAttribut.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Nahkampfwaffe:
+                    CTRLNahkampfwaffe.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Fernkampfwaffe:
+                    CTRLFernkampfwaffe.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Kommlink:
+                    CTRLKommlink.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.CyberDeck:
+                    CTRLCyberDeck.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Vehikel:
+                    CTRLVehikel.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Panzerung:
+                    CTRLPanzerung.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Eigenschaft:
+                    break;
+                default:
+                    break;
+            }
+            RefreshThingList();
         }
 
-        static void PartImport<T>(char strDelimiter, char strNewLine, string strReadFile, cController<T> CTRL) where T : Thing, new()
-        {
-            string[] Lines = strReadFile.Split(strNewLine);
-            string[] Headar = Lines[0].Split(strDelimiter);
-            for (int i = 1; i < Lines.Length; i++) //start at 1 to overjump first line
-            {
-                // key = propertie name, value = value
-                Dictionary<string, string> Dic = new Dictionary<string, string>();
-                int j = 0;
-                foreach (var itemstring in Lines[i].Split(strDelimiter))
-                {
-                    Dic.Add(Headar[j], itemstring);
-                    j++;
-                }
-                (CTRL.AddNewThing()).FromCSV(Dic);
-            }
+
         }
     }
-}
