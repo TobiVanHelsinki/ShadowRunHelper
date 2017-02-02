@@ -26,6 +26,7 @@ namespace ShadowRunHelper.CharController
         ObservableCollection<Implantat> lstImplantateRef;
         public cAttributController(CharModel.Person P, ObservableCollection<Implantat> I) : this()
         {
+            this.eDataTyp = ThingDefs.Attribut;
             SetDependencies(P, I);
         }
 

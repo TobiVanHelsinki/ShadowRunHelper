@@ -12,6 +12,7 @@ namespace ShadowRunHelper
         public const string DATEIENDUNG_CHAR_2 = ".SRCHChar";
         public const string DATEIENDUNG_CHAR_3 = ".SRHChar";
         public const string DATEIENDUNG_CHAR = DATEIENDUNG_CHAR_3;
+        public const string DATEIENDUNG_CSV = ".csv";
 
         /// <summary>
         /// App Versionen

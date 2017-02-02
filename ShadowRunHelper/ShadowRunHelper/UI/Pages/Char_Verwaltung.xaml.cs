@@ -55,7 +55,7 @@ namespace ShadowRunHelper
         private async void Summorys_Aktualisieren()
         {
             Summorys.Clear();
-            StorageFolder CharFolder = await GeneralIO.GetFolder(CharIO.GetCurrentSavePlace(), await CharIO.GetCurrentSavePath(), CreationCollisionOption.OpenIfExists);
+            StorageFolder CharFolder = await GeneralIO.GetFolder(CharIO.GetCurrentSavePlace(), await CharIO.GetCurrentSavePath());
             foreach (var item in await GeneralIO.GetListofFiles(CharFolder, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR })))
             {
                 Summorys.Add(new CharSummory(item.Name, item.DateCreated));
@@ -207,17 +207,56 @@ namespace ShadowRunHelper
 
         private async void Export_Click(object sender, RoutedEventArgs e)
         {
-            StorageFolder Folder = await GeneralIO.GetFolder(Place.Extern, "");
-            foreach (var item in ViewModel.CurrentChar.ToCSV(";"))
+            StorageFolder Folder = null;
+            try
             {
-                StorageFile File = await Folder.CreateFileAsync(item.Value+".csv", CreationCollisionOption.ReplaceExisting);
-                //System.ArgumentException
-                GeneralIO.Write(File, item.Key);
+                Folder = await GeneralIO.GetFolder(Place.Extern, "");
+            }
+            catch (Exception)
+            {
+                //TODO notify user
+            }
+            try
+            {
+                foreach (var item in ViewModel.CurrentChar.ToCSV(";"))
+                {
+                    StorageFile File = await Folder.CreateFileAsync(item.Value + ".csv", CreationCollisionOption.ReplaceExisting);
+                    GeneralIO.Write(File, item.Key);
+                }
+            }
+            catch (Exception)
+            {
+
+                //throw;
             }
         }
 
-        private void Import_Click(object sender, RoutedEventArgs e)
+        private async void Import_Click(object sender, RoutedEventArgs e)
         {
+            StorageFile File = null;
+            string strRead = "";
+            try
+            {
+                File = await GeneralIO.GetFile(Place.Extern, "", "", new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR, Konstanten.DATEIENDUNG_CSV }));
+                strRead = await FileIO.ReadTextAsync(File);
+
+            }
+            catch (Exception)
+            {
+                //TODO
+            }
+            try
+            {
+                if (ViewModel.CurrentChar == null)
+                {
+                    ViewModel.CurrentChar = new CharHolder();
+                }
+                ViewModel.CurrentChar.CTRLCyberDeck.MultipleCSVImport(';', '\n', strRead);
+            }
+            catch (Exception)
+            {
+                //throw;
+            }
 
         }
     }

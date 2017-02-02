@@ -436,13 +436,13 @@
             <RowDefinition Height="Auto" x:Name="ÜberschriftNotizen"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Bezeichner" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Bezeichner" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"/>
         <TextBox Name="Bezeichner" Text="{x:Bind Data.Bezeichner, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"/>
-        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Typ" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Typ" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
         <TextBox Name="Typ" Text="{x:Bind Data.Typ, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3"/>
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Wert" Grid.Column="3" Grid.Row="0"/>
         <TextBox Name="Wert" Text="{x:Bind Data.Wert, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="1"/>
-        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Zusatz" Grid.Column="3" Grid.Row="2"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Zusatz" Grid.Column="3" Grid.Row="2"/>
         <TextBox Name="Zusatz" Text="{x:Bind Data.Zusatz, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="3"/>
         <ContentPresenter 
         Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="4"
@@ -452,7 +452,7 @@
         Loaded="EditType_Loaded">
         <!--HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
         HorizontalAlignment="Stretch" VerticalAlignment="Stretch"--></ContentPresenter>
-        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Notiz" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4"/>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Notiz" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4"/>
         <TextBox Name="Notiz" Text="{x:Bind Data.Notiz, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4"/>
     </Grid>
 </ContentDialog>

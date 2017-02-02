@@ -7,6 +7,8 @@ namespace ShadowRunHelper.CharController
 {
     public class cController<T> : IController<T> where T : Thing, new()
     {
+        protected int nCountOfModelProperties;
+
         /// <summary>
         /// GUI-Binding Target
         /// </summary>
@@ -68,13 +70,23 @@ namespace ShadowRunHelper.CharController
         public void MultipleCSVImport(char strDelimiter, char strNewLine, string strReadFile)
         {
             string[] Lines = strReadFile.Split(strNewLine);
-            string[] Headar = Lines[0].Split(strDelimiter);
-            for (int i = 1; i < Lines.Length; i++) //start at 1 to overjump first line
+            string[] Headar = { };
+            for (int i = 0; i < Lines.Length; i++) //start at 2 to overjump first lines
             {
                 // key = propertie name, value = value
+                string[] CSVEntries = Lines[i].Split(strDelimiter);
+                if (CSVEntries.Length < this.nCountOfModelProperties)
+                {
+                    continue;
+                }
+                if (Headar.Length < this.nCountOfModelProperties)
+                {
+                    Headar = Lines[i].Split(strDelimiter);
+                    continue;
+                }
                 Dictionary<string, string> Dic = new Dictionary<string, string>();
                 int j = 0;
-                foreach (var itemstring in Lines[i].Split(strDelimiter))
+                foreach (var itemstring in CSVEntries)
                 {
                     Dic.Add(Headar[j], itemstring);
                     j++;

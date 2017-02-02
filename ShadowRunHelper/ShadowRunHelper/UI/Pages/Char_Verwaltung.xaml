@@ -26,8 +26,8 @@
         <Button Name="Btn_DateiImport" x:Uid="UI_CharVerwaltung_Btn_Datei_Laden" RelativePanel.RightOf="Btn_Neu" RelativePanel.AlignTopWith="Btn_Neu" Click="Click_Laden_Datei" Style="{StaticResource Char_Control_Btn}"/>
         <StackPanel  RelativePanel.RightOf="Btn_DateiImport" RelativePanel.AlignTopWith="Btn_DateiImport" >
             
-        <Button Content="TestExport" Click="Export_Click" Style="{StaticResource Char_Control_Btn}"/>
-        <Button Content="TestImport" Click="Import_Click" Style="{StaticResource Char_Control_Btn}"/>
+        <Button Content="CSVExport" Click="Export_Click" Style="{StaticResource Char_Control_Btn}"/>
+            <Button Content="CSVImport" Click="Import_Click" Style="{StaticResource Char_Control_Btn}"/>
         </StackPanel>
         <Button x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" RelativePanel.AlignBottomWithPanel="True" Click="Click_Löschen_Alles" Style="{StaticResource Char_Control_Btn}"/>
 

@@ -33,7 +33,7 @@ namespace ShadowRunHelper.IO
         }
 
 
-        internal async static Task<StorageFile> GetFile(Place ePlace, string strPath, string strFileName, CreationCollisionOption eCreateOptions = CreationCollisionOption.OpenIfExists)
+        internal async static Task<StorageFile> GetFile(Place ePlace, string strPath, string strFileName, List<string> FileTypes = null)
         {
             switch (ePlace)
             {
@@ -49,69 +49,57 @@ namespace ShadowRunHelper.IO
                         {
                             Folder = await ApplicationData.Current.RoamingFolder.CreateFolderAsync(strPath);
                         }
-                        catch (System.IO.FileNotFoundException)
+                        catch (Exception ex)
                         {
-                            throw new ArgumentException("Invalid Characters:" + strPath);
-                        }
-                        catch (System.UnauthorizedAccessException)
-                        {
-                            throw new ArgumentException("UnauthorizedAccessException:" + strPath);
+                            throw new Exception("GeneralIO.GetFile.Intern.GetFolder:" + strPath, ex);
                         }
                     }
                     try//to get file
                     {
-                        return await Folder.GetFileAsync(strFileName);
+                        return await Folder.CreateFileAsync(strFileName, CreationCollisionOption.OpenIfExists);
                     }
-                    catch (System.UnauthorizedAccessException)
+                    catch (Exception ex1)
                     {
-                        throw new ArgumentException("UnauthorizedAccessException:" + strPath);
-                    }
-                    catch (System.ArgumentException)
-                    {
-                        throw new ArgumentException("Wrong Url:" + strPath);
+                        throw new Exception("GeneralIO.GetFile.Intern.GetFile:" + strFileName, ex1);
                     }
                 case Place.Extern:
                     try // to get it
                     {
-                        return await StorageFile.GetFileFromPathAsync(strPath);
+                        Folder = await StorageFolder.GetFolderFromPathAsync(strPath);
+                        return await Folder.CreateFileAsync(strFileName, CreationCollisionOption.OpenIfExists);
                     }
                     catch (Exception)
                     {
-                        try // to create it
-                        {
-                            StorageFolder UpFolder = await StorageFolder.GetFolderFromPathAsync(strPath);
-                            return await UpFolder.CreateFileAsync(strFileName, eCreateOptions);
-                        }
-                        catch (Exception)
-                        {
-                            try // to get from user
-                            {
-                                Folder = await FolderPicker(new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR }));
-                                return await Folder.CreateFileAsync(strFileName, eCreateOptions);
-                            }
-                            catch (Exception)
-                            {
-                                throw new ArgumentException("Could Not Get Folder From Picker");
-                            }
-                        }
+                        return await FilePicker(FileTypes);
                     }
             }
-            throw new ArgumentException("Wrong Enum Type:" + ePlace);
+            throw new Exception("GeneralIO.GetFile.Wrong Enum Type:" + ePlace);
         }
 
-        internal static async Task<StorageFile> FilePicker(List<string> lststrFileEndings)
+        internal static async Task<StorageFile> FilePicker(List<string> lststrFileEndings = null)
         {
-            FileOpenPicker openPicker = new FileOpenPicker();
-            openPicker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
-            foreach (var item in lststrFileEndings)
+            if (lststrFileEndings == null)
             {
-                openPicker.FileTypeFilter.Add(item);
+                lststrFileEndings = new List<string>(new string[] {Konstanten.DATEIENDUNG_CHAR,Konstanten.DATEIENDUNG_CSV});
             }
+            try 
+            {
+                FileOpenPicker openPicker = new FileOpenPicker();
+                openPicker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
+                foreach (var item in lststrFileEndings)
+                {
+                    openPicker.FileTypeFilter.Add(item);
+                }
 
-            StorageFile file = await openPicker.PickSingleFileAsync();
-            Windows.Storage.AccessCache.StorageApplicationPermissions.
-    FutureAccessList.AddOrReplace("PickedFolderToken", file);
-            return file;
+                StorageFile file = await openPicker.PickSingleFileAsync();
+                Windows.Storage.AccessCache.StorageApplicationPermissions.
+        FutureAccessList.AddOrReplace("PickedFolderToken", file);
+                return file;
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("GeneralIO.FilePicker", ex);
+            }
         }
         /// <summary>
         /// Returns a Folder. 
@@ -123,38 +111,18 @@ namespace ShadowRunHelper.IO
         /// <param name="strPath"></param>
         /// <returns></returns>
         /// <throws>ArgumentException</throws>
-        internal async static Task<StorageFolder> GetFolder(Place ePlace, string strPath, CreationCollisionOption eCreateOptions = CreationCollisionOption.OpenIfExists)
+        internal async static Task<StorageFolder> GetFolder(Place ePlace, string strPath)
         {
             switch (ePlace)
             {
                 case Place.Roaming:
                     try
                     {
-                        return await ApplicationData.Current.RoamingFolder.GetFolderAsync(strPath);
+                        return await ApplicationData.Current.RoamingFolder.CreateFolderAsync(strPath, CreationCollisionOption.OpenIfExists);
                     }
-                    catch (System.IO.FileNotFoundException)
+                    catch (Exception ex)
                     {
-                        try
-                        {
-                            return await ApplicationData.Current.RoamingFolder.CreateFolderAsync(strPath, eCreateOptions);
-                        }
-                        catch (System.IO.FileNotFoundException)
-                        {
-                            throw new ArgumentException("Invalid Characters:" + strPath);
-                        }
-                        catch (System.UnauthorizedAccessException)
-                        {
-                            throw new ArgumentException("UnauthorizedAccessException:" + strPath);
-                        }
-
-                    }
-                    catch (System.UnauthorizedAccessException)
-                    {
-                        throw new ArgumentException("UnauthorizedAccessException:" + strPath);
-                    }
-                    catch (System.ArgumentException)
-                    {
-                        throw new ArgumentException("Wrong Url:" + strPath);
+                        throw new ArgumentException("GetFolder.Roaming", ex);
                     }
                 case Place.Extern:
                     try // to get it
@@ -167,18 +135,11 @@ namespace ShadowRunHelper.IO
                         {
                             int LastPos = strPath.LastIndexOf("//");
                             StorageFolder UpFolder = await StorageFolder.GetFolderFromPathAsync(strPath.Substring(1, LastPos));
-                            return await UpFolder.CreateFolderAsync(strPath.Substring(LastPos, strPath.Length), eCreateOptions);
+                            return await UpFolder.CreateFolderAsync(strPath.Substring(LastPos, strPath.Length), CreationCollisionOption.OpenIfExists);
                         }
                         catch (Exception)
                         {
-                            try // to get from user
-                            {
-                                return await FolderPicker();
-                            }
-                            catch (Exception)
-                            {
-                                throw new ArgumentException("Could Not Get Folder From Picker");
-                            }
+                             return await FolderPicker();
                         }
                     }
             }
@@ -200,21 +161,42 @@ namespace ShadowRunHelper.IO
         /// <returns></returns>
         internal static async Task<StorageFolder> FolderPicker(List<string> lststrFileEndings = null)
         {
-            var folderPicker = new Windows.Storage.Pickers.FolderPicker();
-            folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
 
-            if (lststrFileEndings != null)
+            try
             {
+                var folderPicker = new Windows.Storage.Pickers.FolderPicker();
+                folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
+
+                if (lststrFileEndings == null)
+                {
+                    lststrFileEndings = new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR, Konstanten.DATEIENDUNG_CSV });
+                }
                 foreach (var item in lststrFileEndings)
                 {
                     folderPicker.FileTypeFilter.Add(item);
                 }
+
+                StorageFolder Folder = null;
+                Folder = await folderPicker.PickSingleFolderAsync();
+                Windows.Storage.AccessCache.StorageApplicationPermissions.
+                    FutureAccessList.AddOrReplace("PickedFolderToken", Folder);
+                return Folder;
+
             }
-            StorageFolder CharFolder = null;
-            CharFolder = await folderPicker.PickSingleFolderAsync();
-            Windows.Storage.AccessCache.StorageApplicationPermissions.
-                FutureAccessList.AddOrReplace("PickedFolderToken", CharFolder);
-            return CharFolder;
+            catch (Exception ex)
+            {
+                throw new ArgumentException("GeneralIO.Folderpicker", ex);
+            }
+        }
+
+
+        internal static async Task<string> Read(StorageFile inputFile)
+        {
+            if (inputFile == null)
+            {
+                inputFile = await FilePicker();
+            }
+            return await FileIO.ReadTextAsync(inputFile);
         }
     }
 }
