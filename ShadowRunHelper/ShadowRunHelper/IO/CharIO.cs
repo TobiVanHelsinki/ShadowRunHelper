@@ -47,7 +47,7 @@ namespace ShadowRunHelper.IO
 
         internal static async Task<CharHolder> LoadCharAtCurrentPlace(string strLoadChar)
         {
-            StorageFile file = await GetFile(GetCurrentSavePlace(), await GetCurrentSavePath(), strLoadChar);
+            StorageFile file = await GetFile(GetCurrentSavePlace(), strLoadChar, await GetCurrentSavePath());
             return await CharIO.LoadCharFromFile(file);
         }
 
@@ -57,13 +57,13 @@ namespace ShadowRunHelper.IO
             {
                 throw new ArgumentNullException("Char was Empty");
             }
-            StorageFile Save_File = await GetFile(GetCurrentSavePlace(), await GetCurrentSavePath(), SaveChar.MakeName());
+            StorageFile Save_File = await GetFile(GetCurrentSavePlace(), SaveChar.MakeName(), await GetCurrentSavePath());
             CharIO.SaveCharToFile(SaveChar, Save_File);
         }
 
         internal static async Task RemoveCharAtCurrentPlace(string strDelChar)
         {
-            StorageFile toDelFile = await GetFile(GetCurrentSavePlace(), await GetCurrentSavePath(), strDelChar);
+            StorageFile toDelFile = await GetFile(GetCurrentSavePlace(), strDelChar, await GetCurrentSavePath());
             Remove(toDelFile);
         }
 

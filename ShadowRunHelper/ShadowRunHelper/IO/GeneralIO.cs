@@ -32,8 +32,21 @@ namespace ShadowRunHelper.IO
             }
         }
 
-
-        internal async static Task<StorageFile> GetFile(Place ePlace, string strPath, string strFileName, List<string> FileTypes = null)
+        /// <summary>
+        /// Extern:
+        /// Action depends on the string parameters:
+        /// Path and Name are provided correctly -> File is returned
+        /// Path is provided incorrectly or is null -> Try to create Folder, then ask User for Folderinput
+        /// Name is provided incorrectly or is null -> Try to create File, then ask User for Fileinput
+        /// Path and Name are provided incorrectly or null -> User shall input File
+        /// 
+        /// </summary>
+        /// <param name="ePlace"></param>
+        /// <param name="strFileName"></param>
+        /// <param name="strPath"></param>
+        /// <param name="FileTypes"></param>
+        /// <returns></returns>
+        internal async static Task<StorageFile> GetFile(Place ePlace, string strFileName = null, string strPath = null, List<string> FileTypes = null)
         {
             switch (ePlace)
             {
@@ -65,12 +78,16 @@ namespace ShadowRunHelper.IO
                 case Place.Extern:
                     try // to get it
                     {
-                        Folder = await StorageFolder.GetFolderFromPathAsync(strPath);
-                        return await Folder.CreateFileAsync(strFileName, CreationCollisionOption.OpenIfExists);
+                        if (strPath == null && strFileName == null) // both is empty, that means we need a folder and file -> both can be handeld with one action -> the filepicker
+                        {
+                            throw new Exception();
+                        }
+                        Folder = await GetFolder(Place.Extern, strPath); //get or create or get from user - folder
+                        return await Folder.CreateFileAsync(strFileName, CreationCollisionOption.OpenIfExists); // get or create file
                     }
                     catch (Exception)
                     {
-                        return await FilePicker(FileTypes);
+                        return await FilePicker(FileTypes); // get from user
                     }
             }
             throw new Exception("GeneralIO.GetFile.Wrong Enum Type:" + ePlace);
@@ -111,7 +128,7 @@ namespace ShadowRunHelper.IO
         /// <param name="strPath"></param>
         /// <returns></returns>
         /// <throws>ArgumentException</throws>
-        internal async static Task<StorageFolder> GetFolder(Place ePlace, string strPath)
+        internal async static Task<StorageFolder> GetFolder(Place ePlace, string strPath = null)
         {
             switch (ePlace)
             {

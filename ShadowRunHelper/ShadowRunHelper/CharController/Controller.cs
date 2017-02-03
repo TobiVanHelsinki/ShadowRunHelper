@@ -43,6 +43,69 @@ namespace ShadowRunHelper.CharController
         {
             Data = new ObservableCollection<T>();
             Data.CollectionChanged += Data_CollectionChanged;
+            switch (typeof(T).Name)
+            {
+                case "UndefTemp":
+                    break; 
+                case "Undef":
+                    break;
+                case "Handlung":
+                    this.eDataTyp = ThingDefs.Handlung;
+                    break;
+                case "Fertigkeit":
+                    this.eDataTyp = ThingDefs.Fertigkeit;
+                    break;
+                case "Item":
+                    this.eDataTyp = ThingDefs.Item;
+                    break;
+                case "Programm":
+                    this.eDataTyp = ThingDefs.Programm;
+                    break;
+                case "Munition":
+                    this.eDataTyp = ThingDefs.Munition;
+                    break;
+                case "Implantat":
+                    this.eDataTyp = ThingDefs.Implantat;
+                    break;
+                case "Vorteil":
+                    this.eDataTyp = ThingDefs.Vorteil;
+                    break;
+                case "Nachteil":
+                    this.eDataTyp = ThingDefs.Nachteil;
+                    break;
+                case "Connection":
+                    this.eDataTyp = ThingDefs.Connection;
+                    break;
+                case "Sin":
+                    this.eDataTyp = ThingDefs.Sin;
+                    break;
+                case "Attribut":
+                    this.eDataTyp = ThingDefs.Attribut;
+                    break;
+                case "Nahkampfwaffe":
+                    this.eDataTyp = ThingDefs.Nahkampfwaffe;
+                    break;
+                case "Fernkampfwaffe":
+                    this.eDataTyp = ThingDefs.Fernkampfwaffe;
+                    break;
+                case "Kommlink":
+                    this.eDataTyp = ThingDefs.Kommlink;
+                    break;
+                case "CyberDeck":
+                    this.eDataTyp = ThingDefs.CyberDeck;
+                    break;
+                case "Vehikel":
+                    this.eDataTyp = ThingDefs.Vehikel;
+                    break;
+                case "Panzerung":
+                    this.eDataTyp = ThingDefs.Panzerung;
+                    break;
+                case "Eigenschaft":
+                    this.eDataTyp = ThingDefs.Eigenschaft;
+                    break;
+                default :
+                    break;
+            }
         }
 
         private void Data_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -62,7 +125,7 @@ namespace ShadowRunHelper.CharController
                 strTemp += item.ToCSV(strDelimiter);
                 strTemp += strNewLine;
             }
-            return new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(this.eDataTyp, true));
+            return new KeyValuePair<string, string>(strTemp, TypenHelper.ThingDefToString(eDataTyp, true));
         }
 
 

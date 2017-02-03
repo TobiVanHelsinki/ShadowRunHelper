@@ -195,7 +195,7 @@ namespace ShadowRunHelper
             try
             {
                 CharHolder CharToSave = await CharIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName);
-                StorageFile FileToSave = await GeneralIO.GetFile(Place.Extern, "", CharToSave.MakeName());
+                StorageFile FileToSave = await GeneralIO.GetFile(Place.Extern, CharToSave.MakeName());
                 CharIO.SaveCharToFile(CharToSave, FileToSave);
             }
             catch (Exception)
@@ -210,7 +210,7 @@ namespace ShadowRunHelper
             StorageFolder Folder = null;
             try
             {
-                Folder = await GeneralIO.GetFolder(Place.Extern, "");
+                Folder = await GeneralIO.GetFolder(Place.Extern);
             }
             catch (Exception)
             {
@@ -220,13 +220,13 @@ namespace ShadowRunHelper
             {
                 foreach (var item in ViewModel.CurrentChar.ToCSV(";"))
                 {
-                    StorageFile File = await Folder.CreateFileAsync(item.Value + ".csv", CreationCollisionOption.ReplaceExisting);
+                    StorageFile File = await GeneralIO.GetFile(Place.Extern, item.Value + Konstanten.DATEIENDUNG_CSV, Folder.Path);
                     GeneralIO.Write(File, item.Key);
                 }
             }
             catch (Exception)
             {
-
+                //TODO notify user
                 //throw;
             }
         }
@@ -237,7 +237,7 @@ namespace ShadowRunHelper
             string strRead = "";
             try
             {
-                File = await GeneralIO.GetFile(Place.Extern, "", "", new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR, Konstanten.DATEIENDUNG_CSV }));
+                File = await GeneralIO.GetFile(Place.Extern, null, null, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR, Konstanten.DATEIENDUNG_CSV }));
                 strRead = await FileIO.ReadTextAsync(File);
 
             }
@@ -254,7 +254,7 @@ namespace ShadowRunHelper
                 ViewModel.CurrentChar.CTRLCyberDeck.MultipleCSVImport(';', '\n', strRead);
             }
             catch (Exception)
-            {
+            {//todo
                 //throw;
             }
 

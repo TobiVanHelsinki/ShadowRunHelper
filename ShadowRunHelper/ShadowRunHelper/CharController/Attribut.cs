@@ -92,6 +92,7 @@ namespace ShadowRunHelper.CharController
         private KeyValuePair<Thing, string> MI_Limit_S;
         public cAttributController()
         {
+            this.eDataTyp = ThingDefs.Attribut;
             var res = ResourceLoader.GetForCurrentView();
 
             Konsti = new Attribut();
