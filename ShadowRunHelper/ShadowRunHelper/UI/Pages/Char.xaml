@@ -526,7 +526,7 @@
                             <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
-                            <TextBlock Grid.Column="3" x:Uid="Model_Waffe_Schaden"  Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Grid.Column="3" x:Uid="Model_Waffe_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
                         <ListView  Name="Fernkampfwaffen" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLFernkampfwaffe.Data}" Style="{StaticResource ListView}">
                             <ListView.ItemTemplate>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
@@ -24,6 +25,18 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Nahkampfwaffe;
         }
 
+
+        public override List<KeyValuePair<string, double>> GetValueList([CallerMemberName] string ID = "")
+        {
+            var res = ResourceLoader.GetForCurrentView();
+
+            List<KeyValuePair<string, double>> lst = new List<KeyValuePair<string, double>>();
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Waffe_Wert/Text"), Wert));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Waffe_PB/Text"), PB));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Waffe_Pool/Text"), Pool));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Nahampfwaffe_Reichweite/Text"), Reichweite));
+            return lst;
+        }
 
         public Nahkampfwaffe Copy(ref Nahkampfwaffe target)
         {

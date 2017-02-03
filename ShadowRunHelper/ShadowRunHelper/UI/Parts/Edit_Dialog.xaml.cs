@@ -17,8 +17,10 @@ namespace ShadowRunHelper.UI.Edit
         public Edit_Dialog(Thing data)
         {
             //CurrentTextBoxes = new List<TextBox>();
-            this.Data = data;
-            this.InitializeComponent();
+            Data = data;
+            InitializeComponent();
+            Title = TypenHelper.ThingDefToString(Data.ThingType, false);
+
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

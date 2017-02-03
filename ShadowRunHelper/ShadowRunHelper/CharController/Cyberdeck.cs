@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharController
 {
@@ -13,17 +14,19 @@ namespace ShadowRunHelper.CharController
         private KeyValuePair<Thing, string> MI_S;
         private KeyValuePair<Thing, string> MI_F;
         private KeyValuePair<Thing, string> MI_D;
-        public CyberDeck ActiveDeck; // active deck nach json kaputt
+        public CyberDeck ActiveDeck;
 
         public cCyberDeckController()
         {
             ActiveDeck = new CyberDeck();
-            ActiveDeck.Bezeichner = "ActiveDeck";
-            MI_V = new KeyValuePair<Thing, string>(ActiveDeck, "Deck-Stärke");
-            MI_A = new KeyValuePair<Thing, string>(ActiveDeck, "Angriff");
-            MI_S = new KeyValuePair<Thing, string>(ActiveDeck, "Schleicher");
-            MI_F = new KeyValuePair<Thing, string>(ActiveDeck, "Firewall");
-            MI_D = new KeyValuePair<Thing, string>(ActiveDeck, "Datenverarbeitung");
+            var res = ResourceLoader.GetForCurrentView();
+
+            ActiveDeck.Bezeichner = res.GetString("Model_CyberDeck__Aktiv/Text");
+            MI_V = new KeyValuePair<Thing, string>(ActiveDeck, res.GetString("Model_CyberDeck_/Text") + res.GetString("Model_Thing_Wert/Text"));
+            MI_A = new KeyValuePair<Thing, string>(ActiveDeck, res.GetString("Model_CyberDeck_Angriff/Text"));
+            MI_S = new KeyValuePair<Thing, string>(ActiveDeck, res.GetString("Model_CyberDeck_Schleicher/Text"));
+            MI_F = new KeyValuePair<Thing, string>(ActiveDeck, res.GetString("Model_Kommlink_Firewall/Text"));
+            MI_D = new KeyValuePair<Thing, string>(ActiveDeck, res.GetString("Model_Kommlink_Datenverarbeitung/Text"));
 
             Data.CollectionChanged += Data_CollectionChanged;
         }

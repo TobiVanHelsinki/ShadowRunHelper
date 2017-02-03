@@ -55,7 +55,7 @@ namespace ShadowRunHelper
                     groups.Add(info);
                 }
             }
-            this.InitializeComponent();
+            InitializeComponent();
             GroupedList.Source = groups;
 
         }

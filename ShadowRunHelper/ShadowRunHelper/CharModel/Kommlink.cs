@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
@@ -72,6 +73,17 @@ namespace ShadowRunHelper.CharModel
             Firewall = 0;
             Datenverarbeitung = 0;
         }
+        public override List<KeyValuePair<string, double>> GetValueList([CallerMemberName] string ID = "")
+        {
+            var res = ResourceLoader.GetForCurrentView();
+
+            List<KeyValuePair<string, double>> lst = new List<KeyValuePair<string, double>>();
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Thing_Wert/Text"), Wert));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Kommlink_Firewall/Text"), Firewall));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Kommlink_Datenverarbeitung/Text"), Datenverarbeitung));
+            return lst;
+        }
+
 
         public override string ToCSV(string Delimiter)
         {

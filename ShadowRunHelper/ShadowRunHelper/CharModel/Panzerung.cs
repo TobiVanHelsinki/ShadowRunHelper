@@ -11,6 +11,9 @@ namespace ShadowRunHelper.CharModel
 {
     public class Panzerung : Item
     {
+        /// <summary>
+        /// für SR4 - ballisitisch wäre dann thing.wert
+        /// </summary>
         private double stoß = 0;
         public double Stoß
         {
@@ -43,6 +46,17 @@ namespace ShadowRunHelper.CharModel
         {
             this.ThingType = ThingDefs.Panzerung;
 
+        }
+
+        public override List<KeyValuePair<string, double>> GetValueList([CallerMemberName] string ID = "")
+        {
+            var res = ResourceLoader.GetForCurrentView();
+
+            List<KeyValuePair<string, double>> lst = new List<KeyValuePair<string, double>>();
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Thing_Wert/Text"), Wert));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Panzerung_Stoß/Text"), Stoß));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Panzerung_Kapazität/Text"), Kapazität));
+            return lst;
         }
 
         public override string ToCSV(string Delimiter)

@@ -3,21 +3,27 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharController
 {
     public class cNahkampfwaffeController : CharController.cController<Nahkampfwaffe>
     {
-        private KeyValuePair<Thing, string> MI_1;
-        private KeyValuePair<Thing, string> MI_2;
+        private KeyValuePair<Thing, string> MI_Reich;
+        private KeyValuePair<Thing, string> MI_Pr;
+        private KeyValuePair<Thing, string> MI_Wert;
+        private KeyValuePair<Thing, string> MI_DK;
         public Nahkampfwaffe ActiveItem;
 
         public cNahkampfwaffeController()
         {
+            var res = ResourceLoader.GetForCurrentView();
             ActiveItem = new Nahkampfwaffe();
-            ActiveItem.Bezeichner = "ActiveNahkampfwaffe";
-            MI_1 = new KeyValuePair<Thing, string>(ActiveItem, "Waffe1");
-            MI_2 = new KeyValuePair<Thing, string>(ActiveItem, "Waffe2");
+            ActiveItem.Bezeichner = res.GetString("Model_Nahkampfwaffe__Aktiv/Text");
+            MI_Wert = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Waffe_Wert/Text"));
+            MI_DK = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Waffe_PB/Text"));
+            MI_Pr = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Waffe_Pool/Text"));
+            MI_Reich = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Nahkampfwaffe_Reichweite/Text"));
 
             Data.CollectionChanged += Data_CollectionChanged;
         }
@@ -48,8 +54,8 @@ namespace ShadowRunHelper.CharController
         public new List<KeyValuePair<Thing, string>> GetElementsForThingList()
         {
             List<KeyValuePair<Thing, string>> lstReturn = new List<KeyValuePair<Thing, string>>();
-            lstReturn.Add(MI_1);
-            lstReturn.Add(MI_2);
+            lstReturn.Add(MI_Reich);
+            lstReturn.Add(MI_DK);
             return lstReturn;
         }
     }

@@ -110,7 +110,7 @@ namespace ShadowRunHelper.CharModel
             return Wert;
         }
 
-        public override List<KeyValuePair<string, double>> GetValueList([CallerMemberNameAttribute] string ID = "")
+        public override List<KeyValuePair<string, double>> GetValueList([CallerMemberName] string ID = "")
         {
             var res = ResourceLoader.GetForCurrentView();
 
@@ -118,8 +118,8 @@ namespace ShadowRunHelper.CharModel
             lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Thing_Wert/Text"), Wert));
             lst.Add(new KeyValuePair<string, double>(res.GetString("Model_CyberDeck_Angriff/Text"), Angriff));
             lst.Add(new KeyValuePair<string, double>(res.GetString("Model_CyberDeck_Schleicher/Text"), Schleicher));
-            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_CyberDeck_Firewall/Text"), Firewall));
-            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_CyberDeck_Datenverarbeitung/Text"), Datenverarbeitung));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Kommlink_Firewall/Text"), Firewall));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Kommlink_Datenverarbeitung/Text"), Datenverarbeitung));
             return lst;
         }
 

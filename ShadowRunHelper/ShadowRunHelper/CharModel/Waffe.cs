@@ -6,6 +6,9 @@ namespace ShadowRunHelper.CharModel
 {
     public abstract class Waffe : Item
     {
+        /// <summary>
+        /// Präzision
+        /// </summary>
         private double pool = 0;
         public double Pool
         {
@@ -34,7 +37,10 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        private double pB = 0;
+        /// <summary>
+        /// PB could be english, means DK "Durschlagskompensation"
+        /// </summary>
+        private double pB = 0; // DK
         public double PB
         {
             get { return pB; }

@@ -186,7 +186,7 @@
     <value>Modi</value>
   </data>
   <data name="Model_FernKampfwaffe_Rückstoß.Text" xml:space="preserve">
-    <value>Rückstoß</value>
+    <value>RK</value>
   </data>
   <data name="Model_Fertigkeit_.Text" xml:space="preserve">
     <value>Fertigkeit</value>
@@ -331,10 +331,7 @@
     <value>Sitze</value>
   </data>
   <data name="Model_Waffe_PB.Text" xml:space="preserve">
-    <value>PB</value>
-  </data>
-  <data name="Model_Waffe_Schaden.Text" xml:space="preserve">
-    <value>Schaden</value>
+    <value>DK</value>
   </data>
   <data name="Model_Thing_Zusatz.Text" xml:space="preserve">
     <value>Zusatz</value>
@@ -684,6 +681,27 @@
     <value>Kapazität</value>
   </data>
   <data name="Model_Waffe_Pool.Text" xml:space="preserve">
-    <value>Pool</value>
+    <value>Präzision</value>
+  </data>
+  <data name="Model_CyberDeck__Aktiv.Text" xml:space="preserve">
+    <value>Aktives Deck</value>
+  </data>
+  <data name="Model_Fernkampfwaffe__Aktiv.Text" xml:space="preserve">
+    <value>Aktive Fernkampfwaffe</value>
+  </data>
+  <data name="Model_Kommlink__Aktiv.Text" xml:space="preserve">
+    <value>Aktives Kommlink</value>
+  </data>
+  <data name="Model_Nahkampfwaffe__Aktiv.Text" xml:space="preserve">
+    <value>Aktive Nahkampfwaffe</value>
+  </data>
+  <data name="Model_Panzerung__Aktiv.Text" xml:space="preserve">
+    <value>Aktive Panzerung</value>
+  </data>
+  <data name="Model_Vehikel__Aktiv.Text" xml:space="preserve">
+    <value>Aktives Auto</value>
+  </data>
+  <data name="Model_Waffe_Wert.Text" xml:space="preserve">
+    <value>Schaden</value>
   </data>
 </root>

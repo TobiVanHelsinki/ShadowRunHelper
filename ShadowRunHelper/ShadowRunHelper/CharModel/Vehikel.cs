@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
@@ -129,7 +130,23 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Vehikel;
 
         }
+        public override List<KeyValuePair<string, double>> GetValueList([CallerMemberName] string ID = "")
+        {
+            var res = ResourceLoader.GetForCurrentView();
 
+            List<KeyValuePair<string, double>> lst = new List<KeyValuePair<string, double>>();
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Thing_Wert/Text"), Wert));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Vehikel_Sitze/Text"), Sitze));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Vehikel_Sensor/Text"), Sensor));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Vehikel_Rumpf/Text"), Rumpf));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Vehikel_Pilot/Text"), Pilot));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Vehikel_Panzerung/Text"), Panzerung));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Vehikel_Handling/Text"), Handling));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Vehikel_Gewicht/Text"), Gewicht));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Vehikel_Geschwindigkeit/Text"), Geschwindigkeit));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Vehikel_Beschleunigung/Text"), Beschleunigung));
+            return lst;
+        }
         public Vehikel Copy(ref Vehikel target)
         {
             if (target == null)

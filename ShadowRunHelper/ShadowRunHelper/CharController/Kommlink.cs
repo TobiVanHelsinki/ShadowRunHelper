@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharController
 {
@@ -14,11 +15,12 @@ namespace ShadowRunHelper.CharController
 
         public cKommlinkController()
         {
+            var res = ResourceLoader.GetForCurrentView();
             ActiveItem = new Kommlink();
-            ActiveItem.Bezeichner = "ActiveDeck";
+            ActiveItem.Bezeichner = res.GetString("Model_Kommlink__Aktiv/Text");
             MI_V = new KeyValuePair<Thing, string>(ActiveItem, "Deck-Stärke");
-            MI_F = new KeyValuePair<Thing, string>(ActiveItem, "Firewall");
-            MI_D = new KeyValuePair<Thing, string>(ActiveItem, "Datenverarbeitung");
+            MI_F = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Kommlink_Firewall/Text"));
+            MI_D = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Kommlink_Datenverarbeitung/Text"));
 
             Data.CollectionChanged += Data_CollectionChanged;
         }
