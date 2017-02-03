@@ -106,17 +106,17 @@ namespace ShadowRunHelper.CharModel
             {
                 if (item.Key == res.GetString("Model_Kommlink_Programmanzahl/Text"))
                 {
-                    this.Programmanzahl = Int64.Parse(item.Value);
+                    this.Programmanzahl = double.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == res.GetString("Model_Kommlink_Firewall/Text"))
                 {
-                    this.Firewall = Int64.Parse(item.Value);
+                    this.Firewall = double.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == res.GetString("Model_Kommlink_Datenverarbeitung/Text"))
                 {
-                    this.Datenverarbeitung = Int64.Parse(item.Value);
+                    this.Datenverarbeitung = double.Parse(item.Value);
                     continue;
                 }
             }

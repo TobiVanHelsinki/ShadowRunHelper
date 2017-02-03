@@ -20,9 +20,9 @@ namespace ShadowRunHelper.CharModel
             get { return thingType; }
             protected set
             {
-                if (value != this.thingType)
+                if (value != thingType)
                 {
-                    this.thingType = value;
+                    thingType = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -33,9 +33,9 @@ namespace ShadowRunHelper.CharModel
             get { return bezeichner; }
             set
             {
-                if (value != this.bezeichner)
+                if (value != bezeichner)
                 {
-                    this.bezeichner = value;
+                    bezeichner = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -46,9 +46,9 @@ namespace ShadowRunHelper.CharModel
             get { return typ; }
             set
             {
-                if (value != this.typ)
+                if (value != typ)
                 {
-                    this.typ = value;
+                    typ = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -59,9 +59,9 @@ namespace ShadowRunHelper.CharModel
             get { return wert; }
             set
             {
-                if (value != this.wert)
+                if (value != wert)
                 {
-                    this.wert = value;
+                    wert = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -72,9 +72,9 @@ namespace ShadowRunHelper.CharModel
             get { return zusatz; }
             set
             {
-                if (value != this.zusatz)
+                if (value != zusatz)
                 {
-                    this.zusatz = value;
+                    zusatz = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -85,9 +85,9 @@ namespace ShadowRunHelper.CharModel
             get { return notiz; }
             set
             {
-                if (value != this.notiz)
+                if (value != notiz)
                 {
-                    this.notiz = value;
+                    notiz = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -95,7 +95,7 @@ namespace ShadowRunHelper.CharModel
 
         public List<KeyValuePair<string, double>> Value
         {
-            get { return this.GetValueList(); }
+            get { return GetValueList(); }
             set {            }
         }
         
@@ -144,8 +144,8 @@ namespace ShadowRunHelper.CharModel
             strReturn += Notiz;
             //strReturn += Delimiter;
             //strReturn += Ordnung;
-            strReturn += Delimiter;
-            strReturn += ThingType;
+            //strReturn += Delimiter;
+            //strReturn += ThingType;
             strReturn += Delimiter;
             strReturn += Typ;
             strReturn += Delimiter;
@@ -164,8 +164,8 @@ namespace ShadowRunHelper.CharModel
             strReturn += res.GetString("Model_Thing_Notiz/Text");
             //strReturn += Delimiter;
             //strReturn += Ordnung;
-            strReturn += Delimiter;
-            strReturn += res.GetString("Model_Thing_ThingTyp/Text");
+            //strReturn += Delimiter;
+            //strReturn += res.GetString("Model_Thing_ThingTyp/Text");
             strReturn += Delimiter;
             strReturn += res.GetString("Model_Thing_Typ/Text");
             strReturn += Delimiter;
@@ -182,27 +182,27 @@ namespace ShadowRunHelper.CharModel
             {
                 if (item.Key == res.GetString("Model_Thing_Bezeichner/Text"))
                 {
-                    this.Bezeichner = item.Value;
+                    Bezeichner = item.Value;
                     continue;
                 }
                 if (item.Key == res.GetString("Model_Thing_Notiz/Text"))
                 {
-                    this.Notiz = item.Value;
+                    Notiz = item.Value;
                     continue;
                 }
                 if (item.Key == res.GetString("Model_Thing_Typ/Text"))
                 {
-                    this.Typ = item.Value;
+                    Typ = item.Value;
                     continue;
                 }
                 if (item.Key == res.GetString("Model_Thing_Wert/Text"))
                 {
-                    this.Wert= Int64.Parse(item.Value);
+                    Wert= double.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == res.GetString("Model_Thing_Zusatz/Text"))
                 {
-                    this.Zusatz = item.Value;
+                    Zusatz = item.Value;
                     continue;
                 }
 

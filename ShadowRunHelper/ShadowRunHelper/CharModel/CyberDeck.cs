@@ -13,9 +13,9 @@ namespace ShadowRunHelper.CharModel
             get { return firewall_o; }
             set
             {
-                if (value != this.firewall_o)
+                if (value != firewall_o)
                 {
-                    this.firewall_o = value;
+                    firewall_o = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -26,9 +26,9 @@ namespace ShadowRunHelper.CharModel
             get { return datenverarbeitung_o; }
             set
             {
-                if (value != this.datenverarbeitung_o)
+                if (value != datenverarbeitung_o)
                 {
-                    this.datenverarbeitung_o = value;
+                    datenverarbeitung_o = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -39,9 +39,9 @@ namespace ShadowRunHelper.CharModel
             get { return angriff; }
             set
             {
-                if (value != this.angriff)
+                if (value != angriff)
                 {
-                    this.angriff = value;
+                    angriff = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -52,9 +52,9 @@ namespace ShadowRunHelper.CharModel
             get { return angriff_o; }
             set
             {
-                if (value != this.angriff_o)
+                if (value != angriff_o)
                 {
-                    this.angriff_o = value;
+                    angriff_o = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -65,9 +65,9 @@ namespace ShadowRunHelper.CharModel
             get { return schleicher; }
             set
             {
-                if (value != this.schleicher)
+                if (value != schleicher)
                 {
-                    this.schleicher = value;
+                    schleicher = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -78,9 +78,9 @@ namespace ShadowRunHelper.CharModel
             get { return schleicher_o; }
             set
             {
-                if (value != this.schleicher_o)
+                if (value != schleicher_o)
                 {
-                    this.schleicher_o = value;
+                    schleicher_o = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -88,7 +88,7 @@ namespace ShadowRunHelper.CharModel
 
         public CyberDeck()
         {
-            this.ThingType = ThingDefs.CyberDeck;
+            ThingType = ThingDefs.CyberDeck;
         }
 
 
@@ -97,13 +97,13 @@ namespace ShadowRunHelper.CharModel
             switch (ID)
             {
                 case "Angriff":
-                    return this.Angriff;
+                    return Angriff;
                 case "Schleicher":
-                    return this.Schleicher;
+                    return Schleicher;
                 case "Datenverarbeitung":
-                    return this.Datenverarbeitung;
+                    return Datenverarbeitung;
                 case "Firewall":
-                    return this.Firewall;
+                    return Firewall;
                 default:
                     break;
             }
@@ -196,32 +196,32 @@ namespace ShadowRunHelper.CharModel
             {
                 if (item.Key == res.GetString("Model_CyberDeck_Angriff/Text"))
                 {
-                    this.Angriff = Int64.Parse(item.Value);
+                    Angriff = int.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == res.GetString("Model_CyberDeck_Angriff_o/Text"))
                 {
-                    this.Angriff_o = Int64.Parse(item.Value);
+                    Angriff_o = int.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == res.GetString("Model_CyberDeck_Schleicher/Text"))
                 {
-                    this.Schleicher = Int64.Parse(item.Value);
+                    Schleicher = int.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == res.GetString("Model_CyberDeck_Schleicher_o/Text"))
                 {
-                    this.Schleicher_o = Int64.Parse(item.Value);
+                    Schleicher_o = int.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == res.GetString("Model_CyberDeck_Firewall_o/Text"))
                 {
-                    this.Firewall_o = Int64.Parse(item.Value);
+                    Firewall_o = int.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == res.GetString("Model_CyberDeck_Datenverarbeitung_o/Text"))
                 {
-                    this.Datenverarbeitung_o = Int64.Parse(item.Value);
+                    Datenverarbeitung_o = int.Parse(item.Value);
                     continue;
                 }
             }

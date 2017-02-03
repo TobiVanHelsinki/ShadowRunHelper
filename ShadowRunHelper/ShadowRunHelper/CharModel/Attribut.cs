@@ -30,6 +30,6 @@ namespace ShadowRunHelper.CharModel
             base.Reset();
         }
 
-
+        
     }
 }

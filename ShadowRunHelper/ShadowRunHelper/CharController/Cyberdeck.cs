@@ -17,7 +17,6 @@ namespace ShadowRunHelper.CharController
 
         public cCyberDeckController()
         {
-            nCountOfModelProperties = 18;
             ActiveDeck = new CyberDeck();
             ActiveDeck.Bezeichner = "ActiveDeck";
             MI_V = new KeyValuePair<Thing, string>(ActiveDeck, "Deck-Stärke");

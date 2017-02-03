@@ -81,5 +81,23 @@ namespace ShadowRunHelper.CharModel
             return strReturn;
         }
 
+        public override void FromCSV(Dictionary<string, string> dic)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            base.FromCSV(dic);
+            foreach (var item in dic)
+            {
+                if (item.Key == res.GetString("Model_Implantat_Essenz/Text"))
+                {
+                    Essenz = double.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_Implantat_Kapazität/Text"))
+                {
+                    Kapazität = double.Parse(item.Value);
+                    continue;
+                }
+            }
+        }
     }
 }

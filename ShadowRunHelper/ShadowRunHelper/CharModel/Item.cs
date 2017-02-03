@@ -114,17 +114,17 @@ namespace ShadowRunHelper.CharModel
             {
                 if (item.Key == res.GetString("Model_Item_Aktiv/Text"))
                 {
-                    this.Aktiv = Boolean.Parse(item.Value);
+                    this.Aktiv = bool.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == res.GetString("Model_Item_Anzahl/Text"))
                 {
-                    this.Anzahl = Int64.Parse(item.Value);
+                    this.Anzahl = double.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == res.GetString("Model_Item_Besitz/Text"))
                 {
-                    this.Besitz = Boolean.Parse(item.Value);
+                    this.Besitz = bool.Parse(item.Value);
                     continue;
                 }
             }

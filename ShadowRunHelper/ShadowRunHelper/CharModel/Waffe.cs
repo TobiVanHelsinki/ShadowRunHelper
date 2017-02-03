@@ -1,4 +1,6 @@
-﻿using Windows.ApplicationModel.Resources;
+﻿using System;
+using System.Collections.Generic;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -10,23 +12,23 @@ namespace ShadowRunHelper.CharModel
             get { return pool; }
             set
             {
-                if (value != this.pool)
+                if (value != pool)
                 {
-                    this.pool = value;
+                    pool = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private char schadenTyp = ' ';
-        public char SchadenTyp
+        private string schadenTyp = "";
+        public string SchadenTyp
         {
             get { return schadenTyp; }
             set
             {
-                if (value != this.schadenTyp)
+                if (value != schadenTyp)
                 {
-                    this.schadenTyp = value;
+                    schadenTyp = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -38,9 +40,9 @@ namespace ShadowRunHelper.CharModel
             get { return pB; }
             set
             {
-                if (value != this.pB)
+                if (value != pB)
                 {
-                    this.pB = value;
+                    pB = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -70,6 +72,30 @@ namespace ShadowRunHelper.CharModel
             strReturn += res.GetString("Model_Waffe_PB/Text");
             strReturn += Delimiter;
             return strReturn;
+        }
+   
+        public override void FromCSV(Dictionary<string, string> dic)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            base.FromCSV(dic);
+            foreach (var item in dic)
+            {
+                if (item.Key == res.GetString("Model_Waffe_Pool/Text"))
+                {
+                    Pool = double.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_Waffe_SchadenTyp/Text"))
+                {
+                    SchadenTyp = item.Value;
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_Waffe_PB/Text"))
+                {
+                    PB = double.Parse(item.Value);
+                    continue;
+                }
+            }
         }
     }
 }

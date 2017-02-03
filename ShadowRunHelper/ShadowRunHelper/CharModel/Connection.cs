@@ -1,22 +1,35 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
 using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
     public class Connection : Thing
     {
-       
+
         private double loyal = 0;
         public double Loyal
         {
             get { return loyal; }
             set
             {
-                if (value != this.loyal)
+                if (value != loyal)
                 {
-                    this.loyal = value;
+                    loyal = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        private double _einfluss = 0;
+        public double Einfluss
+        {
+            get { return _einfluss; }
+            set
+            {
+                if (value != _einfluss)
+                {
+                    _einfluss = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -24,7 +37,7 @@ namespace ShadowRunHelper.CharModel
 
         public Connection()
         {
-            this.ThingType = ThingDefs.Connection;
+            ThingType = ThingDefs.Connection;
         }
 
         public Connection Copy(Connection target = null)
@@ -35,14 +48,14 @@ namespace ShadowRunHelper.CharModel
             }
             base.Copy(target);
             target.Loyal = Loyal;
-            //target.Alias = Alias;
+            target.Einfluss = Einfluss;
             return target;
         }
 
         public override void Reset()
         {
-            //Alias = "";
             Loyal = 0;
+            Einfluss = 0;
             base.Reset();
         }
 
@@ -51,8 +64,8 @@ namespace ShadowRunHelper.CharModel
             string strReturn = base.ToCSV(Delimiter);
             strReturn += Loyal;
             strReturn += Delimiter;
-            //strReturn += Einfluss;
-            //strReturn += Delimiter;
+            strReturn += Einfluss;
+            strReturn += Delimiter;
             return strReturn;
         }
         public override string HeaderToCSV(string Delimiter)
@@ -61,11 +74,29 @@ namespace ShadowRunHelper.CharModel
             string strReturn = base.HeaderToCSV(Delimiter);
             strReturn += res.GetString("Model_Connection_Loyal/Text");
             strReturn += Delimiter;
-            //strReturn += res.GetString("Model_Connection_Einfluss/Text");
-            //strReturn += Delimiter;
+            strReturn += res.GetString("Model_Connection_Einfluss/Text");
+            strReturn += Delimiter;
             return strReturn;
         }
 
+        public override void FromCSV(Dictionary<string, string> dic)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            base.FromCSV(dic);
+            foreach (var item in dic)
+            {
+                if (item.Key == res.GetString("Model_Connection_Loyal/Text"))
+                {
+                    Loyal = double.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_Connection_Einfluss/Text"))
+                {
+                    Einfluss = double.Parse(item.Value);
+                    continue;
+                }
+            }
+        }
 
     }
 }

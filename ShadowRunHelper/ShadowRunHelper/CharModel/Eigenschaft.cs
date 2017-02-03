@@ -1,4 +1,5 @@
-﻿using Windows.ApplicationModel.Resources;
+﻿using System.Collections.Generic;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -10,9 +11,9 @@ namespace ShadowRunHelper.CharModel
             get { return auswirkungen; }
             set
             {
-                if (value != this.auswirkungen)
+                if (value != auswirkungen)
                 {
-                    this.auswirkungen = value;
+                    auswirkungen = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -49,6 +50,19 @@ namespace ShadowRunHelper.CharModel
             strReturn += Auswirkungen;
             strReturn += Delimiter;
             return strReturn;
+        }
+        public override void FromCSV(Dictionary<string, string> dic)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            base.FromCSV(dic);
+            foreach (var item in dic)
+            {
+                if (item.Key == res.GetString("Model_Eigenschaft_Auswirkungen/Text"))
+                {
+                    Auswirkungen = (item.Value);
+                    continue;
+                }
+            }
         }
     }
 }

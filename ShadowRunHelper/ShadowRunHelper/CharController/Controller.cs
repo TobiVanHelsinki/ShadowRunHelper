@@ -7,8 +7,6 @@ namespace ShadowRunHelper.CharController
 {
     public class cController<T> : IController<T> where T : Thing, new()
     {
-        protected int nCountOfModelProperties;
-
         /// <summary>
         /// GUI-Binding Target
         /// </summary>
@@ -138,11 +136,11 @@ namespace ShadowRunHelper.CharController
             {
                 // key = propertie name, value = value
                 string[] CSVEntries = Lines[i].Split(strDelimiter);
-                if (CSVEntries.Length < this.nCountOfModelProperties)
+                if (CSVEntries.Length < 5)
                 {
                     continue;
                 }
-                if (Headar.Length < this.nCountOfModelProperties)
+                if (Headar.Length < 5) //todo replace magic number with the number of thing props
                 {
                     Headar = Lines[i].Split(strDelimiter);
                     continue;

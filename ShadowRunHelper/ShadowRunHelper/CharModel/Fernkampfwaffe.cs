@@ -1,4 +1,5 @@
-﻿using Windows.ApplicationModel.Resources;
+﻿using System.Collections.Generic;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -10,9 +11,9 @@ namespace ShadowRunHelper.CharModel
             get { return rückstoß; }
             set
             {
-                if (value != this.rückstoß)
+                if (value != rückstoß)
                 {
-                    this.rückstoß = value;
+                    rückstoß = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -23,9 +24,9 @@ namespace ShadowRunHelper.CharModel
             get { return modi; }
             set
             {
-                if (value != this.modi)
+                if (value != modi)
                 {
-                    this.modi = value;
+                    modi = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -34,7 +35,7 @@ namespace ShadowRunHelper.CharModel
         public Fernkampfwaffe()
         {
 
-            this.ThingType = ThingDefs.Fernkampfwaffe;
+            ThingType = ThingDefs.Fernkampfwaffe;
         }
 
         public Fernkampfwaffe Copy(Fernkampfwaffe target = null)
@@ -76,6 +77,24 @@ namespace ShadowRunHelper.CharModel
             strReturn += res.GetString("Model_Fernkampfwaffe_Modi/Text");
             strReturn += Delimiter;
             return strReturn;
+        }
+        public override void FromCSV(Dictionary<string, string> dic)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            base.FromCSV(dic);
+            foreach (var item in dic)
+            {
+                if (item.Key == res.GetString("Model_Fernkampfwaffe_Rückstoß/Text"))
+                {
+                    Rückstoß = double.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_Fernkampfwaffe_Modi/Text"))
+                {
+                    Modi= (item.Value);
+                    continue;
+                }
+            }
         }
     }
 }
