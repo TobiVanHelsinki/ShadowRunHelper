@@ -136,7 +136,7 @@ namespace ShadowRunHelper
         private async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
         {
             Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.CurrentChar.lstThings, CharModel.Handlung.Mode.Grenze);
-            await dialog.ShowAsync();
+            var ergebnis = await dialog.ShowAsync();
         }
 
         private async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)

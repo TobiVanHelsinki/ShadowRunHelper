@@ -195,7 +195,7 @@ namespace ShadowRunHelper.IO
                 temp.PB = item.PB;
                 temp.Pool = item.Pool;
                 temp.Reichweite = item.Reichweite;
-                temp.SchadenTyp = item.SchadenTyp;
+                temp.SchadenTyp = item.SchadenTyp.ToString();
 
             }
 
@@ -215,7 +215,7 @@ namespace ShadowRunHelper.IO
                 temp.Pool = item.Pool;
                 temp.Modi = item.Modi;
                 temp.Rückstoß = item.Rückstoß;
-                temp.SchadenTyp = item.SchadenTyp;
+                temp.SchadenTyp = item.SchadenTyp.ToString();
 
             }
 

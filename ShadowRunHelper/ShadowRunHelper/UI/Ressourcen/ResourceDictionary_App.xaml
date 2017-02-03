@@ -34,6 +34,9 @@
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
 
+    <Style TargetType="TextBox" x:Key="EditTextBoxBase">
+        <Setter Property="Margin" Value="3,1,3,1"/>
+    </Style>
     <Style TargetType="TextBox" x:Key="Zahlen" BasedOn="{StaticResource EditTextBoxBase}">
         <Setter Property="InputScope" Value="Digits"/>
     </Style>
@@ -44,9 +47,6 @@
     <Style TargetType="TextBox" x:Key="EditTextBox" BasedOn="{StaticResource EditTextBoxBase}">
     </Style>
 
-    <Style TargetType="TextBox" x:Key="EditTextBoxBase">
-        <Setter Property="Margin" Value="3,1,3,1"/>
-    </Style>
 
     <Style TargetType="TextBlock" x:Key="EditTextBlock">
     </Style>
