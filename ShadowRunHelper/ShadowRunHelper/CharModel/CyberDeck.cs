@@ -94,20 +94,7 @@ namespace ShadowRunHelper.CharModel
 
         public override double GetValue(string ID = "")
         {
-            switch (ID)
-            {
-                case "Angriff":
-                    return Angriff;
-                case "Schleicher":
-                    return Schleicher;
-                case "Datenverarbeitung":
-                    return Datenverarbeitung;
-                case "Firewall":
-                    return Firewall;
-                default:
-                    break;
-            }
-            return Wert;
+            return GetValueList(ID).Find((x) => x.Key == ID).Value;
         }
 
         public override List<KeyValuePair<string, double>> GetValueList([CallerMemberName] string ID = "")

@@ -38,7 +38,10 @@ namespace ShadowRunHelper.CharModel
 
             ThingType = ThingDefs.Fernkampfwaffe;
         }
-
+        public override double GetValue(string ID = "")
+        {
+            return GetValueList(ID).Find((x) => x.Key == ID).Value;
+        }
         public override List<KeyValuePair<string, double>> GetValueList([CallerMemberName] string ID = "")
         {
             var res = ResourceLoader.GetForCurrentView();
@@ -52,15 +55,16 @@ namespace ShadowRunHelper.CharModel
         }
 
 
-        public Fernkampfwaffe Copy(Fernkampfwaffe target = null)
+        public override Thing Copy(ref Thing target)
         {
             if (target == null)
             {
                 target = new Fernkampfwaffe();
             }
-            base.Copy(target);
-            target.Rückstoß = Rückstoß;
-            target.Modi = Modi;
+            base.Copy(ref target);
+            Fernkampfwaffe TargetS = (Fernkampfwaffe)target;
+            TargetS.Rückstoß = Rückstoß;
+            TargetS.Modi = Modi;
             return target;
         }
 

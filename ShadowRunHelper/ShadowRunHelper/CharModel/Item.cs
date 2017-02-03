@@ -57,17 +57,17 @@ namespace ShadowRunHelper.CharModel
         {
             return  (this.Aktiv == true) ? base.GetValue(ID) : 0;
         }
-
-        public Item Copy(ref Item target)
+        public override Thing Copy(ref Thing target)
         {
             if (target == null)
             {
                 target = new Item();
             }
-            base.Copy((Thing)target);
-            target.Aktiv = Aktiv;
-            target.Anzahl = Anzahl;
-            target.Besitz = Besitz;
+            base.Copy(ref target);
+            Item TargetS = (Item)target;
+            TargetS.Aktiv = Aktiv;
+            TargetS.Anzahl = Anzahl;
+            TargetS.Besitz = Besitz;
             return target;
         }
 

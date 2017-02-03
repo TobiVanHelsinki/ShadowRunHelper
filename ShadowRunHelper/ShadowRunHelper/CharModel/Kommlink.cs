@@ -53,16 +53,17 @@ namespace ShadowRunHelper.CharModel
 
         }
 
-        public Kommlink Copy(Kommlink target = null)
+        public Thing Copy(Thing target = null)
         {
             if (target == null)
             {
                 target = new Kommlink();
             }
-            base.Copy(target);
-            target.Programmanzahl = Programmanzahl;
-            target.Firewall = Firewall;
-            target.Datenverarbeitung = Datenverarbeitung;
+            base.Copy(ref target);
+            Kommlink TargetS = (Kommlink)target;
+            TargetS.Programmanzahl = Programmanzahl;
+            TargetS.Firewall = Firewall;
+            TargetS.Datenverarbeitung = Datenverarbeitung;
             return target;
         }
 
@@ -73,6 +74,12 @@ namespace ShadowRunHelper.CharModel
             Firewall = 0;
             Datenverarbeitung = 0;
         }
+
+        public override double GetValue(string ID = "")
+        {
+            return GetValueList(ID).Find((x) => x.Key == ID).Value;
+        }
+
         public override List<KeyValuePair<string, double>> GetValueList([CallerMemberName] string ID = "")
         {
             var res = ResourceLoader.GetForCurrentView();

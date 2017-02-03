@@ -130,6 +130,11 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Vehikel;
 
         }
+
+        public override double GetValue(string ID = "")
+        {
+            return GetValueList(ID).Find((x) => x.Key == ID).Value;
+        }
         public override List<KeyValuePair<string, double>> GetValueList([CallerMemberName] string ID = "")
         {
             var res = ResourceLoader.GetForCurrentView();
@@ -147,22 +152,23 @@ namespace ShadowRunHelper.CharModel
             lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Vehikel_Beschleunigung/Text"), Beschleunigung));
             return lst;
         }
-        public Vehikel Copy(ref Vehikel target)
+        public override Thing Copy(ref Thing target)
         {
             if (target == null)
             {
                 target = new Vehikel();
             }
-            base.Copy((Thing)target);
-            target.Beschleunigung = Beschleunigung;
-            target.Geschwindigkeit = Geschwindigkeit;
-            target.Gewicht = Gewicht;
-            target.Handling = Handling;
-            target.Panzerung = Panzerung;
-            target.Rumpf = Rumpf;
-            target.Pilot = Pilot;
-            target.Sensor = Sensor;
-            target.Sitze = Sitze;
+            base.Copy(ref target);
+            Vehikel targetS = (Vehikel)target;
+            targetS.Beschleunigung = Beschleunigung;
+            targetS.Geschwindigkeit = Geschwindigkeit;
+            targetS.Gewicht = Gewicht;
+            targetS.Handling = Handling;
+            targetS.Panzerung = Panzerung;
+            targetS.Rumpf = Rumpf;
+            targetS.Pilot = Pilot;
+            targetS.Sensor = Sensor;
+            targetS.Sitze = Sitze;
             return target;
         }
 

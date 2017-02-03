@@ -110,7 +110,7 @@ namespace ShadowRunHelper.CharModel
             return lst;
         }
 
-        public Thing Copy(Thing target)
+        public virtual Thing Copy(ref Thing target)
         {
             if (target == null)
             {

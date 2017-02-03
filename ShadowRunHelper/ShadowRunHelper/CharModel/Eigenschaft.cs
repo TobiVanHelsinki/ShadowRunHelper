@@ -19,14 +19,14 @@ namespace ShadowRunHelper.CharModel
             }
         }
         
-        private Eigenschaft Copy(Eigenschaft target = null)
+        public override Thing Copy(ref Thing target)
         {
             if (target == null)
             {
                 throw new System.ArgumentNullException();
             }
-            base.Copy(target);
-            target.Auswirkungen = Auswirkungen;
+            base.Copy(ref target);
+            ((Eigenschaft)target).Auswirkungen = Auswirkungen;
             return target;
         }
 

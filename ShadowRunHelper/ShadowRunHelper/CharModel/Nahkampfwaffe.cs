@@ -24,7 +24,10 @@ namespace ShadowRunHelper.CharModel
         {
             this.ThingType = ThingDefs.Nahkampfwaffe;
         }
-
+        public override double GetValue(string ID = "")
+        {
+            return GetValueList(ID).Find((x) => x.Key == ID).Value;
+        }
 
         public override List<KeyValuePair<string, double>> GetValueList([CallerMemberName] string ID = "")
         {
@@ -38,14 +41,14 @@ namespace ShadowRunHelper.CharModel
             return lst;
         }
 
-        public Nahkampfwaffe Copy(ref Nahkampfwaffe target)
+        public override Thing Copy(ref Thing target)
         {
             if (target == null)
             {
                 target = new Nahkampfwaffe();
             }
-            base.Copy((Thing)target);
-            target.Reichweite = Reichweite;
+            base.Copy(ref target);
+            ((Nahkampfwaffe)target).Reichweite = Reichweite;
             return target;
         }
 

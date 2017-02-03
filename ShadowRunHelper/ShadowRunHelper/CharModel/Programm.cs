@@ -30,14 +30,14 @@ namespace ShadowRunHelper.CharModel
         }
 
 
-        public Programm Copy(ref Programm target)
+        public override Thing Copy(ref Thing target)
         {
             if (target == null)
             {
                 target = new Programm();
             }
-            base.Copy((Thing)target);
-            target.Optionen = Optionen;
+            base.Copy(ref target);
+            ((Programm)target).Optionen = Optionen;
             return target;
         }
 

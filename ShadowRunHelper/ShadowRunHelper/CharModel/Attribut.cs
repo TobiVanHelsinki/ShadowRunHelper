@@ -14,16 +14,7 @@ namespace ShadowRunHelper.CharModel
         {
             return Wert;
         }
-
-        public Attribut Copy(Attribut target = null)
-        {
-            if (target == null)
-            {
-                target = new Attribut();
-            }
-            base.Copy(target);
-            return target;
-        }
+        
 
         public override void Reset()
         {

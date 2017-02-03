@@ -47,7 +47,10 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Panzerung;
 
         }
-
+        public override double GetValue(string ID = "")
+        {
+            return GetValueList(ID).Find((x) => x.Key == ID).Value;
+        }
         public override List<KeyValuePair<string, double>> GetValueList([CallerMemberName] string ID = "")
         {
             var res = ResourceLoader.GetForCurrentView();

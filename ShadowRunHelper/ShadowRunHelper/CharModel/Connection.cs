@@ -40,15 +40,15 @@ namespace ShadowRunHelper.CharModel
             ThingType = ThingDefs.Connection;
         }
 
-        public Connection Copy(Connection target = null)
+        public Thing Copy(Thing target = null)
         {
             if (target == null)
             {
                 target = new Connection();
             }
-            base.Copy(target);
-            target.Loyal = Loyal;
-            target.Einfluss = Einfluss;
+            base.Copy(ref target);
+            ((Connection)target).Loyal = Loyal;
+            ((Connection)target).Einfluss = Einfluss;
             return target;
         }
 
