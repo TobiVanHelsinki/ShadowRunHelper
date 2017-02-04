@@ -29,7 +29,8 @@
                   MinWidth="400"
                   Width="500"
                   SelectionMode="Multiple" 
-                  Loaded="Zus_ListVIew_Loaded">
+                  Loaded="Zus_ListVIew_Loaded"
+                      >
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="bigmodel:ThingListEntry">
                         <Grid Name="Zus_ListVIew_Stack" >

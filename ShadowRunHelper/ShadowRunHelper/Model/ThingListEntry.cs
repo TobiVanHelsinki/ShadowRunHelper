@@ -13,13 +13,11 @@ namespace ShadowRunHelper.Model
         public Thing Object;
         public ThingListEntry This;
         public string strProperty;
-        public double nValue;
 
-        public ThingListEntry(Thing o, string strPropName = "", double value = 0)
+        public ThingListEntry(Thing o, string strPropName = "")
         {
             Object = o;
             strProperty = strPropName;
-            nValue = value;
             This = this;
         }
     }

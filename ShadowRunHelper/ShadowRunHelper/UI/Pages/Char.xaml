@@ -14,6 +14,18 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="ThingListEntry" x:DataType="model:ThingListEntry">
+                <Grid Name="Zus_ListVIew_Stack" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Bezeichner}" Grid.Column="0"/>
+                    <TextBlock x:Uid="Space" Grid.Column="1"/>
+                    <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Wert}" Grid.Column="2"/>
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
 
     </Page.Resources>
@@ -56,70 +68,16 @@
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
                                                     <Button x:Uid="UI_Btn_Bearbeiten_Zus" Name="Handlung_Zus_Edit" Click="HandlungEditZusDialog_Click"/>
-                                                    <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind WertZusammensetzung, Mode=OneWay}" >
-                                                        <GridView.ItemTemplate >
-                                                            <DataTemplate >
-                                                                <Grid Name="Zus_ListVIew_Stack">
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="Auto"/>
-                                                                        <ColumnDefinition Width="Auto"/>
-                                                                    </Grid.ColumnDefinitions>
-                                                                    <Grid.RowDefinitions>
-                                                                        <RowDefinition/>
-                                                                        <RowDefinition/>
-                                                                    </Grid.RowDefinitions>
-                                                                    <TextBlock Text="{Binding Key.Bezeichner, Mode=OneWay}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
-                                                                    <TextBlock Text="{Binding Key.Wert, Mode=OneWay}"  Grid.Column="1" Grid.Row="1"/>
-                                                                    <TextBlock Text="{Binding Key.Typ, Mode=OneWay}"  Grid.Column="0" Grid.Row="1"/>
-                                                                </Grid>
-                                                            </DataTemplate>
-                                                        </GridView.ItemTemplate>
-                                                    </GridView>
+                                                    <GridView Name="Zus_ListVIew" ItemsSource="{x:Bind WertZusammensetzung, Mode=OneWay}" ItemTemplate="{StaticResource ThingListEntry}"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_GrenzeZusammensetzung"/>
                                                     <Button x:Uid="UI_Btn_Bearbeiten_GrenzeZus" Name="Handlung_GrenzeZus_Edit" Click="HandlungEditGrenzeZusDialog_Click"/>
-                                                    <GridView Name="GZus_ListVIew" ItemsSource="{x:Bind GrenzeZusammensetzung, Mode=OneWay}" >
-                                                        <GridView.ItemTemplate >
-                                                            <DataTemplate >
-                                                                <Grid Name="GZus_ListVIew_Stack">
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="Auto"/>
-                                                                        <ColumnDefinition Width="Auto"/>
-                                                                    </Grid.ColumnDefinitions>
-                                                                    <Grid.RowDefinitions>
-                                                                        <RowDefinition/>
-                                                                        <RowDefinition/>
-                                                                    </Grid.RowDefinitions>
-                                                                    <TextBlock Text="{Binding Key.Bezeichner, Mode=OneWay}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
-                                                                    <TextBlock Text="{Binding Key.Wert, Mode=OneWay}"  Grid.Column="1" Grid.Row="1"/>
-                                                                    <TextBlock Text="{Binding Key.Typ, Mode=OneWay}"  Grid.Column="0" Grid.Row="1"/>
-                                                                </Grid>
-                                                            </DataTemplate>
-                                                        </GridView.ItemTemplate>
-                                                    </GridView>
+                                                    <GridView Name="GZus_ListVIew" ItemsSource="{x:Bind GrenzeZusammensetzung, Mode=OneWay}"  ItemTemplate="{StaticResource ThingListEntry}"/>
                                                     <StackPanel Orientation="Horizontal">
                                                         <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_GegenZusammensetzung"/>
                                                         <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Gegen, Mode=OneWay}"/>
                                                     </StackPanel>
                                                     <Button x:Uid="UI_Btn_Bearbeiten_GegenZus" Name="Handlung_GegenZus_Edit" Click="HandlungEditGegenZusDialog_Click"/>
-                                                    <GridView Name="GegZus_ListVIew" ItemsSource="{x:Bind GegenZusammensetzung, Mode=OneWay}" >
-                                                        <GridView.ItemTemplate >
-                                                            <DataTemplate >
-                                                                <Grid Name="GeGZus_ListVIew_Stack">
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="Auto"/>
-                                                                        <ColumnDefinition Width="Auto"/>
-                                                                    </Grid.ColumnDefinitions>
-                                                                    <Grid.RowDefinitions>
-                                                                        <RowDefinition/>
-                                                                        <RowDefinition/>
-                                                                    </Grid.RowDefinitions>
-                                                                    <TextBlock Text="{Binding Key.Bezeichner, Mode=OneWay}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"/>
-                                                                    <TextBlock Text="{Binding Key.Wert, Mode=OneWay}"  Grid.Column="1" Grid.Row="1"/>
-                                                                    <TextBlock Text="{Binding Key.Typ, Mode=OneWay}"  Grid.Column="0" Grid.Row="1"/>
-                                                                </Grid>
-                                                            </DataTemplate>
-                                                        </GridView.ItemTemplate>
-                                                    </GridView>
+                                                    <GridView Name="GegZus_ListVIew" ItemsSource="{x:Bind GegenZusammensetzung, Mode=OneWay}"  ItemTemplate="{StaticResource ThingListEntry}"/>
                                                     <Button x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="Edit_Click"/>
                                                     <Button x:Uid="UI_Btn_Loeschen" Name="Handlung_Del" Click="Del_Click"/>
                                                 </StackPanel>

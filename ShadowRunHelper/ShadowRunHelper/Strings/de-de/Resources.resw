@@ -594,7 +594,7 @@
     <value>Pfad</value>
   </data>
   <data name="Model_Handlung_GegenZusammensetzung.Text" xml:space="preserve">
-    <value>Zusammensetzung Wehre</value>
+    <value>Zusammensetzung Wehren</value>
   </data>
   <data name="UI_Btn_Bearbeiten_GegenZus.Content" xml:space="preserve">
     <value>Wehren Bearbeiten</value>
