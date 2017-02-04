@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using Windows.ApplicationModel.Resources;
@@ -8,9 +9,9 @@ namespace ShadowRunHelper.CharController
     public class cPanzerungController : cController<Panzerung>
     {
 
-        private KeyValuePair<Thing, string> MI_1;
-        private KeyValuePair<Thing, string> MI_2;
-        private KeyValuePair<Thing, string> MI_3;
+        private ThingListEntry MI_1;
+        private ThingListEntry MI_2;
+        private ThingListEntry MI_3;
         public Panzerung ActiveItem;
 
         public cPanzerungController()
@@ -18,9 +19,9 @@ namespace ShadowRunHelper.CharController
             var res = ResourceLoader.GetForCurrentView();
             ActiveItem = new Panzerung();
             ActiveItem.Bezeichner = res.GetString("Model_Panzerung__Aktiv/Text");
-            MI_1 = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Thing_Wert/Text"));
-            MI_2 = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Panzerung_Kapazität/Text"));
-            MI_3 = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Panzerung_Stoß/Text"));
+            MI_1 = new ThingListEntry(ActiveItem, res.GetString("Model_Thing_Wert/Text"));
+            MI_2 = new ThingListEntry(ActiveItem, res.GetString("Model_Panzerung_Kapazität/Text"));
+            MI_3 = new ThingListEntry(ActiveItem, res.GetString("Model_Panzerung_Stoß/Text"));
             
             Data.CollectionChanged += Data_CollectionChanged;
         }
@@ -49,9 +50,9 @@ namespace ShadowRunHelper.CharController
             ActiveItem.Reset();
         }
 
-        public new List<KeyValuePair<Thing, string>> GetElementsForThingList()
+        public new List<ThingListEntry> GetElementsForThingList()
         {
-            List<KeyValuePair<Thing, string>> lstReturn = new List<KeyValuePair<Thing, string>>();
+            List<ThingListEntry> lstReturn = new List<ThingListEntry>();
             lstReturn.Add(MI_1);
             lstReturn.Add(MI_2);
             lstReturn.Add(MI_3);

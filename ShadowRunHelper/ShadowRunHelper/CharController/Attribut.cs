@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -77,19 +78,19 @@ namespace ShadowRunHelper.CharController
             this.Limit_S.Wert = Math.Ceiling((this.Charisma.GetValue() * 2 + this.Willen.GetValue() + this.Essenz.GetValue()) / 3);
         }
 
-        private KeyValuePair<Thing, string> MI_Konsti;
-        private KeyValuePair<Thing, string> MI_Geschick;
-        private KeyValuePair<Thing, string> MI_Reaktion;
-        private KeyValuePair<Thing, string> MI_Staerke;
-        private KeyValuePair<Thing, string> MI_Charisma;
-        private KeyValuePair<Thing, string> MI_Logik;
-        private KeyValuePair<Thing, string> MI_Intuition;
-        private KeyValuePair<Thing, string> MI_Willen;
+        ThingListEntry MI_Konsti;
+        ThingListEntry MI_Geschick;
+        ThingListEntry MI_Reaktion;
+        ThingListEntry MI_Staerke;
+        ThingListEntry MI_Charisma;
+        ThingListEntry MI_Logik;
+        ThingListEntry MI_Intuition;
+        ThingListEntry MI_Willen;
 
-        private KeyValuePair<Thing, string> MI_Essenz;
-        private KeyValuePair<Thing, string> MI_Limit_K;
-        private KeyValuePair<Thing, string> MI_Limit_G;
-        private KeyValuePair<Thing, string> MI_Limit_S;
+        ThingListEntry MI_Essenz;
+        ThingListEntry MI_Limit_K;
+        ThingListEntry MI_Limit_G;
+        ThingListEntry MI_Limit_S;
         public cAttributController()
         {
             this.eDataTyp = ThingDefs.Attribut;
@@ -120,18 +121,18 @@ namespace ShadowRunHelper.CharController
             Limit_S = new Attribut();
             Limit_S.Bezeichner = res.GetString("Model_Attribut_Limit_S/Text");
 
-            MI_Konsti = new KeyValuePair<Thing, string>(Konsti, "");
-            MI_Geschick = new KeyValuePair<Thing, string>(Geschick, "");
-            MI_Reaktion = new KeyValuePair<Thing, string>(Reaktion, "");
-            MI_Staerke = new KeyValuePair<Thing, string>(Staerke, "");
-            MI_Charisma = new KeyValuePair<Thing, string>(Charisma, "");
-            MI_Logik = new KeyValuePair<Thing, string>(Logik, "");
-            MI_Intuition = new KeyValuePair<Thing, string>(Intuition, "");
-            MI_Willen = new KeyValuePair<Thing, string>(Willen, "");
-            MI_Essenz = new KeyValuePair<Thing, string>(Essenz, "");
-            MI_Limit_K = new KeyValuePair<Thing, string>(Limit_K, "");
-            MI_Limit_G = new KeyValuePair<Thing, string>(Limit_G, "");
-            MI_Limit_S = new KeyValuePair<Thing, string>(Limit_S, "");
+            MI_Konsti = new ThingListEntry(Konsti, "");
+            MI_Geschick = new ThingListEntry(Geschick, "");
+            MI_Reaktion = new ThingListEntry(Reaktion, "");
+            MI_Staerke = new ThingListEntry(Staerke, "");
+            MI_Charisma = new ThingListEntry(Charisma, "");
+            MI_Logik = new ThingListEntry(Logik, "");
+            MI_Intuition = new ThingListEntry(Intuition, "");
+            MI_Willen = new ThingListEntry(Willen, "");
+            MI_Essenz = new ThingListEntry(Essenz, "");
+            MI_Limit_K = new ThingListEntry(Limit_K, "");
+            MI_Limit_G = new ThingListEntry(Limit_G, "");
+            MI_Limit_S = new ThingListEntry(Limit_S, "");
 
             Konsti.PropertyChanged += (x, y) => RefreshLimitK();
             Reaktion.PropertyChanged += (x, y) => RefreshLimitK();
@@ -183,9 +184,9 @@ namespace ShadowRunHelper.CharController
             Data.Add(Limit_S);
         }
 
-        public new List<KeyValuePair<Thing, string>> GetElementsForThingList()
+        public new List<ThingListEntry> GetElementsForThingList()
         {
-            List<KeyValuePair<Thing, string>> lstReturn = new List<KeyValuePair<Thing, string>>();
+            var lstReturn = new List<ThingListEntry>();
             lstReturn.Add(MI_Charisma);
             lstReturn.Add(MI_Geschick);
             lstReturn.Add(MI_Reaktion);

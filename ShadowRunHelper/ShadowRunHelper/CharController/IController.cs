@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -13,7 +14,7 @@ namespace ShadowRunHelper.CharController
         /// To populate the "All Things" List - will be overridden by singlecontroller
         /// </summary>
         /// <returns></returns>
-        List<KeyValuePair<Thing, string>> GetElementsForThingList();
+        List<ThingListEntry> GetElementsForThingList();
 
     }
 }

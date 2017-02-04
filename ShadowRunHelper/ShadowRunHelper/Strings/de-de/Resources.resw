@@ -704,4 +704,10 @@
   <data name="Model_Waffe_Wert.Text" xml:space="preserve">
     <value>Schaden</value>
   </data>
+  <data name="Klammer_Rund_Auf.Text" xml:space="preserve">
+    <value>(</value>
+  </data>
+  <data name="Klammer_Rund_Zu.Text" xml:space="preserve">
+    <value>)</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,10 +10,10 @@ namespace ShadowRunHelper.CharController
 {
     public class cFernkampfwaffeController : cController<Fernkampfwaffe>
     {
-        private KeyValuePair<Thing, string> MI_Wert;
-        private KeyValuePair<Thing, string> MI_DK;
-        private KeyValuePair<Thing, string> MI_RK;
-        private KeyValuePair<Thing, string> MI_Pr;
+        private ThingListEntry MI_Wert;
+        private ThingListEntry MI_DK;
+        private ThingListEntry MI_RK;
+        private ThingListEntry MI_Pr;
         public Fernkampfwaffe ActiveItem; 
 
         public cFernkampfwaffeController()
@@ -20,10 +21,10 @@ namespace ShadowRunHelper.CharController
             var res = ResourceLoader.GetForCurrentView();
             ActiveItem = new Fernkampfwaffe();
             ActiveItem.Bezeichner = res.GetString("Model_Fernkampfwaffe__Aktiv/Text");
-            MI_Wert = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Waffe_Wert/Text"));
-            MI_DK = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Waffe_PB/Text"));
-            MI_Pr = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Waffe_Pool/Text"));
-            MI_RK = new KeyValuePair<Thing, string>(ActiveItem, res.GetString("Model_Fernkampfwaffe_Rückstoß/Text"));
+            MI_Wert = new ThingListEntry(ActiveItem, res.GetString("Model_Waffe_Wert/Text"));
+            MI_DK = new ThingListEntry(ActiveItem, res.GetString("Model_Waffe_PB/Text"));
+            MI_Pr = new ThingListEntry(ActiveItem, res.GetString("Model_Waffe_Pool/Text"));
+            MI_RK = new ThingListEntry(ActiveItem, res.GetString("Model_Fernkampfwaffe_Rückstoß/Text"));
 
             Data.CollectionChanged += Data_CollectionChanged;
         }
@@ -52,9 +53,9 @@ namespace ShadowRunHelper.CharController
             ActiveItem.Reset();
         }
 
-        public new List<KeyValuePair<Thing, string>> GetElementsForThingList()
+        public new List<ThingListEntry> GetElementsForThingList()
         {
-            List<KeyValuePair<Thing, string>> lstReturn = new List<KeyValuePair<Thing, string>>();
+            List<ThingListEntry> lstReturn = new List<ThingListEntry>();
             lstReturn.Add(MI_Wert);
             lstReturn.Add(MI_DK);
             lstReturn.Add(MI_RK);

@@ -10,21 +10,27 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var lst = (List<KeyValuePair<string, double>>)value;
+            var item = (Model.ThingListEntry)value;
             switch ((string)parameter)
             {
                 case "Wert":
-                    if (lst.Count == 1)
+                    if (item.strProperty == "")
                     {
-                        return lst[0].Value;
+                        return item.Object.Wert.ToString();
                     }
-                    return "-";
+                    else
+                    {
+                        return item.Object.GetValue(item.strProperty).ToString();
+                    }
                 case "Bezeichner":
-                    if (lst.Count == 1)
+                    if (item.strProperty == "")
                     {
-                        return lst[0].Key;
+                        return item.Object.Bezeichner;
                     }
-                    return "";
+                    else
+                    {
+                        return item.strProperty;
+                    }
                 default:
                     return value;
             }

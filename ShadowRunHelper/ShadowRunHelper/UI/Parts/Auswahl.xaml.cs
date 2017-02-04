@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Data;
 using System;
 using System.Linq;
 using Windows.UI.Xaml;
+using ShadowRunHelper.Model;
 
 namespace ShadowRunHelper
 {
@@ -15,10 +16,10 @@ namespace ShadowRunHelper
     public sealed partial class Auswahl : ContentDialog
     {
         public Handlung data;
-        private List<KeyValuePair<Thing, string>> lstThings;
+        private List<ThingListEntry> lstThings;
         Handlung.Mode Modus;
 
-        public Auswahl(Handlung data, List<KeyValuePair<Thing, string>> i_lstAll, Handlung.Mode modus)
+        public Auswahl(Handlung data, List<ThingListEntry> i_lstAll, Handlung.Mode modus)
         {
             if (i_lstAll == null)
             {
@@ -35,18 +36,18 @@ namespace ShadowRunHelper
             this.lstThings = i_lstAll;
             this.data = data;
             this.Modus = modus;
-
-                ObservableCollection<List<KeyValuePair<Thing, string>>> groups = new ObservableCollection<List<KeyValuePair<Thing, string>>>();
+            List<ThingDefs> Einzahl = new List<ThingDefs>(new ThingDefs[] { ThingDefs.Attribut, ThingDefs.CyberDeck, ThingDefs.Fernkampfwaffe, ThingDefs.Kommlink, ThingDefs.Nachteil, ThingDefs.Panzerung, ThingDefs.Vehikel});
+                ObservableCollection<List<ThingListEntry>> groups = new ObservableCollection<List<ThingListEntry>>();
             {
                 var query = from item in lstThings
-                            group item by item.Key.ThingType into g
-                            //orderby g.Key
-                            select new { GroupName = TypenHelper.ThingDefToString(g.Key, true), Items = g };
+                            group item by item.Object.ThingType into g
+                            //orderby g.Object
+                            select new { GroupName = TypenHelper.ThingDefToString(g.Key, (Einzahl.Contains(g.Key))?false:true), Items = g };
 
                 foreach (var g in query)
                 {
                     CustomList info = new CustomList();
-                    info.Key = g.GroupName;
+                    info.Name = g.GroupName;
                     info.Zahl = g.Items.Count() ;
                     foreach (var item in g.Items)
                     {
@@ -67,8 +68,8 @@ namespace ShadowRunHelper
         /// <param name="args"></param>
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            List<KeyValuePair<Thing, string>> tempDic = new List<KeyValuePair<Thing, string>>();
-            foreach (KeyValuePair<Thing, string> item in Zus_ListVIew.SelectedItems)
+            List<ThingListEntry> tempDic = new List<ThingListEntry>();
+            foreach (ThingListEntry item in Zus_ListVIew.SelectedItems)
             {
                 tempDic.Add(item);
             }
@@ -91,10 +92,10 @@ namespace ShadowRunHelper
             deferral.Complete();
         }
 
-        private void RefreshList(ObservableCollection<KeyValuePair<Thing, string>> lstTarget, List<KeyValuePair<Thing, string>> lstSource)
+        private void RefreshList(ObservableCollection<ThingListEntry> lstTarget, List<ThingListEntry> lstSource)
         {
             lstTarget.Clear();
-            foreach (KeyValuePair<Thing, string> item in lstSource)
+            foreach (ThingListEntry item in lstSource)
             {
                 lstTarget.Add(item);
             }
@@ -118,11 +119,11 @@ namespace ShadowRunHelper
             }
         }
 
-        private void SelectGui(ObservableCollection<KeyValuePair<Thing, string>> SourceList)
+        private void SelectGui(ObservableCollection<ThingListEntry> SourceList)
         {
             foreach (var item in SourceList)
             {
-                var tepmindex = lstThings.FindIndex(x => (x.Key == item.Key && x.Value == item.Value));
+                var tepmindex = lstThings.FindIndex(x => (x.Object == item.Object && x.strProperty == item.strProperty));
                 Zus_ListVIew.SelectRange(new ItemIndexRange(tepmindex, 1));
             }
         }
@@ -135,17 +136,17 @@ namespace ShadowRunHelper
         //        ((Grid)((TextBlock)sender).Parent).DataContext = null;
         //        var Temp = Zus_ListVIew.IndexFromContainer((Grid)((TextBlock)sender).Parent);
         //        Temp = 6;
-        //        //((List<KeyValuePair<Thing, string>>)Zus_ListVIew.ItemsSource).inde
+        //        //((List<ThingListEntry>)Zus_ListVIew.ItemsSource).inde
         //       ((TextBlock)sender).DataContext= lstThings[Temp];
         //        //return;
         //    }
-        //    if (((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value == "")
+        //    if (((ThingListEntry)((TextBlock)sender).DataContext).Value == "")
         //    {
-        //        ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Key.Bezeichner;
+        //        ((TextBlock)sender).Text = ((ThingListEntry)((TextBlock)sender).DataContext).Object.Bezeichner;
         //    }
         //    else
         //    {
-        //        ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value;
+        //        ((TextBlock)sender).Text = ((ThingListEntry)((TextBlock)sender).DataContext).Value;
         //    }
         //}
 
@@ -155,14 +156,14 @@ namespace ShadowRunHelper
         //    {
         //        return;
         //    }
-        //      ((TextBlock)sender).Text = ((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Key.GetValue(((KeyValuePair<Thing, string>)((TextBlock)sender).DataContext).Value).ToString();
+        //      ((TextBlock)sender).Text = ((ThingListEntry)((TextBlock)sender).DataContext).Object.GetValue(((ThingListEntry)((TextBlock)sender).DataContext).Value).ToString();
         //}
 
         
     }
-    internal class CustomList : List<KeyValuePair<Thing, string>>
+    internal class CustomList : List<ThingListEntry>
     {
-        public object Key { get; set; }
+        public object Name { get; set; }
         public object Zahl { get; set; }
     }
 }

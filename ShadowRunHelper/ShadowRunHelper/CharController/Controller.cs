@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,12 +25,12 @@ namespace ShadowRunHelper.CharController
             Data.Remove(tRem);
         }
 
-        public List<KeyValuePair<Thing, string>> GetElementsForThingList()
+        public List<ThingListEntry> GetElementsForThingList()
         {
-            List<KeyValuePair<Thing, string>> lstReturn = new List<KeyValuePair<Thing, string>>();
+            var lstReturn = new List<ThingListEntry>();
             foreach (var item in Data)
             {
-                lstReturn.Add(new KeyValuePair<Thing, string>(item, ""));
+                lstReturn.Add(new ThingListEntry(item, ""));
             }
             return lstReturn;
         }

@@ -169,6 +169,7 @@ namespace ShadowRunHelper
             try
             {
                 await CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar);
+                Summorys_Aktualisieren();
             }
             catch (Exception)
             {

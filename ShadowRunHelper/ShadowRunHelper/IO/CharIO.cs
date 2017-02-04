@@ -79,7 +79,8 @@ namespace ShadowRunHelper.IO
         private static void ErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
         {
             //((Newtonsoft.Json.JsonSerializer)o).
-            //a.ErrorContext.Handled = true;
+            a.ErrorContext.Handled = true;
+            //todo notify user
             //a.ErrorContext.Error.Data;
         }
 

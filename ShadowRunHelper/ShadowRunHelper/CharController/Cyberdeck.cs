@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,11 +10,11 @@ namespace ShadowRunHelper.CharController
 {
     public class cCyberDeckController : cController<CyberDeck>
     {
-        private KeyValuePair<Thing, string> MI_V;
-        private KeyValuePair<Thing, string> MI_A;
-        private KeyValuePair<Thing, string> MI_S;
-        private KeyValuePair<Thing, string> MI_F;
-        private KeyValuePair<Thing, string> MI_D;
+        private ThingListEntry MI_V;
+        private ThingListEntry MI_A;
+        private ThingListEntry MI_S;
+        private ThingListEntry MI_F;
+        private ThingListEntry MI_D;
         public CyberDeck ActiveDeck;
 
         public cCyberDeckController()
@@ -22,11 +23,11 @@ namespace ShadowRunHelper.CharController
             var res = ResourceLoader.GetForCurrentView();
 
             ActiveDeck.Bezeichner = res.GetString("Model_CyberDeck__Aktiv/Text");
-            MI_V = new KeyValuePair<Thing, string>(ActiveDeck, res.GetString("Model_CyberDeck_/Text") + res.GetString("Model_Thing_Wert/Text"));
-            MI_A = new KeyValuePair<Thing, string>(ActiveDeck, res.GetString("Model_CyberDeck_Angriff/Text"));
-            MI_S = new KeyValuePair<Thing, string>(ActiveDeck, res.GetString("Model_CyberDeck_Schleicher/Text"));
-            MI_F = new KeyValuePair<Thing, string>(ActiveDeck, res.GetString("Model_Kommlink_Firewall/Text"));
-            MI_D = new KeyValuePair<Thing, string>(ActiveDeck, res.GetString("Model_Kommlink_Datenverarbeitung/Text"));
+            MI_V = new ThingListEntry(ActiveDeck, res.GetString("Model_CyberDeck_/Text") + res.GetString("Model_Thing_Wert/Text"));
+            MI_A = new ThingListEntry(ActiveDeck, res.GetString("Model_CyberDeck_Angriff/Text"));
+            MI_S = new ThingListEntry(ActiveDeck, res.GetString("Model_CyberDeck_Schleicher/Text"));
+            MI_F = new ThingListEntry(ActiveDeck, res.GetString("Model_Kommlink_Firewall/Text"));
+            MI_D = new ThingListEntry(ActiveDeck, res.GetString("Model_Kommlink_Datenverarbeitung/Text"));
 
             Data.CollectionChanged += Data_CollectionChanged;
         }
@@ -54,9 +55,9 @@ namespace ShadowRunHelper.CharController
             ActiveDeck.Reset();
         }
 
-        public new List<KeyValuePair<Thing, string>> GetElementsForThingList()
+        public new List<ThingListEntry> GetElementsForThingList()
         {
-            List<KeyValuePair<Thing, string>> lstReturn = new List<KeyValuePair<Thing, string>>();
+            List<ThingListEntry> lstReturn = new List<ThingListEntry>();
             lstReturn.Add(MI_V);
             lstReturn.Add(MI_A);
             lstReturn.Add(MI_S);

@@ -345,24 +345,24 @@ namespace ShadowRunHelper.IO
                 //temp.GegenZusammensetzung = ;
                 foreach (var zusitem in item.Data.Zusammensetzung)
                 {
-                    var t = ReturnCharHolder.lstThings.Find(x => x.Key.Bezeichner == zusitem.Value.Bezeichner);
-                    if (t.Key != null)
+                    var t = ReturnCharHolder.lstThings.Find(x => x.Object.Bezeichner == zusitem.Value.Bezeichner);
+                    if (t?.Object != null)
                     {
                         temp.WertZusammensetzung.Add(t);
                     }
                 }
                 foreach (var zusitem in item.Data.GegenZusammensetzung)
                 {
-                    var t = ReturnCharHolder.lstThings.Find(x => x.Key.Bezeichner == zusitem.Value.Bezeichner);
-                    if (t.Key != null)
+                    var t = ReturnCharHolder.lstThings.Find(x => x.Object.Bezeichner == zusitem.Value.Bezeichner);
+                    if (t?.Object != null)
                     {
                         temp.GegenZusammensetzung.Add(t);
                     }
                 }
                 foreach (var zusitem in item.Data.GrenzeZusammensetzung)
                 {
-                    var t = ReturnCharHolder.lstThings.Find(x => x.Key.Bezeichner == zusitem.Value.Bezeichner);
-                    if (t.Key != null)
+                    var t = ReturnCharHolder.lstThings.Find(x => x.Object.Bezeichner == zusitem.Value.Bezeichner);
+                    if (t?.Object != null)
                     {
                         temp.GrenzeZusammensetzung.Add(t);
                     }

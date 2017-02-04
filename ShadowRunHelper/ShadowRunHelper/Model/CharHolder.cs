@@ -36,7 +36,7 @@ namespace ShadowRunHelper.Model
         public CharController.cController<Handlung> CTRLHandlung { get; set; }
 
         [System.Runtime.Serialization.IgnoreDataMember]
-        public List<KeyValuePair<Thing, string>> lstThings;
+        public List<ThingListEntry> lstThings;
 
         public Person Person { get; set; }
 
@@ -65,7 +65,7 @@ namespace ShadowRunHelper.Model
             Person = new Person();
             CTRLAttribut.SetDependencies(Person, CTRLImplantat.Data);
 
-            lstThings = new List<KeyValuePair<Thing, string>>();
+            lstThings = new List<ThingListEntry>();
         }
 
 
@@ -220,7 +220,7 @@ namespace ShadowRunHelper.Model
                 default:
                     break;
             }
-            lstThings.Remove(lstThings.Find((x) => x.Key == tToRemove));
+            lstThings.Remove(lstThings.Find((x) => x.Object == tToRemove));
         }
 
         public string MakeName(bool WithDate = true)

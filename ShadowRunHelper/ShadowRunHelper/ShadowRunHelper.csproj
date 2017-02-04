@@ -202,6 +202,7 @@
     <Compile Include="CharModel\Thing.cs" />
     <Compile Include="CharModel\Fertigkeit.cs" />
     <Compile Include="CharModel\Handlung.cs" />
+    <Compile Include="Model\ThingListEntry.cs" />
     <Compile Include="Model\ViewModel_Char.cs" />
     <Compile Include="Ressourcen\Optionen.cs" />
     <Compile Include="Model\ViewModel_Settings.cs" />
@@ -369,7 +370,9 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Legacy1\1.5\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

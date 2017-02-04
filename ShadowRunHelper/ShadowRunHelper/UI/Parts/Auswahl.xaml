@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ShadowRunHelper"
     xmlns:model="using:ShadowRunHelper.CharModel"
+    xmlns:bigmodel="using:ShadowRunHelper.Model"
     xmlns:conv="using:ShadowRunHelper.UI.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -30,17 +31,14 @@
                   SelectionMode="Multiple" 
                   Loaded="Zus_ListVIew_Loaded">
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="bigmodel:ThingListEntry">
                         <Grid Name="Zus_ListVIew_Stack" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                <TextBlock Text="{Binding Key.Value, Converter={StaticResource o_ThingList}, ConverterParameter=Bezeichner}" />
-                                <TextBlock Text="{Binding Value}" />
-                            </StackPanel>
-                            <TextBlock Text="{Binding Key.Value, Converter={StaticResource o_ThingList}, ConverterParameter=Wert}" Grid.Column="1"/>
+                            <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Bezeichner}" Grid.Column="0"/>
+                            <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Wert}" Grid.Column="1"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -48,17 +46,13 @@
                     <GroupStyle >
                         <GroupStyle.HeaderTemplate>
                             <DataTemplate x:DataType="local:CustomList">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                                    <!--<Grid.ColumnDefinitions>-->
-                                    <!--<ColumnDefinition Width="*"/>-->
-                                    <!--<ColumnDefinition Width="Auto"/>-->
-                                    <!--</Grid.ColumnDefinitions>-->
-                                    <TextBlock Text="{x:Bind Key}" Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0"/>
-                                    <!--<TextBlock x:Uid="Space" Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0"/>-->
-                                    <!--<TextBlock x:Uid="Bindestrich" Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0"/>-->
-                                    <!--<TextBlock x:Uid="Space" Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0"/>-->
-                                    <!--<TextBlock Text="{x:Bind Zahl}" Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="1" HorizontalAlignment="Right"/>-->
-                                </StackPanel>
+                                    <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0">
+                                        <Run Text="{x:Bind Name}"/>
+                                        <Run x:Uid="Space"/>
+                                        <Run x:Uid="Klammer_Rund_Auf"/>
+                                        <Run Text="{x:Bind Zahl}"/>
+                                        <Run x:Uid="Klammer_Rund_Zu"/>
+                                </TextBlock>
                             </DataTemplate>
                         </GroupStyle.HeaderTemplate>
                     </GroupStyle>
@@ -74,7 +68,13 @@
             <ListView ItemsSource="{x:Bind GroupedList.View.CollectionGroups}" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate >
-                        <TextBlock Text="{Binding Group.Key}" Style="{StaticResource SubtitleTextBlockStyle}" TextWrapping="Wrap"/>
+                        <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0">
+                            <Run Text="{Binding Group.Name}"/>
+                            <Run x:Uid="Space"/>
+                            <Run x:Uid="Klammer_Rund_Auf"/>
+                            <Run Text="{Binding Group.Zahl}"/>
+                            <Run x:Uid="Klammer_Rund_Zu"/>
+                        </TextBlock>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

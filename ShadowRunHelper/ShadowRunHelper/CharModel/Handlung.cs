@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShadowRunHelper.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -12,9 +13,9 @@ namespace ShadowRunHelper.CharModel
             Grenze = 2,
             Gegen = 3
         }
-        public ObservableCollection<KeyValuePair<Thing, string>> WertZusammensetzung;
-        public ObservableCollection<KeyValuePair<Thing, string>> GrenzeZusammensetzung;
-        public ObservableCollection<KeyValuePair<Thing, string>> GegenZusammensetzung;
+        public ObservableCollection<ThingListEntry> WertZusammensetzung;
+        public ObservableCollection<ThingListEntry> GrenzeZusammensetzung;
+        public ObservableCollection<ThingListEntry> GegenZusammensetzung;
 
         private double grenze = 0;
         public double Grenze
@@ -48,9 +49,9 @@ namespace ShadowRunHelper.CharModel
         {
             ThingType = ThingDefs.Handlung;
 
-            WertZusammensetzung = new ObservableCollection<KeyValuePair<Thing, string>>();
-            GrenzeZusammensetzung = new ObservableCollection<KeyValuePair<Thing, string>>();
-            GegenZusammensetzung = new ObservableCollection<KeyValuePair<Thing, string>>();
+            WertZusammensetzung = new ObservableCollection<ThingListEntry>();
+            GrenzeZusammensetzung = new ObservableCollection<ThingListEntry>();
+            GegenZusammensetzung = new ObservableCollection<ThingListEntry>();
             WertZusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(Mode.Wert); };
             GrenzeZusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(Mode.Grenze); };
             GegenZusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(Mode.Gegen); };
@@ -68,24 +69,24 @@ namespace ShadowRunHelper.CharModel
                     Wert = Recalculate(WertZusammensetzung);
                     foreach (var item in WertZusammensetzung)
                     {
-                        item.Key.PropertyChanged -= (u, c) => { Wert = Recalculate(WertZusammensetzung); };
-                        item.Key.PropertyChanged += (u, c) => { Wert = Recalculate(WertZusammensetzung); };
+                        item.Object.PropertyChanged -= (u, c) => { Wert = Recalculate(WertZusammensetzung); };
+                        item.Object.PropertyChanged += (u, c) => { Wert = Recalculate(WertZusammensetzung); };
                     }
                     break;
                 case Mode.Grenze:
                     Grenze = Recalculate(GrenzeZusammensetzung);
                     foreach (var item in GrenzeZusammensetzung)
                     {
-                        item.Key.PropertyChanged -= (u, c) => { Grenze = Recalculate(GrenzeZusammensetzung); };
-                        item.Key.PropertyChanged += (u, c) => { Grenze = Recalculate(GrenzeZusammensetzung); };
+                        item.Object.PropertyChanged -= (u, c) => { Grenze = Recalculate(GrenzeZusammensetzung); };
+                        item.Object.PropertyChanged += (u, c) => { Grenze = Recalculate(GrenzeZusammensetzung); };
                     }
                     break;
                 case Mode.Gegen:
                     Gegen = Recalculate(GegenZusammensetzung);
                     foreach (var item in GegenZusammensetzung)
                     {
-                        item.Key.PropertyChanged -= (u, c) => { Gegen = Recalculate(GegenZusammensetzung); };
-                        item.Key.PropertyChanged += (u, c) => { Gegen = Recalculate(GegenZusammensetzung); };
+                        item.Object.PropertyChanged -= (u, c) => { Gegen = Recalculate(GegenZusammensetzung); };
+                        item.Object.PropertyChanged += (u, c) => { Gegen = Recalculate(GegenZusammensetzung); };
                     }
                     break;
                 default:
@@ -93,11 +94,11 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        private static double Recalculate(ObservableCollection<KeyValuePair<Thing, string>> List) {
+        private static double Recalculate(ObservableCollection<ThingListEntry> List) {
             double temp = 0;
-            foreach (KeyValuePair<Thing, string> item in List)
+            foreach (ThingListEntry item in List)
             {
-                temp += item.Key.GetValue(item.Value);
+                temp += item.Object.GetValue(item.strProperty);
             }
             return temp;
         }
