@@ -39,18 +39,26 @@ namespace ShadowRunHelper
                     FlyoutBase.ShowAttachedFlyout(element);
                 }
         }
-        private void Add(object sender, RoutedEventArgs e)
+        private async void Add(object sender, RoutedEventArgs e)
         {
             ThingDefs Controller = 0;
             long test = Int64.Parse((((Button)sender).Tag).ToString()); //TODO Add Tag with the correospedenting number
             Controller = (ThingDefs)test;
+            Thing newThing = null;
             try
             {
-                ViewModel.CurrentChar.Add(Controller);
+                newThing = ViewModel.CurrentChar.Add(Controller);
+                if (Optionen.bStartEditAfterAdd)
+                {
+                    await new Edit_Dialog(newThing).ShowAsync();
+                }
+
             }
             catch (WrongTypeException)
             {
-            }    
+            }
+
+
         }
 
         private async void Edit_Click(object sender, RoutedEventArgs e)

@@ -8,7 +8,7 @@ namespace ShadowRunHelper
 {
     public static class Optionen
     {
-        public static string LAST_CHAR_IS
+        public static string strLastChar
         {
             get
             {
@@ -35,7 +35,7 @@ namespace ShadowRunHelper
             }
         }
 
-        public static bool SAVE_CHAR_ON_EXIT
+        public static bool bSaveCharOnExit
         {
             get
             {
@@ -62,7 +62,7 @@ namespace ShadowRunHelper
                     Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
 
                     container.Values[Konstanten.CONTAINER_SETTINGS_SAVE_CHAR_ON_EXIT] = value;
-                    Optionen.LOAD_CHAR_ON_START = true;
+                    Optionen.bLoadCharOnStart = true;
                 }
                 catch (Exception)
                 {
@@ -70,7 +70,7 @@ namespace ShadowRunHelper
             }
         }
         
-        public static bool LOAD_CHAR_ON_START
+        public static bool bLoadCharOnStart
         {
             get
             {
@@ -102,7 +102,7 @@ namespace ShadowRunHelper
             }
         }
 
-        public static bool IS_FILE_IN_PROGRESS
+        public static bool bIsFIleInProgress
         {
             get
             {
@@ -133,7 +133,7 @@ namespace ShadowRunHelper
             }
         }
 
-        public static bool ORDNERMODE
+        public static bool bORDNERMODE
         {
             get
             {
@@ -165,7 +165,7 @@ namespace ShadowRunHelper
             }
         }
 
-        public static string ORDNERMODE_PFAD
+        public static string strORDNERMODE_PFAD
         {
             get
             {
@@ -196,6 +196,39 @@ namespace ShadowRunHelper
                 }
             }
         }
+
+        internal static bool bStartEditAfterAdd
+        {
+            get
+            {
+                bool temp = false;
+                try
+                {
+                    Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    temp = (bool)container.Values[Konstanten.CONTAINER_SETTINGS_bStartEditAfterAdd];
+                }
+                catch (Exception)
+                {
+                    temp = false;
+                }
+                return temp;
+            }
+            set
+            {
+                try
+                {
+                    Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+                    container.Values[Konstanten.CONTAINER_SETTINGS_bStartEditAfterAdd] = value;
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
     }
     
 }

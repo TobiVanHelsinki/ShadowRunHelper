@@ -710,4 +710,13 @@
   <data name="Klammer_Rund_Zu.Text" xml:space="preserve">
     <value>)</value>
   </data>
+  <data name="UI_Optionen_EditAfterAdd.OffContent" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="UI_Optionen_EditAfterAdd.OnContent" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="UI_Optionen_EditAfterAdd_Header.Text" xml:space="preserve">
+    <value>Bearbeiten nach Hinzufügen</value>
+  </data>
 </root>

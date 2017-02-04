@@ -61,13 +61,13 @@ namespace ShadowRunHelper
                 rootFrame = new Frame();
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                if (/*e.PreviousExecutionState == ApplicationExecutionState.Terminated || */Optionen.LOAD_CHAR_ON_START || Optionen.IS_FILE_IN_PROGRESS)
+                if (/*e.PreviousExecutionState == ApplicationExecutionState.Terminated || */Optionen.bLoadCharOnStart || Optionen.bIsFIleInProgress)
                 {
-                    Optionen.IS_FILE_IN_PROGRESS = false;
+                    Optionen.bIsFIleInProgress = false;
                     //ViewModel_CharVerwaltung VerwaltungTemp = new ViewModel_CharVerwaltung();
                     try
                     {
-                        ViewModel.CurrentChar=(await IO.CharIO.LoadCharAtCurrentPlace(Optionen.LAST_CHAR_IS));
+                        ViewModel.CurrentChar=(await IO.CharIO.LoadCharAtCurrentPlace(Optionen.strLastChar));
                     }
                     catch (Exception)
                     {
@@ -111,12 +111,12 @@ namespace ShadowRunHelper
         private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            if (Optionen.SAVE_CHAR_ON_EXIT && ViewModel.CurrentChar!= null)
+            if (Optionen.bSaveCharOnExit && ViewModel.CurrentChar!= null)
             {
                 try
                 {
                     await IO.CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar);
-                    Optionen.LAST_CHAR_IS = ViewModel.CurrentChar.MakeName();
+                    Optionen.strLastChar = ViewModel.CurrentChar.MakeName();
                 }
                 catch (Exception)
                 {

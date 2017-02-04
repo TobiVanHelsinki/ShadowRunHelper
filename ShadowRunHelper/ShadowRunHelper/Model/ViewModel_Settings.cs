@@ -7,43 +7,54 @@ namespace ShadowRunHelper
     {
         public bool SAVE_CHAR_ON_EXIT
         {
-            get { return Optionen.SAVE_CHAR_ON_EXIT; }
+            get { return Optionen.bSaveCharOnExit; }
             set
             {
-                Optionen.SAVE_CHAR_ON_EXIT = value;
+                Optionen.bSaveCharOnExit = value;
                 NotifyPropertyChanged();
             }
         }
 
         public bool LOAD_CHAR_ON_START
         {
-            get { return Optionen.LOAD_CHAR_ON_START; }
+            get { return Optionen.bLoadCharOnStart; }
             set
             {
-                Optionen.LOAD_CHAR_ON_START = value;
+                Optionen.bLoadCharOnStart = value;
                 NotifyPropertyChanged();
             }
         }
 
         public bool ORDNERMODE
         {
-            get { return Optionen.ORDNERMODE; }
+            get { return Optionen.bORDNERMODE; }
             set
             {
-                Optionen.ORDNERMODE = value;
+                Optionen.bORDNERMODE = value;
                 NotifyPropertyChanged();
             }
         }
 
         public string ORDNERMODE_PFAD
         {
-            get { return Optionen.ORDNERMODE_PFAD; }
+            get { return Optionen.strORDNERMODE_PFAD; }
             set
             {
-                Optionen.ORDNERMODE_PFAD = value;
+                Optionen.strORDNERMODE_PFAD = value;
                 NotifyPropertyChanged();
             }
         }
+        public bool bStartEditAfterAdd
+        {
+            get { return Optionen.bStartEditAfterAdd; }
+            set
+            {
+                Optionen.bStartEditAfterAdd = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        
 
         public ViewModel_Settings()
         {
@@ -53,10 +64,7 @@ namespace ShadowRunHelper
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

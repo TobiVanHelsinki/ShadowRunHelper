@@ -69,65 +69,67 @@ namespace ShadowRunHelper.Model
         }
 
 
-        internal void Add(ThingDefs thingDefs)
+        internal Thing Add(ThingDefs thingDefs)
         {
+            Thing returnThing = null;
             switch (thingDefs)
             {
                 case ThingDefs.Handlung:
-                    CTRLHandlung.AddNewThing();
+                    returnThing = CTRLHandlung.AddNewThing();
                     break;
                 case ThingDefs.Fertigkeit:
-                    CTRLFertigkeit.AddNewThing();
+                    returnThing = CTRLFertigkeit.AddNewThing();
                     break;
                 case ThingDefs.Item:
-                    CTRLItem.AddNewThing();
+                    returnThing = CTRLItem.AddNewThing();
                     break;
                 case ThingDefs.Programm:
-                    CTRLProgramm.AddNewThing();
+                    returnThing = CTRLProgramm.AddNewThing();
                     break;
                 case ThingDefs.Munition:
-                    CTRLMunition.AddNewThing();
+                    returnThing = CTRLMunition.AddNewThing();
                     break;
                 case ThingDefs.Implantat:
-                    CTRLImplantat.AddNewThing();
+                    returnThing = CTRLImplantat.AddNewThing();
                     break;
                 case ThingDefs.Vorteil:
-                    CTRLVorteil.AddNewThing();
+                    returnThing = CTRLVorteil.AddNewThing();
                     break;
                 case ThingDefs.Nachteil:
-                    CTRLNachteil.AddNewThing();
+                    returnThing = CTRLNachteil.AddNewThing();
                     break;
                 case ThingDefs.Connection:
-                    CTRLConnection.AddNewThing();
+                    returnThing = CTRLConnection.AddNewThing();
                     break;
                 case ThingDefs.Sin:
-                    CTRLSin.AddNewThing();
+                    returnThing = CTRLSin.AddNewThing();
                     break;
                 case ThingDefs.Attribut:
-                    CTRLAttribut.AddNewThing();
+                    returnThing = CTRLAttribut.AddNewThing();
                     break;
                 case ThingDefs.Nahkampfwaffe:
-                    CTRLNahkampfwaffe.AddNewThing();
+                    returnThing = CTRLNahkampfwaffe.AddNewThing();
                     break;
                 case ThingDefs.Fernkampfwaffe:
-                    CTRLFernkampfwaffe.AddNewThing();
+                    returnThing = CTRLFernkampfwaffe.AddNewThing();
                     break;
                 case ThingDefs.Kommlink:
-                    CTRLKommlink.AddNewThing();
+                    returnThing = CTRLKommlink.AddNewThing();
                     break;
                 case ThingDefs.CyberDeck:
-                    CTRLCyberDeck.AddNewThing();
+                    returnThing = CTRLCyberDeck.AddNewThing();
                     break;
                 case ThingDefs.Vehikel:
-                    CTRLVehikel.AddNewThing();
+                    returnThing = CTRLVehikel.AddNewThing();
                     break;
                 case ThingDefs.Panzerung:
-                    CTRLPanzerung.AddNewThing();
+                    returnThing = CTRLPanzerung.AddNewThing();
                     break;
                 default:
                     break;
             }
             RefreshThingList();
+            return returnThing;
         }
 
         public void RefreshThingList()

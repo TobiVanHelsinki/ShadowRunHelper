@@ -20,6 +20,8 @@
         <StackPanel>
             <TextBlock x:Uid="UI_Optionen_U_" Style="{StaticResource Überschrift1}"/>
             <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource Überschrift2}"/>
+            <TextBlock x:Uid="UI_Optionen_EditAfterAdd_Header" Style="{StaticResource TextInhaltKlein}"/>
+            <ToggleSwitch x:Name="UI_Optionen_EditAfterAdd" x:Uid="UI_Optionen_EditAfterAdd" IsOn="{x:Bind Path=Optionen.bStartEditAfterAdd, Mode=TwoWay}"/>
             <TextBlock x:Uid="UI_Optionen_SaveOnExit_Header" Style="{StaticResource TextInhaltKlein}"/>
             <ToggleSwitch x:Name="UI_Optionen_SaveOnExit" x:Uid="UI_Optionen_SaveOnExit" IsOn="{x:Bind Path=Optionen.SAVE_CHAR_ON_EXIT, Mode=TwoWay}"/>
             <TextBlock x:Uid="UI_Optionen_LoadOnStart_Header" Style="{StaticResource TextInhaltKlein}"/>

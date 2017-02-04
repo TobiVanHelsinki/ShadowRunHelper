@@ -18,13 +18,13 @@ namespace ShadowRunHelper.IO
     {
         internal async static Task<string> GetCurrentSavePath()
         {
-            if (Optionen.ORDNERMODE)
+            if (Optionen.bORDNERMODE)
             {
-                if (Optionen.ORDNERMODE_PFAD == "")
+                if (Optionen.strORDNERMODE_PFAD == "")
                 {
-                    Optionen.ORDNERMODE_PFAD = (await FolderPicker()).Path;
+                    Optionen.strORDNERMODE_PFAD = (await FolderPicker()).Path;
                 }
-                return Optionen.ORDNERMODE_PFAD;
+                return Optionen.strORDNERMODE_PFAD;
             }
             else
             {
@@ -35,7 +35,7 @@ namespace ShadowRunHelper.IO
 
         internal static Place GetCurrentSavePlace()
         {
-            if (Optionen.ORDNERMODE)
+            if (Optionen.bORDNERMODE)
             {
                 return Place.Extern;
             }
