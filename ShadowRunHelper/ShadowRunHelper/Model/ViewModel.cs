@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 namespace ShadowRunHelper.Model
 {
-    public class ViewModel_Char : INotifyPropertyChanged
+    public class ViewModel : INotifyPropertyChanged
     {
         private CharHolder _currentChar;
         public CharHolder CurrentChar
@@ -17,6 +18,13 @@ namespace ShadowRunHelper.Model
                     NotifyPropertyChanged();
                 }
             }
+        }
+
+        public ObservableCollection<Notification> lstNotifications;
+
+        public ViewModel()
+        {
+            lstNotifications = new ObservableCollection<Notification>();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

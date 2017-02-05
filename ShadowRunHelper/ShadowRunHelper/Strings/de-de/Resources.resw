@@ -725,4 +725,31 @@
   <data name="UI_CharVerwaltung_Btn_CSV_Import.Label" xml:space="preserve">
     <value>CSV Import</value>
   </data>
+  <data name="Notification_Error_CSVExportFail" xml:space="preserve">
+    <value>Konnte nicht CSV-Exportieren</value>
+  </data>
+  <data name="Notification_Error_CSVImportFail" xml:space="preserve">
+    <value>CSV Importfehler</value>
+  </data>
+  <data name="Notification_Error_DelAllFail" xml:space="preserve">
+    <value>Alle Löschen fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_DelCurrentFail" xml:space="preserve">
+    <value>Löschen des aktuellen Char fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_DelFail" xml:space="preserve">
+    <value>Löschen fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_FileExportFail" xml:space="preserve">
+    <value>Konnte nicht Exportieren</value>
+  </data>
+  <data name="Notification_Error_FileImportFail" xml:space="preserve">
+    <value>Dateiimport fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_LoadFail" xml:space="preserve">
+    <value>Laden fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_SaveFail" xml:space="preserve">
+    <value>Speichern fehlgeschlagen</value>
+  </data>
 </root>

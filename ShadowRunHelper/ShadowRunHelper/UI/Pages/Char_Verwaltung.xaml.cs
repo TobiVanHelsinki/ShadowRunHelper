@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.UI.Popups;
@@ -16,9 +17,11 @@ namespace ShadowRunHelper
 {
     public sealed partial class Char_Verwaltung : Page
     {
-        ViewModel_Char ViewModel { get; set; }
+        ViewModel ViewModel { get; set; }
         ObservableCollection<CharSummory> Summorys;
         event PropertyChangedEventHandler PropertyChanged;
+        ResourceLoader res;
+
         void NotifySummoryChanged([CallerMemberName] String summoryName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(summoryName));
@@ -29,11 +32,12 @@ namespace ShadowRunHelper
         {
             InitializeComponent();
             Summorys = new ObservableCollection<CharSummory>();
+            res = ResourceLoader.GetForCurrentView();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ViewModel = (ViewModel_Char)e.Parameter;
+            ViewModel = (ViewModel)e.Parameter;
             Summorys_Aktualisieren();
             ViewModel.PropertyChanged += (x, y) => { ChangeCurrentButtons(ViewModel.CurrentChar==null?false:true); };
             ChangeCurrentButtons(ViewModel.CurrentChar == null ? false : true);
@@ -106,10 +110,9 @@ namespace ShadowRunHelper
                 await CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar);
                 Summorys_Aktualisieren();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO notify user
-                throw; //then remove throw
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_SaveFail"), ex));
             }
         }
 
@@ -120,10 +123,9 @@ namespace ShadowRunHelper
             {
                 ViewModel.CurrentChar = await CharIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO notify user
-                throw; //then remove throw
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_LoadFail"), ex));
             }
             ProgressRing_Char.IsActive = false;
             if (ViewModel.CurrentChar != null)
@@ -138,10 +140,9 @@ namespace ShadowRunHelper
             {
                 await CharIO.RemoveCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO notify user
-                throw; //then remove throw
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_DelFail"), ex));
             }
             Summorys_Aktualisieren();
         }
@@ -176,10 +177,9 @@ namespace ShadowRunHelper
                 {
                     await CharIO.RemoveCharAtCurrentPlace(item.strFileName);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    //TODO notify user
-                    throw; //then remove throw
+                    ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_DelAllFail"), ex));
                 }
             }
             Summorys_Aktualisieren();
@@ -191,10 +191,9 @@ namespace ShadowRunHelper
             {
                 ViewModel.CurrentChar = null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO notify user
-                throw; //then remove throw
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_DelCurrentFail"), ex));
             }
         }
 
@@ -215,10 +214,9 @@ namespace ShadowRunHelper
                 StorageFile FileToSave = await GeneralIO.GetFile(Place.Extern, CharToSave.MakeName());
                 CharIO.SaveCharToFile(CharToSave, FileToSave);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO notify user
-                throw; //then remove throw
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_FileExportFail"), ex));
             }
         }
 
@@ -228,10 +226,9 @@ namespace ShadowRunHelper
             {
                 ViewModel.CurrentChar = await CharIO.LoadCharFromFile(await GeneralIO.FilePicker(new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR})));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO notify user
-                throw; //then remove throw
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_FileImportFail"), ex));
             }
         }
 
@@ -257,9 +254,9 @@ namespace ShadowRunHelper
             {
                 Folder = await GeneralIO.GetFolder(Place.Extern);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO notify user
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_CSVExportFail")+"1", ex));
             }
             try
             {
@@ -269,10 +266,9 @@ namespace ShadowRunHelper
                     GeneralIO.Write(File, item.Key);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO notify user
-                //throw;
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_CSVExportFail") + "2", ex));
             }
         }
 
@@ -286,9 +282,9 @@ namespace ShadowRunHelper
                 strRead = await FileIO.ReadTextAsync(File);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_CSVImportFail") + "1", ex));
             }
             try
             {
@@ -298,9 +294,9 @@ namespace ShadowRunHelper
                 }
                 ViewModel.CurrentChar.CTRLCyberDeck.MultipleCSVImport(';', '\n', strRead);
             }
-            catch (Exception)
-            {//todo
-                //throw;
+            catch (Exception ex)
+            {
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_CSVImportFail") + "2", ex));
             }
         }
 

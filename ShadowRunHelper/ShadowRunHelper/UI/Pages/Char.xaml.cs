@@ -11,7 +11,7 @@ namespace ShadowRunHelper
 {
     public sealed partial class Char : Page
     {
-        public ViewModel_Char ViewModel { get; set; }
+        public ViewModel ViewModel { get; set; }
         public Windows.System.Display.DisplayRequest Char_DisplayRequest;
 
         public Char()
@@ -20,7 +20,7 @@ namespace ShadowRunHelper
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ViewModel = (ViewModel_Char)e.Parameter;
+            ViewModel = (ViewModel)e.Parameter;
             Char_DisplayRequest = new Windows.System.Display.DisplayRequest();
             Char_DisplayRequest.RequestActive();
         }

@@ -15,7 +15,7 @@ namespace ShadowRunHelper
     sealed partial class App : Application
     {
 
-        internal ViewModel_Char ViewModel { get; private set; }
+        internal ViewModel ViewModel { get; private set; }
         /// <summary>
         /// Initialisiert das Singletonanwendungsobjekt.  Dies ist die erste Zeile von erstelltem Code
         /// und daher das logische Äquivalent von main() bzw. WinMain().
@@ -43,7 +43,7 @@ namespace ShadowRunHelper
         /// <param name="e">Details über Startanforderung und -prozess.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            ViewModel = new ViewModel_Char();
+            ViewModel = new ViewModel();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {

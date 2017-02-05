@@ -202,8 +202,9 @@
     <Compile Include="CharModel\Thing.cs" />
     <Compile Include="CharModel\Fertigkeit.cs" />
     <Compile Include="CharModel\Handlung.cs" />
+    <Compile Include="Model\Notification.cs" />
     <Compile Include="Model\ThingListEntry.cs" />
-    <Compile Include="Model\ViewModel_Char.cs" />
+    <Compile Include="Model\ViewModel.cs" />
     <Compile Include="Ressourcen\Optionen.cs" />
     <Compile Include="Model\ViewModel_Settings.cs" />
     <Compile Include="Ressourcen\Exceptions.cs" />

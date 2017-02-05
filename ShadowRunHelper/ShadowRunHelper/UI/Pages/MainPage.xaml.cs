@@ -3,6 +3,8 @@ using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.Specialized;
+using Windows.UI.Popups;
 
 // Die Vorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 dokumentiert.
 
@@ -13,7 +15,7 @@ namespace ShadowRunHelper
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        ViewModel_Char ViewModel { get; set; }
+        ViewModel ViewModel { get; set; }
 
         public MainPage()
         {
@@ -24,8 +26,9 @@ namespace ShadowRunHelper
         {
             base.OnNavigatedTo(e);
             RefreshGui();
-            ViewModel = (ViewModel_Char)e.Parameter;
+            ViewModel = (ViewModel)e.Parameter;
             ViewModel.PropertyChanged += (x, y) => RefreshGui();
+            ViewModel.lstNotifications.CollectionChanged += (x, y) => ShowError(y);
 
             if (ViewModel.CurrentChar != null)
             {
@@ -36,6 +39,23 @@ namespace ShadowRunHelper
                 MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
             }
         }
+
+        private async void ShowError(NotifyCollectionChangedEventArgs y)
+        {
+            foreach (Notification item in y.NewItems)
+            {
+                if (!item.bIsRead)
+                {
+                    var messageDialog = new MessageDialog(item.strMessage);
+                    messageDialog.Commands.Add(new UICommand(
+                        "OK"));
+                    messageDialog.DefaultCommandIndex = 0;
+                    await messageDialog.ShowAsync();
+                    item.bIsRead = true;
+                }
+            }
+        }
+
 
         private void RefreshGui()
         {
