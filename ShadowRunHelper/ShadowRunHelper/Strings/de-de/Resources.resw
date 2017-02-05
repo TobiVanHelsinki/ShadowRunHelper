@@ -429,14 +429,14 @@
   <data name="Model_Kommlink_Attribute_o.Text" xml:space="preserve">
     <value>Attribute Orginal</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Alle_Chars_Löschen.Content" xml:space="preserve">
+  <data name="UI_CharVerwaltung_Btn_Alle_Chars_Löschen.Label" xml:space="preserve">
     <value>Alle Chars Löschen</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Datei_Laden.Content" xml:space="preserve">
-    <value>Char aus Datei laden</value>
+  <data name="UI_CharVerwaltung_Btn_Datei_Import.Label" xml:space="preserve">
+    <value>Char Importieren</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Datei_Speichern.Content" xml:space="preserve">
-    <value>in Datei speichern</value>
+  <data name="UI_CharVerwaltung_Btn_Datei_Export.Content" xml:space="preserve">
+    <value>Char Exportieren</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Laden.Content" xml:space="preserve">
     <value>Laden</value>
@@ -444,17 +444,17 @@
   <data name="UI_CharVerwaltung_Btn_Löschen.Content" xml:space="preserve">
     <value>Löschen</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Neu.Content" xml:space="preserve">
+  <data name="UI_CharVerwaltung_Btn_Neu.Label" xml:space="preserve">
     <value>Neuen Char erstellen</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Speichern.Content" xml:space="preserve">
-    <value>Aktuellen Char Speichern</value>
+    <value>Speichern</value>
   </data>
   <data name="UI_CharVerwaltung_Einleitung1.Text" xml:space="preserve">
-    <value>Hier können Charaktere verwaltet werden</value>
+    <value>Aktuellen Char verwalten:</value>
   </data>
   <data name="UI_CharVerwaltung_Einleitung2.Text" xml:space="preserve">
-    <value>Speichere deinen Aktuellen Char!</value>
+    <value>Andere Chars verwalten:</value>
   </data>
   <data name="Model_Person_Char_Typ.Text" xml:space="preserve">
     <value>Char Typ</value>
@@ -718,5 +718,11 @@
   </data>
   <data name="UI_Optionen_EditAfterAdd_Header.Text" xml:space="preserve">
     <value>Bearbeiten nach Hinzufügen</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_CSV_Export.Content" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_CSV_Import.Label" xml:space="preserve">
+    <value>CSV Import</value>
   </data>
 </root>

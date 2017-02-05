@@ -6,63 +6,75 @@ namespace ShadowRunHelper.Model
 {
     public class CharSummory : INotifyPropertyChanged
     {
-        private string _strFileName;
+        string _strFileName;
         public string strFileName
         {
-            get { return this._strFileName; }
+            get { return _strFileName; }
             set
             {
-                if (value != this._strFileName)
+                if (value != _strFileName)
                 {
-                    this._strFileName = value;
+                    _strFileName = value;
                     strCharSummory = "";
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private string _strCharSummory;
+        string _strCharSummory;
         public string strCharSummory
         {
-            get { return this._strCharSummory; }
-            private set
+            get { return _strCharSummory; }
+            set
             {
-                if (value != this._strCharSummory)
+                if (value != _strCharSummory)
                 {
                     _strCharSummory = _strFileName.Replace('_', ' ');
                     _strCharSummory = _strCharSummory.Replace(Konstanten.DATEIENDUNG_CHAR, "");
-                    if (_tDateCreated != null)
-                    {
-                        _strCharSummory += " (" + _tDateCreated.Day + "." + _tDateCreated.Month + "." + _tDateCreated.Year + " " + _tDateCreated.Hour + ":" + _tDateCreated.Minute + ")";
-                    }
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private DateTimeOffset _tDateCreated;
+        DateTimeOffset _tDateCreated;
         public DateTimeOffset tDateCreated
         {
-            get { return this._tDateCreated; }
+            get { return _tDateCreated; }
             set
             {
-                if (value != this._tDateCreated)
+                if (value != _tDateCreated)
                 {
                     strCharSummory = "";
-                    this._tDateCreated = value;
+                    _tDateCreated = value;
                     NotifyPropertyChanged();
                 }
             }
         }
+
+        public string strDateCreated
+        {
+            get {
+                string _strDateCreated = "";
+                if (_tDateCreated != null)
+                {
+                    _strDateCreated += " (" + _tDateCreated.Day + "." + _tDateCreated.Month + "." + _tDateCreated.Year + " " + _tDateCreated.Hour + ":" + _tDateCreated.Minute + ")";
+                }
+                return _strDateCreated; }
+            private set
+            {}
+        }
+
+
+
 
         public CharSummory(string id, DateTimeOffset dateCreated)
         {
-            this.strFileName = id;
-            this.tDateCreated = dateCreated;
+            strFileName = id;
+            tDateCreated = dateCreated;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

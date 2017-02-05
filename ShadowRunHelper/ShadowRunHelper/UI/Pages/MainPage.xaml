@@ -163,10 +163,10 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        <RelativePanel Grid.Row="1" MinHeight="350">
-            <SplitView Name="MySplitView" 
+      <SplitView Name="MySplitView" 
                         DisplayMode="CompactOverlay" 
                         OpenPaneLength="280" 
+                       Grid.Row="1" MinHeight="350"
                         CompactPaneLength="50" 
                         RelativePanel.AlignBottomWithPanel="True"
                         RelativePanel.AlignTopWithPanel="True">
@@ -203,6 +203,5 @@
                     <Frame Name="MyFrame"></Frame>
                 </SplitView.Content>
             </SplitView>
-        </RelativePanel>
     </Grid>
 </Page>

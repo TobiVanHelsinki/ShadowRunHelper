@@ -12,49 +12,81 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char_Verwaltung.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Name="Normal" x:Key="Normal" x:DataType="data:CharSummory">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="{x:Bind strCharSummory, Mode=OneWay}"/>
+                    <TextBlock Grid.Column="1" Text="{x:Bind tDateCreated, Mode=OneWay}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Active" x:Key="Active" x:DataType="data:CharSummory">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="{x:Bind strCharSummory, Mode=OneWay}" Style="{StaticResource Chars}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="{x:Bind tDateCreated, Mode=OneWay}" Style="{StaticResource Chars}"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1">
+                        <Button x:Uid="UI_CharVerwaltung_Btn_Laden" Content="Upload" Click="Click_Laden" Style="{StaticResource Char_Control_Btn}"/>
+                        <Button x:Uid="UI_CharVerwaltung_Btn_Löschen" Content="Delete" Click="Click_Löschen_OtherChar" Style="{StaticResource Char_Control_Btn}"/>
+                        <Button x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Content="SaveLocal" Click="Click_Datei_Export_OtherChar" Style="{StaticResource Char_Control_Btn}"/>
+                        <Button x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Content="SaveLocal" Click="Click_CSV_Export_OtherChar" Style="{StaticResource Char_Control_Btn}"/>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
-
     </Page.Resources>
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Name="Btn_load" x:Uid="UI_CharVerwaltung_Btn_Speichern" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Click="Click_Speichern" Style="{StaticResource Char_Control_Btn}"/>
-
-        <TextBlock Name="Einleitung1" x:Uid="UI_CharVerwaltung_Einleitung1" RelativePanel.Below="Btn_load" Style="{StaticResource TextInhaltKlein}"/>
-        <TextBlock Name="Einleitung2" x:Uid="UI_CharVerwaltung_Einleitung2" RelativePanel.Below="Einleitung1" Style="{StaticResource TextInhaltKlein}"/>
-
-
-        <Button Name="Btn_Neu" RelativePanel.Below="Char_Sum" x:Uid="UI_CharVerwaltung_Btn_Neu" Click="Click_Erstellen" Style="{StaticResource Char_Control_Btn}"/>
-        <Button Name="Btn_DateiImport" x:Uid="UI_CharVerwaltung_Btn_Datei_Laden" RelativePanel.RightOf="Btn_Neu" RelativePanel.AlignTopWith="Btn_Neu" Click="Click_Laden_Datei" Style="{StaticResource Char_Control_Btn}"/>
-        <StackPanel  RelativePanel.RightOf="Btn_DateiImport" RelativePanel.AlignTopWith="Btn_DateiImport" >
-            
-        <Button Content="CSVExport" Click="Export_Click" Style="{StaticResource Char_Control_Btn}"/>
-            <Button Content="CSVImport" Click="Import_Click" Style="{StaticResource Char_Control_Btn}"/>
-        </StackPanel>
-        <Button x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" RelativePanel.AlignBottomWithPanel="True" Click="Click_Löschen_Alles" Style="{StaticResource Char_Control_Btn}"/>
-
-
-        <ProgressRing x:Name="ProgressRing_Char" RelativePanel.AlignTopWith="Char_Sum" RelativePanel.AlignBottomWith="Char_Sum" Width="500"/>
-        <ListView Name="Char_Sum" RelativePanel.Below="Einleitung2" ItemsSource="{x:Bind Summorys, Mode=OneWay}" IsItemClickEnabled="True" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="data:CharSummory">
-                    <Grid Tapped="Item_Tapped" BorderThickness="1" BorderBrush="Black" >
-                        <FlyoutBase.AttachedFlyout>
-                            <Flyout>
-                                <StackPanel Orientation="Vertical">
-                                    <Button x:Uid="UI_CharVerwaltung_Btn_Laden" Click="Click_Laden" Style="{StaticResource Char_Control_Btn}"/>
-                                    <Button x:Uid="UI_CharVerwaltung_Btn_Löschen" Click="Click_Löschen" Style="{StaticResource Char_Control_Btn}"/>
-                                    <Button  x:Uid="UI_CharVerwaltung_Btn_Datei_Speichern" Click="Click_Speichern_Datei" Style="{StaticResource Char_Control_Btn}"/>
-                                </StackPanel>
-                            </Flyout>
-                        </FlyoutBase.AttachedFlyout>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Margin="5,2,5,2" Grid.Column="1" Text="{x:Bind strCharSummory, Mode=OneWay}"/>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Uid="UI_CharVerwaltung_Einleitung1" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="{x:Bind ViewModel.CurrentChar.Person.Alias, Mode=OneWay}" Style="{StaticResource Chars}"/>
+            <VariableSizedWrapGrid Orientation="Horizontal" Grid.Row="1">
+                <Button x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Content="Save" Click="Click_Speichern" Style="{StaticResource Char_Control_Btn}"/>
+                <Button x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Löschen" Content="Delete" Click="Click_Löschen_CurrentChar" Style="{StaticResource Char_Control_Btn}"/>
+                <Button x:Name="CurrentCharBtn_FileExp" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Content="SaveLocal" Click="Click_Datei_Export_CurrentChar" Style="{StaticResource Char_Control_Btn}"/>
+                <Button x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Content="SaveLocal" Click="Click_CSV_Export_CurrentChar" Style="{StaticResource Char_Control_Btn}"/>
+            </VariableSizedWrapGrid>
+        </Grid>
+        <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
+        <ProgressRing x:Name="ProgressRing_Char" Width="500"/>
+        <ListView Name="Char_Sum" 
+                  ItemsSource="{x:Bind Summorys, Mode=OneWay}" 
+                  ItemTemplate="{StaticResource Normal}"
+                  IsItemClickEnabled="True" 
+                  Grid.Row="3"
+                  SelectionChanged="Char_Sum_SelectionChanged"
+                  ItemClick="Char_Sum_ItemClick">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Margin" Value="0,8,0,5 " />
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
-
-    </RelativePanel>
+        <CommandBar Grid.Row="4" Loaded="CommandBar_Loaded">
+            <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="Contact" Click="Click_Erstellen"/>
+            <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Datei_Import" Icon="Download" Click="Click_Datei_Import"/>
+            <AppBarButton x:Uid="UI_CharVerwaltung_Btn_CSV_Import" Icon="Download" Click="Click_CSV_Import"/>
+            <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" Icon="Delete" Click="Click_Löschen_Alles"/>
+        </CommandBar>
+    </Grid>
 </Page>

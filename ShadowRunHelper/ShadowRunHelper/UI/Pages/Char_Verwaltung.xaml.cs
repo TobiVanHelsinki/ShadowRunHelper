@@ -1,58 +1,88 @@
-﻿using System;
+﻿using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Controls.Primitives;
+using System;
 using System.Collections.Generic;
-using Windows.Storage;
-using ShadowRunHelper.IO;
-//using static ShadowRunHelper.IO.CharIO;
-//using static ShadowRunHelper.IO.GeneralIO;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+using Windows.Foundation.Metadata;
+using Windows.Storage;
 using Windows.UI.Popups;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper
 {
-    /// <summary>
-    /// Eine leere Seite, die eigenständig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
-    /// </summary>
     public sealed partial class Char_Verwaltung : Page
     {
         ViewModel_Char ViewModel { get; set; }
-        //ViewModel_CharVerwaltung ViewModel_IO { get; set; }
-
-        ObservableCollection<CharSummory> summorys;
-
-        public ObservableCollection<CharSummory> Summorys
-        {
-            get
-            {
-                return summorys;
-            }
-            private set
-            {
-                if (value != this.summorys)
-                {
-                    this.summorys = value;
-                    NotifySummoryChanged();
-                }
-            }
-        }
-
-        public Task<IEnumerable<object>> GenralIO { get; private set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        ObservableCollection<CharSummory> Summorys;
+        event PropertyChangedEventHandler PropertyChanged;
         void NotifySummoryChanged([CallerMemberName] String summoryName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(summoryName));
         }
+        
+        // Start Stuff ########################################################
+        public Char_Verwaltung()
+        {
+            InitializeComponent();
+            Summorys = new ObservableCollection<CharSummory>();
+        }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            ViewModel = (ViewModel_Char)e.Parameter;
+            Summorys_Aktualisieren();
+            ViewModel.PropertyChanged += (x, y) => { ChangeCurrentButtons(ViewModel.CurrentChar==null?false:true); };
+            ChangeCurrentButtons(ViewModel.CurrentChar == null ? false : true);
+        }
 
-        private async void Summorys_Aktualisieren()
+        void CommandBar_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Controls.CommandBar", "DefaultLabelPosition"))
+            {
+                (sender as CommandBar).DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
+            }
+        }
+
+        // GUI Stuff ##########################################################
+
+        void ChangeCurrentButtons(bool bHow)
+        {
+            CurrentCharBtn_Save.IsEnabled = bHow;
+            CurrentCharBtn_Del.IsEnabled = bHow;
+            CurrentCharBtn_FileExp.IsEnabled = bHow;
+            CurrentCharBtn_CSVExp.IsEnabled = bHow;
+        }
+
+        void Char_Sum_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        void Char_Sum_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (var item in e.RemovedItems)
+            {
+                // Set the DataTemplate of the deselected ListViewItems
+                ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = Normal;
+            }
+
+            /* Then we set all the items that has been selected
+            to be expanded.
+            We should probably throw an Exception if more than 1 was found,
+            because it's unwanted behavior, but we'll ignore that for now.
+            */
+            foreach (var item in e.AddedItems)
+            {
+                ((ListViewItem)(sender as ListView).ContainerFromItem(e.AddedItems[0])).ContentTemplate = Active;
+            }
+
+        }
+
+        async void Summorys_Aktualisieren()
         {
             Summorys.Clear();
             StorageFolder CharFolder = await GeneralIO.GetFolder(CharIO.GetCurrentSavePlace(), await CharIO.GetCurrentSavePath());
@@ -62,37 +92,47 @@ namespace ShadowRunHelper
             }
         }
 
-
-        public Char_Verwaltung()
-        {
-            InitializeComponent();
-            summorys = new ObservableCollection<Model.CharSummory>();
-
-            //ViewModel_IO = new ViewModel_CharVerwaltung();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            ViewModel = (ViewModel_Char)e.Parameter;
-            Summorys_Aktualisieren();
-        }
-
-        private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
-        {
-            FrameworkElement element = sender as FrameworkElement;
-            if (element != null)
-            {
-                FlyoutBase.ShowAttachedFlyout(element);
-            }
-        }
-
-        private void Click_Erstellen(object sender, RoutedEventArgs e)
+        // Handle Stuff #######################################################
+        void Click_Erstellen(object sender, RoutedEventArgs e)
         {
             ViewModel.CurrentChar = new CharHolder();
             Frame.Navigate(typeof(Char), ViewModel);
         }
 
-        private async void Click_Löschen(object sender, RoutedEventArgs e)
+        async void Click_Speichern(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar);
+                Summorys_Aktualisieren();
+            }
+            catch (Exception)
+            {
+                //TODO notify user
+                throw; //then remove throw
+            }
+        }
+
+        async void Click_Laden(object sender, RoutedEventArgs e)
+        {
+            ProgressRing_Char.IsActive = true;
+            try
+            {
+                ViewModel.CurrentChar = await CharIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName);
+            }
+            catch (Exception)
+            {
+                //TODO notify user
+                throw; //then remove throw
+            }
+            ProgressRing_Char.IsActive = false;
+            if (ViewModel.CurrentChar != null)
+            {
+                Frame.Navigate(typeof(Char), ViewModel);
+            }
+        }
+
+        async void Click_Löschen_OtherChar(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -106,7 +146,7 @@ namespace ShadowRunHelper
             Summorys_Aktualisieren();
         }
 
-        private async void Click_Löschen_Alles(object sender, RoutedEventArgs e)
+        async void Click_Löschen_Alles(object sender, RoutedEventArgs e)
         {
 
             var messageDialog = new MessageDialog("Damit zerstörst du die Existenz von ... JEDEM!, Chummer! Bist du sicher, dass du das machen willst?");
@@ -128,7 +168,7 @@ namespace ShadowRunHelper
             await messageDialog.ShowAsync();
         }
 
-        private async void Delete_All()
+        async void Delete_All()
         {
             foreach (var item in Summorys)
             {
@@ -145,31 +185,11 @@ namespace ShadowRunHelper
             Summorys_Aktualisieren();
         }
 
-        private async void Click_Laden(object sender, RoutedEventArgs e)
-        {
-            ProgressRing_Char.IsActive = true;
-            try
-            {
-                ViewModel.CurrentChar = await CharIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName);
-            }
-            catch (Exception)
-            {
-                //TODO notify user
-                throw; //then remove throw
-            }
-            ProgressRing_Char.IsActive = false;
-            if (ViewModel.CurrentChar != null)
-            {
-                Frame.Navigate(typeof(Char), ViewModel);
-            }
-        }
-
-        private async void Click_Speichern(object sender, RoutedEventArgs e)
+        void Click_Löschen_CurrentChar(object sender, RoutedEventArgs e)
         {
             try
             {
-                await CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar);
-                Summorys_Aktualisieren();
+                ViewModel.CurrentChar = null;
             }
             catch (Exception)
             {
@@ -178,7 +198,31 @@ namespace ShadowRunHelper
             }
         }
 
-        private async void Click_Laden_Datei(object sender, RoutedEventArgs e)
+        void Click_Datei_Export_CurrentChar(object sender, RoutedEventArgs e)
+        {
+            Click_Datei_Export(ViewModel.CurrentChar);
+        }
+
+        async void Click_Datei_Export_OtherChar(object sender, RoutedEventArgs e)
+        {
+            Click_Datei_Export(await CharIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName));
+        }
+
+        async void Click_Datei_Export(CharHolder CharToSave)
+        {
+            try
+            {
+                StorageFile FileToSave = await GeneralIO.GetFile(Place.Extern, CharToSave.MakeName());
+                CharIO.SaveCharToFile(CharToSave, FileToSave);
+            }
+            catch (Exception)
+            {
+                //TODO notify user
+                throw; //then remove throw
+            }
+        }
+
+        async void Click_Datei_Import(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -191,24 +235,24 @@ namespace ShadowRunHelper
             }
         }
 
-        private async void Click_Speichern_Datei(object sender, RoutedEventArgs e)
+        void Click_CSV_Export_CurrentChar(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                CharHolder CharToSave = await CharIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName);
-                StorageFile FileToSave = await GeneralIO.GetFile(Place.Extern, CharToSave.MakeName());
-                CharIO.SaveCharToFile(CharToSave, FileToSave);
-            }
-            catch (Exception)
-            {
-                //TODO notify user
-                throw; //then remove throw
-            }
+            Click_CSV_Export(ViewModel.CurrentChar);
         }
 
-        private async void Export_Click(object sender, RoutedEventArgs e)
+        async void Click_CSV_Export_OtherChar(object sender, RoutedEventArgs e)
+        {
+            Click_CSV_Export(await CharIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName));
+
+            Click_CSV_Export(await CharIO.LoadCharAtCurrentPlace(
+                ((sender as Button).DataContext as CharSummory).strFileName
+                ));
+        }
+
+        async void Click_CSV_Export(CharHolder CharToSave)
         {
             StorageFolder Folder = null;
+           
             try
             {
                 Folder = await GeneralIO.GetFolder(Place.Extern);
@@ -232,7 +276,7 @@ namespace ShadowRunHelper
             }
         }
 
-        private async void Import_Click(object sender, RoutedEventArgs e)
+        async void Click_CSV_Import(object sender, RoutedEventArgs e)
         {
             StorageFile File = null;
             string strRead = "";
@@ -258,8 +302,8 @@ namespace ShadowRunHelper
             {//todo
                 //throw;
             }
-
         }
+
     }
 
 }

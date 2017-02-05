@@ -10,7 +10,16 @@
 
     <Style TargetType="Button" x:Key="Char_Control_Btn">
         <Setter Property="FontSize" Value="20"/>
-        <Setter Property="Margin" Value="20,10,0,10"/>
+        <Setter Property="Margin" Value="4,5,4,5"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="U">
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="Margin" Value="4,2,4,4"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="Chars">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Margin" Value="4,2,4,4"/>
     </Style>
 
 </ResourceDictionary>
