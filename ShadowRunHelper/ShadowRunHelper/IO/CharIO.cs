@@ -4,11 +4,12 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using ShadowRunHelper.Model;
 using static ShadowRunHelper.IO.GeneralIO;
+using Windows.ApplicationModel.Resources;
+
 namespace ShadowRunHelper.IO
 {
     enum Place
     {
-        //Intern = 1,
         Extern = 2,
         Roaming = 3,
         Local = 3,
@@ -78,10 +79,13 @@ namespace ShadowRunHelper.IO
 
         private static void ErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
         {
-            //((Newtonsoft.Json.JsonSerializer)o).
-            a.ErrorContext.Handled = true;
-            //todo notify user
-            //a.ErrorContext.Error.Data;
+            var res = ResourceLoader.GetForCurrentView();
+            ViewModel.Instance.lstNotifications.Add(new Notification(
+                res.GetString("Notification_Error_Loader_Error1/Text")+
+                "ErrorContextData: " + a.ErrorContext.Error.Data +
+                "CurrentObject: " + a.CurrentObject+
+                "OriginalObject: " + a.ErrorContext.OriginalObject
+                ));
         }
 
         private static CharHolder String_to_Char(string fileContent)
@@ -103,30 +107,23 @@ namespace ShadowRunHelper.IO
             {
                 strFileVersion = Konstanten.CHARFILE_VERSION_1_3;
             }
-            try
+            switch (strFileVersion)
             {
-                switch (strFileVersion)
-                {
-                    case Konstanten.CHARFILE_VERSION_1_3:
-                        ShadowRunHelper1_3.Controller.CharHolder CH1_3 = new ShadowRunHelper1_3.Controller.CharHolder();
-                        CH1_3 = ShadowRunHelper1_3.IO.CharIO.JSON_to_Char(fileContent);
-                        ReturnCharHolder = OldConverter.ConvertVersion1_3to1_5(CH1_3);
-                        GC.Collect();
-                        break;
-                    case Konstanten.CHARFILE_VERSION_1_5:
-                        JsonSerializerSettings test = new JsonSerializerSettings();
-                        test.Error = ErrorHandler;
-                        test.PreserveReferencesHandling = PreserveReferencesHandling.All;
-                        ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, test);
-                        ReturnCharHolder.RefreshThingList();
-                        break;
-                    default:
-                        throw new Exception(ExceptionMessages.IO_DeserializeVersion_Error);
-                }
-            }
-            catch (Exception)
-            {
-                throw new Exception(ExceptionMessages.IO_Deserialize_Error);
+                case Konstanten.CHARFILE_VERSION_1_3:
+                    ShadowRunHelper1_3.Controller.CharHolder CH1_3 = new ShadowRunHelper1_3.Controller.CharHolder();
+                    CH1_3 = ShadowRunHelper1_3.IO.CharIO.JSON_to_Char(fileContent);
+                    ReturnCharHolder = OldConverter.ConvertVersion1_3to1_5(CH1_3);
+                    GC.Collect();
+                    break;
+                case Konstanten.CHARFILE_VERSION_1_5:
+                    JsonSerializerSettings test = new JsonSerializerSettings();
+                    test.Error = ErrorHandler;
+                    test.PreserveReferencesHandling = PreserveReferencesHandling.All;
+                    ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, test);
+                    ReturnCharHolder.RefreshThingList();
+                    break;
+                default:
+                    throw new Exception(ExceptionMessages.IO_DeserializeVersion_Error);
             }
             return ReturnCharHolder;
         }
@@ -134,21 +131,12 @@ namespace ShadowRunHelper.IO
         public static async void SaveCharToFile(CharHolder SaveChar, StorageFile file)
         {
             //Ausgewählten Char auf Plattensubsystem schreiben
-            await FileIO.WriteTextAsync(file, CharIO.Char_to_String(SaveChar));
+            await FileIO.WriteTextAsync(file, Char_to_String(SaveChar));
         }
 
         public static async Task<CharHolder> LoadCharFromFile(StorageFile file)
         {
-            String inputString = "";
-            try
-            {
-                inputString = await FileIO.ReadTextAsync(file);
-                return String_to_Char(inputString);
-            }
-            catch (Exception)
-            {
-                throw new Exception("Konnte nicht aus Datei lesen und oder laden");
-            }
+            return String_to_Char(await FileIO.ReadTextAsync(file));
         }
     }
 }

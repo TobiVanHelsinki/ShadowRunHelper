@@ -43,7 +43,7 @@ namespace ShadowRunHelper
         /// <param name="e">Details über Startanforderung und -prozess.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            ViewModel = new ViewModel();
+            ViewModel = ViewModel.Instance;
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {

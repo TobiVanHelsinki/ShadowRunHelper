@@ -229,6 +229,38 @@ namespace ShadowRunHelper
             }
         }
 
+        internal static bool bDisplayRequest
+        {
+            get
+            {
+                bool temp = false;
+                try
+                {
+                    Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+                    temp = (bool)container.Values[Konstanten.CONTAINER_SETTINGS_bDisplayRequest];
+                }
+                catch (Exception)
+                {
+                    temp = false;
+                }
+                return temp;
+            }
+            set
+            {
+                try
+                {
+                    Windows.Storage.ApplicationDataContainer Settings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                    Windows.Storage.ApplicationDataContainer container = Settings.CreateContainer(Konstanten.CONTAINER_SETTINGS, Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+                    container.Values[Konstanten.CONTAINER_SETTINGS_bDisplayRequest] = value;
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
     }
-    
+
 }

@@ -710,10 +710,10 @@
   <data name="Klammer_Rund_Zu.Text" xml:space="preserve">
     <value>)</value>
   </data>
-  <data name="UI_Optionen_EditAfterAdd.OffContent" xml:space="preserve">
+  <data name="UI_Optionen_Toggle.OffContent" xml:space="preserve">
     <value>Nein</value>
   </data>
-  <data name="UI_Optionen_EditAfterAdd.OnContent" xml:space="preserve">
+  <data name="UI_Optionen_Toggle.OnContent" xml:space="preserve">
     <value>Ja</value>
   </data>
   <data name="UI_Optionen_EditAfterAdd_Header.Text" xml:space="preserve">
@@ -760,5 +760,20 @@
   </data>
   <data name="Ui_Nav_Einstellungen.Text" xml:space="preserve">
     <value>Einstellungen</value>
+  </data>
+  <data name="Notification_Error_Converter_Error1.Text" xml:space="preserve">
+    <value>konnte nicht übernommen werden.</value>
+  </data>
+  <data name="Notification_Error_Converter_Error2.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Notification_Error_DisplayRequest.Text" xml:space="preserve">
+    <value>Display kann nicht automatisch aktiviert bleiben.</value>
+  </data>
+  <data name="Notification_Error_Loader_Error1.Text" xml:space="preserve">
+    <value>Es gab einen Fehler beim Laden, Hier weitere Informationen: Überprüfe bitte deinen Char.</value>
+  </data>
+  <data name="UI_Optionen_DisplayRequest_Header.Text" xml:space="preserve">
+    <value>Char Display immer aktiv halten</value>
   </data>
 </root>

@@ -14,7 +14,16 @@ namespace ShadowRunHelper
                 NotifyPropertyChanged();
             }
         }
-
+        public bool bDisplayRequest
+        {
+            get { return Optionen.bDisplayRequest; }
+            set
+            {
+                Optionen.bDisplayRequest = value;
+                NotifyPropertyChanged();
+            }
+        }
+        
         public bool LOAD_CHAR_ON_START
         {
             get { return Optionen.bLoadCharOnStart; }

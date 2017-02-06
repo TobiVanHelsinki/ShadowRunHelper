@@ -1,9 +1,4 @@
 ﻿using ShadowRunHelper.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.IO
@@ -12,7 +7,6 @@ namespace ShadowRunHelper.IO
     {
         private static void CopyAttribute(CharModel.Attribut Target, ShadowRunHelper1_3.CharModel.Attribut Source)
         {
-            //Target.Ordnung = Source.Ordnung;
             Target.Bezeichner = Source.Bezeichner;
             Target.Wert = Source.Wert;
             Target.Typ = Source.Typ;
@@ -27,7 +21,6 @@ namespace ShadowRunHelper.IO
             foreach (var item in cH1_3.FertigkeitController)
             {
                 var temp = ReturnCharHolder.CTRLFertigkeit.AddNewThing();
-                //temp.Ordnung = item.Data.Ordnung;
                 temp.Bezeichner = item.Data.Bezeichner;
                 temp.Wert = item.Data.Wert;
                 temp.Typ = item.Data.Typ;
@@ -68,6 +61,11 @@ namespace ShadowRunHelper.IO
                 else if (item.Data.Bezeichner == res.GetString("Model_Attribut_Willen/Text"))
                 {
                     CopyAttribute(ReturnCharHolder.CTRLAttribut.Willen, item.Data);
+                }
+                else
+                {
+                    res = ResourceLoader.GetForCurrentView();
+                    ViewModel.Instance.lstNotifications.Add(new Notification(res.GetString("Model_Attribut_/Text") +" "+ item.Data.Bezeichner+ " "+res.GetString("Notification_Error_Converter_Error1/Text")));
                 }
             }
             foreach (var item in cH1_3.ItemController)
@@ -350,6 +348,11 @@ namespace ShadowRunHelper.IO
                     {
                         temp.WertZusammensetzung.Add(t);
                     }
+                    else
+                    {
+                        res = ResourceLoader.GetForCurrentView();
+                        ViewModel.Instance.lstNotifications.Add(new Notification(res.GetString("Model_Handlung_/Text") + " " + item.Data.Bezeichner + " - " + res.GetString("Model_Handlung_Zusammensetzung/Text") + zusitem.Value.Bezeichner + res.GetString("Notification_Error_Converter_Error1/Text")));
+                    }
                 }
                 foreach (var zusitem in item.Data.GegenZusammensetzung)
                 {
@@ -358,6 +361,11 @@ namespace ShadowRunHelper.IO
                     {
                         temp.GegenZusammensetzung.Add(t);
                     }
+                    else
+                    {
+                        res = ResourceLoader.GetForCurrentView();
+                        ViewModel.Instance.lstNotifications.Add(new Notification(res.GetString("Model_Handlung_/Text") + " " + item.Data.Bezeichner + " - " + res.GetString("Model_Handlung_GegenZusammensetzung/Text") + zusitem.Value.Bezeichner + res.GetString("Notification_Error_Converter_Error1/Text")));
+                    }
                 }
                 foreach (var zusitem in item.Data.GrenzeZusammensetzung)
                 {
@@ -365,6 +373,11 @@ namespace ShadowRunHelper.IO
                     if (t?.Object != null)
                     {
                         temp.GrenzeZusammensetzung.Add(t);
+                    }
+                    else
+                    {
+                        res = ResourceLoader.GetForCurrentView();
+                        ViewModel.Instance.lstNotifications.Add(new Notification(res.GetString("Model_Handlung_/Text") + " " + item.Data.Bezeichner + " - " + res.GetString("Model_Handlung_GrenzeZusammensetzung/Text") + zusitem.Value.Bezeichner + res.GetString("Notification_Error_Converter_Error1/Text")));
                     }
                 }
             }

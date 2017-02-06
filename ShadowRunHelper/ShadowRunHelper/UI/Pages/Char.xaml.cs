@@ -7,6 +7,7 @@ using System;
 using ShadowRunHelper.UI.Edit;
 using ShadowRunHelper.CharModel;
 using Windows.Foundation.Metadata;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper
 {
@@ -18,28 +19,44 @@ namespace ShadowRunHelper
         public Char()
         {
             InitializeComponent();
-
-            if (ApiInformation.IsEnumNamedValuePresent("Windows.UI.Xaml.TextWrapping", "WrapWholeWords"))
-            {
-                try
-                {
-                    NoteTextBox.TextWrapping = TextWrapping.WrapWholeWords;
-                }
-                catch (Exception)
-                {
-                }
-            }
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (ViewModel)e.Parameter;
-            Char_DisplayRequest = new Windows.System.Display.DisplayRequest();
-            Char_DisplayRequest.RequestActive();
+            if (Optionen.bDisplayRequest)
+            {
+                try
+                {
+                    Char_DisplayRequest = new Windows.System.Display.DisplayRequest();
+                    Char_DisplayRequest.RequestActive();
+                }
+                catch (Exception)
+                {
+                    var res = ResourceLoader.GetForCurrentView();
+                    ViewModel.Instance.lstNotifications.Add(new Notification(
+                        res.GetString("Notification_Error_DisplayRequest/Text")
+                        ));
+                }
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            Char_DisplayRequest.RequestRelease();
+            if (Optionen.bDisplayRequest)
+            {
+                try
+                {
+                    Char_DisplayRequest = new Windows.System.Display.DisplayRequest();
+                    Char_DisplayRequest.RequestRelease();
+                }
+                catch (Exception)
+                {
+                    var res = ResourceLoader.GetForCurrentView();
+                    ViewModel.Instance.lstNotifications.Add(new Notification(
+                        res.GetString("Notification_Error_DisplayRequest/Text")
+                        ));
+                }
+            }
             base.OnNavigatedFrom(e);
         }
 
@@ -48,7 +65,13 @@ namespace ShadowRunHelper
             FrameworkElement element = sender as FrameworkElement;
                 if (element != null)
                 {
+                try
+                {
                     FlyoutBase.ShowAttachedFlyout(element);
+                }
+                catch (Exception)
+                {
+                }
                 }
         }
         private async void Add(object sender, RoutedEventArgs e)
@@ -69,8 +92,6 @@ namespace ShadowRunHelper
             catch (WrongTypeException)
             {
             }
-
-
         }
 
         private async void Edit_Click(object sender, RoutedEventArgs e)

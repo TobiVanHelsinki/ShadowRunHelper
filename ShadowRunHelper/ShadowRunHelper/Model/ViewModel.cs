@@ -4,9 +4,23 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 namespace ShadowRunHelper.Model
 {
-    public class ViewModel : INotifyPropertyChanged
+    public sealed class ViewModel : INotifyPropertyChanged
     {
-        private CharHolder _currentChar;
+        static readonly ViewModel instance = new ViewModel();
+
+        ViewModel()
+        {
+            lstNotifications = new ObservableCollection<Notification>();
+        }
+
+        public static ViewModel Instance
+            {
+                get
+                {
+                    return instance;
+                }
+            }
+        CharHolder _currentChar;
         public CharHolder CurrentChar
         {
             get { return this._currentChar; }
@@ -21,11 +35,7 @@ namespace ShadowRunHelper.Model
         }
 
         public ObservableCollection<Notification> lstNotifications;
-
-        public ViewModel()
-        {
-            lstNotifications = new ObservableCollection<Notification>();
-        }
+        
         ProjectPages CurrentPageInProgress = ProjectPages.undef;
         public void RequestedNavigation(ProjectPages ePp, object oO = null)
         {
@@ -41,7 +51,7 @@ namespace ShadowRunHelper.Model
         public event EventHandler<ProjectPages> NavigationRequested;
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

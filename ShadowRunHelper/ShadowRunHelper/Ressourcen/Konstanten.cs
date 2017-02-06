@@ -57,6 +57,9 @@ namespace ShadowRunHelper
         public const string CONTAINER_SETTINGS_LOAD_CHAR_ON_START = "LOAD_CHAR_ON_START";
         public const string CONTAINER_SETTINGS_IS_FILE_IN_PROGRESS = "IS_FILE_IN_PROGRESS";
         public const string CONTAINER_SETTINGS_bStartEditAfterAdd = "bStartEditAfterAdd";
+        public const string CONTAINER_SETTINGS_bDisplayRequest = "bDisplayRequest";
+
+        
         public const string CONTAINER_SETTINGS_ORDNERMODE = "ORDNERMODE_ZWEI";
         public const string CONTAINER_SETTINGS_ORDNERMODE_PFAD = "ORDNERMODE_PFAD";
         public const string LAST_CHAR = "Last_Char";
