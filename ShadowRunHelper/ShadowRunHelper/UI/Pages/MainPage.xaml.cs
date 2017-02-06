@@ -28,15 +28,39 @@ namespace ShadowRunHelper
             RefreshGui();
             ViewModel = (ViewModel)e.Parameter;
             ViewModel.PropertyChanged += (x, y) => RefreshGui();
+            ViewModel.NavigationRequested += NavigationRequested; ;
             ViewModel.lstNotifications.CollectionChanged += (x, y) => ShowError(y);
-
-            if (ViewModel.CurrentChar != null)
+            ViewModel.RequestedNavigation(ViewModel.CurrentChar == null ? ProjectPages.Verwaltung : ProjectPages.Char);
+        }
+        ProjectPages LastPage = ProjectPages.Verwaltung;
+        private void NavigationRequested(object sender, ProjectPages e)
+        {
+            switch (e)
             {
-                MyFrame.Navigate(typeof(Char), ViewModel);
-            }
-            else
-            {
-                MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
+                case ProjectPages.Char:
+                    if (ViewModel.CurrentChar != null)
+                    {
+                        Char.IsSelected = true;
+                        LastPage = e;
+                        MyFrame.Navigate(typeof(Char), ViewModel);
+                    }
+                    else
+                    {
+                        ViewModel.RequestedNavigation(LastPage);
+                    }
+                    break;
+                case ProjectPages.Verwaltung:
+                    Char_Change.IsSelected = true;
+                    LastPage = e;
+                    MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
+                    break;
+                case ProjectPages.Settings:
+                    App_Settings.IsSelected = true;
+                    LastPage = e;
+                    MyFrame.Navigate(typeof(Settings));
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -55,7 +79,6 @@ namespace ShadowRunHelper
                 }
             }
         }
-
 
         private void RefreshGui()
         {
@@ -91,25 +114,17 @@ namespace ShadowRunHelper
         {
             if (Char.IsSelected)
             {
-                if (ViewModel.CurrentChar != null)
-                {
-                    MyFrame.Navigate(typeof(Char), ViewModel);
-                }
-                Char.IsSelected = false;
+                ViewModel?.RequestedNavigation(ProjectPages.Char);
             }
             else if (Char_Change.IsSelected)
             {
-                Char_Change.IsSelected = false;
-                MyFrame.Navigate(typeof(Char_Verwaltung), ViewModel);
+                ViewModel?.RequestedNavigation(ProjectPages.Verwaltung);
             }
             else if (App_Settings.IsSelected)
             {
-                App_Settings.IsSelected = false;
-                MyFrame.Navigate(typeof(Settings));
+                ViewModel?.RequestedNavigation(ProjectPages.Settings);
             }
-
             MySplitView.IsPaneOpen = false;
-            return;
         }
 
         private void Plus_Click(object sender, RoutedEventArgs e)

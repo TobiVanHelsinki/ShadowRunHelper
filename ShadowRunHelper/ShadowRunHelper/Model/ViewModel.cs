@@ -26,6 +26,19 @@ namespace ShadowRunHelper.Model
         {
             lstNotifications = new ObservableCollection<Notification>();
         }
+        ProjectPages CurrentPageInProgress = ProjectPages.undef;
+        public void RequestedNavigation(ProjectPages ePp, object oO = null)
+        {
+            if (CurrentPageInProgress == ePp)
+            {
+                return;
+            }
+            CurrentPageInProgress = ePp;
+            NavigationRequested?.Invoke(oO, ePp);
+            CurrentPageInProgress = ProjectPages.undef;
+        }
+
+        public event EventHandler<ProjectPages> NavigationRequested;
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

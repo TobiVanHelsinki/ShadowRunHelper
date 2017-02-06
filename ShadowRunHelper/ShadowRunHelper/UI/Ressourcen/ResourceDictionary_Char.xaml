@@ -330,7 +330,7 @@
     </Style>
     <Style TargetType="Grid" x:Key="ListView_Item_Grid">
         <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <!--<Setter Property="BorderThickness" Value="0,0,0,1"/>-->
         <!--<Setter Property="Background" Value="White"/>-->
     </Style>
     <Style TargetType="RelativePanel" x:Key="ListView_Item_Relativ">
@@ -365,49 +365,30 @@
     </Style>
     <Style TargetType="ListView" x:Key="ListView">
         <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="0,1,0,1"/>
         <!--<Setter Property="Background" Value="Aqua"/>-->
-        <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
-        <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
         <Setter Property="Background" Value="Beige"/>
         <Setter Property="CanReorderItems" Value="True"/>
         <Setter Property="AllowDrop" Value="True"/>
     </Style>
-    <Style TargetType="GridView" x:Key="GridView">
-        <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <!--<Setter Property="Background" Value="Aqua"/>-->
-        <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
-        <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
-        <Setter Property="Background" Value="Beige"/>
+    <Style TargetType="ListViewItem" x:Key="ListViewItemStyle">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
     </Style>
-    <Style TargetType="Grid" x:Key="ListView_as_Grid">
+        <Style TargetType="Grid" x:Key="ListView_as_Grid">
         <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="0,1,0,1"/>
         <!--<Setter Property="Background" Value="Aqua"/>-->
-        <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
-        <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
-        
     </Style>
     <Style TargetType="Grid" x:Key="ListView_E">
         <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <!--<Setter Property="Background" Value="Pink"/>-->
-        <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
-        <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
-    </Style>
-    <Style TargetType="Border" x:Key="ListView_E_neu">
-        <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <!--<Setter Property="Background" Value="Pink"/>-->
-        <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
-        <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
     </Style>
     <Style TargetType="StackPanel" x:Key="ListView_U">
         <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="RelativePanel.AlignRightWithPanel" Value="True"/>
-        <Setter Property="RelativePanel.AlignLeftWithPanel" Value="True"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="Background" Value="{ThemeResource SystemAltLowColor}"/>
         <Setter Property="Orientation" Value="Horizontal"/>
     </Style>
@@ -417,7 +398,7 @@
     </Style>
     <Style BasedOn="{StaticResource ScrollViewer}" TargetType="ScrollViewer" x:Key="Pivot_Item_ScrollViewer">
     </Style>
-
-    
-
+    <Style TargetType="StackPanel" x:Key="Pivot_Item_StackPanel">
+        <Setter Property="Margin" Value="0,0,8,0"/>
+    </Style>
 </ResourceDictionary>

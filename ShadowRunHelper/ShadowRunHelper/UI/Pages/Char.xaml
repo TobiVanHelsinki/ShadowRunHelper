@@ -36,7 +36,7 @@
                 <local:TabHeader x:Uid="Char_View_Pivot_Aktion" Glyph="&#xE945;" />
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
-                <StackPanel Height="Auto" Width="Auto">
+                <StackPanel  Style="{StaticResource Pivot_Item_StackPanel}">
                     <StackPanel Name="Hanlung_Block">
                         <StackPanel Name="Handlung_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_HandlungM_" Style="{StaticResource ListView_U_Text}"/>
@@ -52,7 +52,7 @@
                                 <Run x:Uid="Model_Thing_Wert"/><Run x:Uid="Plus"/><Run x:Uid="Model_Handlung_Mod"/><Run x:Uid="KlammerAufEck"/><Run x:Uid="Model_Handlung_Grenze"/><Run x:Uid="KlammerZuEck"/>
                             </TextBlock>
                         </Grid>
-                        <ListView Name="Handlung" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLHandlung.Data}" Style="{StaticResource ListView}">
+                        <ListView Name="Handlung" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLHandlung.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Handlung">
                                     <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
@@ -63,7 +63,6 @@
                                         <FlyoutBase.AttachedFlyout>
                                             <Flyout x:Name="FlyoutHandlung">
                                                 <StackPanel Orientation="Vertical">
-
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
                                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
@@ -93,11 +92,6 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
                         </ListView>
                     </StackPanel>
                     <StackPanel Name="Fertigkeit_Block">
@@ -113,7 +107,7 @@
                             <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="1" x:Uid="Model_Thing_Wert" Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Fertigkeit" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLFertigkeit.Data, Mode=OneWay}" Style="{StaticResource ListView}">
+                        <ListView Name="Fertigkeit" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLFertigkeit.Data, Mode=OneWay}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Fertigkeit">
                                     <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
@@ -145,11 +139,11 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            
+
+
+
+
                         </ListView>
                     </StackPanel>
                 </StackPanel>
@@ -161,7 +155,7 @@
                 <local:TabHeader x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
-                <StackPanel  Width="Auto">
+                <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
                     <StackPanel Name="Item_Block">
                         <StackPanel Name="Items_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_ItemM_" Style="{StaticResource ListView_U_Text}"/>
@@ -181,7 +175,7 @@
                             <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="4" x:Uid="Model_Item_Anzahl"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Items" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLItem.Data, Mode=OneWay}" Style="{StaticResource ListView}">
+                        <ListView Name="Items" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLItem.Data, Mode=OneWay}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate  x:DataType="CharModel:Item">
                                     <Grid>
@@ -222,11 +216,11 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            
+
+
+
+
                         </ListView>
                     </StackPanel>
                     <StackPanel Name="Kommlink_Block">
@@ -251,7 +245,7 @@
                             <TextBlock Grid.Column="4" x:Uid="Model_Kommlink_Programmanzahl" Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="5" x:Uid="Model_Kommlink_Attribute" Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLKommlink.Data}" Style="{StaticResource ListView}">
+                        <ListView ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLKommlink.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Kommlink">
                                     <Grid>
@@ -298,11 +292,11 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            
+
+
+
+
                         </ListView>
                     </StackPanel>
                     <StackPanel Name="CyberDeck_Block">
@@ -328,7 +322,7 @@
                             <TextBlock Grid.Column="5" x:Uid="Model_Kommlink_Attribute" Style="{StaticResource ListView_Item_Text}">
                             </TextBlock>
                         </Grid>
-                        <ListView ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLCyberDeck.Data}" Style="{StaticResource ListView}">
+                        <ListView ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLCyberDeck.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:CyberDeck">
                                     <Grid>
@@ -380,11 +374,11 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            
+
+
+
+
                         </ListView>
                     </StackPanel>
                     <StackPanel Name="Programm_Block">
@@ -406,7 +400,7 @@
                             <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="4" x:Uid="Model_Programm_Optionen"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Programme" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLProgramm.Data}" Style="{StaticResource ListView}">
+                        <ListView Name="Programme" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLProgramm.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Programm">
                                     <Grid>
@@ -453,11 +447,6 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
                         </ListView>
                     </StackPanel>
                 </StackPanel>
@@ -468,7 +457,7 @@
                 <local:TabHeader x:Uid="Char_View_Pivot_Kampf" Glyph="&#xE730;" />
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
-                <StackPanel>
+                <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
                     <StackPanel Name="Fernkampfwaffe_Block">
                         <StackPanel Name="Fernkampfwaffen_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_FernkampfwaffeM_" Style="{StaticResource ListView_U_Text}"/>
@@ -486,7 +475,7 @@
                             <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="3" x:Uid="Model_Waffe_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView  Name="Fernkampfwaffen" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLFernkampfwaffe.Data}" Style="{StaticResource ListView}">
+                        <ListView  Name="Fernkampfwaffen" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLFernkampfwaffe.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Fernkampfwaffe">
                                     <Grid>
@@ -535,11 +524,11 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            
+
+
+
+
                         </ListView>
                     </StackPanel>
                     <StackPanel Name="Nahkampfwaffe_Block">
@@ -559,7 +548,7 @@
                             <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="3" x:Uid="Model_Waffe_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView  Name="Nahkampfwaffen" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLNahkampfwaffe.Data}" Style="{StaticResource ListView}">
+                        <ListView  Name="Nahkampfwaffen" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLNahkampfwaffe.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Nahkampfwaffe">
                                     <Grid>
@@ -606,11 +595,11 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            
+
+
+
+
                         </ListView>
                     </StackPanel>
                     <StackPanel Name="Panzerung_Block">
@@ -634,7 +623,7 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="4" x:Uid="Model_Panzerung_Stoß"/>
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="5" x:Uid="Model_Thing_Notiz}"/>
                         </Grid>
-                        <ListView Name="Panzerung" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLPanzerung.Data}" Style="{StaticResource ListView}">
+                        <ListView Name="Panzerung" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLPanzerung.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Panzerung">
                                     <Grid>
@@ -683,11 +672,11 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            
+
+
+
+
                         </ListView>
 
                     </StackPanel>
@@ -710,7 +699,7 @@
                             <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="4" x:Uid="Model_Vehikel_Panzerung"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView  Name="Vehikel" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLVehikel.Data}" Style="{StaticResource ListView}">
+                        <ListView  Name="Vehikel" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLVehikel.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Vehikel">
                                     <Grid>
@@ -771,11 +760,11 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            
+
+
+
+
                         </ListView>
                     </StackPanel>
                     <StackPanel Name="Munition_Block">
@@ -795,7 +784,7 @@
                             <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="3" x:Uid="Model_Item_Anzahl"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView  Name="Munition" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLMunition.Data}" Style="{StaticResource ListView}">
+                        <ListView  Name="Munition" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLMunition.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Munition">
                                     <Grid>
@@ -833,11 +822,6 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
                         </ListView>
                     </StackPanel>
                 </StackPanel>
@@ -848,11 +832,11 @@
                 <local:TabHeader x:Uid="Char_View_Pivot_Person" Glyph="&#xE2AF;" />
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
-                <StackPanel>
+                <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
                     <StackPanel Name="Attribut_Block">
                         <StackPanel Name="Attribut_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_AttributM_"  Style="{StaticResource ListView_U_Text}"/>
-                            <Button Name="Attribut_Add" Click="Add" Content="&#xE72C;" Style="{StaticResource ListView_U_BtnAdd}"  Tag="11"/>
+                            <!--<Button Name="Attribut_Add" Click="Add" Content="&#xE72C;" Style="{StaticResource ListView_U_BtnAdd}"  Tag="11"/>-->
                         </StackPanel>
                         <Grid>
                             <Grid.RowDefinitions>
@@ -1157,7 +1141,7 @@
                             <TextBlock Grid.Column="2" x:Uid="Model_Connection_Loyal" Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="3" x:Uid="Model_Person_Notizen" Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Connection" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLConnection.Data, Mode=OneWay}" Style="{StaticResource ListView}">
+                        <ListView Name="Connection" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLConnection.Data, Mode=OneWay}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Connection">
                                     <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
@@ -1190,11 +1174,11 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            
+
+
+
+
                         </ListView>
                     </StackPanel>
                     <StackPanel Name="Implantat_Block">
@@ -1214,7 +1198,7 @@
                             <TextBlock Grid.Column="2" x:Uid="Model_Implantat_Essenz" Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="3" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
                         </Grid>
-                        <ListView Name="Implantat" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLImplantat.Data, Mode=OneWay}" Style="{StaticResource ListView}">
+                        <ListView Name="Implantat" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLImplantat.Data, Mode=OneWay}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Implantat">
                                     <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
@@ -1249,11 +1233,11 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            
+
+
+
+
                         </ListView>
                     </StackPanel>
                     <StackPanel Name="Sin_Block">
@@ -1271,7 +1255,7 @@
                             <TextBlock Grid.Column="1" x:Uid="Model_Thing_Wert" Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="2" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
                         </Grid>
-                        <ListView Name="Sin" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLSin.Data, Mode=OneWay}" Style="{StaticResource ListView}">
+                        <ListView Name="Sin" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLSin.Data, Mode=OneWay}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="CharModel:Sin">
                                     <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
@@ -1300,11 +1284,11 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            
+
+
+
+
                         </ListView>
                     </StackPanel>
                     <Grid Name="VorundNachteile">
@@ -1317,7 +1301,7 @@
                                 <TextBlock x:Uid="Model_VorteilM_" Style="{StaticResource ListView_U_Text}"/>
                                 <Button Name="Vorteil_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="7"/>
                             </StackPanel>
-                            <ListView Name="Vorteil" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLVorteil.Data}" Style="{StaticResource ListView}">
+                            <ListView Name="Vorteil" Margin="0,0,2,0" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLVorteil.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="CharModel:Vorteil">
                                         <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
@@ -1346,11 +1330,6 @@
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                    </Style>
-                                </ListView.ItemContainerStyle>
                             </ListView>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
@@ -1358,7 +1337,7 @@
                                 <TextBlock x:Uid="Model_NachteilM_" Style="{StaticResource ListView_U_Text}"/>
                                 <Button Name="Nachteil_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="8"/>
                             </StackPanel>
-                            <ListView Name="Nachteile" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLNachteil.Data}" Style="{StaticResource ListView}">
+                            <ListView Name="Nachteile" Margin="2,0,0,0" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLNachteil.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="CharModel:Nachteil">
                                         <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
@@ -1387,11 +1366,11 @@
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                    </Style>
-                                </ListView.ItemContainerStyle>
+                                
+    
+    
+    
+    
                             </ListView>
                         </StackPanel>
                     </Grid>
@@ -1471,11 +1450,7 @@
             <PivotItem.Header>
                 <local:TabHeader x:Uid="Char_View_Pivot_Notizen" Glyph="&#xE193;" />
             </PivotItem.Header>
-            <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
-                <RelativePanel Style="{StaticResource Pivot_Item_RelativePanel}">
-                    <TextBox AcceptsReturn="True"  Text="{x:Bind ViewModel.CurrentChar.Person.Notizen, Mode=TwoWay}" PlaceholderText="Notizen" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True"/>
-                </RelativePanel>
-            </ScrollViewer>
+            <TextBox Name="NoteTextBox" AcceptsReturn="True" TextWrapping="Wrap" PlaceholderText="Notizen" Text="{x:Bind ViewModel.CurrentChar.Person.Notizen, Mode=TwoWay}" />
         </PivotItem>
     </Pivot>
 </Page>

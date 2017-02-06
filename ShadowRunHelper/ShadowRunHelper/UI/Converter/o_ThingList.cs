@@ -14,7 +14,7 @@ namespace ShadowRunHelper.UI.Converter
             switch ((string)parameter)
             {
                 case "Wert":
-                    if (item.strProperty == "")
+                    if (item?.strProperty == "")
                     {
                         return item.Object.Wert.ToString();
                     }
@@ -23,7 +23,7 @@ namespace ShadowRunHelper.UI.Converter
                         return item.Object.GetValue(item.strProperty).ToString();
                     }
                 case "Bezeichner":
-                    if (item.strProperty == "")
+                    if (item?.strProperty == "")
                     {
                         return item.Object.Bezeichner;
                     }

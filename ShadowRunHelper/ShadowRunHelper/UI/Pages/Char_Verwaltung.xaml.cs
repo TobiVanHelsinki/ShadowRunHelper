@@ -100,7 +100,7 @@ namespace ShadowRunHelper
         void Click_Erstellen(object sender, RoutedEventArgs e)
         {
             ViewModel.CurrentChar = new CharHolder();
-            Frame.Navigate(typeof(Char), ViewModel);
+            ViewModel.RequestedNavigation(ProjectPages.Char);
         }
 
         async void Click_Speichern(object sender, RoutedEventArgs e)
@@ -130,7 +130,7 @@ namespace ShadowRunHelper
             ProgressRing_Char.IsActive = false;
             if (ViewModel.CurrentChar != null)
             {
-                Frame.Navigate(typeof(Char), ViewModel);
+                ViewModel.RequestedNavigation(ProjectPages.Char);
             }
         }
 

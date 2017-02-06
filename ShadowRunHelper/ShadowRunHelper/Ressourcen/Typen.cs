@@ -5,6 +5,13 @@ using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper
 {
+    public enum ProjectPages
+    {
+        undef = 0,
+        Char = 1,
+        Verwaltung = 2,
+        Settings = 3,
+    }
     public enum TCharState
     {
         EMPTY_CHAR = 0,

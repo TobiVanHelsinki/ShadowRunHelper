@@ -752,4 +752,13 @@
   <data name="Notification_Error_SaveFail" xml:space="preserve">
     <value>Speichern fehlgeschlagen</value>
   </data>
+  <data name="Ui_Nav_Charakter.Text" xml:space="preserve">
+    <value>Aktueller Char</value>
+  </data>
+  <data name="Ui_Nav_CharakterVerwalten.Text" xml:space="preserve">
+    <value>Chars verwalten</value>
+  </data>
+  <data name="Ui_Nav_Einstellungen.Text" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
 </root>

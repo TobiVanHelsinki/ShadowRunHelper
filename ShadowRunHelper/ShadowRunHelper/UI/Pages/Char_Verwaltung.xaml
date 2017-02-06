@@ -15,18 +15,18 @@
             <DataTemplate x:Name="Normal" x:Key="Normal" x:DataType="data:CharSummory">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="{x:Bind strCharSummory, Mode=OneWay}"/>
                     <TextBlock Grid.Column="1" Text="{x:Bind tDateCreated, Mode=OneWay}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Active" x:Key="Active" x:DataType="data:CharSummory">
-                <Grid>
+                <Grid Margin="0,5,0,5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

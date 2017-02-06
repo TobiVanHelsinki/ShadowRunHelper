@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using System;
 using ShadowRunHelper.UI.Edit;
 using ShadowRunHelper.CharModel;
+using Windows.Foundation.Metadata;
 
 namespace ShadowRunHelper
 {
@@ -17,6 +18,17 @@ namespace ShadowRunHelper
         public Char()
         {
             InitializeComponent();
+
+            if (ApiInformation.IsEnumNamedValuePresent("Windows.UI.Xaml.TextWrapping", "WrapWholeWords"))
+            {
+                try
+                {
+                    NoteTextBox.TextWrapping = TextWrapping.WrapWholeWords;
+                }
+                catch (Exception)
+                {
+                }
+            }
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

@@ -11,10 +11,10 @@ namespace ShadowRunHelper.UI.Converter
         {
             if (value == null)
             {
-                return "";
+                return string.Empty;
             }
             string strTemp = value.ToString();
-            if (strTemp != "")
+            if (strTemp != string.Empty)
             {
                 strTemp += ": ";
             }
