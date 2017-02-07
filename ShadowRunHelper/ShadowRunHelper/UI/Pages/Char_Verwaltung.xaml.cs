@@ -70,20 +70,12 @@ namespace ShadowRunHelper
         {
             foreach (var item in e.RemovedItems)
             {
-                // Set the DataTemplate of the deselected ListViewItems
                 ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = Normal;
             }
-
-            /* Then we set all the items that has been selected
-            to be expanded.
-            We should probably throw an Exception if more than 1 was found,
-            because it's unwanted behavior, but we'll ignore that for now.
-            */
             foreach (var item in e.AddedItems)
             {
-                ((ListViewItem)(sender as ListView).ContainerFromItem(e.AddedItems[0])).ContentTemplate = Active;
+                ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = Active;
             }
-
         }
 
         async void Summorys_Aktualisieren()

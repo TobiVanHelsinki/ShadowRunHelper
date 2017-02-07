@@ -195,9 +195,22 @@ namespace ShadowRunHelper
             }
         }
 
-        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        private void Item_TappedX(object sender, Windows.UI.Xaml.Input.RightTappedRoutedEventArgs e)
         {
 
+        }
+        
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (var item in e.RemovedItems)
+            {
+                ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = VehikelItem;
+            }
+            foreach (var item in e.AddedItems)
+            {
+                ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = VehikelItemX;
+            }
         }
     }
 }

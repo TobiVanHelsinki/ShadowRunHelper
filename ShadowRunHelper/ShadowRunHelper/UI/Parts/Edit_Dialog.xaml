@@ -453,6 +453,6 @@
         <!--HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
         HorizontalAlignment="Stretch" VerticalAlignment="Stretch"--></ContentPresenter>
         <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Notiz" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4"/>
-        <TextBox Name="Notiz" Text="{x:Bind Data.Notiz, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4"/>
+        <TextBox Name="Notiz" Text="{x:Bind Data.Notiz, Mode=TwoWay}" Style="{StaticResource NotesBox}" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4"/>
     </Grid>
 </ContentDialog>

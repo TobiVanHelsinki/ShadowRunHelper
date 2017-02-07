@@ -44,8 +44,11 @@
 
     <Style TargetType="TextBox" x:Key="EditTextBox" BasedOn="{StaticResource EditTextBoxBase}">
     </Style>
-
-
+    <Style TargetType="TextBox" x:Key="NotesBox" BasedOn="{StaticResource EditTextBoxBase}">
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="PlaceholderText" Value="..."/>
+    </Style>
     <Style TargetType="TextBlock" x:Key="EditTextBlock">
     </Style>
 
