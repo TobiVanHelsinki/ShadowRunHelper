@@ -18,7 +18,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>ShadowRunHelper_StoreKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>1E02514428AD2E8AC9A7FA2EE4EA1E9D7E251A45</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>079FB9ADB74B8EE303738EBC5BFDE37F0DC6423C</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
@@ -98,6 +98,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Logo\Logo2.png" />
     <Content Include="Zusätze\Screenshots\V1.9\2016.03.19 23.00.03.png" />
     <Content Include="Zusätze\Screenshots\V1.9\wp_ss_20160319_0001.png" />
     <Content Include="Zusätze\Screenshots\V1.9\wp_ss_20160319_0002.png" />
@@ -110,6 +111,8 @@
     <None Include="Dok\ClassDiagram2.cd" />
     <None Include="Dok\ClassDiagram3.cd" />
     <None Include="Dok\ClassDiagram4.cd" />
+    <None Include="ShadowRunHelper_StoreKey.pfx" />
+    <None Include="ShadowRunHelper_TemporaryKey.pfx" />
     <None Include="Zusätze\Hilfe.xlsx" />
     <PRIResource Include="Legacy1\1.3\Strings\de-de\Resources.resw" />
     <None Include="project.json" />
@@ -249,8 +252,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="ShadowRunHelper_StoreKey.pfx" />
-    <None Include="ShadowRunHelper_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo\#Logo1_2500x2500.png" />

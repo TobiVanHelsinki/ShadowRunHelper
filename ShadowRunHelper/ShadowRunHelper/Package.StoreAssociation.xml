@@ -363,6 +363,9 @@
       <ReservedName>ShadowRunHelper</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
-  <AccountPackageIdentityNames />
-  <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9NBLGGH4RHVX" />
+  <AccountPackageIdentityNames>
+    <MainPackageIdentityName>21863TobivanHelsinki.MunchkinTracker</MainPackageIdentityName>
+    <MainPackageIdentityName>21863TobivanHelsinki.ShareWithClipboard</MainPackageIdentityName>
+  </AccountPackageIdentityNames>
+  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NBLGGH4RHVX" />
 </StoreAssociation>
