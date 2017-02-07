@@ -26,12 +26,12 @@ namespace ShadowRunHelper
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            RefreshGui();
             ViewModel = (ViewModel)e.Parameter;
-            ViewModel.PropertyChanged += (x, y) => RefreshGui();
+            ViewModel.PropertyChanged += (x, y) => ChangeUI();
             ViewModel.PropertyChanged += (x, y) => GetCurrentDeck();
             ViewModel.NavigationRequested += NavigationRequested; ;
             ViewModel.lstNotifications.CollectionChanged += (x, y) => ShowError(y);
+            ChangeUI();
             GetCurrentDeck();
             ViewModel.RequestedNavigation(ViewModel.CurrentChar == null ? ProjectPages.Verwaltung : ProjectPages.Char);
         }
@@ -101,29 +101,30 @@ namespace ShadowRunHelper
             }
         }
 
-        private void RefreshGui()
-        {
-            ChangeUI( (ViewModel == null || ViewModel.CurrentChar == null) ? false : true) ;
-        }
+        void ChangeUI(bool? bState = null) {
+            if (bState == null)
+            {
+                bState = ((ViewModel == null || ViewModel.CurrentChar == null) ? false : true);
 
-        void ChangeUI(bool bState) {
-            Header_Kontostand.IsEnabled = bState;
-            XAML_Header_Schaden_G_Slider.IsEnabled = bState;
-            XAML_Header_Schaden_K_Slider.IsEnabled = bState;
-            XAML_Header_Schaden_M_Slider.IsEnabled = bState;
-            Karma_Aktuell_Plus.IsEnabled = bState;
-            Karma_Aktuell_Minus.IsEnabled = bState;
-            Karma_Gesamt_Plus.IsEnabled = bState;
-            Karma_Gesamt_Minus.IsEnabled = bState;
-            Edge_Aktuell_Plus.IsEnabled = bState;
-            Edge_Aktuell_Minus.IsEnabled = bState;
-            Edge_Gesamt_Plus.IsEnabled = bState;
-            Edge_Gesamt_Minus.IsEnabled = bState;
-            Runs_Minus.IsEnabled = bState;
-            Runs_Plus.IsEnabled = bState;
-            Initiative_Plus.IsEnabled = bState;
-            Initiative_Minus.IsEnabled = bState;
-            Person2_Edit.IsEnabled = bState;
+            }
+
+            Header_Kontostand.IsEnabled = (bool)bState;
+            XAML_Header_Schaden_G_Slider.IsEnabled = (bool)bState;
+            XAML_Header_Schaden_K_Slider.IsEnabled = (bool)bState;
+            XAML_Header_Schaden_M_Slider.IsEnabled = (bool)bState;
+            Karma_Aktuell_Plus.IsEnabled = (bool)bState;
+            Karma_Aktuell_Minus.IsEnabled = (bool)bState;
+            Karma_Gesamt_Plus.IsEnabled = (bool)bState;
+            Karma_Gesamt_Minus.IsEnabled = (bool)bState;
+            Edge_Aktuell_Plus.IsEnabled = (bool)bState;
+            Edge_Aktuell_Minus.IsEnabled = (bool)bState;
+            Edge_Gesamt_Plus.IsEnabled = (bool)bState;
+            Edge_Gesamt_Minus.IsEnabled = (bool)bState;
+            Runs_Minus.IsEnabled = (bool)bState;
+            Runs_Plus.IsEnabled = (bool)bState;
+            Initiative_Plus.IsEnabled = (bool)bState;
+            Initiative_Minus.IsEnabled = (bool)bState;
+            Person2_Edit.IsEnabled = (bool)bState;
         }
 
         private void Hamburger_Click(object sender, RoutedEventArgs e)

@@ -67,11 +67,8 @@ namespace ShadowRunHelper
                     //ViewModel_CharVerwaltung VerwaltungTemp = new ViewModel_CharVerwaltung();
                     try
                     {
-                        ViewModel.CurrentChar=(await IO.CharIO.LoadCharAtCurrentPlace(Optionen.strLastChar));
-                    }
-                    catch (Exception)
-                    {
-                    }
+                        ViewModel.CurrentChar = await IO.CharIO.LoadCharAtCurrentPlace(Optionen.strLastChar);
+                    }catch (Exception){}
                 }
                 // Den Frame im aktuellen Fenster platzieren
                 Window.Current.Content = rootFrame;

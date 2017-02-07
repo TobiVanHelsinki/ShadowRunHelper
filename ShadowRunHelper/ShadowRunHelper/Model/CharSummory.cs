@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 
 namespace ShadowRunHelper.Model
@@ -54,6 +55,7 @@ namespace ShadowRunHelper.Model
         public string strDateCreated
         {
             get {
+                return _tDateCreated.ToString(new CultureInfo("de-DE"));
                 string _strDateCreated = "";
                 if (_tDateCreated != null)
                 {

@@ -84,7 +84,7 @@ namespace ShadowRunHelper
             StorageFolder CharFolder = await GeneralIO.GetFolder(CharIO.GetCurrentSavePlace(), await CharIO.GetCurrentSavePath());
             foreach (var item in await GeneralIO.GetListofFiles(CharFolder, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR })))
             {
-                Summorys.Add(new CharSummory(item.Name, item.DateCreated));
+                Summorys.Add(new CharSummory(item.Name, (await item.GetBasicPropertiesAsync()).DateModified));
             }
         }
 
