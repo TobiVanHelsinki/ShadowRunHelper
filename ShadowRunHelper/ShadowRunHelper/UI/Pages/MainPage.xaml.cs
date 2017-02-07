@@ -41,13 +41,14 @@ namespace ShadowRunHelper
             CurrentDeck = (CharModel.CyberDeck)ViewModel.CurrentChar?.lstThings.Find(x => x.Object.ThingType == ThingDefs.CyberDeck).Object;
             if (CurrentDeck != null)
             {
-                CurrentDeck.PropertyChanged += (x,y)=>CurrentDeck_PropertyChanged();
+                CurrentDeck.PropertyChanged += (x, y) => CurrentDeck_PropertyChanged();
                 CurrentDeck_PropertyChanged();
             }
         }
 
         private void CurrentDeck_PropertyChanged()
         {
+            XAML_Header_Schaden_M_Text.Text = CurrentDeck.dSchaden.ToString();
             XAML_Header_Schaden_M_Slider.Maximum = CurrentDeck.dSchadenMax;
             XAML_Header_Schaden_M_Slider.Value = CurrentDeck.dSchaden;
         }
