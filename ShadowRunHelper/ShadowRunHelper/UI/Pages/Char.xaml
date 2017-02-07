@@ -313,13 +313,15 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="4" x:Uid="Model_Kommlink_Programmanzahl" Style="{StaticResource ListView_Item_Text}"/>
-                            <TextBlock Grid.Column="5" x:Uid="Model_Kommlink_Attribute" Style="{StaticResource ListView_Item_Text}">
+                            <TextBlock Grid.Column="5" x:Uid="Model_Kommlink_Schaden" Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Grid.Column="6" x:Uid="Model_Kommlink_Attribute" Style="{StaticResource ListView_Item_Text}">
                             </TextBlock>
                         </Grid>
                         <ListView ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLCyberDeck.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
@@ -358,6 +360,7 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
                                                 <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
@@ -367,7 +370,8 @@
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                                             </TextBlock>
                                             <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Programmanzahl, Mode=OneWay}"/>
-                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3">
+                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind dSchaden, Mode=OneWay}"/>
+                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="4">
                                               <Run Text="{x:Bind Angriff, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Schleicher, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Firewall, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Datenverarbeitung, Mode=OneWay}"/>
                                             </TextBlock>
                                         </Grid>

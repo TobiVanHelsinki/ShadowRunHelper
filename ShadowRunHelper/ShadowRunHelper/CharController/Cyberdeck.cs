@@ -10,16 +10,17 @@ namespace ShadowRunHelper.CharController
 {
     public class cCyberDeckController : cController<CyberDeck>
     {
-        private ThingListEntry MI_V;
-        private ThingListEntry MI_A;
-        private ThingListEntry MI_S;
-        private ThingListEntry MI_F;
-        private ThingListEntry MI_D;
+        ThingListEntry MI_V;
+        ThingListEntry MI_A;
+        ThingListEntry MI_S;
+        ThingListEntry MI_F;
+        ThingListEntry MI_D;
         public CyberDeck ActiveDeck;
 
         public cCyberDeckController()
         {
             ActiveDeck = new CyberDeck();
+            ActiveDeck.PropertyChanged += (x, y) => RefreshOriginDeck(); //TODO check propertie
             var res = ResourceLoader.GetForCurrentView();
 
             ActiveDeck.Bezeichner = res.GetString("Model_CyberDeck__Aktiv/Text");
@@ -32,27 +33,55 @@ namespace ShadowRunHelper.CharController
             Data.CollectionChanged += Data_CollectionChanged;
         }
 
-        private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            Refresh();
+            RefreshActiveDeck();
             foreach (var item in Data)
             {
-                item.PropertyChanged -= (x,y) => Refresh();
-                item.PropertyChanged += (x,y) => Refresh();
+                item.PropertyChanged -= (x,y) => RefreshActiveDeck();
+                item.PropertyChanged += (x,y) => RefreshActiveDeck();
             }
         }
-
-        private void Refresh()
+        bool bIsRefreshInProgress = false;
+        void RefreshActiveDeck()
         {
+            if (bIsRefreshInProgress)
+            {
+                return;
+            }
+            bIsRefreshInProgress = true;
             foreach (CyberDeck item in Data)
             {
                 if (item.Aktiv == true)
                 {
+                    //item.dSchaden = ActiveDeck.dSchaden;
+                    //item.dSchadenMax = ActiveDeck.dSchadenMax;
                     item.Copy(ActiveDeck);
+                    bIsRefreshInProgress = false;
                     return;
                 }
             }
             ActiveDeck.Reset();
+            bIsRefreshInProgress = false;
+        }
+
+        void RefreshOriginDeck()
+        {
+            if (bIsRefreshInProgress)
+            {
+                return;
+            }
+            bIsRefreshInProgress = true;
+            foreach (CyberDeck item in Data)
+            {
+                if (item.Aktiv == true)
+                {
+                    item.dSchaden = ActiveDeck.dSchaden;
+                    bIsRefreshInProgress = false;
+                    return;
+                }
+            }
+            bIsRefreshInProgress = false;
         }
 
         public new List<ThingListEntry> GetElementsForThingList()

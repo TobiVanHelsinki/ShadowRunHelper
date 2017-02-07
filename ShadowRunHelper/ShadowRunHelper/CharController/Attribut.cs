@@ -58,6 +58,12 @@ namespace ShadowRunHelper.CharController
             }
         }
 
+        protected void RefreshLimitSchaden()
+        {
+            PersonRef.Schaden_G_max = 8 + Math.Ceiling(Willen.Wert / 2);
+            PersonRef.Schaden_K_max = 8 + Math.Ceiling(Konsti.Wert / 2);
+        }
+
         //Physical Limit: (STR x2 + BOD + REA) / 3
         public Attribut Limit_K;
         protected void RefreshLimitK()

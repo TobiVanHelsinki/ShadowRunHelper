@@ -776,4 +776,10 @@
   <data name="UI_Optionen_DisplayRequest_Header.Text" xml:space="preserve">
     <value>Char Display immer aktiv halten</value>
   </data>
+  <data name="Model_Kommlink_Schaden.Text" xml:space="preserve">
+    <value>Schaden</value>
+  </data>
+  <data name="Model_Kommlink_SchadenMax.Text" xml:space="preserve">
+    <value>Schadenslimit</value>
+  </data>
 </root>

@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.Specialized;
 using Windows.UI.Popups;
+using Windows.ApplicationModel.Resources;
 
 // Die Vorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 dokumentiert.
 
@@ -21,17 +22,36 @@ namespace ShadowRunHelper
         {
             InitializeComponent();
         }
-
+        CharModel.CyberDeck CurrentDeck;
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             RefreshGui();
             ViewModel = (ViewModel)e.Parameter;
             ViewModel.PropertyChanged += (x, y) => RefreshGui();
+            ViewModel.PropertyChanged += (x, y) => GetCurrentDeck();
             ViewModel.NavigationRequested += NavigationRequested; ;
             ViewModel.lstNotifications.CollectionChanged += (x, y) => ShowError(y);
+            GetCurrentDeck();
             ViewModel.RequestedNavigation(ViewModel.CurrentChar == null ? ProjectPages.Verwaltung : ProjectPages.Char);
         }
+
+        void GetCurrentDeck()
+        {
+            CurrentDeck = (CharModel.CyberDeck)ViewModel.CurrentChar?.lstThings.Find(x => x.Object.ThingType == ThingDefs.CyberDeck).Object;
+            if (CurrentDeck != null)
+            {
+                CurrentDeck.PropertyChanged += (x,y)=>CurrentDeck_PropertyChanged();
+                CurrentDeck_PropertyChanged();
+            }
+        }
+
+        private void CurrentDeck_PropertyChanged()
+        {
+            XAML_Header_Schaden_M_Slider.Maximum = CurrentDeck.dSchadenMax;
+            XAML_Header_Schaden_M_Slider.Value = CurrentDeck.dSchaden;
+        }
+
         ProjectPages LastPage = ProjectPages.Verwaltung;
         private void NavigationRequested(object sender, ProjectPages e)
         {
@@ -202,6 +222,15 @@ namespace ShadowRunHelper
                 UI.Edit.Edit_Person2 dialog = new UI.Edit.Edit_Person2(ViewModel.CurrentChar.Person);
                 await dialog.ShowAsync();
             }
+        }
+
+        private void XAML_Header_Schaden_M_Slider_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        {
+            if (CurrentDeck == null)
+            {
+                return;
+            }
+            CurrentDeck.dSchaden = XAML_Header_Schaden_M_Slider.Value;
         }
     }
 }
