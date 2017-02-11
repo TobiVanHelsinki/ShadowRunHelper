@@ -6,6 +6,7 @@ using ShadowRunHelper.CharModel;
 using ShadowRunHelper.CharController;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.Model
 {
@@ -225,57 +226,9 @@ namespace ShadowRunHelper.Model
             lstThings.Remove(lstThings.Find((x) => x.Object == tToRemove));
         }
 
-        public string MakeName(bool WithDate = true)
+        public string MakeName()
         {
-            String temp_Alias = "";
-            String temp_Char_Typ = "";
-            String temp_Karma = "";
-            String temp_Runs = "";
-            try
-            {
-                temp_Alias = Person.Alias;
-                if (temp_Alias == "")
-                {
-                    throw new NullReferenceException();
-                }
-            }
-            catch (NullReferenceException) { temp_Alias = "$ohne Namen$"; }
-            try
-            {
-                temp_Char_Typ = Person.Char_Typ;
-                if (temp_Char_Typ == "")
-                {
-                    throw new NullReferenceException();
-                }
-            }
-            catch (NullReferenceException) { temp_Char_Typ = "$ohne Beruf$"; }
-            try
-            {
-                temp_Karma = Person.Karma_Gesamt.ToString();
-                if (temp_Karma == "")
-                {
-                    throw new NullReferenceException();
-                }
-            }
-            catch (NullReferenceException) { temp_Karma = "$ohne Erfolg$"; }
-            try
-            {
-                temp_Runs = Person.Runs.ToString();
-                if (temp_Runs == "")
-                {
-                    throw new NullReferenceException();
-                }
-            }
-            catch (NullReferenceException) { temp_Runs = "$ohne Erfolg$"; }
-
-            if (WithDate)
-            {
-                return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + Konstanten.DATEIENDUNG_CHAR;
-            }
-            else
-            {
-                return temp_Alias + "_" + temp_Char_Typ + "_Karma_" + temp_Karma + "_Runs_" + temp_Runs + "_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Hour + "_" + DateTime.Now.Minute + "_" + DateTime.Now.Second + Konstanten.DATEIENDUNG_CHAR;
-            }
+            return Person.strMakeName;
         }
 
         /// <summary>

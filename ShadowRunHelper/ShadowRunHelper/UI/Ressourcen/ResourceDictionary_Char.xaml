@@ -305,10 +305,23 @@
             </Setter.Value>
         </Setter>
     </Style>
-        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <Style TargetType="TextBlock" x:Key="ListView_Item_Text">
         <Setter Property="Margin" Value="5,2,5,2"/>
+        <!--<Setter Property="TextWrapping" Value="Wrap"/>-->
     </Style>
+    <Style TargetType="StackPanel" x:Key="ListView_Item_X_Wrap_StackPanels">
+        <Setter Property="BorderThickness" Value="1,0,0,0"/>
+        <Setter Property="Margin" Value="0,0,0,5"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="Orientation" Value="Vertical"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="ListView_Item_Text_Note" BasedOn="{StaticResource ListView_Item_Text}">
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <!--<Setter Property="BorderThickness" Value="0,1,0,0"/>-->
+        <!--<Setter Property="BorderBrush" Value="Black"/>-->
+    </Style>
+    
     <Style TargetType="CheckBox" x:Key="ListView_Item_CheckBox">
         <Setter Property="Margin" Value="5,2,5,2"/>
         <!--<Setter Property="Width" Value="50"/>-->

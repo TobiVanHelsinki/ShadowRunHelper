@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -19,6 +20,29 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+        public string strMakeName
+        {
+            get { return MakeName(); }
+            private set{}
+        }
+
+        public string MakeName(bool WithDate = false)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strSaveName = "";
+            strSaveName += Alias == string.Empty ? "$$" : Alias;
+            strSaveName += ",";
+            strSaveName += Char_Typ == string.Empty ? "$$" : Char_Typ;
+            strSaveName += ",";
+            strSaveName += Runs == 0 ? "$$" : Runs.ToString();
+            strSaveName += res.GetString("Model_Person_Runs/Text") + ",";
+            strSaveName += Karma_Gesamt == 0 ? "$$" : Karma_Gesamt.ToString();
+            strSaveName += res.GetString("Model_Person_Karma/Text");
+            strSaveName += WithDate ? DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + "_" + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second : "";
+            strSaveName += Konstanten.DATEIENDUNG_CHAR;
+            return strSaveName;
+        }
+
         private string char_Typ = "";
         public string Char_Typ
         {

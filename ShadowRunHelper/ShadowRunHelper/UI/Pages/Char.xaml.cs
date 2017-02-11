@@ -8,9 +8,16 @@ using ShadowRunHelper.UI.Edit;
 using ShadowRunHelper.CharModel;
 using Windows.Foundation.Metadata;
 using Windows.ApplicationModel.Resources;
+using System.Collections.Generic;
 
 namespace ShadowRunHelper
 {
+    public class Data
+    {
+        public string Country { get; set; }
+
+        public string Capital { get; set; }
+    }
     public sealed partial class Char : Page
     {
         public ViewModel ViewModel { get; set; }
@@ -19,6 +26,14 @@ namespace ShadowRunHelper
         public Char()
         {
             InitializeComponent();
+ //           this.DataGrid.ItemsSource = new List<Data>
+ //{
+ //    new Data { Country = "India", Capital = "New Delhi"},
+ //    new Data { Country = "South Africa", Capital = "Cape Town"},
+ //    new Data { Country = "Nigeria", Capital = "Abuja" },
+ //    new Data { Country = "Singapore", Capital = "Singapore" }
+ //};
+
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -51,10 +66,10 @@ namespace ShadowRunHelper
                 }
                 catch (Exception)
                 {
-                    var res = ResourceLoader.GetForCurrentView();
-                    ViewModel.Instance.lstNotifications.Add(new Notification(
-                        res.GetString("Notification_Error_DisplayRequest/Text")
-                        ));
+                    //var res = ResourceLoader.GetForCurrentView();
+                    //ViewModel.Instance.lstNotifications.Add(new Notification(
+                    //    res.GetString("Notification_Error_DisplayRequest/Text")
+                    //    ));
                 }
             }
             base.OnNavigatedFrom(e);
@@ -203,13 +218,65 @@ namespace ShadowRunHelper
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            DataTemplate NewTemplate = null;
+            DataTemplate NewTemplateX = null;
+            
+            switch (int.Parse(((sender as ListView).Tag as string)))
+            {
+                case (int)ThingDefs.Handlung:
+                    NewTemplate = HandlungItem;
+                    NewTemplateX = HandlungItemX;
+                    break;
+                case (int)ThingDefs.Fertigkeit:
+                    break;
+                case (int)ThingDefs.Item:
+                    break;
+                case (int)ThingDefs.Programm:
+                    break;
+                case (int)ThingDefs.Munition:
+                    break;
+                case (int)ThingDefs.Implantat:
+                    break;
+                case (int)ThingDefs.Vorteil:
+                    break;
+                case (int)ThingDefs.Nachteil:
+                    break;
+                case (int)ThingDefs.Connection:
+                    break;
+                case (int)ThingDefs.Sin:
+                    break;
+                case (int)ThingDefs.Attribut:
+                    break;
+                case (int)ThingDefs.Nahkampfwaffe:
+                    break;
+                case (int)ThingDefs.Fernkampfwaffe:
+                    break;
+                case (int)ThingDefs.Kommlink:
+                    break;
+                case (int)ThingDefs.CyberDeck:
+                    break;
+                case (int)ThingDefs.Vehikel:
+                    NewTemplate = VehikelItem;
+                    NewTemplateX = VehikelItemX;
+                    break;
+                case (int)ThingDefs.Panzerung:
+                    break;
+                case (int)ThingDefs.Eigenschaft:
+                    break;
+                default:
+                    return;
+            }
+            if (NewTemplate == null)
+            {
+                return;
+            }
             foreach (var item in e.RemovedItems)
             {
-                ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = VehikelItem;
+                ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = NewTemplate;
             }
             foreach (var item in e.AddedItems)
             {
-                ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = VehikelItemX;
+                ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = NewTemplateX;
             }
         }
     }

@@ -58,7 +58,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="{x:Bind ViewModel.CurrentChar.Person.Alias, Mode=OneWay}" Style="{StaticResource Chars}"/>
+            <TextBlock Grid.Row="0" Text="{x:Bind ViewModel.CurrentChar.Person.strMakeName, Mode=OneWay}" Style="{StaticResource Chars}"/>
             <StackPanel Orientation="Horizontal" Grid.Row="1">
                 <Button x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Click="Click_Speichern" Style="{StaticResource Char_Control_Btn}"/>
                 <Button x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Löschen" Click="Click_Löschen_CurrentChar" Style="{StaticResource Char_Control_Btn}"/>

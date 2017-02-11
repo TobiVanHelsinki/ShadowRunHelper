@@ -1,9 +1,11 @@
 ﻿using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
@@ -82,9 +84,16 @@ namespace ShadowRunHelper
         {
             Summorys.Clear();
             StorageFolder CharFolder = await GeneralIO.GetFolder(CharIO.GetCurrentSavePlace(), await CharIO.GetCurrentSavePath());
-            foreach (var item in await GeneralIO.GetListofFiles(CharFolder, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR })))
+            List<CharSummory> lst = new List<CharSummory>();
+
+            foreach (var item in (await GeneralIO.GetListofFiles(CharFolder, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR }))))
             {
-                Summorys.Add(new CharSummory(item.Name, (await item.GetBasicPropertiesAsync()).DateModified));
+                lst.Add(new CharSummory(item.Name, (await item.GetBasicPropertiesAsync()).DateModified));
+            }
+
+            foreach (var item in lst.OrderByDescending((x) => x.tDateCreated))
+            {
+                Summorys.Add(item);
             }
         }
 

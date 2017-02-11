@@ -207,14 +207,11 @@
   <data name="Model_Handlung_Grenze.Text" xml:space="preserve">
     <value>Limit</value>
   </data>
-  <data name="Model_Handlung_GrenzeZusammensetzung.Text" xml:space="preserve">
-    <value>Zusammensetzung Limit</value>
-  </data>
   <data name="Model_Handlung_Mod.Text" xml:space="preserve">
     <value>Modifier</value>
   </data>
   <data name="Model_Handlung_Zusammensetzung.Text" xml:space="preserve">
-    <value>Zusammensetzung Stufe</value>
+    <value>Wert</value>
   </data>
   <data name="Model_ItemM_.Text" xml:space="preserve">
     <value>Items</value>
@@ -347,12 +344,6 @@
   </data>
   <data name="UI_Btn_Bearbeiten.Content" xml:space="preserve">
     <value>Bearbeiten</value>
-  </data>
-  <data name="UI_Btn_Bearbeiten_GrenzeZus.Content" xml:space="preserve">
-    <value>Zusammensetzung Grenze Bearbeten</value>
-  </data>
-  <data name="UI_Btn_Bearbeiten_Zus.Content" xml:space="preserve">
-    <value>Zusammensetzung Bearbeiten</value>
   </data>
   <data name="Model_Person_Edge.Text" xml:space="preserve">
     <value>Edge</value>
@@ -593,11 +584,8 @@
   <data name="UI_Optionen_Ordnermode_Pfad.Text" xml:space="preserve">
     <value>Pfad</value>
   </data>
-  <data name="Model_Handlung_GegenZusammensetzung.Text" xml:space="preserve">
-    <value>Zusammensetzung Wehren</value>
-  </data>
-  <data name="UI_Btn_Bearbeiten_GegenZus.Content" xml:space="preserve">
-    <value>Wehren Bearbeiten</value>
+  <data name="Model_Handlung_Gegen.Text" xml:space="preserve">
+    <value>Wehren</value>
   </data>
   <data name="UI_Optionen_Bewerten.Text" xml:space="preserve">
     <value>Diese App im Store Bewerten</value>
@@ -781,5 +769,11 @@
   </data>
   <data name="Model_Kommlink_SchadenMax.Text" xml:space="preserve">
     <value>Schadenslimit</value>
+  </data>
+  <data name="Doppelpunkt.Text" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="Model_Thing_Wert_W.Text" xml:space="preserve">
+    <value>Wert</value>
   </data>
 </root>
