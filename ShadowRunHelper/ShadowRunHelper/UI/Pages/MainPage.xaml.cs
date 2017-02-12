@@ -38,9 +38,12 @@ namespace ShadowRunHelper
 
         void GetCurrentDeck()
         {
+            //var temp = ViewModel.CurrentChar?.lstThings.Find(x => x.Object.ThingType == ThingDefs.CyberDeck);
             CurrentDeck = (CharModel.CyberDeck)ViewModel.CurrentChar?.lstThings.Find(x => x.Object.ThingType == ThingDefs.CyberDeck).Object;
+
             if (CurrentDeck != null)
             {
+                //CurrentDeck = (CharModel.CyberDeck)temp.Object;
                 CurrentDeck.PropertyChanged += (x, y) => CurrentDeck_PropertyChanged();
                 CurrentDeck_PropertyChanged();
             }

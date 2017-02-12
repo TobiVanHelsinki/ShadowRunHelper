@@ -37,7 +37,9 @@ namespace ShadowRunHelper.Model
         public CharController.cController<Handlung> CTRLHandlung { get; set; }
 
         [System.Runtime.Serialization.IgnoreDataMember]
-        public List<ThingListEntry> lstThings;
+        List<ThingListEntry> _lstThings;
+        [System.Runtime.Serialization.IgnoreDataMember]
+        public List<ThingListEntry> lstThings { get { return _lstThings; } set { _lstThings = value; } }
 
         public Person Person { get; set; }
 
@@ -66,7 +68,8 @@ namespace ShadowRunHelper.Model
             Person = new Person();
             CTRLAttribut.SetDependencies(Person, CTRLImplantat.Data);
 
-            lstThings = new List<ThingListEntry>();
+            _lstThings = new List<ThingListEntry>();
+            RefreshThingList();
         }
 
 
@@ -135,28 +138,28 @@ namespace ShadowRunHelper.Model
 
         public void RefreshThingList()
         {
-            lstThings.Clear();
-            lstThings.AddRange(CTRLAttribut.GetElementsForThingList()); //liefert immer das selbe
-            lstThings.AddRange(CTRLFertigkeit.GetElementsForThingList()); //liefert immer das selbe
-            lstThings.AddRange(CTRLFernkampfwaffe.GetElementsForThingList()); //liefert immer das selbe
-            lstThings.AddRange(CTRLNahkampfwaffe.GetElementsForThingList()); //liefert immer das selbe
-            lstThings.AddRange(CTRLPanzerung.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.Clear();
+            _lstThings.AddRange(CTRLAttribut.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLFertigkeit.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLFernkampfwaffe.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLNahkampfwaffe.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLPanzerung.GetElementsForThingList()); //liefert immer das selbe
 
-            lstThings.AddRange(CTRLItem.GetElementsForThingList());
+            _lstThings.AddRange(CTRLItem.GetElementsForThingList());
 
-            lstThings.AddRange(CTRLCyberDeck.GetElementsForThingList()); //liefert immer das selbe
-            lstThings.AddRange(CTRLKommlink.GetElementsForThingList()); //liefert immer das selbe
-            lstThings.AddRange(CTRLVehikel.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLCyberDeck.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLKommlink.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLVehikel.GetElementsForThingList()); //liefert immer das selbe
 
-            lstThings.AddRange(CTRLProgramm.GetElementsForThingList());
-            lstThings.AddRange(CTRLMunition.GetElementsForThingList());
-            lstThings.AddRange(CTRLImplantat.GetElementsForThingList());
-            lstThings.AddRange(CTRLVorteil.GetElementsForThingList());
-            lstThings.AddRange(CTRLNachteil.GetElementsForThingList());
-            lstThings.AddRange(CTRLConnection.GetElementsForThingList());
-            lstThings.AddRange(CTRLSin.GetElementsForThingList());
+            _lstThings.AddRange(CTRLProgramm.GetElementsForThingList());
+            _lstThings.AddRange(CTRLMunition.GetElementsForThingList());
+            _lstThings.AddRange(CTRLImplantat.GetElementsForThingList());
+            _lstThings.AddRange(CTRLVorteil.GetElementsForThingList());
+            _lstThings.AddRange(CTRLNachteil.GetElementsForThingList());
+            _lstThings.AddRange(CTRLConnection.GetElementsForThingList());
+            _lstThings.AddRange(CTRLSin.GetElementsForThingList());
             
-            //lstThings.AddRange(CTRLHandlung.GetElementsForThingList()); // nötig?
+            //_lstThings.AddRange(CTRLHandlung.GetElementsForThingList()); // nötig?
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -223,7 +226,7 @@ namespace ShadowRunHelper.Model
                 default:
                     break;
             }
-            lstThings.Remove(lstThings.Find((x) => x.Object == tToRemove));
+            _lstThings.Remove(_lstThings.Find((x) => x.Object == tToRemove));
         }
 
         public string MakeName()

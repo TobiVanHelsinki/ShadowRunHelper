@@ -61,8 +61,8 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    Char_DisplayRequest = new Windows.System.Display.DisplayRequest();
-                    Char_DisplayRequest.RequestRelease();
+                    //Char_DisplayRequest = new Windows.System.Display.DisplayRequest();
+                    //Char_DisplayRequest.RequestRelease();
                 }
                 catch (Exception)
                 {
