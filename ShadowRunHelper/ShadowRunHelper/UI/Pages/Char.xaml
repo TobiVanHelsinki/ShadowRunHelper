@@ -5,7 +5,6 @@
     xmlns:local="using:ShadowRunHelper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:telerikGrid="using:Telerik.UI.Xaml.Controls.Grid"
     xmlns:CharController="using:ShadowRunHelper.CharController"
     xmlns:CharModel="using:ShadowRunHelper.CharModel"
     xmlns:model="using:ShadowRunHelper.Model"

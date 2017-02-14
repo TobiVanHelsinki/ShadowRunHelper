@@ -34,9 +34,9 @@ namespace ShadowRunHelper.CharModel
             strSaveName += ",";
             strSaveName += Char_Typ == string.Empty ? "$$" : Char_Typ;
             strSaveName += ",";
-            strSaveName += Runs == 0 ? "$$" : Runs.ToString();
+            strSaveName += Runs.ToString();
             strSaveName += res.GetString("Model_Person_Runs/Text") + ",";
-            strSaveName += Karma_Gesamt == 0 ? "$$" : Karma_Gesamt.ToString();
+            strSaveName += Karma_Gesamt.ToString();
             strSaveName += res.GetString("Model_Person_Karma/Text");
             strSaveName += WithDate ? DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + "_" + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second : "";
             strSaveName += Konstanten.DATEIENDUNG_CHAR;
