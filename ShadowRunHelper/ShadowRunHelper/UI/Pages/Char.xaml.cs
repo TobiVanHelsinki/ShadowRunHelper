@@ -78,8 +78,8 @@ namespace ShadowRunHelper
         private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             FrameworkElement element = sender as FrameworkElement;
-                if (element != null)
-                {
+            if (element != null)
+            {
                 try
                 {
                     FlyoutBase.ShowAttachedFlyout(element);
@@ -87,7 +87,7 @@ namespace ShadowRunHelper
                 catch (Exception)
                 {
                 }
-                }
+            }
         }
         private async void Add(object sender, RoutedEventArgs e)
         {
@@ -184,20 +184,20 @@ namespace ShadowRunHelper
 
         private async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.CurrentChar.lstThings, CharModel.Handlung.Mode.Wert);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).WertZusammensetzung, ViewModel.CurrentChar.lstThings);
             await dialog.ShowAsync();
 
         }
 
         private async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.CurrentChar.lstThings, CharModel.Handlung.Mode.Grenze);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GrenzeZusammensetzung, ViewModel.CurrentChar.lstThings);
             var ergebnis = await dialog.ShowAsync();
         }
 
         private async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext), ViewModel.CurrentChar.lstThings, CharModel.Handlung.Mode.Gegen);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GegenZusammensetzung, ViewModel.CurrentChar.lstThings);
             await dialog.ShowAsync();
         }
 
@@ -214,7 +214,6 @@ namespace ShadowRunHelper
         {
 
         }
-        
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -228,45 +227,69 @@ namespace ShadowRunHelper
                     NewTemplateX = HandlungItemX;
                     break;
                 case (int)ThingDefs.Fertigkeit:
+                    NewTemplate = FertigkeitItem;
+                    NewTemplateX = FertigkeitItemX;
                     break;
                 case (int)ThingDefs.Item:
+                    NewTemplate = ItemItem;
+                    NewTemplateX = ItemItemX;
                     break;
                 case (int)ThingDefs.Programm:
+                    NewTemplate = ProgrammItem;
+                    NewTemplateX = ProgrammItemX;
                     break;
                 case (int)ThingDefs.Munition:
+                    NewTemplate = MunitionItem;
+                    NewTemplateX = MunitionItemX;
                     break;
                 case (int)ThingDefs.Implantat:
+                    NewTemplate = ImplantatItem;
+                    NewTemplateX = ImplantatItemX;
                     break;
                 case (int)ThingDefs.Vorteil:
+                    NewTemplate = EigenschaftItem;
+                    NewTemplateX = EigenschaftItemX;
                     break;
                 case (int)ThingDefs.Nachteil:
+                    NewTemplate = EigenschaftItem;
+                    NewTemplateX = EigenschaftItemX;
                     break;
                 case (int)ThingDefs.Connection:
+                    NewTemplate = ConnectionItem;
+                    NewTemplateX = ConnectionItemX;
                     break;
                 case (int)ThingDefs.Sin:
-                    break;
-                case (int)ThingDefs.Attribut:
+                    NewTemplate = SinItem;
+                    NewTemplateX = SinItemX;
                     break;
                 case (int)ThingDefs.Nahkampfwaffe:
+                    NewTemplate = NahkampfwaffeItem;
+                    NewTemplateX = NahkampfwaffeItemX;
                     break;
                 case (int)ThingDefs.Fernkampfwaffe:
+                    NewTemplate = FernkampfwaffeItem;
+                    NewTemplateX = FernkampfwaffeItemX;
                     break;
                 case (int)ThingDefs.Kommlink:
+                    NewTemplate = KommlinkItem;
+                    NewTemplateX = KommlinkItemX;
                     break;
                 case (int)ThingDefs.CyberDeck:
+                    NewTemplate = CyberDeckItem;
+                    NewTemplateX = CyberDeckItemX;
                     break;
                 case (int)ThingDefs.Vehikel:
                     NewTemplate = VehikelItem;
                     NewTemplateX = VehikelItemX;
                     break;
                 case (int)ThingDefs.Panzerung:
-                    break;
-                case (int)ThingDefs.Eigenschaft:
+                    NewTemplate = PanzerungItem;
+                    NewTemplateX = PanzerungItemX;
                     break;
                 default:
                     return;
             }
-            if (NewTemplate == null)
+            if (NewTemplate == null || NewTemplateX == null)
             {
                 return;
             }
@@ -278,6 +301,12 @@ namespace ShadowRunHelper
             {
                 ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = NewTemplateX;
             }
+        }
+
+        private async void FertigkeitenZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
+        {
+            Auswahl dialog = new Auswahl(((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, ViewModel.CurrentChar.lstThings);
+            await dialog.ShowAsync();
         }
     }
 }

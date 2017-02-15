@@ -776,4 +776,7 @@
   <data name="Model_Thing_Wert_W.Text" xml:space="preserve">
     <value>Wert</value>
   </data>
+  <data name="UI_Btn_Bearbeiten_Pool.Content" xml:space="preserve">
+    <value>Pool Bearbeiten</value>
+  </data>
 </root>

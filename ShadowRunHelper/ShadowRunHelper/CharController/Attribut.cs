@@ -21,6 +21,7 @@ namespace ShadowRunHelper.CharController
         public Attribut Logik;
         public Attribut Intuition;
         public Attribut Willen;
+        [System.Runtime.Serialization.IgnoreDataMember] //cause sometimes an very übel Bug
         public Attribut Essenz; //TODO Essenz berechnen aus Implantaten (+ ein bonus feld?)
 
         CharModel.Person PersonRef;
@@ -51,7 +52,8 @@ namespace ShadowRunHelper.CharController
 
         protected void RefreshEssenz()
         {
-            this.Essenz.Wert = PersonRef.Essenz;
+            this.Essenz.Wert = 6;
+            this.Essenz.Wert += PersonRef.Essenz;
             foreach (var item in lstImplantateRef)
             {
                 this.Essenz.Wert -= item.Essenz;

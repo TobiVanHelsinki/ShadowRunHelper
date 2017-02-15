@@ -64,8 +64,8 @@
                                                 <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
                                                 <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                     </TextBlock>
-                    <Button Grid.Column="1" x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="Edit_Click"/>
-                    <Button Grid.Column="2" x:Uid="UI_Btn_Loeschen" Name="Handlung_Del" Click="Del_Click"/>
+                    <Button Grid.Column="1" x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                    <Button Grid.Column="2" x:Uid="UI_Btn_Loeschen" Name="Handlung_Del" Click="Del_Click" Style="{StaticResource ListView_Item_Buttons}"/>
                     <Grid Grid.Row="1" Grid.ColumnSpan="3">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -81,15 +81,15 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Wert_W"/>
                         <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Wert, Mode=OneWay}"/>
-                        <Button Grid.Column="2" Grid.Row="0" x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Zus_Edit" Click="HandlungEditZusDialog_Click"/>
+                        <Button Grid.Column="2" Grid.Row="0" x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource ListView_Item_Buttons}" Click="HandlungEditZusDialog_Click"/>
                         <GridView Grid.Column="3" Grid.Row="0" Name="Zus_ListVIew" ItemsSource="{x:Bind WertZusammensetzung, Mode=OneWay}" ItemTemplate="{StaticResource ThingListEntry}"/>
                         <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Grenze"/>
                         <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Grenze, Mode=OneWay}"/>
-                        <Button Grid.Column="2" Grid.Row="1" x:Uid="UI_Btn_Bearbeiten" Name="Handlung_GrenzeZus_Edit" Click="HandlungEditGrenzeZusDialog_Click"/>
+                        <Button Grid.Column="2" Grid.Row="1" x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource ListView_Item_Buttons}" Click="HandlungEditGrenzeZusDialog_Click"/>
                         <GridView Grid.Column="3" Grid.Row="1" Name="GZus_ListVIew" ItemsSource="{x:Bind GrenzeZusammensetzung, Mode=OneWay}"  ItemTemplate="{StaticResource ThingListEntry}"/>
                         <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Gegen"/>
                         <TextBlock Grid.Column="1" Grid.Row="2" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Gegen, Mode=OneWay}"/>
-                        <Button Grid.Column="2" Grid.Row="2" x:Uid="UI_Btn_Bearbeiten" Name="Handlung_GegenZus_Edit" Click="HandlungEditGegenZusDialog_Click"/>
+                        <Button Grid.Column="2" Grid.Row="2" x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource ListView_Item_Buttons}" Click="HandlungEditGegenZusDialog_Click"/>
                         <GridView Grid.Column="3" Grid.Row="2" Name="GegZus_ListVIew" ItemsSource="{x:Bind GegenZusammensetzung, Mode=OneWay}"  ItemTemplate="{StaticResource ThingListEntry}"/>
                         <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
                         <TextBlock Grid.Column="1" Grid.Row="3" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
@@ -105,8 +105,8 @@
             <DataTemplate x:Name="VehikelItem" x:DataType="CharModel:Vehikel">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="45"/>
-                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
@@ -139,8 +139,8 @@
                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Sitze, Mode=OneWay}"/>
                                     <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Vehikel_Gewicht"/>
                                     <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Gewicht, Mode=OneWay}"/>
-                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Vehikel_Edit" Click="Edit_Click"/>
-                                    <Button x:Uid="UI_Btn_Loeschen" Name="Vehikel_Del" Click="Del_Click"/>
+                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Vehikel_Edit" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                                    <Button x:Uid="UI_Btn_Loeschen" Name="Vehikel_Del" Click="Del_Click" Style="{StaticResource ListView_Item_Buttons}"/>
                                 </StackPanel>
                             </Flyout>
                         </FlyoutBase.AttachedFlyout>
@@ -170,8 +170,8 @@
                     <ContentPresenter ContentTemplate="{StaticResource VehikelItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">
-                            <Button x:Uid="UI_Btn_Bearbeiten" Name="Vehikel_Edit" Click="Edit_Click" HorizontalAlignment="Stretch"/>
-                            <Button x:Uid="UI_Btn_Loeschen" Name="Vehikel_Del" Click="Del_Click"  HorizontalAlignment="Stretch"/>
+                            <Button x:Uid="UI_Btn_Bearbeiten" Name="Vehikel_Edit" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                            <Button x:Uid="UI_Btn_Loeschen" Name="Vehikel_Del" Click="Del_Click" Style="{StaticResource ListView_Item_Buttons}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
@@ -223,6 +223,740 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
+            <DataTemplate x:Name="FertigkeitItem" x:DataType="CharModel:Fertigkeit">
+                <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
+                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                    </TextBlock>
+                    <TextBlock  Grid.Column="1">
+                         <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                    </TextBlock>
+                    <TextBlock  Grid.Column="2">
+                         <Run x:Uid="Bindestrich"/><Run Text="{x:Bind Pool, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="FertigkeitItemX" x:DataType="CharModel:Fertigkeit">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter Grid.ColumnSpan="2" Grid.Row="0" ContentTemplate="{StaticResource FertigkeitItem}"/>
+                    <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Grid.Row="1" Style="{StaticResource ListView_Item_Buttons}"/>
+                    <Button x:Uid="UI_Btn_Bearbeiten_Pool" Click="FertigkeitenZusammensetzungBearbeiten" Grid.Row="2" Style="{StaticResource ListView_Item_Buttons}"/>
+                    <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click" Grid.Row="3" Style="{StaticResource ListView_Item_Buttons}"/>
+
+                    <TextBlock Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="ItemItem" x:DataType="CharModel:Item">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock Grid.Column="1">
+                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                        </TextBlock>
+                        <TextBlock Grid.Column="2" Text="{x:Bind Anzahl, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="ItemItemX" x:DataType="CharModel:Item">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter Grid.ColumnSpan="2" Grid.Row="0" ContentTemplate="{StaticResource ItemItem}"/>
+                    <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Grid.Row="1" Style="{StaticResource ListView_Item_Buttons}"/>
+                    <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click" Grid.Row="2" Style="{StaticResource ListView_Item_Buttons}"/>
+                    <TextBlock Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="KommlinkItem" x:DataType="CharModel:Kommlink">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+
+                    <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
+                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock  Grid.Column="1">
+                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Programmanzahl, Mode=OneWay}"/>
+                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="5">
+                                            <Run Text="{x:Bind Firewall, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Datenverarbeitung, Mode=OneWay}"/>
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="KommlinkItemX" x:DataType="CharModel:Kommlink">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter Grid.ColumnSpan="2" Grid.Row="0" ContentTemplate="{StaticResource KommlinkItem}"/>
+                    <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Grid.Row="1" Style="{StaticResource ListView_Item_Buttons}"/>
+                    <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click" Grid.Row="2" Style="{StaticResource ListView_Item_Buttons}"/>
+                    <TextBlock Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="CyberDeckItem" x:DataType="CharModel:CyberDeck">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+
+                    <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
+                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock  Grid.Column="1">
+                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Programmanzahl, Mode=OneWay}"/>
+                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind dSchaden, Mode=OneWay}"/>
+                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="4">
+                                              <Run Text="{x:Bind Angriff, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Schleicher, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Firewall, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Datenverarbeitung, Mode=OneWay}"/>
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="CyberDeckItemX" x:DataType="CharModel:CyberDeck">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ContentPresenter ContentTemplate="{StaticResource CyberDeckItem}"/>
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                            <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource ListView_Item_Buttons}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Kommlink_Attribute_o"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" >
+                                <Run Text="{x:Bind Angriff_o, Mode=OneWay}"/>
+                                <Run x:Uid="Slash"/>
+                                <Run Text="{x:Bind Schleicher_o, Mode=OneWay}"/>
+                                <Run x:Uid="Slash"/>
+                                <Run Text="{x:Bind Firewall_o, Mode=OneWay}"/>
+                                <Run x:Uid="Slash"/>
+                                <Run Text="{x:Bind Datenverarbeitung_o, Mode=OneWay}"/>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
+                        </StackPanel>
+                    </VariableSizedWrapGrid>
+                    <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="ProgrammItem" x:DataType="CharModel:Programm">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Name="Programm_Grid" Style="{StaticResource ListView_Item_Grid}">
+                        <FlyoutBase.AttachedFlyout>
+                            <Flyout>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
+                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Programm_Edit" Click="Edit_Click"/>
+                                    <Button x:Uid="UI_Btn_Loeschen" Name="Programm_Del" Click="Del_Click"/>
+                                </StackPanel>
+                            </Flyout>
+                        </FlyoutBase.AttachedFlyout>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" Text="{x:Bind Wert, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Grid.Column="2" Text="{x:Bind Optionen, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="ProgrammItemX" x:DataType="CharModel:Programm">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter Grid.ColumnSpan="2" Grid.Row="0" ContentTemplate="{StaticResource ProgrammItem}"/>
+                    <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Grid.Row="1" Style="{StaticResource ListView_Item_Buttons}"/>
+                    <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click" Grid.Row="2" Style="{StaticResource ListView_Item_Buttons}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" >
+                        <Run x:Uid="Model_Item_Anzahl" FontWeight="Bold"/>
+                        <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                        <Run x:Uid="Space" FontWeight="Bold"/>
+                        <Run Text="{x:Bind Anzahl, Mode=OneWay}"/>
+                    </TextBlock>
+                    <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="FernkampfwaffeItem" x:DataType="CharModel:Fernkampfwaffe">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
+                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
+                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind SchadenTyp, Mode=OneWay}"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="FernkampfwaffeItemX" x:DataType="CharModel:Fernkampfwaffe">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ContentPresenter ContentTemplate="{StaticResource FernkampfwaffeItem}"/>
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                            <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource ListView_Item_Buttons}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_PB"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Rückstoß"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Rückstoß, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Modi"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Modi, Mode=OneWay}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </VariableSizedWrapGrid>
+                    <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="NahkampfwaffeItem" x:DataType="CharModel:Nahkampfwaffe">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
+                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
+                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind SchadenTyp, Mode=OneWay}"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="NahkampfwaffeItemX" x:DataType="CharModel:Nahkampfwaffe">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ContentPresenter ContentTemplate="{StaticResource NahkampfwaffeItem}"/>
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                            <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource ListView_Item_Buttons}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_PB"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Rückstoß"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Reichweite, Mode=OneWay}"/>
+                        </StackPanel>
+                    </VariableSizedWrapGrid>
+                    <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="PanzerungItem" x:DataType="CharModel:Panzerung">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
+                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
+                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Stoß, Mode=OneWay}"/>
+                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="PanzerungItemX" x:DataType="CharModel:Panzerung">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ContentPresenter ContentTemplate="{StaticResource PanzerungItem}"/>
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                            <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource ListView_Item_Buttons}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model__Kapazität"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Kapazität, Mode=OneWay}"/>
+                        </StackPanel>
+                    </VariableSizedWrapGrid>
+                    <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="MunitionItem" x:DataType="CharModel:Munition">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
+                    <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock Grid.Column="1" Text="{x:Bind Anzahl, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="MunitionItemX" x:DataType="CharModel:Munition">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ContentPresenter ContentTemplate="{StaticResource MunitionItem}"/>
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                            <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource ListView_Item_Buttons}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
+                        </StackPanel>
+                    </VariableSizedWrapGrid>
+                    <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="AttributItem" x:DataType="CharModel:Attribut">
+                <Grid BorderBrush="Black" BorderThickness="1" x:Name="GridKonsti" Grid.Column="0" Grid.Row="0" Tapped="Item_Tapped" RightTapped="Item_RightTapped" Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <FlyoutBase.AttachedFlyout>
+                        <Flyout>
+                            <StackPanel>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
+                                <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
+                                <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click"/>
+                            </StackPanel>
+                        </Flyout>
+                    </FlyoutBase.AttachedFlyout>
+                    <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
+                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="AttributItemX" x:DataType="CharModel:Attribut">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource AttributItem}"/>
+                    <StackPanel Grid.Row="1" Orientation="Vertical">
+                        <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                        <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource ListView_Item_Buttons}"/>
+                    </StackPanel>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="ConnectionItem" x:DataType="CharModel:Connection">
+                <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
+                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Text="{x:Bind Wert, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
+                    <TextBlock Grid.Column="2" Text="{x:Bind Loyal, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
+                    <TextBlock Grid.Column="3" Text="{x:Bind Notiz, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="ConnectionItemX" x:DataType="CharModel:Connection">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource ConnectionItem}"/>
+                    <StackPanel Grid.Row="1" Orientation="Vertical">
+                        <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                        <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource ListView_Item_Buttons}"/>
+                    </StackPanel>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="ImplantatItem" x:DataType="CharModel:Implantat">
+                <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
+                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="ImplantatItemX" x:DataType="CharModel:Implantat">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ContentPresenter ContentTemplate="{StaticResource ImplantatItem}"/>
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                            <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource ListView_Item_Buttons}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Implantat_Essenz"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Essenz, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model__Kapazität"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Kapazität, Mode=OneWay}"/>
+                        </StackPanel>
+                    </VariableSizedWrapGrid>
+                    <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="SinItem" x:DataType="CharModel:Sin">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
+                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="SinItemX" x:DataType="CharModel:Sin">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource SinItem}"/>
+                    <StackPanel Grid.Row="1" Orientation="Vertical">
+                        <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                        <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource ListView_Item_Buttons}"/>
+                    </StackPanel>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="EigenschaftItem" x:DataType="CharModel:Eigenschaft">
+                <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <FlyoutBase.AttachedFlyout>
+                        <Flyout>
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Eigenschaft_Auswirkungen"/>
+                                <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Auswirkungen}"/>
+                                <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
+                                <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz}"/>
+                                <Button x:Uid="UI_Btn_Bearbeiten" Name="Nachteil_Edit" Click="Edit_Click"/>
+                                <Button x:Uid="UI_Btn_Loeschen" Name="Nachteil_Del" Click="Del_Click"/>
+                            </StackPanel>
+                        </Flyout>
+                    </FlyoutBase.AttachedFlyout>
+                    <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
+                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="EigenschaftItemX" x:DataType="CharModel:Eigenschaft">
+                <Grid Style="{StaticResource ListView_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter ContentTemplate="{StaticResource EigenschaftItem}"/>
+                    <StackPanel Grid.Row="1" Orientation="Vertical">
+                        <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                        <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource ListView_Item_Buttons}"/>
+                    </StackPanel>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
+                            <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
+                            <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
+                            <Run x:Uid="Space" FontWeight="Bold"/>
+                            <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
     <Pivot x:Name="pivot" Style="{StaticResource TabsStylePivotStyle}" >
@@ -232,7 +966,6 @@
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
                 <StackPanel  Style="{StaticResource Pivot_Item_StackPanel}">
-                    <!--<telerikGrid:RadDataGrid x:Name="DataGrid"/>-->
                     <StackPanel Name="Hanlung_Block">
                         <StackPanel Name="Handlung_U" Style="{StaticResource ListView_U}">
                             <TextBlock x:Uid="Model_HandlungM_" Style="{StaticResource ListView_U_Text}"/>
@@ -248,7 +981,14 @@
                                 <Run x:Uid="Model_Thing_Wert_W"/><Run x:Uid="Plus"/><Run x:Uid="Model_Handlung_Mod"/><Run x:Uid="KlammerAufEck"/><Run x:Uid="Model_Handlung_Grenze"/><Run x:Uid="KlammerZuEck"/><Run x:Uid="Bindestrich"/><Run x:Uid="Model_Handlung_Gegen"/>
                             </TextBlock>
                         </Grid>
-                        <ListView Name="Handlung" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLHandlung.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}" SelectionChanged="ListView_SelectionChanged" SelectionMode="Extended" Tag="1" ItemTemplate="{StaticResource HandlungItem}"/>
+                        <ListView Name="Handlung" 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLHandlung.Data}" 
+                                  ItemTemplate="{StaticResource HandlungItem}"
+                                  Tag="1" 
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}" 
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                     <StackPanel Name="Fertigkeit_Block">
                         <StackPanel Name="Fertigkeit_U" Style="{StaticResource ListView_U}">
@@ -263,49 +1003,18 @@
                             <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="1" x:Uid="Model_Thing_Wert" Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Fertigkeit" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLFertigkeit.Data, Mode=OneWay}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="CharModel:Fertigkeit">
-                                    <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="100"/>
-                                        </Grid.ColumnDefinitions>
-                                        <FlyoutBase.AttachedFlyout>
-                                            <Flyout>
-                                                <StackPanel>
-
-                                                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                    <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                                    <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
-                                                    <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
-                                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Fertigkeit_Edit" Click="Edit_Click"/>
-                                                    <Button x:Uid="UI_Btn_Loeschen" Name="Fertigkeit_Del" Click="Del_Click"/>
-                                                </StackPanel>
-                                            </Flyout>
-                                        </FlyoutBase.AttachedFlyout>
-
-                                        <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
-                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                        </TextBlock>
-                                        <TextBlock  Grid.Column="1">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                        </TextBlock>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            
-
-
-
-
-                        </ListView>
+                        <ListView Name="Fertigkeit" 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLFertigkeit.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource FertigkeitItem}" 
+                                  Tag="2" 
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
-        
         <PivotItem>
             <PivotItem.Header>
                 <local:TabHeader x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
@@ -331,53 +1040,14 @@
                             <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="4" x:Uid="Model_Item_Anzahl"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Items" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLItem.Data, Mode=OneWay}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate  x:DataType="CharModel:Item">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="5*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout x:Name="FlyoutHandlung">
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
-                                                        <Button x:Uid="UI_Btn_Bearbeiten" Name="Item_Edit" Click="Edit_Click"/>
-                                                        <Button x:Uid="UI_Btn_Loeschen" Name="Item_Del" Click="Del_Click"/>
-                                                    </StackPanel>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
-
-                                            <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                            </TextBlock>
-                                            <TextBlock Grid.Column="1">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                            </TextBlock>
-                                            <TextBlock Grid.Column="2" Text="{x:Bind Anzahl, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
-                                        </Grid>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            
-
-
-
-
-                        </ListView>
+                        <ListView Name="Items" 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLItem.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource ItemItem}" 
+                                  Tag="3" 
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                     <StackPanel Name="Kommlink_Block">
                         <StackPanel Name="Kommlinks_U" Style="{StaticResource ListView_U}">
@@ -387,8 +1057,8 @@
                         <Grid Name="Kommlinks_E" Style="{StaticResource ListView_E}">
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="45"/>
-                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="58"/>
+                                <ColumnDefinition Width="58"/>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -401,59 +1071,14 @@
                             <TextBlock Grid.Column="4" x:Uid="Model_Kommlink_Programmanzahl" Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="5" x:Uid="Model_Kommlink_Attribute" Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLKommlink.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="CharModel:Kommlink">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-
-                                        <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout>
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                                        <Button x:Uid="UI_Btn_Bearbeiten" Name="Kommlink_Edit" Click="Edit_Click"/>
-                                                        <Button x:Uid="UI_Btn_Loeschen" Name="Kommlink_Del" Click="Del_Click"/>
-                                                    </StackPanel>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
-                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                            </TextBlock>
-                                            <TextBlock  Grid.Column="1">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                            </TextBlock>
-                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Programmanzahl, Mode=OneWay}"/>
-                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="5">
-                                            <Run Text="{x:Bind Firewall, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Datenverarbeitung, Mode=OneWay}"/>
-                                            </TextBlock>
-                                        </Grid>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            
-
-
-
-
-                        </ListView>
+                            <ListView 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLKommlink.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource KommlinkItem}" 
+                                  Tag="14" 
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                     <StackPanel Name="CyberDeck_Block">
                         <StackPanel Style="{StaticResource ListView_U}">
@@ -463,8 +1088,8 @@
                         <Grid Style="{StaticResource ListView_E}">
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="45"/>
-                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="58"/>
+                                <ColumnDefinition Width="58"/>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -480,66 +1105,14 @@
                             <TextBlock Grid.Column="6" x:Uid="Model_Kommlink_Attribute" Style="{StaticResource ListView_Item_Text}">
                             </TextBlock>
                         </Grid>
-                        <ListView ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLCyberDeck.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="CharModel:CyberDeck">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-
-                                        <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout>
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Kommlink_Attribute_o"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" >
-                                                        <Run Text="{x:Bind Angriff_o, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Schleicher_o, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Firewall_o, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Datenverarbeitung_o, Mode=OneWay}"/>
-                                                        </TextBlock>
-                                                        <Button x:Uid="UI_Btn_Bearbeiten" Name="CyberDeck_Edit" Click="Edit_Click"/>
-                                                        <Button x:Uid="UI_Btn_Loeschen" Name="CyberDeck_Del" Click="Del_Click"/>
-                                                    </StackPanel>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
-                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                            </TextBlock>
-                                            <TextBlock  Grid.Column="1">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                            </TextBlock>
-                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Programmanzahl, Mode=OneWay}"/>
-                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind dSchaden, Mode=OneWay}"/>
-                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="4">
-                                              <Run Text="{x:Bind Angriff, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Schleicher, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Firewall, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Datenverarbeitung, Mode=OneWay}"/>
-                                            </TextBlock>
-                                        </Grid>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            
-
-
-
-
-                        </ListView>
+                        <ListView 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLCyberDeck.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource CyberDeckItem}" 
+                                  Tag="15" 
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                     <StackPanel Name="Programm_Block">
                         <StackPanel RelativePanel.Below="Kommlinks" Name="Programme_U" Style="{StaticResource ListView_U}">
@@ -548,8 +1121,8 @@
                         </StackPanel>
                         <Grid Name="Programme_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="45"/>
-                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="58"/>
+                                <ColumnDefinition Width="58"/>
                                 <ColumnDefinition Width="4*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="3*"/>
@@ -560,54 +1133,14 @@
                             <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="4" x:Uid="Model_Programm_Optionen"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Programme" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLProgramm.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="CharModel:Programm">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Name="Programm_Grid" Style="{StaticResource ListView_Item_Grid}">
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout>
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
-                                                        <Button x:Uid="UI_Btn_Bearbeiten" Name="Programm_Edit" Click="Edit_Click"/>
-                                                        <Button x:Uid="UI_Btn_Loeschen" Name="Programm_Del" Click="Del_Click"/>
-                                                    </StackPanel>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="4*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="3*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                                </TextBlock>
-                                                <TextBlock Grid.Column="1" Text="{x:Bind Wert, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
-                                                <TextBlock Grid.Column="2" Text="{x:Bind Optionen, Mode=OneWay}"  Style="{StaticResource ListView_Item_Text}"/>
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                        <ListView 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLProgramm.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource ProgrammItem}" 
+                                  Tag="4" 
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
@@ -625,8 +1158,8 @@
                         </StackPanel>
                         <Grid Name="Fernkampfwaffen_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="45"/>
-                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="58"/>
+                                <ColumnDefinition Width="58"/>
                                 <ColumnDefinition Width="4*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
@@ -635,61 +1168,14 @@
                             <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="3" x:Uid="Model_Waffe_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView  Name="Fernkampfwaffen" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLFernkampfwaffe.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="CharModel:Fernkampfwaffe">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout>
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_PB"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Rückstoß"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Rückstoß, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Modi"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Modi, Mode=OneWay}"/>
-                                                        <Button x:Uid="UI_Btn_Bearbeiten" Name="Fernkampfwaffe_Edit" Click="Edit_Click"/>
-                                                        <Button x:Uid="UI_Btn_Loeschen" Name="Fernkampfwaffe_Del" Click="Del_Click"/>
-                                                    </StackPanel>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="4*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
-                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                            </TextBlock>
-                                            <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind SchadenTyp, Mode=OneWay}"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                            </TextBlock>
-                                        </Grid>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            
-
-
-
-
-                        </ListView>
+                        <ListView 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLFernkampfwaffe.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource FernkampfwaffeItem}" 
+                                  Tag="13" 
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                     <StackPanel Name="Nahkampfwaffe_Block">
                         <StackPanel Name="Nahkampfwaffen_U" Style="{StaticResource ListView_U}">
@@ -698,8 +1184,8 @@
                         </StackPanel>
                         <Grid Name="Nahkampfwaffen_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="45"/>
-                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="58"/>
+                                <ColumnDefinition Width="58"/>
                                 <ColumnDefinition Width="4*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
@@ -708,59 +1194,14 @@
                             <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="3" x:Uid="Model_Waffe_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView  Name="Nahkampfwaffen" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLNahkampfwaffe.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="CharModel:Nahkampfwaffe">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout>
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_PB"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Nahkampfwaffe_Reichweite"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Reichweite, Mode=OneWay}"/>
-                                                        <Button x:Uid="UI_Btn_Bearbeiten" Name="Nahkampfwaffe_Edit" Click="Edit_Click"/>
-                                                        <Button x:Uid="UI_Btn_Loeschen" Name="Nahkampfwaffe_Del" Click="Del_Click"/>
-                                                    </StackPanel>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="4*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
-                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                            </TextBlock>
-                                            <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind SchadenTyp, Mode=OneWay}"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                            </TextBlock>
-                                        </Grid>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            
-
-
-
-
-                        </ListView>
+                        <ListView 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLNahkampfwaffe.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource NahkampfwaffeItem}" 
+                                  Tag="12"
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                     <StackPanel Name="Panzerung_Block">
                         <StackPanel Name="Panzerung_U" Style="{StaticResource ListView_U}">
@@ -769,8 +1210,8 @@
                         </StackPanel>
                         <Grid Name="Panzerung_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="45"/>
-                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="58"/>
+                                <ColumnDefinition Width="58"/>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -783,62 +1224,14 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="4" x:Uid="Model_Panzerung_Stoß"/>
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="5" x:Uid="Model_Thing_Notiz}"/>
                         </Grid>
-                        <ListView Name="Panzerung" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLPanzerung.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="CharModel:Panzerung">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout>
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model__Kapazität"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Kapazität, Mode=OneWay}"/>
-                                                        <Button x:Uid="UI_Btn_Bearbeiten" Name="Panzerung_Edit" Click="Edit_Click"/>
-                                                        <Button x:Uid="UI_Btn_Loeschen" Name="Panzerung_Del" Click="Del_Click"/>
-                                                    </StackPanel>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="2*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
-                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                            </TextBlock>
-                                            <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                            </TextBlock>
-                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Stoß, Mode=OneWay}"/>
-                                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                        </Grid>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            
-
-
-
-
-                        </ListView>
-
+                        <ListView 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLPanzerung.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource PanzerungItem}" 
+                                  Tag="17"
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                     <StackPanel Name="Vehikel_Block">
                         <StackPanel Name="Vehikel_U" Style="{StaticResource ListView_U}">
@@ -847,8 +1240,8 @@
                         </StackPanel>
                         <Grid Name="Vehikel_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="45"/>
-                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="58"/>
+                                <ColumnDefinition Width="58"/>
                                 <ColumnDefinition Width="4*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -859,7 +1252,14 @@
                             <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="4" x:Uid="Model_Vehikel_Panzerung"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Vehikel" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLVehikel.Data}" ItemTemplate="{StaticResource VehikelItem}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}" SelectionChanged="ListView_SelectionChanged" SelectionMode="Extended" Tag="16"/>
+                        <ListView 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLVehikel.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource VehikelItem}" 
+                                  Tag="16"
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                     <StackPanel Name="Munition_Block">
                         <StackPanel Name="Munition_U" Style="{StaticResource ListView_U}">
@@ -868,8 +1268,8 @@
                         </StackPanel>
                         <Grid Name="Munition_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="45"/>
-                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="58"/>
+                                <ColumnDefinition Width="58"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
@@ -878,45 +1278,14 @@
                             <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="3" x:Uid="Model_Item_Anzahl"  Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView  Name="Munition" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLMunition.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="CharModel:Munition">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="45"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
-                                        <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout>
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                                        <Button x:Uid="UI_Btn_Bearbeiten" Name="Munition_Edit" Click="Edit_Click"/>
-                                                        <Button x:Uid="UI_Btn_Loeschen" Name="Munition_Del" Click="Del_Click"/>
-                                                    </StackPanel>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="100"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                            </TextBlock>
-                                            <TextBlock Grid.Column="1" Text="{x:Bind Anzahl, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
-                                        </Grid>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                        <ListView 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLMunition.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource MunitionItem}" 
+                                  Tag="5"
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
@@ -944,6 +1313,7 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
+                            <!--<ContentPresenter BorderBrush="Pink" BorderThickness="2" Grid.Column="0" Grid.Row="0" ContentTemplate="{StaticResource AttributItem}" DataContext="ViewModel.CurrentChar.CTRLAttribut.Konsti" />-->
                             <Grid x:Name="GridKonsti" Grid.Column="0" Grid.Row="0" Tapped="Item_Tapped" RightTapped="Item_RightTapped" Style="{StaticResource ListView_Item_Grid}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="3*"/>
@@ -1235,45 +1605,14 @@
                             <TextBlock Grid.Column="2" x:Uid="Model_Connection_Loyal" Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="3" x:Uid="Model_Person_Notizen" Style="{StaticResource ListView_Item_Text}"/>
                         </Grid>
-                        <ListView Name="Connection" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLConnection.Data, Mode=OneWay}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="CharModel:Connection">
-                                    <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="2*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <FlyoutBase.AttachedFlyout>
-                                            <Flyout>
-                                                <StackPanel>
-                                                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Person_Notizen"/>
-                                                    <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-
-
-
-                                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Connection_Edit" Click="Edit_Click"/>
-                                                    <Button x:Uid="UI_Btn_Loeschen" Name="Connection_Del" Click="Del_Click"/>
-                                                </StackPanel>
-                                            </Flyout>
-                                        </FlyoutBase.AttachedFlyout>
-                                        <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
-                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                        </TextBlock>
-                                        <TextBlock Grid.Column="1" Text="{x:Bind Wert, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
-                                        <TextBlock Grid.Column="2" Text="{x:Bind Loyal, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
-                                        <TextBlock Grid.Column="3" Text="{x:Bind Notiz, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            
-
-
-
-
-                        </ListView>
+                        <ListView 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLConnection.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource ConnectionItem}" 
+                                  Tag="9"
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                     <StackPanel Name="Implantat_Block">
                         <StackPanel Name="Implantat_U" Style="{StaticResource ListView_U}">
@@ -1282,57 +1621,20 @@
                         </StackPanel>
                         <Grid Name="Implantat_E" Style="{StaticResource ListView_E}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="1" x:Uid="Model_Thing_Wert" Style="{StaticResource ListView_Item_Text}"/>
-                            <TextBlock Grid.Column="2" x:Uid="Model_Implantat_Essenz" Style="{StaticResource ListView_Item_Text}"/>
-                            <TextBlock Grid.Column="3" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
                         </Grid>
-                        <ListView Name="Implantat" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLImplantat.Data, Mode=OneWay}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="CharModel:Implantat">
-                                    <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="4*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <FlyoutBase.AttachedFlyout>
-                                            <Flyout>
-                                                <StackPanel>
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Typ"/>
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Typ, Mode=OneWay}"/>
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model__Kapazität"/>
-                                                    <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Kapazität, Mode=OneWay}"/>
-                                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Implantat_Edit" Click="Edit_Click"/>
-                                                    <Button x:Uid="UI_Btn_Loeschen" Name="Implantat_Del" Click="Del_Click"/>
-                                                </StackPanel>
-                                            </Flyout>
-                                        </FlyoutBase.AttachedFlyout>
-                                        <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                        </TextBlock>
-                                        <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                        </TextBlock>
-                                        <TextBlock Grid.Column="2" Text="{x:Bind Essenz, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
-                                        <TextBlock Grid.Column="3" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            
-
-
-
-
-                        </ListView>
+                        <ListView 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLImplantat.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource ImplantatItem}" 
+                                  Tag="6"
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                     <StackPanel Name="Sin_Block">
                         <StackPanel Name="Sin_U" Style="{StaticResource ListView_U}">
@@ -1343,47 +1645,18 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="1" x:Uid="Model_Thing_Wert" Style="{StaticResource ListView_Item_Text}"/>
-                            <TextBlock Grid.Column="2" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
                         </Grid>
-                        <ListView Name="Sin" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLSin.Data, Mode=OneWay}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="CharModel:Sin">
-                                    <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <FlyoutBase.AttachedFlyout>
-                                            <Flyout>
-                                                <StackPanel>
-                                                    <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Person_Notiz"/>
-                                                    <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                                    <Button x:Uid="UI_Btn_Bearbeiten" Name="Sin_Edit" Click="Edit_Click"/>
-                                                    <Button x:Uid="UI_Btn_Loeschen" Name="Sin_Del" Click="Del_Click"/>
-                                                </StackPanel>
-                                            </Flyout>
-                                        </FlyoutBase.AttachedFlyout>
-                                        <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                        </TextBlock>
-                                        <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                        </TextBlock>
-                                        <TextBlock Grid.Column="2" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz, Mode=OneWay}"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            
-
-
-
-
-                        </ListView>
+                        <ListView 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLSin.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource SinItem}" 
+                                  Tag="10"
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                     </StackPanel>
                     <Grid Name="VorundNachteile">
                         <Grid.ColumnDefinitions>
@@ -1395,77 +1668,28 @@
                                 <TextBlock x:Uid="Model_VorteilM_" Style="{StaticResource ListView_U_Text}"/>
                                 <Button Name="Vorteil_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="7"/>
                             </StackPanel>
-                            <ListView Name="Vorteil" Margin="0,0,2,0" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLVorteil.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate x:DataType="CharModel:Vorteil">
-                                        <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                            </Grid.ColumnDefinitions>
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout>
-                                                    <StackPanel>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Eigenschaft_Auswirkungen"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Auswirkungen}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz}"/>
-                                                        <Button x:Uid="UI_Btn_Bearbeiten" Name="Vorteil_Edit" Click="Edit_Click"/>
-                                                        <Button x:Uid="UI_Btn_Loeschen" Name="Vorteil_Del" Click="Del_Click"/>
-                                                    </StackPanel>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
-                                            <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                            </TextBlock>
-                                            <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                            </TextBlock>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                            <ListView Margin="0,0,2,0" 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLVorteil.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource EigenschaftItem}" 
+                                  Tag="7"
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                         </StackPanel>
                         <StackPanel Grid.Column="1">
                             <StackPanel Name="Nachteile_U" Style="{StaticResource ListView_U}">
                                 <TextBlock x:Uid="Model_NachteilM_" Style="{StaticResource ListView_U_Text}"/>
                                 <Button Name="Nachteil_Add" Click="Add" Style="{StaticResource ListView_U_BtnAdd}" Tag="8"/>
                             </StackPanel>
-                            <ListView Name="Nachteile" Margin="2,0,0,0" ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLNachteil.Data}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate x:DataType="CharModel:Nachteil">
-                                        <Grid Tapped="Item_Tapped" RightTapped="Item_RightTapped" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                            </Grid.ColumnDefinitions>
-                                            <FlyoutBase.AttachedFlyout>
-                                                <Flyout>
-                                                    <StackPanel>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Eigenschaft_Auswirkungen"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Auswirkungen}"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Notiz"/>
-                                                        <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Notiz}"/>
-                                                        <Button x:Uid="UI_Btn_Bearbeiten" Name="Nachteil_Edit" Click="Edit_Click"/>
-                                                        <Button x:Uid="UI_Btn_Loeschen" Name="Nachteil_Del" Click="Del_Click"/>
-                                                    </StackPanel>
-                                                </Flyout>
-                                            </FlyoutBase.AttachedFlyout>
-                                            <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                                            </TextBlock>
-                                            <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                                            </TextBlock>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                                
-    
-    
-    
-    
-                            </ListView>
+                            <ListView Margin="2,0,0,0" 
+                                  ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLNachteil.Data, Mode=OneWay}" 
+                                  ItemTemplate="{StaticResource EigenschaftItem}" 
+                                  Tag="8"
+                                  Style="{StaticResource ListView}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
                         </StackPanel>
                     </Grid>
                     <StackPanel Name="Person_Block">

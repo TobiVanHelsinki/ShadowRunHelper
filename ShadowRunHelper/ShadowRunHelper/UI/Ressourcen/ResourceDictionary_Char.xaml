@@ -330,6 +330,11 @@
         <Setter Property="Margin" Value="5,2,5,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
+    <Style TargetType="Button" x:Key="ListView_Item_Buttons">
+        <Setter Property="Margin" Value="2,2,2,2"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+    </Style>
+    
     <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="ListView_Item_TextBox_io_ZahlenDoubles">
         <Setter Property="Margin" Value="5,2,5,2"/>
         <Setter Property="Width" Value="100"/>
@@ -383,6 +388,8 @@
         <Setter Property="Background" Value="Beige"/>
         <Setter Property="CanReorderItems" Value="True"/>
         <Setter Property="AllowDrop" Value="True"/>
+        <Setter Property="SelectionMode" Value="Extended"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ListViewItemStyle}"/>
     </Style>
     <Style TargetType="ListViewItem" x:Key="ListViewItemStyle">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
