@@ -1,14 +1,11 @@
-﻿using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Controls.Primitives;
-using System;
 using ShadowRunHelper.UI.Edit;
-using ShadowRunHelper.CharModel;
-using Windows.Foundation.Metadata;
+using System;
 using Windows.ApplicationModel.Resources;
-using System.Collections.Generic;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper
 {
@@ -99,6 +96,17 @@ namespace ShadowRunHelper
                 catch (Exception)
                 {
                 }
+            }
+        }
+
+        private async void Edit_Attribut(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            try
+            {
+                await new Edit_Dialog(((Thing)((Grid)sender).DataContext)).ShowAsync();
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -284,6 +292,6 @@ namespace ShadowRunHelper
                 }
             }
         }
-
+        
     }
 }

@@ -1,6 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Controls;
 
 // Die Elementvorlage "Inhaltsdialog" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
@@ -10,17 +9,13 @@ namespace ShadowRunHelper.UI.Edit
     public sealed partial class Edit_Dialog : ContentDialog
     {
         public Thing Data;
-        //public ObservableCollection<CharThing> lstAll;
         public List<string> MyStringOptions { get; set; }
-        //public List<TextBox> CurrentTextBoxes { get; set; }
 
         public Edit_Dialog(Thing data)
         {
-            //CurrentTextBoxes = new List<TextBox>();
             Data = data;
             InitializeComponent();
             Title = TypenHelper.ThingDefToString(Data.ThingType, false);
-
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -34,11 +29,9 @@ namespace ShadowRunHelper.UI.Edit
             switch (Data.ThingType)
             {
                 case ThingDefs.Handlung:
-                    //EditType.ContentTemplate = Handlung;
                     Wert.IsEnabled = false;
                     break;
                 case ThingDefs.Fertigkeit:
-                    //EditType.ContentTemplate = Fertigkeit;
                     break;
                 case ThingDefs.Item:
                     EditType.ContentTemplate = Item;
@@ -62,11 +55,9 @@ namespace ShadowRunHelper.UI.Edit
                     EditType.ContentTemplate = Connection;
                     break;
                 case ThingDefs.Sin:
-                    //EditType.ContentTemplate = Sin;
                     break;
                 case ThingDefs.Attribut:
-                    //EditType.ContentTemplate = Attribut;
-                    //Wert.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                    Bezeichner.IsEnabled = false;
                     break;
                 case ThingDefs.Nahkampfwaffe:
                     EditType.ContentTemplate = Nahkampfwaffe;
