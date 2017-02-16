@@ -12,29 +12,17 @@ using System.Collections.Generic;
 
 namespace ShadowRunHelper
 {
-    public class Data
-    {
-        public string Country { get; set; }
-
-        public string Capital { get; set; }
-    }
     public sealed partial class Char : Page
     {
+        // Variables ##########################################################
         public ViewModel ViewModel { get; set; }
         public Windows.System.Display.DisplayRequest Char_DisplayRequest;
 
         public Char()
         {
             InitializeComponent();
- //           this.DataGrid.ItemsSource = new List<Data>
- //{
- //    new Data { Country = "India", Capital = "New Delhi"},
- //    new Data { Country = "South Africa", Capital = "Cape Town"},
- //    new Data { Country = "Nigeria", Capital = "Abuja" },
- //    new Data { Country = "Singapore", Capital = "Singapore" }
- //};
-
         }
+        // Navigation Stuff####################################################
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel = (ViewModel)e.Parameter;
@@ -75,21 +63,8 @@ namespace ShadowRunHelper
             base.OnNavigatedFrom(e);
         }
 
-        private void Item_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
-        {
-            FrameworkElement element = sender as FrameworkElement;
-            if (element != null)
-            {
-                try
-                {
-                    FlyoutBase.ShowAttachedFlyout(element);
-                }
-                catch (Exception)
-                {
-                }
-            }
-        }
-        private async void Add(object sender, RoutedEventArgs e)
+        // Gui-Model Handler Stuff#############################################
+        private async void Add_Click(object sender, RoutedEventArgs e)
         {
             ThingDefs Controller = 0;
             long test = Int64.Parse((((Button)sender).Tag).ToString()); //TODO Add Tag with the correospedenting number
@@ -111,14 +86,26 @@ namespace ShadowRunHelper
 
         private async void Edit_Click(object sender, RoutedEventArgs e)
         {
-            string Name = ((String)((Button)sender).Name);
-            string Tag = ((String)((Button)sender).Tag);
-
-            if (Name.Contains("Person1"))
+            if (((String)((Button)sender).Name).Contains("Person1"))
             {
                 await new Edit_Person(ViewModel.CurrentChar.Person).ShowAsync();
             }
-            else if (Tag != null)
+            else
+            {
+                try
+                {
+                    await new Edit_Dialog(((Thing)((Button)sender).DataContext)).ShowAsync();
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
+        private async void Attribut_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            string Tag = ((String)((Grid)sender).Tag);
+            if (Tag != null)
             {
                 Thing Attribute = null;
                 switch (Tag)
@@ -161,16 +148,6 @@ namespace ShadowRunHelper
                 {
                 }
             }
-            else
-            {
-                try
-                {
-                    await new Edit_Dialog(((Thing)((Button)sender).DataContext)).ShowAsync();
-                }
-                catch (Exception)
-                {
-                }
-            }
         }
 
         private void Del_Click(object sender, RoutedEventArgs e)
@@ -180,8 +157,7 @@ namespace ShadowRunHelper
                 ViewModel.CurrentChar.Remove((Thing)((Button)sender).DataContext);
             }
         }
-
-
+        
         private async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
         {
             Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).WertZusammensetzung, ViewModel.CurrentChar.lstThings);
@@ -201,19 +177,13 @@ namespace ShadowRunHelper
             await dialog.ShowAsync();
         }
 
-        private void Item_RightTapped(object sender, Windows.UI.Xaml.Input.RightTappedRoutedEventArgs e)
+        private async void FertigkeitenZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
         {
-            FrameworkElement element = sender as FrameworkElement;
-            if (element != null)
-            {
-                FlyoutBase.ShowAttachedFlyout(element);
-            }
+            Auswahl dialog = new Auswahl(((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, ViewModel.CurrentChar.lstThings);
+            await dialog.ShowAsync();
         }
 
-        private void Item_TappedX(object sender, Windows.UI.Xaml.Input.RightTappedRoutedEventArgs e)
-        {
-
-        }
+        // Gui Handler Stuff ##################################################
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -295,18 +265,25 @@ namespace ShadowRunHelper
             }
             foreach (var item in e.RemovedItems)
             {
-                ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = NewTemplate;
+                try
+                {
+                    ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = NewTemplate;
+                }
+                catch (Exception)
+                {
+                }
             }
             foreach (var item in e.AddedItems)
             {
-                ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = NewTemplateX;
+                try
+                {
+                    ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = NewTemplateX;
+                }
+                catch (Exception)
+                {
+                }
             }
         }
 
-        private async void FertigkeitenZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
-        {
-            Auswahl dialog = new Auswahl(((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, ViewModel.CurrentChar.lstThings);
-            await dialog.ShowAsync();
-        }
     }
 }

@@ -28,6 +28,7 @@ namespace ShadowRunHelper.CharModel
             PoolZusammensetzung = new ObservableCollection<ThingListEntry>();
             PoolZusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(); };
             CollectionChanged();
+            this.PropertyChanged += (x, y) => { if (y.PropertyName == "Wert") Recalculate(); };
         }
 
         private void CollectionChanged()
@@ -42,7 +43,7 @@ namespace ShadowRunHelper.CharModel
 
         private void Recalculate()
         {
-            double temp = 0;
+            double temp = Wert;
             foreach (ThingListEntry item in PoolZusammensetzung)
             {
                 temp += item.Object.GetValue(item.strProperty);

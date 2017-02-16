@@ -10,6 +10,8 @@ namespace ShadowRunHelper.CharController
 {
     public class cAttributController : cController<Attribut>
     {
+        // Variable Stuff #####################################################
+        // Variable Model Stuff ###########################
         [System.Runtime.Serialization.IgnoreDataMember] //cause sometimes an very übel Bug
         public new ObservableCollection<Attribut> Data; //cause sometimes an very übel Bug
 
@@ -23,68 +25,9 @@ namespace ShadowRunHelper.CharController
         public Attribut Willen;
         [System.Runtime.Serialization.IgnoreDataMember] //cause sometimes an very übel Bug
         public Attribut Essenz; //TODO Essenz berechnen aus Implantaten (+ ein bonus feld?)
-
-        CharModel.Person PersonRef;
-        ObservableCollection<Implantat> lstImplantateRef;
-        public cAttributController(CharModel.Person P, ObservableCollection<Implantat> I) : this()
-        {
-            this.eDataTyp = ThingDefs.Attribut;
-            SetDependencies(P, I);
-        }
-
-        public void SetDependencies(Person p, ObservableCollection<Implantat> i)
-        {
-            PersonRef = p;
-            lstImplantateRef = i;
-            PersonRef.PropertyChanged += (x, y) => RefreshEssenz();
-            lstImplantateRef.CollectionChanged += (x, y) => RegisterRefreshers();
-        }
-
-        private void RegisterRefreshers()
-        {
-            foreach (var item in lstImplantateRef)
-            {
-                item.PropertyChanged -= (x, y) => RefreshEssenz();
-                item.PropertyChanged += (x, y) => RefreshEssenz();
-            }
-            RefreshEssenz();
-        }
-
-        protected void RefreshEssenz()
-        {
-            this.Essenz.Wert = 6;
-            this.Essenz.Wert += PersonRef.Essenz;
-            foreach (var item in lstImplantateRef)
-            {
-                this.Essenz.Wert -= item.Essenz;
-            }
-        }
-
-        protected void RefreshLimitSchaden()
-        {
-            PersonRef.Schaden_G_max = 8 + Math.Ceiling(Willen.Wert / 2);
-            PersonRef.Schaden_K_max = 8 + Math.Ceiling(Konsti.Wert / 2);
-        }
-
-        //Physical Limit: (STR x2 + BOD + REA) / 3
         public Attribut Limit_K;
-        protected void RefreshLimitK()
-        {
-            this.Limit_K.Wert = Math.Ceiling( (this.Staerke.GetValue() * 2 + this.Konsti.GetValue() + this.Reaktion.GetValue()) / 3);
-        }
-
-        //Mental Limit: (LOG x2 + INT +WIL) / 3
         public Attribut Limit_G;
-        protected void RefreshLimitG()
-        {
-            this.Limit_G.Wert = Math.Ceiling((this.Logik.GetValue() * 2 + this.Intuition.GetValue() + this.Willen.GetValue()) / 3);
-        }
-        //Social Limit: (CHA x2 + WIL + Essence) /3
         public Attribut Limit_S;
-        protected void RefreshLimitS()
-        {
-            this.Limit_S.Wert = Math.Ceiling((this.Charisma.GetValue() * 2 + this.Willen.GetValue() + this.Essenz.GetValue()) / 3);
-        }
 
         ThingListEntry MI_Konsti;
         ThingListEntry MI_Geschick;
@@ -99,9 +42,15 @@ namespace ShadowRunHelper.CharController
         ThingListEntry MI_Limit_K;
         ThingListEntry MI_Limit_G;
         ThingListEntry MI_Limit_S;
+
+        Person PersonRef;
+        ObservableCollection<Implantat> lstImplantateRef;
+        // Variable Logik Stuff ###########################
+        bool m_MutexDataColectionChange = false;
+
+        // Start Stuff ########################################################
         public cAttributController()
         {
-            this.eDataTyp = ThingDefs.Attribut;
             var res = ResourceLoader.GetForCurrentView();
 
             Konsti = new Attribut();
@@ -154,27 +103,62 @@ namespace ShadowRunHelper.CharController
             Data.CollectionChanged += Data_CollectionChanged;
             RefreshDataList();
         }
-        bool m_MutexDataColectionChange = false;
-        private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+
+        public void SetDependencies(Person p, ObservableCollection<Implantat> i)
         {
-            if (!m_MutexDataColectionChange && e.Action == NotifyCollectionChangedAction.Add && Data.Count >= 12)
+            PersonRef = p;
+            lstImplantateRef = i;
+            PersonRef.PropertyChanged += (x, y) => RefreshEssenz();
+            lstImplantateRef.CollectionChanged += (x, y) => RegisterRefreshers();
+        }
+
+        private void RegisterRefreshers()
+        {
+            foreach (var item in lstImplantateRef)
             {
-                m_MutexDataColectionChange = true;
-                RefreshDataList();
-                m_MutexDataColectionChange = false;
+                item.PropertyChanged -= (x, y) => RefreshEssenz();
+                item.PropertyChanged += (x, y) => RefreshEssenz();
+            }
+            RefreshEssenz();
+        }
+
+        // Refresh Stuff ######################################################
+        protected void RefreshEssenz()
+        {
+            this.Essenz.Wert = 6;
+            this.Essenz.Wert += PersonRef.Essenz;
+            foreach (var item in lstImplantateRef)
+            {
+                this.Essenz.Wert -= item.Essenz;
             }
         }
 
-        public new Attribut AddNewThing()
+        protected void RefreshLimitSchaden()
         {
-            RefreshDataList();
-            return null;
-        }
-        public new void RemoveThing(Attribut tRem)
-        {
-            RefreshDataList();
+            PersonRef.Schaden_G_max = 8 + Math.Ceiling(Willen.Wert / 2);
+            PersonRef.Schaden_K_max = 8 + Math.Ceiling(Konsti.Wert / 2);
         }
 
+        //Physical Limit: (STR x2 + BOD + REA) / 3
+        protected void RefreshLimitK()
+        {
+            this.Limit_K.Wert = Math.Ceiling( (this.Staerke.GetValue() * 2 + this.Konsti.GetValue() + this.Reaktion.GetValue()) / 3);
+        }
+
+        //Mental Limit: (LOG x2 + INT +WIL) / 3
+
+        protected void RefreshLimitG()
+        {
+            this.Limit_G.Wert = Math.Ceiling((this.Logik.GetValue() * 2 + this.Intuition.GetValue() + this.Willen.GetValue()) / 3);
+        }
+        //Social Limit: (CHA x2 + WIL + Essence) /3
+
+        protected void RefreshLimitS()
+        {
+            this.Limit_S.Wert = Math.Ceiling((this.Charisma.GetValue() * 2 + this.Willen.GetValue() + this.Essenz.GetValue()) / 3);
+        }
+
+        // DataList Handling ##############################
         private void RefreshDataList()
         {
             Data.Clear();
@@ -191,7 +175,26 @@ namespace ShadowRunHelper.CharController
             Data.Add(Limit_G);
             Data.Add(Limit_S);
         }
+        private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (!m_MutexDataColectionChange && e.Action == NotifyCollectionChangedAction.Add && Data.Count >= 12)
+            {
+                m_MutexDataColectionChange = true;
+                RefreshDataList();
+                m_MutexDataColectionChange = false;
+            }
+        }
+        public new Attribut AddNewThing()
+        {
+            RefreshDataList();
+            return null;
+        }
+        public new void RemoveThing(Attribut tRem)
+        {
+            RefreshDataList();
+        }
 
+        // Implement IController ##########################
         public new List<ThingListEntry> GetElementsForThingList()
         {
             var lstReturn = new List<ThingListEntry>();

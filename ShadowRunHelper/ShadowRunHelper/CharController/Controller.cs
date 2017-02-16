@@ -12,7 +12,7 @@ namespace ShadowRunHelper.CharController
         /// GUI-Binding Target
         /// </summary>
         public ObservableCollection<T> Data { get; protected set; }
-        public ThingDefs eDataTyp { get; protected set; }
+        public readonly ThingDefs eDataTyp;
 
         public T AddNewThing()
         {

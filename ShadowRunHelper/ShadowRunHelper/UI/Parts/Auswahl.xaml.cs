@@ -28,9 +28,13 @@ namespace ShadowRunHelper
             {
                 throw new ArgumentNullException(ExceptionMessages.AllListChooser_AllList_Empty);
             }
+            if (data == null)
+            {
+                throw new System.ArgumentNullException(ExceptionMessages.AllListChooser_Data_Null);
+            }
 
             lstThings = i_lstAll;
-            lstZusammensetzung = data ?? throw new System.ArgumentNullException(ExceptionMessages.AllListChooser_Data_Null);
+            lstZusammensetzung = data;
 
             List<ThingDefs> Einzahl = new List<ThingDefs>(new ThingDefs[] { ThingDefs.Attribut, ThingDefs.CyberDeck, ThingDefs.Fernkampfwaffe, ThingDefs.Kommlink, ThingDefs.Nachteil, ThingDefs.Panzerung, ThingDefs.Vehikel});
                 ObservableCollection<List<ThingListEntry>> groups = new ObservableCollection<List<ThingListEntry>>();

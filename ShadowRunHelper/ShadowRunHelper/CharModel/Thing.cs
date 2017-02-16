@@ -96,7 +96,7 @@ namespace ShadowRunHelper.CharModel
         public List<KeyValuePair<string, double>> Value
         {
             get { return GetValueList(); }
-            set {            }
+            private set {            }
         }
         
         public virtual double GetValue([CallerMemberNameAttribute] string ID = "")

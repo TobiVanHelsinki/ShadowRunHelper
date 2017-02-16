@@ -84,8 +84,10 @@ namespace ShadowRunHelper.IO
                 res.GetString("Notification_Error_Loader_Error1/Text")+
                 "ErrorContextData: " + a.ErrorContext.Error.Data +
                 "CurrentObject: " + a.CurrentObject+
-                "OriginalObject: " + a.ErrorContext.OriginalObject
+                "OriginalObject: " + a.ErrorContext.OriginalObject+
+                "Path: " + a.ErrorContext.Path
                 ));
+            a.ErrorContext.Handled = true;
         }
 
         private static CharHolder String_to_Char(string fileContent)
