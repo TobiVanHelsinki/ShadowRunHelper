@@ -28,6 +28,7 @@ namespace ShadowRunHelper.CharController
         public Attribut Limit_K;
         public Attribut Limit_G;
         public Attribut Limit_S;
+        public Attribut Magie;
 
         ThingListEntry MI_Konsti;
         ThingListEntry MI_Geschick;
@@ -42,6 +43,7 @@ namespace ShadowRunHelper.CharController
         ThingListEntry MI_Limit_K;
         ThingListEntry MI_Limit_G;
         ThingListEntry MI_Limit_S;
+        ThingListEntry MI_Magie;
 
         Person PersonRef;
         ObservableCollection<Implantat> lstImplantateRef;
@@ -51,33 +53,20 @@ namespace ShadowRunHelper.CharController
         // Start Stuff ########################################################
         public cAttributController()
         {
-            var res = ResourceLoader.GetForCurrentView();
-
             Konsti = new Attribut();
-            Konsti.Bezeichner = res.GetString("Model_Attribut_Konsti/Text");
             Geschick = new Attribut();
-            Geschick.Bezeichner = res.GetString("Model_Attribut_Geschick/Text");
             Reaktion = new Attribut();
-            Reaktion.Bezeichner = res.GetString("Model_Attribut_Reaktion/Text");
             Staerke = new Attribut();
-            Staerke.Bezeichner = res.GetString("Model_Attribut_Staerke/Text");
             Charisma = new Attribut();
-            Charisma.Bezeichner = res.GetString("Model_Attribut_Charisma/Text");
             Logik = new Attribut();
-            Logik.Bezeichner = res.GetString("Model_Attribut_Logik/Text");
             Intuition = new Attribut();
-            Intuition.Bezeichner = res.GetString("Model_Attribut_Intuition/Text");
             Willen = new Attribut();
-            Willen.Bezeichner = res.GetString("Model_Attribut_Willen/Text");
             Essenz = new Attribut();
-            Essenz.Bezeichner = res.GetString("Model_Attribut_Essenz/Text");
             Limit_K = new Attribut();
-            Limit_K.Bezeichner = res.GetString("Model_Attribut_Limit_K/Text");
             Limit_G = new Attribut();
-            Limit_G.Bezeichner = res.GetString("Model_Attribut_Limit_G/Text");
             Limit_S = new Attribut();
-            Limit_S.Bezeichner = res.GetString("Model_Attribut_Limit_S/Text");
-
+            Magie = new Attribut();
+            RefreshBezeichner();
             MI_Konsti = new ThingListEntry(Konsti, "");
             MI_Geschick = new ThingListEntry(Geschick, "");
             MI_Reaktion = new ThingListEntry(Reaktion, "");
@@ -90,6 +79,7 @@ namespace ShadowRunHelper.CharController
             MI_Limit_K = new ThingListEntry(Limit_K, "");
             MI_Limit_G = new ThingListEntry(Limit_G, "");
             MI_Limit_S = new ThingListEntry(Limit_S, "");
+            MI_Magie= new ThingListEntry(Magie, "");
 
             Konsti.PropertyChanged += (x, y) => RefreshLimitK();
             Reaktion.PropertyChanged += (x, y) => RefreshLimitK();
@@ -102,6 +92,24 @@ namespace ShadowRunHelper.CharController
             Data = new ObservableCollection<Attribut>();
             Data.CollectionChanged += Data_CollectionChanged;
             RefreshDataList();
+        }
+
+        private void RefreshBezeichner()
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            Konsti.Bezeichner = res.GetString("Model_Attribut_Konsti/Text");
+            Geschick.Bezeichner = res.GetString("Model_Attribut_Geschick/Text");
+            Reaktion.Bezeichner = res.GetString("Model_Attribut_Reaktion/Text");
+            Staerke.Bezeichner = res.GetString("Model_Attribut_Staerke/Text");
+            Charisma.Bezeichner = res.GetString("Model_Attribut_Charisma/Text");
+            Logik.Bezeichner = res.GetString("Model_Attribut_Logik/Text");
+            Intuition.Bezeichner = res.GetString("Model_Attribut_Intuition/Text");
+            Willen.Bezeichner = res.GetString("Model_Attribut_Willen/Text");
+            Essenz.Bezeichner = res.GetString("Model_Attribut_Essenz/Text");
+            Limit_K.Bezeichner = res.GetString("Model_Attribut_Limit_K/Text");
+            Limit_G.Bezeichner = res.GetString("Model_Attribut_Limit_G/Text");
+            Limit_S.Bezeichner = res.GetString("Model_Attribut_Limit_S/Text");
+            Magie.Bezeichner = res.GetString("Model_Attribut_Magie/Text");
         }
 
         public void SetDependencies(Person p, ObservableCollection<Implantat> i)
@@ -161,6 +169,7 @@ namespace ShadowRunHelper.CharController
         // DataList Handling ##############################
         private void RefreshDataList()
         {
+            RefreshBezeichner();
             Data.Clear();
             Data.Add(Charisma);
             Data.Add(Konsti);
@@ -174,6 +183,7 @@ namespace ShadowRunHelper.CharController
             Data.Add(Limit_K);
             Data.Add(Limit_G);
             Data.Add(Limit_S);
+            Data.Add(Magie);
         }
         private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -183,15 +193,6 @@ namespace ShadowRunHelper.CharController
                 RefreshDataList();
                 m_MutexDataColectionChange = false;
             }
-        }
-        public new Attribut AddNewThing()
-        {
-            RefreshDataList();
-            return null;
-        }
-        public new void RemoveThing(Attribut tRem)
-        {
-            RefreshDataList();
         }
 
         // Implement IController ##########################
@@ -210,6 +211,7 @@ namespace ShadowRunHelper.CharController
             lstReturn.Add(MI_Limit_K);
             lstReturn.Add(MI_Limit_G);
             lstReturn.Add(MI_Limit_S);
+            lstReturn.Add(MI_Magie);
             return lstReturn;
         }
 

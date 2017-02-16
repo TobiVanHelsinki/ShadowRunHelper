@@ -68,9 +68,9 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Connection_Einfluss" Grid.Column="0" Grid.Row="0"/>
-                    <TextBox Name="Wert" Text="{x:Bind Wert, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBox Text="{x:Bind Einfluss, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
                     <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Connection_Loyal" Grid.Column="2" Grid.Row="0"/>
-                    <TextBox Name="Loyal" Text="{x:Bind Loyal, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="0"/>
+                    <TextBox Text="{x:Bind Loyal, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="0"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">

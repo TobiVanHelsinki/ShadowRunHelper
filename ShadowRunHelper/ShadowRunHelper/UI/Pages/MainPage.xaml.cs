@@ -5,7 +5,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.Specialized;
 using Windows.UI.Popups;
-using Windows.ApplicationModel.Resources;
+using Windows.UI.Xaml.Media;
+using Windows.UI;
 
 // Die Vorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 dokumentiert.
 
@@ -236,6 +237,22 @@ namespace ShadowRunHelper
                 return;
             }
             CurrentDeck.dSchaden = XAML_Header_Schaden_M_Slider.Value;
+            if (CurrentDeck.dSchaden <= 3)
+            {
+                XAML_Header_Schaden_M_Slider.Foreground = new SolidColorBrush(Colors.Green);
+            }
+            else if (CurrentDeck.dSchaden <= 7)
+            {
+                XAML_Header_Schaden_M_Slider.Foreground = new SolidColorBrush(Colors.Yellow);
+            }
+            else if (CurrentDeck.dSchaden <= 10)
+            {
+                XAML_Header_Schaden_M_Slider.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                XAML_Header_Schaden_M_Slider.Foreground = new SolidColorBrush(Colors.Black);
+            }
         }
     }
 }
