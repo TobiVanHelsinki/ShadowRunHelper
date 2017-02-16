@@ -40,6 +40,12 @@ namespace ShadowRunHelper
         Vehikel = 16,
         Panzerung = 17,
         Eigenschaft = 18,
+        Adeptenkraft_KomplexeForm = 19,
+        Geist_Sprite = 20,
+        Foki_Widgets = 21,
+        Strömung_Wandlung = 22,
+        Tradition_Initiation = 23,
+        Zaubersprüche = 24,
     }
 
     public static class TypenHelper

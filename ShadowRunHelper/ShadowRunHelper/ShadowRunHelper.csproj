@@ -126,6 +126,12 @@
     <Compile Include="CharController\CyberDeck.cs" />
     <Compile Include="CharController\Controller.cs" />
     <Compile Include="CharController\Attribut.cs" />
+    <Compile Include="CharModel\Zaubersprüche.cs" />
+    <Compile Include="CharModel\Strömung_Wandlung.cs" />
+    <Compile Include="CharModel\Tradition_Initiation.cs" />
+    <Compile Include="CharModel\Foki_Widgets.cs" />
+    <Compile Include="CharModel\Geist_Sprite.cs" />
+    <Compile Include="CharModel\Adeptenkraft_KomplexeForm.cs" />
     <Compile Include="CharModel\CyberDeck.cs" />
     <Compile Include="CharModel\Attribut.cs" />
     <Compile Include="CharModel\Connection.cs" />
