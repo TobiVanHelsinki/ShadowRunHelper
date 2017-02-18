@@ -78,6 +78,7 @@ namespace ShadowRunHelper.CharModel
                 if (value != this.karma_Gesamt)
                 {
                     this.karma_Gesamt = value;
+                    this.Strassenruf = 0;
                     NotifyPropertyChanged();
                 }
             }
@@ -395,19 +396,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        double _Strassenruf = 0;
-        public double Strassenruf
-        {
-            get { return _Strassenruf; }
-            private set
-            {
-                if (value != this._Strassenruf)
-                {
-                    this._Strassenruf = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
+
         double _StrassenrufMod = 0;
         public double StrassenrufMod
         {
@@ -417,7 +406,18 @@ namespace ShadowRunHelper.CharModel
                 if (value != this._StrassenrufMod)
                 {
                     this._StrassenrufMod = value;
-                    this.Strassenruf = Math.Floor(this.karma_Gesamt / 10) + _StrassenrufMod;
+                    this.Strassenruf = 0;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        public double Strassenruf
+        {
+            get { return Math.Floor(this.karma_Gesamt / 10) + _StrassenrufMod; }
+            set
+            {
+                if (value != this.Strassenruf)
+                {
                     NotifyPropertyChanged();
                 }
             }
@@ -490,11 +490,6 @@ namespace ShadowRunHelper.CharModel
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Person()
-        {
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
