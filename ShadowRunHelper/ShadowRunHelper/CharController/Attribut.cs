@@ -29,6 +29,7 @@ namespace ShadowRunHelper.CharController
         public Attribut Limit_G;
         public Attribut Limit_S;
         public Attribut Magie;
+        public Attribut Resonanz;
 
         ThingListEntry MI_Konsti;
         ThingListEntry MI_Geschick;
@@ -44,6 +45,7 @@ namespace ShadowRunHelper.CharController
         ThingListEntry MI_Limit_G;
         ThingListEntry MI_Limit_S;
         ThingListEntry MI_Magie;
+        ThingListEntry MI_Resonanz;
 
         Person PersonRef;
         ObservableCollection<Implantat> lstImplantateRef;
@@ -66,6 +68,7 @@ namespace ShadowRunHelper.CharController
             Limit_G = new Attribut();
             Limit_S = new Attribut();
             Magie = new Attribut();
+            Resonanz = new Attribut();
             RefreshBezeichner();
             MI_Konsti = new ThingListEntry(Konsti, "");
             MI_Geschick = new ThingListEntry(Geschick, "");
@@ -80,6 +83,7 @@ namespace ShadowRunHelper.CharController
             MI_Limit_G = new ThingListEntry(Limit_G, "");
             MI_Limit_S = new ThingListEntry(Limit_S, "");
             MI_Magie= new ThingListEntry(Magie, "");
+            MI_Resonanz= new ThingListEntry(Resonanz, "");
 
             Konsti.PropertyChanged += (x, y) => RefreshLimitK();
             Reaktion.PropertyChanged += (x, y) => RefreshLimitK();
@@ -110,6 +114,7 @@ namespace ShadowRunHelper.CharController
             Limit_G.Bezeichner = res.GetString("Model_Attribut_Limit_G/Text");
             Limit_S.Bezeichner = res.GetString("Model_Attribut_Limit_S/Text");
             Magie.Bezeichner = res.GetString("Model_Attribut_Magie/Text");
+            Resonanz.Bezeichner = res.GetString("Model_Attribut_Resonanz/Text");
         }
 
         public void SetDependencies(Person p, ObservableCollection<Implantat> i)
@@ -184,6 +189,7 @@ namespace ShadowRunHelper.CharController
             Data.Add(Limit_G);
             Data.Add(Limit_S);
             Data.Add(Magie);
+            Data.Add(Resonanz);
         }
         private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -212,6 +218,7 @@ namespace ShadowRunHelper.CharController
             lstReturn.Add(MI_Limit_G);
             lstReturn.Add(MI_Limit_S);
             lstReturn.Add(MI_Magie);
+            lstReturn.Add(MI_Resonanz);
             return lstReturn;
         }
 

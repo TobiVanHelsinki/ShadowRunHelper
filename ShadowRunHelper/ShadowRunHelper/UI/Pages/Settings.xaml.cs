@@ -11,6 +11,8 @@ namespace ShadowRunHelper
     public sealed partial class Settings : Page
     {
         private ViewModel_Settings Optionen = new ViewModel_Settings();
+        private readonly string AppVersionBuild = Konstanten.APP_VERSION_BUILD_DELIM;
+        //private readonly string AppVersionNumber = Konstanten.APP_VERSION_NUMBER;
 
         bool OrdnerModeGeladen = false;
 

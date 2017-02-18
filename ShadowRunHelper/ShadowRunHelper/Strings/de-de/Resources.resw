@@ -782,4 +782,88 @@
   <data name="Model_Attribut_Magie.Text" xml:space="preserve">
     <value>Magie</value>
   </data>
+  <data name="Model_Adeptenkraft_KomplexeFormM_.Text" xml:space="preserve">
+    <value>Adeptenkräfte/Komplexe Formen</value>
+  </data>
+  <data name="Model_Adeptenkraft_KomplexeForm_.Text" xml:space="preserve">
+    <value>Adeptenkraft/Komplexe Form</value>
+  </data>
+  <data name="Model_Adeptenkraft_KomplexeForm_Option.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="Model_Attribut_Resonanz.Text" xml:space="preserve">
+    <value>Resonanz</value>
+  </data>
+  <data name="Model_Foki_WidgetsM_.Text" xml:space="preserve">
+    <value>Foki/Widgets</value>
+  </data>
+  <data name="Model_Foki_Widgets_.Text" xml:space="preserve">
+    <value>Foki/Widgets</value>
+  </data>
+  <data name="Model_Geist_SpriteM_.Text" xml:space="preserve">
+    <value>Geister/Sprites</value>
+  </data>
+  <data name="Model_Geist_Sprite_.Text" xml:space="preserve">
+    <value>Geist/Sprite</value>
+  </data>
+  <data name="Model_Geist_Sprite_Dienste.Text" xml:space="preserve">
+    <value>Dienste</value>
+  </data>
+  <data name="Model_Geist_Sprite_Geb_Reg.Text" xml:space="preserve">
+    <value>Geb/Reg</value>
+  </data>
+  <data name="Model_Strömung_WandlungM_.Text" xml:space="preserve">
+    <value>Strömungen/Wandlungen</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_.Text" xml:space="preserve">
+    <value>Strömung/Wandlung</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_Echos.Text" xml:space="preserve">
+    <value>Echos</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_Paragon.Text" xml:space="preserve">
+    <value>Paragon</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_Wert.Text" xml:space="preserve">
+    <value>Grad</value>
+  </data>
+  <data name="Model_Tradition_InitiationM_.Text" xml:space="preserve">
+    <value>Traditionen/Initiationen</value>
+  </data>
+  <data name="Model_Tradition_Initiation_.Text" xml:space="preserve">
+    <value>Tradition/Initiation</value>
+  </data>
+  <data name="Model_Tradition_Initiation_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Tradition_Initiation_Metamagie.Text" xml:space="preserve">
+    <value>Metamagie</value>
+  </data>
+  <data name="Model_Tradition_Initiation_Schutzpatron.Text" xml:space="preserve">
+    <value>Schutzpatron</value>
+  </data>
+  <data name="Model_Tradition_Initiation_Wert.Text" xml:space="preserve">
+    <value>Grad</value>
+  </data>
+  <data name="Model_ZaubersprücheM_.Text" xml:space="preserve">
+    <value>Zaubersprüche</value>
+  </data>
+  <data name="Model_Zaubersprüche_.Text" xml:space="preserve">
+    <value>Zauberspruch</value>
+  </data>
+  <data name="Model_Zaubersprüche_Dauer.Text" xml:space="preserve">
+    <value>Dauer</value>
+  </data>
+  <data name="Model_Zaubersprüche_Entzug.Text" xml:space="preserve">
+    <value>Entzug</value>
+  </data>
+  <data name="Model_Zaubersprüche_Reichweite.Text" xml:space="preserve">
+    <value>Reichweite</value>
+  </data>
+  <data name="UI_Optionen_Version.Text" xml:space="preserve">
+    <value>Version</value>
+  </data>
 </root>

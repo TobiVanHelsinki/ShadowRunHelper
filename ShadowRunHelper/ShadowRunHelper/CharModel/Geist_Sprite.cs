@@ -1,7 +1,11 @@
 ﻿
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Windows.ApplicationModel.Resources;
+
 namespace ShadowRunHelper.CharModel
 {
-    class Geist_Sprite : Thing
+    public class Geist_Sprite : Item
     {
         string _Dienste = "";
         public string Dienste
@@ -33,6 +37,73 @@ namespace ShadowRunHelper.CharModel
         public Geist_Sprite()
         {
             this.ThingType = ThingDefs.Geist_Sprite;
+        }
+
+
+        public override double GetValue([CallerMemberName] string ID = "")
+        {
+            return base.GetValue(ID);
+        }
+        public override Thing Copy(ref Thing target)
+        {
+            if (target == null)
+            {
+                target = new Item();
+            }
+            base.Copy(ref target);
+            Geist_Sprite TargetS = (Geist_Sprite)target;
+            TargetS.Dienste = Dienste;
+            TargetS.Geb_Reg = Geb_Reg;
+            return target;
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+            Dienste = "";
+            Geb_Reg = false;
+        }
+
+
+        public override string ToCSV(string Delimiter)
+        {
+            string strReturn = base.ToCSV(Delimiter);
+            strReturn += Dienste;
+            strReturn += Delimiter;
+            strReturn += Geb_Reg;
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
+        public override string HeaderToCSV(string Delimiter)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            string strReturn = base.HeaderToCSV(Delimiter);
+            strReturn += res.GetString("Model_Geist_Sprite_Dienste/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Geist_Sprite_Geb_Reg/Text");
+            strReturn += Delimiter;
+            return strReturn;
+        }
+
+
+        public override void FromCSV(Dictionary<string, string> dic)
+        {
+            var res = ResourceLoader.GetForCurrentView();
+            base.FromCSV(dic);
+            foreach (var item in dic)
+            {
+                if (item.Key == res.GetString("Model_Geist_Sprite_Dienste/Text"))
+                {
+                    this.Dienste = (item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_Geist_Sprite_Geb_Reg/Text"))
+                {
+                    this.Geb_Reg = bool.Parse(item.Value);
+                    continue;
+                }
+            }
         }
     }
 }

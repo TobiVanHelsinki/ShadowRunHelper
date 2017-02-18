@@ -53,7 +53,10 @@ namespace ShadowRunHelper
                     {
                         info.Add(item);
                     }
-                    groups.Add(info);
+                    if (info.Count != 0)
+                    {
+                        groups.Add(info);
+                    }
                 }
             }
             InitializeComponent();

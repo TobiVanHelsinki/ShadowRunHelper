@@ -15,6 +15,14 @@ namespace ShadowRunHelper.IO
         Local = 3,
     }
 
+    enum SaveType
+    {
+        Unknown = 0,
+        Manually = 1,
+        Auto = 2,
+        Emergency = 3
+    }
+
     internal static class CharIO
     {
         internal async static Task<string> GetCurrentSavePath()
@@ -52,13 +60,29 @@ namespace ShadowRunHelper.IO
             return await CharIO.LoadCharFromFile(file);
         }
 
-        internal static async Task SaveCharAtCurrentPlace(CharHolder SaveChar)
+        internal static async Task SaveCharAtCurrentPlace(CharHolder SaveChar, SaveType eSaveType = SaveType.Unknown)
         {
             if (SaveChar == null)
             {
                 throw new ArgumentNullException("Char was Empty");
             }
-            StorageFile Save_File = await GetFile(GetCurrentSavePlace(), SaveChar.MakeName(), await GetCurrentSavePath());
+            string strAdditionalName = "";
+            switch (eSaveType)
+            {
+                case SaveType.Unknown:
+
+                    break;
+                case SaveType.Manually:
+                    break;
+                case SaveType.Auto:
+                    break;
+                case SaveType.Emergency:
+                    strAdditionalName = "Emergency";
+                    break;
+                default:
+                    break;
+            }
+            StorageFile Save_File = await GetFile(GetCurrentSavePlace(), SaveChar.MakeName()+ strAdditionalName, await GetCurrentSavePath());
             CharIO.SaveCharToFile(SaveChar, Save_File);
         }
 

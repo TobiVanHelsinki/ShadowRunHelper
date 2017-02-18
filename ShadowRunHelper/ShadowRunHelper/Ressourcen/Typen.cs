@@ -95,6 +95,18 @@ namespace ShadowRunHelper
                         return res.GetString("Model_Vehikel_/Text");
                     case ThingDefs.Panzerung:
                         return res.GetString("Model_Panzerung_/Text");
+                    case ThingDefs.Adeptenkraft_KomplexeForm:
+                        return res.GetString("Model_Adeptenkraft_KomplexeForm_/Text");
+                    case ThingDefs.Geist_Sprite:
+                        return res.GetString("Model_Geist_Sprite_/Text");
+                    case ThingDefs.Foki_Widgets:
+                        return res.GetString("Model_Foki_Widgets_/Text");
+                    case ThingDefs.Strömung_Wandlung:
+                        return res.GetString("Model_Strömung_Wandlung_/Text");
+                    case ThingDefs.Tradition_Initiation:
+                        return res.GetString("Model_Tradition_Initiation_/Text");
+                    case ThingDefs.Zaubersprüche:
+                        return res.GetString("Model_Zaubersprüche_/Text");
                     default:
                         break;
                 }
@@ -141,6 +153,18 @@ namespace ShadowRunHelper
                         return res.GetString("Model_VehikelM_/Text");
                     case ThingDefs.Panzerung:
                         return res.GetString("Model_PanzerungM_/Text");
+                    case ThingDefs.Adeptenkraft_KomplexeForm:
+                        return res.GetString("Model_Adeptenkraft_KomplexeFormM_/Text");
+                    case ThingDefs.Geist_Sprite:
+                        return res.GetString("Model_Geist_SpriteM_/Text");
+                    case ThingDefs.Foki_Widgets:
+                        return res.GetString("Model_Foki_WidgetsM_/Text");
+                    case ThingDefs.Strömung_Wandlung:
+                        return res.GetString("Model_Strömung_WandlungM_/Text");
+                    case ThingDefs.Tradition_Initiation:
+                        return res.GetString("Model_Tradition_InitiationM_/Text");
+                    case ThingDefs.Zaubersprüche:
+                        return res.GetString("Model_ZaubersprücheM_/Text");
                     default:
                         break;
                 }

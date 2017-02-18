@@ -102,6 +102,24 @@ namespace ShadowRunHelper.CharController
                 case "Eigenschaft":
                     this.eDataTyp = ThingDefs.Eigenschaft;
                     break;
+                case "Adeptenkraft_KomplexeForm":
+                    this.eDataTyp = ThingDefs.Adeptenkraft_KomplexeForm;
+                    break;
+                case "Foki_Widgets":
+                    this.eDataTyp = ThingDefs.Foki_Widgets;
+                    break;
+                case "Geist_Sprite":
+                    this.eDataTyp = ThingDefs.Geist_Sprite;
+                    break;
+                case "Strömung_Wandlung":
+                    this.eDataTyp = ThingDefs.Strömung_Wandlung;
+                    break;
+                case "Tradition_Initiation":
+                    this.eDataTyp = ThingDefs.Tradition_Initiation;
+                    break;
+                case "Zaubersprüche":
+                    this.eDataTyp = ThingDefs.Zaubersprüche;
+                    break;
                 default :
                     break;
             }

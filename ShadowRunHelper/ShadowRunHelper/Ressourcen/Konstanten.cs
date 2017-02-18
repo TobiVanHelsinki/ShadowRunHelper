@@ -18,7 +18,8 @@ namespace ShadowRunHelper
         /// App Versionen
         /// </summary>
         private static PackageVersion version = Package.Current.Id.Version;
-        public static string APP_VERSION_BUILD = "" + version.Build + version.Major + version.Minor + version.Revision;
+        public static string APP_VERSION_BUILD = "" + version.Major + version.Minor + version.Build + version.Revision;
+        public static string APP_VERSION_BUILD_DELIM = "" + version.Major + "." + version.Minor + "." + version.Build + "." + version.Revision;
         public const string APP_VERSION_NUMBER_1_3 = "1.3";
         public const string APP_VERSION_NUMBER_1_5 = "1.5";
         public const string APP_VERSION_NUMBER = APP_VERSION_NUMBER_1_5;

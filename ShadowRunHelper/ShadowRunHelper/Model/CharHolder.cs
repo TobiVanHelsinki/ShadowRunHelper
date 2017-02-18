@@ -4,9 +4,6 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.CharController;
-using System.Collections.ObjectModel;
-using System.Linq;
-using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.Model
 {
@@ -15,26 +12,33 @@ namespace ShadowRunHelper.Model
     /// </summary>
     public class CharHolder
     {
-        public string APP_VERSION_NUMBER = Konstanten.APP_VERSION_NUMBER_1_5;
-        public string FILE_VERSION_NUMBER = Konstanten.CHARFILE_VERSION_1_5;
-        public CharController.cController<Item> CTRLItem { get; set; }
-        public CharController.cController<Programm> CTRLProgramm { get; set; }
-        public CharController.cController<Munition> CTRLMunition { get; set; }
-        public CharController.cController<Implantat> CTRLImplantat { get; set; }
-        public CharController.cController<Vorteil> CTRLVorteil { get; set; }
-        public CharController.cController<Nachteil> CTRLNachteil { get; set; }
-        public CharController.cController<Connection> CTRLConnection { get; set; }
-        public CharController.cController<Sin> CTRLSin { get; set; }
+        public readonly string APP_VERSION_NUMBER = Konstanten.APP_VERSION_NUMBER_1_5;
+        public readonly string FILE_VERSION_NUMBER = Konstanten.CHARFILE_VERSION_1_5;
+        public cController<Item> CTRLItem { get; set; }
+        public cController<Programm> CTRLProgramm { get; set; }
+        public cController<Munition> CTRLMunition { get; set; }
+        public cController<Implantat> CTRLImplantat { get; set; }
+        public cController<Vorteil> CTRLVorteil { get; set; }
+        public cController<Nachteil> CTRLNachteil { get; set; }
+        public cController<Connection> CTRLConnection { get; set; }
+        public cController<Sin> CTRLSin { get; set; }
 
-        public CharController.cAttributController CTRLAttribut { get; set; }
-        public CharController.cNahkampfwaffeController CTRLNahkampfwaffe { get; set; }
-        public CharController.cFernkampfwaffeController CTRLFernkampfwaffe { get; set; }
-        public CharController.cKommlinkController CTRLKommlink { get; set; }
-        public CharController.cCyberDeckController CTRLCyberDeck { get; set; }
-        public CharController.cVehikelController CTRLVehikel { get; set; }
-        public CharController.cPanzerungController CTRLPanzerung { get; set; }
-        public CharController.cController<Fertigkeit> CTRLFertigkeit { get; set; }
-        public CharController.cController<Handlung> CTRLHandlung { get; set; }
+        public cController<Adeptenkraft_KomplexeForm> CTRLAdeptenkraft_KomplexeForm { get; set; }
+        public cController<Foki_Widgets> CTRLFoki_Widgets { get; set; }
+        public cController<Geist_Sprite> CTRLGeist_Sprite { get; set; }
+        public cController<Strömung_Wandlung> CTRLStrömung_Wandlung { get; set; }
+        public cController<Tradition_Initiation> CTRLTradition_Initiation { get; set; }
+        public cController<Zaubersprüche> CTRLZaubersprüche { get; set; }
+
+        public cAttributController CTRLAttribut { get; set; }
+        public cNahkampfwaffeController CTRLNahkampfwaffe { get; set; }
+        public cFernkampfwaffeController CTRLFernkampfwaffe { get; set; }
+        public cKommlinkController CTRLKommlink { get; set; }
+        public cCyberDeckController CTRLCyberDeck { get; set; }
+        public cVehikelController CTRLVehikel { get; set; }
+        public cPanzerungController CTRLPanzerung { get; set; }
+        public cController<Fertigkeit> CTRLFertigkeit { get; set; }
+        public cController<Handlung> CTRLHandlung { get; set; }
 
         [System.Runtime.Serialization.IgnoreDataMember]
         List<ThingListEntry> _lstThings;
@@ -48,30 +52,37 @@ namespace ShadowRunHelper.Model
         /// </summary>
         public CharHolder()
         {
-            CTRLFertigkeit = new CharController.cController<Fertigkeit>();
-            CTRLItem= new CharController.cController<Item>();
-            CTRLProgramm = new CharController.cController<Programm>();
-            CTRLMunition = new CharController.cController<Munition>();
-            CTRLImplantat = new CharController.cController<Implantat>();
-            CTRLVorteil = new CharController.cController<Vorteil>();
-            CTRLNachteil = new CharController.cController<Nachteil>();
-            CTRLConnection = new CharController.cController<Connection>();
-            CTRLSin = new CharController.cController<Sin>();
-            CTRLAttribut = new CharController.cAttributController();
-            CTRLNahkampfwaffe = new CharController.cNahkampfwaffeController();
-            CTRLFernkampfwaffe = new CharController.cFernkampfwaffeController();
-            CTRLKommlink = new CharController.cKommlinkController();
-            CTRLCyberDeck = new CharController.cCyberDeckController();
-            CTRLVehikel = new CharController.cVehikelController();
-            CTRLPanzerung = new CharController.cPanzerungController();
-            CTRLHandlung = new CharController.cController<Handlung>();
+            CTRLFertigkeit = new cController<Fertigkeit>();
+            CTRLItem= new cController<Item>();
+            CTRLProgramm = new cController<Programm>();
+            CTRLMunition = new cController<Munition>();
+            CTRLImplantat = new cController<Implantat>();
+            CTRLVorteil = new cController<Vorteil>();
+            CTRLNachteil = new cController<Nachteil>();
+            CTRLConnection = new cController<Connection>();
+            CTRLSin = new cController<Sin>();
+            CTRLAttribut = new cAttributController();
+            CTRLNahkampfwaffe = new cNahkampfwaffeController();
+            CTRLFernkampfwaffe = new cFernkampfwaffeController();
+            CTRLKommlink = new cKommlinkController();
+            CTRLCyberDeck = new cCyberDeckController();
+            CTRLVehikel = new cVehikelController();
+            CTRLPanzerung = new cPanzerungController();
+
+            CTRLAdeptenkraft_KomplexeForm = new cController<Adeptenkraft_KomplexeForm>();
+            CTRLFoki_Widgets = new cController<Foki_Widgets>();
+            CTRLGeist_Sprite = new cController<Geist_Sprite>();
+            CTRLStrömung_Wandlung = new cController<Strömung_Wandlung>();
+            CTRLTradition_Initiation = new cController<Tradition_Initiation>();
+            CTRLZaubersprüche = new cController<Zaubersprüche>();
+
+            CTRLHandlung = new cController<Handlung>();
             Person = new Person();
             CTRLAttribut.SetDependencies(Person, CTRLImplantat.Data);
 
             _lstThings = new List<ThingListEntry>();
             RefreshThingList();
         }
-
 
         internal Thing Add(ThingDefs thingDefs)
         {
@@ -129,6 +140,24 @@ namespace ShadowRunHelper.Model
                 case ThingDefs.Panzerung:
                     returnThing = CTRLPanzerung.AddNewThing();
                     break;
+                case ThingDefs.Adeptenkraft_KomplexeForm:
+                    returnThing = CTRLAdeptenkraft_KomplexeForm.AddNewThing();
+                    break;
+                case ThingDefs.Geist_Sprite:
+                    returnThing = CTRLGeist_Sprite.AddNewThing();
+                    break;
+                case ThingDefs.Foki_Widgets:
+                    returnThing = CTRLFoki_Widgets.AddNewThing();
+                    break;
+                case ThingDefs.Strömung_Wandlung:
+                    returnThing = CTRLStrömung_Wandlung.AddNewThing();
+                    break;
+                case ThingDefs.Tradition_Initiation:
+                    returnThing = CTRLTradition_Initiation.AddNewThing();
+                    break;
+                case ThingDefs.Zaubersprüche:
+                    returnThing = CTRLZaubersprüche.AddNewThing();
+                    break;
                 default:
                     break;
             }
@@ -158,14 +187,15 @@ namespace ShadowRunHelper.Model
             _lstThings.AddRange(CTRLNachteil.GetElementsForThingList());
             _lstThings.AddRange(CTRLConnection.GetElementsForThingList());
             _lstThings.AddRange(CTRLSin.GetElementsForThingList());
-            
-            //_lstThings.AddRange(CTRLHandlung.GetElementsForThingList()); // nötig?
-        }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            _lstThings.AddRange(CTRLAdeptenkraft_KomplexeForm.GetElementsForThingList());
+            _lstThings.AddRange(CTRLFoki_Widgets.GetElementsForThingList());
+            _lstThings.AddRange(CTRLGeist_Sprite.GetElementsForThingList());
+            _lstThings.AddRange(CTRLStrömung_Wandlung.GetElementsForThingList());
+            _lstThings.AddRange(CTRLTradition_Initiation.GetElementsForThingList());
+            _lstThings.AddRange(CTRLZaubersprüche.GetElementsForThingList());
+
+            //_lstThings.AddRange(CTRLHandlung.GetElementsForThingList()); // nötig?
         }
 
         internal void Remove(Thing tToRemove)
@@ -223,6 +253,24 @@ namespace ShadowRunHelper.Model
                 case ThingDefs.Panzerung:
                     CTRLPanzerung.RemoveThing((Panzerung)tToRemove);
                     break;
+                case ThingDefs.Adeptenkraft_KomplexeForm:
+                    CTRLAdeptenkraft_KomplexeForm.RemoveThing((Adeptenkraft_KomplexeForm)tToRemove);
+                    break;
+                case ThingDefs.Geist_Sprite:
+                    CTRLGeist_Sprite.RemoveThing((Geist_Sprite)tToRemove);
+                    break;
+                case ThingDefs.Foki_Widgets:
+                    CTRLFoki_Widgets.RemoveThing((Foki_Widgets)tToRemove);
+                    break;
+                case ThingDefs.Strömung_Wandlung:
+                    CTRLStrömung_Wandlung.RemoveThing((Strömung_Wandlung)tToRemove);
+                    break;
+                case ThingDefs.Tradition_Initiation:
+                    CTRLTradition_Initiation.RemoveThing((Tradition_Initiation)tToRemove);
+                    break;
+                case ThingDefs.Zaubersprüche:
+                    CTRLZaubersprüche.RemoveThing((Zaubersprüche)tToRemove);
+                    break;
                 default:
                     break;
             }
@@ -263,6 +311,14 @@ namespace ShadowRunHelper.Model
             lstReturn.Add( CTRLSin.MultipleCSVExport(strDelimiter, strNewLine, strNew));
             lstReturn.Add( CTRLVehikel.MultipleCSVExport(strDelimiter, strNewLine, strNew));
             lstReturn.Add( CTRLVorteil.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+
+            lstReturn.Add(CTRLAdeptenkraft_KomplexeForm.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLGeist_Sprite.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLFoki_Widgets.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLStrömung_Wandlung.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLTradition_Initiation.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLZaubersprüche.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+
             return lstReturn;
         }
 
@@ -328,12 +384,34 @@ namespace ShadowRunHelper.Model
                     break;
                 case ThingDefs.Eigenschaft:
                     break;
+                case ThingDefs.Adeptenkraft_KomplexeForm:
+                    CTRLAdeptenkraft_KomplexeForm.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Geist_Sprite:
+                    CTRLGeist_Sprite.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Foki_Widgets:
+                    CTRLFoki_Widgets.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Strömung_Wandlung:
+                    CTRLStrömung_Wandlung.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Tradition_Initiation:
+                    CTRLTradition_Initiation.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Zaubersprüche:
+                    CTRLZaubersprüche.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
                 default:
                     break;
             }
             RefreshThingList();
         }
 
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+}

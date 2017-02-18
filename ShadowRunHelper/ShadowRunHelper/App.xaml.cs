@@ -27,6 +27,11 @@ namespace ShadowRunHelper
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            UnhandledException += async (x, y) =>
+            {
+                await IO.CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar, IO.SaveType.Emergency);
+                Optionen.strLastChar = "";
+            };
 
 
             StorageFolder RoamingFolder = ApplicationData.Current.RoamingFolder;

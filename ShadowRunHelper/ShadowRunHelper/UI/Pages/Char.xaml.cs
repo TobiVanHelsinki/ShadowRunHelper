@@ -110,54 +110,6 @@ namespace ShadowRunHelper
             }
         }
 
-        private async void Attribut_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
-        {
-            string Tag = ((String)((Grid)sender).Tag);
-            if (Tag != null)
-            {
-                Thing Attribute = null;
-                switch (Tag)
-                {
-                    case "Konsti":
-                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Konsti;
-                        break;
-                    case "Reaktion":
-                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Reaktion;
-                        break;
-                    case "Intuition":
-                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Intuition;
-                        break;
-                    case "Staerke":
-                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Staerke;
-                        break;
-                    case "Willen":
-                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Willen;
-                        break;
-                    case "Logik":
-                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Logik;
-                        break;
-                    case "Geschick":
-                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Geschick;
-                        break;
-                    case "Charisma":
-                        Attribute = ViewModel.CurrentChar.CTRLAttribut.Charisma;
-                        break;
-                    default:
-                        break;
-                }
-                try
-                {
-                    if (Attribute != null)
-                    {
-                        await new Edit_Dialog(Attribute).ShowAsync();
-                    }
-                }
-                catch (Exception)
-                {
-                }
-            }
-        }
-
         private void Del_Click(object sender, RoutedEventArgs e)
         {
             if ((Thing)((Button)sender).DataContext != null)
@@ -263,6 +215,30 @@ namespace ShadowRunHelper
                 case (int)ThingDefs.Panzerung:
                     NewTemplate = PanzerungItem;
                     NewTemplateX = PanzerungItemX;
+                    break;
+                case (int)ThingDefs.Adeptenkraft_KomplexeForm:
+                    NewTemplate = Adeptenkraft_KomplexeFormItem;
+                    NewTemplateX = Adeptenkraft_KomplexeFormItemX;
+                    break;
+                case (int)ThingDefs.Geist_Sprite:
+                    NewTemplate = Geist_SpriteItem;
+                    NewTemplateX = Geist_SpriteItemX;
+                    break;
+                case (int)ThingDefs.Foki_Widgets:
+                    NewTemplate = Foki_WidgetsItem;
+                    NewTemplateX = Foki_WidgetsItemX;
+                    break;
+                case (int)ThingDefs.Strömung_Wandlung:
+                    NewTemplate = Strömung_WandlungItem;
+                    NewTemplateX = Strömung_WandlungItemX;
+                    break;
+                case (int)ThingDefs.Tradition_Initiation:
+                    NewTemplate = Tradition_InitiationItem;
+                    NewTemplateX = Tradition_InitiationItemX;
+                    break;
+                case (int)ThingDefs.Zaubersprüche:
+                    NewTemplate = ZaubersprücheItem;
+                    NewTemplateX = ZaubersprücheItemX;
                     break;
                 default:
                     return;

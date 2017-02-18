@@ -19,6 +19,8 @@
     <ScrollViewer Style="{StaticResource ScrollViewer}">
         <StackPanel>
             <TextBlock x:Uid="UI_Optionen_U_" Style="{StaticResource Überschrift1}"/>
+            <TextBlock x:Uid="UI_Optionen_Version" Style="{StaticResource Überschrift2}"/>
+            <TextBlock Text="{x:Bind AppVersionBuild}" Style="{StaticResource TextInhaltKlein}"/>
             <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource Überschrift2}"/>
             <TextBlock x:Uid="UI_Optionen_EditAfterAdd_Header" Style="{StaticResource TextInhaltKlein}"/>
             <ToggleSwitch x:Name="UI_Optionen_EditAfterAdd" x:Uid="UI_Optionen_EditAfterAdd" IsOn="{x:Bind Path=Optionen.bStartEditAfterAdd, Mode=TwoWay}"/>

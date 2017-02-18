@@ -310,6 +310,11 @@
         <Setter Property="Margin" Value="5,2,5,2"/>
         <!--<Setter Property="TextWrapping" Value="Wrap"/>-->
     </Style>
+    <Style TargetType="TextBlock" x:Key="ListView_Item_Text_Bold" BasedOn="{StaticResource ListView_Item_Text}">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <!--<Setter Property="TextWrapping" Value="Wrap"/>-->
+    </Style>
+    
     <Style TargetType="StackPanel" x:Key="ListView_Item_X_Wrap_StackPanels">
         <Setter Property="BorderThickness" Value="1,0,0,0"/>
         <Setter Property="Margin" Value="0,0,0,5"/>
