@@ -47,27 +47,10 @@
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_K" Grid.Column="0" Grid.Row="20"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_K_max" Text="{x:Bind Data.Schaden_K_max, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="21"/>
-                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_K_max" Grid.Column="0" Grid.Row="21"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
                 <TextBox Name="Schaden_G" Text="{x:Bind Data.Schaden_G, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="22"/>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_G" Grid.Column="0" Grid.Row="22"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_G_max" Text="{x:Bind Data.Schaden_G_max, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="23"/>
-                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_G_max" Grid.Column="0" Grid.Row="23"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_M" Text="{x:Bind Data.Schaden_M, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="24"/>
-                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_M" Grid.Column="0" Grid.Row="24"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_M_max" Text="{x:Bind Data.Schaden_M_max, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="25"/>
-                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_M_max" Grid.Column="0" Grid.Row="25"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-
                 <TextBox Name="Initiative" Text="{x:Bind Data.Initiative, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="26"/>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Initiative" Grid.Column="0" Grid.Row="26"/>
             </StackPanel>

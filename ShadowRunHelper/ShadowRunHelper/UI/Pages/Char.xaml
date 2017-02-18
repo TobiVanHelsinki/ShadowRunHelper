@@ -1917,6 +1917,9 @@
                             <TextBlock x:Uid="Model_Person_Augenfarbe" Grid.Column="4" Grid.Row="0"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock x:Uid="Model_Person_Haarfarbe" Grid.Column="4" Grid.Row="1"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock x:Uid="Model_Person_Hautfarbe" Grid.Column="4" Grid.Row="2"  Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock x:Uid="Model_Person_Strassenruf" Grid.Column="0" Grid.Row="4"  Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock x:Uid="Model_Person_SchlechterRuf" Grid.Column="2" Grid.Row="4"  Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock x:Uid="Model_Person_Prominenz" Grid.Column="4" Grid.Row="4"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Text="{x:Bind ViewModel.CurrentChar.Person.MetaTyp, Mode=OneWay}" Grid.Column="1" Grid.Row="0" Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Text="{x:Bind ViewModel.CurrentChar.Person.MetaTyp_sub, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Text="{x:Bind ViewModel.CurrentChar.Person.Lebesstil, Mode=OneWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
@@ -1929,6 +1932,9 @@
                             <TextBlock Text="{x:Bind ViewModel.CurrentChar.Person.Haarfarbe, Mode=OneWay}" Grid.Column="5" Grid.Row="1" Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Text="{x:Bind ViewModel.CurrentChar.Person.Hautfarbe, Mode=OneWay}" Grid.Column="5" Grid.Row="2" Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Text="{x:Bind ViewModel.CurrentChar.Person.Geburtsdatum, Mode=OneWay}" Grid.Column="5" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Text="{x:Bind ViewModel.CurrentChar.Person.Strassenruf, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Text="{x:Bind ViewModel.CurrentChar.Person.SchlechterRuf, Mode=OneWay}" Grid.Column="3" Grid.Row="4" Style="{StaticResource ListView_Item_Text}"/>
+                            <TextBlock Text="{x:Bind ViewModel.CurrentChar.Person.Prominenz, Mode=OneWay}" Grid.Column="5" Grid.Row="4" Style="{StaticResource ListView_Item_Text}"/>
 
 
                         </Grid>

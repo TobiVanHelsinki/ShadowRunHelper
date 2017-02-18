@@ -812,6 +812,21 @@
   <data name="Model_Geist_Sprite_Geb_Reg.Text" xml:space="preserve">
     <value>Geb/Reg</value>
   </data>
+  <data name="Model_Person_Geburtstag.Text" xml:space="preserve">
+    <value>Geburtstag</value>
+  </data>
+  <data name="Model_Person_Prominenz.Text" xml:space="preserve">
+    <value>Prominenz</value>
+  </data>
+  <data name="Model_Person_SchlechterRuf.Text" xml:space="preserve">
+    <value>Schlechter Ruf</value>
+  </data>
+  <data name="Model_Person_Strassenruf.Text" xml:space="preserve">
+    <value>Straßenruf</value>
+  </data>
+  <data name="Model_Person_StrassenrufMod.Text" xml:space="preserve">
+    <value>Straßenruf Mod</value>
+  </data>
   <data name="Model_Strömung_WandlungM_.Text" xml:space="preserve">
     <value>Strömungen/Wandlungen</value>
   </data>

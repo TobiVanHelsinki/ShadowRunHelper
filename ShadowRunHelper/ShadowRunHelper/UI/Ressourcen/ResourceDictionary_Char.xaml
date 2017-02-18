@@ -422,6 +422,7 @@
     <Style BasedOn="{StaticResource RelativePanel}" TargetType="RelativePanel" x:Key="Pivot_Item_RelativePanel">
     </Style>
     <Style BasedOn="{StaticResource ScrollViewer}" TargetType="ScrollViewer" x:Key="Pivot_Item_ScrollViewer">
+        <Setter Property="Padding" Value="0,0,10,5"/>
     </Style>
     <Style TargetType="StackPanel" x:Key="Pivot_Item_StackPanel">
         <Setter Property="Margin" Value="0,0,8,0"/>

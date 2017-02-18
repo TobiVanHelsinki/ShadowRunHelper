@@ -395,6 +395,61 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        double _Strassenruf = 0;
+        public double Strassenruf
+        {
+            get { return _Strassenruf; }
+            private set
+            {
+                if (value != this._Strassenruf)
+                {
+                    this._Strassenruf = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        double _StrassenrufMod = 0;
+        public double StrassenrufMod
+        {
+            get { return _StrassenrufMod; }
+            set
+            {
+                if (value != this._StrassenrufMod)
+                {
+                    this._StrassenrufMod = value;
+                    this.Strassenruf = Math.Floor(this.karma_Gesamt / 10) + _StrassenrufMod;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        double _SchlechterRuf = 0;
+        public double SchlechterRuf
+        {
+            get { return _SchlechterRuf; }
+            set
+            {
+                if (value != this._SchlechterRuf)
+                {
+                    this._SchlechterRuf = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        double _Prominenz = 0;
+        public double Prominenz
+        {
+            get { return _Prominenz; }
+            set
+            {
+                if (value != this._Prominenz)
+                {
+                    this._Prominenz = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
         private string zusammenfassung = "";
         public string Zusammenfassung
         {

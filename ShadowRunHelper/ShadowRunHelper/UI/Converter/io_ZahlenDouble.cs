@@ -15,16 +15,39 @@ namespace ShadowRunHelper.UI.Converter
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            double retvalue = 0;
-            try
+            string strOrigin = (value as string);
+            if (strOrigin == null)
             {
-                retvalue = Double.Parse((string)value); //TODO format specific?
+                return 0;
             }
-            catch (Exception)
+            string strTemp = "";
+            double dRetVal = 0;
+            strOrigin += "+";
+            foreach (char item in strOrigin)
             {
-                retvalue = 0;
+                //filter out letters or special chars
+                if (char.IsNumber(item)
+                        || char.IsDigit(item)
+                        || char.IsSeparator(item)
+                        || char.IsPunctuation(item)
+                        || item == '-' 
+                        || item == '+'
+                        )
+                {
+                    if (item == '-' || item == '+')
+                    {
+                        try
+                        {
+                            dRetVal += Double.Parse(strTemp);
+                        }
+                        catch (Exception) { }
+                        strTemp = "";
+                    }
+                    strTemp += item;
+                }
+
             }
-            return retvalue;
+            return dRetVal;
         }
         #endregion
     }
