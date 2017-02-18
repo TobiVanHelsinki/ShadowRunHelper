@@ -382,7 +382,7 @@
                             <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource ListView_Item_Buttons}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Kommlink_Attribute_o"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Kommlink_Attribute_o" TextWrapping="Wrap"/>
                             <TextBlock Style="{StaticResource ListView_Item_Text}" >
                                 <Run Text="{x:Bind Angriff_o, Mode=OneWay}"/>
                                 <Run x:Uid="Slash"/>
@@ -394,8 +394,28 @@
                             </TextBlock>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Kommlink_Attribute"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" >
+                                <Run Text="{x:Bind Angriff, Mode=OneWay}"/>
+                                <Run x:Uid="Slash"/>
+                                <Run Text="{x:Bind Schleicher, Mode=OneWay}"/>
+                                <Run x:Uid="Slash"/>
+                                <Run Text="{x:Bind Firewall, Mode=OneWay}"/>
+                                <Run x:Uid="Slash"/>
+                                <Run Text="{x:Bind Datenverarbeitung, Mode=OneWay}"/>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Kommlink_Programmanzahl"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Programmanzahl, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Kommlink_Schaden"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind dSchaden, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
                     <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">

@@ -1,1 +1,2 @@
-MainPackage=C:\Users\Tobiv\Source\Repos\ShadowRunHelper\ShadowRunHelper\ShadowRunHelper\bin\x64\Release\Upload\ShadowRunHelper_1.5.6.0_x64.appx
+MainPackage=C:\Users\Tobiv\Source\Repos\ShadowRunHelper\ShadowRunHelper\ShadowRunHelper\bin\x64\Release\Upload\ShadowRunHelper_1.5.17.0_x64.appx
+SymbolPackage=C:\Users\Tobiv\Source\Repos\ShadowRunHelper\ShadowRunHelper\ShadowRunHelper\AppPackages\ShadowRunHelper_1.5.17.0\ShadowRunHelper_1.5.17.0_x64.appxsym

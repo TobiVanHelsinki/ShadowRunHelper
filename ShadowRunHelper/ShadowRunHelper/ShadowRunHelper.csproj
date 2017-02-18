@@ -20,7 +20,7 @@
     <PackageCertificateKeyFile>ShadowRunHelper_StoreKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>079FB9ADB74B8EE303738EBC5BFDE37F0DC6423C</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
   </PropertyGroup>
