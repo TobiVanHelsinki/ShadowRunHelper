@@ -67,12 +67,25 @@ namespace ShadowRunHelper.Model
         }
 
 
+        ulong _nFileSize;
+        public ulong nFileSize
+        {
+            get { return _nFileSize; }
+            set
+            {
+                if (value != _nFileSize)
+                {
+                    _nFileSize = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
-
-        public CharSummory(string id, DateTimeOffset dateCreated)
+        public CharSummory(string id, DateTimeOffset dateCreated, ulong size = 0)
         {
             strFileName = id;
             tDateCreated = dateCreated;
+            nFileSize = size;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

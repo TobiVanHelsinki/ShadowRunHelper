@@ -14,7 +14,8 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
+//TODO vor löschen fragen
+//TODO größe der datei anzeigen ( im model schon da)
 namespace ShadowRunHelper
 {
     public sealed partial class Char_Verwaltung : Page
@@ -88,7 +89,7 @@ namespace ShadowRunHelper
 
             foreach (var item in (await GeneralIO.GetListofFiles(CharFolder, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR }))))
             {
-                lst.Add(new CharSummory(item.Name, (await item.GetBasicPropertiesAsync()).DateModified));
+                lst.Add(new CharSummory(item.Name, (await item.GetBasicPropertiesAsync()).DateModified, (await item.GetBasicPropertiesAsync()).Size));
             }
 
             foreach (var item in lst.OrderByDescending((x) => x.tDateCreated))
