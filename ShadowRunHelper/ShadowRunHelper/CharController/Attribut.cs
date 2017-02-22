@@ -24,7 +24,7 @@ namespace ShadowRunHelper.CharController
         public Attribut Intuition;
         public Attribut Willen;
         [System.Runtime.Serialization.IgnoreDataMember] //cause sometimes an very übel Bug
-        public Attribut Essenz; //TODO Essenz berechnen aus Implantaten (+ ein bonus feld?)
+        public Attribut Essenz;
         public Attribut Limit_K;
         public Attribut Limit_G;
         public Attribut Limit_S;

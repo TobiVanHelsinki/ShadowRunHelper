@@ -64,7 +64,7 @@ namespace ShadowRunHelper
         private async void Add_Click(object sender, RoutedEventArgs e)
         {
             ThingDefs Controller = 0;
-            long test = Int64.Parse((((Button)sender).Tag).ToString()); //TODO Add Tag with the correospedenting number
+            long test = Int64.Parse((((Button)sender).Tag).ToString());
             Controller = (ThingDefs)test;
             Thing newThing = null;
             try

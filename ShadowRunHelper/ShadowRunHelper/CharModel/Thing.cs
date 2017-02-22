@@ -8,6 +8,7 @@ namespace ShadowRunHelper.CharModel
 {
     public class Thing : INotifyPropertyChanged
     {
+        public const uint nThingPropertyCount = 5;
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {

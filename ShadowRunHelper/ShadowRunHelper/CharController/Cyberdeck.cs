@@ -20,7 +20,7 @@ namespace ShadowRunHelper.CharController
         public cCyberDeckController()
         {
             ActiveDeck = new CyberDeck();
-            ActiveDeck.PropertyChanged += (x, y) => RefreshOriginDeck(); //TODO check propertie
+            ActiveDeck.PropertyChanged += (x, y) => RefreshOriginDeck();
             var res = ResourceLoader.GetForCurrentView();
 
             ActiveDeck.Bezeichner = res.GetString("Model_CyberDeck__Aktiv/Text");

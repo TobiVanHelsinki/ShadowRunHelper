@@ -159,7 +159,7 @@ namespace ShadowRunHelper.CharController
                 {
                     continue;
                 }
-                if (Headar.Length < 5) //todo replace magic number with the number of thing props
+                if (Headar.Length < CharModel.Thing.nThingPropertyCount) 
                 {
                     Headar = Lines[i].Split(strDelimiter);
                     continue;

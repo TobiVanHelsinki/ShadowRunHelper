@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ShadowRunHelper.Model;
 using System;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -29,9 +30,9 @@ namespace ShadowRunHelper1_3.IO
             catch (Exception)
             {
                 tempChar = new Controller.CharHolder();
-                //TODO Message system
+                ViewModel.Instance.lstNotifications.Add(new Notification("Error at StartUp-Char-Loading"));
             }
-            
+
 
             Controller.CharHolder newChar = new Controller.CharHolder(tempChar.NahkampfwaffeController.HD_ID, tempChar.FernkampfwaffeController.HD_ID, tempChar.KommlinkController.HD_ID, tempChar.CyberDeckController.HD_ID, tempChar.VehikelController.HD_ID, tempChar.PanzerungController.HD_ID);
             //    newChar.Char_ID = tempChar.Char_ID;
