@@ -85,17 +85,18 @@ namespace ShadowRunHelper.CharController
             MI_Magie= new ThingListEntry(Magie, "");
             MI_Resonanz= new ThingListEntry(Resonanz, "");
 
-            Konsti.PropertyChanged += (x, y) => RefreshLimitK();
+            Konsti.PropertyChanged += (x, y) => { RefreshLimitK(); RefreshLimitSchaden(); };
             Reaktion.PropertyChanged += (x, y) => RefreshLimitK();
             Staerke.PropertyChanged += (x, y) => RefreshLimitK();
             Charisma.PropertyChanged += (x, y) => RefreshLimitS();
             Logik.PropertyChanged += (x, y) => RefreshLimitG();
             Intuition.PropertyChanged += (x, y) => RefreshLimitG();
-            Willen.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); };
+            Willen.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); RefreshLimitSchaden(); };
             Essenz.PropertyChanged += (x, y) => RefreshLimitS();
             Data = new ObservableCollection<Attribut>();
             Data.CollectionChanged += Data_CollectionChanged;
             RefreshDataList();
+            RefreshLimitS(); RefreshLimitG(); RefreshLimitSchaden();
         }
 
         private void RefreshBezeichner()
@@ -148,6 +149,10 @@ namespace ShadowRunHelper.CharController
 
         protected void RefreshLimitSchaden()
         {
+            if (PersonRef == null)
+            {
+                return;
+            }
             PersonRef.Schaden_G_max = 8 + Math.Ceiling(Willen.Wert / 2);
             PersonRef.Schaden_K_max = 8 + Math.Ceiling(Konsti.Wert / 2);
         }
