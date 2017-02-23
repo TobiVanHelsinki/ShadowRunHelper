@@ -17,9 +17,15 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="{x:Bind strCharSummory, Mode=OneWay}"/>
-                    <TextBlock Grid.Column="1" Text="{x:Bind tDateCreated, Mode=OneWay}"/>
+                    <TextBlock Grid.Column="1">
+                        <Run Text="{x:Bind nFileSize, Mode=OneWay, Converter={StaticResource o_FileSize}}"/>
+                        <Run x:Uid="Space"/>
+                        <Run x:Uid="Space"/>
+                    </TextBlock>
+                    <TextBlock Grid.Column="2" Text="{x:Bind tDateCreated, Mode=OneWay}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Active" x:Key="Active" x:DataType="data:CharSummory">

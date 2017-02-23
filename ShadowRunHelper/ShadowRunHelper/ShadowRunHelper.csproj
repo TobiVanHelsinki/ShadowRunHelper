@@ -215,6 +215,7 @@
     <Compile Include="Ressourcen\Exceptions.cs" />
     <Compile Include="Ressourcen\Typen.cs" />
     <Compile Include="Ressourcen\Konstanten.cs" />
+    <Compile Include="UI\Converter\o_FileSize.cs" />
     <Compile Include="UI\Converter\o_ThingList.cs" />
     <Compile Include="UI\Converter\io_GebDatum.cs" />
     <Compile Include="UI\Converter\o_ZahlenYen.cs" />
