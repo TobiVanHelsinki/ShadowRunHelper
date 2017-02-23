@@ -89,7 +89,7 @@ namespace ShadowRunHelper
             }
         }
 
-        private async void ShowError(NotifyCollectionChangedEventArgs y)
+        async void ShowError(NotifyCollectionChangedEventArgs y)
         {
             foreach (Notification item in y.NewItems)
             {

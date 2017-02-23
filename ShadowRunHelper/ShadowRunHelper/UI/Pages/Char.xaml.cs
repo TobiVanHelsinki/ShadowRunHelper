@@ -101,6 +101,15 @@ namespace ShadowRunHelper
 
         private async void Edit_Attribut(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
+            if (
+                ((Grid)sender).DataContext.Equals(ViewModel.CurrentChar.CTRLAttribut.Essenz) ||
+                ((Grid)sender).DataContext.Equals(ViewModel.CurrentChar.CTRLAttribut.Limit_K) ||
+                ((Grid)sender).DataContext.Equals(ViewModel.CurrentChar.CTRLAttribut.Limit_G) ||
+                ((Grid)sender).DataContext.Equals(ViewModel.CurrentChar.CTRLAttribut.Limit_S)
+            )
+            {
+                return;
+            }
             try
             {
                 await new Edit_Dialog(((Thing)((Grid)sender).DataContext)).ShowAsync();

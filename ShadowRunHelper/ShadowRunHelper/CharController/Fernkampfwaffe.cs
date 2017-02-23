@@ -23,7 +23,7 @@ namespace ShadowRunHelper.CharController
             ActiveItem.Bezeichner = res.GetString("Model_Fernkampfwaffe__Aktiv/Text");
             MI_Wert = new ThingListEntry(ActiveItem, res.GetString("Model_Waffe_Wert/Text"));
             MI_DK = new ThingListEntry(ActiveItem, res.GetString("Model_Waffe_PB/Text"));
-            MI_Pr = new ThingListEntry(ActiveItem, res.GetString("Model_Waffe_Pool/Text"));
+            MI_Pr = new ThingListEntry(ActiveItem, res.GetString("Model_Waffe_Präzision/Text"));
             MI_RK = new ThingListEntry(ActiveItem, res.GetString("Model_Fernkampfwaffe_Rückstoß/Text"));
 
             Data.CollectionChanged += Data_CollectionChanged;

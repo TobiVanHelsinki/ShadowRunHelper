@@ -34,6 +34,20 @@ namespace ShadowRunHelper.Model
             }
         }
 
+        CharHolder _PreDBChar;
+        public CharHolder PreDBChar
+        {
+            get { return this._PreDBChar; }
+            set
+            {
+                if (value != this._PreDBChar)
+                {
+                    this._PreDBChar = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public ObservableCollection<Notification> lstNotifications;
         
         ProjectPages CurrentPageInProgress = ProjectPages.undef;

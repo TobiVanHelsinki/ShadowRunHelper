@@ -58,6 +58,9 @@ namespace ShadowRunHelper.UI.Edit
                     break;
                 case ThingDefs.Attribut:
                     Bezeichner.IsEnabled = false;
+                    Typ.IsEnabled = false;
+                    Notiz.IsEnabled = false;
+                    Zusatz.IsEnabled = false;
                     break;
                 case ThingDefs.Nahkampfwaffe:
                     EditType.ContentTemplate = Nahkampfwaffe;

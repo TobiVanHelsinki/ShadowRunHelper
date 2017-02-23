@@ -191,7 +191,7 @@ namespace ShadowRunHelper.IO
                 temp.Anzahl = item.Anzahl;
                 temp.Besitz = item.Besitz;
                 temp.PB = item.PB;
-                temp.Pool = item.Pool;
+                temp.Präzision = item.Pool;
                 temp.Reichweite = item.Reichweite;
                 temp.SchadenTyp = item.SchadenTyp.ToString();
 
@@ -210,7 +210,7 @@ namespace ShadowRunHelper.IO
                 temp.Anzahl = item.Anzahl;
                 temp.Besitz = item.Besitz;
                 temp.PB = item.PB;
-                temp.Pool = item.Pool;
+                temp.Präzision = item.Pool;
                 temp.Modi = item.Modi;
                 temp.Rückstoß = item.Rückstoß;
                 temp.SchadenTyp = item.SchadenTyp.ToString();

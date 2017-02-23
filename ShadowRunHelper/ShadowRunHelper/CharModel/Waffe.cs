@@ -10,7 +10,7 @@ namespace ShadowRunHelper.CharModel
         /// Präzision
         /// </summary>
         private double pool = 0;
-        public double Pool
+        public double Präzision
         {
             get { return pool; }
             set
@@ -57,7 +57,7 @@ namespace ShadowRunHelper.CharModel
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
-            strReturn += Pool;
+            strReturn += Präzision;
             strReturn += Delimiter;
             strReturn += SchadenTyp;
             strReturn += Delimiter;
@@ -71,7 +71,7 @@ namespace ShadowRunHelper.CharModel
         {
             var res = ResourceLoader.GetForCurrentView();
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += res.GetString("Model_Waffe_Pool/Text");
+            strReturn += res.GetString("Model_Waffe_Präzision/Text");
             strReturn += Delimiter;
             strReturn += res.GetString("Model_Waffe_SchadenTyp/Text");
             strReturn += Delimiter;
@@ -86,9 +86,9 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == res.GetString("Model_Waffe_Pool/Text"))
+                if (item.Key == res.GetString("Model_Waffe_Präzision/Text"))
                 {
-                    Pool = double.Parse(item.Value);
+                    Präzision = double.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == res.GetString("Model_Waffe_SchadenTyp/Text"))

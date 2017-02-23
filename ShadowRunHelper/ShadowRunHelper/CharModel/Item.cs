@@ -8,7 +8,7 @@ namespace ShadowRunHelper.CharModel
     public class Item : Thing
     {
 
-        private bool? besitz = false;
+        private bool? besitz = true;
         public bool? Besitz
         {
             get { return besitz; }
@@ -34,7 +34,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double anzahl = 0;
+        private double anzahl = 1;
         public double Anzahl
         {
             get { return anzahl; }

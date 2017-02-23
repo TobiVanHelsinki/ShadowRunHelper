@@ -297,6 +297,7 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
                                                 <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
@@ -306,7 +307,7 @@
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Programmanzahl, Mode=OneWay}"/>
-                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="5">
+                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3">
                                             <Run Text="{x:Bind Firewall, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Datenverarbeitung, Mode=OneWay}"/>
                         </TextBlock>
                     </Grid>
@@ -547,6 +548,10 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Rückstoß, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_Präzision"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Präzision, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Modi"/>
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Modi, Mode=OneWay}" TextWrapping="Wrap"/>
                         </StackPanel>
@@ -605,8 +610,12 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Rückstoß"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Nahkampfwaffe_Reichweite"/>
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Reichweite, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_Präzision"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Präzision, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
                     <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">
@@ -628,10 +637,10 @@
                     <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource ListView_Item_CheckBox}"/>
                     <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <!--<ColumnDefinition Width="*"/>-->
+                            <!--<ColumnDefinition Width="2*"/>-->
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
                                                 <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
@@ -640,8 +649,8 @@
                         <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
-                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Stoß, Mode=OneWay}"/>
-                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind Notiz, Mode=OneWay}"/>
+                        <!--<TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Stoß, Mode=OneWay}"/>-->
+                        <!--<TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind Notiz, Mode=OneWay}"/>-->
                     </Grid>
                 </Grid>
             </DataTemplate>
@@ -1633,17 +1642,17 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="58"/>
                                 <ColumnDefinition Width="58"/>
-                                <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <!--<ColumnDefinition Width="*"/>-->
+                                <!--<ColumnDefinition Width="2*"/>-->
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource ListView_Item_Text}"/>
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2"  x:Uid="Model_Thing_Bezeichner"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" x:Uid="Model_Panzerung_Ballistik"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="4" x:Uid="Model_Panzerung_Stoß"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="5" x:Uid="Model_Thing_Notiz}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" x:Uid="Model_Thing_Wert"/>
+                            <!--<TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="4" x:Uid="Model_Panzerung_Stoß"/>-->
+                            <!--<TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="5" x:Uid="Model_Thing_Notiz}"/>-->
                         </Grid>
                         <ListView 
                                   ItemsSource="{x:Bind ViewModel.CurrentChar.CTRLPanzerung.Data, Mode=OneWay}" 

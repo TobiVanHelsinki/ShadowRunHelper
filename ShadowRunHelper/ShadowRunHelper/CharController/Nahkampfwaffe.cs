@@ -23,7 +23,7 @@ namespace ShadowRunHelper.CharController
             ActiveItem.Bezeichner = res.GetString("Model_Nahkampfwaffe__Aktiv/Text");
             MI_Wert = new ThingListEntry(ActiveItem, res.GetString("Model_Waffe_Wert/Text"));
             MI_DK = new ThingListEntry(ActiveItem, res.GetString("Model_Waffe_PB/Text"));
-            MI_Pr = new ThingListEntry(ActiveItem, res.GetString("Model_Waffe_Pool/Text"));
+            MI_Pr = new ThingListEntry(ActiveItem, res.GetString("Model_Waffe_Präzision/Text"));
             MI_Reich = new ThingListEntry(ActiveItem, res.GetString("Model_Nahkampfwaffe_Reichweite/Text"));
 
             Data.CollectionChanged += Data_CollectionChanged;
@@ -56,8 +56,11 @@ namespace ShadowRunHelper.CharController
         public new List<ThingListEntry> GetElementsForThingList()
         {
             List<ThingListEntry> lstReturn = new List<ThingListEntry>();
-            lstReturn.Add(MI_Reich);
+            lstReturn.Add(MI_Wert);
             lstReturn.Add(MI_DK);
+            lstReturn.Add(MI_Reich);
+            lstReturn.Add(MI_Pr);
+
             return lstReturn;
         }
     }

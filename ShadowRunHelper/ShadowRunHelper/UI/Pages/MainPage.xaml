@@ -62,7 +62,7 @@
                             </TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock x:Uid="Model_Person_Init" Style="{StaticResource Panel_Oben_Text_1}"/>
+                            <TextBlock x:Uid="Model_Person_InitiativeAktuell" Style="{StaticResource Panel_Oben_Text_1}"/>
                             <TextBlock Text="{x:Bind ViewModel.CurrentChar.Person.Initiative,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_2}"/>
                         </StackPanel>
                         <StackPanel Orientation="Vertical">

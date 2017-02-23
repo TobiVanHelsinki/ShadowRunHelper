@@ -351,8 +351,8 @@
   <data name="Model_Person_Essenz.Text" xml:space="preserve">
     <value>Essenz mod</value>
   </data>
-  <data name="Model_Person_Init.Text" xml:space="preserve">
-    <value>Initiative</value>
+  <data name="Model_Person_InitiativeAktuell.Text" xml:space="preserve">
+    <value>Aktuelle Initiative</value>
   </data>
   <data name="Model_Person_Karma.Text" xml:space="preserve">
     <value>Karma</value>
@@ -668,7 +668,7 @@
   <data name="Model_Panzerung_Kapazität.Text" xml:space="preserve">
     <value>Kapazität</value>
   </data>
-  <data name="Model_Waffe_Pool.Text" xml:space="preserve">
+  <data name="Model_Waffe_Präzision.Text" xml:space="preserve">
     <value>Präzision</value>
   </data>
   <data name="Model_CyberDeck__Aktiv.Text" xml:space="preserve">
