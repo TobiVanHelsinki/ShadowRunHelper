@@ -31,6 +31,8 @@ namespace ShadowRunHelper.UI.Converter
                     {
                         return item.strProperty;
                     }
+                case "Zusatz":
+                    return item.Object.Zusatz;
                 default:
                     return value;
             }

@@ -14,15 +14,20 @@
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Key="ThingListEntry" x:DataType="model:ThingListEntry">
-                <Grid Name="Zus_ListVIew_Stack" >
+                <Grid Name="Zus_ListVIew_Stack" Style="{StaticResource ListView_ThingList}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Bezeichner}" Grid.Column="0"/>
-                    <TextBlock x:Uid="Space" Grid.Column="1"/>
+                    <TextBlock x:Uid="Doppelpunkt" Grid.Column="1"/>
                     <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Wert}" Grid.Column="2"/>
+                    <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Zusatz}" Grid.Row="1" Grid.ColumnSpan="3"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="HandlungItem" x:DataType="CharModel:Handlung">
@@ -81,7 +86,7 @@
                         <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Wert_W"/>
                         <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Wert, Mode=OneWay}"/>
                         <Button Grid.Column="2" Grid.Row="0" x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource ListView_Item_Buttons}" Click="HandlungEditZusDialog_Click"/>
-                        <GridView Grid.Column="3" Grid.Row="0" Name="Zus_ListVIew" ItemsSource="{x:Bind WertZusammensetzung, Mode=OneWay}" ItemTemplate="{StaticResource ThingListEntry}"/>
+                        <GridView Grid.Column="3" Grid.Row="0" Name="Zus_ListVIew" ItemsSource="{x:Bind WertZusammensetzung, Mode=OneWay}" ItemTemplate="{StaticResource ThingListEntry}" ItemContainerStyle="{StaticResource ListView_ThingListContainerTemplate}"/>
                         <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Grenze"/>
                         <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Grenze, Mode=OneWay}"/>
                         <Button Grid.Column="2" Grid.Row="1" x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource ListView_Item_Buttons}" Click="HandlungEditGrenzeZusDialog_Click"/>

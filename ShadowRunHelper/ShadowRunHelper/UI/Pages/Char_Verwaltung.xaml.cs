@@ -20,7 +20,8 @@ namespace ShadowRunHelper
 {
     public sealed partial class Char_Verwaltung : Page
     {
-        ViewModel ViewModel { get; set; }
+        //ViewModel ViewModel { get; set; }
+        readonly ViewModel ViewModel = ViewModel.Instance;
         ObservableCollection<CharSummory> Summorys;
         event PropertyChangedEventHandler PropertyChanged;
         ResourceLoader res;
@@ -40,7 +41,7 @@ namespace ShadowRunHelper
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ViewModel = (ViewModel)e.Parameter;
+            //ViewModel = (ViewModel)e.Parameter;
             Summorys_Aktualisieren();
             ViewModel.PropertyChanged += (x, y) => { ChangeCurrentButtons(ViewModel.CurrentChar==null?false:true); };
             ChangeCurrentButtons(ViewModel.CurrentChar == null ? false : true);

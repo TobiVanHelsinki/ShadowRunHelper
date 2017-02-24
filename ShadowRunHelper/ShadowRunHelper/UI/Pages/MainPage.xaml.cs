@@ -17,7 +17,7 @@ namespace ShadowRunHelper
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        ViewModel ViewModel { get; set; }
+        readonly ViewModel ViewModel = ViewModel.Instance;
 
         public MainPage()
         {
@@ -27,7 +27,6 @@ namespace ShadowRunHelper
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ViewModel = (ViewModel)e.Parameter;
             ViewModel.PropertyChanged += (x, y) => ChangeUI();
             ViewModel.PropertyChanged += (x, y) => GetCurrentDeck();
             ViewModel.NavigationRequested += NavigationRequested; ;

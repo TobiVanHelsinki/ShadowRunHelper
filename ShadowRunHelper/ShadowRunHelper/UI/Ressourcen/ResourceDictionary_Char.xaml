@@ -393,8 +393,9 @@
         <Setter Property="Background" Value="Beige"/>
         <Setter Property="CanReorderItems" Value="True"/>
         <Setter Property="AllowDrop" Value="True"/>
-        <Setter Property="SelectionMode" Value="Extended"/>
+        <Setter Property="SelectionMode" Value="Multiple"/>
         <Setter Property="ItemContainerStyle" Value="{StaticResource ListViewItemStyle}"/>
+        <Setter Property="IsMultiSelectCheckBoxEnabled" Value="False"/>
     </Style>
     <Style TargetType="ListViewItem" x:Key="ListViewItemStyle">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -405,6 +406,18 @@
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="0,1,0,1"/>
         <!--<Setter Property="Background" Value="Aqua"/>-->
+    </Style>
+    <Style TargetType="Grid" x:Key="ListView_ThingList">
+        <Setter Property="Margin" Value="0"/>
+        <!--<Setter Property="Background" Value="Pink"/>-->
+    </Style>
+    <Style TargetType="GridViewItem" x:Key="ListView_ThingListContainerTemplate">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0,0,1,0"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="0,0,2,0"/>
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Width" Value="Auto" />
     </Style>
     <Style TargetType="Grid" x:Key="ListView_E">
         <Setter Property="BorderBrush" Value="Black"/>
