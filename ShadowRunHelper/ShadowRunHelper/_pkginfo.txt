@@ -1,1 +1,1 @@
-C:\Users\Tobiv\Source\Repos\ShadowRunHelper\ShadowRunHelper\ShadowRunHelper\AppPackages\ShadowRunHelper_1.5.17.0\ShadowRunHelper_1.5.17.0_x86_x64_arm.appxbundle
+C:\Users\Tobiv\Source\Repos\ShadowRunHelper\ShadowRunHelper\ShadowRunHelper\AppPackages\ShadowRunHelper_1.5.19.0\ShadowRunHelper_1.5.19.0_x86_x64_arm.appxbundle

@@ -881,4 +881,7 @@
   <data name="UI_Optionen_Version.Text" xml:space="preserve">
     <value>Version</value>
   </data>
+  <data name="Notification_Error_Unknown" xml:space="preserve">
+    <value>Ein unbekannter Fehler ist aufgetreten, ihr char wurde mit dem Prefix ''Emergency'' gespeichert</value>
+  </data>
 </root>

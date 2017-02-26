@@ -90,6 +90,7 @@
             <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Datei_Import" Icon="Download" Click="Click_Datei_Import"/>
             <AppBarButton x:Uid="UI_CharVerwaltung_Btn_CSV_Import" Icon="Download" Click="Click_CSV_Import"/>
             <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" Icon="Delete" Click="Click_Löschen_Alles"/>
+            <AppBarButton Label="Exception" Icon="Cancel" Click="Exception"/>
         </CommandBar>
     </Grid>
 </Page>

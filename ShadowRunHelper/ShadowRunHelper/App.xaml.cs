@@ -39,8 +39,12 @@ namespace ShadowRunHelper
 
         async void App_UnhandledExceptionAsync(object sender, UnhandledExceptionEventArgs e)
         {
+            e.Handled = true;
             await IO.CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar, IO.SaveType.Emergency);
             Optionen.strLastChar = "";
+            var res = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+            ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_Unknown"), e.Exception));
+            Current.Exit();
         }
 
         /// <summary>
@@ -55,7 +59,7 @@ namespace ShadowRunHelper
                 Optionen.bIsFIleInProgress = false;
                 try
                 {
-                    ViewModel.CurrentChar = await IO.CharIO.LoadCharAtCurrentPlace(Optionen.strLastChar);
+                    ViewModel.CurrentChar = await IO.CharIO.TryLoadCharAtCurrentPlace(Optionen.strLastChar);
                 }
                 catch (Exception) { }
             }

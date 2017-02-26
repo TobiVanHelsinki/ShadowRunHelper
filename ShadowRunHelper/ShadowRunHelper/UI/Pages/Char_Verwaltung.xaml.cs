@@ -303,6 +303,10 @@ namespace ShadowRunHelper
             }
         }
 
+        private void Exception(object sender, RoutedEventArgs e)
+        {
+            throw new System.Exception();
+        }
     }
 
 }

@@ -60,6 +60,12 @@ namespace ShadowRunHelper.IO
             return await CharIO.LoadCharFromFile(file);
         }
 
+        internal static async Task<CharHolder> TryLoadCharAtCurrentPlace(string strLoadChar)
+        {
+            StorageFile file = await GetFile(GetCurrentSavePlace(), strLoadChar, await GetCurrentSavePath(), null,GeneralIO.UserDecision.ThrowError);
+            return await CharIO.LoadCharFromFile(file);
+        }
+
         internal static async Task SaveCharAtCurrentPlace(CharHolder SaveChar, SaveType eSaveType = SaveType.Unknown)
         {
             if (SaveChar == null)
@@ -77,12 +83,12 @@ namespace ShadowRunHelper.IO
                 case SaveType.Auto:
                     break;
                 case SaveType.Emergency:
-                    strAdditionalName = "Emergency";
+                    strAdditionalName = "EmergencySave_";
                     break;
                 default:
                     break;
             }
-            StorageFile Save_File = await GetFile(GetCurrentSavePlace(), SaveChar.MakeName()+ strAdditionalName, await GetCurrentSavePath());
+            StorageFile Save_File = await GetFile(GetCurrentSavePlace(), strAdditionalName+SaveChar.MakeName(), await GetCurrentSavePath());
             CharIO.SaveCharToFile(SaveChar, Save_File);
         }
 

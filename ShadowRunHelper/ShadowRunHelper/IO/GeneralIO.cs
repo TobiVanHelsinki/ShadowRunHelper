@@ -32,6 +32,12 @@ namespace ShadowRunHelper.IO
             }
         }
 
+        internal enum UserDecision
+        {
+            AskUser = 0,
+            ThrowError = 1
+        }
+
         /// <summary>
         /// Extern:
         /// Action depends on the string parameters:
@@ -46,7 +52,7 @@ namespace ShadowRunHelper.IO
         /// <param name="strPath"></param>
         /// <param name="FileTypes"></param>
         /// <returns></returns>
-        internal async static Task<StorageFile> GetFile(Place ePlace, string strFileName = null, string strPath = null, List<string> FileTypes = null)
+        internal async static Task<StorageFile> GetFile(Place ePlace, string strFileName = null, string strPath = null, List<string> FileTypes = null, UserDecision eUser = UserDecision.AskUser)
         {
             switch (ePlace)
             {
@@ -87,7 +93,14 @@ namespace ShadowRunHelper.IO
                     }
                     catch (Exception)
                     {
-                        return await FilePicker(FileTypes); // get from user
+                        if (eUser == UserDecision.AskUser)
+                        {
+                            return await FilePicker(FileTypes); // get from user
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
             }
             throw new Exception("GeneralIO.GetFile.Wrong Enum Type:" + ePlace);
@@ -128,7 +141,7 @@ namespace ShadowRunHelper.IO
         /// <param name="strPath"></param>
         /// <returns></returns>
         /// <throws>ArgumentException</throws>
-        internal async static Task<StorageFolder> GetFolder(Place ePlace, string strPath = null)
+        internal async static Task<StorageFolder> GetFolder(Place ePlace, string strPath = null, UserDecision eUser = UserDecision.AskUser)
         {
             switch (ePlace)
             {
@@ -156,7 +169,14 @@ namespace ShadowRunHelper.IO
                         }
                         catch (Exception)
                         {
-                             return await FolderPicker();
+                            if (eUser == UserDecision.AskUser)
+                            {
+                                return await FolderPicker();
+                            }
+                            else
+                            {
+                                throw;
+                            }
                         }
                     }
             }
