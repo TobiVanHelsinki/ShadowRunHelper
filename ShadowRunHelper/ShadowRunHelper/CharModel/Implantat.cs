@@ -36,6 +36,19 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+        private string _Auswirkung = "";
+        public string Auswirkung
+        {
+            get { return _Auswirkung; }
+            set
+            {
+                if (value != this._Auswirkung)
+                {
+                    this._Auswirkung = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
         public Implantat()
         {
             this.ThingType = ThingDefs.Implantat;
@@ -50,6 +63,7 @@ namespace ShadowRunHelper.CharModel
             base.Copy(ref target);
             ((Implantat)target).Essenz = Essenz;
             ((Implantat)target).Kapazität = Kapazität;
+            ((Implantat)target).Auswirkung = Auswirkung;
             return target;
         }
 
@@ -67,6 +81,8 @@ namespace ShadowRunHelper.CharModel
             strReturn += Delimiter;
             strReturn += Kapazität;
             strReturn += Delimiter;
+            strReturn += Auswirkung;
+            strReturn += Delimiter;
             return strReturn;
         }
 
@@ -77,6 +93,8 @@ namespace ShadowRunHelper.CharModel
             strReturn += res.GetString("Model_Implantat_Essenz/Text");
             strReturn += Delimiter;
             strReturn += res.GetString("Model_Implantat_Kapazität/Text");
+            strReturn += Delimiter;
+            strReturn += res.GetString("Model_Implantat_Auswirkung/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -95,6 +113,11 @@ namespace ShadowRunHelper.CharModel
                 if (item.Key == res.GetString("Model_Implantat_Kapazität/Text"))
                 {
                     Kapazität = double.Parse(item.Value);
+                    continue;
+                }
+                if (item.Key == res.GetString("Model_Implantat_Auswirkung/Text"))
+                {
+                    Auswirkung = (item.Value);
                     continue;
                 }
             }

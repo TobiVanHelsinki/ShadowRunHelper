@@ -893,4 +893,10 @@
   <data name="Komma.Text" xml:space="preserve">
     <value>,</value>
   </data>
+  <data name="Model_Implantat_Auswirkung.Text" xml:space="preserve">
+    <value>Auswirkungen</value>
+  </data>
+  <data name="Model__Pool.Text" xml:space="preserve">
+    <value>Pool</value>
+  </data>
 </root>
