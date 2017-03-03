@@ -102,7 +102,7 @@ namespace ShadowRunHelper.CharModel
             var res = ResourceLoader.GetForCurrentView();
 
             List<KeyValuePair<string, double>> lst = new List<KeyValuePair<string, double>>();
-            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Thing_Wert/Text"), Wert));
+            lst.Add(new KeyValuePair<string, double>(res.GetString("Model_CyberDeck_/Text") + res.GetString("Model_Thing_Wert/Text"), Wert));
             lst.Add(new KeyValuePair<string, double>(res.GetString("Model_CyberDeck_Angriff/Text"), Angriff));
             lst.Add(new KeyValuePair<string, double>(res.GetString("Model_CyberDeck_Schleicher/Text"), Schleicher));
             lst.Add(new KeyValuePair<string, double>(res.GetString("Model_Kommlink_Firewall/Text"), Firewall));

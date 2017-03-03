@@ -17,8 +17,8 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>ShadowRunHelper_StoreKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>079FB9ADB74B8EE303738EBC5BFDE37F0DC6423C</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>ShadowRunHelper_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>BF7B5185F78484F02A90E6FEE27DD63F559E3B1C</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
@@ -98,6 +98,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Logo\BadgeLogo.scale-100.png" />
+    <Content Include="Assets\Logo\BadgeLogo.scale-125.png" />
+    <Content Include="Assets\Logo\BadgeLogo.scale-150.png" />
+    <Content Include="Assets\Logo\BadgeLogo.scale-200.png" />
+    <Content Include="Assets\Logo\BadgeLogo.scale-400.png" />
     <Content Include="Assets\Logo\Logo2.png" />
     <None Include="Dok\ClassDiagram7.cd" />
     <None Include="Dok\ClassDiagram8.cd" />
@@ -107,7 +112,6 @@
     <None Include="Dok\ClassDiagram2.cd" />
     <None Include="Dok\ClassDiagram3.cd" />
     <None Include="Dok\ClassDiagram4.cd" />
-    <None Include="ShadowRunHelper_StoreKey.pfx" />
     <None Include="ShadowRunHelper_TemporaryKey.pfx" />
     <None Include="Zusätze\Hilfe.xlsx" />
     <PRIResource Include="Legacy1\1.3\Strings\de-de\Resources.resw" />

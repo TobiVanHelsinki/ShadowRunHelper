@@ -54,14 +54,10 @@ namespace ShadowRunHelper.Model
 
         public string strDateCreated
         {
-            get {
+            get
+            {
                 return _tDateCreated.ToString(new CultureInfo("de-DE"));
-                string _strDateCreated = "";
-                if (_tDateCreated != null)
-                {
-                    _strDateCreated += " (" + _tDateCreated.Day + "." + _tDateCreated.Month + "." + _tDateCreated.Year + " " + _tDateCreated.Hour + ":" + _tDateCreated.Minute + ")";
-                }
-                return _strDateCreated; }
+            }
             private set
             {}
         }

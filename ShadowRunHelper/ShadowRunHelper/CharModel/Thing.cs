@@ -94,6 +94,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        [System.Runtime.Serialization.IgnoreDataMember]
         public List<KeyValuePair<string, double>> Value
         {
             get { return GetValueList(); }

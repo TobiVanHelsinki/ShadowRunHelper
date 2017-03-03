@@ -899,4 +899,13 @@
   <data name="Model__Pool.Text" xml:space="preserve">
     <value>Pool</value>
   </data>
+  <data name="UI_CharVerwaltung_Btn_Repair.Content" xml:space="preserve">
+    <value>Reparieren</value>
+  </data>
+  <data name="Notification_Error_RepairFail" xml:space="preserve">
+    <value>Fehler beim Reparieren.</value>
+  </data>
+  <data name="Notification_Error_SummorysREfresh" xml:space="preserve">
+    <value>Fehler beim Verzeichnis einlesen</value>
+  </data>
 </root>

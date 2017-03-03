@@ -23,13 +23,17 @@ namespace ShadowRunHelper.CharController
         public Attribut Logik;
         public Attribut Intuition;
         public Attribut Willen;
-        [System.Runtime.Serialization.IgnoreDataMember] //cause sometimes an very übel Bug
-        public Attribut Essenz;
-        public Attribut Limit_K;
-        public Attribut Limit_G;
-        public Attribut Limit_S;
         public Attribut Magie;
         public Attribut Resonanz;
+
+        [System.Runtime.Serialization.IgnoreDataMember]
+        public Attribut Essenz;
+        [System.Runtime.Serialization.IgnoreDataMember]
+        public Attribut Limit_K;
+        [System.Runtime.Serialization.IgnoreDataMember]
+        public Attribut Limit_G;
+        [System.Runtime.Serialization.IgnoreDataMember]
+        public Attribut Limit_S;
 
         ThingListEntry MI_Konsti;
         ThingListEntry MI_Geschick;
@@ -226,6 +230,5 @@ namespace ShadowRunHelper.CharController
             lstReturn.Add(MI_Resonanz);
             return lstReturn;
         }
-
     }
 }

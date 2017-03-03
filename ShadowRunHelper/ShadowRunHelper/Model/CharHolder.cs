@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.CharController;
+using System.Collections.ObjectModel;
 
 namespace ShadowRunHelper.Model
 {
@@ -412,6 +413,40 @@ namespace ShadowRunHelper.Model
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+        public void Repair()
+        {
+            RefreshThingList();
+            foreach (var item in CTRLHandlung.Data)
+            {
+                RepairThingListRefs(item.WertZusammensetzung, lstThings);
+                RepairThingListRefs(item.GegenZusammensetzung, lstThings);
+                RepairThingListRefs(item.GrenzeZusammensetzung, lstThings);
+            }
+            foreach (var item in CTRLFertigkeit.Data)
+            {
+                RepairThingListRefs(item.PoolZusammensetzung, lstThings);
+            }
+        }
+
+        private static void RepairThingListRefs(ObservableCollection<ThingListEntry> Collection, List<ThingListEntry> lstThings)
+        {
+            var templist = new ObservableCollection<ThingListEntry>();
+            foreach (var item in Collection)
+            {
+                var temp = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner && x.strProperty == item.strProperty);
+                if (temp != null)
+                {
+                    templist.Add(temp);
+                }
+            }
+            Collection.Clear();
+            foreach (var item in templist)
+            {
+                Collection.Add(item);
+            }
         }
     }
 }

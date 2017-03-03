@@ -109,6 +109,9 @@ namespace ShadowRunHelper.IO
 
         private static void ErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
         {
+#if DEBUG
+            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+#endif
             var res = ResourceLoader.GetForCurrentView();
             ViewModel.Instance.lstNotifications.Add(new Notification(
                 res.GetString("Notification_Error_Loader_Error1/Text")+

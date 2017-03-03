@@ -85,12 +85,18 @@ namespace ShadowRunHelper
         async void Summorys_Aktualisieren()
         {
             Summorys.Clear();
-            StorageFolder CharFolder = await GeneralIO.GetFolder(CharIO.GetCurrentSavePlace(), await CharIO.GetCurrentSavePath());
             List<CharSummory> lst = new List<CharSummory>();
-
-            foreach (var item in (await GeneralIO.GetListofFiles(CharFolder, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR }))))
+            try
             {
-                lst.Add(new CharSummory(item.Name, (await item.GetBasicPropertiesAsync()).DateModified, (await item.GetBasicPropertiesAsync()).Size));
+                StorageFolder CharFolder = await GeneralIO.GetFolder(CharIO.GetCurrentSavePlace(), await CharIO.GetCurrentSavePath());
+                foreach (var item in (await GeneralIO.GetListofFiles(CharFolder, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR }))))
+                {
+                    lst.Add(new CharSummory(item.Name, (await item.GetBasicPropertiesAsync()).DateModified, (await item.GetBasicPropertiesAsync()).Size));
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_SummorysREfresh"), ex));
             }
 
             foreach (var item in lst.OrderByDescending((x) => x.tDateCreated))
@@ -306,6 +312,18 @@ namespace ShadowRunHelper
         private void Exception(object sender, RoutedEventArgs e)
         {
             throw new System.Exception();
+        }
+
+        private void Click_Repair_CurrentChar(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ViewModel.CurrentChar?.Repair();
+            }
+            catch (Exception ex)
+            {
+                ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_RepairFail"), ex));
+            }
         }
     }
 

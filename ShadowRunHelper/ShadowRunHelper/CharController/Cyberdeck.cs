@@ -1,8 +1,6 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using Windows.ApplicationModel.Resources;
 
@@ -54,8 +52,6 @@ namespace ShadowRunHelper.CharController
             {
                 if (item.Aktiv == true)
                 {
-                    //item.dSchaden = ActiveDeck.dSchaden;
-                    //item.dSchadenMax = ActiveDeck.dSchadenMax;
                     item.Copy(ActiveDeck);
                     bIsRefreshInProgress = false;
                     return;
@@ -94,6 +90,5 @@ namespace ShadowRunHelper.CharController
             lstReturn.Add(MI_D);
             return lstReturn;
         }
-
     }
 }

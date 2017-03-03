@@ -98,7 +98,13 @@ namespace ShadowRunHelper.CharModel
             double temp = 0;
             foreach (ThingListEntry item in List)
             {
-                temp += item.Object.GetValue(item.strProperty);
+                try
+                {
+                    temp += item.Object.GetValue(item.strProperty);
+                }
+                catch (Exception)
+                {
+                }
             }
             return temp;
         }

@@ -558,7 +558,7 @@
                     <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource ListView_Item_Text}"/>
                     <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource ListView_Item_Text}"/>
                     <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
-                    <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource ListView_Item_Text}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Thing_WertW"  Style="{StaticResource ListView_Item_Text}"/>
                     <TextBlock Grid.Column="4" x:Uid="Model_Programm_Optionen"  Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
@@ -1113,9 +1113,7 @@
                         <Run Text="{x:Bind Wert, Mode=OneWay}" />
                         <Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                     </TextBlock>
-                    <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}" HorizontalAlignment="Right">
-                        <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
-                    </TextBlock>
+                    <TextBlock Text="{x:Bind Notiz, Mode=OneWay}" MaxLines="3" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}" HorizontalAlignment="Right"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="SinItemX" x:DataType="CharModel:Sin">
@@ -1156,15 +1154,12 @@
                 <Grid Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="10"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Style="{StaticResource ListView_Item_Text}">
                          <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                     </TextBlock>
-                    <TextBlock Grid.Column="2" Style="{StaticResource ListView_Item_Text}" HorizontalAlignment="Right">
-                       <Run Text="{x:Bind Auswirkungen, Mode=OneWay}"/>
-                    </TextBlock>
+                    <TextBlock MaxLines="4" Grid.Column="1" Text="{x:Bind Auswirkungen, Mode=OneWay}" Style="{StaticResource ListView_Item_Text_Note}" HorizontalAlignment="Right"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="EigenschaftItemX" x:DataType="CharModel:Eigenschaft">

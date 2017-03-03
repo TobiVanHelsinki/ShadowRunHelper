@@ -39,6 +39,7 @@ namespace ShadowRunHelper
 
         async void App_UnhandledExceptionAsync(object sender, UnhandledExceptionEventArgs e)
         {
+            this.UnhandledException -= App_UnhandledExceptionAsync;
             e.Handled = true;
             await IO.CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar, IO.SaveType.Emergency);
             Optionen.strLastChar = "";

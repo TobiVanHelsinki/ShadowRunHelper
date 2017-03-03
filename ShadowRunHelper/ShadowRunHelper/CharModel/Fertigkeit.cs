@@ -46,7 +46,14 @@ namespace ShadowRunHelper.CharModel
             double temp = Wert;
             foreach (ThingListEntry item in PoolZusammensetzung)
             {
-                temp += item.Object.GetValue(item.strProperty);
+
+                try
+                {
+                    temp += item.Object.GetValue(item.strProperty);
+                }
+                catch (System.Exception)
+                {
+                }
             }
             Pool = temp;
         }

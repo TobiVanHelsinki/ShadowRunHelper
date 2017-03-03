@@ -1,22 +1,53 @@
 ﻿using ShadowRunHelper.CharModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShadowRunHelper.Model
 {
     public class ThingListEntry
     {
-        public Thing Object;
-        public ThingListEntry This { get; private set; }
-        public string strProperty;
+        Thing _object;
+        public readonly Thing Object;// {
+        //    get
+        //    { return _object; }
+        //    set
+        //    {
+        //        //if (value == null)
+        //        //{
+        //            //_object = new Thing();
+
+        //        //}
+        //        //else
+        //        {
+        //            _object = value;
+        //        }
+        //         }
+        //}
+        public readonly ThingListEntry This;
+        public readonly string strProperty;
 
         public ThingListEntry(Thing o, string strPropName = "")
         {
-            Object = o;
-            strProperty = strPropName;
+            if (o == null)
+            {
+                Object = new Thing();
+            }
+            else
+            {
+                Object = o;
+            }
+            if (strPropName == null)
+            {
+                strProperty = "";
+            }
+            else
+            {
+                strProperty = strPropName;
+            }
+            This = this;
+        }
+        public ThingListEntry()
+        {
+            Object = new Thing();
+            strProperty = "";
             This = this;
         }
     }

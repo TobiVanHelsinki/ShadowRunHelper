@@ -37,7 +37,7 @@ namespace ShadowRunHelper
             lstZusammensetzung = data;
 
             List<ThingDefs> Einzahl = new List<ThingDefs>(new ThingDefs[] { ThingDefs.Attribut, ThingDefs.CyberDeck, ThingDefs.Fernkampfwaffe, ThingDefs.Kommlink, ThingDefs.Nachteil, ThingDefs.Panzerung, ThingDefs.Vehikel});
-                ObservableCollection<List<ThingListEntry>> groups = new ObservableCollection<List<ThingListEntry>>();
+            ObservableCollection<List<ThingListEntry>> groups = new ObservableCollection<List<ThingListEntry>>();
             {
                 var query = from item in lstThings
                             group item by item.Object.ThingType into g
@@ -86,7 +86,14 @@ namespace ShadowRunHelper
             {
                 var tepmindex = lstThings.FindIndex(x => (x.Object == item.Object && x.strProperty == item.strProperty));
                 Zus_ListVIew.SelectRange(new ItemIndexRange(tepmindex, 1));
+                
             }
+#if DEBUG
+            if (Zus_ListVIew.SelectedItems.Count < lstZusammensetzung.Count)
+            {
+                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+            }
+#endif
         }
 
     }

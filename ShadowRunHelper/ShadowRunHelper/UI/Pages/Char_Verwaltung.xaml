@@ -67,6 +67,7 @@
                 <Button x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Löschen" Click="Click_Löschen_CurrentChar" Style="{StaticResource Char_Control_Btn}"/>
                 <Button x:Name="CurrentCharBtn_FileExp" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Click="Click_Datei_Export_CurrentChar" Style="{StaticResource Char_Control_Btn}"/>
                 <Button x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Click="Click_CSV_Export_CurrentChar" Style="{StaticResource Char_Control_Btn}"/>
+                <Button x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Click="Click_Repair_CurrentChar" Style="{StaticResource Char_Control_Btn}"/>
             </StackPanel>
         </Grid>
         <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
