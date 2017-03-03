@@ -97,7 +97,14 @@ namespace ShadowRunHelper
                 {
                 }
             }
-            Optionen.strLastChar = ViewModel.CurrentChar.MakeName();
+            try
+            {
+                Optionen.strLastChar = ViewModel.CurrentChar.MakeName();
+            }
+            catch (Exception)
+            {
+                Optionen.strLastChar = "";
+            }
             e.SuspendingOperation.GetDeferral().Complete();
         }
 
