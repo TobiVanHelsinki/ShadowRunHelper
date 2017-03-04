@@ -4,8 +4,8 @@ namespace ShadowRunHelper.Model
 {
     public class ThingListEntry
     {
-        Thing _object;
-        public readonly Thing Object;// {
+        ////Thing _object;
+        public Thing Object;// {
         //    get
         //    { return _object; }
         //    set
@@ -21,8 +21,8 @@ namespace ShadowRunHelper.Model
         //        }
         //         }
         //}
-        public readonly ThingListEntry This;
-        public readonly string strProperty;
+        public ThingListEntry This;
+        public string strProperty;
 
         public ThingListEntry(Thing o, string strPropName = "")
         {

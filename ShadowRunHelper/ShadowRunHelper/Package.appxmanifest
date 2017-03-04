@@ -34,7 +34,7 @@
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.fileTypeAssociation" Executable="ShadowRunHelper.exe" EntryPoint="ShadowRunHelper.App">
-          <uap:FileTypeAssociation Name="shrchar">
+          <uap:FileTypeAssociation Name="srhchar">
             <uap:DisplayName>SRHChar</uap:DisplayName>
             <uap:Logo>Assets\Logo1_44x44.png</uap:Logo>
             <uap:InfoTip>Speichert einen ShadowRun Charachter</uap:InfoTip>
