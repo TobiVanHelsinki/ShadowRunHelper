@@ -15,8 +15,8 @@ namespace ShadowRunHelper.CharModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
         ThingDefs thingType = 0;
+        [Newtonsoft.Json.JsonIgnore]
         public ThingDefs ThingType
         {
             get { return thingType; }
@@ -97,12 +97,16 @@ namespace ShadowRunHelper.CharModel
         
         public double GetValue(string ID = "")
         {
+            if (ID == "")
+            {
+                return Wert;
+            }
             try
             {
-                //Type t = this.GetType();
-                //var pinfo = t.GetProperty(ID);
-                //object value = pinfo.GetValue(this);
-                //return double.Parse(value.ToString());
+                Type t = this.GetType();
+                var pinfo = t.GetProperty(ID);
+                object value = pinfo.GetValue(this);
+                return double.Parse(value.ToString());
                 return double.Parse(this.GetType().GetProperty(ID).GetValue(this).ToString());
             }
             catch (Exception)
@@ -120,7 +124,7 @@ namespace ShadowRunHelper.CharModel
             target.Bezeichner = Bezeichner;
             target.Notiz = Notiz;
             //target.Ordnung = Ordnung;
-            target.ThingType= ThingType;
+            //target.ThingType= ThingType;
             target.Typ= Typ;
             target.Wert = Wert;
             target.Zusatz = Zusatz;

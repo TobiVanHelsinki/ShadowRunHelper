@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 namespace ShadowRunHelper.Model
 {
     /// <summary>
-    /// Hält einen Char mit samst Controlern und Daten
+    /// Hält einen Char mit Controlern und Daten
     /// </summary>
     public class CharHolder
     {
@@ -45,14 +45,13 @@ namespace ShadowRunHelper.Model
         List<ThingListEntry> _lstThings;
         [Newtonsoft.Json.JsonIgnore]
         public List<ThingListEntry> lstThings { get { return _lstThings; } set { _lstThings = value; } }
-        //[Newtonsoft.Json.JsonIgnore]
         //List<cController<Thing>> lstCTRL;
             //List<cController<T>> bla, where T : Thing, new();
 
         public Person Person { get; set; }
 
         /// <summary>
-        /// Konstruktor nutzen, um neue Controller und Objekte zu erhalten
+        /// 
         /// </summary>
         public CharHolder()
         {
@@ -434,21 +433,30 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        private static void RepairThingListRefs(ObservableCollection<ThingListEntry> Collection, List<ThingListEntry> lstThings)
+        private static void RepairThingListRefs(ObservableCollection<ThingListEntry> SourceCollection, List<ThingListEntry> lstThings)
         {
-            var templist = new ObservableCollection<ThingListEntry>();
-            foreach (var item in Collection)
+            var TargetCollection = new ObservableCollection<ThingListEntry>();
+            foreach (var item in SourceCollection)
             {
-                var temp = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner && x.strProperty == item.strProperty);
-                if (temp != null)
+                ThingListEntry NewEntry;
+                NewEntry = lstThings.Find(x => x.Object.Equals(item.Object));
+                if (NewEntry == null)
                 {
-                    templist.Add(temp);
+                    NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner && x.strProperty == item.strProperty);
+                }
+                if (NewEntry == null)
+                {
+                    NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner);
+                }
+                if (NewEntry != null)
+                {
+                    TargetCollection.Add(NewEntry);
                 }
             }
-            Collection.Clear();
-            foreach (var item in templist)
+            SourceCollection.Clear();
+            foreach (var item in TargetCollection)
             {
-                Collection.Add(item);
+                SourceCollection.Add(item);
             }
         }
     }

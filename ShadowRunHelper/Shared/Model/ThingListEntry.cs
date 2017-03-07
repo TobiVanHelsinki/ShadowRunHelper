@@ -15,6 +15,7 @@ namespace ShadowRunHelper.Model
 
                 }
             } }
+        [Newtonsoft.Json.JsonIgnore]
         public readonly ThingListEntry This;
         public string strProperty;
         public string strPropertyName;

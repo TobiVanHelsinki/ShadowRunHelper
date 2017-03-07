@@ -81,22 +81,25 @@
             <DataTemplate x:Name="HandlungItemX" x:DataType="CharModel:Handlung">
                 <Grid Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Column="0"  Style="{StaticResource ListView_Item_Text}">
+                    <ContentPresenter ContentTemplate="{StaticResource VehikelItem}"/>
+
+                    <TextBlock Grid.ColumnSpan="3"  Style="{StaticResource ListView_Item_Text}">
                                                 <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
                                                 <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                     </TextBlock>
-                    <Button Grid.Column="1" x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
-                    <Button Grid.Column="2" x:Uid="UI_Btn_Loeschen" Name="Handlung_Del" Click="Del_Click" Style="{StaticResource ListView_Item_Buttons}"/>
-                    <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                    <Button Grid.Row="1" x:Uid="UI_Btn_Bearbeiten" Name="Handlung_Edit" Click="Edit_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                    <Button Grid.Row="1" Grid.Column="1" x:Uid="UI_Btn_Loeschen" Name="Handlung_Del" Click="Del_Click" Style="{StaticResource ListView_Item_Buttons}"/>
+                    <Grid Grid.Row="2" Grid.ColumnSpan="3">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -124,7 +127,7 @@
                         <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
                         <TextBlock Grid.Column="1" Grid.Row="3" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
                     </Grid>
-                    <TextBlock Grid.Row="2"  Grid.ColumnSpan="3" Style="{StaticResource ListView_Item_Text_Note}">
+                    <TextBlock Grid.Row="3"  Grid.ColumnSpan="3" Style="{StaticResource ListView_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>

@@ -27,7 +27,7 @@ namespace ShadowRunHelper.IO
         private static void ErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
         {
 #if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+            //if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
 #endif
             AppModel.Instance.lstNotifications.Add(new Notification(
                 CrossPlattformHelper.GetString("Notification_Error_Loader_Error1/Text") +
