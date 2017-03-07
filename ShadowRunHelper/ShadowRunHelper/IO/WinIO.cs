@@ -122,7 +122,7 @@ namespace ShadowRunHelper.IO
             }
             throw new Exception("GeneralIO.GetFile.Wrong Enum Type:" + ePlace);
         }
-        internal static async Task<StorageFile> FilePicker(List<string> lststrFileEndings = null)
+        public static async Task<StorageFile> FilePicker(List<string> lststrFileEndings = null)
         {
             if (lststrFileEndings == null)
             {
@@ -203,7 +203,7 @@ namespace ShadowRunHelper.IO
         /// </summary>
         /// <param name="strSuggestedStartLocation"></param>
         /// <returns></returns>
-        internal static async Task<StorageFolder> FolderPicker(List<string> lststrFileEndings = null)
+        public static async Task<StorageFolder> FolderPicker(List<string> lststrFileEndings = null)
         {
 
             try

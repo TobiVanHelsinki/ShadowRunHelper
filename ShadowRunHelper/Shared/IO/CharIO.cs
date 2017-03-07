@@ -23,8 +23,8 @@ namespace ShadowRunHelper.IO
 
     internal static class CharIO
     {
-
-        private static void ErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
+        //#####################################################################
+        private static void SerializationErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
         {
 #if DEBUG
             //if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
@@ -41,15 +41,85 @@ namespace ShadowRunHelper.IO
                 ));
             a.ErrorContext.Handled = true;
         }
+        private static string Char_to_String(CharHolder SaveChar)
+        {
 
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.MissingMemberHandling = MissingMemberHandling.Ignore;
+            //settings.NullValueHandling = NullValueHandling.Include; 
+            settings.PreserveReferencesHandling = PreserveReferencesHandling.All; //war vorher objects
+            settings.Error = SerializationErrorHandler;
+#if __ANDROID__
+            throw new NotImplementedException();
+            //return JsonConvert.SerializeObject(SaveChar, null, settings);
+#else
+            return JsonConvert.SerializeObject(SaveChar, settings);
+#endif
+        }
+
+        //#####################################################################
+        private static void DeserializationErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
+        {
+#if DEBUG
+            //if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+#endif
+            AppModel.Instance.lstNotifications.Add(new Notification(
+                CrossPlattformHelper.GetString("Notification_Error_Loader_Error1/Text") +
+                "ErrorContextData: " + a.ErrorContext.Error.Data +
+                "CurrentObject: " + a.CurrentObject +
+                "OriginalObject: " + a.ErrorContext.OriginalObject
+#if __ANDROID__
+#else
+                + "Path: " + a.ErrorContext.Path
+#endif
+                ));
+            a.ErrorContext.Handled = true;
+        }
+        private static CharHolder String_to_Char(string fileContent)
+        {
+            CharHolder ReturnCharHolder;
+            string strAppVersion = "";
+            string strFileVersion = "";
+            int nAppVersionPos = fileContent.IndexOf(Konstanten.STRING_APP_VERSION_NUMBER);
+            if (nAppVersionPos >= 0)
+            {
+                strAppVersion = fileContent.Substring(nAppVersionPos + Konstanten.STRING_APP_VERSION_NUMBER.Length + Konstanten.JSON_FILE_GAP, Konstanten.CHARFILE_VERSION_1_3.Length);
+            }
+            int nFileVersionPos = fileContent.IndexOf(Konstanten.STRING_FILE_VERSION_NUMBER);
+            if (nFileVersionPos >= 0)
+            {
+                strFileVersion = fileContent.Substring(nFileVersionPos + Konstanten.STRING_FILE_VERSION_NUMBER.Length + Konstanten.JSON_FILE_GAP, Konstanten.STRING_CHARFILEVERSION_LENGTH);
+            }
+            else // old version
+            {
+                strFileVersion = Konstanten.CHARFILE_VERSION_1_3;
+            }
+            switch (strFileVersion)
+            {
+                case Konstanten.CHARFILE_VERSION_1_3:
+                    ShadowRunHelper1_3.Controller.CharHolder CH1_3 = new ShadowRunHelper1_3.Controller.CharHolder();
+                    CH1_3 = ShadowRunHelper1_3.IO.CharIO.JSON_to_Char(fileContent);
+                    ReturnCharHolder = OldConverter.ConvertVersion1_3to1_5(CH1_3);
+                    GC.Collect();
+                    break;
+                case Konstanten.CHARFILE_VERSION_1_5:
+                    JsonSerializerSettings test = new JsonSerializerSettings();
+                    test.Error = SerializationErrorHandler;
+                    test.PreserveReferencesHandling = PreserveReferencesHandling.All;
+                    ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, test);
+                    ReturnCharHolder.RefreshThingList();
+                    break;
+                default:
+                    throw new Exception(ExceptionMessages.IO_DeserializeVersion_Error);
+            }
+            return ReturnCharHolder;
+        }
+
+        //#####################################################################
         internal static string GetCurrentSavePath()
         {
             if (AppSettings.Instance.ORDNERMODE)
             {
-                //if (Optionen.strORDNERMODE_PFAD == "")
-                //{
-                //    Optionen.strORDNERMODE_PFAD = (await FolderPicker()).Path;
-                //}
                 return AppSettings.Instance.ORDNERMODE_PFAD;
             }
             else
@@ -81,6 +151,8 @@ namespace ShadowRunHelper.IO
 #endif
         }
 
+        //#####################################################################
+
         internal static async Task<CharHolder> LoadCharAtCurrentPlace(string strLoadChar)
         {
             return await LoadChar(GetCurrentSavePlace(), strLoadChar, GetCurrentSavePath());
@@ -102,60 +174,7 @@ namespace ShadowRunHelper.IO
         {
             GetIO().Remove(strDelChar, GetCurrentSavePlace(), strDelChar, GetCurrentSavePath());
         }
-
-        private static string Char_to_String(CharHolder SaveChar)
-        {
-
-            JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.PreserveReferencesHandling = PreserveReferencesHandling.All; //war vorher objects
-            settings.Error = ErrorHandler;
-#if __ANDROID__
-            throw new NotImplementedException();
-            //return JsonConvert.SerializeObject(SaveChar, null, settings);
-#else
-            return JsonConvert.SerializeObject(SaveChar, settings);
-#endif
-        }
-
-        private static CharHolder String_to_Char(string fileContent)
-        {
-            CharHolder ReturnCharHolder;
-            string strAppVersion = "";
-            string strFileVersion = "";
-            int nAppVersionPos = fileContent.IndexOf(Konstanten.STRING_APP_VERSION_NUMBER);
-            if (nAppVersionPos >= 0)
-            {
-                strAppVersion = fileContent.Substring(nAppVersionPos + Konstanten.STRING_APP_VERSION_NUMBER.Length + Konstanten.JSON_FILE_GAP, Konstanten.CHARFILE_VERSION_1_3.Length);
-            }
-            int nFileVersionPos = fileContent.IndexOf(Konstanten.STRING_FILE_VERSION_NUMBER);
-            if (nFileVersionPos >= 0)
-            {
-                strFileVersion = fileContent.Substring(nFileVersionPos + Konstanten.STRING_FILE_VERSION_NUMBER.Length + Konstanten.JSON_FILE_GAP, Konstanten.STRING_CHARFILEVERSION_LENGTH);
-            }
-            else // old version
-            {
-                strFileVersion = Konstanten.CHARFILE_VERSION_1_3;
-            }
-            switch (strFileVersion)
-            {
-                case Konstanten.CHARFILE_VERSION_1_3:
-                    ShadowRunHelper1_3.Controller.CharHolder CH1_3 = new ShadowRunHelper1_3.Controller.CharHolder();
-                    CH1_3 = ShadowRunHelper1_3.IO.CharIO.JSON_to_Char(fileContent);
-                    ReturnCharHolder = OldConverter.ConvertVersion1_3to1_5(CH1_3);
-                    GC.Collect();
-                    break;
-                case Konstanten.CHARFILE_VERSION_1_5:
-                    JsonSerializerSettings test = new JsonSerializerSettings();
-                    test.Error = ErrorHandler;
-                    test.PreserveReferencesHandling = PreserveReferencesHandling.All;
-                    ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, test);
-                    ReturnCharHolder.RefreshThingList();
-                    break;
-                default:
-                    throw new Exception(ExceptionMessages.IO_DeserializeVersion_Error);
-            }
-            return ReturnCharHolder;
-        }
+        //#####################################################################
 
         internal static async void SaveChar(CharHolder SaveChar, Place ePlace, string strSaveName = "", string strSavePath = "", UserDecision eUD = UserDecision.AskUser, SaveType eSaveType = SaveType.Unknown)
         {

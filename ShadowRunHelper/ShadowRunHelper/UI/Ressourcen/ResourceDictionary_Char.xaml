@@ -365,10 +365,6 @@
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="Orientation" Value="Vertical"/>
     </Style>
-
-    <Style TargetType="StackPanel" x:Key="ListView_ThingList">
-        <Setter Property="Margin" Value="0"/>
-    </Style>
     <Style TargetType="GridViewItem" x:Key="ListView_ThingListContainerTemplate">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="0,0,1,0"/>
@@ -376,6 +372,14 @@
         <Setter Property="Padding" Value="0,0,2,0"/>
         <Setter Property="Margin" Value="0" />
         <Setter Property="Width" Value="Auto" />
+    </Style>
+    <Style TargetType="ListViewItem" x:Key="ListView_ThingListContainerTemplate_List">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1,0,0,0"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="5,0,5,0"/>
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="MinWidth" Value="0" />
     </Style>
     <!-- Anzeige ####################### -->
 
