@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ShadowRunHelper.Model;
 using System;
-using System.Threading.Tasks;
-using Windows.Storage;
 
 namespace ShadowRunHelper1_3.IO
 {
@@ -15,7 +13,7 @@ namespace ShadowRunHelper1_3.IO
             test.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
 
             //return JsonConvert.SerializeObject(SaveChar);
-            return JsonConvert.SerializeObject(SaveChar, test);
+            return JsonConvert.SerializeObject(SaveChar,Formatting.None);
 
                 
         }
@@ -30,7 +28,7 @@ namespace ShadowRunHelper1_3.IO
             catch (Exception)
             {
                 tempChar = new Controller.CharHolder();
-                ViewModel.Instance.lstNotifications.Add(new Notification("Error at StartUp-Char-Loading"));
+                AppModel.Instance.lstNotifications.Add(new Notification("Error at StartUp-Char-Loading"));
             }
 
 
@@ -321,41 +319,6 @@ namespace ShadowRunHelper1_3.IO
             }
             newChar.HD.toggleHDEdit(true);
             return newChar;
-        }
-
-        
-
-        public static async void Speichern(Controller.CharHolder SaveChar, StorageFile file)
-        {
-            //Ausgewählten Char auf Plattensubsystem schreiben
-            await FileIO.WriteTextAsync(file, CharIO.Char_to_JSON(SaveChar));
-        }
-
-        public static async Task<Controller.CharHolder> Laden(StorageFile file)
-        {
-            String inputString = "";
-            try
-            {
-                inputString = await FileIO.ReadTextAsync(file);
-                return JSON_to_Char(inputString);
-            }
-            catch (Exception)
-            {
-                throw new Exception("Konnte nicht aus Datei lesen und oder laden");
-            }
-        }
-
-        public static async void Löschen(StorageFile toDelFile)
-        {
-            try
-            {
-                await toDelFile.DeleteAsync();
-            }
-            catch (Exception)
-            {
-                
-            }
-           
         }
     }
 }

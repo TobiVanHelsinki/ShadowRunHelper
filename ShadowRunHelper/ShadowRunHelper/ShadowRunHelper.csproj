@@ -105,9 +105,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IO\GeneralIO.cs" />
-    <Compile Include="IO\CharIO.cs" />
-    <Compile Include="IO\OldConverter.cs" />
+    <Compile Include="IO\WinIO.cs" />
+    <Compile Include="Ressourcen\WinSettings.cs" />
     <Compile Include="UI\Converter\o_FileSize.cs" />
     <Compile Include="UI\Converter\o_ThingList.cs" />
     <Compile Include="UI\Converter\io_GebDatum.cs" />

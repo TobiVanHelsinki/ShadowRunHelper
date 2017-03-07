@@ -3,71 +3,81 @@ using System.Runtime.CompilerServices;
 
 namespace ShadowRunHelper
 {
-    public class ViewModel_Settings : INotifyPropertyChanged
+    public class AppSettings : INotifyPropertyChanged
     {
+        public ISettings Settings = null;
+
         public bool SAVE_CHAR_ON_EXIT
         {
-            get { return Optionen.bSaveCharOnExit; }
+            get { return Settings.GetBSaveCharOnExit(); }
             set
             {
-                Optionen.bSaveCharOnExit = value;
+                Settings.SetBSaveCharOnExit(value);
                 NotifyPropertyChanged();
             }
         }
         public bool bDisplayRequest
         {
-            get { return Optionen.bDisplayRequest; }
+            get { return Settings.GetBDisplayRequest(); }
             set
             {
-                Optionen.bDisplayRequest = value;
+                Settings.SetBDisplayRequest(value);
                 NotifyPropertyChanged();
             }
         }
-        
         public bool LOAD_CHAR_ON_START
         {
-            get { return Optionen.bLoadCharOnStart; }
+            get { return Settings.GetBLoadCharOnStart(); }
             set
             {
-                Optionen.bLoadCharOnStart = value;
+                Settings.SetBLoadCharOnStart(value);
                 NotifyPropertyChanged();
             }
         }
-
         public bool ORDNERMODE
         {
-            get { return Optionen.bORDNERMODE; }
+            get { return Settings.GetBFolderMode(); }
             set
             {
-                Optionen.bORDNERMODE = value;
+                Settings.SetBFolderMode(value);
                 NotifyPropertyChanged();
             }
         }
-
         public string ORDNERMODE_PFAD
         {
-            get { return Optionen.strORDNERMODE_PFAD; }
+            get { return Settings.GetStrFolderModePath(); }
             set
             {
-                Optionen.strORDNERMODE_PFAD = value;
+                Settings.SetStrFolderModePath(value);
                 NotifyPropertyChanged();
             }
         }
         public bool bStartEditAfterAdd
         {
-            get { return Optionen.bStartEditAfterAdd; }
+            get { return Settings.GetBStartEditAfterAdd(); }
             set
             {
-                Optionen.bStartEditAfterAdd = value;
+                Settings.SetBStartEditAfterAdd(value);
                 NotifyPropertyChanged();
             }
         }
 
-        
-
-        public ViewModel_Settings()
+        AppSettings()
         {
+#if __ANDROID__
+#else
+            Settings = new WinSettings();
+#endif
+        }
 
+        static readonly AppSettings instance = new AppSettings();
+
+        public static AppSettings Instance
+        {
+            get
+            {
+                return instance;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

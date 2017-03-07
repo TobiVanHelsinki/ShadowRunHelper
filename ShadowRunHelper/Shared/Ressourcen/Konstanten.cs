@@ -1,5 +1,9 @@
 ﻿using System;
+#if __ANDROID__
+
+#else
 using Windows.ApplicationModel;
+#endif
 
 namespace ShadowRunHelper
 {
@@ -17,9 +21,18 @@ namespace ShadowRunHelper
         /// <summary>
         /// App Versionen
         /// </summary>
-        private static PackageVersion version = Package.Current.Id.Version;
-        public static string APP_VERSION_BUILD = "" + version.Major + version.Minor + version.Build + version.Revision;
-        public static string APP_VERSION_BUILD_DELIM = "" + version.Major + "." + version.Minor + "." + version.Build + "." + version.Revision;
+        public static string APP_VERSION_BUILD =
+#if __ANDROID__
+            null;
+#else
+            "" + Package.Current.Id.Version.Major + Package.Current.Id.Version.Minor + Package.Current.Id.Version.Build + Package.Current.Id.Version.Revision;
+#endif
+        public static string APP_VERSION_BUILD_DELIM = 
+#if __ANDROID__
+            null;
+#else
+            "" + Package.Current.Id.Version.Major + "." + Package.Current.Id.Version.Minor + "." + Package.Current.Id.Version.Build + "." + Package.Current.Id.Version.Revision;
+#endif
         public const string APP_VERSION_NUMBER_1_3 = "1.3";
         public const string APP_VERSION_NUMBER_1_5 = "1.5";
         public const string APP_VERSION_NUMBER = APP_VERSION_NUMBER_1_5;

@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.IO;
+using ShadowRunHelper.Model;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -15,7 +16,7 @@ namespace ShadowRunHelper
     sealed partial class App : Application
     {
 
-        readonly ViewModel ViewModel = ViewModel.Instance;
+        readonly AppModel ViewModel = AppModel.Instance;
         /// <summary>
         /// Initialisiert das Singletonanwendungsobjekt.  Dies ist die erste Zeile von erstelltem Code
         /// und daher das logische Äquivalent von main() bzw. WinMain().
@@ -42,7 +43,7 @@ namespace ShadowRunHelper
             this.UnhandledException -= App_UnhandledExceptionAsync;
             e.Handled = true;
             await IO.CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar, IO.SaveType.Emergency);
-            Optionen.strLastChar = "";
+            AppSettings.Instance.Settings.SetStrLastChar("");
             var res = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_Unknown"), e.Exception));
             Current.Exit();
@@ -55,12 +56,12 @@ namespace ShadowRunHelper
         /// <param name="e">Details über Startanforderung und -prozess.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            if (Optionen.bLoadCharOnStart || Optionen.bIsFIleInProgress)
+            if (AppSettings.Instance.Settings.GetBLoadCharOnStart() || AppSettings.Instance.Settings.GetBIsFileInProgress())
             {
-                Optionen.bIsFIleInProgress = false;
+                AppSettings.Instance.Settings.SetBIsFileInProgress(false);
                 try
                 {
-                    ViewModel.CurrentChar = await IO.CharIO.TryLoadCharAtCurrentPlace(Optionen.strLastChar);
+                    ViewModel.CurrentChar = await IO.CharIO.LoadCharAtCurrentPlaceAndThrow(AppSettings.Instance.Settings.GetStrLastChar());
                 }
                 catch (Exception) { }
             }
@@ -87,7 +88,7 @@ namespace ShadowRunHelper
         /// <param name="e">Details zur Anhalteanforderung.</param>
         private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
-            if (Optionen.bSaveCharOnExit && ViewModel.CurrentChar != null)
+            if (AppSettings.Instance.SAVE_CHAR_ON_EXIT && ViewModel.CurrentChar != null)
             {
                 try
                 {
@@ -99,11 +100,11 @@ namespace ShadowRunHelper
             }
             try
             {
-                Optionen.strLastChar = ViewModel.CurrentChar.MakeName();
+                AppSettings.Instance.Settings.SetStrLastChar(ViewModel.CurrentChar.MakeName());
             }
             catch (Exception)
             {
-                Optionen.strLastChar = "";
+                AppSettings.Instance.Settings.SetStrLastChar("");
             }
             e.SuspendingOperation.GetDeferral().Complete();
         }
@@ -122,9 +123,7 @@ namespace ShadowRunHelper
             }
             try
             {
-                StorageFile File = await IO.GeneralIO.GetFile(IO.Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length));
-                ViewModel.CurrentChar = await IO.CharIO.LoadCharFromFile(File);
-                //OnLaunched(null);
+                ViewModel.CurrentChar = await CharIO.LoadChar(IO.Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length));
                 ViewModel.RequestedNavigation(ProjectPages.Char);
             }
             catch (Exception)

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Windows.ApplicationModel.Resources;
+
 
 namespace ShadowRunHelper.CharModel
 {
@@ -126,41 +126,39 @@ namespace ShadowRunHelper.CharModel
 
         public override string HeaderToCSV(string Delimiter)
         {
-            var res = ResourceLoader.GetForCurrentView();
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += res.GetString("Model_Kommlink_Programmanzahl/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Kommlink_Programmanzahl/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_Kommlink_Firewall/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Kommlink_Firewall/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_Kommlink_Datenverarbeitung/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Kommlink_Datenverarbeitung/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_Kommlink_Schaden/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Kommlink_Schaden/Text");
             strReturn += Delimiter;
             return strReturn;
         }
 
         public override void FromCSV(Dictionary<string, string> dic)
         {
-            var res = ResourceLoader.GetForCurrentView();
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == res.GetString("Model_Kommlink_Programmanzahl/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Kommlink_Programmanzahl/Text"))
                 {
                     this.Programmanzahl = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_Kommlink_Firewall/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Kommlink_Firewall/Text"))
                 {
                     this.Firewall = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_Kommlink_Datenverarbeitung/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Kommlink_Datenverarbeitung/Text"))
                 {
                     this.Datenverarbeitung = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_Kommlink_Schaden/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Kommlink_Schaden/Text"))
                 {
                     this.dSchaden = double.Parse(item.Value);
                     continue;

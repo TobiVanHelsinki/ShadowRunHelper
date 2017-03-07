@@ -10,7 +10,7 @@ namespace ShadowRunHelper.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
-            Model.ViewModel ViewModel = Model.ViewModel.Instance;
+            Model.AppModel ViewModel = Model.AppModel.Instance;
 
             base.OnCreate(bundle);
             

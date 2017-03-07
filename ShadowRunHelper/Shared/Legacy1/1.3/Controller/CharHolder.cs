@@ -56,7 +56,7 @@ namespace ShadowRunHelper1_3.Controller
 
 
         public HashDictionary HD = new HashDictionary();
-        public string APP_VERSION_NUMBER = Variablen.APP_VERSION_NUMBER;
+        public string APP_VERSION_NUMBER = "";
 
         public ObservableCollection<CharController.Handlung> HandlungController { get; set; }
         public ObservableCollection<CharController.Fertigkeit> FertigkeitController { get; set; }

@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Windows.ApplicationModel.Resources;
+﻿
+using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -52,11 +51,7 @@ namespace ShadowRunHelper.CharModel
         {
             this.ThingType = ThingDefs.Zaubersprüche;
         }
-
-        public override double GetValue([CallerMemberName] string ID = "")
-        {
-            return base.GetValue(ID);
-        }
+        
         public override Thing Copy(ref Thing target)
         {
             if (target == null)
@@ -94,13 +89,12 @@ namespace ShadowRunHelper.CharModel
 
         public override string HeaderToCSV(string Delimiter)
         {
-            var res = ResourceLoader.GetForCurrentView();
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += res.GetString("Model_Zaubersprüche_Reichweite/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Zaubersprüche_Reichweite/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_Zaubersprüche_Dauer/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Zaubersprüche_Dauer/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_Zaubersprüche_Entzug/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Zaubersprüche_Entzug/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -108,21 +102,20 @@ namespace ShadowRunHelper.CharModel
 
         public override void FromCSV(Dictionary<string, string> dic)
         {
-            var res = ResourceLoader.GetForCurrentView();
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == res.GetString("Model_Zaubersprüche_Reichweite/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Zaubersprüche_Reichweite/Text"))
                 {
                     this.Reichweite = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_Zaubersprüche_Dauer/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Zaubersprüche_Dauer/Text"))
                 {
                     this.Dauer = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_Zaubersprüche_Entzug/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Zaubersprüche_Entzug/Text"))
                 {
                     this.Entzug = double.Parse(item.Value);
                     continue;

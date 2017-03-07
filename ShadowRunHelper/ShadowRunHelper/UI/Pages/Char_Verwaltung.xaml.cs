@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
@@ -15,13 +16,11 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 //TODO vor löschen fragen
-//TODO größe der datei anzeigen ( im model schon da)
 namespace ShadowRunHelper
 {
     public sealed partial class Char_Verwaltung : Page
     {
-        //ViewModel ViewModel { get; set; }
-        readonly ViewModel ViewModel = ViewModel.Instance;
+        readonly AppModel ViewModel = AppModel.Instance;
         ObservableCollection<CharSummory> Summorys;
         event PropertyChangedEventHandler PropertyChanged;
         ResourceLoader res;
@@ -88,8 +87,8 @@ namespace ShadowRunHelper
             List<CharSummory> lst = new List<CharSummory>();
             try
             {
-                StorageFolder CharFolder = await GeneralIO.GetFolder(CharIO.GetCurrentSavePlace(), await CharIO.GetCurrentSavePath());
-                foreach (var item in (await GeneralIO.GetListofFiles(CharFolder, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR }))))
+                StorageFolder CharFolder = await WinIO.GetFolder(CharIO.GetCurrentSavePlace(), CharIO.GetCurrentSavePath());
+                foreach (var item in (await WinIO.GetListofFiles(CharFolder, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR }))))
                 {
                     lst.Add(new CharSummory(item.Name, (await item.GetBasicPropertiesAsync()).DateModified, (await item.GetBasicPropertiesAsync()).Size));
                 }
@@ -147,7 +146,9 @@ namespace ShadowRunHelper
         {
             try
             {
-                await CharIO.RemoveCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName);
+                await Task.Factory.StartNew(() =>
+                    CharIO.RemoveCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName)
+            );
             }
             catch (Exception ex)
             {
@@ -184,7 +185,9 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    await CharIO.RemoveCharAtCurrentPlace(item.strFileName);
+                    await Task.Factory.StartNew(() =>
+                         CharIO.RemoveCharAtCurrentPlace(item.strFileName)
+                    );
                 }
                 catch (Exception ex)
                 {
@@ -220,8 +223,9 @@ namespace ShadowRunHelper
         {
             try
             {
-                StorageFile FileToSave = await GeneralIO.GetFile(Place.Extern, CharToSave.MakeName());
-                CharIO.SaveCharToFile(CharToSave, FileToSave);
+                await Task.Factory.StartNew(() =>
+                    CharIO.SaveChar(CharToSave, Place.Extern)
+                );
             }
             catch (Exception ex)
             {
@@ -233,7 +237,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                ViewModel.CurrentChar = await CharIO.LoadCharFromFile(await GeneralIO.FilePicker(new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR})));
+                ViewModel.CurrentChar = await CharIO.LoadChar(Place.Extern);
             }
             catch (Exception ex)
             {
@@ -261,7 +265,7 @@ namespace ShadowRunHelper
            
             try
             {
-                Folder = await GeneralIO.GetFolder(Place.Extern);
+                Folder = await WinIO.GetFolder(Place.Extern);
             }
             catch (Exception ex)
             {
@@ -269,10 +273,10 @@ namespace ShadowRunHelper
             }
             try
             {
+                var IO = new WinIO();
                 foreach (var item in ViewModel.CurrentChar.ToCSV(";"))
                 {
-                    StorageFile File = await GeneralIO.GetFile(Place.Extern, item.Value + Konstanten.DATEIENDUNG_CSV, Folder.Path);
-                    GeneralIO.Write(File, item.Key);
+                    IO.Save(item.Key, Place.Extern, item.Value + Konstanten.DATEIENDUNG_CSV, Folder.Path);
                 }
             }
             catch (Exception ex)
@@ -287,7 +291,7 @@ namespace ShadowRunHelper
             string strRead = "";
             try
             {
-                File = await GeneralIO.GetFile(Place.Extern, null, null, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR, Konstanten.DATEIENDUNG_CSV }));
+                File = await WinIO.GetFile(Place.Extern, null, null, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR, Konstanten.DATEIENDUNG_CSV }));
                 strRead = await FileIO.ReadTextAsync(File);
 
             }

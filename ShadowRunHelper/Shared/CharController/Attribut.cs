@@ -1,10 +1,10 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharController
 {
@@ -12,7 +12,8 @@ namespace ShadowRunHelper.CharController
     {
         // Variable Stuff #####################################################
         // Variable Model Stuff ###########################
-        [System.Runtime.Serialization.IgnoreDataMember] //cause sometimes an very übel Bug
+        [Newtonsoft.Json.JsonIgnore] //cause sometimes an very übel Bug
+        //[Newtonsoft.Json.JsonIgnore]
         public new ObservableCollection<Attribut> Data; //cause sometimes an very übel Bug
 
         public Attribut Konsti;// those have to point at a sepcific list element
@@ -26,13 +27,13 @@ namespace ShadowRunHelper.CharController
         public Attribut Magie;
         public Attribut Resonanz;
 
-        [System.Runtime.Serialization.IgnoreDataMember]
+        [Newtonsoft.Json.JsonIgnore]
         public Attribut Essenz;
-        [System.Runtime.Serialization.IgnoreDataMember]
+        [Newtonsoft.Json.JsonIgnore]
         public Attribut Limit_K;
-        [System.Runtime.Serialization.IgnoreDataMember]
+        [Newtonsoft.Json.JsonIgnore]
         public Attribut Limit_G;
-        [System.Runtime.Serialization.IgnoreDataMember]
+        [Newtonsoft.Json.JsonIgnore]
         public Attribut Limit_S;
 
         ThingListEntry MI_Konsti;
@@ -105,21 +106,20 @@ namespace ShadowRunHelper.CharController
 
         private void RefreshBezeichner()
         {
-            var res = ResourceLoader.GetForCurrentView();
-            Konsti.Bezeichner = res.GetString("Model_Attribut_Konsti/Text");
-            Geschick.Bezeichner = res.GetString("Model_Attribut_Geschick/Text");
-            Reaktion.Bezeichner = res.GetString("Model_Attribut_Reaktion/Text");
-            Staerke.Bezeichner = res.GetString("Model_Attribut_Staerke/Text");
-            Charisma.Bezeichner = res.GetString("Model_Attribut_Charisma/Text");
-            Logik.Bezeichner = res.GetString("Model_Attribut_Logik/Text");
-            Intuition.Bezeichner = res.GetString("Model_Attribut_Intuition/Text");
-            Willen.Bezeichner = res.GetString("Model_Attribut_Willen/Text");
-            Essenz.Bezeichner = res.GetString("Model_Attribut_Essenz/Text");
-            Limit_K.Bezeichner = res.GetString("Model_Attribut_Limit_K/Text");
-            Limit_G.Bezeichner = res.GetString("Model_Attribut_Limit_G/Text");
-            Limit_S.Bezeichner = res.GetString("Model_Attribut_Limit_S/Text");
-            Magie.Bezeichner = res.GetString("Model_Attribut_Magie/Text");
-            Resonanz.Bezeichner = res.GetString("Model_Attribut_Resonanz/Text");
+            Konsti.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Konsti/Text");
+            Geschick.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Geschick/Text");
+            Reaktion.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Reaktion/Text");
+            Staerke.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Staerke/Text");
+            Charisma.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Charisma/Text");
+            Logik.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Logik/Text");
+            Intuition.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Intuition/Text");
+            Willen.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Willen/Text");
+            Essenz.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Essenz/Text");
+            Limit_K.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Limit_K/Text");
+            Limit_G.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Limit_G/Text");
+            Limit_S.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Limit_S/Text");
+            Magie.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Magie/Text");
+            Resonanz.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Resonanz/Text");
         }
 
         public void SetDependencies(Person p, ObservableCollection<Implantat> i)

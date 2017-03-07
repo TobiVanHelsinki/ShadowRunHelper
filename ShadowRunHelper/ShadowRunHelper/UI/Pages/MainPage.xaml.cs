@@ -17,7 +17,7 @@ namespace ShadowRunHelper
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        readonly ViewModel ViewModel = ViewModel.Instance;
+        readonly AppModel ViewModel = AppModel.Instance;
 
         public MainPage()
         {

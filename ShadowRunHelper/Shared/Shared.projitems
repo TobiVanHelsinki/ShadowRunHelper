@@ -45,6 +45,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Vorteil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Waffe.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Zaubersprüche.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IO\CharIO.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IO\IGeneralIO.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IO\OldConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Attribut.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Connection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Controller.cs" />
@@ -98,11 +101,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\CharSummory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Notification.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\ThingListEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\ViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\ViewModel_Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\AppModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\AppSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\CrossPlattformHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Exceptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Konstanten.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Optionen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\ISettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Typen.cs" />
   </ItemGroup>
   <ItemGroup>

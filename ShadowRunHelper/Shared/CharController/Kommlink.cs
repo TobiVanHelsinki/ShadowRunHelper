@@ -1,9 +1,9 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharController
 {
@@ -16,12 +16,11 @@ namespace ShadowRunHelper.CharController
 
         public cKommlinkController()
         {
-            var res = ResourceLoader.GetForCurrentView();
             ActiveItem = new Kommlink();
-            ActiveItem.Bezeichner = res.GetString("Model_Kommlink__Aktiv/Text");
-            MI_V = new ThingListEntry(ActiveItem, res.GetString("Model_Thing_Wert/Text"), "Wert");
-            MI_F = new ThingListEntry(ActiveItem, res.GetString("Model_Kommlink_Firewall/Text"),"Firewall");
-            MI_D = new ThingListEntry(ActiveItem, res.GetString("Model_Kommlink_Datenverarbeitung/Text"), "Datenverarbeitung");
+            ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_Kommlink__Aktiv/Text");
+            MI_V = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Thing_Wert/Text"), "Wert");
+            MI_F = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Kommlink_Firewall/Text"),"Firewall");
+            MI_D = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Kommlink_Datenverarbeitung/Text"), "Datenverarbeitung");
 
             Data.CollectionChanged += Data_CollectionChanged;
         }

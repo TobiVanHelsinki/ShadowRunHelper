@@ -1,15 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ShadowRunHelper.Model;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 
 namespace ShadowRunHelper.IO
 {
 
-    internal static class GeneralIO
+    internal class WinIO : IGeneralIO
     {
+        // ##############################
+        public async void Save(string saveChar, Place ePlace, string strSaveName = "", string strSavePath = "")
+        {
+            StorageFile x = await GetFile(ePlace, strSaveName, strSavePath);
+            await FileIO.WriteTextAsync(x, saveChar);
+        }
 
+        public async void Remove(string delChar, Place ePlace, string strSaveName = "", string strSavePath = "")
+        {
+            StorageFile x = await GetFile(ePlace, strSaveName, strSavePath);
+            await x.DeleteAsync();
+        }
+
+        public async Task<string> Load(Place ePlace, string strSaveName = "", string strSavePath = "", List<string> FileTypes = null, UserDecision eUD = UserDecision.AskUser)
+        {
+            StorageFile x = await GetFile(ePlace, strSaveName, strSavePath, FileTypes, eUD);
+            if (x == null)
+            {
+                x = await FilePicker();
+            }
+            return await FileIO.ReadTextAsync(x);
+        }
+
+        // ##############################
         public static async Task<List<StorageFile>> GetListofFiles(StorageFolder CharFolder, List<string> FileTypes)
         {
             List<StorageFile> templist = new List<StorageFile>();
@@ -31,13 +55,6 @@ namespace ShadowRunHelper.IO
                 throw new ArgumentException();
             }
         }
-
-        internal enum UserDecision
-        {
-            AskUser = 0,
-            ThrowError = 1
-        }
-
         /// <summary>
         /// Extern:
         /// Action depends on the string parameters:
@@ -105,7 +122,6 @@ namespace ShadowRunHelper.IO
             }
             throw new Exception("GeneralIO.GetFile.Wrong Enum Type:" + ePlace);
         }
-
         internal static async Task<StorageFile> FilePicker(List<string> lststrFileEndings = null)
         {
             if (lststrFileEndings == null)
@@ -182,15 +198,6 @@ namespace ShadowRunHelper.IO
             }
             throw new ArgumentException("Wrong Enum Type:" + ePlace);
         }
-        internal async static void Write(StorageFile File, string content)
-        {
-            await FileIO.WriteTextAsync(File,content);
-        }
-        internal async static void Remove(StorageFile File)
-        {
-            await File.DeleteAsync();
-        }
-
         /// <summary>
         /// Throws things
         /// </summary>
@@ -226,14 +233,5 @@ namespace ShadowRunHelper.IO
             }
         }
 
-
-        internal static async Task<string> Read(StorageFile inputFile)
-        {
-            if (inputFile == null)
-            {
-                inputFile = await FilePicker();
-            }
-            return await FileIO.ReadTextAsync(inputFile);
-        }
     }
 }

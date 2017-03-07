@@ -1,6 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 

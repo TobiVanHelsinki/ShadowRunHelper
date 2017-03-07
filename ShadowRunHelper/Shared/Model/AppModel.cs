@@ -4,16 +4,16 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 namespace ShadowRunHelper.Model
 {
-    public sealed class ViewModel : INotifyPropertyChanged
+    public sealed class AppModel : INotifyPropertyChanged
     {
-        static readonly ViewModel instance = new ViewModel();
-
-        ViewModel()
+        AppModel()
         {
             lstNotifications = new ObservableCollection<Notification>();
         }
 
-        public static ViewModel Instance
+        static readonly AppModel instance = new AppModel();
+
+        public static AppModel Instance
             {
                 get
                 {

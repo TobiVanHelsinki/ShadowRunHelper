@@ -13,7 +13,7 @@ namespace ShadowRunHelper
     {
         // Variables ##########################################################
         //public ViewModel ViewModel { get; set; }
-        readonly ViewModel ViewModel = ViewModel.Instance;
+        readonly AppModel ViewModel = AppModel.Instance;
         public Windows.System.Display.DisplayRequest Char_DisplayRequest;
 
         public Char()
@@ -23,8 +23,7 @@ namespace ShadowRunHelper
         // Navigation Stuff####################################################
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //ViewModel = (ViewModel)e.Parameter;
-            if (Optionen.bDisplayRequest)
+            if (AppSettings.Instance.bDisplayRequest)
             {
                 try
                 {
@@ -34,7 +33,7 @@ namespace ShadowRunHelper
                 catch (Exception)
                 {
                     var res = ResourceLoader.GetForCurrentView();
-                    ViewModel.Instance.lstNotifications.Add(new Notification(
+                    AppModel.Instance.lstNotifications.Add(new Notification(
                         res.GetString("Notification_Error_DisplayRequest/Text")
                         ));
                 }
@@ -43,7 +42,7 @@ namespace ShadowRunHelper
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            if (Optionen.bDisplayRequest)
+            if (AppSettings.Instance.bDisplayRequest)
             {
                 try
                 {
@@ -71,7 +70,7 @@ namespace ShadowRunHelper
             try
             {
                 newThing = ViewModel.CurrentChar.Add(Controller);
-                if (Optionen.bStartEditAfterAdd)
+                if (AppSettings.Instance.bStartEditAfterAdd)
                 {
                     await new Edit_Dialog(newThing).ShowAsync();
                 }

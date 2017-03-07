@@ -1,7 +1,6 @@
 ﻿
+
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Windows.ApplicationModel.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -38,12 +37,7 @@ namespace ShadowRunHelper.CharModel
         {
             this.ThingType = ThingDefs.Geist_Sprite;
         }
-
-
-        public override double GetValue([CallerMemberName] string ID = "")
-        {
-            return base.GetValue(ID);
-        }
+        
         public override Thing Copy(ref Thing target)
         {
             if (target == null)
@@ -77,11 +71,10 @@ namespace ShadowRunHelper.CharModel
 
         public override string HeaderToCSV(string Delimiter)
         {
-            var res = ResourceLoader.GetForCurrentView();
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += res.GetString("Model_Geist_Sprite_Dienste/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Geist_Sprite_Dienste/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_Geist_Sprite_Geb_Reg/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Geist_Sprite_Geb_Reg/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -89,16 +82,15 @@ namespace ShadowRunHelper.CharModel
 
         public override void FromCSV(Dictionary<string, string> dic)
         {
-            var res = ResourceLoader.GetForCurrentView();
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == res.GetString("Model_Geist_Sprite_Dienste/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Geist_Sprite_Dienste/Text"))
                 {
                     this.Dienste = (item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_Geist_Sprite_Geb_Reg/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Geist_Sprite_Geb_Reg/Text"))
                 {
                     this.Geb_Reg = bool.Parse(item.Value);
                     continue;

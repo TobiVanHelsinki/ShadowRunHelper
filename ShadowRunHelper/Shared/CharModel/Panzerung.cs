@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Windows.ApplicationModel.Resources;
+
 
 namespace ShadowRunHelper.CharModel
 {
@@ -53,26 +53,24 @@ namespace ShadowRunHelper.CharModel
 
         public override string HeaderToCSV(string Delimiter)
         {
-            var res = ResourceLoader.GetForCurrentView();
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += res.GetString("Model_Panzerung_Stoß/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Panzerung_Stoß/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_Panzerung_Kapazität/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Panzerung_Kapazität/Text");
             strReturn += Delimiter;
             return strReturn;
         }
         public override void FromCSV(Dictionary<string, string> dic)
         {
-            var res = ResourceLoader.GetForCurrentView();
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == res.GetString("Model_Panzerung_Stoß/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Panzerung_Stoß/Text"))
                 {
                     Stoß = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_Panzerung_Kapazität/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Panzerung_Kapazität/Text"))
                 {
                     Kapazität = double.Parse(item.Value);
                     continue;

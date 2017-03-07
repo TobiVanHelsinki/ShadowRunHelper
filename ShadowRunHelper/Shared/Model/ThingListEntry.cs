@@ -4,7 +4,17 @@ namespace ShadowRunHelper.Model
 {
     public class ThingListEntry
     {
-        public Thing Object;
+        Thing o;
+        public Thing Object { get { return o; } set {
+                if (value != null)
+                {
+                    o = value;
+                }
+                else
+                {
+
+                }
+            } }
         public readonly ThingListEntry This;
         public string strProperty;
         public string strPropertyName;

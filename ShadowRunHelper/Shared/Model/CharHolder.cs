@@ -41,11 +41,11 @@ namespace ShadowRunHelper.Model
         public cController<Fertigkeit> CTRLFertigkeit { get; set; }
         public cController<Handlung> CTRLHandlung { get; set; }
 
-        [System.Runtime.Serialization.IgnoreDataMember]
+        [Newtonsoft.Json.JsonIgnore]
         List<ThingListEntry> _lstThings;
-        [System.Runtime.Serialization.IgnoreDataMember]
+        [Newtonsoft.Json.JsonIgnore]
         public List<ThingListEntry> lstThings { get { return _lstThings; } set { _lstThings = value; } }
-        //[System.Runtime.Serialization.IgnoreDataMember]
+        //[Newtonsoft.Json.JsonIgnore]
         //List<cController<Thing>> lstCTRL;
             //List<cController<T>> bla, where T : Thing, new();
 

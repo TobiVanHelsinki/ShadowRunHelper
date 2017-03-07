@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Windows.ApplicationModel.Resources;
+
 
 namespace ShadowRunHelper.CharModel
 {
@@ -139,55 +139,53 @@ namespace ShadowRunHelper.CharModel
 
         public override string HeaderToCSV(string Delimiter)
         {
-            var res = ResourceLoader.GetForCurrentView();
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += res.GetString("Model_CyberDeck_Angriff/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_CyberDeck_Angriff/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_CyberDeck_Angriff_o/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_CyberDeck_Angriff_o/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_CyberDeck_Schleicher/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_CyberDeck_Schleicher/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_CyberDeck_Schleicher_o/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_CyberDeck_Schleicher_o/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_CyberDeck_Firewall_o/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_CyberDeck_Firewall_o/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_CyberDeck_Datenverarbeitung_o/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_CyberDeck_Datenverarbeitung_o/Text");
             strReturn += Delimiter;
             return strReturn;
         }
 
         public override void FromCSV(Dictionary<string, string> dic)
         {
-            var res = ResourceLoader.GetForCurrentView();
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == res.GetString("Model_CyberDeck_Angriff/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_CyberDeck_Angriff/Text"))
                 {
                     Angriff = int.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_CyberDeck_Angriff_o/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_CyberDeck_Angriff_o/Text"))
                 {
                     Angriff_o = int.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_CyberDeck_Schleicher/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_CyberDeck_Schleicher/Text"))
                 {
                     Schleicher = int.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_CyberDeck_Schleicher_o/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_CyberDeck_Schleicher_o/Text"))
                 {
                     Schleicher_o = int.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_CyberDeck_Firewall_o/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_CyberDeck_Firewall_o/Text"))
                 {
                     Firewall_o = int.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_CyberDeck_Datenverarbeitung_o/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_CyberDeck_Datenverarbeitung_o/Text"))
                 {
                     Datenverarbeitung_o = int.Parse(item.Value);
                     continue;

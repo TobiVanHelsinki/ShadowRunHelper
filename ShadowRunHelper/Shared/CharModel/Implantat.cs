@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
+
 
 namespace ShadowRunHelper.CharModel
 {
@@ -88,34 +88,32 @@ namespace ShadowRunHelper.CharModel
 
         public override string HeaderToCSV(string Delimiter)
         {
-            var res = ResourceLoader.GetForCurrentView();
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += res.GetString("Model_Implantat_Essenz/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Implantat_Essenz/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_Implantat_Kapazität/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Implantat_Kapazität/Text");
             strReturn += Delimiter;
-            strReturn += res.GetString("Model_Implantat_Auswirkung/Text");
+            strReturn += CrossPlattformHelper.GetString("Model_Implantat_Auswirkung/Text");
             strReturn += Delimiter;
             return strReturn;
         }
 
         public override void FromCSV(Dictionary<string, string> dic)
         {
-            var res = ResourceLoader.GetForCurrentView();
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == res.GetString("Model_Implantat_Essenz/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Implantat_Essenz/Text"))
                 {
                     Essenz = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_Implantat_Kapazität/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Implantat_Kapazität/Text"))
                 {
                     Kapazität = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == res.GetString("Model_Implantat_Auswirkung/Text"))
+                if (item.Key == CrossPlattformHelper.GetString("Model_Implantat_Auswirkung/Text"))
                 {
                     Auswirkung = (item.Value);
                     continue;
