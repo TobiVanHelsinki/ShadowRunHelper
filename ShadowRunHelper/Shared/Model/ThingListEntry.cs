@@ -9,7 +9,25 @@ namespace ShadowRunHelper.Model
         [Newtonsoft.Json.JsonIgnore]
         public readonly ThingListEntry This;
 
-        Thing _Object;
+        string _strPropertyName = "";
+        [Newtonsoft.Json.JsonIgnore]
+        public string strPropertyName
+        {
+            get
+            {
+                return _strPropertyName;
+            }
+            set
+            {
+                if (value != _strPropertyName && value != "" && value != null)
+                {
+                    _strPropertyName = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        Thing _Object = new Thing();
         public Thing Object
         {
             get
@@ -18,7 +36,7 @@ namespace ShadowRunHelper.Model
             }
             set
             {
-                if (value != null)
+                if (_Object != value && value != null)
                 {
                     _Object = value;
                     NotifyPropertyChanged();
@@ -38,64 +56,22 @@ namespace ShadowRunHelper.Model
             }
             set
             {
-                if (value != _strProperty)
+                if (value != _strProperty && value != null)
                 {
                     _strProperty = value;
                     NotifyPropertyChanged();
                 }
             }
         }
-        string _strPropertyName = "";
-        [Newtonsoft.Json.JsonIgnore]
-        public string strPropertyName
-        {
-            get
-            {
-                return _strPropertyName;
-            }
-            set
-            {
-                if (value != _strPropertyName && value != "" && value != null)
-                {
-                    _strPropertyName = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
 
-        public ThingListEntry(Thing o, string strPropName = "", string strPropID = "")
+        public ThingListEntry(Thing o, string strPropName = "", string strPropID = "") : this()
         {
-            if (o == null)
-            {
-                Object = new Thing();
-            }
-            else
-            {
-                Object = o;
-            }
-            if (strPropID == null)
-            {
-                strProperty = "";
-            }
-            else
-            {
-                strProperty = strPropID;
-            }
-            if (strPropName == null)
-            {
-                strPropertyName = "";
-            }
-            else
-            {
-                strPropertyName = strPropName;
-            }
-            This = this;
+            Object = o;
+            strProperty = strPropID;
+            strPropertyName = strPropName;
         }
         public ThingListEntry()
         {
-            Object = new Thing();
-            strProperty = "";
-            strPropertyName = "";
             This = this;
         }
 
