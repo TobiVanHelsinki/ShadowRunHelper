@@ -29,7 +29,7 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return item.strProperty;
+                        return item.strPropertyName;
                     }
                 case "Zusatz":
                     return item.Object.Zusatz;

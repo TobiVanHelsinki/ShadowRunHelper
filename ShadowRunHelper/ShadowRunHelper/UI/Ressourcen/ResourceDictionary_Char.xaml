@@ -366,7 +366,7 @@
         <Setter Property="Orientation" Value="Vertical"/>
     </Style>
 
-    <Style TargetType="Grid" x:Key="ListView_ThingList">
+    <Style TargetType="StackPanel" x:Key="ListView_ThingList">
         <Setter Property="Margin" Value="0"/>
     </Style>
     <Style TargetType="GridViewItem" x:Key="ListView_ThingListContainerTemplate">

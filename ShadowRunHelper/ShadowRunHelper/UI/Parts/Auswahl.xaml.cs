@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
-using ShadowRunHelper.CharModel;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Data;
 using System;
 using System.Linq;
-using Windows.UI.Xaml;
 using ShadowRunHelper.Model;
 
 namespace ShadowRunHelper
@@ -93,6 +91,8 @@ namespace ShadowRunHelper
             {
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
             }
+#else
+            ShadowRunHelper.Model.ViewModel.Instance.NewNotification(Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView().GetString("Notification_Error_AuswahlToLess"));
 #endif
         }
 

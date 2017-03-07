@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>bb0c6b37-39c5-4163-98df-32df1bae8f3d</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CharController\Attribut.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharController\Controller.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharController\CyberDeck.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharController\Fernkampfwaffe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharController\IController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharController\Kommlink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharController\Nahkampfwaffe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharController\Panzerung.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharController\Vehikel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Adeptenkraft_KomplexeForm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Attribut.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Connection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\CyberDeck.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Eigenschaft.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Fernkampfwaffe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Fertigkeit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Foki_Widgets.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Geist_Sprite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Handlung.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Implantat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Item.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Kommlink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Munition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Nachteil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Nahkampfwaffe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Panzerung.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Person.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Programm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Sin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Strömung_Wandlung.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Thing.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Tradition_Initiation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Vehikel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Vorteil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Waffe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Zaubersprüche.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Attribut.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Connection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Controller.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\ControllerMulti.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\ControllerMultiItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\ControllerSingle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Cyberdeck.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Eigenschaft.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Fernkampfwaffe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Fertigkeit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Handlung.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Implantat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Item.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Kommlink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Munition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Nachteil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Nahkampfwaffe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Panzerung.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Programm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Sin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Vehikel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharController\Vorteil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Attribut.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Connection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\CyberDeck.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Eigenschaft.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Fernkampfwaffe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Fertigkeit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Handlung.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Implantat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Item.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Kommlink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Model.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Munition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Nachteil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Nahkampfwaffe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Panzerung.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Person.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Programm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Sin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Vehikel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Vorteil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\CharModel\Waffe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Controller\CharHolder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Controller\HashDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\IO\CharIO.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Model\DictionaryCharEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Model\Variablen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Ressourcen\TypNamen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\CharHolder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\CharSummory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Notification.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ThingListEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ViewModel_Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Exceptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Konstanten.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Optionen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Typen.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Strings\de-de\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram1.cd" />
+    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram2.cd" />
+    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram3.cd" />
+    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram4.cd" />
+    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram5.cd" />
+    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram6.cd" />
+    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram7.cd" />
+    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram8.cd" />
+    <None Include="$(MSBuildThisFileDirectory)Zusätze\Hilfe.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\#Logo1_2500x2500.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\#Logo2.svg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\#Shadowrun-logo.svg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\#TVorlage.svg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\BadgeLogo.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\BadgeLogo.scale-125.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\BadgeLogo.scale-150.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\BadgeLogo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\BadgeLogo.scale-400.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Logo2.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\NewStoreLogo.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\NewStoreLogo.scale-125.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\NewStoreLogo.scale-150.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\NewStoreLogo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\NewStoreLogo.scale-400.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\SplashScreen.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\SplashScreen.scale-125.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\SplashScreen.scale-150.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\SplashScreen.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\SplashScreen.scale-400.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square150x150Logo.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square150x150Logo.scale-125.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square150x150Logo.scale-150.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square150x150Logo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square150x150Logo.scale-400.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square310x310Logo.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square310x310Logo.scale-125.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square310x310Logo.scale-150.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square310x310Logo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square310x310Logo.scale-400.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.scale-125.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.scale-150.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.scale-400.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.targetsize-16.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.targetsize-16_altform-unplated.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.targetsize-24.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.targetsize-256.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.targetsize-256_altform-unplated.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.targetsize-32.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.targetsize-32_altform-unplated.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.targetsize-48.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square44x44Logo.targetsize-48_altform-unplated.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square71x71Logo.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square71x71Logo.scale-125.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square71x71Logo.scale-150.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square71x71Logo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Square71x71Logo.scale-400.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Wide310x150Logo.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Wide310x150Logo.scale-125.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Wide310x150Logo.scale-150.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Wide310x150Logo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Logo\Wide310x150Logo.scale-400.png" />
+  </ItemGroup>
+</Project>

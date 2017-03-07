@@ -28,8 +28,8 @@
                 </StackPanel>
             </DataTemplate>
             <DataTemplate x:Key="ThingListEntry" x:DataType="model:ThingListEntry">
-                <Grid Name="Zus_ListVIew_Stack" Style="{StaticResource ListView_ThingList}">
-                    <Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Name="Zus_ListVIew_Stack" Style="{StaticResource ListView_ThingList}">
+                    <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -37,12 +37,12 @@
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
-                    </Grid.RowDefinitions>
+                    </Grid.RowDefinitions>-->
                     <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Bezeichner}" Grid.Column="0"/>
                     <TextBlock x:Uid="Doppelpunkt" Grid.Column="1"/>
                     <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Wert}" Grid.Column="2"/>
-                    <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Zusatz}" Grid.Row="1" Grid.ColumnSpan="3"/>
-                </Grid>
+                    <TextBlock Text="{x:Bind Object.Zusatz}" Grid.Row="1" Grid.ColumnSpan="3"/>
+                </StackPanel>
             </DataTemplate>
             <DataTemplate x:Name="Handlung_E" x:Key="Handlung_E">
                 <Grid Style="{StaticResource ListView_E}">
