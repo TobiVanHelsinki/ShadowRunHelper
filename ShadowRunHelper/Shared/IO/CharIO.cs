@@ -107,11 +107,12 @@ namespace ShadowRunHelper.IO
                     test.Error = SerializationErrorHandler;
                     test.PreserveReferencesHandling = PreserveReferencesHandling.All;
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, test);
-                    ReturnCharHolder.RefreshThingList();
                     break;
                 default:
                     throw new Exception(ExceptionMessages.IO_DeserializeVersion_Error);
             }
+            ReturnCharHolder.RefreshThingList();
+            ReturnCharHolder.Repair();
             return ReturnCharHolder;
         }
 

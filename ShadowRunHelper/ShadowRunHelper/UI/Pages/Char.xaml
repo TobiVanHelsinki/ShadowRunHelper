@@ -28,7 +28,7 @@
                 </StackPanel>
             </DataTemplate>
             <ItemsPanelTemplate x:Key="ThingListEntry_Panel">
-                    <StackPanel Background="Transparent" Orientation="Horizontal" />
+                    <StackPanel Background="Transparent" Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
             </ItemsPanelTemplate>
             <DataTemplate x:Key="ThingListEntry" x:DataType="model:ThingListEntry">
                 <Grid>
@@ -41,7 +41,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Bezeichner, Mode=OneWay}"/>
+                    <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
                     <TextBlock x:Uid="Doppelpunkt" Grid.Column="1"/>
                     <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Wert, Mode=OneWay}" Grid.Column="2"/>
                     <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.ColumnSpan="3"/>

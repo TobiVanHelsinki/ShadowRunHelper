@@ -17,11 +17,11 @@ namespace ShadowRunHelper.CharController
         public cNahkampfwaffeController()
         {
             ActiveItem = new Nahkampfwaffe();
-            ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_Nahkampfwaffe__Aktiv/Text");
-            MI_Wert = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Waffe_Wert/Text"));
-            MI_DK = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Waffe_PB/Text"), "PB");
-            MI_Pr = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Waffe_Präzision/Text"), "Präzision");
-            MI_Reich = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Nahkampfwaffe_Reichweite/Text"), "Reichweite");
+            //ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_Nahkampfwaffe__Aktiv/Text");
+            MI_Wert = new ThingListEntry(ActiveItem, ("Model_Waffe_Wert/Text"));
+            MI_DK = new ThingListEntry(ActiveItem, ("Model_Waffe_PB/Text"), "PB");
+            MI_Pr = new ThingListEntry(ActiveItem, ("Model_Waffe_Präzision/Text"), "Präzision");
+            MI_Reich = new ThingListEntry(ActiveItem, ("Model_Nahkampfwaffe_Reichweite/Text"), "Reichweite");
 
             Data.CollectionChanged += Data_CollectionChanged;
         }

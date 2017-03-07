@@ -24,17 +24,17 @@ namespace ShadowRunHelper.CharController
         public cVehikelController()
         {
             ActiveItem = new Vehikel();
-            ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_Vehikel__Aktiv/Text");
-            MI_1 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Thing_Wert/Text"));
-            MI_2 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Vehikel_Sitze/Text"), "Sitze");
-            MI_3 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Vehikel_Sensor/Text"), "Sensor");
-            MI_4 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Vehikel_Rumpf/Text"), "Rumpf");
-            MI_5 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Vehikel_Pilot/Text"), "Pilot");
-            MI_6 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Vehikel_Panzerung/Text"), "Panzerung");
-            MI_7 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Vehikel_Handling/Text"), "Handling");
-            MI_8 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Vehikel_Gewicht/Text"), "Gewicht");
-            MI_9 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Vehikel_Geschwindigkeit/Text"), "Geschwindigkeit");
-            MI_10 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Vehikel_Beschleunigung/Text"), "Beschleunigung");
+            //ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_Vehikel__Aktiv/Text");
+            MI_1 = new ThingListEntry(ActiveItem, ("Model_Thing_Wert/Text"));
+            MI_2 = new ThingListEntry(ActiveItem, ("Model_Vehikel_Sitze/Text"), "Sitze");
+            MI_3 = new ThingListEntry(ActiveItem, ("Model_Vehikel_Sensor/Text"), "Sensor");
+            MI_4 = new ThingListEntry(ActiveItem, ("Model_Vehikel_Rumpf/Text"), "Rumpf");
+            MI_5 = new ThingListEntry(ActiveItem, ("Model_Vehikel_Pilot/Text"), "Pilot");
+            MI_6 = new ThingListEntry(ActiveItem, ("Model_Vehikel_Panzerung/Text"), "Panzerung");
+            MI_7 = new ThingListEntry(ActiveItem, ("Model_Vehikel_Handling/Text"), "Handling");
+            MI_8 = new ThingListEntry(ActiveItem, ("Model_Vehikel_Gewicht/Text"), "Gewicht");
+            MI_9 = new ThingListEntry(ActiveItem, ("Model_Vehikel_Geschwindigkeit/Text"), "Geschwindigkeit");
+            MI_10 = new ThingListEntry(ActiveItem, ("Model_Vehikel_Beschleunigung/Text"), "Beschleunigung");
 
             Data.CollectionChanged += Data_CollectionChanged;
         }

@@ -439,7 +439,7 @@ namespace ShadowRunHelper.Model
             foreach (var item in SourceCollection)
             {
                 ThingListEntry NewEntry;
-                NewEntry = lstThings.Find(x => x.Object.Equals(item.Object));
+                NewEntry = lstThings.Find(x => x.Object.Equals(item.Object) && x.strProperty == item.strProperty);
                 if (NewEntry == null)
                 {
                     NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner && x.strProperty == item.strProperty);

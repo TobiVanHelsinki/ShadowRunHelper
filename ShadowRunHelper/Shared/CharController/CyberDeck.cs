@@ -19,12 +19,12 @@ namespace ShadowRunHelper.CharController
         {
             ActiveItem = new CyberDeck();
             ActiveItem.PropertyChanged += (x, y) => RefreshOriginDeck();
-            ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_CyberDeck__Aktiv/Text");
-            MI_V = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Thing_Wert/Text"), "Wert");
-            MI_A = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_CyberDeck_Angriff/Text"), "Angriff");
-            MI_S = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_CyberDeck_Schleicher/Text"), "Schleicher");
-            MI_F = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Kommlink_Firewall/Text"), "Firewall");
-            MI_D = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Kommlink_Datenverarbeitung/Text"), "Datenverarbeitung");
+            //ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_CyberDeck__Aktiv/Text");
+            MI_V = new ThingListEntry(ActiveItem, ("Model_Thing_Wert/Text"), "Wert");
+            MI_A = new ThingListEntry(ActiveItem, ("Model_CyberDeck_Angriff/Text"), "Angriff");
+            MI_S = new ThingListEntry(ActiveItem, ("Model_CyberDeck_Schleicher/Text"), "Schleicher");
+            MI_F = new ThingListEntry(ActiveItem, ("Model_Kommlink_Firewall/Text"), "Firewall");
+            MI_D = new ThingListEntry(ActiveItem, ("Model_Kommlink_Datenverarbeitung/Text"), "Datenverarbeitung");
 
             Data.CollectionChanged += Data_CollectionChanged;
         }

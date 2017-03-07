@@ -17,10 +17,10 @@ namespace ShadowRunHelper.CharController
         public cPanzerungController()
         {
             ActiveItem = new Panzerung();
-            ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_Panzerung__Aktiv/Text");
-            MI_1 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Thing_Wert/Text"));
-            MI_2 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Panzerung_Kapazität/Text"), "Kapazität");
-            MI_3 = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Panzerung_Stoß/Text"), "Stoß");
+            //ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_Panzerung__Aktiv/Text");
+            MI_1 = new ThingListEntry(ActiveItem, ("Model_Thing_Wert/Text"));
+            MI_2 = new ThingListEntry(ActiveItem, ("Model_Panzerung_Kapazität/Text"), "Kapazität");
+            MI_3 = new ThingListEntry(ActiveItem, ("Model_Panzerung_Stoß/Text"), "Stoß");
             
             Data.CollectionChanged += Data_CollectionChanged;
         }

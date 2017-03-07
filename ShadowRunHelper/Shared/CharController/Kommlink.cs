@@ -17,10 +17,10 @@ namespace ShadowRunHelper.CharController
         public cKommlinkController()
         {
             ActiveItem = new Kommlink();
-            ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_Kommlink__Aktiv/Text");
-            MI_V = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Thing_Wert/Text"), "Wert");
-            MI_F = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Kommlink_Firewall/Text"),"Firewall");
-            MI_D = new ThingListEntry(ActiveItem, CrossPlattformHelper.GetString("Model_Kommlink_Datenverarbeitung/Text"), "Datenverarbeitung");
+            //ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_Kommlink__Aktiv/Text");
+            MI_V = new ThingListEntry(ActiveItem, ("Model_Thing_Wert/Text"), "Wert");
+            MI_F = new ThingListEntry(ActiveItem, ("Model_Kommlink_Firewall/Text"),"Firewall");
+            MI_D = new ThingListEntry(ActiveItem, ("Model_Kommlink_Datenverarbeitung/Text"), "Datenverarbeitung");
 
             Data.CollectionChanged += Data_CollectionChanged;
         }

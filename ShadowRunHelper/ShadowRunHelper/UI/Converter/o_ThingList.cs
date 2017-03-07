@@ -29,7 +29,16 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return item.strPropertyName;
+                        return CrossPlattformHelper.GetString(item.strPropertyName);
+                    }
+                case "BezeichnerLang":
+                    if (item?.strProperty == "")
+                    {
+                        return item.Object.Bezeichner;
+                    }
+                    else
+                    {
+                        return TypenHelper.ThingDefToString(item.Object.ThingType, false)+" "+CrossPlattformHelper.GetString(item.strPropertyName);
                     }
                 case "Zusatz":
                     return item.Object.Zusatz;
