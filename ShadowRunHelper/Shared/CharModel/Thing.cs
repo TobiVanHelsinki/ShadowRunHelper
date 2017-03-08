@@ -103,11 +103,14 @@ namespace ShadowRunHelper.CharModel
             }
             try
             {
+#if DEBUG
                 Type t = this.GetType();
                 var pinfo = t.GetProperty(ID);
                 object value = pinfo.GetValue(this);
                 return double.Parse(value.ToString());
+#else 
                 return double.Parse(this.GetType().GetProperty(ID).GetValue(this).ToString());
+#endif
             }
             catch (Exception)
             {

@@ -110,7 +110,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Typen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Strings\de-de\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-de\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
