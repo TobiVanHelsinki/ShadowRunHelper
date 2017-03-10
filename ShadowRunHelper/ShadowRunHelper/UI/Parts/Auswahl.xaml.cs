@@ -91,9 +91,8 @@ namespace ShadowRunHelper
             {
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
             }
-#else
-            ShadowRunHelper.Model.ViewModel.Instance.NewNotification(Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView().GetString("Notification_Error_AuswahlToLess"));
 #endif
+            AppModel.Instance.NewNotification(Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView().GetString("Notification_Error_AuswahlToLess"));
         }
 
     }

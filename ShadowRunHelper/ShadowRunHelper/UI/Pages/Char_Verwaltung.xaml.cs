@@ -238,6 +238,7 @@ namespace ShadowRunHelper
             try
             {
                 ViewModel.CurrentChar = await CharIO.LoadChar(Place.Extern);
+                ViewModel.RequestedNavigation(ProjectPages.Char, this);
             }
             catch (Exception ex)
             {

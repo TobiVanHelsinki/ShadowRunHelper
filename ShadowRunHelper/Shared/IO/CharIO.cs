@@ -206,7 +206,7 @@ namespace ShadowRunHelper.IO
 
         internal static async Task<CharHolder> LoadChar(Place ePlace, string strSaveName = "", string strSavePath = "", List<string> FileTypes = null, UserDecision eUD = UserDecision.AskUser)
         {
-            return String_to_Char(await GetIO().Load(GetCurrentSavePlace(), strSaveName, strSavePath, FileTypes, eUD));
+            return String_to_Char(await GetIO().Load(ePlace, strSaveName, strSavePath, FileTypes, eUD));
         }
     }
 }
