@@ -86,7 +86,7 @@ namespace ShadowRunHelper
         /// </summary>
         /// <param name="sender">Die Quelle der Anhalteanforderung.</param>
         /// <param name="e">Details zur Anhalteanforderung.</param>
-        private async void OnSuspending(object sender, SuspendingEventArgs e)
+        async void OnSuspending(object sender, SuspendingEventArgs e)
         {
             if (AppSettings.Instance.SAVE_CHAR_ON_EXIT && ViewModel.CurrentChar != null)
             {

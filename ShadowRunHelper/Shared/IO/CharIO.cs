@@ -44,11 +44,13 @@ namespace ShadowRunHelper.IO
         private static string Char_to_String(CharHolder SaveChar)
         {
 
-            JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.MissingMemberHandling = MissingMemberHandling.Ignore;
-            //settings.NullValueHandling = NullValueHandling.Include; 
-            settings.PreserveReferencesHandling = PreserveReferencesHandling.All; //war vorher objects
-            settings.Error = SerializationErrorHandler;
+            JsonSerializerSettings settings = new JsonSerializerSettings()
+            {
+                MissingMemberHandling = MissingMemberHandling.Ignore,
+                //settings.NullValueHandling = NullValueHandling.Include; 
+                PreserveReferencesHandling = PreserveReferencesHandling.All, //war vorher objects
+                Error = SerializationErrorHandler
+            };
 #if __ANDROID__
             throw new NotImplementedException();
             //return JsonConvert.SerializeObject(SaveChar, null, settings);
@@ -97,15 +99,16 @@ namespace ShadowRunHelper.IO
             switch (strFileVersion)
             {
                 case Konstanten.CHARFILE_VERSION_1_3:
-                    ShadowRunHelper1_3.Controller.CharHolder CH1_3 = new ShadowRunHelper1_3.Controller.CharHolder();
-                    CH1_3 = ShadowRunHelper1_3.IO.CharIO.JSON_to_Char(fileContent);
+                    ShadowRunHelper1_3.Controller.CharHolder CH1_3 = ShadowRunHelper1_3.IO.CharIO.JSON_to_Char(fileContent);
                     ReturnCharHolder = OldConverter.ConvertVersion1_3to1_5(CH1_3);
                     GC.Collect();
                     break;
                 case Konstanten.CHARFILE_VERSION_1_5:
-                    JsonSerializerSettings test = new JsonSerializerSettings();
-                    test.Error = SerializationErrorHandler;
-                    test.PreserveReferencesHandling = PreserveReferencesHandling.All;
+                    JsonSerializerSettings test = new JsonSerializerSettings()
+                    {
+                        Error = SerializationErrorHandler,
+                        PreserveReferencesHandling = PreserveReferencesHandling.All
+                    };
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, test);
                     break;
                 default:
