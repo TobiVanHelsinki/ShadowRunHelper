@@ -32,7 +32,7 @@ namespace ShadowRunHelper.CharModel
         string bezeichner ="";
         public string Bezeichner
         {
-            get { return bezeichner; }
+            get => bezeichner;
             set
             {
                 if (value != bezeichner)
@@ -45,7 +45,7 @@ namespace ShadowRunHelper.CharModel
         string typ = "";
         public string Typ
         {
-            get { return typ; }
+            get => typ;
             set
             {
                 if (value != typ)

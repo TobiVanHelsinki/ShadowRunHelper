@@ -1,7 +1,5 @@
-﻿using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.Model;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace ShadowRunHelper.CharController
 {
@@ -15,6 +13,5 @@ namespace ShadowRunHelper.CharController
         /// </summary>
         /// <returns></returns>
         List<ThingListEntry> GetElementsForThingList();
-
     }
 }

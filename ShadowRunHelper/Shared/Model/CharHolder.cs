@@ -44,9 +44,10 @@ namespace ShadowRunHelper.Model
         [Newtonsoft.Json.JsonIgnore]
         List<ThingListEntry> _lstThings;
         [Newtonsoft.Json.JsonIgnore]
-        public List<ThingListEntry> lstThings { get { return _lstThings; } set { _lstThings = value; } }
+        public List<ThingListEntry> lstThings { get => _lstThings; set => _lstThings = value; }
         //List<cController<Thing>> lstCTRL;
-            //List<cController<T>> bla, where T : Thing, new();
+        //List<IController> lstCTRL;
+        //List<cController<T>> bla, where T : Thing, new();
 
         public Person Person { get; set; }
 
@@ -55,6 +56,13 @@ namespace ShadowRunHelper.Model
         /// </summary>
         public CharHolder()
         {
+            //lstCTRL.Add(CTRLAdeptenkraft_KomplexeForm);
+            //lstCTRL.Add(CTRLAttribut);
+            //lstCTRL.Add(CTRLConnection);
+            //foreach (var item in lstCTRL)
+            //{
+            //    item.AddNewThing();
+            //}
             CTRLFertigkeit = new cController<Fertigkeit>();
             CTRLItem = new cController<Item>();
             CTRLProgramm = new cController<Programm>();
@@ -201,6 +209,39 @@ namespace ShadowRunHelper.Model
             //_lstThings.AddRange(CTRLHandlung.GetElementsForThingList()); // nötig?
         }
 
+        void DoForAll()
+        {
+            _lstThings.Clear();
+            _lstThings.AddRange(CTRLAttribut.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLFertigkeit.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLFernkampfwaffe.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLNahkampfwaffe.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLPanzerung.GetElementsForThingList()); //liefert immer das selbe
+
+            _lstThings.AddRange(CTRLItem.GetElementsForThingList());
+
+            _lstThings.AddRange(CTRLCyberDeck.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLKommlink.GetElementsForThingList()); //liefert immer das selbe
+            _lstThings.AddRange(CTRLVehikel.GetElementsForThingList()); //liefert immer das selbe
+
+            _lstThings.AddRange(CTRLProgramm.GetElementsForThingList());
+            _lstThings.AddRange(CTRLMunition.GetElementsForThingList());
+            _lstThings.AddRange(CTRLImplantat.GetElementsForThingList());
+            _lstThings.AddRange(CTRLVorteil.GetElementsForThingList());
+            _lstThings.AddRange(CTRLNachteil.GetElementsForThingList());
+            _lstThings.AddRange(CTRLConnection.GetElementsForThingList());
+            _lstThings.AddRange(CTRLSin.GetElementsForThingList());
+
+            _lstThings.AddRange(CTRLAdeptenkraft_KomplexeForm.GetElementsForThingList());
+            _lstThings.AddRange(CTRLFoki_Widgets.GetElementsForThingList());
+            _lstThings.AddRange(CTRLGeist_Sprite.GetElementsForThingList());
+            _lstThings.AddRange(CTRLStrömung_Wandlung.GetElementsForThingList());
+            _lstThings.AddRange(CTRLTradition_Initiation.GetElementsForThingList());
+            _lstThings.AddRange(CTRLZaubersprüche.GetElementsForThingList());
+
+            //_lstThings.AddRange(CTRLHandlung.GetElementsForThingList()); // nötig?
+        }
+
         internal void Remove(Thing tToRemove)
         {
             switch (tToRemove.ThingType)
@@ -295,25 +336,25 @@ namespace ShadowRunHelper.Model
         {
             var lstReturn = new List<KeyValuePair<string, string>>();
             const string strNewLine = "\n";
-            string strNew = "sep="+strDelimiter+strNewLine;
-        
-            lstReturn.Add( CTRLAttribut.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLConnection.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLCyberDeck.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLFernkampfwaffe.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLFertigkeit.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLHandlung.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLImplantat.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLItem.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLKommlink.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLMunition.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLNachteil.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLNahkampfwaffe.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLPanzerung.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLProgramm.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLSin.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLVehikel.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            lstReturn.Add( CTRLVorteil.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            string strNew = "sep=" + strDelimiter + strNewLine;
+
+            lstReturn.Add(CTRLAttribut.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLConnection.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLCyberDeck.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLFernkampfwaffe.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLFertigkeit.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLHandlung.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLImplantat.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLItem.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLKommlink.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLMunition.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLNachteil.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLNahkampfwaffe.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLPanzerung.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLProgramm.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLSin.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLVehikel.MultipleCSVExport(strDelimiter, strNewLine, strNew));
+            lstReturn.Add(CTRLVorteil.MultipleCSVExport(strDelimiter, strNewLine, strNew));
 
             lstReturn.Add(CTRLAdeptenkraft_KomplexeForm.MultipleCSVExport(strDelimiter, strNewLine, strNew));
             lstReturn.Add(CTRLGeist_Sprite.MultipleCSVExport(strDelimiter, strNewLine, strNew));
@@ -458,6 +499,18 @@ namespace ShadowRunHelper.Model
             {
                 SourceCollection.Add(item);
             }
+        }
+        static (string, string) Test()
+        {
+            string uno = "1";
+            string dos = "2";
+            return (uno, dos);
+        }
+
+        static void bla()
+        {
+            (string first, string last) = Test();
+
         }
     }
 }
