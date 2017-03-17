@@ -461,6 +461,34 @@ namespace ShadowRunHelper.Model
 
         public void Repair()
         {
+            //declare submethod
+            void RepairThingListRefs(ObservableCollection<ThingListEntry> SourceCollection, List<ThingListEntry> lstThings)
+            {
+                var TargetCollection = new ObservableCollection<ThingListEntry>();
+                foreach (var item in SourceCollection)
+                {
+                    ThingListEntry NewEntry;
+                    NewEntry = lstThings.Find(x => x.Object.Equals(item.Object) && x.strProperty == item.strProperty);
+                    if (NewEntry == null)
+                    {
+                        NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner && x.Object.ThingType.Equals(item.Object.ThingType) && x.strProperty.Equals(item.strProperty));
+                    }
+                    if (NewEntry == null)
+                    {
+                        NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner);
+                    }
+                    if (NewEntry != null)
+                    {
+                        TargetCollection.Add(NewEntry);
+                    }
+                }
+                SourceCollection.Clear();
+                foreach (var item in TargetCollection)
+                {
+                    SourceCollection.Add(item);
+                }
+            }
+            // start repair
             RefreshThingList();
             foreach (var item in CTRLHandlung.Data)
             {
@@ -474,32 +502,6 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        private static void RepairThingListRefs(ObservableCollection<ThingListEntry> SourceCollection, List<ThingListEntry> lstThings)
-        {
-            var TargetCollection = new ObservableCollection<ThingListEntry>();
-            foreach (var item in SourceCollection)
-            {
-                ThingListEntry NewEntry;
-                NewEntry = lstThings.Find(x => x.Object.Equals(item.Object) && x.strProperty == item.strProperty);
-                if (NewEntry == null)
-                {
-                    NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner && x.strProperty == item.strProperty);
-                }
-                if (NewEntry == null)
-                {
-                    NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner);
-                }
-                if (NewEntry != null)
-                {
-                    TargetCollection.Add(NewEntry);
-                }
-            }
-            SourceCollection.Clear();
-            foreach (var item in TargetCollection)
-            {
-                SourceCollection.Add(item);
-            }
-        }
         static (string, string) Test()
         {
             string uno = "1";

@@ -86,13 +86,13 @@ namespace ShadowRunHelper
                 Zus_ListVIew.SelectRange(new ItemIndexRange(tepmindex, 1));
                 
             }
-#if DEBUG
             if (Zus_ListVIew.SelectedItems.Count < lstZusammensetzung.Count)
             {
+#if DEBUG
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-            }
 #endif
-            AppModel.Instance.NewNotification(Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView().GetString("Notification_Error_AuswahlToLess"));
+                AppModel.Instance.NewNotification(Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView().GetString("Notification_Error_AuswahlToLess"));
+            }
         }
 
     }
