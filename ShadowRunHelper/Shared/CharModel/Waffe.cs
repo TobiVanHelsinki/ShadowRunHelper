@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -70,11 +70,11 @@ namespace ShadowRunHelper.CharModel
         public override string HeaderToCSV(string Delimiter)
         {
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlattformHelper.GetString("Model_Waffe_Präzision/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Waffe_Präzision/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlattformHelper.GetString("Model_Waffe_SchadenTyp/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Waffe_SchadenTyp/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlattformHelper.GetString("Model_Waffe_PB/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Waffe_PB/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -84,17 +84,17 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlattformHelper.GetString("Model_Waffe_Präzision/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_Präzision/Text"))
                 {
                     Präzision = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == CrossPlattformHelper.GetString("Model_Waffe_SchadenTyp/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_SchadenTyp/Text"))
                 {
                     SchadenTyp = item.Value;
                     continue;
                 }
-                if (item.Key == CrossPlattformHelper.GetString("Model_Waffe_PB/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_PB/Text"))
                 {
                     PB = double.Parse(item.Value);
                     continue;

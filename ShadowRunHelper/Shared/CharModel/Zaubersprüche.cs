@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -90,11 +91,11 @@ namespace ShadowRunHelper.CharModel
         public override string HeaderToCSV(string Delimiter)
         {
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlattformHelper.GetString("Model_Zaubersprüche_Reichweite/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Zaubersprüche_Reichweite/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlattformHelper.GetString("Model_Zaubersprüche_Dauer/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Zaubersprüche_Dauer/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlattformHelper.GetString("Model_Zaubersprüche_Entzug/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Zaubersprüche_Entzug/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -105,17 +106,17 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlattformHelper.GetString("Model_Zaubersprüche_Reichweite/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Zaubersprüche_Reichweite/Text"))
                 {
                     this.Reichweite = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == CrossPlattformHelper.GetString("Model_Zaubersprüche_Dauer/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Zaubersprüche_Dauer/Text"))
                 {
                     this.Dauer = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == CrossPlattformHelper.GetString("Model_Zaubersprüche_Entzug/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Zaubersprüche_Entzug/Text"))
                 {
                     this.Entzug = double.Parse(item.Value);
                     continue;

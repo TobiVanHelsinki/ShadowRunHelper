@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -71,9 +71,9 @@ namespace ShadowRunHelper.CharModel
         public override string HeaderToCSV(string Delimiter)
         {
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlattformHelper.GetString("Model_Connection_Loyal/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Connection_Loyal/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlattformHelper.GetString("Model_Connection_Einfluss/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Connection_Einfluss/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -83,12 +83,12 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlattformHelper.GetString("Model_Connection_Loyal/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Connection_Loyal/Text"))
                 {
                     Loyal = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == CrossPlattformHelper.GetString("Model_Connection_Einfluss/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Connection_Einfluss/Text"))
                 {
                     Einfluss = double.Parse(item.Value);
                     continue;

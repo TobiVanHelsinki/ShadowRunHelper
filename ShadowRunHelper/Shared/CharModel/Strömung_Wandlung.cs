@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -74,9 +74,9 @@ namespace ShadowRunHelper.CharModel
         public override string HeaderToCSV(string Delimiter)
         {
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlattformHelper.GetString("Model_Strömung_Wandlung_Paragon/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Strömung_Wandlung_Paragon/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlattformHelper.GetString("Model_Strömung_Wandlung_Echos/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Strömung_Wandlung_Echos/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -86,12 +86,12 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlattformHelper.GetString("Model_Strömung_Wandlung_Paragon/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Strömung_Wandlung_Paragon/Text"))
                 {
                     this.Paragon = (item.Value);
                     continue;
                 }
-                if (item.Key == CrossPlattformHelper.GetString("Model_Strömung_Wandlung_Echos/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Strömung_Wandlung_Echos/Text"))
                 {
                     this.Echos = (item.Value);
                     continue;

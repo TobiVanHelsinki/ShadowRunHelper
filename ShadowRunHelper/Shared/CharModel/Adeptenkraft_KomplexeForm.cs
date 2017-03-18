@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-
+using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -59,7 +59,7 @@ namespace ShadowRunHelper.CharModel
         public override string HeaderToCSV(string Delimiter)
         {
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlattformHelper.GetString("Model_Adeptenkraft_KomplexeForm_Option/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Adeptenkraft_KomplexeForm_Option/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -70,7 +70,7 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlattformHelper.GetString("Model_Adeptenkraft_KomplexeForm_Option/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Adeptenkraft_KomplexeForm_Option/Text"))
                 {
                     this.Option = (item.Value);
                     continue;

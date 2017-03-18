@@ -17,7 +17,7 @@ namespace ShadowRunHelper.CharController
         public cNahkampfwaffeController()
         {
             ActiveItem = new Nahkampfwaffe();
-            //ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_Nahkampfwaffe__Aktiv/Text");
+            //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_Nahkampfwaffe__Aktiv/Text");
             MI_Wert = new ThingListEntry(ActiveItem, ("Model_Waffe_Wert/Text"));
             MI_DK = new ThingListEntry(ActiveItem, ("Model_Waffe_PB/Text"), "PB");
             MI_Pr = new ThingListEntry(ActiveItem, ("Model_Waffe_Präzision/Text"), "Präzision");

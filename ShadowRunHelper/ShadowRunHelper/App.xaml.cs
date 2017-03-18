@@ -1,12 +1,16 @@
 ﻿using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
+using TLIB;
+using TLIB.Model;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Shared.IO;
+using TLIB.IO;
 
 namespace ShadowRunHelper
 {
@@ -34,15 +38,15 @@ namespace ShadowRunHelper
 
         async void CreateDataStructure()
         {
-            await ApplicationData.Current.RoamingFolder.CreateFolderAsync(Konstanten.CONTAINER_CHAR, CreationCollisionOption.OpenIfExists);
-            ApplicationData.Current.LocalSettings.CreateContainer(Konstanten.CONTAINER_SETTINGS, ApplicationDataCreateDisposition.Always);
+            await ApplicationData.Current.RoamingFolder.CreateFolderAsync(Constants.CONTAINER_CHAR, CreationCollisionOption.OpenIfExists);
+            ApplicationData.Current.LocalSettings.CreateContainer(Constants.CONTAINER_SETTINGS, ApplicationDataCreateDisposition.Always);
         }
 
         async void App_UnhandledExceptionAsync(object sender, UnhandledExceptionEventArgs e)
         {
             this.UnhandledException -= App_UnhandledExceptionAsync;
             e.Handled = true;
-            await IO.CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar, IO.SaveType.Emergency);
+            await CharHolderIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar, TLIB.IO.SaveType.Emergency);
             AppSettings.Instance.Settings.SetStrLastChar("");
             var res = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
             ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_Unknown"), e.Exception));
@@ -61,7 +65,7 @@ namespace ShadowRunHelper
                 AppSettings.Instance.Settings.SetBIsFileInProgress(false);
                 try
                 {
-                    ViewModel.CurrentChar = await IO.CharIO.LoadCharAtCurrentPlaceAndThrow(AppSettings.Instance.Settings.GetStrLastChar());
+                    ViewModel.CurrentChar = await CharHolderIO.LoadCharAtCurrentPlaceAndThrow(AppSettings.Instance.Settings.GetStrLastChar());
                 }
                 catch (Exception) { }
             }
@@ -92,7 +96,7 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    await IO.CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar);
+                    await CharHolderIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar);
                 }
                 catch (Exception)
                 {
@@ -100,7 +104,7 @@ namespace ShadowRunHelper
             }
             try
             {
-                AppSettings.Instance.Settings.SetStrLastChar(ViewModel.CurrentChar.MakeName());
+                AppSettings.Instance.Settings.SetStrLastChar(ViewModel.CurrentChar.GetFileName());
             }
             catch (Exception)
             {
@@ -115,7 +119,7 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    await IO.CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar);
+                    await CharHolderIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar);
                 }
                 catch (Exception)
                 {
@@ -123,7 +127,7 @@ namespace ShadowRunHelper
             }
             try
             {
-                ViewModel.CurrentChar = await CharIO.LoadChar(IO.Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length));
+                ViewModel.MainObject = await CharHolderIO.LoadChar(Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length));
                 ViewModel.RequestedNavigation(ProjectPages.Char);
             }
             catch (Exception)

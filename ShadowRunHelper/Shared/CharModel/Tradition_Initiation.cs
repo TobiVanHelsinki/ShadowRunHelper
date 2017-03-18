@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -74,9 +74,9 @@ namespace ShadowRunHelper.CharModel
         public override string HeaderToCSV(string Delimiter)
         {
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlattformHelper.GetString("Model_Tradition_Initiation_Schutzpatron/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Tradition_Initiation_Schutzpatron/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlattformHelper.GetString("Model_Tradition_Initiation_Metamagie/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Tradition_Initiation_Metamagie/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -87,12 +87,12 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlattformHelper.GetString("Model_Tradition_Initiation_Schutzpatron/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Tradition_Initiation_Schutzpatron/Text"))
                 {
                     this.Schutzpatron = (item.Value);
                     continue;
                 }
-                if (item.Key == CrossPlattformHelper.GetString("Model_Tradition_Initiation_Metamagie/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Tradition_Initiation_Metamagie/Text"))
                 {
                     this.Metamagie = (item.Value);
                     continue;

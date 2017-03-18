@@ -1,5 +1,7 @@
 ﻿using ShadowRunHelper;
 using ShadowRunHelper.Model;
+using TLIB;
+using TLIB.Model;
 
 namespace ShadowRunHelper.IO
 {
@@ -30,41 +32,41 @@ namespace ShadowRunHelper.IO
             
             foreach (var item in cH1_3.AttributController)
             {
-                if (item.Data.Bezeichner == CrossPlattformHelper.GetString("Model_Attribut_Konsti/Text"))
+                if (item.Data.Bezeichner == CrossPlatformHelper.GetString("Model_Attribut_Konsti/Text"))
                 {
                     CopyAttribute(ReturnCharHolder.CTRLAttribut.Konsti, item.Data);
                 }
-                else if (item.Data.Bezeichner == CrossPlattformHelper.GetString("Model_Attribut_Geschick/Text"))
+                else if (item.Data.Bezeichner == CrossPlatformHelper.GetString("Model_Attribut_Geschick/Text"))
                 {
                     CopyAttribute(ReturnCharHolder.CTRLAttribut.Geschick, item.Data);
                 }
-                else if (item.Data.Bezeichner == CrossPlattformHelper.GetString("Model_Attribut_Reaktion/Text"))
+                else if (item.Data.Bezeichner == CrossPlatformHelper.GetString("Model_Attribut_Reaktion/Text"))
                 {
                     CopyAttribute(ReturnCharHolder.CTRLAttribut.Reaktion, item.Data);
                 }
-                else if (item.Data.Bezeichner == CrossPlattformHelper.GetString("Model_Attribut_Staerke/Text"))
+                else if (item.Data.Bezeichner == CrossPlatformHelper.GetString("Model_Attribut_Staerke/Text"))
                 {
                     CopyAttribute(ReturnCharHolder.CTRLAttribut.Staerke, item.Data);
                 }
-                else if (item.Data.Bezeichner == CrossPlattformHelper.GetString("Model_Attribut_Charisma/Text"))
+                else if (item.Data.Bezeichner == CrossPlatformHelper.GetString("Model_Attribut_Charisma/Text"))
                 {
                     CopyAttribute(ReturnCharHolder.CTRLAttribut.Charisma, item.Data);
                 }
-                else if (item.Data.Bezeichner == CrossPlattformHelper.GetString("Model_Attribut_Logik/Text"))
+                else if (item.Data.Bezeichner == CrossPlatformHelper.GetString("Model_Attribut_Logik/Text"))
                 {
                     CopyAttribute(ReturnCharHolder.CTRLAttribut.Logik, item.Data);
                 }
-                else if (item.Data.Bezeichner == CrossPlattformHelper.GetString("Model_Attribut_Intuition/Text"))
+                else if (item.Data.Bezeichner == CrossPlatformHelper.GetString("Model_Attribut_Intuition/Text"))
                 {
                     CopyAttribute(ReturnCharHolder.CTRLAttribut.Intuition, item.Data);
                 }
-                else if (item.Data.Bezeichner == CrossPlattformHelper.GetString("Model_Attribut_Willen/Text"))
+                else if (item.Data.Bezeichner == CrossPlatformHelper.GetString("Model_Attribut_Willen/Text"))
                 {
                     CopyAttribute(ReturnCharHolder.CTRLAttribut.Willen, item.Data);
                 }
                 else
                 {
-                    AppModel.Instance.lstNotifications.Add(new Notification(CrossPlattformHelper.GetString("Model_Attribut_/Text") +" "+ item.Data.Bezeichner+ " "+CrossPlattformHelper.GetString("Notification_Error_Converter_Error1/Text")));
+                    AppModel.Instance.lstNotifications.Add(new Notification(CrossPlatformHelper.GetString("Model_Attribut_/Text") +" "+ item.Data.Bezeichner+ " "+CrossPlatformHelper.GetString("Notification_Error_Converter_Error1/Text")));
                 }
             }
             foreach (var item in cH1_3.ItemController)
@@ -349,7 +351,7 @@ namespace ShadowRunHelper.IO
                     }
                     else
                     {
-                        AppModel.Instance.lstNotifications.Add(new Notification(CrossPlattformHelper.GetString("Model_Handlung_/Text") + " " + item.Data.Bezeichner + " - " + CrossPlattformHelper.GetString("Model_Handlung_Zusammensetzung/Text") + zusitem.Value.Bezeichner + CrossPlattformHelper.GetString("Notification_Error_Converter_Error1/Text")));
+                        AppModel.Instance.lstNotifications.Add(new Notification(CrossPlatformHelper.GetString("Model_Handlung_/Text") + " " + item.Data.Bezeichner + " - " + CrossPlatformHelper.GetString("Model_Handlung_Zusammensetzung/Text") + zusitem.Value.Bezeichner + CrossPlatformHelper.GetString("Notification_Error_Converter_Error1/Text")));
                     }
                 }
                 foreach (var zusitem in item.Data.GegenZusammensetzung)
@@ -361,7 +363,7 @@ namespace ShadowRunHelper.IO
                     }
                     else
                     {
-                        AppModel.Instance.lstNotifications.Add(new Notification(CrossPlattformHelper.GetString("Model_Handlung_/Text") + " " + item.Data.Bezeichner + " - " + CrossPlattformHelper.GetString("Model_Handlung_GegenZusammensetzung/Text") + zusitem.Value.Bezeichner + CrossPlattformHelper.GetString("Notification_Error_Converter_Error1/Text")));
+                        AppModel.Instance.lstNotifications.Add(new Notification(CrossPlatformHelper.GetString("Model_Handlung_/Text") + " " + item.Data.Bezeichner + " - " + CrossPlatformHelper.GetString("Model_Handlung_GegenZusammensetzung/Text") + zusitem.Value.Bezeichner + CrossPlatformHelper.GetString("Notification_Error_Converter_Error1/Text")));
                     }
                 }
                 foreach (var zusitem in item.Data.GrenzeZusammensetzung)
@@ -373,7 +375,7 @@ namespace ShadowRunHelper.IO
                     }
                     else
                     {
-                        AppModel.Instance.lstNotifications.Add(new Notification(CrossPlattformHelper.GetString("Model_Handlung_/Text") + " " + item.Data.Bezeichner + " - " + CrossPlattformHelper.GetString("Model_Handlung_GrenzeZusammensetzung/Text") + zusitem.Value.Bezeichner + CrossPlattformHelper.GetString("Notification_Error_Converter_Error1/Text")));
+                        AppModel.Instance.lstNotifications.Add(new Notification(CrossPlatformHelper.GetString("Model_Handlung_/Text") + " " + item.Data.Bezeichner + " - " + CrossPlatformHelper.GetString("Model_Handlung_GrenzeZusammensetzung/Text") + zusitem.Value.Bezeichner + CrossPlatformHelper.GetString("Notification_Error_Converter_Error1/Text")));
                     }
                 }
             }

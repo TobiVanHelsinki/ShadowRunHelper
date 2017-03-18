@@ -2,6 +2,7 @@
 using ShadowRunHelper.Model;
 using ShadowRunHelper.UI.Edit;
 using System;
+using TLIB.Model;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -69,7 +70,7 @@ namespace ShadowRunHelper
             Thing newThing = null;
             try
             {
-                newThing = ViewModel.CurrentChar.Add(Controller);
+                newThing = ViewModel.MainObject.Add(Controller);
                 if (AppSettings.Instance.bStartEditAfterAdd)
                 {
                     await new Edit_Dialog(newThing).ShowAsync();
@@ -85,7 +86,7 @@ namespace ShadowRunHelper
         {
             if (((String)((Button)sender).Name).Contains("Person1"))
             {
-                await new Edit_Person(ViewModel.CurrentChar.Person).ShowAsync();
+                await new Edit_Person(ViewModel.MainObject.Person).ShowAsync();
             }
             else
             {
@@ -102,10 +103,10 @@ namespace ShadowRunHelper
         private async void Edit_Attribut(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             if (
-                ((Grid)sender).DataContext.Equals(ViewModel.CurrentChar.CTRLAttribut.Essenz) ||
-                ((Grid)sender).DataContext.Equals(ViewModel.CurrentChar.CTRLAttribut.Limit_K) ||
-                ((Grid)sender).DataContext.Equals(ViewModel.CurrentChar.CTRLAttribut.Limit_G) ||
-                ((Grid)sender).DataContext.Equals(ViewModel.CurrentChar.CTRLAttribut.Limit_S)
+                ((Grid)sender).DataContext.Equals(ViewModel.MainObject.CTRLAttribut.Essenz) ||
+                ((Grid)sender).DataContext.Equals(ViewModel.MainObject.CTRLAttribut.Limit_K) ||
+                ((Grid)sender).DataContext.Equals(ViewModel.MainObject.CTRLAttribut.Limit_G) ||
+                ((Grid)sender).DataContext.Equals(ViewModel.MainObject.CTRLAttribut.Limit_S)
             )
             {
                 return;
@@ -123,32 +124,32 @@ namespace ShadowRunHelper
         {
             if ((Thing)((Button)sender).DataContext != null)
             {
-                ViewModel.CurrentChar.Remove((Thing)((Button)sender).DataContext);
+                ViewModel.MainObject.Remove((Thing)((Button)sender).DataContext);
             }
         }
         
         private async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).WertZusammensetzung, ViewModel.CurrentChar.lstThings);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).WertZusammensetzung, ViewModel.MainObject.lstThings);
             await dialog.ShowAsync();
 
         }
 
         private async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GrenzeZusammensetzung, ViewModel.CurrentChar.lstThings);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GrenzeZusammensetzung, ViewModel.MainObject.lstThings);
             var ergebnis = await dialog.ShowAsync();
         }
 
         private async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GegenZusammensetzung, ViewModel.CurrentChar.lstThings);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GegenZusammensetzung, ViewModel.MainObject.lstThings);
             await dialog.ShowAsync();
         }
 
         private async void FertigkeitenZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, ViewModel.CurrentChar.lstThings);
+            Auswahl dialog = new Auswahl(((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, ViewModel.MainObject.lstThings);
             await dialog.ShowAsync();
         }
 
@@ -356,131 +357,131 @@ namespace ShadowRunHelper
             {
                 case (int)ThingDefs.Handlung:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_HandlungM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLHandlung.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLHandlung.Data;
                     E.ContentTemplate = this.Handlung_E;
                     LV.ItemTemplate = HandlungItem;
                     break;
                 case (int)ThingDefs.Fertigkeit:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_FertigkeitM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLFertigkeit.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLFertigkeit.Data;
                     E.ContentTemplate = this.Fertigkeit_E;
                     LV.ItemTemplate = FertigkeitItem;
                     break;
                 case (int)ThingDefs.Item:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ItemM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLItem.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLItem.Data;
                     E.ContentTemplate = this.Item_E;
                     LV.ItemTemplate = ItemItem;
                     break;
                 case (int)ThingDefs.Programm:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ProgrammM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLProgramm.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLProgramm.Data;
                     E.ContentTemplate = this.Programm_E;
                     LV.ItemTemplate = ProgrammItem;
                     break;
                 case (int)ThingDefs.Munition:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_MunitionM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLMunition.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLMunition.Data;
                     E.ContentTemplate = this.Munition_E;
                     LV.ItemTemplate = MunitionItem;
                     break;
                 case (int)ThingDefs.Implantat:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ImplantatM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLImplantat.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLImplantat.Data;
                     E.ContentTemplate = this.Implantat_E;
                     LV.ItemTemplate = ImplantatItem;
                     break;
                 case (int)ThingDefs.Vorteil:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_VorteilM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLVorteil.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLVorteil.Data;
                     E.ContentTemplate = this.Eigenschaft_E;
                     LV.ItemTemplate = EigenschaftItem;
                     break;
                 case (int)ThingDefs.Nachteil:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_NachteilM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLNachteil.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLNachteil.Data;
                     E.ContentTemplate = this.Eigenschaft_E;
                     LV.ItemTemplate = EigenschaftItem;
                     break;
                 case (int)ThingDefs.Connection:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ConnectionM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLConnection.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLConnection.Data;
                     E.ContentTemplate = this.Connection_E;
                     LV.ItemTemplate = ConnectionItem;
                     break;
                 case (int)ThingDefs.Sin:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_SinM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLSin.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLSin.Data;
                     E.ContentTemplate = this.Sin_E;
                     LV.ItemTemplate = SinItem;
                     break;
                 case (int)ThingDefs.Nahkampfwaffe:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_NahkampfwaffeM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLNahkampfwaffe.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLNahkampfwaffe.Data;
                     E.ContentTemplate = this.Nahkampfwaffe_E;
                     LV.ItemTemplate = NahkampfwaffeItem;
                     break;
                 case (int)ThingDefs.Fernkampfwaffe:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_FernkampfwaffeM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLFernkampfwaffe.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLFernkampfwaffe.Data;
                     E.ContentTemplate = this.Fernkampfwaffe_E;
                     LV.ItemTemplate = FernkampfwaffeItem;
                     break;
                 case (int)ThingDefs.Kommlink:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_KommlinkM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLKommlink.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLKommlink.Data;
                     E.ContentTemplate = this.Kommlink_E;
                     LV.ItemTemplate = KommlinkItem;
                     break;
                 case (int)ThingDefs.CyberDeck:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_CyberDeckM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLCyberDeck.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLCyberDeck.Data;
                     E.ContentTemplate = this.CyberDeck_E;
                     LV.ItemTemplate = CyberDeckItem;
                     break;
                 case (int)ThingDefs.Vehikel:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_VehikelM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLVehikel.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLVehikel.Data;
                     E.ContentTemplate = this.Vehikel_E;
                     LV.ItemTemplate = VehikelItem;
                     break;
                 case (int)ThingDefs.Panzerung:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_PanzerungM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLPanzerung.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLPanzerung.Data;
                     E.ContentTemplate = this.Panzerung_E;
                     LV.ItemTemplate = PanzerungItem;
                     break;
                 case (int)ThingDefs.Adeptenkraft_KomplexeForm:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Adeptenkraft_KomplexeFormM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLAdeptenkraft_KomplexeForm.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLAdeptenkraft_KomplexeForm.Data;
                     E.ContentTemplate = this.Adeptenkraft_KomplexeForm_E;
                     LV.ItemTemplate = Adeptenkraft_KomplexeFormItem;
                     break;
                 case (int)ThingDefs.Geist_Sprite:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Geist_SpriteM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLGeist_Sprite.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLGeist_Sprite.Data;
                     E.ContentTemplate = this.Geist_Sprite_E;
                     LV.ItemTemplate = Geist_SpriteItem;
                     break;
                 case (int)ThingDefs.Foki_Widgets:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Foki_WidgetsM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLFoki_Widgets.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLFoki_Widgets.Data;
                     E.ContentTemplate = this.Foki_Widgets_E;
                     LV.ItemTemplate = Foki_WidgetsItem;
                     break;
                 case (int)ThingDefs.Strömung_Wandlung:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Strömung_WandlungM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLStrömung_Wandlung.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLStrömung_Wandlung.Data;
                     LV.ItemTemplate = Strömung_WandlungItem;
                     break;
                 case (int)ThingDefs.Tradition_Initiation:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Tradition_InitiationM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLTradition_Initiation.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLTradition_Initiation.Data;
                     LV.ItemTemplate = Tradition_InitiationItem;
                     break;
                 case (int)ThingDefs.Zaubersprüche:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ZaubersprücheM_/Text");
-                    LV.ItemsSource = ViewModel.CurrentChar.CTRLZaubersprüche.Data;
+                    LV.ItemsSource = ViewModel.MainObject.CTRLZaubersprüche.Data;
                     E.ContentTemplate = this.Zaubersprüche_E;
                     LV.ItemTemplate = ZaubersprücheItem;
                     break;

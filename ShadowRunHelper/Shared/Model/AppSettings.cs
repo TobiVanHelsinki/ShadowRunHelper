@@ -1,11 +1,10 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using TLIB.Model;
 
 namespace ShadowRunHelper
 {
-    public class AppSettings : INotifyPropertyChanged
+    public class AppSettings : SharedAppSettings
     {
-        public ISettings Settings = null;
+        internal Settings Settings = new Settings();
 
         public bool SAVE_CHAR_ON_EXIT
         {
@@ -16,39 +15,12 @@ namespace ShadowRunHelper
                 NotifyPropertyChanged();
             }
         }
-        public bool bDisplayRequest
-        {
-            get { return Settings.GetBDisplayRequest(); }
-            set
-            {
-                Settings.SetBDisplayRequest(value);
-                NotifyPropertyChanged();
-            }
-        }
         public bool LOAD_CHAR_ON_START
         {
             get { return Settings.GetBLoadCharOnStart(); }
             set
             {
                 Settings.SetBLoadCharOnStart(value);
-                NotifyPropertyChanged();
-            }
-        }
-        public bool ORDNERMODE
-        {
-            get { return Settings.GetBFolderMode(); }
-            set
-            {
-                Settings.SetBFolderMode(value);
-                NotifyPropertyChanged();
-            }
-        }
-        public string ORDNERMODE_PFAD
-        {
-            get { return Settings.GetStrFolderModePath(); }
-            set
-            {
-                Settings.SetStrFolderModePath(value);
                 NotifyPropertyChanged();
             }
         }
@@ -62,28 +34,13 @@ namespace ShadowRunHelper
             }
         }
 
-        AppSettings()
-        {
-#if __ANDROID__
-#else
-            Settings = new WinSettings();
-#endif
-        }
-
-        static readonly AppSettings instance = new AppSettings();
-
-        public static AppSettings Instance
+        public static new AppSettings Instance
         {
             get
             {
-                return instance;
+                return (AppSettings)instance;
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

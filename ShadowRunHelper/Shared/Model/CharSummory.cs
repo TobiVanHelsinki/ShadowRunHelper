@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using TLIB;
 
 namespace ShadowRunHelper.Model
 {
@@ -31,7 +32,7 @@ namespace ShadowRunHelper.Model
                 if (value != _strCharSummory)
                 {
                     _strCharSummory = _strFileName.Replace('_', ' ');
-                    _strCharSummory = _strCharSummory.Replace(Konstanten.DATEIENDUNG_CHAR, "");
+                    _strCharSummory = _strCharSummory.Replace(Constants.DATEIENDUNG_CHAR, "");
                     NotifyPropertyChanged();
                 }
             }

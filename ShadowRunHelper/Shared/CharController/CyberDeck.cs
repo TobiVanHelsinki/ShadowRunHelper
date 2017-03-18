@@ -19,7 +19,7 @@ namespace ShadowRunHelper.CharController
         {
             ActiveItem = new CyberDeck();
             ActiveItem.PropertyChanged += (x, y) => RefreshOriginDeck();
-            //ActiveItem.Bezeichner = CrossPlattformHelper.GetString("Model_CyberDeck__Aktiv/Text");
+            //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_CyberDeck__Aktiv/Text");
             MI_V = new ThingListEntry(ActiveItem, ("Model_Thing_Wert/Text"), "Wert");
             MI_A = new ThingListEntry(ActiveItem, ("Model_CyberDeck_Angriff/Text"), "Angriff");
             MI_S = new ThingListEntry(ActiveItem, ("Model_CyberDeck_Schleicher/Text"), "Schleicher");

@@ -1,5 +1,6 @@
 ﻿using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
+using Shared.IO;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using TLIB;
+using TLIB.IO;
+using TLIB.Model;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
 using Windows.Storage;
@@ -42,8 +46,8 @@ namespace ShadowRunHelper
         {
             //ViewModel = (ViewModel)e.Parameter;
             Summorys_Aktualisieren();
-            ViewModel.PropertyChanged += (x, y) => { ChangeCurrentButtons(ViewModel.CurrentChar==null?false:true); };
-            ChangeCurrentButtons(ViewModel.CurrentChar == null ? false : true);
+            ViewModel.PropertyChanged += (x, y) => { ChangeCurrentButtons(ViewModel.MainObject==null?false:true); };
+            ChangeCurrentButtons(ViewModel.MainObject == null ? false : true);
         }
 
         void CommandBar_Loaded(object sender, RoutedEventArgs e)
@@ -87,8 +91,8 @@ namespace ShadowRunHelper
             List<CharSummory> lst = new List<CharSummory>();
             try
             {
-                StorageFolder CharFolder = await WinIO.GetFolder(CharIO.GetCurrentSavePlace(), CharIO.GetCurrentSavePath());
-                foreach (var item in (await WinIO.GetListofFiles(CharFolder, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR }))))
+                StorageFolder CharFolder = await WinIO.GetFolder(CharHolderIO.GetCurrentSavePlace(), CharHolderIO.GetCurrentSavePath());
+                foreach (var item in (await WinIO.GetListofFiles(CharFolder, new List<string>(new string[] { Constants.DATEIENDUNG_CHAR }))))
                 {
                     lst.Add(new CharSummory(item.Name, (await item.GetBasicPropertiesAsync()).DateModified, (await item.GetBasicPropertiesAsync()).Size));
                 }
@@ -107,7 +111,7 @@ namespace ShadowRunHelper
         // Handle Stuff #######################################################
         void Click_Erstellen(object sender, RoutedEventArgs e)
         {
-            ViewModel.CurrentChar = new CharHolder();
+            ViewModel.MainObject = new CharHolder();
             ViewModel.RequestedNavigation(ProjectPages.Char);
         }
 
@@ -115,7 +119,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                await CharIO.SaveCharAtCurrentPlace(ViewModel.CurrentChar);
+                await CharHolderIO.SaveCharAtCurrentPlace(ViewModel.MainObject);
                 Summorys_Aktualisieren();
             }
             catch (Exception ex)
@@ -129,14 +133,14 @@ namespace ShadowRunHelper
             ProgressRing_Char.IsActive = true;
             try
             {
-                ViewModel.CurrentChar = await CharIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName);
+                ViewModel.MainObject = await CharHolderIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName);
             }
             catch (Exception ex)
             {
                 ViewModel.lstNotifications.Add(new Notification(res.GetString("Notification_Error_LoadFail"), ex));
             }
             ProgressRing_Char.IsActive = false;
-            if (ViewModel.CurrentChar != null)
+            if (ViewModel.MainObject != null)
             {
                 ViewModel.RequestedNavigation(ProjectPages.Char);
             }
@@ -147,7 +151,7 @@ namespace ShadowRunHelper
             try
             {
                 await Task.Factory.StartNew(() =>
-                    CharIO.RemoveCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName)
+                    CharHolderIO.RemoveCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName)
             );
             }
             catch (Exception ex)
@@ -186,7 +190,7 @@ namespace ShadowRunHelper
                 try
                 {
                     await Task.Factory.StartNew(() =>
-                         CharIO.RemoveCharAtCurrentPlace(item.strFileName)
+                         CharHolderIO.RemoveCharAtCurrentPlace(item.strFileName)
                     );
                 }
                 catch (Exception ex)
@@ -201,7 +205,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                ViewModel.CurrentChar = null;
+                ViewModel.MainObject = null;
             }
             catch (Exception ex)
             {
@@ -211,12 +215,12 @@ namespace ShadowRunHelper
 
         void Click_Datei_Export_CurrentChar(object sender, RoutedEventArgs e)
         {
-            Click_Datei_Export(ViewModel.CurrentChar);
+            Click_Datei_Export(ViewModel.MainObject);
         }
 
         async void Click_Datei_Export_OtherChar(object sender, RoutedEventArgs e)
         {
-            Click_Datei_Export(await CharIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName));
+            Click_Datei_Export(await CharHolderIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName));
         }
 
         async void Click_Datei_Export(CharHolder CharToSave)
@@ -224,7 +228,7 @@ namespace ShadowRunHelper
             try
             {
                 await Task.Factory.StartNew(() =>
-                    CharIO.SaveChar(CharToSave, Place.Extern)
+                    CharHolderIO.SaveChar(CharToSave, Place.Extern)
                 );
             }
             catch (Exception ex)
@@ -237,7 +241,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                ViewModel.CurrentChar = await CharIO.LoadChar(Place.Extern);
+                ViewModel.MainObject = await CharHolderIO.LoadChar(Place.Extern);
                 ViewModel.RequestedNavigation(ProjectPages.Char, this);
             }
             catch (Exception ex)
@@ -248,14 +252,14 @@ namespace ShadowRunHelper
 
         void Click_CSV_Export_CurrentChar(object sender, RoutedEventArgs e)
         {
-            Click_CSV_Export(ViewModel.CurrentChar);
+            Click_CSV_Export(ViewModel.MainObject);
         }
 
         async void Click_CSV_Export_OtherChar(object sender, RoutedEventArgs e)
         {
-            Click_CSV_Export(await CharIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName));
+            Click_CSV_Export(await CharHolderIO.LoadCharAtCurrentPlace(((CharSummory)((Button)sender).DataContext).strFileName));
 
-            Click_CSV_Export(await CharIO.LoadCharAtCurrentPlace(
+            Click_CSV_Export(await CharHolderIO.LoadCharAtCurrentPlace(
                 ((sender as Button).DataContext as CharSummory).strFileName
                 ));
         }
@@ -275,9 +279,9 @@ namespace ShadowRunHelper
             try
             {
                 var IO = new WinIO();
-                foreach (var item in ViewModel.CurrentChar.ToCSV(";"))
+                foreach (var item in ViewModel.MainObject.ToCSV(";"))
                 {
-                    IO.Save(item.Key, Place.Extern, item.Value + Konstanten.DATEIENDUNG_CSV, Folder.Path);
+                    IO.Save(item.Key, Place.Extern, item.Value + Constants.DATEIENDUNG_CSV, Folder.Path);
                 }
             }
             catch (Exception ex)
@@ -292,7 +296,7 @@ namespace ShadowRunHelper
             string strRead = "";
             try
             {
-                File = await WinIO.GetFile(Place.Extern, null, null, new List<string>(new string[] { Konstanten.DATEIENDUNG_CHAR, Konstanten.DATEIENDUNG_CSV }));
+                File = await WinIO.GetFile(Place.Extern, null, null, new List<string>(new string[] { Constants.DATEIENDUNG_CHAR, Constants.DATEIENDUNG_CSV }));
                 strRead = await FileIO.ReadTextAsync(File);
 
             }
@@ -302,11 +306,11 @@ namespace ShadowRunHelper
             }
             try
             {
-                if (ViewModel.CurrentChar == null)
+                if (ViewModel.MainObject == null)
                 {
-                    ViewModel.CurrentChar = new CharHolder();
+                    ViewModel.MainObject = new CharHolder();
                 }
-                ViewModel.CurrentChar.CTRLCyberDeck.MultipleCSVImport(';', '\n', strRead);
+                ViewModel.MainObject.CTRLCyberDeck.MultipleCSVImport(';', '\n', strRead);
             }
             catch (Exception ex)
             {
@@ -323,7 +327,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                ViewModel.CurrentChar?.Repair();
+                ViewModel.MainObject?.Repair();
             }
             catch (Exception ex)
             {

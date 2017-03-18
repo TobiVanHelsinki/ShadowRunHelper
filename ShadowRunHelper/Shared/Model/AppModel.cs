@@ -1,36 +1,23 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 namespace ShadowRunHelper.Model
 {
-    public sealed class AppModel : INotifyPropertyChanged
+    public class AppModel : TLIB.Model.SharedAppModel<CharHolder>
     {
-        AppModel()
+
+        public static new AppModel Instance
         {
-            lstNotifications = new ObservableCollection<Notification>();
+            get
+            {
+                return (AppModel)TLIB.Model.SharedAppModel<CharHolder>.Instance;
+            }
         }
 
-        static readonly AppModel instance = new AppModel();
-
-        public static AppModel Instance
-            {
-                get
-                {
-                    return instance;
-                }
-            }
-        CharHolder _currentChar;
-        public CharHolder CurrentChar
+          public CharHolder CurrentChar
         {
-            get { return this._currentChar; }
+            get { return this.MainObject; }
             set
             {
-                if (value != this._currentChar)
-                {
-                    this._currentChar = value;
-                    NotifyPropertyChanged();
-                }
+                    this.MainObject = value;
             }
         }
 
@@ -48,13 +35,6 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        public ObservableCollection<Notification> lstNotifications;
-
-        public void NewNotification(string Message, Exception x = null)
-        {
-            lstNotifications.Add(new Notification(Message, x));
-
-        }
 
         ProjectPages CurrentPageInProgress = ProjectPages.undef;
         public void RequestedNavigation(ProjectPages ePp, object oO = null)
@@ -69,11 +49,5 @@ namespace ShadowRunHelper.Model
         }
 
         public event EventHandler<ProjectPages> NavigationRequested;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

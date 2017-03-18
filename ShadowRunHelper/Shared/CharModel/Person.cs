@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
+using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -34,11 +34,11 @@ namespace ShadowRunHelper.CharModel
             strSaveName += Char_Typ == string.Empty ? "$$" : Char_Typ;
             strSaveName += ",";
             strSaveName += Runs.ToString();
-            strSaveName += CrossPlattformHelper.GetString("Model_Person_Runs/Text") + ",";
+            strSaveName += CrossPlatformHelper.GetString("Model_Person_Runs/Text") + ",";
             strSaveName += Karma_Gesamt.ToString();
-            strSaveName += CrossPlattformHelper.GetString("Model_Person_Karma/Text");
+            strSaveName += CrossPlatformHelper.GetString("Model_Person_Karma/Text");
             strSaveName += WithDate ? DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + "_" + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second : "";
-            strSaveName += Konstanten.DATEIENDUNG_CHAR;
+            strSaveName += Constants.DATEIENDUNG_CHAR;
             return strSaveName;
         }
 

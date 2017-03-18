@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-
+using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -166,19 +166,19 @@ namespace ShadowRunHelper.CharModel
         public virtual string HeaderToCSV(string Delimiter)
         {
             string strReturn = "";
-            strReturn += CrossPlattformHelper.GetString("Model_Thing_Bezeichner/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Thing_Bezeichner/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlattformHelper.GetString("Model_Thing_Notiz/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Thing_Notiz/Text");
             //strReturn += Delimiter;
             //strReturn += Ordnung;
             //strReturn += Delimiter;
-            //strReturn += CrossPlattformHelper.GetString("Model_Thing_ThingTyp/Text");
+            //strReturn += CrossPlatformHelper.GetString("Model_Thing_ThingTyp/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlattformHelper.GetString("Model_Thing_Typ/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Thing_Typ/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlattformHelper.GetString("Model_Thing_Wert/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Thing_Wert/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlattformHelper.GetString("Model_Thing_Zusatz/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Thing_Zusatz/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -186,27 +186,27 @@ namespace ShadowRunHelper.CharModel
         {
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlattformHelper.GetString("Model_Thing_Bezeichner/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Bezeichner/Text"))
                 {
                     Bezeichner = item.Value;
                     continue;
                 }
-                if (item.Key == CrossPlattformHelper.GetString("Model_Thing_Notiz/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Notiz/Text"))
                 {
                     Notiz = item.Value;
                     continue;
                 }
-                if (item.Key == CrossPlattformHelper.GetString("Model_Thing_Typ/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Typ/Text"))
                 {
                     Typ = item.Value;
                     continue;
                 }
-                if (item.Key == CrossPlattformHelper.GetString("Model_Thing_Wert/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Wert/Text"))
                 {
                     Wert= double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == CrossPlattformHelper.GetString("Model_Thing_Zusatz/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Zusatz/Text"))
                 {
                     Zusatz = item.Value;
                     continue;

@@ -1,4 +1,6 @@
 ﻿using ShadowRunHelper.Model;
+using TLIB;
+using TLIB.IO;
 using Windows.UI.Xaml.Controls;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
@@ -8,15 +10,15 @@ namespace ShadowRunHelper
     /// <summary>
     /// Eine leere Seite, die eigenständig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
-    public sealed partial class Settings : Page
+    public sealed partial class PageSettings : Page
     {
         private AppSettings Optionen = AppSettings.Instance;
-        private readonly string AppVersionBuild = Konstanten.APP_VERSION_BUILD_DELIM;
-        //private readonly string AppVersionNumber = Konstanten.APP_VERSION_NUMBER;
+        private readonly string AppVersionBuild = Constants.APP_VERSION_BUILD_DELIM;
+        //private readonly string AppVersionNumber = Constants.APP_VERSION_NUMBER;
 
         bool OrdnerModeGeladen = false;
 
-        public Settings()
+        public PageSettings()
         {
             this.InitializeComponent();
         }
@@ -27,7 +29,7 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    Optionen.ORDNERMODE_PFAD = (await IO.WinIO.FolderPicker()).Path;
+                    Optionen.ORDNERMODE_PFAD = (await WinIO.FolderPicker()).Path;
                 }
                 catch (System.Exception)
                 {

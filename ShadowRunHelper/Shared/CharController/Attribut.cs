@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using TLIB;
 
 namespace ShadowRunHelper.CharController
 {
@@ -106,20 +107,20 @@ namespace ShadowRunHelper.CharController
 
         private void RefreshBezeichner()
         {
-            Konsti.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Konsti/Text");
-            Geschick.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Geschick/Text");
-            Reaktion.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Reaktion/Text");
-            Staerke.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Staerke/Text");
-            Charisma.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Charisma/Text");
-            Logik.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Logik/Text");
-            Intuition.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Intuition/Text");
-            Willen.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Willen/Text");
-            Essenz.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Essenz/Text");
-            Limit_K.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Limit_K/Text");
-            Limit_G.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Limit_G/Text");
-            Limit_S.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Limit_S/Text");
-            Magie.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Magie/Text");
-            Resonanz.Bezeichner = CrossPlattformHelper.GetString("Model_Attribut_Resonanz/Text");
+            Konsti.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Konsti/Text");
+            Geschick.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Geschick/Text");
+            Reaktion.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Reaktion/Text");
+            Staerke.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Staerke/Text");
+            Charisma.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Charisma/Text");
+            Logik.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Logik/Text");
+            Intuition.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Intuition/Text");
+            Willen.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Willen/Text");
+            Essenz.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Essenz/Text");
+            Limit_K.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Limit_K/Text");
+            Limit_G.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Limit_G/Text");
+            Limit_S.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Limit_S/Text");
+            Magie.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Magie/Text");
+            Resonanz.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Resonanz/Text");
         }
 
         public void SetDependencies(Person p, ObservableCollection<Implantat> i)

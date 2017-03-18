@@ -1,5 +1,7 @@
 ﻿
 
+using TLIB;
+
 namespace ShadowRunHelper
 {
     public enum ProjectPages
@@ -58,51 +60,51 @@ namespace ShadowRunHelper
                     case ThingDefs.Undef:
                         return "";
                     case ThingDefs.Handlung:
-                        return CrossPlattformHelper.GetString("Model_Handlung_/Text");
+                        return CrossPlatformHelper.GetString("Model_Handlung_/Text");
                     case ThingDefs.Fertigkeit:
-                        return CrossPlattformHelper.GetString("Model_Fertigkeit_/Text");
+                        return CrossPlatformHelper.GetString("Model_Fertigkeit_/Text");
                     case ThingDefs.Item:
-                        return CrossPlattformHelper.GetString("Model_Item_/Text");
+                        return CrossPlatformHelper.GetString("Model_Item_/Text");
                     case ThingDefs.Programm:
-                        return CrossPlattformHelper.GetString("Model_Programm_/Text");
+                        return CrossPlatformHelper.GetString("Model_Programm_/Text");
                     case ThingDefs.Munition:
-                        return CrossPlattformHelper.GetString("Model_Munition_/Text");
+                        return CrossPlatformHelper.GetString("Model_Munition_/Text");
                     case ThingDefs.Implantat:
-                        return CrossPlattformHelper.GetString("Model_Implantat_/Text");
+                        return CrossPlatformHelper.GetString("Model_Implantat_/Text");
                     case ThingDefs.Vorteil:
-                        return CrossPlattformHelper.GetString("Model_Vorteil_/Text");
+                        return CrossPlatformHelper.GetString("Model_Vorteil_/Text");
                     case ThingDefs.Nachteil:
-                        return CrossPlattformHelper.GetString("Model_Nachteil_/Text");
+                        return CrossPlatformHelper.GetString("Model_Nachteil_/Text");
                     case ThingDefs.Connection:
-                        return CrossPlattformHelper.GetString("Model_Connection_/Text");
+                        return CrossPlatformHelper.GetString("Model_Connection_/Text");
                     case ThingDefs.Sin:
-                        return CrossPlattformHelper.GetString("Model_Sin_/Text");
+                        return CrossPlatformHelper.GetString("Model_Sin_/Text");
                     case ThingDefs.Attribut:
-                        return CrossPlattformHelper.GetString("Model_Attribut_/Text");
+                        return CrossPlatformHelper.GetString("Model_Attribut_/Text");
                     case ThingDefs.Nahkampfwaffe:
-                        return CrossPlattformHelper.GetString("Model_Nahkampfwaffe_/Text");
+                        return CrossPlatformHelper.GetString("Model_Nahkampfwaffe_/Text");
                     case ThingDefs.Fernkampfwaffe:
-                        return CrossPlattformHelper.GetString("Model_Fernkampfwaffe_/Text");
+                        return CrossPlatformHelper.GetString("Model_Fernkampfwaffe_/Text");
                     case ThingDefs.Kommlink:
-                        return CrossPlattformHelper.GetString("Model_Kommlink_/Text");
+                        return CrossPlatformHelper.GetString("Model_Kommlink_/Text");
                     case ThingDefs.CyberDeck:
-                        return CrossPlattformHelper.GetString("Model_CyberDeck_/Text");
+                        return CrossPlatformHelper.GetString("Model_CyberDeck_/Text");
                     case ThingDefs.Vehikel:
-                        return CrossPlattformHelper.GetString("Model_Vehikel_/Text");
+                        return CrossPlatformHelper.GetString("Model_Vehikel_/Text");
                     case ThingDefs.Panzerung:
-                        return CrossPlattformHelper.GetString("Model_Panzerung_/Text");
+                        return CrossPlatformHelper.GetString("Model_Panzerung_/Text");
                     case ThingDefs.Adeptenkraft_KomplexeForm:
-                        return CrossPlattformHelper.GetString("Model_Adeptenkraft_KomplexeForm_/Text");
+                        return CrossPlatformHelper.GetString("Model_Adeptenkraft_KomplexeForm_/Text");
                     case ThingDefs.Geist_Sprite:
-                        return CrossPlattformHelper.GetString("Model_Geist_Sprite_/Text");
+                        return CrossPlatformHelper.GetString("Model_Geist_Sprite_/Text");
                     case ThingDefs.Foki_Widgets:
-                        return CrossPlattformHelper.GetString("Model_Foki_Widgets_/Text");
+                        return CrossPlatformHelper.GetString("Model_Foki_Widgets_/Text");
                     case ThingDefs.Strömung_Wandlung:
-                        return CrossPlattformHelper.GetString("Model_Strömung_Wandlung_/Text");
+                        return CrossPlatformHelper.GetString("Model_Strömung_Wandlung_/Text");
                     case ThingDefs.Tradition_Initiation:
-                        return CrossPlattformHelper.GetString("Model_Tradition_Initiation_/Text");
+                        return CrossPlatformHelper.GetString("Model_Tradition_Initiation_/Text");
                     case ThingDefs.Zaubersprüche:
-                        return CrossPlattformHelper.GetString("Model_Zaubersprüche_/Text");
+                        return CrossPlatformHelper.GetString("Model_Zaubersprüche_/Text");
                     default:
                         break;
                 }
@@ -116,51 +118,51 @@ namespace ShadowRunHelper
                     case ThingDefs.Undef:
                         return "";
                     case ThingDefs.Handlung:
-                        return CrossPlattformHelper.GetString("Model_HandlungM_/Text");
+                        return CrossPlatformHelper.GetString("Model_HandlungM_/Text");
                     case ThingDefs.Fertigkeit:
-                        return CrossPlattformHelper.GetString("Model_FertigkeitM_/Text");
+                        return CrossPlatformHelper.GetString("Model_FertigkeitM_/Text");
                     case ThingDefs.Item:
-                        return CrossPlattformHelper.GetString("Model_ItemM_/Text");
+                        return CrossPlatformHelper.GetString("Model_ItemM_/Text");
                     case ThingDefs.Programm:
-                        return CrossPlattformHelper.GetString("Model_ProgrammM_/Text");
+                        return CrossPlatformHelper.GetString("Model_ProgrammM_/Text");
                     case ThingDefs.Munition:
-                        return CrossPlattformHelper.GetString("Model_MunitionM_/Text");
+                        return CrossPlatformHelper.GetString("Model_MunitionM_/Text");
                     case ThingDefs.Implantat:
-                        return CrossPlattformHelper.GetString("Model_ImplantatM_/Text");
+                        return CrossPlatformHelper.GetString("Model_ImplantatM_/Text");
                     case ThingDefs.Vorteil:
-                        return CrossPlattformHelper.GetString("Model_VorteilM_/Text");
+                        return CrossPlatformHelper.GetString("Model_VorteilM_/Text");
                     case ThingDefs.Nachteil:
-                        return CrossPlattformHelper.GetString("Model_NachteilM_/Text");
+                        return CrossPlatformHelper.GetString("Model_NachteilM_/Text");
                     case ThingDefs.Connection:
-                        return CrossPlattformHelper.GetString("Model_ConnectionM_/Text");
+                        return CrossPlatformHelper.GetString("Model_ConnectionM_/Text");
                     case ThingDefs.Sin:
-                        return CrossPlattformHelper.GetString("Model_SinM_/Text");
+                        return CrossPlatformHelper.GetString("Model_SinM_/Text");
                     case ThingDefs.Attribut:
-                        return CrossPlattformHelper.GetString("Model_AttributM_/Text");
+                        return CrossPlatformHelper.GetString("Model_AttributM_/Text");
                     case ThingDefs.Nahkampfwaffe:
-                        return CrossPlattformHelper.GetString("Model_NahkampfwaffeM_/Text");
+                        return CrossPlatformHelper.GetString("Model_NahkampfwaffeM_/Text");
                     case ThingDefs.Fernkampfwaffe:
-                        return CrossPlattformHelper.GetString("Model_FernkampfwaffeM_/Text");
+                        return CrossPlatformHelper.GetString("Model_FernkampfwaffeM_/Text");
                     case ThingDefs.Kommlink:
-                        return CrossPlattformHelper.GetString("Model_KommlinkM_/Text");
+                        return CrossPlatformHelper.GetString("Model_KommlinkM_/Text");
                     case ThingDefs.CyberDeck:
-                        return CrossPlattformHelper.GetString("Model_CyberDeckM_/Text");
+                        return CrossPlatformHelper.GetString("Model_CyberDeckM_/Text");
                     case ThingDefs.Vehikel:
-                        return CrossPlattformHelper.GetString("Model_VehikelM_/Text");
+                        return CrossPlatformHelper.GetString("Model_VehikelM_/Text");
                     case ThingDefs.Panzerung:
-                        return CrossPlattformHelper.GetString("Model_PanzerungM_/Text");
+                        return CrossPlatformHelper.GetString("Model_PanzerungM_/Text");
                     case ThingDefs.Adeptenkraft_KomplexeForm:
-                        return CrossPlattformHelper.GetString("Model_Adeptenkraft_KomplexeFormM_/Text");
+                        return CrossPlatformHelper.GetString("Model_Adeptenkraft_KomplexeFormM_/Text");
                     case ThingDefs.Geist_Sprite:
-                        return CrossPlattformHelper.GetString("Model_Geist_SpriteM_/Text");
+                        return CrossPlatformHelper.GetString("Model_Geist_SpriteM_/Text");
                     case ThingDefs.Foki_Widgets:
-                        return CrossPlattformHelper.GetString("Model_Foki_WidgetsM_/Text");
+                        return CrossPlatformHelper.GetString("Model_Foki_WidgetsM_/Text");
                     case ThingDefs.Strömung_Wandlung:
-                        return CrossPlattformHelper.GetString("Model_Strömung_WandlungM_/Text");
+                        return CrossPlatformHelper.GetString("Model_Strömung_WandlungM_/Text");
                     case ThingDefs.Tradition_Initiation:
-                        return CrossPlattformHelper.GetString("Model_Tradition_InitiationM_/Text");
+                        return CrossPlatformHelper.GetString("Model_Tradition_InitiationM_/Text");
                     case ThingDefs.Zaubersprüche:
-                        return CrossPlattformHelper.GetString("Model_ZaubersprücheM_/Text");
+                        return CrossPlatformHelper.GetString("Model_ZaubersprücheM_/Text");
                     default:
                         break;
                 }

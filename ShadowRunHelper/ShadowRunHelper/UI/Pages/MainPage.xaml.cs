@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Media;
 using Windows.UI;
+using TLIB.Model;
 
 // Die Vorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 dokumentiert.
 
@@ -33,13 +34,13 @@ namespace ShadowRunHelper
             ViewModel.lstNotifications.CollectionChanged += (x, y) => ShowError(y);
             ChangeUI();
             GetCurrentDeck();
-            ViewModel.RequestedNavigation(ViewModel.CurrentChar == null ? ProjectPages.Verwaltung : ProjectPages.Char);
+            ViewModel.RequestedNavigation(ViewModel.MainObject == null ? ProjectPages.Verwaltung : ProjectPages.Char);
         }
 
         void GetCurrentDeck()
         {
             //var temp = ViewModel.CurrentChar?.lstThings.Find(x => x.Object.ThingType == ThingDefs.CyberDeck);
-            CurrentDeck = (CharModel.CyberDeck)ViewModel.CurrentChar?.lstThings.Find(x => x.Object.ThingType == ThingDefs.CyberDeck).Object;
+            CurrentDeck = (CharModel.CyberDeck)ViewModel.MainObject?.lstThings.Find(x => x.Object.ThingType == ThingDefs.CyberDeck).Object;
 
             if (CurrentDeck != null)
             {
@@ -62,7 +63,7 @@ namespace ShadowRunHelper
             switch (e)
             {
                 case ProjectPages.Char:
-                    if (ViewModel.CurrentChar != null)
+                    if (ViewModel.MainObject != null)
                     {
                         Char.IsSelected = true;
                         LastPage = e;
@@ -81,7 +82,7 @@ namespace ShadowRunHelper
                 case ProjectPages.Settings:
                     App_Settings.IsSelected = true;
                     LastPage = e;
-                    MyFrame.Navigate(typeof(Settings));
+                    MyFrame.Navigate(typeof(PageSettings));
                     break;
                 default:
                     break;
@@ -107,7 +108,7 @@ namespace ShadowRunHelper
         void ChangeUI(bool? bState = null) {
             if (bState == null)
             {
-                bState = ((ViewModel == null || ViewModel.CurrentChar == null) ? false : true);
+                bState = ((ViewModel == null || ViewModel.MainObject == null) ? false : true);
 
             }
 
@@ -154,66 +155,66 @@ namespace ShadowRunHelper
 
         private void Plus_Click(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.CurrentChar != null)
+            if (ViewModel.MainObject != null)
             {
                 string Controller_Name = ((string)((Button)sender).Name);
 
                 if (Controller_Name.Contains("Karma_Gesamt"))
                 {
-                    ViewModel.CurrentChar.Person.Karma_Gesamt++;
+                    ViewModel.MainObject.Person.Karma_Gesamt++;
                 }
                 if (Controller_Name.Contains("Karma_Aktuell"))
                 {
-                    ViewModel.CurrentChar.Person.Karma_Aktuell++;
+                    ViewModel.MainObject.Person.Karma_Aktuell++;
                 }
                 if (Controller_Name.Contains("Edge_Gesamt"))
                 {
-                    ViewModel.CurrentChar.Person.Edge_Gesamt++;
+                    ViewModel.MainObject.Person.Edge_Gesamt++;
                 }
                 if (Controller_Name.Contains("Edge_Aktuell"))
                 {
-                    ViewModel.CurrentChar.Person.Edge_Aktuell++;
+                    ViewModel.MainObject.Person.Edge_Aktuell++;
                 }
                 if (Controller_Name.Contains("Initiative"))
                 {
-                    ViewModel.CurrentChar.Person.Initiative++;
+                    ViewModel.MainObject.Person.Initiative++;
                 }
                 if (Controller_Name.Contains("Runs"))
                 {
-                    ViewModel.CurrentChar.Person.Runs++;
+                    ViewModel.MainObject.Person.Runs++;
                 }
             }
         }
 
         private void Minus_Click(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.CurrentChar != null)
+            if (ViewModel.MainObject != null)
             {
                 string Controller_Name = ((string)((Button)sender).Name);
 
                 if (Controller_Name.Contains("Karma_Gesamt"))
                 {
-                    ViewModel.CurrentChar.Person.Karma_Gesamt--;
+                    ViewModel.MainObject.Person.Karma_Gesamt--;
                 }
                 if (Controller_Name.Contains("Karma_Aktuell"))
                 {
-                    ViewModel.CurrentChar.Person.Karma_Aktuell--;
+                    ViewModel.MainObject.Person.Karma_Aktuell--;
                 }
                 if (Controller_Name.Contains("Edge_Gesamt"))
                 {
-                    ViewModel.CurrentChar.Person.Edge_Gesamt--;
+                    ViewModel.MainObject.Person.Edge_Gesamt--;
                 }
                 if (Controller_Name.Contains("Edge_Aktuell"))
                 {
-                    ViewModel.CurrentChar.Person.Edge_Aktuell--;
+                    ViewModel.MainObject.Person.Edge_Aktuell--;
                 }
                 if (Controller_Name.Contains("Initiative"))
                 {
-                    ViewModel.CurrentChar.Person.Initiative--;
+                    ViewModel.MainObject.Person.Initiative--;
                 }
                 if (Controller_Name.Contains("Runs"))
                 {
-                    ViewModel.CurrentChar.Person.Runs--;
+                    ViewModel.MainObject.Person.Runs--;
                 }
             }
         }
@@ -224,7 +225,7 @@ namespace ShadowRunHelper
 
             if (Controller_Name.Contains("Person2"))
             {
-                UI.Edit.Edit_Person2 dialog = new UI.Edit.Edit_Person2(ViewModel.CurrentChar.Person);
+                UI.Edit.Edit_Person2 dialog = new UI.Edit.Edit_Person2(ViewModel.MainObject.Person);
                 await dialog.ShowAsync();
             }
         }

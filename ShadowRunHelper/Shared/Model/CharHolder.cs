@@ -5,16 +5,17 @@ using System.Runtime.CompilerServices;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.CharController;
 using System.Collections.ObjectModel;
+using TLIB;
 
 namespace ShadowRunHelper.Model
 {
     /// <summary>
     /// Hält einen Char mit Controlern und Daten
     /// </summary>
-    public class CharHolder
+    public class CharHolder : TLIB.Model.IMainType
     {
-        public readonly string APP_VERSION_NUMBER = Konstanten.APP_VERSION_NUMBER_1_5;
-        public readonly string FILE_VERSION_NUMBER = Konstanten.CHARFILE_VERSION_1_5;
+        public readonly string APP_VERSION_NUMBER = Constants.APP_VERSION_NUMBER_1_5;
+        public readonly string FILE_VERSION_NUMBER = Constants.CHARFILE_VERSION_1_5;
         public cController<Item> CTRLItem { get; set; }
         public cController<Programm> CTRLProgramm { get; set; }
         public cController<Munition> CTRLMunition { get; set; }
@@ -321,7 +322,7 @@ namespace ShadowRunHelper.Model
             _lstThings.Remove(_lstThings.Find((x) => x.Object == tToRemove));
         }
 
-        public string MakeName()
+        string MakeName()
         {
             return Person.strMakeName;
         }
@@ -513,6 +514,11 @@ namespace ShadowRunHelper.Model
         {
             (string first, string last) = Test();
 
+        }
+
+        public string GetFileName()
+        {
+            return MakeName();
         }
     }
 }

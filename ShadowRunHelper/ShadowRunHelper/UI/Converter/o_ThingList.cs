@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TLIB;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter
@@ -29,7 +30,7 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return CrossPlattformHelper.GetString(item.strPropertyName);
+                        return CrossPlatformHelper.GetString(item.strPropertyName);
                     }
                 case "BezeichnerLang":
                     if (item?.strProperty == "")
@@ -38,7 +39,7 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return TypenHelper.ThingDefToString(item.Object.ThingType, false)+" "+CrossPlattformHelper.GetString(item.strPropertyName);
+                        return TypenHelper.ThingDefToString(item.Object.ThingType, false)+" "+CrossPlatformHelper.GetString(item.strPropertyName);
                     }
                 case "Zusatz":
                     return item.Object.Zusatz;

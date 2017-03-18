@@ -22,7 +22,11 @@
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -105,8 +109,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IO\WinIO.cs" />
-    <Compile Include="Ressourcen\WinSettings.cs" />
     <Compile Include="UI\Converter\o_FileSize.cs" />
     <Compile Include="UI\Converter\o_ThingList.cs" />
     <Compile Include="UI\Converter\io_GebDatum.cs" />
@@ -125,8 +127,8 @@
     <Compile Include="UI\Parts\Auswahl.xaml.cs">
       <DependentUpon>Auswahl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Pages\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
+    <Compile Include="UI\Pages\PageSettings.xaml.cs">
+      <DependentUpon>PageSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\Char.xaml.cs">
       <DependentUpon>Char.xaml</DependentUpon>
@@ -192,7 +194,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Pages\Settings.xaml">
+    <Page Include="UI\Pages\PageSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -218,6 +220,7 @@
     </Page>
   </ItemGroup>
   <Import Project="..\Shared\Shared.projitems" Label="Shared" />
+  <Import Project="..\..\..\..\TLIB\TLIB\TLIB\TLIB.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
