@@ -1,0 +1,96 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Win", "ShadowRunHelper.Win\ShadowRunHelper.Win.csproj", "{20705C89-F90E-4B10-827C-BA8A0B24E14F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedCodeBase", "SharedCodeBase\SharedCodeBase.shproj", "{0D90BEF9-68D7-4019-ABEC-0329274EB64D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TLIB", "..\TLIB\TLIB\TLIB.shproj", "{C43E2365-5678-4E72-A123-71383DE9B2DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_SharedCodeBase", "Test_SharedCodeBase\Test_SharedCodeBase.csproj", "{743348A4-16C8-4085-90BC-9DFA138AD138}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SharedCodeBase\SharedCodeBase.projitems*{0d90bef9-68d7-4019-abec-0329274eb64d}*SharedItemsImports = 13
+		SharedCodeBase\SharedCodeBase.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
+		..\TLIB\TLIB\TLIB.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
+		..\TLIB\TLIB\TLIB.projitems*{c43e2365-5678-4e72-a123-71383de9b2dc}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|ARM.Build.0 = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|ARM.Deploy.0 = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x64.ActiveCfg = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x64.Build.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x64.Deploy.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x86.ActiveCfg = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x86.Build.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x86.Deploy.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|ARM.ActiveCfg = Release|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|ARM.Build.0 = Release|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|ARM.Deploy.0 = Release|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x64.ActiveCfg = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x64.Build.0 = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x64.Deploy.0 = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x86.ActiveCfg = Release|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x86.Build.0 = Release|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x86.Deploy.0 = Release|x86
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Debug|ARM.ActiveCfg = Debug|ARM
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Debug|ARM.Build.0 = Debug|ARM
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Debug|ARM.Deploy.0 = Debug|ARM
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Debug|x64.ActiveCfg = Debug|x64
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Debug|x64.Build.0 = Debug|x64
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Debug|x64.Deploy.0 = Debug|x64
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Debug|x86.ActiveCfg = Debug|x86
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Debug|x86.Build.0 = Debug|x86
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Debug|x86.Deploy.0 = Debug|x86
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Release|ARM.ActiveCfg = Release|ARM
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Release|ARM.Build.0 = Release|ARM
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Release|ARM.Deploy.0 = Release|ARM
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Release|x64.ActiveCfg = Release|x64
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Release|x64.Build.0 = Release|x64
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Release|x64.Deploy.0 = Release|x64
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Release|x86.ActiveCfg = Release|x86
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Release|x86.Build.0 = Release|x86
+		{743348A4-16C8-4085-90BC-9DFA138AD138}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tobivanhelsinki.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ShadowRunHelper.Win\\ShadowRunHelper.Win.csproj
+		SccProjectName1 = ShadowRunHelper.Win
+		SccLocalPath1 = ShadowRunHelper.Win
+		SccProjectUniqueName2 = SharedCodeBase\\SharedCodeBase.projitems
+		SccProjectTopLevelParentUniqueName2 = SharedCodeBase\\SharedCodeBase.shproj
+		SccProjectName2 = SharedCodeBase
+		SccLocalPath2 = SharedCodeBase
+		SccProjectUniqueName3 = SharedCodeBase\\SharedCodeBase.shproj
+		SccProjectName3 = SharedCodeBase
+		SccLocalPath3 = SharedCodeBase
+		SccProjectUniqueName4 = ..\\TLIB\\TLIB\\TLIB.projitems
+		SccProjectTopLevelParentUniqueName4 = ..\\TLIB\\TLIB\\TLIB.shproj
+		SccProjectName4 = ../TLIB/TLIB
+		SccLocalPath4 = ..\\TLIB\\TLIB
+		SccProjectUniqueName5 = ..\\TLIB\\TLIB\\TLIB.shproj
+		SccProjectName5 = ../TLIB/TLIB
+		SccLocalPath5 = ..\\TLIB\\TLIB
+		SccProjectUniqueName6 = Test_SharedCodeBase\\Test_SharedCodeBase.csproj
+		SccProjectName6 = Test_SharedCodeBase
+		SccLocalPath6 = Test_SharedCodeBase
+	EndGlobalSection
+EndGlobal

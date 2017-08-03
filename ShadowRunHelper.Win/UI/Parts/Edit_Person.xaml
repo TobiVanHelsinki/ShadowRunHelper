@@ -1,0 +1,159 @@
+﻿<ContentDialog
+    x:Class="ShadowRunHelper.UI.Edit.Edit_Person"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="{x:Bind Data.Alias, Mode=TwoWay}"
+    PrimaryButtonText="Fertig"  
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    >
+    <ContentDialog.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentDialog.Resources>
+    <ScrollViewer Padding="4,5,10,5">
+        <StackPanel Orientation="Vertical">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Alias" Grid.Column="0" Grid.Row="0"/>
+                <TextBox Text="{x:Bind Data.Alias, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="0"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Char_Typ" Grid.Column="0" Grid.Row="1"/>
+                <TextBox Name="Char_Typ" Text="{x:Bind Data.Char_Typ, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Runs" Grid.Column="0" Grid.Row="2"/>
+                <TextBox Name="Runs" Text="{x:Bind Data.Runs, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="2"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_MetaTyp" Grid.Column="0" Grid.Row="3"/>
+                <TextBox Name="MetaTyp" Text="{x:Bind Data.MetaTyp, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="3"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_MetaTyp_sub" Grid.Column="0" Grid.Row="4"/>
+                <TextBox Name="MetaTyp_sub" Text="{x:Bind Data.MetaTyp_sub, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="4"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Lebensstil" Grid.Column="0" Grid.Row="5"/>
+                <TextBox Name="Lebesstil" Text="{x:Bind Data.Lebesstil, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="5"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Geschlecht" Grid.Column="0" Grid.Row="6"/>
+                <TextBox Name=" Geschlecht" Text="{x:Bind Data.Geschlecht, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="6"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Größe" Grid.Column="0" Grid.Row="7"/>
+                <TextBox Name=" Größe" Text="{x:Bind Data.Größe, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="7"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Gewicht" Grid.Column="0" Grid.Row="8"/>
+                <TextBox Name=" Gewicht" Text="{x:Bind Data.Gewicht, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="8"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Augenfarbe" Grid.Column="0" Grid.Row="9"/>
+                <TextBox Name="Augenfarbe" Text="{x:Bind Data.Augenfarbe, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="9"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Haarfarbe" Grid.Column="0" Grid.Row="10"/>
+                <TextBox Name="Haarfarbe" Text="{x:Bind Data.Haarfarbe, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="10"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Hautfarbe" Grid.Column="0" Grid.Row="11"/>
+                <TextBox Name="Hautfarbe" Text="{x:Bind Data.Hautfarbe, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="11"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Essenz" Grid.Column="0" Grid.Row="12"/>
+                <TextBox Name="Essenz" Text="{x:Bind Data.Essenz, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="12"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_StrassenrufMod" Grid.Column="0" Grid.Row="11"/>
+                <TextBox Text="{x:Bind Data.StrassenrufMod, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="11"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_SchlechterRuf" Grid.Column="0" Grid.Row="12"/>
+                <TextBox Text="{x:Bind Data.SchlechterRuf, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="12"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Prominenz" Grid.Column="0" Grid.Row="12"/>
+                <TextBox Text="{x:Bind Data.Prominenz, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="12"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Geburtstag" Grid.Column="0" Grid.Row="11"/>
+                <DatePicker Name="GebDatePicker" Date="{Binding Data.GeburtsdatumDateTimeOffset, Mode=TwoWay}" DateChanged="DatePicker_DateChanged" Grid.Column="1" Grid.Row="12"/>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</ContentDialog>

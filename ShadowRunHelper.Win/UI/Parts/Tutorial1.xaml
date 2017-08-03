@@ -1,0 +1,46 @@
+﻿<ContentDialog
+    x:Class="ShadowRunHelper.UI.Tutorial1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CharModel="using:ShadowRunHelper.CharModel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Uid="Tut1Dialog"
+    >
+    <ContentDialog.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentDialog.Resources>
+    <Grid x:Name="MainGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" x:Name="Col1"/>
+            <ColumnDefinition Width="*" x:Name="Col2"/>
+            <ColumnDefinition Width="Auto" x:Name="Col3"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" x:Name="Exit"/>
+            <RowDefinition Height="Auto" x:Name="Text"/>
+            <RowDefinition Height="Auto" x:Name="Buttons"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="1">
+            <Run Text="{x:Bind StateCounter}"/>
+            <Run x:Uid="Space"/>
+            <Run x:Uid="of"/>
+            <Run x:Uid="Space"/>
+            <Run Text="{x:Bind MaxStateCount}"/>
+        </TextBlock>
+        <TextBlock Grid.ColumnSpan="3" x:Name="TutorialText" Grid.Row="1"/>
+        <Button  Click="BtnPrev_Click" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" x:Uid="Back" Grid.Row="2">
+            <Button.Projection>
+                <PlaneProjection RotationZ="180"/>
+            </Button.Projection>
+        </Button>
+        <Button Click="BtnNext_Click" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" Grid.Row="2" Grid.Column="2"/>
+        <Button Click="BtnExit_Click" Content="&#xE748;" FontFamily="Segoe MDL2 Assets" Grid.Row="0" Grid.Column="2"/>
+
+    </Grid>
+</ContentDialog>

@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ShadowRunHelper.App" Collapsed="true">
+    <Position X="35.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAQAAAQAAIAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Optionen" Collapsed="true">
+    <Position X="44.25" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIEAAAAAAAAAAAAIAAiAAAAQ=</HashCode>
+      <FileName>Ressourcen\Optionen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.OptionViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35.5" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAIEAAgAAAAAAAAAAAAgAAAAQ=</HashCode>
+      <FileName>Model\OptionViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.CB" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="37.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Converter\CB.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.Char" Collapsed="true">
+    <Position X="39" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAACAQAEAAAAAAAAAIQAEAAAAAQAAgAABAAAAAA=</HashCode>
+      <FileName>UI\Pages\Char.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Char_Verwaltung" Collapsed="true">
+    <Position X="40.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAgAAAAAAAAAAAAAMQAEAAAAAAIIAABAAAAgAQ=</HashCode>
+      <FileName>UI\Pages\Char_Verwaltung.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.MainPage" Collapsed="true">
+    <Position X="37.25" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAEAAAAAQAEAACEAAABAAABAAAIAA=</HashCode>
+      <FileName>UI\Pages\MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Settings" Collapsed="true">
+    <Position X="39.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAACAAAAAAEAAAAAEAAAAAAA=</HashCode>
+      <FileName>UI\Pages\Settings.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.HD_Wahl" Collapsed="true">
+    <Position X="39" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAQAAgBAAAAAAAAQACAAAAI=</HashCode>
+      <FileName>UI\Parts\HD_Wahl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.TabHeader" Collapsed="true">
+    <Position X="42.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAEAAAAAAAgAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>UI\Parts\TabHeader.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.CharController.cAttributController" Collapsed="true">
+    <Position X="11.75" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIABAAggAIBIKAAAAGAgAAgIAAApgAAAACAiAiIAAIg=</HashCode>
+      <FileName>CharController\Attribut.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.CharController.cController&lt;T&gt;" Collapsed="true">
+    <Position X="7.25" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAgAAAAAAAAAABABQAAAAAAAAAAAA=</HashCode>
+      <FileName>CharController\Controller.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShadowRunHelper.CharController.cCyberDeckController" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEACQAlAAAAAAAAAAAAAAAABAAQAAAAgAAAAAAA=</HashCode>
+      <FileName>CharController\CyberDeck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.CharController.cFernkampfwaffeController" Collapsed="true">
+    <Position X="2.75" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharController\Fernkampfwaffe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.CharController.cKommlinkController" Collapsed="true">
+    <Position X="5" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharController\Kommlink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.CharController.cNahkampfwaffeController" Collapsed="true">
+    <Position X="7.25" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharController\Nahkampfwaffe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.CharController.cPanzerungController" Collapsed="true">
+    <Position X="9.5" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharController\Panzerung.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.CharController.cVehikelController" Collapsed="true">
+    <Position X="14" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharController\Vehikel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Attribut" Collapsed="true">
+    <Position X="12.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharModel\Attribut.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Connection" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIABAAAAAAAAAAAAgBAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>CharModel\Connection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.CyberDeck" Collapsed="true">
+    <Position X="15" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAwQAAIIFABAIAQAACAAAAAgAAAAAAAAAAAAAAAEE=</HashCode>
+      <FileName>CharModel\CyberDeck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Eigenschaft" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAEgAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharModel\Eigenschaft.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Fernkampfwaffe" Collapsed="true">
+    <Position X="21.75" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAACAAABAgAAAAAAAAAAgAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>CharModel\Fernkampfwaffe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Fertigkeit" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharModel\Fertigkeit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Handlung" Collapsed="true">
+    <Position X="10.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAABAgAAgIAAAAAAAAkAAAAIAAAACAA=</HashCode>
+      <FileName>CharModel\Handlung.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Implantat" Collapsed="true">
+    <Position X="28.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>CharModel\Implantat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Item" Collapsed="true">
+    <Position X="22.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAABAAAAARAAAAAAQAAAAEgAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>CharModel\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Kommlink" Collapsed="true">
+    <Position X="15" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CgAAgAgAAAAABAIAAAACAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharModel\Kommlink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Munition" Collapsed="true">
+    <Position X="17.25" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharModel\Munition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Nachteil" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharModel\Nachteil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Nahkampfwaffe" Collapsed="true">
+    <Position X="24" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharModel\Nahkampfwaffe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Panzerung" Collapsed="true">
+    <Position X="26.25" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>CharModel\Panzerung.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Person" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="37.25" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>kgQgooQWJKZF2oAAQUoAgAgigIQIoAAAEASEAhIEhAI=</HashCode>
+      <FileName>CharModel\Person.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.Programm" Collapsed="true">
+    <Position X="30.75" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAA=</HashCode>
+      <FileName>CharModel\Programm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Sin" Collapsed="true">
+    <Position X="33" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharModel\Sin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Thing" Collapsed="true">
+    <Position X="17.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAIAAoBIAAKEAAAABAggAAQAAAAAAoBAAACAU=</HashCode>
+      <FileName>CharModel\Thing.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShadowRunHelper.Vehikel" Collapsed="true">
+    <Position X="19.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gAAFACAAFQAgAAAAAAAkAAACJAAAAgAAAAAEAIAQBAA=</HashCode>
+      <FileName>CharModel\Vehikel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Vorteil" Collapsed="true">
+    <Position X="6" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharModel\Vorteil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Waffe" Collapsed="true">
+    <Position X="22.75" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAGAAAAAgAAAAAAAAAAAAAAAAAAACAAAAAgAAAABAAA=</HashCode>
+      <FileName>CharModel\Waffe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.IO.CharIO" Collapsed="true">
+    <Position X="44.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>FAAAAAAIAAAAAAAAAAAAAABAAAAAAAAAAAAAAwBAAAA=</HashCode>
+      <FileName>IO\CharIO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.IO.CharVerwaltung" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="37.5" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQICEAAEAAAAAAQAAAAAAABAgAAECAAABAACAAEAAEw=</HashCode>
+      <FileName>IO\CharVerwaltung.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.Model.CharHolder" Collapsed="true">
+    <Position X="42.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIIEAAQAAAEBDIBAAAIABACAggAEAAQAAAARxAAAAQg=</HashCode>
+      <FileName>Model\CharHolder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Model.CharSummory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35.5" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgIAACIAAAAgAgAAAAAQAAAAEAAAAAAA=</HashCode>
+      <FileName>Model\CharSummory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.Model.CharViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAIACAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CharViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.Ressourcen.Exceptions" Collapsed="true">
+    <Position X="35.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ressourcen\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Ressourcen.WrongTypeException" Collapsed="true">
+    <Position X="44.25" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ressourcen\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.UI.Converter.i_char" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.75" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Converter\i_char.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.UI.Converter.io_GebDatum" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Converter\io_GebDatum.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.UI.Converter.io_ListView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="44.25" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Converter\io_ListView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.UI.Converter.io_ZahlenDouble" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="34.25" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Converter\io_ZahlenDouble.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.UI.Converter.o_IDWahl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Converter\o_IDWAhl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.UI.Converter.o_ModelTyp" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.75" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Converter\o_ModelTyp.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.UI.Converter.o_ZahlenYen" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42.5" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Converter\o_ZahlenYen.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ShadowRunHelper.UI.Edit.Edit_Dialog" Collapsed="true">
+    <Position X="40.75" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAQAAAAAAAAAAAAAAAABABAAAAACAAAAA=</HashCode>
+      <FileName>UI\Edit\Edit_Dialog.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.UI.Edit.Edit_Person" Collapsed="true">
+    <Position X="42.5" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAADAAAAA=</HashCode>
+      <FileName>UI\Edit\Edit_Person.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.UI.Edit.Edit_Person2" Collapsed="true">
+    <Position X="44.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAACAAAAA=</HashCode>
+      <FileName>UI\Edit\Edit_Person2.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShadowRunHelper.Konstanten" Collapsed="true">
+    <Position X="41.5" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAACgAACAAAAAAAAAAAAAAkAAAAIQAIiAhAAAAAAA=</HashCode>
+      <FileName>Ressourcen\Konstanten.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ShadowRunHelper.CharController.IController&lt;T&gt;" Collapsed="true">
+    <Position X="35.5" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAgAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CharController\IController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ShadowRunHelper.TCharState" Collapsed="true">
+    <Position X="37.25" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAwAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ressourcen\Typen.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ShadowRunHelper.ThingDefs" Collapsed="true">
+    <Position X="39" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAEQAAiAAUAAAAcAIAEBBAAAAAQAAABAIAACAA=</HashCode>
+      <FileName>Ressourcen\Typen.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ShadowRunHelper.FolderMode" Collapsed="true">
+    <Position X="35.5" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Ressourcen\Typen.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
