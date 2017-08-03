@@ -1,1 +1,1 @@
-MainPackage=C:\Users\Tobiv\Source\Workspaces\ShadowRunHelper\ShadowRunHelper.Win\bin\x64\Release\Upload\ShadowRunHelper.Win_1.6.5.0_x64.appx
+MainPackage=C:\Users\Tobiv\Source\Repos\ShadowRunHelper\ShadowRunHelper.Win\bin\x64\Release\Upload\ShadowRunHelper.Win_1.6.6.0_x64.appx
