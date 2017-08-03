@@ -286,7 +286,6 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="..\SharedCodeBase\SharedCodeBase.projitems" Label="Shared" />
   <Import Project="..\..\TLIB\TLIB\TLIB.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

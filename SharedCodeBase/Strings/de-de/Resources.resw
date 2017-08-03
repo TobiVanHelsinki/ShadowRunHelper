@@ -1084,7 +1084,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="of.Text" xml:space="preserve">
     <value>von</value>
   </data>
-  <data name="Tut1Dialog.Titel" xml:space="preserve">
+  <data name="Tut1Dialog.Title" xml:space="preserve">
     <value>Tutorial</value>
   </data>
   <data name="Tut1_State_0" xml:space="preserve">

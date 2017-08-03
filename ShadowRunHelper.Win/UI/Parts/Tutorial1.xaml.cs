@@ -35,7 +35,7 @@ namespace ShadowRunHelper.UI
         public Tutorial1()
         {
             InitializeComponent();
-            Title = CrossPlatformHelper.GetString("Tut1_Titel");
+            Title = CrossPlatformHelper.GetString("Tut1Dialog/Title");
             ViewModel.TutorialStateChanged += StateChanged;
         }
 
@@ -69,7 +69,8 @@ namespace ShadowRunHelper.UI
 
         private void BtnExit_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-
+            ViewModel.TutorialChangedState(StateCounter, false);
+            Hide();
         }
     }
 }
