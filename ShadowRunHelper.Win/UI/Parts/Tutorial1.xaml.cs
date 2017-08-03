@@ -1,6 +1,9 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+using SharedCodeBase.Model;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using TLIB;
 using Windows.UI.Xaml.Controls;
 
@@ -8,7 +11,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace ShadowRunHelper.UI
 {
-    public sealed partial class Tutorial1 : ContentDialog
+    public sealed partial class Tutorial1 : ContentDialog, INotifyPropertyChanged
     {
         public static Windows.UI.Xaml.Media.SolidColorBrush HighlightBrush = new Windows.UI.Xaml.Media.SolidColorBrush(Windows.UI.Colors.Red);
         public static Windows.UI.Xaml.Thickness HighlightThickness = new Windows.UI.Xaml.Thickness(2);
@@ -18,6 +21,7 @@ namespace ShadowRunHelper.UI
                 if (value < 0)
                 {
                     _StateCounter = 0;
+                    NotifyPropertyChanged();
                 }
                 else if (value > MaxStateCount)
                 {
@@ -26,11 +30,19 @@ namespace ShadowRunHelper.UI
                 else
                 {
                     _StateCounter = value;
+                    NotifyPropertyChanged();
                 }
                 }
         }
 
         AppModel ViewModel = AppModel.Instance;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            ModelResources.CallPropertyChanged(PropertyChanged, this, propertyName);
+        }
 
         public Tutorial1()
         {
