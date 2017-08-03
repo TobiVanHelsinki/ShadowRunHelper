@@ -15,6 +15,7 @@ using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper
@@ -32,32 +33,16 @@ namespace ShadowRunHelper
 
         private void TutorialStateChanged(int StateNumber, bool Highlight)
         {
-            var AdminBrush = Nav_Admin.BorderBrush;
-            var AdminThickness = Nav_Admin.BorderThickness;
-            var CharBrush = Nav_Char.BorderBrush;
-            var CharThickness = Nav_Char.BorderThickness;
-            var SettingsBrush = Nav_Settings.BorderBrush;
-            var SettingsThickness = Nav_Settings.BorderThickness;
-            if (StateNumber == 1)
+            Style StyleToBeApplied = Highlight ? Tutorial1.HighlightBorderStyle_XAML : Tutorial1.UnhighlightBorderStyle_XAML;
+            switch (StateNumber)
             {
-                if (Highlight)
-                {
-                    Nav_Admin.BorderBrush = Tutorial1.HighlightBrush;
-                    Nav_Admin.BorderThickness = Tutorial1.HighlightThickness;
-                    Nav_Char.BorderBrush = Tutorial1.HighlightBrush;
-                    Nav_Char.BorderThickness = Tutorial1.HighlightThickness;
-                    Nav_Settings.BorderBrush = Tutorial1.HighlightBrush;
-                    Nav_Settings.BorderThickness = Tutorial1.HighlightThickness;
-                }
-                else
-                {
-                    Nav_Admin.BorderBrush = AdminBrush;
-                    Nav_Admin.BorderThickness = AdminThickness;
-                    Nav_Char.BorderBrush = CharBrush;
-                    Nav_Char.BorderThickness = CharThickness;
-                    Nav_Settings.BorderBrush = SettingsBrush;
-                    Nav_Settings.BorderThickness = SettingsThickness;
-                }
+                case 1:
+                    MainBarBorder.Style = StyleToBeApplied;
+                    StatusControlBorder.Style = StyleToBeApplied;
+                    break;
+                default:
+                    MainBarBorder.Style = Tutorial1.UnhighlightBorderStyle_XAML;
+                    break;
             }
         }
 

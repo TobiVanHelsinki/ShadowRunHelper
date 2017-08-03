@@ -164,19 +164,23 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ContentControl HorizontalContentAlignment="Stretch" x:Name="StatusControl" ContentTemplate="{StaticResource Status}"/>
+        <Border x:Name="StatusControlBorder">
+            <ContentControl HorizontalContentAlignment="Stretch" x:Name="StatusControl" ContentTemplate="{StaticResource Status}"/>
+        </Border>
         <Frame Grid.Row="1" Name="MyFrame"></Frame>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <CommandBar Background="{ThemeResource SystemControlBackgroundAccentBrush}" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Loaded="CommandBar_Loaded">
-                <AppBarButton x:Name="Nav_Char" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
-                <AppBarButton x:Name="Nav_Admin" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
-                <!-- Content="&#xE753;" FontFamily="Segoe MDL2 Assets"-->
-                <AppBarButton x:Name="Nav_Settings" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
-            </CommandBar>
+            <Border x:Name="MainBarBorder">
+                <CommandBar Background="{ThemeResource SystemControlBackgroundAccentBrush}" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Loaded="CommandBar_Loaded">
+                    <AppBarButton x:Name="Nav_Char" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
+                    <AppBarButton x:Name="Nav_Admin" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
+                    <!-- Content="&#xE753;" FontFamily="Segoe MDL2 Assets"-->
+                    <AppBarButton x:Name="Nav_Settings" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
+                </CommandBar>
+            </Border>
             <CommandBar Background="{ThemeResource SystemControlBackgroundAccentBrush}" Grid.Column="1" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Loaded="CommandBar_Loaded">
             </CommandBar>
         </Grid>

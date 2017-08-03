@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TLIB;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // Die Elementvorlage "Inhaltsdialog" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
@@ -15,6 +16,12 @@ namespace ShadowRunHelper.UI
     {
         public static Windows.UI.Xaml.Media.SolidColorBrush HighlightBrush = new Windows.UI.Xaml.Media.SolidColorBrush(Windows.UI.Colors.Red);
         public static Windows.UI.Xaml.Thickness HighlightThickness = new Windows.UI.Xaml.Thickness(2);
+        public static Style HighlightBorderStyle = new Style(typeof(Border));
+        public static Style UnhighlightBorderStyle = new Style(typeof(Border));
+        public static Style HighlightBorderStyle_XAML = (Style)App.Current.Resources["Tut1Highlight"];
+        public static Style UnhighlightBorderStyle_XAML = (Style)App.Current.Resources["Tut1Unhighlight"];
+        
+
         int MaxStateCount = 5;
         int _StateCounter = 0;
         int StateCounter { get { return _StateCounter; } set {
@@ -46,6 +53,12 @@ namespace ShadowRunHelper.UI
 
         public Tutorial1()
         {
+            HighlightBorderStyle.Setters.Add(new Setter(BorderThicknessProperty, "5"));
+            HighlightBorderStyle.Setters.Add(new Setter(BorderBrushProperty, Tutorial1.HighlightBrush));
+            UnhighlightBorderStyle.Setters.Add(new Setter(BorderThicknessProperty, "1"));
+            UnhighlightBorderStyle.Setters.Add(new Setter(BorderBrushProperty, new Windows.UI.Xaml.Media.SolidColorBrush(Windows.UI.Colors.AliceBlue)));
+
+
             InitializeComponent();
             Title = CrossPlatformHelper.GetString("Tut1Dialog/Title");
             ViewModel.TutorialStateChanged += StateChanged;

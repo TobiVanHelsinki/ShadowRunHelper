@@ -75,7 +75,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Orientation="Horizontal">
+
+                <StackPanel Orientation="Horizontal">
                 <Button Content="&#xE70F;" FontFamily="Segoe MDL2 Assets" x:Name="EditBtn">
                     <Button.Flyout>
                         <Flyout>
@@ -87,13 +88,15 @@
             </StackPanel>
             <TextBlock Grid.Row="1" x:Name="CurrentCharPath" Text="{x:Bind ViewModel.CurrentChar.FileInfo.Filepath, Mode=OneWay, Converter={StaticResource o_CharAdmin_Path}}" Style="{StaticResource Chars}"/>
             <ProgressBar x:Name="ProgressBar_Char" Grid.Row="2" Visibility="Collapsed"/>
-            <CommandBar Background="Transparent" Loaded="CommandBar_Loaded" Grid.Row="3">
-                <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern"/>
-                <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Löschen" Icon="Delete" Click="Click_Löschen_CurrentChar"/>
-                <AppBarButton x:Name="CurrentCharBtn_FileExp" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar"/>
-                <AppBarButton Visibility="Collapsed" x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar"/>
-                <AppBarButton x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar"/>
-            </CommandBar>
+            <Border Grid.Row="3" x:Name="CurrentCharBarBorder">
+                <CommandBar Background="Transparent" Loaded="CommandBar_Loaded" >
+                    <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Löschen" Icon="Delete" Click="Click_Löschen_CurrentChar"/>
+                    <AppBarButton x:Name="CurrentCharBtn_FileExp" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar"/>
+                    <AppBarButton Visibility="Collapsed" x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar"/>
+                </CommandBar>
+            </Border>
         </Grid>
         <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
         <!--<ProgressRing x:Name="ProgressRing_Char" Width="500" IsActive="True"/>-->
@@ -107,14 +110,16 @@
                   SelectionChanged="Char_Sum_SelectionChanged"
                   SelectionMode="Multiple"
                   IsMultiSelectCheckBoxEnabled="False"/>
-        <CommandBar Grid.Row="4" Loaded="CommandBar_Loaded">
-            <AppBarButton Visibility="Collapsed" x:Name="Btn_SecondView" Content="Neue Ansicht" Icon="View" Click="Click_NewView"/>
-            <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen"/>
-            <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Datei_Import" Icon="Import" Click="Click_Datei_Import"/>
-            <AppBarButton Visibility="Collapsed" x:Name="Btn_CSV_Import" x:Uid="UI_CharVerwaltung_Btn_CSV_Import" Icon="Import" Click="Click_CSV_Import"/>
-            <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" Icon="Delete" Click="Click_Löschen_Alles"/>
-            <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"/>
-            <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar"/>
-        </CommandBar>
+        <Border Grid.Row="4" x:Name="MainBarBorder">
+            <CommandBar Grid.Row="4" Loaded="CommandBar_Loaded">
+                <AppBarButton Visibility="Collapsed" x:Name="Btn_SecondView" Content="Neue Ansicht" Icon="View" Click="Click_NewView"/>
+                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen"/>
+                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Datei_Import" Icon="Import" Click="Click_Datei_Import"/>
+                <AppBarButton Visibility="Collapsed" x:Name="Btn_CSV_Import" x:Uid="UI_CharVerwaltung_Btn_CSV_Import" Icon="Import" Click="Click_CSV_Import"/>
+                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" Icon="Delete" Click="Click_Löschen_Alles"/>
+                <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"/>
+                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar"/>
+            </CommandBar>
+            </Border>
     </Grid>
 </Page>

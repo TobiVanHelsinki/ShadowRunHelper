@@ -4,9 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
 
-        <ResourceDictionary>
+
+        <ResourceDictionary x:Key="Dic">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="UI/Ressourcen/ResourceDictionary_App.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
             <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Dark">
+                    <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="ListViewBackgroundBrush" Color="#FF333333" />
                     <SolidColorBrush x:Key="BorderBrushes" Color="Gray" />
                     <!--<SolidColorBrush x:Key="BackgroundBrush" Color="Green" />-->

@@ -60,5 +60,12 @@
     </Style>
     <Style TargetType="TextBlock" x:Key="EditTextBlock">
     </Style>
-
+    <Style TargetType="Border" x:Key="Tut1Highlight">
+        <Setter Property="BorderBrush" Value="Red"/>
+        <Setter Property="BorderThickness" Value="10"/>
+    </Style>
+    <Style TargetType="Border" x:Key="Tut1Unhighlight">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
 </ResourceDictionary>

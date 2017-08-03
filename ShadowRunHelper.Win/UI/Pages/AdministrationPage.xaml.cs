@@ -1,5 +1,6 @@
 ﻿using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
+using ShadowRunHelper.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -37,7 +38,7 @@ namespace ShadowRunHelper
         {
             InitializeComponent();
             res = ResourceLoader.GetForCurrentView();
-            ViewModel.TutorialStateChanged += ApplyTutorialState;
+            ViewModel.TutorialStateChanged += TutorialStateChanged;
 #if DEBUG
             CurrentCharBtn_CSVExp.Visibility = Visibility.Visible;
             Btn_CSV_Import.Visibility = Visibility.Visible;
@@ -50,6 +51,7 @@ namespace ShadowRunHelper
             Btn_Exception.Visibility = Visibility.Collapsed;
 #endif
         }
+
         Action<ProjectPages> NavigationMethod;
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -73,6 +75,22 @@ namespace ShadowRunHelper
         }
 
         // GUI Stuff ##########################################################
+        private void TutorialStateChanged(int StateNumber, bool Highlight)
+        {
+            Style StyleToBeApplied = Highlight ? Tutorial1.HighlightBorderStyle_XAML : Tutorial1.UnhighlightBorderStyle_XAML;
+            switch (StateNumber)
+            {
+                case 1:
+                    MainBarBorder.Style = StyleToBeApplied;
+                    CurrentCharBarBorder.Style = StyleToBeApplied;
+                    break;
+                default:
+                    MainBarBorder.Style = Tutorial1.UnhighlightBorderStyle_XAML;
+                    CurrentCharBarBorder.Style = Tutorial1.UnhighlightBorderStyle_XAML;
+                    break;
+            }
+        }
+
         bool IsOperationInProgres = false;
         void ChangeCurrentCharUI(bool bHow)
         {
@@ -443,22 +461,6 @@ namespace ShadowRunHelper
             (sender as AppBarButton).Visibility = Visibility.Collapsed;
 #endif
 
-        }
-        // Tutorial ###########################################################
-
-        void ApplyTutorialState(int StateNumber, bool Highlight)
-        {
-            switch (StateNumber)
-            {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                default:
-                    break;
-            }
         }
     }
 }

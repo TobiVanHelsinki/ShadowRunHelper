@@ -39,7 +39,7 @@
             </Button.Projection>
         </Button>
         <Button Click="BtnNext_Click" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" Grid.Row="2" Grid.Column="2"/>
-        <Button Click="BtnExit_Click" Content="&#xE748;" FontFamily="Segoe MDL2 Assets" Grid.Row="0" Grid.Column="2"/>
+        <Button Click="BtnExit_Click" Content="&#xE711;" FontFamily="Segoe MDL2 Assets" Grid.Row="0" Grid.Column="2"/>
 
     </Grid>
 </ContentDialog>
