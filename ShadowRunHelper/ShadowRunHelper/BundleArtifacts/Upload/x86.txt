@@ -1,1 +1,0 @@
-MainPackage=C:\Users\Tobiv\Source\Repos\ShadowRunHelper\ShadowRunHelper\ShadowRunHelper\bin\x86\Release\Upload\ShadowRunHelper_1.5.26.0_x86.appx
