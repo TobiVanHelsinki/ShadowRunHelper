@@ -1,5 +1,5 @@
 ﻿<ContentDialog
-    x:Class="ShadowRunHelper.UI.Tutorial1"
+    x:Class="ShadowRunHelper.UI.Tutorial"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:CharModel="using:ShadowRunHelper.CharModel"
@@ -26,13 +26,13 @@
             <RowDefinition Height="Auto" x:Name="Buttons"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.ColumnSpan="1">
-            <Run Text="{x:Bind StateCounter, Mode=OneWay}"/>
+            <Run Text="{x:Bind RelativStateCounter, Mode=OneWay}"/>
             <Run x:Uid="Space"/>
             <Run x:Uid="of"/>
             <Run x:Uid="Space"/>
-            <Run Text="{x:Bind MaxStateCount}"/>
+            <Run Text="{x:Bind RelativMaxStateCount}"/>
         </TextBlock>
-        <TextBlock Grid.ColumnSpan="3" x:Name="TutorialText" Grid.Row="1"/>
+        <TextBlock Grid.ColumnSpan="3" x:Name="TutorialText" Grid.Row="1" TextWrapping="Wrap" Padding="0,5,0,15"/>
         <Button  Click="BtnPrev_Click" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" x:Uid="Back" Grid.Row="2">
             <Button.Projection>
                 <PlaneProjection RotationZ="180"/>

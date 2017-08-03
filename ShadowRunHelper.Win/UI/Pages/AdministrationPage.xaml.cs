@@ -64,6 +64,10 @@ namespace ShadowRunHelper
                 await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
             }
             await Summorys_Aktualisieren();
+            if (true || SettingsModel.I.StartCount <= 1 || SettingsModel.I.TutorialMainShown)
+            {
+                new Tutorial(0, 5).ShowAsync();
+            }
         }
 
         void CommandBar_Loaded(object sender, RoutedEventArgs e)
@@ -77,16 +81,22 @@ namespace ShadowRunHelper
         // GUI Stuff ##########################################################
         private void TutorialStateChanged(int StateNumber, bool Highlight)
         {
-            Style StyleToBeApplied = Highlight ? Tutorial1.HighlightBorderStyle_XAML : Tutorial1.UnhighlightBorderStyle_XAML;
+            Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
             switch (StateNumber)
             {
-                case 1:
+                case 2:
                     MainBarBorder.Style = StyleToBeApplied;
+                    break;
+                case 3:
+                    ListViewBorder.Style = StyleToBeApplied;
+                    break;
+                case 4:
                     CurrentCharBarBorder.Style = StyleToBeApplied;
                     break;
                 default:
-                    MainBarBorder.Style = Tutorial1.UnhighlightBorderStyle_XAML;
-                    CurrentCharBarBorder.Style = Tutorial1.UnhighlightBorderStyle_XAML;
+                    MainBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    CurrentCharBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    ListViewBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
                     break;
             }
         }
@@ -120,6 +130,10 @@ namespace ShadowRunHelper
             foreach (var item in e.AddedItems)
             {
                 ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = Active;
+                if (true || SettingsModel.I.TutorialCharListShown)
+                {
+                    new Tutorial(10, 10).ShowAsync();
+                }
             }
         }
 

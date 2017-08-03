@@ -63,6 +63,37 @@ namespace ShadowRunHelper
             {
                 FilterBoxPanel.Visibility = Visibility.Collapsed;
             }
+            ViewModel.TutorialStateChanged += TutorialStateChanged;
+            if (true || SettingsModel.I.StartCount <= 1 || SettingsModel.I.TutorialCharShown)
+            {
+                new Tutorial(20, 23).ShowAsync();
+            }
+        }
+
+        private void TutorialStateChanged(int StateNumber, bool Highlight)
+        {
+            Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
+            switch (StateNumber)
+            {
+                case 22:
+                    PivotHeader1Border.Style = StyleToBeApplied;
+                    PivotHeader2Border.Style = StyleToBeApplied;
+                    PivotHeader3Border.Style = StyleToBeApplied;
+                    PivotHeader4Border.Style = StyleToBeApplied;
+                    PivotHeader5Border.Style = StyleToBeApplied;
+                    break;
+                case 23:
+                    MainContentBorder.Style = StyleToBeApplied;
+                    break;
+                default:
+                    PivotHeader1Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    PivotHeader2Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    PivotHeader3Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    PivotHeader4Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    PivotHeader5Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    MainContentBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    break;
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -208,6 +239,10 @@ namespace ShadowRunHelper
                 case (int)ThingDefs.Handlung:
                     NewTemplate = HandlungItem;
                     NewTemplateX = HandlungItemX;
+                    if (true || SettingsModel.I.StartCount <= 1 || SettingsModel.I.TutorialCharShown)
+                    {
+                        new Tutorial(30, 31).ShowAsync();
+                    }
                     break;
                 case (int)ThingDefs.Fertigkeit:
                     NewTemplate = FertigkeitItem;

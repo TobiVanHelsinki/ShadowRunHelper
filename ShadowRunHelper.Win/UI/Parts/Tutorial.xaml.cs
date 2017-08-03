@@ -12,23 +12,24 @@ using Windows.UI.Xaml.Controls;
 
 namespace ShadowRunHelper.UI
 {
-    public sealed partial class Tutorial1 : ContentDialog, INotifyPropertyChanged
+    public sealed partial class Tutorial : ContentDialog, INotifyPropertyChanged
     {
         public static Windows.UI.Xaml.Media.SolidColorBrush HighlightBrush = new Windows.UI.Xaml.Media.SolidColorBrush(Windows.UI.Colors.Red);
         public static Windows.UI.Xaml.Thickness HighlightThickness = new Windows.UI.Xaml.Thickness(2);
-        public static Style HighlightBorderStyle = new Style(typeof(Border));
-        public static Style UnhighlightBorderStyle = new Style(typeof(Border));
+        //public static Style HighlightBorderStyle = new Style(typeof(Border));
+        //public static Style UnhighlightBorderStyle = new Style(typeof(Border));
         public static Style HighlightBorderStyle_XAML = (Style)App.Current.Resources["Tut1Highlight"];
         public static Style UnhighlightBorderStyle_XAML = (Style)App.Current.Resources["Tut1Unhighlight"];
-        
 
-        int MaxStateCount = 5;
+        int MinStateCount = 0;
+        int MaxStateCount = 0;
         int _StateCounter = 0;
-        int StateCounter { get { return _StateCounter; } set {
-                if (value < 0)
+        int StateCounter { get { return _StateCounter; }
+            set {
+                if (value < MinStateCount)
                 {
-                    _StateCounter = 0;
-                    NotifyPropertyChanged();
+                    _StateCounter = MinStateCount;
+                    NotifyPropertyChanged("RelativStateCounter");
                 }
                 else if (value > MaxStateCount)
                 {
@@ -37,9 +38,24 @@ namespace ShadowRunHelper.UI
                 else
                 {
                     _StateCounter = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged("RelativStateCounter");
                 }
-                }
+            }
+        }
+        int RelativMaxStateCount = 0;
+        //int RelativMinStateCount = 0;
+        int RelativStateCounter
+        {
+            get
+            {
+                return StateCounter-MinStateCount;
+            }
+            set
+            {
+               
+                _StateCounter = value + MinStateCount;
+                NotifyPropertyChanged();
+            }
         }
 
         AppModel ViewModel = AppModel.Instance;
@@ -51,24 +67,31 @@ namespace ShadowRunHelper.UI
             ModelResources.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
 
-        public Tutorial1()
+        public Tutorial(int Start, int Ende)
         {
-            HighlightBorderStyle.Setters.Add(new Setter(BorderThicknessProperty, "5"));
-            HighlightBorderStyle.Setters.Add(new Setter(BorderBrushProperty, Tutorial1.HighlightBrush));
-            UnhighlightBorderStyle.Setters.Add(new Setter(BorderThicknessProperty, "1"));
-            UnhighlightBorderStyle.Setters.Add(new Setter(BorderBrushProperty, new Windows.UI.Xaml.Media.SolidColorBrush(Windows.UI.Colors.AliceBlue)));
-
-
+            MinStateCount = Start;
+            MaxStateCount = Ende;
+            _StateCounter = Start;
+            RelativMaxStateCount = Ende-Start;
+            
             InitializeComponent();
-            Title = CrossPlatformHelper.GetString("Tut1Dialog/Title");
+            Title = CrossPlatformHelper.GetString(string.Format("Tut_TitleState_{0,0:D2}", Start));
             ViewModel.TutorialStateChanged += StateChanged;
+            ViewModel.TutorialChangedState(StateCounter, true);
         }
 
         private void StateChanged(int StateNumber, bool Highlight)
         {
             if (Highlight)
             {
-                TutorialText.Text = CrossPlatformHelper.GetString("Tut1_State_" + StateNumber);
+                try
+                {
+                    TutorialText.Text = CrossPlatformHelper.GetString(string.Format("Tut_State_{0,0:D2}", StateNumber));
+                }
+                catch (System.Exception ex)
+                {
+                }
+                
             };
         }
 

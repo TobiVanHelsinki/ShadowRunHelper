@@ -33,15 +33,18 @@ namespace ShadowRunHelper
 
         private void TutorialStateChanged(int StateNumber, bool Highlight)
         {
-            Style StyleToBeApplied = Highlight ? Tutorial1.HighlightBorderStyle_XAML : Tutorial1.UnhighlightBorderStyle_XAML;
+            Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
             switch (StateNumber)
             {
                 case 1:
                     MainBarBorder.Style = StyleToBeApplied;
+                    break;
+                case 21:
                     StatusControlBorder.Style = StyleToBeApplied;
                     break;
                 default:
-                    MainBarBorder.Style = Tutorial1.UnhighlightBorderStyle_XAML;
+                    MainBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    StatusControlBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
                     break;
             }
         }
@@ -58,11 +61,6 @@ namespace ShadowRunHelper
             ShowError();
             Model.SetDependencies(Dispatcher);
             NavigationRequested(ProjectPages.Char);
-
-            if (true || SettingsModel.I.StartCount <= 1 || SettingsModel.I.TutorialMainShown)
-            {
-                new Tutorial1().ShowAsync();
-            }
         }
 
         void GetCurrentDeck()

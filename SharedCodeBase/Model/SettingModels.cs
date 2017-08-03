@@ -20,11 +20,32 @@ namespace ShadowRunHelper
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE, value);
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1, value);
                 Instance.NotifyPropertyChanged();
             }
         }
         
+        public bool TutorialCharListShown
+        {
+            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_3);
+            set
+            {
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_3, value);
+                Instance.NotifyPropertyChanged();
+            }
+        }
+
+
+        public bool TutorialCharShown
+        {
+            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_2);
+            set
+            {
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_2, value);
+                Instance.NotifyPropertyChanged();
+            }
+        }
+
         public int StartCountDB
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_START_COUNT_DB);

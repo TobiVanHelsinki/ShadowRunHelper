@@ -75,8 +75,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-
-                <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal">
                 <Button Content="&#xE70F;" FontFamily="Segoe MDL2 Assets" x:Name="EditBtn">
                     <Button.Flyout>
                         <Flyout>
@@ -100,7 +99,8 @@
         </Grid>
         <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
         <!--<ProgressRing x:Name="ProgressRing_Char" Width="500" IsActive="True"/>-->
-        <ListView Name="Char_Sum" 
+        <Border Grid.Row="3" x:Name="ListViewBorder">
+            <ListView Name="Char_Sum" 
                   ItemsSource="{x:Bind Summorys, Mode=OneWay}" 
                   ItemTemplate="{StaticResource Normal}"
                   ListView.HeaderTemplate="{StaticResource Header}"
@@ -110,6 +110,7 @@
                   SelectionChanged="Char_Sum_SelectionChanged"
                   SelectionMode="Multiple"
                   IsMultiSelectCheckBoxEnabled="False"/>
+        </Border>
         <Border Grid.Row="4" x:Name="MainBarBorder">
             <CommandBar Grid.Row="4" Loaded="CommandBar_Loaded">
                 <AppBarButton Visibility="Collapsed" x:Name="Btn_SecondView" Content="Neue Ansicht" Icon="View" Click="Click_NewView"/>

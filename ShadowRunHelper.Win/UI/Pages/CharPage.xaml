@@ -1822,19 +1822,25 @@
         </Pivot.LeftHeader>
         <PivotItem Style="{StaticResource TabsStylePivotStylePivotItem}">
             <PivotItem.Header>
-                <local:TabHeader x:Uid="Char_View_Pivot_Aktion" Glyph="&#xE945;" />
+                <Border x:Name="PivotHeader1Border">
+                    <local:TabHeader x:Uid="Char_View_Pivot_Aktion" Glyph="&#xE945;" />
+                </Border>
             </PivotItem.Header>
-            <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
+            <Border x:Name="MainContentBorder">
+                <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
                 <StackPanel Loaded="StackPanel_Loaded" Style="{StaticResource Pivot_Item_StackPanel}">
                     <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="1" Style="{StaticResource Block_ContentControl}"/>
                     <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="2" Style="{StaticResource Block_ContentControl}"/>
                     <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="19" Style="{StaticResource Block_ContentControl}"/>
                 </StackPanel>
             </ScrollViewer>
+            </Border>
         </PivotItem>
         <PivotItem Style="{StaticResource TabsStylePivotStylePivotItem}">
             <PivotItem.Header>
-                <local:TabHeader x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
+                <Border x:Name="PivotHeader2Border">
+                    <local:TabHeader x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
+                </Border>
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
                 <StackPanel Loaded="StackPanel_Loaded" Style="{StaticResource Pivot_Item_StackPanel}">
@@ -1850,7 +1856,9 @@
         </PivotItem>
         <PivotItem Style="{StaticResource TabsStylePivotStylePivotItem}">
             <PivotItem.Header>
-                <local:TabHeader x:Uid="Char_View_Pivot_Kampf" Glyph="&#xE730;" />
+                <Border x:Name="PivotHeader3Border">
+                    <local:TabHeader x:Uid="Char_View_Pivot_Kampf" Glyph="&#xE730;" />
+                </Border>
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
                 <StackPanel Loaded="StackPanel_Loaded" Style="{StaticResource Pivot_Item_StackPanel}">
@@ -1864,7 +1872,9 @@
         </PivotItem>
         <PivotItem Style="{StaticResource TabsStylePivotStylePivotItem}">
             <PivotItem.Header>
-                <local:TabHeader x:Uid="Char_View_Pivot_Person" Glyph="&#xE2AF;" />
+                <Border x:Name="PivotHeader4Border">
+                    <local:TabHeader x:Uid="Char_View_Pivot_Person" Glyph="&#xE2AF;" />
+                </Border>
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
                 <StackPanel Loaded="StackPanel_Loaded" Style="{StaticResource Pivot_Item_StackPanel}">
@@ -1999,7 +2009,9 @@
         </PivotItem>
         <PivotItem Style="{StaticResource TabsStylePivotStylePivotItem}">
             <PivotItem.Header>
-                <local:TabHeader x:Uid="Char_View_Pivot_Notizen" Glyph="&#xE193;" />
+                <Border x:Name="PivotHeader5Border">
+                    <local:TabHeader x:Uid="Char_View_Pivot_Notizen" Glyph="&#xE193;" />
+                </Border>
             </PivotItem.Header>
             <TextBox Name="NoteTextBox" Text="{x:Bind CurrentChar.Person.Notizen, Mode=TwoWay}" Style="{StaticResource NotesBox}"/>
         </PivotItem>
