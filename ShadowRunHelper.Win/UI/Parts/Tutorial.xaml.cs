@@ -21,6 +21,7 @@ namespace ShadowRunHelper.UI
         public static Style HighlightBorderStyle_XAML = (Style)App.Current.Resources["Tut1Highlight"];
         public static Style UnhighlightBorderStyle_XAML = (Style)App.Current.Resources["Tut1Unhighlight"];
 
+        bool ShouldExit;
         int MinStateCount = 0;
         int MaxStateCount = 0;
         int _StateCounter = 0;
@@ -33,7 +34,9 @@ namespace ShadowRunHelper.UI
                 }
                 else if (value > MaxStateCount)
                 {
-                    BtnExit_Click(null, null);
+                    _StateCounter = MaxStateCount;
+                    ShouldExit = true;
+                    NotifyPropertyChanged("RelativStateCounter");
                 }
                 else
                 {
@@ -112,6 +115,11 @@ namespace ShadowRunHelper.UI
         {
             ViewModel.TutorialChangedState(StateCounter, false);
             StateCounter++;
+            if (ShouldExit)
+            {
+                BtnExit_Click(null, null);
+                return;
+            }
             ViewModel.TutorialChangedState(StateCounter, true);
         }
 
