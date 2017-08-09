@@ -196,6 +196,28 @@ namespace ShadowRunHelper
             SettingsModel.I.CountSavings++;
         }
 
+        async void Click_Speichern_Intern(object sender, RoutedEventArgs e)
+        {
+            if (IsOperationInProgres)
+            {
+                return;
+            }
+
+            ChangeProgress(true);
+            try
+            {
+                await CharHolderIO.SaveAtCurrentPlace(ViewModel.MainObject);
+            }
+            catch (Exception ex)
+            {
+                ViewModel.NewNotification(res.GetString("Notification_Error_SaveFail"), ex);
+            }
+            ChangeProgress(false);
+            await Summorys_Aktualisieren();
+            SettingsModel.I.CountSavings++;
+
+        }
+
         async void Click_Laden(object sender, RoutedEventArgs e)
         {
             if (IsOperationInProgres)
@@ -476,5 +498,6 @@ namespace ShadowRunHelper
 #endif
 
         }
+
     }
 }

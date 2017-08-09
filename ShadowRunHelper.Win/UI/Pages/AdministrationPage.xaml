@@ -90,6 +90,7 @@
             <Border Grid.Row="3" x:Name="CurrentCharBarBorder">
                 <CommandBar Background="Transparent" Loaded="CommandBar_Loaded" >
                     <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Save_Intern" x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern"/>
                     <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Löschen" Icon="Delete" Click="Click_Löschen_CurrentChar"/>
                     <AppBarButton x:Name="CurrentCharBtn_FileExp" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar"/>
                     <AppBarButton Visibility="Collapsed" x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar"/>

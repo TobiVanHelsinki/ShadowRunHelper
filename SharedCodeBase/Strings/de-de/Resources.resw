@@ -1149,4 +1149,7 @@ Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst,
   <data name="Tut_TitleState_20" xml:space="preserve">
     <value>Einführung Seite "Char"</value>
   </data>
+  <data name="UI_CharVerwaltung_Btn_Speichern_Intern.Label" xml:space="preserve">
+    <value>Intern Speichern</value>
+  </data>
 </root>
