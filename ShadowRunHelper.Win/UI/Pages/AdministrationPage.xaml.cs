@@ -105,6 +105,7 @@ namespace ShadowRunHelper
         void ChangeCurrentCharUI(bool bHow)
         {
             CurrentCharBtn_Save.IsEnabled = bHow;
+            CurrentCharBtn_Save_Intern.IsEnabled = bHow;
             CurrentCharBtn_Del.IsEnabled = bHow;
             CurrentCharBtn_FileExp.IsEnabled = bHow;
             CurrentCharBtn_CSVExp.IsEnabled = bHow;

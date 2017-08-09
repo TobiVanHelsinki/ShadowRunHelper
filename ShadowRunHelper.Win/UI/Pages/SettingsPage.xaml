@@ -36,7 +36,6 @@
                     </Path.Data>
                 </Path>
             </DataTemplate>
-
             <DataTemplate x:Name="ExceptionTemplate" x:DataType="System:Exception">
                 <StackPanel>
                     <TextBlock Text="{x:Bind Data}"/>
