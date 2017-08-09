@@ -1089,56 +1089,56 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="Tut_State_00" xml:space="preserve">
     <value>Willkommen in der ShadowRunHelper App!
-In dieser Einführung wird gezeigt, wie ShadowRun Chars in dieser App erstellt und verwaltet werden. Mit den Pfeiltasten kannst du durch die EInführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt nocheinmal betrachten willst.
-
-In jedem Schritt werden die grade erklärten Steuerelemente rot Hervorgehoneb werden.</value>
+In dieser Einführung wird gezeigt, wie ShadowRun Chars in dieser App erstellt und verwaltet werden. Mit den Pfeiltasten kannst du durch die Einführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst. 
+In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben.</value>
   </data>
   <data name="Tut_State_01" xml:space="preserve">
-    <value>Beginnen wir mit der Navigationsleiste (Rote hervorhebung). Diese 3 Buttons begleiten dich durch die gesamte App. Der erste führt dich zu der Seite, auf der ein Char später dargestellt wird. Der Zweite bringt dich in das Menü, in dem du dich gerade befindest. Der Dritte bringt dich in das Einstellungsmenü, dort findest du unteranderem auch den ganzen rechtlichen Kram.</value>
+    <value>Beginnen wir mit der Navigationsleiste. Diese 3 Buttons begleiten dich durch die gesamte App. Der erste führt dich zu der Seite, auf der ein Char später dargestellt wird. Der Zweite bringt dich in das Menü, indem du dich gerade befindest. Der Dritte bringt dich in das Einstellungsmenü, dort findest du unteranderem auch den ganzen rechtlichen Kram.</value>
   </data>
   <data name="Tut_State_02" xml:space="preserve">
-    <value>Im der aktuellen Ansicht "Chars verwalten" gibt es zwei Symbolleisten. Beginnen wir mit der unteren. Mit dieser Verwaltest du alle deine Chars (ja, du kannst mit der App mehrere verwalten). Die Beschriftungen sollten selbsterklärend sein. Nach dieser Einleitung beginnst du am besten mit "neuer Char erstellen" oder klickst auf den Beispielcharakter in der Liste.</value>
+    <value>In der aktuellen Ansicht "Chars verwalten" gibt es zwei Symbolleisten. Beginnen wir mit der unteren. Mit dieser Verwaltest du alle deine Chars (ja, du kannst mit der App mehrere verwalten). Die Beschriftungen sollten selbsterklärend sein. Nach dieser Einleitung beginnst du am besten mit "neuer Char erstellen" oder klickst auf den Beispielcharakter in der Liste.</value>
   </data>
   <data name="Tut_State_04" xml:space="preserve">
-    <value>Sobald du einen Char geladen oder erstellt hast, wird die obere Symbolleiste für dich intressant. Damit verwaltest du den zur Zeit geladenen Char. Die Beschriftungen sind auch hier wieder sehr selbsterklärend. Bitte beachte:
+    <value>Sobald du einen Char geladen oder erstellt hast, wird die obere Symbolleiste für dich interessant. Damit verwaltest du den zurzeit geladenen Char. Die Beschriftungen sind auch hier wieder sehr selbsterklärend. Bitte beachte:
 a) "Löschen" löscht deinen Char nur aus der App, nicht aber aus der Liste gespeicherter Chars
-b) "Reparieren" es sollte nicht vorkommen, aber manchmal ist es unvorhersehenbar: die verknüpften Einträge aktualisieren sich nicht mehr automatisch. Dann kann diese Funktion helfen. Vielleicht. Wenn nicht oder wenn du sonst irgendwelche Probleme hast, scheue nicht, mich zu kontaktieren (Kontakt im Enstellungsmenü).</value>
+b) "Reparieren" es sollte nicht vorkommen, aber manchmal ist es unvorhersehbar: die verknüpften Einträge aktualisieren sich nicht mehr automatisch. Dann kann diese Funktion helfen. Vielleicht. Wenn nicht oder wenn du sonst irgendwelche Probleme hast, scheue nicht, mich zu kontaktieren (Kontakt im Einstellungsmenü).</value>
   </data>
   <data name="Tut_State_05" xml:space="preserve">
     <value>Das war's mit dem ersten Tutorial. Erstelle jetzt deinen Charakter oder schau dir den Beispielcharakter an.</value>
   </data>
   <data name="Tut_State_10" xml:space="preserve">
-    <value>Klickst du auf einen Char in dieser Leiste, wird sein Eintrag aufgeklappt und du erhälts möglichkeiten, ihn zu verwalten.</value>
+    <value>Klickst du auf einen Char in dieser Leiste, wird sein Eintrag aufgeklappt und du erhältst Möglichkeiten, ihn zu verwalten.</value>
   </data>
   <data name="Tut_State_20" xml:space="preserve">
     <value>Willkommen in deinem ersten Char!
-In dieser Einführung wird gezeigt, wie die Char Ansicht funktioniert. Mit den Pfeiltasten kannst du durch die EInführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt nocheinmal betrachten willst.</value>
+In dieser Einführung wird gezeigt, wie die Char Ansicht funktioniert. Mit den Pfeiltasten kannst du durch die Einführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst.</value>
   </data>
   <data name="Tut_State_03" xml:space="preserve">
-    <value>Diese Liste zeigt alle deine gespeicherten Charaktäre an. Stadnardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswählen, ob sie über deinen Account Syncronisiert werden sollen. Im Prinzip sind die Chars in der Liste alles nur Dateien in einem Ordner, daher kannst du in den Optionen auch einen anderen Ordner als Speicherort wählen.</value>
+    <value>Diese Liste zeigt alle deine gespeicherten Charaktere an. Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswählen, ob sie über deinen Account synchronisieren werden sollen. Im Prinzip sind die Chars in der Liste alles nur Dateien in einem Ordner, daher kannst du in den Optionen auch einen anderen Ordner als Speicherort wählen.</value>
   </data>
   <data name="Tut_State_21" xml:space="preserve">
-    <value>Diese Leiste ganz oben ist dir bestimmt schon aufgefallen. Sie ist in der ganzen App präsent und zeigt dir, welchen Charakter du gerade offen hast, sowie seine wichtigsten Werte wie z.B. Geld, Karma oder den aktuellen Schaden (Geistig, Körperlich, Matrixschaden am Deck). Mit einem Klick auf die dunkleren Schaltflächen kannst du die Werte bearbeiten. </value>
+    <value>Diese Leiste ganz oben ist dir bestimmt schon aufgefallen. Sie ist in der ganzen App präsent und zeigt dir, welchen Charakter du gerade offen hast, sowie seine wichtigsten Werte z.B. Geld, Karma oder den aktuellen Schaden (Geistig, Körperlich, Matrixschaden am Deck). Mit einem Klick auf die dunkleren Schaltflächen kannst du die Werte bearbeiten.</value>
   </data>
   <data name="Tut_State_22" xml:space="preserve">
-    <value>Mit diesen Symbolen kannst du Zwischen verschiedenen Tabs auf dieser Seite navigieren.</value>
+    <value>Mit diesen Symbolen kannst du zwischen verschiedenen Tabs auf dieser Seite navigieren.</value>
   </data>
   <data name="Tut_State_23" xml:space="preserve">
-    <value>Im Hauptbereich der Seite findest du alle Einträge eines Chars, gruppiert nach Kategorien. Z.B. haben wir hier die Kategorie "Handlungen", mit allen Handlungen, die dein Char ausführen kann. Über den Plus Button kannst du einen neuen Eintrag hinzufügen. Wenn du einen Eintrag auswählst, erhälst du mehr Informationen, sowie die Möglichkeiten, ihn zu bearbeiten.</value>
+    <value>Im Hauptbereich der Seite findest du alle Einträge eines Chars, gruppiert nach Kategorien. Z.B. haben wir hier die Kategorie "Handlungen", mit allen Handlungen, die dein Char ausführen kann. Über den Plus Button kannst du einen neuen Eintrag hinzufügen. Wenn du einen Eintrag auswählst, erhältst du mehr Informationen, sowie die Möglichkeiten, ihn zu bearbeiten.</value>
   </data>
   <data name="Tut_State_30" xml:space="preserve">
     <value>Handlungen sind das Herzstück deine Chars und dieser App. Eine Handlung besitzt die 3 Eigenschaften "Wert", "Limit" und "Wehren". 
 Wert: Würfelpool beim Ausführen der Aktion
 Limit: Das Limit für zählende Erfolge
 Wehren: Führt eine andere Person diese Handlung gegen dich aus, ist das dein Pool um dich zu wehren.
-Für diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusammenrechnest, sondern du hinterlegst die anderen EInträge, aus denen sich die Werte berechnen.</value>
+Für diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusammenrechnest, sondern du hinterlegst die anderen Einträge, aus denen sich die Werte berechnen.</value>
   </data>
   <data name="Tut_State_31" xml:space="preserve">
     <value>Klickst du auf Bearbeiten, so wird dir eine Liste von Einträge angezeigt. Diese Liste enthält aber noch mehr. 
 
 Ein Beispiel: Das Limit beim Abfeuern einer Waffe wird durch ihre Präzision bestimmt. Das heißt, bei Limit der Handlung Schießen musst du "Limit" auswählen. 
 
-Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst, gibt für Waffen (wie auch für andere Kategorien) nur einen EIntrag in dieser Liste. Dieser Eintrag repräsentiert dann die Waffe, die gerade "Aktiv" ist. Aktiviert wird ein Gegenstand über das erste Häkchen.</value>
+Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst, ist in dieser Liste nur die aktuelle Waffe mit ihren verschiedenen Eigenschaften aufgelistet. 
+Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehikel. Aktiviert wird ein Gegenstand über das erste Häkchen in seinem Eintrag.</value>
   </data>
   <data name="Tut_TitelState_30" xml:space="preserve">
     <value>Handlungen</value>
@@ -1153,7 +1153,7 @@ Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst,
     <value>Intern Speichern</value>
   </data>
   <data name="UI_Optionen_TutCharShown.Text" xml:space="preserve">
-    <value>Char-Anleitung gelesen</value>
+    <value>"Char-Anleitung" gelesen</value>
   </data>
   <data name="UI_Optionen_TutorialCharListShown.Text" xml:space="preserve">
     <value>Charlisten-Anleitung gelesen</value>
@@ -1162,6 +1162,6 @@ Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst,
     <value>Handlungsanleitung gelesen</value>
   </data>
   <data name="UI_Optionen_TutorialMainShown.Text" xml:space="preserve">
-    <value>Verwaltungsanleitung gelesen</value>
+    <value>"Chars Verwalten"-Anleitung gelesen</value>
   </data>
 </root>
