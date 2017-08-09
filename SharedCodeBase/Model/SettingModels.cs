@@ -15,6 +15,17 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        
+        public bool TutorialHandlungShown
+        {
+            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_4);
+            set
+            {
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_4, value);
+                Instance.NotifyPropertyChanged();
+            }
+        }
+
         public bool TutorialMainShown
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1);
@@ -24,7 +35,7 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        
+
         public bool TutorialCharListShown
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_3);

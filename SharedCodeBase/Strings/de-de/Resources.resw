@@ -1152,4 +1152,16 @@ Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst,
   <data name="UI_CharVerwaltung_Btn_Speichern_Intern.Label" xml:space="preserve">
     <value>Intern Speichern</value>
   </data>
+  <data name="UI_Optionen_TutCharShown.Text" xml:space="preserve">
+    <value>Char-Anleitung gelesen</value>
+  </data>
+  <data name="UI_Optionen_TutorialCharListShown.Text" xml:space="preserve">
+    <value>Charlisten-Anleitung gelesen</value>
+  </data>
+  <data name="UI_Optionen_TutorialHandlungShown.Text" xml:space="preserve">
+    <value>Handlungsanleitung gelesen</value>
+  </data>
+  <data name="UI_Optionen_TutorialMainShown.Text" xml:space="preserve">
+    <value>Verwaltungsanleitung gelesen</value>
+  </data>
 </root>

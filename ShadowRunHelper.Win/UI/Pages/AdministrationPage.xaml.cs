@@ -64,9 +64,10 @@ namespace ShadowRunHelper
                 await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
             }
             await Summorys_Aktualisieren();
-            if (true || SettingsModel.I.StartCount <= 1 || SettingsModel.I.TutorialMainShown)
+            if (SettingsModel.I.StartCount <= 1 || !SettingsModel.I.TutorialMainShown)
             {
                 new Tutorial(0, 5).ShowAsync();
+                SettingsModel.I.TutorialMainShown = true;
             }
         }
 
@@ -131,9 +132,10 @@ namespace ShadowRunHelper
             foreach (var item in e.AddedItems)
             {
                 ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = Active;
-                if (true || SettingsModel.I.TutorialCharListShown)
+                if (SettingsModel.I.StartCount <= 1 || !SettingsModel.I.TutorialCharListShown)
                 {
                     new Tutorial(10, 10).ShowAsync();
+                    SettingsModel.I.TutorialCharListShown = true;
                 }
             }
         }

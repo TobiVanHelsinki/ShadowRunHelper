@@ -218,6 +218,20 @@
                     <TextBlock x:Uid="UI_Optionen_FileNameUseDate_Header" Style="{StaticResource TextInhaltKlein}"/>
                     <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.FileNameUseDate, Mode=TwoWay}"/>
 
+                    <Border Style="{StaticResource SplitBorder}"/>
+
+                    <TextBlock x:Uid="UI_Optionen_TutCharShown" Style="{StaticResource TextInhaltKlein}"/>
+                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialCharShown, Mode=TwoWay}"/>
+
+                    <TextBlock x:Uid="UI_Optionen_TutorialCharListShown" Style="{StaticResource TextInhaltKlein}"/>
+                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialCharListShown, Mode=TwoWay}"/>
+
+                    <TextBlock x:Uid="UI_Optionen_TutorialMainShown" Style="{StaticResource TextInhaltKlein}"/>
+                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialMainShown, Mode=TwoWay}"/>
+
+                    <TextBlock x:Uid="UI_Optionen_TutorialHandlungShown" Style="{StaticResource TextInhaltKlein}"/>
+                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialHandlungShown, Mode=TwoWay}"/>
+
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>

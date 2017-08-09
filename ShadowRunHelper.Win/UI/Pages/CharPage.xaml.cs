@@ -36,14 +36,6 @@ namespace ShadowRunHelper
         // Navigation Stuff####################################################
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //for (int i = 0; i < Pivot.Items.Count-1; i++)
-            //{
-            //    Pivot.SelectedIndex = i;
-            //    await System.Threading.Tasks.Task.Delay(150);
-            //}
-            //Pivot.SelectedIndex = 0;
-
-
             if (SettingsModel.I.DISPLAY_REQUEST)
             {
                 try
@@ -64,9 +56,10 @@ namespace ShadowRunHelper
                 FilterBoxPanel.Visibility = Visibility.Collapsed;
             }
             ViewModel.TutorialStateChanged += TutorialStateChanged;
-            if (true || SettingsModel.I.StartCount <= 1 || SettingsModel.I.TutorialCharShown)
+            if (SettingsModel.I.StartCount <= 1 || !SettingsModel.I.TutorialCharShown)
             {
                 new Tutorial(20, 23).ShowAsync();
+                SettingsModel.I.TutorialCharShown = true;
             }
         }
 
@@ -239,9 +232,10 @@ namespace ShadowRunHelper
                 case (int)ThingDefs.Handlung:
                     NewTemplate = HandlungItem;
                     NewTemplateX = HandlungItemX;
-                    if (true || SettingsModel.I.StartCount <= 1 || SettingsModel.I.TutorialCharShown)
+                    if (SettingsModel.I.StartCount <= 1 || !SettingsModel.I.TutorialHandlungShown)
                     {
                         new Tutorial(30, 31).ShowAsync();
+                        SettingsModel.I.TutorialHandlungShown = true;
                     }
                     break;
                 case (int)ThingDefs.Fertigkeit:
