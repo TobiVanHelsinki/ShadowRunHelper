@@ -1,11 +1,13 @@
 ﻿using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TLIB;
 using TLIB.IO;
 using TLIB.Model;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -31,6 +33,7 @@ namespace ShadowRunHelper
         {
             InitializeComponent();
         }
+
         // Gui Stuff ##########################################
         /// <summary>
         /// Select the right Notification Template
@@ -110,6 +113,7 @@ namespace ShadowRunHelper
         /// use to prevent the "Toggled-Efect" from beeing enebled at startup
         /// </summary>
         bool Intern_Sync_HasFocus = false;
+        
         private void Intern_Sync_GotFocus(object sender, RoutedEventArgs e)
         {
             Intern_Sync_HasFocus = true;

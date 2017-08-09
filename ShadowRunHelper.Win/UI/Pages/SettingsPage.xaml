@@ -12,6 +12,32 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Settings.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Name="ToolTipSign">
+                <Path Margin="30,0,0,0" StrokeEndLineCap="Round" Stroke="Blue" StrokeThickness="10">
+                    <Path.Data>
+                        <GeometryGroup FillRule="EvenOdd">
+                            <EllipseGeometry Center="50,50"  RadiusX="55" RadiusY="55"/>
+                            <EllipseGeometry Center="50,90"  RadiusX="5" RadiusY="5"/>
+                            <PathGeometry>
+                                <PathGeometry.Figures>
+                                    <PathFigureCollection>
+                                        <PathFigure IsClosed="False" StartPoint="25,25">
+                                            <PathFigure.Segments>
+                                                <PathSegmentCollection>
+                                                    <BezierSegment Point1="25,25" Point2="50,5" Point3="75,25"/>
+                                                    <BezierSegment Point1="75,25" Point2="50,45" Point3="50,70"/>
+                                                </PathSegmentCollection>
+                                            </PathFigure.Segments>
+                                        </PathFigure>
+                                    </PathFigureCollection>
+                                </PathGeometry.Figures>
+                            </PathGeometry>
+
+                        </GeometryGroup>
+                    </Path.Data>
+                </Path>
+            </DataTemplate>
+
             <DataTemplate x:Name="ExceptionTemplate" x:DataType="System:Exception">
                 <StackPanel>
                     <TextBlock Text="{x:Bind Data}"/>
@@ -118,19 +144,23 @@
                 <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource Überschrift1}"/>
             </PivotItem.Header>
             <ScrollViewer>
-                <StackPanel>
+                <StackPanel Background="Beige">
                     <TextBlock x:Uid="UI_Optionen_U_Einstellungen_Tip" Style="{StaticResource Überschrift2}"/>
-                    
+
                     <Border Style="{StaticResource SplitBorder}"/>
-                    
+
                     <TextBlock x:Uid="UI_Optionen_EditAfterAdd_Header" Style="{StaticResource TextInhaltKlein}"/>
                     <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.StartEditAfterAdd, Mode=TwoWay}"/>
 
-                    <TextBlock ToolTipService.Placement="Mouse" x:Uid="UI_Optionen_DisplayRequest_Header" Style="{StaticResource TextInhaltKlein}">
+                    <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <TextBlock x:Name="DisplayRequestHeader" VerticalAlignment="Center" Style="{StaticResource TextInhaltKlein}" x:Uid="UI_Optionen_DisplayRequest_Header"/>
+                        <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
+                            <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
+                        </Viewbox>
                         <ToolTipService.ToolTip>
                             <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_DisplayRequest_Tip"/>
                         </ToolTipService.ToolTip>
-                    </TextBlock>
+                    </StackPanel>
                     <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.DISPLAY_REQUEST, Mode=TwoWay}"/>
 
                     <TextBlock x:Uid="UI_Optionen_Beta_Features_Header" Style="{StaticResource TextInhaltKlein}"/>
@@ -141,27 +171,41 @@
 
                     <Border Style="{StaticResource SplitBorder}"/>
 
-                    <TextBlock x:Uid="UI_Optionen_AutoSave_Header" Style="{StaticResource TextInhaltKlein}">
-                    <ToolTipService.ToolTip>
-                        <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_AutoSave_Tip"/>
-                    </ToolTipService.ToolTip>
-                    </TextBlock>
+                    <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <TextBlock x:Uid="UI_Optionen_AutoSave_Header" Style="{StaticResource TextInhaltKlein}"/>
+                        <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
+                            <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
+                        </Viewbox>
+                        <ToolTipService.ToolTip>
+                            <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_AutoSave_Tip"/>
+                        </ToolTipService.ToolTip>
+                    </StackPanel>
                     <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.AutoSave, Mode=TwoWay}"/>
                     <TextBlock x:Uid="UI_Optionen_AutoSaveInterval_Header" Style="{StaticResource TextInhaltKlein}"/>
                     <TextBox MaxWidth="600" HorizontalAlignment="Left" InputScope="Number" Text="{x:Bind Path=Settings.AutoSaveInterval, Mode=TwoWay}"/>
 
-                    <TextBlock x:Uid="UI_Optionen_Intern_Sync_Header" Style="{StaticResource TextInhaltKlein}">
-                    <ToolTipService.ToolTip>
-                        <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Intern_Sync_Tip"/>
-                    </ToolTipService.ToolTip>
-                    </TextBlock>
+                    <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <TextBlock x:Uid="UI_Optionen_Intern_Sync_Header" Style="{StaticResource TextInhaltKlein}"/>
+                        <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
+                            <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
+                        </Viewbox>
+                        <ToolTipService.ToolTip>
+                            <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Intern_Sync_Tip"/>
+                        </ToolTipService.ToolTip>
+                    </StackPanel>
+                    
                     <ToggleSwitch x:Uid="UI_Optionen_Toggle" GotFocus="Intern_Sync_GotFocus" Toggled="Intern_Sync_Toggled" IsOn="{x:Bind Path=Settings.InternSync, Mode=TwoWay}"/>
 
-                    <TextBlock x:Uid="UI_Optionen_Ordnermode_Header" Style="{StaticResource TextInhaltKlein}">
-                    <ToolTipService.ToolTip>
-                        <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Ordnermode_Tip"/>
-                    </ToolTipService.ToolTip>
-                    </TextBlock>
+                    <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <TextBlock x:Uid="UI_Optionen_Ordnermode_Header" Style="{StaticResource TextInhaltKlein}"/>
+                        <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
+                            <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
+                        </Viewbox>
+                        <ToolTipService.ToolTip>
+                            <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Ordnermode_Tip"/>
+                        </ToolTipService.ToolTip>
+                    </StackPanel>
+
                     <StackPanel Orientation="Horizontal">
                         <ToggleSwitch x:Uid="UI_Optionen_OrdnerMode" GotFocus="FolderMode_GotFocus" Toggled="FolderMode_Toggled" IsOn="{x:Bind Path=Settings.ORDNERMODE, Mode=TwoWay}"/>
                         <TextBlock Grid.Column="1" VerticalAlignment="Center" x:Uid="Doppelpunkt" Style="{StaticResource TextInhaltKlein}"/>
