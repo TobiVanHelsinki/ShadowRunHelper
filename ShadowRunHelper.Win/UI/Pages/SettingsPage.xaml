@@ -13,7 +13,7 @@
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Settings.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Name="ToolTipSign">
-                <Path Margin="30,0,0,0" StrokeEndLineCap="Round" Stroke="Blue" StrokeThickness="10">
+                <Path Margin="30,0,0,0" StrokeEndLineCap="Round" Stroke="{ThemeResource HelpIconColor}" StrokeThickness="10">
                     <Path.Data>
                         <GeometryGroup FillRule="EvenOdd">
                             <EllipseGeometry Center="50,50"  RadiusX="55" RadiusY="55"/>
@@ -32,7 +32,6 @@
                                     </PathFigureCollection>
                                 </PathGeometry.Figures>
                             </PathGeometry>
-
                         </GeometryGroup>
                     </Path.Data>
                 </Path>
