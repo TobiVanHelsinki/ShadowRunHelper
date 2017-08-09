@@ -1,0 +1,1161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Char_View_Pivot_Aktion.Label" xml:space="preserve">
+    <value>Aktionen</value>
+  </data>
+  <data name="Char_View_Pivot_Item.Label" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="Char_View_Pivot_Kampf.Label" xml:space="preserve">
+    <value>Kampf</value>
+  </data>
+  <data name="Char_View_Pivot_Notizen.Label" xml:space="preserve">
+    <value>Notizen</value>
+  </data>
+  <data name="Char_View_Pivot_Person.Label" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="KlammerAufEck.Text" xml:space="preserve">
+    <value>[</value>
+  </data>
+  <data name="KlammerZuEck.Text" xml:space="preserve">
+    <value>]</value>
+  </data>
+  <data name="Model_Attribut_.Text" xml:space="preserve">
+    <value>Attribut</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_AttributM_.Text" xml:space="preserve">
+    <value>Attribute</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Thing_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_ConnectionM_.Text" xml:space="preserve">
+    <value>Connections</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Connection_.Text" xml:space="preserve">
+    <value>Connection</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_Connection_Loyal.Text" xml:space="preserve">
+    <value>Loyalität</value>
+  </data>
+  <data name="Model_CyberDeckM_.Text" xml:space="preserve">
+    <value>CyberDecks</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_CyberDeck_.Text" xml:space="preserve">
+    <value>CyberDeck</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_CyberDeck_Angriff.Text" xml:space="preserve">
+    <value>Angriff</value>
+  </data>
+  <data name="Model_CyberDeck_Schleicher.Text" xml:space="preserve">
+    <value>Schleicher</value>
+  </data>
+  <data name="Model_FernkampfwaffeM_.Text" xml:space="preserve">
+    <value>Fernkampfwaffen</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Fernkampfwaffe_.Text" xml:space="preserve">
+    <value>Fernkampfwaffe</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_FernKampfwaffe_Modi.Text" xml:space="preserve">
+    <value>Modi</value>
+  </data>
+  <data name="Model_FernKampfwaffe_Rückstoß.Text" xml:space="preserve">
+    <value>RK</value>
+  </data>
+  <data name="Model_Fertigkeit_.Text" xml:space="preserve">
+    <value>Fertigkeit</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_Handlung_.Text" xml:space="preserve">
+    <value>Handlung</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_FertigkeitM_.Text" xml:space="preserve">
+    <value>Fertigkeiten</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_HandlungM_.Text" xml:space="preserve">
+    <value>Handlungen</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Handlung_Grenze.Text" xml:space="preserve">
+    <value>Limit</value>
+  </data>
+  <data name="Model_Handlung_Mod.Text" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="Model_Handlung_Zusammensetzung.Text" xml:space="preserve">
+    <value>Wert</value>
+  </data>
+  <data name="Model_ItemM_.Text" xml:space="preserve">
+    <value>Items</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Item_.Text" xml:space="preserve">
+    <value>Item</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_Item_Aktiv.Text" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="Model_Item_Anzahl.Text" xml:space="preserve">
+    <value>Anzahl</value>
+  </data>
+  <data name="Model_Item_Besitz.Text" xml:space="preserve">
+    <value>Besitz</value>
+  </data>
+  <data name="Model_KommlinkM_.Text" xml:space="preserve">
+    <value>Kommlinks</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Kommlink_.Text" xml:space="preserve">
+    <value>Kommlink</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_Kommlink_Attribute.Text" xml:space="preserve">
+    <value>Attribute</value>
+  </data>
+  <data name="Model_Kommlink_Datenverarbeitung.Text" xml:space="preserve">
+    <value>Datenverarbeitung</value>
+  </data>
+  <data name="Model_Kommlink_Firewall.Text" xml:space="preserve">
+    <value>Firewall</value>
+  </data>
+  <data name="Model_Kommlink_Programmanzahl.Text" xml:space="preserve">
+    <value>Programmanzahl</value>
+  </data>
+  <data name="Model_NahkampfwaffeM_.Text" xml:space="preserve">
+    <value>Nahkampfwaffen</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Nahkampfwaffe_.Text" xml:space="preserve">
+    <value>Nahkampfwaffe</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_Nahkampfwaffe_Reichweite.Text" xml:space="preserve">
+    <value>Reichweite</value>
+  </data>
+  <data name="Model_Thing_Notiz.Text" xml:space="preserve">
+    <value>Notiz</value>
+  </data>
+  <data name="Model_Panzerung_.Text" xml:space="preserve">
+    <value>Panzerung</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_PanzerungM_.Text" xml:space="preserve">
+    <value>Panzerungen</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Panzerung_Ballistik.Text" xml:space="preserve">
+    <value>Ballistik</value>
+  </data>
+  <data name="Model_Panzerung_Stoß.Text" xml:space="preserve">
+    <value>Stoß</value>
+  </data>
+  <data name="Model_Programm_.Text" xml:space="preserve">
+    <value>Programm</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_ProgrammM_.Text" xml:space="preserve">
+    <value>Programme</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Programm_Optionen.Text" xml:space="preserve">
+    <value>Auswirkungen</value>
+  </data>
+  <data name="Model_Thing_Typ.Text" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="Model_Vehikel_.Text" xml:space="preserve">
+    <value>Vehikel</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_VehikelM_.Text" xml:space="preserve">
+    <value>Vehikel</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Vehikel_Beschleunigung.Text" xml:space="preserve">
+    <value>Beschleunigung</value>
+  </data>
+  <data name="Model_Vehikel_Geschwindigkeit.Text" xml:space="preserve">
+    <value>Geschwindigkeit</value>
+  </data>
+  <data name="Model_Vehikel_Gewicht.Text" xml:space="preserve">
+    <value>Gewicht</value>
+  </data>
+  <data name="Model_Vehikel_Handling.Text" xml:space="preserve">
+    <value>Handling</value>
+  </data>
+  <data name="Model_Vehikel_Panzerung.Text" xml:space="preserve">
+    <value>Panzer</value>
+  </data>
+  <data name="Model_Vehikel_Pilot.Text" xml:space="preserve">
+    <value>Pilot</value>
+  </data>
+  <data name="Model_Vehikel_Rumpf.Text" xml:space="preserve">
+    <value>Rumpf</value>
+  </data>
+  <data name="Model_Vehikel_Sensor.Text" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="Model_Vehikel_Sitze.Text" xml:space="preserve">
+    <value>Sitze</value>
+  </data>
+  <data name="Model_Waffe_PB.Text" xml:space="preserve">
+    <value>DK</value>
+  </data>
+  <data name="Model_Thing_Zusatz.Text" xml:space="preserve">
+    <value>Zusatz</value>
+  </data>
+  <data name="Plus.Text" xml:space="preserve">
+    <value> + </value>
+  </data>
+  <data name="Slash.Text" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="UI_Btn_Bearbeiten.Content" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="Model_Person_Edge.Text" xml:space="preserve">
+    <value>Edge</value>
+  </data>
+  <data name="Model_Person_Essenz.Text" xml:space="preserve">
+    <value>Essenz mod</value>
+  </data>
+  <data name="Model_Person_InitiativeAktuell.Text" xml:space="preserve">
+    <value>Aktuelle Initiative</value>
+  </data>
+  <data name="Model_Person_Karma.Text" xml:space="preserve">
+    <value>Karma</value>
+  </data>
+  <data name="Model_Person_Kontostand.Text" xml:space="preserve">
+    <value>Kontostand</value>
+  </data>
+  <data name="Model_Eigenschaften_Auswirkung.Text" xml:space="preserve">
+    <value>Auswirkungen</value>
+  </data>
+  <data name="Model_Implantat_.Text" xml:space="preserve">
+    <value>Implantat</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_ImplantatM_.Text" xml:space="preserve">
+    <value>Implantate</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Implantat_Essenz.Text" xml:space="preserve">
+    <value>Essenz</value>
+  </data>
+  <data name="Model_NachteilM_.Text" xml:space="preserve">
+    <value>Nachteile</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Nachteil_.Text" xml:space="preserve">
+    <value>Nachteil</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_Person_.Text" xml:space="preserve">
+    <value>Personenangaben</value>
+    <comment>Mehrzahl?</comment>
+  </data>
+  <data name="Model_Person_Alias.Text" xml:space="preserve">
+    <value>Alias</value>
+  </data>
+  <data name="Model_Person_Beschreibung_.Text" xml:space="preserve">
+    <value>Personbeschreibung</value>
+  </data>
+  <data name="Model_Person_Notizen.Text" xml:space="preserve">
+    <value>Notizen</value>
+  </data>
+  <data name="Model_SINM_.Text" xml:space="preserve">
+    <value>SystemIdentifikationsNummern</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_VorteilM_.Text" xml:space="preserve">
+    <value>Vorteile</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_SIN_.Text" xml:space="preserve">
+    <value>SystemIdentifikationsNummer</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_Vorteil_.Text" xml:space="preserve">
+    <value>Vorteil</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="UI_Btn_Loeschen.Content" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Model_Waffe_SchadenTyp.Text" xml:space="preserve">
+    <value>Schadenstyp (G/K)</value>
+  </data>
+  <data name="Model_Kommlink_Attribute_o.Text" xml:space="preserve">
+    <value>Attribute Orginal</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Alle_Chars_Löschen.Label" xml:space="preserve">
+    <value>Alle Chars Löschen</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Datei_Import.Label" xml:space="preserve">
+    <value>Char Import</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Datei_Export.Label" xml:space="preserve">
+    <value>Char Export</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Laden.Label" xml:space="preserve">
+    <value>Laden</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Löschen.Label" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Neu.Label" xml:space="preserve">
+    <value>Neuen Char erstellen</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Speichern.Label" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="UI_CharVerwaltung_Einleitung1.Text" xml:space="preserve">
+    <value>Aktuellen Char verwalten:</value>
+  </data>
+  <data name="UI_CharVerwaltung_Einleitung2.Text" xml:space="preserve">
+    <value>Andere Chars verwalten:</value>
+  </data>
+  <data name="Model_Person_Char_Typ.Text" xml:space="preserve">
+    <value>Char Typ</value>
+  </data>
+  <data name="Model_Person_Runs.Text" xml:space="preserve">
+    <value>Runs</value>
+  </data>
+  <data name="Model_Person_MetaTyp.Text" xml:space="preserve">
+    <value>MetaTyp</value>
+  </data>
+  <data name="Model_Person_MetaTyp_sub.Text" xml:space="preserve">
+    <value>MetaSubTyp</value>
+  </data>
+  <data name="Model_Person_Lebensstil.Text" xml:space="preserve">
+    <value>Lebensstil</value>
+  </data>
+  <data name="Model_Person_Geburtsdatum.Text" xml:space="preserve">
+    <value>Geburtsdatum</value>
+  </data>
+  <data name="Model_Person_Geschlecht.Text" xml:space="preserve">
+    <value>Geschlecht</value>
+  </data>
+  <data name="Model_Person_Größe.Text" xml:space="preserve">
+    <value>Größe</value>
+  </data>
+  <data name="Model_Person_Gewicht.Text" xml:space="preserve">
+    <value>Gewicht</value>
+  </data>
+  <data name="Model_Person_Augenfarbe.Text" xml:space="preserve">
+    <value>Augenfarbe</value>
+  </data>
+  <data name="Model_Person_Haarfarbe.Text" xml:space="preserve">
+    <value>Haarfarbe</value>
+  </data>
+  <data name="Model_Person_Hautfarbe.Text" xml:space="preserve">
+    <value>Hautfarbe</value>
+  </data>
+  <data name="Model_Person_Zusammenfassung.Text" xml:space="preserve">
+    <value>Zusammenfassung</value>
+  </data>
+  <data name="Model_Person_Karma_Aktuell.Text" xml:space="preserve">
+    <value>Karma Aktuell</value>
+  </data>
+  <data name="Model_Person_Karma_Gesamt.Text" xml:space="preserve">
+    <value>Karma Gesamt</value>
+  </data>
+  <data name="Model_Person_Edge_Aktuell.Text" xml:space="preserve">
+    <value>Edge Aktuell</value>
+  </data>
+  <data name="Model_Person_Edge_Gesamt.Text" xml:space="preserve">
+    <value>Edge Gesamt</value>
+  </data>
+  <data name="Model_Person_Schaden_K.Text" xml:space="preserve">
+    <value>KörperSchaden</value>
+  </data>
+  <data name="Model_Person_Schaden_K_max.Text" xml:space="preserve">
+    <value>KörperSchaden maximal</value>
+  </data>
+  <data name="Model_Person_Schaden_G.Text" xml:space="preserve">
+    <value>GeistSchaden</value>
+  </data>
+  <data name="Model_Person_Schaden_G_max.Text" xml:space="preserve">
+    <value>GeistSchaden maximal</value>
+  </data>
+  <data name="Model_Person_Initiative.Text" xml:space="preserve">
+    <value>Initiative</value>
+  </data>
+  <data name="Model_Munition_.Text" xml:space="preserve">
+    <value>Munition</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_MunitionM_.Text" xml:space="preserve">
+    <value>Munition</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="UI_Optionen_AutoSave_Header.Text" xml:space="preserve">
+    <value>Char bei Änderungen automatisch Speichern?</value>
+  </data>
+  <data name="Model__Kapazität.Text" xml:space="preserve">
+    <value>Kapazität</value>
+  </data>
+  <data name="UI_Optionen_LoadOnStart_Header.Text" xml:space="preserve">
+    <value>Zuletzt verwendeten Char beim Starten der App automatisch laden?</value>
+  </data>
+  <data name="UI_Char_Schaden.Text" xml:space="preserve">
+    <value>Schaden:</value>
+  </data>
+  <data name="UI_Char_Schaden_Geist.Text" xml:space="preserve">
+    <value>Geistig</value>
+  </data>
+  <data name="UI_Char_Schaden_Körper.Text" xml:space="preserve">
+    <value>Körper</value>
+  </data>
+  <data name="UI_Char_Schaden_Matrix.Text" xml:space="preserve">
+    <value>Matrix</value>
+  </data>
+  <data name="UI_Optionen_Inhaber.Text" xml:space="preserve">
+    <value>App-Inhaber</value>
+  </data>
+  <data name="UI_Optionen_U_Kontakt.Text" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="UI_Optionen_Pegasus.Text" xml:space="preserve">
+    <value>ShadowRun ist eine eingetragene Marke von Pegasus Games</value>
+  </data>
+  <data name="UI_Optionen_U_Infos.Text" xml:space="preserve">
+    <value>Informationen</value>
+  </data>
+  <data name="UI_Optionen_U_Einstellungen.Text" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="UI_Optionen_U_Hilfe.Text" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="UI_Optionen_U_Rechtliches.Text" xml:space="preserve">
+    <value>Rechtliches</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode.OffContent" xml:space="preserve">
+    <value>Intern Speichern</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode.OnContent" xml:space="preserve">
+    <value>Extern Speichern</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode_Header.Text" xml:space="preserve">
+    <value>In Ordner Speichern?</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode_Pfad.Text" xml:space="preserve">
+    <value>Pfad</value>
+  </data>
+  <data name="Model_Handlung_Gegen.Text" xml:space="preserve">
+    <value>Wehren</value>
+  </data>
+  <data name="UI_Optionen_Bewerten.Text" xml:space="preserve">
+    <value>Diese App im Store Bewerten</value>
+  </data>
+  <data name="UI_Optionen_Datenschutz.Text" xml:space="preserve">
+    <value>Diese App sammelt keine persönlichen Daten und gibt sie deswegen auch nicht weiter.
+Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. Die App speichert diese Ordner und Dateien nur zur späteren Verwendung. Alle Dateien verbleiben auf dem Dateisystem oder im Microsoft Account.</value>
+  </data>
+  <data name="UI_Optionen_KontaktBtn.Content" xml:space="preserve">
+    <value>E-Mail Schreiben</value>
+  </data>
+  <data name="UI_Optionen_U_Datenschutz.Text" xml:space="preserve">
+    <value>Datenschutzerklärung</value>
+  </data>
+  <data name="Model_Attribut_Charisma.Text" xml:space="preserve">
+    <value>Charisma</value>
+  </data>
+  <data name="Model_Attribut_Essenz.Text" xml:space="preserve">
+    <value>Essenz</value>
+  </data>
+  <data name="Model_Attribut_Intuition.Text" xml:space="preserve">
+    <value>Intuition</value>
+  </data>
+  <data name="Model_Attribut_Konsti.Text" xml:space="preserve">
+    <value>Konstitution</value>
+  </data>
+  <data name="Model_Attribut_Limit_G.Text" xml:space="preserve">
+    <value>Geistiges Limit</value>
+  </data>
+  <data name="Model_Attribut_Limit_K.Text" xml:space="preserve">
+    <value>Körperliches limit</value>
+  </data>
+  <data name="Model_Attribut_Limit_S.Text" xml:space="preserve">
+    <value>Soziales Limit</value>
+  </data>
+  <data name="Model_Attribut_Logik.Text" xml:space="preserve">
+    <value>Logik</value>
+  </data>
+  <data name="Model_Attribut_Reaktion.Text" xml:space="preserve">
+    <value>Reaktion</value>
+  </data>
+  <data name="Model_Attribut_Staerke.Text" xml:space="preserve">
+    <value>Stärke</value>
+  </data>
+  <data name="Model_Attribut_Willen.Text" xml:space="preserve">
+    <value>Willenskraft</value>
+  </data>
+  <data name="Model_Attribut_Geschick.Text" xml:space="preserve">
+    <value>Geschicklichkeit</value>
+  </data>
+  <data name="Bindestrich.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="Model_Thing_Wert.Text" xml:space="preserve">
+    <value>Stufe</value>
+  </data>
+  <data name="Model_Thing_ThingTyp.Text" xml:space="preserve">
+    <value>Eigenschaftstyp</value>
+  </data>
+  <data name="Model_Connection_Einfluss.Text" xml:space="preserve">
+    <value>Einfluss</value>
+  </data>
+  <data name="Model_CyberDeck_Angriff_o.Text" xml:space="preserve">
+    <value>Angriff Original</value>
+  </data>
+  <data name="Model_CyberDeck_Datenverarbeitung_o.Text" xml:space="preserve">
+    <value>Datenverarbeitung Original</value>
+  </data>
+  <data name="Model_CyberDeck_Firewall_o.Text" xml:space="preserve">
+    <value>Firewall Original</value>
+  </data>
+  <data name="Model_CyberDeck_Schleicher_o.Text" xml:space="preserve">
+    <value>Schleicher Original</value>
+  </data>
+  <data name="Model_Eigenschaft_Auswirkungen.Text" xml:space="preserve">
+    <value>Auswirkungen</value>
+  </data>
+  <data name="Model_Implantat_Kapazität.Text" xml:space="preserve">
+    <value>Kapazität</value>
+  </data>
+  <data name="Model_Panzerung_Kapazität.Text" xml:space="preserve">
+    <value>Kapazität</value>
+  </data>
+  <data name="Model_Waffe_Präzision.Text" xml:space="preserve">
+    <value>Präzision</value>
+  </data>
+  <data name="Model_CyberDeck__Aktiv.Text" xml:space="preserve">
+    <value>Aktives Deck</value>
+  </data>
+  <data name="Model_Fernkampfwaffe__Aktiv.Text" xml:space="preserve">
+    <value>Aktive Fernkampfwaffe</value>
+  </data>
+  <data name="Model_Kommlink__Aktiv.Text" xml:space="preserve">
+    <value>Aktives Kommlink</value>
+  </data>
+  <data name="Model_Nahkampfwaffe__Aktiv.Text" xml:space="preserve">
+    <value>Aktive Nahkampfwaffe</value>
+  </data>
+  <data name="Model_Panzerung__Aktiv.Text" xml:space="preserve">
+    <value>Aktive Panzerung</value>
+  </data>
+  <data name="Model_Vehikel__Aktiv.Text" xml:space="preserve">
+    <value>Aktives Auto</value>
+  </data>
+  <data name="Model_Waffe_Wert.Text" xml:space="preserve">
+    <value>Schaden</value>
+  </data>
+  <data name="Klammer_Rund_Auf.Text" xml:space="preserve">
+    <value>(</value>
+  </data>
+  <data name="Klammer_Rund_Zu.Text" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="UI_Optionen_Toggle.OffContent" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="UI_Optionen_Toggle.OnContent" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="UI_Optionen_EditAfterAdd_Header.Text" xml:space="preserve">
+    <value>Bearbeiten nach Hinzufügen</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_CSV_Export.Label" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_CSV_Import.Label" xml:space="preserve">
+    <value>CSV Import</value>
+  </data>
+  <data name="Notification_Error_CSVExportFail" xml:space="preserve">
+    <value>Konnte nicht CSV-Exportieren</value>
+  </data>
+  <data name="Notification_Error_CSVImportFail" xml:space="preserve">
+    <value>CSV Importfehler</value>
+  </data>
+  <data name="Notification_Error_DelAllFail" xml:space="preserve">
+    <value>Alle Löschen fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_DelCurrentFail" xml:space="preserve">
+    <value>Löschen des aktuellen Char fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_DelFail" xml:space="preserve">
+    <value>Löschen fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_FileExportFail" xml:space="preserve">
+    <value>Konnte nicht Exportieren</value>
+  </data>
+  <data name="Notification_Error_FileImportFail" xml:space="preserve">
+    <value>Dateiimport fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_LoadFail" xml:space="preserve">
+    <value>Laden fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_SaveFail" xml:space="preserve">
+    <value>Speichern fehlgeschlagen</value>
+  </data>
+  <data name="Ui_Nav_Char.Label" xml:space="preserve">
+    <value>Aktueller Char</value>
+  </data>
+  <data name="Ui_Nav_Admin.Label" xml:space="preserve">
+    <value>Chars verwalten</value>
+  </data>
+  <data name="Ui_Nav_Settings.Label" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Notification_Error_Converter_Error1.Text" xml:space="preserve">
+    <value>konnte nicht übernommen werden.</value>
+  </data>
+  <data name="Notification_Error_DisplayRequest.Text" xml:space="preserve">
+    <value>Display kann nicht automatisch aktiviert bleiben.</value>
+  </data>
+  <data name="Notification_Error_Loader_Error1.Text" xml:space="preserve">
+    <value>Es gab einen Fehler beim Laden, Hier weitere Informationen: Überprüfe bitte deinen Char.</value>
+  </data>
+  <data name="UI_Optionen_DisplayRequest_Header.Text" xml:space="preserve">
+    <value>Char Display immer aktiv halten</value>
+  </data>
+  <data name="Model_Kommlink_Schaden.Text" xml:space="preserve">
+    <value>Schaden</value>
+  </data>
+  <data name="Model_Kommlink_SchadenMax.Text" xml:space="preserve">
+    <value>Schadenslimit</value>
+  </data>
+  <data name="Doppelpunkt.Text" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="Model_Thing_Wert_W.Text" xml:space="preserve">
+    <value>Wert</value>
+  </data>
+  <data name="UI_Btn_Bearbeiten_Pool.Content" xml:space="preserve">
+    <value>Pool Bearbeiten</value>
+  </data>
+  <data name="Model_Attribut_Magie.Text" xml:space="preserve">
+    <value>Magie</value>
+  </data>
+  <data name="Model_Adeptenkraft_KomplexeFormM_.Text" xml:space="preserve">
+    <value>Adeptenkräfte/Komplexe Formen</value>
+  </data>
+  <data name="Model_Adeptenkraft_KomplexeForm_.Text" xml:space="preserve">
+    <value>Adeptenkraft/Komplexe Form</value>
+  </data>
+  <data name="Model_Adeptenkraft_KomplexeForm_Option.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="Model_Attribut_Resonanz.Text" xml:space="preserve">
+    <value>Resonanz</value>
+  </data>
+  <data name="Model_Foki_WidgetsM_.Text" xml:space="preserve">
+    <value>Foki/Widgets</value>
+  </data>
+  <data name="Model_Foki_Widgets_.Text" xml:space="preserve">
+    <value>Foki/Widgets</value>
+  </data>
+  <data name="Model_Geist_SpriteM_.Text" xml:space="preserve">
+    <value>Geister/Sprites</value>
+  </data>
+  <data name="Model_Geist_Sprite_.Text" xml:space="preserve">
+    <value>Geist/Sprite</value>
+  </data>
+  <data name="Model_Geist_Sprite_Dienste.Text" xml:space="preserve">
+    <value>Dienste</value>
+  </data>
+  <data name="Model_Geist_Sprite_Geb_Reg.Text" xml:space="preserve">
+    <value>Geb/Reg</value>
+  </data>
+  <data name="Model_Person_Geburtstag.Text" xml:space="preserve">
+    <value>Geburtstag</value>
+  </data>
+  <data name="Model_Person_Prominenz.Text" xml:space="preserve">
+    <value>Prominenz</value>
+  </data>
+  <data name="Model_Person_SchlechterRuf.Text" xml:space="preserve">
+    <value>Schlechter Ruf</value>
+  </data>
+  <data name="Model_Person_Strassenruf.Text" xml:space="preserve">
+    <value>Straßenruf</value>
+  </data>
+  <data name="Model_Person_StrassenrufMod.Text" xml:space="preserve">
+    <value>Straßenruf Mod</value>
+  </data>
+  <data name="Model_Strömung_WandlungM_.Text" xml:space="preserve">
+    <value>Strömungen/Wandlungen</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_.Text" xml:space="preserve">
+    <value>Strömung/Wandlung</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_Echos.Text" xml:space="preserve">
+    <value>Echos</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_Paragon.Text" xml:space="preserve">
+    <value>Paragon</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_Wert.Text" xml:space="preserve">
+    <value>Grad</value>
+  </data>
+  <data name="Model_Tradition_InitiationM_.Text" xml:space="preserve">
+    <value>Traditionen/Initiationen</value>
+  </data>
+  <data name="Model_Tradition_Initiation_.Text" xml:space="preserve">
+    <value>Tradition/Initiation</value>
+  </data>
+  <data name="Model_Tradition_Initiation_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Tradition_Initiation_Metamagie.Text" xml:space="preserve">
+    <value>Metamagie</value>
+  </data>
+  <data name="Model_Tradition_Initiation_Schutzpatron.Text" xml:space="preserve">
+    <value>Schutzpatron</value>
+  </data>
+  <data name="Model_Tradition_Initiation_Wert.Text" xml:space="preserve">
+    <value>Grad</value>
+  </data>
+  <data name="Model_ZaubersprücheM_.Text" xml:space="preserve">
+    <value>Zaubersprüche</value>
+  </data>
+  <data name="Model_Zaubersprüche_.Text" xml:space="preserve">
+    <value>Zauberspruch</value>
+  </data>
+  <data name="Model_Zaubersprüche_Dauer.Text" xml:space="preserve">
+    <value>Dauer</value>
+  </data>
+  <data name="Model_Zaubersprüche_Entzug.Text" xml:space="preserve">
+    <value>Entzug</value>
+  </data>
+  <data name="Model_Zaubersprüche_Reichweite.Text" xml:space="preserve">
+    <value>Reichweite</value>
+  </data>
+  <data name="UI_Optionen_Version.Text" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Notification_Error_Unknown" xml:space="preserve">
+    <value>Ein unbekannter Fehler ist aufgetreten, ihr char wurde mit dem Prefix ''Emergency'' gespeichert</value>
+  </data>
+  <data name="KlammerAufRund.Text" xml:space="preserve">
+    <value>(</value>
+  </data>
+  <data name="KlammerZuRund.Text" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="Komma.Text" xml:space="preserve">
+    <value>,</value>
+  </data>
+  <data name="Model_Implantat_Auswirkung.Text" xml:space="preserve">
+    <value>Auswirkungen</value>
+  </data>
+  <data name="Model__Pool.Text" xml:space="preserve">
+    <value>Pool</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Repair.Label" xml:space="preserve">
+    <value>Reparieren</value>
+  </data>
+  <data name="Notification_Error_RepairFail" xml:space="preserve">
+    <value>Fehler beim Reparieren.</value>
+  </data>
+  <data name="Notification_Error_SummorysREfresh" xml:space="preserve">
+    <value>Fehler beim Verzeichnis einlesen</value>
+  </data>
+  <data name="Notification_Error_AuswahlToLess" xml:space="preserve">
+    <value>Fehler: Einige der verknüpften Dinge wurden nicht gefunden.</value>
+  </data>
+  <data name="Notification_Error_AllListChooser" xml:space="preserve">
+    <value>Interner Fehler, AllList war leer</value>
+  </data>
+  <data name="Notification_Error_Enum" xml:space="preserve">
+    <value>Falscher Enum Wert</value>
+  </data>
+  <data name="Notification_Error_IO_Deserialize" xml:space="preserve">
+    <value>Dateieinlesen fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_IO_FileVersion" xml:space="preserve">
+    <value>Dateiversion unbekannt</value>
+  </data>
+  <data name="Notification_Error_IO_FolderNotFoundOrNotCreated" xml:space="preserve">
+    <value>Ordner konnte nicht gefunden und nicht erstellt werden</value>
+  </data>
+  <data name="Notification_Error_IO_UserDecision" xml:space="preserve">
+    <value>Benutzerentscheidung war Fehler werfen</value>
+    <comment>User Decision to throw</comment>
+  </data>
+  <data name="UI_Optionen_FileNameUseDate_Header.Text" xml:space="preserve">
+    <value>Datename mit Datum versehen</value>
+  </data>
+  <data name="UI_Optionen_FileNameUseProgres_Header.Text" xml:space="preserve">
+    <value>Dateiname mit Fortschritt versehen</value>
+  </data>
+  <data name="Notification_Info_ConvertFromPrevious" xml:space="preserve">
+    <value>Diese Datei ist eine alte Version, sie wird nun in das aktuelleste Format konvertiert. Dadurch kann sie womöglich nicht oder nicht mit dem gesamten Funktionsumfang in früheren Versionen des Programms geöffnet werden. Die Aktuelle Version des Programms steht in den Einstellungen. Sollte die Umwandlung nicht erwünscht sein, speichere den Char einfach nicht.</value>
+  </data>
+  <data name="UI_Optionen_Kontakt_Mail.Text" xml:space="preserve">
+    <value>eMail</value>
+  </data>
+  <data name="UI_Optionen_U_Notifications.Text" xml:space="preserve">
+    <value>Benachrichtigungen</value>
+  </data>
+  <data name="UI_Optionen_ThrownException.Text" xml:space="preserve">
+    <value>Original Exception</value>
+  </data>
+  <data name="GlobalFilterBox.PlaceholderText" xml:space="preserve">
+    <value>Durchsuchen ...</value>
+  </data>
+  <data name="UI_Optionen_Intern_Sync_Header.Text" xml:space="preserve">
+    <value>Interne Dateien Synchronisieren?</value>
+  </data>
+  <data name="Model_Person_Alias_STD.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="UI_Optionen_Beta_Features_Header.Text" xml:space="preserve">
+    <value>Beta-Features aktivieren</value>
+  </data>
+  <data name="UI_Optionen_App.Text" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="UI_Optionen_AppLinkBtn.Content" xml:space="preserve">
+    <value>Diese App im Store öffnen</value>
+  </data>
+  <data name="UI_Optionen_MoreAppsBtn.Content" xml:space="preserve">
+    <value>Mehr Apps von mir</value>
+  </data>
+  <data name="UI_Optionen_RateBtn.Content" xml:space="preserve">
+    <value>Diese App im Store Bewerten</value>
+  </data>
+  <data name="Help1" xml:space="preserve">
+    <value>Items (u.a. Waffen, CyberDecks, normale Items) können "aktiv" sein. Das bedeutet, dass sie bei automatischen Berechnungen berücksichtigt werden. So kann beispielsweise eine "Schießen"-Handlung als Limit-Wert die Präzision der aktiven Waffe verlinkt bekommen. Wird die aktive Waffe geändert, ändern sich die davon abhängigen Werte automatisch.</value>
+  </data>
+  <data name="Help1_ActiveItems" xml:space="preserve">
+    <value>Aktive Items</value>
+  </data>
+  <data name="Help2" xml:space="preserve">
+    <value>Einige Standardwerte werden automatisch aktualisiert. Essenz beginnt mit 6. Davon werden alle Essenzwerte, die bei Implantaten eingetragen sind, abgezogen. Unter "Person" gibt es ein "Essenz Mod" Feld. Der Wert dort wird auf den berechneten Wert addiert. Solltet ihr also mit Vampiren knutschen, werdet ihr in dieses Feld wohl einen negativen Wert eintragen.</value>
+  </data>
+  <data name="Help2_AutoCalc" xml:space="preserve">
+    <value>Automatische Berechnungen</value>
+  </data>
+  <data name="Help3" xml:space="preserve">
+    <value>Für Handlungen und Fertigkeiten können alle anderen Dinge verlinkt werden. Bei einer Handlung können so ihr Würfelpool für die Probe, die Gegenprobe oder das Limit automatisch aus anderen Werten berechnet werden. Ändern sich die verlinkten Werte, ändern sich davon abhängige Werte automatisch. Kategorien wie Waffen, Panzerung, Vehikel, Kommlinks und Decks können nicht einzeln gewählt werden, dafür kann jede Eigenschaft einzeln gewählt werden. Siehe dazu "Aktive Items".</value>
+  </data>
+  <data name="Help3_LinkedItems" xml:space="preserve">
+    <value>Verlinkte Einträge</value>
+  </data>
+  <data name="Help4" xml:space="preserve">
+    <value>Mit dieser App können mehrere ShadowRun Chars verwaltet werden. Alle gespeicherten Chars werden in der Liste angezeigt. Diese Liste ist im Standardfall ein interner Ordner, es kann aber jeder beliebige Ordner gewählt werden. In den Optionen gibt es verschiedene Einstellungen dafür.</value>
+  </data>
+  <data name="Help4_CharAdministration" xml:space="preserve">
+    <value>Char Verwaltung</value>
+  </data>
+  <data name="Help5" xml:space="preserve">
+    <value>Beim Speichern eines Chars gibt es zwei Optionen. Standardmäßig wird der Dateiname zum Speichern verwendet, mit dem der Char geladen wird. Wird die Option "Fortschritt" gewählt, werden dem Char die Anzahl Runs und sein Karma mit in die Datei gegeben- damit ist eine Versionierung möglich. Außerdem kann mit der Option "Zeit" die genaue Uhrzeit zum Zeitpunkt der Speicherung in den Dateinamen geschrieben werden.</value>
+  </data>
+  <data name="Help5_CharAdministration_FileName" xml:space="preserve">
+    <value>Char Verwaltung - Dateinamen</value>
+  </data>
+  <data name="UI_Optionen_DisplayRequest_Tip.Text" xml:space="preserve">
+    <value>Damit verhinderst du, dass dein Bildschirm ausgeht, wenn du einen Char offen hast.</value>
+  </data>
+  <data name="UI_Optionen_Intern_Sync_Tip.Text" xml:space="preserve">
+    <value>Damit werden die Dateien, die du intern speicherst, über alle deine Windows10 Geräte synchronisiert. Die Synchronisation erfolgt nur, wenn du die Option generell aktiviert hast, sowie beide Geräte über ausreichend Strom und Internet verfügen.</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode_Tip.Text" xml:space="preserve">
+    <value>Wähle einen exernen Speicherordner aus.</value>
+  </data>
+  <data name="UI_Optionen_U_Einstellungen_Tip.Text" xml:space="preserve">
+    <value>Halte mit der Maus oder dem Finger auf einen Namen, um mehr Informationen zu erhalten.</value>
+  </data>
+  <data name="Notification_Error_FileActivation" xml:space="preserve">
+    <value>Datei konnte nicht gelesen werden.</value>
+  </data>
+  <data name="UI_Optionen_AutoSaveInterval_Header.Text" xml:space="preserve">
+    <value>Wartezeit für Änderungen in Sekunden</value>
+  </data>
+  <data name="UI_Optionen_AutoSave_Tip.Text" xml:space="preserve">
+    <value>Nach einer Änderung wird die angegebene Zeit gewartet, bis dein Char gespeichert wird. Wenn du schnell und viel änderst, dann gib besser einen größeren Wert an. Wenn du die App schließt, wird dies nicht für eine Automatische Speicherung sorgen. Ein Wert zwischen 2 und 10 Sekunden ist okay.</value>
+  </data>
+  <data name="Model_Person_Initiative_Kurz.Text" xml:space="preserve">
+    <value>Ini</value>
+  </data>
+  <data name="Ampersant.Text" xml:space="preserve">
+    <value>&amp;</value>
+  </data>
+  <data name="UI_CharVerwaltung_E_FileDate.Text" xml:space="preserve">
+    <value>Änderungsdatum</value>
+  </data>
+  <data name="UI_CharVerwaltung_E_FileName.Text" xml:space="preserve">
+    <value>Dateiname</value>
+  </data>
+  <data name="UI_CharVerwaltung_E_FileSize.Text" xml:space="preserve">
+    <value>Dateigröße</value>
+  </data>
+  <data name="EditDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Fertig</value>
+  </data>
+  <data name="UI_CharVerwaltung_Intern_Save_Display_String" xml:space="preserve">
+    <value>Interne Speicherung</value>
+  </data>
+  <data name="UI_Optionen_U_Statistics.Text" xml:space="preserve">
+    <value>Statistiken</value>
+  </data>
+  <data name="UI_Statistics_AppStart.Text" xml:space="preserve">
+    <value>Anzahl Appstarts</value>
+  </data>
+  <data name="ExampleChar" xml:space="preserve">
+    <value>Beispiel Charakter</value>
+  </data>
+  <data name="PreDBChar" xml:space="preserve">
+    <value>Datenbank Charakter</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Create_ExampleChar.Label" xml:space="preserve">
+    <value>Beispiel Charakter erstellen</value>
+  </data>
+  <data name="UI_Statistics_Creations.Text" xml:space="preserve">
+    <value>Charaktere erstellt</value>
+  </data>
+  <data name="UI_Statistics_Deletions.Text" xml:space="preserve">
+    <value>Charaktere gelöscht</value>
+  </data>
+  <data name="UI_Statistics_Loadings.Text" xml:space="preserve">
+    <value>Charaktere geladen</value>
+  </data>
+  <data name="UI_Statistics_Savings.Text" xml:space="preserve">
+    <value>Charaktere gespeichert</value>
+  </data>
+  <data name="Ui_DB_Nav.Text" xml:space="preserve">
+    <value>Datenbank</value>
+  </data>
+  <data name="Model_Vehikel_Wert.Text" xml:space="preserve">
+    <value>Schaden</value>
+  </data>
+  <data name="Ui_DB_Finish.Label" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="Ui_DB_FinishClose.Label" xml:space="preserve">
+    <value>Kopieren und Beenden</value>
+  </data>
+  <data name="Ui_DB_Help.Label" xml:space="preserve">
+    <value>Hilfe an/aus</value>
+  </data>
+  <data name="HelpDBIntro.Text" xml:space="preserve">
+    <value>In dieser Datenbak findest du vorgefertigte Einträge. Klicke auf einen Eintrag, um ihn auszuwählen. Mit den Befehlen unten kannst du diese Auswahl dann in deinen aktuellen Charakter übernehmen. Solltest du bereits einen Eintrag mit dem selben Namen in der selben Kategorie besitzen, wird dein Eintrag nicht überschrieben. Für Datenbankeinträge mit Verknüpfungen zu anderen Einträgen wird versucht, deine Einträge zu verknüpfen. Falls das misslingt, wird auch der verknüpfte Eintrag kopiert.</value>
+  </data>
+  <data name="of.Text" xml:space="preserve">
+    <value>von</value>
+  </data>
+  <data name="Tut_TitleState_00" xml:space="preserve">
+    <value>App Einleitung</value>
+  </data>
+  <data name="Tut_State_00" xml:space="preserve">
+    <value>Willkommen in der ShadowRunHelper App!
+In dieser Einführung wird gezeigt, wie ShadowRun Chars in dieser App erstellt und verwaltet werden. Mit den Pfeiltasten kannst du durch die Einführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst. 
+In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben.</value>
+  </data>
+  <data name="Tut_State_01" xml:space="preserve">
+    <value>Beginnen wir mit der Navigationsleiste. Diese 3 Buttons begleiten dich durch die gesamte App. Der erste führt dich zu der Seite, auf der ein Char später dargestellt wird. Der Zweite bringt dich in das Chars Verwalten Menü, indem du dich gerade befindest. Der Dritte bringt dich in das Einstellungsmenü, dort findest du unteranderem auch den ganzen rechtlichen Kram.</value>
+  </data>
+  <data name="Tut_State_02" xml:space="preserve">
+    <value>In der aktuellen Ansicht "Chars verwalten" gibt es zwei Symbolleisten. Beginnen wir mit der unteren. Mit dieser Verwaltest du alle deine Chars (ja, du kannst mit der App mehrere verwalten). Die Beschriftungen sollten selbsterklärend sein. Nach dieser Einleitung beginnst du am besten mit "neuer Char erstellen" oder klickst auf den Beispielcharakter in der Liste.</value>
+  </data>
+  <data name="Tut_State_04" xml:space="preserve">
+    <value>Sobald du einen Char geladen oder erstellt hast, wird die obere Symbolleiste für dich interessant. Damit verwaltest du den zurzeit geladenen Char. Die Beschriftungen sind auch hier wieder sehr selbsterklärend. Bitte beachte:
+a) "Löschen" löscht deinen Char nur aus der App, nicht aber aus der Liste gespeicherter Chars
+b) "Reparieren" es sollte nicht vorkommen, aber manchmal ist es unvorhersehbar: die verknüpften Einträge aktualisieren sich nicht mehr automatisch. Dann kann diese Funktion helfen. Vielleicht. Wenn nicht oder wenn du sonst irgendwelche Probleme hast, scheue nicht, mich zu kontaktieren (Kontakt im Einstellungsmenü).</value>
+  </data>
+  <data name="Tut_State_05" xml:space="preserve">
+    <value>Das war's mit dem ersten Tutorial. Erstelle jetzt deinen Charakter oder schau dir den Beispielcharakter an.</value>
+  </data>
+  <data name="Tut_State_10" xml:space="preserve">
+    <value>Klickst du auf einen Char in dieser Leiste, wird sein Eintrag aufgeklappt und du erhältst Möglichkeiten, ihn zu verwalten.</value>
+  </data>
+  <data name="Tut_State_20" xml:space="preserve">
+    <value>Willkommen in deinem ersten Char!
+In dieser Einführung wird gezeigt, wie die Char Ansicht funktioniert. Mit den Pfeiltasten kannst du durch die Einführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst.</value>
+  </data>
+  <data name="Tut_State_03" xml:space="preserve">
+    <value>Diese Liste zeigt alle deine gespeicherten Charaktere an. Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswählen, ob sie über deinen Account synchronisieren werden sollen. Im Prinzip sind die Chars in der Liste alles nur Dateien in einem Ordner, daher kannst du in den Optionen auch einen anderen Ordner als Speicherort wählen.</value>
+  </data>
+  <data name="Tut_State_21" xml:space="preserve">
+    <value>Diese Leiste ganz oben ist dir bestimmt schon aufgefallen. Sie ist in der ganzen App präsent und zeigt dir, welchen Charakter du gerade offen hast, sowie seine wichtigsten Werte z.B. Geld, Karma oder den aktuellen Schaden (Geistig, Körperlich, Matrixschaden am Deck). Mit einem Klick auf die dunkleren Schaltflächen kannst du die Werte bearbeiten.</value>
+  </data>
+  <data name="Tut_State_22" xml:space="preserve">
+    <value>Mit diesen Symbolen kannst du zwischen verschiedenen Tabs auf dieser Seite navigieren.</value>
+  </data>
+  <data name="Tut_State_23" xml:space="preserve">
+    <value>Im Hauptbereich der Seite findest du alle Einträge eines Chars, gruppiert nach Kategorien. Z.B. haben wir hier die Kategorie "Handlungen", mit allen Handlungen, die dein Char ausführen kann. Über den Plus Button kannst du einen neuen Eintrag hinzufügen. Wenn du einen Eintrag auswählst, erhältst du mehr Informationen, sowie die Möglichkeiten, ihn zu bearbeiten.</value>
+  </data>
+  <data name="Tut_State_30" xml:space="preserve">
+    <value>Handlungen sind das Herzstück deine Chars und dieser App. Eine Handlung besitzt die 3 Eigenschaften "Wert", "Limit" und "Wehren". 
+Wert: Würfelpool beim Ausführen der Aktion
+Limit: Das Limit für zählende Erfolge
+Wehren: Führt eine andere Person diese Handlung gegen dich aus, ist das dein Pool um dich zu wehren.
+Für diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusammenrechnest, sondern du hinterlegst die anderen Einträge, aus denen sich die Werte berechnen.</value>
+  </data>
+  <data name="Tut_State_31" xml:space="preserve">
+    <value>Klickst du auf Bearbeiten, so wird dir eine Liste von Einträge angezeigt. Diese Liste enthält aber noch mehr. 
+
+Ein Beispiel: Das Limit beim Abfeuern einer Waffe wird durch ihre Präzision bestimmt. Das heißt, bei Limit der Handlung Schießen musst du "Präzision" auswählen. 
+
+Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst, ist in dieser Liste nur die aktuelle Waffe mit ihren verschiedenen Eigenschaften aufgelistet. 
+Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehikel. Aktiviert wird ein Gegenstand über das erste Häkchen in seinem Eintrag.</value>
+  </data>
+  <data name="Tut_TitelState_30" xml:space="preserve">
+    <value>Handlungen</value>
+  </data>
+  <data name="Tut_TitleState_10" xml:space="preserve">
+    <value>Listeneinträge Einleitung</value>
+  </data>
+  <data name="Tut_TitleState_20" xml:space="preserve">
+    <value>Einführung Seite "Char"</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Speichern_Intern.Label" xml:space="preserve">
+    <value>Intern Speichern</value>
+  </data>
+  <data name="UI_Optionen_TutCharShown.Text" xml:space="preserve">
+    <value>"Char-Anleitung" gelesen</value>
+  </data>
+  <data name="UI_Optionen_TutorialCharListShown.Text" xml:space="preserve">
+    <value>Charlisten-Anleitung gelesen</value>
+  </data>
+  <data name="UI_Optionen_TutorialHandlungShown.Text" xml:space="preserve">
+    <value>Handlungsanleitung gelesen</value>
+  </data>
+  <data name="UI_Optionen_TutorialMainShown.Text" xml:space="preserve">
+    <value>"Chars Verwalten"-Anleitung gelesen</value>
+  </data>
+</root>
