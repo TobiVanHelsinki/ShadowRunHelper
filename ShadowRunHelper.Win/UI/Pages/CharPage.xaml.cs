@@ -56,7 +56,7 @@ namespace ShadowRunHelper
                 FilterBoxPanel.Visibility = Visibility.Collapsed;
             }
             ViewModel.TutorialStateChanged += TutorialStateChanged;
-            if (SettingsModel.I.StartCount <= 1 || !SettingsModel.I.TutorialCharShown)
+            if (!SettingsModel.I.TutorialCharShown)
             {
                 new Tutorial(20, 23).ShowAsync();
                 SettingsModel.I.TutorialCharShown = true;
@@ -232,7 +232,7 @@ namespace ShadowRunHelper
                 case (int)ThingDefs.Handlung:
                     NewTemplate = HandlungItem;
                     NewTemplateX = HandlungItemX;
-                    if (SettingsModel.I.StartCount <= 1 || !SettingsModel.I.TutorialHandlungShown)
+                    if (!SettingsModel.I.TutorialHandlungShown)
                     {
                         new Tutorial(30, 31).ShowAsync();
                         SettingsModel.I.TutorialHandlungShown = true;
