@@ -94,9 +94,9 @@ namespace ShadowRunHelper
                     CurrentCharBarBorder.Style = StyleToBeApplied;
                     break;
                 default:
-                    MainBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    CurrentCharBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    ListViewBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //MainBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //CurrentCharBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //ListViewBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
                     break;
             }
         }

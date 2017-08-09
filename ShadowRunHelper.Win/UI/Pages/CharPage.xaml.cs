@@ -86,12 +86,12 @@ namespace ShadowRunHelper
                     MainContentBorder.Style = StyleToBeApplied;
                     break;
                 default:
-                    PivotHeader1Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    PivotHeader2Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    PivotHeader3Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    PivotHeader4Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    PivotHeader5Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    MainContentBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //PivotHeader1Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //PivotHeader2Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //PivotHeader3Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //PivotHeader4Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //PivotHeader5Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //MainContentBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
                     break;
             }
         }

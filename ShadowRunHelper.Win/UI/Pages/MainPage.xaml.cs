@@ -43,8 +43,8 @@ namespace ShadowRunHelper
                     StatusControlBorder.Style = StyleToBeApplied;
                     break;
                 default:
-                    MainBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    StatusControlBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //MainBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //StatusControlBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
                     break;
             }
         }
