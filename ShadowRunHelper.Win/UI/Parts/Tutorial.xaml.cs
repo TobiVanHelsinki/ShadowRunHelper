@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 // Die Elementvorlage "Inhaltsdialog" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -81,6 +82,7 @@ namespace ShadowRunHelper.UI
             Title = CrossPlatformHelper.GetString(string.Format("Tut_TitleState_{0,0:D2}", Start));
             ViewModel.TutorialStateChanged += StateChanged;
             ViewModel.TutorialChangedState(StateCounter, true);
+            Background = White;
         }
 
         private void StateChanged(int StateNumber, bool Highlight)
@@ -127,6 +129,24 @@ namespace ShadowRunHelper.UI
         {
             ViewModel.TutorialChangedState(StateCounter, false);
             Hide();
+        }
+        SolidColorBrush Trans = new SolidColorBrush(Windows.UI.Colors.Transparent);
+        SolidColorBrush White = new SolidColorBrush(Windows.UI.Colors.White);
+        SolidColorBrush Black = new SolidColorBrush(Windows.UI.Colors.Black);
+        private void BtnHide_Click(object sender, RoutedEventArgs e)
+        {
+            if (Background == White)
+            {
+                Background = Trans;
+                TutorialText.Foreground = Trans;
+                Counter.Foreground = Trans;
+            }
+            else
+            {
+                Background = White; //TODO color depended
+                TutorialText.Foreground = Black;
+                Counter.Foreground = Black;
+            }
         }
     }
 }

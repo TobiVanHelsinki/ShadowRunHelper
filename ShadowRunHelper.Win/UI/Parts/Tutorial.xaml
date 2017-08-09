@@ -17,7 +17,7 @@
     <Grid x:Name="MainGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" x:Name="Col1"/>
-            <ColumnDefinition Width="*" x:Name="Col2"/>
+            <ColumnDefinition Width="*" x:Name="Col2" />
             <ColumnDefinition Width="Auto" x:Name="Col3"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -25,7 +25,7 @@
             <RowDefinition Height="Auto" x:Name="Text"/>
             <RowDefinition Height="Auto" x:Name="Buttons"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.ColumnSpan="1">
+        <TextBlock x:Name="Counter" Grid.ColumnSpan="1">
             <Run Text="{x:Bind RelativStateCounter, Mode=OneWay}"/>
             <Run x:Uid="Space"/>
             <Run x:Uid="of"/>
@@ -40,6 +40,7 @@
         </Button>
         <Button Click="BtnNext_Click" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" Grid.Row="2" Grid.Column="2"/>
         <Button Click="BtnExit_Click" Content="&#xE711;" FontFamily="Segoe MDL2 Assets" Grid.Row="0" Grid.Column="2"/>
+        <Button Click="BtnHide_Click" Content="&#xE713;" FontFamily="Segoe MDL2 Assets" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
 
     </Grid>
 </ContentDialog>

@@ -21,19 +21,6 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Example\de_Nao.SRHChar" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Assets\Extern\Newtonsoft.Json.MonoDroid.dll" />
-    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram1.cd" />
-    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram2.cd" />
-    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram3.cd" />
-    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram4.cd" />
-    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram5.cd" />
-    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram6.cd" />
-    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram7.cd" />
-    <None Include="$(MSBuildThisFileDirectory)Dok\ClassDiagram8.cd" />
-    <None Include="$(MSBuildThisFileDirectory)Zusätze\Hilfe.xlsx" />
-    <None Include="$(MSBuildThisFileDirectory)Zusätze\Keys\Beta1.5.tsv" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CharController\CTRLAttribut.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharController\Controller.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharController\CyberDeck.cs" />
@@ -135,16 +122,5 @@
     <PRIResource Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Strings\de-de\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Strings\Resources.de.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Strings\Resources.en.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Strings\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>
