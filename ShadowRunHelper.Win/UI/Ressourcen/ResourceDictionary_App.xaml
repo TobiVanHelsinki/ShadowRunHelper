@@ -32,7 +32,8 @@
     </Style>
     <Style TargetType="Border" x:Key="SplitBorder">
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
-        <Setter Property="Margin" Value="0,8,10,14"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Margin" Value="0,8,100,14"/>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="TextInhaltGroß">

@@ -144,7 +144,7 @@
                 <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource Überschrift1}"/>
             </PivotItem.Header>
             <ScrollViewer>
-                <StackPanel Background="Beige">
+                <StackPanel>
                     <TextBlock x:Uid="UI_Optionen_U_Einstellungen_Tip" Style="{StaticResource Überschrift2}"/>
 
                     <Border Style="{StaticResource SplitBorder}"/>

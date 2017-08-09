@@ -17,7 +17,7 @@
 
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="ListViewBackgroundBrush" Color="Beige" />
-                    <SolidColorBrush x:Key="BorderBrushes" Color="Black" />
+                    <SolidColorBrush x:Key="BorderBrushes" Color="#FFAAAAAA" />
                     <!--<SolidColorBrush x:Key="BackgroundBrush" Color="#FFFFFFFF" />-->
                     <!--<SolidColorBrush x:Key="PageHeaderBackgroundBrush" Color="#44000000" />-->
                 </ResourceDictionary>
