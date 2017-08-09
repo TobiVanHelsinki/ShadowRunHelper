@@ -339,9 +339,6 @@
   <data name="Slash.Text" xml:space="preserve">
     <value>/</value>
   </data>
-  <data name="Space.Text" xml:space="preserve">
-    <value> </value>
-  </data>
   <data name="UI_Btn_Bearbeiten.Content" xml:space="preserve">
     <value>Bearbeiten</value>
   </data>
@@ -744,9 +741,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Notification_Error_Converter_Error1.Text" xml:space="preserve">
     <value>konnte nicht übernommen werden.</value>
   </data>
-  <data name="Notification_Error_Converter_Error2.Text" xml:space="preserve">
-    <value />
-  </data>
   <data name="Notification_Error_DisplayRequest.Text" xml:space="preserve">
     <value>Display kann nicht automatisch aktiviert bleiben.</value>
   </data>
@@ -1093,7 +1087,7 @@ In dieser Einführung wird gezeigt, wie ShadowRun Chars in dieser App erstellt u
 In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben.</value>
   </data>
   <data name="Tut_State_01" xml:space="preserve">
-    <value>Beginnen wir mit der Navigationsleiste. Diese 3 Buttons begleiten dich durch die gesamte App. Der erste führt dich zu der Seite, auf der ein Char später dargestellt wird. Der Zweite bringt dich in das Menü, indem du dich gerade befindest. Der Dritte bringt dich in das Einstellungsmenü, dort findest du unteranderem auch den ganzen rechtlichen Kram.</value>
+    <value>Beginnen wir mit der Navigationsleiste. Diese 3 Buttons begleiten dich durch die gesamte App. Der erste führt dich zu der Seite, auf der ein Char später dargestellt wird. Der Zweite bringt dich in das Chars Verwalten Menü, indem du dich gerade befindest. Der Dritte bringt dich in das Einstellungsmenü, dort findest du unteranderem auch den ganzen rechtlichen Kram.</value>
   </data>
   <data name="Tut_State_02" xml:space="preserve">
     <value>In der aktuellen Ansicht "Chars verwalten" gibt es zwei Symbolleisten. Beginnen wir mit der unteren. Mit dieser Verwaltest du alle deine Chars (ja, du kannst mit der App mehrere verwalten). Die Beschriftungen sollten selbsterklärend sein. Nach dieser Einleitung beginnst du am besten mit "neuer Char erstellen" oder klickst auf den Beispielcharakter in der Liste.</value>
@@ -1135,7 +1129,7 @@ Für diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusamm
   <data name="Tut_State_31" xml:space="preserve">
     <value>Klickst du auf Bearbeiten, so wird dir eine Liste von Einträge angezeigt. Diese Liste enthält aber noch mehr. 
 
-Ein Beispiel: Das Limit beim Abfeuern einer Waffe wird durch ihre Präzision bestimmt. Das heißt, bei Limit der Handlung Schießen musst du "Limit" auswählen. 
+Ein Beispiel: Das Limit beim Abfeuern einer Waffe wird durch ihre Präzision bestimmt. Das heißt, bei Limit der Handlung Schießen musst du "Präzision" auswählen. 
 
 Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst, ist in dieser Liste nur die aktuelle Waffe mit ihren verschiedenen Eigenschaften aufgelistet. 
 Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehikel. Aktiviert wird ein Gegenstand über das erste Häkchen in seinem Eintrag.</value>

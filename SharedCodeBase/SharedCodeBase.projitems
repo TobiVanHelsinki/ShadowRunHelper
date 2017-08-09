@@ -137,10 +137,10 @@
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Strings\Resources.de-DE.resx">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Strings\Resources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Strings\Resources.en-001.resx">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Strings\Resources.en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Strings\Resources.resx">

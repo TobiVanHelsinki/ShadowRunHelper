@@ -507,4 +507,139 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Tut_TitelState_30" xml:space="preserve">
     <value>Actions introduction</value>
   </data>
+  <data name="Model_Attribut_.Text" xml:space="preserve">
+    <value>Attribut</value>
+  </data>
+  <data name="Model_AttributM_.Text" xml:space="preserve">
+    <value>Attributs</value>
+  </data>
+  <data name="Model__Kapazität.Text" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+  <data name="Model_Attribut_Charisma.Text" xml:space="preserve">
+    <value>Charisma</value>
+  </data>
+  <data name="Model_Attribut_Essenz.Text" xml:space="preserve">
+    <value>Essence</value>
+  </data>
+  <data name="Model_Attribut_Intuition.Text" xml:space="preserve">
+    <value>Intuition</value>
+  </data>
+  <data name="Model_Attribut_Konsti.Text" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="Model_Attribut_Limit_G.Text" xml:space="preserve">
+    <value>Mental Limit</value>
+  </data>
+  <data name="Model_Attribut_Limit_K.Text" xml:space="preserve">
+    <value>Physical Limit</value>
+  </data>
+  <data name="Model_Attribut_Limit_S.Text" xml:space="preserve">
+    <value>Social Limit</value>
+  </data>
+  <data name="Model_Attribut_Logik.Text" xml:space="preserve">
+    <value>Logic</value>
+  </data>
+  <data name="Model_Attribut_Reaktion.Text" xml:space="preserve">
+    <value>Reaction</value>
+  </data>
+  <data name="Model_Attribut_Staerke.Text" xml:space="preserve">
+    <value>Strength</value>
+  </data>
+  <data name="Model_Attribut_Willen.Text" xml:space="preserve">
+    <value>Willpower</value>
+  </data>
+  <data name="Model_Attribut_Geschick.Text" xml:space="preserve">
+    <value>Agility</value>
+  </data>
+  <data name="Model_Attribut_Magie.Text" xml:space="preserve">
+    <value>Magic</value>
+  </data>
+  <data name="Model_Adeptenkraft_KomplexeFormM_.Text" xml:space="preserve">
+    <value>Adept Powers/Complex Forms</value>
+  </data>
+  <data name="Model_Adeptenkraft_KomplexeForm_.Text" xml:space="preserve">
+    <value>Adept Power/Complex Form</value>
+  </data>
+  <data name="Model_Adeptenkraft_KomplexeForm_Option.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Model_Attribut_Resonanz.Text" xml:space="preserve">
+    <value>Resonance</value>
+  </data>
+  <data name="Model__Pool.Text" xml:space="preserve">
+    <value>Pool</value>
+  </data>
+  <data name="Model_Connection_.Text" xml:space="preserve">
+    <value>Connection</value>
+  </data>
+  <data name="Model_CyberDeckM_.Text" xml:space="preserve">
+    <value>CyberDecks</value>
+  </data>
+  <data name="Model_CyberDeck_.Text" xml:space="preserve">
+    <value>CyberDeck</value>
+  </data>
+  <data name="Model_CyberDeck_Angriff.Text" xml:space="preserve">
+    <value>Attack</value>
+  </data>
+  <data name="Model_CyberDeck_Schleicher.Text" xml:space="preserve">
+    <value>Sleaze</value>
+  </data>
+  <data name="Model_CyberDeck_Angriff_o.Text" xml:space="preserve">
+    <value>Attack Original</value>
+  </data>
+  <data name="Model_CyberDeck_Datenverarbeitung_o.Text" xml:space="preserve">
+    <value>Dataprocessing original</value>
+  </data>
+  <data name="Model_CyberDeck_Firewall_o.Text" xml:space="preserve">
+    <value>Firewall original</value>
+  </data>
+  <data name="Model_CyberDeck_Schleicher_o.Text" xml:space="preserve">
+    <value>Sleaze original</value>
+  </data>
+  <data name="Model_CyberDeck__Aktiv.Text" xml:space="preserve">
+    <value>Active Deck</value>
+  </data>
+  <data name="Model_Fernkampfwaffe__Aktiv.Text" xml:space="preserve">
+    <value>Active Long Range Weappon</value>
+  </data>
+  <data name="Model_Handlung_.Text" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Model_HandlungM_.Text" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Model_KommlinkM_.Text" xml:space="preserve">
+    <value>Commlinks</value>
+  </data>
+  <data name="Model_Kommlink_.Text" xml:space="preserve">
+    <value>Commlink</value>
+  </data>
+  <data name="Model_Kommlink_Datenverarbeitung.Text" xml:space="preserve">
+    <value>Dataprocessing</value>
+  </data>
+  <data name="Model_Kommlink_Firewall.Text" xml:space="preserve">
+    <value>Firewall</value>
+  </data>
+  <data name="Model_Person_InitiativeAktuell.Text" xml:space="preserve">
+    <value>Current initiative</value>
+  </data>
+  <data name="Model_Person_Karma.Text" xml:space="preserve">
+    <value>Karma</value>
+  </data>
+  <data name="Model_Person_Karma_Aktuell.Text" xml:space="preserve">
+    <value>Karma Current</value>
+  </data>
+  <data name="Model_Person_Karma_Gesamt.Text" xml:space="preserve">
+    <value>Karma total</value>
+  </data>
+  <data name="Model_Person_Initiative.Text" xml:space="preserve">
+    <value>Initiative </value>
+  </data>
+  <data name="Model_Kommlink__Aktiv.Text" xml:space="preserve">
+    <value>Active Commlink</value>
+  </data>
+  <data name="Model_Person_Initiative_Kurz.Text" xml:space="preserve">
+    <value>Ini</value>
+  </data>
 </root>
