@@ -205,13 +205,13 @@
     <comment>Mehrzahl</comment>
   </data>
   <data name="Model_Handlung_Grenze.Text" xml:space="preserve">
-    <value>Limit</value>
+    <value>Limit:</value>
   </data>
   <data name="Model_Handlung_Mod.Text" xml:space="preserve">
     <value>Modifier</value>
   </data>
   <data name="Model_Handlung_Zusammensetzung.Text" xml:space="preserve">
-    <value>Wert</value>
+    <value>Würfeln mit:</value>
   </data>
   <data name="Model_ItemM_.Text" xml:space="preserve">
     <value>Items</value>
@@ -271,12 +271,6 @@
   <data name="Model_PanzerungM_.Text" xml:space="preserve">
     <value>Panzerungen</value>
     <comment>Mehrzahl</comment>
-  </data>
-  <data name="Model_Panzerung_Ballistik.Text" xml:space="preserve">
-    <value>Ballistik</value>
-  </data>
-  <data name="Model_Panzerung_Stoß.Text" xml:space="preserve">
-    <value>Stoß</value>
   </data>
   <data name="Model_Programm_.Text" xml:space="preserve">
     <value>Programm</value>
@@ -573,7 +567,7 @@
     <value>Pfad</value>
   </data>
   <data name="Model_Handlung_Gegen.Text" xml:space="preserve">
-    <value>Wehren</value>
+    <value>Wehren mit:</value>
   </data>
   <data name="UI_Optionen_Bewerten.Text" xml:space="preserve">
     <value>Diese App im Store Bewerten</value>
@@ -784,7 +778,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Foki/Widgets</value>
   </data>
   <data name="Model_Foki_Widgets_.Text" xml:space="preserve">
-    <value>Foki/Widgets</value>
+    <value>Foki/Widget</value>
   </data>
   <data name="Model_Geist_SpriteM_.Text" xml:space="preserve">
     <value>Geister/Sprites</value>
