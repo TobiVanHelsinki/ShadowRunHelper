@@ -293,7 +293,7 @@ namespace ShadowRunHelper.IO
                 temp.Aktiv = item.Aktiv;
                 temp.Anzahl = item.Anzahl;
                 temp.Besitz = item.Besitz;
-                temp.Stoß = item.Stoß;
+                //temp.Stoß = item.Stoß;
             }
             ReturnCharHolder.Person.Alias = cH1_3.Person.Alias;
             ReturnCharHolder.Person.Augenfarbe = cH1_3.Person.Augenfarbe;

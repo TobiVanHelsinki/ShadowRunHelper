@@ -939,4 +939,184 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Person_Alias_STD.Text" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Model_Person_SchlechterRuf.Text" xml:space="preserve">
+    <value>Bad reputation</value>
+  </data>
+  <data name="Model_Person_Strassenruf.Text" xml:space="preserve">
+    <value>Street Cred</value>
+  </data>
+  <data name="Model_Person_StrassenrufMod.Text" xml:space="preserve">
+    <value>Street Cred mod</value>
+  </data>
+  <data name="Model_Vehikel_.Text" xml:space="preserve">
+    <value>Vehicle</value>
+  </data>
+  <data name="Model_VehikelM_.Text" xml:space="preserve">
+    <value>Vehicles</value>
+  </data>
+  <data name="Model_Vehikel_Beschleunigung.Text" xml:space="preserve">
+    <value>Acceleration</value>
+  </data>
+  <data name="Model_Vehikel_Geschwindigkeit.Text" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="Model_Vehikel_Gewicht.Text" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="Model_Vehikel_Handling.Text" xml:space="preserve">
+    <value>Handling</value>
+  </data>
+  <data name="Model_Vehikel_Panzerung.Text" xml:space="preserve">
+    <value>Armor</value>
+  </data>
+  <data name="Model_Vehikel_Pilot.Text" xml:space="preserve">
+    <value>Pilot</value>
+  </data>
+  <data name="Model_Vehikel_Rumpf.Text" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="Model_Vehikel_Sensor.Text" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="Model_Vehikel_Sitze.Text" xml:space="preserve">
+    <value>Seats</value>
+  </data>
+  <data name="Plus.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="Slash.Text" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="Model_Waffe_SchadenTyp.Text" xml:space="preserve">
+    <value>Damage type (M/P)</value>
+  </data>
+  <data name="Model_Waffe_Präzision.Text" xml:space="preserve">
+    <value>Precision</value>
+  </data>
+  <data name="Model_Vehikel__Aktiv.Text" xml:space="preserve">
+    <value>Active vehicle</value>
+  </data>
+  <data name="Model_Waffe_Wert.Text" xml:space="preserve">
+    <value>Damage</value>
+  </data>
+  <data name="Model_ZaubersprücheM_.Text" xml:space="preserve">
+    <value>Spells</value>
+  </data>
+  <data name="Model_Zaubersprüche_.Text" xml:space="preserve">
+    <value>Spell</value>
+  </data>
+  <data name="Model_Zaubersprüche_Dauer.Text" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Model_Zaubersprüche_Reichweite.Text" xml:space="preserve">
+    <value>Range</value>
+  </data>
+  <data name="Model_Vehikel_Wert.Text" xml:space="preserve">
+    <value>Damage</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Datei_Import.Label" xml:space="preserve">
+    <value>Char Import</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Datei_Export.Label" xml:space="preserve">
+    <value>Char Export</value>
+  </data>
+  <data name="UI_Char_Schaden_Geist.Text" xml:space="preserve">
+    <value>Mental</value>
+  </data>
+  <data name="UI_Char_Schaden_Körper.Text" xml:space="preserve">
+    <value>Physical</value>
+  </data>
+  <data name="UI_Char_Schaden_Matrix.Text" xml:space="preserve">
+    <value>Matrix</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_CSV_Export.Label" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_CSV_Import.Label" xml:space="preserve">
+    <value>CSV Import</value>
+  </data>
+  <data name="Help1_ActiveItems" xml:space="preserve">
+    <value>Active Items</value>
+  </data>
+  <data name="Help2_AutoCalc" xml:space="preserve">
+    <value>Automatic calculations</value>
+  </data>
+  <data name="Help3_LinkedItems" xml:space="preserve">
+    <value>Linked entries</value>
+  </data>
+  <data name="Help4_CharAdministration" xml:space="preserve">
+    <value>Char administration</value>
+  </data>
+  <data name="Help5_CharAdministration_FileName" xml:space="preserve">
+    <value>Char administration - Filenames</value>
+  </data>
+  <data name="HelpDBIntro.Text" xml:space="preserve">
+    <value>In this database you will find predefined entries. Click on an entry to select it. With the commands below you can then apply this selection to your current character. If you already have an entry with the same name in the same category, your entry will not be overwritten. For database entries with links to other entries, the system tries to link your entries. If this fails, the linked entry is also copied.</value>
+  </data>
+  <data name="Help1" xml:space="preserve">
+    <value>Items (e. g. weapons, CyberDecks, normal items) can be "active". This means that they are taken into automatic calculations. For example, the limit value  of an "shooting"-action can be linked to the precision of the active weapon. If the active weapon is changed, the dependent values change automatically.</value>
+  </data>
+  <data name="Help2" xml:space="preserve">
+    <value>Some default values are updated automatically. Essence begins at 6, from which all the values of the essence entered in augmentation are deducted. Under "Person" there is an "Essence Mod" field. The value there is added to the calculated value. So if you make out with vampires, you will probably enter a negative value in this field.</value>
+  </data>
+  <data name="Help3" xml:space="preserve">
+    <value>For actions and skills, all other things can be linked. In this way, your dice pool can be automatically calculated from other values. If the linked values change, dependent values change automatically. Categories such as weapons, armour, vehicles, comlinks and decks cannot be selected individually, but each property can be selected individually. See "Active Items".</value>
+  </data>
+  <data name="Help4" xml:space="preserve">
+    <value>With this app you can manage several ShadowRun Chars. All stored chars are displayed in the list. This list is usually an internal folder, but you can choose any folder. In the options there are different settings for this.</value>
+  </data>
+  <data name="Help5" xml:space="preserve">
+    <value>There are two options for saving a char. By default, the file name is used to store the char. If the option "Progress" is selected, the filename will contain the number of runs and karma - so a versioning is possible. In addition, the "Time" option can be used to add the exact time to the filename.</value>
+  </data>
+  <data name="Model_Person_MetaTyp.Text" xml:space="preserve">
+    <value>Metatype</value>
+  </data>
+  <data name="Model_Person_MetaTyp_sub.Text" xml:space="preserve">
+    <value>Metasubtype</value>
+  </data>
+  <data name="Model_Person_Prominenz.Text" xml:space="preserve">
+    <value>Public Awareness</value>
+  </data>
+  <data name="Model_Waffe_PB.Text" xml:space="preserve">
+    <value>AP</value>
+  </data>
+  <data name="Model_VorteilM_.Text" xml:space="preserve">
+    <value>Advantages</value>
+  </data>
+  <data name="Model_Vorteil_.Text" xml:space="preserve">
+    <value>Advantage</value>
+  </data>
+  <data name="Model_Zaubersprüche_Entzug.Text" xml:space="preserve">
+    <value>Drain</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_Paragon.Text" xml:space="preserve">
+    <value>Paragon</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_Wert.Text" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="Model_Tradition_Initiation_Wert.Text" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="Model_Strömung_WandlungM_.Text" xml:space="preserve">
+    <value>Submersions</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_.Text" xml:space="preserve">
+    <value>Submersion</value>
+  </data>
+  <data name="Model_Strömung_Wandlung_Echos.Text" xml:space="preserve">
+    <value>Echoes</value>
+  </data>
+  <data name="Model_Tradition_InitiationM_.Text" xml:space="preserve">
+    <value>Traditions/Initiations</value>
+  </data>
+  <data name="Model_Tradition_Initiation_.Text" xml:space="preserve">
+    <value>Tradition/Initiation</value>
+  </data>
+  <data name="Model_Tradition_Initiation_Metamagie.Text" xml:space="preserve">
+    <value>Metamagic</value>
+  </data>
+  <data name="Model_Tradition_Initiation_Schutzpatron.Text" xml:space="preserve">
+    <value>Totem</value>
+  </data>
 </root>

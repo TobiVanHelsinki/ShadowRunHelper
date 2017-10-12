@@ -58,7 +58,9 @@ namespace ShadowRunHelper
             ViewModel.TutorialStateChanged += TutorialStateChanged;
             if (!SettingsModel.I.TutorialCharShown)
             {
+#pragma warning disable CS4014
                 new Tutorial(20, 23).ShowAsync();
+#pragma warning restore CS4014
                 SettingsModel.I.TutorialCharShown = true;
             }
         }
@@ -234,7 +236,9 @@ namespace ShadowRunHelper
                     NewTemplateX = HandlungItemX;
                     if (!SettingsModel.I.TutorialHandlungShown)
                     {
+#pragma warning disable CS4014
                         new Tutorial(30, 31).ShowAsync();
+#pragma warning restore CS4014
                         SettingsModel.I.TutorialHandlungShown = true;
                     }
                     break;

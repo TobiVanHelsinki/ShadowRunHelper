@@ -977,7 +977,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Char Verwaltung</value>
   </data>
   <data name="Help5" xml:space="preserve">
-    <value>Beim Speichern eines Chars gibt es zwei Optionen. Standardmäßig wird der Dateiname zum Speichern verwendet, mit dem der Char geladen wird. Wird die Option "Fortschritt" gewählt, werden dem Char die Anzahl Runs und sein Karma mit in die Datei gegeben- damit ist eine Versionierung möglich. Außerdem kann mit der Option "Zeit" die genaue Uhrzeit zum Zeitpunkt der Speicherung in den Dateinamen geschrieben werden.</value>
+    <value>Beim Speichern eines Chars gibt es zwei Optionen. Standardmäßig wird der Dateiname zum Speichern verwendet, mit dem der Char geladen wird. Wird die Option "Fortschritt" gewählt, werden die Anzahl Runs und Karma dem Dateinamen hinzugefügt - damit ist eine Versionierung möglich. Außerdem kann mit der Option "Zeit" die genaue Zeit mit in den Dateinamen geschrieben werden.</value>
   </data>
   <data name="Help5_CharAdministration_FileName" xml:space="preserve">
     <value>Char Verwaltung - Dateinamen</value>
@@ -1067,7 +1067,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Hilfe an/aus</value>
   </data>
   <data name="HelpDBIntro.Text" xml:space="preserve">
-    <value>In dieser Datenbak findest du vorgefertigte Einträge. Klicke auf einen Eintrag, um ihn auszuwählen. Mit den Befehlen unten kannst du diese Auswahl dann in deinen aktuellen Charakter übernehmen. Solltest du bereits einen Eintrag mit dem selben Namen in der selben Kategorie besitzen, wird dein Eintrag nicht überschrieben. Für Datenbankeinträge mit Verknüpfungen zu anderen Einträgen wird versucht, deine Einträge zu verknüpfen. Falls das misslingt, wird auch der verknüpfte Eintrag kopiert.</value>
+    <value>In dieser Datenbank findest du vorgefertigte Einträge. Klicke auf einen Eintrag, um ihn auszuwählen. Mit den Befehlen unten kannst du diese Auswahl dann in deinen aktuellen Charakter übernehmen. Solltest du bereits einen Eintrag mit dem selben Namen in der selben Kategorie besitzen, wird dein Eintrag nicht überschrieben. Für Datenbankeinträge mit Verknüpfungen zu anderen Einträgen wird versucht, deine Einträge zu verknüpfen. Falls das misslingt, wird auch der verknüpfte Eintrag kopiert.</value>
   </data>
   <data name="of.Text" xml:space="preserve">
     <value>von</value>

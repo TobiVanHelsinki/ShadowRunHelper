@@ -66,7 +66,9 @@ namespace ShadowRunHelper
             await Summorys_Aktualisieren();
             if (!SettingsModel.I.TutorialMainShown)
             {
+#pragma warning disable CS4014
                 new Tutorial(0, 5).ShowAsync();
+#pragma warning restore CS4014
                 SettingsModel.I.TutorialMainShown = true;
             }
         }
@@ -134,7 +136,9 @@ namespace ShadowRunHelper
                 ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = Active;
                 if (!SettingsModel.I.TutorialCharListShown)
                 {
+#pragma warning disable CS4014
                     new Tutorial(10, 10).ShowAsync();
+#pragma warning restore CS4014
                     SettingsModel.I.TutorialCharListShown = true;
                 }
             }
@@ -422,7 +426,7 @@ namespace ShadowRunHelper
                 ViewModel.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
         }
-
+#pragma warning disable CS1998
         async void Click_CSV_Import(object sender, RoutedEventArgs e)
         {
             if (IsOperationInProgres)
@@ -455,6 +459,7 @@ namespace ShadowRunHelper
             //    ViewModel.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "2", ex);
             //}
         }
+#pragma warning restore CS1998
 
         void Exception(object sender, RoutedEventArgs e)
         {
