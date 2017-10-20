@@ -470,7 +470,7 @@ namespace ShadowRunHelper.CharModel
 
         void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelResources.CallPropertyChanged(PropertyChanged, this, propertyName);
+            ModelResources.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
 
         public Person Copy(Person Source = null)

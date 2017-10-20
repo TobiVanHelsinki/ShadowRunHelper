@@ -1152,4 +1152,7 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   <data name="UI_Optionen_TutorialMainShown.Text" xml:space="preserve">
     <value>"Chars Verwalten"-Anleitung gelesen</value>
   </data>
+  <data name="UI_Char_Btn_Speichern.Text" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
 </root>

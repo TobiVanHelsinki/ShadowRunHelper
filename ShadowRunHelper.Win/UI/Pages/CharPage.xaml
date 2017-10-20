@@ -1660,7 +1660,9 @@
                     <VisualState.Setters>
                         <Setter Target="GlobalFilterBox_FlyoutColumn.Width" Value="0"/>
                         <Setter Target="DataBaseButtonText.Visibility" Value="Visible"/>
+                        <Setter Target="SavePanelButtonText.Visibility" Value="Visible"/>
                         <Setter Target="GlobalFilterBox_NormalColumn.Width" Value="*"/>
+                        
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
@@ -1669,6 +1671,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="DataBaseButtonText.Visibility" Value="Collapsed"/>
+                        <Setter Target="SavePanelButtonText.Visibility" Value="Collapsed"/>
                         <Setter Target="GlobalFilterBox_FlyoutColumn.Width" Value="*"/>
                         <Setter Target="GlobalFilterBox_NormalColumn.Width" Value="0"/>
                     </VisualState.Setters>
@@ -1815,12 +1818,21 @@
             </Grid>
         </Pivot.RightHeader>
         <Pivot.LeftHeader>
-            <Button x:Name="DatabasePanel" Click="OpenDB" HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="&#xE8F1;" FontFamily="Segoe MDL2 Assets" FontSize="19"/>
-                    <TextBlock x:Name="DataBaseButtonText" x:Uid="Ui_DB_Nav"/>
-                </StackPanel>
-            </Button>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Margin="0,0,5,0" x:Name="DatabasePanel" Click="OpenDB" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE8F1;" FontFamily="Segoe MDL2 Assets" FontSize="19"/>
+                        <TextBlock x:Name="DataBaseButtonText" x:Uid="Ui_DB_Nav"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="SavePanel" IsEnabled="{x:Bind CurrentChar.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19"/>
+                        <TextBlock x:Name="SavePanelButtonText" x:Uid="UI_Char_Btn_Speichern"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
         </Pivot.LeftHeader>
         <PivotItem Style="{StaticResource TabsStylePivotStylePivotItem}">
             <PivotItem.Header>

@@ -168,14 +168,14 @@ namespace ShadowRunHelper
         void App_OnSuspending(object sender, SuspendingEventArgs e)
         {
             SettingsModel.I.LastSaveInfo = Model?.CurrentChar?.FileInfo;
-            Model?.CurrentChar?.SaveIfNeccesary();
+            Model?.CurrentChar?.SetSaveTimerTo();
             e.SuspendingOperation.GetDeferral().Complete();
         }
 
         private void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
         {
             SettingsModel.I.LastSaveInfo = Model?.CurrentChar?.FileInfo;
-            Model?.CurrentChar?.SaveIfNeccesary();
+            Model?.CurrentChar?.SetSaveTimerTo();
             e.GetDeferral().Complete();
         }
 

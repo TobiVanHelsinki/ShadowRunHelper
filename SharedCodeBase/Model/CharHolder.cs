@@ -17,11 +17,13 @@ namespace ShadowRunHelper.Model
     /// </summary>
     public class CharHolder : IMainType, INotifyPropertyChanged
     {
+        #region vars
+
         // Admin Version Numbers ##############################################
         public string APP_VERSION_NUMBER { get { return Constants.APP_VERSION_NUMBER_1_5; } }
         public string FILE_VERSION_NUMBER { get { return Constants.CHARFILE_VERSION_1_5; } }
-
-        // DATA ###############################################################
+        #endregion
+        #region  Char Model DATA 
         // the various controlers
         public cController<Item> CTRLItem { get; set; }
         public cController<Programm> CTRLProgramm { get; set; }
@@ -49,8 +51,8 @@ namespace ShadowRunHelper.Model
         public cController<Fertigkeit> CTRLFertigkeit { get; set; }
         public cController<Handlung> CTRLHandlung { get; set; }
         public Person Person { get; set; }
-
-        // EASY ACCESS STUFF ##################################################
+        #endregion
+        #region EASY ACCESS STUFF
 
         [Newtonsoft.Json.JsonIgnore]
         List<IController> lstCTRL = new List<IController>();
@@ -63,7 +65,8 @@ namespace ShadowRunHelper.Model
         [Newtonsoft.Json.JsonIgnore]
         public List<Thing> ThingList { get => _ThingList; set => _ThingList = value; }
 
-        // IO and Display Stuff ###############################################
+        #endregion
+        #region IO and Display Stuff
         /// <summary>
         /// used to "override" the std convert method. we need something more ... flexible
         /// </summary>
@@ -95,7 +98,7 @@ namespace ShadowRunHelper.Model
             strSaveName += UseDate ? "_" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + "_" + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second : "";
             strSaveName += postfix;
 
-            if (strSaveName == null || strSaveName.Equals("") || strSaveName.Length == 0) 
+            if (strSaveName == null || strSaveName.Equals("") || strSaveName.Length == 0)
             {
                 strSaveName = Person.Alias;
             }
@@ -112,14 +115,12 @@ namespace ShadowRunHelper.Model
         {
             return MakeName(false, false) + " " + base.ToString();
         }
-        // INI Stuff #########################################################
+        #endregion
+        #region INI Stuff
 
-        /// <summary>
-        /// 
-        /// </summary>
         public CharHolder()
         {
-            Tim = new System.Threading.Timer((x)=> { SaveRequest?.Invoke(x, new EventArgs()); HasChanges = false; },this, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+            SaveTimer = new System.Threading.Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); }, this, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
             // To Autosave
             CTRLAdeptenkraft_KomplexeForm = new cController<Adeptenkraft_KomplexeForm>();
             CTRLAttribut = new cAttributController();
@@ -185,11 +186,12 @@ namespace ShadowRunHelper.Model
             _ThingList = new List<Thing>();
             RefreshLists();
         }
-        //DATA HANDLING STUFF #################################################
+        #endregion
+        #region DATA HANDLING STUFF 
         public event PropertyChangedEventHandler PropertyChanged;
         void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelResources.CallPropertyChanged(PropertyChanged, this, propertyName);
+            ModelResources.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
         public void Repair()
         {
@@ -331,70 +333,70 @@ namespace ShadowRunHelper.Model
             {
                 case ThingDefs.Handlung:
                     CTRLHandlung.AddNewThing((Handlung)NewThing);
-                break;
+                    break;
                 case ThingDefs.Fertigkeit:
                     CTRLFertigkeit.AddNewThing((Fertigkeit)NewThing);
-                break;
+                    break;
                 case ThingDefs.Item:
                     CTRLItem.AddNewThing((Item)NewThing);
-                break;
+                    break;
                 case ThingDefs.Programm:
                     CTRLProgramm.AddNewThing((Programm)NewThing);
-                break;
+                    break;
                 case ThingDefs.Munition:
                     CTRLMunition.AddNewThing((Munition)NewThing);
-                break;
+                    break;
                 case ThingDefs.Implantat:
                     CTRLImplantat.AddNewThing((Implantat)NewThing);
-                break;
+                    break;
                 case ThingDefs.Vorteil:
                     CTRLVorteil.AddNewThing((Vorteil)NewThing);
-                break;
+                    break;
                 case ThingDefs.Nachteil:
                     CTRLNachteil.AddNewThing((Nachteil)NewThing);
-                break;
+                    break;
                 case ThingDefs.Connection:
                     CTRLConnection.AddNewThing((Connection)NewThing);
-                break;
+                    break;
                 case ThingDefs.Sin:
                     CTRLSin.AddNewThing((Sin)NewThing);
-                break;
+                    break;
                 case ThingDefs.Nahkampfwaffe:
                     CTRLNahkampfwaffe.AddNewThing((Nahkampfwaffe)NewThing);
-                break;
+                    break;
                 case ThingDefs.Fernkampfwaffe:
                     CTRLFernkampfwaffe.AddNewThing((Fernkampfwaffe)NewThing);
-                break;
+                    break;
                 case ThingDefs.Kommlink:
                     CTRLKommlink.AddNewThing((Kommlink)NewThing);
-                break;
+                    break;
                 case ThingDefs.CyberDeck:
                     CTRLCyberDeck.AddNewThing((CyberDeck)NewThing);
-                break;
+                    break;
                 case ThingDefs.Vehikel:
                     CTRLVehikel.AddNewThing((Vehikel)NewThing);
-                break;
+                    break;
                 case ThingDefs.Panzerung:
                     CTRLPanzerung.AddNewThing((Panzerung)NewThing);
-                break;
+                    break;
                 case ThingDefs.Adeptenkraft_KomplexeForm:
                     CTRLAdeptenkraft_KomplexeForm.AddNewThing((Adeptenkraft_KomplexeForm)NewThing);
-                break;
+                    break;
                 case ThingDefs.Geist_Sprite:
                     CTRLGeist_Sprite.AddNewThing((Geist_Sprite)NewThing);
-                break;
+                    break;
                 case ThingDefs.Foki_Widgets:
                     CTRLFoki_Widgets.AddNewThing((Foki_Widgets)NewThing);
-                break;
+                    break;
                 case ThingDefs.Strömung_Wandlung:
                     CTRLStrömung_Wandlung.AddNewThing((Strömung_Wandlung)NewThing);
-                break;
+                    break;
                 case ThingDefs.Tradition_Initiation:
                     CTRLTradition_Initiation.AddNewThing((Tradition_Initiation)NewThing);
-                break;
+                    break;
                 case ThingDefs.Zaubersprüche:
                     CTRLZaubersprüche.AddNewThing((Zaubersprüche)NewThing);
-                break;
+                    break;
                 default:
                     throw new NotSupportedException();
             }
@@ -485,8 +487,7 @@ namespace ShadowRunHelper.Model
 
         public void RefreshListeners()
         {
-            PropertyChanged -= (x, y) => AnyPropertyChanged();
-            PropertyChanged += (x, y) => AnyPropertyChanged();
+            // Don't register AnyPropertyChanged() at the PropertyChanged  Event of this Class -> endless loop;
             Person.PropertyChanged -= (x, y) => AnyPropertyChanged();
             Person.PropertyChanged += (x, y) => AnyPropertyChanged();
             foreach (var item in lstCTRL)
@@ -513,35 +514,63 @@ namespace ShadowRunHelper.Model
                 _ThingList.AddRange(item.GetElements());
             }
         }
-        // AUTO SAVE STUFF ####################################################
-        public bool HasChanges = false;
-        System.Threading.Timer Tim; //todo rename
+        #endregion
+        #region AUTO_SAVE_STUFF 
+        [Newtonsoft.Json.JsonIgnore]
+        bool _HasChanges = false;
+        [Newtonsoft.Json.JsonIgnore]
+        public bool HasChanges
+        {
+            get { return _HasChanges; }
+            set
+            {
+                if (!value)
+                {
+                    //SaveTimer.Change(System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+                }
+                if (value != _HasChanges)
+                {
+                    _HasChanges = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        [Newtonsoft.Json.JsonIgnore]
+        System.Threading.Timer SaveTimer;
+        /// <summary>
+        /// fire if you want to get the char saved
+        /// </summary>
         public event EventHandler SaveRequest;
+
+        /// <summary>
+        /// handler method if any property get's changed
+        /// note: as this method handles the saves, the "HasChanges" var should be excepted
+        /// </summary>
         void AnyPropertyChanged()
         {
+            if (true)
+            {
+
+            }
+            HasChanges = true;
             if (SettingsModel.I.AutoSave)
             {
-                HasChanges = true;
-                Tim.Change(SettingsModel.I.AutoSaveInterval, System.Threading.Timeout.Infinite);
-            }
-            else
-            {
-                Tim.Change(System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+                SetSaveTimerTo(SettingsModel.I.AutoSaveInterval);
             }
         }
 
-        public bool SaveIfNeccesary(int Time = 0)
+        public bool SetSaveTimerTo(int Time = 0)
         {
             if (HasChanges)
             {
-                Tim.Change(Time, System.Threading.Timeout.Infinite);
-                SettingsModel.I.CountSavings++;
+                HasChanges = false;
+                SaveTimer.Change(Time, System.Threading.Timeout.Infinite);
                 return true;
             }
             return false;
         }
-
-        // IMPORT / EXPORT STUFF ##############################################
+        #endregion
+        #region IMPORT / EXPORT STUFF ##############################################
         public List<(string ThingType, string Content)> ToCSV(string strDelimiter)
         {
             var lstReturn = new List<(string, string)>();
@@ -640,7 +669,6 @@ namespace ShadowRunHelper.Model
             RefreshLists();
         }
 
-
-
+        #endregion
     }
 }

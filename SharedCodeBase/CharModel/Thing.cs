@@ -14,7 +14,7 @@ namespace ShadowRunHelper.CharModel
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelResources.CallPropertyChanged(PropertyChanged, this, propertyName);
+            ModelResources.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
         public Thing()
         {

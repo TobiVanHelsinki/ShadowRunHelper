@@ -24,12 +24,14 @@ namespace ShadowRunHelper
         readonly AppModel ViewModel = AppModel.Instance;
         public Windows.System.Display.DisplayRequest Char_DisplayRequest;
         CharHolder CurrentChar;
+        ResourceLoader res;
         public CharPage()
         {
             if (CurrentChar == null)
             {
                 CurrentChar = ViewModel.CurrentChar;
             }
+            res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
             PrepareBlockList();
         }
@@ -204,6 +206,19 @@ namespace ShadowRunHelper
 
         // Gui Handler Stuff ##################################################
 
+        void Click_Save(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CurrentChar.SetSaveTimerTo();
+                //await CharHolderIO.SaveAtCurrentPlace(ViewModel.MainObject);
+            }
+            catch (Exception ex)
+            {
+                ViewModel.NewNotification(res.GetString("Notification_Error_SaveFail"), ex);
+            }
+            SettingsModel.I.CountSavings++;
+        }
         async void OpenDB(object sender, RoutedEventArgs e)
         {
             if (AppModel.Instance.CurrentChar == null)

@@ -192,7 +192,7 @@ namespace ShadowRunHelper
             ChangeProgress(true);
             try
             {
-                await CharHolderIO.SaveAtOriginPlace(ViewModel.MainObject);
+                ViewModel.MainObject.SetSaveTimerTo(0);
             }
             catch (Exception ex)
             {
@@ -214,6 +214,7 @@ namespace ShadowRunHelper
             try
             {
                 await CharHolderIO.SaveAtCurrentPlace(ViewModel.MainObject);
+                ViewModel.MainObject.HasChanges = false;
             }
             catch (Exception ex)
             {
