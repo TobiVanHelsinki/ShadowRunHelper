@@ -128,7 +128,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Wert_W"/>
+                        <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Zusammensetzung"/>
                         <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Wert, Mode=OneWay}"/>
                         <Button Grid.Column="2" Grid.Row="0" x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource ListView_Item_Buttons}" Click="HandlungEditZusDialog_Click"/>
                         <ListView Grid.Column="3" Grid.Row="0" ItemsSource="{x:Bind WertZusammensetzung, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource ListView_ThingListContainerTemplate_List}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
