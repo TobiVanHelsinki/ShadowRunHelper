@@ -515,7 +515,7 @@ namespace ShadowRunHelper.Model
         }
         // AUTO SAVE STUFF ####################################################
         public bool HasChanges = false;
-        System.Threading.Timer Tim;
+        System.Threading.Timer Tim; //todo rename
         public event EventHandler SaveRequest;
         void AnyPropertyChanged()
         {

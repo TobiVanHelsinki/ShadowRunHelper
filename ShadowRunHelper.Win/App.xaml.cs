@@ -36,6 +36,10 @@ namespace ShadowRunHelper
             Suspending += (x,y)=>App_OnSuspending(x,y);
             UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
             CreateDataStructure();
+            if (SettingsModel.I.StartCount < 1)
+            {
+                SettingsModel.I.ResetAllSettings();
+            }
             try
             {
                 EnteredBackground += (x, y) => App_EnteredBackground(x, y);

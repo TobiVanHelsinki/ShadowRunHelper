@@ -1,4 +1,5 @@
-﻿using TLIB.IO;
+﻿using System.Reflection;
+using TLIB.IO;
 using TLIB.Model;
 using static TLIB.Model.SharedSettingsModel;
 
@@ -6,6 +7,7 @@ namespace ShadowRunHelper
 {
     public class SettingsModel : SharedSettingsModel
     {
+        #region Settings
         public bool AutoSave
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_AUTO_SAVE);
@@ -15,7 +17,12 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        
+
+        public void AutoSaveReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE, Constants.CONTAINER_SETTINGS_AUTO_SAVE_STD);
+        }
+
         public bool TutorialHandlungShown
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_4);
@@ -24,6 +31,11 @@ namespace ShadowRunHelper
                 PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_4, value);
                 Instance.NotifyPropertyChanged();
             }
+        }
+
+        public void TutorialHandlungShownReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_4, Constants.CONTAINER_SETTINGS_TUT_SHOWN_4_STD);
         }
 
         public bool TutorialMainShown
@@ -35,6 +47,10 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void TutorialMainShownReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1, Constants.CONTAINER_SETTINGS_TUT_SHOWN_1_STD);
+        }
 
         public bool TutorialCharListShown
         {
@@ -44,6 +60,10 @@ namespace ShadowRunHelper
                 PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_3, value);
                 Instance.NotifyPropertyChanged();
             }
+        }
+        public void TutorialCharListShownReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_3, Constants.CONTAINER_SETTINGS_TUT_SHOWN_3_STD);
         }
 
 
@@ -56,6 +76,10 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void TutorialCharShownReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_2, Constants.CONTAINER_SETTINGS_TUT_SHOWN_2_STD);
+        }
 
         public int StartCountDB
         {
@@ -66,6 +90,11 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void StartCountDBReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_COUNT_DB, Constants.CONTAINER_SETTINGS_START_COUNT_DB_STD);
+        }
+
         public int StartCount
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_START_COUNT);
@@ -74,6 +103,10 @@ namespace ShadowRunHelper
                 PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_COUNT, value);
                 Instance.NotifyPropertyChanged();
             }
+        }
+        public void StartCountReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_COUNT, Constants.CONTAINER_SETTINGS_START_COUNT_STD);
         }
         public int CountLoadings
         {
@@ -84,6 +117,10 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void CountLoadingsReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_LOADINGS, Constants.CONTAINER_SETTINGS_COUNT_LOADINGS_STD);
+        }
         public int CountSavings
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_SAVINGS);
@@ -93,6 +130,11 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void CountSavingsReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_SAVINGS, Constants.CONTAINER_SETTINGS_COUNT_SAVINGS_STD);
+        }
+
         public int CountDeletions
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_DELETIONS);
@@ -102,6 +144,11 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void CountDeletionsReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_DELETIONS, Constants.CONTAINER_SETTINGS_COUNT_DELETIONS_STD);
+        }
+
         public int CountCreations
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_CREATIONS);
@@ -111,7 +158,11 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        
+        public void CountCreationsReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_CREATIONS, Constants.CONTAINER_SETTINGS_COUNT_CREATIONS_STD);
+        }
+
         public int AutoSaveInterval
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS);
@@ -121,6 +172,11 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void AutoSaveIntervalReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS, Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS_STD);
+        }
+
         public bool LoadCharOnStart
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START);
@@ -130,6 +186,11 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void LoadCharOnStartReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START, Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START_STD);
+        }
+
         public bool StartEditAfterAdd
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_START_AFTER_EDIT);
@@ -139,6 +200,11 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void StartEditAfterAddReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_AFTER_EDIT, Constants.CONTAINER_SETTINGS_START_AFTER_EDIT_STD);
+        }
+
         public bool BetaFeatures
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_BETA_FEATURES);
@@ -148,6 +214,11 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void BetaFeaturesReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_BETA_FEATURES, Constants.CONTAINER_SETTINGS_BETA_FEATURES_STD);
+        }
+
         public FileInfoClass LastSaveInfo
         {
             get
@@ -176,6 +247,11 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void LastSaveInfoReset()
+        {
+            LastSaveInfo = null;
+        }
+
         public bool FileNameUseProgres
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS);
@@ -185,6 +261,11 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void FileNameUseProgresReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS, Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS_STD);
+        }
+
         public bool FileNameUseDate
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE);
@@ -194,6 +275,14 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        public void FileNameUseDateReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE, Constants.CONTAINER_SETTINGS_FILENAME_USEDATE_STD);
+        }
+
+        #endregion Settings
+
+        #region Singleton Model Thigns
         //================================================
         public static new SettingsModel Initialize()
         {
@@ -217,6 +306,7 @@ namespace ShadowRunHelper
                 return (SettingsModel)instance;
             }
         }
+        #endregion
 
     }
 }

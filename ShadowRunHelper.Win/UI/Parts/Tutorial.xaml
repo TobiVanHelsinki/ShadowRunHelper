@@ -40,7 +40,7 @@
         </Button>
         <Button Click="BtnNext_Click" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" Grid.Row="2" Grid.Column="2"/>
         <Button Click="BtnExit_Click" Content="&#xE711;" FontFamily="Segoe MDL2 Assets" Grid.Row="0" Grid.Column="2"/>
-        <Button Click="BtnHide_Click" Content="&#xE713;" FontFamily="Segoe MDL2 Assets" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
+        <Button Click="BtnHide_Click" Content="&#xE890;" FontFamily="Segoe MDL2 Assets" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
 
     </Grid>
 </ContentDialog>

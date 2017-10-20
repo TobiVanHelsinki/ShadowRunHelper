@@ -37,29 +37,48 @@ namespace ShadowRunHelper
         /// Speicher Einstellungen
         /// </summary>
         public const string CONTAINER_SETTINGS_AUTO_SAVE = "SETTINGS_AUTO_SAVE";
+        public const bool CONTAINER_SETTINGS_AUTO_SAVE_STD = false;
         public const string CONTAINER_SETTINGS_TUT_SHOWN_1 = "SETTINGS_TUT_SHOWN_1";
+        public const bool CONTAINER_SETTINGS_TUT_SHOWN_1_STD = false;
         public const string CONTAINER_SETTINGS_TUT_SHOWN_2 = "SETTINGS_TUT_SHOWN_2";
+        public const bool CONTAINER_SETTINGS_TUT_SHOWN_2_STD = false;
         public const string CONTAINER_SETTINGS_TUT_SHOWN_3 = "SETTINGS_TUT_SHOWN_3";
+        public const bool CONTAINER_SETTINGS_TUT_SHOWN_3_STD = false;
         public const string CONTAINER_SETTINGS_TUT_SHOWN_4 = "SETTINGS_TUT_SHOWN_4";
+        public const bool CONTAINER_SETTINGS_TUT_SHOWN_4_STD = false;
         public const string CONTAINER_SETTINGS_TUT_SHOWN_5 = "SETTINGS_TUT_SHOWN_5";
+        public const bool CONTAINER_SETTINGS_TUT_SHOWN_5_STD = false;
         public const string CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS = "SETTINGS_AUTO_SAVE_INTERVAL";
-        public const int AUTO_SAVE_INTERVAL_MS_DEFAULT = 5000; //5 sec
+        public const int CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS_STD = 5000; //5 sec
         public const string CONTAINER_SETTINGS_LOAD_CHAR_ON_START = "SETTINGS_LOAD_CHAR_ON_START";
+        public const bool CONTAINER_SETTINGS_LOAD_CHAR_ON_START_STD = false;
         public const string CONTAINER_SETTINGS_START_AFTER_EDIT = "SETTINGS_START_AFTER_EDIT";
+        public const bool CONTAINER_SETTINGS_START_AFTER_EDIT_STD = false;
         public const string CONTAINER_SETTINGS_START_COUNT = "SETTINGS_START_COUNT";
+        public const int CONTAINER_SETTINGS_START_COUNT_STD = 0;
         public const string CONTAINER_SETTINGS_START_COUNT_DB = "SETTINGS_START_COUNT_DB";
+        public const int CONTAINER_SETTINGS_START_COUNT_DB_STD = 0;
         public const string CONTAINER_SETTINGS_COUNT_LOADINGS = "ETTINGS_COUNT_LOADINGS";
+        public const int CONTAINER_SETTINGS_COUNT_LOADINGS_STD = 0;
         public const string CONTAINER_SETTINGS_COUNT_SAVINGS = "SETTINGS_COUNT_SAVINGS";
+        public const int CONTAINER_SETTINGS_COUNT_SAVINGS_STD = 0;
         public const string CONTAINER_SETTINGS_COUNT_DELETIONS = "SETTINGS_COUNT_DELETIONS";
+        public const int CONTAINER_SETTINGS_COUNT_DELETIONS_STD = 0;
         public const string CONTAINER_SETTINGS_COUNT_CREATIONS = "SETTINGS_COUNT_CREATIONS";
+        public const int CONTAINER_SETTINGS_COUNT_CREATIONS_STD = 0;
         
 
         public const string CONTAINER_SETTINGS_FILENAME_USEPROGRESS = "SETTINGS_FILENAME_USEPROGRESS";
+        public const bool CONTAINER_SETTINGS_FILENAME_USEPROGRESS_STD = false;
         public const string CONTAINER_SETTINGS_FILENAME_USEDATE = "SETTINGS_FILENAME_USEDATE";
+        public const bool CONTAINER_SETTINGS_FILENAME_USEDATE_STD = false;
 
         public const string CONTAINER_SETTINGS_LAST_CHAR_NAME = "SETTINGS_LAST_CHAR_NAME";
+        public const string CONTAINER_SETTINGS_LAST_CHAR_NAME_STD = "";
         public const string CONTAINER_SETTINGS_LAST_SAVE_PATH = "SETTINGS_LAST_SAVE_PATH";
+        public const string CONTAINER_SETTINGS_LAST_SAVE_PATH_STD = "";
         public const string CONTAINER_SETTINGS_LAST_SAVE_PLACE = "SETTINGS_LAST_SAVE_PLACE";
+        public const string CONTAINER_SETTINGS_LAST_SAVE_PLACE_STD = "";
 
 
         public const string APP_STORE_LINK = "ms-windows-store://pdp/?productid=9nblggh4rhvx";

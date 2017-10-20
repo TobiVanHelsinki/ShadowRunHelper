@@ -1659,6 +1659,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="GlobalFilterBox_FlyoutColumn.Width" Value="0"/>
+                        <Setter Target="DataBaseButtonText.Visibility" Value="Visible"/>
                         <Setter Target="GlobalFilterBox_NormalColumn.Width" Value="*"/>
                     </VisualState.Setters>
                 </VisualState>
@@ -1667,6 +1668,7 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <Setter Target="DataBaseButtonText.Visibility" Value="Collapsed"/>
                         <Setter Target="GlobalFilterBox_FlyoutColumn.Width" Value="*"/>
                         <Setter Target="GlobalFilterBox_NormalColumn.Width" Value="0"/>
                     </VisualState.Setters>
@@ -1813,11 +1815,11 @@
             </Grid>
         </Pivot.RightHeader>
         <Pivot.LeftHeader>
-            <Button Click="OpenDB" HorizontalAlignment="Center">
-                <TextBlock>
-                <Run Text="&#xE8F1;" FontFamily="Segoe MDL2 Assets" FontSize="19"/>
-                <Run x:Uid="Ui_DB_Nav"/>
-                </TextBlock>
+            <Button x:Name="DatabasePanel" Click="OpenDB" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xE8F1;" FontFamily="Segoe MDL2 Assets" FontSize="19"/>
+                    <TextBlock x:Name="DataBaseButtonText" x:Uid="Ui_DB_Nav"/>
+                </StackPanel>
             </Button>
         </Pivot.LeftHeader>
         <PivotItem Style="{StaticResource TabsStylePivotStylePivotItem}">

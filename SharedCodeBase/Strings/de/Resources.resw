@@ -1078,7 +1078,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Tut_State_00" xml:space="preserve">
     <value>Willkommen in der ShadowRunHelper App!
 In dieser Einführung wird gezeigt, wie ShadowRun Chars in dieser App erstellt und verwaltet werden. Mit den Pfeiltasten kannst du durch die Einführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst. 
-In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben.</value>
+In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben. Auf kleinen Bildschirmen verdeckt das Tutorial leider den Bildschirm. Der Button mit dem Auge macht das tutorial Fenster durchsichtig.</value>
   </data>
   <data name="Tut_State_01" xml:space="preserve">
     <value>Beginnen wir mit der Navigationsleiste. Diese 3 Buttons begleiten dich durch die gesamte App. Der erste führt dich zu der Seite, auf der ein Char später dargestellt wird. Der Zweite bringt dich in das Chars Verwalten Menü, indem du dich gerade befindest. Der Dritte bringt dich in das Einstellungsmenü, dort findest du unteranderem auch den ganzen rechtlichen Kram.</value>
@@ -1099,7 +1099,7 @@ b) "Reparieren" es sollte nicht vorkommen, aber manchmal ist es unvorhersehbar: 
   </data>
   <data name="Tut_State_20" xml:space="preserve">
     <value>Willkommen in deinem ersten Char!
-In dieser Einführung wird gezeigt, wie die Char Ansicht funktioniert. Mit den Pfeiltasten kannst du durch die Einführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst.</value>
+In dieser Einführung wird gezeigt, wie die Char Ansicht funktioniert. Mit den Pfeiltasten kannst du durch die Einführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst. Auf kleinen Bildschirmen verdeckt das Tutorial leider den Bildschirm. Der Button mit dem Auge macht das tutorial Fenster durchsichtig.</value>
   </data>
   <data name="Tut_State_03" xml:space="preserve">
     <value>Diese Liste zeigt alle deine gespeicherten Charaktere an. Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswählen, ob sie über deinen Account synchronisieren werden sollen. Im Prinzip sind die Chars in der Liste alles nur Dateien in einem Ordner, daher kannst du in den Optionen auch einen anderen Ordner als Speicherort wählen.</value>

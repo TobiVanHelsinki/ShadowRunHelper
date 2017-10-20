@@ -50,9 +50,11 @@ namespace ShadowRunHelper
             if (SettingsModel.I.BetaFeatures)
             {
                 FilterBoxPanel.Visibility = Visibility.Visible;
+                DatabasePanel.Visibility = Visibility.Visible;
             }
             else
             {
+                DatabasePanel.Visibility = Visibility.Collapsed;
                 FilterBoxPanel.Visibility = Visibility.Collapsed;
             }
             ViewModel.TutorialStateChanged += TutorialStateChanged;

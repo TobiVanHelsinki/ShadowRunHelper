@@ -17,8 +17,6 @@ namespace ShadowRunHelper.UI
     {
         public static Windows.UI.Xaml.Media.SolidColorBrush HighlightBrush = new Windows.UI.Xaml.Media.SolidColorBrush(Windows.UI.Colors.Red);
         public static Windows.UI.Xaml.Thickness HighlightThickness = new Windows.UI.Xaml.Thickness(2);
-        //public static Style HighlightBorderStyle = new Style(typeof(Border));
-        //public static Style UnhighlightBorderStyle = new Style(typeof(Border));
         public static Style HighlightBorderStyle_XAML = (Style)App.Current.Resources["Tut1Highlight"];
         public static Style UnhighlightBorderStyle_XAML = (Style)App.Current.Resources["Tut1Unhighlight"];
 
@@ -82,7 +80,6 @@ namespace ShadowRunHelper.UI
             Title = CrossPlatformHelper.GetString(string.Format("Tut_TitleState_{0,0:D2}", Start));
             ViewModel.TutorialStateChanged += StateChanged;
             ViewModel.TutorialChangedState(StateCounter, true);
-            Background = White;
         }
 
         private void StateChanged(int StateNumber, bool Highlight)
@@ -125,28 +122,27 @@ namespace ShadowRunHelper.UI
             ViewModel.TutorialChangedState(StateCounter, true);
         }
 
-        private void BtnExit_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        void BtnExit_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             ViewModel.TutorialChangedState(StateCounter, false);
             Hide();
         }
-        SolidColorBrush Trans = new SolidColorBrush(Windows.UI.Colors.Transparent);
-        SolidColorBrush White = new SolidColorBrush(Windows.UI.Colors.White);
-        SolidColorBrush Black = new SolidColorBrush(Windows.UI.Colors.Black);
-        private void BtnHide_Click(object sender, RoutedEventArgs e)
+        bool IsInHiddenState = false;
+        void BtnHide_Click(object sender, RoutedEventArgs e)
         {
-            if (Background == White)
+            if (IsInHiddenState)
             {
-                Background = Trans;
-                TutorialText.Foreground = Trans;
-                Counter.Foreground = Trans;
+                Background.Opacity = 100;
+                TutorialText.Foreground.Opacity = 100;
+                Counter.Foreground.Opacity = 100;
             }
             else
             {
-                Background = White; //TODO color depended
-                TutorialText.Foreground = Black;
-                Counter.Foreground = Black;
+                Background.Opacity = 0;
+                TutorialText.Foreground.Opacity = 0;
+                Counter.Foreground.Opacity = 0;
             }
+            IsInHiddenState = !IsInHiddenState;
         }
     }
 }

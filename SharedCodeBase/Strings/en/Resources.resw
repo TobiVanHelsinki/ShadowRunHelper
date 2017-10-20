@@ -213,7 +213,7 @@
   <data name="Tut_State_00" xml:space="preserve">
     <value>Welcome to the ShadowRunHelper app!
 This introduction shows how to create and manage ShadowRun chars in this app. With the arrow keys you can navigate through the introduction, the X at the top right cancels the introduction. You can watch this introduction also later. Just uncheck them at the options.
-In each step, the discussed controls are highlighted in red.</value>
+In each step, the discussed controls are highlighted in red. On small screens the tutorial unfortunately hides the screen. The button with the eye makes the tutorial window transparent.</value>
   </data>
   <data name="UI_Btn_Bearbeiten.Content" xml:space="preserve">
     <value>Edit</value>
@@ -460,7 +460,7 @@ b) "Auto-Fix" It should not occur, but sometimes it is unpredictable: the linked
   </data>
   <data name="Tut_State_20" xml:space="preserve">
     <value>Welcome to your first char!
-This introduction shows how the char view works. With the arrow keys you can navigate through the introduction, the X at the top right cancels the introduction. You can turn the introduction back on at the options menü, if you want to see it again.</value>
+This introduction shows how the char view works. With the arrow keys you can navigate through the introduction, the X at the top right cancels the introduction. You can turn the introduction back on at the options menü, if you want to see it again. On small screens the tutorial unfortunately hides the screen. The button with the eye makes the tutorial window transparent.</value>
   </data>
   <data name="Tut_State_03" xml:space="preserve">
     <value>This list shows all your saved characters. By default, chars are stored within the app. In the options you can choose to sync you chars via your account. Cause all chars in this list are files in a folder, you can also choose a different folder as the saving location.</value>
