@@ -121,6 +121,7 @@ namespace ShadowRunHelper.Model
         public CharHolder()
         {
             SaveTimer = new System.Threading.Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); }, this, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+            AppModel.Instance.MainObjectSaved += (x, y) => { SettingsModel.I.CountSavings++; };
             // To Autosave
             CTRLAdeptenkraft_KomplexeForm = new cController<Adeptenkraft_KomplexeForm>();
             CTRLAttribut = new cAttributController();
