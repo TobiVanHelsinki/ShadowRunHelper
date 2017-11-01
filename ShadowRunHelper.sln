@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Win", "ShadowRunHelper.Win\ShadowRunHelper.Win.csproj", "{20705C89-F90E-4B10-827C-BA8A0B24E14F}"
 EndProject
@@ -160,8 +160,6 @@ Global
 		{EECAFA70-03B8-4F5D-9A22-91ADDF0BFDE2}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
 		{EECAFA70-03B8-4F5D-9A22-91ADDF0BFDE2}.Debug|iPhoneSimulator.Deploy.0 = Debug|Any CPU
 		{EECAFA70-03B8-4F5D-9A22-91ADDF0BFDE2}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{EECAFA70-03B8-4F5D-9A22-91ADDF0BFDE2}.Debug|x64.Build.0 = Debug|Any CPU
-		{EECAFA70-03B8-4F5D-9A22-91ADDF0BFDE2}.Debug|x64.Deploy.0 = Debug|Any CPU
 		{EECAFA70-03B8-4F5D-9A22-91ADDF0BFDE2}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{EECAFA70-03B8-4F5D-9A22-91ADDF0BFDE2}.Debug|x86.Build.0 = Debug|Any CPU
 		{EECAFA70-03B8-4F5D-9A22-91ADDF0BFDE2}.Debug|x86.Deploy.0 = Debug|Any CPU
@@ -216,7 +214,6 @@ Global
 		{8B30A289-4E14-43D5-94BB-3D41A444D507}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
 		{8B30A289-4E14-43D5-94BB-3D41A444D507}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
 		{8B30A289-4E14-43D5-94BB-3D41A444D507}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{8B30A289-4E14-43D5-94BB-3D41A444D507}.Debug|x64.Build.0 = Debug|Any CPU
 		{8B30A289-4E14-43D5-94BB-3D41A444D507}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{8B30A289-4E14-43D5-94BB-3D41A444D507}.Debug|x86.Build.0 = Debug|Any CPU
 		{8B30A289-4E14-43D5-94BB-3D41A444D507}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -274,8 +271,6 @@ Global
 		{CABB1E9E-2ABB-4B0D-9F72-56DB2DECC121}.Debug|iPhone.ActiveCfg = Debug|x86
 		{CABB1E9E-2ABB-4B0D-9F72-56DB2DECC121}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
 		{CABB1E9E-2ABB-4B0D-9F72-56DB2DECC121}.Debug|x64.ActiveCfg = Debug|x64
-		{CABB1E9E-2ABB-4B0D-9F72-56DB2DECC121}.Debug|x64.Build.0 = Debug|x64
-		{CABB1E9E-2ABB-4B0D-9F72-56DB2DECC121}.Debug|x64.Deploy.0 = Debug|x64
 		{CABB1E9E-2ABB-4B0D-9F72-56DB2DECC121}.Debug|x86.ActiveCfg = Debug|x86
 		{CABB1E9E-2ABB-4B0D-9F72-56DB2DECC121}.Debug|x86.Build.0 = Debug|x86
 		{CABB1E9E-2ABB-4B0D-9F72-56DB2DECC121}.Debug|x86.Deploy.0 = Debug|x86

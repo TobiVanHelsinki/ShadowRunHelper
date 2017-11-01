@@ -186,6 +186,7 @@ namespace ShadowRunHelper.Model
             _LinkList = new List<AllListEntry>();
             _ThingList = new List<Thing>();
             RefreshLists();
+            RefreshListeners();
         }
         #endregion
         #region DATA HANDLING STUFF 
@@ -549,10 +550,6 @@ namespace ShadowRunHelper.Model
         /// </summary>
         void AnyPropertyChanged()
         {
-            if (true)
-            {
-
-            }
             HasChanges = true;
             if (SettingsModel.I.AutoSave)
             {
