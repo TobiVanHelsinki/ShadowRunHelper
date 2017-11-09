@@ -379,13 +379,13 @@ This app can be used to open files and folders on the file system. The app store
     <value>After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. If you close the app, this will not cause automatic storage. A value between 2 and 10 seconds is okay.</value>
   </data>
   <data name="UI_CharVerwaltung_E_FileDate.Text" xml:space="preserve">
-    <value>Changedate</value>
+    <value>modification date</value>
   </data>
   <data name="UI_CharVerwaltung_E_FileName.Text" xml:space="preserve">
-    <value>Filename</value>
+    <value>file name</value>
   </data>
   <data name="UI_CharVerwaltung_E_FileSize.Text" xml:space="preserve">
-    <value>Filesize</value>
+    <value>file size</value>
   </data>
   <data name="UI_CharVerwaltung_Intern_Save_Display_String" xml:space="preserve">
     <value>Save Intern</value>
@@ -394,22 +394,22 @@ This app can be used to open files and folders on the file system. The app store
     <value>Statistics</value>
   </data>
   <data name="UI_Statistics_AppStart.Text" xml:space="preserve">
-    <value>Count of appstarts</value>
+    <value>Number of appstarts</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Create_ExampleChar.Label" xml:space="preserve">
     <value>Create Example Char</value>
   </data>
   <data name="UI_Statistics_Creations.Text" xml:space="preserve">
-    <value>Count of new chars</value>
+    <value>Number of new chars</value>
   </data>
   <data name="UI_Statistics_Deletions.Text" xml:space="preserve">
-    <value>Count of deleted chars</value>
+    <value>Number of deleted chars</value>
   </data>
   <data name="UI_Statistics_Loadings.Text" xml:space="preserve">
-    <value>Count of loaded chars</value>
+    <value>Number of loaded chars</value>
   </data>
   <data name="UI_Statistics_Savings.Text" xml:space="preserve">
-    <value>Count of saved chars</value>
+    <value>Number of saved chars</value>
   </data>
   <data name="Ui_DB_Nav.Text" xml:space="preserve">
     <value>Database</value>
