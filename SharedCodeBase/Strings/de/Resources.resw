@@ -1161,9 +1161,6 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   <data name="AuswahlDialog.Title" xml:space="preserve">
     <value>Auswahl</value>
   </data>
-  <data name="d" xml:space="preserve">
-    <value />
-  </data>
   <data name="Request_Delete.No" xml:space="preserve">
     <value>Ach nein doch nicht ...</value>
   </data>
@@ -1186,6 +1183,6 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
     <value>Nachfrage</value>
   </data>
   <data name="Request_DeleteAll.Yes" xml:space="preserve">
-    <value>Wirklich Löschen</value>
+    <value>Wirklich Löschen!</value>
   </data>
 </root>

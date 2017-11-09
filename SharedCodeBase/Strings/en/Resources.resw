@@ -1119,4 +1119,37 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Tradition_Initiation_Schutzpatron.Text" xml:space="preserve">
     <value>Totem</value>
   </data>
+  <data name="UI_Char_Btn_Speichern.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="AuswahlDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="AuswahlDialog.Title" xml:space="preserve">
+    <value>selection</value>
+  </data>
+  <data name="Request_Delete.No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Request_Delete.Text" xml:space="preserve">
+    <value>Really delete?</value>
+  </data>
+  <data name="Request_Delete.Title" xml:space="preserve">
+    <value>request</value>
+  </data>
+  <data name="Request_Delete.Yes" xml:space="preserve">
+    <value>Really delete!</value>
+  </data>
+  <data name="Request_DeleteAll.No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Request_DeleteAll.Text" xml:space="preserve">
+    <value>This will destroy the existence of... EVERYONE!, Chummer! Are you sure you want to do this?</value>
+  </data>
+  <data name="Request_DeleteAll.Title" xml:space="preserve">
+    <value>request</value>
+  </data>
+  <data name="Request_DeleteAll.Yes" xml:space="preserve">
+    <value>Really delete!</value>
+  </data>
 </root>
