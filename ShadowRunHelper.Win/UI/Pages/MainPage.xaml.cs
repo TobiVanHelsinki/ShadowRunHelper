@@ -29,6 +29,21 @@ namespace ShadowRunHelper
             InitializeComponent();
             Model.lstNotifications.CollectionChanged += (x, y) => ShowError();
             Model.TutorialStateChanged += TutorialStateChanged;
+            CompatibilityChecks();
+        }
+        void CompatibilityChecks()
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.XamlCompositionBrushBase"))
+            {
+                MainBar1.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
+                MainBar2.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
+            }
+            else
+            {
+                //SolidColorBrush myBrush = new SolidColorBrush(Color.FromArgb(255, 202, 24, 37));
+
+                //MainBarBorder.Background = myBrush;
+            }
         }
 
         private void TutorialStateChanged(int StateNumber, bool Highlight)
@@ -160,7 +175,7 @@ namespace ShadowRunHelper
                 item.IsEnabled = (bool)bState;
             }
         }
-
+#region ButtonHandling
         void Plus_Click(object sender, RoutedEventArgs e)
         {
             if (Model.MainObject != null)
@@ -263,7 +278,7 @@ namespace ShadowRunHelper
             //    XAML_Header_Schaden_M_Slider.Foreground = new SolidColorBrush(Colors.Black);
             //}
         }
-
+#endregion
         void CommandBar_Loaded(object sender, RoutedEventArgs e)
         {
             if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Controls.CommandBar", "DefaultLabelPosition"))
@@ -271,7 +286,7 @@ namespace ShadowRunHelper
                 (sender as CommandBar).DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
             }
         }
-
+#region Navigation
         void Ui_Nav_Char(object sender, RoutedEventArgs e)
         {
             NavigationRequested(ProjectPages.Char);
@@ -286,7 +301,7 @@ namespace ShadowRunHelper
         {
             NavigationRequested(ProjectPages.Settings);
         }
-
+#endregion
         List<Button> BTNLST = new List<Button>();
         void Main_Btns_Loaded(object sender, RoutedEventArgs e)
         {
@@ -316,6 +331,25 @@ namespace ShadowRunHelper
             CurrentDeck_PropertyChanged();
         }
 
-     
+        private void MainGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.XamlCompositionBrushBase"))
+            {
+                try
+                {
+                    (sender as Grid).Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicElementAccentMediumHighBrush"];
+                }
+                catch (Exception)
+                {
+                    try
+                    {
+                        (sender as Grid).Background = (SolidColorBrush)Resources["SystemControlAccentAcrylicElementAccentMediumHighBrush"];
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+            }
+        }
     }
 }

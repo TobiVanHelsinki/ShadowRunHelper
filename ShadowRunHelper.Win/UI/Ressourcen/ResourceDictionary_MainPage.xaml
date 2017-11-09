@@ -37,11 +37,14 @@
     <Style TargetType="TextBlock" x:Key="Panel_Oben_Text_2">
         <Setter Property="Margin" Value="20,0,10,0"/>
     </Style>
-    <Style TargetType="Button" x:Key="Panel_Oben_Btn_Plus">
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="Panel_Oben_Btn_Plus">
+        <!--<Setter Property="Background" Value="{ThemeResource ButtonRevealBorderBrush}"/>-->
+        <!--<Setter Property="BorderBrush" Value="{ThemeResource ButtonRevealBorderBrush}"/>-->
         <Setter Property="Content" Value="&#xE109;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
     </Style>
-    <Style TargetType="Button" x:Key="Panel_Oben_Btn_Minus">
+
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="Panel_Oben_Btn_Minus">
         <Setter Property="Content" Value="&#xE108;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
     </Style>
@@ -52,7 +55,7 @@
     <Style TargetType="StackPanel" x:Key="Panel_Oben_Parts_Stack">
         <Setter Property="Margin" Value="10,0,10,0"/>
     </Style>
-    <Style TargetType="Button" x:Key="Panel_Oben_Parts_Btn">
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="Panel_Oben_Parts_Btn">
         <Setter Property="Margin" Value="10,0,10,0"/>
     </Style>
     <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="Panel_Oben_Kontostand">

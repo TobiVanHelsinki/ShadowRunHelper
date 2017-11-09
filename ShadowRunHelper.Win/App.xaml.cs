@@ -6,8 +6,10 @@ using TLIB;
 using TLIB.IO;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation.Metadata;
+using Windows.ApplicationModel.Core;
 using Windows.Storage;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -101,6 +103,17 @@ namespace ShadowRunHelper
                 catch (Exception) { }
             }
             Launch();
+
+            extendAcrylicIntoTitleBar();
+        }
+
+        void extendAcrylicIntoTitleBar()
+        {
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.BackgroundColor = null;
+            titleBar.ButtonBackgroundColor = null;
+            titleBar.ButtonInactiveBackgroundColor = null;
         }
         /// <summary>
         /// Wird aufgerufen, wenn eine Datei gestartet wird. 
@@ -195,7 +208,7 @@ namespace ShadowRunHelper
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        async Task App_UnhandledExceptionAsync(object sender, UnhandledExceptionEventArgs e)
+        async Task App_UnhandledExceptionAsync(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
         {
             e.Handled = true;
             SettingsModel.I.LastSaveInfo = null;
