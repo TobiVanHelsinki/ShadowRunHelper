@@ -423,12 +423,12 @@
       
     </Style>
     <!-- Drücken ####################### -->
-    <Style TargetType="Button" x:Key="ListView_Item_Buttons">
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="ListView_Item_Buttons">
         <Setter Property="Margin" Value="2,2,2,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
 
-    <Style TargetType="Button" x:Key="ListView_U_BtnAdd">
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="ListView_U_BtnAdd">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
@@ -450,7 +450,7 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
-    <Style TargetType="Button" x:Key="ListView_BtnDel">
+    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="ListView_BtnDel">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>

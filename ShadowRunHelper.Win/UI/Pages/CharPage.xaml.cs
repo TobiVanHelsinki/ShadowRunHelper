@@ -52,7 +52,7 @@ namespace ShadowRunHelper
             if (SettingsModel.I.BetaFeatures)
             {
                 FilterBoxPanel.Visibility = Visibility.Visible;
-                DatabasePanel.Visibility = Visibility.Visible;
+                //DatabasePanel.Visibility = Visibility.Visible; //Thread issues ...
             }
             else
             {
