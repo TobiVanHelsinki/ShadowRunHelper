@@ -287,7 +287,11 @@ namespace ShadowRunHelper
                     ViewModel.NewNotification(res.GetString("Notification_Error_DelFail"), ex);
                 }
             }
-            await ShowMessageDialog("TITLE", "Wirklich Löschen?", "Wirklich Löschen", "Ach nein doch nicht", Delete);
+            await ShowMessageDialog(CrossPlatformHelper.GetString("Request_Delete/Title")
+    , CrossPlatformHelper.GetString("Request_Delete/Text")
+    , CrossPlatformHelper.GetString("Request_Delete/Yes")
+    , CrossPlatformHelper.GetString("Request_Delete/No")
+    , Delete);
             await Summorys_Aktualisieren();
             SettingsModel.I.CountDeletions++;
         }
@@ -345,7 +349,12 @@ namespace ShadowRunHelper
                 ChangeProgress(false);
                 await Summorys_Aktualisieren();
             }
-            await ShowMessageDialog("TITLE", "Damit zerstörst du die Existenz von ... JEDEM!, Chummer! Bist du sicher, dass du das machen willst?", "Wirklich Löschen", "Ach nein doch nicht", Delete_All);
+            
+            await ShowMessageDialog(CrossPlatformHelper.GetString("Request_DeleteAll/Title")
+                , CrossPlatformHelper.GetString("Request_DeleteAll/Text")
+                , CrossPlatformHelper.GetString("Request_DeleteAll/Yes")
+                , CrossPlatformHelper.GetString("Request_DeleteAll/No")
+                , Delete_All);
         }
 
         void Click_Löschen_CurrentChar(object sender, RoutedEventArgs e)

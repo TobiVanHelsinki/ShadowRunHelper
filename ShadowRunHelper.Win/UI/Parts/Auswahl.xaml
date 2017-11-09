@@ -7,8 +7,7 @@
     xmlns:local="using:ShadowRunHelper"
     xmlns:bigmodel="using:ShadowRunHelper.Model"
     mc:Ignorable="d"
-    Title="Auswahl"
-    PrimaryButtonText="Fertig"  
+    x:Uid="AuswahlDialog"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     >
     <ContentDialog.Resources>

@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Title="{x:Bind Data.Alias, Mode=TwoWay}"
-    PrimaryButtonText="Fertig"  
+    x:Uid="EditDialog"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     >
     <ContentDialog.Resources>

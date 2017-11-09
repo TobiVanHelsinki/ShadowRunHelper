@@ -33,14 +33,14 @@
             <Run Text="{x:Bind RelativMaxStateCount}"/>
         </TextBlock>
         <TextBlock Grid.ColumnSpan="3" x:Name="TutorialText" Grid.Row="1" TextWrapping="Wrap" Padding="0,5,0,15"/>
-        <Button  Click="BtnPrev_Click" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" x:Uid="Back" Grid.Row="2">
+        <Button Style="{StaticResource ButtonRevealStyle}" Click="BtnPrev_Click" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" x:Uid="Back" Grid.Row="2">
             <Button.Projection>
                 <PlaneProjection RotationZ="180"/>
             </Button.Projection>
         </Button>
-        <Button Click="BtnNext_Click" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" Grid.Row="2" Grid.Column="2"/>
-        <Button Click="BtnExit_Click" Content="&#xE711;" FontFamily="Segoe MDL2 Assets" Grid.Row="0" Grid.Column="2"/>
-        <Button Click="BtnHide_Click" Content="&#xE890;" FontFamily="Segoe MDL2 Assets" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
+        <Button Style="{StaticResource ButtonRevealStyle}" Click="BtnNext_Click" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" Grid.Row="2" Grid.Column="2"/>
+        <Button Style="{StaticResource ButtonRevealStyle}" Click="BtnExit_Click" Content="&#xE711;" FontFamily="Segoe MDL2 Assets" Grid.Row="0" Grid.Column="2"/>
+        <Button Style="{StaticResource ButtonRevealStyle}" Click="BtnHide_Click" Content="&#xE890;" FontFamily="Segoe MDL2 Assets" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
 
     </Grid>
 </ContentDialog>
