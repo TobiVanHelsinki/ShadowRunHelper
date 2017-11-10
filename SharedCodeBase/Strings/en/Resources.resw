@@ -411,9 +411,6 @@ This app can be used to open files and folders on the file system. The app store
   <data name="UI_Statistics_Savings.Text" xml:space="preserve">
     <value>Number of saved chars</value>
   </data>
-  <data name="Ui_DB_Nav.Text" xml:space="preserve">
-    <value>Database</value>
-  </data>
   <data name="Ui_DB_Finish.Label" xml:space="preserve">
     <value>Copy</value>
   </data>
@@ -1119,9 +1116,6 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Tradition_Initiation_Schutzpatron.Text" xml:space="preserve">
     <value>Totem</value>
   </data>
-  <data name="UI_Char_Btn_Speichern.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
   <data name="AuswahlDialog.PrimaryButtonText" xml:space="preserve">
     <value>Finish</value>
   </data>
@@ -1151,5 +1145,11 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   </data>
   <data name="Request_DeleteAll.Yes" xml:space="preserve">
     <value>Really delete!</value>
+  </data>
+  <data name="Ui_DB_Nav.Label" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="UI_Char_Btn_Speichern.Label" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>

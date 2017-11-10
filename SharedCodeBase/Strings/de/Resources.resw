@@ -158,7 +158,7 @@
     <comment>Einzahl</comment>
   </data>
   <data name="Model_Connection_Loyal.Text" xml:space="preserve">
-    <value>Loyalitaet</value>
+    <value>Loyalität</value>
   </data>
   <data name="Model_CyberDeckM_.Text" xml:space="preserve">
     <value>CyberDecks</value>
@@ -185,8 +185,8 @@
   <data name="Model_FernKampfwaffe_Modi.Text" xml:space="preserve">
     <value>Modi</value>
   </data>
-  <data name="Model_FernKampfwaffe_Rueckstoss.Text" xml:space="preserve">
-    <value>RK</value>
+  <data name="UI_Char_Btn_Speichern.Label" xml:space="preserve">
+    <value>Speichern</value>
   </data>
   <data name="Model_Fertigkeit_.Text" xml:space="preserve">
     <value>Fertigkeit</value>
@@ -211,7 +211,7 @@
     <value>Modifier</value>
   </data>
   <data name="Model_Handlung_Zusammensetzung.Text" xml:space="preserve">
-    <value>Wuerfeln mit:</value>
+    <value>Würfeln mit:</value>
   </data>
   <data name="Model_ItemM_.Text" xml:space="preserve">
     <value>Items</value>
@@ -403,7 +403,7 @@
     <comment>Einzahl</comment>
   </data>
   <data name="UI_Btn_Loeschen.Content" xml:space="preserve">
-    <value>Loeschen</value>
+    <value>Löschen</value>
   </data>
   <data name="Model_Waffe_SchadenTyp.Text" xml:space="preserve">
     <value>Schadenstyp (G/K)</value>
@@ -411,8 +411,8 @@
   <data name="Model_Kommlink_Attribute_o.Text" xml:space="preserve">
     <value>Attribute Orginal</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen.Label" xml:space="preserve">
-    <value>Alle Chars Loeschen</value>
+  <data name="Ui_DB_Nav.Label" xml:space="preserve">
+    <value>Datenbank</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Datei_Import.Label" xml:space="preserve">
     <value>Char Import</value>
@@ -423,8 +423,8 @@
   <data name="UI_CharVerwaltung_Btn_Laden.Label" xml:space="preserve">
     <value>Laden</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Loeschen.Label" xml:space="preserve">
-    <value>Loeschen</value>
+  <data name="Model_Stroemung_Wandlung_Echos.Text" xml:space="preserve">
+    <value>Echos</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Neu.Label" xml:space="preserve">
     <value>Neuen Char erstellen</value>
@@ -459,8 +459,8 @@
   <data name="Model_Person_Geschlecht.Text" xml:space="preserve">
     <value>Geschlecht</value>
   </data>
-  <data name="Model_Person_Groesse.Text" xml:space="preserve">
-    <value>Groesse</value>
+  <data name="Model_Stroemung_Wandlung_.Text" xml:space="preserve">
+    <value>Strömung/Wandlung</value>
   </data>
   <data name="Model_Person_Gewicht.Text" xml:space="preserve">
     <value>Gewicht</value>
@@ -490,10 +490,10 @@
     <value>Edge Gesamt</value>
   </data>
   <data name="Model_Person_Schaden_K.Text" xml:space="preserve">
-    <value>KoerperSchaden</value>
+    <value>KörperSchaden</value>
   </data>
   <data name="Model_Person_Schaden_K_max.Text" xml:space="preserve">
-    <value>KoerperSchaden maximal</value>
+    <value>KörperSchaden maximal</value>
   </data>
   <data name="Model_Person_Schaden_G.Text" xml:space="preserve">
     <value>GeistSchaden</value>
@@ -513,10 +513,10 @@
     <comment>Mehrzahl</comment>
   </data>
   <data name="UI_Optionen_AutoSave_Header.Text" xml:space="preserve">
-    <value>Char bei aenderungen automatisch Speichern?</value>
+    <value>Char bei Änderungen automatisch Speichern?</value>
   </data>
-  <data name="Model__Kapazitaet.Text" xml:space="preserve">
-    <value>Kapazitaet</value>
+  <data name="Model_Stroemung_WandlungM_.Text" xml:space="preserve">
+    <value>Strömungen/Wandlungen</value>
   </data>
   <data name="UI_Optionen_LoadOnStart_Header.Text" xml:space="preserve">
     <value>Zuletzt verwendeten Char beim Starten der App automatisch laden?</value>
@@ -527,8 +527,8 @@
   <data name="UI_Char_Schaden_Geist.Text" xml:space="preserve">
     <value>Geistig</value>
   </data>
-  <data name="UI_Char_Schaden_Koerper.Text" xml:space="preserve">
-    <value>Koerper</value>
+  <data name="Model_Stroemung_Wandlung_Wert.Text" xml:space="preserve">
+    <value>Grad</value>
   </data>
   <data name="UI_Char_Schaden_Matrix.Text" xml:space="preserve">
     <value>Matrix</value>
@@ -573,14 +573,14 @@
     <value>Diese App im Store Bewerten</value>
   </data>
   <data name="UI_Optionen_Datenschutz.Text" xml:space="preserve">
-    <value>Diese App sammelt keine persoenlichen Daten und gibt sie deswegen auch nicht weiter.
-Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. Die App speichert diese Ordner und Dateien nur zur spaeteren Verwendung. Alle Dateien verbleiben auf dem Dateisystem oder im Microsoft Account.</value>
+    <value>Diese App sammelt keine persönlichen Daten und gibt sie deswegen auch nicht weiter.
+Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. Die App speichert diese Ordner und Dateien nur zur späteren Verwendung. Alle Dateien verbleiben auf dem Dateisystem oder im Microsoft Account.</value>
   </data>
   <data name="UI_Optionen_KontaktBtn.Content" xml:space="preserve">
     <value>E-Mail Schreiben</value>
   </data>
   <data name="UI_Optionen_U_Datenschutz.Text" xml:space="preserve">
-    <value>Datenschutzerklaerung</value>
+    <value>Datenschutzerklärung</value>
   </data>
   <data name="Model_Attribut_Charisma.Text" xml:space="preserve">
     <value>Charisma</value>
@@ -598,7 +598,7 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Geistiges Limit</value>
   </data>
   <data name="Model_Attribut_Limit_K.Text" xml:space="preserve">
-    <value>Koerperliches limit</value>
+    <value>Körperliches limit</value>
   </data>
   <data name="Model_Attribut_Limit_S.Text" xml:space="preserve">
     <value>Soziales Limit</value>
@@ -610,7 +610,7 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Reaktion</value>
   </data>
   <data name="Model_Attribut_Staerke.Text" xml:space="preserve">
-    <value>Staerke</value>
+    <value>Stärke</value>
   </data>
   <data name="Model_Attribut_Willen.Text" xml:space="preserve">
     <value>Willenskraft</value>
@@ -645,14 +645,14 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
   <data name="Model_Eigenschaft_Auswirkungen.Text" xml:space="preserve">
     <value>Auswirkungen</value>
   </data>
-  <data name="Model_Implantat_Kapazitaet.Text" xml:space="preserve">
-    <value>Kapazitaet</value>
+  <data name="Model_Stroemung_Wandlung_Paragon.Text" xml:space="preserve">
+    <value>Paragon</value>
   </data>
-  <data name="Model_Panzerung_Kapazitaet.Text" xml:space="preserve">
-    <value>Kapazitaet</value>
+  <data name="Model_Zaubersprueche_Entzug.Text" xml:space="preserve">
+    <value>Entzug</value>
   </data>
-  <data name="Model_Waffe_Praezision.Text" xml:space="preserve">
-    <value>Praezision</value>
+  <data name="UI_Char_Schaden_Koerper.Text" xml:space="preserve">
+    <value>Körper</value>
   </data>
   <data name="Model_CyberDeck__Aktiv.Text" xml:space="preserve">
     <value>Aktives Deck</value>
@@ -688,7 +688,7 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Ja</value>
   </data>
   <data name="UI_Optionen_EditAfterAdd_Header.Text" xml:space="preserve">
-    <value>Bearbeiten nach Hinzufuegen</value>
+    <value>Bearbeiten nach Hinzufügen</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_CSV_Export.Label" xml:space="preserve">
     <value>CSV Export</value>
@@ -703,13 +703,13 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>CSV Importfehler</value>
   </data>
   <data name="Notification_Error_DelAllFail" xml:space="preserve">
-    <value>Alle Loeschen fehlgeschlagen</value>
+    <value>Alle Löschen fehlgeschlagen</value>
   </data>
   <data name="Notification_Error_DelCurrentFail" xml:space="preserve">
-    <value>Loeschen des aktuellen Char fehlgeschlagen</value>
+    <value>Löschen des aktuellen Char fehlgeschlagen</value>
   </data>
   <data name="Notification_Error_DelFail" xml:space="preserve">
-    <value>Loeschen fehlgeschlagen</value>
+    <value>Löschen fehlgeschlagen</value>
   </data>
   <data name="Notification_Error_FileExportFail" xml:space="preserve">
     <value>Konnte nicht Exportieren</value>
@@ -733,13 +733,13 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Einstellungen</value>
   </data>
   <data name="Notification_Error_Converter_Error1.Text" xml:space="preserve">
-    <value>konnte nicht uebernommen werden.</value>
+    <value>konnte nicht übernommen werden.</value>
   </data>
   <data name="Notification_Error_DisplayRequest.Text" xml:space="preserve">
     <value>Display kann nicht automatisch aktiviert bleiben.</value>
   </data>
   <data name="Notification_Error_Loader_Error1.Text" xml:space="preserve">
-    <value>Es gab einen Fehler beim Laden, Hier weitere Informationen: ueberpruefe bitte deinen Char.</value>
+    <value>Es gab einen Fehler beim Laden, Hier weitere Informationen: Überprüfe bitte deinen Char.</value>
   </data>
   <data name="UI_Optionen_DisplayRequest_Header.Text" xml:space="preserve">
     <value>Char Display immer aktiv halten</value>
@@ -763,7 +763,7 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Magie</value>
   </data>
   <data name="Model_Adeptenkraft_KomplexeFormM_.Text" xml:space="preserve">
-    <value>Adeptenkraefte/Komplexe Formen</value>
+    <value>Adeptenkräfte/Komplexe Formen</value>
   </data>
   <data name="Model_Adeptenkraft_KomplexeForm_.Text" xml:space="preserve">
     <value>Adeptenkraft/Komplexe Form</value>
@@ -802,28 +802,28 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Schlechter Ruf</value>
   </data>
   <data name="Model_Person_Strassenruf.Text" xml:space="preserve">
-    <value>Strassenruf</value>
+    <value>Straßenruf</value>
   </data>
   <data name="Model_Person_StrassenrufMod.Text" xml:space="preserve">
-    <value>Strassenruf Mod</value>
+    <value>Straßenruf Mod</value>
   </data>
-  <data name="Model_Stroemung_WandlungM_.Text" xml:space="preserve">
-    <value>Stroemungen/Wandlungen</value>
+  <data name="Model_Zaubersprueche_Reichweite.Text" xml:space="preserve">
+    <value>Reichweite</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_.Text" xml:space="preserve">
-    <value>Stroemung/Wandlung</value>
+  <data name="Model_Zaubersprueche_Dauer.Text" xml:space="preserve">
+    <value>Dauer</value>
+  </data>
+  <data name="Model_Zaubersprueche_.Text" xml:space="preserve">
+    <value>Zauberspruch</value>
+  </data>
+  <data name="Model_ZauberspruecheM_.Text" xml:space="preserve">
+    <value>Zaubersprüche</value>
+  </data>
+  <data name="Model_Waffe_Praezision.Text" xml:space="preserve">
+    <value>Präzision</value>
   </data>
   <data name="Model_Stroemung_Wandlung_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
-  </data>
-  <data name="Model_Stroemung_Wandlung_Echos.Text" xml:space="preserve">
-    <value>Echos</value>
-  </data>
-  <data name="Model_Stroemung_Wandlung_Paragon.Text" xml:space="preserve">
-    <value>Paragon</value>
-  </data>
-  <data name="Model_Stroemung_Wandlung_Wert.Text" xml:space="preserve">
-    <value>Grad</value>
   </data>
   <data name="Model_Tradition_InitiationM_.Text" xml:space="preserve">
     <value>Traditionen/Initiationen</value>
@@ -843,20 +843,20 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
   <data name="Model_Tradition_Initiation_Wert.Text" xml:space="preserve">
     <value>Grad</value>
   </data>
-  <data name="Model_ZauberspruecheM_.Text" xml:space="preserve">
-    <value>Zaubersprueche</value>
+  <data name="Model_Panzerung_Kapazitaet.Text" xml:space="preserve">
+    <value>Kapazität</value>
   </data>
-  <data name="Model_Zaubersprueche_.Text" xml:space="preserve">
-    <value>Zauberspruch</value>
+  <data name="Model_Person_Groesse.Text" xml:space="preserve">
+    <value>Größe</value>
   </data>
-  <data name="Model_Zaubersprueche_Dauer.Text" xml:space="preserve">
-    <value>Dauer</value>
+  <data name="Model_Implantat_Kapazitaet.Text" xml:space="preserve">
+    <value>Kapazität</value>
   </data>
-  <data name="Model_Zaubersprueche_Entzug.Text" xml:space="preserve">
-    <value>Entzug</value>
+  <data name="Model_FernKampfwaffe_Rueckstoss.Text" xml:space="preserve">
+    <value>RK</value>
   </data>
-  <data name="Model_Zaubersprueche_Reichweite.Text" xml:space="preserve">
-    <value>Reichweite</value>
+  <data name="Model__Kapazitaet.Text" xml:space="preserve">
+    <value>Kapazität</value>
   </data>
   <data name="UI_Optionen_Version.Text" xml:space="preserve">
     <value>Version</value>
@@ -889,7 +889,7 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Fehler beim Verzeichnis einlesen</value>
   </data>
   <data name="Notification_Error_AuswahlToLess" xml:space="preserve">
-    <value>Fehler: Einige der verknuepften Dinge wurden nicht gefunden.</value>
+    <value>Fehler: Einige der verknüpften Dinge wurden nicht gefunden.</value>
   </data>
   <data name="Notification_Error_AllListChooser" xml:space="preserve">
     <value>Interner Fehler, AllList war leer</value>
@@ -917,7 +917,7 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Dateiname mit Fortschritt versehen</value>
   </data>
   <data name="Notification_Info_ConvertFromPrevious" xml:space="preserve">
-    <value>Diese Datei ist eine alte Version, sie wird nun in das aktuelleste Format konvertiert. Dadurch kann sie womoeglich nicht oder nicht mit dem gesamten Funktionsumfang in frueheren Versionen des Programms geoeffnet werden. Die Aktuelle Version des Programms steht in den Einstellungen. Sollte die Umwandlung nicht erwuenscht sein, speichere den Char einfach nicht.</value>
+    <value>Diese Datei ist eine alte Version, sie wird nun in das aktuelleste Format konvertiert. Dadurch kann sie womöglich nicht oder nicht mit dem gesamten Funktionsumfang in früheren Versionen des Programms geöffnet werden. Die Aktuelle Version des Programms steht in den Einstellungen. Sollte die Umwandlung nicht erwünscht sein, speichere den Char einfach nicht.</value>
   </data>
   <data name="UI_Optionen_Kontakt_Mail.Text" xml:space="preserve">
     <value>eMail</value>
@@ -944,7 +944,7 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>App</value>
   </data>
   <data name="UI_Optionen_AppLinkBtn.Content" xml:space="preserve">
-    <value>Diese App im Store oeffnen</value>
+    <value>Diese App im Store öffnen</value>
   </data>
   <data name="UI_Optionen_MoreAppsBtn.Content" xml:space="preserve">
     <value>Mehr Apps von mir</value>
@@ -953,7 +953,7 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Diese App im Store Bewerten</value>
   </data>
   <data name="Help1" xml:space="preserve">
-    <value>Items (u.a. Waffen, CyberDecks, normale Items) koennen "aktiv" sein. Das bedeutet, dass sie bei automatischen Berechnungen beruecksichtigt werden. So kann beispielsweise eine "Schiessen"-Handlung als Limit-Wert die Praezision der aktiven Waffe verlinkt bekommen. Wird die aktive Waffe geaendert, aendern sich die davon abhaengigen Werte automatisch.</value>
+    <value>Items (u.a. Waffen, CyberDecks, normale Items) können "aktiv" sein. Das bedeutet, dass sie bei automatischen Berechnungen berücksichtigt werden. So kann beispielsweise eine "Schießen"-Handlung als Limit-Wert die Präzision der aktiven Waffe verlinkt bekommen. Wird die aktive Waffe geändert, ändern sich die davon abhängigen Werte automatisch.</value>
   </data>
   <data name="Help1_ActiveItems" xml:space="preserve">
     <value>Aktive Items</value>
@@ -965,19 +965,19 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Automatische Berechnungen</value>
   </data>
   <data name="Help3" xml:space="preserve">
-    <value>Fuer Handlungen und Fertigkeiten koennen alle anderen Dinge verlinkt werden. Bei einer Handlung koennen so ihr Wuerfelpool fuer die Probe, die Gegenprobe oder das Limit automatisch aus anderen Werten berechnet werden. aendern sich die verlinkten Werte, aendern sich davon abhaengige Werte automatisch. Kategorien wie Waffen, Panzerung, Vehikel, Kommlinks und Decks koennen nicht einzeln gewaehlt werden, dafuer kann jede Eigenschaft einzeln gewaehlt werden. Siehe dazu "Aktive Items".</value>
+    <value>Für Handlungen und Fertigkeiten können alle anderen Dinge verlinkt werden. Bei einer Handlung können so ihr Würfelpool für die Probe, die Gegenprobe oder das Limit automatisch aus anderen Werten berechnet werden. Ändern sich die verlinkten Werte, ändern sich davon abhängige Werte automatisch. Kategorien wie Waffen, Panzerung, Vehikel, Kommlinks und Decks können nicht einzeln gewählt werden, dafür kann jede Eigenschaft einzeln gewählt werden. Siehe dazu "Aktive Items".</value>
   </data>
   <data name="Help3_LinkedItems" xml:space="preserve">
-    <value>Verlinkte Eintraege</value>
+    <value>Verlinkte Einträge</value>
   </data>
   <data name="Help4" xml:space="preserve">
-    <value>Mit dieser App koennen mehrere ShadowRun Chars verwaltet werden. Alle gespeicherten Chars werden in der Liste angezeigt. Diese Liste ist im Standardfall ein interner Ordner, es kann aber jeder beliebige Ordner gewaehlt werden. In den Optionen gibt es verschiedene Einstellungen dafuer.</value>
+    <value>Mit dieser App können mehrere ShadowRun Chars verwaltet werden. Alle gespeicherten Chars werden in der Liste angezeigt. Diese Liste ist im Standardfall ein interner Ordner, es kann aber jeder beliebige Ordner gewählt werden. In den Optionen gibt es verschiedene Einstellungen dafür.</value>
   </data>
   <data name="Help4_CharAdministration" xml:space="preserve">
     <value>Char Verwaltung</value>
   </data>
   <data name="Help5" xml:space="preserve">
-    <value>Beim Speichern eines Chars gibt es zwei Optionen. Standardmaessig wird der Dateiname zum Speichern verwendet, mit dem der Char geladen wird. Wird die Option "Fortschritt" gewaehlt, werden die Anzahl Runs und Karma dem Dateinamen hinzugefuegt - damit ist eine Versionierung moeglich. Ausserdem kann mit der Option "Zeit" die genaue Zeit mit in den Dateinamen geschrieben werden.</value>
+    <value>Beim Speichern eines Chars gibt es zwei Optionen. Standardmäßig wird der Dateiname zum Speichern verwendet, mit dem der Char geladen wird. Wird die Option "Fortschritt" gewählt, werden die Anzahl Runs und Karma dem Dateinamen hinzugefügt - damit ist eine Versionierung möglich. Außerdem kann mit der Option "Zeit" die genaue Zeit mit in den Dateinamen geschrieben werden.</value>
   </data>
   <data name="Help5_CharAdministration_FileName" xml:space="preserve">
     <value>Char Verwaltung - Dateinamen</value>
@@ -986,10 +986,10 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Damit verhinderst du, dass dein Bildschirm ausgeht, wenn du einen Char offen hast.</value>
   </data>
   <data name="UI_Optionen_Intern_Sync_Tip.Text" xml:space="preserve">
-    <value>Damit werden die Dateien, die du intern speicherst, ueber alle deine Windows10 Geraete synchronisiert. Die Synchronisation erfolgt nur, wenn du die Option generell aktiviert hast, sowie beide Geraete ueber ausreichend Strom und Internet verfuegen.</value>
+    <value>Damit werden die Dateien, die du intern speicherst, über alle deine Windows10 Geräte synchronisiert. Die Synchronisation erfolgt nur, wenn du die Option generell aktiviert hast, sowie beide Geräte über ausreichend Strom und Internet verfügen.</value>
   </data>
   <data name="UI_Optionen_Ordnermode_Tip.Text" xml:space="preserve">
-    <value>Waehle einen exernen Speicherordner aus.</value>
+    <value>Wähle einen exernen Speicherordner aus.</value>
   </data>
   <data name="UI_Optionen_U_Einstellungen_Tip.Text" xml:space="preserve">
     <value>Halte mit der Maus oder dem Finger auf einen Namen, um mehr Informationen zu erhalten.</value>
@@ -998,10 +998,10 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Datei konnte nicht gelesen werden.</value>
   </data>
   <data name="UI_Optionen_AutoSaveInterval_Header.Text" xml:space="preserve">
-    <value>Wartezeit fuer aenderungen in Sekunden</value>
+    <value>Wartezeit für Änderungen in Sekunden</value>
   </data>
   <data name="UI_Optionen_AutoSave_Tip.Text" xml:space="preserve">
-    <value>Nach einer aenderung wird die angegebene Zeit gewartet, bis dein Char gespeichert wird. Wenn du schnell und viel aenderst, dann gib besser einen groesseren Wert an. Wenn du die App schliesst, wird dies nicht fuer eine Automatische Speicherung sorgen. Ein Wert zwischen 2 und 10 Sekunden ist okay.</value>
+    <value>Nach einer Änderung wird die angegebene Zeit gewartet, bis dein Char gespeichert wird. Wenn du schnell und viel änderst, dann gib besser einen größeren Wert an. Wenn du die App schließt, wird dies nicht für eine Automatische Speicherung sorgen. Ein Wert zwischen 2 und 10 Sekunden ist okay.</value>
   </data>
   <data name="Model_Person_Initiative_Kurz.Text" xml:space="preserve">
     <value>Ini</value>
@@ -1010,13 +1010,13 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>&amp;</value>
   </data>
   <data name="UI_CharVerwaltung_E_FileDate.Text" xml:space="preserve">
-    <value>aenderungsdatum</value>
+    <value>Änderungsdatum</value>
   </data>
   <data name="UI_CharVerwaltung_E_FileName.Text" xml:space="preserve">
     <value>Dateiname</value>
   </data>
   <data name="UI_CharVerwaltung_E_FileSize.Text" xml:space="preserve">
-    <value>Dateigroesse</value>
+    <value>Dateigröße</value>
   </data>
   <data name="EditDialog.PrimaryButtonText" xml:space="preserve">
     <value>Fertig</value>
@@ -1043,7 +1043,7 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Charaktere erstellt</value>
   </data>
   <data name="UI_Statistics_Deletions.Text" xml:space="preserve">
-    <value>Charaktere geloescht</value>
+    <value>Charaktere gelöscht</value>
   </data>
   <data name="UI_Statistics_Loadings.Text" xml:space="preserve">
     <value>Charaktere geladen</value>
@@ -1051,8 +1051,8 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
   <data name="UI_Statistics_Savings.Text" xml:space="preserve">
     <value>Charaktere gespeichert</value>
   </data>
-  <data name="Ui_DB_Nav.Text" xml:space="preserve">
-    <value>Datenbank</value>
+  <data name="UI_CharVerwaltung_Btn_Loeschen.Label" xml:space="preserve">
+    <value>Löschen</value>
   </data>
   <data name="Model_Vehikel_Wert.Text" xml:space="preserve">
     <value>Schaden</value>
@@ -1067,7 +1067,7 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
     <value>Hilfe an/aus</value>
   </data>
   <data name="HelpDBIntro.Text" xml:space="preserve">
-    <value>In dieser Datenbank findest du vorgefertigte Eintraege. Klicke auf einen Eintrag, um ihn auszuwaehlen. Mit den Befehlen unten kannst du diese Auswahl dann in deinen aktuellen Charakter uebernehmen. Solltest du bereits einen Eintrag mit dem selben Namen in der selben Kategorie besitzen, wird dein Eintrag nicht ueberschrieben. Fuer Datenbankeintraege mit Verknuepfungen zu anderen Eintraegen wird versucht, deine Eintraege zu verknuepfen. Falls das misslingt, wird auch der verknuepfte Eintrag kopiert.</value>
+    <value>In dieser Datenbank findest du vorgefertigte Einträge. Klicke auf einen Eintrag, um ihn auszuwählen. Mit den Befehlen unten kannst du diese Auswahl dann in deinen aktuellen Charakter übernehmen. Solltest du bereits einen Eintrag mit dem selben Namen in der selben Kategorie besitzen, wird dein Eintrag nicht überschrieben. Für Datenbankeinträge mit Verknüpfungen zu anderen Einträgen wird versucht, deine Einträge zu verknüpfen. Falls das misslingt, wird auch der verknüpfte Eintrag kopiert.</value>
   </data>
   <data name="of.Text" xml:space="preserve">
     <value>von</value>
@@ -1077,65 +1077,65 @@ Mit dieser App koennen Dateien und Ordner auf dem Dateisystem geoeffnet werden. 
   </data>
   <data name="Tut_State_00" xml:space="preserve">
     <value>Willkommen in der ShadowRunHelper App!
-In dieser Einfuehrung wird gezeigt, wie ShadowRun Chars in dieser App erstellt und verwaltet werden. Mit den Pfeiltasten kannst du durch die Einfuehrung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem spaeteren Zeitpunkt noch einmal betrachten willst. 
-In jedem Schritt werden die grade erklaerten Steuerelemente rot hervorgehoben. Auf kleinen Bildschirmen verdeckt das Tutorial leider den Bildschirm. Der Button mit dem Auge macht das tutorial Fenster durchsichtig.</value>
+In dieser Einführung wird gezeigt, wie ShadowRun Chars in dieser App erstellt und verwaltet werden. Mit den Pfeiltasten kannst du durch die Einführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst. 
+In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben. Auf kleinen Bildschirmen verdeckt das Tutorial leider den Bildschirm. Der Button mit dem Auge macht das tutorial Fenster durchsichtig.</value>
   </data>
   <data name="Tut_State_01" xml:space="preserve">
-    <value>Beginnen wir mit der Navigationsleiste. Diese 3 Buttons begleiten dich durch die gesamte App. Der erste fuehrt dich zu der Seite, auf der ein Char spaeter dargestellt wird. Der Zweite bringt dich in das Chars Verwalten Menue, indem du dich gerade befindest. Der Dritte bringt dich in das Einstellungsmenue, dort findest du unteranderem auch den ganzen rechtlichen Kram.</value>
+    <value>Beginnen wir mit der Navigationsleiste. Diese 3 Buttons begleiten dich durch die gesamte App. Der erste führt dich zu der Seite, auf der ein Char später dargestellt wird. Der Zweite bringt dich in das Chars Verwalten Menü, indem du dich gerade befindest. Der Dritte bringt dich in das Einstellungsmenü, dort findest du unteranderem auch den ganzen rechtlichen Kram.</value>
   </data>
   <data name="Tut_State_02" xml:space="preserve">
-    <value>In der aktuellen Ansicht "Chars verwalten" gibt es zwei Symbolleisten. Beginnen wir mit der unteren. Mit dieser Verwaltest du alle deine Chars (ja, du kannst mit der App mehrere verwalten). Die Beschriftungen sollten selbsterklaerend sein. Nach dieser Einleitung beginnst du am besten mit "neuer Char erstellen" oder klickst auf den Beispielcharakter in der Liste.</value>
+    <value>In der aktuellen Ansicht "Chars verwalten" gibt es zwei Symbolleisten. Beginnen wir mit der unteren. Mit dieser Verwaltest du alle deine Chars (ja, du kannst mit der App mehrere verwalten). Die Beschriftungen sollten selbsterklärend sein. Nach dieser Einleitung beginnst du am besten mit "neuer Char erstellen" oder klickst auf den Beispielcharakter in der Liste.</value>
   </data>
   <data name="Tut_State_04" xml:space="preserve">
-    <value>Sobald du einen Char geladen oder erstellt hast, wird die obere Symbolleiste fuer dich interessant. Damit verwaltest du den zurzeit geladenen Char. Die Beschriftungen sind auch hier wieder sehr selbsterklaerend. Bitte beachte:
-a) "Loeschen" loescht deinen Char nur aus der App, nicht aber aus der Liste gespeicherter Chars
-b) "Reparieren" es sollte nicht vorkommen, aber manchmal ist es unvorhersehbar: die verknuepften Eintraege aktualisieren sich nicht mehr automatisch. Dann kann diese Funktion helfen. Vielleicht. Wenn nicht oder wenn du sonst irgendwelche Probleme hast, scheue nicht, mich zu kontaktieren (Kontakt im Einstellungsmenue).</value>
+    <value>Sobald du einen Char geladen oder erstellt hast, wird die obere Symbolleiste für dich interessant. Damit verwaltest du den zurzeit geladenen Char. Die Beschriftungen sind auch hier wieder sehr selbsterklärend. Bitte beachte:
+a) "Löschen" löscht deinen Char nur aus der App, nicht aber aus der Liste gespeicherter Chars
+b) "Reparieren" es sollte nicht vorkommen, aber manchmal ist es unvorhersehbar: die verknüpften Einträge aktualisieren sich nicht mehr automatisch. Dann kann diese Funktion helfen. Vielleicht. Wenn nicht oder wenn du sonst irgendwelche Probleme hast, scheue nicht, mich zu kontaktieren (Kontakt im Einstellungsmenü).</value>
   </data>
   <data name="Tut_State_05" xml:space="preserve">
     <value>Das war's mit dem ersten Tutorial. Erstelle jetzt deinen Charakter oder schau dir den Beispielcharakter an.</value>
   </data>
   <data name="Tut_State_10" xml:space="preserve">
-    <value>Klickst du auf einen Char in dieser Leiste, wird sein Eintrag aufgeklappt und du erhaeltst Moeglichkeiten, ihn zu verwalten.</value>
+    <value>Klickst du auf einen Char in dieser Leiste, wird sein Eintrag aufgeklappt und du erhältst Möglichkeiten, ihn zu verwalten.</value>
   </data>
   <data name="Tut_State_20" xml:space="preserve">
     <value>Willkommen in deinem ersten Char!
-In dieser Einfuehrung wird gezeigt, wie die Char Ansicht funktioniert. Mit den Pfeiltasten kannst du durch die Einfuehrung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem spaeteren Zeitpunkt noch einmal betrachten willst. Auf kleinen Bildschirmen verdeckt das Tutorial leider den Bildschirm. Der Button mit dem Auge macht das tutorial Fenster durchsichtig.</value>
+In dieser Einführung wird gezeigt, wie die Char Ansicht funktioniert. Mit den Pfeiltasten kannst du durch die Einführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst. Auf kleinen Bildschirmen verdeckt das Tutorial leider den Bildschirm. Der Button mit dem Auge macht das tutorial Fenster durchsichtig.</value>
   </data>
   <data name="Tut_State_03" xml:space="preserve">
-    <value>Diese Liste zeigt alle deine gespeicherten Charaktere an. Standardmaessig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswaehlen, ob sie ueber deinen Account synchronisieren werden sollen. Im Prinzip sind die Chars in der Liste alles nur Dateien in einem Ordner, daher kannst du in den Optionen auch einen anderen Ordner als Speicherort waehlen.</value>
+    <value>Diese Liste zeigt alle deine gespeicherten Charaktere an. Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswählen, ob sie über deinen Account synchronisieren werden sollen. Im Prinzip sind die Chars in der Liste alles nur Dateien in einem Ordner, daher kannst du in den Optionen auch einen anderen Ordner als Speicherort wählen.</value>
   </data>
   <data name="Tut_State_21" xml:space="preserve">
-    <value>Diese Leiste ganz oben ist dir bestimmt schon aufgefallen. Sie ist in der ganzen App praesent und zeigt dir, welchen Charakter du gerade offen hast, sowie seine wichtigsten Werte z.B. Geld, Karma oder den aktuellen Schaden (Geistig, Koerperlich, Matrixschaden am Deck). Mit einem Klick auf die dunkleren Schaltflaechen kannst du die Werte bearbeiten.</value>
+    <value>Diese Leiste ganz oben ist dir bestimmt schon aufgefallen. Sie ist in der ganzen App präsent und zeigt dir, welchen Charakter du gerade offen hast, sowie seine wichtigsten Werte z.B. Geld, Karma oder den aktuellen Schaden (Geistig, Körperlich, Matrixschaden am Deck). Mit einem Klick auf die dunkleren Schaltflächen kannst du die Werte bearbeiten.</value>
   </data>
   <data name="Tut_State_22" xml:space="preserve">
     <value>Mit diesen Symbolen kannst du zwischen verschiedenen Tabs auf dieser Seite navigieren.</value>
   </data>
   <data name="Tut_State_23" xml:space="preserve">
-    <value>Im Hauptbereich der Seite findest du alle Eintraege eines Chars, gruppiert nach Kategorien. Z.B. haben wir hier die Kategorie "Handlungen", mit allen Handlungen, die dein Char ausfuehren kann. ueber den Plus Button kannst du einen neuen Eintrag hinzufuegen. Wenn du einen Eintrag auswaehlst, erhaeltst du mehr Informationen, sowie die Moeglichkeiten, ihn zu bearbeiten.</value>
+    <value>Im Hauptbereich der Seite findest du alle Einträge eines Chars, gruppiert nach Kategorien. Z.B. haben wir hier die Kategorie "Handlungen", mit allen Handlungen, die dein Char ausführen kann. Über den Plus Button kannst du einen neuen Eintrag hinzufügen. Wenn du einen Eintrag auswählst, erhältst du mehr Informationen, sowie die Möglichkeiten, ihn zu bearbeiten.</value>
   </data>
   <data name="Tut_State_30" xml:space="preserve">
-    <value>Handlungen sind das Herzstueck deine Chars und dieser App. Eine Handlung besitzt die 3 Eigenschaften "Wert", "Limit" und "Wehren". 
-Wert: Wuerfelpool beim Ausfuehren der Aktion
-Limit: Das Limit fuer zaehlende Erfolge
-Wehren: Fuehrt eine andere Person diese Handlung gegen dich aus, ist das dein Pool um dich zu wehren.
-Fuer diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusammenrechnest, sondern du hinterlegst die anderen Eintraege, aus denen sich die Werte berechnen.</value>
+    <value>Handlungen sind das Herzstück deine Chars und dieser App. Eine Handlung besitzt die 3 Eigenschaften "Wert", "Limit" und "Wehren". 
+Wert: Würfelpool beim Ausführen der Aktion
+Limit: Das Limit für zählende Erfolge
+Wehren: Führt eine andere Person diese Handlung gegen dich aus, ist das dein Pool um dich zu wehren.
+Für diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusammenrechnest, sondern du hinterlegst die anderen Einträge, aus denen sich die Werte berechnen.</value>
   </data>
   <data name="Tut_State_31" xml:space="preserve">
-    <value>Klickst du auf Bearbeiten, so wird dir eine Liste von Eintraege angezeigt. Diese Liste enthaelt aber noch mehr. 
+    <value>Klickst du auf Bearbeiten, so wird dir eine Liste von Einträge angezeigt. Diese Liste enthält aber noch mehr. 
 
-Ein Beispiel: Das Limit beim Abfeuern einer Waffe wird durch ihre Praezision bestimmt. Das heisst, bei Limit der Handlung Schiessen musst du "Praezision" auswaehlen. 
+Ein Beispiel: Das Limit beim Abfeuern einer Waffe wird durch ihre Präzision bestimmt. Das heißt, bei Limit der Handlung Schießen musst du "Präzision" auswählen. 
 
 Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst, ist in dieser Liste nur die aktuelle Waffe mit ihren verschiedenen Eigenschaften aufgelistet. 
-Dieses verhalten gilt fuer Kommlinks, CyberDecks, Waffen, Panzerungen und Vehikel. Aktiviert wird ein Gegenstand ueber das erste Haekchen in seinem Eintrag.</value>
+Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehikel. Aktiviert wird ein Gegenstand über das erste Häkchen in seinem Eintrag.</value>
   </data>
   <data name="Tut_TitelState_30" xml:space="preserve">
     <value>Handlungen</value>
   </data>
   <data name="Tut_TitleState_10" xml:space="preserve">
-    <value>Listeneintraege Einleitung</value>
+    <value>Listeneinträge Einleitung</value>
   </data>
   <data name="Tut_TitleState_20" xml:space="preserve">
-    <value>Einfuehrung Seite "Char"</value>
+    <value>Einführung Seite "Char"</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Speichern_Intern.Label" xml:space="preserve">
     <value>Intern Speichern</value>
@@ -1152,8 +1152,9 @@ Dieses verhalten gilt fuer Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   <data name="UI_Optionen_TutorialMainShown.Text" xml:space="preserve">
     <value>"Chars Verwalten"-Anleitung gelesen</value>
   </data>
-  <data name="UI_Char_Btn_Speichern.Text" xml:space="preserve">
-    <value>Speichern</value>
+  <data name="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen.Label" xml:space="preserve">
+    <value>Alle Chars Löschen
+</value>
   </data>
   <data name="AuswahlDialog.PrimaryButtonText" xml:space="preserve">
     <value>Fertig</value>
@@ -1165,24 +1166,24 @@ Dieses verhalten gilt fuer Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
     <value>Ach nein doch nicht ...</value>
   </data>
   <data name="Request_Delete.Text" xml:space="preserve">
-    <value>Wirklich Loeschen?</value>
+    <value>Wirklich Löschen?</value>
   </data>
   <data name="Request_Delete.Title" xml:space="preserve">
     <value>Nachfrage</value>
   </data>
   <data name="Request_Delete.Yes" xml:space="preserve">
-    <value>Wirklich Loeschen!</value>
+    <value>Wirklich Löschen!</value>
   </data>
   <data name="Request_DeleteAll.No" xml:space="preserve">
     <value>Ach nein doch nicht ...</value>
   </data>
   <data name="Request_DeleteAll.Text" xml:space="preserve">
-    <value>Damit zerstoerst du die Existenz von ... JEDEM!, Chummer! Bist du sicher, dass du das machen willst?</value>
+    <value>Damit zerstörst du die Existenz von ... JEDEM!, Chummer! Bist du sicher, dass du das machen willst?</value>
   </data>
   <data name="Request_DeleteAll.Title" xml:space="preserve">
     <value>Nachfrage</value>
   </data>
   <data name="Request_DeleteAll.Yes" xml:space="preserve">
-    <value>Wirklich Loeschen!</value>
+    <value>Wirklich Löschen!</value>
   </data>
 </root>

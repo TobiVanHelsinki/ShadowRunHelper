@@ -53,11 +53,9 @@ namespace ShadowRunHelper
             if (SettingsModel.I.BetaFeatures)
             {
                 FilterBoxPanel.Visibility = Visibility.Visible;
-                //DatabasePanel.Visibility = Visibility.Visible; //Thread issues ...
             }
             else
             {
-                DatabasePanel.Visibility = Visibility.Collapsed;
                 FilterBoxPanel.Visibility = Visibility.Collapsed;
             }
             ViewModel.TutorialStateChanged += TutorialStateChanged;
@@ -207,40 +205,7 @@ namespace ShadowRunHelper
 
         // Gui Handler Stuff ##################################################
 
-        void Click_Save(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                CurrentChar.SetSaveTimerTo();
-                //await CharHolderIO.SaveAtCurrentPlace(ViewModel.MainObject);
-            }
-            catch (Exception ex)
-            {
-                ViewModel.NewNotification(res.GetString("Notification_Error_SaveFail"), ex);
-            }
-            SettingsModel.I.CountSavings++;
-        }
-        async void OpenDB(object sender, RoutedEventArgs e)
-        {
-            if (AppModel.Instance.CurrentChar == null)
-            {
-                return;
-            }
-            CoreApplicationView newView = CoreApplication.CreateNewView();
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(DBPage), null);
-                Window.Current.Content = frame;
-                // You have to activate the window in order to show it later.
-                Window.Current.Activate();
 
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
-            
-        }
 
         void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

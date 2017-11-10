@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using TLIB.Model;
 using Windows.ApplicationModel.Core;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
 using Windows.UI;
 using Windows.UI.Core;
@@ -15,6 +16,7 @@ using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
@@ -23,9 +25,11 @@ namespace ShadowRunHelper
     public sealed partial class MainPage : Page
     {
         readonly AppModel Model = AppModel.Instance;
+        ResourceLoader res;
 
         public MainPage()
         {
+            res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
             Model.lstNotifications.CollectionChanged += (x, y) => ShowError();
             Model.TutorialStateChanged += TutorialStateChanged;
@@ -75,6 +79,16 @@ namespace ShadowRunHelper
             ChangeUI();
             ShowError();
             Model.SetDependencies(Dispatcher);
+
+            if (SettingsModel.I.BetaFeatures)
+            {
+                //Char_DB.Visibility = Visibility.Visible; //Thread issues ...
+            }
+            else
+            {
+                Char_DB.Visibility = Visibility.Collapsed;
+            }
+
             NavigationRequested(ProjectPages.Char);
         }
 
@@ -165,6 +179,27 @@ namespace ShadowRunHelper
 
         void ChangeUI(bool? bState = null)
         {
+            if (Model.CurrentChar != null)
+            {
+
+                Binding myBinding = new Binding()
+                {
+                    Source = Model.CurrentChar.HasChanges,
+                    Mode = BindingMode.OneWay
+                };
+                //Char_Save.IsEnabled = Model.CurrentChar?.HasChanges;
+                
+                Char_Save.SetBinding(AppBarButton.IsEnabledProperty, myBinding);
+
+                //BindingOperations.SetBinding(Char_Save, AppBarButton.IsEnabledProperty, myBinding);
+
+            }
+            else
+            {
+                Char_Save.IsEnabled = false;
+            }
+
+
             RefreshStatus();
             if (bState == null)
             {
@@ -175,7 +210,7 @@ namespace ShadowRunHelper
                 item.IsEnabled = (bool)bState;
             }
         }
-#region ButtonHandling
+#region Char-ButtonHandling
         void Plus_Click(object sender, RoutedEventArgs e)
         {
             if (Model.MainObject != null)
@@ -278,7 +313,46 @@ namespace ShadowRunHelper
             //    XAML_Header_Schaden_M_Slider.Foreground = new SolidColorBrush(Colors.Black);
             //}
         }
-#endregion
+
+        #endregion
+
+        #region ButtonHandling
+        void Click_Save(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Model.CurrentChar.SetSaveTimerTo();
+                //await CharHolderIO.SaveAtCurrentPlace(ViewModel.MainObject);
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(res.GetString("Notification_Error_SaveFail"), ex);
+            }
+            SettingsModel.I.CountSavings++; //TODO check if doubled
+        }
+        async void OpenDB(object sender, RoutedEventArgs e)
+        {
+            if (AppModel.Instance.CurrentChar == null)
+            {
+                return;
+            }
+            CoreApplicationView newView = CoreApplication.CreateNewView();
+            int newViewId = 0;
+            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Frame frame = new Frame();
+                frame.Navigate(typeof(DBPage), null);
+                Window.Current.Content = frame;
+                // You have to activate the window in order to show it later.
+                Window.Current.Activate();
+
+                newViewId = ApplicationView.GetForCurrentView().Id;
+            });
+            await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+
+        }
+
+        #endregion
         void CommandBar_Loaded(object sender, RoutedEventArgs e)
         {
             if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Controls.CommandBar", "DefaultLabelPosition"))
