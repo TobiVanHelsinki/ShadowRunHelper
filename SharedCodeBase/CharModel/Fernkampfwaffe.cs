@@ -5,15 +5,15 @@ namespace ShadowRunHelper.CharModel
 {
     public class Fernkampfwaffe : Waffe
     {
-        private double rückstoß = 0;
-        public double Rückstoß
+        private double rueckstoss = 0;
+        public double Rueckstoss
         {
-            get { return rückstoß; }
+            get { return rueckstoss; }
             set
             {
-                if (value != rückstoß)
+                if (value != rueckstoss)
                 {
-                    rückstoß = value;
+                    rueckstoss = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -46,14 +46,14 @@ namespace ShadowRunHelper.CharModel
             }
             base.Copy( target);
             Fernkampfwaffe TargetS = (Fernkampfwaffe)target;
-            TargetS.Rückstoß = Rückstoß;
+            TargetS.Rueckstoss = Rueckstoss;
             TargetS.Modi = Modi;
             return target;
         }
 
         public override void Reset()
         {
-            Rückstoß = 0;
+            Rueckstoss = 0;
             Modi = "";
             base.Reset();
         }
@@ -61,7 +61,7 @@ namespace ShadowRunHelper.CharModel
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
-            strReturn += Rückstoß;
+            strReturn += Rueckstoss;
             strReturn += Delimiter;
             strReturn += Modi;
             strReturn += Delimiter;
@@ -72,7 +72,7 @@ namespace ShadowRunHelper.CharModel
         public override string HeaderToCSV(string Delimiter)
         {
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Fernkampfwaffe_Rückstoß/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Fernkampfwaffe_Rueckstoss/Text");
             strReturn += Delimiter;
             strReturn += CrossPlatformHelper.GetString("Model_Fernkampfwaffe_Modi/Text");
             strReturn += Delimiter;
@@ -83,9 +83,9 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Fernkampfwaffe_Rückstoß/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Fernkampfwaffe_Rueckstoss/Text"))
                 {
-                    Rückstoß = double.Parse(item.Value);
+                    Rueckstoss = double.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == CrossPlatformHelper.GetString("Model_Fernkampfwaffe_Modi/Text"))

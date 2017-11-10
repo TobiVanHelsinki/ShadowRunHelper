@@ -92,14 +92,14 @@ namespace ShadowRunHelper.UI.Edit
                 case ThingDefs.Foki_Widgets:
                     EditType.ContentTemplate = Foki_Widgets;
                     break;
-                case ThingDefs.Strömung_Wandlung:
-                    EditType.ContentTemplate = Strömung_Wandlung;
+                case ThingDefs.Stroemung_Wandlung:
+                    EditType.ContentTemplate = Stroemung_Wandlung;
                     break;
                 case ThingDefs.Tradition_Initiation:
                     EditType.ContentTemplate = Tradition_Initiation;
                     break;
-                case ThingDefs.Zaubersprüche:
-                    EditType.ContentTemplate = Zaubersprüche;
+                case ThingDefs.Zaubersprueche:
+                    EditType.ContentTemplate = Zaubersprueche;
                     break;
                 default:
                     break;

@@ -18,7 +18,7 @@ namespace ShadowRunHelper.UI.Converter
             catch (Exception)
             {
             }
-            //TODO regionales datumsformat einführen
+            //TODO regionales datumsformat einfuehren
 
             return dateTemp.Date.ToString("dd.MM.yyyy");
         }

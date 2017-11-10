@@ -333,7 +333,7 @@ namespace ShadowRunHelper
 #region ApplyNewStyles
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.XamlCompositionBrushBase"))
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.AcrylicBrush"))
             {
                 try
                 {

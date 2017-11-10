@@ -143,17 +143,17 @@ namespace ShadowRunHelper
                     NewTemplate = Foki_WidgetsItem;
                     NewTemplateX = Foki_WidgetsItemX;
                     break;
-                case (int)ThingDefs.Strömung_Wandlung:
-                    NewTemplate = Strömung_WandlungItem;
-                    NewTemplateX = Strömung_WandlungItemX;
+                case (int)ThingDefs.Stroemung_Wandlung:
+                    NewTemplate = Stroemung_WandlungItem;
+                    NewTemplateX = Stroemung_WandlungItemX;
                     break;
                 case (int)ThingDefs.Tradition_Initiation:
                     NewTemplate = Tradition_InitiationItem;
                     NewTemplateX = Tradition_InitiationItemX;
                     break;
-                case (int)ThingDefs.Zaubersprüche:
-                    NewTemplate = ZaubersprücheItem;
-                    NewTemplateX = ZaubersprücheItemX;
+                case (int)ThingDefs.Zaubersprueche:
+                    NewTemplate = ZauberspruecheItem;
+                    NewTemplateX = ZauberspruecheItemX;
                     break;
                 default:
                     return;
@@ -325,21 +325,21 @@ namespace ShadowRunHelper
                     E.ContentTemplate = this.Foki_Widgets_E;
                     LV.ItemTemplate = Foki_WidgetsItem;
                     break;
-                case (int)ThingDefs.Strömung_Wandlung:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Strömung_WandlungM_/Text");
-                    LV.ItemsSource = CurrentChar.CTRLStrömung_Wandlung.Data;
-                    LV.ItemTemplate = Strömung_WandlungItem;
+                case (int)ThingDefs.Stroemung_Wandlung:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Stroemung_WandlungM_/Text");
+                    LV.ItemsSource = CurrentChar.CTRLStroemung_Wandlung.Data;
+                    LV.ItemTemplate = Stroemung_WandlungItem;
                     break;
                 case (int)ThingDefs.Tradition_Initiation:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Tradition_InitiationM_/Text");
                     LV.ItemsSource = CurrentChar.CTRLTradition_Initiation.Data;
                     LV.ItemTemplate = Tradition_InitiationItem;
                     break;
-                case (int)ThingDefs.Zaubersprüche:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ZaubersprücheM_/Text");
-                    LV.ItemsSource = CurrentChar.CTRLZaubersprüche.Data;
-                    E.ContentTemplate = this.Zaubersprüche_E;
-                    LV.ItemTemplate = ZaubersprücheItem;
+                case (int)ThingDefs.Zaubersprueche:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ZauberspruecheM_/Text");
+                    LV.ItemsSource = CurrentChar.CTRLZaubersprueche.Data;
+                    E.ContentTemplate = this.Zaubersprueche_E;
+                    LV.ItemTemplate = ZauberspruecheItem;
                     break;
                 default:
                     return;
@@ -365,7 +365,7 @@ namespace ShadowRunHelper
             Blocklist.Add(ThingDefs.CyberDeck, (1, null, null));
             Blocklist.Add(ThingDefs.Programm, (1, null, null));
             Blocklist.Add(ThingDefs.Foki_Widgets, (1, null, null));
-            Blocklist.Add(ThingDefs.Zaubersprüche, (1, null, null));
+            Blocklist.Add(ThingDefs.Zaubersprueche, (1, null, null));
             Blocklist.Add(ThingDefs.Geist_Sprite, (1, null, null));
             Blocklist.Add(ThingDefs.Fernkampfwaffe, (2, null, null));
             Blocklist.Add(ThingDefs.Nahkampfwaffe, (2, null, null));
@@ -376,7 +376,7 @@ namespace ShadowRunHelper
             Blocklist.Add(ThingDefs.Connection, (3, null, null));
             Blocklist.Add(ThingDefs.Implantat, (3, null, null));
             Blocklist.Add(ThingDefs.Tradition_Initiation, (3, null, null));
-            Blocklist.Add(ThingDefs.Strömung_Wandlung, (3, null, null));
+            Blocklist.Add(ThingDefs.Stroemung_Wandlung, (3, null, null));
             Blocklist.Add(ThingDefs.Sin, (3, null, null));
             Blocklist.Add(ThingDefs.Vorteil, (3, null, null));
             Blocklist.Add(ThingDefs.Nachteil, (3, null, null));

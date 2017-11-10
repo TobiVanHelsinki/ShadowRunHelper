@@ -1,7 +1,9 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    >
+        xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
+    xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,5)"
+>
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ResourceDictionary_App.xaml"/>
@@ -348,7 +350,13 @@
     <!-- Struktur ####################### -->
     <Style TargetType="Grid" x:Key="ListView_Item_Grid">
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
-        <!--<Setter Property="Background" Value="{ThemeResource ListViewBackgroundBrush}"/>-->
+    </Style>
+    <contract5NotPresent:Style TargetType="Grid" BasedOn="{StaticResource ListView_Item_Grid}" x:Key="ListView_Item_Grid_Editable"/>
+    <contract5Present:Style TargetType="Grid" BasedOn="{StaticResource ListView_Item_Grid}" x:Key="ListView_Item_Grid_Editable">
+        <Setter Property="BorderBrush" Value="{StaticResource SystemControlBackgroundListMediumRevealBorderBrush}"/>
+    </contract5Present:Style>
+    <Style TargetType="Grid" BasedOn="{StaticResource ListView_Item_Grid}" x:Key="ListView_Item_Grid_Editable">
+        <Setter Property="BorderBrush" Value="{StaticResource SystemControlBackgroundListMediumRevealBorderBrush}"/>
     </Style>
     <Style TargetType="Grid" x:Key="ListView_Item_Grid_For_Non_ListViews">
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
@@ -422,13 +430,13 @@
         <Setter Property="HorizontalAlignment" Value="Stretch" />
       
     </Style>
-    <!-- Drücken ####################### -->
-    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="ListView_Item_Buttons">
+    <!-- Druecken ####################### -->
+    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="ListView_Item_Buttons">
         <Setter Property="Margin" Value="2,2,2,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="ListView_U_BtnAdd">
+    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="ListView_U_BtnAdd">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
@@ -450,7 +458,7 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
-    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="ListView_BtnDel">
+    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="ListView_BtnDel">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>

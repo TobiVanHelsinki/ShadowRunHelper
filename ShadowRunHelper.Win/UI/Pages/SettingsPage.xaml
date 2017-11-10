@@ -74,16 +74,16 @@
     <Pivot>
         <PivotItem>
             <PivotItem.Header>
-                <TextBlock x:Uid="UI_Optionen_U_Infos" Style="{StaticResource Überschrift1}"/>
+                <TextBlock x:Uid="UI_Optionen_U_Infos" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
             <ScrollViewer>
                 <StackPanel>
-                    <TextBlock Style="{StaticResource Überschrift2}">
+                    <TextBlock Style="{StaticResource ueberschrift2}">
                     <Run x:Uid="UI_Optionen_Version"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind AppVersionBuild}"/>
                     </TextBlock>
-                    <TextBlock x:Uid="UI_Optionen_U_Kontakt"  Style="{StaticResource Überschrift2}"/>
+                    <TextBlock x:Uid="UI_Optionen_U_Kontakt"  Style="{StaticResource ueberschrift2}"/>
                     <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Optionen_Inhaber"/>
                     <Run x:Uid="Doppelpunkt"/>
@@ -96,14 +96,14 @@
                     </TextBlock>
                     <HyperlinkButton NavigateUri="{x:Bind AppKontaktEmail}" x:Uid="UI_Optionen_KontaktBtn"/>
 
-                    <TextBlock Style="{StaticResource Überschrift2}">
+                    <TextBlock Style="{StaticResource ueberschrift2}">
                     <Run x:Uid="UI_Optionen_App"/>
                     </TextBlock>
                     <HyperlinkButton NavigateUri="{x:Bind AppLink}" x:Uid="UI_Optionen_AppLinkBtn"/>
                     <HyperlinkButton NavigateUri="{x:Bind AppReviewLink}" x:Uid="UI_Optionen_RateBtn"/>
                     <HyperlinkButton NavigateUri="{x:Bind MoreAppsLink}" x:Uid="UI_Optionen_MoreAppsBtn"/>
 
-                    <TextBlock x:Uid="UI_Optionen_U_Statistics"  Style="{StaticResource Überschrift2}"/>
+                    <TextBlock x:Uid="UI_Optionen_U_Statistics"  Style="{StaticResource ueberschrift2}"/>
                     <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_AppStart"/>
                     <Run x:Uid="Doppelpunkt"/>
@@ -130,20 +130,20 @@
                     <Run Text="{x:Bind Settings.CountDeletions}"/>
                     </TextBlock>
 
-                    <TextBlock x:Uid="UI_Optionen_U_Rechtliches"  Style="{StaticResource Überschrift2}"/>
+                    <TextBlock x:Uid="UI_Optionen_U_Rechtliches"  Style="{StaticResource ueberschrift2}"/>
                     <TextBlock x:Uid="UI_Optionen_Pegasus"  Style="{StaticResource TextInhaltKlein}"/>
-                    <TextBlock x:Uid="UI_Optionen_U_Datenschutz" Style="{StaticResource Überschrift2}"/>
+                    <TextBlock x:Uid="UI_Optionen_U_Datenschutz" Style="{StaticResource ueberschrift2}"/>
                     <TextBlock x:Uid="UI_Optionen_Datenschutz"  Style="{StaticResource TextInhaltKlein}"/>
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>
-                <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource Überschrift1}"/>
+                <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
             <ScrollViewer>
                 <StackPanel>
-                    <TextBlock x:Uid="UI_Optionen_U_Einstellungen_Tip" Style="{StaticResource Überschrift2}"/>
+                    <TextBlock x:Uid="UI_Optionen_U_Einstellungen_Tip" Style="{StaticResource ueberschrift2}"/>
 
                     <Border Style="{StaticResource SplitBorder}"/>
 
@@ -237,7 +237,7 @@
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>
-                <TextBlock x:Uid="UI_Optionen_U_Hilfe" Style="{StaticResource Überschrift1}"/>
+                <TextBlock x:Uid="UI_Optionen_U_Hilfe" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
             <ListView ItemsSource="{x:Bind Help, Mode=OneWay}">
                 <ListView.ItemTemplate>
@@ -252,7 +252,7 @@
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>
-                <TextBlock x:Uid="UI_Optionen_U_Notifications" Style="{StaticResource Überschrift1}"/>
+                <TextBlock x:Uid="UI_Optionen_U_Notifications" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
             <ListView ItemTemplate="{StaticResource Notification}" ItemContainerStyle="{StaticResource ListViewItemStyle}" ItemsSource="{x:Bind Model.lstNotifications, Mode=OneWay}" SelectionChanged="ListView_SelectionChanged" SelectionMode="None" IsMultiSelectCheckBoxEnabled="False"></ListView>
         </PivotItem>

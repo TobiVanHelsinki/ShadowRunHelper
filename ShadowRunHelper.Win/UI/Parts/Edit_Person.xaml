@@ -79,8 +79,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Größe" Grid.Column="0" Grid.Row="7"/>
-                <TextBox Name=" Größe" Text="{x:Bind Data.Größe, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="7"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Groesse" Grid.Column="0" Grid.Row="7"/>
+                <TextBox Name=" Groesse" Text="{x:Bind Data.Groesse, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="7"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>

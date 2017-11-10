@@ -9,11 +9,11 @@
         <ResourceDictionary Source="ResourceDictionary_App.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource TitleTextBlockStyle}" TargetType="TextBlock" x:Key="Überschrift1">
+    <Style BasedOn="{StaticResource TitleTextBlockStyle}" TargetType="TextBlock" x:Key="ueberschrift1">
         <Setter Property="FontSize" Value="30"></Setter>
         <Setter Property="Margin" Value="0,0,0,5"></Setter>
     </Style>
-    <Style BasedOn="{StaticResource TitleTextBlockStyle}" TargetType="TextBlock" x:Key="Überschrift2">
+    <Style BasedOn="{StaticResource TitleTextBlockStyle}" TargetType="TextBlock" x:Key="ueberschrift2">
         <Setter Property="FontSize" Value="24"></Setter>
         <Setter Property="Margin" Value="0,15,0,5"></Setter>
     </Style>

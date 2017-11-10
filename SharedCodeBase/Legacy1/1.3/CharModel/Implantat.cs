@@ -22,15 +22,15 @@ namespace ShadowRunHelper1_3.CharModel
             }
         }
 
-        private double kapazität = 0;
-        public double Kapazität
+        private double kapazitaet = 0;
+        public double Kapazitaet
         {
-            get { return kapazität; }
+            get { return kapazitaet; }
             set
             {
-                if (value != this.kapazität)
+                if (value != this.kapazitaet)
                 {
-                    this.kapazität = value;
+                    this.kapazitaet = value;
                     NotifyPropertyChanged();
                 }
             }

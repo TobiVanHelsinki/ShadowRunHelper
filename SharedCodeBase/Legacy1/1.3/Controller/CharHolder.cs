@@ -7,16 +7,16 @@ using System.Runtime.CompilerServices;
 namespace ShadowRunHelper1_3.Controller
 {
     /// <summary>
-    /// Hält einen Char mit samst Controlern und Daten
+    /// Haelt einen Char mit samst Controlern und Daten
     /// </summary>
     public class CharHolder
     {
         
-        // noch ein event einbauen, damit fehler nach hier oben gegeben wreden können
-        // außerdem eine klasse für dinge wie kö und geist limit machen
-        private void Probleme_Lösen(object sender, EventArgs e)
+        // noch ein event einbauen, damit fehler nach hier oben gegeben wreden koennen
+        // ausserdem eine klasse fuer dinge wie koe und geist limit machen
+        private void Probleme_Loesen(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Probleme_Lösen");
+            System.Diagnostics.Debug.WriteLine("Probleme_Loesen");
             foreach (var itemFehlerEintrag in HD.AlteHDEntrys)
             {
                 foreach (var itemHandlung in HandlungController)
@@ -51,7 +51,7 @@ namespace ShadowRunHelper1_3.Controller
                 }
             }
             HD.AlteHDEntrys.Clear();
-            //HD.Toggle -= new HDlockedHandler(Probleme_Lösen);
+            //HD.Toggle -= new HDlockedHandler(Probleme_Loesen);
         }
 
 
@@ -126,8 +126,8 @@ namespace ShadowRunHelper1_3.Controller
                         int panzerung
             )
         {
-            System.Diagnostics.Debug.WriteLine("CharHolder(): Probleme_Lösen Registrieren");
-            //HD.Toggle += new HDlockedHandler(Probleme_Lösen);
+            System.Diagnostics.Debug.WriteLine("CharHolder(): Probleme_Loesen Registrieren");
+            //HD.Toggle += new HDlockedHandler(Probleme_Loesen);
 
             HandlungController = new ObservableCollection<CharController.Handlung>();
             HandlungController = new ObservableCollection<CharController.Handlung>();
@@ -161,7 +161,7 @@ namespace ShadowRunHelper1_3.Controller
             }
         }
         /// <summary>
-        /// wird zum sauberen hinzufügen eines objectes zum Holer benutzt
+        /// wird zum sauberen hinzufuegen eines objectes zum Holer benutzt
         /// </summary>
         /// <param name="Controller_Name"></param>
         /// <param name="hd_ID"></param>

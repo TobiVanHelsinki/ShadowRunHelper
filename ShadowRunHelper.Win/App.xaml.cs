@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Navigation;
 namespace ShadowRunHelper
 {
     /// <summary>
-    /// Stellt das anwendungsspezifische Verhalten bereit, um die Standardanwendungsklasse zu ergänzen.
+    /// Stellt das anwendungsspezifische Verhalten bereit, um die Standardanwendungsklasse zu ergaenzen.
     /// </summary>
     sealed partial class App : Application
     {
@@ -25,7 +25,7 @@ namespace ShadowRunHelper
 
         /// <summary>
         /// Initialisiert das Singletonanwendungsobjekt.  Dies ist die erste Zeile von erstelltem Code
-        /// und daher das logische Äquivalent von main() bzw. WinMain().
+        /// und daher das logische aequivalent von main() bzw. WinMain().
         /// </summary>
         public App()
         {
@@ -88,9 +88,9 @@ namespace ShadowRunHelper
 
         /// <summary>
         /// Wird aufgerufen, wenn die Anwendung durch den Endbenutzer normal gestartet wird. Weitere Einstiegspunkte
-        /// werden z. B. verwendet, wenn die Anwendung gestartet wird, um eine bestimmte Datei zu öffnen.
+        /// werden z. B. verwendet, wenn die Anwendung gestartet wird, um eine bestimmte Datei zu oeffnen.
         /// </summary>
-        /// <param name="e">Details über Startanforderung und -prozess.</param>
+        /// <param name="e">Details ueber Startanforderung und -prozess.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
             if (SettingsModel.I.LoadCharOnStart && e.PreviousExecutionState != ApplicationExecutionState.Running && e.PreviousExecutionState != ApplicationExecutionState.Suspended)
@@ -117,7 +117,7 @@ namespace ShadowRunHelper
         }
         /// <summary>
         /// Wird aufgerufen, wenn eine Datei gestartet wird. 
-        /// Speichert den jetzigen Zustand und öffnet die neue Datei
+        /// Speichert den jetzigen Zustand und oeffnet die neue Datei
         /// </summary>
         protected async override void OnFileActivated(FileActivatedEventArgs args)
         {
@@ -156,7 +156,7 @@ namespace ShadowRunHelper
             }
 #endif
             Frame rootFrame = Window.Current.Content as Frame;
-            // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthält.
+            // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
             // Nur sicherstellen, dass das Fenster aktiv ist.
             if (rootFrame == null)
             {
@@ -170,7 +170,7 @@ namespace ShadowRunHelper
             {
                 // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
                 // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
-                // übergeben werden
+                // uebergeben werden
                 rootFrame.Navigate(typeof(MainPage));
             }
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
@@ -194,10 +194,10 @@ namespace ShadowRunHelper
 
         // Exception Handling #################################################
         /// <summary>
-        /// Wird aufgerufen, wenn die Navigation auf eine bestimmte Seite fehlschlägt
+        /// Wird aufgerufen, wenn die Navigation auf eine bestimmte Seite fehlschlaegt
         /// </summary>
         /// <param name="sender">Der Rahmen, bei dem die Navigation fehlgeschlagen ist</param>
-        /// <param name="e">Details über den Navigationsfehler</param>
+        /// <param name="e">Details ueber den Navigationsfehler</param>
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);

@@ -20,8 +20,8 @@ namespace ShadowRunHelper.CharController
             //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_Fernkampfwaffe__Aktiv/Text");
             MI_Wert = new AllListEntry(ActiveItem, ("Model_Waffe_Wert/Text"), "Wert");
             MI_DK = new AllListEntry(ActiveItem, ("Model_Waffe_PB/Text"), "PB");
-            MI_Pr = new AllListEntry(ActiveItem, ("Model_Waffe_Präzision/Text"), "Präzision");
-            MI_RK = new AllListEntry(ActiveItem, ("Model_Fernkampfwaffe_Rückstoß/Text"), "Rückstoß");
+            MI_Pr = new AllListEntry(ActiveItem, ("Model_Waffe_Praezision/Text"), "Praezision");
+            MI_RK = new AllListEntry(ActiveItem, ("Model_Fernkampfwaffe_Rueckstoss/Text"), "Rueckstoss");
 
             Data.CollectionChanged += Data_CollectionChanged;
         }

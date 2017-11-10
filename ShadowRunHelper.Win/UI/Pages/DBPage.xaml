@@ -566,12 +566,12 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Rückstoß"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Rückstoß, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Rueckstoss"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Rueckstoss, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_Präzision"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Präzision, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_Praezision"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Praezision, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Modi"/>
@@ -637,8 +637,8 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Reichweite, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_Präzision"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Präzision, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_Praezision"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Praezision, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
                     <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">
@@ -674,7 +674,7 @@
                         <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
-                        <!--<TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Stoß, Mode=OneWay}"/>-->
+                        <!--<TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Stoss, Mode=OneWay}"/>-->
                         <!--<TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind Notiz, Mode=OneWay}"/>-->
                     </Grid>
             </DataTemplate>
@@ -692,8 +692,8 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model__Kapazität"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Kapazität, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model__Kapazitaet"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Kapazitaet, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
                     <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">
@@ -858,8 +858,8 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Essenz, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model__Kapazität"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Kapazität, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model__Kapazitaet"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Kapazitaet, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
                     <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">
@@ -1074,7 +1074,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Zaubersprüche_E" x:Key="Zaubersprüche_E">
+            <DataTemplate x:Name="Zaubersprueche_E" x:Key="Zaubersprueche_E">
                 <Grid Style="{StaticResource ListView_E}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*"/>
@@ -1082,11 +1082,11 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
-                    <TextBlock Grid.Column="1" x:Uid="Model_Zaubersprüche_Entzug"  Style="{StaticResource ListView_Item_Text}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Zaubersprueche_Entzug"  Style="{StaticResource ListView_Item_Text}"/>
                     <TextBlock Grid.Column="2" x:Uid="Model_Thing_Wert"  Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="ZaubersprücheItem" x:DataType="CharModel:Zaubersprüche">
+            <DataTemplate x:Name="ZauberspruecheItem" x:DataType="CharModel:Zaubersprueche">
                     <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="4*"/>
@@ -1102,29 +1102,29 @@
                         </TextBlock>
                     </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="ZaubersprücheItemX" x:DataType="CharModel:Zaubersprüche">
+            <DataTemplate x:Name="ZauberspruecheItemX" x:DataType="CharModel:Zaubersprueche">
                 <Grid Style="{StaticResource ListView_Item_Grid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource ZaubersprücheItem}"/>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource ZauberspruecheItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Item_Anzahl"/>
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Zaubersprüche_Entzug"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Zaubersprueche_Entzug"/>
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Entzug, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Zaubersprüche_Reichweite"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Zaubersprueche_Reichweite"/>
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Reichweite, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Zaubersprüche_Dauer"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Zaubersprueche_Dauer"/>
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Dauer, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
@@ -1251,7 +1251,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Strömung_WandlungItem" x:DataType="CharModel:Strömung_Wandlung">
+            <DataTemplate x:Name="Stroemung_WandlungItem" x:DataType="CharModel:Stroemung_Wandlung">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -1270,11 +1270,11 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" x:Uid="Model_Strömung_Wandlung_Bezeichner"  Style="{StaticResource ListView_Item_Text_Bold}"/>
+                        <TextBlock Grid.Column="0" x:Uid="Model_Stroemung_Wandlung_Bezeichner"  Style="{StaticResource ListView_Item_Text_Bold}"/>
                         <TextBlock Grid.Column="1"  Style="{StaticResource ListView_Item_Text}">
                             <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                         </TextBlock>
-                        <TextBlock Grid.Column="2" x:Uid="Model_Strömung_Wandlung_Wert"  Style="{StaticResource ListView_Item_Text_Bold}"/>
+                        <TextBlock Grid.Column="2" x:Uid="Model_Stroemung_Wandlung_Wert"  Style="{StaticResource ListView_Item_Text_Bold}"/>
                         <TextBlock Grid.Column="3">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/>
                             <Run x:Uid="Space"/>
@@ -1282,14 +1282,14 @@
                         </TextBlock>
                     </Grid>
                     <StackPanel Grid.Row="1">
-                        <TextBlock x:Uid="Model_Strömung_Wandlung_Paragon" Style="{StaticResource ListView_Item_Text_Bold}"/>
+                        <TextBlock x:Uid="Model_Stroemung_Wandlung_Paragon" Style="{StaticResource ListView_Item_Text_Bold}"/>
                         <TextBlock Text="{x:Bind Paragon, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
                     </StackPanel>
-                    <TextBlock x:Uid="Model_Strömung_Wandlung_Echos" Grid.Row="2" Style="{StaticResource ListView_Item_Text_Bold}"/>
+                    <TextBlock x:Uid="Model_Stroemung_Wandlung_Echos" Grid.Row="2" Style="{StaticResource ListView_Item_Text_Bold}"/>
                     <TextBlock Text="{x:Bind Echos, Mode=OneWay}" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Strömung_WandlungItemX" x:DataType="CharModel:Strömung_Wandlung">
+            <DataTemplate x:Name="Stroemung_WandlungItemX" x:DataType="CharModel:Stroemung_Wandlung">
                 <Grid Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -1299,7 +1299,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource Strömung_WandlungItem}"/>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource Stroemung_WandlungItem}"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>

@@ -2,15 +2,15 @@
 {
     public class Fernkampfwaffe : CharModel.Waffe
     {
-        private double rückstoß = 0;
-        public double Rückstoß
+        private double rueckstoss = 0;
+        public double Rueckstoss
         {
-            get { return rückstoß; }
+            get { return rueckstoss; }
             set
             {
-                if (value != this.rückstoß)
+                if (value != this.rueckstoss)
                 {
-                    this.rückstoß = value;
+                    this.rueckstoss = value;
                     NotifyPropertyChanged();
                 }
             }

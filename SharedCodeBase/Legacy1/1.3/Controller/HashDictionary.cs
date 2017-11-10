@@ -43,7 +43,7 @@ namespace ShadowRunHelper1_3.Controller
 
         public void Add(int key, Model.DictionaryCharEntry value)
         {
-            //key überprüfen
+            //key ueberpruefen
             Data.Add(key, value);
         }
 
@@ -75,7 +75,7 @@ namespace ShadowRunHelper1_3.Controller
             HDConsistendState = state;
             if (HDConsistendState)
             {
-                System.Diagnostics.Debug.WriteLine("HD ist im ConsistendState, OnToggle wird ausgeführt");
+                System.Diagnostics.Debug.WriteLine("HD ist im ConsistendState, OnToggle wird ausgefuehrt");
                 OnToggle(EventArgs.Empty);
             }
         }

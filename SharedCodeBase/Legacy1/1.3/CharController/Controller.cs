@@ -18,7 +18,7 @@ namespace ShadowRunHelper1_3.CharController
         /// <summary>
         /// Gibt dem Controller DAS HashDictionary \n 
         /// Sucht sich aus dem HD eine neue ID, wenn er keine hat \n 
-        /// Fügt sich selbst anschließend dem HD hinzu \n 
+        /// Fuegt sich selbst anschliessend dem HD hinzu \n 
         /// Registriert sich als Beobachter beim HD
         /// </summary>
         /// <param name="hD">HashDictionary des Chars</param>
@@ -52,14 +52,14 @@ namespace ShadowRunHelper1_3.CharController
         }
 
         /// <summary>
-        /// Fügt sich selbst dem HD hinzu
+        /// Fuegt sich selbst dem HD hinzu
         /// </summary>
         protected void add_to_HD()
         {
             HD.Add(this.HD_ID, new Model.DictionaryCharEntry(HD_Bezeichner, HD_Typ, HD_Wert, HD_Zusatz, HD_Notiz));
         }
         /// <summary>
-        /// löscht sich aus dem HD
+        /// loescht sich aus dem HD
         /// </summary>
         public void remove_from_HD()
         {
@@ -67,7 +67,7 @@ namespace ShadowRunHelper1_3.CharController
         }
 
         /// <summary>
-        /// Konstruktor für neu
+        /// Konstruktor fuer neu
         /// </summary>
         public Controller()
         {

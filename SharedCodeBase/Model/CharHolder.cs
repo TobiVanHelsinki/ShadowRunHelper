@@ -13,7 +13,7 @@ using TLIB.Model;
 namespace ShadowRunHelper.Model
 {
     /// <summary>
-    /// Hält einen Char mit Controlern und Daten
+    /// Haelt einen Char mit Controlern und Daten
     /// </summary>
     public class CharHolder : IMainType, INotifyPropertyChanged
     {
@@ -37,9 +37,9 @@ namespace ShadowRunHelper.Model
         public cController<Adeptenkraft_KomplexeForm> CTRLAdeptenkraft_KomplexeForm { get; set; }
         public cController<Foki_Widgets> CTRLFoki_Widgets { get; set; }
         public cController<Geist_Sprite> CTRLGeist_Sprite { get; set; }
-        public cController<Strömung_Wandlung> CTRLStrömung_Wandlung { get; set; }
+        public cController<Stroemung_Wandlung> CTRLStroemung_Wandlung { get; set; }
         public cController<Tradition_Initiation> CTRLTradition_Initiation { get; set; }
-        public cController<Zaubersprüche> CTRLZaubersprüche { get; set; }
+        public cController<Zaubersprueche> CTRLZaubersprueche { get; set; }
 
         public cAttributController CTRLAttribut { get; set; }
         public cNahkampfwaffeController CTRLNahkampfwaffe { get; set; }
@@ -141,11 +141,11 @@ namespace ShadowRunHelper.Model
             CTRLPanzerung = new cPanzerungController();
             CTRLProgramm = new cController<Programm>();
             CTRLSin = new cController<Sin>();
-            CTRLStrömung_Wandlung = new cController<Strömung_Wandlung>();
+            CTRLStroemung_Wandlung = new cController<Stroemung_Wandlung>();
             CTRLTradition_Initiation = new cController<Tradition_Initiation>();
             CTRLVehikel = new cVehikelController();
             CTRLVorteil = new cController<Vorteil>();
-            CTRLZaubersprüche = new cController<Zaubersprüche>();
+            CTRLZaubersprueche = new cController<Zaubersprueche>();
 
             lstCTRL.Add(CTRLAttribut);
             lstCTRL.Add(CTRLFertigkeit);
@@ -158,7 +158,7 @@ namespace ShadowRunHelper.Model
             lstCTRL.Add(CTRLImplantat);
 
             lstCTRL.Add(CTRLAdeptenkraft_KomplexeForm);
-            lstCTRL.Add(CTRLZaubersprüche);
+            lstCTRL.Add(CTRLZaubersprueche);
             lstCTRL.Add(CTRLFoki_Widgets);
 
             lstCTRL.Add(CTRLCyberDeck);
@@ -169,7 +169,7 @@ namespace ShadowRunHelper.Model
             lstCTRL.Add(CTRLNachteil);
             lstCTRL.Add(CTRLVorteil);
             lstCTRL.Add(CTRLTradition_Initiation);
-            lstCTRL.Add(CTRLStrömung_Wandlung);
+            lstCTRL.Add(CTRLStroemung_Wandlung);
             lstCTRL.Add(CTRLGeist_Sprite);
 
             lstCTRL.Add(CTRLMunition);
@@ -306,14 +306,14 @@ namespace ShadowRunHelper.Model
                 case ThingDefs.Foki_Widgets:
                     returnThing = CTRLFoki_Widgets.AddNewThing();
                     break;
-                case ThingDefs.Strömung_Wandlung:
-                    returnThing = CTRLStrömung_Wandlung.AddNewThing();
+                case ThingDefs.Stroemung_Wandlung:
+                    returnThing = CTRLStroemung_Wandlung.AddNewThing();
                     break;
                 case ThingDefs.Tradition_Initiation:
                     returnThing = CTRLTradition_Initiation.AddNewThing();
                     break;
-                case ThingDefs.Zaubersprüche:
-                    returnThing = CTRLZaubersprüche.AddNewThing();
+                case ThingDefs.Zaubersprueche:
+                    returnThing = CTRLZaubersprueche.AddNewThing();
                     break;
                 default:
                     throw new NotSupportedException();
@@ -390,14 +390,14 @@ namespace ShadowRunHelper.Model
                 case ThingDefs.Foki_Widgets:
                     CTRLFoki_Widgets.AddNewThing((Foki_Widgets)NewThing);
                     break;
-                case ThingDefs.Strömung_Wandlung:
-                    CTRLStrömung_Wandlung.AddNewThing((Strömung_Wandlung)NewThing);
+                case ThingDefs.Stroemung_Wandlung:
+                    CTRLStroemung_Wandlung.AddNewThing((Stroemung_Wandlung)NewThing);
                     break;
                 case ThingDefs.Tradition_Initiation:
                     CTRLTradition_Initiation.AddNewThing((Tradition_Initiation)NewThing);
                     break;
-                case ThingDefs.Zaubersprüche:
-                    CTRLZaubersprüche.AddNewThing((Zaubersprüche)NewThing);
+                case ThingDefs.Zaubersprueche:
+                    CTRLZaubersprueche.AddNewThing((Zaubersprueche)NewThing);
                     break;
                 default:
                     throw new NotSupportedException();
@@ -470,14 +470,14 @@ namespace ShadowRunHelper.Model
                 case ThingDefs.Foki_Widgets:
                     CTRLFoki_Widgets.RemoveThing((Foki_Widgets)tToRemove);
                     break;
-                case ThingDefs.Strömung_Wandlung:
-                    CTRLStrömung_Wandlung.RemoveThing((Strömung_Wandlung)tToRemove);
+                case ThingDefs.Stroemung_Wandlung:
+                    CTRLStroemung_Wandlung.RemoveThing((Stroemung_Wandlung)tToRemove);
                     break;
                 case ThingDefs.Tradition_Initiation:
                     CTRLTradition_Initiation.RemoveThing((Tradition_Initiation)tToRemove);
                     break;
-                case ThingDefs.Zaubersprüche:
-                    CTRLZaubersprüche.RemoveThing((Zaubersprüche)tToRemove);
+                case ThingDefs.Zaubersprueche:
+                    CTRLZaubersprueche.RemoveThing((Zaubersprueche)tToRemove);
                     break;
                 default:
                     break;
@@ -652,14 +652,14 @@ namespace ShadowRunHelper.Model
                 case ThingDefs.Foki_Widgets:
                     CTRLFoki_Widgets.MultipleCSVImport(strDelimiter, strNewLine, strImport);
                     break;
-                case ThingDefs.Strömung_Wandlung:
-                    CTRLStrömung_Wandlung.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                case ThingDefs.Stroemung_Wandlung:
+                    CTRLStroemung_Wandlung.MultipleCSVImport(strDelimiter, strNewLine, strImport);
                     break;
                 case ThingDefs.Tradition_Initiation:
                     CTRLTradition_Initiation.MultipleCSVImport(strDelimiter, strNewLine, strImport);
                     break;
-                case ThingDefs.Zaubersprüche:
-                    CTRLZaubersprüche.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                case ThingDefs.Zaubersprueche:
+                    CTRLZaubersprueche.MultipleCSVImport(strDelimiter, strNewLine, strImport);
                     break;
                 default:
                     break;

@@ -10,29 +10,29 @@ namespace ShadowRunHelper1_3.CharModel
 {
     public class Panzerung : CharModel.Item
     {
-        private double stoß = 0;
-        public double Stoß
+        private double stoss = 0;
+        public double Stoss
         {
-            get { return stoß; }
+            get { return stoss; }
             set
             {
-                if (value != this.stoß)
+                if (value != this.stoss)
                 {
-                    this.stoß = value;
+                    this.stoss = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private double kapazität = 0;
-        public double Kapazität
+        private double kapazitaet = 0;
+        public double Kapazitaet
         {
-            get { return kapazität; }
+            get { return kapazitaet; }
             set
             {
-                if (value != this.kapazität)
+                if (value != this.kapazitaet)
                 {
-                    this.kapazität = value;
+                    this.kapazitaet = value;
                     NotifyPropertyChanged();
                 }
             }

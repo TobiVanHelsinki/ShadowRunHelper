@@ -22,7 +22,7 @@ namespace ShadowRunHelper1_3.CharController
             DataHasUpdatet(sender);
         }
         /// <summary>
-        /// Wenn das HD geändert wurde, ändert sich auch die Zusammensetzung, diese Änderung wird hier an das kleine HD in der Handlung propagiert und gleichzeitig die NeuBerechung der Werte ausgeführt
+        /// Wenn das HD geaendert wurde, aendert sich auch die Zusammensetzung, diese aenderung wird hier an das kleine HD in der Handlung propagiert und gleichzeitig die NeuBerechung der Werte ausgefuehrt
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

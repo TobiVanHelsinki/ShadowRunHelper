@@ -19,8 +19,8 @@ namespace ShadowRunHelper.CharController
             ActiveItem = new Panzerung();
             //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_Panzerung__Aktiv/Text");
             MI_1 = new AllListEntry(ActiveItem, ("Model_Thing_Wert/Text"), "Wert");
-            MI_2 = new AllListEntry(ActiveItem, ("Model_Panzerung_Kapazität/Text"), "Kapazität");
-            MI_3 = new AllListEntry(ActiveItem, ("Model_Panzerung_Stoß/Text"), "Stoß");
+            MI_2 = new AllListEntry(ActiveItem, ("Model_Panzerung_Kapazitaet/Text"), "Kapazitaet");
+            MI_3 = new AllListEntry(ActiveItem, ("Model_Panzerung_Stoss/Text"), "Stoss");
             
             Data.CollectionChanged += Data_CollectionChanged;
         }

@@ -126,7 +126,7 @@ namespace ShadowRunHelper.IO
                 temp.Aktiv = item.Data.Aktiv;
                 temp.Anzahl = item.Data.Anzahl;
                 temp.Essenz = item.Data.Essenz;
-                temp.Kapazität = item.Data.Kapazität;
+                temp.Kapazitaet = item.Data.Kapazitaet;
 
             }
 
@@ -190,7 +190,7 @@ namespace ShadowRunHelper.IO
                 temp.Anzahl = item.Anzahl;
                 temp.Besitz = item.Besitz;
                 temp.PB = item.PB;
-                temp.Präzision = item.Pool;
+                temp.Praezision = item.Pool;
                 temp.Reichweite = item.Reichweite;
                 temp.SchadenTyp = item.SchadenTyp.ToString();
 
@@ -209,9 +209,9 @@ namespace ShadowRunHelper.IO
                 temp.Anzahl = item.Anzahl;
                 temp.Besitz = item.Besitz;
                 temp.PB = item.PB;
-                temp.Präzision = item.Pool;
+                temp.Praezision = item.Pool;
                 temp.Modi = item.Modi;
-                temp.Rückstoß = item.Rückstoß;
+                temp.Rueckstoss = item.Rueckstoss;
                 temp.SchadenTyp = item.SchadenTyp.ToString();
 
             }
@@ -293,7 +293,7 @@ namespace ShadowRunHelper.IO
                 temp.Aktiv = item.Aktiv;
                 temp.Anzahl = item.Anzahl;
                 temp.Besitz = item.Besitz;
-                //temp.Stoß = item.Stoß;
+                //temp.Stoss = item.Stoss;
             }
             ReturnCharHolder.Person.Alias = cH1_3.Person.Alias;
             ReturnCharHolder.Person.Augenfarbe = cH1_3.Person.Augenfarbe;
@@ -307,7 +307,7 @@ namespace ShadowRunHelper.IO
             ReturnCharHolder.Person.BirthDate = cH1_3.Person.GeburtsdatumDateTimeOffset;
             ReturnCharHolder.Person.Geschlecht = cH1_3.Person.Geschlecht;
             ReturnCharHolder.Person.Gewicht = cH1_3.Person.Gewicht;
-            ReturnCharHolder.Person.Größe = cH1_3.Person.Größe;
+            ReturnCharHolder.Person.Groesse = cH1_3.Person.Groesse;
             ReturnCharHolder.Person.Haarfarbe = cH1_3.Person.Haarfarbe;
             ReturnCharHolder.Person.Hautfarbe = cH1_3.Person.Hautfarbe;
             ReturnCharHolder.Person.Initiative = cH1_3.Person.Initiative;

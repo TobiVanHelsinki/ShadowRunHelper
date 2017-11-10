@@ -4,7 +4,7 @@ namespace ShadowRunHelper1_3.CharController
 {
     public class Connection
     {
-        public CharModel.Connection Data { get; set; } //für Einfache-Controller
+        public CharModel.Connection Data { get; set; } //fuer Einfache-Controller
 
         public Connection()
         {

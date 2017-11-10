@@ -7,7 +7,7 @@ namespace ShadowRunHelper1_3.CharController
     public class Fernkampfwaffe : CharController.ControllerMultiItems<CharModel.Fernkampfwaffe>
     {
         public int HD_ID_P = 0;
-        static private string HD_Bezeichner_P = "Präzision";
+        static private string HD_Bezeichner_P = "Praezision";
 
         public Fernkampfwaffe()
         {

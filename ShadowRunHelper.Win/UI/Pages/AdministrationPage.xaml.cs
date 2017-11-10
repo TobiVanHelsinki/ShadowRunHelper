@@ -270,7 +270,7 @@ namespace ShadowRunHelper
         }
 
 
-        async void Click_Löschen_OtherChar(object sender, RoutedEventArgs e)
+        async void Click_Loeschen_OtherChar(object sender, RoutedEventArgs e)
         {
             if (IsOperationInProgres)
             {
@@ -310,7 +310,7 @@ namespace ShadowRunHelper
             await messageDialog.ShowAsync();
         }
 
-        async void Click_Löschen_Alles(object sender, RoutedEventArgs e)
+        async void Click_Loeschen_Alles(object sender, RoutedEventArgs e)
         {
             if (IsOperationInProgres)
             {
@@ -357,7 +357,7 @@ namespace ShadowRunHelper
                 , Delete_All);
         }
 
-        void Click_Löschen_CurrentChar(object sender, RoutedEventArgs e)
+        void Click_Loeschen_CurrentChar(object sender, RoutedEventArgs e)
         {
             try
             {

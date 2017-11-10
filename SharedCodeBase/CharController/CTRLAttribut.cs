@@ -13,9 +13,9 @@ namespace ShadowRunHelper.CharController
     {
         // Variable Stuff #####################################################
         // Variable Model Stuff ###########################
-        [Newtonsoft.Json.JsonIgnore] //cause sometimes an very übel Bug
+        [Newtonsoft.Json.JsonIgnore] //cause sometimes an very uebel Bug
         //[Newtonsoft.Json.JsonIgnore]
-        public new ObservableCollection<Attribut> Data; //cause sometimes an very übel Bug
+        public new ObservableCollection<Attribut> Data; //cause sometimes an very uebel Bug
 
         public Attribut Konsti;// those have to point at a sepcific list element
         public Attribut Geschick;

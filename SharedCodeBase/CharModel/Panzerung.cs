@@ -6,31 +6,31 @@ namespace ShadowRunHelper.CharModel
     public class Panzerung : Item
     {
         /// <summary>
-        /// für SR4 - ballisitisch wäre dann thing.wert
+        /// fuer SR4 - ballisitisch waere dann thing.wert
         /// </summary>
-        //private double stoß = 0;
-        //public double Stoß
+        //private double stoss = 0;
+        //public double Stoss
         //{
-        //    get { return stoß; }
+        //    get { return stoss; }
         //    set
         //    {
-        //        if (value != this.stoß)
+        //        if (value != this.stoss)
         //        {
-        //            this.stoß = value;
+        //            this.stoss = value;
         //            NotifyPropertyChanged();
         //        }
         //    }
         //}
 
-        private double kapazität = 0;
-        public double Kapazität
+        private double kapazitaet = 0;
+        public double Kapazitaet
         {
-            get { return kapazität; }
+            get { return kapazitaet; }
             set
             {
-                if (value != this.kapazität)
+                if (value != this.kapazitaet)
                 {
-                    this.kapazität = value;
+                    this.kapazitaet = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -53,9 +53,9 @@ namespace ShadowRunHelper.CharModel
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
-            //strReturn += Stoß;
+            //strReturn += Stoss;
             //strReturn += Delimiter;
-            strReturn += Kapazität;
+            strReturn += Kapazitaet;
             strReturn += Delimiter;
             return strReturn;
         }
@@ -63,9 +63,9 @@ namespace ShadowRunHelper.CharModel
         public override string HeaderToCSV(string Delimiter)
         {
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Panzerung_Stoß/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Panzerung_Stoss/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Panzerung_Kapazität/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Panzerung_Kapazitaet/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -74,14 +74,14 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                //if (item.Key == CrossPlatformHelper.GetString("Model_Panzerung_Stoß/Text"))
+                //if (item.Key == CrossPlatformHelper.GetString("Model_Panzerung_Stoss/Text"))
                 //{
-                    //Stoß = double.Parse(item.Value);
+                    //Stoss = double.Parse(item.Value);
                     //continue;
                 //}
-                if (item.Key == CrossPlatformHelper.GetString("Model_Panzerung_Kapazität/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Panzerung_Kapazitaet/Text"))
                 {
-                    Kapazität = double.Parse(item.Value);
+                    Kapazitaet = double.Parse(item.Value);
                     continue;
                 }
             }

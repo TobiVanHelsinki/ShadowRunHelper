@@ -221,13 +221,13 @@ In each step, the discussed controls are highlighted in red. On small screens th
   <data name="UI_Btn_Loeschen.Content" xml:space="preserve">
     <value>Delete</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Alle_Chars_Löschen.Label" xml:space="preserve">
+  <data name="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen.Label" xml:space="preserve">
     <value>Delete all Chars</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Laden.Label" xml:space="preserve">
     <value>Load</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Löschen.Label" xml:space="preserve">
+  <data name="UI_CharVerwaltung_Btn_Loeschen.Label" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Neu.Label" xml:space="preserve">
@@ -460,7 +460,7 @@ b) "Auto-Fix" It should not occur, but sometimes it is unpredictable: the linked
   </data>
   <data name="Tut_State_20" xml:space="preserve">
     <value>Welcome to your first char!
-This introduction shows how the char view works. With the arrow keys you can navigate through the introduction, the X at the top right cancels the introduction. You can turn the introduction back on at the options menü, if you want to see it again. On small screens the tutorial unfortunately hides the screen. The button with the eye makes the tutorial window transparent.</value>
+This introduction shows how the char view works. With the arrow keys you can navigate through the introduction, the X at the top right cancels the introduction. You can turn the introduction back on at the options menue, if you want to see it again. On small screens the tutorial unfortunately hides the screen. The button with the eye makes the tutorial window transparent.</value>
   </data>
   <data name="Tut_State_03" xml:space="preserve">
     <value>This list shows all your saved characters. By default, chars are stored within the app. In the options you can choose to sync you chars via your account. Cause all chars in this list are files in a folder, you can also choose a different folder as the saving location.</value>
@@ -513,7 +513,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_AttributM_.Text" xml:space="preserve">
     <value>Attributs</value>
   </data>
-  <data name="Model__Kapazität.Text" xml:space="preserve">
+  <data name="Model__Kapazitaet.Text" xml:space="preserve">
     <value>Capacity</value>
   </data>
   <data name="Model_Attribut_Charisma.Text" xml:space="preserve">
@@ -669,7 +669,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_FernKampfwaffe_Modi.Text" xml:space="preserve">
     <value>Mode</value>
   </data>
-  <data name="Model_FernKampfwaffe_Rückstoß.Text" xml:space="preserve">
+  <data name="Model_FernKampfwaffe_Rueckstoss.Text" xml:space="preserve">
     <value>RC</value>
   </data>
   <data name="Model_Fertigkeit_.Text" xml:space="preserve">
@@ -762,7 +762,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Handlung_Gegen.Text" xml:space="preserve">
     <value>Defend dices:</value>
   </data>
-  <data name="Model_Implantat_Kapazität.Text" xml:space="preserve">
+  <data name="Model_Implantat_Kapazitaet.Text" xml:space="preserve">
     <value>Capacity</value>
   </data>
   <data name="Model_Geist_Sprite_Dienste.Text" xml:space="preserve">
@@ -861,7 +861,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Person_Geschlecht.Text" xml:space="preserve">
     <value>Sex</value>
   </data>
-  <data name="Model_Person_Größe.Text" xml:space="preserve">
+  <data name="Model_Person_Groesse.Text" xml:space="preserve">
     <value>Height</value>
   </data>
   <data name="Model_Person_Gewicht.Text" xml:space="preserve">
@@ -909,7 +909,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Thing_ThingTyp.Text" xml:space="preserve">
     <value>ThingType</value>
   </data>
-  <data name="Model_Panzerung_Kapazität.Text" xml:space="preserve">
+  <data name="Model_Panzerung_Kapazitaet.Text" xml:space="preserve">
     <value>Capacity</value>
   </data>
   <data name="Model_Nahkampfwaffe__Aktiv.Text" xml:space="preserve">
@@ -930,7 +930,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Person_Geburtstag.Text" xml:space="preserve">
     <value>Birthday</value>
   </data>
-  <data name="Model_Strömung_Wandlung_Bezeichner.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Wandlung_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="Model_Tradition_Initiation_Bezeichner.Text" xml:space="preserve">
@@ -990,7 +990,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Waffe_SchadenTyp.Text" xml:space="preserve">
     <value>Damage type (M/P)</value>
   </data>
-  <data name="Model_Waffe_Präzision.Text" xml:space="preserve">
+  <data name="Model_Waffe_Praezision.Text" xml:space="preserve">
     <value>Precision</value>
   </data>
   <data name="Model_Vehikel__Aktiv.Text" xml:space="preserve">
@@ -999,16 +999,16 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Waffe_Wert.Text" xml:space="preserve">
     <value>Damage</value>
   </data>
-  <data name="Model_ZaubersprücheM_.Text" xml:space="preserve">
+  <data name="Model_ZauberspruecheM_.Text" xml:space="preserve">
     <value>Spells</value>
   </data>
-  <data name="Model_Zaubersprüche_.Text" xml:space="preserve">
+  <data name="Model_Zaubersprueche_.Text" xml:space="preserve">
     <value>Spell</value>
   </data>
-  <data name="Model_Zaubersprüche_Dauer.Text" xml:space="preserve">
+  <data name="Model_Zaubersprueche_Dauer.Text" xml:space="preserve">
     <value>Duration</value>
   </data>
-  <data name="Model_Zaubersprüche_Reichweite.Text" xml:space="preserve">
+  <data name="Model_Zaubersprueche_Reichweite.Text" xml:space="preserve">
     <value>Range</value>
   </data>
   <data name="Model_Vehikel_Wert.Text" xml:space="preserve">
@@ -1023,7 +1023,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="UI_Char_Schaden_Geist.Text" xml:space="preserve">
     <value>Mental</value>
   </data>
-  <data name="UI_Char_Schaden_Körper.Text" xml:space="preserve">
+  <data name="UI_Char_Schaden_Koerper.Text" xml:space="preserve">
     <value>Physical</value>
   </data>
   <data name="UI_Char_Schaden_Matrix.Text" xml:space="preserve">
@@ -1086,25 +1086,25 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Vorteil_.Text" xml:space="preserve">
     <value>Advantage</value>
   </data>
-  <data name="Model_Zaubersprüche_Entzug.Text" xml:space="preserve">
+  <data name="Model_Zaubersprueche_Entzug.Text" xml:space="preserve">
     <value>Drain</value>
   </data>
-  <data name="Model_Strömung_Wandlung_Paragon.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Wandlung_Paragon.Text" xml:space="preserve">
     <value>Paragon</value>
   </data>
-  <data name="Model_Strömung_Wandlung_Wert.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Wandlung_Wert.Text" xml:space="preserve">
     <value>Grade</value>
   </data>
   <data name="Model_Tradition_Initiation_Wert.Text" xml:space="preserve">
     <value>Grade</value>
   </data>
-  <data name="Model_Strömung_WandlungM_.Text" xml:space="preserve">
+  <data name="Model_Stroemung_WandlungM_.Text" xml:space="preserve">
     <value>Submersions</value>
   </data>
-  <data name="Model_Strömung_Wandlung_.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Wandlung_.Text" xml:space="preserve">
     <value>Submersion</value>
   </data>
-  <data name="Model_Strömung_Wandlung_Echos.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Wandlung_Echos.Text" xml:space="preserve">
     <value>Echoes</value>
   </data>
   <data name="Model_Tradition_InitiationM_.Text" xml:space="preserve">

@@ -3,9 +3,9 @@ using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Strömung_Wandlung : Thing
+    public class Stroemung_Wandlung : Thing
     {
-        // Bezeichner ist Strömung
+        // Bezeichner ist Stroemung
         // Wert ist Wandlungsgrad
        
         string _Paragon = "";
@@ -36,19 +36,19 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public Strömung_Wandlung()
+        public Stroemung_Wandlung()
         {
-            this.ThingType = ThingDefs.Strömung_Wandlung;
+            this.ThingType = ThingDefs.Stroemung_Wandlung;
         }
 
         public override Thing Copy( Thing target = null)
         {
             if (target == null)
             {
-                target = new Strömung_Wandlung();
+                target = new Stroemung_Wandlung();
             }
             base.Copy( target);
-            Strömung_Wandlung TargetS = (Strömung_Wandlung)target;
+            Stroemung_Wandlung TargetS = (Stroemung_Wandlung)target;
             TargetS.Paragon = Paragon;
             TargetS.Echos = Echos;
             return target;
@@ -74,9 +74,9 @@ namespace ShadowRunHelper.CharModel
         public override string HeaderToCSV(string Delimiter)
         {
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Strömung_Wandlung_Paragon/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Stroemung_Wandlung_Paragon/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Strömung_Wandlung_Echos/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Stroemung_Wandlung_Echos/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -86,12 +86,12 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Strömung_Wandlung_Paragon/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Stroemung_Wandlung_Paragon/Text"))
                 {
                     this.Paragon = (item.Value);
                     continue;
                 }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Strömung_Wandlung_Echos/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Stroemung_Wandlung_Echos/Text"))
                 {
                     this.Echos = (item.Value);
                     continue;

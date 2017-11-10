@@ -23,15 +23,15 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        private double kapazität = 0;
-        public double Kapazität
+        private double kapazitaet = 0;
+        public double Kapazitaet
         {
-            get { return kapazität; }
+            get { return kapazitaet; }
             set
             {
-                if (value != this.kapazität)
+                if (value != this.kapazitaet)
                 {
-                    this.kapazität = value;
+                    this.kapazitaet = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -62,7 +62,7 @@ namespace ShadowRunHelper.CharModel
             }
             base.Copy( target);
             ((Implantat)target).Essenz = Essenz;
-            ((Implantat)target).Kapazität = Kapazität;
+            ((Implantat)target).Kapazitaet = Kapazitaet;
             ((Implantat)target).Auswirkung = Auswirkung;
             return target;
         }
@@ -70,7 +70,7 @@ namespace ShadowRunHelper.CharModel
         public override void Reset()
         {
             base.Reset();
-            Kapazität = 0;
+            Kapazitaet = 0;
             Essenz = 0;
         }
 
@@ -79,7 +79,7 @@ namespace ShadowRunHelper.CharModel
             string strReturn = base.ToCSV(Delimiter);
             strReturn += Essenz;
             strReturn += Delimiter;
-            strReturn += Kapazität;
+            strReturn += Kapazitaet;
             strReturn += Delimiter;
             strReturn += Auswirkung;
             strReturn += Delimiter;
@@ -91,7 +91,7 @@ namespace ShadowRunHelper.CharModel
             string strReturn = base.HeaderToCSV(Delimiter);
             strReturn += CrossPlatformHelper.GetString("Model_Implantat_Essenz/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Implantat_Kapazität/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Implantat_Kapazitaet/Text");
             strReturn += Delimiter;
             strReturn += CrossPlatformHelper.GetString("Model_Implantat_Auswirkung/Text");
             strReturn += Delimiter;
@@ -108,9 +108,9 @@ namespace ShadowRunHelper.CharModel
                     Essenz = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Implantat_Kapazität/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Implantat_Kapazitaet/Text"))
                 {
-                    Kapazität = double.Parse(item.Value);
+                    Kapazitaet = double.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == CrossPlatformHelper.GetString("Model_Implantat_Auswirkung/Text"))

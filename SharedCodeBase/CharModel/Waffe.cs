@@ -7,10 +7,10 @@ namespace ShadowRunHelper.CharModel
     public abstract class Waffe : Item
     {
         /// <summary>
-        /// Präzision
+        /// Praezision
         /// </summary>
         private double pool = 0;
-        public double Präzision
+        public double Praezision
         {
             get { return pool; }
             set
@@ -62,7 +62,7 @@ namespace ShadowRunHelper.CharModel
             base.Copy( target);
             Waffe TargetS = (Waffe)target;
             TargetS.SchadenTyp = SchadenTyp;
-            TargetS.Präzision = Präzision;
+            TargetS.Praezision = Praezision;
             TargetS.PB = PB;
             return target;
         }
@@ -70,7 +70,7 @@ namespace ShadowRunHelper.CharModel
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);
-            strReturn += Präzision;
+            strReturn += Praezision;
             strReturn += Delimiter;
             strReturn += SchadenTyp;
             strReturn += Delimiter;
@@ -83,7 +83,7 @@ namespace ShadowRunHelper.CharModel
         public override string HeaderToCSV(string Delimiter)
         {
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Waffe_Präzision/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Waffe_Praezision/Text");
             strReturn += Delimiter;
             strReturn += CrossPlatformHelper.GetString("Model_Waffe_SchadenTyp/Text");
             strReturn += Delimiter;
@@ -97,9 +97,9 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_Präzision/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_Praezision/Text"))
                 {
-                    Präzision = double.Parse(item.Value);
+                    Praezision = double.Parse(item.Value);
                     continue;
                 }
                 if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_SchadenTyp/Text"))

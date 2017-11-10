@@ -4,7 +4,7 @@ using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Zaubersprüche : Item
+    public class Zaubersprueche : Item
     {
         double reichweite = 0;
         public double Reichweite
@@ -48,19 +48,19 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public Zaubersprüche()
+        public Zaubersprueche()
         {
-            this.ThingType = ThingDefs.Zaubersprüche;
+            this.ThingType = ThingDefs.Zaubersprueche;
         }
         
         public override Thing Copy( Thing target = null)
         {
             if (target == null)
             {
-                target = new Zaubersprüche();
+                target = new Zaubersprueche();
             }
             base.Copy( target);
-            Zaubersprüche TargetS = (Zaubersprüche)target;
+            Zaubersprueche TargetS = (Zaubersprueche)target;
             TargetS.Reichweite = Reichweite;
             TargetS.Dauer = Dauer;
             TargetS.Entzug = Entzug;
@@ -91,11 +91,11 @@ namespace ShadowRunHelper.CharModel
         public override string HeaderToCSV(string Delimiter)
         {
             string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Zaubersprüche_Reichweite/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Zaubersprueche_Reichweite/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Zaubersprüche_Dauer/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Zaubersprueche_Dauer/Text");
             strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Zaubersprüche_Entzug/Text");
+            strReturn += CrossPlatformHelper.GetString("Model_Zaubersprueche_Entzug/Text");
             strReturn += Delimiter;
             return strReturn;
         }
@@ -106,17 +106,17 @@ namespace ShadowRunHelper.CharModel
             base.FromCSV(dic);
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Zaubersprüche_Reichweite/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Zaubersprueche_Reichweite/Text"))
                 {
                     this.Reichweite = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Zaubersprüche_Dauer/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Zaubersprueche_Dauer/Text"))
                 {
                     this.Dauer = double.Parse(item.Value);
                     continue;
                 }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Zaubersprüche_Entzug/Text"))
+                if (item.Key == CrossPlatformHelper.GetString("Model_Zaubersprueche_Entzug/Text"))
                 {
                     this.Entzug = double.Parse(item.Value);
                     continue;

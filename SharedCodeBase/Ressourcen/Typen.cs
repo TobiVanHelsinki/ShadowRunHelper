@@ -43,9 +43,9 @@ namespace ShadowRunHelper
         Adeptenkraft_KomplexeForm = 19,
         Geist_Sprite = 20,
         Foki_Widgets = 21,
-        Strömung_Wandlung = 22,
+        Stroemung_Wandlung = 22,
         Tradition_Initiation = 23,
-        Zaubersprüche = 24,
+        Zaubersprueche = 24,
     }
 
     public static class TypenHelper
@@ -100,12 +100,12 @@ namespace ShadowRunHelper
                         return CrossPlatformHelper.GetString("Model_Geist_Sprite_/Text");
                     case ThingDefs.Foki_Widgets:
                         return CrossPlatformHelper.GetString("Model_Foki_Widgets_/Text");
-                    case ThingDefs.Strömung_Wandlung:
-                        return CrossPlatformHelper.GetString("Model_Strömung_Wandlung_/Text");
+                    case ThingDefs.Stroemung_Wandlung:
+                        return CrossPlatformHelper.GetString("Model_Stroemung_Wandlung_/Text");
                     case ThingDefs.Tradition_Initiation:
                         return CrossPlatformHelper.GetString("Model_Tradition_Initiation_/Text");
-                    case ThingDefs.Zaubersprüche:
-                        return CrossPlatformHelper.GetString("Model_Zaubersprüche_/Text");
+                    case ThingDefs.Zaubersprueche:
+                        return CrossPlatformHelper.GetString("Model_Zaubersprueche_/Text");
                     default:
                         break;
                 }
@@ -158,12 +158,12 @@ namespace ShadowRunHelper
                         return CrossPlatformHelper.GetString("Model_Geist_SpriteM_/Text");
                     case ThingDefs.Foki_Widgets:
                         return CrossPlatformHelper.GetString("Model_Foki_WidgetsM_/Text");
-                    case ThingDefs.Strömung_Wandlung:
-                        return CrossPlatformHelper.GetString("Model_Strömung_WandlungM_/Text");
+                    case ThingDefs.Stroemung_Wandlung:
+                        return CrossPlatformHelper.GetString("Model_Stroemung_WandlungM_/Text");
                     case ThingDefs.Tradition_Initiation:
                         return CrossPlatformHelper.GetString("Model_Tradition_InitiationM_/Text");
-                    case ThingDefs.Zaubersprüche:
-                        return CrossPlatformHelper.GetString("Model_ZaubersprücheM_/Text");
+                    case ThingDefs.Zaubersprueche:
+                        return CrossPlatformHelper.GetString("Model_ZauberspruecheM_/Text");
                     default:
                         break;
                 }
@@ -218,12 +218,12 @@ namespace ShadowRunHelper
                     return typeof(CharModel.Geist_Sprite);
                 case ThingDefs.Foki_Widgets:
                     return typeof(CharModel.Foki_Widgets);
-                case ThingDefs.Strömung_Wandlung:
-                    return typeof(CharModel.Strömung_Wandlung);
+                case ThingDefs.Stroemung_Wandlung:
+                    return typeof(CharModel.Stroemung_Wandlung);
                 case ThingDefs.Tradition_Initiation:
                     return typeof(CharModel.Tradition_Initiation);
-                case ThingDefs.Zaubersprüche:
-                    return typeof(CharModel.Zaubersprüche);
+                case ThingDefs.Zaubersprueche:
+                    return typeof(CharModel.Zaubersprueche);
                 default:
                     return null;
             }

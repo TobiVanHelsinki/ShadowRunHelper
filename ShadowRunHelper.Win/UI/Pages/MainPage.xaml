@@ -152,7 +152,7 @@
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
                                         <TextBlock x:Uid="UI_Char_Schaden_Geist" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
-                                        <TextBlock x:Uid="UI_Char_Schaden_Körper" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
+                                        <TextBlock x:Uid="UI_Char_Schaden_Koerper" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
                                         <TextBlock x:Uid="UI_Char_Schaden_Matrix" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
                                         <Slider HorizontalAlignment="Center" Name="XAML_Header_Schaden_G_Slider" Orientation="Vertical" Grid.Row="0" Grid.Column="0" Value="{x:Bind Path=Person.Schaden_G, Mode=TwoWay}"  Maximum="{x:Bind Person.Schaden_G_max,Mode=TwoWay}" Style="{StaticResource Panel_Oben_Schaden_Slider}"/>
                                         <Slider HorizontalAlignment="Center" Name="XAML_Header_Schaden_K_Slider" Orientation="Vertical" Grid.Row="0" Grid.Column="1" Value="{x:Bind Person.Schaden_K,Mode=TwoWay}" Maximum="{x:Bind Person.Schaden_K_max,Mode=TwoWay}" Style="{StaticResource Panel_Oben_Schaden_Slider}"/>

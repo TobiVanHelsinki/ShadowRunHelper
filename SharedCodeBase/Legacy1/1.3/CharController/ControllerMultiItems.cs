@@ -5,18 +5,18 @@ namespace ShadowRunHelper1_3.CharController
 {
     public class ControllerMultiItems<T> : CharController.ControllerMulti<T> where T : CharModel.Item, new()
     {
-        public T Data { get; set; } //für Einfache-Controller
+        public T Data { get; set; } //fuer Einfache-Controller
 
         public void ToggleActive(T obj)
         {
-            //Änderung durchsetzen
+            //aenderung durchsetzen
             for (int i = 0; i < DataList.Count; i++)
             {
                 DataList[i].Aktiv = false;
             }
             DataList[DataList.IndexOf(obj)].Aktiv = true;
 
-            //Änderung propagieren
+            //aenderung propagieren
             T newT2 = (T)(object)obj;
             HD[HD_ID].Wert = newT2.Wert;
         }

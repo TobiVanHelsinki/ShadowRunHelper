@@ -124,7 +124,7 @@ namespace ShadowRunHelper1_3.IO
                 newChar.ImplantatController[maxID].Data.Aktiv = item.Data.Aktiv;
                 newChar.ImplantatController[maxID].Data.Anzahl = item.Data.Anzahl;
                 newChar.ImplantatController[maxID].Data.Essenz = item.Data.Essenz;
-                newChar.ImplantatController[maxID].Data.Kapazität = item.Data.Kapazität;
+                newChar.ImplantatController[maxID].Data.Kapazitaet = item.Data.Kapazitaet;
                 maxID++;
             }
             maxID = 0;
@@ -210,7 +210,7 @@ namespace ShadowRunHelper1_3.IO
                 newChar.FernkampfwaffeController.DataList[maxID].PB = item.PB;
                 newChar.FernkampfwaffeController.DataList[maxID].Pool = item.Pool;
                 newChar.FernkampfwaffeController.DataList[maxID].Modi = item.Modi;
-                newChar.FernkampfwaffeController.DataList[maxID].Rückstoß = item.Rückstoß;
+                newChar.FernkampfwaffeController.DataList[maxID].Rueckstoss = item.Rueckstoss;
                 newChar.FernkampfwaffeController.DataList[maxID].SchadenTyp = item.SchadenTyp;
                 maxID++;
             }
@@ -293,7 +293,7 @@ namespace ShadowRunHelper1_3.IO
                 newChar.PanzerungController.DataList[maxID].Aktiv = item.Aktiv;
                 newChar.PanzerungController.DataList[maxID].Anzahl = item.Anzahl;
                 newChar.PanzerungController.DataList[maxID].Besitz = item.Besitz;
-                newChar.PanzerungController.DataList[maxID].Stoß = item.Stoß;
+                newChar.PanzerungController.DataList[maxID].Stoss = item.Stoss;
                 maxID++;
             }
 
@@ -302,7 +302,7 @@ namespace ShadowRunHelper1_3.IO
             {
                 newChar.Person = new CharModel.Person();
             }
-            // handlung muss als letztes in dieser liste erscheinen, da es abhängigkeiten besitzt
+            // handlung muss als letztes in dieser liste erscheinen, da es abhaengigkeiten besitzt
             maxID = 0;
             foreach (var item in tempChar.HandlungController)
             {

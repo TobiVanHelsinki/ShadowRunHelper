@@ -293,15 +293,15 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double größe;
-        public double Größe
+        private double groesse;
+        public double Groesse
         {
-            get { return größe; }
+            get { return groesse; }
             set
             {
-                if (value != größe)
+                if (value != groesse)
                 {
-                    größe = value;
+                    groesse = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -492,7 +492,7 @@ namespace ShadowRunHelper.CharModel
             ReturnPerson.BirthDate = Source.BirthDate;
             ReturnPerson.Geschlecht = Source.Geschlecht;
             ReturnPerson.Gewicht = Source.Gewicht;
-            ReturnPerson.Größe = Source.Größe;
+            ReturnPerson.Groesse = Source.Groesse;
             ReturnPerson.Haarfarbe = Source.Haarfarbe;
             ReturnPerson.Hautfarbe = Source.Hautfarbe;
             ReturnPerson.Initiative = Source.Initiative;
@@ -545,7 +545,7 @@ namespace ShadowRunHelper.CharModel
         //    strReturn += Delimiter;
         //    strReturn += Gewicht;
         //    strReturn += Delimiter;
-        //    strReturn += Größe;
+        //    strReturn += Groesse;
         //    strReturn += Delimiter;
         //    strReturn += Haarfarbe;
         //    strReturn += Delimiter;

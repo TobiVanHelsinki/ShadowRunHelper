@@ -6,7 +6,7 @@ namespace ShadowRunHelper1_3.CharController
 {
     public class ControllerMulti<T> : CharController.Controller<T> where T : CharModel.Model, new()
     {
-        public ObservableCollection<T> DataList { get; set; } //für Mulit-Controller
+        public ObservableCollection<T> DataList { get; set; } //fuer Mulit-Controller
 
         public ControllerMulti()
         {

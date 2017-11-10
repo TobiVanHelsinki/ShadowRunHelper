@@ -292,15 +292,15 @@ namespace ShadowRunHelper1_3.CharModel
                 }
             }
         }
-        private double größe = 0;
-        public double Größe
+        private double groesse = 0;
+        public double Groesse
         {
-            get { return größe; }
+            get { return groesse; }
             set
             {
-                if (value != this.größe)
+                if (value != this.groesse)
                 {
-                    this.größe = value;
+                    this.groesse = value;
                     NotifyPropertyChanged();
                 }
             }

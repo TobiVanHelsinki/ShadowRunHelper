@@ -47,7 +47,7 @@ namespace ShadowRunHelper.CharController
         }
 
         /// <summary>
-        /// Konstruktor für neu
+        /// Konstruktor fuer neu
         /// </summary>
         public cController()
         {
@@ -121,14 +121,14 @@ namespace ShadowRunHelper.CharController
                 case "Geist_Sprite":
                     this._eDataTyp = ThingDefs.Geist_Sprite;
                     break;
-                case "Strömung_Wandlung":
-                    this._eDataTyp = ThingDefs.Strömung_Wandlung;
+                case "Stroemung_Wandlung":
+                    this._eDataTyp = ThingDefs.Stroemung_Wandlung;
                     break;
                 case "Tradition_Initiation":
                     this._eDataTyp = ThingDefs.Tradition_Initiation;
                     break;
-                case "Zaubersprüche":
-                    this._eDataTyp = ThingDefs.Zaubersprüche;
+                case "Zaubersprueche":
+                    this._eDataTyp = ThingDefs.Zaubersprueche;
                     break;
                 default :
                     break;

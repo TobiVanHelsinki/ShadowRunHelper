@@ -5,7 +5,7 @@ namespace ShadowRunHelper1_3.CharController
 {
     public class ControllerSingle<T> : CharController.Controller<T> where T : CharModel.Model, new()
     {
-        public T Data { get; set; } //für Einfache-Controller
+        public T Data { get; set; } //fuer Einfache-Controller
 
         public ControllerSingle()
         {
