@@ -954,7 +954,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="AttributItem" x:DataType="CharModel:Attribut" >
-                <Grid Tapped="Edit_Attribut" BorderThickness="2" Style="{StaticResource ListView_Item_Grid_Editable}" >
+                <Grid Tapped="Edit_Attribut" Style="{StaticResource ListView_Item_Grid_Editable}" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="1*"/>
