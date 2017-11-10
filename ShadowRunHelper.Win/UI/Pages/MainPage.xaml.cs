@@ -141,6 +141,7 @@ namespace ShadowRunHelper
 
         void ChangeUI(bool? bState = null)
         {
+            PreDataBase.Visibility = Model?.CurrentChar == null ? Visibility.Collapsed : Visibility.Visible;
             RefreshStatus();
             if (bState == null)
             {

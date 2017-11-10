@@ -54,14 +54,6 @@ namespace ShadowRunHelper
                 {
                 }
             }
-            if (SettingsModel.I.BetaFeatures)
-            {
-                FilterBoxPanel.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                FilterBoxPanel.Visibility = Visibility.Collapsed;
-            }
             ViewModel.TutorialStateChanged += TutorialStateChanged;
             if (!SettingsModel.I.TutorialCharShown)
             {
