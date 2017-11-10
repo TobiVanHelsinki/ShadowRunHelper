@@ -21,6 +21,10 @@ namespace ShadowRunHelper
 {
     public sealed partial class CharPage : Page
     {
+        void Click_Save(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.CurrentChar?.SetSaveTimerTo();
+        }
         // Variables ##########################################################
         readonly AppModel ViewModel = AppModel.Instance;
         public Windows.System.Display.DisplayRequest Char_DisplayRequest;

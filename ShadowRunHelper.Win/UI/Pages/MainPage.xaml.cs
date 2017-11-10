@@ -10,13 +10,11 @@ using TLIB.Model;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
-using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
@@ -35,40 +33,7 @@ namespace ShadowRunHelper
             Model.TutorialStateChanged += TutorialStateChanged;
             CompatibilityChecks();
         }
-        void CompatibilityChecks()
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.AcrylicBrush"))
-            {
-                MainBar1.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
-                MainBar2.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
-            }
-            else
-            {
-                //SolidColorBrush myBrush = new SolidColorBrush(Color.FromArgb(255, 202, 24, 37));
-
-                //MainBarBorder.Background = myBrush;
-            }
-        }
-
-        private void TutorialStateChanged(int StateNumber, bool Highlight)
-        {
-            Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
-            switch (StateNumber)
-            {
-                case 1:
-                    MainBarBorder.Style = StyleToBeApplied;
-                    break;
-                case 21:
-                    StatusControlBorder.Style = StyleToBeApplied;
-                    break;
-                default:
-                    //MainBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    //StatusControlBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    break;
-            }
-        }
-
-        CyberDeck CurrentDeck;
+        #region navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -79,46 +44,7 @@ namespace ShadowRunHelper
             ChangeUI();
             ShowError();
             Model.SetDependencies(Dispatcher);
-
-            if (SettingsModel.I.BetaFeatures)
-            {
-                //Char_DB.Visibility = Visibility.Visible; //Thread issues ...
-            }
-            else
-            {
-                Char_DB.Visibility = Visibility.Collapsed;
-            }
-
             NavigationRequested(ProjectPages.Char);
-        }
-
-        void GetCurrentDeck()
-        {
-            CurrentDeck = (CyberDeck)Model.MainObject?.LinkList.Find(x => x.Object.ThingType == ThingDefs.CyberDeck).Object;
-
-            if (CurrentDeck != null)
-            {
-                CurrentDeck.PropertyChanged += (x, y) => CurrentDeck_PropertyChanged(y);
-                CurrentDeck_PropertyChanged();
-            }
-        }
-
-        void CurrentDeck_PropertyChanged(PropertyChangedEventArgs e = null)
-        {
-            if (e == null
-                || e.PropertyName == (((Expression<Func<double>>)(() => new CyberDeck().dSchaden)).Body as MemberExpression).Member.Name
-                || e.PropertyName == (((Expression<Func<double>>)(() => new CyberDeck().dSchadenMax)).Body as MemberExpression).Member.Name)
-            {
-                try
-                {
-                    XAML_Header_Schaden_M_Text.Text = CurrentDeck.dSchaden.ToString();
-                    XAML_Header_Schaden_M_Slider.Maximum = CurrentDeck.dSchadenMax;
-                    XAML_Header_Schaden_M_Slider.Value = CurrentDeck.dSchaden;
-                }
-                catch (Exception)
-                {
-                }
-            }
         }
 
         Action<ProjectPages> NavigationMethod;
@@ -147,7 +73,26 @@ namespace ShadowRunHelper
                     break;
             }
         }
+        #endregion
+        #region generel stuff
 
+        private void TutorialStateChanged(int StateNumber, bool Highlight)
+        {
+            Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
+            switch (StateNumber)
+            {
+                case 1:
+                    MainBarBorder.Style = StyleToBeApplied;
+                    break;
+                case 21:
+                    StatusControlBorder.Style = StyleToBeApplied;
+                    break;
+                default:
+                    //MainBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    //StatusControlBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
+                    break;
+            }
+        }
         async void ShowError()
         {
             foreach (Notification item in Model.lstNotifications.Where((x) => x.bIsRead == false).OrderBy((x) => x.DateTime))
@@ -167,7 +112,24 @@ namespace ShadowRunHelper
                 item.bIsRead = true;
             }
         }
+        #endregion
+        #region Header Visibility Stuff 
 
+        List<Button> BTNLST = new List<Button>();
+        void Main_Btns_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                BTNLST.Add(sender as Button);
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                ChangeUI();
+            }
+        }
         void RefreshStatus(PropertyChangedEventArgs e = null)
         {
             Expression<Func<CharHolder>> expression = () => SharedAppModel<CharHolder>.Instance.MainObject;
@@ -179,27 +141,6 @@ namespace ShadowRunHelper
 
         void ChangeUI(bool? bState = null)
         {
-            if (Model.CurrentChar != null)
-            {
-
-                Binding myBinding = new Binding()
-                {
-                    Source = Model.CurrentChar.HasChanges,
-                    Mode = BindingMode.OneWay
-                };
-                //Char_Save.IsEnabled = Model.CurrentChar?.HasChanges;
-                
-                Char_Save.SetBinding(AppBarButton.IsEnabledProperty, myBinding);
-
-                //BindingOperations.SetBinding(Char_Save, AppBarButton.IsEnabledProperty, myBinding);
-
-            }
-            else
-            {
-                Char_Save.IsEnabled = false;
-            }
-
-
             RefreshStatus();
             if (bState == null)
             {
@@ -210,7 +151,8 @@ namespace ShadowRunHelper
                 item.IsEnabled = (bool)bState;
             }
         }
-#region Char-ButtonHandling
+        #endregion
+        #region Header Control Stuff 
         void Plus_Click(object sender, RoutedEventArgs e)
         {
             if (Model.MainObject != null)
@@ -314,22 +256,52 @@ namespace ShadowRunHelper
             //}
         }
 
-        #endregion
-
-        #region ButtonHandling
-        void Click_Save(object sender, RoutedEventArgs e)
+        Slider XAML_Header_Schaden_M_Slider;
+        TextBlock XAML_Header_Schaden_M_Text;
+        void XAML_Header_Schaden_M_Slider_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Model.CurrentChar.SetSaveTimerTo();
-                //await CharHolderIO.SaveAtCurrentPlace(ViewModel.MainObject);
-            }
-            catch (Exception ex)
-            {
-                Model.NewNotification(res.GetString("Notification_Error_SaveFail"), ex);
-            }
-            SettingsModel.I.CountSavings++; //TODO check if doubled
+            XAML_Header_Schaden_M_Slider = sender as Slider;
+            CurrentDeck_PropertyChanged();
         }
+
+        void XAML_Header_Schaden_M_Text_Loaded(object sender, RoutedEventArgs e)
+        {
+            XAML_Header_Schaden_M_Text = sender as TextBlock;
+            CurrentDeck_PropertyChanged();
+        }
+        CyberDeck CurrentDeck;
+        void GetCurrentDeck()
+        {
+            CurrentDeck = (CyberDeck)Model.MainObject?.LinkList.Find(x => x.Object.ThingType == ThingDefs.CyberDeck).Object;
+
+            if (CurrentDeck != null)
+            {
+                CurrentDeck.PropertyChanged += (x, y) => CurrentDeck_PropertyChanged(y);
+                CurrentDeck_PropertyChanged();
+            }
+        }
+
+        void CurrentDeck_PropertyChanged(PropertyChangedEventArgs e = null)
+        {
+            if (e == null
+                || e.PropertyName == (((Expression<Func<double>>)(() => new CyberDeck().dSchaden)).Body as MemberExpression).Member.Name
+                || e.PropertyName == (((Expression<Func<double>>)(() => new CyberDeck().dSchadenMax)).Body as MemberExpression).Member.Name)
+            {
+                try
+                {
+                    XAML_Header_Schaden_M_Text.Text = CurrentDeck.dSchaden.ToString();
+                    XAML_Header_Schaden_M_Slider.Maximum = CurrentDeck.dSchadenMax;
+                    XAML_Header_Schaden_M_Slider.Value = CurrentDeck.dSchaden;
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
+
+        #endregion
+        #region ButtonHandling
         async void OpenDB(object sender, RoutedEventArgs e)
         {
             if (AppModel.Instance.CurrentChar == null)
@@ -352,15 +324,6 @@ namespace ShadowRunHelper
 
         }
 
-        #endregion
-        void CommandBar_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Controls.CommandBar", "DefaultLabelPosition"))
-            {
-                (sender as CommandBar).DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
-            }
-        }
-#region Navigation
         void Ui_Nav_Char(object sender, RoutedEventArgs e)
         {
             NavigationRequested(ProjectPages.Char);
@@ -375,36 +338,17 @@ namespace ShadowRunHelper
         {
             NavigationRequested(ProjectPages.Settings);
         }
-#endregion
-        List<Button> BTNLST = new List<Button>();
-        void Main_Btns_Loaded(object sender, RoutedEventArgs e)
+        #endregion
+        #region Compatibility (Update 4)
+        void CommandBar_Loaded(object sender, RoutedEventArgs e)
         {
-            try
+            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Controls.CommandBar", "DefaultLabelPosition"))
             {
-                BTNLST.Add(sender as Button);
-            }
-            catch (Exception)
-            {
-            }
-            finally
-            {
-                ChangeUI();
+                (sender as CommandBar).DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
             }
         }
-        Slider XAML_Header_Schaden_M_Slider;
-        TextBlock XAML_Header_Schaden_M_Text;
-        void XAML_Header_Schaden_M_Slider_Loaded(object sender, RoutedEventArgs e)
-        {
-            XAML_Header_Schaden_M_Slider = sender as Slider;
-            CurrentDeck_PropertyChanged();
-        }
-
-        void XAML_Header_Schaden_M_Text_Loaded(object sender, RoutedEventArgs e)
-        {
-            XAML_Header_Schaden_M_Text = sender as TextBlock;
-            CurrentDeck_PropertyChanged();
-        }
-#region ApplyNewStyles
+        #endregion
+        #region Compatibility (Update 5) Fluent Design
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
             if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.AcrylicBrush"))
@@ -439,6 +383,21 @@ namespace ShadowRunHelper
             if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
             {
                 (sender as AppBarButton).Style = (Style)Resources["AppBarButtonRevealLabelsOnRightStyle"];
+            }
+        }
+
+        void CompatibilityChecks()
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.AcrylicBrush"))
+            {
+                MainBar1.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
+                MainBar2.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
+            }
+            else
+            {
+                //SolidColorBrush myBrush = new SolidColorBrush(Color.FromArgb(255, 202, 24, 37));
+
+                //MainBarBorder.Background = myBrush;
             }
         }
         #endregion

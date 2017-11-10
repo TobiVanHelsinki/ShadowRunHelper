@@ -190,18 +190,10 @@
                 <CommandBar x:Name="MainBar1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Loaded="CommandBar_Loaded">
                     <AppBarButton x:Name="Nav_Char" Loaded="AppBarButton_Loaded" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
                     <AppBarButton x:Name="Nav_Admin" Loaded="AppBarButton_Loaded" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
-                    <AppBarButton Visibility="Collapsed" x:Name="Char_DB" Loaded="AppBarButton_Loaded" x:Uid="Ui_DB_Nav" Icon="Library" Click="OpenDB"/>
-                    <AppBarButton x:Name="Char_Save" Loaded="AppBarButton_Loaded" x:Uid="UI_Char_Btn_Speichern" Icon="Save" Click="Click_Save"/>
+                    <!--<AppBarButton Visibility="Collapsed" x:Name="Char_DB" Loaded="AppBarButton_Loaded" x:Uid="Ui_DB_Nav" Icon="Library" Click="OpenDB"/>-->
+                    <!--<AppBarButton x:Name="Char_Save" Loaded="AppBarButton_Save_Loaded" x:Uid="UI_Char_Btn_Speichern" Icon="Save" Click="Click_Save"/>-->
                     <AppBarButton x:Name="Nav_Settings" Loaded="AppBarButton_Loaded" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
                 </CommandBar>
-
-                <!--<Button Visibility="Collapsed" Loaded="Button_Loaded" x:Name="DatabasePanel"
-                        <TextBlock x:Name="DataBaseButtonText"
-                </Button>
-                <Button Loaded="Button_Loaded" x:Name="SavePanel"
-                        <TextBlock x:Name="SavePanelButtonText"
-                </Button>-->
-                
             </Border>
             <CommandBar x:Name="MainBar2" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Grid.Column="1" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Loaded="CommandBar_Loaded">
             </CommandBar>
