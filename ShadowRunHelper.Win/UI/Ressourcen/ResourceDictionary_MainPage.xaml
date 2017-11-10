@@ -1,8 +1,11 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Windows10FallCreatorsUpdate="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
+    >
 
     <ResourceDictionary.MergedDictionaries>
+
         <ResourceDictionary Source="ResourceDictionary_App.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
@@ -37,14 +40,14 @@
     <Style TargetType="TextBlock" x:Key="Panel_Oben_Text_2">
         <Setter Property="Margin" Value="20,0,10,0"/>
     </Style>
-    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="Panel_Oben_Btn_Plus">
-        <!--<Setter Property="Background" Value="{ThemeResource ButtonRevealBorderBrush}"/>-->
-        <!--<Setter Property="BorderBrush" Value="{ThemeResource ButtonRevealBorderBrush}"/>-->
+    <!--<Windows10FallCreatorsUpdate:AcrylicBrush x:Key="SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemAccentColor}" TintOpacity="0.3" FallbackColor="{ThemeResource SystemAccentColor}" />-->
+
+    <Style TargetType="Button" BasedOn="{StaticResource Windows10FallCreatorsUpdate:ButtonRevealStyle}" x:Key="Panel_Oben_Btn_Plus">
         <Setter Property="Content" Value="&#xE109;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="Panel_Oben_Btn_Minus">
+    <Style TargetType="Button" BasedOn="{StaticResource Windows10FallCreatorsUpdate:ButtonRevealStyle}" x:Key="Panel_Oben_Btn_Minus">
         <Setter Property="Content" Value="&#xE108;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
     </Style>
@@ -55,7 +58,7 @@
     <Style TargetType="StackPanel" x:Key="Panel_Oben_Parts_Stack">
         <Setter Property="Margin" Value="10,0,10,0"/>
     </Style>
-    <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="Panel_Oben_Parts_Btn">
+    <Style TargetType="Button" BasedOn="{StaticResource Windows10FallCreatorsUpdate:ButtonRevealStyle}" x:Key="Panel_Oben_Parts_Btn">
         <Setter Property="Margin" Value="10,0,10,0"/>
     </Style>
     <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="Panel_Oben_Kontostand">

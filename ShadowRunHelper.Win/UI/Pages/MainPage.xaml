@@ -5,13 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:model="using:ShadowRunHelper.Model"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Windows10FallCreatorsUpdate="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_MainPage.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <AcrylicBrush x:Key="SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemAccentColor}" TintOpacity="0.3" FallbackColor="{ThemeResource SystemAccentColor}" />
+            <Windows10FallCreatorsUpdate:AcrylicBrush x:Key="SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemAccentColor}" TintOpacity="0.3" FallbackColor="{ThemeResource SystemAccentColor}" />
             <DataTemplate x:Name="Status" x:Key="Status" x:DataType="model:CharHolder">
                 <Grid x:Name="MainGrid" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Loaded="MainGrid_Loaded" Grid.Row="0">
                     <Grid.ColumnDefinitions>
@@ -113,7 +114,7 @@
                                         <Button Grid.Column="3" Grid.Row="6" Name="Runs_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Click="Plus_Click"></Button>
                                         <Button Grid.Column="2" Grid.Row="6" Name="Runs_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Click="Minus_Click"></Button>
 
-                                        <Button x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource ButtonRevealStyle}" Name="Person2_Edit" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="7" Click="Edit_Click"/>
+                                        <Button x:Uid="UI_Btn_Bearbeiten" Loaded="Button_Loaded" Name="Person2_Edit" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="7" Click="Edit_Click"/>
                                     </Grid>
                                 </Flyout>
                             </Button.Flyout>
@@ -187,10 +188,9 @@
             </Grid.ColumnDefinitions>
             <Border x:Name="MainBarBorder">
                 <CommandBar x:Name="MainBar1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Loaded="CommandBar_Loaded">
-                    <AppBarButton Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}" x:Name="Nav_Char" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
-                    <AppBarButton Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}" x:Name="Nav_Admin" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
-                    <!-- Content="&#xE753;" FontFamily="Segoe MDL2 Assets"-->
-                    <AppBarButton Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}" x:Name="Nav_Settings" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
+                    <AppBarButton x:Name="Nav_Char" Loaded="AppBarButton_Loaded" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
+                    <AppBarButton x:Name="Nav_Admin" Loaded="AppBarButton_Loaded" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
+                    <AppBarButton x:Name="Nav_Settings" Loaded="AppBarButton_Loaded" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
                 </CommandBar>
             </Border>
             <CommandBar x:Name="MainBar2" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Grid.Column="1" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Loaded="CommandBar_Loaded">

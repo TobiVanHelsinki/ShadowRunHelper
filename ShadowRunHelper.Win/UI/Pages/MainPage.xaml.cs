@@ -33,7 +33,7 @@ namespace ShadowRunHelper
         }
         void CompatibilityChecks()
         {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.XamlCompositionBrushBase"))
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.AcrylicBrush"))
             {
                 MainBar1.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
                 MainBar2.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
@@ -330,7 +330,7 @@ namespace ShadowRunHelper
             XAML_Header_Schaden_M_Text = sender as TextBlock;
             CurrentDeck_PropertyChanged();
         }
-
+#region ApplyNewStyles
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
             if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.XamlCompositionBrushBase"))
@@ -351,5 +351,22 @@ namespace ShadowRunHelper
                 }
             }
         }
+
+        private void Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
+            }
+        }
+
+        private void AppBarButton_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                (sender as AppBarButton).Style = (Style)Resources["AppBarButtonRevealLabelsOnRightStyle"];
+            }
+        }
+        #endregion
     }
 }

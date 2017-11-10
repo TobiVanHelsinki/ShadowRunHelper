@@ -82,7 +82,7 @@ namespace ShadowRunHelper
         }
 
         // GUI Stuff ##########################################################
-        private void TutorialStateChanged(int StateNumber, bool Highlight)
+        void TutorialStateChanged(int StateNumber, bool Highlight)
         {
             Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
             switch (StateNumber)
@@ -490,7 +490,7 @@ namespace ShadowRunHelper
 
         // NEW VIEW ###########################################################
 
-        private async void Click_NewView(object sender, RoutedEventArgs e)
+        async void Click_NewView(object sender, RoutedEventArgs e)
         {
             CoreApplicationView newView = CoreApplication.CreateNewView();
             int newViewId = 0;
@@ -507,8 +507,9 @@ namespace ShadowRunHelper
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
 
-        private void UI_CharVerwaltung_Btn_CSV_Export_Loaded(object sender, RoutedEventArgs e)
+        void UI_CharVerwaltung_Btn_CSV_Export_Loaded(object sender, RoutedEventArgs e)
         {
+            AppBarButton_Loaded(sender, e);
 #if DEBUG
             (sender as AppBarButton).Visibility = Visibility.Visible;
 #else
@@ -516,6 +517,24 @@ namespace ShadowRunHelper
 #endif
 
         }
+
+        #region ApplyNewStyles
+        void Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
+            }
+        }
+
+        void AppBarButton_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                (sender as AppBarButton).Style = (Style)Resources["AppBarButtonRevealLabelsOnRightStyle"];
+            }
+        }
+        #endregion
 
     }
 }

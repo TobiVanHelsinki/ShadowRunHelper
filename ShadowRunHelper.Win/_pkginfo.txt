@@ -1,1 +1,1 @@
-C:\Users\Tobiv\Source\Repos\ShadowRunHelper\ShadowRunHelper.Win\bin\ARM\Release\Upload\ShadowRunHelper.Win_1.6.8.0\ShadowRunHelper.Win_1.6.8.0_x86_x64_arm.appxbundle
+C:\Users\Tobiv\Source\Repos\ShadowRunHelper\ShadowRunHelper.Win\bin\ARM\Release\Upload\ShadowRunHelper.Win_1.6.9.0\ShadowRunHelper.Win_1.6.9.0_x86_x64_arm.appxbundle

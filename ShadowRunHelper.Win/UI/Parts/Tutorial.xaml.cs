@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TLIB;
+using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -144,5 +145,23 @@ namespace ShadowRunHelper.UI
             }
             IsInHiddenState = !IsInHiddenState;
         }
+
+        #region ApplyNewStyles
+        void Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
+            }
+        }
+
+        void AppBarButton_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                (sender as AppBarButton).Style = (Style)Resources["AppBarButtonRevealLabelsOnRightStyle"];
+            }
+        }
+        #endregion
     }
 }

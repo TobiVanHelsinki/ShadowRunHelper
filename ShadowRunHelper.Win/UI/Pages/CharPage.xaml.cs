@@ -10,6 +10,7 @@ using TLIB;
 using TLIB.IO;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
+using Windows.Foundation.Metadata;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -662,6 +663,15 @@ namespace ShadowRunHelper
             {
             }
         }
+        #region ApplyNewStyles
+        private void Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
+            }
+        }
 
+        #endregion
     }
 }

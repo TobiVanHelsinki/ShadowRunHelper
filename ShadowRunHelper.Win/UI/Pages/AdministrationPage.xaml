@@ -50,10 +50,10 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource Normal}"/>
                     <CommandBar Background="Transparent" Grid.Row="1" Loaded="CommandBar_Loaded">
-                        <AppBarButton Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}" x:Name="UI_CharVerwaltung_Btn_Laden" x:Uid="UI_CharVerwaltung_Btn_Laden" Icon="Upload" Click="Click_Laden"/>
-                        <AppBarButton Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}" x:Name="UI_CharVerwaltung_Btn_Datei_Export" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_OtherChar"/>
-                        <AppBarButton Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}" x:Name="UI_CharVerwaltung_Btn_CSV_Export" Loaded="UI_CharVerwaltung_Btn_CSV_Export_Loaded" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_OtherChar"/>
-                        <AppBarButton Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}" x:Name="UI_CharVerwaltung_Btn_Löschen" x:Uid="UI_CharVerwaltung_Btn_Löschen" Icon="Delete" Click="Click_Löschen_OtherChar"/>
+                        <AppBarButton Loaded="AppBarButton_Loaded" x:Name="UI_CharVerwaltung_Btn_Laden" x:Uid="UI_CharVerwaltung_Btn_Laden" Icon="Upload" Click="Click_Laden"/>
+                        <AppBarButton Loaded="AppBarButton_Loaded" x:Name="UI_CharVerwaltung_Btn_Datei_Export" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_OtherChar"/>
+                        <AppBarButton Loaded="UI_CharVerwaltung_Btn_CSV_Export_Loaded" x:Name="UI_CharVerwaltung_Btn_CSV_Export" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_OtherChar"/>
+                        <AppBarButton Loaded="AppBarButton_Loaded" x:Name="UI_CharVerwaltung_Btn_Löschen" x:Uid="UI_CharVerwaltung_Btn_Löschen" Icon="Delete" Click="Click_Löschen_OtherChar"/>
                     </CommandBar>
                 </Grid>
             </DataTemplate>
@@ -89,12 +89,12 @@
             <ProgressBar x:Name="ProgressBar_Char" Grid.Row="2" Visibility="Collapsed"/>
             <Border Grid.Row="3" x:Name="CurrentCharBarBorder">
                 <CommandBar Background="Transparent" Loaded="CommandBar_Loaded" >
-                    <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
-                    <AppBarButton x:Name="CurrentCharBtn_Save_Intern" x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
-                    <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Löschen" Icon="Delete" Click="Click_Löschen_CurrentChar" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
-                    <AppBarButton x:Name="CurrentCharBtn_FileExp" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
-                    <AppBarButton Visibility="Collapsed" x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
-                    <AppBarButton x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern" Loaded="AppBarButton_Loaded"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Save_Intern" x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern"  Loaded="AppBarButton_Loaded"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Löschen" Icon="Delete" Click="Click_Löschen_CurrentChar"  Loaded="AppBarButton_Loaded"/>
+                    <AppBarButton x:Name="CurrentCharBtn_FileExp" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar"  Loaded="AppBarButton_Loaded"/>
+                    <AppBarButton Visibility="Collapsed" x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar"  Loaded="AppBarButton_Loaded"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar"  Loaded="AppBarButton_Loaded"/>
                 </CommandBar>
             </Border>
         </Grid>
@@ -114,13 +114,13 @@
         </Border>
         <Border Grid.Row="4" x:Name="MainBarBorder">
             <CommandBar Grid.Row="4" Loaded="CommandBar_Loaded">
-                <AppBarButton Visibility="Collapsed" x:Name="Btn_SecondView" Content="Neue Ansicht" Icon="View" Click="Click_NewView" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
-                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
-                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Datei_Import" Icon="Import" Click="Click_Datei_Import" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
-                <AppBarButton Visibility="Collapsed" x:Name="Btn_CSV_Import" x:Uid="UI_CharVerwaltung_Btn_CSV_Import" Icon="Import" Click="Click_CSV_Import" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
-                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" Icon="Delete" Click="Click_Löschen_Alles" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
-                <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
-                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealLabelsOnRightStyle}"/>
+                <AppBarButton Visibility="Collapsed" x:Name="Btn_SecondView" Content="Neue Ansicht" Icon="View" Click="Click_NewView"  Loaded="AppBarButton_Loaded"/>
+                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen"  Loaded="AppBarButton_Loaded"/>
+                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Datei_Import" Icon="Import" Click="Click_Datei_Import"  Loaded="AppBarButton_Loaded"/>
+                <AppBarButton Visibility="Collapsed" x:Name="Btn_CSV_Import" x:Uid="UI_CharVerwaltung_Btn_CSV_Import" Icon="Import" Click="Click_CSV_Import"  Loaded="AppBarButton_Loaded"/>
+                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Löschen" Icon="Delete" Click="Click_Löschen_Alles"  Loaded="AppBarButton_Loaded"/>
+                <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"  Loaded="AppBarButton_Loaded"/>
+                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar"  Loaded="AppBarButton_Loaded"/>
             </CommandBar>
             </Border>
     </Grid>

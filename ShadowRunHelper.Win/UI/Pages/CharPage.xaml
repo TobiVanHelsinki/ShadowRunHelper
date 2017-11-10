@@ -1807,7 +1807,7 @@
                     <ColumnDefinition x:Name="GlobalFilterBox_FlyoutColumn" Width="*"/>
                     <ColumnDefinition x:Name="GlobalFilterBox_NormalColumn" Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Style="{ThemeResource ButtonRevealStyle}" Width="{Binding RelativeSource={RelativeSource Self}, Path=Height}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Content="&#xE11A;" FontFamily="Segoe MDL2 Assets">
+                <Button Loaded="Button_Loaded" Width="{Binding RelativeSource={RelativeSource Self}, Path=Height}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Content="&#xE11A;" FontFamily="Segoe MDL2 Assets">
                     <Button.Flyout>
                         <Flyout Placement="Left" >
                             <ContentPresenter Width="300" DataContext="{x:Bind CurrentChar}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
@@ -1819,13 +1819,13 @@
         </Pivot.RightHeader>
         <Pivot.LeftHeader>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button Visibility="Collapsed" Style="{ThemeResource ButtonRevealStyle}" Margin="0,0,5,0" x:Name="DatabasePanel" Click="OpenDB" HorizontalAlignment="Center">
+                <Button Visibility="Collapsed" Loaded="Button_Loaded" Margin="0,0,5,0" x:Name="DatabasePanel" Click="OpenDB" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="&#xE8F1;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
                         <TextBlock x:Name="DataBaseButtonText" x:Uid="Ui_DB_Nav"/>
                     </StackPanel>
                 </Button>
-                <Button Style="{ThemeResource ButtonRevealStyle}" x:Name="SavePanel" IsEnabled="{x:Bind CurrentChar.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
+                <Button Loaded="Button_Loaded" x:Name="SavePanel" IsEnabled="{x:Bind CurrentChar.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
                         <TextBlock x:Name="SavePanelButtonText" x:Uid="UI_Char_Btn_Speichern"/>
