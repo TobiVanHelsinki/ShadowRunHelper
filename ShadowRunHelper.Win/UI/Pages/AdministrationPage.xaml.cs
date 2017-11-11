@@ -108,12 +108,12 @@ namespace ShadowRunHelper
         void ChangeCurrentCharUI(bool bHow)
         {
             CurrentCharBtn_Save.IsEnabled = bHow;
+            CurrentCharBtn_Rename.IsEnabled = bHow;
             CurrentCharBtn_Save_Intern.IsEnabled = bHow;
             CurrentCharBtn_Del.IsEnabled = bHow;
             CurrentCharBtn_FileExp.IsEnabled = bHow;
             CurrentCharBtn_CSVExp.IsEnabled = bHow;
             CurrentCharBtn_Repair.IsEnabled = bHow;
-            EditBtn.IsEnabled = bHow;
 
             CurrentCharPath.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
             CurrentCharName.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
@@ -536,5 +536,12 @@ namespace ShadowRunHelper
         }
         #endregion
 
+        async void Rename_Click(object sender, RoutedEventArgs e)
+        {
+            Input dialog = new Input();
+            dialog.InputValue = ShadowRunHelper.Model.AppModel.Instance.CurrentChar.FileInfo.Filename;
+            await dialog.ShowAsync();
+            ShadowRunHelper.Model.AppModel.Instance.CurrentChar.FileInfo.Filename = dialog.InputValue;
+        }
     }
 }

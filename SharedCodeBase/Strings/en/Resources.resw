@@ -1152,4 +1152,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="UI_Char_Btn_Speichern.Label" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="UI_CharVerwaltung_Btn_Rename.Label" xml:space="preserve">
+    <value>Rename</value>
+  </data>
 </root>

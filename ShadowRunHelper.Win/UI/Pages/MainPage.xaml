@@ -26,7 +26,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="0"/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0" Style="{StaticResource Panel_Oben_Parts_Stack}">
+                        <StackPanel Margin="0,5,0,0" Grid.Column="0" Style="{StaticResource Panel_Oben_Parts_Stack}">
                             <TextBlock Text="{x:Bind Person.Alias,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_1}"/>
                             <TextBlock Text="{x:Bind Person.Char_Typ,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_1}"/>
                         </StackPanel>

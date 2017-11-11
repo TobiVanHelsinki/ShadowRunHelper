@@ -1153,8 +1153,7 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
     <value>"Chars Verwalten"-Anleitung gelesen</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen.Label" xml:space="preserve">
-    <value>Alle Chars Löschen
-</value>
+    <value>Alle Chars Löschen</value>
   </data>
   <data name="AuswahlDialog.PrimaryButtonText" xml:space="preserve">
     <value>Fertig</value>
@@ -1185,5 +1184,8 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   </data>
   <data name="Request_DeleteAll.Yes" xml:space="preserve">
     <value>Wirklich Löschen!</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Rename.Label" xml:space="preserve">
+    <value>Umbenennen</value>
   </data>
 </root>

@@ -75,26 +75,18 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="&#xE70F;" FontFamily="Segoe MDL2 Assets" x:Name="EditBtn">
-                    <Button.Flyout>
-                        <Flyout>
-                            <TextBox Text="{x:Bind ViewModel.CurrentChar.FileInfo.Filename, Mode=TwoWay}"/>
-                        </Flyout>
-                    </Button.Flyout>
-                </Button>
-                <TextBlock x:Name="CurrentCharName" Text="{x:Bind ViewModel.CurrentChar.FileInfo.Filename, Mode=OneWay}" Style="{StaticResource Chars}"/>
-            </StackPanel>
+            <TextBlock x:Name="CurrentCharName" Text="{x:Bind ViewModel.CurrentChar.FileInfo.Filename, Mode=OneWay}" Style="{StaticResource Chars}"/>
             <TextBlock Grid.Row="1" x:Name="CurrentCharPath" Text="{x:Bind ViewModel.CurrentChar.FileInfo.Filepath, Mode=OneWay, Converter={StaticResource o_CharAdmin_Path}}" Style="{StaticResource Chars}"/>
             <ProgressBar x:Name="ProgressBar_Char" Grid.Row="2" Visibility="Collapsed"/>
             <Border Grid.Row="3" x:Name="CurrentCharBarBorder">
                 <CommandBar Background="Transparent" Loaded="CommandBar_Loaded" >
-                    <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern" Loaded="AppBarButton_Loaded"/>
-                    <AppBarButton x:Name="CurrentCharBtn_Save_Intern" x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern"  Loaded="AppBarButton_Loaded"/>
-                    <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_CurrentChar"  Loaded="AppBarButton_Loaded"/>
-                    <AppBarButton x:Name="CurrentCharBtn_FileExp" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar"  Loaded="AppBarButton_Loaded"/>
-                    <AppBarButton Visibility="Collapsed" x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar"  Loaded="AppBarButton_Loaded"/>
-                    <AppBarButton x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar"  Loaded="AppBarButton_Loaded"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern" Loaded="AppBarButton_Loaded" IsEnabled="False"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Rename" x:Uid="UI_CharVerwaltung_Btn_Rename" Icon="Edit" Click="Rename_Click" Loaded="AppBarButton_Loaded"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Save_Intern" x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern" Loaded="AppBarButton_Loaded" IsEnabled="False"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_CurrentChar"  Loaded="AppBarButton_Loaded" IsEnabled="False"/>
+                    <AppBarButton x:Name="CurrentCharBtn_FileExp" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar"  Loaded="AppBarButton_Loaded" IsEnabled="False"/>
+                    <AppBarButton Visibility="Collapsed" x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar"  Loaded="AppBarButton_Loaded" IsEnabled="False"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar"  Loaded="AppBarButton_Loaded" IsEnabled="False"/>
                 </CommandBar>
             </Border>
         </Grid>
