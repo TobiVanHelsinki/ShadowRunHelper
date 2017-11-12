@@ -30,7 +30,7 @@
                             <TextBlock Text="{x:Bind Person.Alias,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_1}"/>
                             <TextBlock Text="{x:Bind Person.Char_Typ,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_1}"/>
                         </StackPanel>
-                        <Button x:Name="Infos" Loaded="Main_Btns_Loaded" Grid.Column="1" Style="{StaticResource Panel_Oben_Parts_Btn}">
+                        <Button x:Name="Infos" IsEnabled="{x:Bind THIS, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" Grid.Column="1" Style="{StaticResource Panel_Oben_Parts_Btn}">
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock x:Uid="Model_Person_Kontostand" Style="{StaticResource Panel_Oben_Text_1}"/>
@@ -119,7 +119,7 @@
                                 </Flyout>
                             </Button.Flyout>
                         </Button>
-                        <Button x:Name="Regler" Loaded="Main_Btns_Loaded" Grid.Column="2" Style="{StaticResource Panel_Oben_Parts_Btn}">
+                        <Button x:Name="Regler" Grid.Column="2" Style="{StaticResource Panel_Oben_Parts_Btn}">
                             <StackPanel Orientation="Vertical" >
                                 <TextBlock x:Uid="UI_Char_Schaden" HorizontalAlignment="Center" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
@@ -178,7 +178,8 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Border x:Name="StatusControlBorder">
-            <ContentControl HorizontalContentAlignment="Stretch" x:Name="StatusControl" ContentTemplate="{StaticResource Status}"/>
+            <ContentControl HorizontalContentAlignment="Stretch" x:Name="StatusControl" ContentTemplate="{StaticResource Status}"
+                            Content="{x:Bind Model.CurrentChar, Mode=OneWay}" IsEnabled="{x:Bind Model.CurrentChar, Converter={StaticResource o_Null2Bool}, Mode=OneWay}"/>
         </Border>
         <Frame Grid.Row="1" Name="MyFrame"></Frame>
         <Grid Grid.Row="2">

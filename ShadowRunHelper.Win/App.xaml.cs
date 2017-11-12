@@ -97,7 +97,7 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    Model.CurrentChar = await CharHolderIO.Load(SettingsModel.I.LastSaveInfo, null, UserDecision.ThrowError);
+                    Model.MainObject = await CharHolderIO.Load(SettingsModel.I.LastSaveInfo, null, UserDecision.ThrowError);
                     SettingsModel.I.CountLoadings++;
                 }
                 catch (Exception) { }

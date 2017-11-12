@@ -110,6 +110,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Converter\o_Null2Bool.cs" />
     <Compile Include="UI\Converter\io_GebDatum.cs" />
     <Compile Include="UI\Converter\io_ZahlenDouble.cs" />
     <Compile Include="UI\Converter\o_CharAdmin_Path.cs" />

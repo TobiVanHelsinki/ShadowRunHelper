@@ -135,10 +135,10 @@ namespace ShadowRunHelper
             Expression<Func<CharHolder>> expression = () => SharedAppModel<CharHolder>.Instance.MainObject;
             if (e == null || e.PropertyName == (expression.Body as MemberExpression).Member.Name)
             {
-                StatusControl.DataContext = Model.CurrentChar;
+                //StatusControl.DataContext = Model.CurrentChar;
             }
         }
-
+        bool MainObjectPresent = false;
         void ChangeUI(bool? bState = null)
         {
             PreDataBase.Visibility = Model?.CurrentChar == null ? Visibility.Collapsed : Visibility.Visible;
