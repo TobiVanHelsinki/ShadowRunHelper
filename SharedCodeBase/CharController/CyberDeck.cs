@@ -3,17 +3,40 @@ using ShadowRunHelper.Model;
 
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cCyberDeckController : cController<CyberDeck>
+    public class cCyberDeckController : cController<CyberDeck>,  INotifyPropertyChanged
     {
+        #region event
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            SharedCodeBase.Model.ModelResources.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+        }
+        #endregion
         AllListEntry MI_V;
         AllListEntry MI_A;
         AllListEntry MI_S;
         AllListEntry MI_F;
         AllListEntry MI_D;
-        public CyberDeck ActiveItem;
+
+        CyberDeck _ActiveItem;
+        [Newtonsoft.Json.JsonIgnore]
+        public CyberDeck ActiveItem
+        {
+            get { return _ActiveItem; }
+            protected set
+            {
+                if (value != _ActiveItem)
+                {
+                    _ActiveItem = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         public cCyberDeckController()
         {

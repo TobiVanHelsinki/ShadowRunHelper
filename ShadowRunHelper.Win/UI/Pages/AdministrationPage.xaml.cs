@@ -242,8 +242,8 @@ namespace ShadowRunHelper
                 return;
             }
             await Laden(() => CharHolderIO.Load(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "Import" }, Constants.LST_FILETYPES_CHAR, UserDecision.AskUser));
-            ViewModel.CurrentChar.FileInfo.Filepath = CharHolderIO.GetCurrentSavePath();
-            ViewModel.CurrentChar.FileInfo.Fileplace = CharHolderIO.GetCurrentSavePlace();
+            ViewModel.MainObject.FileInfo.Filepath = CharHolderIO.GetCurrentSavePath();
+            ViewModel.MainObject.FileInfo.Fileplace = CharHolderIO.GetCurrentSavePlace();
         }
 
         async Task Laden(Func<Task<CharHolder>> LoadFunc)
@@ -539,9 +539,9 @@ namespace ShadowRunHelper
         async void Rename_Click(object sender, RoutedEventArgs e)
         {
             Input dialog = new Input();
-            dialog.InputValue = ShadowRunHelper.Model.AppModel.Instance.CurrentChar.FileInfo.Filename;
+            dialog.InputValue = ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename;
             await dialog.ShowAsync();
-            ShadowRunHelper.Model.AppModel.Instance.CurrentChar.FileInfo.Filename = dialog.InputValue;
+            ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename = dialog.InputValue;
         }
     }
 }

@@ -23,18 +23,18 @@ namespace ShadowRunHelper
     {
         void Click_Save(object sender, RoutedEventArgs e)
         {
-            ViewModel?.CurrentChar?.SetSaveTimerTo();
+            ViewModel?.MainObject?.SetSaveTimerTo();
         }
         // Variables ##########################################################
         readonly AppModel ViewModel = AppModel.Instance;
         public Windows.System.Display.DisplayRequest Char_DisplayRequest;
-        CharHolder CurrentChar;
+        CharHolder MainObject;
         ResourceLoader res;
         public CharPage()
         {
-            if (CurrentChar == null)
+            if (MainObject == null)
             {
-                CurrentChar = ViewModel.CurrentChar;
+                MainObject = ViewModel.MainObject;
             }
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
@@ -543,7 +543,7 @@ namespace ShadowRunHelper
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            (sender as AutoSuggestBox).ItemsSource = CurrentChar.ThingList.Where((x) => x.Bezeichner.ToLower().Contains((sender as AutoSuggestBox).Text.ToLower()));
+            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where((x) => x.Bezeichner.ToLower().Contains((sender as AutoSuggestBox).Text.ToLower()));
         }
 
         void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
@@ -557,7 +557,7 @@ namespace ShadowRunHelper
                 }
                 else
                 {
-                    PendingScrollEntry = CurrentChar.ThingList.Find(x => args.QueryText.Contains(x.Bezeichner));
+                    PendingScrollEntry = MainObject.ThingList.Find(x => args.QueryText.Contains(x.Bezeichner));
                 }
 
                 if (!Blocklist.TryGetValue(PendingScrollEntry.ThingType, out Choosen))

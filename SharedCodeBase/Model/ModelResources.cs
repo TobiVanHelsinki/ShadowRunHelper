@@ -21,5 +21,14 @@ namespace SharedCodeBase.Model
             //});
 
         }
+        
+        public static async void AtGui(Action x, CoreDispatcherPriority Priority = CoreDispatcherPriority.Low)
+        {
+            //await Windows.UI.Xaml.Window.Current.Dispatcher.RunAsync(
+            await ShadowRunHelper.Model.AppModel.Instance.Dispatcher.RunAsync(
+                Priority, () => {
+                x();
+            });
+        }
     }
 }

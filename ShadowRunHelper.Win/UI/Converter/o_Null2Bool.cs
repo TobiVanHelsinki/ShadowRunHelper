@@ -16,4 +16,17 @@ namespace ShadowRunHelper.UI.Converter
         }
         #endregion
     }
+    public class o_Null2Visibility : IValueConverter
+    {
+        #region IValueConverter Members 
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            return value == null ? Windows.UI.Xaml.Visibility.Collapsed : Windows.UI.Xaml.Visibility.Visible;
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            return (Type)value;
+        }
+        #endregion
+    }
 }

@@ -37,11 +37,6 @@ namespace ShadowRunHelper
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            Model.PropertyChanged += (x, y) => ChangeUI();
-            Model.PropertyChanged += (x, y) => RefreshStatus(y);
-            Model.PropertyChanged += (x, y) => GetCurrentDeck();
-            GetCurrentDeck();
-            ChangeUI();
             ShowError();
             Model.SetDependencies(Dispatcher);
             NavigationRequested(ProjectPages.Char);
@@ -113,47 +108,7 @@ namespace ShadowRunHelper
             }
         }
         #endregion
-        #region Header Visibility Stuff 
-
-        List<Button> BTNLST = new List<Button>();
-        void Main_Btns_Loaded(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                BTNLST.Add(sender as Button);
-            }
-            catch (Exception)
-            {
-            }
-            finally
-            {
-                ChangeUI();
-            }
-        }
-        void RefreshStatus(PropertyChangedEventArgs e = null)
-        {
-            Expression<Func<CharHolder>> expression = () => SharedAppModel<CharHolder>.Instance.MainObject;
-            if (e == null || e.PropertyName == (expression.Body as MemberExpression).Member.Name)
-            {
-                //StatusControl.DataContext = Model.CurrentChar;
-            }
-        }
-        bool MainObjectPresent = false;
-        void ChangeUI(bool? bState = null)
-        {
-            PreDataBase.Visibility = Model?.CurrentChar == null ? Visibility.Collapsed : Visibility.Visible;
-            RefreshStatus();
-            if (bState == null)
-            {
-                bState = ((Model == null || Model.MainObject == null) ? false : true);
-            }
-            foreach (var item in BTNLST)
-            {
-                item.IsEnabled = (bool)bState;
-            }
-        }
-        #endregion
-        #region Header Control Stuff 
+        #region Header Button Handler
         void Plus_Click(object sender, RoutedEventArgs e)
         {
             if (Model.MainObject != null)
@@ -231,81 +186,11 @@ namespace ShadowRunHelper
             }
         }
 
-        void XAML_Header_Schaden_M_Slider_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
-        {
-            Slider XAML_Header_Schaden_M_Slider = sender as Slider;
-            if (CurrentDeck == null)
-            {
-                return;
-            }
-            CurrentDeck.dSchaden = XAML_Header_Schaden_M_Slider.Value;
-            //if (CurrentDeck.dSchaden <= 3)
-            //{
-            //    XAML_Header_Schaden_M_Slider.Foreground = new SolidColorBrush(Colors.Green);
-            //}
-            //else if (CurrentDeck.dSchaden <= 7)
-            //{
-            //    XAML_Header_Schaden_M_Slider.Foreground = new SolidColorBrush(Colors.Yellow);
-            //}
-            //else if (CurrentDeck.dSchaden <= 10)
-            //{
-            //    XAML_Header_Schaden_M_Slider.Foreground = new SolidColorBrush(Colors.Red);
-            //}
-            //else
-            //{
-            //    XAML_Header_Schaden_M_Slider.Foreground = new SolidColorBrush(Colors.Black);
-            //}
-        }
-
-        Slider XAML_Header_Schaden_M_Slider;
-        TextBlock XAML_Header_Schaden_M_Text;
-        void XAML_Header_Schaden_M_Slider_Loaded(object sender, RoutedEventArgs e)
-        {
-            XAML_Header_Schaden_M_Slider = sender as Slider;
-            CurrentDeck_PropertyChanged();
-        }
-
-        void XAML_Header_Schaden_M_Text_Loaded(object sender, RoutedEventArgs e)
-        {
-            XAML_Header_Schaden_M_Text = sender as TextBlock;
-            CurrentDeck_PropertyChanged();
-        }
-        CyberDeck CurrentDeck;
-        void GetCurrentDeck()
-        {
-            CurrentDeck = (CyberDeck)Model.MainObject?.LinkList.Find(x => x.Object.ThingType == ThingDefs.CyberDeck).Object;
-
-            if (CurrentDeck != null)
-            {
-                CurrentDeck.PropertyChanged += (x, y) => CurrentDeck_PropertyChanged(y);
-                CurrentDeck_PropertyChanged();
-            }
-        }
-
-        void CurrentDeck_PropertyChanged(PropertyChangedEventArgs e = null)
-        {
-            if (e == null
-                || e.PropertyName == (((Expression<Func<double>>)(() => new CyberDeck().dSchaden)).Body as MemberExpression).Member.Name
-                || e.PropertyName == (((Expression<Func<double>>)(() => new CyberDeck().dSchadenMax)).Body as MemberExpression).Member.Name)
-            {
-                try
-                {
-                    XAML_Header_Schaden_M_Text.Text = CurrentDeck.dSchaden.ToString();
-                    XAML_Header_Schaden_M_Slider.Maximum = CurrentDeck.dSchadenMax;
-                    XAML_Header_Schaden_M_Slider.Value = CurrentDeck.dSchaden;
-                }
-                catch (Exception)
-                {
-                }
-            }
-        }
-
-
         #endregion
         #region ButtonHandling
         async void OpenDB(object sender, RoutedEventArgs e)
         {
-            if (AppModel.Instance.CurrentChar == null)
+            if (AppModel.Instance.MainObject == null)
             {
                 return;
             }

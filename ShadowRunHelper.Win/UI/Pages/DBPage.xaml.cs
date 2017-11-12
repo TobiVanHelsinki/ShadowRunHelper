@@ -26,7 +26,7 @@ namespace ShadowRunHelper
         CharHolder ActiveChar;
         public DBPage()
         {
-            ActiveChar = ViewModel.CurrentChar;
+            ActiveChar = ViewModel.MainObject;
             PrepareBlockList();
         }
         // Navigation Stuff####################################################
@@ -545,18 +545,10 @@ namespace ShadowRunHelper
             {
                 if (!ActiveChar.LinkList.Exists((x) => Thing.HasSameIdentifiers(x.Object, item)))
                 {
-                    AtGui(() => ActiveChar.Add(item.Copy()));
+                    ModelResources.AtGui(() => ActiveChar.Add(item.Copy()));
                 }
             }
-            AtGui(() => { ActiveChar.Repair(); });
+            ModelResources.AtGui(() => { ActiveChar.Repair(); });
         }
-        
-        static async void AtGui(Action x, CoreDispatcherPriority Priority = CoreDispatcherPriority.Low)
-        {
-            await AppModel.Instance.Dispatcher.RunAsync(Priority, () => {
-                x();
-            });
-        }
-
     }
 }

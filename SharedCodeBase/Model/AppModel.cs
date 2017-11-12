@@ -21,15 +21,6 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        public CharHolder CurrentChar
-        {
-            get { return MainObject; }
-            set
-            {
-                MainObject = value;
-            }
-        }
-
         public void SetDependencies(CoreDispatcher dispatcher)
         {
             Dispatcher = dispatcher;

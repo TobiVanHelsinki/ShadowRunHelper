@@ -18,7 +18,6 @@ namespace ShadowRunHelper.Model
     public class CharHolder : IMainType, INotifyPropertyChanged
     {
         #region vars
-        public CharHolder THIS { get { return this; } }
         // Admin Version Numbers ##############################################
         public string APP_VERSION_NUMBER { get { return Constants.APP_VERSION_NUMBER_1_5; } }
         public string FILE_VERSION_NUMBER { get { return Constants.CHARFILE_VERSION_1_5; } }

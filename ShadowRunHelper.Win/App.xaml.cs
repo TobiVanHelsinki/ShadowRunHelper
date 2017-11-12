@@ -121,11 +121,11 @@ namespace ShadowRunHelper
         /// </summary>
         protected async override void OnFileActivated(FileActivatedEventArgs args)
         {
-            if (Model.CurrentChar != null) // Save CurrentChar //todo for later: open  new window if user whish this so
+            if (Model.MainObject != null) // Save CurrentChar //todo for later: open  new window if user whish this so
             {
                 try
                 {
-                    await CharHolderIO.SaveAtOriginPlace(Model.CurrentChar, SaveType.Manually, UserDecision.ThrowError);
+                    await CharHolderIO.SaveAtOriginPlace(Model.MainObject, SaveType.Manually, UserDecision.ThrowError);
                 }
                 catch (Exception)
                 {
@@ -180,15 +180,15 @@ namespace ShadowRunHelper
 
         void App_OnSuspending(object sender, SuspendingEventArgs e)
         {
-            SettingsModel.I.LastSaveInfo = Model?.CurrentChar?.FileInfo;
-            Model?.CurrentChar?.SetSaveTimerTo();
+            SettingsModel.I.LastSaveInfo = Model?.MainObject?.FileInfo;
+            Model?.MainObject?.SetSaveTimerTo();
             e.SuspendingOperation.GetDeferral().Complete();
         }
 
         private void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
         {
-            SettingsModel.I.LastSaveInfo = Model?.CurrentChar?.FileInfo;
-            Model?.CurrentChar?.SetSaveTimerTo();
+            SettingsModel.I.LastSaveInfo = Model?.MainObject?.FileInfo;
+            Model?.MainObject?.SetSaveTimerTo();
             e.GetDeferral().Complete();
         }
 
@@ -214,7 +214,7 @@ namespace ShadowRunHelper
             SettingsModel.I.LastSaveInfo = null;
             try
             {
-                await CharHolderIO.SaveAtOriginPlace(Model.CurrentChar, TLIB.IO.SaveType.Emergency);
+                await CharHolderIO.SaveAtOriginPlace(Model.MainObject, TLIB.IO.SaveType.Emergency);
                 var res = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
                 Model.NewNotification(res.GetString("Notification_Error_Unknown"), e.Exception);
             }

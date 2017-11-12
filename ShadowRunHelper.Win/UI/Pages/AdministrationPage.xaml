@@ -75,8 +75,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="CurrentCharName" Text="{x:Bind ViewModel.CurrentChar.FileInfo.Filename, Mode=OneWay}" Style="{StaticResource Chars}"/>
-            <TextBlock Grid.Row="1" x:Name="CurrentCharPath" Text="{x:Bind ViewModel.CurrentChar.FileInfo.Filepath, Mode=OneWay, Converter={StaticResource o_CharAdmin_Path}}" Style="{StaticResource Chars}"/>
+            <TextBlock x:Name="CurrentCharName" Text="{x:Bind ViewModel.MainObject.FileInfo.Filename, Mode=OneWay}" Style="{StaticResource Chars}"/>
+            <TextBlock Grid.Row="1" x:Name="CurrentCharPath" Text="{x:Bind ViewModel.MainObject.FileInfo.Filepath, Mode=OneWay, Converter={StaticResource o_CharAdmin_Path}}" Style="{StaticResource Chars}"/>
             <ProgressBar x:Name="ProgressBar_Char" Grid.Row="2" Visibility="Collapsed"/>
             <Border Grid.Row="3" x:Name="CurrentCharBarBorder">
                 <CommandBar Background="Transparent" Loaded="CommandBar_Loaded" >
