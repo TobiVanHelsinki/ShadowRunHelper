@@ -126,7 +126,7 @@
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                                     <TextBlock Text="{x:Bind Person.Schaden_G,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
                                     <TextBlock Text="{x:Bind Person.Schaden_K,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
-                                    <TextBlock Text="{x:Bind CTRLCyberDeck.ActiveItem.dSchaden, Mode=OneWay}" Name="XAML_Header_Schaden_M_Text" Loaded="XAML_Header_Schaden_M_Text_Loaded" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
+                                    <TextBlock Text="{x:Bind CTRLCyberDeck.ActiveItem.dSchaden, Mode=OneWay}" Name="XAML_Header_Schaden_M_Text" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
                                 </StackPanel>
                             </StackPanel>
                             <Button.Flyout>
