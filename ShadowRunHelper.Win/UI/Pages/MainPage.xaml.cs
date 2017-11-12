@@ -1,11 +1,7 @@
-﻿using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.Model;
 using ShadowRunHelper.UI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Linq.Expressions;
 using TLIB.Model;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
@@ -119,23 +115,23 @@ namespace ShadowRunHelper
                 {
                     Model.MainObject.Person.Karma_Gesamt++;
                 }
-                if (Controller_Name.Contains("Karma_Aktuell"))
+                else if (Controller_Name.Contains("Karma_Aktuell"))
                 {
                     Model.MainObject.Person.Karma_Aktuell++;
                 }
-                if (Controller_Name.Contains("Edge_Gesamt"))
+                else if (Controller_Name.Contains("Edge_Gesamt"))
                 {
                     Model.MainObject.Person.Edge_Gesamt++;
                 }
-                if (Controller_Name.Contains("Edge_Aktuell"))
+                else if (Controller_Name.Contains("Edge_Aktuell"))
                 {
                     Model.MainObject.Person.Edge_Aktuell++;
                 }
-                if (Controller_Name.Contains("Initiative"))
+                else if (Controller_Name.Contains("Initiative"))
                 {
                     Model.MainObject.Person.Initiative++;
                 }
-                if (Controller_Name.Contains("Runs"))
+                else if (Controller_Name.Contains("Runs"))
                 {
                     Model.MainObject.Person.Runs++;
                 }
@@ -152,23 +148,23 @@ namespace ShadowRunHelper
                 {
                     Model.MainObject.Person.Karma_Gesamt--;
                 }
-                if (Controller_Name.Contains("Karma_Aktuell"))
+                else if (Controller_Name.Contains("Karma_Aktuell"))
                 {
                     Model.MainObject.Person.Karma_Aktuell--;
                 }
-                if (Controller_Name.Contains("Edge_Gesamt"))
+                else if (Controller_Name.Contains("Edge_Gesamt"))
                 {
                     Model.MainObject.Person.Edge_Gesamt--;
                 }
-                if (Controller_Name.Contains("Edge_Aktuell"))
+                else if (Controller_Name.Contains("Edge_Aktuell"))
                 {
                     Model.MainObject.Person.Edge_Aktuell--;
                 }
-                if (Controller_Name.Contains("Initiative"))
+                else if (Controller_Name.Contains("Initiative"))
                 {
                     Model.MainObject.Person.Initiative--;
                 }
-                if (Controller_Name.Contains("Runs"))
+                else if (Controller_Name.Contains("Runs"))
                 {
                     Model.MainObject.Person.Runs--;
                 }
