@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using TLIB.Model;
 
 namespace ShadowRunHelper.CharController
 {
@@ -14,7 +15,7 @@ namespace ShadowRunHelper.CharController
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            SharedCodeBase.Model.ModelResources.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
         #endregion
         AllListEntry MI_V;

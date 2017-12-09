@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TLIB;
+using TLIB.Model;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -67,7 +68,7 @@ namespace ShadowRunHelper.UI
 
         void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelResources.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
 
         public Tutorial(int Start, int Ende)

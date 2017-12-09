@@ -1,10 +1,10 @@
-﻿using SharedCodeBase.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using TLIB;
+using TLIB.Model;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -14,7 +14,7 @@ namespace ShadowRunHelper.CharModel
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelResources.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
         public Thing()
         {

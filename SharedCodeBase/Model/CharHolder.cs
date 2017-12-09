@@ -192,7 +192,7 @@ namespace ShadowRunHelper.Model
         public event PropertyChangedEventHandler PropertyChanged;
         void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelResources.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
         public void Repair()
         {

@@ -109,7 +109,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Model\Variablen.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Ressourcen\TypNamen.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\AppModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\ModelResources.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\SettingModels.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\CharHolder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\ObservableThingListEntryCollection.cs" />

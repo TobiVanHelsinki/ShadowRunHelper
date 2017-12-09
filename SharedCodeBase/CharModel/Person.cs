@@ -1,7 +1,8 @@
-﻿using SharedCodeBase.Model;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using TLIB.Model;
+
 namespace ShadowRunHelper.CharModel
 {
     public class Person : INotifyPropertyChanged
@@ -470,7 +471,7 @@ namespace ShadowRunHelper.CharModel
 
         void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelResources.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
 
         public Person Copy(Person Source = null)

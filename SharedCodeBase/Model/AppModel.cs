@@ -21,16 +21,6 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        public void SetDependencies(CoreDispatcher dispatcher)
-        {
-            Dispatcher = dispatcher;
-        }
-        /// <summary>
-        /// for future multithreading
-        /// </summary>
-        /// <param name="dispatcher"></param>
-        public CoreDispatcher Dispatcher;
-
         public void TutorialChangedState(int StateNumber, bool Highlight = false)
         {
             TutorialStateChanged(StateNumber, Highlight);

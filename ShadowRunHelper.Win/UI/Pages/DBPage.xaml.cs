@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TLIB;
 using TLIB.IO;
+using TLIB.Model;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Core;
@@ -545,10 +546,10 @@ namespace ShadowRunHelper
             {
                 if (!ActiveChar.LinkList.Exists((x) => Thing.HasSameIdentifiers(x.Object, item)))
                 {
-                    ModelResources.AtGui(() => ActiveChar.Add(item.Copy()));
+                    ModelHelper.AtGui(() => ActiveChar.Add(item.Copy()));
                 }
             }
-            ModelResources.AtGui(() => { ActiveChar.Repair(); });
+            ModelHelper.AtGui(() => { ActiveChar.Repair(); });
         }
     }
 }

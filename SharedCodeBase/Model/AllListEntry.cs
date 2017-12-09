@@ -1,7 +1,8 @@
 ﻿using ShadowRunHelper.CharModel;
-using SharedCodeBase.Model;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using TLIB.Model;
+
 namespace ShadowRunHelper.Model
 {
     public class AllListEntry : INotifyPropertyChanged
@@ -78,7 +79,7 @@ namespace ShadowRunHelper.Model
         public event PropertyChangedEventHandler PropertyChanged;
         void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelResources.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
 
         public override string ToString()
