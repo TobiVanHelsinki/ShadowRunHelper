@@ -25,7 +25,6 @@ namespace ShadowRunHelper.CharController
         AllListEntry MI_D;
 
         CyberDeck _ActiveItem;
-        [Newtonsoft.Json.JsonIgnore]
         public CyberDeck ActiveItem
         {
             get { return _ActiveItem; }
@@ -63,6 +62,9 @@ namespace ShadowRunHelper.CharController
             }
         }
         bool bIsRefreshInProgress = false;
+        /// <summary>
+        /// sets a new active deck from the list of all decks. should occur, when user changes active decks
+        /// </summary>
         void RefreshActiveDeck()
         {
             if (bIsRefreshInProgress)
@@ -82,7 +84,9 @@ namespace ShadowRunHelper.CharController
             ActiveItem.Reset();
             bIsRefreshInProgress = false;
         }
-
+        /// <summary>
+        /// copy changes from the active deck var to the original deck. this occurs, when the sliders of the main page are used to set deck damage.
+        /// </summary>
         void RefreshOriginDeck()
         {
             if (bIsRefreshInProgress)
