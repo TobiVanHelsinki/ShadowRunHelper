@@ -30,6 +30,7 @@ namespace ShadowRunHelper
 
         void NotifySummoryChanged([CallerMemberName] String summoryName = "")
         {
+            //TODO use tlib thread helper
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(summoryName));
         }
 
@@ -186,6 +187,7 @@ namespace ShadowRunHelper
         {
             if (IsOperationInProgres)
             {
+                ViewModel.NewNotification(res.GetString("Notification_Error_SaveFail"), new System.Exception());
                 return;
             }
 
@@ -200,7 +202,6 @@ namespace ShadowRunHelper
             }
             ChangeProgress(false);
             await Summorys_Aktualisieren();
-            SettingsModel.I.CountSavings++;
         }
 
         async void Click_Speichern_Intern(object sender, RoutedEventArgs e)
@@ -222,8 +223,6 @@ namespace ShadowRunHelper
             }
             ChangeProgress(false);
             await Summorys_Aktualisieren();
-            SettingsModel.I.CountSavings++;
-
         }
 
         async void Click_Laden(object sender, RoutedEventArgs e)
