@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
-using TLIB.IO;
-using TLIB.Model;
-using static TLIB.Model.SharedSettingsModel;
+using TLIB_UWPFRAME.IO;
+using TLIB_UWPFRAME.Model;
+using static TLIB_UWPFRAME.Model.SharedSettingsModel;
 
 namespace ShadowRunHelper
 {

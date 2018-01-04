@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using TLIB;
-using TLIB.Model;
+using TLIB_UWPFRAME;
+using TLIB_UWPFRAME.Model;
 
 namespace ShadowRunHelper.CharModel
 {

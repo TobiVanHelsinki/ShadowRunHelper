@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TLIB;
+using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper.CharModel
 {

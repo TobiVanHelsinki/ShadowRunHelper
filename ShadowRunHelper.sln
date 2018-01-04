@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Win", "ShadowRunHelper.Win\ShadowRunHelper.Win.csproj", "{20705C89-F90E-4B10-827C-BA8A0B24E14F}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedCodeBase", "SharedCodeBase\SharedCodeBase.shproj", "{0D90BEF9-68D7-4019-ABEC-0329274EB64D}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TLIB", "..\TLIB\TLIB\TLIB.shproj", "{C43E2365-5678-4E72-A123-71383DE9B2DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Xam.Android", "ShadowRunHelper.Xam\ShadowRunHelper.Xam.Android\ShadowRunHelper.Xam.Android.csproj", "{EECAFA70-03B8-4F5D-9A22-91ADDF0BFDE2}"
 EndProject
@@ -17,12 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Xam.UWP", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Xam.iOS", "ShadowRunHelper.Xam\ShadowRunHelper.Xam.iOS\ShadowRunHelper.Xam.iOS.csproj", "{813D43B1-9792-46E1-A32F-35BB9FB01F7D}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TLIB_UWPFRAME", "..\TLIB\TLIB_UWPFRAME\TLIB_UWPFRAME.shproj", "{C43E2365-5678-4E72-A123-71383DE9B2DC}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedCodeBase\SharedCodeBase.projitems*{0d90bef9-68d7-4019-abec-0329274eb64d}*SharedItemsImports = 13
 		SharedCodeBase\SharedCodeBase.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
-		..\TLIB\TLIB\TLIB.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
-		..\TLIB\TLIB\TLIB.projitems*{c43e2365-5678-4e72-a123-71383de9b2dc}*SharedItemsImports = 13
+		..\TLIB\TLIB_UWPFRAME\TLIB_UWPFRAME.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
+		..\TLIB\TLIB_UWPFRAME\TLIB_UWPFRAME.projitems*{c43e2365-5678-4e72-a123-71383de9b2dc}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU

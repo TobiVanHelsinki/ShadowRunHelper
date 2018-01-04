@@ -8,8 +8,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using TLIB;
-using TLIB.IO;
+using TLIB_UWPFRAME;
+using TLIB_UWPFRAME.IO;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
@@ -187,7 +187,7 @@ namespace ShadowRunHelper
         {
             if (IsOperationInProgres)
             {
-                ViewModel.NewNotification(res.GetString("Notification_Error_SaveFail"), new System.Exception());
+                ViewModel.NewNotification(res.GetString("Notification_Error_SaveFail_OPInProgress"), new System.Exception());
                 return;
             }
 
@@ -533,14 +533,34 @@ namespace ShadowRunHelper
                 (sender as AppBarButton).Style = (Style)Resources["AppBarButtonRevealLabelsOnRightStyle"];
             }
         }
+
+        private void MenuFlyoutItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                try
+                {
+                    (sender as MenuFlyoutItem).Style = (Style)Resources["MenuFlyoutItemReveal"];
+
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+        }
         #endregion
 
         async void Rename_Click(object sender, RoutedEventArgs e)
         {
-            Input dialog = new Input();
-            dialog.InputValue = ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename;
+            Input dialog = new Input
+            {
+                InputValue = ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename
+            };
             await dialog.ShowAsync();
             ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename = dialog.InputValue;
         }
+
+
     }
 }

@@ -1137,7 +1137,7 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   <data name="Tut_TitleState_20" xml:space="preserve">
     <value>Einführung Seite "Char"</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Speichern_Intern.Label" xml:space="preserve">
+  <data name="UI_CharVerwaltung_Btn_Speichern_Intern.Text" xml:space="preserve">
     <value>Intern Speichern</value>
   </data>
   <data name="UI_Optionen_TutCharShown.Text" xml:space="preserve">
@@ -1187,5 +1187,14 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   </data>
   <data name="UI_CharVerwaltung_Btn_Rename.Label" xml:space="preserve">
     <value>Umbenennen</value>
+  </data>
+  <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">
+    <value>Speichern fehlgeschlagen - anderes Operation in Gange</value>
+  </data>
+  <data name="UI_Admin_Btn_CurrentChar_CSV_Export.Text" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="UI_Admin_Btn_CurrentChar_Export.Text" xml:space="preserve">
+    <value>Exportieren</value>
   </data>
 </root>

@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using TLIB;
-using TLIB.IO;
-using TLIB.Model;
+using TLIB_UWPFRAME;
+using TLIB_UWPFRAME.IO;
+using TLIB_UWPFRAME.Model;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;

@@ -3,7 +3,7 @@ using Windows.UI.Core;
 
 namespace ShadowRunHelper.Model
 {
-    public class AppModel : TLIB.Model.SharedAppModel<CharHolder>
+    public class AppModel : TLIB_UWPFRAME.Model.SharedAppModel<CharHolder>
     {
         public static AppModel Initialize()
         {

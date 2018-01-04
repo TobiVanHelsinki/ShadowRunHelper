@@ -420,7 +420,7 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Ui_DB_Help.Label" xml:space="preserve">
     <value>Help on/off</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Speichern_Intern.Label" xml:space="preserve">
+  <data name="UI_CharVerwaltung_Btn_Speichern_Intern.Text" xml:space="preserve">
     <value>Save Intern</value>
   </data>
   <data name="UI_Optionen_TutCharShown.Text" xml:space="preserve">
@@ -1154,5 +1154,11 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   </data>
   <data name="UI_CharVerwaltung_Btn_Rename.Label" xml:space="preserve">
     <value>Rename</value>
+  </data>
+  <data name="UI_Admin_Btn_CurrentChar_CSV_Export.Text" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="UI_Admin_Btn_CurrentChar_Export.Text" xml:space="preserve">
+    <value>Export</value>
   </data>
 </root>

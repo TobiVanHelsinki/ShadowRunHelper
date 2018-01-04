@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:TLIB.IO="using:TLIB.IO"
+    xmlns:TLIB_UWPFRAME.IO="using:TLIB_UWPFRAME.IO"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -25,7 +25,7 @@
                     <TextBlock Grid.Column="3" x:Uid="UI_CharVerwaltung_E_FileDate" Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Normal" x:Key="Normal" x:DataType="TLIB.IO:FileInfoClass">
+            <DataTemplate x:Name="Normal" x:Key="Normal" x:DataType="TLIB_UWPFRAME.IO:FileInfoClass">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -39,7 +39,7 @@
                     <TextBlock Grid.Column="3" Text="{x:Bind DateModified, Mode=OneWay}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Active" x:Key="Active" x:DataType="TLIB.IO:FileInfoClass">
+            <DataTemplate x:Name="Active" x:Key="Active" x:DataType="TLIB_UWPFRAME.IO:FileInfoClass">
                 <Grid Margin="0,5,0,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -81,11 +81,20 @@
             <Border Grid.Row="3" x:Name="CurrentCharBarBorder">
                 <CommandBar Background="Transparent" Loaded="CommandBar_Loaded" >
                     <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern" Loaded="AppBarButton_Loaded" IsEnabled="False"/>
+                    <AppBarButton x:Name="Test" Loaded="AppBarButton_Loaded"
+                                  Icon="ShowBcc"
+                                  >
+
+                        <AppBarButton.Flyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem x:Name="CurrentCharBtn_Save_Intern" x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern" Loaded="MenuFlyoutItem_Loaded" IsEnabled="False" />
+                                <MenuFlyoutItem x:Name="CurrentCharBtn_FileExp" x:Uid="UI_Admin_Btn_CurrentChar_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar"  Loaded="MenuFlyoutItem_Loaded" IsEnabled="False"/>
+                                <MenuFlyoutItem Visibility="Collapsed" x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_Admin_Btn_CurrentChar_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar"  Loaded="MenuFlyoutItem_Loaded" IsEnabled="False"/>
+                            </MenuFlyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
                     <AppBarButton x:Name="CurrentCharBtn_Rename" x:Uid="UI_CharVerwaltung_Btn_Rename" Icon="Edit" Click="Rename_Click" Loaded="AppBarButton_Loaded"/>
-                    <AppBarButton x:Name="CurrentCharBtn_Save_Intern" x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern" Loaded="AppBarButton_Loaded" IsEnabled="False"/>
                     <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_CurrentChar"  Loaded="AppBarButton_Loaded" IsEnabled="False"/>
-                    <AppBarButton x:Name="CurrentCharBtn_FileExp" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar"  Loaded="AppBarButton_Loaded" IsEnabled="False"/>
-                    <AppBarButton Visibility="Collapsed" x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar"  Loaded="AppBarButton_Loaded" IsEnabled="False"/>
                     <AppBarButton x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar"  Loaded="AppBarButton_Loaded" IsEnabled="False"/>
                 </CommandBar>
             </Border>

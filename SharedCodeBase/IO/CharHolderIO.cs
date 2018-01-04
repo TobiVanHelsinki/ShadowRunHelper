@@ -3,8 +3,8 @@ using ShadowRunHelper.Model;
 using Shared;
 using System;
 using System.Threading.Tasks;
-using TLIB;
-using TLIB.IO;
+using TLIB_UWPFRAME;
+using TLIB_UWPFRAME.IO;
 
 namespace ShadowRunHelper.IO
 {

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ShadowRunHelper.Model;
 using System;
-using TLIB.Model;
+using TLIB_UWPFRAME.Model;
 
 namespace ShadowRunHelper1_3.IO
 {

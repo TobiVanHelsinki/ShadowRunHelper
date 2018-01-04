@@ -2,8 +2,8 @@
 using ShadowRunHelper.Model;
 using System;
 using System.Threading.Tasks;
-using TLIB;
-using TLIB.IO;
+using TLIB_UWPFRAME;
+using TLIB_UWPFRAME.IO;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
@@ -104,10 +104,10 @@ namespace ShadowRunHelper
             }
             Launch();
 
-            extendAcrylicIntoTitleBar();
+            ExtendAcrylicIntoTitleBar();
         }
 
-        void extendAcrylicIntoTitleBar()
+        void ExtendAcrylicIntoTitleBar()
         {
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
@@ -214,7 +214,7 @@ namespace ShadowRunHelper
             SettingsModel.I.LastSaveInfo = null;
             try
             {
-                await CharHolderIO.SaveAtOriginPlace(Model.MainObject, TLIB.IO.SaveType.Emergency);
+                await CharHolderIO.SaveAtOriginPlace(Model.MainObject, TLIB_UWPFRAME.IO.SaveType.Emergency);
                 var res = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
                 Model.NewNotification(res.GetString("Notification_Error_Unknown"), e.Exception);
             }

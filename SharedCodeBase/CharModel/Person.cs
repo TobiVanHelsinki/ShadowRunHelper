@@ -1,13 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TLIB.Model;
+using TLIB_UWPFRAME.Model;
 
 namespace ShadowRunHelper.CharModel
 {
     public class Person : INotifyPropertyChanged
     {
-        private string alias = TLIB.CrossPlatformHelper.GetString("Model_Person_Alias_STD/Text");
+        private string alias = TLIB_UWPFRAME.CrossPlatformHelper.GetString("Model_Person_Alias_STD/Text");
         public string Alias
         {
             get { return alias; }

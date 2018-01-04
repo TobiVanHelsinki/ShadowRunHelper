@@ -1,7 +1,7 @@
 ﻿using ShadowRunHelper.CharModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TLIB.Model;
+using TLIB_UWPFRAME.Model;
 
 namespace ShadowRunHelper.Model
 {

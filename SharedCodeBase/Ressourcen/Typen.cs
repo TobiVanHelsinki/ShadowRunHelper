@@ -1,7 +1,7 @@
 ﻿
 
 using System;
-using TLIB;
+using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper
 {

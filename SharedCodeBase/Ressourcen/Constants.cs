@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using TLIB;
-using TLIB.Model;
+using TLIB_UWPFRAME;
+using TLIB_UWPFRAME.Model;
 
 namespace ShadowRunHelper
 {
-    internal class Constants : TLIB.SharedConstants
+    internal class Constants : TLIB_UWPFRAME.SharedConstants
     {
 
         /// <summary>

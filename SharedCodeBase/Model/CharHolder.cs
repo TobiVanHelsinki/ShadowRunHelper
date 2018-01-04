@@ -7,9 +7,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using TLIB;
-using TLIB.IO;
-using TLIB.Model;
+using TLIB_UWPFRAME;
+using TLIB_UWPFRAME.IO;
+using TLIB_UWPFRAME.Model;
 namespace ShadowRunHelper.Model
 {
     /// <summary>
