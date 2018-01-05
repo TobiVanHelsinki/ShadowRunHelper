@@ -194,7 +194,7 @@ namespace ShadowRunHelper
             ChangeProgress(true);
             try
             {
-                ViewModel.MainObject.SetSaveTimerTo(0);
+                ViewModel.MainObject.SetSaveTimerTo(0, true);
             }
             catch (Exception ex)
             {

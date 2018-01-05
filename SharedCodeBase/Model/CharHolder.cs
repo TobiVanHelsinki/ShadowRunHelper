@@ -556,9 +556,9 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        public bool SetSaveTimerTo(int Time = 0)
+        public bool SetSaveTimerTo(int Time = 0, bool ForceSave = false)
         {
-            if (HasChanges)
+            if (HasChanges || ForceSave)
             {
                 HasChanges = false;
                 SaveTimer.Change(Time, System.Threading.Timeout.Infinite);

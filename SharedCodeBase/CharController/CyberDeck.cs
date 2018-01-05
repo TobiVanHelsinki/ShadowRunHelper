@@ -27,8 +27,9 @@ namespace ShadowRunHelper.CharController
         CyberDeck _ActiveItem;
         public CyberDeck ActiveItem
         {
+            //do not set any of these other than public because of serialisation
             get { return _ActiveItem; }
-            protected set
+            set
             {
                 if (value != _ActiveItem)
                 {
