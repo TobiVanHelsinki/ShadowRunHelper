@@ -30,8 +30,7 @@ namespace ShadowRunHelper
 
         void NotifySummoryChanged([CallerMemberName] String summoryName = "")
         {
-            //TODO use tlib thread helper
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(summoryName));
+            TLIB_UWPFRAME.Model.ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, summoryName);
         }
 
         // Start Stuff ########################################################

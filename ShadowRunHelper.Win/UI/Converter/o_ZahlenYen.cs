@@ -14,7 +14,7 @@ namespace ShadowRunHelper.UI.Converter
             CurrencyFormatter CurrencyFormatter = new CurrencyFormatter(CurrencyIdentifiers.JPY);
             CurrencyFormatter.IsGrouped = true;
             CurrencyFormatter.FractionDigits = 0;
-            return Double.TryParse(value.ToString(), out double number) ? CurrencyFormatter.Format(number) : "ERROR";
+            return Double.TryParse(value.ToString(), out double number) ? CurrencyFormatter.Format(number) : Constants.ERROR_TOKEN;
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {

@@ -46,8 +46,7 @@ namespace ShadowRunHelper.IO
             switch (chartype)
             {
                 case PreSavedChar.ExampleChar:
-                    await CopyFileToCurrentLocation(CrossPlatformHelper.GetPrefix(CrossPlatformHelper.PrefixType.AppPackageData) + "Assets/Example/", CrossPlatformHelper.GetSimpleCountryCode()+".SRHChar", CrossPlatformHelper.GetString("ExampleChar")+Constants.DATEIENDUNG_CHAR);
-                    //TODO im string steht die datei endung als string nicht als const var
+                    await CopyFileToCurrentLocation(CrossPlatformHelper.GetPrefix(CrossPlatformHelper.PrefixType.AppPackageData) + "Assets/Example/", CrossPlatformHelper.GetSimpleCountryCode(Constants.AVAILIBLE_EXAMPLE_LANGUAGES, Constants.DEFAULT_EXAMPLE_LANGUAGE)+ Constants.DATEIENDUNG_CHAR, CrossPlatformHelper.GetString("ExampleChar")+Constants.DATEIENDUNG_CHAR);
                     break;
                 case PreSavedChar.PreDBChar:
                     break;

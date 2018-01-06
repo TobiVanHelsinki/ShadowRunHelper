@@ -15,7 +15,7 @@ namespace ShadowRunHelper.UI.Converter
         {
             if (!Double.TryParse(value.ToString(), out double dValue))
             {
-                return "ERROR";
+                return Constants.ERROR_TOKEN;
             }
             return dValue.ToString("F0");
         }
