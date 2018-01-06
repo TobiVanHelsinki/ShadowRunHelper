@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Windows.Globalization.NumberFormatting;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter
@@ -11,7 +13,11 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return value.ToString();
+            if (!Double.TryParse(value.ToString(), out double dValue))
+            {
+                return "ERROR";
+            }
+            return dValue.ToString("F0");
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
@@ -25,7 +31,7 @@ namespace ShadowRunHelper.UI.Converter
             strOrigin += "+";
             foreach (char item in strOrigin)
             {
-                //filter out letters or special chars
+                //filter out letters or special chars, process others
                 if (char.IsNumber(item)
                         || char.IsDigit(item)
                         || char.IsSeparator(item)

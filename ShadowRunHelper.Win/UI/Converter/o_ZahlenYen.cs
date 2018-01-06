@@ -1,4 +1,6 @@
 ﻿using System;
+using Windows.Globalization;
+using Windows.Globalization.NumberFormatting;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter
@@ -9,21 +11,10 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            string returnvalue = "";
-            int j = 1;
-            for (int i = (value.ToString()).Length-1; i >= 0 ; i--)
-            {
-                returnvalue += (value.ToString())[i];
-                if (j%3==0 && i>0)
-                {
-                    returnvalue += ".";//todo lokalisiern
-                }
-                j++;
-            }
-            char[] c = returnvalue.ToCharArray();
-            Array.Reverse(c);
-            returnvalue = new string(c);
-            return returnvalue  + " ¥";
+            CurrencyFormatter CurrencyFormatter = new CurrencyFormatter(CurrencyIdentifiers.JPY);
+            CurrencyFormatter.IsGrouped = true;
+            CurrencyFormatter.FractionDigits = 0;
+            return Double.TryParse(value.ToString(), out double number) ? CurrencyFormatter.Format(number) : "ERROR";
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" IgnorableNamespaces="uap mp uap3">
-  <Identity Name="21863TobivanHelsinki.ShadowRunHelper-Beta" Publisher="CN=D02849C2-745B-495E-891A-5F7C07581158" Version="1.6.10.0" />
+  <Identity Name="21863TobivanHelsinki.ShadowRunHelper-Beta" Publisher="CN=D02849C2-745B-495E-891A-5F7C07581158" Version="1.6.12.0" />
   <mp:PhoneIdentity PhoneProductId="eca415cc-4811-4fe6-1111-6a54233cd2f4" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <!--PhoneProductId="eca415cc-4811-4fe6-96ac-6a54233cd2f4"-->
   <Properties>
-    <DisplayName>ShadowRunHelper-Beta</DisplayName>
+    <DisplayName>Beta-ShadowRunHelper</DisplayName>
     <PublisherDisplayName>Tobi van Helsinki</PublisherDisplayName>
     <Logo>Assets\Logo\NewStoreLogo.png</Logo>
   </Properties>
@@ -20,7 +20,7 @@
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ShadowRunHelper.App">
       <uap:VisualElements DisplayName="Beta-ShadowRunHelper" Square150x150Logo="Assets\Logo\Square150x150Logo.png" Square44x44Logo="Assets\Logo\Square44x44Logo.png" Description="Die beste App, um deine ShadowRun Charachter zu hegen und pflegen!" BackgroundColor="transparent">
         <uap:LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\Logo\BadgeLogo.png" />
-        <uap:DefaultTile Wide310x150Logo="Assets\Logo\Wide310x150Logo.png" Square310x310Logo="Assets\Logo\Square310x310Logo.png" Square71x71Logo="Assets\Logo\Square71x71Logo.png" ShortName="ShadowRunHelper">
+        <uap:DefaultTile Wide310x150Logo="Assets\Logo\Wide310x150Logo.png" Square310x310Logo="Assets\Logo\Square310x310Logo.png" Square71x71Logo="Assets\Logo\Square71x71Logo.png" ShortName="Beta-ShadowRunHelper">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />
