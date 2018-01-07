@@ -9,7 +9,7 @@ using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cAttributController : cController<Attribut>
+    public class AttributController : Controller<Attribut>
     {
         // Variable Stuff #####################################################
         // Variable Model Stuff ###########################
@@ -59,7 +59,7 @@ namespace ShadowRunHelper.CharController
         bool m_MutexDataColectionChange = false;
 
         // Start Stuff ########################################################
-        public cAttributController()
+        public AttributController()
         {
             Konsti = new Attribut();
             Geschick = new Attribut();

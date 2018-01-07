@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cPanzerungController : cController<Panzerung>
+    public class PanzerungController : Controller<Panzerung>
     {
 
         AllListEntry MI_1;
@@ -14,7 +14,7 @@ namespace ShadowRunHelper.CharController
         AllListEntry MI_3;
         public Panzerung ActiveItem;
 
-        public cPanzerungController()
+        public PanzerungController()
         {
             ActiveItem = new Panzerung();
             //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_Panzerung__Aktiv/Text");

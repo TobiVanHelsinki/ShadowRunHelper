@@ -20,6 +20,7 @@ namespace ShadowRunHelper.IO
                     ReturnCharHolder = VersionConverter.ConvertVersion1_3to1_5(CH1_3);
                     AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Info_ConvertFromPrevious"));
                     GC.Collect();
+                    ReturnCharHolder.HasChanges = true;
                     break;
                 case Constants.CHARFILE_VERSION_1_5:
                     JsonSerializerSettings test = new JsonSerializerSettings()
@@ -28,6 +29,7 @@ namespace ShadowRunHelper.IO
                         PreserveReferencesHandling = PreserveReferencesHandling.All
                     };
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, test);
+                    ReturnCharHolder.HasChanges = false;
                     break;
                 default:
                     throw new IO_FileVersion();

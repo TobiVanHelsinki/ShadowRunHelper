@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cNahkampfwaffeController : CharController.cController<Nahkampfwaffe>
+    public class NahkampfwaffeController : CharController.Controller<Nahkampfwaffe>
     {
         AllListEntry MI_Reich;
         AllListEntry MI_Pr;
@@ -14,7 +14,7 @@ namespace ShadowRunHelper.CharController
         AllListEntry MI_DK;
         public Nahkampfwaffe ActiveItem;
 
-        public cNahkampfwaffeController()
+        public NahkampfwaffeController()
         {
             ActiveItem = new Nahkampfwaffe();
             //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_Nahkampfwaffe__Aktiv/Text");

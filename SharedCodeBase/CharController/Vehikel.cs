@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cVehikelController : cController<Vehikel>
+    public class VehikelController : Controller<Vehikel>
     {
 
         AllListEntry MI_1;
@@ -21,7 +21,7 @@ namespace ShadowRunHelper.CharController
         AllListEntry MI_10;
         public Vehikel ActiveItem;
 
-        public cVehikelController()
+        public VehikelController()
         {
             ActiveItem = new Vehikel();
             //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_Vehikel__Aktiv/Text");

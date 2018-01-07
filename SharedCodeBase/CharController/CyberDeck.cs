@@ -9,7 +9,7 @@ using TLIB_UWPFRAME.Model;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cCyberDeckController : cController<CyberDeck>,  INotifyPropertyChanged
+    public class CyberDeckController : Controller<CyberDeck>,  INotifyPropertyChanged
     {
         #region event
         public event PropertyChangedEventHandler PropertyChanged;
@@ -39,7 +39,7 @@ namespace ShadowRunHelper.CharController
             }
         }
 
-        public cCyberDeckController()
+        public CyberDeckController()
         {
             ActiveItem = new CyberDeck();
             ActiveItem.PropertyChanged += (x, y) => RefreshOriginDeck();

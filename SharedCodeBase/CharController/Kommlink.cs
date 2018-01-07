@@ -7,14 +7,14 @@ using System.Collections.Specialized;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cKommlinkController : cController<Kommlink>
+    public class KommlinkController : Controller<Kommlink>
     {
         AllListEntry MI_V;
         AllListEntry MI_F;
         AllListEntry MI_D;
         public Kommlink ActiveItem;
 
-        public cKommlinkController()
+        public KommlinkController()
         {
             ActiveItem = new Kommlink();
             //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_Kommlink__Aktiv/Text");

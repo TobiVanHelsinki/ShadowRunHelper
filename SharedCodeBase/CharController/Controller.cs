@@ -6,7 +6,7 @@ using System;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cController<T> : IController<T> where T : Thing, new()
+    public class Controller<T> : IController<T> where T : Thing, new()
     {
         /// <summary>
         /// GUI-Binding Target
@@ -49,7 +49,7 @@ namespace ShadowRunHelper.CharController
         /// <summary>
         /// Konstruktor fuer neu
         /// </summary>
-        public cController()
+        public Controller()
         {
             Data = new ObservableCollection<T>();
             switch (typeof(T).Name)

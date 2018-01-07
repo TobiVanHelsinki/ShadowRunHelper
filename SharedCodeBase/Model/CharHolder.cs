@@ -24,31 +24,31 @@ namespace ShadowRunHelper.Model
         #endregion
         #region  Char Model DATA 
         // the various controlers
-        public cController<Item> CTRLItem { get; set; }
-        public cController<Programm> CTRLProgramm { get; set; }
-        public cController<Munition> CTRLMunition { get; set; }
-        public cController<Implantat> CTRLImplantat { get; set; }
-        public cController<Vorteil> CTRLVorteil { get; set; }
-        public cController<Nachteil> CTRLNachteil { get; set; }
-        public cController<Connection> CTRLConnection { get; set; }
-        public cController<Sin> CTRLSin { get; set; }
+        public Controller<Item> CTRLItem { get; set; }
+        public Controller<Programm> CTRLProgramm { get; set; }
+        public Controller<Munition> CTRLMunition { get; set; }
+        public Controller<Implantat> CTRLImplantat { get; set; }
+        public Controller<Vorteil> CTRLVorteil { get; set; }
+        public Controller<Nachteil> CTRLNachteil { get; set; }
+        public Controller<Connection> CTRLConnection { get; set; }
+        public Controller<Sin> CTRLSin { get; set; }
 
-        public cController<Adeptenkraft_KomplexeForm> CTRLAdeptenkraft_KomplexeForm { get; set; }
-        public cController<Foki_Widgets> CTRLFoki_Widgets { get; set; }
-        public cController<Geist_Sprite> CTRLGeist_Sprite { get; set; }
-        public cController<Stroemung_Wandlung> CTRLStroemung_Wandlung { get; set; }
-        public cController<Tradition_Initiation> CTRLTradition_Initiation { get; set; }
-        public cController<Zaubersprueche> CTRLZaubersprueche { get; set; }
+        public Controller<Adeptenkraft_KomplexeForm> CTRLAdeptenkraft_KomplexeForm { get; set; }
+        public Controller<Foki_Widgets> CTRLFoki_Widgets { get; set; }
+        public Controller<Geist_Sprite> CTRLGeist_Sprite { get; set; }
+        public Controller<Stroemung_Wandlung> CTRLStroemung_Wandlung { get; set; }
+        public Controller<Tradition_Initiation> CTRLTradition_Initiation { get; set; }
+        public Controller<Zaubersprueche> CTRLZaubersprueche { get; set; }
 
-        public cAttributController CTRLAttribut { get; set; }
-        public cNahkampfwaffeController CTRLNahkampfwaffe { get; set; }
-        public cFernkampfwaffeController CTRLFernkampfwaffe { get; set; }
-        public cKommlinkController CTRLKommlink { get; set; }
-        public cCyberDeckController CTRLCyberDeck { get; set; }
-        public cVehikelController CTRLVehikel { get; set; }
-        public cPanzerungController CTRLPanzerung { get; set; }
-        public cController<Fertigkeit> CTRLFertigkeit { get; set; }
-        public cController<Handlung> CTRLHandlung { get; set; }
+        public AttributController CTRLAttribut { get; set; }
+        public NahkampfwaffeController CTRLNahkampfwaffe { get; set; }
+        public FernkampfwaffeController CTRLFernkampfwaffe { get; set; }
+        public KommlinkController CTRLKommlink { get; set; }
+        public CyberDeckController CTRLCyberDeck { get; set; }
+        public VehikelController CTRLVehikel { get; set; }
+        public PanzerungController CTRLPanzerung { get; set; }
+        public Controller<Fertigkeit> CTRLFertigkeit { get; set; }
+        public Controller<Handlung> CTRLHandlung { get; set; }
         public Person Person { get; set; }
         #endregion
         #region EASY ACCESS STUFF
@@ -122,29 +122,29 @@ namespace ShadowRunHelper.Model
             SaveTimer = new System.Threading.Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); }, this, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
             AppModel.Instance.MainObjectSaved += (x, y) => { SettingsModel.I.CountSavings++; };
             // To Autosave
-            CTRLAdeptenkraft_KomplexeForm = new cController<Adeptenkraft_KomplexeForm>();
-            CTRLAttribut = new cAttributController();
-            CTRLConnection = new cController<Connection>();
-            CTRLCyberDeck = new cCyberDeckController();
-            CTRLFernkampfwaffe = new cFernkampfwaffeController();
-            CTRLFertigkeit = new cController<Fertigkeit>();
-            CTRLFoki_Widgets = new cController<Foki_Widgets>();
-            CTRLGeist_Sprite = new cController<Geist_Sprite>();
-            CTRLHandlung = new cController<Handlung>();
-            CTRLImplantat = new cController<Implantat>();
-            CTRLItem = new cController<Item>();
-            CTRLKommlink = new cKommlinkController();
-            CTRLMunition = new cController<Munition>();
-            CTRLNachteil = new cController<Nachteil>();
-            CTRLNahkampfwaffe = new cNahkampfwaffeController();
-            CTRLPanzerung = new cPanzerungController();
-            CTRLProgramm = new cController<Programm>();
-            CTRLSin = new cController<Sin>();
-            CTRLStroemung_Wandlung = new cController<Stroemung_Wandlung>();
-            CTRLTradition_Initiation = new cController<Tradition_Initiation>();
-            CTRLVehikel = new cVehikelController();
-            CTRLVorteil = new cController<Vorteil>();
-            CTRLZaubersprueche = new cController<Zaubersprueche>();
+            CTRLAdeptenkraft_KomplexeForm = new Controller<Adeptenkraft_KomplexeForm>();
+            CTRLAttribut = new AttributController();
+            CTRLConnection = new Controller<Connection>();
+            CTRLCyberDeck = new CyberDeckController();
+            CTRLFernkampfwaffe = new FernkampfwaffeController();
+            CTRLFertigkeit = new Controller<Fertigkeit>();
+            CTRLFoki_Widgets = new Controller<Foki_Widgets>();
+            CTRLGeist_Sprite = new Controller<Geist_Sprite>();
+            CTRLHandlung = new Controller<Handlung>();
+            CTRLImplantat = new Controller<Implantat>();
+            CTRLItem = new Controller<Item>();
+            CTRLKommlink = new KommlinkController();
+            CTRLMunition = new Controller<Munition>();
+            CTRLNachteil = new Controller<Nachteil>();
+            CTRLNahkampfwaffe = new NahkampfwaffeController();
+            CTRLPanzerung = new PanzerungController();
+            CTRLProgramm = new Controller<Programm>();
+            CTRLSin = new Controller<Sin>();
+            CTRLStroemung_Wandlung = new Controller<Stroemung_Wandlung>();
+            CTRLTradition_Initiation = new Controller<Tradition_Initiation>();
+            CTRLVehikel = new VehikelController();
+            CTRLVorteil = new Controller<Vorteil>();
+            CTRLZaubersprueche = new Controller<Zaubersprueche>();
 
             lstCTRL.Add(CTRLAttribut);
             lstCTRL.Add(CTRLFertigkeit);

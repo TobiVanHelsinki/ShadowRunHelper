@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 
 namespace ShadowRunHelper.CharController
 {
-    public class cFernkampfwaffeController : cController<Fernkampfwaffe>
+    public class FernkampfwaffeController : Controller<Fernkampfwaffe>
     {
         AllListEntry MI_Wert;
         AllListEntry MI_DK;
@@ -14,7 +14,7 @@ namespace ShadowRunHelper.CharController
         AllListEntry MI_Pr;
         public Fernkampfwaffe ActiveItem; 
 
-        public cFernkampfwaffeController()
+        public FernkampfwaffeController()
         {
             ActiveItem = new Fernkampfwaffe();
             //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_Fernkampfwaffe__Aktiv/Text");
