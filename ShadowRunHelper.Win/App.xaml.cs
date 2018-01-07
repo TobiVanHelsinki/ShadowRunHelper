@@ -135,7 +135,16 @@ namespace ShadowRunHelper
             try
             {
                 Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace(Constants.ACCESSTOKEN_FILEACTIVATED, args.Files[0]);
-                Model.MainObject = await CharHolderIO.Load(new FileInfoClass() { Fileplace = Place.Extern, Filename = args.Files[0].Name, Filepath = args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length), FolderToken = Constants.ACCESSTOKEN_FILEACTIVATED }, null, UserDecision.ThrowError);
+
+                Model.MainObject = await CharHolderIO.Load(
+                    new FileInfoClass() {
+                        Fileplace = Place.Extern,
+                        Filename = args.Files[0].Name,
+                        Filepath = args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length),
+                        FolderToken = Constants.ACCESSTOKEN_FILEACTIVATED }
+                    , null
+                    , UserDecision.ThrowError);
+
                 SettingsModel.I.CountLoadings++;
             }
             catch (Exception ex)
