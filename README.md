@@ -17,7 +17,7 @@
 
 ## Build instructions
 1. First, check that you have the [necessary tools](#requirements) installed.
-2. Clone this repository and the TLIB repository in one folder.
+2. Clone this repository and the [TLIB](https://github.com/TobiVanHelsinki/TLIB) repository in one folder.
 3. Build it.
 
 ## Requirements
