@@ -9,7 +9,6 @@
 *.appx
 _pkginfo.txt
 BundleArtifacts
-Properties
 
 # User-specific files
 *.suo
