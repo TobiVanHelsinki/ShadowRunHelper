@@ -6,7 +6,7 @@
   <h3 align="center">ShadowRunHelper</h3>
 
   <p align="center">
-    Your intelligent Shadowrun charactersheet App for Windows 10!.
+    Your intelligent Shadowrun charactersheet App for Windows 10.
   <br>
     <br>
     <a href="https://www.microsoft.com/store/productId/9NBLGGH4RHVX">Download</a>
