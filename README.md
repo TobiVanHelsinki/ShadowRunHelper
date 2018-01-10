@@ -17,7 +17,7 @@
 
 ## Build instructions
 1. First, check that you have the [necessary tools](#requirements) installed.
-2. Clone this repository and the TLIB repository in one folder.
+2. Clone this repository and the [TLIB](https://github.com/TobiVanHelsinki/TLIB) repository in one folder.
 3. Build it.
 
 ## Requirements
@@ -56,8 +56,8 @@ See the [Releases section of our GitHub project](https://github.com/TobiVanHelsi
 ## License
 Copyright © 2014-2018
 
-Unigram is free software: you can redistribute it and / or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ShadowRunHelper is free software: you can redistribute it and / or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Unigram is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ShadowRunHelper is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with the App. If not, see http://www.gnu.org/licenses/.
+You should have received a copy of the GNU General Public License along with ShadowRunHelper. If not, see http://www.gnu.org/licenses/.
