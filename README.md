@@ -1,32 +1,63 @@
-# You've added your first Readme file!
-A README.md file is intended to quickly orient readers to what your project can do.  New to Markdown? [Learn more](http://go.microsoft.com/fwlink/p/?LinkId=524306&clcid=0x409)
+<p align="center">
+  <a href="https://github.com/TobiVanHelsinki/ShadowRunHelper">
+    <img src="https://github.com/TobiVanHelsinki/ShadowRunHelper/blob/master/ShadowRunHelper.Win/Assets/Logo/Logo.png" width=80 height=80>
+  </a>
 
-## Edit this README and commit your change to a topic branch
-In Git, branches are cheap.  You should use them whenever you're making changes to your repository.  Edit this file by clicking on the edit icon.
+  <h3 align="center">ShadowRunHelper</h3>
 
-Then make some changes to this README file.
+  <p align="center">
+    Your intelligent Shadowrun charactersheet App for Windows 10.
+  <br>
+    <br>
+    <a href="https://www.microsoft.com/store/productId/9NBLGGH4RHVX">Download</a>
+  </p>
+</p>
 
-> Make some **edits** to _this_ blockquote
+<br>
 
-When you are done, click the dropdown arrow next to the save button - that will allow you to commit your changes to a new branch.
+## Build instructions
+1. First, check that you have the [necessary tools](#requirements) installed.
+2. Clone this repository and the TLIB repository in one folder.
+3. Build it.
 
-## Create a pull request to contribute your changes back into master
-Pull requests are the way to move changes from a topic branch back into the master branch.
+## Requirements
+The following tools and SDKs are mandatory for the project development:
+* Visual Studio 2017, with
+    * .NET Native
+    * .NET Framework 4.7 SDK
+    * NuGet package manager
+    * Universal Windows Platform tools
+    * Windows 10 SDK 16299
 
-Click on the **Pull Requests** page in the **CODE** hub, then click "New Pull Request" to create a new pull request from your topic branch to the master branch.
 
-When you are done adding details, click "Create Pull request". Once a pull request is sent, reviewers can see your changes, recommend modifications, or even push follow-up commits.
+## Dependencies
+The app uses the following NuGet packages to work:
+* [Microsoft.NETCore.UniversalWindowsPlatform](https://www.nuget.org/packages/Microsoft.NETCore.UniversalWindowsPlatform/)
+* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)
+* [System.ValueTuple](https://www.nuget.org/packages/System.ValueTuple/)
+* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/)
+* [Microsoft.ApplicationInsights.PersistenceChannel](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PersistenceChannel/)
+* [Microsoft.ApplicationInsights.WindowsApps](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsApps/)
 
-First time creating a pull request?  [Learn more](http://go.microsoft.com/fwlink/?LinkId=533211&clcid=0x409)
 
-### Congratulations! You've completed the grand tour of the CODE hub!
+## Current and planned features
+Comming Soon
 
-# Next steps
+## Bugs and feature requests
+Comming Soon
 
-If you haven't done so yet:
-* [Install Visual Studio](http://go.microsoft.com/fwlink/?LinkId=309297&clcid=0x409&slcid=0x409)
-* [Install Git](http://git-scm.com/downloads)
+## Contributing
+Comming Soon
 
-Then clone this repo to your local machine to get started with your own project.
+## Changelog
+See the [Releases section of our GitHub project](https://github.com/TobiVanHelsinki/ShadowRunHelper/releases) for changelogs for each released version.
 
-Happy coding!
+
+## License
+Copyright © 2014-2018
+
+Unigram is free software: you can redistribute it and / or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+Unigram is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with the App. If not, see http://www.gnu.org/licenses/.
