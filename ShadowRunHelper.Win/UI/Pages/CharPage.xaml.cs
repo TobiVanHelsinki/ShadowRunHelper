@@ -1,18 +1,12 @@
 ﻿using ShadowRunHelper.CharModel;
-using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using ShadowRunHelper.UI;
 using ShadowRunHelper.UI.Edit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TLIB_UWPFRAME;
-using TLIB_UWPFRAME.IO;
-using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -201,8 +195,6 @@ namespace ShadowRunHelper
 
         // Gui Handler Stuff ##################################################
 
-
-
         void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //(sender as ListView).ScrollIntoView(, ScrollIntoViewAlignment.Leading);
@@ -345,18 +337,19 @@ namespace ShadowRunHelper
             LV.Tag = (sender as ContentControl).Tag;
 
             //Search Things
-            try
+            //try
             {
-                Blocklist.TryGetValue((ThingDefs)int.Parse((sender as ContentControl).Tag as string), out (int PivotItem, ContentControl Block, ListView ListView) NewBlock);
+                Blocklist.TryGetValue((ThingDefs)int.Parse((sender as ContentControl).Tag as string), out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) NewBlock);
                 NewBlock.ListView = LV;
                 NewBlock.Block = (ContentControl)sender;
+                NewBlock.sv = (ScrollViewer)((sender as ContentControl).Parent as FrameworkElement).Parent;
                 Blocklist.Remove((ThingDefs)int.Parse((sender as ContentControl).Tag as string));
                 Blocklist.Add((ThingDefs)int.Parse((sender as ContentControl).Tag as string), NewBlock);
             }
-            catch (Exception)
+            //catch (Exception ex)
             {
             }
-
+            
             //Local things
             switch (int.Parse(((sender as ContentControl).Tag as string)))
             {
@@ -495,50 +488,37 @@ namespace ShadowRunHelper
                 default:
                     return;
             }
-
-            if (!(PendingScrollEntry == null) && (int)PendingScrollEntry.ThingType == int.Parse(((sender as ContentControl).Tag as string)) )
-            {
-                ScrollIntoBlock();
-            }
         }
 
         // instant search Stuff ##################################################
-        Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView)> Blocklist = new Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView)>();
+        Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer SV)> Blocklist = new Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer SV)>();
         Thing PendingScrollEntry;
 
         void PrepareBlockList()
         {
-            Blocklist.Add(ThingDefs.Handlung, (0, null, null));
-            Blocklist.Add(ThingDefs.Fertigkeit, (0, null, null));
-            Blocklist.Add(ThingDefs.Adeptenkraft_KomplexeForm, (0, null, null));
-            Blocklist.Add(ThingDefs.Item, (1, null, null));
-            Blocklist.Add(ThingDefs.Kommlink, (1, null, null));
-            Blocklist.Add(ThingDefs.CyberDeck, (1, null, null));
-            Blocklist.Add(ThingDefs.Programm, (1, null, null));
-            Blocklist.Add(ThingDefs.Foki_Widgets, (1, null, null));
-            Blocklist.Add(ThingDefs.Zaubersprueche, (1, null, null));
-            Blocklist.Add(ThingDefs.Geist_Sprite, (1, null, null));
-            Blocklist.Add(ThingDefs.Fernkampfwaffe, (2, null, null));
-            Blocklist.Add(ThingDefs.Nahkampfwaffe, (2, null, null));
-            Blocklist.Add(ThingDefs.Panzerung, (2, null, null));
-            Blocklist.Add(ThingDefs.Vehikel, (2, null, null));
-            Blocklist.Add(ThingDefs.Munition, (2, null, null));
-            Blocklist.Add(ThingDefs.Attribut, (3, null, null));
-            Blocklist.Add(ThingDefs.Connection, (3, null, null));
-            Blocklist.Add(ThingDefs.Implantat, (3, null, null));
-            Blocklist.Add(ThingDefs.Tradition_Initiation, (3, null, null));
-            Blocklist.Add(ThingDefs.Stroemung_Wandlung, (3, null, null));
-            Blocklist.Add(ThingDefs.Sin, (3, null, null));
-            Blocklist.Add(ThingDefs.Vorteil, (3, null, null));
-            Blocklist.Add(ThingDefs.Nachteil, (3, null, null));
-        }
-
-        void StackPanel_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (!(PendingScrollEntry == null))
-            {
-                ScrollIntoBlock();
-            }
+            Blocklist.Add(ThingDefs.Handlung, (0, null, null, null));
+            Blocklist.Add(ThingDefs.Fertigkeit, (0, null, null, null));
+            Blocklist.Add(ThingDefs.Adeptenkraft_KomplexeForm, (0, null, null, null));
+            Blocklist.Add(ThingDefs.Item, (1, null, null, null));
+            Blocklist.Add(ThingDefs.Kommlink, (1, null, null, null));
+            Blocklist.Add(ThingDefs.CyberDeck, (1, null, null, null));
+            Blocklist.Add(ThingDefs.Programm, (1, null, null, null));
+            Blocklist.Add(ThingDefs.Foki_Widgets, (1, null, null, null));
+            Blocklist.Add(ThingDefs.Zaubersprueche, (1, null, null, null));
+            Blocklist.Add(ThingDefs.Geist_Sprite, (1, null, null, null));
+            Blocklist.Add(ThingDefs.Fernkampfwaffe, (2, null, null, null));
+            Blocklist.Add(ThingDefs.Nahkampfwaffe, (2, null, null, null));
+            Blocklist.Add(ThingDefs.Panzerung, (2, null, null, null));
+            Blocklist.Add(ThingDefs.Vehikel, (2, null, null, null));
+            Blocklist.Add(ThingDefs.Munition, (2, null, null, null));
+            Blocklist.Add(ThingDefs.Attribut, (3, null, null, null));
+            Blocklist.Add(ThingDefs.Connection, (3, null, null, null));
+            Blocklist.Add(ThingDefs.Implantat, (3, null, null, null));
+            Blocklist.Add(ThingDefs.Tradition_Initiation, (3, null, null, null));
+            Blocklist.Add(ThingDefs.Stroemung_Wandlung, (3, null, null, null));
+            Blocklist.Add(ThingDefs.Sin, (3, null, null, null));
+            Blocklist.Add(ThingDefs.Vorteil, (3, null, null, null));
+            Blocklist.Add(ThingDefs.Nachteil, (3, null, null, null));
         }
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -548,7 +528,7 @@ namespace ShadowRunHelper
 
         void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            (int PivotItem, ContentControl Block, ListView ListView) Choosen;
+            (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) Choosen;
             try
             {
                 if (args.ChosenSuggestion != null)
@@ -557,7 +537,7 @@ namespace ShadowRunHelper
                 }
                 else
                 {
-                    PendingScrollEntry = MainObject.ThingList.Find(x => args.QueryText.Contains(x.Bezeichner));
+                    PendingScrollEntry = MainObject.ThingList.Find(x => args.QueryText.ToLower().Contains(x.Bezeichner.ToLower()));
                 }
 
                 if (!Blocklist.TryGetValue(PendingScrollEntry.ThingType, out Choosen))
@@ -567,28 +547,32 @@ namespace ShadowRunHelper
                 Pivot.SelectedIndex = Choosen.PivotItem;
             }
             catch { return; }
-            // Pivot Auswahl
-            if (Choosen.Block != null)
-            {
-                ScrollIntoBlock();
-            }
+            ScrollIntoBlock();
+        }
+        private void Grid_Entry_Loaded(object sender, RoutedEventArgs e)
+        {
+            ScrollIntoBlock();
         }
 
         void ScrollIntoBlock()
         {
+            if (PendingScrollEntry == null)
+            {
+                return;
+            }
             try
             {
-                if (!Blocklist.TryGetValue(PendingScrollEntry.ThingType, out (int PivotItem, ContentControl Block, ListView ListView) Choosen))
-                {
-                    return;
-                }
+                Blocklist.TryGetValue(PendingScrollEntry.ThingType, out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) Choosen);
                 // Listenauswahl
                 double offset = 0;
-                foreach (var item in (((Pivot.Items[Choosen.PivotItem] as PivotItem).Content as ScrollViewer).Content as StackPanel).Children)
+                foreach (var item in ((Choosen.sv as ScrollViewer).Content as StackPanel).Children)
                 {
-                    //TODO special vor und nachteile
                     if (item.Equals(Choosen.Block))
                     {
+                        if ((Choosen.sv.Content as StackPanel).Children.Last() == item)
+                        {
+                            throw new IndexOutOfRangeException();
+                        }
                         break;
                     }
                     else
@@ -597,32 +581,29 @@ namespace ShadowRunHelper
                     }
                 }
                 // Scroll into ListView
-                try
+                foreach (ListViewItem item in Choosen.ListView.ItemsPanelRoot.Children)
                 {
-                    foreach (var item in Choosen.ListView.Items)
+                    if ((item.Content).Equals(PendingScrollEntry))
                     {
-                        if ((item).Equals(PendingScrollEntry))
+                        break;
+                    }
+                    else
+                    {
+                        if (Choosen.ListView.ItemsPanelRoot.Children.Last() == item)
                         {
-                            break;
+                            throw new IndexOutOfRangeException();
                         }
-                        else
-                        {
-                            offset += 10;
-                        }
+                        offset += item.DesiredSize.Height;
                     }
                 }
-                catch (Exception)
-                {
-                }
                 Choosen.ListView.SelectedItem = PendingScrollEntry; 
-                ((Pivot.Items[Choosen.PivotItem] as PivotItem).Content as ScrollViewer).ChangeView(null, offset, null);
-                //((Pivot.Items[Choosen.PivotItem] as PivotItem).Content as ScrollViewer).ChangeView(null, 100, null);
-                //Choosen.ListView.ScrollIntoView(PendingScrollEntry.Object, ScrollIntoViewAlignment.Leading); //TODO typen stimme nicht
-                PendingScrollEntry = null;
+                Choosen.sv.ChangeView(null, offset - 100, null);
             }
             catch (Exception)
             {
+                return;
             }
+        PendingScrollEntry = null;
         }
         #region ApplyNewStyles
         private void Button_Loaded(object sender, RoutedEventArgs e)
@@ -634,5 +615,6 @@ namespace ShadowRunHelper
         }
 
         #endregion
+
     }
 }

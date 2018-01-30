@@ -78,7 +78,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="HandlungItem" x:DataType="CharModel:Handlung">
-                <Grid Style="{StaticResource ListView_Item_Grid}">
+                <Grid Loaded="Grid_Entry_Loaded" Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
@@ -168,7 +168,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="VehikelItem" x:DataType="CharModel:Vehikel">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -277,7 +277,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="FertigkeitItem" x:DataType="CharModel:Fertigkeit">
-                <Grid Style="{StaticResource ListView_Item_Grid}">
+                <Grid Loaded="Grid_Entry_Loaded" Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
@@ -340,7 +340,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="ItemItem" x:DataType="CharModel:Item">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -405,7 +405,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="KommlinkItem" x:DataType="CharModel:Kommlink">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -478,7 +478,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="CyberDeckItem" x:DataType="CharModel:CyberDeck">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -586,7 +586,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="ProgrammItem" x:DataType="CharModel:Programm">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -672,7 +672,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="FernkampfwaffeItem" x:DataType="CharModel:Fernkampfwaffe">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -760,7 +760,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="NahkampfwaffeItem" x:DataType="CharModel:Nahkampfwaffe">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -838,7 +838,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="PanzerungItem" x:DataType="CharModel:Panzerung">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -910,7 +910,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="MunitionItem" x:DataType="CharModel:Munition">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -954,7 +954,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="AttributItem" x:DataType="CharModel:Attribut" >
-                <Grid Tapped="Edit_Attribut" Style="{StaticResource ListView_Item_Grid_Editable}" >
+                <Grid Loaded="Grid_Entry_Loaded" Tapped="Edit_Attribut" Style="{StaticResource ListView_Item_Grid_Editable}" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="1*"/>
@@ -980,7 +980,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="ConnectionItem" x:DataType="CharModel:Connection">
-                <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+                <Grid Loaded="Grid_Entry_Loaded" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="*"/>
@@ -1030,7 +1030,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="ImplantatItem" x:DataType="CharModel:Implantat">
-                <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
+                <Grid Loaded="Grid_Entry_Loaded" Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition x:Name="Notizen" Width="Auto"/>
@@ -1112,7 +1112,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="SinItem" x:DataType="CharModel:Sin">
-                <Grid Style="{StaticResource ListView_Item_Grid}">
+                <Grid Loaded="Grid_Entry_Loaded" Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
@@ -1162,7 +1162,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="EigenschaftItem" x:DataType="CharModel:Eigenschaft">
-                <Grid Style="{StaticResource ListView_Item_Grid}">
+                <Grid Loaded="Grid_Entry_Loaded" Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
@@ -1221,7 +1221,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Adeptenkraft_KomplexeFormItem" x:DataType="CharModel:Adeptenkraft_KomplexeForm">
-                <Grid Style="{StaticResource ListView_Item_Grid}">
+                <Grid Loaded="Grid_Entry_Loaded" Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
@@ -1281,7 +1281,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Foki_WidgetsItem" x:DataType="CharModel:Foki_Widgets">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -1345,7 +1345,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="ZauberspruecheItem" x:DataType="CharModel:Zaubersprueche">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -1426,7 +1426,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Geist_SpriteItem" x:DataType="CharModel:Geist_Sprite">
-                <Grid HorizontalAlignment="Stretch">
+                <Grid Loaded="Grid_Entry_Loaded" HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
@@ -1483,7 +1483,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Tradition_InitiationItem" x:DataType="CharModel:Tradition_Initiation">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
@@ -1544,7 +1544,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Stroemung_WandlungItem" x:DataType="CharModel:Stroemung_Wandlung">
-                <Grid>
+                <Grid Loaded="Grid_Entry_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
@@ -1616,7 +1616,9 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Nachteile.(Grid.Column)" Value="2"/>
-                        <Setter Target="Nachteile.(Grid.Row)" Value="0"/>
+                        <Setter Target="Nachteile.(Grid.Row)" Value="7"/>
+                        <Setter Target="Vorteile.(Grid.Column)" Value="0"/>
+                        <Setter Target="Vorteile.(Grid.Row)" Value="7"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
@@ -1625,8 +1627,11 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Nachteile.(Grid.Column)" Value="0"/>
-                        <Setter Target="Nachteile.(Grid.Row)" Value="1"/>
-                        <Setter Target="GridColumn_Nachteil.Width" Value="0"/>
+                        <Setter Target="Nachteile.(Grid.ColumnSpan)" Value="3"/>
+                        <Setter Target="Nachteile.(Grid.Row)" Value="7"/>
+                        <Setter Target="Vorteile.(Grid.Column)" Value="0"/>
+                        <Setter Target="Vorteile.(Grid.ColumnSpan)" Value="3"/>
+                        <Setter Target="Vorteile.(Grid.Row)" Value="8"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -1859,11 +1864,32 @@
                 </Border>
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
-                <StackPanel Loaded="StackPanel_Loaded" Style="{StaticResource Pivot_Item_StackPanel}">
-                    <StackPanel Name="Attribut_U" Style="{StaticResource ListView_U}">
+                <Grid Style="{StaticResource Pivot_Item_Grid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <!--a Padding-->
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.ColumnSpan="3" Grid.Row="0" Name="Attribut_U" Style="{StaticResource ListView_U}">
                         <TextBlock x:Uid="Model_AttributM_"  Style="{StaticResource ListView_U_Text}"/>
                     </StackPanel>
-                    <Grid Style="{ThemeResource ListView_Item_Grid_For_Non_ListViews}">
+<Grid Grid.ColumnSpan="3" Grid.Row="1" Style="{ThemeResource ListView_Item_Grid_For_Non_ListViews}">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -1892,30 +1918,20 @@
                         <ContentControl x:Name="L2" Grid.Column="1" Grid.Row="3" DataContext="{x:Bind MainObject.CTRLAttribut.Limit_K, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
                         <ContentControl x:Name="L3" Grid.Column="2" Grid.Row="3" DataContext="{x:Bind MainObject.CTRLAttribut.Limit_S, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
                     </Grid>
-                    <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="9" Style="{StaticResource Block_ContentControl}"/>
-                    <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="6" Style="{StaticResource Block_ContentControl}"/>
-                    <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="23" Style="{StaticResource Block_ContentControl}"/>
-                    <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="22" Style="{StaticResource Block_ContentControl}"/>
-                    <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="10" Style="{StaticResource Block_ContentControl}"/>
-                    <Grid Name="VorundNachteile">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition x:Name="GridColumn_Vorteil"/>
-                            <ColumnDefinition Width="10"/>
-                            <!--a Padding-->
-                            <ColumnDefinition x:Name="GridColumn_Nachteil"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <ContentControl x:Name="Vorteile" ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="7" Style="{StaticResource Block_ContentControl}"/>
-                        <ContentControl x:Name="Nachteile" ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="8" Style="{StaticResource Block_ContentControl}"/>
-                    </Grid>
-                    <StackPanel Name="Person_U" Style="{StaticResource ListView_U}">
+                    <ContentControl Grid.ColumnSpan="3" Grid.Row="2" ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="9" Style="{StaticResource Block_ContentControl}"/>
+                    <ContentControl Grid.ColumnSpan="3" Grid.Row="3" ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="6" Style="{StaticResource Block_ContentControl}"/>
+                    <ContentControl Grid.ColumnSpan="3" Grid.Row="4" ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="23" Style="{StaticResource Block_ContentControl}"/>
+                    <ContentControl Grid.ColumnSpan="3" Grid.Row="5" ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="22" Style="{StaticResource Block_ContentControl}"/>
+                    <ContentControl Grid.ColumnSpan="3" Grid.Row="6" ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="10" Style="{StaticResource Block_ContentControl}"/>
+                    
+                    <ContentControl x:Name="Vorteile" Grid.ColumnSpan="1" Grid.Column="0" Grid.Row="7" ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="7" Style="{StaticResource Block_ContentControl}"/>
+                    <ContentControl x:Name="Nachteile" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="7" ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="8" Style="{StaticResource Block_ContentControl}"/>
+
+                    <StackPanel Name="Person_U"  Grid.ColumnSpan="3" Grid.Row="9" Style="{StaticResource ListView_U}">
                         <TextBlock x:Uid="Model_Person_" Style="{StaticResource ListView_U_Text}"/>
                         <Button x:Uid="UI_Btn_Bearbeiten" Name="Person1_Edit" Click="Edit_Click"/>
                     </StackPanel>
-                    <Grid Name="Person" Style="{StaticResource ListView_Item_Grid_For_Non_ListViews}" >
+                    <Grid Grid.ColumnSpan="3" Grid.Row="10" Name="Person" Style="{StaticResource ListView_Item_Grid_For_Non_ListViews}" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
@@ -1977,8 +1993,8 @@
                         <TextBlock x:Name="P13B" Text="{x:Bind MainObject.Person.SchlechterRuf, Mode=OneWay}" Grid.Column="3" Grid.Row="4" Style="{StaticResource ListView_Item_Text}"/>
                         <TextBlock x:Name="P14B" Text="{x:Bind MainObject.Person.Prominenz, Mode=OneWay}" Grid.Column="5" Grid.Row="4" Style="{StaticResource ListView_Item_Text}"/>
                     </Grid>
-                    <TextBlock x:Uid="Model_Person_Beschreibung_" HorizontalAlignment="Left"  Style="{StaticResource ListView_U_Text}"/>
-                    <TextBox Name="Beschreibung" Text="{x:Bind MainObject.Person.Zusammenfassung,Mode=TwoWay}" 
+                    <TextBlock Grid.ColumnSpan="3" Grid.Row="11" x:Uid="Model_Person_Beschreibung_" HorizontalAlignment="Left"  Style="{StaticResource ListView_U_Text}"/>
+                    <TextBox Grid.ColumnSpan="3" Grid.Row="12" Name="Beschreibung" Text="{x:Bind MainObject.Person.Zusammenfassung,Mode=TwoWay}" 
                                    ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
                                    TextWrapping="Wrap" 
@@ -1986,7 +2002,7 @@
                                    HorizontalAlignment="Stretch"
                                  AcceptsReturn="True"
                                  />
-                </StackPanel>
+                </Grid>
             </ScrollViewer>
         </PivotItem>
         <PivotItem Style="{StaticResource TabsStylePivotStylePivotItem}">

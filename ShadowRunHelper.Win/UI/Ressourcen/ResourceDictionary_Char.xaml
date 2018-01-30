@@ -317,6 +317,9 @@
     <Style TargetType="StackPanel" x:Key="Pivot_Item_StackPanel">
         <Setter Property="Margin" Value="0,0,0,0"/>
     </Style>
+    <Style TargetType="Grid" x:Key="Pivot_Item_Grid">
+        <Setter Property="Margin" Value="0,0,0,0"/>
+    </Style>
 
     <!-- Content Block Things Structure ################################################## -->
     <Style TargetType="ContentControl" x:Key="Block_ContentControl">
