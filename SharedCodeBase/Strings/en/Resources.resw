@@ -373,7 +373,7 @@ This app can be used to open files and folders on the file system. The app store
     <value>Hold the mouse or finger on a name to get more information.</value>
   </data>
   <data name="UI_Optionen_AutoSaveInterval_Header.Text" xml:space="preserve">
-    <value>Watingtime for Changes in seconds</value>
+    <value>Watingtime for Changes in milliseconds</value>
   </data>
   <data name="UI_Optionen_AutoSave_Tip.Text" xml:space="preserve">
     <value>After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. If you close the app, this will not cause automatic storage. A value between 2 and 10 seconds is okay.</value>

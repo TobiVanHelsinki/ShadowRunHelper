@@ -998,7 +998,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Datei konnte nicht gelesen werden.</value>
   </data>
   <data name="UI_Optionen_AutoSaveInterval_Header.Text" xml:space="preserve">
-    <value>Wartezeit für Änderungen in Sekunden</value>
+    <value>Wartezeit für Änderungen in Millisekunden</value>
   </data>
   <data name="UI_Optionen_AutoSave_Tip.Text" xml:space="preserve">
     <value>Nach einer Änderung wird die angegebene Zeit gewartet, bis dein Char gespeichert wird. Wenn du schnell und viel änderst, dann gib besser einen größeren Wert an. Wenn du die App schließt, wird dies nicht für eine Automatische Speicherung sorgen. Ein Wert zwischen 2 und 10 Sekunden ist okay.</value>
