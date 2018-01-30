@@ -552,6 +552,7 @@ namespace ShadowRunHelper
         private void Grid_Entry_Loaded(object sender, RoutedEventArgs e)
         {
             ScrollIntoBlock();
+            (sender as Grid).Loaded -= Grid_Entry_Loaded;
         }
 
         void ScrollIntoBlock()
@@ -565,11 +566,11 @@ namespace ShadowRunHelper
                 Blocklist.TryGetValue(PendingScrollEntry.ThingType, out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) Choosen);
                 // Listenauswahl
                 double offset = 0;
-                foreach (var item in ((Choosen.sv as ScrollViewer).Content as StackPanel).Children)
+                foreach (var item in ((Choosen.sv as ScrollViewer).Content as Panel).Children)
                 {
                     if (item.Equals(Choosen.Block))
                     {
-                        if ((Choosen.sv.Content as StackPanel).Children.Last() == item)
+                        if ((Choosen.sv.Content as Panel).Children.Last() == item)
                         {
                             throw new IndexOutOfRangeException();
                         }

@@ -1815,7 +1815,7 @@
             </PivotItem.Header>
             <Border x:Name="MainContentBorder">
                 <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
-                    <StackPanel Loaded="StackPanel_Loaded" Style="{StaticResource Pivot_Item_StackPanel}">
+                    <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="1" Style="{StaticResource Block_ContentControl}"/>
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="2" Style="{StaticResource Block_ContentControl}"/>
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="19" Style="{StaticResource Block_ContentControl}"/>
@@ -1830,7 +1830,7 @@
                 </Border>
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
-                <StackPanel Loaded="StackPanel_Loaded" Style="{StaticResource Pivot_Item_StackPanel}">
+                <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
                     <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="3" Style="{StaticResource Block_ContentControl}"/>
                     <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="14" Style="{StaticResource Block_ContentControl}"/>
                     <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="15" Style="{StaticResource Block_ContentControl}"/>
@@ -1848,7 +1848,7 @@
                 </Border>
             </PivotItem.Header>
             <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
-                <StackPanel Loaded="StackPanel_Loaded" Style="{StaticResource Pivot_Item_StackPanel}">
+                <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
                     <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="13" Style="{StaticResource Block_ContentControl}"/>
                     <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="12" Style="{StaticResource Block_ContentControl}"/>
                     <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="17" Style="{StaticResource Block_ContentControl}"/>
