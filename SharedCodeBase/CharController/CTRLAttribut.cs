@@ -212,7 +212,7 @@ namespace ShadowRunHelper.CharController
         }
 
         // Implement IController ##########################
-        public override List<AllListEntry> GetElementsForThingList()
+        public override IEnumerable<AllListEntry> GetElementsForThingList()
         {
             var lstReturn = new List<AllListEntry>();
             lstReturn.Add(MI_Charisma);

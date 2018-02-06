@@ -59,9 +59,9 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_ThingList}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
                     <TextBlock x:Uid="Doppelpunkt" Grid.Column="1"/>
-                    <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Wert, Mode=OneWay}" Grid.Column="2"/>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_ThingList}, ConverterParameter=Wert, Mode=OneWay}" Grid.Column="2"/>
                     <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.ColumnSpan="3"/>
                 </Grid>
             </DataTemplate>

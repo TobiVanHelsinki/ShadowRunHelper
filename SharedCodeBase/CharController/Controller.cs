@@ -3,6 +3,7 @@ using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System;
+using System.Linq;
 
 namespace ShadowRunHelper.CharController
 {
@@ -36,14 +37,9 @@ namespace ShadowRunHelper.CharController
             Data.Remove(tRem);
         }
 
-        public virtual List<AllListEntry> GetElementsForThingList()
+        public virtual IEnumerable<AllListEntry> GetElementsForThingList()
         {
-            var lstReturn = new List<AllListEntry>();
-            foreach (var item in Data)
-            {
-                lstReturn.Add(new AllListEntry(item, ""));
-            }
-            return lstReturn;
+            return Data.Select(item => new AllListEntry(item, ""));
         }
 
         /// <summary>
@@ -179,14 +175,9 @@ namespace ShadowRunHelper.CharController
             }
         }
 
-        public List<Thing> GetElements()
+        public IEnumerable<Thing> GetElements()
         {
-            var ret = new List<Thing>();
-            foreach (var item in Data)
-            {
-                ret.Add(item);
-            }
-            return ret;
+            return Data;
         }
 
     }

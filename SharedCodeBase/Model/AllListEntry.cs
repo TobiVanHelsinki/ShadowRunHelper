@@ -7,8 +7,8 @@ namespace ShadowRunHelper.Model
 {
     public class AllListEntry : INotifyPropertyChanged
     {
-        [Newtonsoft.Json.JsonIgnore]
-        public readonly AllListEntry This;
+        //[Newtonsoft.Json.JsonIgnore]
+        //public readonly AllListEntry This;
 
         string _strPropertyName = "";
         [Newtonsoft.Json.JsonIgnore]
@@ -73,7 +73,7 @@ namespace ShadowRunHelper.Model
         }
         public AllListEntry()
         {
-            This = this;
+            //This = this;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

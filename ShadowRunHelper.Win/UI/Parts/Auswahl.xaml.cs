@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using ShadowRunHelper.Model;
 using Shared;
+using TLIB_UWPFRAME.Resources;
 
 namespace ShadowRunHelper
 {
@@ -26,31 +27,24 @@ namespace ShadowRunHelper
                 throw new AllListChooserError();
             }
 
-            List<ThingDefs> Einzahl = new List<ThingDefs>(new ThingDefs[] { ThingDefs.Attribut, ThingDefs.CyberDeck, ThingDefs.Fernkampfwaffe, ThingDefs.Kommlink, ThingDefs.Nachteil, ThingDefs.Panzerung, ThingDefs.Vehikel});
-            ObservableCollection<List<AllListEntry>> groups = new ObservableCollection<List<AllListEntry>>();
-            {
-                var query = from item in lstThings
-                            group item by item.Object.ThingType into g
-                            //orderby g.Object
-                            select new { GroupName = TypenHelper.ThingDefToString(g.Key, (Einzahl.Contains(g.Key))?false:true), Items = g };
-
-                foreach (var g in query)
+            List<ThingDefs> Einzahl = new List<ThingDefs>() {
+                ThingDefs.Attribut, ThingDefs.CyberDeck, ThingDefs.Fernkampfwaffe,
+                ThingDefs.Kommlink, ThingDefs.Nachteil, ThingDefs.Panzerung, ThingDefs.Vehikel };
+            ObservableCollection<CustomAllList> groups = new ObservableCollection<CustomAllList>();
+            IEnumerable<CustomAllList> GroupedAllList = lstThings.GroupBy(item => item.Object.ThingType).Where(x=>x.Key != ThingDefs.Handlung).Select(
+                group =>
                 {
-                    CustomList info = new CustomList()
+                    var customgroup = new CustomAllList()
                     {
-                        Name = g.GroupName,
-                        Zahl = g.Items.Count()
+                        Name = TypenHelper.ThingDefToString(group.Key, !Einzahl.Contains(group.Key)),
+                        Anzahl = group.Count()
                     };
-                    foreach (var item in g.Items)
-                    {
-                        info.Add(item);
-                    }
-                    if (info.Count != 0)
-                    {
-                        groups.Add(info);
-                    }
+                    customgroup.AddRange(group);
+                    return customgroup;
                 }
-            }
+            );
+            groups.AddRange(GroupedAllList);
+            var z = GroupedAllList.ElementAt(0).Anzahl;
             InitializeComponent();
             GroupedList.Source = groups;
 
@@ -90,9 +84,9 @@ namespace ShadowRunHelper
         }
 
     }
-    internal class CustomList : List<AllListEntry>
+    internal class CustomAllList : List<AllListEntry>
     {
-        public object Name { get; set; }
-        public object Zahl { get; set; }
+        public string Name { get; set; }
+        public int Anzahl { get; set; }
     }
 }

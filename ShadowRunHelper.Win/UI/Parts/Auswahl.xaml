@@ -35,20 +35,20 @@
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Bezeichner}" Grid.Column="0"/>
-                            <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=Wert}" Grid.Column="1"/>
+                            <TextBlock Text="{x:Bind Converter={StaticResource o_ThingList}, ConverterParameter=Bezeichner}" Grid.Column="0"/>
+                            <TextBlock Text="{x:Bind Converter={StaticResource o_ThingList}, ConverterParameter=Wert}" Grid.Column="1"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.GroupStyle>
                     <GroupStyle >
                         <GroupStyle.HeaderTemplate>
-                            <DataTemplate x:DataType="local:CustomList">
+                            <DataTemplate x:DataType="local:CustomAllList">
                                     <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0">
                                         <Run Text="{x:Bind Name}"/>
                                         <Run x:Uid="Space"/>
                                         <Run x:Uid="Klammer_Rund_Auf"/>
-                                        <Run Text="{x:Bind Zahl}"/>
+                                        <Run Text="{x:Bind Anzahl}"/>
                                         <Run x:Uid="Klammer_Rund_Zu"/>
                                 </TextBlock>
                             </DataTemplate>
@@ -70,7 +70,7 @@
                             <Run Text="{Binding Group.Name}"/>
                             <Run x:Uid="Space"/>
                             <Run x:Uid="Klammer_Rund_Auf"/>
-                            <Run Text="{Binding Group.Zahl}"/>
+                            <Run Text="{Binding Group.Anzahl}"/>
                             <Run x:Uid="Klammer_Rund_Zu"/>
                         </TextBlock>
                     </DataTemplate>

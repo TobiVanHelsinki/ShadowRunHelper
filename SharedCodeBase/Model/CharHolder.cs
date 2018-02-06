@@ -568,16 +568,11 @@ namespace ShadowRunHelper.Model
         }
         #endregion
         #region IMPORT / EXPORT STUFF ##############################################
-        public List<(string ThingType, string Content)> ToCSV(string strDelimiter)
+        public IEnumerable<(string ThingType, string Content)> ToCSV(string strDelimiter)
         {
-            var lstReturn = new List<(string, string)>();
             const string strNewLine = "\n";
             string strNew = "sep=" + strDelimiter + strNewLine;
-            foreach (var item in lstCTRL)
-            {
-                lstReturn.Add(item.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-            }
-            return lstReturn;
+            return lstCTRL.Select(item => item.MultipleCSVExport(strDelimiter, strNewLine, strNew));
         }
 
         public void FromCSV(char strDelimiter, string strImport, ThingDefs eThing)

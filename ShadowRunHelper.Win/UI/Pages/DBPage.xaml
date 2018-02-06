@@ -56,7 +56,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{x:Bind This, Converter={StaticResource o_ThingList}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_ThingList}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Handlung_E" x:Key="Handlung_E">

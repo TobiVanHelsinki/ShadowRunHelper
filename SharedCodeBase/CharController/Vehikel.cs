@@ -63,7 +63,7 @@ namespace ShadowRunHelper.CharController
             ActiveItem.Reset();
         }
 
-        public override List<AllListEntry> GetElementsForThingList()
+        public override IEnumerable<AllListEntry> GetElementsForThingList()
         {
             List<AllListEntry> lstReturn = new List<AllListEntry>();
             lstReturn.Add(MI_1);

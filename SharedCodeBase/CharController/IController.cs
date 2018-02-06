@@ -12,13 +12,13 @@ namespace ShadowRunHelper.CharController
         /// To populate the Link List - will be overridden by singlecontroller
         /// </summary>
         /// <returns></returns>
-        List<AllListEntry> GetElementsForThingList();
+        IEnumerable<AllListEntry> GetElementsForThingList();
 
         /// <summary>
         /// To populate the "All Things" List just return your data. used for search
         /// </summary>
         /// <returns></returns>
-        List<Thing> GetElements();
+        IEnumerable<Thing> GetElements();
 
         /// <summary>
         /// retval: List of Tuple: item1 (ThingType) is Name for waht is at the string (attribut or cyberdeck orso)
