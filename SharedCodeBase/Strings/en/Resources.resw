@@ -1161,4 +1161,10 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="UI_Admin_Btn_CurrentChar_Export.Text" xml:space="preserve">
     <value>Export</value>
   </data>
+  <data name="Model_BerechnetM_.Text" xml:space="preserve">
+    <value>Calculated values</value>
+  </data>
+  <data name="Model_Berechnet_.Text" xml:space="preserve">
+    <value>Calculated value</value>
+  </data>
 </root>

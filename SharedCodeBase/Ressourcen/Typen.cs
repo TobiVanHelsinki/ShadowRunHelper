@@ -83,6 +83,8 @@ namespace ShadowRunHelper
                         return CrossPlatformHelper.GetString("Model_Sin_/Text");
                     case ThingDefs.Attribut:
                         return CrossPlatformHelper.GetString("Model_Attribut_/Text");
+                    case ThingDefs.Berechnet:
+                        return CrossPlatformHelper.GetString("Model_Berechnet_/Text");
                     case ThingDefs.Nahkampfwaffe:
                         return CrossPlatformHelper.GetString("Model_Nahkampfwaffe_/Text");
                     case ThingDefs.Fernkampfwaffe:
@@ -141,6 +143,8 @@ namespace ShadowRunHelper
                         return CrossPlatformHelper.GetString("Model_SinM_/Text");
                     case ThingDefs.Attribut:
                         return CrossPlatformHelper.GetString("Model_AttributM_/Text");
+                    case ThingDefs.Berechnet:
+                        return CrossPlatformHelper.GetString("Model_BerechnetM_/Text");
                     case ThingDefs.Nahkampfwaffe:
                         return CrossPlatformHelper.GetString("Model_NahkampfwaffeM_/Text");
                     case ThingDefs.Fernkampfwaffe:
@@ -201,6 +205,8 @@ namespace ShadowRunHelper
                     return typeof(CharModel.Sin);
                 case ThingDefs.Attribut:
                     return typeof(CharModel.Attribut);
+                case ThingDefs.Berechnet:
+                    return typeof(CharModel.Berechnet);
                 case ThingDefs.Nahkampfwaffe:
                     return typeof(CharModel.Nahkampfwaffe);
                 case ThingDefs.Fernkampfwaffe:

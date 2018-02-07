@@ -13,17 +13,12 @@ namespace ShadowRunHelper.CharController
     {
         // Variable Stuff #####################################################
         // Variable Model Stuff ###########################
-        [Newtonsoft.Json.JsonIgnore] //cause sometimes an very uebel Bug
-        //[Newtonsoft.Json.JsonIgnore]
         public new ObservableCollection<Berechnet> Data; //cause sometimes an very uebel Bug
 
-        [Newtonsoft.Json.JsonIgnore]
         public Berechnet Essenz;
-        [Newtonsoft.Json.JsonIgnore]
         public Berechnet Limit_K;
-        [Newtonsoft.Json.JsonIgnore]
         public Berechnet Limit_G;
-        [Newtonsoft.Json.JsonIgnore]
+        public Berechnet Limit_S;
         public Berechnet Limit_S;
 
         AllListEntry MI_Essenz;

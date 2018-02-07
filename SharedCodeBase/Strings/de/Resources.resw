@@ -1197,4 +1197,10 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   <data name="UI_Admin_Btn_CurrentChar_Export.Text" xml:space="preserve">
     <value>Exportieren</value>
   </data>
+  <data name="Model_BerechnetM_.Text" xml:space="preserve">
+    <value>Berechnete Werte</value>
+  </data>
+  <data name="Model_Berechnet_.Text" xml:space="preserve">
+    <value>Berechneter Wert</value>
+  </data>
 </root>
