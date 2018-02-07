@@ -516,7 +516,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Attribut_Charisma.Text" xml:space="preserve">
     <value>Charisma</value>
   </data>
-  <data name="Model_Attribut_Essenz.Text" xml:space="preserve">
+  <data name="Model_Berechnet_Essenz.Text" xml:space="preserve">
     <value>Essence</value>
   </data>
   <data name="Model_Attribut_Intuition.Text" xml:space="preserve">
@@ -525,13 +525,13 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Attribut_Konsti.Text" xml:space="preserve">
     <value>Body</value>
   </data>
-  <data name="Model_Attribut_Limit_G.Text" xml:space="preserve">
+  <data name="Model_Berechnet_Limit_G.Text" xml:space="preserve">
     <value>Mental Limit</value>
   </data>
-  <data name="Model_Attribut_Limit_K.Text" xml:space="preserve">
+  <data name="Model_Berechnet_Limit_K.Text" xml:space="preserve">
     <value>Physical Limit</value>
   </data>
-  <data name="Model_Attribut_Limit_S.Text" xml:space="preserve">
+  <data name="Model_Berechnet_Limit_S.Text" xml:space="preserve">
     <value>Social Limit</value>
   </data>
   <data name="Model_Attribut_Logik.Text" xml:space="preserve">

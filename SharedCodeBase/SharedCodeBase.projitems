@@ -21,7 +21,8 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Example\de_Nao.SRHChar" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)CharController\CTRLAttribut.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharController\BerechnetController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharController\AttributController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharController\Controller.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharController\CyberDeck.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharController\Fernkampfwaffe.cs" />
@@ -31,6 +32,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)CharController\Panzerung.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharController\Vehikel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Adeptenkraft_KomplexeForm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Berechnet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Attribut.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Connection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\CyberDeck.cs" />

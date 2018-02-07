@@ -41,6 +41,8 @@ namespace ShadowRunHelper.Model
         public Controller<Zaubersprueche> CTRLZaubersprueche { get; set; }
 
         public AttributController CTRLAttribut { get; set; }
+        public BerechnetController CTRLBerechnet { get; set; }
+        
         public NahkampfwaffeController CTRLNahkampfwaffe { get; set; }
         public FernkampfwaffeController CTRLFernkampfwaffe { get; set; }
         public KommlinkController CTRLKommlink { get; set; }
@@ -124,6 +126,7 @@ namespace ShadowRunHelper.Model
             // To Autosave
             CTRLAdeptenkraft_KomplexeForm = new Controller<Adeptenkraft_KomplexeForm>();
             CTRLAttribut = new AttributController();
+            CTRLBerechnet = new BerechnetController();
             CTRLConnection = new Controller<Connection>();
             CTRLCyberDeck = new CyberDeckController();
             CTRLFernkampfwaffe = new FernkampfwaffeController();
@@ -147,6 +150,7 @@ namespace ShadowRunHelper.Model
             CTRLZaubersprueche = new Controller<Zaubersprueche>();
 
             lstCTRL.Add(CTRLAttribut);
+            lstCTRL.Add(CTRLBerechnet);
             lstCTRL.Add(CTRLFertigkeit);
             lstCTRL.Add(CTRLItem);
 
@@ -181,7 +185,7 @@ namespace ShadowRunHelper.Model
 
             Person = new Person();
             CTRLAttribut.SetDependencies(Person, CTRLImplantat.Data);
-
+            CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
             _LinkList = new List<AllListEntry>();
             _ThingList = new List<Thing>();
             RefreshLists();
@@ -442,6 +446,9 @@ namespace ShadowRunHelper.Model
                 case ThingDefs.Attribut:
                     CTRLAttribut.RemoveThing((Attribut)tToRemove);
                     break;
+                case ThingDefs.Berechnet:
+                    CTRLBerechnet.RemoveThing((Berechnet)tToRemove);
+                    break;
                 case ThingDefs.Nahkampfwaffe:
                     CTRLNahkampfwaffe.RemoveThing((Nahkampfwaffe)tToRemove);
                     break;
@@ -616,6 +623,9 @@ namespace ShadowRunHelper.Model
                     break;
                 case ThingDefs.Attribut:
                     CTRLAttribut.MultipleCSVImport(strDelimiter, strNewLine, strImport);
+                    break;
+                case ThingDefs.Berechnet:
+                    CTRLBerechnet.MultipleCSVImport(strDelimiter, strNewLine, strImport);
                     break;
                 case ThingDefs.Nahkampfwaffe:
                     CTRLNahkampfwaffe.MultipleCSVImport(strDelimiter, strNewLine, strImport);

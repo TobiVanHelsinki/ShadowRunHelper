@@ -46,6 +46,7 @@ namespace ShadowRunHelper
         Stroemung_Wandlung = 22,
         Tradition_Initiation = 23,
         Zaubersprueche = 24,
+        Berechnet = 25,
     }
 
     public static class TypenHelper
