@@ -142,7 +142,7 @@ namespace ShadowRunHelper.CharController
         }
         protected void RefreshRennen()
         {
-            Rennen.Wert = AttributeRef.Geschick.Wert * 3;
+            Rennen.Wert = AttributeRef.Geschick.Wert * 4;
         }
         protected void RefreshTragen()
         {
