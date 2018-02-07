@@ -3,6 +3,7 @@ using SharedCodeBase.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -131,6 +132,7 @@ namespace ShadowRunHelper.CharModel
                 {
                 }
             }
+            double newtemp = List.Aggregate<AllListEntry, double>(0, (accvalue, next) => next.Object.GetValue(next.strProperty));
             return temp;
         }
     }

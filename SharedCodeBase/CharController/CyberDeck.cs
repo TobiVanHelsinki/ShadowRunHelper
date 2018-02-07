@@ -4,6 +4,7 @@ using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME.Model;
 
@@ -68,11 +69,14 @@ namespace ShadowRunHelper.CharController
         /// </summary>
         void RefreshActiveDeck()
         {
+            // aber ich könnte auch einfach statt active deck immer ein anderes einsetzen. dann müssten sich aber die registriere immer neu registrieren ...
+            // außer, ich schaffe es, nur den registrierten besheid zu geben, sie sollen sich auf ein neues ziel registrieren!
             if (bIsRefreshInProgress)
             {
                 return;
             }
             bIsRefreshInProgress = true;
+            Data.First(i => i.Aktiv == true).Copy(ActiveItem);
             foreach (CyberDeck item in Data)
             {
                 if (item.Aktiv == true)
