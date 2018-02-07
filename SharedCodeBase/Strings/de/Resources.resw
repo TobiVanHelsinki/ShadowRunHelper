@@ -1203,4 +1203,13 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   <data name="Model_Berechnet_.Text" xml:space="preserve">
     <value>Berechneter Wert</value>
   </data>
+  <data name="Model_Berechnet_Laufen.Text" xml:space="preserve">
+    <value>Laufen</value>
+  </data>
+  <data name="Model_Berechnet_Rennen.Text" xml:space="preserve">
+    <value>Rennen</value>
+  </data>
+  <data name="Model_Berechnet_Tragen.Text" xml:space="preserve">
+    <value>Tragen</value>
+  </data>
 </root>

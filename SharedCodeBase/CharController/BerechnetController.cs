@@ -15,17 +15,21 @@ namespace ShadowRunHelper.CharController
         // Variable Model Stuff ###########################
         public new ObservableCollection<Berechnet> Data; //cause sometimes an very uebel Bug
 
-        public Berechnet Essenz;
-        public Berechnet Limit_K;
-        public Berechnet Limit_G;
-        public Berechnet Limit_S;
-        public Berechnet Limit_S;
+        public Berechnet Essenz = new Berechnet();
+        public Berechnet Limit_K = new Berechnet();
+        public Berechnet Limit_G = new Berechnet();
+        public Berechnet Limit_S = new Berechnet();
+        public Berechnet Laufen = new Berechnet();
+        public Berechnet Rennen = new Berechnet();
+        public Berechnet Tragen = new Berechnet();
 
         AllListEntry MI_Essenz;
         AllListEntry MI_Limit_K;
         AllListEntry MI_Limit_G;
         AllListEntry MI_Limit_S;
-        //TODO add laufen, springen, etc
+        AllListEntry MI_Laufen;
+        AllListEntry MI_Rennen;
+        AllListEntry MI_Tragen;
 
         AttributController AttributeRef;
         Person PersonRef;
@@ -36,18 +40,16 @@ namespace ShadowRunHelper.CharController
         // Start Stuff ########################################################
         public BerechnetController()
         {
-           
-            Essenz = new Berechnet();
-            Limit_K = new Berechnet();
-            Limit_G = new Berechnet();
-            Limit_S = new Berechnet();
             RefreshBezeichner();
             MI_Essenz = new AllListEntry(Essenz, "");
             MI_Limit_K = new AllListEntry(Limit_K, "");
             MI_Limit_G = new AllListEntry(Limit_G, "");
             MI_Limit_S = new AllListEntry(Limit_S, "");
+            MI_Laufen = new AllListEntry(Laufen, "");
+            MI_Rennen = new AllListEntry(Rennen, "");
+            MI_Tragen = new AllListEntry(Tragen, "");
 
-            
+
             Essenz.PropertyChanged += (x, y) => RefreshLimitS();
             Data = new ObservableCollection<Berechnet>();
             Data.CollectionChanged += Data_CollectionChanged;
@@ -60,6 +62,9 @@ namespace ShadowRunHelper.CharController
             Limit_K.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Limit_K/Text");
             Limit_G.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Limit_G/Text");
             Limit_S.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Limit_S/Text");
+            Laufen.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Laufen/Text");
+            Rennen.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Rennen/Text");
+            Tragen.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Tragen/Text");
         }
 
         public void SetDependencies(Person p, ObservableCollection<Implantat> i, AttributController a)
@@ -69,14 +74,16 @@ namespace ShadowRunHelper.CharController
             lstImplantateRef = i;
             PersonRef.PropertyChanged += (x, y) => RefreshEssenz();
             lstImplantateRef.CollectionChanged += (x, y) => RegisterRefreshers();
+            AttributeRef.Geschick.PropertyChanged += (x, y) => { RefreshLaufen(); RefreshRennen(); };
             AttributeRef.Konsti.PropertyChanged += (x, y) => { RefreshLimitK(); RefreshLimitSchaden(); };
             AttributeRef.Reaktion.PropertyChanged += (x, y) => RefreshLimitK();
-            AttributeRef.Staerke.PropertyChanged += (x, y) => RefreshLimitK();
+            AttributeRef.Staerke.PropertyChanged += (x, y) => { RefreshTragen(); RefreshLimitK(); };
             AttributeRef.Charisma.PropertyChanged += (x, y) => RefreshLimitS();
             AttributeRef.Logik.PropertyChanged += (x, y) => RefreshLimitG();
             AttributeRef.Intuition.PropertyChanged += (x, y) => RefreshLimitG();
             AttributeRef.Willen.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); RefreshLimitSchaden(); };
             RefreshLimitS(); RefreshLimitG(); RefreshLimitSchaden();
+            RefreshLaufen(); RefreshRennen(); RefreshTragen();
         }
 
         void RegisterRefreshers()
@@ -129,6 +136,19 @@ namespace ShadowRunHelper.CharController
             Limit_S.Wert = Math.Ceiling((AttributeRef.Charisma.GetValue() * 2 + AttributeRef.Willen.GetValue() + Essenz.GetValue()) / 3);
         }
 
+        protected void RefreshLaufen()
+        {
+            Laufen.Wert = AttributeRef.Geschick.Wert * 2; 
+        }
+        protected void RefreshRennen()
+        {
+            Rennen.Wert = AttributeRef.Geschick.Wert * 3;
+        }
+        protected void RefreshTragen()
+        {
+            Tragen.Wert = AttributeRef.Staerke.Wert * 10; //5 und 15 auch mgl TODO
+        }
+
         // DataList Handling ##############################
         void RefreshDataList()
         {
@@ -138,6 +158,9 @@ namespace ShadowRunHelper.CharController
             Data.Add(Limit_K);
             Data.Add(Limit_G);
             Data.Add(Limit_S);
+            Data.Add(Laufen);
+            Data.Add(Rennen);
+            Data.Add(Tragen);
         }
         void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -157,6 +180,9 @@ namespace ShadowRunHelper.CharController
             lstReturn.Add(MI_Limit_K);
             lstReturn.Add(MI_Limit_G);
             lstReturn.Add(MI_Limit_S);
+            lstReturn.Add(MI_Laufen);
+            lstReturn.Add(MI_Rennen);
+            lstReturn.Add(MI_Tragen);
             return lstReturn;
         }
 

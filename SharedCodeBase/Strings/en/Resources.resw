@@ -1167,4 +1167,13 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Model_Berechnet_.Text" xml:space="preserve">
     <value>Calculated value</value>
   </data>
+  <data name="Model_Berechnet_Laufen.Text" xml:space="preserve">
+    <value>Walk</value>
+  </data>
+  <data name="Model_Berechnet_Rennen.Text" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="Model_Berechnet_Tragen.Text" xml:space="preserve">
+    <value>Carrie</value>
+  </data>
 </root>

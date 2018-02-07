@@ -1905,10 +1905,13 @@
                     <StackPanel Grid.ColumnSpan="3" Grid.Row="0" Name="Attribut_U" Style="{StaticResource ListView_U}">
                         <TextBlock x:Uid="Model_AttributM_"  Style="{StaticResource ListView_U_Text}"/>
                     </StackPanel>
-<Grid Grid.ColumnSpan="3" Grid.Row="1" Style="{ThemeResource ListView_Item_Grid_For_Non_ListViews}">
+                    <Grid Grid.ColumnSpan="3" Grid.Row="1" Style="{ThemeResource ListView_Item_Grid_For_Non_ListViews}">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="30"/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -1927,12 +1930,16 @@
                         <ContentControl x:Name="G2" Grid.Column="1" Grid.Row="1" DataContext="{x:Bind MainObject.CTRLAttribut.Intuition, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
                         <ContentControl x:Name="G3" Grid.Column="2" Grid.Row="1" DataContext="{x:Bind MainObject.CTRLAttribut.Willen, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
                         <ContentControl x:Name="G4" Grid.Column="3" Grid.Row="1" DataContext="{x:Bind MainObject.CTRLAttribut.Charisma, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
-                        <ContentControl x:Name="S1" Grid.Column="0" Grid.Row="2" DataContext="{x:Bind MainObject.CTRLBerechnet.Essenz, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
-                        <ContentControl x:Name="S2" Grid.Column="1" Grid.Row="2" DataContext="{x:Bind MainObject.CTRLAttribut.Magie, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
-                        <ContentControl x:Name="S3" Grid.Column="2" Grid.Row="2" DataContext="{x:Bind MainObject.CTRLAttribut.Resonanz, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
-                        <ContentControl x:Name="L1" Grid.Column="0" Grid.Row="3" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_G, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
-                        <ContentControl x:Name="L2" Grid.Column="1" Grid.Row="3" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_K, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
-                        <ContentControl x:Name="L3" Grid.Column="2" Grid.Row="3" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_S, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
+                        <ContentControl x:Name="S2" Grid.Column="0" Grid.Row="2" DataContext="{x:Bind MainObject.CTRLAttribut.Magie, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
+                        <ContentControl x:Name="S3" Grid.Column="1" Grid.Row="2" DataContext="{x:Bind MainObject.CTRLAttribut.Resonanz, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
+                     
+                        <ContentControl x:Name="B1" Grid.Column="3" Grid.Row="6" DataContext="{x:Bind MainObject.CTRLBerechnet.Essenz, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
+                        <ContentControl x:Name="L1" Grid.Column="0" Grid.Row="5" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_G, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
+                        <ContentControl x:Name="L2" Grid.Column="1" Grid.Row="5" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_K, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
+                        <ContentControl x:Name="L3" Grid.Column="2" Grid.Row="5" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_S, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
+                        <ContentControl x:Name="B2" Grid.Column="0" Grid.Row="6" DataContext="{x:Bind MainObject.CTRLBerechnet.Laufen, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
+                        <ContentControl x:Name="B3" Grid.Column="1" Grid.Row="6" DataContext="{x:Bind MainObject.CTRLBerechnet.Rennen, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
+                        <ContentControl x:Name="B4" Grid.Column="2" Grid.Row="6" DataContext="{x:Bind MainObject.CTRLBerechnet.Tragen, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
                     </Grid>
                     <ContentControl Grid.ColumnSpan="3" Grid.Row="2" ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="9" Style="{StaticResource Block_ContentControl}"/>
                     <ContentControl Grid.ColumnSpan="3" Grid.Row="3" ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="6" Style="{StaticResource Block_ContentControl}"/>
