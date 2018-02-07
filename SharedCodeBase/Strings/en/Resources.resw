@@ -493,7 +493,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Current Char introduction</value>
   </data>
   <data name="GlobalFilterBox.PlaceholderText" xml:space="preserve">
-    <value>Search ...</value>
+    <value>Search for Name and Type ...</value>
   </data>
   <data name="EditDialog.PrimaryButtonText" xml:space="preserve">
     <value>Finish</value>

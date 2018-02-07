@@ -929,7 +929,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Original Exception</value>
   </data>
   <data name="GlobalFilterBox.PlaceholderText" xml:space="preserve">
-    <value>Durchsuchen ...</value>
+    <value>Suche nach Name und Typ ...</value>
   </data>
   <data name="UI_Optionen_Intern_Sync_Header.Text" xml:space="preserve">
     <value>Interne Dateien Synchronisieren?</value>

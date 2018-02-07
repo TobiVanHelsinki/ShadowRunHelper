@@ -523,12 +523,11 @@ namespace ShadowRunHelper
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where((x) => x.Bezeichner.ToLower().Contains((sender as AutoSuggestBox).Text.ToLower()));
+            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
         }
 
         void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) Choosen;
             try
             {
                 if (args.ChosenSuggestion != null)
@@ -537,10 +536,10 @@ namespace ShadowRunHelper
                 }
                 else
                 {
-                    PendingScrollEntry = MainObject.ThingList.Find(x => args.QueryText.ToLower().Contains(x.Bezeichner.ToLower()));
+                    PendingScrollEntry = MainObject.ThingList.Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
                 }
 
-                if (!Blocklist.TryGetValue(PendingScrollEntry.ThingType, out Choosen))
+                if (!Blocklist.TryGetValue(PendingScrollEntry.ThingType, out var Choosen))
                 {
                     return;
                 }

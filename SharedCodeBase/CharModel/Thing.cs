@@ -20,7 +20,7 @@ namespace ShadowRunHelper.CharModel
         {
             ThingType = ThingDefs.Undef;
         }
-            ThingDefs thingType = 0;
+        ThingDefs thingType = 0;
         [Newtonsoft.Json.JsonIgnore]
         public ThingDefs ThingType
         {
@@ -234,6 +234,34 @@ namespace ShadowRunHelper.CharModel
         public static bool HasSameIdentifiers(Thing t1, Thing t2)
         {
             return t1.ThingType == t2.ThingType ? t1.Bezeichner == t2.Bezeichner ? true : false : false;
+        }
+
+        /// <summary>
+        /// Checks, if this object has Similarities to the parameter, will be overridden by others
+        /// </summary>
+        /// <param name="i_t"></param>
+        /// <returns> 1    -> type   correct, name correct </returns>
+        /// <returns> >0.5 -> type   correct, name somehow</returns>
+        /// <returns> 0.5  -> type incorrect, name correct</returns>
+        /// <returns> <0.5  -> type incorrect, name somehow</returns>
+        /// <returns> <0.5 -> type   correct, name incorrect</returns>
+        /// <returns> 0    -> type incorrect, name incorrect</returns>
+        public virtual float SimilaritiesTo(string text)
+        {
+            float retval = 0;
+            if (TypenHelper.ThingDefToString(ThingType, false).ToLower().Contains(text))
+            {
+                retval += 0.4f;
+            }
+            if (Bezeichner.ToLower().Contains(text.ToLower()))
+            {
+                retval += 0.4f;
+            }
+            if (Bezeichner.ToLower() == (text.ToLower()))
+            {
+                retval += 0.1f;
+            }
+            return retval;
         }
     }
 }

@@ -22,10 +22,6 @@ namespace ShadowRunHelper.CharModel
         
         public override Thing Copy(Thing target)
         {
-            if (target == null)
-            {
-                throw new System.ArgumentNullException();
-            }
             base.Copy(target);
             ((Eigenschaft)target).Auswirkungen = Auswirkungen;
             return target;
