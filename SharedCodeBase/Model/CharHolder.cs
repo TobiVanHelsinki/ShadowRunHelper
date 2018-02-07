@@ -41,8 +41,9 @@ namespace ShadowRunHelper.Model
         public Controller<Zaubersprueche> CTRLZaubersprueche { get; set; }
 
         public AttributController CTRLAttribut { get; set; }
+        [Newtonsoft.Json.JsonIgnore]
         public BerechnetController CTRLBerechnet { get; set; }
-        
+
         public NahkampfwaffeController CTRLNahkampfwaffe { get; set; }
         public FernkampfwaffeController CTRLFernkampfwaffe { get; set; }
         public KommlinkController CTRLKommlink { get; set; }
