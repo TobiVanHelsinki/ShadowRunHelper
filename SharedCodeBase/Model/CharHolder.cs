@@ -203,10 +203,10 @@ namespace ShadowRunHelper.Model
                 foreach (var item in SourceCollection)
                 {
                     AllListEntry NewEntry;
-                    NewEntry = lstThings.Find(x => x.Object.Equals(item.Object) && x.strProperty == item.strProperty);
+                    NewEntry = lstThings.Find(x => x.Object.Equals(item.Object) && x.PropertyID == item.PropertyID);
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner && x.Object.ThingType.Equals(item.Object.ThingType) && x.strProperty.Equals(item.strProperty));
+                        NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner && x.Object.ThingType.Equals(item.Object.ThingType) && x.PropertyID.Equals(item.PropertyID));
                     }
                     if (NewEntry == null)
                     {

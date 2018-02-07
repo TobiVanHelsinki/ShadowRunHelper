@@ -73,15 +73,15 @@ namespace ShadowRunHelper.CharModel
 
             foreach (AllListEntry item in WertZusammensetzung)
             {
-                target2.WertZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), strProperty = item.strProperty, strPropertyName = item.strPropertyName });
+                target2.WertZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName });
             }
             foreach (AllListEntry item in GegenZusammensetzung)
             {
-                target2.GegenZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), strProperty = item.strProperty, strPropertyName = item.strPropertyName });
+                target2.GegenZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName });
             }
             foreach (AllListEntry item in GrenzeZusammensetzung)
             {
-                target2.GrenzeZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), strProperty = item.strProperty, strPropertyName = item.strPropertyName });
+                target2.GrenzeZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName });
             }
             return target;
         }
@@ -121,7 +121,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         static double Recalculate(ObservableCollection<AllListEntry> List) {
-            return List.Aggregate<AllListEntry, double>(0, (accvalue, next) => accvalue + next.Object.GetValue(next.strProperty));
+            return List.Aggregate<AllListEntry, double>(0, (accvalue, next) => accvalue + next.Object.GetValue(next.PropertyID));
         }
     }
 }

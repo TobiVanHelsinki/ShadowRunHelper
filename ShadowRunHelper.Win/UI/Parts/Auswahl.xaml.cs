@@ -74,7 +74,7 @@ namespace ShadowRunHelper
         {
             foreach (var item in lstZusammensetzung)
             {
-                var tepmindex = lstThings.FindIndex(x => (x.Object == item.Object && x.strProperty == item.strProperty));
+                var tepmindex = lstThings.FindIndex(x => (x.Object == item.Object && x.PropertyID == item.PropertyID));
                 Zus_ListVIew.SelectRange(new ItemIndexRange(tepmindex, 1));
                 
             }

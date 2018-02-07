@@ -46,7 +46,7 @@ namespace ShadowRunHelper.CharModel
         
             foreach (AllListEntry item in PoolZusammensetzung)
             {
-                target2.PoolZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), strProperty = item.strProperty, strPropertyName = item.strPropertyName });
+                target2.PoolZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName });
             }
             return target;
         }
@@ -70,7 +70,7 @@ namespace ShadowRunHelper.CharModel
 
                 try
                 {
-                    temp += item.Object.GetValue(item.strProperty);
+                    temp += item.Object.GetValue(item.PropertyID);
                 }
                 catch (System.Exception)
                 {

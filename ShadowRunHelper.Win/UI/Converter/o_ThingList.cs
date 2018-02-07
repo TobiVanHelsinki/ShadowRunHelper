@@ -15,31 +15,31 @@ namespace ShadowRunHelper.UI.Converter
             switch ((string)parameter)
             {
                 case "Wert":
-                    if (item?.strProperty == "")
+                    if (item?.PropertyID == "")
                     {
                         return item.Object.Wert.ToString();
                     }
                     else
                     {
-                        return item.Object.GetValue(item.strProperty).ToString();
+                        return item.Object.GetValue(item.PropertyID).ToString();
                     }
                 case "Bezeichner":
-                    if (item?.strProperty == "")
+                    if (item?.PropertyID == "")
                     {
                         return item.Object.Bezeichner;
                     }
                     else
                     {
-                        return CrossPlatformHelper.GetString(item.strPropertyName);
+                        return CrossPlatformHelper.GetString(item.DisplayName);
                     }
                 case "BezeichnerLang":
-                    if (item?.strProperty == "")
+                    if (item?.PropertyID == "")
                     {
                         return item.Object.Bezeichner;
                     }
                     else
                     {
-                        return TypenHelper.ThingDefToString(item.Object.ThingType, false)+" "+CrossPlatformHelper.GetString(item.strPropertyName);
+                        return TypenHelper.ThingDefToString(item.Object.ThingType, false)+" "+CrossPlatformHelper.GetString(item.DisplayName);
                     }
                 case "Zusatz":
                     return item.Object.Zusatz;

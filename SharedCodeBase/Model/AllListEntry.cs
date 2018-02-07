@@ -10,19 +10,19 @@ namespace ShadowRunHelper.Model
         //[Newtonsoft.Json.JsonIgnore]
         //public readonly AllListEntry This;
 
-        string _strPropertyName = "";
+        string _DisplayName = "";
         [Newtonsoft.Json.JsonIgnore]
-        public string strPropertyName
+        public string DisplayName
         {
             get
             {
-                return _strPropertyName;
+                return _DisplayName;
             }
             set
             {
-                if (value != _strPropertyName && value != "" && value != null)
+                if (value != _DisplayName && value != "" && value != null)
                 {
-                    _strPropertyName = value;
+                    _DisplayName = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -48,28 +48,28 @@ namespace ShadowRunHelper.Model
                 }
             }
         }
-        string _strProperty = "";
-        public string strProperty
+        string _PropertyID = "";
+        public string PropertyID
         {
             get
             {
-                return _strProperty;
+                return _PropertyID;
             }
             set
             {
-                if (value != _strProperty && value != null)
+                if (value != _PropertyID && value != null)
                 {
-                    _strProperty = value;
+                    _PropertyID = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public AllListEntry(Thing o, string strPropName = "", string strPropID = "") : this()
+        public AllListEntry(Thing o, string newDisplayName = "", string newPropID = "") : this()
         {
             Object = o;
-            strProperty = strPropID;
-            strPropertyName = strPropName;
+            PropertyID = newPropID;
+            DisplayName = newDisplayName;
         }
         public AllListEntry()
         {
