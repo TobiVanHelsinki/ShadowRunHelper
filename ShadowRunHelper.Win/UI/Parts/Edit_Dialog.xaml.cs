@@ -53,6 +53,8 @@ namespace ShadowRunHelper.UI.Edit
                     break;
                 case ThingDefs.Connection:
                     EditType.ContentTemplate = Connection;
+                    Col2.Width = new Windows.UI.Xaml.GridLength(0, Windows.UI.Xaml.GridUnitType.Pixel);
+                    Col3.Width = new Windows.UI.Xaml.GridLength(0, Windows.UI.Xaml.GridUnitType.Pixel);
                     break;
                 case ThingDefs.Sin:
                     break;
@@ -67,9 +69,11 @@ namespace ShadowRunHelper.UI.Edit
                     break;
                 case ThingDefs.Nahkampfwaffe:
                     EditType.ContentTemplate = Nahkampfwaffe;
+                    WertLabel.Text = TLIB_UWPFRAME.CrossPlatformHelper.GetString("Model_Waffe_Wert/Text");
                     break;
                 case ThingDefs.Fernkampfwaffe:
                     EditType.ContentTemplate = Fernkampfwaffe;
+                    WertLabel.Text = TLIB_UWPFRAME.CrossPlatformHelper.GetString("Model_Waffe_Wert/Text");
                     break;
                 case ThingDefs.Kommlink:
                     EditType.ContentTemplate = Kommlink;
@@ -79,6 +83,7 @@ namespace ShadowRunHelper.UI.Edit
                     break;
                 case ThingDefs.Vehikel:
                     EditType.ContentTemplate = Vehikel;
+                    WertLabel.Text = TLIB_UWPFRAME.CrossPlatformHelper.GetString("Model_Waffe_Wert/Text");
                     break;
                 case ThingDefs.Panzerung:
                     EditType.ContentTemplate = Panzerung;

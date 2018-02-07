@@ -30,8 +30,12 @@ namespace ShadowRunHelper
             List<ThingDefs> Einzahl = new List<ThingDefs>() {
                 ThingDefs.Attribut, ThingDefs.CyberDeck, ThingDefs.Fernkampfwaffe,
                 ThingDefs.Kommlink, ThingDefs.Nachteil, ThingDefs.Panzerung, ThingDefs.Vehikel };
-            ObservableCollection<CustomAllList> groups = new ObservableCollection<CustomAllList>();
-            IEnumerable<CustomAllList> GroupedAllList = lstThings.GroupBy(item => item.Object.ThingType).Where(x=>x.Key != ThingDefs.Handlung).Select(
+            List<ThingDefs> Ohne = new List<ThingDefs>()
+            {
+                ThingDefs.Handlung, ThingDefs.Connection
+            };
+                ObservableCollection < CustomAllList> groups = new ObservableCollection<CustomAllList>();
+            IEnumerable<CustomAllList> GroupedAllList = lstThings.GroupBy(item => item.Object.ThingType).Where(g=>!Ohne.Contains(g.Key)).Select(
                 group =>
                 {
                     var customgroup = new CustomAllList()
