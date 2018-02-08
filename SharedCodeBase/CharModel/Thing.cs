@@ -125,7 +125,8 @@ namespace ShadowRunHelper.CharModel
 
         public virtual Thing Copy(Thing target = null)
         {
-            var list = this.PropertyChanged.GetInvocationList();
+            //TODO
+            var list = this.PropertyChanged?.GetInvocationList();
             if (target == null)
             {
                 throw new ArgumentNullException();

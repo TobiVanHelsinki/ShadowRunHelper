@@ -51,6 +51,8 @@ namespace ShadowRunHelper
 
     public static class TypenHelper
     {
+        public const int ThingDefsCount = 27;
+
         public static string ThingDefToString(ThingDefs eThingDefToConvert, bool Mehrzahl)
         {
             if (Mehrzahl == false)

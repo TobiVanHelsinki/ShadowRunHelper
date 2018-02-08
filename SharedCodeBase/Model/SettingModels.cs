@@ -1,13 +1,39 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
+using System.Linq;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
 using static TLIB_UWPFRAME.Model.SharedSettingsModel;
+using Newtonsoft.Json;
 
 namespace ShadowRunHelper
 {
     public class SettingsModel : SharedSettingsModel
     {
         #region Settings
+        static JsonSerializerSettings SerializationSettings = new JsonSerializerSettings() { Error = SerializationErrorHandler };
+        static void SerializationErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
+        {
+        }
+        public IEnumerable<(ThingDefs ThingType, bool vis)> BlockListOptions
+        {
+            get
+            {
+                var content = PlatformSettings.getString(Constants.CONTAINER_SETTINGS_BLOCKLISTOPTIONS);
+                if (content == null || content == "")
+                {
+                    return Instance.BlockListOptions = new(ThingDefs, bool)[TypenHelper.ThingDefsCount];
+                }
+                return JsonConvert.DeserializeObject<IEnumerable<(ThingDefs ThingType, bool vis)>>(content, SerializationSettings);
+            }
+            set
+            {
+                var content = JsonConvert.SerializeObject(value, SerializationSettings);
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_BLOCKLISTOPTIONS, content);
+                Instance.NotifyPropertyChanged();
+            }
+        }
+
         public bool AutoSave
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_AUTO_SAVE);
@@ -290,6 +316,11 @@ namespace ShadowRunHelper
             {
                 instance = new SettingsModel();
             }
+            //#region Custom Stuff
+            //if (Instance.BlockListOptions == null)
+            //{ // create
+            //}
+            //#endregion
             return Instance;
         }
         public static new SettingsModel Instance
