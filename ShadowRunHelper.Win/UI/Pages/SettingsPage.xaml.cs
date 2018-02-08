@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper
 {
-    class CharPageConfigListViewItem : INotifyPropertyChanged
+    class CharPageConfigListViewItem
     {
         public string Name
         {
@@ -29,8 +29,6 @@ namespace ShadowRunHelper
             get;
             set;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
     /// <summary>
     /// Eine leere Seite, die eigenstaendig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
