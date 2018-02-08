@@ -14,20 +14,33 @@ namespace ShadowRunHelper
         static JsonSerializerSettings SerializationSettings = new JsonSerializerSettings() { Error = SerializationErrorHandler };
         static void SerializationErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
         {
+            o = null;
         }
         public IEnumerable<(ThingDefs ThingType, bool vis)> BlockListOptions
         {
             get
             {
                 var content = PlatformSettings.getString(Constants.CONTAINER_SETTINGS_BLOCKLISTOPTIONS);
-                if (content == null || content == "")
+                try
                 {
-                    return Instance.BlockListOptions = new(ThingDefs, bool)[TypenHelper.ThingDefsCount];
+                    //throw new System.Exception();
+                    return JsonConvert.DeserializeObject<IEnumerable<(ThingDefs ThingType, bool vis)>>(content, SerializationSettings);
                 }
-                return JsonConvert.DeserializeObject<IEnumerable<(ThingDefs ThingType, bool vis)>>(content, SerializationSettings);
+                catch (System.Exception)
+                {
+                    int Counter = 0;
+                    return Instance.BlockListOptions = new(ThingDefs, bool)[TypenHelper.ThingDefsCount].Select(i =>
+                    {
+                        i.Item1 = (ThingDefs)Counter;
+                        Counter++;
+                        i.Item2 = true;
+                        return i;
+                    });
+                }
             }
             set
             {
+                //what if value = null? Reset TODO
                 var content = JsonConvert.SerializeObject(value, SerializationSettings);
                 PlatformSettings.set(Constants.CONTAINER_SETTINGS_BLOCKLISTOPTIONS, content);
                 Instance.NotifyPropertyChanged();

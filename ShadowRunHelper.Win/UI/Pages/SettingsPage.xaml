@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:TLIBModel="using:TLIB_UWPFRAME.Model"
     xmlns:System="using:System"
+    xmlns:local="using:ShadowRunHelper"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
@@ -234,6 +235,32 @@
 
                 </StackPanel>
             </ScrollViewer>
+        </PivotItem>
+        <PivotItem>
+            <PivotItem.Header>
+                <TextBlock x:Uid="UI_Optionen_U_CharPageConfig" Style="{StaticResource ueberschrift1}"/>
+            </PivotItem.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ListView x:Name="CharPageConfigListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:CharPageConfigListViewItem">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ToggleSwitch IsOn="{x:Bind Active, Mode=TwoWay}"/>
+                                <TextBlock VerticalAlignment="Center" Grid.Column="1" Text="{x:Bind Name, Mode=TwoWay}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button x:Uid="UI_Settings_Btn_Speichern" Margin="10" HorizontalAlignment="Stretch" Grid.Row="1" Click="SaveButton_Click" Style="{StaticResource ButtonRevealStyle}"/>
+            </Grid>
         </PivotItem>
         <PivotItem>
             <PivotItem.Header>

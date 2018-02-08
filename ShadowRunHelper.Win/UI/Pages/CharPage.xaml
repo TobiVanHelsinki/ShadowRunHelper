@@ -24,6 +24,7 @@
                 <AutoSuggestBox x:Name="GlobalFilterBox" x:Uid="GlobalFilterBox" QueryIcon="Find"
                                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
                                 TextChanged="AutoSuggestBox_TextChanged"
+                                
                                 QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                 ItemsSource="{x:Bind ThingList, Mode=OneWay}"
                                 ItemTemplate="{StaticResource Suggestion}"/>

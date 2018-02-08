@@ -333,26 +333,21 @@ namespace ShadowRunHelper
             LV.Tag = (sender as ContentControl).Tag;
             var Block = (sender as ContentControl);
             //Search Things
-            //try
-            {
+
                 Blocklist.TryGetValue((ThingDefs)int.Parse((sender as ContentControl).Tag as string), out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) NewBlock);
                 NewBlock.ListView = LV;
                 NewBlock.Block = (ContentControl)sender;
                 NewBlock.sv = (ScrollViewer)((sender as ContentControl).Parent as FrameworkElement).Parent;
                 Blocklist.Remove((ThingDefs)int.Parse((sender as ContentControl).Tag as string));
                 Blocklist.Add((ThingDefs)int.Parse((sender as ContentControl).Tag as string), NewBlock);
-            }
-            //catch (Exception ex)
-            {
-            }
+
             ThingDefs Type = (ThingDefs)int.Parse(((sender as ContentControl).Tag as string));
             var entry = LocalBlockListOptions.FirstOrDefault(x => x.ThingType == Type);
-            if (entry.ThingType != 0 && !entry.vis)
+            if (!entry.vis)
             {
                 Block.Visibility = Visibility.Collapsed;
-                return;
+                //return;
             }
-
             //Local things
             switch (Type)
             {
@@ -526,7 +521,7 @@ namespace ShadowRunHelper
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x =>LocalBlockListOptions.First(y=>y.ThingType == x.ThingType).vis).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
         }
 
         void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
@@ -539,7 +534,11 @@ namespace ShadowRunHelper
                 }
                 else
                 {
-                    PendingScrollEntry = MainObject.ThingList.Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+                    PendingScrollEntry = MainObject.ThingList.Where(x => LocalBlockListOptions.First(y => y.ThingType == x.ThingType).vis).ToList().Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+                }
+                if (PendingScrollEntry == null)
+                {
+                    return;
                 }
 
                 if (!Blocklist.TryGetValue(PendingScrollEntry.ThingType, out var Choosen))

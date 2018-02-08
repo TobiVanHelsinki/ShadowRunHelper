@@ -992,7 +992,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Wähle einen exernen Speicherordner aus.</value>
   </data>
   <data name="UI_Optionen_U_Einstellungen_Tip.Text" xml:space="preserve">
-    <value>Halte mit der Maus oder dem Finger auf einen Namen, um mehr Informationen zu erhalten.</value>
+    <value>Halte mit der Maus oder dem Finger auf das ?, um mehr Informationen zu erhalten.</value>
   </data>
   <data name="Notification_Error_FileActivation" xml:space="preserve">
     <value>Datei konnte nicht gelesen werden.</value>
@@ -1211,5 +1211,11 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   </data>
   <data name="Model_Berechnet_Tragen.Text" xml:space="preserve">
     <value>Tragen</value>
+  </data>
+  <data name="UI_Optionen_U_CharPageConfig.Text" xml:space="preserve">
+    <value>CharPage anpassen</value>
+  </data>
+  <data name="UI_Settings_Btn_Speichern.Content" xml:space="preserve">
+    <value>Speichern</value>
   </data>
 </root>

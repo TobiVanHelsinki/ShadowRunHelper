@@ -250,16 +250,17 @@ namespace ShadowRunHelper.CharModel
         /// <returns> 0    -> type incorrect, name incorrect</returns>
         public virtual float SimilaritiesTo(string text)
         {
+
             float retval = 0;
             if (TypenHelper.ThingDefToString(ThingType, false).ToLower().Contains(text))
             {
                 retval += 0.4f;
             }
-            if (Bezeichner.ToLower().Contains(text.ToLower()))
+            if (this.ToString().ToLower().Contains(text.ToLower()))
             {
                 retval += 0.4f;
             }
-            if (Bezeichner.ToLower() == (text.ToLower()))
+            if (this.ToString().ToLower() == (text.ToLower()))
             {
                 retval += 0.1f;
             }

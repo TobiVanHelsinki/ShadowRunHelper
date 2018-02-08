@@ -370,7 +370,7 @@ This app can be used to open files and folders on the file system. The app store
     <value>Select a Exernen storage folder.</value>
   </data>
   <data name="UI_Optionen_U_Einstellungen_Tip.Text" xml:space="preserve">
-    <value>Hold the mouse or finger on a name to get more information.</value>
+    <value>Hold the mouse or finger on a ? to get more information.</value>
   </data>
   <data name="UI_Optionen_AutoSaveInterval_Header.Text" xml:space="preserve">
     <value>Watingtime for Changes in milliseconds</value>
@@ -1175,5 +1175,11 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   </data>
   <data name="Model_Berechnet_Tragen.Text" xml:space="preserve">
     <value>Carrie</value>
+  </data>
+  <data name="UI_Optionen_U_CharPageConfig.Text" xml:space="preserve">
+    <value>Adjust CharPage</value>
+  </data>
+  <data name="UI_Settings_Btn_Speichern.Content" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>

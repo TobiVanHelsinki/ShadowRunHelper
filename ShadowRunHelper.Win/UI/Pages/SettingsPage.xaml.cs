@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
@@ -13,11 +14,30 @@ using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper
 {
+    class CharPageConfigListViewItem : INotifyPropertyChanged
+    {
+        public string Name
+        {
+            get; set;
+        }
+        public ThingDefs Code
+        {
+            get; set;
+        }
+        public bool Active
+        {
+            get;
+            set;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+    }
     /// <summary>
     /// Eine leere Seite, die eigenstaendig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
     public sealed partial class SettingsPage : Page
     {
+
         readonly SettingsModel Settings = SettingsModel.Instance;
         readonly AppModel Model = AppModel.Instance;
         readonly string eMail = Constants.APP_CONTACT_MAIL;
@@ -32,9 +52,17 @@ namespace ShadowRunHelper
         public SettingsPage()
         {
             InitializeComponent();
+            CharPageConfigListView.ItemsSource = Settings.BlockListOptions.Select(i => new CharPageConfigListViewItem() { Active = i.vis, Code = i.ThingType, Name = TypenHelper.ThingDefToString(i.ThingType, true) }).Where(x=>x.Name != "");
         }
 
-        // Gui Stuff ##########################################
+        void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            Settings.BlockListOptions = CharPageConfigListView.ItemsPanelRoot.Children.Select(i =>
+                (((i as ListViewItem).Content as CharPageConfigListViewItem).Code,((i as ListViewItem).Content as CharPageConfigListViewItem).Active)
+            );
+        }
+
+        #region Gui Stuff ##########################################
         /// <summary>
         /// Select the right Notification Template
         /// </summary>
@@ -82,8 +110,8 @@ namespace ShadowRunHelper
                 (sender as ContentControl).ContentTemplate = ExceptionTemplate;
             }
         }
-
-        // Additional Settings Stuff ##########################################
+        #endregion
+        #region Additional Settings Stuff ##########################################
         /// <summary>
         /// use to prevent the "Toggled-Efect" from beeing enebled at startup
         /// </summary>
@@ -133,6 +161,7 @@ namespace ShadowRunHelper
             }
             Intern_Sync_HasFocus = false;
         }
+        #endregion
 
     }
 }
