@@ -90,13 +90,8 @@ namespace ShadowRunHelper.CharModel
             ThingType = ThingDefs.CyberDeck;
         }
 
-
         public override Thing Copy(Thing target = null)
         {
-            if (target == null)
-            {
-                target = new CyberDeck();
-            }
             base.Copy(target);
             CyberDeck target2 = target as CyberDeck;
             target2.Angriff = Angriff;

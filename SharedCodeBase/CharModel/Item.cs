@@ -55,10 +55,6 @@ namespace ShadowRunHelper.CharModel
         
         public override Thing Copy(Thing target = null)
         {
-            if (target == null)
-            {
-                target = new Item();
-            }
             base.Copy(target);
             Item TargetS = (Item)target;
             TargetS.Aktiv = Aktiv;

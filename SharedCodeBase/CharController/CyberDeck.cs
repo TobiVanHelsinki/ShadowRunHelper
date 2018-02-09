@@ -76,7 +76,7 @@ namespace ShadowRunHelper.CharController
                 return;
             }
             bIsRefreshInProgress = true;
-            Data.First(i => i.Aktiv == true).Copy(ActiveItem);
+            //Data.First(i => i.Aktiv == true).Copy(ActiveItem);
             foreach (CyberDeck item in Data)
             {
                 if (item.Aktiv == true)

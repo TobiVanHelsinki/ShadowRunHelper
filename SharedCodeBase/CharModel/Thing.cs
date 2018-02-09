@@ -129,7 +129,7 @@ namespace ShadowRunHelper.CharModel
             var list = this.PropertyChanged?.GetInvocationList();
             if (target == null)
             {
-                throw new ArgumentNullException();
+                target = (Thing)Activator.CreateInstance(this.GetType());
             }
             target.Bezeichner = Bezeichner;
             target.Notiz = Notiz;

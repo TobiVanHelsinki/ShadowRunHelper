@@ -39,6 +39,7 @@ namespace ShadowRunHelper.CharModel
         {
             if (target == null)
             {
+                target = (Fertigkeit)System.Activator.CreateInstance(typeof(Fertigkeit));
                 target = new Fertigkeit();
             }
             base.Copy(target);

@@ -84,13 +84,9 @@ namespace ShadowRunHelper.CharModel
             ThingType = ThingDefs.Kommlink;
             PropertyChanged += (x, y) => RefreshSchadenLimit();
         }
-
+       
         public override Thing Copy(Thing target = null)
         {
-            if (target == null)
-            {
-                target = new Kommlink();
-            }
             base.Copy(target);
             Kommlink TargetS = (Kommlink)target;
             TargetS.Programmanzahl = Programmanzahl;

@@ -25,16 +25,10 @@ namespace ShadowRunHelper.CharModel
         {
             this.ThingType = ThingDefs.Adeptenkraft_KomplexeForm;
         }
-        //public override double GetValue([CallerMemberName] string ID = "")
-        //{
-        //    return base.GetValue(ID);
-        //}
+
+
         public override Thing Copy(Thing target)
         {
-            if (target == null)
-            {
-                target = new Item();
-            }
             base.Copy(target);
             Adeptenkraft_KomplexeForm TargetS = (Adeptenkraft_KomplexeForm)target;
             TargetS.Option = Option;
