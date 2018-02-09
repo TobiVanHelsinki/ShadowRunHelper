@@ -7,13 +7,5 @@ namespace ShadowRunHelper.CharModel
         {
             ThingType = ThingDefs.Nachteil;
         }
-        public override Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Nachteil();
-            }
-            return base.Copy(target);
-        }
     }
 }

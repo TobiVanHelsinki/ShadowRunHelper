@@ -13,6 +13,7 @@ namespace ShadowRunHelper.CharModel
         public ObservableThingListEntryCollection PoolZusammensetzung;
 
         private double _Pool = 0;
+        [Used]
         public double Pool
         {
             get { return _Pool; }

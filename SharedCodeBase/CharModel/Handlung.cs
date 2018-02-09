@@ -16,11 +16,15 @@ namespace ShadowRunHelper.CharModel
             Gegen = 3
         }
         List<ThingDefs> lstForbidden = new List<ThingDefs>() {ThingDefs.Handlung};
+        [Used]
         public ObservableThingListEntryCollection WertZusammensetzung;
+        [Used]
         public ObservableThingListEntryCollection GrenzeZusammensetzung;
+        [Used]
         public ObservableThingListEntryCollection GegenZusammensetzung;
 
         double grenze = 0;
+        [Used]
         public double Grenze
         {
             get { return grenze; }
@@ -35,6 +39,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         double gegen = 0;
+        [Used]
         public double Gegen
         {
             get { return gegen; }

@@ -9,6 +9,7 @@ namespace ShadowRunHelper.CharModel
         // Wert ist Wandlungsgrad
        
         string _Paragon = "";
+        [Used]
         public string Paragon
         {
             get { return _Paragon; }
@@ -23,6 +24,7 @@ namespace ShadowRunHelper.CharModel
         }
        
         string _Echos = "";
+        [Used]
         public string Echos
         {
             get { return _Echos; }

@@ -7,14 +7,5 @@ namespace ShadowRunHelper.CharModel
         {
             ThingType = ThingDefs.Berechnet;
         }
-
-        public override Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Berechnet();
-            }
-            return base.Copy(target);
-        }
     }
 }

@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using TLIB_UWPFRAME;
+using Newtonsoft.Json;
+using System;
 
 namespace ShadowRunHelper.CharModel
 {
     public class CyberDeck : Kommlink
     {
         private double firewall_o =0;
+        [Used]
         public double Firewall_o
         {
             get { return firewall_o; }
@@ -19,6 +23,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double datenverarbeitung_o=0;
+        [Used]
         public double Datenverarbeitung_o
         {
             get { return datenverarbeitung_o; }
@@ -32,6 +37,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double angriff = 0;
+        [Used]
         public double Angriff
         {
             get { return angriff; }
@@ -58,6 +64,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double schleicher = 0;
+        [Used]
         public double Schleicher
         {
             get { return schleicher; }
@@ -72,6 +79,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double schleicher_o=0;
+        [Used]
         public double Schleicher_o
         {
             get { return schleicher_o; }
@@ -93,6 +101,10 @@ namespace ShadowRunHelper.CharModel
         public override Thing Copy(Thing target = null)
         {
             base.Copy(target);
+            foreach (var prop in this.GetType().GetProperties())
+            {
+                prop.SetValue(this, default);
+            }
             CyberDeck target2 = target as CyberDeck;
             target2.Angriff = Angriff;
             target2.Angriff_o = Angriff_o;
@@ -102,18 +114,6 @@ namespace ShadowRunHelper.CharModel
             target2.Datenverarbeitung_o = Datenverarbeitung_o;
             return target;
         }
-
-        public override void Reset()
-        {
-            base.Reset();
-            Angriff = 0;
-            Angriff_o = 0;
-            Schleicher = 0;
-            Schleicher_o = 0;
-            Firewall_o = 0;
-            Datenverarbeitung_o = 0;
-        }
-
 
         public override string ToCSV(string Delimiter)
         {

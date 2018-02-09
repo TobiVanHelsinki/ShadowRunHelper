@@ -6,6 +6,7 @@ namespace ShadowRunHelper.CharModel
     public class Vehikel : Item
     {
         double handling = 0;
+        [Used]
         public double Handling
         {
             get { return handling; }
@@ -19,6 +20,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double geschwindigkeit = 0;
+        [Used]
         public double Geschwindigkeit
         {
             get { return geschwindigkeit; }
@@ -32,6 +34,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double beschleunigung = 0;
+        [Used]
         public double Beschleunigung
         {
             get { return beschleunigung; }
@@ -45,6 +48,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double rumpf = 0;
+        [Used]
         public double Rumpf
         {
             get { return rumpf; }
@@ -58,6 +62,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double panzerung = 0;
+        [Used]
         public double Panzerung
         {
             get { return panzerung; }
@@ -71,6 +76,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double pilot = 0;
+        [Used]
         public double Pilot
         {
             get { return pilot; }
@@ -84,6 +90,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double sensor = 0;
+        [Used]
         public double Sensor
         {
             get { return sensor; }
@@ -97,7 +104,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double sitze = 0;
-        public double Sitze
+        [Used] public double Sitze
         {
             get { return sitze; }
             set
@@ -110,7 +117,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double gewicht = 0;
-        public double Gewicht
+        [Used] public double Gewicht
         {
             get { return gewicht; }
             set

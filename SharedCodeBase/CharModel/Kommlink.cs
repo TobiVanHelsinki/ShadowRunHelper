@@ -7,6 +7,7 @@ namespace ShadowRunHelper.CharModel
     public class Kommlink : Item
     {
         private double programmanzahl = 0;
+        [Used]
         public double Programmanzahl
         {
             get { return programmanzahl; }
@@ -20,6 +21,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double firewall = 0;
+        [Used]
         public double Firewall
         {
             get { return firewall; }
@@ -33,6 +35,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double datenverarbeitung = 0;
+        [Used]
         public double Datenverarbeitung
         {
             get { return datenverarbeitung; }
@@ -47,6 +50,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double _dSchaden = 0;
+        [Used]
         public double dSchaden
         {
             get { return _dSchaden; }
@@ -61,6 +65,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double _dSchadenMax = 0;
+        [Used]
         public double dSchadenMax
         {
             get { return _dSchadenMax; }
@@ -97,15 +102,6 @@ namespace ShadowRunHelper.CharModel
             return target;
         }
 
-        public override void Reset()
-        {
-            base.Reset();
-            Programmanzahl = 0;
-            Firewall = 0;
-            Datenverarbeitung = 0;
-            dSchaden = 0;
-        }
-        
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);

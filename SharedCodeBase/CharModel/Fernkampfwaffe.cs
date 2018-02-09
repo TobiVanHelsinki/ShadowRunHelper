@@ -6,6 +6,7 @@ namespace ShadowRunHelper.CharModel
     public class Fernkampfwaffe : Waffe
     {
         private double rueckstoss = 0;
+        [Used]
         public double Rueckstoss
         {
             get { return rueckstoss; }
@@ -19,6 +20,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string modi = "";
+        [Used]
         public string Modi
         {
             get { return modi; }

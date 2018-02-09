@@ -7,6 +7,7 @@ namespace ShadowRunHelper.CharModel
     {
 
         private double loyal = 0;
+        [Used]
         public double Loyal
         {
             get { return loyal; }
@@ -22,6 +23,7 @@ namespace ShadowRunHelper.CharModel
 
 
         private double _einfluss = 0;
+        [Used]
         public double Einfluss
         {
             get { return _einfluss; }

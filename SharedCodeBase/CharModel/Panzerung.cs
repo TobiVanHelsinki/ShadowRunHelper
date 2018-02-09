@@ -23,6 +23,7 @@ namespace ShadowRunHelper.CharModel
         //}
 
         private double kapazitaet = 0;
+        [Used]
         public double Kapazitaet
         {
             get { return kapazitaet; }

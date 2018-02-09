@@ -8,6 +8,7 @@ namespace ShadowRunHelper.CharModel
     public class Geist_Sprite : Item
     {
         string _Dienste = "";
+        [Used]
         public string Dienste
         {
             get { return _Dienste; }
@@ -21,6 +22,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         bool? _Geb_Reg = false;
+        [Used]
         public bool? Geb_Reg
         {
             get { return _Geb_Reg; }

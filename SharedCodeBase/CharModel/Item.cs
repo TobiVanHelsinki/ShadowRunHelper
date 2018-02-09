@@ -9,6 +9,7 @@ namespace ShadowRunHelper.CharModel
     {
 
         private bool? besitz = true;
+        [Used]
         public bool? Besitz
         {
             get { return besitz; }
@@ -22,6 +23,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private bool? aktiv = false;
+        [Used]
         public bool? Aktiv
         {
             get { return aktiv; }
@@ -35,6 +37,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double anzahl = 1;
+        [Used]
         public double Anzahl
         {
             get { return anzahl; }
@@ -63,13 +66,13 @@ namespace ShadowRunHelper.CharModel
             return target;
         }
 
-        public override void Reset()
-        {
-            base.Reset();
-            Aktiv = false;
-            Anzahl = 0;
-            Besitz = false;
-        }
+        //public override void Reset()
+        //{
+        //    base.Reset();
+        //    Aktiv = false;
+        //    Anzahl = 0;
+        //    Besitz = false;
+        //}
 
 
         public override string ToCSV(string Delimiter)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME;
@@ -8,6 +9,12 @@ using TLIB_UWPFRAME.Model;
 
 namespace ShadowRunHelper.CharModel
 {
+
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
+    public sealed class UsedAttribute : Attribute
+    {
+        public UsedAttribute() { }
+    }
     public class Thing : INotifyPropertyChanged
     {
         public const uint nThingPropertyCount = 5;
@@ -35,6 +42,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         string bezeichner ="";
+        [Used]
         public string Bezeichner
         {
             get => bezeichner;
@@ -48,6 +56,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         string typ = "";
+        [Used]
         public string Typ
         {
             get => typ;
@@ -61,6 +70,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double wert = 0;
+        [Used]
         public double Wert
         {
             get { return wert; }
@@ -74,6 +84,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         string zusatz = "";
+        [Used]
         public string Zusatz
         {
             get { return zusatz; }
@@ -87,6 +98,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         string notiz = "";
+        [Used]
         public string Notiz
         {
             get { return notiz; }
@@ -142,13 +154,17 @@ namespace ShadowRunHelper.CharModel
         }
         public virtual void Reset()
         {
-            Bezeichner = "";
-            Notiz = "";
+            foreach (var item in GetType().GetProperties().Where(p => p.CustomAttributes.Any(c => c.AttributeType == typeof(UsedAttribute))))
+            {
+                item.SetValue(this, default);
+            }
+            //Bezeichner = "";
+            //Notiz = "";
             //Ordnung = 0;
             //ThingType = 0;
-            Typ = "";
-            Wert = 0;
-            Zusatz = "";
+            //Typ = "";
+            //Wert = 0;
+            //Zusatz = "";
         }
 
         public virtual string ToCSV(string Delimiter)

@@ -7,14 +7,5 @@ namespace ShadowRunHelper.CharModel
         {
             ThingType = ThingDefs.Attribut;
         }
-
-        public override Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Attribut();
-            }
-            return base.Copy(target);
-        }
     }
 }

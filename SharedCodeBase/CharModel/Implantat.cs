@@ -10,6 +10,7 @@ namespace ShadowRunHelper.CharModel
     public class Implantat : Item
     {
         private double essenz = 0;
+        [Used]
         public double Essenz
         {
             get { return essenz; }
@@ -24,6 +25,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double kapazitaet = 0;
+        [Used]
         public double Kapazitaet
         {
             get { return kapazitaet; }
@@ -37,6 +39,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string _Auswirkung = "";
+        [Used]
         public string Auswirkung
         {
             get { return _Auswirkung; }

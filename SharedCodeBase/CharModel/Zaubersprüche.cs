@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper.CharModel
@@ -7,6 +6,7 @@ namespace ShadowRunHelper.CharModel
     public class Zaubersprueche : Item
     {
         double reichweite = 0;
+        [Used]
         public double Reichweite
         {
             get { return reichweite; }
@@ -21,6 +21,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         double _Dauer = 0;
+        [Used]
         public double Dauer
         {
             get { return _Dauer; }
@@ -35,6 +36,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         double _Entzug = 0;
+        [Used]
         public double Entzug
         {
             get { return _Entzug; }
@@ -52,14 +54,14 @@ namespace ShadowRunHelper.CharModel
         {
             this.ThingType = ThingDefs.Zaubersprueche;
         }
-        
-        public override Thing Copy( Thing target = null)
+
+        public override Thing Copy(Thing target = null)
         {
             if (target == null)
             {
                 target = new Zaubersprueche();
             }
-            base.Copy( target);
+            base.Copy(target);
             Zaubersprueche TargetS = (Zaubersprueche)target;
             TargetS.Reichweite = Reichweite;
             TargetS.Dauer = Dauer;

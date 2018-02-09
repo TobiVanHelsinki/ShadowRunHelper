@@ -8,6 +8,7 @@ namespace ShadowRunHelper.CharModel
     public class Adeptenkraft_KomplexeForm : Thing
     {
         string _Option = "";
+        [Used]
         public string Option
         {
             get { return _Option; }
@@ -25,7 +26,6 @@ namespace ShadowRunHelper.CharModel
         {
             this.ThingType = ThingDefs.Adeptenkraft_KomplexeForm;
         }
-
 
         public override Thing Copy(Thing target)
         {

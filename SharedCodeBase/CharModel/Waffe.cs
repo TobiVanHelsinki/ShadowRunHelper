@@ -10,6 +10,7 @@ namespace ShadowRunHelper.CharModel
         /// Praezision
         /// </summary>
         private double pool = 0;
+        [Used]
         public double Praezision
         {
             get { return pool; }
@@ -24,6 +25,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private string schadenTyp = "";
+        [Used]
         public string SchadenTyp
         {
             get { return schadenTyp; }
@@ -41,6 +43,7 @@ namespace ShadowRunHelper.CharModel
         /// PB could be english, means DK "Durschlagskompensation"
         /// </summary>
         private double pB = 0; // DK
+        [Used]
         public double PB
         {
             get { return pB; }
@@ -54,12 +57,13 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public override Thing Copy( Thing target = null)
+        public override Thing Copy(Thing target = null)
         {
-            if(target == null){
+            if (target == null)
+            {
                 throw new ArgumentNullException();
-                    }
-            base.Copy( target);
+            }
+            base.Copy(target);
             Waffe TargetS = (Waffe)target;
             TargetS.SchadenTyp = SchadenTyp;
             TargetS.Praezision = Praezision;
@@ -91,7 +95,7 @@ namespace ShadowRunHelper.CharModel
             strReturn += Delimiter;
             return strReturn;
         }
-   
+
         public override void FromCSV(Dictionary<string, string> dic)
         {
             base.FromCSV(dic);
