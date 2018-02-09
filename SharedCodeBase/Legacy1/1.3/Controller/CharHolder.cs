@@ -12,49 +12,6 @@ namespace ShadowRunHelper1_3.Controller
     public class CharHolder
     {
         
-        // noch ein event einbauen, damit fehler nach hier oben gegeben wreden koennen
-        // ausserdem eine klasse fuer dinge wie koe und geist limit machen
-        private void Probleme_Loesen(object sender, EventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("Probleme_Loesen");
-            foreach (var itemFehlerEintrag in HD.AlteHDEntrys)
-            {
-                foreach (var itemHandlung in HandlungController)
-                {
-                    foreach (var itemZusammensetzung in itemHandlung.Data.Zusammensetzung)
-                    {
-                        if (itemZusammensetzung.Key == itemFehlerEintrag.Key)
-                        {
-                            Model.DictionaryCharEntry Value = itemZusammensetzung.Value;
-                            itemHandlung.Data.Zusammensetzung.Remove(itemFehlerEintrag.Key);
-                            itemHandlung.Data.Zusammensetzung.Add(itemFehlerEintrag.Value, Value);
-                        }
-                    }
-                    foreach (var itemZusammensetzungGrenze in itemHandlung.Data.GrenzeZusammensetzung)
-                    {
-                        if (itemZusammensetzungGrenze.Key == itemFehlerEintrag.Key)
-                        {
-                            Model.DictionaryCharEntry Value = itemZusammensetzungGrenze.Value;
-                            itemHandlung.Data.GrenzeZusammensetzung.Remove(itemFehlerEintrag.Key);
-                            itemHandlung.Data.GrenzeZusammensetzung.Add(itemFehlerEintrag.Value, Value);
-                        }
-                    }
-                    foreach (var itemZusammensetzungGegen in itemHandlung.Data.GegenZusammensetzung)
-                    {
-                        if (itemZusammensetzungGegen.Key == itemFehlerEintrag.Key)
-                        {
-                            Model.DictionaryCharEntry Value = itemZusammensetzungGegen.Value;
-                            itemHandlung.Data.GegenZusammensetzung.Remove(itemFehlerEintrag.Key);
-                            itemHandlung.Data.GegenZusammensetzung.Add(itemFehlerEintrag.Value, Value);
-                        }
-                    }
-                }
-            }
-            HD.AlteHDEntrys.Clear();
-            //HD.Toggle -= new HDlockedHandler(Probleme_Loesen);
-        }
-
-
         public HashDictionary HD = new HashDictionary();
         public string APP_VERSION_NUMBER = "";
 
@@ -109,11 +66,6 @@ namespace ShadowRunHelper1_3.Controller
             
         }
 
-        private void HD_Toggle(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Konstruktor nutzen, wenn Daten der Controller und Objekte bereits vorhanden, Parmas sind die ID der MultiController
         /// </summary>
@@ -152,14 +104,7 @@ namespace ShadowRunHelper1_3.Controller
             Person = new CharModel.Person();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+
         /// <summary>
         /// wird zum sauberen hinzufuegen eines objectes zum Holer benutzt
         /// </summary>
@@ -237,98 +182,6 @@ namespace ShadowRunHelper1_3.Controller
             }
 
         }
-        /// <summary>
-        /// Diese Methode wird zum sauberen Entfernen eines Object aus dem Holder verwendet
-        /// </summary>
-        /// <param name="Controller_Name"></param>
-        /// <param name="hd_ID"></param>
-        /// <param name="Controller_Item"></param>
-        public void Remove(String Controller_Name, int hd_ID, object Controller_Item)
-        {
-            if (Controller_Name.Contains("Handlung"))
-            {
-                ((CharController.Handlung)Controller_Item).remove_from_HD();
-                HandlungController.Remove((CharController.Handlung)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Fertigkeit"))
-            {
-                ((CharController.Fertigkeit)Controller_Item).remove_from_HD();
-                FertigkeitController.Remove((CharController.Fertigkeit)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Attribut"))
-            {
-                ((CharController.Attribut)Controller_Item).remove_from_HD();
-                AttributController.Remove((CharController.Attribut)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Item"))
-            {
-                ((CharController.Item)Controller_Item).remove_from_HD();
-                ItemController.Remove((CharController.Item)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Programm"))
-            {
-                ((CharController.Programm)Controller_Item).remove_from_HD();
-                ProgrammController.Remove((CharController.Programm)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Munition"))
-            {
-                ((CharController.Munition)Controller_Item).remove_from_HD();
-                MunitionController.Remove((CharController.Munition)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Implantat"))
-            {
-                ((CharController.Implantat)Controller_Item).remove_from_HD();
-                ImplantatController.Remove((CharController.Implantat)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Vorteil"))
-            {
-                ((CharController.Vorteil)Controller_Item).remove_from_HD();
-                VorteilController.Remove((CharController.Vorteil)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Nachteil"))
-            {
-                ((CharController.Nachteil)Controller_Item).remove_from_HD();
-                NachteilController.Remove((CharController.Nachteil)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Connection"))
-            {
-                ConnectionController.Remove((CharController.Connection)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Sin"))
-            {
-                SinController.Remove((CharController.Sin)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Nahkampfwaffe"))
-            {
-              //  ((CharController.Nahkampfwaffe)Controller_Item).remove_from_HD();
-                NahkampfwaffeController.Remove((CharModel.Nahkampfwaffe)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Fernkampfwaffe"))
-            {
-               // ((CharController.Fernkampfwaffe)Controller_Item).remove_from_HD();
-                FernkampfwaffeController.Remove((CharModel.Fernkampfwaffe)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Kommlink"))
-            {
-               // ((CharController.Kommlink)Controller_Item).remove_from_HD();
-                KommlinkController.Remove((CharModel.Kommlink)Controller_Item);
-            }
-            else if (Controller_Name.Contains("CyberDeck"))
-            {
-             //   ((CharController.CyberDeck)Controller_Item).remove_from_HD();
-                CyberDeckController.Remove((CharModel.CyberDeck)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Vehikel"))
-            {
-                //((CharController.Vehikel)Controller_Item).remove_from_HD();
-                VehikelController.Remove((CharModel.Vehikel)Controller_Item);
-            }
-            else if (Controller_Name.Contains("Panzerung"))
-            {
-              //  ((CharController.Panzerung)Controller_Item).remove_from_HD();
-                PanzerungController.Remove((CharModel.Panzerung)Controller_Item);
-            }
 
-        }
     }
 }

@@ -108,7 +108,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Controller\HashDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\IO\CharIO.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Model\DictionaryCharEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Model\Variablen.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Ressourcen\TypNamen.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\AppModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\SettingModels.cs" />
@@ -120,7 +119,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Typen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="$(MSBuildThisFileDirectory)Legacy1\1.3\Strings\de-de\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
   </ItemGroup>
