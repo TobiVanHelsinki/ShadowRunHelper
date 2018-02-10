@@ -118,7 +118,7 @@
                 <AppBarButton Visibility="Collapsed" x:Name="Btn_SecondView" Content="Neue Ansicht" Icon="View" Click="Click_NewView"  Loaded="AppBarButton_Loaded"/>
                 <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen"  Loaded="AppBarButton_Loaded"/>
                 <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Datei_Import" Icon="Import" Click="Click_Datei_Import"  Loaded="AppBarButton_Loaded"/>
-                <AppBarButton Visibility="Collapsed" x:Name="Btn_CSV_Import" x:Uid="UI_CharVerwaltung_Btn_CSV_Import" Icon="Import" Click="Click_CSV_Import"  Loaded="AppBarButton_Loaded"/>
+                <!--<AppBarButton Visibility="Collapsed" x:Name="Btn_CSV_Import" x:Uid="UI_CharVerwaltung_Btn_CSV_Import" Icon="Import" Click="Click_CSV_Import"  Loaded="AppBarButton_Loaded"/>-->
                 <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen" Icon="Delete" Click="Click_Loeschen_Alles"  Loaded="AppBarButton_Loaded"/>
                 <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"  Loaded="AppBarButton_Loaded"/>
                 <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar"  Loaded="AppBarButton_Loaded"/>

@@ -175,7 +175,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public virtual string ToCSV(string Delimiter)
+        public virtual string ToCSV(char Delimiter)
         {
             string strReturn = "";
             foreach (var item in GetProperties(this).Reverse())
@@ -185,7 +185,7 @@ namespace ShadowRunHelper.CharModel
             }
             return strReturn;
         }
-        public virtual string HeaderToCSV(string Delimiter)
+        public virtual string HeaderToCSV(char Delimiter)
         {
             string strReturn = "";
             foreach (var item in GetProperties(this).Reverse())
@@ -200,8 +200,8 @@ namespace ShadowRunHelper.CharModel
             var Props = GetProperties(this).Reverse().Select(p => (CrossPlatformHelper.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"),p));
             foreach (var item in dic)
             {
-                var currentProp = Props.First(p => p.Item1 == item.Key);
-                currentProp.Item2.SetValue(this, ConvertToRightType(item.Value, currentProp.Item2.GetValue(this)));
+                var currentProp = Props.FirstOrDefault(p => p.Item1 == item.Key);
+                currentProp.Item2?.SetValue(this, ConvertToRightType(item.Value, currentProp.Item2.GetValue(this)));
             }
         }
         static object ConvertToRightType(object Value, object Target)

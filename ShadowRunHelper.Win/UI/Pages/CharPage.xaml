@@ -35,7 +35,9 @@
                     <StackPanel.Resources>
                     </StackPanel.Resources>
                     <StackPanel x:Name="U"  Style="{StaticResource ListView_U}">
-                        <Button x:Name="Add" Click="Add_Click" Style="{StaticResource ListView_U_BtnAdd}" />
+                        <Button x:Name="Add" Click="Add_Click" Content="&#xE109;" Style="{StaticResource ListView_U_Btn}" />
+                        <Button x:Name="CSV_IN" Click="CSV_IN_Click" Content="&#xE8B5;" Style="{StaticResource ListView_U_Btn}" />
+                        <Button x:Name="CSV_EX" Click="CSV_EX_Click" Content="&#xE78C;" Style="{StaticResource ListView_U_Btn}" />
                         <TextBlock Grid.Column="2" x:Name="Type" Style="{StaticResource ListView_U_Text}"/>
                     </StackPanel>
                     <ContentPresenter x:Name="E" />

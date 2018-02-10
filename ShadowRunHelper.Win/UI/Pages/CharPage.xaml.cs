@@ -1,10 +1,12 @@
-﻿using ShadowRunHelper.CharModel;
+﻿using ShadowRunHelper.CharController;
+using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelper.UI;
 using ShadowRunHelper.UI.Edit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TLIB_UWPFRAME.IO;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
@@ -324,28 +326,30 @@ namespace ShadowRunHelper
 
         void ContentControl_Loaded(object sender, RoutedEventArgs e)
         {
+            var ControlBlock = sender as ContentControl;
+            ThingDefs Type = TypenHelper.Obj2ThingDef(ControlBlock.Tag);
+
             //Temp Vars
-            TextBlock U = ((((sender as ContentControl).ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children[1] as TextBlock);
-            ContentPresenter E = (((sender as ContentControl).ContentTemplateRoot as StackPanel).Children[1] as ContentPresenter);
-            ListView LV = (((sender as ContentControl).ContentTemplateRoot as StackPanel).Children[2] as ListView);
+            TextBlock U = (((ControlBlock.ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children.First(c=>c.GetType() == typeof(TextBlock)) as TextBlock);
+            ContentPresenter E = ((ControlBlock.ContentTemplateRoot as StackPanel).Children[1] as ContentPresenter);
+            ListView LV = ((ControlBlock.ContentTemplateRoot as StackPanel).Children[2] as ListView);
             // Global Things
-            ((((sender as ContentControl).ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children[0] as Button).Tag = (sender as ContentControl).Tag;
-            LV.Tag = (sender as ContentControl).Tag;
-            var Block = (sender as ContentControl);
+            (((ControlBlock.ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children[0] as Button).Tag = ControlBlock.Tag;
+            LV.Tag = ControlBlock.Tag;
+            ControlBlock.DataContext = ViewModel.MainObject.ThingDef2CTRL(Type);
+
             //Search Things
+            Blocklist.TryGetValue((ThingDefs)int.Parse(ControlBlock.Tag as string), out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) NewBlock);
+            NewBlock.ListView = LV;
+            NewBlock.Block = ControlBlock;
+            NewBlock.sv = (ScrollViewer)(ControlBlock.Parent as FrameworkElement).Parent;
+            Blocklist.Remove((ThingDefs)int.Parse(ControlBlock.Tag as string));
+            Blocklist.Add((ThingDefs)int.Parse(ControlBlock.Tag as string), NewBlock);
 
-                Blocklist.TryGetValue((ThingDefs)int.Parse((sender as ContentControl).Tag as string), out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) NewBlock);
-                NewBlock.ListView = LV;
-                NewBlock.Block = (ContentControl)sender;
-                NewBlock.sv = (ScrollViewer)((sender as ContentControl).Parent as FrameworkElement).Parent;
-                Blocklist.Remove((ThingDefs)int.Parse((sender as ContentControl).Tag as string));
-                Blocklist.Add((ThingDefs)int.Parse((sender as ContentControl).Tag as string), NewBlock);
-
-            ThingDefs Type = (ThingDefs)int.Parse(((sender as ContentControl).Tag as string));
             var entry = LocalBlockListOptions.FirstOrDefault(x => x.ThingType == Type);
             if (!entry.vis)
             {
-                Block.Visibility = Visibility.Collapsed;
+                ControlBlock.Visibility = Visibility.Collapsed;
                 //return;
             }
             //Local things
@@ -618,5 +622,39 @@ namespace ShadowRunHelper
 
         #endregion
 
+        private async void CSV_IN_Click(object sender, RoutedEventArgs e)
+        {
+            string strRead = "";
+            try
+            {
+                strRead = await SharedIO.ReadTextFromFile(new FileInfoClass() { FolderToken = "import", Fileplace = Place.Extern }, Constants.LST_FILETYPES_CSV, UserDecision.AskUser);
+            }
+            catch (Exception ex)
+            {
+                ViewModel.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "1", ex);
+            }
+            try
+            {
+                ((sender as FrameworkElement).DataContext as IController).CSV2Data(';', '\n', strRead);
+            }
+            catch (Exception ex)
+            {
+                ViewModel.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "2", ex);
+            }
+        }
+
+        private void CSV_EX_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var CTRL = ((sender as FrameworkElement).DataContext as IController);
+                var output = CTRL.Data2CSV(';', '\n');
+                SharedIO.SaveTextToFile(new FileInfoClass() {Filename = TypenHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
+            }
+            catch (Exception ex)
+            {
+                ViewModel.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
+            }
+        }
     }
 }

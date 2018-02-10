@@ -51,23 +51,23 @@ namespace ShadowRunHelper.CharController
             _eDataTyp = TypenHelper.TypeToThingDef(typeof(T));
         }
 
-        public (string ThingType, string Content) MultipleCSVExport(string strDelimiter, string strNewLine, string strNew)
+        public string Data2CSV(char strDelimiter, char strNewLine)
         {
-            string strTemp = strNew;
+            string ret = "sep=" + strDelimiter + strNewLine;
             if (this.Data.Count >= 1)
             {
-                strTemp += this.Data[0].HeaderToCSV(strDelimiter);
+                ret += this.Data[0].HeaderToCSV(strDelimiter);
             }
-            strTemp += strNewLine;
+            ret += strNewLine;
             foreach (T item in this.Data)
             {
-                strTemp += item.ToCSV(strDelimiter);
-                strTemp += strNewLine;
+                ret += item.ToCSV(strDelimiter);
+                ret += strNewLine;
             }
-            return (TypenHelper.ThingDefToString(eDataTyp, true), strTemp);
+            return ret;
         }
 
-        public void MultipleCSVImport(char strDelimiter, char strNewLine, string strReadFile)
+        public void CSV2Data(char strDelimiter, char strNewLine, string strReadFile)
         {
             string[] Lines = strReadFile.Split(strNewLine);
             string[] Headar = { };

@@ -57,7 +57,7 @@ namespace ShadowRunHelper.Model
         #region EASY ACCESS STUFF
 
         [Newtonsoft.Json.JsonIgnore]
-        List<IController> lstCTRL = new List<IController>();
+        public List<IController> lstCTRL = new List<IController>();
 
         List<AllListEntry> _LinkList;
         [Newtonsoft.Json.JsonIgnore]
@@ -327,6 +327,11 @@ namespace ShadowRunHelper.Model
             return returnThing;
         }
 
+        public IController ThingDef2CTRL(ThingDefs tag)
+        {
+            return lstCTRL.First(c => c.eDataTyp == tag);
+        }
+
         /// <summary>
         /// Adds the Thing to the right Controller and register it
         /// </summary>
@@ -502,6 +507,7 @@ namespace ShadowRunHelper.Model
             foreach (var item in lstCTRL)
             {
                 item.RegisterEventAtData(AnyPropertyChanged);
+                item.RegisterEventAtData(RefreshLists);
                 foreach (var item2 in item.GetElements())
                 {
                     item2.PropertyChanged -= (x, y) => AnyPropertyChanged();
@@ -574,22 +580,6 @@ namespace ShadowRunHelper.Model
             }
             return false;
         }
-        #endregion
-        #region IMPORT / EXPORT STUFF ##############################################
-        public IEnumerable<(string ThingType, string Content)> ToCSV(string strDelimiter)
-        {
-            const string strNewLine = "\n";
-            string strNew = "sep=" + strDelimiter + strNewLine;
-            return lstCTRL.Select(item => item.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-        }
-
-        public void ImportFromCSV(char strDelimiter, string strImport, ThingDefs eThing)
-        {
-            const char strNewLine = '\n';
-            lstCTRL.First(c=>c.eDataTyp == eThing).MultipleCSVImport(strDelimiter, strNewLine, strImport);
-            RefreshLists();
-        }
-
         #endregion
     }
 }

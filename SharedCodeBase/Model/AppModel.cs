@@ -20,6 +20,7 @@ namespace ShadowRunHelper.Model
                 return (AppModel)instance;
             }
         }
+        AppModel() : base(){ }
 
         public void TutorialChangedState(int StateNumber, bool Highlight = false)
         {

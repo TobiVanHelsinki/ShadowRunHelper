@@ -217,6 +217,19 @@ namespace ShadowRunHelper
         {
             return ThingTypeList.FirstOrDefault(x=>x.Item1 == type).Item2;
         }
+
+        public static ThingDefs Obj2ThingDef(int tag)
+        {
+            return (ThingDefs)tag;
+        }
+        public static ThingDefs Obj2ThingDef(string Name)
+        {
+            return ThingTypeList.First(t => t.Item2.ToString() == Name).Item2;
+        }
+        public static ThingDefs Obj2ThingDef(object tag)
+        {
+            return (ThingDefs)Int16.Parse(tag.ToString());
+        }
     }
 
     public enum FolderMode

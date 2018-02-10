@@ -437,11 +437,10 @@
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="ListView_U_BtnAdd">
+    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="ListView_U_Btn">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
-        <Setter Property="Content" Value="&#xE109;"/>
         <Setter Property="Margin" Value="20,6,5,5"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
