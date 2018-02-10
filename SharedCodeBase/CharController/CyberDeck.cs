@@ -25,24 +25,23 @@ namespace ShadowRunHelper.CharController
         AllListEntry MI_F;
         AllListEntry MI_D;
 
-        CyberDeck _ActiveItem;
+        CyberDeck _ActiveItem = new CyberDeck();
         public CyberDeck ActiveItem
         {
             //do not set any of these other than public because of serialisation
             get { return _ActiveItem; }
-            set
-            {
-                if (value != _ActiveItem)
-                {
-                    _ActiveItem = value;
-                    NotifyPropertyChanged();
-                }
-            }
+            //private set
+            //{
+            //    if (value != _ActiveItem)
+            //    {
+            //        _ActiveItem = value;
+            //        NotifyPropertyChanged();
+            //    }
+            //}
         }
 
         public CyberDeckController()
         {
-            ActiveItem = new CyberDeck();
             ActiveItem.PropertyChanged += (x, y) => RefreshOriginDeck();
             //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_CyberDeck__Aktiv/Text");
             MI_V = new AllListEntry(ActiveItem, ("Model_Thing_Wert/Text"), "Wert");

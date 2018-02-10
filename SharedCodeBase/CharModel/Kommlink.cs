@@ -76,10 +76,13 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-
+        public Kommlink() : base()
+        {
+            PropertyChanged += (x, y) => RefreshSchadenLimit();
+        }
         void RefreshSchadenLimit()
         {
-            SchadenMax= 8 + Math.Ceiling(Wert / 2);
+            SchadenMax = 8 + Math.Ceiling(Wert / 2);
         }
     }
 }
