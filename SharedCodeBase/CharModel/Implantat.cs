@@ -50,55 +50,7 @@ namespace ShadowRunHelper.CharModel
         }
         public Implantat()
         {
-            this.ThingType = ThingDefs.Implantat;
-        }
-
-    
-        public override string ToCSV(string Delimiter)
-        {
-            string strReturn = base.ToCSV(Delimiter);
-            strReturn += Essenz;
-            strReturn += Delimiter;
-            strReturn += Kapazitaet;
-            strReturn += Delimiter;
-            strReturn += Auswirkung;
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-        public override string HeaderToCSV(string Delimiter)
-        {
-            string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Implantat_Essenz/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Implantat_Kapazitaet/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Implantat_Auswirkung/Text");
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-        public override void FromCSV(Dictionary<string, string> dic)
-        {
-            base.FromCSV(dic);
-            foreach (var item in dic)
-            {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Implantat_Essenz/Text"))
-                {
-                    Essenz = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Implantat_Kapazitaet/Text"))
-                {
-                    Kapazitaet = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Implantat_Auswirkung/Text"))
-                {
-                    Auswirkung = (item.Value);
-                    continue;
-                }
-            }
+            ThingType = ThingDefs.Implantat;
         }
     }
 }

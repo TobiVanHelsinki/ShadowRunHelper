@@ -120,20 +120,20 @@ namespace ShadowRunHelper.CharController
         //Physical Limit: (STR x2 + BOD + REA) / 3
         protected void RefreshLimitK()
         {
-            Limit_K.Wert = Math.Ceiling( (AttributeRef.Staerke.GetValue() * 2 + AttributeRef.Konsti.GetValue() + AttributeRef.Reaktion.GetValue()) / 3);
+            Limit_K.Wert = Math.Ceiling( (AttributeRef.Staerke.GetPropertyValueOrDefault() * 2 + AttributeRef.Konsti.GetPropertyValueOrDefault() + AttributeRef.Reaktion.GetPropertyValueOrDefault()) / 3);
         }
 
         //Mental Limit: (LOG x2 + INT +WIL) / 3
 
         protected void RefreshLimitG()
         {
-            Limit_G.Wert = Math.Ceiling((AttributeRef.Logik.GetValue() * 2 + AttributeRef.Intuition.GetValue() + AttributeRef.Willen.GetValue()) / 3);
+            Limit_G.Wert = Math.Ceiling((AttributeRef.Logik.GetPropertyValueOrDefault() * 2 + AttributeRef.Intuition.GetPropertyValueOrDefault() + AttributeRef.Willen.GetPropertyValueOrDefault()) / 3);
         }
         //Social Limit: (CHA x2 + WIL + Essence) /3
 
         protected void RefreshLimitS()
         {
-            Limit_S.Wert = Math.Ceiling((AttributeRef.Charisma.GetValue() * 2 + AttributeRef.Willen.GetValue() + Essenz.GetValue()) / 3);
+            Limit_S.Wert = Math.Ceiling((AttributeRef.Charisma.GetPropertyValueOrDefault() * 2 + AttributeRef.Willen.GetPropertyValueOrDefault() + Essenz.GetPropertyValueOrDefault()) / 3);
         }
 
         protected void RefreshLaufen()

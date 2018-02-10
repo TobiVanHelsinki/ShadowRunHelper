@@ -63,7 +63,7 @@ namespace ShadowRunHelper.CharModel
 
                 try
                 {
-                    temp += item.Object.GetValue(item.PropertyID);
+                    temp += item.Object.GetPropertyValueOrDefault(item.PropertyID);
                 }
                 catch (System.Exception)
                 {

@@ -48,90 +48,92 @@ namespace ShadowRunHelper.CharController
         public Controller()
         {
             Data = new ObservableCollection<T>();
-            switch (typeof(T).Name)
-            {
-                case "UndefTemp":
-                    break; 
-                case "Undef":
-                    break;
-                case "Handlung":
-                    this._eDataTyp = ThingDefs.Handlung;
-                    break;
-                case "Fertigkeit":
-                    this._eDataTyp = ThingDefs.Fertigkeit;
-                    break;
-                case "Item":
-                    this._eDataTyp = ThingDefs.Item;
-                    break;
-                case "Programm":
-                    this._eDataTyp = ThingDefs.Programm;
-                    break;
-                case "Munition":
-                    this._eDataTyp = ThingDefs.Munition;
-                    break;
-                case "Implantat":
-                    this._eDataTyp = ThingDefs.Implantat;
-                    break;
-                case "Vorteil":
-                    this._eDataTyp = ThingDefs.Vorteil;
-                    break;
-                case "Nachteil":
-                    this._eDataTyp = ThingDefs.Nachteil;
-                    break;
-                case "Connection":
-                    this._eDataTyp = ThingDefs.Connection;
-                    break;
-                case "Sin":
-                    this._eDataTyp = ThingDefs.Sin;
-                    break;
-                case "Attribut":
-                    this._eDataTyp = ThingDefs.Attribut;
-                    break;
-                case "Nahkampfwaffe":
-                    this._eDataTyp = ThingDefs.Nahkampfwaffe;
-                    break;
-                case "Fernkampfwaffe":
-                    this._eDataTyp = ThingDefs.Fernkampfwaffe;
-                    break;
-                case "Kommlink":
-                    this._eDataTyp = ThingDefs.Kommlink;
-                    break;
-                case "CyberDeck":
-                    this._eDataTyp = ThingDefs.CyberDeck;
-                    break;
-                case "Vehikel":
-                    this._eDataTyp = ThingDefs.Vehikel;
-                    break;
-                case "Panzerung":
-                    this._eDataTyp = ThingDefs.Panzerung;
-                    break;
-                case "Eigenschaft":
-                    this._eDataTyp = ThingDefs.Eigenschaft;
-                    break;
-                case "Adeptenkraft_KomplexeForm":
-                    this._eDataTyp = ThingDefs.Adeptenkraft_KomplexeForm;
-                    break;
-                case "Foki_Widgets":
-                    this._eDataTyp = ThingDefs.Foki_Widgets;
-                    break;
-                case "Geist_Sprite":
-                    this._eDataTyp = ThingDefs.Geist_Sprite;
-                    break;
-                case "Stroemung_Wandlung":
-                    this._eDataTyp = ThingDefs.Stroemung_Wandlung;
-                    break;
-                case "Tradition_Initiation":
-                    this._eDataTyp = ThingDefs.Tradition_Initiation;
-                    break;
-                case "Zaubersprueche":
-                    this._eDataTyp = ThingDefs.Zaubersprueche;
-                    break;
-                default :
-                    break;
-            }
+            _eDataTyp = TypenHelper.TypeToThingDef(typeof(T));
+
+            //switch (typeof(T).Name)
+            //{
+            //    case "UndefTemp":
+            //        break; 
+            //    case "Undef":
+            //        break;
+            //    case "Handlung":
+            //        this._eDataTyp = ThingDefs.Handlung;
+            //        break;
+            //    case "Fertigkeit":
+            //        this._eDataTyp = ThingDefs.Fertigkeit;
+            //        break;
+            //    case "Item":
+            //        this._eDataTyp = ThingDefs.Item;
+            //        break;
+            //    case "Programm":
+            //        this._eDataTyp = ThingDefs.Programm;
+            //        break;
+            //    case "Munition":
+            //        this._eDataTyp = ThingDefs.Munition;
+            //        break;
+            //    case "Implantat":
+            //        this._eDataTyp = ThingDefs.Implantat;
+            //        break;
+            //    case "Vorteil":
+            //        this._eDataTyp = ThingDefs.Vorteil;
+            //        break;
+            //    case "Nachteil":
+            //        this._eDataTyp = ThingDefs.Nachteil;
+            //        break;
+            //    case "Connection":
+            //        this._eDataTyp = ThingDefs.Connection;
+            //        break;
+            //    case "Sin":
+            //        this._eDataTyp = ThingDefs.Sin;
+            //        break;
+            //    case "Attribut":
+            //        this._eDataTyp = ThingDefs.Attribut;
+            //        break;
+            //    case "Nahkampfwaffe":
+            //        this._eDataTyp = ThingDefs.Nahkampfwaffe;
+            //        break;
+            //    case "Fernkampfwaffe":
+            //        this._eDataTyp = ThingDefs.Fernkampfwaffe;
+            //        break;
+            //    case "Kommlink":
+            //        this._eDataTyp = ThingDefs.Kommlink;
+            //        break;
+            //    case "CyberDeck":
+            //        this._eDataTyp = ThingDefs.CyberDeck;
+            //        break;
+            //    case "Vehikel":
+            //        this._eDataTyp = ThingDefs.Vehikel;
+            //        break;
+            //    case "Panzerung":
+            //        this._eDataTyp = ThingDefs.Panzerung;
+            //        break;
+            //    case "Eigenschaft":
+            //        this._eDataTyp = ThingDefs.Eigenschaft;
+            //        break;
+            //    case "Adeptenkraft_KomplexeForm":
+            //        this._eDataTyp = ThingDefs.Adeptenkraft_KomplexeForm;
+            //        break;
+            //    case "Foki_Widgets":
+            //        this._eDataTyp = ThingDefs.Foki_Widgets;
+            //        break;
+            //    case "Geist_Sprite":
+            //        this._eDataTyp = ThingDefs.Geist_Sprite;
+            //        break;
+            //    case "Stroemung_Wandlung":
+            //        this._eDataTyp = ThingDefs.Stroemung_Wandlung;
+            //        break;
+            //    case "Tradition_Initiation":
+            //        this._eDataTyp = ThingDefs.Tradition_Initiation;
+            //        break;
+            //    case "Zaubersprueche":
+            //        this._eDataTyp = ThingDefs.Zaubersprueche;
+            //        break;
+            //    default :
+            //        break;
+            //}
         }
 
-        public virtual (string ThingType, string Content) MultipleCSVExport(string strDelimiter, string strNewLine, string strNew)
+        public (string ThingType, string Content) MultipleCSVExport(string strDelimiter, string strNewLine, string strNew)
         {
             string strTemp = strNew;
             if (this.Data.Count >= 1)
@@ -147,7 +149,7 @@ namespace ShadowRunHelper.CharController
             return (TypenHelper.ThingDefToString(eDataTyp, true), strTemp);
         }
 
-        public virtual void MultipleCSVImport(char strDelimiter, char strNewLine, string strReadFile)
+        public void MultipleCSVImport(char strDelimiter, char strNewLine, string strReadFile)
         {
             string[] Lines = strReadFile.Split(strNewLine);
             string[] Headar = { };
@@ -168,7 +170,14 @@ namespace ShadowRunHelper.CharController
                 int j = 0;
                 foreach (var itemstring in CSVEntries)
                 {
-                    Dic.Add(Headar[j], itemstring);
+                    try
+                    {
+                        Dic.Add(Headar[j], itemstring);
+                    }
+                    catch (Exception)
+                    {
+                         continue;
+                    }
                     j++;
                 }
                 (this.AddNewThing())?.FromCSV(Dic);

@@ -21,7 +21,7 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return item.Object.GetValue(item.PropertyID).ToString();
+                        return item.Object.GetPropertyValueOrDefault(item.PropertyID).ToString();
                     }
                 case "Bezeichner":
                     if (item?.PropertyID == "")

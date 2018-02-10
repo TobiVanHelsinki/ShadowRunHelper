@@ -39,43 +39,5 @@ namespace ShadowRunHelper.CharModel
 
             ThingType = ThingDefs.Fernkampfwaffe;
         }
-
-        public override string ToCSV(string Delimiter)
-        {
-            string strReturn = base.ToCSV(Delimiter);
-            strReturn += Rueckstoss;
-            strReturn += Delimiter;
-            strReturn += Modi;
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-
-        public override string HeaderToCSV(string Delimiter)
-        {
-            string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Fernkampfwaffe_Rueckstoss/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Fernkampfwaffe_Modi/Text");
-            strReturn += Delimiter;
-            return strReturn;
-        }
-        public override void FromCSV(Dictionary<string, string> dic)
-        {
-            base.FromCSV(dic);
-            foreach (var item in dic)
-            {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Fernkampfwaffe_Rueckstoss/Text"))
-                {
-                    Rueckstoss = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Fernkampfwaffe_Modi/Text"))
-                {
-                    Modi= (item.Value);
-                    continue;
-                }
-            }
-        }
     }
 }

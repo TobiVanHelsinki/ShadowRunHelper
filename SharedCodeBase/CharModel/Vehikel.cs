@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using TLIB_UWPFRAME;
-
+﻿
 namespace ShadowRunHelper.CharModel
 {
     public class Vehikel : Item
@@ -133,108 +131,6 @@ namespace ShadowRunHelper.CharModel
         public Vehikel()
         {
             ThingType = ThingDefs.Vehikel;
-        }
-
-        public override string ToCSV(string Delimiter)
-        {
-            string strReturn = base.ToCSV(Delimiter);
-            strReturn += Beschleunigung;
-            strReturn += Delimiter;
-            strReturn += Geschwindigkeit;
-            strReturn += Delimiter;
-            strReturn += Gewicht;
-            strReturn += Delimiter;
-            strReturn += Handling;
-            strReturn += Delimiter;
-            strReturn += Panzerung;
-            strReturn += Delimiter;
-            strReturn += Rumpf;
-            strReturn += Delimiter;
-            strReturn += Pilot;
-            strReturn += Delimiter;
-            strReturn += Sensor;
-            strReturn += Delimiter;
-            strReturn += Sitze;
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-
-        public override string HeaderToCSV(string Delimiter)
-        {
-            string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Vehikel_Beschleunigung/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Vehikel_Geschwindigkeit/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Vehikel_Gewicht/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Vehikel_Handling/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Vehikel_Panzerung/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Vehikel_Rumpf/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Vehikel_Pilot/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Vehikel_Sensor/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Vehikel_Sitze/Text");
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-        public override void FromCSV(Dictionary<string, string> dic)
-        {
-            base.FromCSV(dic);
-            foreach (var item in dic)
-            {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Vehikel_Beschleunigung/Text"))
-                {
-                    Beschleunigung = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Vehikel_Geschwindigkeit/Text"))
-                {
-                    Geschwindigkeit = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Vehikel_Gewicht/Text"))
-                {
-                    Gewicht = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Vehikel_Handling/Text"))
-                {
-                    Handling = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Vehikel_Panzerung/Text"))
-                {
-                    Panzerung = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Vehikel_Rumpf/Text"))
-                {
-                    Rumpf = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Vehikel_Pilot/Text"))
-                {
-                    Pilot = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Vehikel_Sensor/Text"))
-                {
-                    Sensor = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Vehikel_Sitze/Text"))
-                {
-                    Sitze = double.Parse(item.Value);
-                    continue;
-                }
-            }
         }
     }
 }

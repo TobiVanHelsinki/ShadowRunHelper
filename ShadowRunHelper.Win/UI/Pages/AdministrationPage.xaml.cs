@@ -417,12 +417,9 @@ namespace ShadowRunHelper
 
         void CSV_Export(CharHolder CharToSave)
         {
-            //TODO with Foldertoken = Export
-            //StorageFolder Folder = null;
-
             try
             {
-                var ContentList = ViewModel.MainObject.ToCSV(";").Select(item => (item.ThingType + Constants.DATEIENDUNG_CSV, item.Content));
+                var ContentList = CharToSave.ToCSV(";").Select(item => (item.ThingType + Constants.DATEIENDUNG_CSV, item.Content));
                 SharedIO.SaveTextesToFilees(ContentList, new FileInfoClass (){Fileplace=Place.Extern, FolderToken = "CSV_TEMP" });
             }
             catch (Exception ex)
@@ -438,30 +435,30 @@ namespace ShadowRunHelper
                 return;
             }
             //TODO with Foldertoken = import
-            //StorageFile File = null;
-            //string strRead = "";
-            //try
-            //{
-            //    File = await WinIO.GetFile(Place.Extern, null, null, Constants.LST_FILETYPES_CSV);
-            //    strRead = await FileIO.ReadTextAsync(File);
+            Windows.Storage.StorageFile File = null;
+            string strRead = "";
+            try
+            {
+                File = await WinIO.GetFile(new FileInfoClass() {FolderToken = "import", Fileplace = Place.Extern },Constants.LST_FILETYPES_CSV, UserDecision.AskUser, FileNotFoundDecision.Create);
+                strRead = await Windows.Storage.FileIO.ReadTextAsync(File);
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    ViewModel.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "1", ex);
-            //}
-            //try
-            //{
-            //    if (ViewModel.MainObject == null)
-            //    {
-            //        ViewModel.MainObject = new CharHolder();
-            //    }
-            //    ViewModel.MainObject.CTRLCyberDeck.MultipleCSVImport(';', '\n', strRead);
-            //}
-            //catch (Exception ex)
-            //{
-            //    ViewModel.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "2", ex);
-            //}
+            }
+            catch (Exception ex)
+            {
+                ViewModel.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "1", ex);
+            }
+            try
+            {
+                if (ViewModel.MainObject == null)
+                {
+                    ViewModel.MainObject = new CharHolder();
+                }
+                ViewModel.MainObject.CTRLCyberDeck.MultipleCSVImport(';', '\n', strRead);
+            }
+            catch (Exception ex)
+            {
+                ViewModel.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "2", ex);
+            }
         }
 #pragma warning restore CS1998
 

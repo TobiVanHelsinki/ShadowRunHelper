@@ -1,6 +1,9 @@
 ﻿
 
+using ShadowRunHelper.CharModel;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper
@@ -179,6 +182,8 @@ namespace ShadowRunHelper
         }
         public static Type ThingDefToType(ThingDefs eThingDefToConvert)
         {
+            return ThingTypeList.FirstOrDefault(x => x.Item2 == eThingDefToConvert).Item1;
+
             switch (eThingDefToConvert)
             {
                 case ThingDefs.UndefTemp:
@@ -235,6 +240,94 @@ namespace ShadowRunHelper
                     return typeof(CharModel.Zaubersprueche);
                 default:
                     return null;
+            }
+        }
+
+        public static List<(Type, ThingDefs)> ThingTypeList = new List<(Type, ThingDefs)>() {
+            (typeof(Handlung),ThingDefs.Handlung),
+            (typeof(Fertigkeit),ThingDefs.Fertigkeit),
+            (typeof(Item),ThingDefs.Item),
+            (typeof(Programm),ThingDefs.Programm),
+            (typeof(Munition),ThingDefs.Munition),
+            (typeof(Implantat),ThingDefs.Implantat),
+            (typeof(Vorteil),ThingDefs.Vorteil),
+            (typeof(Nachteil),ThingDefs.Nachteil),
+            (typeof(Connection),ThingDefs.Connection),
+            (typeof(Sin),ThingDefs.Sin),
+            (typeof(Attribut),ThingDefs.Attribut),
+            (typeof(Berechnet),ThingDefs.Berechnet),
+            (typeof(Nahkampfwaffe),ThingDefs.Nahkampfwaffe),
+            (typeof(Fernkampfwaffe),ThingDefs.Fernkampfwaffe),
+            (typeof(Kommlink),ThingDefs.Kommlink),
+            (typeof(CyberDeck),ThingDefs.CyberDeck),
+            (typeof(Vehikel),ThingDefs.Vehikel),
+            (typeof(Panzerung),ThingDefs.Panzerung),
+            (typeof(Eigenschaft),ThingDefs.Eigenschaft),
+            (typeof(Adeptenkraft_KomplexeForm),ThingDefs.Adeptenkraft_KomplexeForm),
+            (typeof(Foki_Widgets),ThingDefs.Foki_Widgets),
+            (typeof(Geist_Sprite),ThingDefs.Geist_Sprite),
+            (typeof(Stroemung_Wandlung),ThingDefs.Stroemung_Wandlung),
+            (typeof(Tradition_Initiation),ThingDefs.Tradition_Initiation),
+            (typeof(Zaubersprueche),ThingDefs.Zaubersprueche)
+        };
+
+        public static ThingDefs TypeToThingDef(Type type)
+        {
+            return ThingTypeList.FirstOrDefault(x=>x.Item1 == type).Item2;
+            switch (type.GetType().Name)
+            {
+                case "Handlung":
+                    return ThingDefs.Handlung;
+                case "Fertigkeit":
+                    return ThingDefs.Fertigkeit;
+                case "Item":
+                    return ThingDefs.Item;
+                case "Programm":
+                    return ThingDefs.Programm;
+                case "Munition":
+                    return ThingDefs.Munition;
+                case "Implantat":
+                    return ThingDefs.Implantat;
+                case "Vorteil":
+                    return ThingDefs.Vorteil;
+                case "Nachteil":
+                    return ThingDefs.Nachteil;
+                case "Connection":
+                    return ThingDefs.Connection;
+                case "Sin":
+                    return ThingDefs.Sin;
+                case "Attribut":
+                    return ThingDefs.Attribut;
+                case "Berechnet":
+                    return ThingDefs.Berechnet;
+                case "Nahkampfwaffe":
+                    return ThingDefs.Nahkampfwaffe;
+                case "Fernkampfwaffe":
+                    return ThingDefs.Fernkampfwaffe;
+                case "Kommlink":
+                    return ThingDefs.Kommlink;
+                case "CyberDeck":
+                    return ThingDefs.CyberDeck;
+                case "Vehikel":
+                    return ThingDefs.Vehikel;
+                case "Panzerung":
+                    return ThingDefs.Panzerung;
+                case "Eigenschaft":
+                    return ThingDefs.Eigenschaft;
+                case "Adeptenkraft_KomplexeForm":
+                    return ThingDefs.Adeptenkraft_KomplexeForm;
+                case "Foki_Widgets":
+                    return ThingDefs.Foki_Widgets;
+                case "Geist_Sprite":
+                    return ThingDefs.Geist_Sprite;
+                case "Stroemung_Wandlung":
+                    return ThingDefs.Stroemung_Wandlung;
+                case "Tradition_Initiation":
+                    return ThingDefs.Tradition_Initiation;
+                case "Zaubersprueche":
+                    return ThingDefs.Zaubersprueche;
+                default:
+                    return ThingDefs.Undef;
             }
         }
     }

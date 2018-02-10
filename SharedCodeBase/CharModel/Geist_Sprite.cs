@@ -38,46 +38,7 @@ namespace ShadowRunHelper.CharModel
         
         public Geist_Sprite()
         {
-            this.ThingType = ThingDefs.Geist_Sprite;
-        }
-        
-        public override string ToCSV(string Delimiter)
-        {
-            string strReturn = base.ToCSV(Delimiter);
-            strReturn += Dienste;
-            strReturn += Delimiter;
-            strReturn += Geb_Reg;
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-        public override string HeaderToCSV(string Delimiter)
-        {
-            string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Geist_Sprite_Dienste/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Geist_Sprite_Geb_Reg/Text");
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-
-        public override void FromCSV(Dictionary<string, string> dic)
-        {
-            base.FromCSV(dic);
-            foreach (var item in dic)
-            {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Geist_Sprite_Dienste/Text"))
-                {
-                    this.Dienste = (item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Geist_Sprite_Geb_Reg/Text"))
-                {
-                    this.Geb_Reg = bool.Parse(item.Value);
-                    continue;
-                }
-            }
+            ThingType = ThingDefs.Geist_Sprite;
         }
     }
 }

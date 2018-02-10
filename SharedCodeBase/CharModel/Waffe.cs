@@ -57,54 +57,5 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-      
-
-        public override string ToCSV(string Delimiter)
-        {
-            string strReturn = base.ToCSV(Delimiter);
-            strReturn += Praezision;
-            strReturn += Delimiter;
-            strReturn += SchadenTyp;
-            strReturn += Delimiter;
-            strReturn += PB;
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-
-        public override string HeaderToCSV(string Delimiter)
-        {
-            string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Waffe_Praezision/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Waffe_SchadenTyp/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Waffe_PB/Text");
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-        public override void FromCSV(Dictionary<string, string> dic)
-        {
-            base.FromCSV(dic);
-            foreach (var item in dic)
-            {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_Praezision/Text"))
-                {
-                    Praezision = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_SchadenTyp/Text"))
-                {
-                    SchadenTyp = item.Value;
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_PB/Text"))
-                {
-                    PB = double.Parse(item.Value);
-                    continue;
-                }
-            }
-        }
     }
 }

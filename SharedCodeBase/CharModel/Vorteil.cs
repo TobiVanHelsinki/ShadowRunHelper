@@ -6,7 +6,6 @@ namespace ShadowRunHelper.CharModel
         public Vorteil()
         {
             ThingType = ThingDefs.Vorteil;
-
         }
     }
 }

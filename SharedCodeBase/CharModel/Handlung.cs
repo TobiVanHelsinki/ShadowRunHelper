@@ -120,7 +120,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         static double Recalculate(ObservableCollection<AllListEntry> List) {
-            return List.Aggregate<AllListEntry, double>(0, (accvalue, next) => accvalue + next.Object.GetValue(next.PropertyID));
+            return List.Aggregate<AllListEntry, double>(0, (accvalue, next) => accvalue + next.Object.GetPropertyValueOrDefault(next.PropertyID));
         }
     }
 }

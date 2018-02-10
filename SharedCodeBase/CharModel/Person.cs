@@ -7,7 +7,7 @@ namespace ShadowRunHelper.CharModel
 {
     public class Person : INotifyPropertyChanged
     {
-        private string alias = TLIB_UWPFRAME.CrossPlatformHelper.GetString("Model_Person_Alias_STD/Text");
+        string alias = TLIB_UWPFRAME.CrossPlatformHelper.GetString("Model_Person_Alias_STD/Text");
         [Used]
         public string Alias
         {
@@ -21,7 +21,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private string char_Typ;
+        string char_Typ;
         [Used]
         public string Char_Typ
         {
@@ -35,7 +35,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double kontostand;
+        double kontostand;
         [Used]
         public double Kontostand
         {
@@ -49,7 +49,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double karma_Gesamt;
+        double karma_Gesamt;
         [Used]
         public double Karma_Gesamt
         {
@@ -64,7 +64,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double karma_Aktuell;
+        double karma_Aktuell;
         [Used]
         public double Karma_Aktuell
         {
@@ -78,7 +78,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double edge_Aktuell;
+        double edge_Aktuell;
         [Used]
         public double Edge_Aktuell
         {
@@ -92,7 +92,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double edge_Gesamt;
+        double edge_Gesamt;
         [Used]
         public double Edge_Gesamt
         {
@@ -106,7 +106,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double essenz;
+        double essenz;
         [Used]
         public double Essenz
         {
@@ -120,7 +120,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double schaden_K;
+        double schaden_K;
         [Used]
         public double Schaden_K
         {
@@ -134,7 +134,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double schaden_G;
+        double schaden_G;
         [Used]
         public double Schaden_G
         {
@@ -148,7 +148,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double schaden_M;
+        double schaden_M;
         [Used]
         public double Schaden_M
         {
@@ -162,7 +162,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double schaden_K_max;
+        double schaden_K_max;
         [Used]
         public double Schaden_K_max
         {
@@ -176,7 +176,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double schaden_G_max;
+        double schaden_G_max;
         [Used]
         public double Schaden_G_max
         {
@@ -190,7 +190,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        //private double schaden_M_max;
+        //double schaden_M_max;
         //        [Used] public double Schaden_M_max
         //{
         //    get { return schaden_M_max; }
@@ -203,7 +203,7 @@ namespace ShadowRunHelper.CharModel
         //        }
         //    }
         //}
-        private string notizen;
+        string notizen;
         [Used]
         public string Notizen
         {
@@ -217,7 +217,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private string metaTyp;
+        string metaTyp;
         [Used]
         public string MetaTyp
         {
@@ -231,7 +231,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private string metaTyp_sub;
+        string metaTyp_sub;
         [Used]
         public string MetaTyp_sub
         {
@@ -245,7 +245,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private string lebesstil;
+        string lebesstil;
         [Used]
         public string Lebesstil
         {
@@ -259,7 +259,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        //private string geburtsdatum;
+        //string geburtsdatum;
         //        [Used] public string Geburtsdatum
         //{
         //    get { return geburtsdatum; }
@@ -272,7 +272,7 @@ namespace ShadowRunHelper.CharModel
         //        }
         //    }
         //}
-        //private DateTime geburtsdatum2 = new DateTime();
+        //DateTime geburtsdatum2 = new DateTime();
         //        [Used] public DateTime Geburtsdatum2
         //{
         //    get { return geburtsdatum2; }
@@ -285,7 +285,7 @@ namespace ShadowRunHelper.CharModel
         //        }
         //    }
         //}
-        private DateTimeOffset _BirthDate = new DateTimeOffset(2060, 1, 1, 0, 0, 0, new System.TimeSpan(0));
+        DateTimeOffset _BirthDate = new DateTimeOffset(2060, 1, 1, 0, 0, 0, new System.TimeSpan(0));
         [Used]
         public DateTimeOffset BirthDate
         {
@@ -299,7 +299,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private string geschlecht;
+        string geschlecht;
         [Used]
         public string Geschlecht
         {
@@ -313,7 +313,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double groesse;
+        double groesse;
         [Used]
         public double Groesse
         {
@@ -327,7 +327,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double gewicht;
+        double gewicht;
         [Used]
         public double Gewicht
         {
@@ -341,7 +341,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private string augenfarbe;
+        string augenfarbe;
         [Used]
         public string Augenfarbe
         {
@@ -355,7 +355,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private string haarfarbe;
+        string haarfarbe;
         [Used]
         public string Haarfarbe
         {
@@ -369,7 +369,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private string hautfarbe;
+        string hautfarbe;
         [Used]
         public string Hautfarbe
         {
@@ -383,7 +383,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private string bild;
+        string bild;
         [Used]
         public string Bild
         {
@@ -454,7 +454,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        private string zusammenfassung;
+        string zusammenfassung;
         [Used]
         public string Zusammenfassung
         {
@@ -469,7 +469,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        private double initiative;
+        double initiative;
         [Used]
         public double Initiative
         {
@@ -484,7 +484,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        private double runs;
+        double runs;
         [Used]
         public double Runs
         {
@@ -551,74 +551,74 @@ namespace ShadowRunHelper.CharModel
         {
             return Alias + " " + base.ToString();
         }
-        //public string ToCSV(string Delimiter)
-        //{
-        //    string strReturn;
-        //    strReturn += Alias;
-        //    strReturn += Delimiter;
-        //    strReturn += Augenfarbe;
-        //    strReturn += Delimiter;
-        //    //strReturn += Bild;
-        //    strReturn += Delimiter;
-        //    strReturn += Char_Typ;
-        //    strReturn += Delimiter;
-        //    strReturn += Edge_Aktuell;
-        //    strReturn += Delimiter;
-        //    strReturn += Edge_Gesamt;
-        //    strReturn += Delimiter;
-        //    strReturn += Essenz;
-        //    strReturn += Delimiter;
-        //    strReturn += Geburtsdatum;
-        //    strReturn += Delimiter;
-        //    strReturn += Geburtsdatum2;
-        //    strReturn += Delimiter;
-        //    strReturn += GeburtsdatumDateTimeOffset;
-        //    strReturn += Delimiter;
-        //    strReturn += Geschlecht;
-        //    strReturn += Delimiter;
-        //    strReturn += Gewicht;
-        //    strReturn += Delimiter;
-        //    strReturn += Groesse;
-        //    strReturn += Delimiter;
-        //    strReturn += Haarfarbe;
-        //    strReturn += Delimiter;
-        //    strReturn += Hautfarbe;
-        //    strReturn += Delimiter;
-        //    strReturn += Initiative;
-        //    strReturn += Delimiter;
-        //    strReturn += Karma_Aktuell;
-        //    strReturn += Delimiter;
-        //    strReturn += Karma_Gesamt;
-        //    strReturn += Delimiter;
-        //    strReturn += Kontostand;
-        //    strReturn += Delimiter;
-        //    strReturn += Lebesstil;
-        //    strReturn += Delimiter;
-        //    strReturn += MetaTyp;
-        //    strReturn += Delimiter;
-        //    strReturn += MetaTyp_sub;
-        //    strReturn += Delimiter;
-        //    strReturn += Notizen;
-        //    strReturn += Delimiter;
-        //    strReturn += Runs;
-        //    strReturn += Delimiter;
-        //    strReturn += Schaden_G;
-        //    strReturn += Delimiter;
-        //    strReturn += Schaden_G_max;
-        //    strReturn += Delimiter;
-        //    strReturn += Schaden_K;
-        //    strReturn += Delimiter;
-        //    strReturn += Schaden_K_max;
-        //    strReturn += Delimiter;
-        //    strReturn += Schaden_M;
-        //    strReturn += Delimiter;
-        //    strReturn += Delimiter;
-        //    strReturn += Schaden_M_max;
-        //    strReturn += Delimiter;
-        //    strReturn += Zusammenfassung;
-        //    strReturn += Delimiter;
-        //    return strReturn;
-        //}
+        public string ToCSV(string Delimiter)
+        {
+            string strReturn = "";
+            strReturn += Alias;
+            strReturn += Delimiter;
+            strReturn += Augenfarbe;
+            strReturn += Delimiter;
+            //strReturn += Bild;
+            strReturn += Delimiter;
+            strReturn += Char_Typ;
+            strReturn += Delimiter;
+            strReturn += Edge_Aktuell;
+            strReturn += Delimiter;
+            strReturn += Edge_Gesamt;
+            strReturn += Delimiter;
+            strReturn += Essenz;
+            strReturn += Delimiter;
+            //strReturn += Geburtsdatum;
+            strReturn += Delimiter;
+            //strReturn += Geburtsdatum2;
+            strReturn += Delimiter;
+            //strReturn += GeburtsdatumDateTimeOffset;
+            strReturn += Delimiter;
+            strReturn += Geschlecht;
+            strReturn += Delimiter;
+            strReturn += Gewicht;
+            strReturn += Delimiter;
+            strReturn += Groesse;
+            strReturn += Delimiter;
+            strReturn += Haarfarbe;
+            strReturn += Delimiter;
+            strReturn += Hautfarbe;
+            strReturn += Delimiter;
+            strReturn += Initiative;
+            strReturn += Delimiter;
+            strReturn += Karma_Aktuell;
+            strReturn += Delimiter;
+            strReturn += Karma_Gesamt;
+            strReturn += Delimiter;
+            strReturn += Kontostand;
+            strReturn += Delimiter;
+            strReturn += Lebesstil;
+            strReturn += Delimiter;
+            strReturn += MetaTyp;
+            strReturn += Delimiter;
+            strReturn += MetaTyp_sub;
+            strReturn += Delimiter;
+            strReturn += Notizen;
+            strReturn += Delimiter;
+            strReturn += Runs;
+            strReturn += Delimiter;
+            strReturn += Schaden_G;
+            strReturn += Delimiter;
+            strReturn += Schaden_G_max;
+            strReturn += Delimiter;
+            strReturn += Schaden_K;
+            strReturn += Delimiter;
+            strReturn += Schaden_K_max;
+            strReturn += Delimiter;
+            strReturn += Schaden_M;
+            strReturn += Delimiter;
+            strReturn += Delimiter;
+            //strReturn += Schaden_M_max;
+            strReturn += Delimiter;
+            strReturn += Zusammenfassung;
+            strReturn += Delimiter;
+            return strReturn;
+        }
 
     }
 }

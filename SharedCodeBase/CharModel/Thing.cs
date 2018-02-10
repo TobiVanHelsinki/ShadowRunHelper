@@ -25,7 +25,7 @@ namespace ShadowRunHelper.CharModel
         }
         public Thing()
         {
-            ThingType = ThingDefs.Undef;
+            ThingType = TypenHelper.TypeToThingDef(GetType());
         }
         ThingDefs thingType = 0;
         [Newtonsoft.Json.JsonIgnore]
@@ -37,62 +37,6 @@ namespace ShadowRunHelper.CharModel
                 if (value != thingType)
                 {
                     thingType = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        string bezeichner ="";
-        [Used]
-        public string Bezeichner
-        {
-            get => bezeichner;
-            set
-            {
-                if (value != bezeichner)
-                {
-                    bezeichner = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        string typ = "";
-        [Used]
-        public string Typ
-        {
-            get => typ;
-            set
-            {
-                if (value != typ)
-                {
-                    typ = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        double wert = 0;
-        [Used]
-        public double Wert
-        {
-            get { return wert; }
-            set
-            {
-                if (value != wert)
-                {
-                    wert = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        string zusatz = "";
-        [Used]
-        public string Zusatz
-        {
-            get { return zusatz; }
-            set
-            {
-                if (value != zusatz)
-                {
-                    zusatz = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -111,8 +55,64 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+        string zusatz = "";
+        [Used]
+        public string Zusatz
+        {
+            get { return zusatz; }
+            set
+            {
+                if (value != zusatz)
+                {
+                    zusatz = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        double wert = 0;
+        [Used]
+        public double Wert
+        {
+            get { return wert; }
+            set
+            {
+                if (value != wert)
+                {
+                    wert = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        string typ = "";
+        [Used]
+        public string Typ
+        {
+            get => typ;
+            set
+            {
+                if (value != typ)
+                {
+                    typ = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        string bezeichner = "";
+        [Used]
+        public string Bezeichner
+        {
+            get => bezeichner;
+            set
+            {
+                if (value != bezeichner)
+                {
+                    bezeichner = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
-        public double GetValue(string ID = "")
+        public double GetPropertyValueOrDefault(string ID = "")
         {
             if (ID == "")
             {
@@ -135,7 +135,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        IEnumerable<PropertyInfo> GetProperties(object obj)
+        public static IEnumerable<PropertyInfo> GetProperties(object obj)
         {
             return obj.GetType().GetProperties().Where(p => p.CustomAttributes.Any(c => c.AttributeType == typeof(UsedAttribute)));
         }
@@ -178,25 +178,22 @@ namespace ShadowRunHelper.CharModel
         public virtual string ToCSV(string Delimiter)
         {
             string strReturn = "";
-            strReturn += Bezeichner;
-            strReturn += Delimiter;
-            strReturn += Notiz;
-            //strReturn += Delimiter;
-            //strReturn += Ordnung;
-            //strReturn += Delimiter;
-            //strReturn += ThingType;
-            strReturn += Delimiter;
-            strReturn += Typ;
-            strReturn += Delimiter;
-            strReturn += Wert;
-            strReturn += Delimiter;
-            strReturn += Zusatz;
-            strReturn += Delimiter;
+            foreach (var item in GetProperties(this).Reverse())
+            {
+                strReturn += item.GetValue(this);
+                strReturn += Delimiter;
+            }
             return strReturn;
         }
         public virtual string HeaderToCSV(string Delimiter)
         {
             string strReturn = "";
+            foreach (var item in GetProperties(this).Reverse())
+            {
+                strReturn += CrossPlatformHelper.GetString("Model_"+ item.DeclaringType.Name + "_"+ item.Name + "/Text");
+                strReturn += Delimiter;
+            }
+            return strReturn;
             strReturn += CrossPlatformHelper.GetString("Model_Thing_Bezeichner/Text");
             strReturn += Delimiter;
             strReturn += CrossPlatformHelper.GetString("Model_Thing_Notiz/Text");
@@ -215,33 +212,36 @@ namespace ShadowRunHelper.CharModel
         }
         public virtual void FromCSV(Dictionary<string, string> dic)
         {
+            var Props = GetProperties(this).Reverse().Select(p => ("Model_" + p.Name + "_" + p.DeclaringType.Name + "/Text",p));
             foreach (var item in dic)
             {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Bezeichner/Text"))
-                {
-                    Bezeichner = item.Value;
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Notiz/Text"))
-                {
-                    Notiz = item.Value;
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Typ/Text"))
-                {
-                    Typ = item.Value;
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Wert/Text"))
-                {
-                    Wert= double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Zusatz/Text"))
-                {
-                    Zusatz = item.Value;
-                    continue;
-                }
+                var currentProp = Props.First(p => p.Item1 == item.Key);
+                currentProp.Item2.SetValue(this, item.Value);
+                //if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Bezeichner/Text"))
+                //{
+                //    Bezeichner = item.Value;
+                //    continue;
+                //}
+                //if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Notiz/Text"))
+                //{
+                //    Notiz = item.Value;
+                //    continue;
+                //}
+                //if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Typ/Text"))
+                //{
+                //    Typ = item.Value;
+                //    continue;
+                //}
+                //if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Wert/Text"))
+                //{
+                //    Wert= double.Parse(item.Value);
+                //    continue;
+                //}
+                //if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Zusatz/Text"))
+                //{
+                //    Zusatz = item.Value;
+                //    continue;
+                //}
 
             }
         }
