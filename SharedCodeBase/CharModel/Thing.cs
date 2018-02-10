@@ -199,6 +199,10 @@ namespace ShadowRunHelper.CharModel
                     item.SetValue(this, default);
                 }
             }
+            foreach (var item in Helper.GetProperties(this, typeof(Used_ListAttribute)))
+            {
+                (item.GetValue(this) as ObservableThingListEntryCollection).Clear();
+            }
         }
 
 

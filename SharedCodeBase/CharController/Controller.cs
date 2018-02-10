@@ -13,6 +13,8 @@ namespace ShadowRunHelper.CharController
         /// GUI-Binding Target
         /// </summary>
         public ObservableCollection<T> Data { get; protected set; }
+        public IEnumerable<Thing> GetElements() => Data;
+
         protected readonly ThingDefs _eDataTyp;
         public ThingDefs eDataTyp { get => _eDataTyp; }
 
@@ -51,6 +53,7 @@ namespace ShadowRunHelper.CharController
             _eDataTyp = TypenHelper.TypeToThingDef(typeof(T));
         }
 
+        #region CSV
         public string Data2CSV(char strDelimiter, char strNewLine)
         {
             string ret = "sep=" + strDelimiter + strNewLine;
@@ -101,11 +104,6 @@ namespace ShadowRunHelper.CharController
                 (this.AddNewThing())?.FromCSV(Dic);
             }
         }
-
-        public IEnumerable<Thing> GetElements()
-        {
-            return Data;
-        }
-
+#endregion
     }
 }
