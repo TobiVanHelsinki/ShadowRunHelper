@@ -1,14 +1,12 @@
 ﻿using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -35,7 +33,6 @@ namespace ShadowRunHelper
     /// </summary>
     public sealed partial class SettingsPage : Page
     {
-
         readonly SettingsModel Settings = SettingsModel.Instance;
         readonly AppModel Model = AppModel.Instance;
         readonly string eMail = Constants.APP_CONTACT_MAIL;
@@ -50,6 +47,13 @@ namespace ShadowRunHelper
         public SettingsPage()
         {
             InitializeComponent();
+            SetSource();
+        }
+
+        #region Categories
+
+        void SetSource()
+        {
             CharPageConfigListView.ItemsSource = Settings.BlockListOptions.Select(i => new CharPageConfigListViewItem() { Active = i.vis, Code = i.ThingType, Name = TypenHelper.ThingDefToString(i.ThingType, true) }).Where(x=>x.Name != "");
         }
 
@@ -59,6 +63,13 @@ namespace ShadowRunHelper
                 (((i as ListViewItem).Content as CharPageConfigListViewItem).Code,((i as ListViewItem).Content as CharPageConfigListViewItem).Active)
             );
         }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            Settings.BlockListOptions = TypenHelper.ThingTypeList.Select(t=>(t.Item2,true));
+            SetSource();
+        }
+        #endregion
 
         #region Gui Stuff ##########################################
         /// <summary>
@@ -160,6 +171,7 @@ namespace ShadowRunHelper
             Intern_Sync_HasFocus = false;
         }
         #endregion
+
 
     }
 }

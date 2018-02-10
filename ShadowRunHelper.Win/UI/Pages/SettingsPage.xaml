@@ -245,7 +245,11 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <ListView x:Name="CharPageConfigListView">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListView x:Name="CharPageConfigListView" Grid.ColumnSpan="2">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local:CharPageConfigListViewItem">
                             <Grid >
@@ -260,6 +264,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Button x:Uid="UI_Settings_Btn_Speichern" Margin="10" HorizontalAlignment="Stretch" Grid.Row="1" Click="SaveButton_Click" Style="{StaticResource ButtonRevealStyle}"/>
+                <Button x:Uid="UI_Settings_Btn_Reset" Margin="10" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Click="ResetButton_Click" Style="{StaticResource ButtonRevealStyle}"/>
             </Grid>
         </PivotItem>
         <PivotItem>
