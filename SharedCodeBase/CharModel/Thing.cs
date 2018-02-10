@@ -190,6 +190,10 @@ namespace ShadowRunHelper.CharModel
                 {
                     item.SetValue(this, "");
                 }
+                else if (item.DeclaringType == typeof(char))
+                {
+                    item.SetValue(this, ' ');
+                }
                 else if (item.DeclaringType == typeof(bool?))
                 {
                     item.SetValue(this, false);
