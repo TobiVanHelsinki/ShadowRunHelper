@@ -49,7 +49,7 @@ namespace ShadowRunHelper.CharModel
 
         private double _dSchaden = 0;
         [Used_UserAttribute]
-        public double dSchaden
+        public double Schaden
         {
             get { return _dSchaden; }
             set
@@ -64,7 +64,7 @@ namespace ShadowRunHelper.CharModel
 
         private double _dSchadenMax = 0;
         [Used_CalcAttribute]
-        public double dSchadenMax
+        public double SchadenMax
         {
             get { return _dSchadenMax; }
             set
@@ -79,7 +79,7 @@ namespace ShadowRunHelper.CharModel
 
         void RefreshSchadenLimit()
         {
-            dSchadenMax= 8 + Math.Ceiling(Wert / 2);
+            SchadenMax= 8 + Math.Ceiling(Wert / 2);
         }
     }
 }

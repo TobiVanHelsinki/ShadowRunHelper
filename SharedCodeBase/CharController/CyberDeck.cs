@@ -103,7 +103,7 @@ namespace ShadowRunHelper.CharController
             {
                 if (item.Aktiv == true)
                 {
-                    item.dSchaden = ActiveItem.dSchaden;
+                    item.Schaden = ActiveItem.Schaden;
                     bIsRefreshInProgress = false;
                     return;
                 }

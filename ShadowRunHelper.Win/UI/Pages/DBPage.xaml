@@ -398,7 +398,7 @@
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="2" Text="{x:Bind Programmanzahl, Mode=OneWay}"/>
-                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind dSchaden, Mode=OneWay}"/>
+                        <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="3" Text="{x:Bind Schaden, Mode=OneWay}"/>
                         <TextBlock Style="{StaticResource ListView_Item_Text}" Grid.Column="4">
                                               <Run Text="{x:Bind Angriff, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Schleicher, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Firewall, Mode=OneWay}"/><Run x:Uid="Slash"/><Run Text="{x:Bind Datenverarbeitung, Mode=OneWay}"/>
                         </TextBlock>
@@ -447,7 +447,7 @@
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Kommlink_Schaden"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind dSchaden, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Schaden, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
                     <TextBlock Grid.Row="2" Style="{StaticResource ListView_Item_Text_Note}">
