@@ -183,64 +183,6 @@ namespace ShadowRunHelper
         public static Type ThingDefToType(ThingDefs eThingDefToConvert)
         {
             return ThingTypeList.FirstOrDefault(x => x.Item2 == eThingDefToConvert).Item1;
-
-            switch (eThingDefToConvert)
-            {
-                case ThingDefs.UndefTemp:
-                    return null;
-                case ThingDefs.Undef:
-                    return null;
-                case ThingDefs.Handlung:
-                    return typeof(CharModel.Handlung);
-                case ThingDefs.Fertigkeit:
-                    return typeof(CharModel.Fertigkeit);
-                case ThingDefs.Item:
-                    return typeof(CharModel.Item);
-                case ThingDefs.Programm:
-                    return typeof(CharModel.Programm);
-                case ThingDefs.Munition:
-                    return typeof(CharModel.Munition);
-                case ThingDefs.Implantat:
-                    return typeof(CharModel.Implantat);
-                case ThingDefs.Vorteil:
-                    return typeof(CharModel.Vorteil);
-                case ThingDefs.Nachteil:
-                    return typeof(CharModel.Nachteil);
-                case ThingDefs.Connection:
-                    return typeof(CharModel.Connection);
-                case ThingDefs.Sin:
-                    return typeof(CharModel.Sin);
-                case ThingDefs.Attribut:
-                    return typeof(CharModel.Attribut);
-                case ThingDefs.Berechnet:
-                    return typeof(CharModel.Berechnet);
-                case ThingDefs.Nahkampfwaffe:
-                    return typeof(CharModel.Nahkampfwaffe);
-                case ThingDefs.Fernkampfwaffe:
-                    return typeof(CharModel.Fernkampfwaffe);
-                case ThingDefs.Kommlink:
-                    return typeof(CharModel.Kommlink);
-                case ThingDefs.CyberDeck:
-                    return typeof(CharModel.CyberDeck);
-                case ThingDefs.Vehikel:
-                    return typeof(CharModel.Vehikel);
-                case ThingDefs.Panzerung:
-                    return typeof(CharModel.Panzerung);
-                case ThingDefs.Adeptenkraft_KomplexeForm:
-                    return typeof(CharModel.Adeptenkraft_KomplexeForm);
-                case ThingDefs.Geist_Sprite:
-                    return typeof(CharModel.Geist_Sprite);
-                case ThingDefs.Foki_Widgets:
-                    return typeof(CharModel.Foki_Widgets);
-                case ThingDefs.Stroemung_Wandlung:
-                    return typeof(CharModel.Stroemung_Wandlung);
-                case ThingDefs.Tradition_Initiation:
-                    return typeof(CharModel.Tradition_Initiation);
-                case ThingDefs.Zaubersprueche:
-                    return typeof(CharModel.Zaubersprueche);
-                default:
-                    return null;
-            }
         }
 
         public static List<(Type, ThingDefs)> ThingTypeList = new List<(Type, ThingDefs)>() {
@@ -274,61 +216,6 @@ namespace ShadowRunHelper
         public static ThingDefs TypeToThingDef(Type type)
         {
             return ThingTypeList.FirstOrDefault(x=>x.Item1 == type).Item2;
-            switch (type.GetType().Name)
-            {
-                case "Handlung":
-                    return ThingDefs.Handlung;
-                case "Fertigkeit":
-                    return ThingDefs.Fertigkeit;
-                case "Item":
-                    return ThingDefs.Item;
-                case "Programm":
-                    return ThingDefs.Programm;
-                case "Munition":
-                    return ThingDefs.Munition;
-                case "Implantat":
-                    return ThingDefs.Implantat;
-                case "Vorteil":
-                    return ThingDefs.Vorteil;
-                case "Nachteil":
-                    return ThingDefs.Nachteil;
-                case "Connection":
-                    return ThingDefs.Connection;
-                case "Sin":
-                    return ThingDefs.Sin;
-                case "Attribut":
-                    return ThingDefs.Attribut;
-                case "Berechnet":
-                    return ThingDefs.Berechnet;
-                case "Nahkampfwaffe":
-                    return ThingDefs.Nahkampfwaffe;
-                case "Fernkampfwaffe":
-                    return ThingDefs.Fernkampfwaffe;
-                case "Kommlink":
-                    return ThingDefs.Kommlink;
-                case "CyberDeck":
-                    return ThingDefs.CyberDeck;
-                case "Vehikel":
-                    return ThingDefs.Vehikel;
-                case "Panzerung":
-                    return ThingDefs.Panzerung;
-                case "Eigenschaft":
-                    return ThingDefs.Eigenschaft;
-                case "Adeptenkraft_KomplexeForm":
-                    return ThingDefs.Adeptenkraft_KomplexeForm;
-                case "Foki_Widgets":
-                    return ThingDefs.Foki_Widgets;
-                case "Geist_Sprite":
-                    return ThingDefs.Geist_Sprite;
-                case "Stroemung_Wandlung":
-                    return ThingDefs.Stroemung_Wandlung;
-                case "Tradition_Initiation":
-                    return ThingDefs.Tradition_Initiation;
-                case "Zaubersprueche":
-                    return ThingDefs.Zaubersprueche;
-                default:
-                    return ThingDefs.Undef;
-            }
         }
     }
 

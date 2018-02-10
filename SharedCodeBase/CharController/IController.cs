@@ -28,6 +28,8 @@ namespace ShadowRunHelper.CharController
         /// 
         (string ThingType, string Content) MultipleCSVExport(string strDelimiter, string strNewLine, string strNew);
 
+        void MultipleCSVImport(char strDelimiter, char strNewLine, string strReadFile);
+
         /// <summary>
         /// Used to pass throgh the possibility to acces the Data Object for registration of its HasChanged-Methods without knowing its type
         /// </summary>

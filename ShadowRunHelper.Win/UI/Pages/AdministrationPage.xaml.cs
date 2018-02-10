@@ -420,7 +420,7 @@ namespace ShadowRunHelper
             try
             {
                 var ContentList = CharToSave.ToCSV(";").Select(item => (item.ThingType + Constants.DATEIENDUNG_CSV, item.Content));
-                SharedIO.SaveTextesToFilees(ContentList, new FileInfoClass (){Fileplace=Place.Extern, FolderToken = "CSV_TEMP" });
+                SharedIO.SaveTextesToFiles(ContentList, new FileInfoClass (){Fileplace=Place.Extern, FolderToken = "CSV_TEMP" });
             }
             catch (Exception ex)
             {
@@ -430,18 +430,10 @@ namespace ShadowRunHelper
 #pragma warning disable CS1998
         async void Click_CSV_Import(object sender, RoutedEventArgs e)
         {
-            if (IsOperationInProgres)
-            {
-                return;
-            }
-            //TODO with Foldertoken = import
-            Windows.Storage.StorageFile File = null;
             string strRead = "";
             try
             {
-                File = await WinIO.GetFile(new FileInfoClass() {FolderToken = "import", Fileplace = Place.Extern },Constants.LST_FILETYPES_CSV, UserDecision.AskUser, FileNotFoundDecision.Create);
-                strRead = await Windows.Storage.FileIO.ReadTextAsync(File);
-
+                strRead = await SharedIO.ReadTextFromFile(new FileInfoClass() { FolderToken = "import", Fileplace = Place.Extern }, Constants.LST_FILETYPES_CSV, UserDecision.AskUser);
             }
             catch (Exception ex)
             {
@@ -449,11 +441,7 @@ namespace ShadowRunHelper
             }
             try
             {
-                if (ViewModel.MainObject == null)
-                {
-                    ViewModel.MainObject = new CharHolder();
-                }
-                ViewModel.MainObject.CTRLCyberDeck.MultipleCSVImport(';', '\n', strRead);
+                ViewModel.MainObject.ImportFromCSV(';', strRead, ThingDefs.Undef);
             }
             catch (Exception ex)
             {

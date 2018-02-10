@@ -194,55 +194,35 @@ namespace ShadowRunHelper.CharModel
                 strReturn += Delimiter;
             }
             return strReturn;
-            strReturn += CrossPlatformHelper.GetString("Model_Thing_Bezeichner/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Thing_Notiz/Text");
-            //strReturn += Delimiter;
-            //strReturn += Ordnung;
-            //strReturn += Delimiter;
-            //strReturn += CrossPlatformHelper.GetString("Model_Thing_ThingTyp/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Thing_Typ/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Thing_Wert/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Thing_Zusatz/Text");
-            strReturn += Delimiter;
-            return strReturn;
         }
         public virtual void FromCSV(Dictionary<string, string> dic)
         {
-            var Props = GetProperties(this).Reverse().Select(p => ("Model_" + p.Name + "_" + p.DeclaringType.Name + "/Text",p));
+            var Props = GetProperties(this).Reverse().Select(p => (CrossPlatformHelper.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"),p));
             foreach (var item in dic)
             {
                 var currentProp = Props.First(p => p.Item1 == item.Key);
-                currentProp.Item2.SetValue(this, item.Value);
-                //if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Bezeichner/Text"))
-                //{
-                //    Bezeichner = item.Value;
-                //    continue;
-                //}
-                //if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Notiz/Text"))
-                //{
-                //    Notiz = item.Value;
-                //    continue;
-                //}
-                //if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Typ/Text"))
-                //{
-                //    Typ = item.Value;
-                //    continue;
-                //}
-                //if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Wert/Text"))
-                //{
-                //    Wert= double.Parse(item.Value);
-                //    continue;
-                //}
-                //if (item.Key == CrossPlatformHelper.GetString("Model_Thing_Zusatz/Text"))
-                //{
-                //    Zusatz = item.Value;
-                //    continue;
-                //}
-
+                currentProp.Item2.SetValue(this, ConvertToRightType(item.Value, currentProp.Item2.GetValue(this)));
+            }
+        }
+        static object ConvertToRightType(object Value, object Target)
+        {
+            object ret;
+            switch (Target)
+            {
+                case int i:
+                    Int32.TryParse(Value.ToString(), out var I);
+                    return I;
+                case double d:
+                    Double.TryParse(Value.ToString(), out var D);
+                    return D;
+                case char c:
+                    Char.TryParse(Value.ToString(), out var C);
+                    return c;
+                case bool b:
+                    Boolean.TryParse(Value.ToString(), out var B);
+                    return B;
+                default:
+                    return Value;
             }
         }
         public override string ToString()

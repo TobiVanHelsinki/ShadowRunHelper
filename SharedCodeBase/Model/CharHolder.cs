@@ -583,92 +583,10 @@ namespace ShadowRunHelper.Model
             return lstCTRL.Select(item => item.MultipleCSVExport(strDelimiter, strNewLine, strNew));
         }
 
-        public void FromCSV(char strDelimiter, string strImport, ThingDefs eThing)
+        public void ImportFromCSV(char strDelimiter, string strImport, ThingDefs eThing)
         {
             const char strNewLine = '\n';
-            switch (eThing)
-            {
-                case ThingDefs.UndefTemp:
-                    break;
-                case ThingDefs.Undef:
-                    break;
-                case ThingDefs.Handlung:
-                    CTRLHandlung.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Fertigkeit:
-                    CTRLFertigkeit.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Item:
-                    CTRLItem.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Programm:
-                    CTRLProgramm.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Munition:
-                    CTRLMunition.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Implantat:
-                    CTRLImplantat.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Vorteil:
-                    CTRLVorteil.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Nachteil:
-                    CTRLNachteil.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Connection:
-                    CTRLConnection.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Sin:
-                    CTRLSin.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Attribut:
-                    CTRLAttribut.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Berechnet:
-                    CTRLBerechnet.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Nahkampfwaffe:
-                    CTRLNahkampfwaffe.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Fernkampfwaffe:
-                    CTRLFernkampfwaffe.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Kommlink:
-                    CTRLKommlink.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.CyberDeck:
-                    CTRLCyberDeck.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Vehikel:
-                    CTRLVehikel.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Panzerung:
-                    CTRLPanzerung.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Eigenschaft:
-                    break;
-                case ThingDefs.Adeptenkraft_KomplexeForm:
-                    CTRLAdeptenkraft_KomplexeForm.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Geist_Sprite:
-                    CTRLGeist_Sprite.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Foki_Widgets:
-                    CTRLFoki_Widgets.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Stroemung_Wandlung:
-                    CTRLStroemung_Wandlung.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Tradition_Initiation:
-                    CTRLTradition_Initiation.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Zaubersprueche:
-                    CTRLZaubersprueche.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                default:
-                    break;
-            }
+            lstCTRL.First(c=>c.eDataTyp == eThing).MultipleCSVImport(strDelimiter, strNewLine, strImport);
             RefreshLists();
         }
 
