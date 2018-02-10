@@ -89,18 +89,7 @@ namespace ShadowRunHelper.CharModel
             ThingType = ThingDefs.Kommlink;
             PropertyChanged += (x, y) => RefreshSchadenLimit();
         }
-       
-        public override Thing Copy(Thing target = null)
-        {
-            base.Copy(target);
-            Kommlink TargetS = (Kommlink)target;
-            TargetS.Programmanzahl = Programmanzahl;
-            TargetS.Firewall = Firewall;
-            TargetS.Datenverarbeitung = Datenverarbeitung;
-            TargetS.dSchadenMax = dSchadenMax;
-            TargetS.dSchaden = dSchaden;
-            return target;
-        }
+
 
         public override string ToCSV(string Delimiter)
         {

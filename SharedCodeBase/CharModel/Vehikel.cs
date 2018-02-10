@@ -135,40 +135,6 @@ namespace ShadowRunHelper.CharModel
             ThingType = ThingDefs.Vehikel;
         }
 
-        public override Thing Copy( Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Vehikel();
-            }
-            base.Copy( target);
-            Vehikel targetS = (Vehikel)target;
-            targetS.Beschleunigung = Beschleunigung;
-            targetS.Geschwindigkeit = Geschwindigkeit;
-            targetS.Gewicht = Gewicht;
-            targetS.Handling = Handling;
-            targetS.Panzerung = Panzerung;
-            targetS.Rumpf = Rumpf;
-            targetS.Pilot = Pilot;
-            targetS.Sensor = Sensor;
-            targetS.Sitze = Sitze;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            Beschleunigung = 0;
-            Geschwindigkeit = 0;
-            Gewicht = 0;
-            Handling = 0;
-            Panzerung = 0;
-            Rumpf = 0;
-            Pilot = 0;
-            Sensor = 0;
-            Sitze = 0;
-        }
-
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);

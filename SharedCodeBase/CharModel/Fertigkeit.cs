@@ -1,9 +1,6 @@
 ﻿using ShadowRunHelper.Model;
 using SharedCodeBase.Model;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Windows.UI.Core;
-using static ShadowRunHelper.CharModel.Handlung;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -36,21 +33,15 @@ namespace ShadowRunHelper.CharModel
             PropertyChanged += (x, y) => { if (y.PropertyName == "Wert") Recalculate(); };
         }
 
-        public override Thing Copy(Thing target = null)
+        public override Thing Copy(Thing target)
         {
-            if (target == null)
-            {
-                target = (Fertigkeit)System.Activator.CreateInstance(typeof(Fertigkeit));
-                target = new Fertigkeit();
-            }
-            base.Copy(target);
-            Fertigkeit target2 = target as Fertigkeit;
+            Fertigkeit target2  = (Fertigkeit)base.Copy(target);
         
             foreach (AllListEntry item in PoolZusammensetzung)
             {
                 target2.PoolZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName });
             }
-            return target;
+            return target2;
         }
 
         private void CollectionChanged()

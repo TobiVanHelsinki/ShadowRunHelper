@@ -598,7 +598,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Geistiges Limit</value>
   </data>
   <data name="Model_Berechnet_Limit_K.Text" xml:space="preserve">
-    <value>Körperliches limit</value>
+    <value>Körperliches Limit</value>
   </data>
   <data name="Model_Berechnet_Limit_S.Text" xml:space="preserve">
     <value>Soziales Limit</value>

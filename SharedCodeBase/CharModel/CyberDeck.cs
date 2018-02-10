@@ -98,22 +98,6 @@ namespace ShadowRunHelper.CharModel
             ThingType = ThingDefs.CyberDeck;
         }
 
-        public override Thing Copy(Thing target = null)
-        {
-            base.Copy(target);
-            foreach (var prop in this.GetType().GetProperties())
-            {
-                prop.SetValue(this, default);
-            }
-            CyberDeck target2 = target as CyberDeck;
-            target2.Angriff = Angriff;
-            target2.Angriff_o = Angriff_o;
-            target2.Schleicher = Schleicher;
-            target2.Schleicher_o = Schleicher_o;
-            target2.Firewall_o = Firewall_o;
-            target2.Datenverarbeitung_o = Datenverarbeitung_o;
-            return target;
-        }
 
         public override string ToCSV(string Delimiter)
         {

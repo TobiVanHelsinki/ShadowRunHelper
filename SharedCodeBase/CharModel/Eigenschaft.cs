@@ -21,18 +21,6 @@ namespace ShadowRunHelper.CharModel
             }
         }
         
-        public override Thing Copy(Thing target)
-        {
-            base.Copy(target);
-            ((Eigenschaft)target).Auswirkungen = Auswirkungen;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            Auswirkungen = "";
-            base.Reset();
-        }
 
         public override string HeaderToCSV(string Delimiter)
         {

@@ -57,19 +57,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public override Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                throw new ArgumentNullException();
-            }
-            base.Copy(target);
-            Waffe TargetS = (Waffe)target;
-            TargetS.SchadenTyp = SchadenTyp;
-            TargetS.Praezision = Praezision;
-            TargetS.PB = PB;
-            return target;
-        }
+      
 
         public override string ToCSV(string Delimiter)
         {

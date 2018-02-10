@@ -42,14 +42,6 @@ namespace ShadowRunHelper.CharModel
             ThingType = ThingDefs.Panzerung;
         }
 
-        public override Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Panzerung();
-            }
-            return base.Copy(target);
-        }
 
         public override string ToCSV(string Delimiter)
         {

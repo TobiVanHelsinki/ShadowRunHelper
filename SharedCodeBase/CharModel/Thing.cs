@@ -135,36 +135,44 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        IEnumerable<PropertyInfo> GetProperties(object obj)
+        {
+            return obj.GetType().GetProperties().Where(p => p.CustomAttributes.Any(c => c.AttributeType == typeof(UsedAttribute)));
+        }
+
         public virtual Thing Copy(Thing target = null)
         {
-            //TODO
-            var list = this.PropertyChanged?.GetInvocationList();
             if (target == null)
             {
                 target = (Thing)Activator.CreateInstance(this.GetType());
             }
-            target.Bezeichner = Bezeichner;
-            target.Notiz = Notiz;
-            //target.Ordnung = Ordnung;
-            //target.ThingType= ThingType;
-            target.Typ= Typ;
-            target.Wert = Wert;
-            target.Zusatz = Zusatz;
+            var ListTarget = GetProperties(target);
+            var ListThis = GetProperties(this);
+            var a1 = ListTarget.Zip<PropertyInfo, PropertyInfo, (PropertyInfo, PropertyInfo)>(ListThis, (p1, p2) => (p1, p2));
+            //var a2 = ListTarget.Join< PropertyInfo, PropertyInfo,string, (PropertyInfo, PropertyInfo )> (ListThis, x => x.Name, y => y.Name, (p1, p2) => (p1, p2));
+            foreach (var item in a1)
+            {
+                item.Item1.SetValue(target, item.Item2.GetValue(this));
+            }
             return target;
         }
         public virtual void Reset()
         {
-            foreach (var item in GetType().GetProperties().Where(p => p.CustomAttributes.Any(c => c.AttributeType == typeof(UsedAttribute))))
+            foreach (var item in GetProperties(this))
             {
-                item.SetValue(this, default);
+                if (item.DeclaringType == typeof(string))
+                {
+                    item.SetValue(this, "");
+                }
+                else if (item.DeclaringType == typeof(bool?))
+                {
+                    item.SetValue(this, false);
+                }
+                else
+                {
+                    item.SetValue(this, default);
+                }
             }
-            //Bezeichner = "";
-            //Notiz = "";
-            //Ordnung = 0;
-            //ThingType = 0;
-            //Typ = "";
-            //Wert = 0;
-            //Zusatz = "";
         }
 
         public virtual string ToCSV(string Delimiter)

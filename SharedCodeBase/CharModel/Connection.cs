@@ -42,25 +42,6 @@ namespace ShadowRunHelper.CharModel
             ThingType = ThingDefs.Connection;
         }
 
-        public override Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Connection();
-            }
-            base.Copy(target);
-            ((Connection)target).Loyal = Loyal;
-            ((Connection)target).Einfluss = Einfluss;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            Loyal = 0;
-            Einfluss = 0;
-            base.Reset();
-        }
-
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);

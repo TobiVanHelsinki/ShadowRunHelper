@@ -27,13 +27,13 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Adeptenkraft_KomplexeForm;
         }
 
-        public override Thing Copy(Thing target)
-        {
-            base.Copy(target);
-            Adeptenkraft_KomplexeForm TargetS = (Adeptenkraft_KomplexeForm)target;
-            TargetS.Option = Option;
-            return target;
-        }
+        //public override Thing Copy(Thing target)
+        //{
+        //    base.Copy(target);
+        //    Adeptenkraft_KomplexeForm TargetS = (Adeptenkraft_KomplexeForm)target;
+        //    TargetS.Option = Option;
+        //    return target;
+        //}
 
         public override void Reset()
         {

@@ -1,6 +1,5 @@
 ﻿using ShadowRunHelper.Model;
 using SharedCodeBase.Model;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -67,14 +66,9 @@ namespace ShadowRunHelper.CharModel
             CollectionChanged(Mode.Gegen);
         }
 
-        public override Thing Copy(Thing target = null)
+        public override Thing Copy(Thing target)
         {
-            if (target == null)
-            {
-                target = new Handlung();
-            }
-            base.Copy(target);
-            Handlung target2 = target as Handlung;
+            Handlung target2 = (Handlung)base.Copy(target);
 
             foreach (AllListEntry item in WertZusammensetzung)
             {
@@ -88,7 +82,7 @@ namespace ShadowRunHelper.CharModel
             {
                 target2.GrenzeZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName });
             }
-            return target;
+            return target2;
         }
 
         void CollectionChanged(Mode mode)

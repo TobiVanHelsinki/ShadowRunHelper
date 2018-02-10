@@ -25,23 +25,6 @@ namespace ShadowRunHelper.CharModel
             ThingType = ThingDefs.Nahkampfwaffe;
         }
 
-        public override Thing Copy( Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Nahkampfwaffe();
-            }
-            base.Copy( target);
-            ((Nahkampfwaffe)target).Reichweite = Reichweite;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            Reichweite = 0;
-        }
-
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);

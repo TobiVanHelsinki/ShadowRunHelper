@@ -40,26 +40,6 @@ namespace ShadowRunHelper.CharModel
             ThingType = ThingDefs.Fernkampfwaffe;
         }
 
-        public override Thing Copy( Thing target)
-        {
-            if (target == null)
-            {
-                target = new Fernkampfwaffe();
-            }
-            base.Copy( target);
-            Fernkampfwaffe TargetS = (Fernkampfwaffe)target;
-            TargetS.Rueckstoss = Rueckstoss;
-            TargetS.Modi = Modi;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            Rueckstoss = 0;
-            Modi = "";
-            base.Reset();
-        }
-
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);

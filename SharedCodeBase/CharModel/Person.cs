@@ -8,6 +8,7 @@ namespace ShadowRunHelper.CharModel
     public class Person : INotifyPropertyChanged
     {
         private string alias = TLIB_UWPFRAME.CrossPlatformHelper.GetString("Model_Person_Alias_STD/Text");
+        [Used]
         public string Alias
         {
             get { return alias; }
@@ -21,6 +22,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string char_Typ;
+        [Used]
         public string Char_Typ
         {
             get { return char_Typ; }
@@ -34,6 +36,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double kontostand;
+        [Used]
         public double Kontostand
         {
             get { return kontostand; }
@@ -47,6 +50,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double karma_Gesamt;
+        [Used]
         public double Karma_Gesamt
         {
             get { return karma_Gesamt; }
@@ -61,6 +65,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double karma_Aktuell;
+        [Used]
         public double Karma_Aktuell
         {
             get { return karma_Aktuell; }
@@ -74,6 +79,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double edge_Aktuell;
+        [Used]
         public double Edge_Aktuell
         {
             get { return edge_Aktuell; }
@@ -87,6 +93,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double edge_Gesamt;
+        [Used]
         public double Edge_Gesamt
         {
             get { return edge_Gesamt; }
@@ -100,6 +107,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double essenz;
+        [Used]
         public double Essenz
         {
             get { return essenz; }
@@ -113,6 +121,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double schaden_K;
+        [Used]
         public double Schaden_K
         {
             get { return schaden_K; }
@@ -126,6 +135,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double schaden_G;
+        [Used]
         public double Schaden_G
         {
             get { return schaden_G; }
@@ -139,6 +149,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double schaden_M;
+        [Used]
         public double Schaden_M
         {
             get { return schaden_M; }
@@ -152,6 +163,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double schaden_K_max;
+        [Used]
         public double Schaden_K_max
         {
             get { return schaden_K_max; }
@@ -165,6 +177,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double schaden_G_max;
+        [Used]
         public double Schaden_G_max
         {
             get { return schaden_G_max; }
@@ -178,7 +191,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         //private double schaden_M_max;
-        //public double Schaden_M_max
+        //        [Used] public double Schaden_M_max
         //{
         //    get { return schaden_M_max; }
         //    set
@@ -191,6 +204,7 @@ namespace ShadowRunHelper.CharModel
         //    }
         //}
         private string notizen;
+        [Used]
         public string Notizen
         {
             get { return notizen; }
@@ -204,6 +218,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string metaTyp;
+        [Used]
         public string MetaTyp
         {
             get { return metaTyp; }
@@ -217,6 +232,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string metaTyp_sub;
+        [Used]
         public string MetaTyp_sub
         {
             get { return metaTyp_sub; }
@@ -230,6 +246,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string lebesstil;
+        [Used]
         public string Lebesstil
         {
             get { return lebesstil; }
@@ -243,7 +260,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         //private string geburtsdatum;
-        //public string Geburtsdatum
+        //        [Used] public string Geburtsdatum
         //{
         //    get { return geburtsdatum; }
         //    set
@@ -256,7 +273,7 @@ namespace ShadowRunHelper.CharModel
         //    }
         //}
         //private DateTime geburtsdatum2 = new DateTime();
-        //public DateTime Geburtsdatum2
+        //        [Used] public DateTime Geburtsdatum2
         //{
         //    get { return geburtsdatum2; }
         //    set
@@ -269,6 +286,7 @@ namespace ShadowRunHelper.CharModel
         //    }
         //}
         private DateTimeOffset _BirthDate = new DateTimeOffset(2060, 1, 1, 0, 0, 0, new System.TimeSpan(0));
+        [Used]
         public DateTimeOffset BirthDate
         {
             get { return _BirthDate; }
@@ -282,6 +300,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string geschlecht;
+        [Used]
         public string Geschlecht
         {
             get { return geschlecht; }
@@ -295,6 +314,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double groesse;
+        [Used]
         public double Groesse
         {
             get { return groesse; }
@@ -308,6 +328,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double gewicht;
+        [Used]
         public double Gewicht
         {
             get { return gewicht; }
@@ -321,6 +342,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string augenfarbe;
+        [Used]
         public string Augenfarbe
         {
             get { return augenfarbe; }
@@ -334,6 +356,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string haarfarbe;
+        [Used]
         public string Haarfarbe
         {
             get { return haarfarbe; }
@@ -347,6 +370,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string hautfarbe;
+        [Used]
         public string Hautfarbe
         {
             get { return hautfarbe; }
@@ -360,6 +384,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string bild;
+        [Used]
         public string Bild
         {
             get { return bild; }
@@ -374,6 +399,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         double _StrassenrufMod;
+        [Used]
         public double StrassenrufMod
         {
             get { return _StrassenrufMod; }
@@ -387,6 +413,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+        [Used]
         public double Strassenruf
         {
             get { return Math.Floor(karma_Gesamt / 10) + _StrassenrufMod; }
@@ -399,6 +426,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double _SchlechterRuf;
+        [Used]
         public double SchlechterRuf
         {
             get { return _SchlechterRuf; }
@@ -412,6 +440,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double _Prominenz;
+        [Used]
         public double Prominenz
         {
             get { return _Prominenz; }
@@ -426,6 +455,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private string zusammenfassung;
+        [Used]
         public string Zusammenfassung
         {
             get { return zusammenfassung; }
@@ -440,6 +470,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double initiative;
+        [Used]
         public double Initiative
         {
             get { return initiative; }
@@ -454,6 +485,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double runs;
+        [Used]
         public double Runs
         {
             get { return runs; }

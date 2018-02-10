@@ -44,11 +44,17 @@
     <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="Panel_Oben_Btn_Plus">
         <Setter Property="Content" Value="&#xE109;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Margin" Value="5"/>
     </Style>
 
     <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="Panel_Oben_Btn_Minus">
         <Setter Property="Content" Value="&#xE108;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Margin" Value="5"/>
     </Style>
     
     <Style TargetType="Slider" x:Key="Panel_Oben_Schaden_Slider">

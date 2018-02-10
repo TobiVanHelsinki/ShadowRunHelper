@@ -7,14 +7,5 @@ namespace ShadowRunHelper.CharModel
         {
             ThingType = ThingDefs.Sin;
         }
-
-        public override Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Sin();
-            }
-            return base.Copy(target);
-        }
     }
 }

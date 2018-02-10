@@ -43,25 +43,6 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Stroemung_Wandlung;
         }
 
-        public override Thing Copy( Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Stroemung_Wandlung();
-            }
-            base.Copy( target);
-            Stroemung_Wandlung TargetS = (Stroemung_Wandlung)target;
-            TargetS.Paragon = Paragon;
-            TargetS.Echos = Echos;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            Paragon = "";
-            Echos = "";
-        }
 
         public override string ToCSV(string Delimiter)
         {

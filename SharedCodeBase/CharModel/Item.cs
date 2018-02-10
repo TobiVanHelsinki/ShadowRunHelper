@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
 using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper.CharModel
@@ -55,25 +53,6 @@ namespace ShadowRunHelper.CharModel
         {
             this.ThingType = ThingDefs.Item;
         }
-        
-        public override Thing Copy(Thing target = null)
-        {
-            base.Copy(target);
-            Item TargetS = (Item)target;
-            TargetS.Aktiv = Aktiv;
-            TargetS.Anzahl = Anzahl;
-            TargetS.Besitz = Besitz;
-            return target;
-        }
-
-        //public override void Reset()
-        //{
-        //    base.Reset();
-        //    Aktiv = false;
-        //    Anzahl = 0;
-        //    Besitz = false;
-        //}
-
 
         public override string ToCSV(string Delimiter)
         {

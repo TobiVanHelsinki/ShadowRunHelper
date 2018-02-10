@@ -31,23 +31,6 @@ namespace ShadowRunHelper.CharModel
         }
 
 
-        public override Thing Copy( Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Programm();
-            }
-            base.Copy( target);
-            ((Programm)target).Optionen = Optionen;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            Optionen = "";
-        }
-
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);

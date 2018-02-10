@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper.CharModel
@@ -57,26 +53,7 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Implantat;
         }
 
-        public override Thing Copy( Thing target)
-        {
-            if (target == null)
-            {
-                target = new Implantat();
-            }
-            base.Copy( target);
-            ((Implantat)target).Essenz = Essenz;
-            ((Implantat)target).Kapazitaet = Kapazitaet;
-            ((Implantat)target).Auswirkung = Auswirkung;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            Kapazitaet = 0;
-            Essenz = 0;
-        }
-
+    
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);

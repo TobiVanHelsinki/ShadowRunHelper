@@ -55,28 +55,6 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Zaubersprueche;
         }
 
-        public override Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Zaubersprueche();
-            }
-            base.Copy(target);
-            Zaubersprueche TargetS = (Zaubersprueche)target;
-            TargetS.Reichweite = Reichweite;
-            TargetS.Dauer = Dauer;
-            TargetS.Entzug = Entzug;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            Reichweite = 0;
-            Dauer = 0;
-            Entzug = 0;
-        }
-
 
         public override string ToCSV(string Delimiter)
         {

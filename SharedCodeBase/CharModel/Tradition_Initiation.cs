@@ -42,26 +42,6 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Tradition_Initiation;
         }
 
-        public override Thing Copy( Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Tradition_Initiation();
-            }
-            base.Copy( target);
-            Tradition_Initiation TargetS = (Tradition_Initiation)target;
-            TargetS.Schutzpatron = Schutzpatron;
-            TargetS.Metamagie = Metamagie;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            Schutzpatron = "";
-            Metamagie = "";
-        }
-
 
         public override string ToCSV(string Delimiter)
         {

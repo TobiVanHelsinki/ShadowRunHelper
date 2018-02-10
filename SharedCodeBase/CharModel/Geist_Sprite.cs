@@ -41,27 +41,6 @@ namespace ShadowRunHelper.CharModel
             this.ThingType = ThingDefs.Geist_Sprite;
         }
         
-        public override Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Geist_Sprite();
-            }
-            base.Copy(target);
-            Geist_Sprite TargetS = (Geist_Sprite)target;
-            TargetS.Dienste = Dienste;
-            TargetS.Geb_Reg = Geb_Reg;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            Dienste = "";
-            Geb_Reg = false;
-        }
-
-
         public override string ToCSV(string Delimiter)
         {
             string strReturn = base.ToCSV(Delimiter);

@@ -42,8 +42,7 @@ namespace ShadowRunHelper.CharController
             {
                 if (item.Aktiv == true)
                 {
-                    Thing temp = (Thing)ActiveItem;
-                    item.Copy(temp);
+                    item.Copy(ActiveItem);
                     return;
                 }
             }
