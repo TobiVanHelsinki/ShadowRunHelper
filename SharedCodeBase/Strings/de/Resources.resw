@@ -1213,7 +1213,7 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
     <value>Tragen</value>
   </data>
   <data name="UI_Optionen_U_CharPageConfig.Text" xml:space="preserve">
-    <value>CharPage anpassen</value>
+    <value>Kategorien auswählen</value>
   </data>
   <data name="UI_Settings_Btn_Speichern.Content" xml:space="preserve">
     <value>Speichern</value>

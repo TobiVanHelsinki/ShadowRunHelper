@@ -1177,7 +1177,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Carrie</value>
   </data>
   <data name="UI_Optionen_U_CharPageConfig.Text" xml:space="preserve">
-    <value>Adjust CharPage</value>
+    <value>Choose categories</value>
   </data>
   <data name="UI_Settings_Btn_Speichern.Content" xml:space="preserve">
     <value>Save</value>
