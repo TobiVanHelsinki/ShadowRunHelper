@@ -358,14 +358,14 @@
     <Language Code="zu-za" InMinimumRequirementSet="true" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>21863TobivanHelsinki.ShadowRunHelperBeta</MainPackageIdentityName>
+    <MainPackageIdentityName>21863TobivanHelsinki.ShadowRunHelper</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>ShadowRunHelper-Beta</ReservedName>
+      <ReservedName>ShadowRunHelper</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
     <MainPackageIdentityName>21863TobivanHelsinki.MunchkinTracker</MainPackageIdentityName>
-    <MainPackageIdentityName>21863TobivanHelsinki.ShadowRunHelper</MainPackageIdentityName>
+    <MainPackageIdentityName>21863TobivanHelsinki.ShadowRunHelperBeta</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NCXWGX1KR8S" />
+  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NBLGGH4RHVX" />
 </StoreAssociation>
