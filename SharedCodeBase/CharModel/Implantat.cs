@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using TLIB_UWPFRAME;
-
-namespace ShadowRunHelper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public class Implantat : Item
     {
         private double essenz = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Essenz
         {
             get { return essenz; }
@@ -21,7 +18,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double kapazitaet = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Kapazitaet
         {
             get { return kapazitaet; }
@@ -35,7 +32,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string _Auswirkung = "";
-        [Used]
+        [Used_UserAttribute]
         public string Auswirkung
         {
             get { return _Auswirkung; }
@@ -47,10 +44,6 @@ namespace ShadowRunHelper.CharModel
                     NotifyPropertyChanged();
                 }
             }
-        }
-        public Implantat()
-        {
-            ThingType = ThingDefs.Implantat;
         }
     }
 }

@@ -5,7 +5,7 @@ namespace ShadowRunHelper.CharModel
     public class Kommlink : Item
     {
         private double programmanzahl = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Programmanzahl
         {
             get { return programmanzahl; }
@@ -19,7 +19,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double firewall = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Firewall
         {
             get { return firewall; }
@@ -33,7 +33,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double datenverarbeitung = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Datenverarbeitung
         {
             get { return datenverarbeitung; }
@@ -48,7 +48,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double _dSchaden = 0;
-        [Used]
+        [Used_UserAttribute]
         public double dSchaden
         {
             get { return _dSchaden; }
@@ -63,7 +63,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double _dSchadenMax = 0;
-        [Used]
+        [Used_UserAttribute]
         public double dSchadenMax
         {
             get { return _dSchadenMax; }
@@ -80,12 +80,6 @@ namespace ShadowRunHelper.CharModel
         void RefreshSchadenLimit()
         {
             dSchadenMax= 8 + Math.Ceiling(Wert / 2);
-        }
-
-        public Kommlink()
-        {
-            ThingType = ThingDefs.Kommlink;
-            PropertyChanged += (x, y) => RefreshSchadenLimit();
         }
     }
 }

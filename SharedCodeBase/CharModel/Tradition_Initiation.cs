@@ -6,7 +6,7 @@ namespace ShadowRunHelper.CharModel
         //Bezeichner ist Tradition
         //initiationsgrad ist Wert
         string _Schutzpatron = "";
-        [Used]
+        [Used_UserAttribute]
         public string Schutzpatron
         {
             get { return _Schutzpatron; }
@@ -21,7 +21,7 @@ namespace ShadowRunHelper.CharModel
         }
    
         string _Metamagie = "";
-        [Used]
+        [Used_UserAttribute]
         public string Metamagie
         {
             get { return _Metamagie; }
@@ -33,11 +33,6 @@ namespace ShadowRunHelper.CharModel
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Tradition_Initiation()
-        {
-            ThingType = ThingDefs.Tradition_Initiation;
         }
     }
 }

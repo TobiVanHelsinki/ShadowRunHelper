@@ -15,15 +15,15 @@ namespace ShadowRunHelper.CharModel
             Gegen = 3
         }
         List<ThingDefs> lstForbidden = new List<ThingDefs>() {ThingDefs.Handlung};
-        [Used]
-        public ObservableThingListEntryCollection WertZusammensetzung;
-        [Used]
-        public ObservableThingListEntryCollection GrenzeZusammensetzung;
-        [Used]
-        public ObservableThingListEntryCollection GegenZusammensetzung;
+        [Used_List]
+        public ObservableThingListEntryCollection WertZusammensetzung { get; set; }
+        [Used_List]
+        public ObservableThingListEntryCollection GrenzeZusammensetzung { get; set; }
+        [Used_List]
+        public ObservableThingListEntryCollection GegenZusammensetzung { get; set; }
 
         double grenze = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Grenze
         {
             get { return grenze; }
@@ -38,7 +38,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         double gegen = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Gegen
         {
             get { return gegen; }
@@ -52,9 +52,8 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public Handlung()
+        public Handlung() : base()
         {
-            ThingType = ThingDefs.Handlung;
             WertZusammensetzung = new ObservableThingListEntryCollection(lstForbidden);
             GrenzeZusammensetzung = new ObservableThingListEntryCollection(lstForbidden);
             GegenZusammensetzung = new ObservableThingListEntryCollection(lstForbidden);
@@ -64,25 +63,6 @@ namespace ShadowRunHelper.CharModel
             CollectionChanged(Mode.Wert);
             CollectionChanged(Mode.Grenze);
             CollectionChanged(Mode.Gegen);
-        }
-
-        public override Thing Copy(Thing target)
-        {
-            Handlung target2 = (Handlung)base.Copy(target);
-
-            foreach (AllListEntry item in WertZusammensetzung)
-            {
-                target2.WertZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName });
-            }
-            foreach (AllListEntry item in GegenZusammensetzung)
-            {
-                target2.GegenZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName });
-            }
-            foreach (AllListEntry item in GrenzeZusammensetzung)
-            {
-                target2.GrenzeZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName });
-            }
-            return target2;
         }
 
         void CollectionChanged(Mode mode)

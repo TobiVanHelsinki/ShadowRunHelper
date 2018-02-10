@@ -3,7 +3,7 @@
     public class Panzerung : Item
     {
         private double kapazitaet = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Kapazitaet
         {
             get { return kapazitaet; }
@@ -15,11 +15,6 @@
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Panzerung()
-        {
-            ThingType = ThingDefs.Panzerung;
         }
     }
 }

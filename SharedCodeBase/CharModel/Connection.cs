@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using TLIB_UWPFRAME;
-
-namespace ShadowRunHelper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public class Connection : Thing
     {
 
         private double loyal = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Loyal
         {
             get { return loyal; }
@@ -23,7 +20,7 @@ namespace ShadowRunHelper.CharModel
 
 
         private double _einfluss = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Einfluss
         {
             get { return _einfluss; }
@@ -37,9 +34,6 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public Connection()
-        {
-            ThingType = ThingDefs.Connection;
-        }
+    
     }
 }

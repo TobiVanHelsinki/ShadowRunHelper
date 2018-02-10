@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using TLIB_UWPFRAME;
-
-namespace ShadowRunHelper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public class Fernkampfwaffe : Waffe
     {
         private double rueckstoss = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Rueckstoss
         {
             get { return rueckstoss; }
@@ -20,7 +17,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string modi = "";
-        [Used]
+        [Used_UserAttribute]
         public string Modi
         {
             get { return modi; }
@@ -32,12 +29,6 @@ namespace ShadowRunHelper.CharModel
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Fernkampfwaffe()
-        {
-
-            ThingType = ThingDefs.Fernkampfwaffe;
         }
     }
 }

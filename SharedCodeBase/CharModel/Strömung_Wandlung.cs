@@ -5,7 +5,7 @@
         // Bezeichner ist Stroemung
         // Wert ist Wandlungsgrad
         string _Paragon = "";
-        [Used]
+        [Used_UserAttribute]
         public string Paragon
         {
             get { return _Paragon; }
@@ -20,7 +20,7 @@
         }
        
         string _Echos = "";
-        [Used]
+        [Used_UserAttribute]
         public string Echos
         {
             get { return _Echos; }
@@ -32,11 +32,6 @@
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Stroemung_Wandlung()
-        {
-            ThingType = ThingDefs.Stroemung_Wandlung;
         }
     }
 }

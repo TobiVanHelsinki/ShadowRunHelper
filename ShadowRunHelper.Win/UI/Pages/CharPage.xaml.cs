@@ -17,11 +17,9 @@ namespace ShadowRunHelper
 {
     public sealed partial class CharPage : Page
     {
-        void Click_Save(object sender, RoutedEventArgs e)
-        {
-            ViewModel?.MainObject?.SetSaveTimerTo();
-        }
-        // Variables ##########################################################
+
+
+        #region Variables
         readonly AppModel ViewModel = AppModel.Instance;
         public Windows.System.Display.DisplayRequest Char_DisplayRequest;
         CharHolder MainObject;
@@ -36,7 +34,9 @@ namespace ShadowRunHelper
             InitializeComponent();
             PrepareBlockList();
         }
-        // Navigation Stuff####################################################
+
+        #endregion
+        #region Navigation stuff
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (SettingsModel.I.DISPLAY_REQUEST)
@@ -101,7 +101,8 @@ namespace ShadowRunHelper
             base.OnNavigatedFrom(e);
         }
 
-        // Gui-Model Handler Stuff#############################################
+        #endregion
+        #region Gui-Model Handler Stuff
         async void Add_Click(object sender, RoutedEventArgs e)
         {
             ThingDefs Controller = 0;
@@ -185,8 +186,8 @@ namespace ShadowRunHelper
             Auswahl dialog = new Auswahl(((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, ViewModel.MainObject.LinkList);
             await dialog.ShowAsync();
         }
-
-        // Gui Handler Stuff ##################################################
+        #endregion
+        #region Display Categoriy Stuff
 
         void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -330,7 +331,7 @@ namespace ShadowRunHelper
             ThingDefs Type = TypenHelper.Obj2ThingDef(ControlBlock.Tag);
 
             //Temp Vars
-            TextBlock U = (((ControlBlock.ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children.First(c=>c.GetType() == typeof(TextBlock)) as TextBlock);
+            TextBlock U = (((ControlBlock.ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children.First(c => c.GetType() == typeof(TextBlock)) as TextBlock);
             ContentPresenter E = ((ControlBlock.ContentTemplateRoot as StackPanel).Children[1] as ContentPresenter);
             ListView LV = ((ControlBlock.ContentTemplateRoot as StackPanel).Children[2] as ListView);
             // Global Things
@@ -490,8 +491,9 @@ namespace ShadowRunHelper
                     return;
             }
         }
+        #endregion
+        #region  instant search Stuff
 
-        // instant search Stuff ##################################################
         Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer SV)> Blocklist = new Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer SV)>();
         Thing PendingScrollEntry;
 
@@ -525,7 +527,7 @@ namespace ShadowRunHelper
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x =>LocalBlockListOptions.First(y=>y.ThingType == x.ThingType).vis).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => LocalBlockListOptions.First(y => y.ThingType == x.ThingType).vis).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
         }
 
         void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
@@ -602,15 +604,17 @@ namespace ShadowRunHelper
                         offset += item.DesiredSize.Height;
                     }
                 }
-                Choosen.ListView.SelectedItem = PendingScrollEntry; 
+                Choosen.ListView.SelectedItem = PendingScrollEntry;
                 Choosen.sv.ChangeView(null, offset - 100, null);
             }
             catch (Exception)
             {
                 return;
             }
-        PendingScrollEntry = null;
+            PendingScrollEntry = null;
         }
+        #endregion
+
         #region ApplyNewStyles
         private void Button_Loaded(object sender, RoutedEventArgs e)
         {
@@ -622,6 +626,11 @@ namespace ShadowRunHelper
 
         #endregion
 
+        #region Button Handlers
+        void Click_Save(object sender, RoutedEventArgs e)
+        {
+            ViewModel?.MainObject?.SetSaveTimerTo();
+        }
         private async void CSV_IN_Click(object sender, RoutedEventArgs e)
         {
             string strRead = "";
@@ -649,12 +658,13 @@ namespace ShadowRunHelper
             {
                 var CTRL = ((sender as FrameworkElement).DataContext as IController);
                 var output = CTRL.Data2CSV(';', '\n');
-                SharedIO.SaveTextToFile(new FileInfoClass() {Filename = TypenHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
+                SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypenHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
             }
             catch (Exception ex)
             {
                 ViewModel.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
         }
+        #endregion
     }
 }

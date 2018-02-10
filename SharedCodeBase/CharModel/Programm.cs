@@ -3,7 +3,7 @@
     public class Programm : Item
     {
         private string optionen = "";
-        [Used]
+        [Used_UserAttribute]
         public string Optionen
         {
             get { return optionen; }
@@ -15,11 +15,6 @@
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Programm()
-        {
-            ThingType = ThingDefs.Programm;
         }
     }
 }

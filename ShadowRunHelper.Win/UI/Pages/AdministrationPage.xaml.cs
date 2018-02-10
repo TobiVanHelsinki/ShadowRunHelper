@@ -40,13 +40,9 @@ namespace ShadowRunHelper
             res = ResourceLoader.GetForCurrentView();
             ViewModel.TutorialStateChanged += TutorialStateChanged;
 #if DEBUG
-            CurrentCharBtn_CSVExp.Visibility = Visibility.Visible;
-            //Btn_CSV_Import.Visibility = Visibility.Visible;
             Btn_SecondView.Visibility = Visibility.Visible;
             Btn_Exception.Visibility = Visibility.Visible;
 #else
-            CurrentCharBtn_CSVExp.Visibility = Visibility.Collapsed;
-            //Btn_CSV_Import.Visibility = Visibility.Collapsed;
             Btn_SecondView.Visibility = Visibility.Collapsed;
             Btn_Exception.Visibility = Visibility.Collapsed;
 #endif

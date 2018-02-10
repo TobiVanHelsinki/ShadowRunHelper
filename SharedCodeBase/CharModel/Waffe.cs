@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using TLIB_UWPFRAME;
-
-namespace ShadowRunHelper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public abstract class Waffe : Item
     {
@@ -10,7 +6,7 @@ namespace ShadowRunHelper.CharModel
         /// Praezision
         /// </summary>
         private double pool = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Praezision
         {
             get { return pool; }
@@ -25,7 +21,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private string schadenTyp = "";
-        [Used]
+        [Used_UserAttribute]
         public string SchadenTyp
         {
             get { return schadenTyp; }
@@ -43,7 +39,7 @@ namespace ShadowRunHelper.CharModel
         /// PB could be english, means DK "Durschlagskompensation"
         /// </summary>
         private double pB = 0; // DK
-        [Used]
+        [Used_UserAttribute]
         public double PB
         {
             get { return pB; }

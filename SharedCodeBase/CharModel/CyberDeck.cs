@@ -1,15 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using TLIB_UWPFRAME;
-using Newtonsoft.Json;
-using System;
-
-namespace ShadowRunHelper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public class CyberDeck : Kommlink
     {
         private double firewall_o =0;
-        [Used]
+        [Used_UserAttribute]
         public double Firewall_o
         {
             get { return firewall_o; }
@@ -23,7 +17,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double datenverarbeitung_o=0;
-        [Used]
+        [Used_UserAttribute]
         public double Datenverarbeitung_o
         {
             get { return datenverarbeitung_o; }
@@ -37,7 +31,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double angriff = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Angriff
         {
             get { return angriff; }
@@ -64,7 +58,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double schleicher = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Schleicher
         {
             get { return schleicher; }
@@ -79,7 +73,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double schleicher_o=0;
-        [Used]
+        [Used_UserAttribute]
         public double Schleicher_o
         {
             get { return schleicher_o; }
@@ -91,11 +85,6 @@ namespace ShadowRunHelper.CharModel
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public CyberDeck()
-        {
-            ThingType = ThingDefs.CyberDeck;
         }
     }
 

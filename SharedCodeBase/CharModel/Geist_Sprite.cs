@@ -1,14 +1,9 @@
-﻿
-
-using System.Collections.Generic;
-using TLIB_UWPFRAME;
-
-namespace ShadowRunHelper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public class Geist_Sprite : Item
     {
         string _Dienste = "";
-        [Used]
+        [Used_UserAttribute]
         public string Dienste
         {
             get { return _Dienste; }
@@ -22,7 +17,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         bool? _Geb_Reg = false;
-        [Used]
+        [Used_UserAttribute]
         public bool? Geb_Reg
         {
             get { return _Geb_Reg; }
@@ -36,9 +31,5 @@ namespace ShadowRunHelper.CharModel
             }
         }
         
-        public Geist_Sprite()
-        {
-            ThingType = ThingDefs.Geist_Sprite;
-        }
     }
 }

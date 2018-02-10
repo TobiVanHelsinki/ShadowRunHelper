@@ -4,7 +4,7 @@ namespace ShadowRunHelper.CharModel
     public class Vehikel : Item
     {
         double handling = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Handling
         {
             get { return handling; }
@@ -18,7 +18,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double geschwindigkeit = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Geschwindigkeit
         {
             get { return geschwindigkeit; }
@@ -32,7 +32,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double beschleunigung = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Beschleunigung
         {
             get { return beschleunigung; }
@@ -46,7 +46,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double rumpf = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Rumpf
         {
             get { return rumpf; }
@@ -60,7 +60,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double panzerung = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Panzerung
         {
             get { return panzerung; }
@@ -74,7 +74,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double pilot = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Pilot
         {
             get { return pilot; }
@@ -88,7 +88,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double sensor = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Sensor
         {
             get { return sensor; }
@@ -102,7 +102,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double sitze = 0;
-        [Used] public double Sitze
+        [Used_UserAttribute] public double Sitze
         {
             get { return sitze; }
             set
@@ -115,7 +115,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double gewicht = 0;
-        [Used] public double Gewicht
+        [Used_UserAttribute] public double Gewicht
         {
             get { return gewicht; }
             set
@@ -126,11 +126,6 @@ namespace ShadowRunHelper.CharModel
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Vehikel()
-        {
-            ThingType = ThingDefs.Vehikel;
         }
     }
 }

@@ -4,7 +4,7 @@ namespace ShadowRunHelper.CharModel
     public class Adeptenkraft_KomplexeForm : Thing
     {
         string _Option = "";
-        [Used]
+        [Used_UserAttribute]
         public string Option
         {
             get { return _Option; }
@@ -16,11 +16,6 @@ namespace ShadowRunHelper.CharModel
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Adeptenkraft_KomplexeForm()
-        {
-            ThingType = ThingDefs.Adeptenkraft_KomplexeForm;
         }
     }
 }

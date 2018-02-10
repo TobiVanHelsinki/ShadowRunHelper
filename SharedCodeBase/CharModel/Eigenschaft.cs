@@ -3,7 +3,7 @@
     public abstract class Eigenschaft : Thing
     {
         private string auswirkungen = "";
-        [Used]
+        [Used_UserAttribute]
         public string Auswirkungen
         {
             get { return auswirkungen; }

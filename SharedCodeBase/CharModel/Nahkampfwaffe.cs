@@ -3,7 +3,7 @@
     public class Nahkampfwaffe : Waffe
     {
         private double reichweite = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Reichweite
         {
             get { return reichweite; }
@@ -15,11 +15,6 @@
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Nahkampfwaffe()
-        {
-            ThingType = ThingDefs.Nahkampfwaffe;
         }
     }
 }

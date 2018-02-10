@@ -3,7 +3,7 @@
     public class Zaubersprueche : Item
     {
         double reichweite = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Reichweite
         {
             get { return reichweite; }
@@ -18,7 +18,7 @@
         }
 
         double _Dauer = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Dauer
         {
             get { return _Dauer; }
@@ -33,7 +33,7 @@
         }
 
         double _Entzug = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Entzug
         {
             get { return _Entzug; }
@@ -45,11 +45,6 @@
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Zaubersprueche()
-        {
-            ThingType = ThingDefs.Zaubersprueche;
         }
     }
 }

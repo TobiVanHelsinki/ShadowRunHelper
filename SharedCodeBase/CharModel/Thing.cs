@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ShadowRunHelper.Model;
+using SharedCodeBase.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -6,15 +8,27 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.Model;
+using TLIB_UWPFRAME.Resources;
 
 namespace ShadowRunHelper.CharModel
 {
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
-    public sealed class UsedAttribute : Attribute
+    public sealed class Used_UserAttribute : Attribute
     {
-        public UsedAttribute() { }
+        public Used_UserAttribute() { }
     }
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
+    public sealed class Used_CalcAttribute : Attribute
+    {
+        public Used_CalcAttribute() { }
+    }
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
+    public sealed class Used_ListAttribute : Attribute
+    {
+        public Used_ListAttribute() { }
+    }
+
     public class Thing : INotifyPropertyChanged
     {
         public const uint nThingPropertyCount = 5;
@@ -42,7 +56,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         string notiz = "";
-        [Used]
+        [Used_UserAttribute]
         public string Notiz
         {
             get { return notiz; }
@@ -56,7 +70,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         string zusatz = "";
-        [Used]
+        [Used_UserAttribute]
         public string Zusatz
         {
             get { return zusatz; }
@@ -70,7 +84,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         double wert = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Wert
         {
             get { return wert; }
@@ -84,7 +98,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         string typ = "";
-        [Used]
+        [Used_UserAttribute]
         public string Typ
         {
             get => typ;
@@ -98,7 +112,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         string bezeichner = "";
-        [Used]
+        [Used_User]
         public string Bezeichner
         {
             get => bezeichner;
@@ -137,11 +151,13 @@ namespace ShadowRunHelper.CharModel
 
         public static IEnumerable<PropertyInfo> GetProperties(object obj)
         {
-            return obj.GetType().GetProperties().Where(p => p.CustomAttributes.Any(c => c.AttributeType == typeof(UsedAttribute)));
+            return Helper.GetProperties(obj, typeof(Used_UserAttribute));
         }
 
-        public virtual Thing Copy(Thing target = null)
+        public Thing Copy(Thing target = null)
         {
+            //var a2 = ListTarget.Join< PropertyInfo, PropertyInfo,string, (PropertyInfo, PropertyInfo )> (ListThis, x => x.Name, y => y.Name, (p1, p2) => (p1, p2));
+
             if (target == null)
             {
                 target = (Thing)Activator.CreateInstance(this.GetType());
@@ -149,14 +165,24 @@ namespace ShadowRunHelper.CharModel
             var ListTarget = GetProperties(target);
             var ListThis = GetProperties(this);
             var a1 = ListTarget.Zip<PropertyInfo, PropertyInfo, (PropertyInfo, PropertyInfo)>(ListThis, (p1, p2) => (p1, p2));
-            //var a2 = ListTarget.Join< PropertyInfo, PropertyInfo,string, (PropertyInfo, PropertyInfo )> (ListThis, x => x.Name, y => y.Name, (p1, p2) => (p1, p2));
             foreach (var item in a1)
             {
                 item.Item1.SetValue(target, item.Item2.GetValue(this));
             }
+
+            ListTarget = Helper.GetProperties(target, typeof(Used_ListAttribute));
+            ListThis = Helper.GetProperties(this, typeof(Used_ListAttribute));
+            a1 = ListTarget.Zip<PropertyInfo, PropertyInfo, (PropertyInfo, PropertyInfo)>(ListThis, (p1, p2) => (p1, p2));
+            foreach (var pair in a1)
+            {
+                var CollectionTarget = (pair.Item1.GetValue(target) as ObservableThingListEntryCollection);
+                var CollectionThis = (pair.Item2.GetValue(this) as ObservableThingListEntryCollection);
+                CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName }));
+            }
+
             return target;
         }
-        public virtual void Reset()
+        public void Reset()
         {
             foreach (var item in GetProperties(this))
             {
@@ -175,6 +201,9 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+
+
+        #region CSV
         public virtual string ToCSV(char Delimiter)
         {
             string strReturn = "";
@@ -225,6 +254,8 @@ namespace ShadowRunHelper.CharModel
                     return Value;
             }
         }
+        #endregion
+
         public override string ToString()
         {
             string sep = ", ";

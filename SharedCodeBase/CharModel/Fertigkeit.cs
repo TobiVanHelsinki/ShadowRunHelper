@@ -7,10 +7,11 @@ namespace ShadowRunHelper.CharModel
     public class Fertigkeit : Thing
     {
         List<ThingDefs> lstForbidden = new List<ThingDefs>() { ThingDefs.Handlung , ThingDefs.Fertigkeit };
-        public ObservableThingListEntryCollection PoolZusammensetzung;
+        [Used_List]
+        public ObservableThingListEntryCollection PoolZusammensetzung { get; set; }
 
         private double _Pool = 0;
-        [Used]
+        [Used_UserAttribute]
         public double Pool
         {
             get { return _Pool; }
@@ -24,24 +25,12 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public Fertigkeit()
+        public Fertigkeit() : base()
         {
-            ThingType = ThingDefs.Fertigkeit;
             PoolZusammensetzung = new ObservableThingListEntryCollection(lstForbidden);
             PoolZusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(); };
             CollectionChanged();
             PropertyChanged += (x, y) => { if (y.PropertyName == "Wert") Recalculate(); };
-        }
-
-        public override Thing Copy(Thing target)
-        {
-            Fertigkeit target2  = (Fertigkeit)base.Copy(target);
-        
-            foreach (AllListEntry item in PoolZusammensetzung)
-            {
-                target2.PoolZusammensetzung.Add(new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName });
-            }
-            return target2;
         }
 
         private void CollectionChanged()

@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using TLIB_UWPFRAME;
-
-namespace ShadowRunHelper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public class Item : Thing
     {
 
         private bool? besitz = true;
-        [Used]
+        [Used_UserAttribute]
         public bool? Besitz
         {
             get { return besitz; }
@@ -21,7 +18,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private bool? aktiv = false;
-        [Used]
+        [Used_UserAttribute]
         public bool? Aktiv
         {
             get { return aktiv; }
@@ -35,7 +32,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double anzahl = 1;
-        [Used]
+        [Used_UserAttribute]
         public double Anzahl
         {
             get { return anzahl; }
@@ -47,11 +44,6 @@ namespace ShadowRunHelper.CharModel
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public Item()
-        {
-            ThingType = ThingDefs.Item;
         }
     }
 }
