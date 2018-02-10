@@ -246,7 +246,6 @@ namespace ShadowRunHelper.Model
             return lstCTRL.First(c => c.eDataTyp == tag);
         }
 
-
         /// <summary>
         /// Adds a Thing of the given ThingDef to the right controller and register it and returns it, if all is ok, otherways throw
         /// </summary>
@@ -269,162 +268,12 @@ namespace ShadowRunHelper.Model
         public void Add(Thing NewThing)
         {
             lstCTRL.First(c => c.eDataTyp == NewThing.ThingType).AddNewThing(NewThing);
-
-            //switch (NewThing.ThingType)
-            //{
-            //    case ThingDefs.Handlung:
-            //        CTRLHandlung.AddNewThing((Handlung)NewThing);
-            //        break;
-            //    case ThingDefs.Fertigkeit:
-            //        CTRLFertigkeit.AddNewThing((Fertigkeit)NewThing);
-            //        break;
-            //    case ThingDefs.Item:
-            //        CTRLItem.AddNewThing((Item)NewThing);
-            //        break;
-            //    case ThingDefs.Programm:
-            //        CTRLProgramm.AddNewThing((Programm)NewThing);
-            //        break;
-            //    case ThingDefs.Munition:
-            //        CTRLMunition.AddNewThing((Munition)NewThing);
-            //        break;
-            //    case ThingDefs.Implantat:
-            //        CTRLImplantat.AddNewThing((Implantat)NewThing);
-            //        break;
-            //    case ThingDefs.Vorteil:
-            //        CTRLVorteil.AddNewThing((Vorteil)NewThing);
-            //        break;
-            //    case ThingDefs.Nachteil:
-            //        CTRLNachteil.AddNewThing((Nachteil)NewThing);
-            //        break;
-            //    case ThingDefs.Connection:
-            //        CTRLConnection.AddNewThing((Connection)NewThing);
-            //        break;
-            //    case ThingDefs.Sin:
-            //        CTRLSin.AddNewThing((Sin)NewThing);
-            //        break;
-            //    case ThingDefs.Nahkampfwaffe:
-            //        CTRLNahkampfwaffe.AddNewThing((Nahkampfwaffe)NewThing);
-            //        break;
-            //    case ThingDefs.Fernkampfwaffe:
-            //        CTRLFernkampfwaffe.AddNewThing((Fernkampfwaffe)NewThing);
-            //        break;
-            //    case ThingDefs.Kommlink:
-            //        CTRLKommlink.AddNewThing((Kommlink)NewThing);
-            //        break;
-            //    case ThingDefs.CyberDeck:
-            //        CTRLCyberDeck.AddNewThing((CyberDeck)NewThing);
-            //        break;
-            //    case ThingDefs.Vehikel:
-            //        CTRLVehikel.AddNewThing((Vehikel)NewThing);
-            //        break;
-            //    case ThingDefs.Panzerung:
-            //        CTRLPanzerung.AddNewThing((Panzerung)NewThing);
-            //        break;
-            //    case ThingDefs.Adeptenkraft_KomplexeForm:
-            //        CTRLAdeptenkraft_KomplexeForm.AddNewThing((Adeptenkraft_KomplexeForm)NewThing);
-            //        break;
-            //    case ThingDefs.Geist_Sprite:
-            //        CTRLGeist_Sprite.AddNewThing((Geist_Sprite)NewThing);
-            //        break;
-            //    case ThingDefs.Foki_Widgets:
-            //        CTRLFoki_Widgets.AddNewThing((Foki_Widgets)NewThing);
-            //        break;
-            //    case ThingDefs.Stroemung_Wandlung:
-            //        CTRLStroemung_Wandlung.AddNewThing((Stroemung_Wandlung)NewThing);
-            //        break;
-            //    case ThingDefs.Tradition_Initiation:
-            //        CTRLTradition_Initiation.AddNewThing((Tradition_Initiation)NewThing);
-            //        break;
-            //    case ThingDefs.Zaubersprueche:
-            //        CTRLZaubersprueche.AddNewThing((Zaubersprueche)NewThing);
-            //        break;
-            //    default:
-            //        throw new NotSupportedException();
-            //}
             NewThing.PropertyChanged += (x, y) => AnyPropertyChanged();
         }
 
         public void Remove(Thing tToRemove)
         {
             lstCTRL.First(c => c.eDataTyp == tToRemove.ThingType).RemoveThing(tToRemove);
-
-            //switch (tToRemove.ThingType)
-            //{
-            //    case ThingDefs.Handlung:
-            //        CTRLHandlung.RemoveThing((Handlung)tToRemove);
-            //        break;
-            //    case ThingDefs.Fertigkeit:
-            //        CTRLFertigkeit.RemoveThing((Fertigkeit)tToRemove);
-            //        break;
-            //    case ThingDefs.Item:
-            //        CTRLItem.RemoveThing((Item)tToRemove);
-            //        break;
-            //    case ThingDefs.Programm:
-            //        CTRLProgramm.RemoveThing((Programm)tToRemove);
-            //        break;
-            //    case ThingDefs.Munition:
-            //        CTRLMunition.RemoveThing((Munition)tToRemove);
-            //        break;
-            //    case ThingDefs.Implantat:
-            //        CTRLImplantat.RemoveThing((Implantat)tToRemove);
-            //        break;
-            //    case ThingDefs.Vorteil:
-            //        CTRLVorteil.RemoveThing((Vorteil)tToRemove);
-            //        break;
-            //    case ThingDefs.Nachteil:
-            //        CTRLNachteil.RemoveThing((Nachteil)tToRemove);
-            //        break;
-            //    case ThingDefs.Connection:
-            //        CTRLConnection.RemoveThing((Connection)tToRemove);
-            //        break;
-            //    case ThingDefs.Sin:
-            //        CTRLSin.RemoveThing((Sin)tToRemove);
-            //        break;
-            //    case ThingDefs.Attribut:
-            //        CTRLAttribut.RemoveThing((Attribut)tToRemove);
-            //        break;
-            //    case ThingDefs.Berechnet:
-            //        CTRLBerechnet.RemoveThing((Berechnet)tToRemove);
-            //        break;
-            //    case ThingDefs.Nahkampfwaffe:
-            //        CTRLNahkampfwaffe.RemoveThing((Nahkampfwaffe)tToRemove);
-            //        break;
-            //    case ThingDefs.Fernkampfwaffe:
-            //        CTRLFernkampfwaffe.RemoveThing((Fernkampfwaffe)tToRemove);
-            //        break;
-            //    case ThingDefs.Kommlink:
-            //        CTRLKommlink.RemoveThing((Kommlink)tToRemove);
-            //        break;
-            //    case ThingDefs.CyberDeck:
-            //        CTRLCyberDeck.RemoveThing((CyberDeck)tToRemove);
-            //        break;
-            //    case ThingDefs.Vehikel:
-            //        CTRLVehikel.RemoveThing((Vehikel)tToRemove);
-            //        break;
-            //    case ThingDefs.Panzerung:
-            //        CTRLPanzerung.RemoveThing((Panzerung)tToRemove);
-            //        break;
-            //    case ThingDefs.Adeptenkraft_KomplexeForm:
-            //        CTRLAdeptenkraft_KomplexeForm.RemoveThing((Adeptenkraft_KomplexeForm)tToRemove);
-            //        break;
-            //    case ThingDefs.Geist_Sprite:
-            //        CTRLGeist_Sprite.RemoveThing((Geist_Sprite)tToRemove);
-            //        break;
-            //    case ThingDefs.Foki_Widgets:
-            //        CTRLFoki_Widgets.RemoveThing((Foki_Widgets)tToRemove);
-            //        break;
-            //    case ThingDefs.Stroemung_Wandlung:
-            //        CTRLStroemung_Wandlung.RemoveThing((Stroemung_Wandlung)tToRemove);
-            //        break;
-            //    case ThingDefs.Tradition_Initiation:
-            //        CTRLTradition_Initiation.RemoveThing((Tradition_Initiation)tToRemove);
-            //        break;
-            //    case ThingDefs.Zaubersprueche:
-            //        CTRLZaubersprueche.RemoveThing((Zaubersprueche)tToRemove);
-            //        break;
-            //    default:
-            //        break;
-            //}
             tToRemove.PropertyChanged -= (x, y) => AnyPropertyChanged();
             _LinkList.RemoveAll((x) => x.Object == tToRemove);
             _ThingList.RemoveAll((x) => x == tToRemove); //TODO changed to Remove all, check it
@@ -450,15 +299,9 @@ namespace ShadowRunHelper.Model
         public void RefreshLists()
         {
             _LinkList.Clear();
-            foreach (var item in lstCTRL)
-            {
-                _LinkList.AddRange(item.GetElementsForThingList());
-            }
+            _LinkList.AddRange(lstCTRL.Aggregate(new List<AllListEntry>(),(l,c)=>l.Concat(c.GetElementsForThingList()).ToList()));
             _ThingList.Clear();
-            foreach (var item in lstCTRL)
-            {
-                _ThingList.AddRange(item.GetElements());
-            }
+            _ThingList.AddRange(lstCTRL.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
         }
         #endregion
         #region AUTO_SAVE_STUFF 

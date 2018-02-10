@@ -20,6 +20,7 @@ namespace ShadowRunHelper.CharController
 
         public virtual void RegisterEventAtData(Action Method)
         {
+            Data.CollectionChanged -= (x, y) => Method();
             Data.CollectionChanged += (x, y) => Method();
         }
 
