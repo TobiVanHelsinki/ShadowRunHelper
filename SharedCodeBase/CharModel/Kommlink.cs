@@ -63,7 +63,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double _dSchadenMax = 0;
-        [Used_UserAttribute]
+        [Used_CalcAttribute]
         public double dSchadenMax
         {
             get { return _dSchadenMax; }
