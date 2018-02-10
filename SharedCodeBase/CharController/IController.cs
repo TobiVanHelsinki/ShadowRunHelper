@@ -38,12 +38,13 @@ namespace ShadowRunHelper.CharController
 
         ThingDefs eDataTyp { get; }
 
+        Thing AddNewThing();
+        Thing AddNewThing(Thing newThing);
+        void RemoveThing(Thing tToRemove);
     }
 
     public interface IController<T> : IController
     {
         ObservableCollection<T> Data { get;}
-        T AddNewThing(T newTee);
-        void RemoveThing(T tRem);
     }
 }

@@ -23,20 +23,20 @@ namespace ShadowRunHelper.CharController
             Data.CollectionChanged += (x, y) => Method();
         }
 
-        public virtual T AddNewThing()
+        public virtual Thing AddNewThing()
         {
-            T newTee = new T();
-            Data.Add(newTee);
-            return newTee;
+            var newThing = (T)Activator.CreateInstance(TypenHelper.ThingDefToType(eDataTyp));
+            Data.Add(newThing);
+            return newThing;
         }
-        public virtual T AddNewThing(T newTee)
+        public virtual Thing AddNewThing(Thing newThing)
         {
-            Data.Add(newTee);
-            return newTee;
+            Data.Add((T)newThing);
+            return newThing;
         }
-        public virtual void RemoveThing(T tRem)
+        public virtual void RemoveThing(Thing tToRemove)
         {
-            Data.Remove(tRem);
+            Data.Remove((T)tToRemove);
         }
 
         public virtual IEnumerable<AllListEntry> GetElementsForThingList()
@@ -104,6 +104,8 @@ namespace ShadowRunHelper.CharController
                 (this.AddNewThing())?.FromCSV(Dic);
             }
         }
-#endregion
+
+
+        #endregion
     }
 }

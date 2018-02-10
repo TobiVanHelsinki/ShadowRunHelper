@@ -187,12 +187,12 @@ namespace ShadowRunHelper.CharController
         }
 
         //Override cController ############################
-        public override Berechnet AddNewThing()
+        public override Thing AddNewThing()
         {
             throw new NotSupportedException();
         }
 
-        public override void RemoveThing(Berechnet tRem)
+        public override void RemoveThing(Thing tRem)
         {
             throw new NotSupportedException();
         }

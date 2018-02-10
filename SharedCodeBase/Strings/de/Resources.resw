@@ -1221,4 +1221,7 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   <data name="UI_Settings_Btn_Reset.Content" xml:space="preserve">
     <value>Zurücksetzen</value>
   </data>
+  <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
+    <value>Diese Version des Chars wird seid langem nicht mehr unterstützt. Bitte wende dich an den Support, wenn du ihn unbedingt konvertiert haben möchtest.</value>
+  </data>
 </root>

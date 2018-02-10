@@ -1185,4 +1185,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="UI_Settings_Btn_Reset.Content" xml:space="preserve">
     <value>Reset</value>
   </data>
+  <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
+    <value>This Fileversion is outdated. If you want to upgrade this char, please contact support.</value>
+  </data>
 </root>
