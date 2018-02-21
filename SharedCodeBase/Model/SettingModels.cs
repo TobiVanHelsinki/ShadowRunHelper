@@ -20,27 +20,19 @@ namespace ShadowRunHelper
         {
             get
             {
-                var content = PlatformSettings.getString(Constants.CONTAINER_SETTINGS_BLOCKLISTOPTIONS);
                 try
                 {
-                    //throw new System.Exception();
+                    var content = PlatformSettings.getString(Constants.CONTAINER_SETTINGS_BLOCKLISTOPTIONS);
                     return JsonConvert.DeserializeObject<IEnumerable<(ThingDefs ThingType, bool vis)>>(content, SerializationSettings);
                 }
                 catch (System.Exception)
                 {
-                    int Counter = 0;
-                    return Instance.BlockListOptions = new(ThingDefs, bool)[TypenHelper.ThingDefsCount].Select(i =>
-                    {
-                        i.Item1 = (ThingDefs)Counter;
-                        Counter++;
-                        i.Item2 = true;
-                        return i;
-                    });
+                    BlockListOptions = TypenHelper.ThingTypeList.Select(t => (t.Item2, true));
+                    return BlockListOptions;
                 }
             }
             set
             {
-                //what if value = null? Reset TODO
                 var content = JsonConvert.SerializeObject(value, SerializationSettings);
                 PlatformSettings.set(Constants.CONTAINER_SETTINGS_BLOCKLISTOPTIONS, content);
                 Instance.NotifyPropertyChanged();
