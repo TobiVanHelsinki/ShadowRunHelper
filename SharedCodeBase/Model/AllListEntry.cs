@@ -8,9 +8,6 @@ namespace ShadowRunHelper.Model
 {
     public class AllListEntry : INotifyPropertyChanged
     {
-        //[Newtonsoft.Json.JsonIgnore]
-        //public readonly AllListEntry This;
-
         string _DisplayName = "";
         [Newtonsoft.Json.JsonIgnore]
         public string DisplayName
