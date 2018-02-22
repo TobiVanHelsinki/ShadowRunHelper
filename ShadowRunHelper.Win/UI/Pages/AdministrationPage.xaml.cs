@@ -423,7 +423,7 @@ namespace ShadowRunHelper
             try
             {
                 var ContentList = ViewModel.MainObject.ToCSV(";").Select(item => (item.ThingType + Constants.DATEIENDUNG_CSV, item.Content));
-                SharedIO.SaveTextesToFilees(ContentList, new FileInfoClass (){Fileplace=Place.Extern, FolderToken = "CSV_TEMP" });
+                SharedIO.SaveTextesToFiles(ContentList, new FileInfoClass (){Fileplace=Place.Extern, FolderToken = "CSV_TEMP" });
             }
             catch (Exception ex)
             {
