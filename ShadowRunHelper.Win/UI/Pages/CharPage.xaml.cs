@@ -331,11 +331,11 @@ namespace ShadowRunHelper
             ThingDefs Type = TypenHelper.Obj2ThingDef(ControlBlock.Tag);
 
             //Temp Vars
-            TextBlock U = (((ControlBlock.ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children.First(c => c.GetType() == typeof(TextBlock)) as TextBlock);
-            ContentPresenter E = ((ControlBlock.ContentTemplateRoot as StackPanel).Children[1] as ContentPresenter);
-            ListView LV = ((ControlBlock.ContentTemplateRoot as StackPanel).Children[2] as ListView);
+            TextBlock U = ((((ControlBlock.ContentTemplateRoot as Panel).Children[0] as Panel)/*.Children[0] as Panel*/).Children.First(c => c.GetType() == typeof(TextBlock)) as TextBlock);
+            ContentPresenter E = ((ControlBlock.ContentTemplateRoot as Panel).Children[1] as ContentPresenter);
+            ListView LV = ((ControlBlock.ContentTemplateRoot as Panel).Children[2] as ListView);
             // Global Things
-            (((ControlBlock.ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children[0] as Button).Tag = ControlBlock.Tag;
+            ((((ControlBlock.ContentTemplateRoot as Panel).Children[0] as Panel)/*.Children[0] as Panel*/).Children[0] as Button).Tag = ControlBlock.Tag;
             LV.Tag = ControlBlock.Tag;
             ControlBlock.DataContext = ViewModel.MainObject.ThingDef2CTRL(Type);
 

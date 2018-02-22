@@ -336,6 +336,11 @@
         <Setter Property="Background" Value="{ThemeResource SystemAltLowColor}"/>
         <Setter Property="Orientation" Value="Horizontal"/>
     </Style>
+    <Style TargetType="Grid" x:Key="ListView_U_As_Grid">
+        <!--<Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>-->
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Background" Value="{ThemeResource SystemAltLowColor}"/>
+    </Style>
 
     <Style TargetType="ListView" x:Key="ListView">
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>

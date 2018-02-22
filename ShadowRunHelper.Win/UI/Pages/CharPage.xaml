@@ -32,14 +32,24 @@
             <DataTemplate x:Name="Block" x:Key="Block">
 
                 <StackPanel x:Name="Block">
-                    <StackPanel.Resources>
-                    </StackPanel.Resources>
-                    <StackPanel x:Name="U"  Style="{StaticResource ListView_U}">
-                        <Button x:Name="Add" Click="Add_Click" Content="&#xE109;" Style="{StaticResource ListView_U_Btn}" />
-                        <Button x:Name="CSV_IN" Click="CSV_IN_Click" Content="&#xE8B5;" Style="{StaticResource ListView_U_Btn}" />
-                        <Button x:Name="CSV_EX" Click="CSV_EX_Click" Content="&#xE78C;" Style="{StaticResource ListView_U_Btn}" />
-                        <TextBlock Grid.Column="2" x:Name="Type" Style="{StaticResource ListView_U_Text}"/>
-                    </StackPanel>
+                    <Grid Style="{StaticResource ListView_U_As_Grid}" x:Name="U">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" x:Name="Add" Click="Add_Click" Content="&#xE109;" Style="{StaticResource ListView_U_Btn}" />
+                            <TextBlock  Grid.Column="1" x:Name="Type" Style="{StaticResource ListView_U_Text}" HorizontalAlignment="Stretch"/>
+                            <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  Grid.Column="2" Content="...">
+                                <Button.Flyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem x:Name="CSV_IN" Click="CSV_IN_Click" Text="CSV Import" />
+                                        <MenuFlyoutItem x:Name="CSV_EX" Click="CSV_EX_Click" Text="CSV Export" />
+                                        <MenuFlyoutItem Text="Inhalt Löschen" />
+                                    </MenuFlyout>
+                                </Button.Flyout>
+                            </Button>
+                        </Grid>
                     <ContentPresenter x:Name="E" />
                     <ListView x:Name="ListView" 
                                   Style="{StaticResource ListView}" 
