@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME.Model;
@@ -27,7 +28,6 @@ namespace ShadowRunHelper.Model
                 }
             }
         }
-
         Thing _Object = new Thing();
         public Thing Object
         {
@@ -64,7 +64,12 @@ namespace ShadowRunHelper.Model
                 }
             }
         }
-
+        [Obsolete("Just for compatibility with versions before 1.7 ", true)]
+        public string strProperty
+        {
+            get { return PropertyID; }
+            set { PropertyID = value; }
+        }
         public AllListEntry(Thing o, string newDisplayName = "", string newPropID = "") : this()
         {
             Object = o;
@@ -84,7 +89,7 @@ namespace ShadowRunHelper.Model
 
         public override string ToString()
         {
-            return Object.ToString();
+            return Object + PropertyID;
         }
     }
 }
