@@ -72,8 +72,8 @@
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <Pivot>
-        <PivotItem>
+    <Pivot x:Name="MainNavigation">
+        <PivotItem Tag="31">
             <PivotItem.Header>
                 <TextBlock x:Uid="UI_Optionen_U_Infos" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
@@ -138,7 +138,7 @@
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
-        <PivotItem>
+        <PivotItem Tag="32">
             <PivotItem.Header>
                 <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
@@ -236,7 +236,7 @@
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
-        <PivotItem>
+        <PivotItem Tag="33">
             <PivotItem.Header>
                 <TextBlock x:Uid="UI_Optionen_U_CharPageConfig" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
@@ -267,7 +267,7 @@
                 <Button x:Uid="UI_Settings_Btn_Reset" Margin="10" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Click="ResetButton_Click" Style="{StaticResource ButtonRevealStyle}"/>
             </Grid>
         </PivotItem>
-        <PivotItem>
+        <PivotItem Tag="34">
             <PivotItem.Header>
                 <TextBlock x:Uid="UI_Optionen_U_Hilfe" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
@@ -282,7 +282,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </PivotItem>
-        <PivotItem>
+        <PivotItem Tag="35">
             <PivotItem.Header>
                 <TextBlock x:Uid="UI_Optionen_U_Notifications" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>

@@ -48,11 +48,9 @@ namespace ShadowRunHelper
 #endif
         }
 
-        Action<ProjectPages> NavigationMethod;
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            NavigationMethod = (Action < ProjectPages > )e.Parameter;
             ChangeCurrentCharUI(ViewModel.MainObject == null ? false : true);
             ViewModel.PropertyChanged += (x, y) => { ChangeCurrentCharUI(ViewModel.MainObject == null ? false : true); };
             if (SettingsModel.I.StartCount <= 1)
@@ -175,7 +173,7 @@ namespace ShadowRunHelper
             }
             ViewModel.MainObject = new CharHolder();
             SettingsModel.I.CountCreations++;
-            NavigationMethod(ProjectPages.Char);
+            AppModel.Instance.RequestNavigation(this, ProjectPages.Char);
         }
 
         async void Click_Speichern(object sender, RoutedEventArgs e)
@@ -258,7 +256,7 @@ namespace ShadowRunHelper
             ChangeProgress(false);
             if (ViewModel.MainObject != null)
             {
-                NavigationMethod(ProjectPages.Char);
+                AppModel.Instance.RequestNavigation(this,ProjectPages.Char);
             }
             SettingsModel.I.CountLoadings++;
         }

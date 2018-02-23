@@ -1224,4 +1224,19 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
     <value>Diese Version des Chars wird seid langem nicht mehr unterstützt. Bitte wende dich an den Support, wenn du ihn unbedingt konvertiert haben möchtest.</value>
   </data>
+  <data name="CSV_EX.Text" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="CSV_IN.Text" xml:space="preserve">
+    <value>CSV Import</value>
+  </data>
+  <data name="DeleteCategoryContent.Text" xml:space="preserve">
+    <value>Kategorie leeren</value>
+  </data>
+  <data name="FurtherSettings.Text" xml:space="preserve">
+    <value>Mehr</value>
+  </data>
+  <data name="Notification_Error_LogicFail" xml:space="preserve">
+    <value>Programmlogik Fehler</value>
+  </data>
 </root>

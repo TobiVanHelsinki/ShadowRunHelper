@@ -7,6 +7,7 @@ using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -48,6 +49,22 @@ namespace ShadowRunHelper
         {
             InitializeComponent();
             SetSource();
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            switch ((ProjectPagesOptions)e.Parameter)
+            {
+                case ProjectPagesOptions.SettingsMain:
+                case ProjectPagesOptions.SettingsOptions:
+                case ProjectPagesOptions.SettingsCategories:
+                case ProjectPagesOptions.SettingsHelp:
+                    MainNavigation.SelectedItem = MainNavigation.Items.FirstOrDefault(
+                        x => (x as PivotItem).Tag.ToString() == ((int)e.Parameter).ToString());
+                    break;
+                default:
+                    break;
+            }
+            base.OnNavigatedTo(e);  
         }
 
         #region Categories

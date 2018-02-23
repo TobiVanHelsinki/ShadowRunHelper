@@ -40,6 +40,20 @@ namespace ShadowRunHelper.CharController
             Data.Remove((T)tToRemove);
         }
 
+
+        public bool ClearData()
+        {
+            try
+            {
+                Data.Clear();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public virtual IEnumerable<AllListEntry> GetElementsForThingList()
         {
             return Data.Select(item => new AllListEntry(item, ""));

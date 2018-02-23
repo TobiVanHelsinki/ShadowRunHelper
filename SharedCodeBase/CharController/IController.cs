@@ -41,6 +41,7 @@ namespace ShadowRunHelper.CharController
         Thing AddNewThing();
         Thing AddNewThing(Thing newThing);
         void RemoveThing(Thing tToRemove);
+        bool ClearData();
     }
 
     public interface IController<T> : IController

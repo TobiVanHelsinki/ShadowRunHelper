@@ -665,6 +665,26 @@ namespace ShadowRunHelper
                 ViewModel.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
         }
+
+        private void DeleteCategoryContent(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var CTRL = ((sender as FrameworkElement).DataContext as IController);
+                CTRL.ClearData();
+            }
+            catch (Exception ex)
+            {
+                ViewModel.NewNotification(res.GetString("Notification_Error_LogicFail"), ex);
+            }
+        }
+
+        private void FurtherSettings(object sender, RoutedEventArgs e)
+        {
+            AppModel.Instance.RequestNavigation(this,ProjectPages.Settings, ProjectPagesOptions.SettingsCategories);
+        }
         #endregion
+
+
     }
 }

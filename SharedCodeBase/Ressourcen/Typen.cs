@@ -15,6 +15,15 @@ namespace ShadowRunHelper
         Administration = 2,
         Settings = 3,
     }
+    public enum ProjectPagesOptions
+    {
+        SettingsMain = 31,
+        SettingsOptions = 32,
+        SettingsCategories = 33,
+        SettingsHelp = 34,
+        Nothing = 35,
+    }
+
     public enum TCharState
     {
         EMPTY_CHAR = 0,

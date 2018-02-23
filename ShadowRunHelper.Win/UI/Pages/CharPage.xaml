@@ -43,9 +43,10 @@
                             <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  Grid.Column="2" Content="...">
                                 <Button.Flyout>
                                     <MenuFlyout>
-                                        <MenuFlyoutItem x:Name="CSV_IN" Click="CSV_IN_Click" Text="CSV Import" />
-                                        <MenuFlyoutItem x:Name="CSV_EX" Click="CSV_EX_Click" Text="CSV Export" />
-                                        <MenuFlyoutItem Text="Inhalt Löschen" />
+                                    <MenuFlyoutItem x:Name="CSV_IN" Click="CSV_IN_Click" x:Uid="CSV_IN"/>
+                                    <MenuFlyoutItem x:Name="CSV_EX" Click="CSV_EX_Click" x:Uid="CSV_EX"/>
+                                    <MenuFlyoutItem x:Name="DeleteCategoryContent" Click="DeleteCategoryContent" x:Uid="DeleteCategoryContent" />
+                                    <MenuFlyoutItem x:Name="FurtherSettings" Click="FurtherSettings" x:Uid="FurtherSettings" />
                                     </MenuFlyout>
                                 </Button.Flyout>
                             </Button>

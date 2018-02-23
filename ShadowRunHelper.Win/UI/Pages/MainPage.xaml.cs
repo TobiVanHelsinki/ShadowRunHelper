@@ -27,6 +27,7 @@ namespace ShadowRunHelper
             InitializeComponent();
             Model.lstNotifications.CollectionChanged += (x, y) => ShowError();
             Model.TutorialStateChanged += TutorialStateChanged;
+            Model.NavigationRequested += (x, y,z) => NavigationRequested(y,z);
             CompatibilityChecks();
         }
         #region navigation
@@ -35,30 +36,28 @@ namespace ShadowRunHelper
             base.OnNavigatedTo(e);
             ShowError();
             Model.SetDependencies(Dispatcher);
-            NavigationRequested(ProjectPages.Char);
+            NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
         }
 
-        Action<ProjectPages> NavigationMethod;
-        void NavigationRequested(ProjectPages e)
+        void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
         {
-            NavigationMethod = NavigationRequested;
-            switch (e)
+            switch (p)
             {
                 case ProjectPages.Char:
                     if (Model.MainObject != null)
                     {
-                        MyFrame.Navigate(typeof(CharPage), NavigationMethod);
+                        MyFrame.Navigate(typeof(CharPage), po);
                     }
                     else
                     {
-                        MyFrame.Navigate(typeof(AdministrationPage), NavigationMethod);
+                        MyFrame.Navigate(typeof(AdministrationPage), po);
                     }
                     break;
                 case ProjectPages.Administration:
-                    MyFrame.Navigate(typeof(AdministrationPage), NavigationMethod);
+                    MyFrame.Navigate(typeof(AdministrationPage), po);
                     break;
                 case ProjectPages.Settings:
-                    MyFrame.Navigate(typeof(SettingsPage), NavigationMethod);
+                    MyFrame.Navigate(typeof(SettingsPage), po);
                     break;
                 default:
                     break;
@@ -208,17 +207,17 @@ namespace ShadowRunHelper
 
         void Ui_Nav_Char(object sender, RoutedEventArgs e)
         {
-            NavigationRequested(ProjectPages.Char);
+            NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
         }
 
         void Ui_Nav_Admin(object sender, RoutedEventArgs e)
         {
-            NavigationRequested(ProjectPages.Administration);
+            NavigationRequested(ProjectPages.Administration, ProjectPagesOptions.Nothing);
         }
 
         void Ui_Nav_Settings(object sender, RoutedEventArgs e)
         {
-            NavigationRequested(ProjectPages.Settings);
+            NavigationRequested(ProjectPages.Settings, ProjectPagesOptions.Nothing);
         }
         #endregion
         #region Compatibility (Update 4)
