@@ -263,8 +263,8 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button x:Uid="UI_Settings_Btn_Speichern" Margin="10" HorizontalAlignment="Stretch" Grid.Row="1" Click="SaveButton_Click" Style="{StaticResource ButtonRevealStyle}"/>
-                <Button x:Uid="UI_Settings_Btn_Reset" Margin="10" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Click="ResetButton_Click" Style="{StaticResource ButtonRevealStyle}"/>
+                <Button x:Uid="UI_Settings_Btn_Speichern" Margin="10" HorizontalAlignment="Stretch" Grid.Row="1" Click="SaveButton_Click" Loaded="Button_Loaded"/>
+                <Button x:Uid="UI_Settings_Btn_Reset" Margin="10" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Click="ResetButton_Click" Loaded="Button_Loaded"/>
             </Grid>
         </PivotItem>
         <PivotItem Tag="34">

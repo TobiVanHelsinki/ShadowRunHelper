@@ -266,8 +266,7 @@ namespace ShadowRunHelper.CharModel
 
         public override string ToString()
         {
-            string sep = ", ";
-            return bezeichner + sep + wert + sep + Zusatz;
+            return typ +": "+ bezeichner + " " + wert + "+" + Zusatz;
         }
 
         /// <summary>

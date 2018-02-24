@@ -5,6 +5,7 @@ using System.Linq;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
+using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -189,6 +190,15 @@ namespace ShadowRunHelper
         }
         #endregion
 
+        #region ApplyNewStyles
+        private void Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
+            }
+        }
 
+        #endregion
     }
 }
