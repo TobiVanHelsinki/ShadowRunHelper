@@ -33,24 +33,45 @@
 
                 <StackPanel x:Name="Block">
                     <Grid Style="{StaticResource ListView_U_As_Grid}" x:Name="U">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" x:Name="Add" Click="Add_Click" Content="&#xE109;" Style="{StaticResource ListView_U_Btn}" />
-                            <TextBlock  Grid.Column="1" x:Name="Type" Style="{StaticResource ListView_U_Text}" HorizontalAlignment="Stretch"/>
-                            <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  Grid.Column="2" Content="...">
-                                <Button.Flyout>
-                                    <MenuFlyout>
-                                    <MenuFlyoutItem x:Name="CSV_IN" Click="CSV_IN_Click" x:Uid="CSV_IN"/>
-                                    <MenuFlyoutItem x:Name="CSV_EX" Click="CSV_EX_Click" x:Uid="CSV_EX"/>
-                                    <MenuFlyoutItem x:Name="DeleteCategoryContent" Click="DeleteCategoryContent" x:Uid="DeleteCategoryContent" />
-                                    <MenuFlyoutItem x:Name="FurtherSettings" Click="FurtherSettings" x:Uid="FurtherSettings" />
-                                    </MenuFlyout>
-                                </Button.Flyout>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="Add" Click="Add_Click" Content="&#xE109;" Style="{StaticResource ListView_U_Btn}" />
+                        <TextBlock  Grid.Column="1" x:Name="Type" Style="{StaticResource ListView_U_Text}" HorizontalAlignment="Center"/>
+                        <Button Grid.Column="2" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Style="{StaticResource ListView_U_Btn}" Margin="0,0,15,0">
+                            <Button.Flyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem x:Name="CSV_IN" Click="CSV_IN_Click" x:Uid="CSV_IN">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE8B6;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem x:Name="CSV_EX" Click="CSV_EX_Click" x:Uid="CSV_EX">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE78C;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem x:Name="CSV_EX_Selected" Click="CSV_EX_Selected" x:Uid="CSV_EX_Selected">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE78C;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem x:Name="DeleteCategoryContent" Click="DeleteCategoryContent" x:Uid="DeleteCategoryContent" >
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE74D;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem x:Name="FurtherSettings" Click="FurtherSettings" x:Uid="FurtherSettings" >
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE713;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                </MenuFlyout>
+                            </Button.Flyout>
                             </Button>
-                        </Grid>
+                    </Grid>
                     <ContentPresenter x:Name="E" />
                     <ListView x:Name="ListView" 
                                   Style="{StaticResource ListView}" 
@@ -1952,7 +1973,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.ColumnSpan="3">
                         <StackPanel Grid.ColumnSpan="3" Grid.Row="0" Name="Attribut_U" Style="{StaticResource ListView_U}">
-                            <TextBlock x:Uid="Model_AttributM_"  Style="{StaticResource ListView_U_Text}"/>
+                            <TextBlock x:Uid="Model_AttributM_" Style="{StaticResource ListView_U_Text}"/>
                         </StackPanel>
                         <Grid  Style="{ThemeResource ListView_Item_Grid_For_Non_ListViews}"> 
                             <Grid.RowDefinitions>

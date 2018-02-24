@@ -195,8 +195,8 @@
                 <CommandBar x:Name="MainBar1" Background="{ThemeResource SystemControlBackgroundAccentBrush}" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Loaded="CommandBar_Loaded">
                     <AppBarButton x:Name="Nav_Char" Loaded="AppBarButton_Loaded" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
                     <AppBarButton x:Name="Nav_Admin" Loaded="AppBarButton_Loaded" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
-                    <AppBarButton x:Name="PreDataBase" Loaded="AppBarButton_Loaded" x:Uid="Ui_DB_Nav" Icon="Library" Click="OpenDB"
-                                  Visibility="{x:Bind Model.MainObject, Converter={StaticResource o_Null2Visibility}, Mode=OneWay}"/>
+                    <AppBarButton x:Name="PreDataBase" Loaded="AppBarButton_Loaded" x:Uid="Ui_DB_Nav" Icon="Library" Click="OpenDB" Visibility="Collapsed"/>
+                    <!--Visibility="{x:Bind Model.MainObject, Converter={StaticResource o_Null2Visibility}, Mode=OneWay}"/>-->
                     <AppBarButton x:Name="Nav_Settings" Loaded="AppBarButton_Loaded" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
                 </CommandBar>
             </Border>

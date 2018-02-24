@@ -721,7 +721,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Laden fehlgeschlagen</value>
   </data>
   <data name="Notification_Error_SaveFail" xml:space="preserve">
-    <value>Speichern fehlgeschlagen</value>
+    <value>Speichern fehlgeschlagen, versuche, den Char zu exportieren und starte die App neu.</value>
   </data>
   <data name="Ui_Nav_Char.Label" xml:space="preserve">
     <value>Aktueller Char</value>
@@ -1055,7 +1055,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Löschen</value>
   </data>
   <data name="Model_Vehikel_Wert.Text" xml:space="preserve">
-    <value>Schaden</value>
+    <value>Stufe</value>
   </data>
   <data name="Ui_DB_Finish.Label" xml:space="preserve">
     <value>Kopieren</value>
@@ -1189,7 +1189,7 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
     <value>Umbenennen</value>
   </data>
   <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">
-    <value>Speichern fehlgeschlagen - anderes Operation in Gange</value>
+    <value>Speichern fehlgeschlagen - andere Operation in Gange</value>
   </data>
   <data name="UI_Admin_Btn_CurrentChar_CSV_Export.Text" xml:space="preserve">
     <value>CSV Export</value>
@@ -1238,5 +1238,11 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   </data>
   <data name="Notification_Error_LogicFail" xml:space="preserve">
     <value>Programmlogik Fehler</value>
+  </data>
+  <data name="CSV_EX_Selected.Text" xml:space="preserve">
+    <value>CSV Export (nur markierte)</value>
+  </data>
+  <data name="Error_GetFolder" xml:space="preserve">
+    <value>Fehler, konnte nicht auf Ordner zugreifen.</value>
   </data>
 </root>

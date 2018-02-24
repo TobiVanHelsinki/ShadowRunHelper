@@ -157,7 +157,7 @@
     <value>Loading failed</value>
   </data>
   <data name="Notification_Error_SaveFail" xml:space="preserve">
-    <value>Error during saving</value>
+    <value>Error during saving. Try to export your char and restart the App.</value>
   </data>
   <data name="Notification_Error_Converter_Error1.Text" xml:space="preserve">
     <value>could not store</value>
@@ -1009,7 +1009,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Range</value>
   </data>
   <data name="Model_Vehikel_Wert.Text" xml:space="preserve">
-    <value>Damage</value>
+    <value>Stufe</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Datei_Import.Label" xml:space="preserve">
     <value>Char Import</value>
@@ -1202,5 +1202,11 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   </data>
   <data name="Notification_Error_LogicFail" xml:space="preserve">
     <value>Programlogic-error</value>
+  </data>
+  <data name="CSV_EX_Selected.Text" xml:space="preserve">
+    <value>CSV Export (just selected)</value>
+  </data>
+  <data name="Error_GetFolder" xml:space="preserve">
+    <value>Error, couldn't get folder.</value>
   </data>
 </root>

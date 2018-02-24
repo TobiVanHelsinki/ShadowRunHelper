@@ -665,7 +665,22 @@ namespace ShadowRunHelper
                 ViewModel.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
         }
-
+        private void CSV_EX_Selected(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var CTRL = ((sender as FrameworkElement).DataContext as IController);
+                var block = Blocklist.First(x => x.Key == CTRL.eDataTyp);
+                //block.Value.ListView.ItemsPanel
+                var output = CTRL.Data2CSV(';', '\n');
+                SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypenHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
+            }
+            catch (Exception ex)
+            {
+                ViewModel.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
+            }
+        }
+        
         private void DeleteCategoryContent(object sender, RoutedEventArgs e)
         {
             try
