@@ -26,7 +26,7 @@ namespace ShadowRunHelper.CharController
 
         public virtual Thing AddNewThing()
         {
-            var newThing = (T)Activator.CreateInstance(TypenHelper.ThingDefToType(eDataTyp));
+            var newThing = (T)Activator.CreateInstance(TypeHelper.ThingDefToType(eDataTyp));
             Data.Add(newThing);
             return newThing;
         }
@@ -65,7 +65,7 @@ namespace ShadowRunHelper.CharController
         public Controller()
         {
             Data = new ObservableCollection<T>();
-            _eDataTyp = TypenHelper.TypeToThingDef(typeof(T));
+            _eDataTyp = TypeHelper.TypeToThingDef(typeof(T));
         }
 
         #region CSV

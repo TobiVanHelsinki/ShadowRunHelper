@@ -1,7 +1,7 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
-using SharedCodeBase.Model;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

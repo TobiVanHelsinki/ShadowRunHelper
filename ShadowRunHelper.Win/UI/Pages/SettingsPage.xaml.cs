@@ -49,7 +49,6 @@ namespace ShadowRunHelper
         public SettingsPage()
         {
             InitializeComponent();
-            SetSource();
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -70,22 +69,9 @@ namespace ShadowRunHelper
 
         #region Categories
 
-        void SetSource()
-        {
-            CharPageConfigListView.ItemsSource = Settings.BlockListOptions.Select(i => new CharPageConfigListViewItem() { Active = i.vis, Code = i.ThingType, Name = TypenHelper.ThingDefToString(i.ThingType, true) }).Where(x=>x.Name != "");
-        }
-
-        void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            Settings.BlockListOptions = CharPageConfigListView.ItemsPanelRoot.Children.Select(i =>
-                (((i as ListViewItem).Content as CharPageConfigListViewItem).Code,((i as ListViewItem).Content as CharPageConfigListViewItem).Active)
-            );
-        }
-
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            Settings.BlockListOptions = TypenHelper.ThingTypeList.Select(t=>(t.Item2,true));
-            SetSource();
+            Model.MainObject.Settings.ResetCategoryOptions();
         }
         #endregion
 

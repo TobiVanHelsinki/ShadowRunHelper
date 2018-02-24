@@ -1,6 +1,6 @@
 ﻿using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
-using SharedCodeBase.Model;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
+
 namespace ShadowRunHelper.Model
 {
     /// <summary>
@@ -53,6 +54,7 @@ namespace ShadowRunHelper.Model
         public Controller<Fertigkeit> CTRLFertigkeit { get; set; }
         public Controller<Handlung> CTRLHandlung { get; set; }
         public Person Person { get; set; }
+        public CharSettings Settings { get; set; }
         #endregion
         #region EASY ACCESS STUFF
 
@@ -185,6 +187,7 @@ namespace ShadowRunHelper.Model
 
 
             Person = new Person();
+            Settings = new CharSettings();
             CTRLAttribut.SetDependencies(Person, CTRLImplantat.Data);
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
             _LinkList = new List<AllListEntry>();
@@ -240,6 +243,7 @@ namespace ShadowRunHelper.Model
             {
                 RepairThingListRefs(item.PoolZusammensetzung, LinkList);
             }
+            Settings.AddMissingCategories();
         }
         public IController ThingDef2CTRL(ThingDefs tag)
         {
@@ -283,7 +287,9 @@ namespace ShadowRunHelper.Model
         {
             // Don't register AnyPropertyChanged() at the PropertyChanged  Event of this Class -> endless loop;
             Person.PropertyChanged -= (x, y) => AnyPropertyChanged();
+            Settings.PropertyChanged -= (x, y) => AnyPropertyChanged();
             Person.PropertyChanged += (x, y) => AnyPropertyChanged();
+            Settings.PropertyChanged += (x, y) => AnyPropertyChanged();
             foreach (var item in lstCTRL)
             {
                 item.RegisterEventAtData(AnyPropertyChanged);

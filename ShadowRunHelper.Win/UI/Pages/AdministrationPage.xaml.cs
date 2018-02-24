@@ -421,7 +421,7 @@ namespace ShadowRunHelper
                 {
                     ret += item.Data2CSV(';', '\n');
                 }
-                var ContentList = CharToSave.lstCTRL.Select(c => (TypenHelper.ThingDefToString(c.eDataTyp, true) + Constants.DATEIENDUNG_CSV, c.Data2CSV(';', '\n')));
+                var ContentList = CharToSave.lstCTRL.Select(c => (TypeHelper.ThingDefToString(c.eDataTyp, true) + Constants.DATEIENDUNG_CSV, c.Data2CSV(';', '\n')));
                 SharedIO.SaveTextesToFiles(ContentList, new FileInfoClass (){Fileplace=Place.Extern, FolderToken = "CSV_TEMP" });
             }
             catch (Exception ex)

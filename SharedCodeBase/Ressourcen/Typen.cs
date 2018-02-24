@@ -1,10 +1,14 @@
 ﻿
 
 using ShadowRunHelper.CharModel;
+using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME;
+using TLIB_UWPFRAME.Model;
 
 namespace ShadowRunHelper
 {
@@ -60,8 +64,75 @@ namespace ShadowRunHelper
         Zaubersprueche = 24,
         Berechnet = 25,
     }
+    public class ThingTypeProperty : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+        }
+        Type _Type;
+        public Type Type
+        {
+            get { return _Type; }
+            set { _Type = value; NotifyPropertyChanged(); }
+        }
 
-    public static class TypenHelper
+        ThingDefs _ThingType;
+        public ThingDefs ThingType
+        {
+            get { return _ThingType; }
+            set { _ThingType = value; NotifyPropertyChanged(); }
+        }
+
+        bool _vis = true;
+        public bool Visibility
+        {
+            get { return _vis; }
+            set { _vis = value; NotifyPropertyChanged(); }
+        }
+        int _pivot;
+        public int Pivot
+        {
+            get { return _pivot; }
+            set { _pivot = value; NotifyPropertyChanged(); }
+        }
+        string _DisplayNameSingular;
+        public string DisplayNameSingular
+        {
+            get { return _DisplayNameSingular; }
+            set { _DisplayNameSingular = value; NotifyPropertyChanged(); }
+        }
+        string _DisplayNamePlural;
+        public string DisplayNamePlural
+        {
+            get { return _DisplayNamePlural; }
+            set { _DisplayNamePlural = value; NotifyPropertyChanged(); }
+        }
+        bool _Usable = true;
+        public bool Usable
+        {
+            get { return _Usable; }
+            set { _Usable = value; NotifyPropertyChanged(); }
+        }
+
+
+        public ThingTypeProperty(Type type, ThingDefs item, int v1, int v2)
+        {
+            Type = type;
+            ThingType = item;
+            Pivot = v1;
+            Order = v2;
+        }
+
+        int _Order;
+        public int Order
+        {
+            get { return _Order; }
+            set { _Order = value; NotifyPropertyChanged(); }
+        }
+    }
+    public static class TypeHelper
     {
         public const int ThingDefsCount = 27;
 
@@ -191,40 +262,50 @@ namespace ShadowRunHelper
         }
         public static Type ThingDefToType(ThingDefs eThingDefToConvert)
         {
-            return ThingTypeList.FirstOrDefault(x => x.Item2 == eThingDefToConvert).Item1;
+            return ThingTypeProperties.FirstOrDefault(x => x.ThingType == eThingDefToConvert).Type;
         }
 
-        public static List<(Type, ThingDefs)> ThingTypeList = new List<(Type, ThingDefs)>() {
-            (typeof(Handlung),ThingDefs.Handlung),
-            (typeof(Fertigkeit),ThingDefs.Fertigkeit),
-            (typeof(Item),ThingDefs.Item),
-            (typeof(Programm),ThingDefs.Programm),
-            (typeof(Munition),ThingDefs.Munition),
-            (typeof(Implantat),ThingDefs.Implantat),
-            (typeof(Vorteil),ThingDefs.Vorteil),
-            (typeof(Nachteil),ThingDefs.Nachteil),
-            (typeof(Connection),ThingDefs.Connection),
-            (typeof(Sin),ThingDefs.Sin),
-            (typeof(Attribut),ThingDefs.Attribut),
-            (typeof(Berechnet),ThingDefs.Berechnet),
-            (typeof(Nahkampfwaffe),ThingDefs.Nahkampfwaffe),
-            (typeof(Fernkampfwaffe),ThingDefs.Fernkampfwaffe),
-            (typeof(Kommlink),ThingDefs.Kommlink),
-            (typeof(CyberDeck),ThingDefs.CyberDeck),
-            (typeof(Vehikel),ThingDefs.Vehikel),
-            (typeof(Panzerung),ThingDefs.Panzerung),
-            (typeof(Eigenschaft),ThingDefs.Eigenschaft),
-            (typeof(Adeptenkraft_KomplexeForm),ThingDefs.Adeptenkraft_KomplexeForm),
-            (typeof(Foki_Widgets),ThingDefs.Foki_Widgets),
-            (typeof(Geist_Sprite),ThingDefs.Geist_Sprite),
-            (typeof(Stroemung_Wandlung),ThingDefs.Stroemung_Wandlung),
-            (typeof(Tradition_Initiation),ThingDefs.Tradition_Initiation),
-            (typeof(Zaubersprueche),ThingDefs.Zaubersprueche)
+        public static List<ThingTypeProperty> ThingTypeProperties = new List<ThingTypeProperty>() {
+           new ThingTypeProperty(null,ThingDefs.Undef, 0, 0){ Usable = false },
+           new ThingTypeProperty(null,ThingDefs.UndefTemp, 0, 0){ Usable = false },
+           new ThingTypeProperty(typeof(Eigenschaft),ThingDefs.Eigenschaft, 0, 0){ Usable = false },
+           new ThingTypeProperty(typeof(Handlung),ThingDefs.Handlung, 0, 0),
+           new ThingTypeProperty(typeof(Fertigkeit),ThingDefs.Fertigkeit, 0, 1),
+           new ThingTypeProperty(typeof(Item),ThingDefs.Item, 1, 0),
+           new ThingTypeProperty(typeof(Programm),ThingDefs.Programm, 0, 0),
+           new ThingTypeProperty(typeof(Munition),ThingDefs.Munition, 0, 0),
+           new ThingTypeProperty(typeof(Implantat),ThingDefs.Implantat, 0, 0),
+           new ThingTypeProperty(typeof(Vorteil),ThingDefs.Vorteil, 0, 0),
+           new ThingTypeProperty(typeof(Nachteil),ThingDefs.Nachteil, 0, 0),
+           new ThingTypeProperty(typeof(Connection),ThingDefs.Connection, 0, 0),
+           new ThingTypeProperty(typeof(Sin),ThingDefs.Sin, 0, 0),
+           new ThingTypeProperty(typeof(Attribut),ThingDefs.Attribut, 0, 0),
+           new ThingTypeProperty(typeof(Berechnet),ThingDefs.Berechnet, 0, 0),
+           new ThingTypeProperty(typeof(Nahkampfwaffe),ThingDefs.Nahkampfwaffe, 0, 0),
+           new ThingTypeProperty(typeof(Fernkampfwaffe),ThingDefs.Fernkampfwaffe, 0, 0),
+           new ThingTypeProperty(typeof(Kommlink),ThingDefs.Kommlink, 0, 0),
+           new ThingTypeProperty(typeof(CyberDeck),ThingDefs.CyberDeck, 0, 0),
+           new ThingTypeProperty(typeof(Vehikel),ThingDefs.Vehikel, 0, 0),
+           new ThingTypeProperty(typeof(Panzerung),ThingDefs.Panzerung, 0, 0),
+           new ThingTypeProperty(typeof(Eigenschaft),ThingDefs.Eigenschaft, 0, 0){ Usable = false },
+           new ThingTypeProperty(typeof(Adeptenkraft_KomplexeForm),ThingDefs.Adeptenkraft_KomplexeForm, 0, 0),
+           new ThingTypeProperty(typeof(Foki_Widgets),ThingDefs.Foki_Widgets, 0, 0),
+           new ThingTypeProperty(typeof(Geist_Sprite),ThingDefs.Geist_Sprite, 0, 0),
+           new ThingTypeProperty(typeof(Stroemung_Wandlung),ThingDefs.Stroemung_Wandlung, 0, 0),
+           new ThingTypeProperty(typeof(Tradition_Initiation),ThingDefs.Tradition_Initiation, 0, 0),
+           new ThingTypeProperty(typeof(Zaubersprueche),ThingDefs.Zaubersprueche,0,0)
         };
 
         public static ThingDefs TypeToThingDef(Type type)
         {
-            return ThingTypeList.FirstOrDefault(x=>x.Item1 == type).Item2;
+            try
+            {
+                return ThingTypeProperties.Find(x => x.Type == type).ThingType;
+            }
+            catch (Exception)
+            {
+                return ThingDefs.Undef;
+            }
         }
 
         public static ThingDefs Obj2ThingDef(int tag)
@@ -233,7 +314,7 @@ namespace ShadowRunHelper
         }
         public static ThingDefs Obj2ThingDef(string Name)
         {
-            return ThingTypeList.First(t => t.Item2.ToString() == Name).Item2;
+            return ThingTypeProperties.First(t => t.ThingType.ToString() == Name).ThingType;
         }
         public static ThingDefs Obj2ThingDef(object tag)
         {

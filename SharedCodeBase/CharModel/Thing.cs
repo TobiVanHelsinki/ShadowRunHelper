@@ -1,5 +1,4 @@
 ﻿using ShadowRunHelper.Model;
-using SharedCodeBase.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +38,7 @@ namespace ShadowRunHelper.CharModel
         }
         public Thing()
         {
-            ThingType = TypenHelper.TypeToThingDef(GetType());
+            ThingType = TypeHelper.TypeToThingDef(GetType());
         }
         ThingDefs thingType = 0;
         [Newtonsoft.Json.JsonIgnore]
@@ -294,7 +293,7 @@ namespace ShadowRunHelper.CharModel
         {
 
             float retval = 0;
-            if (TypenHelper.ThingDefToString(ThingType, false).ToLower().Contains(text))
+            if (TypeHelper.ThingDefToString(ThingType, false).ToLower().Contains(text))
             {
                 retval += 0.4f;
             }

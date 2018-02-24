@@ -323,12 +323,12 @@ namespace ShadowRunHelper
         /// <summary>
         /// for fast Accces
         /// </summary>
-        public readonly IEnumerable<(ThingDefs ThingType, bool vis)> LocalBlockListOptions = SettingsModel.I.BlockListOptions;
+        public readonly IEnumerable<CategoryOption> lokalCategoryOptions = AppModel.Instance.MainObject.Settings.CategoryOptions;
 
         void ContentControl_Loaded(object sender, RoutedEventArgs e)
         {
             var ControlBlock = sender as ContentControl;
-            ThingDefs Type = TypenHelper.Obj2ThingDef(ControlBlock.Tag);
+            ThingDefs Type = TypeHelper.Obj2ThingDef(ControlBlock.Tag);
 
             //Temp Vars
             TextBlock U = ((((ControlBlock.ContentTemplateRoot as Panel).Children[0] as Panel)/*.Children[0] as Panel*/).Children.First(c => c.GetType() == typeof(TextBlock)) as TextBlock);
@@ -347,8 +347,8 @@ namespace ShadowRunHelper
             Blocklist.Remove((ThingDefs)int.Parse(ControlBlock.Tag as string));
             Blocklist.Add((ThingDefs)int.Parse(ControlBlock.Tag as string), NewBlock);
 
-            var entry = LocalBlockListOptions.FirstOrDefault(x => x.ThingType == Type);
-            if (!entry.vis)
+            var entry = lokalCategoryOptions.FirstOrDefault(x => x.ThingType == Type);
+            if (!entry.Visibility)
             {
                 ControlBlock.Visibility = Visibility.Collapsed;
                 //return;
@@ -527,7 +527,7 @@ namespace ShadowRunHelper
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => LocalBlockListOptions.First(y => y.ThingType == x.ThingType).vis).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => lokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
         }
 
         void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
@@ -540,7 +540,7 @@ namespace ShadowRunHelper
                 }
                 else
                 {
-                    PendingScrollEntry = MainObject.ThingList.Where(x => LocalBlockListOptions.First(y => y.ThingType == x.ThingType).vis).ToList().Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+                    PendingScrollEntry = MainObject.ThingList.Where(x => lokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).ToList().Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
                 }
                 if (PendingScrollEntry == null)
                 {
@@ -658,7 +658,7 @@ namespace ShadowRunHelper
             {
                 var CTRL = ((sender as FrameworkElement).DataContext as IController);
                 var output = CTRL.Data2CSV(';', '\n');
-                SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypenHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
+                SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypeHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
             }
             catch (Exception ex)
             {
@@ -673,7 +673,7 @@ namespace ShadowRunHelper
                 var block = Blocklist.First(x => x.Key == CTRL.eDataTyp);
                 //block.Value.ListView.ItemsPanel
                 var output = CTRL.Data2CSV(';', '\n');
-                SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypenHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
+                SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypeHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
             }
             catch (Exception ex)
             {

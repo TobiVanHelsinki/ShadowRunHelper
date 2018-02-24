@@ -15,7 +15,7 @@ namespace ShadowRunHelper.UI.Edit
         {
             Data = data;
             InitializeComponent();
-            Title = TypenHelper.ThingDefToString(Data.ThingType, false);
+            Title = TypeHelper.ThingDefToString(Data.ThingType, false);
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

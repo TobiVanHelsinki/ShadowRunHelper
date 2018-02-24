@@ -25,7 +25,7 @@ namespace ShadowRunHelper.Model
                 }
             }
         }
-        Thing _Object = new Thing();
+        Thing _Object /*= new Thing()*/;
         public Thing Object
         {
             get

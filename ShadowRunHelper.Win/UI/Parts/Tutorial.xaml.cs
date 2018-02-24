@@ -1,6 +1,6 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using SharedCodeBase.Model;
+using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;

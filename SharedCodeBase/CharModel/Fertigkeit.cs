@@ -1,5 +1,4 @@
 ﻿using ShadowRunHelper.Model;
-using SharedCodeBase.Model;
 using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel

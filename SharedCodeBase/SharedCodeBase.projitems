@@ -51,6 +51,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Panzerung.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Person.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Programm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\CharSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Sin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Strömung_Wandlung.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Thing.cs" />
