@@ -188,7 +188,6 @@ namespace ShadowRunHelper.Model
 
             Person = new Person();
             Settings = new CharSettings();
-            Settings.AddMissingCategories();
             CTRLAttribut.SetDependencies(Person, CTRLImplantat.Data);
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
             _LinkList = new List<AllListEntry>();
@@ -244,7 +243,7 @@ namespace ShadowRunHelper.Model
             {
                 RepairThingListRefs(item.PoolZusammensetzung, LinkList);
             }
-            Settings.AddMissingCategories();
+            Settings.Refresh();
         }
         public IController ThingDef2CTRL(ThingDefs tag)
         {

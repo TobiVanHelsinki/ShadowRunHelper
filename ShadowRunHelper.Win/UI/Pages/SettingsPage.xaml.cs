@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +11,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
-
 namespace ShadowRunHelper
 {
-    class CharPageConfigListViewItem
-    {
-        public string Name
-        {
-            get; set;
-        }
-        public ThingDefs Code
-        {
-            get; set;
-        }
-        public bool Active
-        {
-            get;
-            set;
-        }
-    }
-    /// <summary>
-    /// Eine leere Seite, die eigenstaendig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
-    /// </summary>
     public sealed partial class SettingsPage : Page
     {
         readonly SettingsModel Settings = SettingsModel.Instance;
@@ -46,6 +26,7 @@ namespace ShadowRunHelper
         readonly string AppLink = Constants.APP_STORE_LINK;
         readonly List<HelpEntry> Help = Constants.HelpList;
 
+
         public SettingsPage()
         {
             InitializeComponent();
@@ -56,7 +37,6 @@ namespace ShadowRunHelper
             {
                 case ProjectPagesOptions.SettingsMain:
                 case ProjectPagesOptions.SettingsOptions:
-                case ProjectPagesOptions.SettingsCategories:
                 case ProjectPagesOptions.SettingsHelp:
                     MainNavigation.SelectedItem = MainNavigation.Items.FirstOrDefault(
                         x => (x as PivotItem).Tag.ToString() == ((int)e.Parameter).ToString());
@@ -66,14 +46,6 @@ namespace ShadowRunHelper
             }
             base.OnNavigatedTo(e);  
         }
-
-        #region Categories
-
-        private void ResetButton_Click(object sender, RoutedEventArgs e)
-        {
-            Model.MainObject.Settings.ResetCategoryOptions();
-        }
-        #endregion
 
         #region Gui Stuff ##########################################
         /// <summary>

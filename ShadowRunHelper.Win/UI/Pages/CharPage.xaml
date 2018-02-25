@@ -63,11 +63,6 @@
                                             <FontIcon Glyph="&#xE74D;" />
                                         </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
-                                    <MenuFlyoutItem x:Name="FurtherSettings" Click="FurtherSettings" x:Uid="FurtherSettings" >
-                                        <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph="&#xE713;" />
-                                        </MenuFlyoutItem.Icon>
-                                    </MenuFlyoutItem>
                                 </MenuFlyout>
                             </Button.Flyout>
                             </Button>
@@ -2122,6 +2117,39 @@
                 </Border>
             </PivotItem.Header>
             <TextBox Name="NoteTextBox" Text="{x:Bind MainObject.Person.Notizen, Mode=TwoWay}" Style="{StaticResource NotesBox}"/>
+        </PivotItem>
+        <PivotItem Style="{StaticResource TabsStylePivotStylePivotItem}">
+            <PivotItem.Header>
+                <Border x:Name="PivotHeader6Border">
+                    <local:TabHeader x:Uid="Char_View_Pivot_Settings" Glyph="&#xE713;" />
+                </Border>
+            </PivotItem.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListView Grid.ColumnSpan="2" ItemsSource="{x:Bind Model.MainObject.Settings.CategoryOptions, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="CharModel:CategoryOption">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ToggleSwitch IsOn="{x:Bind Visibility, Mode=TwoWay}"/>
+                                <TextBlock VerticalAlignment="Center" Grid.Column="1" Text="{x:Bind ThingType, Converter={StaticResource o_ThingDef2String}}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button x:Uid="UI_Settings_Btn_Speichern" Margin="10" HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="1" Click="ApplyButton_Click" Loaded="Button_Loaded"/>
+                <Button x:Uid="UI_Settings_Btn_Reset" Margin="10" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1" Click="ResetButton_Click" Loaded="Button_Loaded"/>
+            </Grid>
         </PivotItem>
     </Pivot>
 </Page>

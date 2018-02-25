@@ -1,6 +1,4 @@
 ﻿
-
-using ShadowRunHelper.CharModel;
 using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.Generic;
@@ -12,6 +10,11 @@ using TLIB_UWPFRAME.Model;
 
 namespace ShadowRunHelper
 {
+    public enum FolderMode
+    {
+        Intern, Extern
+    }
+
     public enum ProjectPages
     {
         undef = 0,
@@ -78,7 +81,7 @@ namespace ShadowRunHelper
             set { _Type = value; NotifyPropertyChanged(); }
         }
 
-        ThingDefs _ThingType;
+        ThingDefs _ThingType = ThingDefs.UndefTemp;
         public ThingDefs ThingType
         {
             get { return _ThingType; }
@@ -97,13 +100,13 @@ namespace ShadowRunHelper
             get { return _pivot; }
             set { _pivot = value; NotifyPropertyChanged(); }
         }
-        string _DisplayNameSingular;
+        string _DisplayNameSingular = "";
         public string DisplayNameSingular
         {
             get { return _DisplayNameSingular; }
             set { _DisplayNameSingular = value; NotifyPropertyChanged(); }
         }
-        string _DisplayNamePlural;
+        string _DisplayNamePlural = "";
         public string DisplayNamePlural
         {
             get { return _DisplayNamePlural; }
@@ -116,6 +119,12 @@ namespace ShadowRunHelper
             set { _Usable = value; NotifyPropertyChanged(); }
         }
 
+        int _Order;
+        public int Order
+        {
+            get { return _Order; }
+            set { _Order = value; NotifyPropertyChanged(); }
+        }
 
         public ThingTypeProperty(Type type, ThingDefs item, int v1, int v2)
         {
@@ -125,176 +134,76 @@ namespace ShadowRunHelper
             Order = v2;
         }
 
-        int _Order;
-        public int Order
+        public ThingTypeProperty(Type type, ThingDefs item, int v1, int v2, string singular, string plural) : this(type, item, v1, v2)
         {
-            get { return _Order; }
-            set { _Order = value; NotifyPropertyChanged(); }
+            DisplayNameSingular = singular;
+            DisplayNamePlural = plural;
+        }
+
+        public override string ToString()
+        {
+            return DisplayNamePlural;
         }
     }
     public static class TypeHelper
     {
         public const int ThingDefsCount = 27;
+        private static List<ThingTypeProperty> thingTypeProperties = new List<ThingTypeProperty>() {
+           new ThingTypeProperty(null,ThingDefs.Undef, 0, 0){ Usable = false },
+           new ThingTypeProperty(null,ThingDefs.UndefTemp, 0, 0){ Usable = false },
+           new ThingTypeProperty(typeof(Eigenschaft),ThingDefs.Eigenschaft, 0, 0){ Usable = false },
+           new ThingTypeProperty(typeof(Handlung),ThingDefs.Handlung, 0, 0,"Model_Handlung_/Text","Model_HandlungM_/Text"),
+           new ThingTypeProperty(typeof(Fertigkeit),ThingDefs.Fertigkeit, 0, 1,"Model_Fertigkeit_/Text","Model_FertigkeitM_/Text"),
+           new ThingTypeProperty(typeof(Item),ThingDefs.Item, 1, 0,"Model_Item_/Text","Model_ItemM_/Text"),
+           new ThingTypeProperty(typeof(Programm),ThingDefs.Programm, 0, 0,"Model_Programm_/Text","Model_ProgrammM_/Text"),
+           new ThingTypeProperty(typeof(Munition),ThingDefs.Munition, 0, 0,"Model_Munition_/Text","Model_MunitionM_/Text"),
+           new ThingTypeProperty(typeof(Implantat),ThingDefs.Implantat, 0, 0,"Model_Implantat_/Text","Model_ImplantatM_/Text"),
+           new ThingTypeProperty(typeof(Vorteil),ThingDefs.Vorteil, 0, 0,"Model_Vorteil_/Text","Model_VorteilM_/Text"),
+           new ThingTypeProperty(typeof(Nachteil),ThingDefs.Nachteil, 0, 0,"Model_Nachteil_/Text","Model_NachteilM_/Text"),
+           new ThingTypeProperty(typeof(Connection),ThingDefs.Connection, 0, 0,"Model_Connection_/Text","Model_ConnectionM_/Text"),
+           new ThingTypeProperty(typeof(Sin),ThingDefs.Sin, 0, 0,"Model_Sin_/Text","Model_SinM_/Text"),
+           new ThingTypeProperty(typeof(Attribut),ThingDefs.Attribut, 0, 0,"Model_Attribut_/Text","Model_AttributM_/Text"),
+           new ThingTypeProperty(typeof(Berechnet),ThingDefs.Berechnet, 0, 0,"Model_Berechnet_/Text","Model_BerechnetM_/Text"),
+           new ThingTypeProperty(typeof(Nahkampfwaffe),ThingDefs.Nahkampfwaffe, 0, 0,"Model_Nahkampfwaffe_/Text","Model_NahkampfwaffeM_/Text"),
+           new ThingTypeProperty(typeof(Fernkampfwaffe),ThingDefs.Fernkampfwaffe, 0, 0,"Model_Fernkampfwaffe_/Text","Model_FernkampfwaffeM_/Text"),
+           new ThingTypeProperty(typeof(Kommlink),ThingDefs.Kommlink, 0, 0,"Model_Kommlink_/Text","Model_KommlinkM_/Text"),
+           new ThingTypeProperty(typeof(CyberDeck),ThingDefs.CyberDeck, 0, 0,"Model_CyberDeck_/Text","Model_CyberDeckM_/Text"),
+           new ThingTypeProperty(typeof(Vehikel),ThingDefs.Vehikel, 0, 0,"Model_Vehikel_/Text","Model_VehikelM_/Text"),
+           new ThingTypeProperty(typeof(Panzerung),ThingDefs.Panzerung, 0, 0,"Model_Panzerung_/Text","Model_PanzerungM_/Text"),
+           new ThingTypeProperty(typeof(Eigenschaft),ThingDefs.Eigenschaft, 0, 0,"Model_Eigenschaft_/Text","Model_EigenschaftgM_/Text"){ Usable = false },
+           new ThingTypeProperty(typeof(Adeptenkraft_KomplexeForm),ThingDefs.Adeptenkraft_KomplexeForm, 0, 0,"Model_Adeptenkraft_KomplexeForm_/Text","Model_Adeptenkraft_KomplexeFormM_/Text"),
+           new ThingTypeProperty(typeof(Foki_Widgets),ThingDefs.Foki_Widgets, 0, 0,"Model_Foki_Widgets_/Text","Model_Foki_WidgetsM_/Text"),
+           new ThingTypeProperty(typeof(Geist_Sprite),ThingDefs.Geist_Sprite, 0, 0,"Model_Geist_Sprite_/Text","Model_Geist_SpriteM_/Text"),
+           new ThingTypeProperty(typeof(Stroemung_Wandlung),ThingDefs.Stroemung_Wandlung, 0, 0,"Model_Stroemung_Wandlung_/Text","Model_Stroemung_WandlungM_/Text"),
+           new ThingTypeProperty(typeof(Tradition_Initiation),ThingDefs.Tradition_Initiation, 0, 0,"Model_Tradition_Initiation_/Text","Model_Tradition_InitiationM_/Text"),
+           new ThingTypeProperty(typeof(Zaubersprueche),ThingDefs.Zaubersprueche,0,0,"Model_Zaubersprueche_/Text","Model_ZauberspruecheM_/Text"),
+        };
+
+        public static List<ThingTypeProperty> ThingTypeProperties { get => thingTypeProperties; set => thingTypeProperties = value; }
+
 
         public static string ThingDefToString(ThingDefs eThingDefToConvert, bool Mehrzahl)
         {
-            if (Mehrzahl == false)
+            try
             {
-                switch (eThingDefToConvert)
+                if (Mehrzahl)
                 {
-                    case ThingDefs.UndefTemp:
-                        return "";
-                    case ThingDefs.Undef:
-                        return "";
-                    case ThingDefs.Handlung:
-                        return CrossPlatformHelper.GetString("Model_Handlung_/Text");
-                    case ThingDefs.Fertigkeit:
-                        return CrossPlatformHelper.GetString("Model_Fertigkeit_/Text");
-                    case ThingDefs.Item:
-                        return CrossPlatformHelper.GetString("Model_Item_/Text");
-                    case ThingDefs.Programm:
-                        return CrossPlatformHelper.GetString("Model_Programm_/Text");
-                    case ThingDefs.Munition:
-                        return CrossPlatformHelper.GetString("Model_Munition_/Text");
-                    case ThingDefs.Implantat:
-                        return CrossPlatformHelper.GetString("Model_Implantat_/Text");
-                    case ThingDefs.Vorteil:
-                        return CrossPlatformHelper.GetString("Model_Vorteil_/Text");
-                    case ThingDefs.Nachteil:
-                        return CrossPlatformHelper.GetString("Model_Nachteil_/Text");
-                    case ThingDefs.Connection:
-                        return CrossPlatformHelper.GetString("Model_Connection_/Text");
-                    case ThingDefs.Sin:
-                        return CrossPlatformHelper.GetString("Model_Sin_/Text");
-                    case ThingDefs.Attribut:
-                        return CrossPlatformHelper.GetString("Model_Attribut_/Text");
-                    case ThingDefs.Berechnet:
-                        return CrossPlatformHelper.GetString("Model_Berechnet_/Text");
-                    case ThingDefs.Nahkampfwaffe:
-                        return CrossPlatformHelper.GetString("Model_Nahkampfwaffe_/Text");
-                    case ThingDefs.Fernkampfwaffe:
-                        return CrossPlatformHelper.GetString("Model_Fernkampfwaffe_/Text");
-                    case ThingDefs.Kommlink:
-                        return CrossPlatformHelper.GetString("Model_Kommlink_/Text");
-                    case ThingDefs.CyberDeck:
-                        return CrossPlatformHelper.GetString("Model_CyberDeck_/Text");
-                    case ThingDefs.Vehikel:
-                        return CrossPlatformHelper.GetString("Model_Vehikel_/Text");
-                    case ThingDefs.Panzerung:
-                        return CrossPlatformHelper.GetString("Model_Panzerung_/Text");
-                    case ThingDefs.Adeptenkraft_KomplexeForm:
-                        return CrossPlatformHelper.GetString("Model_Adeptenkraft_KomplexeForm_/Text");
-                    case ThingDefs.Geist_Sprite:
-                        return CrossPlatformHelper.GetString("Model_Geist_Sprite_/Text");
-                    case ThingDefs.Foki_Widgets:
-                        return CrossPlatformHelper.GetString("Model_Foki_Widgets_/Text");
-                    case ThingDefs.Stroemung_Wandlung:
-                        return CrossPlatformHelper.GetString("Model_Stroemung_Wandlung_/Text");
-                    case ThingDefs.Tradition_Initiation:
-                        return CrossPlatformHelper.GetString("Model_Tradition_Initiation_/Text");
-                    case ThingDefs.Zaubersprueche:
-                        return CrossPlatformHelper.GetString("Model_Zaubersprueche_/Text");
-                    default:
-                        break;
+                    return CrossPlatformHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
+                }
+                else
+                {
+                    return CrossPlatformHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                switch (eThingDefToConvert)
-                {
-                    case ThingDefs.UndefTemp:
-                        return "";
-                    case ThingDefs.Undef:
-                        return "";
-                    case ThingDefs.Handlung:
-                        return CrossPlatformHelper.GetString("Model_HandlungM_/Text");
-                    case ThingDefs.Fertigkeit:
-                        return CrossPlatformHelper.GetString("Model_FertigkeitM_/Text");
-                    case ThingDefs.Item:
-                        return CrossPlatformHelper.GetString("Model_ItemM_/Text");
-                    case ThingDefs.Programm:
-                        return CrossPlatformHelper.GetString("Model_ProgrammM_/Text");
-                    case ThingDefs.Munition:
-                        return CrossPlatformHelper.GetString("Model_MunitionM_/Text");
-                    case ThingDefs.Implantat:
-                        return CrossPlatformHelper.GetString("Model_ImplantatM_/Text");
-                    case ThingDefs.Vorteil:
-                        return CrossPlatformHelper.GetString("Model_VorteilM_/Text");
-                    case ThingDefs.Nachteil:
-                        return CrossPlatformHelper.GetString("Model_NachteilM_/Text");
-                    case ThingDefs.Connection:
-                        return CrossPlatformHelper.GetString("Model_ConnectionM_/Text");
-                    case ThingDefs.Sin:
-                        return CrossPlatformHelper.GetString("Model_SinM_/Text");
-                    case ThingDefs.Attribut:
-                        return CrossPlatformHelper.GetString("Model_AttributM_/Text");
-                    case ThingDefs.Berechnet:
-                        return CrossPlatformHelper.GetString("Model_BerechnetM_/Text");
-                    case ThingDefs.Nahkampfwaffe:
-                        return CrossPlatformHelper.GetString("Model_NahkampfwaffeM_/Text");
-                    case ThingDefs.Fernkampfwaffe:
-                        return CrossPlatformHelper.GetString("Model_FernkampfwaffeM_/Text");
-                    case ThingDefs.Kommlink:
-                        return CrossPlatformHelper.GetString("Model_KommlinkM_/Text");
-                    case ThingDefs.CyberDeck:
-                        return CrossPlatformHelper.GetString("Model_CyberDeckM_/Text");
-                    case ThingDefs.Vehikel:
-                        return CrossPlatformHelper.GetString("Model_VehikelM_/Text");
-                    case ThingDefs.Panzerung:
-                        return CrossPlatformHelper.GetString("Model_PanzerungM_/Text");
-                    case ThingDefs.Adeptenkraft_KomplexeForm:
-                        return CrossPlatformHelper.GetString("Model_Adeptenkraft_KomplexeFormM_/Text");
-                    case ThingDefs.Geist_Sprite:
-                        return CrossPlatformHelper.GetString("Model_Geist_SpriteM_/Text");
-                    case ThingDefs.Foki_Widgets:
-                        return CrossPlatformHelper.GetString("Model_Foki_WidgetsM_/Text");
-                    case ThingDefs.Stroemung_Wandlung:
-                        return CrossPlatformHelper.GetString("Model_Stroemung_WandlungM_/Text");
-                    case ThingDefs.Tradition_Initiation:
-                        return CrossPlatformHelper.GetString("Model_Tradition_InitiationM_/Text");
-                    case ThingDefs.Zaubersprueche:
-                        return CrossPlatformHelper.GetString("Model_ZauberspruecheM_/Text");
-                    default:
-                        break;
-                }
+                return "N/A";
             }
-            return "";
         }
         public static Type ThingDefToType(ThingDefs eThingDefToConvert)
         {
             return ThingTypeProperties.FirstOrDefault(x => x.ThingType == eThingDefToConvert).Type;
         }
-
-        public static List<ThingTypeProperty> ThingTypeProperties = new List<ThingTypeProperty>() {
-           new ThingTypeProperty(null,ThingDefs.Undef, 0, 0){ Usable = false },
-           new ThingTypeProperty(null,ThingDefs.UndefTemp, 0, 0){ Usable = false },
-           new ThingTypeProperty(typeof(Eigenschaft),ThingDefs.Eigenschaft, 0, 0){ Usable = false },
-           new ThingTypeProperty(typeof(Handlung),ThingDefs.Handlung, 0, 0),
-           new ThingTypeProperty(typeof(Fertigkeit),ThingDefs.Fertigkeit, 0, 1),
-           new ThingTypeProperty(typeof(Item),ThingDefs.Item, 1, 0),
-           new ThingTypeProperty(typeof(Programm),ThingDefs.Programm, 0, 0),
-           new ThingTypeProperty(typeof(Munition),ThingDefs.Munition, 0, 0),
-           new ThingTypeProperty(typeof(Implantat),ThingDefs.Implantat, 0, 0),
-           new ThingTypeProperty(typeof(Vorteil),ThingDefs.Vorteil, 0, 0),
-           new ThingTypeProperty(typeof(Nachteil),ThingDefs.Nachteil, 0, 0),
-           new ThingTypeProperty(typeof(Connection),ThingDefs.Connection, 0, 0),
-           new ThingTypeProperty(typeof(Sin),ThingDefs.Sin, 0, 0),
-           new ThingTypeProperty(typeof(Attribut),ThingDefs.Attribut, 0, 0),
-           new ThingTypeProperty(typeof(Berechnet),ThingDefs.Berechnet, 0, 0),
-           new ThingTypeProperty(typeof(Nahkampfwaffe),ThingDefs.Nahkampfwaffe, 0, 0),
-           new ThingTypeProperty(typeof(Fernkampfwaffe),ThingDefs.Fernkampfwaffe, 0, 0),
-           new ThingTypeProperty(typeof(Kommlink),ThingDefs.Kommlink, 0, 0),
-           new ThingTypeProperty(typeof(CyberDeck),ThingDefs.CyberDeck, 0, 0),
-           new ThingTypeProperty(typeof(Vehikel),ThingDefs.Vehikel, 0, 0),
-           new ThingTypeProperty(typeof(Panzerung),ThingDefs.Panzerung, 0, 0),
-           new ThingTypeProperty(typeof(Eigenschaft),ThingDefs.Eigenschaft, 0, 0){ Usable = false },
-           new ThingTypeProperty(typeof(Adeptenkraft_KomplexeForm),ThingDefs.Adeptenkraft_KomplexeForm, 0, 0),
-           new ThingTypeProperty(typeof(Foki_Widgets),ThingDefs.Foki_Widgets, 0, 0),
-           new ThingTypeProperty(typeof(Geist_Sprite),ThingDefs.Geist_Sprite, 0, 0),
-           new ThingTypeProperty(typeof(Stroemung_Wandlung),ThingDefs.Stroemung_Wandlung, 0, 0),
-           new ThingTypeProperty(typeof(Tradition_Initiation),ThingDefs.Tradition_Initiation, 0, 0),
-           new ThingTypeProperty(typeof(Zaubersprueche),ThingDefs.Zaubersprueche,0,0)
-        };
 
         public static ThingDefs TypeToThingDef(Type type)
         {
@@ -322,8 +231,4 @@ namespace ShadowRunHelper
         }
     }
 
-    public enum FolderMode
-    {
-        Intern, Extern
-    }
 }

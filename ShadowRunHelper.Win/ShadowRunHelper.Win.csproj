@@ -127,6 +127,7 @@
     <Compile Include="UI\Converter\o_CharAdmin_Path.cs" />
     <Compile Include="UI\Converter\o_FileSize.cs" />
     <Compile Include="UI\Converter\o_ModelTyp.cs" />
+    <Compile Include="UI\Converter\o_ThingDef2String.cs" />
     <Compile Include="UI\Converter\o_ThingList.cs" />
     <Compile Include="UI\Converter\o_ZahlenYen.cs" />
     <Compile Include="UI\Pages\DBPage.xaml.cs">

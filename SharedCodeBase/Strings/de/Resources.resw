@@ -1216,7 +1216,7 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
     <value>Kategorien auswählen</value>
   </data>
   <data name="UI_Settings_Btn_Speichern.Content" xml:space="preserve">
-    <value>Speichern</value>
+    <value>Neuladen zum Anwenden</value>
   </data>
   <data name="UI_Settings_Btn_Reset.Content" xml:space="preserve">
     <value>Zurücksetzen</value>
@@ -1244,5 +1244,8 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   </data>
   <data name="Error_GetFolder" xml:space="preserve">
     <value>Fehler, konnte nicht auf Ordner zugreifen.</value>
+  </data>
+  <data name="Char_View_Pivot_Settings.Label" xml:space="preserve">
+    <value>Einstellungen</value>
   </data>
 </root>

@@ -1180,7 +1180,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Choose categories</value>
   </data>
   <data name="UI_Settings_Btn_Speichern.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>Reload to see changes</value>
   </data>
   <data name="UI_Settings_Btn_Reset.Content" xml:space="preserve">
     <value>Reset</value>
@@ -1208,5 +1208,8 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   </data>
   <data name="Error_GetFolder" xml:space="preserve">
     <value>Error, couldn't get folder.</value>
+  </data>
+  <data name="Char_View_Pivot_Settings.Label" xml:space="preserve">
+    <value>Settings</value>
   </data>
 </root>
