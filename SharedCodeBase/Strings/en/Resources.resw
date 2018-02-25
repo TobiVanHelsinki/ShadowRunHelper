@@ -1215,4 +1215,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Error_RepairLinkList" xml:space="preserve">
     <value>Could not restore link item: {0} </value>
   </data>
+  <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">
+    <value>Saving not possible, an other operation is in progress</value>
+  </data>
 </root>
