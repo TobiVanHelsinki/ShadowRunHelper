@@ -348,7 +348,7 @@ namespace ShadowRunHelper
             Blocklist.Add((ThingDefs)int.Parse(ControlBlock.Tag as string), NewBlock);
 
             var entry = lokalCategoryOptions.FirstOrDefault(x => x.ThingType == Type);
-            if (!entry.Visibility)
+            if (entry != null && !entry.Visibility)
             {
                 ControlBlock.Visibility = Visibility.Collapsed;
                 //return;

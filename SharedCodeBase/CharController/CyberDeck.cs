@@ -30,14 +30,14 @@ namespace ShadowRunHelper.CharController
         {
             //do not set any of these other than public because of serialisation
             get { return _ActiveItem; }
-            //private set
-            //{
-            //    if (value != _ActiveItem)
-            //    {
-            //        _ActiveItem = value;
-            //        NotifyPropertyChanged();
-            //    }
-            //}
+            set
+            {
+                if (value != _ActiveItem)
+                {
+                    _ActiveItem = value;
+                    NotifyPropertyChanged();
+                }
+            }
         }
 
         public CyberDeckController()

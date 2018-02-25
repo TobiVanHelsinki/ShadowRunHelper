@@ -28,7 +28,7 @@ namespace ShadowRunHelper.CharModel
         public Used_ListAttribute() { }
     }
 
-    public class Thing : INotifyPropertyChanged
+    public abstract class Thing : INotifyPropertyChanged
     {
         public const uint nThingPropertyCount = 5;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -155,27 +155,26 @@ namespace ShadowRunHelper.CharModel
 
         public Thing Copy(Thing target = null)
         {
-            //var a2 = ListTarget.Join< PropertyInfo, PropertyInfo,string, (PropertyInfo, PropertyInfo )> (ListThis, x => x.Name, y => y.Name, (p1, p2) => (p1, p2));
-
             if (target == null)
             {
                 target = (Thing)Activator.CreateInstance(this.GetType());
             }
-            var ListTarget = GetProperties(target);
-            var ListThis = GetProperties(this);
-            var a1 = ListTarget.Zip<PropertyInfo, PropertyInfo, (PropertyInfo, PropertyInfo)>(ListThis, (p1, p2) => (p1, p2));
-            foreach (var item in a1)
+            //TODO einfacher
+            //var ListProperties = GetProperties(target);
+            //var ListThis = GetProperties(this);
+            //var a1 = ListProperties.Zip<PropertyInfo, PropertyInfo, (PropertyInfo, PropertyInfo)>(ListThis, (p1, p2) => (p1, p2));
+            foreach (var item in GetProperties(target))
             {
-                item.Item1.SetValue(target, item.Item2.GetValue(this));
+                item.SetValue(target, item.GetValue(this));
             }
 
-            ListTarget = Helper.GetProperties(target, typeof(Used_ListAttribute));
-            ListThis = Helper.GetProperties(this, typeof(Used_ListAttribute));
-            a1 = ListTarget.Zip<PropertyInfo, PropertyInfo, (PropertyInfo, PropertyInfo)>(ListThis, (p1, p2) => (p1, p2));
-            foreach (var pair in a1)
+            //ListProperties = Helper.GetProperties(target, typeof(Used_ListAttribute));
+            //ListThis = Helper.GetProperties(this, typeof(Used_ListAttribute));
+            //a1 = ListProperties.Zip<PropertyInfo, PropertyInfo, (PropertyInfo, PropertyInfo)>(ListThis, (p1, p2) => (p1, p2));
+            foreach (var pair in Helper.GetProperties(target, typeof(Used_ListAttribute)))
             {
-                var CollectionTarget = (pair.Item1.GetValue(target) as ObservableThingListEntryCollection);
-                var CollectionThis = (pair.Item2.GetValue(this) as ObservableThingListEntryCollection);
+                var CollectionTarget = (pair.GetValue(target) as ObservableThingListEntryCollection);
+                var CollectionThis = (pair.GetValue(this) as ObservableThingListEntryCollection);
                 CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName }));
             }
 

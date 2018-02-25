@@ -188,6 +188,7 @@ namespace ShadowRunHelper.Model
 
             Person = new Person();
             Settings = new CharSettings();
+            Settings.AddMissingCategories();
             CTRLAttribut.SetDependencies(Person, CTRLImplantat.Data);
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
             _LinkList = new List<AllListEntry>();

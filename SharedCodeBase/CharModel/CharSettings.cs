@@ -29,7 +29,7 @@ namespace ShadowRunHelper.CharModel
             set { _ThingType = value; NotifyPropertyChanged(); }
         }
 
-        bool _vis;
+        bool _vis = true;
         public bool Visibility
         {
             get { return _vis; }
