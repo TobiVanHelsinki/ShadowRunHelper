@@ -1248,4 +1248,7 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   <data name="Char_View_Pivot_Settings.Label" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="Error_RepairLinkList" xml:space="preserve">
+    <value>Fehler, konnte Link mit {0} nicht wiederherstellen</value>
+  </data>
 </root>

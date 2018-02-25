@@ -1212,4 +1212,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Char_View_Pivot_Settings.Label" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="Error_RepairLinkList" xml:space="preserve">
+    <value>Could not restore link item: {0} </value>
+  </data>
 </root>

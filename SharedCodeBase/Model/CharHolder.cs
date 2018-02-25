@@ -210,19 +210,29 @@ namespace ShadowRunHelper.Model
                 var TargetCollection = new ObservableCollection<AllListEntry>();
                 foreach (var item in SourceCollection)
                 {
-                    AllListEntry NewEntry;
-                    NewEntry = lstThings.Find(x => x.Object.Equals(item.Object) && x.PropertyID == item.PropertyID);
+                    AllListEntry NewEntry = lstThings.Find(
+                        x => x.Object == item.Object && 
+                        x.PropertyID == item.PropertyID);
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner && x.Object.ThingType.Equals(item.Object.ThingType) && x.PropertyID.Equals(item.PropertyID));
+                        NewEntry = lstThings.Find(x =>
+                        x.Object.Bezeichner == item.Object.Bezeichner &&
+                        x.Object.ThingType == item.Object.ThingType &&
+                        x.PropertyID == item.PropertyID);
                     }
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner);
+                        NewEntry = lstThings.Find(x =>
+                        x.Object.ThingType == item.Object.ThingType &&
+                        x.PropertyID == item.PropertyID);
                     }
                     if (NewEntry != null)
                     {
                         TargetCollection.Add(NewEntry);
+                    }
+                    else
+                    {
+                        AppModel.Instance.NewNotification(String.Format(CrossPlatformHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }
                 SourceCollection.Clear();

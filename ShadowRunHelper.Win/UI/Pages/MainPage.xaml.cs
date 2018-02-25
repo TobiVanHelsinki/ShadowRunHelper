@@ -25,7 +25,7 @@ namespace ShadowRunHelper
         {
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
-            Model.lstNotifications.CollectionChanged += (x, y) => ShowError();
+            Model.lstNotifications.CollectionChanged += (x, y) => ShowNotifications();
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += (x, y,z) => NavigationRequested(y,z);
             CompatibilityChecks();
@@ -34,7 +34,7 @@ namespace ShadowRunHelper
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ShowError();
+            ShowNotifications();
             Model.SetDependencies(Dispatcher);
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
         }
@@ -83,23 +83,24 @@ namespace ShadowRunHelper
                     break;
             }
         }
-        async void ShowError()
+        void ShowNotifications()
         {
             foreach (Notification item in Model.lstNotifications.Where((x) => x.bIsRead == false).OrderBy((x) => x.DateTime))
             {
                 try
                 {
-                    var messageDialog = new MessageDialog(item.strMessage + " \n \n" + item.ThrownException.Message);
+                    //TODO better dialog. DO something with a own dialog that is bond to lstNot
+                    var messageDialog = new MessageDialog(item.strMessage + "\n\n\n" + item.ThrownException?.Message);
                     messageDialog.Commands.Add(new UICommand(
                         "OK"));
                     messageDialog.DefaultCommandIndex = 0;
-                    await messageDialog.ShowAsync();
+                    messageDialog.ShowAsync();
+                    item.bIsRead = true;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     continue;
                 }
-                item.bIsRead = true;
             }
         }
         #endregion
