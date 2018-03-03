@@ -25,6 +25,7 @@ namespace ShadowRunHelper.Model
         #endregion
         #region  Char Model DATA 
         // the various controlers
+        // First Gen
         public Controller<Item> CTRLItem { get; set; }
         public Controller<Programm> CTRLProgramm { get; set; }
         public Controller<Munition> CTRLMunition { get; set; }
@@ -33,14 +34,21 @@ namespace ShadowRunHelper.Model
         public Controller<Nachteil> CTRLNachteil { get; set; }
         public Controller<Connection> CTRLConnection { get; set; }
         public Controller<Sin> CTRLSin { get; set; }
-
+        // Second Gen
         public Controller<Adeptenkraft_KomplexeForm> CTRLAdeptenkraft_KomplexeForm { get; set; }
         public Controller<Foki_Widgets> CTRLFoki_Widgets { get; set; }
         public Controller<Geist_Sprite> CTRLGeist_Sprite { get; set; }
         public Controller<Stroemung_Wandlung> CTRLStroemung_Wandlung { get; set; }
         public Controller<Tradition_Initiation> CTRLTradition_Initiation { get; set; }
         public Controller<Zaubersprueche> CTRLZaubersprueche { get; set; }
+        // Third Gen
+        public Controller<KomplexeForm> CTRLKomplexeForm { get; set; }
+        public Controller<Widgets> CTRLWidgets { get; set; }
+        public Controller<Sprite> CTRLSprite { get; set; }
+        public Controller<Wandlung> CTRLWandlung { get; set; }
+        public Controller<Initiation> CTRLInitiation { get; set; }
 
+        // Importand ordering
         public AttributController CTRLAttribut { get; set; }
         [Newtonsoft.Json.JsonIgnore]
         public BerechnetController CTRLBerechnet { get; set; }
@@ -152,6 +160,12 @@ namespace ShadowRunHelper.Model
             CTRLVorteil = new Controller<Vorteil>();
             CTRLZaubersprueche = new Controller<Zaubersprueche>();
 
+            CTRLKomplexeForm = new Controller<KomplexeForm>();
+            CTRLWidgets = new Controller<Widgets>();
+            CTRLSprite = new Controller<Sprite>();
+            CTRLWandlung = new Controller<Wandlung>();
+            CTRLInitiation = new Controller<Initiation>();
+
             lstCTRL.Add(CTRLAttribut);
             lstCTRL.Add(CTRLBerechnet);
             lstCTRL.Add(CTRLFertigkeit);
@@ -164,8 +178,10 @@ namespace ShadowRunHelper.Model
             lstCTRL.Add(CTRLImplantat);
 
             lstCTRL.Add(CTRLAdeptenkraft_KomplexeForm);
+            lstCTRL.Add(CTRLKomplexeForm);
             lstCTRL.Add(CTRLZaubersprueche);
             lstCTRL.Add(CTRLFoki_Widgets);
+            lstCTRL.Add(CTRLWidgets);
 
             lstCTRL.Add(CTRLCyberDeck);
             lstCTRL.Add(CTRLProgramm);
@@ -177,6 +193,11 @@ namespace ShadowRunHelper.Model
             lstCTRL.Add(CTRLTradition_Initiation);
             lstCTRL.Add(CTRLStroemung_Wandlung);
             lstCTRL.Add(CTRLGeist_Sprite);
+
+            lstCTRL.Add(CTRLInitiation);
+            lstCTRL.Add(CTRLWandlung);
+            lstCTRL.Add(CTRLSprite);
+
 
             lstCTRL.Add(CTRLMunition);
             lstCTRL.Add(CTRLConnection);

@@ -66,6 +66,11 @@ namespace ShadowRunHelper
         Tradition_Initiation = 23,
         Zaubersprueche = 24,
         Berechnet = 25,
+        KomplexeForm = 26,
+        Sprite = 27,
+        Widgets = 28,
+        Wandlung = 29,
+        Initiation = 30,
     }
     public class ThingTypeProperty : INotifyPropertyChanged
     {
@@ -177,6 +182,12 @@ namespace ShadowRunHelper
            new ThingTypeProperty(typeof(Stroemung_Wandlung),ThingDefs.Stroemung_Wandlung, 0, 0,"Model_Stroemung_Wandlung_/Text","Model_Stroemung_WandlungM_/Text"),
            new ThingTypeProperty(typeof(Tradition_Initiation),ThingDefs.Tradition_Initiation, 0, 0,"Model_Tradition_Initiation_/Text","Model_Tradition_InitiationM_/Text"),
            new ThingTypeProperty(typeof(Zaubersprueche),ThingDefs.Zaubersprueche,0,0,"Model_Zaubersprueche_/Text","Model_ZauberspruecheM_/Text"),
+
+           new ThingTypeProperty(typeof(KomplexeForm),ThingDefs.KomplexeForm,0,0,"Model_KomplexeForm_/Text","Model_KomplexeFormM_/Text"),
+           new ThingTypeProperty(typeof(Sprite),ThingDefs.Sprite,0,0,"Model_Sprite_/Text","Model_SpriteM_/Text"),
+           new ThingTypeProperty(typeof(Widgets),ThingDefs.Widgets,0,0,"Model_Widgets_/Text","Model_WidgetsM_/Text"),
+           new ThingTypeProperty(typeof(Wandlung),ThingDefs.Wandlung,0,0,"Model_Wandlung_/Text","Model_WandlungM_/Text"),
+           new ThingTypeProperty(typeof(Initiation),ThingDefs.Initiation,0,0,"Model_Initiation_/Text","Model_InitiationM_/Text"),
         };
 
         public static List<ThingTypeProperty> ThingTypeProperties { get => thingTypeProperties; set => thingTypeProperties = value; }

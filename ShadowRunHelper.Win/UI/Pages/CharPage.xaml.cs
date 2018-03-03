@@ -486,6 +486,34 @@ namespace ShadowRunHelper
                     E.ContentTemplate = this.Zaubersprueche_E;
                     LV.ItemTemplate = ZauberspruecheItem;
                     break;
+                case ThingDefs.KomplexeForm:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_KomplexeFormM_/Text");
+                    LV.ItemsSource = Model.MainObject.CTRLKomplexeForm.Data;
+                    E.ContentTemplate = this.KomplexeForm_E;
+                    LV.ItemTemplate = KomplexeFormItem;
+                    break;
+                case ThingDefs.Sprite:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_SpriteM_/Text");
+                    LV.ItemsSource = Model.MainObject.CTRLSprite.Data;
+                    E.ContentTemplate = this.Sprite_E;
+                    LV.ItemTemplate = SpriteItem;
+                    break;
+                case ThingDefs.Widgets:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_WidgetsM_/Text");
+                    LV.ItemsSource = Model.MainObject.CTRLWidgets.Data;
+                    E.ContentTemplate = this.Widgets_E;
+                    LV.ItemTemplate = WidgetsItem;
+                    break;
+                case ThingDefs.Wandlung:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_WandlungM_/Text");
+                    LV.ItemsSource = Model.MainObject.CTRLWandlung.Data;
+                    LV.ItemTemplate = WandlungItem;
+                    break;
+                case ThingDefs.Initiation:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_InitiationM_/Text");
+                    LV.ItemsSource = Model.MainObject.CTRLInitiation.Data;
+                    LV.ItemTemplate = InitiationItem;
+                    break;
                 default:
                     return;
             }

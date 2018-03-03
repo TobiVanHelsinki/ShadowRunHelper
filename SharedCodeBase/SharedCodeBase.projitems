@@ -31,6 +31,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)CharController\Nahkampfwaffe.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharController\Panzerung.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharController\Vehikel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Sprite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Initiation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Wandlung.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Widgets.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\KomplexeForm.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Adeptenkraft_KomplexeForm.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Berechnet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Attribut.cs" />
