@@ -27,20 +27,21 @@ namespace ShadowRunHelper.CharController
 
         public virtual Thing AddNewThing()
         {
-            var newThing = (T)Activator.CreateInstance(TypeHelper.ThingDefToType(eDataTyp));
+            var newThing = Activator.CreateInstance<T>();
+            newThing.Order = Data.Max(x => x.Order) + 1;
             Data.Add(newThing);
             return newThing;
         }
         public virtual Thing AddNewThing(Thing newThing)
         {
             Data.Add((T)newThing);
+            newThing.Order = Data.Max(x => x.Order) + 1;
             return newThing;
         }
         public virtual void RemoveThing(Thing tToRemove)
         {
             Data.Remove((T)tToRemove);
         }
-
 
         public bool ClearData()
         {
@@ -69,6 +70,7 @@ namespace ShadowRunHelper.CharController
             _eDataTyp = TypeHelper.TypeToThingDef(typeof(T));
         }
 
+
         #region CSV
         public string Data2CSV(char strDelimiter, char strNewLine)
         {
@@ -79,8 +81,38 @@ namespace ShadowRunHelper.CharController
         {
             Data.AddRange(IO.CSV_Converter.CSV2Data<T>(strDelimiter, strNewLine, strReadFile));
         }
-
-
         #endregion
+
+        public void SaveCurrentOrdering()
+        {
+            int i = 0;
+            foreach (var item in Data)
+            {
+                item.Order = i;
+                i++;
+            }
+        }
+
+        public void OrderData(Ordering order)
+        {
+            IEnumerable<T> OrderedData;
+            switch (order)
+            {
+                case Ordering.ABC:
+                    OrderedData = Data.OrderBy(x => x.Bezeichner).ToList();
+                    break;
+                case Ordering.Type:
+                    OrderedData = Data.OrderBy(x => x.Typ).ToList();
+                    break;
+                case Ordering.Original:
+                default:
+                    OrderedData = Data.OrderBy(x => x.Order).ToList();
+                    break;
+            }
+            ClearData();
+            Data.AddRange(OrderedData);
+        }
+
+
     }
 }

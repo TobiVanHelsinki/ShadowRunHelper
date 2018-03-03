@@ -43,6 +43,31 @@
                         <Button Grid.Column="2" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Style="{StaticResource ListView_U_Btn}" Margin="0,0,15,0">
                             <Button.Flyout>
                                 <MenuFlyout>
+                                    <MenuFlyoutSubItem x:Uid="Order">
+                                        <MenuFlyoutSubItem.Icon>
+                                            <FontIcon Glyph="&#xE8CB;" />
+                                        </MenuFlyoutSubItem.Icon>
+                                        <MenuFlyoutItem x:Uid="Order_ABC" Click="Order_ABC">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8CB;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+                                        <MenuFlyoutItem x:Uid="Order_Type" Click="Order_Type">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8CB;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+                                        <MenuFlyoutItem x:Uid="Order_Save" Click="Order_Save">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE74E;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+                                        <MenuFlyoutItem x:Uid="Order_Orig" Click="Order_Orig">
+                                            <MenuFlyoutItem.Icon>
+                                                <FontIcon Glyph="&#xE8CB;" />
+                                            </MenuFlyoutItem.Icon>
+                                        </MenuFlyoutItem>
+                                    </MenuFlyoutSubItem>
                                     <MenuFlyoutItem Click="CSV_EX_Click" x:Uid="CSV_EX">
                                         <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="&#xE78C;" />

@@ -727,8 +727,30 @@ namespace ShadowRunHelper
             AppModel.Instance.RequestNavigation(this,ProjectPages.Settings, ProjectPagesOptions.SettingsCategories);
         }
 
-        #endregion
 
+        #endregion
+        #region Ordering
+        void Order_Type(object sender, RoutedEventArgs e)
+        {
+            var CTRL = ((sender as FrameworkElement).DataContext as IController);
+            CTRL.OrderData(Ordering.Type);
+        }
+
+        void Order_ABC(object sender, RoutedEventArgs e)
+        {
+            var CTRL = ((sender as FrameworkElement).DataContext as IController);
+            CTRL.OrderData(Ordering.ABC);
+        }
+        private void Order_Orig(object sender, RoutedEventArgs e)
+        {
+            var CTRL = ((sender as FrameworkElement).DataContext as IController);
+            CTRL.OrderData(Ordering.Original);
+        }
+        private void Order_Save(object sender, RoutedEventArgs e)
+        {
+            ((sender as FrameworkElement).DataContext as IController).SaveCurrentOrdering();
+        }
+        #endregion
 
     }
 }

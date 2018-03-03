@@ -42,6 +42,15 @@ namespace ShadowRunHelper.CharController
         Thing AddNewThing(Thing newThing);
         void RemoveThing(Thing tToRemove);
         bool ClearData();
+        void OrderData(Ordering order);
+        void SaveCurrentOrdering();
+    }
+
+    public enum Ordering
+    {
+        ABC = 1,
+        Type = 2,
+        Original = 3,
     }
 
     public interface IController<T> : IController

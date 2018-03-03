@@ -1251,4 +1251,19 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
   <data name="Error_RepairLinkList" xml:space="preserve">
     <value>Fehler, konnte Link mit {0} nicht wiederherstellen</value>
   </data>
+  <data name="Order.Text" xml:space="preserve">
+    <value>Sortieren</value>
+  </data>
+  <data name="Order_ABC.Text" xml:space="preserve">
+    <value>Alphabetisch</value>
+  </data>
+  <data name="Order_Orig.Text" xml:space="preserve">
+    <value>Sortierung laden</value>
+  </data>
+  <data name="Order_Save.Text" xml:space="preserve">
+    <value>Sortierung speichern</value>
+  </data>
+  <data name="Order_Type.Text" xml:space="preserve">
+    <value>Nach "Typ"</value>
+  </data>
 </root>

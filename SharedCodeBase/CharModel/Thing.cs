@@ -55,6 +55,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+        public int Order { get; set; }
         string notiz = "";
         [Used_UserAttribute]
         public string Notiz
@@ -160,18 +161,11 @@ namespace ShadowRunHelper.CharModel
             {
                 target = (Thing)Activator.CreateInstance(this.GetType());
             }
-            //TODO einfacher
-            //var ListProperties = GetProperties(target);
-            //var ListThis = GetProperties(this);
-            //var a1 = ListProperties.Zip<PropertyInfo, PropertyInfo, (PropertyInfo, PropertyInfo)>(ListThis, (p1, p2) => (p1, p2));
             foreach (var item in GetProperties(target))
             {
                 item.SetValue(target, item.GetValue(this));
             }
 
-            //ListProperties = Helper.GetProperties(target, typeof(Used_ListAttribute));
-            //ListThis = Helper.GetProperties(this, typeof(Used_ListAttribute));
-            //a1 = ListProperties.Zip<PropertyInfo, PropertyInfo, (PropertyInfo, PropertyInfo)>(ListThis, (p1, p2) => (p1, p2));
             foreach (var pair in Helper.GetProperties(target, typeof(Used_ListAttribute)))
             {
                 var CollectionTarget = (pair.GetValue(target) as ObservableThingListEntryCollection);

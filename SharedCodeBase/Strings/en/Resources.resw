@@ -1218,4 +1218,19 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
   <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">
     <value>Saving not possible, an other operation is in progress</value>
   </data>
+  <data name="Order.Text" xml:space="preserve">
+    <value>order item</value>
+  </data>
+  <data name="Order_ABC.Text" xml:space="preserve">
+    <value>alphabeticly</value>
+  </data>
+  <data name="Order_Orig.Text" xml:space="preserve">
+    <value>Load saved order</value>
+  </data>
+  <data name="Order_Save.Text" xml:space="preserve">
+    <value>Save current order</value>
+  </data>
+  <data name="Order_Type.Text" xml:space="preserve">
+    <value>after "type"</value>
+  </data>
 </root>

@@ -30,8 +30,7 @@ namespace ShadowRunHelper.IO
                 default:
                     throw new IO_FileVersion();
             }
-            ReturnCharHolder.Repair();
-            ReturnCharHolder.RefreshListeners();
+            ReturnCharHolder.AfterLoad();
             return ReturnCharHolder;
         }
         public enum PreSavedChar

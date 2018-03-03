@@ -202,6 +202,14 @@ namespace ShadowRunHelper.Model
         {
             ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
+
+        public void AfterLoad()
+        {
+            Repair();
+            Settings.Refresh();
+            RefreshListeners();
+        }
+
         public void Repair()
         {
             //declare submethod
@@ -253,7 +261,6 @@ namespace ShadowRunHelper.Model
             {
                 RepairThingListRefs(item.PoolZusammensetzung, LinkList);
             }
-            Settings.Refresh();
         }
         public IController ThingDef2CTRL(ThingDefs tag)
         {
