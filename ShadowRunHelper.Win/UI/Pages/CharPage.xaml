@@ -43,22 +43,22 @@
                         <Button Grid.Column="2" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Style="{StaticResource ListView_U_Btn}" Margin="0,0,15,0">
                             <Button.Flyout>
                                 <MenuFlyout>
-                                    <MenuFlyoutItem x:Name="CSV_IN" Click="CSV_IN_Click" x:Uid="CSV_IN">
+                                    <MenuFlyoutItem Click="CSV_EX_Click" x:Uid="CSV_EX">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE78C;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem Click="CSV_EX_Selected" x:Uid="CSV_EX_Selected">
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon Glyph="&#xE78C;" />
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>
+                                    <MenuFlyoutItem Click="CSV_IN_Click" x:Uid="CSV_IN">
                                         <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="&#xE8B6;" />
                                         </MenuFlyoutItem.Icon>
                                     </MenuFlyoutItem>
-                                    <MenuFlyoutItem x:Name="CSV_EX" Click="CSV_EX_Click" x:Uid="CSV_EX">
-                                        <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph="&#xE78C;" />
-                                        </MenuFlyoutItem.Icon>
-                                    </MenuFlyoutItem>
-                                    <MenuFlyoutItem x:Name="CSV_EX_Selected" Click="CSV_EX_Selected" x:Uid="CSV_EX_Selected">
-                                        <MenuFlyoutItem.Icon>
-                                            <FontIcon Glyph="&#xE78C;" />
-                                        </MenuFlyoutItem.Icon>
-                                    </MenuFlyoutItem>
-                                    <MenuFlyoutItem x:Name="DeleteCategoryContent" Click="DeleteCategoryContent" x:Uid="DeleteCategoryContent" >
+                                    <MenuFlyoutItem Click="DeleteCategoryContent" x:Uid="DeleteCategoryContent" >
                                         <MenuFlyoutItem.Icon>
                                             <FontIcon Glyph="&#xE74D;" />
                                         </MenuFlyoutItem.Icon>

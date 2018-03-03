@@ -643,6 +643,7 @@ namespace ShadowRunHelper
         private async void CSV_IN_Click(object sender, RoutedEventArgs e)
         {
             string strRead = "";
+            var CTRL = ((sender as FrameworkElement).DataContext as IController);
             try
             {
                 strRead = await SharedIO.ReadTextFromFile(new FileInfoClass() { FolderToken = "import", Fileplace = Place.Extern }, Constants.LST_FILETYPES_CSV, UserDecision.AskUser);
@@ -657,7 +658,7 @@ namespace ShadowRunHelper
             }
             try
             {
-                ((sender as FrameworkElement).DataContext as IController).CSV2Data(';', '\n', strRead);
+                CTRL.CSV2Data(';', '\n', strRead);
             }
             catch (IsOKException ex)
             {

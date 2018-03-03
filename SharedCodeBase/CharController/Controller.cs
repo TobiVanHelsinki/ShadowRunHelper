@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System;
 using System.Linq;
+using TLIB_UWPFRAME.Resources;
 
 namespace ShadowRunHelper.CharController
 {
@@ -72,55 +73,11 @@ namespace ShadowRunHelper.CharController
         public string Data2CSV(char strDelimiter, char strNewLine)
         {
             return IO.CSV_Converter.Data2CSV(strDelimiter, strNewLine, Data);
-
-            //string ret = "sep=" + strDelimiter + strNewLine;
-            //if (DataToUse.Count >= 1)
-            //{
-            //    ret += DataToUse[0].HeaderToCSV(strDelimiter);
-            //}
-            //ret += strNewLine;
-            //foreach (T item in DataToUse)
-            //{
-            //    ret += item.ToCSV(strDelimiter);
-            //    ret += strNewLine;
-            //}
-            //return ret;
         }
 
         public void CSV2Data(char strDelimiter, char strNewLine, string strReadFile)
         {
-            IO.CSV_Converter.CSV2Data<T>(strDelimiter, strNewLine, strReadFile, Data);
-            //string[] Lines = strReadFile.Split(strNewLine);
-            //string[] Headar = { };
-            //for (int i = 0; i < Lines.Length; i++) //start at 2 to overjump first lines
-            //{
-            //    // key = propertie name, value = value
-            //    string[] CSVEntries = Lines[i].Split(strDelimiter);
-            //    if (CSVEntries.Length < 5)
-            //    {
-            //        continue;
-            //    }
-            //    if (Headar.Length < CharModel.Thing.nThingPropertyCount) 
-            //    {
-            //        Headar = Lines[i].Split(strDelimiter);
-            //        continue;
-            //    }
-            //    Dictionary<string, string> Dic = new Dictionary<string, string>();
-            //    int j = 0;
-            //    foreach (var itemstring in CSVEntries)
-            //    {
-            //        try
-            //        {
-            //            Dic.Add(Headar[j], itemstring);
-            //        }
-            //        catch (Exception)
-            //        {
-            //             continue;
-            //        }
-            //        j++;
-            //    }
-            //    (this.AddNewThing())?.FromCSV(Dic);
-            //}
+            Data.AddRange(IO.CSV_Converter.CSV2Data<T>(strDelimiter, strNewLine, strReadFile));
         }
 
 

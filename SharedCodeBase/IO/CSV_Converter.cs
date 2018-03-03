@@ -23,8 +23,9 @@ namespace ShadowRunHelper.IO
             return ret;
         }
 
-        public static void CSV2Data<T>(char strDelimiter, char strNewLine, string strReadFile, IEnumerable<ICSV> Data) where T : ICSV 
+        public static IEnumerable<T> CSV2Data<T>(char strDelimiter, char strNewLine, string strReadFile) where T : ICSV 
         {
+            List<T> ret = new List<T>();
             string[] Lines = strReadFile.Split(strNewLine);
             string[] Headar = { };
             for (int i = 0; i < Lines.Length; i++) //start at 2 to overjump first lines
@@ -55,8 +56,10 @@ namespace ShadowRunHelper.IO
                     j++;
                 }
                 var newThing = Activator.CreateInstance<T>();
+                ret.Add(newThing);
                 newThing.FromCSV(Dic);
             }
+            return ret;
         }
 
     }
