@@ -172,7 +172,7 @@ namespace ShadowRunHelper
                 return;
             }
             ViewModel.MainObject = new CharHolder();
-            ViewModel.MainObject.Repair();
+            ViewModel.MainObject.AfterLoad();
             SettingsModel.I.CountCreations++;
             AppModel.Instance.RequestNavigation(this, ProjectPages.Char);
         }
