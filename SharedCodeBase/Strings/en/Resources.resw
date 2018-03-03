@@ -817,7 +817,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Bank balance</value>
   </data>
   <data name="Model_NachteilM_.Text" xml:space="preserve">
-    <value>Aadvantage</value>
+    <value>Disadvantages</value>
   </data>
   <data name="Model_Nachteil_.Text" xml:space="preserve">
     <value>Disadvantage</value>
@@ -1261,10 +1261,10 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Registered</value>
   </data>
   <data name="Model_WandlungM_.Text" xml:space="preserve">
-    <value>Wandlungen</value>
+    <value>Submersions</value>
   </data>
   <data name="Model_Wandlung_.Text" xml:space="preserve">
-    <value>Wandlung</value>
+    <value>Submersion</value>
   </data>
   <data name="Model_Wandlung_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
