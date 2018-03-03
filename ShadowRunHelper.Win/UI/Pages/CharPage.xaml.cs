@@ -361,7 +361,6 @@ namespace ShadowRunHelper
                     LV.ItemsSource = Model.MainObject.CTRLHandlung.Data;
                     E.ContentTemplate = this.Handlung_E;
                     LV.ItemTemplate = HandlungItem;
-                    //NewBlock.PivotItem = 0;
                     break;
                 case ThingDefs.Fertigkeit:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_FertigkeitM_/Text");
@@ -648,6 +647,10 @@ namespace ShadowRunHelper
             {
                 strRead = await SharedIO.ReadTextFromFile(new FileInfoClass() { FolderToken = "import", Fileplace = Place.Extern }, Constants.LST_FILETYPES_CSV, UserDecision.AskUser);
             }
+            catch (IsOKException ex)
+            {
+                return;
+            }
             catch (Exception ex)
             {
                 Model.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "1", ex);
@@ -655,6 +658,10 @@ namespace ShadowRunHelper
             try
             {
                 ((sender as FrameworkElement).DataContext as IController).CSV2Data(';', '\n', strRead);
+            }
+            catch (IsOKException ex)
+            {
+                return;
             }
             catch (Exception ex)
             {
@@ -667,8 +674,12 @@ namespace ShadowRunHelper
             try
             {
                 var CTRL = ((sender as FrameworkElement).DataContext as IController);
-                var output = CTRL.Data2CSV(';', '\n');
+                string output = CTRL.Data2CSV(';', '\n');
                 SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypeHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
+            }
+            catch (IsOKException ex)
+            {
+                return;
             }
             catch (Exception ex)
             {
@@ -681,9 +692,15 @@ namespace ShadowRunHelper
             {
                 var CTRL = ((sender as FrameworkElement).DataContext as IController);
                 var block = Blocklist.First(x => x.Key == CTRL.eDataTyp);
-                //block.Value.ListView.ItemsPanel
-                var output = CTRL.Data2CSV(';', '\n');
+                var selected2 = block.Value.ListView.SelectedItems.Select(i=>i as Thing);
+                string output = IO.CSV_Converter.Data2CSV(';', '\n', selected2);
+
+
                 SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypeHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
+            }
+            catch (IsOKException ex)
+            {
+                return;
             }
             catch (Exception ex)
             {

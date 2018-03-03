@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.Model;
+using ShadowRunHelper.IO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,7 @@ namespace ShadowRunHelper.CharModel
         public Used_ListAttribute() { }
     }
 
-    public abstract class Thing : INotifyPropertyChanged
+    public abstract class Thing : INotifyPropertyChanged, ICSV
     {
         public const uint nThingPropertyCount = 5;
         public event PropertyChangedEventHandler PropertyChanged;

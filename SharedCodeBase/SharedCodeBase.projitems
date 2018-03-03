@@ -61,6 +61,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Waffe.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Zaubersprüche.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IO\CharHolderIO.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IO\CSV_Converter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IO\ICSV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IO\OldConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\AppModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\SettingModels.cs" />
