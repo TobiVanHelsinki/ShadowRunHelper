@@ -83,7 +83,7 @@
                                         </Grid.RowDefinitions>
 
                                         <TextBlock x:Uid="Model_Person_Kontostand" Grid.Column="0" Grid.Row="0"  />
-                                        <TextBox Name="Header_Kontostand" Text="{x:Bind Person.Kontostand, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Style="{StaticResource Panel_Oben_Kontostand}"  />
+                                        <TextBox AllowFocusOnInteraction="False" Name="Header_Kontostand" Text="{x:Bind Person.Kontostand, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Style="{StaticResource Panel_Oben_Kontostand}"  />
 
                                         <TextBlock x:Uid="Model_Person_InitiativeAktuell" Grid.Column="0" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_1}"/>
                                         <TextBlock Text="{x:Bind Person.Initiative,Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_1}" />
