@@ -16,12 +16,8 @@ namespace ShadowRunHelper.IO
             switch (strFileVersion)
             {
                 case Constants.CHARFILE_VERSION_1_3:
-                    ShadowRunHelper1_3.Controller.CharHolder CH1_3 = ShadowRunHelper1_3.IO.CharIO.JSON_to_Char(fileContent);
-                    ReturnCharHolder = VersionConverter.ConvertVersion1_3to1_5(CH1_3);
-                    AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Info_ConvertFromPrevious"));
-                    GC.Collect();
-                    ReturnCharHolder.HasChanges = true;
-                    break;
+                    AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Info_NotSupportedVersion"));
+                    throw new IO_FileVersion();
                 case Constants.CHARFILE_VERSION_1_5:
                     JsonSerializerSettings test = new JsonSerializerSettings()
                     {
@@ -34,8 +30,7 @@ namespace ShadowRunHelper.IO
                 default:
                     throw new IO_FileVersion();
             }
-            ReturnCharHolder.Repair();
-            ReturnCharHolder.RefreshListeners();
+            ReturnCharHolder.AfterLoad();
             return ReturnCharHolder;
         }
         public enum PreSavedChar

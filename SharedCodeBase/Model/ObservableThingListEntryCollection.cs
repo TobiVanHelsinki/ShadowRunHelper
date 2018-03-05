@@ -3,7 +3,7 @@ using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace SharedCodeBase.Model
+namespace ShadowRunHelper.Model
 {
     public class ObservableThingListEntryCollection : ObservableCollection<AllListEntry>
     {

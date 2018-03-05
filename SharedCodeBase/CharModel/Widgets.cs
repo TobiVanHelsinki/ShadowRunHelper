@@ -1,7 +1,7 @@
 ﻿
 namespace ShadowRunHelper.CharModel
 {
-    public class Attribut : Thing
+    public class Widgets : Item
     {
        
     }

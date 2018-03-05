@@ -20,6 +20,14 @@ namespace ShadowRunHelper.Model
                 return (AppModel)instance;
             }
         }
+        AppModel() : base(){ }
+
+        public delegate void NavigationEventHandler(object sender, ProjectPages page, ProjectPagesOptions PageOptions);
+        public event NavigationEventHandler NavigationRequested;
+        public void RequestNavigation(object o, ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
+        {
+            NavigationRequested?.Invoke(o, p, po);
+        }
 
         public void TutorialChangedState(int StateNumber, bool Highlight = false)
         {
@@ -27,5 +35,7 @@ namespace ShadowRunHelper.Model
         }
         public delegate void TutorialStateChangeRequestEventHandler(int StateNumber, bool Highlight);
         public event TutorialStateChangeRequestEventHandler TutorialStateChanged;
+
+
     }
 }

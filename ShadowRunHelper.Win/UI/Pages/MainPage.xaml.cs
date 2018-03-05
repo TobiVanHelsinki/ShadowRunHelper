@@ -25,40 +25,39 @@ namespace ShadowRunHelper
         {
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
-            Model.lstNotifications.CollectionChanged += (x, y) => ShowError();
+            Model.lstNotifications.CollectionChanged += (x, y) => ShowNotifications();
             Model.TutorialStateChanged += TutorialStateChanged;
+            Model.NavigationRequested += (x, y,z) => NavigationRequested(y,z);
             CompatibilityChecks();
         }
         #region navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ShowError();
+            ShowNotifications();
             Model.SetDependencies(Dispatcher);
-            NavigationRequested(ProjectPages.Char);
+            NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
         }
 
-        Action<ProjectPages> NavigationMethod;
-        void NavigationRequested(ProjectPages e)
+        void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
         {
-            NavigationMethod = NavigationRequested;
-            switch (e)
+            switch (p)
             {
                 case ProjectPages.Char:
                     if (Model.MainObject != null)
                     {
-                        MyFrame.Navigate(typeof(CharPage), NavigationMethod);
+                        MyFrame.Navigate(typeof(CharPage), po);
                     }
                     else
                     {
-                        MyFrame.Navigate(typeof(AdministrationPage), NavigationMethod);
+                        MyFrame.Navigate(typeof(AdministrationPage), po);
                     }
                     break;
                 case ProjectPages.Administration:
-                    MyFrame.Navigate(typeof(AdministrationPage), NavigationMethod);
+                    MyFrame.Navigate(typeof(AdministrationPage), po);
                     break;
                 case ProjectPages.Settings:
-                    MyFrame.Navigate(typeof(SettingsPage), NavigationMethod);
+                    MyFrame.Navigate(typeof(SettingsPage), po);
                     break;
                 default:
                     break;
@@ -84,23 +83,24 @@ namespace ShadowRunHelper
                     break;
             }
         }
-        async void ShowError()
+        void ShowNotifications()
         {
             foreach (Notification item in Model.lstNotifications.Where((x) => x.bIsRead == false).OrderBy((x) => x.DateTime))
             {
                 try
                 {
-                    var messageDialog = new MessageDialog(item.strMessage + " \n \n" + item.ThrownException.Message);
+                    //TODO better dialog. DO something with a own dialog that is bond to lstNot
+                    var messageDialog = new MessageDialog(item.strMessage + "\n\n\n" + item.ThrownException?.Message);
                     messageDialog.Commands.Add(new UICommand(
                         "OK"));
                     messageDialog.DefaultCommandIndex = 0;
-                    await messageDialog.ShowAsync();
+                    messageDialog.ShowAsync();
+                    item.bIsRead = true;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     continue;
                 }
-                item.bIsRead = true;
             }
         }
         #endregion
@@ -208,17 +208,17 @@ namespace ShadowRunHelper
 
         void Ui_Nav_Char(object sender, RoutedEventArgs e)
         {
-            NavigationRequested(ProjectPages.Char);
+            NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
         }
 
         void Ui_Nav_Admin(object sender, RoutedEventArgs e)
         {
-            NavigationRequested(ProjectPages.Administration);
+            NavigationRequested(ProjectPages.Administration, ProjectPagesOptions.Nothing);
         }
 
         void Ui_Nav_Settings(object sender, RoutedEventArgs e)
         {
-            NavigationRequested(ProjectPages.Settings);
+            NavigationRequested(ProjectPages.Settings, ProjectPagesOptions.Nothing);
         }
         #endregion
         #region Compatibility (Update 4)

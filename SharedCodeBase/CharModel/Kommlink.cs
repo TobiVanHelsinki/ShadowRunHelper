@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper.CharModel
 {
     public class Kommlink : Item
     {
         private double programmanzahl = 0;
+        [Used_UserAttribute]
         public double Programmanzahl
         {
             get { return programmanzahl; }
@@ -20,6 +19,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double firewall = 0;
+        [Used_UserAttribute]
         public double Firewall
         {
             get { return firewall; }
@@ -33,6 +33,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double datenverarbeitung = 0;
+        [Used_UserAttribute]
         public double Datenverarbeitung
         {
             get { return datenverarbeitung; }
@@ -47,7 +48,8 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double _dSchaden = 0;
-        public double dSchaden
+        [Used_UserAttribute]
+        public double Schaden
         {
             get { return _dSchaden; }
             set
@@ -61,7 +63,8 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double _dSchadenMax = 0;
-        public double dSchadenMax
+        [Used_CalcAttribute]
+        public double SchadenMax
         {
             get { return _dSchadenMax; }
             set
@@ -73,97 +76,13 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-
-        void RefreshSchadenLimit()
+        public Kommlink() : base()
         {
-            dSchadenMax= 8 + Math.Ceiling(Wert / 2);
-        }
-
-        public Kommlink()
-        {
-            ThingType = ThingDefs.Kommlink;
             PropertyChanged += (x, y) => RefreshSchadenLimit();
         }
-
-        public override Thing Copy(Thing target = null)
+        void RefreshSchadenLimit()
         {
-            if (target == null)
-            {
-                target = new Kommlink();
-            }
-            base.Copy(target);
-            Kommlink TargetS = (Kommlink)target;
-            TargetS.Programmanzahl = Programmanzahl;
-            TargetS.Firewall = Firewall;
-            TargetS.Datenverarbeitung = Datenverarbeitung;
-            TargetS.dSchadenMax = dSchadenMax;
-            TargetS.dSchaden = dSchaden;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            Programmanzahl = 0;
-            Firewall = 0;
-            Datenverarbeitung = 0;
-            dSchaden = 0;
-        }
-        
-        public override string ToCSV(string Delimiter)
-        {
-            string strReturn = base.ToCSV(Delimiter);
-            strReturn += Programmanzahl;
-            strReturn += Delimiter;
-            strReturn += Firewall;
-            strReturn += Delimiter;
-            strReturn += Datenverarbeitung;
-            strReturn += Delimiter;
-            strReturn += dSchaden;
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-        public override string HeaderToCSV(string Delimiter)
-        {
-            string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Kommlink_Programmanzahl/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Kommlink_Firewall/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Kommlink_Datenverarbeitung/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Kommlink_Schaden/Text");
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-        public override void FromCSV(Dictionary<string, string> dic)
-        {
-            base.FromCSV(dic);
-            foreach (var item in dic)
-            {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Kommlink_Programmanzahl/Text"))
-                {
-                    this.Programmanzahl = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Kommlink_Firewall/Text"))
-                {
-                    this.Firewall = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Kommlink_Datenverarbeitung/Text"))
-                {
-                    this.Datenverarbeitung = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Kommlink_Schaden/Text"))
-                {
-                    this.dSchaden = double.Parse(item.Value);
-                    continue;
-                }
-            }
+            SchadenMax = 8 + Math.Ceiling(Wert / 2);
         }
     }
 }

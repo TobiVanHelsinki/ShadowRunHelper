@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using TLIB_UWPFRAME;
-
-namespace ShadowRunHelper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public abstract class Waffe : Item
     {
@@ -10,6 +6,7 @@ namespace ShadowRunHelper.CharModel
         /// Praezision
         /// </summary>
         private double pool = 0;
+        [Used_UserAttribute]
         public double Praezision
         {
             get { return pool; }
@@ -24,6 +21,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private string schadenTyp = "";
+        [Used_UserAttribute]
         public string SchadenTyp
         {
             get { return schadenTyp; }
@@ -41,6 +39,7 @@ namespace ShadowRunHelper.CharModel
         /// PB could be english, means DK "Durschlagskompensation"
         /// </summary>
         private double pB = 0; // DK
+        [Used_UserAttribute]
         public double PB
         {
             get { return pB; }
@@ -54,65 +53,5 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public override Thing Copy( Thing target = null)
-        {
-            if(target == null){
-                throw new ArgumentNullException();
-                    }
-            base.Copy( target);
-            Waffe TargetS = (Waffe)target;
-            TargetS.SchadenTyp = SchadenTyp;
-            TargetS.Praezision = Praezision;
-            TargetS.PB = PB;
-            return target;
-        }
-
-        public override string ToCSV(string Delimiter)
-        {
-            string strReturn = base.ToCSV(Delimiter);
-            strReturn += Praezision;
-            strReturn += Delimiter;
-            strReturn += SchadenTyp;
-            strReturn += Delimiter;
-            strReturn += PB;
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-
-        public override string HeaderToCSV(string Delimiter)
-        {
-            string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Waffe_Praezision/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Waffe_SchadenTyp/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Waffe_PB/Text");
-            strReturn += Delimiter;
-            return strReturn;
-        }
-   
-        public override void FromCSV(Dictionary<string, string> dic)
-        {
-            base.FromCSV(dic);
-            foreach (var item in dic)
-            {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_Praezision/Text"))
-                {
-                    Praezision = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_SchadenTyp/Text"))
-                {
-                    SchadenTyp = item.Value;
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Waffe_PB/Text"))
-                {
-                    PB = double.Parse(item.Value);
-                    continue;
-                }
-            }
-        }
     }
 }

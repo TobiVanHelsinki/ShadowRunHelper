@@ -1,7 +1,7 @@
 ﻿
 namespace ShadowRunHelper.CharModel
 {
-    public class Tradition_Initiation : Thing
+    public class Initiation : Thing
     {
         //Bezeichner ist Tradition
         //initiationsgrad ist Wert

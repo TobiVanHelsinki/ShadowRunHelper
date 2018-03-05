@@ -26,7 +26,9 @@ namespace ShadowRunHelper.CharController
         /// <param name="strDelimiter"></param>
         /// <returns></returns>
         /// 
-        (string ThingType, string Content) MultipleCSVExport(string strDelimiter, string strNewLine, string strNew);
+        string Data2CSV(char strDelimiter, char strNewLine);
+
+        void CSV2Data(char strDelimiter, char strNewLine, string strReadFile);
 
         /// <summary>
         /// Used to pass throgh the possibility to acces the Data Object for registration of its HasChanged-Methods without knowing its type
@@ -34,15 +36,27 @@ namespace ShadowRunHelper.CharController
         /// <param name="Method"></param>
         void RegisterEventAtData(Action Method);
 
-
         ThingDefs eDataTyp { get; }
 
-}
+        Thing AddNewThing();
+        Thing AddNewThing(Thing newThing);
+        void RemoveThing(Thing tToRemove);
+        bool ClearData();
+        void OrderData(Ordering order);
+        void SaveCurrentOrdering();
+    }
+
+    public enum Ordering
+    {
+        ABC = 1,
+        Type = 2,
+        Original = 3,
+    }
 
     public interface IController<T> : IController
     {
         ObservableCollection<T> Data { get;}
-        T AddNewThing(T newTee);
-        void RemoveThing(T tRem);
+        //string Data2CSV(char strDelimiter, char strNewLine, ObservableCollection<T> DataToUse);
+
     }
 }

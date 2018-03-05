@@ -1,7 +1,7 @@
 ﻿
 namespace ShadowRunHelper.CharModel
 {
-    public class Adeptenkraft_KomplexeForm : Thing
+    public class KomplexeForm : Thing
     {
         string _Option = "";
         [Used_UserAttribute]

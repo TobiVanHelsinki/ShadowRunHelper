@@ -21,7 +21,7 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return item.Object.GetValue(item.PropertyID).ToString();
+                        return item.Object.GetPropertyValueOrDefault(item.PropertyID).ToString();
                     }
                 case "Bezeichner":
                     if (item?.PropertyID == "")
@@ -39,7 +39,7 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return TypenHelper.ThingDefToString(item.Object.ThingType, false)+" "+CrossPlatformHelper.GetString(item.DisplayName);
+                        return TypeHelper.ThingDefToString(item.Object.ThingType, false) + " " + CrossPlatformHelper.GetString(item.DisplayName);
                     }
                 case "Zusatz":
                     return item.Object.Zusatz;

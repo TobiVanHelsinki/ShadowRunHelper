@@ -1,6 +1,6 @@
 ﻿using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
-using SharedCodeBase.Model;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
+
 namespace ShadowRunHelper.Model
 {
     /// <summary>
@@ -24,6 +25,7 @@ namespace ShadowRunHelper.Model
         #endregion
         #region  Char Model DATA 
         // the various controlers
+        // First Gen
         public Controller<Item> CTRLItem { get; set; }
         public Controller<Programm> CTRLProgramm { get; set; }
         public Controller<Munition> CTRLMunition { get; set; }
@@ -32,14 +34,21 @@ namespace ShadowRunHelper.Model
         public Controller<Nachteil> CTRLNachteil { get; set; }
         public Controller<Connection> CTRLConnection { get; set; }
         public Controller<Sin> CTRLSin { get; set; }
-
+        // Second Gen
         public Controller<Adeptenkraft_KomplexeForm> CTRLAdeptenkraft_KomplexeForm { get; set; }
         public Controller<Foki_Widgets> CTRLFoki_Widgets { get; set; }
         public Controller<Geist_Sprite> CTRLGeist_Sprite { get; set; }
         public Controller<Stroemung_Wandlung> CTRLStroemung_Wandlung { get; set; }
         public Controller<Tradition_Initiation> CTRLTradition_Initiation { get; set; }
         public Controller<Zaubersprueche> CTRLZaubersprueche { get; set; }
+        // Third Gen
+        public Controller<KomplexeForm> CTRLKomplexeForm { get; set; }
+        public Controller<Widgets> CTRLWidgets { get; set; }
+        public Controller<Sprite> CTRLSprite { get; set; }
+        public Controller<Wandlung> CTRLWandlung { get; set; }
+        public Controller<Initiation> CTRLInitiation { get; set; }
 
+        // Importand ordering
         public AttributController CTRLAttribut { get; set; }
         [Newtonsoft.Json.JsonIgnore]
         public BerechnetController CTRLBerechnet { get; set; }
@@ -53,11 +62,12 @@ namespace ShadowRunHelper.Model
         public Controller<Fertigkeit> CTRLFertigkeit { get; set; }
         public Controller<Handlung> CTRLHandlung { get; set; }
         public Person Person { get; set; }
+        public CharSettings Settings { get; set; }
         #endregion
         #region EASY ACCESS STUFF
 
         [Newtonsoft.Json.JsonIgnore]
-        List<IController> lstCTRL = new List<IController>();
+        public List<IController> lstCTRL = new List<IController>();
 
         List<AllListEntry> _LinkList;
         [Newtonsoft.Json.JsonIgnore]
@@ -150,6 +160,12 @@ namespace ShadowRunHelper.Model
             CTRLVorteil = new Controller<Vorteil>();
             CTRLZaubersprueche = new Controller<Zaubersprueche>();
 
+            CTRLKomplexeForm = new Controller<KomplexeForm>();
+            CTRLWidgets = new Controller<Widgets>();
+            CTRLSprite = new Controller<Sprite>();
+            CTRLWandlung = new Controller<Wandlung>();
+            CTRLInitiation = new Controller<Initiation>();
+
             lstCTRL.Add(CTRLAttribut);
             lstCTRL.Add(CTRLBerechnet);
             lstCTRL.Add(CTRLFertigkeit);
@@ -162,8 +178,10 @@ namespace ShadowRunHelper.Model
             lstCTRL.Add(CTRLImplantat);
 
             lstCTRL.Add(CTRLAdeptenkraft_KomplexeForm);
+            lstCTRL.Add(CTRLKomplexeForm);
             lstCTRL.Add(CTRLZaubersprueche);
             lstCTRL.Add(CTRLFoki_Widgets);
+            lstCTRL.Add(CTRLWidgets);
 
             lstCTRL.Add(CTRLCyberDeck);
             lstCTRL.Add(CTRLProgramm);
@@ -176,6 +194,11 @@ namespace ShadowRunHelper.Model
             lstCTRL.Add(CTRLStroemung_Wandlung);
             lstCTRL.Add(CTRLGeist_Sprite);
 
+            lstCTRL.Add(CTRLInitiation);
+            lstCTRL.Add(CTRLWandlung);
+            lstCTRL.Add(CTRLSprite);
+
+
             lstCTRL.Add(CTRLMunition);
             lstCTRL.Add(CTRLConnection);
             lstCTRL.Add(CTRLKommlink);
@@ -185,6 +208,7 @@ namespace ShadowRunHelper.Model
 
 
             Person = new Person();
+            Settings = new CharSettings();
             CTRLAttribut.SetDependencies(Person, CTRLImplantat.Data);
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
             _LinkList = new List<AllListEntry>();
@@ -199,6 +223,14 @@ namespace ShadowRunHelper.Model
         {
             ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
+
+        public void AfterLoad()
+        {
+            Repair();
+            Settings.Refresh();
+            RefreshListeners();
+        }
+
         public void Repair()
         {
             //declare submethod
@@ -207,19 +239,29 @@ namespace ShadowRunHelper.Model
                 var TargetCollection = new ObservableCollection<AllListEntry>();
                 foreach (var item in SourceCollection)
                 {
-                    AllListEntry NewEntry;
-                    NewEntry = lstThings.Find(x => x.Object.Equals(item.Object) && x.PropertyID == item.PropertyID);
+                    AllListEntry NewEntry = lstThings.Find(
+                        x => x.Object == item.Object && 
+                        x.PropertyID == item.PropertyID);
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner && x.Object.ThingType.Equals(item.Object.ThingType) && x.PropertyID.Equals(item.PropertyID));
+                        NewEntry = lstThings.Find(x =>
+                        x.Object.Bezeichner == item.Object.Bezeichner &&
+                        x.Object.ThingType == item.Object.ThingType &&
+                        x.PropertyID == item.PropertyID);
                     }
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner);
+                        NewEntry = lstThings.Find(x =>
+                        x.Object.ThingType == item.Object.ThingType &&
+                        x.PropertyID == item.PropertyID);
                     }
                     if (NewEntry != null)
                     {
                         TargetCollection.Add(NewEntry);
+                    }
+                    else
+                    {
+                        AppModel.Instance.NewNotification(String.Format(CrossPlatformHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }
                 SourceCollection.Clear();
@@ -241,6 +283,10 @@ namespace ShadowRunHelper.Model
                 RepairThingListRefs(item.PoolZusammensetzung, LinkList);
             }
         }
+        public IController ThingDef2CTRL(ThingDefs tag)
+        {
+            return lstCTRL.First(c => c.eDataTyp == tag);
+        }
 
         /// <summary>
         /// Adds a Thing of the given ThingDef to the right controller and register it and returns it, if all is ok, otherways throw
@@ -250,79 +296,7 @@ namespace ShadowRunHelper.Model
         /// <returns></returns>
         public Thing Add(ThingDefs thingDefs)
         {
-            Thing returnThing = null;
-            switch (thingDefs)
-            {
-                case ThingDefs.Handlung:
-                    returnThing = CTRLHandlung.AddNewThing();
-                    break;
-                case ThingDefs.Fertigkeit:
-                    returnThing = CTRLFertigkeit.AddNewThing();
-                    break;
-                case ThingDefs.Item:
-                    returnThing = CTRLItem.AddNewThing();
-                    break;
-                case ThingDefs.Programm:
-                    returnThing = CTRLProgramm.AddNewThing();
-                    break;
-                case ThingDefs.Munition:
-                    returnThing = CTRLMunition.AddNewThing();
-                    break;
-                case ThingDefs.Implantat:
-                    returnThing = CTRLImplantat.AddNewThing();
-                    break;
-                case ThingDefs.Vorteil:
-                    returnThing = CTRLVorteil.AddNewThing();
-                    break;
-                case ThingDefs.Nachteil:
-                    returnThing = CTRLNachteil.AddNewThing();
-                    break;
-                case ThingDefs.Connection:
-                    returnThing = CTRLConnection.AddNewThing();
-                    break;
-                case ThingDefs.Sin:
-                    returnThing = CTRLSin.AddNewThing();
-                    break;
-                case ThingDefs.Nahkampfwaffe:
-                    returnThing = CTRLNahkampfwaffe.AddNewThing();
-                    break;
-                case ThingDefs.Fernkampfwaffe:
-                    returnThing = CTRLFernkampfwaffe.AddNewThing();
-                    break;
-                case ThingDefs.Kommlink:
-                    returnThing = CTRLKommlink.AddNewThing();
-                    break;
-                case ThingDefs.CyberDeck:
-                    returnThing = CTRLCyberDeck.AddNewThing();
-                    break;
-                case ThingDefs.Vehikel:
-                    returnThing = CTRLVehikel.AddNewThing();
-                    break;
-                case ThingDefs.Panzerung:
-                    returnThing = CTRLPanzerung.AddNewThing();
-                    break;
-                case ThingDefs.Adeptenkraft_KomplexeForm:
-                    returnThing = CTRLAdeptenkraft_KomplexeForm.AddNewThing();
-                    break;
-                case ThingDefs.Geist_Sprite:
-                    returnThing = CTRLGeist_Sprite.AddNewThing();
-                    break;
-                case ThingDefs.Foki_Widgets:
-                    returnThing = CTRLFoki_Widgets.AddNewThing();
-                    break;
-                case ThingDefs.Stroemung_Wandlung:
-                    returnThing = CTRLStroemung_Wandlung.AddNewThing();
-                    break;
-                case ThingDefs.Tradition_Initiation:
-                    returnThing = CTRLTradition_Initiation.AddNewThing();
-                    break;
-                case ThingDefs.Zaubersprueche:
-                    returnThing = CTRLZaubersprueche.AddNewThing();
-                    break;
-                default:
-                    throw new NotSupportedException();
-            }
-            RefreshLists();
+            Thing returnThing = lstCTRL.First(c => c.eDataTyp == thingDefs).AddNewThing();
             returnThing.PropertyChanged += (x, y) => AnyPropertyChanged();
             return returnThing;
         }
@@ -335,173 +309,29 @@ namespace ShadowRunHelper.Model
         /// <returns></returns>
         public void Add(Thing NewThing)
         {
-            switch (NewThing.ThingType)
-            {
-                case ThingDefs.Handlung:
-                    CTRLHandlung.AddNewThing((Handlung)NewThing);
-                    break;
-                case ThingDefs.Fertigkeit:
-                    CTRLFertigkeit.AddNewThing((Fertigkeit)NewThing);
-                    break;
-                case ThingDefs.Item:
-                    CTRLItem.AddNewThing((Item)NewThing);
-                    break;
-                case ThingDefs.Programm:
-                    CTRLProgramm.AddNewThing((Programm)NewThing);
-                    break;
-                case ThingDefs.Munition:
-                    CTRLMunition.AddNewThing((Munition)NewThing);
-                    break;
-                case ThingDefs.Implantat:
-                    CTRLImplantat.AddNewThing((Implantat)NewThing);
-                    break;
-                case ThingDefs.Vorteil:
-                    CTRLVorteil.AddNewThing((Vorteil)NewThing);
-                    break;
-                case ThingDefs.Nachteil:
-                    CTRLNachteil.AddNewThing((Nachteil)NewThing);
-                    break;
-                case ThingDefs.Connection:
-                    CTRLConnection.AddNewThing((Connection)NewThing);
-                    break;
-                case ThingDefs.Sin:
-                    CTRLSin.AddNewThing((Sin)NewThing);
-                    break;
-                case ThingDefs.Nahkampfwaffe:
-                    CTRLNahkampfwaffe.AddNewThing((Nahkampfwaffe)NewThing);
-                    break;
-                case ThingDefs.Fernkampfwaffe:
-                    CTRLFernkampfwaffe.AddNewThing((Fernkampfwaffe)NewThing);
-                    break;
-                case ThingDefs.Kommlink:
-                    CTRLKommlink.AddNewThing((Kommlink)NewThing);
-                    break;
-                case ThingDefs.CyberDeck:
-                    CTRLCyberDeck.AddNewThing((CyberDeck)NewThing);
-                    break;
-                case ThingDefs.Vehikel:
-                    CTRLVehikel.AddNewThing((Vehikel)NewThing);
-                    break;
-                case ThingDefs.Panzerung:
-                    CTRLPanzerung.AddNewThing((Panzerung)NewThing);
-                    break;
-                case ThingDefs.Adeptenkraft_KomplexeForm:
-                    CTRLAdeptenkraft_KomplexeForm.AddNewThing((Adeptenkraft_KomplexeForm)NewThing);
-                    break;
-                case ThingDefs.Geist_Sprite:
-                    CTRLGeist_Sprite.AddNewThing((Geist_Sprite)NewThing);
-                    break;
-                case ThingDefs.Foki_Widgets:
-                    CTRLFoki_Widgets.AddNewThing((Foki_Widgets)NewThing);
-                    break;
-                case ThingDefs.Stroemung_Wandlung:
-                    CTRLStroemung_Wandlung.AddNewThing((Stroemung_Wandlung)NewThing);
-                    break;
-                case ThingDefs.Tradition_Initiation:
-                    CTRLTradition_Initiation.AddNewThing((Tradition_Initiation)NewThing);
-                    break;
-                case ThingDefs.Zaubersprueche:
-                    CTRLZaubersprueche.AddNewThing((Zaubersprueche)NewThing);
-                    break;
-                default:
-                    throw new NotSupportedException();
-            }
-            RefreshLists();
+            lstCTRL.First(c => c.eDataTyp == NewThing.ThingType).AddNewThing(NewThing);
             NewThing.PropertyChanged += (x, y) => AnyPropertyChanged();
         }
 
         public void Remove(Thing tToRemove)
         {
-            switch (tToRemove.ThingType)
-            {
-                case ThingDefs.Handlung:
-                    CTRLHandlung.RemoveThing((Handlung)tToRemove);
-                    break;
-                case ThingDefs.Fertigkeit:
-                    CTRLFertigkeit.RemoveThing((Fertigkeit)tToRemove);
-                    break;
-                case ThingDefs.Item:
-                    CTRLItem.RemoveThing((Item)tToRemove);
-                    break;
-                case ThingDefs.Programm:
-                    CTRLProgramm.RemoveThing((Programm)tToRemove);
-                    break;
-                case ThingDefs.Munition:
-                    CTRLMunition.RemoveThing((Munition)tToRemove);
-                    break;
-                case ThingDefs.Implantat:
-                    CTRLImplantat.RemoveThing((Implantat)tToRemove);
-                    break;
-                case ThingDefs.Vorteil:
-                    CTRLVorteil.RemoveThing((Vorteil)tToRemove);
-                    break;
-                case ThingDefs.Nachteil:
-                    CTRLNachteil.RemoveThing((Nachteil)tToRemove);
-                    break;
-                case ThingDefs.Connection:
-                    CTRLConnection.RemoveThing((Connection)tToRemove);
-                    break;
-                case ThingDefs.Sin:
-                    CTRLSin.RemoveThing((Sin)tToRemove);
-                    break;
-                case ThingDefs.Attribut:
-                    CTRLAttribut.RemoveThing((Attribut)tToRemove);
-                    break;
-                case ThingDefs.Berechnet:
-                    CTRLBerechnet.RemoveThing((Berechnet)tToRemove);
-                    break;
-                case ThingDefs.Nahkampfwaffe:
-                    CTRLNahkampfwaffe.RemoveThing((Nahkampfwaffe)tToRemove);
-                    break;
-                case ThingDefs.Fernkampfwaffe:
-                    CTRLFernkampfwaffe.RemoveThing((Fernkampfwaffe)tToRemove);
-                    break;
-                case ThingDefs.Kommlink:
-                    CTRLKommlink.RemoveThing((Kommlink)tToRemove);
-                    break;
-                case ThingDefs.CyberDeck:
-                    CTRLCyberDeck.RemoveThing((CyberDeck)tToRemove);
-                    break;
-                case ThingDefs.Vehikel:
-                    CTRLVehikel.RemoveThing((Vehikel)tToRemove);
-                    break;
-                case ThingDefs.Panzerung:
-                    CTRLPanzerung.RemoveThing((Panzerung)tToRemove);
-                    break;
-                case ThingDefs.Adeptenkraft_KomplexeForm:
-                    CTRLAdeptenkraft_KomplexeForm.RemoveThing((Adeptenkraft_KomplexeForm)tToRemove);
-                    break;
-                case ThingDefs.Geist_Sprite:
-                    CTRLGeist_Sprite.RemoveThing((Geist_Sprite)tToRemove);
-                    break;
-                case ThingDefs.Foki_Widgets:
-                    CTRLFoki_Widgets.RemoveThing((Foki_Widgets)tToRemove);
-                    break;
-                case ThingDefs.Stroemung_Wandlung:
-                    CTRLStroemung_Wandlung.RemoveThing((Stroemung_Wandlung)tToRemove);
-                    break;
-                case ThingDefs.Tradition_Initiation:
-                    CTRLTradition_Initiation.RemoveThing((Tradition_Initiation)tToRemove);
-                    break;
-                case ThingDefs.Zaubersprueche:
-                    CTRLZaubersprueche.RemoveThing((Zaubersprueche)tToRemove);
-                    break;
-                default:
-                    break;
-            }
+            lstCTRL.First(c => c.eDataTyp == tToRemove.ThingType).RemoveThing(tToRemove);
             tToRemove.PropertyChanged -= (x, y) => AnyPropertyChanged();
-            _LinkList.Remove(_LinkList.Find((x) => x.Object == tToRemove));
-            _ThingList.Remove(_ThingList.Find((x) => x == tToRemove));
+            _LinkList.RemoveAll((x) => x.Object == tToRemove);
+            _ThingList.RemoveAll((x) => x == tToRemove); //TODO changed to Remove all, check it
         }
 
         public void RefreshListeners()
         {
             // Don't register AnyPropertyChanged() at the PropertyChanged  Event of this Class -> endless loop;
             Person.PropertyChanged -= (x, y) => AnyPropertyChanged();
+            Settings.PropertyChanged -= (x, y) => AnyPropertyChanged();
             Person.PropertyChanged += (x, y) => AnyPropertyChanged();
+            Settings.PropertyChanged += (x, y) => AnyPropertyChanged();
             foreach (var item in lstCTRL)
             {
                 item.RegisterEventAtData(AnyPropertyChanged);
+                item.RegisterEventAtData(RefreshLists);
                 foreach (var item2 in item.GetElements())
                 {
                     item2.PropertyChanged -= (x, y) => AnyPropertyChanged();
@@ -513,15 +343,9 @@ namespace ShadowRunHelper.Model
         public void RefreshLists()
         {
             _LinkList.Clear();
-            foreach (var item in lstCTRL)
-            {
-                _LinkList.AddRange(item.GetElementsForThingList());
-            }
+            _LinkList.AddRange(lstCTRL.Aggregate(new List<AllListEntry>(),(l,c)=>l.Concat(c.GetElementsForThingList()).ToList()));
             _ThingList.Clear();
-            foreach (var item in lstCTRL)
-            {
-                _ThingList.AddRange(item.GetElements());
-            }
+            _ThingList.AddRange(lstCTRL.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
         }
         #endregion
         #region AUTO_SAVE_STUFF 
@@ -574,104 +398,6 @@ namespace ShadowRunHelper.Model
             }
             return false;
         }
-        #endregion
-        #region IMPORT / EXPORT STUFF ##############################################
-        public IEnumerable<(string ThingType, string Content)> ToCSV(string strDelimiter)
-        {
-            const string strNewLine = "\n";
-            string strNew = "sep=" + strDelimiter + strNewLine;
-            return lstCTRL.Select(item => item.MultipleCSVExport(strDelimiter, strNewLine, strNew));
-        }
-
-        public void FromCSV(char strDelimiter, string strImport, ThingDefs eThing)
-        {
-            const char strNewLine = '\n';
-            switch (eThing)
-            {
-                case ThingDefs.UndefTemp:
-                    break;
-                case ThingDefs.Undef:
-                    break;
-                case ThingDefs.Handlung:
-                    CTRLHandlung.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Fertigkeit:
-                    CTRLFertigkeit.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Item:
-                    CTRLItem.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Programm:
-                    CTRLProgramm.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Munition:
-                    CTRLMunition.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Implantat:
-                    CTRLImplantat.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Vorteil:
-                    CTRLVorteil.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Nachteil:
-                    CTRLNachteil.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Connection:
-                    CTRLConnection.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Sin:
-                    CTRLSin.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Attribut:
-                    CTRLAttribut.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Berechnet:
-                    CTRLBerechnet.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Nahkampfwaffe:
-                    CTRLNahkampfwaffe.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Fernkampfwaffe:
-                    CTRLFernkampfwaffe.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Kommlink:
-                    CTRLKommlink.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.CyberDeck:
-                    CTRLCyberDeck.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Vehikel:
-                    CTRLVehikel.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Panzerung:
-                    CTRLPanzerung.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Eigenschaft:
-                    break;
-                case ThingDefs.Adeptenkraft_KomplexeForm:
-                    CTRLAdeptenkraft_KomplexeForm.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Geist_Sprite:
-                    CTRLGeist_Sprite.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Foki_Widgets:
-                    CTRLFoki_Widgets.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Stroemung_Wandlung:
-                    CTRLStroemung_Wandlung.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Tradition_Initiation:
-                    CTRLTradition_Initiation.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                case ThingDefs.Zaubersprueche:
-                    CTRLZaubersprueche.MultipleCSVImport(strDelimiter, strNewLine, strImport);
-                    break;
-                default:
-                    break;
-            }
-            RefreshLists();
-        }
-
         #endregion
     }
 }

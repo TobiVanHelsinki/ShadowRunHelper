@@ -25,7 +25,7 @@ namespace ShadowRunHelper.CharController
         AllListEntry MI_F;
         AllListEntry MI_D;
 
-        CyberDeck _ActiveItem;
+        CyberDeck _ActiveItem = new CyberDeck();
         public CyberDeck ActiveItem
         {
             //do not set any of these other than public because of serialisation
@@ -42,7 +42,6 @@ namespace ShadowRunHelper.CharController
 
         public CyberDeckController()
         {
-            ActiveItem = new CyberDeck();
             ActiveItem.PropertyChanged += (x, y) => RefreshOriginDeck();
             //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_CyberDeck__Aktiv/Text");
             MI_V = new AllListEntry(ActiveItem, ("Model_Thing_Wert/Text"), "Wert");
@@ -76,7 +75,7 @@ namespace ShadowRunHelper.CharController
                 return;
             }
             bIsRefreshInProgress = true;
-            Data.First(i => i.Aktiv == true).Copy(ActiveItem);
+            //Data.First(i => i.Aktiv == true).Copy(ActiveItem);
             foreach (CyberDeck item in Data)
             {
                 if (item.Aktiv == true)
@@ -103,7 +102,7 @@ namespace ShadowRunHelper.CharController
             {
                 if (item.Aktiv == true)
                 {
-                    item.dSchaden = ActiveItem.dSchaden;
+                    item.Schaden = ActiveItem.Schaden;
                     bIsRefreshInProgress = false;
                     return;
                 }

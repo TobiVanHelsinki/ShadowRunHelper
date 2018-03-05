@@ -1,7 +1,4 @@
-﻿using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
-using SharedCodeBase.Model;
-using System.Collections.Generic;
+﻿using ShadowRunHelper.Model;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME;
@@ -9,7 +6,6 @@ using TLIB_UWPFRAME.Model;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
 
 // Die Elementvorlage "Inhaltsdialog" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 

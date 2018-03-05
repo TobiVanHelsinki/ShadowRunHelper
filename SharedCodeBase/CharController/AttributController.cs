@@ -233,12 +233,12 @@ namespace ShadowRunHelper.CharController
         }
 
         //Override cController ############################
-        public override Attribut AddNewThing()
+        public override Thing AddNewThing()
         {
             throw new NotSupportedException();
         }
 
-        public override void RemoveThing(Attribut tRem)
+        public override void RemoveThing(Thing tRem)
         {
             throw new NotSupportedException();
         }

@@ -40,7 +40,7 @@ namespace ShadowRunHelper
                 {
                     var customgroup = new CustomAllList()
                     {
-                        Name = TypenHelper.ThingDefToString(group.Key, !Einzahl.Contains(group.Key)),
+                        Name = TypeHelper.ThingDefToString(group.Key, !Einzahl.Contains(group.Key)),
                         Anzahl = group.Count()
                     };
                     customgroup.AddRange(group);

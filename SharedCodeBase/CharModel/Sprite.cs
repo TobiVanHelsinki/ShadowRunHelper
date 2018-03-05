@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Geist_Sprite : Item
+    public class Sprite : Item
     {
         string _Dienste = "";
         [Used_UserAttribute]
@@ -16,16 +16,16 @@
                 }
             }
         }
-        bool? _Geb_Reg = false;
+        bool? Registriert = false;
         [Used_UserAttribute]
         public bool? Geb_Reg
         {
-            get { return _Geb_Reg; }
+            get { return Registriert; }
             set
             {
-                if (value != this._Geb_Reg)
+                if (value != this.Registriert)
                 {
-                    this._Geb_Reg = value;
+                    this.Registriert = value;
                     NotifyPropertyChanged();
                 }
             }

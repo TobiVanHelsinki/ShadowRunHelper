@@ -1,10 +1,12 @@
-﻿using ShadowRunHelper.CharModel;
+﻿using ShadowRunHelper.CharController;
+using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelper.UI;
 using ShadowRunHelper.UI.Edit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TLIB_UWPFRAME.IO;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
@@ -15,12 +17,10 @@ namespace ShadowRunHelper
 {
     public sealed partial class CharPage : Page
     {
-        void Click_Save(object sender, RoutedEventArgs e)
-        {
-            ViewModel?.MainObject?.SetSaveTimerTo();
-        }
-        // Variables ##########################################################
-        readonly AppModel ViewModel = AppModel.Instance;
+
+
+        #region Variables
+        readonly AppModel Model = AppModel.Instance;
         public Windows.System.Display.DisplayRequest Char_DisplayRequest;
         CharHolder MainObject;
         ResourceLoader res;
@@ -28,13 +28,15 @@ namespace ShadowRunHelper
         {
             if (MainObject == null)
             {
-                MainObject = ViewModel.MainObject;
+                MainObject = Model.MainObject;
             }
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
             PrepareBlockList();
         }
-        // Navigation Stuff####################################################
+
+        #endregion
+        #region Navigation stuff
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (SettingsModel.I.DISPLAY_REQUEST)
@@ -48,7 +50,7 @@ namespace ShadowRunHelper
                 {
                 }
             }
-            ViewModel.TutorialStateChanged += TutorialStateChanged;
+            Model.TutorialStateChanged += TutorialStateChanged;
             if (!SettingsModel.I.TutorialCharShown)
             {
 #pragma warning disable CS4014
@@ -99,7 +101,8 @@ namespace ShadowRunHelper
             base.OnNavigatedFrom(e);
         }
 
-        // Gui-Model Handler Stuff#############################################
+        #endregion
+        #region Gui-Model Handler Stuff
         async void Add_Click(object sender, RoutedEventArgs e)
         {
             ThingDefs Controller = 0;
@@ -108,7 +111,7 @@ namespace ShadowRunHelper
             Thing newThing = null;
             try
             {
-                newThing = ViewModel.MainObject.Add(Controller);
+                newThing = Model.MainObject.Add(Controller);
                 if (SettingsModel.I.StartEditAfterAdd)
                 {
                     await new Edit_Dialog(newThing).ShowAsync();
@@ -117,7 +120,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                ViewModel.NewNotification("", ex);
+                Model.NewNotification("", ex);
             }
         }
 
@@ -126,7 +129,7 @@ namespace ShadowRunHelper
         {
             if (((String)((Button)sender).Name).Contains("Person1"))
             {
-                await new Edit_Person(ViewModel.MainObject.Person).ShowAsync();
+                await new Edit_Person(Model.MainObject.Person).ShowAsync();
             }
             else
             {
@@ -155,36 +158,36 @@ namespace ShadowRunHelper
         {
             if ((Thing)((Button)sender).DataContext != null)
             {
-                ViewModel.MainObject.Remove((Thing)((Button)sender).DataContext);
+                Model.MainObject.Remove((Thing)((Button)sender).DataContext);
             }
         }
 
         async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).WertZusammensetzung, ViewModel.MainObject.LinkList);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).WertZusammensetzung, Model.MainObject.LinkList);
             await dialog.ShowAsync();
 
         }
 
         async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GrenzeZusammensetzung, ViewModel.MainObject.LinkList);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GrenzeZusammensetzung, Model.MainObject.LinkList);
             var ergebnis = await dialog.ShowAsync();
         }
 
         async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GegenZusammensetzung, ViewModel.MainObject.LinkList);
+            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GegenZusammensetzung, Model.MainObject.LinkList);
             await dialog.ShowAsync();
         }
 
         async void FertigkeitenZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, ViewModel.MainObject.LinkList);
+            Auswahl dialog = new Auswahl(((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, Model.MainObject.LinkList);
             await dialog.ShowAsync();
         }
-
-        // Gui Handler Stuff ##################################################
+        #endregion
+        #region Display Categoriy Stuff
 
         void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -320,32 +323,34 @@ namespace ShadowRunHelper
         /// <summary>
         /// for fast Accces
         /// </summary>
-        public readonly IEnumerable<(ThingDefs ThingType, bool vis)> LocalBlockListOptions = SettingsModel.I.BlockListOptions;
+        public readonly IEnumerable<CategoryOption> lokalCategoryOptions = AppModel.Instance.MainObject.Settings.CategoryOptions;
 
         void ContentControl_Loaded(object sender, RoutedEventArgs e)
         {
+            var ControlBlock = sender as ContentControl;
+            ThingDefs Type = TypeHelper.Obj2ThingDef(ControlBlock.Tag);
+
             //Temp Vars
-            TextBlock U = ((((sender as ContentControl).ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children[1] as TextBlock);
-            ContentPresenter E = (((sender as ContentControl).ContentTemplateRoot as StackPanel).Children[1] as ContentPresenter);
-            ListView LV = (((sender as ContentControl).ContentTemplateRoot as StackPanel).Children[2] as ListView);
+            TextBlock U = ((((ControlBlock.ContentTemplateRoot as Panel).Children[0] as Panel)/*.Children[0] as Panel*/).Children.First(c => c.GetType() == typeof(TextBlock)) as TextBlock);
+            ContentPresenter E = ((ControlBlock.ContentTemplateRoot as Panel).Children[1] as ContentPresenter);
+            ListView LV = ((ControlBlock.ContentTemplateRoot as Panel).Children[2] as ListView);
             // Global Things
-            ((((sender as ContentControl).ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children[0] as Button).Tag = (sender as ContentControl).Tag;
-            LV.Tag = (sender as ContentControl).Tag;
-            var Block = (sender as ContentControl);
+            ((((ControlBlock.ContentTemplateRoot as Panel).Children[0] as Panel)/*.Children[0] as Panel*/).Children[0] as Button).Tag = ControlBlock.Tag;
+            LV.Tag = ControlBlock.Tag;
+            ControlBlock.DataContext = Model.MainObject.ThingDef2CTRL(Type);
+
             //Search Things
+            Blocklist.TryGetValue((ThingDefs)int.Parse(ControlBlock.Tag as string), out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) NewBlock);
+            NewBlock.ListView = LV;
+            NewBlock.Block = ControlBlock;
+            NewBlock.sv = (ScrollViewer)(ControlBlock.Parent as FrameworkElement).Parent;
+            Blocklist.Remove((ThingDefs)int.Parse(ControlBlock.Tag as string));
+            Blocklist.Add((ThingDefs)int.Parse(ControlBlock.Tag as string), NewBlock);
 
-                Blocklist.TryGetValue((ThingDefs)int.Parse((sender as ContentControl).Tag as string), out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) NewBlock);
-                NewBlock.ListView = LV;
-                NewBlock.Block = (ContentControl)sender;
-                NewBlock.sv = (ScrollViewer)((sender as ContentControl).Parent as FrameworkElement).Parent;
-                Blocklist.Remove((ThingDefs)int.Parse((sender as ContentControl).Tag as string));
-                Blocklist.Add((ThingDefs)int.Parse((sender as ContentControl).Tag as string), NewBlock);
-
-            ThingDefs Type = (ThingDefs)int.Parse(((sender as ContentControl).Tag as string));
-            var entry = LocalBlockListOptions.FirstOrDefault(x => x.ThingType == Type);
-            if (!entry.vis)
+            var entry = lokalCategoryOptions.FirstOrDefault(x => x.ThingType == Type);
+            if (entry != null && !entry.Visibility)
             {
-                Block.Visibility = Visibility.Collapsed;
+                ControlBlock.Visibility = Visibility.Collapsed;
                 //return;
             }
             //Local things
@@ -353,141 +358,179 @@ namespace ShadowRunHelper
             {
                 case ThingDefs.Handlung:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_HandlungM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLHandlung.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLHandlung.Data;
                     E.ContentTemplate = this.Handlung_E;
                     LV.ItemTemplate = HandlungItem;
-                    //NewBlock.PivotItem = 0;
                     break;
                 case ThingDefs.Fertigkeit:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_FertigkeitM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLFertigkeit.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLFertigkeit.Data;
                     E.ContentTemplate = this.Fertigkeit_E;
                     LV.ItemTemplate = FertigkeitItem;
                     break;
                 case ThingDefs.Item:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ItemM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLItem.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLItem.Data;
                     E.ContentTemplate = this.Item_E;
                     LV.ItemTemplate = ItemItem;
                     break;
                 case ThingDefs.Programm:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ProgrammM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLProgramm.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLProgramm.Data;
                     E.ContentTemplate = this.Programm_E;
                     LV.ItemTemplate = ProgrammItem;
                     break;
                 case ThingDefs.Munition:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_MunitionM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLMunition.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLMunition.Data;
                     E.ContentTemplate = this.Munition_E;
                     LV.ItemTemplate = MunitionItem;
                     break;
                 case ThingDefs.Implantat:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ImplantatM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLImplantat.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLImplantat.Data;
                     E.ContentTemplate = this.Implantat_E;
                     LV.ItemTemplate = ImplantatItem;
                     break;
                 case ThingDefs.Vorteil:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_VorteilM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLVorteil.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLVorteil.Data;
                     E.ContentTemplate = this.Eigenschaft_E;
                     LV.ItemTemplate = EigenschaftItem;
                     break;
                 case ThingDefs.Nachteil:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_NachteilM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLNachteil.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLNachteil.Data;
                     E.ContentTemplate = this.Eigenschaft_E;
                     LV.ItemTemplate = EigenschaftItem;
                     break;
                 case ThingDefs.Connection:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ConnectionM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLConnection.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLConnection.Data;
                     E.ContentTemplate = this.Connection_E;
                     LV.ItemTemplate = ConnectionItem;
                     break;
                 case ThingDefs.Sin:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_SinM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLSin.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLSin.Data;
                     E.ContentTemplate = this.Sin_E;
                     LV.ItemTemplate = SinItem;
                     break;
                 case ThingDefs.Nahkampfwaffe:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_NahkampfwaffeM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLNahkampfwaffe.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLNahkampfwaffe.Data;
                     E.ContentTemplate = this.Nahkampfwaffe_E;
                     LV.ItemTemplate = NahkampfwaffeItem;
                     break;
                 case ThingDefs.Fernkampfwaffe:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_FernkampfwaffeM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLFernkampfwaffe.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLFernkampfwaffe.Data;
                     E.ContentTemplate = this.Fernkampfwaffe_E;
                     LV.ItemTemplate = FernkampfwaffeItem;
                     break;
                 case ThingDefs.Kommlink:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_KommlinkM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLKommlink.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLKommlink.Data;
                     E.ContentTemplate = this.Kommlink_E;
                     LV.ItemTemplate = KommlinkItem;
                     break;
                 case ThingDefs.CyberDeck:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_CyberDeckM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLCyberDeck.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLCyberDeck.Data;
                     E.ContentTemplate = this.CyberDeck_E;
                     LV.ItemTemplate = CyberDeckItem;
                     break;
                 case ThingDefs.Vehikel:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_VehikelM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLVehikel.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLVehikel.Data;
                     E.ContentTemplate = this.Vehikel_E;
                     LV.ItemTemplate = VehikelItem;
                     break;
                 case ThingDefs.Panzerung:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_PanzerungM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLPanzerung.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLPanzerung.Data;
                     E.ContentTemplate = this.Panzerung_E;
                     LV.ItemTemplate = PanzerungItem;
                     break;
                 case ThingDefs.Adeptenkraft_KomplexeForm:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Adeptenkraft_KomplexeFormM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLAdeptenkraft_KomplexeForm.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLAdeptenkraft_KomplexeForm.Data;
                     E.ContentTemplate = this.Adeptenkraft_KomplexeForm_E;
                     LV.ItemTemplate = Adeptenkraft_KomplexeFormItem;
                     break;
                 case ThingDefs.Geist_Sprite:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Geist_SpriteM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLGeist_Sprite.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLGeist_Sprite.Data;
                     E.ContentTemplate = this.Geist_Sprite_E;
                     LV.ItemTemplate = Geist_SpriteItem;
                     break;
                 case ThingDefs.Foki_Widgets:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Foki_WidgetsM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLFoki_Widgets.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLFoki_Widgets.Data;
                     E.ContentTemplate = this.Foki_Widgets_E;
                     LV.ItemTemplate = Foki_WidgetsItem;
                     break;
                 case ThingDefs.Stroemung_Wandlung:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Stroemung_WandlungM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLStroemung_Wandlung.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLStroemung_Wandlung.Data;
                     LV.ItemTemplate = Stroemung_WandlungItem;
                     break;
                 case ThingDefs.Tradition_Initiation:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Tradition_InitiationM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLTradition_Initiation.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLTradition_Initiation.Data;
                     LV.ItemTemplate = Tradition_InitiationItem;
                     break;
                 case ThingDefs.Zaubersprueche:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ZauberspruecheM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLZaubersprueche.Data;
+                    LV.ItemsSource = Model.MainObject.CTRLZaubersprueche.Data;
                     E.ContentTemplate = this.Zaubersprueche_E;
                     LV.ItemTemplate = ZauberspruecheItem;
+                    break;
+                case ThingDefs.KomplexeForm:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_KomplexeFormM_/Text");
+                    LV.ItemsSource = Model.MainObject.CTRLKomplexeForm.Data;
+                    E.ContentTemplate = this.KomplexeForm_E;
+                    LV.ItemTemplate = KomplexeFormItem;
+                    break;
+                case ThingDefs.Sprite:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_SpriteM_/Text");
+                    LV.ItemsSource = Model.MainObject.CTRLSprite.Data;
+                    E.ContentTemplate = this.Sprite_E;
+                    LV.ItemTemplate = SpriteItem;
+                    break;
+                case ThingDefs.Widgets:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_WidgetsM_/Text");
+                    LV.ItemsSource = Model.MainObject.CTRLWidgets.Data;
+                    E.ContentTemplate = this.Widgets_E;
+                    LV.ItemTemplate = WidgetsItem;
+                    break;
+                case ThingDefs.Wandlung:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_WandlungM_/Text");
+                    LV.ItemsSource = Model.MainObject.CTRLWandlung.Data;
+                    LV.ItemTemplate = WandlungItem;
+                    break;
+                case ThingDefs.Initiation:
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_InitiationM_/Text");
+                    LV.ItemsSource = Model.MainObject.CTRLInitiation.Data;
+                    LV.ItemTemplate = InitiationItem;
                     break;
                 default:
                     return;
             }
         }
+        #endregion
+        #region Options
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            Model.MainObject.Settings.ResetCategoryOptions();
+        }
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Model.RequestNavigation(this, ProjectPages.Char);
+        }
+        #endregion
+        #region  instant search Stuff
 
-        // instant search Stuff ##################################################
         Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer SV)> Blocklist = new Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer SV)>();
         Thing PendingScrollEntry;
 
@@ -521,7 +564,7 @@ namespace ShadowRunHelper
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x =>LocalBlockListOptions.First(y=>y.ThingType == x.ThingType).vis).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => lokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
         }
 
         void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
@@ -534,7 +577,7 @@ namespace ShadowRunHelper
                 }
                 else
                 {
-                    PendingScrollEntry = MainObject.ThingList.Where(x => LocalBlockListOptions.First(y => y.ThingType == x.ThingType).vis).ToList().Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+                    PendingScrollEntry = MainObject.ThingList.Where(x => lokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).ToList().Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
                 }
                 if (PendingScrollEntry == null)
                 {
@@ -598,15 +641,17 @@ namespace ShadowRunHelper
                         offset += item.DesiredSize.Height;
                     }
                 }
-                Choosen.ListView.SelectedItem = PendingScrollEntry; 
+                Choosen.ListView.SelectedItem = PendingScrollEntry;
                 Choosen.sv.ChangeView(null, offset - 100, null);
             }
             catch (Exception)
             {
                 return;
             }
-        PendingScrollEntry = null;
+            PendingScrollEntry = null;
         }
+        #endregion
+
         #region ApplyNewStyles
         private void Button_Loaded(object sender, RoutedEventArgs e)
         {
@@ -616,6 +661,123 @@ namespace ShadowRunHelper
             }
         }
 
+        #endregion
+
+        #region Button Handlers
+        void Click_Save(object sender, RoutedEventArgs e)
+        {
+            Model?.MainObject?.SetSaveTimerTo();
+        }
+        private async void CSV_IN_Click(object sender, RoutedEventArgs e)
+        {
+            string strRead = "";
+            var CTRL = ((sender as FrameworkElement).DataContext as IController);
+            try
+            {
+                strRead = await SharedIO.ReadTextFromFile(new FileInfoClass() { FolderToken = "import", Fileplace = Place.Extern }, Constants.LST_FILETYPES_CSV, UserDecision.AskUser);
+            }
+            catch (IsOKException ex)
+            {
+                return;
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "1", ex);
+            }
+            try
+            {
+                CTRL.CSV2Data(';', '\n', strRead);
+            }
+            catch (IsOKException ex)
+            {
+                return;
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "2", ex);
+            }
+        }
+
+        private void CSV_EX_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var CTRL = ((sender as FrameworkElement).DataContext as IController);
+                string output = CTRL.Data2CSV(';', '\n');
+                SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypeHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
+            }
+            catch (IsOKException ex)
+            {
+                return;
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
+            }
+        }
+        private void CSV_EX_Selected(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var CTRL = ((sender as FrameworkElement).DataContext as IController);
+                var block = Blocklist.First(x => x.Key == CTRL.eDataTyp);
+                var selected2 = block.Value.ListView.SelectedItems.Select(i=>i as Thing);
+                string output = IO.CSV_Converter.Data2CSV(';', '\n', selected2);
+
+
+                SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypeHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
+            }
+            catch (IsOKException ex)
+            {
+                return;
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
+            }
+        }
+        
+        private void DeleteCategoryContent(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var CTRL = ((sender as FrameworkElement).DataContext as IController);
+                CTRL.ClearData();
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(res.GetString("Notification_Error_LogicFail"), ex);
+            }
+        }
+
+        private void FurtherSettings(object sender, RoutedEventArgs e)
+        {
+            AppModel.Instance.RequestNavigation(this,ProjectPages.Settings, ProjectPagesOptions.SettingsCategories);
+        }
+
+
+        #endregion
+        #region Ordering
+        void Order_Type(object sender, RoutedEventArgs e)
+        {
+            var CTRL = ((sender as FrameworkElement).DataContext as IController);
+            CTRL.OrderData(Ordering.Type);
+        }
+
+        void Order_ABC(object sender, RoutedEventArgs e)
+        {
+            var CTRL = ((sender as FrameworkElement).DataContext as IController);
+            CTRL.OrderData(Ordering.ABC);
+        }
+        private void Order_Orig(object sender, RoutedEventArgs e)
+        {
+            var CTRL = ((sender as FrameworkElement).DataContext as IController);
+            CTRL.OrderData(Ordering.Original);
+        }
+        private void Order_Save(object sender, RoutedEventArgs e)
+        {
+            ((sender as FrameworkElement).DataContext as IController).SaveCurrentOrdering();
+        }
         #endregion
 
     }

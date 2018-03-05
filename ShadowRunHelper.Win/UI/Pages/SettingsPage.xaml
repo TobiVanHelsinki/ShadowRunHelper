@@ -7,6 +7,7 @@
     xmlns:System="using:System"
     xmlns:local="using:ShadowRunHelper"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:charmodel="using:ShadowRunHelper.CharModel"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -72,8 +73,8 @@
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <Pivot>
-        <PivotItem>
+    <Pivot x:Name="MainNavigation">
+        <PivotItem Tag="31">
             <PivotItem.Header>
                 <TextBlock x:Uid="UI_Optionen_U_Infos" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
@@ -138,7 +139,7 @@
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
-        <PivotItem>
+        <PivotItem Tag="32">
             <PivotItem.Header>
                 <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
@@ -192,7 +193,7 @@
                             <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Intern_Sync_Tip"/>
                         </ToolTipService.ToolTip>
                     </StackPanel>
-                    
+
                     <ToggleSwitch x:Uid="UI_Optionen_Toggle" GotFocus="Intern_Sync_GotFocus" Toggled="Intern_Sync_Toggled" IsOn="{x:Bind Path=Settings.InternSync, Mode=TwoWay}"/>
 
                     <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
@@ -236,33 +237,7 @@
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
-        <PivotItem>
-            <PivotItem.Header>
-                <TextBlock x:Uid="UI_Optionen_U_CharPageConfig" Style="{StaticResource ueberschrift1}"/>
-            </PivotItem.Header>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <ListView x:Name="CharPageConfigListView">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local:CharPageConfigListViewItem">
-                            <Grid >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <ToggleSwitch IsOn="{x:Bind Active, Mode=TwoWay}"/>
-                                <TextBlock VerticalAlignment="Center" Grid.Column="1" Text="{x:Bind Name, Mode=TwoWay}"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <Button x:Uid="UI_Settings_Btn_Speichern" Margin="10" HorizontalAlignment="Stretch" Grid.Row="1" Click="SaveButton_Click" Style="{StaticResource ButtonRevealStyle}"/>
-            </Grid>
-        </PivotItem>
-        <PivotItem>
+        <PivotItem Tag="34">
             <PivotItem.Header>
                 <TextBlock x:Uid="UI_Optionen_U_Hilfe" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
@@ -277,7 +252,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </PivotItem>
-        <PivotItem>
+        <PivotItem Tag="35">
             <PivotItem.Header>
                 <TextBlock x:Uid="UI_Optionen_U_Notifications" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>

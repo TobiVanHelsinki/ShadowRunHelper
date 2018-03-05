@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using TLIB_UWPFRAME;
-
-namespace ShadowRunHelper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public class Connection : Thing
     {
 
         private double loyal = 0;
+        [Used_UserAttribute]
         public double Loyal
         {
             get { return loyal; }
@@ -22,6 +20,7 @@ namespace ShadowRunHelper.CharModel
 
 
         private double _einfluss = 0;
+        [Used_UserAttribute]
         public double Einfluss
         {
             get { return _einfluss; }
@@ -35,66 +34,6 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public Connection()
-        {
-            ThingType = ThingDefs.Connection;
-        }
-
-        public override Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new Connection();
-            }
-            base.Copy(target);
-            ((Connection)target).Loyal = Loyal;
-            ((Connection)target).Einfluss = Einfluss;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            Loyal = 0;
-            Einfluss = 0;
-            base.Reset();
-        }
-
-        public override string ToCSV(string Delimiter)
-        {
-            string strReturn = base.ToCSV(Delimiter);
-            strReturn += Loyal;
-            strReturn += Delimiter;
-            strReturn += Einfluss;
-            strReturn += Delimiter;
-            return strReturn;
-        }
-        public override string HeaderToCSV(string Delimiter)
-        {
-            string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_Connection_Loyal/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_Connection_Einfluss/Text");
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-        public override void FromCSV(Dictionary<string, string> dic)
-        {
-            base.FromCSV(dic);
-            foreach (var item in dic)
-            {
-                if (item.Key == CrossPlatformHelper.GetString("Model_Connection_Loyal/Text"))
-                {
-                    Loyal = double.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_Connection_Einfluss/Text"))
-                {
-                    Einfluss = double.Parse(item.Value);
-                    continue;
-                }
-            }
-        }
-
+    
     }
 }

@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using TLIB_UWPFRAME;
-
-namespace ShadowRunHelper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public class CyberDeck : Kommlink
     {
         private double firewall_o =0;
+        [Used_UserAttribute]
         public double Firewall_o
         {
             get { return firewall_o; }
@@ -19,6 +17,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double datenverarbeitung_o=0;
+        [Used_UserAttribute]
         public double Datenverarbeitung_o
         {
             get { return datenverarbeitung_o; }
@@ -32,6 +31,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double angriff = 0;
+        [Used_UserAttribute]
         public double Angriff
         {
             get { return angriff; }
@@ -58,6 +58,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private double schleicher = 0;
+        [Used_UserAttribute]
         public double Schleicher
         {
             get { return schleicher; }
@@ -72,6 +73,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double schleicher_o=0;
+        [Used_UserAttribute]
         public double Schleicher_o
         {
             get { return schleicher_o; }
@@ -81,115 +83,6 @@ namespace ShadowRunHelper.CharModel
                 {
                     schleicher_o = value;
                     NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public CyberDeck()
-        {
-            ThingType = ThingDefs.CyberDeck;
-        }
-
-
-        public override Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                target = new CyberDeck();
-            }
-            base.Copy(target);
-            CyberDeck target2 = target as CyberDeck;
-            target2.Angriff = Angriff;
-            target2.Angriff_o = Angriff_o;
-            target2.Schleicher = Schleicher;
-            target2.Schleicher_o = Schleicher_o;
-            target2.Firewall_o = Firewall_o;
-            target2.Datenverarbeitung_o = Datenverarbeitung_o;
-            return target;
-        }
-
-        public override void Reset()
-        {
-            base.Reset();
-            Angriff = 0;
-            Angriff_o = 0;
-            Schleicher = 0;
-            Schleicher_o = 0;
-            Firewall_o = 0;
-            Datenverarbeitung_o = 0;
-        }
-
-
-        public override string ToCSV(string Delimiter)
-        {
-            string strReturn = base.ToCSV(Delimiter);
-            strReturn += Angriff;
-            strReturn += Delimiter;
-            strReturn += Angriff_o;
-            strReturn += Delimiter;
-            strReturn += Schleicher;
-            strReturn += Delimiter;
-            strReturn += Schleicher_o;
-            strReturn += Delimiter;
-            strReturn += Firewall_o;
-            strReturn += Delimiter;
-            strReturn += Datenverarbeitung_o;
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-        public override string HeaderToCSV(string Delimiter)
-        {
-            string strReturn = base.HeaderToCSV(Delimiter);
-            strReturn += CrossPlatformHelper.GetString("Model_CyberDeck_Angriff/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_CyberDeck_Angriff_o/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_CyberDeck_Schleicher/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_CyberDeck_Schleicher_o/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_CyberDeck_Firewall_o/Text");
-            strReturn += Delimiter;
-            strReturn += CrossPlatformHelper.GetString("Model_CyberDeck_Datenverarbeitung_o/Text");
-            strReturn += Delimiter;
-            return strReturn;
-        }
-
-        public override void FromCSV(Dictionary<string, string> dic)
-        {
-            base.FromCSV(dic);
-            foreach (var item in dic)
-            {
-                if (item.Key == CrossPlatformHelper.GetString("Model_CyberDeck_Angriff/Text"))
-                {
-                    Angriff = int.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_CyberDeck_Angriff_o/Text"))
-                {
-                    Angriff_o = int.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_CyberDeck_Schleicher/Text"))
-                {
-                    Schleicher = int.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_CyberDeck_Schleicher_o/Text"))
-                {
-                    Schleicher_o = int.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_CyberDeck_Firewall_o/Text"))
-                {
-                    Firewall_o = int.Parse(item.Value);
-                    continue;
-                }
-                if (item.Key == CrossPlatformHelper.GetString("Model_CyberDeck_Datenverarbeitung_o/Text"))
-                {
-                    Datenverarbeitung_o = int.Parse(item.Value);
-                    continue;
                 }
             }
         }

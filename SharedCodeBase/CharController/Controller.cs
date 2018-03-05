@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System;
 using System.Linq;
+using TLIB_UWPFRAME.Resources;
 
 namespace ShadowRunHelper.CharController
 {
@@ -13,28 +14,46 @@ namespace ShadowRunHelper.CharController
         /// GUI-Binding Target
         /// </summary>
         public ObservableCollection<T> Data { get; protected set; }
+        public IEnumerable<Thing> GetElements() => Data;
+
         protected readonly ThingDefs _eDataTyp;
         public ThingDefs eDataTyp { get => _eDataTyp; }
 
         public virtual void RegisterEventAtData(Action Method)
         {
+            Data.CollectionChanged -= (x, y) => Method();
             Data.CollectionChanged += (x, y) => Method();
         }
 
-        public virtual T AddNewThing()
+        public virtual Thing AddNewThing()
         {
-            T newTee = new T();
-            Data.Add(newTee);
-            return newTee;
+            var newThing = Activator.CreateInstance<T>();
+            newThing.Order = Data.Max(x => x.Order) + 1;
+            Data.Add(newThing);
+            return newThing;
         }
-        public virtual T AddNewThing(T newTee)
+        public virtual Thing AddNewThing(Thing newThing)
         {
-            Data.Add(newTee);
-            return newTee;
+            Data.Add((T)newThing);
+            newThing.Order = Data.Max(x => x.Order) + 1;
+            return newThing;
         }
-        public virtual void RemoveThing(T tRem)
+        public virtual void RemoveThing(Thing tToRemove)
         {
-            Data.Remove(tRem);
+            Data.Remove((T)tToRemove);
+        }
+
+        public bool ClearData()
+        {
+            try
+            {
+                Data.Clear();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         public virtual IEnumerable<AllListEntry> GetElementsForThingList()
@@ -48,137 +67,52 @@ namespace ShadowRunHelper.CharController
         public Controller()
         {
             Data = new ObservableCollection<T>();
-            switch (typeof(T).Name)
+            _eDataTyp = TypeHelper.TypeToThingDef(typeof(T));
+        }
+
+
+        #region CSV
+        public string Data2CSV(char strDelimiter, char strNewLine)
+        {
+            return IO.CSV_Converter.Data2CSV(strDelimiter, strNewLine, Data);
+        }
+
+        public void CSV2Data(char strDelimiter, char strNewLine, string strReadFile)
+        {
+            Data.AddRange(IO.CSV_Converter.CSV2Data<T>(strDelimiter, strNewLine, strReadFile));
+        }
+        #endregion
+
+        public void SaveCurrentOrdering()
+        {
+            int i = 0;
+            foreach (var item in Data)
             {
-                case "UndefTemp":
-                    break; 
-                case "Undef":
-                    break;
-                case "Handlung":
-                    this._eDataTyp = ThingDefs.Handlung;
-                    break;
-                case "Fertigkeit":
-                    this._eDataTyp = ThingDefs.Fertigkeit;
-                    break;
-                case "Item":
-                    this._eDataTyp = ThingDefs.Item;
-                    break;
-                case "Programm":
-                    this._eDataTyp = ThingDefs.Programm;
-                    break;
-                case "Munition":
-                    this._eDataTyp = ThingDefs.Munition;
-                    break;
-                case "Implantat":
-                    this._eDataTyp = ThingDefs.Implantat;
-                    break;
-                case "Vorteil":
-                    this._eDataTyp = ThingDefs.Vorteil;
-                    break;
-                case "Nachteil":
-                    this._eDataTyp = ThingDefs.Nachteil;
-                    break;
-                case "Connection":
-                    this._eDataTyp = ThingDefs.Connection;
-                    break;
-                case "Sin":
-                    this._eDataTyp = ThingDefs.Sin;
-                    break;
-                case "Attribut":
-                    this._eDataTyp = ThingDefs.Attribut;
-                    break;
-                case "Nahkampfwaffe":
-                    this._eDataTyp = ThingDefs.Nahkampfwaffe;
-                    break;
-                case "Fernkampfwaffe":
-                    this._eDataTyp = ThingDefs.Fernkampfwaffe;
-                    break;
-                case "Kommlink":
-                    this._eDataTyp = ThingDefs.Kommlink;
-                    break;
-                case "CyberDeck":
-                    this._eDataTyp = ThingDefs.CyberDeck;
-                    break;
-                case "Vehikel":
-                    this._eDataTyp = ThingDefs.Vehikel;
-                    break;
-                case "Panzerung":
-                    this._eDataTyp = ThingDefs.Panzerung;
-                    break;
-                case "Eigenschaft":
-                    this._eDataTyp = ThingDefs.Eigenschaft;
-                    break;
-                case "Adeptenkraft_KomplexeForm":
-                    this._eDataTyp = ThingDefs.Adeptenkraft_KomplexeForm;
-                    break;
-                case "Foki_Widgets":
-                    this._eDataTyp = ThingDefs.Foki_Widgets;
-                    break;
-                case "Geist_Sprite":
-                    this._eDataTyp = ThingDefs.Geist_Sprite;
-                    break;
-                case "Stroemung_Wandlung":
-                    this._eDataTyp = ThingDefs.Stroemung_Wandlung;
-                    break;
-                case "Tradition_Initiation":
-                    this._eDataTyp = ThingDefs.Tradition_Initiation;
-                    break;
-                case "Zaubersprueche":
-                    this._eDataTyp = ThingDefs.Zaubersprueche;
-                    break;
-                default :
-                    break;
+                item.Order = i;
+                i++;
             }
         }
 
-        public virtual (string ThingType, string Content) MultipleCSVExport(string strDelimiter, string strNewLine, string strNew)
+        public void OrderData(Ordering order)
         {
-            string strTemp = strNew;
-            if (this.Data.Count >= 1)
+            IEnumerable<T> OrderedData;
+            switch (order)
             {
-                strTemp += this.Data[0].HeaderToCSV(strDelimiter);
+                case Ordering.ABC:
+                    OrderedData = Data.OrderBy(x => x.Bezeichner).ToList();
+                    break;
+                case Ordering.Type:
+                    OrderedData = Data.OrderBy(x => x.Typ).ToList();
+                    break;
+                case Ordering.Original:
+                default:
+                    OrderedData = Data.OrderBy(x => x.Order).ToList();
+                    break;
             }
-            strTemp += strNewLine;
-            foreach (T item in this.Data)
-            {
-                strTemp += item.ToCSV(strDelimiter);
-                strTemp += strNewLine;
-            }
-            return (TypenHelper.ThingDefToString(eDataTyp, true), strTemp);
+            ClearData();
+            Data.AddRange(OrderedData);
         }
 
-        public virtual void MultipleCSVImport(char strDelimiter, char strNewLine, string strReadFile)
-        {
-            string[] Lines = strReadFile.Split(strNewLine);
-            string[] Headar = { };
-            for (int i = 0; i < Lines.Length; i++) //start at 2 to overjump first lines
-            {
-                // key = propertie name, value = value
-                string[] CSVEntries = Lines[i].Split(strDelimiter);
-                if (CSVEntries.Length < 5)
-                {
-                    continue;
-                }
-                if (Headar.Length < CharModel.Thing.nThingPropertyCount) 
-                {
-                    Headar = Lines[i].Split(strDelimiter);
-                    continue;
-                }
-                Dictionary<string, string> Dic = new Dictionary<string, string>();
-                int j = 0;
-                foreach (var itemstring in CSVEntries)
-                {
-                    Dic.Add(Headar[j], itemstring);
-                    j++;
-                }
-                (this.AddNewThing())?.FromCSV(Dic);
-            }
-        }
-
-        public IEnumerable<Thing> GetElements()
-        {
-            return Data;
-        }
 
     }
 }

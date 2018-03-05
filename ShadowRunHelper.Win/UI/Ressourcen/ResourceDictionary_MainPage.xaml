@@ -31,6 +31,7 @@
     </Style>
     <Style TargetType="TextBlock" x:Key="Panel_Oben_Text_1">
         <Setter Property="Margin" Value="20,0,10,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="Panel_Oben_Text_Schaden">
@@ -44,11 +45,17 @@
     <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="Panel_Oben_Btn_Plus">
         <Setter Property="Content" Value="&#xE109;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Margin" Value="5"/>
     </Style>
 
     <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="Panel_Oben_Btn_Minus">
         <Setter Property="Content" Value="&#xE108;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Margin" Value="5"/>
     </Style>
     
     <Style TargetType="Slider" x:Key="Panel_Oben_Schaden_Slider">

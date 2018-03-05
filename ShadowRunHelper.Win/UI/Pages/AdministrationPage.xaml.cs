@@ -40,23 +40,17 @@ namespace ShadowRunHelper
             res = ResourceLoader.GetForCurrentView();
             ViewModel.TutorialStateChanged += TutorialStateChanged;
 #if DEBUG
-            CurrentCharBtn_CSVExp.Visibility = Visibility.Visible;
-            Btn_CSV_Import.Visibility = Visibility.Visible;
             Btn_SecondView.Visibility = Visibility.Visible;
             Btn_Exception.Visibility = Visibility.Visible;
 #else
-            CurrentCharBtn_CSVExp.Visibility = Visibility.Collapsed;
-            Btn_CSV_Import.Visibility = Visibility.Collapsed;
             Btn_SecondView.Visibility = Visibility.Collapsed;
             Btn_Exception.Visibility = Visibility.Collapsed;
 #endif
         }
 
-        Action<ProjectPages> NavigationMethod;
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            NavigationMethod = (Action < ProjectPages > )e.Parameter;
             ChangeCurrentCharUI(ViewModel.MainObject == null ? false : true);
             ViewModel.PropertyChanged += (x, y) => { ChangeCurrentCharUI(ViewModel.MainObject == null ? false : true); };
             if (SettingsModel.I.StartCount <= 1)
@@ -178,8 +172,9 @@ namespace ShadowRunHelper
                 return;
             }
             ViewModel.MainObject = new CharHolder();
+            ViewModel.MainObject.AfterLoad();
             SettingsModel.I.CountCreations++;
-            NavigationMethod(ProjectPages.Char);
+            AppModel.Instance.RequestNavigation(this, ProjectPages.Char);
         }
 
         async void Click_Speichern(object sender, RoutedEventArgs e)
@@ -262,7 +257,7 @@ namespace ShadowRunHelper
             ChangeProgress(false);
             if (ViewModel.MainObject != null)
             {
-                NavigationMethod(ProjectPages.Char);
+                AppModel.Instance.RequestNavigation(this,ProjectPages.Char);
             }
             SettingsModel.I.CountLoadings++;
         }
@@ -404,7 +399,10 @@ namespace ShadowRunHelper
 
         void Click_CSV_Export_CurrentChar(object sender, RoutedEventArgs e)
         {
-            CSV_Export(ViewModel.MainObject);
+            if (!IsOperationInProgres)
+            {
+                CSV_Export(ViewModel.MainObject);
+            }
         }
 
         async void Click_CSV_Export_OtherChar(object sender, RoutedEventArgs e)
@@ -417,12 +415,14 @@ namespace ShadowRunHelper
 
         void CSV_Export(CharHolder CharToSave)
         {
-            //TODO with Foldertoken = Export
-            //StorageFolder Folder = null;
-
             try
             {
-                var ContentList = ViewModel.MainObject.ToCSV(";").Select(item => (item.ThingType + Constants.DATEIENDUNG_CSV, item.Content));
+                string ret = "";
+                foreach (var item in CharToSave.lstCTRL)
+                {
+                    ret += item.Data2CSV(';', '\n');
+                }
+                var ContentList = CharToSave.lstCTRL.Select(c => (TypeHelper.ThingDefToString(c.eDataTyp, true) + Constants.DATEIENDUNG_CSV, c.Data2CSV(';', '\n')));
                 SharedIO.SaveTextesToFiles(ContentList, new FileInfoClass (){Fileplace=Place.Extern, FolderToken = "CSV_TEMP" });
             }
             catch (Exception ex)
@@ -430,40 +430,6 @@ namespace ShadowRunHelper
                 ViewModel.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
         }
-#pragma warning disable CS1998
-        async void Click_CSV_Import(object sender, RoutedEventArgs e)
-        {
-            if (IsOperationInProgres)
-            {
-                return;
-            }
-            //TODO with Foldertoken = import
-            //StorageFile File = null;
-            //string strRead = "";
-            //try
-            //{
-            //    File = await WinIO.GetFile(Place.Extern, null, null, Constants.LST_FILETYPES_CSV);
-            //    strRead = await FileIO.ReadTextAsync(File);
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    ViewModel.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "1", ex);
-            //}
-            //try
-            //{
-            //    if (ViewModel.MainObject == null)
-            //    {
-            //        ViewModel.MainObject = new CharHolder();
-            //    }
-            //    ViewModel.MainObject.CTRLCyberDeck.MultipleCSVImport(';', '\n', strRead);
-            //}
-            //catch (Exception ex)
-            //{
-            //    ViewModel.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "2", ex);
-            //}
-        }
-#pragma warning restore CS1998
 
         void Exception(object sender, RoutedEventArgs e)
         {

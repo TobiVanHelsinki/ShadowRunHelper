@@ -1,41 +1,20 @@
-﻿using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
+using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
-
 namespace ShadowRunHelper
 {
-    class CharPageConfigListViewItem
-    {
-        public string Name
-        {
-            get; set;
-        }
-        public ThingDefs Code
-        {
-            get; set;
-        }
-        public bool Active
-        {
-            get;
-            set;
-        }
-    }
-    /// <summary>
-    /// Eine leere Seite, die eigenstaendig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
-    /// </summary>
     public sealed partial class SettingsPage : Page
     {
-
         readonly SettingsModel Settings = SettingsModel.Instance;
         readonly AppModel Model = AppModel.Instance;
         readonly string eMail = Constants.APP_CONTACT_MAIL;
@@ -47,17 +26,25 @@ namespace ShadowRunHelper
         readonly string AppLink = Constants.APP_STORE_LINK;
         readonly List<HelpEntry> Help = Constants.HelpList;
 
+
         public SettingsPage()
         {
             InitializeComponent();
-            CharPageConfigListView.ItemsSource = Settings.BlockListOptions.Select(i => new CharPageConfigListViewItem() { Active = i.vis, Code = i.ThingType, Name = TypenHelper.ThingDefToString(i.ThingType, true) }).Where(x=>x.Name != "");
         }
-
-        void SaveButton_Click(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Settings.BlockListOptions = CharPageConfigListView.ItemsPanelRoot.Children.Select(i =>
-                (((i as ListViewItem).Content as CharPageConfigListViewItem).Code,((i as ListViewItem).Content as CharPageConfigListViewItem).Active)
-            );
+            switch ((ProjectPagesOptions)e.Parameter)
+            {
+                case ProjectPagesOptions.SettingsMain:
+                case ProjectPagesOptions.SettingsOptions:
+                case ProjectPagesOptions.SettingsHelp:
+                    MainNavigation.SelectedItem = MainNavigation.Items.FirstOrDefault(
+                        x => (x as PivotItem).Tag.ToString() == ((int)e.Parameter).ToString());
+                    break;
+                default:
+                    break;
+            }
+            base.OnNavigatedTo(e);  
         }
 
         #region Gui Stuff ##########################################
@@ -161,5 +148,15 @@ namespace ShadowRunHelper
         }
         #endregion
 
+        #region ApplyNewStyles
+        private void Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
+            }
+        }
+
+        #endregion
     }
 }

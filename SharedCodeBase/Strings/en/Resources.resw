@@ -157,7 +157,7 @@
     <value>Loading failed</value>
   </data>
   <data name="Notification_Error_SaveFail" xml:space="preserve">
-    <value>Error during saving</value>
+    <value>Error during saving. Try to export your char and restart the App.</value>
   </data>
   <data name="Notification_Error_Converter_Error1.Text" xml:space="preserve">
     <value>could not store</value>
@@ -553,10 +553,10 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Magic</value>
   </data>
   <data name="Model_Adeptenkraft_KomplexeFormM_.Text" xml:space="preserve">
-    <value>Adept Powers/Complex Forms</value>
+    <value>Adept Powers</value>
   </data>
   <data name="Model_Adeptenkraft_KomplexeForm_.Text" xml:space="preserve">
-    <value>Adept Power/Complex Form</value>
+    <value>Adept Power</value>
   </data>
   <data name="Model_Adeptenkraft_KomplexeForm_Option.Text" xml:space="preserve">
     <value>Options</value>
@@ -697,16 +697,16 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>:</value>
   </data>
   <data name="Model_Foki_WidgetsM_.Text" xml:space="preserve">
-    <value>Foci/Widgets</value>
+    <value>Foci</value>
   </data>
   <data name="Model_Foki_Widgets_.Text" xml:space="preserve">
-    <value>Foci/Widget</value>
+    <value>Foci</value>
   </data>
   <data name="Model_Geist_SpriteM_.Text" xml:space="preserve">
-    <value>Spirits/Sprites</value>
+    <value>Spirits</value>
   </data>
   <data name="Model_Geist_Sprite_.Text" xml:space="preserve">
-    <value>Spirit/Sprite</value>
+    <value>Spirit</value>
   </data>
   <data name="Model_Geist_Sprite_Geb_Reg.Text" xml:space="preserve">
     <value>Bound</value>
@@ -817,7 +817,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Bank balance</value>
   </data>
   <data name="Model_NachteilM_.Text" xml:space="preserve">
-    <value>Aadvantage</value>
+    <value>Disadvantages</value>
   </data>
   <data name="Model_Nachteil_.Text" xml:space="preserve">
     <value>Disadvantage</value>
@@ -1009,7 +1009,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Range</value>
   </data>
   <data name="Model_Vehikel_Wert.Text" xml:space="preserve">
-    <value>Damage</value>
+    <value>Stufe</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Datei_Import.Label" xml:space="preserve">
     <value>Char Import</value>
@@ -1105,10 +1105,10 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Echoes</value>
   </data>
   <data name="Model_Tradition_InitiationM_.Text" xml:space="preserve">
-    <value>Traditions/Initiations</value>
+    <value>Traditions</value>
   </data>
   <data name="Model_Tradition_Initiation_.Text" xml:space="preserve">
-    <value>Tradition/Initiation</value>
+    <value>Tradition</value>
   </data>
   <data name="Model_Tradition_Initiation_Metamagie.Text" xml:space="preserve">
     <value>Metamagic</value>
@@ -1177,9 +1177,123 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Carrie</value>
   </data>
   <data name="UI_Optionen_U_CharPageConfig.Text" xml:space="preserve">
-    <value>Adjust CharPage</value>
+    <value>Choose categories</value>
   </data>
   <data name="UI_Settings_Btn_Speichern.Content" xml:space="preserve">
-    <value>Save</value>
+    <value>Reload to see changes</value>
+  </data>
+  <data name="UI_Settings_Btn_Reset.Content" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
+    <value>This Fileversion is outdated. If you want to upgrade this char, please contact support.</value>
+  </data>
+  <data name="CSV_EX.Text" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="CSV_IN.Text" xml:space="preserve">
+    <value>CSV Import</value>
+  </data>
+  <data name="DeleteCategoryContent.Text" xml:space="preserve">
+    <value>truncate category</value>
+  </data>
+  <data name="FurtherSettings.Text" xml:space="preserve">
+    <value>more</value>
+  </data>
+  <data name="Notification_Error_LogicFail" xml:space="preserve">
+    <value>Programlogic-error</value>
+  </data>
+  <data name="CSV_EX_Selected.Text" xml:space="preserve">
+    <value>CSV Export (just selected)</value>
+  </data>
+  <data name="Error_GetFolder" xml:space="preserve">
+    <value>Error, couldn't get folder.</value>
+  </data>
+  <data name="Char_View_Pivot_Settings.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Error_RepairLinkList" xml:space="preserve">
+    <value>Could not restore link item: {0} </value>
+  </data>
+  <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">
+    <value>Saving not possible, an other operation is in progress</value>
+  </data>
+  <data name="Order.Text" xml:space="preserve">
+    <value>order item</value>
+  </data>
+  <data name="Order_ABC.Text" xml:space="preserve">
+    <value>alphabeticly</value>
+  </data>
+  <data name="Order_Orig.Text" xml:space="preserve">
+    <value>Load saved order</value>
+  </data>
+  <data name="Order_Save.Text" xml:space="preserve">
+    <value>Save current order</value>
+  </data>
+  <data name="Order_Type.Text" xml:space="preserve">
+    <value>after "type"</value>
+  </data>
+  <data name="Model_KomplexeFormM_.Text" xml:space="preserve">
+    <value>Complex Forms</value>
+  </data>
+  <data name="Model_KomplexeForm_.Text" xml:space="preserve">
+    <value>Complex Form</value>
+  </data>
+  <data name="Model_KomplexeForm_Option.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="Model_WidgetsM_.Text" xml:space="preserve">
+    <value>Widgets</value>
+  </data>
+  <data name="Model_Widgets_.Text" xml:space="preserve">
+    <value>Widget</value>
+  </data>
+  <data name="Model_SpriteM_.Text" xml:space="preserve">
+    <value>Sprites</value>
+  </data>
+  <data name="Model_Sprite_.Text" xml:space="preserve">
+    <value>Sprite</value>
+  </data>
+  <data name="Model_Sprite_Dienste.Text" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="Model_Sprite_Geb_Reg.Text" xml:space="preserve">
+    <value>Registered</value>
+  </data>
+  <data name="Model_WandlungM_.Text" xml:space="preserve">
+    <value>Submersions</value>
+  </data>
+  <data name="Model_Wandlung_.Text" xml:space="preserve">
+    <value>Submersion</value>
+  </data>
+  <data name="Model_Wandlung_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Wandlung_Echos.Text" xml:space="preserve">
+    <value>Echos</value>
+  </data>
+  <data name="Model_Wandlung_Paragon.Text" xml:space="preserve">
+    <value>Paragon</value>
+  </data>
+  <data name="Model_Wandlung_Wert.Text" xml:space="preserve">
+    <value>Grad</value>
+  </data>
+  <data name="Model_InitiationM_.Text" xml:space="preserve">
+    <value>Initiationen</value>
+  </data>
+  <data name="Model_Initiation_.Text" xml:space="preserve">
+    <value>Initiation</value>
+  </data>
+  <data name="Model_Initiation_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Initiation_Metamagie.Text" xml:space="preserve">
+    <value>Metamagie</value>
+  </data>
+  <data name="Model_Initiation_Schutzpatron.Text" xml:space="preserve">
+    <value>Schutzpatron</value>
+  </data>
+  <data name="Model_Initiation_Wert.Text" xml:space="preserve">
+    <value>Grad</value>
   </data>
 </root>
