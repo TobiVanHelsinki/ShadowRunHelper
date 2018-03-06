@@ -10,7 +10,7 @@
     </ResourceDictionary.MergedDictionaries>
     <!-- Tab Things ################################################## -->
 
-    <Style x:Key="TabsStylePivotStyle" TargetType="Pivot">
+    <Style x:Key="PivotStyle_TabsStyle" TargetType="Pivot">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Pivot">
@@ -306,10 +306,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="PivotItem" x:Key="TabsStylePivotStylePivotItem">
+    <Style TargetType="PivotItem" x:Key="PivotItem_TabsStyle">
         <Setter Property="Margin" Value="0"/>
-    </Style>
-    <Style BasedOn="{StaticResource RelativePanel}" TargetType="RelativePanel" x:Key="Pivot_Item_RelativePanel">
     </Style>
     <Style BasedOn="{StaticResource ScrollViewer}" TargetType="ScrollViewer" x:Key="Pivot_Item_ScrollViewer">
         <Setter Property="Padding" Value="0,0,10,0"/>
@@ -322,26 +320,27 @@
     </Style>
 
     <!-- Content Block Things Structure ################################################## -->
-    <Style TargetType="ContentControl" x:Key="Block_ContentControl">
+    <Style TargetType="ContentControl" x:Key="Category_ContentControl">
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     </Style>
-    <Style TargetType="Grid" x:Key="ListView_E">
+    <Style TargetType="Grid" x:Key="Category_Head_Items_Grid">
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="Padding" Value="10,0,5,0"/>
     </Style>
-    <Style TargetType="StackPanel" x:Key="ListView_U">
+    <Style TargetType="StackPanel" x:Key="Category_Head_Stackpanel">
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="Background" Value="{ThemeResource SystemAltLowColor}"/>
         <Setter Property="Orientation" Value="Horizontal"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
-    <Style TargetType="Grid" x:Key="ListView_U_As_Grid">
+    <Style TargetType="Grid" x:Key="Category_Head_Grid">
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="Background" Value="{ThemeResource SystemAltLowColor}"/>
+        <!--<Setter Property="HorizontalAlignment" Value="Center"/>-->
     </Style>
 
-    <Style TargetType="ListView" x:Key="ListView">
+    <Style TargetType="ListView" x:Key="Category_Items">
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
         <Setter Property="BorderThickness" Value="0,1,0,1"/>
         <Setter Property="Background" Value="{ThemeResource ListViewBackgroundBrush}"/>
@@ -355,38 +354,26 @@
     
     <!-- ListView Things Items ################################################## -->
     <!-- Struktur ####################### -->
-    <Style TargetType="Grid" x:Key="ListView_Item_Grid">
+    <Style TargetType="Grid" x:Key="Category_Item_Grid">
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
     </Style>
-    <contract5NotPresent:Style TargetType="Grid" BasedOn="{StaticResource ListView_Item_Grid}" x:Key="ListView_Item_Grid_Editable"/>
-    <contract5Present:Style TargetType="Grid" BasedOn="{StaticResource ListView_Item_Grid}" x:Key="ListView_Item_Grid_Editable">
+    <contract5NotPresent:Style TargetType="Grid" BasedOn="{StaticResource Category_Item_Grid}" x:Key="Category_Item_Grid_Editable"/>
+    <contract5Present:Style TargetType="Grid" BasedOn="{StaticResource Category_Item_Grid}" x:Key="Category_Item_Grid_Editable">
         <Setter Property="BorderBrush" Value="{StaticResource SystemControlBackgroundListMediumRevealBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
     </contract5Present:Style>
-    <Style TargetType="Grid" x:Key="ListView_Item_Grid_For_Non_ListViews">
+    <Style TargetType="Grid" x:Key="Category_Item_Grid_For_Non_ListViews">
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
         <Setter Property="Background" Value="{ThemeResource ListViewBackgroundBrush}"/>
     </Style>
-    <Style TargetType="Grid" x:Key="ListView_as_Grid">
-        <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
-        <Setter Property="BorderThickness" Value="0,1,0,1"/>
-    </Style>
 
-    <Style TargetType="StackPanel" x:Key="ListView_Item_X_Wrap_StackPanels">
+    <Style TargetType="StackPanel" x:Key="Category_Item_X_Wrap_StackPanels">
         <Setter Property="BorderThickness" Value="1,0,0,0"/>
         <Setter Property="Margin" Value="0,0,0,5"/>
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
         <Setter Property="Orientation" Value="Vertical"/>
     </Style>
-    <Style TargetType="GridViewItem" x:Key="ListView_ThingListContainerTemplate">
-        <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
-        <Setter Property="BorderThickness" Value="0,0,1,0"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="0,0,2,0"/>
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="Width" Value="Auto" />
-    </Style>
-    <Style TargetType="ListViewItem" x:Key="ListView_ThingListContainerTemplate_List">
+    <Style TargetType="ListViewItem" x:Key="AllListEntry_ListView">
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
         <Setter Property="BorderThickness" Value="1,0,0,0"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -396,19 +383,23 @@
     </Style>
     <!-- Anzeige ####################### -->
 
-    <Style TargetType="TextBlock" x:Key="ListView_Item_Text">
+    <Style TargetType="TextBlock" x:Key="Category_Item_Text">
         <Setter Property="Margin" Value="5,2,5,2"/>
-        <!--<Setter Property="TextWrapping" Value="Wrap"/>-->
+        <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
-    <Style TargetType="TextBlock" x:Key="ListView_Item_Text_Bold" BasedOn="{StaticResource ListView_Item_Text}">
+    <Style TargetType="TextBlock" x:Key="Category_Head_Items">
+        <Setter Property="Margin" Value="5,2,5,2"/>
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+        </Style>
+    <Style TargetType="TextBlock" x:Key="Category_Item_Text_Bold" BasedOn="{StaticResource Category_Item_Text}">
         <Setter Property="FontWeight" Value="Bold"/>
         <!--<Setter Property="TextWrapping" Value="Wrap"/>-->
     </Style>
     
-    <Style TargetType="TextBlock" x:Key="ListView_Item_Text_Note" BasedOn="{StaticResource ListView_Item_Text}">
+    <Style TargetType="TextBlock" x:Key="Category_Item_Text_Note" BasedOn="{StaticResource Category_Item_Text}">
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
-    <Style TargetType="TextBlock" x:Key="ListView_U_Text">
+    <Style TargetType="TextBlock" x:Key="Category_HeadLine">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="26"/>
         <Setter Property="Margin" Value="5,5,20,5"/>
@@ -417,31 +408,31 @@
     </Style>
     <!-- Eingabe ####################### -->
 
-    <Style TargetType="CheckBox" x:Key="ListView_Item_CheckBox">
+    <Style TargetType="CheckBox" x:Key="Category_Item_CheckBox">
         <Setter Property="Margin" Value="5,2,5,2"/>
     </Style>
-    <Style TargetType="TextBox" x:Key="ListView_Item_TextBox">
+    <Style TargetType="TextBox" x:Key="Category_Item_TextBox">
         <Setter Property="Margin" Value="5,2,5,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
-    <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="ListView_Item_TextBox_io_ZahlenDoubles">
+    <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="Category_Item_TextBox_io_ZahlenDoubles">
         <Setter Property="Margin" Value="5,2,5,2"/>
         <Setter Property="Width" Value="100"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
 
-    <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="ListView_Item_TextBox_Date">
+    <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="Category_Item_TextBox_Date">
         <Setter Property="Margin" Value="5,2,5,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
       
     </Style>
     <!-- Druecken ####################### -->
-    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="ListView_Item_Buttons">
+    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="Category_Item_Buttons">
         <Setter Property="Margin" Value="2,2,2,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="ListView_U_Btn">
+    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="Category_Headline_Button">
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
@@ -451,24 +442,6 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
-    <Style TargetType="Button" x:Key="ListView_U_BtnAddDB" BasedOn="{StaticResource ListView_U_BtnAdd}">
-        <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
-        <Setter Property="Content" Value="&#xE753;"/>
-        <Setter Property="Margin" Value="20,6,5,5"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-    </Style>
-    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="ListView_BtnDel">
-        <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
-        <Setter Property="Content" Value="&#xE108;"/>
-    </Style>
-
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     
 </ResourceDictionary>

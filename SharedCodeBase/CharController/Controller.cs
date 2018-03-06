@@ -28,7 +28,7 @@ namespace ShadowRunHelper.CharController
         public virtual Thing AddNewThing()
         {
             var newThing = Activator.CreateInstance<T>();
-            newThing.Order = Data.Max(x => x.Order) + 1;
+            newThing.Order = Data.MaxOrDefault(x => x.Order) + 1;
             Data.Add(newThing);
             return newThing;
         }
@@ -85,7 +85,7 @@ namespace ShadowRunHelper.CharController
 
         public void SaveCurrentOrdering()
         {
-            int i = 0;
+            int i = 1;
             foreach (var item in Data)
             {
                 item.Order = i;
