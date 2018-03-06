@@ -433,7 +433,10 @@ namespace ShadowRunHelper
 
         void Exception(object sender, RoutedEventArgs e)
         {
-            throw new System.Exception();
+            ViewModel.NewNotification("Test1");
+            ViewModel.NewNotification("Test2");
+            ViewModel.NewNotification("Test3");
+            //throw new System.Exception();
         }
 
         void Click_Repair_CurrentChar(object sender, RoutedEventArgs e)

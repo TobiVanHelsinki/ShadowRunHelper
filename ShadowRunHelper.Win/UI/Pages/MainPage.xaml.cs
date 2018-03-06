@@ -19,13 +19,15 @@ namespace ShadowRunHelper
     public sealed partial class MainPage : Page
     {
         readonly AppModel Model = AppModel.Instance;
+        NotificationsDialog Notifications = new NotificationsDialog();
+
         ResourceLoader res;
 
         public MainPage()
         {
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
-            Model.lstNotifications.CollectionChanged += (x, y) => ShowNotifications();
+            Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary();
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += (x, y,z) => NavigationRequested(y,z);
             CompatibilityChecks();
@@ -34,7 +36,7 @@ namespace ShadowRunHelper
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ShowNotifications();
+            ShowNotificationsIfNecessary();
             Model.SetDependencies(Dispatcher);
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
         }
@@ -83,13 +85,12 @@ namespace ShadowRunHelper
                     break;
             }
         }
-        void ShowNotifications()
+        void ShowNotificationsIfNecessary()
         {
             foreach (Notification item in Model.lstNotifications.Where((x) => x.bIsRead == false).OrderBy((x) => x.DateTime))
             {
                 try
                 {
-                    //TODO better dialog. DO something with a own dialog that is bond to lstNot
                     var messageDialog = new MessageDialog(item.strMessage + "\n\n\n" + item.ThrownException?.Message);
                     messageDialog.Commands.Add(new UICommand(
                         "OK"));
