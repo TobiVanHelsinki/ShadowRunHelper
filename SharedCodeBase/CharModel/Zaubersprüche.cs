@@ -2,9 +2,9 @@
 {
     public class Zaubersprueche : Item
     {
-        double reichweite = 0;
+        string reichweite = "";
         [Used_UserAttribute]
-        public double Reichweite
+        public string Reichweite
         {
             get { return reichweite; }
             set
@@ -17,9 +17,9 @@
             }
         }
 
-        double _Dauer = 0;
+        string _Dauer = "";
         [Used_UserAttribute]
-        public double Dauer
+        public string Dauer
         {
             get { return _Dauer; }
             set
