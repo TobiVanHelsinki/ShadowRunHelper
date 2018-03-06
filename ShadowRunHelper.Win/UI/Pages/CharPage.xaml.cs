@@ -123,23 +123,25 @@ namespace ShadowRunHelper
                 Model.NewNotification("", ex);
             }
         }
-
-
-        async void Edit_Click(object sender, RoutedEventArgs e)
+        
+        async void Edit_Person_Click(object sender, RoutedEventArgs e)
         {
-            if (((String)((Button)sender).Name).Contains("Person1"))
+            try
             {
                 await new Edit_Person(Model.MainObject.Person).ShowAsync();
             }
-            else
+            catch (Exception)
             {
-                try
-                {
-                    await new Edit_Dialog(((Thing)((Button)sender).DataContext)).ShowAsync();
-                }
-                catch (Exception)
-                {
-                }
+            }
+        }
+        async void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await new Edit_Dialog(((Thing)((Button)sender).DataContext)).ShowAsync();
+            }
+            catch (Exception)
+            {
             }
         }
 

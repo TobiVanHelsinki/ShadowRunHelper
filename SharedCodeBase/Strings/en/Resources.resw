@@ -1009,7 +1009,7 @@ This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An 
     <value>Range</value>
   </data>
   <data name="Model_Vehikel_Wert.Text" xml:space="preserve">
-    <value>Stufe</value>
+    <value>Damage</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Datei_Import.Label" xml:space="preserve">
     <value>Char Import</value>

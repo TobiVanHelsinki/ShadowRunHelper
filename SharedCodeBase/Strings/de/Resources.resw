@@ -1055,7 +1055,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Löschen</value>
   </data>
   <data name="Model_Vehikel_Wert.Text" xml:space="preserve">
-    <value>Stufe</value>
+    <value>Schaden</value>
   </data>
   <data name="Ui_DB_Finish.Label" xml:space="preserve">
     <value>Kopieren</value>

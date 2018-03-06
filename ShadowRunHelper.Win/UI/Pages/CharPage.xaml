@@ -888,7 +888,7 @@
                     <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
                     <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
                     <TextBlock Style="{StaticResource Category_Head_Items}" Grid.Column="2"  x:Uid="Model_Thing_Bezeichner"/>
-                    <TextBlock Style="{StaticResource Category_Head_Items}" Grid.Column="3" x:Uid="Model_Thing_Wert_W"/>
+                    <TextBlock Style="{StaticResource Category_Head_Items}" Grid.Column="3" x:Uid="Model_Thing_Wert"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="PanzerungItem" x:DataType="CharModel:Panzerung">
@@ -2417,7 +2417,7 @@
 
                         <StackPanel Name="Person_U"  Grid.ColumnSpan="3" Grid.Row="11" Style="{StaticResource Category_Head_Stackpanel}">
                             <TextBlock x:Uid="Model_Person_" Style="{StaticResource Category_HeadLine}"/>
-                            <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click"/>
+                            <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Person_Click"/>
                         </StackPanel>
                         <Grid Grid.ColumnSpan="3" Grid.Row="12" Style="{StaticResource Category_Item_Grid_For_Non_ListViews}" >
                             <Grid.ColumnDefinitions>
