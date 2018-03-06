@@ -1092,7 +1092,7 @@ a) "Löschen" löscht deinen Char nur aus der App, nicht aber aus der Liste gesp
 b) "Reparieren" es sollte nicht vorkommen, aber manchmal ist es unvorhersehbar: die verknüpften Einträge aktualisieren sich nicht mehr automatisch. Dann kann diese Funktion helfen. Vielleicht. Wenn nicht oder wenn du sonst irgendwelche Probleme hast, scheue nicht, mich zu kontaktieren (Kontakt im Einstellungsmenü).</value>
   </data>
   <data name="Tut_State_05" xml:space="preserve">
-    <value>Das war's mit dem ersten Tutorial. Erstelle jetzt deinen Charakter oder schau dir den Beispielcharakter an.</value>
+    <value>Das war's mit dem ersten Tutorial. Du kannst einen neuen Charakter erstellen, aber besser ist es, du schaust dir erst den Beispielcharakter an.</value>
   </data>
   <data name="Tut_State_10" xml:space="preserve">
     <value>Klickst du auf einen Char in dieser Leiste, wird sein Eintrag aufgeklappt und du erhältst Möglichkeiten, ihn zu verwalten.</value>
@@ -1118,7 +1118,7 @@ In dieser Einführung wird gezeigt, wie die Char Ansicht funktioniert. Mit den P
 Wert: Würfelpool beim Ausführen der Aktion
 Limit: Das Limit für zählende Erfolge
 Wehren: Führt eine andere Person diese Handlung gegen dich aus, ist das dein Pool um dich zu wehren.
-Für diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusammenrechnest, sondern du hinterlegst die anderen Einträge, aus denen sich die Werte berechnen.</value>
+Für diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusammenrechnest, sondern du hinterlegst die anderen Einträge, aus denen sich die Werte berechnen. Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   </data>
   <data name="Tut_State_31" xml:space="preserve">
     <value>Klickst du auf Bearbeiten, so wird dir eine Liste von Einträge angezeigt. Diese Liste enthält aber noch mehr. 
@@ -1126,7 +1126,8 @@ Für diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusamm
 Ein Beispiel: Das Limit beim Abfeuern einer Waffe wird durch ihre Präzision bestimmt. Das heißt, bei Limit der Handlung Schießen musst du "Präzision" auswählen. 
 
 Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst, ist in dieser Liste nur die aktuelle Waffe mit ihren verschiedenen Eigenschaften aufgelistet. 
-Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehikel. Aktiviert wird ein Gegenstand über das erste Häkchen in seinem Eintrag.</value>
+Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehikel. Aktiviert wird ein Gegenstand über das erste Häkchen in seinem Eintrag.
+Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   </data>
   <data name="Tut_TitelState_30" xml:space="preserve">
     <value>Handlungen</value>

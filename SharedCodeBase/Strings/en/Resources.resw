@@ -450,7 +450,7 @@ A) "Delete" deletes your char only from the app, but not from the list of saved 
 b) "Auto-Fix" It should not occur, but sometimes it is unpredictable: the linked entries do not update automatically. Then this function can help. Maybe. If not, or if you have any other problems, do not hesitate to contact me (contact in the Settings menu).</value>
   </data>
   <data name="Tut_State_05" xml:space="preserve">
-    <value>That's it with the first tutorial. Create your character now or look at the example character.</value>
+    <value>That's it with the first tutorial. You can now create your character. But it might be better to have a look at the example-character.</value>
   </data>
   <data name="Tut_State_10" xml:space="preserve">
     <value>Clicking on a char in this bar will open its entry and you'll be given the opportunity to manage it.</value>
@@ -476,7 +476,9 @@ This introduction shows how the char view works. With the arrow keys you can nav
 Value: Dice pool when performing the action
 Limit: The limit for scoring successes
 Defend: If another person performs this action against you, this is your pool to defend you.
-For these 3 properties, you do not enter values that you calculate together, but you store the other entries that make up the values.</value>
+For these 3 properties, you do not enter values that you calculate together, but you store the other entries that make up the values.
+
+This is shown in detail at the example-character</value>
   </data>
   <data name="Tut_State_31" xml:space="preserve">
     <value>If you click on edit, you will see a list of entries. This list contains even more.
@@ -484,7 +486,9 @@ For these 3 properties, you do not enter values that you calculate together, but
 For example, the limit of firing a weapon is determined by its precision. That is, at limit of action shooting you have to select "precision".
 
 So that you do not have to do this again and again, if you change the weapon, only the current weapon with its various properties is listed in this list.
-This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An item is activated by the first check mark in its entry.</value>
+This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An item is activated by the first check mark in its entry.
+
+This is shown in detail at the example-character</value>
   </data>
   <data name="Tut_TitleState_10" xml:space="preserve">
     <value>Listentries introduction</value>
