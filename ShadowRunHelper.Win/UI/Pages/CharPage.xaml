@@ -26,6 +26,7 @@
                                 TextChanged="AutoSuggestBox_TextChanged"
                                 
                                 QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                SuggestionChosen="AutoSuggestBox_SuggestionChosen"
                                 ItemsSource="{x:Bind ThingList, Mode=OneWay}"
                                 ItemTemplate="{StaticResource Suggestion}"/>
             </DataTemplate>

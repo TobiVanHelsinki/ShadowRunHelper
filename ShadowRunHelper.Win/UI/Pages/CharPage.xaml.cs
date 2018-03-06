@@ -586,11 +586,22 @@ namespace ShadowRunHelper
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => lokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+            switch (args.Reason)
+            {
+                case AutoSuggestionBoxTextChangeReason.UserInput:
+                    (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => lokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+                    break;
+                case AutoSuggestionBoxTextChangeReason.ProgrammaticChange:
+                    break;
+                case AutoSuggestionBoxTextChangeReason.SuggestionChosen:
+                default:
+                    break;
+            }
         }
 
         void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
+
             try
             {
                 if (args.ChosenSuggestion != null)
@@ -615,7 +626,9 @@ namespace ShadowRunHelper
             catch { return; }
             ScrollIntoBlock();
             sender.Text = "";
+            sender.IsSuggestionListOpen = false;
         }
+
         private void Grid_Entry_Loaded(object sender, RoutedEventArgs e)
         {
             ScrollIntoBlock();
@@ -793,5 +806,6 @@ namespace ShadowRunHelper
         }
         #endregion
 
+        
     }
 }
