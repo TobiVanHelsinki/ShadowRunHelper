@@ -114,7 +114,7 @@ namespace ShadowRunHelper
                 newThing = Model.MainObject.Add(Controller);
                 if (SettingsModel.I.StartEditAfterAdd)
                 {
-                    await new Edit_Dialog(newThing).ShowAsync();
+                    await new EditThingDialog(newThing).ShowAsync();
                 }
 
             }
@@ -138,7 +138,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                await new Edit_Dialog(((Thing)((Button)sender).DataContext)).ShowAsync();
+                await new EditThingDialog(((Thing)((Button)sender).DataContext)).ShowAsync();
             }
             catch (Exception)
             {
@@ -149,7 +149,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                await new Edit_Dialog(((Thing)((Grid)sender).DataContext)).ShowAsync();
+                await new EditThingDialog(((Thing)((Grid)sender).DataContext)).ShowAsync();
             }
             catch (Exception)
             {
@@ -293,10 +293,30 @@ namespace ShadowRunHelper
                     NewTemplate = ZauberspruecheItem;
                     NewTemplateX = ZauberspruecheItemX;
                     break;
+                case (int)ThingDefs.KomplexeForm:
+                    NewTemplate = KomplexeFormItem;
+                    NewTemplateX = KomplexeFormItemX;
+                    break;
+                case (int)ThingDefs.Sprite:
+                    NewTemplate = SpriteItem;
+                    NewTemplateX = SpriteItemX;
+                    break;
+                case (int)ThingDefs.Widgets:
+                    NewTemplate = WidgetsItem;
+                    NewTemplateX = WidgetsItemX;
+                    break;
+                case (int)ThingDefs.Wandlung:
+                    NewTemplate = WandlungItem;
+                    NewTemplateX = WandlungItemX;
+                    break;
+                case (int)ThingDefs.Initiation:
+                    NewTemplate = InitiationItem;
+                    NewTemplateX = InitiationItemX;
+                    break;
+
                 default:
                     return;
-            }
-            if (NewTemplate == null || NewTemplateX == null)
+            }            if (NewTemplate == null || NewTemplateX == null)
             {
                 return;
             }

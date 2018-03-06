@@ -157,8 +157,8 @@
     <Compile Include="UI\Parts\Tutorial.xaml.cs">
       <DependentUpon>Tutorial.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Parts\Edit_Dialog.xaml.cs">
-      <DependentUpon>Edit_Dialog.xaml</DependentUpon>
+    <Compile Include="UI\Parts\EditThingDialog.xaml.cs">
+      <DependentUpon>EditThingDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Parts\Edit_Person.xaml.cs">
       <DependentUpon>Edit_Person.xaml</DependentUpon>
@@ -272,7 +272,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Parts\Edit_Dialog.xaml">
+    <Page Include="UI\Parts\EditThingDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

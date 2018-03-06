@@ -6,12 +6,12 @@ using Windows.UI.Xaml.Controls;
 
 namespace ShadowRunHelper.UI.Edit
 {
-    public sealed partial class Edit_Dialog : ContentDialog
+    public sealed partial class EditThingDialog : ContentDialog
     {
         public Thing Data;
         public List<string> MyStringOptions { get; set; }
 
-        public Edit_Dialog(Thing data)
+        public EditThingDialog(Thing data)
         {
             Data = data;
             InitializeComponent();
@@ -41,6 +41,7 @@ namespace ShadowRunHelper.UI.Edit
                     break;
                 case ThingDefs.Munition:
                     EditType.ContentTemplate = Munition;
+                    WertLabel.Text = TLIB_UWPFRAME.CrossPlatformHelper.GetString("Model_Waffe_Wert/Text");
                     break;
                 case ThingDefs.Implantat:
                     EditType.ContentTemplate = Implantat;
@@ -105,6 +106,21 @@ namespace ShadowRunHelper.UI.Edit
                     break;
                 case ThingDefs.Zaubersprueche:
                     EditType.ContentTemplate = Zaubersprueche;
+                    break;
+                case ThingDefs.KomplexeForm:
+                    EditType.ContentTemplate = KomplexeForm;
+                    break;
+                case ThingDefs.Sprite:
+                    EditType.ContentTemplate = Sprite;
+                    break;
+                case ThingDefs.Widgets:
+                    EditType.ContentTemplate = Widgets;
+                    break;
+                case ThingDefs.Wandlung:
+                    EditType.ContentTemplate = Wandlung;
+                    break;
+                case ThingDefs.Initiation:
+                    EditType.ContentTemplate = Initiation;
                     break;
                 default:
                     break;

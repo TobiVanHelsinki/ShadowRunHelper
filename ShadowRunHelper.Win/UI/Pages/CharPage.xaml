@@ -993,13 +993,32 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource MunitionItem}"/>
-                    <StackPanel Grid.Row="1" Orientation="Vertical">
-                        <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
-                        <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
-                    </StackPanel>
-                    <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}">
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
+                            <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Item_Anzahl"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_PB"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_Wert"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Wert, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_SchadenTyp"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind SchadenTyp, Mode=OneWay}"/>
+                        </StackPanel>
+                    </VariableSizedWrapGrid>
+                    <TextBlock Grid.Row="2" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>
