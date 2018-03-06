@@ -148,15 +148,5 @@ namespace ShadowRunHelper
         }
         #endregion
 
-        #region ApplyNewStyles
-        private void Button_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
-            }
-        }
-
-        #endregion
-    }
+   }
 }

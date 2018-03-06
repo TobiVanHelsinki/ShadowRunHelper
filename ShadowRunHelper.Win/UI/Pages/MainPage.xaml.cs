@@ -30,7 +30,7 @@ namespace ShadowRunHelper
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary();
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += (x, y,z) => NavigationRequested(y,z);
-            CompatibilityChecks();
+            //CompatibilityChecks();
         }
         #region navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -220,68 +220,6 @@ namespace ShadowRunHelper
         void Ui_Nav_Settings(object sender, RoutedEventArgs e)
         {
             NavigationRequested(ProjectPages.Settings, ProjectPagesOptions.Nothing);
-        }
-        #endregion
-        #region Compatibility (Update 4)
-        void CommandBar_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Controls.CommandBar", "DefaultLabelPosition"))
-            {
-                (sender as CommandBar).DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
-            }
-        }
-        #endregion
-        #region Compatibility (Update 5) Fluent Design
-        private void MainGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.AcrylicBrush"))
-            {
-                try
-                {
-                    (sender as Grid).Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicElementAccentMediumHighBrush"];
-                }
-                catch (Exception)
-                {
-                    try
-                    {
-                        (sender as Grid).Background = (SolidColorBrush)Resources["SystemControlAccentAcrylicElementAccentMediumHighBrush"];
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-            }
-        }
-
-        private void Button_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
-            }
-        }
-
-        private void AppBarButton_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                (sender as AppBarButton).Style = (Style)Resources["AppBarButtonRevealLabelsOnRightStyle"];
-            }
-        }
-
-        void CompatibilityChecks()
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.AcrylicBrush"))
-            {
-                MainBar1.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
-                MainBar2.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
-            }
-            else
-            {
-                //SolidColorBrush myBrush = new SolidColorBrush(Color.FromArgb(255, 202, 24, 37));
-
-                //MainBarBorder.Background = myBrush;
-            }
         }
         #endregion
     }

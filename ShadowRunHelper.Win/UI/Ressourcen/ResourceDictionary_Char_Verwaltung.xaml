@@ -9,9 +9,10 @@
         <ResourceDictionary Source="ResourceDictionary_App.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <contract5NotPresent:Style TargetType="AppBarButton" x:Key="Custom_AppBarButton"/>
-    <contract5Present:Style TargetType="AppBarButton" BasedOn="{StaticResource AppBarButtonRevealLabelsOnRightStyle}" x:Key="Custom_AppBarButton">
-    </contract5Present:Style>
+
+    <contract5NotPresent:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible"/>
+    <contract5Present:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible"/>
+
 
     <Style TargetType="TextBlock" x:Key="Chars">
         <Setter Property="FontSize" Value="15"/>

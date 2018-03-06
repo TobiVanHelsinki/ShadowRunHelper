@@ -614,6 +614,7 @@ namespace ShadowRunHelper
             }
             catch { return; }
             ScrollIntoBlock();
+            sender.Text = "";
         }
         private void Grid_Entry_Loaded(object sender, RoutedEventArgs e)
         {
@@ -671,18 +672,8 @@ namespace ShadowRunHelper
                 return;
             }
             PendingScrollEntry = null;
-        }
-        #endregion
 
-        #region ApplyNewStyles
-        private void Button_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
-            }
         }
-
         #endregion
 
         #region Button Handlers

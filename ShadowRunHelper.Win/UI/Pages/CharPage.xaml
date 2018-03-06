@@ -2248,7 +2248,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="SavePanelTop" Grid.Column="0" Margin="5,1,5,1" Loaded="Button_Loaded"  IsEnabled="{x:Bind MainObject.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
+            <Button x:Name="SavePanelTop" Grid.Column="0" Margin="5,1,5,1" Style="{StaticResource STD_Button}"  IsEnabled="{x:Bind MainObject.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
                     <TextBlock Text="Speichern"/>
@@ -2263,7 +2263,7 @@
                         <ColumnDefinition x:Name="GlobalFilterBox_FlyoutColumn" Width="*"/>
                         <ColumnDefinition x:Name="GlobalFilterBox_NormalColumn" Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Loaded="Button_Loaded" Width="{Binding RelativeSource={RelativeSource Self}, Path=Height}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Content="&#xE11A;" FontFamily="Segoe MDL2 Assets">
+                    <Button Style="{StaticResource STD_Button}" Width="{Binding RelativeSource={RelativeSource Self}, Path=Height}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Content="&#xE11A;" FontFamily="Segoe MDL2 Assets">
                         <Button.Flyout>
                             <Flyout Placement="Left" >
                                 <ContentPresenter Width="300" DataContext="{x:Bind MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
@@ -2274,7 +2274,7 @@
                 </Grid>
             </Pivot.RightHeader>
             <Pivot.LeftHeader>
-                <Button Loaded="Button_Loaded" x:Name="SavePanel" IsEnabled="{x:Bind MainObject.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
+                <Button Style="{StaticResource STD_Button}" x:Name="SavePanel" IsEnabled="{x:Bind MainObject.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
                         <TextBlock x:Name="SavePanelButtonText" Text="Speichern"/>
@@ -2549,8 +2549,8 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Button x:Uid="UI_Settings_Btn_Speichern" Margin="10" HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="1" Click="ApplyButton_Click" Loaded="Button_Loaded"/>
-                    <Button x:Uid="UI_Settings_Btn_Reset" Margin="10" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1" Click="ResetButton_Click" Loaded="Button_Loaded"/>
+                    <Button x:Uid="UI_Settings_Btn_Speichern" Margin="10" HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="1" Click="ApplyButton_Click" Style="{StaticResource STD_Button}"/>
+                    <Button x:Uid="UI_Settings_Btn_Reset" Margin="10" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1" Click="ResetButton_Click" Style="{StaticResource STD_Button}"/>
                 </Grid>
             </PivotItem>
         </Pivot>

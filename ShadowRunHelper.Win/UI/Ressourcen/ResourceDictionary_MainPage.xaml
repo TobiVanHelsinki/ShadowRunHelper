@@ -1,12 +1,37 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
+    xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,5)"
 >
+
 
     <ResourceDictionary.MergedDictionaries>
 
         <ResourceDictionary Source="ResourceDictionary_App.xaml"/>
     </ResourceDictionary.MergedDictionaries>
+
+
+    <contract5NotPresent:Style TargetType="Grid" x:Key="MainGrid">
+        <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundAccentBrush}"/>
+    </contract5NotPresent:Style>
+    <contract5Present:Style TargetType="Grid" x:Key="MainGrid">
+        <Setter Property="Background" Value="{ThemeResource SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac}"/>
+    </contract5Present:Style>
+
+    <contract5Present:AcrylicBrush x:Key="SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac" 
+                                   BackgroundSource="HostBackdrop" 
+                                   TintColor="{ThemeResource SystemAccentColor}" 
+                                   TintOpacity="0.3" 
+                                   FallbackColor="{ThemeResource SystemAccentColor}" />
+
+    <contract5NotPresent:Style TargetType="CommandBar" x:Key="MainCommandBar">
+        <Setter Property="Background" Value="{ThemeResource SystemAccentColor}"/>
+    </contract5NotPresent:Style>
+    <contract5Present:Style TargetType="CommandBar" x:Key="MainCommandBar">
+        <Setter Property="Background" Value="{ThemeResource SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac}"/>
+    </contract5Present:Style>
+
 
     <Style TargetType="TextBlock" x:Key="TextBlock_Hamburger_Icon">
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>

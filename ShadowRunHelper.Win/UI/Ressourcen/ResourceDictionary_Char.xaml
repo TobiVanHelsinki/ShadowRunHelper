@@ -427,6 +427,9 @@
       
     </Style>
     <!-- Druecken ####################### -->
+
+
+
     <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="Category_Item_Buttons">
         <Setter Property="Margin" Value="2,2,2,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch" />

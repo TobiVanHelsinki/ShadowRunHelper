@@ -454,44 +454,13 @@ namespace ShadowRunHelper
 
         #endregion
 
-        #region ApplyNewStyles
+        #region CustomStyles
 
         void CommandBar_Loaded(object sender, RoutedEventArgs e)
         {
             if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Controls.CommandBar", "DefaultLabelPosition"))
             {
                 (sender as CommandBar).DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
-            }
-        }
-
-        void Button_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
-            }
-        }
-
-        void AppBarButton_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                (sender as AppBarButton).Style = (Style)Resources["AppBarButtonRevealLabelsOnRightStyle"];
-            }
-        }
-
-        private void MenuFlyoutItem_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                try
-                {
-                    (sender as MenuFlyoutItem).Style = (Style)Resources["MenuFlyoutItemReveal"];
-                }
-                catch (Exception ex)
-                {
-
-                }
             }
         }
         #endregion
