@@ -21,7 +21,7 @@ namespace ShadowRunHelper.IO
                 case Constants.CHARFILE_VERSION_1_5:
                     JsonSerializerSettings test = new JsonSerializerSettings()
                     {
-                        Error = SerializationErrorHandler,
+                        Error = ErrorHandler,
                         PreserveReferencesHandling = PreserveReferencesHandling.All
                     };
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, test);

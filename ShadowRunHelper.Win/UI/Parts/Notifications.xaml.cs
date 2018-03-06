@@ -8,6 +8,8 @@ using ShadowRunHelper.Model;
 using Shared;
 using TLIB_UWPFRAME.Resources;
 using TLIB_UWPFRAME.Model;
+using Windows.UI.Xaml;
+using Windows.Foundation.Metadata;
 
 namespace ShadowRunHelper
 {
@@ -53,9 +55,36 @@ namespace ShadowRunHelper
             ContentDialogButtonClickDeferral deferral = args.GetDeferral();
             deferral.Complete();
         }
+        private void BtnPrev_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+        }
 
-   
+        private void BtnNext_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+        }
+        void BtnExit_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Hide();
+        }
+        #region ApplyNewStyles
+        void Button_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
+            }
+        }
+
+        void AppBarButton_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
+            {
+                (sender as AppBarButton).Style = (Style)Resources["AppBarButtonRevealLabelsOnRightStyle"];
+            }
+        }
+        #endregion
+
 
     }
- 
+
 }
