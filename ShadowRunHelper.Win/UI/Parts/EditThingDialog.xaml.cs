@@ -1,5 +1,6 @@
 ﻿using ShadowRunHelper.CharModel;
 using System.Collections.Generic;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // Die Elementvorlage "Inhaltsdialog" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
@@ -24,12 +25,13 @@ namespace ShadowRunHelper.UI.Edit
             deferral.Complete();
         }
 
-        private void EditType_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        void EditType_Loaded(object sender, RoutedEventArgs e)
         {
             switch (Data.ThingType)
             {
                 case ThingDefs.Handlung:
-                    Col3.Width = new Windows.UI.Xaml.GridLength(0, Windows.UI.Xaml.GridUnitType.Star);
+                    Col3.Width = new GridLength(0, GridUnitType.Star);
+                    Wert.Visibility = Visibility.Collapsed;
                     break;
                 case ThingDefs.Fertigkeit:
                     break;
@@ -54,19 +56,24 @@ namespace ShadowRunHelper.UI.Edit
                     break;
                 case ThingDefs.Connection:
                     EditType.ContentTemplate = Connection;
-                    Col2.Width = new Windows.UI.Xaml.GridLength(0, Windows.UI.Xaml.GridUnitType.Pixel);
-                    Col3.Width = new Windows.UI.Xaml.GridLength(0, Windows.UI.Xaml.GridUnitType.Pixel);
+                    Wert.Visibility = Visibility.Collapsed;
+                    Zusatz.Visibility = Visibility.Collapsed;
+                    Col2.Width = new GridLength(0, GridUnitType.Pixel);
+                    Col3.Width = new GridLength(0, GridUnitType.Pixel);
                     break;
                 case ThingDefs.Sin:
                     break;
                 case ThingDefs.Attribut:
-                    Type.Height = new Windows.UI.Xaml.GridLength(0);
-                    Type_U.Height = new Windows.UI.Xaml.GridLength(0);
-                    Notes.Height = new Windows.UI.Xaml.GridLength(0);
-                    Notes_U.Height = new Windows.UI.Xaml.GridLength(0);
-                    Col1.Width = new Windows.UI.Xaml.GridLength(0, Windows.UI.Xaml.GridUnitType.Star);
-                    Col2.Width = new Windows.UI.Xaml.GridLength(0, Windows.UI.Xaml.GridUnitType.Star);
-                    Col3.Width = new Windows.UI.Xaml.GridLength(1, Windows.UI.Xaml.GridUnitType.Star);
+                    Zusatz.Visibility = Visibility.Collapsed;
+                    Typ.Visibility = Visibility.Collapsed;
+                    Bezeichner.Visibility = Visibility.Collapsed;
+                    Type.Height = new GridLength(0);
+                    Type_U.Height = new GridLength(0);
+                    Notes.Height = new GridLength(0);
+                    Notes_U.Height = new GridLength(0);
+                    Col1.Width = new GridLength(0, GridUnitType.Star);
+                    Col2.Width = new GridLength(0, GridUnitType.Star);
+                    Col3.Width = new GridLength(1, GridUnitType.Star);
                     break;
                 case ThingDefs.Nahkampfwaffe:
                     EditType.ContentTemplate = Nahkampfwaffe;
@@ -126,8 +133,8 @@ namespace ShadowRunHelper.UI.Edit
                     break;
             }
         }
-        
-        private void MainGrid_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+
+        private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
             ((Grid)sender).DataContext = Data;
         }
