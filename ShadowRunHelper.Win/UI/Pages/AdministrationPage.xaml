@@ -52,7 +52,7 @@
                     <CommandBar Background="Transparent" Grid.Row="1" Loaded="CommandBar_Loaded">
                         <AppBarButton Loaded="AppBarButton_Loaded" x:Name="UI_CharVerwaltung_Btn_Laden" x:Uid="UI_CharVerwaltung_Btn_Laden" Icon="Upload" Click="Click_Laden"/>
                         <AppBarButton Loaded="AppBarButton_Loaded" x:Name="UI_CharVerwaltung_Btn_Datei_Export" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_OtherChar"/>
-                        <AppBarButton Loaded="UI_CharVerwaltung_Btn_CSV_Export_Loaded" x:Name="UI_CharVerwaltung_Btn_CSV_Export" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_OtherChar"/>
+                        <AppBarButton Loaded="AppBarButton_Loaded" x:Name="UI_CharVerwaltung_Btn_CSV_Export" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_OtherChar"/>
                         <AppBarButton Loaded="AppBarButton_Loaded" x:Name="UI_CharVerwaltung_Btn_Loeschen" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_OtherChar"/>
                     </CommandBar>
                 </Grid>
@@ -80,27 +80,24 @@
             <ProgressBar x:Name="ProgressBar_Char" Grid.Row="2" Visibility="Collapsed"/>
             <Border Grid.Row="3" x:Name="CurrentCharBarBorder">
                 <CommandBar Background="Transparent" Loaded="CommandBar_Loaded" >
-                    <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern" Loaded="AppBarButton_Loaded" IsEnabled="False"/>
-                    <AppBarButton x:Name="Test" Loaded="AppBarButton_Loaded"
-                                  Icon="ShowBcc"
-                                  >
-
+                    <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern" Style="{StaticResource Custom_AppBarButton}" IsEnabled="False"/>
+                    <AppBarButton Loaded="AppBarButton_Loaded" Icon="ShowBcc">
                         <AppBarButton.Flyout>
                             <MenuFlyout>
                                 <MenuFlyoutItem x:Name="CurrentCharBtn_Save_Intern" x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern" Loaded="MenuFlyoutItem_Loaded" IsEnabled="False" />
                                 <MenuFlyoutItem x:Name="CurrentCharBtn_FileExp" x:Uid="UI_Admin_Btn_CurrentChar_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar"  Loaded="MenuFlyoutItem_Loaded" IsEnabled="False"/>
-                                <MenuFlyoutItem Visibility="Collapsed" x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_Admin_Btn_CurrentChar_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar"  Loaded="MenuFlyoutItem_Loaded" IsEnabled="False"/>
+                                <MenuFlyoutItem x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_Admin_Btn_CurrentChar_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar"  Loaded="MenuFlyoutItem_Loaded" IsEnabled="False"/>
                             </MenuFlyout>
                         </AppBarButton.Flyout>
                     </AppBarButton>
-                    <AppBarButton x:Name="CurrentCharBtn_Rename" x:Uid="UI_CharVerwaltung_Btn_Rename" Icon="Edit" Click="Rename_Click" Loaded="AppBarButton_Loaded"/>
+                    <AppBarButton x:Name="CurrentCharBtn_Rename" x:Uid="UI_CharVerwaltung_Btn_Rename" Icon="Edit" Click="Rename_Click" Style="{StaticResource Custom_AppBarButton}"/>
                     <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_CurrentChar"  Loaded="AppBarButton_Loaded" IsEnabled="False"/>
+                    
                     <AppBarButton x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar"  Loaded="AppBarButton_Loaded" IsEnabled="False"/>
                 </CommandBar>
             </Border>
         </Grid>
         <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
-        <!--<ProgressRing x:Name="ProgressRing_Char" Width="500" IsActive="True"/>-->
         <Border Grid.Row="3" x:Name="ListViewBorder">
             <ListView Name="Char_Sum" 
                   ItemsSource="{x:Bind Summorys, Mode=OneWay}" 
