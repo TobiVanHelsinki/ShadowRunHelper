@@ -254,6 +254,12 @@ namespace ShadowRunHelper.Model
                         x.Object.ThingType == item.Object.ThingType &&
                         x.PropertyID == item.PropertyID);
                     }
+                    if (NewEntry == null)
+                    {
+                        NewEntry = lstThings.Find(x =>
+                        x.Object.Bezeichner == item.Object.Bezeichner &&
+                        x.PropertyID == item.PropertyID);
+                    }
                     if (NewEntry != null)
                     {
                         TargetCollection.Add(NewEntry);

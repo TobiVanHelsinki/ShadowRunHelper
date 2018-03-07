@@ -29,7 +29,7 @@ namespace ShadowRunHelper.CharModel
         public Used_ListAttribute() { }
     }
 
-    public abstract class Thing : INotifyPropertyChanged, ICSV
+    public  class Thing : INotifyPropertyChanged, ICSV
     {
         public const uint nThingPropertyCount = 5;
         public event PropertyChangedEventHandler PropertyChanged;
