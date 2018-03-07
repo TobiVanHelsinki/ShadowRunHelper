@@ -45,5 +45,11 @@
                 }
             }
         }
+
+        public Implantat()
+        {
+            Aktiv = true;
+        }
+
     }
 }

@@ -129,25 +129,27 @@ namespace ShadowRunHelper.CharModel
 
         public double GetPropertyValueOrDefault(string ID = "")
         {
-            if (ID == "")
+            if (!UseForCalculation())
+            {
+                return 0;
+            }
+            if (ID == null || ID == "")
             {
                 return Wert;
             }
             try
             {
-#if DEBUG
-                Type t = this.GetType();
-                var pinfo = t.GetProperty(ID);
-                object value = pinfo.GetValue(this);
-                return double.Parse(value.ToString());
-#else 
-                return double.Parse(this.GetType().GetProperty(ID).GetValue(this).ToString());
-#endif
+                return double.Parse(GetProperties(this).First(x => x.Name == ID).ToString());
             }
             catch (Exception)
             {
                 return Wert;
             }
+        }
+
+        protected virtual bool UseForCalculation()
+        {
+            return true;
         }
 
         public static IEnumerable<PropertyInfo> GetProperties(object obj)
