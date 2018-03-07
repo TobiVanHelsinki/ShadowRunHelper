@@ -28,15 +28,6 @@ namespace ShadowRunHelper.CharController
         public Attribut Magie;
         public Attribut Resonanz;
 
-        //[Newtonsoft.Json.JsonIgnore]
-        //public Attribut Essenz;
-        //[Newtonsoft.Json.JsonIgnore]
-        //public Attribut Limit_K;
-        //[Newtonsoft.Json.JsonIgnore]
-        //public Attribut Limit_G;
-        //[Newtonsoft.Json.JsonIgnore]
-        //public Attribut Limit_S;
-
         AllListEntry MI_Konsti;
         AllListEntry MI_Geschick;
         AllListEntry MI_Reaktion;
@@ -46,10 +37,6 @@ namespace ShadowRunHelper.CharController
         AllListEntry MI_Intuition;
         AllListEntry MI_Willen;
 
-        //AllListEntry MI_Essenz;
-        //AllListEntry MI_Limit_K;
-        //AllListEntry MI_Limit_G;
-        //AllListEntry MI_Limit_S;
         AllListEntry MI_Magie;
         AllListEntry MI_Resonanz;
 
@@ -69,10 +56,6 @@ namespace ShadowRunHelper.CharController
             Logik = new Attribut();
             Intuition = new Attribut();
             Willen = new Attribut();
-            //Essenz = new Attribut();
-            //Limit_K = new Attribut();
-            //Limit_G = new Attribut();
-            //Limit_S = new Attribut();
             Magie = new Attribut();
             Resonanz = new Attribut();
             RefreshBezeichner();
@@ -84,25 +67,15 @@ namespace ShadowRunHelper.CharController
             MI_Logik = new AllListEntry(Logik, "");
             MI_Intuition = new AllListEntry(Intuition, "");
             MI_Willen = new AllListEntry(Willen, "");
-            //MI_Essenz = new AllListEntry(Essenz, "");
-            //MI_Limit_K = new AllListEntry(Limit_K, "");
-            //MI_Limit_G = new AllListEntry(Limit_G, "");
-            //MI_Limit_S = new AllListEntry(Limit_S, "");
             MI_Magie= new AllListEntry(Magie, "");
             MI_Resonanz= new AllListEntry(Resonanz, "");
 
-            Konsti.PropertyChanged += (x, y) => { RefreshLimitK(); RefreshLimitSchaden(); };
-            Reaktion.PropertyChanged += (x, y) => RefreshLimitK();
-            Staerke.PropertyChanged += (x, y) => RefreshLimitK();
-            Charisma.PropertyChanged += (x, y) => RefreshLimitS();
-            Logik.PropertyChanged += (x, y) => RefreshLimitG();
-            Intuition.PropertyChanged += (x, y) => RefreshLimitG();
-            Willen.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); RefreshLimitSchaden(); };
-            //Essenz.PropertyChanged += (x, y) => RefreshLimitS();
+            Konsti.PropertyChanged += (x, y) => {  RefreshLimitSchaden(); };
+            Willen.PropertyChanged += (x, y) => { RefreshLimitSchaden(); };
             Data = new ObservableCollection<Attribut>();
             Data.CollectionChanged += Data_CollectionChanged;
             RefreshDataList();
-            RefreshLimitS(); RefreshLimitG(); RefreshLimitSchaden();
+            RefreshLimitSchaden();
         }
 
         void RefreshBezeichner()
@@ -115,10 +88,6 @@ namespace ShadowRunHelper.CharController
             Logik.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Logik/Text");
             Intuition.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Intuition/Text");
             Willen.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Willen/Text");
-            //Essenz.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Essenz/Text");
-            //Limit_K.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Limit_K/Text");
-            //Limit_G.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Limit_G/Text");
-            //Limit_S.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Limit_S/Text");
             Magie.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Magie/Text");
             Resonanz.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Resonanz/Text");
         }
@@ -127,30 +96,9 @@ namespace ShadowRunHelper.CharController
         {
             PersonRef = p;
             lstImplantateRef = i;
-            PersonRef.PropertyChanged += (x, y) => RefreshEssenz();
-            lstImplantateRef.CollectionChanged += (x, y) => RegisterRefreshers();
-        }
-
-        void RegisterRefreshers()
-        {
-            foreach (var item in lstImplantateRef)
-            {
-                item.PropertyChanged -= (x, y) => RefreshEssenz();
-                item.PropertyChanged += (x, y) => RefreshEssenz();
-            }
-            RefreshEssenz();
         }
 
         // Refresh Stuff ######################################################
-        protected void RefreshEssenz()
-        {
-            //this.Essenz.Wert = 6;
-            //this.Essenz.Wert += PersonRef.Essenz;
-            //foreach (var item in lstImplantateRef)
-            //{
-            //    this.Essenz.Wert -= item.Essenz;
-            //}
-        }
 
         protected void RefreshLimitSchaden()
         {
@@ -160,25 +108,6 @@ namespace ShadowRunHelper.CharController
             }
             PersonRef.Schaden_G_max = 8 + Math.Ceiling(Willen.Wert / 2);
             PersonRef.Schaden_K_max = 8 + Math.Ceiling(Konsti.Wert / 2);
-        }
-
-        //Physical Limit: (STR x2 + BOD + REA) / 3
-        protected void RefreshLimitK()
-        {
-            //this.Limit_K.Wert = Math.Ceiling( (this.Staerke.GetValue() * 2 + this.Konsti.GetValue() + this.Reaktion.GetValue()) / 3);
-        }
-
-        //Mental Limit: (LOG x2 + INT +WIL) / 3
-
-        protected void RefreshLimitG()
-        {
-            //this.Limit_G.Wert = Math.Ceiling((this.Logik.GetValue() * 2 + this.Intuition.GetValue() + this.Willen.GetValue()) / 3);
-        }
-        //Social Limit: (CHA x2 + WIL + Essence) /3
-
-        protected void RefreshLimitS()
-        {
-            //this.Limit_S.Wert = Math.Ceiling((this.Charisma.GetValue() * 2 + this.Willen.GetValue() + this.Essenz.GetValue()) / 3);
         }
 
         // DataList Handling ##############################
@@ -194,10 +123,6 @@ namespace ShadowRunHelper.CharController
             Data.Add(Logik);
             Data.Add(Intuition);
             Data.Add(Willen);
-            //Data.Add(Essenz);
-            //Data.Add(Limit_K);
-            //Data.Add(Limit_G);
-            //Data.Add(Limit_S);
             Data.Add(Magie);
             Data.Add(Resonanz);
         }
@@ -223,10 +148,6 @@ namespace ShadowRunHelper.CharController
             lstReturn.Add(MI_Logik);
             lstReturn.Add(MI_Intuition);
             lstReturn.Add(MI_Willen);
-            //lstReturn.Add(MI_Essenz);
-            //lstReturn.Add(MI_Limit_K);
-            //lstReturn.Add(MI_Limit_G);
-            //lstReturn.Add(MI_Limit_S);
             lstReturn.Add(MI_Magie);
             lstReturn.Add(MI_Resonanz);
             return lstReturn;
