@@ -16,5 +16,36 @@ namespace ShadowRunHelper.CharModel
         x.ThingType != ThingDefs.Nachteil
         ).Select(x => x.ThingType);
 
+        private double _WertAfterCalc = 0;
+        [Used_UserAttribute]
+        public double WertAfterCalc
+        {
+            get { return _WertAfterCalc; }
+            set
+            {
+                if (value != _WertAfterCalc)
+                {
+                    _WertAfterCalc = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public Attribut() : base()
+        {
+            Addidtions = new ObservableThingListEntryCollection(Filter);
+            Addidtions.OnCollectionChangedAndNow(() => { WertAfterCalc = Addidtions.Recalculate(); });
+        }
+
+        public override double GetPropertyValueOrDefault(string ID = "")
+        {
+            if (ID == "Wert")
+            {
+                return WertAfterCalc;
+            }
+            return base.GetPropertyValueOrDefault(ID);
+        }
+
+
     }
 }

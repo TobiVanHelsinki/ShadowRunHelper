@@ -5,7 +5,6 @@ namespace ShadowRunHelper.CharModel
 {
     public class Fertigkeit : Thing
     {
-        List<ThingDefs> lstForbidden = new List<ThingDefs>() { ThingDefs.Handlung , ThingDefs.Fertigkeit };
         [Used_List]
         public ObservableThingListEntryCollection PoolZusammensetzung { get; set; }
 
@@ -24,46 +23,16 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public Fertigkeit() : base()
-        {
-            PoolZusammensetzung = new ObservableThingListEntryCollection(lstForbidden);
-            PoolZusammensetzung.CollectionChanged += (u, c) => { CollectionChanged(); };
-            CollectionChanged();
-            PropertyChanged += (x, y) => { if (y.PropertyName == "Wert") Recalculate(); };
-        }
-
-
         public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
             {
                 ThingDefs.Handlung, ThingDefs.Connection, ThingDefs.Fertigkeit
             };
 
-        private void CollectionChanged()
+        public Fertigkeit() : base()
         {
-            NotifyPropertyChanged();
-            Recalculate();
-            foreach (var item in PoolZusammensetzung)
-            {
-                item.Object.PropertyChanged -= (u, c) => { Recalculate(); };
-                item.Object.PropertyChanged += (u, c) => { Recalculate(); };
-            }
+            PoolZusammensetzung = new ObservableThingListEntryCollection(Filter);
+            PoolZusammensetzung.OnCollectionChangedAndNow(() => { Pool = PoolZusammensetzung.Recalculate(); });
         }
 
-        private void Recalculate()
-        {
-            double temp = Wert;
-            foreach (AllListEntry item in PoolZusammensetzung)
-            {
-
-                try
-                {
-                    temp += item.Object.GetPropertyValueOrDefault(item.PropertyID);
-                }
-                catch (System.Exception)
-                {
-                }
-            }
-            Pool = temp;
-        }
     }
 }
