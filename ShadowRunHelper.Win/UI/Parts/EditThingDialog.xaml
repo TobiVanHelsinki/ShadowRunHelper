@@ -5,12 +5,38 @@
     xmlns:CharModel="using:ShadowRunHelper.CharModel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:ShadowRunHelper.Model"
     mc:Ignorable="d"
     x:Uid="EditDialog"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     >
     <ContentDialog.Resources>
         <ResourceDictionary>
+            <DataTemplate x:Key="AllListEntry" x:DataType="model:AllListEntry">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
+                    <TextBlock x:Uid="Doppelpunkt" Grid.Column="1"/>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=Wert, Mode=OneWay}" Grid.Column="2"/>
+                    <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.ColumnSpan="3"/>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Name="Attribut"  x:DataType="CharModel:Attribut">
+                <StackPanel Orientation="Vertical" x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Button x:Uid="UI_Btn_Bearbeiten_List" Click="AttributZusammensetzungBearbeiten"  Style="{StaticResource STD_Button}"/>
+                    <ListView BorderThickness="1" BorderBrush="{ThemeResource BorderBrushes}" ItemsSource="{x:Bind Addidtions, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}"/>
+                </StackPanel>
+            </DataTemplate>
+
             <DataTemplate x:Name="CyberDeck"  x:DataType="CharModel:CyberDeck">
                 <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
                     <Grid.ColumnDefinitions>

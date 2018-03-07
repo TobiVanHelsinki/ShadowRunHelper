@@ -1330,6 +1330,9 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Model_Initiation_Wert.Text" xml:space="preserve">
     <value>Grad</value>
   </data>
+  <data name="UI_Btn_Bearbeiten_List.Content" xml:space="preserve">
+    <value>Liste Bearbeiten</value>
+  </data>
   <data name="UI_Btn_Bearbeiten_Munition.Content" xml:space="preserve">
     <value>Munition auswählen</value>
   </data>

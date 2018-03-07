@@ -31,7 +31,7 @@ namespace ShadowRunHelper.CharModel
         public Fertigkeit() : base()
         {
             PoolZusammensetzung = new ObservableThingListEntryCollection(Filter);
-            PoolZusammensetzung.OnCollectionChangedAndNow(() => 
+            PoolZusammensetzung.OnCollectionChangedCall(() => 
             { Pool = Wert + PoolZusammensetzung.Recalculate(); });
 
             PropertyChanged += (s, e)=> { if (e.PropertyName == "Wert") Pool = Wert + PoolZusammensetzung.Recalculate(); };

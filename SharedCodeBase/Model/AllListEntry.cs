@@ -75,7 +75,6 @@ namespace ShadowRunHelper.Model
         }
         public AllListEntry()
         {
-            //This = this;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

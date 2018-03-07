@@ -172,7 +172,7 @@ namespace ShadowRunHelper.CharModel
             {
                 var CollectionTarget = (pair.GetValue(target) as ObservableThingListEntryCollection);
                 var CollectionThis = (pair.GetValue(this) as ObservableThingListEntryCollection);
-                CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName }));
+                CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
             }
 
             return target;
@@ -204,6 +204,15 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        public void NotifiyDeletion()
+        {
+            Reset();
+            foreach (var item in GetProperties(this))
+            {
+                NotifyPropertyChanged(item.Name);
+            }
+            NotifyPropertyChanged(Constants.THING_DELETED_TOKEN);
+        }
 
         #region CSV
         public virtual string ToCSV(char Delimiter)

@@ -71,7 +71,7 @@ namespace ShadowRunHelper.CharModel
 
         public override double GetPropertyValueOrDefault(string ID = "")
         {
-            if (ID == "Wert" && CurrentMunition != null)
+            if ((ID == "Wert" || ID == "") && CurrentMunition != null)
             {
                 return Wert + CurrentMunition.Object.GetPropertyValueOrDefault(ID);
             }

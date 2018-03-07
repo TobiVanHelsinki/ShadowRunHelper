@@ -7,12 +7,24 @@ namespace ShadowRunHelper.CharModel
 {
     public class Attribut : Thing
     {
+        ObservableThingListEntryCollection _Addidtions = new ObservableThingListEntryCollection(Filter);
         [Used_List]
-        public ObservableThingListEntryCollection Addidtions { get; set; }
+        public ObservableThingListEntryCollection Addidtions
+        {
+            get { return _Addidtions; }
+            set
+            {
+                if (_Addidtions != value && value != null)
+                {
+                    _Addidtions = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x => 
-        x.ThingType != ThingDefs.Implantat ||
-        x.ThingType != ThingDefs.Vorteil ||
+        x.ThingType != ThingDefs.Implantat &&
+        x.ThingType != ThingDefs.Vorteil &&
         x.ThingType != ThingDefs.Nachteil
         ).Select(x => x.ThingType);
 
@@ -33,13 +45,14 @@ namespace ShadowRunHelper.CharModel
 
         public Attribut() : base()
         {
-            Addidtions = new ObservableThingListEntryCollection(Filter);
-            Addidtions.OnCollectionChangedAndNow(() => { WertAfterCalc = Wert + Addidtions.Recalculate(); });
+            Addidtions.OnCollectionChangedCall(() => { WertAfterCalc = Wert + Addidtions.Recalculate(); });
+            PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") WertAfterCalc = Wert + Addidtions.Recalculate(); };
+
         }
 
         public override double GetPropertyValueOrDefault(string ID = "")
         {
-            if (ID == "Wert")
+            if (ID == "Wert" || ID == "")
             {
                 return WertAfterCalc;
             }

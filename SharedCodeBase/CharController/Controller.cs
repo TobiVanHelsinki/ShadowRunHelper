@@ -40,6 +40,7 @@ namespace ShadowRunHelper.CharController
         }
         public virtual void RemoveThing(Thing tToRemove)
         {
+            tToRemove.NotifiyDeletion();
             Data.Remove((T)tToRemove);
         }
 

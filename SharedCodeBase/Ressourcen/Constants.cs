@@ -6,6 +6,7 @@ namespace ShadowRunHelper
 {
     internal class Constants : TLIB_UWPFRAME.SharedConstants
     {
+        public const string THING_DELETED_TOKEN = "THING_DELETED_TOKEN";
         public const string ERROR_TOKEN = "ERROR";
         public static string[] AVAILIBLE_DB_LANGUAGES = new string[] {"de" };
         public const string DEFAULT_DB_LANGUAGE = "de";

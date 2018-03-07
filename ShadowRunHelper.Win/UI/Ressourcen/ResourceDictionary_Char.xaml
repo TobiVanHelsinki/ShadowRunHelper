@@ -373,14 +373,6 @@
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
         <Setter Property="Orientation" Value="Vertical"/>
     </Style>
-    <Style TargetType="ListViewItem" x:Key="AllListEntry_ListView">
-        <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
-        <Setter Property="BorderThickness" Value="1,0,0,0"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="5,0,5,0"/>
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="MinWidth" Value="0" />
-    </Style>
     <!-- Anzeige ####################### -->
 
     <Style TargetType="TextBlock" x:Key="Category_Item_Text">

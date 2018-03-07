@@ -23,7 +23,7 @@ namespace ShadowRunHelper.Model
             base.InsertItem(index, item);
         }
         Action CurrentTODO;
-        public void OnCollectionChanged(Action TODO)
+        public void OnCollectionChangedCall(Action TODO)
         {
             if (CurrentTODO != null)
             {
@@ -36,25 +36,23 @@ namespace ShadowRunHelper.Model
             if (CurrentTODO != null)
             {
                 CollectionChanged += (x, y) => DoAction();
+               DoAction();
             }
-        }
-        public void OnCollectionChangedAndNow(Action TODO)
-        {
-            OnCollectionChanged(TODO);
-            DoAction();
         }
         void DoAction()
         {
-            if (CurrentTODO != null)
+            CurrentTODO();
+            foreach (var item in this)
             {
-                CurrentTODO();
-                foreach (var item in this)
-                {
-                    item.Object.PropertyChanged -= (u, c) => CurrentTODO();
-                    item.Object.PropertyChanged += (u, c) => CurrentTODO();
-                }
+                item.Object.PropertyChanged -= (u, c) => CurrentTODO();
+                item.Object.PropertyChanged += (u, c) => CurrentTODO();
+                item.Object.PropertyChanged -= (u, c) => CheckForDeletion(c.PropertyName, item);
+                item.Object.PropertyChanged += (u, c) => CheckForDeletion(c.PropertyName, item);
             }
-
+        }
+        public void CheckForDeletion(string PropertyName, AllListEntry item)
+        {
+            if (PropertyName == Constants.THING_DELETED_TOKEN) Remove(item);
         }
 
         public double Recalculate()

@@ -1300,6 +1300,9 @@ This is shown in detail at the example-character</value>
   <data name="Model_Initiation_Wert.Text" xml:space="preserve">
     <value>Grad</value>
   </data>
+  <data name="UI_Btn_Bearbeiten_List.Content" xml:space="preserve">
+    <value>Edit list</value>
+  </data>
   <data name="UI_Btn_Bearbeiten_Munition.Content" xml:space="preserve">
     <value>Choose Ammunition</value>
   </data>

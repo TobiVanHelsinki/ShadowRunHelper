@@ -54,7 +54,6 @@ namespace ShadowRunHelper
                 }
             );
             groups.AddRange(GroupedAllList);
-            var z = GroupedAllList.ElementAt(0).Anzahl;
             GroupedList.Source = groups;
         }
         /// <summary>
@@ -79,9 +78,9 @@ namespace ShadowRunHelper
             {
                 foreach (var item in lstZusammensetzung)
                 {
-                    var tepmindex = lstThings.FindIndex(x => (x.Object == item.Object && x.PropertyID == item.PropertyID));
+                    var ItemToUse = Zus_ListVIew.Items.FirstOrDefault(x=> (x as AllListEntry).Object == item.Object && (x as AllListEntry).PropertyID == item.PropertyID);
+                    var tepmindex = Zus_ListVIew.Items.IndexOf(ItemToUse);
                     Zus_ListVIew.SelectRange(new ItemIndexRange(tepmindex, 1));
-
                 }
             }
             else

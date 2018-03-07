@@ -35,8 +35,8 @@
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{x:Bind Converter={StaticResource o_ThingList}, ConverterParameter=Bezeichner}" Grid.Column="0"/>
-                            <TextBlock Text="{x:Bind Converter={StaticResource o_ThingList}, ConverterParameter=Wert}" Grid.Column="1"/>
+                            <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=Bezeichner}" Grid.Column="0"/>
+                            <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=Wert}" Grid.Column="1"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

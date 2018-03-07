@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Data;
 namespace ShadowRunHelper.UI.Converter
 {
     // Custom class implements the IValueConverter interface. 
-    public class o_ThingList : IValueConverter
+    public class o_AllListEntry : IValueConverter
     {
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
@@ -15,14 +15,7 @@ namespace ShadowRunHelper.UI.Converter
             switch ((string)parameter)
             {
                 case "Wert":
-                    if (item?.PropertyID == "")
-                    {
-                        return item.Object.Wert.ToString();
-                    }
-                    else
-                    {
-                        return item.Object.GetPropertyValueOrDefault(item.PropertyID).ToString();
-                    }
+                    return item.Object.GetPropertyValueOrDefault(item.PropertyID).ToString();
                 case "Bezeichner":
                     if (item?.PropertyID == "")
                     {

@@ -71,6 +71,8 @@ namespace ShadowRunHelper.UI.Edit
                     Type_U.Height = new GridLength(0);
                     Notes.Height = new GridLength(0);
                     Notes_U.Height = new GridLength(0);
+                    EditType.ContentTemplate = Attribut;
+
                     Col1.Width = new GridLength(0, GridUnitType.Star);
                     Col2.Width = new GridLength(0, GridUnitType.Star);
                     Col3.Width = new GridLength(1, GridUnitType.Star);
@@ -136,7 +138,14 @@ namespace ShadowRunHelper.UI.Edit
 
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            ((Grid)sender).DataContext = Data;
+            ((FrameworkElement)sender).DataContext = Data;
+        }
+
+        void AttributZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
+        {
+            Auswahl dialog = new Auswahl(Model.AppModel.Instance.MainObject.LinkList, ((Attribut)((Button)sender).DataContext).Addidtions, Filter: CharModel.Attribut.Filter);
+            Hide();
+            dialog.ShowAsync();
         }
     }
 }
