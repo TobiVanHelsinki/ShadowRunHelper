@@ -34,7 +34,7 @@ namespace ShadowRunHelper.CharModel
         public Attribut() : base()
         {
             Addidtions = new ObservableThingListEntryCollection(Filter);
-            Addidtions.OnCollectionChangedAndNow(() => { WertAfterCalc = Addidtions.Recalculate(); });
+            Addidtions.OnCollectionChangedAndNow(() => { WertAfterCalc = Wert + Addidtions.Recalculate(); });
         }
 
         public override double GetPropertyValueOrDefault(string ID = "")
