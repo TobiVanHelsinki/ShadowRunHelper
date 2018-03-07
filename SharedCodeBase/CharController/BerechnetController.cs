@@ -114,8 +114,8 @@ namespace ShadowRunHelper.CharController
             {
                 return;
             }
-            PersonRef.Schaden_G_max = 8 + Math.Ceiling(AttributeRef.Willen.Wert / 2);
-            PersonRef.Schaden_K_max = 8 + Math.Ceiling(AttributeRef.Konsti.Wert / 2);
+            PersonRef.Schaden_G_max = 8 + Math.Ceiling(AttributeRef.Willen.WertAfterCalc / 2);
+            PersonRef.Schaden_K_max = 8 + Math.Ceiling(AttributeRef.Konsti.WertAfterCalc / 2);
         }
 
         //Physical Limit: (STR x2 + BOD + REA) / 3

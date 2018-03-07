@@ -75,6 +75,14 @@ namespace ShadowRunHelper.CharModel
             {
                 return Wert + CurrentMunition.Object.GetPropertyValueOrDefault(ID);
             }
+            if ((ID == "Praezision" || ID == "") && CurrentMunition != null)
+            {
+                return Praezision + CurrentMunition.Object.GetPropertyValueOrDefault(ID);
+            }
+            if ((ID == "PB" || ID == "") && CurrentMunition != null)
+            {
+                return PB + CurrentMunition.Object.GetPropertyValueOrDefault(ID);
+            }
             return base.GetPropertyValueOrDefault(ID);
         }
 

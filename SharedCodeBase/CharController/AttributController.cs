@@ -40,8 +40,6 @@ namespace ShadowRunHelper.CharController
         AllListEntry MI_Magie;
         AllListEntry MI_Resonanz;
 
-        Person PersonRef;
-        ObservableCollection<Implantat> lstImplantateRef;
         // Variable Logik Stuff ###########################
         bool m_MutexDataColectionChange = false;
 
@@ -70,12 +68,9 @@ namespace ShadowRunHelper.CharController
             MI_Magie= new AllListEntry(Magie, "");
             MI_Resonanz= new AllListEntry(Resonanz, "");
 
-            Konsti.PropertyChanged += (x, y) => {  RefreshLimitSchaden(); };
-            Willen.PropertyChanged += (x, y) => { RefreshLimitSchaden(); };
             Data = new ObservableCollection<Attribut>();
             Data.CollectionChanged += Data_CollectionChanged;
             RefreshDataList();
-            RefreshLimitSchaden();
         }
 
         void RefreshBezeichner()
@@ -90,24 +85,6 @@ namespace ShadowRunHelper.CharController
             Willen.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Willen/Text");
             Magie.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Magie/Text");
             Resonanz.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Resonanz/Text");
-        }
-
-        public void SetDependencies(Person p, ObservableCollection<Implantat> i)
-        {
-            PersonRef = p;
-            lstImplantateRef = i;
-        }
-
-        // Refresh Stuff ######################################################
-
-        protected void RefreshLimitSchaden()
-        {
-            if (PersonRef == null)
-            {
-                return;
-            }
-            PersonRef.Schaden_G_max = 8 + Math.Ceiling(Willen.Wert / 2);
-            PersonRef.Schaden_K_max = 8 + Math.Ceiling(Konsti.Wert / 2);
         }
 
         // DataList Handling ##############################

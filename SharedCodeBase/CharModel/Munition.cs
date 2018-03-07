@@ -18,6 +18,21 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        private double pool = 0;
+        [Used_UserAttribute]
+        public double Praezision
+        {
+            get { return pool; }
+            set
+            {
+                if (value != pool)
+                {
+                    pool = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         double _DK = 0;
         [Used_UserAttribute]
         public double PB

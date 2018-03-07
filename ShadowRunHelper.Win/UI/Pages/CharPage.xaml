@@ -1007,6 +1007,10 @@
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_Praezision"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Praezision, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_Wert"/>
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Wert, Mode=OneWay}"/>
                         </StackPanel>
