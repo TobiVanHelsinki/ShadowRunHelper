@@ -13,21 +13,13 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate x:Name="Suggestion" x:Key="Suggestion" x:DataType="CharModel:Thing">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Bind Bezeichner}"/>
-                    <TextBlock x:Uid="Doppelpunkt"/>
-                    <TextBlock Text="{x:Bind Wert}"/>
-                </StackPanel>
-            </DataTemplate>
             <DataTemplate x:Name="GlobalFindBoxTemplate" x:Key="GlobalFindBoxTemplate" x:DataType="model:CharHolder">
                 <AutoSuggestBox x:Name="GlobalFilterBox" x:Uid="GlobalFilterBox" QueryIcon="Find"
                                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
                                 TextChanged="AutoSuggestBox_TextChanged"
-                                
                                 QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                 ItemsSource="{x:Bind ThingList, Mode=OneWay}"
-                                ItemTemplate="{StaticResource Suggestion}"/>
+                                />
             </DataTemplate>
             <DataTemplate x:Key="Block">
                 <StackPanel>

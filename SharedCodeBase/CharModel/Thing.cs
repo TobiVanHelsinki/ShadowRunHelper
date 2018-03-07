@@ -56,7 +56,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         public int Order { get; set; }
-        string notiz = "";
+        protected string notiz = "";
         [Used_UserAttribute]
         public string Notiz
         {
@@ -70,7 +70,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        string zusatz = "";
+        protected string zusatz = "";
         [Used_UserAttribute]
         public string Zusatz
         {
@@ -84,9 +84,9 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        double wert = 0;
+        protected double wert = 0;
         [Used_UserAttribute]
-        public double Wert
+        public virtual double Wert
         {
             get { return wert; }
             set
@@ -98,7 +98,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        string typ = "";
+        protected string typ = "";
         [Used_UserAttribute]
         public string Typ
         {
@@ -112,7 +112,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        string bezeichner = "";
+        protected string bezeichner = "";
         [Used_User]
         public string Bezeichner
         {
@@ -127,13 +127,13 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public virtual double GetPropertyValueOrDefault(string ID = "")
+        public virtual double GetPropertyValueOrDefault(string ID = "Wert")
         {
             if (!UseForCalculation())
             {
                 return 0;
             }
-            if (ID == null || ID == "")
+            if (ID == null || ID == "" || ID == "Wert")
             {
                 return Wert;
             }
@@ -269,7 +269,7 @@ namespace ShadowRunHelper.CharModel
 
         public override string ToString()
         {
-            return typ +": "+ bezeichner + " " + wert + "+" + Zusatz;
+            return typ + (typ != "" ? ": " : "") + bezeichner + " " + GetPropertyValueOrDefault() + (Zusatz != "" ? "+" : "") + Zusatz;
         }
 
         /// <summary>

@@ -36,5 +36,10 @@ namespace ShadowRunHelper.CharModel
 
             PropertyChanged += (s, e)=> { if (e.PropertyName == "Wert") Pool = Wert + PoolZusammensetzung.Recalculate(); };
         }
+
+        public override string ToString()
+        {
+            return typ + (typ != "" ? ": " : "") + bezeichner + " " + Pool + (Zusatz != "" ? "+" : "") + Zusatz;
+        }
     }
 }
