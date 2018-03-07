@@ -22,7 +22,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-
+        
         public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
             {
                 ThingDefs.Handlung, ThingDefs.Connection, ThingDefs.Fertigkeit
@@ -31,8 +31,10 @@ namespace ShadowRunHelper.CharModel
         public Fertigkeit() : base()
         {
             PoolZusammensetzung = new ObservableThingListEntryCollection(Filter);
-            PoolZusammensetzung.OnCollectionChangedAndNow(() => { Pool = Wert + PoolZusammensetzung.Recalculate(); });
-        }
+            PoolZusammensetzung.OnCollectionChangedAndNow(() => 
+            { Pool = Wert + PoolZusammensetzung.Recalculate(); });
 
+            PropertyChanged += (s, e)=> { if (e.PropertyName == "Wert") Pool = Wert + PoolZusammensetzung.Recalculate(); };
+        }
     }
 }
