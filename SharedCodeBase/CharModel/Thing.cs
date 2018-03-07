@@ -127,7 +127,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public double GetPropertyValueOrDefault(string ID = "")
+        public virtual double GetPropertyValueOrDefault(string ID = "")
         {
             if (!UseForCalculation())
             {
@@ -157,7 +157,7 @@ namespace ShadowRunHelper.CharModel
             return Helper.GetProperties(obj, typeof(Used_UserAttribute));
         }
 
-        public Thing Copy(Thing target = null)
+        public virtual Thing Copy(Thing target = null)
         {
             if (target == null)
             {
@@ -177,7 +177,7 @@ namespace ShadowRunHelper.CharModel
 
             return target;
         }
-        public void Reset()
+        public virtual void Reset()
         {
             foreach (var item in GetProperties(this))
             {
@@ -203,7 +203,6 @@ namespace ShadowRunHelper.CharModel
                 (item.GetValue(this) as ObservableThingListEntryCollection).Clear();
             }
         }
-
 
 
         #region CSV

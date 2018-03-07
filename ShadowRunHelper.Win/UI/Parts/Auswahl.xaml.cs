@@ -2,7 +2,6 @@
 using Windows.UI.Xaml.Controls;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Data;
-using System;
 using System.Linq;
 using ShadowRunHelper.Model;
 using Shared;
@@ -10,32 +9,39 @@ using TLIB_UWPFRAME.Resources;
 
 namespace ShadowRunHelper
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class Auswahl : ContentDialog
-    {
-        public ObservableCollection<AllListEntry> lstZusammensetzung;
-        private List<AllListEntry> lstThings;
 
-        public Auswahl(ObservableCollection<AllListEntry> data, List<AllListEntry> i_lstAll)
+    public partial class Auswahl : ContentDialog
+    {
+        ObservableCollection<AllListEntry> lstZusammensetzung;
+        List<AllListEntry> lstThings;
+        bool isMultichoice;
+        IEnumerable<ThingDefs> FilterOut;
+
+        public Auswahl(List<AllListEntry> i_lstAll, ObservableCollection<AllListEntry> data, bool Multichoice = true, IEnumerable<ThingDefs> Filter = null)
         {
+            InitializeComponent();
+
             lstThings = i_lstAll ?? throw new AllListChooserError();
             lstZusammensetzung = data ?? throw new AllListChooserError();
             if (i_lstAll.Count <= 0)
             {
                 throw new AllListChooserError();
             }
-
+            isMultichoice = Multichoice;
+            if (!Multichoice)
+            {
+                Zus_ListVIew.SelectionMode = ListViewSelectionMode.Single;
+            }
+            FilterOut = Filter;
+            PrepareGuiList();
+        }
+        public virtual void PrepareGuiList()
+        {
             List<ThingDefs> Einzahl = new List<ThingDefs>() {
                 ThingDefs.Attribut, ThingDefs.CyberDeck, ThingDefs.Fernkampfwaffe,
                 ThingDefs.Kommlink, ThingDefs.Nachteil, ThingDefs.Panzerung, ThingDefs.Vehikel };
-            List<ThingDefs> Ohne = new List<ThingDefs>()
-            {
-                ThingDefs.Handlung, ThingDefs.Connection
-            };
-                ObservableCollection < CustomAllList> groups = new ObservableCollection<CustomAllList>();
-            IEnumerable<CustomAllList> GroupedAllList = lstThings.GroupBy(item => item.Object.ThingType).Where(g=>!Ohne.Contains(g.Key)).Select(
+            ObservableCollection<CustomAllList> groups = new ObservableCollection<CustomAllList>();
+            IEnumerable<CustomAllList> GroupedAllList = lstThings.GroupBy(item => item.Object.ThingType).Where(g => !FilterOut.Contains(g.Key)).Select(
                 group =>
                 {
                     var customgroup = new CustomAllList()
@@ -49,17 +55,14 @@ namespace ShadowRunHelper
             );
             groups.AddRange(GroupedAllList);
             var z = GroupedAllList.ElementAt(0).Anzahl;
-            InitializeComponent();
             GroupedList.Source = groups;
-
         }
-
         /// <summary>
         /// Save Selection as new Zusammensetzung
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        protected virtual void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             lstZusammensetzung.Clear();
             foreach (AllListEntry item in Zus_ListVIew.SelectedItems)
@@ -70,13 +73,20 @@ namespace ShadowRunHelper
             deferral.Complete();
         }
 
-        private void Zus_ListVIew_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        protected virtual void Zus_ListVIew_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            foreach (var item in lstZusammensetzung)
+            if (isMultichoice)
             {
-                var tepmindex = lstThings.FindIndex(x => (x.Object == item.Object && x.PropertyID == item.PropertyID));
-                Zus_ListVIew.SelectRange(new ItemIndexRange(tepmindex, 1));
-                
+                foreach (var item in lstZusammensetzung)
+                {
+                    var tepmindex = lstThings.FindIndex(x => (x.Object == item.Object && x.PropertyID == item.PropertyID));
+                    Zus_ListVIew.SelectRange(new ItemIndexRange(tepmindex, 1));
+
+                }
+            }
+            else
+            {
+                Zus_ListVIew.SelectedItem = lstZusammensetzung.FirstOrDefault();
             }
             if (Zus_ListVIew.SelectedItems.Count < lstZusammensetzung.Count)
             {
@@ -88,7 +98,7 @@ namespace ShadowRunHelper
         }
 
     }
-    internal class CustomAllList : List<AllListEntry>
+    public class CustomAllList : List<AllListEntry>
     {
         public string Name { get; set; }
         public int Anzahl { get; set; }

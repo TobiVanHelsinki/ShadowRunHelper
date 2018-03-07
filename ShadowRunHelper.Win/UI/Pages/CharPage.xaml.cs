@@ -5,6 +5,7 @@ using ShadowRunHelper.UI;
 using ShadowRunHelper.UI.Edit;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using TLIB_UWPFRAME.IO;
 using Windows.ApplicationModel.Resources;
@@ -166,27 +167,34 @@ namespace ShadowRunHelper
 
         async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).WertZusammensetzung, Model.MainObject.LinkList);
+            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).WertZusammensetzung, Filter: Handlung.Filter);
             await dialog.ShowAsync();
 
         }
 
         async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GrenzeZusammensetzung, Model.MainObject.LinkList);
+            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).GrenzeZusammensetzung, Filter: Handlung.Filter);
             var ergebnis = await dialog.ShowAsync();
         }
 
         async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GegenZusammensetzung, Model.MainObject.LinkList);
+            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).GegenZusammensetzung, Filter: Handlung.Filter);
             await dialog.ShowAsync();
         }
 
         async void FertigkeitenZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, Model.MainObject.LinkList);
+            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, Filter:Fertigkeit.Filter);
             await dialog.ShowAsync();
+        }
+        async void MunitionBearbeiten(object sender, RoutedEventArgs e)
+        {
+            var TemList = new ObservableCollection<AllListEntry> ();
+            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, TemList, false, Fernkampfwaffe.Filter);
+            await dialog.ShowAsync();
+            ((Fernkampfwaffe)((Button)sender).DataContext).CurrentMunition = TemList.FirstOrDefault();
         }
         #endregion
         #region Display Categoriy Stuff
@@ -804,8 +812,9 @@ namespace ShadowRunHelper
         {
             ((sender as FrameworkElement).DataContext as IController).SaveCurrentOrdering();
         }
+
         #endregion
 
-        
+
     }
 }

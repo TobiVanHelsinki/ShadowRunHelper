@@ -32,6 +32,12 @@ namespace ShadowRunHelper.CharModel
             PropertyChanged += (x, y) => { if (y.PropertyName == "Wert") Recalculate(); };
         }
 
+
+        public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
+            {
+                ThingDefs.Handlung, ThingDefs.Connection, ThingDefs.Fertigkeit
+            };
+
         private void CollectionChanged()
         {
             NotifyPropertyChanged();

@@ -63,6 +63,10 @@ namespace ShadowRunHelper.CharModel
             CollectionChanged(Mode.Grenze);
             CollectionChanged(Mode.Gegen);
         }
+        public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
+            {
+                ThingDefs.Handlung, ThingDefs.Connection
+            };
 
         void CollectionChanged(Mode mode)
         {
