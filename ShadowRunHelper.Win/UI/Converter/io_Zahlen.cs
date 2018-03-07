@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Windows.Globalization.NumberFormatting;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter
 {
-    // Custom class implements the IValueConverter interface. 
     public class io_ZahlenDouble : IValueConverter
     {
         #region IValueConverter Members 
@@ -17,7 +12,8 @@ namespace ShadowRunHelper.UI.Converter
             {
                 return Constants.ERROR_TOKEN;
             }
-            return dValue.ToString("F0");
+            string retval = dValue.ToString();
+            return retval;
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
