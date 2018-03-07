@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Linq;
 using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper.CharController
@@ -101,7 +102,7 @@ namespace ShadowRunHelper.CharController
         {
             Essenz.Wert = 6;
             Essenz.Wert += PersonRef.Essenz;
-            foreach (var item in lstImplantateRef)
+            foreach (var item in lstImplantateRef.Where(x=>x.Besitz == true))
             {
                 Essenz.Wert -= item.Essenz;
             }
