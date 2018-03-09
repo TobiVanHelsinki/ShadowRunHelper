@@ -124,16 +124,16 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="HandlungItem" x:DataType="CharModel:Handlung">
-                <Grid Loaded="Grid_Entry_Loaded" Style="{StaticResource Category_Item_Grid}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"  Style="{StaticResource Category_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
-                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                    </TextBlock>
-                    <TextBlock  Grid.Column="1">
+                 <Grid Loaded="Grid_Entry_Loaded" Style="{StaticResource Category_Item_Grid}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  Style="{StaticResource Category_Item_Text}">
+                            <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
+                            <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock  Grid.Column="1">
                         <Run Text="{x:Bind Wert, Mode=OneWay}"/>
                         <Run x:Uid="Space"/>
                         <Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
@@ -142,8 +142,8 @@
                         <Run x:Uid="KlammerZuEck"/>
                         <Run x:Uid="Bindestrich"/>
                         <Run Text="{x:Bind Gegen, Mode=OneWay}"/>
-                    </TextBlock>
-                </Grid>
+                        </TextBlock>
+                    </Grid>
             </DataTemplate>
             <DataTemplate x:Name="HandlungItemX" x:DataType="CharModel:Handlung">
                 <Grid Style="{StaticResource Category_Item_Grid}">
@@ -2294,6 +2294,7 @@
                         <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
                             <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="1" Style="{StaticResource Category_ContentControl}"/>
                             <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="2" Style="{StaticResource Category_ContentControl}"/>
+                            <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="24" Style="{StaticResource Category_ContentControl}"/>
                             <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="19" Style="{StaticResource Category_ContentControl}"/>
                             <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="26" Style="{StaticResource Category_ContentControl}"/>
                         </StackPanel>
@@ -2313,7 +2314,6 @@
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="15" Style="{StaticResource Category_ContentControl}"/>
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="4" Style="{StaticResource Category_ContentControl}"/>
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="21" Style="{StaticResource Category_ContentControl}"/>
-                        <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="24" Style="{StaticResource Category_ContentControl}"/>
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="20" Style="{StaticResource Category_ContentControl}"/>
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="28" Style="{StaticResource Category_ContentControl}"/>
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="27" Style="{StaticResource Category_ContentControl}"/>

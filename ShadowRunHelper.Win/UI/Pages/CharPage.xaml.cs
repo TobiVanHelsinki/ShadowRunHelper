@@ -25,6 +25,8 @@ namespace ShadowRunHelper
         public Windows.System.Display.DisplayRequest Char_DisplayRequest;
         CharHolder MainObject;
         ResourceLoader res;
+        #endregion
+
         public CharPage()
         {
             if (MainObject == null)
@@ -33,10 +35,8 @@ namespace ShadowRunHelper
             }
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
-            PrepareBlockList();
         }
 
-        #endregion
         #region Navigation stuff
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -361,21 +361,22 @@ namespace ShadowRunHelper
             ThingDefs Type = TypeHelper.Obj2ThingDef(ControlBlock.Tag);
 
             //Temp Vars
-            TextBlock U = ((((ControlBlock.ContentTemplateRoot as Panel).Children[0] as Panel)/*.Children[0] as Panel*/).Children.First(c => c.GetType() == typeof(TextBlock)) as TextBlock);
-            ContentPresenter E = ((ControlBlock.ContentTemplateRoot as Panel).Children[1] as ContentPresenter);
-            ListView LV = ((ControlBlock.ContentTemplateRoot as Panel).Children[2] as ListView);
+            var U = ((((ControlBlock.ContentTemplateRoot as Panel).Children[0] as Panel)).Children.First(c => c.GetType() == typeof(TextBlock)) as TextBlock);
+            var E = ((ControlBlock.ContentTemplateRoot as Panel).Children.First(c => c.GetType() == typeof(ContentPresenter)) as ContentPresenter);
+            var LV = ((ControlBlock.ContentTemplateRoot as Panel).Children.First(c => c.GetType() == typeof(ListView)) as ListView);
             // Global Things
-            ((((ControlBlock.ContentTemplateRoot as Panel).Children[0] as Panel)/*.Children[0] as Panel*/).Children[0] as Button).Tag = ControlBlock.Tag;
+            ((((ControlBlock.ContentTemplateRoot as Panel).Children[0] as Panel)).Children[0] as Button).Tag = ControlBlock.Tag;
             LV.Tag = ControlBlock.Tag;
             ControlBlock.DataContext = Model.MainObject.ThingDef2CTRL(Type);
 
             //Search Things
-            Blocklist.TryGetValue((ThingDefs)int.Parse(ControlBlock.Tag as string), out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) NewBlock);
-            NewBlock.ListView = LV;
-            NewBlock.Block = ControlBlock;
-            NewBlock.sv = (ScrollViewer)(ControlBlock.Parent as FrameworkElement).Parent;
-            Blocklist.Remove((ThingDefs)int.Parse(ControlBlock.Tag as string));
-            Blocklist.Add((ThingDefs)int.Parse(ControlBlock.Tag as string), NewBlock);
+            #region SearchStuff
+            var Search_LV = LV;
+            var Search_Block = ControlBlock;
+            var Search_SV = (ScrollViewer)(ControlBlock.Parent as FrameworkElement).Parent;
+
+            GlobalSearchCache.Add(Type, (Search_Block, Search_LV, Search_SV));
+            #endregion
 
             var entry = lokalCategoryOptions.FirstOrDefault(x => x.ThingType == Type);
             if (entry != null && !entry.Visibility)
@@ -561,36 +562,8 @@ namespace ShadowRunHelper
         #endregion
         #region  instant search Stuff
 
-        Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer SV)> Blocklist = new Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer SV)>();
+        Dictionary<ThingDefs, (ContentControl Block, ListView ListView, ScrollViewer SV)> GlobalSearchCache = new Dictionary<ThingDefs, (ContentControl Block, ListView ListView, ScrollViewer SV)>();
         Thing PendingScrollEntry;
-
-
-        void PrepareBlockList()
-        {
-            Blocklist.Add(ThingDefs.Handlung, (0, null, null, null));
-            Blocklist.Add(ThingDefs.Fertigkeit, (0, null, null, null));
-            Blocklist.Add(ThingDefs.Adeptenkraft_KomplexeForm, (0, null, null, null));
-            Blocklist.Add(ThingDefs.Item, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Kommlink, (1, null, null, null));
-            Blocklist.Add(ThingDefs.CyberDeck, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Programm, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Foki_Widgets, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Zaubersprueche, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Geist_Sprite, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Fernkampfwaffe, (2, null, null, null));
-            Blocklist.Add(ThingDefs.Nahkampfwaffe, (2, null, null, null));
-            Blocklist.Add(ThingDefs.Panzerung, (2, null, null, null));
-            Blocklist.Add(ThingDefs.Vehikel, (2, null, null, null));
-            Blocklist.Add(ThingDefs.Munition, (2, null, null, null));
-            Blocklist.Add(ThingDefs.Attribut, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Connection, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Implantat, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Tradition_Initiation, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Stroemung_Wandlung, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Sin, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Vorteil, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Nachteil, (3, null, null, null));
-        }
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
@@ -624,12 +597,7 @@ namespace ShadowRunHelper
                 {
                     return;
                 }
-
-                if (!Blocklist.TryGetValue(PendingScrollEntry.ThingType, out var Choosen))
-                {
-                    return;
-                }
-                Pivot.SelectedIndex = Choosen.PivotItem;
+                Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == PendingScrollEntry.ThingType).Pivot;
             }
             catch { return; }
             ScrollIntoBlock();
@@ -651,7 +619,7 @@ namespace ShadowRunHelper
             }
             try
             {
-                Blocklist.TryGetValue(PendingScrollEntry.ThingType, out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) Choosen);
+                GlobalSearchCache.TryGetValue(PendingScrollEntry.ThingType, out (ContentControl Block, ListView ListView, ScrollViewer sv) Choosen);
                 // Listenauswahl
                 double offset = 0;
                 foreach (var item in ((Choosen.sv as ScrollViewer).Content as Panel).Children)
@@ -754,7 +722,7 @@ namespace ShadowRunHelper
             try
             {
                 var CTRL = ((sender as FrameworkElement).DataContext as IController);
-                var block = Blocklist.First(x => x.Key == CTRL.eDataTyp);
+                var block = GlobalSearchCache.First(x => x.Key == CTRL.eDataTyp);
                 var selected2 = block.Value.ListView.SelectedItems.Select(i=>i as Thing);
                 string output = IO.CSV_Converter.Data2CSV(';', '\n', selected2);
 
@@ -813,8 +781,12 @@ namespace ShadowRunHelper
             ((sender as FrameworkElement).DataContext as IController).SaveCurrentOrdering();
         }
 
+
         #endregion
 
+        private void SwipeItem_Invoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
+        {
 
+        }
     }
 }

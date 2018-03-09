@@ -131,12 +131,12 @@ namespace ShadowRunHelper
             set { _Order = value; NotifyPropertyChanged(); }
         }
 
-        public ThingTypeProperty(Type type, ThingDefs item, int v1, int v2)
+        public ThingTypeProperty(Type type, ThingDefs item, int pivot, int order)
         {
             Type = type;
             ThingType = item;
-            Pivot = v1;
-            Order = v2;
+            Pivot = pivot;
+            Order = order;
         }
 
         public ThingTypeProperty(Type type, ThingDefs item, int v1, int v2, string singular, string plural) : this(type, item, v1, v2)
@@ -154,40 +154,39 @@ namespace ShadowRunHelper
     {
         public const int ThingDefsCount = 27;
         private static List<ThingTypeProperty> thingTypeProperties = new List<ThingTypeProperty>() {
-           new ThingTypeProperty(null,ThingDefs.Undef, 0, 0){ Usable = false },
-           new ThingTypeProperty(null,ThingDefs.UndefTemp, 0, 0){ Usable = false },
-           new ThingTypeProperty(typeof(Eigenschaft),ThingDefs.Eigenschaft, 0, 0){ Usable = false },
+           new ThingTypeProperty(null,ThingDefs.Undef, -1, -1){ Usable = false },
+           new ThingTypeProperty(null,ThingDefs.UndefTemp, -1, -1){ Usable = false },
            new ThingTypeProperty(typeof(Handlung),ThingDefs.Handlung, 0, 0,"Model_Handlung_/Text","Model_HandlungM_/Text"),
            new ThingTypeProperty(typeof(Fertigkeit),ThingDefs.Fertigkeit, 0, 1,"Model_Fertigkeit_/Text","Model_FertigkeitM_/Text"),
            new ThingTypeProperty(typeof(Item),ThingDefs.Item, 1, 0,"Model_Item_/Text","Model_ItemM_/Text"),
-           new ThingTypeProperty(typeof(Programm),ThingDefs.Programm, 0, 0,"Model_Programm_/Text","Model_ProgrammM_/Text"),
-           new ThingTypeProperty(typeof(Munition),ThingDefs.Munition, 0, 0,"Model_Munition_/Text","Model_MunitionM_/Text"),
-           new ThingTypeProperty(typeof(Implantat),ThingDefs.Implantat, 0, 0,"Model_Implantat_/Text","Model_ImplantatM_/Text"),
-           new ThingTypeProperty(typeof(Vorteil),ThingDefs.Vorteil, 0, 0,"Model_Vorteil_/Text","Model_VorteilM_/Text"),
-           new ThingTypeProperty(typeof(Nachteil),ThingDefs.Nachteil, 0, 0,"Model_Nachteil_/Text","Model_NachteilM_/Text"),
-           new ThingTypeProperty(typeof(Connection),ThingDefs.Connection, 0, 0,"Model_Connection_/Text","Model_ConnectionM_/Text"),
-           new ThingTypeProperty(typeof(Sin),ThingDefs.Sin, 0, 0,"Model_Sin_/Text","Model_SinM_/Text"),
-           new ThingTypeProperty(typeof(Attribut),ThingDefs.Attribut, 0, 0,"Model_Attribut_/Text","Model_AttributM_/Text"),
-           new ThingTypeProperty(typeof(Berechnet),ThingDefs.Berechnet, 0, 0,"Model_Berechnet_/Text","Model_BerechnetM_/Text"),
-           new ThingTypeProperty(typeof(Nahkampfwaffe),ThingDefs.Nahkampfwaffe, 0, 0,"Model_Nahkampfwaffe_/Text","Model_NahkampfwaffeM_/Text"),
-           new ThingTypeProperty(typeof(Fernkampfwaffe),ThingDefs.Fernkampfwaffe, 0, 0,"Model_Fernkampfwaffe_/Text","Model_FernkampfwaffeM_/Text"),
-           new ThingTypeProperty(typeof(Kommlink),ThingDefs.Kommlink, 0, 0,"Model_Kommlink_/Text","Model_KommlinkM_/Text"),
-           new ThingTypeProperty(typeof(CyberDeck),ThingDefs.CyberDeck, 0, 0,"Model_CyberDeck_/Text","Model_CyberDeckM_/Text"),
-           new ThingTypeProperty(typeof(Vehikel),ThingDefs.Vehikel, 0, 0,"Model_Vehikel_/Text","Model_VehikelM_/Text"),
-           new ThingTypeProperty(typeof(Panzerung),ThingDefs.Panzerung, 0, 0,"Model_Panzerung_/Text","Model_PanzerungM_/Text"),
-           new ThingTypeProperty(typeof(Eigenschaft),ThingDefs.Eigenschaft, 0, 0,"Model_Eigenschaft_/Text","Model_EigenschaftgM_/Text"){ Usable = false },
-           new ThingTypeProperty(typeof(Adeptenkraft_KomplexeForm),ThingDefs.Adeptenkraft_KomplexeForm, 0, 0,"Model_Adeptenkraft_KomplexeForm_/Text","Model_Adeptenkraft_KomplexeFormM_/Text"),
-           new ThingTypeProperty(typeof(Foki_Widgets),ThingDefs.Foki_Widgets, 0, 0,"Model_Foki_Widgets_/Text","Model_Foki_WidgetsM_/Text"),
-           new ThingTypeProperty(typeof(Geist_Sprite),ThingDefs.Geist_Sprite, 0, 0,"Model_Geist_Sprite_/Text","Model_Geist_SpriteM_/Text"),
-           new ThingTypeProperty(typeof(Stroemung_Wandlung),ThingDefs.Stroemung_Wandlung, 0, 0,"Model_Stroemung_Wandlung_/Text","Model_Stroemung_WandlungM_/Text"),
-           new ThingTypeProperty(typeof(Tradition_Initiation),ThingDefs.Tradition_Initiation, 0, 0,"Model_Tradition_Initiation_/Text","Model_Tradition_InitiationM_/Text"),
+           new ThingTypeProperty(typeof(Programm),ThingDefs.Programm, 1, 1,"Model_Programm_/Text","Model_ProgrammM_/Text"),
+           new ThingTypeProperty(typeof(Munition),ThingDefs.Munition, 2, 0,"Model_Munition_/Text","Model_MunitionM_/Text"),
+           new ThingTypeProperty(typeof(Implantat),ThingDefs.Implantat, 3, 0,"Model_Implantat_/Text","Model_ImplantatM_/Text"),
+           new ThingTypeProperty(typeof(Vorteil),ThingDefs.Vorteil, 3, 0,"Model_Vorteil_/Text","Model_VorteilM_/Text"),
+           new ThingTypeProperty(typeof(Nachteil),ThingDefs.Nachteil, 3, 0,"Model_Nachteil_/Text","Model_NachteilM_/Text"),
+           new ThingTypeProperty(typeof(Connection),ThingDefs.Connection, 3, 0,"Model_Connection_/Text","Model_ConnectionM_/Text"),
+           new ThingTypeProperty(typeof(Sin),ThingDefs.Sin, 3, 0,"Model_Sin_/Text","Model_SinM_/Text"),
+           new ThingTypeProperty(typeof(Attribut),ThingDefs.Attribut, 3, 0,"Model_Attribut_/Text","Model_AttributM_/Text"),
+           new ThingTypeProperty(typeof(Berechnet),ThingDefs.Berechnet, 3, 0,"Model_Berechnet_/Text","Model_BerechnetM_/Text"),
+           new ThingTypeProperty(typeof(Nahkampfwaffe),ThingDefs.Nahkampfwaffe, 2, 0,"Model_Nahkampfwaffe_/Text","Model_NahkampfwaffeM_/Text"),
+           new ThingTypeProperty(typeof(Fernkampfwaffe),ThingDefs.Fernkampfwaffe, 2, 0,"Model_Fernkampfwaffe_/Text","Model_FernkampfwaffeM_/Text"),
+           new ThingTypeProperty(typeof(Kommlink),ThingDefs.Kommlink, 1, 0,"Model_Kommlink_/Text","Model_KommlinkM_/Text"),
+           new ThingTypeProperty(typeof(CyberDeck),ThingDefs.CyberDeck, 1, 0,"Model_CyberDeck_/Text","Model_CyberDeckM_/Text"),
+           new ThingTypeProperty(typeof(Vehikel),ThingDefs.Vehikel, 2, 0,"Model_Vehikel_/Text","Model_VehikelM_/Text"),
+           new ThingTypeProperty(typeof(Panzerung),ThingDefs.Panzerung, 2, 0,"Model_Panzerung_/Text","Model_PanzerungM_/Text"),
+           new ThingTypeProperty(typeof(Eigenschaft),ThingDefs.Eigenschaft, -1, -1,"Model_Eigenschaft_/Text","Model_EigenschaftgM_/Text"){ Usable = false },
+           new ThingTypeProperty(typeof(Adeptenkraft_KomplexeForm),ThingDefs.Adeptenkraft_KomplexeForm, 0, 2,"Model_Adeptenkraft_KomplexeForm_/Text","Model_Adeptenkraft_KomplexeFormM_/Text"),
+           new ThingTypeProperty(typeof(Foki_Widgets),ThingDefs.Foki_Widgets, 1, 0,"Model_Foki_Widgets_/Text","Model_Foki_WidgetsM_/Text"),
+           new ThingTypeProperty(typeof(Geist_Sprite),ThingDefs.Geist_Sprite, 1, 0,"Model_Geist_Sprite_/Text","Model_Geist_SpriteM_/Text"),
+           new ThingTypeProperty(typeof(Stroemung_Wandlung),ThingDefs.Stroemung_Wandlung, 3, 0,"Model_Stroemung_Wandlung_/Text","Model_Stroemung_WandlungM_/Text"),
+           new ThingTypeProperty(typeof(Tradition_Initiation),ThingDefs.Tradition_Initiation, 3, 0,"Model_Tradition_Initiation_/Text","Model_Tradition_InitiationM_/Text"),
            new ThingTypeProperty(typeof(Zaubersprueche),ThingDefs.Zaubersprueche,0,0,"Model_Zaubersprueche_/Text","Model_ZauberspruecheM_/Text"),
 
            new ThingTypeProperty(typeof(KomplexeForm),ThingDefs.KomplexeForm,0,0,"Model_KomplexeForm_/Text","Model_KomplexeFormM_/Text"),
-           new ThingTypeProperty(typeof(Sprite),ThingDefs.Sprite,0,0,"Model_Sprite_/Text","Model_SpriteM_/Text"),
-           new ThingTypeProperty(typeof(Widgets),ThingDefs.Widgets,0,0,"Model_Widgets_/Text","Model_WidgetsM_/Text"),
-           new ThingTypeProperty(typeof(Wandlung),ThingDefs.Wandlung,0,0,"Model_Wandlung_/Text","Model_WandlungM_/Text"),
-           new ThingTypeProperty(typeof(Initiation),ThingDefs.Initiation,0,0,"Model_Initiation_/Text","Model_InitiationM_/Text"),
+           new ThingTypeProperty(typeof(Sprite),ThingDefs.Sprite,1,0,"Model_Sprite_/Text","Model_SpriteM_/Text"),
+           new ThingTypeProperty(typeof(Widgets),ThingDefs.Widgets,1,0,"Model_Widgets_/Text","Model_WidgetsM_/Text"),
+           new ThingTypeProperty(typeof(Wandlung),ThingDefs.Wandlung,3,0,"Model_Wandlung_/Text","Model_WandlungM_/Text"),
+           new ThingTypeProperty(typeof(Initiation),ThingDefs.Initiation,3,0,"Model_Initiation_/Text","Model_InitiationM_/Text"),
         };
 
         public static List<ThingTypeProperty> ThingTypeProperties { get => thingTypeProperties; set => thingTypeProperties = value; }
