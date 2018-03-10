@@ -74,7 +74,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\AllListEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Exceptions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Typen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Types.cs" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de\Resources.resw" />

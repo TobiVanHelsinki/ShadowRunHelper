@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using Windows.UI.Xaml.Data;
+using org.mariuszgromada.math.mxparser;
 
 namespace ShadowRunHelper.UI.Converter
 {
@@ -19,6 +21,22 @@ namespace ShadowRunHelper.UI.Converter
         {
             string strOrigin = (value as string);
             if (strOrigin == null)
+            {
+                return 0;
+            }
+            string ToProcess = "";
+            foreach (var item in strOrigin)
+            {
+                if (char.IsDigit(item) || item == '+' || item == '-' || item == '*' || item == '\\' || item == '+' || item == '(' || item == ')')
+                {
+                    ToProcess += item;
+                }
+            }
+            try
+            {
+                return new Expression(ToProcess).calculate();
+            }
+            catch (Exception)
             {
                 return 0;
             }
