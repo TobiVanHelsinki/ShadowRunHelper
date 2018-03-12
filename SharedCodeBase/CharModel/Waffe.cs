@@ -1,56 +1,105 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿using System.Linq;
+
+namespace ShadowRunHelper.CharModel
 {
     public abstract class Waffe : Item
     {
-        /// <summary>
-        /// Praezision
-        /// </summary>
-        private double pool = 0;
-        [Used_UserAttribute]
-        public double Praezision
-        {
-            get { return pool; }
-            set
-            {
-                if (value != pool)
-                {
-                    pool = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
 
-        private string schadenTyp = "";
+        string _SchadenTyp = "";
         [Used_UserAttribute]
         public string SchadenTyp
         {
-            get { return schadenTyp; }
+            get { return _SchadenTyp; }
             set
             {
-                if (value != schadenTyp)
+                if (value != _SchadenTyp)
                 {
-                    schadenTyp = value;
+                    _SchadenTyp = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
         /// <summary>
-        /// PB could be english, means DK "Durschlagskompensation"
+        /// Praezision
         /// </summary>
-        private double pB = 0; // DK
+        double _Praezision = 0;
         [Used_UserAttribute]
-        public double PB
+        public double Praezision
         {
-            get { return pB; }
+            get { return _Praezision; }
             set
             {
-                if (value != pB)
+                if (value != _Praezision)
                 {
-                    pB = value;
+                    _Praezision = value;
                     NotifyPropertyChanged();
                 }
             }
+        }
+
+        double _DK = 0; // DK
+        [Used_UserAttribute]
+        public double PB
+        {
+            get { return _DK; }
+            set
+            {
+                if (value != _DK)
+                {
+                    _DK = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        double _PraezisionCalced = 0;
+        public double PraezisionCalced
+        {
+            get { return _PraezisionCalced; }
+            set
+            {
+                if (value != _PraezisionCalced)
+                {
+                    _PraezisionCalced = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        double _PB_Calced = 0; // DK
+        public double PBCalced
+        {
+            get { return _PB_Calced; }
+            set
+            {
+                if (value != _PB_Calced)
+                {
+                    _PB_Calced = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        protected override void OnLinkedThingsChanged()
+        {
+            var List = LinkedThings.Where(x=>x.Object.ThingType == ThingDefs.Munition).Select(x => x.Object);
+            PBCalced = PB + List.Sum(x=>x.RawValueOf("PB"));
+            PraezisionCalced = Praezision + List.Sum(x=>x.RawValueOf("Praezision"));
+            base.OnLinkedThingsChanged();
+        }
+        protected override double InternValueOf(string ID)
+        {
+            switch (ID)
+            {
+                case "Praezision":
+                    return PraezisionCalced;
+                case "PB":
+                    return PBCalced;
+                default:
+                    break;
+            }
+            return base.InternValueOf(ID);
         }
 
     }

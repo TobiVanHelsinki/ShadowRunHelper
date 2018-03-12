@@ -263,13 +263,13 @@ namespace ShadowRunHelper
             var dialog = new Auswahl(Model.MainObject.LinkList, ((Thing)((Button)sender).DataContext).LinkedThings, Filter: FilterToUse);
             await dialog.ShowAsync();
         }
-        async void MunitionBearbeiten(object sender, RoutedEventArgs e)
-        {
-            var TemList = new ObservableCollection<AllListEntry> ();
-            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, TemList, false, Fernkampfwaffe.Filter);
-            await dialog.ShowAsync();
-            ((Fernkampfwaffe)((Button)sender).DataContext).CurrentMunition = TemList.FirstOrDefault();
-        }
+        //async void MunitionBearbeiten(object sender, RoutedEventArgs e)
+        //{
+        //    var TemList = new ObservableCollection<AllListEntry> ();
+        //    Auswahl dialog = new Auswahl(Model.MainObject.LinkList, TemList, false, Fernkampfwaffe.Filter);
+        //    await dialog.ShowAsync();
+        //    ((Fernkampfwaffe)((Button)sender).DataContext).CurrentMunition = TemList.FirstOrDefault();
+        //}
         #endregion
         #region Display Categoriy Stuff
 

@@ -34,60 +34,60 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        AllListEntry _CurrentMunition;
-        [Used_User]
-        public AllListEntry CurrentMunition
-        {
-            get { return _CurrentMunition; }
-            set {
-                if (_CurrentMunition != value)
-                {
-                    void Object_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-                    {
-                        NotifyPropertyChanged("CurrentMunition");
-                    }
-                    if (_CurrentMunition != null)
-                    {
-                        _CurrentMunition.PropertyChanged -= Object_PropertyChanged;
-                    }
-                    if (_CurrentMunition != null && _CurrentMunition.Object != null)
-                    {
-                        _CurrentMunition.Object.PropertyChanged -= Object_PropertyChanged;
-                    }
-                    _CurrentMunition = value;
-                    if (_CurrentMunition != null)
-                    {
-                        _CurrentMunition.PropertyChanged += Object_PropertyChanged;
-                    }
-                    if (_CurrentMunition != null && _CurrentMunition.Object != null)
-                    {
-                        _CurrentMunition.Object.PropertyChanged += Object_PropertyChanged;
-                    }
-                    NotifyPropertyChanged();
-                }
-}
-        }
+//        AllListEntry _CurrentMunition;
+//        [Used_User]
+//        public AllListEntry CurrentMunition
+//        {
+//            get { return _CurrentMunition; }
+//            set {
+//                if (_CurrentMunition != value)
+//                {
+//                    void Object_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+//                    {
+//                        NotifyPropertyChanged("CurrentMunition");
+//                    }
+//                    if (_CurrentMunition != null)
+//                    {
+//                        _CurrentMunition.PropertyChanged -= Object_PropertyChanged;
+//                    }
+//                    if (_CurrentMunition != null && _CurrentMunition.Object != null)
+//                    {
+//                        _CurrentMunition.Object.PropertyChanged -= Object_PropertyChanged;
+//                    }
+//                    _CurrentMunition = value;
+//                    if (_CurrentMunition != null)
+//                    {
+//                        _CurrentMunition.PropertyChanged += Object_PropertyChanged;
+//                    }
+//                    if (_CurrentMunition != null && _CurrentMunition.Object != null)
+//                    {
+//                        _CurrentMunition.Object.PropertyChanged += Object_PropertyChanged;
+//                    }
+//                    NotifyPropertyChanged();
+//                }
+//}
+//        }
 
-        public override double ValueOf(string ID = "")
-        {
-            if (CurrentMunition != null)
-            {
-                switch (ID)
-                {
-                    case null:
-                    case "":
-                    case "Wert":
-                        return Wert + CurrentMunition.Object.ValueOf(ID);
-                    case "Praezision":
-                        return Praezision + CurrentMunition.Object.ValueOf(ID);
-                    case "PB":
-                        return PB + CurrentMunition.Object.ValueOf(ID);
-                    default:
-                        break;
-                }
-            }
-            return base.ValueOf(ID);
-        }
+//        public override double ValueOf(string ID = "")
+//        {
+//            if (CurrentMunition != null)
+//            {
+//                switch (ID)
+//                {
+//                    case null:
+//                    case "":
+//                    case "Wert":
+//                        return Wert + CurrentMunition.Object.ValueOf(ID);
+//                    case "Praezision":
+//                        return Praezision + CurrentMunition.Object.ValueOf(ID);
+//                    case "PB":
+//                        return PB + CurrentMunition.Object.ValueOf(ID);
+//                    default:
+//                        break;
+//                }
+//            }
+//            return base.ValueOf(ID);
+//        }
 
         public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x=>
             x.ThingType != ThingDefs.Munition && 
@@ -99,9 +99,6 @@ namespace ShadowRunHelper.CharModel
             LinkedThings.SetFilter(Filter);
         }
 
-        protected override void OnLinkedThingsChanged()
-        {
-            base.OnLinkedThingsChanged();
-        }
+
     }
 }

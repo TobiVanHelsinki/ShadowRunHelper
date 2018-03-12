@@ -170,26 +170,48 @@ namespace ShadowRunHelper.CharModel
             WertCalced = Wert + LinkedThings.Recalculate();
         }
 
-        public virtual double ValueOf(string ID)
+        public double ValueOf(string ID)
         {
-            if (!UseForCalculation())
+            if (UseForCalculation())
             {
-                return 0;
+                return InternValueOf(ID);
             }
+            return 0;
+        }
+        protected virtual double InternValueOf(string ID)
+        {
             if (ID == null || ID == "" || ID == "Wert")
             {
                 return WertCalced;
             }
             try
             {
-                return double.Parse(GetProperties(this).First(x => x.Name == ID).ToString());
+                return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return WertCalced;
+                return 0;
             }
         }
-
+        public double RawValueOf(string ID)
+        {
+            if (UseForCalculation())
+            {
+                if (ID == null || ID == "" || ID == "Wert")
+                {
+                    return Wert;
+                }
+                try
+                {
+                    return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+            return 0;
+        }
         protected virtual bool UseForCalculation()
         {
             return true;
@@ -221,6 +243,7 @@ namespace ShadowRunHelper.CharModel
             {
                 var CollectionTarget = (pair.GetValue(target) as ObservableThingListEntryCollection);
                 var CollectionThis = (pair.GetValue(this) as ObservableThingListEntryCollection);
+                CollectionTarget.Clear();
                 CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
             }
 
