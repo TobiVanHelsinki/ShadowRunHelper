@@ -1038,7 +1038,7 @@
                         <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                     </TextBlock>
                     <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
-                        <Run Text="{x:Bind WertAfterCalc, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                        <Run Text="{x:Bind WertCalced, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                     </TextBlock>
                 </Grid>
             </DataTemplate>

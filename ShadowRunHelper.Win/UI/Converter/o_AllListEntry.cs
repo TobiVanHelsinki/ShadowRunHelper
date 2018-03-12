@@ -35,7 +35,7 @@ namespace ShadowRunHelper.UI.Converter
                         return TypeHelper.ThingDefToString(item.Object.ThingType, false) + " " + CrossPlatformHelper.GetString(item.DisplayName);
                     }
                 case "Zusatz":
-                    return item.Object.Zusatz;
+                    return item.Object.ValueOf("Zusatz").ToString();
                 default:
                     return value;
             }

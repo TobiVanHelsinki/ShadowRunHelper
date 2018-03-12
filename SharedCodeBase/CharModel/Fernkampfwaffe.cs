@@ -7,7 +7,7 @@ namespace ShadowRunHelper.CharModel
     public class Fernkampfwaffe : Waffe
     {
         private double rueckstoss = 0;
-        [Used_UserAttribute]
+        [Used_User]
         public double Rueckstoss
         {
             get { return rueckstoss; }
@@ -21,7 +21,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         private string modi = "";
-        [Used_UserAttribute]
+        [Used_User]
         public string Modi
         {
             get { return modi; }
@@ -35,7 +35,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         AllListEntry _CurrentMunition;
-        [Used_UserAttribute]
+        [Used_User]
         public AllListEntry CurrentMunition
         {
             get { return _CurrentMunition; }
@@ -71,21 +71,27 @@ namespace ShadowRunHelper.CharModel
 
         public override double ValueOf(string ID = "")
         {
-            if ((ID == "Wert" || ID == "") && CurrentMunition != null)
+            if (CurrentMunition != null)
             {
-                return Wert + CurrentMunition.Object.ValueOf(ID);
-            }
-            if ((ID == "Praezision" || ID == "") && CurrentMunition != null)
-            {
-                return Praezision + CurrentMunition.Object.ValueOf(ID);
-            }
-            if ((ID == "PB" || ID == "") && CurrentMunition != null)
-            {
-                return PB + CurrentMunition.Object.ValueOf(ID);
+                switch (ID)
+                {
+                    case null:
+                    case "":
+                    case "Wert":
+                        return Wert + CurrentMunition.Object.ValueOf(ID);
+                    case "Praezision":
+                        return Praezision + CurrentMunition.Object.ValueOf(ID);
+                    case "PB":
+                        return PB + CurrentMunition.Object.ValueOf(ID);
+                    default:
+                        break;
+                }
             }
             return base.ValueOf(ID);
         }
 
-        public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x=>x.ThingType != ThingDefs.Munition).Select(x=>x.ThingType);
+        public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x=>
+            x.ThingType != ThingDefs.Munition
+        ).Select(x=>x.ThingType);
     }
 }

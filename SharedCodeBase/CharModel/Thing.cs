@@ -43,8 +43,8 @@ namespace ShadowRunHelper.CharModel
         public Thing()
         {
             ThingType = TypeHelper.TypeToThingDef(GetType());
-            //Addidtions.OnCollectionChangedCall(OnAdditionsChanged);
-            //PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") OnAdditionsChanged(); };
+            Addidtions.OnCollectionChangedCall(OnAdditionsChanged);
+            PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") OnAdditionsChanged(); };
         }
 
         #region Properties
@@ -138,20 +138,20 @@ namespace ShadowRunHelper.CharModel
         #region Calculations
         //public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Select(x => x.ThingType);
 
-        //ObservableThingListEntryCollection _Addidtions = new ObservableThingListEntryCollection();
-        //[Used_List]
-        //public ObservableThingListEntryCollection Addidtions
-        //{
-        //    get { return _Addidtions; }
-        //    set
-        //    {
-        //        if (_Addidtions != value && value != null)
-        //        {
-        //            _Addidtions = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
+        ObservableThingListEntryCollection _Addidtions = new ObservableThingListEntryCollection();
+        [Used_List]
+        public ObservableThingListEntryCollection Addidtions
+        {
+            get { return _Addidtions; }
+            set
+            {
+                if (_Addidtions != value && value != null)
+                {
+                    _Addidtions = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         private double _WertCalced = 0;
         public double WertCalced
@@ -167,10 +167,10 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        //protected virtual void OnAdditionsChanged()
-        //{
-            //WertCalced = Wert + Addidtions.Recalculate();
-        //}
+        protected virtual void OnAdditionsChanged()
+        {
+            WertCalced = Wert + Addidtions.Recalculate();
+        }
 
         public virtual double ValueOf(string ID)
         {
@@ -178,7 +178,7 @@ namespace ShadowRunHelper.CharModel
             {
                 return 0;
             }
-            if (ID == "Wert")
+            if (ID == null || ID == "" || ID == "Wert")
             {
                 return WertCalced;
             }
@@ -188,7 +188,7 @@ namespace ShadowRunHelper.CharModel
             }
             catch (Exception)
             {
-                return Wert;
+                return WertCalced;
             }
         }
 

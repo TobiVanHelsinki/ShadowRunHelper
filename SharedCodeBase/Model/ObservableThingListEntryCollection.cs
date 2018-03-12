@@ -18,11 +18,10 @@ namespace ShadowRunHelper.Model
         IEnumerable<ThingDefs> ForbiddenThingTypes;
         protected override void InsertItem(int index, AllListEntry item)
         {
-            if (ForbiddenThingTypes.Contains(item.Object.ThingType))
+            if (ForbiddenThingTypes != null && !ForbiddenThingTypes.Contains(item.Object.ThingType))
             {
-                return;
+                base.InsertItem(index, item);
             }
-            base.InsertItem(index, item);
         }
         Action CurrentTODO;
         public void OnCollectionChangedCall(Action TODO)

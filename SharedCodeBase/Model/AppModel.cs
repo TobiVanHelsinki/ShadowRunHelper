@@ -1,7 +1,4 @@
-﻿using System;
-using Windows.UI.Core;
-
-namespace ShadowRunHelper.Model
+﻿namespace ShadowRunHelper.Model
 {
     public class AppModel : TLIB_UWPFRAME.Model.SharedAppModel<CharHolder>
     {

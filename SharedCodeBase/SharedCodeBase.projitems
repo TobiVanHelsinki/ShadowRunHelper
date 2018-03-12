@@ -13,7 +13,7 @@
     <SharedGUID>0d90bef9-68d7-4019-abec-0329274eb64d</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>SharedCodeBase</Import_RootNamespace>
+    <Import_RootNamespace>ShadowRunHelper</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\PreDB\de.SRHChar" />
