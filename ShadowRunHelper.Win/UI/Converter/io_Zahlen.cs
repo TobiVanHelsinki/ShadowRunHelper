@@ -24,22 +24,22 @@ namespace ShadowRunHelper.UI.Converter
             {
                 return 0;
             }
-            string ToProcess = "";
-            foreach (var item in strOrigin)
-            {
-                if (char.IsDigit(item) || item == '+' || item == '-' || item == '*' || item == '\\' || item == '+' || item == '(' || item == ')')
-                {
-                    ToProcess += item;
-                }
-            }
-            try
-            {
-                return new Expression(ToProcess).calculate();
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
+            //string ToProcess = "";
+            //foreach (var item in strOrigin)
+            //{
+            //    if (char.IsDigit(item) || item == '+' || item == '-' || item == '*' || item == '\\' || item == '+' || item == '(' || item == ')')
+            //    {
+            //        ToProcess += item;
+            //    }
+            //}
+            //try
+            //{
+            //    return new Expression(ToProcess).calculate();
+            //}
+            //catch (Exception)
+            //{
+            //    return 0;
+            //}
             string strTemp = "";
             double dRetVal = 0;
             strOrigin += "+";

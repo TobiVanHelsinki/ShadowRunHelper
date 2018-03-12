@@ -114,27 +114,27 @@ namespace ShadowRunHelper.CharController
             {
                 return;
             }
-            PersonRef.Schaden_G_max = 8 + Math.Ceiling(AttributeRef.Willen.WertAfterCalc / 2);
-            PersonRef.Schaden_K_max = 8 + Math.Ceiling(AttributeRef.Konsti.WertAfterCalc / 2);
+            PersonRef.Schaden_G_max = 8 + Math.Ceiling(AttributeRef.Willen.ValueOf("Wert") / 2);
+            PersonRef.Schaden_K_max = 8 + Math.Ceiling(AttributeRef.Konsti.ValueOf("Wert") / 2);
         }
 
         //Physical Limit: (STR x2 + BOD + REA) / 3
         protected void RefreshLimitK()
         {
-            Limit_K.Wert = Math.Ceiling( (AttributeRef.Staerke.GetPropertyValueOrDefault() * 2 + AttributeRef.Konsti.GetPropertyValueOrDefault() + AttributeRef.Reaktion.GetPropertyValueOrDefault()) / 3);
+            Limit_K.Wert = Math.Ceiling( (AttributeRef.Staerke.ValueOf("Wert") * 2 + AttributeRef.Konsti.ValueOf("Wert") + AttributeRef.Reaktion.ValueOf("Wert")) / 3);
         }
 
         //Mental Limit: (LOG x2 + INT +WIL) / 3
 
         protected void RefreshLimitG()
         {
-            Limit_G.Wert = Math.Ceiling((AttributeRef.Logik.GetPropertyValueOrDefault() * 2 + AttributeRef.Intuition.GetPropertyValueOrDefault() + AttributeRef.Willen.GetPropertyValueOrDefault()) / 3);
+            Limit_G.Wert = Math.Ceiling((AttributeRef.Logik.ValueOf("Wert") * 2 + AttributeRef.Intuition.ValueOf("Wert") + AttributeRef.Willen.ValueOf("Wert")) / 3);
         }
         //Social Limit: (CHA x2 + WIL + Essence) /3
 
         protected void RefreshLimitS()
         {
-            Limit_S.Wert = Math.Ceiling((AttributeRef.Charisma.GetPropertyValueOrDefault() * 2 + AttributeRef.Willen.GetPropertyValueOrDefault() + Essenz.GetPropertyValueOrDefault()) / 3);
+            Limit_S.Wert = Math.Ceiling((AttributeRef.Charisma.ValueOf("Wert") * 2 + AttributeRef.Willen.ValueOf("Wert") + Essenz.ValueOf("Wert")) / 3);
         }
 
         protected void RefreshLaufen()

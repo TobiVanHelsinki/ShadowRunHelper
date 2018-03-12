@@ -9,10 +9,12 @@ namespace ShadowRunHelper.Model
 {
     public class ObservableThingListEntryCollection : ObservableCollection<AllListEntry>
     {
-        public ObservableThingListEntryCollection(IEnumerable<ThingDefs> ForbiddenThingTypes) : base()
+
+        public void SetFilter(IEnumerable<ThingDefs> ForbiddenThingTypes)
         {
             this.ForbiddenThingTypes = ForbiddenThingTypes;
         }
+
         IEnumerable<ThingDefs> ForbiddenThingTypes;
         protected override void InsertItem(int index, AllListEntry item)
         {
@@ -57,7 +59,7 @@ namespace ShadowRunHelper.Model
 
         public double Recalculate()
         {
-            return this.Aggregate<AllListEntry, double>(0, (accvalue, next) => accvalue + next.Object.GetPropertyValueOrDefault(next.PropertyID));
+            return this.Aggregate<AllListEntry, double>(0, (accvalue, next) => accvalue + next.Object.ValueOf(next.PropertyID));
         }
 
     }

@@ -15,7 +15,7 @@ namespace ShadowRunHelper.UI.Converter
             switch ((string)parameter)
             {
                 case "Wert":
-                    return item.Object.GetPropertyValueOrDefault(item.PropertyID).ToString();
+                    return item.Object.ValueOf(item.PropertyID).ToString();
                 case "Bezeichner":
                     if (item?.PropertyID == "")
                     {

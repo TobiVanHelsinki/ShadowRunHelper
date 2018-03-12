@@ -277,6 +277,16 @@ namespace ShadowRunHelper.Model
             }
             // start repair
             RefreshLists();
+            foreach (var item in lstCTRL)
+            {
+                foreach (var thing in item.GetElements())
+                {
+                    foreach (var list in Thing.GetPropertiesLists(thing))
+                    {
+                        //RepairThingListRefs((ObservableCollection<AllListEntry>)list.GetValue(thing), LinkList);
+                    }
+                }
+            }
             foreach (var item in CTRLHandlung.Data)
             {
                 RepairThingListRefs(item.WertZusammensetzung, LinkList);

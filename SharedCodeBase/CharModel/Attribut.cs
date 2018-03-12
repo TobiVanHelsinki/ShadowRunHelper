@@ -7,7 +7,7 @@ namespace ShadowRunHelper.CharModel
 {
     public class Attribut : Thing
     {
-        ObservableThingListEntryCollection _Addidtions = new ObservableThingListEntryCollection(Filter);
+        ObservableThingListEntryCollection _Addidtions = new ObservableThingListEntryCollection();
         [Used_List]
         public ObservableThingListEntryCollection Addidtions
         {
@@ -45,18 +45,19 @@ namespace ShadowRunHelper.CharModel
 
         public Attribut() : base()
         {
+            Addidtions.SetFilter(Filter);
             Addidtions.OnCollectionChangedCall(() => { WertAfterCalc = Wert + Addidtions.Recalculate(); });
             PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") WertAfterCalc = Wert + Addidtions.Recalculate(); };
 
         }
 
-        public override double GetPropertyValueOrDefault(string ID = "")
+        public override double ValueOf(string ID = "")
         {
             if (ID == "Wert" || ID == "")
             {
                 return WertAfterCalc;
             }
-            return base.GetPropertyValueOrDefault(ID);
+            return base.ValueOf(ID);
         }
 
 

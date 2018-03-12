@@ -69,21 +69,21 @@ namespace ShadowRunHelper.CharModel
             NotifyPropertyChanged("CurrentMunition");
         }
 
-        public override double GetPropertyValueOrDefault(string ID = "")
+        public override double ValueOf(string ID = "")
         {
             if ((ID == "Wert" || ID == "") && CurrentMunition != null)
             {
-                return Wert + CurrentMunition.Object.GetPropertyValueOrDefault(ID);
+                return Wert + CurrentMunition.Object.ValueOf(ID);
             }
             if ((ID == "Praezision" || ID == "") && CurrentMunition != null)
             {
-                return Praezision + CurrentMunition.Object.GetPropertyValueOrDefault(ID);
+                return Praezision + CurrentMunition.Object.ValueOf(ID);
             }
             if ((ID == "PB" || ID == "") && CurrentMunition != null)
             {
-                return PB + CurrentMunition.Object.GetPropertyValueOrDefault(ID);
+                return PB + CurrentMunition.Object.ValueOf(ID);
             }
-            return base.GetPropertyValueOrDefault(ID);
+            return base.ValueOf(ID);
         }
 
         public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x=>x.ThingType != ThingDefs.Munition).Select(x=>x.ThingType);

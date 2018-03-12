@@ -32,15 +32,22 @@ namespace ShadowRunHelper.CharModel
     public  class Thing : INotifyPropertyChanged, ICSV
     {
         public const uint nThingPropertyCount = 5;
+        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
+
+        #endregion
         public Thing()
         {
             ThingType = TypeHelper.TypeToThingDef(GetType());
+            //Addidtions.OnCollectionChangedCall(OnAdditionsChanged);
+            //PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") OnAdditionsChanged(); };
         }
+
+        #region Properties
         ThingDefs thingType = 0;
         [Newtonsoft.Json.JsonIgnore]
         public ThingDefs ThingType
@@ -127,15 +134,53 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public virtual double GetPropertyValueOrDefault(string ID = "Wert")
+        #endregion
+        #region Calculations
+        //public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Select(x => x.ThingType);
+
+        //ObservableThingListEntryCollection _Addidtions = new ObservableThingListEntryCollection();
+        //[Used_List]
+        //public ObservableThingListEntryCollection Addidtions
+        //{
+        //    get { return _Addidtions; }
+        //    set
+        //    {
+        //        if (_Addidtions != value && value != null)
+        //        {
+        //            _Addidtions = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
+
+        private double _WertCalced = 0;
+        public double WertCalced
+        {
+            get { return _WertCalced; }
+            set
+            {
+                if (value != _WertCalced)
+                {
+                    _WertCalced = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        //protected virtual void OnAdditionsChanged()
+        //{
+            //WertCalced = Wert + Addidtions.Recalculate();
+        //}
+
+        public virtual double ValueOf(string ID)
         {
             if (!UseForCalculation())
             {
                 return 0;
             }
-            if (ID == null || ID == "" || ID == "Wert")
+            if (ID == "Wert")
             {
-                return Wert;
+                return WertCalced;
             }
             try
             {
@@ -152,9 +197,15 @@ namespace ShadowRunHelper.CharModel
             return true;
         }
 
+
+        #endregion
         public static IEnumerable<PropertyInfo> GetProperties(object obj)
         {
             return Helper.GetProperties(obj, typeof(Used_UserAttribute));
+        }
+        public static IEnumerable<PropertyInfo> GetPropertiesLists(object obj)
+        {
+            return Helper.GetProperties(obj, typeof(Used_ListAttribute));
         }
 
         public virtual Thing Copy(Thing target = null)
@@ -269,7 +320,7 @@ namespace ShadowRunHelper.CharModel
 
         public override string ToString()
         {
-            return typ + (typ != "" ? ": " : "") + bezeichner + " " + GetPropertyValueOrDefault() + (Zusatz != "" ? "+" : "") + Zusatz;
+            return typ + (typ != "" ? ": " : "") + bezeichner + " " + ValueOf("Wert") + (Zusatz != "" ? "+" : "") + Zusatz;
         }
 
         /// <summary>
