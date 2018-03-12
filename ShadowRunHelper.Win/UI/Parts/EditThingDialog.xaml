@@ -32,8 +32,8 @@
 
             <DataTemplate x:Name="Attribut"  x:DataType="CharModel:Attribut">
                 <StackPanel Orientation="Vertical" x:Name="MainGrid" Loaded="MainGrid_Loaded">
-                    <Button x:Uid="UI_Btn_Bearbeiten_List" Click="AttributZusammensetzungBearbeiten"  Style="{StaticResource STD_Button}"/>
-                    <ListView BorderThickness="1" BorderBrush="{ThemeResource BorderBrushes}" ItemsSource="{x:Bind Addidtions, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}"/>
+                    <Button x:Uid="UI_Btn_Bearbeiten_LinkedThings" Click="AttributZusammensetzungBearbeiten"  Style="{StaticResource STD_Button}"/>
+                    <ListView BorderThickness="1" BorderBrush="{ThemeResource BorderBrushes}" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}"/>
                 </StackPanel>
             </DataTemplate>
 

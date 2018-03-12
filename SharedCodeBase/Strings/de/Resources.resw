@@ -756,9 +756,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Model_Thing_Wert_W.Text" xml:space="preserve">
     <value>Wert</value>
   </data>
-  <data name="UI_Btn_Bearbeiten_Pool.Content" xml:space="preserve">
-    <value>Pool Bearbeiten</value>
-  </data>
   <data name="Model_Attribut_Magie.Text" xml:space="preserve">
     <value>Magie</value>
   </data>
@@ -1330,10 +1327,10 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Model_Initiation_Wert.Text" xml:space="preserve">
     <value>Grad</value>
   </data>
-  <data name="UI_Btn_Bearbeiten_List.Content" xml:space="preserve">
-    <value>Liste Bearbeiten</value>
-  </data>
   <data name="UI_Btn_Bearbeiten_Munition.Content" xml:space="preserve">
     <value>Munition auswählen</value>
+  </data>
+  <data name="UI_Btn_Bearbeiten_LinkedThings.Content" xml:space="preserve">
+    <value>Verknüpfungen Bearbeiten</value>
   </data>
 </root>

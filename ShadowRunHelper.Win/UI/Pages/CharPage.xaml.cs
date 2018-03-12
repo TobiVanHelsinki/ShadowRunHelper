@@ -189,6 +189,80 @@ namespace ShadowRunHelper
             Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, Filter:Fertigkeit.Filter);
             await dialog.ShowAsync();
         }
+
+        async void Edit_LinkedThings(object sender, RoutedEventArgs e)
+        {
+            ThingDefs type = (ThingDefs)int.Parse((sender as FrameworkElement).Tag as string);
+            IEnumerable<ThingDefs> FilterToUse = null;
+            switch (type)
+            {
+                case ThingDefs.Handlung:
+                    FilterToUse = Handlung.Filter;
+                    break;
+                case ThingDefs.Fertigkeit:
+                    FilterToUse = Fertigkeit.Filter;
+                    break;
+                case ThingDefs.Item:
+                    break;
+                case ThingDefs.Programm:
+                    break;
+                case ThingDefs.Munition:
+                    break;
+                case ThingDefs.Implantat:
+                    break;
+                case ThingDefs.Vorteil:
+                    break;
+                case ThingDefs.Nachteil:
+                    break;
+                case ThingDefs.Attribut:
+                    FilterToUse = Attribut.Filter;
+                    break;
+                case ThingDefs.Nahkampfwaffe:
+                    break;
+                case ThingDefs.Fernkampfwaffe:
+                    FilterToUse = Fernkampfwaffe.Filter;
+                    break;
+                case ThingDefs.Kommlink:
+                    break;
+                case ThingDefs.CyberDeck:
+                    break;
+                case ThingDefs.Vehikel:
+                    break;
+                case ThingDefs.Panzerung:
+                    FilterToUse = Panzerung.Filter;
+                    break;
+                case ThingDefs.Eigenschaft:
+                    break;
+                case ThingDefs.Adeptenkraft_KomplexeForm:
+                    break;
+                case ThingDefs.Geist_Sprite:
+                    break;
+                case ThingDefs.Foki_Widgets:
+                    break;
+                case ThingDefs.Stroemung_Wandlung:
+                    break;
+                case ThingDefs.Tradition_Initiation:
+                    break;
+                case ThingDefs.Zaubersprueche:
+                    break;
+                case ThingDefs.Berechnet:
+                    break;
+                case ThingDefs.KomplexeForm:
+                    break;
+                case ThingDefs.Sprite:
+                    break;
+                case ThingDefs.Widgets:
+                    break;
+                case ThingDefs.Wandlung:
+                    break;
+                case ThingDefs.Initiation:
+                    break;
+                default:
+                    break;
+            }
+            var dialog = new Auswahl(Model.MainObject.LinkList, ((Thing)((Button)sender).DataContext).LinkedThings, Filter: FilterToUse);
+            await dialog.ShowAsync();
+        }
         async void MunitionBearbeiten(object sender, RoutedEventArgs e)
         {
             var TemList = new ObservableCollection<AllListEntry> ();
@@ -784,9 +858,7 @@ namespace ShadowRunHelper
 
         #endregion
 
-        private void SwipeItem_Invoked(SwipeItem sender, SwipeItemInvokedEventArgs args)
-        {
 
-        }
+
     }
 }

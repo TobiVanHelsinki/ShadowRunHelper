@@ -43,8 +43,8 @@ namespace ShadowRunHelper.CharModel
         public Thing()
         {
             ThingType = TypeHelper.TypeToThingDef(GetType());
-            Addidtions.OnCollectionChangedCall(OnAdditionsChanged);
-            PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") OnAdditionsChanged(); };
+            LinkedThings.OnCollectionChangedCall(OnLinkedThingsChanged);
+            PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") OnLinkedThingsChanged(); };
         }
 
         #region Properties
@@ -136,18 +136,16 @@ namespace ShadowRunHelper.CharModel
 
         #endregion
         #region Calculations
-        //public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Select(x => x.ThingType);
-
-        ObservableThingListEntryCollection _Addidtions = new ObservableThingListEntryCollection();
+        ObservableThingListEntryCollection _LinkedThings = new ObservableThingListEntryCollection();
         [Used_List]
-        public ObservableThingListEntryCollection Addidtions
+        public ObservableThingListEntryCollection LinkedThings
         {
-            get { return _Addidtions; }
+            get { return _LinkedThings; }
             set
             {
-                if (_Addidtions != value && value != null)
+                if (_LinkedThings != value && value != null)
                 {
-                    _Addidtions = value;
+                    _LinkedThings = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -167,9 +165,9 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        protected virtual void OnAdditionsChanged()
+        protected virtual void OnLinkedThingsChanged()
         {
-            WertCalced = Wert + Addidtions.Recalculate();
+            WertCalced = Wert + LinkedThings.Recalculate();
         }
 
         public virtual double ValueOf(string ID)

@@ -1,4 +1,7 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace ShadowRunHelper.CharModel
 {
     public class Panzerung : Item
     {
@@ -15,6 +18,19 @@
                     NotifyPropertyChanged();
                 }
             }
+        }
+
+        public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x =>
+            x.ThingType != ThingDefs.Item &&
+            x.ThingType != ThingDefs.Panzerung &&
+            x.ThingType != ThingDefs.Implantat &&
+            x.ThingType != ThingDefs.Vorteil &&
+            x.ThingType != ThingDefs.Nachteil
+        ).Select(x => x.ThingType);
+
+        public Panzerung() : base()
+        {
+            LinkedThings.SetFilter(Filter);
         }
     }
 }

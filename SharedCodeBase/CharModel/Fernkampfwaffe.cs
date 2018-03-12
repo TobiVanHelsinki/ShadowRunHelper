@@ -42,6 +42,10 @@ namespace ShadowRunHelper.CharModel
             set {
                 if (_CurrentMunition != value)
                 {
+                    void Object_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+                    {
+                        NotifyPropertyChanged("CurrentMunition");
+                    }
                     if (_CurrentMunition != null)
                     {
                         _CurrentMunition.PropertyChanged -= Object_PropertyChanged;
@@ -62,11 +66,6 @@ namespace ShadowRunHelper.CharModel
                     NotifyPropertyChanged();
                 }
 }
-        }
-
-        private void Object_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            NotifyPropertyChanged("CurrentMunition");
         }
 
         public override double ValueOf(string ID = "")
@@ -91,7 +90,18 @@ namespace ShadowRunHelper.CharModel
         }
 
         public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x=>
-            x.ThingType != ThingDefs.Munition
+            x.ThingType != ThingDefs.Munition && 
+            x.ThingType != ThingDefs.Implantat
         ).Select(x=>x.ThingType);
+
+        public Fernkampfwaffe() : base()
+        {
+            LinkedThings.SetFilter(Filter);
+        }
+
+        protected override void OnLinkedThingsChanged()
+        {
+            base.OnLinkedThingsChanged();
+        }
     }
 }

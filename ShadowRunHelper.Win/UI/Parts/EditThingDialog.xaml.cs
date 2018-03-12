@@ -143,7 +143,7 @@ namespace ShadowRunHelper.UI.Edit
 
         void AttributZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(Model.AppModel.Instance.MainObject.LinkList, ((Attribut)((Button)sender).DataContext).Addidtions, Filter: CharModel.Attribut.Filter);
+            Auswahl dialog = new Auswahl(Model.AppModel.Instance.MainObject.LinkList, ((Attribut)((Button)sender).DataContext).LinkedThings, Filter: CharModel.Attribut.Filter);
             Hide();
             dialog.ShowAsync();
         }
