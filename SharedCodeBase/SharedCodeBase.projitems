@@ -18,6 +18,7 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\PreDB\de.SRHChar" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Example\de.SRHChar" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\ToDo.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CharController\BerechnetController.cs" />

@@ -1,0 +1,17 @@
+﻿ToDo
+
+Verknüpfungen:
+Berechnete Werte mit Implantaten, Vorteilen, Items
+Berechnete Werte Speicherbar, dann Thing wieder virtuel
+
+Problem bei vielen Verknüpfungen: Das Serialisieren erkennt viele Objekte nur als Thing, Idee: Alllistentry generisch machen
+
+
+Felder für Runs, Maxschaden Mods
+Max schaden bei berechneten werten
+schaden overflow einarbeiten
+
+Idee für Kompatibilität:
+Sachen im FIleString Umbenennen
+WertZusammensetzung -> LinkedEntries
+etc.
