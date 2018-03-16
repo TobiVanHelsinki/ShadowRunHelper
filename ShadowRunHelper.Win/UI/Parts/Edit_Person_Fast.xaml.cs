@@ -3,11 +3,11 @@ using Windows.UI.Xaml.Controls;
 
 namespace ShadowRunHelper.UI.Edit
 {
-    public sealed partial class Edit_Person2 : ContentDialog
+    public sealed partial class Edit_Person_Fast : ContentDialog
     {
         public Person Data;
 
-        public Edit_Person2(Person data)
+        public Edit_Person_Fast(Person data)
         {
             this.InitializeComponent();
             this.Data = data;

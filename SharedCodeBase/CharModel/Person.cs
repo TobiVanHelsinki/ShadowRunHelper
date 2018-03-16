@@ -76,6 +76,35 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        double schaden_K_max_mod;
+        [Used_UserAttribute]
+        public double Schaden_K_max_mod
+        {
+            get { return schaden_K_max_mod; }
+            set
+            {
+                if (value != schaden_K_max_mod)
+                {
+                    schaden_K_max_mod = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        double schaden_G_max_mod;
+        [Used_UserAttribute]
+        public double Schaden_G_max_mod
+        {
+            get { return schaden_G_max_mod; }
+            set
+            {
+                if (value != schaden_G_max_mod)
+                {
+                    schaden_G_max_mod = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         #endregion
 
         #region ZahlenWerte

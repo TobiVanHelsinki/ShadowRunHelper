@@ -1303,4 +1303,10 @@ This is shown in detail at the example-character</value>
   <data name="UI_Btn_Bearbeiten_LinkedThings.Content" xml:space="preserve">
     <value>Edit Links</value>
   </data>
+  <data name="Model_Person_Schaden_G_max_mod.Text" xml:space="preserve">
+    <value>Max. Physical-Damage modifier</value>
+  </data>
+  <data name="Model_Person_Schaden_K_max_mod.Text" xml:space="preserve">
+    <value>Max. Mental-Damage modifier</value>
+  </data>
 </root>

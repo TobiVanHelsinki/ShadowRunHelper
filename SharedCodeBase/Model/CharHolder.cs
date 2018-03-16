@@ -50,7 +50,6 @@ namespace ShadowRunHelper.Model
 
         // Importand ordering
         public AttributController CTRLAttribut { get; set; }
-        [Newtonsoft.Json.JsonIgnore]
         public BerechnetController CTRLBerechnet { get; set; }
 
         public NahkampfwaffeController CTRLNahkampfwaffe { get; set; }

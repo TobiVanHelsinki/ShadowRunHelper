@@ -129,7 +129,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                await new Edit_Person(Model.MainObject.Person).ShowAsync();
+                await new Edit_Person_Detail(Model.MainObject.Person).ShowAsync();
             }
             catch (Exception)
             {

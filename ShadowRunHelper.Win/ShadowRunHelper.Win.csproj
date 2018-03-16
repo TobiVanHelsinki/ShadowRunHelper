@@ -160,11 +160,11 @@
     <Compile Include="UI\Parts\EditThingDialog.xaml.cs">
       <DependentUpon>EditThingDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Parts\Edit_Person.xaml.cs">
-      <DependentUpon>Edit_Person.xaml</DependentUpon>
+    <Compile Include="UI\Parts\Edit_Person_Detail.xaml.cs">
+      <DependentUpon>Edit_Person_Detail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Parts\Edit_Person2.xaml.cs">
-      <DependentUpon>Edit_Person2.xaml</DependentUpon>
+    <Compile Include="UI\Parts\Edit_Person_Fast.xaml.cs">
+      <DependentUpon>Edit_Person_Fast.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Parts\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
@@ -276,11 +276,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Parts\Edit_Person.xaml">
+    <Page Include="UI\Parts\Edit_Person_Detail.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Parts\Edit_Person2.xaml">
+    <Page Include="UI\Parts\Edit_Person_Fast.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -1,5 +1,5 @@
 ﻿<ContentDialog
-    x:Class="ShadowRunHelper.UI.Edit.Edit_Person2"
+    x:Class="ShadowRunHelper.UI.Edit.Edit_Person_Fast"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ShadowRunHelper.UI.Edit"
@@ -18,8 +18,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentDialog.Resources>
-    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                    VerticalScrollBarVisibility="Disabled">
+    <ScrollViewer >
     <StackPanel Orientation="Vertical">
 
             <StackPanel Orientation="Horizontal">
@@ -43,12 +42,16 @@
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Karma_Gesamt" Grid.Column="0" Grid.Row="17"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_K" Text="{x:Bind Data.Schaden_K, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="20"/>
-                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_K" Grid.Column="0" Grid.Row="20"/>
+                <TextBox Name="Runs" Text="{x:Bind Data.Runs, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="16"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Runs" Grid.Column="0" Grid.Row="16"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_G" Text="{x:Bind Data.Schaden_G, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="22"/>
-                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_G" Grid.Column="0" Grid.Row="22"/>
+                <TextBox Name="Schaden_K" Text="{x:Bind Data.Schaden_K_max_mod, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="20"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_K_max_mod" Grid.Column="0" Grid.Row="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Schaden_G" Text="{x:Bind Data.Schaden_G_max_mod, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="22"/>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_G_max_mod" Grid.Column="0" Grid.Row="22"/>
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

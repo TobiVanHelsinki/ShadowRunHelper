@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.CharModel;
+﻿using Newtonsoft.Json;
+using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 
 using System;
@@ -14,15 +15,24 @@ namespace ShadowRunHelper.CharController
     {
         // Variable Stuff #####################################################
         // Variable Model Stuff ###########################
+        [JsonIgnore]
         public new ObservableCollection<Berechnet> Data; //cause sometimes an very uebel Bug
 
-        public Berechnet Essenz = new Berechnet();
-        public Berechnet Limit_K = new Berechnet();
-        public Berechnet Limit_G = new Berechnet();
-        public Berechnet Limit_S = new Berechnet();
-        public Berechnet Laufen = new Berechnet();
-        public Berechnet Rennen = new Berechnet();
-        public Berechnet Tragen = new Berechnet();
+        Berechnet essenz = new Berechnet();
+        public Berechnet Essenz { get => essenz; set => essenz = value; }
+        Berechnet _Limit_K = new Berechnet();
+        public Berechnet Limit_K { get => _Limit_K; set => _Limit_K = value; }
+        Berechnet _Limit_G = new Berechnet();
+        public Berechnet Limit_G { get => _Limit_G; set => _Limit_G = value; }
+        Berechnet _Limit_S = new Berechnet();
+        public Berechnet Limit_S { get => _Limit_S; set => _Limit_S = value; }
+        Berechnet _Laufen = new Berechnet();
+        public Berechnet Laufen { get => _Laufen; set => _Laufen = value; }
+        Berechnet _Rennen = new Berechnet();
+        public Berechnet Rennen { get => _Rennen; set => _Rennen = value; }
+        Berechnet _Tragen = new Berechnet();
+        public Berechnet Tragen { get => _Tragen; set => _Tragen = value; }
+
 
         AllListEntry MI_Essenz;
         AllListEntry MI_Limit_K;
@@ -33,10 +43,11 @@ namespace ShadowRunHelper.CharController
         AllListEntry MI_Tragen;
 
         AttributController AttributeRef;
-        Person PersonRef;
+        Person Person;
         ObservableCollection<Implantat> lstImplantateRef;
         // Variable Logik Stuff ###########################
         bool m_MutexDataColectionChange = false;
+
 
         // Start Stuff ########################################################
         public BerechnetController()
@@ -71,9 +82,9 @@ namespace ShadowRunHelper.CharController
         public void SetDependencies(Person p, ObservableCollection<Implantat> i, AttributController a)
         {
             AttributeRef = a;
-            PersonRef = p;
+            Person = p;
             lstImplantateRef = i;
-            PersonRef.PropertyChanged += (x, y) => RefreshEssenz();
+            Person.PropertyChanged += (x, y) => RefreshEssenz();
             lstImplantateRef.CollectionChanged += (x, y) => RegisterRefreshers();
             AttributeRef.Geschick.PropertyChanged += (x, y) => { RefreshLaufen(); RefreshRennen(); };
             AttributeRef.Konsti.PropertyChanged += (x, y) => { RefreshLimitK(); RefreshLimitSchaden(); };
@@ -83,8 +94,14 @@ namespace ShadowRunHelper.CharController
             AttributeRef.Logik.PropertyChanged += (x, y) => RefreshLimitG();
             AttributeRef.Intuition.PropertyChanged += (x, y) => RefreshLimitG();
             AttributeRef.Willen.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); RefreshLimitSchaden(); };
-            RefreshLimitS(); RefreshLimitG(); RefreshLimitSchaden();
-            RefreshLaufen(); RefreshRennen(); RefreshTragen();
+            RefreshEssenz();
+            RefreshLimitS();
+            RefreshLimitG();
+            RefreshLimitK();
+            RefreshLimitSchaden();
+            RefreshLaufen(); 
+            RefreshRennen(); 
+            RefreshTragen();
         }
 
         void RegisterRefreshers()
@@ -101,7 +118,7 @@ namespace ShadowRunHelper.CharController
         protected void RefreshEssenz()
         {
             Essenz.Wert = 6;
-            Essenz.Wert += PersonRef.Essenz;
+            Essenz.Wert += Person.Essenz;
             foreach (var item in lstImplantateRef.Where(x=>x.Besitz == true))
             {
                 Essenz.Wert -= item.Essenz;
@@ -110,12 +127,8 @@ namespace ShadowRunHelper.CharController
 
         protected void RefreshLimitSchaden()
         {
-            if (PersonRef == null)
-            {
-                return;
-            }
-            PersonRef.Schaden_G_max = 8 + Math.Ceiling(AttributeRef.Willen.ValueOf("Wert") / 2);
-            PersonRef.Schaden_K_max = 8 + Math.Ceiling(AttributeRef.Konsti.ValueOf("Wert") / 2);
+            Person.Schaden_G_max = 8 + Math.Ceiling(AttributeRef.Willen.ValueOf("Wert") / 2) + Person.Schaden_G_max_mod;
+            Person.Schaden_K_max = 8 + Math.Ceiling(AttributeRef.Konsti.ValueOf("Wert") / 2) + Person.Schaden_K_max_mod;
         }
 
         //Physical Limit: (STR x2 + BOD + REA) / 3

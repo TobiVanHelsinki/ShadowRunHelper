@@ -178,7 +178,7 @@ namespace ShadowRunHelper
 
             if (Controller_Name.Contains("Person2"))
             {
-                UI.Edit.Edit_Person2 dialog = new UI.Edit.Edit_Person2(Model.MainObject.Person);
+                UI.Edit.Edit_Person_Fast dialog = new UI.Edit.Edit_Person_Fast(Model.MainObject.Person);
                 await dialog.ShowAsync();
             }
         }
