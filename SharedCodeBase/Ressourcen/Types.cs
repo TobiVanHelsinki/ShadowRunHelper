@@ -217,14 +217,8 @@ namespace ShadowRunHelper
 
         public static ThingDefs TypeToThingDef(Type type)
         {
-            try
-            {
-                return ThingTypeProperties.Find(x => x.Type == type).ThingType;
-            }
-            catch (Exception)
-            {
-                return ThingDefs.Undef;
-            }
+            var t = ThingTypeProperties.FirstOrDefault(x => x.Type == type);
+            return t == null ? ThingDefs.Undef : t.ThingType;
         }
 
         public static ThingDefs Obj2ThingDef(int tag)
