@@ -85,7 +85,8 @@ namespace ShadowRunHelper.CharController
             Person = p;
             lstImplantateRef = i;
             Person.PropertyChanged += (x, y) => RefreshEssenz();
-            lstImplantateRef.CollectionChanged += (x, y) => RegisterRefreshers();
+            Person.PropertyChanged += (x, y) => RefreshLimitSchaden();
+            lstImplantateRef.CollectionChanged += (x, y) => RegisterEssenzRefreshers();
             AttributeRef.Geschick.PropertyChanged += (x, y) => { RefreshLaufen(); RefreshRennen(); };
             AttributeRef.Konsti.PropertyChanged += (x, y) => { RefreshLimitK(); RefreshLimitSchaden(); };
             AttributeRef.Reaktion.PropertyChanged += (x, y) => RefreshLimitK();
@@ -104,7 +105,7 @@ namespace ShadowRunHelper.CharController
             RefreshTragen();
         }
 
-        void RegisterRefreshers()
+        void RegisterEssenzRefreshers()
         {
             foreach (var item in lstImplantateRef)
             {
