@@ -19,28 +19,33 @@ namespace ShadowRunHelper.CharController
         public new ObservableCollection<Berechnet> Data; //cause sometimes an very uebel Bug
 
         Berechnet essenz = new Berechnet();
+        AllListEntry MI_Essenz;
         public Berechnet Essenz { get => essenz; set => essenz = value; }
         Berechnet _Limit_K = new Berechnet();
+        AllListEntry MI_Limit_K;
         public Berechnet Limit_K { get => _Limit_K; set => _Limit_K = value; }
         Berechnet _Limit_G = new Berechnet();
+        AllListEntry MI_Limit_G;
         public Berechnet Limit_G { get => _Limit_G; set => _Limit_G = value; }
         Berechnet _Limit_S = new Berechnet();
+        AllListEntry MI_Limit_S;
         public Berechnet Limit_S { get => _Limit_S; set => _Limit_S = value; }
         Berechnet _Laufen = new Berechnet();
+        AllListEntry MI_Laufen;
         public Berechnet Laufen { get => _Laufen; set => _Laufen = value; }
         Berechnet _Rennen = new Berechnet();
+        AllListEntry MI_Rennen;
         public Berechnet Rennen { get => _Rennen; set => _Rennen = value; }
         Berechnet _Tragen = new Berechnet();
-        public Berechnet Tragen { get => _Tragen; set => _Tragen = value; }
-
-
-        AllListEntry MI_Essenz;
-        AllListEntry MI_Limit_K;
-        AllListEntry MI_Limit_G;
-        AllListEntry MI_Limit_S;
-        AllListEntry MI_Laufen;
-        AllListEntry MI_Rennen;
         AllListEntry MI_Tragen;
+        public Berechnet Tragen { get => _Tragen; set => _Tragen = value; }
+        Berechnet _MaxDamageK = new Berechnet();
+        AllListEntry MI_MaxDamageK;
+        public Berechnet MaxDamageK { get => _MaxDamageK; set => _MaxDamageK = value; }
+        Berechnet _MaxDamageG = new Berechnet();
+        AllListEntry MI_MaxDamageG;
+        public Berechnet MaxDamageG { get => _MaxDamageG; set => _MaxDamageG = value; }
+
 
         AttributController AttributeRef;
         Person Person;
@@ -60,6 +65,8 @@ namespace ShadowRunHelper.CharController
             MI_Laufen = new AllListEntry(Laufen, "");
             MI_Rennen = new AllListEntry(Rennen, "");
             MI_Tragen = new AllListEntry(Tragen, "");
+            MI_MaxDamageG = new AllListEntry(MaxDamageG, "");
+            MI_MaxDamageK = new AllListEntry(MaxDamageK, "");
 
 
             Essenz.PropertyChanged += (x, y) => RefreshLimitS();
@@ -77,6 +84,8 @@ namespace ShadowRunHelper.CharController
             Laufen.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Laufen/Text");
             Rennen.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Rennen/Text");
             Tragen.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Tragen/Text");
+            MaxDamageG.Bezeichner = CrossPlatformHelper.GetString("Model_Person_Schaden_G_max/Text");
+            MaxDamageK.Bezeichner = CrossPlatformHelper.GetString("Model_Person_Schaden_K_max/Text");
         }
 
         public void SetDependencies(Person p, ObservableCollection<Implantat> i, AttributController a)
@@ -130,6 +139,8 @@ namespace ShadowRunHelper.CharController
         {
             Person.Schaden_G_max = 8 + Math.Ceiling(AttributeRef.Willen.ValueOf("Wert") / 2) + Person.Schaden_G_max_mod;
             Person.Schaden_K_max = 8 + Math.Ceiling(AttributeRef.Konsti.ValueOf("Wert") / 2) + Person.Schaden_K_max_mod;
+            MaxDamageK.Wert = Person.Schaden_K_max;
+            MaxDamageG.Wert = Person.Schaden_G_max;
         }
 
         //Physical Limit: (STR x2 + BOD + REA) / 3

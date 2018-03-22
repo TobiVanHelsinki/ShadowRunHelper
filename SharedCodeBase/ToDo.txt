@@ -4,13 +4,17 @@ Verknüpfungen:
 Berechnete Werte mit Implantaten, Vorteilen, Items
 Berechnete Werte Speicherbar, dann Thing wieder virtuel
 
-Problem bei vielen Verknüpfungen: Das Serialisieren erkennt viele Objekte nur als Thing, Idee: Alllistentry generisch machen
+Problem bei vielen Verknüpfungen: Das Serialisieren erkennt viele Objekte nur als Thing, 
+Idee1: Alllistentry generisch machen. Was soll das bringen?
+Idee2: Bei NewTonSoft Anfrgen, ob sie das Problem lösen. Eigentlich müsste nur der Typ mitgespeichert werden.
+Idee3: Vorm Laden die json datei bearbeiten und die ID mit den werten mit dem refID so tauschen, dass die ID im richtigen CTRL steht. Nein, denn die serialisierung erfolgt bestimmt nacheinander, es würde also refs vor defs finden und das wäre bestimmt nicht gut.
+Idee4: Reihenfolge so designen, dass es keine Kreisabhängigkeiten gibt und sie dann in entsprechender Reihenfolge laden.
 
-
-Felder für Runs, Maxschaden Mods
 Max schaden bei berechneten werten
 schaden overflow einarbeiten
 
+
+-----------------------------------------------------
 Idee für Kompatibilität:
 Sachen im FIleString Umbenennen
 WertZusammensetzung -> LinkedEntries

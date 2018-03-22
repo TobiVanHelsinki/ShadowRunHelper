@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.Model;
 using TLIB_UWPFRAME.Resources;
+using Newtonsoft.Json;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -29,7 +30,8 @@ namespace ShadowRunHelper.CharModel
         public Used_ListAttribute() { }
     }
 
-    public  class Thing : INotifyPropertyChanged, ICSV
+
+    public abstract class Thing : INotifyPropertyChanged, ICSV
     {
         public const uint nThingPropertyCount = 5;
         #region INotifyPropertyChanged
@@ -49,11 +51,10 @@ namespace ShadowRunHelper.CharModel
 
         #region Properties
         ThingDefs thingType = 0;
-        [Newtonsoft.Json.JsonIgnore]
         public ThingDefs ThingType
         {
             get { return thingType; }
-            protected set
+            set
             {
                 if (value != thingType)
                 {

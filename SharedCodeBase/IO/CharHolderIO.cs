@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using Shared;
 using System;
@@ -8,10 +10,47 @@ using TLIB_UWPFRAME.IO;
 
 namespace ShadowRunHelper.IO
 {
+    class UnknownThingConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(Thing);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            //http://skrift.io/articles/archive/bulletproof-interface-deserialization-in-jsonnet/
+            var jsonObject = JObject.Load(reader);
+            if (jsonObject.TryGetValue("$ref", out JToken isRef))
+            {
+                object o = serializer.Deserialize(jsonObject.CreateReader());
+                return o;
+            }
+            JToken ThingTypeValue = jsonObject.GetValue("ThingType");
+            var IntThingType = ThingTypeValue.Value<Int64>();
+            Type Should = TypeHelper.ThingDefToType((ThingDefs)IntThingType);
+            Thing target = (Thing)Activator.CreateInstance(Should);
+            serializer.Populate(jsonObject.CreateReader(), target);
+#if DEBUG
+            if (target == null && System.Diagnostics.Debugger.IsAttached)
+            {
+                System.Diagnostics.Debugger.Break();
+            }
+#endif
+            return target;
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     internal class CharHolderIO : SharedIO<CharHolder>
     {
         internal static CharHolder ConvertWithRightVersion(string strFileVersion, string strAppVersion, string fileContent)
         {
+            DateTime StartTime = DateTime.Now;
             CharHolder ReturnCharHolder;
             switch (strFileVersion)
             {
@@ -19,18 +58,21 @@ namespace ShadowRunHelper.IO
                     AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Info_NotSupportedVersion"));
                     throw new IO_FileVersion();
                 case Constants.CHARFILE_VERSION_1_5:
-                    JsonSerializerSettings test = new JsonSerializerSettings()
+                    JsonSerializerSettings settings = new JsonSerializerSettings()
                     {
                         Error = ErrorHandler,
                         PreserveReferencesHandling = PreserveReferencesHandling.All
                     };
-                    ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, test);
+                    settings.Converters.Add(new UnknownThingConverter());
+                    ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     ReturnCharHolder.HasChanges = false;
                     break;
                 default:
                     throw new IO_FileVersion();
             }
             ReturnCharHolder.AfterLoad();
+            DateTime StopTime = DateTime.Now;
+            TimeSpan Time = StopTime - StartTime;
             return ReturnCharHolder;
         }
         public enum PreSavedChar

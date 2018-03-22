@@ -29,7 +29,6 @@ namespace ShadowRunHelper.Model
         public Controller<Item> CTRLItem { get; set; }
         public Controller<Programm> CTRLProgramm { get; set; }
         public Controller<Munition> CTRLMunition { get; set; }
-        public Controller<Implantat> CTRLImplantat { get; set; }
         public Controller<Vorteil> CTRLVorteil { get; set; }
         public Controller<Nachteil> CTRLNachteil { get; set; }
         public Controller<Connection> CTRLConnection { get; set; }
@@ -51,6 +50,7 @@ namespace ShadowRunHelper.Model
         // Importand ordering
         public AttributController CTRLAttribut { get; set; }
         public BerechnetController CTRLBerechnet { get; set; }
+        public Controller<Implantat> CTRLImplantat { get; set; }
 
         public NahkampfwaffeController CTRLNahkampfwaffe { get; set; }
         public FernkampfwaffeController CTRLFernkampfwaffe { get; set; }

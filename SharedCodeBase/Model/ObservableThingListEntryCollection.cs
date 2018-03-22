@@ -18,7 +18,7 @@ namespace ShadowRunHelper.Model
         IEnumerable<ThingDefs> ForbiddenThingTypes;
         protected override void InsertItem(int index, AllListEntry item)
         {
-            if (ForbiddenThingTypes != null && !ForbiddenThingTypes.Contains(item.Object.ThingType))
+            if (item?.Object != null && ForbiddenThingTypes != null && !ForbiddenThingTypes.Contains(item.Object.ThingType))
             {
                 base.InsertItem(index, item);
             }
