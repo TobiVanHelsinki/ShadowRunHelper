@@ -7,7 +7,8 @@
     xmlns:local="using:ShadowRunHelper"
     xmlns:CharModel="using:ShadowRunHelper.CharModel"
     xmlns:model="using:ShadowRunHelper.Model"
-    mc:Ignorable="d">
+      xmlns:ui="using:ShadowRunHelper.Win.UI"
+      mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -2323,6 +2324,7 @@
                 </PivotItem.Header>
                 <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
                     <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
+                        <ui:CategoryBlock ThingType="3"/>
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="3" Style="{StaticResource Category_ContentControl}"/>
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="14" Style="{StaticResource Category_ContentControl}"/>
                         <ContentControl ContentTemplate="{StaticResource Block}" Loaded="ContentControl_Loaded" Tag="15" Style="{StaticResource Category_ContentControl}"/>

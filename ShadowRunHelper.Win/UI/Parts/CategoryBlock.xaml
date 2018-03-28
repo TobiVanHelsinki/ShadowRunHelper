@@ -1,0 +1,88 @@
+﻿<UserControl
+    x:Class="ShadowRunHelper.Win.UI.CategoryBlock"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ShadowRunHelper.Win.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel>
+        <Grid Style="{StaticResource Category_Head_Grid}" x:Name="U">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Click="Add_Click" Content="&#xE109;" Style="{StaticResource Category_Headline_Button}" />
+            <TextBlock x:Name="CategoryName" Grid.Column="1" Style="{StaticResource Category_HeadLine}" HorizontalAlignment="Center"/>
+            <Button Grid.Column="2" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Style="{StaticResource Category_Headline_Button}" Margin="0,0,15,0">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutSubItem x:Uid="Order">
+                            <MenuFlyoutSubItem.Icon>
+                                <FontIcon Glyph="&#xE8CB;" />
+                            </MenuFlyoutSubItem.Icon>
+                            <MenuFlyoutItem x:Uid="Order_ABC" Click="Order_ABC">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE8CB;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem x:Uid="Order_Type" Click="Order_Type">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE8CB;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem x:Uid="Order_Save" Click="Order_Save">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE74E;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem x:Uid="Order_Orig" Click="Order_Orig">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE8CB;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyoutSubItem>
+                        <MenuFlyoutItem Click="CSV_EX_Click" x:Uid="CSV_EX">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE78C;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Click="CSV_EX_Selected" x:Uid="CSV_EX_Selected">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE78C;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Click="CSV_IN_Click" x:Uid="CSV_IN">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE8B6;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                        <MenuFlyoutItem Click="DeleteCategoryContent" x:Uid="DeleteCategoryContent" >
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon Glyph="&#xE74D;" />
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+        </Grid>
+        <ContentPresenter x:Name="HeadLine" />
+        <ListView x:Name="ListView" 
+                                  Style="{StaticResource Category_Items}" 
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle}" 
+                                  SelectionChanged="ListView_SelectionChanged" 
+                                  />
+    </StackPanel>
+
+</UserControl>
