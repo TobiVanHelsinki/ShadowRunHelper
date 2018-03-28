@@ -148,8 +148,8 @@
     <Compile Include="UI\Parts\CategoryBlock.xaml.cs">
       <DependentUpon>CategoryBlock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Parts\Entry.xaml.cs">
-      <DependentUpon>Entry.xaml</DependentUpon>
+    <Compile Include="UI\Parts\CategoryEntry.xaml.cs">
+      <DependentUpon>CategoryEntry.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Parts\Notifications.xaml.cs">
       <DependentUpon>Notifications.xaml</DependentUpon>
@@ -266,7 +266,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Parts\Entry.xaml">
+    <Page Include="UI\Parts\CategoryEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

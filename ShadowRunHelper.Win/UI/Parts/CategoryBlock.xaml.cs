@@ -152,153 +152,22 @@ namespace ShadowRunHelper.Win.UI
 
         void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //(sender as ListView).ScrollIntoView(, ScrollIntoViewAlignment.Leading);
-            DataTemplate NewTemplate = null;
-            DataTemplate NewTemplateX = null;
-            switch (int.Parse(((sender as ListView).Tag as string)))
+            try
             {
-                case (int)ThingDefs.Handlung:
-//                    NewTemplate = HandlungItem;
-//                    NewTemplateX = HandlungItemX;
-//                    if (!SettingsModel.I.TutorialHandlungShown)
-//                    {
-//#pragma warning disable CS4014
-//                        new Tutorial(30, 31).ShowAsync();
-//#pragma warning restore CS4014
-//                        SettingsModel.I.TutorialHandlungShown = true;
-//                    }
-//                    break;
-//                case (int)ThingDefs.Fertigkeit:
-//                    NewTemplate = FertigkeitItem;
-//                    NewTemplateX = FertigkeitItemX;
-//                    break;
-//                case (int)ThingDefs.Item:
-//                    NewTemplate = ItemItem;
-//                    NewTemplateX = ItemItemX;
-//                    break;
-//                case (int)ThingDefs.Programm:
-//                    NewTemplate = ProgrammItem;
-//                    NewTemplateX = ProgrammItemX;
-//                    break;
-//                case (int)ThingDefs.Munition:
-//                    NewTemplate = MunitionItem;
-//                    NewTemplateX = MunitionItemX;
-//                    break;
-//                case (int)ThingDefs.Implantat:
-//                    NewTemplate = ImplantatItem;
-//                    NewTemplateX = ImplantatItemX;
-//                    break;
-//                case (int)ThingDefs.Vorteil:
-//                    NewTemplate = EigenschaftItem;
-//                    NewTemplateX = EigenschaftItemX;
-//                    break;
-//                case (int)ThingDefs.Nachteil:
-//                    NewTemplate = EigenschaftItem;
-//                    NewTemplateX = EigenschaftItemX;
-//                    break;
-//                case (int)ThingDefs.Connection:
-//                    NewTemplate = ConnectionItem;
-//                    NewTemplateX = ConnectionItemX;
-//                    break;
-//                case (int)ThingDefs.Sin:
-//                    NewTemplate = SinItem;
-//                    NewTemplateX = SinItemX;
-//                    break;
-//                case (int)ThingDefs.Nahkampfwaffe:
-//                    NewTemplate = NahkampfwaffeItem;
-//                    NewTemplateX = NahkampfwaffeItemX;
-//                    break;
-//                case (int)ThingDefs.Fernkampfwaffe:
-//                    NewTemplate = FernkampfwaffeItem;
-//                    NewTemplateX = FernkampfwaffeItemX;
-//                    break;
-//                case (int)ThingDefs.Kommlink:
-//                    NewTemplate = KommlinkItem;
-//                    NewTemplateX = KommlinkItemX;
-//                    break;
-//                case (int)ThingDefs.CyberDeck:
-//                    NewTemplate = CyberDeckItem;
-//                    NewTemplateX = CyberDeckItemX;
-//                    break;
-//                case (int)ThingDefs.Vehikel:
-//                    NewTemplate = VehikelItem;
-//                    NewTemplateX = VehikelItemX;
-//                    break;
-//                case (int)ThingDefs.Panzerung:
-//                    NewTemplate = PanzerungItem;
-//                    NewTemplateX = PanzerungItemX;
-//                    break;
-//                case (int)ThingDefs.Adeptenkraft_KomplexeForm:
-//                    NewTemplate = Adeptenkraft_KomplexeFormItem;
-//                    NewTemplateX = Adeptenkraft_KomplexeFormItemX;
-//                    break;
-//                case (int)ThingDefs.Geist_Sprite:
-//                    NewTemplate = Geist_SpriteItem;
-//                    NewTemplateX = Geist_SpriteItemX;
-//                    break;
-//                case (int)ThingDefs.Foki_Widgets:
-//                    NewTemplate = Foki_WidgetsItem;
-//                    NewTemplateX = Foki_WidgetsItemX;
-//                    break;
-//                case (int)ThingDefs.Stroemung_Wandlung:
-//                    NewTemplate = Stroemung_WandlungItem;
-//                    NewTemplateX = Stroemung_WandlungItemX;
-//                    break;
-//                case (int)ThingDefs.Tradition_Initiation:
-//                    NewTemplate = Tradition_InitiationItem;
-//                    NewTemplateX = Tradition_InitiationItemX;
-//                    break;
-//                case (int)ThingDefs.Zaubersprueche:
-//                    NewTemplate = ZauberspruecheItem;
-//                    NewTemplateX = ZauberspruecheItemX;
-//                    break;
-//                case (int)ThingDefs.KomplexeForm:
-//                    NewTemplate = KomplexeFormItem;
-//                    NewTemplateX = KomplexeFormItemX;
-//                    break;
-//                case (int)ThingDefs.Sprite:
-//                    NewTemplate = SpriteItem;
-//                    NewTemplateX = SpriteItemX;
-//                    break;
-//                case (int)ThingDefs.Widgets:
-//                    NewTemplate = WidgetsItem;
-//                    NewTemplateX = WidgetsItemX;
-//                    break;
-//                case (int)ThingDefs.Wandlung:
-//                    NewTemplate = WandlungItem;
-//                    NewTemplateX = WandlungItemX;
-//                    break;
-//                case (int)ThingDefs.Initiation:
-//                    NewTemplate = InitiationItem;
-//                    NewTemplateX = InitiationItemX;
-//                    break;
+                var AddedItems = (sender as ListView).ItemsPanelRoot.Children.Cast<ListViewItem>().Where(c => e.AddedItems.Contains(c.Content));
+                foreach (var item in AddedItems)
+                {
+                    (item.ContentTemplateRoot as CategoryEntry).Expand();
+                }
+                var RemovedItems = (sender as ListView).ItemsPanelRoot.Children.Cast<ListViewItem>().Where(c => e.RemovedItems.Contains(c.Content));
+                foreach (var item in RemovedItems)
+                {
+                    (item.ContentTemplateRoot as CategoryEntry).Shrink();
+                }
+            }
+            catch (Exception ex)
+            {
 
-                default:
-                    return;
-            }
-            if (NewTemplate == null || NewTemplateX == null)
-            {
-                return;
-            }
-            foreach (var item in e.RemovedItems)
-            {
-                try
-                {
-                    ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = NewTemplate;
-                }
-                catch (Exception)
-                {
-                }
-            }
-            foreach (var item in e.AddedItems)
-            {
-                try
-                {
-                    ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = NewTemplateX;
-                }
-                catch (Exception)
-                {
-                }
             }
         }
 
@@ -323,8 +192,8 @@ namespace ShadowRunHelper.Win.UI
 
             CategoryName.Text = ResourceLoader.GetForCurrentView().GetString("Model_ItemM_/Text");
             ListView.ItemsSource = Model.MainObject.CTRLItem.Data;
-            //HeadLine.ContentTemplate = this.Item_E;
-            //HeadLine.ItemTemplate = ItemItem;
+            //HeadLine.ContentTemplate = Item_E;
+            HeadLine.ContentTemplate = (DataTemplate)Resources["Item_E"];
         }
         void ContentControl_Loaded(object sender, RoutedEventArgs e)
         {
