@@ -150,12 +150,12 @@ namespace ShadowRunHelper.Win.UI
                 var AddedItems = (sender as ListView).ItemsPanelRoot.Children.Cast<ListViewItem>().Where(c => e.AddedItems.Contains(c.Content));
                 foreach (var item in AddedItems)
                 {
-                    (item.ContentTemplateRoot as CategoryEntry).ExpandedTemplate();
+                    (item.ContentTemplateRoot as CategoryEntry).SetExpandedTemplate();
                 }
                 var RemovedItems = (sender as ListView).ItemsPanelRoot.Children.Cast<ListViewItem>().Where(c => e.RemovedItems.Contains(c.Content));
                 foreach (var item in RemovedItems)
                 {
-                    (item.ContentTemplateRoot as CategoryEntry).DefaultTemplate();
+                    (item.ContentTemplateRoot as CategoryEntry).SetDefaultTemplate();
                 }
             }
             catch (Exception ex)
@@ -296,13 +296,11 @@ namespace ShadowRunHelper.Win.UI
             {
                 Model.NewNotification("", ex);
             }
-            //ListView.ItemsSource
-            //((ListView.ItemsPanelRoot.Children[0] as ListViewItem).ContentTemplateRoot as CategoryEntry).ExpandedTemplate();
-
         }
 
+
         internal double GetPositionAtListView(Thing PendingScrollEntry)
-        {
+        { // TODO Check
             double offset = 0;
             foreach (ListViewItem item in ListView.ItemsPanelRoot.Children)
             {

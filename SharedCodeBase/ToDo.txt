@@ -1,11 +1,18 @@
 ﻿ToDo
+Beta features button entfernen / testen
+-----------------------------------------------------
+Neue usercontrol:
+Attribute und Berechnete Werte machen
+Handlung crasht
+
+und die instant suche anpassen
 -----------------------------------------------------
 Verknüpfungen:
 Berechnete Werte mit Implantaten, Vorteilen, Items
 Berechnete Werte Speicherbar, dann Thing wieder virtuel
 
 Modell für Cirkelbezüge erfinden
-UI überall anpassen -> neues usercontrol?
+UI überall anpassen
 -----------------------------------------------------
 
 Max schaden bei berechneten werten

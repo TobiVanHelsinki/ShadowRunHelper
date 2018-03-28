@@ -11,46 +11,27 @@ namespace ShadowRunHelper.Win.UI
 {
     public sealed partial class CategoryEntry : UserControl
     {
-        #region Variables
         readonly AppModel Model = AppModel.Instance;
-        #endregion
+        public Thing CurrentThing => DataContext as Thing;
         public CategoryEntry()
         {
-            this.InitializeComponent();
-            this.DataContextChanged += CategoryEntry_DataContextChanged;
+            InitializeComponent();
+            DataContextChanged += (x,y) => Initialize();
         }
 
-        private void CategoryEntry_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
-        {
-            if (CurrentThing?.ThingType == ThingDefs.Attribut)
-            {
-
-            }
-            GetStuff();
-            DefaultTemplate();
-        }
-
-        public Thing CurrentThing => DataContext as Thing;
-
-        //public Thing CurrentThing
-        //{
-        //    get { return (Thing)GetValue(CurrentThingProperty); }
-        //    set { SetValue(CurrentThingProperty, value); OnThingChanged(); }
-        //}
-        //// Using a DependencyProperty as the backing store for CurrentThing.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty CurrentThingProperty =
-        //    DependencyProperty.Register("CurrentThing", typeof(Thing), typeof(CategoryEntry), new PropertyMetadata(0));
-
-        DataTemplate Default;
-        DataTemplate Expanded;
-        private void GetStuff()
+        private void Initialize()
         {
             var Name = TypeHelper.ThingDefToString(CurrentThing.ThingType, false);
             Default = (DataTemplate)Resources[Name + "Item"];
             Expanded = (DataTemplate)Resources[Name + "ItemX"];
+            SetDefaultTemplate();
         }
 
-        public void ExpandedTemplate()
+
+        DataTemplate Default;
+        DataTemplate Expanded;
+
+        public void SetExpandedTemplate()
         {
             EntryItem.ContentTemplate = Expanded;
             if (CurrentThing.ThingType == ThingDefs.Handlung)
@@ -64,7 +45,7 @@ namespace ShadowRunHelper.Win.UI
                 }
             }
         }
-        internal void DefaultTemplate()
+        internal void SetDefaultTemplate()
         {
             EntryItem.ContentTemplate = Default;
         }
