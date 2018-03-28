@@ -17,6 +17,7 @@
                 return (AppModel)instance;
             }
         }
+
         AppModel() : base(){ }
 
         public delegate void NavigationEventHandler(object sender, ProjectPages page, ProjectPagesOptions PageOptions);

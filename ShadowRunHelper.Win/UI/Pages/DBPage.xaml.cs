@@ -129,23 +129,23 @@ namespace ShadowRunHelper
                     NewTemplate = PanzerungItem;
                     NewTemplateX = PanzerungItemX;
                     break;
-                case (int)ThingDefs.Adeptenkraft_KomplexeForm:
+                case (int)ThingDefs.Adeptenkraft:
                     NewTemplate = Adeptenkraft_KomplexeFormItem;
                     NewTemplateX = Adeptenkraft_KomplexeFormItemX;
                     break;
-                case (int)ThingDefs.Geist_Sprite:
+                case (int)ThingDefs.Geist:
                     NewTemplate = Geist_SpriteItem;
                     NewTemplateX = Geist_SpriteItemX;
                     break;
-                case (int)ThingDefs.Foki_Widgets:
+                case (int)ThingDefs.Foki:
                     NewTemplate = Foki_WidgetsItem;
                     NewTemplateX = Foki_WidgetsItemX;
                     break;
-                case (int)ThingDefs.Stroemung_Wandlung:
+                case (int)ThingDefs.Stroemung:
                     NewTemplate = Stroemung_WandlungItem;
                     NewTemplateX = Stroemung_WandlungItemX;
                     break;
-                case (int)ThingDefs.Tradition_Initiation:
+                case (int)ThingDefs.Tradition:
                     NewTemplate = Tradition_InitiationItem;
                     NewTemplateX = Tradition_InitiationItemX;
                     break;
@@ -305,30 +305,30 @@ namespace ShadowRunHelper
                     E.ContentTemplate = this.Panzerung_E;
                     LV.ItemTemplate = PanzerungItem;
                     break;
-                case (int)ThingDefs.Adeptenkraft_KomplexeForm:
+                case (int)ThingDefs.Adeptenkraft:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Adeptenkraft_KomplexeFormM_/Text");
                     LV.ItemsSource = CurrentChar.CTRLAdeptenkraft_KomplexeForm.Data;
                     E.ContentTemplate = this.Adeptenkraft_KomplexeForm_E;
                     LV.ItemTemplate = Adeptenkraft_KomplexeFormItem;
                     break;
-                case (int)ThingDefs.Geist_Sprite:
+                case (int)ThingDefs.Geist:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Geist_SpriteM_/Text");
                     LV.ItemsSource = CurrentChar.CTRLGeist_Sprite.Data;
                     E.ContentTemplate = this.Geist_Sprite_E;
                     LV.ItemTemplate = Geist_SpriteItem;
                     break;
-                case (int)ThingDefs.Foki_Widgets:
+                case (int)ThingDefs.Foki:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Foki_WidgetsM_/Text");
                     LV.ItemsSource = CurrentChar.CTRLFoki_Widgets.Data;
                     E.ContentTemplate = this.Foki_Widgets_E;
                     LV.ItemTemplate = Foki_WidgetsItem;
                     break;
-                case (int)ThingDefs.Stroemung_Wandlung:
+                case (int)ThingDefs.Stroemung:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Stroemung_WandlungM_/Text");
                     LV.ItemsSource = CurrentChar.CTRLStroemung_Wandlung.Data;
                     LV.ItemTemplate = Stroemung_WandlungItem;
                     break;
-                case (int)ThingDefs.Tradition_Initiation:
+                case (int)ThingDefs.Tradition:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Tradition_InitiationM_/Text");
                     LV.ItemsSource = CurrentChar.CTRLTradition_Initiation.Data;
                     LV.ItemTemplate = Tradition_InitiationItem;
@@ -357,14 +357,14 @@ namespace ShadowRunHelper
         {
             Blocklist.Add(ThingDefs.Handlung, (0, null, null));
             Blocklist.Add(ThingDefs.Fertigkeit, (0, null, null));
-            Blocklist.Add(ThingDefs.Adeptenkraft_KomplexeForm, (0, null, null));
+            Blocklist.Add(ThingDefs.Adeptenkraft, (0, null, null));
             Blocklist.Add(ThingDefs.Item, (1, null, null));
             Blocklist.Add(ThingDefs.Kommlink, (1, null, null));
             Blocklist.Add(ThingDefs.CyberDeck, (1, null, null));
             Blocklist.Add(ThingDefs.Programm, (1, null, null));
-            Blocklist.Add(ThingDefs.Foki_Widgets, (1, null, null));
+            Blocklist.Add(ThingDefs.Foki, (1, null, null));
             Blocklist.Add(ThingDefs.Zaubersprueche, (1, null, null));
-            Blocklist.Add(ThingDefs.Geist_Sprite, (1, null, null));
+            Blocklist.Add(ThingDefs.Geist, (1, null, null));
             Blocklist.Add(ThingDefs.Fernkampfwaffe, (2, null, null));
             Blocklist.Add(ThingDefs.Nahkampfwaffe, (2, null, null));
             Blocklist.Add(ThingDefs.Panzerung, (2, null, null));
@@ -373,8 +373,8 @@ namespace ShadowRunHelper
             Blocklist.Add(ThingDefs.Attribut, (3, null, null));
             Blocklist.Add(ThingDefs.Connection, (3, null, null));
             Blocklist.Add(ThingDefs.Implantat, (3, null, null));
-            Blocklist.Add(ThingDefs.Tradition_Initiation, (3, null, null));
-            Blocklist.Add(ThingDefs.Stroemung_Wandlung, (3, null, null));
+            Blocklist.Add(ThingDefs.Tradition, (3, null, null));
+            Blocklist.Add(ThingDefs.Stroemung, (3, null, null));
             Blocklist.Add(ThingDefs.Sin, (3, null, null));
             Blocklist.Add(ThingDefs.Vorteil, (3, null, null));
             Blocklist.Add(ThingDefs.Nachteil, (3, null, null));

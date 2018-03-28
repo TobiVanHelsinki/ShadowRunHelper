@@ -13,20 +13,41 @@ namespace ShadowRunHelper.Win.UI
     {
         #region Variables
         readonly AppModel Model = AppModel.Instance;
-        Thing CurrentThing => (DataContext as Thing);
         #endregion
         public CategoryEntry()
         {
             this.InitializeComponent();
+            this.DataContextChanged += CategoryEntry_DataContextChanged;
+        }
+
+        private void CategoryEntry_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
+        {
+            if (CurrentThing?.ThingType == ThingDefs.Attribut)
+            {
+
+            }
             GetStuff();
             DefaultTemplate();
         }
+
+        public Thing CurrentThing => DataContext as Thing;
+
+        //public Thing CurrentThing
+        //{
+        //    get { return (Thing)GetValue(CurrentThingProperty); }
+        //    set { SetValue(CurrentThingProperty, value); OnThingChanged(); }
+        //}
+        //// Using a DependencyProperty as the backing store for CurrentThing.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty CurrentThingProperty =
+        //    DependencyProperty.Register("CurrentThing", typeof(Thing), typeof(CategoryEntry), new PropertyMetadata(0));
+
         DataTemplate Default;
         DataTemplate Expanded;
         private void GetStuff()
         {
-            Default = (DataTemplate)Resources[TypeHelper.ThingDefToString(CurrentThing.ThingType, false) + "Item"];
-            Expanded = (DataTemplate)Resources[TypeHelper.ThingDefToString(CurrentThing.ThingType, false) + "ItemX"];
+            var Name = TypeHelper.ThingDefToString(CurrentThing.ThingType, false);
+            Default = (DataTemplate)Resources[Name + "Item"];
+            Expanded = (DataTemplate)Resources[Name + "ItemX"];
         }
 
         public void ExpandedTemplate()
@@ -43,12 +64,12 @@ namespace ShadowRunHelper.Win.UI
                 }
             }
         }
-
         internal void DefaultTemplate()
         {
             EntryItem.ContentTemplate = Default;
-
         }
+
+        #region Model-UI-Stuff
 
         async void Edit_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +81,16 @@ namespace ShadowRunHelper.Win.UI
             {
             }
         }
-
+        async void Edit_Attribut(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            try
+            {
+                await new EditThingDialog(((Thing)((Grid)sender).DataContext)).ShowAsync();
+            }
+            catch (Exception)
+            {
+            }
+        }
         void Del_Click(object sender, RoutedEventArgs e)
         {
             if ((Thing)((Button)sender).DataContext != null)
@@ -137,15 +167,15 @@ namespace ShadowRunHelper.Win.UI
                     break;
                 case ThingDefs.Eigenschaft:
                     break;
-                case ThingDefs.Adeptenkraft_KomplexeForm:
+                case ThingDefs.Adeptenkraft:
                     break;
-                case ThingDefs.Geist_Sprite:
+                case ThingDefs.Geist:
                     break;
-                case ThingDefs.Foki_Widgets:
+                case ThingDefs.Foki:
                     break;
-                case ThingDefs.Stroemung_Wandlung:
+                case ThingDefs.Stroemung:
                     break;
-                case ThingDefs.Tradition_Initiation:
+                case ThingDefs.Tradition:
                     break;
                 case ThingDefs.Zaubersprueche:
                     break;
@@ -174,5 +204,6 @@ namespace ShadowRunHelper.Win.UI
         //    await dialog.ShowAsync();
         //    ((Fernkampfwaffe)((Button)sender).DataContext).CurrentMunition = TemList.FirstOrDefault();
         //}
+        #endregion
     }
 }

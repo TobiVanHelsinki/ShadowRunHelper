@@ -98,19 +98,19 @@ namespace ShadowRunHelper.UI.Edit
                 case ThingDefs.Panzerung:
                     EditType.ContentTemplate = Panzerung;
                     break;
-                case ThingDefs.Adeptenkraft_KomplexeForm:
+                case ThingDefs.Adeptenkraft:
                     EditType.ContentTemplate = Adeptenkraft_KomplexeForm;
                     break;
-                case ThingDefs.Geist_Sprite:
+                case ThingDefs.Geist:
                     EditType.ContentTemplate = Geist_Sprite;
                     break;
-                case ThingDefs.Foki_Widgets:
+                case ThingDefs.Foki:
                     EditType.ContentTemplate = Foki_Widgets;
                     break;
-                case ThingDefs.Stroemung_Wandlung:
+                case ThingDefs.Stroemung:
                     EditType.ContentTemplate = Stroemung_Wandlung;
                     break;
-                case ThingDefs.Tradition_Initiation:
+                case ThingDefs.Tradition:
                     EditType.ContentTemplate = Tradition_Initiation;
                     break;
                 case ThingDefs.Zaubersprueche:

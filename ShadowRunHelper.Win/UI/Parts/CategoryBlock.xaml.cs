@@ -143,8 +143,6 @@ namespace ShadowRunHelper.Win.UI
 
         #endregion
 
-        #region Display Categoriy Stuff
-
         void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -172,25 +170,116 @@ namespace ShadowRunHelper.Win.UI
         public readonly IEnumerable<CategoryOption> lokalCategoryOptions = AppModel.Instance.MainObject.Settings.CategoryOptions;
         void OnThingTypeChanged()
         {
-            CTRL = Model.MainObject.ThingDef2CTRL(ThingType);
-            ListView.Tag = (int)ThingType;
-            DataContext = CTRL;
-
-            //Search Things
-            var entry = lokalCategoryOptions.FirstOrDefault(x => x.ThingType == ThingType);
-
-            if (entry != null && !entry.Visibility)
+            try
             {
-                Visibility = Visibility.Collapsed;
-                //return;
-            }
+                CTRL = Model.MainObject.ThingDef2CTRL(ThingType);
+                ListView.Tag = (int)ThingType;
+                DataContext = CTRL;
 
-            CategoryName.Text = ResourceLoader.GetForCurrentView().GetString("Model_ItemM_/Text");
-            ListView.ItemsSource = Model.MainObject.CTRLItem.Data;
-            //HeadLine.ContentTemplate = Item_E;
-            HeadLine.ContentTemplate = (DataTemplate)Resources["Item_E"];
+                //Search Things
+                var entry = lokalCategoryOptions.FirstOrDefault(x => x.ThingType == ThingType);
+
+                if (entry != null && !entry.Visibility)
+                {
+                    Visibility = Visibility.Collapsed;
+                }
+                var Current = TypeHelper.ThingTypeProperties.FirstOrDefault(t => t.ThingType == CTRL.eDataTyp);
+
+                CategoryName.Text = ResourceLoader.GetForCurrentView().GetString(Current.DisplayNamePlural);
+                switch (CTRL.eDataTyp)
+                {
+                    case ThingDefs.Handlung:
+                        ListView.ItemsSource = Model.MainObject.CTRLHandlung.Data;
+                        break;
+                    case ThingDefs.Fertigkeit:
+                        ListView.ItemsSource = Model.MainObject.CTRLFertigkeit.Data;
+                        break;
+                    case ThingDefs.Item:
+                        ListView.ItemsSource = Model.MainObject.CTRLItem.Data;
+                        break;
+                    case ThingDefs.Programm:
+                        ListView.ItemsSource = Model.MainObject.CTRLProgramm.Data;
+                        break;
+                    case ThingDefs.Munition:
+                        ListView.ItemsSource = Model.MainObject.CTRLMunition.Data;
+                        break;
+                    case ThingDefs.Implantat:
+                        ListView.ItemsSource = Model.MainObject.CTRLImplantat.Data;
+                        break;
+                    case ThingDefs.Vorteil:
+                        ListView.ItemsSource = Model.MainObject.CTRLVorteil.Data;
+                        break;
+                    case ThingDefs.Nachteil:
+                        ListView.ItemsSource = Model.MainObject.CTRLNachteil.Data;
+                        break;
+                    case ThingDefs.Connection:
+                        ListView.ItemsSource = Model.MainObject.CTRLConnection.Data;
+                        break;
+                    case ThingDefs.Sin:
+                        ListView.ItemsSource = Model.MainObject.CTRLSin.Data;
+                        break;
+                    case ThingDefs.Nahkampfwaffe:
+                        ListView.ItemsSource = Model.MainObject.CTRLNahkampfwaffe.Data;
+                        break;
+                    case ThingDefs.Fernkampfwaffe:
+                        ListView.ItemsSource = Model.MainObject.CTRLFernkampfwaffe.Data;
+                        break;
+                    case ThingDefs.Kommlink:
+                        ListView.ItemsSource = Model.MainObject.CTRLKommlink.Data;
+                        break;
+                    case ThingDefs.CyberDeck:
+                        ListView.ItemsSource = Model.MainObject.CTRLCyberDeck.Data;
+                        break;
+                    case ThingDefs.Vehikel:
+                        ListView.ItemsSource = Model.MainObject.CTRLVehikel.Data;
+                        break;
+                    case ThingDefs.Panzerung:
+                        ListView.ItemsSource = Model.MainObject.CTRLPanzerung.Data;
+                        break;
+                    case ThingDefs.Adeptenkraft:
+                        ListView.ItemsSource = Model.MainObject.CTRLAdeptenkraft_KomplexeForm.Data;
+                        break;
+                    case ThingDefs.Geist:
+                        ListView.ItemsSource = Model.MainObject.CTRLGeist_Sprite.Data;
+                        break;
+                    case ThingDefs.Foki:
+                        ListView.ItemsSource = Model.MainObject.CTRLFoki_Widgets.Data;
+                        break;
+                    case ThingDefs.Stroemung:
+                        ListView.ItemsSource = Model.MainObject.CTRLStroemung_Wandlung.Data;
+                        break;
+                    case ThingDefs.Tradition:
+                        ListView.ItemsSource = Model.MainObject.CTRLTradition_Initiation.Data;
+                        break;
+                    case ThingDefs.Zaubersprueche:
+                        ListView.ItemsSource = Model.MainObject.CTRLZaubersprueche.Data;
+                        break;
+                    case ThingDefs.KomplexeForm:
+                        ListView.ItemsSource = Model.MainObject.CTRLKomplexeForm.Data;
+                        break;
+                    case ThingDefs.Sprite:
+                        ListView.ItemsSource = Model.MainObject.CTRLSprite.Data;
+                        break;
+                    case ThingDefs.Widgets:
+                        ListView.ItemsSource = Model.MainObject.CTRLWidgets.Data;
+                        break;
+                    case ThingDefs.Wandlung:
+                        ListView.ItemsSource = Model.MainObject.CTRLWandlung.Data;
+                        break;
+                    case ThingDefs.Initiation:
+                        ListView.ItemsSource = Model.MainObject.CTRLInitiation.Data;
+                        break;
+                    default:
+                        break;
+                }
+                HeadLine.ContentTemplate = (DataTemplate)Resources[Current.DisplayName + "_E"];
+            }
+            catch (Exception ex)
+            {
+
+            }
+      
         }
-        #endregion
 
         async void Add_Click(object sender, RoutedEventArgs e)
         {
@@ -207,7 +296,35 @@ namespace ShadowRunHelper.Win.UI
             {
                 Model.NewNotification("", ex);
             }
+            //ListView.ItemsSource
+            //((ListView.ItemsPanelRoot.Children[0] as ListViewItem).ContentTemplateRoot as CategoryEntry).ExpandedTemplate();
+
         }
 
+        internal double GetPositionAtListView(Thing PendingScrollEntry)
+        {
+            double offset = 0;
+            foreach (ListViewItem item in ListView.ItemsPanelRoot.Children)
+            {
+                if ((item.Content).Equals(PendingScrollEntry))
+                {
+                    break;
+                }
+                else
+                {
+                    if (ListView.ItemsPanelRoot.Children.Last() == item)
+                    {
+                        throw new IndexOutOfRangeException();
+                    }
+                    offset += item.DesiredSize.Height;
+                }
+            }
+            return offset;
+        }
+
+        internal void Select(Thing PendingScrollEntry)
+        {
+            ListView.SelectedItem = PendingScrollEntry;
+        }
     }
 }

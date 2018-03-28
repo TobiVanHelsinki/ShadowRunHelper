@@ -14,7 +14,50 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
+            <DataTemplate x:Name="Handlung_E" x:Key="Handlung_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Name="Bezeichnung_U" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Name="Pool" Grid.Column="1">
+                                <Run x:Uid="Model_Thing_Wert_W"/><Run x:Uid="Plus"/><Run x:Uid="Model_Handlung_Mod"/><Run x:Uid="KlammerAufEck"/><Run x:Uid="Model_Handlung_Grenze"/><Run x:Uid="KlammerZuEck"/><Run x:Uid="Bindestrich"/><Run x:Uid="Model_Handlung_Gegen"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Vehikel_E" x:Key="Vehikel_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Vehikel_Wert"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Vehikel_Panzerung"  Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Fertigkeit_E" x:Key="Fertigkeit_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1">
+                        <Run x:Uid="Model_Thing_Wert_W"/>
+                        <Run x:Uid="Space"/>
+                        <Run x:Uid="KlammerAufRund"/>
+                        <Run x:Uid="Model__Pool"/>
+                        <Run x:Uid="KlammerZuRund"/>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
             <DataTemplate x:Name="Item_E" x:Key="Item_E">
                 <Grid Style="{StaticResource Category_Head_Items_Grid}">
                     <Grid.ColumnDefinitions>
@@ -29,6 +72,273 @@
                     <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
                     <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource Category_Head_Items}"/>
                     <TextBlock Grid.Column="4" x:Uid="Model_Item_Anzahl"  Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Kommlink_E" x:Key="Kommlink_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Kommlink_Programmanzahl" Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="5" x:Uid="Model_Kommlink_Attribute" Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="CyberDeck_E" x:Key="CyberDeck_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Kommlink_Programmanzahl" Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="5" x:Uid="Model_Kommlink_Schaden" Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="6" x:Uid="Model_Kommlink_Attribute" Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Programm_E" x:Key="Programm_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Thing_WertW"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Programm_Optionen"  Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Fernkampfwaffe_E" x:Key="Fernkampfwaffe_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Waffe_Wert"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Waffe_PB"  Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Nahkampfwaffe_E" x:Key="Nahkampfwaffe_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Waffe_Wert"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Waffe_PB"  Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Panzerung_E" x:Key="Panzerung_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Style="{StaticResource Category_Head_Items}" Grid.Column="2"  x:Uid="Model_Thing_Bezeichner"/>
+                    <TextBlock Style="{StaticResource Category_Head_Items}" Grid.Column="3" x:Uid="Model_Thing_Wert"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Munition_E" x:Key="Munition_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Item_Anzahl"  Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Connection_E" x:Key="Connection_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Person_Alias"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Connection_Einfluss" Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Connection_Loyal" Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Implantat_E" x:Key="Implantat_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Implantat_Auswirkung" Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Wert" Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Sin_E" x:Key="Sin_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Style="{StaticResource Category_Head_Items}">
+                        <Run x:Uid="Model_Thing_Bezeichner"/>
+                        <Run x:Uid="Bindestrich"/>
+                        <Run x:Uid="Model_Thing_Wert"/>
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Thing_Notiz" Style="{StaticResource Category_Head_Items}" HorizontalAlignment="Right"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Eigenschaft_E" x:Key="Eigenschaft_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Eigenschaft_Auswirkungen" Style="{StaticResource Category_Head_Items}" HorizontalAlignment="Right"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Adeptenkraft_KomplexeForm_E" x:Key="Adeptenkraft_KomplexeForm_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Thing_Wert" Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Foki_Widgets_E" x:Key="Foki_Widgets_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Item_Anzahl"  Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Zaubersprueche_E" x:Key="Zaubersprueche_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Zaubersprueche_Entzug"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Thing_Wert"  Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Geist_Sprite_E" x:Key="Geist_Sprite_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="58"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Geist_Sprite_Dienste" Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="5" x:Uid="Model_Geist_Sprite_Geb_Reg" Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="KomplexeForm_E" x:Key="KomplexeForm_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Thing_Wert" Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Widgets_E" x:Key="Widgets_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Item_Anzahl"  Style="{StaticResource Category_Head_Items}"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Sprite_E" x:Key="Sprite_E">
+                <Grid Style="{StaticResource Category_Head_Items_Grid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="58"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Sprite_Dienste" Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="5" x:Uid="Model_Sprite_Geb_Reg" Style="{StaticResource Category_Head_Items}"/>
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>
@@ -102,7 +412,7 @@
                                   >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <local:CategoryEntry/>
+                    <local:CategoryEntry />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
