@@ -51,36 +51,22 @@ namespace ShadowRunHelper.IO
     {
         internal static CharHolder ConvertWithRightVersion(string strFileVersion, string strAppVersion, string fileContent)
         {
-            DateTime StartTime = DateTime.Now;
+            JsonSerializerSettings settings = new JsonSerializerSettings()
+            {
+                Error = ErrorHandler,
+                PreserveReferencesHandling = PreserveReferencesHandling.All
+            };
+            settings.Converters.Add(new UnknownThingConverter());
             CharHolder ReturnCharHolder;
+
+            DateTime StartTime = DateTime.Now;
             switch (strFileVersion)
             {
                 case Constants.CHARFILE_VERSION_1_3:
                     AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Info_NotSupportedVersion"));
                     throw new IO_FileVersion();
                 case Constants.CHARFILE_VERSION_1_5:
-                    fileContent = RefactorJSONString(fileContent);
-                    JsonSerializerSettings settings = new JsonSerializerSettings()
-                    {
-                        Error = ErrorHandler,
-                        PreserveReferencesHandling = PreserveReferencesHandling.All
-                    };
-                    settings.Converters.Add(new UnknownThingConverter());
-                    ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
-                    ReturnCharHolder.HasChanges = false;
-                    break;
-                default:
-                    throw new IO_FileVersion();
-            }
-            ReturnCharHolder.AfterLoad();
-            DateTime StopTime = DateTime.Now;
-            TimeSpan Time = StopTime - StartTime;
-            return ReturnCharHolder;
-        }
-
-        static string RefactorJSONString(string Input)
-        {
-            List<(string old, string @new)> replacements = new List<(string old, string @new)>
+                    List<(string old, string @new)> replacements = new List<(string old, string @new)>
             {
                 //Adept Stuff Refactoring
                 ("\"CTRLAdeptenkraft_KomplexeForm\"", "\"CTRLAdeptenkraft\""),
@@ -96,14 +82,34 @@ namespace ShadowRunHelper.IO
                 ("\"Rueckstoss\"", "\"RK\""),
                 ("\"WertZusammensetzung\"", "\"LinkedThings\""),
             };
+                    fileContent = RefactorJSONString(fileContent, replacements);
+                    ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
+                    foreach (var item in ReturnCharHolder.CTRLHandlung.Data)
+                    {
+                        item.Wert = 0;
+                    }
+                    ReturnCharHolder.HasChanges = false;
+                    AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Info_UpgradedChar_1_5_to_1_6"));
+                    break;
+                case Constants.CHARFILE_VERSION_1_6:
+                    ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
+                    ReturnCharHolder.HasChanges = false;
+                    break;
+                default:
+                    throw new IO_FileVersion();
+            }
+            ReturnCharHolder.AfterLoad();
+            DateTime StopTime = DateTime.Now;
+            TimeSpan Time = StopTime - StartTime;
+            return ReturnCharHolder;
+        }
+
+        static string RefactorJSONString(string Input, List<(string old, string @new)> replacements)
+        {
             string Ret = Input;
             foreach (var (old, @new) in replacements)
             {
                 Ret = Ret.Replace(old, @new);
-            }
-            if (Ret != Input)
-            {
-                AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Info_UpgradedChar"));
             }
             return Ret;
         }

@@ -15,6 +15,7 @@
     <conv:o_CharAdmin_Path x:Key="o_CharAdmin_Path"/>
     <conv:o_Null2Bool x:Key="o_Null2Bool"/>
     <conv:o_Null2Visibility x:Key="o_Null2Visibility"/>
+    <conv:o_ModelValue x:Key="o_ModelValue"/>
     
     <contract5NotPresent:Style TargetType="Button" x:Key="STD_Button"/>
     <contract5Present:Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="STD_Button"/>

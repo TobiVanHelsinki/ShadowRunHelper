@@ -34,6 +34,7 @@ namespace ShadowRunHelper
         /// </summary>
         public const string CHARFILE_VERSION_1_3 = "1130"; //old version
         public const string CHARFILE_VERSION_1_5 = "1.5";
+        public const string CHARFILE_VERSION_1_6 = "1.6";
 
         /// <summary>
         /// Speicher Constants

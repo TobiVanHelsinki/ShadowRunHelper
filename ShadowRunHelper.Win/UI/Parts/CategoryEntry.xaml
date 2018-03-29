@@ -42,12 +42,14 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"  Style="{StaticResource Category_Item_Text}">
                             <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
                             <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                     </TextBlock>
-                    <TextBlock  Grid.Column="1">
+                    <TextBlock Grid.Column="1" Text="{x:Bind Converter={StaticResource o_ModelValue}, ConverterParameter=HandlungWert, Mode=OneWay}"/>
+                    <!--<TextBlock Grid.Column="2">
                         <Run Text="{x:Bind Wert, Mode=OneWay}"/>
                         <Run x:Uid="Space"/>
                         <Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
@@ -56,7 +58,7 @@
                         <Run x:Uid="KlammerZuEck"/>
                         <Run x:Uid="Bindestrich"/>
                         <Run Text="{x:Bind Gegen, Mode=OneWay}"/>
-                    </TextBlock>
+                    </TextBlock>-->
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="HandlungItemX" x:DataType="CharModel:Handlung">
