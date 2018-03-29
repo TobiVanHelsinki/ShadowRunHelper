@@ -4,7 +4,7 @@ Verknüpfungen:
 Modell für Cirkelbezüge erfinden
 
 UI-Converter überall einsetzen
- 
+UI: Originalwerte in die details verschieben 
 
 UI überall anpassen:
 TODO im Einzelnen:

@@ -31,18 +31,20 @@ namespace ShadowRunHelper.UI.Converter
             }
             switch (parameter as string)
             {
-                case "KlammerRund":
+                case "Round":
                     return " (" + value + ")";
-                case "KlammerEck":
+                case "Rect":
                     return " [" + value + "]";
                 case "Space":
                     return " " + value + " ";
-                case "Bindestrich":
+                case "DashR":
                     return " - " + value;
-                case "Doppelpunkt":
+                case "DashL":
+                    return value + " - ";
+                case "Points":
                     return value + " : ";
                 default:
-                    return value;
+                    return value.ToString();
             }
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
