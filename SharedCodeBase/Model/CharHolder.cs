@@ -287,7 +287,7 @@ namespace ShadowRunHelper.Model
             }
             foreach (var item in CTRLHandlung.Data)
             {
-                RepairThingListRefs(item.WertZusammensetzung, LinkList);
+                RepairThingListRefs(item.LinkedThings, LinkList);
                 RepairThingListRefs(item.GegenZusammensetzung, LinkList);
                 RepairThingListRefs(item.GrenzeZusammensetzung, LinkList);
             }

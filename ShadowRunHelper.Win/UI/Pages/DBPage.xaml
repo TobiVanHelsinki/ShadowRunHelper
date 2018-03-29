@@ -109,7 +109,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Wert_W"/>
-                        <ListView Grid.Column="3" Grid.Row="0" ItemsSource="{x:Bind WertZusammensetzung, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource ListView_ThingListContainerTemplate_List}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
+                        <ListView Grid.Column="3" Grid.Row="0" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource ListView_ThingListContainerTemplate_List}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
                         <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Grenze"/>
                         <ListView Grid.Column="3" Grid.Row="1" ItemsSource="{x:Bind GrenzeZusammensetzung, Mode=OneWay}"  ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource ListView_ThingListContainerTemplate_List}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
                         <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Gegen"/>

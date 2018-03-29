@@ -4,9 +4,6 @@ Verknüpfungen:
 Berechnete Werte mit Implantaten, Vorteilen, Items
 Modell für Cirkelbezüge erfinden
 UI überall anpassen
------------------------------------------------------
-FIleString Umbenennen
-WertZusammensetzung -> LinkedEntries
 
 ---------------------------------------------------
 

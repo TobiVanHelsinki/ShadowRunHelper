@@ -94,7 +94,7 @@ namespace ShadowRunHelper.IO
                 //ModelRefactoring Thing Stuff
                 ("\"PB\"", "\"DK\""),
                 ("\"Rueckstoss\"", "\"RK\""),
-                
+                ("\"WertZusammensetzung\"", "\"LinkedThings\""),
             };
             string Ret = Input;
             foreach (var (old, @new) in replacements)

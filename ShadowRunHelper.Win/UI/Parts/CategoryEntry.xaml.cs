@@ -100,7 +100,7 @@ namespace ShadowRunHelper.Win.UI
 
         async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).WertZusammensetzung, Filter: Handlung.Filter);
+            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).LinkedThings, Filter: Handlung.Filter);
             await dialog.ShowAsync();
 
         }

@@ -16,8 +16,8 @@ namespace SharedCodeTests
             var V1 = new Vorteil() { Bezeichner = "Vorteil1" };
             Ret.Add(V1);
 
-            H1.WertZusammensetzung.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Charisma));
-            H1.WertZusammensetzung.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Logik));
+            H1.LinkedThings.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Charisma));
+            H1.LinkedThings.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Logik));
             H1.GegenZusammensetzung.Add(Ret.LinkList.First(x => x.Object == V1));
 
             return Ret;

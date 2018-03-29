@@ -527,7 +527,7 @@ namespace ShadowRunHelper
                 switch (item.ThingType)
                 {
                     case ThingDefs.Handlung:
-                        Loop((item as Handlung).WertZusammensetzung);
+                        Loop((item as Handlung).LinkedThings);
                         Loop((item as Handlung).GegenZusammensetzung);
                         Loop((item as Handlung).GrenzeZusammensetzung);
                         break;
