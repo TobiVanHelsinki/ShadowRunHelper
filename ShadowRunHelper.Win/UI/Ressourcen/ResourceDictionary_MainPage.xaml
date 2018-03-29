@@ -66,21 +66,19 @@
         <Setter Property="Margin" Value="20,0,10,0"/>
     </Style>
     <!--<Windows10FallCreatorsUpdate:AcrylicBrush x:Key="SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemAccentColor}" TintOpacity="0.3" FallbackColor="{ThemeResource SystemAccentColor}" />-->
-
-    <Style TargetType="RepeatButton" BasedOn="{StaticResource STD_RepeatButton}" x:Key="Panel_Oben_Btn_Plus">
-        <Setter Property="Content" Value="&#xE109;"/>
-        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+    <Style TargetType="RepeatButton" BasedOn="{StaticResource STD_RepeatButton}" x:Key="Panel_Oben_Btn_Base">
         <Setter Property="Height" Value="50"/>
         <Setter Property="Width" Value="50"/>
         <Setter Property="Margin" Value="5"/>
     </Style>
 
-    <Style TargetType="RepeatButton" BasedOn="{StaticResource STD_RepeatButton}" x:Key="Panel_Oben_Btn_Minus">
+    <Style TargetType="RepeatButton" BasedOn="{StaticResource RepeatButtonBase}" x:Key="Panel_Oben_Btn_Plus">
+        <Setter Property="Content" Value="&#xE109;"/>
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+
+        <Style TargetType="RepeatButton" BasedOn="{StaticResource RepeatButtonBase}" x:Key="Panel_Oben_Btn_Minus">
         <Setter Property="Content" Value="&#xE108;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Width" Value="50"/>
-        <Setter Property="Margin" Value="5"/>
     </Style>
     
     <Style TargetType="Slider" x:Key="Panel_Oben_Schaden_Slider">

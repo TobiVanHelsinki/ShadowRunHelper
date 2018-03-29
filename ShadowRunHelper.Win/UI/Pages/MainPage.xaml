@@ -61,7 +61,7 @@
                                 </StackPanel>
                             </StackPanel>
                             <Button.Flyout>
-                                <Flyout>
+                                <Flyout Opening="Flyout_Opening">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>

@@ -221,6 +221,11 @@ namespace ShadowRunHelper
         {
             NavigationRequested(ProjectPages.Settings, ProjectPagesOptions.Nothing);
         }
+
         #endregion
+
+        private void Flyout_Opening(object sender, object e)
+        {
+        }
     }
 }
