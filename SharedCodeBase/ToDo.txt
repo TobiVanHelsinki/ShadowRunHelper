@@ -1,9 +1,6 @@
 ﻿ToDo
 Beta features button entfernen / testen
 -----------------------------------------------------
-Neue usercontrol:
-und die instant suche anpassen, scrollinto block bei contencontrol loaded
------------------------------------------------------
 Verknüpfungen:
 Berechnete Werte mit Implantaten, Vorteilen, Items
 Berechnete Werte Speicherbar, dann Thing wieder virtuel
