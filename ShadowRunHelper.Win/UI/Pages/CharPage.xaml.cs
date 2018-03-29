@@ -6,6 +6,7 @@ using ShadowRunHelper.Win.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -26,7 +27,7 @@ namespace ShadowRunHelper
         }
 
         #region Navigation stuff
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (SettingsModel.I.DISPLAY_REQUEST)
             {
@@ -40,6 +41,16 @@ namespace ShadowRunHelper
                 }
             }
             Model.TutorialStateChanged += TutorialStateChanged;
+            if (((ProjectPagesOptions)e.Parameter) == ProjectPagesOptions.CharNewChar)
+            {
+                try
+                {
+                    await new Edit_Person_Detail(MainObject.Person).ShowAsync();
+                }
+                catch (Exception)
+                {
+                }
+            }
             if (!SettingsModel.I.TutorialCharShown)
             {
 #pragma warning disable CS4014

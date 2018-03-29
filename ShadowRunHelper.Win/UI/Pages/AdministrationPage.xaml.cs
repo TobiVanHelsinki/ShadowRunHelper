@@ -175,7 +175,7 @@ namespace ShadowRunHelper
             ViewModel.MainObject = new CharHolder();
             ViewModel.MainObject.AfterLoad();
             SettingsModel.I.CountCreations++;
-            AppModel.Instance.RequestNavigation(this, ProjectPages.Char);
+            AppModel.Instance.RequestNavigation(this, ProjectPages.Char, ProjectPagesOptions.CharNewChar);
         }
 
         async void Click_Speichern(object sender, RoutedEventArgs e)

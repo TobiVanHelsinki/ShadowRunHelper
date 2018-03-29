@@ -29,6 +29,7 @@ namespace ShadowRunHelper
         SettingsCategories = 33,
         SettingsHelp = 34,
         Nothing = 35,
+        CharNewChar = 36,
     }
 
     public enum TCharState
