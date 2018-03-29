@@ -216,15 +216,17 @@
                         <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" />
                         <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                     </TextBlock>
-                    <TextBlock Grid.Column="1">
+                    <TextBlock Grid.Column="1" Text="{x:Bind Converter={StaticResource o_ModelValue}, Mode=OneWay}"/>
+
+                    <!--<TextBlock Grid.Column="1">
                         <Run Text="{x:Bind Wert, Mode=OneWay}"/>
                         <Run x:Uid="Space"/>
                         <Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         <Run x:Uid="Space"/>
                         <Run x:Uid="KlammerAufRund"/>
                         <Run Text="{x:Bind WertCalced, Mode=OneWay}"/>
-                        <Run x:Uid="KlammerZuRund"/>
-                    </TextBlock>
+                        <Run x:Uid="KlammerZuRund"/>-->
+                    <!--</TextBlock>-->
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="FertigkeitItemX" x:DataType="CharModel:Fertigkeit">

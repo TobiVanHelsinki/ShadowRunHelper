@@ -17,16 +17,16 @@ namespace ShadowRunHelper.UI.Converter
             switch (parameter as string)
             {
                 case "HandlungWert":
-                    var Wert = (value as Handlung).WertCalced;
                     var Limit = (value as Handlung).Grenze;
                     var Gegen = (value as Handlung).Gegen;
-                    return Wert + (Limit != 0 ? " [" + Limit + "] " : "") + (Gegen != 0 ? " - " + Gegen : "");
-                case "Wert":
-                    break;
+                    return (value as Handlung).WertCalced + (value as Handlung).Zusatz + 
+                    (Limit != 0 ? " [" + Limit + "] " : "") + 
+                    (Gegen != 0 ? " - " + Gegen : "");
                 default:
-                    break;
+                    var val = (value as Thing).ValueOf(parameter as string);
+                    var raw = (value as Thing).RawValueOf(parameter as string);
+                    return val == raw ? val.ToString() : val + " ("+ raw + ")";
             }
-            return string.Empty;
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
