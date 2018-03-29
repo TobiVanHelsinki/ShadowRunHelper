@@ -1,8 +1,7 @@
 ﻿
------------------------------------------------------
-Verknüpfungen:
-Modell für Cirkelbezüge erfinden
-
+--------Aktuelles---------------------------------------------
+* Verknüpfungen Modell für Cirkelbezüge verbessern
+* Verknüpfungen Speichern geht nicht
 -----------------------------------------------------
 * button relativ zum anklickgerät
 https://msdn.microsoft.com/en-us/library/system.windows.controls.primitives.buttonbase.click(v=vs.110).aspx

@@ -27,15 +27,27 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        bool HasCircularReference(Thing thing)
+        bool HasCircularReference(Thing newThing)
         {
-            foreach (var item in thing.LinkedThings)
+            foreach (var item in newThing.LinkedThings)
             {
                 if (item.Object == thisThing)
                 {
                     return true;
                 }
-                return HasCircularReference(item.Object);
+                //if (item.Object.GetHashCode() == thisThing.GetHashCode())
+                //{
+                //    return true;
+                //}
+                //if (thisThing.Equals(item.Object))
+                //{
+                //    return true;
+                //}
+
+                if (HasCircularReference(item.Object))
+                {
+                    return true;
+                }
             }
             return false;
         }
