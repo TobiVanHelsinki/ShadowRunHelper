@@ -1018,7 +1018,7 @@
                 </Grid>
             </DataTemplate>
 
-            <DataTemplate x:Name="Adeptenkraft_KomplexeFormItem" x:DataType="CharModel:Adeptenkraft_KomplexeForm">
+            <DataTemplate x:Name="AdeptenkraftItem" x:DataType="CharModel:Adeptenkraft_KomplexeForm">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -1032,7 +1032,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Adeptenkraft_KomplexeFormItemX" x:DataType="CharModel:Adeptenkraft_KomplexeForm">
+            <DataTemplate x:Name="AdeptenkraftItemX" x:DataType="CharModel:Adeptenkraft_KomplexeForm">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -1062,7 +1062,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Foki_WidgetsItem" x:DataType="CharModel:Foki_Widgets">
+            <DataTemplate x:Name="FokiItem" x:DataType="CharModel:Foki_Widgets">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
@@ -1088,7 +1088,7 @@
                     </Grid>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Foki_WidgetsItemX" x:DataType="CharModel:Foki_Widgets">
+            <DataTemplate x:Name="FokiItemX" x:DataType="CharModel:Foki_Widgets">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -1173,7 +1173,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Geist_SpriteItem" x:DataType="CharModel:Geist_Sprite">
+            <DataTemplate x:Name="GeistItem" x:DataType="CharModel:Geist_Sprite">
                 <Grid HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
@@ -1200,7 +1200,7 @@
                     <CheckBox Grid.Column="3" IsChecked="{x:Bind Geb_Reg, Mode=TwoWay}" Style="{StaticResource Category_Item_CheckBox}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Geist_SpriteItemX" x:DataType="CharModel:Geist_Sprite">
+            <DataTemplate x:Name="GeistItemX" x:DataType="CharModel:Geist_Sprite">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -1230,7 +1230,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Tradition_InitiationItem" x:DataType="CharModel:Tradition_Initiation">
+            <DataTemplate x:Name="TraditionItem" x:DataType="CharModel:Tradition_Initiation">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -1268,7 +1268,7 @@
                     <TextBlock Text="{x:Bind Metamagie, Mode=OneWay}" Grid.Row="3" Style="{StaticResource Category_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Tradition_InitiationItemX" x:DataType="CharModel:Tradition_Initiation">
+            <DataTemplate x:Name="TraditionItemX" x:DataType="CharModel:Tradition_Initiation">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -1291,7 +1291,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Stroemung_WandlungItem" x:DataType="CharModel:Stroemung_Wandlung">
+            <DataTemplate x:Name="StroemungItem" x:DataType="CharModel:Stroemung_Wandlung">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -1329,7 +1329,7 @@
                     <TextBlock Text="{x:Bind Echos, Mode=OneWay}" Grid.Row="3" Style="{StaticResource Category_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Stroemung_WandlungItemX" x:DataType="CharModel:Stroemung_Wandlung">
+            <DataTemplate x:Name="StroemungItemX" x:DataType="CharModel:Stroemung_Wandlung">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>

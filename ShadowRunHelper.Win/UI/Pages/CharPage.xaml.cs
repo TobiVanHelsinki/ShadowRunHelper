@@ -1,16 +1,11 @@
-﻿using ShadowRunHelper.CharController;
-using ShadowRunHelper.CharModel;
+﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelper.UI;
 using ShadowRunHelper.UI.Edit;
 using ShadowRunHelper.Win.UI;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using TLIB_UWPFRAME.IO;
-using Windows.ApplicationModel.Resources;
-using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -19,22 +14,14 @@ namespace ShadowRunHelper
 {
     public sealed partial class CharPage : Page
     {
-
-
         #region Variables
-        readonly AppModel Model = AppModel.Instance;
+        AppModel Model => AppModel.Instance;
         public Windows.System.Display.DisplayRequest Char_DisplayRequest;
-        CharHolder MainObject;
-        ResourceLoader res;
+        CharHolder MainObject => Model.MainObject;
         #endregion
 
         public CharPage()
         {
-            if (MainObject == null)
-            {
-                MainObject = Model.MainObject;
-            }
-            res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
         }
 
@@ -62,7 +49,7 @@ namespace ShadowRunHelper
             }
         }
 
-        private void TutorialStateChanged(int StateNumber, bool Highlight)
+        void TutorialStateChanged(int StateNumber, bool Highlight)
         {
             Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
             switch (StateNumber)
@@ -107,37 +94,35 @@ namespace ShadowRunHelper
         #region Gui-Model Stuff
         void Click_Save(object sender, RoutedEventArgs e)
         {
-            Model?.MainObject?.SetSaveTimerTo();
+            MainObject?.SetSaveTimerTo();
         }
 
         async void Edit_Person_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                await new Edit_Person_Detail(Model.MainObject.Person).ShowAsync();
+                await new Edit_Person_Detail(MainObject.Person).ShowAsync();
             }
             catch (Exception)
             {
             }
         }
-
-
         #endregion
-        #region Options
-        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        #region Char Settings
+        void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            Model.MainObject.Settings.ResetCategoryOptions();
+            MainObject.Settings.ResetCategoryOptions();
         }
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             Model.RequestNavigation(this, ProjectPages.Char);
         }
         #endregion
         #region  instant search Stuff
 
-        //Dictionary<ThingDefs, (ContentControl Block, ListView ListView, ScrollViewer SV)> GlobalSearchCache = new Dictionary<ThingDefs, (ContentControl Block, ListView ListView, ScrollViewer SV)>();
         Thing PendingScrollEntry;
-        public readonly IEnumerable<CategoryOption> lokalCategoryOptions = AppModel.Instance.MainObject.Settings.CategoryOptions;
+        List<(CategoryBlock Block, ScrollViewer sv)> LoadedCategoryBlocks = new List<(CategoryBlock Block, ScrollViewer sv)>();
+        IEnumerable<CategoryOption> lokalCategoryOptions => MainObject.Settings.CategoryOptions;
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
@@ -178,18 +163,16 @@ namespace ShadowRunHelper
             sender.IsSuggestionListOpen = false;
         }
 
-        private void Grid_Entry_Loaded(object sender, RoutedEventArgs e)
-        {
-            ScrollIntoBlock();
-            (sender as Grid).Loaded -= Grid_Entry_Loaded;
-        }
-        List<(CategoryBlock Block, ScrollViewer sv)> LoadedCategoryBlocks = new List<(CategoryBlock Block, ScrollViewer sv)>();
 
-        private void CategoryBlockLoading(FrameworkElement sender, object args)
+        void CategoryBlockLoading(FrameworkElement sender, object args)
         {
             LoadedCategoryBlocks.Add((sender as CategoryBlock, ((sender as CategoryBlock).Parent as Panel).Parent as ScrollViewer));
         }
-
+        void ScrollViewer_Loaded(object sender, RoutedEventArgs e)
+        {
+            ScrollIntoBlock();
+            (sender as FrameworkElement).Loaded -= ScrollViewer_Loaded;
+        }
         void ScrollIntoBlock()
         {
             if (PendingScrollEntry == null)
@@ -199,16 +182,12 @@ namespace ShadowRunHelper
             try
             {
                 // Listenauswahl
-                var TargetBlock = LoadedCategoryBlocks.FirstOrDefault(x=>x.Item1.ThingType == PendingScrollEntry.ThingType);
+                var (Block, sv) = LoadedCategoryBlocks.FirstOrDefault(x=>x.Block.ThingType == PendingScrollEntry.ThingType);
                 double offset = 0;
-                foreach (var item in ((TargetBlock.sv as ScrollViewer).Content as Panel).Children)
+                foreach (var item in ((sv as ScrollViewer).Content as Panel).Children)
                 {
-                    if (item.Equals(TargetBlock.Block))
+                    if (item.Equals(Block))
                     {
-                        if ((TargetBlock.sv.Content as Panel).Children.Last() == item)
-                        {
-                            throw new IndexOutOfRangeException(); //TOFO WTF?
-                        }
                         break;
                     }
                     else
@@ -217,17 +196,17 @@ namespace ShadowRunHelper
                     }
                 }
                 // Scroll into ListView
-                offset += TargetBlock.Block.GetPositionAtListView(PendingScrollEntry);
-                TargetBlock.Block.Select(PendingScrollEntry);
-                TargetBlock.sv.ChangeView(null, offset - 100, null);
+                offset += Block.GetPositionAtListView(PendingScrollEntry);
+                Block.Select(PendingScrollEntry);
+                sv.ChangeView(null, offset - 100, null);
             }
             catch (Exception)
             {
                 return;
             }
             PendingScrollEntry = null;
-
         }
+
         #endregion
 
 

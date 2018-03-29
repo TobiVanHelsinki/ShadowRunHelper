@@ -307,7 +307,7 @@ namespace ShadowRunHelper.Win.UI
 
 
         internal double GetPositionAtListView(Thing PendingScrollEntry)
-        { // TODO Check
+        {
             double offset = 0;
             foreach (ListViewItem item in ListView.ItemsPanelRoot.Children)
             {

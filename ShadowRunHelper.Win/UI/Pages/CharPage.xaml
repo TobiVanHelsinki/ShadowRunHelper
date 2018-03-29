@@ -301,7 +301,7 @@
                     </Border>
                 </PivotItem.Header>
                 <Border x:Name="MainContentBorder">
-                    <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
+                    <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
                         <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
                             <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Handlung"/>
                             <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Fertigkeit"/>
@@ -318,7 +318,7 @@
                         <local:TabHeader x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
                     </Border>
                 </PivotItem.Header>
-                <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
+                <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
                     <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
                         <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Item"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Kommlink"/>
@@ -337,7 +337,7 @@
                         <local:TabHeader x:Uid="Char_View_Pivot_Kampf" Glyph="&#xE730;" />
                     </Border>
                 </PivotItem.Header>
-                <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
+                <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
                     <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
                         <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Fernkampfwaffe"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Nahkampfwaffe"/>
@@ -353,7 +353,7 @@
                         <local:TabHeader x:Uid="Char_View_Pivot_Person" Glyph="&#xE2AF;" />
                     </Border>
                 </PivotItem.Header>
-                <ScrollViewer Style="{StaticResource Pivot_Item_ScrollViewer}">
+                <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
                     <Grid Style="{StaticResource Pivot_Item_Grid}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>

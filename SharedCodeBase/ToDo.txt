@@ -2,7 +2,6 @@
 Beta features button entfernen / testen
 -----------------------------------------------------
 Neue usercontrol:
-vor und nachteile haben kein template
 und die instant suche anpassen, scrollinto block bei contencontrol loaded
 -----------------------------------------------------
 Verknüpfungen:
