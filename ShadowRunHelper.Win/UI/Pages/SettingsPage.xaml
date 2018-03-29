@@ -163,8 +163,8 @@
                     </StackPanel>
                     <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.DISPLAY_REQUEST, Mode=TwoWay}"/>
 
-                    <TextBlock x:Uid="UI_Optionen_Beta_Features_Header" Style="{StaticResource TextInhaltKlein}"/>
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.BETA_FEATURES, Mode=TwoWay}"/>
+                    <!--<TextBlock x:Uid="UI_Optionen_Beta_Features_Header" Style="{StaticResource TextInhaltKlein}"/>
+                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.BETA_FEATURES, Mode=TwoWay}"/>-->
 
                     <TextBlock x:Uid="UI_Optionen_LoadOnStart_Header" Style="{StaticResource TextInhaltKlein}"/>
                     <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.LoadCharOnStart, Mode=TwoWay}"/>

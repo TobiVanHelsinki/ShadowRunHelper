@@ -14,15 +14,8 @@ schaden overflow einarbeiten
 
 
 -----------------------------------------------------
-Idee für Kompatibilität:
-Sachen im FIleString Umbenennen
+FIleString Umbenennen
 WertZusammensetzung -> LinkedEntries
-etc.
-
+PoolZusammensetzung -> LinkedEntries
 
 ---------------------------------------------------
-UMBENNENENUNGEN der adepten sachen
-resources.resw
-variablen
-klassen
-dann in ersetzungsliste aufnehmen
