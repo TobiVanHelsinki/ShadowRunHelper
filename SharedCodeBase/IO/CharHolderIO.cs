@@ -4,6 +4,7 @@ using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using Shared;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
@@ -74,6 +75,19 @@ namespace ShadowRunHelper.IO
             DateTime StopTime = DateTime.Now;
             TimeSpan Time = StopTime - StartTime;
             return ReturnCharHolder;
+        }
+
+        static string RefactorJSONString(string Input)
+        {
+            List<(string old, string @new)> replacements = new List<(string old, string @new)>
+            {
+                //("\"CTRLAdeptenkraft_KomplexeForm\"", "\"CTRLAdeptenkraft\"")
+            };
+            foreach (var (old, @new) in replacements)
+            {
+                Input.Replace(old, @new);
+            }
+            return Input;
         }
         public enum PreSavedChar
         {
