@@ -110,17 +110,6 @@ namespace ShadowRunHelper.Win.UI
             Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).GegenZusammensetzung, Filter: Handlung.Filter);
             await dialog.ShowAsync();
         }
-        //async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).LinkedThings, Filter: Handlung.Filter);
-        //    await dialog.ShowAsync();
-
-        //}
-        //async void FertigkeitenZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
-        //{
-        //    Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Fertigkeit)((Button)sender).DataContext).LinkedThings, Filter: Fertigkeit.Filter);
-        //    await dialog.ShowAsync();
-        //}
 
         async void Edit_LinkedThings(object sender, RoutedEventArgs e)
         {
@@ -144,6 +133,7 @@ namespace ShadowRunHelper.Win.UI
                     FilterToUse = Munition.Filter;
                     break;
                 case ThingDefs.Implantat:
+                    FilterToUse = Implantat.Filter;
                     break;
                 case ThingDefs.Vorteil:
                     FilterToUse = Eigenschaft.Filter;
@@ -205,7 +195,7 @@ namespace ShadowRunHelper.Win.UI
                 var dialog = new Auswahl(Model.MainObject.LinkList, ((Thing)((Button)sender).DataContext).LinkedThings, Filter: FilterToUse);
                await dialog.ShowAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }

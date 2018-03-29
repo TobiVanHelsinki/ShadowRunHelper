@@ -22,6 +22,8 @@ namespace ShadowRunHelper.CharModel
 
         public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x =>
             x.ThingType != ThingDefs.Item &&
+            x.ThingType != ThingDefs.Fernkampfwaffe &&
+            x.ThingType != ThingDefs.Nahkampfwaffe &&
             x.ThingType != ThingDefs.Panzerung &&
             x.ThingType != ThingDefs.Implantat &&
             x.ThingType != ThingDefs.Vorteil &&

@@ -12,12 +12,12 @@ namespace ShadowRunHelper
 
     public partial class Auswahl : ContentDialog
     {
-        ObservableCollection<AllListEntry> lstZusammensetzung;
+        ObservableThingListEntryCollection lstZusammensetzung;
         List<AllListEntry> lstThings;
         bool isMultichoice;
         IEnumerable<ThingDefs> FilterOut;
 
-        public Auswahl(List<AllListEntry> i_lstAll, ObservableCollection<AllListEntry> data, bool Multichoice = true, IEnumerable<ThingDefs> Filter = null)
+        public Auswahl(List<AllListEntry> i_lstAll, ObservableThingListEntryCollection data, bool Multichoice = true, IEnumerable<ThingDefs> Filter = null)
         {
             InitializeComponent();
 

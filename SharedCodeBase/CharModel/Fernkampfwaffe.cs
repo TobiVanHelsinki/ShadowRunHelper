@@ -34,7 +34,10 @@ namespace ShadowRunHelper.CharModel
             }
         }
         public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x=>
-            x.ThingType != ThingDefs.Munition && 
+            x.ThingType != ThingDefs.Handlung && 
+            x.ThingType != ThingDefs.Fernkampfwaffe && 
+            x.ThingType != ThingDefs.Nahkampfwaffe && 
+            x.ThingType != ThingDefs.Munition &&
             x.ThingType != ThingDefs.Implantat
         ).Select(x=>x.ThingType);
 

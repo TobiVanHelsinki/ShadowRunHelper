@@ -37,7 +37,7 @@ namespace ShadowRunHelper.Model
                 }
                 return HasCircularReference(item.Object);
             }
-            return true;
+            return false;
         }
 
         Action CurrentTODO;
