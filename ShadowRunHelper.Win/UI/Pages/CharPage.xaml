@@ -22,26 +22,6 @@
                                 ItemsSource="{x:Bind ThingList, Mode=OneWay}"
                                 />
             </DataTemplate>
-            <ItemsPanelTemplate x:Key="AllListEntry_Panel">
-                <StackPanel Background="Transparent" Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
-            </ItemsPanelTemplate>
-            <DataTemplate x:Key="AllListEntry" x:DataType="model:AllListEntry">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
-                    <TextBlock x:Uid="Doppelpunkt" Grid.Column="1"/>
-                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=Wert, Mode=OneWay}" Grid.Column="2"/>
-                    <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.ColumnSpan="3"/>
-                </Grid>
-            </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>

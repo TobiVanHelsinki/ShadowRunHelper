@@ -21,24 +21,22 @@ namespace ShadowRunHelper.Win.UI
 
         private void Initialize()
         {
-            var Name = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == CurrentThing.ThingType).DisplayName;
-            if (CurrentThing.ThingType == ThingDefs.Berechnet)
+            if (CurrentThing == null)
             {
-                if (System.Diagnostics.Debugger.IsAttached)
-                {
-                    System.Diagnostics.Debugger.Break();
-                }
+                return;
             }
-            Resources.TryGetValue(Name + "Item", out object val);
-            Default = (DataTemplate)val;
-            Resources.TryGetValue(Name + "ItemX", out val);
-            Expanded = (DataTemplate)val;
-            if (Expanded == null || Default == null)
+            if (CurrentThing.ThingType == ThingDefs.Vorteil || CurrentThing.ThingType == ThingDefs.Nachteil)
             {
-                if (System.Diagnostics.Debugger.IsAttached)
-                {
-                    //System.Diagnostics.Debugger.Break();
-                }
+                Default = EigenschaftItem;
+                Expanded = EigenschaftItemX;
+            }
+            else
+            {
+                var Name = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == CurrentThing.ThingType).DisplayName;
+                Resources.TryGetValue(Name + "Item", out object val);
+                Default = (DataTemplate)val;
+                Resources.TryGetValue(Name + "ItemX", out val);
+                Expanded = (DataTemplate)val;
             }
             SetDefaultTemplate();
         }

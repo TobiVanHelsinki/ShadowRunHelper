@@ -2,10 +2,8 @@
 Beta features button entfernen / testen
 -----------------------------------------------------
 Neue usercontrol:
-Attribute und Berechnete Werte machen
-Handlung crasht
-
-und die instant suche anpassen
+vor und nachteile haben kein template
+und die instant suche anpassen, scrollinto block bei contencontrol loaded
 -----------------------------------------------------
 Verknüpfungen:
 Berechnete Werte mit Implantaten, Vorteilen, Items
@@ -26,3 +24,9 @@ WertZusammensetzung -> LinkedEntries
 etc.
 
 
+---------------------------------------------------
+UMBENNENENUNGEN der adepten sachen
+resources.resw
+variablen
+klassen
+dann in ersetzungsliste aufnehmen

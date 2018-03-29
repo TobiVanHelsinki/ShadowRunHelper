@@ -237,7 +237,7 @@
                     <TextBlock Grid.Column="2" x:Uid="Model_Eigenschaft_Auswirkungen" Style="{StaticResource Category_Head_Items}" HorizontalAlignment="Right"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Adeptenkraft_KomplexeForm_E" x:Key="Adeptenkraft_KomplexeForm_E">
+            <DataTemplate x:Name="Adeptenkraft_E" x:Key="Adeptenkraft_E">
                 <Grid Style="{StaticResource Category_Head_Items_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -247,7 +247,7 @@
                     <TextBlock Grid.Column="1" x:Uid="Model_Thing_Wert" Style="{StaticResource Category_Head_Items}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Foki_Widgets_E" x:Key="Foki_Widgets_E">
+            <DataTemplate x:Name="Foki_E" x:Key="Foki_E">
                 <Grid Style="{StaticResource Category_Head_Items_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
@@ -279,7 +279,7 @@
                     <TextBlock Grid.Column="4" x:Uid="Model_Thing_Wert"  Style="{StaticResource Category_Head_Items}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Geist_Sprite_E" x:Key="Geist_Sprite_E">
+            <DataTemplate x:Name="Geist_E" x:Key="Geist_E">
                 <Grid Style="{StaticResource Category_Head_Items_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>

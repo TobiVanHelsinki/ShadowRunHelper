@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:CharModel="using:ShadowRunHelper.CharModel"
+    xmlns:model="using:ShadowRunHelper.Model"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
@@ -15,6 +16,26 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <ItemsPanelTemplate x:Key="AllListEntry_Panel">
+                <StackPanel Background="Transparent" Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
+            </ItemsPanelTemplate>
+            <DataTemplate x:Key="AllListEntry" x:DataType="model:AllListEntry">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
+                    <TextBlock x:Uid="Doppelpunkt" Grid.Column="1"/>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=Wert, Mode=OneWay}" Grid.Column="2"/>
+                    <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.ColumnSpan="3"/>
+                </Grid>
+            </DataTemplate>
 
             <DataTemplate x:Name="HandlungItem" x:DataType="CharModel:Handlung">
                 <Grid Style="{StaticResource Category_Item_Grid}">
