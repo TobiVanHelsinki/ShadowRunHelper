@@ -3,8 +3,7 @@
 Verknüpfungen:
 Modell für Cirkelbezüge erfinden
 
-Berechnete Werte mit Implantaten, Vorteilen, Items
-UI-Converter, der aus Wert -> WertCalced (Wert) macht, wenn WertCalced != 0
+UI-Converter überall einsetzen
  
 
 UI überall anpassen:
@@ -18,5 +17,6 @@ Max schaden bei berechneten werten
 schaden overflow einarbeiten
 
 -----------------------------------------------------
-* Cat entrys klappen sich manchmal nicht auf / manchmal einfach zu
-
+* Cat entrys klappen sich manchmal nicht auf / manchmal einfach zu 
+* BEssere stirngs für aktive elemente
+* 

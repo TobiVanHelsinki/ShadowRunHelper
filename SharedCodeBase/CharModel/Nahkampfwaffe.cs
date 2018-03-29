@@ -1,4 +1,6 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿using System.Collections.Generic;
+
+namespace ShadowRunHelper.CharModel
 {
     public class Nahkampfwaffe : Waffe
     {
@@ -16,5 +18,9 @@
                 }
             }
         }
+        public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
+            {
+                ThingDefs.Handlung, ThingDefs.Fertigkeit
+            };
     }
 }

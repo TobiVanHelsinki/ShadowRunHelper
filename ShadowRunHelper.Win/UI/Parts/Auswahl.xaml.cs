@@ -32,7 +32,7 @@ namespace ShadowRunHelper
             {
                 Zus_ListVIew.SelectionMode = ListViewSelectionMode.Single;
             }
-            FilterOut = Filter;
+            FilterOut = Filter ?? throw new AllListChooserError();
             PrepareGuiList();
         }
         public virtual void PrepareGuiList()

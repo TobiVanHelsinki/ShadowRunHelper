@@ -7,7 +7,6 @@
 >
     <conv:io_ZahlenDouble x:Key="io_ZahlenDouble"/>
     <conv:o_ZahlenYen x:Key="io_ZahlenYen"/>
-    <conv:o_ModelTyp x:Key="o_ModelTyp"/>
     <conv:io_GebDatum x:Key="io_GebDatum"/>
     <conv:o_AllListEntry x:Key="o_AllListEntry"/>
     <conv:o_ThingDef2String x:Key="o_ThingDef2String"/>
@@ -15,7 +14,7 @@
     <conv:o_CharAdmin_Path x:Key="o_CharAdmin_Path"/>
     <conv:o_Null2Bool x:Key="o_Null2Bool"/>
     <conv:o_Null2Visibility x:Key="o_Null2Visibility"/>
-    <conv:o_ModelValue x:Key="o_ModelValue"/>
+    <conv:o_ValueOrNoting x:Key="o_ValueOrNoting"/>
     
     <contract5NotPresent:Style TargetType="Button" x:Key="STD_Button"/>
     <contract5Present:Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="STD_Button"/>

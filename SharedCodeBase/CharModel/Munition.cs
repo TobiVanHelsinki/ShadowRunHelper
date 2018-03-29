@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace ShadowRunHelper.CharModel
 {
     public class Munition : Item
@@ -48,5 +50,9 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
+            {
+                ThingDefs.Handlung, ThingDefs.Fertigkeit
+            };
     }
 }

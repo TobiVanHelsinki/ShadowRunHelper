@@ -98,13 +98,6 @@ namespace ShadowRunHelper.Win.UI
             }
         }
 
-        async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
-        {
-            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).LinkedThings, Filter: Handlung.Filter);
-            await dialog.ShowAsync();
-
-        }
-
         async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
         {
             Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).GrenzeZusammensetzung, Filter: Handlung.Filter);
@@ -116,16 +109,23 @@ namespace ShadowRunHelper.Win.UI
             Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).GegenZusammensetzung, Filter: Handlung.Filter);
             await dialog.ShowAsync();
         }
+        //async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).LinkedThings, Filter: Handlung.Filter);
+        //    await dialog.ShowAsync();
 
-        async void FertigkeitenZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
-        {
-            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Fertigkeit)((Button)sender).DataContext).LinkedThings, Filter: Fertigkeit.Filter);
-            await dialog.ShowAsync();
-        }
+        //}
+        //async void FertigkeitenZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
+        //{
+        //    Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Fertigkeit)((Button)sender).DataContext).LinkedThings, Filter: Fertigkeit.Filter);
+        //    await dialog.ShowAsync();
+        //}
 
         async void Edit_LinkedThings(object sender, RoutedEventArgs e)
         {
-            ThingDefs type = (ThingDefs)int.Parse((sender as FrameworkElement).Tag as string);
+            ThingDefs type = ((Thing)((FrameworkElement)sender).DataContext).ThingType;
+
+            //ThingDefs type = (ThingDefs)int.Parse((sender as FrameworkElement).Tag as string);
             IEnumerable<ThingDefs> FilterToUse = null;
             switch (type)
             {
@@ -140,17 +140,21 @@ namespace ShadowRunHelper.Win.UI
                 case ThingDefs.Programm:
                     break;
                 case ThingDefs.Munition:
+                    FilterToUse = Munition.Filter;
                     break;
                 case ThingDefs.Implantat:
                     break;
                 case ThingDefs.Vorteil:
+                    FilterToUse = Eigenschaft.Filter;
                     break;
                 case ThingDefs.Nachteil:
+                    FilterToUse = Eigenschaft.Filter;
                     break;
                 case ThingDefs.Attribut:
                     FilterToUse = Attribut.Filter;
                     break;
                 case ThingDefs.Nahkampfwaffe:
+                    FilterToUse = Nahkampfwaffe.Filter;
                     break;
                 case ThingDefs.Fernkampfwaffe:
                     FilterToUse = Fernkampfwaffe.Filter;
@@ -167,6 +171,7 @@ namespace ShadowRunHelper.Win.UI
                 case ThingDefs.Eigenschaft:
                     break;
                 case ThingDefs.Adeptenkraft:
+                    FilterToUse = Adeptenkraft.Filter;
                     break;
                 case ThingDefs.Geist:
                     break;
@@ -181,6 +186,7 @@ namespace ShadowRunHelper.Win.UI
                 case ThingDefs.Berechnet:
                     break;
                 case ThingDefs.KomplexeForm:
+                    FilterToUse = KomplexeForm.Filter;
                     break;
                 case ThingDefs.Sprite:
                     break;
@@ -193,8 +199,14 @@ namespace ShadowRunHelper.Win.UI
                 default:
                     break;
             }
-            var dialog = new Auswahl(Model.MainObject.LinkList, ((Thing)((Button)sender).DataContext).LinkedThings, Filter: FilterToUse);
-            await dialog.ShowAsync();
+            try
+            {
+                var dialog = new Auswahl(Model.MainObject.LinkList, ((Thing)((Button)sender).DataContext).LinkedThings, Filter: FilterToUse);
+               await dialog.ShowAsync();
+            }
+            catch (Exception)
+            {
+            }
         }
         //async void MunitionBearbeiten(object sender, RoutedEventArgs e)
         //{
