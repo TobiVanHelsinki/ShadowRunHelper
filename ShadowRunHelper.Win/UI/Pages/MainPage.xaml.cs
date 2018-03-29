@@ -29,7 +29,7 @@ namespace ShadowRunHelper
             InitializeComponent();
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary();
             Model.TutorialStateChanged += TutorialStateChanged;
-            Model.NavigationRequested += (x, y,z) => NavigationRequested(y,z);
+            Model.NavigationRequested += (x, y, z) => NavigationRequested(y, z);
             //CompatibilityChecks();
         }
         #region navigation
@@ -223,9 +223,30 @@ namespace ShadowRunHelper
         }
 
         #endregion
+        #region DynamicSize
 
-        private void Flyout_Opening(object sender, object e)
+        public int CustFontSize { get; set; }
+        private void Infos_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
+            switch (e.Pointer.PointerDeviceType)
+            {
+                case Windows.Devices.Input.PointerDeviceType.Pen:
+                case Windows.Devices.Input.PointerDeviceType.Mouse:
+                    CustFontSize = 25;
+                    break;
+                case Windows.Devices.Input.PointerDeviceType.Touch:
+                default:
+                    CustFontSize = 45;
+                    break;
+            }
         }
+
+        private void MP_Btn_Loaded(object sender, RoutedEventArgs e)
+        {
+            (sender as Control).FontSize = CustFontSize;
+        }
+
+        #endregion
+
     }
 }

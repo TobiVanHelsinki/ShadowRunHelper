@@ -67,16 +67,19 @@
     </Style>
     <!--<Windows10FallCreatorsUpdate:AcrylicBrush x:Key="SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemAccentColor}" TintOpacity="0.3" FallbackColor="{ThemeResource SystemAccentColor}" />-->
     <Style TargetType="RepeatButton" BasedOn="{StaticResource STD_RepeatButton}" x:Key="Panel_Oben_Btn_Base">
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Width" Value="50"/>
-        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Margin" Value="4"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
     </Style>
 
-    <Style TargetType="RepeatButton" BasedOn="{StaticResource RepeatButtonBase}" x:Key="Panel_Oben_Btn_Plus">
+    <Style TargetType="RepeatButton" BasedOn="{StaticResource Panel_Oben_Btn_Base}" x:Key="Panel_Oben_Btn_Plus">
         <Setter Property="Content" Value="&#xE109;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+    </Style>
 
-        <Style TargetType="RepeatButton" BasedOn="{StaticResource RepeatButtonBase}" x:Key="Panel_Oben_Btn_Minus">
+    <Style TargetType="RepeatButton" BasedOn="{StaticResource Panel_Oben_Btn_Base}" x:Key="Panel_Oben_Btn_Minus">
         <Setter Property="Content" Value="&#xE108;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
     </Style>

@@ -5,6 +5,12 @@ Modell für Cirkelbezüge erfinden
 
 -----------------------------------------------------
 * button relativ zum anklickgerät
+https://msdn.microsoft.com/en-us/library/system.windows.controls.primitives.buttonbase.click(v=vs.110).aspx
+https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.Input.PointerRoutedEventArgs
+https://docs.microsoft.com/en-us/windows/uwp/design/input/handle-pointer-input
+https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.uielement.pointerpressed
+https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.UIElement
+
 
 ---------- Ideen für später -------------------------------
 
