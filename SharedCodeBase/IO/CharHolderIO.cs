@@ -91,10 +91,19 @@ namespace ShadowRunHelper.IO
                 //Linked Thing Stuff
                 ("\"PoolZusammensetzung\"", "\"LinkedThings\""),
                 ("\"Pool\"", "\"WertCalced\""),
+                //ModelRefactoring Thing Stuff
+                ("\"PB\"", "\"DK\""),
+                ("\"Rueckstoss\"", "\"RK\""),
+                
             };
+            string TMP = Input;
             foreach (var (old, @new) in replacements)
             {
-                Input = Input.Replace(old, @new);
+                TMP = TMP.Replace(old, @new);
+            }
+            if (TMP != Input)
+            {
+                AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Info_UpgradedChar"));
             }
             return Input;
         }

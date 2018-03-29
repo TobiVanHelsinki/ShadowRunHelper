@@ -1075,7 +1075,7 @@ This is shown in detail at the example-character</value>
   <data name="Model_Person_Prominenz.Text" xml:space="preserve">
     <value>Public Awareness</value>
   </data>
-  <data name="Model_Waffe_PB.Text" xml:space="preserve">
+  <data name="Model_Waffe_DK.Text" xml:space="preserve">
     <value>AP</value>
   </data>
   <data name="Model_VorteilM_.Text" xml:space="preserve">

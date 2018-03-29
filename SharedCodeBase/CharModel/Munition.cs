@@ -35,7 +35,7 @@ namespace ShadowRunHelper.CharModel
 
         double _DK = 0;
         [Used_UserAttribute]
-        public double PB
+        public double DK
         {
             get { return _DK; }
             set

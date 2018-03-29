@@ -38,9 +38,9 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        double _DK = 0; // DK
+        double _DK = 0;
         [Used_UserAttribute]
-        public double PB
+        public double DK
         {
             get { return _DK; }
             set
@@ -67,15 +67,15 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        double _PB_Calced = 0; // DK
-        public double PBCalced
+        double _DK_Calced = 0; // DK
+        public double DKCalced
         {
-            get { return _PB_Calced; }
+            get { return _DK_Calced; }
             set
             {
-                if (value != _PB_Calced)
+                if (value != _DK_Calced)
                 {
-                    _PB_Calced = value;
+                    _DK_Calced = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -84,7 +84,7 @@ namespace ShadowRunHelper.CharModel
         protected override void OnLinkedThingsChanged()
         {
             var List = LinkedThings.Where(x=>x.Object.ThingType == ThingDefs.Munition).Select(x => x.Object);
-            PBCalced = PB + List.Sum(x=>x.RawValueOf("PB"));
+            DKCalced = DK + List.Sum(x=>x.RawValueOf("DK"));
             PraezisionCalced = Praezision + List.Sum(x=>x.RawValueOf("Praezision"));
             base.OnLinkedThingsChanged();
         }
@@ -94,8 +94,8 @@ namespace ShadowRunHelper.CharModel
             {
                 case "Praezision":
                     return PraezisionCalced;
-                case "PB":
-                    return PBCalced;
+                case "DK":
+                    return DKCalced;
                 default:
                     break;
             }

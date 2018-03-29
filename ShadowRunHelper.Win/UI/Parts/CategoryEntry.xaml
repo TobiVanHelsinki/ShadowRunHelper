@@ -538,7 +538,7 @@
                             <Run x:Uid="Space"/>
                             <Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
-                        <TextBlock Text="{x:Bind PB, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource Category_Item_Text}"/>
+                        <TextBlock Text="{x:Bind DK, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource Category_Item_Text}"/>
 
                     </Grid>
                 </Grid>
@@ -572,8 +572,8 @@
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_PB"/>
-                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_DK"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind DK, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_FernKampfwaffe_Rueckstoss"/>
@@ -618,7 +618,7 @@
                         <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind SchadenTyp, Mode=OneWay}"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
-                        <TextBlock Text="{x:Bind PB, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource Category_Item_Text}"/>
+                        <TextBlock Text="{x:Bind DK, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource Category_Item_Text}"/>
                     </Grid>
                 </Grid>
             </DataTemplate>
@@ -640,8 +640,8 @@
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_PB"/>
-                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_DK"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind DK, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Nahkampfwaffe_Reichweite"/>
@@ -769,8 +769,8 @@
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_PB"/>
-                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_DK"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind DK, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_Praezision"/>

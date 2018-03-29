@@ -321,7 +321,7 @@
   <data name="Model_Vehikel_Sitze.Text" xml:space="preserve">
     <value>Sitze</value>
   </data>
-  <data name="Model_Waffe_PB.Text" xml:space="preserve">
+  <data name="Model_Waffe_DK.Text" xml:space="preserve">
     <value>DK</value>
   </data>
   <data name="Model_Thing_Zusatz.Text" xml:space="preserve">

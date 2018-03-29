@@ -524,7 +524,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                     <TextBlock Grid.Column="1" x:Uid="Model_Waffe_Wert"  Style="{StaticResource ListView_Item_Text}"/>
-                    <TextBlock Grid.Column="2" x:Uid="Model_Waffe_PB"  Style="{StaticResource ListView_Item_Text}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Waffe_DK"  Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="FernkampfwaffeItem" x:DataType="CharModel:Fernkampfwaffe">
@@ -544,7 +544,7 @@
                             <Run x:Uid="Space"/>
                             <Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
-                        <TextBlock Text="{x:Bind PB, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Text="{x:Bind DK, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource ListView_Item_Text}"/>
 
                     </Grid>
               </DataTemplate>
@@ -562,8 +562,8 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_PB"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_DK"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind DK, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Rueckstoss"/>
@@ -595,7 +595,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                     <TextBlock Grid.Column="1" x:Uid="Model_Waffe_Wert"  Style="{StaticResource ListView_Item_Text}"/>
-                    <TextBlock Grid.Column="2" x:Uid="Model_Waffe_PB"  Style="{StaticResource ListView_Item_Text}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Waffe_DK"  Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="NahkampfwaffeItem" x:DataType="CharModel:Nahkampfwaffe">
@@ -612,7 +612,7 @@
                         <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind SchadenTyp, Mode=OneWay}"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
-                        <TextBlock Text="{x:Bind PB, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Text="{x:Bind DK, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource ListView_Item_Text}"/>
                     </Grid>
             </DataTemplate>
             <DataTemplate x:Name="NahkampfwaffeItemX" x:DataType="CharModel:Nahkampfwaffe">
@@ -629,8 +629,8 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_PB"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_DK"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind DK, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Nahkampfwaffe_Reichweite"/>

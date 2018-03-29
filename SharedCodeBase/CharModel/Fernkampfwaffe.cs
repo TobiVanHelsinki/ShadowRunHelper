@@ -8,7 +8,7 @@ namespace ShadowRunHelper.CharModel
     {
         private double rueckstoss = 0;
         [Used_User]
-        public double Rueckstoss
+        public double Rueckstoss //RK
         {
             get { return rueckstoss; }
             set
@@ -80,8 +80,8 @@ namespace ShadowRunHelper.CharModel
 //                        return Wert + CurrentMunition.Object.ValueOf(ID);
 //                    case "Praezision":
 //                        return Praezision + CurrentMunition.Object.ValueOf(ID);
-//                    case "PB":
-//                        return PB + CurrentMunition.Object.ValueOf(ID);
+//                    case "DK":
+//                        return DK + CurrentMunition.Object.ValueOf(ID);
 //                    default:
 //                        break;
 //                }
