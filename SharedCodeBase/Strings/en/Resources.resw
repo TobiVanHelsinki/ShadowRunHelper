@@ -1309,4 +1309,10 @@ This is shown in detail at the example-character</value>
   <data name="Model_Person_Schaden_K_max_mod.Text" xml:space="preserve">
     <value>Max. Mental-Damage modifier</value>
   </data>
+  <data name="Model__Active.Text" xml:space="preserve">
+    <value>Active entry:</value>
+  </data>
+  <data name="Model__Mod.Text" xml:space="preserve">
+    <value>Mod.</value>
+  </data>
 </root>
