@@ -14,5 +14,5 @@ Max schaden bei berechneten werten
 schaden overflow einarbeiten
 
 -----------------------------------------------------
-* JSON Formatting
 * Cat entrys klappen sich manchmal nicht auf / manchmal einfach zu
+* nach öffnen name vergeben
