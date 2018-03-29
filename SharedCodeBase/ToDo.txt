@@ -4,7 +4,7 @@ Verknüpfungen:
 Modell für Cirkelbezüge erfinden
 
 -----------------------------------------------------
-* Repeat button und button relativ zum anklickgerät
+* button relativ zum anklickgerät
 
 ---------- Ideen für später -------------------------------
 

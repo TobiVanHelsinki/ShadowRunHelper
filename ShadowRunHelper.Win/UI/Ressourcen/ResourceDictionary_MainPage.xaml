@@ -67,7 +67,7 @@
     </Style>
     <!--<Windows10FallCreatorsUpdate:AcrylicBrush x:Key="SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemAccentColor}" TintOpacity="0.3" FallbackColor="{ThemeResource SystemAccentColor}" />-->
 
-    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="Panel_Oben_Btn_Plus">
+    <Style TargetType="RepeatButton" BasedOn="{StaticResource STD_RepeatButton}" x:Key="Panel_Oben_Btn_Plus">
         <Setter Property="Content" Value="&#xE109;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
         <Setter Property="Height" Value="50"/>
@@ -75,7 +75,7 @@
         <Setter Property="Margin" Value="5"/>
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="Panel_Oben_Btn_Minus">
+    <Style TargetType="RepeatButton" BasedOn="{StaticResource STD_RepeatButton}" x:Key="Panel_Oben_Btn_Minus">
         <Setter Property="Content" Value="&#xE108;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
         <Setter Property="Height" Value="50"/>

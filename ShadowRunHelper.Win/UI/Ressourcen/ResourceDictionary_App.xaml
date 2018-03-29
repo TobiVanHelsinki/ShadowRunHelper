@@ -15,9 +15,13 @@
     <conv:o_Null2Bool x:Key="o_Null2Bool"/>
     <conv:o_Null2Visibility x:Key="o_Null2Visibility"/>
     <conv:o_ValueOrNoting x:Key="o_ValueOrNoting"/>
-    
+
     <contract5NotPresent:Style TargetType="Button" x:Key="STD_Button"/>
     <contract5Present:Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="STD_Button"/>
+
+
+    <contract5NotPresent:Style TargetType="RepeatButton" x:Key="STD_RepeatButton"/>
+    <contract5Present:Style TargetType="RepeatButton" BasedOn="{StaticResource RepeatButtonRevealStyle}" x:Key="STD_RepeatButton"/>
 
     <contract5NotPresent:Style TargetType="AppBarButton" x:Key="AppBarButtonRevealStyle_IfPossible">
         <Setter Property="Width" Value="Auto"/>

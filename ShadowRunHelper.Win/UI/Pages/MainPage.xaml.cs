@@ -110,7 +110,7 @@ namespace ShadowRunHelper
         {
             if (Model.MainObject != null)
             {
-                string Controller_Name = ((string)((Button)sender).Name);
+                string Controller_Name = (((FrameworkElement)sender).Name);
 
                 if (Controller_Name.Contains("Karma_Gesamt"))
                 {
@@ -143,7 +143,7 @@ namespace ShadowRunHelper
         {
             if (Model.MainObject != null)
             {
-                string Controller_Name = ((string)((Button)sender).Name);
+                string Controller_Name = (((FrameworkElement)sender).Name);
 
                 if (Controller_Name.Contains("Karma_Gesamt"))
                 {
