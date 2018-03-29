@@ -59,6 +59,7 @@ namespace ShadowRunHelper.IO
                     AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Info_NotSupportedVersion"));
                     throw new IO_FileVersion();
                 case Constants.CHARFILE_VERSION_1_5:
+                    fileContent = RefactorJSONString(fileContent);
                     JsonSerializerSettings settings = new JsonSerializerSettings()
                     {
                         Error = ErrorHandler,
@@ -81,15 +82,15 @@ namespace ShadowRunHelper.IO
         {
             List<(string old, string @new)> replacements = new List<(string old, string @new)>
             {
-                //("\"CTRLAdeptenkraft_KomplexeForm\"", "\"CTRLAdeptenkraft\"")
-                //("\"CTRLFoki_Widgets\"", "\"CTRLFoki\"")
-                //("\"CTRLGeist_Sprite\"", "\"CTRLGeist\"")
-                //("\"CTRLStroemung_Wandlung\"", "\"CTRLStroemung\"")
-                //("\"CTRLTradition_Initiation\"", "\"CTRLTradition\"")
+                ("\"CTRLAdeptenkraft_KomplexeForm\"", "\"CTRLAdeptenkraft\""),
+                ("\"CTRLFoki_Widgets\"", "\"CTRLFoki\""),
+                ("\"CTRLGeist_Sprite\"", "\"CTRLGeist\""),
+                ("\"CTRLStroemung_Wandlung\"", "\"CTRLStroemung\""),
+                ("\"CTRLTradition_Initiation\"", "\"CTRLTradition\"")
             };
             foreach (var (old, @new) in replacements)
             {
-                Input.Replace(old, @new);
+                Input = Input.Replace(old, @new);
             }
             return Input;
         }
