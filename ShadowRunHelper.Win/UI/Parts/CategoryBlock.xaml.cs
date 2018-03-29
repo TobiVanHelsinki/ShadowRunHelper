@@ -272,7 +272,14 @@ namespace ShadowRunHelper.Win.UI
                     default:
                         break;
                 }
-                HeadLine.ContentTemplate = (DataTemplate)Resources[Current.DisplayName + "_E"];
+                if (ThingType == ThingDefs.Vorteil || ThingType == ThingDefs.Nachteil)
+                {
+                    HeadLine.ContentTemplate = Eigenschaft_E;
+                }
+                else
+                {
+                    HeadLine.ContentTemplate = (DataTemplate)Resources[Current.DisplayName + "_E"];
+                }
             }
             catch (Exception ex)
             {
