@@ -553,13 +553,13 @@ This is shown in detail at the example-character</value>
   <data name="Model_Attribut_Magie.Text" xml:space="preserve">
     <value>Magic</value>
   </data>
-  <data name="Model_Adeptenkraft_KomplexeFormM_.Text" xml:space="preserve">
+  <data name="Model_AdeptenkraftM_.Text" xml:space="preserve">
     <value>Adept Powers</value>
   </data>
-  <data name="Model_Adeptenkraft_KomplexeForm_.Text" xml:space="preserve">
+  <data name="Model_Adeptenkraft_.Text" xml:space="preserve">
     <value>Adept Power</value>
   </data>
-  <data name="Model_Adeptenkraft_KomplexeForm_Option.Text" xml:space="preserve">
+  <data name="Model_Adeptenkraft_Option.Text" xml:space="preserve">
     <value>Options</value>
   </data>
   <data name="Model_Attribut_Resonanz.Text" xml:space="preserve">
@@ -697,19 +697,19 @@ This is shown in detail at the example-character</value>
   <data name="Doppelpunkt.Text" xml:space="preserve">
     <value>:</value>
   </data>
-  <data name="Model_Foki_WidgetsM_.Text" xml:space="preserve">
+  <data name="Model_FokiM_.Text" xml:space="preserve">
     <value>Foci</value>
   </data>
-  <data name="Model_Foki_Widgets_.Text" xml:space="preserve">
+  <data name="Model_Foki_.Text" xml:space="preserve">
     <value>Foci</value>
   </data>
-  <data name="Model_Geist_SpriteM_.Text" xml:space="preserve">
+  <data name="Model_GeistM_.Text" xml:space="preserve">
     <value>Spirits</value>
   </data>
-  <data name="Model_Geist_Sprite_.Text" xml:space="preserve">
+  <data name="Model_Geist_.Text" xml:space="preserve">
     <value>Spirit</value>
   </data>
-  <data name="Model_Geist_Sprite_Geb_Reg.Text" xml:space="preserve">
+  <data name="Model_Geist_Geb_Reg.Text" xml:space="preserve">
     <value>Bound</value>
   </data>
   <data name="KlammerAufRund.Text" xml:space="preserve">
@@ -763,7 +763,7 @@ This is shown in detail at the example-character</value>
   <data name="Model_Implantat_Kapazitaet.Text" xml:space="preserve">
     <value>Capacity</value>
   </data>
-  <data name="Model_Geist_Sprite_Dienste.Text" xml:space="preserve">
+  <data name="Model_Geist_Dienste.Text" xml:space="preserve">
     <value>Services</value>
   </data>
   <data name="Model_Implantat_Auswirkung.Text" xml:space="preserve">
@@ -928,10 +928,10 @@ This is shown in detail at the example-character</value>
   <data name="Model_Person_Geburtstag.Text" xml:space="preserve">
     <value>Birthday</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Bezeichner.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Model_Tradition_Initiation_Bezeichner.Text" xml:space="preserve">
+  <data name="Model_Tradition_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="Model_Person_Alias_STD.Text" xml:space="preserve">
@@ -1087,34 +1087,34 @@ This is shown in detail at the example-character</value>
   <data name="Model_Zaubersprueche_Entzug.Text" xml:space="preserve">
     <value>Drain</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Paragon.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Paragon.Text" xml:space="preserve">
     <value>Paragon</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Wert.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Wert.Text" xml:space="preserve">
     <value>Grade</value>
   </data>
-  <data name="Model_Tradition_Initiation_Wert.Text" xml:space="preserve">
+  <data name="Model_Tradition_Wert.Text" xml:space="preserve">
     <value>Grade</value>
   </data>
-  <data name="Model_Stroemung_WandlungM_.Text" xml:space="preserve">
+  <data name="Model_StroemungM_.Text" xml:space="preserve">
     <value>Submersions</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_.Text" xml:space="preserve">
+  <data name="Model_Stroemung_.Text" xml:space="preserve">
     <value>Submersion</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Echos.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Echos.Text" xml:space="preserve">
     <value>Echoes</value>
   </data>
-  <data name="Model_Tradition_InitiationM_.Text" xml:space="preserve">
+  <data name="Model_TraditionM_.Text" xml:space="preserve">
     <value>Traditions</value>
   </data>
-  <data name="Model_Tradition_Initiation_.Text" xml:space="preserve">
+  <data name="Model_Tradition_.Text" xml:space="preserve">
     <value>Tradition</value>
   </data>
-  <data name="Model_Tradition_Initiation_Metamagie.Text" xml:space="preserve">
+  <data name="Model_Tradition_Metamagie.Text" xml:space="preserve">
     <value>Metamagic</value>
   </data>
-  <data name="Model_Tradition_Initiation_Schutzpatron.Text" xml:space="preserve">
+  <data name="Model_Tradition_Schutzpatron.Text" xml:space="preserve">
     <value>Totem</value>
   </data>
   <data name="AuswahlDialog.PrimaryButtonText" xml:space="preserve">

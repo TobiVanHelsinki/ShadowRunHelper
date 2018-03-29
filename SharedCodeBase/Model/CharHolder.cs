@@ -33,11 +33,11 @@ namespace ShadowRunHelper.Model
         public Controller<Connection> CTRLConnection { get; set; }
         public Controller<Sin> CTRLSin { get; set; }
         // Second Gen
-        public Controller<Adeptenkraft_KomplexeForm> CTRLAdeptenkraft_KomplexeForm { get; set; }
-        public Controller<Foki_Widgets> CTRLFoki_Widgets { get; set; }
-        public Controller<Geist_Sprite> CTRLGeist_Sprite { get; set; }
-        public Controller<Stroemung_Wandlung> CTRLStroemung_Wandlung { get; set; }
-        public Controller<Tradition_Initiation> CTRLTradition_Initiation { get; set; }
+        public Controller<Adeptenkraft> CTRLAdeptenkraft { get; set; }
+        public Controller<Foki> CTRLFoki { get; set; }
+        public Controller<Geist> CTRLGeist { get; set; }
+        public Controller<Stroemung> CTRLStroemung { get; set; }
+        public Controller<Tradition> CTRLTradition { get; set; }
         public Controller<Zaubersprueche> CTRLZaubersprueche { get; set; }
         // Third Gen
         public Controller<KomplexeForm> CTRLKomplexeForm { get; set; }
@@ -133,15 +133,15 @@ namespace ShadowRunHelper.Model
             SaveTimer = new System.Threading.Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); }, this, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
             AppModel.Instance.MainObjectSaved += (x, y) => { SettingsModel.I.CountSavings++; };
             // To Autosave
-            CTRLAdeptenkraft_KomplexeForm = new Controller<Adeptenkraft_KomplexeForm>();
+            CTRLAdeptenkraft = new Controller<Adeptenkraft>();
             CTRLAttribut = new AttributController();
             CTRLBerechnet = new BerechnetController();
             CTRLConnection = new Controller<Connection>();
             CTRLCyberDeck = new CyberDeckController();
             CTRLFernkampfwaffe = new FernkampfwaffeController();
             CTRLFertigkeit = new Controller<Fertigkeit>();
-            CTRLFoki_Widgets = new Controller<Foki_Widgets>();
-            CTRLGeist_Sprite = new Controller<Geist_Sprite>();
+            CTRLFoki = new Controller<Foki>();
+            CTRLGeist = new Controller<Geist>();
             CTRLHandlung = new Controller<Handlung>();
             CTRLImplantat = new Controller<Implantat>();
             CTRLItem = new Controller<Item>();
@@ -152,8 +152,8 @@ namespace ShadowRunHelper.Model
             CTRLPanzerung = new PanzerungController();
             CTRLProgramm = new Controller<Programm>();
             CTRLSin = new Controller<Sin>();
-            CTRLStroemung_Wandlung = new Controller<Stroemung_Wandlung>();
-            CTRLTradition_Initiation = new Controller<Tradition_Initiation>();
+            CTRLStroemung = new Controller<Stroemung>();
+            CTRLTradition = new Controller<Tradition>();
             CTRLVehikel = new VehikelController();
             CTRLVorteil = new Controller<Vorteil>();
             CTRLZaubersprueche = new Controller<Zaubersprueche>();
@@ -175,10 +175,10 @@ namespace ShadowRunHelper.Model
 
             lstCTRL.Add(CTRLImplantat);
 
-            lstCTRL.Add(CTRLAdeptenkraft_KomplexeForm);
+            lstCTRL.Add(CTRLAdeptenkraft);
             lstCTRL.Add(CTRLKomplexeForm);
             lstCTRL.Add(CTRLZaubersprueche);
-            lstCTRL.Add(CTRLFoki_Widgets);
+            lstCTRL.Add(CTRLFoki);
             lstCTRL.Add(CTRLWidgets);
 
             lstCTRL.Add(CTRLCyberDeck);
@@ -188,9 +188,9 @@ namespace ShadowRunHelper.Model
 
             lstCTRL.Add(CTRLNachteil);
             lstCTRL.Add(CTRLVorteil);
-            lstCTRL.Add(CTRLTradition_Initiation);
-            lstCTRL.Add(CTRLStroemung_Wandlung);
-            lstCTRL.Add(CTRLGeist_Sprite);
+            lstCTRL.Add(CTRLTradition);
+            lstCTRL.Add(CTRLStroemung);
+            lstCTRL.Add(CTRLGeist);
 
             lstCTRL.Add(CTRLInitiation);
             lstCTRL.Add(CTRLWandlung);

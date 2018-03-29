@@ -1,7 +1,7 @@
 ﻿
 namespace ShadowRunHelper.CharModel
 {
-    public class Foki_Widgets : Item
+    public class Foki : Item
     {
        
     }

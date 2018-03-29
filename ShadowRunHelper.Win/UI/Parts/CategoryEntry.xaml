@@ -1018,7 +1018,7 @@
                 </Grid>
             </DataTemplate>
 
-            <DataTemplate x:Name="AdeptenkraftItem" x:DataType="CharModel:Adeptenkraft_KomplexeForm">
+            <DataTemplate x:Name="AdeptenkraftItem" x:DataType="CharModel:Adeptenkraft">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -1032,7 +1032,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="AdeptenkraftItemX" x:DataType="CharModel:Adeptenkraft_KomplexeForm">
+            <DataTemplate x:Name="AdeptenkraftItemX" x:DataType="CharModel:Adeptenkraft">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -1043,13 +1043,13 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ContentPresenter ContentTemplate="{StaticResource Adeptenkraft_KomplexeFormItem}" Grid.ColumnSpan="2"/>
+                    <ContentPresenter ContentTemplate="{StaticResource AdeptenkraftItem}" Grid.ColumnSpan="2"/>
                     <StackPanel Grid.Row="1" Orientation="Vertical">
                         <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                         <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
                     </StackPanel>
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text}">
-                            <Run x:Uid="Model_Adeptenkraft_KomplexeForm_Option" FontWeight="SemiBold"/>
+                            <Run x:Uid="Model_Adeptenkraft_Option" FontWeight="SemiBold"/>
                             <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Option, Mode=OneWay}"/>
@@ -1062,7 +1062,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="FokiItem" x:DataType="CharModel:Foki_Widgets">
+            <DataTemplate x:Name="FokiItem" x:DataType="CharModel:Foki">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
@@ -1088,7 +1088,7 @@
                     </Grid>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="FokiItemX" x:DataType="CharModel:Foki_Widgets">
+            <DataTemplate x:Name="FokiItemX" x:DataType="CharModel:Foki">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -1099,7 +1099,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource Foki_WidgetsItem}"/>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource FokiItem}"/>
                     <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Grid.Row="1" Style="{StaticResource Category_Item_Buttons}"/>
                     <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click" Grid.Row="2" Style="{StaticResource Category_Item_Buttons}"/>
                     <TextBlock Grid.Row="1"  Grid.RowSpan="2" Grid.Column="2"  Style="{StaticResource Category_Item_Text_Note}">
@@ -1173,7 +1173,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="GeistItem" x:DataType="CharModel:Geist_Sprite">
+            <DataTemplate x:Name="GeistItem" x:DataType="CharModel:Geist">
                 <Grid HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
@@ -1200,7 +1200,7 @@
                     <CheckBox Grid.Column="3" IsChecked="{x:Bind Geb_Reg, Mode=TwoWay}" Style="{StaticResource Category_Item_CheckBox}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="GeistItemX" x:DataType="CharModel:Geist_Sprite">
+            <DataTemplate x:Name="GeistItemX" x:DataType="CharModel:Geist">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -1211,7 +1211,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource Geist_SpriteItem}"/>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource GeistItem}"/>
                     <StackPanel Grid.Row="1" Orientation="Vertical">
                         <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                         <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
@@ -1230,7 +1230,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="TraditionItem" x:DataType="CharModel:Tradition_Initiation">
+            <DataTemplate x:Name="TraditionItem" x:DataType="CharModel:Tradition">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -1249,11 +1249,11 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" x:Uid="Model_Tradition_Initiation_Bezeichner"  Style="{StaticResource Category_Item_Text_Bold}"/>
+                        <TextBlock Grid.Column="0" x:Uid="Model_Tradition_Bezeichner"  Style="{StaticResource Category_Item_Text_Bold}"/>
                         <TextBlock Grid.Column="1"  Style="{StaticResource Category_Item_Text}">
                             <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                         </TextBlock>
-                        <TextBlock Grid.Column="2" x:Uid="Model_Tradition_Initiation_Wert"  Style="{StaticResource Category_Item_Text_Bold}"/>
+                        <TextBlock Grid.Column="2" x:Uid="Model_Tradition_Wert"  Style="{StaticResource Category_Item_Text_Bold}"/>
                         <TextBlock Grid.Column="3">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/>
                             <Run x:Uid="Space"/>
@@ -1261,14 +1261,14 @@
                         </TextBlock>
                     </Grid>
                     <StackPanel Grid.Row="1">
-                        <TextBlock x:Uid="Model_Tradition_Initiation_Schutzpatron"  Style="{StaticResource Category_Item_Text_Bold}"/>
+                        <TextBlock x:Uid="Model_Tradition_Schutzpatron"  Style="{StaticResource Category_Item_Text_Bold}"/>
                         <TextBlock Text="{x:Bind Schutzpatron, Mode=OneWay}" Style="{StaticResource Category_Item_Text}"/>
                     </StackPanel>
-                    <TextBlock x:Uid="Model_Tradition_Initiation_Metamagie" Grid.Row="2" Style="{StaticResource Category_Item_Text_Bold}"/>
+                    <TextBlock x:Uid="Model_Tradition_Metamagie" Grid.Row="2" Style="{StaticResource Category_Item_Text_Bold}"/>
                     <TextBlock Text="{x:Bind Metamagie, Mode=OneWay}" Grid.Row="3" Style="{StaticResource Category_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="TraditionItemX" x:DataType="CharModel:Tradition_Initiation">
+            <DataTemplate x:Name="TraditionItemX" x:DataType="CharModel:Tradition">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -1278,7 +1278,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource Tradition_InitiationItem}"/>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource TraditionItem}"/>
                     <StackPanel Grid.Row="1" Orientation="Vertical">
                         <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                         <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
@@ -1291,7 +1291,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="StroemungItem" x:DataType="CharModel:Stroemung_Wandlung">
+            <DataTemplate x:Name="StroemungItem" x:DataType="CharModel:Stroemung">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -1310,11 +1310,11 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" x:Uid="Model_Stroemung_Wandlung_Bezeichner"  Style="{StaticResource Category_Item_Text_Bold}"/>
+                        <TextBlock Grid.Column="0" x:Uid="Model_Stroemung_Bezeichner"  Style="{StaticResource Category_Item_Text_Bold}"/>
                         <TextBlock Grid.Column="1"  Style="{StaticResource Category_Item_Text}">
                             <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                         </TextBlock>
-                        <TextBlock Grid.Column="2" x:Uid="Model_Stroemung_Wandlung_Wert"  Style="{StaticResource Category_Item_Text_Bold}"/>
+                        <TextBlock Grid.Column="2" x:Uid="Model_Stroemung_Wert"  Style="{StaticResource Category_Item_Text_Bold}"/>
                         <TextBlock Grid.Column="3">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/>
                             <Run x:Uid="Space"/>
@@ -1322,14 +1322,14 @@
                         </TextBlock>
                     </Grid>
                     <StackPanel Grid.Row="1">
-                        <TextBlock x:Uid="Model_Stroemung_Wandlung_Paragon" Style="{StaticResource Category_Item_Text_Bold}"/>
+                        <TextBlock x:Uid="Model_Stroemung_Paragon" Style="{StaticResource Category_Item_Text_Bold}"/>
                         <TextBlock Text="{x:Bind Paragon, Mode=OneWay}" Style="{StaticResource Category_Item_Text}"/>
                     </StackPanel>
-                    <TextBlock x:Uid="Model_Stroemung_Wandlung_Echos" Grid.Row="2" Style="{StaticResource Category_Item_Text_Bold}"/>
+                    <TextBlock x:Uid="Model_Stroemung_Echos" Grid.Row="2" Style="{StaticResource Category_Item_Text_Bold}"/>
                     <TextBlock Text="{x:Bind Echos, Mode=OneWay}" Grid.Row="3" Style="{StaticResource Category_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="StroemungItemX" x:DataType="CharModel:Stroemung_Wandlung">
+            <DataTemplate x:Name="StroemungItemX" x:DataType="CharModel:Stroemung">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -1339,7 +1339,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource Stroemung_WandlungItem}"/>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource StroemungItem}"/>
                     <StackPanel Grid.Row="1" Orientation="Vertical">
                         <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                         <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
@@ -1611,7 +1611,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource Stroemung_WandlungItem}"/>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource StroemungItem}"/>
                     <StackPanel Grid.Row="1" Orientation="Vertical">
                         <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                         <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>

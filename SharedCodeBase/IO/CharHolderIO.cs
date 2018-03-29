@@ -82,6 +82,10 @@ namespace ShadowRunHelper.IO
             List<(string old, string @new)> replacements = new List<(string old, string @new)>
             {
                 //("\"CTRLAdeptenkraft_KomplexeForm\"", "\"CTRLAdeptenkraft\"")
+                //("\"CTRLFoki_Widgets\"", "\"CTRLFoki\"")
+                //("\"CTRLGeist_Sprite\"", "\"CTRLGeist\"")
+                //("\"CTRLStroemung_Wandlung\"", "\"CTRLStroemung\"")
+                //("\"CTRLTradition_Initiation\"", "\"CTRLTradition\"")
             };
             foreach (var (old, @new) in replacements)
             {

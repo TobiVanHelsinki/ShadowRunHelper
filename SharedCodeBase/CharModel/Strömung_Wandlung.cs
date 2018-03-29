@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Stroemung_Wandlung : Thing
+    public class Stroemung : Thing
     {
         // Bezeichner ist Stroemung
         // Wert ist Wandlungsgrad

@@ -130,24 +130,24 @@ namespace ShadowRunHelper
                     NewTemplateX = PanzerungItemX;
                     break;
                 case (int)ThingDefs.Adeptenkraft:
-                    NewTemplate = Adeptenkraft_KomplexeFormItem;
-                    NewTemplateX = Adeptenkraft_KomplexeFormItemX;
+                    NewTemplate = AdeptenkraftItem;
+                    NewTemplateX = AdeptenkraftItemX;
                     break;
                 case (int)ThingDefs.Geist:
-                    NewTemplate = Geist_SpriteItem;
-                    NewTemplateX = Geist_SpriteItemX;
+                    NewTemplate = GeistItem;
+                    NewTemplateX = GeistItemX;
                     break;
                 case (int)ThingDefs.Foki:
-                    NewTemplate = Foki_WidgetsItem;
-                    NewTemplateX = Foki_WidgetsItemX;
+                    NewTemplate = FokiItem;
+                    NewTemplateX = FokiItemX;
                     break;
                 case (int)ThingDefs.Stroemung:
-                    NewTemplate = Stroemung_WandlungItem;
-                    NewTemplateX = Stroemung_WandlungItemX;
+                    NewTemplate = StroemungItem;
+                    NewTemplateX = StroemungItemX;
                     break;
                 case (int)ThingDefs.Tradition:
-                    NewTemplate = Tradition_InitiationItem;
-                    NewTemplateX = Tradition_InitiationItemX;
+                    NewTemplate = TraditionItem;
+                    NewTemplateX = TraditionItemX;
                     break;
                 case (int)ThingDefs.Zaubersprueche:
                     NewTemplate = ZauberspruecheItem;
@@ -306,32 +306,32 @@ namespace ShadowRunHelper
                     LV.ItemTemplate = PanzerungItem;
                     break;
                 case (int)ThingDefs.Adeptenkraft:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Adeptenkraft_KomplexeFormM_/Text");
-                    LV.ItemsSource = CurrentChar.CTRLAdeptenkraft_KomplexeForm.Data;
-                    E.ContentTemplate = this.Adeptenkraft_KomplexeForm_E;
-                    LV.ItemTemplate = Adeptenkraft_KomplexeFormItem;
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_AdeptenkraftM_/Text");
+                    LV.ItemsSource = CurrentChar.CTRLAdeptenkraft.Data;
+                    E.ContentTemplate = this.Adeptenkraft_E;
+                    LV.ItemTemplate = AdeptenkraftItem;
                     break;
                 case (int)ThingDefs.Geist:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Geist_SpriteM_/Text");
-                    LV.ItemsSource = CurrentChar.CTRLGeist_Sprite.Data;
-                    E.ContentTemplate = this.Geist_Sprite_E;
-                    LV.ItemTemplate = Geist_SpriteItem;
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_GeistM_/Text");
+                    LV.ItemsSource = CurrentChar.CTRLGeist.Data;
+                    E.ContentTemplate = this.Geist_E;
+                    LV.ItemTemplate = GeistItem;
                     break;
                 case (int)ThingDefs.Foki:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Foki_WidgetsM_/Text");
-                    LV.ItemsSource = CurrentChar.CTRLFoki_Widgets.Data;
-                    E.ContentTemplate = this.Foki_Widgets_E;
-                    LV.ItemTemplate = Foki_WidgetsItem;
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_FokiM_/Text");
+                    LV.ItemsSource = CurrentChar.CTRLFoki.Data;
+                    E.ContentTemplate = this.Foki_E;
+                    LV.ItemTemplate = FokiItem;
                     break;
                 case (int)ThingDefs.Stroemung:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Stroemung_WandlungM_/Text");
-                    LV.ItemsSource = CurrentChar.CTRLStroemung_Wandlung.Data;
-                    LV.ItemTemplate = Stroemung_WandlungItem;
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_StroemungM_/Text");
+                    LV.ItemsSource = CurrentChar.CTRLStroemung.Data;
+                    LV.ItemTemplate = StroemungItem;
                     break;
                 case (int)ThingDefs.Tradition:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Tradition_InitiationM_/Text");
-                    LV.ItemsSource = CurrentChar.CTRLTradition_Initiation.Data;
-                    LV.ItemTemplate = Tradition_InitiationItem;
+                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_TraditionM_/Text");
+                    LV.ItemsSource = CurrentChar.CTRLTradition.Data;
+                    LV.ItemTemplate = TraditionItem;
                     break;
                 case (int)ThingDefs.Zaubersprueche:
                     U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ZauberspruecheM_/Text");

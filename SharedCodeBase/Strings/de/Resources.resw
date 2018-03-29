@@ -423,7 +423,7 @@
   <data name="UI_CharVerwaltung_Btn_Laden.Label" xml:space="preserve">
     <value>Laden</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Echos.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Echos.Text" xml:space="preserve">
     <value>Echos</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Neu.Label" xml:space="preserve">
@@ -459,7 +459,7 @@
   <data name="Model_Person_Geschlecht.Text" xml:space="preserve">
     <value>Geschlecht</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_.Text" xml:space="preserve">
+  <data name="Model_Stroemung_.Text" xml:space="preserve">
     <value>Strömung</value>
   </data>
   <data name="Model_Person_Gewicht.Text" xml:space="preserve">
@@ -515,7 +515,7 @@
   <data name="UI_Optionen_AutoSave_Header.Text" xml:space="preserve">
     <value>Char bei Änderungen automatisch Speichern?</value>
   </data>
-  <data name="Model_Stroemung_WandlungM_.Text" xml:space="preserve">
+  <data name="Model_StroemungM_.Text" xml:space="preserve">
     <value>Strömungen</value>
   </data>
   <data name="UI_Optionen_LoadOnStart_Header.Text" xml:space="preserve">
@@ -527,7 +527,7 @@
   <data name="UI_Char_Schaden_Geist.Text" xml:space="preserve">
     <value>Geistig</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Wert.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Wert.Text" xml:space="preserve">
     <value>Grad</value>
   </data>
   <data name="UI_Char_Schaden_Matrix.Text" xml:space="preserve">
@@ -645,7 +645,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Model_Eigenschaft_Auswirkungen.Text" xml:space="preserve">
     <value>Auswirkungen</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Paragon.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Paragon.Text" xml:space="preserve">
     <value>Paragon</value>
   </data>
   <data name="Model_Zaubersprueche_Entzug.Text" xml:space="preserve">
@@ -759,34 +759,34 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Model_Attribut_Magie.Text" xml:space="preserve">
     <value>Magie</value>
   </data>
-  <data name="Model_Adeptenkraft_KomplexeFormM_.Text" xml:space="preserve">
+  <data name="Model_AdeptenkraftM_.Text" xml:space="preserve">
     <value>Adeptenkräfte</value>
   </data>
-  <data name="Model_Adeptenkraft_KomplexeForm_.Text" xml:space="preserve">
+  <data name="Model_Adeptenkraft_.Text" xml:space="preserve">
     <value>Adeptenkraft</value>
   </data>
-  <data name="Model_Adeptenkraft_KomplexeForm_Option.Text" xml:space="preserve">
+  <data name="Model_Adeptenkraft_Option.Text" xml:space="preserve">
     <value>Option</value>
   </data>
   <data name="Model_Attribut_Resonanz.Text" xml:space="preserve">
     <value>Resonanz</value>
   </data>
-  <data name="Model_Foki_WidgetsM_.Text" xml:space="preserve">
+  <data name="Model_FokiM_.Text" xml:space="preserve">
     <value>Foki</value>
   </data>
-  <data name="Model_Foki_Widgets_.Text" xml:space="preserve">
+  <data name="Model_Foki_.Text" xml:space="preserve">
     <value>Foki</value>
   </data>
-  <data name="Model_Geist_SpriteM_.Text" xml:space="preserve">
+  <data name="Model_GeistM_.Text" xml:space="preserve">
     <value>Geister</value>
   </data>
-  <data name="Model_Geist_Sprite_.Text" xml:space="preserve">
+  <data name="Model_Geist_.Text" xml:space="preserve">
     <value>Geist</value>
   </data>
-  <data name="Model_Geist_Sprite_Dienste.Text" xml:space="preserve">
+  <data name="Model_Geist_Dienste.Text" xml:space="preserve">
     <value>Dienste</value>
   </data>
-  <data name="Model_Geist_Sprite_Geb_Reg.Text" xml:space="preserve">
+  <data name="Model_Geist_Geb_Reg.Text" xml:space="preserve">
     <value>Gebunden</value>
   </data>
   <data name="Model_Person_Geburtstag.Text" xml:space="preserve">
@@ -819,25 +819,25 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Model_Waffe_Praezision.Text" xml:space="preserve">
     <value>Präzision</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Bezeichner.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Model_Tradition_InitiationM_.Text" xml:space="preserve">
+  <data name="Model_TraditionM_.Text" xml:space="preserve">
     <value>Traditionen</value>
   </data>
-  <data name="Model_Tradition_Initiation_.Text" xml:space="preserve">
+  <data name="Model_Tradition_.Text" xml:space="preserve">
     <value>Tradition</value>
   </data>
-  <data name="Model_Tradition_Initiation_Bezeichner.Text" xml:space="preserve">
+  <data name="Model_Tradition_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Model_Tradition_Initiation_Metamagie.Text" xml:space="preserve">
+  <data name="Model_Tradition_Metamagie.Text" xml:space="preserve">
     <value>Metamagie</value>
   </data>
-  <data name="Model_Tradition_Initiation_Schutzpatron.Text" xml:space="preserve">
+  <data name="Model_Tradition_Schutzpatron.Text" xml:space="preserve">
     <value>Schutzpatron</value>
   </data>
-  <data name="Model_Tradition_Initiation_Wert.Text" xml:space="preserve">
+  <data name="Model_Tradition_Wert.Text" xml:space="preserve">
     <value>Grad</value>
   </data>
   <data name="Model_Panzerung_Kapazitaet.Text" xml:space="preserve">

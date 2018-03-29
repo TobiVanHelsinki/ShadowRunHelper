@@ -237,19 +237,19 @@ namespace ShadowRunHelper.Win.UI
                         ListView.ItemsSource = Model.MainObject.CTRLPanzerung.Data;
                         break;
                     case ThingDefs.Adeptenkraft:
-                        ListView.ItemsSource = Model.MainObject.CTRLAdeptenkraft_KomplexeForm.Data;
+                        ListView.ItemsSource = Model.MainObject.CTRLAdeptenkraft.Data;
                         break;
                     case ThingDefs.Geist:
-                        ListView.ItemsSource = Model.MainObject.CTRLGeist_Sprite.Data;
+                        ListView.ItemsSource = Model.MainObject.CTRLGeist.Data;
                         break;
                     case ThingDefs.Foki:
-                        ListView.ItemsSource = Model.MainObject.CTRLFoki_Widgets.Data;
+                        ListView.ItemsSource = Model.MainObject.CTRLFoki.Data;
                         break;
                     case ThingDefs.Stroemung:
-                        ListView.ItemsSource = Model.MainObject.CTRLStroemung_Wandlung.Data;
+                        ListView.ItemsSource = Model.MainObject.CTRLStroemung.Data;
                         break;
                     case ThingDefs.Tradition:
-                        ListView.ItemsSource = Model.MainObject.CTRLTradition_Initiation.Data;
+                        ListView.ItemsSource = Model.MainObject.CTRLTradition.Data;
                         break;
                     case ThingDefs.Zaubersprueche:
                         ListView.ItemsSource = Model.MainObject.CTRLZaubersprueche.Data;

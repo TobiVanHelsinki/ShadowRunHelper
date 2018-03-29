@@ -293,8 +293,8 @@
                     <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>
                     <TextBlock Grid.Column="2" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
                     <TextBlock Grid.Column="3" x:Uid="Model_Thing_Wert"  Style="{StaticResource Category_Head_Items}"/>
-                    <TextBlock Grid.Column="4" x:Uid="Model_Geist_Sprite_Dienste" Style="{StaticResource Category_Head_Items}"/>
-                    <TextBlock Grid.Column="5" x:Uid="Model_Geist_Sprite_Geb_Reg" Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="4" x:Uid="Model_Geist_Dienste" Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="5" x:Uid="Model_Geist_Geb_Reg" Style="{StaticResource Category_Head_Items}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="KomplexeForm_E" x:Key="KomplexeForm_E">

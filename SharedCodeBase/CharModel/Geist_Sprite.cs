@@ -1,6 +1,6 @@
 ﻿namespace ShadowRunHelper.CharModel
 {
-    public class Geist_Sprite : Item
+    public class Geist : Item
     {
         string _Dienste = "";
         [Used_UserAttribute]

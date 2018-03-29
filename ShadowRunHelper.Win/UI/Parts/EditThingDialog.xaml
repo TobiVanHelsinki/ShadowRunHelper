@@ -324,7 +324,7 @@
                     <TextBox TabIndex="10" Name="Gewicht" Text="{x:Bind Gewicht, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="4"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Adeptenkraft_KomplexeForm" x:DataType="CharModel:Adeptenkraft_KomplexeForm">
+            <DataTemplate x:Name="Adeptenkraft" x:DataType="CharModel:Adeptenkraft">
                 <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -337,7 +337,7 @@
                     <TextBox TabIndex="10" Name="Optionen" Text="{x:Bind Option, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Foki_Widgets" x:DataType="CharModel:Foki_Widgets">
+            <DataTemplate x:Name="Foki" x:DataType="CharModel:Foki">
                 <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -373,7 +373,7 @@
                     <TextBox TabIndex="10" Text="{x:Bind Reichweite, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Geist_Sprite" x:DataType="CharModel:Geist_Sprite">
+            <DataTemplate x:Name="Geist" x:DataType="CharModel:Geist">
                 <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -386,11 +386,11 @@
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="0"/>
                     <TextBox TabIndex="10" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Geist_Sprite_Dienste" Grid.Column="2" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Geist_Dienste" Grid.Column="2" Grid.Row="0"/>
                     <TextBox TabIndex="10" Text="{x:Bind Dienste, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Tradition_Initiation" x:DataType="CharModel:Tradition_Initiation">
+            <DataTemplate x:Name="Tradition" x:DataType="CharModel:Tradition">
                 <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -400,13 +400,13 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Initiation_Schutzpatron" Grid.Column="0" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Schutzpatron" Grid.Column="0" Grid.Row="0"/>
                     <TextBox TabIndex="10" Text="{x:Bind Schutzpatron, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="0"/>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Initiation_Metamagie" Grid.Column="0" Grid.Row="1"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Metamagie" Grid.Column="0" Grid.Row="1"/>
                     <TextBox TabIndex="10" Text="{x:Bind Metamagie, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="1"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Stroemung_Wandlung" x:DataType="CharModel:Stroemung_Wandlung">
+            <DataTemplate x:Name="Stroemung" x:DataType="CharModel:Stroemung">
                 <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -417,9 +417,9 @@
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Wandlung_Paragon" Grid.Column="0" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Paragon" Grid.Column="0" Grid.Row="0"/>
                     <TextBox TabIndex="10" Text="{x:Bind Paragon, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="0"/>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Wandlung_Echos" Grid.Column="2" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Echos" Grid.Column="2" Grid.Row="0"/>
                     <TextBox TabIndex="10" Text="{x:Bind Echos, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
                 </Grid>
             </DataTemplate>
@@ -462,7 +462,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="0"/>
                     <TextBox TabIndex="10" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Geist_Sprite_Dienste" Grid.Column="2" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Geist_Dienste" Grid.Column="2" Grid.Row="0"/>
                     <TextBox TabIndex="10" Text="{x:Bind Dienste, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
                 </Grid>
             </DataTemplate>
@@ -476,9 +476,9 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Initiation_Schutzpatron" Grid.Column="0" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Schutzpatron" Grid.Column="0" Grid.Row="0"/>
                     <TextBox TabIndex="10" Text="{x:Bind Schutzpatron, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="0"/>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Initiation_Metamagie" Grid.Column="0" Grid.Row="1"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Metamagie" Grid.Column="0" Grid.Row="1"/>
                     <TextBox TabIndex="10" Text="{x:Bind Metamagie, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="1"/>
                 </Grid>
             </DataTemplate>
@@ -493,9 +493,9 @@
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Wandlung_Paragon" Grid.Column="0" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Paragon" Grid.Column="0" Grid.Row="0"/>
                     <TextBox TabIndex="10" Text="{x:Bind Paragon, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="0"/>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Wandlung_Echos" Grid.Column="2" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Echos" Grid.Column="2" Grid.Row="0"/>
                     <TextBox TabIndex="10" Text="{x:Bind Echos, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
                 </Grid>
             </DataTemplate>
