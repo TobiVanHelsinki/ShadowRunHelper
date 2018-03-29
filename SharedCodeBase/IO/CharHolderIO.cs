@@ -82,11 +82,15 @@ namespace ShadowRunHelper.IO
         {
             List<(string old, string @new)> replacements = new List<(string old, string @new)>
             {
+                //Adept Stuff Refactoring
                 ("\"CTRLAdeptenkraft_KomplexeForm\"", "\"CTRLAdeptenkraft\""),
                 ("\"CTRLFoki_Widgets\"", "\"CTRLFoki\""),
                 ("\"CTRLGeist_Sprite\"", "\"CTRLGeist\""),
                 ("\"CTRLStroemung_Wandlung\"", "\"CTRLStroemung\""),
-                ("\"CTRLTradition_Initiation\"", "\"CTRLTradition\"")
+                ("\"CTRLTradition_Initiation\"", "\"CTRLTradition\""),
+                //Linked Thing Stuff
+                ("\"PoolZusammensetzung\"", "\"LinkedThings\""),
+                ("\"Pool\"", "\"WertCalced\""),
             };
             foreach (var (old, @new) in replacements)
             {

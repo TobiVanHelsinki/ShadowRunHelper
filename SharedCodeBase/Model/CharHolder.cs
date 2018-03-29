@@ -293,7 +293,7 @@ namespace ShadowRunHelper.Model
             }
             foreach (var item in CTRLFertigkeit.Data)
             {
-                RepairThingListRefs(item.PoolZusammensetzung, LinkList);
+                RepairThingListRefs(item.LinkedThings, LinkList);
             }
         }
         public IController ThingDef2CTRL(ThingDefs tag)

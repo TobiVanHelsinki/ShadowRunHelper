@@ -119,7 +119,7 @@ namespace ShadowRunHelper.Win.UI
 
         async void FertigkeitenZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, Filter: Fertigkeit.Filter);
+            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Fertigkeit)((Button)sender).DataContext).LinkedThings, Filter: Fertigkeit.Filter);
             await dialog.ShowAsync();
         }
 

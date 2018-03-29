@@ -532,7 +532,7 @@ namespace ShadowRunHelper
                         Loop((item as Handlung).GrenzeZusammensetzung);
                         break;
                     case ThingDefs.Fertigkeit:
-                        Loop((item as Fertigkeit).PoolZusammensetzung);
+                        Loop((item as Fertigkeit).LinkedThings);
                         break;
                     default:
                         break;
