@@ -21,9 +21,25 @@ namespace ShadowRunHelper.Win.UI
 
         private void Initialize()
         {
-            var Name = TypeHelper.ThingDefToString(CurrentThing.ThingType, false);
-            Default = (DataTemplate)Resources[Name + "Item"];
-            Expanded = (DataTemplate)Resources[Name + "ItemX"];
+            var Name = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == CurrentThing.ThingType).DisplayName;
+            if (CurrentThing.ThingType == ThingDefs.Berechnet)
+            {
+                if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    System.Diagnostics.Debugger.Break();
+                }
+            }
+            Resources.TryGetValue(Name + "Item", out object val);
+            Default = (DataTemplate)val;
+            Resources.TryGetValue(Name + "ItemX", out val);
+            Expanded = (DataTemplate)val;
+            if (Expanded == null || Default == null)
+            {
+                if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    //System.Diagnostics.Debugger.Break();
+                }
+            }
             SetDefaultTemplate();
         }
 
@@ -33,6 +49,10 @@ namespace ShadowRunHelper.Win.UI
 
         public void SetExpandedTemplate()
         {
+            if (Expanded == null)
+            {
+                return;
+            }
             EntryItem.ContentTemplate = Expanded;
             if (CurrentThing.ThingType == ThingDefs.Handlung)
             {

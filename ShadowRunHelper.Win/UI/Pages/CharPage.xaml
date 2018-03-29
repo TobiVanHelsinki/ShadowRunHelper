@@ -415,18 +415,16 @@
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition x:Name="Attribut_GridColum_3" Width="1*"/>
                                 </Grid.ColumnDefinitions>
-                                <ui:CategoryEntry />
                                 <ui:CategoryEntry x:Name="K1" DataContext="{x:Bind MainObject.CTRLAttribut.Konsti, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <!--<ContentControl x:Name="K1" DataContext="{x:Bind MainObject.CTRLAttribut.Konsti, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>-->
-                                <!--<ContentControl x:Name="K2" DataContext="{x:Bind MainObject.CTRLAttribut.Reaktion, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="K3" DataContext="{x:Bind MainObject.CTRLAttribut.Staerke, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="K4" DataContext="{x:Bind MainObject.CTRLAttribut.Geschick, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="G1" DataContext="{x:Bind MainObject.CTRLAttribut.Logik, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="G2" DataContext="{x:Bind MainObject.CTRLAttribut.Intuition, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="G3" DataContext="{x:Bind MainObject.CTRLAttribut.Willen, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="G4" DataContext="{x:Bind MainObject.CTRLAttribut.Charisma, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="S1" DataContext="{x:Bind MainObject.CTRLAttribut.Magie, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="S2" DataContext="{x:Bind MainObject.CTRLAttribut.Resonanz, Mode=OneWay}" ContentTemplate="{StaticResource AttributItem}" HorizontalContentAlignment="Stretch"/>-->
+                                <ui:CategoryEntry x:Name="K2" DataContext="{x:Bind MainObject.CTRLAttribut.Reaktion, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="K3" DataContext="{x:Bind MainObject.CTRLAttribut.Staerke, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="K4" DataContext="{x:Bind MainObject.CTRLAttribut.Geschick, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="G1" DataContext="{x:Bind MainObject.CTRLAttribut.Logik, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="G2" DataContext="{x:Bind MainObject.CTRLAttribut.Intuition, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="G3" DataContext="{x:Bind MainObject.CTRLAttribut.Willen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="G4" DataContext="{x:Bind MainObject.CTRLAttribut.Charisma, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="S1" DataContext="{x:Bind MainObject.CTRLAttribut.Magie, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="S2" DataContext="{x:Bind MainObject.CTRLAttribut.Resonanz, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
                             </Grid>
                         </StackPanel>
                         <StackPanel Grid.ColumnSpan="3" Grid.Row="1">
@@ -447,22 +445,22 @@
                                     <ColumnDefinition x:Name="Berechnet_GridColum_3" Width="1*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <!--<ContentControl x:Name="B1" DataContext="{x:Bind MainObject.CTRLBerechnet.Essenz, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="L1" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_G, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="L2" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_K, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="L3" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_S, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="B2" DataContext="{x:Bind MainObject.CTRLBerechnet.Laufen, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="B3" DataContext="{x:Bind MainObject.CTRLBerechnet.Rennen, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>
-                                <ContentControl x:Name="B4" DataContext="{x:Bind MainObject.CTRLBerechnet.Tragen, Mode=OneWay}" ContentTemplate="{StaticResource BerechnetItem}" HorizontalContentAlignment="Stretch"/>-->
+                                <ui:CategoryEntry x:Name="B1" DataContext="{x:Bind MainObject.CTRLBerechnet.Essenz, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="L1" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_G, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="L2" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_K, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="L3" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_S, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="B2" DataContext="{x:Bind MainObject.CTRLBerechnet.Laufen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="B3" DataContext="{x:Bind MainObject.CTRLBerechnet.Rennen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="B4" DataContext="{x:Bind MainObject.CTRLBerechnet.Tragen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
                             </Grid>
                         </StackPanel>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Connection"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Implantat"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Tradition"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Stroemung"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Sin"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Initiation"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Wandlung"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="2" ThingType="Connection"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="3" ThingType="Implantat"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="4" ThingType="Tradition"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="5" ThingType="Stroemung"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="6" ThingType="Sin"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="7" ThingType="Initiation"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="8" ThingType="Wandlung"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Vorteil" x:Name="Vorteile" Grid.ColumnSpan="1" Grid.Column="0" Grid.Row="9"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Nachteil" x:Name="Nachteile" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="9"/>
 
