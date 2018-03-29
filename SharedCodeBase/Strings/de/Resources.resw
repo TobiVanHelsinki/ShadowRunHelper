@@ -849,7 +849,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Model_Implantat_Kapazitaet.Text" xml:space="preserve">
     <value>Kapazität</value>
   </data>
-  <data name="Model_FernKampfwaffe_Rueckstoss.Text" xml:space="preserve">
+  <data name="Model_Fernkampfwaffe_RK.Text" xml:space="preserve">
     <value>RK</value>
   </data>
   <data name="Model__Kapazitaet.Text" xml:space="preserve">

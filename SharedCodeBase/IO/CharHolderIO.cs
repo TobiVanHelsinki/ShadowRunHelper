@@ -96,16 +96,16 @@ namespace ShadowRunHelper.IO
                 ("\"Rueckstoss\"", "\"RK\""),
                 
             };
-            string TMP = Input;
+            string Ret = Input;
             foreach (var (old, @new) in replacements)
             {
-                TMP = TMP.Replace(old, @new);
+                Ret = Ret.Replace(old, @new);
             }
-            if (TMP != Input)
+            if (Ret != Input)
             {
                 AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Info_UpgradedChar"));
             }
-            return Input;
+            return Ret;
         }
         public enum PreSavedChar
         {

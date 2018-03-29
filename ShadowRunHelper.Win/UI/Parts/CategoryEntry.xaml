@@ -576,8 +576,8 @@
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind DK, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_FernKampfwaffe_Rueckstoss"/>
-                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Rueckstoss, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Fernkampfwaffe_RK"/>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind RK, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_Praezision"/>

@@ -667,7 +667,7 @@ This is shown in detail at the example-character</value>
   <data name="Model_FernKampfwaffe_Modi.Text" xml:space="preserve">
     <value>Mode</value>
   </data>
-  <data name="Model_FernKampfwaffe_Rueckstoss.Text" xml:space="preserve">
+  <data name="Model_Fernkampfwaffe_RK.Text" xml:space="preserve">
     <value>RC</value>
   </data>
   <data name="Model_Fertigkeit_.Text" xml:space="preserve">

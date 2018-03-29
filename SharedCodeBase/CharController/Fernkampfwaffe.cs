@@ -21,7 +21,7 @@ namespace ShadowRunHelper.CharController
             MI_Wert = new AllListEntry(ActiveItem, ("Model_Waffe_Wert/Text"), "Wert");
             MI_DK = new AllListEntry(ActiveItem, ("Model_Waffe_DK/Text"), "DK");
             MI_Pr = new AllListEntry(ActiveItem, ("Model_Waffe_Praezision/Text"), "Praezision");
-            MI_RK = new AllListEntry(ActiveItem, ("Model_Fernkampfwaffe_Rueckstoss/Text"), "Rueckstoss");
+            MI_RK = new AllListEntry(ActiveItem, ("Model_Fernkampfwaffe_RK/Text"), "RK");
 
             Data.CollectionChanged += Data_CollectionChanged;
         }
