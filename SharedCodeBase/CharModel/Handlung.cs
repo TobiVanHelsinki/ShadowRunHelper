@@ -48,9 +48,9 @@ namespace ShadowRunHelper.CharModel
         public Handlung() : base()
         {
             LinkedThings.SetFilter(Filter);
-            GrenzeZusammensetzung = new ObservableThingListEntryCollection();
+            GrenzeZusammensetzung = new ObservableThingListEntryCollection(this);
             GrenzeZusammensetzung.SetFilter(Filter);
-            GegenZusammensetzung = new ObservableThingListEntryCollection();
+            GegenZusammensetzung = new ObservableThingListEntryCollection(this);
             GegenZusammensetzung.SetFilter(Filter);
 
             GrenzeZusammensetzung.OnCollectionChangedCall(() => { Grenze = GrenzeZusammensetzung.Recalculate(); });

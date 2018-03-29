@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper;
+using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
@@ -18,12 +19,35 @@ namespace ShadowRunHelper.Model
         IEnumerable<ThingDefs> ForbiddenThingTypes;
         protected override void InsertItem(int index, AllListEntry item)
         {
-            if (item?.Object != null && ForbiddenThingTypes != null && !ForbiddenThingTypes.Contains(item.Object.ThingType))
+            if (item?.Object != null && ForbiddenThingTypes != null 
+            && !ForbiddenThingTypes.Contains(item.Object.ThingType)
+            && !HasCircularReference(item.Object))
             {
                 base.InsertItem(index, item);
             }
         }
+
+        bool HasCircularReference(Thing thing)
+        {
+            foreach (var item in thing.LinkedThings)
+            {
+                if (item.Object == thisThing)
+                {
+                    return true;
+                }
+                return HasCircularReference(item.Object);
+            }
+            return true;
+        }
+
         Action CurrentTODO;
+        Thing thisThing;
+
+        public ObservableThingListEntryCollection(Thing thing)
+        {
+            thisThing = thing;
+        }
+
         public void OnCollectionChangedCall(Action TODO)
         {
             if (CurrentTODO != null)

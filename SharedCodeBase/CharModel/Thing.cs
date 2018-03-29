@@ -44,6 +44,7 @@ namespace ShadowRunHelper.CharModel
         #endregion
         public Thing()
         {
+            LinkedThings = new ObservableThingListEntryCollection(this);
             ThingType = TypeHelper.TypeToThingDef(GetType());
             LinkedThings.OnCollectionChangedCall(OnLinkedThingsChanged);
             PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") OnLinkedThingsChanged(); };
@@ -137,7 +138,7 @@ namespace ShadowRunHelper.CharModel
 
         #endregion
         #region Calculations
-        ObservableThingListEntryCollection _LinkedThings = new ObservableThingListEntryCollection();
+        ObservableThingListEntryCollection _LinkedThings;
         [Used_List]
         public ObservableThingListEntryCollection LinkedThings
         {
