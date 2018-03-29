@@ -23,7 +23,7 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return CrossPlatformHelper.GetString(item.DisplayName);
+                        return CrossPlatformHelper.GetString("Model__Active/Text") + CrossPlatformHelper.GetString(item.DisplayName);
                     }
                 case "BezeichnerLang":
                     if (item?.PropertyID == "")

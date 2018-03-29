@@ -1,10 +1,9 @@
-﻿handlung wert undso als mods
+﻿
 -----------------------------------------------------
 Verknüpfungen:
 Modell für Cirkelbezüge erfinden
 
 -----------------------------------------------------
-* BEssere stirngs für aktive elemente
 * Repeat button und button relativ zum anklickgerät
 
 ---------- Ideen für später -------------------------------

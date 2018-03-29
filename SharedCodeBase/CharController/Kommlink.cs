@@ -54,6 +54,7 @@ namespace ShadowRunHelper.CharController
             lstReturn.Add(MI_V);
             lstReturn.Add(MI_F);
             lstReturn.Add(MI_D);
+            lstReturn.AddRange(Data.Select(item => new AllListEntry(item)));
             return lstReturn;
         }
     }
