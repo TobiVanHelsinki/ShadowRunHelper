@@ -165,8 +165,8 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" x:Uid="Model_Item_Aktiv"  Style="{StaticResource Category_Head_Items}"/>
                     <TextBlock Grid.Column="1" x:Uid="Model_Item_Besitz"  Style="{StaticResource Category_Head_Items}"/>

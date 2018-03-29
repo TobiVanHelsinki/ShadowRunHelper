@@ -1339,4 +1339,10 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Model_Person_Schaden_K_max_mod.Text" xml:space="preserve">
     <value>Max.K-Schaden modifier</value>
   </data>
+  <data name="Model__ORG.Text" xml:space="preserve">
+    <value>Org.</value>
+  </data>
+  <data name="Model__Mod.Text" xml:space="preserve">
+    <value>Mod.</value>
+  </data>
 </root>

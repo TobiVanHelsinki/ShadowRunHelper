@@ -37,6 +37,10 @@ namespace ShadowRunHelper.UI.Converter
                     return " [" + value + "]";
                 case "Space":
                     return " " + value + " ";
+                case "SpaceL":
+                    return " " + value;
+                case "SpaceR":
+                    return value + " ";
                 case "DashR":
                     return " - " + value;
                 case "DashL":

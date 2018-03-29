@@ -3,20 +3,16 @@
 Verknüpfungen:
 Modell für Cirkelbezüge erfinden
 
-UI-Converter überall einsetzen
-UI: Originalwerte in die details verschieben 
-
-UI überall anpassen:
-TODO im Einzelnen:
-* Filter erstellen
-* UI Elemente (Button und Liste einfügen)
-
----------------------------------------------------
-
-Max schaden bei berechneten werten
-schaden overflow einarbeiten
-
 -----------------------------------------------------
-* Cat entrys klappen sich manchmal nicht auf / manchmal einfach zu 
 * BEssere stirngs für aktive elemente
-* 
+* Repeat button und button relativ zum anklickgerät
+
+---------- Ideen für später -------------------------------
+
+* Max schaden bei berechneten werten
+* schaden overflow einarbeiten
+
+---------- Zukünftiges TODO für Verknüpfungen -------------
+* Filter anlegen und im Konstruktor setzen
+* Im UI Template Button, Liste und OriginalWerte angeben
+* im LinkedEntryEdit Handler spezialfälle einstellen

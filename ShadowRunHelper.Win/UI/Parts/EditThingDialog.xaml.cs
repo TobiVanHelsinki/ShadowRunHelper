@@ -32,6 +32,7 @@ namespace ShadowRunHelper.UI.Edit
                 case ThingDefs.Handlung:
                     Col3.Width = new GridLength(0, GridUnitType.Star);
                     Wert.Visibility = Visibility.Collapsed;
+                    EditType.ContentTemplate = Handlung;
                     break;
                 case ThingDefs.Fertigkeit:
                     break;

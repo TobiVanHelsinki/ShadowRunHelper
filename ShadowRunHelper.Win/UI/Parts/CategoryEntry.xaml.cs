@@ -18,10 +18,10 @@ namespace ShadowRunHelper.Win.UI
             InitializeComponent();
             DataContextChanged += (x,y) => Initialize();
         }
-
+        bool Initialized;
         private void Initialize()
         {
-            if (CurrentThing == null)
+            if (Initialized || CurrentThing == null)
             {
                 return;
             }
@@ -39,6 +39,7 @@ namespace ShadowRunHelper.Win.UI
                 Expanded = (DataTemplate)val;
             }
             SetDefaultTemplate();
+            Initialized = true;
         }
 
 

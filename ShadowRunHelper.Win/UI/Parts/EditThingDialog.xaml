@@ -29,7 +29,13 @@
                     <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.ColumnSpan="3"/>
                 </Grid>
             </DataTemplate>
-
+            <DataTemplate x:Name="Handlung" x:DataType="CharModel:Handlung">
+                <StackPanel Orientation="Horizontal" x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Wert"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model__Mod"/>
+                    <TextBox TabIndex="10" x:Name="Anzahl" Text="{x:Bind Wert, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                </StackPanel>
+            </DataTemplate>
             <DataTemplate x:Name="Attribut"  x:DataType="CharModel:Attribut">
                 <StackPanel Orientation="Vertical" x:Name="MainGrid" Loaded="MainGrid_Loaded">
                     <Button x:Uid="UI_Btn_Bearbeiten_LinkedThings" Click="AttributZusammensetzungBearbeiten"  Style="{StaticResource STD_Button}"/>
