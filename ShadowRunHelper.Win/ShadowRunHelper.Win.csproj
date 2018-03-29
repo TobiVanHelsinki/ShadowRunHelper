@@ -127,7 +127,6 @@
     <Compile Include="UI\Converter\io_Zahlen.cs" />
     <Compile Include="UI\Converter\o_CharAdmin_Path.cs" />
     <Compile Include="UI\Converter\o_FileSize.cs" />
-    <Compile Include="UI\Converter\o_ModelTyp.cs" />
     <Compile Include="UI\Converter\o_ThingDef2String.cs" />
     <Compile Include="UI\Converter\o_AllListEntry.cs" />
     <Compile Include="UI\Converter\o_ZahlenYen.cs" />

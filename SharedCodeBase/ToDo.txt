@@ -1,7 +1,8 @@
 ﻿
 --------Aktuelles---------------------------------------------
 * Verknüpfungen Modell für Cirkelbezüge verbessern
-* Verknüpfungen Speichern geht nicht
+* Verknüpfungen Speichern geht (manchmal?) nicht
+* Version aus dem debug string auslesen geht nicht
 -----------------------------------------------------
 * button relativ zum anklickgerät
 https://msdn.microsoft.com/en-us/library/system.windows.controls.primitives.buttonbase.click(v=vs.110).aspx

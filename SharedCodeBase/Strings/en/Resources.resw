@@ -1315,4 +1315,10 @@ This is shown in detail at the example-character</value>
   <data name="Model__Mod.Text" xml:space="preserve">
     <value>Mod.</value>
   </data>
+  <data name="Notification_Info_UpgradedChar_1_5_to_1_6" xml:space="preserve">
+    <value>Your char was upgraded to the newest version. you cannot open it in older app versions properly.</value>
+  </data>
+  <data name="Notification_Warning_NotAddLinkedEntry" xml:space="preserve">
+    <value>Warning: Could not add reference "{0}" to List</value>
+  </data>
 </root>

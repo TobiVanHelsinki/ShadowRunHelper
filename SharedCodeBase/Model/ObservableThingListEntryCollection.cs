@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper.Model
 {
@@ -24,6 +25,10 @@ namespace ShadowRunHelper.Model
             && !HasCircularReference(item.Object))
             {
                 base.InsertItem(index, item);
+            }
+            else
+            {
+                AppModel.Instance.NewNotification(String.Format(CrossPlatformHelper.GetString("Notification_Warning_NotAddLinkedEntry"),item.Object.Bezeichner));
             }
         }
 

@@ -1348,4 +1348,10 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Model__Mod.Text" xml:space="preserve">
     <value>Mod.</value>
   </data>
+  <data name="Notification_Info_UpgradedChar_1_5_to_1_6" xml:space="preserve">
+    <value>Ihr Char wurde auf die neuste Version geupgraded. Er kann nicht mehr vollständig in alten App Versionen geladen werden.</value>
+  </data>
+  <data name="Notification_Warning_NotAddLinkedEntry" xml:space="preserve">
+    <value>Warnung: Referenz "{0}" konnte nicht gesetzt werden.</value>
+  </data>
 </root>
