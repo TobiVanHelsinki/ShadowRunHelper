@@ -5,7 +5,7 @@ using Windows.UI.Xaml.Data;
 using System.Linq;
 using ShadowRunHelper.Model;
 using Shared;
-using TLIB_UWPFRAME.Resources;
+using TLIB;
 
 namespace ShadowRunHelper
 {

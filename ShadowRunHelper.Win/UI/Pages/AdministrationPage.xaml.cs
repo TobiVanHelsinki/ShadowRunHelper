@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using Windows.ApplicationModel.Core;
@@ -281,10 +282,10 @@ namespace ShadowRunHelper
                     ViewModel.NewNotification(res.GetString("Notification_Error_DelFail"), ex);
                 }
             }
-            await ShowMessageDialog(CrossPlatformHelper.GetString("Request_Delete/Title")
-    , CrossPlatformHelper.GetString("Request_Delete/Text")
-    , CrossPlatformHelper.GetString("Request_Delete/Yes")
-    , CrossPlatformHelper.GetString("Request_Delete/No")
+            await ShowMessageDialog(StringHelper.GetString("Request_Delete/Title")
+    , StringHelper.GetString("Request_Delete/Text")
+    , StringHelper.GetString("Request_Delete/Yes")
+    , StringHelper.GetString("Request_Delete/No")
     , Delete);
             await Summorys_Aktualisieren();
             SettingsModel.I.CountDeletions++;
@@ -344,10 +345,10 @@ namespace ShadowRunHelper
                 await Summorys_Aktualisieren();
             }
 
-            await ShowMessageDialog(CrossPlatformHelper.GetString("Request_DeleteAll/Title")
-                , CrossPlatformHelper.GetString("Request_DeleteAll/Text")
-                , CrossPlatformHelper.GetString("Request_DeleteAll/Yes")
-                , CrossPlatformHelper.GetString("Request_DeleteAll/No")
+            await ShowMessageDialog(StringHelper.GetString("Request_DeleteAll/Title")
+                , StringHelper.GetString("Request_DeleteAll/Text")
+                , StringHelper.GetString("Request_DeleteAll/Yes")
+                , StringHelper.GetString("Request_DeleteAll/No")
                 , Delete_All);
         }
 

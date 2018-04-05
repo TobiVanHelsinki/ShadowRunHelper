@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using TLIB;
 using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper.CharController
@@ -75,16 +76,16 @@ namespace ShadowRunHelper.CharController
 
         void RefreshBezeichner()
         {
-            Konsti.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Konsti/Text");
-            Geschick.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Geschick/Text");
-            Reaktion.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Reaktion/Text");
-            Staerke.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Staerke/Text");
-            Charisma.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Charisma/Text");
-            Logik.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Logik/Text");
-            Intuition.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Intuition/Text");
-            Willen.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Willen/Text");
-            Magie.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Magie/Text");
-            Resonanz.Bezeichner = CrossPlatformHelper.GetString("Model_Attribut_Resonanz/Text");
+            Konsti.Bezeichner = StringHelper.GetString("Model_Attribut_Konsti/Text");
+            Geschick.Bezeichner = StringHelper.GetString("Model_Attribut_Geschick/Text");
+            Reaktion.Bezeichner = StringHelper.GetString("Model_Attribut_Reaktion/Text");
+            Staerke.Bezeichner = StringHelper.GetString("Model_Attribut_Staerke/Text");
+            Charisma.Bezeichner = StringHelper.GetString("Model_Attribut_Charisma/Text");
+            Logik.Bezeichner = StringHelper.GetString("Model_Attribut_Logik/Text");
+            Intuition.Bezeichner = StringHelper.GetString("Model_Attribut_Intuition/Text");
+            Willen.Bezeichner = StringHelper.GetString("Model_Attribut_Willen/Text");
+            Magie.Bezeichner = StringHelper.GetString("Model_Attribut_Magie/Text");
+            Resonanz.Bezeichner = StringHelper.GetString("Model_Attribut_Resonanz/Text");
         }
 
         // DataList Handling ##############################

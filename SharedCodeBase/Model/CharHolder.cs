@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
@@ -101,9 +102,9 @@ namespace ShadowRunHelper.Model
                 strSaveName += Person.Char_Typ == string.Empty ? "$$" : Person.Char_Typ;
                 strSaveName += ",";
                 strSaveName += Person.Runs.ToString();
-                strSaveName += CrossPlatformHelper.GetString("Model_Person_Runs/Text") + ",";
+                strSaveName += StringHelper.GetString("Model_Person_Runs/Text") + ",";
                 strSaveName += Person.Karma_Gesamt.ToString();
-                strSaveName += CrossPlatformHelper.GetString("Model_Person_Karma/Text");
+                strSaveName += StringHelper.GetString("Model_Person_Karma/Text");
             }
             strSaveName += UseDate ? "_" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + "_" + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second : "";
             strSaveName += postfix;
@@ -264,7 +265,7 @@ namespace ShadowRunHelper.Model
                     }
                     else
                     {
-                        AppModel.Instance.NewNotification(String.Format(CrossPlatformHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
+                        AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }
                 SourceCollection.Clear();

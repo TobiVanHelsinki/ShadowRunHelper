@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.Model;
 
@@ -200,11 +201,11 @@ namespace ShadowRunHelper
             {
                 if (Mehrzahl)
                 {
-                    return CrossPlatformHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
+                    return StringHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
                 }
                 else
                 {
-                    return CrossPlatformHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
+                    return StringHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
                 }
             }
             catch (Exception ex)

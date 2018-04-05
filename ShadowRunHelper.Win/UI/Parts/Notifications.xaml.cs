@@ -6,10 +6,10 @@ using System;
 using System.Linq;
 using ShadowRunHelper.Model;
 using Shared;
-using TLIB_UWPFRAME.Resources;
-using TLIB_UWPFRAME.Model;
+using TLIB;
 using Windows.UI.Xaml;
 using Windows.Foundation.Metadata;
+using TLIB_UWPFRAME.Model;
 
 namespace ShadowRunHelper
 {

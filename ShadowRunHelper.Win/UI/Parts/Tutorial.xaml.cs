@@ -1,6 +1,7 @@
 ﻿using ShadowRunHelper.Model;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.Model;
 using Windows.Foundation.Metadata;
@@ -75,7 +76,7 @@ namespace ShadowRunHelper.UI
             RelativMaxStateCount = Ende-Start;
             
             InitializeComponent();
-            Title = CrossPlatformHelper.GetString(string.Format("Tut_TitleState_{0,0:D2}", Start));
+            Title = StringHelper.GetString(string.Format("Tut_TitleState_{0,0:D2}", Start));
             ViewModel.TutorialStateChanged += StateChanged;
             ViewModel.TutorialChangedState(StateCounter, true);
         }
@@ -86,7 +87,7 @@ namespace ShadowRunHelper.UI
             {
                 try
                 {
-                    TutorialText.Text = CrossPlatformHelper.GetString(string.Format("Tut_State_{0,0:D2}", StateNumber));
+                    TutorialText.Text = StringHelper.GetString(string.Format("Tut_State_{0,0:D2}", StateNumber));
                 }
                 catch (System.Exception ex)
                 {

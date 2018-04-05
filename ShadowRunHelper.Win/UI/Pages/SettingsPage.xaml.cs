@@ -3,6 +3,7 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
@@ -141,7 +142,7 @@ namespace ShadowRunHelper
                 }
                 catch (Exception ex)
                 {
-                    AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Error_SwitchingInterFolder"), ex);
+                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_SwitchingInterFolder"), ex);
                 }
             }
             Intern_Sync_HasFocus = false;

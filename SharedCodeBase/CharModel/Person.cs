@@ -279,7 +279,7 @@ namespace ShadowRunHelper.CharModel
         #endregion
 
         #region Details
-        string alias = TLIB_UWPFRAME.CrossPlatformHelper.GetString("Model_Person_Alias_STD/Text");
+        string alias = TLIB.StringHelper.GetString("Model_Person_Alias_STD/Text");
         [Used_UserAttribute]
         public string Alias
         {

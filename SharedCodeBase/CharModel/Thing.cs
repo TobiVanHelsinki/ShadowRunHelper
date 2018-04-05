@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.Model;
-using TLIB_UWPFRAME.Resources;
+using TLIB;
 using Newtonsoft.Json;
 
 namespace ShadowRunHelper.CharModel
@@ -223,11 +223,11 @@ namespace ShadowRunHelper.CharModel
         #endregion
         public static IEnumerable<PropertyInfo> GetProperties(object obj)
         {
-            return Helper.GetProperties(obj, typeof(Used_UserAttribute));
+            return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute));
         }
         public static IEnumerable<PropertyInfo> GetPropertiesLists(object obj)
         {
-            return Helper.GetProperties(obj, typeof(Used_ListAttribute));
+            return ReflectionHelper.GetProperties(obj, typeof(Used_ListAttribute));
         }
 
         public virtual Thing Copy(Thing target = null)
@@ -241,7 +241,7 @@ namespace ShadowRunHelper.CharModel
                 item.SetValue(target, item.GetValue(this));
             }
 
-            foreach (var pair in Helper.GetProperties(target, typeof(Used_ListAttribute)))
+            foreach (var pair in ReflectionHelper.GetProperties(target, typeof(Used_ListAttribute)))
             {
                 var CollectionTarget = (pair.GetValue(target) as ObservableThingListEntryCollection);
                 var CollectionThis = (pair.GetValue(this) as ObservableThingListEntryCollection);
@@ -272,7 +272,7 @@ namespace ShadowRunHelper.CharModel
                     item.SetValue(this, default);
                 }
             }
-            foreach (var item in Helper.GetProperties(this, typeof(Used_ListAttribute)))
+            foreach (var item in ReflectionHelper.GetProperties(this, typeof(Used_ListAttribute)))
             {
                 (item.GetValue(this) as ObservableThingListEntryCollection).Clear();
             }
@@ -304,14 +304,14 @@ namespace ShadowRunHelper.CharModel
             string strReturn = "";
             foreach (var item in GetProperties(this).Reverse())
             {
-                strReturn += CrossPlatformHelper.GetString("Model_"+ item.DeclaringType.Name + "_"+ item.Name + "/Text");
+                strReturn += StringHelper.GetString("Model_"+ item.DeclaringType.Name + "_"+ item.Name + "/Text");
                 strReturn += Delimiter;
             }
             return strReturn;
         }
         public virtual void FromCSV(Dictionary<string, string> dic)
         {
-            var Props = GetProperties(this).Reverse().Select(p => (CrossPlatformHelper.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"),p));
+            var Props = GetProperties(this).Reverse().Select(p => (StringHelper.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"),p));
             foreach (var item in dic)
             {
                 var currentProp = Props.FirstOrDefault(p => p.Item1 == item.Key);

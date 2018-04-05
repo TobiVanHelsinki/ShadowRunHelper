@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.Model;
 
@@ -94,11 +95,11 @@ namespace ShadowRunHelper
         public const string APP_STORE_REVIEW_LINK = "ms-windows-store://review/?ProductId=9nblggh4rhvx";
 
         public static List<HelpEntry> HelpList = new List<HelpEntry>() {
-            new HelpEntry() { Paragraph = CrossPlatformHelper.GetString("Help4_CharAdministration"), Text = CrossPlatformHelper.GetString("Help4") },
-            new HelpEntry() { Paragraph = CrossPlatformHelper.GetString("Help5_CharAdministration_FileName"), Text = CrossPlatformHelper.GetString("Help5") },
-            new HelpEntry() { Paragraph = CrossPlatformHelper.GetString("Help3_LinkedItems"), Text = CrossPlatformHelper.GetString("Help3") },
-            new HelpEntry() { Paragraph = CrossPlatformHelper.GetString("Help1_ActiveItems"), Text = CrossPlatformHelper.GetString("Help1") },
-            new HelpEntry() { Paragraph = CrossPlatformHelper.GetString("Help2_AutoCalc"), Text = CrossPlatformHelper.GetString("Help2") },
+            new HelpEntry() { Paragraph = StringHelper.GetString("Help4_CharAdministration"), Text = StringHelper.GetString("Help4") },
+            new HelpEntry() { Paragraph = StringHelper.GetString("Help5_CharAdministration_FileName"), Text = StringHelper.GetString("Help5") },
+            new HelpEntry() { Paragraph = StringHelper.GetString("Help3_LinkedItems"), Text = StringHelper.GetString("Help3") },
+            new HelpEntry() { Paragraph = StringHelper.GetString("Help1_ActiveItems"), Text = StringHelper.GetString("Help1") },
+            new HelpEntry() { Paragraph = StringHelper.GetString("Help2_AutoCalc"), Text = StringHelper.GetString("Help2") },
        };
     }
 }

@@ -4,6 +4,7 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
@@ -30,7 +31,7 @@ namespace ShadowRunHelper
         // Navigation Stuff####################################################
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            var SourceFileClass = new FileInfoClass() { Filename = CrossPlatformHelper.GetSimpleCountryCode(Constants.AVAILIBLE_DB_LANGUAGES, Constants.DEFAULT_DB_LANGUAGE) + Constants.DATEIENDUNG_CHAR, Filepath = CrossPlatformHelper.GetPrefix(CrossPlatformHelper.PrefixType.AppPackageData) + "Assets/PreDB/", Fileplace = Place.Assets };
+            var SourceFileClass = new FileInfoClass() { Filename = StringHelper.GetSimpleCountryCode(Constants.AVAILIBLE_DB_LANGUAGES, Constants.DEFAULT_DB_LANGUAGE) + Constants.DATEIENDUNG_CHAR, Filepath = StringHelper.GetPrefix(StringHelper.PrefixType.AppPackageData) + "Assets/PreDB/", Fileplace = Place.Assets };
             CurrentChar = await CharHolderIO.Load(SourceFileClass, eUD: UserDecision.ThrowError);
             InitializeComponent();
 

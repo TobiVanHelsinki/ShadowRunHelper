@@ -2,6 +2,7 @@
 using ShadowRunHelper.Model;
 using System;
 using System.Threading.Tasks;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using Windows.ApplicationModel;
@@ -149,7 +150,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CrossPlatformHelper.GetString("Notification_Error_FileActivation"), ex);
+                Model.NewNotification(StringHelper.GetString("Notification_Error_FileActivation"), ex);
             }
             Launch();
         }

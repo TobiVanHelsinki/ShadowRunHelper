@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using TLIB;
 using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper.CharController
@@ -77,15 +78,15 @@ namespace ShadowRunHelper.CharController
 
         void RefreshBezeichner()
         {
-            Essenz.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Essenz/Text");
-            Limit_K.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Limit_K/Text");
-            Limit_G.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Limit_G/Text");
-            Limit_S.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Limit_S/Text");
-            Laufen.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Laufen/Text");
-            Rennen.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Rennen/Text");
-            Tragen.Bezeichner = CrossPlatformHelper.GetString("Model_Berechnet_Tragen/Text");
-            MaxDamageG.Bezeichner = CrossPlatformHelper.GetString("Model_Person_Schaden_G_max/Text");
-            MaxDamageK.Bezeichner = CrossPlatformHelper.GetString("Model_Person_Schaden_K_max/Text");
+            Essenz.Bezeichner = StringHelper.GetString("Model_Berechnet_Essenz/Text");
+            Limit_K.Bezeichner = StringHelper.GetString("Model_Berechnet_Limit_K/Text");
+            Limit_G.Bezeichner = StringHelper.GetString("Model_Berechnet_Limit_G/Text");
+            Limit_S.Bezeichner = StringHelper.GetString("Model_Berechnet_Limit_S/Text");
+            Laufen.Bezeichner = StringHelper.GetString("Model_Berechnet_Laufen/Text");
+            Rennen.Bezeichner = StringHelper.GetString("Model_Berechnet_Rennen/Text");
+            Tragen.Bezeichner = StringHelper.GetString("Model_Berechnet_Tragen/Text");
+            MaxDamageG.Bezeichner = StringHelper.GetString("Model_Person_Schaden_G_max/Text");
+            MaxDamageK.Bezeichner = StringHelper.GetString("Model_Person_Schaden_K_max/Text");
         }
 
         public void SetDependencies(Person p, ObservableCollection<Implantat> i, AttributController a)
