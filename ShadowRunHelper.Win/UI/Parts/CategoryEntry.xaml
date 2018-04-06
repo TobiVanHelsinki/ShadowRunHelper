@@ -1048,6 +1048,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource EigenschaftItem}"/>
                     <Grid Grid.Row="1">
@@ -1085,7 +1086,7 @@
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Auswirkungen, Mode=OneWay}"/>
                     </TextBlock>
-                    <TextBlock Grid.Row="3" Style="{StaticResource Category_Item_Text_Note}">
+                    <TextBlock Grid.Row="4" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>
