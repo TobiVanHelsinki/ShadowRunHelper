@@ -1321,4 +1321,10 @@ This is shown in detail at the example-character</value>
   <data name="Notification_Warning_NotAddLinkedEntry" xml:space="preserve">
     <value>Warning: Could not add reference "{0}" to List</value>
   </data>
+  <data name="Error_ObjectCopy" xml:space="preserve">
+    <value>Could not copy all</value>
+  </data>
+  <data name="Model_Fertigkeit_CreateHandlung" xml:space="preserve">
+    <value>Create Action</value>
+  </data>
 </root>

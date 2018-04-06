@@ -1,5 +1,6 @@
 ﻿using ShadowRunHelper.CharModel;
 using System.Collections.Generic;
+using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -35,6 +36,8 @@ namespace ShadowRunHelper.UI.Edit
                     EditType.ContentTemplate = Handlung;
                     break;
                 case ThingDefs.Fertigkeit:
+                    SecondaryButtonClick += CreateHandlung;
+                    SecondaryButtonText = StringHelper.GetString("Model_Fertigkeit_CreateHandlung");
                     break;
                 case ThingDefs.Item:
                     EditType.ContentTemplate = Item;
@@ -134,6 +137,16 @@ namespace ShadowRunHelper.UI.Edit
                     break;
                 default:
                     break;
+            }
+        }
+
+        void CreateHandlung(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            var Fert = Data as Fertigkeit;
+            var Handl = Model.AppModel.Instance.MainObject.Add(ThingDefs.Handlung);
+            if (Fert.TryCopy(Handl))
+            {
+                Model.AppModel.Instance.lstNotifications.Add(new TLIB_UWPFRAME.Model.Notification(StringHelper.GetString("Error_ObjectCopy")) { bIsRead = true});
             }
         }
 

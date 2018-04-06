@@ -251,6 +251,48 @@ namespace ShadowRunHelper.CharModel
 
             return target;
         }
+
+        public virtual bool TryCopy(Thing target = null)
+        {
+            bool ret = true;
+            if (target == null)
+            {
+                try
+                {
+                    target = (Thing)Activator.CreateInstance(this.GetType());
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            foreach (var item in GetProperties(target))
+            {
+                try
+                {
+                    item.SetValue(target, item.GetValue(this));
+                }
+                catch (Exception)
+                {
+                    ret = false;
+                }
+            }
+            foreach (var pair in ReflectionHelper.GetProperties(target, typeof(Used_ListAttribute)))
+            {
+                try
+                {
+                    var CollectionTarget = (pair.GetValue(target) as ObservableThingListEntryCollection);
+                    var CollectionThis = (pair.GetValue(this) as ObservableThingListEntryCollection);
+                    CollectionTarget.Clear();
+                    CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
+                }
+                catch (Exception)
+                {
+                    ret = false;
+                }
+            }
+            return ret;
+        }
         public virtual void Reset()
         {
             foreach (var item in GetProperties(this))

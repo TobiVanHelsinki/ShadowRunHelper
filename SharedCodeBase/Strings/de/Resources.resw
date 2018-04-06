@@ -1354,4 +1354,10 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Notification_Warning_NotAddLinkedEntry" xml:space="preserve">
     <value>Warnung: Referenz "{0}" konnte nicht gesetzt werden.</value>
   </data>
+  <data name="Error_ObjectCopy" xml:space="preserve">
+    <value>Konnte nicht alles kopieren.</value>
+  </data>
+  <data name="Model_Fertigkeit_CreateHandlung" xml:space="preserve">
+    <value>Handlung anlegen</value>
+  </data>
 </root>
