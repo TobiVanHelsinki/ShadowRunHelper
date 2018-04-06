@@ -219,8 +219,8 @@
                     </TextBlock>
                     <TextBlock Grid.Column="1">
                         <Run Text="{x:Bind Wert, Mode=OneWay}"/>
-                        <Run Text="{x:Bind Zusatz, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Space, Mode=OneWay}"/>
                         <Run Text="{x:Bind WertCalced, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Round, Mode=OneWay}"/>
+                        <Run Text="{x:Bind Zusatz, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Space, Mode=OneWay}"/>
                         <!--<Run Text="{x:Bind Wert, Mode=OneWay}"/>-->
                     </TextBlock>
                 </Grid>
