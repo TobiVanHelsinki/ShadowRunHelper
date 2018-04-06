@@ -149,6 +149,11 @@ namespace ShadowRunHelper.UI.Edit
                 Model.AppModel.Instance.lstNotifications.Add(new TLIB_UWPFRAME.Model.Notification(StringHelper.GetString("Error_ObjectCopy")) { bIsRead = true});
             }
             Handl.Wert = 0;
+            var FertEntry = Model.AppModel.Instance.MainObject.LinkList.Find(x=>x.Object == Fert);
+            if (FertEntry != null)
+            {
+                Handl.LinkedThings.Add(FertEntry);
+            }
         }
 
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
