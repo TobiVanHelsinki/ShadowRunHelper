@@ -133,14 +133,14 @@ namespace ShadowRunHelper
 
         Thing PendingScrollEntry;
         List<(CategoryBlock Block, ScrollViewer sv)> LoadedCategoryBlocks = new List<(CategoryBlock Block, ScrollViewer sv)>();
-        IEnumerable<CategoryOption> lokalCategoryOptions => MainObject.Settings.CategoryOptions;
+        IEnumerable<CategoryOption> LokalCategoryOptions => MainObject.Settings.CategoryOptions;
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             switch (args.Reason)
             {
                 case AutoSuggestionBoxTextChangeReason.UserInput:
-                    (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => lokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+                    (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
                     break;
                 case AutoSuggestionBoxTextChangeReason.ProgrammaticChange:
                     break;
@@ -160,7 +160,7 @@ namespace ShadowRunHelper
                 }
                 else
                 {
-                    PendingScrollEntry = MainObject.ThingList.Where(x => lokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).ToList().Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+                    PendingScrollEntry = MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).ToList().Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
                 }
                 if (PendingScrollEntry == null)
                 {
