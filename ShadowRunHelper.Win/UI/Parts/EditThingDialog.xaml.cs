@@ -148,6 +148,7 @@ namespace ShadowRunHelper.UI.Edit
             {
                 Model.AppModel.Instance.lstNotifications.Add(new TLIB_UWPFRAME.Model.Notification(StringHelper.GetString("Error_ObjectCopy")) { bIsRead = true});
             }
+            Handl.Wert = 0;
         }
 
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
