@@ -93,12 +93,10 @@ namespace ShadowRunHelper.IO
                     AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar_1_5_to_1_6"));
                     break;
                 case Constants.CHARFILE_VERSION_1_6:
-                test:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     ReturnCharHolder.HasChanges = false;
                     break;
                 default:
-                    goto test;
                     throw new IO_FileVersion();
             }
             ReturnCharHolder.AfterLoad();
