@@ -50,7 +50,7 @@ namespace ShadowRunHelper.IO
 
     internal class CharHolderIO : SharedIO<CharHolder>
     {
-        internal static CharHolder ConvertWithRightVersion(string strFileVersion, string strAppVersion, string fileContent)
+        internal static CharHolder ConvertWithRightVersion(string strAppVersion, string strFileVersion, string fileContent)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings()
             {

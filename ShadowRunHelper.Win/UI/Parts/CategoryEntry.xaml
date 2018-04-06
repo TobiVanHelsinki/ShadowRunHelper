@@ -1001,7 +1001,7 @@
                         <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                         <Run x:Uid="DashR"/>
                         <Run Text="{x:Bind Wert, Mode=OneWay}" />
-                        <Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                        <Run Text="{x:Bind Zusatz, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}"/>
                     </TextBlock>
                     <TextBlock Text="{x:Bind Notiz, Mode=OneWay}" MaxLines="3" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}" HorizontalAlignment="Right"/>
                 </Grid>
@@ -1105,6 +1105,7 @@
                     </TextBlock>
                     <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                         
                     </TextBlock>
                 </Grid>
             </DataTemplate>

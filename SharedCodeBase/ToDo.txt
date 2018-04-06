@@ -2,7 +2,6 @@
 --------Aktuelles---------------------------------------------
 * Verknüpfungen Modell für Cirkelbezüge verbessern
 * Verknüpfungen Speichern geht (manchmal?) nicht
-* In Fertigkeit einen Button Handlung anlegen
 
 -----------------------------------------------------
 * button relativ zum anklickgerät
