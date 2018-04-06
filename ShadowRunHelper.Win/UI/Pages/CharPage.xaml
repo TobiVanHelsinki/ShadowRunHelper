@@ -45,18 +45,6 @@
                         <Setter Target="GlobalFilterBox_NormalColumn.Width" Value="*"/>
                     </VisualState.Setters>
                 </VisualState>
-                <!--<VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="640"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="SavePanelTop.Visibility" Value="Collapsed"/>
-                        <Setter Target="GlobalFilterBoxTop.Visibility" Value="Collapsed"/>
-                        <Setter Target="GlobalFilterBox_FlyoutColumn.Width" Value="*"/>
-                        <Setter Target="SavePanelButtonText.Visibility" Value="Collapsed"/>
-                        <Setter Target="GlobalFilterBox_NormalColumn.Width" Value="0"/>
-                    </VisualState.Setters>
-                </VisualState>-->
                 <VisualState>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
@@ -199,10 +187,10 @@
                     <VisualState.Setters>
                         <Setter Target="Nachteile.(Grid.Column)" Value="0"/>
                         <Setter Target="Nachteile.(Grid.ColumnSpan)" Value="3"/>
-                        <Setter Target="Nachteile.(Grid.Row)" Value="9"/>
+                        <Setter Target="Nachteile.(Grid.Row)" Value="10"/>
                         <Setter Target="Vorteile.(Grid.Column)" Value="0"/>
                         <Setter Target="Vorteile.(Grid.ColumnSpan)" Value="3"/>
-                        <Setter Target="Vorteile.(Grid.Row)" Value="10"/>
+                        <Setter Target="Vorteile.(Grid.Row)" Value="9"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

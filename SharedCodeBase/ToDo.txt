@@ -1,7 +1,6 @@
 ﻿
 --------Aktuelles---------------------------------------------
-* Verknüpfungen Modell für Cirkelbezüge verbessern
-* Verknüpfungen Speichern geht (manchmal?) nicht
+* Verknüpfungen Modell für Zirkelbezüge verbessern
 
 -----------------------------------------------------
 * button relativ zum anklickgerät
