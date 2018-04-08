@@ -20,9 +20,27 @@ namespace ShadowRunHelper
     {
         readonly AppModel Model = AppModel.Instance;
         NotificationsDialog Notifications = new NotificationsDialog();
-
         ResourceLoader res;
 
+        #region Debug
+        void Debug1(object sender, RoutedEventArgs e)
+        {
+            DebugSettings DebugSettings = Application.Current.DebugSettings;
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                DebugSettings.IsOverdrawHeatMapEnabled = !DebugSettings.IsOverdrawHeatMapEnabled;
+            }
+        }
+        void Debug2(object sender, RoutedEventArgs e)
+        {
+            DebugSettings DebugSettings = Application.Current.DebugSettings;
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                DebugSettings.IsTextPerformanceVisualizationEnabled = !DebugSettings.IsTextPerformanceVisualizationEnabled;
+            }
+        }
+
+        #endregion
         public MainPage()
         {
             res = ResourceLoader.GetForCurrentView();
@@ -30,6 +48,10 @@ namespace ShadowRunHelper
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary();
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += (x, y, z) => NavigationRequested(y, z);
+#if DEBUG
+            HeatMap.Visibility = Visibility.Visible;
+            TextRedraw.Visibility = Visibility.Visible;
+#endif
             //CompatibilityChecks();
         }
         #region navigation
@@ -68,7 +90,7 @@ namespace ShadowRunHelper
         #endregion
         #region generel stuff
 
-        private void TutorialStateChanged(int StateNumber, bool Highlight)
+        void TutorialStateChanged(int StateNumber, bool Highlight)
         {
             Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
             switch (StateNumber)
@@ -226,7 +248,7 @@ namespace ShadowRunHelper
         #region DynamicSize
 
         public int CustFontSize { get; set; }
-        private void Infos_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        void Infos_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             switch (e.Pointer.PointerDeviceType)
             {
@@ -241,12 +263,13 @@ namespace ShadowRunHelper
             }
         }
 
-        private void MP_Btn_Loaded(object sender, RoutedEventArgs e)
+        void MP_Btn_Loaded(object sender, RoutedEventArgs e)
         {
             (sender as Control).FontSize = CustFontSize;
         }
 
         #endregion
+
 
     }
 }

@@ -186,6 +186,8 @@
                     <AppBarButton x:Name="PreDataBase" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_DB_Nav" Icon="Library" Click="OpenDB" Visibility="Collapsed"/>
                     <!--Visibility="{x:Bind Model.MainObject, Converter={StaticResource o_Null2Visibility}, Mode=OneWay}"/>-->
                     <AppBarButton x:Name="Nav_Settings" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
+                    <AppBarButton x:Name="HeatMap" Content="HeatMap" Icon="Manage" Click="Debug1" Visibility="Collapsed"/>
+                    <AppBarButton x:Name="TextRedraw" Content="TextRedraw" Icon="FontSize" Click="Debug2" Visibility="Collapsed"/>
                 </CommandBar>
             </Border>
             <CommandBar x:Name="MainBar2" Style="{StaticResource MainCommandBar}" Grid.Column="1" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" DefaultLabelPosition="Right">
