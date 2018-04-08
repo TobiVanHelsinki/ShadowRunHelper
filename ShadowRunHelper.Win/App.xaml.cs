@@ -44,8 +44,8 @@ namespace ShadowRunHelper
                 Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
 
-            //EnteredBackground += App_EnteredBackground;
-            //LeavingBackground += App_LeavingBackground;
+            EnteredBackground += App_EnteredBackground;
+            LeavingBackground += App_LeavingBackground;
             Suspending += App_Suspending;
             Resuming += App_Resuming;
 
@@ -209,33 +209,37 @@ namespace ShadowRunHelper
             SystemHelper.WriteLine("App_ResumingComplete");
         }
 
-        //private void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
-        //{
-        //    SystemHelper.WriteLine("App_EnteredBackground");
-        //    SettingsModel.I.LastSaveInfo = Model?.MainObject?.FileInfo;
-        //    Model?.MainObject?.SetSaveTimerTo();
-        //    e.GetDeferral().Complete();
-        //    SystemHelper.WriteLine("App_EnteredBackgroundComplete");
-        //}
+        private async void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
+        {
+            SystemHelper.WriteLine("App_EnteredBackground");
+            var def = e.GetDeferral();
+            
+            await SharedIO.SaveAtOriginPlace(Model.MainObject, eUD: UserDecision.ThrowError);
+            SettingsModel.I.LastSaveInfo = Model?.MainObject?.FileInfo;
 
-        //private void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
-        //{
-        //    SystemHelper.WriteLine("App_LeavingBackground");
-        //    SystemHelper.WriteLine("App_LeavingBackgroundComplete");
-        //}
+            Model?.MainObject?.SetSaveTimerTo();
+            e.GetDeferral().Complete();
+            SystemHelper.WriteLine("App_EnteredBackgroundComplete");
+        }
 
-        //protected override void OnActivated(IActivatedEventArgs args)
-        //{
-        //    SystemHelper.WriteLine("OnActivated");
-        //    SystemHelper.WriteLine("OnActivatedComplete");
-        //    base.OnActivated(args);
-        //}
-        //protected override void OnBackgroundActivated(BackgroundActivatedEventArgs args)
-        //{
-        //    SystemHelper.WriteLine("OnBackgroundActivated");
-        //    SystemHelper.WriteLine("OnBackgroundActivatedComplete");
-        //    base.OnBackgroundActivated(args);
-        //}
+        private void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
+        {
+            SystemHelper.WriteLine("App_LeavingBackground");
+            SystemHelper.WriteLine("App_LeavingBackgroundComplete");
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            SystemHelper.WriteLine("OnActivated");
+            SystemHelper.WriteLine("OnActivatedComplete");
+            base.OnActivated(args);
+        }
+        protected override void OnBackgroundActivated(BackgroundActivatedEventArgs args)
+        {
+            SystemHelper.WriteLine("OnBackgroundActivated");
+            SystemHelper.WriteLine("OnBackgroundActivatedComplete");
+            base.OnBackgroundActivated(args);
+        }
         #region Exception Handling
 
         /// <summary>
