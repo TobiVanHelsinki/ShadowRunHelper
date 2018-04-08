@@ -9,7 +9,6 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.Storage;
-using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -24,33 +23,33 @@ namespace ShadowRunHelper
     {
         readonly AppModel Model;
 
+        #region App Startup
+
         /// <summary>
         /// Initialisiert das Singletonanwendungsobjekt.  Dies ist die erste Zeile von erstelltem Code
         /// und daher das logische aequivalent von main() bzw. WinMain().
         /// </summary>
         public App()
         {
-            Model = AppModel.Initialize();
-            SettingsModel.Initialize();
-            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
-                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
-                Microsoft.ApplicationInsights.WindowsCollectors.Session);
-            InitializeComponent();
-            Suspending += (x,y)=>App_OnSuspending(x,y);
             UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
             CreateDataStructure();
+            Model = AppModel.Initialize();
+            SettingsModel.Initialize();
             if (SettingsModel.I.StartCount < 1)
             {
                 SettingsModel.I.ResetAllSettings();
             }
-            try
-            {
-                EnteredBackground += (x, y) => App_EnteredBackground(x, y);
-            }
-            catch
-            {
-                Suspending += (x, y) => App_OnSuspending(x, y);
-            }
+
+            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
+                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
+                Microsoft.ApplicationInsights.WindowsCollectors.Session);
+
+            //EnteredBackground += App_EnteredBackground;
+            //LeavingBackground += App_LeavingBackground;
+            Suspending += App_Suspending;
+            Resuming += App_Resuming;
+
+            InitializeComponent();
             SettingsModel.I.StartCount++;
         }
 
@@ -62,7 +61,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                await ApplicationData.Current.RoamingFolder.CreateFolderAsync(Constants.INTERN_SAVE_CONTAINER, CreationCollisionOption.FailIfExists);
+                await ApplicationData.Current.RoamingFolder.CreateFolderAsync(SharedConstants.INTERN_SAVE_CONTAINER, CreationCollisionOption.FailIfExists);
             }
             catch
             {
@@ -70,7 +69,7 @@ namespace ShadowRunHelper
 
             try
             {
-                await ApplicationData.Current.LocalFolder.CreateFolderAsync(Constants.INTERN_SAVE_CONTAINER, CreationCollisionOption.FailIfExists);
+                await ApplicationData.Current.LocalFolder.CreateFolderAsync(SharedConstants.INTERN_SAVE_CONTAINER, CreationCollisionOption.FailIfExists);
             }
             catch
             {
@@ -85,7 +84,7 @@ namespace ShadowRunHelper
             }
         }
 
-        // Startup ############################################################
+        #endregion
 
         /// <summary>
         /// Wird aufgerufen, wenn die Anwendung durch den Endbenutzer normal gestartet wird. Weitere Einstiegspunkte
@@ -94,6 +93,8 @@ namespace ShadowRunHelper
         /// <param name="e">Details ueber Startanforderung und -prozess.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
+            //base.OnLaunched(e);
+            SystemHelper.WriteLine("OnLaunched");
             if (SettingsModel.I.LoadCharOnStart && e.PreviousExecutionState != ApplicationExecutionState.Running && e.PreviousExecutionState != ApplicationExecutionState.Suspended)
             {
                 try
@@ -106,6 +107,8 @@ namespace ShadowRunHelper
             Launch();
 
             ExtendAcrylicIntoTitleBar();
+            SystemHelper.WriteLine("OnLaunchedComplete");
+
         }
 
         void ExtendAcrylicIntoTitleBar()
@@ -127,6 +130,7 @@ namespace ShadowRunHelper
                 try
                 {
                     await CharHolderIO.SaveAtOriginPlace(Model.MainObject, SaveType.Manually, UserDecision.ThrowError);
+                    SettingsModel.I.CountSavings++;
                 }
                 catch (Exception)
                 {
@@ -135,14 +139,16 @@ namespace ShadowRunHelper
             }
             try
             {
-                Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace(Constants.ACCESSTOKEN_FILEACTIVATED, args.Files[0]);
+                Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace(SharedConstants.ACCESSTOKEN_FILEACTIVATED, args.Files[0]);
 
                 Model.MainObject = await CharHolderIO.Load(
-                    new FileInfoClass() {
+                    new FileInfoClass()
+                    {
                         Fileplace = Place.Extern,
                         Filename = args.Files[0].Name,
                         Filepath = args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length),
-                        FolderToken = Constants.ACCESSTOKEN_FILEACTIVATED }
+                        FolderToken = Constants.ACCESSTOKEN_FILEACTIVATED
+                    }
                     , null
                     , UserDecision.ThrowError);
 
@@ -154,6 +160,7 @@ namespace ShadowRunHelper
             }
             Launch();
         }
+
         /// <summary>
         /// generelle Aktivierungssequenz der App, wird nach den spezifischen Starts aufgerufen
         /// </summary>
@@ -186,23 +193,51 @@ namespace ShadowRunHelper
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();
         }
-        // ShutDown ###########################################################
 
-        void App_OnSuspending(object sender, SuspendingEventArgs e)
+        void App_Suspending(object sender, SuspendingEventArgs e)
         {
+            SystemHelper.WriteLine("App_Suspending");
+            var def = e.SuspendingOperation.GetDeferral();
             SettingsModel.I.LastSaveInfo = Model?.MainObject?.FileInfo;
             Model?.MainObject?.SetSaveTimerTo();
-            e.SuspendingOperation.GetDeferral().Complete();
+            def.Complete();
+            SystemHelper.WriteLine("App_SuspendingComplete");
         }
-
-        private void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
+        private void App_Resuming(object sender, object e)
         {
-            SettingsModel.I.LastSaveInfo = Model?.MainObject?.FileInfo;
-            Model?.MainObject?.SetSaveTimerTo();
-            e.GetDeferral().Complete();
+            SystemHelper.WriteLine("App_Resuming");
+            SystemHelper.WriteLine("App_ResumingComplete");
         }
 
-        // Exception Handling #################################################
+        //private void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
+        //{
+        //    SystemHelper.WriteLine("App_EnteredBackground");
+        //    SettingsModel.I.LastSaveInfo = Model?.MainObject?.FileInfo;
+        //    Model?.MainObject?.SetSaveTimerTo();
+        //    e.GetDeferral().Complete();
+        //    SystemHelper.WriteLine("App_EnteredBackgroundComplete");
+        //}
+
+        //private void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
+        //{
+        //    SystemHelper.WriteLine("App_LeavingBackground");
+        //    SystemHelper.WriteLine("App_LeavingBackgroundComplete");
+        //}
+
+        //protected override void OnActivated(IActivatedEventArgs args)
+        //{
+        //    SystemHelper.WriteLine("OnActivated");
+        //    SystemHelper.WriteLine("OnActivatedComplete");
+        //    base.OnActivated(args);
+        //}
+        //protected override void OnBackgroundActivated(BackgroundActivatedEventArgs args)
+        //{
+        //    SystemHelper.WriteLine("OnBackgroundActivated");
+        //    SystemHelper.WriteLine("OnBackgroundActivatedComplete");
+        //    base.OnBackgroundActivated(args);
+        //}
+        #region Exception Handling
+
         /// <summary>
         /// Wird aufgerufen, wenn die Navigation auf eine bestimmte Seite fehlschlaegt
         /// </summary>
@@ -232,5 +267,6 @@ namespace ShadowRunHelper
             {
             }
         }
+        #endregion
     }
 }
