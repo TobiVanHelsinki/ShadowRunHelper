@@ -5,6 +5,7 @@ using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
 using static TLIB_UWPFRAME.Model.SharedSettingsModel;
 using Newtonsoft.Json;
+using Windows.Storage;
 
 namespace ShadowRunHelper
 {
@@ -319,6 +320,7 @@ namespace ShadowRunHelper
         {
             if (instance == null)
             {
+                ApplicationData.Current.LocalSettings.CreateContainer(Constants.CONTAINER_SETTINGS, ApplicationDataCreateDisposition.Always);
                 instance = new SettingsModel();
             }
             //#region Custom Stuff
@@ -342,6 +344,9 @@ namespace ShadowRunHelper
                 return (SettingsModel)instance;
             }
         }
+
+
+
         #endregion
 
     }
