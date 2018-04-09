@@ -80,7 +80,8 @@ namespace ShadowRunHelper
             Model.SetDependencies(Dispatcher);
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += T_LayoutMetricsChanged;
-            //TitleBarStuff();
+            CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += T_LayoutMetricsChanged;
+            TitleBarStuff();
         }
 
         void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
