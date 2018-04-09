@@ -17,8 +17,7 @@
     <conv:o_ValueOrNoting x:Key="o_ValueOrNoting"/>
 
     <contract5NotPresent:SolidColorBrush x:Key="SR_MainBackgroundBrush" 
-                                         Color="{ThemeResource SystemAccentColor}"
-                                         Opacity="{ThemeResource SystemAccentColor}"/>
+                                         Color="{ThemeResource SystemAccentColor}"/>
     <contract5Present:AcrylicBrush x:Key="SR_MainBackgroundBrush" 
                                    BackgroundSource="HostBackdrop" 
                                    TintColor="{ThemeResource SystemAccentColor}" 

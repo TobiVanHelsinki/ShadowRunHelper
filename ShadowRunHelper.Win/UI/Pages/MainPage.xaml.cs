@@ -51,7 +51,6 @@ namespace ShadowRunHelper
             HeatMap.Visibility = Visibility.Visible;
             TextRedraw.Visibility = Visibility.Visible;
 #endif
-            //CompatibilityChecks();
         }
         public void TitleBarStuff()
         {
@@ -68,10 +67,6 @@ namespace ShadowRunHelper
             Window.Current.SetTitleBar(AppTitleBar);
         }
 
-        private void T_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
-        {
-            TitleBarStuff();
-        }
         #region navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -79,8 +74,8 @@ namespace ShadowRunHelper
             ShowNotificationsIfNecessary();
             Model.SetDependencies(Dispatcher);
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
-            CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += T_LayoutMetricsChanged;
-            CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += T_LayoutMetricsChanged;
+            CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, p) => TitleBarStuff();
+            CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += (s, p) => TitleBarStuff();
             TitleBarStuff();
         }
 
