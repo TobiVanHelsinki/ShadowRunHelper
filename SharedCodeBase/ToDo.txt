@@ -1,7 +1,6 @@
 ﻿
 --------Aktuelles---------------------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern
-* bessere BG speichern
 
 -----------------------------------------------------
 * button relativ zum anklickgerät
