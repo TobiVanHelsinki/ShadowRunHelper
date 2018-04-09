@@ -56,7 +56,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{x:Bind Converter={StaticResource o_ThingList}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Handlung_E" x:Key="Handlung_E">
@@ -109,7 +109,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Thing_Wert_W"/>
-                        <ListView Grid.Column="3" Grid.Row="0" ItemsSource="{x:Bind WertZusammensetzung, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource ListView_ThingListContainerTemplate_List}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
+                        <ListView Grid.Column="3" Grid.Row="0" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource ListView_ThingListContainerTemplate_List}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
                         <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Grenze"/>
                         <ListView Grid.Column="3" Grid.Row="1" ItemsSource="{x:Bind GrenzeZusammensetzung, Mode=OneWay}"  ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource ListView_ThingListContainerTemplate_List}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
                         <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Handlung_Gegen"/>
@@ -250,7 +250,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" Grid.Row="0" ContentTemplate="{StaticResource FertigkeitItem}"/>
-                    <ListView Grid.Column="1" Grid.Row="1" ItemsSource="{x:Bind PoolZusammensetzung, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource ListView_ThingListContainerTemplate_List}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
+                    <ListView Grid.Column="1" Grid.Row="1" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource ListView_ThingListContainerTemplate_List}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
                     <TextBlock Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
@@ -524,7 +524,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                     <TextBlock Grid.Column="1" x:Uid="Model_Waffe_Wert"  Style="{StaticResource ListView_Item_Text}"/>
-                    <TextBlock Grid.Column="2" x:Uid="Model_Waffe_PB"  Style="{StaticResource ListView_Item_Text}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Waffe_DK"  Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="FernkampfwaffeItem" x:DataType="CharModel:Fernkampfwaffe">
@@ -544,7 +544,7 @@
                             <Run x:Uid="Space"/>
                             <Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
-                        <TextBlock Text="{x:Bind PB, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Text="{x:Bind DK, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource ListView_Item_Text}"/>
 
                     </Grid>
               </DataTemplate>
@@ -562,12 +562,12 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_PB"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_DK"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind DK, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_FernKampfwaffe_Rueckstoss"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Rueckstoss, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Fernkampfwaffe_RK"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind RK, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_Praezision"/>
@@ -595,7 +595,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                     <TextBlock Grid.Column="1" x:Uid="Model_Waffe_Wert"  Style="{StaticResource ListView_Item_Text}"/>
-                    <TextBlock Grid.Column="2" x:Uid="Model_Waffe_PB"  Style="{StaticResource ListView_Item_Text}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Waffe_DK"  Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="NahkampfwaffeItem" x:DataType="CharModel:Nahkampfwaffe">
@@ -612,7 +612,7 @@
                         <TextBlock Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind SchadenTyp, Mode=OneWay}"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
-                        <TextBlock Text="{x:Bind PB, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource ListView_Item_Text}"/>
+                        <TextBlock Text="{x:Bind DK, Mode=OneWay}"  Grid.Column="2"  Style="{StaticResource ListView_Item_Text}"/>
                     </Grid>
             </DataTemplate>
             <DataTemplate x:Name="NahkampfwaffeItemX" x:DataType="CharModel:Nahkampfwaffe">
@@ -629,8 +629,8 @@
                             <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_PB"/>
-                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind PB, Mode=OneWay}"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Waffe_DK"/>
+                            <TextBlock Style="{StaticResource ListView_Item_Text}" Text="{x:Bind DK, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource ListView_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource ListView_Item_Text}" x:Uid="Model_Nahkampfwaffe_Reichweite"/>
@@ -975,7 +975,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Adeptenkraft_KomplexeForm_E" x:Key="Adeptenkraft_KomplexeForm_E">
+            <DataTemplate x:Name="Adeptenkraft_E" x:Key="Adeptenkraft_E">
                 <Grid Style="{StaticResource ListView_E}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -985,7 +985,7 @@
                     <TextBlock Grid.Column="1" x:Uid="Model_Thing_Wert" Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Adeptenkraft_KomplexeFormItem" x:DataType="CharModel:Adeptenkraft_KomplexeForm">
+            <DataTemplate x:Name="AdeptenkraftItem" x:DataType="CharModel:Adeptenkraft">
                 <Grid Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -999,7 +999,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Adeptenkraft_KomplexeFormItemX" x:DataType="CharModel:Adeptenkraft_KomplexeForm">
+            <DataTemplate x:Name="AdeptenkraftItemX" x:DataType="CharModel:Adeptenkraft">
                 <Grid Style="{StaticResource ListView_Item_Grid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -1010,9 +1010,9 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ContentPresenter ContentTemplate="{StaticResource Adeptenkraft_KomplexeFormItem}" Grid.ColumnSpan="2"/>
+                    <ContentPresenter ContentTemplate="{StaticResource AdeptenkraftItem}" Grid.ColumnSpan="2"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
-                            <Run x:Uid="Model_Adeptenkraft_KomplexeForm_Option" FontWeight="SemiBold"/>
+                            <Run x:Uid="Model_Adeptenkraft_Option" FontWeight="SemiBold"/>
                             <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Option, Mode=OneWay}"/>
@@ -1025,7 +1025,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Foki_Widgets_E" x:Key="Foki_Widgets_E">
+            <DataTemplate x:Name="Foki_E" x:Key="Foki_E">
                 <Grid Style="{StaticResource ListView_E}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*"/>
@@ -1037,7 +1037,7 @@
                     <TextBlock Grid.Column="2" x:Uid="Model_Item_Anzahl"  Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Foki_WidgetsItem" x:DataType="CharModel:Foki_Widgets">
+            <DataTemplate x:Name="FokiItem" x:DataType="CharModel:Foki">
                     <Grid Grid.Column="2" Style="{StaticResource ListView_Item_Grid}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="4*"/>
@@ -1054,7 +1054,7 @@
 
                     </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Foki_WidgetsItemX" x:DataType="CharModel:Foki_Widgets">
+            <DataTemplate x:Name="FokiItemX" x:DataType="CharModel:Foki">
                 <Grid Style="{StaticResource ListView_Item_Grid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -1065,7 +1065,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource Foki_WidgetsItem}"/>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource FokiItem}"/>
                     <TextBlock Grid.Row="1"  Grid.RowSpan="2" Grid.Column="2"  Style="{StaticResource ListView_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
@@ -1136,7 +1136,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Geist_Sprite_E" x:Key="Geist_Sprite_E">
+            <DataTemplate x:Name="Geist_E" x:Key="Geist_E">
                 <Grid Style="{StaticResource ListView_E}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*"/>
@@ -1148,11 +1148,11 @@
                     
                     <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource ListView_Item_Text}"/>
                     <TextBlock Grid.Column="1" x:Uid="Model_Thing_Wert"  Style="{StaticResource ListView_Item_Text}"/>
-                    <TextBlock Grid.Column="2" x:Uid="Model_Geist_Sprite_Dienste" Style="{StaticResource ListView_Item_Text}"/>
-                    <TextBlock Grid.Column="3" x:Uid="Model_Geist_Sprite_Geb_Reg" Style="{StaticResource ListView_Item_Text}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_Geist_Dienste" Style="{StaticResource ListView_Item_Text}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_Geist_Geb_Reg" Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Geist_SpriteItem" x:DataType="CharModel:Geist_Sprite">
+            <DataTemplate x:Name="GeistItem" x:DataType="CharModel:Geist">
                     <Grid Grid.Column="2" HorizontalAlignment="Stretch" Style="{StaticResource ListView_Item_Grid}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="4*"/>
@@ -1168,7 +1168,7 @@
                         <TextBlock Grid.Column="2" Text="{x:Bind Dienste, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
                     </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Geist_SpriteItemX" x:DataType="CharModel:Geist_Sprite">
+            <DataTemplate x:Name="GeistItemX" x:DataType="CharModel:Geist">
                 <Grid Style="{StaticResource ListView_Item_Grid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -1179,7 +1179,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource Geist_SpriteItem}"/>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource GeistItem}"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource ListView_Item_Text}">
                             <Run x:Uid="Model_Item_Anzahl" FontWeight="SemiBold"/>
                             <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
@@ -1194,7 +1194,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Tradition_InitiationItem" x:DataType="CharModel:Tradition_Initiation">
+            <DataTemplate x:Name="TraditionItem" x:DataType="CharModel:Tradition">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -1213,11 +1213,11 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" x:Uid="Model_Tradition_Initiation_Bezeichner"  Style="{StaticResource ListView_Item_Text_Bold}"/>
+                        <TextBlock Grid.Column="0" x:Uid="Model_Tradition_Bezeichner"  Style="{StaticResource ListView_Item_Text_Bold}"/>
                         <TextBlock Grid.Column="1"  Style="{StaticResource ListView_Item_Text}">
                             <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                         </TextBlock>
-                        <TextBlock Grid.Column="2" x:Uid="Model_Tradition_Initiation_Wert"  Style="{StaticResource ListView_Item_Text_Bold}"/>
+                        <TextBlock Grid.Column="2" x:Uid="Model_Tradition_Wert"  Style="{StaticResource ListView_Item_Text_Bold}"/>
                         <TextBlock Grid.Column="3">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/>
                             <Run x:Uid="Space"/>
@@ -1225,14 +1225,14 @@
                         </TextBlock>
                     </Grid>
                     <StackPanel Grid.Row="1">
-                        <TextBlock x:Uid="Model_Tradition_Initiation_Schutzpatron"  Style="{StaticResource ListView_Item_Text_Bold}"/>
+                        <TextBlock x:Uid="Model_Tradition_Schutzpatron"  Style="{StaticResource ListView_Item_Text_Bold}"/>
                         <TextBlock Text="{x:Bind Schutzpatron, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
                     </StackPanel>
-                    <TextBlock x:Uid="Model_Tradition_Initiation_Metamagie" Grid.Row="2" Style="{StaticResource ListView_Item_Text_Bold}"/>
+                    <TextBlock x:Uid="Model_Tradition_Metamagie" Grid.Row="2" Style="{StaticResource ListView_Item_Text_Bold}"/>
                     <TextBlock Text="{x:Bind Metamagie, Mode=OneWay}" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Tradition_InitiationItemX" x:DataType="CharModel:Tradition_Initiation">
+            <DataTemplate x:Name="TraditionItemX" x:DataType="CharModel:Tradition">
                 <Grid Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -1242,7 +1242,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource Tradition_InitiationItem}"/>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource TraditionItem}"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>
@@ -1251,7 +1251,7 @@
                     </TextBlock>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Stroemung_WandlungItem" x:DataType="CharModel:Stroemung_Wandlung">
+            <DataTemplate x:Name="StroemungItem" x:DataType="CharModel:Stroemung">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -1270,11 +1270,11 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" x:Uid="Model_Stroemung_Wandlung_Bezeichner"  Style="{StaticResource ListView_Item_Text_Bold}"/>
+                        <TextBlock Grid.Column="0" x:Uid="Model_Stroemung_Bezeichner"  Style="{StaticResource ListView_Item_Text_Bold}"/>
                         <TextBlock Grid.Column="1"  Style="{StaticResource ListView_Item_Text}">
                             <Run Text="{x:Bind Typ, Converter={StaticResource o_ModelTyp}, Mode=OneWay}" /><Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                         </TextBlock>
-                        <TextBlock Grid.Column="2" x:Uid="Model_Stroemung_Wandlung_Wert"  Style="{StaticResource ListView_Item_Text_Bold}"/>
+                        <TextBlock Grid.Column="2" x:Uid="Model_Stroemung_Wert"  Style="{StaticResource ListView_Item_Text_Bold}"/>
                         <TextBlock Grid.Column="3">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/>
                             <Run x:Uid="Space"/>
@@ -1282,14 +1282,14 @@
                         </TextBlock>
                     </Grid>
                     <StackPanel Grid.Row="1">
-                        <TextBlock x:Uid="Model_Stroemung_Wandlung_Paragon" Style="{StaticResource ListView_Item_Text_Bold}"/>
+                        <TextBlock x:Uid="Model_Stroemung_Paragon" Style="{StaticResource ListView_Item_Text_Bold}"/>
                         <TextBlock Text="{x:Bind Paragon, Mode=OneWay}" Style="{StaticResource ListView_Item_Text}"/>
                     </StackPanel>
-                    <TextBlock x:Uid="Model_Stroemung_Wandlung_Echos" Grid.Row="2" Style="{StaticResource ListView_Item_Text_Bold}"/>
+                    <TextBlock x:Uid="Model_Stroemung_Echos" Grid.Row="2" Style="{StaticResource ListView_Item_Text_Bold}"/>
                     <TextBlock Text="{x:Bind Echos, Mode=OneWay}" Grid.Row="3" Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Stroemung_WandlungItemX" x:DataType="CharModel:Stroemung_Wandlung">
+            <DataTemplate x:Name="StroemungItemX" x:DataType="CharModel:Stroemung">
                 <Grid Style="{StaticResource ListView_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -1299,7 +1299,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource Stroemung_WandlungItem}"/>
+                    <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource StroemungItem}"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource ListView_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Doppelpunkt" FontWeight="Bold"/>

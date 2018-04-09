@@ -8,7 +8,7 @@
                 <ResourceDictionary Source="UI/Ressourcen/ResourceDictionary_App.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <ResourceDictionary.ThemeDictionaries>
-                    <ResourceDictionary x:Key="Dark">
+                <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="ListViewBackgroundBrush" Color="#FF333333" />
                     <SolidColorBrush x:Key="BorderBrushes" Color="Gray" />
                     <SolidColorBrush x:Key="HelpIconColor" Color="LightBlue" />

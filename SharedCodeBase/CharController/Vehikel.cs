@@ -3,6 +3,7 @@ using ShadowRunHelper.Model;
 
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace ShadowRunHelper.CharController
 {
@@ -75,6 +76,7 @@ namespace ShadowRunHelper.CharController
             lstReturn.Add(MI_8);
             lstReturn.Add(MI_9);
             lstReturn.Add(MI_10);
+            lstReturn.AddRange(Data.Select(item => new AllListEntry(item)));
             return lstReturn;
         }
     }

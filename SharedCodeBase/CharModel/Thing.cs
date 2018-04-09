@@ -1,5 +1,5 @@
 ﻿using ShadowRunHelper.Model;
-using SharedCodeBase.Model;
+using ShadowRunHelper.IO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,8 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.Model;
-using TLIB_UWPFRAME.Resources;
+using TLIB;
+using Newtonsoft.Json;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -29,24 +30,32 @@ namespace ShadowRunHelper.CharModel
         public Used_ListAttribute() { }
     }
 
-    public class Thing : INotifyPropertyChanged
+
+    public abstract class Thing : INotifyPropertyChanged, ICSV
     {
         public const uint nThingPropertyCount = 5;
+        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
+
+        #endregion
         public Thing()
         {
-            ThingType = TypenHelper.TypeToThingDef(GetType());
+            LinkedThings = new ObservableThingListEntryCollection(this);
+            ThingType = TypeHelper.TypeToThingDef(GetType());
+            LinkedThings.OnCollectionChangedCall(OnLinkedThingsChanged);
+            PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") OnLinkedThingsChanged(); };
         }
+
+        #region Properties
         ThingDefs thingType = 0;
-        [Newtonsoft.Json.JsonIgnore]
         public ThingDefs ThingType
         {
             get { return thingType; }
-            protected set
+            set
             {
                 if (value != thingType)
                 {
@@ -55,7 +64,8 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        string notiz = "";
+        public int Order { get; set; }
+        protected string notiz = "";
         [Used_UserAttribute]
         public string Notiz
         {
@@ -69,7 +79,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        string zusatz = "";
+        protected string zusatz = "";
         [Used_UserAttribute]
         public string Zusatz
         {
@@ -83,9 +93,9 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        double wert = 0;
+        protected double wert = 0;
         [Used_UserAttribute]
-        public double Wert
+        public virtual double Wert
         {
             get { return wert; }
             set
@@ -97,7 +107,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        string typ = "";
+        protected string typ = "";
         [Used_UserAttribute]
         public string Typ
         {
@@ -111,7 +121,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        string bezeichner = "";
+        protected string bezeichner = "";
         [Used_User]
         public string Bezeichner
         {
@@ -126,63 +136,164 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public double GetPropertyValueOrDefault(string ID = "")
+        #endregion
+        #region Calculations
+        ObservableThingListEntryCollection _LinkedThings;
+        [Used_List]
+        public ObservableThingListEntryCollection LinkedThings
         {
-            if (ID == "")
+            get { return _LinkedThings; }
+            set
             {
-                return Wert;
+                if (_LinkedThings != value && value != null)
+                {
+                    _LinkedThings = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private double _WertCalced = 0;
+        public double WertCalced
+        {
+            get { return _WertCalced; }
+            set
+            {
+                if (value != _WertCalced)
+                {
+                    _WertCalced = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        protected virtual void OnLinkedThingsChanged()
+        {
+            WertCalced = Wert + LinkedThings.Recalculate();
+        }
+
+        public double ValueOf(string ID)
+        {
+            if (UseForCalculation())
+            {
+                return InternValueOf(ID);
+            }
+            return 0;
+        }
+        protected virtual double InternValueOf(string ID)
+        {
+            if (ID == null || ID == "" || ID == "Wert")
+            {
+                return WertCalced;
             }
             try
             {
-#if DEBUG
-                Type t = this.GetType();
-                var pinfo = t.GetProperty(ID);
-                object value = pinfo.GetValue(this);
-                return double.Parse(value.ToString());
-#else 
-                return double.Parse(this.GetType().GetProperty(ID).GetValue(this).ToString());
-#endif
+                return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return Wert;
+                return 0;
             }
         }
+        public double RawValueOf(string ID)
+        {
+            if (UseForCalculation())
+            {
+                if (ID == null || ID == "" || ID == "Wert")
+                {
+                    return Wert;
+                }
+                try
+                {
+                    return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+            return 0;
+        }
+        protected virtual bool UseForCalculation()
+        {
+            return true;
+        }
 
+
+        #endregion
         public static IEnumerable<PropertyInfo> GetProperties(object obj)
         {
-            return Helper.GetProperties(obj, typeof(Used_UserAttribute));
+            return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute));
+        }
+        public static IEnumerable<PropertyInfo> GetPropertiesLists(object obj)
+        {
+            return ReflectionHelper.GetProperties(obj, typeof(Used_ListAttribute));
         }
 
-        public Thing Copy(Thing target = null)
+        public virtual Thing Copy(Thing target = null)
         {
-            //var a2 = ListTarget.Join< PropertyInfo, PropertyInfo,string, (PropertyInfo, PropertyInfo )> (ListThis, x => x.Name, y => y.Name, (p1, p2) => (p1, p2));
-
             if (target == null)
             {
                 target = (Thing)Activator.CreateInstance(this.GetType());
             }
-            var ListTarget = GetProperties(target);
-            var ListThis = GetProperties(this);
-            var a1 = ListTarget.Zip<PropertyInfo, PropertyInfo, (PropertyInfo, PropertyInfo)>(ListThis, (p1, p2) => (p1, p2));
-            foreach (var item in a1)
+            foreach (var item in GetProperties(target))
             {
-                item.Item1.SetValue(target, item.Item2.GetValue(this));
+                item.SetValue(target, item.GetValue(this));
             }
 
-            ListTarget = Helper.GetProperties(target, typeof(Used_ListAttribute));
-            ListThis = Helper.GetProperties(this, typeof(Used_ListAttribute));
-            a1 = ListTarget.Zip<PropertyInfo, PropertyInfo, (PropertyInfo, PropertyInfo)>(ListThis, (p1, p2) => (p1, p2));
-            foreach (var pair in a1)
+            foreach (var pair in ReflectionHelper.GetProperties(target, typeof(Used_ListAttribute)))
             {
-                var CollectionTarget = (pair.Item1.GetValue(target) as ObservableThingListEntryCollection);
-                var CollectionThis = (pair.Item2.GetValue(this) as ObservableThingListEntryCollection);
-                CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry() { Object = item.Object.Copy(), PropertyID = item.PropertyID, DisplayName = item.DisplayName }));
+                var CollectionTarget = (pair.GetValue(target) as ObservableThingListEntryCollection);
+                var CollectionThis = (pair.GetValue(this) as ObservableThingListEntryCollection);
+                CollectionTarget.Clear();
+                CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
             }
 
             return target;
         }
-        public void Reset()
+
+        public virtual bool TryCopy(Thing target = null)
+        {
+            bool ret = true;
+            if (target == null)
+            {
+                try
+                {
+                    target = (Thing)Activator.CreateInstance(this.GetType());
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            foreach (var item in GetProperties(target))
+            {
+                try
+                {
+                    item.SetValue(target, item.GetValue(this));
+                }
+                catch (Exception)
+                {
+                    ret = false;
+                }
+            }
+            foreach (var pair in ReflectionHelper.GetProperties(target, typeof(Used_ListAttribute)))
+            {
+                try
+                {
+                    var CollectionTarget = (pair.GetValue(target) as ObservableThingListEntryCollection);
+                    var CollectionThis = (pair.GetValue(this) as ObservableThingListEntryCollection);
+                    CollectionTarget.Clear();
+                    CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
+                }
+                catch (Exception)
+                {
+                    ret = false;
+                }
+            }
+            return ret;
+        }
+        public virtual void Reset()
         {
             foreach (var item in GetProperties(this))
             {
@@ -203,13 +314,21 @@ namespace ShadowRunHelper.CharModel
                     item.SetValue(this, default);
                 }
             }
-            foreach (var item in Helper.GetProperties(this, typeof(Used_ListAttribute)))
+            foreach (var item in ReflectionHelper.GetProperties(this, typeof(Used_ListAttribute)))
             {
                 (item.GetValue(this) as ObservableThingListEntryCollection).Clear();
             }
         }
 
-
+        public void NotifiyDeletion()
+        {
+            Reset();
+            foreach (var item in GetProperties(this))
+            {
+                NotifyPropertyChanged(item.Name);
+            }
+            NotifyPropertyChanged(Constants.THING_DELETED_TOKEN);
+        }
 
         #region CSV
         public virtual string ToCSV(char Delimiter)
@@ -227,14 +346,14 @@ namespace ShadowRunHelper.CharModel
             string strReturn = "";
             foreach (var item in GetProperties(this).Reverse())
             {
-                strReturn += CrossPlatformHelper.GetString("Model_"+ item.DeclaringType.Name + "_"+ item.Name + "/Text");
+                strReturn += StringHelper.GetString("Model_"+ item.DeclaringType.Name + "_"+ item.Name + "/Text");
                 strReturn += Delimiter;
             }
             return strReturn;
         }
         public virtual void FromCSV(Dictionary<string, string> dic)
         {
-            var Props = GetProperties(this).Reverse().Select(p => (CrossPlatformHelper.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"),p));
+            var Props = GetProperties(this).Reverse().Select(p => (StringHelper.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"),p));
             foreach (var item in dic)
             {
                 var currentProp = Props.FirstOrDefault(p => p.Item1 == item.Key);
@@ -266,8 +385,7 @@ namespace ShadowRunHelper.CharModel
 
         public override string ToString()
         {
-            string sep = ", ";
-            return bezeichner + sep + wert + sep + Zusatz;
+            return typ + (typ != "" ? ": " : "") + bezeichner + " " + ValueOf("Wert") + (Zusatz != "" ? "+" : "") + Zusatz;
         }
 
         /// <summary>
@@ -295,7 +413,7 @@ namespace ShadowRunHelper.CharModel
         {
 
             float retval = 0;
-            if (TypenHelper.ThingDefToString(ThingType, false).ToLower().Contains(text))
+            if (TypeHelper.ThingDefToString(ThingType, false).ToLower().Contains(text))
             {
                 retval += 0.4f;
             }

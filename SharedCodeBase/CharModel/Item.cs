@@ -45,5 +45,10 @@
                 }
             }
         }
+
+        protected override bool UseForCalculation()
+        {
+            return aktiv == false ? false : true;
+        }
     }
 }

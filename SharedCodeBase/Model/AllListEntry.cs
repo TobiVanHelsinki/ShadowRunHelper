@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TLIB_UWPFRAME.Model;
@@ -7,9 +8,6 @@ namespace ShadowRunHelper.Model
 {
     public class AllListEntry : INotifyPropertyChanged
     {
-        //[Newtonsoft.Json.JsonIgnore]
-        //public readonly AllListEntry This;
-
         string _DisplayName = "";
         [Newtonsoft.Json.JsonIgnore]
         public string DisplayName
@@ -27,8 +25,7 @@ namespace ShadowRunHelper.Model
                 }
             }
         }
-
-        Thing _Object = new Thing();
+        Thing _Object /*= new Thing()*/;
         public Thing Object
         {
             get
@@ -64,7 +61,12 @@ namespace ShadowRunHelper.Model
                 }
             }
         }
-
+        [Obsolete("Just for compatibility with versions before 1.7 ", true)]
+        public string strProperty
+        {
+            get { return PropertyID; }
+            set { PropertyID = value; }
+        }
         public AllListEntry(Thing o, string newDisplayName = "", string newPropID = "") : this()
         {
             Object = o;
@@ -73,7 +75,6 @@ namespace ShadowRunHelper.Model
         }
         public AllListEntry()
         {
-            //This = this;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -84,7 +85,7 @@ namespace ShadowRunHelper.Model
 
         public override string ToString()
         {
-            return Object.ToString();
+            return Object + PropertyID;
         }
     }
 }

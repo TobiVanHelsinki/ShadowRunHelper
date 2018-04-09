@@ -41,10 +41,22 @@ namespace ShadowRunHelper.CharController
         Thing AddNewThing();
         Thing AddNewThing(Thing newThing);
         void RemoveThing(Thing tToRemove);
+        bool ClearData();
+        void OrderData(Ordering order);
+        void SaveCurrentOrdering();
+    }
+
+    public enum Ordering
+    {
+        ABC = 1,
+        Type = 2,
+        Original = 3,
     }
 
     public interface IController<T> : IController
     {
         ObservableCollection<T> Data { get;}
+        //string Data2CSV(char strDelimiter, char strNewLine, ObservableCollection<T> DataToUse);
+
     }
 }

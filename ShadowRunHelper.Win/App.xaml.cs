@@ -2,13 +2,13 @@
 using ShadowRunHelper.Model;
 using System;
 using System.Threading.Tasks;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.Storage;
-using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -21,92 +21,7 @@ namespace ShadowRunHelper
     /// </summary>
     sealed partial class App : Application
     {
-        readonly AppModel Model;
-
-        /// <summary>
-        /// Initialisiert das Singletonanwendungsobjekt.  Dies ist die erste Zeile von erstelltem Code
-        /// und daher das logische aequivalent von main() bzw. WinMain().
-        /// </summary>
-        public App()
-        {
-            Model = AppModel.Initialize();
-            SettingsModel.Initialize();
-            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
-                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
-                Microsoft.ApplicationInsights.WindowsCollectors.Session);
-            InitializeComponent();
-            Suspending += (x,y)=>App_OnSuspending(x,y);
-            UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
-            CreateDataStructure();
-            if (SettingsModel.I.StartCount < 1)
-            {
-                SettingsModel.I.ResetAllSettings();
-            }
-            try
-            {
-                EnteredBackground += (x, y) => App_EnteredBackground(x, y);
-            }
-            catch
-            {
-                Suspending += (x, y) => App_OnSuspending(x, y);
-            }
-            SettingsModel.I.StartCount++;
-        }
-
-        /// <summary>
-        /// Method to create the intern Folders and Settingplaces
-        /// Do not create them, if they allready exists
-        /// </summary>
-        async void CreateDataStructure()
-        {
-            try
-            {
-                await ApplicationData.Current.RoamingFolder.CreateFolderAsync(Constants.INTERN_SAVE_CONTAINER, CreationCollisionOption.FailIfExists);
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                await ApplicationData.Current.LocalFolder.CreateFolderAsync(Constants.INTERN_SAVE_CONTAINER, CreationCollisionOption.FailIfExists);
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                ApplicationData.Current.LocalSettings.CreateContainer(Constants.CONTAINER_SETTINGS, ApplicationDataCreateDisposition.Always);
-            }
-            catch
-            {
-            }
-        }
-
-        // Startup ############################################################
-
-        /// <summary>
-        /// Wird aufgerufen, wenn die Anwendung durch den Endbenutzer normal gestartet wird. Weitere Einstiegspunkte
-        /// werden z. B. verwendet, wenn die Anwendung gestartet wird, um eine bestimmte Datei zu oeffnen.
-        /// </summary>
-        /// <param name="e">Details ueber Startanforderung und -prozess.</param>
-        protected override async void OnLaunched(LaunchActivatedEventArgs e)
-        {
-            if (SettingsModel.I.LoadCharOnStart && e.PreviousExecutionState != ApplicationExecutionState.Running && e.PreviousExecutionState != ApplicationExecutionState.Suspended)
-            {
-                try
-                {
-                    Model.MainObject = await CharHolderIO.Load(SettingsModel.I.LastSaveInfo, null, UserDecision.ThrowError);
-                    SettingsModel.I.CountLoadings++;
-                }
-                catch (Exception) { }
-            }
-            Launch();
-
-            ExtendAcrylicIntoTitleBar();
-        }
-
+        #region Tests
         void ExtendAcrylicIntoTitleBar()
         {
             CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
@@ -115,49 +30,132 @@ namespace ShadowRunHelper
             titleBar.ButtonBackgroundColor = null;
             titleBar.ButtonInactiveBackgroundColor = null;
         }
+        #endregion
+        readonly AppModel Model;
+        readonly SettingsModel Settings;
+
+        #region App Startup
+
         /// <summary>
-        /// Wird aufgerufen, wenn eine Datei gestartet wird. 
-        /// Speichert den jetzigen Zustand und oeffnet die neue Datei
+        /// Initialisiert das Singletonanwendungsobjekt.  Dies ist die erste Zeile von erstelltem Code
+        /// und daher das logische aequivalent von main() bzw. WinMain().
         /// </summary>
+        public App()
+        {
+            UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
+            Model = AppModel.Initialize();
+            Settings = SettingsModel.Initialize();
+            if (Settings.StartCount < 1)
+            {
+                Settings.ResetAllSettings();
+            }
+
+            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
+                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
+                Microsoft.ApplicationInsights.WindowsCollectors.Session);
+
+            EnteredBackground += App_EnteredBackground;
+            LeavingBackground += App_LeavingBackground;
+            Suspending += App_Suspending;
+            Resuming += App_Resuming;
+
+            InitializeComponent();
+            Settings.StartCount++;
+        }
+
+        #endregion
+
+        #region Entry-Points
+
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
+        {
+#if DEBUG
+            SystemHelper.WriteLine("OnLaunched");
+#endif
+            base.OnLaunched(e);
+            if (Settings.LoadCharOnStart)
+            {
+                Model.MainObject = await CharHolderIO.Load(Settings.LastSaveInfo, eUD: UserDecision.ThrowError);
+                Settings.CountLoadings++;
+            }
+#if DEBUG
+            SystemHelper.WriteLine("OnLaunchedComplete");
+#endif
+        }
+
         protected async override void OnFileActivated(FileActivatedEventArgs args)
         {
+            CharHolder NewHolder;
+            try
+            {
+                Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace(SharedConstants.ACCESSTOKEN_FILEACTIVATED, args.Files[0]);
+
+                NewHolder = await CharHolderIO.Load(
+                    new FileInfoClass()
+                    {
+                        Fileplace = Place.Extern,
+                        Filename = args.Files[0].Name,
+                        Filepath = args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length),
+                        FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
+                    }
+                    , null
+                    , UserDecision.ThrowError);
+                Settings.CountLoadings++;
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(StringHelper.GetString("Notification_Error_FileActivation"), ex);
+                return;
+            }
             if (Model.MainObject != null) // Save CurrentChar //todo for later: open  new window if user whish this so
             {
                 try
                 {
-                    await CharHolderIO.SaveAtOriginPlace(Model.MainObject, SaveType.Manually, UserDecision.ThrowError);
+                    await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
+                    Settings.CountSavings++;
                 }
                 catch (Exception)
                 {
                     return;
                 }
             }
+            Model.MainObject = NewHolder;
+
+        }
+        #endregion
+
+        private async void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
+        {
+#if DEBUG
+            SystemHelper.WriteLine("App_EnteredBackground");
+#endif
+            var def = e.GetDeferral();
             try
             {
-                Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace(Constants.ACCESSTOKEN_FILEACTIVATED, args.Files[0]);
-
-                Model.MainObject = await CharHolderIO.Load(
-                    new FileInfoClass() {
-                        Fileplace = Place.Extern,
-                        Filename = args.Files[0].Name,
-                        Filepath = args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length),
-                        FolderToken = Constants.ACCESSTOKEN_FILEACTIVATED }
-                    , null
-                    , UserDecision.ThrowError);
-
-                SettingsModel.I.CountLoadings++;
-            }
-            catch (Exception ex)
-            {
-                Model.NewNotification(CrossPlatformHelper.GetString("Notification_Error_FileActivation"), ex);
-            }
-            Launch();
+                if (Settings.AutoSave)
+                {
+                    await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
+                }
+                else
+                {
+                    await SharedIO.SaveAtTempPlace(Model.MainObject);
+                    Settings.CharInTempStore = true;
+                }
+                Settings.LastSaveInfo = Model.MainObject.FileInfo;
+                Settings.CountSavings++;
+            } catch (Exception) { }
+            def.Complete();
+#if DEBUG
+            SystemHelper.WriteLine("App_EnteredBackgroundComplete");
+#endif
         }
-        /// <summary>
-        /// generelle Aktivierungssequenz der App, wird nach den spezifischen Starts aufgerufen
-        /// </summary>
-        void Launch()
+
+        async void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
         {
+#if DEBUG
+            SystemHelper.WriteLine("App_LeavingBackground");
+#endif
+            var def = e.GetDeferral();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -184,24 +182,71 @@ namespace ShadowRunHelper
             }
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();
-        }
-        // ShutDown ###########################################################
 
-        void App_OnSuspending(object sender, SuspendingEventArgs e)
+            ExtendAcrylicIntoTitleBar();
+            try
+            {
+                if (Settings.CharInTempStore)
+                {
+                    if (Model.MainObject == null)
+                    {
+                        Model.MainObject = await CharHolderIO.Load(
+                            new FileInfoClass() { Fileplace = Place.Temp, Filename = Settings.LastSaveInfo.Filename }
+                            , null
+                            , UserDecision.ThrowError);
+                        Settings.CountLoadings++;
+                    }
+                    Settings.CharInTempStore = false;
+                    Settings.LastSaveInfo = null;
+                }
+            }
+            catch (Exception) { }
+            def.Complete();
+#if DEBUG
+            SystemHelper.WriteLine("App_LeavingBackgroundComplete");
+#endif
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
         {
-            SettingsModel.I.LastSaveInfo = Model?.MainObject?.FileInfo;
-            Model?.MainObject?.SetSaveTimerTo();
-            e.SuspendingOperation.GetDeferral().Complete();
+#if DEBUG
+            SystemHelper.WriteLine("OnActivated");
+#endif
+#if DEBUG
+            SystemHelper.WriteLine("OnActivatedComplete");
+#endif
+            base.OnActivated(args);
         }
-
-        private void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
+        protected override void OnBackgroundActivated(BackgroundActivatedEventArgs args)
         {
-            SettingsModel.I.LastSaveInfo = Model?.MainObject?.FileInfo;
-            Model?.MainObject?.SetSaveTimerTo();
-            e.GetDeferral().Complete();
+#if DEBUG
+            SystemHelper.WriteLine("OnBackgroundActivated");
+#endif
+#if DEBUG
+            SystemHelper.WriteLine("OnBackgroundActivatedComplete");
+#endif
+            base.OnBackgroundActivated(args);
         }
+        void App_Suspending(object sender, SuspendingEventArgs e)
+        {
+#if DEBUG
+            SystemHelper.WriteLine("App_Suspending, time: " + (e.SuspendingOperation.Deadline - DateTimeOffset.Now));
+#endif
+#if DEBUG
+            SystemHelper.WriteLine("App_SuspendingComplete");
+#endif
+        }
+        private void App_Resuming(object sender, object e)
+        {
+#if DEBUG
+            SystemHelper.WriteLine("App_Resuming");
+#endif
+#if DEBUG
+            SystemHelper.WriteLine("App_ResumingComplete");
+#endif
+        }
+        #region Exception Handling
 
-        // Exception Handling #################################################
         /// <summary>
         /// Wird aufgerufen, wenn die Navigation auf eine bestimmte Seite fehlschlaegt
         /// </summary>
@@ -220,7 +265,7 @@ namespace ShadowRunHelper
         async Task App_UnhandledExceptionAsync(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
         {
             e.Handled = true;
-            SettingsModel.I.LastSaveInfo = null;
+            Settings.LastSaveInfo = null;
             try
             {
                 await CharHolderIO.SaveAtOriginPlace(Model.MainObject, TLIB_UWPFRAME.IO.SaveType.Emergency);
@@ -231,5 +276,6 @@ namespace ShadowRunHelper
             {
             }
         }
+        #endregion
     }
 }

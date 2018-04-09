@@ -1,15 +1,16 @@
 ﻿using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
-using SharedCodeBase.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
+
 namespace ShadowRunHelper.Model
 {
     /// <summary>
@@ -20,29 +21,36 @@ namespace ShadowRunHelper.Model
         #region vars
         // Admin Version Numbers ##############################################
         public string APP_VERSION_NUMBER { get { return Constants.APP_VERSION_NUMBER_1_5; } }
-        public string FILE_VERSION_NUMBER { get { return Constants.CHARFILE_VERSION_1_5; } }
+        public string FILE_VERSION_NUMBER { get { return Constants.CHARFILE_VERSION_1_6; } }
         #endregion
         #region  Char Model DATA 
         // the various controlers
+        // First Gen
         public Controller<Item> CTRLItem { get; set; }
         public Controller<Programm> CTRLProgramm { get; set; }
         public Controller<Munition> CTRLMunition { get; set; }
-        public Controller<Implantat> CTRLImplantat { get; set; }
         public Controller<Vorteil> CTRLVorteil { get; set; }
         public Controller<Nachteil> CTRLNachteil { get; set; }
         public Controller<Connection> CTRLConnection { get; set; }
         public Controller<Sin> CTRLSin { get; set; }
-
-        public Controller<Adeptenkraft_KomplexeForm> CTRLAdeptenkraft_KomplexeForm { get; set; }
-        public Controller<Foki_Widgets> CTRLFoki_Widgets { get; set; }
-        public Controller<Geist_Sprite> CTRLGeist_Sprite { get; set; }
-        public Controller<Stroemung_Wandlung> CTRLStroemung_Wandlung { get; set; }
-        public Controller<Tradition_Initiation> CTRLTradition_Initiation { get; set; }
+        // Second Gen
+        public Controller<Adeptenkraft> CTRLAdeptenkraft { get; set; }
+        public Controller<Foki> CTRLFoki { get; set; }
+        public Controller<Geist> CTRLGeist { get; set; }
+        public Controller<Stroemung> CTRLStroemung { get; set; }
+        public Controller<Tradition> CTRLTradition { get; set; }
         public Controller<Zaubersprueche> CTRLZaubersprueche { get; set; }
+        // Third Gen
+        public Controller<KomplexeForm> CTRLKomplexeForm { get; set; }
+        public Controller<Widgets> CTRLWidgets { get; set; }
+        public Controller<Sprite> CTRLSprite { get; set; }
+        public Controller<Wandlung> CTRLWandlung { get; set; }
+        public Controller<Initiation> CTRLInitiation { get; set; }
 
+        // Importand ordering
         public AttributController CTRLAttribut { get; set; }
-        [Newtonsoft.Json.JsonIgnore]
         public BerechnetController CTRLBerechnet { get; set; }
+        public Controller<Implantat> CTRLImplantat { get; set; }
 
         public NahkampfwaffeController CTRLNahkampfwaffe { get; set; }
         public FernkampfwaffeController CTRLFernkampfwaffe { get; set; }
@@ -53,6 +61,7 @@ namespace ShadowRunHelper.Model
         public Controller<Fertigkeit> CTRLFertigkeit { get; set; }
         public Controller<Handlung> CTRLHandlung { get; set; }
         public Person Person { get; set; }
+        public CharSettings Settings { get; set; }
         #endregion
         #region EASY ACCESS STUFF
 
@@ -93,9 +102,9 @@ namespace ShadowRunHelper.Model
                 strSaveName += Person.Char_Typ == string.Empty ? "$$" : Person.Char_Typ;
                 strSaveName += ",";
                 strSaveName += Person.Runs.ToString();
-                strSaveName += CrossPlatformHelper.GetString("Model_Person_Runs/Text") + ",";
+                strSaveName += StringHelper.GetString("Model_Person_Runs/Text") + ",";
                 strSaveName += Person.Karma_Gesamt.ToString();
-                strSaveName += CrossPlatformHelper.GetString("Model_Person_Karma/Text");
+                strSaveName += StringHelper.GetString("Model_Person_Karma/Text");
             }
             strSaveName += UseDate ? "_" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + "_" + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second : "";
             strSaveName += postfix;
@@ -125,15 +134,15 @@ namespace ShadowRunHelper.Model
             SaveTimer = new System.Threading.Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); }, this, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
             AppModel.Instance.MainObjectSaved += (x, y) => { SettingsModel.I.CountSavings++; };
             // To Autosave
-            CTRLAdeptenkraft_KomplexeForm = new Controller<Adeptenkraft_KomplexeForm>();
+            CTRLAdeptenkraft = new Controller<Adeptenkraft>();
             CTRLAttribut = new AttributController();
             CTRLBerechnet = new BerechnetController();
             CTRLConnection = new Controller<Connection>();
             CTRLCyberDeck = new CyberDeckController();
             CTRLFernkampfwaffe = new FernkampfwaffeController();
             CTRLFertigkeit = new Controller<Fertigkeit>();
-            CTRLFoki_Widgets = new Controller<Foki_Widgets>();
-            CTRLGeist_Sprite = new Controller<Geist_Sprite>();
+            CTRLFoki = new Controller<Foki>();
+            CTRLGeist = new Controller<Geist>();
             CTRLHandlung = new Controller<Handlung>();
             CTRLImplantat = new Controller<Implantat>();
             CTRLItem = new Controller<Item>();
@@ -144,11 +153,17 @@ namespace ShadowRunHelper.Model
             CTRLPanzerung = new PanzerungController();
             CTRLProgramm = new Controller<Programm>();
             CTRLSin = new Controller<Sin>();
-            CTRLStroemung_Wandlung = new Controller<Stroemung_Wandlung>();
-            CTRLTradition_Initiation = new Controller<Tradition_Initiation>();
+            CTRLStroemung = new Controller<Stroemung>();
+            CTRLTradition = new Controller<Tradition>();
             CTRLVehikel = new VehikelController();
             CTRLVorteil = new Controller<Vorteil>();
             CTRLZaubersprueche = new Controller<Zaubersprueche>();
+
+            CTRLKomplexeForm = new Controller<KomplexeForm>();
+            CTRLWidgets = new Controller<Widgets>();
+            CTRLSprite = new Controller<Sprite>();
+            CTRLWandlung = new Controller<Wandlung>();
+            CTRLInitiation = new Controller<Initiation>();
 
             lstCTRL.Add(CTRLAttribut);
             lstCTRL.Add(CTRLBerechnet);
@@ -161,9 +176,11 @@ namespace ShadowRunHelper.Model
 
             lstCTRL.Add(CTRLImplantat);
 
-            lstCTRL.Add(CTRLAdeptenkraft_KomplexeForm);
+            lstCTRL.Add(CTRLAdeptenkraft);
+            lstCTRL.Add(CTRLKomplexeForm);
             lstCTRL.Add(CTRLZaubersprueche);
-            lstCTRL.Add(CTRLFoki_Widgets);
+            lstCTRL.Add(CTRLFoki);
+            lstCTRL.Add(CTRLWidgets);
 
             lstCTRL.Add(CTRLCyberDeck);
             lstCTRL.Add(CTRLProgramm);
@@ -172,9 +189,14 @@ namespace ShadowRunHelper.Model
 
             lstCTRL.Add(CTRLNachteil);
             lstCTRL.Add(CTRLVorteil);
-            lstCTRL.Add(CTRLTradition_Initiation);
-            lstCTRL.Add(CTRLStroemung_Wandlung);
-            lstCTRL.Add(CTRLGeist_Sprite);
+            lstCTRL.Add(CTRLTradition);
+            lstCTRL.Add(CTRLStroemung);
+            lstCTRL.Add(CTRLGeist);
+
+            lstCTRL.Add(CTRLInitiation);
+            lstCTRL.Add(CTRLWandlung);
+            lstCTRL.Add(CTRLSprite);
+
 
             lstCTRL.Add(CTRLMunition);
             lstCTRL.Add(CTRLConnection);
@@ -185,7 +207,7 @@ namespace ShadowRunHelper.Model
 
 
             Person = new Person();
-            CTRLAttribut.SetDependencies(Person, CTRLImplantat.Data);
+            Settings = new CharSettings();
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
             _LinkList = new List<AllListEntry>();
             _ThingList = new List<Thing>();
@@ -199,6 +221,14 @@ namespace ShadowRunHelper.Model
         {
             ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
         }
+
+        public void AfterLoad()
+        {
+            Repair();
+            Settings.Refresh();
+            RefreshListeners();
+        }
+
         public void Repair()
         {
             //declare submethod
@@ -207,19 +237,35 @@ namespace ShadowRunHelper.Model
                 var TargetCollection = new ObservableCollection<AllListEntry>();
                 foreach (var item in SourceCollection)
                 {
-                    AllListEntry NewEntry;
-                    NewEntry = lstThings.Find(x => x.Object.Equals(item.Object) && x.PropertyID == item.PropertyID);
+                    AllListEntry NewEntry = lstThings.Find(
+                        x => x.Object == item.Object && 
+                        x.PropertyID == item.PropertyID);
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner && x.Object.ThingType.Equals(item.Object.ThingType) && x.PropertyID.Equals(item.PropertyID));
+                        NewEntry = lstThings.Find(x =>
+                        x.Object.Bezeichner == item.Object.Bezeichner &&
+                        x.Object.ThingType == item.Object.ThingType &&
+                        x.PropertyID == item.PropertyID);
                     }
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x => x.Object.Bezeichner == item.Object.Bezeichner);
+                        NewEntry = lstThings.Find(x =>
+                        x.Object.ThingType == item.Object.ThingType &&
+                        x.PropertyID == item.PropertyID);
+                    }
+                    if (NewEntry == null)
+                    {
+                        NewEntry = lstThings.Find(x =>
+                        x.Object.Bezeichner == item.Object.Bezeichner &&
+                        x.PropertyID == item.PropertyID);
                     }
                     if (NewEntry != null)
                     {
                         TargetCollection.Add(NewEntry);
+                    }
+                    else
+                    {
+                        AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }
                 SourceCollection.Clear();
@@ -230,15 +276,25 @@ namespace ShadowRunHelper.Model
             }
             // start repair
             RefreshLists();
+            foreach (var item in lstCTRL)
+            {
+                foreach (var thing in item.GetElements())
+                {
+                    foreach (var list in Thing.GetPropertiesLists(thing))
+                    {
+                        //RepairThingListRefs((ObservableCollection<AllListEntry>)list.GetValue(thing), LinkList);
+                    }
+                }
+            }
             foreach (var item in CTRLHandlung.Data)
             {
-                RepairThingListRefs(item.WertZusammensetzung, LinkList);
+                RepairThingListRefs(item.LinkedThings, LinkList);
                 RepairThingListRefs(item.GegenZusammensetzung, LinkList);
                 RepairThingListRefs(item.GrenzeZusammensetzung, LinkList);
             }
             foreach (var item in CTRLFertigkeit.Data)
             {
-                RepairThingListRefs(item.PoolZusammensetzung, LinkList);
+                RepairThingListRefs(item.LinkedThings, LinkList);
             }
         }
         public IController ThingDef2CTRL(ThingDefs tag)
@@ -283,7 +339,9 @@ namespace ShadowRunHelper.Model
         {
             // Don't register AnyPropertyChanged() at the PropertyChanged  Event of this Class -> endless loop;
             Person.PropertyChanged -= (x, y) => AnyPropertyChanged();
+            Settings.PropertyChanged -= (x, y) => AnyPropertyChanged();
             Person.PropertyChanged += (x, y) => AnyPropertyChanged();
+            Settings.PropertyChanged += (x, y) => AnyPropertyChanged();
             foreach (var item in lstCTRL)
             {
                 item.RegisterEventAtData(AnyPropertyChanged);

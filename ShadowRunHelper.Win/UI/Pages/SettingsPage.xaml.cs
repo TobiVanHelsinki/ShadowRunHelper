@@ -1,36 +1,19 @@
-﻿using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
+using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-
-// Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
+using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper
 {
-    class CharPageConfigListViewItem
-    {
-        public string Name
-        {
-            get; set;
-        }
-        public ThingDefs Code
-        {
-            get; set;
-        }
-        public bool Active
-        {
-            get;
-            set;
-        }
-    }
-    /// <summary>
-    /// Eine leere Seite, die eigenstaendig verwendet werden kann oder auf die innerhalb eines Rahmens navigiert werden kann.
-    /// </summary>
     public sealed partial class SettingsPage : Page
     {
         readonly SettingsModel Settings = SettingsModel.Instance;
@@ -44,32 +27,26 @@ namespace ShadowRunHelper
         readonly string AppLink = Constants.APP_STORE_LINK;
         readonly List<HelpEntry> Help = Constants.HelpList;
 
+
         public SettingsPage()
         {
             InitializeComponent();
-            SetSource();
         }
-
-        #region Categories
-
-        void SetSource()
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            CharPageConfigListView.ItemsSource = Settings.BlockListOptions.Select(i => new CharPageConfigListViewItem() { Active = i.vis, Code = i.ThingType, Name = TypenHelper.ThingDefToString(i.ThingType, true) }).Where(x=>x.Name != "");
+            switch ((ProjectPagesOptions)e.Parameter)
+            {
+                case ProjectPagesOptions.SettingsMain:
+                case ProjectPagesOptions.SettingsOptions:
+                case ProjectPagesOptions.SettingsHelp:
+                    MainNavigation.SelectedItem = MainNavigation.Items.FirstOrDefault(
+                        x => (x as PivotItem).Tag.ToString() == ((int)e.Parameter).ToString());
+                    break;
+                default:
+                    break;
+            }
+            base.OnNavigatedTo(e);  
         }
-
-        void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            Settings.BlockListOptions = CharPageConfigListView.ItemsPanelRoot.Children.Select(i =>
-                (((i as ListViewItem).Content as CharPageConfigListViewItem).Code,((i as ListViewItem).Content as CharPageConfigListViewItem).Active)
-            );
-        }
-
-        private void ResetButton_Click(object sender, RoutedEventArgs e)
-        {
-            Settings.BlockListOptions = TypenHelper.ThingTypeList.Select(t=>(t.Item2,true));
-            SetSource();
-        }
-        #endregion
 
         #region Gui Stuff ##########################################
         /// <summary>
@@ -165,13 +142,12 @@ namespace ShadowRunHelper
                 }
                 catch (Exception ex)
                 {
-                    AppModel.Instance.NewNotification(CrossPlatformHelper.GetString("Notification_Error_SwitchingInterFolder"), ex);
+                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_SwitchingInterFolder"), ex);
                 }
             }
             Intern_Sync_HasFocus = false;
         }
         #endregion
 
-
-    }
+   }
 }

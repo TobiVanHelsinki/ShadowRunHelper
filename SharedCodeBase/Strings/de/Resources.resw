@@ -321,7 +321,7 @@
   <data name="Model_Vehikel_Sitze.Text" xml:space="preserve">
     <value>Sitze</value>
   </data>
-  <data name="Model_Waffe_PB.Text" xml:space="preserve">
+  <data name="Model_Waffe_DK.Text" xml:space="preserve">
     <value>DK</value>
   </data>
   <data name="Model_Thing_Zusatz.Text" xml:space="preserve">
@@ -423,7 +423,7 @@
   <data name="UI_CharVerwaltung_Btn_Laden.Label" xml:space="preserve">
     <value>Laden</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Echos.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Echos.Text" xml:space="preserve">
     <value>Echos</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Neu.Label" xml:space="preserve">
@@ -459,8 +459,8 @@
   <data name="Model_Person_Geschlecht.Text" xml:space="preserve">
     <value>Geschlecht</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_.Text" xml:space="preserve">
-    <value>Strömung/Wandlung</value>
+  <data name="Model_Stroemung_.Text" xml:space="preserve">
+    <value>Strömung</value>
   </data>
   <data name="Model_Person_Gewicht.Text" xml:space="preserve">
     <value>Gewicht</value>
@@ -515,8 +515,8 @@
   <data name="UI_Optionen_AutoSave_Header.Text" xml:space="preserve">
     <value>Char bei Änderungen automatisch Speichern?</value>
   </data>
-  <data name="Model_Stroemung_WandlungM_.Text" xml:space="preserve">
-    <value>Strömungen/Wandlungen</value>
+  <data name="Model_StroemungM_.Text" xml:space="preserve">
+    <value>Strömungen</value>
   </data>
   <data name="UI_Optionen_LoadOnStart_Header.Text" xml:space="preserve">
     <value>Zuletzt verwendeten Char beim Starten der App automatisch laden?</value>
@@ -527,7 +527,7 @@
   <data name="UI_Char_Schaden_Geist.Text" xml:space="preserve">
     <value>Geistig</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Wert.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Wert.Text" xml:space="preserve">
     <value>Grad</value>
   </data>
   <data name="UI_Char_Schaden_Matrix.Text" xml:space="preserve">
@@ -645,7 +645,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Model_Eigenschaft_Auswirkungen.Text" xml:space="preserve">
     <value>Auswirkungen</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Paragon.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Paragon.Text" xml:space="preserve">
     <value>Paragon</value>
   </data>
   <data name="Model_Zaubersprueche_Entzug.Text" xml:space="preserve">
@@ -721,7 +721,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Laden fehlgeschlagen</value>
   </data>
   <data name="Notification_Error_SaveFail" xml:space="preserve">
-    <value>Speichern fehlgeschlagen</value>
+    <value>Speichern fehlgeschlagen, versuche, den Char zu exportieren und starte die App neu.</value>
   </data>
   <data name="Ui_Nav_Char.Label" xml:space="preserve">
     <value>Aktueller Char</value>
@@ -756,41 +756,38 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Model_Thing_Wert_W.Text" xml:space="preserve">
     <value>Wert</value>
   </data>
-  <data name="UI_Btn_Bearbeiten_Pool.Content" xml:space="preserve">
-    <value>Pool Bearbeiten</value>
-  </data>
   <data name="Model_Attribut_Magie.Text" xml:space="preserve">
     <value>Magie</value>
   </data>
-  <data name="Model_Adeptenkraft_KomplexeFormM_.Text" xml:space="preserve">
-    <value>Adeptenkräfte/Komplexe Formen</value>
+  <data name="Model_AdeptenkraftM_.Text" xml:space="preserve">
+    <value>Adeptenkräfte</value>
   </data>
-  <data name="Model_Adeptenkraft_KomplexeForm_.Text" xml:space="preserve">
-    <value>Adeptenkraft/Komplexe Form</value>
+  <data name="Model_Adeptenkraft_.Text" xml:space="preserve">
+    <value>Adeptenkraft</value>
   </data>
-  <data name="Model_Adeptenkraft_KomplexeForm_Option.Text" xml:space="preserve">
+  <data name="Model_Adeptenkraft_Option.Text" xml:space="preserve">
     <value>Option</value>
   </data>
   <data name="Model_Attribut_Resonanz.Text" xml:space="preserve">
     <value>Resonanz</value>
   </data>
-  <data name="Model_Foki_WidgetsM_.Text" xml:space="preserve">
-    <value>Foki/Widgets</value>
+  <data name="Model_FokiM_.Text" xml:space="preserve">
+    <value>Foki</value>
   </data>
-  <data name="Model_Foki_Widgets_.Text" xml:space="preserve">
-    <value>Foki/Widget</value>
+  <data name="Model_Foki_.Text" xml:space="preserve">
+    <value>Foki</value>
   </data>
-  <data name="Model_Geist_SpriteM_.Text" xml:space="preserve">
-    <value>Geister/Sprites</value>
+  <data name="Model_GeistM_.Text" xml:space="preserve">
+    <value>Geister</value>
   </data>
-  <data name="Model_Geist_Sprite_.Text" xml:space="preserve">
-    <value>Geist/Sprite</value>
+  <data name="Model_Geist_.Text" xml:space="preserve">
+    <value>Geist</value>
   </data>
-  <data name="Model_Geist_Sprite_Dienste.Text" xml:space="preserve">
+  <data name="Model_Geist_Dienste.Text" xml:space="preserve">
     <value>Dienste</value>
   </data>
-  <data name="Model_Geist_Sprite_Geb_Reg.Text" xml:space="preserve">
-    <value>Geb/Reg</value>
+  <data name="Model_Geist_Geb_Reg.Text" xml:space="preserve">
+    <value>Gebunden</value>
   </data>
   <data name="Model_Person_Geburtstag.Text" xml:space="preserve">
     <value>Geburtstag</value>
@@ -822,25 +819,25 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Model_Waffe_Praezision.Text" xml:space="preserve">
     <value>Präzision</value>
   </data>
-  <data name="Model_Stroemung_Wandlung_Bezeichner.Text" xml:space="preserve">
+  <data name="Model_Stroemung_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Model_Tradition_InitiationM_.Text" xml:space="preserve">
-    <value>Traditionen/Initiationen</value>
+  <data name="Model_TraditionM_.Text" xml:space="preserve">
+    <value>Traditionen</value>
   </data>
-  <data name="Model_Tradition_Initiation_.Text" xml:space="preserve">
-    <value>Tradition/Initiation</value>
+  <data name="Model_Tradition_.Text" xml:space="preserve">
+    <value>Tradition</value>
   </data>
-  <data name="Model_Tradition_Initiation_Bezeichner.Text" xml:space="preserve">
+  <data name="Model_Tradition_Bezeichner.Text" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Model_Tradition_Initiation_Metamagie.Text" xml:space="preserve">
+  <data name="Model_Tradition_Metamagie.Text" xml:space="preserve">
     <value>Metamagie</value>
   </data>
-  <data name="Model_Tradition_Initiation_Schutzpatron.Text" xml:space="preserve">
+  <data name="Model_Tradition_Schutzpatron.Text" xml:space="preserve">
     <value>Schutzpatron</value>
   </data>
-  <data name="Model_Tradition_Initiation_Wert.Text" xml:space="preserve">
+  <data name="Model_Tradition_Wert.Text" xml:space="preserve">
     <value>Grad</value>
   </data>
   <data name="Model_Panzerung_Kapazitaet.Text" xml:space="preserve">
@@ -852,7 +849,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Model_Implantat_Kapazitaet.Text" xml:space="preserve">
     <value>Kapazität</value>
   </data>
-  <data name="Model_FernKampfwaffe_Rueckstoss.Text" xml:space="preserve">
+  <data name="Model_Fernkampfwaffe_RK.Text" xml:space="preserve">
     <value>RK</value>
   </data>
   <data name="Model__Kapazitaet.Text" xml:space="preserve">
@@ -1092,7 +1089,7 @@ a) "Löschen" löscht deinen Char nur aus der App, nicht aber aus der Liste gesp
 b) "Reparieren" es sollte nicht vorkommen, aber manchmal ist es unvorhersehbar: die verknüpften Einträge aktualisieren sich nicht mehr automatisch. Dann kann diese Funktion helfen. Vielleicht. Wenn nicht oder wenn du sonst irgendwelche Probleme hast, scheue nicht, mich zu kontaktieren (Kontakt im Einstellungsmenü).</value>
   </data>
   <data name="Tut_State_05" xml:space="preserve">
-    <value>Das war's mit dem ersten Tutorial. Erstelle jetzt deinen Charakter oder schau dir den Beispielcharakter an.</value>
+    <value>Das war's mit dem ersten Tutorial. Du kannst einen neuen Charakter erstellen, aber besser ist es, du schaust dir erst den Beispielcharakter an.</value>
   </data>
   <data name="Tut_State_10" xml:space="preserve">
     <value>Klickst du auf einen Char in dieser Leiste, wird sein Eintrag aufgeklappt und du erhältst Möglichkeiten, ihn zu verwalten.</value>
@@ -1118,7 +1115,7 @@ In dieser Einführung wird gezeigt, wie die Char Ansicht funktioniert. Mit den P
 Wert: Würfelpool beim Ausführen der Aktion
 Limit: Das Limit für zählende Erfolge
 Wehren: Führt eine andere Person diese Handlung gegen dich aus, ist das dein Pool um dich zu wehren.
-Für diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusammenrechnest, sondern du hinterlegst die anderen Einträge, aus denen sich die Werte berechnen.</value>
+Für diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusammenrechnest, sondern du hinterlegst die anderen Einträge, aus denen sich die Werte berechnen. Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   </data>
   <data name="Tut_State_31" xml:space="preserve">
     <value>Klickst du auf Bearbeiten, so wird dir eine Liste von Einträge angezeigt. Diese Liste enthält aber noch mehr. 
@@ -1126,7 +1123,8 @@ Für diese 3 Eigenschaften hinterlegst du aber keine Werte, die du selber zusamm
 Ein Beispiel: Das Limit beim Abfeuern einer Waffe wird durch ihre Präzision bestimmt. Das heißt, bei Limit der Handlung Schießen musst du "Präzision" auswählen. 
 
 Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst, ist in dieser Liste nur die aktuelle Waffe mit ihren verschiedenen Eigenschaften aufgelistet. 
-Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehikel. Aktiviert wird ein Gegenstand über das erste Häkchen in seinem Eintrag.</value>
+Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehikel. Aktiviert wird ein Gegenstand über das erste Häkchen in seinem Eintrag.
+Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   </data>
   <data name="Tut_TitelState_30" xml:space="preserve">
     <value>Handlungen</value>
@@ -1189,7 +1187,7 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
     <value>Umbenennen</value>
   </data>
   <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">
-    <value>Speichern fehlgeschlagen - anderes Operation in Gange</value>
+    <value>Speichern fehlgeschlagen - andere Operation in Gange</value>
   </data>
   <data name="UI_Admin_Btn_CurrentChar_CSV_Export.Text" xml:space="preserve">
     <value>CSV Export</value>
@@ -1216,12 +1214,150 @@ Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehike
     <value>Kategorien auswählen</value>
   </data>
   <data name="UI_Settings_Btn_Speichern.Content" xml:space="preserve">
-    <value>Speichern</value>
+    <value>Neuladen zum Anwenden</value>
   </data>
   <data name="UI_Settings_Btn_Reset.Content" xml:space="preserve">
     <value>Zurücksetzen</value>
   </data>
   <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
     <value>Diese Version des Chars wird seid langem nicht mehr unterstützt. Bitte wende dich an den Support, wenn du ihn unbedingt konvertiert haben möchtest.</value>
+  </data>
+  <data name="CSV_EX.Text" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="CSV_IN.Text" xml:space="preserve">
+    <value>CSV Import</value>
+  </data>
+  <data name="DeleteCategoryContent.Text" xml:space="preserve">
+    <value>Kategorie leeren</value>
+  </data>
+  <data name="FurtherSettings.Text" xml:space="preserve">
+    <value>Mehr</value>
+  </data>
+  <data name="Notification_Error_LogicFail" xml:space="preserve">
+    <value>Programmlogik Fehler</value>
+  </data>
+  <data name="CSV_EX_Selected.Text" xml:space="preserve">
+    <value>CSV Export (nur markierte)</value>
+  </data>
+  <data name="Error_GetFolder" xml:space="preserve">
+    <value>Fehler, konnte nicht auf Ordner zugreifen.</value>
+  </data>
+  <data name="Char_View_Pivot_Settings.Label" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Error_RepairLinkList" xml:space="preserve">
+    <value>Fehler, konnte Link mit {0} nicht wiederherstellen</value>
+  </data>
+  <data name="Order.Text" xml:space="preserve">
+    <value>Sortieren</value>
+  </data>
+  <data name="Order_ABC.Text" xml:space="preserve">
+    <value>Alphabetisch</value>
+  </data>
+  <data name="Order_Orig.Text" xml:space="preserve">
+    <value>Sortierung laden</value>
+  </data>
+  <data name="Order_Save.Text" xml:space="preserve">
+    <value>Sortierung speichern</value>
+  </data>
+  <data name="Order_Type.Text" xml:space="preserve">
+    <value>Nach "Typ"</value>
+  </data>
+  <data name="Model_KomplexeFormM_.Text" xml:space="preserve">
+    <value>Komplexe Formen</value>
+  </data>
+  <data name="Model_KomplexeForm_.Text" xml:space="preserve">
+    <value>Komplexe Form</value>
+  </data>
+  <data name="Model_KomplexeForm_Option.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="Model_WidgetsM_.Text" xml:space="preserve">
+    <value>Widgets</value>
+  </data>
+  <data name="Model_Widgets_.Text" xml:space="preserve">
+    <value>Widget</value>
+  </data>
+  <data name="Model_SpriteM_.Text" xml:space="preserve">
+    <value>Sprites</value>
+  </data>
+  <data name="Model_Sprite_.Text" xml:space="preserve">
+    <value>Sprite</value>
+  </data>
+  <data name="Model_Sprite_Dienste.Text" xml:space="preserve">
+    <value>Dienste</value>
+  </data>
+  <data name="Model_Sprite_Geb_Reg.Text" xml:space="preserve">
+    <value>Registriert</value>
+  </data>
+  <data name="Model_WandlungM_.Text" xml:space="preserve">
+    <value>Wandlungen</value>
+  </data>
+  <data name="Model_Wandlung_.Text" xml:space="preserve">
+    <value>Wandlung</value>
+  </data>
+  <data name="Model_Wandlung_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Wandlung_Echos.Text" xml:space="preserve">
+    <value>Echos</value>
+  </data>
+  <data name="Model_Wandlung_Paragon.Text" xml:space="preserve">
+    <value>Paragon</value>
+  </data>
+  <data name="Model_Wandlung_Wert.Text" xml:space="preserve">
+    <value>Grad</value>
+  </data>
+  <data name="Model_InitiationM_.Text" xml:space="preserve">
+    <value>Initiationen</value>
+  </data>
+  <data name="Model_Initiation_.Text" xml:space="preserve">
+    <value>Initiation</value>
+  </data>
+  <data name="Model_Initiation_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Initiation_Metamagie.Text" xml:space="preserve">
+    <value>Metamagie</value>
+  </data>
+  <data name="Model_Initiation_Schutzpatron.Text" xml:space="preserve">
+    <value>Schutzpatron</value>
+  </data>
+  <data name="Model_Initiation_Wert.Text" xml:space="preserve">
+    <value>Grad</value>
+  </data>
+  <data name="UI_Btn_Bearbeiten_Munition.Content" xml:space="preserve">
+    <value>Munition auswählen</value>
+  </data>
+  <data name="UI_Btn_Bearbeiten_LinkedThings.Content" xml:space="preserve">
+    <value>Verknüpfungen Bearbeiten</value>
+  </data>
+  <data name="Model_Person_Schaden_G_max_mod.Text" xml:space="preserve">
+    <value>Max.G-Schaden modifier</value>
+  </data>
+  <data name="Model_Person_Schaden_K_max_mod.Text" xml:space="preserve">
+    <value>Max.K-Schaden modifier</value>
+  </data>
+  <data name="Model__ORG.Text" xml:space="preserve">
+    <value>Org.</value>
+  </data>
+  <data name="Model__Active.Text" xml:space="preserve">
+    <value>Aktiver Eintrag: </value>
+  </data>
+  <data name="Model__Mod.Text" xml:space="preserve">
+    <value>Mod.</value>
+  </data>
+  <data name="Notification_Info_UpgradedChar_1_5_to_1_6" xml:space="preserve">
+    <value>Ihr Char wurde auf die neuste Version geupgraded. Er kann nicht mehr vollständig in alten App Versionen geladen werden.</value>
+  </data>
+  <data name="Notification_Warning_NotAddLinkedEntry" xml:space="preserve">
+    <value>Warnung: Referenz "{0}" konnte nicht gesetzt werden.</value>
+  </data>
+  <data name="Error_ObjectCopy" xml:space="preserve">
+    <value>Konnte nicht alles kopieren.</value>
+  </data>
+  <data name="Model_Fertigkeit_CreateHandlung" xml:space="preserve">
+    <value>Handlung anlegen</value>
   </data>
 </root>

@@ -1,0 +1,23 @@
+﻿
+--------Aktuelles---------------------------------------------
+* Verknüpfungen Modell für Zirkelbezüge verbessern
+* bessere BG speichern
+
+-----------------------------------------------------
+* button relativ zum anklickgerät
+https://msdn.microsoft.com/en-us/library/system.windows.controls.primitives.buttonbase.click(v=vs.110).aspx
+https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.Input.PointerRoutedEventArgs
+https://docs.microsoft.com/en-us/windows/uwp/design/input/handle-pointer-input
+https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.uielement.pointerpressed
+https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.UIElement
+
+
+---------- Ideen für später -------------------------------
+
+* Max schaden bei berechneten werten
+* schaden overflow einarbeiten
+
+---------- Zukünftiges TODO für Verknüpfungen -------------
+* Filter anlegen und im Konstruktor setzen
+* Im UI Template Button, Liste und OriginalWerte angeben
+* im LinkedEntryEdit Handler spezialfälle einstellen

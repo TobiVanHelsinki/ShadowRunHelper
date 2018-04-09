@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System;
 using System.Linq;
+using TLIB;
 
 namespace ShadowRunHelper.CharController
 {
@@ -26,18 +27,34 @@ namespace ShadowRunHelper.CharController
 
         public virtual Thing AddNewThing()
         {
-            var newThing = (T)Activator.CreateInstance(TypenHelper.ThingDefToType(eDataTyp));
+            var newThing = Activator.CreateInstance<T>();
+            newThing.Order = Data.MaxOrDefault(x => x.Order) + 1;
             Data.Add(newThing);
             return newThing;
         }
         public virtual Thing AddNewThing(Thing newThing)
         {
             Data.Add((T)newThing);
+            newThing.Order = Data.Max(x => x.Order) + 1;
             return newThing;
         }
         public virtual void RemoveThing(Thing tToRemove)
         {
+            tToRemove.NotifiyDeletion();
             Data.Remove((T)tToRemove);
+        }
+
+        public bool ClearData()
+        {
+            try
+            {
+                Data.Clear();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         public virtual IEnumerable<AllListEntry> GetElementsForThingList()
@@ -51,62 +68,52 @@ namespace ShadowRunHelper.CharController
         public Controller()
         {
             Data = new ObservableCollection<T>();
-            _eDataTyp = TypenHelper.TypeToThingDef(typeof(T));
+            _eDataTyp = TypeHelper.TypeToThingDef(typeof(T));
         }
+
 
         #region CSV
         public string Data2CSV(char strDelimiter, char strNewLine)
         {
-            string ret = "sep=" + strDelimiter + strNewLine;
-            if (this.Data.Count >= 1)
-            {
-                ret += this.Data[0].HeaderToCSV(strDelimiter);
-            }
-            ret += strNewLine;
-            foreach (T item in this.Data)
-            {
-                ret += item.ToCSV(strDelimiter);
-                ret += strNewLine;
-            }
-            return ret;
+            return IO.CSV_Converter.Data2CSV(strDelimiter, strNewLine, Data);
         }
 
         public void CSV2Data(char strDelimiter, char strNewLine, string strReadFile)
         {
-            string[] Lines = strReadFile.Split(strNewLine);
-            string[] Headar = { };
-            for (int i = 0; i < Lines.Length; i++) //start at 2 to overjump first lines
+            Data.AddRange(IO.CSV_Converter.CSV2Data<T>(strDelimiter, strNewLine, strReadFile));
+        }
+        #endregion
+
+        public void SaveCurrentOrdering()
+        {
+            int i = 1;
+            foreach (var item in Data)
             {
-                // key = propertie name, value = value
-                string[] CSVEntries = Lines[i].Split(strDelimiter);
-                if (CSVEntries.Length < 5)
-                {
-                    continue;
-                }
-                if (Headar.Length < CharModel.Thing.nThingPropertyCount) 
-                {
-                    Headar = Lines[i].Split(strDelimiter);
-                    continue;
-                }
-                Dictionary<string, string> Dic = new Dictionary<string, string>();
-                int j = 0;
-                foreach (var itemstring in CSVEntries)
-                {
-                    try
-                    {
-                        Dic.Add(Headar[j], itemstring);
-                    }
-                    catch (Exception)
-                    {
-                         continue;
-                    }
-                    j++;
-                }
-                (this.AddNewThing())?.FromCSV(Dic);
+                item.Order = i;
+                i++;
             }
         }
 
+        public void OrderData(Ordering order)
+        {
+            IEnumerable<T> OrderedData;
+            switch (order)
+            {
+                case Ordering.ABC:
+                    OrderedData = Data.OrderBy(x => x.Bezeichner).ToList();
+                    break;
+                case Ordering.Type:
+                    OrderedData = Data.OrderBy(x => x.Typ).ToList();
+                    break;
+                case Ordering.Original:
+                default:
+                    OrderedData = Data.OrderBy(x => x.Order).ToList();
+                    break;
+            }
+            ClearData();
+            Data.AddRange(OrderedData);
+        }
 
-        #endregion
+
     }
 }

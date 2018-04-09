@@ -1,0 +1,550 @@
+﻿<ContentDialog
+    x:Class="ShadowRunHelper.UI.Edit.EditThingDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CharModel="using:ShadowRunHelper.CharModel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:ShadowRunHelper.Model"
+    mc:Ignorable="d"
+    x:Uid="EditDialog"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    >
+    <ContentDialog.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="AllListEntry" x:DataType="model:AllListEntry">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
+                    <TextBlock x:Uid="Doppelpunkt" Grid.Column="1"/>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=Wert, Mode=OneWay}" Grid.Column="2"/>
+                    <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.ColumnSpan="3"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Handlung" x:DataType="CharModel:Handlung">
+                <StackPanel Orientation="Horizontal" x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Wert"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model__Mod"/>
+                    <TextBox TabIndex="10" x:Name="Anzahl" Text="{x:Bind Wert, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Name="Attribut"  x:DataType="CharModel:Attribut">
+                <StackPanel Orientation="Vertical" x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Button x:Uid="UI_Btn_Bearbeiten_LinkedThings" Click="AttributZusammensetzungBearbeiten"  Style="{StaticResource STD_Button}"/>
+                    <ListView BorderThickness="1" BorderBrush="{ThemeResource BorderBrushes}" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}"/>
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Name="CyberDeck"  x:DataType="CharModel:CyberDeck">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"/>
+                    <TextBox TabIndex="10" Name="Anzahl" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Kommlink_Programmanzahl" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"/>
+                    <TextBox TabIndex="10" Name="Programmanzahl" Text="{x:Bind Programmanzahl, Mode=TwoWay , Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="1"/>
+
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_CyberDeck_Angriff" Grid.Column="0" Grid.Row="2"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_CyberDeck_Schleicher" Grid.Column="1" Grid.Row="2"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Kommlink_Firewall" Grid.Column="2" Grid.Row="2"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Kommlink_Datenverarbeitung" Grid.Column="3" Grid.Row="2"/>
+
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Kommlink_Attribute" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="4"/>
+
+                    <TextBox TabIndex="10" Name="Angriff" Text="{x:Bind Angriff, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="0" Grid.Row="4"/>
+                    <TextBox TabIndex="10" Name="Schleicher" Text="{x:Bind Schleicher, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="4"/>
+                    <TextBox TabIndex="10" Name="Firewall" Text="{x:Bind Firewall, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="2" Grid.Row="4"/>
+                    <TextBox TabIndex="10" Name="Datenverarbeitung" Text="{x:Bind Datenverarbeitung, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="4"/>
+
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Kommlink_Attribute_o" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4"/>
+
+                    <TextBox TabIndex="10" Name="Angriff_o" Text="{x:Bind Angriff_o, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="0" Grid.Row="6"/>
+                    <TextBox TabIndex="10" Name="Schleicher_o" Text="{x:Bind Schleicher_o, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="6"/>
+                    <TextBox TabIndex="10" Name="Firewall_o" Text="{x:Bind Firewall_o, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="2" Grid.Row="6"/>
+                    <TextBox TabIndex="10" Name="Datenverarbeitung_o" Text="{x:Bind Datenverarbeitung_o, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="6"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Connection" x:DataType="CharModel:Connection">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Connection_Einfluss" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Einfluss, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Connection_Loyal" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox TabIndex="11" Text="{x:Bind Loyal, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="0"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" x:Name="Anzahl" Text="{x:Bind Anzahl, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Waffe_SchadenTyp" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"/>
+                    <TextBox TabIndex="10" x:Name="SchadenTyp" Text="{x:Bind SchadenTyp, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="2" Grid.Row="3"  Grid.ColumnSpan="2"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Waffe_DK" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox TabIndex="10" x:Name="DK" Text="{x:Bind DK, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="1"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Fernkampfwaffe_RK" Grid.Column="2" Grid.Row="1"/>
+                    <TextBox TabIndex="10" x:Name="RK" Text="{x:Bind RK, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="1"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Fernkampfwaffe_Modi" Grid.Column="0" Grid.Row="2"/>
+                    <TextBox TabIndex="10" x:Name="Modi" Text="{x:Bind Modi, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Waffe_Praezision" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox TabIndex="10" x:Name="Praezision" Text="{x:Bind Praezision, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Munition"  x:DataType="CharModel:Munition">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Waffe_SchadenTyp" Grid.Column="2" TextWrapping="Wrap"/>
+                    <TextBox TabIndex="11" x:Name="SchadenTyp" Text="{x:Bind SchadenTyp, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
+
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="2" Grid.Row="1"/>
+                    <TextBox TabIndex="13" Name="Anzahl" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="1"/>
+
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Waffe_DK" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox TabIndex="12" x:Name="DK" Text="{x:Bind DK, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="1"/>
+
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Waffe_Praezision" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" x:Name="Praezision" Text="{x:Bind Praezision, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Eigenschaft"  x:DataType="CharModel:Eigenschaft">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Eigenschaft_Auswirkungen" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Name="Auswirkungen" Text="{x:Bind Auswirkungen, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Implantat" x:DataType="CharModel:Implantat">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Implantat_Essenz" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Name="Essenz" Text="{x:Bind Essenz, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model__Kapazitaet" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Name="Kapazitaet" Text="{x:Bind Kapazitaet, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox TabIndex="10" Name="Anzahl" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="1"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Implantat_Auswirkung" Grid.Column="0" Grid.Row="2"/>
+                    <TextBox TabIndex="10" Name="Auswirkung" Text="{x:Bind Auswirkung, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Item"  x:DataType="CharModel:Item">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="0"/>
+                <TextBox TabIndex="10" x:Name="Anzahl" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Kommlink"  x:DataType="CharModel:Kommlink">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Name="Anzahl" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Kommlink_Programmanzahl" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Name="Programmanzahl" Text="{x:Bind Programmanzahl, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Kommlink_Firewall" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox TabIndex="10" Name="Firewall" Text="{x:Bind Firewall, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="1"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Kommlink_Datenverarbeitung" Grid.Column="2" Grid.Row="1"/>
+                    <TextBox TabIndex="10" Name="Datenverarbeitung" Text="{x:Bind Datenverarbeitung, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="1"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Nahkampfwaffe" x:DataType="CharModel:Nahkampfwaffe">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Name="Anzahl" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Waffe_SchadenTyp" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Name="SchadenTyp" Text="{x:Bind SchadenTyp, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Waffe_DK" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox TabIndex="10" Name="PB" Text="{x:Bind DK, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="1"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Nahkampfwaffe_Reichweite" Grid.Column="2" Grid.Row="1"/>
+                    <TextBox TabIndex="10" Name="Reichweite" Text="{x:Bind Reichweite, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="1"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Waffe_Praezision" Grid.Column="0" Grid.Row="2"/>
+                    <TextBox TabIndex="10" x:Name="Praezision" Text="{x:Bind Praezision, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="2"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Panzerung" x:DataType="CharModel:Panzerung">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <!--<ColumnDefinition Width="*"/>-->
+                        <!--<ColumnDefinition Width="*"/>-->
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <!--<TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Panzerung_Stoss" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Name="Stoss" Text="{x:Bind Stoss, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>-->
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model__Kapazitaet" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Name="Kapazitaet" Text="{x:Bind Kapazitaet, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Programm"  x:DataType="CharModel:Programm">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="5"/>
+                    <TextBox TabIndex="10" Name="Anzahl" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="5"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Programm_Optionen" Grid.Column="2" Grid.Row="6"/>
+                    <TextBox TabIndex="10" Name="Optionen" Text="{x:Bind Optionen, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="6"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Vehikel" x:DataType="CharModel:Vehikel">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Name="Anzahl" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Sitze" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Name="Sitze" Text="{x:Bind Sitze, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Geschwindigkeit" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox TabIndex="10" Name="Geschwindigkeit" Text="{x:Bind Geschwindigkeit, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="1"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Beschleunigung" Grid.Column="2" Grid.Row="1"/>
+                    <TextBox TabIndex="10" Name="Beschleunigung" Text="{x:Bind Beschleunigung, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="1"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Panzerung" Grid.Column="0" Grid.Row="2"/>
+                    <TextBox TabIndex="10" Name="Panzerung" Text="{x:Bind Panzerung, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="2"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Rumpf" Grid.Column="2" Grid.Row="2"/>
+                    <TextBox TabIndex="10" Name="Rumpf" Text="{x:Bind Rumpf, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="2"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Handling" Grid.Column="0" Grid.Row="3"/>
+                    <TextBox TabIndex="10" Name="Handling" Text="{x:Bind Handling, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="3"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Pilot" Grid.Column="2" Grid.Row="3"/>
+                    <TextBox TabIndex="10" Name="Pilot" Text="{x:Bind Pilot, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="3"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Sensor" Grid.Column="0" Grid.Row="4"/>
+                    <TextBox TabIndex="10" Name="Sensor" Text="{x:Bind Sensor, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="4"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Vehikel_Gewicht" Grid.Column="2" Grid.Row="4"/>
+                    <TextBox TabIndex="10" Name="Gewicht" Text="{x:Bind Gewicht, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="4"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Adeptenkraft" x:DataType="CharModel:Adeptenkraft">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Programm_Optionen" />
+                    <TextBox TabIndex="10" Name="Optionen" Text="{x:Bind Option, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Foki" x:DataType="CharModel:Foki">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="5"/>
+                    <TextBox TabIndex="10" Name="Anzahl" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="5"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Zaubersprueche" x:DataType="CharModel:Zaubersprueche">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Zaubersprueche_Entzug" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Entzug, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Zaubersprueche_Dauer" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Dauer, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Zaubersprueche_Reichweite" Grid.Column="0" Grid.Row="2"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Reichweite, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Geist" x:DataType="CharModel:Geist">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Geist_Dienste" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Dienste, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Tradition" x:DataType="CharModel:Tradition">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Schutzpatron" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Schutzpatron, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Metamagie" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Metamagie, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="1"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Stroemung" x:DataType="CharModel:Stroemung">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Paragon" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Paragon, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Echos" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Echos, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="KomplexeForm" x:DataType="CharModel:KomplexeForm">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Programm_Optionen" />
+                    <TextBox TabIndex="10" Name="Optionen" Text="{x:Bind Option, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Widgets" x:DataType="CharModel:Widgets">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="5"/>
+                    <TextBox TabIndex="10" Name="Anzahl" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="5"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Sprite" x:DataType="CharModel:Sprite">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Item_Anzahl" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Anzahl, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Geist_Dienste" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Dienste, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Initiation" x:DataType="CharModel:Initiation">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Schutzpatron" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Schutzpatron, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Tradition_Metamagie" Grid.Column="0" Grid.Row="1"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Metamagie, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="1"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="Wandlung" x:DataType="CharModel:Wandlung">
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Paragon" Grid.Column="0" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Paragon, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Stroemung_Echos" Grid.Column="2" Grid.Row="0"/>
+                    <TextBox TabIndex="10" Text="{x:Bind Echos, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="3" Grid.Row="0"/>
+                </Grid>
+            </DataTemplate>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Settings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentDialog.Resources>
+    <Grid x:Name="MainGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" x:Name="Col1"/>
+            <ColumnDefinition Width="*" x:Name="Col2"/>
+            <ColumnDefinition Width="*" x:Name="Col3"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" x:Name="NameAndValue_U"/>
+            <RowDefinition Height="Auto" x:Name="NameAndValue"/>
+            <RowDefinition Height="Auto" x:Name="Type"/>
+            <RowDefinition Height="Auto" x:Name="Type_U"/>
+            <RowDefinition Height="Auto" x:Name="ContentPresenter"/>
+            <RowDefinition Height="Auto" x:Name="Notes_U"/>
+            <RowDefinition Height="*" x:Name="Notes"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Bezeichner"/>
+        <TextBox TabIndex="0" x:Name="Bezeichner" Text="{x:Bind Data.Bezeichner, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Row="1" Grid.ColumnSpan="2"/>
+        
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Typ" Grid.Row="2"/>
+        <TextBox TabIndex="2" x:Name="Typ" Text="{x:Bind Data.Typ, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="0" Grid.Row="3"/>
+        
+        <TextBlock x:Name="WertLabel" Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Wert" Grid.Column="3"/>
+        <TextBox TabIndex="1" x:Name="Wert" Text="{x:Bind Data.Wert, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="3" Grid.Row="1"/>
+
+        <TextBlock x:Name="ZusatzLabel" Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Zusatz" Grid.Column="1" Grid.Row="2"/>
+        <TextBox TabIndex="3" x:Name="Zusatz" Text="{x:Bind Data.Zusatz, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"/>
+
+        <ContentPresenter 
+        Grid.Row="4" Grid.ColumnSpan="3"
+        x:Name="EditType" 
+        Background="Transparent" 
+        Loaded="EditType_Loaded"/>
+
+        <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Notiz" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3"/>
+        <TextBox TabIndex="99" x:Name="Notiz" Text="{x:Bind Data.Notiz, Mode=TwoWay}" Style="{StaticResource NotesBox}" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3"/>
+    </Grid>
+</ContentDialog>

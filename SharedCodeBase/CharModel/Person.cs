@@ -7,34 +7,107 @@ namespace ShadowRunHelper.CharModel
 {
     public class Person : INotifyPropertyChanged
     {
-        string alias = TLIB_UWPFRAME.CrossPlatformHelper.GetString("Model_Person_Alias_STD/Text");
-        [Used_UserAttribute]
-        public string Alias
+        #region PropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            get { return alias; }
+            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+        }
+
+        #endregion
+
+        #region Schaden
+        double schaden_K;
+        [Used_UserAttribute]
+        public double Schaden_K
+        {
+            get { return schaden_K; }
             set
             {
-                if (value != alias)
+                if (value != schaden_K)
                 {
-                    alias = value;
+                    schaden_K = value;
                     NotifyPropertyChanged();
                 }
             }
         }
-        string char_Typ;
+        double schaden_G;
         [Used_UserAttribute]
-        public string Char_Typ
+        public double Schaden_G
         {
-            get { return char_Typ; }
+            get { return schaden_G; }
             set
             {
-                if (value != char_Typ)
+                if (value != schaden_G)
                 {
-                    char_Typ = value;
+                    schaden_G = value;
                     NotifyPropertyChanged();
                 }
             }
         }
+        double schaden_K_max;
+        [Used_UserAttribute]
+        public double Schaden_K_max
+        {
+            get { return schaden_K_max; }
+            set
+            {
+                if (value != schaden_K_max)
+                {
+                    schaden_K_max = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        double schaden_G_max;
+        [Used_UserAttribute]
+        public double Schaden_G_max
+        {
+            get { return schaden_G_max; }
+            set
+            {
+                if (value != schaden_G_max)
+                {
+                    schaden_G_max = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        double schaden_K_max_mod;
+        [Used_UserAttribute]
+        public double Schaden_K_max_mod
+        {
+            get { return schaden_K_max_mod; }
+            set
+            {
+                if (value != schaden_K_max_mod)
+                {
+                    schaden_K_max_mod = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        double schaden_G_max_mod;
+        [Used_UserAttribute]
+        public double Schaden_G_max_mod
+        {
+            get { return schaden_G_max_mod; }
+            set
+            {
+                if (value != schaden_G_max_mod)
+                {
+                    schaden_G_max_mod = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        #endregion
+
+        #region ZahlenWerte
         double kontostand;
         [Used_UserAttribute]
         public double Kontostand
@@ -120,89 +193,121 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        double schaden_K;
+        double _StrassenrufMod;
         [Used_UserAttribute]
-        public double Schaden_K
+        public double StrassenrufMod
         {
-            get { return schaden_K; }
+            get { return _StrassenrufMod; }
             set
             {
-                if (value != schaden_K)
+                if (value != _StrassenrufMod)
                 {
-                    schaden_K = value;
+                    _StrassenrufMod = value;
+                    Strassenruf = 0;
                     NotifyPropertyChanged();
                 }
             }
         }
-        double schaden_G;
         [Used_UserAttribute]
-        public double Schaden_G
+        public double Strassenruf
         {
-            get { return schaden_G; }
+            get { return Math.Floor(karma_Gesamt / 10) + _StrassenrufMod; }
             set
             {
-                if (value != schaden_G)
+                if (value != Strassenruf)
                 {
-                    schaden_G = value;
                     NotifyPropertyChanged();
                 }
             }
         }
-        double schaden_M;
+        double _SchlechterRuf;
         [Used_UserAttribute]
-        public double Schaden_M
+        public double SchlechterRuf
         {
-            get { return schaden_M; }
+            get { return _SchlechterRuf; }
             set
             {
-                if (value != schaden_M)
+                if (value != _SchlechterRuf)
                 {
-                    schaden_M = value;
+                    _SchlechterRuf = value;
                     NotifyPropertyChanged();
                 }
             }
         }
-        double schaden_K_max;
+        double _Prominenz;
         [Used_UserAttribute]
-        public double Schaden_K_max
+        public double Prominenz
         {
-            get { return schaden_K_max; }
+            get { return _Prominenz; }
             set
             {
-                if (value != schaden_K_max)
+                if (value != _Prominenz)
                 {
-                    schaden_K_max = value;
+                    _Prominenz = value;
                     NotifyPropertyChanged();
                 }
             }
         }
-        double schaden_G_max;
+        double initiative;
         [Used_UserAttribute]
-        public double Schaden_G_max
+        public double Initiative
         {
-            get { return schaden_G_max; }
+            get { return initiative; }
             set
             {
-                if (value != schaden_G_max)
+                if (value != initiative)
                 {
-                    schaden_G_max = value;
+                    initiative = value;
                     NotifyPropertyChanged();
                 }
             }
         }
-        //double schaden_M_max;
-        //        [Used] public double Schaden_M_max
-        //{
-        //    get { return schaden_M_max; }
-        //    set
-        //    {
-        //        if (value != schaden_M_max)
-        //        {
-        //            schaden_M_max = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
+        double runs;
+        [Used_UserAttribute]
+        public double Runs
+        {
+            get { return runs; }
+            set
+            {
+                if (value != runs)
+                {
+                    runs = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        #endregion
+
+        #region Details
+        string alias = TLIB.StringHelper.GetString("Model_Person_Alias_STD/Text");
+        [Used_UserAttribute]
+        public string Alias
+        {
+            get { return alias; }
+            set
+            {
+                if (value != alias)
+                {
+                    alias = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        string char_Typ;
+        [Used_UserAttribute]
+        public string Char_Typ
+        {
+            get { return char_Typ; }
+            set
+            {
+                if (value != char_Typ)
+                {
+                    char_Typ = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         string notizen;
         [Used_UserAttribute]
         public string Notizen
@@ -259,32 +364,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        //string geburtsdatum;
-        //        [Used] public string Geburtsdatum
-        //{
-        //    get { return geburtsdatum; }
-        //    set
-        //    {
-        //        if (value != geburtsdatum)
-        //        {
-        //            geburtsdatum = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
-        //DateTime geburtsdatum2 = new DateTime();
-        //        [Used] public DateTime Geburtsdatum2
-        //{
-        //    get { return geburtsdatum2; }
-        //    set
-        //    {
-        //        if (value != geburtsdatum2)
-        //        {
-        //            geburtsdatum2 = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
+
         DateTimeOffset _BirthDate = new DateTimeOffset(2060, 1, 1, 0, 0, 0, new System.TimeSpan(0));
         [Used_UserAttribute]
         public DateTimeOffset BirthDate
@@ -383,77 +463,6 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        string bild;
-        [Used_UserAttribute]
-        public string Bild
-        {
-            get { return bild; }
-            set
-            {
-                if (value != bild)
-                {
-                    bild = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        double _StrassenrufMod;
-        [Used_UserAttribute]
-        public double StrassenrufMod
-        {
-            get { return _StrassenrufMod; }
-            set
-            {
-                if (value != _StrassenrufMod)
-                {
-                    _StrassenrufMod = value;
-                    Strassenruf = 0;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        [Used_UserAttribute]
-        public double Strassenruf
-        {
-            get { return Math.Floor(karma_Gesamt / 10) + _StrassenrufMod; }
-            set
-            {
-                if (value != Strassenruf)
-                {
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        double _SchlechterRuf;
-        [Used_UserAttribute]
-        public double SchlechterRuf
-        {
-            get { return _SchlechterRuf; }
-            set
-            {
-                if (value != _SchlechterRuf)
-                {
-                    _SchlechterRuf = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-        double _Prominenz;
-        [Used_UserAttribute]
-        public double Prominenz
-        {
-            get { return _Prominenz; }
-            set
-            {
-                if (value != _Prominenz)
-                {
-                    _Prominenz = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
         string zusammenfassung;
         [Used_UserAttribute]
         public string Zusammenfassung
@@ -469,42 +478,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        double initiative;
-        [Used_UserAttribute]
-        public double Initiative
-        {
-            get { return initiative; }
-            set
-            {
-                if (value != initiative)
-                {
-                    initiative = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        double runs;
-        [Used_UserAttribute]
-        public double Runs
-        {
-            get { return runs; }
-            set
-            {
-                if (value != runs)
-                {
-                    runs = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
-        }
+        #endregion
 
         public override string ToString()
         {

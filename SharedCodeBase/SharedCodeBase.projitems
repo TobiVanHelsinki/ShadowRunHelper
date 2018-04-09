@@ -13,12 +13,12 @@
     <SharedGUID>0d90bef9-68d7-4019-abec-0329274eb64d</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>SharedCodeBase</Import_RootNamespace>
+    <Import_RootNamespace>ShadowRunHelper</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\PreDB\de.SRHChar" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Example\de.SRHChar" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Example\de_Nao.SRHChar" />
+    <Content Include="$(MSBuildThisFileDirectory)ToDo.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CharController\BerechnetController.cs" />
@@ -31,7 +31,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)CharController\Nahkampfwaffe.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharController\Panzerung.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharController\Vehikel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Adeptenkraft_KomplexeForm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Sprite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Initiation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Wandlung.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Widgets.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\KomplexeForm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Adeptenkraft.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Berechnet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Attribut.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Connection.cs" />
@@ -39,8 +44,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Eigenschaft.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Fernkampfwaffe.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Fertigkeit.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Foki_Widgets.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Geist_Sprite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Foki.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Geist.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Handlung.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Implantat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Item.cs" />
@@ -51,16 +56,18 @@
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Panzerung.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Person.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Programm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\CharSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Sin.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Strömung_Wandlung.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Stroemung.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Thing.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Tradition_Initiation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Tradition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Vehikel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Vorteil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Waffe.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Zaubersprüche.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharModel\Zaubersprueche.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IO\CharHolderIO.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)IO\OldConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IO\CSV_Converter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IO\ICSV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\AppModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\SettingModels.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\CharHolder.cs" />
@@ -68,7 +75,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\AllListEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Exceptions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Typen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Types.cs" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de\Resources.resw" />

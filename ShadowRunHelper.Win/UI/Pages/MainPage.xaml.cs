@@ -19,46 +19,69 @@ namespace ShadowRunHelper
     public sealed partial class MainPage : Page
     {
         readonly AppModel Model = AppModel.Instance;
+        NotificationsDialog Notifications = new NotificationsDialog();
         ResourceLoader res;
 
+        #region Debug
+        void Debug1(object sender, RoutedEventArgs e)
+        {
+            DebugSettings DebugSettings = Application.Current.DebugSettings;
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                DebugSettings.IsOverdrawHeatMapEnabled = !DebugSettings.IsOverdrawHeatMapEnabled;
+            }
+        }
+        void Debug2(object sender, RoutedEventArgs e)
+        {
+            DebugSettings DebugSettings = Application.Current.DebugSettings;
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                DebugSettings.IsTextPerformanceVisualizationEnabled = !DebugSettings.IsTextPerformanceVisualizationEnabled;
+            }
+        }
+
+        #endregion
         public MainPage()
         {
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
-            Model.lstNotifications.CollectionChanged += (x, y) => ShowError();
+            Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary();
             Model.TutorialStateChanged += TutorialStateChanged;
-            CompatibilityChecks();
+            Model.NavigationRequested += (x, y, z) => NavigationRequested(y, z);
+#if DEBUG
+            HeatMap.Visibility = Visibility.Visible;
+            TextRedraw.Visibility = Visibility.Visible;
+#endif
+            //CompatibilityChecks();
         }
         #region navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ShowError();
+            ShowNotificationsIfNecessary();
             Model.SetDependencies(Dispatcher);
-            NavigationRequested(ProjectPages.Char);
+            NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
         }
 
-        Action<ProjectPages> NavigationMethod;
-        void NavigationRequested(ProjectPages e)
+        void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
         {
-            NavigationMethod = NavigationRequested;
-            switch (e)
+            switch (p)
             {
                 case ProjectPages.Char:
                     if (Model.MainObject != null)
                     {
-                        MyFrame.Navigate(typeof(CharPage), NavigationMethod);
+                        MyFrame.Navigate(typeof(CharPage), po);
                     }
                     else
                     {
-                        MyFrame.Navigate(typeof(AdministrationPage), NavigationMethod);
+                        MyFrame.Navigate(typeof(AdministrationPage), po);
                     }
                     break;
                 case ProjectPages.Administration:
-                    MyFrame.Navigate(typeof(AdministrationPage), NavigationMethod);
+                    MyFrame.Navigate(typeof(AdministrationPage), po);
                     break;
                 case ProjectPages.Settings:
-                    MyFrame.Navigate(typeof(SettingsPage), NavigationMethod);
+                    MyFrame.Navigate(typeof(SettingsPage), po);
                     break;
                 default:
                     break;
@@ -67,7 +90,7 @@ namespace ShadowRunHelper
         #endregion
         #region generel stuff
 
-        private void TutorialStateChanged(int StateNumber, bool Highlight)
+        void TutorialStateChanged(int StateNumber, bool Highlight)
         {
             Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
             switch (StateNumber)
@@ -84,23 +107,23 @@ namespace ShadowRunHelper
                     break;
             }
         }
-        async void ShowError()
+        void ShowNotificationsIfNecessary()
         {
             foreach (Notification item in Model.lstNotifications.Where((x) => x.bIsRead == false).OrderBy((x) => x.DateTime))
             {
                 try
                 {
-                    var messageDialog = new MessageDialog(item.strMessage + " \n \n" + item.ThrownException.Message);
+                    var messageDialog = new MessageDialog(item.strMessage + "\n\n\n" + item.ThrownException?.Message);
                     messageDialog.Commands.Add(new UICommand(
                         "OK"));
                     messageDialog.DefaultCommandIndex = 0;
-                    await messageDialog.ShowAsync();
+                    messageDialog.ShowAsync();
+                    item.bIsRead = true;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     continue;
                 }
-                item.bIsRead = true;
             }
         }
         #endregion
@@ -109,7 +132,7 @@ namespace ShadowRunHelper
         {
             if (Model.MainObject != null)
             {
-                string Controller_Name = ((string)((Button)sender).Name);
+                string Controller_Name = (((FrameworkElement)sender).Name);
 
                 if (Controller_Name.Contains("Karma_Gesamt"))
                 {
@@ -142,7 +165,7 @@ namespace ShadowRunHelper
         {
             if (Model.MainObject != null)
             {
-                string Controller_Name = ((string)((Button)sender).Name);
+                string Controller_Name = (((FrameworkElement)sender).Name);
 
                 if (Controller_Name.Contains("Karma_Gesamt"))
                 {
@@ -177,7 +200,7 @@ namespace ShadowRunHelper
 
             if (Controller_Name.Contains("Person2"))
             {
-                UI.Edit.Edit_Person2 dialog = new UI.Edit.Edit_Person2(Model.MainObject.Person);
+                UI.Edit.Edit_Person_Fast dialog = new UI.Edit.Edit_Person_Fast(Model.MainObject.Person);
                 await dialog.ShowAsync();
             }
         }
@@ -208,80 +231,45 @@ namespace ShadowRunHelper
 
         void Ui_Nav_Char(object sender, RoutedEventArgs e)
         {
-            NavigationRequested(ProjectPages.Char);
+            NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
         }
 
         void Ui_Nav_Admin(object sender, RoutedEventArgs e)
         {
-            NavigationRequested(ProjectPages.Administration);
+            NavigationRequested(ProjectPages.Administration, ProjectPagesOptions.Nothing);
         }
 
         void Ui_Nav_Settings(object sender, RoutedEventArgs e)
         {
-            NavigationRequested(ProjectPages.Settings);
+            NavigationRequested(ProjectPages.Settings, ProjectPagesOptions.Nothing);
         }
+
         #endregion
-        #region Compatibility (Update 4)
-        void CommandBar_Loaded(object sender, RoutedEventArgs e)
+        #region DynamicSize
+
+        public int CustFontSize { get; set; }
+        void Infos_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
-            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Controls.CommandBar", "DefaultLabelPosition"))
+            switch (e.Pointer.PointerDeviceType)
             {
-                (sender as CommandBar).DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
+                case Windows.Devices.Input.PointerDeviceType.Pen:
+                case Windows.Devices.Input.PointerDeviceType.Mouse:
+                    CustFontSize = 25;
+                    break;
+                case Windows.Devices.Input.PointerDeviceType.Touch:
+                default:
+                    CustFontSize = 45;
+                    break;
             }
         }
+
+        void MP_Btn_Loaded(object sender, RoutedEventArgs e)
+        {
+            (sender as Control).FontSize = CustFontSize;
+        }
+
         #endregion
-        #region Compatibility (Update 5) Fluent Design
-        private void MainGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.AcrylicBrush"))
-            {
-                try
-                {
-                    (sender as Grid).Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicElementAccentMediumHighBrush"];
-                }
-                catch (Exception)
-                {
-                    try
-                    {
-                        (sender as Grid).Background = (SolidColorBrush)Resources["SystemControlAccentAcrylicElementAccentMediumHighBrush"];
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-            }
-        }
 
-        private void Button_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
-            }
-        }
 
-        private void AppBarButton_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                (sender as AppBarButton).Style = (Style)Resources["AppBarButtonRevealLabelsOnRightStyle"];
-            }
-        }
-
-        void CompatibilityChecks()
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.AcrylicBrush"))
-            {
-                MainBar1.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
-                MainBar2.Background = (AcrylicBrush)Resources["SystemControlAccentAcrylicWindowAccentMediumHighBrush_MoreOpac"];
-            }
-            else
-            {
-                //SolidColorBrush myBrush = new SolidColorBrush(Color.FromArgb(255, 202, 24, 37));
-
-                //MainBarBorder.Background = myBrush;
-            }
-        }
-        #endregion
     }
 }

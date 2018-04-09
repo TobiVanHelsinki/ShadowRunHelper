@@ -4,6 +4,7 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace ShadowRunHelper.CharController
 {
@@ -54,6 +55,7 @@ namespace ShadowRunHelper.CharController
             lstReturn.Add(MI_V);
             lstReturn.Add(MI_F);
             lstReturn.Add(MI_D);
+            lstReturn.AddRange(Data.Select(item => new AllListEntry(item)));
             return lstReturn;
         }
     }

@@ -1,14 +1,12 @@
-﻿using ShadowRunHelper.CharController;
-using ShadowRunHelper.CharModel;
+﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelper.UI;
 using ShadowRunHelper.UI.Edit;
+using ShadowRunHelper.Win.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TLIB_UWPFRAME.IO;
-using Windows.ApplicationModel.Resources;
-using Windows.Foundation.Metadata;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -17,27 +15,19 @@ namespace ShadowRunHelper
 {
     public sealed partial class CharPage : Page
     {
-
-
         #region Variables
-        readonly AppModel ViewModel = AppModel.Instance;
+        AppModel Model => AppModel.Instance;
         public Windows.System.Display.DisplayRequest Char_DisplayRequest;
-        CharHolder MainObject;
-        ResourceLoader res;
+        CharHolder MainObject => Model.MainObject;
+        #endregion
+
         public CharPage()
         {
-            if (MainObject == null)
-            {
-                MainObject = ViewModel.MainObject;
-            }
-            res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
-            PrepareBlockList();
         }
 
-        #endregion
         #region Navigation stuff
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (SettingsModel.I.DISPLAY_REQUEST)
             {
@@ -50,7 +40,17 @@ namespace ShadowRunHelper
                 {
                 }
             }
-            ViewModel.TutorialStateChanged += TutorialStateChanged;
+            Model.TutorialStateChanged += TutorialStateChanged;
+            if (((ProjectPagesOptions)e.Parameter) == ProjectPagesOptions.CharNewChar)
+            {
+                try
+                {
+                    await new Edit_Person_Detail(MainObject.Person).ShowAsync();
+                }
+                catch (Exception)
+                {
+                }
+            }
             if (!SettingsModel.I.TutorialCharShown)
             {
 #pragma warning disable CS4014
@@ -60,7 +60,7 @@ namespace ShadowRunHelper
             }
         }
 
-        private void TutorialStateChanged(int StateNumber, bool Highlight)
+        void TutorialStateChanged(int StateNumber, bool Highlight)
         {
             Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
             switch (StateNumber)
@@ -102,432 +102,52 @@ namespace ShadowRunHelper
         }
 
         #endregion
-        #region Gui-Model Handler Stuff
-        async void Add_Click(object sender, RoutedEventArgs e)
+        #region Gui-Model Stuff
+        void Click_Save(object sender, RoutedEventArgs e)
         {
-            ThingDefs Controller = 0;
-            long test = Int64.Parse((((Button)sender).Tag).ToString());
-            Controller = (ThingDefs)test;
-            Thing newThing = null;
-            try
-            {
-                newThing = ViewModel.MainObject.Add(Controller);
-                if (SettingsModel.I.StartEditAfterAdd)
-                {
-                    await new Edit_Dialog(newThing).ShowAsync();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                ViewModel.NewNotification("", ex);
-            }
+            MainObject?.SetSaveTimerTo();
         }
 
-
-        async void Edit_Click(object sender, RoutedEventArgs e)
-        {
-            if (((String)((Button)sender).Name).Contains("Person1"))
-            {
-                await new Edit_Person(ViewModel.MainObject.Person).ShowAsync();
-            }
-            else
-            {
-                try
-                {
-                    await new Edit_Dialog(((Thing)((Button)sender).DataContext)).ShowAsync();
-                }
-                catch (Exception)
-                {
-                }
-            }
-        }
-
-        async void Edit_Attribut(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        async void Edit_Person_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                await new Edit_Dialog(((Thing)((Grid)sender).DataContext)).ShowAsync();
+                await new Edit_Person_Detail(MainObject.Person).ShowAsync();
             }
             catch (Exception)
             {
             }
         }
-
-        void Del_Click(object sender, RoutedEventArgs e)
-        {
-            if ((Thing)((Button)sender).DataContext != null)
-            {
-                ViewModel.MainObject.Remove((Thing)((Button)sender).DataContext);
-            }
-        }
-
-        async void HandlungEditZusDialog_Click(object sender, RoutedEventArgs e)
-        {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).WertZusammensetzung, ViewModel.MainObject.LinkList);
-            await dialog.ShowAsync();
-
-        }
-
-        async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
-        {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GrenzeZusammensetzung, ViewModel.MainObject.LinkList);
-            var ergebnis = await dialog.ShowAsync();
-        }
-
-        async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)
-        {
-            Auswahl dialog = new Auswahl(((Handlung)((Button)sender).DataContext).GegenZusammensetzung, ViewModel.MainObject.LinkList);
-            await dialog.ShowAsync();
-        }
-
-        async void FertigkeitenZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
-        {
-            Auswahl dialog = new Auswahl(((Fertigkeit)((Button)sender).DataContext).PoolZusammensetzung, ViewModel.MainObject.LinkList);
-            await dialog.ShowAsync();
-        }
         #endregion
-        #region Display Categoriy Stuff
-
-        void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        #region Char Settings
+        void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            //(sender as ListView).ScrollIntoView(, ScrollIntoViewAlignment.Leading);
-            DataTemplate NewTemplate = null;
-            DataTemplate NewTemplateX = null;
-            switch (int.Parse(((sender as ListView).Tag as string)))
-            {
-                case (int)ThingDefs.Handlung:
-                    NewTemplate = HandlungItem;
-                    NewTemplateX = HandlungItemX;
-                    if (!SettingsModel.I.TutorialHandlungShown)
-                    {
-#pragma warning disable CS4014
-                        new Tutorial(30, 31).ShowAsync();
-#pragma warning restore CS4014
-                        SettingsModel.I.TutorialHandlungShown = true;
-                    }
-                    break;
-                case (int)ThingDefs.Fertigkeit:
-                    NewTemplate = FertigkeitItem;
-                    NewTemplateX = FertigkeitItemX;
-                    break;
-                case (int)ThingDefs.Item:
-                    NewTemplate = ItemItem;
-                    NewTemplateX = ItemItemX;
-                    break;
-                case (int)ThingDefs.Programm:
-                    NewTemplate = ProgrammItem;
-                    NewTemplateX = ProgrammItemX;
-                    break;
-                case (int)ThingDefs.Munition:
-                    NewTemplate = MunitionItem;
-                    NewTemplateX = MunitionItemX;
-                    break;
-                case (int)ThingDefs.Implantat:
-                    NewTemplate = ImplantatItem;
-                    NewTemplateX = ImplantatItemX;
-                    break;
-                case (int)ThingDefs.Vorteil:
-                    NewTemplate = EigenschaftItem;
-                    NewTemplateX = EigenschaftItemX;
-                    break;
-                case (int)ThingDefs.Nachteil:
-                    NewTemplate = EigenschaftItem;
-                    NewTemplateX = EigenschaftItemX;
-                    break;
-                case (int)ThingDefs.Connection:
-                    NewTemplate = ConnectionItem;
-                    NewTemplateX = ConnectionItemX;
-                    break;
-                case (int)ThingDefs.Sin:
-                    NewTemplate = SinItem;
-                    NewTemplateX = SinItemX;
-                    break;
-                case (int)ThingDefs.Nahkampfwaffe:
-                    NewTemplate = NahkampfwaffeItem;
-                    NewTemplateX = NahkampfwaffeItemX;
-                    break;
-                case (int)ThingDefs.Fernkampfwaffe:
-                    NewTemplate = FernkampfwaffeItem;
-                    NewTemplateX = FernkampfwaffeItemX;
-                    break;
-                case (int)ThingDefs.Kommlink:
-                    NewTemplate = KommlinkItem;
-                    NewTemplateX = KommlinkItemX;
-                    break;
-                case (int)ThingDefs.CyberDeck:
-                    NewTemplate = CyberDeckItem;
-                    NewTemplateX = CyberDeckItemX;
-                    break;
-                case (int)ThingDefs.Vehikel:
-                    NewTemplate = VehikelItem;
-                    NewTemplateX = VehikelItemX;
-                    break;
-                case (int)ThingDefs.Panzerung:
-                    NewTemplate = PanzerungItem;
-                    NewTemplateX = PanzerungItemX;
-                    break;
-                case (int)ThingDefs.Adeptenkraft_KomplexeForm:
-                    NewTemplate = Adeptenkraft_KomplexeFormItem;
-                    NewTemplateX = Adeptenkraft_KomplexeFormItemX;
-                    break;
-                case (int)ThingDefs.Geist_Sprite:
-                    NewTemplate = Geist_SpriteItem;
-                    NewTemplateX = Geist_SpriteItemX;
-                    break;
-                case (int)ThingDefs.Foki_Widgets:
-                    NewTemplate = Foki_WidgetsItem;
-                    NewTemplateX = Foki_WidgetsItemX;
-                    break;
-                case (int)ThingDefs.Stroemung_Wandlung:
-                    NewTemplate = Stroemung_WandlungItem;
-                    NewTemplateX = Stroemung_WandlungItemX;
-                    break;
-                case (int)ThingDefs.Tradition_Initiation:
-                    NewTemplate = Tradition_InitiationItem;
-                    NewTemplateX = Tradition_InitiationItemX;
-                    break;
-                case (int)ThingDefs.Zaubersprueche:
-                    NewTemplate = ZauberspruecheItem;
-                    NewTemplateX = ZauberspruecheItemX;
-                    break;
-                default:
-                    return;
-            }
-            if (NewTemplate == null || NewTemplateX == null)
-            {
-                return;
-            }
-            foreach (var item in e.RemovedItems)
-            {
-                try
-                {
-                    ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = NewTemplate;
-                }
-                catch (Exception)
-                {
-                }
-            }
-            foreach (var item in e.AddedItems)
-            {
-                try
-                {
-                    ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = NewTemplateX;
-                }
-                catch (Exception)
-                {
-                }
-            }
+            MainObject.Settings.ResetCategoryOptions();
         }
-
-        /// <summary>
-        /// for fast Accces
-        /// </summary>
-        public readonly IEnumerable<(ThingDefs ThingType, bool vis)> LocalBlockListOptions = SettingsModel.I.BlockListOptions;
-
-        void ContentControl_Loaded(object sender, RoutedEventArgs e)
+        void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            var ControlBlock = sender as ContentControl;
-            ThingDefs Type = TypenHelper.Obj2ThingDef(ControlBlock.Tag);
-
-            //Temp Vars
-            TextBlock U = (((ControlBlock.ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children.First(c => c.GetType() == typeof(TextBlock)) as TextBlock);
-            ContentPresenter E = ((ControlBlock.ContentTemplateRoot as StackPanel).Children[1] as ContentPresenter);
-            ListView LV = ((ControlBlock.ContentTemplateRoot as StackPanel).Children[2] as ListView);
-            // Global Things
-            (((ControlBlock.ContentTemplateRoot as StackPanel).Children[0] as StackPanel).Children[0] as Button).Tag = ControlBlock.Tag;
-            LV.Tag = ControlBlock.Tag;
-            ControlBlock.DataContext = ViewModel.MainObject.ThingDef2CTRL(Type);
-
-            //Search Things
-            Blocklist.TryGetValue((ThingDefs)int.Parse(ControlBlock.Tag as string), out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) NewBlock);
-            NewBlock.ListView = LV;
-            NewBlock.Block = ControlBlock;
-            NewBlock.sv = (ScrollViewer)(ControlBlock.Parent as FrameworkElement).Parent;
-            Blocklist.Remove((ThingDefs)int.Parse(ControlBlock.Tag as string));
-            Blocklist.Add((ThingDefs)int.Parse(ControlBlock.Tag as string), NewBlock);
-
-            var entry = LocalBlockListOptions.FirstOrDefault(x => x.ThingType == Type);
-            if (!entry.vis)
-            {
-                ControlBlock.Visibility = Visibility.Collapsed;
-                //return;
-            }
-            //Local things
-            switch (Type)
-            {
-                case ThingDefs.Handlung:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_HandlungM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLHandlung.Data;
-                    E.ContentTemplate = this.Handlung_E;
-                    LV.ItemTemplate = HandlungItem;
-                    //NewBlock.PivotItem = 0;
-                    break;
-                case ThingDefs.Fertigkeit:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_FertigkeitM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLFertigkeit.Data;
-                    E.ContentTemplate = this.Fertigkeit_E;
-                    LV.ItemTemplate = FertigkeitItem;
-                    break;
-                case ThingDefs.Item:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ItemM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLItem.Data;
-                    E.ContentTemplate = this.Item_E;
-                    LV.ItemTemplate = ItemItem;
-                    break;
-                case ThingDefs.Programm:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ProgrammM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLProgramm.Data;
-                    E.ContentTemplate = this.Programm_E;
-                    LV.ItemTemplate = ProgrammItem;
-                    break;
-                case ThingDefs.Munition:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_MunitionM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLMunition.Data;
-                    E.ContentTemplate = this.Munition_E;
-                    LV.ItemTemplate = MunitionItem;
-                    break;
-                case ThingDefs.Implantat:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ImplantatM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLImplantat.Data;
-                    E.ContentTemplate = this.Implantat_E;
-                    LV.ItemTemplate = ImplantatItem;
-                    break;
-                case ThingDefs.Vorteil:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_VorteilM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLVorteil.Data;
-                    E.ContentTemplate = this.Eigenschaft_E;
-                    LV.ItemTemplate = EigenschaftItem;
-                    break;
-                case ThingDefs.Nachteil:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_NachteilM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLNachteil.Data;
-                    E.ContentTemplate = this.Eigenschaft_E;
-                    LV.ItemTemplate = EigenschaftItem;
-                    break;
-                case ThingDefs.Connection:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ConnectionM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLConnection.Data;
-                    E.ContentTemplate = this.Connection_E;
-                    LV.ItemTemplate = ConnectionItem;
-                    break;
-                case ThingDefs.Sin:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_SinM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLSin.Data;
-                    E.ContentTemplate = this.Sin_E;
-                    LV.ItemTemplate = SinItem;
-                    break;
-                case ThingDefs.Nahkampfwaffe:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_NahkampfwaffeM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLNahkampfwaffe.Data;
-                    E.ContentTemplate = this.Nahkampfwaffe_E;
-                    LV.ItemTemplate = NahkampfwaffeItem;
-                    break;
-                case ThingDefs.Fernkampfwaffe:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_FernkampfwaffeM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLFernkampfwaffe.Data;
-                    E.ContentTemplate = this.Fernkampfwaffe_E;
-                    LV.ItemTemplate = FernkampfwaffeItem;
-                    break;
-                case ThingDefs.Kommlink:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_KommlinkM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLKommlink.Data;
-                    E.ContentTemplate = this.Kommlink_E;
-                    LV.ItemTemplate = KommlinkItem;
-                    break;
-                case ThingDefs.CyberDeck:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_CyberDeckM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLCyberDeck.Data;
-                    E.ContentTemplate = this.CyberDeck_E;
-                    LV.ItemTemplate = CyberDeckItem;
-                    break;
-                case ThingDefs.Vehikel:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_VehikelM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLVehikel.Data;
-                    E.ContentTemplate = this.Vehikel_E;
-                    LV.ItemTemplate = VehikelItem;
-                    break;
-                case ThingDefs.Panzerung:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_PanzerungM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLPanzerung.Data;
-                    E.ContentTemplate = this.Panzerung_E;
-                    LV.ItemTemplate = PanzerungItem;
-                    break;
-                case ThingDefs.Adeptenkraft_KomplexeForm:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Adeptenkraft_KomplexeFormM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLAdeptenkraft_KomplexeForm.Data;
-                    E.ContentTemplate = this.Adeptenkraft_KomplexeForm_E;
-                    LV.ItemTemplate = Adeptenkraft_KomplexeFormItem;
-                    break;
-                case ThingDefs.Geist_Sprite:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Geist_SpriteM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLGeist_Sprite.Data;
-                    E.ContentTemplate = this.Geist_Sprite_E;
-                    LV.ItemTemplate = Geist_SpriteItem;
-                    break;
-                case ThingDefs.Foki_Widgets:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Foki_WidgetsM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLFoki_Widgets.Data;
-                    E.ContentTemplate = this.Foki_Widgets_E;
-                    LV.ItemTemplate = Foki_WidgetsItem;
-                    break;
-                case ThingDefs.Stroemung_Wandlung:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Stroemung_WandlungM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLStroemung_Wandlung.Data;
-                    LV.ItemTemplate = Stroemung_WandlungItem;
-                    break;
-                case ThingDefs.Tradition_Initiation:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_Tradition_InitiationM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLTradition_Initiation.Data;
-                    LV.ItemTemplate = Tradition_InitiationItem;
-                    break;
-                case ThingDefs.Zaubersprueche:
-                    U.Text = ResourceLoader.GetForCurrentView().GetString("Model_ZauberspruecheM_/Text");
-                    LV.ItemsSource = ViewModel.MainObject.CTRLZaubersprueche.Data;
-                    E.ContentTemplate = this.Zaubersprueche_E;
-                    LV.ItemTemplate = ZauberspruecheItem;
-                    break;
-                default:
-                    return;
-            }
+            Model.RequestNavigation(this, ProjectPages.Char);
         }
         #endregion
         #region  instant search Stuff
 
-        Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer SV)> Blocklist = new Dictionary<ThingDefs, (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer SV)>();
         Thing PendingScrollEntry;
-
-
-        void PrepareBlockList()
-        {
-            Blocklist.Add(ThingDefs.Handlung, (0, null, null, null));
-            Blocklist.Add(ThingDefs.Fertigkeit, (0, null, null, null));
-            Blocklist.Add(ThingDefs.Adeptenkraft_KomplexeForm, (0, null, null, null));
-            Blocklist.Add(ThingDefs.Item, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Kommlink, (1, null, null, null));
-            Blocklist.Add(ThingDefs.CyberDeck, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Programm, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Foki_Widgets, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Zaubersprueche, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Geist_Sprite, (1, null, null, null));
-            Blocklist.Add(ThingDefs.Fernkampfwaffe, (2, null, null, null));
-            Blocklist.Add(ThingDefs.Nahkampfwaffe, (2, null, null, null));
-            Blocklist.Add(ThingDefs.Panzerung, (2, null, null, null));
-            Blocklist.Add(ThingDefs.Vehikel, (2, null, null, null));
-            Blocklist.Add(ThingDefs.Munition, (2, null, null, null));
-            Blocklist.Add(ThingDefs.Attribut, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Connection, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Implantat, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Tradition_Initiation, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Stroemung_Wandlung, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Sin, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Vorteil, (3, null, null, null));
-            Blocklist.Add(ThingDefs.Nachteil, (3, null, null, null));
-        }
+        List<(CategoryBlock Block, ScrollViewer sv)> LoadedCategoryBlocks = new List<(CategoryBlock Block, ScrollViewer sv)>();
+        IEnumerable<CategoryOption> LokalCategoryOptions => MainObject.Settings.CategoryOptions;
 
         void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => LocalBlockListOptions.First(y => y.ThingType == x.ThingType).vis).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+            switch (args.Reason)
+            {
+                case AutoSuggestionBoxTextChangeReason.UserInput:
+                    (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+                    break;
+                case AutoSuggestionBoxTextChangeReason.ProgrammaticChange:
+                    break;
+                case AutoSuggestionBoxTextChangeReason.SuggestionChosen:
+                default:
+                    break;
+            }
         }
 
         void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
@@ -540,28 +160,30 @@ namespace ShadowRunHelper
                 }
                 else
                 {
-                    PendingScrollEntry = MainObject.ThingList.Where(x => LocalBlockListOptions.First(y => y.ThingType == x.ThingType).vis).ToList().Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+                    PendingScrollEntry = MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).ToList().Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
                 }
                 if (PendingScrollEntry == null)
                 {
                     return;
                 }
-
-                if (!Blocklist.TryGetValue(PendingScrollEntry.ThingType, out var Choosen))
-                {
-                    return;
-                }
-                Pivot.SelectedIndex = Choosen.PivotItem;
+                Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == PendingScrollEntry.ThingType).Pivot;
             }
             catch { return; }
             ScrollIntoBlock();
-        }
-        private void Grid_Entry_Loaded(object sender, RoutedEventArgs e)
-        {
-            ScrollIntoBlock();
-            (sender as Grid).Loaded -= Grid_Entry_Loaded;
+            sender.Text = "";
+            sender.IsSuggestionListOpen = false;
         }
 
+
+        void CategoryBlockLoading(FrameworkElement sender, object args)
+        {
+            LoadedCategoryBlocks.Add((sender as CategoryBlock, ((sender as CategoryBlock).Parent as Panel).Parent as ScrollViewer));
+        }
+        void ScrollViewer_Loaded(object sender, RoutedEventArgs e)
+        {
+            ScrollIntoBlock();
+            (sender as FrameworkElement).Loaded -= ScrollViewer_Loaded;
+        }
         void ScrollIntoBlock()
         {
             if (PendingScrollEntry == null)
@@ -570,17 +192,13 @@ namespace ShadowRunHelper
             }
             try
             {
-                Blocklist.TryGetValue(PendingScrollEntry.ThingType, out (int PivotItem, ContentControl Block, ListView ListView, ScrollViewer sv) Choosen);
                 // Listenauswahl
+                var (Block, sv) = LoadedCategoryBlocks.FirstOrDefault(x=>x.Block.ThingType == PendingScrollEntry.ThingType);
                 double offset = 0;
-                foreach (var item in ((Choosen.sv as ScrollViewer).Content as Panel).Children)
+                foreach (var item in ((sv as ScrollViewer).Content as Panel).Children)
                 {
-                    if (item.Equals(Choosen.Block))
+                    if (item.Equals(Block))
                     {
-                        if ((Choosen.sv.Content as Panel).Children.Last() == item)
-                        {
-                            throw new IndexOutOfRangeException();
-                        }
                         break;
                     }
                     else
@@ -589,23 +207,9 @@ namespace ShadowRunHelper
                     }
                 }
                 // Scroll into ListView
-                foreach (ListViewItem item in Choosen.ListView.ItemsPanelRoot.Children)
-                {
-                    if ((item.Content).Equals(PendingScrollEntry))
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        if (Choosen.ListView.ItemsPanelRoot.Children.Last() == item)
-                        {
-                            throw new IndexOutOfRangeException();
-                        }
-                        offset += item.DesiredSize.Height;
-                    }
-                }
-                Choosen.ListView.SelectedItem = PendingScrollEntry;
-                Choosen.sv.ChangeView(null, offset - 100, null);
+                offset += Block.GetPositionAtListView(PendingScrollEntry);
+                Block.Select(PendingScrollEntry);
+                sv.ChangeView(null, offset - 100, null);
             }
             catch (Exception)
             {
@@ -613,58 +217,9 @@ namespace ShadowRunHelper
             }
             PendingScrollEntry = null;
         }
-        #endregion
-
-        #region ApplyNewStyles
-        private void Button_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
-            }
-        }
 
         #endregion
 
-        #region Button Handlers
-        void Click_Save(object sender, RoutedEventArgs e)
-        {
-            ViewModel?.MainObject?.SetSaveTimerTo();
-        }
-        private async void CSV_IN_Click(object sender, RoutedEventArgs e)
-        {
-            string strRead = "";
-            try
-            {
-                strRead = await SharedIO.ReadTextFromFile(new FileInfoClass() { FolderToken = "import", Fileplace = Place.Extern }, Constants.LST_FILETYPES_CSV, UserDecision.AskUser);
-            }
-            catch (Exception ex)
-            {
-                ViewModel.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "1", ex);
-            }
-            try
-            {
-                ((sender as FrameworkElement).DataContext as IController).CSV2Data(';', '\n', strRead);
-            }
-            catch (Exception ex)
-            {
-                ViewModel.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "2", ex);
-            }
-        }
 
-        private void CSV_EX_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var CTRL = ((sender as FrameworkElement).DataContext as IController);
-                var output = CTRL.Data2CSV(';', '\n');
-                SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypenHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
-            }
-            catch (Exception ex)
-            {
-                ViewModel.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
-            }
-        }
-        #endregion
     }
 }

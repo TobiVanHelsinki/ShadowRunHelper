@@ -1,23 +1,26 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace ShadowRunHelper.CharModel
 {
     public class Fernkampfwaffe : Waffe
     {
-        private double rueckstoss = 0;
-        [Used_UserAttribute]
-        public double Rueckstoss
+        private double _RK = 0;
+        [Used_User]
+        public double RK //RK
         {
-            get { return rueckstoss; }
+            get { return _RK; }
             set
             {
-                if (value != rueckstoss)
+                if (value != _RK)
                 {
-                    rueckstoss = value;
+                    _RK = value;
                     NotifyPropertyChanged();
                 }
             }
         }
         private string modi = "";
-        [Used_UserAttribute]
+        [Used_User]
         public string Modi
         {
             get { return modi; }
@@ -30,5 +33,19 @@
                 }
             }
         }
+        public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x=>
+            x.ThingType != ThingDefs.Handlung && 
+            x.ThingType != ThingDefs.Fernkampfwaffe && 
+            x.ThingType != ThingDefs.Nahkampfwaffe && 
+            x.ThingType != ThingDefs.Munition &&
+            x.ThingType != ThingDefs.Implantat
+        ).Select(x=>x.ThingType);
+
+        public Fernkampfwaffe() : base()
+        {
+            LinkedThings.SetFilter(Filter);
+        }
+
+
     }
 }

@@ -7,16 +7,26 @@
 >
     <conv:io_ZahlenDouble x:Key="io_ZahlenDouble"/>
     <conv:o_ZahlenYen x:Key="io_ZahlenYen"/>
-    <conv:o_ModelTyp x:Key="o_ModelTyp"/>
     <conv:io_GebDatum x:Key="io_GebDatum"/>
-    <conv:o_ThingList x:Key="o_ThingList"/>
+    <conv:o_AllListEntry x:Key="o_AllListEntry"/>
+    <conv:o_ThingDef2String x:Key="o_ThingDef2String"/>
     <conv:o_FileSize x:Key="o_FileSize"/>
     <conv:o_CharAdmin_Path x:Key="o_CharAdmin_Path"/>
     <conv:o_Null2Bool x:Key="o_Null2Bool"/>
     <conv:o_Null2Visibility x:Key="o_Null2Visibility"/>
-    
+    <conv:o_ValueOrNoting x:Key="o_ValueOrNoting"/>
+
     <contract5NotPresent:Style TargetType="Button" x:Key="STD_Button"/>
     <contract5Present:Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="STD_Button"/>
+
+
+    <contract5NotPresent:Style TargetType="RepeatButton" x:Key="STD_RepeatButton"/>
+    <contract5Present:Style TargetType="RepeatButton" BasedOn="{StaticResource RepeatButtonRevealStyle}" x:Key="STD_RepeatButton"/>
+
+    <contract5NotPresent:Style TargetType="AppBarButton" x:Key="AppBarButtonRevealStyle_IfPossible">
+        <Setter Property="Width" Value="Auto"/>
+    </contract5NotPresent:Style>
+    <contract5Present:Style TargetType="AppBarButton" BasedOn="{StaticResource AppBarButtonRevealLabelsOnRightStyle}" x:Key="AppBarButtonRevealStyle_IfPossible"/>
 
     <Style TargetType="ScrollViewer" x:Key="ScrollViewer">
         <Setter Property="VerticalScrollMode" Value="Enabled"/>
@@ -77,4 +87,14 @@
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="0"/>
     </Style>
+
+    <Style TargetType="ListViewItem" x:Key="AllListEntry_ListView">
+        <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
+        <Setter Property="BorderThickness" Value="1,0,0,0"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="5,0,5,0"/>
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="MinWidth" Value="0" />
+    </Style>
+
 </ResourceDictionary>

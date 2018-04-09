@@ -3,6 +3,7 @@ using ShadowRunHelper.Model;
 
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace ShadowRunHelper.CharController
 {
@@ -19,7 +20,7 @@ namespace ShadowRunHelper.CharController
             ActiveItem = new Nahkampfwaffe();
             //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_Nahkampfwaffe__Aktiv/Text");
             MI_Wert = new AllListEntry(ActiveItem, ("Model_Waffe_Wert/Text"), "Wert");
-            MI_DK = new AllListEntry(ActiveItem, ("Model_Waffe_PB/Text"), "PB");
+            MI_DK = new AllListEntry(ActiveItem, ("Model_Waffe_DK/Text"), "DK");
             MI_Pr = new AllListEntry(ActiveItem, ("Model_Waffe_Praezision/Text"), "Praezision");
             MI_Reich = new AllListEntry(ActiveItem, ("Model_Nahkampfwaffe_Reichweite/Text"), "Reichweite");
 
@@ -56,7 +57,7 @@ namespace ShadowRunHelper.CharController
             lstReturn.Add(MI_DK);
             lstReturn.Add(MI_Reich);
             lstReturn.Add(MI_Pr);
-
+            lstReturn.AddRange(Data.Select(item => new AllListEntry(item)));
             return lstReturn;
         }
     }

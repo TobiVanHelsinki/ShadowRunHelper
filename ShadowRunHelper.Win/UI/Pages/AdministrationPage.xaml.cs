@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using TLIB;
 using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using Windows.ApplicationModel.Core;
@@ -33,7 +34,6 @@ namespace ShadowRunHelper
             TLIB_UWPFRAME.Model.ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, summoryName);
         }
 
-        // Start Stuff ########################################################
         public AdministrationPage()
         {
             InitializeComponent();
@@ -48,13 +48,17 @@ namespace ShadowRunHelper
 #endif
         }
 
-        Action<ProjectPages> NavigationMethod;
-
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            NavigationMethod = (Action < ProjectPages > )e.Parameter;
             ChangeCurrentCharUI(ViewModel.MainObject == null ? false : true);
-            ViewModel.PropertyChanged += (x, y) => { ChangeCurrentCharUI(ViewModel.MainObject == null ? false : true); };
+            ViewModel.PropertyChanged += (x, y) =>
+            {
+                if (e.Parameter.ToString() == "MainObject")
+                {
+                    ChangeCurrentCharUI(ViewModel.MainObject == null ? false : true);
+                }
+            };
+
             if (SettingsModel.I.StartCount <= 1)
             {
                 await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
@@ -69,15 +73,9 @@ namespace ShadowRunHelper
             }
         }
 
-        void CommandBar_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Controls.CommandBar", "DefaultLabelPosition"))
-            {
-                (sender as CommandBar).DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
-            }
-        }
 
-        // GUI Stuff ##########################################################
+        #region GUi Stuff
+
         void TutorialStateChanged(int StateNumber, bool Highlight)
         {
             Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
@@ -90,7 +88,7 @@ namespace ShadowRunHelper
                     ListViewBorder.Style = StyleToBeApplied;
                     break;
                 case 4:
-                    CurrentCharBarBorder.Style = StyleToBeApplied;
+                    //CurrentCharBarBorder.Style = StyleToBeApplied;
                     break;
                 default:
                     //MainBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
@@ -160,7 +158,9 @@ namespace ShadowRunHelper
                 ViewModel.NewNotification(res.GetString("Notification_Error_SummorysREfresh"), ex);
             }
         }
+        #endregion
 
+        #region CharOperations
         async void Create_ExampleChar(object sender, RoutedEventArgs e)
         {
             await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
@@ -174,8 +174,9 @@ namespace ShadowRunHelper
                 return;
             }
             ViewModel.MainObject = new CharHolder();
+            ViewModel.MainObject.AfterLoad();
             SettingsModel.I.CountCreations++;
-            NavigationMethod(ProjectPages.Char);
+            AppModel.Instance.RequestNavigation(this, ProjectPages.Char, ProjectPagesOptions.CharNewChar);
         }
 
         async void Click_Speichern(object sender, RoutedEventArgs e)
@@ -226,7 +227,7 @@ namespace ShadowRunHelper
             {
                 return;
             }
-            await Laden(()=>CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
+            await Laden(() => CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
         }
 
         async void Click_Datei_Import(object sender, RoutedEventArgs e)
@@ -258,7 +259,7 @@ namespace ShadowRunHelper
             ChangeProgress(false);
             if (ViewModel.MainObject != null)
             {
-                NavigationMethod(ProjectPages.Char);
+                AppModel.Instance.RequestNavigation(this, ProjectPages.Char);
             }
             SettingsModel.I.CountLoadings++;
         }
@@ -281,10 +282,10 @@ namespace ShadowRunHelper
                     ViewModel.NewNotification(res.GetString("Notification_Error_DelFail"), ex);
                 }
             }
-            await ShowMessageDialog(CrossPlatformHelper.GetString("Request_Delete/Title")
-    , CrossPlatformHelper.GetString("Request_Delete/Text")
-    , CrossPlatformHelper.GetString("Request_Delete/Yes")
-    , CrossPlatformHelper.GetString("Request_Delete/No")
+            await ShowMessageDialog(StringHelper.GetString("Request_Delete/Title")
+    , StringHelper.GetString("Request_Delete/Text")
+    , StringHelper.GetString("Request_Delete/Yes")
+    , StringHelper.GetString("Request_Delete/No")
     , Delete);
             await Summorys_Aktualisieren();
             SettingsModel.I.CountDeletions++;
@@ -343,11 +344,11 @@ namespace ShadowRunHelper
                 ChangeProgress(false);
                 await Summorys_Aktualisieren();
             }
-            
-            await ShowMessageDialog(CrossPlatformHelper.GetString("Request_DeleteAll/Title")
-                , CrossPlatformHelper.GetString("Request_DeleteAll/Text")
-                , CrossPlatformHelper.GetString("Request_DeleteAll/Yes")
-                , CrossPlatformHelper.GetString("Request_DeleteAll/No")
+
+            await ShowMessageDialog(StringHelper.GetString("Request_DeleteAll/Title")
+                , StringHelper.GetString("Request_DeleteAll/Text")
+                , StringHelper.GetString("Request_DeleteAll/Yes")
+                , StringHelper.GetString("Request_DeleteAll/No")
                 , Delete_All);
         }
 
@@ -385,11 +386,20 @@ namespace ShadowRunHelper
             Click_Datei_Export(x);
         }
 
+        async void Rename_Click(object sender, RoutedEventArgs e)
+        {
+            Input dialog = new Input
+            {
+                InputValue = ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename
+            };
+            await dialog.ShowAsync();
+            ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename = dialog.InputValue;
+        }
         async void Click_Datei_Export(CharHolder CharToSave)
         {
             try
             {
-                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass() { Fileplace = Place.Extern, FolderToken="Export" });
+                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "Export" });
             }
             catch (Exception ex)
             {
@@ -405,7 +415,6 @@ namespace ShadowRunHelper
                 CSV_Export(ViewModel.MainObject);
             }
         }
-
         async void Click_CSV_Export_OtherChar(object sender, RoutedEventArgs e)
         {
             if (!IsOperationInProgres)
@@ -423,18 +432,13 @@ namespace ShadowRunHelper
                 {
                     ret += item.Data2CSV(';', '\n');
                 }
-                var ContentList = CharToSave.lstCTRL.Select(c => (TypenHelper.ThingDefToString(c.eDataTyp, true) + Constants.DATEIENDUNG_CSV, c.Data2CSV(';', '\n')));
-                SharedIO.SaveTextesToFiles(ContentList, new FileInfoClass (){Fileplace=Place.Extern, FolderToken = "CSV_TEMP" });
+                var ContentList = CharToSave.lstCTRL.Select(c => (TypeHelper.ThingDefToString(c.eDataTyp, true) + Constants.DATEIENDUNG_CSV, c.Data2CSV(';', '\n')));
+                SharedIO.SaveTextesToFiles(ContentList, new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "CSV_TEMP" });
             }
             catch (Exception ex)
             {
                 ViewModel.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
-        }
-
-        void Exception(object sender, RoutedEventArgs e)
-        {
-            throw new System.Exception();
         }
 
         void Click_Repair_CurrentChar(object sender, RoutedEventArgs e)
@@ -449,6 +453,27 @@ namespace ShadowRunHelper
             }
         }
 
+        #endregion
+
+        #region CustomStyles
+
+        void CommandBar_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Controls.CommandBar", "DefaultLabelPosition"))
+            {
+                (sender as CommandBar).DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
+            }
+        }
+        #endregion
+
+        #region Debug and Experimental
+        void Exception(object sender, RoutedEventArgs e)
+        {
+            ViewModel.NewNotification("Test1");
+            ViewModel.NewNotification("Test2");
+            ViewModel.NewNotification("Test3");
+            //throw new System.Exception();
+        }
         // NEW VIEW ###########################################################
 
         async void Click_NewView(object sender, RoutedEventArgs e)
@@ -468,61 +493,8 @@ namespace ShadowRunHelper
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
 
-        void UI_CharVerwaltung_Btn_CSV_Export_Loaded(object sender, RoutedEventArgs e)
-        {
-            AppBarButton_Loaded(sender, e);
-#if DEBUG
-            (sender as AppBarButton).Visibility = Visibility.Visible;
-#else
-            (sender as AppBarButton).Visibility = Visibility.Collapsed;
-#endif
 
-        }
-
-        #region ApplyNewStyles
-        void Button_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                (sender as Button).Style = (Style)Resources["ButtonRevealStyle"];
-            }
-        }
-
-        void AppBarButton_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                (sender as AppBarButton).Style = (Style)Resources["AppBarButtonRevealLabelsOnRightStyle"];
-            }
-        }
-
-        private void MenuFlyoutItem_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.RevealBrush"))
-            {
-                try
-                {
-                    (sender as MenuFlyoutItem).Style = (Style)Resources["MenuFlyoutItemReveal"];
-
-                }
-                catch (Exception)
-                {
-
-                }
-            }
-        }
         #endregion
-
-        async void Rename_Click(object sender, RoutedEventArgs e)
-        {
-            Input dialog = new Input
-            {
-                InputValue = ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename
-            };
-            await dialog.ShowAsync();
-            ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename = dialog.InputValue;
-        }
-
 
     }
 }
