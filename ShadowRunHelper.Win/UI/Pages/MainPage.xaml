@@ -4,7 +4,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:model="using:ShadowRunHelper.Model"
-    xmlns:local="using:ShadowRunHelper.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
@@ -13,7 +12,7 @@
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_MainPage.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Name="Status" x:Key="Status" x:DataType="model:CharHolder">
-                <Grid x:Name="MainGrid" Style="{StaticResource MainGrid}" Grid.Row="0">
+                <Grid x:Name="MainGrid" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
@@ -161,18 +160,27 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Border x:Name="StatusControlBorder">
-            <ContentControl HorizontalContentAlignment="Stretch" x:Name="StatusControl" ContentTemplate="{StaticResource Status}"
+        <Grid Style="{StaticResource MainGrid}" VerticalAlignment="Stretch" x:Name="AppTitleBar" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="TitleColumnL" Width="0"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition x:Name="TitleColumnR" Width="0"/>
+            </Grid.ColumnDefinitions>
+            <Border x:Name="StatusControlBorder" Grid.Column="1">
+                <ContentControl HorizontalContentAlignment="Stretch" x:Name="StatusControl" ContentTemplate="{StaticResource Status}"
                             DataContext="{x:Bind Model.MainObject, Mode=OneWay}" 
                             IsEnabled="{x:Bind Model.MainObject, Converter={StaticResource o_Null2Bool}, Mode=OneWay}"
                 />
-        </Border>
+            </Border>
+        </Grid>
+
         <Frame Grid.Row="1" Name="MyFrame"></Frame>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>

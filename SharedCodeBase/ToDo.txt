@@ -1,7 +1,7 @@
 ﻿
 --------Aktuelles---------------------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern
-* bessere BG speichern
+* bessere Titelleiste
 
 -----------------------------------------------------
 * button relativ zum anklickgerät

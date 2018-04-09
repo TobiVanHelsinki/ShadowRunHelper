@@ -21,16 +21,6 @@ namespace ShadowRunHelper
     /// </summary>
     sealed partial class App : Application
     {
-        #region Tests
-        void ExtendAcrylicIntoTitleBar()
-        {
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.BackgroundColor = null;
-            titleBar.ButtonBackgroundColor = null;
-            titleBar.ButtonInactiveBackgroundColor = null;
-        }
-        #endregion
         readonly AppModel Model;
         readonly SettingsModel Settings;
 
@@ -183,7 +173,6 @@ namespace ShadowRunHelper
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();
 
-            ExtendAcrylicIntoTitleBar();
             try
             {
                 if (Settings.CharInTempStore)

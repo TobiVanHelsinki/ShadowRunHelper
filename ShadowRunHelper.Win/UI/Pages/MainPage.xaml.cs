@@ -5,7 +5,6 @@ using System.Linq;
 using TLIB_UWPFRAME.Model;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
-using Windows.Foundation.Metadata;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
@@ -54,6 +53,25 @@ namespace ShadowRunHelper
 #endif
             //CompatibilityChecks();
         }
+        public void TitleBarStuff()
+        {
+            ApplicationViewTitleBar AppTitlebar = ApplicationView.GetForCurrentView().TitleBar;
+            CoreApplicationViewTitleBar CurrentTitlebar = CoreApplication.GetCurrentView().TitleBar;
+
+            CurrentTitlebar.ExtendViewIntoTitleBar = true;
+            AppTitlebar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
+            AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
+
+            TitleColumnR.MinWidth = CurrentTitlebar.SystemOverlayRightInset;
+            TitleColumnL.MinWidth = CurrentTitlebar.SystemOverlayLeftInset;
+
+            Window.Current.SetTitleBar(AppTitleBar);
+        }
+
+        private void T_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+        {
+            TitleBarStuff();
+        }
         #region navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -61,6 +79,8 @@ namespace ShadowRunHelper
             ShowNotificationsIfNecessary();
             Model.SetDependencies(Dispatcher);
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
+            CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += T_LayoutMetricsChanged;
+            //TitleBarStuff();
         }
 
         void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
