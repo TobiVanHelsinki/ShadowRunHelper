@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:model="using:ShadowRunHelper.Model"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Ad="using:Microsoft.Advertising.WinRT.UI"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -159,11 +160,11 @@
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
-
-    <Grid >
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid Style="{StaticResource MainGrid}" VerticalAlignment="Stretch" x:Name="AppTitleBar" />
@@ -182,24 +183,27 @@
         </Grid>
 
         <Frame Grid.Row="1" Name="MyFrame"></Frame>
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Border x:Name="MainBarBorder">
-                <CommandBar x:Name="MainBar1" Style="{StaticResource MainCommandBar}" HorizontalContentAlignment="Center" HorizontalAlignment="Center" DefaultLabelPosition="Right">
-                    <AppBarButton x:Name="Nav_Char" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
-                    <AppBarButton x:Name="Nav_Admin" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
-                    <AppBarButton x:Name="PreDataBase" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_DB_Nav" Icon="Library" Click="OpenDB" Visibility="Collapsed"/>
-                    <!--Visibility="{x:Bind Model.MainObject, Converter={StaticResource o_Null2Visibility}, Mode=OneWay}"/>-->
-                    <AppBarButton x:Name="Nav_Settings" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
-                    <AppBarButton x:Name="HeatMap" Content="HeatMap" Icon="Manage" Click="Debug1" Visibility="Collapsed"/>
-                    <AppBarButton x:Name="TextRedraw" Content="TextRedraw" Icon="FontSize" Click="Debug2" Visibility="Collapsed"/>
-                </CommandBar>
-            </Border>
-            <CommandBar x:Name="MainBar2" Style="{StaticResource MainCommandBar}" Grid.Column="1" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" DefaultLabelPosition="Right">
+        <Border Grid.Row="2" Background="{ThemeResource SR_MainBackgroundBrush}"/>
+        <Border Grid.Row="2" x:Name="MainBarBorder">
+            <CommandBar x:Name="MainBar1" Background="Transparent" HorizontalAlignment="Left" DefaultLabelPosition="Right">
+                <AppBarButton x:Name="Nav_Char" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
+                <AppBarButton x:Name="Nav_Admin" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
+                <AppBarButton x:Name="PreDataBase" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_DB_Nav" Icon="Library" Click="OpenDB" Visibility="Collapsed"/>
+                <!--Visibility="{x:Bind Model.MainObject, Converter={StaticResource o_Null2Visibility}, Mode=OneWay}"/>-->
+                <AppBarButton x:Name="Nav_Settings" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
+                <AppBarButton x:Name="AdCommand" Label="Ad" Icon="World" Click="SwitchAd"/>
+                <AppBarButton x:Name="HeatMap" Label="HeatMap" Icon="Manage" Click="Debug1" Visibility="Collapsed"/>
+                <AppBarButton x:Name="TextRedraw" Label="TextRedraw" Icon="FontSize" Click="Debug2" Visibility="Collapsed"/>
             </CommandBar>
-        </Grid>
+        </Border>
+        <Ad:AdControl Grid.Row="3" Width="300" Height="250" x:Name="Ad_MainPageBottom"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                      
+                ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"
+
+                AdRefreshed="Ad_MainPageBottom_AdRefreshed"
+
+                BorderBrush="Red"
+                BorderThickness="1"/>
     </Grid>
 </Page>
