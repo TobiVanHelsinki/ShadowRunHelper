@@ -13,6 +13,9 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace ShadowRunHelper
 {
@@ -40,9 +43,6 @@ namespace ShadowRunHelper
                 Settings.ResetAllSettings();
             }
 
-            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
-                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
-                Microsoft.ApplicationInsights.WindowsCollectors.Session);
 
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
@@ -51,6 +51,15 @@ namespace ShadowRunHelper
 
             InitializeComponent();
             Settings.StartCount++;
+
+
+
+            //Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
+            //    //Microsoft.ApplicationInsights.WindowsCollectors.UnhandledException |
+            //    Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
+            //    Microsoft.ApplicationInsights.WindowsCollectors.Session);
+            AppCenter.LogLevel = LogLevel.Verbose;
+            AppCenter.Start("cea0f814-f9f7-46b1-ba58-760607a60559", typeof(Crashes), typeof(Analytics));
         }
 
         #endregion
@@ -251,18 +260,21 @@ namespace ShadowRunHelper
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        async Task App_UnhandledExceptionAsync(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
+        async Task App_UnhandledExceptionAsync(object sender, UnhandledExceptionEventArgs e)
         {
-            e.Handled = true;
             Settings.LastSaveInfo = null;
             try
             {
-                await CharHolderIO.SaveAtOriginPlace(Model.MainObject, TLIB_UWPFRAME.IO.SaveType.Emergency);
+                await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Emergency);
                 var res = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
                 Model.NewNotification(res.GetString("Notification_Error_Unknown"), e.Exception);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+            }
+            if (!e.Message.Contains(Constants.TESTEXCEPTIONTEXT))
+            {
+                e.Handled = true;
             }
         }
         #endregion

@@ -469,10 +469,10 @@ namespace ShadowRunHelper
         #region Debug and Experimental
         void Exception(object sender, RoutedEventArgs e)
         {
-            ViewModel.NewNotification("Test1");
-            ViewModel.NewNotification("Test2");
-            ViewModel.NewNotification("Test3");
-            //throw new System.Exception();
+            //ViewModel.NewNotification("Test1");
+            //ViewModel.NewNotification("Test2");
+            //ViewModel.NewNotification("Test3");
+            throw new Exception(Constants.TESTEXCEPTIONTEXT);
         }
         // NEW VIEW ###########################################################
 

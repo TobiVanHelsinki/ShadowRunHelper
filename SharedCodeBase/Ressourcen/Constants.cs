@@ -101,5 +101,7 @@ namespace ShadowRunHelper
             new HelpEntry() { Paragraph = StringHelper.GetString("Help1_ActiveItems"), Text = StringHelper.GetString("Help1") },
             new HelpEntry() { Paragraph = StringHelper.GetString("Help2_AutoCalc"), Text = StringHelper.GetString("Help2") },
        };
+
+        public const string TESTEXCEPTIONTEXT = "TESTEXCEPTIONTEXT";
     }
 }
