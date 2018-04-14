@@ -133,7 +133,9 @@ namespace ShadowRunHelper
                     messageDialog.Commands.Add(new UICommand(
                         "OK"));
                     messageDialog.DefaultCommandIndex = 0;
+#pragma warning disable CS4014
                     messageDialog.ShowAsync();
+#pragma warning restore CS4014
                     item.bIsRead = true;
                 }
                 catch (Exception ex)

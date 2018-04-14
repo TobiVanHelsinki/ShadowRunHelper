@@ -40,7 +40,9 @@ namespace ShadowRunHelper
         private void LstNotifications_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             Hide();
+#pragma warning disable CS4014
             ShowAsync();
+#pragma warning restore CS4014
             //ListView.ItemsSource = lstNotifications.Where((x) => x.bIsRead == false).OrderBy((x) => x.DateTime).Select(item => item.strMessage + "\n\n\n" + item.ThrownException?.Message);
         }
 

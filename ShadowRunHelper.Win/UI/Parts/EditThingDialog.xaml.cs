@@ -165,7 +165,9 @@ namespace ShadowRunHelper.UI.Edit
         {
             Auswahl dialog = new Auswahl(Model.AppModel.Instance.MainObject.LinkList, ((Attribut)((Button)sender).DataContext).LinkedThings, Filter: CharModel.Attribut.Filter);
             Hide();
+#pragma warning disable CS4014
             dialog.ShowAsync();
+#pragma warning restore CS4014
         }
     }
 }
