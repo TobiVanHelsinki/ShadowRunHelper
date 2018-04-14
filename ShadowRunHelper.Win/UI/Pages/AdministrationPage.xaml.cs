@@ -4,15 +4,12 @@ using ShadowRunHelper.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TLIB;
 using TLIB_UWPFRAME.IO;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
-using Windows.Foundation.Metadata;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
@@ -25,17 +22,16 @@ namespace ShadowRunHelper
     {
         readonly AppModel Model = AppModel.Instance;
         readonly ObservableCollection<FileInfoClass> Summorys = new ObservableCollection<FileInfoClass>();
-        event PropertyChangedEventHandler PropertyChanged;
         ResourceLoader res;
-
-        void NotifySummoryChanged([CallerMemberName] String summoryName = "")
-        {
-            TLIB_UWPFRAME.Model.ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, summoryName);
-        }
 
         public AdministrationPage()
         {
             InitializeComponent();
+            if (false)
+            {
+                Ad_MainPageRight.Visibility = Visibility.Collapsed;
+                Ad_MainPageBottom.Visibility = Visibility.Collapsed;
+            }
             res = ResourceLoader.GetForCurrentView();
             Model.TutorialStateChanged += TutorialStateChanged;
 #if DEBUG

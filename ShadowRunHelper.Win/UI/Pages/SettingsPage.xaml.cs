@@ -1,13 +1,10 @@
-﻿using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using TLIB;
-using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
-using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -31,6 +28,11 @@ namespace ShadowRunHelper
         public SettingsPage()
         {
             InitializeComponent();
+            if (false)
+            {
+                Ad_MainPageRight.Visibility = Visibility.Collapsed;
+                Ad_MainPageBottom.Visibility = Visibility.Collapsed;
+            }
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
