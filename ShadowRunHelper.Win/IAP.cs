@@ -48,24 +48,48 @@ namespace ShadowRunHelper
         }
         internal async static Task Buy(string FEATUREID)
         {
-            LicenseInformation licenseInformation = CurrentAppSimulator.LicenseInformation;
-            if (!licenseInformation.ProductLicenses[FEATUREID].IsActive)
+            var context = StoreContext.GetDefault();
+
+            StorePurchaseResult result = await context.RequestPurchaseAsync(FEATUREID);
+
+            // Capture the error message for the operation, if any.
+            string extendedError = string.Empty;
+            if (result.ExtendedError != null)
             {
-                try
-                {
-                    var context = StoreContext.GetDefault();
-                    StorePurchaseResult result = await context.RequestPurchaseAsync(FEATUREID);
-                }
-                catch (Exception)
-                {
-                    // The in-app purchase was not completed because
-                    // an error occurred.
-                }
+                extendedError = result.ExtendedError.Message;
             }
-            else
+            string Text="";
+            switch (result.Status)
             {
-                // The customer already owns this feature.
+                case StorePurchaseStatus.AlreadyPurchased:
+                    Text= "The user has already purchased the product.";
+                    break;
+
+                case StorePurchaseStatus.Succeeded:
+                    Text= "The purchase was successful.";
+                    break;
+
+                case StorePurchaseStatus.NotPurchased:
+                    Text= "The purchase did not complete. " +
+                        "The user may have cancelled the purchase. ExtendedError: " + extendedError;
+                    break;
+
+                case StorePurchaseStatus.NetworkError:
+                    Text= "The purchase was unsuccessful due to a network error. " +
+                        "ExtendedError: " + extendedError;
+                    break;
+
+                case StorePurchaseStatus.ServerError:
+                    Text= "The purchase was unsuccessful due to a server error. " +
+                        "ExtendedError: " + extendedError;
+                    break;
+
+                default:
+                    Text= "The purchase was unsuccessful due to an unknown error. " +
+                        "ExtendedError: " + extendedError;
+                    break;
             }
+            Model.AppModel.Instance.NewNotification(Text);
         }
     }
 }
