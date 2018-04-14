@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Navigation;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Windows.ApplicationModel.Store;
+using Windows.Services.Store;
 
 namespace ShadowRunHelper
 {
@@ -36,14 +38,13 @@ namespace ShadowRunHelper
         public App()
         {
             UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
+            SetConstantStuff();
             Model = AppModel.Initialize();
             Settings = SettingsModel.Initialize();
             if (Settings.StartCount < 1)
             {
                 Settings.ResetAllSettings();
             }
-
-
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
             Suspending += App_Suspending;
@@ -52,14 +53,29 @@ namespace ShadowRunHelper
             InitializeComponent();
             Settings.StartCount++;
 
-
-
             //Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
             //    //Microsoft.ApplicationInsights.WindowsCollectors.UnhandledException |
             //    Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
             //    Microsoft.ApplicationInsights.WindowsCollectors.Session);
             AppCenter.LogLevel = LogLevel.Verbose;
             AppCenter.Start("cea0f814-f9f7-46b1-ba58-760607a60559", typeof(Crashes), typeof(Analytics));
+        }
+        public async void SetConstantStuff()
+        {
+            var SP = (await StoreContext.GetDefault().GetStoreProductForCurrentAppAsync()).Product;
+            
+            var json = Windows.Data.Json.JsonObject.Parse(SP.ExtendedJsonData);
+            SharedConstants.APP_STORE_ID = SP.StoreId;
+            SharedConstants.APP_VERSION_BUILD_DELIM = String.Format("{0}.{1}.{2}.{3}", Package.Current.Id.Version.Major, Package.Current.Id.Version.Minor, Package.Current.Id.Version.Build, Package.Current.Id.Version.Revision);
+
+            var arr = json.GetNamedArray("LocalizedProperties");
+            if (arr.Count == 0)
+            {
+                return;
+            }
+            var json2 = Windows.Data.Json.JsonObject.Parse(arr[0].Stringify());
+            SharedConstants.APP_PUBLISHER_MAILTO = json2.GetNamedString("SupportUri", SharedConstants.ERROR_TOKEN);
+            SharedConstants.APP_PUBLISHER = json2.GetNamedString("PublisherName", SharedConstants.ERROR_TOKEN);
         }
 
         #endregion

@@ -15,11 +15,11 @@ namespace ShadowRunHelper
     {
         readonly SettingsModel Settings = SettingsModel.Instance;
         readonly AppModel Model = AppModel.Instance;
-        readonly string eMail = Constants.APP_CONTACT_MAIL;
-        readonly string Inhaber = Constants.AUTHOR;
+        readonly string AppKontaktEmail = Constants.APP_PUBLISHER_MAILTO;
+        readonly string Inhaber = Constants.APP_PUBLISHER;
         readonly string AppVersionBuild = Constants.APP_VERSION_BUILD_DELIM;
         readonly string AppReviewLink = Constants.APP_STORE_REVIEW_LINK;
-        readonly string AppKontaktEmail = Constants.APP_CONTACT_MAILTO;
+        readonly string eMail = Constants.APP_PUBLISHER_MAIL;
         readonly string MoreAppsLink = Constants.APP_MORE_APPS;
         readonly string AppLink = Constants.APP_STORE_LINK;
         readonly List<HelpEntry> Help = Constants.HelpList;
