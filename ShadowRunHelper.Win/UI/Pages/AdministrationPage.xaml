@@ -89,9 +89,11 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Ad:AdControl Grid.Column="1" Width="160" Height="600" x:Name="Ad_MainPageRight"
+        <Viewbox Grid.Column="1" >
+            <Ad:AdControl Width="160" Height="600" x:Name="Ad_MainPageRight"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"/>
+        </Viewbox>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -142,9 +144,11 @@
                       SelectionMode="Multiple"
                       IsMultiSelectCheckBoxEnabled="False"/>
             </Border>
-            <Ad:AdControl Grid.Row="4" Width="640" Height="100" x:Name="Ad_MainPageBottom"
+            <Viewbox Grid.Row="4">
+                <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"/>
+            </Viewbox>
             <Border Grid.Row="5" x:Name="MainBarBorder">
                 <CommandBar Grid.Row="4" DefaultLabelPosition="Right">
                     <AppBarButton Visibility="Collapsed" x:Name="Btn_SecondView" Content="Neue Ansicht" Icon="View" Click="Click_NewView"/>
