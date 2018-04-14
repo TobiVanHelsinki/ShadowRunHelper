@@ -47,11 +47,10 @@ namespace ShadowRunHelper
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary();
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += (x, y, z) => NavigationRequested(y, z);
-#if DEBUG
-            HeatMap.Visibility = Visibility.Visible;
-            TextRedraw.Visibility = Visibility.Visible;
-            Ad_MainPageBottom.CharacterReceived += Ad_MainPageBottom_CharacterReceived;
-#endif
+//#if DEBUG
+//            HeatMap.Visibility = Visibility.Visible;
+//            TextRedraw.Visibility = Visibility.Visible;
+//#endif
         }
         public void TitleBarStuff()
         {
@@ -287,20 +286,5 @@ namespace ShadowRunHelper
 
 
         #endregion
-
-        void Ad_MainPageBottom_AdRefreshed(object sender, RoutedEventArgs e)
-        {
-            Model.lstNotifications.Add(new Notification("AdRefresh") { bIsRead = true });
-        }
-
-        void Ad_MainPageBottom_CharacterReceived(UIElement sender, Windows.UI.Xaml.Input.CharacterReceivedRoutedEventArgs args)
-        {
-            Model.lstNotifications.Add(new Notification("CharacterReceived") { bIsRead = true });
-        }
-
-        void SwitchAd(object sender, RoutedEventArgs e)
-        {
-            Ad_MainPageBottom.Visibility = Ad_MainPageBottom.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
-        }
     }
 }

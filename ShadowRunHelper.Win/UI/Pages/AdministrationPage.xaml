@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Ad="using:Microsoft.Advertising.WinRT.UI"
     xmlns:TLIB_UWPFRAME.IO="using:TLIB_UWPFRAME.IO"
     mc:Ignorable="d">
     <Page.Resources>
@@ -49,7 +50,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource Normal}"/>
-                    <CommandBar Background="Transparent" Grid.Row="1" Loaded="CommandBar_Loaded">
+                    <CommandBar Background="Transparent" Grid.Row="1" DefaultLabelPosition="Right">
                         <AppBarButton x:Name="UI_CharVerwaltung_Btn_Laden" x:Uid="UI_CharVerwaltung_Btn_Laden" Icon="Upload" Click="Click_Laden" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                         <AppBarButton x:Name="UI_CharVerwaltung_Btn_Loeschen" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                         <AppBarButton x:Name="UI_CharVerwaltung_Btn_Datei_Export" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
@@ -59,65 +60,101 @@
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Uid="UI_CharVerwaltung_Einleitung1" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}"/>
-        <Grid Grid.Row="1">
+    <Grid Name="GridForContentAndAds">
+        <VisualStateManager.VisualStateGroups>
+            <!-- Header-->
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Ad_MainPageRight.Visibility" Value="Visible"/>
+                        <Setter Target="Ad_MainPageBottom.Visibility" Value="Collapsed"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Ad_MainPageRight.Visibility" Value="Collapsed"/>
+                        <Setter Target="Ad_MainPageBottom.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Ad:AdControl Grid.Column="1" Width="160" Height="600" x:Name="Ad_MainPageRight"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"/>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="CurrentCharName" Text="{x:Bind ViewModel.MainObject.FileInfo.Filename, Mode=OneWay}" Style="{StaticResource Chars}"/>
-            <TextBlock Grid.Row="1" x:Name="CurrentCharPath" Text="{x:Bind ViewModel.MainObject.FileInfo.Filepath, Mode=OneWay, Converter={StaticResource o_CharAdmin_Path}}" Style="{StaticResource Chars}"/>
-            <ProgressBar x:Name="ProgressBar_Char" Grid.Row="2" Visibility="Collapsed"/>
-            <Border Grid.Row="3" x:Name="CurrentCharBarBorder">
-                <CommandBar Background="Transparent" Loaded="CommandBar_Loaded" >
-                    <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton Icon="ShowBcc" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}">
-                        <AppBarButton.Flyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem x:Name="CurrentCharBtn_Save_Intern" x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Name="CurrentCharBtn_FileExp" x:Uid="UI_Admin_Btn_CurrentChar_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_Admin_Btn_CurrentChar_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                            </MenuFlyout>
-                        </AppBarButton.Flyout>
-                    </AppBarButton>
-                    <AppBarButton x:Name="CurrentCharBtn_Rename" x:Uid="UI_CharVerwaltung_Btn_Rename" Icon="Edit" Click="Rename_Click"/>
-                    <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_CurrentChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+            <TextBlock x:Uid="UI_CharVerwaltung_Einleitung1" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="CurrentCharName" Text="{x:Bind Model.MainObject.FileInfo.Filename, Mode=OneWay}" Style="{StaticResource Chars}"/>
+                    <TextBlock Grid.Row="1" x:Name="CurrentCharPath" Text="{x:Bind Model.MainObject.FileInfo.Filepath, Mode=OneWay, Converter={StaticResource o_CharAdmin_Path}}" Style="{StaticResource Chars}"/>
+                <ProgressBar x:Name="ProgressBar_Char" Grid.Row="2" Visibility="Collapsed"/>
+                <Border Grid.Row="3" x:Name="CurrentCharBarBorder">
+                    <CommandBar Background="Transparent" DefaultLabelPosition="Right" >
+                        <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                        <AppBarButton Icon="ShowBcc" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}">
+                            <AppBarButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem x:Name="CurrentCharBtn_Save_Intern" x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                    <MenuFlyoutItem x:Name="CurrentCharBtn_FileExp" x:Uid="UI_Admin_Btn_CurrentChar_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                    <MenuFlyoutItem x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_Admin_Btn_CurrentChar_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                </MenuFlyout>
+                            </AppBarButton.Flyout>
+                        </AppBarButton>
+                        <AppBarButton x:Name="CurrentCharBtn_Rename" x:Uid="UI_CharVerwaltung_Btn_Rename" Icon="Edit" Click="Rename_Click"/>
+                        <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_CurrentChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                        <AppBarButton x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                    </CommandBar>
+                </Border>
+            </Grid>
+            <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
+            <Border Grid.Row="3" x:Name="ListViewBorder">
+                <ListView Name="Char_Sum" 
+                      ItemsSource="{x:Bind Summorys, Mode=OneWay}" 
+                      ItemTemplate="{StaticResource Normal}"
+                      ListView.HeaderTemplate="{StaticResource Header}"
+                      ItemContainerStyle="{StaticResource ListViewItemStyle}" 
+                      IsItemClickEnabled="True" 
+                      Grid.Row="3"
+                      SelectionChanged="Char_Sum_SelectionChanged"
+                      SelectionMode="Multiple"
+                      IsMultiSelectCheckBoxEnabled="False"/>
+            </Border>
+            <Ad:AdControl Grid.Row="4" Width="640" Height="100" x:Name="Ad_MainPageBottom"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"/>
+            <Border Grid.Row="5" x:Name="MainBarBorder">
+                <CommandBar Grid.Row="4" DefaultLabelPosition="Right">
+                    <AppBarButton Visibility="Collapsed" x:Name="Btn_SecondView" Content="Neue Ansicht" Icon="View" Click="Click_NewView"/>
+                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Datei_Import" Icon="Import" Click="Click_Datei_Import" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen" Icon="Delete" Click="Click_Loeschen_Alles" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                    <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"/>
+                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                 </CommandBar>
             </Border>
         </Grid>
-        <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
-        <Border Grid.Row="3" x:Name="ListViewBorder">
-            <ListView Name="Char_Sum" 
-                  ItemsSource="{x:Bind Summorys, Mode=OneWay}" 
-                  ItemTemplate="{StaticResource Normal}"
-                  ListView.HeaderTemplate="{StaticResource Header}"
-                  ItemContainerStyle="{StaticResource ListViewItemStyle}" 
-                  IsItemClickEnabled="True" 
-                  Grid.Row="3"
-                  SelectionChanged="Char_Sum_SelectionChanged"
-                  SelectionMode="Multiple"
-                  IsMultiSelectCheckBoxEnabled="False"/>
-        </Border>
-        <Border Grid.Row="4" x:Name="MainBarBorder">
-            <CommandBar Grid.Row="4" Loaded="CommandBar_Loaded">
-                <AppBarButton Visibility="Collapsed" x:Name="Btn_SecondView" Content="Neue Ansicht" Icon="View" Click="Click_NewView"/>
-                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Datei_Import" Icon="Import" Click="Click_Datei_Import" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen" Icon="Delete" Click="Click_Loeschen_Alles" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"/>
-                <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-            </CommandBar>
-            </Border>
     </Grid>
 </Page>
