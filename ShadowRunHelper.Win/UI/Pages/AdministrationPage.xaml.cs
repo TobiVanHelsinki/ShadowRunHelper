@@ -27,11 +27,7 @@ namespace ShadowRunHelper
         public AdministrationPage()
         {
             InitializeComponent();
-            if (false)
-            {
-                Ad_MainPageRight.Visibility = Visibility.Collapsed;
-                Ad_MainPageBottom.Visibility = Visibility.Collapsed;
-            }
+            CheckIAP();
             res = ResourceLoader.GetForCurrentView();
             Model.TutorialStateChanged += TutorialStateChanged;
 #if DEBUG
@@ -42,7 +38,14 @@ namespace ShadowRunHelper
             Btn_Exception.Visibility = Visibility.Collapsed;
 #endif
         }
-
+        void CheckIAP()
+        {
+            if (Constants.IAP_HIDEADS)
+            {
+                Ad_MainPageRight.Visibility = Constants.IAP_HIDEADS ? Visibility.Collapsed : Visibility.Visible;
+                Ad_MainPageBottom.Visibility = Constants.IAP_HIDEADS ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             ChangeCurrentCharUI(Model.MainObject == null ? false : true);

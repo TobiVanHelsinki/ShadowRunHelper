@@ -1,4 +1,7 @@
-﻿using ShadowRunHelper.IO;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Threading.Tasks;
@@ -7,17 +10,10 @@ using TLIB_UWPFRAME;
 using TLIB_UWPFRAME.IO;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.ApplicationModel.Core;
-using Windows.Storage;
-using Windows.UI.ViewManagement;
+using Windows.Services.Store;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
-using Windows.ApplicationModel.Store;
-using Windows.Services.Store;
 
 namespace ShadowRunHelper
 {
@@ -39,6 +35,7 @@ namespace ShadowRunHelper
         {
             UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
             SetConstantStuff();
+            IAP.CheckLicence();
             Model = AppModel.Initialize();
             Settings = SettingsModel.Initialize();
             if (Settings.StartCount < 1)
@@ -60,6 +57,7 @@ namespace ShadowRunHelper
             AppCenter.LogLevel = LogLevel.Verbose;
             AppCenter.Start("cea0f814-f9f7-46b1-ba58-760607a60559", typeof(Crashes), typeof(Analytics));
         }
+
         public async void SetConstantStuff()
         {
             var SP = (await StoreContext.GetDefault().GetStoreProductForCurrentAppAsync()).Product;

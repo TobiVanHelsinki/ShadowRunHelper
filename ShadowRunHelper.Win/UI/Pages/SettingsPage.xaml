@@ -272,6 +272,16 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </PivotItem>
+            <PivotItem Tag="36">
+                <PivotItem.Header>
+                    <TextBlock x:Uid="UI_Optionen_U_Buy" Style="{StaticResource ueberschrift1}"/>
+                </PivotItem.Header>
+                <StackPanel>
+                    <Button x:Uid="IAP_TXT_ADS_365" Click="IAP_ADS_365"/>
+                    <Button x:Uid="IAP_TXT_ADS" Click="IAP_ADS"/>
+                    <Button x:Uid="IAP_TXT_TEE" Click="IAP_Tee"/>
+                </StackPanel>
+            </PivotItem>
             <PivotItem Tag="35">
                 <PivotItem.Header>
                     <TextBlock x:Uid="UI_Optionen_U_Notifications" Style="{StaticResource ueberschrift1}"/>

@@ -5,6 +5,8 @@ using System.Linq;
 using TLIB;
 using TLIB_UWPFRAME.IO;
 using TLIB_UWPFRAME.Model;
+using Windows.ApplicationModel.Store;
+using Windows.Services.Store;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -24,16 +26,21 @@ namespace ShadowRunHelper
         readonly string AppLink = Constants.APP_STORE_LINK;
         readonly List<HelpEntry> Help = Constants.HelpList;
 
-
         public SettingsPage()
         {
             InitializeComponent();
-            if (false)
+            CheckIAP();
+        }
+
+        void CheckIAP()
+        {
+            if (Constants.IAP_HIDEADS)
             {
-                Ad_MainPageRight.Visibility = Visibility.Collapsed;
-                Ad_MainPageBottom.Visibility = Visibility.Collapsed;
+                Ad_MainPageRight.Visibility = Constants.IAP_HIDEADS ? Visibility.Collapsed : Visibility.Visible;
+                Ad_MainPageBottom.Visibility = Constants.IAP_HIDEADS ? Visibility.Collapsed : Visibility.Visible;
             }
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             switch ((ProjectPagesOptions)e.Parameter)
@@ -150,6 +157,26 @@ namespace ShadowRunHelper
             Intern_Sync_HasFocus = false;
         }
         #endregion
+        #region Buying Stuff
 
-   }
+        async void IAP_ADS(object sender, RoutedEventArgs e)
+        {
+            await IAP.Buy(Constants.IAP_FEATUREID_ADFREE);
+            CheckIAP();
+        }
+
+        async void IAP_ADS_365(object sender, RoutedEventArgs e)
+        {
+            await IAP.Buy(Constants.IAP_FEATUREID_ADFREE);
+            CheckIAP();
+
+        }
+
+        async void IAP_Tee(object sender, RoutedEventArgs e)
+        {
+            await IAP.Buy(Constants.IAP_FEATUREID_TEE);
+            CheckIAP();
+        }
+        #endregion
+    }
 }

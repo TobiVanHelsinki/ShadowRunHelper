@@ -1327,4 +1327,19 @@ This is shown in detail at the example-character</value>
   <data name="Model_Fertigkeit_CreateHandlung" xml:space="preserve">
     <value>Create Action</value>
   </data>
+  <data name="IAP_TXT_ADS.Content" xml:space="preserve">
+    <value>Lifetime no Ads</value>
+  </data>
+  <data name="IAP_TXT_ADS_365.Content" xml:space="preserve">
+    <value>No Ads for one year</value>
+  </data>
+  <data name="IAP_TXT_TEE.Content" xml:space="preserve">
+    <value>Buy me some tee</value>
+  </data>
+  <data name="Model__ORG.Text" xml:space="preserve">
+    <value>Org.</value>
+  </data>
+  <data name="UI_Optionen_U_Buy.Text" xml:space="preserve">
+    <value>Buy</value>
+  </data>
 </root>

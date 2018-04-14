@@ -1360,4 +1360,16 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Model_Fertigkeit_CreateHandlung" xml:space="preserve">
     <value>Handlung anlegen</value>
   </data>
+  <data name="IAP_TXT_ADS.Content" xml:space="preserve">
+    <value>Keine Werbung für ein Leben</value>
+  </data>
+  <data name="IAP_TXT_ADS_365.Content" xml:space="preserve">
+    <value>Keine Werbung für ein Jahr</value>
+  </data>
+  <data name="IAP_TXT_TEE.Content" xml:space="preserve">
+    <value>Kauf mir einen Tee</value>
+  </data>
+  <data name="UI_Optionen_U_Buy.Text" xml:space="preserve">
+    <value>Kaufen</value>
+  </data>
 </root>

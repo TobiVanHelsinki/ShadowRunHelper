@@ -86,7 +86,15 @@ namespace ShadowRunHelper
             new HelpEntry() { Paragraph = StringHelper.GetString("Help3_LinkedItems"), Text = StringHelper.GetString("Help3") },
             new HelpEntry() { Paragraph = StringHelper.GetString("Help1_ActiveItems"), Text = StringHelper.GetString("Help1") },
             new HelpEntry() { Paragraph = StringHelper.GetString("Help2_AutoCalc"), Text = StringHelper.GetString("Help2") },
-       };
+        };
         #endregion
+        #region IAPs
+        public const string IAP_FEATUREID_ADFREE_365 = "IAP_ADFREE_365";
+        public const string IAP_FEATUREID_ADFREE = "IAP_ADFREE";
+        public const string IAP_FEATUREID_TEE = "9N6G5Z236BTH";
+        public static bool IAP_HIDEADS { get; internal set; }
+
+        #endregion
+
     }
 }
