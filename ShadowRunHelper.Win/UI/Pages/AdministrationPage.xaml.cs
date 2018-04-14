@@ -478,29 +478,5 @@ namespace ShadowRunHelper
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
         #endregion
-
-        #region Ads
-//        void Ad_AdRefreshed(object sender, RoutedEventArgs e)
-//        {
-//#if DEBUG
-//            Model.lstNotifications.Add(new Notification("Ad_AdRefreshed") { bIsRead = true });
-//#endif
-//        }
-
-//        void Ad_CharacterReceived(UIElement sender, Windows.UI.Xaml.Input.CharacterReceivedRoutedEventArgs args)
-//        {
-//#if DEBUG
-//            Model.lstNotifications.Add(new Notification("Ad_CharacterReceived") { bIsRead = true });
-//#endif
-//        }
-
-//        void Ad_ErrorOccurred(object sender, Microsoft.Advertising.WinRT.UI.AdErrorEventArgs e)
-//        {
-//#if DEBUG
-//            Model.lstNotifications.Add(new Notification("Ad_ErrorOccurred") { bIsRead = true });
-//#endif
-//        }
-        #endregion
-
     }
 }

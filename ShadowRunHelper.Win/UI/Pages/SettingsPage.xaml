@@ -7,6 +7,7 @@
     xmlns:System="using:System"
     xmlns:local="using:ShadowRunHelper"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Ad="using:Microsoft.Advertising.WinRT.UI"
     xmlns:charmodel="using:ShadowRunHelper.CharModel"
     mc:Ignorable="d">
     <Page.Resources>
@@ -73,190 +74,210 @@
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <Pivot x:Name="MainNavigation">
-        <PivotItem Tag="31">
-            <PivotItem.Header>
-                <TextBlock x:Uid="UI_Optionen_U_Infos" Style="{StaticResource ueberschrift1}"/>
-            </PivotItem.Header>
-            <ScrollViewer>
-                <StackPanel>
-                    <TextBlock Style="{StaticResource ueberschrift2}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/> 
+        </Grid.ColumnDefinitions>
+        <Viewbox Grid.Column="1" >
+            <Ad:AdControl Width="160" Height="600" x:Name="Ad_MainPageRight"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"/>
+        </Viewbox>
+        <Viewbox Grid.Row="4" Grid.ColumnSpan="2">
+            <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"/>
+        </Viewbox>
+        <Pivot x:Name="MainNavigation">
+            <PivotItem Tag="31">
+                <PivotItem.Header>
+                    <TextBlock x:Uid="UI_Optionen_U_Infos" Style="{StaticResource ueberschrift1}"/>
+                </PivotItem.Header>
+                <ScrollViewer>
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource ueberschrift2}">
                     <Run x:Uid="UI_Optionen_Version"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind AppVersionBuild}"/>
-                    </TextBlock>
-                    <TextBlock x:Uid="UI_Optionen_U_Kontakt"  Style="{StaticResource ueberschrift2}"/>
-                    <TextBlock Style="{StaticResource TextInhaltKlein}">
+                        </TextBlock>
+                        <TextBlock x:Uid="UI_Optionen_U_Kontakt"  Style="{StaticResource ueberschrift2}"/>
+                        <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Optionen_Inhaber"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind Inhaber}"/>
-                    </TextBlock>
-                    <TextBlock Style="{StaticResource TextInhaltKlein}">
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Optionen_Kontakt_Mail"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind eMail}"/>
-                    </TextBlock>
-                    <HyperlinkButton NavigateUri="{x:Bind AppKontaktEmail}" x:Uid="UI_Optionen_KontaktBtn"/>
+                        </TextBlock>
+                        <HyperlinkButton NavigateUri="{x:Bind AppKontaktEmail}" x:Uid="UI_Optionen_KontaktBtn"/>
 
-                    <TextBlock Style="{StaticResource ueberschrift2}">
+                        <TextBlock Style="{StaticResource ueberschrift2}">
                     <Run x:Uid="UI_Optionen_App"/>
-                    </TextBlock>
-                    <HyperlinkButton NavigateUri="{x:Bind AppLink}" x:Uid="UI_Optionen_AppLinkBtn"/>
-                    <HyperlinkButton NavigateUri="{x:Bind AppReviewLink}" x:Uid="UI_Optionen_RateBtn"/>
-                    <HyperlinkButton NavigateUri="{x:Bind MoreAppsLink}" x:Uid="UI_Optionen_MoreAppsBtn"/>
+                        </TextBlock>
+                        <HyperlinkButton NavigateUri="{x:Bind AppLink}" x:Uid="UI_Optionen_AppLinkBtn"/>
+                        <HyperlinkButton NavigateUri="{x:Bind AppReviewLink}" x:Uid="UI_Optionen_RateBtn"/>
+                        <HyperlinkButton NavigateUri="{x:Bind MoreAppsLink}" x:Uid="UI_Optionen_MoreAppsBtn"/>
 
-                    <TextBlock x:Uid="UI_Optionen_U_Statistics"  Style="{StaticResource ueberschrift2}"/>
-                    <TextBlock Style="{StaticResource TextInhaltKlein}">
+                        <TextBlock x:Uid="UI_Optionen_U_Statistics"  Style="{StaticResource ueberschrift2}"/>
+                        <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_AppStart"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind Settings.StartCount}"/>
-                    </TextBlock>
-                    <TextBlock Style="{StaticResource TextInhaltKlein}">
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Loadings"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind Settings.CountLoadings}"/>
-                    </TextBlock>
-                    <TextBlock Style="{StaticResource TextInhaltKlein}">
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Savings"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind Settings.CountSavings}"/>
-                    </TextBlock>
-                    <TextBlock Style="{StaticResource TextInhaltKlein}">
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Creations"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind Settings.CountCreations}"/>
-                    </TextBlock>
-                    <TextBlock Style="{StaticResource TextInhaltKlein}">
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Deletions"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind Settings.CountDeletions}"/>
-                    </TextBlock>
+                        </TextBlock>
 
-                    <TextBlock x:Uid="UI_Optionen_U_Rechtliches"  Style="{StaticResource ueberschrift2}"/>
-                    <TextBlock x:Uid="UI_Optionen_Pegasus"  Style="{StaticResource TextInhaltKlein}"/>
-                    <TextBlock x:Uid="UI_Optionen_U_Datenschutz" Style="{StaticResource ueberschrift2}"/>
-                    <TextBlock x:Uid="UI_Optionen_Datenschutz"  Style="{StaticResource TextInhaltKlein}"/>
-                </StackPanel>
-            </ScrollViewer>
-        </PivotItem>
-        <PivotItem Tag="32">
-            <PivotItem.Header>
-                <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource ueberschrift1}"/>
-            </PivotItem.Header>
-            <ScrollViewer>
-                <StackPanel>
-                    <TextBlock x:Uid="UI_Optionen_U_Einstellungen_Tip" Style="{StaticResource ueberschrift2}"/>
-
-                    <Border Style="{StaticResource SplitBorder}"/>
-
-                    <TextBlock x:Uid="UI_Optionen_EditAfterAdd_Header" Style="{StaticResource TextInhaltKlein}"/>
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.StartEditAfterAdd, Mode=TwoWay}"/>
-
-                    <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-                        <TextBlock x:Name="DisplayRequestHeader" VerticalAlignment="Center" Style="{StaticResource TextInhaltKlein}" x:Uid="UI_Optionen_DisplayRequest_Header"/>
-                        <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
-                            <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
-                        </Viewbox>
-                        <ToolTipService.ToolTip>
-                            <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_DisplayRequest_Tip"/>
-                        </ToolTipService.ToolTip>
+                        <TextBlock x:Uid="UI_Optionen_U_Rechtliches"  Style="{StaticResource ueberschrift2}"/>
+                        <TextBlock x:Uid="UI_Optionen_Pegasus"  Style="{StaticResource TextInhaltKlein}"/>
+                        <TextBlock x:Uid="UI_Optionen_U_Datenschutz" Style="{StaticResource ueberschrift2}"/>
+                        <TextBlock x:Uid="UI_Optionen_Datenschutz"  Style="{StaticResource TextInhaltKlein}"/>
                     </StackPanel>
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.DISPLAY_REQUEST, Mode=TwoWay}"/>
+                </ScrollViewer>
+            </PivotItem>
+            <PivotItem Tag="32">
+                <PivotItem.Header>
+                    <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource ueberschrift1}"/>
+                </PivotItem.Header>
+                <ScrollViewer>
+                    <StackPanel>
+                        <TextBlock x:Uid="UI_Optionen_U_Einstellungen_Tip" Style="{StaticResource ueberschrift2}"/>
 
-                    <!--<TextBlock x:Uid="UI_Optionen_Beta_Features_Header" Style="{StaticResource TextInhaltKlein}"/>
+                        <Border Style="{StaticResource SplitBorder}"/>
+
+                        <TextBlock x:Uid="UI_Optionen_EditAfterAdd_Header" Style="{StaticResource TextInhaltKlein}"/>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.StartEditAfterAdd, Mode=TwoWay}"/>
+
+                        <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                            <TextBlock x:Name="DisplayRequestHeader" VerticalAlignment="Center" Style="{StaticResource TextInhaltKlein}" x:Uid="UI_Optionen_DisplayRequest_Header"/>
+                            <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
+                                <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
+                            </Viewbox>
+                            <ToolTipService.ToolTip>
+                                <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_DisplayRequest_Tip"/>
+                            </ToolTipService.ToolTip>
+                        </StackPanel>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.DISPLAY_REQUEST, Mode=TwoWay}"/>
+
+                        <!--<TextBlock x:Uid="UI_Optionen_Beta_Features_Header" Style="{StaticResource TextInhaltKlein}"/>
                     <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.BETA_FEATURES, Mode=TwoWay}"/>-->
 
-                    <TextBlock x:Uid="UI_Optionen_LoadOnStart_Header" Style="{StaticResource TextInhaltKlein}"/>
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.LoadCharOnStart, Mode=TwoWay}"/>
+                        <TextBlock x:Uid="UI_Optionen_LoadOnStart_Header" Style="{StaticResource TextInhaltKlein}"/>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.LoadCharOnStart, Mode=TwoWay}"/>
 
-                    <Border Style="{StaticResource SplitBorder}"/>
+                        <Border Style="{StaticResource SplitBorder}"/>
 
-                    <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-                        <TextBlock x:Uid="UI_Optionen_AutoSave_Header" Style="{StaticResource TextInhaltKlein}"/>
-                        <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
-                            <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
-                        </Viewbox>
-                        <ToolTipService.ToolTip>
-                            <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_AutoSave_Tip"/>
-                        </ToolTipService.ToolTip>
-                    </StackPanel>
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.AutoSave, Mode=TwoWay}"/>
-                    <TextBlock x:Uid="UI_Optionen_AutoSaveInterval_Header" Style="{StaticResource TextInhaltKlein}"/>
-                    <TextBox MaxWidth="600" HorizontalAlignment="Left" InputScope="Number" Text="{x:Bind Path=Settings.AutoSaveInterval, Mode=TwoWay}"/>
-
-                    <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-                        <TextBlock x:Uid="UI_Optionen_Intern_Sync_Header" Style="{StaticResource TextInhaltKlein}"/>
-                        <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
-                            <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
-                        </Viewbox>
-                        <ToolTipService.ToolTip>
-                            <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Intern_Sync_Tip"/>
-                        </ToolTipService.ToolTip>
-                    </StackPanel>
-
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" GotFocus="Intern_Sync_GotFocus" Toggled="Intern_Sync_Toggled" IsOn="{x:Bind Path=Settings.InternSync, Mode=TwoWay}"/>
-
-                    <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-                        <TextBlock x:Uid="UI_Optionen_Ordnermode_Header" Style="{StaticResource TextInhaltKlein}"/>
-                        <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
-                            <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
-                        </Viewbox>
-                        <ToolTipService.ToolTip>
-                            <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Ordnermode_Tip"/>
-                        </ToolTipService.ToolTip>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal">
-                        <ToggleSwitch x:Uid="UI_Optionen_OrdnerMode" GotFocus="FolderMode_GotFocus" Toggled="FolderMode_Toggled" IsOn="{x:Bind Path=Settings.ORDNERMODE, Mode=TwoWay}"/>
-                        <TextBlock Grid.Column="1" VerticalAlignment="Center" x:Uid="Doppelpunkt" Style="{StaticResource TextInhaltKlein}"/>
-                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{x:Bind Path=Settings.ORDNERMODE_PFAD, Mode=OneWay}" Style="{StaticResource TextInhaltKlein}"/>
-                    </StackPanel>
-
-                    <Border Style="{StaticResource SplitBorder}"/>
-
-                    <TextBlock x:Uid="UI_Optionen_FileNameUseProgres_Header" Style="{StaticResource TextInhaltKlein}"/>
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.FileNameUseProgres, Mode=TwoWay}"/>
-
-                    <TextBlock x:Uid="UI_Optionen_FileNameUseDate_Header" Style="{StaticResource TextInhaltKlein}"/>
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.FileNameUseDate, Mode=TwoWay}"/>
-
-                    <Border Style="{StaticResource SplitBorder}"/>
-
-                    <TextBlock x:Uid="UI_Optionen_TutCharShown" Style="{StaticResource TextInhaltKlein}"/>
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialCharShown, Mode=TwoWay}"/>
-
-                    <TextBlock x:Uid="UI_Optionen_TutorialCharListShown" Style="{StaticResource TextInhaltKlein}"/>
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialCharListShown, Mode=TwoWay}"/>
-
-                    <TextBlock x:Uid="UI_Optionen_TutorialMainShown" Style="{StaticResource TextInhaltKlein}"/>
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialMainShown, Mode=TwoWay}"/>
-
-                    <TextBlock x:Uid="UI_Optionen_TutorialHandlungShown" Style="{StaticResource TextInhaltKlein}"/>
-                    <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialHandlungShown, Mode=TwoWay}"/>
-
-                </StackPanel>
-            </ScrollViewer>
-        </PivotItem>
-        <PivotItem Tag="34">
-            <PivotItem.Header>
-                <TextBlock x:Uid="UI_Optionen_U_Hilfe" Style="{StaticResource ueberschrift1}"/>
-            </PivotItem.Header>
-            <ListView ItemsSource="{x:Bind Help, Mode=OneWay}">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="TLIBModel:HelpEntry">
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Margin="0,10,0,5" FontWeight="Bold" Text="{x:Bind Paragraph}"/>
-                            <TextBlock TextWrapping="Wrap" Text="{x:Bind Text}"/>
+                        <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                            <TextBlock x:Uid="UI_Optionen_AutoSave_Header" Style="{StaticResource TextInhaltKlein}"/>
+                            <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
+                                <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
+                            </Viewbox>
+                            <ToolTipService.ToolTip>
+                                <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_AutoSave_Tip"/>
+                            </ToolTipService.ToolTip>
                         </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </PivotItem>
-        <PivotItem Tag="35">
-            <PivotItem.Header>
-                <TextBlock x:Uid="UI_Optionen_U_Notifications" Style="{StaticResource ueberschrift1}"/>
-            </PivotItem.Header>
-            <ListView ItemTemplate="{StaticResource Notification}" ItemContainerStyle="{StaticResource ListViewItemStyle}" ItemsSource="{x:Bind Model.lstNotifications, Mode=OneWay}" SelectionChanged="ListView_SelectionChanged" SelectionMode="None" IsMultiSelectCheckBoxEnabled="False"></ListView>
-        </PivotItem>
-    </Pivot>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.AutoSave, Mode=TwoWay}"/>
+                        <TextBlock x:Uid="UI_Optionen_AutoSaveInterval_Header" Style="{StaticResource TextInhaltKlein}"/>
+                        <TextBox MaxWidth="600" HorizontalAlignment="Left" InputScope="Number" Text="{x:Bind Path=Settings.AutoSaveInterval, Mode=TwoWay}"/>
+
+                        <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                            <TextBlock x:Uid="UI_Optionen_Intern_Sync_Header" Style="{StaticResource TextInhaltKlein}"/>
+                            <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
+                                <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
+                            </Viewbox>
+                            <ToolTipService.ToolTip>
+                                <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Intern_Sync_Tip"/>
+                            </ToolTipService.ToolTip>
+                        </StackPanel>
+
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" GotFocus="Intern_Sync_GotFocus" Toggled="Intern_Sync_Toggled" IsOn="{x:Bind Path=Settings.InternSync, Mode=TwoWay}"/>
+
+                        <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                            <TextBlock x:Uid="UI_Optionen_Ordnermode_Header" Style="{StaticResource TextInhaltKlein}"/>
+                            <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
+                                <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
+                            </Viewbox>
+                            <ToolTipService.ToolTip>
+                                <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Ordnermode_Tip"/>
+                            </ToolTipService.ToolTip>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <ToggleSwitch x:Uid="UI_Optionen_OrdnerMode" GotFocus="FolderMode_GotFocus" Toggled="FolderMode_Toggled" IsOn="{x:Bind Path=Settings.ORDNERMODE, Mode=TwoWay}"/>
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" x:Uid="Doppelpunkt" Style="{StaticResource TextInhaltKlein}"/>
+                            <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{x:Bind Path=Settings.ORDNERMODE_PFAD, Mode=OneWay}" Style="{StaticResource TextInhaltKlein}"/>
+                        </StackPanel>
+
+                        <Border Style="{StaticResource SplitBorder}"/>
+
+                        <TextBlock x:Uid="UI_Optionen_FileNameUseProgres_Header" Style="{StaticResource TextInhaltKlein}"/>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.FileNameUseProgres, Mode=TwoWay}"/>
+
+                        <TextBlock x:Uid="UI_Optionen_FileNameUseDate_Header" Style="{StaticResource TextInhaltKlein}"/>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.FileNameUseDate, Mode=TwoWay}"/>
+
+                        <Border Style="{StaticResource SplitBorder}"/>
+
+                        <TextBlock x:Uid="UI_Optionen_TutCharShown" Style="{StaticResource TextInhaltKlein}"/>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialCharShown, Mode=TwoWay}"/>
+
+                        <TextBlock x:Uid="UI_Optionen_TutorialCharListShown" Style="{StaticResource TextInhaltKlein}"/>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialCharListShown, Mode=TwoWay}"/>
+
+                        <TextBlock x:Uid="UI_Optionen_TutorialMainShown" Style="{StaticResource TextInhaltKlein}"/>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialMainShown, Mode=TwoWay}"/>
+
+                        <TextBlock x:Uid="UI_Optionen_TutorialHandlungShown" Style="{StaticResource TextInhaltKlein}"/>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialHandlungShown, Mode=TwoWay}"/>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </PivotItem>
+            <PivotItem Tag="34">
+                <PivotItem.Header>
+                    <TextBlock x:Uid="UI_Optionen_U_Hilfe" Style="{StaticResource ueberschrift1}"/>
+                </PivotItem.Header>
+                <ListView ItemsSource="{x:Bind Help, Mode=OneWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="TLIBModel:HelpEntry">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Margin="0,10,0,5" FontWeight="Bold" Text="{x:Bind Paragraph}"/>
+                                <TextBlock TextWrapping="Wrap" Text="{x:Bind Text}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
+            <PivotItem Tag="35">
+                <PivotItem.Header>
+                    <TextBlock x:Uid="UI_Optionen_U_Notifications" Style="{StaticResource ueberschrift1}"/>
+                </PivotItem.Header>
+                <ListView ItemTemplate="{StaticResource Notification}" ItemContainerStyle="{StaticResource ListViewItemStyle}" ItemsSource="{x:Bind Model.lstNotifications, Mode=OneWay}" SelectionChanged="ListView_SelectionChanged" SelectionMode="None" IsMultiSelectCheckBoxEnabled="False"></ListView>
+            </PivotItem>
+        </Pivot>
+    </Grid>
 </Page>
