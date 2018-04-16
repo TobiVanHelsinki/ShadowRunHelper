@@ -51,9 +51,9 @@
             </DataTemplate>
             <DataTemplate x:Name="Notification" x:DataType="TLIBModel:Notification">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Bind DateTime}"/>
+                    <TextBlock Text="{x:Bind OccuredAt}"/>
                     <TextBlock x:Uid="Doppelpunkt"/>
-                    <TextBlock Text="{x:Bind strMessage}"/>
+                    <TextBlock Text="{x:Bind Message}"/>
                 </StackPanel>
             </DataTemplate>
             <DataTemplate x:Name="NotificationX" x:DataType="TLIBModel:Notification">

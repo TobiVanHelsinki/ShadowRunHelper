@@ -121,18 +121,18 @@ namespace ShadowRunHelper
         }
         void ShowNotificationsIfNecessary()
         {
-            foreach (Notification item in Model.lstNotifications.Where((x) => x.bIsRead == false).OrderBy((x) => x.DateTime))
+            foreach (Notification item in Model.lstNotifications.Where((x) => x.IsRead == false).OrderBy((x) => x.OccuredAt))
             {
                 try
                 {
-                    var messageDialog = new MessageDialog(item.strMessage + "\n\n\n" + item.ThrownException?.Message);
+                    var messageDialog = new MessageDialog(item.Message + "\n\n\n" + item.ThrownException?.Message);
                     messageDialog.Commands.Add(new UICommand(
                         "OK"));
                     messageDialog.DefaultCommandIndex = 0;
 #pragma warning disable CS4014
                     messageDialog.ShowAsync();
 #pragma warning restore CS4014
-                    item.bIsRead = true;
+                    item.IsRead = true;
                 }
                 catch (Exception ex)
                 {

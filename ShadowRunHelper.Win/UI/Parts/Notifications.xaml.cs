@@ -19,7 +19,7 @@ namespace ShadowRunHelper
     public sealed partial class NotificationsDialog : ContentDialog
     {
         readonly ObservableCollection<Notification> Notifications = AppModel.Instance.lstNotifications;
-        readonly IEnumerable<Notification> NewNotifications = AppModel.Instance.lstNotifications.Where(x=>!x.bIsRead);
+        readonly IEnumerable<Notification> NewNotifications = AppModel.Instance.lstNotifications.Where(x=>!x.IsRead);
 
         public int NotificationsMax
         {
@@ -27,7 +27,7 @@ namespace ShadowRunHelper
         }
         public int NotificationsUnread
         {
-            get { return NewNotifications.Where(x=> !x.bIsRead).Count(); }
+            get { return NewNotifications.Where(x=> !x.IsRead).Count(); }
         }
 
 
