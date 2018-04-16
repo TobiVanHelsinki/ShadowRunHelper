@@ -47,10 +47,6 @@ namespace ShadowRunHelper
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary();
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += (x, y, z) => NavigationRequested(y, z);
-//#if DEBUG
-//            HeatMap.Visibility = Visibility.Visible;
-//            TextRedraw.Visibility = Visibility.Visible;
-//#endif
         }
         public void TitleBarStuff()
         {
@@ -73,10 +69,10 @@ namespace ShadowRunHelper
             base.OnNavigatedTo(e);
             ShowNotificationsIfNecessary();
             Model.SetDependencies(Dispatcher);
-            NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, p) => TitleBarStuff();
             CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += (s, p) => TitleBarStuff();
             TitleBarStuff();
+            NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
         }
 
         void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
@@ -86,10 +82,12 @@ namespace ShadowRunHelper
                 case ProjectPages.Char:
                     if (Model.MainObject != null)
                     {
+                        Model.NewNotification("MainPageNav Model.MainObject != null");
                         MyFrame.Navigate(typeof(CharPage), po);
                     }
                     else
                     {
+                        Model.NewNotification("MainPageNav Model.MainObject == null");
                         MyFrame.Navigate(typeof(AdministrationPage), po);
                     }
                     break;

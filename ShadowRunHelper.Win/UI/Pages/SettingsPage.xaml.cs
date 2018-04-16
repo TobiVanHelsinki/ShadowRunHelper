@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.Model;
+﻿using Microsoft.AppCenter.Analytics;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -178,5 +179,31 @@ namespace ShadowRunHelper
             CheckIAP();
         }
         #endregion
+        #region Analytics
+
+        #endregion
+        void MainNavigation_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch ((MainNavigation.SelectedItem as PivotItem).Tag)
+            {
+                case "31":
+                    Analytics.TrackEvent("Nav_Sett_Info");
+                    break;
+                case "32":
+                    Analytics.TrackEvent("Nav_Sett_Sett");
+                    break;
+                case "34":
+                    Analytics.TrackEvent("Nav_Sett_Help");
+                    break;
+                case "36":
+                    Analytics.TrackEvent("Nav_Sett_Buy");
+                    break;
+                case "35":
+                    Analytics.TrackEvent("Nav_Sett_Not");
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

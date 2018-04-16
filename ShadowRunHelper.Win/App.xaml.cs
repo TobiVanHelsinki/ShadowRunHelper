@@ -175,27 +175,6 @@ namespace ShadowRunHelper
                 DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            Frame rootFrame = Window.Current.Content as Frame;
-            // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
-            // Nur sicherstellen, dass das Fenster aktiv ist.
-            if (rootFrame == null)
-            {
-                // Frame erstellen, der als Navigationskontext fungiert und zum Parameter der ersten Seite navigieren
-                rootFrame = new Frame();
-                rootFrame.NavigationFailed += OnNavigationFailed;
-                // Den Frame im aktuellen Fenster platzieren
-                Window.Current.Content = rootFrame;
-            }
-            if (rootFrame.Content == null)
-            {
-                // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
-                // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
-                // uebergeben werden
-                rootFrame.Navigate(typeof(MainPage));
-            }
-            // Sicherstellen, dass das aktuelle Fenster aktiv ist
-            Window.Current.Activate();
-
             try
             {
                 if (Settings.CharInTempStore)
@@ -221,6 +200,33 @@ namespace ShadowRunHelper
                 }
             }
             catch (Exception) { }
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
+            // Nur sicherstellen, dass das Fenster aktiv ist.
+            if (rootFrame == null)
+            {
+                // Frame erstellen, der als Navigationskontext fungiert und zum Parameter der ersten Seite navigieren
+                rootFrame = new Frame();
+                rootFrame.NavigationFailed += OnNavigationFailed;
+                // Den Frame im aktuellen Fenster platzieren
+                Window.Current.Content = rootFrame;
+            }
+            if (rootFrame.Content == null)
+            {
+                // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
+                // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
+                // uebergeben werden
+                rootFrame.Navigate(typeof(MainPage));
+            }
+            else
+            {
+                // Seite ist aktiv, wir versuchen, den Char anzuzeigen
+                Model.RequestNavigation(this, ProjectPages.Char);
+            }
+            // Sicherstellen, dass das aktuelle Fenster aktiv ist
+            Window.Current.Activate();
+
             def.Complete();
 #if DEBUG
             SystemHelper.WriteLine("App_LeavingBackgroundComplete");
@@ -294,6 +300,7 @@ namespace ShadowRunHelper
             catch (Exception ex)
             {
             }
+            Analytics.TrackEvent("App_UnhandledExceptionAsync");
             if (!e.Message.Contains(Constants.TESTEXCEPTIONTEXT))
             {
                 e.Handled = true;

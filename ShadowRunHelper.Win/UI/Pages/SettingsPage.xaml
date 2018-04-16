@@ -93,7 +93,7 @@
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"/>
         </Viewbox>
-        <Pivot x:Name="MainNavigation">
+        <Pivot x:Name="MainNavigation" SelectionChanged="MainNavigation_SelectionChanged">
             <PivotItem Tag="31">
                 <PivotItem.Header>
                     <TextBlock x:Uid="UI_Optionen_U_Infos" Style="{StaticResource ueberschrift1}"/>
