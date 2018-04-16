@@ -8,9 +8,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using TLIB;
-using TAMARIN;
-using TAMARIN.IO;
-using TAMARIN.Model;
+using TAPPLICATION;
+using TAPPLICATION.IO;
+using TAPPLICATION.Model;
 
 namespace ShadowRunHelper.Model
 {

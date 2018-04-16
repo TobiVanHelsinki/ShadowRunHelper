@@ -10,7 +10,7 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if ((string)value == TAMARIN.SharedConstants.INTERN_SAVE_CONTAINER || (string)value == TAMARIN.SharedConstants.INTERN_SAVE_CONTAINER + "\\") 
+            if ((string)value == TAPPLICATION.SharedConstants.INTERN_SAVE_CONTAINER || (string)value == TAPPLICATION.SharedConstants.INTERN_SAVE_CONTAINER + "\\") 
             {
                 return ResourceLoader.GetForCurrentView().GetString("UI_CharVerwaltung_Intern_Save_Display_String");
             }

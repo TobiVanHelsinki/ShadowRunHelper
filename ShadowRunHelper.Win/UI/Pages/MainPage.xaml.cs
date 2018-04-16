@@ -2,7 +2,7 @@
 using ShadowRunHelper.UI;
 using System;
 using System.Linq;
-using TAMARIN.Model;
+using TAPPLICATION.Model;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Core;

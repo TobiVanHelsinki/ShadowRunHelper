@@ -146,7 +146,7 @@ namespace ShadowRunHelper.UI.Edit
             var Handl = Model.AppModel.Instance.MainObject.Add(ThingDefs.Handlung);
             if (Fert.TryCopy(Handl))
             {
-                Model.AppModel.Instance.lstNotifications.Add(new TAMARIN.Model.Notification(StringHelper.GetString("Error_ObjectCopy")) { bIsRead = true});
+                Model.AppModel.Instance.lstNotifications.Add(new TAPPLICATION.Model.Notification(StringHelper.GetString("Error_ObjectCopy")) { bIsRead = true});
             }
             Handl.Wert = 0;
             var FertEntry = Model.AppModel.Instance.MainObject.LinkList.Find(x=>x.Object == Fert);

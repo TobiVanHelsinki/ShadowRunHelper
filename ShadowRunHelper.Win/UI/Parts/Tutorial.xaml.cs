@@ -2,8 +2,8 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TLIB;
-using TAMARIN;
-using TAMARIN.Model;
+using TAPPLICATION;
+using TAPPLICATION.Model;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TAMARIN.Model;
+using TAPPLICATION.Model;
 
 namespace ShadowRunHelper.Model
 {

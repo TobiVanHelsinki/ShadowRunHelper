@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
-using TAMARIN.IO;
-using TAMARIN.Model;
-using static TAMARIN.Model.SharedSettingsModel;
+using TAPPLICATION.IO;
+using TAPPLICATION.Model;
+using static TAPPLICATION.Model.SharedSettingsModel;
 using Newtonsoft.Json;
 using Windows.Storage;
 
