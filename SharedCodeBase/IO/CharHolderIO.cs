@@ -136,7 +136,7 @@ namespace ShadowRunHelper.IO
         {
             var TargetFileClass = new FileInfoClass() { Filepath = GetCurrentSavePath(), Fileplace = GetCurrentSavePlace(), FolderToken = SharedConstants.ACCESSTOKEN_FOLDERMODE};
             var SourceFileClass = new FileInfoClass() { Filename = name, Filepath = path, Fileplace = Place.Assets};
-            await GetIO().Copy(TargetFileClass, SourceFileClass, newname);
+            await CurrentIO.Copy(TargetFileClass, SourceFileClass, newname);
         }
     }
 }

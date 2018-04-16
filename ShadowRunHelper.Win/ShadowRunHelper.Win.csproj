@@ -114,6 +114,12 @@
     <LangVersion>latest</LangVersion>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="ApplicationInsights.config" />
@@ -361,6 +367,7 @@
   <Import Project="..\SharedCodeBase\SharedCodeBase.projitems" Label="Shared" />
   <Import Project="..\..\TLIB\TAPPLICATION\TAPPLICATION.projitems" Label="Shared" />
   <Import Project="..\..\TLIB\TLIB\TLIB.projitems" Label="Shared" />
+  <Import Project="..\..\TLIB\TAMARIN\TAMARIN.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

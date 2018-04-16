@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TAPPLICATION.IO;
+using TLIB;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -49,7 +50,7 @@ namespace ShadowRunHelper.Win.UI
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             try
             {
-                strRead = await SharedIO.ReadTextFromFile(new FileInfoClass() { FolderToken = "import", Fileplace = Place.Extern }, Constants.LST_FILETYPES_CSV, UserDecision.AskUser);
+                strRead = (await SharedIO.CurrentIO.LoadFileContent(new FileInfoClass() { FolderToken = "import", Fileplace = Place.Extern }, Constants.LST_FILETYPES_CSV, UserDecision.AskUser)).strFileContent;
             }
             catch (IsOKException ex)
             {
@@ -79,7 +80,7 @@ namespace ShadowRunHelper.Win.UI
             try
             {
                 string output = CTRL.Data2CSV(';', '\n');
-                SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypeHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
+                SharedIO.CurrentIO.SaveFileContent(output, new FileInfoClass() { Filename = TypeHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" });
             }
             catch (IsOKException ex)
             {
@@ -97,7 +98,7 @@ namespace ShadowRunHelper.Win.UI
             {
                 var selected2 = ListView.SelectedItems.Select(i => i as Thing);
                 string output = IO.CSV_Converter.Data2CSV(';', '\n', selected2);
-                SharedIO.SaveTextToFile(new FileInfoClass() { Filename = TypeHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" }, output);
+                SharedIO.CurrentIO.SaveFileContent(output, new FileInfoClass() { Filename = TypeHelper.ThingDefToString(CTRL.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" });
             }
             catch (IsOKException ex)
             {

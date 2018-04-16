@@ -15,20 +15,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experiments", "Experiments\
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TLIB", "..\TLIB\TLIB\TLIB.shproj", "{E3EB87FF-2421-48B9-BE86-A87E9CA0C533}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TAMARIN", "..\TLIB\TAMARIN\TAMARIN.shproj", "{7C378B60-8107-4526-BCF0-8BEA273ACF88}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedCodeBase\SharedCodeBase.projitems*{0d90bef9-68d7-4019-abec-0329274eb64d}*SharedItemsImports = 13
 		SharedCodeBase\SharedCodeBase.projitems*{124813ef-d23d-4b11-a6b4-9d32a4a2e4a4}*SharedItemsImports = 4
-		..\TLIB\TLIB\TLIB.projitems*{124813ef-d23d-4b11-a6b4-9d32a4a2e4a4}*SharedItemsImports = 4
 		..\TLIB\TAPPLICATION\TAPPLICATION.projitems*{124813ef-d23d-4b11-a6b4-9d32a4a2e4a4}*SharedItemsImports = 4
+		..\TLIB\TLIB\TLIB.projitems*{124813ef-d23d-4b11-a6b4-9d32a4a2e4a4}*SharedItemsImports = 4
 		SharedCodeBase\SharedCodeBase.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
-		..\TLIB\TLIB\TLIB.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
+		..\TLIB\TAMARIN\TAMARIN.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
 		..\TLIB\TAPPLICATION\TAPPLICATION.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
+		..\TLIB\TLIB\TLIB.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
+		..\TLIB\TAMARIN\TAMARIN.projitems*{7c378b60-8107-4526-bcf0-8bea273acf88}*SharedItemsImports = 13
 		..\TLIB\TAPPLICATION\TAPPLICATION.projitems*{c43e2365-5678-4e72-a123-71383de9b2dc}*SharedItemsImports = 13
 		..\TLIB\TLIB\TLIB.projitems*{e3eb87ff-2421-48b9-be86-a87e9ca0c533}*SharedItemsImports = 13
 		SharedCodeBase\SharedCodeBase.projitems*{ee1cd771-54dd-4af6-b0d7-f337dfd6a30d}*SharedItemsImports = 4
-		..\TLIB\TLIB\TLIB.projitems*{ee1cd771-54dd-4af6-b0d7-f337dfd6a30d}*SharedItemsImports = 4
 		..\TLIB\TAPPLICATION\TAPPLICATION.projitems*{ee1cd771-54dd-4af6-b0d7-f337dfd6a30d}*SharedItemsImports = 4
+		..\TLIB\TLIB\TLIB.projitems*{ee1cd771-54dd-4af6-b0d7-f337dfd6a30d}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM

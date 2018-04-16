@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using TAPPLICATION.Model;
 using TLIB;
-using TAPPLICATION.Settings;
+using TAMARIN.Settings;
 
 namespace ShadowRunHelper.CharModel
 {

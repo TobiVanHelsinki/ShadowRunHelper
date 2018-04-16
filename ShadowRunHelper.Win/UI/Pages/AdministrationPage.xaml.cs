@@ -7,8 +7,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using TLIB;
 using TAPPLICATION.IO;
+using TLIB;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Core;
@@ -146,7 +146,7 @@ namespace ShadowRunHelper
             Summorys.Clear();
             try
             {
-                var List = await CharHolderIO.GetListOfFiles(new FileInfoClass() { Fileplace = CharHolderIO.GetCurrentSavePlace(), Filepath = CharHolderIO.GetCurrentSavePath(), FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.ThrowError, Constants.LST_FILETYPES_CHAR);
+                var List = await CharHolderIO.CurrentIO.GetListofFiles(new FileInfoClass() { Fileplace = CharHolderIO.GetCurrentSavePlace(), Filepath = CharHolderIO.GetCurrentSavePath(), FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.ThrowError, Constants.LST_FILETYPES_CHAR);
                 foreach (var item in List.OrderByDescending((x) => x.DateModified))
                 {
                     Summorys.Add(new FileInfoClass() { Filename = item.Filename, DateModified = item.DateModified, Filepath = item.Filepath, Fileplace = item.Fileplace, Size = item.Size });
@@ -274,7 +274,7 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    await CharHolderIO.Remove(((FileInfoClass)((Button)sender).DataContext));
+                    await CharHolderIO.CurrentIO.RemoveFile(((FileInfoClass)((Button)sender).DataContext));
                 }
                 catch (Exception ex)
                 {
@@ -327,7 +327,7 @@ namespace ShadowRunHelper
                 {
                     try
                     {
-                        await CharHolderIO.Remove(item);
+                        await CharHolderIO.CurrentIO.RemoveFile(item);
                         SettingsModel.I.CountDeletions++;
                     }
                     catch (Exception ex)
