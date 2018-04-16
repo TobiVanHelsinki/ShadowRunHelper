@@ -312,6 +312,22 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE, Constants.CONTAINER_SETTINGS_FILENAME_USEDATE_STD);
         }
 
+        public bool CharInTempStore
+        {
+            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE);
+            set
+            {
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE, value);
+                NotifyPropertyChanged();
+            }
+        }
+        public void CharInTempStoreReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE, Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE_STD);
+        }
+
+
+
         #endregion Settings
 
         #region Singleton Model Thigns
