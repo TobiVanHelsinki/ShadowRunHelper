@@ -32,6 +32,7 @@ namespace ShadowRunHelper
         public SettingsPage()
         {
             InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Required;
             CheckIAP();
         }
 

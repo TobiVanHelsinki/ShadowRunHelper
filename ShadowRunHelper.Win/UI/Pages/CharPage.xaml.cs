@@ -24,6 +24,7 @@ namespace ShadowRunHelper
         public CharPage()
         {
             InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Required;
         }
 
         #region Navigation stuff

@@ -29,6 +29,7 @@ namespace ShadowRunHelper
         public AdministrationPage()
         {
             InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Required;
             CheckIAP();
             res = ResourceLoader.GetForCurrentView();
             Model.TutorialStateChanged += TutorialStateChanged;
