@@ -498,6 +498,7 @@ namespace ShadowRunHelper
 
         void DoCopy()
         {
+            ModelHelper.CDispatcher = AppModel.Instance.Dispatcher;
             ToCopyList.Clear();
             foreach (ListView item in ListViews)
             {
