@@ -6,6 +6,7 @@ using ShadowRunHelper.UI.Edit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TAMARIN.IO;
 using TAPPLICATION.IO;
 using TLIB;
 using Windows.ApplicationModel.Resources;

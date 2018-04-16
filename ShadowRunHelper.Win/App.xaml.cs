@@ -14,6 +14,7 @@ using Windows.Services.Store;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using TAMARIN.IO;
 
 namespace ShadowRunHelper
 {

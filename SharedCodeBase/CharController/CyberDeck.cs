@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using TAPPLICATION.Model;
+using TLIB;
 
 namespace ShadowRunHelper.CharController
 {

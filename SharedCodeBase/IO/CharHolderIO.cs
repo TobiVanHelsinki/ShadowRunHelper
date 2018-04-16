@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using TLIB;
 using TAPPLICATION;
 using TAPPLICATION.IO;
+using TAMARIN.IO;
 
 namespace ShadowRunHelper.IO
 {

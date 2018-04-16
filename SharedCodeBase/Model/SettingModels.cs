@@ -1,10 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using System.Linq;
-using TAPPLICATION.IO;
+﻿using TAMARIN.IO;
 using TAPPLICATION.Model;
-using static TAPPLICATION.Model.SharedSettingsModel;
-using Newtonsoft.Json;
 using Windows.Storage;
 
 namespace ShadowRunHelper

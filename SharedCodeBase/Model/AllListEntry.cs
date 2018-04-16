@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TAPPLICATION.Model;
+using TLIB;
 
 namespace ShadowRunHelper.Model
 {
