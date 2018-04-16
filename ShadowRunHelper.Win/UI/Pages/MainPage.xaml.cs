@@ -82,12 +82,10 @@ namespace ShadowRunHelper
                 case ProjectPages.Char:
                     if (Model.MainObject != null)
                     {
-                        Model.NewNotification("MainPageNav Model.MainObject != null");
                         MyFrame.Navigate(typeof(CharPage), po);
                     }
                     else
                     {
-                        Model.NewNotification("MainPageNav Model.MainObject == null");
                         MyFrame.Navigate(typeof(AdministrationPage), po);
                     }
                     break;

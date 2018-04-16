@@ -181,22 +181,13 @@ namespace ShadowRunHelper
                 {
                     if (Model.MainObject == null)
                     {
-                        Model.NewNotification("Model.MainObject == null");
                         Model.MainObject = await CharHolderIO.Load(
                             new FileInfoClass() { Fileplace = Place.Temp, Filename = Settings.LastSaveInfo.Filename }
                             , null
                             , UserDecision.ThrowError);
                     }
-                    else
-                    {
-                        Model.NewNotification("Model.MainObject != null");
-                    }
                     Settings.CharInTempStore = false;
                     Settings.LastSaveInfo = null;
-                }
-                else
-                {
-                    Model.NewNotification("no CharInTempStore");
                 }
             }
             catch (Exception) { }
