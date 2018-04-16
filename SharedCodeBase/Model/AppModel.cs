@@ -1,4 +1,7 @@
-﻿namespace ShadowRunHelper.Model
+﻿using ShadowRunHelper.IO;
+using TAPPLICATION.IO;
+
+namespace ShadowRunHelper.Model
 {
     public class AppModel : TAPPLICATION.Model.SharedAppModel<CharHolder>
     {
@@ -8,6 +11,7 @@
             {
                 instance = new AppModel();
             }
+            CharHolderIO.STDConvert = CharHolderIO.ConvertWithRightVersion;
             return Instance;
         }
         public static new AppModel Instance

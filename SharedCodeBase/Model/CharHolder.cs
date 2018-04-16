@@ -78,11 +78,6 @@ namespace ShadowRunHelper.Model
 
         #endregion
         #region IO and Display Stuff
-        /// <summary>
-        /// used to "override" the std convert method. we need something more ... flexible
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public Func<string, string, string, IMainType> Converter => IO.CharHolderIO.ConvertWithRightVersion;
 
         [Newtonsoft.Json.JsonIgnore]
         public FileInfoClass FileInfo { get; set; } = new FileInfoClass();
