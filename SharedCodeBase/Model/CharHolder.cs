@@ -233,31 +233,31 @@ namespace ShadowRunHelper.Model
         public void Repair()
         {
             //declare submethod
-            void RepairThingListRefs(ObservableCollection<AllListEntry> SourceCollection, List<AllListEntry> lstThings)
+            void RepairThingListRefs(ObservableCollection<AllListEntry> SourceCollection)
             {
                 var TargetCollection = new ObservableCollection<AllListEntry>();
                 foreach (var item in SourceCollection)
                 {
-                    AllListEntry NewEntry = lstThings.Find(
+                    AllListEntry NewEntry = LinkList.Find(
                         x => x.Object == item.Object && 
                         x.PropertyID == item.PropertyID);
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x =>
+                        NewEntry = LinkList.Find(x =>
                         x.Object.Bezeichner == item.Object.Bezeichner &&
                         x.Object.ThingType == item.Object.ThingType &&
                         x.PropertyID == item.PropertyID);
                     }
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x =>
+                        NewEntry = LinkList.Find(x =>
                         x.Object.Bezeichner == item.Object.Bezeichner &&
                         x.PropertyID == item.PropertyID);
                         Analytics.TrackEvent("Err_CharRepair_Soft");
                     }
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x =>
+                        NewEntry = LinkList.Find(x =>
                         x.Object.ThingType == item.Object.ThingType &&
                         x.PropertyID == item.PropertyID);
                         Analytics.TrackEvent("Err_CharRepair_Soft");
@@ -280,25 +280,15 @@ namespace ShadowRunHelper.Model
             }
             // start repair
             RefreshLists();
-            foreach (var item in lstCTRL)
+            foreach (var ctrl in lstCTRL)
             {
-                foreach (var thing in item.GetElements())
+                foreach (var thing in ctrl.GetElements())
                 {
                     foreach (var list in Thing.GetPropertiesLists(thing))
                     {
-                        //RepairThingListRefs((ObservableCollection<AllListEntry>)list.GetValue(thing), LinkList);
+                        RepairThingListRefs(list.GetValue(thing) as ObservableThingListEntryCollection);
                     }
                 }
-            }
-            foreach (var item in CTRLHandlung.Data)
-            {
-                RepairThingListRefs(item.LinkedThings, LinkList);
-                RepairThingListRefs(item.GegenZusammensetzung, LinkList);
-                RepairThingListRefs(item.GrenzeZusammensetzung, LinkList);
-            }
-            foreach (var item in CTRLFertigkeit.Data)
-            {
-                RepairThingListRefs(item.LinkedThings, LinkList);
             }
         }
         public IController ThingDef2CTRL(ThingDefs tag)
