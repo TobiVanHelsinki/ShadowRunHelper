@@ -6,7 +6,7 @@
 
 --------Aktuelles---------------------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern
-* example char upgraden
+* privacy anpassen
 
 -----------------------------------------------------
 * button relativ zum anklickgerät

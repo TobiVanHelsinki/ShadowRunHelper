@@ -291,9 +291,9 @@ namespace ShadowRunHelper
             catch (Exception ex)
             {
             }
-            Analytics.TrackEvent("App_UnhandledExceptionAsync");
             if (!e.Message.Contains(Constants.TESTEXCEPTIONTEXT))
             {
+                Analytics.TrackEvent("App_UnhandledExceptionAsync");
                 e.Handled = true;
             }
         }
