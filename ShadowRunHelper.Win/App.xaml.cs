@@ -54,7 +54,7 @@ namespace ShadowRunHelper
             //    //Microsoft.ApplicationInsights.WindowsCollectors.UnhandledException |
             //    Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
             //    Microsoft.ApplicationInsights.WindowsCollectors.Session);
-            AppCenter.LogLevel = LogLevel.Verbose;
+            //AppCenter.LogLevel = LogLevel.Verbose;
             AppCenter.Start("cea0f814-f9f7-46b1-ba58-760607a60559", typeof(Crashes), typeof(Analytics));
         }
 
@@ -152,8 +152,8 @@ namespace ShadowRunHelper
                 else
                 {
                     await SharedIO.SaveAtTempPlace(Model.MainObject);
-                    Settings.CharInTempStore = true;
                 }
+                Settings.CharInTempStore = true;
                 Settings.LastSaveInfo = Model.MainObject.FileInfo;
                 Settings.CountSavings++;
             } catch (Exception) { }
@@ -202,14 +202,22 @@ namespace ShadowRunHelper
                 {
                     if (Model.MainObject == null)
                     {
+                        Model.NewNotification("Model.MainObject == null");
                         Model.MainObject = await CharHolderIO.Load(
                             new FileInfoClass() { Fileplace = Place.Temp, Filename = Settings.LastSaveInfo.Filename }
                             , null
                             , UserDecision.ThrowError);
-                        Settings.CountLoadings++;
+                    }
+                    else
+                    {
+                        Model.NewNotification("Model.MainObject != null");
                     }
                     Settings.CharInTempStore = false;
                     Settings.LastSaveInfo = null;
+                }
+                else
+                {
+                    Model.NewNotification("no CharInTempStore");
                 }
             }
             catch (Exception) { }
