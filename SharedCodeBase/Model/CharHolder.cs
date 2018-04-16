@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.CharController;
+﻿using Microsoft.AppCenter.Analytics;
+using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.Generic;
@@ -250,14 +251,16 @@ namespace ShadowRunHelper.Model
                     if (NewEntry == null)
                     {
                         NewEntry = lstThings.Find(x =>
-                        x.Object.ThingType == item.Object.ThingType &&
+                        x.Object.Bezeichner == item.Object.Bezeichner &&
                         x.PropertyID == item.PropertyID);
+                        Analytics.TrackEvent("Err_CharRepair_Soft");
                     }
                     if (NewEntry == null)
                     {
                         NewEntry = lstThings.Find(x =>
-                        x.Object.Bezeichner == item.Object.Bezeichner &&
+                        x.Object.ThingType == item.Object.ThingType &&
                         x.PropertyID == item.PropertyID);
+                        Analytics.TrackEvent("Err_CharRepair_Soft");
                     }
                     if (NewEntry != null)
                     {
@@ -265,6 +268,7 @@ namespace ShadowRunHelper.Model
                     }
                     else
                     {
+                        Analytics.TrackEvent("Err_CharRepair_Hard");
                         AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }

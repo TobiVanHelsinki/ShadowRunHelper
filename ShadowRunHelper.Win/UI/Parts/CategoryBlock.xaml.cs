@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.CharController;
+﻿using Microsoft.AppCenter.Analytics;
+using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelper.UI.Edit;
@@ -70,6 +71,7 @@ namespace ShadowRunHelper.Win.UI
             {
                 Model.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "2", ex);
             }
+            Analytics.TrackEvent("Char_CSV_IN");
         }
 
         private void CSV_EX_Click(object sender, RoutedEventArgs e)
@@ -87,6 +89,7 @@ namespace ShadowRunHelper.Win.UI
             {
                 Model.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
+            Analytics.TrackEvent("Char_CSV_EX");
         }
         private void CSV_EX_Selected(object sender, RoutedEventArgs e)
         {
@@ -104,6 +107,7 @@ namespace ShadowRunHelper.Win.UI
             {
                 Model.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
+            Analytics.TrackEvent("Char_CSV_EX_Selected");
         }
 
         private void DeleteCategoryContent(object sender, RoutedEventArgs e)
@@ -121,17 +125,20 @@ namespace ShadowRunHelper.Win.UI
         #region Ordering
         void Order_Type(object sender, RoutedEventArgs e)
         {
+            Analytics.TrackEvent("Char_Order_Type");
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             CTRL.OrderData(Ordering.Type);
         }
 
         void Order_ABC(object sender, RoutedEventArgs e)
         {
+            Analytics.TrackEvent("Char_Order_ABC");
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             CTRL.OrderData(Ordering.ABC);
         }
         private void Order_Orig(object sender, RoutedEventArgs e)
         {
+            Analytics.TrackEvent("Char_Order_Orig");
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             CTRL.OrderData(Ordering.Original);
         }

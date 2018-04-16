@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.IO;
+﻿using Microsoft.AppCenter.Analytics;
+using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using ShadowRunHelper.UI;
 using System;
@@ -437,6 +438,7 @@ namespace ShadowRunHelper
             {
                 Model.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
+            Analytics.TrackEvent("Admin_CSV_EX");
         }
 
         void Click_Repair_CurrentChar(object sender, RoutedEventArgs e)
