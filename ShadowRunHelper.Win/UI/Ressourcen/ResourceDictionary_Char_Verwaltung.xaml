@@ -15,6 +15,7 @@
 
 
     <Style TargetType="TextBlock" x:Key="Chars">
+        <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Margin" Value="4,2,4,4"/>
     </Style>
