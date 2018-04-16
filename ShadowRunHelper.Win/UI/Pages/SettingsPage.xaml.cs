@@ -12,6 +12,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using TAMARIN.IO;
+using TAPPLICATION;
 
 namespace ShadowRunHelper
 {
@@ -149,7 +150,10 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    await SharedIO.CopyLocalRoaming((sender as ToggleSwitch).IsOn ? Place.Roaming : Place.Local);
+                    var t = new FileInfoClass((sender as ToggleSwitch).IsOn ? Place.Roaming : Place.Local, "", SharedConstants.INTERN_SAVE_CONTAINER);
+                    var s = new FileInfoClass((sender as ToggleSwitch).IsOn ? Place.Local : Place.Roaming, "", SharedConstants.INTERN_SAVE_CONTAINER);
+                    //await SharedIO.CopyLocalRoaming((sender as ToggleSwitch).IsOn ? Place.Roaming : Place.Local);
+                    await SharedIO.CurrentIO.CopyAllFiles(t,s);
                 }
                 catch (Exception ex)
                 {

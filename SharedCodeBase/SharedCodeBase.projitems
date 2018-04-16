@@ -69,6 +69,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)IO\CSV_Converter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IO\ICSV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\AppModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\HelpEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\SettingModels.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\CharHolder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\ObservableThingListEntryCollection.cs" />

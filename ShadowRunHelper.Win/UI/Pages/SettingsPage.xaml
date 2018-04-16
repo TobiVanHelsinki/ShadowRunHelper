@@ -5,10 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:TLIBModel="using:TAPPLICATION.Model"
     xmlns:System="using:System"
-    xmlns:local="using:ShadowRunHelper"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Ad="using:Microsoft.Advertising.WinRT.UI"
-    xmlns:charmodel="using:ShadowRunHelper.CharModel"
+    xmlns:model="using:ShadowRunHelper.Model"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -263,7 +262,7 @@
                 </PivotItem.Header>
                 <ListView ItemsSource="{x:Bind Help, Mode=OneWay}">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="TLIBModel:HelpEntry">
+                        <DataTemplate x:DataType="model:HelpEntry">
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Margin="0,10,0,5" FontWeight="Bold" Text="{x:Bind Paragraph}"/>
                                 <TextBlock TextWrapping="Wrap" Text="{x:Bind Text}"/>
