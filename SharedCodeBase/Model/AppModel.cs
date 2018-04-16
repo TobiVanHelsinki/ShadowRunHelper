@@ -11,7 +11,7 @@ namespace ShadowRunHelper.Model
             {
                 instance = new AppModel();
             }
-            CharHolderIO.STDConvert = CharHolderIO.ConvertWithRightVersion;
+            CharHolderIO.MainTypeConvert = CharHolderIO.ConvertWithRightVersion;
             return Instance;
         }
         public static new AppModel Instance
