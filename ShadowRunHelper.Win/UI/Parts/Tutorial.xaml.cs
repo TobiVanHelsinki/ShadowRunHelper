@@ -2,8 +2,8 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TLIB;
-using TLIB_UWPFRAME;
-using TLIB_UWPFRAME.Model;
+using TAMARIN;
+using TAMARIN.Model;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

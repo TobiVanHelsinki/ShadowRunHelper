@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TLIB_UWPFRAME;
+using TAMARIN;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter

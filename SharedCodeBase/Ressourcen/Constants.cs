@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TLIB;
-using TLIB_UWPFRAME;
-using TLIB_UWPFRAME.Model;
+using TAMARIN;
+using TAMARIN.Model;
 
 namespace ShadowRunHelper
 {

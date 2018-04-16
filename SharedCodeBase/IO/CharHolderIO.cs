@@ -7,8 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TLIB;
-using TLIB_UWPFRAME;
-using TLIB_UWPFRAME.IO;
+using TAMARIN;
+using TAMARIN.IO;
 
 namespace ShadowRunHelper.IO
 {

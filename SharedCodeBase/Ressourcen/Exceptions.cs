@@ -1,6 +1,6 @@
 ﻿using System;
 using TLIB;
-using TLIB_UWPFRAME;
+using TAMARIN;
 
 namespace Shared
 {

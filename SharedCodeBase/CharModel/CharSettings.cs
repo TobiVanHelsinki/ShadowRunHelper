@@ -7,9 +7,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using TLIB_UWPFRAME.Model;
+using TAMARIN.Model;
 using TLIB;
-using TLIB_UWPFRAME.Settings;
+using TAMARIN.Settings;
 
 namespace ShadowRunHelper.CharModel
 {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
-using TLIB_UWPFRAME.IO;
-using TLIB_UWPFRAME.Model;
-using static TLIB_UWPFRAME.Model.SharedSettingsModel;
+using TAMARIN.IO;
+using TAMARIN.Model;
+using static TAMARIN.Model.SharedSettingsModel;
 using Newtonsoft.Json;
 using Windows.Storage;
 

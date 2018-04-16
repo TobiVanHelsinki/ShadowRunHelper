@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using TLIB;
-using TLIB_UWPFRAME;
+using TAMARIN;
 
 namespace ShadowRunHelper.CharController
 {

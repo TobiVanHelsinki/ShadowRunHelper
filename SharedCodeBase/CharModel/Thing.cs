@@ -6,8 +6,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using TLIB_UWPFRAME;
-using TLIB_UWPFRAME.Model;
+using TAMARIN;
+using TAMARIN.Model;
 using TLIB;
 using Newtonsoft.Json;
 

@@ -9,7 +9,7 @@ using Shared;
 using TLIB;
 using Windows.UI.Xaml;
 using Windows.Foundation.Metadata;
-using TLIB_UWPFRAME.Model;
+using TAMARIN.Model;
 
 namespace ShadowRunHelper
 {
