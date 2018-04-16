@@ -6,7 +6,6 @@ using ShadowRunHelper.Win.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -194,7 +193,7 @@ namespace ShadowRunHelper
             try
             {
                 // Listenauswahl
-                var (Block, sv) = LoadedCategoryBlocks.FirstOrDefault(x=>x.Block.ThingType == PendingScrollEntry.ThingType);
+                var (Block, sv) = LoadedCategoryBlocks.FirstOrDefault(x=>x.Block.Controller.eDataTyp == PendingScrollEntry.ThingType);
                 double offset = 0;
                 foreach (var item in ((sv as ScrollViewer).Content as Panel).Children)
                 {

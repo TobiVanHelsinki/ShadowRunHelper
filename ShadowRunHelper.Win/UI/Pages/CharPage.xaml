@@ -248,13 +248,13 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="SavePanelTop" Grid.Column="0" Margin="5,1,5,1" Style="{StaticResource STD_Button}"  IsEnabled="{x:Bind MainObject.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
+            <Button x:Name="SavePanelTop" Grid.Column="0" Margin="5,1,5,1" Style="{StaticResource STD_Button}"  IsEnabled="{x:Bind Model.MainObject.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
                     <TextBlock Text="Speichern"/>
                 </StackPanel>
             </Button>
-            <ContentPresenter Margin="5,1,5,1" x:Name="GlobalFilterBoxTop" Grid.Column="2" DataContext="{x:Bind MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
+            <ContentPresenter Margin="5,1,5,1" x:Name="GlobalFilterBoxTop" Grid.Column="2" DataContext="{x:Bind Model.MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
         </Grid>
         <Pivot x:Name="Pivot" Grid.Row="1" Style="{StaticResource PivotStyle_TabsStyle}" >
             <Pivot.RightHeader>
@@ -266,15 +266,15 @@
                     <Button Style="{StaticResource STD_Button}" Width="{Binding RelativeSource={RelativeSource Self}, Path=Height}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Content="&#xE11A;" FontFamily="Segoe MDL2 Assets">
                         <Button.Flyout>
                             <Flyout Placement="Left" >
-                                <ContentPresenter Width="300" DataContext="{x:Bind MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
+                                <ContentPresenter Width="300" DataContext="{x:Bind Model.MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
                             </Flyout>
                         </Button.Flyout>
                     </Button>
-                    <ContentPresenter Grid.Column="1" DataContext="{x:Bind MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
+                    <ContentPresenter Grid.Column="1" DataContext="{x:Bind Model.MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
                 </Grid>
             </Pivot.RightHeader>
             <Pivot.LeftHeader>
-                <Button Style="{StaticResource STD_Button}" x:Name="SavePanel" IsEnabled="{x:Bind MainObject.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
+                <Button Style="{StaticResource STD_Button}" x:Name="SavePanel" IsEnabled="{x:Bind Model.MainObject.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
                         <TextBlock x:Name="SavePanelButtonText" Text="Speichern"/>
@@ -291,11 +291,11 @@
                 <Border x:Name="MainContentBorder">
                     <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
                         <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
-                            <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Handlung"/>
-                            <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Fertigkeit"/>
-                            <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Zaubersprueche"/>
-                            <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Adeptenkraft"/>
-                            <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="KomplexeForm"/>
+                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLHandlung, Mode=OneWay}"/>
+                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLFertigkeit, Mode=OneWay}"/>
+                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLZaubersprueche, Mode=OneWay}"/>
+                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLAdeptenkraft, Mode=OneWay}"/>
+                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLKomplexeForm, Mode=OneWay}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
@@ -308,14 +308,14 @@
                 </PivotItem.Header>
                 <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
                     <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Item"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Kommlink"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="CyberDeck"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Programm"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Foki"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Geist"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Widgets"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Sprite"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLItem, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLKommlink, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLCyberDeck, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLProgramm, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLFoki, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLGeist, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLWidgets, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLSprite, Mode=OneWay}"/>
                     </StackPanel>
                 </ScrollViewer>
             </PivotItem>
@@ -327,11 +327,11 @@
                 </PivotItem.Header>
                 <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
                     <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Fernkampfwaffe"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Nahkampfwaffe"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Panzerung"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Vehikel"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Munition"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLFernkampfwaffe, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLNahkampfwaffe, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLPanzerung, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLVehikel, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLMunition, Mode=OneWay}"/>
                     </StackPanel>
                 </ScrollViewer>
             </PivotItem>
@@ -383,16 +383,16 @@
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition x:Name="Attribut_GridColum_3" Width="1*"/>
                                 </Grid.ColumnDefinitions>
-                                <ui:CategoryEntry x:Name="K1" DataContext="{x:Bind MainObject.CTRLAttribut.Konsti, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="K2" DataContext="{x:Bind MainObject.CTRLAttribut.Reaktion, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="K3" DataContext="{x:Bind MainObject.CTRLAttribut.Staerke, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="K4" DataContext="{x:Bind MainObject.CTRLAttribut.Geschick, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="G1" DataContext="{x:Bind MainObject.CTRLAttribut.Logik, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="G2" DataContext="{x:Bind MainObject.CTRLAttribut.Intuition, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="G3" DataContext="{x:Bind MainObject.CTRLAttribut.Willen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="G4" DataContext="{x:Bind MainObject.CTRLAttribut.Charisma, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="S1" DataContext="{x:Bind MainObject.CTRLAttribut.Magie, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="S2" DataContext="{x:Bind MainObject.CTRLAttribut.Resonanz, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="K1" DataContext="{x:Bind Model.MainObject.CTRLAttribut.Konsti, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="K2" DataContext="{x:Bind Model.MainObject.CTRLAttribut.Reaktion, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="K3" DataContext="{x:Bind Model.MainObject.CTRLAttribut.Staerke, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="K4" DataContext="{x:Bind Model.MainObject.CTRLAttribut.Geschick, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="G1" DataContext="{x:Bind Model.MainObject.CTRLAttribut.Logik, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="G2" DataContext="{x:Bind Model.MainObject.CTRLAttribut.Intuition, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="G3" DataContext="{x:Bind Model.MainObject.CTRLAttribut.Willen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="G4" DataContext="{x:Bind Model.MainObject.CTRLAttribut.Charisma, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="S1" DataContext="{x:Bind Model.MainObject.CTRLAttribut.Magie, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="S2" DataContext="{x:Bind Model.MainObject.CTRLAttribut.Resonanz, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
                             </Grid>
                         </StackPanel>
                         <StackPanel Grid.ColumnSpan="3" Grid.Row="1">
@@ -413,24 +413,24 @@
                                     <ColumnDefinition x:Name="Berechnet_GridColum_3" Width="1*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <ui:CategoryEntry x:Name="B1" DataContext="{x:Bind MainObject.CTRLBerechnet.Essenz, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="L1" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_G, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="L2" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_K, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="L3" DataContext="{x:Bind MainObject.CTRLBerechnet.Limit_S, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="B2" DataContext="{x:Bind MainObject.CTRLBerechnet.Laufen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="B3" DataContext="{x:Bind MainObject.CTRLBerechnet.Rennen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
-                                <ui:CategoryEntry x:Name="B4" DataContext="{x:Bind MainObject.CTRLBerechnet.Tragen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="B1" DataContext="{x:Bind Model.MainObject.CTRLBerechnet.Essenz, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="L1" DataContext="{x:Bind Model.MainObject.CTRLBerechnet.Limit_G, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="L2" DataContext="{x:Bind Model.MainObject.CTRLBerechnet.Limit_K, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="L3" DataContext="{x:Bind Model.MainObject.CTRLBerechnet.Limit_S, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="B2" DataContext="{x:Bind Model.MainObject.CTRLBerechnet.Laufen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="B3" DataContext="{x:Bind Model.MainObject.CTRLBerechnet.Rennen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
+                                <ui:CategoryEntry x:Name="B4" DataContext="{x:Bind Model.MainObject.CTRLBerechnet.Tragen, Mode=OneWay}" HorizontalContentAlignment="Stretch"/>
                             </Grid>
                         </StackPanel>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="2" ThingType="Connection"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="3" ThingType="Implantat"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="4" ThingType="Tradition"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="5" ThingType="Stroemung"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="6" ThingType="Sin"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="7" ThingType="Initiation"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="8" ThingType="Wandlung"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Vorteil" x:Name="Vorteile" Grid.ColumnSpan="1" Grid.Column="0" Grid.Row="9"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" ThingType="Nachteil" x:Name="Nachteile" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="9"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="2" Controller="{x:Bind Model.MainObject.CTRLConnection, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="3" Controller="{x:Bind Model.MainObject.CTRLImplantat, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="4" Controller="{x:Bind Model.MainObject.CTRLTradition, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="5" Controller="{x:Bind Model.MainObject.CTRLStroemung, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="6" Controller="{x:Bind Model.MainObject.CTRLSin, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="7" Controller="{x:Bind Model.MainObject.CTRLInitiation, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="8" Controller="{x:Bind Model.MainObject.CTRLWandlung, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLVorteil, Mode=OneWay}" x:Name="Vorteile" Grid.ColumnSpan="1" Grid.Column="0" Grid.Row="9"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLNachteil, Mode=OneWay}" x:Name="Nachteile" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="9"/>
 
                         <StackPanel Name="Person_U"  Grid.ColumnSpan="3" Grid.Row="11" Style="{StaticResource Category_Head_Stackpanel}">
                             <TextBlock x:Uid="Model_Person_" Style="{StaticResource Category_HeadLine}"/>
@@ -483,23 +483,23 @@
                             <TextBlock x:Name="P12A" x:Uid="Model_Person_Strassenruf" Grid.Column="0" Grid.Row="4"  Style="{StaticResource Category_Item_Text}"/>
                             <TextBlock x:Name="P13A" x:Uid="Model_Person_SchlechterRuf" Grid.Column="2" Grid.Row="4"  Style="{StaticResource Category_Item_Text}"/>
                             <TextBlock x:Name="P14A" x:Uid="Model_Person_Prominenz" Grid.Column="4" Grid.Row="4"  Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P1B" Text="{x:Bind MainObject.Person.MetaTyp, Mode=OneWay}" Grid.Column="1" Grid.Row="0" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P2B" Text="{x:Bind MainObject.Person.MetaTyp_sub, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P3B" Text="{x:Bind MainObject.Person.Lebesstil, Mode=OneWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P4B" Text="{x:Bind MainObject.Person.BirthDate, Mode=OneWay, Converter={StaticResource io_GebDatum}}" Grid.Column="1" Grid.Row="3" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P5B" Text="{x:Bind MainObject.Person.Geschlecht, Mode=OneWay}" Grid.Column="3" Grid.Row="0" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P6B" Text="{x:Bind MainObject.Person.Groesse, Mode=OneWay}" Grid.Column="3" Grid.Row="1" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P7B" Text="{x:Bind MainObject.Person.Gewicht, Mode=OneWay}" Grid.Column="3" Grid.Row="2" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P8B" Text="{x:Bind MainObject.Person.Essenz, Mode=OneWay}" Grid.Column="3" Grid.Row="3" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P9B" Text="{x:Bind MainObject.Person.Augenfarbe, Mode=OneWay}" Grid.Column="5" Grid.Row="0" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P10B" Text="{x:Bind MainObject.Person.Haarfarbe, Mode=OneWay}" Grid.Column="5" Grid.Row="1" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P11B" Text="{x:Bind MainObject.Person.Hautfarbe, Mode=OneWay}" Grid.Column="5" Grid.Row="2" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P12B" Text="{x:Bind MainObject.Person.Strassenruf, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P13B" Text="{x:Bind MainObject.Person.SchlechterRuf, Mode=OneWay}" Grid.Column="3" Grid.Row="4" Style="{StaticResource Category_Item_Text}"/>
-                            <TextBlock x:Name="P14B" Text="{x:Bind MainObject.Person.Prominenz, Mode=OneWay}" Grid.Column="5" Grid.Row="4" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P1B" Text="{x:Bind Model.MainObject.Person.MetaTyp, Mode=OneWay}" Grid.Column="1" Grid.Row="0" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P2B" Text="{x:Bind Model.MainObject.Person.MetaTyp_sub, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P3B" Text="{x:Bind Model.MainObject.Person.Lebesstil, Mode=OneWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P4B" Text="{x:Bind Model.MainObject.Person.BirthDate, Mode=OneWay, Converter={StaticResource io_GebDatum}}" Grid.Column="1" Grid.Row="3" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P5B" Text="{x:Bind Model.MainObject.Person.Geschlecht, Mode=OneWay}" Grid.Column="3" Grid.Row="0" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P6B" Text="{x:Bind Model.MainObject.Person.Groesse, Mode=OneWay}" Grid.Column="3" Grid.Row="1" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P7B" Text="{x:Bind Model.MainObject.Person.Gewicht, Mode=OneWay}" Grid.Column="3" Grid.Row="2" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P8B" Text="{x:Bind Model.MainObject.Person.Essenz, Mode=OneWay}" Grid.Column="3" Grid.Row="3" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P9B" Text="{x:Bind Model.MainObject.Person.Augenfarbe, Mode=OneWay}" Grid.Column="5" Grid.Row="0" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P10B" Text="{x:Bind Model.MainObject.Person.Haarfarbe, Mode=OneWay}" Grid.Column="5" Grid.Row="1" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P11B" Text="{x:Bind Model.MainObject.Person.Hautfarbe, Mode=OneWay}" Grid.Column="5" Grid.Row="2" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P12B" Text="{x:Bind Model.MainObject.Person.Strassenruf, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P13B" Text="{x:Bind Model.MainObject.Person.SchlechterRuf, Mode=OneWay}" Grid.Column="3" Grid.Row="4" Style="{StaticResource Category_Item_Text}"/>
+                            <TextBlock x:Name="P14B" Text="{x:Bind Model.MainObject.Person.Prominenz, Mode=OneWay}" Grid.Column="5" Grid.Row="4" Style="{StaticResource Category_Item_Text}"/>
                         </Grid>
                         <TextBlock Grid.ColumnSpan="3" Grid.Row="13" x:Uid="Model_Person_Beschreibung_" Style="{StaticResource Category_HeadLine}"/>
-                        <TextBox Grid.ColumnSpan="3" Grid.Row="42" Name="Beschreibung" Text="{x:Bind MainObject.Person.Zusammenfassung,Mode=TwoWay}" 
+                        <TextBox Grid.ColumnSpan="3" Grid.Row="42" Name="Beschreibung" Text="{x:Bind Model.MainObject.Person.Zusammenfassung,Mode=TwoWay}" 
                                    ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
                                    TextWrapping="Wrap" 
@@ -516,7 +516,7 @@
                         <local:TabHeader x:Uid="Char_View_Pivot_Notizen" Glyph="&#xE193;" />
                     </Border>
                 </PivotItem.Header>
-                <TextBox Name="NoteTextBox" Text="{x:Bind MainObject.Person.Notizen, Mode=TwoWay}" Style="{StaticResource NotesBox}"/>
+                <TextBox Name="NoteTextBox" Text="{x:Bind Model.MainObject.Person.Notizen, Mode=TwoWay}" Style="{StaticResource NotesBox}"/>
             </PivotItem>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>

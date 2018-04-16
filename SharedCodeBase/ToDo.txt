@@ -3,7 +3,6 @@
 
 * Panel Oben: Fenstergröße bestimmen, inhalt immer passend zu fenstergröße anzeigen
 * CharPage: keine listen anzeige
-* zilenumbruch pfad adminpage
 --------Aktuelles---------------------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern
 * privacy anpassen

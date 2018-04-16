@@ -29,7 +29,7 @@ namespace ShadowRunHelper.Model
             }
             else
             {
-                AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Notification_Warning_NotAddLinkedEntry"),item.Object.Bezeichner));
+                AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Notification_Warning_NotAddLinkedEntry"),item?.Object?.Bezeichner));
             }
         }
 
