@@ -1,8 +1,10 @@
 ﻿using ShadowRunHelper.Model;
 using ShadowRunHelper.UI;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TAPPLICATION.Model;
+using TLIB;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Core;
@@ -44,7 +46,9 @@ namespace ShadowRunHelper
         {
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
+#pragma warning disable CS4014
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary();
+#pragma warning restore CS4014
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += (x, y, z) => NavigationRequested(y, z);
         }
@@ -100,7 +104,7 @@ namespace ShadowRunHelper
             }
         }
         #endregion
-        #region generel stuff
+        #region global stuff
 
         void TutorialStateChanged(int StateNumber, bool Highlight)
         {
@@ -119,19 +123,29 @@ namespace ShadowRunHelper
                     break;
             }
         }
-        void ShowNotificationsIfNecessary()
+        bool ShowNotificationsInProgress = false;
+
+        async void ShowNotificationsIfNecessary()
         {
+            if (ShowNotificationsInProgress)
+            {
+                return;
+            }
+            ShowNotificationsInProgress = true;
+            bool DisplayMore = true;
             foreach (Notification item in Model.lstNotifications.Where((x) => x.IsRead == false).OrderBy((x) => x.OccuredAt))
             {
+                if (!DisplayMore)
+                {
+                    break;
+                }
                 try
                 {
                     var messageDialog = new MessageDialog(item.Message + "\n\n\n" + item.ThrownException?.Message);
-                    messageDialog.Commands.Add(new UICommand(
-                        "OK"));
+                    messageDialog.Commands.Add(new UICommand(StringHelper.GetString("OK")));
+                    messageDialog.Commands.Add(new UICommand(StringHelper.GetString("CloseNotifications"), (x) => DisplayMore = false));
                     messageDialog.DefaultCommandIndex = 0;
-#pragma warning disable CS4014
-                    messageDialog.ShowAsync();
-#pragma warning restore CS4014
+                    await messageDialog.ShowAsync();
                     item.IsRead = true;
                 }
                 catch (Exception ex)
@@ -139,6 +153,7 @@ namespace ShadowRunHelper
                     continue;
                 }
             }
+            ShowNotificationsInProgress = false;
         }
         #endregion
         #region Header Button Handler

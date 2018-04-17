@@ -1348,4 +1348,10 @@ This is shown in detail at the example-character</value>
   <data name="Ui_Admin_Filepath.Text" xml:space="preserve">
     <value>Filepath</value>
   </data>
+  <data name="CloseNotifications" xml:space="preserve">
+    <value>Close all</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>
