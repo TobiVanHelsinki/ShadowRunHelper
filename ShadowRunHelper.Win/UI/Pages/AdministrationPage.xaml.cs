@@ -34,7 +34,6 @@ namespace ShadowRunHelper
             res = ResourceLoader.GetForCurrentView();
             Model.TutorialStateChanged += TutorialStateChanged;
 #if DEBUG
-            Btn_SecondView.Visibility = Visibility.Visible;
             Btn_Exception.Visibility = Visibility.Visible;
 #else
             Btn_SecondView.Visibility = Visibility.Collapsed;
@@ -228,21 +227,10 @@ namespace ShadowRunHelper
             {
                 return;
             }
-            await Laden(() => CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
+            await LoadChar(() => CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
         }
 
-        async void Click_Datei_Import(object sender, RoutedEventArgs e)
-        {
-            if (IsOperationInProgres)
-            {
-                return;
-            }
-            await Laden(() => CharHolderIO.Load(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "Import" }, Constants.LST_FILETYPES_CHAR, UserDecision.AskUser));
-            Model.MainObject.FileInfo.Filepath = CharHolderIO.GetCurrentSavePath();
-            Model.MainObject.FileInfo.Fileplace = CharHolderIO.GetCurrentSavePlace();
-        }
-
-        async Task Laden(Func<Task<CharHolder>> LoadFunc)
+        async Task LoadChar(Func<Task<CharHolder>> LoadFunc)
         {
             if (IsOperationInProgres)
             {
@@ -260,7 +248,7 @@ namespace ShadowRunHelper
             ChangeProgress(false);
             if (Model.MainObject != null)
             {
-                AppModel.Instance.RequestNavigation(this, ProjectPages.Char);
+                AppModel.Instance.RequestNavigation(this, ProjectPages.Char, ProjectPagesOptions.Char_Action);
             }
             SettingsModel.I.CountLoadings++;
         }
@@ -461,24 +449,6 @@ namespace ShadowRunHelper
         void Exception(object sender, RoutedEventArgs e)
         {
             throw new Exception(Constants.TESTEXCEPTIONTEXT);
-        }
-        // NEW VIEW ###########################################################
-
-        async void Click_NewView(object sender, RoutedEventArgs e)
-        {
-            CoreApplicationView newView = CoreApplication.CreateNewView();
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(MainPage), null);
-                Window.Current.Content = frame;
-                // You have to activate the window in order to show it later.
-                Window.Current.Activate();
-
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
         }
         #endregion
     }

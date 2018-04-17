@@ -134,14 +134,10 @@
     <Compile Include="UI\Converter\o_NullConverter.cs" />
     <Compile Include="UI\Converter\io_GebDatum.cs" />
     <Compile Include="UI\Converter\io_Zahlen.cs" />
-    <Compile Include="UI\Converter\o_CharAdmin_Path.cs" />
     <Compile Include="UI\Converter\o_FileSize.cs" />
     <Compile Include="UI\Converter\o_ThingDef2String.cs" />
     <Compile Include="UI\Converter\o_AllListEntry.cs" />
     <Compile Include="UI\Converter\o_ZahlenYen.cs" />
-    <Compile Include="UI\Pages\DBPage.xaml.cs">
-      <DependentUpon>DBPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Pages\CharPage.xaml.cs">
       <DependentUpon>CharPage.xaml</DependentUpon>
     </Compile>
@@ -251,10 +247,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="UI\Pages\DBPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UI\Pages\CharPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -328,10 +320,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Ressourcen\ResourceDictionary_Settings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Ressourcen\SplitViewStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

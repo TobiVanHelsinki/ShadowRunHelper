@@ -41,15 +41,38 @@ namespace ShadowRunHelper
                 }
             }
             Model.TutorialStateChanged += TutorialStateChanged;
-            if (((ProjectPagesOptions)e.Parameter) == ProjectPagesOptions.CharNewChar)
+            switch (((ProjectPagesOptions)e.Parameter))
             {
-                try
-                {
-                    await new Edit_Person_Detail(MainObject.Person).ShowAsync();
-                }
-                catch (Exception)
-                {
-                }
+                case ProjectPagesOptions.CharNewChar:
+                    Pivot.SelectedIndex = 0;
+                    try
+                    {
+                        new Edit_Person_Detail(MainObject.Person).ShowAsync();
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    break;
+                case ProjectPagesOptions.Char_Action:
+                    Pivot.SelectedIndex = 0;
+                    break;
+                case ProjectPagesOptions.Char_Items:
+                    Pivot.SelectedIndex = 1;
+                    break;
+                case ProjectPagesOptions.Char_Battle:
+                    Pivot.SelectedIndex = 2;
+                    break;
+                case ProjectPagesOptions.Char_Person:
+                    Pivot.SelectedIndex = 3;
+                    break;
+                case ProjectPagesOptions.Char_Notes:
+                    Pivot.SelectedIndex = 4;
+                    break;
+                case ProjectPagesOptions.Char_Settings:
+                    Pivot.SelectedIndex = 5;
+                    break;
+                default:
+                    break;
             }
             if (!SettingsModel.I.TutorialCharShown)
             {

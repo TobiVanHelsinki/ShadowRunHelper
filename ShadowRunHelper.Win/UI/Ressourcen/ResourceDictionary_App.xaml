@@ -11,7 +11,6 @@
     <conv:o_AllListEntry x:Key="o_AllListEntry"/>
     <conv:o_ThingDef2String x:Key="o_ThingDef2String"/>
     <conv:o_FileSize x:Key="o_FileSize"/>
-    <conv:o_CharAdmin_Path x:Key="o_CharAdmin_Path"/>
     <conv:o_Null2Bool x:Key="o_Null2Bool"/>
     <conv:o_Null2Visibility x:Key="o_Null2Visibility"/>
     <conv:o_ValueOrNoting x:Key="o_ValueOrNoting"/>

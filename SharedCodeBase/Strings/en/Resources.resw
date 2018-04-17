@@ -1342,4 +1342,10 @@ This is shown in detail at the example-character</value>
   <data name="UI_Optionen_U_Buy.Text" xml:space="preserve">
     <value>Buy</value>
   </data>
+  <data name="Ui_Admin_Filename.Text" xml:space="preserve">
+    <value>Filename</value>
+  </data>
+  <data name="Ui_Admin_Filepath.Text" xml:space="preserve">
+    <value>Filepath</value>
+  </data>
 </root>

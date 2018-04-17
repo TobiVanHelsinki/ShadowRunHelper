@@ -25,12 +25,20 @@ namespace ShadowRunHelper
     }
     public enum ProjectPagesOptions
     {
+        Nothing = 0,
+
+        CharNewChar = 10,
+        Char_Action = 11,
+        Char_Items = 12,
+        Char_Battle = 13,
+        Char_Person = 14,
+        Char_Notes = 15,
+        Char_Settings = 16,
+
         SettingsMain = 31,
         SettingsOptions = 32,
         SettingsCategories = 33,
         SettingsHelp = 34,
-        Nothing = 0,
-        CharNewChar = 10,
         SettingsNots = 35,
         SettingsBuy = 36,
     }

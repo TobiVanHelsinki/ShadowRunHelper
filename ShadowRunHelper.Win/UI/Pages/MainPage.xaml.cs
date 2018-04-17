@@ -221,27 +221,6 @@ namespace ShadowRunHelper
 
         #endregion
         #region ButtonHandling
-        async void OpenDB(object sender, RoutedEventArgs e)
-        {
-            if (AppModel.Instance.MainObject == null)
-            {
-                return;
-            }
-            CoreApplicationView newView = CoreApplication.CreateNewView();
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(DBPage), null);
-                Window.Current.Content = frame;
-                // You have to activate the window in order to show it later.
-                Window.Current.Activate();
-
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
-
-        }
 
         void Ui_Nav_Char(object sender, RoutedEventArgs e)
         {

@@ -111,10 +111,24 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="CurrentCharName" Text="{x:Bind Model.MainObject.FileInfo.Filename, Mode=OneWay}" Style="{StaticResource Chars}"/>
-                <TextBlock Grid.Row="1" x:Name="CurrentCharPath" Text="{x:Bind Model.MainObject.FileInfo.Filepath, Mode=OneWay, Converter={StaticResource o_CharAdmin_Path}}" Style="{StaticResource Chars}"/>
-                <ProgressBar x:Name="ProgressBar_Char" Grid.Row="2" Visibility="Collapsed"/>
-                <Border Grid.Row="3" x:Name="CurrentCharBarBorder">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" x:Uid="Ui_Admin_Filename" Style="{StaticResource Chars}">
+                    <Run x:Uid="Ui_Admin_Filename"/>
+                    <Run x:Uid="Doppelpunkt"/>
+                </TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0" x:Uid="Ui_Admin_Filename" Style="{StaticResource Chars}">
+                    <Run x:Uid="Ui_Admin_Filepath"/>
+                    <Run x:Uid="Doppelpunkt"/>
+                </TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="CurrentCharName" Text="{x:Bind Model.MainObject.FileInfo.Filename, Mode=OneWay}" Style="{StaticResource Chars}"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="CurrentCharPath" Text="{x:Bind Model.MainObject.FileInfo.Filepath, Mode=OneWay}" Style="{StaticResource Chars}"/>
+                
+                <ProgressBar x:Name="ProgressBar_Char" Grid.Row="2" Grid.ColumnSpan="2" Visibility="Collapsed"/>
+
+                <Border Grid.Row="3" Grid.ColumnSpan="2" x:Name="CurrentCharBarBorder">
                     <CommandBar Background="Transparent" DefaultLabelPosition="Right" >
                         <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                         <AppBarButton Icon="ShowBcc" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}">
@@ -152,12 +166,10 @@
             </Viewbox>
             <Border Grid.Row="5" x:Name="MainBarBorder">
                 <CommandBar Grid.Row="4" DefaultLabelPosition="Right">
-                    <AppBarButton Visibility="Collapsed" x:Name="Btn_SecondView" Content="Neue Ansicht" Icon="View" Click="Click_NewView"/>
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Datei_Import" Icon="Import" Click="Click_Datei_Import" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen" Icon="Delete" Click="Click_Loeschen_Alles" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"/>
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                    <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"/>
                 </CommandBar>
             </Border>
         </Grid>
