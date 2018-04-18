@@ -670,7 +670,13 @@
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Waffe_DK"/>
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind DKCalced, Mode=OneWay}"/>
-                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind DK, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Raw, Mode=OneWay}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
+                            <TextBlock Style="{StaticResource Category_Item_Text}">
+                                <Run x:Uid="Model_Waffe_DK"/>
+                                <Run x:Uid="Model__ORG"/>
+                            </TextBlock>
+                            <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind DK, Mode=OneWay}"/>
                         </StackPanel>
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Nahkampfwaffe_Reichweite"/>
