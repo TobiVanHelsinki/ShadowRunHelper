@@ -61,11 +61,6 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Name="GridForContentAndAds">
-        <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <ContentThemeTransition/>
-            </TransitionCollection>
-        </Grid.ChildrenTransitions>
         <VisualStateManager.VisualStateGroups>
             <!-- Header-->
             <VisualStateGroup>
