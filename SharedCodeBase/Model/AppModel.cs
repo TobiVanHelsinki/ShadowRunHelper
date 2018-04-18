@@ -24,11 +24,11 @@ namespace ShadowRunHelper.Model
 
         AppModel() : base(){ }
 
-        public delegate void NavigationEventHandler(object sender, ProjectPages page, ProjectPagesOptions PageOptions);
+        public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptions PageOptions);
         public event NavigationEventHandler NavigationRequested;
-        public void RequestNavigation(object o, ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
+        public void RequestNavigation(ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
         {
-            NavigationRequested?.Invoke(o, p, po);
+            NavigationRequested?.Invoke(p, po);
         }
 
         public void TutorialChangedState(int StateNumber, bool Highlight = false)

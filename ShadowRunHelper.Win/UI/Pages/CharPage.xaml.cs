@@ -150,7 +150,7 @@ namespace ShadowRunHelper
         void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationCacheMode = NavigationCacheMode.Disabled;
-            Model.RequestNavigation(null, ProjectPages.Char);
+            Model.RequestNavigation(ProjectPages.Char);
         }
         #endregion
         #region  instant search Stuff

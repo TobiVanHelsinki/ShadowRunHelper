@@ -176,7 +176,7 @@ namespace ShadowRunHelper
             Model.MainObject = new CharHolder();
             Model.MainObject.AfterLoad();
             SettingsModel.I.CountCreations++;
-            AppModel.Instance.RequestNavigation(this, ProjectPages.Char, ProjectPagesOptions.CharNewChar);
+            AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
         }
 
         async void Click_Speichern(object sender, RoutedEventArgs e)
@@ -248,7 +248,7 @@ namespace ShadowRunHelper
             ChangeProgress(false);
             if (Model.MainObject != null)
             {
-                AppModel.Instance.RequestNavigation(this, ProjectPages.Char, ProjectPagesOptions.Char_Action);
+                AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
             }
             SettingsModel.I.CountLoadings++;
         }

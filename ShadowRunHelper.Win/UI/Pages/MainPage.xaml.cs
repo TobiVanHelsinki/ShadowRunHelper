@@ -50,7 +50,7 @@ namespace ShadowRunHelper
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary();
 #pragma warning restore CS4014
             Model.TutorialStateChanged += TutorialStateChanged;
-            Model.NavigationRequested += (x, y, z) => NavigationRequested(y, z);
+            Model.NavigationRequested += NavigationRequested;
         }
         public void TitleBarStuff()
         {
