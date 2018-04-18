@@ -47,7 +47,7 @@ namespace ShadowRunHelper
                     Pivot.SelectedIndex = 0;
                     try
                     {
-                        new Edit_Person_Detail(MainObject.Person).ShowAsync();
+                        await new Edit_Person_Detail(MainObject.Person).ShowAsync();
                     }
                     catch (Exception)
                     {
@@ -149,7 +149,8 @@ namespace ShadowRunHelper
         }
         void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Model.RequestNavigation(this, ProjectPages.Char);
+            NavigationCacheMode = NavigationCacheMode.Disabled;
+            Model.RequestNavigation(null, ProjectPages.Char);
         }
         #endregion
         #region  instant search Stuff

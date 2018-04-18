@@ -78,7 +78,6 @@ namespace ShadowRunHelper
             TitleBarStuff();
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
         }
-
         void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
         {
             switch (p)
