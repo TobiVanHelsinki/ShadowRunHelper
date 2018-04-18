@@ -6,7 +6,7 @@ namespace ShadowRunHelper.CharModel
     {
         public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
             {
-                ThingDefs.Handlung, ThingDefs.Connection
+                ThingDefs.Handlung, ThingDefs.Connection, ThingDefs.Sin
             };
 
         public Fertigkeit() : base()
