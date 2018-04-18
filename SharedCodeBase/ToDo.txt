@@ -14,7 +14,9 @@ https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.Input.PointerRoutedEven
 https://docs.microsoft.com/en-us/windows/uwp/design/input/handle-pointer-input
 https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.uielement.pointerpressed
 https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.UIElement
-
+---------- Ideen für später -------------------------------
+* neue kategorien (wissenfrt, kampf)
+* drag and drop
 
 ---------- Ideen für später -------------------------------
 
