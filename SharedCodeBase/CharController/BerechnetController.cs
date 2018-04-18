@@ -166,15 +166,15 @@ namespace ShadowRunHelper.CharController
 
         protected void RefreshLaufen()
         {
-            Laufen.Wert = AttributeRef.Geschick.WertCalced * 2; 
+            Laufen.Wert = AttributeRef.Geschick.ValueOf("Wert") * 2; 
         }
         protected void RefreshRennen()
         {
-            Rennen.Wert = AttributeRef.Geschick.WertCalced * 4;
+            Rennen.Wert = AttributeRef.Geschick.ValueOf("Wert") * 4;
         }
         protected void RefreshTragen()
         {
-            Tragen.Wert = AttributeRef.Staerke.WertCalced * 10; //5 und 15 auch mgl TODO
+            Tragen.Wert = AttributeRef.Staerke.ValueOf("Wert") * 10; //5 und 15 auch mgl TODO
         }
         #endregion
 
