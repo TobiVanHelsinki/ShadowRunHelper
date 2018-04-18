@@ -5,7 +5,7 @@
 * CharPage: keine listen anzeige
 * linked things umbruch
 * IAPs
-*neuladen Chharpage
+
 
 --------Aktuelles---------------------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern
