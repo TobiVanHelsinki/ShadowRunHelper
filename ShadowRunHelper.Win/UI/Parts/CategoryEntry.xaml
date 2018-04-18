@@ -36,6 +36,21 @@
                     <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.ColumnSpan="3"/>
                 </Grid>
             </DataTemplate>
+            <DataTemplate x:Key="AllListEntry2" x:DataType="model:AllListEntry">
+                <Grid Width="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=BezeichnerLang, Mode=OneWay}" Grid.ColumnSpan="2"/>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=Wert, Mode=OneWay}" Grid.Row="1"/>
+                    <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.Column="2"/>
+                </Grid>
+            </DataTemplate>
 
             <DataTemplate x:Name="HandlungItem" x:DataType="CharModel:Handlung">
                 <Grid Style="{StaticResource Category_Item_Grid}">
@@ -94,7 +109,11 @@
                         </TextBlock>
                         
                         <Button Grid.Column="2" Grid.Row="0" x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource Category_Item_Buttons}" Click="Edit_LinkedThings" Tag="1"/>
-                        <ListView Grid.Column="3" Grid.Row="0" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource AllListEntry_ListView}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
+                        <GridView Grid.Column="3" Grid.Row="0" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" 
+                                  BorderBrush="Blue" BorderThickness="1" 
+                                  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Stretch" 
+                                  
+                                  ItemTemplate="{StaticResource AllListEntry2}" />
                         <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource Category_Item_Text}" x:Uid="Model_Handlung_Grenze"/>
                         <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource Category_Item_Text}" Text="{x:Bind Grenze, Mode=OneWay}"/>
                         <Button Grid.Column="2" Grid.Row="1" x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource Category_Item_Buttons}" Click="HandlungEditGrenzeZusDialog_Click"/>
