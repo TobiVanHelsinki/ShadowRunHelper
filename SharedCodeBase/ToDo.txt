@@ -2,7 +2,6 @@
 --------Respon------------------------------------------------
 
 * Panel Oben: Fenstergröße bestimmen, inhalt immer passend zu fenstergröße anzeigen
-* CharPage: keine listen anzeige
 * linked things umbruch
 * IAPs
 
