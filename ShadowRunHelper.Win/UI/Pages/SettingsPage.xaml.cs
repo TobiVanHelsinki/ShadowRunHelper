@@ -3,18 +3,16 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TLIB;
+using TAMARIN.IO;
+using TAPPLICATION;
 using TAPPLICATION.IO;
 using TAPPLICATION.Model;
-using Windows.ApplicationModel.Store;
-using Windows.Services.Store;
+using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using TAMARIN.IO;
-using TAPPLICATION;
 
-namespace ShadowRunHelper
+namespace ShadowRunHelper.UI
 {
     public sealed partial class SettingsPage : Page
     {

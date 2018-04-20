@@ -1,21 +1,17 @@
 ﻿using ShadowRunHelper.Model;
-using ShadowRunHelper.UI;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using TAPPLICATION.Model;
 using TLIB;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
-using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace ShadowRunHelper
+namespace ShadowRunHelper.UI
 {
     public sealed partial class MainPage : Page
     {
@@ -228,7 +224,7 @@ namespace ShadowRunHelper
 
             if (Controller_Name.Contains("Person2"))
             {
-                UI.Edit.Edit_Person_Fast dialog = new UI.Edit.Edit_Person_Fast(Model.MainObject.Person);
+                Edit_Person_Fast dialog = new Edit_Person_Fast(Model.MainObject.Person);
                 await dialog.ShowAsync();
             }
         }

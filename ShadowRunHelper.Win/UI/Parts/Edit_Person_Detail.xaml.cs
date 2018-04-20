@@ -1,7 +1,7 @@
 ﻿using ShadowRunHelper.CharModel;
 using Windows.UI.Xaml.Controls;
 
-namespace ShadowRunHelper.UI.Edit
+namespace ShadowRunHelper.UI
 {
     public sealed partial class Edit_Person_Detail : ContentDialog
     {

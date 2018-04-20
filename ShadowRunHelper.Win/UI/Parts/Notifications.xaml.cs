@@ -1,21 +1,14 @@
-﻿using System.Collections.Generic;
-using Windows.UI.Xaml.Controls;
+﻿using ShadowRunHelper.Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Windows.UI.Xaml.Data;
-using System;
 using System.Linq;
-using ShadowRunHelper.Model;
-using Shared;
-using TLIB;
-using Windows.UI.Xaml;
-using Windows.Foundation.Metadata;
 using TAPPLICATION.Model;
+using Windows.Foundation.Metadata;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
-namespace ShadowRunHelper
+namespace ShadowRunHelper.UI
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class NotificationsDialog : ContentDialog
     {
         readonly ObservableCollection<Notification> Notifications = AppModel.Instance.lstNotifications;

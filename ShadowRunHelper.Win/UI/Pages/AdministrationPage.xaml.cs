@@ -1,7 +1,6 @@
 ﻿using Microsoft.AppCenter.Analytics;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
-using ShadowRunHelper.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,15 +9,13 @@ using System.Threading.Tasks;
 using TAMARIN.IO;
 using TAPPLICATION.IO;
 using TLIB;
-using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
-using Windows.UI.Core;
 using Windows.UI.Popups;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-namespace ShadowRunHelper
+
+namespace ShadowRunHelper.UI
 {
     public sealed partial class AdministrationPage : Page
     {
@@ -36,7 +33,6 @@ namespace ShadowRunHelper
 #if DEBUG
             Btn_Exception.Visibility = Visibility.Visible;
 #else
-            Btn_SecondView.Visibility = Visibility.Collapsed;
             Btn_Exception.Visibility = Visibility.Collapsed;
 #endif
         }
@@ -379,10 +375,10 @@ namespace ShadowRunHelper
         {
             Input dialog = new Input
             {
-                InputValue = ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename
+                InputValue = AppModel.Instance.MainObject.FileInfo.Filename
             };
             await dialog.ShowAsync();
-            ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename = dialog.InputValue;
+            AppModel.Instance.MainObject.FileInfo.Filename = dialog.InputValue;
         }
         async void Click_Datei_Export(CharHolder CharToSave)
         {

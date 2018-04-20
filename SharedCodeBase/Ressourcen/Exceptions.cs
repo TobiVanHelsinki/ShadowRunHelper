@@ -1,8 +1,7 @@
 ﻿using System;
 using TLIB;
-using TAPPLICATION;
 
-namespace Shared
+namespace ShadowRunHelper
 {
     internal class IO_FileVersion : Exception
     {

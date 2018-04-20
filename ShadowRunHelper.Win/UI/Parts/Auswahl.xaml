@@ -1,11 +1,12 @@
 ﻿<ContentDialog
-    x:Class="ShadowRunHelper.Auswahl"
+    x:Class="ShadowRunHelper.UI.Auswahl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="using:ShadowRunHelper"
     xmlns:bigmodel="using:ShadowRunHelper.Model"
+    xmlns:ui="using:ShadowRunHelper.UI"
     mc:Ignorable="d"
     x:Uid="AuswahlDialog"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
@@ -43,7 +44,7 @@
                 <ListView.GroupStyle>
                     <GroupStyle >
                         <GroupStyle.HeaderTemplate>
-                            <DataTemplate x:DataType="local:CustomAllList">
+                            <DataTemplate x:DataType="ui:CustomAllList">
                                     <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Grid.Column="0">
                                         <Run Text="{x:Bind Name}"/>
                                         <Run x:Uid="Space"/>

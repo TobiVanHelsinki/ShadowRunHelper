@@ -4,11 +4,11 @@ using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Data;
 using System.Linq;
 using ShadowRunHelper.Model;
-using Shared;
+
 using TLIB;
 using Microsoft.AppCenter.Analytics;
 
-namespace ShadowRunHelper
+namespace ShadowRunHelper.UI
 {
 
     public partial class Auswahl : ContentDialog

@@ -1,13 +1,11 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using ShadowRunHelper.UI;
-using ShadowRunHelper.UI.Edit;
 using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace ShadowRunHelper.Win.UI
+namespace ShadowRunHelper.UI
 {
     public sealed partial class CategoryEntry : UserControl
     {

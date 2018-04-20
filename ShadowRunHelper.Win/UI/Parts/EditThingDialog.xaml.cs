@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Controls;
 
 // Die Elementvorlage "Inhaltsdialog" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
-namespace ShadowRunHelper.UI.Edit
+namespace ShadowRunHelper.UI
 {
     public sealed partial class EditThingDialog : ContentDialog
     {

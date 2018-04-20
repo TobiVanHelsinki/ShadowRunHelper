@@ -1,8 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using ShadowRunHelper.UI;
-using ShadowRunHelper.UI.Edit;
-using ShadowRunHelper.Win.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +7,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace ShadowRunHelper
+namespace ShadowRunHelper.UI
 {
     public sealed partial class CharPage : Page
     {

@@ -2,7 +2,6 @@
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using ShadowRunHelper.UI.Edit;
 using System;
 using System.Linq;
 using TAMARIN.IO;
@@ -12,7 +11,7 @@ using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace ShadowRunHelper.Win.UI
+namespace ShadowRunHelper.UI
 {
     public sealed partial class CategoryBlock : UserControl
     {

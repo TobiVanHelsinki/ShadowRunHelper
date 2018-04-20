@@ -1,13 +1,11 @@
-﻿<Page x:Name="page"
-    x:Class="ShadowRunHelper.CharPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="using:ShadowRunHelper"
-    xmlns:CharModel="using:ShadowRunHelper.CharModel"
-    xmlns:model="using:ShadowRunHelper.Model"
-      xmlns:ui="using:ShadowRunHelper.Win.UI"
+﻿<Page x:Class="ShadowRunHelper.UI.CharPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:CharModel="using:ShadowRunHelper.CharModel"
+      xmlns:model="using:ShadowRunHelper.Model"
+      xmlns:ui="using:ShadowRunHelper.UI"
       mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -285,7 +283,7 @@
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
                     <Border x:Name="PivotHeader1Border">
-                        <local:TabHeader x:Uid="Char_View_Pivot_Aktion" Glyph="&#xE945;" />
+                        <ui:TabHeader x:Uid="Char_View_Pivot_Aktion" Glyph="&#xE945;" />
                     </Border>
                 </PivotItem.Header>
                 <Border x:Name="MainContentBorder">
@@ -303,7 +301,7 @@
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
                     <Border x:Name="PivotHeader2Border">
-                        <local:TabHeader x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
+                        <ui:TabHeader x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
                     </Border>
                 </PivotItem.Header>
                 <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
@@ -322,7 +320,7 @@
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
                     <Border x:Name="PivotHeader3Border">
-                        <local:TabHeader x:Uid="Char_View_Pivot_Kampf" Glyph="&#xE730;" />
+                        <ui:TabHeader x:Uid="Char_View_Pivot_Kampf" Glyph="&#xE730;" />
                     </Border>
                 </PivotItem.Header>
                 <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
@@ -338,7 +336,7 @@
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
                     <Border x:Name="PivotHeader4Border">
-                        <local:TabHeader x:Uid="Char_View_Pivot_Person" Glyph="&#xE2AF;" />
+                        <ui:TabHeader x:Uid="Char_View_Pivot_Person" Glyph="&#xE2AF;" />
                     </Border>
                 </PivotItem.Header>
                 <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
@@ -513,7 +511,7 @@
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
                     <Border x:Name="PivotHeader5Border">
-                        <local:TabHeader x:Uid="Char_View_Pivot_Notizen" Glyph="&#xE193;" />
+                        <ui:TabHeader x:Uid="Char_View_Pivot_Notizen" Glyph="&#xE193;" />
                     </Border>
                 </PivotItem.Header>
                 <TextBox Name="NoteTextBox" Text="{x:Bind Model.MainObject.Person.Notizen, Mode=TwoWay}" Style="{StaticResource NotesBox}"/>
@@ -521,7 +519,7 @@
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
                     <Border x:Name="PivotHeader6Border">
-                        <local:TabHeader x:Uid="Char_View_Pivot_Settings" Glyph="&#xE713;" />
+                        <ui:TabHeader x:Uid="Char_View_Pivot_Settings" Glyph="&#xE713;" />
                     </Border>
                 </PivotItem.Header>
                 <Grid>

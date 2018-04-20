@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Linq;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using Shared;
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
