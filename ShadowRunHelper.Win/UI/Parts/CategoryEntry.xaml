@@ -747,7 +747,6 @@
                             <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
                     </TextBlock>
                     <ui:LinkListEntry Grid.Row="3" List="{x:Bind LinkedThings, Mode=OneWay}"/>
-
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="MunitionItem" x:DataType="CharModel:Munition">
@@ -781,15 +780,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource MunitionItem}"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button Tag="x" x:Uid="UI_Btn_Bearbeiten_LinkedThings" Click="Edit_LinkedThings" Style="{StaticResource Category_Item_Buttons}"/>
-                        <ListView Grid.Column="1" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource AllListEntry_ListView}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
-                    </Grid>
-                    <VariableSizedWrapGrid Grid.Row="2" Orientation="Horizontal">
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">
                             <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
@@ -815,12 +806,13 @@
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind SchadenTyp, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
-                    <TextBlock Grid.Row="3" Style="{StaticResource Category_Item_Text_Note}">
+                    <TextBlock Grid.Row="2" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
                     </TextBlock>
+                    <ui:LinkListEntry Grid.Row="4" List="{x:Bind LinkedThings, Mode=OneWay}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="AttributItem" x:DataType="CharModel:Attribut" >
@@ -919,15 +911,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource ImplantatItem}"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Uid="UI_Btn_Bearbeiten_LinkedThings" Click="Edit_LinkedThings" Style="{StaticResource Category_Item_Buttons}"/>
-                        <ListView Grid.Column="1" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource AllListEntry_ListView}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
-                    </Grid>
-                    <VariableSizedWrapGrid Grid.Row="2" Orientation="Horizontal">
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">
                             <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
@@ -968,12 +952,13 @@
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Kapazitaet, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
-                    <TextBlock Grid.Row="3" Style="{StaticResource Category_Item_Text_Note}">
+                    <TextBlock Grid.Row="2" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
                     </TextBlock>
+                    <ui:LinkListEntry Grid.Row="3" List="{x:Bind LinkedThings, Mode=OneWay}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="SinItem" x:DataType="CharModel:Sin">
@@ -1038,15 +1023,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource EigenschaftItem}"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button Name="Edit_LinkedThings" Tag="18" x:Uid="UI_Btn_Bearbeiten_LinkedThings" Click="Edit_LinkedThings" Style="{StaticResource Category_Item_Buttons}"/>
-                        <ListView Grid.Column="1" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource AllListEntry_ListView}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
-                    </Grid>
-                    <VariableSizedWrapGrid Grid.Row="2" Orientation="Horizontal">
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">
                             <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
@@ -1067,18 +1044,19 @@
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
-                    <TextBlock Grid.Row="3" Style="{StaticResource Category_Item_Text_Note}">
+                    <TextBlock Grid.Row="2" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Eigenschaft_Auswirkungen" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Auswirkungen, Mode=OneWay}"/>
                     </TextBlock>
-                    <TextBlock Grid.Row="4" Style="{StaticResource Category_Item_Text_Note}">
+                    <TextBlock Grid.Row="3" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
                     </TextBlock>
+                    <ui:LinkListEntry Grid.Row="4" List="{x:Bind LinkedThings, Mode=OneWay}"/>
                 </Grid>
             </DataTemplate>
 
@@ -1111,15 +1089,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource AdeptenkraftItem}"/>
-                    <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button Tag="x" x:Uid="UI_Btn_Bearbeiten_LinkedThings" Click="Edit_LinkedThings" Style="{StaticResource Category_Item_Buttons}"/>
-                        <ListView Grid.Column="1" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource AllListEntry_ListView}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
-                    </Grid>
-                    <StackPanel Grid.Row="2" Orientation="Vertical">
+                    <StackPanel Grid.Row="1" Orientation="Vertical">
                         <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                         <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
                     </StackPanel>
@@ -1135,6 +1105,7 @@
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
                     </TextBlock>
+                    <ui:LinkListEntry Grid.Row="4" Grid.ColumnSpan="2" List="{x:Bind LinkedThings, Mode=OneWay}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="FokiItem" x:DataType="CharModel:Foki">
@@ -1462,16 +1433,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource KomplexeFormItem}" Grid.ColumnSpan="2"/>
-                    <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button Tag="x" x:Uid="UI_Btn_Bearbeiten_LinkedThings" Click="Edit_LinkedThings" Style="{StaticResource Category_Item_Buttons}"/>
-                        <ListView Grid.Column="1" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}" ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource AllListEntry_ListView}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
-                    </Grid>
-
-                    <StackPanel Grid.Row="2" Orientation="Vertical">
+                    <StackPanel Grid.Row="1" Orientation="Vertical">
                         <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                         <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
                     </StackPanel>
@@ -1487,6 +1449,7 @@
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
                     </TextBlock>
+                    <ui:LinkListEntry Grid.Row="4" Grid.ColumnSpan="2" List="{x:Bind LinkedThings, Mode=OneWay}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="WidgetsItem" x:DataType="CharModel:Widgets">

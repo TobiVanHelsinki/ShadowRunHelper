@@ -1,7 +1,6 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System;
-using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -97,113 +96,6 @@ namespace ShadowRunHelper.UI
             }
         }
 
-        async void HandlungEditGrenzeZusDialog_Click(object sender, RoutedEventArgs e)
-        {
-            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).GrenzeZusammensetzung, Filter: Handlung.Filter);
-            var ergebnis = await dialog.ShowAsync();
-        }
-
-        async void HandlungEditGegenZusDialog_Click(object sender, RoutedEventArgs e)
-        {
-            Auswahl dialog = new Auswahl(Model.MainObject.LinkList, ((Handlung)((Button)sender).DataContext).GegenZusammensetzung, Filter: Handlung.Filter);
-            await dialog.ShowAsync();
-        }
-
-        async void Edit_LinkedThings(object sender, RoutedEventArgs e)
-        {
-            ThingDefs type = ((Thing)((FrameworkElement)sender).DataContext).ThingType;
-
-            //ThingDefs type = (ThingDefs)int.Parse((sender as FrameworkElement).Tag as string);
-            IEnumerable<ThingDefs> FilterToUse = null;
-            switch (type)
-            {
-                case ThingDefs.Handlung:
-                    FilterToUse = Handlung.Filter;
-                    break;
-                case ThingDefs.Fertigkeit:
-                    FilterToUse = Fertigkeit.Filter;
-                    break;
-                case ThingDefs.Item:
-                    break;
-                case ThingDefs.Programm:
-                    break;
-                case ThingDefs.Munition:
-                    FilterToUse = Munition.Filter;
-                    break;
-                case ThingDefs.Implantat:
-                    FilterToUse = Implantat.Filter;
-                    break;
-                case ThingDefs.Vorteil:
-                    FilterToUse = Eigenschaft.Filter;
-                    break;
-                case ThingDefs.Nachteil:
-                    FilterToUse = Eigenschaft.Filter;
-                    break;
-                case ThingDefs.Attribut:
-                    FilterToUse = Attribut.Filter;
-                    break;
-                case ThingDefs.Nahkampfwaffe:
-                    FilterToUse = Nahkampfwaffe.Filter;
-                    break;
-                case ThingDefs.Fernkampfwaffe:
-                    FilterToUse = Fernkampfwaffe.Filter;
-                    break;
-                case ThingDefs.Kommlink:
-                    break;
-                case ThingDefs.CyberDeck:
-                    break;
-                case ThingDefs.Vehikel:
-                    break;
-                case ThingDefs.Panzerung:
-                    FilterToUse = Panzerung.Filter;
-                    break;
-                case ThingDefs.Eigenschaft:
-                    break;
-                case ThingDefs.Adeptenkraft:
-                    FilterToUse = Adeptenkraft.Filter;
-                    break;
-                case ThingDefs.Geist:
-                    break;
-                case ThingDefs.Foki:
-                    break;
-                case ThingDefs.Stroemung:
-                    break;
-                case ThingDefs.Tradition:
-                    break;
-                case ThingDefs.Zaubersprueche:
-                    break;
-                case ThingDefs.Berechnet:
-                    break;
-                case ThingDefs.KomplexeForm:
-                    FilterToUse = KomplexeForm.Filter;
-                    break;
-                case ThingDefs.Sprite:
-                    break;
-                case ThingDefs.Widgets:
-                    break;
-                case ThingDefs.Wandlung:
-                    break;
-                case ThingDefs.Initiation:
-                    break;
-                default:
-                    break;
-            }
-            try
-            {
-                var dialog = new Auswahl(Model.MainObject.LinkList, ((Thing)((Button)sender).DataContext).LinkedThings, Filter: FilterToUse);
-               await dialog.ShowAsync();
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-        //async void MunitionBearbeiten(object sender, RoutedEventArgs e)
-        //{
-        //    var TemList = new ObservableCollection<AllListEntry> ();
-        //    Auswahl dialog = new Auswahl(Model.MainObject.LinkList, TemList, false, Fernkampfwaffe.Filter);
-        //    await dialog.ShowAsync();
-        //    ((Fernkampfwaffe)((Button)sender).DataContext).CurrentMunition = TemList.FirstOrDefault();
-        //}
         #endregion
     }
 }
