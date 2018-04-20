@@ -44,7 +44,7 @@ namespace ShadowRunHelper.CharModel
         #endregion
         public Thing()
         {
-            LinkedThings = new ObservableThingListEntryCollection(this);
+            LinkedThings = new LinkList(this);
             ThingType = TypeHelper.TypeToThingDef(GetType());
             LinkedThings.OnCollectionChangedCall(OnLinkedThingsChanged);
             PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") OnLinkedThingsChanged(); };
@@ -138,9 +138,9 @@ namespace ShadowRunHelper.CharModel
 
         #endregion
         #region Calculations
-        ObservableThingListEntryCollection _LinkedThings;
+        LinkList _LinkedThings;
         [Used_List]
-        public ObservableThingListEntryCollection LinkedThings
+        public LinkList LinkedThings
         {
             get { return _LinkedThings; }
             set
@@ -243,8 +243,8 @@ namespace ShadowRunHelper.CharModel
 
             foreach (var pair in ReflectionHelper.GetProperties(target, typeof(Used_ListAttribute)))
             {
-                var CollectionTarget = (pair.GetValue(target) as ObservableThingListEntryCollection);
-                var CollectionThis = (pair.GetValue(this) as ObservableThingListEntryCollection);
+                var CollectionTarget = (pair.GetValue(target) as LinkList);
+                var CollectionThis = (pair.GetValue(this) as LinkList);
                 CollectionTarget.Clear();
                 CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
             }
@@ -281,8 +281,8 @@ namespace ShadowRunHelper.CharModel
             {
                 try
                 {
-                    var CollectionTarget = (pair.GetValue(target) as ObservableThingListEntryCollection);
-                    var CollectionThis = (pair.GetValue(this) as ObservableThingListEntryCollection);
+                    var CollectionTarget = (pair.GetValue(target) as LinkList);
+                    var CollectionThis = (pair.GetValue(this) as LinkList);
                     CollectionTarget.Clear();
                     CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
                 }
@@ -316,7 +316,7 @@ namespace ShadowRunHelper.CharModel
             }
             foreach (var item in ReflectionHelper.GetProperties(this, typeof(Used_ListAttribute)))
             {
-                (item.GetValue(this) as ObservableThingListEntryCollection).Clear();
+                (item.GetValue(this) as LinkList).Clear();
             }
         }
 

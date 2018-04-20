@@ -280,7 +280,7 @@ namespace ShadowRunHelper.Model
                 {
                     foreach (var list in Thing.GetPropertiesLists(thing))
                     {
-                        RepairThingListRefs(list.GetValue(thing) as ObservableThingListEntryCollection);
+                        RepairThingListRefs(list.GetValue(thing) as LinkList);
                     }
                 }
             }

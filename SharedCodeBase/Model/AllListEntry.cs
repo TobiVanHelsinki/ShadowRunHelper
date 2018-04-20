@@ -62,7 +62,7 @@ namespace ShadowRunHelper.Model
                 }
             }
         }
-        [Obsolete("Just for compatibility with versions before 1.7 ", true)]
+        [Obsolete("Just for compatibility with versions before 1.7 ")]
         public string strProperty
         {
             get { return PropertyID; }

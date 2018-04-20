@@ -6,9 +6,9 @@ namespace ShadowRunHelper.CharModel
     public class Handlung : Thing
     {
         [Used_List]
-        public ObservableThingListEntryCollection GrenzeZusammensetzung { get; set; }
+        public LinkList GrenzeZusammensetzung { get; set; }
         [Used_List]
-        public ObservableThingListEntryCollection GegenZusammensetzung { get; set; }
+        public LinkList GegenZusammensetzung { get; set; }
 
         double grenze = 0;
         [Used_UserAttribute]
@@ -47,11 +47,11 @@ namespace ShadowRunHelper.CharModel
 
         public Handlung() : base()
         {
-            LinkedThings.SetFilter(Filter);
-            GrenzeZusammensetzung = new ObservableThingListEntryCollection(this);
-            GrenzeZusammensetzung.SetFilter(Filter);
-            GegenZusammensetzung = new ObservableThingListEntryCollection(this);
-            GegenZusammensetzung.SetFilter(Filter);
+            LinkedThings.FilterOut = Filter;
+            GrenzeZusammensetzung = new LinkList(this);
+            GrenzeZusammensetzung.FilterOut = Filter;
+            GegenZusammensetzung = new LinkList(this);
+            GegenZusammensetzung.FilterOut = Filter;
 
             GrenzeZusammensetzung.OnCollectionChangedCall(() => { Grenze = GrenzeZusammensetzung.Recalculate(); });
             GegenZusammensetzung.OnCollectionChangedCall(()=> { Gegen = GegenZusammensetzung.Recalculate(); });

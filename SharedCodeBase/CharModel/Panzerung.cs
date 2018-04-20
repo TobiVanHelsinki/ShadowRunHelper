@@ -27,7 +27,7 @@ namespace ShadowRunHelper.CharModel
 
         public Panzerung() : base()
         {
-            LinkedThings.SetFilter(Filter);
+            LinkedThings.FilterOut = (Filter);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace ShadowRunHelper.CharModel
 
         public Fertigkeit() : base()
         {
-            LinkedThings.SetFilter(Filter);
+            LinkedThings.FilterOut = (Filter);
         }
 
         protected override double InternValueOf(string ID)

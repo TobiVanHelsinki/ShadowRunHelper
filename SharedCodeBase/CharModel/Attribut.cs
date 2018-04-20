@@ -13,7 +13,7 @@ namespace ShadowRunHelper.CharModel
 
         public Attribut() : base()
         {
-            LinkedThings.SetFilter(Filter);
+            LinkedThings.FilterOut = Filter;
         }
     }
 }

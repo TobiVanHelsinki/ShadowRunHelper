@@ -26,7 +26,7 @@ namespace ShadowRunHelper.CharModel
 
         public Nahkampfwaffe()
         {
-            LinkedThings.SetFilter(Filter);
+            LinkedThings.FilterOut = (Filter);
         }
     }
 }
