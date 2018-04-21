@@ -10,6 +10,7 @@ using TAMARIN.IO;
 using TAPPLICATION.IO;
 using TLIB;
 using Windows.ApplicationModel.Resources;
+using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -98,6 +99,7 @@ namespace ShadowRunHelper.UI
         void ChangeCurrentCharUI(bool bHow)
         {
             CurrentCharBtn_Save.IsEnabled = bHow;
+            CurrentCharBtn_FolderOpen.IsEnabled = bHow;
             CurrentCharBtn_Rename.IsEnabled = bHow;
             CurrentCharBtn_Save_Intern.IsEnabled = bHow;
             CurrentCharBtn_Del.IsEnabled = bHow;
@@ -161,6 +163,14 @@ namespace ShadowRunHelper.UI
         {
             await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
             await Summorys_Aktualisieren();
+        }
+        void Click_OpenFolder(object sender, RoutedEventArgs e)
+        {
+            SharedIO.CurrentIO.OpenFolder(Model.MainObject.FileInfo);
+        }
+        void Click_OpenSTDFolder(object sender, RoutedEventArgs e)
+        {
+            SharedIO.CurrentIO.OpenFolder(new FileInfoClass(SharedIO.GetCurrentSavePlace(), "", SharedIO.GetCurrentSavePath()));
         }
 
         void Click_Erstellen(object sender, RoutedEventArgs e)
@@ -447,5 +457,7 @@ namespace ShadowRunHelper.UI
             throw new Exception(Constants.TESTEXCEPTIONTEXT);
         }
         #endregion
+
+
     }
 }

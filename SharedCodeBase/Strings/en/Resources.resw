@@ -1354,4 +1354,10 @@ This is shown in detail at the example-character</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="UI_CharVerwaltung_Btn_FolderOpen.Text" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_FolderOpenSTD.Label" xml:space="preserve">
+    <value>open saveplace</value>
+  </data>
 </root>

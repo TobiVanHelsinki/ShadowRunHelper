@@ -1384,4 +1384,10 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="UI_CharVerwaltung_Btn_FolderOpen.Text" xml:space="preserve">
+    <value>Ordner öffnen</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_FolderOpenSTD.Label" xml:space="preserve">
+    <value>Speicherort öffnen</value>
+  </data>
 </root>
