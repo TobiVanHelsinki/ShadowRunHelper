@@ -7,7 +7,6 @@
 
 --------Aktuelles---------------------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern
-* privacy anpassen
 
 -----------------------------------------------------
 * button relativ zum anklickgerät
@@ -27,5 +26,5 @@ https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.UIElement
 
 ---------- Zukünftiges TODO für Verknüpfungen -------------
 * Filter anlegen und im Konstruktor setzen
-* Im UI Template Button, Liste und OriginalWerte angeben
+* Im UI Template Element Linked List angeben
 * im LinkedEntryEdit Handler spezialfälle einstellen
