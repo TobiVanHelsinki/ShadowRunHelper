@@ -2,10 +2,9 @@
 --------Respon------------------------------------------------
 
 * Panel Oben: Fenstergröße bestimmen, inhalt immer passend zu fenstergröße anzeigen
-* linked things umbruch
 * IAPs
 * Char Store -> relative to absolut
-* var refactoring (strProperty->ID)
+
 --------Aktuelles---------------------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern
 * privacy anpassen
