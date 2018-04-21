@@ -154,6 +154,8 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double _WertCalced = 0;
+        [JsonIgnore]
+        [Used_UserAttribute]
         public double WertCalced
         {
             get { return _WertCalced; }

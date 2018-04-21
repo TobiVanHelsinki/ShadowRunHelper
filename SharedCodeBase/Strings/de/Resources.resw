@@ -328,7 +328,7 @@
     <value>Zusatz</value>
   </data>
   <data name="Plus.Text" xml:space="preserve">
-    <value> + </value>
+    <value>+</value>
   </data>
   <data name="Slash.Text" xml:space="preserve">
     <value>/</value>
@@ -1389,5 +1389,14 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_FolderOpenSTD.Label" xml:space="preserve">
     <value>Speicherort öffnen</value>
+  </data>
+  <data name="Model_Handlung_GegenZusatz.Text" xml:space="preserve">
+    <value>Gegen Zusatz</value>
+  </data>
+  <data name="Model_Handlung_GrenzeZusatz.Text" xml:space="preserve">
+    <value>Grenze Zusatz</value>
+  </data>
+  <data name="Model_Handlung_WertZusatz.Text" xml:space="preserve">
+    <value>Wert Zusatz</value>
   </data>
 </root>

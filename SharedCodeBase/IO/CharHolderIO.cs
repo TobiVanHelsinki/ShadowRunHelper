@@ -83,12 +83,15 @@ namespace ShadowRunHelper.IO
                 ("\"PB\"", "\"DK\""),
                 ("\"Rueckstoss\"", "\"RK\""),
                 ("\"WertZusammensetzung\"", "\"LinkedThings\""),
+                //ModelRefactoring Linked List Stuff
             };
                     fileContent = RefactorJSONString(fileContent, replacements);
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     foreach (var item in ReturnCharHolder.CTRLHandlung.Data)
                     {
                         item.Wert = 0;
+                        item.Grenze = 0;
+                        item.Gegen = 0;
                     }
                     ReturnCharHolder.HasChanges = false;
                     AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar_1_5_to_1_6"));

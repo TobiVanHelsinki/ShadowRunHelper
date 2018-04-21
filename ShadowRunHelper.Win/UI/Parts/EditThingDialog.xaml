@@ -30,11 +30,32 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Handlung" x:DataType="CharModel:Handlung">
-                <StackPanel Orientation="Horizontal" x:Name="MainGrid" Loaded="MainGrid_Loaded">
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Thing_Wert"/>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model__Mod"/>
-                    <TextBox TabIndex="10" x:Name="Anzahl" Text="{x:Bind Wert, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="0"/>
-                </StackPanel>
+                <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Style="{StaticResource EditTextBlock}" Grid.Column="0">
+                      <Run x:Uid="Model_Thing_Wert"/>
+                      <Run x:Uid="Model__Mod"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource EditTextBlock}" Grid.Column="1">
+                      <Run x:Uid="Model_Handlung_Grenze"/>
+                      <Run x:Uid="Model__Mod"/>
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource EditTextBlock}" Grid.Column="2">
+                      <Run x:Uid="Model_Handlung_Gegen"/>
+                      <Run x:Uid="Model__Mod"/>
+                    </TextBlock>
+                    <TextBox TabIndex="10" Text="{x:Bind Wert, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Row="1" Grid.Column="0"/>
+                    <TextBox TabIndex="11" Text="{x:Bind Grenze, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Row="1" Grid.Column="1"/>
+                    <TextBox TabIndex="12" Text="{x:Bind Gegen, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Row="1" Grid.Column="2"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Attribut"  x:DataType="CharModel:Attribut">
                 <StackPanel Orientation="Vertical" x:Name="MainGrid" Loaded="MainGrid_Loaded">

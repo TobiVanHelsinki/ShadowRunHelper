@@ -14,27 +14,10 @@
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <ItemsPanelTemplate x:Key="AllListEntry_Panel">
-                <StackPanel Background="Transparent" Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
+                <StackPanel Background="Transparent" Orientation="Horizontal" />
             </ItemsPanelTemplate>
             <DataTemplate x:Key="AllListEntry" x:DataType="model:AllListEntry">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=BezeichnerLang, Mode=OneWay}"/>
-                    <TextBlock x:Uid="Points" Grid.Column="1"/>
-                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=Wert, Mode=OneWay}" Grid.Column="2"/>
-                    <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.ColumnSpan="3"/>
-                </Grid>
-            </DataTemplate>
-            <DataTemplate x:Key="AllListEntry2" x:DataType="model:AllListEntry">
-                <Grid Width="200">
+                <Grid Padding="0,0,0,13">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -43,7 +26,22 @@
                         <ColumnDefinition Width="15"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=BezeichnerLang, Mode=OneWay}" Grid.ColumnSpan="2"/>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=BezeichnerLang, Mode=OneWay}" Grid.ColumnSpan="2" />
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=Wert, Mode=OneWay}" Grid.Row="1"/>
+                    <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.Column="2"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="AllListEntry2" x:DataType="model:AllListEntry">
+                <Grid Width="200" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=BezeichnerLang, Mode=OneWay}" Grid.ColumnSpan="2" />
                     <TextBlock Text="{x:Bind Converter={StaticResource o_AllListEntry}, ConverterParameter=Wert, Mode=OneWay}" Grid.Row="1"/>
                     <TextBlock Text="{x:Bind Object.Zusatz, Mode=OneWay}" Grid.Row="1" Grid.Column="2"/>
                 </Grid>
@@ -55,16 +53,26 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
+            <!--<ColumnDefinition Width="0"/>-->
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}" Text="{x:Bind Text, Mode=OneWay}"/>
-        <TextBlock Grid.Column="2" Style="{StaticResource Category_Item_Text}" x:Name="ValueText" Text="{x:Bind Value, Mode=OneWay}"/>
+        <TextBlock Grid.Column="2" Style="{StaticResource Category_Item_Text}" Margin="0" x:Name="ValueText" Text="{x:Bind Value, Mode=OneWay}"/>
+        <TextBlock Grid.Column="3" Style="{StaticResource Category_Item_Text}" Margin="0,0,8,0" x:Name="RawValueText" Text="{x:Bind RawValue, Mode=OneWay, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Round}"/>
         <Button Grid.Column="0" x:Uid="UI_Btn_Bearbeiten_LinkedThings" Style="{StaticResource Category_Item_Buttons}" Click="Edit_Click"/>
-        <ListView Grid.Column="3" ItemsSource="{x:Bind List, Mode=OneWay}"  ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource AllListEntry_ListView}" ItemsPanel="{StaticResource AllListEntry_Panel}"/>
-        <!--<GridView Grid.Column="3" Grid.Row="0" ItemsSource="{x:Bind LinkedThings, Mode=OneWay}"
+        <ListView Grid.Column="4" ItemsSource="{x:Bind List, Mode=OneWay}"  
+                  ItemTemplate="{StaticResource AllListEntry}" ItemContainerStyle="{StaticResource AllListEntry_ListView}" ItemsPanel="{StaticResource AllListEntry_Panel}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                  
+                  ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalScrollChainingEnabled="True"
+                  SelectionMode="None"
+                  />
+        <!--<GridView Visibility="Collapsed" Grid.Column="4" Grid.Row="0" ItemsSource="{x:Bind List, Mode=OneWay}"
                                   BorderBrush="Blue" BorderThickness="1" 
-                                  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Stretch" 
-                                  
+                                  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                  
                                   ItemTemplate="{StaticResource AllListEntry2}" />-->
     </Grid>
 </UserControl>

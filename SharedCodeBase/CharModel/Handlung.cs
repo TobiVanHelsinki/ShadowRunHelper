@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.Model;
+﻿using Newtonsoft.Json;
+using ShadowRunHelper.Model;
 using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
@@ -24,6 +25,21 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+        double grenzeCalced = 0;
+        [JsonIgnore]
+        [Used_UserAttribute]
+        public double GrenzeCalced
+        {
+            get { return grenzeCalced; }
+            set
+            {
+                if (value != grenzeCalced)
+                {
+                    grenzeCalced = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         double gegen = 0;
         [Used_UserAttribute]
@@ -35,6 +51,21 @@ namespace ShadowRunHelper.CharModel
                 if (value != gegen)
                 {
                     gegen = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        double gegenCalced = 0;
+        [JsonIgnore]
+        [Used_UserAttribute]
+        public double GegenCalced
+        {
+            get { return gegenCalced; }
+            set
+            {
+                if (value != gegenCalced)
+                {
+                    gegenCalced = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -53,8 +84,8 @@ namespace ShadowRunHelper.CharModel
             GegenZusammensetzung = new LinkList(this);
             GegenZusammensetzung.FilterOut = Filter;
 
-            GrenzeZusammensetzung.OnCollectionChangedCall(() => { Grenze = GrenzeZusammensetzung.Recalculate(); });
-            GegenZusammensetzung.OnCollectionChangedCall(()=> { Gegen = GegenZusammensetzung.Recalculate(); });
+            GrenzeZusammensetzung.OnCollectionChangedCall(() => { GrenzeCalced = Grenze + GrenzeZusammensetzung.Recalculate(); });
+            GegenZusammensetzung.OnCollectionChangedCall(()=> { GegenCalced = Gegen + GegenZusammensetzung.Recalculate(); });
         }
     }
 }

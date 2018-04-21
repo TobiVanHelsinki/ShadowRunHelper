@@ -1360,4 +1360,13 @@ This is shown in detail at the example-character</value>
   <data name="UI_CharVerwaltung_Btn_FolderOpenSTD.Label" xml:space="preserve">
     <value>open saveplace</value>
   </data>
+  <data name="Model_Handlung_GegenZusatz.Text" xml:space="preserve">
+    <value>Defense Addition</value>
+  </data>
+  <data name="Model_Handlung_GrenzeZusatz.Text" xml:space="preserve">
+    <value>Limit Addition</value>
+  </data>
+  <data name="Model_Handlung_WertZusatz.Text" xml:space="preserve">
+    <value>Pool Addition</value>
+  </data>
 </root>
