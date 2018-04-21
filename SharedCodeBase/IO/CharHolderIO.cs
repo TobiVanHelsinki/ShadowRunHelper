@@ -84,7 +84,8 @@ namespace ShadowRunHelper.IO
                 ("\"Rueckstoss\"", "\"RK\""),
                 ("\"WertZusammensetzung\"", "\"LinkedThings\""),
                 //ModelRefactoring Linked List Stuff
-            };
+                ("\"strProperty\"", "\"PropertyID\""),
+    };
                     fileContent = RefactorJSONString(fileContent, replacements);
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     foreach (var item in ReturnCharHolder.CTRLHandlung.Data)
@@ -129,9 +130,9 @@ namespace ShadowRunHelper.IO
             {
                 case PreSavedChar.ExampleChar:
                     await CopyFileToCurrentLocation(
-                        StringHelper.GetPrefix(StringHelper.PrefixType.AppPackageData) + "Assets/Example/", 
-                        StringHelper.GetSimpleCountryCode(Constants.AVAILIBLE_EXAMPLE_LANGUAGES, Constants.DEFAULT_EXAMPLE_LANGUAGE)+ Constants.DATEIENDUNG_CHAR, 
-                        StringHelper.GetString("ExampleChar")+Constants.DATEIENDUNG_CHAR);
+                        StringHelper.GetPrefix(StringHelper.PrefixType.AppPackageData) + "Assets/Example/",
+                        StringHelper.GetSimpleCountryCode(Constants.AVAILIBLE_EXAMPLE_LANGUAGES, Constants.DEFAULT_EXAMPLE_LANGUAGE) + Constants.DATEIENDUNG_CHAR,
+                        StringHelper.GetString("ExampleChar") + Constants.DATEIENDUNG_CHAR);
                     break;
                 case PreSavedChar.PreDBChar:
                     break;
@@ -141,8 +142,8 @@ namespace ShadowRunHelper.IO
         }
         public static async Task CopyFileToCurrentLocation(string path, string oldname, string newname)
         {
-            var TargetFileClass = new FileInfoClass() { Filename = newname, Filepath = GetCurrentSavePath(), Fileplace = GetCurrentSavePlace(), FolderToken = SharedConstants.ACCESSTOKEN_FOLDERMODE};
-            var SourceFileClass = new FileInfoClass() { Filename = oldname, Filepath = path, Fileplace = Place.Assets};
+            var TargetFileClass = new FileInfoClass() { Filename = newname, Filepath = GetCurrentSavePath(), Fileplace = GetCurrentSavePlace(), FolderToken = SharedConstants.ACCESSTOKEN_FOLDERMODE };
+            var SourceFileClass = new FileInfoClass() { Filename = oldname, Filepath = path, Fileplace = Place.Assets };
             await CurrentIO.Copy(TargetFileClass, SourceFileClass);
         }
     }

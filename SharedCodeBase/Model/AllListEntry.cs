@@ -62,12 +62,7 @@ namespace ShadowRunHelper.Model
                 }
             }
         }
-        [Obsolete("Just for compatibility with versions before 1.7 ")]
-        public string strProperty
-        {
-            get { return PropertyID; }
-            set { PropertyID = value; }
-        }
+
         public AllListEntry(Thing o, string newDisplayName = "", string newPropID = "") : this()
         {
             Object = o;
