@@ -24,6 +24,7 @@ namespace ShadowRunHelper
     /// </summary>
     sealed partial class App : Application
     {
+        bool FirstStart = true;
         readonly AppModel Model;
         readonly SettingsModel Settings;
 
@@ -188,6 +189,11 @@ namespace ShadowRunHelper
                             , null
                             , UserDecision.ThrowError);
                     }
+                    if (FirstStart)
+                    {
+                        await CharHolderIO.SaveAtCurrentPlace(Model.MainObject, UserDecision.AskUser, SaveType.Emergency);
+                        Model.MainObject = null;
+                    }
                     Settings.CharInTempStore = false;
                     Settings.LastSaveInfo = null;
                 }
@@ -221,6 +227,7 @@ namespace ShadowRunHelper
             Window.Current.Activate();
 
             def.Complete();
+            FirstStart = false;
 #if DEBUG
             SystemHelper.WriteLine("App_LeavingBackgroundComplete");
 #endif

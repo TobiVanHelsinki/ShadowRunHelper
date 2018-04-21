@@ -114,11 +114,11 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" x:Uid="Ui_Admin_Filename" Style="{StaticResource Chars}">
+                <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Chars}">
                     <Run x:Uid="Ui_Admin_Filename"/>
                     <Run x:Uid="Doppelpunkt"/>
                 </TextBlock>
-                <TextBlock Grid.Row="1" Grid.Column="0" x:Uid="Ui_Admin_Filename" Style="{StaticResource Chars}">
+                <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource Chars}">
                     <Run x:Uid="Ui_Admin_Filepath"/>
                     <Run x:Uid="Doppelpunkt"/>
                 </TextBlock>

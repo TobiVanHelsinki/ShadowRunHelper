@@ -4,7 +4,6 @@
 * Panel Oben: Fenstergröße bestimmen, inhalt immer passend zu fenstergröße anzeigen
 * linked things umbruch
 * IAPs
-* upgrade option für handlungen
 
 --------Aktuelles---------------------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern
