@@ -95,9 +95,8 @@ namespace ShadowRunHelper
         #endregion
         #region IAPs
         public const string IAP_FEATUREID_ADFREE_365 = "IAP_ADFREE_365";
-        public const string IAP_FEATUREID_ADFREE = "IAP_ADFREE";
+        public const string IAP_FEATUREID_ADFREE = "9PG66W9790JB";
         public const string IAP_FEATUREID_TEE = "9N6G5Z236BTH";
-        //public const string IAP_FEATUREID_TEE = "TEE";
         public static bool IAP_HIDEADS { get; internal set; }
 
         #endregion
