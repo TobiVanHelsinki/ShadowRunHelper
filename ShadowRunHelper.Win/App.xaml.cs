@@ -83,17 +83,12 @@ namespace ShadowRunHelper
 
         #region Entry-Points
 
-        protected override async void OnLaunched(LaunchActivatedEventArgs e)
+        protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
             SystemHelper.WriteLine("OnLaunched");
 #endif
             base.OnLaunched(e);
-            if (Settings.LoadCharOnStart)
-            {
-                Model.MainObject = await CharHolderIO.Load(Settings.LastSaveInfo, eUD: UserDecision.ThrowError);
-                Settings.CountLoadings++;
-            }
 #if DEBUG
             SystemHelper.WriteLine("OnLaunchedComplete");
 #endif
@@ -148,17 +143,18 @@ namespace ShadowRunHelper
             var def = e.GetDeferral();
             try
             {
+                FileInfoClass SaveInfo;
                 if (Settings.AutoSave)
                 {
-                    await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
+                    SaveInfo = await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
+                    Settings.CountSavings++;
                 }
                 else
                 {
-                    await SharedIO.SaveAtTempPlace(Model.MainObject);
+                    SaveInfo = await SharedIO.SaveAtTempPlace(Model.MainObject);
                 }
                 Settings.CharInTempStore = true;
-                Settings.LastSaveInfo = Model.MainObject.FileInfo;
-                Settings.CountSavings++;
+                Settings.LastSaveInfo = SaveInfo;
             } catch (Exception) { }
             def.Complete();
 #if DEBUG
@@ -180,25 +176,26 @@ namespace ShadowRunHelper
 #endif
             try
             {
-                if (Settings.CharInTempStore)
+                if ((Settings.CharInTempStore && !FirstStart || Settings.LoadCharOnStart && FirstStart) && Model.MainObject == null)
                 {
-                    if (Model.MainObject == null)
+                    var info = Settings.LastSaveInfo;
+                    var TMPChar = await CharHolderIO.Load(info, eUD: UserDecision.ThrowError);
+                    if (TMPChar.FileInfo.Fileplace == Place.Temp)
                     {
-                        Model.MainObject = await CharHolderIO.Load(
-                            new FileInfoClass() { Fileplace = Place.Temp, Filename = Settings.LastSaveInfo.Filename }
-                            , null
-                            , UserDecision.ThrowError);
+                        TMPChar.FileInfo.Fileplace = SharedIO.GetCurrentSavePlace();
+                        TMPChar.FileInfo.Filepath = SharedIO.GetCurrentSavePath();
+                        await CharHolderIO.SaveAtOriginPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
                     }
-                    if (FirstStart)
-                    {
-                        await CharHolderIO.SaveAtCurrentPlace(Model.MainObject, UserDecision.AskUser, SaveType.Emergency);
-                        Model.MainObject = null;
-                    }
-                    Settings.CharInTempStore = false;
-                    Settings.LastSaveInfo = null;
+                    Model.MainObject = TMPChar;
+                    Settings.CountLoadings++;
                 }
             }
             catch (Exception) { }
+            finally
+            {
+                Settings.LastSaveInfo = null;
+                Settings.CharInTempStore = false;
+            }
 
             Frame rootFrame = Window.Current.Content as Frame;
             // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
