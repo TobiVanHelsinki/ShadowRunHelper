@@ -54,9 +54,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
-            <!--<ColumnDefinition Width="0"/>-->
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}" Text="{x:Bind Text, Mode=OneWay}"/>
         <TextBlock Grid.Column="2" Style="{StaticResource Category_Item_Text}" Margin="0" x:Name="ValueText" Text="{x:Bind Value, Mode=OneWay}"/>
