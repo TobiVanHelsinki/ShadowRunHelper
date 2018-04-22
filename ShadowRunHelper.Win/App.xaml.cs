@@ -131,6 +131,7 @@ namespace ShadowRunHelper
                 }
             }
             Model.MainObject = NewHolder;
+            Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
 
         }
         #endregion
