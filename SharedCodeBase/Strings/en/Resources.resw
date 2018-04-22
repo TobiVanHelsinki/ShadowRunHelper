@@ -1337,7 +1337,7 @@ This is shown in detail at the example-character</value>
     <value>Buy me some tee</value>
   </data>
   <data name="Model__ORG.Text" xml:space="preserve">
-    <value>Org.</value>
+    <value>orig.</value>
   </data>
   <data name="UI_Optionen_U_Buy.Text" xml:space="preserve">
     <value>Buy</value>

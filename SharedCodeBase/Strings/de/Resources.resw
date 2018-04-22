@@ -1340,7 +1340,7 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
     <value>Max.K-Schaden modifier</value>
   </data>
   <data name="Model__ORG.Text" xml:space="preserve">
-    <value>Org.</value>
+    <value>orig.</value>
   </data>
   <data name="Model__Active.Text" xml:space="preserve">
     <value>Aktiver Eintrag: </value>
