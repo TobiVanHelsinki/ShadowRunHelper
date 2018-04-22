@@ -584,7 +584,6 @@
                         </TextBlock>
                         <TextBlock Grid.Column="2" Style="{StaticResource Category_Item_Text}">
                             <Run Text="{x:Bind DKCalced, Mode=OneWay}"/>
-                            <Run Text="{x:Bind DK, Converter={StaticResource o_ValueOrNoting}, Mode=OneWay}"/>
                         </TextBlock>
                     </Grid>
                 </Grid>
