@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using TLIB;
-using TAPPLICATION;
-using TAPPLICATION.Model;
+﻿#define BETA
 using ShadowRunHelper.Model;
+using System.Collections.Generic;
+using TAPPLICATION;
+using TLIB;
 
 namespace ShadowRunHelper
 {
@@ -96,10 +96,22 @@ namespace ShadowRunHelper
         #region IAPs
         public const string IAP_FEATUREID_ADFREE_365 = "9NKHSRWSBMRD";
         public const string IAP_FEATUREID_ADFREE = "9NMBBTFVKW84";
-        public const string IAP_FEATUREID_TEE = "9PJF3SD71T40";
+        public const string IAP_FEATUREID_TEE =
+#if BETA
+            "9N6G5Z236BTH";
+#elif RELEASE
+            "9PJF3SD71T40";
+#endif
         public static bool IAP_HIDEADS { get; internal set; }
+        #endregion
+        #region Diagnostics
+        public const string AppCenterID =
+#if BETA
+            "cea0f814-f9f7-46b1-ba58-760607a60559";
+#elif RELEASE
+            "ef331e8e-b76a-41c1-a93a-a1a9d475b141";
+#endif
 
         #endregion
-
     }
 }

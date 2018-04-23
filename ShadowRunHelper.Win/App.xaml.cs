@@ -58,7 +58,8 @@ namespace ShadowRunHelper
             //    Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
             //    Microsoft.ApplicationInsights.WindowsCollectors.Session);
             //AppCenter.LogLevel = LogLevel.Verbose;
-            AppCenter.Start("cea0f814-f9f7-46b1-ba58-760607a60559", typeof(Crashes), typeof(Analytics));
+            
+            AppCenter.Start(Constants.AppCenterID, typeof(Crashes), typeof(Analytics));
         }
 
         public async void SetConstantStuff()
