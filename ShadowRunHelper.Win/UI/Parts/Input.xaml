@@ -9,6 +9,6 @@
     PrimaryButtonText="OK"
     >
 
-    <TextBox x:Name="InputBox" Text="{x:Bind InputValue, Mode=TwoWay}" />
+    <TextBox GotFocus="EditBox_GotFocus" x:Name="InputBox" Text="{x:Bind InputValue, Mode=TwoWay}" />
 
 </ContentDialog>

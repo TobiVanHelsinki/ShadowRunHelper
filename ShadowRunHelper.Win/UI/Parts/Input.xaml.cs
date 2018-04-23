@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 
 namespace ShadowRunHelper.UI
@@ -15,6 +16,11 @@ namespace ShadowRunHelper.UI
         {
             ContentDialogButtonClickDeferral deferral = args.GetDeferral();
             deferral.Complete();
+        }
+
+        void EditBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as TextBox).SelectAll();
         }
     }
 }

@@ -169,5 +169,10 @@ namespace ShadowRunHelper.UI
             dialog.ShowAsync();
 #pragma warning restore CS4014
         }
+
+        void EditBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as TextBox).SelectAll();
+        }
     }
 }

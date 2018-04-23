@@ -21,35 +21,35 @@
     <StackPanel Orientation="Vertical">
 
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Initiative" Text="{x:Bind Data.Initiative, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="26"/>
+                <TextBox GotFocus="EditBox_GotFocus" Name="Initiative" Text="{x:Bind Data.Initiative, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="26"/>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Initiative" Grid.Column="0" Grid.Row="26"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Edge_Aktuell" Text="{x:Bind Data.Edge_Aktuell, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="18"/>
+                <TextBox GotFocus="EditBox_GotFocus" Name="Edge_Aktuell" Text="{x:Bind Data.Edge_Aktuell, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="18"/>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Edge_Aktuell" Grid.Column="0" Grid.Row="18"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Edge_Gesamt" Text="{x:Bind Data.Edge_Gesamt, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="19"/>
+                <TextBox GotFocus="EditBox_GotFocus" Name="Edge_Gesamt" Text="{x:Bind Data.Edge_Gesamt, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="19"/>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Edge_Gesamt" Grid.Column="0" Grid.Row="19"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Karma_Aktuell" Text="{x:Bind Data.Karma_Aktuell, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="16"/>
+                <TextBox GotFocus="EditBox_GotFocus" Name="Karma_Aktuell" Text="{x:Bind Data.Karma_Aktuell, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="16"/>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Karma_Aktuell" Grid.Column="0" Grid.Row="16"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Karma_Gesamt" Text="{x:Bind Data.Karma_Gesamt, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="17"/>
+                <TextBox GotFocus="EditBox_GotFocus" Name="Karma_Gesamt" Text="{x:Bind Data.Karma_Gesamt, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="17"/>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Karma_Gesamt" Grid.Column="0" Grid.Row="17"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Runs" Text="{x:Bind Data.Runs, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="16"/>
+                <TextBox GotFocus="EditBox_GotFocus" Name="Runs" Text="{x:Bind Data.Runs, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="16"/>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Runs" Grid.Column="0" Grid.Row="16"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_K" Text="{x:Bind Data.Schaden_K_max_mod, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="20"/>
+                <TextBox GotFocus="EditBox_GotFocus" Name="Schaden_K" Text="{x:Bind Data.Schaden_K_max_mod, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="20"/>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_K_max_mod" Grid.Column="0" Grid.Row="20"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBox Name="Schaden_G" Text="{x:Bind Data.Schaden_G_max_mod, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="22"/>
+                <TextBox GotFocus="EditBox_GotFocus" Name="Schaden_G" Text="{x:Bind Data.Schaden_G_max_mod, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="22"/>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Schaden_G_max_mod" Grid.Column="0" Grid.Row="22"/>
             </StackPanel>
         </StackPanel>

@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace ShadowRunHelper.UI
@@ -32,5 +33,10 @@ namespace ShadowRunHelper.UI
         {
             this.Data.BirthDate = ((DatePicker)sender).Date;
         }
+        void EditBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as TextBox).SelectAll();
+        }
+
     }
 }
