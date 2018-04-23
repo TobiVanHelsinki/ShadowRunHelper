@@ -179,7 +179,7 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
-            Model.MainObject = new CharHolder();
+            Model.MainObject = CharHolder.CreateCharWithStandardContent();
             Model.MainObject.AfterLoad();
             SettingsModel.I.CountCreations++;
             AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
