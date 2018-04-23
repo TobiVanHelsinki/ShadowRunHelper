@@ -24,5 +24,26 @@ namespace ShadowRunHelper.UI
         {
             (sender as TextBox).SelectAll();
         }
+
+        void EditBox_ProcessKeyboardAccelerators(UIElement sender, Windows.UI.Xaml.Input.ProcessKeyboardAcceleratorEventArgs args)
+        {
+            if (args.Key == Windows.System.VirtualKey.Up)
+            {
+                if (double.TryParse((sender as TextBox).Text, out double result))
+                {
+                    result++;
+                    (sender as TextBox).Text = result.ToString();
+                }
+            }
+            else if (args.Key == Windows.System.VirtualKey.Down)
+            {
+                if (double.TryParse((sender as TextBox).Text, out double result))
+                {
+                    result--;
+                    (sender as TextBox).Text = result.ToString();
+                }
+            }
+            args.Handled = true;
+        }
     }
 }

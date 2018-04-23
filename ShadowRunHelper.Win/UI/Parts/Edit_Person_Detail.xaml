@@ -4,11 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
     mc:Ignorable="d"
     Title="{x:Bind Data.Alias, Mode=TwoWay}"
     x:Uid="EditDialog"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     >
+    
     <ContentDialog.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -72,7 +74,7 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Groesse" Grid.Column="0" Grid.Row="7"/>
-                <TextBox GotFocus="EditBox_GotFocus" Name=" Groesse" Text="{x:Bind Data.Groesse, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="7"/>
+                <TextBox GotFocus="EditBox_GotFocus" contract5Present:ProcessKeyboardAccelerators="EditBox_ProcessKeyboardAccelerators" Name=" Groesse" Text="{x:Bind Data.Groesse, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="7"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -80,7 +82,7 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Gewicht" Grid.Column="0" Grid.Row="8"/>
-                <TextBox GotFocus="EditBox_GotFocus" Name=" Gewicht" Text="{x:Bind Data.Gewicht, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="8"/>
+                <TextBox GotFocus="EditBox_GotFocus" contract5Present:ProcessKeyboardAccelerators="EditBox_ProcessKeyboardAccelerators" Name=" Gewicht" Text="{x:Bind Data.Gewicht, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="8"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -112,7 +114,7 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Essenz" Grid.Column="0" Grid.Row="12"/>
-                <TextBox GotFocus="EditBox_GotFocus" Name="Essenz" Text="{x:Bind Data.Essenz, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="12"/>
+                <TextBox GotFocus="EditBox_GotFocus" contract5Present:ProcessKeyboardAccelerators="EditBox_ProcessKeyboardAccelerators" Name="Essenz" Text="{x:Bind Data.Essenz, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="12"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -120,7 +122,7 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_StrassenrufMod" Grid.Column="0" Grid.Row="11"/>
-                <TextBox GotFocus="EditBox_GotFocus" Text="{x:Bind Data.StrassenrufMod, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="11"/>
+                <TextBox GotFocus="EditBox_GotFocus" contract5Present:ProcessKeyboardAccelerators="EditBox_ProcessKeyboardAccelerators" Text="{x:Bind Data.StrassenrufMod, Converter={StaticResource io_ZahlenDouble}, Mode=TwoWay}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="11"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -128,7 +130,7 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_SchlechterRuf" Grid.Column="0" Grid.Row="12"/>
-                <TextBox GotFocus="EditBox_GotFocus" Text="{x:Bind Data.SchlechterRuf, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="12"/>
+                <TextBox GotFocus="EditBox_GotFocus" contract5Present:ProcessKeyboardAccelerators="EditBox_ProcessKeyboardAccelerators" Text="{x:Bind Data.SchlechterRuf, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="12"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -136,7 +138,7 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Prominenz" Grid.Column="0" Grid.Row="12"/>
-                <TextBox GotFocus="EditBox_GotFocus" Text="{x:Bind Data.Prominenz, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="12"/>
+                <TextBox GotFocus="EditBox_GotFocus" contract5Present:ProcessKeyboardAccelerators="EditBox_ProcessKeyboardAccelerators" Text="{x:Bind Data.Prominenz, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Style="{StaticResource EditZahlen}" Grid.Column="1" Grid.Row="12"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
