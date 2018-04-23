@@ -25,7 +25,7 @@
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>7F7601576083D9BDD6789BEB804C6F0FFE3F5991</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>ED1F6DFD08189B32302694447208619E2350C6AA</PackageCertificateThumbprint>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
   </PropertyGroup>
@@ -184,7 +184,6 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="ShadowRunHelper.Win_StoreKey.pfx" />
-    <None Include="ShadowRunHelper.Win_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo\BadgeLogo.scale-100.png" />

@@ -1,4 +1,4 @@
-﻿#define BETA
+﻿#define RELEASE
 using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using TAPPLICATION;
@@ -94,13 +94,14 @@ namespace ShadowRunHelper
         };
         #endregion
         #region IAPs
+#if BETA
+        public const string IAP_FEATUREID_ADFREE_365 = "--";
+        public const string IAP_FEATUREID_ADFREE = "--";
+        public const string IAP_FEATUREID_TEE = "9N6G5Z236BTH";
+#elif RELEASE
         public const string IAP_FEATUREID_ADFREE_365 = "9NKHSRWSBMRD";
         public const string IAP_FEATUREID_ADFREE = "9NMBBTFVKW84";
-        public const string IAP_FEATUREID_TEE =
-#if BETA
-            "9N6G5Z236BTH";
-#elif RELEASE
-            "9PJF3SD71T40";
+        public const string IAP_FEATUREID_TEE = "9PJF3SD71T40";
 #endif
         public static bool IAP_HIDEADS { get; internal set; }
         #endregion
