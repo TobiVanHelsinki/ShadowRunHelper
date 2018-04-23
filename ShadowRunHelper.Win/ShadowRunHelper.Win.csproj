@@ -183,6 +183,7 @@
     <Compile Include="UI\Parts\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\SharePageFunctions.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

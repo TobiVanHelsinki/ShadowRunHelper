@@ -82,4 +82,7 @@
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)UI\" />
+  </ItemGroup>
 </Project>

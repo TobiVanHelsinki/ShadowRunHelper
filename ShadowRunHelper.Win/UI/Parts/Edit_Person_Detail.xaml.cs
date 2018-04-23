@@ -1,6 +1,7 @@
 ﻿using ShadowRunHelper.CharModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 namespace ShadowRunHelper.UI
 {
@@ -33,30 +34,9 @@ namespace ShadowRunHelper.UI
         {
             this.Data.BirthDate = ((DatePicker)sender).Date;
         }
-        void EditBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            (sender as TextBox).SelectAll();
-        }
-        void EditBox_ProcessKeyboardAccelerators(UIElement sender, Windows.UI.Xaml.Input.ProcessKeyboardAcceleratorEventArgs args)
-        {
-            if (args.Key == Windows.System.VirtualKey.Up)
-            {
-                if (double.TryParse((sender as TextBox).Text, out double result))
-                {
-                    result++;
-                    (sender as TextBox).Text = result.ToString();
-                }
-            }
-            else if (args.Key == Windows.System.VirtualKey.Down)
-            {
-                if (double.TryParse((sender as TextBox).Text, out double result))
-                {
-                    result--;
-                    (sender as TextBox).Text = result.ToString();
-                }
-            }
-            args.Handled = true;
-        }
+        void EditBox_GotFocus(object sender, RoutedEventArgs e) => SharePageFunctions.EditBox_GotFocus(sender, e);
+
+        void EditBox_ProcessKeyboardAccelerators(UIElement sender, ProcessKeyboardAcceleratorEventArgs args) => SharePageFunctions.EditBox_ProcessKeyboardAccelerators(sender, args);
 
     }
 }
