@@ -22,5 +22,10 @@ namespace ShadowRunHelper.CharModel
             {
                 ThingDefs.Handlung, ThingDefs.Fertigkeit
             };
+
+        protected Eigenschaft() : base()
+        {
+            LinkedThings.FilterOut = Filter;
+        }
     }
 }
