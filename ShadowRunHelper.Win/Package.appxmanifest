@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4" IgnorableNamespaces="uap mp uap3">
-  <Identity Name="21863TobivanHelsinki.ShadowRunHelperBeta" Publisher="CN=D02849C2-745B-495E-891A-5F7C07581158" Version="1.6.57.0" />
+  <Identity Name="21863TobivanHelsinki.ShadowRunHelperBeta" Publisher="CN=D02849C2-745B-495E-891A-5F7C07581158" Version="1.6.58.0" />
   <mp:PhoneIdentity PhoneProductId="02cc4dcd-bd0c-4731-bbef-a39162271a1e" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <!--PhoneProductId="eca415cc-4811-4fe6-96ac-6a54233cd2f4"-->
   <Properties>
