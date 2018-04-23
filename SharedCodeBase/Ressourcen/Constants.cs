@@ -53,7 +53,7 @@ namespace ShadowRunHelper
         public const string CONTAINER_SETTINGS_LOAD_CHAR_ON_START = "SETTINGS_LOAD_CHAR_ON_START";
         public const bool CONTAINER_SETTINGS_LOAD_CHAR_ON_START_STD = false;
         public const string CONTAINER_SETTINGS_START_AFTER_EDIT = "SETTINGS_START_AFTER_EDIT";
-        public const bool CONTAINER_SETTINGS_START_AFTER_EDIT_STD = false;
+        public const bool CONTAINER_SETTINGS_START_AFTER_EDIT_STD = true;
         public const string CONTAINER_SETTINGS_START_COUNT = "SETTINGS_START_COUNT";
         public const int CONTAINER_SETTINGS_START_COUNT_STD = 0;
         public const string CONTAINER_SETTINGS_START_COUNT_DB = "SETTINGS_START_COUNT_DB";
