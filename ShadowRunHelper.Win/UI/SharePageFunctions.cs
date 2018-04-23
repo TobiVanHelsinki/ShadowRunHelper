@@ -9,28 +9,28 @@ namespace ShadowRunHelper.UI
 {
     public class SharePageFunctions
     {
-        public static void EditBox_GotFocus(object sender, RoutedEventArgs e)
+        public static void EditBox_SelectAll(object sender, RoutedEventArgs e)
         {
             (sender as TextBox).SelectAll();
         }
-        public static void EditBox_ProcessKeyboardAccelerators(UIElement sender, ProcessKeyboardAcceleratorEventArgs args)
+        public static void EditBox_UpDownKeys(object sender, KeyRoutedEventArgs e)
         {
-            if (args.Key == Windows.System.VirtualKey.Up)
+            if (e.Key == Windows.System.VirtualKey.Up)
             {
                 if (double.TryParse((sender as TextBox).Text, out double result))
                 {
                     result++;
                     (sender as TextBox).Text = result.ToString();
-                    args.Handled = true;
+                    e.Handled = true;
                 }
             }
-            else if (args.Key == Windows.System.VirtualKey.Down)
+            else if (e.Key == Windows.System.VirtualKey.Down)
             {
                 if (double.TryParse((sender as TextBox).Text, out double result))
                 {
                     result--;
                     (sender as TextBox).Text = result.ToString();
-                    args.Handled = true;
+                    e.Handled = true;
                 }
             }
         }

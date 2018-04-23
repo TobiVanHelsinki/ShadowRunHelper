@@ -10,6 +10,6 @@
     PrimaryButtonText="OK"
     >
 
-    <TextBox GotFocus="EditBox_GotFocus" contract5Present:ProcessKeyboardAccelerators="EditBox_ProcessKeyboardAccelerators" x:Name="InputBox" Text="{x:Bind InputValue, Mode=TwoWay}" />
+    <TextBox GotFocus="EditBox_GotFocus" contract5Present:PreviewKeyDown="EditBox_PreviewKeyDown" x:Name="InputBox" Text="{x:Bind InputValue, Mode=TwoWay}" />
 
 </ContentDialog>

@@ -34,9 +34,9 @@ namespace ShadowRunHelper.UI
         {
             this.Data.BirthDate = ((DatePicker)sender).Date;
         }
-        void EditBox_GotFocus(object sender, RoutedEventArgs e) => SharePageFunctions.EditBox_GotFocus(sender, e);
+        void EditBox_GotFocus(object sender, RoutedEventArgs e) => SharePageFunctions.EditBox_SelectAll(sender, e);
 
-        void EditBox_ProcessKeyboardAccelerators(UIElement sender, ProcessKeyboardAcceleratorEventArgs args) => SharePageFunctions.EditBox_ProcessKeyboardAccelerators(sender, args);
+        void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
 
     }
 }

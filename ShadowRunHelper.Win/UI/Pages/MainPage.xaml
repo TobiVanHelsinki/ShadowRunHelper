@@ -4,6 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:model="using:ShadowRunHelper.Model"
+    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
@@ -82,7 +83,7 @@
                                         </Grid.RowDefinitions>
 
                                         <TextBlock x:Uid="Model_Person_Kontostand" Grid.Column="0" Grid.Row="0"  />
-                                        <TextBox Name="Header_Kontostand" Text="{x:Bind Person.Kontostand, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Style="{StaticResource Panel_Oben_Kontostand}"  />
+                                        <TextBox GotFocus="EditBox_GotFocus" contract5Present:PreviewKeyDown="EditBox_PreviewKeyDown" Name="Header_Kontostand" Text="{x:Bind Person.Kontostand, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Style="{StaticResource Panel_Oben_Kontostand}"  />
 
                                         <TextBlock x:Uid="Model_Person_InitiativeAktuell" Grid.Column="0" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_1}"/>
                                         <TextBlock Text="{x:Bind Person.Initiative, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_1}" />
