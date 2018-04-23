@@ -106,7 +106,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource VehikelItem}"/>
-                    <VariableSizedWrapGrid Grid.Row="2" Orientation="Horizontal">
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
                         <StackPanel Orientation="Vertical">
                             <Button x:Uid="UI_Btn_Bearbeiten" Name="Vehikel_Edit" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Name="Vehikel_Del" Click="Del_Click" Style="{StaticResource Category_Item_Buttons}"/>
@@ -157,7 +157,7 @@
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Gewicht, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
-                    <TextBlock Grid.Row="3" Style="{StaticResource Category_Item_Text_Note}">
+                    <TextBlock Grid.Row="2" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>
