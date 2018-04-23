@@ -554,7 +554,7 @@
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
                     </TextBlock>
-                    <ui:LinkListEntry Grid.Row="3" List="{x:Bind LinkedThings, Mode=OneWay}"/>
+                    <ui:LinkListEntry Grid.Row="3" List="{x:Bind LinkedThings, Mode=OneWay}" Value="{x:Bind WertCalced}" RawValue="{x:Bind Wert}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="NahkampfwaffeItem" x:DataType="CharModel:Nahkampfwaffe">
@@ -646,7 +646,7 @@
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
                     </TextBlock>
-                    <ui:LinkListEntry Grid.Row="3" List="{x:Bind LinkedThings, Mode=OneWay}"/>
+                    <ui:LinkListEntry Grid.Row="3" List="{x:Bind LinkedThings, Mode=OneWay}" Value="{x:Bind WertCalced}" RawValue="{x:Bind Wert}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="PanzerungItem" x:DataType="CharModel:Panzerung">
@@ -711,7 +711,7 @@
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
                     </TextBlock>
-                    <ui:LinkListEntry Grid.Row="3" List="{x:Bind LinkedThings, Mode=OneWay}"/>
+                    <ui:LinkListEntry Grid.Row="3" List="{x:Bind LinkedThings, Mode=OneWay}" Value="{x:Bind WertCalced}" RawValue="{x:Bind Wert}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="MunitionItem" x:DataType="CharModel:Munition">
