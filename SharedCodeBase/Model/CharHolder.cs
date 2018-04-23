@@ -401,5 +401,31 @@ namespace ShadowRunHelper.Model
             return false;
         }
         #endregion
+
+        public static CharHolder CreateCharWithStandardContent()
+        {
+            var ret = new CharHolder();
+            var item = new Handlung();
+            item.Bezeichner = StringHelper.GetString("Content_Selbstbeherrschung");
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Charisma);
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Willen);
+            ret.Add(item);
+            item = new Handlung();
+            item.Bezeichner = StringHelper.GetString("Content_Menschenkenntnis");
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Intuition);
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Charisma);
+            ret.Add(item);
+            item = new Handlung();
+            item.Bezeichner = StringHelper.GetString("Content_Erinnerung");
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Logik);
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Willen);
+            ret.Add(item);
+            item = new Handlung();
+            item.Bezeichner = StringHelper.GetString("Content_Schadenswiderstand");
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Konsti);
+            item.LinkedThings.Add(ret.CTRLPanzerung.MI_Wert);
+            ret.Add(item);
+            return ret;
+        }
     }
 }

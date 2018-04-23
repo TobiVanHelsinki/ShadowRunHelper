@@ -1369,4 +1369,16 @@ This is shown in detail at the example-character</value>
   <data name="Model_Handlung_WertZusatz.Text" xml:space="preserve">
     <value>Pool Addition</value>
   </data>
+  <data name="Content_Erinnerung" xml:space="preserve">
+    <value>memento</value>
+  </data>
+  <data name="Content_Menschenkenntnis" xml:space="preserve">
+    <value>knowledge of human nature</value>
+  </data>
+  <data name="Content_Schadenswiderstand" xml:space="preserve">
+    <value>damage resistance</value>
+  </data>
+  <data name="Content_Selbstbeherrschung" xml:space="preserve">
+    <value>self-control</value>
+  </data>
 </root>

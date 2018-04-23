@@ -1399,4 +1399,16 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Model_Handlung_WertZusatz.Text" xml:space="preserve">
     <value>Wert Zusatz</value>
   </data>
+  <data name="Content_Erinnerung" xml:space="preserve">
+    <value>Erinnerung</value>
+  </data>
+  <data name="Content_Menschenkenntnis" xml:space="preserve">
+    <value>Menschenkenntnis</value>
+  </data>
+  <data name="Content_Schadenswiderstand" xml:space="preserve">
+    <value>Schadenswiderstand</value>
+  </data>
+  <data name="Content_Selbstbeherrschung" xml:space="preserve">
+    <value>Selbstbeherrschung</value>
+  </data>
 </root>
