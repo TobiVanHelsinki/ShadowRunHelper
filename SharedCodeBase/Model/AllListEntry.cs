@@ -2,7 +2,8 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TLIB_UWPFRAME.Model;
+using TAPPLICATION.Model;
+using TLIB;
 
 namespace ShadowRunHelper.Model
 {
@@ -61,12 +62,7 @@ namespace ShadowRunHelper.Model
                 }
             }
         }
-        [Obsolete("Just for compatibility with versions before 1.7 ", true)]
-        public string strProperty
-        {
-            get { return PropertyID; }
-            set { PropertyID = value; }
-        }
+
         public AllListEntry(Thing o, string newDisplayName = "", string newPropID = "") : this()
         {
             Object = o;

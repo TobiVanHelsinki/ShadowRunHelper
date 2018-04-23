@@ -2,13 +2,14 @@
 using Newtonsoft.Json.Linq;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using Shared;
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TLIB;
-using TLIB_UWPFRAME;
-using TLIB_UWPFRAME.IO;
+using TAPPLICATION;
+using TAPPLICATION.IO;
+using TAMARIN.IO;
 
 namespace ShadowRunHelper.IO
 {
@@ -82,12 +83,16 @@ namespace ShadowRunHelper.IO
                 ("\"PB\"", "\"DK\""),
                 ("\"Rueckstoss\"", "\"RK\""),
                 ("\"WertZusammensetzung\"", "\"LinkedThings\""),
-            };
+                //ModelRefactoring Linked List Stuff
+                ("\"strProperty\"", "\"PropertyID\""),
+    };
                     fileContent = RefactorJSONString(fileContent, replacements);
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     foreach (var item in ReturnCharHolder.CTRLHandlung.Data)
                     {
                         item.Wert = 0;
+                        item.Grenze = 0;
+                        item.Gegen = 0;
                     }
                     ReturnCharHolder.HasChanges = false;
                     AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar_1_5_to_1_6"));
@@ -124,7 +129,10 @@ namespace ShadowRunHelper.IO
             switch (chartype)
             {
                 case PreSavedChar.ExampleChar:
-                    await CopyFileToCurrentLocation(StringHelper.GetPrefix(StringHelper.PrefixType.AppPackageData) + "Assets/Example/", StringHelper.GetSimpleCountryCode(Constants.AVAILIBLE_EXAMPLE_LANGUAGES, Constants.DEFAULT_EXAMPLE_LANGUAGE)+ Constants.DATEIENDUNG_CHAR, StringHelper.GetString("ExampleChar")+Constants.DATEIENDUNG_CHAR);
+                    await CopyFileToCurrentLocation(
+                        StringHelper.GetPrefix(StringHelper.PrefixType.AppPackageData) + "Assets/Example/",
+                        StringHelper.GetSimpleCountryCode(Constants.AVAILIBLE_EXAMPLE_LANGUAGES, Constants.DEFAULT_EXAMPLE_LANGUAGE) + Constants.DATEIENDUNG_CHAR,
+                        StringHelper.GetString("ExampleChar") + Constants.DATEIENDUNG_CHAR);
                     break;
                 case PreSavedChar.PreDBChar:
                     break;
@@ -132,11 +140,11 @@ namespace ShadowRunHelper.IO
                     break;
             }
         }
-        public static async Task CopyFileToCurrentLocation(string path, string name, string newname)
+        public static async Task CopyFileToCurrentLocation(string path, string oldname, string newname)
         {
-            var TargetFileClass = new FileInfoClass() { Filepath = GetCurrentSavePath(), Fileplace = GetCurrentSavePlace(), FolderToken = SharedConstants.ACCESSTOKEN_FOLDERMODE};
-            var SourceFileClass = new FileInfoClass() { Filename = name, Filepath = path, Fileplace = Place.Assets};
-            await GetIO().Copy(TargetFileClass, SourceFileClass, newname);
+            var TargetFileClass = new FileInfoClass() { Filename = newname, Filepath = GetCurrentSavePath(), Fileplace = GetCurrentSavePlace(), FolderToken = SharedConstants.ACCESSTOKEN_FOLDERMODE };
+            var SourceFileClass = new FileInfoClass() { Filename = oldname, Filepath = path, Fileplace = Place.Assets };
+            await CurrentIO.Copy(TargetFileClass, SourceFileClass);
         }
     }
 }

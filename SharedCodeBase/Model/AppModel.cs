@@ -1,6 +1,9 @@
-﻿namespace ShadowRunHelper.Model
+﻿using ShadowRunHelper.IO;
+using TAPPLICATION.IO;
+
+namespace ShadowRunHelper.Model
 {
-    public class AppModel : TLIB_UWPFRAME.Model.SharedAppModel<CharHolder>
+    public class AppModel : TAPPLICATION.Model.SharedAppModel<CharHolder>
     {
         public static AppModel Initialize()
         {
@@ -8,6 +11,7 @@
             {
                 instance = new AppModel();
             }
+            CharHolderIO.MainTypeConvert = CharHolderIO.ConvertWithRightVersion;
             return Instance;
         }
         public static new AppModel Instance
@@ -20,11 +24,11 @@
 
         AppModel() : base(){ }
 
-        public delegate void NavigationEventHandler(object sender, ProjectPages page, ProjectPagesOptions PageOptions);
+        public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptions PageOptions);
         public event NavigationEventHandler NavigationRequested;
-        public void RequestNavigation(object o, ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
+        public void RequestNavigation(ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
         {
-            NavigationRequested?.Invoke(o, p, po);
+            NavigationRequested?.Invoke(p, po);
         }
 
         public void TutorialChangedState(int StateNumber, bool Highlight = false)

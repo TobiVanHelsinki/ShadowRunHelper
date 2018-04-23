@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.CharController;
+﻿using Microsoft.AppCenter.Analytics;
+using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.Generic;
@@ -6,10 +7,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using TAMARIN.IO;
+using TAPPLICATION.Model;
 using TLIB;
-using TLIB_UWPFRAME;
-using TLIB_UWPFRAME.IO;
-using TLIB_UWPFRAME.Model;
 
 namespace ShadowRunHelper.Model
 {
@@ -78,11 +78,6 @@ namespace ShadowRunHelper.Model
 
         #endregion
         #region IO and Display Stuff
-        /// <summary>
-        /// used to "override" the std convert method. we need something more ... flexible
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public Func<string, string, string, IMainType> Converter => IO.CharHolderIO.ConvertWithRightVersion;
 
         [Newtonsoft.Json.JsonIgnore]
         public FileInfoClass FileInfo { get; set; } = new FileInfoClass();
@@ -232,32 +227,34 @@ namespace ShadowRunHelper.Model
         public void Repair()
         {
             //declare submethod
-            void RepairThingListRefs(ObservableCollection<AllListEntry> SourceCollection, List<AllListEntry> lstThings)
+            void RepairThingListRefs(ObservableCollection<AllListEntry> SourceCollection)
             {
                 var TargetCollection = new ObservableCollection<AllListEntry>();
                 foreach (var item in SourceCollection)
                 {
-                    AllListEntry NewEntry = lstThings.Find(
+                    AllListEntry NewEntry = LinkList.Find(
                         x => x.Object == item.Object && 
                         x.PropertyID == item.PropertyID);
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x =>
+                        NewEntry = LinkList.Find(x =>
                         x.Object.Bezeichner == item.Object.Bezeichner &&
                         x.Object.ThingType == item.Object.ThingType &&
                         x.PropertyID == item.PropertyID);
                     }
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x =>
-                        x.Object.ThingType == item.Object.ThingType &&
+                        NewEntry = LinkList.Find(x =>
+                        x.Object.Bezeichner == item.Object.Bezeichner &&
                         x.PropertyID == item.PropertyID);
+                        Analytics.TrackEvent("Err_CharRepair_Soft");
                     }
                     if (NewEntry == null)
                     {
-                        NewEntry = lstThings.Find(x =>
-                        x.Object.Bezeichner == item.Object.Bezeichner &&
+                        NewEntry = LinkList.Find(x =>
+                        x.Object.ThingType == item.Object.ThingType &&
                         x.PropertyID == item.PropertyID);
+                        Analytics.TrackEvent("Err_CharRepair_Soft");
                     }
                     if (NewEntry != null)
                     {
@@ -265,6 +262,7 @@ namespace ShadowRunHelper.Model
                     }
                     else
                     {
+                        Analytics.TrackEvent("Err_CharRepair_Hard");
                         AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }
@@ -276,25 +274,15 @@ namespace ShadowRunHelper.Model
             }
             // start repair
             RefreshLists();
-            foreach (var item in lstCTRL)
+            foreach (var ctrl in lstCTRL)
             {
-                foreach (var thing in item.GetElements())
+                foreach (var thing in ctrl.GetElements())
                 {
                     foreach (var list in Thing.GetPropertiesLists(thing))
                     {
-                        //RepairThingListRefs((ObservableCollection<AllListEntry>)list.GetValue(thing), LinkList);
+                        RepairThingListRefs(list.GetValue(thing) as LinkList);
                     }
                 }
-            }
-            foreach (var item in CTRLHandlung.Data)
-            {
-                RepairThingListRefs(item.LinkedThings, LinkList);
-                RepairThingListRefs(item.GegenZusammensetzung, LinkList);
-                RepairThingListRefs(item.GrenzeZusammensetzung, LinkList);
-            }
-            foreach (var item in CTRLFertigkeit.Data)
-            {
-                RepairThingListRefs(item.LinkedThings, LinkList);
             }
         }
         public IController ThingDef2CTRL(ThingDefs tag)
@@ -413,5 +401,31 @@ namespace ShadowRunHelper.Model
             return false;
         }
         #endregion
+
+        public static CharHolder CreateCharWithStandardContent()
+        {
+            var ret = new CharHolder();
+            var item = new Handlung();
+            item.Bezeichner = StringHelper.GetString("Content_Selbstbeherrschung");
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Charisma);
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Willen);
+            ret.Add(item);
+            item = new Handlung();
+            item.Bezeichner = StringHelper.GetString("Content_Menschenkenntnis");
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Intuition);
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Charisma);
+            ret.Add(item);
+            item = new Handlung();
+            item.Bezeichner = StringHelper.GetString("Content_Erinnerung");
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Logik);
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Willen);
+            ret.Add(item);
+            item = new Handlung();
+            item.Bezeichner = StringHelper.GetString("Content_Schadenswiderstand");
+            item.LinkedThings.Add(ret.CTRLAttribut.MI_Konsti);
+            item.LinkedThings.Add(ret.CTRLPanzerung.MI_Wert);
+            ret.Add(item);
+            return ret;
+        }
     }
 }

@@ -46,7 +46,7 @@ namespace ShadowRunHelper.UI.Converter
                 case "DashL":
                     return value + " - ";
                 case "Points":
-                    return value + ": ";
+                    return value + ":";
                 default:
                     return value.ToString();
             }

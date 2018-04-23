@@ -1,17 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using System.Collections.ObjectModel;
-using Windows.UI.Xaml.Data;
-using System;
-using System.Linq;
-using ShadowRunHelper.Model;
-using Shared;
+using Windows.UI.Xaml.Input;
 
-namespace ShadowRunHelper
+namespace ShadowRunHelper.UI
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Input : ContentDialog
     {
         public string InputValue = "";
@@ -25,5 +17,10 @@ namespace ShadowRunHelper
             ContentDialogButtonClickDeferral deferral = args.GetDeferral();
             deferral.Complete();
         }
+
+        void EditBox_GotFocus(object sender, RoutedEventArgs e) => SharePageFunctions.EditBox_SelectAll(sender, e);
+
+        void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
+
     }
 }

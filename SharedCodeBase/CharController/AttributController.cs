@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using TLIB;
-using TLIB_UWPFRAME;
+using TAPPLICATION;
+using Newtonsoft.Json;
 
 namespace ShadowRunHelper.CharController
 {
@@ -29,17 +30,27 @@ namespace ShadowRunHelper.CharController
         public Attribut Magie;
         public Attribut Resonanz;
 
-        AllListEntry MI_Konsti;
-        AllListEntry MI_Geschick;
-        AllListEntry MI_Reaktion;
-        AllListEntry MI_Staerke;
-        AllListEntry MI_Charisma;
-        AllListEntry MI_Logik;
-        AllListEntry MI_Intuition;
-        AllListEntry MI_Willen;
+        [JsonIgnore]
+        public AllListEntry MI_Konsti { get; set; }
+        [JsonIgnore]
+        public AllListEntry MI_Geschick { get; set; }
+        [JsonIgnore]
+        public AllListEntry MI_Reaktion { get; set; }
+        [JsonIgnore]
+        public AllListEntry MI_Staerke { get; set; }
+        [JsonIgnore]
+        public AllListEntry MI_Charisma { get; set; }
+        [JsonIgnore]
+        public AllListEntry MI_Logik { get; set; }
+        [JsonIgnore]
+        public AllListEntry MI_Intuition { get; set; }
+        [JsonIgnore]
+        public AllListEntry MI_Willen { get; set; }
 
-        AllListEntry MI_Magie;
-        AllListEntry MI_Resonanz;
+        [JsonIgnore]
+        public AllListEntry MI_Magie { get; set; }
+        [JsonIgnore]
+        public AllListEntry MI_Resonanz { get; set; }
 
         // Variable Logik Stuff ###########################
         bool m_MutexDataColectionChange = false;

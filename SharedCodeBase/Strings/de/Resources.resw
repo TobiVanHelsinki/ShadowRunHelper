@@ -328,7 +328,7 @@
     <value>Zusatz</value>
   </data>
   <data name="Plus.Text" xml:space="preserve">
-    <value> + </value>
+    <value>+</value>
   </data>
   <data name="Slash.Text" xml:space="preserve">
     <value>/</value>
@@ -1340,7 +1340,7 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
     <value>Max.K-Schaden modifier</value>
   </data>
   <data name="Model__ORG.Text" xml:space="preserve">
-    <value>Org.</value>
+    <value>orig.</value>
   </data>
   <data name="Model__Active.Text" xml:space="preserve">
     <value>Aktiver Eintrag: </value>
@@ -1359,5 +1359,56 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   </data>
   <data name="Model_Fertigkeit_CreateHandlung" xml:space="preserve">
     <value>Handlung anlegen</value>
+  </data>
+  <data name="IAP_TXT_ADS.Content" xml:space="preserve">
+    <value>Keine Werbung für ein Leben</value>
+  </data>
+  <data name="IAP_TXT_ADS_365.Content" xml:space="preserve">
+    <value>Keine Werbung für ein Jahr</value>
+  </data>
+  <data name="IAP_TXT_TEE.Content" xml:space="preserve">
+    <value>Kauf mir einen Tee</value>
+  </data>
+  <data name="UI_Optionen_U_Buy.Text" xml:space="preserve">
+    <value>Kaufen</value>
+  </data>
+  <data name="Ui_Admin_Filename.text" xml:space="preserve">
+    <value>Dateiname</value>
+  </data>
+  <data name="Ui_Admin_Filepath.Text" xml:space="preserve">
+    <value>Dateifad</value>
+  </data>
+  <data name="CloseNotifications" xml:space="preserve">
+    <value>Alle schließen</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_FolderOpen.Text" xml:space="preserve">
+    <value>Ordner öffnen</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_FolderOpenSTD.Label" xml:space="preserve">
+    <value>Speicherort öffnen</value>
+  </data>
+  <data name="Model_Handlung_GegenZusatz.Text" xml:space="preserve">
+    <value>Gegen Zusatz</value>
+  </data>
+  <data name="Model_Handlung_GrenzeZusatz.Text" xml:space="preserve">
+    <value>Grenze Zusatz</value>
+  </data>
+  <data name="Model_Handlung_WertZusatz.Text" xml:space="preserve">
+    <value>Wert Zusatz</value>
+  </data>
+  <data name="Content_Erinnerung" xml:space="preserve">
+    <value>Erinnerung</value>
+  </data>
+  <data name="Content_Menschenkenntnis" xml:space="preserve">
+    <value>Menschenkenntnis</value>
+  </data>
+  <data name="Content_Schadenswiderstand" xml:space="preserve">
+    <value>Schadenswiderstand</value>
+  </data>
+  <data name="Content_Selbstbeherrschung" xml:space="preserve">
+    <value>Selbstbeherrschung</value>
   </data>
 </root>

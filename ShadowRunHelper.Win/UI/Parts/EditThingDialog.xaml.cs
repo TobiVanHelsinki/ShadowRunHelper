@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 // Die Elementvorlage "Inhaltsdialog" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
-namespace ShadowRunHelper.UI.Edit
+namespace ShadowRunHelper.UI
 {
     public sealed partial class EditThingDialog : ContentDialog
     {
@@ -146,7 +147,7 @@ namespace ShadowRunHelper.UI.Edit
             var Handl = Model.AppModel.Instance.MainObject.Add(ThingDefs.Handlung);
             if (Fert.TryCopy(Handl))
             {
-                Model.AppModel.Instance.lstNotifications.Add(new TLIB_UWPFRAME.Model.Notification(StringHelper.GetString("Error_ObjectCopy")) { bIsRead = true});
+                Model.AppModel.Instance.lstNotifications.Add(new TAPPLICATION.Model.Notification(StringHelper.GetString("Error_ObjectCopy")) { IsRead = true});
             }
             Handl.Wert = 0;
             var FertEntry = Model.AppModel.Instance.MainObject.LinkList.Find(x=>x.Object == Fert);
@@ -165,7 +166,14 @@ namespace ShadowRunHelper.UI.Edit
         {
             Auswahl dialog = new Auswahl(Model.AppModel.Instance.MainObject.LinkList, ((Attribut)((Button)sender).DataContext).LinkedThings, Filter: CharModel.Attribut.Filter);
             Hide();
+#pragma warning disable CS4014
             dialog.ShowAsync();
+#pragma warning restore CS4014
         }
+
+        void EditBox_GotFocus(object sender, RoutedEventArgs e) => SharePageFunctions.EditBox_SelectAll(sender, e);
+
+        void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
+
     }
 }

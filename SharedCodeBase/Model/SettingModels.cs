@@ -1,10 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using System.Linq;
-using TLIB_UWPFRAME.IO;
-using TLIB_UWPFRAME.Model;
-using static TLIB_UWPFRAME.Model.SharedSettingsModel;
-using Newtonsoft.Json;
+﻿using TAMARIN.IO;
+using TAPPLICATION.Model;
 using Windows.Storage;
 
 namespace ShadowRunHelper
@@ -12,33 +7,6 @@ namespace ShadowRunHelper
     public class SettingsModel : SharedSettingsModel
     {
         #region Settings
-        //static JsonSerializerSettings SerializationSettings = new JsonSerializerSettings() { Error = SerializationErrorHandler };
-        //static void SerializationErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
-        //{
-        //    o = null;
-        //}
-        //public IEnumerable<(ThingDefs ThingType, bool vis)> BlockListOptions
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            var content = PlatformSettings.getString(Constants.CONTAINER_SETTINGS_BLOCKLISTOPTIONS);
-        //            return JsonConvert.DeserializeObject<IEnumerable<(ThingDefs ThingType, bool vis)>>(content, SerializationSettings);
-        //        }
-        //        catch (System.Exception)
-        //        {
-        //            BlockListOptions = TypeHelper.ThingTypeProperties.Select(t => (t.ThingType, true));
-        //            return BlockListOptions;
-        //        }
-        //    }
-        //    set
-        //    {
-        //        var content = JsonConvert.SerializeObject(value, SerializationSettings);
-        //        PlatformSettings.set(Constants.CONTAINER_SETTINGS_BLOCKLISTOPTIONS, content);
-        //        Instance.NotifyPropertyChanged();
-        //    }
-        //}
 
         public bool AutoSave
         {
@@ -311,6 +279,22 @@ namespace ShadowRunHelper
         {
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE, Constants.CONTAINER_SETTINGS_FILENAME_USEDATE_STD);
         }
+
+        public bool CharInTempStore
+        {
+            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE);
+            set
+            {
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE, value);
+                NotifyPropertyChanged();
+            }
+        }
+        public void CharInTempStoreReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE, Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE_STD);
+        }
+
+
 
         #endregion Settings
 

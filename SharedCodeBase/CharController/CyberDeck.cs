@@ -6,7 +6,8 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using TLIB_UWPFRAME.Model;
+using TAPPLICATION.Model;
+using TLIB;
 
 namespace ShadowRunHelper.CharController
 {

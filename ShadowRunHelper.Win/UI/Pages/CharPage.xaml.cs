@@ -1,17 +1,13 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using ShadowRunHelper.UI;
-using ShadowRunHelper.UI.Edit;
-using ShadowRunHelper.Win.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace ShadowRunHelper
+namespace ShadowRunHelper.UI
 {
     public sealed partial class CharPage : Page
     {
@@ -24,6 +20,7 @@ namespace ShadowRunHelper
         public CharPage()
         {
             InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Required;
         }
 
         #region Navigation stuff
@@ -41,15 +38,38 @@ namespace ShadowRunHelper
                 }
             }
             Model.TutorialStateChanged += TutorialStateChanged;
-            if (((ProjectPagesOptions)e.Parameter) == ProjectPagesOptions.CharNewChar)
+            switch (((ProjectPagesOptions)e.Parameter))
             {
-                try
-                {
-                    await new Edit_Person_Detail(MainObject.Person).ShowAsync();
-                }
-                catch (Exception)
-                {
-                }
+                case ProjectPagesOptions.CharNewChar:
+                    Pivot.SelectedIndex = 0;
+                    try
+                    {
+                        await new Edit_Person_Detail(MainObject.Person).ShowAsync();
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    break;
+                case ProjectPagesOptions.Char_Action:
+                    Pivot.SelectedIndex = 0;
+                    break;
+                case ProjectPagesOptions.Char_Items:
+                    Pivot.SelectedIndex = 1;
+                    break;
+                case ProjectPagesOptions.Char_Battle:
+                    Pivot.SelectedIndex = 2;
+                    break;
+                case ProjectPagesOptions.Char_Person:
+                    Pivot.SelectedIndex = 3;
+                    break;
+                case ProjectPagesOptions.Char_Notes:
+                    Pivot.SelectedIndex = 4;
+                    break;
+                case ProjectPagesOptions.Char_Settings:
+                    Pivot.SelectedIndex = 5;
+                    break;
+                default:
+                    break;
             }
             if (!SettingsModel.I.TutorialCharShown)
             {
@@ -126,7 +146,8 @@ namespace ShadowRunHelper
         }
         void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Model.RequestNavigation(this, ProjectPages.Char);
+            NavigationCacheMode = NavigationCacheMode.Disabled;
+            Model.RequestNavigation(ProjectPages.Char);
         }
         #endregion
         #region  instant search Stuff
@@ -193,7 +214,7 @@ namespace ShadowRunHelper
             try
             {
                 // Listenauswahl
-                var (Block, sv) = LoadedCategoryBlocks.FirstOrDefault(x=>x.Block.ThingType == PendingScrollEntry.ThingType);
+                var (Block, sv) = LoadedCategoryBlocks.FirstOrDefault(x=>x.Block.Controller.eDataTyp == PendingScrollEntry.ThingType);
                 double offset = 0;
                 foreach (var item in ((sv as ScrollViewer).Content as Panel).Children)
                 {

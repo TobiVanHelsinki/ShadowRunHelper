@@ -1327,4 +1327,58 @@ This is shown in detail at the example-character</value>
   <data name="Model_Fertigkeit_CreateHandlung" xml:space="preserve">
     <value>Create Action</value>
   </data>
+  <data name="IAP_TXT_ADS.Content" xml:space="preserve">
+    <value>Lifetime no Ads</value>
+  </data>
+  <data name="IAP_TXT_ADS_365.Content" xml:space="preserve">
+    <value>No Ads for one year</value>
+  </data>
+  <data name="IAP_TXT_TEE.Content" xml:space="preserve">
+    <value>Buy me some tee</value>
+  </data>
+  <data name="Model__ORG.Text" xml:space="preserve">
+    <value>orig.</value>
+  </data>
+  <data name="UI_Optionen_U_Buy.Text" xml:space="preserve">
+    <value>Buy</value>
+  </data>
+  <data name="Ui_Admin_Filename.Text" xml:space="preserve">
+    <value>Filename</value>
+  </data>
+  <data name="Ui_Admin_Filepath.Text" xml:space="preserve">
+    <value>Filepath</value>
+  </data>
+  <data name="CloseNotifications" xml:space="preserve">
+    <value>Close all</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_FolderOpen.Text" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_FolderOpenSTD.Label" xml:space="preserve">
+    <value>open saveplace</value>
+  </data>
+  <data name="Model_Handlung_GegenZusatz.Text" xml:space="preserve">
+    <value>Defense Addition</value>
+  </data>
+  <data name="Model_Handlung_GrenzeZusatz.Text" xml:space="preserve">
+    <value>Limit Addition</value>
+  </data>
+  <data name="Model_Handlung_WertZusatz.Text" xml:space="preserve">
+    <value>Pool Addition</value>
+  </data>
+  <data name="Content_Erinnerung" xml:space="preserve">
+    <value>memento</value>
+  </data>
+  <data name="Content_Menschenkenntnis" xml:space="preserve">
+    <value>knowledge of human nature</value>
+  </data>
+  <data name="Content_Schadenswiderstand" xml:space="preserve">
+    <value>damage resistance</value>
+  </data>
+  <data name="Content_Selbstbeherrschung" xml:space="preserve">
+    <value>self-control</value>
+  </data>
 </root>

@@ -1,8 +1,7 @@
 ﻿using System;
 using TLIB;
-using TLIB_UWPFRAME;
 
-namespace Shared
+namespace ShadowRunHelper
 {
     internal class IO_FileVersion : Exception
     {

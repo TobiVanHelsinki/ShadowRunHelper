@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using Windows.UI.Xaml.Data;
-using org.mariuszgromada.math.mxparser;
 
 namespace ShadowRunHelper.UI.Converter
 {

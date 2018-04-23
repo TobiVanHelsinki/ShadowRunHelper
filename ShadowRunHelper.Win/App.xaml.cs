@@ -1,18 +1,21 @@
-﻿using ShadowRunHelper.IO;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Threading.Tasks;
 using TLIB;
-using TLIB_UWPFRAME;
-using TLIB_UWPFRAME.IO;
+using TAPPLICATION;
+using TAPPLICATION.IO;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.ApplicationModel.Core;
-using Windows.Storage;
-using Windows.UI.ViewManagement;
+using Windows.Services.Store;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using TAMARIN.IO;
+using ShadowRunHelper.UI;
 
 namespace ShadowRunHelper
 {
@@ -21,16 +24,7 @@ namespace ShadowRunHelper
     /// </summary>
     sealed partial class App : Application
     {
-        #region Tests
-        void ExtendAcrylicIntoTitleBar()
-        {
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.BackgroundColor = null;
-            titleBar.ButtonBackgroundColor = null;
-            titleBar.ButtonInactiveBackgroundColor = null;
-        }
-        #endregion
+        bool FirstStart = true;
         readonly AppModel Model;
         readonly SettingsModel Settings;
 
@@ -43,17 +37,14 @@ namespace ShadowRunHelper
         public App()
         {
             UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
+            SetConstantStuff();
+            IAP.CheckLicence();
             Model = AppModel.Initialize();
             Settings = SettingsModel.Initialize();
             if (Settings.StartCount < 1)
             {
                 Settings.ResetAllSettings();
             }
-
-            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
-                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
-                Microsoft.ApplicationInsights.WindowsCollectors.Session);
-
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
             Suspending += App_Suspending;
@@ -61,23 +52,44 @@ namespace ShadowRunHelper
 
             InitializeComponent();
             Settings.StartCount++;
+
+            //Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
+            //    //Microsoft.ApplicationInsights.WindowsCollectors.UnhandledException |
+            //    Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
+            //    Microsoft.ApplicationInsights.WindowsCollectors.Session);
+            //AppCenter.LogLevel = LogLevel.Verbose;
+            
+            AppCenter.Start(Constants.AppCenterID, typeof(Crashes), typeof(Analytics));
+        }
+
+        public async void SetConstantStuff()
+        {
+            var SP = (await StoreContext.GetDefault().GetStoreProductForCurrentAppAsync()).Product;
+            
+            var json = Windows.Data.Json.JsonObject.Parse(SP.ExtendedJsonData);
+            SharedConstants.APP_STORE_ID = SP.StoreId;
+            SharedConstants.APP_VERSION_BUILD_DELIM = String.Format("{0}.{1}.{2}.{3}", Package.Current.Id.Version.Major, Package.Current.Id.Version.Minor, Package.Current.Id.Version.Build, Package.Current.Id.Version.Revision);
+
+            var arr = json.GetNamedArray("LocalizedProperties");
+            if (arr.Count == 0)
+            {
+                return;
+            }
+            var json2 = Windows.Data.Json.JsonObject.Parse(arr[0].Stringify());
+            SharedConstants.APP_PUBLISHER_MAILTO = json2.GetNamedString("SupportUri", SharedConstants.ERROR_TOKEN);
+            SharedConstants.APP_PUBLISHER = json2.GetNamedString("PublisherName", SharedConstants.ERROR_TOKEN);
         }
 
         #endregion
 
         #region Entry-Points
 
-        protected override async void OnLaunched(LaunchActivatedEventArgs e)
+        protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
             SystemHelper.WriteLine("OnLaunched");
 #endif
             base.OnLaunched(e);
-            if (Settings.LoadCharOnStart)
-            {
-                Model.MainObject = await CharHolderIO.Load(Settings.LastSaveInfo, eUD: UserDecision.ThrowError);
-                Settings.CountLoadings++;
-            }
 #if DEBUG
             SystemHelper.WriteLine("OnLaunchedComplete");
 #endif
@@ -120,6 +132,7 @@ namespace ShadowRunHelper
                 }
             }
             Model.MainObject = NewHolder;
+            Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
 
         }
         #endregion
@@ -132,17 +145,18 @@ namespace ShadowRunHelper
             var def = e.GetDeferral();
             try
             {
+                FileInfoClass SaveInfo;
                 if (Settings.AutoSave)
                 {
-                    await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
+                    SaveInfo = await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
+                    Settings.CountSavings++;
                 }
                 else
                 {
-                    await SharedIO.SaveAtTempPlace(Model.MainObject);
-                    Settings.CharInTempStore = true;
+                    SaveInfo = await SharedIO.SaveAtTempPlace(Model.MainObject);
                 }
-                Settings.LastSaveInfo = Model.MainObject.FileInfo;
-                Settings.CountSavings++;
+                Settings.CharInTempStore = true;
+                Settings.LastSaveInfo = SaveInfo;
             } catch (Exception) { }
             def.Complete();
 #if DEBUG
@@ -162,6 +176,29 @@ namespace ShadowRunHelper
                 DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+            try
+            {
+                if ((Settings.CharInTempStore && !FirstStart || Settings.LoadCharOnStart && FirstStart) && Model.MainObject == null)
+                {
+                    var info = Settings.LastSaveInfo;
+                    var TMPChar = await CharHolderIO.Load(info, eUD: UserDecision.ThrowError);
+                    if (TMPChar.FileInfo.Fileplace == Place.Temp)
+                    {
+                        TMPChar.FileInfo.Fileplace = SharedIO.GetCurrentSavePlace();
+                        TMPChar.FileInfo.Filepath = SharedIO.GetCurrentSavePath();
+                        await CharHolderIO.SaveAtOriginPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
+                    }
+                    Model.MainObject = TMPChar;
+                    Settings.CountLoadings++;
+                }
+            }
+            catch (Exception) { }
+            finally
+            {
+                Settings.LastSaveInfo = null;
+                Settings.CharInTempStore = false;
+            }
+
             Frame rootFrame = Window.Current.Content as Frame;
             // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
             // Nur sicherstellen, dass das Fenster aktiv ist.
@@ -180,28 +217,16 @@ namespace ShadowRunHelper
                 // uebergeben werden
                 rootFrame.Navigate(typeof(MainPage));
             }
+            else
+            {
+                // Seite ist aktiv, wir versuchen, den Char anzuzeigen
+                Model.RequestNavigation(ProjectPages.Char);
+            }
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();
 
-            ExtendAcrylicIntoTitleBar();
-            try
-            {
-                if (Settings.CharInTempStore)
-                {
-                    if (Model.MainObject == null)
-                    {
-                        Model.MainObject = await CharHolderIO.Load(
-                            new FileInfoClass() { Fileplace = Place.Temp, Filename = Settings.LastSaveInfo.Filename }
-                            , null
-                            , UserDecision.ThrowError);
-                        Settings.CountLoadings++;
-                    }
-                    Settings.CharInTempStore = false;
-                    Settings.LastSaveInfo = null;
-                }
-            }
-            catch (Exception) { }
             def.Complete();
+            FirstStart = false;
 #if DEBUG
             SystemHelper.WriteLine("App_LeavingBackgroundComplete");
 #endif
@@ -262,18 +287,22 @@ namespace ShadowRunHelper
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        async Task App_UnhandledExceptionAsync(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
+        async Task App_UnhandledExceptionAsync(object sender, UnhandledExceptionEventArgs e)
         {
-            e.Handled = true;
             Settings.LastSaveInfo = null;
             try
             {
-                await CharHolderIO.SaveAtOriginPlace(Model.MainObject, TLIB_UWPFRAME.IO.SaveType.Emergency);
+                await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Emergency);
                 var res = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
                 Model.NewNotification(res.GetString("Notification_Error_Unknown"), e.Exception);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+            }
+            if (!e.Message.Contains(Constants.TESTEXCEPTIONTEXT))
+            {
+                Analytics.TrackEvent("App_UnhandledExceptionAsync");
+                e.Handled = true;
             }
         }
         #endregion

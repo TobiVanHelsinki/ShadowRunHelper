@@ -6,12 +6,24 @@ namespace ShadowRunHelper.CharModel
     {
         public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
             {
-                ThingDefs.Handlung, ThingDefs.Connection, ThingDefs.Fertigkeit
+                ThingDefs.Handlung, ThingDefs.Connection, ThingDefs.Sin
             };
 
         public Fertigkeit() : base()
         {
-            LinkedThings.SetFilter(Filter);
+            LinkedThings.FilterOut = (Filter);
+        }
+
+        protected override double InternValueOf(string ID)
+        {
+            if (ID == null || ID == "" || ID == "Wert")
+            {
+                return Wert;
+            }
+            else
+            {
+                return base.InternValueOf(ID);
+            }
         }
     }
 }

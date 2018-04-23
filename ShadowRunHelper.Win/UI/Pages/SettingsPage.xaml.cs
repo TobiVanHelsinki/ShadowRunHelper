@@ -1,37 +1,48 @@
-﻿using ShadowRunHelper.CharModel;
+﻿using Microsoft.AppCenter.Analytics;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TAMARIN.IO;
+using TAPPLICATION;
+using TAPPLICATION.IO;
+using TAPPLICATION.Model;
 using TLIB;
-using TLIB_UWPFRAME;
-using TLIB_UWPFRAME.IO;
-using TLIB_UWPFRAME.Model;
-using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace ShadowRunHelper
+namespace ShadowRunHelper.UI
 {
     public sealed partial class SettingsPage : Page
     {
         readonly SettingsModel Settings = SettingsModel.Instance;
         readonly AppModel Model = AppModel.Instance;
-        readonly string eMail = Constants.APP_CONTACT_MAIL;
-        readonly string Inhaber = Constants.AUTHOR;
+        readonly string AppKontaktEmail = Constants.APP_PUBLISHER_MAILTO;
+        readonly string Inhaber = Constants.APP_PUBLISHER;
         readonly string AppVersionBuild = Constants.APP_VERSION_BUILD_DELIM;
         readonly string AppReviewLink = Constants.APP_STORE_REVIEW_LINK;
-        readonly string AppKontaktEmail = Constants.APP_CONTACT_MAILTO;
+        readonly string eMail = Constants.APP_PUBLISHER_MAIL;
         readonly string MoreAppsLink = Constants.APP_MORE_APPS;
         readonly string AppLink = Constants.APP_STORE_LINK;
         readonly List<HelpEntry> Help = Constants.HelpList;
 
-
         public SettingsPage()
         {
             InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Required;
+            CheckIAP();
         }
+
+        void CheckIAP()
+        {
+            if (Constants.IAP_HIDEADS)
+            {
+                Ad_MainPageRight.Visibility = Constants.IAP_HIDEADS ? Visibility.Collapsed : Visibility.Visible;
+                Ad_MainPageBottom.Visibility = Constants.IAP_HIDEADS ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             switch ((ProjectPagesOptions)e.Parameter)
@@ -116,7 +127,7 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    SharedSettingsModel.I.ORDNERMODE_PFAD = (await WinIO.GetFolder(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.AskUser)).Path;
+                    SharedSettingsModel.I.ORDNERMODE_PFAD = (await UwpIO.GetFolder(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.AskUser)).Path;
                 }
                 catch (Exception) { }
             }
@@ -138,7 +149,10 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    await SharedIO.CopyLocalRoaming((sender as ToggleSwitch).IsOn ? Place.Roaming : Place.Local);
+                    var t = new FileInfoClass((sender as ToggleSwitch).IsOn ? Place.Roaming : Place.Local, "", SharedConstants.INTERN_SAVE_CONTAINER);
+                    var s = new FileInfoClass((sender as ToggleSwitch).IsOn ? Place.Local : Place.Roaming, "", SharedConstants.INTERN_SAVE_CONTAINER);
+                    //await SharedIO.CopyLocalRoaming((sender as ToggleSwitch).IsOn ? Place.Roaming : Place.Local);
+                    await SharedIO.CurrentIO.CopyAllFiles(t,s);
                 }
                 catch (Exception ex)
                 {
@@ -148,6 +162,52 @@ namespace ShadowRunHelper
             Intern_Sync_HasFocus = false;
         }
         #endregion
+        #region Buying Stuff
 
-   }
+        async void IAP_ADS(object sender, RoutedEventArgs e)
+        {
+            await IAP.Buy(Constants.IAP_FEATUREID_ADFREE);
+            CheckIAP();
+        }
+
+        async void IAP_ADS_365(object sender, RoutedEventArgs e)
+        {
+            await IAP.Buy(Constants.IAP_FEATUREID_ADFREE);
+            CheckIAP();
+
+        }
+
+        async void IAP_Tee(object sender, RoutedEventArgs e)
+        {
+            await IAP.Buy(Constants.IAP_FEATUREID_TEE);
+            CheckIAP();
+        }
+        #endregion
+        #region Analytics
+
+        #endregion
+        void MainNavigation_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch ((MainNavigation.SelectedItem as PivotItem).Tag)
+            {
+                case "31":
+                    Analytics.TrackEvent("Nav_Sett_Info");
+                    break;
+                case "32":
+                    Analytics.TrackEvent("Nav_Sett_Sett");
+                    break;
+                case "34":
+                    Analytics.TrackEvent("Nav_Sett_Help");
+                    break;
+                case "36":
+                    Analytics.TrackEvent("Nav_Sett_Buy");
+                    break;
+                case "35":
+                    Analytics.TrackEvent("Nav_Sett_Not");
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }

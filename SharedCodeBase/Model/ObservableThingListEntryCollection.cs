@@ -1,35 +1,26 @@
-﻿using ShadowRunHelper;
-using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using TLIB;
-using TLIB_UWPFRAME;
 
 namespace ShadowRunHelper.Model
 {
-    public class ObservableThingListEntryCollection : ObservableCollection<AllListEntry>
+    public class LinkList : ObservableCollection<AllListEntry>
     {
-
-        public void SetFilter(IEnumerable<ThingDefs> ForbiddenThingTypes)
-        {
-            this.ForbiddenThingTypes = ForbiddenThingTypes;
-        }
-
-        IEnumerable<ThingDefs> ForbiddenThingTypes;
+        public IEnumerable<ThingDefs> FilterOut { get; set; }
         protected override void InsertItem(int index, AllListEntry item)
         {
-            if (item?.Object != null && ForbiddenThingTypes != null 
-            && !ForbiddenThingTypes.Contains(item.Object.ThingType)
+            if (item?.Object != null && FilterOut != null 
+            && !FilterOut.Contains(item.Object.ThingType)
             && !HasCircularReference(item.Object))
             {
                 base.InsertItem(index, item);
             }
             else
             {
-                AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Notification_Warning_NotAddLinkedEntry"),item.Object.Bezeichner));
+                AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Notification_Warning_NotAddLinkedEntry"),item?.Object?.Bezeichner));
             }
         }
 
@@ -61,7 +52,7 @@ namespace ShadowRunHelper.Model
         Action CurrentTODO;
         Thing thisThing;
 
-        public ObservableThingListEntryCollection(Thing thing)
+        public LinkList(Thing thing)
         {
             thisThing = thing;
         }

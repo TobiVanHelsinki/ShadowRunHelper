@@ -1,7 +1,9 @@
 ﻿using ShadowRunHelper.CharModel;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
-namespace ShadowRunHelper.UI.Edit
+namespace ShadowRunHelper.UI
 {
     public sealed partial class Edit_Person_Detail : ContentDialog
     {
@@ -32,5 +34,9 @@ namespace ShadowRunHelper.UI.Edit
         {
             this.Data.BirthDate = ((DatePicker)sender).Date;
         }
+        void EditBox_GotFocus(object sender, RoutedEventArgs e) => SharePageFunctions.EditBox_SelectAll(sender, e);
+
+        void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
+
     }
 }

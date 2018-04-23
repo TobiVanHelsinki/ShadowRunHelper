@@ -20,19 +20,14 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x =>
-            x.ThingType != ThingDefs.Item &&
-            x.ThingType != ThingDefs.Fernkampfwaffe &&
-            x.ThingType != ThingDefs.Nahkampfwaffe &&
-            x.ThingType != ThingDefs.Panzerung &&
-            x.ThingType != ThingDefs.Implantat &&
-            x.ThingType != ThingDefs.Vorteil &&
-            x.ThingType != ThingDefs.Nachteil
-        ).Select(x => x.ThingType);
+        public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
+            {
+                ThingDefs.Handlung, ThingDefs.Fertigkeit, ThingDefs.Connection, ThingDefs.Sin
+            };
 
         public Panzerung() : base()
         {
-            LinkedThings.SetFilter(Filter);
+            LinkedThings.FilterOut = (Filter);
         }
     }
 }

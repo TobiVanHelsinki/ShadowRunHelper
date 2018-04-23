@@ -6,8 +6,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using TLIB;
-using TLIB_UWPFRAME;
-using TLIB_UWPFRAME.Model;
+using TAPPLICATION;
+using TAPPLICATION.Model;
 
 namespace ShadowRunHelper
 {
@@ -25,12 +25,22 @@ namespace ShadowRunHelper
     }
     public enum ProjectPagesOptions
     {
+        Nothing = 0,
+
+        CharNewChar = 10,
+        Char_Action = 11,
+        Char_Items = 12,
+        Char_Battle = 13,
+        Char_Person = 14,
+        Char_Notes = 15,
+        Char_Settings = 16,
+
         SettingsMain = 31,
         SettingsOptions = 32,
         SettingsCategories = 33,
         SettingsHelp = 34,
-        Nothing = 35,
-        CharNewChar = 36,
+        SettingsNots = 35,
+        SettingsBuy = 36,
     }
 
     public enum TCharState

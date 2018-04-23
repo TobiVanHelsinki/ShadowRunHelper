@@ -1,20 +1,18 @@
 ﻿using ShadowRunHelper.Model;
-using ShadowRunHelper.UI;
 using System;
 using System.Linq;
-using TLIB_UWPFRAME.Model;
+using TAPPLICATION.Model;
+using TLIB;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
-using Windows.Foundation.Metadata;
-using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
-namespace ShadowRunHelper
+namespace ShadowRunHelper.UI
 {
     public sealed partial class MainPage : Page
     {
@@ -45,24 +43,38 @@ namespace ShadowRunHelper
         {
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
+#pragma warning disable CS4014
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary();
+#pragma warning restore CS4014
             Model.TutorialStateChanged += TutorialStateChanged;
-            Model.NavigationRequested += (x, y, z) => NavigationRequested(y, z);
-#if DEBUG
-            HeatMap.Visibility = Visibility.Visible;
-            TextRedraw.Visibility = Visibility.Visible;
-#endif
-            //CompatibilityChecks();
+            Model.NavigationRequested += NavigationRequested;
         }
+        public void TitleBarStuff()
+        {
+            ApplicationViewTitleBar AppTitlebar = ApplicationView.GetForCurrentView().TitleBar;
+            CoreApplicationViewTitleBar CurrentTitlebar = CoreApplication.GetCurrentView().TitleBar;
+
+            CurrentTitlebar.ExtendViewIntoTitleBar = true;
+            AppTitlebar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
+            AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
+
+            TitleColumnR.MinWidth = CurrentTitlebar.SystemOverlayRightInset;
+            TitleColumnL.MinWidth = CurrentTitlebar.SystemOverlayLeftInset;
+
+            Window.Current.SetTitleBar(AppTitleBar);
+        }
+
         #region navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             ShowNotificationsIfNecessary();
             Model.SetDependencies(Dispatcher);
+            CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, p) => TitleBarStuff();
+            CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += (s, p) => TitleBarStuff();
+            TitleBarStuff();
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
         }
-
         void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
         {
             switch (p)
@@ -88,7 +100,7 @@ namespace ShadowRunHelper
             }
         }
         #endregion
-        #region generel stuff
+        #region global stuff
 
         void TutorialStateChanged(int StateNumber, bool Highlight)
         {
@@ -107,24 +119,37 @@ namespace ShadowRunHelper
                     break;
             }
         }
-        void ShowNotificationsIfNecessary()
+        bool ShowNotificationsInProgress = false;
+
+        async void ShowNotificationsIfNecessary()
         {
-            foreach (Notification item in Model.lstNotifications.Where((x) => x.bIsRead == false).OrderBy((x) => x.DateTime))
+            if (ShowNotificationsInProgress)
             {
+                return;
+            }
+            ShowNotificationsInProgress = true;
+            bool DisplayMore = true;
+            foreach (Notification item in Model.lstNotifications.Where((x) => x.IsRead == false).OrderBy((x) => x.OccuredAt))
+            {
+                if (!DisplayMore)
+                {
+                    break;
+                }
                 try
                 {
-                    var messageDialog = new MessageDialog(item.strMessage + "\n\n\n" + item.ThrownException?.Message);
-                    messageDialog.Commands.Add(new UICommand(
-                        "OK"));
+                    var messageDialog = new MessageDialog(item.Message + "\n\n\n" + item.ThrownException?.Message);
+                    messageDialog.Commands.Add(new UICommand(StringHelper.GetString("OK")));
+                    messageDialog.Commands.Add(new UICommand(StringHelper.GetString("CloseNotifications"), (x) => DisplayMore = false));
                     messageDialog.DefaultCommandIndex = 0;
-                    messageDialog.ShowAsync();
-                    item.bIsRead = true;
+                    await messageDialog.ShowAsync();
+                    item.IsRead = true;
                 }
                 catch (Exception ex)
                 {
                     continue;
                 }
             }
+            ShowNotificationsInProgress = false;
         }
         #endregion
         #region Header Button Handler
@@ -200,34 +225,13 @@ namespace ShadowRunHelper
 
             if (Controller_Name.Contains("Person2"))
             {
-                UI.Edit.Edit_Person_Fast dialog = new UI.Edit.Edit_Person_Fast(Model.MainObject.Person);
+                Edit_Person_Fast dialog = new Edit_Person_Fast(Model.MainObject.Person);
                 await dialog.ShowAsync();
             }
         }
 
         #endregion
         #region ButtonHandling
-        async void OpenDB(object sender, RoutedEventArgs e)
-        {
-            if (AppModel.Instance.MainObject == null)
-            {
-                return;
-            }
-            CoreApplicationView newView = CoreApplication.CreateNewView();
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(DBPage), null);
-                Window.Current.Content = frame;
-                // You have to activate the window in order to show it later.
-                Window.Current.Activate();
-
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
-
-        }
 
         void Ui_Nav_Char(object sender, RoutedEventArgs e)
         {
@@ -268,8 +272,12 @@ namespace ShadowRunHelper
             (sender as Control).FontSize = CustFontSize;
         }
 
+
         #endregion
 
+        void EditBox_GotFocus(object sender, RoutedEventArgs e) => SharePageFunctions.EditBox_SelectAll(sender, e);
+
+        void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
 
     }
 }

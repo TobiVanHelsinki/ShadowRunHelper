@@ -1,25 +1,18 @@
-﻿using System.Collections.Generic;
-using Windows.UI.Xaml.Controls;
+﻿using ShadowRunHelper.Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Windows.UI.Xaml.Data;
-using System;
 using System.Linq;
-using ShadowRunHelper.Model;
-using Shared;
-using TLIB;
-using Windows.UI.Xaml;
+using TAPPLICATION.Model;
 using Windows.Foundation.Metadata;
-using TLIB_UWPFRAME.Model;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
-namespace ShadowRunHelper
+namespace ShadowRunHelper.UI
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class NotificationsDialog : ContentDialog
     {
         readonly ObservableCollection<Notification> Notifications = AppModel.Instance.lstNotifications;
-        readonly IEnumerable<Notification> NewNotifications = AppModel.Instance.lstNotifications.Where(x=>!x.bIsRead);
+        readonly IEnumerable<Notification> NewNotifications = AppModel.Instance.lstNotifications.Where(x=>!x.IsRead);
 
         public int NotificationsMax
         {
@@ -27,7 +20,7 @@ namespace ShadowRunHelper
         }
         public int NotificationsUnread
         {
-            get { return NewNotifications.Where(x=> !x.bIsRead).Count(); }
+            get { return NewNotifications.Where(x=> !x.IsRead).Count(); }
         }
 
 
@@ -40,7 +33,9 @@ namespace ShadowRunHelper
         private void LstNotifications_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             Hide();
+#pragma warning disable CS4014
             ShowAsync();
+#pragma warning restore CS4014
             //ListView.ItemsSource = lstNotifications.Where((x) => x.bIsRead == false).OrderBy((x) => x.DateTime).Select(item => item.strMessage + "\n\n\n" + item.ThrownException?.Message);
         }
 

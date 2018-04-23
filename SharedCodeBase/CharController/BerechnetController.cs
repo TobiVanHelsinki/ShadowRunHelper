@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using TLIB;
-using TLIB_UWPFRAME;
+using TAPPLICATION;
 
 namespace ShadowRunHelper.CharController
 {
@@ -125,7 +125,8 @@ namespace ShadowRunHelper.CharController
             RefreshEssenz();
         }
 
-        // Refresh Stuff ######################################################
+        #region Refresh Methods
+
         protected void RefreshEssenz()
         {
             Essenz.Wert = 6;
@@ -165,16 +166,17 @@ namespace ShadowRunHelper.CharController
 
         protected void RefreshLaufen()
         {
-            Laufen.Wert = AttributeRef.Geschick.Wert * 2; 
+            Laufen.Wert = AttributeRef.Geschick.ValueOf("Wert") * 2; 
         }
         protected void RefreshRennen()
         {
-            Rennen.Wert = AttributeRef.Geschick.Wert * 4;
+            Rennen.Wert = AttributeRef.Geschick.ValueOf("Wert") * 4;
         }
         protected void RefreshTragen()
         {
-            Tragen.Wert = AttributeRef.Staerke.Wert * 10; //5 und 15 auch mgl TODO
+            Tragen.Wert = AttributeRef.Staerke.ValueOf("Wert") * 10; //5 und 15 auch mgl TODO
         }
+        #endregion
 
         // DataList Handling ##############################
         void RefreshDataList()

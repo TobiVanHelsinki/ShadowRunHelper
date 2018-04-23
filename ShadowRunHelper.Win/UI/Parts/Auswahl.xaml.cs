@@ -4,20 +4,21 @@ using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Data;
 using System.Linq;
 using ShadowRunHelper.Model;
-using Shared;
-using TLIB;
 
-namespace ShadowRunHelper
+using TLIB;
+using Microsoft.AppCenter.Analytics;
+
+namespace ShadowRunHelper.UI
 {
 
     public partial class Auswahl : ContentDialog
     {
-        ObservableThingListEntryCollection lstZusammensetzung;
+        LinkList lstZusammensetzung;
         List<AllListEntry> lstThings;
         bool isMultichoice;
         IEnumerable<ThingDefs> FilterOut;
 
-        public Auswahl(List<AllListEntry> i_lstAll, ObservableThingListEntryCollection data, bool Multichoice = true, IEnumerable<ThingDefs> Filter = null)
+        public Auswahl(List<AllListEntry> i_lstAll, LinkList data, bool Multichoice = true, IEnumerable<ThingDefs> Filter = null)
         {
             InitializeComponent();
 
@@ -63,13 +64,15 @@ namespace ShadowRunHelper
         /// <param name="args"></param>
         protected virtual void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            ContentDialogButtonClickDeferral deferral = args.GetDeferral();
             lstZusammensetzung.Clear();
             foreach (AllListEntry item in Zus_ListVIew.SelectedItems)
             {
                 lstZusammensetzung.Add(item);
             }
-            ContentDialogButtonClickDeferral deferral = args.GetDeferral();
             deferral.Complete();
+            Analytics.TrackEvent("LinkChoosing Used");
+
         }
 
         protected virtual void Zus_ListVIew_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -89,6 +92,7 @@ namespace ShadowRunHelper
             }
             if (Zus_ListVIew.SelectedItems.Count < lstZusammensetzung.Count)
             {
+                Analytics.TrackEvent("Err_LinkChoosing Zus_ListVIew.SelectedItems.Count < lstZusammensetzung.Count");
 #if DEBUG
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
 #endif

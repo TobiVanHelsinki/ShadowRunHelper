@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.Model;
+﻿using Newtonsoft.Json;
+using ShadowRunHelper.Model;
 using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
@@ -6,9 +7,9 @@ namespace ShadowRunHelper.CharModel
     public class Handlung : Thing
     {
         [Used_List]
-        public ObservableThingListEntryCollection GrenzeZusammensetzung { get; set; }
+        public LinkList GrenzeZusammensetzung { get; set; }
         [Used_List]
-        public ObservableThingListEntryCollection GegenZusammensetzung { get; set; }
+        public LinkList GegenZusammensetzung { get; set; }
 
         double grenze = 0;
         [Used_UserAttribute]
@@ -20,6 +21,21 @@ namespace ShadowRunHelper.CharModel
                 if (value != grenze)
                 {
                     grenze = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        double grenzeCalced = 0;
+        [JsonIgnore]
+        [Used_UserAttribute]
+        public double GrenzeCalced
+        {
+            get { return grenzeCalced; }
+            set
+            {
+                if (value != grenzeCalced)
+                {
+                    grenzeCalced = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -39,6 +55,21 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+        double gegenCalced = 0;
+        [JsonIgnore]
+        [Used_UserAttribute]
+        public double GegenCalced
+        {
+            get { return gegenCalced; }
+            set
+            {
+                if (value != gegenCalced)
+                {
+                    gegenCalced = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
             {
@@ -47,14 +78,36 @@ namespace ShadowRunHelper.CharModel
 
         public Handlung() : base()
         {
-            LinkedThings.SetFilter(Filter);
-            GrenzeZusammensetzung = new ObservableThingListEntryCollection(this);
-            GrenzeZusammensetzung.SetFilter(Filter);
-            GegenZusammensetzung = new ObservableThingListEntryCollection(this);
-            GegenZusammensetzung.SetFilter(Filter);
+            LinkedThings.FilterOut = Filter;
+            GrenzeZusammensetzung = new LinkList(this);
+            GrenzeZusammensetzung.FilterOut = Filter;
+            GegenZusammensetzung = new LinkList(this);
+            GegenZusammensetzung.FilterOut = Filter;
 
-            GrenzeZusammensetzung.OnCollectionChangedCall(() => { Grenze = GrenzeZusammensetzung.Recalculate(); });
-            GegenZusammensetzung.OnCollectionChangedCall(()=> { Gegen = GegenZusammensetzung.Recalculate(); });
+            PropertyChanged += Handlung_PropertyChanged;
+            GrenzeZusammensetzung.OnCollectionChangedCall(UpdateGrenze);
+            GegenZusammensetzung.OnCollectionChangedCall(UpdateGegen);
+        }
+
+        void Handlung_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Grenze")
+            {
+                UpdateGrenze();
+            }
+            if (e.PropertyName == "Gegen")
+            {
+                UpdateGegen();
+            }
+        }
+
+        void UpdateGrenze()
+        {
+            GrenzeCalced = Grenze + GrenzeZusammensetzung.Recalculate();
+        }
+        void UpdateGegen()
+        {
+            GegenCalced = Gegen + GegenZusammensetzung.Recalculate();
         }
     }
 }

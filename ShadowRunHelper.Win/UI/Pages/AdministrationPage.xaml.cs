@@ -1,61 +1,58 @@
-﻿using ShadowRunHelper.IO;
+﻿using Microsoft.AppCenter.Analytics;
+using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
-using ShadowRunHelper.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using TAMARIN.IO;
+using TAPPLICATION.IO;
 using TLIB;
-using TLIB_UWPFRAME;
-using TLIB_UWPFRAME.IO;
-using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
-using Windows.Foundation.Metadata;
-using Windows.UI.Core;
+using Windows.System;
 using Windows.UI.Popups;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-namespace ShadowRunHelper
+
+namespace ShadowRunHelper.UI
 {
     public sealed partial class AdministrationPage : Page
     {
-        readonly AppModel ViewModel = AppModel.Instance;
+        readonly AppModel Model = AppModel.Instance;
         readonly ObservableCollection<FileInfoClass> Summorys = new ObservableCollection<FileInfoClass>();
-        event PropertyChangedEventHandler PropertyChanged;
         ResourceLoader res;
-
-        void NotifySummoryChanged([CallerMemberName] String summoryName = "")
-        {
-            TLIB_UWPFRAME.Model.ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, summoryName);
-        }
 
         public AdministrationPage()
         {
             InitializeComponent();
+            NavigationCacheMode = NavigationCacheMode.Required;
+            CheckIAP();
             res = ResourceLoader.GetForCurrentView();
-            ViewModel.TutorialStateChanged += TutorialStateChanged;
+            Model.TutorialStateChanged += TutorialStateChanged;
 #if DEBUG
-            Btn_SecondView.Visibility = Visibility.Visible;
             Btn_Exception.Visibility = Visibility.Visible;
 #else
-            Btn_SecondView.Visibility = Visibility.Collapsed;
             Btn_Exception.Visibility = Visibility.Collapsed;
 #endif
         }
-
+        void CheckIAP()
+        {
+            if (Constants.IAP_HIDEADS)
+            {
+                Ad_MainPageRight.Visibility = Constants.IAP_HIDEADS ? Visibility.Collapsed : Visibility.Visible;
+                Ad_MainPageBottom.Visibility = Constants.IAP_HIDEADS ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            ChangeCurrentCharUI(ViewModel.MainObject == null ? false : true);
-            ViewModel.PropertyChanged += (x, y) =>
+            ChangeCurrentCharUI(Model.MainObject == null ? false : true);
+            Model.PropertyChanged += (x, y) =>
             {
                 if (e.Parameter.ToString() == "MainObject")
                 {
-                    ChangeCurrentCharUI(ViewModel.MainObject == null ? false : true);
+                    ChangeCurrentCharUI(Model.MainObject == null ? false : true);
                 }
             };
 
@@ -102,6 +99,7 @@ namespace ShadowRunHelper
         void ChangeCurrentCharUI(bool bHow)
         {
             CurrentCharBtn_Save.IsEnabled = bHow;
+            CurrentCharBtn_FolderOpen.IsEnabled = bHow;
             CurrentCharBtn_Rename.IsEnabled = bHow;
             CurrentCharBtn_Save_Intern.IsEnabled = bHow;
             CurrentCharBtn_Del.IsEnabled = bHow;
@@ -147,7 +145,7 @@ namespace ShadowRunHelper
             Summorys.Clear();
             try
             {
-                var List = await CharHolderIO.GetListOfFiles(new FileInfoClass() { Fileplace = CharHolderIO.GetCurrentSavePlace(), Filepath = CharHolderIO.GetCurrentSavePath(), FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.ThrowError, Constants.LST_FILETYPES_CHAR);
+                var List = await CharHolderIO.CurrentIO.GetListofFiles(new FileInfoClass() { Fileplace = CharHolderIO.GetCurrentSavePlace(), Filepath = CharHolderIO.GetCurrentSavePath(), FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.ThrowError, Constants.LST_FILETYPES_CHAR);
                 foreach (var item in List.OrderByDescending((x) => x.DateModified))
                 {
                     Summorys.Add(new FileInfoClass() { Filename = item.Filename, DateModified = item.DateModified, Filepath = item.Filepath, Fileplace = item.Fileplace, Size = item.Size });
@@ -155,7 +153,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                ViewModel.NewNotification(res.GetString("Notification_Error_SummorysREfresh"), ex);
+                Model.NewNotification(res.GetString("Notification_Error_SummorysREfresh"), ex);
             }
         }
         #endregion
@@ -166,6 +164,14 @@ namespace ShadowRunHelper
             await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
             await Summorys_Aktualisieren();
         }
+        void Click_OpenFolder(object sender, RoutedEventArgs e)
+        {
+            SharedIO.CurrentIO.OpenFolder(Model.MainObject.FileInfo);
+        }
+        void Click_OpenSTDFolder(object sender, RoutedEventArgs e)
+        {
+            SharedIO.CurrentIO.OpenFolder(new FileInfoClass(SharedIO.GetCurrentSavePlace(), "", SharedIO.GetCurrentSavePath()));
+        }
 
         void Click_Erstellen(object sender, RoutedEventArgs e)
         {
@@ -173,28 +179,28 @@ namespace ShadowRunHelper
             {
                 return;
             }
-            ViewModel.MainObject = new CharHolder();
-            ViewModel.MainObject.AfterLoad();
+            Model.MainObject = CharHolder.CreateCharWithStandardContent();
+            Model.MainObject.AfterLoad();
             SettingsModel.I.CountCreations++;
-            AppModel.Instance.RequestNavigation(this, ProjectPages.Char, ProjectPagesOptions.CharNewChar);
+            AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
         }
 
         async void Click_Speichern(object sender, RoutedEventArgs e)
         {
             if (IsOperationInProgres)
             {
-                ViewModel.NewNotification(res.GetString("Notification_Error_SaveFail_OPInProgress"), new System.Exception());
+                Model.NewNotification(res.GetString("Notification_Error_SaveFail_OPInProgress"), new System.Exception());
                 return;
             }
 
             ChangeProgress(true);
             try
             {
-                ViewModel.MainObject.SetSaveTimerTo(0, true);
+                Model.MainObject.SetSaveTimerTo(0, true);
             }
             catch (Exception ex)
             {
-                ViewModel.NewNotification(res.GetString("Notification_Error_SaveFail"), ex);
+                Model.NewNotification(res.GetString("Notification_Error_SaveFail"), ex);
             }
             ChangeProgress(false);
             await Summorys_Aktualisieren();
@@ -210,12 +216,12 @@ namespace ShadowRunHelper
             ChangeProgress(true);
             try
             {
-                await CharHolderIO.SaveAtCurrentPlace(ViewModel.MainObject);
-                ViewModel.MainObject.HasChanges = false;
+                await CharHolderIO.SaveAtCurrentPlace(Model.MainObject);
+                Model.MainObject.HasChanges = false;
             }
             catch (Exception ex)
             {
-                ViewModel.NewNotification(res.GetString("Notification_Error_SaveFail"), ex);
+                Model.NewNotification(res.GetString("Notification_Error_SaveFail"), ex);
             }
             ChangeProgress(false);
             await Summorys_Aktualisieren();
@@ -227,21 +233,10 @@ namespace ShadowRunHelper
             {
                 return;
             }
-            await Laden(() => CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
+            await LoadChar(() => CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
         }
 
-        async void Click_Datei_Import(object sender, RoutedEventArgs e)
-        {
-            if (IsOperationInProgres)
-            {
-                return;
-            }
-            await Laden(() => CharHolderIO.Load(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "Import" }, Constants.LST_FILETYPES_CHAR, UserDecision.AskUser));
-            ViewModel.MainObject.FileInfo.Filepath = CharHolderIO.GetCurrentSavePath();
-            ViewModel.MainObject.FileInfo.Fileplace = CharHolderIO.GetCurrentSavePlace();
-        }
-
-        async Task Laden(Func<Task<CharHolder>> LoadFunc)
+        async Task LoadChar(Func<Task<CharHolder>> LoadFunc)
         {
             if (IsOperationInProgres)
             {
@@ -250,16 +245,16 @@ namespace ShadowRunHelper
             ChangeProgress(true);
             try
             {
-                ViewModel.MainObject = await LoadFunc();
+                Model.MainObject = await LoadFunc();
             }
             catch (Exception ex)
             {
-                ViewModel.NewNotification(res.GetString("Notification_Error_LoadFail"), ex);
+                Model.NewNotification(res.GetString("Notification_Error_LoadFail"), ex);
             }
             ChangeProgress(false);
-            if (ViewModel.MainObject != null)
+            if (Model.MainObject != null)
             {
-                AppModel.Instance.RequestNavigation(this, ProjectPages.Char);
+                AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
             }
             SettingsModel.I.CountLoadings++;
         }
@@ -275,11 +270,11 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    await CharHolderIO.Remove(((FileInfoClass)((Button)sender).DataContext));
+                    await CharHolderIO.CurrentIO.RemoveFile(((FileInfoClass)((Button)sender).DataContext));
                 }
                 catch (Exception ex)
                 {
-                    ViewModel.NewNotification(res.GetString("Notification_Error_DelFail"), ex);
+                    Model.NewNotification(res.GetString("Notification_Error_DelFail"), ex);
                 }
             }
             await ShowMessageDialog(StringHelper.GetString("Request_Delete/Title")
@@ -328,18 +323,18 @@ namespace ShadowRunHelper
                 {
                     try
                     {
-                        await CharHolderIO.Remove(item);
+                        await CharHolderIO.CurrentIO.RemoveFile(item);
                         SettingsModel.I.CountDeletions++;
                     }
                     catch (Exception ex)
                     {
-                        ViewModel.NewNotification(res.GetString("Notification_Error_DelFail"), ex);
+                        Model.NewNotification(res.GetString("Notification_Error_DelFail"), ex);
                         bIsFail = true;
                     }
                 }
                 if (bIsFail)
                 {
-                    ViewModel.NewNotification(res.GetString("Notification_Error_DelAllFail"));
+                    Model.NewNotification(res.GetString("Notification_Error_DelAllFail"));
                 }
                 ChangeProgress(false);
                 await Summorys_Aktualisieren();
@@ -356,24 +351,24 @@ namespace ShadowRunHelper
         {
             try
             {
-                ViewModel.MainObject = null;
+                Model.MainObject = null;
             }
             catch (Exception ex)
             {
-                if (ViewModel.MainObject != null)
+                if (Model.MainObject != null)
                 {
-                    ViewModel.NewNotification(res.GetString("Notification_Error_DelCurrentFail"), ex);
+                    Model.NewNotification(res.GetString("Notification_Error_DelCurrentFail"), ex);
                 }
             }
             finally
             {
-                ChangeCurrentCharUI(ViewModel.MainObject == null ? false : true);
+                ChangeCurrentCharUI(Model.MainObject == null ? false : true);
             }
         }
 
         void Click_Datei_Export_CurrentChar(object sender, RoutedEventArgs e)
         {
-            Click_Datei_Export(ViewModel.MainObject);
+            Click_Datei_Export(Model.MainObject);
         }
 
         async void Click_Datei_Export_OtherChar(object sender, RoutedEventArgs e)
@@ -390,10 +385,10 @@ namespace ShadowRunHelper
         {
             Input dialog = new Input
             {
-                InputValue = ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename
+                InputValue = AppModel.Instance.MainObject.FileInfo.Filename
             };
             await dialog.ShowAsync();
-            ShadowRunHelper.Model.AppModel.Instance.MainObject.FileInfo.Filename = dialog.InputValue;
+            AppModel.Instance.MainObject.FileInfo.Filename = dialog.InputValue;
         }
         async void Click_Datei_Export(CharHolder CharToSave)
         {
@@ -403,7 +398,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                ViewModel.NewNotification(res.GetString("Notification_Error_FileExportFail"), ex);
+                Model.NewNotification(res.GetString("Notification_Error_FileExportFail"), ex);
             }
         }
         // CSV #######
@@ -412,7 +407,7 @@ namespace ShadowRunHelper
         {
             if (!IsOperationInProgres)
             {
-                CSV_Export(ViewModel.MainObject);
+                CSV_Export(Model.MainObject);
             }
         }
         async void Click_CSV_Export_OtherChar(object sender, RoutedEventArgs e)
@@ -437,64 +432,32 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                ViewModel.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
+                Model.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
+            Analytics.TrackEvent("Admin_CSV_EX");
         }
 
         void Click_Repair_CurrentChar(object sender, RoutedEventArgs e)
         {
             try
             {
-                ViewModel.MainObject?.Repair();
+                Model.MainObject?.Repair();
             }
             catch (Exception ex)
             {
-                ViewModel.NewNotification(res.GetString("Notification_Error_RepairFail"), ex);
+                Model.NewNotification(res.GetString("Notification_Error_RepairFail"), ex);
             }
         }
 
-        #endregion
-
-        #region CustomStyles
-
-        void CommandBar_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (ApiInformation.IsPropertyPresent("Windows.UI.Xaml.Controls.CommandBar", "DefaultLabelPosition"))
-            {
-                (sender as CommandBar).DefaultLabelPosition = CommandBarDefaultLabelPosition.Right;
-            }
-        }
         #endregion
 
         #region Debug and Experimental
         void Exception(object sender, RoutedEventArgs e)
         {
-            ViewModel.NewNotification("Test1");
-            ViewModel.NewNotification("Test2");
-            ViewModel.NewNotification("Test3");
-            //throw new System.Exception();
+            throw new Exception(Constants.TESTEXCEPTIONTEXT);
         }
-        // NEW VIEW ###########################################################
-
-        async void Click_NewView(object sender, RoutedEventArgs e)
-        {
-            CoreApplicationView newView = CoreApplication.CreateNewView();
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(MainPage), null);
-                Window.Current.Content = frame;
-                // You have to activate the window in order to show it later.
-                Window.Current.Activate();
-
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
-        }
-
-
         #endregion
+
 
     }
 }
