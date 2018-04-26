@@ -8,6 +8,21 @@ namespace ShadowRunHelper
     {
         #region Settings
 
+
+        public bool ForceLoadCharOnStart
+        {
+            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START);
+            set
+            {
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START, value);
+                Instance.NotifyPropertyChanged();
+            }
+        }
+
+        public void ForceLoadCharOnStartReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START, Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START_STD);
+        }
         public bool AutoSave
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_AUTO_SAVE);

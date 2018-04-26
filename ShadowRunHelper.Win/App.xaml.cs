@@ -95,45 +95,21 @@ namespace ShadowRunHelper
 #endif
         }
 
-        protected async override void OnFileActivated(FileActivatedEventArgs args)
+        protected override void OnFileActivated(FileActivatedEventArgs args)
         {
             CharHolder NewHolder;
             try
             {
                 Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace(SharedConstants.ACCESSTOKEN_FILEACTIVATED, args.Files[0]);
-
-                NewHolder = await CharHolderIO.Load(
-                    new FileInfoClass()
-                    {
-                        Fileplace = Place.Extern,
-                        Filename = args.Files[0].Name,
-                        Filepath = args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length),
-                        FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
-                    }
-                    , null
-                    , UserDecision.ThrowError);
-                Settings.CountLoadings++;
             }
             catch (Exception ex)
             {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_FileActivation"), ex);
-                return;
             }
-            if (Model.MainObject != null) // Save CurrentChar //todo for later: open  new window if user whish this so
+            Settings.ForceLoadCharOnStart = true;
+            Settings.LastSaveInfo = new FileInfoClass(Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length))
             {
-                try
-                {
-                    await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
-                    Settings.CountSavings++;
-                }
-                catch (Exception)
-                {
-                    return;
-                }
-            }
-            Model.MainObject = NewHolder;
-            Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
-
+                FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
+            };
         }
         #endregion
 
@@ -176,16 +152,28 @@ namespace ShadowRunHelper
 #endif
             try
             {
-                if ((Settings.CharInTempStore && !FirstStart || Settings.LoadCharOnStart && FirstStart) && Model.MainObject == null)
+                if ((Settings.CharInTempStore && !FirstStart || Settings.LoadCharOnStart && FirstStart) && Model.MainObject == null || Settings.ForceLoadCharOnStart)
                 {
                     var info = Settings.LastSaveInfo;
                     var TMPChar = await CharHolderIO.Load(info, eUD: UserDecision.ThrowError);
                     if (TMPChar.FileInfo.Fileplace == Place.Temp)
                     {
 #pragma warning disable CS4014
-                        /*await*/
                         CharHolderIO.SaveAtCurrentPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
 #pragma warning restore CS4014
+                    }
+                    if (Model.MainObject != null)
+                    {
+                        try
+                        {
+#pragma warning disable CS4014
+                            CharHolderIO.SaveAtCurrentPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
+#pragma warning restore CS4014
+                        }
+                        catch (Exception ex)
+                        {
+                            Model.NewNotification(StringHelper.GetString("Notification_Error_FileActivation"), ex);
+                        }
                     }
                     Model.MainObject = TMPChar;
                     Settings.CountLoadings++;

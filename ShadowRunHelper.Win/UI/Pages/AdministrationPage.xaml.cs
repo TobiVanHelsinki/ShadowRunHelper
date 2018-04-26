@@ -63,9 +63,17 @@ namespace ShadowRunHelper.UI
             await Summorys_Aktualisieren();
             if (!SettingsModel.I.TutorialMainShown)
             {
+                try
+                {
 #pragma warning disable CS4014
-                new Tutorial(0, 5).ShowAsync();
+                    new Tutorial(0, 5).ShowAsync();
 #pragma warning restore CS4014
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
                 SettingsModel.I.TutorialMainShown = true;
             }
         }
