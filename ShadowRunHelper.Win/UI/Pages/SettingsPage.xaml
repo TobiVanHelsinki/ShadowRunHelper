@@ -297,9 +297,12 @@
                     <TextBlock x:Uid="UI_Optionen_U_Buy" Style="{StaticResource ueberschrift1}"/>
                 </PivotItem.Header>
                 <StackPanel>
-                    <Button x:Uid="IAP_TXT_ADS_365" Click="IAP_ADS_365"/>
-                    <Button x:Uid="IAP_TXT_ADS" Click="IAP_ADS"/>
-                    <Button x:Uid="IAP_TXT_TEE" Click="IAP_Tee"/>
+                    <TextBlock x:Uid="UI_Optionen_U_Buying_Header" Margin="3" TextWrapping="Wrap"/>
+                    <TextBlock x:Uid="UI_Optionen_U_Buying_Note" Margin="3" TextWrapping="Wrap"/>
+                    
+                    <Button x:Uid="IAP_TXT_ADS_365" Click="IAP_ADS_365" Margin="3" Style="{StaticResource STD_Button}"/>
+                    <Button x:Uid="IAP_TXT_ADS" Click="IAP_ADS" Margin="3" Style="{StaticResource STD_Button}"/>
+                    <Button x:Uid="IAP_TXT_TEE" Click="IAP_Tee" Margin="3" Style="{StaticResource STD_Button}"/>
                 </StackPanel>
             </PivotItem>
             <PivotItem Tag="35">

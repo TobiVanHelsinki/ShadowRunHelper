@@ -1411,4 +1411,10 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Content_Selbstbeherrschung" xml:space="preserve">
     <value>Selbstbeherrschung</value>
   </data>
+  <data name="UI_Optionen_U_Buying_Header.Text" xml:space="preserve">
+    <value>Hier hast du die Möglichkeit, Käufe zu tätigen. Du kannst mit den ersten beiden Optionen die Werbung abschalten. Mit der dritten Option unterstützt du dem Entwickler für diese App.</value>
+  </data>
+  <data name="UI_Optionen_U_Buying_Note.Text" xml:space="preserve">
+    <value>Notiz am Rande: Apps im Store zu haben kostet im Jahr 18€. Es wäre cool, wenn die App daher wenigstens Kostendeckend arbeiten würde.</value>
+  </data>
 </root>

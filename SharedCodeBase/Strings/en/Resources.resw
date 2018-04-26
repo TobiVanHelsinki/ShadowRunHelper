@@ -1381,4 +1381,10 @@ This is shown in detail at the example-character</value>
   <data name="Content_Selbstbeherrschung" xml:space="preserve">
     <value>self-control</value>
   </data>
+  <data name="UI_Optionen_U_Buying_Header.Text" xml:space="preserve">
+    <value>Here you have the possibility to make purchases. You can turn off advertising with the first two options. The third option supports the apps developer.</value>
+  </data>
+  <data name="UI_Optionen_U_Buying_Note.Text" xml:space="preserve">
+    <value>Note: Having apps in the store costs 18€ per year. It would be cool if the app would at least cover the costs.</value>
+  </data>
 </root>
