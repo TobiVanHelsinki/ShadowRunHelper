@@ -182,7 +182,7 @@ namespace ShadowRunHelper
                     var TMPChar = await CharHolderIO.Load(info, eUD: UserDecision.ThrowError);
                     if (TMPChar.FileInfo.Fileplace == Place.Temp)
                     {
-                        await CharHolderIO.SaveAtCurrentPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
+                        /*await*/ CharHolderIO.SaveAtCurrentPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
                     }
                     Model.MainObject = TMPChar;
                     Settings.CountLoadings++;
