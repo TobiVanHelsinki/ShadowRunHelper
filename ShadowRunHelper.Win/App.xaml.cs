@@ -137,7 +137,7 @@ namespace ShadowRunHelper
         }
         #endregion
 
-        private async void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
+        async void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
         {
 #if DEBUG
             SystemHelper.WriteLine("App_EnteredBackground");
@@ -166,11 +166,9 @@ namespace ShadowRunHelper
 
         async void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
         {
-#if DEBUG
-            SystemHelper.WriteLine("App_LeavingBackground");
-#endif
             var def = e.GetDeferral();
 #if DEBUG
+            SystemHelper.WriteLine("App_LeavingBackground");
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 DebugSettings.EnableFrameRateCounter = true;
@@ -184,9 +182,7 @@ namespace ShadowRunHelper
                     var TMPChar = await CharHolderIO.Load(info, eUD: UserDecision.ThrowError);
                     if (TMPChar.FileInfo.Fileplace == Place.Temp)
                     {
-                        TMPChar.FileInfo.Fileplace = SharedIO.GetCurrentSavePlace();
-                        TMPChar.FileInfo.Filepath = SharedIO.GetCurrentSavePath();
-                        await CharHolderIO.SaveAtOriginPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
+                        await CharHolderIO.SaveAtCurrentPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
                     }
                     Model.MainObject = TMPChar;
                     Settings.CountLoadings++;
