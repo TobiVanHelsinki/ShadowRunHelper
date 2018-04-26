@@ -221,8 +221,8 @@ namespace ShadowRunHelper
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();
 
-            def.Complete();
             FirstStart = false;
+            def.Complete();
 #if DEBUG
             SystemHelper.WriteLine("App_LeavingBackgroundComplete");
 #endif
