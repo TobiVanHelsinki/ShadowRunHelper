@@ -82,6 +82,27 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/> 
         </Grid.ColumnDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <!-- Header-->
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Ad_MainPageRight.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Ad_MainPageRight.Visibility" Value="Collapsed"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Viewbox Grid.Column="1" >
             <Ad:AdControl Width="160" Height="600" x:Name="Ad_MainPageRight"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
