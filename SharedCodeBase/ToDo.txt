@@ -1,11 +1,11 @@
 ﻿
 --------Respon------------------------------------------------
 * Panel Oben: Fenstergröße bestimmen, inhalt immer passend zu fenstergröße anzeigen
-* IAPs
-* Char Store -> relative to absolut
 
 --------Aktuelles---------------------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern
+* IAPs
+* Char Store -> relative to absolut
 
 -----------------------------------------------------
 * button relativ zum anklickgerät
@@ -14,7 +14,7 @@ https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.Input.PointerRoutedEven
 https://docs.microsoft.com/en-us/windows/uwp/design/input/handle-pointer-input
 https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.uielement.pointerpressed
 https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.UIElement
----------- Ideen für später -------------------------------
+---------- Ideen für next release-------------------------------
 * neue kategorien (wissenfrt, kampf)
 * drag and drop
 
@@ -23,7 +23,7 @@ https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.UIElement
 * Max schaden bei berechneten werten
 * schaden overflow einarbeiten
 
----------- Zukünftiges TODO für Verknüpfungen -------------
+++++++++++ Generelles TODO für Neue Verknüpfungen -------------
 * Filter anlegen und im Konstruktor setzen
 * Im UI Template Element Linked List angeben
 * im LinkedEntryEdit Handler spezialfälle einstellen

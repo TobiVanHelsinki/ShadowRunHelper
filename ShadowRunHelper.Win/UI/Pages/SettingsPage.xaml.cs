@@ -172,7 +172,7 @@ namespace ShadowRunHelper.UI
 
         async void IAP_ADS_365(object sender, RoutedEventArgs e)
         {
-            await IAP.Buy(Constants.IAP_FEATUREID_ADFREE);
+            await IAP.Buy(Constants.IAP_FEATUREID_ADFREE_365);
             CheckIAP();
 
         }
