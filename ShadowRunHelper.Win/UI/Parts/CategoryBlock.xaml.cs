@@ -134,6 +134,10 @@ namespace ShadowRunHelper.UI
                 {
                     HeadLine.ContentTemplate = Eigenschaft_E;
                 }
+                else if (Controller.eDataTyp == ThingDefs.Stroemung || Controller.eDataTyp == ThingDefs.Wandlung ||
+                    Controller.eDataTyp == ThingDefs.Tradition || Controller.eDataTyp == ThingDefs.Initiation)
+                {
+                }
                 else
                 {
                     HeadLine.ContentTemplate = (DataTemplate)Resources[Current.DisplayName + "_E"];
