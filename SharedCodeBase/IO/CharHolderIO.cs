@@ -61,7 +61,6 @@ namespace ShadowRunHelper.IO
             settings.Converters.Add(new UnknownThingConverter());
             CharHolder ReturnCharHolder;
 
-            DateTime StartTime = DateTime.Now;
             switch (strFileVersion)
             {
                 case Constants.CHARFILE_VERSION_1_3:
@@ -105,8 +104,6 @@ namespace ShadowRunHelper.IO
                     throw new IO_FileVersion();
             }
             ReturnCharHolder.AfterLoad();
-            DateTime StopTime = DateTime.Now;
-            TimeSpan Time = StopTime - StartTime;
             return ReturnCharHolder;
         }
 

@@ -110,6 +110,12 @@ namespace ShadowRunHelper
             {
                 FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
             };
+            if (!FirstStart)
+            {
+#pragma warning disable CS4014
+                CharLoadingHandling();
+#pragma warning restore CS4014
+            }
         }
         #endregion
 
@@ -150,6 +156,43 @@ namespace ShadowRunHelper
                 DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+            await CharLoadingHandling();
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
+            // Nur sicherstellen, dass das Fenster aktiv ist.
+            if (rootFrame == null)
+            {
+                // Frame erstellen, der als Navigationskontext fungiert und zum Parameter der ersten Seite navigieren
+                rootFrame = new Frame();
+                rootFrame.NavigationFailed += OnNavigationFailed;
+                // Den Frame im aktuellen Fenster platzieren
+                Window.Current.Content = rootFrame;
+            }
+            if (rootFrame.Content == null)
+            {
+                // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
+                // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
+                // uebergeben werden
+                rootFrame.Navigate(typeof(MainPage));
+            }
+            else
+            {
+                // Seite ist aktiv, wir versuchen, den Char anzuzeigen
+                Model.RequestNavigation(ProjectPages.Char);
+            }
+            // Sicherstellen, dass das aktuelle Fenster aktiv ist
+            Window.Current.Activate();
+
+            FirstStart = false;
+            def.Complete();
+#if DEBUG
+            SystemHelper.WriteLine("App_LeavingBackgroundComplete");
+#endif
+        }
+
+        private async Task CharLoadingHandling()
+        {
             try
             {
                 if ((Settings.CharInTempStore && !FirstStart || Settings.LoadCharOnStart && FirstStart) && Model.MainObject == null || Settings.ForceLoadCharOnStart)
@@ -185,38 +228,6 @@ namespace ShadowRunHelper
                 Settings.LastSaveInfo = null;
                 Settings.CharInTempStore = false;
             }
-
-            Frame rootFrame = Window.Current.Content as Frame;
-            // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
-            // Nur sicherstellen, dass das Fenster aktiv ist.
-            if (rootFrame == null)
-            {
-                // Frame erstellen, der als Navigationskontext fungiert und zum Parameter der ersten Seite navigieren
-                rootFrame = new Frame();
-                rootFrame.NavigationFailed += OnNavigationFailed;
-                // Den Frame im aktuellen Fenster platzieren
-                Window.Current.Content = rootFrame;
-            }
-            if (rootFrame.Content == null)
-            {
-                // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
-                // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
-                // uebergeben werden
-                rootFrame.Navigate(typeof(MainPage));
-            }
-            else
-            {
-                // Seite ist aktiv, wir versuchen, den Char anzuzeigen
-                Model.RequestNavigation(ProjectPages.Char);
-            }
-            // Sicherstellen, dass das aktuelle Fenster aktiv ist
-            Window.Current.Activate();
-
-            FirstStart = false;
-            def.Complete();
-#if DEBUG
-            SystemHelper.WriteLine("App_LeavingBackgroundComplete");
-#endif
         }
 
         protected override void OnActivated(IActivatedEventArgs args)
