@@ -2,8 +2,7 @@
 --------Respon------------------------------------------------
 * Panel Oben: Fenstergröße bestimmen, inhalt immer passend zu fenstergröße anzeigen
 
---------Aktuelles---------------------------------------------
-* Verknüpfungen Modell für Zirkelbezüge verbessern
+--------Eventuelles---------------------------------------------
 * Char Store -> relative to absolut
 
 -----------------------------------------------------
@@ -14,6 +13,7 @@ https://docs.microsoft.com/en-us/windows/uwp/design/input/handle-pointer-input
 https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.uielement.pointerpressed
 https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.UIElement
 ---------- Ideen für next release-------------------------------
+* Verknüpfungen Modell für Zirkelbezüge verbessern
 * neue kategorien (wissenfrt, kampf)
 * drag and drop
 
