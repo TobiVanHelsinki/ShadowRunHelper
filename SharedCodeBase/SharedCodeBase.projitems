@@ -79,8 +79,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Types.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de\Resources.resw" />
-    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)strings\de\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)strings\en\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)UI\" />

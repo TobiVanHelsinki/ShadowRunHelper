@@ -327,13 +327,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter">
-      <Version>1.5.0</Version>
+      <Version>1.6.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Analytics">
-      <Version>1.5.0</Version>
+      <Version>1.6.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>1.5.0</Version>
+      <Version>1.6.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.8</Version>
@@ -352,6 +352,11 @@
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AppCenter.Crashes.dll">
+      <HintPath>$(mc-crashes-ArchDir)\lib\uap10.0\Microsoft.AppCenter.Crashes.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="..\SharedCodeBase\SharedCodeBase.projitems" Label="Shared" />
   <Import Project="..\..\TLIB\TAPPLICATION\TAPPLICATION.projitems" Label="Shared" />
