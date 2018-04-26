@@ -1,6 +1,5 @@
 ﻿
 --------Respon------------------------------------------------
-* UI fheler notiz adeptenk und kmpl form, werbung auf sett rechts zu groß (mobiL)
 * Panel Oben: Fenstergröße bestimmen, inhalt immer passend zu fenstergröße anzeigen
 * IAPs
 * Char Store -> relative to absolut

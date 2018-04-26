@@ -362,7 +362,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Programm_Optionen" />
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Adeptenkraft_Option" />
                     <TextBox GotFocus="EditBox_GotFocus" TabIndex="10" Name="Optionen" Text="{x:Bind Option, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1"/>
                 </Grid>
             </DataTemplate>
@@ -461,7 +461,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Programm_Optionen" />
+                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_KomplexeForm_Option" />
                     <TextBox GotFocus="EditBox_GotFocus" TabIndex="10" Name="Optionen" Text="{x:Bind Option, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1"/>
                 </Grid>
             </DataTemplate>
