@@ -48,7 +48,7 @@ namespace ShadowRunHelper.UI
 
         async void Edit_Click(object sender, RoutedEventArgs e)
         {
-            Auswahl dialog = new Auswahl(Model, List, Filter: List.FilterOut);
+            LinkListChoice dialog = new LinkListChoice(Model, List, Filter: List.FilterOut);
             var ergebnis = await dialog.ShowAsync();
         }
 

@@ -11,22 +11,22 @@ using Microsoft.AppCenter.Analytics;
 namespace ShadowRunHelper.UI
 {
 
-    public partial class Auswahl : ContentDialog
+    public partial class LinkListChoice : ContentDialog
     {
-        LinkList lstZusammensetzung;
-        List<AllListEntry> lstThings;
+        LinkList LinkList;
+        List<AllListEntry> AllThings;
         bool isMultichoice;
         CharHolder CurrentChar;
         IEnumerable<ThingDefs> FilterOut;
 
-        public Auswahl(CharHolder Char, LinkList data, bool Multichoice = true, IEnumerable<ThingDefs> Filter = null)
+        public LinkListChoice(CharHolder Char, LinkList data, bool Multichoice = true, IEnumerable<ThingDefs> Filter = null)
         {
             InitializeComponent();
 
-            lstThings = Char?.LinkList ?? throw new AllListChooserError();
+            AllThings = Char?.LinkList ?? throw new AllListChooserError();
             CurrentChar = Char ?? throw new AllListChooserError();
-            lstZusammensetzung = data ?? throw new AllListChooserError();
-            if (lstThings.Count <= 0)
+            LinkList = data ?? throw new AllListChooserError();
+            if (AllThings.Count <= 0)
             {
                 throw new AllListChooserError();
             }
@@ -44,7 +44,7 @@ namespace ShadowRunHelper.UI
                 ThingDefs.Attribut, ThingDefs.CyberDeck, ThingDefs.Fernkampfwaffe,
                 ThingDefs.Kommlink, ThingDefs.Nachteil, ThingDefs.Panzerung, ThingDefs.Vehikel };
             ObservableCollection<CustomAllList> groups = new ObservableCollection<CustomAllList>();
-            IEnumerable<CustomAllList> GroupedAllList = lstThings.GroupBy(item => item.Object.ThingType).
+            IEnumerable<CustomAllList> GroupedAllList = AllThings.GroupBy(item => item.Object.ThingType).
                 Where(g => !FilterOut.Contains(g.Key)).Where(g=>CurrentChar.Settings.CategoryOptions.Where(x => x.Visibility).Select(x => x.ThingType).Contains(g.Key)).Select(
                 group =>
                 {
@@ -68,10 +68,10 @@ namespace ShadowRunHelper.UI
         protected virtual void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             ContentDialogButtonClickDeferral deferral = args.GetDeferral();
-            lstZusammensetzung.Clear();
+            LinkList.Clear();
             foreach (AllListEntry item in Zus_ListVIew.SelectedItems)
             {
-                lstZusammensetzung.Add(item);
+                LinkList.Add(item);
             }
             deferral.Complete();
             Analytics.TrackEvent("LinkChoosing Used");
@@ -82,7 +82,7 @@ namespace ShadowRunHelper.UI
         {
             if (isMultichoice)
             {
-                foreach (var item in lstZusammensetzung)
+                foreach (var item in LinkList)
                 {
                     var ItemToUse = Zus_ListVIew.Items.FirstOrDefault(x=> (x as AllListEntry).Object == item.Object && (x as AllListEntry).PropertyID == item.PropertyID);
                     var tepmindex = Zus_ListVIew.Items.IndexOf(ItemToUse);
@@ -91,9 +91,9 @@ namespace ShadowRunHelper.UI
             }
             else
             {
-                Zus_ListVIew.SelectedItem = lstZusammensetzung.FirstOrDefault();
+                Zus_ListVIew.SelectedItem = LinkList.FirstOrDefault();
             }
-            if (Zus_ListVIew.SelectedItems.Count < lstZusammensetzung.Count)
+            if (Zus_ListVIew.SelectedItems.Count < LinkList.Count)
             {
                 Analytics.TrackEvent("Err_LinkChoosing Zus_ListVIew.SelectedItems.Count < lstZusammensetzung.Count");
 #if DEBUG
