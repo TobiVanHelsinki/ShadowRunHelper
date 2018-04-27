@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Store;
 using Windows.Services.Store;
@@ -7,45 +8,23 @@ namespace ShadowRunHelper
 {
     public static class IAP
     {
-        public static void CheckLicence()
+        public static async void CheckLicence()
         {
-            var licenseInformation = CurrentAppSimulator.LicenseInformation;
+            var AddOns = await StoreContext.GetDefault().GetUserCollectionAsync(Constants.IAP_STORE_LIST_ADDON_TYPES);
             try
             {
                 Constants.IAP_HIDEADS =
-                    licenseInformation.ProductLicenses[Constants.IAP_FEATUREID_ADFREE].IsActive
-                    || licenseInformation.ProductLicenses[Constants.IAP_FEATUREID_ADFREE_365].IsActive;
+                    AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE)
+                    || AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE_365);
             }
             catch (Exception)
             {
                 Constants.IAP_HIDEADS = false;
+                Model.AppModel.Instance.NewNotification(""); //TODO add text
+
             }
         }
 
-        internal async static Task BuyOLD(string FEATURENAME)
-        {
-            LicenseInformation licenseInformation = CurrentAppSimulator.LicenseInformation;
-            if (!licenseInformation.ProductLicenses[FEATURENAME].IsActive)
-            {
-                try
-                {
-                    // The customer doesn't own this feature, so
-                    // show the purchase dialog.
-                    await CurrentAppSimulator.RequestProductPurchaseAsync(FEATURENAME);
-
-                    //Check the license state to determine if the in-app purchase was successful.
-                }
-                catch (Exception)
-                {
-                    // The in-app purchase was not completed because
-                    // an error occurred.
-                }
-            }
-            else
-            {
-                // The customer already owns this feature.
-            }
-        }
         internal async static Task Buy(string FEATUREID)
         {
             var context = StoreContext.GetDefault();

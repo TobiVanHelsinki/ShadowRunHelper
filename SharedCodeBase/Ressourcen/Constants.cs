@@ -96,6 +96,8 @@ namespace ShadowRunHelper
         };
         #endregion
         #region IAPs
+        public static List<string> IAP_STORE_LIST_ADDON_TYPES = new List<string>() { "Durable", "Consumable", "UnmanagedConsumable" };
+
 #if BETA
         public const string IAP_FEATUREID_ADFREE_365 = "--";
         public const string IAP_FEATUREID_ADFREE = "--";

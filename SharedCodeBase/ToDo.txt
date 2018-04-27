@@ -1,10 +1,10 @@
 ﻿
---------Respon------------------------------------------------
-* Button Alle löschen entweder weg oder weiter nach hinten
-* Panel Oben: Fenstergröße bestimmen, inhalt immer passend zu fenstergröße anzeigen
-
 --------Eventuelles---------------------------------------------
 * Char Store -> relative to absolut
+* Englischer BSP Char
+
+--------Respon------------------------------------------------
+* Panel Oben: Fenstergröße bestimmen, inhalt immer passend zu fenstergröße anzeigen
 
 -----------------------------------------------------
 * button relativ zum anklickgerät
