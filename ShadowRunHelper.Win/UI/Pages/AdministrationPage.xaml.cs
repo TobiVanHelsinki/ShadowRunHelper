@@ -2,7 +2,6 @@
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +9,6 @@ using TAMARIN.IO;
 using TAPPLICATION.IO;
 using TLIB;
 using Windows.ApplicationModel.Resources;
-using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -169,7 +167,14 @@ namespace ShadowRunHelper.UI
         #region CharOperations
         async void Create_ExampleChar(object sender, RoutedEventArgs e)
         {
-            await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
+            try
+            {
+                await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
+            }
+            catch (Exception)
+            {
+
+            }
             await Summorys_Aktualisieren();
         }
         void Click_OpenFolder(object sender, RoutedEventArgs e)
