@@ -83,7 +83,7 @@
             <ColumnDefinition Width="Auto"/> 
         </Grid.ColumnDefinitions>
         <VisualStateManager.VisualStateGroups>
-            <!-- Header-->
+            <!-- Ads -->
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
@@ -91,6 +91,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Ad_MainPageRight.Visibility" Value="Visible"/>
+                        <Setter Target="Ad_MainPageBottom.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
@@ -99,19 +100,21 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Ad_MainPageRight.Visibility" Value="Collapsed"/>
+                        <Setter Target="Ad_MainPageBottom.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
+
         </VisualStateManager.VisualStateGroups>
         <Viewbox Grid.Column="1" >
             <Ad:AdControl Width="160" Height="600" x:Name="Ad_MainPageRight"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
-                ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"/>
+                ApplicationId="9nblggh4rhvx" AdUnitId="1100022060"/>
         </Viewbox>
         <Viewbox Grid.Row="4" Grid.ColumnSpan="2">
             <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"/>
+                    ApplicationId="9nblggh4rhvx" AdUnitId="1100022061"/>
         </Viewbox>
         <Pivot x:Name="MainNavigation" SelectionChanged="MainNavigation_SelectionChanged">
             <PivotItem Tag="31">
