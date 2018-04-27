@@ -159,8 +159,8 @@
     <Compile Include="UI\Parts\Input.xaml.cs">
       <DependentUpon>Input.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Parts\Auswahl.xaml.cs">
-      <DependentUpon>Auswahl.xaml</DependentUpon>
+    <Compile Include="UI\Parts\LinkListChoice.xaml.cs">
+      <DependentUpon>LinkListChoice.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Parts\Tutorial.xaml.cs">
       <DependentUpon>Tutorial.xaml</DependentUpon>
@@ -280,7 +280,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Parts\Auswahl.xaml">
+    <Page Include="UI\Parts\LinkListChoice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
