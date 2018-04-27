@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using TAMARIN.IO;
 using ShadowRunHelper.UI;
+using System.Linq;
 
 namespace ShadowRunHelper
 {
@@ -64,20 +65,10 @@ namespace ShadowRunHelper
 
         public async void SetConstantStuff()
         {
-            var SP = (await StoreContext.GetDefault().GetStoreProductForCurrentAppAsync()).Product;
-            
-            var json = Windows.Data.Json.JsonObject.Parse(SP.ExtendedJsonData);
-            SharedConstants.APP_STORE_ID = SP.StoreId;
             SharedConstants.APP_VERSION_BUILD_DELIM = String.Format("{0}.{1}.{2}.{3}", Package.Current.Id.Version.Major, Package.Current.Id.Version.Minor, Package.Current.Id.Version.Build, Package.Current.Id.Version.Revision);
 
-            var arr = json.GetNamedArray("LocalizedProperties");
-            if (arr.Count == 0)
-            {
-                return;
-            }
-            var json2 = Windows.Data.Json.JsonObject.Parse(arr[0].Stringify());
-            SharedConstants.APP_PUBLISHER_MAILTO = json2.GetNamedString("SupportUri", SharedConstants.ERROR_TOKEN);
-            SharedConstants.APP_PUBLISHER = json2.GetNamedString("PublisherName", SharedConstants.ERROR_TOKEN);
+            var SPR = await StoreContext.GetDefault().GetStoreProductForCurrentAppAsync();
+            SharedConstants.APP_STORE_ID = SPR?.Product?.StoreId;
         }
 
         #endregion

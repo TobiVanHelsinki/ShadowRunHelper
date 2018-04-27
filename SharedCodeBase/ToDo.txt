@@ -1,5 +1,6 @@
 ﻿
 --------Respon------------------------------------------------
+* Button Alle löschen entweder weg oder weiter nach hinten
 * Panel Oben: Fenstergröße bestimmen, inhalt immer passend zu fenstergröße anzeigen
 
 --------Eventuelles---------------------------------------------
