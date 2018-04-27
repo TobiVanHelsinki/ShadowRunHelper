@@ -62,7 +62,7 @@
     </Page.Resources>
     <Grid Name="GridForContentAndAds">
         <VisualStateManager.VisualStateGroups>
-            <!-- Header-->
+            <!-- Ads -->
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
@@ -91,7 +91,7 @@
         <Viewbox Grid.Column="1" >
             <Ad:AdControl Width="160" Height="600" x:Name="Ad_MainPageRight"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
-                ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"/>
+                ApplicationId="9nblggh4rhvx" AdUnitId="1100022060"/>
         </Viewbox>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
@@ -159,17 +159,16 @@
                       SelectionMode="Multiple"
                       IsMultiSelectCheckBoxEnabled="False"/>
             </Border>
-            <Viewbox Grid.Row="4">
+            <Viewbox Grid.Row="4" Stretch="UniformToFill">
                 <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    ApplicationId="9ncxwgx1kr8s" AdUnitId="1100021012"/>
+                    ApplicationId="9nblggh4rhvx" AdUnitId="1100022061"/>
             </Viewbox>
             <Border Grid.Row="5" x:Name="MainBarBorder">
                 <CommandBar Grid.Row="4" DefaultLabelPosition="Right">
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen" Icon="Delete" Click="Click_Loeschen_Alles" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton x:Name="UI_CharVerwaltung_Btn_FolderOpenSTD" x:Uid="UI_CharVerwaltung_Btn_FolderOpenSTD" Icon="OpenLocal" Click="Click_OpenSTDFolder" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"/>
                 </CommandBar>
             </Border>

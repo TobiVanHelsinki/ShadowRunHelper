@@ -294,7 +294,7 @@ namespace ShadowRunHelper.UI
             SettingsModel.I.CountDeletions++;
         }
 
-        public async static Task ShowMessageDialog(string Title, string Message, string strOK, string strCancel, Action OK, Action Cancel = null)
+        public static async Task ShowMessageDialog(string Title, string Message, string strOK, string strCancel, Action OK, Action Cancel = null)
         {
             var messageDialog = new MessageDialog(Message, Title);
             messageDialog.Commands.Add(new UICommand(
@@ -306,53 +306,6 @@ namespace ShadowRunHelper.UI
             messageDialog.DefaultCommandIndex = 0;
             messageDialog.CancelCommandIndex = 1;
             await messageDialog.ShowAsync();
-        }
-
-        async void Click_Loeschen_Alles(object sender, RoutedEventArgs e)
-        {
-            if (IsOperationInProgres)
-            {
-                return;
-            }
-            async void Delete_All()
-            {
-                ChangeProgress(true);
-                bool bIsFail = false;
-                List<Task> temp = new List<Task>();
-                List<FileInfoClass> tempSums = new List<FileInfoClass>();
-                lock (Summorys)
-                {
-                    foreach (var item in Summorys)
-                    {
-                        tempSums.Add(item);
-                    }
-                }
-                foreach (var item in tempSums)
-                {
-                    try
-                    {
-                        await CharHolderIO.CurrentIO.RemoveFile(item);
-                        SettingsModel.I.CountDeletions++;
-                    }
-                    catch (Exception ex)
-                    {
-                        Model.NewNotification(res.GetString("Notification_Error_DelFail"), ex);
-                        bIsFail = true;
-                    }
-                }
-                if (bIsFail)
-                {
-                    Model.NewNotification(res.GetString("Notification_Error_DelAllFail"));
-                }
-                ChangeProgress(false);
-                await Summorys_Aktualisieren();
-            }
-
-            await ShowMessageDialog(StringHelper.GetString("Request_DeleteAll/Title")
-                , StringHelper.GetString("Request_DeleteAll/Text")
-                , StringHelper.GetString("Request_DeleteAll/Yes")
-                , StringHelper.GetString("Request_DeleteAll/No")
-                , Delete_All);
         }
 
         void Click_Loeschen_CurrentChar(object sender, RoutedEventArgs e)
