@@ -320,7 +320,7 @@ namespace ShadowRunHelper.Model
             lstCTRL.First(c => c.eDataTyp == tToRemove.ThingType).RemoveThing(tToRemove);
             tToRemove.PropertyChanged -= (x, y) => AnyPropertyChanged();
             _LinkList.RemoveAll((x) => x.Object == tToRemove);
-            _ThingList.RemoveAll((x) => x == tToRemove); //TODO changed to Remove all, check it
+            _ThingList.RemoveAll((x) => x == tToRemove);
         }
 
         public void RefreshListeners()

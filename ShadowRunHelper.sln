@@ -20,6 +20,10 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedCodeBase\SharedCodeBase.projitems*{0d90bef9-68d7-4019-abec-0329274eb64d}*SharedItemsImports = 13
+		SharedCodeBase\SharedCodeBase.projitems*{124813ef-d23d-4b11-a6b4-9d32a4a2e4a4}*SharedItemsImports = 4
+		..\TLIB\TAMARIN\TAMARIN.projitems*{124813ef-d23d-4b11-a6b4-9d32a4a2e4a4}*SharedItemsImports = 4
+		..\TLIB\TAPPLICATION\TAPPLICATION.projitems*{124813ef-d23d-4b11-a6b4-9d32a4a2e4a4}*SharedItemsImports = 4
+		..\TLIB\TLIB\TLIB.projitems*{124813ef-d23d-4b11-a6b4-9d32a4a2e4a4}*SharedItemsImports = 4
 		SharedCodeBase\SharedCodeBase.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
 		..\TLIB\TAMARIN\TAMARIN.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
 		..\TLIB\TAPPLICATION\TAPPLICATION.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
