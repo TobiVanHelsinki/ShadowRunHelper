@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Store;
 using Windows.Services.Store;
 
 namespace ShadowRunHelper
@@ -10,9 +8,9 @@ namespace ShadowRunHelper
     {
         public static async void CheckLicence()
         {
-            var AddOns = await StoreContext.GetDefault().GetUserCollectionAsync(Constants.IAP_STORE_LIST_ADDON_TYPES);
             try
             {
+                var AddOns = await StoreContext.GetDefault().GetUserCollectionAsync(Constants.IAP_STORE_LIST_ADDON_TYPES);
                 Constants.IAP_HIDEADS =
                     AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE)
                     || AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE_365);
@@ -20,8 +18,7 @@ namespace ShadowRunHelper
             catch (Exception)
             {
                 Constants.IAP_HIDEADS = false;
-                Model.AppModel.Instance.NewNotification(""); //TODO add text
-
+                Model.AppModel.Instance.NewNotification("Error_LoadPurchases");
             }
         }
 

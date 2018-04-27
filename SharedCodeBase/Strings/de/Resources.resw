@@ -1417,4 +1417,7 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="UI_Optionen_U_Buying_Note.Text" xml:space="preserve">
     <value>Notiz am Rande: Apps im Store zu haben kostet im Jahr 18€. Es wäre cool, wenn die App daher wenigstens Kostendeckend arbeiten würde.</value>
   </data>
+  <data name="Error_LoadPurchases" xml:space="preserve">
+    <value>Fehler: Ihre Käufe konnten nicht geladen werden.</value>
+  </data>
 </root>

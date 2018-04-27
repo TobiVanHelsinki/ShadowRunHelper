@@ -1,5 +1,4 @@
-﻿#define RELEASE
-using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using TAPPLICATION;
 using TLIB;

@@ -63,12 +63,16 @@ namespace ShadowRunHelper
             AppCenter.Start(Constants.AppCenterID, typeof(Crashes), typeof(Analytics));
         }
 
-        public async void SetConstantStuff()
+        public void SetConstantStuff()
         {
             SharedConstants.APP_VERSION_BUILD_DELIM = String.Format("{0}.{1}.{2}.{3}", Package.Current.Id.Version.Major, Package.Current.Id.Version.Minor, Package.Current.Id.Version.Build, Package.Current.Id.Version.Revision);
-
-            var SPR = await StoreContext.GetDefault().GetStoreProductForCurrentAppAsync();
-            SharedConstants.APP_STORE_ID = SPR?.Product?.StoreId;
+            SharedConstants.APP_PUBLISHER_MAIL = "TobiVanHelsinki@live.de";
+            SharedConstants.APP_PUBLISHER = "Tobi van Helsinki";
+#if BETA
+            SharedConstants.APP_STORE_ID = "9NCXWGX1KR8S";
+#elif RELEASE
+            SharedConstants.APP_STORE_ID = "9NBLGGH4RHVX";
+#endif
         }
 
         #endregion
