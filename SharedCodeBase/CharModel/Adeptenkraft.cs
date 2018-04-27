@@ -23,5 +23,9 @@ namespace ShadowRunHelper.CharModel
             {
                 ThingDefs.Handlung, ThingDefs.Fertigkeit
             };
+        public Adeptenkraft() : base()
+        {
+            LinkedThings.FilterOut = Filter;
+        }
     }
 }

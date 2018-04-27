@@ -23,5 +23,10 @@ namespace ShadowRunHelper.CharModel
             {
                 ThingDefs.Handlung, ThingDefs.Fertigkeit
             };
+
+        public KomplexeForm() : base()
+        {
+            LinkedThings.FilterOut = Filter;
+        }
     }
 }
