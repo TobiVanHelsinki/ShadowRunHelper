@@ -16,15 +16,17 @@ namespace ShadowRunHelper.UI
         LinkList lstZusammensetzung;
         List<AllListEntry> lstThings;
         bool isMultichoice;
+        CharHolder CurrentChar;
         IEnumerable<ThingDefs> FilterOut;
 
-        public Auswahl(List<AllListEntry> i_lstAll, LinkList data, bool Multichoice = true, IEnumerable<ThingDefs> Filter = null)
+        public Auswahl(CharHolder Char, LinkList data, bool Multichoice = true, IEnumerable<ThingDefs> Filter = null)
         {
             InitializeComponent();
 
-            lstThings = i_lstAll ?? throw new AllListChooserError();
+            lstThings = Char?.LinkList ?? throw new AllListChooserError();
+            CurrentChar = Char ?? throw new AllListChooserError();
             lstZusammensetzung = data ?? throw new AllListChooserError();
-            if (i_lstAll.Count <= 0)
+            if (lstThings.Count <= 0)
             {
                 throw new AllListChooserError();
             }
@@ -42,7 +44,8 @@ namespace ShadowRunHelper.UI
                 ThingDefs.Attribut, ThingDefs.CyberDeck, ThingDefs.Fernkampfwaffe,
                 ThingDefs.Kommlink, ThingDefs.Nachteil, ThingDefs.Panzerung, ThingDefs.Vehikel };
             ObservableCollection<CustomAllList> groups = new ObservableCollection<CustomAllList>();
-            IEnumerable<CustomAllList> GroupedAllList = lstThings.GroupBy(item => item.Object.ThingType).Where(g => !FilterOut.Contains(g.Key)).Select(
+            IEnumerable<CustomAllList> GroupedAllList = lstThings.GroupBy(item => item.Object.ThingType).
+                Where(g => !FilterOut.Contains(g.Key)).Where(g=>CurrentChar.Settings.CategoryOptions.Where(x => x.Visibility).Select(x => x.ThingType).Contains(g.Key)).Select(
                 group =>
                 {
                     var customgroup = new CustomAllList()
@@ -58,7 +61,7 @@ namespace ShadowRunHelper.UI
             GroupedList.Source = groups;
         }
         /// <summary>
-        /// Save Selection as new Zusammensetzung
+        /// Save Selection as new LinkList
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
