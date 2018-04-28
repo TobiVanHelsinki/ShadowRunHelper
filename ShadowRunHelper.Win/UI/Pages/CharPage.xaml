@@ -246,13 +246,13 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <ContentPresenter Margin="5,1,5,1" x:Name="GlobalFilterBoxTop" Grid.Column="2" DataContext="{x:Bind Model.MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
             <Button x:Name="SavePanelTop" Grid.Column="0" Margin="5,1,5,1" Style="{StaticResource STD_Button}"  IsEnabled="{x:Bind Model.MainObject.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
                     <TextBlock Text="Speichern"/>
                 </StackPanel>
             </Button>
-            <ContentPresenter Margin="5,1,5,1" x:Name="GlobalFilterBoxTop" Grid.Column="2" DataContext="{x:Bind Model.MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
         </Grid>
         <Pivot x:Name="Pivot" Grid.Row="1" Style="{StaticResource PivotStyle_TabsStyle}" >
             <Pivot.RightHeader>

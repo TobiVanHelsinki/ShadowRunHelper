@@ -3,8 +3,6 @@
 * Char Store -> relative to absolut
 * Englischer BSP Char
 
---------Respon------------------------------------------------
-* touch nach save keyb in suchfeld
 
 ---------- Ideen für next release-------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern
