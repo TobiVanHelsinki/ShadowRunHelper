@@ -84,6 +84,10 @@ namespace ShadowRunHelper
         public const string CONTAINER_SETTINGS_CHARINTEMPSTORE = "CHARINTEMPSTORE";
         public const bool CONTAINER_SETTINGS_CHARINTEMPSTORE_STD = false;
 
+        public const string CONTAINER_SETTINGS_LAST_PAGE = "SETTINGS_LAST_PAGE";
+        public const ProjectPages CONTAINER_SETTINGS_LAST_PAGEE_STD = ProjectPages.Char;
+        
+
         #endregion
         #region Help
         public static List<HelpEntry> HelpList = new List<HelpEntry>() {

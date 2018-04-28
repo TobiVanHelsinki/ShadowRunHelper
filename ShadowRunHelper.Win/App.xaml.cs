@@ -174,7 +174,7 @@ namespace ShadowRunHelper
             else
             {
                 // Seite ist aktiv, wir versuchen, den Char anzuzeigen
-                Model.RequestNavigation(ProjectPages.Char);
+                Model.RequestNavigation(Settings.LastPage);
             }
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();

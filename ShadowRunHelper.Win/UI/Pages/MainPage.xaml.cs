@@ -82,17 +82,21 @@ namespace ShadowRunHelper.UI
                 case ProjectPages.Char:
                     if (Model.MainObject != null)
                     {
+                    SettingsModel.I.LastPage = ProjectPages.Char;
                         MyFrame.Navigate(typeof(CharPage), po);
                     }
                     else
                     {
+                    SettingsModel.I.LastPage = ProjectPages.Administration;
                         MyFrame.Navigate(typeof(AdministrationPage), po);
                     }
                     break;
                 case ProjectPages.Administration:
+                    SettingsModel.I.LastPage = ProjectPages.Administration;
                     MyFrame.Navigate(typeof(AdministrationPage), po);
                     break;
                 case ProjectPages.Settings:
+                    SettingsModel.I.LastPage = ProjectPages.Settings;
                     MyFrame.Navigate(typeof(SettingsPage), po);
                     break;
                 default:

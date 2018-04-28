@@ -8,6 +8,20 @@ namespace ShadowRunHelper
     {
         #region Settings
 
+        public ProjectPages LastPage
+        {
+            get => (ProjectPages)PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_LAST_PAGE);
+            set
+            {
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, value);
+                Instance.NotifyPropertyChanged();
+            }
+        }
+
+        public void LastPageReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, Constants.CONTAINER_SETTINGS_LAST_PAGE_STD);
+        }
 
         public bool ForceLoadCharOnStart
         {
@@ -343,6 +357,7 @@ namespace ShadowRunHelper
                 return (SettingsModel)instance;
             }
         }
+
 
 
 
