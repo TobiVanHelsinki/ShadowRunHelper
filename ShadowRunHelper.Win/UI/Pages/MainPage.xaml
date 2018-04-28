@@ -64,7 +64,7 @@
                             </StackPanel>
                             <Button.Flyout>
                                 <Flyout Opening="Flyout_Opening" Closed="Flyout_Closed">
-                                    <Viewbox Stretch="Uniform">
+                                    <Viewbox Stretch="Uniform" Loaded="Viewbox_Loaded">
                                         <Grid >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>

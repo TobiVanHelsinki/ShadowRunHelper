@@ -257,10 +257,10 @@ namespace ShadowRunHelper.UI
         #region DynamicSize
 
         public int CustFontSize { get; set; }
-        public PointerDeviceType CustFontCurrentPointerDeviceType { get; set; }
+        public PointerDeviceType CurrentPointerDeviceType { get; set; }
         void Infos_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            CustFontCurrentPointerDeviceType = e.Pointer.PointerDeviceType;
+            CurrentPointerDeviceType = e.Pointer.PointerDeviceType;
             switch (e.Pointer.PointerDeviceType)
             {
                 case PointerDeviceType.Pen:
@@ -276,7 +276,7 @@ namespace ShadowRunHelper.UI
 
         void Flyout_Opening(object sender, object e)
         {
-            switch (CustFontCurrentPointerDeviceType)
+            switch (CurrentPointerDeviceType)
             {
                 case PointerDeviceType.Touch:
                     (sender as Flyout).Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Full;
@@ -299,6 +299,20 @@ namespace ShadowRunHelper.UI
         {
             (sender as Control).FontSize = CustFontSize;
         }
+        void Viewbox_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (CurrentPointerDeviceType == PointerDeviceType.Touch)
+            {
+                var ViewBox = sender as FrameworkElement;
+                var Parent = ((sender as FrameworkElement).Parent as FlyoutPresenter);
+                if (ViewBox.ActualWidth >= Parent.ActualWidth)
+                {
+                    ViewBox.Width = Parent.ActualWidth;
+                    ViewBox.Height = Parent.ActualHeight;
+                }
+            }
+        }
+
 
         #endregion
 
