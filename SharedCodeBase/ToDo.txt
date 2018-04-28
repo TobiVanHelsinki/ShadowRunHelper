@@ -2,7 +2,6 @@
 --------Eventuelles---------------------------------------------
 * Char Store -> relative to absolut
 * Englischer BSP Char
-* nav restore
 * add const ad id
 
 --------Respon------------------------------------------------

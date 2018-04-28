@@ -5,6 +5,7 @@ using TAPPLICATION.Model;
 using TLIB;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
+using Windows.Devices.Input;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -256,26 +257,48 @@ namespace ShadowRunHelper.UI
         #region DynamicSize
 
         public int CustFontSize { get; set; }
-        void Infos_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        public PointerDeviceType CustFontCurrentPointerDeviceType { get; set; }
+        void Infos_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
+            CustFontCurrentPointerDeviceType = e.Pointer.PointerDeviceType;
             switch (e.Pointer.PointerDeviceType)
             {
-                case Windows.Devices.Input.PointerDeviceType.Pen:
-                case Windows.Devices.Input.PointerDeviceType.Mouse:
+                case PointerDeviceType.Pen:
+                case PointerDeviceType.Mouse:
                     CustFontSize = 25;
                     break;
-                case Windows.Devices.Input.PointerDeviceType.Touch:
+                case PointerDeviceType.Touch:
                 default:
                     CustFontSize = 45;
                     break;
             }
         }
 
+        void Flyout_Opening(object sender, object e)
+        {
+            switch (CustFontCurrentPointerDeviceType)
+            {
+                case PointerDeviceType.Touch:
+                    (sender as Flyout).Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Full;
+                    break;
+                case PointerDeviceType.Pen:
+                    (sender as Flyout).Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Top;
+                    break;
+                case PointerDeviceType.Mouse:
+                    (sender as Flyout).Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Top;
+                    break;
+                default:
+                    break;
+            }
+        }
+        void Flyout_Closed(object sender, object e)
+        {
+            (sender as Flyout).Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Top;
+        }
         void MP_Btn_Loaded(object sender, RoutedEventArgs e)
         {
             (sender as Control).FontSize = CustFontSize;
         }
-
 
         #endregion
 
