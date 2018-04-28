@@ -2,7 +2,7 @@
 --------Eventuelles---------------------------------------------
 * Char Store -> relative to absolut
 * Englischer BSP Char
-
+* decrese exception
 
 ---------- Ideen für next release-------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern

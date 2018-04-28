@@ -36,10 +36,21 @@ namespace ShadowRunHelper.UI
 
         void CheckIAP()
         {
-            if (Constants.IAP_HIDEADS)
+            if (!Constants.IAP_HIDEADS)
             {
-                Ad_MainPageRight.Visibility = Constants.IAP_HIDEADS ? Visibility.Collapsed : Visibility.Visible;
-                Ad_MainPageBottom.Visibility = Constants.IAP_HIDEADS ? Visibility.Collapsed : Visibility.Visible;
+                Ad_MainPageRight.ApplicationId = Constants.AD_APPID;
+                Ad_MainPageBottom.ApplicationId = Constants.AD_APPID;
+                Ad_MainPageRight.AdUnitId = Constants.AD_ADID_MainPageRight;
+                Ad_MainPageBottom.AdUnitId = Constants.AD_ADID_MainPageBottom;
+            }
+            else
+            {
+                Ad_MainPageRight.Visibility = Visibility.Collapsed;
+                Ad_MainPageRight.Width = 0;
+                Ad_MainPageBottom.Visibility = Visibility.Collapsed;
+                Ad_MainPageBottom.Height = 0;
+                Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
+                Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
             }
         }
 

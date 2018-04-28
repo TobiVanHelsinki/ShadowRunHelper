@@ -84,7 +84,7 @@
         </Grid.ColumnDefinitions>
         <VisualStateManager.VisualStateGroups>
             <!-- Ads -->
-            <VisualStateGroup>
+            <VisualStateGroup x:Name="Trigger_Ads">
                 <VisualState>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="640"/>
@@ -108,13 +108,11 @@
         </VisualStateManager.VisualStateGroups>
         <Viewbox Grid.Column="1" >
             <Ad:AdControl Width="160" Height="600" x:Name="Ad_MainPageRight"
-                HorizontalAlignment="Center" VerticalAlignment="Center"
-                ApplicationId="9nblggh4rhvx" AdUnitId="1100022060"/>
+                HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
         <Viewbox Grid.Row="4" Grid.ColumnSpan="2">
             <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    ApplicationId="9nblggh4rhvx" AdUnitId="1100022061"/>
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </Viewbox>
         <Pivot x:Name="MainNavigation" SelectionChanged="MainNavigation_SelectionChanged">
             <PivotItem Tag="31">
