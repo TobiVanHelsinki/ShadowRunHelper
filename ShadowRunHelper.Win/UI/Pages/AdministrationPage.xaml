@@ -27,18 +27,47 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Normal" x:Key="Normal" x:DataType="TAMARIN:FileInfoClass">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="{x:Bind Filename, Mode=OneWay}"/>
-                    <TextBlock Grid.Column="1" Text="{x:Bind Size, Mode=OneWay, Converter={StaticResource o_FileSize}}"/>
-                    <TextBlock Grid.Column="2" x:Uid="Slash" Margin="10,0,10,0"/>
-                    <TextBlock Grid.Column="3" Text="{x:Bind DateModified, Mode=OneWay}"/>
-                </Grid>
+                <UserControl>
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <!-- ListEntry -->
+                            <VisualStateGroup>
+                                <VisualState>
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="500"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="DetailsPanel.(Grid.Row)" Value="0"/>
+                                        <Setter Target="DetailsPanel.(Grid.Column)" Value="1"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState>
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="DetailsPanel.(Grid.Row)" Value="1"/>
+                                        <Setter Target="DetailsPanel.(Grid.Column)" Value="0"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Text="{x:Bind Filename, Mode=OneWay}"/>
+                        <StackPanel Grid.Column="1" x:Name="DetailsPanel" Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind Size, Mode=OneWay, Converter={StaticResource o_FileSize}}"/>
+                            <TextBlock x:Uid="Slash" Margin="10,0,10,0"/>
+                            <TextBlock Text="{x:Bind DateModified, Mode=OneWay}"/>
+                        </StackPanel>
+                    </Grid>
+                </UserControl>
             </DataTemplate>
             <DataTemplate x:Name="Active" x:Key="Active" x:DataType="TAMARIN:FileInfoClass">
                 <Grid Margin="0,5,0,5">
@@ -66,7 +95,7 @@
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="640"/>
+                        <AdaptiveTrigger MinWindowWidth="400"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Ad_MainPageRight.Visibility" Value="Visible"/>
