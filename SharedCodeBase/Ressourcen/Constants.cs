@@ -106,6 +106,15 @@ namespace ShadowRunHelper
         public const string IAP_FEATUREID_ADFREE = "9NMBBTFVKW84";
         public const string IAP_FEATUREID_TEE = "9PJF3SD71T40";
 #endif
+        public const string AD_APPID = "9nblggh4rhvx";
+#if BETA
+        public const string AD_ADID_MainPageRight = "--";
+        public const string AD_ADID_MainPageBottom = "--";
+#elif RELEASE
+        public const string AD_ADID_MainPageRight = "1100022060";
+        public const string AD_ADID_MainPageBottom = "1100022061";
+#endif
+
         public static bool IAP_HIDEADS { get; internal set; }
         #endregion
         #region Diagnostics

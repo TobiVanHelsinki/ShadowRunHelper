@@ -92,10 +92,10 @@
     <Grid Name="GridForContentAndAds">
         <VisualStateManager.VisualStateGroups>
             <!-- Ads -->
-            <VisualStateGroup>
+            <VisualStateGroup x:Name="Trigger_Ads">
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="400"/>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Ad_MainPageRight.Visibility" Value="Visible"/>
@@ -119,8 +119,7 @@
         </Grid.ColumnDefinitions>
         <Viewbox Grid.Column="1" >
             <Ad:AdControl Width="160" Height="600" x:Name="Ad_MainPageRight"
-                HorizontalAlignment="Center" VerticalAlignment="Center"
-                ApplicationId="9nblggh4rhvx" AdUnitId="1100022060"/>
+                HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
@@ -188,10 +187,9 @@
                       SelectionMode="Multiple"
                       IsMultiSelectCheckBoxEnabled="False"/>
             </Border>
-            <Viewbox Grid.Row="4" Stretch="UniformToFill">
+            <Viewbox Grid.Row="4" Stretch="None">
                 <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    ApplicationId="9nblggh4rhvx" AdUnitId="1100022061"/>
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </Viewbox>
             <Border Grid.Row="5" x:Name="MainBarBorder">
                 <CommandBar Grid.Row="4" DefaultLabelPosition="Right">

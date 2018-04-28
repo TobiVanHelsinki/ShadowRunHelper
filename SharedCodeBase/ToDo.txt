@@ -2,9 +2,12 @@
 --------Eventuelles---------------------------------------------
 * Char Store -> relative to absolut
 * Englischer BSP Char
+* nav restore
+* add const ad id
 
 --------Respon------------------------------------------------
 * Panel Oben: Fenstergröße bestimmen, inhalt immer passend zu fenstergröße anzeigen
+* touch nach save keyb in suchfeld
 
 -----------------------------------------------------
 * button relativ zum anklickgerät
