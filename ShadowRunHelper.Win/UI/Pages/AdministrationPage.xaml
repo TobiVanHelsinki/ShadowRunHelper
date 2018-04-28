@@ -151,7 +151,7 @@
                     <Run x:Uid="Doppelpunkt"/>
                 </TextBlock>
                 <TextBlock Grid.Row="0" Grid.Column="1" x:Name="CurrentCharName" Text="{x:Bind Model.MainObject.FileInfo.Filename, Mode=OneWay}" Style="{StaticResource Chars}"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="CurrentCharPath" Text="{x:Bind Model.MainObject.FileInfo.Filepath, Mode=OneWay}" Style="{StaticResource Chars}"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="CurrentCharPath" Text="{x:Bind Model.MainObject.FileInfo.Filepath, Mode=OneWay}" Style="{StaticResource Chars}" MaxLines="3"/>
                 
                 <ProgressBar x:Name="ProgressBar_Char" Grid.Row="2" Grid.ColumnSpan="2" Visibility="Collapsed"/>
 
