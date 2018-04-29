@@ -13,7 +13,7 @@ namespace ShadowRunHelper
             get => (ProjectPages)PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_LAST_PAGE);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, value);
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, (int)value);
                 Instance.NotifyPropertyChanged();
             }
         }
