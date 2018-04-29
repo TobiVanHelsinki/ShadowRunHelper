@@ -3,38 +3,28 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
+using ShadowRunHelper.UI;
 using System;
 using System.Threading.Tasks;
-using TLIB;
+using TAMARIN.IO;
 using TAPPLICATION;
 using TAPPLICATION.IO;
+using TLIB;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Services.Store;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using TAMARIN.IO;
-using ShadowRunHelper.UI;
-using System.Linq;
 
 namespace ShadowRunHelper
 {
-    /// <summary>
-    /// Stellt das anwendungsspezifische Verhalten bereit, um die Standardanwendungsklasse zu ergaenzen.
-    /// </summary>
     sealed partial class App : Application
     {
         bool FirstStart = true;
         readonly AppModel Model;
         readonly SettingsModel Settings;
 
-        #region App Startup
-
-        /// <summary>
-        /// Initialisiert das Singletonanwendungsobjekt.  Dies ist die erste Zeile von erstelltem Code
-        /// und daher das logische aequivalent von main() bzw. WinMain().
-        /// </summary>
+        #region App Startup and Init
         public App()
         {
             UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
@@ -48,18 +38,10 @@ namespace ShadowRunHelper
             }
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
-            Suspending += App_Suspending;
-            Resuming += App_Resuming;
 
             InitializeComponent();
             Settings.StartCount++;
 
-            //Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
-            //    //Microsoft.ApplicationInsights.WindowsCollectors.UnhandledException |
-            //    Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
-            //    Microsoft.ApplicationInsights.WindowsCollectors.Session);
-            //AppCenter.LogLevel = LogLevel.Verbose;
-            
             AppCenter.Start(Constants.AppCenterID, typeof(Crashes), typeof(Analytics));
         }
 
@@ -78,18 +60,6 @@ namespace ShadowRunHelper
         #endregion
 
         #region Entry-Points
-
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
-        {
-#if DEBUG
-            SystemHelper.WriteLine("OnLaunched");
-#endif
-            base.OnLaunched(e);
-#if DEBUG
-            SystemHelper.WriteLine("OnLaunchedComplete");
-#endif
-        }
-
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
             CharHolder NewHolder;
@@ -116,9 +86,6 @@ namespace ShadowRunHelper
 
         async void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
         {
-#if DEBUG
-            SystemHelper.WriteLine("App_EnteredBackground");
-#endif
             var def = e.GetDeferral();
             try
             {
@@ -134,18 +101,15 @@ namespace ShadowRunHelper
                 }
                 Settings.CharInTempStore = true;
                 Settings.LastSaveInfo = SaveInfo;
-            } catch (Exception) { }
+            }
+            catch (Exception) { }
             def.Complete();
-#if DEBUG
-            SystemHelper.WriteLine("App_EnteredBackgroundComplete");
-#endif
         }
 
         async void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
         {
             var def = e.GetDeferral();
 #if DEBUG
-            SystemHelper.WriteLine("App_LeavingBackground");
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 DebugSettings.EnableFrameRateCounter = true;
@@ -181,9 +145,6 @@ namespace ShadowRunHelper
 
             FirstStart = false;
             def.Complete();
-#if DEBUG
-            SystemHelper.WriteLine("App_LeavingBackgroundComplete");
-#endif
         }
 
         private async Task CharLoadingHandling()
@@ -225,55 +186,14 @@ namespace ShadowRunHelper
             }
         }
 
-        protected override void OnActivated(IActivatedEventArgs args)
-        {
-#if DEBUG
-            SystemHelper.WriteLine("OnActivated");
-#endif
-#if DEBUG
-            SystemHelper.WriteLine("OnActivatedComplete");
-#endif
-            base.OnActivated(args);
-        }
-        protected override void OnBackgroundActivated(BackgroundActivatedEventArgs args)
-        {
-#if DEBUG
-            SystemHelper.WriteLine("OnBackgroundActivated");
-#endif
-#if DEBUG
-            SystemHelper.WriteLine("OnBackgroundActivatedComplete");
-#endif
-            base.OnBackgroundActivated(args);
-        }
-        void App_Suspending(object sender, SuspendingEventArgs e)
-        {
-#if DEBUG
-            SystemHelper.WriteLine("App_Suspending, time: " + (e.SuspendingOperation.Deadline - DateTimeOffset.Now));
-#endif
-#if DEBUG
-            SystemHelper.WriteLine("App_SuspendingComplete");
-#endif
-        }
-        private void App_Resuming(object sender, object e)
-        {
-#if DEBUG
-            SystemHelper.WriteLine("App_Resuming");
-#endif
-#if DEBUG
-            SystemHelper.WriteLine("App_ResumingComplete");
-#endif
-        }
         #region Exception Handling
 
-        /// <summary>
-        /// Wird aufgerufen, wenn die Navigation auf eine bestimmte Seite fehlschlaegt
-        /// </summary>
-        /// <param name="sender">Der Rahmen, bei dem die Navigation fehlgeschlagen ist</param>
-        /// <param name="e">Details ueber den Navigationsfehler</param>
+
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
+
         /// <summary>
         /// Try to save current char at unhandled exception
         /// </summary>
