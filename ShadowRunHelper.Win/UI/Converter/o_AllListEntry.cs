@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using TLIB;
-using TAPPLICATION;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter
