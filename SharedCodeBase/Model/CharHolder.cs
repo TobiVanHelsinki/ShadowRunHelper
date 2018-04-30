@@ -20,8 +20,8 @@ namespace ShadowRunHelper.Model
     {
         #region vars
         // Admin Version Numbers ##############################################
-        public string APP_VERSION_NUMBER { get { return Constants.APP_VERSION_NUMBER_1_5; } }
-        public string FILE_VERSION_NUMBER { get { return Constants.CHARFILE_VERSION_1_6; } }
+        public string APP_VERSION_NUMBER { get { return Constants.APP_VERSION_NUMBER; } }
+        public string FILE_VERSION_NUMBER { get { return Constants.CHARFILE_VERSION; } }
         #endregion
         #region  Char Model DATA 
         // the various controlers
