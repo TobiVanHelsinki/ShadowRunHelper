@@ -24,7 +24,7 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return StringHelper.GetString("Model__Active/Text") + StringHelper.GetString(item.DisplayName);
+                        return StringHelper.GetString("Model__Active/Text") + " " + StringHelper.GetString(item.DisplayName);
                     }
                 case "BezeichnerLang":
                     if (item?.PropertyID == "")

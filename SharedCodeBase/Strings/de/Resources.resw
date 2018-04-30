@@ -1343,7 +1343,7 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
     <value>orig.</value>
   </data>
   <data name="Model__Active.Text" xml:space="preserve">
-    <value>Aktiver Eintrag: </value>
+    <value>Aktiver Eintrag:</value>
   </data>
   <data name="Model__Mod.Text" xml:space="preserve">
     <value>Mod.</value>
