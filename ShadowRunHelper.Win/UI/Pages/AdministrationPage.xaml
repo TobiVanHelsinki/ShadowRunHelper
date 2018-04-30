@@ -28,7 +28,7 @@
             </DataTemplate>
             <DataTemplate x:Name="Normal" x:Key="Normal" x:DataType="TAMARIN:FileInfoClass">
                 <UserControl>
-                    <Grid>
+                    <Grid Margin="3,0,0,0">
                         <VisualStateManager.VisualStateGroups>
                             <!-- ListEntry -->
                             <VisualStateGroup>
@@ -176,7 +176,7 @@
             </Grid>
             <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
             <Border Grid.Row="3" x:Name="ListViewBorder">
-                <ListView Name="Char_Sum" 
+                <ListView Name="Char_Sum"
                       ItemsSource="{x:Bind Summorys, Mode=OneWay}" 
                       ItemTemplate="{StaticResource Normal}"
                       ListView.HeaderTemplate="{StaticResource Header}"
