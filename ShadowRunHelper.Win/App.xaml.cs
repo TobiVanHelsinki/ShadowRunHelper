@@ -23,13 +23,13 @@ namespace ShadowRunHelper
         bool FirstStart = true;
         readonly AppModel Model;
         readonly SettingsModel Settings;
-
+        Task CheckLicence;
         #region App Startup and Init
         public App()
         {
             UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
+            CheckLicence = IAP.CheckLicence();
             SetConstantStuff();
-            IAP.CheckLicence();
             Model = AppModel.Initialize();
             Settings = SettingsModel.Initialize();
             if (Settings.StartCount < 1)
@@ -84,28 +84,6 @@ namespace ShadowRunHelper
         }
         #endregion
 
-        async void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
-        {
-            var def = e.GetDeferral();
-            try
-            {
-                FileInfoClass SaveInfo;
-                if (Settings.AutoSave)
-                {
-                    SaveInfo = await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
-                    Settings.CountSavings++;
-                }
-                else
-                {
-                    SaveInfo = await SharedIO.SaveAtTempPlace(Model.MainObject);
-                }
-                Settings.CharInTempStore = true;
-                Settings.LastSaveInfo = SaveInfo;
-            }
-            catch (Exception) { }
-            def.Complete();
-        }
-
         async void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
         {
             var def = e.GetDeferral();
@@ -116,7 +94,6 @@ namespace ShadowRunHelper
             }
 #endif
             await CharLoadingHandling();
-
             Frame rootFrame = Window.Current.Content as Frame;
             // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
             // Nur sicherstellen, dass das Fenster aktiv ist.
@@ -184,6 +161,30 @@ namespace ShadowRunHelper
                 Settings.LastSaveInfo = null;
                 Settings.CharInTempStore = false;
             }
+            await CheckLicence;
+        }
+
+
+        async void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
+        {
+            var def = e.GetDeferral();
+            try
+            {
+                FileInfoClass SaveInfo;
+                if (Settings.AutoSave)
+                {
+                    SaveInfo = await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
+                    Settings.CountSavings++;
+                }
+                else
+                {
+                    SaveInfo = await SharedIO.SaveAtTempPlace(Model.MainObject);
+                }
+                Settings.CharInTempStore = true;
+                Settings.LastSaveInfo = SaveInfo;
+            }
+            catch (Exception) { }
+            def.Complete();
         }
 
         #region Exception Handling

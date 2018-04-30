@@ -31,7 +31,6 @@ namespace ShadowRunHelper.UI
         {
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
-            CheckIAP();
         }
 
         void CheckIAP()
@@ -56,6 +55,8 @@ namespace ShadowRunHelper.UI
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            CheckIAP();
+
             switch ((ProjectPagesOptions)e.Parameter)
             {
                 case ProjectPagesOptions.SettingsMain:

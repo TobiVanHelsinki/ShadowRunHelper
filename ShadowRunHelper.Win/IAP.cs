@@ -1,12 +1,15 @@
-﻿using System;
+﻿using ShadowRunHelper.IO;
+using System;
 using System.Threading.Tasks;
+using TAMARIN.IO;
+using TAPPLICATION.IO;
 using Windows.Services.Store;
 
 namespace ShadowRunHelper
 {
     public static class IAP
     {
-        public static async void CheckLicence()
+        public static async Task CheckLicence()
         {
             try
             {
@@ -19,6 +22,14 @@ namespace ShadowRunHelper
             {
                 Constants.IAP_HIDEADS = false;
                 Model.AppModel.Instance.NewNotification("Error_LoadPurchases");
+            }
+            if (!Constants.IAP_HIDEADS)
+            {
+                var Info = await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass(Place.Local, "", SharedIO.CurrentIO.GetCompleteInternPath(Place.Local) + @"noads\"));
+                if (Info != null)
+                {
+                    Constants.IAP_HIDEADS = true;
+                }
             }
         }
 

@@ -26,7 +26,6 @@ namespace ShadowRunHelper.UI
         {
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
-            CheckIAP();
             res = ResourceLoader.GetForCurrentView();
             Model.TutorialStateChanged += TutorialStateChanged;
 #if DEBUG
@@ -54,6 +53,8 @@ namespace ShadowRunHelper.UI
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            CheckIAP();
+
             ChangeCurrentCharUI(Model.MainObject == null ? false : true);
             Model.PropertyChanged += (x, y) =>
             {
