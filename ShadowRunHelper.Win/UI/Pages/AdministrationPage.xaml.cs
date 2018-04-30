@@ -70,9 +70,12 @@ namespace ShadowRunHelper.UI
 
             if (SettingsModel.I.StartCount <= 1)
             {
-                await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
+                await CopyExampleChar();
             }
-            await Summorys_Aktualisieren();
+            else
+            {
+                await Summorys_Aktualisieren();
+            }
             if (!SettingsModel.I.TutorialMainShown)
             {
                 try
@@ -179,7 +182,10 @@ namespace ShadowRunHelper.UI
         #endregion
 
         #region CharOperations
-        async void Create_ExampleChar(object sender, RoutedEventArgs e)
+#pragma warning disable CS4014
+        void Create_ExampleChar(object sender, RoutedEventArgs e) => CopyExampleChar();
+#pragma warning restore CS4014
+        async Task CopyExampleChar()
         {
             try
             {

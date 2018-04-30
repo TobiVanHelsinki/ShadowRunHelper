@@ -2,6 +2,7 @@
 --------Aktuelles-----------------------------------------------
 
 ---------- Ideen für next release-------------------------------
+* Store: Neue Bilder, neue Texte
 * Verknüpfungen Modell für Zirkelbezüge verbessern
 * drag and drop
 * neue kategorien (wissenfrt, kampf)
