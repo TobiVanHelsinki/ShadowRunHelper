@@ -46,7 +46,11 @@ namespace ShadowRunHelper.UI
             else
             {
                 Ad_MainPageRight.Visibility = Visibility.Collapsed;
+                Ad_MainPageRight.Width = 0;
                 Ad_MainPageBottom.Visibility = Visibility.Collapsed;
+                Ad_MainPageBottom.Height = 0;
+                Ad_MainPageRightBox.Visibility = Visibility.Collapsed;
+                Ad_MainPageBottomBox.Visibility = Visibility.Collapsed;
                 Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
                 Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
             }

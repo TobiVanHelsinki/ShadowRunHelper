@@ -106,11 +106,11 @@
             </VisualStateGroup>
 
         </VisualStateManager.VisualStateGroups>
-        <Viewbox Grid.Column="1" >
+        <Viewbox Grid.Column="1" x:Name="Ad_MainPageRightBox">
             <Ad:AdControl Width="160" Height="600" x:Name="Ad_MainPageRight"
                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Viewbox>
-        <Viewbox Grid.Row="4" Grid.ColumnSpan="2">
+        <Viewbox Grid.Row="4" Grid.ColumnSpan="2" x:Name="Ad_MainPageBottomBox">
             <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </Viewbox>
