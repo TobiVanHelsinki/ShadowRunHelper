@@ -123,11 +123,13 @@ namespace ShadowRunHelper.IO
         }
         public static async Task CopyPreSavedCharToCurrentLocation(PreSavedChar chartype)
         {
+            string pap = CurrentIO.GetCompleteInternPath(Place.Assets);
+
             switch (chartype)
             {
                 case PreSavedChar.ExampleChar:
                     await CopyFileToCurrentLocation(
-                        StringHelper.GetPrefix(StringHelper.PrefixType.AppPackageData) + "Assets/Example/",
+                        pap + @"Assets\Example\",
                         StringHelper.GetSimpleCountryCode(Constants.AVAILIBLE_EXAMPLE_LANGUAGES, Constants.DEFAULT_EXAMPLE_LANGUAGE) + Constants.DATEIENDUNG_CHAR,
                         StringHelper.GetString("ExampleChar") + Constants.DATEIENDUNG_CHAR);
                     break;
@@ -137,10 +139,10 @@ namespace ShadowRunHelper.IO
                     break;
             }
         }
-        public static async Task CopyFileToCurrentLocation(string path, string oldname, string newname)
+        public static async Task CopyFileToCurrentLocation(string oldlocation, string oldname, string newname)
         {
             var TargetFileClass = new FileInfoClass() { Filename = newname, Filepath = GetCurrentSavePath(), Fileplace = GetCurrentSavePlace(), FolderToken = SharedConstants.ACCESSTOKEN_FOLDERMODE };
-            var SourceFileClass = new FileInfoClass() { Filename = oldname, Filepath = path, Fileplace = Place.Assets };
+            var SourceFileClass = new FileInfoClass() { Filename = oldname, Filepath = oldlocation, Fileplace = Place.Assets };
             await CurrentIO.Copy(TargetFileClass, SourceFileClass);
         }
     }
