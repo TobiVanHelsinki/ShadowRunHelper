@@ -20,7 +20,7 @@ namespace ShadowRunHelper
 
         public void LastPageReset()
         {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, Constants.CONTAINER_SETTINGS_LAST_PAGE_STD);
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, (int)Constants.CONTAINER_SETTINGS_LAST_PAGE_STD);
         }
 
         public bool ForceLoadCharOnStart
