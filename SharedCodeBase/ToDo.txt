@@ -1,8 +1,5 @@
 ﻿
---------Eventuelles---------------------------------------------
-* cyber deck ui
-* Englischer BSP Char
-
+--------Aktuelles-----------------------------------------------
 
 ---------- Ideen für next release-------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern

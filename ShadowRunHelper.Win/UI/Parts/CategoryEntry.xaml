@@ -5,7 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:CharModel="using:ShadowRunHelper.CharModel"
-    xmlns:model="using:ShadowRunHelper.Model"
     xmlns:ui="using:ShadowRunHelper.UI"
     mc:Ignorable="d"
     d:DesignHeight="300"
@@ -101,7 +100,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource VehikelItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels_FirstItem}">
                             <Button x:Uid="UI_Btn_Bearbeiten" Name="Vehikel_Edit" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Name="Vehikel_Del" Click="Del_Click" Style="{StaticResource Category_Item_Buttons}"/>
                         </StackPanel>
@@ -347,8 +346,8 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource CyberDeckItem}"/>
-                    <VariableSizedWrapGrid Grid.Row="2" Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels_FirstItem}">
                             <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
                         </StackPanel>
@@ -389,7 +388,7 @@
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Schaden, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
-                    <TextBlock Grid.Row="3" Style="{StaticResource Category_Item_Text_Note}">
+                    <TextBlock Grid.Row="2" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>
@@ -496,7 +495,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource FernkampfwaffeItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels_FirstItem}">
                             <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
                         </StackPanel>
@@ -592,7 +591,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource NahkampfwaffeItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels_FirstItem}">
                             <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
                         </StackPanel>
@@ -679,7 +678,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource PanzerungItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels_FirstItem}">
                             <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
                         </StackPanel>
@@ -740,7 +739,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource MunitionItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels_FirstItem}">
                             <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
                         </StackPanel>
@@ -871,7 +870,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource ImplantatItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels_FirstItem}">
                             <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
                         </StackPanel>
@@ -983,7 +982,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource EigenschaftItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels_FirstItem}">
                             <Button x:Uid="UI_Btn_Bearbeiten" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Click="Del_Click"  Style="{StaticResource Category_Item_Buttons}"/>
                         </StackPanel>
@@ -1148,11 +1147,10 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource ZauberspruecheItem}"/>
-                    <VariableSizedWrapGrid Grid.Row="2" Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
+                    <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels_FirstItem}">
                             <Button x:Uid="UI_Btn_Bearbeiten" Name="Vehikel_Edit" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                             <Button x:Uid="UI_Btn_Loeschen" Name="Vehikel_Del" Click="Del_Click" Style="{StaticResource Category_Item_Buttons}"/>
                         </StackPanel>
@@ -1173,7 +1171,7 @@
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Dauer, Mode=OneWay}"/>
                         </StackPanel>
                     </VariableSizedWrapGrid>
-                    <TextBlock Grid.Row="3" Style="{StaticResource Category_Item_Text_Note}">
+                    <TextBlock Grid.Row="2" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
                             <Run x:Uid="Space" FontWeight="Bold"/>

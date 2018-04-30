@@ -366,8 +366,13 @@
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
         <Setter Property="Background" Value="{ThemeResource ListViewBackgroundBrush}"/>
     </Style>
-
+    <Style TargetType="StackPanel" x:Key="Category_Item_X_Wrap_StackPanels_FirstItem">
+        <Setter Property="MinWidth" Value="100"/>
+        <Setter Property="BorderThickness" Value="1,0,0,0"/>
+        <Setter Property="Orientation" Value="Vertical"/>
+    </Style>
     <Style TargetType="StackPanel" x:Key="Category_Item_X_Wrap_StackPanels">
+        <Setter Property="MinWidth" Value="100"/>
         <Setter Property="BorderThickness" Value="1,0,0,0"/>
         <Setter Property="Margin" Value="0,0,0,5"/>
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
