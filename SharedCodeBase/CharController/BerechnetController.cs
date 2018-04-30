@@ -9,15 +9,14 @@ using System.Collections.Specialized;
 using System.Linq;
 using TLIB;
 using TAPPLICATION;
+using System.ComponentModel;
 
 namespace ShadowRunHelper.CharController
 {
     public class BerechnetController : Controller<Berechnet>
     {
-        // Variable Stuff #####################################################
-        // Variable Model Stuff ###########################
         [JsonIgnore]
-        public new ObservableCollection<Berechnet> Data; //cause sometimes an very uebel Bug
+        public new ObservableCollection<Berechnet> Data; 
 
         Berechnet essenz = new Berechnet();
         AllListEntry MI_Essenz;
@@ -51,14 +50,11 @@ namespace ShadowRunHelper.CharController
         AttributController AttributeRef;
         Person Person;
         ObservableCollection<Implantat> lstImplantateRef;
-        // Variable Logik Stuff ###########################
-        bool m_MutexDataColectionChange = false;
-
 
         // Start Stuff ########################################################
         public BerechnetController()
         {
-            RefreshBezeichner();
+            RefreshIdentifiers();
             MI_Essenz = new AllListEntry(Essenz, "");
             MI_Limit_K = new AllListEntry(Limit_K, "");
             MI_Limit_G = new AllListEntry(Limit_G, "");
@@ -69,14 +65,17 @@ namespace ShadowRunHelper.CharController
             MI_MaxDamageG = new AllListEntry(MaxDamageG, "");
             MI_MaxDamageK = new AllListEntry(MaxDamageK, "");
 
-
-            Essenz.PropertyChanged += (x, y) => RefreshLimitS();
             Data = new ObservableCollection<Berechnet>();
-            Data.CollectionChanged += Data_CollectionChanged;
-            RefreshDataList();
+            Data.Add(Essenz);
+            Data.Add(Limit_K);
+            Data.Add(Limit_G);
+            Data.Add(Limit_S);
+            Data.Add(Laufen);
+            Data.Add(Rennen);
+            Data.Add(Tragen);
         }
 
-        void RefreshBezeichner()
+        void RefreshIdentifiers()
         {
             Essenz.Bezeichner = StringHelper.GetString("Model_Berechnet_Essenz/Text");
             Limit_K.Bezeichner = StringHelper.GetString("Model_Berechnet_Limit_K/Text");
@@ -94,6 +93,8 @@ namespace ShadowRunHelper.CharController
             AttributeRef = a;
             Person = p;
             lstImplantateRef = i;
+
+            Essenz.PropertyChanged += (x, y) => RefreshLimitS();
             Person.PropertyChanged += (x, y) => RefreshEssenz();
             Person.PropertyChanged += (x, y) => RefreshLimitSchaden();
             lstImplantateRef.CollectionChanged += (x, y) => RegisterEssenzRefreshers();
@@ -105,6 +106,7 @@ namespace ShadowRunHelper.CharController
             AttributeRef.Logik.PropertyChanged += (x, y) => RefreshLimitG();
             AttributeRef.Intuition.PropertyChanged += (x, y) => RefreshLimitG();
             AttributeRef.Willen.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); RefreshLimitSchaden(); };
+
             RefreshEssenz();
             RefreshLimitS();
             RefreshLimitG();
@@ -115,12 +117,14 @@ namespace ShadowRunHelper.CharController
             RefreshTragen();
         }
 
+        void MyEventHandler(object x, PropertyChangedEventArgs y) => RefreshEssenz();
         void RegisterEssenzRefreshers()
         {
+
             foreach (var item in lstImplantateRef)
             {
-                item.PropertyChanged -= (x, y) => RefreshEssenz();
-                item.PropertyChanged += (x, y) => RefreshEssenz();
+                item.PropertyChanged -= MyEventHandler;
+                item.PropertyChanged += MyEventHandler;
             }
             RefreshEssenz();
         }
@@ -178,40 +182,21 @@ namespace ShadowRunHelper.CharController
         }
         #endregion
 
-        // DataList Handling ##############################
-        void RefreshDataList()
-        {
-            RefreshBezeichner();
-            Data.Clear();
-            Data.Add(Essenz);
-            Data.Add(Limit_K);
-            Data.Add(Limit_G);
-            Data.Add(Limit_S);
-            Data.Add(Laufen);
-            Data.Add(Rennen);
-            Data.Add(Tragen);
-        }
-        void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (!m_MutexDataColectionChange && e.Action == NotifyCollectionChangedAction.Add && Data.Count >= 12)
-            {
-                m_MutexDataColectionChange = true;
-                RefreshDataList();
-                m_MutexDataColectionChange = false;
-            }
-        }
 
         // Implement IController ##########################
         public override IEnumerable<AllListEntry> GetElementsForThingList()
         {
-            var lstReturn = new List<AllListEntry>();
-            lstReturn.Add(MI_Essenz);
-            lstReturn.Add(MI_Limit_K);
-            lstReturn.Add(MI_Limit_G);
-            lstReturn.Add(MI_Limit_S);
-            lstReturn.Add(MI_Laufen);
-            lstReturn.Add(MI_Rennen);
-            lstReturn.Add(MI_Tragen);
+            RefreshIdentifiers();
+            var lstReturn = new List<AllListEntry>
+            {
+                MI_Essenz,
+                MI_Limit_K,
+                MI_Limit_G,
+                MI_Limit_S,
+                MI_Laufen,
+                MI_Rennen,
+                MI_Tragen
+            };
             return lstReturn;
         }
 

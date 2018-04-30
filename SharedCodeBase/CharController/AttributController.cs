@@ -1,23 +1,17 @@
-﻿using ShadowRunHelper.CharModel;
+﻿using Newtonsoft.Json;
+using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using TLIB;
-using TAPPLICATION;
-using Newtonsoft.Json;
 
 namespace ShadowRunHelper.CharController
 {
     public class AttributController : Controller<Attribut>
     {
-        // Variable Stuff #####################################################
-        // Variable Model Stuff ###########################
-        [Newtonsoft.Json.JsonIgnore] //cause sometimes an very uebel Bug
-        //[Newtonsoft.Json.JsonIgnore]
-        public new ObservableCollection<Attribut> Data; //cause sometimes an very uebel Bug
+        [JsonIgnore]
+        public new ObservableCollection<Attribut> Data;
 
         public Attribut Konsti;// those have to point at a sepcific list element
         public Attribut Geschick;
@@ -52,9 +46,6 @@ namespace ShadowRunHelper.CharController
         [JsonIgnore]
         public AllListEntry MI_Resonanz { get; set; }
 
-        // Variable Logik Stuff ###########################
-        bool m_MutexDataColectionChange = false;
-
         // Start Stuff ########################################################
         public AttributController()
         {
@@ -68,7 +59,8 @@ namespace ShadowRunHelper.CharController
             Willen = new Attribut();
             Magie = new Attribut();
             Resonanz = new Attribut();
-            RefreshBezeichner();
+            RefreshIdentifiers();
+
             MI_Konsti = new AllListEntry(Konsti, "");
             MI_Geschick = new AllListEntry(Geschick, "");
             MI_Reaktion = new AllListEntry(Reaktion, "");
@@ -81,11 +73,19 @@ namespace ShadowRunHelper.CharController
             MI_Resonanz= new AllListEntry(Resonanz, "");
 
             Data = new ObservableCollection<Attribut>();
-            Data.CollectionChanged += Data_CollectionChanged;
-            RefreshDataList();
+            Data.Add(Charisma);
+            Data.Add(Konsti);
+            Data.Add(Reaktion);
+            Data.Add(Staerke);
+            Data.Add(Geschick);
+            Data.Add(Logik);
+            Data.Add(Intuition);
+            Data.Add(Willen);
+            Data.Add(Magie);
+            Data.Add(Resonanz);
         }
 
-        void RefreshBezeichner()
+        void RefreshIdentifiers()
         {
             Konsti.Bezeichner = StringHelper.GetString("Model_Attribut_Konsti/Text");
             Geschick.Bezeichner = StringHelper.GetString("Model_Attribut_Geschick/Text");
@@ -99,35 +99,10 @@ namespace ShadowRunHelper.CharController
             Resonanz.Bezeichner = StringHelper.GetString("Model_Attribut_Resonanz/Text");
         }
 
-        // DataList Handling ##############################
-        void RefreshDataList()
-        {
-            RefreshBezeichner();
-            Data.Clear();
-            Data.Add(Charisma);
-            Data.Add(Konsti);
-            Data.Add(Reaktion);
-            Data.Add(Staerke);
-            Data.Add(Geschick);
-            Data.Add(Logik);
-            Data.Add(Intuition);
-            Data.Add(Willen);
-            Data.Add(Magie);
-            Data.Add(Resonanz);
-        }
-        void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (!m_MutexDataColectionChange && e.Action == NotifyCollectionChangedAction.Add && Data.Count >= 12)
-            {
-                m_MutexDataColectionChange = true;
-                RefreshDataList();
-                m_MutexDataColectionChange = false;
-            }
-        }
-
         // Implement IController ##########################
         public override IEnumerable<AllListEntry> GetElementsForThingList()
         {
+            RefreshIdentifiers();
             var lstReturn = new List<AllListEntry>();
             lstReturn.Add(MI_Charisma);
             lstReturn.Add(MI_Geschick);
