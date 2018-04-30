@@ -3,8 +3,8 @@
 
 ---------- Ideen für next release-------------------------------
 * Verknüpfungen Modell für Zirkelbezüge verbessern
-* neue kategorien (wissenfrt, kampf)
 * drag and drop
+* neue kategorien (wissenfrt, kampf)
 
 ---------- Ideen für später -------------------------------
 
