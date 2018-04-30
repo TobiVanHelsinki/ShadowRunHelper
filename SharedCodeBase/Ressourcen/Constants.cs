@@ -12,8 +12,8 @@ namespace ShadowRunHelper
 
         public static string[] AVAILIBLE_DB_LANGUAGES = new string[] { "de" };
         public const string DEFAULT_DB_LANGUAGE = "de";
-        public static string[] AVAILIBLE_EXAMPLE_LANGUAGES = new string[] { "de" };
-        public const string DEFAULT_EXAMPLE_LANGUAGE = "de";
+        public static string[] AVAILIBLE_EXAMPLE_LANGUAGES = new string[] { "de" , "en" };
+        public const string DEFAULT_EXAMPLE_LANGUAGE = "en";
         #region File Endings
         public const string DATEIENDUNG_CHAR_1 = ".SRWin";
         public const string DATEIENDUNG_CHAR_2 = ".SRCHChar";
