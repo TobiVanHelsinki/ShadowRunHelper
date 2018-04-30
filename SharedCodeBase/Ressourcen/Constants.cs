@@ -27,11 +27,13 @@ namespace ShadowRunHelper
         #region Version Numbers
         public const string APP_VERSION_NUMBER_1_3 = "1.3";
         public const string APP_VERSION_NUMBER_1_5 = "1.5";
-        public const string APP_VERSION_NUMBER = APP_VERSION_NUMBER_1_5;
+        public const string APP_VERSION_NUMBER_1_7 = "1.7";
+        public const string APP_VERSION_NUMBER = APP_VERSION_NUMBER_1_7;
 
         public const string CHARFILE_VERSION_1_3 = "1130"; //old version
         public const string CHARFILE_VERSION_1_5 = "1.5";
         public const string CHARFILE_VERSION_1_6 = "1.6";
+        public const string CHARFILE_VERSION = CHARFILE_VERSION_1_6;
         #endregion
         #region Settings
         public const string CONTAINER_SETTINGS_BLOCKLISTOPTIONS = "SETTINGS_BLOCKLISTOPTIONS";
