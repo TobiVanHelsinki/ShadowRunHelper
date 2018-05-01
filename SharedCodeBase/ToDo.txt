@@ -6,6 +6,9 @@
 * Verknüpfungen Modell für Zirkelbezüge verbessern
 * drag and drop
 * neue kategorien (wissenfrt, kampf)
+* TimeLine Support
+* Multi Instances
+* 
 
 ---------- Ideen für später -------------------------------
 
