@@ -1,5 +1,6 @@
 ﻿
 --------Aktuelles-----------------------------------------------
+* Mobil: keine Anzeige bei hochkant
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
