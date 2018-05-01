@@ -5,24 +5,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Width="60" Height="50" IsTabStop="False">
-
-    <StackPanel VerticalAlignment="Bottom">
+    Width="70" Height="50" IsTabStop="False"
+    HorizontalAlignment="Center" VerticalAlignment="Center"
+    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+    >
+    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center">
         <FontIcon
-                            HorizontalAlignment="Center"
-                            Margin="0,12,0,0"
-                            Glyph="{Binding Glyph}"
-                            FontSize="16" />
+            HorizontalAlignment="Center"
+            Margin="0,0,0,3"
+            Glyph="{Binding Glyph}"
+            FontSize="16"
+            />
         <TextBlock
-                            FontFamily="Segoe UI"
-                            Text="{Binding Label}"
-                            Style="{StaticResource CaptionTextBlockStyle}"
-                            LineStackingStrategy="BlockLineHeight"
-                            LineHeight="14"
-                            MaxLines="1"
-                            IsTextScaleFactorEnabled="True"
-                            TextAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Margin="2,5,2,7" />
+            FontFamily="Segoe UI"
+            Text="{Binding Label}"
+            Style="{StaticResource CaptionTextBlockStyle}"
+            TextTrimming="CharacterEllipsis"
+            TextWrapping="NoWrap"
+            Margin="0,0,0,7"
+            />
     </StackPanel>
 </UserControl>
