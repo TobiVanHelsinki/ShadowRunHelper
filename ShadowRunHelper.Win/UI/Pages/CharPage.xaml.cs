@@ -23,6 +23,23 @@ namespace ShadowRunHelper.UI
             NavigationCacheMode = NavigationCacheMode.Required;
         }
 
+        #region GUI Stuff
+        private void Pivot_SizeChanged(object sender, SizeChangedEventArgs e) => AdjustHeaderWidth();
+
+        void AdjustHeaderWidth()
+        {
+            var w = Pivot.ActualWidth / 6;
+            if (w> 30 && w < 60 || PivotHeader1Border.MaxWidth < 60)
+            {
+                PivotHeader1Border.MaxWidth = w;
+                PivotHeader2Border.MaxWidth = w;
+                PivotHeader3Border.MaxWidth = w;
+                PivotHeader4Border.MaxWidth = w;
+                PivotHeader5Border.MaxWidth = w;
+                PivotHeader6Border.MaxWidth = w;
+            }
+        }
+        #endregion
         #region Navigation stuff
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -78,6 +95,7 @@ namespace ShadowRunHelper.UI
 #pragma warning restore CS4014
                 SettingsModel.I.TutorialCharShown = true;
             }
+            AdjustHeaderWidth();
         }
 
         void TutorialStateChanged(int StateNumber, bool Highlight)
@@ -239,8 +257,8 @@ namespace ShadowRunHelper.UI
             PendingScrollEntry = null;
         }
 
-        #endregion
 
+        #endregion
 
     }
 }

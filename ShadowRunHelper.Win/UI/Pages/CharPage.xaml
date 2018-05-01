@@ -254,7 +254,7 @@
                 </StackPanel>
             </Button>
         </Grid>
-        <Pivot x:Name="Pivot" Grid.Row="1" Style="{StaticResource PivotStyle_TabsStyle}" >
+        <Pivot x:Name="Pivot" Grid.Row="1" Template="{StaticResource PivotStyle_TabsTemplate}" SizeChanged="Pivot_SizeChanged">
             <Pivot.RightHeader>
                 <Grid Margin="5" x:Name="FilterBoxPanel">
                     <Grid.ColumnDefinitions>
@@ -281,8 +281,8 @@
 
             </Pivot.LeftHeader>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
-                <PivotItem.Header>
-                    <Border x:Name="PivotHeader1Border">
+                <PivotItem.Header >
+                    <Border MaxWidth="60" x:Name="PivotHeader1Border">
                         <ui:TabHeader x:Uid="Char_View_Pivot_Aktion" Glyph="&#xE945;" />
                     </Border>
                 </PivotItem.Header>
@@ -300,7 +300,7 @@
             </PivotItem>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
-                    <Border x:Name="PivotHeader2Border">
+                    <Border MaxWidth="60" x:Name="PivotHeader2Border">
                         <ui:TabHeader x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
                     </Border>
                 </PivotItem.Header>
@@ -319,7 +319,7 @@
             </PivotItem>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
-                    <Border x:Name="PivotHeader3Border">
+                    <Border MaxWidth="60" x:Name="PivotHeader3Border">
                         <ui:TabHeader x:Uid="Char_View_Pivot_Kampf" Glyph="&#xE730;" />
                     </Border>
                 </PivotItem.Header>
@@ -335,7 +335,7 @@
             </PivotItem>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
-                    <Border x:Name="PivotHeader4Border">
+                    <Border MaxWidth="60" x:Name="PivotHeader4Border">
                         <ui:TabHeader x:Uid="Char_View_Pivot_Person" Glyph="&#xE2AF;" />
                     </Border>
                 </PivotItem.Header>
@@ -510,7 +510,7 @@
             </PivotItem>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
-                    <Border x:Name="PivotHeader5Border">
+                    <Border MaxWidth="60" x:Name="PivotHeader5Border">
                         <ui:TabHeader x:Uid="Char_View_Pivot_Notizen" Glyph="&#xE193;" />
                     </Border>
                 </PivotItem.Header>
@@ -518,7 +518,7 @@
             </PivotItem>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
-                    <Border x:Name="PivotHeader6Border">
+                    <Border MaxWidth="60" x:Name="PivotHeader6Border">
                         <ui:TabHeader x:Uid="Char_View_Pivot_Settings" Glyph="&#xE713;" />
                     </Border>
                 </PivotItem.Header>
