@@ -1,6 +1,6 @@
 ﻿
 --------Aktuelles-----------------------------------------------
-* Tab Width: think at better values
+* cgar admin uhrzeit bug
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
