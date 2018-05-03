@@ -226,18 +226,6 @@
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_File"/>
 
                         <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-                            <TextBlock x:Uid="UI_Optionen_Intern_Sync_Header" Style="{StaticResource TextInhaltKlein}"/>
-                            <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
-                                <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
-                            </Viewbox>
-                            <ToolTipService.ToolTip>
-                                <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Intern_Sync_Tip"/>
-                            </ToolTipService.ToolTip>
-                        </StackPanel>
-
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" GotFocus="Intern_Sync_GotFocus" Toggled="Intern_Sync_Toggled" IsOn="{x:Bind Path=Settings.InternSync, Mode=TwoWay}"/>
-
-                        <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
                             <TextBlock x:Uid="UI_Optionen_Ordnermode_Header" Style="{StaticResource TextInhaltKlein}"/>
                             <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
                                 <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
@@ -246,13 +234,22 @@
                                 <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Ordnermode_Tip"/>
                             </ToolTipService.ToolTip>
                         </StackPanel>
-
                         <StackPanel Orientation="Horizontal">
                             <ToggleSwitch x:Uid="UI_Optionen_OrdnerMode" GotFocus="FolderMode_GotFocus" Toggled="FolderMode_Toggled" IsOn="{x:Bind Path=Settings.ORDNERMODE, Mode=TwoWay}"/>
                             <TextBlock Grid.Column="1" VerticalAlignment="Center" x:Uid="Doppelpunkt" Style="{StaticResource TextInhaltKlein}"/>
                             <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{x:Bind Path=Settings.ORDNERMODE_PFAD, Mode=OneWay}" Style="{StaticResource TextInhaltKlein}"/>
                         </StackPanel>
 
+                        <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                            <TextBlock x:Uid="UI_Optionen_Intern_Sync_Header" Style="{StaticResource TextInhaltKlein}"/>
+                            <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
+                                <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
+                            </Viewbox>
+                            <ToolTipService.ToolTip>
+                                <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Intern_Sync_Tip"/>
+                            </ToolTipService.ToolTip>
+                        </StackPanel>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" GotFocus="Intern_Sync_GotFocus" Toggled="Intern_Sync_Toggled" IsOn="{x:Bind Path=Settings.InternSync, Mode=TwoWay}"/>
 
                         <TextBlock x:Uid="UI_Optionen_FileNameUseProgres_Header" Style="{StaticResource TextInhaltKlein}"/>
                         <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.FileNameUseProgres, Mode=TwoWay}"/>

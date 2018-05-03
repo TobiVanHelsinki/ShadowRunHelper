@@ -513,7 +513,7 @@
     <comment>Mehrzahl</comment>
   </data>
   <data name="UI_Optionen_AutoSave_Header.Text" xml:space="preserve">
-    <value>Char bei Änderungen automatisch Speichern?</value>
+    <value>Char bei Änderungen automatisch speichern</value>
   </data>
   <data name="Model_StroemungM_.Text" xml:space="preserve">
     <value>Strömungen</value>
@@ -558,10 +558,10 @@
     <value>Intern Speichern</value>
   </data>
   <data name="UI_Optionen_Ordnermode.OnContent" xml:space="preserve">
-    <value>Extern Speichern</value>
+    <value> </value>
   </data>
   <data name="UI_Optionen_Ordnermode_Header.Text" xml:space="preserve">
-    <value>In Ordner Speichern?</value>
+    <value>Extern Speichern</value>
   </data>
   <data name="UI_Optionen_Ordnermode_Pfad.Text" xml:space="preserve">
     <value>Pfad</value>
@@ -911,7 +911,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Datename mit Datum versehen</value>
   </data>
   <data name="UI_Optionen_FileNameUseProgres_Header.Text" xml:space="preserve">
-    <value>Dateiname mit Fortschritt versehen</value>
+    <value>Dateiname mit Char-Fortschritt versehen</value>
   </data>
   <data name="Notification_Info_ConvertFromPrevious" xml:space="preserve">
     <value>Diese Datei ist eine alte Version, sie wird nun in das aktuelleste Format konvertiert. Dadurch kann sie womöglich nicht oder nicht mit dem gesamten Funktionsumfang in früheren Versionen des Programms geöffnet werden. Die Aktuelle Version des Programms steht in den Einstellungen. Sollte die Umwandlung nicht erwünscht sein, speichere den Char einfach nicht.</value>
@@ -929,7 +929,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Suche nach Name und Typ ...</value>
   </data>
   <data name="UI_Optionen_Intern_Sync_Header.Text" xml:space="preserve">
-    <value>Interne Dateien Synchronisieren?</value>
+    <value>Bei Interner Speicherung: Dateien Synchronisieren</value>
   </data>
   <data name="Model_Person_Alias_STD.Text" xml:space="preserve">
     <value>Name</value>
