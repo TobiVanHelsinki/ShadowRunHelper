@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml;
+﻿using TLIB;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 
@@ -6,6 +7,8 @@ namespace ShadowRunHelper.Win.UI
 {
     public sealed partial class SettingElement : UserControl
     {
+        string ja = StringHelper.GetString("UI_Optionen_Toggle/OnContent");
+        string nein = StringHelper.GetString("UI_Optionen_Toggle/OffContent");
         public SettingElement()
         {
             this.InitializeComponent();
@@ -13,7 +16,7 @@ namespace ShadowRunHelper.Win.UI
 
         private void DisableToolTip()
         {
-            //ToolTipPanel.to;
+            ToolTip.Visibility = Visibility.Collapsed;
             ToolTipPanelSign.Visibility = Visibility.Collapsed;
         }
 
@@ -35,8 +38,8 @@ namespace ShadowRunHelper.Win.UI
 
         public string OnText
         {
-            get { var s = GetValue(OnTextProperty); if (string.IsNullOrEmpty(s as string)) { return "DefaulJat"; } else { return s as string; } }
-            set { if (string.IsNullOrEmpty(value)) { SetValue(OnTextProperty, "DefaultJa"); } else { SetValue(OnTextProperty, value); } }
+            get { var s = GetValue(OnTextProperty); if (string.IsNullOrEmpty(s as string)) { return ja; } else { return s as string; } }
+            set { if (string.IsNullOrEmpty(value)) { SetValue(OnTextProperty, ja); } else { SetValue(OnTextProperty, value); } }
         }
 
         public static readonly DependencyProperty OnTextProperty =
@@ -44,8 +47,8 @@ namespace ShadowRunHelper.Win.UI
 
         public string OffText
         {
-            get { var s = GetValue(OffTextProperty); if (string.IsNullOrEmpty(s as string)) { return "DefaulNein"; } else { return s as string; } }
-            set { if (string.IsNullOrEmpty(value)) { SetValue(OffTextProperty, "DefaultNein"); } else { SetValue(OffTextProperty, value); } }
+            get { var s = GetValue(OffTextProperty); if (string.IsNullOrEmpty(s as string)) { return nein; } else { return s as string; } }
+            set { if (string.IsNullOrEmpty(value)) { SetValue(OffTextProperty, nein); } else { SetValue(OffTextProperty, value); } }
         }
 
         public static readonly DependencyProperty OffTextProperty =

@@ -2,7 +2,6 @@
     x:Class="ShadowRunHelper.Win.UI.SettingElement"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:UI="using:ShadowRunHelper.Win.UI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -37,16 +36,18 @@
             </DataTemplate>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel >
-        <StackPanel x:Name="ToolTipPanel" ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+    <StackPanel x:Name="ToolTipPanel" ToolTipService.Placement="Top">
+        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
             <TextBlock x:Name="HeaderText" Text="{x:Bind Text}" VerticalAlignment="Center" Style="{StaticResource TextInhaltKlein}"/>
             <Viewbox x:Name="ToolTipPanelSign" Height="{Binding ElementName=HeaderText, Path=ActualHeight, Mode=OneWay}">
                 <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
             </Viewbox>
-            <ToolTipService.ToolTip>
-                <TextBlock TextWrapping="Wrap" Text="{x:Bind Tip}" x:Uid="UI_Optionen_DisplayRequest_Tip"/>
-            </ToolTipService.ToolTip>
         </StackPanel>
         <ToggleSwitch OnContent="{x:Bind OnText}" OffContent="{x:Bind OffText}" IsOn="{x:Bind Setting, Mode=TwoWay}"/>
+        <ToolTipService.ToolTip>
+            <ToolTip Content="{x:Bind Tip}" x:Name="ToolTip" 
+                  HorizontalOffset="20" VerticalOffset="30"/>
+            <!--<TextBlock x:Name="Test" TextWrapping="Wrap" Text="{x:Bind Tip}"/>-->
+        </ToolTipService.ToolTip>
     </StackPanel>
 </UserControl>
