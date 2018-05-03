@@ -404,7 +404,8 @@ namespace ShadowRunHelper
                 }
                 catch (Exception ex)
                 {
-                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_General"), ex);
+                    SharedSettingsModel.Instance.ORDNERMODE = false;
+                    //AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_General"), ex);
                 }
             }
         }
