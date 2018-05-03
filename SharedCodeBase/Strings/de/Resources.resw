@@ -554,10 +554,10 @@
   <data name="UI_Optionen_U_Rechtliches.Text" xml:space="preserve">
     <value>Rechtliches</value>
   </data>
-  <data name="UI_Optionen_Ordnermode_X.OffText" xml:space="preserve">
+  <data name="UI_Optionen_Ordnermode.OffText" xml:space="preserve">
     <value>Interner App-Speicher</value>
   </data>
-  <data name="UI_Optionen_Ordnermode_X.OnText" xml:space="preserve">
+  <data name="UI_Optionen_Ordnermode.OnText" xml:space="preserve">
     <value>Externer, beliebiger, Ordner</value>
   </data>
   <data name="UI_Optionen_Ordnermode.Text" xml:space="preserve">
@@ -998,7 +998,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Wartezeit für Änderungen in Millisekunden</value>
   </data>
   <data name="UI_Optionen_AutoSave.Tip" xml:space="preserve">
-    <value>Nach einer Änderung wird die angegebene Zeit gewartet, bis dein Char gespeichert wird. Wenn du schnell und viel änderst, dann gib besser einen größeren Wert an. Wenn du die App schließt, wird dies nicht für eine Automatische Speicherung sorgen. Ein Wert zwischen 2 und 10 Sekunden ist okay.</value>
+    <value>Nach einer Änderung wird die angegebene Zeit gewartet, bis dein Char gespeichert wird. Wenn du schnell und viel änderst, dann gib besser einen größeren Wert an. Ein Wert zwischen 2 und 10 Sekunden ist angemessen.</value>
   </data>
   <data name="Model_Person_Initiative_Kurz.Text" xml:space="preserve">
     <value>Ini</value>
@@ -1442,6 +1442,9 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
     <value>Tutorial</value>
   </data>
   <data name="UI_Optionen_LoadOnStart.Tip" xml:space="preserve">
-    <value />
+    <value>Der Char, der beim Schließen der App aktiv war, wird beim Starten geladen. Achtung, dies erhöht die App-Ladezeit.</value>
+  </data>
+  <data name="UI_Optionen_FileNameUseProgres.Tip" xml:space="preserve">
+    <value>Der Dateiname wird automatisch generiert und beinhaltet: Name des Char, Karma, Anzahl Runs.</value>
   </data>
 </root>
