@@ -242,10 +242,10 @@ In each step, the discussed controls are highlighted in red. On small screens th
   <data name="UI_CharVerwaltung_Einleitung2.Text" xml:space="preserve">
     <value>Administrate other char</value>
   </data>
-  <data name="UI_Optionen_AutoSave_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_AutoSave.Text" xml:space="preserve">
     <value>Auto-Save current char at changes</value>
   </data>
-  <data name="UI_Optionen_LoadOnStart_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_LoadOnStart.Text" xml:space="preserve">
     <value>Load last used char at App start</value>
   </data>
   <data name="UI_Char_Schaden.Text" xml:space="preserve">
@@ -272,13 +272,13 @@ In each step, the discussed controls are highlighted in red. On small screens th
   <data name="UI_Optionen_U_Rechtliches.Text" xml:space="preserve">
     <value>Legal</value>
   </data>
-  <data name="UI_Optionen_Ordnermode.OffContent" xml:space="preserve">
+  <data name="UI_Optionen_Ordnermode.OffText" xml:space="preserve">
     <value>Intern Save</value>
   </data>
-  <data name="UI_Optionen_Ordnermode.OnContent" xml:space="preserve">
+  <data name="UI_Optionen_Ordnermode.OnText" xml:space="preserve">
     <value>Extern Save</value>
   </data>
-  <data name="UI_Optionen_Ordnermode_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_Ordnermode.Text" xml:space="preserve">
     <value>Save at folder</value>
   </data>
   <data name="UI_Optionen_Ordnermode_Pfad.Text" xml:space="preserve">
@@ -303,7 +303,7 @@ This app can be used to open files and folders on the file system. The app store
   <data name="UI_Optionen_Toggle.OnContent" xml:space="preserve">
     <value>Yes</value>
   </data>
-  <data name="UI_Optionen_EditAfterAdd_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_EditAfterAdd.Text" xml:space="preserve">
     <value>Edit after adding</value>
   </data>
   <data name="Ui_Nav_Char.Label" xml:space="preserve">
@@ -315,7 +315,7 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Ui_Nav_Settings.Label" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="UI_Optionen_DisplayRequest_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_DisplayRequest.Text" xml:space="preserve">
     <value>Hold Char Page active</value>
   </data>
   <data name="UI_Optionen_Version.Text" xml:space="preserve">
@@ -324,10 +324,10 @@ This app can be used to open files and folders on the file system. The app store
   <data name="UI_CharVerwaltung_Btn_Repair.Label" xml:space="preserve">
     <value>Auto-Fix</value>
   </data>
-  <data name="UI_Optionen_FileNameUseDate_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_FileNameUseDate.Text" xml:space="preserve">
     <value>Add date and time to filename</value>
   </data>
-  <data name="UI_Optionen_FileNameUseProgres_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_FileNameUseProgres.Text" xml:space="preserve">
     <value>Add progress to filename</value>
   </data>
   <data name="UI_Optionen_Kontakt_Mail.Text" xml:space="preserve">
@@ -339,10 +339,10 @@ This app can be used to open files and folders on the file system. The app store
   <data name="UI_Optionen_ThrownException.Text" xml:space="preserve">
     <value>Original Exception</value>
   </data>
-  <data name="UI_Optionen_Intern_Sync_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_Intern_Sync.Text" xml:space="preserve">
     <value>sync intern files</value>
   </data>
-  <data name="UI_Optionen_Beta_Features_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_Beta_Features.Text" xml:space="preserve">
     <value>Activate Beta-Features</value>
   </data>
   <data name="UI_Optionen_App.Text" xml:space="preserve">
@@ -357,22 +357,22 @@ This app can be used to open files and folders on the file system. The app store
   <data name="UI_Optionen_RateBtn.Content" xml:space="preserve">
     <value>Rate this App</value>
   </data>
-  <data name="UI_Optionen_DisplayRequest_Tip.Text" xml:space="preserve">
+  <data name="UI_Optionen_DisplayRequest.Tip" xml:space="preserve">
     <value>Prevent the Screen from locking</value>
   </data>
-  <data name="UI_Optionen_Intern_Sync_Tip.Text" xml:space="preserve">
+  <data name="UI_Optionen_Intern_Sync.Tip" xml:space="preserve">
     <value>This will synchronize the files you have stored internally over all your Windows 10 devices. Synchronization occurs only if you have enabled the general sync option in WIndows and both devices have sufficient power and a Internetconnection.</value>
   </data>
-  <data name="UI_Optionen_Ordnermode_Tip.Text" xml:space="preserve">
+  <data name="UI_Optionen_Ordnermode.Tip" xml:space="preserve">
     <value>Select a Exernen storage folder.</value>
   </data>
   <data name="UI_Optionen_U_Einstellungen_Tip.Text" xml:space="preserve">
     <value>Hold the mouse or finger on a ? to get more information.</value>
   </data>
-  <data name="UI_Optionen_AutoSaveInterval_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_AutoSaveInterval.Text" xml:space="preserve">
     <value>Watingtime for Changes in milliseconds</value>
   </data>
-  <data name="UI_Optionen_AutoSave_Tip.Text" xml:space="preserve">
+  <data name="UI_Optionen_AutoSave.Tip" xml:space="preserve">
     <value>After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. If you close the app, this will not cause automatic storage. A value between 2 and 10 seconds is okay.</value>
   </data>
   <data name="UI_CharVerwaltung_E_FileDate.Text" xml:space="preserve">

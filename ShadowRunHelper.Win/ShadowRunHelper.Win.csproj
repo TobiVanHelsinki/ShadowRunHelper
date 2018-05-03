@@ -165,6 +165,9 @@
     <Compile Include="UI\Parts\LinkListChoice.xaml.cs">
       <DependentUpon>LinkListChoice.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Parts\SettingElement.xaml.cs">
+      <DependentUpon>SettingElement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Parts\Tutorial.xaml.cs">
       <DependentUpon>Tutorial.xaml</DependentUpon>
     </Compile>
@@ -290,6 +293,10 @@
     <Page Include="UI\Parts\LinkListChoice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Parts\SettingElement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Parts\Tutorial.xaml">
       <Generator>MSBuild:Compile</Generator>

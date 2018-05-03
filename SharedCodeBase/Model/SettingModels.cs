@@ -1,6 +1,10 @@
-﻿using TAMARIN.IO;
+﻿using ShadowRunHelper.Model;
+using System;
+using TAMARIN.IO;
+using TAPPLICATION;
+using TAPPLICATION.IO;
 using TAPPLICATION.Model;
-using Windows.Storage;
+using TLIB;
 
 namespace ShadowRunHelper
 {
@@ -333,16 +337,29 @@ namespace ShadowRunHelper
         {
             if (instance == null)
             {
-                ApplicationData.Current.LocalSettings.CreateContainer(Constants.CONTAINER_SETTINGS, ApplicationDataCreateDisposition.Always);
+                SharedIO.CurrentIO.CreateSaveContainer();
                 instance = new SettingsModel();
             }
-            //#region Custom Stuff
-            //if (Instance.BlockListOptions == null)
-            //{ // create
-            //}
-            //#endregion
+            instance.PropertyChanged += SettingsChanged;
+
             return Instance;
         }
+
+        private static void SettingsChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "InternSync":
+                    Intern_Sync_Toggled();
+                    break;
+                case "ORDNERMODE":
+                    FolderMode_Toggled();
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public static new SettingsModel Instance
         {
             get
@@ -357,10 +374,40 @@ namespace ShadowRunHelper
                 return (SettingsModel)instance;
             }
         }
+        #endregion
 
-
-
-
+        #region Contraints
+        static async void Intern_Sync_Toggled()
+        {
+            try
+            {
+                var b = SharedSettingsModel.Instance.InternSync;
+                var localpath = SharedIO.CurrentIO.GetCompleteInternPath(Place.Local);
+                var roampath = SharedIO.CurrentIO.GetCompleteInternPath(Place.Roaming);
+                var t = new FileInfoClass(b ? Place.Roaming : Place.Local, "", (b ? roampath : localpath) + SharedConstants.INTERN_SAVE_CONTAINER + @"\");
+                var s = new FileInfoClass(b ? Place.Local : Place.Roaming, "", (b ? localpath : roampath) + SharedConstants.INTERN_SAVE_CONTAINER + @"\");
+                await SharedIO.CurrentIO.CopyAllFiles(t, s);
+            }
+            catch (Exception ex)
+            {
+                AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_SwitchingInterFolder"), ex);
+            }
+        }
+        static async void FolderMode_Toggled()
+        {
+            var b = SharedSettingsModel.Instance.ORDNERMODE;
+            if (b)
+            {
+                try
+                {
+                    SharedSettingsModel.I.ORDNERMODE_PFAD = (await UwpIO.GetFolder(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.AskUser)).Path;
+                }
+                catch (Exception ex)
+                {
+                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_General"), ex);
+                }
+            }
+        }
         #endregion
 
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter
@@ -21,11 +22,24 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return value == null ? Windows.UI.Xaml.Visibility.Collapsed : Windows.UI.Xaml.Visibility.Visible;
+            return value == null ? Visibility.Collapsed : Visibility.Visible;
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             return (Type)value;
+        }
+        #endregion
+    }
+    public class o_Bool2Visibility : IValueConverter
+    {
+        #region IValueConverter Members 
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            return (bool)value ? Visibility.Visible : Visibility.Collapsed;
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            return (Visibility)value == Visibility.Visible;
         }
         #endregion
     }

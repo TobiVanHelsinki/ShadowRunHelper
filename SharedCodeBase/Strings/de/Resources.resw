@@ -512,13 +512,13 @@
     <value>Munition</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="UI_Optionen_AutoSave_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_AutoSave.Text" xml:space="preserve">
     <value>Char bei Änderungen automatisch speichern</value>
   </data>
   <data name="Model_StroemungM_.Text" xml:space="preserve">
     <value>Strömungen</value>
   </data>
-  <data name="UI_Optionen_LoadOnStart_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_LoadOnStart.Text" xml:space="preserve">
     <value>Zuletzt verwendeten Char beim Starten der App automatisch laden?</value>
   </data>
   <data name="UI_Char_Schaden.Text" xml:space="preserve">
@@ -554,14 +554,14 @@
   <data name="UI_Optionen_U_Rechtliches.Text" xml:space="preserve">
     <value>Rechtliches</value>
   </data>
-  <data name="UI_Optionen_Ordnermode.OffContent" xml:space="preserve">
-    <value>Intern Speichern</value>
+  <data name="UI_Optionen_Ordnermode_X.OffText" xml:space="preserve">
+    <value>Interner App-Speicher</value>
   </data>
-  <data name="UI_Optionen_Ordnermode.OnContent" xml:space="preserve">
-    <value> </value>
+  <data name="UI_Optionen_Ordnermode_X.OnText" xml:space="preserve">
+    <value>Externer, beliebiger, Ordner</value>
   </data>
-  <data name="UI_Optionen_Ordnermode_Header.Text" xml:space="preserve">
-    <value>Extern Speichern</value>
+  <data name="UI_Optionen_Ordnermode.Text" xml:space="preserve">
+    <value>Speicherort</value>
   </data>
   <data name="UI_Optionen_Ordnermode_Pfad.Text" xml:space="preserve">
     <value>Pfad</value>
@@ -687,7 +687,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="UI_Optionen_Toggle.OnContent" xml:space="preserve">
     <value>Ja</value>
   </data>
-  <data name="UI_Optionen_EditAfterAdd_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_EditAfterAdd.Text" xml:space="preserve">
     <value>Bearbeiten nach Hinzufügen</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_CSV_Export.Label" xml:space="preserve">
@@ -741,7 +741,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Notification_Error_Loader_Error1.Text" xml:space="preserve">
     <value>Es gab einen Fehler beim Laden, Hier weitere Informationen: Überprüfe bitte deinen Char.</value>
   </data>
-  <data name="UI_Optionen_DisplayRequest_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_DisplayRequest.Text" xml:space="preserve">
     <value>Sperrbildschirm verhindern</value>
   </data>
   <data name="Model_Kommlink_Schaden.Text" xml:space="preserve">
@@ -907,10 +907,10 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Benutzerentscheidung war Fehler werfen</value>
     <comment>User Decision to throw</comment>
   </data>
-  <data name="UI_Optionen_FileNameUseDate_Header.Text" xml:space="preserve">
-    <value>Datename mit Datum versehen</value>
+  <data name="UI_Optionen_FileNameUseDate.Text" xml:space="preserve">
+    <value>Dateiname mit Datum versehen</value>
   </data>
-  <data name="UI_Optionen_FileNameUseProgres_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_FileNameUseProgres.Text" xml:space="preserve">
     <value>Dateiname mit Char-Fortschritt versehen</value>
   </data>
   <data name="Notification_Info_ConvertFromPrevious" xml:space="preserve">
@@ -928,13 +928,13 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="GlobalFilterBox.PlaceholderText" xml:space="preserve">
     <value>Suche nach Name und Typ ...</value>
   </data>
-  <data name="UI_Optionen_Intern_Sync_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_Intern_Sync.Text" xml:space="preserve">
     <value>Bei Interner Speicherung: Dateien Synchronisieren</value>
   </data>
   <data name="Model_Person_Alias_STD.Text" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="UI_Optionen_Beta_Features_Header.Text" xml:space="preserve">
+  <data name="UI_Optionen_Beta_Features.Text" xml:space="preserve">
     <value>Beta-Features aktivieren</value>
   </data>
   <data name="UI_Optionen_App.Text" xml:space="preserve">
@@ -979,13 +979,13 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Help5_CharAdministration_FileName" xml:space="preserve">
     <value>Char Verwaltung - Dateinamen</value>
   </data>
-  <data name="UI_Optionen_DisplayRequest_Tip.Text" xml:space="preserve">
+  <data name="UI_Optionen_DisplayRequest.Tip" xml:space="preserve">
     <value>Damit verhinderst du, dass dein Bildschirm ausgeht, wenn du einen Char offen hast.</value>
   </data>
-  <data name="UI_Optionen_Intern_Sync_Tip.Text" xml:space="preserve">
-    <value>Damit werden die Dateien, die du intern speicherst, über alle deine Windows10 Geräte synchronisiert. Die Synchronisation erfolgt nur, wenn du die Option generell aktiviert hast, sowie beide Geräte über ausreichend Strom und Internet verfügen.</value>
+  <data name="UI_Optionen_Intern_Sync.Tip" xml:space="preserve">
+    <value>Aktiviert Windows10 Geräte-Synchronisation. Achtung: Die Synchronisation kann etwas langsam sein.</value>
   </data>
-  <data name="UI_Optionen_Ordnermode_Tip.Text" xml:space="preserve">
+  <data name="UI_Optionen_Ordnermode.Tip" xml:space="preserve">
     <value>Wähle einen exernen Speicherordner aus.</value>
   </data>
   <data name="UI_Optionen_U_Einstellungen_Tip.Text" xml:space="preserve">
@@ -997,7 +997,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="UI_Optionen_AutoSaveInterval_Header.Text" xml:space="preserve">
     <value>Wartezeit für Änderungen in Millisekunden</value>
   </data>
-  <data name="UI_Optionen_AutoSave_Tip.Text" xml:space="preserve">
+  <data name="UI_Optionen_AutoSave.Tip" xml:space="preserve">
     <value>Nach einer Änderung wird die angegebene Zeit gewartet, bis dein Char gespeichert wird. Wenn du schnell und viel änderst, dann gib besser einen größeren Wert an. Wenn du die App schließt, wird dies nicht für eine Automatische Speicherung sorgen. Ein Wert zwischen 2 und 10 Sekunden ist okay.</value>
   </data>
   <data name="Model_Person_Initiative_Kurz.Text" xml:space="preserve">
@@ -1420,6 +1420,12 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Error_LoadPurchases" xml:space="preserve">
     <value>Fehler: Ihre Käufe konnten nicht geladen werden.</value>
   </data>
+  <data name="Notification_Error_General" xml:space="preserve">
+    <value>Nicht näher spezifizierter Fehler: </value>
+  </data>
+  <data name="UI_Optionen_EditAfterAdd.Tip" xml:space="preserve">
+    <value>Nachdem du ein Objekt erstellt hast, wird sofort der bearbeiten Dialog aufgerufen.</value>
+  </data>
   <data name="UI_Optionen_Group_Char.Text" xml:space="preserve">
     <value>Aktueller Char</value>
   </data>
@@ -1434,5 +1440,8 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   </data>
   <data name="UI_Optionen_Group_Tut.Text" xml:space="preserve">
     <value>Tutorial</value>
+  </data>
+  <data name="UI_Optionen_LoadOnStart.Tip" xml:space="preserve">
+    <value />
   </data>
 </root>

@@ -13,6 +13,7 @@
     <conv:o_FileSize x:Key="o_FileSize"/>
     <conv:o_Null2Bool x:Key="o_Null2Bool"/>
     <conv:o_Null2Visibility x:Key="o_Null2Visibility"/>
+    <conv:o_Bool2Visibility x:Key="o_Bool2Visibility"/>
     <conv:o_ValueOrNoting x:Key="o_ValueOrNoting"/>
 
     <contract5NotPresent:SolidColorBrush x:Key="SR_MainBackgroundBrush" 

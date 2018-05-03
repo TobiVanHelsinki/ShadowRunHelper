@@ -3,11 +3,6 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TAMARIN.IO;
-using TAPPLICATION;
-using TAPPLICATION.IO;
-using TAPPLICATION.Model;
-using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -120,60 +115,6 @@ namespace ShadowRunHelper.UI
             {
                 (sender as ContentControl).ContentTemplate = ExceptionTemplate;
             }
-        }
-        #endregion
-        #region Additional Settings Stuff ##########################################
-        /// <summary>
-        /// use to prevent the "Toggled-Efect" from beeing enebled at startup
-        /// </summary>
-        bool FolderMode_HasFocus = false;
-        void FolderMode_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (FolderMode_HasFocus)
-            {
-                return;
-            }
-            FolderMode_HasFocus = true;
-        }
-        async void FolderMode_Toggled(object sender, RoutedEventArgs e)
-        {
-            if (((ToggleSwitch)sender).IsOn && FolderMode_HasFocus)
-            {
-                try
-                {
-                    SharedSettingsModel.I.ORDNERMODE_PFAD = (await UwpIO.GetFolder(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.AskUser)).Path;
-                }
-                catch (Exception) { }
-            }
-            FolderMode_HasFocus = true;
-        }
-
-        /// <summary>
-        /// use to prevent the "Toggled-Efect" from beeing enebled at startup
-        /// </summary>
-        bool Intern_Sync_HasFocus = false;
-        
-        private void Intern_Sync_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Intern_Sync_HasFocus = true;
-        }
-        private async void Intern_Sync_Toggled(object sender, RoutedEventArgs e)
-        {
-            if (Intern_Sync_HasFocus)
-            {
-                try
-                {
-                    var t = new FileInfoClass((sender as ToggleSwitch).IsOn ? Place.Roaming : Place.Local, "", SharedConstants.INTERN_SAVE_CONTAINER);
-                    var s = new FileInfoClass((sender as ToggleSwitch).IsOn ? Place.Local : Place.Roaming, "", SharedConstants.INTERN_SAVE_CONTAINER);
-                    //await SharedIO.CopyLocalRoaming((sender as ToggleSwitch).IsOn ? Place.Roaming : Place.Local);
-                    await SharedIO.CurrentIO.CopyAllFiles(t,s);
-                }
-                catch (Exception ex)
-                {
-                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_SwitchingInterFolder"), ex);
-                }
-            }
-            Intern_Sync_HasFocus = false;
         }
         #endregion
         #region Buying Stuff

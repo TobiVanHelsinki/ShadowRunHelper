@@ -191,90 +191,40 @@
 
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_Char"/>
 
-                        <TextBlock x:Uid="UI_Optionen_EditAfterAdd_Header" Style="{StaticResource TextInhaltKlein}"/>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.StartEditAfterAdd, Mode=TwoWay}"/>
-
-                        <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-                            <TextBlock x:Name="DisplayRequestHeader" VerticalAlignment="Center" Style="{StaticResource TextInhaltKlein}" x:Uid="UI_Optionen_DisplayRequest_Header"/>
-                            <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
-                                <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
-                            </Viewbox>
-                            <ToolTipService.ToolTip>
-                                <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_DisplayRequest_Tip"/>
-                            </ToolTipService.ToolTip>
-                        </StackPanel>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.DISPLAY_REQUEST, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_EditAfterAdd" Setting="{x:Bind Path=Settings.StartEditAfterAdd, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_DisplayRequest" Setting="{x:Bind Path=Settings.DISPLAY_REQUEST, Mode=TwoWay}"/>
 
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_IO"/>
 
-                        <TextBlock x:Uid="UI_Optionen_LoadOnStart_Header" Style="{StaticResource TextInhaltKlein}"/>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.LoadCharOnStart, Mode=TwoWay}"/>
-
-                        <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-                            <TextBlock x:Uid="UI_Optionen_AutoSave_Header" Style="{StaticResource TextInhaltKlein}"/>
-                            <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
-                                <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
-                            </Viewbox>
-                            <ToolTipService.ToolTip>
-                                <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_AutoSave_Tip"/>
-                            </ToolTipService.ToolTip>
+                        <UI:SettingElement x:Uid="UI_Optionen_LoadOnStart" Setting="{x:Bind Path=Settings.LoadCharOnStart, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_AutoSave" Setting="{x:Bind Path=Settings.AutoSave, Mode=TwoWay}"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Visibility="{x:Bind Path=Settings.AutoSave, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}">
+                            <TextBlock x:Uid="UI_Optionen_AutoSaveInterval_Header" Style="{StaticResource TextInhaltKlein}"/>
+                            <TextBox MaxWidth="600" Margin="10,0,0,0" InputScope="Number" Text="{x:Bind Path=Settings.AutoSaveInterval, Mode=TwoWay}"/>
                         </StackPanel>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.AutoSave, Mode=TwoWay}"/>
-                        <TextBlock x:Uid="UI_Optionen_AutoSaveInterval_Header" Style="{StaticResource TextInhaltKlein}"/>
-                        <TextBox MaxWidth="600" HorizontalAlignment="Left" InputScope="Number" Text="{x:Bind Path=Settings.AutoSaveInterval, Mode=TwoWay}"/>
 
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_File"/>
 
-                        <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-                            <TextBlock x:Uid="UI_Optionen_Ordnermode_Header" Style="{StaticResource TextInhaltKlein}"/>
-                            <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
-                                <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
-                            </Viewbox>
-                            <ToolTipService.ToolTip>
-                                <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Ordnermode_Tip"/>
-                            </ToolTipService.ToolTip>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <ToggleSwitch x:Uid="UI_Optionen_OrdnerMode" GotFocus="FolderMode_GotFocus" Toggled="FolderMode_Toggled" IsOn="{x:Bind Path=Settings.ORDNERMODE, Mode=TwoWay}"/>
-                            <TextBlock Grid.Column="1" VerticalAlignment="Center" x:Uid="Doppelpunkt" Style="{StaticResource TextInhaltKlein}"/>
-                            <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{x:Bind Path=Settings.ORDNERMODE_PFAD, Mode=OneWay}" Style="{StaticResource TextInhaltKlein}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_Ordnermode" Setting="{x:Bind Path=Settings.ORDNERMODE, Mode=TwoWay}"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Visibility="{x:Bind Path=Settings.ORDNERMODE, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}">
+                            <TextBlock x:Uid="UI_Optionen_Ordnermode_Pfad" Style="{StaticResource TextInhaltKlein}"/>
+                            <TextBlock Text="{x:Bind Path=Settings.ORDNERMODE_PFAD, Mode=OneWay}" Margin="10,0,0,0" Style="{StaticResource TextInhaltKlein}"/>
                         </StackPanel>
 
-                        <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-                            <TextBlock x:Uid="UI_Optionen_Intern_Sync_Header" Style="{StaticResource TextInhaltKlein}"/>
-                            <Viewbox Height="{Binding ElementName=DisplayRequestHeader, Path=ActualHeight, Mode=OneWay}">
-                                <ContentPresenter Background="Transparent" ContentTemplate="{StaticResource ToolTipSign}"/>
-                            </Viewbox>
-                            <ToolTipService.ToolTip>
-                                <TextBlock TextWrapping="Wrap" x:Uid="UI_Optionen_Intern_Sync_Tip"/>
-                            </ToolTipService.ToolTip>
-                        </StackPanel>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" GotFocus="Intern_Sync_GotFocus" Toggled="Intern_Sync_Toggled" IsOn="{x:Bind Path=Settings.InternSync, Mode=TwoWay}"/>
-
-                        <TextBlock x:Uid="UI_Optionen_FileNameUseProgres_Header" Style="{StaticResource TextInhaltKlein}"/>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.FileNameUseProgres, Mode=TwoWay}"/>
-
-                        <TextBlock x:Uid="UI_Optionen_FileNameUseDate_Header" Style="{StaticResource TextInhaltKlein}"/>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.FileNameUseDate, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_Intern_Sync" Setting="{x:Bind Path=Settings.InternSync, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_FileNameUseProgres" Setting="{x:Bind Path=Settings.FileNameUseProgres, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_FileNameUseDate" Setting="{x:Bind Path=Settings.FileNameUseDate, Mode=TwoWay}"/>
 
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_Tut"/>
 
-                        <TextBlock x:Uid="UI_Optionen_TutCharShown" Style="{StaticResource TextInhaltKlein}"/>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialCharShown, Mode=TwoWay}"/>
-
-                        <TextBlock x:Uid="UI_Optionen_TutorialCharListShown" Style="{StaticResource TextInhaltKlein}"/>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialCharListShown, Mode=TwoWay}"/>
-
-                        <TextBlock x:Uid="UI_Optionen_TutorialMainShown" Style="{StaticResource TextInhaltKlein}"/>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialMainShown, Mode=TwoWay}"/>
-
-                        <TextBlock x:Uid="UI_Optionen_TutorialHandlungShown" Style="{StaticResource TextInhaltKlein}"/>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialHandlungShown, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_TutCharShown" Setting="{x:Bind Path=Settings.TutorialCharShown, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_TutorialCharListShown" Setting="{x:Bind Path=Settings.TutorialCharListShown, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_TutorialMainShown" Setting="{x:Bind Path=Settings.TutorialMainShown, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_TutorialHandlungShown" Setting="{x:Bind Path=Settings.TutorialHandlungShown, Mode=TwoWay}"/>
 
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_Other"/>
-                        <TextBlock x:Uid="UI_Optionen_Beta_Features_Header" Style="{StaticResource TextInhaltKlein}"/>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.BETA_FEATURES, Mode=TwoWay}"/>
 
+                        <UI:SettingElement x:Uid="UI_Optionen_Beta_Features" Setting="{x:Bind Path=Settings.BETA_FEATURES, Mode=TwoWay}"/>
 
                     </StackPanel>
                 </ScrollViewer>
