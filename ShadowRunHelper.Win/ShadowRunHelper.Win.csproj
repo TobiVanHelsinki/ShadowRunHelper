@@ -150,6 +150,9 @@
     <Compile Include="UI\Parts\CategoryEntry.xaml.cs">
       <DependentUpon>CategoryEntry.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Parts\CategorySeparator.xaml.cs">
+      <DependentUpon>CategorySeparator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Parts\LinkListEntry.xaml.cs">
       <DependentUpon>LinkListEntry.xaml</DependentUpon>
     </Compile>
@@ -265,6 +268,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Parts\CategoryEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Parts\CategorySeparator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

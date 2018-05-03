@@ -54,11 +54,6 @@
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
-    <Style TargetType="Border" x:Key="SplitBorder">
-        <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Margin" Value="0,8,100,14"/>
-    </Style>
 
     <Style TargetType="TextBlock" x:Key="TextInhaltGross">
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>

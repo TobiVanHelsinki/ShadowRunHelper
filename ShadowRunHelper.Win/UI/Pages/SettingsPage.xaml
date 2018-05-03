@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Ad="using:Microsoft.Advertising.WinRT.UI"
     xmlns:model="using:ShadowRunHelper.Model"
+    xmlns:UI="using:ShadowRunHelper.Win.UI"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -188,7 +189,7 @@
                     <StackPanel>
                         <TextBlock x:Uid="UI_Optionen_U_Einstellungen_Tip" Style="{StaticResource ueberschrift2}"/>
 
-                        <Border Style="{StaticResource SplitBorder}"/>
+                        <UI:GroupSeparator x:Uid="UI_Optionen_Group_Char"/>
 
                         <TextBlock x:Uid="UI_Optionen_EditAfterAdd_Header" Style="{StaticResource TextInhaltKlein}"/>
                         <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.StartEditAfterAdd, Mode=TwoWay}"/>
@@ -204,13 +205,10 @@
                         </StackPanel>
                         <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.DISPLAY_REQUEST, Mode=TwoWay}"/>
 
-                        <TextBlock x:Uid="UI_Optionen_Beta_Features_Header" Style="{StaticResource TextInhaltKlein}"/>
-                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.BETA_FEATURES, Mode=TwoWay}"/>
+                        <UI:GroupSeparator x:Uid="UI_Optionen_Group_IO"/>
 
                         <TextBlock x:Uid="UI_Optionen_LoadOnStart_Header" Style="{StaticResource TextInhaltKlein}"/>
                         <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.LoadCharOnStart, Mode=TwoWay}"/>
-
-                        <Border Style="{StaticResource SplitBorder}"/>
 
                         <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
                             <TextBlock x:Uid="UI_Optionen_AutoSave_Header" Style="{StaticResource TextInhaltKlein}"/>
@@ -224,6 +222,8 @@
                         <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.AutoSave, Mode=TwoWay}"/>
                         <TextBlock x:Uid="UI_Optionen_AutoSaveInterval_Header" Style="{StaticResource TextInhaltKlein}"/>
                         <TextBox MaxWidth="600" HorizontalAlignment="Left" InputScope="Number" Text="{x:Bind Path=Settings.AutoSaveInterval, Mode=TwoWay}"/>
+
+                        <UI:GroupSeparator x:Uid="UI_Optionen_Group_File"/>
 
                         <StackPanel ToolTipService.Placement="Top" HorizontalAlignment="Left" Orientation="Horizontal">
                             <TextBlock x:Uid="UI_Optionen_Intern_Sync_Header" Style="{StaticResource TextInhaltKlein}"/>
@@ -253,7 +253,6 @@
                             <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{x:Bind Path=Settings.ORDNERMODE_PFAD, Mode=OneWay}" Style="{StaticResource TextInhaltKlein}"/>
                         </StackPanel>
 
-                        <Border Style="{StaticResource SplitBorder}"/>
 
                         <TextBlock x:Uid="UI_Optionen_FileNameUseProgres_Header" Style="{StaticResource TextInhaltKlein}"/>
                         <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.FileNameUseProgres, Mode=TwoWay}"/>
@@ -261,7 +260,7 @@
                         <TextBlock x:Uid="UI_Optionen_FileNameUseDate_Header" Style="{StaticResource TextInhaltKlein}"/>
                         <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.FileNameUseDate, Mode=TwoWay}"/>
 
-                        <Border Style="{StaticResource SplitBorder}"/>
+                        <UI:GroupSeparator x:Uid="UI_Optionen_Group_Tut"/>
 
                         <TextBlock x:Uid="UI_Optionen_TutCharShown" Style="{StaticResource TextInhaltKlein}"/>
                         <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialCharShown, Mode=TwoWay}"/>
@@ -274,6 +273,11 @@
 
                         <TextBlock x:Uid="UI_Optionen_TutorialHandlungShown" Style="{StaticResource TextInhaltKlein}"/>
                         <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.TutorialHandlungShown, Mode=TwoWay}"/>
+
+                        <UI:GroupSeparator x:Uid="UI_Optionen_Group_Other"/>
+                        <TextBlock x:Uid="UI_Optionen_Beta_Features_Header" Style="{StaticResource TextInhaltKlein}"/>
+                        <ToggleSwitch x:Uid="UI_Optionen_Toggle" IsOn="{x:Bind Path=Settings.BETA_FEATURES, Mode=TwoWay}"/>
+
 
                     </StackPanel>
                 </ScrollViewer>

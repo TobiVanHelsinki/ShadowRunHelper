@@ -85,6 +85,7 @@ namespace ShadowRunHelper.UI
                     {
                     SettingsModel.I.LastPage = ProjectPages.Char;
                         MyFrame.Navigate(typeof(CharPage), po);
+                        //Nav_Char.Content.
                     }
                     else
                     {

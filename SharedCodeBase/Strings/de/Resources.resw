@@ -742,7 +742,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Es gab einen Fehler beim Laden, Hier weitere Informationen: Überprüfe bitte deinen Char.</value>
   </data>
   <data name="UI_Optionen_DisplayRequest_Header.Text" xml:space="preserve">
-    <value>Char Display immer aktiv halten</value>
+    <value>Sperrbildschirm verhindern</value>
   </data>
   <data name="Model_Kommlink_Schaden.Text" xml:space="preserve">
     <value>Schaden</value>
@@ -1419,5 +1419,20 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   </data>
   <data name="Error_LoadPurchases" xml:space="preserve">
     <value>Fehler: Ihre Käufe konnten nicht geladen werden.</value>
+  </data>
+  <data name="UI_Optionen_Group_Char.Text" xml:space="preserve">
+    <value>Aktueller Char</value>
+  </data>
+  <data name="UI_Optionen_Group_File.Text" xml:space="preserve">
+    <value>Dateiverwaltung</value>
+  </data>
+  <data name="UI_Optionen_Group_IO.Text" xml:space="preserve">
+    <value>Speichern und Laden</value>
+  </data>
+  <data name="UI_Optionen_Group_Other.Text" xml:space="preserve">
+    <value>Anderes</value>
+  </data>
+  <data name="UI_Optionen_Group_Tut.Text" xml:space="preserve">
+    <value>Tutorial</value>
   </data>
 </root>
