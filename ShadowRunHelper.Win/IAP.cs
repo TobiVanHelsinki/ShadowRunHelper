@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using TAMARIN.IO;
 using TAPPLICATION.IO;
+using TLIB;
 using Windows.Services.Store;
 
 namespace ShadowRunHelper
@@ -53,7 +54,7 @@ namespace ShadowRunHelper
                     break;
 
                 case StorePurchaseStatus.Succeeded:
-                    Text= "The purchase was successful.";
+                    Text = "The purchase was successful.";
                     break;
 
                 case StorePurchaseStatus.NotPurchased:
@@ -76,7 +77,18 @@ namespace ShadowRunHelper
                         "ExtendedError: " + extendedError;
                     break;
             }
-            Model.AppModel.Instance.NewNotification(Text);
+            //Model.AppModel.Instance.NewNotification(Text);
+            switch (result.Status)
+            {
+                case StorePurchaseStatus.Succeeded:
+                    Model.AppModel.Instance.NewNotification(StringHelper.GetString("IAP_Succeeded"));
+                    break;
+                case StorePurchaseStatus.NotPurchased:
+                    break;
+                default:
+                    Model.AppModel.Instance.NewNotification(StringHelper.GetString("IAP_Error"));
+                    break;
+            }
         }
     }
 }

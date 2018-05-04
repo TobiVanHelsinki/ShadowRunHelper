@@ -1483,6 +1483,12 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="UncheckAll.Text" xml:space="preserve">
     <value>Alles abwählen</value>
   </data>
+  <data name="IAP_Error" xml:space="preserve">
+    <value>Fehler beim Kauf</value>
+  </data>
+  <data name="IAP_Succeeded" xml:space="preserve">
+    <value>Kauf Erfolgreich</value>
+  </data>
   <data name="Request_NotSave.No" xml:space="preserve">
     <value>ohne Speichern fortfahren</value>
   </data>

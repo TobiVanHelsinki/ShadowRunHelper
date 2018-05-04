@@ -3,7 +3,8 @@
 * light notifications
 * nots für auto laden
 * oben und unten bessere font farben
-
+* Strings übersetzen
+* mehr tooltips
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
@@ -24,8 +25,6 @@
 * Im UI Template Element Linked List angeben
 * im LinkedEntryEdit Handler spezialfälle einstellen
 
-
-
 Neu
 * Tut
 ** Weniger Erklärung zum x und den pfeilen, texte seriöser gestalten.
@@ -33,13 +32,10 @@ Neu
 ** Tut erschlagen
 
 * setting page Kauf Fehlermeldung
-* admin page Warnung bei ungesp Änderungen 
-
+ ---------- andere ideen ------------
 * admin page neuer char schon speichern?
 * admin page Zeit diffs in der charliste
 * admin page custom Charlist order
-
-
 ------------
 * char page Schnellsuche nach "Schaden" könnte panel oben öffnen
 * char page Edit boxen kein abbrechen.
