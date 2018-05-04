@@ -1146,7 +1146,7 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
     <value>Ach nein doch nicht ...</value>
   </data>
   <data name="Request_Delete.Text" xml:space="preserve">
-    <value>Wirklich Löschen?</value>
+    <value>Möchtest Du die Datei wirklich löschen? Sie wird wirklich gelöscht, nicht in den Papierkorb verschoben und kann nicht wiederhergestellt werden.</value>
   </data>
   <data name="Request_Delete.Title" xml:space="preserve">
     <value>Nachfrage</value>
