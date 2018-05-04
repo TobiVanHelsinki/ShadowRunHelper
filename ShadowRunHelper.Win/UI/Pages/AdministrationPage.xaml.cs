@@ -253,7 +253,6 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
-            ChangeProgress(true);
             async void Delete()
             {
                 try
@@ -272,7 +271,6 @@ namespace ShadowRunHelper.UI
     , Delete);
             await Summorys_Aktualisieren();
             SettingsModel.I.CountDeletions++;
-            ChangeProgress(false);
         }
 
         public static async Task ShowMessageDialog(string Title, string Message, string strOK, string strCancel, Action OK, Action Cancel = null)
