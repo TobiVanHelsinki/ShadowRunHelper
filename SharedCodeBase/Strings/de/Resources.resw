@@ -1474,4 +1474,10 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="UI_TxT_SaveExtern.ToolTipService.ToolTip" xml:space="preserve">
     <value>Wähle einen neuen Speicherort für diese Datei aus</value>
   </data>
+  <data name="UI_TxT_Unload.Text" xml:space="preserve">
+    <value>Entladen</value>
+  </data>
+  <data name="UI_TxT_Unload.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Entfernt nur den geladenen Char aus der App. Speicherdatein werden nicht beeinflusst.</value>
+  </data>
 </root>

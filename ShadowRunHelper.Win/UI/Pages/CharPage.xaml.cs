@@ -207,6 +207,11 @@ namespace ShadowRunHelper.UI
             {
             }
         }
+        private void Click_Delete(object sender, RoutedEventArgs e)
+        {
+            Model.RequestNavigation(ProjectPages.Administration);
+            Model.MainObject = null;
+        }
         #endregion
         #region Char Settings
         void ResetButton_Click(object sender, RoutedEventArgs e)
@@ -307,6 +312,7 @@ namespace ShadowRunHelper.UI
             }
             PendingScrollEntry = null;
         }
+
 
 
         #endregion

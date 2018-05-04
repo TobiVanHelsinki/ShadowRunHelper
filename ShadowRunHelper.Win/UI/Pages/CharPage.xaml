@@ -38,6 +38,7 @@
                                 <MenuFlyoutItem x:Uid="UI_TxT_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                                 <MenuFlyoutItem x:Uid="UI_TxT_OpenFolder" Icon="OpenLocal" Click="Click_OpenFolder" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                                 <MenuFlyoutItem x:Uid="UI_TxT_Repair" Icon="Repair" Click="Click_Repair" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                <MenuFlyoutItem x:Uid="UI_TxT_Unload" Icon="Delete" Click="Click_Delete" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                             </MenuFlyout>
                         </Button.Flyout>
                     </Button>

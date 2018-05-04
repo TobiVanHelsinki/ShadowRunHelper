@@ -187,7 +187,7 @@
             <Border Grid.Row="2" Background="{ThemeResource SR_MainBackgroundBrush}"/>
             <Border Grid.Row="2" x:Name="MainBarBorder">
                 <CommandBar x:Name="MainBar1" Background="Transparent" HorizontalAlignment="Left" DefaultLabelPosition="Right">
-                    <AppBarButton x:Name="Nav_Char" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
+                    <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
                     <AppBarButton x:Name="Nav_Admin" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
                     <AppBarButton x:Name="Nav_Settings" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
                 </CommandBar>
