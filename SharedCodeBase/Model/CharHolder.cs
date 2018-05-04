@@ -224,6 +224,18 @@ namespace ShadowRunHelper.Model
             RefreshListeners();
         }
 
+#if DEBUG
+        public void CustomProgrammerStuff()
+        {
+            //foreach (var item in CTRLHandlung.Data)
+            //{
+            //    item.Wert = 0;
+            //    item.Gegen = 0;
+            //    item.Grenze = 0;
+            //}
+        }
+#endif
+
         public void Repair()
         {
             //declare submethod
@@ -284,6 +296,9 @@ namespace ShadowRunHelper.Model
                     }
                 }
             }
+#if DEBUG
+            CustomProgrammerStuff();
+#endif
         }
         public IController ThingDef2CTRL(ThingDefs tag)
         {
