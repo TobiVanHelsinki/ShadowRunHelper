@@ -21,64 +21,21 @@
                                 />
             </DataTemplate>
             <DataTemplate x:Name="OptionsPanel" x:Key="OptionsPanel" x:DataType="model:CharHolder">
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="Click_Save" IsEnabled="{x:Bind HasChanges, Mode=OneWay}" Style="{StaticResource STD_Button}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
+                            <TextBlock x:Uid="UI_Btn_Speichern"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Margin="0,0,15,0" Style="{StaticResource STD_Button}">
+                        <Button.Flyout>
+                            <MenuFlyout>
 
-                <Button Style="{StaticResource STD_Button}" x:Name="PivotHeader_OptionsPanel" IsEnabled="{x:Bind HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
-                        <TextBlock x:Name="SavePanelButtonText" Text="Speichern"/>
-                    </StackPanel>
-                </Button>
-                <!--<Button Grid.Column="2" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Style="{StaticResource Category_Headline_Button}" Margin="0,0,15,0">
-                    <Button.Flyout>
-                        <MenuFlyout>
-                            <MenuFlyoutSubItem x:Uid="Order">
-                                <MenuFlyoutSubItem.Icon>
-                                    <FontIcon Glyph="&#xE8CB;" />
-                                </MenuFlyoutSubItem.Icon>
-                                <MenuFlyoutItem x:Uid="Order_ABC" Click="Order_ABC">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE8CB;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutItem x:Uid="Order_Type" Click="Order_Type">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE8CB;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutItem x:Uid="Order_Save" Click="Order_Save">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE74E;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutItem x:Uid="Order_Orig" Click="Order_Orig">
-                                    <MenuFlyoutItem.Icon>
-                                        <FontIcon Glyph="&#xE8CB;" />
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                            </MenuFlyoutSubItem>
-                            <MenuFlyoutItem Click="CSV_EX_Click" x:Uid="CSV_EX">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xE78C;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutItem Click="CSV_EX_Selected" x:Uid="CSV_EX_Selected">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xE78C;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutItem Click="CSV_IN_Click" x:Uid="CSV_IN">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xE8B6;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutItem Click="DeleteCategoryContent" x:Uid="DeleteCategoryContent" >
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon Glyph="&#xE74D;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                        </MenuFlyout>
-                    </Button.Flyout>
-                </Button>-->
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
             </DataTemplate>
             
         </ResourceDictionary>

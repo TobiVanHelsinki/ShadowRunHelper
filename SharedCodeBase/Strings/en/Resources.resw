@@ -1399,4 +1399,7 @@ This is shown in detail at the example-character</value>
   <data name="UI_Optionen_LoadOnStart.Tip" xml:space="preserve">
     <value>The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time.</value>
   </data>
+  <data name="UI_Btn_Speichern.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>

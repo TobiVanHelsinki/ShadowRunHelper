@@ -1450,4 +1450,7 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="UI_Optionen_FileNameUseProgres.Tip" xml:space="preserve">
     <value>Der Dateiname wird automatisch generiert und beinhaltet: Name des Char, Karma, Anzahl Runs.</value>
   </data>
+  <data name="UI_Btn_Speichern.Text" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
 </root>
