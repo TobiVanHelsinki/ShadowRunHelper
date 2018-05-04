@@ -50,16 +50,6 @@ namespace ShadowRunHelper.UI
                 return;
             }
             EntryItem.ContentTemplate = Expanded;
-            if (CurrentThing.ThingType == ThingDefs.Handlung)
-            {
-                if (!SettingsModel.I.TutorialHandlungShown)
-                {
-#pragma warning disable CS4014
-                    new Tutorial(30, 31).ShowAsync();
-#pragma warning restore CS4014
-                    SettingsModel.I.TutorialHandlungShown = true;
-                }
-            }
         }
         internal void SetDefaultTemplate()
         {

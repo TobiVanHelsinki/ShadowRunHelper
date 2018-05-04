@@ -81,13 +81,11 @@ namespace ShadowRunHelper.UI
                 try
                 {
 #pragma warning disable CS4014
-                    new Tutorial(0, 5).ShowAsync();
+                    new Tutorial(0, 4).ShowAsync();
 #pragma warning restore CS4014
                 }
                 catch (Exception)
                 {
-
-                    throw;
                 }
                 SettingsModel.I.TutorialMainShown = true;
             }
@@ -101,19 +99,10 @@ namespace ShadowRunHelper.UI
             Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
             switch (StateNumber)
             {
-                case 2:
-                    MainBarBorder.Style = StyleToBeApplied;
-                    break;
                 case 3:
                     ListViewBorder.Style = StyleToBeApplied;
                     break;
-                case 4:
-                    //CurrentCharBarBorder.Style = StyleToBeApplied;
-                    break;
                 default:
-                    //MainBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    //CurrentCharBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    //ListViewBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
                     break;
             }
         }

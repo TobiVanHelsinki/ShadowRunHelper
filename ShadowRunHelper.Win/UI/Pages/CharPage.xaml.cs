@@ -1,10 +1,8 @@
 ﻿using ShadowRunHelper.CharModel;
-using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TAMARIN.IO;
 using TAPPLICATION.IO;
 using TLIB;
@@ -61,7 +59,6 @@ namespace ShadowRunHelper.UI
                 {
                 }
             }
-            Model.TutorialStateChanged += TutorialStateChanged;
             switch (((ProjectPagesOptions)e.Parameter))
             {
                 case ProjectPagesOptions.CharNewChar:
@@ -95,40 +92,7 @@ namespace ShadowRunHelper.UI
                 default:
                     break;
             }
-            if (!SettingsModel.I.TutorialCharShown)
-            {
-#pragma warning disable CS4014
-                new Tutorial(20, 23).ShowAsync();
-#pragma warning restore CS4014
-                SettingsModel.I.TutorialCharShown = true;
-            }
             AdjustHeaderWidth();
-        }
-
-        void TutorialStateChanged(int StateNumber, bool Highlight)
-        {
-            Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
-            switch (StateNumber)
-            {
-                case 22:
-                    PivotHeader1Border.Style = StyleToBeApplied;
-                    PivotHeader2Border.Style = StyleToBeApplied;
-                    PivotHeader3Border.Style = StyleToBeApplied;
-                    PivotHeader4Border.Style = StyleToBeApplied;
-                    PivotHeader5Border.Style = StyleToBeApplied;
-                    break;
-                case 23:
-                    MainContentBorder.Style = StyleToBeApplied;
-                    break;
-                default:
-                    //PivotHeader1Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    //PivotHeader2Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    //PivotHeader3Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    //PivotHeader4Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    //PivotHeader5Border.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    //MainContentBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    break;
-            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

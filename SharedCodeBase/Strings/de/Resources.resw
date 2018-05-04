@@ -1072,34 +1072,35 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Tut_TitleState_00" xml:space="preserve">
     <value>App Einleitung</value>
   </data>
+  <data name="Tut_TitleState_20" xml:space="preserve">
+    <value>Einführung Seite "Char"</value>
+  </data>
+  <data name="Tut_TitelState_30" xml:space="preserve">
+    <value>Handlungen</value>
+  </data>
   <data name="Tut_State_00" xml:space="preserve">
     <value>Willkommen in der ShadowRunHelper App!
-In dieser Einführung wird gezeigt, wie ShadowRun Chars in dieser App erstellt und verwaltet werden. Mit den Pfeiltasten kannst du durch die Einführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst. 
+In dieser Einführung wird gezeigt, wie ShadowRun Chars in dieser App erstellt und verwaltet werden. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst. 
 In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben. Auf kleinen Bildschirmen verdeckt das Tutorial leider den Bildschirm. Der Button mit dem Auge macht das tutorial Fenster durchsichtig.</value>
   </data>
   <data name="Tut_State_01" xml:space="preserve">
-    <value>Beginnen wir mit der Navigationsleiste. Diese 3 Buttons begleiten dich durch die gesamte App. Der erste führt dich zu der Seite, auf der ein Char später dargestellt wird. Der Zweite bringt dich in das Chars Verwalten Menü, indem du dich gerade befindest. Der Dritte bringt dich in das Einstellungsmenü, dort findest du unteranderem auch den ganzen rechtlichen Kram.</value>
+    <value>Die Hauptnavigation. Diese 3 Buttons sind immer sichtbar. Wechsle mit ihnen zwischen 
+    1. Dem Aktuellen Charakterbogen 
+    2. Der liste aller Charakterbögen 
+    3. Einstellungen, Impressum, Hilfen</value>
   </data>
   <data name="Tut_State_02" xml:space="preserve">
-    <value>In der aktuellen Ansicht "Chars verwalten" gibt es zwei Symbolleisten. Beginnen wir mit der unteren. Mit dieser Verwaltest du alle deine Chars (ja, du kannst mit der App mehrere verwalten). Die Beschriftungen sollten selbsterklärend sein. Nach dieser Einleitung beginnst du am besten mit "neuer Char erstellen" oder klickst auf den Beispielcharakter in der Liste.</value>
+    <value>In der aktuellen Ansicht verwaltest du alle gespeichrten Charakterbögen.</value>
+  </data>
+  <data name="Tut_State_03" xml:space="preserve">
+    <value>Diese Liste zeigt alle deine gespeicherten Charaktere an. Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswählen, ob sie über deinen Account synchronisieren werden sollen. Du kannst auch einen anderen Ordner als Speicherort wählen.</value>
   </data>
   <data name="Tut_State_04" xml:space="preserve">
-    <value>Sobald du einen Char geladen oder erstellt hast, wird die obere Symbolleiste für dich interessant. Damit verwaltest du den zurzeit geladenen Char. Die Beschriftungen sind auch hier wieder sehr selbsterklärend. Bitte beachte:
-a) "Löschen" löscht deinen Char nur aus der App, nicht aber aus der Liste gespeicherter Chars
-b) "Reparieren" es sollte nicht vorkommen, aber manchmal ist es unvorhersehbar: die verknüpften Einträge aktualisieren sich nicht mehr automatisch. Dann kann diese Funktion helfen. Vielleicht. Wenn nicht oder wenn du sonst irgendwelche Probleme hast, scheue nicht, mich zu kontaktieren (Kontakt im Einstellungsmenü).</value>
-  </data>
-  <data name="Tut_State_05" xml:space="preserve">
     <value>Das war's mit dem ersten Tutorial. Du kannst einen neuen Charakter erstellen, aber besser ist es, du schaust dir erst den Beispielcharakter an.</value>
-  </data>
-  <data name="Tut_State_10" xml:space="preserve">
-    <value>Klickst du auf einen Char in dieser Leiste, wird sein Eintrag aufgeklappt und du erhältst Möglichkeiten, ihn zu verwalten.</value>
   </data>
   <data name="Tut_State_20" xml:space="preserve">
     <value>Willkommen in deinem ersten Char!
-In dieser Einführung wird gezeigt, wie die Char Ansicht funktioniert. Mit den Pfeiltasten kannst du durch die Einführung navigieren, das X oben rechts bricht die Einleitung ab. Du kannst die Einleitung in den Optionen wieder einschalten, falls du sie zu einem späteren Zeitpunkt noch einmal betrachten willst. Auf kleinen Bildschirmen verdeckt das Tutorial leider den Bildschirm. Der Button mit dem Auge macht das tutorial Fenster durchsichtig.</value>
-  </data>
-  <data name="Tut_State_03" xml:space="preserve">
-    <value>Diese Liste zeigt alle deine gespeicherten Charaktere an. Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswählen, ob sie über deinen Account synchronisieren werden sollen. Im Prinzip sind die Chars in der Liste alles nur Dateien in einem Ordner, daher kannst du in den Optionen auch einen anderen Ordner als Speicherort wählen.</value>
+In dieser Einführung wird gezeigt, wie die Char Ansicht funktioniert.</value>
   </data>
   <data name="Tut_State_21" xml:space="preserve">
     <value>Diese Leiste ganz oben ist dir bestimmt schon aufgefallen. Sie ist in der ganzen App präsent und zeigt dir, welchen Charakter du gerade offen hast, sowie seine wichtigsten Werte z.B. Geld, Karma oder den aktuellen Schaden (Geistig, Körperlich, Matrixschaden am Deck). Mit einem Klick auf die dunkleren Schaltflächen kannst du die Werte bearbeiten.</value>
@@ -1126,29 +1127,11 @@ Damit du das aber nicht immer wieder machen musst, falls du die Waffe wechselst,
 Dieses verhalten gilt für Kommlinks, CyberDecks, Waffen, Panzerungen und Vehikel. Aktiviert wird ein Gegenstand über das erste Häkchen in seinem Eintrag.
 Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   </data>
-  <data name="Tut_TitelState_30" xml:space="preserve">
-    <value>Handlungen</value>
-  </data>
-  <data name="Tut_TitleState_10" xml:space="preserve">
-    <value>Listeneinträge Einleitung</value>
-  </data>
-  <data name="Tut_TitleState_20" xml:space="preserve">
-    <value>Einführung Seite "Char"</value>
-  </data>
   <data name="UI_TxT_SaveAtCurrentPlace.Text" xml:space="preserve">
     <value>Speichern in aktuellem Ordner</value>
   </data>
-  <data name="UI_Optionen_TutCharShown.Text" xml:space="preserve">
-    <value>"Char-Anleitung" gelesen</value>
-  </data>
-  <data name="UI_Optionen_TutorialCharListShown.Text" xml:space="preserve">
-    <value>Charlisten-Anleitung gelesen</value>
-  </data>
-  <data name="UI_Optionen_TutorialHandlungShown.Text" xml:space="preserve">
-    <value>Handlungsanleitung gelesen</value>
-  </data>
   <data name="UI_Optionen_TutorialMainShown.Text" xml:space="preserve">
-    <value>"Chars Verwalten"-Anleitung gelesen</value>
+    <value>Tutorial abgeschlossen</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen.Label" xml:space="preserve">
     <value>Alle Chars Löschen</value>
@@ -1437,9 +1420,6 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   </data>
   <data name="UI_Optionen_Group_Other.Text" xml:space="preserve">
     <value>Anderes</value>
-  </data>
-  <data name="UI_Optionen_Group_Tut.Text" xml:space="preserve">
-    <value>Tutorial</value>
   </data>
   <data name="UI_Optionen_LoadOnStart.Tip" xml:space="preserve">
     <value>Der Char, der beim Schließen der App aktiv war, wird beim Starten geladen. Achtung, dies erhöht die App-Ladezeit.</value>

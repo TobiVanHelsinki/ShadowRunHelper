@@ -215,15 +215,10 @@
                         <UI:SettingElement x:Uid="UI_Optionen_FileNameUseProgres" Setting="{x:Bind Path=Settings.FileNameUseProgres, Mode=TwoWay}"/>
                         <UI:SettingElement x:Uid="UI_Optionen_FileNameUseDate" Setting="{x:Bind Path=Settings.FileNameUseDate, Mode=TwoWay}"/>
 
-                        <UI:GroupSeparator x:Uid="UI_Optionen_Group_Tut"/>
-
-                        <UI:SettingElement x:Uid="UI_Optionen_TutCharShown" Setting="{x:Bind Path=Settings.TutorialCharShown, Mode=TwoWay}"/>
-                        <UI:SettingElement x:Uid="UI_Optionen_TutorialCharListShown" Setting="{x:Bind Path=Settings.TutorialCharListShown, Mode=TwoWay}"/>
-                        <UI:SettingElement x:Uid="UI_Optionen_TutorialMainShown" Setting="{x:Bind Path=Settings.TutorialMainShown, Mode=TwoWay}"/>
-                        <UI:SettingElement x:Uid="UI_Optionen_TutorialHandlungShown" Setting="{x:Bind Path=Settings.TutorialHandlungShown, Mode=TwoWay}"/>
 
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_Other"/>
 
+                        <UI:SettingElement x:Uid="UI_Optionen_TutorialMainShown" Setting="{x:Bind Path=Settings.TutorialMainShown, Mode=TwoWay}"/>
                         <UI:SettingElement x:Uid="UI_Optionen_Beta_Features" Setting="{x:Bind Path=Settings.BETA_FEATURES, Mode=TwoWay}"/>
 
                     </StackPanel>

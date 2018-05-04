@@ -116,12 +116,7 @@ namespace ShadowRunHelper.UI
                 case 1:
                     MainBarBorder.Style = StyleToBeApplied;
                     break;
-                case 21:
-                    StatusControlBorder.Style = StyleToBeApplied;
-                    break;
                 default:
-                    //MainBarBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
-                    //StatusControlBorder.Style = Tutorial.UnhighlightBorderStyle_XAML;
                     break;
             }
         }

@@ -57,21 +57,6 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE, Constants.CONTAINER_SETTINGS_AUTO_SAVE_STD);
         }
 
-        public bool TutorialHandlungShown
-        {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_4);
-            set
-            {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_4, value);
-                Instance.NotifyPropertyChanged();
-            }
-        }
-
-        public void TutorialHandlungShownReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_4, Constants.CONTAINER_SETTINGS_TUT_SHOWN_4_STD);
-        }
-
         public bool TutorialMainShown
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1);
@@ -84,35 +69,6 @@ namespace ShadowRunHelper
         public void TutorialMainShownReset()
         {
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1, Constants.CONTAINER_SETTINGS_TUT_SHOWN_1_STD);
-        }
-
-        public bool TutorialCharListShown
-        {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_3);
-            set
-            {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_3, value);
-                Instance.NotifyPropertyChanged();
-            }
-        }
-        public void TutorialCharListShownReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_3, Constants.CONTAINER_SETTINGS_TUT_SHOWN_3_STD);
-        }
-
-
-        public bool TutorialCharShown
-        {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_2);
-            set
-            {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_2, value);
-                Instance.NotifyPropertyChanged();
-            }
-        }
-        public void TutorialCharShownReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_2, Constants.CONTAINER_SETTINGS_TUT_SHOWN_2_STD);
         }
 
         public int StartCountDB

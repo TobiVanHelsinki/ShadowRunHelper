@@ -25,13 +25,6 @@
 * Im UI Template Element Linked List angeben
 * im LinkedEntryEdit Handler spezialfälle einstellen
 
-Neu
-* Tut
-** Weniger Erklärung zum x und den pfeilen, texte seriöser gestalten.
-** 1 4/5 falscher logik flow
-** Tut erschlagen
-
-* setting page Kauf Fehlermeldung
  ---------- andere ideen ------------
 * admin page neuer char schon speichern?
 * admin page Zeit diffs in der charliste
