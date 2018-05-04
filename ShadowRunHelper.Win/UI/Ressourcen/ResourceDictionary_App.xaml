@@ -98,5 +98,6 @@
         <Setter Property="Margin" Value="0" />
         <Setter Property="MinWidth" Value="0" />
     </Style>
-
+    <contract5NotPresent:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible"/>
+    <contract5Present:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible"/>
 </ResourceDictionary>

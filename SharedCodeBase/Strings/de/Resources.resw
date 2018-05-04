@@ -429,14 +429,14 @@
   <data name="UI_CharVerwaltung_Btn_Neu.Label" xml:space="preserve">
     <value>Neuen Char erstellen</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Speichern.Label" xml:space="preserve">
+  <data name="UI_CharVerwaltung_Btn_Speichern.Text" xml:space="preserve">
     <value>Speichern</value>
   </data>
   <data name="UI_CharVerwaltung_Einleitung1.Text" xml:space="preserve">
-    <value>Aktuellen Char verwalten:</value>
+    <value>Aktuelle Speicherdatei:</value>
   </data>
   <data name="UI_CharVerwaltung_Einleitung2.Text" xml:space="preserve">
-    <value>Andere Chars verwalten:</value>
+    <value>Verfügbare Speicherdateien:</value>
   </data>
   <data name="Model_Person_Char_Typ.Text" xml:space="preserve">
     <value>Char Typ</value>
@@ -876,7 +876,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Model__Pool.Text" xml:space="preserve">
     <value>Pool</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Repair.Label" xml:space="preserve">
+  <data name="UI_CharVerwaltung_Btn_Repair.Text" xml:space="preserve">
     <value>Reparieren</value>
   </data>
   <data name="Notification_Error_RepairFail" xml:space="preserve">
@@ -1183,7 +1183,7 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Request_DeleteAll.Yes" xml:space="preserve">
     <value>Wirklich Löschen!</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Rename.Label" xml:space="preserve">
+  <data name="UI_CharVerwaltung_Btn_Rename.Text" xml:space="preserve">
     <value>Umbenennen</value>
   </data>
   <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">

@@ -237,10 +237,10 @@ In each step, the discussed controls are highlighted in red. On small screens th
     <value>Save</value>
   </data>
   <data name="UI_CharVerwaltung_Einleitung1.Text" xml:space="preserve">
-    <value>Administrate current char</value>
+    <value>Current savefiles:</value>
   </data>
   <data name="UI_CharVerwaltung_Einleitung2.Text" xml:space="preserve">
-    <value>Administrate other char</value>
+    <value>Available savefiles:</value>
   </data>
   <data name="UI_Optionen_AutoSave.Text" xml:space="preserve">
     <value>Auto-Save current char at changes</value>
@@ -321,7 +321,7 @@ This app can be used to open files and folders on the file system. The app store
   <data name="UI_Optionen_Version.Text" xml:space="preserve">
     <value>Version</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Repair.Label" xml:space="preserve">
+  <data name="UI_CharVerwaltung_Btn_Repair.Text" xml:space="preserve">
     <value>Auto-Fix</value>
   </data>
   <data name="UI_Optionen_FileNameUseDate.Text" xml:space="preserve">

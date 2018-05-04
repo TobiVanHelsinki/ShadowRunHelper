@@ -261,5 +261,44 @@ namespace ShadowRunHelper.UI
 
         #endregion
 
+        private void Click_Speichern_Intern(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_Datei_Export_CurrentChar(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_CSV_Export_CurrentChar(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_OpenFolder(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Rename_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_Loeschen_CurrentChar(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_Repair_CurrentChar(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_Speichern(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

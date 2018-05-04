@@ -121,16 +121,16 @@ namespace ShadowRunHelper.UI
         bool IsOperationInProgres = false;
         void ChangeCurrentCharUI(bool bHow)
         {
-            CurrentCharBtn_Save.IsEnabled = bHow;
-            CurrentCharBtn_FolderOpen.IsEnabled = bHow;
-            CurrentCharBtn_Rename.IsEnabled = bHow;
-            CurrentCharBtn_Save_Intern.IsEnabled = bHow;
-            CurrentCharBtn_Del.IsEnabled = bHow;
-            CurrentCharBtn_FileExp.IsEnabled = bHow;
-            CurrentCharBtn_CSVExp.IsEnabled = bHow;
-            CurrentCharBtn_Repair.IsEnabled = bHow;
+            //CurrentCharBtn_Save.IsEnabled = bHow;
+            //CurrentCharBtn_FolderOpen.IsEnabled = bHow;
+            //CurrentCharBtn_Rename.IsEnabled = bHow;
+            //CurrentCharBtn_Save_Intern.IsEnabled = bHow;
+            //CurrentCharBtn_Del.IsEnabled = bHow;
+            //CurrentCharBtn_FileExp.IsEnabled = bHow;
+            //CurrentCharBtn_CSVExp.IsEnabled = bHow;
+            //CurrentCharBtn_Repair.IsEnabled = bHow;
 
-            CurrentCharPath.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
+            //CurrentCharPath.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
             CurrentCharName.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
         }
         void ChangeProgress(bool bHow)
