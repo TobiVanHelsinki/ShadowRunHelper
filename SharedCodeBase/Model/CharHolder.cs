@@ -359,10 +359,6 @@ namespace ShadowRunHelper.Model
             get { return _HasChanges; }
             set
             {
-                if (!value)
-                {
-                    //SaveTimer.Change(System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
-                }
                 if (value != _HasChanges)
                 {
                     _HasChanges = value;

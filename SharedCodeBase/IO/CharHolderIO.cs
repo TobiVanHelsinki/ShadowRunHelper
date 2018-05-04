@@ -93,7 +93,7 @@ namespace ShadowRunHelper.IO
                         item.Grenze = 0;
                         item.Gegen = 0;
                     }
-                    ReturnCharHolder.HasChanges = false;
+                    ReturnCharHolder.HasChanges = true;
                     AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar_1_5_to_1_6"));
                     break;
                 case Constants.CHARFILE_VERSION_1_6:
