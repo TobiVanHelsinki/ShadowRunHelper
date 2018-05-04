@@ -1459,4 +1459,19 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="SymbolChanges.Text" xml:space="preserve">
     <value>*</value>
   </data>
+  <data name="UI_TxT_CSV_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Wähle einen Speicherort aus, an welchem für jede Kategorie ein CSV erstellt wird.</value>
+  </data>
+  <data name="UI_TxT_OpenFolder.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Öffnet den Ordner der aktuellen Datei</value>
+  </data>
+  <data name="UI_TxT_Repair.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Manchmal kommt es zu Fehlern bei Verknüpfungen. Dann kannst du diese Funktion versuchen.</value>
+  </data>
+  <data name="UI_TxT_SaveAtCurrentPlace.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Hast du die Datei extern geöffnet (z.B. aus einem anderne Programm heraus) kannst Du sie an deinem normalen Speicherort speichern.</value>
+  </data>
+  <data name="UI_TxT_SaveExtern.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Wähle einen neuen Speicherort für diese Datei aus</value>
+  </data>
 </root>

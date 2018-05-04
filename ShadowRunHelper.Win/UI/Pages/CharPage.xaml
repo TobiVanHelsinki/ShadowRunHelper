@@ -14,21 +14,23 @@
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Name="GlobalFindBoxTemplate" x:Key="GlobalFindBoxTemplate" x:DataType="model:CharHolder">
                 <AutoSuggestBox x:Name="GlobalFilterBox" x:Uid="GlobalFilterBox" QueryIcon="Find"
-                                 HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                                HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
                                 TextChanged="AutoSuggestBox_TextChanged"
                                 QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                 ItemsSource="{x:Bind ThingList, Mode=OneWay}"
+                                Margin="5"
                                 />
             </DataTemplate>
             <DataTemplate x:Name="OptionsPanel" x:Key="OptionsPanel" x:DataType="model:CharHolder">
-                <StackPanel Orientation="Horizontal">
-                    <Button Click="Click_Save" IsEnabled="{x:Bind HasChanges, Mode=OneWay}" Style="{StaticResource STD_Button}">
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Button Click="Click_Save" Style="{StaticResource STD_Button}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
                             <TextBlock x:Uid="UI_Btn_Speichern"/>
+                            <TextBlock x:Uid="SymbolChanges" Visibility="{x:Bind HasChanges, Mode=OneWay}"/>
                         </StackPanel>
                     </Button>
-                    <Button Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Margin="0,0,15,0" Style="{StaticResource STD_Button}">
+                    <Button Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Margin="5,0,0,0" Style="{StaticResource STD_Button}" VerticalAlignment="Stretch">
                         <Button.Flyout>
                             <MenuFlyout>
                                 <MenuFlyoutItem x:Uid="UI_TxT_SaveAtCurrentPlace" Icon="Save" Click="Click_SaveAtCurrentPlace" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
@@ -41,7 +43,6 @@
                     </Button>
                 </StackPanel>
             </DataTemplate>
-            
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -54,7 +55,7 @@
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="640"/>
+                        <AdaptiveTrigger MinWindowWidth="750"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="InteractionPanelTop.Visibility" Value="Collapsed"/>
@@ -257,13 +258,14 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Grid x:Name="InteractionPanelTop">
+        <Grid x:Name="InteractionPanelTop" Background="{ThemeResource SystemControlForegroundChromeMediumBrush}">
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ContentControl Margin="7,0,7,0" VerticalAlignment="Center" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource OptionsPanel}"/>
-            <ContentPresenter Margin="5,1,5,1" VerticalAlignment="Center" Grid.Column="1" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
+            <ContentControl DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource OptionsPanel}"/>
+            <ContentPresenter Grid.Column="1" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
         </Grid>
         <Pivot x:Name="Pivot" Grid.Row="1" Style="{StaticResource PivotStyle_TabsStyle}" SizeChanged="Pivot_SizeChanged">
             <Pivot.RightHeader>

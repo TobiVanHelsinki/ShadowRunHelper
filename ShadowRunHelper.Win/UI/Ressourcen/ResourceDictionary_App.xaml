@@ -99,7 +99,9 @@
         <Setter Property="Margin" Value="0" />
         <Setter Property="MinWidth" Value="0" />
     </Style>
-    <contract5NotPresent:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible"/>
+    <contract5NotPresent:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible">
+        <Setter Property="ToolTipService.Placement" Value="Right"/>
+    </contract5NotPresent:Style>
     <contract5Present:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible"/>
 
     <Style TargetType="TextBlock" x:Key="UnimportandInformation">
