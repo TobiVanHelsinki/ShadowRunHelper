@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml;
+﻿using TLIB;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
@@ -11,6 +12,9 @@ namespace ShadowRunHelper.UI
         public Input()
         {
             InitializeComponent();
+            PrimaryButtonText = StringHelper.GetString("OK");
+            SecondaryButtonText = StringHelper.GetString("Cancel"); 
+
         }
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
@@ -22,5 +26,9 @@ namespace ShadowRunHelper.UI
 
         void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
 
+        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            InputValue = null;
+        }
     }
 }

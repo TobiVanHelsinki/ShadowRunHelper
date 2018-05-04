@@ -33,8 +33,8 @@ namespace ShadowRunHelper.UI
 
         public AdministrationPage()
         {
-            ChangeProgress(false);
             InitializeComponent();
+            ChangeProgress(false);
             NavigationCacheMode = NavigationCacheMode.Required;
             Model.TutorialStateChanged += TutorialStateChanged;
 #if DEBUG
@@ -118,23 +118,15 @@ namespace ShadowRunHelper.UI
             }
         }
 
-        bool _IsOperationInProgres;
-        public bool IsOperationInProgres
-        {
-            get { return _IsOperationInProgres; }
-            set { if (_IsOperationInProgres != value) { _IsOperationInProgres = value; NotifyPropertyChanged(); } }
-        }
-        bool _IsNoOperationInProgres;
-        public bool IsNoOperationInProgres
-        {
-            get { return _IsNoOperationInProgres; }
-            set { if (_IsNoOperationInProgres != value) { _IsNoOperationInProgres = value; NotifyPropertyChanged(); } }
-        }
+        public bool IsOperationInProgres;
 
         void ChangeProgress(bool bHow)
         {
             IsOperationInProgres = bHow;
-            IsNoOperationInProgres = !bHow;
+            //ProgressBar.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
+            ProgressRing.IsActive = bHow;
+            Char_Sum.IsEnabled = !bHow;
+            Commandbar.IsEnabled = !bHow;
         }
 
         void Char_Sum_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -231,12 +223,7 @@ namespace ShadowRunHelper.UI
             await Summorys_Aktualisieren();
         }
 
-        void Click_Laden(object sender, RoutedEventArgs e)
-        {
-            LoadChar(() => CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
-        }
-
-        async Task LoadChar(Func<Task<CharHolder>> LoadFunc)
+        async void Click_Laden(object sender, RoutedEventArgs e)
         {
             if (IsOperationInProgres)
             {
@@ -245,7 +232,9 @@ namespace ShadowRunHelper.UI
             ChangeProgress(true);
             try
             {
-                Model.MainObject = await LoadFunc();
+                await SystemHelper.SleepMilliSeconds(10);
+                Model.MainObject = await CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError);
+                SettingsModel.I.CountLoadings++;
             }
             catch (Exception ex)
             {
@@ -256,9 +245,7 @@ namespace ShadowRunHelper.UI
             {
                 AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
             }
-            SettingsModel.I.CountLoadings++;
         }
-
 
         async void Click_Loeschen_OtherChar(object sender, RoutedEventArgs e)
         {
@@ -324,13 +311,21 @@ namespace ShadowRunHelper.UI
                 InputValue = OldFile.Filename.Remove(OldFile.Filename.Length - Constants.DATEIENDUNG_CHAR.Length, Constants.DATEIENDUNG_CHAR.Length)
             };
             await dialog.ShowAsync();
-            ChangeProgress(true);
-            FileInfoClass NewFile = new FileInfoClass(OldFile.Fileplace, dialog.InputValue, OldFile.Filepath);
-            NewFile.Filename = SharedIO.CorrectFilenameExtension(NewFile.Filename, Constants.DATEIENDUNG_CHAR);
-            await SharedIO.CurrentIO.Copy(NewFile, OldFile);
-            await SharedIO.CurrentIO.RemoveFile(OldFile);
-            await Summorys_Aktualisieren();
-            ChangeProgress(false);
+            if (dialog.InputValue != null)
+            {
+                ChangeProgress(true);
+                try
+                {
+                    dialog.InputValue = SharedIO.CorrectFilenameExtension(dialog.InputValue, Constants.DATEIENDUNG_CHAR);
+                    await SharedIO.CurrentIO.Rename(OldFile, dialog.InputValue);
+                }
+                catch (Exception ex)
+                {
+                    Model.NewNotification("Error", ex);
+                }
+                ChangeProgress(false);
+                await Summorys_Aktualisieren();
+            }
         }
         async void Click_Datei_Export(CharHolder CharToSave)
         {

@@ -62,9 +62,9 @@
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Column="0" Text="{x:Bind Filename, Mode=OneWay}"/>
                         <StackPanel Grid.Column="1" x:Name="DetailsPanel" Orientation="Horizontal">
-                            <TextBlock Text="{x:Bind Size, Mode=OneWay, Converter={StaticResource o_FileSize}}"/>
-                            <TextBlock x:Uid="Slash" Margin="10,0,10,0"/>
-                            <TextBlock Text="{x:Bind DateModified, Mode=OneWay}"/>
+                            <TextBlock Text="{x:Bind Size, Mode=OneWay, Converter={StaticResource o_FileSize}}" Style="{StaticResource UnimportandInformation}"/>
+                            <TextBlock x:Uid="Slash" Margin="10,0,10,0" Style="{StaticResource UnimportandInformation}"/>
+                            <TextBlock Text="{x:Bind DateModified, Mode=OneWay, Converter={StaticResource o_LastTime}}" Style="{StaticResource UnimportandInformation}"/>
                         </StackPanel>
                     </Grid>
                 </UserControl>
@@ -90,7 +90,7 @@
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid Name="GridForContentAndAds">
+    <Grid Name="GridForContentAndAds" Padding="4,4,0,0">
         <VisualStateManager.VisualStateGroups>
             <!-- Ads -->
             <VisualStateGroup x:Name="Trigger_Ads">
@@ -127,11 +127,18 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+            <Viewbox
+                Margin="40,100,40,100"
+                Stretch="Uniform"
+                Grid.RowSpan="7"
+                VerticalAlignment="Top" 
+                Canvas.ZIndex="20">
+                <ProgressRing x:Name="ProgressRing" />
+            </Viewbox>
             <TextBlock x:Uid="UI_CharVerwaltung_Einleitung1" Grid.Row="0" Visibility="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Visibility}}" Style="{StaticResource TitleTextBlockStyle}"/>
             <StackPanel Grid.Row="1" ToolTipService.Placement="Bottom" Visibility="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Visibility}}" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource Chars}">
@@ -147,11 +154,9 @@
                     </TextBlock>
                 </ToolTipService.ToolTip>
             </StackPanel>
-            <ProgressBar Grid.Row="2" x:Name="ProgressBar_Char" IsIndeterminate="{x:Bind IsOperationInProgres, Mode=OneWay }" />
-            <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="3" Style="{StaticResource TitleTextBlockStyle}"/>
-            <Border Grid.Row="4" x:Name="ListViewBorder">
-                <ListView Name="Char_Sum"
-                        IsEnabled="{x:Bind IsNoOperationInProgres, Mode=OneWay}"
+            <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
+            <Border Grid.Row="3" x:Name="ListViewBorder">
+                <ListView x:Name="Char_Sum"
                       ItemsSource="{x:Bind Summorys, Mode=OneWay}" 
                       ItemTemplate="{StaticResource Normal}"
                       ListView.HeaderTemplate="{StaticResource Header}"
@@ -159,15 +164,14 @@
                       IsItemClickEnabled="True" 
                       Grid.Row="3"
                       SelectionChanged="Char_Sum_SelectionChanged"
-                      SelectionMode="Multiple"
                       IsMultiSelectCheckBoxEnabled="False"/>
             </Border>
-            <Viewbox Grid.Row="5" Stretch="None" x:Name="Ad_MainPageBottomBox">
+            <Viewbox Grid.Row="4" Stretch="None" x:Name="Ad_MainPageBottomBox">
                 <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </Viewbox>
-            <Border Grid.Row="6" x:Name="MainBarBorder">
-                <CommandBar Grid.Row="4" DefaultLabelPosition="Right" IsEnabled="{x:Bind IsNoOperationInProgres, Mode=OneWay}">
+            <Border Grid.Row="5" x:Name="MainBarBorder" Margin="-4,0,0,0">
+                <CommandBar x:Name="Commandbar" Grid.Row="4" DefaultLabelPosition="Right">
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton x:Name="UI_TxT_OpenFolderSTD" x:Uid="UI_TxT_OpenFolderSTD" Icon="OpenLocal" Click="Click_OpenSTDFolder" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>

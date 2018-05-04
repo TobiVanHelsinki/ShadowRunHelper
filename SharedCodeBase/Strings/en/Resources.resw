@@ -1402,4 +1402,7 @@ This is shown in detail at the example-character</value>
   <data name="UI_Btn_Speichern.Text" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

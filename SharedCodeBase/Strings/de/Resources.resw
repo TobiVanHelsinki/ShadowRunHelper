@@ -1453,4 +1453,7 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="UI_Btn_Speichern.Text" xml:space="preserve">
     <value>Speichern</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
 </root>

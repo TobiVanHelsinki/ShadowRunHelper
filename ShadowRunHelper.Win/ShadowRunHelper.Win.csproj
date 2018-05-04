@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="IAP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Converter\o_LastTime.cs" />
     <Compile Include="UI\Converter\o_ValueOrNoting.cs" />
     <Compile Include="UI\Converter\o_NullConverter.cs" />
     <Compile Include="UI\Converter\io_GebDatum.cs" />

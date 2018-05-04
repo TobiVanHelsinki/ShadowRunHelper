@@ -1,7 +1,10 @@
 ﻿
 --------Aktuelles-----------------------------------------------
-* cgar admin uhrzeit bug
 * nav button disable bei mainobject == null?
+* MP oben zu viel platz beim ersten button
+* light notifications
+* nots für auto laden
+
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte

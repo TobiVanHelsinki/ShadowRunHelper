@@ -15,7 +15,8 @@
     <conv:o_Null2Visibility x:Key="o_Null2Visibility"/>
     <conv:o_Bool2Visibility x:Key="o_Bool2Visibility"/>
     <conv:o_ValueOrNoting x:Key="o_ValueOrNoting"/>
-
+    <conv:o_LastTime x:Key="o_LastTime"/>
+    
     <contract5NotPresent:SolidColorBrush x:Key="SR_MainBackgroundBrush" 
                                          Color="{ThemeResource SystemAccentColor}"/>
     <contract5Present:AcrylicBrush x:Key="SR_MainBackgroundBrush" 
@@ -100,4 +101,8 @@
     </Style>
     <contract5NotPresent:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible"/>
     <contract5Present:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible"/>
+
+    <Style TargetType="TextBlock" x:Key="UnimportandInformation">
+        <Setter Property="Foreground" Value="Gray" />
+    </Style>
 </ResourceDictionary>
