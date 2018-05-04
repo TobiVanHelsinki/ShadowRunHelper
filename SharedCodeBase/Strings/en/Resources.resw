@@ -1390,6 +1390,9 @@ This is shown in detail at the example-character</value>
   <data name="Error_LoadPurchases" xml:space="preserve">
     <value>Error: Could not load your purchases</value>
   </data>
+  <data name="Error_CopyFiles" xml:space="preserve">
+    <value>Fehler: Konnte nicht (alle) Dateien an neuen Ort kopieren.</value>
+  </data>
   <data name="UI_Optionen_FileNameUseProgres.Tip" xml:space="preserve">
     <value>The file name is generated automatically and contains: Name of the char, karma, number of runs.</value>
   </data>

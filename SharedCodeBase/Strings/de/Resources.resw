@@ -1444,6 +1444,9 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="UI_Optionen_LoadOnStart.Tip" xml:space="preserve">
     <value>Der Char, der beim Schließen der App aktiv war, wird beim Starten geladen. Achtung, dies erhöht die App-Ladezeit.</value>
   </data>
+  <data name="Error_CopyFiles" xml:space="preserve">
+    <value>Fehler: Konnte nicht (alle) Dateien an neuen Ort kopieren.</value>
+  </data>
   <data name="UI_Optionen_FileNameUseProgres.Tip" xml:space="preserve">
     <value>Der Dateiname wird automatisch generiert und beinhaltet: Name des Char, Karma, Anzahl Runs.</value>
   </data>

@@ -1,5 +1,6 @@
 ﻿using ShadowRunHelper.Model;
 using System;
+using System.Collections.Generic;
 using TAMARIN.IO;
 using TAPPLICATION;
 using TAPPLICATION.IO;
@@ -386,17 +387,17 @@ namespace ShadowRunHelper
                 var roampath = SharedIO.CurrentIO.GetCompleteInternPath(Place.Roaming);
                 var t = new FileInfoClass(b ? Place.Roaming : Place.Local, "", (b ? roampath : localpath) + SharedConstants.INTERN_SAVE_CONTAINER + @"\");
                 var s = new FileInfoClass(b ? Place.Local : Place.Roaming, "", (b ? localpath : roampath) + SharedConstants.INTERN_SAVE_CONTAINER + @"\");
-                await SharedIO.CurrentIO.CopyAllFiles(t, s);
+                await SharedIO.CurrentIO.MoveAllFiles(t, s);
             }
             catch (Exception ex)
             {
-                AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_SwitchingInterFolder"), ex);
+                AppModel.Instance.NewNotification(StringHelper.GetString("Error_CopyFiles"), ex);
             }
         }
         static async void FolderMode_Toggled()
         {
-            var b = SharedSettingsModel.Instance.ORDNERMODE;
-            if (b)
+            var FolderMode = SharedSettingsModel.Instance.ORDNERMODE;
+            if (FolderMode)
             {
                 try
                 {
@@ -405,8 +406,22 @@ namespace ShadowRunHelper
                 catch (Exception ex)
                 {
                     SharedSettingsModel.Instance.ORDNERMODE = false;
-                    //AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_General"), ex);
+                    return;
                 }
+            }
+            try
+            {
+                var InternRoam = SharedSettingsModel.Instance.InternSync;
+
+                var internpath = SharedIO.CurrentIO.GetCompleteInternPath(InternRoam ? Place.Roaming : Place.Local) + SharedConstants.INTERN_SAVE_CONTAINER + @"\";
+                var externpath = SharedSettingsModel.Instance.ORDNERMODE_PFAD;
+                var t = new FileInfoClass(FolderMode ? Place.Extern : (InternRoam ? Place.Roaming : Place.Local), "", (FolderMode ? externpath : internpath));
+                var s = new FileInfoClass(!FolderMode ? Place.Extern : (InternRoam ? Place.Roaming : Place.Local), "", (!FolderMode ? externpath : internpath));
+                await SharedIO.CurrentIO.MoveAllFiles(t, s, Constants.LST_FILETYPES_CHAR);
+            }
+            catch (Exception ex)
+            {
+                AppModel.Instance.NewNotification(StringHelper.GetString("Error_CopyFiles"), ex);
             }
         }
         #endregion
