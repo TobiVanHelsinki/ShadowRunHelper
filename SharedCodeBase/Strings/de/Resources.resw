@@ -1183,7 +1183,7 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Request_DeleteAll.Yes" xml:space="preserve">
     <value>Wirklich Löschen!</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Rename.Text" xml:space="preserve">
+  <data name="UI_Label_Rename.Label" xml:space="preserve">
     <value>Umbenennen</value>
   </data>
   <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">

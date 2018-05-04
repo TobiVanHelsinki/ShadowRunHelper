@@ -1153,7 +1153,7 @@ This is shown in detail at the example-character</value>
   <data name="UI_Char_Btn_Speichern.Label" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Rename.Label" xml:space="preserve">
+  <data name="UI_Label_Rename.Label" xml:space="preserve">
     <value>Rename</value>
   </data>
   <data name="UI_TxT_CSV_Export.Text" xml:space="preserve">

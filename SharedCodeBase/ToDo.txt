@@ -1,6 +1,7 @@
 ﻿
 --------Aktuelles-----------------------------------------------
 * cgar admin uhrzeit bug
+* nav button disable bei mainobject == null?
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte

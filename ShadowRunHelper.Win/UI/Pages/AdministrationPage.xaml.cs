@@ -3,7 +3,9 @@ using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TAMARIN.IO;
 using TAPPLICATION.IO;
@@ -16,13 +18,22 @@ using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper.UI
 {
-    public sealed partial class AdministrationPage : Page
+    public sealed partial class AdministrationPage : Page, INotifyPropertyChanged
     {
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+        }
+
+        #endregion
         readonly AppModel Model = AppModel.Instance;
         readonly ObservableCollection<FileInfoClass> Summorys = new ObservableCollection<FileInfoClass>();
 
         public AdministrationPage()
         {
+            ChangeProgress(false);
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
             Model.TutorialStateChanged += TutorialStateChanged;
@@ -56,15 +67,6 @@ namespace ShadowRunHelper.UI
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             CheckIAP();
-
-            ChangeCurrentCharUI(Model.MainObject == null ? false : true);
-            Model.PropertyChanged += (x, y) =>
-            {
-                if (e.Parameter.ToString() == "MainObject")
-                {
-                    ChangeCurrentCharUI(Model.MainObject == null ? false : true);
-                }
-            };
 
             if (SettingsModel.I.StartCount <= 1)
             {
@@ -116,26 +118,23 @@ namespace ShadowRunHelper.UI
             }
         }
 
-        bool IsOperationInProgres = false;
-        void ChangeCurrentCharUI(bool bHow)
+        bool _IsOperationInProgres;
+        public bool IsOperationInProgres
         {
-            //CurrentCharBtn_Save.IsEnabled = bHow;
-            //CurrentCharBtn_FolderOpen.IsEnabled = bHow;
-            //CurrentCharBtn_Rename.IsEnabled = bHow;
-            //CurrentCharBtn_Save_Intern.IsEnabled = bHow;
-            //CurrentCharBtn_Del.IsEnabled = bHow;
-            //CurrentCharBtn_FileExp.IsEnabled = bHow;
-            //CurrentCharBtn_CSVExp.IsEnabled = bHow;
-            //CurrentCharBtn_Repair.IsEnabled = bHow;
-
-            //CurrentCharPath.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
-            //CurrentCharName.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
+            get { return _IsOperationInProgres; }
+            set { if (_IsOperationInProgres != value) { _IsOperationInProgres = value; NotifyPropertyChanged(); } }
         }
+        bool _IsNoOperationInProgres;
+        public bool IsNoOperationInProgres
+        {
+            get { return _IsNoOperationInProgres; }
+            set { if (_IsNoOperationInProgres != value) { _IsNoOperationInProgres = value; NotifyPropertyChanged(); } }
+        }
+
         void ChangeProgress(bool bHow)
         {
             IsOperationInProgres = bHow;
-            ProgressBar_Char.IsIndeterminate = bHow;
-            ProgressBar_Char.Visibility = bHow? Visibility.Visible : Visibility.Collapsed;
+            IsNoOperationInProgres = !bHow;
         }
 
         void Char_Sum_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -147,13 +146,6 @@ namespace ShadowRunHelper.UI
             foreach (var item in e.AddedItems)
             {
                 ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = Active;
-                if (!SettingsModel.I.TutorialCharListShown)
-                {
-#pragma warning disable CS4014
-                    new Tutorial(10, 10).ShowAsync();
-#pragma warning restore CS4014
-                    SettingsModel.I.TutorialCharListShown = true;
-                }
             }
         }
 
@@ -185,6 +177,7 @@ namespace ShadowRunHelper.UI
 #pragma warning restore CS4014
         async Task CopyExampleChar()
         {
+            ChangeProgress(true);
             try
             {
                 await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
@@ -194,10 +187,13 @@ namespace ShadowRunHelper.UI
 
             }
             await Summorys_Aktualisieren();
+            ChangeProgress(false);
         }
         void Click_OpenSTDFolder(object sender, RoutedEventArgs e)
         {
+            ChangeProgress(true);
             SharedIO.CurrentIO.OpenFolder(new FileInfoClass(SharedIO.GetCurrentSavePlace(), "", SharedIO.GetCurrentSavePath()));
+            ChangeProgress(false);
         }
 
         void Click_Erstellen(object sender, RoutedEventArgs e)
@@ -206,10 +202,12 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
+            ChangeProgress(true);
             Model.MainObject = CharHolder.CreateCharWithStandardContent();
             Model.MainObject.AfterLoad();
             SettingsModel.I.CountCreations++;
             AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
+            ChangeProgress(false);
         }
 
         async void Click_Speichern(object sender, RoutedEventArgs e)
@@ -233,15 +231,9 @@ namespace ShadowRunHelper.UI
             await Summorys_Aktualisieren();
         }
 
-       
-
-        async void Click_Laden(object sender, RoutedEventArgs e)
+        void Click_Laden(object sender, RoutedEventArgs e)
         {
-            if (IsOperationInProgres)
-            {
-                return;
-            }
-            await LoadChar(() => CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
+            LoadChar(() => CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
         }
 
         async Task LoadChar(Func<Task<CharHolder>> LoadFunc)
@@ -274,6 +266,7 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
+            ChangeProgress(true);
             async void Delete()
             {
                 try
@@ -292,6 +285,7 @@ namespace ShadowRunHelper.UI
     , Delete);
             await Summorys_Aktualisieren();
             SettingsModel.I.CountDeletions++;
+            ChangeProgress(false);
         }
 
         public static async Task ShowMessageDialog(string Title, string Message, string strOK, string strCancel, Action OK, Action Cancel = null)
@@ -315,22 +309,32 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
+            ChangeProgress(true);
             var x = await CharHolderIO.Load(((FileInfoClass)((Button)sender).DataContext));
             Click_Datei_Export(x);
+            ChangeProgress(false);
         }
-
 
         async void Rename_Click(object sender, RoutedEventArgs e)
         {
+            FileInfoClass OldFile = (((FileInfoClass)((Button)sender).DataContext));
+
             Input dialog = new Input
             {
-                InputValue = AppModel.Instance.MainObject.FileInfo.Filename
+                InputValue = OldFile.Filename.Remove(OldFile.Filename.Length - Constants.DATEIENDUNG_CHAR.Length, Constants.DATEIENDUNG_CHAR.Length)
             };
             await dialog.ShowAsync();
-            AppModel.Instance.MainObject.FileInfo.Filename = dialog.InputValue;
+            ChangeProgress(true);
+            FileInfoClass NewFile = new FileInfoClass(OldFile.Fileplace, dialog.InputValue, OldFile.Filepath);
+            NewFile.Filename = SharedIO.CorrectFilenameExtension(NewFile.Filename, Constants.DATEIENDUNG_CHAR);
+            await SharedIO.CurrentIO.Copy(NewFile, OldFile);
+            await SharedIO.CurrentIO.RemoveFile(OldFile);
+            await Summorys_Aktualisieren();
+            ChangeProgress(false);
         }
         async void Click_Datei_Export(CharHolder CharToSave)
         {
+            ChangeProgress(true);
             try
             {
                 await CharHolderIO.Save(CharToSave, Info: new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "Export" });
@@ -339,13 +343,16 @@ namespace ShadowRunHelper.UI
             {
                 Model.NewNotification(StringHelper.GetString("Notification_Error_FileExportFail"), ex);
             }
+            ChangeProgress(false);
         }
-    
+
         async void Click_CSV_Export_OtherChar(object sender, RoutedEventArgs e)
         {
             if (!IsOperationInProgres)
             {
+            ChangeProgress(true);
                 SharedUIActions.CSV_Export(await CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
+            ChangeProgress(false);
             }
         }
 

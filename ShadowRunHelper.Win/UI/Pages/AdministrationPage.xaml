@@ -81,6 +81,7 @@
                     <ContentPresenter ContentTemplate="{StaticResource Normal}"/>
                     <CommandBar Background="Transparent" Grid.Row="1" DefaultLabelPosition="Right">
                         <AppBarButton x:Name="UI_CharVerwaltung_Btn_Laden" x:Uid="UI_CharVerwaltung_Btn_Laden" Icon="Upload" Click="Click_Laden" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                        <AppBarButton x:Name="UI_Label_Rename" x:Uid="UI_Label_Rename" Icon="Edit" Click="Rename_Click" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                         <AppBarButton x:Name="UI_CharVerwaltung_Btn_Loeschen" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                         <AppBarButton x:Name="UI_CharVerwaltung_Btn_Datei_Export" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                         <AppBarButton x:Name="UI_CharVerwaltung_Btn_CSV_Export" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
@@ -146,16 +147,11 @@
                     </TextBlock>
                 </ToolTipService.ToolTip>
             </StackPanel>
-            <ProgressBar Grid.Row="2" x:Name="ProgressBar_Char" Visibility="Collapsed"/>
-
-            <!--<Border Grid.Row="3" Grid.ColumnSpan="2" x:Name="CurrentCharBarBorder">
-                        <AppBarButton Icon="ShowBcc" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}">
-                        <AppBarButton x:Name="CurrentCharBtn_Rename" x:Uid="UI_CharVerwaltung_Btn_Rename" Icon="Edit" Click="Rename_Click" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                        <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_CurrentChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                </Border>-->
+            <ProgressBar Grid.Row="2" x:Name="ProgressBar_Char" IsIndeterminate="{x:Bind IsOperationInProgres, Mode=OneWay }" />
             <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="3" Style="{StaticResource TitleTextBlockStyle}"/>
             <Border Grid.Row="4" x:Name="ListViewBorder">
                 <ListView Name="Char_Sum"
+                        IsEnabled="{x:Bind IsNoOperationInProgres, Mode=OneWay}"
                       ItemsSource="{x:Bind Summorys, Mode=OneWay}" 
                       ItemTemplate="{StaticResource Normal}"
                       ListView.HeaderTemplate="{StaticResource Header}"
@@ -171,7 +167,7 @@
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </Viewbox>
             <Border Grid.Row="6" x:Name="MainBarBorder">
-                <CommandBar Grid.Row="4" DefaultLabelPosition="Right">
+                <CommandBar Grid.Row="4" DefaultLabelPosition="Right" IsEnabled="{x:Bind IsNoOperationInProgres, Mode=OneWay}">
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton x:Name="UI_TxT_OpenFolderSTD" x:Uid="UI_TxT_OpenFolderSTD" Icon="OpenLocal" Click="Click_OpenSTDFolder" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
