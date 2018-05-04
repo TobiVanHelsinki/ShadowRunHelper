@@ -146,6 +146,7 @@
                             <Run x:Uid="Doppelpunkt"/>
                             <Run Text="{x:Bind Model.MainObject.FileInfo.Filename, Mode=OneWay}"/>
                 </TextBlock>
+                <TextBlock x:Uid="SymbolChanges" Visibility="{x:Bind Model.MainObject.HasChanges, Mode=OneWay}"/>
                 <ToolTipService.ToolTip>
                     <TextBlock Style="{StaticResource Chars}">
                             <Run x:Uid="Ui_Admin_Filepath"/>

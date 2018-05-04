@@ -1405,4 +1405,7 @@ This is shown in detail at the example-character</value>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="SymbolChanges.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
 </root>

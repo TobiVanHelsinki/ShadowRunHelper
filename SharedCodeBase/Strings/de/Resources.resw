@@ -1456,4 +1456,7 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Cancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="SymbolChanges.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
 </root>
