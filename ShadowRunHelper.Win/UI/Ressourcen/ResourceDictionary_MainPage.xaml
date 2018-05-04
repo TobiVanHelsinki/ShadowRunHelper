@@ -36,16 +36,13 @@
 
     </Style>
     <Style TargetType="TextBlock" x:Key="Panel_Oben_Text_1">
-        <Setter Property="Margin" Value="20,0,10,0"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="10,0,10,0"/>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="Panel_Oben_Text_Schaden">
         <Setter Property="Margin" Value="5,0,5,0"/>
     </Style>
-    <Style TargetType="TextBlock" x:Key="Panel_Oben_Text_2">
-        <Setter Property="Margin" Value="20,0,10,0"/>
-    </Style>
+
     <Style TargetType="RepeatButton" BasedOn="{StaticResource STD_RepeatButton}" x:Key="Panel_Oben_Btn_Base">
         <Setter Property="Margin" Value="4"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -71,11 +68,8 @@
     <Style TargetType="StackPanel" x:Key="Panel_Oben_Parts_Stack">
         <Setter Property="Margin" Value="10,0,10,0"/>
     </Style>
-    <Style TargetType="Button" BasedOn="{StaticResource STD_Button}" x:Key="Panel_Oben_Parts_Btn">
-        <Setter Property="Margin" Value="10,0,10,0"/>
-    </Style>
     <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="Panel_Oben_Kontostand">
-        <Setter Property="Margin" Value="20,0,10,0"/>
+        <Setter Property="Margin" Value="2,0,2,0"/>
     </Style>
 
 </ResourceDictionary>

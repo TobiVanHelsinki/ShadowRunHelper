@@ -18,7 +18,7 @@ namespace ShadowRunHelper.UI.Converter
             string retdate = DT.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
             string rettime = DT.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern);
 
-            return retdate + rettime;
+            return retdate + " " +  rettime;
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {

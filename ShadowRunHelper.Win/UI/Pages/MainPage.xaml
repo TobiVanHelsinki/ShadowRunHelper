@@ -25,33 +25,34 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="0"/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Margin="0,5,0,0" Grid.Column="0" Style="{StaticResource Panel_Oben_Parts_Stack}">
+                        <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Style="{StaticResource Panel_Oben_Parts_Stack}">
                             <TextBlock Text="{x:Bind Person.Alias,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_1}"/>
                             <TextBlock Text="{x:Bind Person.Char_Typ,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_1}"/>
                         </StackPanel>
                         <Button x:Name="Infos" 
                                 PointerEntered="Infos_PointerEntered"
-                                Grid.Column="1" Style="{StaticResource Panel_Oben_Parts_Btn}" >
+                                Margin="0,0,10,0"
+                                Grid.Column="1" >
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel Orientation="Vertical">
+                                    <TextBlock x:Uid="Model_Person_Edge" Style="{StaticResource Panel_Oben_Text_1}"/>
+                                    <TextBlock Style="{StaticResource Panel_Oben_Text_1}">
+                                        <Run Text="{x:Bind Person.Edge_Aktuell,Mode=OneWay}"/>
+                                        <Run x:Uid="Slash"/>
+                                        <Run Text="{x:Bind Person.Edge_Gesamt,Mode=OneWay}"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" >
                                     <TextBlock x:Uid="Model_Person_Kontostand" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                    <TextBlock Text="{x:Bind Person.Kontostand,Mode=OneWay, Converter={StaticResource io_ZahlenYen}}" Style="{StaticResource Panel_Oben_Text_2}"/>
+                                    <TextBlock Text="{x:Bind Person.Kontostand,Mode=OneWay, Converter={StaticResource io_ZahlenYen}}" Style="{StaticResource Panel_Oben_Text_1}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock x:Uid="Model_Person_Initiative_Kurz" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                    <TextBlock Text="{x:Bind Person.Initiative,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_2}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock x:Uid="Model_Person_Edge" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                    <TextBlock Style="{StaticResource Panel_Oben_Text_2}">
-                                <Run Text="{x:Bind Person.Edge_Aktuell,Mode=OneWay}"/>
-                                <Run x:Uid="Slash"/>
-                                <Run Text="{x:Bind Person.Edge_Gesamt,Mode=OneWay}"/>
-                                    </TextBlock>
+                                    <TextBlock Text="{x:Bind Person.Initiative,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_1}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock x:Uid="Model_Person_Karma" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                    <TextBlock Style="{StaticResource Panel_Oben_Text_2}">
+                                    <TextBlock Style="{StaticResource Panel_Oben_Text_1}">
                                 <Run Text="{x:Bind Person.Karma_Aktuell, Mode=OneWay}"/>
                                 <Run x:Uid="Slash"/>
                                 <Run Text="{x:Bind Person.Karma_Gesamt, Mode=OneWay}"/>
@@ -122,7 +123,7 @@
                                 </Flyout>
                             </Button.Flyout>
                         </Button>
-                        <Button x:Name="Regler" Grid.Column="2" Style="{StaticResource Panel_Oben_Parts_Btn}">
+                        <Button x:Name="Regler" Grid.Column="2" >
                             <StackPanel Orientation="Vertical" >
                                 <TextBlock x:Uid="UI_Char_Schaden" HorizontalAlignment="Center" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
