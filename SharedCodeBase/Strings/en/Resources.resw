@@ -1192,10 +1192,10 @@ This is shown in detail at the example-character</value>
   <data name="UI_TxT_CSV_Cat_Export.Text" xml:space="preserve">
     <value>CSV Export</value>
   </data>
-  <data name="CSV_IN.Text" xml:space="preserve">
+  <data name="UI_TxT_CSV_Cat_Import.Text" xml:space="preserve">
     <value>CSV Import</value>
   </data>
-  <data name="DeleteCategoryContent.Text" xml:space="preserve">
+  <data name="UI_TxT_Cat_Truncate.Text" xml:space="preserve">
     <value>truncate category</value>
   </data>
   <data name="FurtherSettings.Text" xml:space="preserve">
@@ -1222,16 +1222,16 @@ This is shown in detail at the example-character</value>
   <data name="Order.Text" xml:space="preserve">
     <value>order item</value>
   </data>
-  <data name="Order_ABC.Text" xml:space="preserve">
+  <data name="UI_TxT_Cat_Order_ABC.Text" xml:space="preserve">
     <value>alphabeticly</value>
   </data>
-  <data name="Order_Orig.Text" xml:space="preserve">
+  <data name="UI_TxT_Cat_Order_Orig.Text" xml:space="preserve">
     <value>Load saved order</value>
   </data>
-  <data name="Order_Save.Text" xml:space="preserve">
+  <data name="UI_TxT_Cat_Order_Save.Text" xml:space="preserve">
     <value>Save current order</value>
   </data>
-  <data name="Order_Type.Text" xml:space="preserve">
+  <data name="UI_TxT_Cat_Order_Type.Text" xml:space="preserve">
     <value>after "type"</value>
   </data>
   <data name="Model_KomplexeFormM_.Text" xml:space="preserve">
@@ -1399,7 +1399,7 @@ This is shown in detail at the example-character</value>
   <data name="UI_Optionen_LoadOnStart.Tip" xml:space="preserve">
     <value>The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time.</value>
   </data>
-  <data name="UI_Btn_Speichern.Text" xml:space="preserve">
+  <data name="UI_TxT_Save.Text" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="Cancel" xml:space="preserve">

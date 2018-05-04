@@ -1170,10 +1170,10 @@ In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben. A
   <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
     <value>Diese Version des Chars wird seid langem nicht mehr unterstützt. Bitte wende dich an den Support, wenn du ihn unbedingt konvertiert haben möchtest.</value>
   </data>
-  <data name="CSV_IN.Text" xml:space="preserve">
+  <data name="UI_TxT_CSV_Cat_Import.Text" xml:space="preserve">
     <value>CSV Import</value>
   </data>
-  <data name="DeleteCategoryContent.Text" xml:space="preserve">
+  <data name="UI_TxT_Cat_Truncate.Text" xml:space="preserve">
     <value>Kategorie leeren</value>
   </data>
   <data name="FurtherSettings.Text" xml:space="preserve">
@@ -1197,16 +1197,16 @@ In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben. A
   <data name="Order.Text" xml:space="preserve">
     <value>Sortieren</value>
   </data>
-  <data name="Order_ABC.Text" xml:space="preserve">
+  <data name="UI_TxT_Cat_Order_ABC.Text" xml:space="preserve">
     <value>Alphabetisch</value>
   </data>
-  <data name="Order_Orig.Text" xml:space="preserve">
+  <data name="UI_TxT_Cat_Order_Orig.Text" xml:space="preserve">
     <value>Sortierung laden</value>
   </data>
-  <data name="Order_Save.Text" xml:space="preserve">
+  <data name="UI_TxT_Cat_Order_Save.Text" xml:space="preserve">
     <value>Sortierung speichern</value>
   </data>
-  <data name="Order_Type.Text" xml:space="preserve">
+  <data name="UI_TxT_Cat_Order_Type.Text" xml:space="preserve">
     <value>Nach "Typ"</value>
   </data>
   <data name="Model_KomplexeFormM_.Text" xml:space="preserve">
@@ -1392,7 +1392,7 @@ In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben. A
   <data name="UI_Optionen_FileNameUseProgres.Tip" xml:space="preserve">
     <value>Der Dateiname wird automatisch generiert und beinhaltet: Name des Char, Karma, Anzahl Runs.</value>
   </data>
-  <data name="UI_Btn_Speichern.Text" xml:space="preserve">
+  <data name="UI_TxT_Save.Text" xml:space="preserve">
     <value>Speichern</value>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -1402,7 +1402,7 @@ In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben. A
     <value>*</value>
   </data>
   <data name="UI_TxT_CSV_Cat_Export.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Speichert einen </value>
+    <value>Speichert diese Kategorie im CSV Format (Excel Kompatible) in einem Ordner.</value>
   </data>
   <data name="UI_TxT_OpenFolder.ToolTipService.ToolTip" xml:space="preserve">
     <value>Öffnet den Ordner der aktuellen Datei</value>
@@ -1420,9 +1420,9 @@ In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben. A
     <value>Entladen</value>
   </data>
   <data name="UI_TxT_Unload.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Entfernt nur den geladenen Char aus der App. Speicherdatein werden nicht beeinflusst.</value>
+    <value>Entfernt nur den geladenen Char aus der App. Speicherdateien werden nicht beeinflusst.</value>
   </data>
-  <data name="UncheckAll.Text" xml:space="preserve">
+  <data name="UI_TxT_Cat_UncheckAll.Text" xml:space="preserve">
     <value>Alles abwählen</value>
   </data>
   <data name="IAP_Error" xml:space="preserve">
@@ -1457,5 +1457,44 @@ In jedem Schritt werden die grade erklärten Steuerelemente rot hervorgehoben. A
   </data>
   <data name="UI_TxT_OpenFolderSTD.ToolTipService.ToolTip" xml:space="preserve">
     <value>Öffne den Ordner, in dem alle deine Charakterbögen liegen.</value>
+  </data>
+  <data name="UI_Label_CSV_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Speichert diesen Charakterbogen im CSV Format (Excel Kompatible) in einem Ordner. Es werden mehrere Dateien angelegt.</value>
+  </data>
+  <data name="UI_Label_DeleteChar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Löscht diese Datei.</value>
+  </data>
+  <data name="UI_Label_File_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Kopiert diese Datei an einen anderen Ort.</value>
+  </data>
+  <data name="UI_Label_LoadChar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Öffnet diese Datei.</value>
+  </data>
+  <data name="UI_TxT_CSV_Cat_Export_Selected.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Speichert ausgewählte Einträge dieser Kategorie im CSV Format (Excel Kompatible) in einem Ordner.</value>
+  </data>
+  <data name="UI_TxT_CSV_Cat_Import.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Wähle eine CSV Datei aus, deren Inhalt in diese Kategorie importiert wird. Wenn die Im- und Export Kategorien nicht identisch sind, werden nicht alle Informationen importiert.</value>
+  </data>
+  <data name="UI_TxT_Cat_Order_Orig.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Lädt die zuvor gesicherte Reihenfolge der Eintrag dieser Kategorie.</value>
+  </data>
+  <data name="UI_TxT_Cat_Order_Save.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Sichert die derzeitige Reihenfolge der Eintrag dieser Kategorie.</value>
+  </data>
+  <data name="UI_TxT_Cat_Truncate.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Damit wird die gesamte Kategorie geleert.</value>
+  </data>
+  <data name="UI_TxT_Cat_UncheckAll.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Damit werden alle aufgeklappten Einträge zugeklappt.</value>
+  </data>
+  <data name="UI_TxT_CSV_Export.Text" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="UI_TxT_CSV_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Speichert diesen Charakterbogen im CSV Format (Excel Kompatible) in einem Ordner. Es werden mehrere Dateien angelegt.</value>
+  </data>
+  <data name="UI_TxT_Save.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Speichert den Charakterbogen.</value>
   </data>
 </root>

@@ -156,7 +156,7 @@ namespace ShadowRunHelper.UI
         }
 
         #region CategoryStuff
-        private async void CSV_IN_Click(object sender, RoutedEventArgs e)
+        private async void UI_TxT_CSV_Cat_Import_Click(object sender, RoutedEventArgs e)
         {
             string strRead = "";
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
@@ -184,7 +184,7 @@ namespace ShadowRunHelper.UI
             {
                 Model.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "2", ex);
             }
-            Analytics.TrackEvent("Char_CSV_IN");
+            Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Import");
         }
 
         private void UI_TxT_CSV_Cat_Export_Click(object sender, RoutedEventArgs e)
@@ -223,11 +223,11 @@ namespace ShadowRunHelper.UI
             Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export_Selected");
         }
 
-        void UncheckAll(object sender, RoutedEventArgs e)
+        void UI_TxT_Cat_UncheckAll(object sender, RoutedEventArgs e)
         {
             ListView.SelectedIndex = -1;
         }
-        private void DeleteCategoryContent(object sender, RoutedEventArgs e)
+        private void UI_TxT_Cat_Truncate(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -240,26 +240,26 @@ namespace ShadowRunHelper.UI
         }
         #endregion
         #region Ordering
-        void Order_Type(object sender, RoutedEventArgs e)
+        void UI_TxT_Cat_Order_Type(object sender, RoutedEventArgs e)
         {
-            Analytics.TrackEvent("Char_Order_Type");
+            Analytics.TrackEvent("Char_UI_TxT_Cat_Order_Type");
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             CTRL.OrderData(Ordering.Type);
         }
 
-        void Order_ABC(object sender, RoutedEventArgs e)
+        void UI_TxT_Cat_Order_ABC(object sender, RoutedEventArgs e)
         {
-            Analytics.TrackEvent("Char_Order_ABC");
+            Analytics.TrackEvent("Char_UI_TxT_Cat_Order_ABC");
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             CTRL.OrderData(Ordering.ABC);
         }
-        private void Order_Orig(object sender, RoutedEventArgs e)
+        private void UI_TxT_Cat_Order_Orig(object sender, RoutedEventArgs e)
         {
-            Analytics.TrackEvent("Char_Order_Orig");
+            Analytics.TrackEvent("Char_UI_TxT_Cat_Order_Orig");
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             CTRL.OrderData(Ordering.Original);
         }
-        private void Order_Save(object sender, RoutedEventArgs e)
+        private void UI_TxT_Cat_Order_Save(object sender, RoutedEventArgs e)
         {
             ((sender as FrameworkElement).DataContext as IController).SaveCurrentOrdering();
         }
