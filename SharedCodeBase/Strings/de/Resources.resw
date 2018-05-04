@@ -876,7 +876,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Model__Pool.Text" xml:space="preserve">
     <value>Pool</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Repair.Text" xml:space="preserve">
+  <data name="UI_TxT_Repair.Text" xml:space="preserve">
     <value>Reparieren</value>
   </data>
   <data name="Notification_Error_RepairFail" xml:space="preserve">
@@ -1135,8 +1135,8 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Tut_TitleState_20" xml:space="preserve">
     <value>Einführung Seite "Char"</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Speichern_Intern.Text" xml:space="preserve">
-    <value>Intern Speichern</value>
+  <data name="UI_TxT_SaveAtCurrentPlace.Text" xml:space="preserve">
+    <value>Speichern in aktuellem Ordner</value>
   </data>
   <data name="UI_Optionen_TutCharShown.Text" xml:space="preserve">
     <value>"Char-Anleitung" gelesen</value>
@@ -1189,11 +1189,11 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">
     <value>Speichern fehlgeschlagen - andere Operation in Gange</value>
   </data>
-  <data name="UI_Admin_Btn_CurrentChar_CSV_Export.Text" xml:space="preserve">
+  <data name="UI_TxT_CSV_Export.Text" xml:space="preserve">
     <value>CSV Export</value>
   </data>
-  <data name="UI_Admin_Btn_CurrentChar_Export.Text" xml:space="preserve">
-    <value>Exportieren</value>
+  <data name="UI_TxT_SaveExtern.Text" xml:space="preserve">
+    <value>Speichern in externem Ordner</value>
   </data>
   <data name="Model_BerechnetM_.Text" xml:space="preserve">
     <value>Berechnete Werte</value>
@@ -1384,10 +1384,10 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_FolderOpen.Text" xml:space="preserve">
+  <data name="UI_TxT_OpenFolder.Text" xml:space="preserve">
     <value>Ordner öffnen</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_FolderOpenSTD.Label" xml:space="preserve">
+  <data name="UI_TxT_OpenFolderSTD.Label" xml:space="preserve">
     <value>Speicherort öffnen</value>
   </data>
   <data name="Model_Handlung_GegenZusatz.Text" xml:space="preserve">

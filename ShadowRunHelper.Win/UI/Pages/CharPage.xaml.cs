@@ -151,13 +151,11 @@ namespace ShadowRunHelper.UI
             MainObject?.SetSaveTimerTo();
         }
 
-
-        async void Click_Speichern_Intern(object sender, RoutedEventArgs e)
+        async void Click_SaveAtCurrentPlace(object sender, RoutedEventArgs e)
         {
             try
             {
-                await CharHolderIO.SaveAtCurrentPlace(Model.MainObject);
-                Model.MainObject.HasChanges = false;
+                var i = await SharedIO.SaveAtCurrentPlace(Model.MainObject);
             }
             catch (Exception ex)
             {
@@ -165,22 +163,25 @@ namespace ShadowRunHelper.UI
             }
         }
 
-        async void Click_Datei_Export_CurrentChar(object sender, RoutedEventArgs e)
+        async void Click_SaveExtern(object sender, RoutedEventArgs e)
         {
             try
             {
-                await SharedIO.Save(Model.MainObject, Info: new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "Export" });
+                var i = await SharedIO.Save(Model.MainObject, Info: new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "Export" });
+                Model.MainObject.FileInfo.Fileplace = i.Fileplace;
+                Model.MainObject.FileInfo.Filepath = i.Filepath;
+                Model.MainObject.FileInfo.Filename = i.Filename;
             }
             catch (Exception ex)
             {
                 Model.NewNotification(StringHelper.GetString("Notification_Error_FileExportFail"), ex);
             }
         }
-        void Click_CSV_Export_CurrentChar(object sender, RoutedEventArgs e)
+        void Click_CSV_Export(object sender, RoutedEventArgs e)
         {
                 SharedUIActions.CSV_Export(Model.MainObject);
         }
-        void Click_Repair_CurrentChar(object sender, RoutedEventArgs e)
+        void Click_Repair(object sender, RoutedEventArgs e)
         {
             try
             {

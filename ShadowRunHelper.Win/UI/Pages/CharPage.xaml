@@ -31,11 +31,11 @@
                     <Button Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Margin="0,0,15,0" Style="{StaticResource STD_Button}">
                         <Button.Flyout>
                             <MenuFlyout>
-                                <MenuFlyoutItem x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Uid="UI_Admin_Btn_CurrentChar_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Uid="UI_Admin_Btn_CurrentChar_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Uid="UI_CharVerwaltung_Btn_FolderOpen" Icon="OpenLocal" Click="Click_OpenFolder" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                <MenuFlyoutItem x:Uid="UI_TxT_SaveAtCurrentPlace" Icon="Save" Click="Click_SaveAtCurrentPlace" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                <MenuFlyoutItem x:Uid="UI_TxT_SaveExtern" Icon="SaveLocal" Click="Click_SaveExtern" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                <MenuFlyoutItem x:Uid="UI_TxT_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                <MenuFlyoutItem x:Uid="UI_TxT_OpenFolder" Icon="OpenLocal" Click="Click_OpenFolder" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                <MenuFlyoutItem x:Uid="UI_TxT_Repair" Icon="Repair" Click="Click_Repair" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                             </MenuFlyout>
                         </Button.Flyout>
                     </Button>

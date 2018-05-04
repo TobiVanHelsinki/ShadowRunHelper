@@ -126,56 +126,35 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Uid="UI_CharVerwaltung_Einleitung1" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}"/>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Chars}">
-                    <Run x:Uid="Ui_Admin_Filename"/>
-                    <Run x:Uid="Doppelpunkt"/>
+            <TextBlock x:Uid="UI_CharVerwaltung_Einleitung1" Grid.Row="0" Visibility="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Visibility}}" Style="{StaticResource TitleTextBlockStyle}"/>
+            <StackPanel Grid.Row="1" ToolTipService.Placement="Bottom" Visibility="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Visibility}}" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource Chars}">
+                            <Run x:Uid="Ui_Admin_Filename"/>
+                            <Run x:Uid="Doppelpunkt"/>
+                            <Run Text="{x:Bind Model.MainObject.FileInfo.Filename, Mode=OneWay}"/>
                 </TextBlock>
-                <!--<TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource Chars}">
-                    <Run x:Uid="Ui_Admin_Filepath"/>
-                    <Run x:Uid="Doppelpunkt"/>
-                </TextBlock>-->
-                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="CurrentCharName" Text="{x:Bind Model.MainObject.FileInfo.Filename, Mode=OneWay}" Style="{StaticResource Chars}"/>
-                <!--<TextBlock Grid.Row="1" Grid.Column="1" x:Name="CurrentCharPath" Text="{x:Bind Model.MainObject.FileInfo.Filepath, Mode=OneWay}" Style="{StaticResource Chars}" MaxLines="3" TextTrimming="CharacterEllipsis"/>-->
-                
-                <ProgressBar x:Name="ProgressBar_Char" Grid.Row="2" Grid.ColumnSpan="2" Visibility="Collapsed"/>
+                <ToolTipService.ToolTip>
+                    <TextBlock Style="{StaticResource Chars}">
+                            <Run x:Uid="Ui_Admin_Filepath"/>
+                            <Run x:Uid="Doppelpunkt"/>
+                            <Run Text="{x:Bind Model.MainObject.FileInfo.Filepath, Mode=OneWay}"/>
+                    </TextBlock>
+                </ToolTipService.ToolTip>
+            </StackPanel>
+            <ProgressBar Grid.Row="2" x:Name="ProgressBar_Char" Visibility="Collapsed"/>
 
-                <!--<Border Grid.Row="3" Grid.ColumnSpan="2" x:Name="CurrentCharBarBorder">
-                    --><!--<CommandBar Background="Transparent" DefaultLabelPosition="Right" >
-                        <AppBarButton x:Name="CurrentCharBtn_Save" x:Uid="UI_CharVerwaltung_Btn_Speichern" Icon="Save" Click="Click_Speichern" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+            <!--<Border Grid.Row="3" Grid.ColumnSpan="2" x:Name="CurrentCharBarBorder">
                         <AppBarButton Icon="ShowBcc" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}">
-                            <AppBarButton.Flyout>
-                                <MenuFlyout>
-                                    <MenuFlyoutItem x:Name="CurrentCharBtn_Save_Intern" x:Uid="UI_CharVerwaltung_Btn_Speichern_Intern" Icon="Save" Click="Click_Speichern_Intern" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                    <MenuFlyoutItem x:Name="CurrentCharBtn_FileExp" x:Uid="UI_Admin_Btn_CurrentChar_Export" Icon="SaveLocal" Click="Click_Datei_Export_CurrentChar" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                    <MenuFlyoutItem x:Name="CurrentCharBtn_CSVExp" x:Uid="UI_Admin_Btn_CurrentChar_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_CurrentChar" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                    <MenuFlyoutItem x:Name="CurrentCharBtn_FolderOpen" x:Uid="UI_CharVerwaltung_Btn_FolderOpen" Icon="OpenLocal" Click="Click_OpenFolder" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                </MenuFlyout>
-                            </AppBarButton.Flyout>
-                        </AppBarButton>
                         <AppBarButton x:Name="CurrentCharBtn_Rename" x:Uid="UI_CharVerwaltung_Btn_Rename" Icon="Edit" Click="Rename_Click" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                         <AppBarButton x:Name="CurrentCharBtn_Del" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_CurrentChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                        <AppBarButton x:Name="CurrentCharBtn_Repair" x:Uid="UI_CharVerwaltung_Btn_Repair" Icon="Repair" Click="Click_Repair_CurrentChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    </CommandBar>--><!--
                 </Border>-->
-            </Grid>
-            <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
-            <Border Grid.Row="3" x:Name="ListViewBorder">
+            <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="3" Style="{StaticResource TitleTextBlockStyle}"/>
+            <Border Grid.Row="4" x:Name="ListViewBorder">
                 <ListView Name="Char_Sum"
                       ItemsSource="{x:Bind Summorys, Mode=OneWay}" 
                       ItemTemplate="{StaticResource Normal}"
@@ -187,14 +166,14 @@
                       SelectionMode="Multiple"
                       IsMultiSelectCheckBoxEnabled="False"/>
             </Border>
-            <Viewbox Grid.Row="4" Stretch="None" x:Name="Ad_MainPageBottomBox">
+            <Viewbox Grid.Row="5" Stretch="None" x:Name="Ad_MainPageBottomBox">
                 <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </Viewbox>
-            <Border Grid.Row="5" x:Name="MainBarBorder">
+            <Border Grid.Row="6" x:Name="MainBarBorder">
                 <CommandBar Grid.Row="4" DefaultLabelPosition="Right">
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton x:Name="UI_CharVerwaltung_Btn_FolderOpenSTD" x:Uid="UI_CharVerwaltung_Btn_FolderOpenSTD" Icon="OpenLocal" Click="Click_OpenSTDFolder" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                    <AppBarButton x:Name="UI_TxT_OpenFolderSTD" x:Uid="UI_TxT_OpenFolderSTD" Icon="OpenLocal" Click="Click_OpenSTDFolder" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"/>
                 </CommandBar>

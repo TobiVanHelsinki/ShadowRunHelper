@@ -321,7 +321,7 @@ This app can be used to open files and folders on the file system. The app store
   <data name="UI_Optionen_Version.Text" xml:space="preserve">
     <value>Version</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Repair.Text" xml:space="preserve">
+  <data name="UI_TxT_Repair.Text" xml:space="preserve">
     <value>Auto-Fix</value>
   </data>
   <data name="UI_Optionen_FileNameUseDate.Text" xml:space="preserve">
@@ -417,8 +417,8 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Ui_DB_Help.Label" xml:space="preserve">
     <value>Help on/off</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Speichern_Intern.Text" xml:space="preserve">
-    <value>Save Intern</value>
+  <data name="UI_TxT_SaveAtCurrentPlace.Text" xml:space="preserve">
+    <value>Save at current Folder</value>
   </data>
   <data name="UI_Optionen_TutCharShown.Text" xml:space="preserve">
     <value>Read "Char" Guide</value>
@@ -1156,11 +1156,11 @@ This is shown in detail at the example-character</value>
   <data name="UI_CharVerwaltung_Btn_Rename.Label" xml:space="preserve">
     <value>Rename</value>
   </data>
-  <data name="UI_Admin_Btn_CurrentChar_CSV_Export.Text" xml:space="preserve">
+  <data name="UI_TxT_CSV_Export.Text" xml:space="preserve">
     <value>CSV Export</value>
   </data>
-  <data name="UI_Admin_Btn_CurrentChar_Export.Text" xml:space="preserve">
-    <value>Export</value>
+  <data name="UI_TxT_SaveExtern.Text" xml:space="preserve">
+    <value>Save at extern Folder</value>
   </data>
   <data name="Model_BerechnetM_.Text" xml:space="preserve">
     <value>Calculated values</value>
@@ -1354,10 +1354,10 @@ This is shown in detail at the example-character</value>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_FolderOpen.Text" xml:space="preserve">
-    <value>Open folder</value>
+  <data name="UI_TxT_OpenFolder.Text" xml:space="preserve">
+    <value>open folder</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_FolderOpenSTD.Label" xml:space="preserve">
+  <data name="UI_TxT_OpenFolderSTD.Label" xml:space="preserve">
     <value>open saveplace</value>
   </data>
   <data name="Model_Handlung_GegenZusatz.Text" xml:space="preserve">

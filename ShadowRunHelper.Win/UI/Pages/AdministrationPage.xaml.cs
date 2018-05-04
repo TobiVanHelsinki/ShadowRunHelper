@@ -129,7 +129,7 @@ namespace ShadowRunHelper.UI
             //CurrentCharBtn_Repair.IsEnabled = bHow;
 
             //CurrentCharPath.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
-            CurrentCharName.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
+            //CurrentCharName.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
         }
         void ChangeProgress(bool bHow)
         {
