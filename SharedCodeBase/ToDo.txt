@@ -3,7 +3,6 @@
 * light notifications
 * nots für auto laden
 * oben und unten bessere font farben
-* Strings übersetzen
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte

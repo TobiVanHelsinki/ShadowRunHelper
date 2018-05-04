@@ -6,18 +6,24 @@ namespace ShadowRunHelper.UI.Converter
 {
     public class o_LastTime : IValueConverter
     {
-        static TimeSpan span = TimeSpan.FromSeconds(1);
+        static string DatePattern;
+        static string TimePattern;
+
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             var DT = (DateTimeOffset)value;
+            if (DatePattern == null)
+            {
+                DatePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+            }
+            if (TimePattern == null)
+            {
+                TimePattern = CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern;
+            }
 
-            //long ticks = (DT.Ticks + (span.Ticks / 2) + 1) / span.Ticks;
-            //DT = new DateTime(ticks * span.Ticks);
-
-            string retdate = DT.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
-            string rettime = DT.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern);
-
+            string retdate = DT.ToString(DatePattern);
+            string rettime = DT.ToString(TimePattern);
             return retdate + " " +  rettime;
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
