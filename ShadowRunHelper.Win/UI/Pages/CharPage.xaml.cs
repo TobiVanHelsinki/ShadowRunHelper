@@ -1,8 +1,12 @@
 ﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TAMARIN.IO;
+using TAPPLICATION.IO;
+using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -147,6 +151,51 @@ namespace ShadowRunHelper.UI
             MainObject?.SetSaveTimerTo();
         }
 
+
+        async void Click_Speichern_Intern(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await CharHolderIO.SaveAtCurrentPlace(Model.MainObject);
+                Model.MainObject.HasChanges = false;
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(StringHelper.GetString("Notification_Error_SaveFail"), ex);
+            }
+        }
+
+        async void Click_Datei_Export_CurrentChar(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await SharedIO.Save(Model.MainObject, Info: new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "Export" });
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(StringHelper.GetString("Notification_Error_FileExportFail"), ex);
+            }
+        }
+        void Click_CSV_Export_CurrentChar(object sender, RoutedEventArgs e)
+        {
+                SharedUIActions.CSV_Export(Model.MainObject);
+        }
+        void Click_Repair_CurrentChar(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Model.MainObject?.Repair();
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(StringHelper.GetString("Notification_Error_RepairFail"), ex);
+            }
+        }
+        void Click_OpenFolder(object sender, RoutedEventArgs e)
+        {
+            SharedIO.CurrentIO.OpenFolder(Model.MainObject.FileInfo);
+        }
+
         async void Edit_Person_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -261,44 +310,6 @@ namespace ShadowRunHelper.UI
 
         #endregion
 
-        private void Click_Speichern_Intern(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void Click_Datei_Export_CurrentChar(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_CSV_Export_CurrentChar(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_OpenFolder(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Rename_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_Loeschen_CurrentChar(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_Repair_CurrentChar(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Click_Speichern(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

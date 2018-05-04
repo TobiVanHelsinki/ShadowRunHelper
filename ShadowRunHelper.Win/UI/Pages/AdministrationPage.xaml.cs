@@ -20,13 +20,11 @@ namespace ShadowRunHelper.UI
     {
         readonly AppModel Model = AppModel.Instance;
         readonly ObservableCollection<FileInfoClass> Summorys = new ObservableCollection<FileInfoClass>();
-        ResourceLoader res;
 
         public AdministrationPage()
         {
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
-            res = ResourceLoader.GetForCurrentView();
             Model.TutorialStateChanged += TutorialStateChanged;
 #if DEBUG
             Btn_Exception.Visibility = Visibility.Visible;
@@ -176,7 +174,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(res.GetString("Notification_Error_SummorysREfresh"), ex);
+                Model.NewNotification(StringHelper.GetString("Notification_Error_SummorysREfresh"), ex);
             }
         }
         #endregion
@@ -196,10 +194,6 @@ namespace ShadowRunHelper.UI
 
             }
             await Summorys_Aktualisieren();
-        }
-        void Click_OpenFolder(object sender, RoutedEventArgs e)
-        {
-            SharedIO.CurrentIO.OpenFolder(Model.MainObject.FileInfo);
         }
         void Click_OpenSTDFolder(object sender, RoutedEventArgs e)
         {
@@ -222,7 +216,7 @@ namespace ShadowRunHelper.UI
         {
             if (IsOperationInProgres)
             {
-                Model.NewNotification(res.GetString("Notification_Error_SaveFail_OPInProgress"), new System.Exception());
+                Model.NewNotification(StringHelper.GetString("Notification_Error_SaveFail_OPInProgress"), new System.Exception());
                 return;
             }
 
@@ -233,32 +227,13 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(res.GetString("Notification_Error_SaveFail"), ex);
+                Model.NewNotification(StringHelper.GetString("Notification_Error_SaveFail"), ex);
             }
             ChangeProgress(false);
             await Summorys_Aktualisieren();
         }
 
-        async void Click_Speichern_Intern(object sender, RoutedEventArgs e)
-        {
-            if (IsOperationInProgres)
-            {
-                return;
-            }
-
-            ChangeProgress(true);
-            try
-            {
-                await CharHolderIO.SaveAtCurrentPlace(Model.MainObject);
-                Model.MainObject.HasChanges = false;
-            }
-            catch (Exception ex)
-            {
-                Model.NewNotification(res.GetString("Notification_Error_SaveFail"), ex);
-            }
-            ChangeProgress(false);
-            await Summorys_Aktualisieren();
-        }
+       
 
         async void Click_Laden(object sender, RoutedEventArgs e)
         {
@@ -282,7 +257,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(res.GetString("Notification_Error_LoadFail"), ex);
+                Model.NewNotification(StringHelper.GetString("Notification_Error_LoadFail"), ex);
             }
             ChangeProgress(false);
             if (Model.MainObject != null)
@@ -307,7 +282,7 @@ namespace ShadowRunHelper.UI
                 }
                 catch (Exception ex)
                 {
-                    Model.NewNotification(res.GetString("Notification_Error_DelFail"), ex);
+                    Model.NewNotification(StringHelper.GetString("Notification_Error_DelFail"), ex);
                 }
             }
             await ShowMessageDialog(StringHelper.GetString("Request_Delete/Title")
@@ -333,29 +308,6 @@ namespace ShadowRunHelper.UI
             await messageDialog.ShowAsync();
         }
 
-        void Click_Loeschen_CurrentChar(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Model.MainObject = null;
-            }
-            catch (Exception ex)
-            {
-                if (Model.MainObject != null)
-                {
-                    Model.NewNotification(res.GetString("Notification_Error_DelCurrentFail"), ex);
-                }
-            }
-            finally
-            {
-                ChangeCurrentCharUI(Model.MainObject == null ? false : true);
-            }
-        }
-
-        void Click_Datei_Export_CurrentChar(object sender, RoutedEventArgs e)
-        {
-            Click_Datei_Export(Model.MainObject);
-        }
 
         async void Click_Datei_Export_OtherChar(object sender, RoutedEventArgs e)
         {
@@ -366,6 +318,7 @@ namespace ShadowRunHelper.UI
             var x = await CharHolderIO.Load(((FileInfoClass)((Button)sender).DataContext));
             Click_Datei_Export(x);
         }
+
 
         async void Rename_Click(object sender, RoutedEventArgs e)
         {
@@ -384,54 +337,15 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(res.GetString("Notification_Error_FileExportFail"), ex);
+                Model.NewNotification(StringHelper.GetString("Notification_Error_FileExportFail"), ex);
             }
         }
-        // CSV #######
-
-        void Click_CSV_Export_CurrentChar(object sender, RoutedEventArgs e)
-        {
-            if (!IsOperationInProgres)
-            {
-                CSV_Export(Model.MainObject);
-            }
-        }
+    
         async void Click_CSV_Export_OtherChar(object sender, RoutedEventArgs e)
         {
             if (!IsOperationInProgres)
             {
-                CSV_Export(await CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
-            }
-        }
-
-        void CSV_Export(CharHolder CharToSave)
-        {
-            try
-            {
-                string ret = "";
-                foreach (var item in CharToSave.lstCTRL)
-                {
-                    ret += item.Data2CSV(';', '\n');
-                }
-                var ContentList = CharToSave.lstCTRL.Select(c => (TypeHelper.ThingDefToString(c.eDataTyp, true) + Constants.DATEIENDUNG_CSV, c.Data2CSV(';', '\n')));
-                SharedIO.SaveTextesToFiles(ContentList, new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "CSV_TEMP" });
-            }
-            catch (Exception ex)
-            {
-                Model.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
-            }
-            Analytics.TrackEvent("Admin_CSV_EX");
-        }
-
-        void Click_Repair_CurrentChar(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Model.MainObject?.Repair();
-            }
-            catch (Exception ex)
-            {
-                Model.NewNotification(res.GetString("Notification_Error_RepairFail"), ex);
+                SharedUIActions.CSV_Export(await CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
             }
         }
 

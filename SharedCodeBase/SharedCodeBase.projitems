@@ -77,12 +77,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Exceptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Ressourcen\Types.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\SharedUIActions.cs" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)strings\de\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)strings\en\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)UI\" />
   </ItemGroup>
 </Project>
