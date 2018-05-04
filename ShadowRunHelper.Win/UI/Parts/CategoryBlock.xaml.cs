@@ -223,6 +223,10 @@ namespace ShadowRunHelper.UI
             Analytics.TrackEvent("Char_CSV_EX_Selected");
         }
 
+        void UncheckAll(object sender, RoutedEventArgs e)
+        {
+            ListView.SelectedIndex = -1;
+        }
         private void DeleteCategoryContent(object sender, RoutedEventArgs e)
         {
             try
@@ -328,5 +332,6 @@ namespace ShadowRunHelper.UI
         {
             ListView.SelectedItem = PendingScrollEntry;
         }
+
     }
 }

@@ -1480,4 +1480,7 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="UI_TxT_Unload.ToolTipService.ToolTip" xml:space="preserve">
     <value>Entfernt nur den geladenen Char aus der App. Speicherdatein werden nicht beeinflusst.</value>
   </data>
+  <data name="UncheckAll.Text" xml:space="preserve">
+    <value>Alles abwählen</value>
+  </data>
 </root>
