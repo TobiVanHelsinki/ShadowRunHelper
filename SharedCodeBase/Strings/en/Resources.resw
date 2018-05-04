@@ -210,11 +210,6 @@
   <data name="of.Text" xml:space="preserve">
     <value>of</value>
   </data>
-  <data name="Tut_State_00" xml:space="preserve">
-    <value>Welcome to the ShadowRunHelper app!
-This introduction shows how to create and manage ShadowRun chars in this app. With the arrow keys you can navigate through the introduction, the X at the top right cancels the introduction. You can watch this introduction also later. Just uncheck them at the options.
-In each step, the discussed controls are highlighted in red. On small screens the tutorial unfortunately hides the screen. The button with the eye makes the tutorial window transparent.</value>
-  </data>
   <data name="UI_Btn_Bearbeiten.Content" xml:space="preserve">
     <value>Edit</value>
   </data>
@@ -232,9 +227,6 @@ In each step, the discussed controls are highlighted in red. On small screens th
   </data>
   <data name="UI_CharVerwaltung_Btn_Neu.Label" xml:space="preserve">
     <value>Create new char</value>
-  </data>
-  <data name="UI_CharVerwaltung_Btn_Speichern.Label" xml:space="preserve">
-    <value>Save</value>
   </data>
   <data name="UI_CharVerwaltung_Einleitung1.Text" xml:space="preserve">
     <value>Current savefiles:</value>
@@ -300,9 +292,6 @@ This app can be used to open files and folders on the file system. The app store
   <data name="UI_Optionen_Toggle.OffContent" xml:space="preserve">
     <value>No</value>
   </data>
-  <data name="UI_Optionen_Toggle.OnContent" xml:space="preserve">
-    <value>Yes</value>
-  </data>
   <data name="UI_Optionen_EditAfterAdd.Text" xml:space="preserve">
     <value>Edit after adding</value>
   </data>
@@ -317,9 +306,6 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="UI_Optionen_DisplayRequest.Text" xml:space="preserve">
     <value>Hold Char Page active</value>
-  </data>
-  <data name="UI_Optionen_Version.Text" xml:space="preserve">
-    <value>Version</value>
   </data>
   <data name="UI_TxT_Repair.Text" xml:space="preserve">
     <value>Auto-Fix</value>
@@ -420,15 +406,6 @@ This app can be used to open files and folders on the file system. The app store
   <data name="UI_TxT_SaveAtCurrentPlace.Text" xml:space="preserve">
     <value>Save at current Folder</value>
   </data>
-  <data name="UI_Optionen_TutCharShown.Text" xml:space="preserve">
-    <value>Read "Char" Guide</value>
-  </data>
-  <data name="UI_Optionen_TutorialCharListShown.Text" xml:space="preserve">
-    <value>Read "Charlists" Guide</value>
-  </data>
-  <data name="UI_Optionen_TutorialHandlungShown.Text" xml:space="preserve">
-    <value>Read Action Guid</value>
-  </data>
   <data name="UI_Optionen_TutorialMainShown.Text" xml:space="preserve">
     <value>Read "Char Administration" Guide</value>
   </data>
@@ -446,52 +423,8 @@ This app can be used to open files and folders on the file system. The app store
 A) "Delete" deletes your char only from the app, but not from the list of saved chars
 b) "Auto-Fix" It should not occur, but sometimes it is unpredictable: the linked entries do not update automatically. Then this function can help. Maybe. If not, or if you have any other problems, do not hesitate to contact me (contact in the Settings menu).</value>
   </data>
-  <data name="Tut_State_05" xml:space="preserve">
-    <value>That's it with the first tutorial. You can now create your character. But it might be better to have a look at the example-character.</value>
-  </data>
-  <data name="Tut_State_10" xml:space="preserve">
-    <value>Clicking on a char in this bar will open its entry and you'll be given the opportunity to manage it.</value>
-  </data>
-  <data name="Tut_State_20" xml:space="preserve">
-    <value>Welcome to your first char!
-This introduction shows how the char view works. With the arrow keys you can navigate through the introduction, the X at the top right cancels the introduction. You can turn the introduction back on at the options menue, if you want to see it again. On small screens the tutorial unfortunately hides the screen. The button with the eye makes the tutorial window transparent.</value>
-  </data>
   <data name="Tut_State_03" xml:space="preserve">
     <value>This list shows all your saved characters. By default, chars are stored within the app. In the options you can choose to sync you chars via your account. Cause all chars in this list are files in a folder, you can also choose a different folder as the saving location.</value>
-  </data>
-  <data name="Tut_State_21" xml:space="preserve">
-    <value>Have you notized the top bar. It is present throughout the app and shows your current char, as well as its most important values, such as money, karma or the actual damage (mentally, physically, matrix damage on the deck). You can edit the values by clicking on the darker buttons.</value>
-  </data>
-  <data name="Tut_State_22" xml:space="preserve">
-    <value>You can use these icons to navigate between different tabs on this page.</value>
-  </data>
-  <data name="Tut_State_23" xml:space="preserve">
-    <value>In the main section of this page you can find all entries of a char, grouped by category. For example, we have the category "actions", with all the actions your char can perform. The plus button allows you to add a new entry. When you select an entry, you get more information, as well as the possibility to edit it.</value>
-  </data>
-  <data name="Tut_State_30" xml:space="preserve">
-    <value>Actions are the centerpiece of your chars and this app. An action has 3 properties, value, limit, and defend.
-Value: Dice pool when performing the action
-Limit: The limit for scoring successes
-Defend: If another person performs this action against you, this is your pool to defend you.
-For these 3 properties, you do not enter values that you calculate together, but you store the other entries that make up the values.
-
-This is shown in detail at the example-character</value>
-  </data>
-  <data name="Tut_State_31" xml:space="preserve">
-    <value>If you click on edit, you will see a list of entries. This list contains even more.
-
-For example, the limit of firing a weapon is determined by its precision. That is, at limit of action shooting you have to select "precision".
-
-So that you do not have to do this again and again, if you change the weapon, only the current weapon with its various properties is listed in this list.
-This behavior applies to Kommlinks, CyberDecks, weapons, armor and vehicles. An item is activated by the first check mark in its entry.
-
-This is shown in detail at the example-character</value>
-  </data>
-  <data name="Tut_TitleState_10" xml:space="preserve">
-    <value>Listentries introduction</value>
-  </data>
-  <data name="Tut_TitleState_20" xml:space="preserve">
-    <value>Current Char introduction</value>
   </data>
   <data name="GlobalFilterBox.PlaceholderText" xml:space="preserve">
     <value>Search for Name and Type ...</value>
@@ -501,9 +434,6 @@ This is shown in detail at the example-character</value>
   </data>
   <data name="ExampleChar" xml:space="preserve">
     <value>Example Char</value>
-  </data>
-  <data name="Tut_TitelState_30" xml:space="preserve">
-    <value>Actions introduction</value>
   </data>
   <data name="Model_Attribut_.Text" xml:space="preserve">
     <value>Attribut</value>
@@ -1189,9 +1119,6 @@ This is shown in detail at the example-character</value>
   <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
     <value>This Fileversion is outdated. If you want to upgrade this char, please contact support.</value>
   </data>
-  <data name="UI_TxT_CSV_Cat_Export.Text" xml:space="preserve">
-    <value>CSV Export</value>
-  </data>
   <data name="UI_TxT_CSV_Cat_Import.Text" xml:space="preserve">
     <value>CSV Import</value>
   </data>
@@ -1407,5 +1334,122 @@ This is shown in detail at the example-character</value>
   </data>
   <data name="SymbolChanges.Text" xml:space="preserve">
     <value>*</value>
+  </data>
+  <data name="Notification_Error_General" xml:space="preserve">
+    <value>Some Error</value>
+  </data>
+  <data name="UI_Optionen_EditAfterAdd.Tip" xml:space="preserve">
+    <value>Error not specified in detail: </value>
+  </data>
+  <data name="UI_Optionen_Group_Char.Text" xml:space="preserve">
+    <value>Current Char</value>
+  </data>
+  <data name="UI_Optionen_Group_File.Text" xml:space="preserve">
+    <value>file management</value>
+  </data>
+  <data name="UI_Optionen_Group_IO.Text" xml:space="preserve">
+    <value>Saving and loading</value>
+  </data>
+  <data name="UI_Optionen_Group_Other.Text" xml:space="preserve">
+    <value>Current Char</value>
+  </data>
+  <data name="UI_TxT_CSV_Cat_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves this category in CSV format (Excel compatible) in a folder.</value>
+  </data>
+  <data name="UI_TxT_OpenFolder.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Opens the folder of the current file</value>
+  </data>
+  <data name="UI_TxT_Repair.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Sometimes errors occur at the link system. Then you can try this function.</value>
+  </data>
+  <data name="UI_TxT_SaveAtCurrentPlace.ToolTipService.ToolTip" xml:space="preserve">
+    <value>If you opened the file externally (e.g. from another program) you can save it to your normal location.</value>
+  </data>
+  <data name="UI_TxT_SaveExtern.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Select a new location for this file</value>
+  </data>
+  <data name="UI_TxT_Unload.Text" xml:space="preserve">
+    <value>unloading</value>
+  </data>
+  <data name="UI_TxT_Unload.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Removes only the loaded char from the app. Storage files are not affected.</value>
+  </data>
+  <data name="UI_TxT_Cat_UncheckAll.Text" xml:space="preserve">
+    <value>Deselect All</value>
+  </data>
+  <data name="IAP_Error" xml:space="preserve">
+    <value>Purchase not successful</value>
+  </data>
+  <data name="IAP_Succeeded" xml:space="preserve">
+    <value>Purchase Successful</value>
+  </data>
+  <data name="Request_NotSave.No" xml:space="preserve">
+    <value>continue without saving</value>
+  </data>
+  <data name="Request_NotSave.Text" xml:space="preserve">
+    <value>The current char has unsaved changes</value>
+  </data>
+  <data name="Request_NotSave.Title" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Request_NotSave.Yes" xml:space="preserve">
+    <value>Save and Continue</value>
+  </data>
+  <data name="UI_TxT_ExportAll.Label" xml:space="preserve">
+    <value>Save all in external folder</value>
+  </data>
+  <data name="UI_TxT_ExportAll.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Copies all files listed here to another folder</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Create_ExampleChar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Load the example/turorial character sheet into the current folder</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Neu.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Use it to create a new character sheet</value>
+  </data>
+  <data name="UI_TxT_OpenFolderSTD.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Open the folder where all your character sheets are located.</value>
+  </data>
+  <data name="UI_Label_CSV_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves this character sheet in CSV format (Excel compatible) in a folder. Several files are created.</value>
+  </data>
+  <data name="UI_Label_DeleteChar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Deletes this file.</value>
+  </data>
+  <data name="UI_Label_File_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Copy this file to another location.</value>
+  </data>
+  <data name="UI_Label_LoadChar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Opens this file.</value>
+  </data>
+  <data name="UI_TxT_CSV_Cat_Export_Selected.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves selected entries of this category in CSV format (Excel compatible) in a folder.</value>
+  </data>
+  <data name="UI_TxT_CSV_Cat_Import.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Select a CSV file whose content will be imported into this category. If the import and export categories are not identical, not all information is imported.</value>
+  </data>
+  <data name="UI_TxT_Cat_Order_Orig.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Loads the previously saved sequence of the entry of this category.</value>
+  </data>
+  <data name="UI_TxT_Cat_Order_Save.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves the current sequence of the entry of this category.</value>
+  </data>
+  <data name="UI_TxT_Cat_Truncate.ToolTipService.ToolTip" xml:space="preserve">
+    <value>This clears the entire category.</value>
+  </data>
+  <data name="UI_TxT_Cat_UncheckAll.ToolTipService.ToolTip" xml:space="preserve">
+    <value>This collapses all expanded entries.</value>
+  </data>
+  <data name="UI_TxT_CSV_Export.Text" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="UI_TxT_CSV_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves this character sheet in CSV format (Excel compatible) in a folder. Several files are created.</value>
+  </data>
+  <data name="UI_TxT_Save.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves the character sheet.</value>
+  </data>
+  <data name="UI_Optionen_Version.Text" xml:space="preserve">
+    <value>Version</value>
   </data>
 </root>

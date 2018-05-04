@@ -4,7 +4,6 @@
 * nots für auto laden
 * oben und unten bessere font farben
 * Strings übersetzen
-* mehr tooltips (bei den festen buttons in kat und admin)
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
