@@ -20,6 +20,67 @@
                                 ItemsSource="{x:Bind ThingList, Mode=OneWay}"
                                 />
             </DataTemplate>
+            <DataTemplate x:Name="OptionsPanel" x:Key="OptionsPanel" x:DataType="model:CharHolder">
+
+                <Button Style="{StaticResource STD_Button}" x:Name="PivotHeader_OptionsPanel" IsEnabled="{x:Bind HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
+                        <TextBlock x:Name="SavePanelButtonText" Text="Speichern"/>
+                    </StackPanel>
+                </Button>
+                <!--<Button Grid.Column="2" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Style="{StaticResource Category_Headline_Button}" Margin="0,0,15,0">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutSubItem x:Uid="Order">
+                                <MenuFlyoutSubItem.Icon>
+                                    <FontIcon Glyph="&#xE8CB;" />
+                                </MenuFlyoutSubItem.Icon>
+                                <MenuFlyoutItem x:Uid="Order_ABC" Click="Order_ABC">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE8CB;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem x:Uid="Order_Type" Click="Order_Type">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE8CB;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem x:Uid="Order_Save" Click="Order_Save">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE74E;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem x:Uid="Order_Orig" Click="Order_Orig">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xE8CB;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                            </MenuFlyoutSubItem>
+                            <MenuFlyoutItem Click="CSV_EX_Click" x:Uid="CSV_EX">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE78C;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Click="CSV_EX_Selected" x:Uid="CSV_EX_Selected">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE78C;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Click="CSV_IN_Click" x:Uid="CSV_IN">
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE8B6;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Click="DeleteCategoryContent" x:Uid="DeleteCategoryContent" >
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon Glyph="&#xE74D;" />
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>-->
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
@@ -35,12 +96,9 @@
                         <AdaptiveTrigger MinWindowWidth="640"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="SavePanelTop.Visibility" Value="Collapsed"/>
-                        <Setter Target="GlobalFilterBoxTop.Visibility" Value="Collapsed"/>
-
-                        <Setter Target="GlobalFilterBox_FlyoutColumn.Width" Value="0"/>
-                        <Setter Target="SavePanelButtonText.Visibility" Value="Visible"/>
-                        <Setter Target="GlobalFilterBox_NormalColumn.Width" Value="*"/>
+                        <Setter Target="InteractionPanelTop.Visibility" Value="Collapsed"/>
+                        <Setter Target="PivotHeader_GlobalFilterBox.Visibility" Value="Visible"/>
+                        <Setter Target="PivotHeader_OptionsPanel.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
@@ -48,11 +106,9 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="SavePanelTop.Visibility" Value="Visible"/>
-                        <Setter Target="SavePanel.Visibility" Value="Collapsed"/>
-                        <Setter Target="GlobalFilterBoxTop.Visibility" Value="Visible"/>
-                        <Setter Target="GlobalFilterBox_FlyoutColumn.Width" Value="0"/>
-                        <Setter Target="GlobalFilterBox_NormalColumn.Width" Value="0"/>
+                        <Setter Target="PivotHeader_OptionsPanel.Visibility" Value="Visible"/>
+                        <Setter Target="PivotHeader_GlobalFilterBox.Visibility" Value="Collapsed"/>
+                        <Setter Target="PivotHeader_OptionsPanel.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -240,45 +296,20 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Grid>
+        <Grid x:Name="InteractionPanelTop">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ContentPresenter Margin="5,1,5,1" x:Name="GlobalFilterBoxTop" Grid.Column="2" DataContext="{x:Bind Model.MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
-            <Button x:Name="SavePanelTop" Grid.Column="0" Margin="5,1,5,1" Style="{StaticResource STD_Button}"  IsEnabled="{x:Bind Model.MainObject.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
-                    <TextBlock Text="Speichern"/>
-                </StackPanel>
-            </Button>
+            <ContentControl Margin="7,0,7,0" VerticalAlignment="Center" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource OptionsPanel}"/>
+            <ContentPresenter Margin="5,1,5,1" VerticalAlignment="Center" Grid.Column="1" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
         </Grid>
         <Pivot x:Name="Pivot" Grid.Row="1" Style="{StaticResource PivotStyle_TabsStyle}" SizeChanged="Pivot_SizeChanged">
             <Pivot.RightHeader>
-                <Grid Margin="5" x:Name="FilterBoxPanel">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition x:Name="GlobalFilterBox_FlyoutColumn" Width="*"/>
-                        <ColumnDefinition x:Name="GlobalFilterBox_NormalColumn" Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Style="{StaticResource STD_Button}" Width="{Binding RelativeSource={RelativeSource Self}, Path=Height}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Content="&#xE11A;" FontFamily="Segoe MDL2 Assets">
-                        <Button.Flyout>
-                            <Flyout Placement="Left" >
-                                <ContentPresenter Width="300" DataContext="{x:Bind Model.MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
-                            </Flyout>
-                        </Button.Flyout>
-                    </Button>
-                    <ContentPresenter Grid.Column="1" DataContext="{x:Bind Model.MainObject}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
-                </Grid>
+                <ContentPresenter x:Name="PivotHeader_GlobalFilterBox" Margin="7,0,7,0" VerticalAlignment="Center" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
             </Pivot.RightHeader>
             <Pivot.LeftHeader>
-                <Button Style="{StaticResource STD_Button}" x:Name="SavePanel" IsEnabled="{x:Bind Model.MainObject.HasChanges, Mode=OneWay}" Click="Click_Save" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
-                        <TextBlock x:Name="SavePanelButtonText" Text="Speichern"/>
-                    </StackPanel>
-                </Button>
-
+                <ContentControl x:Name="PivotHeader_OptionsPanel" Margin="7,0,7,0" HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource OptionsPanel}"/>
             </Pivot.LeftHeader>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header >
