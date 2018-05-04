@@ -158,6 +158,7 @@ namespace ShadowRunHelper
             catch (Exception) { }
             finally
             {
+                Settings.ForceLoadCharOnStart = false;
                 Settings.LastSaveInfo = null;
                 Settings.CharInTempStore = false;
             }
