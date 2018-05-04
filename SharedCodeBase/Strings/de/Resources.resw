@@ -387,7 +387,7 @@
     <value>Notizen</value>
   </data>
   <data name="Model_SINM_.Text" xml:space="preserve">
-    <value>SystemIdentifikationsNummern</value>
+    <value>SIN2</value>
     <comment>Mehrzahl</comment>
   </data>
   <data name="Model_VorteilM_.Text" xml:space="preserve">
@@ -395,7 +395,7 @@
     <comment>Mehrzahl</comment>
   </data>
   <data name="Model_SIN_.Text" xml:space="preserve">
-    <value>SystemIdentifikationsNummer</value>
+    <value>SIN</value>
     <comment>Einzahl</comment>
   </data>
   <data name="Model_Vorteil_.Text" xml:space="preserve">

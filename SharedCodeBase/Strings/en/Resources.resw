@@ -766,10 +766,10 @@ b) "Auto-Fix" It should not occur, but sometimes it is unpredictable: the linked
     <value>Notes</value>
   </data>
   <data name="Model_SINM_.Text" xml:space="preserve">
-    <value>SystemIdentificationNumbers</value>
+    <value>SINs</value>
   </data>
   <data name="Model_SIN_.Text" xml:space="preserve">
-    <value>SystemIdentificationNumber</value>
+    <value>SIN</value>
   </data>
   <data name="Model_Kommlink_Attribute_o.Text" xml:space="preserve">
     <value>Attributes</value>
