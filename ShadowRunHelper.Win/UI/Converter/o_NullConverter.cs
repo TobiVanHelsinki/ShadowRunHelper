@@ -17,6 +17,36 @@ namespace ShadowRunHelper.UI.Converter
         }
         #endregion
     }
+    public class o_NullOrDefault2Bool : IValueConverter
+    {
+        #region IValueConverter Members 
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value == null)
+            {
+                return false;
+            }
+            else
+            {
+                switch (value)
+                {
+                    case int i:
+                        return i != 0;
+                    case double d:
+                        return d != 0;
+                    case String s:
+                        return !(string.IsNullOrEmpty(s) || string.IsNullOrWhiteSpace(s));
+                    default:
+                        return false;
+                }
+            }
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            return (Type)value;
+        }
+        #endregion
+    }
     public class o_Null2Visibility : IValueConverter
     {
         #region IValueConverter Members 

@@ -9,6 +9,7 @@
     Title="{x:Bind Data.Alias, Mode=TwoWay}"
     x:Uid="EditDialog"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    IsPrimaryButtonEnabled="{x:Bind Data.Alias, Mode=OneWay, Converter={StaticResource o_NullOrDefault2Bool }}"
     >
     
     <ContentDialog.Resources>
