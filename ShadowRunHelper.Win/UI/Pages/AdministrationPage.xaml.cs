@@ -167,8 +167,8 @@ namespace ShadowRunHelper.UI
             {
 
             }
-            await Summorys_Aktualisieren();
             ChangeProgress(false);
+            await Summorys_Aktualisieren();
         }
         void Click_OpenSTDFolder(object sender, RoutedEventArgs e)
         {
