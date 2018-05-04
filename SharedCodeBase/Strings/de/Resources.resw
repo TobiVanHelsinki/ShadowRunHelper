@@ -1483,6 +1483,18 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="UncheckAll.Text" xml:space="preserve">
     <value>Alles abwählen</value>
   </data>
+  <data name="Request_NotSave.No" xml:space="preserve">
+    <value>ohne Speichern fortfahren</value>
+  </data>
+  <data name="Request_NotSave.Text" xml:space="preserve">
+    <value>Der aktuelle Char hat noch ungespeicherte Änderungen</value>
+  </data>
+  <data name="Request_NotSave.Title" xml:space="preserve">
+    <value>Warnung</value>
+  </data>
+  <data name="Request_NotSave.Yes" xml:space="preserve">
+    <value>Speichern und fortfahren</value>
+  </data>
   <data name="UI_TxT_ExportAll.Label" xml:space="preserve">
     <value>Alle in externem Ordner speichern</value>
   </data>

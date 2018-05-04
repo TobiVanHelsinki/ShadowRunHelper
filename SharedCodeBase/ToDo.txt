@@ -32,11 +32,12 @@ Neu
 ** 1 4/5 falscher logik flow
 ** Tut erschlagen
 
-* admin page neuer char schon speichern?
+* setting page Kauf Fehlermeldung
 * admin page Warnung bei ungesp Änderungen 
+
+* admin page neuer char schon speichern?
 * admin page Zeit diffs in der charliste
 * admin page custom Charlist order
-* setting page Kauf Fehlermeldung
 
 
 ------------

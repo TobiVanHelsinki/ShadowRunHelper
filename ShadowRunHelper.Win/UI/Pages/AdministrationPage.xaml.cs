@@ -188,12 +188,13 @@ namespace ShadowRunHelper.UI
             ChangeProgress(false);
         }
 
-        void Click_Erstellen(object sender, RoutedEventArgs e)
+        async void Click_Erstellen(object sender, RoutedEventArgs e)
         {
             if (IsOperationInProgres)
             {
                 return;
             }
+            await AskForSaveCurrentChanges();
             ChangeProgress(true);
             Model.MainObject = CharHolder.CreateCharWithStandardContent();
             Model.MainObject.AfterLoad();
@@ -202,26 +203,18 @@ namespace ShadowRunHelper.UI
             ChangeProgress(false);
         }
 
-        async void Click_Speichern(object sender, RoutedEventArgs e)
+        async Task AskForSaveCurrentChanges()
         {
-            if (IsOperationInProgres)
+            if (Model?.MainObject?.HasChanges == true)
             {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_SaveFail_OPInProgress"), new System.Exception());
-                return;
+                await ShowMessageDialog(StringHelper.GetString("Request_NotSave/Title")
+                    , StringHelper.GetString("Request_NotSave/Text")
+                    , StringHelper.GetString("Request_NotSave/Yes")
+                    , StringHelper.GetString("Request_NotSave/No")
+                    , ()=> { Model.MainObject.SetSaveTimerTo(0, true);});
             }
-
-            ChangeProgress(true);
-            try
-            {
-                Model.MainObject.SetSaveTimerTo(0, true);
-            }
-            catch (Exception ex)
-            {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_SaveFail"), ex);
-            }
-            ChangeProgress(false);
-            await Summorys_Aktualisieren();
         }
+
 
         async void Click_Laden(object sender, RoutedEventArgs e)
         {
@@ -229,6 +222,7 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
+            await AskForSaveCurrentChanges();
             ChangeProgress(true);
             try
             {
@@ -278,10 +272,10 @@ namespace ShadowRunHelper.UI
             var messageDialog = new MessageDialog(Message, Title);
             messageDialog.Commands.Add(new UICommand(
                 strOK,
-                new UICommandInvokedHandler((x) => OK())));
+                new UICommandInvokedHandler((x) => OK?.Invoke())));
             messageDialog.Commands.Add(new UICommand(
                 strCancel,
-                new UICommandInvokedHandler((x) => Cancel())));
+                new UICommandInvokedHandler((x) => Cancel?.Invoke())));
             messageDialog.DefaultCommandIndex = 0;
             messageDialog.CancelCommandIndex = 1;
             await messageDialog.ShowAsync();
