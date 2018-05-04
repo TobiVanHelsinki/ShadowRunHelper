@@ -76,17 +76,13 @@ namespace ShadowRunHelper.CharModel
         ObservableCollection<CategoryOption> _categoryOptions = new ObservableCollection<CategoryOption>();
         public ObservableCollection<CategoryOption> CategoryOptions { get => _categoryOptions; set {  _categoryOptions = value; } }
 
-        public void OrderList()
-        {
-            var or = CategoryOptions.OrderBy(x => (x.Pivot, x.Order)).ToList();
-            CategoryOptions.Clear();
-            CategoryOptions.AddRange(or);
-        }
+
         public void Refresh()
         {
             AddMissingCategories();
             RemoveUnwantedCategories();
             RemoveDoubleCategories();
+            ResetOrdering();
             OrderList();
         }
 
@@ -143,7 +139,21 @@ namespace ShadowRunHelper.CharModel
             CategoryOptions.AddRange(TypeHelper.ThingTypeProperties.
                 Where(s => s.Usable && !CategoryOptions.Any(t=>t.ThingType == s.ThingType)).Select(x=>new CategoryOption(x.ThingType, x.Pivot, x.Order)));
         }
-
+        public void ResetOrdering()
+        {
+            foreach (var item in CategoryOptions)
+            {
+                var n = TypeHelper.ThingTypeProperties.Find(x=> x.ThingType == item.ThingType);
+                item.Order = n.Order;
+                item.Pivot = n.Pivot;
+            }
+        }
+        public void OrderList()
+        {
+            var or = CategoryOptions.OrderBy(x => (x.Pivot, x.Order)).ToList();
+            CategoryOptions.Clear();
+            CategoryOptions.AddRange(or);
+        }
         public void ResetCategoryOptions()
         {
             CategoryOptions.Clear();

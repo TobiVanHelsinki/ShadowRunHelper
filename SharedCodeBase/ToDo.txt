@@ -4,7 +4,7 @@
 * nots für auto laden
 * oben und unten bessere font farben
 * Strings übersetzen
-* mehr tooltips
+* mehr tooltips (bei den festen buttons in kat und admin)
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
@@ -26,10 +26,6 @@
 * im LinkedEntryEdit Handler spezialfälle einstellen
 
  ---------- andere ideen ------------
-* admin page neuer char schon speichern?
 * admin page Zeit diffs in der charliste
-* admin page custom Charlist order
-------------
+* admin page custom Charlist ordering
 * char page Schnellsuche nach "Schaden" könnte panel oben öffnen
-* char page Edit boxen kein abbrechen.
-* char page Name bearbeiten? Schwer zu finden -> Tipp auf oben links?
