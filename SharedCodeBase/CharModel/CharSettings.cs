@@ -74,13 +74,20 @@ namespace ShadowRunHelper.CharModel
         #endregion
 
         ObservableCollection<CategoryOption> _categoryOptions = new ObservableCollection<CategoryOption>();
-        public ObservableCollection<CategoryOption> CategoryOptions { get => _categoryOptions; set => _categoryOptions = value; }
+        public ObservableCollection<CategoryOption> CategoryOptions { get => _categoryOptions; set {  _categoryOptions = value; } }
 
+        public void OrderList()
+        {
+            var or = CategoryOptions.OrderBy(x => (x.Pivot, x.Order)).ToList();
+            CategoryOptions.Clear();
+            CategoryOptions.AddRange(or);
+        }
         public void Refresh()
         {
             AddMissingCategories();
             RemoveUnwantedCategories();
             RemoveDoubleCategories();
+            OrderList();
         }
 
         private void RemoveUnwantedCategories()

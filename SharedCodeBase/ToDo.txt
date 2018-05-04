@@ -1,9 +1,8 @@
 ﻿
 --------Aktuelles-----------------------------------------------
-* nav button disable bei mainobject == null?
-* MP oben zu viel platz beim ersten button
 * light notifications
 * nots für auto laden
+* oben und unten bessere font farben
 
 
 ---------- Ideen für next release-------------------------------
