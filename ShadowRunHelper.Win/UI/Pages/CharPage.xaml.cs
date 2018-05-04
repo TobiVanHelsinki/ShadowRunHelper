@@ -4,11 +4,13 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TAMARIN.IO;
 using TAPPLICATION.IO;
 using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper.UI
@@ -25,6 +27,7 @@ namespace ShadowRunHelper.UI
         {
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
+            LoadCategoryOptions();
         }
 
         #region GUI Stuff
@@ -214,6 +217,51 @@ namespace ShadowRunHelper.UI
         }
         #endregion
         #region Char Settings
+        public class GroupInfoList<T> : List<object>
+        {
+            public object Key { get; set; }
+            public new IEnumerator<object> GetEnumerator()
+            {
+                return (System.Collections.Generic.IEnumerator<object>)base.GetEnumerator();
+            }
+        }
+        public void LoadCategoryOptions()
+        {
+            List<GroupInfoList<object>> DataGrouped = new List<GroupInfoList<object>>();
+            var query = from opt in Model.MainObject.Settings.CategoryOptions
+                        group opt by opt.Pivot into g
+                        select new { GroupNr = g.Key, Items = g };
+
+            foreach (var g in query)
+            {
+                GroupInfoList<object> info = new GroupInfoList<object>();
+                switch (g.GroupNr)
+                {
+                    case 0:
+                        info.Key = StringHelper.GetString("Char_View_Pivot_Aktion/Label");
+                        break;
+                    case 1:
+                        info.Key = StringHelper.GetString("Char_View_Pivot_Item/Label");
+                        break;
+                    case 2:
+                        info.Key = StringHelper.GetString("Char_View_Pivot_Kampf/Label");
+                        break;
+                    case 3:
+                        info.Key = StringHelper.GetString("Char_View_Pivot_Person/Label");
+                        break;
+                    default:
+                        break;
+                }
+
+                foreach (var item in g.Items)
+                {
+                    info.Add(item);
+                }
+                DataGrouped.Add(info);
+            }
+            var cvs = (CollectionViewSource)Resources["GroupedCategoryOptions"];
+            cvs.Source = DataGrouped;
+        }
         void ResetButton_Click(object sender, RoutedEventArgs e)
         {
             MainObject.Settings.ResetCategoryOptions();

@@ -12,6 +12,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <CollectionViewSource x:Name="GroupedCategoryOptions" IsSourceGrouped="true" />
             <DataTemplate x:Name="GlobalFindBoxTemplate" x:Key="GlobalFindBoxTemplate" x:DataType="model:CharHolder">
                 <AutoSuggestBox x:Name="GlobalFilterBox" x:Uid="GlobalFilterBox" QueryIcon="Find"
                                 HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
@@ -526,12 +527,24 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView Grid.ColumnSpan="2" ItemsSource="{x:Bind Model.MainObject.Settings.CategoryOptions, Mode=TwoWay}">
+                    <ListView Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource GroupedCategoryOptions}}"
+                              ShowsScrollingPlaceholders="True"
+                              >
+                        <ListView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Key}" FontSize="30" />
+                                    </DataTemplate>
+                                </GroupStyle.HeaderTemplate>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="CharModel:CategoryOption">
                                 <Grid >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <ToggleSwitch IsOn="{x:Bind Visibility, Mode=TwoWay}"/>
