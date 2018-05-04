@@ -174,7 +174,8 @@
             <Border Grid.Row="5" x:Name="MainBarBorder" Margin="-4,0,0,0">
                 <CommandBar x:Name="Commandbar" Grid.Row="4" DefaultLabelPosition="Right">
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton x:Name="UI_TxT_OpenFolderSTD" x:Uid="UI_TxT_OpenFolderSTD" Icon="OpenLocal" Click="Click_OpenSTDFolder" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                    <AppBarButton x:Uid="UI_TxT_OpenFolderSTD" Icon="OpenLocal" Click="Click_OpenSTDFolder" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                    <AppBarButton x:Uid="UI_TxT_ExportAll" Icon="SaveLocal" Click="Click_UI_TxT_ExportAll" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"/>
                 </CommandBar>

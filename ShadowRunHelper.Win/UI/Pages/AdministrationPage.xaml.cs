@@ -349,6 +349,26 @@ namespace ShadowRunHelper.UI
             }
         }
 
+        async void Click_UI_TxT_ExportAll(object sender, RoutedEventArgs e)
+        {
+            if (!IsOperationInProgres)
+            {
+                ChangeProgress(true);
+                try
+                {
+                    var TargetInfo = await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass(Place.Extern) { FolderToken = "EXPORT"});
+                    var SourceInfo = new FileInfoClass(SharedIO.GetCurrentSavePlace(), "", SharedIO.GetCurrentSavePath());
+                    await SharedIO.CurrentIO.CopyAllFiles(TargetInfo, SourceInfo);
+                }
+                catch (Exception ex)
+                {
+                    Model.NewNotification("Error", ex);
+                }
+                ChangeProgress(false);
+            }
+
+        }
+
         #endregion
 
         #region Debug and Experimental
@@ -356,6 +376,7 @@ namespace ShadowRunHelper.UI
         {
             throw new Exception(Constants.TESTEXCEPTIONTEXT);
         }
+
         #endregion
 
 

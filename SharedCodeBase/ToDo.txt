@@ -32,16 +32,14 @@ Neu
 ** 1 4/5 falscher logik flow
 ** Tut erschlagen
 
-* char page Alias leer und doch Speichern mgl. 
-* char page Schnellsuche nach "Schaden" könnte panel oben öffnen
 * admin page neuer char schon speichern?
 * admin page Warnung bei ungesp Änderungen 
 * admin page Zeit diffs in der charliste
 * admin page custom Charlist order
-* admin page Alle exportieren
 * setting page Kauf Fehlermeldung
 
 
 ------------
+* char page Schnellsuche nach "Schaden" könnte panel oben öffnen
 * char page Edit boxen kein abbrechen.
 * char page Name bearbeiten? Schwer zu finden -> Tipp auf oben links?

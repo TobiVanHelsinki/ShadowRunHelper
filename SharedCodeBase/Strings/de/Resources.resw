@@ -1483,4 +1483,10 @@ Im Beispielcharakter ist dies nochmal ausführlich erklärt.</value>
   <data name="UncheckAll.Text" xml:space="preserve">
     <value>Alles abwählen</value>
   </data>
+  <data name="UI_TxT_ExportAll.Label" xml:space="preserve">
+    <value>Alle in externem Ordner speichern</value>
+  </data>
+  <data name="UI_TxT_ExportAll.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Kopiert alle hier aufgelisteten Dateien in einen anderen Ordner</value>
+  </data>
 </root>
