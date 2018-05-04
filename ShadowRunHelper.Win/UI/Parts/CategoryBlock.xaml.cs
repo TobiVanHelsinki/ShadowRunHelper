@@ -187,7 +187,7 @@ namespace ShadowRunHelper.UI
             Analytics.TrackEvent("Char_CSV_IN");
         }
 
-        private void CSV_EX_Click(object sender, RoutedEventArgs e)
+        private void UI_TxT_CSV_Cat_Export_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -202,9 +202,9 @@ namespace ShadowRunHelper.UI
             {
                 Model.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
-            Analytics.TrackEvent("Char_CSV_EX");
+            Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export");
         }
-        private void CSV_EX_Selected(object sender, RoutedEventArgs e)
+        private void UI_TxT_CSV_Cat_Export_Selected(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -220,7 +220,7 @@ namespace ShadowRunHelper.UI
             {
                 Model.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
-            Analytics.TrackEvent("Char_CSV_EX_Selected");
+            Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export_Selected");
         }
 
         void UncheckAll(object sender, RoutedEventArgs e)

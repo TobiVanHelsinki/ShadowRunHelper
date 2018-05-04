@@ -322,12 +322,12 @@ namespace ShadowRunHelper.UI
             ChangeProgress(false);
         }
 
-        async void Click_CSV_Export_OtherChar(object sender, RoutedEventArgs e)
+        async void Click_UI_TxT_CSV_Cat_Exportport_OtherChar(object sender, RoutedEventArgs e)
         {
             if (!IsOperationInProgres)
             {
             ChangeProgress(true);
-                SharedUIActions.CSV_Export(await CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
+                SharedUIActions.UI_TxT_CSV_Cat_Exportport(await CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError));
             ChangeProgress(false);
             }
         }

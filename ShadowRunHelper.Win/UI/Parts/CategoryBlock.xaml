@@ -380,12 +380,12 @@
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
                         </MenuFlyoutSubItem>
-                        <MenuFlyoutItem Click="CSV_EX_Click" x:Uid="CSV_EX">
+                        <MenuFlyoutItem Click="UI_TxT_CSV_Cat_Export_Click" x:Uid="UI_TxT_CSV_Cat_Export">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE78C;" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem Click="CSV_EX_Selected" x:Uid="CSV_EX_Selected">
+                        <MenuFlyoutItem Click="UI_TxT_CSV_Cat_Export_Selected" x:Uid="UI_TxT_CSV_Cat_Export_Selected">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE78C;" />
                             </MenuFlyoutItem.Icon>

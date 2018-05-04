@@ -80,11 +80,11 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource Normal}"/>
                     <CommandBar Background="Transparent" Grid.Row="1" DefaultLabelPosition="Right">
-                        <AppBarButton x:Name="UI_CharVerwaltung_Btn_Laden" x:Uid="UI_CharVerwaltung_Btn_Laden" Icon="Upload" Click="Click_Laden" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                        <AppBarButton x:Name="UI_Label_LoadChar" x:Uid="UI_Label_LoadChar" Icon="Upload" Click="Click_Laden" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                         <AppBarButton x:Name="UI_Label_Rename" x:Uid="UI_Label_Rename" Icon="Edit" Click="Rename_Click" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                        <AppBarButton x:Name="UI_CharVerwaltung_Btn_Loeschen" x:Uid="UI_CharVerwaltung_Btn_Loeschen" Icon="Delete" Click="Click_Loeschen_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                        <AppBarButton x:Name="UI_CharVerwaltung_Btn_Datei_Export" x:Uid="UI_CharVerwaltung_Btn_Datei_Export" Icon="SaveLocal" Click="Click_Datei_Export_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                        <AppBarButton x:Name="UI_CharVerwaltung_Btn_CSV_Export" x:Uid="UI_CharVerwaltung_Btn_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                        <AppBarButton x:Name="UI_Label_DeleteChar" x:Uid="UI_Label_DeleteChar" Icon="Delete" Click="Click_Loeschen_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                        <AppBarButton x:Name="UI_Label_File_Export" x:Uid="UI_Label_File_Export" Icon="SaveLocal" Click="Click_Datei_Export_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                        <AppBarButton x:Name="UI_Label_CSV_Export" x:Uid="UI_Label_CSV_Export" Icon="SaveLocal" Click="Click_UI_TxT_CSV_Cat_Exportport_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     </CommandBar>
                 </Grid>
             </DataTemplate>

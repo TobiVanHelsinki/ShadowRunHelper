@@ -36,7 +36,7 @@
                             <MenuFlyout>
                                 <MenuFlyoutItem x:Uid="UI_TxT_SaveAtCurrentPlace" Icon="Save" Click="Click_SaveAtCurrentPlace" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                                 <MenuFlyoutItem x:Uid="UI_TxT_SaveExtern" Icon="SaveLocal" Click="Click_SaveExtern" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Uid="UI_TxT_CSV_Export" Icon="SaveLocal" Click="Click_CSV_Export" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                <MenuFlyoutItem x:Uid="UI_TxT_CSV_Cat_Export" Icon="SaveLocal" Click="Click_UI_TxT_CSV_Cat_Exportport" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                                 <MenuFlyoutItem x:Uid="UI_TxT_OpenFolder" Icon="OpenLocal" Click="Click_OpenFolder" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                                 <MenuFlyoutItem x:Uid="UI_TxT_Repair" Icon="Repair" Click="Click_Repair" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                                 <MenuFlyoutItem x:Uid="UI_TxT_Unload" Icon="Delete" Click="Click_Delete" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>

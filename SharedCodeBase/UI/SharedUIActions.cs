@@ -10,7 +10,7 @@ namespace ShadowRunHelper.UI
 {
     public static class SharedUIActions
     {
-        public static void CSV_Export(CharHolder CharToSave)
+        public static void UI_TxT_CSV_Cat_Exportport(CharHolder CharToSave)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace ShadowRunHelper.UI
             {
                 AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
-            Analytics.TrackEvent("Admin_CSV_EX");
+            Analytics.TrackEvent("Admin_UI_TxT_CSV_Cat_Export");
         }
     }
 }

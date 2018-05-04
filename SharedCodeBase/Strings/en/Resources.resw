@@ -224,10 +224,10 @@ In each step, the discussed controls are highlighted in red. On small screens th
   <data name="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen.Label" xml:space="preserve">
     <value>Delete all Chars</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Laden.Label" xml:space="preserve">
+  <data name="UI_Label_LoadChar.Label" xml:space="preserve">
     <value>Load</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Loeschen.Label" xml:space="preserve">
+  <data name="UI_Label_DeleteChar.Label" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_Neu.Label" xml:space="preserve">
@@ -1015,7 +1015,7 @@ This is shown in detail at the example-character</value>
   <data name="UI_CharVerwaltung_Btn_Datei_Import.Label" xml:space="preserve">
     <value>Char Import</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_Datei_Export.Label" xml:space="preserve">
+  <data name="UI_Label_File_Export.Label" xml:space="preserve">
     <value>Char Export</value>
   </data>
   <data name="UI_Char_Schaden_Geist.Text" xml:space="preserve">
@@ -1027,7 +1027,7 @@ This is shown in detail at the example-character</value>
   <data name="UI_Char_Schaden_Matrix.Text" xml:space="preserve">
     <value>Matrix</value>
   </data>
-  <data name="UI_CharVerwaltung_Btn_CSV_Export.Label" xml:space="preserve">
+  <data name="UI_Label_CSV_Export.Label" xml:space="preserve">
     <value>CSV Export</value>
   </data>
   <data name="UI_CharVerwaltung_Btn_CSV_Import.Label" xml:space="preserve">
@@ -1156,7 +1156,7 @@ This is shown in detail at the example-character</value>
   <data name="UI_Label_Rename.Label" xml:space="preserve">
     <value>Rename</value>
   </data>
-  <data name="UI_TxT_CSV_Export.Text" xml:space="preserve">
+  <data name="UI_TxT_CSV_Cat_Export.Text" xml:space="preserve">
     <value>CSV Export</value>
   </data>
   <data name="UI_TxT_SaveExtern.Text" xml:space="preserve">
@@ -1189,7 +1189,7 @@ This is shown in detail at the example-character</value>
   <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
     <value>This Fileversion is outdated. If you want to upgrade this char, please contact support.</value>
   </data>
-  <data name="CSV_EX.Text" xml:space="preserve">
+  <data name="UI_TxT_CSV_Cat_Export.Text" xml:space="preserve">
     <value>CSV Export</value>
   </data>
   <data name="CSV_IN.Text" xml:space="preserve">
@@ -1204,7 +1204,7 @@ This is shown in detail at the example-character</value>
   <data name="Notification_Error_LogicFail" xml:space="preserve">
     <value>Programlogic-error</value>
   </data>
-  <data name="CSV_EX_Selected.Text" xml:space="preserve">
+  <data name="UI_TxT_CSV_Cat_Export_Selected.Text" xml:space="preserve">
     <value>CSV Export (just selected)</value>
   </data>
   <data name="Error_GetFolder" xml:space="preserve">

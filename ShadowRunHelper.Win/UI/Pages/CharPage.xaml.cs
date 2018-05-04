@@ -144,9 +144,9 @@ namespace ShadowRunHelper.UI
                 Model.NewNotification(StringHelper.GetString("Notification_Error_FileExportFail"), ex);
             }
         }
-        void Click_CSV_Export(object sender, RoutedEventArgs e)
+        void Click_UI_TxT_CSV_Cat_Exportport(object sender, RoutedEventArgs e)
         {
-                SharedUIActions.CSV_Export(Model.MainObject);
+                SharedUIActions.UI_TxT_CSV_Cat_Exportport(Model.MainObject);
         }
         void Click_Repair(object sender, RoutedEventArgs e)
         {
