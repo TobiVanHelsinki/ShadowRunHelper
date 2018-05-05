@@ -6,6 +6,9 @@
     xmlns:model="using:ShadowRunHelper.Model"
     xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
@@ -170,13 +173,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <controls:InAppNotification x:Name="ExampleInAppNotification"
-                                    Content="This is a test message."
-                                    ShowDismissButton="True"
-                                    AnimationDuration="00:00:00.1000000"
-                                    VerticalOffset="100"
-                                    HorizontalOffset="0"
-                                    />
         <Grid Style="{StaticResource MainGrid}" VerticalAlignment="Stretch" x:Name="AppTitleBar" />
         <Grid>
             <Grid.ColumnDefinitions>
@@ -193,13 +189,36 @@
         </Grid>
 
         <Frame Grid.Row="1" Name="MyFrame"></Frame>
+        
         <Border Grid.Row="2" Background="{ThemeResource SR_MainBackgroundBrush}"/>
         <Border Grid.Row="2" x:Name="MainBarBorder">
             <CommandBar x:Name="MainBar1" Background="Transparent" HorizontalAlignment="Left" DefaultLabelPosition="Right">
                 <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
                 <AppBarButton x:Name="Nav_Admin" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
                 <AppBarButton x:Name="Nav_Settings" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
+                <AppBarButton Label="NotL" Icon="AlignRight" Click="Debug3"/>
+                <AppBarButton Label="NotF" Icon="AlignCenter" Click="Debug4"/>
             </CommandBar>
         </Border>
+
+        <controls:InAppNotification  x:Name="ExampleInAppNotification"
+                                     Grid.RowSpan="3"
+                                     ShowDismissButton="True"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Right"
+                                     AnimationDuration="00:00:00.5000000"
+                                     Background="{ThemeResource SystemControlAltLowAcrylicElementBrush}"
+                                     BorderThickness="2"
+                                     BorderBrush="{ThemeResource InkToolbarAccentColorThemeBrush}"
+                                     Closing="ExampleInAppNotification_Closing"
+        >
+            <interactivity:Interaction.Behaviors>
+                <behaviors:Fade x:Name="Fade"
+              Value="0"
+              Duration="500"
+              Delay="0"
+              EasingType="Linear"/>
+            </interactivity:Interaction.Behaviors>
+        </controls:InAppNotification>
     </Grid>
 </Page>

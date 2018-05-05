@@ -1,6 +1,9 @@
-﻿using ShadowRunHelper.Model;
+﻿using Microsoft.Toolkit.Uwp.UI.Animations;
+using ShadowRunHelper.Model;
 using System;
+using System.Collections;
 using System.Linq;
+using System.Threading;
 using TAPPLICATION.Model;
 using TLIB;
 using Windows.ApplicationModel.Core;
@@ -38,6 +41,15 @@ namespace ShadowRunHelper.UI
                 DebugSettings.IsTextPerformanceVisualizationEnabled = !DebugSettings.IsTextPerformanceVisualizationEnabled;
             }
         }
+        Random r = new Random();
+        private void Debug3(object sender, RoutedEventArgs e)
+        {
+            Model.NewNotification(" Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test" + r.Next(), isLightNotification: true);
+        }
+        private void Debug4(object sender, RoutedEventArgs e)
+        {
+            Model.NewNotification("Test" + r.Next(), isLightNotification: false);
+        }
 
         #endregion
         public MainPage()
@@ -45,11 +57,12 @@ namespace ShadowRunHelper.UI
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
 #pragma warning disable CS4014
-            Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary();
+            Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary(y.NewItems);
 #pragma warning restore CS4014
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += NavigationRequested;
         }
+
         public void TitleBarStuff()
         {
             ApplicationViewTitleBar AppTitlebar = ApplicationView.GetForCurrentView().TitleBar;
@@ -69,7 +82,7 @@ namespace ShadowRunHelper.UI
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ShowNotificationsIfNecessary();
+            ShowNotificationsIfNecessary(Model.lstNotifications);
             Model.SetDependencies(Dispatcher);
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, p) => TitleBarStuff();
             CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += (s, p) => TitleBarStuff();
@@ -120,40 +133,40 @@ namespace ShadowRunHelper.UI
                     break;
             }
         }
-        bool ShowNotificationsInProgress = false;
-
-        async void ShowNotificationsIfNecessary()
+        Semaphore ShowNotificationsInProgress = new Semaphore(0,1);
+        async void ShowNotificationsIfNecessary(IList newItems)
         {
-            ExampleInAppNotification.Show("Not" + Model.lstNotifications.FirstOrDefault()?.Message, 0);
-
-            return;
-            if (ShowNotificationsInProgress)
+            using (ShowNotificationsInProgress)
             {
-                return;
-            }
-            ShowNotificationsInProgress = true;
-            bool DisplayMore = true;
-            foreach (Notification item in Model.lstNotifications.Where((x) => x.IsRead == false).OrderBy((x) => x.OccuredAt))
-            {
-                if (!DisplayMore)
+                foreach (Notification item in newItems.Cast<Notification>().Where((x) => !x.IsRead && !x.IsLight).OrderBy((x) => x.OccuredAt))
                 {
-                    break;
+                    try
+                    {
+                        var messageDialog = new MessageDialog(item.Message + "\n\n\n" + item.ThrownException?.Message);
+                        messageDialog.Commands.Add(new UICommand(StringHelper.GetString("OK")));
+                        //messageDialog.Commands.Add(new UICommand(StringHelper.GetString("CloseNotifications"), (x) => DisplayMore = false));
+                        messageDialog.DefaultCommandIndex = 0;
+                        await messageDialog.ShowAsync();
+                        item.IsRead = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        continue;
+                    }
                 }
-                try
+                foreach (Notification item in newItems.Cast<Notification>().Where((x) => !x.IsRead && x.IsLight).OrderBy((x) => x.OccuredAt))
                 {
-                    var messageDialog = new MessageDialog(item.Message + "\n\n\n" + item.ThrownException?.Message);
-                    messageDialog.Commands.Add(new UICommand(StringHelper.GetString("OK")));
-                    messageDialog.Commands.Add(new UICommand(StringHelper.GetString("CloseNotifications"), (x) => DisplayMore = false));
-                    messageDialog.DefaultCommandIndex = 0;
-                    await messageDialog.ShowAsync();
-                    item.IsRead = true;
-                }
-                catch (Exception ex)
-                {
-                    continue;
+                    ExampleInAppNotification.Show(item.Message + "\n\n\n" + item.ThrownException?.Message, 6000);
+                    Fade.Value = 1;
+                    Fade.StartAnimation();
                 }
             }
-            ShowNotificationsInProgress = false;
+        }
+        private void ExampleInAppNotification_Closing(object sender, Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosingEventArgs e)
+        {
+            Fade.Value = 0;
+            Fade.StartAnimation();
+            //ExampleInAppNotification.Fade().Stop();
         }
         #endregion
         #region Header Button Handler
@@ -319,5 +332,6 @@ namespace ShadowRunHelper.UI
 
         void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
 
+   
     }
 }
