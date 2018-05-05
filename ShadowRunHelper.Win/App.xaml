@@ -11,19 +11,22 @@
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="ListViewBackgroundBrush" Color="#FF333333" />
                     <SolidColorBrush x:Key="BorderBrushes" Color="Gray" />
+                    <SolidColorBrush x:Key="UnimportandInformationBrush" Color="LightGray" />
                     <SolidColorBrush x:Key="HelpIconColor" Color="LightBlue" />
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="ListViewBackgroundBrush" Color="Beige" />
                     <SolidColorBrush x:Key="BorderBrushes" Color="#FFAAAAAA" />
+                    <SolidColorBrush x:Key="UnimportandInformationBrush" Color="Gray" />
                     <SolidColorBrush x:Key="HelpIconColor" Color="Blue" />
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="HighContrast">
-                    <SolidColorBrush x:Key="HelpIconColor" Color="LightBlue" />
                     <SolidColorBrush x:Key="ListViewBackgroundBrush" Color="#FF333333" />
                     <SolidColorBrush x:Key="BorderBrushes" Color="White" />
+                    <SolidColorBrush x:Key="UnimportandInformationBrush" Color="Gray" />
+                    <SolidColorBrush x:Key="HelpIconColor" Color="LightBlue" />
                     
                     <SolidColorBrush x:Key="ControlPageBackgroundBrush" Color="{ThemeResource SystemColorWindowColor}" />
                     <SolidColorBrush x:Key="ChromeHighBrush" Color="{ThemeResource SystemColorWindowColor}" />

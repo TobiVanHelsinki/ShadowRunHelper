@@ -106,6 +106,6 @@
     <contract5Present:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible"/>
 
     <Style TargetType="TextBlock" x:Key="UnimportandInformation">
-        <Setter Property="Foreground" Value="Gray" />
+        <Setter Property="Foreground" Value="{ThemeResource UnimportandInformationBrush}" />
     </Style>
 </ResourceDictionary>
