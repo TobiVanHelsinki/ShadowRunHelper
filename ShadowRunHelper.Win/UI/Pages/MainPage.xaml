@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:model="using:ShadowRunHelper.Model"
     xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
@@ -163,35 +164,42 @@
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <controls:InAppNotification x:Name="ExampleInAppNotification"
+                                    Content="This is a test message."
+                                    ShowDismissButton="True"
+                                    AnimationDuration="00:00:00.1000000"
+                                    VerticalOffset="100"
+                                    HorizontalOffset="0"
+                                    />
+        <Grid Style="{StaticResource MainGrid}" VerticalAlignment="Stretch" x:Name="AppTitleBar" />
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid Style="{StaticResource MainGrid}" VerticalAlignment="Stretch" x:Name="AppTitleBar" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="TitleColumnL" Width="0"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition x:Name="TitleColumnR" Width="0"/>
-                </Grid.ColumnDefinitions>
-                <Border x:Name="StatusControlBorder" Grid.Column="1">
-                    <ContentControl HorizontalContentAlignment="Stretch" x:Name="StatusControl" ContentTemplate="{StaticResource Status}"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="TitleColumnL" Width="0"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition x:Name="TitleColumnR" Width="0"/>
+            </Grid.ColumnDefinitions>
+            <Border x:Name="StatusControlBorder" Grid.Column="1">
+                <ContentControl HorizontalContentAlignment="Stretch" x:Name="StatusControl" ContentTemplate="{StaticResource Status}"
                             DataContext="{x:Bind Model.MainObject, Mode=OneWay}" 
                             IsEnabled="{x:Bind Model.MainObject, Converter={StaticResource o_Null2Bool}, Mode=OneWay}"
                 />
-                </Border>
-            </Grid>
-
-            <Frame Grid.Row="1" Name="MyFrame"></Frame>
-            <Border Grid.Row="2" Background="{ThemeResource SR_MainBackgroundBrush}"/>
-            <Border Grid.Row="2" x:Name="MainBarBorder">
-                <CommandBar x:Name="MainBar1" Background="Transparent" HorizontalAlignment="Left" DefaultLabelPosition="Right">
-                    <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
-                    <AppBarButton x:Name="Nav_Admin" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
-                    <AppBarButton x:Name="Nav_Settings" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
-                </CommandBar>
             </Border>
         </Grid>
+
+        <Frame Grid.Row="1" Name="MyFrame"></Frame>
+        <Border Grid.Row="2" Background="{ThemeResource SR_MainBackgroundBrush}"/>
+        <Border Grid.Row="2" x:Name="MainBarBorder">
+            <CommandBar x:Name="MainBar1" Background="Transparent" HorizontalAlignment="Left" DefaultLabelPosition="Right">
+                <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
+                <AppBarButton x:Name="Nav_Admin" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
+                <AppBarButton x:Name="Nav_Settings" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
+            </CommandBar>
+        </Border>
+    </Grid>
 </Page>

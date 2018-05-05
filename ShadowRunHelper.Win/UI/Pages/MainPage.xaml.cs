@@ -124,6 +124,9 @@ namespace ShadowRunHelper.UI
 
         async void ShowNotificationsIfNecessary()
         {
+            ExampleInAppNotification.Show("Not" + Model.lstNotifications.FirstOrDefault()?.Message, 0);
+
+            return;
             if (ShowNotificationsInProgress)
             {
                 return;
