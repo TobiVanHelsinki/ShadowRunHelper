@@ -387,7 +387,7 @@
     <value>Notizen</value>
   </data>
   <data name="Model_SINM_.Text" xml:space="preserve">
-    <value>SIN2</value>
+    <value>SINs</value>
     <comment>Mehrzahl</comment>
   </data>
   <data name="Model_VorteilM_.Text" xml:space="preserve">
@@ -516,7 +516,7 @@
     <value>Strömungen</value>
   </data>
   <data name="UI_Optionen_LoadOnStart.Text" xml:space="preserve">
-    <value>Zuletzt verwendeten Char beim Starten der App automatisch laden?</value>
+    <value>Letzten Char bei Starten automatisch laden?</value>
   </data>
   <data name="UI_Char_Schaden.Text" xml:space="preserve">
     <value>Schaden:</value>
