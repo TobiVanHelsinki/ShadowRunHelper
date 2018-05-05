@@ -26,6 +26,15 @@ namespace ShadowRunHelper.UI
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
             LoadCategoryOptions();
+            Model.PropertyChanged += Model_PropertyChanged;
+        }
+
+        private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "MainObject")
+            {
+                LoadCategoryOptions();
+            }
         }
 
         #region GUI Stuff

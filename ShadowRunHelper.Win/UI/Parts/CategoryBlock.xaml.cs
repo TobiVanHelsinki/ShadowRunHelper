@@ -37,10 +37,8 @@ namespace ShadowRunHelper.UI
 
                 var entry = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
 
-                if (entry != null && !entry.Visibility)
-                {
-                    Visibility = Visibility.Collapsed;
-                }
+                Visibility = (entry != null && !entry.Visibility)? Visibility.Collapsed : Visibility = Visibility.Visible;
+
                 var Current = TypeHelper.ThingTypeProperties.FirstOrDefault(t => t.ThingType == Controller.eDataTyp);
 
                 CategoryName.Text = ResourceLoader.GetForCurrentView().GetString(Current.DisplayNamePlural);
