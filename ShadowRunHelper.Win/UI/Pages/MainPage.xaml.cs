@@ -119,7 +119,7 @@ namespace ShadowRunHelper.UI
             }
         }
         #endregion
-        #region global stuff
+        #region global intrest stuff
 
         void TutorialStateChanged(int StateNumber, bool Highlight)
         {
@@ -142,9 +142,9 @@ namespace ShadowRunHelper.UI
                 {
                     try
                     {
-                        var messageDialog = new MessageDialog(item.Message + "\n\n\n" + item.ThrownException?.Message);
-                        messageDialog.Commands.Add(new UICommand(StringHelper.GetString("OK")));
-                        //messageDialog.Commands.Add(new UICommand(StringHelper.GetString("CloseNotifications"), (x) => DisplayMore = false));
+                        var messageDialog = new MessageDialog(item.Message);
+                        messageDialog.Commands.Add(new UICommand(StringHelper.GetString("Close")));
+                        messageDialog.Commands.Add(new UICommand(StringHelper.GetString("UI_OpenNotifications"), (x) => GoToNotifications()));
                         messageDialog.DefaultCommandIndex = 0;
                         await messageDialog.ShowAsync();
                         item.IsRead = true;
@@ -166,6 +166,12 @@ namespace ShadowRunHelper.UI
         {
             Fade.Value = 0;
             Fade.StartAnimation();
+        }
+        void ExampleInAppNotification_PointerPressed(object sender, PointerRoutedEventArgs e) => GoToNotifications();
+        void GoToNotifications()
+        {
+            ExampleInAppNotification.Dismiss();
+            Model.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsNots);
         }
         #endregion
         #region Header Button Handler
@@ -331,15 +337,5 @@ namespace ShadowRunHelper.UI
 
         void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
 
-        private void GoTo_Notifications(object sender, RoutedEventArgs e)
-        {
-            Model.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsNots);
-        }
-
-        private void ExampleInAppNotification_PointerPressed(object sender, PointerRoutedEventArgs e)
-        {
-            ExampleInAppNotification.Dismiss();
-            Model.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsNots);
-        }
     }
 }
