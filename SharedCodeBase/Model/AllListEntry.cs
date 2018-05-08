@@ -74,7 +74,7 @@ namespace ShadowRunHelper.Model
         public event PropertyChangedEventHandler PropertyChanged;
         void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+            ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
 
         public override string ToString()

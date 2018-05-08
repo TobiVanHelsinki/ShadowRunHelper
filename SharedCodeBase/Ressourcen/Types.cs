@@ -89,7 +89,7 @@ namespace ShadowRunHelper
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+            ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
         Type _Type;
         public Type Type

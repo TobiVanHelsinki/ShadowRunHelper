@@ -65,7 +65,7 @@ namespace ShadowRunHelper.UI
 
         void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelHelper.CallPropertyChangedAtDispatcher(PropertyChanged, this, propertyName);
+            ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
 
         public Tutorial(int Start, int Ende)
