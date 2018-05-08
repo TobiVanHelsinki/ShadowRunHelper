@@ -1076,7 +1076,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Diese Liste zeigt alle deine gespeicherten Charaktere an. Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswählen, ob sie über deinen Account synchronisieren werden sollen. Du kannst auch einen anderen Ordner als Speicherort wählen.</value>
   </data>
   <data name="Tut_State_04" xml:space="preserve">
-    <value>Das war's mit dem ersten Tutorial. Du kannst einen neuen Charakter erstellen, aber besser ist es, du schaust dir erst den Beispielcharakter an.</value>
+    <value>Das war's mit dem Tutorial. Du kannst einen neuen Charakter erstellen, aber besser ist es, du schaust dir erst den Beispielcharakter an.</value>
   </data>
   <data name="UI_TxT_SaveAtCurrentPlace.Text" xml:space="preserve">
     <value>Speichern in aktuellem Ordner</value>
