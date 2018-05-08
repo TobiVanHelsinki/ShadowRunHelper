@@ -94,7 +94,7 @@ namespace ShadowRunHelper.CharController
             Person = p;
             lstImplantateRef = i;
 
-            Essenz.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Essenz.Wert)) RefreshLimitS(); };
+            Essenz.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Essenz.Wert) || y.PropertyName == nameof(Essenz.WertCalced)) RefreshLimitS(); };
             Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Essenz)) RefreshEssenz(); };
             Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Schaden_G_max_mod)) RefreshLimitSchadenG(); };
             Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Schaden_K_max_mod)) RefreshLimitSchadenK(); };
