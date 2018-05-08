@@ -200,6 +200,10 @@ namespace ShadowRunHelper.UI
         }
         public void LoadCategoryOptions()
         {
+            if (Model?.MainObject?.Settings?.CategoryOptions == null)
+            {
+                return;
+            }
             List<GroupInfoList<object>> DataGrouped = new List<GroupInfoList<object>>();
             var query = from opt in Model.MainObject.Settings.CategoryOptions
                         group opt by opt.Pivot into g
