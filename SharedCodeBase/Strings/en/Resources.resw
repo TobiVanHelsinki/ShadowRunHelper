@@ -166,7 +166,7 @@
     <value>Display can not stay activated</value>
   </data>
   <data name="Notification_Error_Loader_Error1.Text" xml:space="preserve">
-    <value>There was an Error during loading you char. Here are some information, please check you char.</value>
+    <value>There was an Error during loading you char. Klick here to show more.</value>
   </data>
   <data name="Notification_Error_Unknown" xml:space="preserve">
     <value>A unknown Error occured. You char was saved with a "Emergency" prefix.</value>
@@ -1247,7 +1247,7 @@ This app can be used to open files and folders on the file system. The app store
     <value>Your char was upgraded to the newest version. you cannot open it in older app versions properly.</value>
   </data>
   <data name="Notification_Warning_NotAddLinkedEntry" xml:space="preserve">
-    <value>Warning: Could not add reference "{0}" to List</value>
+    <value>Info: Reference wasn't added</value>
   </data>
   <data name="Error_ObjectCopy" xml:space="preserve">
     <value>Could not copy all</value>
@@ -1276,8 +1276,8 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Ui_Admin_Filepath.Text" xml:space="preserve">
     <value>Filepath</value>
   </data>
-  <data name="CloseNotifications" xml:space="preserve">
-    <value>Close all</value>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
@@ -1461,5 +1461,8 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="UI_Cntnt_GoTo_Notifications.Content" xml:space="preserve">
     <value>Open notifications</value>
+  </data>
+  <data name="UI_Optionen_Toggle.OnContent" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

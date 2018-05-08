@@ -733,7 +733,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Display kann nicht automatisch aktiviert bleiben.</value>
   </data>
   <data name="Notification_Error_Loader_Error1.Text" xml:space="preserve">
-    <value>Es gab einen Fehler beim Laden, Hier weitere Informationen: Überprüfe bitte deinen Char.</value>
+    <value>Der Char konnte nicht vollstädnig geladen werden, klick für mehr Informationen.</value>
   </data>
   <data name="UI_Optionen_DisplayRequest.Text" xml:space="preserve">
     <value>Sperrbildschirm verhindern</value>
@@ -1283,7 +1283,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Ihr Char wurde auf die neuste Version geupgraded. Er kann nicht mehr vollständig in alten App Versionen geladen werden.</value>
   </data>
   <data name="Notification_Warning_NotAddLinkedEntry" xml:space="preserve">
-    <value>Warnung: Referenz "{0}" konnte nicht gesetzt werden.</value>
+    <value>Info: Referenz wurde nicht hinzugefügt</value>
   </data>
   <data name="Error_ObjectCopy" xml:space="preserve">
     <value>Konnte nicht alles kopieren.</value>
@@ -1309,8 +1309,8 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Ui_Admin_Filepath.Text" xml:space="preserve">
     <value>Dateifad</value>
   </data>
-  <data name="CloseNotifications" xml:space="preserve">
-    <value>Alle schließen</value>
+  <data name="Close" xml:space="preserve">
+    <value>Schließen</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
@@ -1494,5 +1494,8 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="UI_Cntnt_GoTo_Notifications.Content" xml:space="preserve">
     <value>Benachrichtigungen öffnen</value>
+  </data>
+  <data name="UI_Optionen_Toggle.OnContent" xml:space="preserve">
+    <value>Ja</value>
   </data>
 </root>

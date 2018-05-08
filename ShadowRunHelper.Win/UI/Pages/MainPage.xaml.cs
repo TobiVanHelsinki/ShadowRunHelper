@@ -144,7 +144,7 @@ namespace ShadowRunHelper.UI
                     {
                         var messageDialog = new MessageDialog(item.Message);
                         messageDialog.Commands.Add(new UICommand(StringHelper.GetString("Close")));
-                        messageDialog.Commands.Add(new UICommand(StringHelper.GetString("UI_OpenNotifications"), (x) => GoToNotifications()));
+                        messageDialog.Commands.Add(new UICommand(StringHelper.GetString("UI_Cntnt_GoTo_Notifications/Content"), (x) => GoToNotifications()));
                         messageDialog.DefaultCommandIndex = 0;
                         await messageDialog.ShowAsync();
                         item.IsRead = true;
