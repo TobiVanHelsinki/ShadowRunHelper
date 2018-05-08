@@ -53,17 +53,13 @@ namespace ShadowRunHelper.UI
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             CheckIAP();
-
-            switch ((ProjectPagesOptions)e.Parameter)
+            try
             {
-                case ProjectPagesOptions.SettingsMain:
-                case ProjectPagesOptions.SettingsOptions:
-                case ProjectPagesOptions.SettingsHelp:
-                    MainNavigation.SelectedItem = MainNavigation.Items.FirstOrDefault(
+                MainNavigation.SelectedItem = MainNavigation.Items.FirstOrDefault(
                         x => (x as PivotItem).Tag.ToString() == ((int)e.Parameter).ToString());
-                    break;
-                default:
-                    break;
+            }
+            catch (Exception)
+            {
             }
             base.OnNavigatedTo(e);  
         }

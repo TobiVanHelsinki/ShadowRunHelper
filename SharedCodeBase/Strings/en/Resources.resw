@@ -1453,4 +1453,13 @@ This app can be used to open files and folders on the file system. The app store
   <data name="UI_Optionen_Version.Text" xml:space="preserve">
     <value>Version</value>
   </data>
+  <data name="Notification_Char_Loaded_File" xml:space="preserve">
+    <value>A Char was loaded from file</value>
+  </data>
+  <data name="Notification_Char_Loaded_Start" xml:space="preserve">
+    <value>A Char was automaticly loaded</value>
+  </data>
+  <data name="UI_Cntnt_GoTo_Notifications.Content" xml:space="preserve">
+    <value>Open notifications</value>
+  </data>
 </root>

@@ -1,7 +1,5 @@
 ﻿
 --------Aktuelles-----------------------------------------------
-* light notifications
-* nots für auto laden
 * oben und unten bessere font farben
 
 ---------- Ideen für next release-------------------------------

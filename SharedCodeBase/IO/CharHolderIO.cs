@@ -64,7 +64,7 @@ namespace ShadowRunHelper.IO
             switch (strFileVersion)
             {
                 case Constants.CHARFILE_VERSION_1_3:
-                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_NotSupportedVersion"));
+                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_NotSupportedVersion"), false);
                     throw new IO_FileVersion();
                 case Constants.CHARFILE_VERSION_1_5:
                     List<(string old, string @new)> replacements = new List<(string old, string @new)>
@@ -94,7 +94,7 @@ namespace ShadowRunHelper.IO
                         item.Gegen = 0;
                     }
                     ReturnCharHolder.HasChanges = true;
-                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar_1_5_to_1_6"));
+                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar_1_5_to_1_6"), false);
                     break;
                 case Constants.CHARFILE_VERSION_1_6:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);

@@ -1486,4 +1486,13 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="UI_Optionen_Version.Text" xml:space="preserve">
     <value>Version</value>
   </data>
+  <data name="Notification_Char_Loaded_File" xml:space="preserve">
+    <value>Ein Char wurde aus einer Datei geladen</value>
+  </data>
+  <data name="Notification_Char_Loaded_Start" xml:space="preserve">
+    <value>Ein Char wurde autmoatisch geladen</value>
+  </data>
+  <data name="UI_Cntnt_GoTo_Notifications.Content" xml:space="preserve">
+    <value>Benachrichtigungen öffnen</value>
+  </data>
 </root>

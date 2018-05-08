@@ -156,7 +156,7 @@ namespace ShadowRunHelper.UI
                 }
                 foreach (Notification item in newItems.Cast<Notification>().Where((x) => !x.IsRead && x.IsLight).OrderBy((x) => x.OccuredAt))
                 {
-                    ExampleInAppNotification.Show(item.Message + "\n\n\n" + item.ThrownException?.Message, 6000);
+                    ExampleInAppNotification.Show(item.Message, 6000);
                     Fade.Value = 1;
                     Fade.StartAnimation();
                 }
@@ -166,7 +166,6 @@ namespace ShadowRunHelper.UI
         {
             Fade.Value = 0;
             Fade.StartAnimation();
-            //ExampleInAppNotification.Fade().Stop();
         }
         #endregion
         #region Header Button Handler
@@ -332,6 +331,15 @@ namespace ShadowRunHelper.UI
 
         void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
 
-   
+        private void GoTo_Notifications(object sender, RoutedEventArgs e)
+        {
+            Model.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsNots);
+        }
+
+        private void ExampleInAppNotification_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            ExampleInAppNotification.Dismiss();
+            Model.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsNots);
+        }
     }
 }

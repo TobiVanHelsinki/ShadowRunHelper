@@ -152,6 +152,14 @@ namespace ShadowRunHelper
                         }
                     }
                     Model.MainObject = TMPChar;
+                    if (Settings.ForceLoadCharOnStart)
+                    {
+                        Model.NewNotification(StringHelper.GetString("Notification_Char_Loaded_File"), true);
+                    }
+                    else
+                    {
+                        Model.NewNotification(StringHelper.GetString("Notification_Char_Loaded_Start"), true);
+                    }
                     Settings.CountLoadings++;
                 }
             }
