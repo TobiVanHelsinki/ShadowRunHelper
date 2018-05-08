@@ -733,7 +733,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Display kann nicht automatisch aktiviert bleiben.</value>
   </data>
   <data name="Notification_Error_Loader_Error1.Text" xml:space="preserve">
-    <value>Der Char konnte nicht vollstädnig geladen werden, klick für mehr Informationen.</value>
+    <value>Der Char konnte nicht vollstädnig geladen werden. Genaure Informationen bei den Benachrichtigungen verfügbar.</value>
   </data>
   <data name="UI_Optionen_DisplayRequest.Text" xml:space="preserve">
     <value>Sperrbildschirm verhindern</value>

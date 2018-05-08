@@ -12,7 +12,20 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var DT = (DateTimeOffset)value;
+            DateTimeOffset DT;
+            if (value is DateTime)
+            {
+                DT = (DateTime)value;
+
+            }
+            else if(value is DateTimeOffset)
+            {
+                DT = (DateTimeOffset)value;
+            }
+            else
+            {
+                return "---";
+            }
             if (DatePattern == null)
             {
                 DatePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;

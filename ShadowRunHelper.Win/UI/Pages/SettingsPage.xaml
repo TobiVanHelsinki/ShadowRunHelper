@@ -51,11 +51,14 @@
                 </StackPanel>
             </DataTemplate>
             <DataTemplate x:Name="Notification" x:DataType="TLIBModel:Notification">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Bind OccuredAt}"/>
-                    <TextBlock x:Uid="Doppelpunkt"/>
-                    <TextBlock Text="{x:Bind Message}"/>
-                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{x:Bind OccuredAt, Mode=OneWay, Converter={StaticResource o_LastTime}}" Margin="0,0,10,0"/>
+                    <TextBlock Grid.Column="1" Text="{x:Bind Message, Mode=OneWay}" TextWrapping="Wrap"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Name="NotificationX" x:DataType="TLIBModel:Notification">
                 <Grid>

@@ -55,8 +55,11 @@ namespace ShadowRunHelper.UI
             CheckIAP();
             try
             {
-                MainNavigation.SelectedItem = MainNavigation.Items.FirstOrDefault(
-                        x => (x as PivotItem).Tag.ToString() == ((int)e.Parameter).ToString());
+                var Page = MainNavigation.Items.FirstOrDefault(x => (x as PivotItem).Tag.ToString() == ((int)e.Parameter).ToString());
+                if (Page != null)
+                {
+                    MainNavigation.SelectedItem = Page;
+                }
             }
             catch (Exception)
             {

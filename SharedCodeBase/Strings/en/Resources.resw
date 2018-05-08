@@ -166,7 +166,7 @@
     <value>Display can not stay activated</value>
   </data>
   <data name="Notification_Error_Loader_Error1.Text" xml:space="preserve">
-    <value>There was an Error during loading you char. Klick here to show more.</value>
+    <value>There was an Error during loading you char. More information at the Notifications.</value>
   </data>
   <data name="Notification_Error_Unknown" xml:space="preserve">
     <value>A unknown Error occured. You char was saved with a "Emergency" prefix.</value>

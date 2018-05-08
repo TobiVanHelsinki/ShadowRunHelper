@@ -19,9 +19,21 @@ namespace ShadowRunHelper.IO
         {
             return objectType == typeof(Thing);
         }
+#if DEBUG
+            static int c = 0;
+            static TAPPLICATION.Model.Notification n = new TAPPLICATION.Model.Notification("");
+#endif
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
+#if DEBUG
+            if (!AppModel.Instance.lstNotifications.Contains(n))
+            {
+                AppModel.Instance.lstNotifications.Add(n);
+            }
+            n.Message = "Count Custom JSON Readings: " + c;
+            c++;
+#endif
             //http://skrift.io/articles/archive/bulletproof-interface-deserialization-in-jsonnet/
             var jsonObject = JObject.Load(reader);
             if (jsonObject.TryGetValue("$ref", out JToken isRef))
