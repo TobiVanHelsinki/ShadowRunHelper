@@ -27,11 +27,11 @@ namespace ShadowRunHelper.IO
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
 #if DEBUG
+            n.Message = "Count Custom JSON Readings: " + c;
             if (!AppModel.Instance.lstNotifications.Contains(n))
             {
                 AppModel.Instance.lstNotifications.Add(n);
             }
-            n.Message = "Count Custom JSON Readings: " + c;
             c++;
 #endif
             //http://skrift.io/articles/archive/bulletproof-interface-deserialization-in-jsonnet/
