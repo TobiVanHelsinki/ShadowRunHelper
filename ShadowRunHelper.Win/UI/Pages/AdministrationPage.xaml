@@ -28,7 +28,7 @@
             </DataTemplate>
             <DataTemplate x:Name="Normal" x:Key="Normal" x:DataType="TAMARIN:FileInfoClass">
                 <UserControl>
-                    <Grid Margin="3,0,0,0">
+                    <Grid>
                         <VisualStateManager.VisualStateGroups>
                             <!-- ListEntry -->
                             <VisualStateGroup>
@@ -90,7 +90,7 @@
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid Name="GridForContentAndAds" Padding="4,4,0,0">
+    <Grid Name="GridForContentAndAds">
         <VisualStateManager.VisualStateGroups>
             <!-- Ads -->
             <VisualStateGroup x:Name="Trigger_Ads">
@@ -139,8 +139,8 @@
                 Canvas.ZIndex="20">
                 <ProgressRing x:Name="ProgressRing" />
             </Viewbox>
-            <TextBlock x:Uid="UI_CharVerwaltung_Einleitung1" Grid.Row="0" Visibility="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Visibility}}" Style="{StaticResource TitleTextBlockStyle}"/>
-            <StackPanel Grid.Row="1" ToolTipService.Placement="Bottom" Visibility="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Visibility}}" Orientation="Horizontal">
+            <TextBlock x:Uid="UI_CharVerwaltung_Einleitung1" Grid.Row="0" Margin="5,4,5,0" Visibility="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Visibility}}" Style="{StaticResource TitleTextBlockStyle}"/>
+            <StackPanel Grid.Row="1" ToolTipService.Placement="Bottom" Visibility="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Visibility}}" Orientation="Horizontal" Margin="10,4,10,4">
                 <TextBlock Style="{StaticResource Chars}">
                             <Run x:Uid="Ui_Admin_Filename"/>
                             <Run x:Uid="Doppelpunkt"/>
@@ -149,13 +149,12 @@
                 <TextBlock x:Uid="SymbolChanges" Visibility="{x:Bind Model.MainObject.HasChanges, Mode=OneWay}"/>
                 <ToolTipService.ToolTip>
                     <TextBlock Style="{StaticResource Chars}">
-                            <Run x:Uid="Ui_Admin_Filepath"/>
-                            <Run x:Uid="Doppelpunkt"/>
+                            <Run x:Uid="Ui_Admin_Filepath"/><Run x:Uid="Doppelpunkt"/>
                             <Run Text="{x:Bind Model.MainObject.FileInfo.Filepath, Mode=OneWay}"/>
                     </TextBlock>
                 </ToolTipService.ToolTip>
             </StackPanel>
-            <TextBlock x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
+            <TextBlock Margin="5,0,5,4" x:Uid="UI_CharVerwaltung_Einleitung2" Grid.Row="2" Style="{StaticResource TitleTextBlockStyle}"/>
             <Border Grid.Row="3" x:Name="ListViewBorder">
                 <ListView x:Name="Char_Sum"
                       ItemsSource="{x:Bind Summorys, Mode=OneWay}" 
@@ -171,7 +170,7 @@
                 <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </Viewbox>
-            <Border Grid.Row="5" x:Name="MainBarBorder" Margin="-4,0,0,0">
+            <Border Grid.Row="5" x:Name="MainBarBorder">
                 <CommandBar x:Name="Commandbar" Grid.Row="4" DefaultLabelPosition="Right">
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton x:Uid="UI_TxT_OpenFolderSTD" Icon="OpenLocal" Click="Click_OpenSTDFolder" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
