@@ -210,7 +210,7 @@ namespace ShadowRunHelper
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        async Task App_UnhandledExceptionAsync(object sender, UnhandledExceptionEventArgs e)
+        async Task App_UnhandledExceptionAsync(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
         {
             Settings.LastSaveInfo = null;
             try

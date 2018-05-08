@@ -8,8 +8,11 @@
 * drag and drop
 * neue kategorien (wissenfrt, kampf)
 * TimeLine Support
+** https://blogs.windows.com/buildingapps/2017/12/19/application-engagement-windows-timeline-user-activities/#HXvbH1RgBkE5Ku0q.97
 * Multi Instances
-* 
+** https://docs.microsoft.com/en-us/windows/uwp/launch-resume/multi-instance-uwp
+** klappt
+** TODO: diese Instanzen IDs verwalten
 
 ---------- Ideen für später -------------------------------
 * Max schaden bei berechneten werten
