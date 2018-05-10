@@ -21,7 +21,7 @@ namespace ShadowRunHelper
     sealed partial class App : Application
     {
         public static AppInstance Instance;
-        private static string instanceKey;
+        private static string instanceKey = "";
         public static string InstanceKey { get { return Instance == null ? instanceKey : Instance.Key; } set => instanceKey = value; }
         bool FirstStart = true;
         readonly AppModel Model;
@@ -53,11 +53,9 @@ namespace ShadowRunHelper
             catch (Exception)
             {
             }
-            //TODO if 
-            if (!Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("AppInstance", "FindOrRegisterInstanceForKey"))
+            if (!Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("AppInstance", "FindOrRegisterInstanceForKey") && Windows.Foundation.Metadata.ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract",5))
             {
                 string key = Guid.NewGuid().ToString();
-                Instance = AppInstance.RecommendedInstance;
                 try
                 {
                     Instance = AppInstance.FindOrRegisterInstanceForKey(key);
@@ -67,7 +65,6 @@ namespace ShadowRunHelper
                     InstanceKey = key;
                 }
             }
-
         }
 
         public void SetConstantStuff()
