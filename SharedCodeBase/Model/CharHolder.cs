@@ -26,55 +26,51 @@ namespace ShadowRunHelper.Model
         #region  Char Model DATA 
         // the various controlers
         // First Gen
-        public Controller<Item> CTRLItem { get; set; }
-        public Controller<Programm> CTRLProgramm { get; set; }
-        public Controller<Munition> CTRLMunition { get; set; }
-        public Controller<Vorteil> CTRLVorteil { get; set; }
-        public Controller<Nachteil> CTRLNachteil { get; set; }
-        public Controller<Connection> CTRLConnection { get; set; }
-        public Controller<Sin> CTRLSin { get; set; }
+        public Controller<Item> CTRLItem { get; } = new Controller<Item>();
+        public Controller<Programm> CTRLProgramm { get; } = new Controller<Programm>();
+        public Controller<Munition> CTRLMunition { get; } = new Controller<Munition>();
+        public Controller<Vorteil> CTRLVorteil { get; } = new Controller<Vorteil>();
+        public Controller<Nachteil> CTRLNachteil { get; } = new Controller<Nachteil>();
+        public Controller<Connection> CTRLConnection { get; } = new Controller<Connection>();
+        public Controller<Sin> CTRLSin { get; } = new Controller<Sin>();
         // Second Gen
-        public Controller<Adeptenkraft> CTRLAdeptenkraft { get; set; }
-        public Controller<Foki> CTRLFoki { get; set; }
-        public Controller<Geist> CTRLGeist { get; set; }
-        public Controller<Stroemung> CTRLStroemung { get; set; }
-        public Controller<Tradition> CTRLTradition { get; set; }
-        public Controller<Zaubersprueche> CTRLZaubersprueche { get; set; }
+        public Controller<Adeptenkraft> CTRLAdeptenkraft { get; } = new Controller<Adeptenkraft>();
+        public Controller<Foki> CTRLFoki { get; } = new Controller<Foki>();
+        public Controller<Geist> CTRLGeist { get; } = new Controller<Geist>();
+        public Controller<Stroemung> CTRLStroemung { get; } = new Controller<Stroemung>();
+        public Controller<Tradition> CTRLTradition { get; } = new Controller<Tradition>();
+        public Controller<Zaubersprueche> CTRLZaubersprueche { get; } = new Controller<Zaubersprueche>();
         // Third Gen
-        public Controller<KomplexeForm> CTRLKomplexeForm { get; set; }
-        public Controller<Widgets> CTRLWidgets { get; set; }
-        public Controller<Sprite> CTRLSprite { get; set; }
-        public Controller<Wandlung> CTRLWandlung { get; set; }
-        public Controller<Initiation> CTRLInitiation { get; set; }
+        public Controller<KomplexeForm> CTRLKomplexeForm { get; } = new Controller<KomplexeForm>();
+        public Controller<Widgets> CTRLWidgets { get; } = new Controller<Widgets>();
+        public Controller<Sprite> CTRLSprite { get; } = new Controller<Sprite>();
+        public Controller<Wandlung> CTRLWandlung { get; } = new Controller<Wandlung>();
+        public Controller<Initiation> CTRLInitiation { get; } = new Controller<Initiation>();
 
         // Importand ordering
-        public AttributController CTRLAttribut { get; set; }
-        public BerechnetController CTRLBerechnet { get; set; }
-        public Controller<Implantat> CTRLImplantat { get; set; }
+        public AttributController CTRLAttribut { get; } = new AttributController();
+        public BerechnetController CTRLBerechnet { get; } = new BerechnetController();
+        public Controller<Implantat> CTRLImplantat { get; } = new Controller<Implantat>();
 
-        public NahkampfwaffeController CTRLNahkampfwaffe { get; set; }
-        public FernkampfwaffeController CTRLFernkampfwaffe { get; set; }
-        public KommlinkController CTRLKommlink { get; set; }
-        public CyberDeckController CTRLCyberDeck { get; set; }
-        public VehikelController CTRLVehikel { get; set; }
-        public PanzerungController CTRLPanzerung { get; set; }
-        public Controller<Fertigkeit> CTRLFertigkeit { get; set; }
-        public Controller<Handlung> CTRLHandlung { get; set; }
-        public Person Person { get; set; }
-        public CharSettings Settings { get; set; }
+        public NahkampfwaffeController CTRLNahkampfwaffe { get; } = new NahkampfwaffeController();
+        public FernkampfwaffeController CTRLFernkampfwaffe { get; } = new FernkampfwaffeController();
+        public KommlinkController CTRLKommlink { get; } = new KommlinkController();
+        public CyberDeckController CTRLCyberDeck { get; } = new CyberDeckController();
+        public VehikelController CTRLVehikel { get; } = new VehikelController();
+        public PanzerungController CTRLPanzerung { get; } = new PanzerungController();
+        public Controller<Fertigkeit> CTRLFertigkeit { get; } = new Controller<Fertigkeit>();
+        public Controller<Handlung> CTRLHandlung { get; } = new Controller<Handlung>();
+        public Person Person { get; } = new Person();
+        public CharSettings Settings { get; } = new CharSettings();
         #endregion
         #region EASY ACCESS STUFF
 
         [Newtonsoft.Json.JsonIgnore]
-        public List<IController> lstCTRL = new List<IController>();
-
-        List<AllListEntry> _LinkList;
+        public List<IController> lstCTRL { get; } = new List<IController>();
         [Newtonsoft.Json.JsonIgnore]
-        public List<AllListEntry> LinkList { get => _LinkList; set => _LinkList = value; }
-
-        List<Thing> _ThingList;
+        public List<AllListEntry> LinkList { get; } = new List<AllListEntry>();
         [Newtonsoft.Json.JsonIgnore]
-        public List<Thing> ThingList { get => _ThingList; set => _ThingList = value; }
+        public List<Thing> ThingList { get; } = new List<Thing>();
 
         #endregion
         #region IO and Display Stuff
@@ -123,43 +119,11 @@ namespace ShadowRunHelper.Model
         }
         #endregion
         #region INI Stuff
-
         public CharHolder()
         {
             SaveTimer = new System.Threading.Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); }, this, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
             AppModel.Instance.MainObjectSaved += (x, y) => { SettingsModel.I.CountSavings++; };
             // To Autosave
-            CTRLAdeptenkraft = new Controller<Adeptenkraft>();
-            CTRLAttribut = new AttributController();
-            CTRLBerechnet = new BerechnetController();
-            CTRLConnection = new Controller<Connection>();
-            CTRLCyberDeck = new CyberDeckController();
-            CTRLFernkampfwaffe = new FernkampfwaffeController();
-            CTRLFertigkeit = new Controller<Fertigkeit>();
-            CTRLFoki = new Controller<Foki>();
-            CTRLGeist = new Controller<Geist>();
-            CTRLHandlung = new Controller<Handlung>();
-            CTRLImplantat = new Controller<Implantat>();
-            CTRLItem = new Controller<Item>();
-            CTRLKommlink = new KommlinkController();
-            CTRLMunition = new Controller<Munition>();
-            CTRLNachteil = new Controller<Nachteil>();
-            CTRLNahkampfwaffe = new NahkampfwaffeController();
-            CTRLPanzerung = new PanzerungController();
-            CTRLProgramm = new Controller<Programm>();
-            CTRLSin = new Controller<Sin>();
-            CTRLStroemung = new Controller<Stroemung>();
-            CTRLTradition = new Controller<Tradition>();
-            CTRLVehikel = new VehikelController();
-            CTRLVorteil = new Controller<Vorteil>();
-            CTRLZaubersprueche = new Controller<Zaubersprueche>();
-
-            CTRLKomplexeForm = new Controller<KomplexeForm>();
-            CTRLWidgets = new Controller<Widgets>();
-            CTRLSprite = new Controller<Sprite>();
-            CTRLWandlung = new Controller<Wandlung>();
-            CTRLInitiation = new Controller<Initiation>();
-
             lstCTRL.Add(CTRLAttribut);
             lstCTRL.Add(CTRLBerechnet);
             lstCTRL.Add(CTRLFertigkeit);
@@ -201,11 +165,7 @@ namespace ShadowRunHelper.Model
             lstCTRL.Add(CTRLHandlung);
 
 
-            Person = new Person();
-            Settings = new CharSettings();
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
-            _LinkList = new List<AllListEntry>();
-            _ThingList = new List<Thing>();
             RefreshLists();
             RefreshListeners();
         }
@@ -334,8 +294,8 @@ namespace ShadowRunHelper.Model
         {
             lstCTRL.First(c => c.eDataTyp == tToRemove.ThingType).RemoveThing(tToRemove);
             tToRemove.PropertyChanged -= (x, y) => AnyPropertyChanged();
-            _LinkList.RemoveAll((x) => x.Object == tToRemove);
-            _ThingList.RemoveAll((x) => x == tToRemove);
+            LinkList.RemoveAll((x) => x.Object == tToRemove);
+            ThingList.RemoveAll((x) => x == tToRemove);
         }
 
         public void RefreshListeners()
@@ -359,10 +319,10 @@ namespace ShadowRunHelper.Model
 
         public void RefreshLists()
         {
-            _LinkList.Clear();
-            _LinkList.AddRange(lstCTRL.Aggregate(new List<AllListEntry>(),(l,c)=>l.Concat(c.GetElementsForThingList()).ToList()));
-            _ThingList.Clear();
-            _ThingList.AddRange(lstCTRL.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
+            LinkList.Clear();
+            LinkList.AddRange(lstCTRL.Aggregate(new List<AllListEntry>(),(l,c)=>l.Concat(c.GetElementsForThingList()).ToList()));
+            ThingList.Clear();
+            ThingList.AddRange(lstCTRL.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
         }
 
 
