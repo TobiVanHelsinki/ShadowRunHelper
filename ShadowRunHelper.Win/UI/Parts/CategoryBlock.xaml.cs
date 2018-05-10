@@ -1,8 +1,12 @@
 ﻿using Microsoft.AppCenter.Analytics;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
+using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TAMARIN.IO;
 using TAPPLICATION.IO;
@@ -340,19 +344,32 @@ namespace ShadowRunHelper.UI
         #region DnD
         private void ListView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
         {
-            e.Data.RequestedOperation = DataPackageOperation.Move;
+            e.Data.RequestedOperation = DataPackageOperation.Move | DataPackageOperation.Copy;
             e.Data.Properties.Title = "Thing";
-            foreach (var item in e.Items)
+
+            CharHolder ToSend = new CharHolder();
+            foreach (Thing item in e.Items)
             {
+                ToSend.Add(item);
                 Model.MainObject.PrepareToMove(item as Thing);
             }
+            var txt = CharHolderIO.Serialize(ToSend);
+            e.Data.SetText(txt);
+            e.Data.Properties.ApplicationName = App.InstanceKey;
         }
 
         private void ListView_DragOver(object sender, DragEventArgs e)
         {
-            if (e.Data.Properties.Title == "Thing")
+            if (e?.DataView?.Properties?.Title == "Thing")
             {
-                e.AcceptedOperation = DataPackageOperation.Move;
+                if (e.DataView.Properties.ApplicationName == App.InstanceKey)
+                {
+                    e.AcceptedOperation = DataPackageOperation.Move;
+                }
+                else
+                {
+                    e.AcceptedOperation = DataPackageOperation.Copy;
+                }
             }
             else
             {
@@ -360,10 +377,27 @@ namespace ShadowRunHelper.UI
             }
         }
 
-        private void ListView_Drop(object sender, DragEventArgs e) // 3
+        private async void ListView_Drop(object sender, DragEventArgs e) // 3
         {
-            Model.MainObject.MovePreparedItems(Controller);
+            if (e?.DataView?.Properties?.ApplicationName == App.InstanceKey) // bin ich selber
+            {
+                Model.MainObject.MovePreparedItems(Controller);
+            }
+            else // kommt von einer anderen app
+            {
+                var txt = await e.DataView.GetTextAsync();
+                var newch = CharHolderIO.Deserialize(txt);
+                foreach (var item in newch.ThingList)
+                {
+                    Model.MainObject.Add(item);
+                }
+                Model.MainObject.Repair();
+            }
             e.Handled = true;
+        }
+        public static void ErrorHandler(object o, ErrorEventArgs a)
+        {
+            a.ErrorContext.Handled = true;
         }
         #endregion
 

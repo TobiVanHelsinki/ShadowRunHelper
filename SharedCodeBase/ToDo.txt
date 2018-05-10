@@ -1,6 +1,8 @@
 ﻿
 --------Aktuelles-----------------------------------------------
 * oben und unten bessere font farben
+* IABen zu neuen features
+** dafür option für versionsummer legen und wenn di aktuelle beim start höher ist, als diese, dann ben anzeigen
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte

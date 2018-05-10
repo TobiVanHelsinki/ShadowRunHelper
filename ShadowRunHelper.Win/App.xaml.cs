@@ -20,10 +20,14 @@ namespace ShadowRunHelper
 {
     sealed partial class App : Application
     {
+        public static AppInstance Instance;
+        private static string instanceKey;
+        public static string InstanceKey { get { return Instance == null ? instanceKey : Instance.Key; } set => instanceKey = value; }
         bool FirstStart = true;
         readonly AppModel Model;
         readonly SettingsModel Settings;
         Task CheckLicence;
+
         #region App Startup and Init
         public App()
         {
@@ -42,7 +46,28 @@ namespace ShadowRunHelper
             InitializeComponent();
             Settings.StartCount++;
 
-            AppCenter.Start(Constants.AppCenterID, typeof(Crashes), typeof(Analytics));
+            try
+            {
+                AppCenter.Start(Constants.AppCenterID, typeof(Crashes), typeof(Analytics));
+            }
+            catch (Exception)
+            {
+            }
+            //TODO if 
+            if (!Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("AppInstance", "FindOrRegisterInstanceForKey"))
+            {
+                string key = Guid.NewGuid().ToString();
+                Instance = AppInstance.RecommendedInstance;
+                try
+                {
+                    Instance = AppInstance.FindOrRegisterInstanceForKey(key);
+                }
+                catch (Exception ex)
+                {
+                    InstanceKey = key;
+                }
+            }
+
         }
 
         public void SetConstantStuff()
