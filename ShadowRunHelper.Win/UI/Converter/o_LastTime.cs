@@ -25,17 +25,9 @@ namespace ShadowRunHelper.UI.Converter
             {
                 return "---";
             }
-            if (string.IsNullOrEmpty(DatePattern) || string.IsNullOrEmpty(DatePattern))
-            {
-                DatePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
-            }
-            if (string.IsNullOrEmpty(TimePattern) || string.IsNullOrEmpty(TimePattern))
-            {
-                TimePattern = CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern;
-            }
-
-            string retdate = DT.ToString(DatePattern);
-            string rettime = DT.ToString(TimePattern);
+          
+            string retdate = DT.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
+            string rettime = DT.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern);
             return retdate + " " +  rettime;
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)

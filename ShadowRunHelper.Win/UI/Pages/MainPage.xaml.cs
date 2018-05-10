@@ -84,7 +84,6 @@ namespace ShadowRunHelper.UI
         {
             base.OnNavigatedTo(e);
             ShowNotificationsIfNecessary(Model.lstNotifications);
-            Model.SetDependencies(Dispatcher);
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, p) => TitleBarStuff();
             CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += (s, p) => TitleBarStuff();
             TitleBarStuff();

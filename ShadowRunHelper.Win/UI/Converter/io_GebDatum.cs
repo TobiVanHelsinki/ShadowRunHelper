@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using Windows.Globalization.DateTimeFormatting;
+using TAPPLICATION;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter
@@ -11,18 +11,13 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var cultInfo = CultureInfo.CurrentCulture;
-            cultInfo.DateTimeFormat.LongTimePattern = "";
-            cultInfo.DateTimeFormat.ShortTimePattern = "";
-
             try
             {
-                DateTimeOffset dateTemp = (DateTimeOffset)value;
-                return dateTemp.Date.ToString(cultInfo).Trim();
+                return ((DateTimeOffset)value).Date.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern).Trim();
             }
             catch (Exception)
             {
-                return Constants.ERROR_TOKEN;
+                return SharedConstants.ERROR_TOKEN;
             }
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
