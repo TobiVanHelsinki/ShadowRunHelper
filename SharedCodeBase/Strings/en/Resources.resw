@@ -1465,4 +1465,7 @@ This app can be used to open files and folders on the file system. The app store
   <data name="UI_Optionen_Toggle.OnContent" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="Activity_PlayedWith" xml:space="preserve">
+    <value>You played with </value>
+  </data>
 </root>

@@ -60,6 +60,29 @@ namespace ShadowRunHelper
         #endregion
 
         #region Entry-Points
+        protected override async void OnActivated(IActivatedEventArgs args)
+        {
+            if (args.Kind == ActivationKind.Protocol)
+            {
+                var uriArgs = args as ProtocolActivatedEventArgs;
+                if (uriArgs != null)
+                {
+                    Settings.ForceLoadCharOnStart = true;
+                    string name = uriArgs.Uri.Segments[uriArgs.Uri.Segments.Length - 1];
+                    string path = uriArgs.Uri.LocalPath.Remove(uriArgs.Uri.LocalPath.Length - name.Length);
+                    name = name.Remove(name.Length-1);
+                    Settings.LastSaveInfo = new FileInfoClass(Place.Extern, name, path)
+                    {
+                        FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
+                    };
+                    if (!FirstStart)
+                    {
+                        await CharLoadingHandling();
+                        Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
+                    }
+                }
+            }
+        }
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
             CharHolder NewHolder;
@@ -93,7 +116,7 @@ namespace ShadowRunHelper
                 DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            await CharLoadingHandling();
+            Task Loading = CharLoadingHandling();
             Frame rootFrame = Window.Current.Content as Frame;
             // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
             // Nur sicherstellen, dass das Fenster aktiv ist.
@@ -105,6 +128,7 @@ namespace ShadowRunHelper
                 // Den Frame im aktuellen Fenster platzieren
                 Window.Current.Content = rootFrame;
             }
+            await Loading;
             if (rootFrame.Content == null)
             {
                 // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
@@ -119,7 +143,6 @@ namespace ShadowRunHelper
             }
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();
-
             FirstStart = false;
             def.Complete();
         }

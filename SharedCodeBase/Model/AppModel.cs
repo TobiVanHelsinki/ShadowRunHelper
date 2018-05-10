@@ -21,9 +21,19 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        AppModel() : base(){ }
+        AppModel() : base()
+        {
+            PropertyChanged += (x,y)=> {
+                if (y.PropertyName == nameof(MainObject) && MainObject != null) Activities.GenerateCharActivityAsync(MainObject);
+                if (y.PropertyName == nameof(MainObject) && MainObject == null) Activities.StopCurrentCharActivity();
+            };
+            }
+        ~AppModel() 
+        {
+            Activities.StopCurrentCharActivity();
+        }
 
-        public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptions PageOptions);
+public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptions PageOptions);
         public event NavigationEventHandler NavigationRequested;
         public void RequestNavigation(ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
         {
