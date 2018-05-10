@@ -123,8 +123,7 @@ namespace ShadowRunHelper.UI
         #region Gui-Model Stuff
         void Click_Save(object sender, RoutedEventArgs e)
         {
-            var x = (sender as Button).DataContext;
-            MainObject?.SetSaveTimerTo();
+            MainObject?.SetSaveTimerTo(0, true);
         }
 
         async void Click_SaveAtCurrentPlace(object sender, RoutedEventArgs e)
