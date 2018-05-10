@@ -7,6 +7,7 @@ using System.Linq;
 using TAMARIN.IO;
 using TAPPLICATION.IO;
 using TLIB;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -286,7 +287,6 @@ namespace ShadowRunHelper.UI
             }
         }
 
-
         async void Add_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -303,7 +303,6 @@ namespace ShadowRunHelper.UI
                 Model.NewNotification("", ex);
             }
         }
-
 
         internal double GetPositionAtListView(Thing PendingScrollEntry)
         {
@@ -330,6 +329,36 @@ namespace ShadowRunHelper.UI
         {
             ListView.SelectedItem = PendingScrollEntry;
         }
+
+        #region DnD
+        private void ListView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
+        {
+            e.Data.RequestedOperation = DataPackageOperation.Move;
+            e.Data.Properties.Title = "Thing";
+            foreach (var item in e.Items)
+            {
+                Model.MainObject.PrepareToMove(item as Thing);
+            }
+        }
+
+        private void ListView_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.Properties.Title == "Thing")
+            {
+                e.AcceptedOperation = DataPackageOperation.Move;
+            }
+            else
+            {
+                e.AcceptedOperation = DataPackageOperation.None;
+            }
+        }
+
+        private void ListView_Drop(object sender, DragEventArgs e) // 3
+        {
+            Model.MainObject.MovePreparedItems(Controller);
+            e.Handled = true;
+        }
+        #endregion
 
     }
 }

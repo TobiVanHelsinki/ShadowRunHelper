@@ -364,6 +364,8 @@ namespace ShadowRunHelper.Model
             _ThingList.Clear();
             _ThingList.AddRange(lstCTRL.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
         }
+
+
         #endregion
         #region AUTO_SAVE_STUFF 
         [Newtonsoft.Json.JsonIgnore]
@@ -412,7 +414,27 @@ namespace ShadowRunHelper.Model
             return false;
         }
         #endregion
-
+        #region DnD
+        readonly List<Thing> MoveList = new List<Thing>();
+        public void PrepareToMove(Thing item)
+        {
+            if (item != null && !MoveList.Contains(item))
+            {
+                MoveList.Add(item);
+            }
+        }
+        public void MovePreparedItems(IController NEW_CTRL)
+        {
+            foreach (var OLD_THING in MoveList)
+            {
+                var OLD_CTRL = lstCTRL.First(x => x.eDataTyp == OLD_THING.ThingType);
+                var NEW_THING = NEW_CTRL.AddNewThing();
+                OLD_THING.TryCopy(NEW_THING);
+                OLD_CTRL.RemoveThing(OLD_THING);
+            }
+            MoveList.Clear();
+        }
+        #endregion
         public static CharHolder CreateCharWithStandardContent()
         {
             var ret = new CharHolder();

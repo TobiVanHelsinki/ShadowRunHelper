@@ -340,16 +340,7 @@
         <!--<Setter Property="HorizontalAlignment" Value="Center"/>-->
     </Style>
 
-    <Style TargetType="ListView" x:Key="Category_Items">
-        <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
-        <Setter Property="BorderThickness" Value="0,1,0,1"/>
-        <Setter Property="Background" Value="{ThemeResource ListViewBackgroundBrush}"/>
-        <Setter Property="CanReorderItems" Value="True"/>
-        <Setter Property="AllowDrop" Value="True"/>
-        <Setter Property="SelectionMode" Value="Multiple"/>
-        <Setter Property="ItemContainerStyle" Value="{StaticResource ListViewItemStyle}"/>
-        <Setter Property="IsMultiSelectCheckBoxEnabled" Value="False"/>
-    </Style>
+
 
     
     <!-- ListView Things Items ################################################## -->

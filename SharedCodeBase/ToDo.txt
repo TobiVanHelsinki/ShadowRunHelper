@@ -1,6 +1,8 @@
 ﻿
 --------Aktuelles-----------------------------------------------
 * oben und unten bessere font farben
+* char settings änderungen bewirken keine haschanges änderung und werden nicht gespeichert
+
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte

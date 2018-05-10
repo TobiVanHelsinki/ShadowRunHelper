@@ -343,6 +343,19 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel>
+        <StackPanel.Resources>
+            <Style TargetType="ListView" x:Key="Category_Items">
+                <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
+                <Setter Property="BorderThickness" Value="0,1,0,1"/>
+                <Setter Property="Background" Value="{ThemeResource ListViewBackgroundBrush}"/>
+                <Setter Property="CanReorderItems" Value="True"/>
+                <Setter Property="AllowDrop" Value="True"/>
+                <Setter Property="CanDragItems" Value="True"/>
+                <Setter Property="SelectionMode" Value="Multiple"/>
+                <Setter Property="ItemContainerStyle" Value="{StaticResource ListViewItemStyle}"/>
+                <Setter Property="IsMultiSelectCheckBoxEnabled" Value="False"/>
+            </Style>
+        </StackPanel.Resources>
         <Grid Style="{StaticResource Category_Head_Grid}" x:Name="U">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -409,6 +422,9 @@
                                   Style="{StaticResource Category_Items}" 
                                   ItemContainerStyle="{StaticResource ListViewItemStyle}" 
                                   SelectionChanged="ListView_SelectionChanged" 
+                                  Drop="ListView_Drop"
+                                  DragOver="ListView_DragOver"
+                                  DragItemsStarting="ListView_DragItemsStarting"
                                   >
             <ListView.ItemTemplate>
                 <DataTemplate>
