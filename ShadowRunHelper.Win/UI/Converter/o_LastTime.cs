@@ -16,7 +16,6 @@ namespace ShadowRunHelper.UI.Converter
             if (value is DateTime)
             {
                 DT = (DateTime)value;
-
             }
             else if(value is DateTimeOffset)
             {
@@ -26,11 +25,11 @@ namespace ShadowRunHelper.UI.Converter
             {
                 return "---";
             }
-            if (DatePattern == null)
+            if (string.IsNullOrEmpty(DatePattern) || string.IsNullOrEmpty(DatePattern))
             {
                 DatePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
             }
-            if (TimePattern == null)
+            if (string.IsNullOrEmpty(TimePattern) || string.IsNullOrEmpty(TimePattern))
             {
                 TimePattern = CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern;
             }
