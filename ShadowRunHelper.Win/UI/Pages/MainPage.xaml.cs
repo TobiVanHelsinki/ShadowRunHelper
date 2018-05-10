@@ -54,6 +54,7 @@ namespace ShadowRunHelper.UI
         #endregion
         public MainPage()
         {
+            ModelHelper.CDispatcher = Dispatcher;
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
 #pragma warning disable CS4014

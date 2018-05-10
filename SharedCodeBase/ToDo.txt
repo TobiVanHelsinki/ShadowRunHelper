@@ -1,14 +1,13 @@
 ﻿
 --------Aktuelles-----------------------------------------------
 * oben und unten bessere font farben
-* char settings änderungen bewirken keine haschanges änderung und werden nicht gespeichert
-
+* model dispatcher
+* wer nutzt globalisation?
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
 * Verknüpfungen Modell für Zirkelbezüge verbessern
 * neue kategorien (wissenfrt, kampf)
-
 
 ---------- Ideen für später -------------------------------
 * Max schaden bei berechneten werten
