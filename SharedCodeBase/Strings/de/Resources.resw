@@ -1307,7 +1307,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Dateiname</value>
   </data>
   <data name="Ui_Admin_Filepath.Text" xml:space="preserve">
-    <value>Dateifad</value>
+    <value>Dateipfad</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>Schließen</value>
