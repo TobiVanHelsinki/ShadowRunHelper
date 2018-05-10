@@ -28,7 +28,11 @@ namespace ShadowRunHelper.UI
             set { SetValue(ControllerProperty, value); OnControllerChanged(); }
         }
 
-
+        CategoryOption CTRLOption { get; set; }
+        public void CheckVisibility()
+        {
+            Visibility = (CTRLOption?.Visibility == false) ? Visibility.Collapsed : Visibility.Visible;
+        }
         private void OnControllerChanged()
         {
             try
@@ -36,9 +40,12 @@ namespace ShadowRunHelper.UI
                 ListView.Tag = (int)Controller.eDataTyp;
                 DataContext = Controller;
 
-                var entry = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
-
-                Visibility = (entry != null && !entry.Visibility)? Visibility.Collapsed : Visibility = Visibility.Visible;
+                CTRLOption = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
+                if (CTRLOption != null)
+                {
+                    CTRLOption.PropertyChanged += (o, e) => { if (e.PropertyName == nameof(CTRLOption.Visibility)) CheckVisibility(); };
+                }
+                CheckVisibility();
 
                 var Current = TypeHelper.ThingTypeProperties.FirstOrDefault(t => t.ThingType == Controller.eDataTyp);
 

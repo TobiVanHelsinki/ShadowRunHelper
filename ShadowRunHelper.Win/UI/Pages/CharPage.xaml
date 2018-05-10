@@ -524,10 +524,10 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <!--<ColumnDefinition Width="*"/>-->
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource GroupedCategoryOptions}}"
+                    <ListView Grid.ColumnSpan="1" ItemsSource="{Binding Source={StaticResource GroupedCategoryOptions}}"
                               ShowsScrollingPlaceholders="True"
                               >
                         <ListView.GroupStyle>
@@ -553,7 +553,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Button x:Uid="UI_Settings_Btn_Speichern" Margin="10" HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="1" Click="ApplyButton_Click" Style="{StaticResource STD_Button}"/>
+                    <!--<Button x:Uid="UI_Settings_Btn_Speichern" Margin="10" HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="1" Click="ApplyButton_Click" Style="{StaticResource STD_Button}"/>-->
                     <Button x:Uid="UI_Settings_Btn_Reset" Margin="10" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1" Click="ResetButton_Click" Style="{StaticResource STD_Button}"/>
                 </Grid>
             </PivotItem>

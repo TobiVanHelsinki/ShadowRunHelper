@@ -1,52 +1,47 @@
-﻿using Newtonsoft.Json;
-using ShadowRunHelper;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using TAPPLICATION.Model;
 using TLIB;
-using TAMARIN.Settings;
 
 namespace ShadowRunHelper.CharModel
 {
     public class CategoryOption : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        #region NotifyPropertyChanged
+		public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
-      
+        #endregion
 
         ThingDefs _ThingType;
         public ThingDefs ThingType
         {
             get { return _ThingType; }
-            set { _ThingType = value; NotifyPropertyChanged(); }
+            set { if (_ThingType != value) {  _ThingType = value; NotifyPropertyChanged(); } }
         }
 
         bool _vis = true;
         public bool Visibility
         {
             get { return _vis; }
-            set { _vis = value; NotifyPropertyChanged(); }
+            set { if (_vis != value) { _vis = value; NotifyPropertyChanged(); } }
         }
         int _pivot;
         public int Pivot
         {
             get { return _pivot; }
-            set { _pivot = value; NotifyPropertyChanged(); }
+            set { if (_pivot != value) { _pivot = value; NotifyPropertyChanged(); } }
         }
 
         int _Order;
         public int Order
         {
             get { return _Order; }
-            set { _Order = value; NotifyPropertyChanged(); }
+            set { if (_Order != value) { _Order = value; NotifyPropertyChanged(); } }
         }
         public CategoryOption(ThingDefs item, int v1, int v2, bool v = true)
         {
@@ -73,9 +68,7 @@ namespace ShadowRunHelper.CharModel
         }
         #endregion
 
-        ObservableCollection<CategoryOption> _categoryOptions = new ObservableCollection<CategoryOption>();
-        public ObservableCollection<CategoryOption> CategoryOptions { get => _categoryOptions; set {  _categoryOptions = value; } }
-
+        public ObservableCollection<CategoryOption> CategoryOptions { get; set; } = new ObservableCollection<CategoryOption>();
 
         public void Refresh()
         {
@@ -84,6 +77,10 @@ namespace ShadowRunHelper.CharModel
             RemoveDoubleCategories();
             ResetOrdering();
             OrderList();
+            foreach (var item in CategoryOptions)
+            {
+                item.PropertyChanged += (o,e) => NotifyPropertyChanged(e.PropertyName);
+            }
         }
 
         private void RemoveUnwantedCategories()
@@ -156,9 +153,16 @@ namespace ShadowRunHelper.CharModel
         }
         public void ResetCategoryOptions()
         {
-            CategoryOptions.Clear();
-            CategoryOptions.AddRange(TypeHelper.ThingTypeProperties.
-                Where(s => s.Usable).Select(x => new CategoryOption(x.ThingType, x.Pivot, x.Order)));
+            //CategoryOptions.Clear();
+            var JoinedList = CategoryOptions.Join(TypeHelper.ThingTypeProperties, x => x.ThingType, x => x.ThingType, (isnow, should) => (isnow, should));
+            foreach (var (isnow, should) in JoinedList)
+            {
+                isnow.Pivot = should.Pivot;
+                isnow.Order = should.Order;
+                isnow.Visibility = should.Visibility;
+            }
+            //CategoryOptions.AddRange(TypeHelper.ThingTypeProperties.
+            //    Where(s => s.Usable).Select(x => new CategoryOption(x.ThingType, x.Pivot, x.Order)));
         }
     }
 }

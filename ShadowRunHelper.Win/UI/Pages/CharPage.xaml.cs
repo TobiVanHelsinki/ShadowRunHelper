@@ -25,13 +25,12 @@ namespace ShadowRunHelper.UI
         {
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
-            LoadCategoryOptions();
             Model.PropertyChanged += Model_PropertyChanged;
         }
 
         private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "MainObject")
+            if (e.PropertyName == nameof(Model.MainObject))
             {
                 LoadCategoryOptions();
             }
@@ -57,6 +56,7 @@ namespace ShadowRunHelper.UI
         #region Navigation stuff
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            LoadCategoryOptions();
             if (SettingsModel.I.DISPLAY_REQUEST)
             {
                 try
@@ -235,18 +235,13 @@ namespace ShadowRunHelper.UI
                 }
                 DataGrouped.Add(info);
             }
-            var cvs = (CollectionViewSource)Resources["GroupedCategoryOptions"];
-            cvs.Source = DataGrouped;
+            GroupedCategoryOptions.Source = DataGrouped;
         }
         void ResetButton_Click(object sender, RoutedEventArgs e)
         {
             MainObject.Settings.ResetCategoryOptions();
         }
-        void ApplyButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationCacheMode = NavigationCacheMode.Disabled;
-            Model.RequestNavigation(ProjectPages.Char);
-        }
+   
         #endregion
         #region  instant search Stuff
 
