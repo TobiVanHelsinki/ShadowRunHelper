@@ -34,7 +34,7 @@
                             <VisualStateGroup>
                                 <VisualState>
                                     <VisualState.StateTriggers>
-                                        <AdaptiveTrigger MinWindowWidth="500"/>
+                                        <AdaptiveTrigger MinWindowWidth="650"/>
                                     </VisualState.StateTriggers>
                                     <VisualState.Setters>
                                         <Setter Target="DetailsPanel.(Grid.Row)" Value="0"/>

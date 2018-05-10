@@ -21,10 +21,18 @@
     <contract5NotPresent:SolidColorBrush x:Key="SR_MainBackgroundBrush" 
                                          Color="{ThemeResource SystemAccentColor}"/>
     <contract5Present:AcrylicBrush x:Key="SR_MainBackgroundBrush" 
-                                   BackgroundSource="HostBackdrop" 
                                    TintColor="{ThemeResource SystemAccentColor}" 
-                                   TintOpacity="0.3" 
-                                   FallbackColor="{ThemeResource SystemAccentColor}" />
+                                   FallbackColor="{ThemeResource SystemAccentColor}"
+                                   BackgroundSource="HostBackdrop" 
+                                   TintOpacity="0.5"/>
+
+    <contract5NotPresent:SolidColorBrush x:Key="SR_NotificationBrush" 
+                                         Color="{ThemeResource SystemAltHighColor}"/>
+    <contract5Present:AcrylicBrush x:Key="SR_NotificationBrush"
+                                   TintColor="{ThemeResource SystemAltHighColor}" 
+                                   BackgroundSource="Backdrop" 
+                                   FallbackColor="{ThemeResource SystemAltHighColor}" 
+                                   TintOpacity="0.75"/>
 
     <contract5NotPresent:Style TargetType="Button" x:Key="STD_Button"/>
     <contract5Present:Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="STD_Button"/>

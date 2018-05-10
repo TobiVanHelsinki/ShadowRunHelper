@@ -196,8 +196,8 @@
                 <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
                 <AppBarButton x:Name="Nav_Admin" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
                 <AppBarButton x:Name="Nav_Settings" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
-                <AppBarButton Label="NotL" Icon="AlignRight" Click="Debug3"/>
-                <AppBarButton Label="NotF" Icon="AlignCenter" Click="Debug4"/>
+                <!--<AppBarButton Label="NotL" Icon="AlignRight" Click="Debug3"/>-->
+                <!--<AppBarButton Label="NotF" Icon="AlignCenter" Click="Debug4"/>-->
             </CommandBar>
         </Border>
 
@@ -209,7 +209,7 @@
                                      HorizontalAlignment="Right"
                                      Padding="15,12,15,10"
                                      AnimationDuration="00:00:00.5000000"
-                                     Background="{ThemeResource SystemControlAltLowAcrylicElementBrush}"
+                                     Background="{ThemeResource SR_NotificationBrush}"
                                      BorderThickness="2"
                                      BorderBrush="{ThemeResource InkToolbarAccentColorThemeBrush}"
                                      Closing="ExampleInAppNotification_Closing"
