@@ -176,7 +176,6 @@
                     <AppBarButton x:Uid="UI_TxT_OpenFolderSTD" Icon="OpenLocal" Click="Click_OpenSTDFolder" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton x:Uid="UI_TxT_ExportAll" Icon="SaveLocal" Click="Click_UI_TxT_ExportAll" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton Visibility="Collapsed" x:Name="Btn_Exception" Label="Exception" Icon="Cancel" Click="Exception"/>
                 </CommandBar>
             </Border>
         </Grid>

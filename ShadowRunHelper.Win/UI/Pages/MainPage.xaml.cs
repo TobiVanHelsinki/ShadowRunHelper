@@ -25,6 +25,12 @@ namespace ShadowRunHelper.UI
         ResourceLoader res;
 
         #region Debug
+
+        void Exception(object sender, RoutedEventArgs e)
+        {
+            throw new Exception(Constants.TESTEXCEPTIONTEXT);
+        }
+
         void Debug1(object sender, RoutedEventArgs e)
         {
             DebugSettings DebugSettings = Application.Current.DebugSettings;
@@ -126,7 +132,7 @@ namespace ShadowRunHelper.UI
             Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
             switch (StateNumber)
             {
-                case 1:
+                case 2:
                     MainBarBorder.Style = StyleToBeApplied;
                     break;
                 default:

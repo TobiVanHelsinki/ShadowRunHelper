@@ -44,17 +44,16 @@ namespace ShadowRunHelper.UI
             }
         }
         int RelativMaxStateCount = 0;
-        //int RelativMinStateCount = 0;
         int RelativStateCounter
         {
             get
             {
-                return StateCounter-MinStateCount;
+                return StateCounter-MinStateCount + 1;
             }
             set
             {
                
-                _StateCounter = value + MinStateCount;
+                _StateCounter = value + MinStateCount - 1;
                 NotifyPropertyChanged();
             }
         }
@@ -73,7 +72,7 @@ namespace ShadowRunHelper.UI
             MinStateCount = Start;
             MaxStateCount = Ende;
             _StateCounter = Start;
-            RelativMaxStateCount = Ende-Start;
+            RelativMaxStateCount = Ende-Start + 1;
             
             InitializeComponent();
             Title = StringHelper.GetString(string.Format("Tut_TitleState_{0,0:D2}", Start));

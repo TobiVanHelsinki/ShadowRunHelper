@@ -1064,16 +1064,23 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Wartezeit für Änderungen in Millisekunden</value>
   </data>
   <data name="Tut_State_01" xml:space="preserve">
-    <value>Die Hauptnavigation. Diese 3 Buttons sind immer sichtbar. Wechsle mit ihnen zwischen 
+    <value>Willkommen im ShadowRunHelper!
+
+Dieses Tutorial wird dir die wesentlichen Elemente der App erklären.
+
+Sollte das Tutorial den ganzen Bildschirm vredecken (auf kleinen Displays) kannst du es durch den Auge-Button transparent machen.</value>
+  </data>
+  <data name="Tut_State_02" xml:space="preserve">
+    <value>Die Hauptnavigation. Diese 3 Buttons sind immer am unteren Rand sichtbar. Wechsle mit ihnen zwischen 
     1. Dem Aktuellen Charakterbogen 
     2. Der liste aller Charakterbögen 
     3. Einstellungen, Impressum, Hilfen</value>
   </data>
-  <data name="Tut_State_02" xml:space="preserve">
-    <value>In der aktuellen Ansicht verwaltest du alle gespeichrten Charakterbögen.</value>
-  </data>
   <data name="Tut_State_03" xml:space="preserve">
-    <value>Diese Liste zeigt alle deine gespeicherten Charaktere an. Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswählen, ob sie über deinen Account synchronisieren werden sollen. Du kannst auch einen anderen Ordner als Speicherort wählen.</value>
+    <value>In der aktuellen Ansicht verwaltest du alle gespeichrten Charakterbögen.
+
+Die rot umrandete Liste zeigt alle deine gespeicherten Charaktere an. 
+Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswählen, ob sie über deinen Account synchronisieren werden sollen. Du kannst auch einen anderen Ordner als Speicherort wählen.</value>
   </data>
   <data name="Tut_State_04" xml:space="preserve">
     <value>Das war's mit dem Tutorial. Du kannst einen neuen Charakter erstellen, aber besser ist es, du schaust dir erst den Beispielcharakter an.</value>

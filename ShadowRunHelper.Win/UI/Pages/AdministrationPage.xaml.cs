@@ -37,11 +37,6 @@ namespace ShadowRunHelper.UI
             ChangeProgress(false);
             NavigationCacheMode = NavigationCacheMode.Required;
             Model.TutorialStateChanged += TutorialStateChanged;
-#if DEBUG
-            Btn_Exception.Visibility = Visibility.Visible;
-#else
-            Btn_Exception.Visibility = Visibility.Collapsed;
-#endif
         }
         void CheckIAP()
         {
@@ -81,7 +76,7 @@ namespace ShadowRunHelper.UI
                 try
                 {
 #pragma warning disable CS4014
-                    new Tutorial(0, 4).ShowAsync();
+                    new Tutorial(1, 4).ShowAsync();
 #pragma warning restore CS4014
                 }
                 catch (Exception)
@@ -351,17 +346,6 @@ namespace ShadowRunHelper.UI
             }
 
         }
-
         #endregion
-
-        #region Debug and Experimental
-        void Exception(object sender, RoutedEventArgs e)
-        {
-            throw new Exception(Constants.TESTEXCEPTIONTEXT);
-        }
-
-        #endregion
-
-
     }
 }

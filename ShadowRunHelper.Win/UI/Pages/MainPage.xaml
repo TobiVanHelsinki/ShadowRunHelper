@@ -198,6 +198,7 @@
                 <AppBarButton x:Name="Nav_Settings" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
                 <!--<AppBarButton Label="NotL" Icon="AlignRight" Click="Debug3"/>-->
                 <!--<AppBarButton Label="NotF" Icon="AlignCenter" Click="Debug4"/>-->
+                <!--<AppBarButton Label="Exception" Icon="Cancel" Click="Exception"/>-->
             </CommandBar>
         </Border>
 

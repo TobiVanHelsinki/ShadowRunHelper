@@ -413,19 +413,26 @@ This app can be used to open files and folders on the file system. The app store
     <value>App introduction</value>
   </data>
   <data name="Tut_State_01" xml:space="preserve">
+    <value>Welcome to ShadowRunHelper!
+
+This tutorial will explain the essential elements of the app.
+
+If the tutorial covers the whole screen (on small displays) you can make it transparent through the eye-button.</value>
+  </data>
+  <data name="Tut_State_02" xml:space="preserve">
     <value>The main navigation. These 3 buttons are always visible. Switch with them between 
     1. the current character sheet 
     2. the list of all character sheets 
     3. settings, imprint, help</value>
   </data>
-  <data name="Tut_State_02" xml:space="preserve">
-    <value>In the current view you manage all saved character sheets.</value>
-  </data>
   <data name="Tut_State_04" xml:space="preserve">
     <value>That's it with the tutorial. You can create a new character, but it's better to look at the example character first.</value>
   </data>
   <data name="Tut_State_03" xml:space="preserve">
-    <value>This list shows all your saved characters. By default, chars are saved within the app. In the options you can choose whether they should be synchronized via your account. You can also choose a different folder as the location.</value>
+    <value>In the current view you manage all saved character sheets.
+
+The red highlighted list shows all your saved characters. 
+By default, chars are saved within the app. In the options you can choose whether they should be synchronized via your account. You can also choose a different folder as the location.</value>
   </data>
   <data name="GlobalFilterBox.PlaceholderText" xml:space="preserve">
     <value>Search for Name and Type ...</value>
