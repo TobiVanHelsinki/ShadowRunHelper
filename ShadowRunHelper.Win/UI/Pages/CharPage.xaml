@@ -529,6 +529,7 @@
                     </Grid.ColumnDefinitions>
                     <ListView Grid.ColumnSpan="1" ItemsSource="{Binding Source={StaticResource GroupedCategoryOptions}}"
                               ShowsScrollingPlaceholders="True"
+                              SelectionMode="None"
                               >
                         <ListView.GroupStyle>
                             <GroupStyle>
