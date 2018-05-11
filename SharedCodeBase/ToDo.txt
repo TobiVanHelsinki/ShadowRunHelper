@@ -1,7 +1,6 @@
 ﻿
 --------Aktuelles-----------------------------------------------
 * oben und unten bessere font farben
-* separator
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
