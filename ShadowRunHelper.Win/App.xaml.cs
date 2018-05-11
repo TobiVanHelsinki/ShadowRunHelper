@@ -40,6 +40,7 @@ namespace ShadowRunHelper
             {
                 Settings.ResetAllSettings();
             }
+
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
 

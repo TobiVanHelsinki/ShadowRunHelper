@@ -91,7 +91,6 @@ namespace ShadowRunHelper
 
         public const string CONTAINER_SETTINGS_LAST_PAGE = "SETTINGS_LAST_PAGE";
         public const ProjectPages CONTAINER_SETTINGS_LAST_PAGE_STD = ProjectPages.Char;
-        
 
         #endregion
         #region Help

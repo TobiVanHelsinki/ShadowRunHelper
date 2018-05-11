@@ -94,6 +94,14 @@ namespace ShadowRunHelper.UI
             CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += (s, p) => TitleBarStuff();
             TitleBarStuff();
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
+            if (SettingsModel.I.LastAppVersion != Constants.APP_VERSION_BUILD_DELIM)
+            {
+                Model.NewNotification(
+                    string.Format(StringHelper.GetString("Notification_NewVersion"), Constants.APP_VERSION_BUILD_DELIM) + "\n\n" +
+                    StringHelper.GetString("Notification_NewVersion_"+ Constants.APP_VERSION_BUILD_DELIM.Replace('.','_')),true,10);
+                SettingsModel.I.LastAppVersion = Constants.APP_VERSION_BUILD_DELIM;
+            }
+
         }
         void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
         {
@@ -162,7 +170,7 @@ namespace ShadowRunHelper.UI
                 }
                 foreach (Notification item in newItems.Cast<Notification>().Where((x) => !x.IsRead && x.IsLight).OrderBy((x) => x.OccuredAt))
                 {
-                    ExampleInAppNotification.Show(item.Message, 6000);
+                    ExampleInAppNotification.Show(item.Message, item.ShownTime);
                     Fade.Value = 1;
                     Fade.StartAnimation();
                 }

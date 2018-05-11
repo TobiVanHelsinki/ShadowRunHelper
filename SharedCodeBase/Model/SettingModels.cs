@@ -12,6 +12,21 @@ namespace ShadowRunHelper
     public class SettingsModel : SharedSettingsModel
     {
         #region Settings
+        //LastAppVersion
+        public string LastAppVersion
+        {
+            get => PlatformSettings.getString(Constants.CONTAINER_SETTINGS_LAST_APP_VERSION);
+            set
+            {
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_APP_VERSION, value);
+                Instance.NotifyPropertyChanged();
+            }
+        }
+
+        public void LastAppVersionReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, (int)Constants.CONTAINER_SETTINGS_LAST_PAGE_STD);
+        }
 
         public ProjectPages LastPage
         {

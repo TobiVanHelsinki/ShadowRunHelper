@@ -1475,4 +1475,23 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="Activity_PlayedWith" xml:space="preserve">
     <value>You played with </value>
   </data>
+  <data name="Notification_NewVersion" xml:space="preserve">
+    <value>Welcome to the new version: {0}. Check out a list of new features here!</value>
+  </data>
+  <data name="Notification_NewVersion_1_7_4_0" xml:space="preserve">
+    <value>[new] Category options (Sort, Export,...)
+[new] Technomancer Categories
+[new] Own categories for calculated values
+[new] Links are now possible for attributes and battle items
+[new] Links are now possible with every item
+[new] Example Character
+[new] Multi-window option (for Windows April Update)
+[new] Drag and Drop between different windows (for Windows April Update)
+[new] TimeLine Integration (for Windows April Update)
+[new] notifications
+[new] no more reloading to apply char options
+[new] added many tooltips for buttons
+[new] complete English translation
+[new] Drag and Drop between categories</value>
+  </data>
 </root>
