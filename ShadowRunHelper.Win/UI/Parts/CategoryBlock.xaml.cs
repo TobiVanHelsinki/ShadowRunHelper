@@ -401,5 +401,18 @@ namespace ShadowRunHelper.UI
         }
         #endregion
 
+        private void UI_TxT_Cat_AddSep(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Thing newThing = Model.MainObject.Add(Controller.eDataTyp);
+                newThing.Bezeichner = "";
+                newThing.Wert = 1337;
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification("", ex);
+            }
+        }
     }
 }

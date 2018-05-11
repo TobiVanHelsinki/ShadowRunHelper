@@ -367,6 +367,7 @@
             <Button Grid.Column="2" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Style="{StaticResource Category_Headline_Button}" Margin="0,0,15,0">
                 <Button.Flyout>
                     <MenuFlyout>
+                        <MenuFlyoutItem Click="UI_TxT_Cat_AddSep" x:Uid="UI_TxT_Cat_AddSep" Icon="Add"/>
                         <MenuFlyoutItem Click="UI_TxT_Cat_UncheckAll" x:Uid="UI_TxT_Cat_UncheckAll" Icon="ShowResults"/>
                         <MenuFlyoutSubItem x:Uid="Order">
                             <MenuFlyoutSubItem.Icon>
@@ -428,7 +429,7 @@
                                   >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ui:CategoryEntry />
+                    <ui:CategoryEntry Height="Auto"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

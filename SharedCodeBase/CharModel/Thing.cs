@@ -39,6 +39,10 @@ namespace ShadowRunHelper.CharModel
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
+            if (IsSeperator)
+            {
+                ModelHelper.CallPropertyChanged(PropertyChanged, this, nameof(IsSeperator));
+            }
         }
 
         #endregion
@@ -51,6 +55,9 @@ namespace ShadowRunHelper.CharModel
         }
 
         #region Properties
+        [JsonIgnore]
+        public bool IsSeperator { get => string.IsNullOrEmpty(Bezeichner) && Wert == 1337;  }
+
         ThingDefs thingType = 0;
         public ThingDefs ThingType
         {

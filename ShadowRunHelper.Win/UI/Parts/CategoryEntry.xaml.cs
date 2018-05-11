@@ -22,7 +22,13 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
-            if (CurrentThing.ThingType == ThingDefs.Vorteil || CurrentThing.ThingType == ThingDefs.Nachteil)
+            CurrentThing.PropertyChanged += CurrentThing_PropertyChanged;
+            if (CurrentThing.IsSeperator)
+            {
+                Default = Seperator;
+                Expanded = SeperatorX;
+            }
+            else if (CurrentThing.ThingType == ThingDefs.Vorteil || CurrentThing.ThingType == ThingDefs.Nachteil)
             {
                 Default = EigenschaftItem;
                 Expanded = EigenschaftItemX;
@@ -39,6 +45,15 @@ namespace ShadowRunHelper.UI
             Initialized = true;
         }
 
+        private void CurrentThing_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (CurrentThing.IsSeperator)
+            {
+                Default = Seperator;
+                Expanded = Seperator;
+                SetDefaultTemplate();
+            }
+        }
 
         DataTemplate Default;
         DataTemplate Expanded;

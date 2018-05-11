@@ -339,16 +339,16 @@
         <Setter Property="Background" Value="{ThemeResource SystemAltLowColor}"/>
         <!--<Setter Property="HorizontalAlignment" Value="Center"/>-->
     </Style>
-
-
-
     
     <!-- ListView Things Items ################################################## -->
     <!-- Struktur ####################### -->
     <Style TargetType="Grid" x:Key="Category_Item_Grid">
         <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
+        <Setter Property="MinHeight" Value="42"/>
     </Style>
-    <contract5NotPresent:Style TargetType="Grid" BasedOn="{StaticResource Category_Item_Grid}" x:Key="Category_Item_Grid_Editable"/>
+    <contract5NotPresent:Style TargetType="Grid" BasedOn="{StaticResource Category_Item_Grid}" x:Key="Category_Item_Grid_Editable">
+        <Setter Property="BorderThickness" Value="1"/>
+    </contract5NotPresent:Style>
     <contract5Present:Style TargetType="Grid" BasedOn="{StaticResource Category_Item_Grid}" x:Key="Category_Item_Grid_Editable">
         <Setter Property="BorderBrush" Value="{StaticResource SystemControlBackgroundListMediumRevealBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>

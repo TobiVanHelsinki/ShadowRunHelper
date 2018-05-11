@@ -57,8 +57,9 @@
 
     <Style TargetType="ListViewItem" x:Key="ListViewItemStyle">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrushes}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="MinHeight" Value="0" />
     </Style>
     <Style TargetType="TextBlock" x:Key="TextInhaltKlein">
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>

@@ -1527,4 +1527,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
 [new] komplette englische Übersetzung
 [new] Drag and Drop zwischen Kategorien</value>
   </data>
+  <data name="UI_TxT_Cat_AddSep.Text" xml:space="preserve">
+    <value>Seperator hinzufügen</value>
+  </data>
 </root>

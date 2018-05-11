@@ -15,18 +15,38 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Name="Seperator">
+                <Grid Style="{StaticResource Category_Item_Grid}" MinHeight="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Height="2" BorderBrush="{StaticResource BorderBrushes}" BorderThickness="4"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Name="SeperatorX">
+                <Grid Style="{StaticResource Category_Item_Grid}" MinHeight="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" x:Uid="UI_Btn_Loeschen" Click="Del_Click" Style="{StaticResource Category_Item_Buttons}"/>
+                </Grid>
+            </DataTemplate>
             <DataTemplate x:Name="HandlungItem" x:DataType="CharModel:Handlung">
-                <Grid Style="{StaticResource Category_Item_Grid}">
+                <Grid Style="{StaticResource Category_Item_Grid}" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"  Style="{StaticResource Category_Item_Text}">
+                    <TextBlock Grid.Column="0" Style="{StaticResource Category_Item_Text}">
                             <Run Text="{x:Bind Typ, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}" />
                             <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                     </TextBlock>
-                    <TextBlock Grid.Column="1">
+                    <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                         <Run Text="{x:Bind WertCalced, Mode=OneWay}"/>
                         <Run x:Uid="Space"/>
                         <Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
@@ -168,7 +188,7 @@
                         <Run Text="{x:Bind Typ, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}" />
                         <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                     </TextBlock>
-                    <TextBlock Grid.Column="1">
+                    <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                         <Run Text="{x:Bind Wert, Mode=OneWay}"/>
                         <Run Text="{x:Bind WertCalced, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Round, Mode=OneWay}"/>
                         <Run Text="{x:Bind Zusatz, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Space, Mode=OneWay}"/>
@@ -222,7 +242,7 @@
                                 <Run Text="{x:Bind Typ, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}" />
 <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                         </TextBlock>
-                        <TextBlock Grid.Column="1">
+                        <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                                 <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Grid.Column="2" Text="{x:Bind Anzahl, Mode=OneWay}" Style="{StaticResource Category_Item_Text}"/>
@@ -774,7 +794,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="AttributItem" x:DataType="CharModel:Attribut" >
-                <Grid Tapped="Edit_Attribut" Style="{StaticResource Category_Item_Grid_Editable}" >
+                <Grid Tapped="Edit_Attribut" Style="{StaticResource Category_Item_Grid_Editable}" MinHeight="20" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="1*"/>
@@ -789,7 +809,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="BerechnetItem" x:DataType="CharModel:Berechnet" >
-                <Grid Style="{StaticResource Category_Item_Grid_Editable}" >
+                <Grid Style="{StaticResource Category_Item_Grid}" MinHeight="20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="1*"/>
@@ -1085,7 +1105,7 @@
                                                 <Run Text="{x:Bind Typ, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}" />
 <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                         </TextBlock>
-                        <TextBlock Grid.Column="1">
+                        <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Grid.Column="2" Text="{x:Bind Anzahl, Mode=OneWay}"/>
@@ -1199,7 +1219,7 @@
                                                 <Run Text="{x:Bind Typ, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}" />
 <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                         </TextBlock>
-                        <TextBlock Grid.Column="1">
+                        <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Grid.Column="2" Text="{x:Bind Dienste, Mode=OneWay}" Style="{StaticResource Category_Item_Text}"/>
@@ -1428,7 +1448,7 @@
                                                 <Run Text="{x:Bind Typ, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}" />
 <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                         </TextBlock>
-                        <TextBlock Grid.Column="1">
+                        <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Grid.Column="2" Text="{x:Bind Anzahl, Mode=OneWay}"/>
@@ -1478,7 +1498,7 @@
                                                 <Run Text="{x:Bind Typ, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}" />
 <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                         </TextBlock>
-                        <TextBlock Grid.Column="1">
+                        <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                             <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Grid.Column="2" Text="{x:Bind Dienste, Mode=OneWay}" Style="{StaticResource Category_Item_Text}"/>
