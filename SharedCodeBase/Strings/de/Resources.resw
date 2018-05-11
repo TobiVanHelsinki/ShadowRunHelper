@@ -1530,4 +1530,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="UI_TxT_Cat_AddSep.Text" xml:space="preserve">
     <value>Seperator hinzufügen</value>
   </data>
+  <data name="Notification_NewVersion_1_7_6_0" xml:space="preserve">
+    <value>[new] Seperatoren</value>
+  </data>
 </root>
