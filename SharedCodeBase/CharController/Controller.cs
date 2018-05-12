@@ -14,7 +14,7 @@ namespace ShadowRunHelper.CharController
         /// GUI-Binding Target
         /// </summary>
         public ObservableCollection<T> Data { get; protected set; }
-        public IEnumerable<Thing> GetElements() => Data;
+        public virtual IEnumerable<Thing> GetElements() => Data;
 
         protected readonly ThingDefs _eDataTyp;
         public ThingDefs eDataTyp { get => _eDataTyp; }

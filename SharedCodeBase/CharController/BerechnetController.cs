@@ -206,6 +206,21 @@ namespace ShadowRunHelper.CharController
         }
 
         //Override cController ############################
+        public override IEnumerable<Thing> GetElements()
+        {
+            var lstReturn = new List<Thing>
+            {
+                Essenz,
+                Limit_K,
+                Limit_G,
+                Limit_S,
+                Laufen,
+                Rennen,
+                Tragen
+            };
+            return lstReturn;
+        }
+
         public override Thing AddNewThing()
         {
             throw new NotSupportedException();

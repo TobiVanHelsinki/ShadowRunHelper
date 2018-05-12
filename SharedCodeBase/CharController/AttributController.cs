@@ -103,21 +103,42 @@ namespace ShadowRunHelper.CharController
         public override IEnumerable<AllListEntry> GetElementsForThingList()
         {
             RefreshIdentifiers();
-            var lstReturn = new List<AllListEntry>();
-            lstReturn.Add(MI_Charisma);
-            lstReturn.Add(MI_Geschick);
-            lstReturn.Add(MI_Reaktion);
-            lstReturn.Add(MI_Konsti);
-            lstReturn.Add(MI_Staerke);
-            lstReturn.Add(MI_Logik);
-            lstReturn.Add(MI_Intuition);
-            lstReturn.Add(MI_Willen);
-            lstReturn.Add(MI_Magie);
-            lstReturn.Add(MI_Resonanz);
+            var lstReturn = new List<AllListEntry>
+            {
+                MI_Charisma,
+                MI_Geschick,
+                MI_Reaktion,
+                MI_Konsti,
+                MI_Staerke,
+                MI_Logik,
+                MI_Intuition,
+                MI_Willen,
+                MI_Magie,
+                MI_Resonanz
+            };
             return lstReturn;
         }
 
         //Override cController ############################
+
+        public override IEnumerable<Thing> GetElements()
+        {
+            var lstReturn = new List<Thing>
+            {
+                Charisma,
+                Geschick,
+                Reaktion,
+                Konsti,
+                Staerke,
+                Logik,
+                Intuition,
+                Willen,
+                Magie,
+                Resonanz
+            };
+            return lstReturn;
+        }
+
         public override Thing AddNewThing()
         {
             throw new NotSupportedException();
