@@ -1,11 +1,6 @@
 ﻿
 --------Aktuelles-----------------------------------------------
 * oben und unten bessere font farben
-App
-Schreibfehler im zweiten Tut
-Panel oben nicht vert centriert
-Schaden panel größer 
-Linked things der attribute machen keine haschanges
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte

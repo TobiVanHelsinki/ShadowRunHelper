@@ -17,6 +17,8 @@
     <conv:o_Bool2Visibility x:Key="o_Bool2Visibility"/>
     <conv:o_ValueOrNoting x:Key="o_ValueOrNoting"/>
     <conv:o_LastTime x:Key="o_LastTime"/>
+    <conv:io_Mult1K x:Key="io_Mult1K"/>
+    
     
     <contract5NotPresent:SolidColorBrush x:Key="SR_MainBackgroundBrush" 
                                          Color="{ThemeResource SystemAccentColor}"/>

@@ -173,6 +173,15 @@ namespace ShadowRunHelper
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS);
             set
             {
+                if (value > 100000)
+                {
+                    value = 100000;
+                }
+                else if (value < 1000)
+                {
+                    value = 1000;
+                }
+                SystemHelper.WriteLine("value: " + value);
                 PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS, value);
                 Instance.NotifyPropertyChanged();
             }

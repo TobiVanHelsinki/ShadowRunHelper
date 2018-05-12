@@ -201,9 +201,9 @@
 
                         <UI:SettingElement x:Uid="UI_Optionen_LoadOnStart" Setting="{x:Bind Path=Settings.LoadCharOnStart, Mode=TwoWay}"/>
                         <UI:SettingElement x:Uid="UI_Optionen_AutoSave" Setting="{x:Bind Path=Settings.AutoSave, Mode=TwoWay}"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Visibility="{x:Bind Path=Settings.AutoSave, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}">
-                            <TextBlock x:Uid="UI_Optionen_AutoSaveInterval_Header" Style="{StaticResource TextInhaltKlein}"/>
-                            <TextBox MaxWidth="600" Margin="10,0,0,0" InputScope="Number" Text="{x:Bind Path=Settings.AutoSaveInterval, Mode=TwoWay}"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Visibility="{x:Bind Path=Settings.AutoSave, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}">
+                            <TextBlock x:Uid="UI_Optionen_AutoSaveInterval" Style="{StaticResource TextInhaltKlein}"/>
+                            <TextBox MaxWidth="600" Margin="10,0,0,0" InputScope="Number" Text="{x:Bind Path=Settings.AutoSaveInterval, Mode=TwoWay, Converter={StaticResource io_Mult1K}}"/>
                         </StackPanel>
 
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_File"/>

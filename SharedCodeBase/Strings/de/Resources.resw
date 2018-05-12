@@ -1061,7 +1061,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>App Einleitung</value>
   </data>
   <data name="UI_Optionen_AutoSaveInterval.Text" xml:space="preserve">
-    <value>Wartezeit für Änderungen in Millisekunden</value>
+    <value>Wartezeit für Änderungen in Sekunden</value>
   </data>
   <data name="Tut_State_01" xml:space="preserve">
     <value>Willkommen im ShadowRunHelper!
