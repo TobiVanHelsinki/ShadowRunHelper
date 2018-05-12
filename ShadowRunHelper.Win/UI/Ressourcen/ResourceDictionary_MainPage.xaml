@@ -36,6 +36,7 @@
 
     </Style>
     <Style TargetType="TextBlock" x:Key="Panel_Oben_Text_1">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="10,0,10,0"/>
     </Style>
 

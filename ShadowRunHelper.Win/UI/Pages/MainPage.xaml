@@ -137,7 +137,7 @@
                                 </StackPanel>
                             </StackPanel>
                             <Button.Flyout>
-                                <Flyout>
+                                <Flyout Placement="Bottom" >
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*"/>
@@ -199,6 +199,7 @@
                 <!--<AppBarButton Label="NotL" Icon="AlignRight" Click="Debug3"/>-->
                 <!--<AppBarButton Label="NotF" Icon="AlignCenter" Click="Debug4"/>-->
                 <!--<AppBarButton Label="Exception" Icon="Cancel" Click="Exception"/>-->
+                <AppBarButton Label="CreateDebugChar" Icon="Add" Click="CreateDebugChar"/>
             </CommandBar>
         </Border>
 
