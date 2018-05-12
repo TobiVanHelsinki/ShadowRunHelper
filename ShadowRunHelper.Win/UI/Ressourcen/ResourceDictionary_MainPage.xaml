@@ -36,7 +36,7 @@
 
     </Style>
     <Style TargetType="TextBlock" x:Key="Panel_Oben_Text_1">
-        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="10,0,10,0"/>
     </Style>
 
@@ -63,8 +63,9 @@
     </Style>
     
     <Style TargetType="Slider" x:Key="Panel_Oben_Schaden_Slider">
-        <Setter Property="Height" Value="180"/>
         <Setter Property="StepFrequency" Value="1"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Orientation" Value="Vertical"/>
     </Style>
     <Style TargetType="StackPanel" x:Key="Panel_Oben_Parts_Stack">
         <Setter Property="Margin" Value="10,0,10,0"/>

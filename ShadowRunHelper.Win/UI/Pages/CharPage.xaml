@@ -364,7 +364,7 @@
                             <StackPanel Grid.ColumnSpan="3" Grid.Row="0" Name="Attribut_U" Style="{StaticResource Category_Head_Stackpanel}">
                                 <TextBlock x:Uid="Model_AttributM_" Style="{StaticResource Category_HeadLine}"/>
                             </StackPanel>
-                            <Grid  Style="{ThemeResource Category_Item_Grid_For_Non_ListViews}">
+                            <Grid Style="{ThemeResource Category_Item_Grid_For_Non_ListViews}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
