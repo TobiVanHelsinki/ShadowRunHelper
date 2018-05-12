@@ -1,6 +1,7 @@
 ﻿
 --------Aktuelles-----------------------------------------------
 * oben und unten bessere font farben
+* ladezeiten untersuchen
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
@@ -19,6 +20,4 @@
 * im LinkedEntryEdit Handler spezialfälle einstellen
 
  ---------- andere ideen ------------
-* admin page Zeit diffs in der charliste
-* admin page custom Charlist ordering
 * char page Schnellsuche nach "Schaden" könnte panel oben öffnen
