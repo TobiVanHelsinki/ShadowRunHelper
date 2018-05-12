@@ -15,11 +15,11 @@ namespace ShadowRunHelper.UI
             try
             {
                 string ret = "";
-                foreach (var item in CharToSave.lstCTRL)
+                foreach (var item in CharToSave.CTRLList)
                 {
                     ret += item.Data2CSV(';', '\n');
                 }
-                var ContentList = CharToSave.lstCTRL.Select(c => (TypeHelper.ThingDefToString(c.eDataTyp, true) + Constants.DATEIENDUNG_CSV, c.Data2CSV(';', '\n')));
+                var ContentList = CharToSave.CTRLList.Select(c => (TypeHelper.ThingDefToString(c.eDataTyp, true) + Constants.DATEIENDUNG_CSV, c.Data2CSV(';', '\n')));
                 SharedIO.SaveTextesToFiles(ContentList, new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "CSV_TEMP" });
             }
             catch (Exception ex)
