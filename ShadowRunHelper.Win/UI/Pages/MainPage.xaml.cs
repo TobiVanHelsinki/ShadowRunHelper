@@ -25,6 +25,7 @@ namespace ShadowRunHelper.UI
         ResourceLoader res;
 
         #region Debug
+#if DEBUG
 
         void Exception(object sender, RoutedEventArgs e)
         {
@@ -48,15 +49,37 @@ namespace ShadowRunHelper.UI
             }
         }
         Random r = new Random();
-        private void Debug3(object sender, RoutedEventArgs e)
+        void Debug3(object sender, RoutedEventArgs e)
         {
             Model.NewNotification(" Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test" + r.Next(), isLightNotification: true);
         }
-        private void Debug4(object sender, RoutedEventArgs e)
+        void Debug4(object sender, RoutedEventArgs e)
         {
             Model.NewNotification("Test" + r.Next(), isLightNotification: false);
         }
 
+        void CreateDebugChar(object sender, RoutedEventArgs e)
+        {
+            Model.MainObject = CharHolder.CreateCharWithStandardContent();
+            foreach (var item in TypeHelper.ThingTypeProperties.Where(x => x.Usable))
+            {
+                CharModel.Thing NewThing;
+                try
+                {
+                    NewThing = Model.MainObject.Add(item.ThingType);
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
+                NewThing.Bezeichner = "TestName";
+                NewThing.Notiz = "Dies ist eine Notiz\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
+                NewThing.Wert = 5;
+                NewThing.Zusatz = "+ xW55";
+                NewThing.Typ = "Typ";
+            }
+        }
+#endif
         #endregion
         public MainPage()
         {
@@ -68,6 +91,9 @@ namespace ShadowRunHelper.UI
 #pragma warning restore CS4014
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += NavigationRequested;
+#if DEBUG
+            Debug_CreateDebugChar.Visibility = Visibility.Visible;
+#endif
         }
 
         public void TitleBarStuff()
@@ -176,7 +202,7 @@ namespace ShadowRunHelper.UI
                 }
             }
         }
-        private void ExampleInAppNotification_Closing(object sender, Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosingEventArgs e)
+        void ExampleInAppNotification_Closing(object sender, Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosingEventArgs e)
         {
             Fade.Value = 0;
             Fade.StartAnimation();
@@ -351,26 +377,6 @@ namespace ShadowRunHelper.UI
 
         void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
 
-        private void CreateDebugChar(object sender, RoutedEventArgs e)
-        {
-            Model.MainObject = new CharHolder();
-            foreach (var item in TypeHelper.ThingTypeProperties.Where(x=>x.Usable))
-            {
-                CharModel.Thing NewThing;
-                try
-                {
-                     NewThing = Model.MainObject.Add(item.ThingType);
-                }
-                catch (Exception)
-                {
-                    continue;
-                }
-                NewThing.Bezeichner = "TestName";
-                NewThing.Notiz = "Dies ist eine Notiz\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
-                NewThing.Wert = 5;
-                NewThing.Zusatz = "+ xW55";
-                NewThing.Typ = "Typ";
-            }
-        }
+       
     }
 }

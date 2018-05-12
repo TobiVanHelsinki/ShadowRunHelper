@@ -196,10 +196,10 @@
                 <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
                 <AppBarButton x:Name="Nav_Admin" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
                 <AppBarButton x:Name="Nav_Settings" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
-                <!--<AppBarButton Label="NotL" Icon="AlignRight" Click="Debug3"/>-->
-                <!--<AppBarButton Label="NotF" Icon="AlignCenter" Click="Debug4"/>-->
-                <!--<AppBarButton Label="Exception" Icon="Cancel" Click="Exception"/>-->
-                <AppBarButton Label="CreateDebugChar" Icon="Add" Click="CreateDebugChar"/>
+                <!--<AppBarButton Visibility="Collapsed" Label="NotL" Icon="AlignRight" Click="Debug3"/>-->
+                <!--<AppBarButton Visibility="Collapsed" Label="NotF" Icon="AlignCenter" Click="Debug4"/>-->
+                <!--<AppBarButton Visibility="Collapsed" Label="Exception" Icon="Cancel" Click="Exception"/>-->
+                <AppBarButton x:Name="Debug_CreateDebugChar" Visibility="Collapsed" Label="CreateDebugChar" Icon="Add" Click="CreateDebugChar"/>
             </CommandBar>
         </Border>
 
