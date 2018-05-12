@@ -1068,7 +1068,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
 
 Dieses Tutorial wird dir die wesentlichen Elemente der App erklären.
 
-Sollte das Tutorial den ganzen Bildschirm vredecken (auf kleinen Displays) kannst du es durch den Auge-Button transparent machen.</value>
+Sollte das Tutorial den ganzen Bildschirm verdecken, (auf kleinen Displays) kannst du es durch den Auge-Button transparent machen.</value>
   </data>
   <data name="Tut_State_02" xml:space="preserve">
     <value>Die Hauptnavigation. Diese 3 Buttons sind immer am unteren Rand sichtbar. Wechsle mit ihnen zwischen 
@@ -1532,5 +1532,22 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   </data>
   <data name="Notification_NewVersion_1_7_6_0" xml:space="preserve">
     <value>[new] Seperatoren</value>
+  </data>
+  <data name="Notification_NewVersion_1_7_7_0" xml:space="preserve">
+    <value>[new] Kategorieoptionen (Sortieren, Exportieren, ...)
+[new] Technomancer Kategorien
+[new] Eigene Kategorien für berechnete Werte
+[new] Verlinkungen sind jetzt möglich für Attribute und Kampfitems
+[new] Verlinkungen sind jetzt mit jedem Item möglich
+[new] Beispiel Charakter
+[new] Multifenster Option (für Windows April Update)
+[new] Drag and Drop zwischen verschiedenen Fenstern (für Windows April Update)
+[new] TimeLine Integration (für Windows April Update)
+[new] Benachrichtigungen
+[new] kein Neuladen mehr zum Anwenden der Char-Optionen
+[new] viele Tooltips für Buttons hinzugefügt
+[new] komplette englische Übersetzung
+[new] Drag and Drop zwischen Kategorien
+[new] Seperatoren</value>
   </data>
 </root>
