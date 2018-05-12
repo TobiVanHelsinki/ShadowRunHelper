@@ -66,7 +66,7 @@ namespace ShadowRunHelper.Model
         #region EASY ACCESS STUFF
 
         [Newtonsoft.Json.JsonIgnore]
-        public List<IController> lstCTRL { get; } = new List<IController>();
+        public List<IController> CTRLList { get; } = new List<IController>();
         [Newtonsoft.Json.JsonIgnore]
         public List<AllListEntry> LinkList { get; } = new List<AllListEntry>();
         [Newtonsoft.Json.JsonIgnore]
@@ -124,45 +124,45 @@ namespace ShadowRunHelper.Model
             SaveTimer = new System.Threading.Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); }, this, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
             AppModel.Instance.MainObjectSaved += (x, y) => { SettingsModel.I.CountSavings++; };
             // To Autosave
-            lstCTRL.Add(CTRLAttribut);
-            lstCTRL.Add(CTRLBerechnet);
-            lstCTRL.Add(CTRLFertigkeit);
-            lstCTRL.Add(CTRLItem);
+            CTRLList.Add(CTRLAttribut);
+            CTRLList.Add(CTRLBerechnet);
+            CTRLList.Add(CTRLFertigkeit);
+            CTRLList.Add(CTRLItem);
 
-            lstCTRL.Add(CTRLFernkampfwaffe);
-            lstCTRL.Add(CTRLNahkampfwaffe);
-            lstCTRL.Add(CTRLPanzerung);
+            CTRLList.Add(CTRLFernkampfwaffe);
+            CTRLList.Add(CTRLNahkampfwaffe);
+            CTRLList.Add(CTRLPanzerung);
 
-            lstCTRL.Add(CTRLImplantat);
+            CTRLList.Add(CTRLImplantat);
 
-            lstCTRL.Add(CTRLAdeptenkraft);
-            lstCTRL.Add(CTRLKomplexeForm);
-            lstCTRL.Add(CTRLZaubersprueche);
-            lstCTRL.Add(CTRLFoki);
-            lstCTRL.Add(CTRLWidgets);
+            CTRLList.Add(CTRLAdeptenkraft);
+            CTRLList.Add(CTRLKomplexeForm);
+            CTRLList.Add(CTRLZaubersprueche);
+            CTRLList.Add(CTRLFoki);
+            CTRLList.Add(CTRLWidgets);
 
-            lstCTRL.Add(CTRLCyberDeck);
-            lstCTRL.Add(CTRLProgramm);
+            CTRLList.Add(CTRLCyberDeck);
+            CTRLList.Add(CTRLProgramm);
 
-            lstCTRL.Add(CTRLVehikel);
+            CTRLList.Add(CTRLVehikel);
 
-            lstCTRL.Add(CTRLNachteil);
-            lstCTRL.Add(CTRLVorteil);
-            lstCTRL.Add(CTRLTradition);
-            lstCTRL.Add(CTRLStroemung);
-            lstCTRL.Add(CTRLGeist);
+            CTRLList.Add(CTRLNachteil);
+            CTRLList.Add(CTRLVorteil);
+            CTRLList.Add(CTRLTradition);
+            CTRLList.Add(CTRLStroemung);
+            CTRLList.Add(CTRLGeist);
 
-            lstCTRL.Add(CTRLInitiation);
-            lstCTRL.Add(CTRLWandlung);
-            lstCTRL.Add(CTRLSprite);
+            CTRLList.Add(CTRLInitiation);
+            CTRLList.Add(CTRLWandlung);
+            CTRLList.Add(CTRLSprite);
 
 
-            lstCTRL.Add(CTRLMunition);
-            lstCTRL.Add(CTRLConnection);
-            lstCTRL.Add(CTRLKommlink);
-            lstCTRL.Add(CTRLSin);
+            CTRLList.Add(CTRLMunition);
+            CTRLList.Add(CTRLConnection);
+            CTRLList.Add(CTRLKommlink);
+            CTRLList.Add(CTRLSin);
 
-            lstCTRL.Add(CTRLHandlung);
+            CTRLList.Add(CTRLHandlung);
 
 
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
@@ -246,7 +246,7 @@ namespace ShadowRunHelper.Model
             }
             // start repair
             RefreshLists();
-            foreach (var ctrl in lstCTRL)
+            foreach (var ctrl in CTRLList)
             {
                 foreach (var thing in ctrl.GetElements())
                 {
@@ -262,7 +262,7 @@ namespace ShadowRunHelper.Model
         }
         public IController ThingDef2CTRL(ThingDefs tag)
         {
-            return lstCTRL.First(c => c.eDataTyp == tag);
+            return CTRLList.First(c => c.eDataTyp == tag);
         }
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace ShadowRunHelper.Model
         /// <returns></returns>
         public Thing Add(ThingDefs thingDefs)
         {
-            Thing returnThing = lstCTRL.First(c => c.eDataTyp == thingDefs).AddNewThing();
+            Thing returnThing = CTRLList.First(c => c.eDataTyp == thingDefs).AddNewThing();
             returnThing.PropertyChanged += (x, y) => AnyPropertyChanged();
             return returnThing;
         }
@@ -286,13 +286,13 @@ namespace ShadowRunHelper.Model
         /// <returns></returns>
         public void Add(Thing NewThing)
         {
-            lstCTRL.First(c => c.eDataTyp == NewThing.ThingType).AddNewThing(NewThing);
+            CTRLList.First(c => c.eDataTyp == NewThing.ThingType).AddNewThing(NewThing);
             NewThing.PropertyChanged += (x, y) => AnyPropertyChanged();
         }
 
         public void Remove(Thing tToRemove)
         {
-            lstCTRL.First(c => c.eDataTyp == tToRemove.ThingType).RemoveThing(tToRemove);
+            CTRLList.First(c => c.eDataTyp == tToRemove.ThingType).RemoveThing(tToRemove);
             tToRemove.PropertyChanged -= (x, y) => AnyPropertyChanged();
             LinkList.RemoveAll((x) => x.Object == tToRemove);
             ThingList.RemoveAll((x) => x == tToRemove);
@@ -305,7 +305,7 @@ namespace ShadowRunHelper.Model
             Settings.PropertyChanged -= (x, y) => AnyPropertyChanged();
             Person.PropertyChanged += (x, y) => AnyPropertyChanged();
             Settings.PropertyChanged += (x, y) => AnyPropertyChanged();
-            foreach (var item in lstCTRL)
+            foreach (var item in CTRLList)
             {
                 item.RegisterEventAtData(AnyPropertyChanged);
                 item.RegisterEventAtData(RefreshLists);
@@ -320,9 +320,9 @@ namespace ShadowRunHelper.Model
         public void RefreshLists()
         {
             LinkList.Clear();
-            LinkList.AddRange(lstCTRL.Aggregate(new List<AllListEntry>(),(l,c)=>l.Concat(c.GetElementsForThingList()).ToList()));
+            LinkList.AddRange(CTRLList.Aggregate(new List<AllListEntry>(),(l,c)=>l.Concat(c.GetElementsForThingList()).ToList()));
             ThingList.Clear();
-            ThingList.AddRange(lstCTRL.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
+            ThingList.AddRange(CTRLList.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
         }
 
 
@@ -387,7 +387,7 @@ namespace ShadowRunHelper.Model
         {
             foreach (var OLD_THING in MoveList)
             {
-                var OLD_CTRL = lstCTRL.First(x => x.eDataTyp == OLD_THING.ThingType);
+                var OLD_CTRL = CTRLList.First(x => x.eDataTyp == OLD_THING.ThingType);
                 var NEW_THING = NEW_CTRL.AddNewThing();
                 OLD_THING.TryCopy(NEW_THING);
                 OLD_CTRL.RemoveThing(OLD_THING);
