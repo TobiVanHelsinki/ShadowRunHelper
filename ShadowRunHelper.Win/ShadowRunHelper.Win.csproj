@@ -132,6 +132,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Debug_TimeAnalyser.cs" />
     <Compile Include="Features\Activities.cs" />
     <Compile Include="Features\IAP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

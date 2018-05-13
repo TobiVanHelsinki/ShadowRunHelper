@@ -1550,4 +1550,10 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
 [new] Drag and Drop zwischen Kategorien
 [new] Seperatoren</value>
   </data>
+  <data name="UI_Optionen_Debug_Mode.Text" xml:space="preserve">
+    <value>Debug Modus</value>
+  </data>
+  <data name="UI_Optionen_Debug_Mode.Tip" xml:space="preserve">
+    <value>Verschiedene Benachrichtigungen über Zeit und andere Dinge</value>
+  </data>
 </root>

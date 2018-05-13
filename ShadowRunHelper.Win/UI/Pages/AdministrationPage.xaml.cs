@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using TAMARIN.IO;
 using TAPPLICATION.IO;
 using TLIB;
-using Windows.ApplicationModel.Resources;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -33,12 +32,14 @@ namespace ShadowRunHelper.UI
 
         public AdministrationPage()
         {
+            Debug_TimeAnalyser.Start("AdministrationPage()");
             InitializeComponent();
             ChangeProgress(false);
             NavigationCacheMode = NavigationCacheMode.Required;
             Model.TutorialStateChanged += TutorialStateChanged;
+            Debug_TimeAnalyser.Stop("AdministrationPage()");
         }
-        void CheckIAP()
+        void CheckIAPStatus()
         {
             if (!Constants.IAP_HIDEADS)
             {
@@ -55,21 +56,22 @@ namespace ShadowRunHelper.UI
                 Ad_MainPageBottom.Height = 0;
                 Ad_MainPageRightBox.Visibility = Visibility.Collapsed;
                 Ad_MainPageBottomBox.Visibility = Visibility.Collapsed;
-                Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
-                Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
+                //Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
+                //Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
             }
         }
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            CheckIAP();
+            Debug_TimeAnalyser.Start("PAdmin.OnNavigatedTo");
+            CheckIAPStatus();
 
             if (SettingsModel.I.StartCount <= 1)
             {
-                await CopyExampleChar();
+                CopyExampleChar();
             }
             else
             {
-                await Summorys_Aktualisieren();
+                Summorys_Aktualisieren();
             }
             if (!SettingsModel.I.TutorialMainShown)
             {
@@ -84,6 +86,7 @@ namespace ShadowRunHelper.UI
                 }
                 SettingsModel.I.TutorialMainShown = true;
             }
+            Debug_TimeAnalyser.Stop("PAdmin.OnNavigatedTo");
         }
 
 

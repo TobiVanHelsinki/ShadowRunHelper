@@ -31,8 +31,10 @@ namespace ShadowRunHelper
         #region App Startup and Init
         public App()
         {
+            Debug_TimeAnalyser.Start("Overall");
+            Debug_TimeAnalyser.Start("App()");
             UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
-            CheckLicence = IAP.CheckLicence();
+            CheckLicence = Task.Run(IAP.CheckLicence);
             SetConstantStuff();
             Model = AppModel.Initialize();
             Settings = SettingsModel.Initialize();
@@ -46,15 +48,13 @@ namespace ShadowRunHelper
 
             InitializeComponent();
             Settings.StartCount++;
-
-            try
-            {
-                AppCenter.Start(Constants.AppCenterID, typeof(Crashes), typeof(Analytics));
-            }
-            catch (Exception)
-            {
-            }
-            if (!Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("AppInstance", "FindOrRegisterInstanceForKey") && Windows.Foundation.Metadata.ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract",5))
+            Task.Run(AppCenterConfiguration);
+            Task.Run(RegisterAppInstance);
+            Debug_TimeAnalyser.Stop("App()");
+        }
+        static void RegisterAppInstance()
+        {
+            if (!Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("AppInstance", "FindOrRegisterInstanceForKey") && Windows.Foundation.Metadata.ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
             {
                 string key = Guid.NewGuid().ToString();
                 try
@@ -65,6 +65,18 @@ namespace ShadowRunHelper
                 {
                     InstanceKey = key;
                 }
+            }
+
+        }
+
+        static void AppCenterConfiguration()
+        {
+            try
+            {
+                AppCenter.Start(Constants.AppCenterID, typeof(Crashes), typeof(Analytics)); // zu lange
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -83,31 +95,25 @@ namespace ShadowRunHelper
         #endregion
 
         #region Entry-Points
-        protected override async void OnActivated(IActivatedEventArgs args)
+        protected override void OnActivated(IActivatedEventArgs args)
         {
-            if (args.Kind == ActivationKind.Protocol)
+            Debug_TimeAnalyser.Start("Entry Protocol");
+            if (args.Kind == ActivationKind.Protocol && args is ProtocolActivatedEventArgs uriArgs)
             {
-                var uriArgs = args as ProtocolActivatedEventArgs;
-                if (uriArgs != null)
+                Settings.ForceLoadCharOnStart = true;
+                string name = uriArgs.Uri.Segments[uriArgs.Uri.Segments.Length - 1];
+                string path = uriArgs.Uri.LocalPath.Remove(uriArgs.Uri.LocalPath.Length - name.Length);
+                name = name.Remove(name.Length - 1);
+                Settings.LastSaveInfo = new FileInfoClass(Place.Extern, name, path)
                 {
-                    Settings.ForceLoadCharOnStart = true;
-                    string name = uriArgs.Uri.Segments[uriArgs.Uri.Segments.Length - 1];
-                    string path = uriArgs.Uri.LocalPath.Remove(uriArgs.Uri.LocalPath.Length - name.Length);
-                    name = name.Remove(name.Length-1);
-                    Settings.LastSaveInfo = new FileInfoClass(Place.Extern, name, path)
-                    {
-                        FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
-                    };
-                    if (!FirstStart)
-                    {
-                        await CharLoadingHandling();
-                        Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
-                    }
-                }
+                    FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
+                };
             }
+            Debug_TimeAnalyser.Stop("Entry Protocol");
         }
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
+            Debug_TimeAnalyser.Start("Entry File");
             CharHolder NewHolder;
             try
             {
@@ -121,43 +127,38 @@ namespace ShadowRunHelper
             {
                 FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
             };
-            if (!FirstStart)
-            {
-#pragma warning disable CS4014
-                CharLoadingHandling();
-#pragma warning restore CS4014
-            }
+            Debug_TimeAnalyser.Stop("Entry File");
         }
         #endregion
 
         async void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
         {
+            Debug_TimeAnalyser.Start("LeavingBackground");
             var def = e.GetDeferral();
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
+
+            Debug_TimeAnalyser.Start("CharLoadingHandling");
             Task Loading = CharLoadingHandling();
-            Frame rootFrame = Window.Current.Content as Frame;
+            Debug_TimeAnalyser.Stop("CharLoadingHandling");
             // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
             // Nur sicherstellen, dass das Fenster aktiv ist.
-            if (rootFrame == null)
+            if (!(Window.Current.Content is Frame rootFrame))
             {
-                // Frame erstellen, der als Navigationskontext fungiert und zum Parameter der ersten Seite navigieren
                 rootFrame = new Frame();
                 rootFrame.NavigationFailed += OnNavigationFailed;
-                // Den Frame im aktuellen Fenster platzieren
                 Window.Current.Content = rootFrame;
             }
+            Debug_TimeAnalyser.Start("await Loading");
             await Loading;
+            Debug_TimeAnalyser.Stop("await Loading");
+            //Debug_TimeAnalyser.Start("await CheckLicence");
+            //await CheckLicence;
+            //Debug_TimeAnalyser.Stop("await CheckLicence");
             if (rootFrame.Content == null)
             {
                 // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
-                // und die neue Seite konfigurieren, indem die erforderlichen Informationen als Navigationsparameter
-                // uebergeben werden
+                Debug_TimeAnalyser.Start("NavigatetoMP");
                 rootFrame.Navigate(typeof(MainPage));
+                Debug_TimeAnalyser.Stop("NavigatetoMP");
             }
             else
             {
@@ -166,25 +167,32 @@ namespace ShadowRunHelper
             }
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();
-            FirstStart = false;
             def.Complete();
+            Debug_TimeAnalyser.Stop("LeavingBackground");
+            Debug_TimeAnalyser.Stop("Overall");
         }
 
-        private async Task CharLoadingHandling()
+        async Task CharLoadingHandling()
         {
             try
             {
                 if ((Settings.CharInTempStore && !FirstStart || Settings.LoadCharOnStart && FirstStart) && Model.MainObject == null || Settings.ForceLoadCharOnStart)
                 {
                     var info = Settings.LastSaveInfo;
+                    Debug_TimeAnalyser.Start("CharLoadingNow");
                     var TMPChar = await CharHolderIO.Load(info, eUD: UserDecision.ThrowError);
+                    Debug_TimeAnalyser.Stop("CharLoadingNow");
+
                     if (TMPChar.FileInfo.Fileplace == Place.Temp)
                     {
 #pragma warning disable CS4014
                         CharHolderIO.SaveAtCurrentPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
 #pragma warning restore CS4014
                     }
-                    if (Model.MainObject != null)
+                    var OldChar = Model.MainObject;
+                    Settings.CountLoadings++;
+                    Model.MainObject = TMPChar;
+                    if (OldChar != null)
                     {
                         try
                         {
@@ -197,28 +205,25 @@ namespace ShadowRunHelper
                             Model.NewNotification(StringHelper.GetString("Notification_Error_FileActivation"), ex);
                         }
                     }
-                    Model.MainObject = TMPChar;
                     if (Settings.ForceLoadCharOnStart)
                     {
-                        Model.NewNotification(StringHelper.GetString("Notification_Char_Loaded_File"), true);
+                        Model.NewNotification(StringHelper.GetString("Notification_Char_Loaded_File"));
                     }
                     else
                     {
-                        Model.NewNotification(StringHelper.GetString("Notification_Char_Loaded_Start"), true);
+                        Model.NewNotification(StringHelper.GetString("Notification_Char_Loaded_Start"));
                     }
-                    Settings.CountLoadings++;
                 }
             }
             catch (Exception) { }
             finally
             {
                 Settings.ForceLoadCharOnStart = false;
+                FirstStart = false;
                 Settings.LastSaveInfo = null;
                 Settings.CharInTempStore = false;
             }
-            await CheckLicence;
         }
-
 
         async void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
         {
@@ -243,7 +248,6 @@ namespace ShadowRunHelper
         }
 
         #region Exception Handling
-
 
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {

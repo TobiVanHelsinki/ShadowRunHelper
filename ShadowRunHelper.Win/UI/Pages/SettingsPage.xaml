@@ -222,7 +222,7 @@
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_Other"/>
 
                         <UI:SettingElement x:Uid="UI_Optionen_TutorialMainShown" Setting="{x:Bind Path=Settings.TutorialMainShown, Mode=TwoWay}"/>
-                        <UI:SettingElement x:Uid="UI_Optionen_Beta_Features" Setting="{x:Bind Path=Settings.BETA_FEATURES, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_Debug_Mode" Setting="{x:Bind Path=Settings.DEBUG_FEATURES, Mode=TwoWay}"/>
 
                     </StackPanel>
                 </ScrollViewer>

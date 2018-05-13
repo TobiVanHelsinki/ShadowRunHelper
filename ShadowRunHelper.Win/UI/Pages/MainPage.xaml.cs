@@ -83,6 +83,7 @@ namespace ShadowRunHelper.UI
         #endregion
         public MainPage()
         {
+            Debug_TimeAnalyser.Start("MainPage()");
             ModelHelper.CDispatcher = Dispatcher;
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
@@ -91,9 +92,12 @@ namespace ShadowRunHelper.UI
 #pragma warning restore CS4014
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += NavigationRequested;
+            CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, p) => TitleBarStuff();
+            CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += (s, p) => TitleBarStuff();
 #if DEBUG
             Debug_CreateDebugChar.Visibility = Visibility.Visible;
 #endif
+            Debug_TimeAnalyser.Stop("MainPage()");
         }
 
         public void TitleBarStuff()
@@ -114,11 +118,8 @@ namespace ShadowRunHelper.UI
         #region navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-            ShowNotificationsIfNecessary(Model.lstNotifications);
-            CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, p) => TitleBarStuff();
-            CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += (s, p) => TitleBarStuff();
-            TitleBarStuff();
+            Debug_TimeAnalyser.Start("PMain.OnNavigatedTo");
+            //base.OnNavigatedTo(e);
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
             if (SettingsModel.I.LastAppVersion != Constants.APP_VERSION_BUILD_DELIM)
             {
@@ -127,7 +128,7 @@ namespace ShadowRunHelper.UI
                     StringHelper.GetString("Notification_NewVersion_"+ Constants.APP_VERSION_BUILD_DELIM.Replace('.','_')),true,10);
                 SettingsModel.I.LastAppVersion = Constants.APP_VERSION_BUILD_DELIM;
             }
-
+            Debug_TimeAnalyser.Stop("PMain.OnNavigatedTo");
         }
         void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
         {
@@ -308,6 +309,10 @@ namespace ShadowRunHelper.UI
         void Ui_Nav_Settings(object sender, RoutedEventArgs e)
         {
             NavigationRequested(ProjectPages.Settings, ProjectPagesOptions.Nothing);
+            if (SettingsModel.I.DEBUG_FEATURES)
+            {
+                Debug_TimeAnalyser.Finish();
+            }
         }
 
         #endregion

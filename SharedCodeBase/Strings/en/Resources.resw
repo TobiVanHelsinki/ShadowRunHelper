@@ -1517,4 +1517,10 @@ By default, chars are saved within the app. In the options you can choose whethe
 [new] Drag and Drop between categories
 [new] Seperators</value>
   </data>
+  <data name="UI_Optionen_Debug_Mode.Text" xml:space="preserve">
+    <value>Debug Mode</value>
+  </data>
+  <data name="UI_Optionen_Debug_Mode.Tip" xml:space="preserve">
+    <value>Enables various Notifications about time and stuff</value>
+  </data>
 </root>

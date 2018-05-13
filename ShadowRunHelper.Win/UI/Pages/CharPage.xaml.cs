@@ -8,7 +8,6 @@ using TAPPLICATION.IO;
 using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper.UI
@@ -23,9 +22,11 @@ namespace ShadowRunHelper.UI
 
         public CharPage()
         {
+            Debug_TimeAnalyser.Start("CharPage()");
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
             Model.PropertyChanged += Model_PropertyChanged;
+            Debug_TimeAnalyser.Stop("CharPage()");
         }
 
         private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -56,6 +57,7 @@ namespace ShadowRunHelper.UI
         #region Navigation stuff
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            Debug_TimeAnalyser.Start("PChar.OnNavigatedTo");
             LoadCategoryOptions();
             if (SettingsModel.I.DISPLAY_REQUEST)
             {
@@ -102,6 +104,7 @@ namespace ShadowRunHelper.UI
                     break;
             }
             AdjustHeaderWidth();
+            Debug_TimeAnalyser.Stop("PChar.OnNavigatedTo");
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
