@@ -37,15 +37,15 @@ namespace ShadowRunHelper.UI
             {
                 var Name = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == CurrentThing.ThingType).DisplayName;
                 Resources.TryGetValue(Name + "Item", out object val);
-                Default = (DataTemplate)val;
+                Default = val as DataTemplate;
                 Resources.TryGetValue(Name + "ItemX", out val);
-                Expanded = (DataTemplate)val;
+                Expanded = val as DataTemplate;
             }
             SetDefaultTemplate();
             Initialized = true;
         }
 
-        private void CurrentThing_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void CurrentThing_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (CurrentThing.IsSeperator)
             {
@@ -66,7 +66,7 @@ namespace ShadowRunHelper.UI
             }
             EntryItem.ContentTemplate = Expanded;
         }
-        internal void SetDefaultTemplate()
+        public void SetDefaultTemplate()
         {
             EntryItem.ContentTemplate = Default;
         }

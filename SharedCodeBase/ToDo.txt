@@ -1,5 +1,7 @@
 ﻿--------Aktuelles-----------------------------------------------
 * oben und unten bessere font farben
+* Char Page Loading Time, indem die abfrage des templates für alle gemacht wird
+
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
