@@ -95,7 +95,7 @@ namespace ShadowRunHelper
         #endregion
 
         #region Entry-Points
-        protected override void OnActivated(IActivatedEventArgs args)
+        protected override async void OnActivated(IActivatedEventArgs args)
         {
             Debug_TimeAnalyser.Start("Entry Protocol");
             if (args.Kind == ActivationKind.Protocol && args is ProtocolActivatedEventArgs uriArgs)
@@ -109,9 +109,14 @@ namespace ShadowRunHelper
                     FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
                 };
             }
+            if (!FirstStart)
+            {
+                await CharLoadingHandling();
+                Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
+            }
             Debug_TimeAnalyser.Stop("Entry Protocol");
         }
-        protected override void OnFileActivated(FileActivatedEventArgs args)
+        protected override async void OnFileActivated(FileActivatedEventArgs args)
         {
             Debug_TimeAnalyser.Start("Entry File");
             CharHolder NewHolder;
@@ -127,6 +132,11 @@ namespace ShadowRunHelper
             {
                 FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
             };
+            if (!FirstStart)
+            {
+                await CharLoadingHandling();
+                Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
+            }
             Debug_TimeAnalyser.Stop("Entry File");
         }
         #endregion

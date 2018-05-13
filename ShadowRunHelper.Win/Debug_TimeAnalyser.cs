@@ -11,7 +11,10 @@ namespace ShadowRunHelper
 
         public static void Start(string Name)
         {
-            Dict.Add(Name, (DateTime.Now, default));
+            if (!Dict.ContainsKey(Name))
+            {
+                Dict.Add(Name, (DateTime.Now, default));
+            }
         }
         public static void Stop(string Name)
         {

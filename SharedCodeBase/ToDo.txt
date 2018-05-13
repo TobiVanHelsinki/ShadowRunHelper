@@ -1,13 +1,12 @@
-﻿
---------Aktuelles-----------------------------------------------
+﻿--------Aktuelles-----------------------------------------------
 * oben und unten bessere font farben
-* ladezeiten untersuchen
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
 * Verknüpfungen Modell für Zirkelbezüge verbessern
 * neue kategorien (wissenfrt, kampfkünste, rigger)
 * kateogiren verbessern (magier, adepten, technos)
+* char page Schnellsuche nach "Schaden" könnte panel oben öffnen
 * Laufen, Rennen -> Umrechnung in km/h
 
 ---------- Ideen für später -------------------------------
@@ -18,6 +17,3 @@
 * Filter anlegen und im Konstruktor setzen
 * Im UI Template Element Linked List angeben
 * im LinkedEntryEdit Handler spezialfälle einstellen
-
- ---------- andere ideen ------------
-* char page Schnellsuche nach "Schaden" könnte panel oben öffnen

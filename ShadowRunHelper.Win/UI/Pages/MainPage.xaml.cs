@@ -57,10 +57,11 @@ namespace ShadowRunHelper.UI
         {
             Model.NewNotification("Test" + r.Next(), isLightNotification: false);
         }
-
+#endif
         void CreateDebugChar(object sender, RoutedEventArgs e)
         {
-            Model.MainObject = CharHolder.CreateCharWithStandardContent();
+#if DEBUG
+             Model.MainObject = CharHolder.CreateCharWithStandardContent();
             foreach (var item in TypeHelper.ThingTypeProperties.Where(x => x.Usable))
             {
                 CharModel.Thing NewThing;
@@ -78,8 +79,8 @@ namespace ShadowRunHelper.UI
                 NewThing.Zusatz = "+ xW55";
                 NewThing.Typ = "Typ";
             }
-        }
 #endif
+        }
         #endregion
         public MainPage()
         {
