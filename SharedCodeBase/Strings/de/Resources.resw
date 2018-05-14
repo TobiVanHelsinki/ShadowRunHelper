@@ -1533,7 +1533,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Notification_NewVersion_1_7_6_0" xml:space="preserve">
     <value>[new] Seperatoren</value>
   </data>
-  <data name="Notification_NewVersion_1_7_7_0" xml:space="preserve">
+  <data name="Notification_NewVersion_1_7_8_0" xml:space="preserve">
     <value>[new] Kategorieoptionen (Sortieren, Exportieren, ...)
 [new] Technomancer Kategorien
 [new] Eigene Kategorien für berechnete Werte

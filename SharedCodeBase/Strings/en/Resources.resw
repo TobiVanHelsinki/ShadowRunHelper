@@ -1500,7 +1500,7 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="Notification_NewVersion_1_7_6_0" xml:space="preserve">
     <value>[new] Seperators</value>
   </data>
-  <data name="Notification_NewVersion_1_7_7_0" xml:space="preserve">
+  <data name="Notification_NewVersion_1_7_8_0" xml:space="preserve">
     <value>[new] Category options (Sort, Export,...)
 [new] Technomancer Categories
 [new] Own categories for calculated values
