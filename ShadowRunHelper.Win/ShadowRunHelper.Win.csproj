@@ -206,6 +206,7 @@
     <None Include="ShadowRunHelper.Win_StoreKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\FileFormatLogo.png" />
     <Content Include="Assets\Logo\BadgeLogo.scale-100.png" />
     <Content Include="Assets\Logo\BadgeLogo.scale-125.png" />
     <Content Include="Assets\Logo\BadgeLogo.scale-150.png" />
