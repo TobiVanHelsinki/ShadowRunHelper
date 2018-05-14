@@ -1,7 +1,6 @@
 ﻿--------Aktuelles-----------------------------------------------
-* oben und unten bessere font farben
 * Char Page Loading Time, indem die abfrage des templates für alle gemacht wird
-
+* Max schaden bei berechneten werten
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
@@ -12,7 +11,6 @@
 * Laufen, Rennen -> Umrechnung in km/h
 
 ---------- Ideen für später -------------------------------
-* Max schaden bei berechneten werten
 * schaden overflow einarbeiten
 
 ++++++++++ Generelles TODO für Neue Verknüpfungen -------------

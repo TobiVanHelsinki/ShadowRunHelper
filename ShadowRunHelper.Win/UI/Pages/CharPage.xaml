@@ -418,9 +418,9 @@
                         </StackPanel>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="2" Controller="{x:Bind Model.MainObject.CTRLConnection, Mode=OneWay}"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="3" Controller="{x:Bind Model.MainObject.CTRLImplantat, Mode=OneWay}"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="4" Controller="{x:Bind Model.MainObject.CTRLTradition, Mode=OneWay}"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="5" Controller="{x:Bind Model.MainObject.CTRLStroemung, Mode=OneWay}"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="6" Controller="{x:Bind Model.MainObject.CTRLSin, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="4" Controller="{x:Bind Model.MainObject.CTRLSin, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="5" Controller="{x:Bind Model.MainObject.CTRLTradition, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="6" Controller="{x:Bind Model.MainObject.CTRLStroemung, Mode=OneWay}"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="7" Controller="{x:Bind Model.MainObject.CTRLInitiation, Mode=OneWay}"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Grid.ColumnSpan="3" Grid.Row="8" Controller="{x:Bind Model.MainObject.CTRLWandlung, Mode=OneWay}"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLVorteil, Mode=OneWay}" x:Name="Vorteile" Grid.ColumnSpan="1" Grid.Column="0" Grid.Row="9"/>
