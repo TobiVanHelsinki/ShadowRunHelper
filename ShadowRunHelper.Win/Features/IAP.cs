@@ -11,6 +11,8 @@ namespace ShadowRunHelper
     {
         public static async Task CheckLicence()
         {
+            Constants.IAP_HIDEADS = true;
+            return;
             //TODO introduce kind of caching
             try
             {

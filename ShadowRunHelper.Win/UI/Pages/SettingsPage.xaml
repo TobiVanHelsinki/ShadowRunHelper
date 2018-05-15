@@ -242,7 +242,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </PivotItem>
-            <PivotItem Tag="36">
+            <!--<PivotItem Tag="36">
                 <PivotItem.Header>
                     <TextBlock x:Uid="UI_Optionen_U_Buy" Style="{StaticResource ueberschrift1}"/>
                 </PivotItem.Header>
@@ -254,7 +254,7 @@
                     <Button x:Uid="IAP_TXT_ADS" Click="IAP_ADS" Margin="3" Style="{StaticResource STD_Button}"/>
                     <Button x:Uid="IAP_TXT_TEE" Click="IAP_Tee" Margin="3" Style="{StaticResource STD_Button}"/>
                 </StackPanel>
-            </PivotItem>
+            </PivotItem>-->
             <PivotItem Tag="35">
                 <PivotItem.Header>
                     <TextBlock x:Uid="UI_Optionen_U_Notifications" Style="{StaticResource ueberschrift1}"/>
