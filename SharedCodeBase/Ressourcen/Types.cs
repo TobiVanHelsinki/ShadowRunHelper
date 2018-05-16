@@ -41,6 +41,7 @@ namespace ShadowRunHelper
         SettingsHelp = 34,
         SettingsNots = 35,
         SettingsBuy = 36,
+        Import = 37,
     }
 
     public enum TCharState

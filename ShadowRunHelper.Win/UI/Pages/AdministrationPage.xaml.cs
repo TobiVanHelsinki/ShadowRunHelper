@@ -64,6 +64,13 @@ namespace ShadowRunHelper.UI
         {
             Debug_TimeAnalyser.Start("PAdmin.OnNavigatedTo");
             CheckIAPStatus();
+            if (((ProjectPagesOptions)e.Parameter) == ProjectPagesOptions.Import)
+            {
+                //TODO Ask User
+                //If YES, Import all
+                AppDataPorter.ImportAppPacket();
+                //TODO Notify User
+            }
 
             if (SettingsModel.I.StartCount <= 1)
             {

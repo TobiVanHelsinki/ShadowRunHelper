@@ -1,10 +1,12 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Newtonsoft.Json;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using ShadowRunHelper.UI;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TAMARIN.IO;
 using TAPPLICATION;
@@ -12,6 +14,7 @@ using TAPPLICATION.IO;
 using TLIB;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -119,24 +122,32 @@ namespace ShadowRunHelper
         protected override async void OnFileActivated(FileActivatedEventArgs args)
         {
             Debug_TimeAnalyser.Start("Entry File");
-            CharHolder NewHolder;
-            try
+            if (args.Files[0].Name.EndsWith(".SRHChar"))
             {
-                Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace(SharedConstants.ACCESSTOKEN_FILEACTIVATED, args.Files[0]);
+                try
+                {
+                    Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace(SharedConstants.ACCESSTOKEN_FILEACTIVATED, args.Files[0]);
+                }
+                catch (Exception ex)
+                {
+                }
+                Settings.ForceLoadCharOnStart = true;
+                Settings.LastSaveInfo = new FileInfoClass(Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length))
+                {
+                    FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
+                };
+                if (!FirstStart)
+                {
+                    await CharLoadingHandling();
+                    Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
+                }
             }
-            catch (Exception ex)
+            else if (args.Files[0].Name.EndsWith(".SRHApp1"))
             {
+                AppDataPorter.Loading = AppDataPorter.LoadAppPacket(args.Files[0]);
+                Model.RequestNavigation(ProjectPages.Administration, ProjectPagesOptions.Import);
             }
-            Settings.ForceLoadCharOnStart = true;
-            Settings.LastSaveInfo = new FileInfoClass(Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length))
-            {
-                FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
-            };
-            if (!FirstStart)
-            {
-                await CharLoadingHandling();
-                Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
-            }
+
             Debug_TimeAnalyser.Stop("Entry File");
         }
         #endregion
@@ -289,5 +300,6 @@ namespace ShadowRunHelper
             }
         }
         #endregion
+
     }
 }
