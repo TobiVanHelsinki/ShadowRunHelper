@@ -1523,4 +1523,32 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="UI_Optionen_Debug_Mode.Tip" xml:space="preserve">
     <value>Enables various Notifications about time and stuff</value>
   </data>
+  <data name="UI_CNT_ClassicVersion.Content" xml:space="preserve">
+    <value>Open the new app in the store.</value>
+  </data>
+  <data name="UI_DLG_Classic.PrimaryButtonText" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="UI_DLG_Classic.SecondaryButtonText" xml:space="preserve">
+    <value>Later</value>
+  </data>
+  <data name="UI_DLG_Classic.Title" xml:space="preserve">
+    <value>New App</value>
+  </data>
+  <data name="UI_TXT_ClassicVersion.Text" xml:space="preserve">
+    <value>Dear user,
+
+
+
+due to changes in the Microsoft Store, I (the developer) feel compelled to discontinue the App ShadowRunHelper and publish it as a new app in the Store. 
+For you as a user nothing will change, just download the new version under the link. 
+
+Use the Move button to create a file that contains all your characters and settings. Open the file normally with a double click as soon as the new app is installed.
+
+
+
+This (old) app will continue to exist for quite some time and you can still display your previous characters.
+
+Thank you for your insight. If you have any questions or problems, don't hesitate to contact me.</value>
+  </data>
 </root>

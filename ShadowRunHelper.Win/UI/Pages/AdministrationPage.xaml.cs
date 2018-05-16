@@ -1,6 +1,7 @@
 ﻿using Microsoft.AppCenter.Analytics;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
+using ShadowRunHelper.Win.UI;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -60,32 +61,13 @@ namespace ShadowRunHelper.UI
                 //Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
             }
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             Debug_TimeAnalyser.Start("PAdmin.OnNavigatedTo");
             CheckIAPStatus();
-
-            if (SettingsModel.I.StartCount <= 1)
-            {
-                CopyExampleChar();
-            }
-            else
-            {
-                Summorys_Aktualisieren();
-            }
-            if (!SettingsModel.I.TutorialMainShown)
-            {
-                try
-                {
-#pragma warning disable CS4014
-                    new Tutorial(1, 4).ShowAsync();
-#pragma warning restore CS4014
-                }
-                catch (Exception)
-                {
-                }
-                SettingsModel.I.TutorialMainShown = true;
-            }
+            await Summorys_Aktualisieren();
+            ClassicDialog Classic = new ClassicDialog();
+            await Classic.ShowAsync();
             Debug_TimeAnalyser.Stop("PAdmin.OnNavigatedTo");
         }
 

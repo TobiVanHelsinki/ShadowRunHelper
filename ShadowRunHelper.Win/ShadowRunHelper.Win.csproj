@@ -136,6 +136,9 @@
     <Compile Include="Features\Activities.cs" />
     <Compile Include="Features\IAP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\ClassicDialog.xaml.cs">
+      <DependentUpon>ClassicDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Converter\io_Mult1K.cs" />
     <Compile Include="UI\Converter\o_LastTime.cs" />
     <Compile Include="UI\Converter\o_ValueOrNoting.cs" />
@@ -265,6 +268,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="UI\ClassicDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Pages\CharPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

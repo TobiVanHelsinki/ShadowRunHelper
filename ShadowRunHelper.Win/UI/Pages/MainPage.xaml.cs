@@ -25,39 +25,6 @@ namespace ShadowRunHelper.UI
         ResourceLoader res;
 
         #region Debug
-#if DEBUG
-
-        void Exception(object sender, RoutedEventArgs e)
-        {
-            throw new Exception(Constants.TESTEXCEPTIONTEXT);
-        }
-
-        void Debug1(object sender, RoutedEventArgs e)
-        {
-            DebugSettings DebugSettings = Application.Current.DebugSettings;
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                DebugSettings.IsOverdrawHeatMapEnabled = !DebugSettings.IsOverdrawHeatMapEnabled;
-            }
-        }
-        void Debug2(object sender, RoutedEventArgs e)
-        {
-            DebugSettings DebugSettings = Application.Current.DebugSettings;
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                DebugSettings.IsTextPerformanceVisualizationEnabled = !DebugSettings.IsTextPerformanceVisualizationEnabled;
-            }
-        }
-        Random r = new Random();
-        void Debug3(object sender, RoutedEventArgs e)
-        {
-            Model.NewNotification(" Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test" + r.Next(), isLightNotification: true);
-        }
-        void Debug4(object sender, RoutedEventArgs e)
-        {
-            Model.NewNotification("Test" + r.Next(), isLightNotification: false);
-        }
-#endif
         void CreateDebugChar(object sender, RoutedEventArgs e)
         {
 #if DEBUG
@@ -91,7 +58,6 @@ namespace ShadowRunHelper.UI
 #pragma warning disable CS4014
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary(y.NewItems);
 #pragma warning restore CS4014
-            Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += NavigationRequested;
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, p) => TitleBarStuff();
             CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += (s, p) => TitleBarStuff();
@@ -120,15 +86,7 @@ namespace ShadowRunHelper.UI
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Debug_TimeAnalyser.Start("PMain.OnNavigatedTo");
-            //base.OnNavigatedTo(e);
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
-            if (SettingsModel.I.LastAppVersion != Constants.APP_VERSION_BUILD_DELIM)
-            {
-                Model.NewNotification(
-                    string.Format(StringHelper.GetString("Notification_NewVersion"), Constants.APP_VERSION_BUILD_DELIM) + "\n\n" +
-                    StringHelper.GetString("Notification_NewVersion_"+ Constants.APP_VERSION_BUILD_DELIM.Replace('.','_')),true,10);
-                SettingsModel.I.LastAppVersion = Constants.APP_VERSION_BUILD_DELIM;
-            }
             Debug_TimeAnalyser.Stop("PMain.OnNavigatedTo");
         }
         void NavigationRequested(ProjectPages p, ProjectPagesOptions po)

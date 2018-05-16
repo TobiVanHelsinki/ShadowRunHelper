@@ -112,7 +112,7 @@ namespace ShadowRunHelper
             if (!FirstStart)
             {
                 await CharLoadingHandling();
-                Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
+                Model.RequestNavigation(ProjectPages.Administration, ProjectPagesOptions.Char_Action);
             }
             Debug_TimeAnalyser.Stop("Entry Protocol");
         }
@@ -135,7 +135,7 @@ namespace ShadowRunHelper
             if (!FirstStart)
             {
                 await CharLoadingHandling();
-                Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
+                Model.RequestNavigation(ProjectPages.Administration, ProjectPagesOptions.Char_Action);
             }
             Debug_TimeAnalyser.Stop("Entry File");
         }
@@ -163,18 +163,10 @@ namespace ShadowRunHelper
             //Debug_TimeAnalyser.Start("await CheckLicence");
             //await CheckLicence;
             //Debug_TimeAnalyser.Stop("await CheckLicence");
-            if (rootFrame.Content == null)
-            {
-                // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
-                Debug_TimeAnalyser.Start("NavigatetoMP");
-                rootFrame.Navigate(typeof(MainPage));
-                Debug_TimeAnalyser.Stop("NavigatetoMP");
-            }
-            else
-            {
-                // Seite ist aktiv, wir versuchen, den Char anzuzeigen
-                Model.RequestNavigation(Settings.LastPage);
-            }
+            // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
+            Debug_TimeAnalyser.Start("NavigatetoMP");
+            rootFrame.Navigate(typeof(MainPage));
+            Debug_TimeAnalyser.Stop("NavigatetoMP");
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();
             def.Complete();
