@@ -145,9 +145,11 @@ namespace ShadowRunHelper
             else if (args.Files[0].Name.EndsWith(".SRHApp1"))
             {
                 AppDataPorter.Loading = AppDataPorter.LoadAppPacket(args.Files[0]);
+            }
+            if (!FirstStart)
+            {
                 Model.RequestNavigation(ProjectPages.Administration, ProjectPagesOptions.Import);
             }
-
             Debug_TimeAnalyser.Stop("Entry File");
         }
         #endregion

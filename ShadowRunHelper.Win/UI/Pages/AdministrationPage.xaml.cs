@@ -64,12 +64,16 @@ namespace ShadowRunHelper.UI
         {
             Debug_TimeAnalyser.Start("PAdmin.OnNavigatedTo");
             CheckIAPStatus();
-            if (((ProjectPagesOptions)e.Parameter) == ProjectPagesOptions.Import)
+            if (AppDataPorter.InProgress)
             {
-                //TODO Ask User
+                //Ask User
                 //If YES, Import all
-                AppDataPorter.ImportAppPacket();
-                //TODO Notify User
+                ShowMessageDialog(StringHelper.GetString("Request_AppImport/Title")
+, StringHelper.GetString("Request_AppImport/Text")
+, StringHelper.GetString("Request_AppImport/Yes")
+, StringHelper.GetString("Request_AppImport/No")
+, ()=> AppDataPorter.ImportAppPacket());
+
             }
 
             if (SettingsModel.I.StartCount <= 1)

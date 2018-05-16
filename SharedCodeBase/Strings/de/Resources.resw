@@ -1556,4 +1556,22 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="UI_Optionen_Debug_Mode.Tip" xml:space="preserve">
     <value>Verschiedene Benachrichtigungen über Zeit und andere Dinge</value>
   </data>
+  <data name="AppImportErrors" xml:space="preserve">
+    <value>Der Import der folgenden Einstellungen oder Dateien hat nicht geklappt.</value>
+  </data>
+  <data name="AppImportNoErrors" xml:space="preserve">
+    <value>Der Import war erfolgreich.</value>
+  </data>
+  <data name="Request_AppImport.No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="Request_AppImport.Text" xml:space="preserve">
+    <value>Möchten Sie die Inhalte einer anderen App importieren? Einstellungen werden überschrieben.</value>
+  </data>
+  <data name="Request_AppImport.Title" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Request_AppImport.Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
 </root>
