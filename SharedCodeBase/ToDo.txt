@@ -1,6 +1,13 @@
 ﻿--------Aktuelles-----------------------------------------------
 * Char Page Loading Time, indem die abfrage des templates für alle gemacht wird
 * Max schaden bei berechneten werten
+SR INfo
+in die app:
+Version history now at the web:
+https://github.com/TobiVanHelsinki/ShadowRunHelper/releases
+sowie datenschutzrklärung und link dahin
+
+Char-Einstellungen auf ins Überlaufmeü?
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte
