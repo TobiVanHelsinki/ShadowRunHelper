@@ -156,7 +156,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_SummorysREfresh"), ex);
+                Model.NewNotification(StringHelper.GetString("Error_LoadCharFolder"), ex);
             }
         }
         #endregion

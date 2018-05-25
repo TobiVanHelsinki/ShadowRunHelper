@@ -850,7 +850,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Kapazität</value>
   </data>
   <data name="Notification_Error_Unknown" xml:space="preserve">
-    <value>Ein unbekannter Fehler ist aufgetreten, ihr char wurde mit dem Prefix ''Emergency'' gespeichert</value>
+    <value>Ein unbekannter Fehler ist aufgetreten, Ihr char wurde mit dem Prefix ''Emergency'' gespeichert</value>
   </data>
   <data name="KlammerAufRund.Text" xml:space="preserve">
     <value>(</value>
@@ -873,8 +873,9 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Notification_Error_RepairFail" xml:space="preserve">
     <value>Fehler beim Reparieren.</value>
   </data>
-  <data name="Notification_Error_SummorysREfresh" xml:space="preserve">
-    <value>Fehler beim Verzeichnis einlesen</value>
+  <data name="Error_LoadCharFolder" xml:space="preserve">
+    <value>Fehler beim einlesen des Char-Verzeichnises.
+Setzen Sie den externen Ordner neu.</value>
   </data>
   <data name="Notification_Error_AuswahlToLess" xml:space="preserve">
     <value>Fehler: Einige der verknüpften Dinge wurden nicht gefunden.</value>
