@@ -1575,4 +1575,10 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Request_AppImport.Yes" xml:space="preserve">
     <value>Ja</value>
   </data>
+  <data name="UI_TxT_CharSettings.Text" xml:space="preserve">
+    <value>Charakterbogen Einstellungen</value>
+  </data>
+  <data name="UI_TxT_CharSettings.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Damit kannst du diese Ansicht konfigurieren.</value>
+  </data>
 </root>

@@ -337,8 +337,13 @@ namespace ShadowRunHelper.UI
 
 
 
+
         #endregion
 
-
+        private void Click_CharSettings(object sender, RoutedEventArgs e)
+        {
+            var d = new CharSettingsDialog();
+            d.ShowAsync();
+        }
     }
 }
