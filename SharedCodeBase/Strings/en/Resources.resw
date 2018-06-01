@@ -1121,7 +1121,7 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="UI_Settings_Btn_Speichern.Content" xml:space="preserve">
     <value>Reload to see changes</value>
   </data>
-  <data name="UI_Settings_Btn_Reset.Content" xml:space="preserve">
+  <data name="UI_CNT_Reset.Content" xml:space="preserve">
     <value>Reset</value>
   </data>
   <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
@@ -1522,5 +1522,8 @@ By default, chars are saved within the app. In the options you can choose whethe
   </data>
   <data name="UI_Optionen_Debug_Mode.Tip" xml:space="preserve">
     <value>Enables various Notifications about time and stuff</value>
+  </data>
+  <data name="UI_CNT_Close.Content" xml:space="preserve">
+    <value>Close</value>
   </data>
 </root>

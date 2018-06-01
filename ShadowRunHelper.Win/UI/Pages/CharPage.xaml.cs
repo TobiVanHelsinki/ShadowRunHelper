@@ -25,16 +25,7 @@ namespace ShadowRunHelper.UI
             Debug_TimeAnalyser.Start("CharPage()");
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
-            Model.PropertyChanged += Model_PropertyChanged;
             Debug_TimeAnalyser.Stop("CharPage()");
-        }
-
-        private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(Model.MainObject))
-            {
-                LoadCategoryOptions();
-            }
         }
 
         #region GUI Stuff
@@ -50,7 +41,6 @@ namespace ShadowRunHelper.UI
                 PivotHeader3Border.MaxWidth = w;
                 PivotHeader4Border.MaxWidth = w;
                 PivotHeader5Border.MaxWidth = w;
-                PivotHeader6Border.MaxWidth = w;
             }
         }
         #endregion
@@ -58,7 +48,6 @@ namespace ShadowRunHelper.UI
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             Debug_TimeAnalyser.Start("PChar.OnNavigatedTo");
-            LoadCategoryOptions();
             if (SettingsModel.I.DISPLAY_REQUEST)
             {
                 try
@@ -199,46 +188,6 @@ namespace ShadowRunHelper.UI
             {
                 return (System.Collections.Generic.IEnumerator<object>)base.GetEnumerator();
             }
-        }
-        public void LoadCategoryOptions()
-        {
-            if (Model?.MainObject?.Settings?.CategoryOptions == null)
-            {
-                return;
-            }
-            List<GroupInfoList<object>> DataGrouped = new List<GroupInfoList<object>>();
-            var query = from opt in Model.MainObject.Settings.CategoryOptions
-                        group opt by opt.Pivot into g
-                        select new { GroupNr = g.Key, Items = g };
-
-            foreach (var g in query)
-            {
-                GroupInfoList<object> info = new GroupInfoList<object>();
-                switch (g.GroupNr)
-                {
-                    case 0:
-                        info.Key = StringHelper.GetString("Char_View_Pivot_Aktion/Label");
-                        break;
-                    case 1:
-                        info.Key = StringHelper.GetString("Char_View_Pivot_Item/Label");
-                        break;
-                    case 2:
-                        info.Key = StringHelper.GetString("Char_View_Pivot_Kampf/Label");
-                        break;
-                    case 3:
-                        info.Key = StringHelper.GetString("Char_View_Pivot_Person/Label");
-                        break;
-                    default:
-                        break;
-                }
-
-                foreach (var item in g.Items)
-                {
-                    info.Add(item);
-                }
-                DataGrouped.Add(info);
-            }
-            GroupedCategoryOptions.Source = DataGrouped;
         }
         void ResetButton_Click(object sender, RoutedEventArgs e)
         {

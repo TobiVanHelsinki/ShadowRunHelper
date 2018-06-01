@@ -7,11 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:CharModel="using:ShadowRunHelper.CharModel"
     mc:Ignorable="d"
-    Title="TITLE"
-    PrimaryButtonText="Button1"
-    SecondaryButtonText="Button2"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
     >
     <ContentDialog.Resources>
         <ResourceDictionary>
@@ -21,9 +16,19 @@
             <CollectionViewSource x:Name="GroupedCategoryOptions" IsSourceGrouped="true" />
         </ResourceDictionary>
     </ContentDialog.Resources>
-    <ListView ItemsSource="{Binding Source={StaticResource GroupedCategoryOptions}}"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListView ItemsSource="{Binding Source={StaticResource GroupedCategoryOptions}}"
                               ShowsScrollingPlaceholders="True"
                               SelectionMode="None"
+                  Grid.ColumnSpan="2"
                               >
             <ListView.GroupStyle>
                 <GroupStyle>
@@ -50,4 +55,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button x:Uid="UI_CNT_Close" Click="CloseButton_Click" Grid.Row="1"/>
+        <Button x:Uid="UI_CNT_Reset" Click="ResetButton_Click" Grid.Row="1" Grid.Column="1"/>
+    </Grid>
 </ContentDialog>

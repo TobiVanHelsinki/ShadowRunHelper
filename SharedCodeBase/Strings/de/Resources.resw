@@ -1158,7 +1158,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="UI_Settings_Btn_Speichern.Content" xml:space="preserve">
     <value>Neuladen zum Anwenden</value>
   </data>
-  <data name="UI_Settings_Btn_Reset.Content" xml:space="preserve">
+  <data name="UI_CNT_Reset.Content" xml:space="preserve">
     <value>Zurücksetzen</value>
   </data>
   <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
@@ -1580,5 +1580,11 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   </data>
   <data name="UI_TxT_CharSettings.ToolTipService.ToolTip" xml:space="preserve">
     <value>Damit kannst du diese Ansicht konfigurieren.</value>
+  </data>
+  <data name="UI_CLS_Close.Content" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="UI_CNT_Close.Content" xml:space="preserve">
+    <value>Schließen</value>
   </data>
 </root>
