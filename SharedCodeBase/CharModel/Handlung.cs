@@ -84,18 +84,18 @@ namespace ShadowRunHelper.CharModel
             GegenZusammensetzung = new LinkList(this);
             GegenZusammensetzung.FilterOut = Filter;
 
-            PropertyChanged += Handlung_PropertyChanged;
+            PropertyChanged += This_PropertyChanged;
             GrenzeZusammensetzung.OnCollectionChangedCall(UpdateGrenze);
             GegenZusammensetzung.OnCollectionChangedCall(UpdateGegen);
         }
 
-        void Handlung_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void This_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Grenze")
+            if (e.PropertyName == nameof(Grenze))
             {
                 UpdateGrenze();
             }
-            if (e.PropertyName == "Gegen")
+            if (e.PropertyName == nameof(Gegen))
             {
                 UpdateGegen();
             }

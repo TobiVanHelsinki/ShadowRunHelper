@@ -1385,20 +1385,32 @@
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"  Style="{StaticResource Category_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}" />
-<Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                        <Run Text="{x:Bind Typ, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}" />
+                        <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
                     </TextBlock>
-                    <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                    <TextBlock Grid.Column="1" Text="{x:Bind Target, Mode=OneWay}" Style="{StaticResource Category_Item_Text}"/>
+                    <TextBlock Grid.Column="2" Text="{x:Bind Duration, Mode=OneWay}" Style="{StaticResource Category_Item_Text}"/>
+                    <TextBlock Grid.Column="3" Text="{x:Bind Fading, Mode=OneWay}" Style="{StaticResource Category_Item_Text}"/>
+                    <TextBlock Grid.Column="4" Style="{StaticResource Category_Item_Text}">
+                        <Run Text="{x:Bind WertCalced, Mode=OneWay}"/>
+                        <Run x:Uid="Space"/>
+                        <Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
+                        <Run Text="{x:Bind GrenzeCalced, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Rect, Mode=OneWay}"/>
+                        <Run Text="{x:Bind GegenCalced, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=DashR, Mode=OneWay}"/>
                     </TextBlock>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="KomplexeFormItemX" x:DataType="CharModel:KomplexeForm">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -1426,6 +1438,8 @@
                             <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
                     </TextBlock>
                     <ui:LinkListEntry Grid.Row="3" Grid.ColumnSpan="2" List="{x:Bind LinkedThings, Mode=OneWay}" Value="{x:Bind WertCalced, Mode=OneWay}" RawValue="{x:Bind Wert, Mode=OneWay}"/>
+                    <ui:LinkListEntry Grid.Row="4" Grid.ColumnSpan="2" List="{x:Bind GrenzeZusammensetzung, Mode=OneWay}" x:Uid="Model_Handlung_Grenze" Value="{x:Bind GrenzeCalced, Mode=OneWay}" RawValue="{x:Bind Grenze, Mode=OneWay}"  />
+                    <ui:LinkListEntry Grid.Row="5" Grid.ColumnSpan="2" List="{x:Bind GegenZusammensetzung, Mode=OneWay}" x:Uid="Model_Handlung_Gegen" Value="{x:Bind GegenCalced, Mode=OneWay}" RawValue="{x:Bind Gegen, Mode=OneWay}"  />
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="WidgetsItem" x:DataType="CharModel:Widgets">

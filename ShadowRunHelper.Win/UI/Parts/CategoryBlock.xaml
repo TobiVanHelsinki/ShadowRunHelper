@@ -301,9 +301,17 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" x:Uid="Model_Thing_Bezeichner"  Style="{StaticResource Category_Head_Items}"/>
-                    <TextBlock Grid.Column="1" x:Uid="Model_Thing_Wert" Style="{StaticResource Category_Head_Items}"/>
+                    <TextBlock Grid.Column="1" x:Uid="Model_KomplexForm_Target" Style="{StaticResource Category_Item_Text}"/>
+                    <TextBlock Grid.Column="2" x:Uid="Model_KomplexForm_Duration" Style="{StaticResource Category_Item_Text}"/>
+                    <TextBlock Grid.Column="3" x:Uid="Model_KomplexForm_Fading" Style="{StaticResource Category_Item_Text}"/>
+                    <TextBlock Name="Pool" Grid.Column="4">
+                                <Run x:Uid="Model_Thing_Wert_W"/><Run x:Uid="Plus"/><Run x:Uid="Model_Handlung_Mod"/><Run x:Uid="KlammerAufEck"/><Run x:Uid="Model_Handlung_Grenze"/><Run x:Uid="KlammerZuEck"/><Run x:Uid="Bindestrich"/><Run x:Uid="Model_Handlung_Gegen"/>
+                    </TextBlock>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Widgets_E" x:Key="Widgets_E">

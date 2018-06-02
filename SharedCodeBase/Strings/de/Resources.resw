@@ -1587,4 +1587,13 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="UI_CNT_Close.Content" xml:space="preserve">
     <value>Schließen</value>
   </data>
+  <data name="Model_KomplexForm_Duration.Text" xml:space="preserve">
+    <value>Dauer</value>
+  </data>
+  <data name="Model_KomplexForm_Fading.Text" xml:space="preserve">
+    <value>Schwund</value>
+  </data>
+  <data name="Model_KomplexForm_Target.Text" xml:space="preserve">
+    <value>Ziel</value>
+  </data>
 </root>

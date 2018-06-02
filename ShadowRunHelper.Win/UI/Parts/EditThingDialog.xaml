@@ -459,10 +459,17 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_KomplexeForm_Option" />
-                    <TextBox GotFocus="EditBox_GotFocus" TabIndex="10" Name="Optionen" Text="{x:Bind Option, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1"/>
+                    <!--<TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_KomplexeForm_Option" />-->
+                    <TextBlock x:Uid="Model_KomplexForm_Target" Style="{StaticResource EditTextBlock}" Grid.Column="0" Grid.Row="0"/>
+                    <TextBlock x:Uid="Model_KomplexForm_Duration" Style="{StaticResource EditTextBlock}" Grid.Column="0" Grid.Row="1"/>
+                    <TextBlock x:Uid="Model_KomplexForm_Fading" Style="{StaticResource EditTextBlock}" Grid.Column="0" Grid.Row="2"/>
+                    <TextBox GotFocus="EditBox_GotFocus" TabIndex="11" Text="{x:Bind Target, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="0"/>
+                    <TextBox GotFocus="EditBox_GotFocus" TabIndex="12" Text="{x:Bind Duration, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="1"/>
+                    <TextBox GotFocus="EditBox_GotFocus" TabIndex="13" Text="{x:Bind Fading, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="2"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="Widgets" x:DataType="CharModel:Widgets">
