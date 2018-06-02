@@ -61,28 +61,30 @@ namespace ShadowRunHelper.CharController
             Resonanz = new Attribut();
             RefreshIdentifiers();
 
-            MI_Konsti = new AllListEntry(Konsti, "");
-            MI_Geschick = new AllListEntry(Geschick, "");
-            MI_Reaktion = new AllListEntry(Reaktion, "");
-            MI_Staerke = new AllListEntry(Staerke, "");
-            MI_Charisma = new AllListEntry(Charisma, "");
-            MI_Logik = new AllListEntry(Logik, "");
-            MI_Intuition = new AllListEntry(Intuition, "");
-            MI_Willen = new AllListEntry(Willen, "");
-            MI_Magie= new AllListEntry(Magie, "");
-            MI_Resonanz= new AllListEntry(Resonanz, "");
+            MI_Konsti = new AllListEntry(Konsti);
+            MI_Geschick = new AllListEntry(Geschick);
+            MI_Reaktion = new AllListEntry(Reaktion);
+            MI_Staerke = new AllListEntry(Staerke);
+            MI_Charisma = new AllListEntry(Charisma);
+            MI_Logik = new AllListEntry(Logik);
+            MI_Intuition = new AllListEntry(Intuition);
+            MI_Willen = new AllListEntry(Willen);
+            MI_Magie= new AllListEntry(Magie);
+            MI_Resonanz= new AllListEntry(Resonanz);
 
-            Data = new ObservableCollection<Attribut>();
-            Data.Add(Charisma);
-            Data.Add(Konsti);
-            Data.Add(Reaktion);
-            Data.Add(Staerke);
-            Data.Add(Geschick);
-            Data.Add(Logik);
-            Data.Add(Intuition);
-            Data.Add(Willen);
-            Data.Add(Magie);
-            Data.Add(Resonanz);
+            Data = new ObservableCollection<Attribut>
+            {
+                Charisma,
+                Konsti,
+                Reaktion,
+                Staerke,
+                Geschick,
+                Logik,
+                Intuition,
+                Willen,
+                Magie,
+                Resonanz
+            };
         }
 
         void RefreshIdentifiers()

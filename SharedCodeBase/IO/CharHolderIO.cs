@@ -29,7 +29,7 @@ namespace ShadowRunHelper.IO
                 object o = serializer.Deserialize(jsonObject.CreateReader());
                 return o;
             }
-            JToken ThingTypeValue = jsonObject.GetValue("ThingType");
+            JToken ThingTypeValue = jsonObject.GetValue(nameof(Thing.ThingType));
             var IntThingType = ThingTypeValue.Value<Int64>();
             Type Should = TypeHelper.ThingDefToType((ThingDefs)IntThingType);
             Thing target = (Thing)Activator.CreateInstance(Should);

@@ -136,7 +136,6 @@ namespace ShadowRunHelper.Model
             CTRLList.Add(CTRLImplantat);
 
             CTRLList.Add(CTRLAdeptenkraft);
-            CTRLList.Add(CTRLKomplexeForm);
             CTRLList.Add(CTRLZaubersprueche);
             CTRLList.Add(CTRLFoki);
             CTRLList.Add(CTRLWidgets);
@@ -163,6 +162,7 @@ namespace ShadowRunHelper.Model
             CTRLList.Add(CTRLSin);
 
             CTRLList.Add(CTRLHandlung);
+            CTRLList.Add(CTRLKomplexeForm);
 
 
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);

@@ -59,7 +59,7 @@ namespace ShadowRunHelper.CharController
 
         public virtual IEnumerable<AllListEntry> GetElementsForThingList()
         {
-            return Data.Select(item => new AllListEntry(item, ""));
+            return Data.Select(item => new AllListEntry(item));
         }
 
         /// <summary>

@@ -1437,7 +1437,7 @@
                             <Run x:Uid="Space" FontWeight="Bold"/>
                             <Run Text="{x:Bind Notiz, Mode=OneWay}"/>
                     </TextBlock>
-                    <ui:LinkListEntry Grid.Row="3" Grid.ColumnSpan="2" List="{x:Bind LinkedThings, Mode=OneWay}" Value="{x:Bind WertCalced, Mode=OneWay}" RawValue="{x:Bind Wert, Mode=OneWay}"/>
+                    <ui:LinkListEntry Grid.Row="3" Grid.ColumnSpan="2" List="{x:Bind LinkedThings, Mode=OneWay}" x:Uid="Model_Handlung_Zusammensetzung" Value="{x:Bind WertCalced, Mode=OneWay}" RawValue="{x:Bind Wert, Mode=OneWay}"/>
                     <ui:LinkListEntry Grid.Row="4" Grid.ColumnSpan="2" List="{x:Bind GrenzeZusammensetzung, Mode=OneWay}" x:Uid="Model_Handlung_Grenze" Value="{x:Bind GrenzeCalced, Mode=OneWay}" RawValue="{x:Bind Grenze, Mode=OneWay}"  />
                     <ui:LinkListEntry Grid.Row="5" Grid.ColumnSpan="2" List="{x:Bind GegenZusammensetzung, Mode=OneWay}" x:Uid="Model_Handlung_Gegen" Value="{x:Bind GegenCalced, Mode=OneWay}" RawValue="{x:Bind Gegen, Mode=OneWay}"  />
                 </Grid>
