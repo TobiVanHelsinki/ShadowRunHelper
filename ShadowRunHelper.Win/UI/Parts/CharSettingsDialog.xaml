@@ -55,7 +55,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button x:Uid="UI_CNT_Close" Click="CloseButton_Click" Grid.Row="1"/>
-        <Button x:Uid="UI_CNT_Reset" Click="ResetButton_Click" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Uid="UI_CNT_Close" Click="CloseButton_Click" Grid.Row="1" HorizontalAlignment="Stretch" Margin="5"/>
+        <Button x:Uid="UI_CNT_Reset" Click="ResetButton_Click" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5"/>
     </Grid>
 </ContentDialog>
