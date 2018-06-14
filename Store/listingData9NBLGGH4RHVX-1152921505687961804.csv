@@ -1,0 +1,249 @@
+﻿Field,ID,Type (Typ),default,en,de
+Description,2,Text,,"NeoNet presents: A ShadowRun 5 character sheet as an app - with all the advantages of the new matrix.
+Create your char once and benefit from automatic calculations of dice pools, essence, damagemaxima and many more.
+WiFi Advantage: Windows internal synchronization over all your commlinks
+SuperBild says: ""The best you can get here"".
+
+","NeoNet präsentiert: Einen ShadowRun 5 Charakterbogen als App - mit allen Vorzügen der neuen Matrix.
+* Erstelle deinen Char einmal und profitiere von automatischen Berechnungen von Würfelpools, Essenz, Schadensmaxima und vielen weiteren.
+WiFi Vorteil: Windows interne Synchronisation über all deine Kommlinks
+SuperBild meint: Das beste, was man hier zu Lande bekommen kann.
+
+* Beispiel: Nao (Hacker) hat sich eine Handlung ""Eiliges Hacken"" angelegt und möchte Wissen, wie groß sein Würfelpool bei dieser Handlung ist. Er hat angegeben, dass ""Eiliges Hacken"" aus Hacking(4)+Logik(6) besteht und als Limit das Schleicher-Attribut hat. Er konfiguriert vorher noch sein Deck um, damit das Schleicher Attribut 3 wird, aktiviert das Programm ""Ausnutzen"" (+2 Limit) und würfelt dann mit 10 Würfeln mit einem Limit von 5.
+* Nach dem Run steigert er ""Hacking"" auf 5 und muss sich um nichts weiter kümmern, denn die automatischen Matrix-Berechnungen halten alle seine Handlungen aktuell.
+"
+ReleaseNotes,3,Text,,"[new] Category options (Sort, Export,...)
+[new] Technomancer Categories
+[new] Own categories for calculated values
+[new] Links are now possible for attributes and battle items
+[new] Links are now possible with every item
+[new] Example Character
+[new] Multi-window option (for Windows April Update)
+[new] Drag and Drop between different windows (for Windows April Update)
+[new] TimeLine Integration (for Windows April Update)
+[new] notifications
+[new] no more reloading to apply char options
+[new] added many tooltips for buttons
+[new] complete English translation
+[new] Drag and Drop between categories
+[new] Seperators
+
+Version history now at the web:
+https://github.com/TobiVanHelsinki/ShadowRunHelper/releases","[new] Kategorieoptionen (Sortieren, Exportieren, ...)
+[new] Technomancer Kategorien
+[new] Eigene Kategorien für berechnete Werte
+[new] Verlinkungen sind jetzt möglich für Attribute und Kampfitems
+[new] Verlinkungen sind jetzt mit jedem Item möglich
+[new] Beispiel Charakter
+[new] Multifenster Option (für Windows April Update)
+[new] Drag and Drop zwischen verschiedenen Fenstern (für Windows April Update)
+[new] TimeLine Integration (für Windows April Update)
+[new] Benachrichtigungen
+[new] kein Neuladen mehr zum Anwenden der Char-Optionen
+[new] viele Tooltips für Buttons hinzugefügt
+[new] komplette englische Übersetzung
+[new] Drag and Drop zwischen Kategorien
+[new] Seperatoren
+
+Versionshistorie jetzt im Web:
+https://github.com/TobiVanHelsinki/ShadowRunHelper/releases"
+Title,4,Text,,ShadowRunHelper,ShadowRunHelper
+ShortTitle,5,Text,,,
+SortTitle,6,Text,,,
+VoiceTitle,7,Text,,,
+ShortDescription,8,Text,,,
+DevStudio,9,Text,,,
+SupportContactInfo,10,URL oder E-Mail-Adresse,,,
+PrivacyPolicyUrl,11,URL,,,
+CopyrightTrademarkInformation,12,Text,,,
+AdditionalLicenseTerms,13,Text,,,
+Website,14,URL,,,
+DesktopScreenshot1,100,Relativer Pfad (oder URL zur Datei in Dev Center),,https://developer.microsoft.com/en-us/dashboard/apps/9NBLGGH4RHVX/submissions/1152921505687961804/listings/1152921504656779142/listingassets/1152921504740752424,https://developer.microsoft.com/en-us/dashboard/apps/9NBLGGH4RHVX/submissions/1152921505687961804/listings/2000000000006202770/listingassets/2000000000006657605
+DesktopScreenshot2,101,Relativer Pfad (oder URL zur Datei in Dev Center),,https://developer.microsoft.com/en-us/dashboard/apps/9NBLGGH4RHVX/submissions/1152921505687961804/listings/1152921504656779142/listingassets/1152921504740752425,
+DesktopScreenshot3,102,Relativer Pfad (oder URL zur Datei in Dev Center),,https://developer.microsoft.com/en-us/dashboard/apps/9NBLGGH4RHVX/submissions/1152921505687961804/listings/1152921504656779142/listingassets/1152921504740752426,
+DesktopScreenshot4,103,Relativer Pfad (oder URL zur Datei in Dev Center),,https://developer.microsoft.com/en-us/dashboard/apps/9NBLGGH4RHVX/submissions/1152921505687961804/listings/1152921504656779142/listingassets/1152921504740752333,
+DesktopScreenshot5,104,Relativer Pfad (oder URL zur Datei in Dev Center),,https://developer.microsoft.com/en-us/dashboard/apps/9NBLGGH4RHVX/submissions/1152921505687961804/listings/1152921504656779142/listingassets/1152921504740752427,
+DesktopScreenshot6,105,Relativer Pfad (oder URL zur Datei in Dev Center),,https://developer.microsoft.com/en-us/dashboard/apps/9NBLGGH4RHVX/submissions/1152921505687961804/listings/1152921504656779142/listingassets/1152921504740752428,
+DesktopScreenshot7,106,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+DesktopScreenshot8,107,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+DesktopScreenshot9,108,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+DesktopScreenshot10,109,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+DesktopScreenshotCaption1,150,Text,,,
+DesktopScreenshotCaption2,151,Text,,,
+DesktopScreenshotCaption3,152,Text,,,
+DesktopScreenshotCaption4,153,Text,,,
+DesktopScreenshotCaption5,154,Text,,,
+DesktopScreenshotCaption6,155,Text,,,
+DesktopScreenshotCaption7,156,Text,,,
+DesktopScreenshotCaption8,157,Text,,,
+DesktopScreenshotCaption9,158,Text,,,
+DesktopScreenshotCaption10,159,Text,,,
+MobileScreenshot1,200,Relativer Pfad (oder URL zur Datei in Dev Center),,,https://developer.microsoft.com/en-us/dashboard/apps/9NBLGGH4RHVX/submissions/1152921505687961804/listings/2000000000006202770/listingassets/2000000000006657609
+MobileScreenshot2,201,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+MobileScreenshot3,202,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+MobileScreenshot4,203,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+MobileScreenshot5,204,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+MobileScreenshot6,205,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+MobileScreenshot7,206,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+MobileScreenshot8,207,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+MobileScreenshot9,208,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+MobileScreenshot10,209,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+MobileScreenshotCaption1,250,Text,,,
+MobileScreenshotCaption2,251,Text,,,
+MobileScreenshotCaption3,252,Text,,,
+MobileScreenshotCaption4,253,Text,,,
+MobileScreenshotCaption5,254,Text,,,
+MobileScreenshotCaption6,255,Text,,,
+MobileScreenshotCaption7,256,Text,,,
+MobileScreenshotCaption8,257,Text,,,
+MobileScreenshotCaption9,258,Text,,,
+MobileScreenshotCaption10,259,Text,,,
+XboxScreenshot1,300,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxScreenshot2,301,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxScreenshot3,302,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxScreenshot4,303,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxScreenshot5,304,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxScreenshot6,305,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxScreenshot7,306,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxScreenshot8,307,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxScreenshot9,308,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxScreenshot10,309,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxScreenshotCaption1,350,Text,,,
+XboxScreenshotCaption2,351,Text,,,
+XboxScreenshotCaption3,352,Text,,,
+XboxScreenshotCaption4,353,Text,,,
+XboxScreenshotCaption5,354,Text,,,
+XboxScreenshotCaption6,355,Text,,,
+XboxScreenshotCaption7,356,Text,,,
+XboxScreenshotCaption8,357,Text,,,
+XboxScreenshotCaption9,358,Text,,,
+XboxScreenshotCaption10,359,Text,,,
+HolographicScreenshot1,400,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+HolographicScreenshot2,401,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+HolographicScreenshot3,402,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+HolographicScreenshot4,403,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+HolographicScreenshot5,404,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+HolographicScreenshot6,405,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+HolographicScreenshot7,406,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+HolographicScreenshot8,407,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+HolographicScreenshot9,408,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+HolographicScreenshot10,409,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+HolographicScreenshotCaption1,450,Text,,,
+HolographicScreenshotCaption2,451,Text,,,
+HolographicScreenshotCaption3,452,Text,,,
+HolographicScreenshotCaption4,453,Text,,,
+HolographicScreenshotCaption5,454,Text,,,
+HolographicScreenshotCaption6,455,Text,,,
+HolographicScreenshotCaption7,456,Text,,,
+HolographicScreenshotCaption8,457,Text,,,
+HolographicScreenshotCaption9,458,Text,,,
+HolographicScreenshotCaption10,459,Text,,,
+StoreLogo720x1080,600,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+StoreLogo1080x1080,601,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+StoreLogo300x300,602,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+PromoImage1920x1080,606,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+PromoImage2400x1200,607,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxBrandedKeyArt584x800,608,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxTitledHero1920x1080,609,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+XboxFeaturedPromo1080x1080,610,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+SearchTerm1,900,Text,,,
+SearchTerm2,901,Text,,,
+SearchTerm3,902,Text,,,
+SearchTerm4,903,Text,,,
+SearchTerm5,904,Text,,,
+SearchTerm6,905,Text,,,
+SearchTerm7,906,Text,,,
+TrailerToPlayAtTopOfListing,999,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer1,1000,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer2,1001,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer3,1002,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer4,1003,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer5,1004,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer6,1005,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer7,1006,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer8,1007,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer9,1008,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer10,1009,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer11,1010,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer12,1011,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer13,1012,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer14,1013,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Trailer15,1014,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerTitle1,1020,Text,,,
+TrailerTitle2,1021,Text,,,
+TrailerTitle3,1022,Text,,,
+TrailerTitle4,1023,Text,,,
+TrailerTitle5,1024,Text,,,
+TrailerTitle6,1025,Text,,,
+TrailerTitle7,1026,Text,,,
+TrailerTitle8,1027,Text,,,
+TrailerTitle9,1028,Text,,,
+TrailerTitle10,1029,Text,,,
+TrailerTitle11,1030,Text,,,
+TrailerTitle12,1031,Text,,,
+TrailerTitle13,1032,Text,,,
+TrailerTitle14,1033,Text,,,
+TrailerTitle15,1034,Text,,,
+TrailerThumbnail1,1040,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail2,1041,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail3,1042,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail4,1043,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail5,1044,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail6,1045,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail7,1046,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail8,1047,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail9,1048,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail10,1049,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail11,1050,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail12,1051,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail13,1052,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail14,1053,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+TrailerThumbnail15,1054,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+OverrideLogosForWin10,603,True/False,,False,False
+StoreLogoOverride150x150,604,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+StoreLogoOverride71x71,605,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+OptionalPromo358x358,611,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+OptionalPromo1000x800,612,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+OptionalPromo414x180,613,Relativer Pfad (oder URL zur Datei in Dev Center),,,
+Feature1,700,Text,,,Automatische Berechnungen
+Feature2,701,Text,,,Schnellsuche
+Feature3,702,Text,,,Automatische Speicherung
+Feature4,703,Text,,,Design passt sich an Farbe und Displaygröße an
+Feature5,704,Text,,,viele Optionen
+Feature6,705,Text,,,
+Feature7,706,Text,,,
+Feature8,707,Text,,,
+Feature9,708,Text,,,
+Feature10,709,Text,,,
+Feature11,710,Text,,,
+Feature12,711,Text,,,
+Feature13,712,Text,,,
+Feature14,713,Text,,,
+Feature15,714,Text,,,
+Feature16,715,Text,,,
+Feature17,716,Text,,,
+Feature18,717,Text,,,
+Feature19,718,Text,,,
+Feature20,719,Text,,,
+MinimumHardwareReq1,800,Text,,,
+MinimumHardwareReq2,801,Text,,,
+MinimumHardwareReq3,802,Text,,,
+MinimumHardwareReq4,803,Text,,,
+MinimumHardwareReq5,804,Text,,,
+MinimumHardwareReq6,805,Text,,,
+MinimumHardwareReq7,806,Text,,,
+MinimumHardwareReq8,807,Text,,,
+MinimumHardwareReq9,808,Text,,,
+MinimumHardwareReq10,809,Text,,,
+MinimumHardwareReq11,810,Text,,,
+RecommendedHardwareReq1,850,Text,,,
+RecommendedHardwareReq2,851,Text,,,
+RecommendedHardwareReq3,852,Text,,,
+RecommendedHardwareReq4,853,Text,,,
+RecommendedHardwareReq5,854,Text,,,
+RecommendedHardwareReq6,855,Text,,,
+RecommendedHardwareReq7,856,Text,,,
+RecommendedHardwareReq8,857,Text,,,
+RecommendedHardwareReq9,858,Text,,,
+RecommendedHardwareReq10,859,Text,,,
+RecommendedHardwareReq11,860,Text,,,
