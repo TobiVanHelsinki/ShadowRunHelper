@@ -28,31 +28,9 @@ namespace ShadowRunHelper.UI
             NavigationCacheMode = NavigationCacheMode.Required;
         }
 
-        void CheckIAP()
-        {
-            if (!Constants.IAP_HIDEADS)
-            {
-                Ad_MainPageRight.ApplicationId = Constants.AD_APPID;
-                Ad_MainPageBottom.ApplicationId = Constants.AD_APPID;
-                Ad_MainPageRight.AdUnitId = Constants.AD_ADID_MainPageRight;
-                Ad_MainPageBottom.AdUnitId = Constants.AD_ADID_MainPageBottom;
-            }
-            else
-            {
-                Ad_MainPageRight.Visibility = Visibility.Collapsed;
-                Ad_MainPageRight.Width = 0;
-                Ad_MainPageBottom.Visibility = Visibility.Collapsed;
-                Ad_MainPageBottom.Height = 0;
-                Ad_MainPageRightBox.Visibility = Visibility.Collapsed;
-                Ad_MainPageBottomBox.Visibility = Visibility.Collapsed;
-                Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
-                Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
-            }
-        }
-
+    
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            CheckIAP();
             try
             {
                 var Page = MainNavigation.Items.FirstOrDefault(x => (x as PivotItem).Tag.ToString() == ((int)e.Parameter).ToString());
@@ -121,20 +99,16 @@ namespace ShadowRunHelper.UI
         async void IAP_ADS(object sender, RoutedEventArgs e)
         {
             await IAP.Buy(Constants.IAP_FEATUREID_ADFREE);
-            CheckIAP();
         }
 
         async void IAP_ADS_365(object sender, RoutedEventArgs e)
         {
             await IAP.Buy(Constants.IAP_FEATUREID_ADFREE_365);
-            CheckIAP();
-
         }
 
         async void IAP_Tee(object sender, RoutedEventArgs e)
         {
             await IAP.Buy(Constants.IAP_FEATUREID_TEE);
-            CheckIAP();
         }
         #endregion
         #region Analytics

@@ -6,7 +6,6 @@
     xmlns:TLIBModel="using:TAPPLICATION.Model"
     xmlns:System="using:System"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Ad="using:Microsoft.Advertising.WinRT.UI"
     xmlns:model="using:ShadowRunHelper.Model"
     xmlns:UI="using:ShadowRunHelper.Win.UI"
     mc:Ignorable="d">
@@ -77,48 +76,7 @@
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/> 
-        </Grid.ColumnDefinitions>
-        <VisualStateManager.VisualStateGroups>
-            <!-- Ads -->
-            <VisualStateGroup x:Name="Trigger_Ads">
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="640"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="Ad_MainPageRight.Visibility" Value="Visible"/>
-                        <Setter Target="Ad_MainPageBottom.Visibility" Value="Collapsed"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="Ad_MainPageRight.Visibility" Value="Collapsed"/>
-                        <Setter Target="Ad_MainPageBottom.Visibility" Value="Visible"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-
-        </VisualStateManager.VisualStateGroups>
-        <Viewbox Grid.Column="1" x:Name="Ad_MainPageRightBox">
-            <Ad:AdControl Width="160" Height="600" x:Name="Ad_MainPageRight"
-                HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Viewbox>
-        <Viewbox Grid.Row="4" Grid.ColumnSpan="2" x:Name="Ad_MainPageBottomBox">
-            <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        </Viewbox>
-        <Pivot x:Name="MainNavigation" SelectionChanged="MainNavigation_SelectionChanged">
+    <Pivot x:Name="MainNavigation" SelectionChanged="MainNavigation_SelectionChanged">
             <PivotItem Tag="31">
                 <PivotItem.Header>
                     <TextBlock x:Uid="UI_Optionen_U_Infos" Style="{StaticResource ueberschrift1}"/>
@@ -262,5 +220,4 @@
                 <ListView ItemTemplate="{StaticResource Notification}" ItemContainerStyle="{StaticResource ListViewItemStyle}" ItemsSource="{x:Bind Model.lstNotifications, Mode=OneWay}" SelectionChanged="ListView_SelectionChanged" SelectionMode="None" IsMultiSelectCheckBoxEnabled="False"></ListView>
             </PivotItem>
         </Pivot>
-    </Grid>
 </Page>
