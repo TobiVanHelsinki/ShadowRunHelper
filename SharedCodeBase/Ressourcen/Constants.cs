@@ -102,26 +102,31 @@ namespace ShadowRunHelper
             new HelpEntry() { Paragraph = StringHelper.GetString("Help2_AutoCalc"), Text = StringHelper.GetString("Help2") },
         };
         #endregion
+        #region Orga-Stuff
+#if BETA
+        public const string APP_STORE_ID_SRE = "9ncxwgx1kr8s";
+#elif RELEASE
+        //public const string APP_STORE_ID_SRC = "9nblggh4rhvx";
+        public const string APP_STORE_ID_SRE = "9nblggh4rhvx";
+#endif
+        public const string APP_PUBLISHER_MAIL_TvH = "TobiVanHelsinki@live.de";
+        public const string APP_PUBLISHER_TvH = "Tobi van Helsinki";
+
+        #endregion
         #region IAPs
         public static List<string> IAP_STORE_LIST_ADDON_TYPES = new List<string>() { "Durable", "Consumable", "UnmanagedConsumable" };
-
 #if BETA
+        public const string AD_ADID_MainPageRight = "1100021541";
+        public const string AD_ADID_MainPageBottom = "1100021012";
         public const string IAP_FEATUREID_ADFREE_365 = "--";
         public const string IAP_FEATUREID_ADFREE = "--";
         public const string IAP_FEATUREID_TEE = "9N6G5Z236BTH";
 #elif RELEASE
+        public const string AD_ADID_MainPageRight = "1100022060";
+        public const string AD_ADID_MainPageBottom = "1100022061";
         public const string IAP_FEATUREID_ADFREE_365 = "9NKHSRWSBMRD";
         public const string IAP_FEATUREID_ADFREE = "9NMBBTFVKW84";
         public const string IAP_FEATUREID_TEE = "9PJF3SD71T40";
-#endif
-#if BETA
-        public const string AD_APPID = "9ncxwgx1kr8s";
-        public const string AD_ADID_MainPageRight = "1100021541";
-        public const string AD_ADID_MainPageBottom = "1100021012";
-#elif RELEASE
-        public const string AD_APPID = "9nblggh4rhvx";
-        public const string AD_ADID_MainPageRight = "1100022060";
-        public const string AD_ADID_MainPageBottom = "1100022061";
 #endif
 
         public static bool IAP_HIDEADS { get; internal set; }
@@ -133,7 +138,6 @@ namespace ShadowRunHelper
 #elif RELEASE
             "ef331e8e-b76a-41c1-a93a-a1a9d475b141";
 #endif
-
         #endregion
     }
 }

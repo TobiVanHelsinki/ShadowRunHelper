@@ -86,14 +86,9 @@ namespace ShadowRunHelper
         public void SetConstantStuff()
         {
             SharedConstants.APP_VERSION_BUILD_DELIM = String.Format("{0}.{1}.{2}.{3}", Package.Current.Id.Version.Major, Package.Current.Id.Version.Minor, Package.Current.Id.Version.Build, Package.Current.Id.Version.Revision);
-            SharedConstants.APP_PUBLISHER_MAIL = "TobiVanHelsinki@live.de";
-            SharedConstants.APP_PUBLISHER = "Tobi van Helsinki";
-#if BETA
-            SharedConstants.APP_STORE_ID = "9NCXWGX1KR8S";
-#elif RELEASE
-            //SharedConstants.APP_STORE_ID = "9NBLGGH4RHVX";
-            SharedConstants.APP_STORE_ID = "---"; //TODO
-#endif
+            SharedConstants.APP_PUBLISHER_MAIL = Constants.APP_PUBLISHER_MAIL_TvH;
+            SharedConstants.APP_PUBLISHER = Constants.APP_PUBLISHER_TvH;
+            SharedConstants.APP_STORE_ID = Constants.APP_STORE_ID_SRE;
         }
 
         #endregion
