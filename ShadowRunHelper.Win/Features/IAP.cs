@@ -14,6 +14,7 @@ namespace ShadowRunHelper
             Constants.IAP_HIDEADS = true;
             return;
             //TODO introduce kind of caching
+            //TODO if API Contract of FCU not there, Hide Ads = true;
             try
             {
                 //Debug_TimeAnalyser.Start("IAP GetAddons");
