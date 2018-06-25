@@ -107,7 +107,7 @@ namespace ShadowRunHelper
         public const string APP_STORE_ID_SRE = "9ncxwgx1kr8s";
 #elif RELEASE
         //public const string APP_STORE_ID_SRC = "9nblggh4rhvx";
-        public const string APP_STORE_ID_SRE = "9nblggh4rhvx";
+        public const string APP_STORE_ID_SRE = "9N7SF3P3FP5J";
 #endif
         public const string APP_PUBLISHER_MAIL_TvH = "TobiVanHelsinki@live.de";
         public const string APP_PUBLISHER_TvH = "Tobi van Helsinki";
