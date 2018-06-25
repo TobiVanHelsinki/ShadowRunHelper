@@ -107,7 +107,7 @@ namespace ShadowRunHelper
         public const string APP_STORE_ID_SRE = "9ncxwgx1kr8s";
 #elif RELEASE
         //public const string APP_STORE_ID_SRC = "9nblggh4rhvx";
-        public const string APP_STORE_ID_SRE = "9N7SF3P3FP5J";
+        public const string APP_STORE_ID_SRE = "9n7sf3p3fp5j";
 #endif
         public const string APP_PUBLISHER_MAIL_TvH = "TobiVanHelsinki@live.de";
         public const string APP_PUBLISHER_TvH = "Tobi van Helsinki";
@@ -122,8 +122,8 @@ namespace ShadowRunHelper
         public const string IAP_FEATUREID_ADFREE = "--";
         public const string IAP_FEATUREID_TEE = "9N6G5Z236BTH";
 #elif RELEASE
-        public const string AD_ADID_MainPageRight = "1100022060";
-        public const string AD_ADID_MainPageBottom = "1100022061";
+        public const string AD_ADID_MainPageRight = "1100025839";
+        public const string AD_ADID_MainPageBottom = "-";
         public const string IAP_FEATUREID_ADFREE_365 = "9NKHSRWSBMRD";
         public const string IAP_FEATUREID_ADFREE = "9NMBBTFVKW84";
         public const string IAP_FEATUREID_TEE = "9PJF3SD71T40";
