@@ -1,4 +1,5 @@
-﻿using Microsoft.AppCenter.Analytics;
+﻿using Microsoft.Advertising.WinRT.UI;
+using Microsoft.AppCenter.Analytics;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
@@ -41,23 +42,28 @@ namespace ShadowRunHelper.UI
         }
         void CheckIAPStatus()
         {
-            if (!Constants.IAP_HIDEADS)
+            //if (!Constants.IAP_HIDEADS)
             {
-                Ad_MainPageRight.ApplicationId = Constants.AD_APPID;
-                Ad_MainPageBottom.ApplicationId = Constants.AD_APPID;
-                Ad_MainPageRight.AdUnitId = Constants.AD_ADID_MainPageRight;
-                Ad_MainPageBottom.AdUnitId = Constants.AD_ADID_MainPageBottom;
-            }
-            else
-            {
-                Ad_MainPageRight.Visibility = Visibility.Collapsed;
-                Ad_MainPageRight.Width = 0;
-                Ad_MainPageBottom.Visibility = Visibility.Collapsed;
-                Ad_MainPageBottom.Height = 0;
-                Ad_MainPageRightBox.Visibility = Visibility.Collapsed;
-                Ad_MainPageBottomBox.Visibility = Visibility.Collapsed;
-                //Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
-                //Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
+                Ad_MainPageBottomBox.Child = new AdControl()
+                {
+                    Width = 640,
+                    Height = 100,
+                    Name = "Ad_MainPageBottom",
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    VerticalAlignment = VerticalAlignment.Stretch,
+                    ApplicationId = Constants.APP_STORE_ID_SRE,
+                    AdUnitId = Constants.AD_ADID_MainPageBottom
+                };
+                Ad_MainPageRightBox.Child = new AdControl()
+                {
+                    Width = 160,
+                    Height = 600,
+                    Name = "Ad_MainPageRight",
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    ApplicationId = Constants.APP_STORE_ID_SRE,
+                    AdUnitId = Constants.AD_ADID_MainPageRight
+                };
             }
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
