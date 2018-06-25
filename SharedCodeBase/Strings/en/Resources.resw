@@ -1526,4 +1526,43 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="UI_CNT_Close.Content" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="Error_LoadCharFolder" xml:space="preserve">
+    <value>Error reading the char directory. Reset the external folder.</value>
+  </data>
+  <data name="AppImportErrors" xml:space="preserve">
+    <value>The import of the following settings or files failed.</value>
+  </data>
+  <data name="AppImportNoErrors" xml:space="preserve">
+    <value>The import was successful.</value>
+  </data>
+  <data name="Request_AppImport.No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Request_AppImport.Text" xml:space="preserve">
+    <value>Do you want to import the contents of another app? Settings are overwritten.</value>
+  </data>
+  <data name="Request_AppImport.Title" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Request_AppImport.Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="UI_TxT_CharSettings.Text" xml:space="preserve">
+    <value>Character sheet settings</value>
+  </data>
+  <data name="UI_TxT_CharSettings.ToolTipService.ToolTip" xml:space="preserve">
+    <value>This allows you to configure this view.</value>
+  </data>
+  <data name="UI_CLS_Close.Content" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Model_KomplexForm_Duration.Text" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Model_KomplexForm_Fading.Text" xml:space="preserve">
+    <value>Fading</value>
+  </data>
+  <data name="Model_KomplexForm_Target.Text" xml:space="preserve">
+    <value>Target</value>
+  </data>
 </root>

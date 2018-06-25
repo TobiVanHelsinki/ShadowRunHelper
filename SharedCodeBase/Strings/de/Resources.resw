@@ -1596,4 +1596,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Model_KomplexForm_Target.Text" xml:space="preserve">
     <value>Ziel</value>
   </data>
+  <data name="Notification_Error_SummorysREfresh" xml:space="preserve">
+    <value>Ordner konnte nicht gelesen werden</value>
+  </data>
 </root>
