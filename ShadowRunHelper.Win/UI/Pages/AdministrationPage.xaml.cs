@@ -42,7 +42,7 @@ namespace ShadowRunHelper.UI
         }
         void CheckIAPStatus()
         {
-            //if (!Constants.IAP_HIDEADS)
+            if (!Constants.IAP_HIDEADS)
             {
                 Ad_MainPageBottomBox.Child = new AdControl()
                 {
