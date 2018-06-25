@@ -252,22 +252,25 @@ namespace ShadowRunHelper
         async void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
         {
             var def = e.GetDeferral();
-            try
+            if (Model.MainObject != null)
             {
-                FileInfoClass SaveInfo;
-                if (Settings.AutoSave)
+                try
                 {
-                    SaveInfo = await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
-                    Settings.CountSavings++;
+                    FileInfoClass SaveInfo;
+                    if (Settings.AutoSave)
+                    {
+                        SaveInfo = await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
+                        Settings.CountSavings++;
+                    }
+                    else
+                    {
+                        SaveInfo = await SharedIO.SaveAtTempPlace(Model.MainObject);
+                    }
+                    Settings.CharInTempStore = true;
+                    Settings.LastSaveInfo = SaveInfo;
                 }
-                else
-                {
-                    SaveInfo = await SharedIO.SaveAtTempPlace(Model.MainObject);
-                }
-                Settings.CharInTempStore = true;
-                Settings.LastSaveInfo = SaveInfo;
+                catch (Exception) { }
             }
-            catch (Exception) { }
             def.Complete();
         }
 
