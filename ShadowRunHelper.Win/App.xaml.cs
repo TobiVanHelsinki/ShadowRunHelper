@@ -91,7 +91,8 @@ namespace ShadowRunHelper
 #if BETA
             SharedConstants.APP_STORE_ID = "9NCXWGX1KR8S";
 #elif RELEASE
-            SharedConstants.APP_STORE_ID = "9NBLGGH4RHVX";
+            //SharedConstants.APP_STORE_ID = "9NBLGGH4RHVX";
+            SharedConstants.APP_STORE_ID = "---"; //TODO
 #endif
         }
 
