@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter
@@ -11,7 +10,7 @@ namespace ShadowRunHelper.UI.Converter
         {
             if (!Double.TryParse(value.ToString(), out double dValue))
             {
-                return Constants.ERROR_TOKEN;
+                return TAPPLICATION.SharedConstants.ERROR_TOKEN;
             }
             string retval = dValue.ToString();
             return retval;
@@ -19,55 +18,10 @@ namespace ShadowRunHelper.UI.Converter
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             string strOrigin = (value as string);
-            if (strOrigin == null)
-            {
-                return 0;
-            }
-            //string ToProcess = "";
-            //foreach (var item in strOrigin)
-            //{
-            //    if (char.IsDigit(item) || item == '+' || item == '-' || item == '*' || item == '\\' || item == '+' || item == '(' || item == ')')
-            //    {
-            //        ToProcess += item;
-            //    }
-            //}
-            //try
-            //{
-            //    return new Expression(ToProcess).calculate();
-            //}
-            //catch (Exception)
-            //{
-            //    return 0;
-            //}
-            string strTemp = "";
-            double dRetVal = 0;
-            strOrigin += "+";
-            foreach (char item in strOrigin)
-            {
-                //filter out letters or special chars, process others
-                if (char.IsNumber(item)
-                        || char.IsDigit(item)
-                        || char.IsSeparator(item)
-                        || char.IsPunctuation(item)
-                        || item == '-' 
-                        || item == '+'
-                        )
-                {
-                    if (item == '-' || item == '+')
-                    {
-                        try
-                        {
-                            dRetVal += Double.Parse(strTemp);
-                        }
-                        catch (Exception) { }
-                        strTemp = "";
-                    }
-                    strTemp += item;
-                }
-
-            }
+            double dRetVal = TLIB.NumberHelper.CalcToDouble(strOrigin, true);
             return dRetVal;
         }
+
         #endregion
     }
 }
