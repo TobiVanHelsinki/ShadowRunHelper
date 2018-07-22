@@ -12,7 +12,19 @@ namespace ShadowRunHelper
     public class SettingsModel : SharedSettingsModel
     {
         #region Settings
-        //LastAppVersion
+        public bool IAP_HIDEADS
+        {
+            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_IAP_HIDEADS);
+            set
+            {
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_IAP_HIDEADS, value);
+                Instance.NotifyPropertyChanged();
+            }
+        }
+        public void IAP_HIDEADSReset()
+        {
+            PlatformSettings.set(Constants.CONTAINER_SETTINGS_IAP_HIDEADS, Constants.CONTAINER_SETTINGS_IAP_HIDEADS_STD);
+        }
         public string LastAppVersion
         {
             get => PlatformSettings.getString(Constants.CONTAINER_SETTINGS_LAST_APP_VERSION);

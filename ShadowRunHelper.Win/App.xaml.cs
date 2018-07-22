@@ -37,10 +37,10 @@ namespace ShadowRunHelper
             Debug_TimeAnalyser.Start("Overall");
             Debug_TimeAnalyser.Start("App()");
             UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
-            CheckLicence = Task.Run(IAP.CheckLicence);
+            Settings = SettingsModel.Initialize();
+            CheckLicence = Task.Run(()=>IAP.CheckLicence());
             SetConstantStuff();
             Model = AppModel.Initialize();
-            Settings = SettingsModel.Initialize();
             if (Settings.StartCount < 1)
             {
                 Settings.ResetAllSettings();

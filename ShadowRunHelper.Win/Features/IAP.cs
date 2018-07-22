@@ -3,32 +3,42 @@ using System.Threading.Tasks;
 using TAMARIN.IO;
 using TAPPLICATION.IO;
 using TLIB;
+using Windows.Foundation.Metadata;
 using Windows.Services.Store;
 
 namespace ShadowRunHelper
 {
     public static class IAP
     {
-        public static async Task CheckLicence()
+        public static async Task CheckLicence(bool force = false)
         {
-            Constants.IAP_HIDEADS = true;
-            return;
-            //TODO introduce kind of caching
-            //TODO if API Contract of FCU not there, Hide Ads = true;
-            try
+            if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract",4))
             {
-                //Debug_TimeAnalyser.Start("IAP GetAddons");
-                var AddOns = await StoreContext.GetDefault().GetUserCollectionAsync(Constants.IAP_STORE_LIST_ADDON_TYPES);
-                Constants.IAP_HIDEADS =
-                    AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE)
-                    || AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE_365);
-                //Debug_TimeAnalyser.Stop("IAP GetAddons");
+                Constants.IAP_HIDEADS = true;
+                return;
             }
-            catch (Exception)
+
+            if (SettingsModel.Instance.StartCount % 5 == 0 || force)
             {
-                Constants.IAP_HIDEADS = false;
-                Model.AppModel.Instance.NewNotification("Error_LoadPurchases");
-                Debug_TimeAnalyser.Stop("IAP GetAddons");
+                try
+                {
+                    //Debug_TimeAnalyser.Start("IAP GetAddons");
+                    var AddOns = await StoreContext.GetDefault().GetUserCollectionAsync(Constants.IAP_STORE_LIST_ADDON_TYPES);
+                    Constants.IAP_HIDEADS =
+                        AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE)
+                        || AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE_365);
+                    //Debug_TimeAnalyser.Stop("IAP GetAddons");
+                }
+                catch (Exception)
+                {
+                    Constants.IAP_HIDEADS = false;
+                    Model.AppModel.Instance.NewNotification("Error_LoadPurchases");
+                    Debug_TimeAnalyser.Stop("IAP GetAddons");
+                }
+            }
+            else if (SettingsModel.Instance.IAP_HIDEADS)
+            {
+                Constants.IAP_HIDEADS = true;
             }
             if (!Constants.IAP_HIDEADS)
             {
@@ -40,6 +50,8 @@ namespace ShadowRunHelper
                 }
                 //Debug_TimeAnalyser.Stop("IAP NoAdsFolder");
             }
+
+            SettingsModel.Instance.IAP_HIDEADS = Constants.IAP_HIDEADS;
         }
 
         internal async static Task Buy(string FEATUREID)
@@ -85,7 +97,6 @@ namespace ShadowRunHelper
                         "ExtendedError: " + extendedError;
                     break;
             }
-            //Model.AppModel.Instance.NewNotification(Text);
             switch (result.Status)
             {
                 case StorePurchaseStatus.Succeeded:
@@ -97,6 +108,7 @@ namespace ShadowRunHelper
                     Model.AppModel.Instance.NewNotification(StringHelper.GetString("IAP_Error"));
                     break;
             }
+            await CheckLicence(true);
         }
     }
 }
