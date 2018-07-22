@@ -3,13 +3,16 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using TAPPLICATION.Model;
 using TLIB;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.Devices.Input;
 using Windows.UI.Popups;
+using Windows.UI.Shell;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -93,12 +96,32 @@ namespace ShadowRunHelper.UI
 #pragma warning restore CS4014
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += NavigationRequested;
+            Model.PropertyChanged += Model_PropertyChanged;
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, p) => TitleBarStuff();
             CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += (s, p) => TitleBarStuff();
 #if DEBUG
             Debug_CreateDebugChar.Visibility = Visibility.Visible;
 #endif
+            TaskBarStuff();
             Debug_TimeAnalyser.Stop("MainPage()");
+        }
+
+        private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(Model.MainObject):
+                    TaskBarStuff();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        void TaskBarStuff()
+        {
+            var appView = ApplicationView.GetForCurrentView();
+            appView.Title = Model.MainObject != null ? Model.MainObject.Person.Alias : Package.Current.DisplayName;
         }
 
         public void TitleBarStuff()

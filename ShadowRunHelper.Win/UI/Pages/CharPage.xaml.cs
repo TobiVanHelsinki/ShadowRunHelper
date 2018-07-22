@@ -243,7 +243,6 @@ namespace ShadowRunHelper.UI
             sender.IsSuggestionListOpen = false;
         }
 
-
         void CategoryBlockLoading(FrameworkElement sender, object args)
         {
             LoadedCategoryBlocks.Add((sender as CategoryBlock, ((sender as CategoryBlock).Parent as Panel).Parent as ScrollViewer));
