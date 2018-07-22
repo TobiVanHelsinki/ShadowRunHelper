@@ -9,7 +9,7 @@ namespace ShadowRunHelper.Win.UI
 {
     public sealed partial class ClassicDialog : ContentDialog
     {
-        readonly string NewLink = " https://github.com/TobiVanHelsinki/ShadowRunHelper/tree/Classic";
+        readonly string NewLink = @"ms-windows-store://pdp/?productid=9N7SF3P3FP5J";
         public ClassicDialog()
         {
             InitializeComponent();
