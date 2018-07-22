@@ -35,13 +35,24 @@
         <Setter Property="Content" Value="&#xE700;"/>
 
     </Style>
-    <Style TargetType="TextBlock" x:Key="Panel_Oben_Text_1">
+    <Style TargetType="TextBlock" x:Key="Panel_Top" BasedOn="{StaticResource Panel_Top_Flyout}">
+        <Setter Property="Foreground" Value="FloralWhite"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="Panel_Top_Flyout">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="10,0,10,0"/>
     </Style>
 
-    <Style TargetType="TextBlock" x:Key="Panel_Oben_Text_Schaden">
+    <Style TargetType="TextBlock" x:Key="Panel_Damage" BasedOn="{StaticResource Panel_Damage_Flyout}">
+        <Setter Property="Foreground" Value="FloralWhite"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="Panel_Damage_Flyout">
+        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="5,0,5,0"/>
+    </Style>
+
+    <Style TargetType="AppBarButton" x:Key="MainAppBarButton" BasedOn="{StaticResource AppBarButtonRevealStyle_IfPossible}">
+        <Setter Property="Foreground" Value="FloralWhite"/>
     </Style>
 
     <Style TargetType="RepeatButton" BasedOn="{StaticResource STD_RepeatButton}" x:Key="Panel_Oben_Btn_Base">
@@ -73,5 +84,4 @@
     <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="Panel_Oben_Kontostand">
         <Setter Property="Margin" Value="2,0,2,0"/>
     </Style>
-
 </ResourceDictionary>

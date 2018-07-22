@@ -93,8 +93,8 @@
                                 <ColumnDefinition Width="0"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Style="{StaticResource Panel_Oben_Parts_Stack}">
-                                <TextBlock Text="{x:Bind Person.Alias,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                <TextBlock Text="{x:Bind Person.Char_Typ,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_1}"/>
+                                <TextBlock Text="{x:Bind Person.Alias,Mode=OneWay}" Style="{StaticResource Panel_Top}"/>
+                                <TextBlock Text="{x:Bind Person.Char_Typ,Mode=OneWay}" Style="{StaticResource Panel_Top}"/>
                             </StackPanel>
                             <Button x:Name="Infos" 
                                 PointerEntered="Infos_PointerEntered"
@@ -102,32 +102,32 @@
                                 Grid.Column="1" >
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock x:Uid="Model_Person_Edge" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                        <TextBlock Style="{StaticResource Panel_Oben_Text_1}">
+                                        <TextBlock x:Uid="Model_Person_Edge" Style="{StaticResource Panel_Top}"/>
+                                        <TextBlock Style="{StaticResource Panel_Top}">
                                         <Run Text="{x:Bind Person.Edge_Aktuell,Mode=OneWay}"/>
                                         <Run x:Uid="Slash"/>
                                         <Run Text="{x:Bind Person.Edge_Gesamt,Mode=OneWay}"/>
                                         </TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" >
-                                        <TextBlock x:Uid="Model_Person_Kontostand" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                        <TextBlock Text="{x:Bind Person.Kontostand,Mode=OneWay, Converter={StaticResource io_ZahlenYen}}" Style="{StaticResource Panel_Oben_Text_1}"/>
+                                        <TextBlock x:Uid="Model_Person_Kontostand" Style="{StaticResource Panel_Top}"/>
+                                        <TextBlock Text="{x:Bind Person.Kontostand,Mode=OneWay, Converter={StaticResource io_ZahlenYen}}" Style="{StaticResource Panel_Top}"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock x:Uid="Model_Person_Initiative_Kurz" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                        <TextBlock Text="{x:Bind Person.Initiative,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_1}"/>
+                                        <TextBlock x:Uid="Model_Person_Initiative_Kurz" Style="{StaticResource Panel_Top}"/>
+                                        <TextBlock Text="{x:Bind Person.Initiative,Mode=OneWay}" Style="{StaticResource Panel_Top}"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock x:Uid="Model_Person_Karma" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                        <TextBlock Style="{StaticResource Panel_Oben_Text_1}">
+                                        <TextBlock x:Uid="Model_Person_Karma" Style="{StaticResource Panel_Top}"/>
+                                        <TextBlock Style="{StaticResource Panel_Top}">
                                 <Run Text="{x:Bind Person.Karma_Aktuell, Mode=OneWay}"/>
                                 <Run x:Uid="Slash"/>
                                 <Run Text="{x:Bind Person.Karma_Gesamt, Mode=OneWay}"/>
                                         </TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock x:Uid="Model_Person_Runs" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                        <TextBlock Text="{x:Bind Person.Runs,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_1}"/>
+                                        <TextBlock x:Uid="Model_Person_Runs" Style="{StaticResource Panel_Top}"/>
+                                        <TextBlock Text="{x:Bind Person.Runs,Mode=OneWay}" Style="{StaticResource Panel_Top}"/>
                                     </StackPanel>
                                 </StackPanel>
                                 <Button.Flyout>
@@ -151,36 +151,36 @@
                                                     <RowDefinition Height="Auto"/>
                                                 </Grid.RowDefinitions>
 
-                                                <TextBlock x:Uid="Model_Person_Kontostand" Grid.Column="0" Grid.Row="0" Style="{StaticResource Panel_Oben_Text_1}" />
+                                                <TextBlock x:Uid="Model_Person_Kontostand" Grid.Column="0" Grid.Row="0" Style="{StaticResource Panel_Top_Flyout}" />
                                                 <TextBox GotFocus="EditBox_GotFocus" contract5Present:PreviewKeyDown="EditBox_PreviewKeyDown" Name="Header_Kontostand" Text="{x:Bind Person.Kontostand, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Style="{StaticResource Panel_Oben_Kontostand}"  />
 
-                                                <TextBlock x:Uid="Model_Person_InitiativeAktuell" Grid.Column="0" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                                <TextBlock Text="{x:Bind Person.Initiative, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource Panel_Oben_Text_1}" />
+                                                <TextBlock x:Uid="Model_Person_InitiativeAktuell" Grid.Column="0" Grid.Row="1" Style="{StaticResource Panel_Top_Flyout}"/>
+                                                <TextBlock Text="{x:Bind Person.Initiative, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource Panel_Top_Flyout}" />
                                                 <RepeatButton Grid.Column="3" Grid.Row="1" Name="Initiative_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
                                                 <RepeatButton Grid.Column="2" Grid.Row="1" Name="Initiative_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
-                                                <TextBlock x:Uid="Model_Person_Edge_Aktuell" Grid.Column="0" Grid.Row="2" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                                <TextBlock Text="{x:Bind Person.Edge_Aktuell, Mode=OneWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource Panel_Oben_Text_1}"/>
+                                                <TextBlock x:Uid="Model_Person_Edge_Aktuell" Grid.Column="0" Grid.Row="2" Style="{StaticResource Panel_Top_Flyout}"/>
+                                                <TextBlock Text="{x:Bind Person.Edge_Aktuell, Mode=OneWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource Panel_Top_Flyout}"/>
                                                 <RepeatButton Grid.Column="3" Grid.Row="2" Name="Edge_Aktuell_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
                                                 <RepeatButton Grid.Column="2" Grid.Row="2" Name="Edge_Aktuell_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
-                                                <TextBlock x:Uid="Model_Person_Edge_Gesamt" Grid.Column="0" Grid.Row="3"  Style="{StaticResource Panel_Oben_Text_1}"/>
-                                                <TextBlock Text="{x:Bind Person.Edge_Gesamt, Mode=OneWay}" Grid.Column="1" Grid.Row="3" Style="{StaticResource Panel_Oben_Text_1}"/>
+                                                <TextBlock x:Uid="Model_Person_Edge_Gesamt" Grid.Column="0" Grid.Row="3"  Style="{StaticResource Panel_Top_Flyout}"/>
+                                                <TextBlock Text="{x:Bind Person.Edge_Gesamt, Mode=OneWay}" Grid.Column="1" Grid.Row="3" Style="{StaticResource Panel_Top_Flyout}"/>
                                                 <RepeatButton Grid.Column="3" Grid.Row="3" Name="Edge_Gesamt_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
                                                 <RepeatButton Grid.Column="2" Grid.Row="3" Name="Edge_Gesamt_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
-                                                <TextBlock x:Uid="Model_Person_Karma_Aktuell" Grid.Column="0" Grid.Row="4" Style="{StaticResource Panel_Oben_Text_1}"/>
-                                                <TextBlock Text="{x:Bind Person.Karma_Aktuell, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Style="{StaticResource Panel_Oben_Text_1}" />
+                                                <TextBlock x:Uid="Model_Person_Karma_Aktuell" Grid.Column="0" Grid.Row="4" Style="{StaticResource Panel_Top_Flyout}"/>
+                                                <TextBlock Text="{x:Bind Person.Karma_Aktuell, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Style="{StaticResource Panel_Top_Flyout}" />
                                                 <RepeatButton Grid.Column="3" Grid.Row="4" Name="Karma_Aktuell_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
                                                 <RepeatButton Grid.Column="2" Grid.Row="4" Name="Karma_Aktuell_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
-                                                <TextBlock x:Uid="Model_Person_Karma_Gesamt" Grid.Column="0" Grid.Row="5" Style="{StaticResource Panel_Oben_Text_1}" />
-                                                <TextBlock Text="{x:Bind Person.Karma_Gesamt, Mode=OneWay}" Grid.Column="1" Grid.Row="5" Style="{StaticResource Panel_Oben_Text_1}" />
+                                                <TextBlock x:Uid="Model_Person_Karma_Gesamt" Grid.Column="0" Grid.Row="5" Style="{StaticResource Panel_Top_Flyout}" />
+                                                <TextBlock Text="{x:Bind Person.Karma_Gesamt, Mode=OneWay}" Grid.Column="1" Grid.Row="5" Style="{StaticResource Panel_Top_Flyout}" />
                                                 <RepeatButton Name="Karma_Gesamt_Plus" Grid.Column="3" Grid.Row="5" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
                                                 <RepeatButton Name="Karma_Gesamt_Minus" Grid.Column="2" Grid.Row="5" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
-                                                <TextBlock x:Uid="Model_Person_Runs" Grid.Column="0" Grid.Row="6"  Style="{StaticResource Panel_Oben_Text_1}"/>
-                                                <TextBlock Text="{x:Bind Person.Runs,Mode=OneWay}" Grid.Column="1" Grid.Row="6" Style="{StaticResource Panel_Oben_Text_1}"/>
+                                                <TextBlock x:Uid="Model_Person_Runs" Grid.Column="0" Grid.Row="6"  Style="{StaticResource Panel_Top_Flyout}"/>
+                                                <TextBlock Text="{x:Bind Person.Runs,Mode=OneWay}" Grid.Column="1" Grid.Row="6" Style="{StaticResource Panel_Top_Flyout}"/>
                                                 <RepeatButton Grid.Column="3" Grid.Row="6" Name="Runs_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
                                                 <RepeatButton Grid.Column="2" Grid.Row="6" Name="Runs_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
@@ -192,11 +192,11 @@
                             </Button>
                             <Button Grid.Column="2" >
                                 <StackPanel Orientation="Vertical" >
-                                    <TextBlock x:Uid="UI_Char_Schaden" HorizontalAlignment="Center" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
+                                    <TextBlock x:Uid="UI_Char_Schaden" HorizontalAlignment="Center" Style="{StaticResource Panel_Damage}"/>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                                        <TextBlock Text="{x:Bind Person.Schaden_G,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
-                                        <TextBlock Text="{x:Bind Person.Schaden_K,Mode=OneWay}" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
-                                        <TextBlock Text="{x:Bind CTRLCyberDeck.ActiveItem.Schaden, Mode=OneWay}" Name="XAML_Header_Schaden_M_Text" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
+                                        <TextBlock Text="{x:Bind Person.Schaden_G,Mode=OneWay}" Style="{StaticResource Panel_Damage}"/>
+                                        <TextBlock Text="{x:Bind Person.Schaden_K,Mode=OneWay}" Style="{StaticResource Panel_Damage}"/>
+                                        <TextBlock Text="{x:Bind CTRLCyberDeck.ActiveItem.Schaden, Mode=OneWay}" Name="XAML_Header_Schaden_M_Text" Style="{StaticResource Panel_Damage}"/>
                                     </StackPanel>
                                 </StackPanel>
                                 <Button.Flyout>
@@ -212,15 +212,15 @@
                                                 <RowDefinition Height="*"/>
                                                 <RowDefinition Height="Auto"/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="{x:Bind Person.Schaden_G_max, Mode=OneWay}" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Style="{StaticResource Panel_Oben_Text_Schaden}" Margin="0,0,5,0"/>
-                                            <TextBlock Text="{x:Bind Person.Schaden_K_max, Mode=OneWay}" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" Style="{StaticResource Panel_Oben_Text_Schaden}" Margin="0,0,5,0"/>
-                                            <TextBlock Text="{x:Bind CTRLCyberDeck.ActiveItem.SchadenMax, Mode=OneWay}" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="0" Style="{StaticResource Panel_Oben_Text_Schaden}" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{x:Bind Person.Schaden_G_max, Mode=OneWay}" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Style="{StaticResource Panel_Damage_Flyout}" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{x:Bind Person.Schaden_K_max, Mode=OneWay}" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" Style="{StaticResource Panel_Damage_Flyout}" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{x:Bind CTRLCyberDeck.ActiveItem.SchadenMax, Mode=OneWay}" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="0" Style="{StaticResource Panel_Damage_Flyout}" Margin="0,0,5,0"/>
                                             <Slider Grid.Row="1" Grid.Column="0" Value="{x:Bind Person.Schaden_G, Mode=TwoWay}" Maximum="{x:Bind Person.Schaden_G_max,Mode=OneWay}" Style="{StaticResource Panel_Oben_Schaden_Slider}"/>
                                             <Slider Grid.Row="1" Grid.Column="1" Value="{x:Bind Person.Schaden_K,Mode=TwoWay}" Maximum="{x:Bind Person.Schaden_K_max,Mode=OneWay}" Style="{StaticResource Panel_Oben_Schaden_Slider}"/>
                                             <Slider Grid.Row="1" Grid.Column="2" Value="{x:Bind CTRLCyberDeck.ActiveItem.Schaden,Mode=TwoWay}" Maximum="{x:Bind CTRLCyberDeck.ActiveItem.SchadenMax,Mode=OneWay}" Style="{StaticResource Panel_Oben_Schaden_Slider}"/>
-                                            <TextBlock x:Uid="UI_Char_Schaden_Geist" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
-                                            <TextBlock x:Uid="UI_Char_Schaden_Koerper" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
-                                            <TextBlock x:Uid="UI_Char_Schaden_Matrix" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="2" Style="{StaticResource Panel_Oben_Text_Schaden}"/>
+                                            <TextBlock x:Uid="UI_Char_Schaden_Geist" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" Style="{StaticResource Panel_Damage_Flyout}"/>
+                                            <TextBlock x:Uid="UI_Char_Schaden_Koerper" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Style="{StaticResource Panel_Damage_Flyout}"/>
+                                            <TextBlock x:Uid="UI_Char_Schaden_Matrix" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="2" Style="{StaticResource Panel_Damage_Flyout}"/>
                                         </Grid>
                                     </Flyout>
                                 </Button.Flyout>
@@ -260,9 +260,9 @@
         <Border Grid.Row="2" Background="{ThemeResource SR_MainBackgroundBrush}"/>
         <Border Grid.Row="2" x:Name="MainBarBorder">
             <CommandBar x:Name="MainBar1" Background="Transparent" HorizontalAlignment="Left" DefaultLabelPosition="Right">
-                <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
-                <AppBarButton x:Name="Nav_Admin" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
-                <AppBarButton x:Name="Nav_Settings" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
+                <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" Style="{StaticResource MainAppBarButton}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char"/>
+                <AppBarButton x:Name="Nav_Admin" Style="{StaticResource MainAppBarButton}" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin"/>
+                <AppBarButton x:Name="Nav_Settings" Style="{StaticResource MainAppBarButton}" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings"/>
                 <!--<AppBarButton Visibility="Collapsed" Label="NotL" Icon="AlignRight" Click="Debug3"/>-->
                 <!--<AppBarButton Visibility="Collapsed" Label="NotF" Icon="AlignCenter" Click="Debug4"/>-->
                 <!--<AppBarButton Visibility="Collapsed" Label="Exception" Icon="Cancel" Click="Exception"/>-->
