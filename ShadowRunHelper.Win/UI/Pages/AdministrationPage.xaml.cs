@@ -241,7 +241,7 @@ namespace ShadowRunHelper.UI
             ChangeProgress(false);
             if (Model.MainObject != null)
             {
-                AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
+                AppModel.Instance.RequestNavigation(ProjectPages.Char);
             }
         }
 
