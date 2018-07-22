@@ -282,7 +282,7 @@ namespace ShadowRunHelper
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        async Task App_UnhandledExceptionAsync(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
+        async Task App_UnhandledExceptionAsync(object sender, UnhandledExceptionEventArgs e)
         {
             Settings.LastSaveInfo = null;
             try
@@ -296,8 +296,13 @@ namespace ShadowRunHelper
             }
             if (!e.Message.Contains(Constants.TESTEXCEPTIONTEXT))
             {
-                Analytics.TrackEvent("App_UnhandledExceptionAsync");
                 e.Handled = true;
+                var param = new Dictionary<string, string>();
+                param.Add("Message", e.Message);
+                param.Add("EXMessage", e.Exception.Message);
+                param.Add("StackTrace", e.Exception.StackTrace);
+                param.Add("InnerException", e.Exception.InnerException.Message);
+                Analytics.TrackEvent("App_UnhandledExceptionAsync", param);
             }
         }
         #endregion
