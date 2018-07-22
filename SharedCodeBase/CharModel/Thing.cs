@@ -176,7 +176,6 @@ namespace ShadowRunHelper.CharModel
             }
         }
         bool _IsFavorite;
-        //[JsonIgnore]
         [Used_UserAttribute]
         public bool IsFavorite
         {
@@ -184,7 +183,13 @@ namespace ShadowRunHelper.CharModel
             set { if (_IsFavorite != value) { _IsFavorite = value; NotifyPropertyChanged(); } }
         }
 
-        public int FavoriteIndex { get; set; }
+        int _FavoriteIndex;
+        [Used_UserAttribute]
+        public int FavoriteIndex
+        {
+            get { return _FavoriteIndex; }
+            set { if (_FavoriteIndex != value) { _FavoriteIndex = value; NotifyPropertyChanged(); } }
+        }
 
         protected virtual void OnLinkedThingsChanged()
         {

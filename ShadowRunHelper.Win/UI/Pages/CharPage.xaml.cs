@@ -180,27 +180,6 @@ namespace ShadowRunHelper.UI
             Model.RequestNavigation(ProjectPages.Administration);
             Model.MainObject = null;
         }
-        void FavListLoaded(object sender, RoutedEventArgs e)
-        {
-            (sender as Selector).ItemsSource = MainObject.Favorites;
-        }
-        Button FavButton = null;
-        private void FavButton_Loaded(object sender, RoutedEventArgs e)
-        {
-            FavButton = sender as Button;
-        }
-        private void FavListItemClick(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
-        {
-            PendingScrollEntry = (sender as FrameworkElement).DataContext as Thing;
-
-            FavButton.Flyout.Hide();
-
-            Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == PendingScrollEntry.ThingType).Pivot;
-
-            ScrollIntoBlock();
-
-        }
-
         #endregion
         #region Char Settings
         public class GroupInfoList<T> : List<object>
@@ -221,7 +200,23 @@ namespace ShadowRunHelper.UI
             d.ShowAsync();
         }
         #endregion
-        #region  instant search Stuff
+        #region Fav Stuff
+        Button FavButton = null;
+        private void FavButton_Loaded(object sender, RoutedEventArgs e)
+        {
+            FavButton = sender as Button;
+        }
+        void FavListItemClick(object sender, ItemClickEventArgs e)
+        {
+            PendingScrollEntry = e.ClickedItem as Thing;
+
+            FavButton.Flyout.Hide();
+
+            Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == PendingScrollEntry.ThingType).Pivot;
+            ScrollIntoBlock();
+        }
+        #endregion
+        #region instant search Stuff
 
         Thing PendingScrollEntry;
         List<(CategoryBlock Block, ScrollViewer sv)> LoadedCategoryBlocks = new List<(CategoryBlock Block, ScrollViewer sv)>();
@@ -312,5 +307,7 @@ namespace ShadowRunHelper.UI
             PendingScrollEntry = null;
         }
         #endregion
+
+
     }
 }

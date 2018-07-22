@@ -4,6 +4,7 @@ using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -124,7 +125,7 @@ namespace ShadowRunHelper.Model
         #region INI Stuff
         public CharHolder()
         {
-            SaveTimer = new Timer((x) => { BeforeSave(); SaveRequest?.Invoke(x, new EventArgs()); HasChanges = false; }, this, Timeout.Infinite, Timeout.Infinite);
+            SaveTimer = new Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); HasChanges = false; }, this, Timeout.Infinite, Timeout.Infinite);
             AppModel.Instance.MainObjectSaved += (x, y) => { SettingsModel.I.CountSavings++; };
             // To Autosave
             CTRLList.Add(CTRLAttribut);
@@ -169,9 +170,12 @@ namespace ShadowRunHelper.Model
 
 
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
+            Favorites.CollectionChanged += SaveFavoritesOrdering;
             RefreshLists();
             RefreshListeners();
         }
+
+
         #endregion
         #region DATA HANDLING STUFF 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -179,13 +183,7 @@ namespace ShadowRunHelper.Model
         {
             ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
-        public void BeforeSave()
-        {
-            for (int i = 0; i < Favorites.Count; i++)
-            {
-                Favorites[i].FavoriteIndex = i;
-            }
-        }
+
         public void AfterLoad()
         {
             Repair();
@@ -354,7 +352,14 @@ namespace ShadowRunHelper.Model
             Favorites.Clear();
             Favorites.AddRange(ThingList.Where(x => x.IsFavorite).OrderBy(x=>x.FavoriteIndex));
         }
-
+        void SaveFavoritesOrdering(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            for (int i = 0; i < Favorites.Count; i++)
+            {
+                Favorites[i].FavoriteIndex = i;
+            }
+            HasChanges = true;
+        }
 
         #endregion
         #region AUTO_SAVE_STUFF 

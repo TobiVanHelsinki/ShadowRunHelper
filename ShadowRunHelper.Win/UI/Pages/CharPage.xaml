@@ -48,20 +48,13 @@
                     <Button Content="&#xE734;" FontFamily="Segoe MDL2 Assets" Margin="5,0,0,0" Style="{StaticResource STD_Button}" VerticalAlignment="Stretch" Loaded="FavButton_Loaded">
                         <Button.Flyout >
                             <Flyout Placement="Bottom">
-                                <ListView ItemsSource="{Binding MainObject.Favorites, Mode=OneWay}"
-                                          Loaded="FavListLoaded"
+                                <ListView ItemsSource="{x:Bind Favorites, Mode=OneWay}"
                                           CanReorderItems="True" AllowDrop="True"
-                                          >
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate x:DataType="CharModel:Thing">
-                                            <TextBlock Tapped="FavListItemClick" Text="{x:Bind }"/>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                          IsItemClickEnabled="True" ItemClick="FavListItemClick"
+                                          />
                             </Flyout>
                         </Button.Flyout>
                     </Button>
-                    <ListView Background="Red" ItemsSource="{Binding MainObject.Favorites, Mode=OneWay}"/>
                 </StackPanel>
             </DataTemplate>
         </ResourceDictionary>
@@ -303,13 +296,20 @@
                 </PivotItem.Header>
                 <Border x:Name="MainContentBorder">
                     <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
-                        <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
-                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLHandlung, Mode=OneWay}"/>
-                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLFertigkeit, Mode=OneWay}"/>
-                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLZaubersprueche, Mode=OneWay}"/>
-                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLAdeptenkraft, Mode=OneWay}"/>
-                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLKomplexeForm, Mode=OneWay}"/>
-                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLHandlung, Mode=OneWay}" Grid.Row="0"/>
+                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLFertigkeit, Mode=OneWay}" Grid.Row="1"/>
+                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLZaubersprueche, Mode=OneWay}" Grid.Row="2"/>
+                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLAdeptenkraft, Mode=OneWay}" Grid.Row="3"/>
+                            <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLKomplexeForm, Mode=OneWay}" Grid.Row="4"/>
+                        </Grid>
                     </ScrollViewer>
                 </Border>
             </PivotItem>
