@@ -206,7 +206,7 @@ namespace ShadowRunHelper.UI
             switch (args.Reason)
             {
                 case AutoSuggestionBoxTextChangeReason.UserInput:
-                    (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+                    (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where(x=> x.SimilaritiesTo(sender.Text) > 0 ).OrderByDescending(x => x.SimilaritiesTo(sender.Text));
                     break;
                 case AutoSuggestionBoxTextChangeReason.ProgrammaticChange:
                     break;
@@ -226,8 +226,11 @@ namespace ShadowRunHelper.UI
                 }
                 else
                 {
-                    PendingScrollEntry = MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).ToList().Find((x) => x.SimilaritiesTo((sender as AutoSuggestBox).Text.ToLower()) > 0.3f);
+                    PendingScrollEntry = (sender.ItemsSource as IOrderedEnumerable<Thing>).FirstOrDefault();
+
+                    PendingScrollEntry = MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).OrderByDescending(x => x.SimilaritiesTo(sender.Text)).FirstOrDefault();
                 }
+                sender.ItemsSource = null;
                 if (PendingScrollEntry == null)
                 {
                     return;

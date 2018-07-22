@@ -394,7 +394,11 @@ namespace ShadowRunHelper.CharModel
 
         public override string ToString()
         {
-            return typ + (typ != "" ? ": " : "") + bezeichner + " " + ValueOf("Wert") + (Zusatz != "" ? "+" : "") + Zusatz;
+            return
+                ValueOf("Wert") + " "
+                + (!string.IsNullOrEmpty(typ) ? typ + ": " : "")
+                + bezeichner
+                + (!string.IsNullOrEmpty(Zusatz) ? " +" + Zusatz : "");
         }
 
         /// <summary>
@@ -420,20 +424,35 @@ namespace ShadowRunHelper.CharModel
         /// <returns> 0    -> type incorrect, name incorrect</returns>
         public virtual float SimilaritiesTo(string text)
         {
+            var searchtext = text.ToLower();
+            var mytext = ToString().ToLower();
+            var mytextes = mytext.Split(' ', '-', '/', '_');
+            if (mytext.Contains("charis"))
+            {
+
+            }
 
             float retval = 0;
-            if (TypeHelper.ThingDefToString(ThingType, false).ToLower().Contains(text))
+            if (this.ToString().ToLower().StartsWith(searchtext))
             {
-                retval += 0.4f;
+                retval += 0.7f;
             }
-            if (this.ToString().ToLower().Contains(text.ToLower()))
+            else
             {
-                retval += 0.4f;
+                var t = mytextes.FirstOrDefault(x => x.StartsWith(searchtext));
+                if (!string.IsNullOrEmpty(t))
+                {
+                    retval += 0.4f - Array.IndexOf(mytextes, t) * 0.02f;
+                }
             }
-            if (this.ToString().ToLower() == (text.ToLower()))
+            if (TypeHelper.ThingDefToString(ThingType, false).ToLower().StartsWith(text))
             {
-                retval += 0.1f;
+                retval += 0.2f;
             }
+            //if (this.ToString().ToLower() == (searchtext))
+            //{
+            //    retval += 0.1f;
+            //}
             return retval;
         }
     }
