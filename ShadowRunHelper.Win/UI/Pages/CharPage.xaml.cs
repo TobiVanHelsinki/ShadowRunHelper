@@ -8,6 +8,7 @@ using TAPPLICATION.IO;
 using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper.UI
@@ -174,10 +175,22 @@ namespace ShadowRunHelper.UI
             {
             }
         }
-        private void Click_Delete(object sender, RoutedEventArgs e)
+        void Click_Delete(object sender, RoutedEventArgs e)
         {
             Model.RequestNavigation(ProjectPages.Administration);
             Model.MainObject = null;
+        }
+        void FavListLoaded(object sender, RoutedEventArgs e)
+        {
+            (sender as Selector).ItemsSource = MainObject.Favorites;
+        }
+        private void FavListItemClick(object sender, ItemClickEventArgs e)
+        {
+            //TODO Add Sorting option;
+            //TODO Save sorting
+            //TODO implement click
+            PendingScrollEntry = (sender as Thing);
+            ScrollIntoBlock();
         }
         #endregion
         #region Char Settings
@@ -193,7 +206,11 @@ namespace ShadowRunHelper.UI
         {
             MainObject.Settings.ResetCategoryOptions();
         }
-   
+        void Click_CharSettings(object sender, RoutedEventArgs e)
+        {
+            var d = new CharSettingsDialog();
+            d.ShowAsync();
+        }
         #endregion
         #region  instant search Stuff
 
@@ -285,16 +302,9 @@ namespace ShadowRunHelper.UI
             }
             PendingScrollEntry = null;
         }
-
-
-
-
+        
         #endregion
 
-        private void Click_CharSettings(object sender, RoutedEventArgs e)
-        {
-            var d = new CharSettingsDialog();
-            d.ShowAsync();
-        }
+
     }
 }

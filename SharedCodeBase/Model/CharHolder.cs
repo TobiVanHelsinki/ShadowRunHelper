@@ -72,7 +72,9 @@ namespace ShadowRunHelper.Model
         public List<AllListEntry> LinkList { get; } = new List<AllListEntry>();
         [Newtonsoft.Json.JsonIgnore]
         public List<Thing> ThingList { get; } = new List<Thing>();
-
+        [Newtonsoft.Json.JsonIgnore]
+        public ObservableCollection<Thing> Favorites { get; } = new ObservableCollection<Thing>();
+        
         #endregion
         #region IO and Display Stuff
 
@@ -283,7 +285,7 @@ namespace ShadowRunHelper.Model
         public Thing Add(ThingDefs thingDefs)
         {
             Thing returnThing = CTRLList.First(c => c.eDataTyp == thingDefs).AddNewThing();
-            returnThing.PropertyChanged += (x, y) => AnyPropertyChanged();
+            RegisterNewThing(returnThing);
             return returnThing;
         }
 
@@ -296,13 +298,20 @@ namespace ShadowRunHelper.Model
         public void Add(Thing NewThing)
         {
             CTRLList.First(c => c.eDataTyp == NewThing.ThingType).AddNewThing(NewThing);
-            NewThing.PropertyChanged += (x, y) => AnyPropertyChanged();
+            RegisterNewThing(NewThing);
         }
-
+        void RegisterNewThing(Thing NewThing)
+        {
+            NewThing.PropertyChanged += AnyPropertyChanged;
+            NewThing.PropertyChanged += (x, y) => {
+                if (y.PropertyName == nameof(Thing.IsFavorite))
+                    RefreshLists();
+            };
+        }
         public void Remove(Thing tToRemove)
         {
             CTRLList.First(c => c.eDataTyp == tToRemove.ThingType).RemoveThing(tToRemove);
-            tToRemove.PropertyChanged -= (x, y) => AnyPropertyChanged();
+            tToRemove.PropertyChanged -= AnyPropertyChanged;
             LinkList.RemoveAll((x) => x.Object == tToRemove);
             ThingList.RemoveAll((x) => x == tToRemove);
         }
@@ -310,18 +319,18 @@ namespace ShadowRunHelper.Model
         public void RefreshListeners()
         {
             // Don't register AnyPropertyChanged() at the PropertyChanged  Event of this Class -> endless loop;
-            Person.PropertyChanged -= (x, y) => AnyPropertyChanged();
-            Settings.PropertyChanged -= (x, y) => AnyPropertyChanged();
-            Person.PropertyChanged += (x, y) => AnyPropertyChanged();
-            Settings.PropertyChanged += (x, y) => AnyPropertyChanged();
+            Person.PropertyChanged -= AnyPropertyChanged;
+            Settings.PropertyChanged -= AnyPropertyChanged;
+            Person.PropertyChanged += AnyPropertyChanged;
+            Settings.PropertyChanged += AnyPropertyChanged;
             foreach (var item in CTRLList)
             {
                 item.RegisterEventAtData(AnyPropertyChanged);
                 item.RegisterEventAtData(RefreshLists);
                 foreach (var item2 in item.GetElements())
                 {
-                    item2.PropertyChanged -= (x, y) => AnyPropertyChanged();
-                    item2.PropertyChanged += (x, y) => AnyPropertyChanged();
+                    item2.PropertyChanged -= AnyPropertyChanged;
+                    item2.PropertyChanged += AnyPropertyChanged;
                 }
             }
         }
@@ -332,6 +341,12 @@ namespace ShadowRunHelper.Model
             LinkList.AddRange(CTRLList.Aggregate(new List<AllListEntry>(),(l,c)=>l.Concat(c.GetElementsForThingList()).ToList()));
             ThingList.Clear();
             ThingList.AddRange(CTRLList.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
+            RefreshListFav();
+        }
+        public void RefreshListFav()
+        {
+            Favorites.Clear();
+            Favorites.AddRange(ThingList.Where(x => x.IsFavorite));
         }
 
 
@@ -363,8 +378,12 @@ namespace ShadowRunHelper.Model
         /// handler method if any property get's changed
         /// note: as this method handles the saves, the "HasChanges" var should be excepted
         /// </summary>
-        void AnyPropertyChanged()
+        void AnyPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            if (e.PropertyName == nameof(Thing.IsFavorite))
+            {
+                RefreshListFav();
+            }
             HasChanges = true;
             if (SettingsModel.I.AutoSave)
             {

@@ -3,6 +3,7 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace ShadowRunHelper.CharController
 {
@@ -34,6 +35,7 @@ namespace ShadowRunHelper.CharController
         /// Used to pass throgh the possibility to acces the Data Object for registration of its HasChanged-Methods without knowing its type
         /// </summary>
         /// <param name="Method"></param>
+        void RegisterEventAtData(Action<object, PropertyChangedEventArgs> Method);
         void RegisterEventAtData(Action Method);
 
         ThingDefs eDataTyp { get; }

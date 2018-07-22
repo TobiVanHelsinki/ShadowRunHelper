@@ -102,5 +102,10 @@ namespace ShadowRunHelper.UI
         }
 
         #endregion
+
+        private void Fav_Click(object sender, RoutedEventArgs e)
+        {
+            ((sender as FrameworkElement).DataContext as Thing).IsFavorite = !((sender as FrameworkElement).DataContext as Thing).IsFavorite;
+        }
     }
 }

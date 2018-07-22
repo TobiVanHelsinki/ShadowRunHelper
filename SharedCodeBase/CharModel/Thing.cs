@@ -175,6 +175,14 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+        bool _IsFavorite;
+        [JsonIgnore]
+        //[Used_UserAttribute]
+        public bool IsFavorite
+        {
+            get { return _IsFavorite; }
+            set { if (_IsFavorite != value) { _IsFavorite = value; NotifyPropertyChanged(); } }
+        }
 
         protected virtual void OnLinkedThingsChanged()
         {

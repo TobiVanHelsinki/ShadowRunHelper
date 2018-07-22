@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System;
 using System.Linq;
 using TLIB;
+using System.ComponentModel;
 
 namespace ShadowRunHelper.CharController
 {
@@ -24,7 +25,11 @@ namespace ShadowRunHelper.CharController
             Data.CollectionChanged -= (x, y) => Method();
             Data.CollectionChanged += (x, y) => Method();
         }
-
+        public void RegisterEventAtData(Action<object, PropertyChangedEventArgs> Method)
+        {
+            Data.CollectionChanged -= (x, y) => Method(x, new PropertyChangedEventArgs(""));
+            Data.CollectionChanged += (x, y) => Method(x, new PropertyChangedEventArgs(""));
+        }
         public virtual Thing AddNewThing()
         {
             var newThing = Activator.CreateInstance<T>();

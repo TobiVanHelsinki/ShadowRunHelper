@@ -65,7 +65,11 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return (bool)value ? Visibility.Visible : Visibility.Collapsed;
+            return (bool)value ? 
+                (parameter == null ? Visibility.Visible : Visibility.Collapsed )
+                : 
+                (parameter == null ? Visibility.Collapsed : Visibility.Visible)
+                ;
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {

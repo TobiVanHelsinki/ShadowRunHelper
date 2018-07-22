@@ -45,6 +45,17 @@
                             </MenuFlyout>
                         </Button.Flyout>
                     </Button>
+                    <Button Content="&#xE734;" FontFamily="Segoe MDL2 Assets" Margin="5,0,0,0" Style="{StaticResource STD_Button}" VerticalAlignment="Stretch">
+                        <Button.Flyout >
+                            <Flyout Placement="Bottom">
+                                <ListView ItemsSource="{Binding MainObject.Favorites, Mode=OneWay}"
+                                          Loaded="FavListLoaded"
+                                          ItemClick="FavListItemClick"
+                                          />
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                    <ListView Background="Red" ItemsSource="{Binding MainObject.Favorites, Mode=OneWay}"/>
                 </StackPanel>
             </DataTemplate>
         </ResourceDictionary>
