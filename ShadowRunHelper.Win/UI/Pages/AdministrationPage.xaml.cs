@@ -33,42 +33,27 @@ namespace ShadowRunHelper.UI
 
         public AdministrationPage()
         {
-            Debug_TimeAnalyser.Start("AdministrationPage()");
             InitializeComponent();
             ChangeProgress(false);
             NavigationCacheMode = NavigationCacheMode.Required;
             Model.TutorialStateChanged += TutorialStateChanged;
-            Debug_TimeAnalyser.Stop("AdministrationPage()");
         }
         void CheckIAPStatus()
         {
-            if (!Constants.IAP_HIDEADS)
-            {
-                Ad_MainPageRight.ApplicationId = Constants.AD_APPID;
-                Ad_MainPageBottom.ApplicationId = Constants.AD_APPID;
-                Ad_MainPageRight.AdUnitId = Constants.AD_ADID_MainPageRight;
-                Ad_MainPageBottom.AdUnitId = Constants.AD_ADID_MainPageBottom;
-            }
-            else
-            {
-                Ad_MainPageRight.Visibility = Visibility.Collapsed;
-                Ad_MainPageRight.Width = 0;
-                Ad_MainPageBottom.Visibility = Visibility.Collapsed;
-                Ad_MainPageBottom.Height = 0;
-                Ad_MainPageRightBox.Visibility = Visibility.Collapsed;
-                Ad_MainPageBottomBox.Visibility = Visibility.Collapsed;
-                //Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
-                //Trigger_Ads.States.Remove(Trigger_Ads.States[0]);
-            }
+
         }
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            Debug_TimeAnalyser.Start("PAdmin.OnNavigatedTo");
             CheckIAPStatus();
             await Summorys_Aktualisieren();
             ClassicDialog Classic = new ClassicDialog();
-            await Classic.ShowAsync();
-            Debug_TimeAnalyser.Stop("PAdmin.OnNavigatedTo");
+            try
+            {
+                await Classic.ShowAsync();
+            }
+            catch (Exception)
+            {
+            }
         }
 
 

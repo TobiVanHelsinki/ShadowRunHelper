@@ -12,8 +12,10 @@
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
-    <StackPanel>
-        <TextBlock x:Uid="UI_TXT_ClassicVersion" TextWrapping="Wrap" TextAlignment="Justify"/>
-        <HyperlinkButton NavigateUri="{x:Bind NewLink}" x:Uid="UI_CNT_ClassicVersion" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel>
+            <TextBlock x:Uid="UI_TXT_ClassicVersion" TextWrapping="Wrap" TextAlignment="Justify"/>
+            <HyperlinkButton NavigateUri="{x:Bind NewLink}" x:Uid="UI_CNT_ClassicVersion" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </ScrollViewer>
 </ContentDialog>

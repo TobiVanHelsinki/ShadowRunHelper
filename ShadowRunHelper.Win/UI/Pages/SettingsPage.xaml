@@ -6,7 +6,6 @@
     xmlns:TLIBModel="using:TAPPLICATION.Model"
     xmlns:System="using:System"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Ad="using:Microsoft.Advertising.WinRT.UI"
     xmlns:model="using:ShadowRunHelper.Model"
     xmlns:UI="using:ShadowRunHelper.Win.UI"
     mc:Ignorable="d">
@@ -110,14 +109,6 @@
             </VisualStateGroup>
 
         </VisualStateManager.VisualStateGroups>
-        <Viewbox Grid.Column="1" x:Name="Ad_MainPageRightBox">
-            <Ad:AdControl Width="160" Height="600" x:Name="Ad_MainPageRight"
-                HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Viewbox>
-        <Viewbox Grid.Row="4" Grid.ColumnSpan="2" x:Name="Ad_MainPageBottomBox">
-            <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        </Viewbox>
         <Pivot x:Name="MainNavigation" SelectionChanged="MainNavigation_SelectionChanged">
             <PivotItem Tag="31">
                 <PivotItem.Header>

@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Ad="using:Microsoft.Advertising.WinRT.UI"
     xmlns:TAMARIN="using:TAMARIN.IO"
     mc:Ignorable="d">
     <Page.Resources>
@@ -118,10 +117,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Viewbox Grid.Column="1" x:Name="Ad_MainPageRightBox">
-            <Ad:AdControl Width="160" Height="600" x:Name="Ad_MainPageRight"
-                HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Viewbox>
+
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -166,10 +162,7 @@
                       SelectionChanged="Char_Sum_SelectionChanged"
                       IsMultiSelectCheckBoxEnabled="False"/>
             </Border>
-            <Viewbox Grid.Row="4" Stretch="None" x:Name="Ad_MainPageBottomBox">
-                <Ad:AdControl Width="640" Height="100" x:Name="Ad_MainPageBottom"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            </Viewbox>
+
             <Border Grid.Row="5" x:Name="MainBarBorder">
                 <CommandBar x:Name="Commandbar" Grid.Row="4" DefaultLabelPosition="Right">
                     <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
