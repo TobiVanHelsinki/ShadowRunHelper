@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using TAMARIN.IO;
 using TAPPLICATION.Model;
 using TLIB;
@@ -121,7 +122,7 @@ namespace ShadowRunHelper.Model
         #region INI Stuff
         public CharHolder()
         {
-            SaveTimer = new System.Threading.Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); }, this, System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
+            SaveTimer = new Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); HasChanges = false; }, this, Timeout.Infinite, Timeout.Infinite);
             AppModel.Instance.MainObjectSaved += (x, y) => { SettingsModel.I.CountSavings++; };
             // To Autosave
             CTRLList.Add(CTRLAttribut);
@@ -182,6 +183,7 @@ namespace ShadowRunHelper.Model
             Repair();
             Settings.Refresh();
             RefreshListeners();
+            HasChanges = false;
         }
 
 #if DEBUG
@@ -238,10 +240,17 @@ namespace ShadowRunHelper.Model
                         AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }
-                SourceCollection.Clear();
                 foreach (var item in TargetCollection)
                 {
-                    SourceCollection.Add(item);
+                    if (!SourceCollection.Contains(item))
+                    {
+                        SourceCollection.Add(item);
+                    }
+                }
+                var tmpcol = SourceCollection.Except(TargetCollection).ToList();
+                foreach (var item in tmpcol)
+                {
+                    SourceCollection.Remove(item);
                 }
             }
             // start repair
@@ -367,7 +376,6 @@ namespace ShadowRunHelper.Model
         {
             if (HasChanges || ForceSave)
             {
-                HasChanges = false;
                 SaveTimer.Change(Time, System.Threading.Timeout.Infinite);
                 return true;
             }
