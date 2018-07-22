@@ -184,14 +184,23 @@ namespace ShadowRunHelper.UI
         {
             (sender as Selector).ItemsSource = MainObject.Favorites;
         }
-        private void FavListItemClick(object sender, ItemClickEventArgs e)
+        Button FavButton = null;
+        private void FavButton_Loaded(object sender, RoutedEventArgs e)
         {
-            //TODO Add Sorting option;
-            //TODO Save sorting
-            //TODO implement click
-            PendingScrollEntry = (sender as Thing);
-            ScrollIntoBlock();
+            FavButton = sender as Button;
         }
+        private void FavListItemClick(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            PendingScrollEntry = (sender as FrameworkElement).DataContext as Thing;
+
+            FavButton.Flyout.Hide();
+
+            Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == PendingScrollEntry.ThingType).Pivot;
+
+            ScrollIntoBlock();
+
+        }
+
         #endregion
         #region Char Settings
         public class GroupInfoList<T> : List<object>
@@ -302,9 +311,6 @@ namespace ShadowRunHelper.UI
             }
             PendingScrollEntry = null;
         }
-        
         #endregion
-
-
     }
 }
