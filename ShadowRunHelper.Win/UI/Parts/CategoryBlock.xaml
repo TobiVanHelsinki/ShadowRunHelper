@@ -433,6 +433,17 @@
                                   SelectionChanged="ListView_SelectionChanged" 
                                   Drop="ListView_Drop"
                                   DragOver="ListView_DragOver"
+                  ScrollViewer.IsDeferredScrollingEnabled="False"
+                  ScrollViewer.HorizontalScrollMode="Disabled"
+                  ScrollViewer.VerticalScrollMode="Disabled"
+                  ScrollViewer.ZoomMode="Disabled"
+                  ScrollViewer.IsHorizontalRailEnabled="False"
+                  ScrollViewer.IsHorizontalScrollChainingEnabled="False"
+                  ScrollViewer.IsVerticalRailEnabled="False"
+                  ScrollViewer.IsVerticalScrollChainingEnabled="False"
+                  ScrollViewer.IsScrollInertiaEnabled="False"
+                  ScrollViewer.IsZoomChainingEnabled="False"
+                  ScrollViewer.IsZoomInertiaEnabled="False"
                                   DragItemsStarting="ListView_DragItemsStarting"
                                   >
             <ListView.ItemTemplate>
