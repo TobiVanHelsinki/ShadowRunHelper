@@ -12,7 +12,6 @@ namespace ShadowRunHelper.UI
         public Thing CurrentThing => DataContext as Thing;
         public CategoryEntry()
         {
-            InitializeComponent();
             DataContextChanged += (x,y) => Initialize();
         }
         bool Initialized;
@@ -22,6 +21,7 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
+            InitializeComponent();
             CurrentThing.PropertyChanged += CurrentThing_PropertyChanged;
             if (CurrentThing.IsSeperator)
             {
@@ -77,7 +77,7 @@ namespace ShadowRunHelper.UI
         {
             try
             {
-                await new EditThingDialog(((Thing)((Button)sender).DataContext)).ShowAsync();
+                await new EditThingDialog(((Thing)((FrameworkElement)sender).DataContext)).ShowAsync();
             }
             catch (Exception)
             {
@@ -87,7 +87,7 @@ namespace ShadowRunHelper.UI
         {
             try
             {
-                await new EditThingDialog(((Thing)((Grid)sender).DataContext)).ShowAsync();
+                await new EditThingDialog(((Thing)((FrameworkElement)sender).DataContext)).ShowAsync();
             }
             catch (Exception)
             {
@@ -95,17 +95,47 @@ namespace ShadowRunHelper.UI
         }
         void Del_Click(object sender, RoutedEventArgs e)
         {
-            if ((Thing)((Button)sender).DataContext != null)
+            if ((Thing)((FrameworkElement)sender).DataContext != null)
             {
-                Model.MainObject.Remove((Thing)((Button)sender).DataContext);
+                Model.MainObject.Remove((Thing)((FrameworkElement)sender).DataContext);
+            }
+        }
+        private void Fav_Click(object sender, RoutedEventArgs e)
+        {
+            ((sender as FrameworkElement).DataContext as Thing).IsFavorite =! ((sender as FrameworkElement).DataContext as Thing).IsFavorite;
+        }
+
+        private void Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Model.MainObject.ClearPreparedItems();
+            Model.MainObject.PrepareToMoveOrCopy((sender as FrameworkElement).DataContext as Thing);
+            Model.MainObject.IsItemsMove = false;
+        }
+
+        private void Cut_Click(object sender, RoutedEventArgs e)
+        {
+            Model.MainObject.ClearPreparedItems();
+            Model.MainObject.PrepareToMoveOrCopy((sender as FrameworkElement).DataContext as Thing);
+            Model.MainObject.IsItemsMove = true;
+        }
+
+        private void Paste_Click(object sender, RoutedEventArgs e)
+        {
+            if (Model.MainObject.IsItemsMove == true)
+            {
+                Model.MainObject.MovePreparedItems(CurrentThing.ThingType);
+            }
+            else if (Model.MainObject.IsItemsMove == false)
+            {
+                Model.MainObject.CopyPreparedItems(CurrentThing.ThingType);
             }
         }
 
-        #endregion
-
-        private void Fav_Click(object sender, RoutedEventArgs e)
+        private void Share_Click(object sender, RoutedEventArgs e)
         {
-            ((sender as FrameworkElement).DataContext as Thing).IsFavorite = !((sender as FrameworkElement).DataContext as Thing).IsFavorite;
+
         }
+        
+        #endregion
     }
 }

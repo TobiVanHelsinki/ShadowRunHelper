@@ -351,7 +351,7 @@ namespace ShadowRunHelper.UI
             foreach (Thing item in e.Items)
             {
                 ToSend.Add(item);
-                Model.MainObject.PrepareToMove(item as Thing);
+                Model.MainObject.PrepareToMoveOrCopy(item as Thing);
             }
             var txt = CharHolderIO.Serialize(ToSend);
             e.Data.SetText(txt);
@@ -381,7 +381,7 @@ namespace ShadowRunHelper.UI
         {
             if (e?.DataView?.Properties?.ApplicationName == App.InstanceKey) // bin ich selber
             {
-                Model.MainObject.MovePreparedItems(Controller);
+                Model.MainObject.MovePreparedItems(Controller.eDataTyp);
             }
             else // kommt von einer anderen app
             {

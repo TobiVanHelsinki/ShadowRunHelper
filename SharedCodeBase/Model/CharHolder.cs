@@ -414,23 +414,51 @@ namespace ShadowRunHelper.Model
         #endregion
         #region DnD
         readonly List<Thing> MoveList = new List<Thing>();
-        public void PrepareToMove(Thing item)
+        bool _IsItemsPrepared;
+        public bool IsItemsPrepared
+        {
+            get { return _IsItemsPrepared; }
+            set { if (_IsItemsPrepared != value) { _IsItemsPrepared = value; NotifyPropertyChanged(); } }
+        }
+        public bool? IsItemsMove { get; set; }
+        public void ClearPreparedItems()
+        {
+            MoveList.Clear();
+            IsItemsPrepared = false;
+            IsItemsMove = null;
+        }
+        public void PrepareToMoveOrCopy(Thing item)
         {
             if (item != null && !MoveList.Contains(item))
             {
                 MoveList.Add(item);
+                IsItemsPrepared = true;
             }
         }
-        public void MovePreparedItems(IController NEW_CTRL)
+        public void CopyPreparedItems(ThingDefs NEW_CTRL)
         {
             foreach (var OLD_THING in MoveList)
             {
                 var OLD_CTRL = CTRLList.First(x => x.eDataTyp == OLD_THING.ThingType);
-                var NEW_THING = NEW_CTRL.AddNewThing();
+                var NEW_THING = Add(NEW_CTRL);
+                OLD_THING.TryCopy(NEW_THING);
+            }
+            MoveList.Clear();
+            IsItemsPrepared = false;
+            IsItemsMove = null;
+        }
+        public void MovePreparedItems(ThingDefs NEW_CTRL)
+        {
+            foreach (var OLD_THING in MoveList)
+            {
+                var OLD_CTRL = CTRLList.First(x => x.eDataTyp == OLD_THING.ThingType);
+                var NEW_THING = Add(NEW_CTRL);
                 OLD_THING.TryCopy(NEW_THING);
                 OLD_CTRL.RemoveThing(OLD_THING);
             }
             MoveList.Clear();
+            IsItemsPrepared = false;
+            IsItemsMove = null;
         }
         #endregion
         public static CharHolder CreateCharWithStandardContent()

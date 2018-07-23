@@ -50,7 +50,7 @@
                     <Button Grid.ColumnSpan="2" Grid.Row="0" Content="&#xE70F;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Edit" Name="Handlung_Edit" Click="Edit_Click" Style="{StaticResource Category_Item_Buttons}"/>
                     <Button Grid.Row="1" Content="&#xE74D;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Delete" Click="Del_Click" Style="{StaticResource Category_Item_Buttons}"/>
                     <Button Grid.Row="1" Grid.Column="1" Content="&#xE8D9;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Favorite" Click="Fav_Click" Style="{StaticResource Category_Item_Buttons}" Visibility="{x:Bind IsFavorite, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}"/>
-                    <Button Grid.Row="1" Grid.Column="1" Content="&#xE734;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Favorite" Click="Fav_Click" Style="{StaticResource Category_Item_Buttons}" Visibility="{x:Bind IsFavorite, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}, ConverterParameter=Neg}"/>
+                    <Button Grid.Row="1" Grid.Column="1" Content="&#xE735;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Favorite" Click="Fav_Click" Style="{StaticResource Category_Item_Buttons}" Visibility="{x:Bind IsFavorite, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}, ConverterParameter=Neg}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="HandlungItem" x:DataType="CharModel:Handlung">
@@ -1639,6 +1639,26 @@
             </DataTemplate>
         </ResourceDictionary>
     </UserControl.Resources>
-    <ContentPresenter x:Name="EntryItem" />
+    <ContentPresenter x:Name="EntryItem" Background="Transparent">
+        <ContentPresenter.ContextFlyout>
+            <MenuFlyout LightDismissOverlayMode="On">
+                <MenuFlyoutItem x:Uid="UI_TxT_Edit" Icon="Edit" Click="Edit_Click" />
 
+                <MenuFlyoutItem x:Uid="UI_TxT_Fav" Icon="Favorite" Click="Fav_Click" Visibility="{x:Bind CurrentThing.IsFavorite, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}, ConverterParameter=Neg}"/>
+                
+                <MenuFlyoutItem x:Uid="UI_TxT_FavUn" Icon="Unfavorite" Click="Fav_Click" Visibility="{x:Bind CurrentThing.IsFavorite, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}"/>
+                
+                <MenuFlyoutItem x:Uid="UI_TxT_Delete" Icon="Delete" Click="Del_Click"/>
+                <MenuFlyoutSeparator />
+                <MenuFlyoutItem x:Uid="UI_TxT_Copy" Icon="Copy" Click="Copy_Click"/>
+                <MenuFlyoutItem x:Uid="UI_TxT_Cut" Icon="Cut" Click="Cut_Click"/>
+                <MenuFlyoutItem x:Uid="UI_TxT_Paste" Icon="Paste" Click="Paste_Click" IsEnabled="{x:Bind Model.MainObject.IsItemsPrepared, Mode=OneWay}"/>
+                <!--<MenuFlyoutItem x:Uid="UI_TxT_Share" Click="Share_Click">
+                    <MenuFlyoutItem.Icon>
+                        <FontIcon Glyph="&#xE72D;" />
+                    </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>-->
+            </MenuFlyout>
+        </ContentPresenter.ContextFlyout>
+    </ContentPresenter>
 </UserControl>

@@ -1565,4 +1565,28 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="Model_KomplexForm_Target.Text" xml:space="preserve">
     <value>Target</value>
   </data>
+  <data name="UI_TxT_Copy.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="UI_TxT_Cut.Text" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="UI_TxT_Delete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="UI_TxT_Edit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="UI_TxT_Fav.Text" xml:space="preserve">
+    <value>Favorize</value>
+  </data>
+  <data name="UI_TxT_FavUn.Text" xml:space="preserve">
+    <value>Defavorize</value>
+  </data>
+  <data name="UI_TxT_Paste.Text" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="UI_TxT_Share.Text" xml:space="preserve">
+    <value>Share</value>
+  </data>
 </root>

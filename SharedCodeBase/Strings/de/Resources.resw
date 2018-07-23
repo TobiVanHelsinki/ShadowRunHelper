@@ -1599,4 +1599,28 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Notification_Error_SummorysREfresh" xml:space="preserve">
     <value>Ordner konnte nicht gelesen werden</value>
   </data>
+  <data name="UI_TxT_Copy.Text" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="UI_TxT_Cut.Text" xml:space="preserve">
+    <value>Ausschneiden</value>
+  </data>
+  <data name="UI_TxT_Delete.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="UI_TxT_Edit.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="UI_TxT_Fav.Text" xml:space="preserve">
+    <value>Favorisieren</value>
+  </data>
+  <data name="UI_TxT_FavUn.Text" xml:space="preserve">
+    <value>Defavorisieren</value>
+  </data>
+  <data name="UI_TxT_Paste.Text" xml:space="preserve">
+    <value>Einfügen</value>
+  </data>
+  <data name="UI_TxT_Share.Text" xml:space="preserve">
+    <value>Teilen</value>
+  </data>
 </root>
