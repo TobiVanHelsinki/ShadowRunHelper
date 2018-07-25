@@ -114,7 +114,7 @@ namespace ShadowRunHelper.Model
 
         public string MakeName()
         {
-            return MakeName(SettingsModel.I.FileNameUseProgres, SettingsModel.I.FileNameUseDate);
+            return MakeName(SettingsModel.I.FILENAME_USEPROGRESS, SettingsModel.I.FILENAME_USEDATE);
         }
 
         public override string ToString()
@@ -398,7 +398,7 @@ namespace ShadowRunHelper.Model
             HasChanges = true;
             if (SettingsModel.I.AUTO_SAVE)
             {
-                SetSaveTimerTo(SettingsModel.I.AutoSaveInterval);
+                SetSaveTimerTo(SettingsModel.I.AUTO_SAVE_INTERVAL_MS);
             }
         }
 

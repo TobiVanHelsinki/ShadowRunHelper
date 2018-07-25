@@ -87,12 +87,14 @@ namespace ShadowRunHelper
         public const string CONTAINER_SETTINGS_LAST_SAVE_PATH_STD = "";
         public const string CONTAINER_SETTINGS_LAST_SAVE_PLACE = "SETTINGS_LAST_SAVE_PLACE";
         public const string CONTAINER_SETTINGS_LAST_SAVE_PLACE_STD = "";
+        public const string CONTAINER_SETTINGS_LAST_SAVE_INFO_STD = null;
+        
 
         public const string CONTAINER_SETTINGS_CHARINTEMPSTORE = "CHARINTEMPSTORE";
         public const bool CONTAINER_SETTINGS_CHARINTEMPSTORE_STD = false;
 
         public const string CONTAINER_SETTINGS_LAST_PAGE = "SETTINGS_LAST_PAGE";
-        public const ProjectPages CONTAINER_SETTINGS_LAST_PAGE_STD = ProjectPages.Char;
+        public const int CONTAINER_SETTINGS_LAST_PAGE_STD = (int) ProjectPages.Char;
 
         #endregion
         #region Help

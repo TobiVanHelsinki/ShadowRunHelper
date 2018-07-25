@@ -127,12 +127,12 @@
                         <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Creations"/>
                     <Run x:Uid="Doppelpunkt"/>
-                    <Run Text="{x:Bind Settings.CountCreations}"/>
+                    <Run Text="{x:Bind Settings.COUNT_CREATIONS}"/>
                         </TextBlock>
                         <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Deletions"/>
                     <Run x:Uid="Doppelpunkt"/>
-                    <Run Text="{x:Bind Settings.CountDeletions}"/>
+                    <Run Text="{x:Bind Settings.COUNT_DELETIONS}"/>
                         </TextBlock>
 
                         <TextBlock x:Uid="UI_Optionen_U_Rechtliches"  Style="{StaticResource ueberschrift2}"/>
@@ -152,29 +152,29 @@
 
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_Char"/>
 
-                        <UI:SettingElement x:Uid="UI_Optionen_EditAfterAdd" Setting="{x:Bind Path=Settings.StartEditAfterAdd, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_EditAfterAdd" Setting="{x:Bind Path=Settings.START_AFTER_EDIT, Mode=TwoWay}"/>
                         <UI:SettingElement x:Uid="UI_Optionen_DisplayRequest" Setting="{x:Bind Path=Settings.DISPLAY_REQUEST, Mode=TwoWay}"/>
 
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_IO"/>
 
-                        <UI:SettingElement x:Uid="UI_Optionen_LoadOnStart" Setting="{x:Bind Path=Settings.LoadCharOnStart, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_LoadOnStart" Setting="{x:Bind Path=Settings.LOAD_CHAR_ON_START, Mode=TwoWay}"/>
                         <UI:SettingElement x:Uid="UI_Optionen_AutoSave" Setting="{x:Bind Path=Settings.AUTO_SAVE, Mode=TwoWay}"/>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Visibility="{x:Bind Path=Settings.AUTO_SAVE, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}">
                             <TextBlock x:Uid="UI_Optionen_AutoSaveInterval" Style="{StaticResource TextInhaltKlein}"/>
-                            <TextBox MaxWidth="600" Margin="10,0,0,0" InputScope="Number" Text="{x:Bind Path=Settings.AutoSaveInterval, Mode=TwoWay, Converter={StaticResource io_Mult1K}}"/>
+                            <TextBox MaxWidth="600" Margin="10,0,0,0" InputScope="Number" Text="{x:Bind Path=Settings.AUTO_SAVE_INTERVAL_MS, Mode=TwoWay, Converter={StaticResource io_Mult1K}}"/>
                         </StackPanel>
 
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_File"/>
 
-                        <UI:SettingElement x:Uid="UI_Optionen_Ordnermode" Setting="{x:Bind Path=Settings.ORDNERMODE, Mode=TwoWay}"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Visibility="{x:Bind Path=Settings.ORDNERMODE, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}">
+                    <UI:SettingElement x:Uid="UI_Optionen_Ordnermode" Setting="{x:Bind Path=Settings.FOLDERMODE, Mode=TwoWay}"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Visibility="{x:Bind Path=Settings.FOLDERMODE, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}">
                             <TextBlock x:Uid="UI_Optionen_Ordnermode_Pfad" Style="{StaticResource TextInhaltKlein}"/>
-                            <TextBlock Text="{x:Bind Path=Settings.ORDNERMODE_PFAD, Mode=OneWay}" Margin="10,0,0,0" Style="{StaticResource TextInhaltKlein}"/>
+                        <TextBlock Text="{x:Bind Path=Settings.FOLDERMODE_PATH, Mode=OneWay}" Margin="10,0,0,0" Style="{StaticResource TextInhaltKlein}"/>
                         </StackPanel>
 
-                        <UI:SettingElement x:Uid="UI_Optionen_Intern_Sync" Setting="{x:Bind Path=Settings.InternSync, Mode=TwoWay}"/>
-                        <UI:SettingElement x:Uid="UI_Optionen_FileNameUseProgres" Setting="{x:Bind Path=Settings.FileNameUseProgres, Mode=TwoWay}"/>
-                        <UI:SettingElement x:Uid="UI_Optionen_FileNameUseDate" Setting="{x:Bind Path=Settings.FileNameUseDate, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_Intern_Sync" Setting="{x:Bind Path=Settings.INTERN_SYNC, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_FileNameUseProgres" Setting="{x:Bind Path=Settings.FILENAME_USEPROGRESS, Mode=TwoWay}"/>
+                        <UI:SettingElement x:Uid="UI_Optionen_FileNameUseDate" Setting="{x:Bind Path=Settings.FILENAME_USEDATE, Mode=TwoWay}"/>
 
 
                         <UI:GroupSeparator x:Uid="UI_Optionen_Group_Other"/>

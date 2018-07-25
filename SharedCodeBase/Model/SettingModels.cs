@@ -22,10 +22,7 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void IAP_HIDEADSReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_IAP_HIDEADS, Constants.CONTAINER_SETTINGS_IAP_HIDEADS_STD);
-        }
+       
         [UsedSetting]
         public string LAST_APP_VERSION
         {
@@ -35,11 +32,6 @@ namespace ShadowRunHelper
                 PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_APP_VERSION, value);
                 Instance.NotifyPropertyChanged();
             }
-        }
-
-        public void LastAppVersionReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, (int)Constants.CONTAINER_SETTINGS_LAST_PAGE_STD);
         }
 
         [UsedSetting]
@@ -53,11 +45,6 @@ namespace ShadowRunHelper
             }
         }
 
-        public void LastPageReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, (int)Constants.CONTAINER_SETTINGS_LAST_PAGE_STD);
-        }
-
         [UsedSetting]
         public bool FORCE_LOAD_CHAR_ON_START
         {
@@ -69,10 +56,6 @@ namespace ShadowRunHelper
             }
         }
 
-        public void ForceLoadCharOnStartReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START, Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START_STD);
-        }
         [UsedSetting]
         public bool AUTO_SAVE
         {
@@ -82,11 +65,6 @@ namespace ShadowRunHelper
                 PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE, value);
                 Instance.NotifyPropertyChanged();
             }
-        }
-
-        public void AutoSaveReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE, Constants.CONTAINER_SETTINGS_AUTO_SAVE_STD);
         }
 
         [UsedSetting]
@@ -99,10 +77,6 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void TutorialMainShownReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1, Constants.CONTAINER_SETTINGS_TUT_SHOWN_1_STD);
-        }
 
         [UsedSetting]
         public int START_COUNT_DB
@@ -113,10 +87,6 @@ namespace ShadowRunHelper
                 PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_COUNT_DB, value);
                 Instance.NotifyPropertyChanged();
             }
-        }
-        public void StartCountDBReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_COUNT_DB, Constants.CONTAINER_SETTINGS_START_COUNT_DB_STD);
         }
 
         [UsedSetting]
@@ -129,10 +99,7 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void StartCountReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_COUNT, Constants.CONTAINER_SETTINGS_START_COUNT_STD);
-        }
+
         [UsedSetting]
         public int COUNT_LOADINGS
         {
@@ -142,10 +109,6 @@ namespace ShadowRunHelper
                 PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_LOADINGS, value);
                 Instance.NotifyPropertyChanged();
             }
-        }
-        public void CountLoadingsReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_LOADINGS, Constants.CONTAINER_SETTINGS_COUNT_LOADINGS_STD);
         }
         [UsedSetting]
         public int COUNT_SAVINGS
@@ -157,13 +120,9 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void CountSavingsReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_SAVINGS, Constants.CONTAINER_SETTINGS_COUNT_SAVINGS_STD);
-        }
 
         [UsedSetting]
-        public int CountDeletions
+        public int COUNT_DELETIONS
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_DELETIONS);
             set
@@ -172,13 +131,9 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void CountDeletionsReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_DELETIONS, Constants.CONTAINER_SETTINGS_COUNT_DELETIONS_STD);
-        }
 
         [UsedSetting]
-        public int CountCreations
+        public int COUNT_CREATIONS
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_CREATIONS);
             set
@@ -187,13 +142,9 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void CountCreationsReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_CREATIONS, Constants.CONTAINER_SETTINGS_COUNT_CREATIONS_STD);
-        }
 
         [UsedSetting]
-        public int AutoSaveInterval
+        public int AUTO_SAVE_INTERVAL_MS
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS);
             set
@@ -211,13 +162,9 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void AutoSaveIntervalReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS, Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS_STD);
-        }
 
         [UsedSetting]
-        public bool LoadCharOnStart
+        public bool LOAD_CHAR_ON_START
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START);
             set
@@ -226,13 +173,9 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void LoadCharOnStartReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START, Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START_STD);
-        }
 
         [UsedSetting]
-        public bool StartEditAfterAdd
+        public bool START_AFTER_EDIT
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_START_AFTER_EDIT);
             set
@@ -241,13 +184,9 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void StartEditAfterAddReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_AFTER_EDIT, Constants.CONTAINER_SETTINGS_START_AFTER_EDIT_STD);
-        }
 
         [UsedSetting]
-        public bool BetaFeatures
+        public bool BETA_FEATURES
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_BETA_FEATURES);
             set
@@ -256,13 +195,9 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void BetaFeaturesReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_BETA_FEATURES, Constants.CONTAINER_SETTINGS_BETA_FEATURES_STD);
-        }
 
         [UsedSetting]
-        public FileInfoClass LastSaveInfo
+        public FileInfoClass LAST_SAVE_INFO
         {
             get
             {
@@ -277,9 +212,9 @@ namespace ShadowRunHelper
             {
                 if (value == null)
                 {
-                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME, string.Empty);
-                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH, string.Empty);
-                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE, string.Empty);
+                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME, Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME_STD);
+                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH, Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH_STD);
+                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE, Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE_STD);
                 }
                 else
                 {
@@ -290,13 +225,9 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void LastSaveInfoReset()
-        {
-            LastSaveInfo = null;
-        }
 
         [UsedSetting]
-        public bool FileNameUseProgres
+        public bool FILENAME_USEPROGRESS
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS);
             set
@@ -305,13 +236,9 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void FileNameUseProgresReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS, Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS_STD);
-        }
 
         [UsedSetting]
-        public bool FileNameUseDate
+        public bool FILENAME_USEDATE
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE);
             set
@@ -320,13 +247,9 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        public void FileNameUseDateReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE, Constants.CONTAINER_SETTINGS_FILENAME_USEDATE_STD);
-        }
 
         [UsedSetting]
-        public bool CharInTempStore
+        public bool CHARINTEMPSTORE
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE);
             set
@@ -334,10 +257,6 @@ namespace ShadowRunHelper
                 PlatformSettings.set(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE, value);
                 NotifyPropertyChanged();
             }
-        }
-        public void CharInTempStoreReset()
-        {
-            PlatformSettings.set(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE, Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE_STD);
         }
 
         #endregion Settings
@@ -394,7 +313,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                var b = SharedSettingsModel.Instance.InternSync;
+                var b = SharedSettingsModel.Instance.INTERN_SYNC;
                 var localpath = SharedIO.CurrentIO.GetCompleteInternPath(Place.Local);
                 var roampath = SharedIO.CurrentIO.GetCompleteInternPath(Place.Roaming);
                 var t = new FileInfoClass(b ? Place.Roaming : Place.Local, "", (b ? roampath : localpath) + SharedConstants.INTERN_SAVE_CONTAINER + @"\");
@@ -408,25 +327,25 @@ namespace ShadowRunHelper
         }
         static async void FolderMode_Toggled()
         {
-            var FolderMode = SharedSettingsModel.Instance.ORDNERMODE;
+            var FolderMode = SharedSettingsModel.Instance.FOLDERMODE;
             if (FolderMode)
             {
                 try
                 {
-                    SharedSettingsModel.I.ORDNERMODE_PFAD = (await UwpIO.GetFolder(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.AskUser)).Path;
+                    SharedSettingsModel.I.FOLDERMODE_PATH = (await UwpIO.GetFolder(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.AskUser)).Path;
                 }
                 catch (Exception ex)
                 {
-                    SharedSettingsModel.Instance.ORDNERMODE = false;
+                    SharedSettingsModel.Instance.FOLDERMODE = false;
                     return;
                 }
             }
             try
             {
-                var InternRoam = SharedSettingsModel.Instance.InternSync;
+                var InternRoam = SharedSettingsModel.Instance.INTERN_SYNC;
 
                 var internpath = SharedIO.CurrentIO.GetCompleteInternPath(InternRoam ? Place.Roaming : Place.Local) + SharedConstants.INTERN_SAVE_CONTAINER + @"\";
-                var externpath = SharedSettingsModel.Instance.ORDNERMODE_PFAD;
+                var externpath = SharedSettingsModel.Instance.FOLDERMODE_PATH;
                 var t = new FileInfoClass(FolderMode ? Place.Extern : (InternRoam ? Place.Roaming : Place.Local), "", (FolderMode ? externpath : internpath));
                 var s = new FileInfoClass(!FolderMode ? Place.Extern : (InternRoam ? Place.Roaming : Place.Local), "", (!FolderMode ? externpath : internpath));
                 await SharedIO.CurrentIO.MoveAllFiles(t, s, Constants.LST_FILETYPES_CHAR);

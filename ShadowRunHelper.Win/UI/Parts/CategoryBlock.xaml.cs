@@ -303,7 +303,7 @@ namespace ShadowRunHelper.UI
             try
             {
                 Thing newThing = Model.MainObject.Add(Controller.eDataTyp);
-                if (SettingsModel.I.StartEditAfterAdd)
+                if (SettingsModel.I.START_AFTER_EDIT)
                 {
                     await new EditThingDialog(newThing).ShowAsync();
                 }

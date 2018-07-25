@@ -202,7 +202,7 @@ namespace ShadowRunHelper.UI
             ChangeProgress(true);
             Model.MainObject = CharHolder.CreateCharWithStandardContent();
             Model.MainObject.AfterLoad();
-            SettingsModel.I.CountCreations++;
+            SettingsModel.I.COUNT_CREATIONS++;
             AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
             ChangeProgress(false);
         }
@@ -268,7 +268,7 @@ namespace ShadowRunHelper.UI
     , StringHelper.GetString("Request_Delete/No")
     , Delete);
             await Summorys_Aktualisieren();
-            SettingsModel.I.CountDeletions++;
+            SettingsModel.I.COUNT_DELETIONS++;
         }
 
         public static async Task ShowMessageDialog(string Title, string Message, string strOK, string strCancel, Action OK, Action Cancel = null)

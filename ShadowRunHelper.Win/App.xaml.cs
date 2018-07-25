@@ -103,7 +103,7 @@ namespace ShadowRunHelper
                 string name = uriArgs.Uri.Segments[uriArgs.Uri.Segments.Length - 1];
                 string path = uriArgs.Uri.LocalPath.Remove(uriArgs.Uri.LocalPath.Length - name.Length);
                 name = name.Remove(name.Length - 1);
-                Settings.LastSaveInfo = new FileInfoClass(Place.Extern, name, path)
+                Settings.LAST_SAVE_INFO = new FileInfoClass(Place.Extern, name, path)
                 {
                     FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
                 };
@@ -128,7 +128,7 @@ namespace ShadowRunHelper
                 {
                 }
                 Settings.FORCE_LOAD_CHAR_ON_START = true;
-                Settings.LastSaveInfo = new FileInfoClass(Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length))
+                Settings.LAST_SAVE_INFO = new FileInfoClass(Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length))
                 {
                     FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
                 };
@@ -195,9 +195,9 @@ namespace ShadowRunHelper
         {
             try
             {
-                if ((Settings.CharInTempStore && !FirstStart || Settings.LoadCharOnStart && FirstStart) && Model.MainObject == null || Settings.FORCE_LOAD_CHAR_ON_START)
+                if ((Settings.CHARINTEMPSTORE && !FirstStart || Settings.LOAD_CHAR_ON_START && FirstStart) && Model.MainObject == null || Settings.FORCE_LOAD_CHAR_ON_START)
                 {
-                    var info = Settings.LastSaveInfo;
+                    var info = Settings.LAST_SAVE_INFO;
                     Debug_TimeAnalyser.Start("CharLoadingNow");
                     var TMPChar = await CharHolderIO.Load(info, eUD: UserDecision.ThrowError);
                     Debug_TimeAnalyser.Stop("CharLoadingNow");
@@ -239,8 +239,8 @@ namespace ShadowRunHelper
             {
                 Settings.FORCE_LOAD_CHAR_ON_START = false;
                 FirstStart = false;
-                Settings.LastSaveInfo = null;
-                Settings.CharInTempStore = false;
+                Settings.LAST_SAVE_INFO = null;
+                Settings.CHARINTEMPSTORE = false;
             }
         }
 
@@ -261,8 +261,8 @@ namespace ShadowRunHelper
                     {
                         SaveInfo = await SharedIO.SaveAtTempPlace(Model.MainObject);
                     }
-                    Settings.CharInTempStore = true;
-                    Settings.LastSaveInfo = SaveInfo;
+                    Settings.CHARINTEMPSTORE = true;
+                    Settings.LAST_SAVE_INFO = SaveInfo;
                 }
                 catch (Exception) { }
             }
@@ -284,7 +284,7 @@ namespace ShadowRunHelper
         /// <returns></returns>
         async Task App_UnhandledExceptionAsync(object sender, UnhandledExceptionEventArgs e)
         {
-            Settings.LastSaveInfo = null;
+            Settings.LAST_SAVE_INFO = null;
             try
             {
                 await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Emergency);
