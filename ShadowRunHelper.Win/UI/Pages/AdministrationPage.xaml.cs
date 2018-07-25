@@ -82,7 +82,7 @@ namespace ShadowRunHelper.UI
 
             }
 
-            if (SettingsModel.I.StartCount <= 1)
+            if (SettingsModel.I.START_COUNT <= 1)
             {
                 CopyExampleChar();
             }
@@ -90,7 +90,7 @@ namespace ShadowRunHelper.UI
             {
                 Summorys_Aktualisieren();
             }
-            if (!SettingsModel.I.TutorialMainShown)
+            if (!SettingsModel.I.TUT_SHOWN_1)
             {
                 try
                 {
@@ -101,7 +101,7 @@ namespace ShadowRunHelper.UI
                 catch (Exception)
                 {
                 }
-                SettingsModel.I.TutorialMainShown = true;
+                SettingsModel.I.TUT_SHOWN_1 = true;
             }
             Debug_TimeAnalyser.Stop("PAdmin.OnNavigatedTo");
         }
@@ -232,7 +232,7 @@ namespace ShadowRunHelper.UI
             {
                 await SystemHelper.SleepMilliSeconds(10);
                 Model.MainObject = await CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError);
-                SettingsModel.I.CountLoadings++;
+                SettingsModel.I.COUNT_LOADINGS++;
             }
             catch (Exception ex)
             {

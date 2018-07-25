@@ -18,7 +18,7 @@ namespace ShadowRunHelper
                 return;
             }
 
-            if (SettingsModel.Instance.StartCount % 5 == 0 || force)
+            if (SettingsModel.Instance.START_COUNT % 5 == 0 || force)
             {
                 try
                 {

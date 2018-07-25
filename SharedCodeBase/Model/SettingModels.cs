@@ -12,6 +12,7 @@ namespace ShadowRunHelper
     public class SettingsModel : SharedSettingsModel
     {
         #region Settings
+        [UsedSetting]
         public bool IAP_HIDEADS
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_IAP_HIDEADS);
@@ -25,7 +26,8 @@ namespace ShadowRunHelper
         {
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_IAP_HIDEADS, Constants.CONTAINER_SETTINGS_IAP_HIDEADS_STD);
         }
-        public string LastAppVersion
+        [UsedSetting]
+        public string LAST_APP_VERSION
         {
             get => PlatformSettings.getString(Constants.CONTAINER_SETTINGS_LAST_APP_VERSION);
             set
@@ -40,7 +42,8 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, (int)Constants.CONTAINER_SETTINGS_LAST_PAGE_STD);
         }
 
-        public ProjectPages LastPage
+        [UsedSetting]
+        public ProjectPages LAST_PAGE
         {
             get => (ProjectPages)PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_LAST_PAGE);
             set
@@ -55,7 +58,8 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, (int)Constants.CONTAINER_SETTINGS_LAST_PAGE_STD);
         }
 
-        public bool ForceLoadCharOnStart
+        [UsedSetting]
+        public bool FORCE_LOAD_CHAR_ON_START
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START);
             set
@@ -69,7 +73,8 @@ namespace ShadowRunHelper
         {
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START, Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START_STD);
         }
-        public bool AutoSave
+        [UsedSetting]
+        public bool AUTO_SAVE
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_AUTO_SAVE);
             set
@@ -84,7 +89,8 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE, Constants.CONTAINER_SETTINGS_AUTO_SAVE_STD);
         }
 
-        public bool TutorialMainShown
+        [UsedSetting]
+        public bool TUT_SHOWN_1
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1);
             set
@@ -98,7 +104,8 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1, Constants.CONTAINER_SETTINGS_TUT_SHOWN_1_STD);
         }
 
-        public int StartCountDB
+        [UsedSetting]
+        public int START_COUNT_DB
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_START_COUNT_DB);
             set
@@ -112,7 +119,8 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_COUNT_DB, Constants.CONTAINER_SETTINGS_START_COUNT_DB_STD);
         }
 
-        public int StartCount
+        [UsedSetting]
+        public int START_COUNT
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_START_COUNT);
             set
@@ -125,7 +133,8 @@ namespace ShadowRunHelper
         {
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_COUNT, Constants.CONTAINER_SETTINGS_START_COUNT_STD);
         }
-        public int CountLoadings
+        [UsedSetting]
+        public int COUNT_LOADINGS
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_LOADINGS);
             set
@@ -138,7 +147,8 @@ namespace ShadowRunHelper
         {
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_LOADINGS, Constants.CONTAINER_SETTINGS_COUNT_LOADINGS_STD);
         }
-        public int CountSavings
+        [UsedSetting]
+        public int COUNT_SAVINGS
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_SAVINGS);
             set
@@ -152,6 +162,7 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_SAVINGS, Constants.CONTAINER_SETTINGS_COUNT_SAVINGS_STD);
         }
 
+        [UsedSetting]
         public int CountDeletions
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_DELETIONS);
@@ -166,6 +177,7 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_DELETIONS, Constants.CONTAINER_SETTINGS_COUNT_DELETIONS_STD);
         }
 
+        [UsedSetting]
         public int CountCreations
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_CREATIONS);
@@ -180,6 +192,7 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_CREATIONS, Constants.CONTAINER_SETTINGS_COUNT_CREATIONS_STD);
         }
 
+        [UsedSetting]
         public int AutoSaveInterval
         {
             get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS);
@@ -203,6 +216,7 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS, Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS_STD);
         }
 
+        [UsedSetting]
         public bool LoadCharOnStart
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START);
@@ -217,6 +231,7 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START, Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START_STD);
         }
 
+        [UsedSetting]
         public bool StartEditAfterAdd
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_START_AFTER_EDIT);
@@ -231,6 +246,7 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_AFTER_EDIT, Constants.CONTAINER_SETTINGS_START_AFTER_EDIT_STD);
         }
 
+        [UsedSetting]
         public bool BetaFeatures
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_BETA_FEATURES);
@@ -245,6 +261,7 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_BETA_FEATURES, Constants.CONTAINER_SETTINGS_BETA_FEATURES_STD);
         }
 
+        [UsedSetting]
         public FileInfoClass LastSaveInfo
         {
             get
@@ -278,6 +295,7 @@ namespace ShadowRunHelper
             LastSaveInfo = null;
         }
 
+        [UsedSetting]
         public bool FileNameUseProgres
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS);
@@ -292,6 +310,7 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS, Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS_STD);
         }
 
+        [UsedSetting]
         public bool FileNameUseDate
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE);
@@ -306,6 +325,7 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE, Constants.CONTAINER_SETTINGS_FILENAME_USEDATE_STD);
         }
 
+        [UsedSetting]
         public bool CharInTempStore
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE);
@@ -320,18 +340,16 @@ namespace ShadowRunHelper
             PlatformSettings.set(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE, Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE_STD);
         }
 
-
-
         #endregion Settings
 
-        #region Singleton Model Thigns
-        //================================================
+        #region Start, Konstruktor, Listener
         public static new SettingsModel Initialize()
         {
             if (instance == null)
             {
                 SharedIO.CurrentIO.CreateSaveContainer();
                 instance = new SettingsModel();
+                instance.UsedConstants = typeof(Constants);
             }
             instance.PropertyChanged += SettingsChanged;
 
@@ -352,7 +370,9 @@ namespace ShadowRunHelper
                     break;
             }
         }
+        #endregion
 
+        #region Singleton Model Thigns
         public static new SettingsModel Instance
         {
             get
@@ -369,7 +389,7 @@ namespace ShadowRunHelper
         }
         #endregion
 
-        #region Contraints
+        #region Constraints
         static async void Intern_Sync_Toggled()
         {
             try

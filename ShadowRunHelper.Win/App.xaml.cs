@@ -41,7 +41,7 @@ namespace ShadowRunHelper
             CheckLicence = Task.Run(()=>IAP.CheckLicence());
             SetConstantStuff();
             Model = AppModel.Initialize();
-            if (Settings.StartCount < 1)
+            //if (Settings.StartCount < 1)
             {
                 Settings.ResetAllSettings();
             }
@@ -50,7 +50,7 @@ namespace ShadowRunHelper
             LeavingBackground += App_LeavingBackground;
 
             InitializeComponent();
-            Settings.StartCount++;
+            Settings.START_COUNT++;
             Task.Run(AppCenterConfiguration);
             Task.Run(RegisterAppInstance);
             Debug_TimeAnalyser.Stop("App()");
@@ -99,7 +99,7 @@ namespace ShadowRunHelper
             Debug_TimeAnalyser.Start("Entry Protocol");
             if (args.Kind == ActivationKind.Protocol && args is ProtocolActivatedEventArgs uriArgs)
             {
-                Settings.ForceLoadCharOnStart = true;
+                Settings.FORCE_LOAD_CHAR_ON_START = true;
                 string name = uriArgs.Uri.Segments[uriArgs.Uri.Segments.Length - 1];
                 string path = uriArgs.Uri.LocalPath.Remove(uriArgs.Uri.LocalPath.Length - name.Length);
                 name = name.Remove(name.Length - 1);
@@ -127,7 +127,7 @@ namespace ShadowRunHelper
                 catch (Exception ex)
                 {
                 }
-                Settings.ForceLoadCharOnStart = true;
+                Settings.FORCE_LOAD_CHAR_ON_START = true;
                 Settings.LastSaveInfo = new FileInfoClass(Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length))
                 {
                     FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
@@ -182,7 +182,7 @@ namespace ShadowRunHelper
             else
             {
                 // Seite ist aktiv, wir versuchen, den Char anzuzeigen
-                Model.RequestNavigation(Settings.LastPage);
+                Model.RequestNavigation(Settings.LAST_PAGE);
             }
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
             Window.Current.Activate();
@@ -195,7 +195,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                if ((Settings.CharInTempStore && !FirstStart || Settings.LoadCharOnStart && FirstStart) && Model.MainObject == null || Settings.ForceLoadCharOnStart)
+                if ((Settings.CharInTempStore && !FirstStart || Settings.LoadCharOnStart && FirstStart) && Model.MainObject == null || Settings.FORCE_LOAD_CHAR_ON_START)
                 {
                     var info = Settings.LastSaveInfo;
                     Debug_TimeAnalyser.Start("CharLoadingNow");
@@ -209,7 +209,7 @@ namespace ShadowRunHelper
 #pragma warning restore CS4014
                     }
                     var OldChar = Model.MainObject;
-                    Settings.CountLoadings++;
+                    Settings.COUNT_LOADINGS++;
                     Model.MainObject = TMPChar;
                     if (OldChar != null)
                     {
@@ -224,7 +224,7 @@ namespace ShadowRunHelper
                             Model.NewNotification(StringHelper.GetString("Notification_Error_FileActivation"), ex);
                         }
                     }
-                    if (Settings.ForceLoadCharOnStart)
+                    if (Settings.FORCE_LOAD_CHAR_ON_START)
                     {
                         Model.NewNotification(StringHelper.GetString("Notification_Char_Loaded_File"));
                     }
@@ -237,7 +237,7 @@ namespace ShadowRunHelper
             catch (Exception) { }
             finally
             {
-                Settings.ForceLoadCharOnStart = false;
+                Settings.FORCE_LOAD_CHAR_ON_START = false;
                 FirstStart = false;
                 Settings.LastSaveInfo = null;
                 Settings.CharInTempStore = false;
@@ -252,10 +252,10 @@ namespace ShadowRunHelper
                 try
                 {
                     FileInfoClass SaveInfo;
-                    if (Settings.AutoSave)
+                    if (Settings.AUTO_SAVE)
                     {
                         SaveInfo = await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
-                        Settings.CountSavings++;
+                        Settings.COUNT_SAVINGS++;
                     }
                     else
                     {

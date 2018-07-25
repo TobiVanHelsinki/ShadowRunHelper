@@ -1,13 +1,19 @@
-﻿--------Aktuelles-----------------------------------------------
-* Char Page Loading Time, indem die abfrage des templates für alle gemacht wird
-* Max schaden bei berechneten werten
-SR INfo
-in die app:
-Version history now at the web:
-https://github.com/TobiVanHelsinki/ShadowRunHelper/releases
-sowie datenschutzrklärung und link dahin
+﻿Prüfen
 
-Char-Einstellungen auf ins Überlaufmeü?
+gehen die auto calc noch
+werbung auf  creators device
+
+
+--------Aktuelles-----------------------------------------------
+* Char Page Loading Time verbessern, indem die abfrage des templates für alle gemacht wird
+* Max schaden bei berechneten werten
+* SR INfo
+** in die app:
+** Version history now at the web:
+** https://github.com/TobiVanHelsinki/ShadowRunHelper/releases
+** sowie datenschutzrklärung und link dahin
+* ladebildschirm
+* tipps und tricks im ladebildschirm
 
 ---------- Ideen für next release-------------------------------
 * Store: Neue Bilder, neue Texte

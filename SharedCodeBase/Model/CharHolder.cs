@@ -126,7 +126,7 @@ namespace ShadowRunHelper.Model
         public CharHolder()
         {
             SaveTimer = new Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); HasChanges = false; }, this, Timeout.Infinite, Timeout.Infinite);
-            AppModel.Instance.MainObjectSaved += (x, y) => { SettingsModel.I.CountSavings++; };
+            AppModel.Instance.MainObjectSaved += (x, y) => { SettingsModel.I.COUNT_SAVINGS++; };
             // To Autosave
             CTRLList.Add(CTRLAttribut);
             CTRLList.Add(CTRLBerechnet);
@@ -396,7 +396,7 @@ namespace ShadowRunHelper.Model
                 RefreshListFav();
             }
             HasChanges = true;
-            if (SettingsModel.I.AutoSave)
+            if (SettingsModel.I.AUTO_SAVE)
             {
                 SetSaveTimerTo(SettingsModel.I.AutoSaveInterval);
             }

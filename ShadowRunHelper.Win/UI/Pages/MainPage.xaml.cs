@@ -145,12 +145,12 @@ namespace ShadowRunHelper.UI
             Debug_TimeAnalyser.Start("PMain.OnNavigatedTo");
             //base.OnNavigatedTo(e);
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
-            if (SettingsModel.I.LastAppVersion != Constants.APP_VERSION_BUILD_DELIM)
+            if (SettingsModel.I.LAST_APP_VERSION != Constants.APP_VERSION_BUILD_DELIM)
             {
                 Model.NewNotification(
                     string.Format(StringHelper.GetString("Notification_NewVersion"), Constants.APP_VERSION_BUILD_DELIM) + "\n\n" +
                     StringHelper.GetString("Notification_NewVersion_"+ Constants.APP_VERSION_BUILD_DELIM.Replace('.','_')),true,10);
-                SettingsModel.I.LastAppVersion = Constants.APP_VERSION_BUILD_DELIM;
+                SettingsModel.I.LAST_APP_VERSION = Constants.APP_VERSION_BUILD_DELIM;
             }
             Debug_TimeAnalyser.Stop("PMain.OnNavigatedTo");
         }
@@ -161,22 +161,22 @@ namespace ShadowRunHelper.UI
                 case ProjectPages.Char:
                     if (Model.MainObject != null)
                     {
-                    SettingsModel.I.LastPage = ProjectPages.Char;
+                    SettingsModel.I.LAST_PAGE = ProjectPages.Char;
                         MyFrame.Navigate(typeof(CharPage), po);
                         //Nav_Char.Content.
                     }
                     else
                     {
-                    SettingsModel.I.LastPage = ProjectPages.Administration;
+                    SettingsModel.I.LAST_PAGE = ProjectPages.Administration;
                         MyFrame.Navigate(typeof(AdministrationPage), po);
                     }
                     break;
                 case ProjectPages.Administration:
-                    SettingsModel.I.LastPage = ProjectPages.Administration;
+                    SettingsModel.I.LAST_PAGE = ProjectPages.Administration;
                     MyFrame.Navigate(typeof(AdministrationPage), po);
                     break;
                 case ProjectPages.Settings:
-                    SettingsModel.I.LastPage = ProjectPages.Settings;
+                    SettingsModel.I.LAST_PAGE = ProjectPages.Settings;
                     MyFrame.Navigate(typeof(SettingsPage), po);
                     break;
                 default:
