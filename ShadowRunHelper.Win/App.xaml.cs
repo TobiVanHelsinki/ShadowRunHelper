@@ -41,7 +41,7 @@ namespace ShadowRunHelper
             CheckLicence = Task.Run(()=>IAP.CheckLicence());
             SetConstantStuff();
             Model = AppModel.Initialize();
-            //if (Settings.StartCount < 1)
+            if (Settings.START_COUNT < 1)
             {
                 Settings.ResetAllSettings();
             }
