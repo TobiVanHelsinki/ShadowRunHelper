@@ -1,30 +1,27 @@
-﻿Prüfen
+﻿--------Aktuell-----------------------------------------------
 
-gehen die auto calc noch
-werbung auf  creators device
-
-
---------Aktuelles-----------------------------------------------
-* Char Page Loading Time verbessern, indem die abfrage des templates für alle gemacht wird
-* Max schaden bei berechneten werten
-* SR INfo
-** in die app:
-** Version history now at the web:
-** https://github.com/TobiVanHelsinki/ShadowRunHelper/releases
-** sowie datenschutzrklärung und link dahin
+--------Animation-----------------------------------------------
 * ladebildschirm
 * tipps und tricks im ladebildschirm
+* animation beim charladen
 
----------- Ideen für next release-------------------------------
-* Store: Neue Bilder, neue Texte
-* Verknüpfungen Modell für Zirkelbezüge verbessern
-* neue kategorien (wissenfrt, kampfkünste, rigger)
-* kateogiren verbessern (magier, adepten, technos)
-* char page Schnellsuche nach "Schaden" könnte panel oben öffnen
+---------- UX -------------------------------
 * Laufen, Rennen -> Umrechnung in km/h
 
----------- Ideen für später -------------------------------
+---------- Kategorien -------------------------------
+* neue kategorien (wissenfrt, kampfkünste, rigger)
+* kateogiren verbessern (magier, adepten, technos)
+
+--------Logik-----------------------------------------------
+* Max schaden bei berechneten werte
+* char page Schnellsuche nach "Schaden" könnte panel oben öffnen
+-> dafür schaden und schaden max in die calced values?
 * schaden overflow einarbeiten
+
+* Verknüpfungen Modell für Zirkelbezüge verbessern
+
+---------- Store -------------------------------
+* Store: Neue Bilder, neue Texte
 
 ++++++++++ Generelles TODO für Neue Verknüpfungen -------------
 * Filter anlegen und im Konstruktor setzen
