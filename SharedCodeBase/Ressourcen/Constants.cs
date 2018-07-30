@@ -87,8 +87,12 @@ namespace ShadowRunHelper
         public const string CONTAINER_SETTINGS_LAST_SAVE_PATH_STD = "";
         public const string CONTAINER_SETTINGS_LAST_SAVE_PLACE = "SETTINGS_LAST_SAVE_PLACE";
         public const string CONTAINER_SETTINGS_LAST_SAVE_PLACE_STD = "";
+        public const string CONTAINER_SETTINGS_LAST_SAVE_TOKEN = "SETTINGS_LAST_SAVE_TOKEN";
+        public const string CONTAINER_SETTINGS_LAST_SAVE_TOKEN_STD = "";
         public const string CONTAINER_SETTINGS_LAST_SAVE_INFO_STD = null;
+
         
+
 
         public const string CONTAINER_SETTINGS_CHARINTEMPSTORE = "CHARINTEMPSTORE";
         public const bool CONTAINER_SETTINGS_CHARINTEMPSTORE_STD = false;

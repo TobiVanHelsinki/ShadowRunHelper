@@ -185,17 +185,6 @@ namespace ShadowRunHelper
         }
 
         [UsedSetting]
-        public bool BETA_FEATURES
-        {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_BETA_FEATURES);
-            set
-            {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_BETA_FEATURES, value);
-                Instance.NotifyPropertyChanged();
-            }
-        }
-
-        [UsedSetting]
         public FileInfoClass LAST_SAVE_INFO
         {
             get
@@ -214,12 +203,14 @@ namespace ShadowRunHelper
                     PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME, Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME_STD);
                     PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH, Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH_STD);
                     PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE, Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE_STD);
+                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_TOKEN, Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE_STD);
                 }
                 else
                 {
                     PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME, value.Filename);
                     PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH, value.Filepath);
                     PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE, (int)value.Fileplace);
+                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_TOKEN, value.FolderToken);
                 }
                 Instance.NotifyPropertyChanged();
             }

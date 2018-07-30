@@ -117,7 +117,6 @@ namespace ShadowRunHelper
         }
         protected override async void OnFileActivated(FileActivatedEventArgs args)
         {
-            Debug_TimeAnalyser.Start("Entry File");
             if (args.Files[0].Name.EndsWith(".SRHChar"))
             {
                 try
@@ -128,10 +127,11 @@ namespace ShadowRunHelper
                 {
                 }
                 Settings.FORCE_LOAD_CHAR_ON_START = true;
-                Settings.LAST_SAVE_INFO = new FileInfoClass(Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length))
+                var info = new FileInfoClass(Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length))
                 {
                     FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
                 };
+                Settings.LAST_SAVE_INFO = info;
                 if (!FirstStart)
                 {
                     await CharLoadingHandling();
@@ -146,7 +146,6 @@ namespace ShadowRunHelper
             {
                 Model.RequestNavigation(ProjectPages.Administration, ProjectPagesOptions.Import);
             }
-            Debug_TimeAnalyser.Stop("Entry File");
         }
         #endregion
 
@@ -209,14 +208,14 @@ namespace ShadowRunHelper
 #pragma warning restore CS4014
                     }
                     var OldChar = Model.MainObject;
-                    Settings.COUNT_LOADINGS++;
                     Model.MainObject = TMPChar;
+                    Settings.COUNT_LOADINGS++;
                     if (OldChar != null)
                     {
                         try
                         {
 #pragma warning disable CS4014
-                            CharHolderIO.SaveAtCurrentPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
+                            CharHolderIO.SaveAtOriginPlace(OldChar, SaveType.Auto, UserDecision.ThrowError);
 #pragma warning restore CS4014
                         }
                         catch (Exception ex)
