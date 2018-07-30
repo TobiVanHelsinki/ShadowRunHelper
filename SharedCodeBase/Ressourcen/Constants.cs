@@ -140,7 +140,8 @@ namespace ShadowRunHelper
         public const string IAP_FEATUREID_TEE = "9NL3081GB2F4";
 #endif
 
-        public static bool IAP_HIDEADS { get; internal set; }
+        public static bool IAP_HIDEADS { get;
+            internal set; }
         #endregion
         #region Diagnostics
         public const string AppCenterID =

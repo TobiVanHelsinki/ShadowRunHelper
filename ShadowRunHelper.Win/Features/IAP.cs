@@ -22,12 +22,10 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    //Debug_TimeAnalyser.Start("IAP GetAddons");
                     var AddOns = await StoreContext.GetDefault().GetUserCollectionAsync(Constants.IAP_STORE_LIST_ADDON_TYPES);
                     Constants.IAP_HIDEADS =
-                        AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE)
-                        || AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE_365);
-                    //Debug_TimeAnalyser.Stop("IAP GetAddons");
+                        AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE) || 
+                        AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE_365);
                 }
                 catch (Exception)
                 {
@@ -35,6 +33,7 @@ namespace ShadowRunHelper
                     Model.AppModel.Instance.NewNotification("Error_LoadPurchases");
                     Debug_TimeAnalyser.Stop("IAP GetAddons");
                 }
+                SettingsModel.Instance.IAP_HIDEADS = Constants.IAP_HIDEADS;
             }
             else if (SettingsModel.Instance.IAP_HIDEADS)
             {
@@ -42,16 +41,12 @@ namespace ShadowRunHelper
             }
             if (!Constants.IAP_HIDEADS)
             {
-                //Debug_TimeAnalyser.Start("IAP NoAdsFolder");
-                var Info = await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass(Place.Local, "", SharedIO.CurrentIO.GetCompleteInternPath(Place.Local) + @"noads\"));
+                var Info = await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass(Place.Local, "", SharedIO.CurrentIO.GetCompleteInternPath(Place.Local) + @"noads\"), UserDecision.ThrowError);
                 if (Info != null)
                 {
                     Constants.IAP_HIDEADS = true;
                 }
-                //Debug_TimeAnalyser.Stop("IAP NoAdsFolder");
             }
-
-            SettingsModel.Instance.IAP_HIDEADS = Constants.IAP_HIDEADS;
         }
 
         internal async static Task Buy(string FEATUREID)

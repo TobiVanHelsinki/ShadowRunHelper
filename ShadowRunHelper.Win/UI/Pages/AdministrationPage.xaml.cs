@@ -39,7 +39,23 @@ namespace ShadowRunHelper.UI
             NavigationCacheMode = NavigationCacheMode.Required;
             Model.TutorialStateChanged += TutorialStateChanged;
             Debug_TimeAnalyser.Stop("AdministrationPage()");
+            SizeChanged += AdministrationPage_SizeChanged;
         }
+
+        void AdministrationPage_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (ActualWidth > ActualHeight)
+            {
+                Ad_MainPageBottomBox.Visibility = Visibility.Collapsed;
+                Ad_MainPageRightBox.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Ad_MainPageBottomBox.Visibility = Visibility.Visible;
+                Ad_MainPageRightBox.Visibility = Visibility.Collapsed;
+            }
+        }
+
         void CheckIAPStatus()
         {
             if (!Constants.IAP_HIDEADS)
@@ -64,8 +80,24 @@ namespace ShadowRunHelper.UI
                     ApplicationId = Constants.APP_STORE_ID_SRE,
                     AdUnitId = Constants.AD_ADID_MainPageRight
                 };
+                (Ad_MainPageRightBox.Child as AdControl).AdRefreshed += AdministrationPage_AdRefreshed;
+                (Ad_MainPageRightBox.Child as AdControl).CharacterReceived += AdministrationPage_CharacterReceived; ;
+                (Ad_MainPageRightBox.Child as AdControl).ErrorOccurred += AdministrationPage_ErrorOccurred;
             }
         }
+
+        private void AdministrationPage_ErrorOccurred(object sender, AdErrorEventArgs e)
+        {
+        }
+
+        private void AdministrationPage_CharacterReceived(UIElement sender, Windows.UI.Xaml.Input.CharacterReceivedRoutedEventArgs args)
+        {
+        }
+
+        private void AdministrationPage_AdRefreshed(object sender, RoutedEventArgs e)
+        {
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Debug_TimeAnalyser.Start("PAdmin.OnNavigatedTo");
