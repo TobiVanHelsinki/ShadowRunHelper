@@ -55,7 +55,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{x:Bind OccuredAt, Mode=OneWay, Converter={StaticResource o_LastTime}}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{x:Bind OccuredAt, Mode=OneWay, Converter={StaticResource o_LastTime}, ConverterParameter=Break}" TextWrapping="Wrap" Margin="0,0,10,0"/>
                     <TextBlock Grid.Column="1" Text="{x:Bind Message, Mode=OneWay}" TextWrapping="Wrap"/>
                 </Grid>
             </DataTemplate>
