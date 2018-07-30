@@ -97,6 +97,9 @@ namespace ShadowRunHelper
         public const int CONTAINER_SETTINGS_LAST_PAGE_STD = (int) ProjectPages.Char;
 
         #endregion
+        #region Tips
+        public static List<string> TipList = StringHelper.GetStrings("Tip");
+        #endregion
         #region Help
         public static List<HelpEntry> HelpList = new List<HelpEntry>() {
             new HelpEntry() { Paragraph = StringHelper.GetString("Help4_CharAdministration"), Text = StringHelper.GetString("Help4") },

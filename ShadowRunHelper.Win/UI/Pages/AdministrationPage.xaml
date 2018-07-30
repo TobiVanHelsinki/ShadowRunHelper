@@ -137,7 +137,6 @@
                 Grid.RowSpan="7"
                 VerticalAlignment="Top" 
                 Canvas.ZIndex="20">
-                <ProgressRing x:Name="ProgressRing" />
             </Viewbox>
             <TextBlock x:Uid="UI_CharVerwaltung_Einleitung1" Grid.Row="0" Margin="5,4,5,0" Visibility="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Visibility}}" Style="{StaticResource TitleTextBlockStyle}"/>
             <StackPanel Grid.Row="1" ToolTipService.Placement="Bottom" Visibility="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Visibility}}" Orientation="Horizontal" Margin="10,4,10,4">

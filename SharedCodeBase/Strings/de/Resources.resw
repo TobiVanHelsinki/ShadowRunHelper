@@ -1650,4 +1650,19 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
 [new] Drag and Drop zwischen Kategorien
 [new] Seperatoren</value>
   </data>
+  <data name="Tip1" xml:space="preserve">
+    <value>Windows schließt Apps manchmal aus Ressourcenmangel. Versuche die Autosave-Option, wenn du Datenverlust vermeiden willst.</value>
+  </data>
+  <data name="Tip2" xml:space="preserve">
+    <value>Benutze als externen Speicherordner einen Cloud-Ordner. So sind deine Chars sicher</value>
+  </data>
+  <data name="TipHeader" xml:space="preserve">
+    <value>Tip {0} von {1}</value>
+  </data>
+  <data name="UI_Cnt_DisableTips.Content" xml:space="preserve">
+    <value>Tipps deaktivieren</value>
+  </data>
+  <data name="UI_Txt_DisableTips.Text" xml:space="preserve">
+    <value>Tipps können in den Einstellungen deaktiviert werden.</value>
+  </data>
 </root>

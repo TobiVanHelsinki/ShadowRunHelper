@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.IO;
+﻿using System;
+using ShadowRunHelper.IO;
 
 namespace ShadowRunHelper.Model
 {
@@ -47,6 +48,23 @@ public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptio
         public delegate void TutorialStateChangeRequestEventHandler(int StateNumber, bool Highlight);
         public event TutorialStateChangeRequestEventHandler TutorialStateChanged;
 
+        bool _IsUIOperationInProgress;
+        public bool IsUIOperationInProgress
+        {
+            get { return _IsUIOperationInProgress; }
+            set { if (_IsUIOperationInProgress != value) { _IsUIOperationInProgress = value; NotifyPropertyChanged(); } }
+        }
+        bool _IsDisplayingTipp;
+        public bool IsDisplayingTip
+        {
+            get { return _IsDisplayingTipp; }
+            set { if (_IsDisplayingTipp != value) { _IsDisplayingTipp = value; NotifyPropertyChanged(); } }
+        }
 
+        public void ChangeProgress(bool bHow, bool DisplayTipp)
+        {
+            IsUIOperationInProgress = bHow;
+            IsDisplayingTip = DisplayTipp & bHow;
+        }
     }
 }

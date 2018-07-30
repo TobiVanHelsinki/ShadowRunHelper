@@ -128,7 +128,7 @@ namespace ShadowRunHelper.UI
         {
             IsOperationInProgres = bHow;
             //ProgressBar.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
-            ProgressRing.IsActive = bHow;
+            Model.ChangeProgress(bHow, true);
             Char_Sum.IsEnabled = !bHow;
             Commandbar.IsEnabled = !bHow;
         }

@@ -113,11 +113,37 @@ namespace ShadowRunHelper.UI
                 case nameof(Model.MainObject):
                     TaskBarStuff();
                     break;
+                case nameof(Model.IsUIOperationInProgress):
+                        ProgressRing.IsActive = Model.IsUIOperationInProgress;
+                    break;
+                case nameof(Model.IsDisplayingTip):
+                    RefreshTip();
+                    break;
                 default:
                     break;
             }
         }
 
+        #region Tip-System
+        private void RefreshTip()
+        {
+            if (Model.IsDisplayingTip)
+            {
+                TipTextWindow.Visibility = Visibility.Visible;
+                TipText.Text = Constants.TipList.RandomElement();
+                TipHeader.Text = String.Format(StringHelper.GetString("TipHeader"), Constants.TipList.IndexOf(TipText.Text) + 1, Constants.TipList.Count);
+            }
+            else
+            {
+                TipTextWindow.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void CloseTips(object sender, RoutedEventArgs e)
+        {
+            Model.IsDisplayingTip = false;
+        }
+        #endregion
         void TaskBarStuff()
         {
             var appView = ApplicationView.GetForCurrentView();
@@ -406,6 +432,6 @@ namespace ShadowRunHelper.UI
 
         void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
 
-       
+
     }
 }
