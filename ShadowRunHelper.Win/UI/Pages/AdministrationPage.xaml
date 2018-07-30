@@ -80,11 +80,11 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource Normal}"/>
                     <CommandBar Background="Transparent" Grid.Row="1" DefaultLabelPosition="Right">
-                        <AppBarButton x:Name="UI_Label_LoadChar" x:Uid="UI_Label_LoadChar" Icon="Upload" Click="Click_Laden" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                        <AppBarButton x:Name="UI_Label_Rename" x:Uid="UI_Label_Rename" Icon="Edit" Click="Rename_Click" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                        <AppBarButton x:Name="UI_Label_DeleteChar" x:Uid="UI_Label_DeleteChar" Icon="Delete" Click="Click_Loeschen_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                        <AppBarButton x:Name="UI_Label_File_Export" x:Uid="UI_Label_File_Export" Icon="SaveLocal" Click="Click_Datei_Export_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                        <AppBarButton x:Name="UI_Label_CSV_Export" x:Uid="UI_Label_CSV_Export" Icon="SaveLocal" Click="Click_UI_TxT_CSV_Cat_Exportport_OtherChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                        <AppBarButton x:Name="UI_Label_LoadChar" x:Uid="UI_Label_LoadChar" Icon="Upload" Click="Click_Laden"/>
+                        <AppBarButton x:Name="UI_Label_Rename" x:Uid="UI_Label_Rename" Icon="Edit" Click="Rename_Click"/>
+                        <AppBarButton x:Name="UI_Label_DeleteChar" x:Uid="UI_Label_DeleteChar" Icon="Delete" Click="Click_Loeschen_OtherChar"/>
+                        <AppBarButton x:Name="UI_Label_File_Export" x:Uid="UI_Label_File_Export" Icon="SaveLocal" Click="Click_Datei_Export_OtherChar"/>
+                        <AppBarButton x:Name="UI_Label_CSV_Export" x:Uid="UI_Label_CSV_Export" Icon="SaveLocal" Click="Click_UI_TxT_CSV_Cat_Exportport_OtherChar"/>
                     </CommandBar>
                 </Grid>
             </DataTemplate>
@@ -143,10 +143,10 @@
 
             <Border Grid.Row="5" x:Name="MainBarBorder">
                 <CommandBar x:Name="Commandbar" Grid.Row="4" DefaultLabelPosition="Right">
-                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton x:Uid="UI_TxT_OpenFolderSTD" Icon="OpenLocal" Click="Click_OpenSTDFolder" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton x:Uid="UI_TxT_ExportAll" Icon="SaveLocal" Click="Click_UI_TxT_ExportAll" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
-                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" Style="{StaticResource AppBarButtonRevealStyle_IfPossible}"/>
+                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Neu" Icon="AddFriend" Click="Click_Erstellen" />
+                    <AppBarButton x:Uid="UI_TxT_OpenFolderSTD" Icon="OpenLocal" Click="Click_OpenSTDFolder" />
+                    <AppBarButton x:Uid="UI_TxT_ExportAll" Icon="SaveLocal" Click="Click_UI_TxT_ExportAll"/>
+                    <AppBarButton x:Uid="UI_CharVerwaltung_Btn_Create_ExampleChar" Icon="ContactPresence" Click="Create_ExampleChar" />
                 </CommandBar>
             </Border>
         </Grid>

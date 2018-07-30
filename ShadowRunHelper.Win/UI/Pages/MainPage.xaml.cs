@@ -107,6 +107,15 @@ namespace ShadowRunHelper.UI
             Debug_TimeAnalyser.Stop("MainPage()");
             TipFading = new Timer(TipFadeOut, null, -1, -1);
             TipVisibility = new Timer(TipMakeInvisible, null, -1, -1);
+            SizeChanged += MainPage_SizeChanged;
+        }
+
+        private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (ActualWidth < 400)
+            {
+                MainBar1.DefaultLabelPosition = CommandBarDefaultLabelPosition.Bottom;
+            }
         }
 
         private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -127,6 +136,7 @@ namespace ShadowRunHelper.UI
             }
         }
 
+        #region Tip-System
         Timer TipFading;
         Timer TipVisibility;
 
@@ -175,6 +185,7 @@ namespace ShadowRunHelper.UI
             Tip_Fade.Duration = 0;
             TipFading.Change(2000, -1);
         }
+        #endregion
         void TaskBarStuff()
         {
             var appView = ApplicationView.GetForCurrentView();
@@ -194,6 +205,18 @@ namespace ShadowRunHelper.UI
             TitleColumnL.MinWidth = CurrentTitlebar.SystemOverlayLeftInset;
 
             Window.Current.SetTitleBar(AppTitleBar);
+        }
+        void TutorialStateChanged(int StateNumber, bool Highlight)
+        {
+            Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
+            switch (StateNumber)
+            {
+                case 2:
+                    MainBarBorder.Style = StyleToBeApplied;
+                    break;
+                default:
+                    break;
+            }
         }
 
         #region navigation
@@ -241,20 +264,8 @@ namespace ShadowRunHelper.UI
             }
         }
         #endregion
-        #region global intrest stuff
+        #region Notification
 
-        void TutorialStateChanged(int StateNumber, bool Highlight)
-        {
-            Style StyleToBeApplied = Highlight ? Tutorial.HighlightBorderStyle_XAML : Tutorial.UnhighlightBorderStyle_XAML;
-            switch (StateNumber)
-            {
-                case 2:
-                    MainBarBorder.Style = StyleToBeApplied;
-                    break;
-                default:
-                    break;
-            }
-        }
         Semaphore ShowNotificationsInProgress = new Semaphore(0,1);
         async void ShowNotificationsIfNecessary(IList newItems)
         {
@@ -442,6 +453,7 @@ namespace ShadowRunHelper.UI
         {
             (sender as Control).FontSize = CustFontSize;
         }
+
         void Viewbox_Loaded(object sender, RoutedEventArgs e)
         {
             if (CurrentPointerDeviceType == PointerDeviceType.Touch)

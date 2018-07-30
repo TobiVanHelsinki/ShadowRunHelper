@@ -27,3 +27,18 @@
 * Filter anlegen und im Konstruktor setzen
 * Im UI Template Element Linked List angeben
 * im LinkedEntryEdit Handler spezialfälle einstellen
+
+
+---------- neue Namen -------------------------------
+
+Aktueller Char
+Charakterbogen
+Current Char
+Charactersheet
+
+Administrate Chars
+Chars Verwalten
+Dateiverwaltung
+SaveFiles
+Speicherdateien
+Speicher
