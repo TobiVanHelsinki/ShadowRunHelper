@@ -285,11 +285,11 @@
             </Grid>
         </Grid>
 
-        <Border Grid.Row="2" Background="{ThemeResource SR_MainBackgroundBrush}" Height="{Binding ElementName=MainBar1, Path=ActualHeight, Mode=OneWay}"/>
-        <Border Grid.Row="2" x:Name="MainBarBorder" Background="Red">
-            <CommandBar x:Name="MainBar1" Background="Red" HorizontalAlignment="Left" DefaultLabelPosition="Right" >
-                <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char" Foreground="FloralWhite" DynamicOverflowOrder="2"/>
-                <AppBarButton x:Name="Nav_Admin" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin" Foreground="FloralWhite" DynamicOverflowOrder="1"/>
+        <Border Grid.Row="2" Background="{ThemeResource SR_MainBackgroundBrush}" Height="{Binding ElementName=MainBarBorder, Path=ActualHeight, Mode=OneWay}"/>
+        <Border Grid.Row="2" x:Name="MainBarBorder" Background="Transparent">
+            <CommandBar x:Name="MainBar1" Background="Transparent" HorizontalAlignment="Left" DefaultLabelPosition="Right" >
+                <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char" Foreground="FloralWhite" />
+                <AppBarButton x:Name="Nav_Admin" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin" Foreground="FloralWhite" />
                 <AppBarButton x:Name="Nav_Settings" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings" Foreground="FloralWhite"/>
                 <AppBarButton x:Name="Debug_CreateDebugChar" Visibility="Collapsed" Label="CreateDebugChar" Icon="Add" Click="CreateDebugChar"/>
             </CommandBar>

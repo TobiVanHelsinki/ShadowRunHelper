@@ -115,6 +115,13 @@ namespace ShadowRunHelper.UI
             if (ActualWidth < 400)
             {
                 MainBar1.DefaultLabelPosition = CommandBarDefaultLabelPosition.Bottom;
+                MainBarBorder.BorderThickness = new Thickness(1);
+                Task.Run( async ()=> {
+                    await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+                    {
+                        MainBarBorder.BorderThickness = new Thickness(0);
+                    });
+                });
             }
         }
 
