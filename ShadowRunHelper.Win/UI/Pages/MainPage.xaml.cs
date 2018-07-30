@@ -5,6 +5,7 @@ using System.Collections;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using TAPPLICATION.Model;
 using TLIB;
 using Windows.ApplicationModel;
@@ -104,6 +105,8 @@ namespace ShadowRunHelper.UI
 #endif
             TaskBarStuff();
             Debug_TimeAnalyser.Stop("MainPage()");
+            TipFading = new Timer(TipFadeOut, null, -1, -1);
+            TipVisibility = new Timer(TipMakeInvisible, null, -1, -1);
         }
 
         private void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -124,22 +127,53 @@ namespace ShadowRunHelper.UI
             }
         }
 
+        Timer TipFading;
+        Timer TipVisibility;
+
+        async void TipFadeOut(object state)
+        {
+            SystemHelper.WriteLine("TipFadeOut1: " + DateTime.Now.TimeOfDay);
+            TipFading.Change(-1, -1);
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+            {
+                Tip_Fade.Value = 0;
+                Tip_Fade.Duration = 1500;
+                Tip_Fade.StartAnimation();
+            });
+            TipVisibility.Change(1500, -1);
+        }
+        async void TipMakeInvisible(object state)
+        {
+            SystemHelper.WriteLine("TipMakeInvisible: " + DateTime.Now.TimeOfDay);
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+            {
+                TipTextWindow.Visibility = Visibility.Collapsed;
+                SystemHelper.WriteLine("TipMakeInvisible2: " + DateTime.Now.TimeOfDay);
+            });
+        }
+
         private void RefreshTip()
         {
             if (Model.IsDisplayingTip)
             {
                 TipText.Text = Constants.TipList.RandomElement();
-                Tipp_Fade.Value = 1;
-                Tipp_Fade.Duration = 500;
-                //TipTextWindow.Visibility = Visibility.Visible;
-                Tipp_Fade.StartAnimation();
+                TipTextWindow.Visibility = Visibility.Visible;
+                Tip_Fade.Value = 1;
+                Tip_Fade.Duration = 500;
+                Tip_Fade.StartAnimation();
             }
             else
             {
-                Tipp_Fade.Value = 0;
-                Tipp_Fade.Duration = 1500;
-                //TipTextWindow.Visibility = Visibility.Collapsed;
+                TipFading.Change(0, -1);
             }
+        }
+
+        private void TipTextWindow_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            TipVisibility.Change(-1, -1);
+            Tip_Fade.Value = 1;
+            Tip_Fade.Duration = 0;
+            TipFading.Change(2000, -1);
         }
         void TaskBarStuff()
         {
@@ -428,7 +462,6 @@ namespace ShadowRunHelper.UI
         void EditBox_GotFocus(object sender, RoutedEventArgs e) => SharePageFunctions.EditBox_SelectAll(sender, e);
 
         void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
-
 
     }
 }

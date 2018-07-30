@@ -268,14 +268,14 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <ProgressRing Grid.ColumnSpan="3" Grid.RowSpan="3" x:Name="ProgressRing" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="50"/>
-            <Grid Grid.Column="1" Grid.Row="1" x:Name="TipTextWindow" CornerRadius="8" Padding="10" Background="{StaticResource SR_NotificationBrush}">
+            <Grid Grid.Column="1" Grid.Row="1" x:Name="TipTextWindow" CornerRadius="8" Padding="10" Background="{StaticResource SR_NotificationBrush}" Tapped="TipTextWindow_Tapped" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <interactivity:Interaction.Behaviors>
-                    <behaviors:Fade x:Name="Tipp_Fade"
+                    <behaviors:Fade x:Name="Tip_Fade"
                       Value="0"
                       Delay="0"
                       EasingType="Linear"/>

@@ -1671,6 +1671,24 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="UI_Txt_DisableTips.Text" xml:space="preserve">
     <value>Tipps können in den Einstellungen deaktiviert werden.</value>
   </data>
+  <data name="Tip10" xml:space="preserve">
+    <value>Oben rechts befindet sich das Schadensmenü. Hoffentlich musst du es nicht all zu oft benutzen.</value>
+  </data>
+  <data name="Tip11" xml:space="preserve">
+    <value>Wenn du deinen Charakterbogen jemandem zeigen willst, der die App nicht hat, kannst du ihn als csv exportieren.</value>
+  </data>
+  <data name="Tip6" xml:space="preserve">
+    <value>Du kannst in den Optionen einstellen, dass Chars mit dem aktuellen Fortschritt (Karme und Runs) gespeichert werden. So ist eine Versionierung möglich.</value>
+  </data>
+  <data name="Tip7" xml:space="preserve">
+    <value>Objekte, die "Aktiv" gestellt werden können, werden bei Berechnungen nur mitgerechnet, wenn sie aktiv sind.</value>
+  </data>
+  <data name="Tip8" xml:space="preserve">
+    <value>Der Standardwert der Essenz ist 6. Davon werden Essenzwerte bei Implantaten abgezogen.</value>
+  </data>
+  <data name="Tip9" xml:space="preserve">
+    <value>Schadensmaxima werden oben im Schadenmenü angezeigt.</value>
+  </data>
   <data name="ui_txt_TipHeader.Text" xml:space="preserve">
     <value>Tipp</value>
   </data>
