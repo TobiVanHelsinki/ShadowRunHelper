@@ -111,9 +111,6 @@ namespace ShadowRunHelper.UI
             await IAP.Buy(Constants.IAP_FEATUREID_TEE);
         }
         #endregion
-        #region Analytics
-
-        #endregion
         void MainNavigation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch ((MainNavigation.SelectedItem as PivotItem).Tag)

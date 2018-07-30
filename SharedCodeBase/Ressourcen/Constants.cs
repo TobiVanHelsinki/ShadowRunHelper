@@ -130,10 +130,14 @@ namespace ShadowRunHelper
         public const string IAP_FEATUREID_TEE = "9N6G5Z236BTH";
 #elif RELEASE
         public const string AD_ADID_MainPageRight = "1100025839";
-        public const string AD_ADID_MainPageBottom = "-";
-        public const string IAP_FEATUREID_ADFREE_365 = "9NKHSRWSBMRD";
-        public const string IAP_FEATUREID_ADFREE = "9NMBBTFVKW84";
-        public const string IAP_FEATUREID_TEE = "9PJF3SD71T40";
+        public const string AD_ADID_MainPageBottom = "1100028115";
+        
+        //public const string IAP_FEATUREID_ADFREE_365 = "9NKHSRWSBMRD";
+        //public const string IAP_FEATUREID_ADFREE = "9NMBBTFVKW84";
+        //public const string IAP_FEATUREID_TEE = "9PJF3SD71T40";
+        public const string IAP_FEATUREID_ADFREE_365 = "9N3GGT14P8C2";
+        public const string IAP_FEATUREID_ADFREE = "9P5W20WCS2C5";
+        public const string IAP_FEATUREID_TEE = "9NL3081GB2F4";
 #endif
 
         public static bool IAP_HIDEADS { get; internal set; }
