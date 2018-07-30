@@ -91,29 +91,6 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Name="GridForContentAndAds">
-        <!--<VisualStateManager.VisualStateGroups>
-            --><!-- Ads --><!--
-            <VisualStateGroup x:Name="Trigger_Ads">
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="640"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="Ad_MainPageRightBox.Visibility" Value="Visible"/>
-                        <Setter Target="Ad_MainPageBottomBox.Visibility" Value="Collapsed"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="Ad_MainPageRightBox.Visibility" Value="Collapsed"/>
-                        <Setter Target="Ad_MainPageBottomBox.Visibility" Value="Visible"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
