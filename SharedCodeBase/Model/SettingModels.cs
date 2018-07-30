@@ -1,6 +1,5 @@
 ﻿using ShadowRunHelper.Model;
 using System;
-using System.Collections.Generic;
 using TAMARIN.IO;
 using TAPPLICATION;
 using TAPPLICATION.IO;
@@ -279,10 +278,10 @@ namespace ShadowRunHelper
         {
             switch (e.PropertyName)
             {
-                case "InternSync":
+                case nameof(INTERN_SYNC):
                     Intern_Sync_Toggled();
                     break;
-                case "ORDNERMODE":
+                case nameof(FOLDERMODE):
                     FolderMode_Toggled();
                     break;
                 default:
@@ -332,7 +331,7 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    SharedSettingsModel.I.FOLDERMODE_PATH = (await UwpIO.GetFolder(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.AskUser)).Path;
+                    SharedSettingsModel.I.FOLDERMODE_PATH = (await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.AskUser)).Filepath;
                 }
                 catch (Exception ex)
                 {
