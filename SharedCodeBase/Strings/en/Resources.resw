@@ -1616,4 +1616,46 @@ By default, chars are saved within the app. In the options you can choose whethe
 [new] Drag and Drop between categories
 [new] Seperators</value>
   </data>
+  <data name="Tip1" xml:space="preserve">
+    <value>Windows sometimes closes apps due to lack of resources. Try the autosave option if you want to avoid data loss.</value>
+  </data>
+  <data name="Tip2" xml:space="preserve">
+    <value>Use a cloud folder as an external storage folder. So your chars are safe</value>
+  </data>
+  <data name="Tip3" xml:space="preserve">
+    <value>Categories you don't need can be hidden from the Character Bow menu.</value>
+  </data>
+  <data name="Tip4" xml:space="preserve">
+    <value>At the top left of your character sheet is the character sheet menu. Take a look inside.</value>
+  </data>
+  <data name="Tip5" xml:space="preserve">
+    <value>Are links sometimes no longer updated? Try "Repair" in the charactersheet-menu.</value>
+  </data>
+  <data name="UI_Txt_DisableTips.Text" xml:space="preserve">
+    <value>Tips can be deactivated in the settings.</value>
+  </data>
+  <data name="Tip10" xml:space="preserve">
+    <value>The damage menu is located at the top right. I hope you don't have to use it too much.</value>
+  </data>
+  <data name="Tip11" xml:space="preserve">
+    <value>If you want to show your character sheet to someone who doesn't have the app, you can export it as csv.</value>
+  </data>
+  <data name="Tip6" xml:space="preserve">
+    <value>You can set in the options that chars are saved with the current progress (Karma and Runs). This makes versioning possible.</value>
+  </data>
+  <data name="Tip7" xml:space="preserve">
+    <value>Objects that can be set to "Active" are only included in calculations if they are active.</value>
+  </data>
+  <data name="Tip8" xml:space="preserve">
+    <value>The default value of the essence is 6, from which essence values from implants are subtracted.</value>
+  </data>
+  <data name="Tip9" xml:space="preserve">
+    <value>Damage maxima are displayed at the top of the damage menu.</value>
+  </data>
+  <data name="ui_txt_TipHeader.Text" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="Tip12" xml:space="preserve">
+    <value>Tip gone too fast? Tap on it!</value>
+  </data>
 </root>
