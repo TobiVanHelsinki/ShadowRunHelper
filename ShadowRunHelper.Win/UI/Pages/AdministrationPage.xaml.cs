@@ -88,14 +88,26 @@ namespace ShadowRunHelper.UI
 
         private void AdministrationPage_ErrorOccurred(object sender, AdErrorEventArgs e)
         {
+            if (SettingsModel.I.DEBUG_FEATURES)
+            {
+                Model.lstNotifications.Add(new TAPPLICATION.Model.Notification("AdControlRigth_AdministrationPage_ErrorOccurred"));
+            }
         }
 
         private void AdministrationPage_CharacterReceived(UIElement sender, Windows.UI.Xaml.Input.CharacterReceivedRoutedEventArgs args)
         {
+            if (SettingsModel.I.DEBUG_FEATURES)
+            {
+                Model.lstNotifications.Add(new TAPPLICATION.Model.Notification("AdControlRigth_AdministrationPage_CharacterReceived"));
+            }
         }
 
         private void AdministrationPage_AdRefreshed(object sender, RoutedEventArgs e)
         {
+            if (SettingsModel.I.DEBUG_FEATURES)
+            {
+                Model.lstNotifications.Add(new TAPPLICATION.Model.Notification("AdControlRigth_AdministrationPage_AdRefreshed"));
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
