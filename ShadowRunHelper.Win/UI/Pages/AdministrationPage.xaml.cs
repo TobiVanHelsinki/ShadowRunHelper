@@ -81,7 +81,6 @@ namespace ShadowRunHelper.UI
                     AdUnitId = Constants.AD_ADID_MainPageRight
                 };
                 (Ad_MainPageRightBox.Child as AdControl).AdRefreshed += AdministrationPage_AdRefreshed;
-                (Ad_MainPageRightBox.Child as AdControl).CharacterReceived += AdministrationPage_CharacterReceived; ;
                 (Ad_MainPageRightBox.Child as AdControl).ErrorOccurred += AdministrationPage_ErrorOccurred;
             }
         }
@@ -90,15 +89,7 @@ namespace ShadowRunHelper.UI
         {
             if (SettingsModel.I.DEBUG_FEATURES)
             {
-                Model.lstNotifications.Add(new TAPPLICATION.Model.Notification("AdControlRigth_AdministrationPage_ErrorOccurred"));
-            }
-        }
-
-        private void AdministrationPage_CharacterReceived(UIElement sender, Windows.UI.Xaml.Input.CharacterReceivedRoutedEventArgs args)
-        {
-            if (SettingsModel.I.DEBUG_FEATURES)
-            {
-                Model.lstNotifications.Add(new TAPPLICATION.Model.Notification("AdControlRigth_AdministrationPage_CharacterReceived"));
+                Model.lstNotifications.Add(new TAPPLICATION.Model.Notification("AdControlRigth_AdministrationPage_ErrorOccurred " + e.ErrorMessage));
             }
         }
 
