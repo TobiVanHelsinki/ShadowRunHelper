@@ -268,23 +268,21 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <ProgressRing Grid.ColumnSpan="3" Grid.RowSpan="3" x:Name="ProgressRing" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="50"/>
-            <Grid Grid.Column="1" Grid.Row="1" x:Name="TipTextWindow" CornerRadius="8" Padding="10" Background="{StaticResource SystemControlAltLowAcrylicElementBrush}" Visibility="Collapsed">
+            <Grid Grid.Column="1" Grid.Row="1" x:Name="TipTextWindow" CornerRadius="8" Padding="10" Background="{StaticResource SR_NotificationBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Button Click="CloseTips" Grid.Column="1" Content="&#xE894;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Close"/>
-                <!--<Button Click="DisableTips" x:Uid="UI_Cnt_DisableTips" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Close"/>-->
-                <!--<Button Click="NextTip" Content="&#xE893;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Close"/>-->
-                <!--<Button Click="PrevTip" Content="&#xE892;" FontFamily="Segoe MDL2 Assets" AutomationProperties.Name="Close"/>-->
-                <TextBlock x:Name="TipHeader"/>
-                <TextBlock x:Name="TipText" Grid.Row="1" Grid.ColumnSpan="1" Margin="15,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-                <TextBlock x:Uid="DisableTips" Grid.Row="2" Grid.ColumnSpan="1" Foreground="LightGray" Margin="15,0,0,0"/>
+                <interactivity:Interaction.Behaviors>
+                    <behaviors:Fade x:Name="Tipp_Fade"
+                      Value="0"
+                      Delay="0"
+                      EasingType="Linear"/>
+                </interactivity:Interaction.Behaviors>
+                <TextBlock x:Uid="ui_txt_TipHeader" TextWrapping="Wrap" FontSize="{StaticResource TextStyleExtraLargeFontSize}"/>
+                <TextBlock x:Name="TipText" Grid.Row="1" Margin="15,0,0,0" TextWrapping="Wrap" Style="{StaticResource TextInhaltKlein}" VerticalAlignment="Top"/>
+                <TextBlock x:Uid="UI_Txt_DisableTips" Grid.Row="2" Foreground="LightGray" TextWrapping="Wrap" Margin="15,8,0,0"/>
             </Grid>
         </Grid>
 
@@ -315,7 +313,7 @@
                                      Closing="ExampleInAppNotification_Closing"
         >
             <interactivity:Interaction.Behaviors>
-                <behaviors:Fade x:Name="Fade"
+                <behaviors:Fade x:Name="Notification_Fade"
               Value="0"
               Duration="500"
               Delay="0"

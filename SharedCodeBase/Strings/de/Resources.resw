@@ -1656,13 +1656,22 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Tip2" xml:space="preserve">
     <value>Benutze als externen Speicherordner einen Cloud-Ordner. So sind deine Chars sicher</value>
   </data>
-  <data name="TipHeader" xml:space="preserve">
-    <value>Tip {0} von {1}</value>
+  <data name="Tip3" xml:space="preserve">
+    <value>Kategorien, die du nicht brauchst, kannst du über das Charakterbogen-Menü ausblenden.</value>
+  </data>
+  <data name="Tip4" xml:space="preserve">
+    <value>Oben links in deinem Charakterbogen befindet sich das Charakterbogen-Menü. Schau doch mal rein.</value>
+  </data>
+  <data name="Tip5" xml:space="preserve">
+    <value>Werden Verknüpfungen manchmal nicht mehr aktualisiert? Versuche "Reparieren" im Charakterbogen-Menü.</value>
   </data>
   <data name="UI_Cnt_DisableTips.Content" xml:space="preserve">
     <value>Tipps deaktivieren</value>
   </data>
   <data name="UI_Txt_DisableTips.Text" xml:space="preserve">
     <value>Tipps können in den Einstellungen deaktiviert werden.</value>
+  </data>
+  <data name="ui_txt_TipHeader.Text" xml:space="preserve">
+    <value>Tipp</value>
   </data>
 </root>

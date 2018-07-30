@@ -124,26 +124,23 @@ namespace ShadowRunHelper.UI
             }
         }
 
-        #region Tip-System
         private void RefreshTip()
         {
             if (Model.IsDisplayingTip)
             {
-                TipTextWindow.Visibility = Visibility.Visible;
                 TipText.Text = Constants.TipList.RandomElement();
-                TipHeader.Text = String.Format(StringHelper.GetString("TipHeader"), Constants.TipList.IndexOf(TipText.Text) + 1, Constants.TipList.Count);
+                Tipp_Fade.Value = 1;
+                Tipp_Fade.Duration = 500;
+                //TipTextWindow.Visibility = Visibility.Visible;
+                Tipp_Fade.StartAnimation();
             }
             else
             {
-                TipTextWindow.Visibility = Visibility.Collapsed;
+                Tipp_Fade.Value = 0;
+                Tipp_Fade.Duration = 1500;
+                //TipTextWindow.Visibility = Visibility.Collapsed;
             }
         }
-
-        private void CloseTips(object sender, RoutedEventArgs e)
-        {
-            Model.IsDisplayingTip = false;
-        }
-        #endregion
         void TaskBarStuff()
         {
             var appView = ApplicationView.GetForCurrentView();
@@ -248,15 +245,15 @@ namespace ShadowRunHelper.UI
                 foreach (Notification item in newItems.Cast<Notification>().Where((x) => !x.IsRead && x.IsLight).OrderBy((x) => x.OccuredAt))
                 {
                     ExampleInAppNotification.Show(item.Message, item.ShownTime);
-                    Fade.Value = 1;
-                    Fade.StartAnimation();
+                    Notification_Fade.Value = 1;
+                    Notification_Fade.StartAnimation();
                 }
             }
         }
         void ExampleInAppNotification_Closing(object sender, Microsoft.Toolkit.Uwp.UI.Controls.InAppNotificationClosingEventArgs e)
         {
-            Fade.Value = 0;
-            Fade.StartAnimation();
+            Notification_Fade.Value = 0;
+            Notification_Fade.StartAnimation();
         }
         void ExampleInAppNotification_PointerPressed(object sender, PointerRoutedEventArgs e) => GoToNotifications();
         void GoToNotifications()
