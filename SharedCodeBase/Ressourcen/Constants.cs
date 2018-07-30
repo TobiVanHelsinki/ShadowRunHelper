@@ -74,7 +74,8 @@ namespace ShadowRunHelper
         public const int CONTAINER_SETTINGS_COUNT_DELETIONS_STD = 0;
         public const string CONTAINER_SETTINGS_COUNT_CREATIONS = "SETTINGS_COUNT_CREATIONS";
         public const int CONTAINER_SETTINGS_COUNT_CREATIONS_STD = 0;
-
+        public const string CONTAINER_SETTINGS_DISABLE_TIPS = "SETTINGS_DISABLE_TIPS";
+        public const bool CONTAINER_SETTINGS_DISABLE_TIPS_STD = false;
 
         public const string CONTAINER_SETTINGS_FILENAME_USEPROGRESS = "SETTINGS_FILENAME_USEPROGRESS";
         public const bool CONTAINER_SETTINGS_FILENAME_USEPROGRESS_STD = false;

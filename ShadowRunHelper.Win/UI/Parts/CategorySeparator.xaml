@@ -14,7 +14,7 @@
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0" BorderThickness="1" BorderBrush="{ThemeResource BorderBrushes}" Height="2"/>
-        <TextBlock Grid.Column="1" Text="{x:Bind Text, Mode=OneWay}"/>
+        <TextBlock Grid.Column="1" Text="{x:Bind Text, Mode=OneWay}" Margin="5,0,5,0"/>
         <Border Grid.Column="2" BorderThickness="1" BorderBrush="{ThemeResource BorderBrushes}" Height="2"/>
     </Grid>
 </UserControl>

@@ -1359,7 +1359,7 @@ By default, chars are saved within the app. In the options you can choose whethe
     <value>Saving and loading</value>
   </data>
   <data name="UI_Optionen_Group_Other.Text" xml:space="preserve">
-    <value>Current Char</value>
+    <value>Other</value>
   </data>
   <data name="UI_TxT_CSV_Cat_Export.ToolTipService.ToolTip" xml:space="preserve">
     <value>Saves this category in CSV format (Excel compatible) in a folder.</value>
@@ -1657,5 +1657,20 @@ By default, chars are saved within the app. In the options you can choose whethe
   </data>
   <data name="Tip12" xml:space="preserve">
     <value>Tip gone too fast? Tap on it!</value>
+  </data>
+  <data name="Tip13" xml:space="preserve">
+    <value>Use Drag'N'Drop to copy / move objects between categories.</value>
+  </data>
+  <data name="Tip14" xml:space="preserve">
+    <value>Since the latest Windows update, you can have the app open several times.</value>
+  </data>
+  <data name="Tip15" xml:space="preserve">
+    <value>Use Drag'N'Drop to copy / move objects between apps.</value>
+  </data>
+  <data name="UI_Optionen_Disable_Tips.Text" xml:space="preserve">
+    <value>Disable tips</value>
+  </data>
+  <data name="UI_Optionen_Disable_Tips.Tip" xml:space="preserve">
+    <value>Disable the tips while loading.</value>
   </data>
 </root>

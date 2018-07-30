@@ -1692,4 +1692,19 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Tip12" xml:space="preserve">
     <value>Tipp zu schnell weg? Tippe auf ihn!</value>
   </data>
+  <data name="Tip13" xml:space="preserve">
+    <value>Nutze Drag'N'Drop, um Objekte zwischen Kategorien zu kopieren / verschieben.</value>
+  </data>
+  <data name="Tip14" xml:space="preserve">
+    <value>Seit dem neusten Windows-Update, kannst du die App mehrfach offen haben.</value>
+  </data>
+  <data name="Tip15" xml:space="preserve">
+    <value>Nutze Drag'N'Drop, um Objekte zwischen Apps zu kopieren / verschieben.</value>
+  </data>
+  <data name="UI_Optionen_Disable_Tips.Text" xml:space="preserve">
+    <value>Tipps deaktivieren</value>
+  </data>
+  <data name="UI_Optionen_Disable_Tips.Tip" xml:space="preserve">
+    <value>Deaktiviere die Tipp-anzeige während des Ladens</value>
+  </data>
 </root>

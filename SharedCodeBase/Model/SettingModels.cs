@@ -12,6 +12,17 @@ namespace ShadowRunHelper
     {
         #region Settings
         [UsedSetting]
+        public bool DISABLE_TIPS
+        {
+            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_DISABLE_TIPS);
+            set
+            {
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_DISABLE_TIPS, value);
+                Instance.NotifyPropertyChanged();
+            }
+        }
+
+        [UsedSetting]
         public bool IAP_HIDEADS
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_IAP_HIDEADS);

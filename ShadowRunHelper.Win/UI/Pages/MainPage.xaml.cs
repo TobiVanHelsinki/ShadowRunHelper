@@ -154,7 +154,7 @@ namespace ShadowRunHelper.UI
 
         private void RefreshTip()
         {
-            if (Model.IsDisplayingTip)
+            if (Model.IsDisplayingTip && !SettingsModel.I.DISABLE_TIPS)
             {
                 TipText.Text = Constants.TipList.RandomElement();
                 TipTextWindow.Visibility = Visibility.Visible;
