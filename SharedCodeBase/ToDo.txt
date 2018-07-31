@@ -1,8 +1,7 @@
 ﻿--------Aktuell-----------------------------------------------
 
 --------Animation-----------------------------------------------
-* ladebildschirm
-* tipps und tricks im ladebildschirm
+* ladebildschirm auch beim start
 * animation beim charladen
 
 ---------- UX -------------------------------
@@ -27,7 +26,6 @@
 * Filter anlegen und im Konstruktor setzen
 * Im UI Template Element Linked List angeben
 * im LinkedEntryEdit Handler spezialfälle einstellen
-
 
 ---------- neue Namen -------------------------------
 
