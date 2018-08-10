@@ -531,8 +531,15 @@
                     </Border>
                 </PivotItem.Header>
                 <!--<TextBox Name="NoteTextBox" Text="{x:Bind Model.MainObject.Person.Notizen, Mode=TwoWay}" Style="{StaticResource NotesBox}"/>-->
-                <StackPanel>
-                    <StackPanel.Resources>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
                         <Style x:Key="TextBoxStyleBlack" TargetType="RichEditBox">
                             <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>
                             <Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}"/>
@@ -685,25 +692,27 @@
                                 </Setter.Value>
                             </Setter>
                         </Style>
-                    </StackPanel.Resources>
+                    </Grid.Resources>
                     <controls:TextToolbar x:Name="Toolbar"
-                          Editor="{Binding ElementName=EditZone}"
-                          IsEnabled="True"
-                          Format="RichText"
-                          UseURIChecker="True"
-                          Background="#4C4F4F4F" />
-                    <RichEditBox x:Name="EditZone"
+                                          Loaded="Toolbar_Loaded"
+                                          Editor="{Binding ElementName=EditZone}"
+                                          IsEnabled="True"
+                                          Format="RichText"
+                                          UseURIChecker="True"
+                                          Background="#4C4F4F4F"/>
+                    <RichEditBox x:Name="EditZone" Grid.Row="2"
                                  Style="{StaticResource TextBoxStyleBlack}"
-                         PlaceholderText="Enter Text Here"
-                         TextWrapping="Wrap"
-                         TextChanged="EditZone_TextChanged"
-                         VerticalContentAlignment="Stretch"
-                         MinHeight="300"
-                         Padding="10,3"
-                         BorderThickness="1"
-                         BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}"
-                         Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" />
-                </StackPanel>
+                                 PlaceholderText="..."
+                                 TextWrapping="Wrap"
+                                 ScrollViewer.VerticalScrollMode="Enabled"
+                                 ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                 ScrollViewer.IsVerticalScrollChainingEnabled="True"
+                                 ScrollViewer.IsVerticalRailEnabled="True"
+                                 TextChanged="EditZone_TextChanged"
+                                 BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}"
+                                 Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" 
+                                 />
+                </Grid>
             </PivotItem>
         </Pivot>
     </Grid>

@@ -36,7 +36,8 @@ namespace ShadowRunHelper
         public const string CHARFILE_VERSION_1_3 = "1130"; //old version
         public const string CHARFILE_VERSION_1_5 = "1.5";
         public const string CHARFILE_VERSION_1_6 = "1.6";
-        public const string CHARFILE_VERSION = CHARFILE_VERSION_1_6;
+        public const string CHARFILE_VERSION_1_7 = "1.7";
+        public const string CHARFILE_VERSION = CHARFILE_VERSION_1_7;
         #endregion
         #region Settings
         public const string CONTAINER_SETTINGS_BLOCKLISTOPTIONS = "SETTINGS_BLOCKLISTOPTIONS";

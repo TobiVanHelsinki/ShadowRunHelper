@@ -30,7 +30,17 @@ namespace ShadowRunHelper.UI
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
             Debug_TimeAnalyser.Stop("CharPage()");
+            Model.PropertyChanged += Model_PropertyChanged;
         }
+
+        void Model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Model.MainObject) && MainObject?.Person != null)
+            {
+                LoadNotes();
+            }
+        }
+
 
         #region GUI Stuff
         private void Pivot_SizeChanged(object sender, SizeChangedEventArgs e) => AdjustHeaderWidth();
@@ -326,11 +336,7 @@ namespace ShadowRunHelper.UI
 
         private void EditZone_TextChanged(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            if (MainObject?.Person != null)
-            {
-                (sender as RichEditBox).Document.GetText(Windows.UI.Text.TextGetOptions.FormatRtf, out string text);
-                MainObject.Person.Notizen = text;
-            }
+            SaveNotes();
         }
 
         //private void UseCustomFormatter()
@@ -379,5 +385,34 @@ namespace ShadowRunHelper.UI
         //}
         #endregion
 
+        private void Toolbar_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadNotes();
+        }
+
+        private void LoadNotes()
+        {
+            try
+            {
+                EditZone.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, MainObject.Person.Notizen);
+            }
+            catch (Exception)
+            {
+            }
+        }
+        private void SaveNotes()
+        {
+            try
+            {
+                if (MainObject?.Person != null)
+                {
+                    EditZone.Document.GetText(Windows.UI.Text.TextGetOptions.FormatRtf, out string text);
+                    MainObject.Person.Notizen = text;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
     }
 }

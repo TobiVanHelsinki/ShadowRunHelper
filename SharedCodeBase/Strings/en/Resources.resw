@@ -1673,4 +1673,7 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="UI_Optionen_Disable_Tips.Tip" xml:space="preserve">
     <value>Disable the tips while loading.</value>
   </data>
+  <data name="Notification_Info_UpgradedChar" xml:space="preserve">
+    <value>Your char was upgraded to the newest version. you cannot open it in older app versions properly.</value>
+  </data>
 </root>

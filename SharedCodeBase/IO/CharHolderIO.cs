@@ -98,6 +98,16 @@ namespace ShadowRunHelper.IO
                     break;
                 case Constants.CHARFILE_VERSION_1_6:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
+                    ReturnCharHolder.Person.Notizen = @"{\rtf1\fbidis\ansi\ansicpg1252\deff0\nouicompat\deflang1031{\fonttbl{\f0\fnil\fcharset0 Segoe UI;}{\f1\fnil Segoe UI;}}
+{\colortbl;\red0\green0\blue0; }
+{\*\generator Riched20 10.0.17134}\viewkind4\uc1
+\pard\tx720\cf1\f0\fs23 " + ReturnCharHolder.Person.Notizen + @"\f1\par
+}";
+                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar"), false);
+                    ReturnCharHolder.HasChanges = false;
+                    break;
+                case Constants.CHARFILE_VERSION_1_7:
+                    ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     ReturnCharHolder.HasChanges = false;
                     break;
                 default:

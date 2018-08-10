@@ -1707,4 +1707,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="UI_Optionen_Disable_Tips.Tip" xml:space="preserve">
     <value>Deaktiviere die Tipp-anzeige während des Ladens</value>
   </data>
+  <data name="Notification_Info_UpgradedChar" xml:space="preserve">
+    <value>Ihr Char wurde auf die neuste Version geupgraded. Er kann nicht mehr vollständig in alten App Versionen geladen werden.</value>
+  </data>
 </root>
