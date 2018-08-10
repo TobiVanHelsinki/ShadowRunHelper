@@ -1,5 +1,7 @@
 ﻿using Microsoft.Advertising.WinRT.UI;
 using Microsoft.AppCenter.Analytics;
+using Microsoft.Toolkit.Uwp.UI.Animations;
+using Microsoft.Toolkit.Uwp.UI.Animations.Behaviors;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
@@ -14,6 +16,7 @@ using TLIB;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper.UI
@@ -103,6 +106,10 @@ namespace ShadowRunHelper.UI
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            Visibility = Visibility.Visible;
+            this.Fade(value: 1f, duration: 0).Start();
+
+
             Debug_TimeAnalyser.Start("PAdmin.OnNavigatedTo");
             CheckIAPStatus();
             if (AppDataPorter.InProgress)
@@ -162,7 +169,6 @@ namespace ShadowRunHelper.UI
         void ChangeProgress(bool bHow)
         {
             IsOperationInProgres = bHow;
-            //ProgressBar.Visibility = bHow ? Visibility.Visible : Visibility.Collapsed;
             Model.ChangeProgress(bHow, true);
             Char_Sum.IsEnabled = !bHow;
             Commandbar.IsEnabled = !bHow;
@@ -176,9 +182,11 @@ namespace ShadowRunHelper.UI
             }
             foreach (var item in e.AddedItems)
             {
+                CurrentListViewItem = ((ListViewItem)(sender as ListView).ContainerFromItem(item));
                 ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = Active;
             }
         }
+        ListViewItem CurrentListViewItem;
 
         async Task Summorys_Aktualisieren()
         {
@@ -254,7 +262,6 @@ namespace ShadowRunHelper.UI
             }
         }
 
-
         async void Click_Laden(object sender, RoutedEventArgs e)
         {
             if (IsOperationInProgres)
@@ -262,10 +269,12 @@ namespace ShadowRunHelper.UI
                 return;
             }
             await AskForSaveCurrentChanges();
+
+            this.Fade(easingType: EasingType.Sine).StartAsync();
+
             ChangeProgress(true);
             try
             {
-                await SystemHelper.SleepMilliSeconds(10);
                 Model.MainObject = await CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError);
                 SettingsModel.I.COUNT_LOADINGS++;
             }
@@ -273,11 +282,12 @@ namespace ShadowRunHelper.UI
             {
                 Model.NewNotification(StringHelper.GetString("Notification_Error_LoadFail"), ex);
             }
-            ChangeProgress(false);
             if (Model.MainObject != null)
             {
+                Visibility = Visibility.Collapsed;
                 AppModel.Instance.RequestNavigation(ProjectPages.Char);
             }
+            ChangeProgress(false);
         }
 
         async void Click_Loeschen_OtherChar(object sender, RoutedEventArgs e)
