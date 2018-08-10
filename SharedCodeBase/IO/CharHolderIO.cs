@@ -98,13 +98,9 @@ namespace ShadowRunHelper.IO
                     break;
                 case Constants.CHARFILE_VERSION_1_6:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
-                    ReturnCharHolder.Person.Notizen = @"{\rtf1\fbidis\ansi\ansicpg1252\deff0\nouicompat\deflang1031{\fonttbl{\f0\fnil\fcharset0 Segoe UI;}{\f1\fnil Segoe UI;}}
-{\colortbl;\red0\green0\blue0; }
-{\*\generator Riched20 10.0.17134}\viewkind4\uc1
-\pard\tx720\cf1\f0\fs23 " + ReturnCharHolder.Person.Notizen + @"\f1\par
-}";
+                    ReturnCharHolder.Person.Notizen = PlainTextToRtf(ReturnCharHolder.Person.Notizen);
                     AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar"), false);
-                    ReturnCharHolder.HasChanges = false;
+                    ReturnCharHolder.HasChanges = true;
                     break;
                 case Constants.CHARFILE_VERSION_1_7:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
@@ -115,6 +111,14 @@ namespace ShadowRunHelper.IO
             }
             ReturnCharHolder.AfterLoad();
             return ReturnCharHolder;
+        }
+        public static string PlainTextToRtf(string plainText)
+        {
+            string escapedPlainText = plainText.Replace(@"\", @"\\").Replace("{", @"\{").Replace("}", @"\}").Replace(@"\r}", @"\r\n}");
+            string rtf = @"{\rtf1\ansi{\fonttbl\f0\fswiss Helvetica;}\f0\pard ";
+            rtf += escapedPlainText.Replace(Environment.NewLine, @" \par ").Replace("\n", @" \par ").Replace("\r", @" \par ");
+            rtf += " }";
+            return rtf;
         }
 
         static string RefactorJSONString(string Input, List<(string old, string @new)> replacements)
