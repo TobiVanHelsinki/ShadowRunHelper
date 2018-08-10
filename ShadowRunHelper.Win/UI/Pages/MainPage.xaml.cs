@@ -88,7 +88,7 @@ namespace ShadowRunHelper.UI
         #endregion
         public MainPage()
         {
-            Debug_TimeAnalyser.Start("MainPage()");
+            //Debug_TimeAnalyser.Start("MainPage()");
             ModelHelper.CDispatcher = Dispatcher;
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
@@ -104,7 +104,7 @@ namespace ShadowRunHelper.UI
             Debug_CreateDebugChar.Visibility = Visibility.Visible;
 #endif
             TaskBarStuff();
-            Debug_TimeAnalyser.Stop("MainPage()");
+            //Debug_TimeAnalyser.Stop("MainPage()");
             TipFading = new Timer(TipFadeOut, null, -1, -1);
             TipVisibility = new Timer(TipMakeInvisible, null, -1, -1);
             SizeChanged += MainPage_SizeChanged;
@@ -229,7 +229,7 @@ namespace ShadowRunHelper.UI
         #region navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Debug_TimeAnalyser.Start("PMain.OnNavigatedTo");
+            //Debug_TimeAnalyser.Start("PMain.OnNavigatedTo");
             //base.OnNavigatedTo(e);
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
             if (SettingsModel.I.LAST_APP_VERSION != Constants.APP_VERSION_BUILD_DELIM)
@@ -239,7 +239,7 @@ namespace ShadowRunHelper.UI
                     StringHelper.GetString("Notification_NewVersion_"+ Constants.APP_VERSION_BUILD_DELIM.Replace('.','_')),true,10);
                 SettingsModel.I.LAST_APP_VERSION = Constants.APP_VERSION_BUILD_DELIM;
             }
-            Debug_TimeAnalyser.Stop("PMain.OnNavigatedTo");
+            //Debug_TimeAnalyser.Stop("PMain.OnNavigatedTo");
         }
         void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
         {
@@ -410,7 +410,7 @@ namespace ShadowRunHelper.UI
             NavigationRequested(ProjectPages.Settings, ProjectPagesOptions.Nothing);
             if (SettingsModel.I.DEBUG_FEATURES)
             {
-                Debug_TimeAnalyser.Finish();
+                //Debug_TimeAnalyser.Finish();
             }
         }
 

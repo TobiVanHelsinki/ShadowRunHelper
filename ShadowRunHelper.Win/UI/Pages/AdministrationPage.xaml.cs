@@ -36,12 +36,12 @@ namespace ShadowRunHelper.UI
 
         public AdministrationPage()
         {
-            Debug_TimeAnalyser.Start("AdministrationPage()");
+            //Debug_TimeAnalyser.Start("AdministrationPage()");
             InitializeComponent();
             ChangeProgress(false);
             NavigationCacheMode = NavigationCacheMode.Required;
             Model.TutorialStateChanged += TutorialStateChanged;
-            Debug_TimeAnalyser.Stop("AdministrationPage()");
+            //Debug_TimeAnalyser.Stop("AdministrationPage()");
             SizeChanged += AdministrationPage_SizeChanged;
         }
 
@@ -110,7 +110,7 @@ namespace ShadowRunHelper.UI
             this.Fade(value: 1f, duration: 0).Start();
 
 
-            Debug_TimeAnalyser.Start("PAdmin.OnNavigatedTo");
+            //Debug_TimeAnalyser.Start("PAdmin.OnNavigatedTo");
             CheckIAPStatus();
             if (AppDataPorter.InProgress)
             {
@@ -145,7 +145,7 @@ namespace ShadowRunHelper.UI
                 }
                 SettingsModel.I.TUT_SHOWN_1 = true;
             }
-            Debug_TimeAnalyser.Stop("PAdmin.OnNavigatedTo");
+            //Debug_TimeAnalyser.Stop("PAdmin.OnNavigatedTo");
         }
 
 

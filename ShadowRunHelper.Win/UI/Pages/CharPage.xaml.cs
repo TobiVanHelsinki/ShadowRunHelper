@@ -26,10 +26,10 @@ namespace ShadowRunHelper.UI
 
         public CharPage()
         {
-            Debug_TimeAnalyser.Start("CharPage()");
+            //Debug_TimeAnalyser.Start("CharPage()");
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
-            Debug_TimeAnalyser.Stop("CharPage()");
+            //Debug_TimeAnalyser.Stop("CharPage()");
             Model.PropertyChanged += Model_PropertyChanged;
         }
 
@@ -61,7 +61,7 @@ namespace ShadowRunHelper.UI
         #region Navigation stuff
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Debug_TimeAnalyser.Start("PChar.OnNavigatedTo");
+            //Debug_TimeAnalyser.Start("PChar.OnNavigatedTo");
             if (SettingsModel.I.DISPLAY_REQUEST)
             {
                 try
@@ -107,7 +107,7 @@ namespace ShadowRunHelper.UI
                     break;
             }
             AdjustHeaderWidth();
-            Debug_TimeAnalyser.Stop("PChar.OnNavigatedTo");
+            //Debug_TimeAnalyser.Stop("PChar.OnNavigatedTo");
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

@@ -31,7 +31,7 @@ namespace ShadowRunHelper
                 {
                     Constants.IAP_HIDEADS = false;
                     Model.AppModel.Instance.NewNotification("Error_LoadPurchases");
-                    Debug_TimeAnalyser.Stop("IAP GetAddons");
+                    //Debug_TimeAnalyser.Stop("IAP GetAddons");
                 }
                 SettingsModel.Instance.IAP_HIDEADS = Constants.IAP_HIDEADS;
             }

@@ -34,8 +34,8 @@ namespace ShadowRunHelper
         #region App Startup and Init
         public App()
         {
-            Debug_TimeAnalyser.Start("Overall");
-            Debug_TimeAnalyser.Start("App()");
+            //Debug_TimeAnalyser.Start("Overall");
+            //Debug_TimeAnalyser.Start("App()");
             UnhandledException += async (x, y) => { await App_UnhandledExceptionAsync(x, y); };
             Settings = SettingsModel.Initialize();
             CheckLicence = Task.Run(()=>IAP.CheckLicence());
@@ -53,7 +53,7 @@ namespace ShadowRunHelper
             Settings.START_COUNT++;
             Task.Run(AppCenterConfiguration);
             Task.Run(RegisterAppInstance);
-            Debug_TimeAnalyser.Stop("App()");
+            //Debug_TimeAnalyser.Stop("App()");
         }
         static void RegisterAppInstance()
         {
@@ -96,7 +96,7 @@ namespace ShadowRunHelper
         #region Entry-Points
         protected override async void OnActivated(IActivatedEventArgs args)
         {
-            Debug_TimeAnalyser.Start("Entry Protocol");
+            //Debug_TimeAnalyser.Start("Entry Protocol");
             if (args.Kind == ActivationKind.Protocol && args is ProtocolActivatedEventArgs uriArgs)
             {
                 Settings.FORCE_LOAD_CHAR_ON_START = true;
@@ -113,7 +113,7 @@ namespace ShadowRunHelper
                 await CharLoadingHandling();
                 Model.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.Char_Action);
             }
-            Debug_TimeAnalyser.Stop("Entry Protocol");
+            //Debug_TimeAnalyser.Stop("Entry Protocol");
         }
         protected override async void OnFileActivated(FileActivatedEventArgs args)
         {
@@ -151,12 +151,12 @@ namespace ShadowRunHelper
 
         async void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
         {
-            Debug_TimeAnalyser.Start("LeavingBackground");
+            //Debug_TimeAnalyser.Start("LeavingBackground");
             var def = e.GetDeferral();
 
-            Debug_TimeAnalyser.Start("CharLoadingHandling");
+            //Debug_TimeAnalyser.Start("CharLoadingHandling");
             Task Loading = CharLoadingHandling();
-            Debug_TimeAnalyser.Stop("CharLoadingHandling");
+            //Debug_TimeAnalyser.Stop("CharLoadingHandling");
             // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
             // Nur sicherstellen, dass das Fenster aktiv ist.
             if (!(Window.Current.Content is Frame rootFrame))
@@ -165,18 +165,19 @@ namespace ShadowRunHelper
                 rootFrame.NavigationFailed += OnNavigationFailed;
                 Window.Current.Content = rootFrame;
             }
-            Debug_TimeAnalyser.Start("await Loading");
+            Window.Current.Activate();
+            //Debug_TimeAnalyser.Start("await Loading");
             await Loading;
-            Debug_TimeAnalyser.Stop("await Loading");
+            //Debug_TimeAnalyser.Stop("await Loading");
             //Debug_TimeAnalyser.Start("await CheckLicence");
             //await CheckLicence;
             //Debug_TimeAnalyser.Stop("await CheckLicence");
             if (rootFrame.Content == null)
             {
                 // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
-                Debug_TimeAnalyser.Start("NavigatetoMP");
+                //Debug_TimeAnalyser.Start("NavigatetoMP");
                 rootFrame.Navigate(typeof(MainPage));
-                Debug_TimeAnalyser.Stop("NavigatetoMP");
+                //Debug_TimeAnalyser.Stop("NavigatetoMP");
             }
             else
             {
@@ -184,10 +185,9 @@ namespace ShadowRunHelper
                 Model.RequestNavigation(Settings.LAST_PAGE);
             }
             // Sicherstellen, dass das aktuelle Fenster aktiv ist
-            Window.Current.Activate();
             def.Complete();
-            Debug_TimeAnalyser.Stop("LeavingBackground");
-            Debug_TimeAnalyser.Stop("Overall");
+            //Debug_TimeAnalyser.Stop("LeavingBackground");
+            //Debug_TimeAnalyser.Stop("Overall");
         }
 
         async Task CharLoadingHandling()
@@ -197,9 +197,9 @@ namespace ShadowRunHelper
                 if ((Settings.CHARINTEMPSTORE && !FirstStart || Settings.LOAD_CHAR_ON_START && FirstStart) && Model.MainObject == null || Settings.FORCE_LOAD_CHAR_ON_START)
                 {
                     var info = Settings.LAST_SAVE_INFO;
-                    Debug_TimeAnalyser.Start("CharLoadingNow");
+                    //Debug_TimeAnalyser.Start("CharLoadingNow");
                     var TMPChar = await CharHolderIO.Load(info, eUD: UserDecision.ThrowError);
-                    Debug_TimeAnalyser.Stop("CharLoadingNow");
+                    //Debug_TimeAnalyser.Stop("CharLoadingNow");
 
                     if (TMPChar.FileInfo.Fileplace == Place.Temp)
                     {
