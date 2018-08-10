@@ -46,7 +46,7 @@
                             </MenuFlyout>
                         </Button.Flyout>
                     </Button>
-                    <Button Content="&#xE734;" FontFamily="Segoe MDL2 Assets" Margin="5,0,0,0" Style="{StaticResource STD_Button}" VerticalAlignment="Stretch" Loaded="FavButton_Loaded">
+                    <Button Content="&#xE728;" FontFamily="Segoe MDL2 Assets" Margin="5,0,0,0" Style="{StaticResource STD_Button}" VerticalAlignment="Stretch" Loaded="FavButton_Loaded">
                         <Button.Flyout >
                             <Flyout Placement="Bottom">
                                 <ListView ItemsSource="{x:Bind Favorites, Mode=OneWay}"
