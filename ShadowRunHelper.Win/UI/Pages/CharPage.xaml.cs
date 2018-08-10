@@ -338,51 +338,6 @@ namespace ShadowRunHelper.UI
         {
             SaveNotes();
         }
-
-        //private void UseCustomFormatter()
-        //{
-        //    var formatter = new SampleFormatter(Toolbar);
-        //    Toolbar.Format = UI.Controls.TextToolbarFormats.Format.Custom;
-        //    Toolbar.Formatter = formatter;
-        //}
-
-        //private int DemoCounter { get; set; } = 0;
-
-        //private void AddCustomButton()
-        //{
-        //    string demoText = "Demo";
-        //    demoText = DemoCounter > 0 ? demoText + DemoCounter : demoText;
-
-        //    int keycode = (int)VirtualKey.Number0 + DemoCounter;
-        //    VirtualKey? shortcut = null;
-
-        //    if (keycode <= (int)VirtualKey.Number9)
-        //    {
-        //        shortcut = (VirtualKey)keycode;
-        //    }
-
-        //    DemoCounter++;
-
-        //    var demoButton = new ToolbarButton
-        //    {
-        //        Icon = new SymbolIcon { Symbol = Symbol.ReportHacked },
-        //        ToolTip = demoText,
-        //        ShortcutKey = shortcut,
-        //        Click = () =>
-        //        {
-        //            if (Toolbar.Formatter is MarkDownFormatter md)
-        //            {
-        //                md.SetSelection($"[{demoText}]", $"[/{demoText}]");
-        //            }
-        //            else
-        //            {
-        //                Toolbar.Formatter.Selected.Text = $"This was filled by {demoText} button ";
-        //            }
-        //        }
-        //    };
-
-        //    Toolbar.CustomButtons.Add(demoButton);
-        //}
         #endregion
 
         private void Toolbar_Loaded(object sender, RoutedEventArgs e)
