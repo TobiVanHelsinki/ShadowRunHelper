@@ -351,8 +351,6 @@ namespace ShadowRunHelper.UI
             try
             {
                 EditZone.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, MainObject.Person.Notizen);
-                load = MainObject.Person.Notizen;
-                EditZone.Document.GetText(Windows.UI.Text.TextGetOptions.FormatRtf, out string text);
             }
             catch (Exception)
             {
