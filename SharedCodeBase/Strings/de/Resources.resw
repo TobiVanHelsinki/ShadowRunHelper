@@ -1623,7 +1623,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="UI_TxT_Share.Text" xml:space="preserve">
     <value>Teilen</value>
   </data>
-  <data name="Notification_NewVersion_1_8_0_0" xml:space="preserve">
+  <data name="Notification_NewVersion_1_8_2_0" xml:space="preserve">
     <value>[new] Favoriten
 [new] Kontextmenu
 [new] Copy, Cut und Paste! (Kontextmenu)

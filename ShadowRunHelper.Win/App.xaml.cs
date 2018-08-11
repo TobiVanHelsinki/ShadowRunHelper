@@ -76,7 +76,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                AppCenter.Start(Constants.AppCenterID, typeof(Crashes), typeof(Analytics)); // zu lange
+                AppCenter.Start(Constants.AppCenterID, typeof(Crashes), typeof(Analytics)); // zu lange, nach mainwindow creation
             }
             catch (Exception)
             {
