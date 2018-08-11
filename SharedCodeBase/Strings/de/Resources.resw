@@ -1710,4 +1710,10 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Notification_Info_UpgradedChar" xml:space="preserve">
     <value>Ihr Char wurde auf die neuste Version geupgraded. Er kann nicht mehr vollständig in alten App Versionen geladen werden.</value>
   </data>
+  <data name="Tip16" xml:space="preserve">
+    <value>Die App ist unter mehreren Windowsversionen nutzbar, aber womöglich nicht mit dem vollen Funktionsumfang. Halte dein Windows am besten aktuell.</value>
+  </data>
+  <data name="Tip17" xml:space="preserve">
+    <value>Halte die Backups deiner Charakterbögen aktuell, dann bist du vor Datenschaden in Sicherheit.</value>
+  </data>
 </root>

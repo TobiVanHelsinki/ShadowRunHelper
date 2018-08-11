@@ -1676,4 +1676,10 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="Notification_Info_UpgradedChar" xml:space="preserve">
     <value>Your char was upgraded to the newest version. you cannot open it in older app versions properly.</value>
   </data>
+  <data name="Tip16" xml:space="preserve">
+    <value>The app can be used under several Windows versions, but may not have the full range of functions. Keep your Windows up to date.</value>
+  </data>
+  <data name="Tip17" xml:space="preserve">
+    <value>Keep your character sheet backups up to date and you'll be safe from data corruption.</value>
+  </data>
 </root>
