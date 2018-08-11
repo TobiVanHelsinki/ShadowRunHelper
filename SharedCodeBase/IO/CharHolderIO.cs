@@ -115,9 +115,18 @@ namespace ShadowRunHelper.IO
         public static string PlainTextToRtf(string plainText)
         {
             string escapedPlainText = plainText.Replace(@"\", @"\\").Replace("{", @"\{").Replace("}", @"\}").Replace(@"\r}", @"\r\n}");
-            string rtf = @"{\rtf1\ansi{\fonttbl\f0\fswiss Helvetica;}\f0\pard ";
+            string rtf = 
+@"{\rtf1\fbidis\ansi\ansicpg1252\deff0\nouicompat\deflang1031{\fonttbl{\f0\fnil Segoe UI;}}
+{\colortbl ;\red0\green0\blue0;}
+{\*\generator Riched20 10.0.17134}\viewkind4\uc1 
+\pard\tx720\cf1\f0\fs23\par
+\par
+
+";
             rtf += escapedPlainText.Replace(Environment.NewLine, @" \par ").Replace("\n", @" \par ").Replace("\r", @" \par ");
-            rtf += " }";
+            rtf += 
+@"\pard\tx720\par
+}";
             return rtf;
         }
 
