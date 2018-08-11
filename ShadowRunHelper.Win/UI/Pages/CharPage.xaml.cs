@@ -322,7 +322,7 @@ namespace ShadowRunHelper.UI
         #endregion
 
         #region REB
-        private void Previewer_LinkClicked(object sender, LinkClickedEventArgs e)
+        void Previewer_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             try
             {
@@ -334,28 +334,31 @@ namespace ShadowRunHelper.UI
             }
         }
 
-        private void EditZone_TextChanged(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            SaveNotes();
-        }
-        #endregion
-
-        private void Toolbar_Loaded(object sender, RoutedEventArgs e)
+        void Toolbar_Loaded(object sender, RoutedEventArgs e)
         {
             LoadNotes();
         }
-
-        private void LoadNotes()
+        void EditZone_CharacterReceived(UIElement sender, Windows.UI.Xaml.Input.CharacterReceivedRoutedEventArgs args)
+        {
+            SaveNotes();
+        }
+        void EditZone_TextChanged(object sender, RoutedEventArgs e)
+        {
+            SaveNotes();
+        }
+        void LoadNotes()
         {
             try
             {
                 EditZone.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, MainObject.Person.Notizen);
+                load = MainObject.Person.Notizen;
+                EditZone.Document.GetText(Windows.UI.Text.TextGetOptions.FormatRtf, out string text);
             }
             catch (Exception)
             {
             }
         }
-        private void SaveNotes()
+        void SaveNotes()
         {
             try
             {
@@ -369,5 +372,11 @@ namespace ShadowRunHelper.UI
             {
             }
         }
+
+
+
+        #endregion
+
+
     }
 }
