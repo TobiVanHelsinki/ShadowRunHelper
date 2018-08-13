@@ -12,6 +12,8 @@ namespace ShadowRunHelper.Model
                 instance = new AppModel();
             }
             CharHolderIO.MainTypeConvert = CharHolderIO.ConvertWithRightVersion;
+            Instance.MainObjectSaved += (x, y) => { SettingsModel.I.COUNT_SAVINGS++; };
+
             return Instance;
         }
         public static new AppModel Instance
