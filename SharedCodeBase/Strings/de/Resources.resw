@@ -1717,4 +1717,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Tip17" xml:space="preserve">
     <value>Halte die Backups deiner Charakterbögen aktuell, dann bist du vor Datenschaden in Sicherheit.</value>
   </data>
+  <data name="Request_NotSave.Break" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
 </root>

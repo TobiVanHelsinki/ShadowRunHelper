@@ -1683,4 +1683,7 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="Tip17" xml:space="preserve">
     <value>Keep your character sheet backups up to date and you'll be safe from data corruption.</value>
   </data>
+  <data name="Request_NotSave.Break" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

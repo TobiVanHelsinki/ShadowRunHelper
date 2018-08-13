@@ -241,7 +241,10 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
-            await AskForSaveCurrentChanges();
+            if (!await AskForSaveCurrentChanges())
+            {
+                return;
+            }
             ChangeProgress(true);
             Model.MainObject = CharHolder.CreateCharWithStandardContent();
             SettingsModel.I.COUNT_CREATIONS++;
@@ -249,15 +252,31 @@ namespace ShadowRunHelper.UI
             ChangeProgress(false);
         }
 
-        async Task AskForSaveCurrentChanges()
+        async Task<bool> AskForSaveCurrentChanges()
         {
             if (Model?.MainObject?.HasChanges == true)
             {
-                await ShowMessageDialog(StringHelper.GetString("Request_NotSave/Title")
-                    , StringHelper.GetString("Request_NotSave/Text")
-                    , StringHelper.GetString("Request_NotSave/Yes")
-                    , StringHelper.GetString("Request_NotSave/No")
-                    , ()=> { Model.MainObject.SetSaveTimerTo(0, true);});
+                try
+                {
+                    bool Success = false;
+                    var messageDialog = new MultiButtonMessageDialog(
+                        StringHelper.GetString("Request_NotSave/Title"),
+                        StringHelper.GetString("Request_NotSave/Text"),
+                        (StringHelper.GetString("Request_NotSave/Yes"), () => { Success = true; Model.MainObject.SetSaveTimerTo(0, true); }),
+                        (StringHelper.GetString("Request_NotSave/No"), () => { Success = true; }),
+                        (StringHelper.GetString("Request_NotSave/Break"), () => { Success = false; })
+                    );
+                    await messageDialog.ShowAsync();
+                    return Success;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
             }
         }
 
@@ -267,7 +286,10 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
-            await AskForSaveCurrentChanges();
+            if (!await AskForSaveCurrentChanges())
+            {
+                return;
+            }
 
             this.Fade(easingType: EasingType.Sine).StartAsync();
 
@@ -321,6 +343,9 @@ namespace ShadowRunHelper.UI
             messageDialog.Commands.Add(new UICommand(
                 strOK,
                 new UICommandInvokedHandler((x) => OK?.Invoke())));
+            messageDialog.Commands.Add(new UICommand(
+                strCancel,
+                new UICommandInvokedHandler((x) => Cancel?.Invoke())));
             messageDialog.Commands.Add(new UICommand(
                 strCancel,
                 new UICommandInvokedHandler((x) => Cancel?.Invoke())));
