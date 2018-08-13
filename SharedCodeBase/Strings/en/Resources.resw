@@ -1590,32 +1590,19 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="UI_TxT_Share.Text" xml:space="preserve">
     <value>Share</value>
   </data>
-  <data name="Notification_NewVersion_1_8_0_0" xml:space="preserve">
+  <data name="Notification_NewVersion_1_8_3_0" xml:space="preserve">
     <value>[new] Track your favorites
 [new] Contextmenu for Things
 [new] Copy, Cut, Paste Things (Contextmenu)
 [new] Char name in taskbar
-[improved] Search will now show more relevant entries first
-[improved] UI: Buttons in entries have icons
-[improved] moved char-settings into char-menu
-[improved] clean up char-menu
-[improved] use of white font at header &amp; footer
 
 [new] Category options (Sort, Export,...)
-[new] Technomancer Categories
 [new] Own categories for calculated values
 [new] Links are now possible for attributes and battle items
 [new] Links are now possible with every item
-[new] Example Character
 [new] Multi-window option (for Windows April Update)
 [new] Drag and Drop between different windows (for Windows April Update)
-[new] TimeLine Integration (for Windows April Update)
-[new] notifications
-[new] no more reloading to apply char options
-[new] added many tooltips for buttons
-[new] complete English translation
-[new] Drag and Drop between categories
-[new] Seperators</value>
+[new] TimeLine Integration (for Windows April Update)</value>
   </data>
   <data name="Tip1" xml:space="preserve">
     <value>Windows sometimes closes apps due to lack of resources. Try the autosave option if you want to avoid data loss.</value>
