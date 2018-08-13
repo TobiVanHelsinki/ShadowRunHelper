@@ -355,14 +355,14 @@ namespace ShadowRunHelper.UI
             }
             var txt = CharHolderIO.Serialize(ToSend);
             e.Data.SetText(txt);
-            e.Data.Properties.ApplicationName = App.InstanceKey;
+            e.Data.Properties.ApplicationName = AppHolder.InstanceKey;
         }
 
         private void ListView_DragOver(object sender, DragEventArgs e)
         {
             if (e?.DataView?.Properties?.Title == "Thing")
             {
-                if (e.DataView.Properties.ApplicationName == App.InstanceKey)
+                if (e.DataView.Properties.ApplicationName == AppHolder.InstanceKey)
                 {
                     e.AcceptedOperation = DataPackageOperation.Move;
                 }
@@ -379,7 +379,7 @@ namespace ShadowRunHelper.UI
 
         private async void ListView_Drop(object sender, DragEventArgs e) // 3
         {
-            if (e?.DataView?.Properties?.ApplicationName == App.InstanceKey) // bin ich selber
+            if (e?.DataView?.Properties?.ApplicationName == AppHolder.InstanceKey) // bin ich selber
             {
                 Model.MainObject.MovePreparedItems(Controller.eDataTyp);
             }
