@@ -80,10 +80,10 @@ namespace ShadowRunHelper
         [LocalSettingAttribute]
         public bool IAP_PREMIUM_BADGE
         {
-            get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_IAP_BADGE);
+            get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_IAP_PREMIUM_BADGE);
             set
             {
-                PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_IAP_BADGE, value);
+                PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_IAP_PREMIUM_BADGE, value);
                 Instance.NotifyPropertyChanged();
             }
         }

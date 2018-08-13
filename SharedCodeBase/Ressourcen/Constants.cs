@@ -43,8 +43,8 @@ namespace ShadowRunHelper
         public const string CONTAINER_SETTINGS_BLOCKLISTOPTIONS = "SETTINGS_BLOCKLISTOPTIONS";
         public const string CONTAINER_SETTINGS_AUTO_SAVE = "SETTINGS_AUTO_SAVE";
         public const bool CONTAINER_SETTINGS_AUTO_SAVE_STD = false;
-        public const string CONTAINER_SETTINGS_IAP_BADGE = "IAP_BADGE";
-        public const bool CONTAINER_SETTINGS_IAP_BADGE_STD = false;
+        public const string CONTAINER_SETTINGS_IAP_PREMIUM_BADGE = "IAP_BADGE";
+        public const bool CONTAINER_SETTINGS_IAP_PREMIUM_BADGE_STD = false;
 
         public const string CONTAINER_SETTINGS_FIRST_START = "FIRST_START";
         public const bool CONTAINER_SETTINGS_FIRST_START_STD = true;
