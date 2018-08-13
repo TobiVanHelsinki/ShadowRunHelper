@@ -42,6 +42,10 @@ namespace ShadowRunHelper.UI
             catch (Exception)
             {
             }
+            if (Settings.IAP_PREMIUM_BADGE)
+            {
+                premiumbadge.Visibility = Visibility.Visible;
+            }
             base.OnNavigatedTo(e);  
         }
 

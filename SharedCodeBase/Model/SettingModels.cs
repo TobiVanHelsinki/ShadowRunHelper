@@ -78,6 +78,17 @@ namespace ShadowRunHelper
         }
 
         [UsedSetting]
+        public bool IAP_PREMIUM_BADGE
+        {
+            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_IAP_BADGE);
+            set
+            {
+                PlatformSettings.set(Constants.CONTAINER_SETTINGS_IAP_BADGE, value);
+                Instance.NotifyPropertyChanged();
+            }
+        }
+
+        [UsedSetting]
         public bool TUT_SHOWN_1
         {
             get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1);

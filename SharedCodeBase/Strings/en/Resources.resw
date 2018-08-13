@@ -1269,7 +1269,7 @@ By default, chars are saved within the app. In the options you can choose whethe
     <value>No Ads for one year</value>
   </data>
   <data name="IAP_TXT_TEE.Content" xml:space="preserve">
-    <value>Buy me some tee</value>
+    <value>Add Premium-Badge</value>
   </data>
   <data name="Model__ORG.Text" xml:space="preserve">
     <value>orig.</value>
@@ -1317,7 +1317,7 @@ By default, chars are saved within the app. In the options you can choose whethe
     <value>self-control</value>
   </data>
   <data name="UI_Optionen_U_Buying_Header.Text" xml:space="preserve">
-    <value>Here you have the possibility to make purchases. You can turn off advertising with the first two options. The third option supports the apps developer.</value>
+    <value>Here you have the possibility to make purchases. You can turn off advertising with the first two options. The third option supports the developer and adds an exclusive Badge to your app.</value>
   </data>
   <data name="UI_Optionen_U_Buying_Note.Text" xml:space="preserve">
     <value>Note: Having apps in the store costs 18€ per year. It would be cool if the app would at least cover the costs.</value>

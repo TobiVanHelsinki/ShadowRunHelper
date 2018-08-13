@@ -70,6 +70,10 @@ namespace ShadowRunHelper
 
                 case StorePurchaseStatus.Succeeded:
                     Text = "The purchase was successful.";
+                    if (FEATUREID == Constants.IAP_FEATUREID_TEE)
+                    {
+                        SettingsModel.I.IAP_PREMIUM_BADGE = true;
+                    }
                     break;
 
                 case StorePurchaseStatus.NotPurchased:

@@ -1306,7 +1306,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
     <value>Keine Werbung für ein Jahr</value>
   </data>
   <data name="IAP_TXT_TEE.Content" xml:space="preserve">
-    <value>Kauf mir einen Tee</value>
+    <value>Premium-Badge hinzufügen</value>
   </data>
   <data name="UI_Optionen_U_Buy.Text" xml:space="preserve">
     <value>Kaufen</value>
@@ -1351,7 +1351,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
     <value>Selbstbeherrschung</value>
   </data>
   <data name="UI_Optionen_U_Buying_Header.Text" xml:space="preserve">
-    <value>Hier hast du die Möglichkeit, Käufe zu tätigen. Du kannst mit den ersten beiden Optionen die Werbung abschalten. Mit der dritten Option unterstützt du dem Entwickler für diese App.</value>
+    <value>Hier hast du die Möglichkeit, Käufe zu tätigen. Du kannst mit den ersten beiden Optionen die Werbung abschalten. Mit der dritten Option unterstützt du dem Entwickler für diese App und erhältst einen exklusiven Premiumbadge.</value>
   </data>
   <data name="UI_Optionen_U_Buying_Note.Text" xml:space="preserve">
     <value>Notiz am Rande: Apps im Store zu haben kostet im Jahr 18€. Es wäre cool, wenn die App daher wenigstens Kostendeckend arbeiten würde.</value>

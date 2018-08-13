@@ -83,32 +83,41 @@
                 </PivotItem.Header>
                 <ScrollViewer>
                     <StackPanel>
-                        <TextBlock Style="{StaticResource ueberschrift2}">
-                    <Run x:Uid="UI_Optionen_Version"/>
-                    <Run x:Uid="Doppelpunkt"/>
-                    <Run Text="{x:Bind AppVersionBuild}"/>
-                        </TextBlock>
-                        <TextBlock x:Uid="UI_Optionen_U_Kontakt"  Style="{StaticResource ueberschrift2}"/>
-                        <TextBlock Style="{StaticResource TextInhaltKlein}">
-                    <Run x:Uid="UI_Optionen_Inhaber"/>
-                    <Run x:Uid="Doppelpunkt"/>
-                    <Run Text="{x:Bind Inhaber}"/>
-                        </TextBlock>
-                        <TextBlock Style="{StaticResource TextInhaltKlein}">
-                    <Run x:Uid="UI_Optionen_Kontakt_Mail"/>
-                    <Run x:Uid="Doppelpunkt"/>
-                    <Run Text="{x:Bind eMail}"/>
-                        </TextBlock>
-                        <HyperlinkButton NavigateUri="{x:Bind AppKontaktEmail}" x:Uid="UI_Optionen_KontaktBtn"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource ueberschrift2}">
+                        <Run x:Uid="UI_Optionen_Version"/>
+                        <Run x:Uid="Doppelpunkt"/>
+                        <Run Text="{x:Bind AppVersionBuild}"/>
+                            </TextBlock>
+                            <TextBlock x:Uid="UI_Optionen_U_Kontakt"  Style="{StaticResource ueberschrift2}"/>
+                            <TextBlock Style="{StaticResource TextInhaltKlein}">
+                        <Run x:Uid="UI_Optionen_Inhaber"/>
+                        <Run x:Uid="Doppelpunkt"/>
+                        <Run Text="{x:Bind Inhaber}"/>
+                            </TextBlock>
+                            <TextBlock Style="{StaticResource TextInhaltKlein}">
+                        <Run x:Uid="UI_Optionen_Kontakt_Mail"/>
+                        <Run x:Uid="Doppelpunkt"/>
+                        <Run Text="{x:Bind eMail}"/>
+                            </TextBlock>
+                            <HyperlinkButton NavigateUri="{x:Bind AppKontaktEmail}" x:Uid="UI_Optionen_KontaktBtn"/>
 
-                        <TextBlock Style="{StaticResource ueberschrift2}">
-                    <Run x:Uid="UI_Optionen_App"/>
-                        </TextBlock>
-                        <HyperlinkButton NavigateUri="{x:Bind AppLink}" x:Uid="UI_Optionen_AppLinkBtn"/>
-                        <HyperlinkButton NavigateUri="{x:Bind AppReviewLink}" x:Uid="UI_Optionen_RateBtn"/>
-                        <HyperlinkButton NavigateUri="{x:Bind MoreAppsLink}" x:Uid="UI_Optionen_MoreAppsBtn"/>
+                            <TextBlock Style="{StaticResource ueberschrift2}">
+                        <Run x:Uid="UI_Optionen_App"/>
+                            </TextBlock>
+                            <HyperlinkButton NavigateUri="{x:Bind AppLink}" x:Uid="UI_Optionen_AppLinkBtn"/>
+                            <HyperlinkButton NavigateUri="{x:Bind AppReviewLink}" x:Uid="UI_Optionen_RateBtn"/>
+                            <HyperlinkButton NavigateUri="{x:Bind MoreAppsLink}" x:Uid="UI_Optionen_MoreAppsBtn"/>
+                        </StackPanel>
+                        <Image Grid.Column="1" x:Name="premiumbadge" Visibility="Collapsed" HorizontalAlignment="Right" Stretch="None" VerticalAlignment="Top" Source="/Assets/premium-badge.png"/>
+                    </Grid>
 
-                        <TextBlock x:Uid="UI_Optionen_U_Statistics"  Style="{StaticResource ueberschrift2}"/>
+                    <TextBlock x:Uid="UI_Optionen_U_Statistics"  Style="{StaticResource ueberschrift2}"/>
                         <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_AppStart"/>
                     <Run x:Uid="Doppelpunkt"/>
