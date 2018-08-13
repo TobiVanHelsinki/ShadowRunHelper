@@ -42,7 +42,7 @@ namespace ShadowRunHelper.UI
                 };
                 btn.Click += (s, e) =>
                 {
-                    item.Item2.Invoke();
+                    item.Item2?.Invoke();
                     Close();
                 };
                 Grid.SetColumn(btn, twocolumns ? index % 2 : 0);

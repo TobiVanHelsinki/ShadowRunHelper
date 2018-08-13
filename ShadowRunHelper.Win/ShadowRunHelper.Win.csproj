@@ -154,9 +154,6 @@
     <Compile Include="UI\Pages\AdministrationPage.xaml.cs">
       <DependentUpon>AdministrationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Pages\LoadingPage.xaml.cs">
-      <DependentUpon>LoadingPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -284,10 +281,6 @@
     <Page Include="UI\Pages\AdministrationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Pages\LoadingPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>

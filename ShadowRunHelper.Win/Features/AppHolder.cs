@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
-using Microsoft.AppCenter;
+﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using Newtonsoft.Json;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
-using ShadowRunHelper.UI;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -19,46 +11,52 @@ using TAPPLICATION;
 using TAPPLICATION.IO;
 using TLIB;
 using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Storage;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper
 {
     static class AppHolder
     {
+    
+        static AppModel Model;
+        static SettingsModel Settings;
+
         public static AppInstance Instance;
         private static string instanceKey = "";
         public static string InstanceKey { get { return Instance == null ? instanceKey : Instance.Key; } set => instanceKey = value; }
-        static bool FirstStart = true;
-        static AppModel Model;
-        static SettingsModel Settings;
-        static Task CheckLicence;
-        #region Init
 
+        static bool FirstStart = true;
+
+        #region Init
+        internal static void InitModel()
+        {
+            Settings = SettingsModel.Initialize();
+            Model = AppModel.Initialize();
+        }
         internal static void Init()
         {
-
-            //Debug_TimeAnalyser.Start("Overall");
-            //Debug_TimeAnalyser.Start("App()");
-            Settings = SettingsModel.Initialize();
-            CheckLicence = Task.Run(() => IAP.CheckLicence());
-            SetConstantStuff();
-            Model = AppModel.Initialize();
-            if (Settings.START_COUNT < 1)
+            if (Settings.FIRST_START)
             {
-                Settings.ResetAllSettings();
+                Settings.InitSettings();
             }
-
-
             Settings.START_COUNT++;
-            Task.Run(AppCenterConfiguration);
-            Task.Run(RegisterAppInstance);
-            //Debug_TimeAnalyser.Stop("App()");
+
+            Task.WaitAll(
+                Task.Run(() => IAP.CheckLicence()),
+                Task.Run(AppCenterConfiguration),
+                Task.Run(SetConstantStuff),
+                Task.Run(RegisterAppInstance)
+                );
+            Task.WaitAll(
+                Task.Run(CharLoadingHandling)
+                );
         }
 
+        internal static async void StartInit()
+        {
+            await Task.Run(Init);
+        }
 
         static void RegisterAppInstance()
         {
@@ -75,6 +73,19 @@ namespace ShadowRunHelper
                 }
             }
 
+        }
+
+        internal static void FileActivated(string Name, string Path)
+        {
+            Settings.FORCE_LOAD_CHAR_ON_START = true;
+            Settings.LAST_SAVE_INFO = new FileInfoClass(Place.Extern, Name, Path)
+            {
+                Token = SharedConstants.ACCESSTOKEN_FILEACTIVATED
+            };
+            if (!FirstStart)
+            {
+                CharLoadingHandling();
+            }
         }
 
         static void AppCenterConfiguration()
@@ -97,43 +108,9 @@ namespace ShadowRunHelper
         }
         #endregion
 
-        internal static async void LeavingBackground()
+        internal static void LeavingBackground()
         {
-            //Debug_TimeAnalyser.Start("LeavingBackground");
-
-            //Debug_TimeAnalyser.Start("CharLoadingHandling");
-            Task Loading = CharLoadingHandling();
-            //Debug_TimeAnalyser.Stop("CharLoadingHandling");
-            // App-Initialisierung nicht wiederholen, wenn das Fenster bereits Inhalte enthaelt.
-            // Nur sicherstellen, dass das Fenster aktiv ist.
-            if (!(Window.Current.Content is Frame rootFrame))
-            {
-                rootFrame = new Frame();
-                rootFrame.NavigationFailed += OnNavigationFailed;
-                Window.Current.Content = rootFrame;
-            }
-            Window.Current.Activate();
-            //Debug_TimeAnalyser.Start("await Loading");
-            await Loading;
-            //Debug_TimeAnalyser.Stop("await Loading");
-            //Debug_TimeAnalyser.Start("await CheckLicence");
-            //await CheckLicence;
-            //Debug_TimeAnalyser.Stop("await CheckLicence");
-            if (rootFrame.Content == null)
-            {
-                // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
-                //Debug_TimeAnalyser.Start("NavigatetoMP");
-                rootFrame.Navigate(typeof(MainPage));
-                //Debug_TimeAnalyser.Stop("NavigatetoMP");
-            }
-            else
-            {
-                // Seite ist aktiv, wir versuchen, den Char anzuzeigen
-                Model.RequestNavigation(Settings.LAST_PAGE);
-            }
-            // Sicherstellen, dass das aktuelle Fenster aktiv ist
-            //Debug_TimeAnalyser.Stop("LeavingBackground");
-            //Debug_TimeAnalyser.Stop("Overall");
+            CharLoadingHandling();
         }
 
         internal static async void EnteredBackground()
@@ -166,9 +143,8 @@ namespace ShadowRunHelper
                 if ((Settings.CHARINTEMPSTORE && !FirstStart || Settings.LOAD_CHAR_ON_START && FirstStart) && Model.MainObject == null || Settings.FORCE_LOAD_CHAR_ON_START)
                 {
                     var info = Settings.LAST_SAVE_INFO;
-                    //Debug_TimeAnalyser.Start("CharLoadingNow");
+                    Model.CharInProgress = info;
                     var TMPChar = await CharHolderIO.Load(info, eUD: UserDecision.ThrowError);
-                    //Debug_TimeAnalyser.Stop("CharLoadingNow");
 
                     if (TMPChar.FileInfo.Fileplace == Place.Temp)
                     {
@@ -205,12 +181,16 @@ namespace ShadowRunHelper
             catch (Exception) { }
             finally
             {
+                Model.CharInProgress = null;
                 Settings.FORCE_LOAD_CHAR_ON_START = false;
                 FirstStart = false;
                 Settings.LAST_SAVE_INFO = null;
                 Settings.CHARINTEMPSTORE = false;
+                Model.RequestNavigation(ProjectPages.Char); //TODO ThreadSave
             }
+
         }
+
         #region Exception Handling
 
         internal static void OnNavigationFailed(object sender, NavigationFailedEventArgs e)

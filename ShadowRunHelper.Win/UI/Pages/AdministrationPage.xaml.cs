@@ -36,15 +36,25 @@ namespace ShadowRunHelper.UI
 
         public AdministrationPage()
         {
-            //Debug_TimeAnalyser.Start("AdministrationPage()");
             InitializeComponent();
-            ChangeProgress(false);
+            Model.PropertyChanged += Model_PropertyChanged;
             NavigationCacheMode = NavigationCacheMode.Required;
             Model.TutorialStateChanged += TutorialStateChanged;
-            //Debug_TimeAnalyser.Stop("AdministrationPage()");
             SizeChanged += AdministrationPage_SizeChanged;
         }
 
+        private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(Model.IsCharInProgress):
+                    ChangeProgress(Model.IsCharInProgress);
+                    this.Fade(easingType: EasingType.Sine, value: 0f, duration: 0).StartAsync();
+                    break;
+                default:
+                    break;
+            }
+        }
         void AdministrationPage_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (ActualWidth > ActualHeight)
@@ -107,26 +117,21 @@ namespace ShadowRunHelper.UI
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Visibility = Visibility.Visible;
-            this.Fade(value: 1f, duration: 0).Start();
-
-
-            //Debug_TimeAnalyser.Start("PAdmin.OnNavigatedTo");
-            CheckIAPStatus();
-            if (AppDataPorter.InProgress)
+            if (Model.IsCharInProgress)
             {
-                //Ask User
-                //If YES, Import all
-                ShowMessageDialog(StringHelper.GetString("Request_AppImport/Title")
-, StringHelper.GetString("Request_AppImport/Text")
-, StringHelper.GetString("Request_AppImport/Yes")
-, StringHelper.GetString("Request_AppImport/No")
-, ()=> AppDataPorter.ImportAppPacket());
-
+                this.Fade(easingType: EasingType.Sine, value: 0f, duration: 0).StartAsync();
+            }
+            else
+            {
+                this.Fade(value: 1f, duration: 0).Start();
             }
 
-            if (SettingsModel.I.START_COUNT <= 1)
+            CheckIAPStatus();
+
+            if (SettingsModel.I.FIRST_START)
             {
                 CopyExampleChar();
+                SettingsModel.I.FIRST_START = false;
             }
             else
             {
@@ -169,7 +174,6 @@ namespace ShadowRunHelper.UI
         void ChangeProgress(bool bHow)
         {
             IsOperationInProgres = bHow;
-            Model.ChangeProgress(bHow, true);
             Char_Sum.IsEnabled = !bHow;
             Commandbar.IsEnabled = !bHow;
         }
@@ -188,12 +192,14 @@ namespace ShadowRunHelper.UI
         }
         ListViewItem CurrentListViewItem;
 
+        bool Summorys_AktualisierenInProgress = false;
         async Task Summorys_Aktualisieren()
         {
-            if (IsOperationInProgres)
+            if (IsOperationInProgres || Summorys_AktualisierenInProgress)
             {
                 return;
             }
+            Summorys_AktualisierenInProgress = true;
             Summorys.Clear();
             try
             {
@@ -207,6 +213,7 @@ namespace ShadowRunHelper.UI
             {
                 Model.NewNotification(StringHelper.GetString("Error_LoadCharFolder"), ex);
             }
+            Summorys_AktualisierenInProgress = false;
         }
         #endregion
 
@@ -245,11 +252,13 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
+            Model.CharInProgress = new FileInfoClass() { Filename = "new Char", Filepath = " sketch" };
             ChangeProgress(true);
             Model.MainObject = CharHolder.CreateCharWithStandardContent();
             SettingsModel.I.COUNT_CREATIONS++;
             AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
             ChangeProgress(false);
+            Model.CharInProgress = null;
         }
 
         async Task<bool> AskForSaveCurrentChanges()
@@ -293,10 +302,12 @@ namespace ShadowRunHelper.UI
 
             this.Fade(easingType: EasingType.Sine).StartAsync();
 
+            var file = ((sender as Button).DataContext as FileInfoClass);
+            Model.CharInProgress = file;
             ChangeProgress(true);
             try
             {
-                Model.MainObject = await CharHolderIO.Load(((sender as Button).DataContext as FileInfoClass), null, UserDecision.ThrowError);
+                Model.MainObject = await CharHolderIO.Load(file, null, UserDecision.ThrowError);
                 SettingsModel.I.COUNT_LOADINGS++;
             }
             catch (Exception ex)
@@ -309,6 +320,7 @@ namespace ShadowRunHelper.UI
                 AppModel.Instance.RequestNavigation(ProjectPages.Char);
             }
             ChangeProgress(false);
+            Model.CharInProgress = null;
         }
 
         async void Click_Loeschen_OtherChar(object sender, RoutedEventArgs e)
@@ -328,32 +340,14 @@ namespace ShadowRunHelper.UI
                     Model.NewNotification(StringHelper.GetString("Notification_Error_DelFail"), ex);
                 }
             }
-            await ShowMessageDialog(StringHelper.GetString("Request_Delete/Title")
-    , StringHelper.GetString("Request_Delete/Text")
-    , StringHelper.GetString("Request_Delete/Yes")
-    , StringHelper.GetString("Request_Delete/No")
-    , Delete);
+            await new MultiButtonMessageDialog(StringHelper.GetString("Request_Delete/Title")
+                , StringHelper.GetString("Request_Delete/Text")
+                , (StringHelper.GetString("Request_Delete/Yes"), Delete)
+                , (StringHelper.GetString("Request_Delete/No"),null)
+                ).ShowAsync();
             await Summorys_Aktualisieren();
             SettingsModel.I.COUNT_DELETIONS++;
         }
-
-        public static async Task ShowMessageDialog(string Title, string Message, string strOK, string strCancel, Action OK, Action Cancel = null)
-        {
-            var messageDialog = new MessageDialog(Message, Title);
-            messageDialog.Commands.Add(new UICommand(
-                strOK,
-                new UICommandInvokedHandler((x) => OK?.Invoke())));
-            messageDialog.Commands.Add(new UICommand(
-                strCancel,
-                new UICommandInvokedHandler((x) => Cancel?.Invoke())));
-            messageDialog.Commands.Add(new UICommand(
-                strCancel,
-                new UICommandInvokedHandler((x) => Cancel?.Invoke())));
-            messageDialog.DefaultCommandIndex = 0;
-            messageDialog.CancelCommandIndex = 1;
-            await messageDialog.ShowAsync();
-        }
-
 
         async void Click_Datei_Export_OtherChar(object sender, RoutedEventArgs e)
         {

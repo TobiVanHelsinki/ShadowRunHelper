@@ -7,7 +7,7 @@
     mc:Ignorable="d"
     >
     <StackPanel>
-        <TextBlock x:Name="MessageBox"/>
+        <TextBlock x:Name="MessageBox" TextWrapping="Wrap"/>
         <Grid x:Name="ButtonGrid">
         </Grid>
     </StackPanel>

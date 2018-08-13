@@ -11,7 +11,7 @@ namespace ShadowRunHelper
     public class SettingsModel : SharedSettingsModel
     {
         #region Settings
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public bool DISABLE_TIPS
         {
             get => PlatformSettings.GetBoolRoaming(Constants.CONTAINER_SETTINGS_DISABLE_TIPS);
@@ -22,7 +22,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [LocalSettingAttribute]
         public bool IAP_HIDEADS
         {
             get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_IAP_HIDEADS);
@@ -33,7 +33,7 @@ namespace ShadowRunHelper
             }
         }
        
-        [UsedSetting]
+        [LocalSettingAttribute]
         public string LAST_APP_VERSION
         {
             get => PlatformSettings.GetStringLocal(Constants.CONTAINER_SETTINGS_LAST_APP_VERSION);
@@ -44,7 +44,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [LocalSettingAttribute]
         public ProjectPages LAST_PAGE
         {
             get => (ProjectPages)PlatformSettings.GetIntLocal(Constants.CONTAINER_SETTINGS_LAST_PAGE);
@@ -55,7 +55,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [LocalSettingAttribute]
         public bool FORCE_LOAD_CHAR_ON_START
         {
             get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START);
@@ -66,7 +66,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public bool AUTO_SAVE
         {
             get => PlatformSettings.GetBoolRoaming(Constants.CONTAINER_SETTINGS_AUTO_SAVE);
@@ -77,7 +77,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [LocalSettingAttribute]
         public bool IAP_PREMIUM_BADGE
         {
             get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_IAP_BADGE);
@@ -88,7 +88,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [LocalSettingAttribute]
         public bool TUT_SHOWN_1
         {
             get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1);
@@ -99,7 +99,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public int START_COUNT_DB
         {
             get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_START_COUNT_DB);
@@ -110,7 +110,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public int START_COUNT
         {
             get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_START_COUNT);
@@ -121,7 +121,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public int COUNT_LOADINGS
         {
             get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_COUNT_LOADINGS);
@@ -131,7 +131,7 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public int COUNT_SAVINGS
         {
             get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_COUNT_SAVINGS);
@@ -142,7 +142,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public int COUNT_DELETIONS
         {
             get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_COUNT_DELETIONS);
@@ -153,7 +153,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public int COUNT_CREATIONS
         {
             get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_COUNT_CREATIONS);
@@ -164,7 +164,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public int AUTO_SAVE_INTERVAL_MS
         {
             get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS);
@@ -183,8 +183,19 @@ namespace ShadowRunHelper
                 Instance.NotifyPropertyChanged();
             }
         }
+        
 
-        [UsedSetting]
+        [LocalSettingAttribute]
+        public bool FIRST_START
+        {
+            get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_FIRST_START, true);
+            set
+            {
+                PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_FIRST_START, value);
+                Instance.NotifyPropertyChanged();
+            }
+        }
+        [LocalSettingAttribute]
         public bool LOAD_CHAR_ON_START
         {
             get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START);
@@ -195,7 +206,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public bool START_AFTER_EDIT
         {
             get => PlatformSettings.GetBoolRoaming(Constants.CONTAINER_SETTINGS_START_AFTER_EDIT);
@@ -206,7 +217,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [LocalSettingAttribute]
         public FileInfoClass LAST_SAVE_INFO
         {
             get
@@ -238,7 +249,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public bool FILENAME_USEPROGRESS
         {
             get => PlatformSettings.GetBoolRoaming(Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS);
@@ -249,7 +260,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [RoamingSettingAttribute]
         public bool FILENAME_USEDATE
         {
             get => PlatformSettings.GetBoolRoaming(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE);
@@ -260,7 +271,7 @@ namespace ShadowRunHelper
             }
         }
 
-        [UsedSetting]
+        [LocalSettingAttribute]
         public bool CHARINTEMPSTORE
         {
             get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE);

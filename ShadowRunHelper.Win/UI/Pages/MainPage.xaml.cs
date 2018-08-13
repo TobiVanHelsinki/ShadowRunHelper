@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Uwp.UI.Animations;
+﻿using Microsoft.Toolkit.Uwp.Helpers;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections;
@@ -93,19 +94,20 @@ namespace ShadowRunHelper.UI
 #pragma warning disable CS4014
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary(y.NewItems);
 #pragma warning restore CS4014
+            Model.PropertyChanged += Model_PropertyChanged;
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += NavigationRequested;
-            Model.PropertyChanged += Model_PropertyChanged;
+            SizeChanged += MainPage_SizeChanged;
+            AppHolder.StartInit();
+
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += (s, p) => TitleBarStuff();
             CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += (s, p) => TitleBarStuff();
 #if DEBUG
             Debug_CreateDebugChar.Visibility = Visibility.Visible;
 #endif
             TaskBarStuff();
-            //Debug_TimeAnalyser.Stop("MainPage()");
             TipFading = new Timer(TipFadeOut, null, -1, -1);
             TipVisibility = new Timer(TipMakeInvisible, null, -1, -1);
-            SizeChanged += MainPage_SizeChanged;
         }
 
         private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -130,11 +132,14 @@ namespace ShadowRunHelper.UI
                 case nameof(Model.MainObject):
                     TaskBarStuff();
                     break;
-                case nameof(Model.IsUIOperationInProgress):
-                        ProgressRing.IsActive = Model.IsUIOperationInProgress;
-                    break;
-                case nameof(Model.IsDisplayingTip):
+                case nameof(Model.IsCharInProgress):
+                    ProgressRing.IsActive = Model.IsCharInProgress;
                     RefreshTip();
+                    ShowCharName();
+                    if (!Model.IsCharInProgress)
+                    {
+                        Model.RequestNavigation(ProjectPages.Char);
+                    }
                     break;
                 default:
                     break;
@@ -166,10 +171,22 @@ namespace ShadowRunHelper.UI
                 SystemHelper.WriteLine("TipMakeInvisible2: " + DateTime.Now.TimeOfDay);
             });
         }
-
-        private void RefreshTip()
+        void ShowCharName()
         {
-            if (Model.IsDisplayingTip && !SettingsModel.I.DISABLE_TIPS)
+            if (Model.IsCharInProgress)
+            {
+                //LoadingCharField.Visibility = Visibility.Visible;
+                //LoadingCharField.Text = "Loading " + Model.CharInProgress.Filename;
+                //TODO
+            }
+            else
+            {
+                LoadingCharField.Visibility = Visibility.Collapsed;
+            }
+        }
+        void RefreshTip()
+        {
+            if (Model.IsCharInProgress && !SettingsModel.I.DISABLE_TIPS)
             {
                 TipText.Text = Constants.TipList.RandomElement();
                 TipTextWindow.Visibility = Visibility.Visible;
@@ -227,8 +244,6 @@ namespace ShadowRunHelper.UI
         #region navigation
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //Debug_TimeAnalyser.Start("PMain.OnNavigatedTo");
-            //base.OnNavigatedTo(e);
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
             if (SettingsModel.I.LAST_APP_VERSION != Constants.APP_VERSION_BUILD_DELIM)
             {
@@ -237,7 +252,15 @@ namespace ShadowRunHelper.UI
                     StringHelper.GetString("Notification_NewVersion_"+ Constants.APP_VERSION_BUILD_DELIM.Replace('.','_')),true,10);
                 SettingsModel.I.LAST_APP_VERSION = Constants.APP_VERSION_BUILD_DELIM;
             }
-            //Debug_TimeAnalyser.Stop("PMain.OnNavigatedTo");
+            if (AppDataPorter.InProgress)
+            {
+                //Ask User, If YES, Import all
+                new MultiButtonMessageDialog(StringHelper.GetString("Request_AppImport/Title")
+                    , StringHelper.GetString("Request_AppImport/Text")
+                    , (StringHelper.GetString("Request_AppImport/Yes"), () => AppDataPorter.ImportAppPacket())
+                    , (StringHelper.GetString("Request_AppImport/No"), null)
+                    ).ShowAsync();
+            }
         }
         void NavigationRequested(ProjectPages p, ProjectPagesOptions po)
         {
@@ -248,7 +271,6 @@ namespace ShadowRunHelper.UI
                     {
                     SettingsModel.I.LAST_PAGE = ProjectPages.Char;
                         MyFrame.Navigate(typeof(CharPage), po);
-                        //Nav_Char.Content.
                     }
                     else
                     {

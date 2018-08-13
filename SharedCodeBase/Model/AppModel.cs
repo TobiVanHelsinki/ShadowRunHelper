@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using Microsoft.Toolkit.Uwp.Helpers;
 using ShadowRunHelper.IO;
+using TAMARIN.IO;
 
 namespace ShadowRunHelper.Model
 {
@@ -40,7 +43,7 @@ public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptio
         public event NavigationEventHandler NavigationRequested;
         public void RequestNavigation(ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
         {
-            NavigationRequested?.Invoke(p, po);
+            DispatcherHelper.ExecuteOnUIThreadAsync(()=>NavigationRequested?.Invoke(p, po));
         }
 
         public void TutorialChangedState(int StateNumber, bool Highlight = false)
@@ -50,23 +53,15 @@ public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptio
         public delegate void TutorialStateChangeRequestEventHandler(int StateNumber, bool Highlight);
         public event TutorialStateChangeRequestEventHandler TutorialStateChanged;
 
-        bool _IsUIOperationInProgress;
-        public bool IsUIOperationInProgress
+        public bool IsCharInProgress
         {
-            get { return _IsUIOperationInProgress; }
-            set { if (_IsUIOperationInProgress != value) { _IsUIOperationInProgress = value; NotifyPropertyChanged(); } }
+            get { return CharInProgress != null; }
         }
-        bool _IsDisplayingTipp;
-        public bool IsDisplayingTip
+        FileInfoClass _CharInProgress;
+        public FileInfoClass CharInProgress
         {
-            get { return _IsDisplayingTipp; }
-            set { if (_IsDisplayingTipp != value) { _IsDisplayingTipp = value; NotifyPropertyChanged(); } }
-        }
-
-        public void ChangeProgress(bool bHow, bool DisplayTipp)
-        {
-            IsUIOperationInProgress = bHow;
-            IsDisplayingTip = DisplayTipp & bHow;
+            get { return _CharInProgress; }
+            set { if (_CharInProgress != value) { _CharInProgress = value; NotifyPropertyChanged(nameof(IsCharInProgress)); NotifyPropertyChanged(); } }
         }
     }
 }
