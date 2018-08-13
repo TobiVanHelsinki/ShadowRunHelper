@@ -197,7 +197,7 @@ namespace ShadowRunHelper.UI
             Summorys.Clear();
             try
             {
-                var List = await CharHolderIO.CurrentIO.GetListofFiles(new FileInfoClass() { Fileplace = CharHolderIO.GetCurrentSavePlace(), Filepath = CharHolderIO.GetCurrentSavePath(), FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.ThrowError, Constants.LST_FILETYPES_CHAR);
+                var List = await CharHolderIO.CurrentIO.GetListofFiles(new FileInfoClass() { Fileplace = CharHolderIO.GetCurrentSavePlace(), Filepath = CharHolderIO.GetCurrentSavePath(), Token = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.ThrowError, Constants.LST_FILETYPES_CHAR);
                 foreach (var item in List.OrderByDescending((x) => x.DateModified))
                 {
                     Summorys.Add(new FileInfoClass() { Filename = item.Filename, DateModified = item.DateModified, Filepath = item.Filepath, Fileplace = item.Fileplace, Size = item.Size });
@@ -244,7 +244,6 @@ namespace ShadowRunHelper.UI
             await AskForSaveCurrentChanges();
             ChangeProgress(true);
             Model.MainObject = CharHolder.CreateCharWithStandardContent();
-            Model.MainObject.AfterLoad();
             SettingsModel.I.COUNT_CREATIONS++;
             AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
             ChangeProgress(false);
@@ -373,7 +372,7 @@ namespace ShadowRunHelper.UI
             ChangeProgress(true);
             try
             {
-                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass() { Fileplace = Place.Extern, FolderToken = "Export" });
+                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass() { Fileplace = Place.Extern, Token = "Export" });
             }
             catch (Exception ex)
             {
@@ -399,7 +398,7 @@ namespace ShadowRunHelper.UI
                 ChangeProgress(true);
                 try
                 {
-                    var TargetInfo = await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass(Place.Extern) { FolderToken = "EXPORT"});
+                    var TargetInfo = await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass(Place.Extern) { Token = "EXPORT"});
                     var SourceInfo = new FileInfoClass(SharedIO.GetCurrentSavePlace(), "", SharedIO.GetCurrentSavePath());
                     await SharedIO.CurrentIO.CopyAllFiles(TargetInfo, SourceInfo);
                 }

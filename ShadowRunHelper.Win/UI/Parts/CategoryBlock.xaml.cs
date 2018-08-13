@@ -172,7 +172,7 @@ namespace ShadowRunHelper.UI
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             try
             {
-                strRead = (await SharedIO.CurrentIO.LoadFileContent(new FileInfoClass() { FolderToken = "import", Fileplace = Place.Extern }, Constants.LST_FILETYPES_CSV, UserDecision.AskUser)).strFileContent;
+                strRead = (await SharedIO.CurrentIO.LoadFileContent(new FileInfoClass() { Token = "import", Fileplace = Place.Extern }, Constants.LST_FILETYPES_CSV, UserDecision.AskUser)).strFileContent;
             }
             catch (IsOKException ex)
             {
@@ -202,7 +202,7 @@ namespace ShadowRunHelper.UI
             try
             {
                 string output = Controller.Data2CSV(';', '\n');
-                SharedIO.CurrentIO.SaveFileContent(output, new FileInfoClass() { Filename = TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" });
+                SharedIO.CurrentIO.SaveFileContent(output, new FileInfoClass() { Filename = TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, Token = "CSV_TEMP" });
             }
             catch (IsOKException ex)
             {
@@ -220,7 +220,7 @@ namespace ShadowRunHelper.UI
             {
                 var selected2 = ListView.SelectedItems.Select(i => i as Thing);
                 string output = IO.CSV_Converter.Data2CSV(';', '\n', selected2);
-                SharedIO.CurrentIO.SaveFileContent(output, new FileInfoClass() { Filename = TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, FolderToken = "CSV_TEMP" });
+                SharedIO.CurrentIO.SaveFileContent(output, new FileInfoClass() { Filename = TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV, Fileplace = Place.Extern, Token = "CSV_TEMP" });
             }
             catch (IsOKException ex)
             {

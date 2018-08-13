@@ -309,7 +309,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        string notizen;
+        string notizen = "";
         [Used_UserAttribute]
         public string Notizen
         {

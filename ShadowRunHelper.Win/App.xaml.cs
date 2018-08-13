@@ -105,7 +105,7 @@ namespace ShadowRunHelper
                 name = name.Remove(name.Length - 1);
                 Settings.LAST_SAVE_INFO = new FileInfoClass(Place.Extern, name, path)
                 {
-                    FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
+                    Token = SharedConstants.ACCESSTOKEN_FILEACTIVATED
                 };
             }
             if (!FirstStart)
@@ -129,7 +129,7 @@ namespace ShadowRunHelper
                 Settings.FORCE_LOAD_CHAR_ON_START = true;
                 var info = new FileInfoClass(Place.Extern, args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length))
                 {
-                    FolderToken = SharedConstants.ACCESSTOKEN_FILEACTIVATED
+                    Token = SharedConstants.ACCESSTOKEN_FILEACTIVATED
                 };
                 Settings.LAST_SAVE_INFO = info;
                 if (!FirstStart)

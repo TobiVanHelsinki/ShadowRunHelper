@@ -14,10 +14,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public bool DISABLE_TIPS
         {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_DISABLE_TIPS);
+            get => PlatformSettings.GetBoolRoaming(Constants.CONTAINER_SETTINGS_DISABLE_TIPS);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_DISABLE_TIPS, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_DISABLE_TIPS, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -25,10 +25,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public bool IAP_HIDEADS
         {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_IAP_HIDEADS);
+            get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_IAP_HIDEADS);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_IAP_HIDEADS, value);
+                PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_IAP_HIDEADS, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -36,10 +36,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public string LAST_APP_VERSION
         {
-            get => PlatformSettings.getString(Constants.CONTAINER_SETTINGS_LAST_APP_VERSION);
+            get => PlatformSettings.GetStringLocal(Constants.CONTAINER_SETTINGS_LAST_APP_VERSION);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_APP_VERSION, value);
+                PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_LAST_APP_VERSION, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -47,10 +47,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public ProjectPages LAST_PAGE
         {
-            get => (ProjectPages)PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_LAST_PAGE);
+            get => (ProjectPages)PlatformSettings.GetIntLocal(Constants.CONTAINER_SETTINGS_LAST_PAGE);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_PAGE, (int)value);
+                PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_LAST_PAGE, (int)value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -58,10 +58,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public bool FORCE_LOAD_CHAR_ON_START
         {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START);
+            get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START, value);
+                PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_FORCE_LOAD_CHAR_ON_START, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -69,10 +69,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public bool AUTO_SAVE
         {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_AUTO_SAVE);
+            get => PlatformSettings.GetBoolRoaming(Constants.CONTAINER_SETTINGS_AUTO_SAVE);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_AUTO_SAVE, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -80,10 +80,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public bool IAP_PREMIUM_BADGE
         {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_IAP_BADGE);
+            get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_IAP_BADGE);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_IAP_BADGE, value);
+                PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_IAP_BADGE, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -91,10 +91,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public bool TUT_SHOWN_1
         {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1);
+            get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1, value);
+                PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_TUT_SHOWN_1, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -102,10 +102,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public int START_COUNT_DB
         {
-            get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_START_COUNT_DB);
+            get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_START_COUNT_DB);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_COUNT_DB, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_START_COUNT_DB, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -113,10 +113,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public int START_COUNT
         {
-            get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_START_COUNT);
+            get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_START_COUNT);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_COUNT, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_START_COUNT, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -124,20 +124,20 @@ namespace ShadowRunHelper
         [UsedSetting]
         public int COUNT_LOADINGS
         {
-            get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_LOADINGS);
+            get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_COUNT_LOADINGS);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_LOADINGS, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_COUNT_LOADINGS, value);
                 Instance.NotifyPropertyChanged();
             }
         }
         [UsedSetting]
         public int COUNT_SAVINGS
         {
-            get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_SAVINGS);
+            get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_COUNT_SAVINGS);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_SAVINGS, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_COUNT_SAVINGS, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -145,10 +145,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public int COUNT_DELETIONS
         {
-            get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_DELETIONS);
+            get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_COUNT_DELETIONS);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_DELETIONS, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_COUNT_DELETIONS, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -156,10 +156,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public int COUNT_CREATIONS
         {
-            get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_COUNT_CREATIONS);
+            get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_COUNT_CREATIONS);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_COUNT_CREATIONS, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_COUNT_CREATIONS, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -167,7 +167,7 @@ namespace ShadowRunHelper
         [UsedSetting]
         public int AUTO_SAVE_INTERVAL_MS
         {
-            get => PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS);
+            get => PlatformSettings.GetIntRoaming(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS);
             set
             {
                 if (value > 100000)
@@ -179,7 +179,7 @@ namespace ShadowRunHelper
                     value = 1000;
                 }
                 SystemHelper.WriteLine("value: " + value);
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -187,10 +187,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public bool LOAD_CHAR_ON_START
         {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START);
+            get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START, value);
+                PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_LOAD_CHAR_ON_START, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -198,10 +198,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public bool START_AFTER_EDIT
         {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_START_AFTER_EDIT);
+            get => PlatformSettings.GetBoolRoaming(Constants.CONTAINER_SETTINGS_START_AFTER_EDIT);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_START_AFTER_EDIT, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_START_AFTER_EDIT, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -213,26 +213,26 @@ namespace ShadowRunHelper
             {
                 return new FileInfoClass()
                 {
-                    Filename = PlatformSettings.getString(Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME),
-                    Filepath = PlatformSettings.getString(Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH),
-                    Fileplace = (Place)PlatformSettings.getInt(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE)
+                    Filename = PlatformSettings.GetStringLocal(Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME),
+                    Filepath = PlatformSettings.GetStringLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH),
+                    Fileplace = (Place)PlatformSettings.GetIntLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE)
                 };
             }
             set
             {
                 if (value == null)
                 {
-                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME, Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME_STD);
-                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH, Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH_STD);
-                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE, Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE_STD);
-                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_TOKEN, Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE_STD);
+                    PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME, Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME_STD);
+                    PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH, Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH_STD);
+                    PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE, Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE_STD);
+                    PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_TOKEN, Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE_STD);
                 }
                 else
                 {
-                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME, value.Filename);
-                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH, value.Filepath);
-                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE, (int)value.Fileplace);
-                    PlatformSettings.set(Constants.CONTAINER_SETTINGS_LAST_SAVE_TOKEN, value.FolderToken);
+                    PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME, value.Filename);
+                    PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH, value.Filepath);
+                    PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE, (int)value.Fileplace);
+                    PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_TOKEN, value.Token);
                 }
                 Instance.NotifyPropertyChanged();
             }
@@ -241,10 +241,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public bool FILENAME_USEPROGRESS
         {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS);
+            get => PlatformSettings.GetBoolRoaming(Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_FILENAME_USEPROGRESS, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -252,10 +252,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public bool FILENAME_USEDATE
         {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE);
+            get => PlatformSettings.GetBoolRoaming(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE, value);
+                PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_FILENAME_USEDATE, value);
                 Instance.NotifyPropertyChanged();
             }
         }
@@ -263,10 +263,10 @@ namespace ShadowRunHelper
         [UsedSetting]
         public bool CHARINTEMPSTORE
         {
-            get => PlatformSettings.getBool(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE);
+            get => PlatformSettings.GetBoolLocal(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE);
             set
             {
-                PlatformSettings.set(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE, value);
+                PlatformSettings.SetLocal(Constants.CONTAINER_SETTINGS_CHARINTEMPSTORE, value);
                 NotifyPropertyChanged();
             }
         }
@@ -344,7 +344,7 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    SharedSettingsModel.I.FOLDERMODE_PATH = (await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass() { Fileplace = Place.Extern, FolderToken = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.AskUser)).Filepath;
+                    SharedSettingsModel.I.FOLDERMODE_PATH = (await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass() { Fileplace = Place.Extern, Token = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.AskUser)).Filepath;
                 }
                 catch (Exception ex)
                 {
