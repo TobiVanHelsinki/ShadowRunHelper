@@ -121,31 +121,31 @@
                         <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_AppStart"/>
                     <Run x:Uid="Doppelpunkt"/>
-                    <Run Text="{x:Bind Settings.START_COUNT}"/>
+                    <Run Text="{x:Bind Settings.START_COUNT, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Loadings"/>
                     <Run x:Uid="Doppelpunkt"/>
-                    <Run Text="{x:Bind Settings.COUNT_LOADINGS}"/>
+                    <Run Text="{x:Bind Settings.COUNT_LOADINGS, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Savings"/>
                     <Run x:Uid="Doppelpunkt"/>
-                    <Run Text="{x:Bind Settings.COUNT_SAVINGS}"/>
+                    <Run Text="{x:Bind Settings.COUNT_SAVINGS, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Creations"/>
                     <Run x:Uid="Doppelpunkt"/>
-                    <Run Text="{x:Bind Settings.COUNT_CREATIONS}"/>
+                    <Run Text="{x:Bind Settings.COUNT_CREATIONS, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Deletions"/>
                     <Run x:Uid="Doppelpunkt"/>
-                    <Run Text="{x:Bind Settings.COUNT_DELETIONS}"/>
+                    <Run Text="{x:Bind Settings.COUNT_DELETIONS, Mode=OneWay}"/>
                         </TextBlock>
 
                         <TextBlock x:Uid="UI_Optionen_U_Rechtliches"  Style="{StaticResource ueberschrift2}"/>
-                        <TextBlock x:Uid="UI_Optionen_Pegasus"  Style="{StaticResource TextInhaltKlein}"/>
+                        <TextBlock x:Uid="UI_Optionen_Legal"  Style="{StaticResource TextInhaltKlein}"/>
                         <TextBlock x:Uid="UI_Optionen_U_Datenschutz" Style="{StaticResource ueberschrift2}"/>
                         <TextBlock x:Uid="UI_Optionen_Datenschutz"  Style="{StaticResource TextInhaltKlein}"/>
                     </StackPanel>

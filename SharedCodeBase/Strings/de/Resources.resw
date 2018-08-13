@@ -536,8 +536,9 @@
   <data name="UI_Optionen_U_Kontakt.Text" xml:space="preserve">
     <value>Kontakt</value>
   </data>
-  <data name="UI_Optionen_Pegasus.Text" xml:space="preserve">
-    <value>ShadowRun ist eine eingetragene Marke von Pegasus Games</value>
+  <data name="UI_Optionen_Legal.Text" xml:space="preserve">
+    <value>ShadowRun ist eine eingetragene Marke von Pegasus Games.
+Icons von Freepik https://www.flaticon.com sind lizensiert unter der Creative Commons BY 3.0.</value>
   </data>
   <data name="UI_Optionen_U_Infos.Text" xml:space="preserve">
     <value>Informationen</value>
