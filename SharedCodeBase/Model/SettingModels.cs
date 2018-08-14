@@ -373,6 +373,9 @@ namespace ShadowRunHelper
                 var s = new FileInfoClass(!FolderMode ? Place.Extern : (InternRoam ? Place.Roaming : Place.Local), "", (!FolderMode ? externpath : internpath));
                 await SharedIO.CurrentIO.MoveAllFiles(t, s, Constants.LST_FILETYPES_CHAR);
             }
+            catch (IsOKException ex)
+            {
+            }
             catch (Exception ex)
             {
                 AppModel.Instance.NewNotification(StringHelper.GetString("Error_CopyFiles"), ex);
