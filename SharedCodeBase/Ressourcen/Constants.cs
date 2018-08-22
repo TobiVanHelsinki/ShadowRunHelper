@@ -160,7 +160,7 @@ namespace ShadowRunHelper
 #if BETA
             "cea0f814-f9f7-46b1-ba58-760607a60559";
 #elif RELEASE
-            "ef331e8e-b76a-41c1-a93a-a1a9d475b141";
+            "20914a32-ddd2-4d7d-93af-97206a32f332";
 #endif
         #endregion
     }
