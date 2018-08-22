@@ -366,6 +366,15 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        double _LifeStyleCost;
+        [Used_UserAttribute]
+        public double LifeStyleCost
+        {
+            get { return _LifeStyleCost; }
+            set { if (_LifeStyleCost != value) { _LifeStyleCost = value; NotifyPropertyChanged(); } }
+        }
+
+
         DateTimeOffset _BirthDate = new DateTimeOffset(2060, 1, 1, 0, 0, 0, new System.TimeSpan(0));
         [Used_UserAttribute]
         public DateTimeOffset BirthDate

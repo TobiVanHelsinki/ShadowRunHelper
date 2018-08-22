@@ -66,6 +66,14 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_LifeStyleCost" Grid.Column="0" Grid.Row="5"/>
+                <TextBox GotFocus="EditBox_GotFocus" Text="{x:Bind Data.LifeStyleCost, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="5"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
                 <TextBlock Style="{StaticResource EditTextBlock}" x:Uid="Model_Person_Geschlecht" Grid.Column="0" Grid.Row="6"/>
                 <TextBox GotFocus="EditBox_GotFocus" Name=" Geschlecht" Text="{x:Bind Data.Geschlecht, Mode=TwoWay}" Style="{StaticResource EditTextBox}" Grid.Column="1" Grid.Row="6"/>
             </Grid>

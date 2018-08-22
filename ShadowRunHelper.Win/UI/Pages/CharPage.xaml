@@ -42,6 +42,16 @@
                                 <MenuFlyoutItem x:Uid="UI_TxT_CSV_Export" Icon="SaveLocal" Click="Click_UI_TxT_CSV_Cat_Exportport" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                                 <MenuFlyoutItem x:Uid="UI_TxT_OpenFolder" Icon="OpenLocal" Click="Click_OpenFolder" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                                 <MenuFlyoutSeparator/>
+                                <MenuFlyoutItem x:Uid="UI_TxT_SubtractLifeStyleCost" Click="Click_SubtractLifeStyleCost" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}">
+                                    <MenuFlyoutItem.Icon >
+                                        <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x1F4B2;">
+                                            <FontIcon.RenderTransform>
+                                                <ScaleTransform ScaleX="1.74"/>
+                                            </FontIcon.RenderTransform>
+                                        </FontIcon>
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutSeparator/>
                                 <MenuFlyoutItem x:Uid="UI_TxT_CharSettings" Icon="Setting" Click="Click_CharSettings" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                                 <MenuFlyoutItem x:Uid="UI_TxT_Repair" Icon="Repair" Click="Click_Repair" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
                                 <MenuFlyoutItem x:Uid="UI_TxT_Unload" Icon="Delete" Click="Click_Delete" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>

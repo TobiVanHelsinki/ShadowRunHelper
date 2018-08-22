@@ -193,6 +193,11 @@ namespace ShadowRunHelper.UI
             Model.RequestNavigation(ProjectPages.Administration);
             Model.MainObject = null;
         }
+
+        void Click_SubtractLifeStyleCost(object sender, RoutedEventArgs e)
+        {
+            MainObject.SubtractLifeStyleCost();
+        }
         #endregion
         #region Char Settings
         public class GroupInfoList<T> : List<object>
@@ -370,6 +375,7 @@ namespace ShadowRunHelper.UI
             {
             }
         }
+
 
 
 

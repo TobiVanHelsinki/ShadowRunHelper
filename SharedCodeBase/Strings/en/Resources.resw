@@ -1673,4 +1673,10 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="Request_NotSave.Break" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="Model_Person_LifestyleCost.Text" xml:space="preserve">
+    <value>Lifestyle cost</value>
+  </data>
+  <data name="UI_TxT_SubtractLifeStyleCost.Text" xml:space="preserve">
+    <value>Subtract Lifestyle cost</value>
+  </data>
 </root>

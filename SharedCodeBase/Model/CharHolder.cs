@@ -460,6 +460,13 @@ namespace ShadowRunHelper.Model
             IsItemsMove = null;
         }
         #endregion
+        public void SubtractLifeStyleCost()
+        {
+            if (Person != null)
+            {
+                Person.Kontostand -= Person.LifeStyleCost;
+            }
+        }
         public static CharHolder CreateCharWithStandardContent()
         {
             var ret = new CharHolder();
