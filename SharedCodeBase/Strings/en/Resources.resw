@@ -300,7 +300,7 @@ This app can be used to open files and folders on the file system. The app store
     <value>Current Char</value>
   </data>
   <data name="Ui_Nav_Admin.Label" xml:space="preserve">
-    <value>Administrate Chars</value>
+    <value>Administration</value>
   </data>
   <data name="Ui_Nav_Settings.Label" xml:space="preserve">
     <value>Settings</value>
