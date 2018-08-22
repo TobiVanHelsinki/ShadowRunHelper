@@ -16,8 +16,15 @@
     <Import_RootNamespace>ShadowRunHelper</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Example\de.SRHChar" />
-    <Content Include="$(MSBuildThisFileDirectory)ToDo.txt" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Example\en.SRHChar">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Example\de.SRHChar">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)ToDo.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CharController\BerechnetController.cs" />
@@ -81,8 +88,5 @@
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)strings\de\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)strings\en\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Assets\Example\en.SRHChar" />
   </ItemGroup>
 </Project>
