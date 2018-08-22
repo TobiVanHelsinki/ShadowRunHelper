@@ -142,7 +142,7 @@
     <value>Could not delete all</value>
   </data>
   <data name="Notification_Error_DelCurrentFail" xml:space="preserve">
-    <value>Could not delete current char</value>
+    <value>Could not delete current character</value>
   </data>
   <data name="Notification_Error_DelFail" xml:space="preserve">
     <value>Could not delete</value>
@@ -297,7 +297,7 @@ This app can be used to open files and folders on the file system. The app store
     <value>Edit after adding</value>
   </data>
   <data name="Ui_Nav_Char.Label" xml:space="preserve">
-    <value>Current Char</value>
+    <value>Character Sheet</value>
   </data>
   <data name="Ui_Nav_Admin.Label" xml:space="preserve">
     <value>Administration</value>
@@ -1396,7 +1396,7 @@ By default, chars are saved within the app. In the options you can choose whethe
     <value>continue without saving</value>
   </data>
   <data name="Request_NotSave.Text" xml:space="preserve">
-    <value>The current char has unsaved changes</value>
+    <value>The current character has unsaved changes</value>
   </data>
   <data name="Request_NotSave.Title" xml:space="preserve">
     <value>Warning</value>

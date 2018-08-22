@@ -719,7 +719,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Speichern fehlgeschlagen, versuche, den Char zu exportieren und starte die App neu.</value>
   </data>
   <data name="Ui_Nav_Char.Label" xml:space="preserve">
-    <value>Aktueller Char</value>
+    <value>Charakterbogen</value>
   </data>
   <data name="Ui_Nav_Admin.Label" xml:space="preserve">
     <value>Verwaltung</value>
