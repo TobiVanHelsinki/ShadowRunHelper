@@ -1679,4 +1679,7 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="UI_TxT_SubtractLifeStyleCost.Text" xml:space="preserve">
     <value>Subtract Lifestyle cost</value>
   </data>
+  <data name="Tip18" xml:space="preserve">
+    <value>Do you like the App? Give a rating at the Store!</value>
+  </data>
 </root>
