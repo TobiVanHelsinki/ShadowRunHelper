@@ -1513,44 +1513,8 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Notification_NewVersion" xml:space="preserve">
     <value>Willkommen in der neuen Version: {0}. Sieh dir hier eine Liste von Neuerungen an!</value>
   </data>
-  <data name="Notification_NewVersion_1_7_4_0" xml:space="preserve">
-    <value>[new] Kategorieoptionen (Sortieren, Exportieren, ...)
-[new] Technomancer Kategorien
-[new] Eigene Kategorien für berechnete Werte
-[new] Verlinkungen sind jetzt möglich für Attribute und Kampfitems
-[new] Verlinkungen sind jetzt mit jedem Item möglich
-[new] Beispiel Charakter
-[new] Multifenster Option (für Windows April Update)
-[new] Drag and Drop zwischen verschiedenen Fenstern (für Windows April Update)
-[new] TimeLine Integration (für Windows April Update)
-[new] Benachrichtigungen
-[new] kein Neuladen mehr zum Anwenden der Char-Optionen
-[new] viele Tooltips für Buttons hinzugefügt
-[new] komplette englische Übersetzung
-[new] Drag and Drop zwischen Kategorien</value>
-  </data>
   <data name="UI_TxT_Cat_AddSep.Text" xml:space="preserve">
     <value>Seperator hinzufügen</value>
-  </data>
-  <data name="Notification_NewVersion_1_7_6_0" xml:space="preserve">
-    <value>[new] Seperatoren</value>
-  </data>
-  <data name="Notification_NewVersion_1_7_8_0" xml:space="preserve">
-    <value>[new] Kategorieoptionen (Sortieren, Exportieren, ...)
-[new] Technomancer Kategorien
-[new] Eigene Kategorien für berechnete Werte
-[new] Verlinkungen sind jetzt möglich für Attribute und Kampfitems
-[new] Verlinkungen sind jetzt mit jedem Item möglich
-[new] Beispiel Charakter
-[new] Multifenster Option (für Windows April Update)
-[new] Drag and Drop zwischen verschiedenen Fenstern (für Windows April Update)
-[new] TimeLine Integration (für Windows April Update)
-[new] Benachrichtigungen
-[new] kein Neuladen mehr zum Anwenden der Char-Optionen
-[new] viele Tooltips für Buttons hinzugefügt
-[new] komplette englische Übersetzung
-[new] Drag and Drop zwischen Kategorien
-[new] Seperatoren</value>
   </data>
   <data name="UI_Optionen_Debug_Mode.Text" xml:space="preserve">
     <value>Debug Modus</value>
@@ -1624,19 +1588,31 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="UI_TxT_Share.Text" xml:space="preserve">
     <value>Teilen</value>
   </data>
-  <data name="Notification_NewVersion_1_8_3_0" xml:space="preserve">
-    <value>[new] Favoriten
-[new] Kontextmenu
+  <data name="VersionHistory" xml:space="preserve">
+    <value>Version 1.8.4:
+Lebensstilkosten Button
+Version 1.8.3:
+[new] Favoriten
+[new] Kontextmenü
 [new] Copy, Cut und Paste! (Kontextmenu)
-[new] Char-Name in de Taskbar
-
+[new] Char-Name in der Taskbar
+Version 1.7.6:
+[new] Seperatoren
+Version 1.7.4:
 [new] Kategorieoptionen (Sortieren, Exportieren, ...)
+[new] Technomancer Kategorien
 [new] Eigene Kategorien für berechnete Werte
 [new] Verlinkungen sind jetzt möglich für Attribute und Kampfitems
 [new] Verlinkungen sind jetzt mit jedem Item möglich
+[new] Beispiel Charakter
 [new] Multifenster Option (für Windows April Update)
 [new] Drag and Drop zwischen verschiedenen Fenstern (für Windows April Update)
 [new] TimeLine Integration (für Windows April Update)
+[new] Benachrichtigungen
+[new] kein Neuladen mehr zum Anwenden der Char-Optionen
+[new] viele Tooltips für Buttons hinzugefügt
+[new] komplette englische Übersetzung
+[new] Drag and Drop zwischen Kategorien
 </value>
   </data>
   <data name="Tip1" xml:space="preserve">

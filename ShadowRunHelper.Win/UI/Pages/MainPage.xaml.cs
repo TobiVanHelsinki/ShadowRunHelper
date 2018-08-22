@@ -247,9 +247,12 @@ namespace ShadowRunHelper.UI
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
             if (SettingsModel.I.LAST_APP_VERSION != Constants.APP_VERSION_BUILD_DELIM)
             {
+                Model.NewNotification(StringHelper.GetString("VersionHistory"), true, 0);
                 Model.NewNotification(
-                    string.Format(StringHelper.GetString("Notification_NewVersion"), Constants.APP_VERSION_BUILD_DELIM) + "\n\n" +
-                    StringHelper.GetString("Notification_NewVersion_"+ Constants.APP_VERSION_BUILD_DELIM.Replace('.','_')),true,10);
+                    string.Format(
+                        StringHelper.GetString("Notification_NewVersion"),Constants.APP_VERSION_BUILD_DELIM
+                        )
+                    ,true,10);
                 SettingsModel.I.LAST_APP_VERSION = Constants.APP_VERSION_BUILD_DELIM;
             }
             if (AppDataPorter.InProgress)
