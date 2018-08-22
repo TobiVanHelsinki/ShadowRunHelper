@@ -16,7 +16,6 @@
     <Import_RootNamespace>ShadowRunHelper</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Assets\PreDB\de.SRHChar" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Example\de.SRHChar" />
     <Content Include="$(MSBuildThisFileDirectory)ToDo.txt" />
   </ItemGroup>
@@ -82,5 +81,8 @@
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)strings\de\Resources.resw" />
     <PRIResource Include="$(MSBuildThisFileDirectory)strings\en\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Assets\Example\en.SRHChar" />
   </ItemGroup>
 </Project>
