@@ -1484,7 +1484,7 @@ By default, chars are saved within the app. In the options you can choose whethe
   </data>
   <data name="VersionHistory" xml:space="preserve">
     <value>Version 1.8.4:
-Lifestyle cost button
+[new] Lifestyle cost button
 Version 1.8.3:
 [new] Track your favorites
 [new] Contextmenu for Things
