@@ -1,0 +1,1662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Char_View_Pivot_Aktion.Label" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Char_View_Pivot_Item.Label" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="Char_View_Pivot_Kampf.Label" xml:space="preserve">
+    <value>Battle</value>
+  </data>
+  <data name="Char_View_Pivot_Notizen.Label" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Char_View_Pivot_Person.Label" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="Notification_Error_CSVExportFail" xml:space="preserve">
+    <value>CSV Export failed</value>
+  </data>
+  <data name="Notification_Error_CSVImportFail" xml:space="preserve">
+    <value>CVS Import failed</value>
+  </data>
+  <data name="Notification_Error_DelAllFail" xml:space="preserve">
+    <value>Could not delete all</value>
+  </data>
+  <data name="Notification_Error_DelCurrentFail" xml:space="preserve">
+    <value>Could not delete current character</value>
+  </data>
+  <data name="Notification_Error_DelFail" xml:space="preserve">
+    <value>Could not delete</value>
+  </data>
+  <data name="Notification_Error_FileExportFail" xml:space="preserve">
+    <value>Could not export</value>
+  </data>
+  <data name="Notification_Error_FileImportFail" xml:space="preserve">
+    <value>Fileimport failed</value>
+  </data>
+  <data name="Notification_Error_LoadFail" xml:space="preserve">
+    <value>Loading failed</value>
+  </data>
+  <data name="Notification_Error_SaveFail" xml:space="preserve">
+    <value>Error during saving. Try to export your char and restart the App.</value>
+  </data>
+  <data name="Notification_Error_Converter_Error1.Text" xml:space="preserve">
+    <value>could not store</value>
+  </data>
+  <data name="Notification_Error_DisplayRequest.Text" xml:space="preserve">
+    <value>Display can not stay activated</value>
+  </data>
+  <data name="Notification_Error_Loader_Error1.Text" xml:space="preserve">
+    <value>There was an Error during loading you char. More information at the Notifications.</value>
+  </data>
+  <data name="Notification_Error_Unknown" xml:space="preserve">
+    <value>A unknown Error occured. You char was saved with a "Emergency" prefix.</value>
+  </data>
+  <data name="Notification_Error_RepairFail" xml:space="preserve">
+    <value>AutoFix Error</value>
+  </data>
+  <data name="Notification_Error_SummorysREfresh" xml:space="preserve">
+    <value>Error reading folder</value>
+  </data>
+  <data name="Notification_Error_AuswahlToLess" xml:space="preserve">
+    <value>Error: Some linked items were not found</value>
+  </data>
+  <data name="Notification_Error_AllListChooser" xml:space="preserve">
+    <value>Intern Error - AllList was Empty</value>
+  </data>
+  <data name="Notification_Error_Enum" xml:space="preserve">
+    <value>Wrong Enum value</value>
+  </data>
+  <data name="Notification_Error_IO_Deserialize" xml:space="preserve">
+    <value>Reading file failed</value>
+  </data>
+  <data name="Notification_Error_IO_FileVersion" xml:space="preserve">
+    <value>unknown fileversion</value>
+  </data>
+  <data name="Notification_Error_IO_FolderNotFoundOrNotCreated" xml:space="preserve">
+    <value>could not find and create folder</value>
+  </data>
+  <data name="Notification_Error_IO_UserDecision" xml:space="preserve">
+    <value>userdecision was throwing this error</value>
+  </data>
+  <data name="Notification_Info_ConvertFromPrevious" xml:space="preserve">
+    <value>This file is a old version. It will now be converted to the most recent file version. Because of that, it might not be full readable at old versions of the app.</value>
+  </data>
+  <data name="Notification_Error_FileActivation" xml:space="preserve">
+    <value>Error: Could not read file</value>
+  </data>
+  <data name="PreDBChar" xml:space="preserve">
+    <value>Database charakter</value>
+  </data>
+  <data name="of.Text" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="UI_Btn_Bearbeiten.Content" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="UI_Btn_Loeschen.Content" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Alle_Chars_Loeschen.Label" xml:space="preserve">
+    <value>Delete all Chars</value>
+  </data>
+  <data name="UI_Label_LoadChar.Label" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="UI_Label_DeleteChar.Label" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Neu.Label" xml:space="preserve">
+    <value>Create new char</value>
+  </data>
+  <data name="UI_CharVerwaltung_Einleitung1.Text" xml:space="preserve">
+    <value>Current savefiles:</value>
+  </data>
+  <data name="UI_CharVerwaltung_Einleitung2.Text" xml:space="preserve">
+    <value>Available savefiles:</value>
+  </data>
+  <data name="UI_Optionen_AutoSave.Text" xml:space="preserve">
+    <value>Auto-Save current char at changes</value>
+  </data>
+  <data name="UI_Optionen_LoadOnStart.Text" xml:space="preserve">
+    <value>Load last used char at App start</value>
+  </data>
+  <data name="UI_Char_Schaden.Text" xml:space="preserve">
+    <value>Damage:</value>
+  </data>
+  <data name="UI_Optionen_Inhaber.Text" xml:space="preserve">
+    <value>App owener</value>
+  </data>
+  <data name="UI_Optionen_U_Kontakt.Text" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="UI_Optionen_Legal.Text" xml:space="preserve">
+    <value>ShadowRun is a registered trademark of Pegasus Games.
+Icons made by Freepik https://www.flaticon.com are licensed by Creative Commons BY 3.0.</value>
+  </data>
+  <data name="UI_Optionen_U_Infos.Text" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="UI_Optionen_U_Einstellungen.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="UI_Optionen_U_Hilfe.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="UI_Optionen_U_Rechtliches.Text" xml:space="preserve">
+    <value>Legal</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode.OffText" xml:space="preserve">
+    <value>Intern Save</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode.OnText" xml:space="preserve">
+    <value>Extern Save</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode.Text" xml:space="preserve">
+    <value>Save at folder</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode_Pfad.Text" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="UI_Optionen_Bewerten.Text" xml:space="preserve">
+    <value>Rate this App at the Store</value>
+  </data>
+  <data name="UI_Optionen_Datenschutz.Text" xml:space="preserve">
+    <value>This app does not collect any personal information and therefore does not disclose it.
+This app can be used to open files and folders on the file system. The app stores those folders and files only for later use. All files remain on the file system or Microsoft account.</value>
+  </data>
+  <data name="UI_Optionen_KontaktBtn.Content" xml:space="preserve">
+    <value>write email</value>
+  </data>
+  <data name="UI_Optionen_U_Datenschutz.Text" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="UI_Optionen_Toggle.OffContent" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="UI_Optionen_EditAfterAdd.Text" xml:space="preserve">
+    <value>Edit after adding</value>
+  </data>
+  <data name="Ui_Nav_Char.Label" xml:space="preserve">
+    <value>Character Sheet</value>
+  </data>
+  <data name="Ui_Nav_Admin.Label" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="Ui_Nav_Settings.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="UI_Optionen_DisplayRequest.Text" xml:space="preserve">
+    <value>Hold Char Page active</value>
+  </data>
+  <data name="UI_TxT_Repair.Text" xml:space="preserve">
+    <value>Auto-Fix</value>
+  </data>
+  <data name="UI_Optionen_FileNameUseDate.Text" xml:space="preserve">
+    <value>Add date and time to filename</value>
+  </data>
+  <data name="UI_Optionen_FileNameUseProgres.Text" xml:space="preserve">
+    <value>Add progress to filename</value>
+  </data>
+  <data name="UI_Optionen_Kontakt_Mail.Text" xml:space="preserve">
+    <value>email</value>
+  </data>
+  <data name="UI_Optionen_U_Notifications.Text" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="UI_Optionen_ThrownException.Text" xml:space="preserve">
+    <value>Original Exception</value>
+  </data>
+  <data name="UI_Optionen_Intern_Sync.Text" xml:space="preserve">
+    <value>sync intern files</value>
+  </data>
+  <data name="UI_Optionen_Beta_Features.Text" xml:space="preserve">
+    <value>Activate Beta-Features</value>
+  </data>
+  <data name="UI_Optionen_App.Text" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="UI_Optionen_AppLinkBtn.Content" xml:space="preserve">
+    <value>Open Storeentry for this App</value>
+  </data>
+  <data name="UI_Optionen_MoreAppsBtn.Content" xml:space="preserve">
+    <value>more of my apps</value>
+  </data>
+  <data name="UI_Optionen_RateBtn.Content" xml:space="preserve">
+    <value>Rate this App</value>
+  </data>
+  <data name="UI_Optionen_DisplayRequest.Tip" xml:space="preserve">
+    <value>Prevent the Screen from locking</value>
+  </data>
+  <data name="UI_Optionen_Intern_Sync.Tip" xml:space="preserve">
+    <value>This will synchronize the files you have stored internally over all your Windows 10 devices. Synchronization occurs only if you have enabled the general sync option in WIndows and both devices have sufficient power and a Internetconnection.</value>
+  </data>
+  <data name="UI_Optionen_Ordnermode.Tip" xml:space="preserve">
+    <value>Select a Exernen storage folder.</value>
+  </data>
+  <data name="UI_Optionen_U_Einstellungen_Tip.Text" xml:space="preserve">
+    <value>Hold the mouse or finger on a ? to get more information.</value>
+  </data>
+  <data name="UI_Optionen_AutoSaveInterval.Text" xml:space="preserve">
+    <value>Watingtime for changes in seconds</value>
+  </data>
+  <data name="UI_Optionen_AutoSave.Tip" xml:space="preserve">
+    <value>After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. A value between 2 and 10 seconds is okay.</value>
+  </data>
+  <data name="UI_CharVerwaltung_E_FileDate.Text" xml:space="preserve">
+    <value>modification date</value>
+  </data>
+  <data name="UI_CharVerwaltung_E_FileName.Text" xml:space="preserve">
+    <value>file name</value>
+  </data>
+  <data name="UI_CharVerwaltung_E_FileSize.Text" xml:space="preserve">
+    <value>file size</value>
+  </data>
+  <data name="UI_CharVerwaltung_Intern_Save_Display_String" xml:space="preserve">
+    <value>Save Intern</value>
+  </data>
+  <data name="UI_Optionen_U_Statistics.Text" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="UI_Statistics_AppStart.Text" xml:space="preserve">
+    <value>Number of appstarts</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Create_ExampleChar.Label" xml:space="preserve">
+    <value>Create Example Char</value>
+  </data>
+  <data name="UI_Statistics_Creations.Text" xml:space="preserve">
+    <value>Number of new chars</value>
+  </data>
+  <data name="UI_Statistics_Deletions.Text" xml:space="preserve">
+    <value>Number of deleted chars</value>
+  </data>
+  <data name="UI_Statistics_Loadings.Text" xml:space="preserve">
+    <value>Number of loaded chars</value>
+  </data>
+  <data name="UI_Statistics_Savings.Text" xml:space="preserve">
+    <value>Number of saved chars</value>
+  </data>
+  <data name="Ui_DB_Finish.Label" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Ui_DB_FinishClose.Label" xml:space="preserve">
+    <value>Copy and Exit</value>
+  </data>
+  <data name="Ui_DB_Help.Label" xml:space="preserve">
+    <value>Help on/off</value>
+  </data>
+  <data name="UI_TxT_SaveAtCurrentPlace.Text" xml:space="preserve">
+    <value>Save at current Folder</value>
+  </data>
+  <data name="UI_Optionen_TutorialMainShown.Text" xml:space="preserve">
+    <value>Read "Char Administration" Guide</value>
+  </data>
+  <data name="Tut_TitleState_00" xml:space="preserve">
+    <value>App introduction</value>
+  </data>
+  <data name="Tut_State_01" xml:space="preserve">
+    <value>Welcome to ShadowRunHelper!
+
+This tutorial will explain the essential elements of the app.
+
+If the tutorial covers the whole screen (on small displays) you can make it transparent through the eye-button.</value>
+  </data>
+  <data name="Tut_State_02" xml:space="preserve">
+    <value>The main navigation. These 3 buttons are always visible. Switch with them between 
+    1. the current character sheet 
+    2. the list of all character sheets 
+    3. settings, imprint, help</value>
+  </data>
+  <data name="Tut_State_04" xml:space="preserve">
+    <value>That's it with the tutorial. You can create a new character, but it's better to look at the example character first.</value>
+  </data>
+  <data name="Tut_State_03" xml:space="preserve">
+    <value>In the current view you manage all saved character sheets.
+
+The red highlighted list shows all your saved characters. 
+By default, chars are saved within the app. In the options you can choose whether they should be synchronized via your account. You can also choose a different folder as the location.</value>
+  </data>
+  <data name="GlobalFilterBox.PlaceholderText" xml:space="preserve">
+    <value>Search for Name and Type ...</value>
+  </data>
+  <data name="EditDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="ExampleChar" xml:space="preserve">
+    <value>Example Char</value>
+  </data>
+  <data name="Model_Attribut_.Text" xml:space="preserve">
+    <value>Attribut</value>
+  </data>
+  <data name="Model_AttributM_.Text" xml:space="preserve">
+    <value>Attributs</value>
+  </data>
+  <data name="Model__Kapazitaet.Text" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+  <data name="Model_Attribut_Charisma.Text" xml:space="preserve">
+    <value>Charisma</value>
+  </data>
+  <data name="Model_Berechnet_Essenz.Text" xml:space="preserve">
+    <value>Essence</value>
+  </data>
+  <data name="Model_Attribut_Intuition.Text" xml:space="preserve">
+    <value>Intuition</value>
+  </data>
+  <data name="Model_Attribut_Konsti.Text" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="Model_Berechnet_Limit_G.Text" xml:space="preserve">
+    <value>Mental Limit</value>
+  </data>
+  <data name="Model_Berechnet_Limit_K.Text" xml:space="preserve">
+    <value>Physical Limit</value>
+  </data>
+  <data name="Model_Berechnet_Limit_S.Text" xml:space="preserve">
+    <value>Social Limit</value>
+  </data>
+  <data name="Model_Attribut_Logik.Text" xml:space="preserve">
+    <value>Logic</value>
+  </data>
+  <data name="Model_Attribut_Reaktion.Text" xml:space="preserve">
+    <value>Reaction</value>
+  </data>
+  <data name="Model_Attribut_Staerke.Text" xml:space="preserve">
+    <value>Strength</value>
+  </data>
+  <data name="Model_Attribut_Willen.Text" xml:space="preserve">
+    <value>Willpower</value>
+  </data>
+  <data name="Model_Attribut_Geschick.Text" xml:space="preserve">
+    <value>Agility</value>
+  </data>
+  <data name="Model_Attribut_Magie.Text" xml:space="preserve">
+    <value>Magic</value>
+  </data>
+  <data name="Model_AdeptenkraftM_.Text" xml:space="preserve">
+    <value>Adept Powers</value>
+  </data>
+  <data name="Model_Adeptenkraft_.Text" xml:space="preserve">
+    <value>Adept Power</value>
+  </data>
+  <data name="Model_Adeptenkraft_Option.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Model_Attribut_Resonanz.Text" xml:space="preserve">
+    <value>Resonance</value>
+  </data>
+  <data name="Model__Pool.Text" xml:space="preserve">
+    <value>Pool</value>
+  </data>
+  <data name="Model_Connection_.Text" xml:space="preserve">
+    <value>Contact</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_CyberDeckM_.Text" xml:space="preserve">
+    <value>CyberDecks</value>
+  </data>
+  <data name="Model_CyberDeck_.Text" xml:space="preserve">
+    <value>CyberDeck</value>
+  </data>
+  <data name="Model_CyberDeck_Angriff.Text" xml:space="preserve">
+    <value>Attack</value>
+  </data>
+  <data name="Model_CyberDeck_Schleicher.Text" xml:space="preserve">
+    <value>Sleaze</value>
+  </data>
+  <data name="Model_CyberDeck_Angriff_o.Text" xml:space="preserve">
+    <value>Attack Original</value>
+  </data>
+  <data name="Model_CyberDeck_Datenverarbeitung_o.Text" xml:space="preserve">
+    <value>Dataprocessing original</value>
+  </data>
+  <data name="Model_CyberDeck_Firewall_o.Text" xml:space="preserve">
+    <value>Firewall original</value>
+  </data>
+  <data name="Model_CyberDeck_Schleicher_o.Text" xml:space="preserve">
+    <value>Sleaze original</value>
+  </data>
+  <data name="Model_CyberDeck__Aktiv.Text" xml:space="preserve">
+    <value>Active Deck</value>
+  </data>
+  <data name="Model_Fernkampfwaffe__Aktiv.Text" xml:space="preserve">
+    <value>Active Ranged Weappon</value>
+  </data>
+  <data name="Model_Handlung_.Text" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Model_HandlungM_.Text" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Model_KommlinkM_.Text" xml:space="preserve">
+    <value>Commlinks</value>
+  </data>
+  <data name="Model_Kommlink_.Text" xml:space="preserve">
+    <value>Commlink</value>
+  </data>
+  <data name="Model_Kommlink_Datenverarbeitung.Text" xml:space="preserve">
+    <value>Data Processing</value>
+  </data>
+  <data name="Model_Kommlink_Firewall.Text" xml:space="preserve">
+    <value>Firewall</value>
+  </data>
+  <data name="Model_Person_InitiativeAktuell.Text" xml:space="preserve">
+    <value>Current initiative</value>
+  </data>
+  <data name="Model_Person_Karma.Text" xml:space="preserve">
+    <value>Karma</value>
+  </data>
+  <data name="Model_Person_Karma_Aktuell.Text" xml:space="preserve">
+    <value>Karma Current</value>
+  </data>
+  <data name="Model_Person_Karma_Gesamt.Text" xml:space="preserve">
+    <value>Karma total</value>
+  </data>
+  <data name="Model_Person_Initiative.Text" xml:space="preserve">
+    <value>Initiative </value>
+  </data>
+  <data name="Model_Kommlink__Aktiv.Text" xml:space="preserve">
+    <value>Active Commlink</value>
+  </data>
+  <data name="Model_Person_Initiative_Kurz.Text" xml:space="preserve">
+    <value>Ini</value>
+  </data>
+  <data name="KlammerAufEck.Text" xml:space="preserve">
+    <value>[</value>
+  </data>
+  <data name="KlammerZuEck.Text" xml:space="preserve">
+    <value>]</value>
+  </data>
+  <data name="Model_Thing_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_ConnectionM_.Text" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="Model_Connection_Loyal.Text" xml:space="preserve">
+    <value>Loyalty</value>
+  </data>
+  <data name="Model_FernkampfwaffeM_.Text" xml:space="preserve">
+    <value>Ranged Weapons</value>
+    <comment>Mehrzahl</comment>
+  </data>
+  <data name="Model_Fernkampfwaffe_.Text" xml:space="preserve">
+    <value>Ranged Weapon</value>
+    <comment>Einzahl</comment>
+  </data>
+  <data name="Model_FernKampfwaffe_Modi.Text" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="Model_Fernkampfwaffe_RK.Text" xml:space="preserve">
+    <value>RC</value>
+  </data>
+  <data name="Model_Fertigkeit_.Text" xml:space="preserve">
+    <value>Skill</value>
+  </data>
+  <data name="Model_FertigkeitM_.Text" xml:space="preserve">
+    <value>Skills</value>
+  </data>
+  <data name="Model_Eigenschaften_Auswirkung.Text" xml:space="preserve">
+    <value>Effects</value>
+  </data>
+  <data name="Bindestrich.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="Model_Connection_Einfluss.Text" xml:space="preserve">
+    <value>Connection</value>
+  </data>
+  <data name="Model_Eigenschaft_Auswirkungen.Text" xml:space="preserve">
+    <value>Effect</value>
+  </data>
+  <data name="Klammer_Rund_Auf.Text" xml:space="preserve">
+    <value>(</value>
+  </data>
+  <data name="Klammer_Rund_Zu.Text" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="Doppelpunkt.Text" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="Model_FokiM_.Text" xml:space="preserve">
+    <value>Foci</value>
+  </data>
+  <data name="Model_Foki_.Text" xml:space="preserve">
+    <value>Foci</value>
+  </data>
+  <data name="Model_GeistM_.Text" xml:space="preserve">
+    <value>Spirits</value>
+  </data>
+  <data name="Model_Geist_.Text" xml:space="preserve">
+    <value>Spirit</value>
+  </data>
+  <data name="Model_Geist_Geb_Reg.Text" xml:space="preserve">
+    <value>Bound</value>
+  </data>
+  <data name="KlammerAufRund.Text" xml:space="preserve">
+    <value>(</value>
+  </data>
+  <data name="KlammerZuRund.Text" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="Komma.Text" xml:space="preserve">
+    <value>,</value>
+  </data>
+  <data name="Ampersant.Text" xml:space="preserve">
+    <value>&amp;</value>
+  </data>
+  <data name="Model_Handlung_Grenze.Text" xml:space="preserve">
+    <value>Limit:</value>
+  </data>
+  <data name="Model_Handlung_Mod.Text" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="Model_Handlung_Zusammensetzung.Text" xml:space="preserve">
+    <value>Dices:</value>
+  </data>
+  <data name="Model_ItemM_.Text" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="Model_Item_.Text" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="Model_Item_Aktiv.Text" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Model_Item_Anzahl.Text" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Model_Item_Besitz.Text" xml:space="preserve">
+    <value>Owned</value>
+  </data>
+  <data name="Model_Implantat_.Text" xml:space="preserve">
+    <value>Augmentation</value>
+  </data>
+  <data name="Model_ImplantatM_.Text" xml:space="preserve">
+    <value>Augmentations</value>
+  </data>
+  <data name="Model_Implantat_Essenz.Text" xml:space="preserve">
+    <value>Essence</value>
+  </data>
+  <data name="Model_Handlung_Gegen.Text" xml:space="preserve">
+    <value>Defend dices:</value>
+  </data>
+  <data name="Model_Implantat_Kapazitaet.Text" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+  <data name="Model_Geist_Dienste.Text" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="Model_Implantat_Auswirkung.Text" xml:space="preserve">
+    <value>Effects</value>
+  </data>
+  <data name="Model_Kommlink_Attribute.Text" xml:space="preserve">
+    <value>Attributes</value>
+  </data>
+  <data name="Model_Kommlink_Programmanzahl.Text" xml:space="preserve">
+    <value>Programms</value>
+  </data>
+  <data name="Model_NahkampfwaffeM_.Text" xml:space="preserve">
+    <value>Melee Weapons</value>
+  </data>
+  <data name="Model_Nahkampfwaffe_.Text" xml:space="preserve">
+    <value>Melee Weapon</value>
+  </data>
+  <data name="Model_Nahkampfwaffe_Reichweite.Text" xml:space="preserve">
+    <value>Reach</value>
+  </data>
+  <data name="Model_Thing_Notiz.Text" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="Model_Panzerung_.Text" xml:space="preserve">
+    <value>Armor</value>
+  </data>
+  <data name="Model_PanzerungM_.Text" xml:space="preserve">
+    <value>Armors</value>
+  </data>
+  <data name="Model_Programm_.Text" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="Model_ProgrammM_.Text" xml:space="preserve">
+    <value>Programs</value>
+  </data>
+  <data name="Model_Programm_Optionen.Text" xml:space="preserve">
+    <value>Effects</value>
+  </data>
+  <data name="Model_Thing_Typ.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Model_Thing_Zusatz.Text" xml:space="preserve">
+    <value>Addition</value>
+  </data>
+  <data name="Model_Person_Edge.Text" xml:space="preserve">
+    <value>Edge</value>
+  </data>
+  <data name="Model_Person_Essenz.Text" xml:space="preserve">
+    <value>Essence mod</value>
+  </data>
+  <data name="Model_Person_Kontostand.Text" xml:space="preserve">
+    <value>Bank balance</value>
+  </data>
+  <data name="Model_NachteilM_.Text" xml:space="preserve">
+    <value>Disadvantages</value>
+  </data>
+  <data name="Model_Nachteil_.Text" xml:space="preserve">
+    <value>Disadvantage</value>
+  </data>
+  <data name="Model_Person_.Text" xml:space="preserve">
+    <value>Personal data</value>
+  </data>
+  <data name="Model_Person_Alias.Text" xml:space="preserve">
+    <value>Alias</value>
+  </data>
+  <data name="Model_Person_Beschreibung_.Text" xml:space="preserve">
+    <value>Personal description</value>
+  </data>
+  <data name="Model_Person_Notizen.Text" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Model_SINM_.Text" xml:space="preserve">
+    <value>SINs</value>
+  </data>
+  <data name="Model_SIN_.Text" xml:space="preserve">
+    <value>SIN</value>
+  </data>
+  <data name="Model_Kommlink_Attribute_o.Text" xml:space="preserve">
+    <value>Attributes</value>
+  </data>
+  <data name="Model_Person_Char_Typ.Text" xml:space="preserve">
+    <value>Char Type</value>
+  </data>
+  <data name="Model_Person_Runs.Text" xml:space="preserve">
+    <value>Runs</value>
+  </data>
+  <data name="Model_Person_Lebensstil.Text" xml:space="preserve">
+    <value>Lifestyle</value>
+  </data>
+  <data name="Model_Person_Geburtsdatum.Text" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="Model_Person_Geschlecht.Text" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="Model_Person_Groesse.Text" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="Model_Person_Gewicht.Text" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="Model_Person_Augenfarbe.Text" xml:space="preserve">
+    <value>Eyecolour</value>
+  </data>
+  <data name="Model_Person_Haarfarbe.Text" xml:space="preserve">
+    <value>Haircolor</value>
+  </data>
+  <data name="Model_Person_Hautfarbe.Text" xml:space="preserve">
+    <value>Skincolor</value>
+  </data>
+  <data name="Model_Person_Zusammenfassung.Text" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="Model_Person_Edge_Aktuell.Text" xml:space="preserve">
+    <value>Edge current</value>
+  </data>
+  <data name="Model_Person_Edge_Gesamt.Text" xml:space="preserve">
+    <value>Edge everall</value>
+  </data>
+  <data name="Model_Person_Schaden_K.Text" xml:space="preserve">
+    <value>Physical Damage </value>
+  </data>
+  <data name="Model_Person_Schaden_K_max.Text" xml:space="preserve">
+    <value>Physical Damage Maximum</value>
+  </data>
+  <data name="Model_Person_Schaden_G.Text" xml:space="preserve">
+    <value>Mental Damage</value>
+  </data>
+  <data name="Model_Person_Schaden_G_max.Text" xml:space="preserve">
+    <value>Mental Damage Maximum</value>
+  </data>
+  <data name="Model_Munition_.Text" xml:space="preserve">
+    <value>Munition</value>
+  </data>
+  <data name="Model_MunitionM_.Text" xml:space="preserve">
+    <value>Munitions</value>
+  </data>
+  <data name="Model_Thing_Wert.Text" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="Model_Thing_ThingTyp.Text" xml:space="preserve">
+    <value>ThingType</value>
+  </data>
+  <data name="Model_Panzerung_Kapazitaet.Text" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+  <data name="Model_Nahkampfwaffe__Aktiv.Text" xml:space="preserve">
+    <value>Active Melee Weapon</value>
+  </data>
+  <data name="Model_Panzerung__Aktiv.Text" xml:space="preserve">
+    <value>Active Armor</value>
+  </data>
+  <data name="Model_Kommlink_Schaden.Text" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="Model_Kommlink_SchadenMax.Text" xml:space="preserve">
+    <value>Condition Limit</value>
+  </data>
+  <data name="Model_Thing_Wert_W.Text" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Model_Person_Geburtstag.Text" xml:space="preserve">
+    <value>Birthday</value>
+  </data>
+  <data name="Model_Stroemung_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Tradition_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Person_Alias_STD.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Person_SchlechterRuf.Text" xml:space="preserve">
+    <value>Bad reputation</value>
+  </data>
+  <data name="Model_Person_Strassenruf.Text" xml:space="preserve">
+    <value>Street Cred</value>
+  </data>
+  <data name="Model_Person_StrassenrufMod.Text" xml:space="preserve">
+    <value>Street Cred mod</value>
+  </data>
+  <data name="Model_Vehikel_.Text" xml:space="preserve">
+    <value>Vehicle</value>
+  </data>
+  <data name="Model_VehikelM_.Text" xml:space="preserve">
+    <value>Vehicles</value>
+  </data>
+  <data name="Model_Vehikel_Beschleunigung.Text" xml:space="preserve">
+    <value>Acceleration</value>
+  </data>
+  <data name="Model_Vehikel_Geschwindigkeit.Text" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="Model_Vehikel_Gewicht.Text" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="Model_Vehikel_Handling.Text" xml:space="preserve">
+    <value>Handling</value>
+  </data>
+  <data name="Model_Vehikel_Panzerung.Text" xml:space="preserve">
+    <value>Armor</value>
+  </data>
+  <data name="Model_Vehikel_Pilot.Text" xml:space="preserve">
+    <value>Pilot</value>
+  </data>
+  <data name="Model_Vehikel_Rumpf.Text" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="Model_Vehikel_Sensor.Text" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="Model_Vehikel_Sitze.Text" xml:space="preserve">
+    <value>Seats</value>
+  </data>
+  <data name="Plus.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="Slash.Text" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="Model_Waffe_SchadenTyp.Text" xml:space="preserve">
+    <value>Damage type (M/P)</value>
+  </data>
+  <data name="Model_Waffe_Praezision.Text" xml:space="preserve">
+    <value>Precision</value>
+  </data>
+  <data name="Model_Vehikel__Aktiv.Text" xml:space="preserve">
+    <value>Active vehicle</value>
+  </data>
+  <data name="Model_Waffe_Wert.Text" xml:space="preserve">
+    <value>Damage</value>
+  </data>
+  <data name="Model_ZauberspruecheM_.Text" xml:space="preserve">
+    <value>Spells</value>
+  </data>
+  <data name="Model_Zaubersprueche_.Text" xml:space="preserve">
+    <value>Spell</value>
+  </data>
+  <data name="Model_Zaubersprueche_Dauer.Text" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Model_Zaubersprueche_Reichweite.Text" xml:space="preserve">
+    <value>Range</value>
+  </data>
+  <data name="Model_Vehikel_Wert.Text" xml:space="preserve">
+    <value>Damage</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Datei_Import.Label" xml:space="preserve">
+    <value>Char Import</value>
+  </data>
+  <data name="UI_Label_File_Export.Label" xml:space="preserve">
+    <value>Char Export</value>
+  </data>
+  <data name="UI_Char_Schaden_Geist.Text" xml:space="preserve">
+    <value>Mental</value>
+  </data>
+  <data name="UI_Char_Schaden_Koerper.Text" xml:space="preserve">
+    <value>Physical</value>
+  </data>
+  <data name="UI_Char_Schaden_Matrix.Text" xml:space="preserve">
+    <value>Matrix</value>
+  </data>
+  <data name="UI_Label_CSV_Export.Label" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_CSV_Import.Label" xml:space="preserve">
+    <value>CSV Import</value>
+  </data>
+  <data name="Help1_ActiveItems" xml:space="preserve">
+    <value>Active Items</value>
+  </data>
+  <data name="Help2_AutoCalc" xml:space="preserve">
+    <value>Automatic calculations</value>
+  </data>
+  <data name="Help3_LinkedItems" xml:space="preserve">
+    <value>Linked entries</value>
+  </data>
+  <data name="Help4_CharAdministration" xml:space="preserve">
+    <value>Char administration</value>
+  </data>
+  <data name="Help5_CharAdministration_FileName" xml:space="preserve">
+    <value>Char administration - Filenames</value>
+  </data>
+  <data name="HelpDBIntro.Text" xml:space="preserve">
+    <value>In this database you will find predefined entries. Click on an entry to select it. With the commands below you can then apply this selection to your current character. If you already have an entry with the same name in the same category, your entry will not be overwritten. For database entries with links to other entries, the system tries to link your entries. If this fails, the linked entry is also copied.</value>
+  </data>
+  <data name="Help1" xml:space="preserve">
+    <value>Items (e. g. weapons, CyberDecks, normal items) can be "active". This means that they are taken into automatic calculations. For example, the limit value  of an "shooting"-action can be linked to the precision of the active weapon. If the active weapon is changed, the dependent values change automatically.</value>
+  </data>
+  <data name="Help2" xml:space="preserve">
+    <value>Some default values are updated automatically. Essence begins at 6, from which all the values of the essence entered in augmentation are deducted. Under "Person" there is an "Essence Mod" field. The value there is added to the calculated value. So if you make out with vampires, you will probably enter a negative value in this field.</value>
+  </data>
+  <data name="Help3" xml:space="preserve">
+    <value>For actions and skills, all other things can be linked. In this way, your dice pool can be automatically calculated from other values. If the linked values change, dependent values change automatically. Categories such as weapons, armour, vehicles, comlinks and decks cannot be selected individually, but each property can be selected individually. See "Active Items".</value>
+  </data>
+  <data name="Help4" xml:space="preserve">
+    <value>With this app you can manage several ShadowRun Chars. All stored chars are displayed in the list. This list is usually an internal folder, but you can choose any folder. In the options there are different settings for this.</value>
+  </data>
+  <data name="Help5" xml:space="preserve">
+    <value>There are two options for saving a char. By default, the file name is used to store the char. If the option "Progress" is selected, the filename will contain the number of runs and karma - so a versioning is possible. In addition, the "Time" option can be used to add the exact time to the filename.</value>
+  </data>
+  <data name="Model_Person_MetaTyp.Text" xml:space="preserve">
+    <value>Metatype</value>
+  </data>
+  <data name="Model_Person_MetaTyp_sub.Text" xml:space="preserve">
+    <value>Metasubtype</value>
+  </data>
+  <data name="Model_Person_Prominenz.Text" xml:space="preserve">
+    <value>Public Awareness</value>
+  </data>
+  <data name="Model_Waffe_DK.Text" xml:space="preserve">
+    <value>AP</value>
+  </data>
+  <data name="Model_VorteilM_.Text" xml:space="preserve">
+    <value>Advantages</value>
+  </data>
+  <data name="Model_Vorteil_.Text" xml:space="preserve">
+    <value>Advantage</value>
+  </data>
+  <data name="Model_Zaubersprueche_Entzug.Text" xml:space="preserve">
+    <value>Drain</value>
+  </data>
+  <data name="Model_Stroemung_Paragon.Text" xml:space="preserve">
+    <value>Paragon</value>
+  </data>
+  <data name="Model_Stroemung_Wert.Text" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="Model_Tradition_Wert.Text" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="Model_StroemungM_.Text" xml:space="preserve">
+    <value>Submersions</value>
+  </data>
+  <data name="Model_Stroemung_.Text" xml:space="preserve">
+    <value>Submersion</value>
+  </data>
+  <data name="Model_Stroemung_Echos.Text" xml:space="preserve">
+    <value>Echoes</value>
+  </data>
+  <data name="Model_TraditionM_.Text" xml:space="preserve">
+    <value>Traditions</value>
+  </data>
+  <data name="Model_Tradition_.Text" xml:space="preserve">
+    <value>Tradition</value>
+  </data>
+  <data name="Model_Tradition_Metamagie.Text" xml:space="preserve">
+    <value>Metamagic</value>
+  </data>
+  <data name="Model_Tradition_Schutzpatron.Text" xml:space="preserve">
+    <value>Totem</value>
+  </data>
+  <data name="AuswahlDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="AuswahlDialog.Title" xml:space="preserve">
+    <value>selection</value>
+  </data>
+  <data name="Request_Delete.No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Request_Delete.Text" xml:space="preserve">
+    <value>Really delete?</value>
+  </data>
+  <data name="Request_Delete.Title" xml:space="preserve">
+    <value>request</value>
+  </data>
+  <data name="Request_Delete.Yes" xml:space="preserve">
+    <value>Really delete!</value>
+  </data>
+  <data name="Request_DeleteAll.No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Request_DeleteAll.Text" xml:space="preserve">
+    <value>This will destroy the existence of... EVERYONE!, Chummer! Are you sure you want to do this?</value>
+  </data>
+  <data name="Request_DeleteAll.Title" xml:space="preserve">
+    <value>request</value>
+  </data>
+  <data name="Request_DeleteAll.Yes" xml:space="preserve">
+    <value>Really delete!</value>
+  </data>
+  <data name="Ui_DB_Nav.Label" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="UI_Char_Btn_Speichern.Label" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="UI_Label_Rename.Label" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="UI_TxT_CSV_Cat_Export.Text" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="UI_TxT_SaveExtern.Text" xml:space="preserve">
+    <value>Save at extern Folder</value>
+  </data>
+  <data name="Model_BerechnetM_.Text" xml:space="preserve">
+    <value>Calculated values</value>
+  </data>
+  <data name="Model_Berechnet_.Text" xml:space="preserve">
+    <value>Calculated value</value>
+  </data>
+  <data name="Model_Berechnet_Laufen.Text" xml:space="preserve">
+    <value>Walk</value>
+  </data>
+  <data name="Model_Berechnet_Rennen.Text" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="Model_Berechnet_Tragen.Text" xml:space="preserve">
+    <value>Carrie</value>
+  </data>
+  <data name="UI_Optionen_U_CharPageConfig.Text" xml:space="preserve">
+    <value>Choose categories</value>
+  </data>
+  <data name="UI_Settings_Btn_Speichern.Content" xml:space="preserve">
+    <value>Reload to see changes</value>
+  </data>
+  <data name="UI_CNT_Reset.Content" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
+    <value>This Fileversion is outdated. If you want to upgrade this char, please contact support.</value>
+  </data>
+  <data name="UI_TxT_CSV_Cat_Import.Text" xml:space="preserve">
+    <value>CSV Import</value>
+  </data>
+  <data name="UI_TxT_Cat_Truncate.Text" xml:space="preserve">
+    <value>truncate category</value>
+  </data>
+  <data name="FurtherSettings.Text" xml:space="preserve">
+    <value>more</value>
+  </data>
+  <data name="Notification_Error_LogicFail" xml:space="preserve">
+    <value>Programlogic-error</value>
+  </data>
+  <data name="UI_TxT_CSV_Cat_Export_Selected.Text" xml:space="preserve">
+    <value>CSV Export (just selected)</value>
+  </data>
+  <data name="Error_GetFolder" xml:space="preserve">
+    <value>Error, couldn't get folder.</value>
+  </data>
+  <data name="Char_View_Pivot_Settings.Label" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Error_RepairLinkList" xml:space="preserve">
+    <value>Could not restore link item: {0} </value>
+  </data>
+  <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">
+    <value>Saving not possible, an other operation is in progress</value>
+  </data>
+  <data name="Order.Text" xml:space="preserve">
+    <value>order item</value>
+  </data>
+  <data name="UI_TxT_Cat_Order_ABC.Text" xml:space="preserve">
+    <value>alphabeticly</value>
+  </data>
+  <data name="UI_TxT_Cat_Order_Orig.Text" xml:space="preserve">
+    <value>Load saved order</value>
+  </data>
+  <data name="UI_TxT_Cat_Order_Save.Text" xml:space="preserve">
+    <value>Save current order</value>
+  </data>
+  <data name="UI_TxT_Cat_Order_Type.Text" xml:space="preserve">
+    <value>after "type"</value>
+  </data>
+  <data name="Model_KomplexeFormM_.Text" xml:space="preserve">
+    <value>Complex Forms</value>
+  </data>
+  <data name="Model_KomplexeForm_.Text" xml:space="preserve">
+    <value>Complex Form</value>
+  </data>
+  <data name="Model_KomplexeForm_Option.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="Model_WidgetsM_.Text" xml:space="preserve">
+    <value>Widgets</value>
+  </data>
+  <data name="Model_Widgets_.Text" xml:space="preserve">
+    <value>Widget</value>
+  </data>
+  <data name="Model_SpriteM_.Text" xml:space="preserve">
+    <value>Sprites</value>
+  </data>
+  <data name="Model_Sprite_.Text" xml:space="preserve">
+    <value>Sprite</value>
+  </data>
+  <data name="Model_Sprite_Dienste.Text" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="Model_Sprite_Geb_Reg.Text" xml:space="preserve">
+    <value>Registered</value>
+  </data>
+  <data name="Model_WandlungM_.Text" xml:space="preserve">
+    <value>Submersions</value>
+  </data>
+  <data name="Model_Wandlung_.Text" xml:space="preserve">
+    <value>Submersion</value>
+  </data>
+  <data name="Model_Wandlung_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Wandlung_Echos.Text" xml:space="preserve">
+    <value>Echos</value>
+  </data>
+  <data name="Model_Wandlung_Paragon.Text" xml:space="preserve">
+    <value>Paragon</value>
+  </data>
+  <data name="Model_Wandlung_Wert.Text" xml:space="preserve">
+    <value>Grad</value>
+  </data>
+  <data name="Model_InitiationM_.Text" xml:space="preserve">
+    <value>Initiationen</value>
+  </data>
+  <data name="Model_Initiation_.Text" xml:space="preserve">
+    <value>Initiation</value>
+  </data>
+  <data name="Model_Initiation_Bezeichner.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Model_Initiation_Metamagie.Text" xml:space="preserve">
+    <value>Metamagie</value>
+  </data>
+  <data name="Model_Initiation_Schutzpatron.Text" xml:space="preserve">
+    <value>Schutzpatron</value>
+  </data>
+  <data name="Model_Initiation_Wert.Text" xml:space="preserve">
+    <value>Grad</value>
+  </data>
+  <data name="UI_Btn_Bearbeiten_Munition.Content" xml:space="preserve">
+    <value>Choose Ammunition</value>
+  </data>
+  <data name="UI_Btn_Bearbeiten_LinkedThings.Content" xml:space="preserve">
+    <value>Edit Links</value>
+  </data>
+  <data name="Model_Person_Schaden_G_max_mod.Text" xml:space="preserve">
+    <value>Max. Physical-Damage modifier</value>
+  </data>
+  <data name="Model_Person_Schaden_K_max_mod.Text" xml:space="preserve">
+    <value>Max. Mental-Damage modifier</value>
+  </data>
+  <data name="Model__Active.Text" xml:space="preserve">
+    <value>Active entry:</value>
+  </data>
+  <data name="Model__Mod.Text" xml:space="preserve">
+    <value>Mod.</value>
+  </data>
+  <data name="Notification_Info_UpgradedChar_1_5_to_1_6" xml:space="preserve">
+    <value>Your char was upgraded to the newest version. you cannot open it in older app versions properly.</value>
+  </data>
+  <data name="Notification_Warning_NotAddLinkedEntry" xml:space="preserve">
+    <value>Info: Reference wasn't added</value>
+  </data>
+  <data name="Error_ObjectCopy" xml:space="preserve">
+    <value>Could not copy all</value>
+  </data>
+  <data name="Model_Fertigkeit_CreateHandlung" xml:space="preserve">
+    <value>Create Action</value>
+  </data>
+  <data name="IAP_TXT_ADS.Content" xml:space="preserve">
+    <value>Lifetime no Ads</value>
+  </data>
+  <data name="IAP_TXT_ADS_365.Content" xml:space="preserve">
+    <value>No Ads for one year</value>
+  </data>
+  <data name="IAP_TXT_TEE.Content" xml:space="preserve">
+    <value>Add Premium-Badge</value>
+  </data>
+  <data name="Model__ORG.Text" xml:space="preserve">
+    <value>orig.</value>
+  </data>
+  <data name="UI_Optionen_U_Buy.Text" xml:space="preserve">
+    <value>Buy</value>
+  </data>
+  <data name="Ui_Admin_Filename.Text" xml:space="preserve">
+    <value>Filename</value>
+  </data>
+  <data name="Ui_Admin_Filepath.Text" xml:space="preserve">
+    <value>Filepath</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="UI_TxT_OpenFolder.Text" xml:space="preserve">
+    <value>open folder</value>
+  </data>
+  <data name="UI_TxT_OpenFolderSTD.Label" xml:space="preserve">
+    <value>open saveplace</value>
+  </data>
+  <data name="Model_Handlung_GegenZusatz.Text" xml:space="preserve">
+    <value>Defense Addition</value>
+  </data>
+  <data name="Model_Handlung_GrenzeZusatz.Text" xml:space="preserve">
+    <value>Limit Addition</value>
+  </data>
+  <data name="Model_Handlung_WertZusatz.Text" xml:space="preserve">
+    <value>Pool Addition</value>
+  </data>
+  <data name="Content_Erinnerung" xml:space="preserve">
+    <value>memento</value>
+  </data>
+  <data name="Content_Menschenkenntnis" xml:space="preserve">
+    <value>knowledge of human nature</value>
+  </data>
+  <data name="Content_Schadenswiderstand" xml:space="preserve">
+    <value>damage resistance</value>
+  </data>
+  <data name="Content_Selbstbeherrschung" xml:space="preserve">
+    <value>self-control</value>
+  </data>
+  <data name="UI_Optionen_U_Buying_Header.Text" xml:space="preserve">
+    <value>Here you have the possibility to make purchases. You can turn off advertising with the first two options. The third option supports the developer and adds an exclusive Badge to your app.</value>
+  </data>
+  <data name="UI_Optionen_U_Buying_Note.Text" xml:space="preserve">
+    <value>Note: Having apps in the store costs 18€ per year. It would be cool if the app would at least cover the costs.</value>
+  </data>
+  <data name="Error_LoadPurchases" xml:space="preserve">
+    <value>Error: Could not load your purchases</value>
+  </data>
+  <data name="Error_CopyFiles" xml:space="preserve">
+    <value>Fehler: Konnte nicht (alle) Dateien an neuen Ort kopieren.</value>
+  </data>
+  <data name="UI_Optionen_FileNameUseProgres.Tip" xml:space="preserve">
+    <value>The file name is generated automatically and contains: Name of the char, karma, number of runs.</value>
+  </data>
+  <data name="UI_Optionen_LoadOnStart.Tip" xml:space="preserve">
+    <value>The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time.</value>
+  </data>
+  <data name="UI_TxT_Save.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SymbolChanges.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="Notification_Error_General" xml:space="preserve">
+    <value>Some Error</value>
+  </data>
+  <data name="UI_Optionen_EditAfterAdd.Tip" xml:space="preserve">
+    <value>Error not specified in detail: </value>
+  </data>
+  <data name="UI_Optionen_Group_Char.Text" xml:space="preserve">
+    <value>Current Char</value>
+  </data>
+  <data name="UI_Optionen_Group_File.Text" xml:space="preserve">
+    <value>file management</value>
+  </data>
+  <data name="UI_Optionen_Group_IO.Text" xml:space="preserve">
+    <value>Saving and loading</value>
+  </data>
+  <data name="UI_Optionen_Group_Other.Text" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="UI_TxT_CSV_Cat_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves this category in CSV format (Excel compatible) in a folder.</value>
+  </data>
+  <data name="UI_TxT_OpenFolder.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Opens the folder of the current file</value>
+  </data>
+  <data name="UI_TxT_Repair.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Sometimes errors occur at the link system. Then you can try this function.</value>
+  </data>
+  <data name="UI_TxT_SaveAtCurrentPlace.ToolTipService.ToolTip" xml:space="preserve">
+    <value>If you opened the file externally (e.g. from another program) you can save it to your normal location.</value>
+  </data>
+  <data name="UI_TxT_SaveExtern.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Select a new location for this file</value>
+  </data>
+  <data name="UI_TxT_Unload.Text" xml:space="preserve">
+    <value>unloading</value>
+  </data>
+  <data name="UI_TxT_Unload.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Removes only the loaded char from the app. Storage files are not affected.</value>
+  </data>
+  <data name="UI_TxT_Cat_UncheckAll.Text" xml:space="preserve">
+    <value>Deselect All</value>
+  </data>
+  <data name="IAP_Error" xml:space="preserve">
+    <value>Purchase not successful</value>
+  </data>
+  <data name="IAP_Succeeded" xml:space="preserve">
+    <value>Purchase Successful</value>
+  </data>
+  <data name="Request_NotSave.No" xml:space="preserve">
+    <value>continue without saving</value>
+  </data>
+  <data name="Request_NotSave.Text" xml:space="preserve">
+    <value>The current character has unsaved changes</value>
+  </data>
+  <data name="Request_NotSave.Title" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Request_NotSave.Yes" xml:space="preserve">
+    <value>Save and Continue</value>
+  </data>
+  <data name="UI_TxT_ExportAll.Label" xml:space="preserve">
+    <value>Save all in external folder</value>
+  </data>
+  <data name="UI_TxT_ExportAll.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Copies all files listed here to another folder</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Create_ExampleChar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Load the example/turorial character sheet into the current folder</value>
+  </data>
+  <data name="UI_CharVerwaltung_Btn_Neu.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Use it to create a new character sheet</value>
+  </data>
+  <data name="UI_TxT_OpenFolderSTD.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Open the folder where all your character sheets are located.</value>
+  </data>
+  <data name="UI_Label_CSV_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves this character sheet in CSV format (Excel compatible) in a folder. Several files are created.</value>
+  </data>
+  <data name="UI_Label_DeleteChar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Deletes this file.</value>
+  </data>
+  <data name="UI_Label_File_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Copy this file to another location.</value>
+  </data>
+  <data name="UI_Label_LoadChar.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Opens this file.</value>
+  </data>
+  <data name="UI_TxT_CSV_Cat_Export_Selected.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves selected entries of this category in CSV format (Excel compatible) in a folder.</value>
+  </data>
+  <data name="UI_TxT_CSV_Cat_Import.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Select a CSV file whose content will be imported into this category. If the import and export categories are not identical, not all information is imported.</value>
+  </data>
+  <data name="UI_TxT_Cat_Order_Orig.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Loads the previously saved sequence of the entry of this category.</value>
+  </data>
+  <data name="UI_TxT_Cat_Order_Save.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves the current sequence of the entry of this category.</value>
+  </data>
+  <data name="UI_TxT_Cat_Truncate.ToolTipService.ToolTip" xml:space="preserve">
+    <value>This clears the entire category.</value>
+  </data>
+  <data name="UI_TxT_Cat_UncheckAll.ToolTipService.ToolTip" xml:space="preserve">
+    <value>This collapses all expanded entries.</value>
+  </data>
+  <data name="UI_TxT_CSV_Export.Text" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="UI_TxT_CSV_Export.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves this character sheet in CSV format (Excel compatible) in a folder. Several files are created.</value>
+  </data>
+  <data name="UI_TxT_Save.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves the character sheet.</value>
+  </data>
+  <data name="UI_Optionen_Version.Text" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Notification_Char_Loaded_File" xml:space="preserve">
+    <value>A Char was loaded from file</value>
+  </data>
+  <data name="Notification_Char_Loaded_Start" xml:space="preserve">
+    <value>A Char was automaticly loaded</value>
+  </data>
+  <data name="UI_Cntnt_GoTo_Notifications.Content" xml:space="preserve">
+    <value>Open notifications</value>
+  </data>
+  <data name="UI_Optionen_Toggle.OnContent" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Activity_PlayedWith" xml:space="preserve">
+    <value>You played with </value>
+  </data>
+  <data name="Notification_NewVersion" xml:space="preserve">
+    <value>Welcome to the new version: {0}. Check out a list of new features here!</value>
+  </data>
+  <data name="UI_TxT_Cat_AddSep.Text" xml:space="preserve">
+    <value>Add Seperator</value>
+  </data>
+  <data name="VersionHistory" xml:space="preserve">
+    <value>Version 1.8.4:
+[new] Lifestyle cost button
+Version 1.8.3:
+[new] Track your favorites
+[new] Contextmenu for Things
+[new] Copy, Cut, Paste Things (Contextmenu)
+[new] Char name in taskbar
+Version 1.7.6:
+[new] Seperators
+Version 1.7.4:
+[new] Category options (Sort, Export,...)
+[new] Technomancer Categories
+[new] Own categories for calculated values
+[new] Links are now possible for attributes and battle items
+[new] Links are now possible with every item
+[new] Example Character
+[new] Multi-window option (for Windows April Update)
+[new] Drag and Drop between different windows (for Windows April Update)
+[new] TimeLine Integration (for Windows April Update)
+[new] notifications
+[new] no more reloading to apply char options
+[new] added many tooltips for buttons
+[new] complete English translation
+[new] Drag and Drop between categories
+    </value>
+  </data>
+  <data name="UI_Optionen_Debug_Mode.Text" xml:space="preserve">
+    <value>Debug Mode</value>
+  </data>
+  <data name="UI_Optionen_Debug_Mode.Tip" xml:space="preserve">
+    <value>Enables various Notifications about time and stuff</value>
+  </data>
+  <data name="UI_CNT_Close.Content" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Error_LoadCharFolder" xml:space="preserve">
+    <value>Error reading the char directory. Reset the external folder.</value>
+  </data>
+  <data name="AppImportErrors" xml:space="preserve">
+    <value>The import of the following settings or files failed.</value>
+  </data>
+  <data name="AppImportNoErrors" xml:space="preserve">
+    <value>The import was successful.</value>
+  </data>
+  <data name="Request_AppImport.No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Request_AppImport.Text" xml:space="preserve">
+    <value>Do you want to import the contents of another app? Settings are overwritten.</value>
+  </data>
+  <data name="Request_AppImport.Title" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Request_AppImport.Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="UI_TxT_CharSettings.Text" xml:space="preserve">
+    <value>Character sheet settings</value>
+  </data>
+  <data name="UI_TxT_CharSettings.ToolTipService.ToolTip" xml:space="preserve">
+    <value>This allows you to configure this view.</value>
+  </data>
+  <data name="UI_CLS_Close.Content" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Model_KomplexForm_Duration.Text" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Model_KomplexForm_Fading.Text" xml:space="preserve">
+    <value>Fading</value>
+  </data>
+  <data name="Model_KomplexForm_Target.Text" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="UI_TxT_Copy.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="UI_TxT_Cut.Text" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="UI_TxT_Delete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="UI_TxT_Edit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="UI_TxT_Fav.Text" xml:space="preserve">
+    <value>Favorize</value>
+  </data>
+  <data name="UI_TxT_FavUn.Text" xml:space="preserve">
+    <value>Defavorize</value>
+  </data>
+  <data name="UI_TxT_Paste.Text" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="UI_TxT_Share.Text" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="Tip1" xml:space="preserve">
+    <value>Windows sometimes closes apps due to lack of resources. Try the autosave option if you want to avoid data loss.</value>
+  </data>
+  <data name="Tip2" xml:space="preserve">
+    <value>Use a cloud folder as an external storage folder. So your chars are safe</value>
+  </data>
+  <data name="Tip3" xml:space="preserve">
+    <value>Categories you don't need can be hidden from the Character Bow menu.</value>
+  </data>
+  <data name="Tip4" xml:space="preserve">
+    <value>At the top left of your character sheet is the character sheet menu. Take a look inside.</value>
+  </data>
+  <data name="Tip5" xml:space="preserve">
+    <value>Are links sometimes no longer updated? Try "Repair" in the charactersheet-menu.</value>
+  </data>
+  <data name="UI_Txt_DisableTips.Text" xml:space="preserve">
+    <value>Tips can be deactivated in the settings.</value>
+  </data>
+  <data name="Tip10" xml:space="preserve">
+    <value>The damage menu is located at the top right. I hope you don't have to use it too much.</value>
+  </data>
+  <data name="Tip11" xml:space="preserve">
+    <value>If you want to show your character sheet to someone who doesn't have the app, you can export it as csv.</value>
+  </data>
+  <data name="Tip6" xml:space="preserve">
+    <value>You can set in the options that chars are saved with the current progress (Karma and Runs). This makes versioning possible.</value>
+  </data>
+  <data name="Tip7" xml:space="preserve">
+    <value>Objects that can be set to "Active" are only included in calculations if they are active.</value>
+  </data>
+  <data name="Tip8" xml:space="preserve">
+    <value>The default value of the essence is 6, from which essence values from implants are subtracted.</value>
+  </data>
+  <data name="Tip9" xml:space="preserve">
+    <value>Damage maxima are displayed at the top of the damage menu.</value>
+  </data>
+  <data name="ui_txt_TipHeader.Text" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="Tip12" xml:space="preserve">
+    <value>Tip gone too fast? Tap on it!</value>
+  </data>
+  <data name="Tip13" xml:space="preserve">
+    <value>Use Drag'N'Drop to copy / move objects between categories.</value>
+  </data>
+  <data name="Tip14" xml:space="preserve">
+    <value>Since the latest Windows update, you can have the app open several times.</value>
+  </data>
+  <data name="Tip15" xml:space="preserve">
+    <value>Use Drag'N'Drop to copy / move objects between apps.</value>
+  </data>
+  <data name="UI_Optionen_Disable_Tips.Text" xml:space="preserve">
+    <value>Disable tips</value>
+  </data>
+  <data name="UI_Optionen_Disable_Tips.Tip" xml:space="preserve">
+    <value>Disable the tips while loading.</value>
+  </data>
+  <data name="Notification_Info_UpgradedChar" xml:space="preserve">
+    <value>Your char was upgraded to the newest version. you cannot open it in older app versions properly.</value>
+  </data>
+  <data name="Tip16" xml:space="preserve">
+    <value>The app can be used under several Windows versions, but may not have the full range of functions. Keep your Windows up to date.</value>
+  </data>
+  <data name="Tip17" xml:space="preserve">
+    <value>Keep your character sheet backups up to date and you'll be safe from data corruption.</value>
+  </data>
+  <data name="Request_NotSave.Break" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Model_Person_LifestyleCost.Text" xml:space="preserve">
+    <value>Lifestyle cost</value>
+  </data>
+  <data name="UI_TxT_SubtractLifeStyleCost.Text" xml:space="preserve">
+    <value>Subtract Lifestyle cost</value>
+  </data>
+  <data name="Tip18" xml:space="preserve">
+    <value>Do you like the App? Give a rating at the Store!</value>
+  </data>
+</root>

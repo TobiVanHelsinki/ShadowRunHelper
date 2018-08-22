@@ -1590,7 +1590,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   </data>
   <data name="VersionHistory" xml:space="preserve">
     <value>Version 1.8.4:
-Lebensstilkosten Button
+[new] Lebensstilkosten Button
 Version 1.8.3:
 [new] Favoriten
 [new] Kontextmenü
