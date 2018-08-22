@@ -722,7 +722,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Aktueller Char</value>
   </data>
   <data name="Ui_Nav_Admin.Label" xml:space="preserve">
-    <value>Chars verwalten</value>
+    <value>Verwaltung</value>
   </data>
   <data name="Ui_Nav_Settings.Label" xml:space="preserve">
     <value>Einstellungen</value>
@@ -964,13 +964,13 @@ Setzen Sie den externen Ordner neu.</value>
     <value>Mit dieser App können mehrere ShadowRun Chars verwaltet werden. Alle gespeicherten Chars werden in der Liste angezeigt. Diese Liste ist im Standardfall ein interner Ordner, es kann aber jeder beliebige Ordner gewählt werden. In den Optionen gibt es verschiedene Einstellungen dafür.</value>
   </data>
   <data name="Help4_CharAdministration" xml:space="preserve">
-    <value>Char Verwaltung</value>
+    <value>Verwaltung</value>
   </data>
   <data name="Help5" xml:space="preserve">
     <value>Beim Speichern eines Chars gibt es zwei Optionen. Standardmäßig wird der Dateiname zum Speichern verwendet, mit dem der Char geladen wird. Wird die Option "Fortschritt" gewählt, werden die Anzahl Runs und Karma dem Dateinamen hinzugefügt - damit ist eine Versionierung möglich. Außerdem kann mit der Option "Zeit" die genaue Zeit mit in den Dateinamen geschrieben werden.</value>
   </data>
   <data name="Help5_CharAdministration_FileName" xml:space="preserve">
-    <value>Char Verwaltung - Dateinamen</value>
+    <value>Verwaltung - Dateinamen</value>
   </data>
   <data name="UI_Optionen_DisplayRequest.Tip" xml:space="preserve">
     <value>Damit verhinderst du, dass dein Bildschirm ausgeht, wenn du einen Char offen hast.</value>
