@@ -155,36 +155,36 @@
                                                 <TextBox GotFocus="EditBox_GotFocus" contract5Present:PreviewKeyDown="EditBox_PreviewKeyDown" Name="Header_Kontostand" Text="{x:Bind Person.Kontostand, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Style="{StaticResource Panel_Oben_Kontostand}"  />
 
                                                 <TextBlock x:Uid="Model_Person_InitiativeAktuell" Grid.Column="0" Grid.Row="1" Style="{StaticResource Panel_Top_Flyout}"/>
-                                                <TextBlock Text="{x:Bind Person.Initiative, Mode=OneWay}" Grid.Column="1" Grid.Row="1" Style="{StaticResource Panel_Top_Flyout}" />
+                                                <TextBlock Text="{x:Bind Person.Initiative, Mode=OneWay}" Grid.Column="2" Grid.Row="1" Style="{StaticResource Panel_Top_Flyout}" />
                                                 <RepeatButton Grid.Column="3" Grid.Row="1" Name="Initiative_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
-                                                <RepeatButton Grid.Column="2" Grid.Row="1" Name="Initiative_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+                                                <RepeatButton Grid.Column="1" Grid.Row="1" Name="Initiative_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
                                                 <TextBlock x:Uid="Model_Person_Edge_Aktuell" Grid.Column="0" Grid.Row="2" Style="{StaticResource Panel_Top_Flyout}"/>
-                                                <TextBlock Text="{x:Bind Person.Edge_Aktuell, Mode=OneWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource Panel_Top_Flyout}"/>
+                                                <TextBlock Text="{x:Bind Person.Edge_Aktuell, Mode=OneWay}" Grid.Column="2" Grid.Row="2" Style="{StaticResource Panel_Top_Flyout}"/>
                                                 <RepeatButton Grid.Column="3" Grid.Row="2" Name="Edge_Aktuell_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
-                                                <RepeatButton Grid.Column="2" Grid.Row="2" Name="Edge_Aktuell_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+                                                <RepeatButton Grid.Column="1" Grid.Row="2" Name="Edge_Aktuell_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
                                                 <TextBlock x:Uid="Model_Person_Edge_Gesamt" Grid.Column="0" Grid.Row="3"  Style="{StaticResource Panel_Top_Flyout}"/>
-                                                <TextBlock Text="{x:Bind Person.Edge_Gesamt, Mode=OneWay}" Grid.Column="1" Grid.Row="3" Style="{StaticResource Panel_Top_Flyout}"/>
+                                                <TextBlock Text="{x:Bind Person.Edge_Gesamt, Mode=OneWay}" Grid.Column="2" Grid.Row="3" Style="{StaticResource Panel_Top_Flyout}"/>
                                                 <RepeatButton Grid.Column="3" Grid.Row="3" Name="Edge_Gesamt_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
-                                                <RepeatButton Grid.Column="2" Grid.Row="3" Name="Edge_Gesamt_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+                                                <RepeatButton Grid.Column="1" Grid.Row="3" Name="Edge_Gesamt_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
                                                 <TextBlock x:Uid="Model_Person_Karma_Aktuell" Grid.Column="0" Grid.Row="4" Style="{StaticResource Panel_Top_Flyout}"/>
-                                                <TextBlock Text="{x:Bind Person.Karma_Aktuell, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Style="{StaticResource Panel_Top_Flyout}" />
+                                                <TextBlock Text="{x:Bind Person.Karma_Aktuell, Mode=OneWay}" Grid.Column="2" Grid.Row="4" Style="{StaticResource Panel_Top_Flyout}" />
                                                 <RepeatButton Grid.Column="3" Grid.Row="4" Name="Karma_Aktuell_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
-                                                <RepeatButton Grid.Column="2" Grid.Row="4" Name="Karma_Aktuell_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+                                                <RepeatButton Grid.Column="1" Grid.Row="4" Name="Karma_Aktuell_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
                                                 <TextBlock x:Uid="Model_Person_Karma_Gesamt" Grid.Column="0" Grid.Row="5" Style="{StaticResource Panel_Top_Flyout}" />
-                                                <TextBlock Text="{x:Bind Person.Karma_Gesamt, Mode=OneWay}" Grid.Column="1" Grid.Row="5" Style="{StaticResource Panel_Top_Flyout}" />
+                                                <TextBlock Text="{x:Bind Person.Karma_Gesamt, Mode=OneWay}" Grid.Column="2" Grid.Row="5" Style="{StaticResource Panel_Top_Flyout}" />
                                                 <RepeatButton Name="Karma_Gesamt_Plus" Grid.Column="3" Grid.Row="5" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
-                                                <RepeatButton Name="Karma_Gesamt_Minus" Grid.Column="2" Grid.Row="5" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+                                                <RepeatButton Name="Karma_Gesamt_Minus" Grid.Column="1" Grid.Row="5" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
                                                 <TextBlock x:Uid="Model_Person_Runs" Grid.Column="0" Grid.Row="6"  Style="{StaticResource Panel_Top_Flyout}"/>
-                                                <TextBlock Text="{x:Bind Person.Runs,Mode=OneWay}" Grid.Column="1" Grid.Row="6" Style="{StaticResource Panel_Top_Flyout}"/>
+                                                <TextBlock Text="{x:Bind Person.Runs,Mode=OneWay}" Grid.Column="2" Grid.Row="6" Style="{StaticResource Panel_Top_Flyout}"/>
                                                 <RepeatButton Grid.Column="3" Grid.Row="6" Name="Runs_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
-                                                <RepeatButton Grid.Column="2" Grid.Row="6" Name="Runs_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+                                                <RepeatButton Grid.Column="1" Grid.Row="6" Name="Runs_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
 
-                                                <Button TabIndex="0" x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource STD_Button}"  Name="Person2_Edit" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="7" Click="Edit_Click"/>
+                                                <Button TabIndex="0" x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource STD_Button}"  Name="Person2_Edit" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="7" HorizontalAlignment="Center" Click="Edit_Click"/>
                                             </Grid>
                                         </Viewbox>
                                     </Flyout>
