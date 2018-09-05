@@ -152,7 +152,7 @@ namespace ShadowRunHelper.UI
 
         async void TipFadeOut(object state)
         {
-            SystemHelper.WriteLine("TipFadeOut1: " + DateTime.Now.TimeOfDay);
+            System.Diagnostics.Debug.WriteLine("TipFadeOut1: " + DateTime.Now.TimeOfDay);
             TipFading.Change(-1, -1);
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
             {
@@ -164,11 +164,11 @@ namespace ShadowRunHelper.UI
         }
         async void TipMakeInvisible(object state)
         {
-            SystemHelper.WriteLine("TipMakeInvisible: " + DateTime.Now.TimeOfDay);
+            System.Diagnostics.Debug.WriteLine("TipMakeInvisible: " + DateTime.Now.TimeOfDay);
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
             {
                 TipTextWindow.Visibility = Visibility.Collapsed;
-                SystemHelper.WriteLine("TipMakeInvisible2: " + DateTime.Now.TimeOfDay);
+                System.Diagnostics.Debug.WriteLine("TipMakeInvisible2: " + DateTime.Now.TimeOfDay);
             });
         }
         void ShowCharName()

@@ -27,7 +27,7 @@ namespace ShadowRunHelper
         //    foreach (var item in Dict)
         //    {
         //        string k = item.Key.PadRight(Padding).Remove(Padding-1).PadRight(Padding);
-        //        SystemHelper.WriteLine("{0}{1}-{2} = {3}", k, item.Value.StartTime.ToString("ss.fff"), item.Value.StopTime.ToString("ss.fff"), (item.Value.StopTime - item.Value.StartTime).ToString().Replace("00:", ""));
+        //        System.Diagnostics.Debug.WriteLine("{0}{1}-{2} = {3}", k, item.Value.StartTime.ToString("ss.fff"), item.Value.StopTime.ToString("ss.fff"), (item.Value.StopTime - item.Value.StartTime).ToString().Replace("00:", ""));
         //        Not += string.Format("{0}\t{1} - {2} =\t{3}", k, item.Value.StartTime.ToString("ss.fff"), item.Value.StopTime.ToString("ss.fff"), (item.Value.StopTime - item.Value.StartTime).ToString().Replace("00:", ""));
         //        Not += "\n";
         //    }

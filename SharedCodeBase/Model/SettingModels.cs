@@ -178,7 +178,7 @@ namespace ShadowRunHelper
                 {
                     value = 1000;
                 }
-                SystemHelper.WriteLine("value: " + value);
+                System.Diagnostics.Debug.WriteLine("value: " + value);
                 PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS, value);
                 Instance.NotifyPropertyChanged();
             }
