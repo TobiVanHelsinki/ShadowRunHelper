@@ -1,7 +1,5 @@
 ﻿using Microsoft.Advertising.WinRT.UI;
-using Microsoft.AppCenter.Analytics;
 using Microsoft.Toolkit.Uwp.UI.Animations;
-using Microsoft.Toolkit.Uwp.UI.Animations.Behaviors;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
@@ -10,13 +8,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using TAMARIN.IO;
 using TAPPLICATION.IO;
-using TLIB;
-using Windows.UI.Popups;
+using TLIB.IO;
+using TLIB.PlatformHelper;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper.UI

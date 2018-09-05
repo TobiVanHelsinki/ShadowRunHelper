@@ -1,9 +1,7 @@
 ﻿using ShadowRunHelper.Model;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TLIB;
-using TAPPLICATION;
-using TAPPLICATION.Model;
+using TLIB.PlatformHelper;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

@@ -1,5 +1,5 @@
 ﻿using System;
-using TLIB;
+using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper
 {

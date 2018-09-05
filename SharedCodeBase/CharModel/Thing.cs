@@ -1,15 +1,14 @@
-﻿using ShadowRunHelper.Model;
+﻿using Newtonsoft.Json;
 using ShadowRunHelper.IO;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using TAPPLICATION;
-using TAPPLICATION.Model;
 using TLIB;
-using Newtonsoft.Json;
+using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper.CharModel
 {

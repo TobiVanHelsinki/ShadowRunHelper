@@ -3,10 +3,9 @@ using ShadowRunHelper.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
-using TAMARIN.IO;
-using TLIB;
+using TLIB.IO;
+using TLIB.PlatformHelper;
 using Windows.Storage;
 
 namespace ShadowRunHelper

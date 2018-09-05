@@ -5,9 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using TLIB;
-using TAPPLICATION;
-using TAPPLICATION.Model;
+using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper
 {

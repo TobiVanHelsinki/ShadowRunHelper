@@ -1,6 +1,6 @@
 ﻿using ShadowRunHelper.CharModel;
 using System.Collections.Generic;
-using TLIB;
+using TLIB.PlatformHelper;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -48,7 +48,7 @@ namespace ShadowRunHelper.UI
                     break;
                 case ThingDefs.Munition:
                     EditType.ContentTemplate = Munition;
-                    WertLabel.Text = TLIB.StringHelper.GetString("Model_Waffe_Wert/Text");
+                    WertLabel.Text = StringHelper.GetString("Model_Waffe_Wert/Text");
                     break;
                 case ThingDefs.Implantat:
                     EditType.ContentTemplate = Implantat;
@@ -84,11 +84,11 @@ namespace ShadowRunHelper.UI
                     break;
                 case ThingDefs.Nahkampfwaffe:
                     EditType.ContentTemplate = Nahkampfwaffe;
-                    WertLabel.Text = TLIB.StringHelper.GetString("Model_Waffe_Wert/Text");
+                    WertLabel.Text = StringHelper.GetString("Model_Waffe_Wert/Text");
                     break;
                 case ThingDefs.Fernkampfwaffe:
                     EditType.ContentTemplate = Fernkampfwaffe;
-                    WertLabel.Text = TLIB.StringHelper.GetString("Model_Waffe_Wert/Text");
+                    WertLabel.Text = StringHelper.GetString("Model_Waffe_Wert/Text");
                     break;
                 case ThingDefs.Kommlink:
                     EditType.ContentTemplate = Kommlink;
@@ -98,7 +98,7 @@ namespace ShadowRunHelper.UI
                     break;
                 case ThingDefs.Vehikel:
                     EditType.ContentTemplate = Vehikel;
-                    WertLabel.Text = TLIB.StringHelper.GetString("Model_Vehikel_Wert/Text");
+                    WertLabel.Text = StringHelper.GetString("Model_Vehikel_Wert/Text");
                     break;
                 case ThingDefs.Panzerung:
                     EditType.ContentTemplate = Panzerung;

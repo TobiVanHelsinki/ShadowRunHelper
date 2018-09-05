@@ -3,10 +3,10 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TAMARIN.IO;
 using TAPPLICATION;
 using TAPPLICATION.IO;
-using TLIB;
+using TLIB.IO;
+using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper
 {

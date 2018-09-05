@@ -6,9 +6,6 @@ namespace ShadowRunHelper.UI.Converter
 {
     public class o_LastTime : IValueConverter
     {
-        static string DatePattern;
-        static string TimePattern;
-
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {

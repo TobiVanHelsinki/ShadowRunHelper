@@ -1,7 +1,7 @@
-﻿using System;
-using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.Model;
+using System;
 using System.Threading.Tasks;
-using TLIB;
+using TLIB.PlatformHelper;
 using Windows.ApplicationModel.UserActivities;
 
 namespace ShadowRunHelper

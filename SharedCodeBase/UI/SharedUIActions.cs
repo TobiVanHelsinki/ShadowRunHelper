@@ -1,10 +1,9 @@
-﻿using Microsoft.AppCenter.Analytics;
-using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.Model;
 using System;
 using System.Linq;
-using TAMARIN.IO;
 using TAPPLICATION.IO;
-using TLIB;
+using TLIB.IO;
+using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper.UI
 {

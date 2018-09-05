@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using TAMARIN.IO;
 using TAPPLICATION.IO;
-using TLIB;
+using TLIB.IO;
+using TLIB.PlatformHelper;
 using Windows.Foundation.Metadata;
 using Windows.Services.Store;
 

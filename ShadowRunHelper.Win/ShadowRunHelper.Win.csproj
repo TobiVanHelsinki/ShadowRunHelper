@@ -37,7 +37,7 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;RELEASE</DefineConstants>
-    <NoWarn>;2008;CS0168</NoWarn>
+    <NoWarn>;2008;CS0168;CS4014</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -407,14 +407,16 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TLIB\TLIB\TLIB.csproj">
-      <Project>{e3eb87ff-2421-48b9-be86-a87e9ca0c533}</Project>
-      <Name>TLIB</Name>
-    </ProjectReference>
+    <Reference Include="TAPPLICATION">
+      <HintPath>..\..\TLIB\TAPPLICATION\bin\Debug\netstandard2.0\TAPPLICATION.dll</HintPath>
+    </Reference>
+    <Reference Include="TLIB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TLIB\TAPPLICATION\bin\Debug\netstandard2.0\TLIB.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="..\SharedCodeBase\SharedCodeBase.projitems" Label="Shared" />
-  <Import Project="..\..\TLIB\TAPPLICATION\TAPPLICATION.projitems" Label="Shared" />
-  <Import Project="..\..\TLIB\TAMARIN\TAMARIN.projitems" Label="Shared" />
+  <Import Project="..\..\TLIB\CodeUwp\CodeUwp.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -1,5 +1,5 @@
 ﻿using System;
-using TLIB;
+using TLIB.PlatformHelper;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter

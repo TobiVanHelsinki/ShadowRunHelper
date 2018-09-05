@@ -24,7 +24,11 @@ namespace ShadowRunHelper
             Features.InstanceHandling = new WinInstanceHandling();
             Features.AppInformation = new WinAppInformation();
             Features.AppDataPorter = new WinAppDataPorter();
-            
+
+            TAPPLICATION.IO.SharedIO.CurrentIO = new TLIB.Code.Uwp.UwpIO();
+            TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TLIB.Code.Uwp.UwpSettings();
+            TLIB.PlatformHelper.ModelHelper.Platform = new TLIB.Code.Uwp.UwpModelHelper();
+            TLIB.PlatformHelper.StringHelper.Platform = new TLIB.Code.Uwp.UwpStringHelper();
 
             AppHolder.InitModel();
         }

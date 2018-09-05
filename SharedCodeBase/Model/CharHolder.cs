@@ -1,5 +1,4 @@
-﻿using Microsoft.AppCenter.Analytics;
-using ShadowRunHelper.CharController;
+﻿using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.Generic;
@@ -9,9 +8,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using TAMARIN.IO;
 using TAPPLICATION.Model;
 using TLIB;
+using TLIB.IO;
+using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper.Model
 {
