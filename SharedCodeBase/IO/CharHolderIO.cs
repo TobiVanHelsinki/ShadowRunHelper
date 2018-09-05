@@ -49,7 +49,7 @@ namespace ShadowRunHelper.IO
         }
     }
 
-    internal class CharHolderIO : SharedIO<CharHolder>
+    public class CharHolderIO : SharedIO<CharHolder>
     {
         internal static CharHolder ConvertWithRightVersion(string strAppVersion, string strFileVersion, string fileContent)
         {

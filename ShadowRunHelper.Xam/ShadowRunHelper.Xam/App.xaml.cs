@@ -9,7 +9,10 @@ namespace ShadowRunHelper.Xam
     {
         public App()
         {
+
             InitializeComponent();
+
+            AppHolder.InitModel();
 
             MainPage = new MainPage();
         }

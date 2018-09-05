@@ -1,6 +1,6 @@
-﻿using Microsoft.Toolkit.Uwp.Helpers;
-using ShadowRunHelper.IO;
+﻿using ShadowRunHelper.IO;
 using TLIB.IO;
+using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper.Model
 {
@@ -41,7 +41,7 @@ public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptio
         public event NavigationEventHandler NavigationRequested;
         public void RequestNavigation(ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
         {
-            DispatcherHelper.ExecuteOnUIThreadAsync(()=>NavigationRequested?.Invoke(p, po));
+            ModelHelper.ExecuteOnUIThreadAsync(()=>NavigationRequested?.Invoke(p, po));
         }
 
         public void TutorialChangedState(int StateNumber, bool Highlight = false)

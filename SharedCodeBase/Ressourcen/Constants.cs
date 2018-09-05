@@ -5,7 +5,7 @@ using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper
 {
-    internal class Constants : SharedConstants
+    public class Constants : SharedConstants
     {
         public const string THING_DELETED_TOKEN = "THING_DELETED_TOKEN";
         public const string TESTEXCEPTIONTEXT = "TESTEXCEPTIONTEXT";
@@ -152,8 +152,7 @@ namespace ShadowRunHelper
         public const string IAP_FEATUREID_TEE = "9NL3081GB2F4";
 #endif
 
-        public static bool IAP_HIDEADS { get;
-            internal set; }
+        public static bool IAP_HIDEADS { get; set; }
         #endregion
         #region Diagnostics
         public const string AppCenterID =
@@ -161,6 +160,8 @@ namespace ShadowRunHelper
             "cea0f814-f9f7-46b1-ba58-760607a60559";
 #elif RELEASE
             "20914a32-ddd2-4d7d-93af-97206a32f332";
+#else   
+        "----";
 #endif
         #endregion
     }

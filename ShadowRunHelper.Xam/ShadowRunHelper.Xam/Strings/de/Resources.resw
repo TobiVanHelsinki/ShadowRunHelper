@@ -719,10 +719,10 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Speichern fehlgeschlagen, versuche, den Char zu exportieren und starte die App neu.</value>
   </data>
   <data name="Ui_Nav_Char.Label" xml:space="preserve">
-    <value>Aktueller Char</value>
+    <value>Charakterbogen</value>
   </data>
   <data name="Ui_Nav_Admin.Label" xml:space="preserve">
-    <value>Chars verwalten</value>
+    <value>Verwaltung</value>
   </data>
   <data name="Ui_Nav_Settings.Label" xml:space="preserve">
     <value>Einstellungen</value>
@@ -964,13 +964,13 @@ Setzen Sie den externen Ordner neu.</value>
     <value>Mit dieser App können mehrere ShadowRun Chars verwaltet werden. Alle gespeicherten Chars werden in der Liste angezeigt. Diese Liste ist im Standardfall ein interner Ordner, es kann aber jeder beliebige Ordner gewählt werden. In den Optionen gibt es verschiedene Einstellungen dafür.</value>
   </data>
   <data name="Help4_CharAdministration" xml:space="preserve">
-    <value>Char Verwaltung</value>
+    <value>Verwaltung</value>
   </data>
   <data name="Help5" xml:space="preserve">
     <value>Beim Speichern eines Chars gibt es zwei Optionen. Standardmäßig wird der Dateiname zum Speichern verwendet, mit dem der Char geladen wird. Wird die Option "Fortschritt" gewählt, werden die Anzahl Runs und Karma dem Dateinamen hinzugefügt - damit ist eine Versionierung möglich. Außerdem kann mit der Option "Zeit" die genaue Zeit mit in den Dateinamen geschrieben werden.</value>
   </data>
   <data name="Help5_CharAdministration_FileName" xml:space="preserve">
-    <value>Char Verwaltung - Dateinamen</value>
+    <value>Verwaltung - Dateinamen</value>
   </data>
   <data name="UI_Optionen_DisplayRequest.Tip" xml:space="preserve">
     <value>Damit verhinderst du, dass dein Bildschirm ausgeht, wenn du einen Char offen hast.</value>
@@ -1513,44 +1513,8 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Notification_NewVersion" xml:space="preserve">
     <value>Willkommen in der neuen Version: {0}. Sieh dir hier eine Liste von Neuerungen an!</value>
   </data>
-  <data name="Notification_NewVersion_1_7_4_0" xml:space="preserve">
-    <value>[new] Kategorieoptionen (Sortieren, Exportieren, ...)
-[new] Technomancer Kategorien
-[new] Eigene Kategorien für berechnete Werte
-[new] Verlinkungen sind jetzt möglich für Attribute und Kampfitems
-[new] Verlinkungen sind jetzt mit jedem Item möglich
-[new] Beispiel Charakter
-[new] Multifenster Option (für Windows April Update)
-[new] Drag and Drop zwischen verschiedenen Fenstern (für Windows April Update)
-[new] TimeLine Integration (für Windows April Update)
-[new] Benachrichtigungen
-[new] kein Neuladen mehr zum Anwenden der Char-Optionen
-[new] viele Tooltips für Buttons hinzugefügt
-[new] komplette englische Übersetzung
-[new] Drag and Drop zwischen Kategorien</value>
-  </data>
   <data name="UI_TxT_Cat_AddSep.Text" xml:space="preserve">
     <value>Seperator hinzufügen</value>
-  </data>
-  <data name="Notification_NewVersion_1_7_6_0" xml:space="preserve">
-    <value>[new] Seperatoren</value>
-  </data>
-  <data name="Notification_NewVersion_1_7_8_0" xml:space="preserve">
-    <value>[new] Kategorieoptionen (Sortieren, Exportieren, ...)
-[new] Technomancer Kategorien
-[new] Eigene Kategorien für berechnete Werte
-[new] Verlinkungen sind jetzt möglich für Attribute und Kampfitems
-[new] Verlinkungen sind jetzt mit jedem Item möglich
-[new] Beispiel Charakter
-[new] Multifenster Option (für Windows April Update)
-[new] Drag and Drop zwischen verschiedenen Fenstern (für Windows April Update)
-[new] TimeLine Integration (für Windows April Update)
-[new] Benachrichtigungen
-[new] kein Neuladen mehr zum Anwenden der Char-Optionen
-[new] viele Tooltips für Buttons hinzugefügt
-[new] komplette englische Übersetzung
-[new] Drag and Drop zwischen Kategorien
-[new] Seperatoren</value>
   </data>
   <data name="UI_Optionen_Debug_Mode.Text" xml:space="preserve">
     <value>Debug Modus</value>
@@ -1624,19 +1588,31 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="UI_TxT_Share.Text" xml:space="preserve">
     <value>Teilen</value>
   </data>
-  <data name="Notification_NewVersion_1_8_3_0" xml:space="preserve">
-    <value>[new] Favoriten
-[new] Kontextmenu
+  <data name="VersionHistory" xml:space="preserve">
+    <value>Version 1.8.4:
+[new] Lebensstilkosten Button
+Version 1.8.3:
+[new] Favoriten
+[new] Kontextmenü
 [new] Copy, Cut und Paste! (Kontextmenu)
-[new] Char-Name in de Taskbar
-
+[new] Char-Name in der Taskbar
+Version 1.7.6:
+[new] Seperatoren
+Version 1.7.4:
 [new] Kategorieoptionen (Sortieren, Exportieren, ...)
+[new] Technomancer Kategorien
 [new] Eigene Kategorien für berechnete Werte
 [new] Verlinkungen sind jetzt möglich für Attribute und Kampfitems
 [new] Verlinkungen sind jetzt mit jedem Item möglich
+[new] Beispiel Charakter
 [new] Multifenster Option (für Windows April Update)
 [new] Drag and Drop zwischen verschiedenen Fenstern (für Windows April Update)
 [new] TimeLine Integration (für Windows April Update)
+[new] Benachrichtigungen
+[new] kein Neuladen mehr zum Anwenden der Char-Optionen
+[new] viele Tooltips für Buttons hinzugefügt
+[new] komplette englische Übersetzung
+[new] Drag and Drop zwischen Kategorien
 </value>
   </data>
   <data name="Tip1" xml:space="preserve">
@@ -1707,5 +1683,15 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   </data>
   <data name="Request_NotSave.Break" xml:space="preserve">
     <value>Abbrechen</value>
+  </data>
+  <data name="Model_Person_LifestyleCost.Text" xml:space="preserve">
+    <value>Lebensstilkosten</value>
+  </data>
+  <data name="UI_TxT_SubtractLifeStyleCost.Text" xml:space="preserve">
+    <value>Lebensstilkosten abziehen</value>
+  </data>
+  <data name="Tip18" xml:space="preserve">
+    <value>Gefällt dir die App? 
+Bewerte Sie doch im Store!</value>
   </data>
 </root>

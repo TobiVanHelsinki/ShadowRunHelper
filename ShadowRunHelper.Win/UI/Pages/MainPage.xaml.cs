@@ -88,9 +88,8 @@ namespace ShadowRunHelper.UI
         {
             res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
-#pragma warning disable CS4014
+
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary(y.NewItems);
-#pragma warning restore CS4014
             Model.PropertyChanged += Model_PropertyChanged;
             Model.TutorialStateChanged += TutorialStateChanged;
             Model.NavigationRequested += NavigationRequested;

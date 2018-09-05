@@ -1,6 +1,5 @@
 ﻿using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Xam.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,9 +8,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using TAMARIN.IO;
 using TAPPLICATION.Model;
 using TLIB;
+using TLIB.IO;
+using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper.Model
 {
@@ -226,14 +226,14 @@ namespace ShadowRunHelper.Model
                         NewEntry = LinkList.Find(x =>
                         x.Object.Bezeichner == item.Object.Bezeichner &&
                         x.PropertyID == item.PropertyID);
-                        Analytics.TrackEvent("Err_CharRepair_Soft");
+                        Features.Analytics.TrackEvent("Err_CharRepair_Soft");
                     }
                     if (NewEntry == null)
                     {
                         NewEntry = LinkList.Find(x =>
                         x.Object.ThingType == item.Object.ThingType &&
                         x.PropertyID == item.PropertyID);
-                        Analytics.TrackEvent("Err_CharRepair_Soft");
+                        Features.Analytics.TrackEvent("Err_CharRepair_Soft");
                     }
                     if (NewEntry != null)
                     {
@@ -241,7 +241,7 @@ namespace ShadowRunHelper.Model
                     }
                     else
                     {
-                        Analytics.TrackEvent("Err_CharRepair_Hard");
+                        Features.Analytics.TrackEvent("Err_CharRepair_Hard");
                         AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }
@@ -460,6 +460,13 @@ namespace ShadowRunHelper.Model
             IsItemsMove = null;
         }
         #endregion
+        public void SubtractLifeStyleCost()
+        {
+            if (Person != null)
+            {
+                Person.Kontostand -= Person.LifeStyleCost;
+            }
+        }
         public static CharHolder CreateCharWithStandardContent()
         {
             var ret = new CharHolder();

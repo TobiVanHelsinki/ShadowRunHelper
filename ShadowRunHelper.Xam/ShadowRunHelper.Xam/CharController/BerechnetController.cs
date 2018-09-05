@@ -1,15 +1,12 @@
 ﻿using Newtonsoft.Json;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Linq;
-using TLIB;
-using TAPPLICATION;
 using System.ComponentModel;
+using System.Linq;
+using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper.CharController
 {

@@ -142,7 +142,7 @@
     <value>Could not delete all</value>
   </data>
   <data name="Notification_Error_DelCurrentFail" xml:space="preserve">
-    <value>Could not delete current char</value>
+    <value>Could not delete current character</value>
   </data>
   <data name="Notification_Error_DelFail" xml:space="preserve">
     <value>Could not delete</value>
@@ -297,10 +297,10 @@ This app can be used to open files and folders on the file system. The app store
     <value>Edit after adding</value>
   </data>
   <data name="Ui_Nav_Char.Label" xml:space="preserve">
-    <value>Current Char</value>
+    <value>Character Sheet</value>
   </data>
   <data name="Ui_Nav_Admin.Label" xml:space="preserve">
-    <value>Administrate Chars</value>
+    <value>Administration</value>
   </data>
   <data name="Ui_Nav_Settings.Label" xml:space="preserve">
     <value>Settings</value>
@@ -1396,7 +1396,7 @@ By default, chars are saved within the app. In the options you can choose whethe
     <value>continue without saving</value>
   </data>
   <data name="Request_NotSave.Text" xml:space="preserve">
-    <value>The current char has unsaved changes</value>
+    <value>The current character has unsaved changes</value>
   </data>
   <data name="Request_NotSave.Title" xml:space="preserve">
     <value>Warning</value>
@@ -1479,30 +1479,21 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="Notification_NewVersion" xml:space="preserve">
     <value>Welcome to the new version: {0}. Check out a list of new features here!</value>
   </data>
-  <data name="Notification_NewVersion_1_7_4_0" xml:space="preserve">
-    <value>[new] Category options (Sort, Export,...)
-[new] Technomancer Categories
-[new] Own categories for calculated values
-[new] Links are now possible for attributes and battle items
-[new] Links are now possible with every item
-[new] Example Character
-[new] Multi-window option (for Windows April Update)
-[new] Drag and Drop between different windows (for Windows April Update)
-[new] TimeLine Integration (for Windows April Update)
-[new] notifications
-[new] no more reloading to apply char options
-[new] added many tooltips for buttons
-[new] complete English translation
-[new] Drag and Drop between categories</value>
-  </data>
   <data name="UI_TxT_Cat_AddSep.Text" xml:space="preserve">
     <value>Add Seperator</value>
   </data>
-  <data name="Notification_NewVersion_1_7_6_0" xml:space="preserve">
-    <value>[new] Seperators</value>
-  </data>
-  <data name="Notification_NewVersion_1_7_8_0" xml:space="preserve">
-    <value>[new] Category options (Sort, Export,...)
+  <data name="VersionHistory" xml:space="preserve">
+    <value>Version 1.8.4:
+[new] Lifestyle cost button
+Version 1.8.3:
+[new] Track your favorites
+[new] Contextmenu for Things
+[new] Copy, Cut, Paste Things (Contextmenu)
+[new] Char name in taskbar
+Version 1.7.6:
+[new] Seperators
+Version 1.7.4:
+[new] Category options (Sort, Export,...)
 [new] Technomancer Categories
 [new] Own categories for calculated values
 [new] Links are now possible for attributes and battle items
@@ -1516,7 +1507,7 @@ By default, chars are saved within the app. In the options you can choose whethe
 [new] added many tooltips for buttons
 [new] complete English translation
 [new] Drag and Drop between categories
-[new] Seperators</value>
+    </value>
   </data>
   <data name="UI_Optionen_Debug_Mode.Text" xml:space="preserve">
     <value>Debug Mode</value>
@@ -1590,20 +1581,6 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="UI_TxT_Share.Text" xml:space="preserve">
     <value>Share</value>
   </data>
-  <data name="Notification_NewVersion_1_8_3_0" xml:space="preserve">
-    <value>[new] Track your favorites
-[new] Contextmenu for Things
-[new] Copy, Cut, Paste Things (Contextmenu)
-[new] Char name in taskbar
-
-[new] Category options (Sort, Export,...)
-[new] Own categories for calculated values
-[new] Links are now possible for attributes and battle items
-[new] Links are now possible with every item
-[new] Multi-window option (for Windows April Update)
-[new] Drag and Drop between different windows (for Windows April Update)
-[new] TimeLine Integration (for Windows April Update)</value>
-  </data>
   <data name="Tip1" xml:space="preserve">
     <value>Windows sometimes closes apps due to lack of resources. Try the autosave option if you want to avoid data loss.</value>
   </data>
@@ -1672,5 +1649,14 @@ By default, chars are saved within the app. In the options you can choose whethe
   </data>
   <data name="Request_NotSave.Break" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="Model_Person_LifestyleCost.Text" xml:space="preserve">
+    <value>Lifestyle cost</value>
+  </data>
+  <data name="UI_TxT_SubtractLifeStyleCost.Text" xml:space="preserve">
+    <value>Subtract Lifestyle cost</value>
+  </data>
+  <data name="Tip18" xml:space="preserve">
+    <value>Do you like the App? Give a rating at the Store!</value>
   </data>
 </root>

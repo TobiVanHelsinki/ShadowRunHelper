@@ -137,9 +137,8 @@ namespace ShadowRunHelper.UI
             {
                 try
                 {
-#pragma warning disable CS4014
+
                     new Tutorial(1, 4).ShowAsync();
-#pragma warning restore CS4014
                 }
                 catch (Exception)
                 {
@@ -214,9 +213,7 @@ namespace ShadowRunHelper.UI
         #endregion
 
         #region CharOperations
-#pragma warning disable CS4014
         void Create_ExampleChar(object sender, RoutedEventArgs e) => CopyExampleChar();
-#pragma warning restore CS4014
         async Task CopyExampleChar()
         {
             ChangeProgress(true);

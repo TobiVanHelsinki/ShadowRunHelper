@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShadowRunHelper.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,13 @@ namespace ShadowRunHelper.Xam
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            CharHolder NewChar = CharHolder.CreateCharWithStandardContent();
+
+            Console.Text = "ThingList.Count: " + NewChar.ThingList.Count;
         }
     }
 }

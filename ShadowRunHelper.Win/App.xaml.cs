@@ -18,6 +18,7 @@ namespace ShadowRunHelper
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
             InitializeComponent();
+
             Features.Activities = new WinActivities();
             Features.Analytics = new WinAnalytics();
             Features.IAP = new WinIAP();
@@ -25,10 +26,11 @@ namespace ShadowRunHelper
             Features.AppInformation = new WinAppInformation();
             Features.AppDataPorter = new WinAppDataPorter();
 
-            TAPPLICATION.IO.SharedIO.CurrentIO = new TLIB.Code.Uwp.UwpIO();
-            TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TLIB.Code.Uwp.UwpSettings();
             TLIB.PlatformHelper.ModelHelper.Platform = new TLIB.Code.Uwp.UwpModelHelper();
             TLIB.PlatformHelper.StringHelper.Platform = new TLIB.Code.Uwp.UwpStringHelper();
+
+            TAPPLICATION.IO.SharedIO.CurrentIO = new TLIB.Code.Uwp.UwpIO();
+            TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TLIB.Code.Uwp.UwpSettings();
 
             AppHolder.InitModel();
         }

@@ -1,10 +1,11 @@
 ﻿using ShadowRunHelper.Model;
 using System;
-using TAMARIN.IO;
 using TAPPLICATION;
 using TAPPLICATION.IO;
 using TAPPLICATION.Model;
 using TLIB;
+using TLIB.IO;
+using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper
 {
@@ -178,7 +179,7 @@ namespace ShadowRunHelper
                 {
                     value = 1000;
                 }
-                SystemHelper.WriteLine("value: " + value);
+                System.Diagnostics.Debug.WriteLine("value: " + value);
                 PlatformSettings.SetRoaming(Constants.CONTAINER_SETTINGS_AUTO_SAVE_INTERVAL_MS, value);
                 Instance.NotifyPropertyChanged();
             }

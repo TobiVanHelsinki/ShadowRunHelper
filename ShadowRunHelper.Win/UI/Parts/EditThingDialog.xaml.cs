@@ -166,9 +166,8 @@ namespace ShadowRunHelper.UI
         {
             LinkListChoice dialog = new LinkListChoice(Model.AppModel.Instance.MainObject, ((Attribut)((Button)sender).DataContext).LinkedThings, Filter: CharModel.Attribut.Filter);
             Hide();
-#pragma warning disable CS4014
+
             dialog.ShowAsync();
-#pragma warning restore CS4014
         }
 
         void EditBox_GotFocus(object sender, RoutedEventArgs e) => SharePageFunctions.EditBox_SelectAll(sender, e);

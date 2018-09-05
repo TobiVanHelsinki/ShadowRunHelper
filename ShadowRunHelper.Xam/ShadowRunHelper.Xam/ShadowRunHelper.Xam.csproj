@@ -8,18 +8,42 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>pdbonly</DebugType>
     <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>TRACE;RELEASE</DefineConstants>
+    <NoWarn>;2008;CS0168;CS4014</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>;2008;CS0168;CS4014</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Example\de.SRHChar" />
-    <None Remove="Assets\PreDB\de.SRHChar" />
-    <None Remove="ToDo.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Assets\Example\de.SRHChar" />
-    <Content Include="Assets\PreDB\de.SRHChar" />
-    <Content Include="ToDo.txt" />
+    <Compile Remove="Assets\**" />
+    <Compile Remove="CharController\**" />
+    <Compile Remove="CharModel\**" />
+    <Compile Remove="Features\**" />
+    <Compile Remove="IO\**" />
+    <Compile Remove="Model\**" />
+    <Compile Remove="Ressourcen\**" />
+    <Compile Remove="Strings\**" />
+    <Compile Remove="UI\**" />
+    <EmbeddedResource Remove="Assets\**" />
+    <EmbeddedResource Remove="CharController\**" />
+    <EmbeddedResource Remove="CharModel\**" />
+    <EmbeddedResource Remove="Features\**" />
+    <EmbeddedResource Remove="IO\**" />
+    <EmbeddedResource Remove="Model\**" />
+    <EmbeddedResource Remove="Ressourcen\**" />
+    <EmbeddedResource Remove="Strings\**" />
+    <EmbeddedResource Remove="UI\**" />
+    <None Remove="Assets\**" />
+    <None Remove="CharController\**" />
+    <None Remove="CharModel\**" />
+    <None Remove="Features\**" />
+    <None Remove="IO\**" />
+    <None Remove="Model\**" />
+    <None Remove="Ressourcen\**" />
+    <None Remove="Strings\**" />
+    <None Remove="UI\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,9 +53,14 @@
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
   </ItemGroup>
 
-  <Import Project="..\..\..\TLIB\TAMARIN\TAMARIN.projitems" Label="Shared" />
+  <ItemGroup>
+    <Reference Include="TAPPLICATION">
+      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard2.0\TAPPLICATION.dll</HintPath>
+    </Reference>
+    <Reference Include="TLIB">
+      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard2.0\TLIB.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
-  <Import Project="..\..\..\TLIB\TAPPLICATION\TAPPLICATION.projitems" Label="Shared" />
-
-  <Import Project="..\..\..\TLIB\TLIB\TLIB.projitems" Label="Shared" />
+  <Import Project="..\..\SharedCodeBase\SharedCodeBase.projitems" Label="Shared" />
 </Project>

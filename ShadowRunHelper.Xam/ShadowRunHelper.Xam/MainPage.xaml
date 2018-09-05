@@ -9,6 +9,8 @@
         <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Button Text="Create Char" Clicked="Button_Clicked"/>
+        <Label x:Name="Console"/>
     </StackLayout>
 
 </ContentPage>

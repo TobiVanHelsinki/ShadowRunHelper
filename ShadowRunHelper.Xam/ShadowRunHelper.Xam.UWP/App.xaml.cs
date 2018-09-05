@@ -29,6 +29,24 @@ namespace ShadowRunHelper.Xam.UWP
         public App()
         {
             this.InitializeComponent();
+
+            //UnhandledException += async (x, y) => { await AppHolder.App_UnhandledExceptionAsync(y.Message, y.Exception); };
+
+            //EnteredBackground += App_EnteredBackground;
+            //LeavingBackground += App_LeavingBackground;
+
+            Features.Activities = new WinActivities();
+            Features.Analytics = new WinAnalytics();
+            Features.IAP = new WinIAP();
+            Features.InstanceHandling = new WinInstanceHandling();
+            Features.AppInformation = new WinAppInformation();
+            Features.AppDataPorter = new WinAppDataPorter();
+
+            TLIB.PlatformHelper.ModelHelper.Platform = new TLIB.Code.Uwp.UwpModelHelper();
+            TLIB.PlatformHelper.StringHelper.Platform = new TLIB.Code.Uwp.UwpStringHelper();
+
+            TAPPLICATION.IO.SharedIO.CurrentIO = new TLIB.Code.Uwp.UwpIO();
+            TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TLIB.Code.Uwp.UwpSettings();
             this.Suspending += OnSuspending;
         }
 

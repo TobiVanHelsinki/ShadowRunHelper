@@ -241,8 +241,7 @@ namespace ShadowRunHelper.Model
                     }
                     else
                     {
-                        Microsoft.AppCenter.Analytics.
-                        Analytics.TrackEvent("Err_CharRepair_Hard");
+                        Features.Analytics.TrackEvent("Err_CharRepair_Hard");
                         AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }

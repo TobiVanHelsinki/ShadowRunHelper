@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using ShadowRunHelper.IO;
-using TAMARIN.IO;
+﻿using ShadowRunHelper.IO;
+using TLIB.IO;
+using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper.Model
 {
@@ -29,20 +28,20 @@ namespace ShadowRunHelper.Model
         AppModel() : base()
         {
             PropertyChanged += (x,y)=> {
-                if (y.PropertyName == nameof(MainObject) && MainObject != null) Activities.GenerateCharActivityAsync(MainObject);
-                if (y.PropertyName == nameof(MainObject) && MainObject == null) Activities.StopCurrentCharActivity();
+                if (y.PropertyName == nameof(MainObject) && MainObject != null) Features.Activities.GenerateCharActivityAsync(MainObject);
+                if (y.PropertyName == nameof(MainObject) && MainObject == null) Features.Activities.StopCurrentCharActivity();
             };
             }
         ~AppModel() 
         {
-            Activities.StopCurrentCharActivity();
+            Features.Activities.StopCurrentCharActivity();
         }
 
 public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptions PageOptions);
         public event NavigationEventHandler NavigationRequested;
         public void RequestNavigation(ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
         {
-            DispatcherHelper.ExecuteOnUIThreadAsync(()=>NavigationRequested?.Invoke(p, po));
+            ModelHelper.ExecuteOnUIThreadAsync(()=>NavigationRequested?.Invoke(p, po));
         }
 
         public void TutorialChangedState(int StateNumber, bool Highlight = false)
