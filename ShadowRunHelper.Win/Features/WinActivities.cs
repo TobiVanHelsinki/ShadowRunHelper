@@ -1,15 +1,15 @@
-﻿using ShadowRunHelper.Model;
-using System;
+﻿using System;
+using ShadowRunHelper.Model;
 using System.Threading.Tasks;
 using TLIB;
 using Windows.ApplicationModel.UserActivities;
 
 namespace ShadowRunHelper
 {
-    public static class Activities
+    public class WinActivities : IActivities
     {
-        static UserActivitySession CurrentCharActivity;
-        public static async Task GenerateCharActivityAsync(CharHolder Char)
+        UserActivitySession CurrentCharActivity;
+        public async Task GenerateCharActivityAsync(CharHolder Char)
         {
             if (!Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.UserActivities.UserActivityChannel"))
             {
@@ -21,14 +21,14 @@ namespace ShadowRunHelper
 
             userActivity.VisualElements.DisplayText = StringHelper.GetString("Activity_PlayedWith") + name.Remove(name.Length - Constants.DATEIENDUNG_CHAR.Length);
             userActivity.ActivationUri = new Uri(Constants.PROTOCOL_CHAR + Char.FileInfo.Filepath + Char.FileInfo.Filename);
-     
+
             await userActivity.SaveAsync();
 
             CurrentCharActivity?.Dispose();
             CurrentCharActivity = userActivity.CreateSession();
         }
 
-        public static void StopCurrentCharActivity()
+        public void StopCurrentCharActivity()
         {
             if (!Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.UserActivities.UserActivityChannel"))
             {

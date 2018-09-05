@@ -226,14 +226,14 @@ namespace ShadowRunHelper.Model
                         NewEntry = LinkList.Find(x =>
                         x.Object.Bezeichner == item.Object.Bezeichner &&
                         x.PropertyID == item.PropertyID);
-                        Analytics.TrackEvent("Err_CharRepair_Soft");
+                        Features.Analytics.TrackEvent("Err_CharRepair_Soft");
                     }
                     if (NewEntry == null)
                     {
                         NewEntry = LinkList.Find(x =>
                         x.Object.ThingType == item.Object.ThingType &&
                         x.PropertyID == item.PropertyID);
-                        Analytics.TrackEvent("Err_CharRepair_Soft");
+                        Features.Analytics.TrackEvent("Err_CharRepair_Soft");
                     }
                     if (NewEntry != null)
                     {
@@ -241,6 +241,7 @@ namespace ShadowRunHelper.Model
                     }
                     else
                     {
+                        Microsoft.AppCenter.Analytics.
                         Analytics.TrackEvent("Err_CharRepair_Hard");
                         AppModel.Instance.NewNotification(String.Format(StringHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }

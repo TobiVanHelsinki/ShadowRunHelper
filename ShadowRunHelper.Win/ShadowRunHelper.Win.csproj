@@ -132,11 +132,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Debug_TimeAnalyser.cs" />
-    <Compile Include="Features\Activities.cs" />
-    <Compile Include="Features\AppDataPorter.cs" />
-    <Compile Include="Features\AppHolder.cs" />
-    <Compile Include="Features\IAP.cs" />
+    <Compile Include="Features\WinAppInformation.cs" />
+    <Compile Include="Features\WinIAP.cs" />
+    <Compile Include="Features\WinActivities.cs" />
+    <Compile Include="Features\WinAnalytics.cs" />
+    <Compile Include="Features\WinInstanceHandling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Converter\io_Mult1K.cs" />
     <Compile Include="UI\Converter\o_LastTime.cs" />

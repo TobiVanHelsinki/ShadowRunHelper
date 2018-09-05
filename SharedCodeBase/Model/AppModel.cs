@@ -30,13 +30,13 @@ namespace ShadowRunHelper.Model
         AppModel() : base()
         {
             PropertyChanged += (x,y)=> {
-                if (y.PropertyName == nameof(MainObject) && MainObject != null) Activities.GenerateCharActivityAsync(MainObject);
-                if (y.PropertyName == nameof(MainObject) && MainObject == null) Activities.StopCurrentCharActivity();
+                if (y.PropertyName == nameof(MainObject) && MainObject != null) Features.Activities.GenerateCharActivityAsync(MainObject);
+                if (y.PropertyName == nameof(MainObject) && MainObject == null) Features.Activities.StopCurrentCharActivity();
             };
             }
         ~AppModel() 
         {
-            Activities.StopCurrentCharActivity();
+            Features.Activities.StopCurrentCharActivity();
         }
 
 public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptions PageOptions);

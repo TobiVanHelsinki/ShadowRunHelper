@@ -1,7 +1,4 @@
-﻿using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
-using ShadowRunHelper.IO;
+﻿using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
@@ -10,9 +7,6 @@ using TAMARIN.IO;
 using TAPPLICATION;
 using TAPPLICATION.IO;
 using TLIB;
-using Windows.ApplicationModel;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper
 {
@@ -21,10 +15,6 @@ namespace ShadowRunHelper
     
         static AppModel Model;
         static SettingsModel Settings;
-
-        public static AppInstance Instance;
-        private static string instanceKey = "";
-        public static string InstanceKey { get { return Instance == null ? instanceKey : Instance.Key; } set => instanceKey = value; }
 
         static bool FirstStart = true;
 
@@ -43,7 +33,7 @@ namespace ShadowRunHelper
             Settings.START_COUNT++;
 
             Task.WaitAll(
-                Task.Run(() => IAP.CheckLicence()),
+                Task.Run(() => Features.IAP.CheckLicence()),
                 Task.Run(AppCenterConfiguration),
                 Task.Run(SetConstantStuff),
                 Task.Run(RegisterAppInstance)
@@ -60,19 +50,7 @@ namespace ShadowRunHelper
 
         static void RegisterAppInstance()
         {
-            if (!Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("AppInstance", "FindOrRegisterInstanceForKey") && Windows.Foundation.Metadata.ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 5))
-            {
-                string key = Guid.NewGuid().ToString();
-                try
-                {
-                    Instance = AppInstance.FindOrRegisterInstanceForKey(key);
-                }
-                catch (Exception ex)
-                {
-                    InstanceKey = key;
-                }
-            }
-
+            Features.InstanceHandling.CreateInstance();
         }
 
         internal static void FileActivated(string Name, string Path)
@@ -92,7 +70,7 @@ namespace ShadowRunHelper
         {
             try
             {
-                AppCenter.Start(Constants.AppCenterID, typeof(Crashes), typeof(Analytics)); // zu lange, nach mainwindow creation
+                Features.Analytics.Init();
             }
             catch (Exception)
             {
@@ -101,7 +79,7 @@ namespace ShadowRunHelper
 
         static void SetConstantStuff()
         {
-            SharedConstants.APP_VERSION_BUILD_DELIM = String.Format("{0}.{1}.{2}.{3}", Package.Current.Id.Version.Major, Package.Current.Id.Version.Minor, Package.Current.Id.Version.Build, Package.Current.Id.Version.Revision);
+            SharedConstants.APP_VERSION_BUILD_DELIM = String.Format("{0}.{1}.{2}.{3}", Features.AppInformation.Version_Major, Features.AppInformation.Version_Minor, Features.AppInformation.Version_Build, Features.AppInformation.Version_Revision);
             SharedConstants.APP_PUBLISHER_MAIL = Constants.APP_PUBLISHER_MAIL_TvH;
             SharedConstants.APP_PUBLISHER = Constants.APP_PUBLISHER_TvH;
             SharedConstants.APP_STORE_ID = Constants.APP_STORE_ID_SRE;
@@ -193,9 +171,9 @@ namespace ShadowRunHelper
 
         #region Exception Handling
 
-        internal static void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        internal static void OnNavigationFailed(string Message)
         {
-            throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+            throw new Exception("Failed to load Page " + Message);
         }
 
         /// <summary>
@@ -204,27 +182,26 @@ namespace ShadowRunHelper
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        internal static async Task App_UnhandledExceptionAsync(object sender, UnhandledExceptionEventArgs e)
+        internal static async Task App_UnhandledExceptionAsync(string Message, Exception ex)
         {
             Settings.LAST_SAVE_INFO = null;
             try
             {
                 await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Emergency);
                 var res = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
-                Model.NewNotification(res.GetString("Notification_Error_Unknown"), e.Exception);
+                Model.NewNotification(res.GetString("Notification_Error_Unknown"), ex);
             }
-            catch (Exception ex)
+            catch (Exception exx)
             {
             }
-            if (!e.Message.Contains(Constants.TESTEXCEPTIONTEXT))
+            if (!Message.Contains(Constants.TESTEXCEPTIONTEXT))
             {
-                e.Handled = true;
                 var param = new Dictionary<string, string>();
-                param.Add("Message", e.Message);
-                param.Add("EXMessage", e.Exception.Message);
-                param.Add("StackTrace", e.Exception.StackTrace);
-                param.Add("InnerException", e.Exception.InnerException.Message);
-                Analytics.TrackEvent("App_UnhandledExceptionAsync", param);
+                param.Add("Message", Message);
+                param.Add("EXMessage", ex.Message);
+                param.Add("StackTrace", ex.StackTrace);
+                param.Add("InnerException", ex.InnerException.Message);
+                Features.Analytics.TrackEvent("App_UnhandledExceptionAsync", param);
             }
         }
         #endregion

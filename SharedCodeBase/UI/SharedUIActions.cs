@@ -26,7 +26,7 @@ namespace ShadowRunHelper.UI
             {
                 AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
-            Analytics.TrackEvent("Admin_UI_TxT_CSV_Cat_Export");
+            Features.Analytics.TrackEvent("Admin_UI_TxT_CSV_Cat_Export");
         }
     }
 }

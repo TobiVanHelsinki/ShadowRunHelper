@@ -8,9 +8,9 @@ using Windows.Services.Store;
 
 namespace ShadowRunHelper
 {
-    public static class IAP
+    public class WinIAP : IIAP
     {
-        public static async Task CheckLicence(bool force = false)
+        public async Task CheckLicence(bool force = false)
         {
             if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract",4))
             {
@@ -49,7 +49,7 @@ namespace ShadowRunHelper
             }
         }
 
-        internal async static Task Buy(string FEATUREID)
+        public async Task Buy(string FEATUREID)
         {
             var context = StoreContext.GetDefault();
 

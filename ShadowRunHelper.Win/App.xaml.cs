@@ -1,6 +1,5 @@
 ﻿using ShadowRunHelper.Model;
 using ShadowRunHelper.UI;
-using System;
 using System.Diagnostics;
 using TAPPLICATION;
 using Windows.ApplicationModel;
@@ -14,11 +13,17 @@ namespace ShadowRunHelper
     {
         public App()
         {
-            UnhandledException += async (x, y) => { await AppHolder.App_UnhandledExceptionAsync(x, y); };
+            UnhandledException += async (x, y) => { await AppHolder.App_UnhandledExceptionAsync(y.Message,y.Exception); };
 
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
             InitializeComponent();
+            Features.Activities = new WinActivities();
+            Features.Analytics = new WinAnalytics();
+            Features.IAP = new WinIAP();
+            Features.InstanceHandling = new WinInstanceHandling();
+            Features.AppInformation = new WinAppInformation();
+
             AppHolder.InitModel();
         }
 
@@ -58,7 +63,7 @@ namespace ShadowRunHelper
             if (!(Window.Current.Content is Frame rootFrame))
             {
                 rootFrame = new Frame();
-                rootFrame.NavigationFailed += AppHolder.OnNavigationFailed;
+                rootFrame.NavigationFailed += (s, ee)=>AppHolder.OnNavigationFailed(ee.SourcePageType.FullName);
                 Window.Current.Content = rootFrame;
             }
             Window.Current.Activate();

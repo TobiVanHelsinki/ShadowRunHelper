@@ -74,7 +74,7 @@ namespace ShadowRunHelper.UI
                 LinkList.Add(item);
             }
             deferral.Complete();
-            Analytics.TrackEvent("LinkChoosing Used");
+            Features.Analytics.TrackEvent("LinkChoosing Used");
 
         }
 
@@ -95,7 +95,7 @@ namespace ShadowRunHelper.UI
             }
             if (Zus_ListVIew.SelectedItems.Count < LinkList.Count)
             {
-                Analytics.TrackEvent("Err_LinkChoosing Zus_ListVIew.SelectedItems.Count < lstZusammensetzung.Count");
+                Features.Analytics.TrackEvent("Err_LinkChoosing Zus_ListVIew.SelectedItems.Count < lstZusammensetzung.Count");
 #if DEBUG
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
 #endif

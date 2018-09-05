@@ -194,7 +194,7 @@ namespace ShadowRunHelper.UI
             {
                 Model.NewNotification(res.GetString("Notification_Error_CSVImportFail") + "2", ex);
             }
-            Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Import");
+            Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Import");
         }
 
         private void UI_TxT_CSV_Cat_Export_Click(object sender, RoutedEventArgs e)
@@ -212,7 +212,7 @@ namespace ShadowRunHelper.UI
             {
                 Model.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
-            Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export");
+            Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export");
         }
         private void UI_TxT_CSV_Cat_Export_Selected(object sender, RoutedEventArgs e)
         {
@@ -230,7 +230,7 @@ namespace ShadowRunHelper.UI
             {
                 Model.NewNotification(res.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
-            Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export_Selected");
+            Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export_Selected");
         }
 
         void UI_TxT_Cat_UncheckAll(object sender, RoutedEventArgs e)
@@ -252,20 +252,20 @@ namespace ShadowRunHelper.UI
         #region Ordering
         void UI_TxT_Cat_Order_Type(object sender, RoutedEventArgs e)
         {
-            Analytics.TrackEvent("Char_UI_TxT_Cat_Order_Type");
+            Features.Analytics.TrackEvent("Char_UI_TxT_Cat_Order_Type");
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             CTRL.OrderData(Ordering.Type);
         }
 
         void UI_TxT_Cat_Order_ABC(object sender, RoutedEventArgs e)
         {
-            Analytics.TrackEvent("Char_UI_TxT_Cat_Order_ABC");
+            Features.Analytics.TrackEvent("Char_UI_TxT_Cat_Order_ABC");
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             CTRL.OrderData(Ordering.ABC);
         }
         private void UI_TxT_Cat_Order_Orig(object sender, RoutedEventArgs e)
         {
-            Analytics.TrackEvent("Char_UI_TxT_Cat_Order_Orig");
+            Features.Analytics.TrackEvent("Char_UI_TxT_Cat_Order_Orig");
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             CTRL.OrderData(Ordering.Original);
         }
@@ -355,14 +355,14 @@ namespace ShadowRunHelper.UI
             }
             var txt = CharHolderIO.Serialize(ToSend);
             e.Data.SetText(txt);
-            e.Data.Properties.ApplicationName = AppHolder.InstanceKey;
+            e.Data.Properties.ApplicationName = Features.InstanceHandling.InstanceKey;
         }
 
         private void ListView_DragOver(object sender, DragEventArgs e)
         {
             if (e?.DataView?.Properties?.Title == "Thing")
             {
-                if (e.DataView.Properties.ApplicationName == AppHolder.InstanceKey)
+                if (e.DataView.Properties.ApplicationName == Features.InstanceHandling.InstanceKey)
                 {
                     e.AcceptedOperation = DataPackageOperation.Move;
                 }
@@ -379,7 +379,7 @@ namespace ShadowRunHelper.UI
 
         private async void ListView_Drop(object sender, DragEventArgs e) // 3
         {
-            if (e?.DataView?.Properties?.ApplicationName == AppHolder.InstanceKey) // bin ich selber
+            if (e?.DataView?.Properties?.ApplicationName == Features.InstanceHandling.InstanceKey) // bin ich selber
             {
                 Model.MainObject.MovePreparedItems(Controller.eDataTyp);
             }

@@ -1,6 +1,6 @@
-﻿using Microsoft.AppCenter.Analytics;
-using ShadowRunHelper.CharController;
+﻿using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Xam.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

@@ -1,5 +1,5 @@
-﻿using Microsoft.AppCenter.Analytics;
-using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.Model;
+using ShadowRunHelper.Xam.Model;
 using System;
 using System.Linq;
 using TAMARIN.IO;

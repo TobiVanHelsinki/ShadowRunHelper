@@ -102,17 +102,17 @@ namespace ShadowRunHelper.UI
 
         async void IAP_ADS(object sender, RoutedEventArgs e)
         {
-            await IAP.Buy(Constants.IAP_FEATUREID_ADFREE);
+            await Features.IAP.Buy(Constants.IAP_FEATUREID_ADFREE);
         }
 
         async void IAP_ADS_365(object sender, RoutedEventArgs e)
         {
-            await IAP.Buy(Constants.IAP_FEATUREID_ADFREE_365);
+            await Features.IAP.Buy(Constants.IAP_FEATUREID_ADFREE_365);
         }
 
         async void IAP_Tee(object sender, RoutedEventArgs e)
         {
-            await IAP.Buy(Constants.IAP_FEATUREID_TEE);
+            await Features.IAP.Buy(Constants.IAP_FEATUREID_TEE);
         }
         #endregion
         void MainNavigation_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -120,19 +120,19 @@ namespace ShadowRunHelper.UI
             switch ((MainNavigation.SelectedItem as PivotItem).Tag)
             {
                 case "31":
-                    Analytics.TrackEvent("Nav_Sett_Info");
+                    Features.Analytics.TrackEvent("Nav_Sett_Info");
                     break;
                 case "32":
-                    Analytics.TrackEvent("Nav_Sett_Sett");
+                    Features.Analytics.TrackEvent("Nav_Sett_Sett");
                     break;
                 case "34":
-                    Analytics.TrackEvent("Nav_Sett_Help");
+                    Features.Analytics.TrackEvent("Nav_Sett_Help");
                     break;
                 case "36":
-                    Analytics.TrackEvent("Nav_Sett_Buy");
+                    Features.Analytics.TrackEvent("Nav_Sett_Buy");
                     break;
                 case "35":
-                    Analytics.TrackEvent("Nav_Sett_Not");
+                    Features.Analytics.TrackEvent("Nav_Sett_Not");
                     break;
                 default:
                     break;
