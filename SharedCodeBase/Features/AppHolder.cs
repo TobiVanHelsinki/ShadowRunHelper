@@ -188,8 +188,7 @@ namespace ShadowRunHelper
             try
             {
                 await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Emergency);
-                var res = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
-                Model.NewNotification(res.GetString("Notification_Error_Unknown"), ex);
+                Model.NewNotification(StringHelper.GetString("Notification_Error_Unknown"), ex);
             }
             catch (Exception exx)
             {
