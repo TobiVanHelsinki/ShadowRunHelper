@@ -73,10 +73,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)CharModel\Zaubersprueche.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\IActivities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\IAnalytics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Features\IAppDataPorter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\IAppInformation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\IInstanceHandling.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\Features.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Features\AppDataPorter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\AppHolder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\Debug_TimeAnalyser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\IAP.cs" />

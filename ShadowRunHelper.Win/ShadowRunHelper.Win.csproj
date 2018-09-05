@@ -132,6 +132,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\WinAppDataPorter.cs" />
     <Compile Include="Features\WinAppInformation.cs" />
     <Compile Include="Features\WinIAP.cs" />
     <Compile Include="Features\WinActivities.cs" />

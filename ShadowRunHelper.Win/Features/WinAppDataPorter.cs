@@ -11,21 +11,21 @@ using Windows.Storage;
 
 namespace ShadowRunHelper
 {
-    internal static class AppDataPorter
+    public class WinAppDataPorter : IAppDataPorter
     {
-        internal static Task<(List<(string, object)> set, List<(string, string)> files)> Loading;
-        internal static async Task<(List<(string, object)> set, List<(string, string)> files)> LoadAppPacket(IStorageItem File)
+        public bool InProgress { get; set; }
+        public Task<(List<(string, object)> set, List<(string, string)> files)> Loading { get; set; }
+        public async Task<(List<(string, object)> set, List<(string, string)> files)> LoadAppPacket(object FileHandle)
         {
             InProgress = true;
-            var txt = await FileIO.ReadTextAsync((IStorageFile)File);
+            var txt = await FileIO.ReadTextAsync((IStorageFile)FileHandle);
             var des = JsonConvert.DeserializeObject<(List<(string, object)>, List<(string, string)>)>(txt);
             return des;
         }
-        static List<string> Forbidden = new List<string>() {"I","Instance", "LastAppVersion", "LastSaveInfo", "LastPage", "ORDNERMODE", "ORDNERMODE_PFAD" };
 
-        public static bool InProgress { get; set; }
+        public List<string> Forbidden { get; set; } = new List<string>() { "I", "Instance", "LastAppVersion", "LastSaveInfo", "LastPage", "ORDNERMODE", "ORDNERMODE_PFAD" };
 
-        internal static async void ImportAppPacket()
+        public async Task ImportAppPacket()
         {
             List<string> ErrorList = new List<string>();
             var (set, files) = await Loading;

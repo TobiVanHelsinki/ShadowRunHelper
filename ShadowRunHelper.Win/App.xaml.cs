@@ -23,6 +23,8 @@ namespace ShadowRunHelper
             Features.IAP = new WinIAP();
             Features.InstanceHandling = new WinInstanceHandling();
             Features.AppInformation = new WinAppInformation();
+            Features.AppDataPorter = new WinAppDataPorter();
+            
 
             AppHolder.InitModel();
         }
@@ -50,7 +52,7 @@ namespace ShadowRunHelper
             }
             else if (args.Files[0].Name.EndsWith(".SRHApp1"))
             {
-                AppDataPorter.Loading = AppDataPorter.LoadAppPacket(args.Files[0]);
+                Features.AppDataPorter.Loading = Features.AppDataPorter.LoadAppPacket(args.Files[0]);
             }
         }
         #endregion

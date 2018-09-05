@@ -7,5 +7,6 @@
         public static IActivities Activities { get; set; }
         public static IInstanceHandling InstanceHandling { get; set; }
         public static IAppInformation AppInformation { get; set; }
+        public static IAppDataPorter AppDataPorter { get; set; }
     }
 }

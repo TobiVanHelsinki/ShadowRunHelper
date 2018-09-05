@@ -255,12 +255,12 @@ namespace ShadowRunHelper.UI
                     ,true,10);
                 SettingsModel.I.LAST_APP_VERSION = Constants.APP_VERSION_BUILD_DELIM;
             }
-            if (AppDataPorter.InProgress)
+            if (Features.AppDataPorter.InProgress)
             {
                 //Ask User, If YES, Import all
                 new MultiButtonMessageDialog(StringHelper.GetString("Request_AppImport/Title")
                     , StringHelper.GetString("Request_AppImport/Text")
-                    , (StringHelper.GetString("Request_AppImport/Yes"), () => AppDataPorter.ImportAppPacket())
+                    , (StringHelper.GetString("Request_AppImport/Yes"), () => Features.AppDataPorter.ImportAppPacket())
                     , (StringHelper.GetString("Request_AppImport/No"), null)
                     ).ShowAsync();
             }
