@@ -12,7 +12,7 @@
     <DefaultLanguage>en</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
@@ -406,9 +406,14 @@
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TLIB\TLIB\TLIB.csproj">
+      <Project>{e3eb87ff-2421-48b9-be86-a87e9ca0c533}</Project>
+      <Name>TLIB</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\SharedCodeBase\SharedCodeBase.projitems" Label="Shared" />
   <Import Project="..\..\TLIB\TAPPLICATION\TAPPLICATION.projitems" Label="Shared" />
-  <Import Project="..\..\TLIB\TLIB\TLIB.projitems" Label="Shared" />
   <Import Project="..\..\TLIB\TAMARIN\TAMARIN.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
