@@ -98,12 +98,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\WinActivities.cs" />
-    <Compile Include="Features\WinAnalytics.cs" />
-    <Compile Include="Features\WinAppDataPorter.cs" />
-    <Compile Include="Features\WinAppInformation.cs" />
-    <Compile Include="Features\WinIAP.cs" />
-    <Compile Include="Features\WinInstanceHandling.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -190,6 +184,7 @@
     </Reference>
   </ItemGroup>
   <Import Project="..\..\..\TLIB\CodeUwp\CodeUwp.projitems" Label="Shared" />
+  <Import Project="..\..\FeaturesUWP\FeaturesUWP.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

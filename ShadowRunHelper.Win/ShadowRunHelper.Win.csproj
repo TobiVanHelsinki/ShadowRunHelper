@@ -132,12 +132,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\WinAppDataPorter.cs" />
-    <Compile Include="Features\WinAppInformation.cs" />
-    <Compile Include="Features\WinIAP.cs" />
-    <Compile Include="Features\WinActivities.cs" />
-    <Compile Include="Features\WinAnalytics.cs" />
-    <Compile Include="Features\WinInstanceHandling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Converter\io_Mult1K.cs" />
     <Compile Include="UI\Converter\o_LastTime.cs" />
@@ -417,6 +411,7 @@
   </ItemGroup>
   <Import Project="..\SharedCodeBase\SharedCodeBase.projitems" Label="Shared" />
   <Import Project="..\..\TLIB\CodeUwp\CodeUwp.projitems" Label="Shared" />
+  <Import Project="..\FeaturesUWP\FeaturesUWP.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
