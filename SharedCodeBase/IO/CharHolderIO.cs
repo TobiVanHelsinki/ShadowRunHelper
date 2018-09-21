@@ -114,7 +114,7 @@ namespace ShadowRunHelper.IO
         }
         public static string PlainTextToRtf(string plainText)
         {
-            string escapedPlainText = plainText.Replace(@"\", @"\\").Replace("{", @"\{").Replace("}", @"\}").Replace(@"\r}", @"\r\n}");
+            string escapedPlainText = plainText == null? "" : plainText.Replace(@"\", @"\\").Replace("{", @"\{").Replace("}", @"\}").Replace(@"\r}", @"\r\n}");
             string rtf = 
 @"{\rtf1\fbidis\ansi\ansicpg1252\deff0\nouicompat\deflang1031{\fonttbl{\f0\fnil Segoe UI;}}
 {\colortbl ;\red0\green0\blue0;}
