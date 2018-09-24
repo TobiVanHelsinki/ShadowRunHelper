@@ -17,7 +17,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Assets\**" />
     <Compile Remove="CharController\**" />
     <Compile Remove="CharModel\**" />
     <Compile Remove="Features\**" />
@@ -25,8 +24,6 @@
     <Compile Remove="Model\**" />
     <Compile Remove="Ressourcen\**" />
     <Compile Remove="Strings\**" />
-    <Compile Remove="UI\**" />
-    <EmbeddedResource Remove="Assets\**" />
     <EmbeddedResource Remove="CharController\**" />
     <EmbeddedResource Remove="CharModel\**" />
     <EmbeddedResource Remove="Features\**" />
@@ -34,8 +31,6 @@
     <EmbeddedResource Remove="Model\**" />
     <EmbeddedResource Remove="Ressourcen\**" />
     <EmbeddedResource Remove="Strings\**" />
-    <EmbeddedResource Remove="UI\**" />
-    <None Remove="Assets\**" />
     <None Remove="CharController\**" />
     <None Remove="CharModel\**" />
     <None Remove="Features\**" />
@@ -43,7 +38,11 @@
     <None Remove="Model\**" />
     <None Remove="Ressourcen\**" />
     <None Remove="Strings\**" />
-    <None Remove="UI\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Example\de.SRHChar" />
+    <Content Include="Assets\Example\en.SRHChar" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,6 +59,15 @@
     <Reference Include="TLIB">
       <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard2.0\TLIB.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="UI\Pages\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
   </ItemGroup>
 
   <Import Project="..\..\SharedCodeBase\SharedCodeBase.projitems" Label="Shared" />
