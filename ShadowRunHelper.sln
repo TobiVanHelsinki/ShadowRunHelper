@@ -23,16 +23,20 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CodeUwp", "..\TLIB\CodeUwp\
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FeaturesUWP", "FeaturesUWP\FeaturesUWP.shproj", "{3A21F712-6D9B-40EE-BA96-D91E040C4045}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CodeAndroid", "..\TLIB\CodeAndroid\CodeAndroid.shproj", "{2B0B32CD-F876-4486-8A77-684B3B0E9980}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedCodeBase\SharedCodeBase.projitems*{0d90bef9-68d7-4019-abec-0329274eb64d}*SharedItemsImports = 13
 		FeaturesUWP\FeaturesUWP.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
 		SharedCodeBase\SharedCodeBase.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
 		..\TLIB\CodeUwp\CodeUwp.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
+		..\TLIB\CodeAndroid\CodeAndroid.projitems*{2b0b32cd-f876-4486-8a77-684b3b0e9980}*SharedItemsImports = 13
 		FeaturesUWP\FeaturesUWP.projitems*{3a21f712-6d9b-40ee-ba96-d91e040c4045}*SharedItemsImports = 13
 		FeaturesUWP\FeaturesUWP.projitems*{d7d939e7-7677-4dd4-8e5e-afaf472374c0}*SharedItemsImports = 4
 		..\TLIB\CodeUwp\CodeUwp.projitems*{d7d939e7-7677-4dd4-8e5e-afaf472374c0}*SharedItemsImports = 4
 		..\TLIB\CodeUwp\CodeUwp.projitems*{ec6f9fdf-f9c2-46e2-b5fc-937ca2a239ed}*SharedItemsImports = 13
+		..\TLIB\CodeAndroid\CodeAndroid.projitems*{f1654e38-625b-44e7-84f2-bf5392f6b536}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU

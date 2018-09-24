@@ -67,6 +67,12 @@
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\DroidActivities.cs" />
+    <Compile Include="Features\DroidAnalytics.cs" />
+    <Compile Include="Features\DroidAppDataPorter.cs" />
+    <Compile Include="Features\DroidAppInformation.cs" />
+    <Compile Include="Features\DroidIAP.cs" />
+    <Compile Include="Features\DroidInstanceHandling.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,5 +113,6 @@
       <Name>ShadowRunHelper.Xam</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\..\..\TLIB\CodeAndroid\CodeAndroid.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
