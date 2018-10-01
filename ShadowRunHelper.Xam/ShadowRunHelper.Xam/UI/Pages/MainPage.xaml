@@ -16,7 +16,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Grid Style="{StaticResource MainGrid}" VerticalOptions="Stretch" x:Name="AppTitleBar" />
+            <Grid Style="{StaticResource MainGrid}" VerticalOptions="Fill" x:Name="AppTitleBar" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition x:Name="TitleColumnL" Width="0"/>
@@ -54,7 +54,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Label x:Uid="ui_txt_TipHeader" FontSize="{StaticResource TextStyleExtraLargeFontSize}"/>
-                    <Label x:Name="TipText" Grid.Row="1" Margin="15,0,0,0"  Style="{StaticResource TextInhaltKlein}" VerticalOptions="Top"/>
+                    <Label x:Name="TipText" Grid.Row="1" Margin="15,0,0,0"  Style="{StaticResource TextInhaltKlein}" VerticalOptions="Start"/>
                     <Label x:Uid="UI_Txt_DisableTips" Grid.Row="2" Margin="15,8,0,0"/>
                 </Grid>
             </Grid>

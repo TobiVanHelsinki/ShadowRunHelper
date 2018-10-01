@@ -176,11 +176,11 @@
   <ItemGroup>
     <Reference Include="TAPPLICATION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard2.0\TAPPLICATION.dll</HintPath>
+      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard1.0\TAPPLICATION.dll</HintPath>
     </Reference>
     <Reference Include="TLIB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard2.0\TLIB.dll</HintPath>
+      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard1.0\TLIB.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="..\..\..\TLIB\CodeUwp\CodeUwp.projitems" Label="Shared" />
