@@ -1589,7 +1589,9 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
     <value>Teilen</value>
   </data>
   <data name="VersionHistory" xml:space="preserve">
-    <value>Version 1.8.4:
+    <value>Version 
+[fix] Aus Datei geladene Chars wurden nicht gespeichert, wenn die Optionen Fortschritt oder Zeit aktiv waren
+Version 1.8.4:
 [new] Lebensstilkosten Button
 Version 1.8.3:
 [new] Favoriten

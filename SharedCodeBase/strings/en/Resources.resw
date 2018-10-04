@@ -1483,7 +1483,9 @@ By default, chars are saved within the app. In the options you can choose whethe
     <value>Add Seperator</value>
   </data>
   <data name="VersionHistory" xml:space="preserve">
-    <value>Version 1.8.4:
+    <value>Version 
+[fix] Aus Datei geladene Chars wurden nicht gespeichert, wenn die Optionen Fortschritt oder Zeit aktiv waren
+Version 1.8.4:
 [new] Lifestyle cost button
 Version 1.8.3:
 [new] Track your favorites
