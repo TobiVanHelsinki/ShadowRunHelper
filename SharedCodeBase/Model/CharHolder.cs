@@ -86,6 +86,11 @@ namespace ShadowRunHelper.Model
         {
             string strSaveName = "";
             strSaveName += prefix;
+            if (FileInfo.Token == Constants.ACCESSTOKEN_FILEACTIVATED)
+            {
+                // No Name Chanign Allowed when Activated through File
+                return FileInfo.Filename;
+            }
             if (!UseProgress)
             {
                 strSaveName += FileInfo.Filename;

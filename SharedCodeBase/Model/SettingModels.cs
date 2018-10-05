@@ -227,7 +227,8 @@ namespace ShadowRunHelper
                 {
                     Filename = PlatformSettings.GetStringLocal(Constants.CONTAINER_SETTINGS_LAST_CHAR_NAME),
                     Filepath = PlatformSettings.GetStringLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_PATH),
-                    Fileplace = (Place)PlatformSettings.GetIntLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE)
+                    Fileplace = (Place)PlatformSettings.GetIntLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_PLACE),
+                    Token = PlatformSettings.GetStringLocal(Constants.CONTAINER_SETTINGS_LAST_SAVE_TOKEN)
                 };
             }
             set
