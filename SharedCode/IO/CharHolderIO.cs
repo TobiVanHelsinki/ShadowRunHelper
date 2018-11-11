@@ -5,6 +5,8 @@ using ShadowRunHelper.Model;
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using TAPPLICATION;
 using TAPPLICATION.IO;
@@ -153,7 +155,7 @@ namespace ShadowRunHelper.IO
                 case PreSavedChar.ExampleChar:
                     await CopyFileToCurrentLocation(
                         pap + @"Assets\Example\",
-                        StringHelper.GetSimpleCountryCode(Constants.AVAILIBLE_EXAMPLE_LANGUAGES, Constants.DEFAULT_EXAMPLE_LANGUAGE) + Constants.DATEIENDUNG_CHAR,
+                        Constants.AVAILIBLE_EXAMPLE_LANGUAGES.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName) ? CultureInfo.CurrentCulture.TwoLetterISOLanguageName : Constants.DEFAULT_EXAMPLE_LANGUAGE,
                         StringHelper.GetString("ExampleChar") + Constants.DATEIENDUNG_CHAR);
                     break;
                 case PreSavedChar.PreDBChar:

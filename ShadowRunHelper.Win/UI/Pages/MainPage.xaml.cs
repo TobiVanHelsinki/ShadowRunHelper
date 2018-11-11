@@ -182,7 +182,7 @@ namespace ShadowRunHelper.UI
         {
             if (Model.IsCharInProgress && !SettingsModel.I.DISABLE_TIPS)
             {
-                TipText.Text = Constants.TipList.RandomElement();
+                TipText.Text = Constants.TipList.RandomElement()??"";
                 TipTextWindow.Visibility = Visibility.Visible;
                 Tip_Fade.Value = 1;
                 Tip_Fade.Duration = 500;

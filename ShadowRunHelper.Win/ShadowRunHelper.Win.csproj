@@ -126,7 +126,15 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="ApplicationInsights.config" />
+    <PRIResource Include="ApplicationInsights.config" />
+    <PRIResource Include="Strings\de\Resources.resw" />
+    <PRIResource Include="Strings\en\Resources.resw" />
+    <None Include="Strings\Übersetzungshilfen\CAT27000_Shadowrun 5_CharacterSheet.pdf" />
+    <None Include="Strings\Übersetzungshilfen\ResxTranslator_v2.3_release_signed.zip" />
+    <None Include="Strings\Übersetzungshilfen\SR4_Charbogen_Standard.pdf" />
+    <None Include="Strings\Übersetzungshilfen\sr5sheets10.pdf" />
+    <None Include="Strings\Übersetzungshilfen\SR5_Blankodokumente.pdf" />
+    <None Include="Strings\Übersetzungshilfen\SR_Anarchy_Charakterbogen.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -404,25 +412,30 @@
     <ProjectReference Include="..\SharedCode\SharedCode.csproj">
       <Project>{63a5e683-5a51-4c45-a9de-ca0c26c6ec5a}</Project>
       <Name>SharedCode</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TLIB\TAPPLICATION_UWP\TAPPLICATION_UWP.csproj">
       <Project>{97d66a85-f340-4678-ae0c-e7e996e748ee}</Project>
       <Name>TAPPLICATION_UWP</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\TLIB\TLIB_UWP\TLIB_UWP.csproj">
       <Project>{c5730c21-1458-4107-a344-2937faeb0247}</Project>
       <Name>TLIB_UWP</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="TAPPLICATION">
       <HintPath>..\..\TLIB\TAPPLICATION\bin\$(Configuration)\netstandard1.0\TAPPLICATION.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="TLIB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\TLIB\TLIB\bin\$(Configuration)\netstandard1.0\TLIB.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <Import Project="..\FeaturesUWP\FeaturesUWP.projitems" Label="Shared" />
@@ -430,6 +443,11 @@
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Strings_4de_4Resources_1resw__JSONSchema="http://json.schemastore.org/apple-app-site-association" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
