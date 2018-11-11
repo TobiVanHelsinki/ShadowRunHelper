@@ -183,7 +183,6 @@
       <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard1.0\TLIB.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <Import Project="..\..\..\TLIB\CodeUwp\CodeUwp.projitems" Label="Shared" />
   <Import Project="..\..\FeaturesUWP\FeaturesUWP.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

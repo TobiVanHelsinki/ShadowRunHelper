@@ -10,7 +10,7 @@ using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper
 {
-    static class AppHolder
+    public static class AppHolder
     {
     
         static AppModel Model;
@@ -19,12 +19,12 @@ namespace ShadowRunHelper
         static bool FirstStart = true;
 
         #region Init
-        internal static void InitModel()
+        public static void InitModel()
         {
             Settings = SettingsModel.Initialize();
             Model = AppModel.Initialize();
         }
-        internal static void Init()
+        public static void Init()
         {
             if (Settings.FIRST_START)
             {
@@ -43,17 +43,17 @@ namespace ShadowRunHelper
                 );
         }
 
-        internal static async void StartInit()
+        public static async void StartInit()
         {
             await Task.Run(Init);
         }
 
-        static void RegisterAppInstance()
+        public static void RegisterAppInstance()
         {
             Features.InstanceHandling.CreateInstance();
         }
 
-        internal static void FileActivated(string Name, string Path)
+        public static void FileActivated(string Name, string Path)
         {
             Settings.FORCE_LOAD_CHAR_ON_START = true;
             Settings.LAST_SAVE_INFO = new FileInfoClass(Place.Extern, Name, Path)
@@ -91,7 +91,7 @@ namespace ShadowRunHelper
             CharLoadingHandling();
         }
 
-        internal static async void EnteredBackground()
+        public static async void EnteredBackground()
         {
             if (Model.MainObject != null)
             {
@@ -169,7 +169,7 @@ namespace ShadowRunHelper
 
         #region Exception Handling
 
-        internal static void OnNavigationFailed(string Message)
+        public static void OnNavigationFailed(string Message)
         {
             throw new Exception("Failed to load Page " + Message);
         }
@@ -180,7 +180,7 @@ namespace ShadowRunHelper
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        internal static async Task App_UnhandledExceptionAsync(string Message, Exception ex)
+        public static async Task App_UnhandledExceptionAsync(string Message, Exception ex)
         {
             Settings.LAST_SAVE_INFO = null;
             try

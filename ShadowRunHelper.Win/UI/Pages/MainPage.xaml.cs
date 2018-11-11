@@ -22,9 +22,8 @@ namespace ShadowRunHelper.UI
 {
     public sealed partial class MainPage : Page
     {
-        readonly AppModel Model = AppModel.Instance;
+        AppModel Model => AppModel.Instance;
         NotificationsDialog Notifications = new NotificationsDialog();
-        ResourceLoader res;
 
         #region Debug
 #if DEBUG
@@ -86,7 +85,6 @@ namespace ShadowRunHelper.UI
         #endregion
         public MainPage()
         {
-            res = ResourceLoader.GetForCurrentView();
             InitializeComponent();
 
             Model.lstNotifications.CollectionChanged += (x, y) => ShowNotificationsIfNecessary(y.NewItems);
