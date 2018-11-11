@@ -292,8 +292,10 @@ namespace ShadowRunHelper
             if (instance == null)
             {
                 SharedIO.CurrentIO.CreateSaveContainer();
-                instance = new SettingsModel();
-                instance.UsedConstants = typeof(Constants);
+                instance = new SettingsModel
+                {
+                    UsedConstants = typeof(Constants)
+                };
             }
             instance.PropertyChanged += SettingsChanged;
 
