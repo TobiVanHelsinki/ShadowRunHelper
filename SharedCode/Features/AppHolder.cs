@@ -97,18 +97,16 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    FileInfoClass SaveInfo;
                     if (Settings.AUTO_SAVE)
                     {
-                        SaveInfo = await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
+                        Settings.LAST_SAVE_INFO = await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
                         Settings.COUNT_SAVINGS++;
                     }
                     else
                     {
-                        SaveInfo = await SharedIO.SaveAtTempPlace(Model.MainObject);
+                        Settings.LAST_SAVE_INFO = await SharedIO.SaveAtTempPlace(Model.MainObject);
                     }
                     Settings.CHARINTEMPSTORE = true;
-                    Settings.LAST_SAVE_INFO = SaveInfo;
                 }
                 catch (Exception) { }
             }
@@ -126,7 +124,6 @@ namespace ShadowRunHelper
 
                     if (TMPChar.FileInfo.Fileplace == Place.Temp)
                     {
-
                         CharHolderIO.SaveAtCurrentPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
                     }
                     var OldChar = Model.MainObject;
@@ -136,7 +133,6 @@ namespace ShadowRunHelper
                     {
                         try
                         {
-
                             CharHolderIO.SaveAtOriginPlace(OldChar, SaveType.Auto, UserDecision.ThrowError);
                         }
                         catch (Exception ex)
