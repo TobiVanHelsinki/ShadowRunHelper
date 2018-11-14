@@ -12,6 +12,8 @@ namespace ShadowRunHelper
     public class SettingsModel : SharedSettingsModel
     {
         #region Settings
+        [Setting("SETTINGS_BACKUP_VERSIONING", false, SaveType.Roaming)]
+        public bool BACKUP_VERSIONING { get => Get(); set => Set(value); }
 
         [Setting("SETTINGS_DISABLE_TIPS", false, SaveType.Roaming)]
         public bool DISABLE_TIPS { get => Get(); set => Set(value); }
@@ -138,6 +140,7 @@ namespace ShadowRunHelper
                 return (SettingsModel)instance;
             }
         }
+
         #endregion
 
         #region Constraints

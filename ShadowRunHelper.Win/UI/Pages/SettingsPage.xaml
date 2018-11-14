@@ -77,12 +77,12 @@
         </ResourceDictionary>
     </Page.Resources>
     <Pivot x:Name="MainNavigation" SelectionChanged="MainNavigation_SelectionChanged">
-            <PivotItem Tag="31">
-                <PivotItem.Header>
-                    <TextBlock x:Uid="UI_Optionen_U_Infos" Style="{StaticResource ueberschrift1}"/>
-                </PivotItem.Header>
-                <ScrollViewer>
-                    <StackPanel>
+        <PivotItem Tag="31">
+            <PivotItem.Header>
+                <TextBlock x:Uid="UI_Optionen_U_Infos" Style="{StaticResource ueberschrift1}"/>
+            </PivotItem.Header>
+            <ScrollViewer>
+                <StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -118,116 +118,114 @@
                     </Grid>
 
                     <TextBlock x:Uid="UI_Optionen_U_Statistics"  Style="{StaticResource ueberschrift2}"/>
-                        <TextBlock Style="{StaticResource TextInhaltKlein}">
+                    <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_AppStart"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind Settings.START_COUNT, Mode=OneWay}"/>
-                        </TextBlock>
-                        <TextBlock Style="{StaticResource TextInhaltKlein}">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Loadings"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind Settings.COUNT_LOADINGS, Mode=OneWay}"/>
-                        </TextBlock>
-                        <TextBlock Style="{StaticResource TextInhaltKlein}">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Savings"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind Settings.COUNT_SAVINGS, Mode=OneWay}"/>
-                        </TextBlock>
-                        <TextBlock Style="{StaticResource TextInhaltKlein}">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Creations"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind Settings.COUNT_CREATIONS, Mode=OneWay}"/>
-                        </TextBlock>
-                        <TextBlock Style="{StaticResource TextInhaltKlein}">
+                    </TextBlock>
+                    <TextBlock Style="{StaticResource TextInhaltKlein}">
                     <Run x:Uid="UI_Statistics_Deletions"/>
                     <Run x:Uid="Doppelpunkt"/>
                     <Run Text="{x:Bind Settings.COUNT_DELETIONS, Mode=OneWay}"/>
-                        </TextBlock>
+                    </TextBlock>
 
-                        <TextBlock x:Uid="UI_Optionen_U_Rechtliches"  Style="{StaticResource ueberschrift2}"/>
-                        <TextBlock x:Uid="UI_Optionen_Legal"  Style="{StaticResource TextInhaltKlein}"/>
-                        <TextBlock x:Uid="UI_Optionen_U_Datenschutz" Style="{StaticResource ueberschrift2}"/>
-                        <TextBlock x:Uid="UI_Optionen_Datenschutz"  Style="{StaticResource TextInhaltKlein}"/>
-                    </StackPanel>
-                </ScrollViewer>
-            </PivotItem>
-            <PivotItem Tag="32">
-                <PivotItem.Header>
-                    <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource ueberschrift1}"/>
-                </PivotItem.Header>
-                <ScrollViewer>
-                    <StackPanel>
-                        <TextBlock x:Uid="UI_Optionen_U_Einstellungen_Tip" Style="{StaticResource ueberschrift2}"/>
+                    <TextBlock x:Uid="UI_Optionen_U_Rechtliches"  Style="{StaticResource ueberschrift2}"/>
+                    <TextBlock x:Uid="UI_Optionen_Legal"  Style="{StaticResource TextInhaltKlein}"/>
+                    <TextBlock x:Uid="UI_Optionen_U_Datenschutz" Style="{StaticResource ueberschrift2}"/>
+                    <TextBlock x:Uid="UI_Optionen_Datenschutz"  Style="{StaticResource TextInhaltKlein}"/>
+                </StackPanel>
+            </ScrollViewer>
+        </PivotItem>
+        <PivotItem Tag="32">
+            <PivotItem.Header>
+                <TextBlock x:Uid="UI_Optionen_U_Einstellungen" Style="{StaticResource ueberschrift1}"/>
+            </PivotItem.Header>
+            <ScrollViewer>
+                <StackPanel>
+                    <TextBlock x:Uid="UI_Optionen_U_Einstellungen_Tip" Style="{StaticResource ueberschrift2}"/>
 
-                        <UI:GroupSeparator x:Uid="UI_Optionen_Group_Char"/>
+                    <UI:GroupSeparator x:Uid="UI_Optionen_Group_Char"/>
 
-                        <UI:SettingElement x:Uid="UI_Optionen_EditAfterAdd" Setting="{x:Bind Path=Settings.START_AFTER_EDIT, Mode=TwoWay}"/>
-                        <UI:SettingElement x:Uid="UI_Optionen_DisplayRequest" Setting="{x:Bind Path=Settings.DISPLAY_REQUEST, Mode=TwoWay}"/>
+                    <UI:SettingElement x:Uid="UI_Optionen_EditAfterAdd" Setting="{x:Bind Path=Settings.START_AFTER_EDIT, Mode=TwoWay}"/>
+                    <UI:SettingElement x:Uid="UI_Optionen_DisplayRequest" Setting="{x:Bind Path=Settings.DISPLAY_REQUEST, Mode=TwoWay}"/>
 
-                        <UI:GroupSeparator x:Uid="UI_Optionen_Group_IO"/>
+                    <UI:GroupSeparator x:Uid="UI_Optionen_Group_IO"/>
 
-                        <UI:SettingElement x:Uid="UI_Optionen_LoadOnStart" Setting="{x:Bind Path=Settings.LOAD_CHAR_ON_START, Mode=TwoWay}"/>
-                        <UI:SettingElement x:Uid="UI_Optionen_AutoSave" Setting="{x:Bind Path=Settings.AUTO_SAVE, Mode=TwoWay}"/>
+                    <UI:SettingElement x:Uid="UI_Optionen_LoadOnStart" Setting="{x:Bind Path=Settings.LOAD_CHAR_ON_START, Mode=TwoWay}"/>
+                    <UI:SettingElement x:Uid="UI_Optionen_AutoSave" Setting="{x:Bind Path=Settings.AUTO_SAVE, Mode=TwoWay}"/>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Visibility="{x:Bind Path=Settings.AUTO_SAVE, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}">
-                            <TextBlock x:Uid="UI_Optionen_AutoSaveInterval" Style="{StaticResource TextInhaltKlein}"/>
-                            <TextBox MaxWidth="600" Margin="10,0,0,0" InputScope="Number" Text="{x:Bind Path=Settings.AUTO_SAVE_INTERVAL_MS, Mode=TwoWay, Converter={StaticResource io_Mult1K}}"/>
-                        </StackPanel>
+                        <TextBlock x:Uid="UI_Optionen_AutoSaveInterval" Style="{StaticResource TextInhaltKlein}"/>
+                        <TextBox MaxWidth="600" Margin="10,0,0,0" InputScope="Number" Text="{x:Bind Path=Settings.AUTO_SAVE_INTERVAL_MS, Mode=TwoWay, Converter={StaticResource io_Mult1K}}"/>
+                    </StackPanel>
 
-                        <UI:GroupSeparator x:Uid="UI_Optionen_Group_File"/>
+                    <UI:GroupSeparator x:Uid="UI_Optionen_Group_File"/>
 
                     <UI:SettingElement x:Uid="UI_Optionen_Ordnermode" Setting="{x:Bind Path=Settings.FOLDERMODE, Mode=TwoWay}"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Visibility="{x:Bind Path=Settings.FOLDERMODE, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}">
-                            <TextBlock x:Uid="UI_Optionen_Ordnermode_Pfad" Style="{StaticResource TextInhaltKlein}"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,20" Visibility="{x:Bind Path=Settings.FOLDERMODE, Mode=OneWay, Converter={StaticResource o_Bool2Visibility}}">
+                        <TextBlock x:Uid="UI_Optionen_Ordnermode_Pfad" Style="{StaticResource TextInhaltKlein}"/>
                         <TextBlock Text="{x:Bind Path=Settings.FOLDERMODE_PATH, Mode=OneWay}" Margin="10,0,0,0" Style="{StaticResource TextInhaltKlein}"/>
-                        </StackPanel>
+                    </StackPanel>
 
-                        <UI:SettingElement x:Uid="UI_Optionen_Intern_Sync" Setting="{x:Bind Path=Settings.INTERN_SYNC, Mode=TwoWay}"/>
-                        <UI:SettingElement x:Uid="UI_Optionen_FileNameUseProgres" Setting="{x:Bind Path=Settings.FILENAME_USEPROGRESS, Mode=TwoWay}"/>
-                        <UI:SettingElement x:Uid="UI_Optionen_FileNameUseDate" Setting="{x:Bind Path=Settings.FILENAME_USEDATE, Mode=TwoWay}"/>
+                    <UI:SettingElement x:Uid="UI_Optionen_Intern_Sync" Setting="{x:Bind Path=Settings.INTERN_SYNC, Mode=TwoWay}"/>
+                    <UI:SettingElement x:Uid="UI_Optionen_BACKUP_VERSIONING" Setting="{x:Bind Path=Settings.BACKUP_VERSIONING, Mode=TwoWay}"/>
 
-
-                        <UI:GroupSeparator x:Uid="UI_Optionen_Group_Other"/>
+                    <UI:GroupSeparator x:Uid="UI_Optionen_Group_Other"/>
 
                     <UI:SettingElement x:Uid="UI_Optionen_Disable_Tips" Setting="{x:Bind Path=Settings.DISABLE_TIPS, Mode=TwoWay}"/>
                     <UI:SettingElement x:Uid="UI_Optionen_TutorialMainShown" Setting="{x:Bind Path=Settings.TUT_SHOWN_1, Mode=TwoWay}"/>
-                        <UI:SettingElement x:Uid="UI_Optionen_Debug_Mode" Setting="{x:Bind Path=Settings.DEBUG_FEATURES, Mode=TwoWay}"/>
+                    <UI:SettingElement x:Uid="UI_Optionen_Debug_Mode" Setting="{x:Bind Path=Settings.DEBUG_FEATURES, Mode=TwoWay}"/>
 
-                    </StackPanel>
-                </ScrollViewer>
-            </PivotItem>
-            <PivotItem Tag="34">
-                <PivotItem.Header>
-                    <TextBlock x:Uid="UI_Optionen_U_Hilfe" Style="{StaticResource ueberschrift1}"/>
-                </PivotItem.Header>
-                <ListView ItemsSource="{x:Bind Help, Mode=OneWay}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="model:HelpEntry">
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Margin="0,10,0,5" FontWeight="Bold" Text="{x:Bind Paragraph}"/>
-                                <TextBlock TextWrapping="Wrap" Text="{x:Bind Text}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </PivotItem>
-            <PivotItem Tag="36">
-                <PivotItem.Header>
-                    <TextBlock x:Uid="UI_Optionen_U_Buy" Style="{StaticResource ueberschrift1}"/>
-                </PivotItem.Header>
-                <StackPanel>
-                    <TextBlock x:Uid="UI_Optionen_U_Buying_Header" Margin="3" TextWrapping="Wrap"/>
-                    <TextBlock x:Uid="UI_Optionen_U_Buying_Note" Margin="3" TextWrapping="Wrap"/>
-                    
-                    <Button x:Uid="IAP_TXT_ADS_365" Click="IAP_ADS_365" Margin="3" Style="{StaticResource STD_Button}"/>
-                    <Button x:Uid="IAP_TXT_ADS" Click="IAP_ADS" Margin="3" Style="{StaticResource STD_Button}"/>
-                    <Button x:Uid="IAP_TXT_TEE" Click="IAP_Tee" Margin="3" Style="{StaticResource STD_Button}"/>
                 </StackPanel>
-            </PivotItem>
-            <PivotItem Tag="35">
-                <PivotItem.Header>
-                    <TextBlock x:Uid="UI_Optionen_U_Notifications" Style="{StaticResource ueberschrift1}"/>
-                </PivotItem.Header>
-                <ListView ItemTemplate="{StaticResource Notification}" ItemContainerStyle="{StaticResource ListViewItemStyle}" ItemsSource="{x:Bind Model.lstNotifications, Mode=OneWay}" SelectionChanged="ListView_SelectionChanged" SelectionMode="None" IsMultiSelectCheckBoxEnabled="False"></ListView>
-            </PivotItem>
-        </Pivot>
+            </ScrollViewer>
+        </PivotItem>
+        <PivotItem Tag="34">
+            <PivotItem.Header>
+                <TextBlock x:Uid="UI_Optionen_U_Hilfe" Style="{StaticResource ueberschrift1}"/>
+            </PivotItem.Header>
+            <ListView ItemsSource="{x:Bind Help, Mode=OneWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:HelpEntry">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Margin="0,10,0,5" FontWeight="Bold" Text="{x:Bind Paragraph}"/>
+                            <TextBlock TextWrapping="Wrap" Text="{x:Bind Text}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </PivotItem>
+        <PivotItem Tag="36">
+            <PivotItem.Header>
+                <TextBlock x:Uid="UI_Optionen_U_Buy" Style="{StaticResource ueberschrift1}"/>
+            </PivotItem.Header>
+            <StackPanel>
+                <TextBlock x:Uid="UI_Optionen_U_Buying_Header" Margin="3" TextWrapping="Wrap"/>
+                <TextBlock x:Uid="UI_Optionen_U_Buying_Note" Margin="3" TextWrapping="Wrap"/>
+
+                <Button x:Uid="IAP_TXT_ADS_365" Click="IAP_ADS_365" Margin="3" Style="{StaticResource STD_Button}"/>
+                <Button x:Uid="IAP_TXT_ADS" Click="IAP_ADS" Margin="3" Style="{StaticResource STD_Button}"/>
+                <Button x:Uid="IAP_TXT_TEE" Click="IAP_Tee" Margin="3" Style="{StaticResource STD_Button}"/>
+            </StackPanel>
+        </PivotItem>
+        <PivotItem Tag="35">
+            <PivotItem.Header>
+                <TextBlock x:Uid="UI_Optionen_U_Notifications" Style="{StaticResource ueberschrift1}"/>
+            </PivotItem.Header>
+            <ListView ItemTemplate="{StaticResource Notification}" ItemContainerStyle="{StaticResource ListViewItemStyle}" ItemsSource="{x:Bind Model.lstNotifications, Mode=OneWay}" SelectionChanged="ListView_SelectionChanged" SelectionMode="None" IsMultiSelectCheckBoxEnabled="False"></ListView>
+        </PivotItem>
+    </Pivot>
 </Page>

@@ -13,10 +13,32 @@ namespace ShadowRunHelper.Model
                 instance = new AppModel();
             }
             CharHolderIO.MainTypeConvert = CharHolderIO.ConvertWithRightVersion;
-            Instance.MainObjectSaved += (x, y) => { SettingsModel.I.COUNT_SAVINGS++; };
-
+            Instance.MainObjectSaved += Instance_MainObjectSaved;
             return Instance;
         }
+
+        static async void Instance_MainObjectSaved(object sender, System.EventArgs e)
+        {
+            SettingsModel.I.COUNT_SAVINGS++;
+            if (SettingsModel.I.BACKUP_VERSIONING)
+            {
+                var löschen = SettingsModel.I.FILENAME_USEDATE;
+                var FileName = Instance.MainObject.MakeName(true, false);
+                var Folder = new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), FileName, CharHolderIO.GetCurrentSavePath()+@"\BackUp");
+                try
+                {
+                    if (await CharHolderIO.CurrentIO.GetFileInfo(Folder, UserDecision.ThrowError) == null)
+                    {
+                        CharHolderIO.Save(Instance.MainObject, UserDecision.ThrowError, TAPPLICATION.IO.SaveType.Auto, Folder);
+                    }
+                }
+                catch (System.Exception)
+                {
+                }
+
+            }
+        }
+
         public static new AppModel Instance
         {
             get

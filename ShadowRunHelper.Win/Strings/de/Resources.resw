@@ -900,11 +900,8 @@ Setzen Sie den externen Ordner neu.</value>
     <value>Benutzerentscheidung war Fehler werfen</value>
     <comment>User Decision to throw</comment>
   </data>
-  <data name="UI_Optionen_FileNameUseDate.Text" xml:space="preserve">
-    <value>Dateiname mit Datum versehen</value>
-  </data>
-  <data name="UI_Optionen_FileNameUseProgres.Text" xml:space="preserve">
-    <value>Dateiname mit Char-Fortschritt versehen</value>
+  <data name="UI_Optionen_BACKUP_VERSIONING.Text" xml:space="preserve">
+    <value>BackUp Versionierung</value>
   </data>
   <data name="Notification_Info_ConvertFromPrevious" xml:space="preserve">
     <value>Diese Datei ist eine alte Version, sie wird nun in das aktuelleste Format konvertiert. Dadurch kann sie womöglich nicht oder nicht mit dem gesamten Funktionsumfang in früheren Versionen des Programms geöffnet werden. Die Aktuelle Version des Programms steht in den Einstellungen. Sollte die Umwandlung nicht erwünscht sein, speichere den Char einfach nicht.</value>
@@ -1384,8 +1381,8 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Error_CopyFiles" xml:space="preserve">
     <value>Fehler: Konnte nicht (alle) Dateien an neuen Ort kopieren.</value>
   </data>
-  <data name="UI_Optionen_FileNameUseProgres.Tip" xml:space="preserve">
-    <value>Der Dateiname wird automatisch generiert und beinhaltet: Name des Char, Karma, Anzahl Runs.</value>
+  <data name="UI_Optionen_BACKUP_VERSIONING.Tip" xml:space="preserve">
+    <value>Bei jeder Änderung von Run oder Karma wird in einem BackUp Ordner eine Kopie des Chars erstellt.</value>
   </data>
   <data name="UI_TxT_Save.Text" xml:space="preserve">
     <value>Speichern</value>

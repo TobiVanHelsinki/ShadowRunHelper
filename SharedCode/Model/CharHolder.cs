@@ -119,6 +119,7 @@ namespace ShadowRunHelper.Model
 
         public string MakeName()
         {
+            return MakeName(false, false);
             return MakeName(SettingsModel.I.FILENAME_USEPROGRESS, SettingsModel.I.FILENAME_USEDATE);
         }
 
@@ -178,7 +179,6 @@ namespace ShadowRunHelper.Model
             RefreshLists();
             RefreshListeners();
         }
-
 
         #endregion
         #region DATA HANDLING STUFF 

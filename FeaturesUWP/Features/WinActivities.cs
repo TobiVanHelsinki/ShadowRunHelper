@@ -16,7 +16,7 @@ namespace ShadowRunHelper
                 return;
             }
             UserActivityChannel channel = UserActivityChannel.GetDefault();
-            var name = Char.MakeName(true);
+            var name = Char.MakeName(false);
             UserActivity userActivity = await channel.GetOrCreateUserActivityAsync(name);
 
             userActivity.VisualElements.DisplayText = StringHelper.GetString("Activity_PlayedWith") + name.Remove(name.Length - Constants.DATEIENDUNG_CHAR.Length);
