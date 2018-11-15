@@ -13,7 +13,7 @@ namespace ShadowRunHelper
     {
         public App()
         {
-            UnhandledException += async (x, y) => { await AppHolder.App_UnhandledExceptionAsync(y.Message,y.Exception); };
+            UnhandledException += (x, y) => { AppHolder.App_UnhandledException(y.Message,y.Exception); };
 
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;

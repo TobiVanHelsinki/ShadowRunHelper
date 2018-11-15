@@ -82,50 +82,48 @@ namespace ShadowRunHelper.Model
         [Newtonsoft.Json.JsonIgnore]
         public FileInfoClass FileInfo { get; set; } = new FileInfoClass();
 
-        public string MakeName(bool UseProgress = false, bool UseDate = false, string prefix = "", string postfix = "")
+        public string MakeName(bool UseProgress = false)
         {
-            string strSaveName = "";
-            strSaveName += prefix;
             if (FileInfo.Token == Constants.ACCESSTOKEN_FILEACTIVATED)
             {
                 // No Name Chanign Allowed when Activated through File
                 return FileInfo.Filename;
             }
-            if (!UseProgress)
+            string strSaveName = "";
+
+            string AddNameAndType(string Name)
             {
-                strSaveName += FileInfo.Filename;
+                Name += string.IsNullOrEmpty(Person.Alias) ? "Unnamed" : Person.Alias;
+                Name += ",";
+                Name += string.IsNullOrEmpty(Person.Char_Typ) ? "" : (Person.Char_Typ + ",");
+                return Name;
             }
-            else
+
+            if (UseProgress)
             {
-                strSaveName += Person.Alias == string.Empty ? "$$" : Person.Alias;
-                strSaveName += ",";
-                strSaveName += Person.Char_Typ == string.Empty ? "$$" : Person.Char_Typ;
-                strSaveName += ",";
+                strSaveName = AddNameAndType(strSaveName);
                 strSaveName += Person.Runs.ToString();
-                strSaveName += StringHelper.GetString("Model_Person_Runs/Text") + ",";
+                strSaveName += StringHelper.GetString("Model_Person_Runs/Text");
+                strSaveName += ",";
                 strSaveName += Person.Karma_Gesamt.ToString();
                 strSaveName += StringHelper.GetString("Model_Person_Karma/Text");
             }
-            strSaveName += UseDate ? "_" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + "_" + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second : "";
-            strSaveName += postfix;
-
-            if (strSaveName == null || strSaveName.Equals("") || strSaveName.Length == 0)
+            else
             {
-                strSaveName = Person.Alias;
+                strSaveName += FileInfo.Filename;
+            }
+
+            if (string.IsNullOrEmpty(strSaveName) || string.IsNullOrWhiteSpace(strSaveName))
+            {
+                strSaveName = AddNameAndType(strSaveName);
             }
 
             return strSaveName.EndsWith(Constants.DATEIENDUNG_CHAR) ? strSaveName : strSaveName += Constants.DATEIENDUNG_CHAR;
         }
 
-        public string MakeName()
-        {
-            return MakeName(false, false);
-            return MakeName(SettingsModel.I.FILENAME_USEPROGRESS, SettingsModel.I.FILENAME_USEDATE);
-        }
-
         public override string ToString()
         {
-            return MakeName(false, false) + " " + base.ToString();
+            return MakeName(true) + " " + base.ToString();
         }
         #endregion
         #region INI Stuff
@@ -410,7 +408,7 @@ namespace ShadowRunHelper.Model
         {
             if (HasChanges || ForceSave)
             {
-                SaveTimer.Change(Time, System.Threading.Timeout.Infinite);
+                SaveTimer.Change(Time, Timeout.Infinite);
                 return true;
             }
             return false;

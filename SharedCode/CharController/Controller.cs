@@ -27,6 +27,7 @@ namespace ShadowRunHelper.CharController
         }
         public void RegisterEventAtData(Action<object, PropertyChangedEventArgs> Method)
         {
+            //TODO nicht mit annoynmen meth
             Data.CollectionChanged -= (x, y) => Method(x, new PropertyChangedEventArgs(""));
             Data.CollectionChanged += (x, y) => Method(x, new PropertyChangedEventArgs(""));
         }

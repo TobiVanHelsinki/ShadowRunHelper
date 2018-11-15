@@ -99,7 +99,7 @@ namespace ShadowRunHelper
                 {
                     if (Settings.AUTO_SAVE)
                     {
-                        Settings.LAST_SAVE_INFO = await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Auto, UserDecision.ThrowError);
+                        Settings.LAST_SAVE_INFO = await SharedIO.SaveAtOriginPlace(Model.MainObject, UserDecision.ThrowError);
                         Settings.COUNT_SAVINGS++;
                     }
                     else
@@ -124,7 +124,7 @@ namespace ShadowRunHelper
 
                     if (TMPChar.FileInfo.Fileplace == Place.Temp)
                     {
-                        CharHolderIO.SaveAtCurrentPlace(TMPChar, SaveType.Auto, UserDecision.ThrowError);
+                        CharHolderIO.SaveAtCurrentPlace(TMPChar, UserDecision.ThrowError);
                     }
                     var OldChar = Model.MainObject;
                     Model.MainObject = TMPChar;
@@ -133,7 +133,7 @@ namespace ShadowRunHelper
                     {
                         try
                         {
-                            CharHolderIO.SaveAtOriginPlace(OldChar, SaveType.Auto, UserDecision.ThrowError);
+                            CharHolderIO.SaveAtOriginPlace(OldChar, UserDecision.ThrowError);
                         }
                         catch (Exception ex)
                         {
@@ -176,26 +176,19 @@ namespace ShadowRunHelper
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        public static async Task App_UnhandledExceptionAsync(string Message, Exception ex)
+        public static void App_UnhandledException(string Message, Exception ex)
         {
             Settings.LAST_SAVE_INFO = null;
-            try
+            Model.MainObject.FileInfo.Filename = "EmergencySave" + Model.MainObject.FileInfo.Filename;
+            SharedIO.SaveAtOriginPlace(Model.MainObject).Wait();
+            var param = new Dictionary<string, string>
             {
-                await SharedIO.SaveAtOriginPlace(Model.MainObject, SaveType.Emergency);
-                Model.NewNotification(StringHelper.GetString("Notification_Error_Unknown"), ex);
-            }
-            catch (Exception exx)
-            {
-            }
-            if (!Message.Contains(Constants.TESTEXCEPTIONTEXT))
-            {
-                var param = new Dictionary<string, string>();
-                param.Add("Message", Message);
-                param.Add("EXMessage", ex.Message);
-                param.Add("StackTrace", ex.StackTrace);
-                param.Add("InnerException", ex.InnerException.Message);
-                Features.Analytics.TrackEvent("App_UnhandledExceptionAsync", param);
-            }
+                { "Message", Message },
+                { "EXMessage", ex.Message },
+                { "StackTrace", ex.StackTrace },
+                { "InnerException", ex.InnerException.Message }
+            };
+            Features.Analytics.TrackEvent("App_UnhandledExceptionAsync", param);
         }
         #endregion
     }
