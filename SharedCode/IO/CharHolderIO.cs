@@ -95,18 +95,15 @@ namespace ShadowRunHelper.IO
                         item.Grenze = 0;
                         item.Gegen = 0;
                     }
-                    ReturnCharHolder.HasChanges = true;
                     AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar_1_5_to_1_6"), false);
                     break;
                 case Constants.CHARFILE_VERSION_1_6:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     ReturnCharHolder.Person.Notizen = PlainTextToRtf(ReturnCharHolder.Person.Notizen);
                     AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar"), false);
-                    ReturnCharHolder.HasChanges = true;
                     break;
                 case Constants.CHARFILE_VERSION_1_7:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
-                    ReturnCharHolder.HasChanges = false;
                     break;
                 default:
                     throw new IO_FileVersion();

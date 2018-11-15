@@ -129,7 +129,7 @@ namespace ShadowRunHelper.Model
         #region INI Stuff
         public CharHolder()
         {
-            SaveTimer = new Timer((x) => { SaveRequest?.Invoke(x, new EventArgs()); HasChanges = false; }, this, Timeout.Infinite, Timeout.Infinite);
+            SaveTimer = new Timer((x) => { SaveRequest?.Invoke(x, this); HasChanges = false; }, this, Timeout.Infinite, Timeout.Infinite);
             // To Autosave
             CTRLList.Add(CTRLAttribut);
             CTRLList.Add(CTRLBerechnet);
@@ -375,7 +375,7 @@ namespace ShadowRunHelper.Model
             {
                 if (value != _HasChanges)
                 {
-                    _HasChanges = value;
+                     _HasChanges = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -385,7 +385,7 @@ namespace ShadowRunHelper.Model
         /// <summary>
         /// fire if you want to get the char saved
         /// </summary>
-        public event EventHandler SaveRequest;
+        public event EventHandler<IMainType> SaveRequest;
 
         /// <summary>
         /// handler method if any property get's changed

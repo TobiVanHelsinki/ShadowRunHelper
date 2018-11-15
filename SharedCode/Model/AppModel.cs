@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.IO;
+using TAPPLICATION.Model;
 using TLIB.IO;
 using TLIB.PlatformHelper;
 
@@ -17,27 +18,24 @@ namespace ShadowRunHelper.Model
             return Instance;
         }
 
-        static async void Instance_MainObjectSaved(object sender, System.EventArgs e)
+        static void Instance_MainObjectSaved(object sender, IMainType e)
         {
             System.Diagnostics.Debug.WriteLine("Instance_MainObjectSaved");
             SettingsModel.I.COUNT_SAVINGS++;
             if (SettingsModel.I.BACKUP_VERSIONING)
             {
-                var löschen = SettingsModel.I.FILENAME_USEDATE;
-                var FileName = Instance.MainObject.MakeName(true);
+                var FileName = (e as CharHolder)?.MakeName(true);
                 string BackUpFolderName = @"\BackUp";
                 var BackUpFile = new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), FileName, CharHolderIO.GetCurrentSavePath()+BackUpFolderName);
                 try
                 {
-                    //Create BackUpFolder
-                    //if (BackUpFile.Fileplace == Place.Extern)
-                    //{
-                    //    CharHolderIO.CurrentIO.()
-                    //}
-                    if (await CharHolderIO.CurrentIO.GetFileInfo(BackUpFile, UserDecision.ThrowError) == null)
+                    var T = CharHolderIO.CurrentIO.GetFileInfo(BackUpFile, UserDecision.ThrowError);
+                    T.Wait();
+                    if (T.Result == null)
                     {
-                        System.Diagnostics.Debug.WriteLine("SaveBackUp");
-                        await CharHolderIO.Save(Instance.MainObject, UserDecision.ThrowError, BackUpFile);
+                        System.Diagnostics.Debug.WriteLine("SaveBackUp " + e.ToString());
+                        T = CharHolderIO.Save(e, UserDecision.ThrowError, BackUpFile);
+                        T.Wait();
                     }
                 }
                 catch (System.Exception ex)

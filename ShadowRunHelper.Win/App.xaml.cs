@@ -77,7 +77,6 @@ namespace ShadowRunHelper
                 AppModel.Instance.RequestNavigation(SettingsModel.I.LAST_PAGE);
             }
             w.Stop();
-            Debug.WriteLine("Enter: "+w.Elapsed);
             //def.Complete();
         }
 

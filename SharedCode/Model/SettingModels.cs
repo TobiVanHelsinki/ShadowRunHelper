@@ -82,12 +82,6 @@ namespace ShadowRunHelper
         [Setting("SETTINGS_START_AFTER_EDIT", true, SaveType.Roaming)]
         public bool START_AFTER_EDIT { get => Get(); set => Set(value); }
 
-        [Setting("SETTINGS_FILENAME_USEPROGRESS", false, SaveType.Roaming)]
-        public bool FILENAME_USEPROGRESS { get => Get(); set => Set(value); }
-
-        [Setting("SETTINGS_FILENAME_USEDATE", false, SaveType.Roaming)]
-        public bool FILENAME_USEDATE { get => Get(); set => Set(value); }
-        
         [Setting("CHARINTEMPSTORE", false, SaveType.Local)]
         public bool CHARINTEMPSTORE { get => Get(); set => Set(value); }
 

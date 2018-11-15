@@ -2,12 +2,14 @@
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
+using System.Resources;
 using System.Threading.Tasks;
 using TAPPLICATION;
 using TAPPLICATION.IO;
 using TLIB.IO;
 using TLIB.PlatformHelper;
 
+[assembly: NeutralResourcesLanguageAttribute("en")]
 namespace ShadowRunHelper
 {
     public static class AppHolder
