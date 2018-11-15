@@ -1,9 +1,7 @@
 ﻿--------Aktuell-----------------------------------------------
 * Durch Versions Backup: wenn beim upgrade eine der beiden letzten versioning optionen aktiv war, dann meldung anzeigen
 * english strings
-* save feuert irgendwie zu oft
-** beim laden
-** beim autosave zweimal direkt hintereinander und mutex geht nicht (weil selber thread?)
+
 --------Animation-----------------------------------------------
 * ladebildschirm auch beim start
 * animation beim charladen

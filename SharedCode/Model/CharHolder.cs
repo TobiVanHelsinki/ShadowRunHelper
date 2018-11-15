@@ -94,14 +94,14 @@ namespace ShadowRunHelper.Model
             string AddNameAndType(string Name)
             {
                 Name += string.IsNullOrEmpty(Person.Alias) ? "Unnamed" : Person.Alias;
-                Name += ",";
-                Name += string.IsNullOrEmpty(Person.Char_Typ) ? "" : (Person.Char_Typ + ",");
+                Name += string.IsNullOrEmpty(Person.Char_Typ) ? "" : ("," + Person.Char_Typ);
                 return Name;
             }
 
             if (UseProgress)
             {
                 strSaveName = AddNameAndType(strSaveName);
+                strSaveName += ",";
                 strSaveName += Person.Runs.ToString();
                 strSaveName += StringHelper.GetString("Model_Person_Runs/Text");
                 strSaveName += ",";
@@ -173,6 +173,7 @@ namespace ShadowRunHelper.Model
 
 
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
+
             Favorites.CollectionChanged += SaveFavoritesOrdering;
             RefreshLists();
             RefreshListeners();
@@ -328,6 +329,8 @@ namespace ShadowRunHelper.Model
             Person.PropertyChanged -= AnyPropertyChanged;
             Settings.PropertyChanged -= AnyPropertyChanged;
             Person.PropertyChanged += AnyPropertyChanged;
+            Person.PropertyChanged -= RefreshFileName;
+            Person.PropertyChanged += RefreshFileName;
             Settings.PropertyChanged += AnyPropertyChanged;
             foreach (var item in CTRLList)
             {
@@ -338,6 +341,14 @@ namespace ShadowRunHelper.Model
                     item2.PropertyChanged -= AnyPropertyChanged;
                     item2.PropertyChanged += AnyPropertyChanged;
                 }
+            }
+        }
+
+        private void RefreshFileName(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Person.Alias) || e.PropertyName == nameof(Person.Char_Typ))
+            {
+                FileInfo.Filename = MakeName(false);
             }
         }
 
@@ -497,6 +508,7 @@ namespace ShadowRunHelper.Model
             ret.Repair();
             ret.Settings.Refresh();
             ret.RefreshListeners();
+            ret.FileInfo.Filename = ret.MakeName();
             return ret;
         }
     }
