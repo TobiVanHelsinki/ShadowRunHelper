@@ -4,60 +4,25 @@
              xmlns:parts="clr-namespace:ShadowRunHelper.Xam.UI.Parts"
              x:Class="ShadowRunHelper.Xam.MainPage"
              BackgroundColor="AliceBlue">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem x:Uid="Ui_Nav_Char" Icon="Contact" Clicked="Ui_Nav_Char" />
-        <ToolbarItem x:Uid="Ui_Nav_Admin" Icon="People" Clicked="Ui_Nav_Admin"/>
-        <ToolbarItem x:Uid="Ui_Nav_Settings" Icon="Setting" Clicked="Ui_Nav_Settings"/>
-        <ToolbarItem Text="CreateDebugChar" Icon="Add" Clicked="CreateDebugChar"/>
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="Red">
-            <Grid VerticalOptions="Fill" x:Name="AppTitleBar" />
-            <Label Text="Hallo" BackgroundColor="GreenYellow"/>
-            <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="TitleColumnL" Width="100"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition x:Name="TitleColumnR" Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Frame x:Name="StatusControlBorder" Grid.Column="1" BackgroundColor="Aqua">
-                    <ContentView HorizontalOptions="Fill" 
-                                 ControlTemplate="{Binding View1}"
-                                 x:Name="StatusControl" 
-                                 BindingContext="{Binding , Mode=OneWay}" 
-                                 BackgroundColor="Bisque"
-                />
-                </Frame>
-                <parts:View1></parts:View1>
+                <Button Grid.Column="0" Text="Ui_Nav_Char" Clicked="Ui_Nav_Char"/>
+                <Button Grid.Column="1" Text="Ui_Nav_Admin" Clicked="Ui_Nav_Admin"/>
+                <Button Grid.Column="2" Text="Ui_Nav_Settings" Clicked="Ui_Nav_Settings"/>
+                <Button Grid.Column="3" Text="CreateDebugChar" Clicked="CreateDebugChar"/>
             </Grid>
-
-            <!--<Frame Grid.Row="1" x:Name="MyFrame"/>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <ProgressBar Grid.ColumnSpan="3" Grid.RowSpan="3" x:Name="ProgressRing" HorizontalOptions="Fill" VerticalOptions="Fill" Margin="50"/>
-                <Label Grid.Column="1" Grid.Row="0" x:Name="LoadingCharField"
-                       FontSize="20" 
-                       HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Grid Grid.Column="1" Grid.Row="1" x:Name="TipTextWindow" Padding="10" BackgroundColor="{StaticResource SR_NotificationBrush}"  >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Label x:Uid="ui_txt_TipHeader" FontSize="{StaticResource TextStyleExtraLargeFontSize}"/>
-                    <Label x:Name="TipText" Grid.Row="1" Margin="15,0,0,0"  Style="{StaticResource TextInhaltKlein}" VerticalOptions="Start"/>
-                    <Label x:Uid="UI_Txt_DisableTips" Grid.Row="2" Margin="15,8,0,0"/>
-                </Grid>
-            </Grid>-->
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

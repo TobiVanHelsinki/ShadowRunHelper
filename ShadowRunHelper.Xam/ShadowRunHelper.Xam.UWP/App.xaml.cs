@@ -35,13 +35,7 @@ namespace ShadowRunHelper.Xam.UWP
             //EnteredBackground += App_EnteredBackground;
             //LeavingBackground += App_LeavingBackground;
 
-            Features.Activities = new WinActivities();
-            Features.Analytics = new WinAnalytics();
-            Features.IAP = new WinIAP();
-            Features.InstanceHandling = new WinInstanceHandling();
-            Features.AppInformation = new WinAppInformation();
-            Features.AppDataPorter = new WinAppDataPorter();
-
+            Init.Do();
             TAPPLICATION_UWP.Init.Do();
             TLIB_UWP.Init.Do();
 

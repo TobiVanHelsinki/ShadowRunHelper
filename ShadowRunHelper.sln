@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLIB_UWP", "..\TLIB\TLIB_UW
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TAPPLICATION_Xamarin", "..\TLIB\TAPPLICATION_Xamarin\TAPPLICATION_Xamarin.shproj", "{22EF0A21-71AF-44ED-82A1-1565E43EADAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedCodeTest", "SharedCodeTest\SharedCodeTest.csproj", "{CCFE803C-EB13-4792-BCB4-4DC6E5723811}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedCodeTest", "SharedCodeTest\SharedCodeTest.csproj", "{CCFE803C-EB13-4792-BCB4-4DC6E5723811}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

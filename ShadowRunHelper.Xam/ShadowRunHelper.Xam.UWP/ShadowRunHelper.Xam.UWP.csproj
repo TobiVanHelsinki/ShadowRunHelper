@@ -11,8 +11,8 @@
     <AssemblyName>ShadowRunHelper.Xam.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
@@ -150,37 +150,44 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter">
-      <Version>1.9.0</Version>
+      <Version>1.11.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Analytics">
-      <Version>1.9.0</Version>
+      <Version>1.11.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>1.9.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Toolkit">
-      <Version>4.0.0</Version>
+      <Version>1.11.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
       <Version>4.0.0</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.7" />
+    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.2" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\TLIB\TAPPLICATION_UWP\TAPPLICATION_UWP.csproj">
+      <Project>{97d66a85-f340-4678-ae0c-e7e996e748ee}</Project>
+      <Name>TAPPLICATION_UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\TLIB\TLIB_UWP\TLIB_UWP.csproj">
+      <Project>{c5730c21-1458-4107-a344-2937faeb0247}</Project>
+      <Name>TLIB_UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SharedCode\SharedCode.csproj">
+      <Project>{63a5e683-5a51-4c45-a9de-ca0c26c6ec5a}</Project>
+      <Name>SharedCode</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShadowRunHelper.Xam\ShadowRunHelper.Xam.csproj">
-      <Project>{A3D0763C-0A75-4798-9B86-CF48BF7DC0B0}</Project>
+      <Project>{e67dda95-d63f-43e8-a031-2fdddae8986c}</Project>
       <Name>ShadowRunHelper.Xam</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="TAPPLICATION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard1.0\TAPPLICATION.dll</HintPath>
+    <Reference Include="TAPPLICATION">
+      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\$(Configuration)\netstandard1.0\TAPPLICATION.dll</HintPath>
     </Reference>
-    <Reference Include="TLIB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard1.0\TLIB.dll</HintPath>
+    <Reference Include="TLIB">
+      <HintPath>..\..\..\TLIB\TLIB\bin\$(Configuration)\netstandard1.0\TLIB.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="..\..\FeaturesUWP\FeaturesUWP.projitems" Label="Shared" />
