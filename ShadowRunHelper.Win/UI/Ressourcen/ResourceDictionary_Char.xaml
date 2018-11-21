@@ -249,12 +249,12 @@
                                         </Grid.RenderTransform>
 
                                         <!--  This border is used as a backplate for the header area  -->
+                                        <!--Background="{ThemeResource SystemControlForegroundChromeMediumBrush}"-->
                                         <Border
                                                 Grid.ColumnSpan="3"
-                                                Background="{ThemeResource SystemControlForegroundChromeMediumBrush}"
+                                                Background="{ThemeResource SR_MainBackgroundBrush}"
                                                 BorderBrush="{ThemeResource SystemControlForegroundChromeMediumBrush}"
                                                 BorderThickness="0,0,0,1" />
-
                                         <ContentPresenter
                                                 x:Name="LeftHeaderPresenter"
                                                 HorizontalAlignment="Stretch"
