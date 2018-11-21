@@ -1,4 +1,4 @@
-﻿using TLIB.PlatformHelper;
+﻿using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -7,8 +7,8 @@ namespace ShadowRunHelper.Win.UI
 {
     public sealed partial class SettingElement : UserControl
     {
-        string ja = StringHelper.GetString("UI_Optionen_Toggle/OnContent");
-        string nein = StringHelper.GetString("UI_Optionen_Toggle/OffContent");
+        string ja = PlatformHelper.GetString("UI_Optionen_Toggle/OnContent");
+        string nein = PlatformHelper.GetString("UI_Optionen_Toggle/OffContent");
         public SettingElement()
         {
             this.InitializeComponent();

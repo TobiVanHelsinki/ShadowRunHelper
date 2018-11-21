@@ -1,4 +1,4 @@
-﻿using TLIB.PlatformHelper;
+﻿using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -12,8 +12,8 @@ namespace ShadowRunHelper.UI
         public Input()
         {
             InitializeComponent();
-            PrimaryButtonText = StringHelper.GetString("OK");
-            SecondaryButtonText = StringHelper.GetString("Cancel"); 
+            PrimaryButtonText = PlatformHelper.GetString("OK");
+            SecondaryButtonText = PlatformHelper.GetString("Cancel"); 
 
         }
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

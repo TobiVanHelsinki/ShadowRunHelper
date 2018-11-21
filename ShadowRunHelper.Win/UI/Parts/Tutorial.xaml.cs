@@ -1,7 +1,7 @@
 ﻿using ShadowRunHelper.Model;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TLIB.PlatformHelper;
+using TLIB;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -62,7 +62,7 @@ namespace ShadowRunHelper.UI
 
         void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
+            PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
 
         public Tutorial(int Start, int Ende)
@@ -73,7 +73,7 @@ namespace ShadowRunHelper.UI
             RelativMaxStateCount = Ende-Start + 1;
             
             InitializeComponent();
-            Title = StringHelper.GetString(string.Format("Tut_TitleState_{0,0:D2}", Start));
+            Title = PlatformHelper.GetString(string.Format("Tut_TitleState_{0,0:D2}", Start));
             ViewModel.TutorialStateChanged += StateChanged;
             ViewModel.TutorialChangedState(StateCounter, true);
         }
@@ -84,7 +84,7 @@ namespace ShadowRunHelper.UI
             {
                 try
                 {
-                    TutorialText.Text = StringHelper.GetString(string.Format("Tut_State_{0,0:D2}", StateNumber));
+                    TutorialText.Text = PlatformHelper.GetString(string.Format("Tut_State_{0,0:D2}", StateNumber));
                 }
                 catch (System.Exception ex)
                 {

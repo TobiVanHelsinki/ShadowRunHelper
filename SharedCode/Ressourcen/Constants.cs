@@ -1,7 +1,7 @@
 ﻿using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using TAPPLICATION;
-using TLIB.PlatformHelper;
+using TLIB;
 
 namespace ShadowRunHelper
 {
@@ -40,15 +40,15 @@ namespace ShadowRunHelper
         public const string CHARFILE_VERSION = CHARFILE_VERSION_1_7;
         #endregion
         #region Tips
-        public static List<string> TipList = StringHelper.GetStrings("Tip");
+        public static List<string> TipList = Helper.StringHelper.GetStrings("Tip");
         #endregion
         #region Help
         public static List<HelpEntry> HelpList = new List<HelpEntry>() {
-            new HelpEntry() { Paragraph = StringHelper.GetString("Help4_CharAdministration"), Text = StringHelper.GetString("Help4") },
-            new HelpEntry() { Paragraph = StringHelper.GetString("Help5_CharAdministration_FileName"), Text = StringHelper.GetString("Help5") },
-            new HelpEntry() { Paragraph = StringHelper.GetString("Help3_LinkedItems"), Text = StringHelper.GetString("Help3") },
-            new HelpEntry() { Paragraph = StringHelper.GetString("Help1_ActiveItems"), Text = StringHelper.GetString("Help1") },
-            new HelpEntry() { Paragraph = StringHelper.GetString("Help2_AutoCalc"), Text = StringHelper.GetString("Help2") },
+            new HelpEntry() { Paragraph = PlatformHelper.GetString("Help4_CharAdministration"), Text = PlatformHelper.GetString("Help4") },
+            new HelpEntry() { Paragraph = PlatformHelper.GetString("Help5_CharAdministration_FileName"), Text = PlatformHelper.GetString("Help5") },
+            new HelpEntry() { Paragraph = PlatformHelper.GetString("Help3_LinkedItems"), Text = PlatformHelper.GetString("Help3") },
+            new HelpEntry() { Paragraph = PlatformHelper.GetString("Help1_ActiveItems"), Text = PlatformHelper.GetString("Help1") },
+            new HelpEntry() { Paragraph = PlatformHelper.GetString("Help2_AutoCalc"), Text = PlatformHelper.GetString("Help2") },
         };
         #endregion
         #region Orga-Stuff

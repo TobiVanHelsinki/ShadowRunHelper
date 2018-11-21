@@ -6,7 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using TAPPLICATION.Model;
 using TLIB;
-using TLIB.PlatformHelper;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
@@ -241,10 +240,10 @@ namespace ShadowRunHelper.UI
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
             if (SettingsModel.I.LAST_APP_VERSION != Constants.APP_VERSION_BUILD_DELIM)
             {
-                Model.NewNotification(StringHelper.GetString("VersionHistory"), true, 0);
+                Model.NewNotification(PlatformHelper.GetString("VersionHistory"), true, 0);
                 Model.NewNotification(
                     string.Format(
-                        StringHelper.GetString("Notification_NewVersion"),Constants.APP_VERSION_BUILD_DELIM
+                        PlatformHelper.GetString("Notification_NewVersion"),Constants.APP_VERSION_BUILD_DELIM
                         )
                     ,true,10);
                 SettingsModel.I.LAST_APP_VERSION = Constants.APP_VERSION_BUILD_DELIM;
@@ -252,10 +251,10 @@ namespace ShadowRunHelper.UI
             if (Features.AppDataPorter.InProgress)
             {
                 //Ask User, If YES, Import all
-                new MultiButtonMessageDialog(StringHelper.GetString("Request_AppImport/Title")
-                    , StringHelper.GetString("Request_AppImport/Text")
-                    , (StringHelper.GetString("Request_AppImport/Yes"), () => Features.AppDataPorter.ImportAppPacket())
-                    , (StringHelper.GetString("Request_AppImport/No"), null)
+                new MultiButtonMessageDialog(PlatformHelper.GetString("Request_AppImport/Title")
+                    , PlatformHelper.GetString("Request_AppImport/Text")
+                    , (PlatformHelper.GetString("Request_AppImport/Yes"), () => Features.AppDataPorter.ImportAppPacket())
+                    , (PlatformHelper.GetString("Request_AppImport/No"), null)
                     ).ShowAsync();
             }
         }
@@ -300,8 +299,8 @@ namespace ShadowRunHelper.UI
                     try
                     {
                         var messageDialog = new MessageDialog(item.Message);
-                        messageDialog.Commands.Add(new UICommand(StringHelper.GetString("Close")));
-                        messageDialog.Commands.Add(new UICommand(StringHelper.GetString("UI_Cntnt_GoTo_Notifications/Content"), (x) => GoToNotifications()));
+                        messageDialog.Commands.Add(new UICommand(PlatformHelper.GetString("Close")));
+                        messageDialog.Commands.Add(new UICommand(PlatformHelper.GetString("UI_Cntnt_GoTo_Notifications/Content"), (x) => GoToNotifications()));
                         messageDialog.DefaultCommandIndex = 0;
                         await messageDialog.ShowAsync();
                         item.IsRead = true;

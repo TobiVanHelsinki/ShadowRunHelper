@@ -8,7 +8,6 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using TLIB;
-using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -37,10 +36,10 @@ namespace ShadowRunHelper.CharModel
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
+            PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
             if (IsSeperator)
             {
-                ModelHelper.CallPropertyChanged(PropertyChanged, this, nameof(IsSeperator));
+                PlatformHelper.CallPropertyChanged(PropertyChanged, this, nameof(IsSeperator));
             }
         }
 
@@ -369,14 +368,14 @@ namespace ShadowRunHelper.CharModel
             string strReturn = "";
             foreach (var item in GetProperties(this).Reverse())
             {
-                strReturn += StringHelper.GetString("Model_"+ item.DeclaringType.Name + "_"+ item.Name + "/Text");
+                strReturn += PlatformHelper.GetString("Model_"+ item.DeclaringType.Name + "_"+ item.Name + "/Text");
                 strReturn += Delimiter;
             }
             return strReturn;
         }
         public virtual void FromCSV(Dictionary<string, string> dic)
         {
-            var Props = GetProperties(this).Reverse().Select(p => (StringHelper.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"),p));
+            var Props = GetProperties(this).Reverse().Select(p => (PlatformHelper.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"),p));
             foreach (var item in dic)
             {
                 var currentProp = Props.FirstOrDefault(p => p.Item1 == item.Key);

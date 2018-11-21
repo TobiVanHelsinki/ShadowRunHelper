@@ -1,7 +1,7 @@
 ﻿using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using System.Linq;
-using TLIB.PlatformHelper;
+using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -52,16 +52,16 @@ namespace ShadowRunHelper.UI
                 switch (g.GroupNr)
                 {
                     case 0:
-                        info.Key = StringHelper.GetString("Char_View_Pivot_Aktion/Label");
+                        info.Key = PlatformHelper.GetString("Char_View_Pivot_Aktion/Label");
                         break;
                     case 1:
-                        info.Key = StringHelper.GetString("Char_View_Pivot_Item/Label");
+                        info.Key = PlatformHelper.GetString("Char_View_Pivot_Item/Label");
                         break;
                     case 2:
-                        info.Key = StringHelper.GetString("Char_View_Pivot_Kampf/Label");
+                        info.Key = PlatformHelper.GetString("Char_View_Pivot_Kampf/Label");
                         break;
                     case 3:
-                        info.Key = StringHelper.GetString("Char_View_Pivot_Person/Label");
+                        info.Key = PlatformHelper.GetString("Char_View_Pivot_Person/Label");
                         break;
                     default:
                         break;

@@ -4,7 +4,7 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using TLIB.PlatformHelper;
+using TLIB;
 
 namespace ShadowRunHelper.CharController
 {
@@ -89,16 +89,16 @@ namespace ShadowRunHelper.CharController
 
         void RefreshIdentifiers()
         {
-            Konsti.Bezeichner = StringHelper.GetString("Model_Attribut_Konsti/Text");
-            Geschick.Bezeichner = StringHelper.GetString("Model_Attribut_Geschick/Text");
-            Reaktion.Bezeichner = StringHelper.GetString("Model_Attribut_Reaktion/Text");
-            Staerke.Bezeichner = StringHelper.GetString("Model_Attribut_Staerke/Text");
-            Charisma.Bezeichner = StringHelper.GetString("Model_Attribut_Charisma/Text");
-            Logik.Bezeichner = StringHelper.GetString("Model_Attribut_Logik/Text");
-            Intuition.Bezeichner = StringHelper.GetString("Model_Attribut_Intuition/Text");
-            Willen.Bezeichner = StringHelper.GetString("Model_Attribut_Willen/Text");
-            Magie.Bezeichner = StringHelper.GetString("Model_Attribut_Magie/Text");
-            Resonanz.Bezeichner = StringHelper.GetString("Model_Attribut_Resonanz/Text");
+            Konsti.Bezeichner = PlatformHelper.GetString("Model_Attribut_Konsti/Text");
+            Geschick.Bezeichner = PlatformHelper.GetString("Model_Attribut_Geschick/Text");
+            Reaktion.Bezeichner = PlatformHelper.GetString("Model_Attribut_Reaktion/Text");
+            Staerke.Bezeichner = PlatformHelper.GetString("Model_Attribut_Staerke/Text");
+            Charisma.Bezeichner = PlatformHelper.GetString("Model_Attribut_Charisma/Text");
+            Logik.Bezeichner = PlatformHelper.GetString("Model_Attribut_Logik/Text");
+            Intuition.Bezeichner = PlatformHelper.GetString("Model_Attribut_Intuition/Text");
+            Willen.Bezeichner = PlatformHelper.GetString("Model_Attribut_Willen/Text");
+            Magie.Bezeichner = PlatformHelper.GetString("Model_Attribut_Magie/Text");
+            Resonanz.Bezeichner = PlatformHelper.GetString("Model_Attribut_Resonanz/Text");
         }
 
         // Implement IController ##########################

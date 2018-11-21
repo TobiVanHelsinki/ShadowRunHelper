@@ -1,7 +1,7 @@
 ﻿using ShadowRunHelper.CharModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TLIB.PlatformHelper;
+using TLIB;
 
 namespace ShadowRunHelper.Model
 {
@@ -74,7 +74,7 @@ namespace ShadowRunHelper.Model
         public event PropertyChangedEventHandler PropertyChanged;
         void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
+            PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
 
         public override string ToString()

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using TLIB.PlatformHelper;
+using TLIB;
 
 namespace ShadowRunHelper.Model
 {
@@ -20,7 +20,7 @@ namespace ShadowRunHelper.Model
             }
             else
             {
-                AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Warning_NotAddLinkedEntry"));
+                AppModel.Instance.NewNotification(PlatformHelper.GetString("Notification_Warning_NotAddLinkedEntry"));
             }
         }
 

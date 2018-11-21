@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using TLIB.PlatformHelper;
+using TLIB;
 
 namespace ShadowRunHelper.CharController
 {
@@ -16,7 +16,7 @@ namespace ShadowRunHelper.CharController
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
+            PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
         #endregion
         AllListEntry MI_V;

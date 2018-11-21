@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using TLIB;
-using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -14,7 +13,7 @@ namespace ShadowRunHelper.CharModel
 		public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
+            PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
         #endregion
 
@@ -65,7 +64,7 @@ namespace ShadowRunHelper.CharModel
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
+            PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
         #endregion
 

@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TAPPLICATION.IO;
+using TLIB;
 using TLIB.IO;
-using TLIB.PlatformHelper;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -139,7 +139,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_SaveFail"), ex);
+                Model.NewNotification(PlatformHelper.GetString("Notification_Error_SaveFail"), ex);
             }
         }
 
@@ -154,7 +154,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_FileExportFail"), ex);
+                Model.NewNotification(PlatformHelper.GetString("Notification_Error_FileExportFail"), ex);
             }
         }
         void Click_UI_TxT_CSV_Cat_Exportport(object sender, RoutedEventArgs e)
@@ -169,7 +169,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_RepairFail"), ex);
+                Model.NewNotification(PlatformHelper.GetString("Notification_Error_RepairFail"), ex);
             }
         }
         void Click_OpenFolder(object sender, RoutedEventArgs e)

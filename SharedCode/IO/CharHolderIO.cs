@@ -10,8 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TAPPLICATION;
 using TAPPLICATION.IO;
+using TLIB;
 using TLIB.IO;
-using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper.IO
 {
@@ -66,7 +66,7 @@ namespace ShadowRunHelper.IO
             switch (strFileVersion)
             {
                 case Constants.CHARFILE_VERSION_1_3:
-                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_NotSupportedVersion"), false);
+                    AppModel.Instance.NewNotification(PlatformHelper.GetString("Notification_Info_NotSupportedVersion"), false);
                     throw new IO_FileVersion();
                 case Constants.CHARFILE_VERSION_1_5:
                     List<(string old, string @new)> replacements = new List<(string old, string @new)>
@@ -95,12 +95,12 @@ namespace ShadowRunHelper.IO
                         item.Grenze = 0;
                         item.Gegen = 0;
                     }
-                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar_1_5_to_1_6"), false);
+                    AppModel.Instance.NewNotification(PlatformHelper.GetString("Notification_Info_UpgradedChar_1_5_to_1_6"), false);
                     break;
                 case Constants.CHARFILE_VERSION_1_6:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     ReturnCharHolder.Person.Notizen = PlainTextToRtf(ReturnCharHolder.Person.Notizen);
-                    AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Info_UpgradedChar"), false);
+                    AppModel.Instance.NewNotification(PlatformHelper.GetString("Notification_Info_UpgradedChar"), false);
                     break;
                 case Constants.CHARFILE_VERSION_1_7:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
@@ -153,7 +153,7 @@ namespace ShadowRunHelper.IO
                     await CopyFileToCurrentLocation(
                         pap + @"Assets\Example\",
                         Constants.AVAILIBLE_EXAMPLE_LANGUAGES.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName) ? CultureInfo.CurrentCulture.TwoLetterISOLanguageName : Constants.DEFAULT_EXAMPLE_LANGUAGE,
-                        StringHelper.GetString("ExampleChar") + Constants.DATEIENDUNG_CHAR);
+                        PlatformHelper.GetString("ExampleChar") + Constants.DATEIENDUNG_CHAR);
                     break;
                 case PreSavedChar.PreDBChar:
                     break;

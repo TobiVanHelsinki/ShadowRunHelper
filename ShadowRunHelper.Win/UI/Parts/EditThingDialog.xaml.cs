@@ -1,6 +1,6 @@
 ﻿using ShadowRunHelper.CharModel;
 using System.Collections.Generic;
-using TLIB.PlatformHelper;
+using TLIB;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -38,7 +38,7 @@ namespace ShadowRunHelper.UI
                     break;
                 case ThingDefs.Fertigkeit:
                     SecondaryButtonClick += CreateHandlung;
-                    SecondaryButtonText = StringHelper.GetString("Model_Fertigkeit_CreateHandlung");
+                    SecondaryButtonText = PlatformHelper.GetString("Model_Fertigkeit_CreateHandlung");
                     break;
                 case ThingDefs.Item:
                     EditType.ContentTemplate = Item;
@@ -48,7 +48,7 @@ namespace ShadowRunHelper.UI
                     break;
                 case ThingDefs.Munition:
                     EditType.ContentTemplate = Munition;
-                    WertLabel.Text = StringHelper.GetString("Model_Waffe_Wert/Text");
+                    WertLabel.Text = PlatformHelper.GetString("Model_Waffe_Wert/Text");
                     break;
                 case ThingDefs.Implantat:
                     EditType.ContentTemplate = Implantat;
@@ -84,11 +84,11 @@ namespace ShadowRunHelper.UI
                     break;
                 case ThingDefs.Nahkampfwaffe:
                     EditType.ContentTemplate = Nahkampfwaffe;
-                    WertLabel.Text = StringHelper.GetString("Model_Waffe_Wert/Text");
+                    WertLabel.Text = PlatformHelper.GetString("Model_Waffe_Wert/Text");
                     break;
                 case ThingDefs.Fernkampfwaffe:
                     EditType.ContentTemplate = Fernkampfwaffe;
-                    WertLabel.Text = StringHelper.GetString("Model_Waffe_Wert/Text");
+                    WertLabel.Text = PlatformHelper.GetString("Model_Waffe_Wert/Text");
                     break;
                 case ThingDefs.Kommlink:
                     EditType.ContentTemplate = Kommlink;
@@ -98,7 +98,7 @@ namespace ShadowRunHelper.UI
                     break;
                 case ThingDefs.Vehikel:
                     EditType.ContentTemplate = Vehikel;
-                    WertLabel.Text = StringHelper.GetString("Model_Vehikel_Wert/Text");
+                    WertLabel.Text = PlatformHelper.GetString("Model_Vehikel_Wert/Text");
                     break;
                 case ThingDefs.Panzerung:
                     EditType.ContentTemplate = Panzerung;
@@ -147,7 +147,7 @@ namespace ShadowRunHelper.UI
             var Handl = Model.AppModel.Instance.MainObject.Add(ThingDefs.Handlung);
             if (Fert.TryCopy(Handl))
             {
-                Model.AppModel.Instance.lstNotifications.Add(new TAPPLICATION.Model.Notification(StringHelper.GetString("Error_ObjectCopy")) { IsRead = true});
+                Model.AppModel.Instance.lstNotifications.Add(new TAPPLICATION.Model.Notification(PlatformHelper.GetString("Error_ObjectCopy")) { IsRead = true});
             }
             Handl.Wert = 0;
             var FertEntry = Model.AppModel.Instance.MainObject.LinkList.Find(x=>x.Object == Fert);

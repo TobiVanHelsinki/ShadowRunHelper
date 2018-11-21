@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using TLIB.PlatformHelper;
+using TLIB;
 
 namespace ShadowRunHelper
 {
@@ -88,7 +88,7 @@ namespace ShadowRunHelper
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
+            PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
         Type _Type;
         public Type Type
@@ -210,11 +210,11 @@ namespace ShadowRunHelper
             {
                 if (Mehrzahl)
                 {
-                    return StringHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
+                    return PlatformHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
                 }
                 else
                 {
-                    return StringHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
+                    return PlatformHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
                 }
             }
             catch (Exception ex)

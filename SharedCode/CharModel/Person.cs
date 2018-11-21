@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TLIB.PlatformHelper;
+using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -13,7 +13,7 @@ namespace ShadowRunHelper.CharModel
 
         void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            ModelHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
+            PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
 
         #endregion
@@ -279,7 +279,7 @@ namespace ShadowRunHelper.CharModel
         #endregion
 
         #region Details
-        string alias = StringHelper.GetString("Model_Person_Alias_STD/Text");
+        string alias = PlatformHelper.GetString("Model_Person_Alias_STD/Text");
         [Used_UserAttribute]
         public string Alias
         {

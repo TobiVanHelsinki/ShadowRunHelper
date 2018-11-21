@@ -11,7 +11,6 @@ using System.Linq;
 using TAPPLICATION.IO;
 using TLIB;
 using TLIB.IO;
-using TLIB.PlatformHelper;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
@@ -177,7 +176,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_CSVImportFail") + "1", ex);
+                Model.NewNotification(PlatformHelper.GetString("Notification_Error_CSVImportFail") + "1", ex);
             }
             try
             {
@@ -189,7 +188,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_CSVImportFail") + "2", ex);
+                Model.NewNotification(PlatformHelper.GetString("Notification_Error_CSVImportFail") + "2", ex);
             }
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Import");
         }
@@ -207,7 +206,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_CSVExportFail") + "2", ex);
+                Model.NewNotification(PlatformHelper.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export");
         }
@@ -225,7 +224,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_CSVExportFail") + "2", ex);
+                Model.NewNotification(PlatformHelper.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export_Selected");
         }
@@ -242,7 +241,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(StringHelper.GetString("Notification_Error_LogicFail"), ex);
+                Model.NewNotification(PlatformHelper.GetString("Notification_Error_LogicFail"), ex);
             }
         }
         #endregion

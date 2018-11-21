@@ -1,5 +1,5 @@
 ﻿using System;
-using TLIB.PlatformHelper;
+using TLIB;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter
@@ -22,7 +22,7 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return StringHelper.GetString("Model__Active/Text") + " " + StringHelper.GetString(item.DisplayName);
+                        return PlatformHelper.GetString("Model__Active/Text") + " " + PlatformHelper.GetString(item.DisplayName);
                     }
                 case "BezeichnerLang":
                     if (item?.PropertyID == "")
@@ -31,7 +31,7 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return TypeHelper.ThingDefToString(item.Object.ThingType, false) + " " + StringHelper.GetString(item.DisplayName);
+                        return TypeHelper.ThingDefToString(item.Object.ThingType, false) + " " + PlatformHelper.GetString(item.DisplayName);
                     }
                 case "Zusatz":
                     return item.Object.ValueOf("Zusatz").ToString();

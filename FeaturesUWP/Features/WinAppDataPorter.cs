@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using TLIB;
 using TLIB.IO;
-using TLIB.PlatformHelper;
 using Windows.Storage;
 
 namespace ShadowRunHelper
@@ -78,11 +78,11 @@ namespace ShadowRunHelper
                 {
                     Errors += item + "\n";
                 }
-                Model.AppModel.Instance.NewNotification(StringHelper.GetString("AppImportErrors") + "\n\n" + Errors, false);
+                Model.AppModel.Instance.NewNotification(PlatformHelper.GetString("AppImportErrors") + "\n\n" + Errors, false);
             }
             else
             {
-                Model.AppModel.Instance.NewNotification(StringHelper.GetString("AppImportNoErrors"), false);
+                Model.AppModel.Instance.NewNotification(PlatformHelper.GetString("AppImportNoErrors"), false);
 
             }
         }

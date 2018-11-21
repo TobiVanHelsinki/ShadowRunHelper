@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using TAPPLICATION.IO;
+using TLIB;
 using TLIB.IO;
-using TLIB.PlatformHelper;
 using Windows.Foundation.Metadata;
 using Windows.Services.Store;
 
@@ -99,12 +99,12 @@ namespace ShadowRunHelper
             switch (result.Status)
             {
                 case StorePurchaseStatus.Succeeded:
-                    Model.AppModel.Instance.NewNotification(StringHelper.GetString("IAP_Succeeded"));
+                    Model.AppModel.Instance.NewNotification(PlatformHelper.GetString("IAP_Succeeded"));
                     break;
                 case StorePurchaseStatus.NotPurchased:
                     break;
                 default:
-                    Model.AppModel.Instance.NewNotification(StringHelper.GetString("IAP_Error"));
+                    Model.AppModel.Instance.NewNotification(PlatformHelper.GetString("IAP_Error"));
                     break;
             }
             await CheckLicence(true);

@@ -5,7 +5,6 @@ using TAPPLICATION.IO;
 using TAPPLICATION.Model;
 using TLIB;
 using TLIB.IO;
-using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper
 {
@@ -151,7 +150,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                AppModel.Instance.NewNotification(StringHelper.GetString("Error_CopyFiles"), ex);
+                AppModel.Instance.NewNotification(PlatformHelper.GetString("Error_CopyFiles"), ex);
             }
         }
         static async void FolderMode_Toggled()
@@ -184,7 +183,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                AppModel.Instance.NewNotification(StringHelper.GetString("Error_CopyFiles"), ex);
+                AppModel.Instance.NewNotification(PlatformHelper.GetString("Error_CopyFiles"), ex);
             }
         }
         #endregion

@@ -1,7 +1,7 @@
 ﻿using ShadowRunHelper.Model;
 using System;
 using System.Threading.Tasks;
-using TLIB.PlatformHelper;
+using TLIB;
 using Windows.ApplicationModel.UserActivities;
 
 namespace ShadowRunHelper
@@ -19,7 +19,7 @@ namespace ShadowRunHelper
             var name = Char.MakeName(false);
             UserActivity userActivity = await channel.GetOrCreateUserActivityAsync(name);
 
-            userActivity.VisualElements.DisplayText = StringHelper.GetString("Activity_PlayedWith") + name.Remove(name.Length - Constants.DATEIENDUNG_CHAR.Length);
+            userActivity.VisualElements.DisplayText = PlatformHelper.GetString("Activity_PlayedWith") + name.Remove(name.Length - Constants.DATEIENDUNG_CHAR.Length);
             userActivity.ActivationUri = new Uri(Constants.PROTOCOL_CHAR + Char.FileInfo.Filepath + Char.FileInfo.Filename);
 
             await userActivity.SaveAsync();

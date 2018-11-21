@@ -6,8 +6,8 @@ using System.Resources;
 using System.Threading.Tasks;
 using TAPPLICATION;
 using TAPPLICATION.IO;
+using TLIB;
 using TLIB.IO;
-using TLIB.PlatformHelper;
 
 [assembly: NeutralResourcesLanguageAttribute("en")]
 namespace ShadowRunHelper
@@ -139,16 +139,16 @@ namespace ShadowRunHelper
                         }
                         catch (Exception ex)
                         {
-                            Model.NewNotification(StringHelper.GetString("Notification_Error_FileActivation"), ex);
+                            Model.NewNotification(PlatformHelper.GetString("Notification_Error_FileActivation"), ex);
                         }
                     }
                     if (Settings.FORCE_LOAD_CHAR_ON_START)
                     {
-                        Model.NewNotification(StringHelper.GetString("Notification_Char_Loaded_File"));
+                        Model.NewNotification(PlatformHelper.GetString("Notification_Char_Loaded_File"));
                     }
                     else
                     {
-                        Model.NewNotification(StringHelper.GetString("Notification_Char_Loaded_Start"));
+                        Model.NewNotification(PlatformHelper.GetString("Notification_Char_Loaded_Start"));
                     }
                 }
             }

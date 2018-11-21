@@ -2,8 +2,8 @@
 using System;
 using System.Linq;
 using TAPPLICATION.IO;
+using TLIB;
 using TLIB.IO;
-using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper.UI
 {
@@ -23,7 +23,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                AppModel.Instance.NewNotification(StringHelper.GetString("Notification_Error_CSVExportFail") + "2", ex);
+                AppModel.Instance.NewNotification(PlatformHelper.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
             Features.Analytics.TrackEvent("Admin_UI_TxT_CSV_Cat_Export");
         }
