@@ -349,7 +349,7 @@
     <value>Karma</value>
   </data>
   <data name="Model_Person_Kontostand.Text" xml:space="preserve">
-    <value>Kontostand</value>
+    <value>Geld</value>
   </data>
   <data name="Model_Eigenschaften_Auswirkung.Text" xml:space="preserve">
     <value>Auswirkungen</value>

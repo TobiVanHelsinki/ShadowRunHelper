@@ -7,72 +7,157 @@
       xmlns:model="using:ShadowRunHelper.Model"
       xmlns:ui="using:ShadowRunHelper.UI"
       xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-      xmlns:version1803="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
+      xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
       xmlns:notversion1803="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract, 5)"
       mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_MainPage.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <CollectionViewSource x:Name="GroupedCategoryOptions" IsSourceGrouped="true" />
-            <DataTemplate x:Name="GlobalFindBoxTemplate" x:Key="GlobalFindBoxTemplate" x:DataType="model:CharHolder">
-                <AutoSuggestBox x:Name="GlobalFilterBox" x:Uid="GlobalFilterBox" QueryIcon="Find"
-                                HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"           VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
-                                TextChanged="AutoSuggestBox_TextChanged"
-                                QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-                                ItemsSource="{x:Bind ThingList, Mode=OneWay}"
-                                Margin="5"
-                                />
-            </DataTemplate>
-            <DataTemplate x:Name="OptionsPanel" x:Key="OptionsPanel" x:DataType="model:CharHolder">
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <Button Click="Click_Save" Style="{StaticResource STD_Button}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
-                            <!--<TextBlock x:Uid="UI_TxT_Save"/>-->
-                            <TextBlock x:Uid="SymbolChanges" Visibility="{x:Bind HasChanges, Mode=OneWay}"/>
+            <DataTemplate x:Key="LeftPanel" x:DataType="model:CharHolder">
+                <Button HorizontalAlignment="Stretch" PointerEntered="Infos_PointerEntered" >
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Uid="Model_Person_Edge" Style="{StaticResource Panel_Top}"/>
+                            <TextBlock Style="{StaticResource Panel_Top}">
+                                            <Run Text="{x:Bind Person.Edge_Aktuell,Mode=OneWay}"/>
+                                            <Run x:Uid="Slash"/>
+                                            <Run Text="{x:Bind Person.Edge_Gesamt,Mode=OneWay}"/>
+                            </TextBlock>
                         </StackPanel>
-                    </Button>
-                    <Button Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Margin="5,0,0,0" Style="{StaticResource STD_Button}" VerticalAlignment="Stretch">
-                        <Button.Flyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem x:Uid="UI_TxT_SaveAtCurrentPlace" Icon="Save" Click="Click_SaveAtCurrentPlace" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Uid="UI_TxT_SaveExtern" Icon="SaveLocal" Click="Click_SaveExtern" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Uid="UI_TxT_CSV_Export" Icon="SaveLocal" Click="Click_UI_TxT_CSV_Cat_Exportport" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Uid="UI_TxT_OpenFolder" Icon="OpenLocal" Click="Click_OpenFolder" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutSeparator/>
-                                <MenuFlyoutItem x:Uid="UI_TxT_SubtractLifeStyleCost" Click="Click_SubtractLifeStyleCost" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}">
-                                    <MenuFlyoutItem.Icon >
-                                        <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x1F4B2;">
-                                            <FontIcon.RenderTransform>
-                                                <ScaleTransform ScaleX="1.74"/>
-                                            </FontIcon.RenderTransform>
-                                        </FontIcon>
-                                    </MenuFlyoutItem.Icon>
-                                </MenuFlyoutItem>
-                                <MenuFlyoutSeparator/>
-                                <MenuFlyoutItem x:Uid="UI_TxT_CharSettings" Icon="Setting" Click="Click_CharSettings" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Uid="UI_TxT_Repair" Icon="Repair" Click="Click_Repair" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                                <MenuFlyoutItem x:Uid="UI_TxT_Unload" Icon="Delete" Click="Click_Delete" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
-                            </MenuFlyout>
-                        </Button.Flyout>
-                    </Button>
-                    <Button Content="&#xE728;" FontFamily="Segoe MDL2 Assets" Margin="5,0,0,0" Style="{StaticResource STD_Button}" VerticalAlignment="Stretch" Loaded="FavButton_Loaded">
-                        <Button.Flyout >
-                            <Flyout Placement="Bottom">
-                                <ListView ItemsSource="{x:Bind Favorites, Mode=OneWay}"
-                                          CanReorderItems="True" AllowDrop="True"
-                                          IsItemClickEnabled="True" ItemClick="FavListItemClick"
-                                          />
-                            </Flyout>
-                        </Button.Flyout>
-                    </Button>
-                </StackPanel>
+                        <StackPanel Orientation="Vertical" >
+                            <TextBlock x:Uid="Model_Person_Kontostand" Style="{StaticResource Panel_Top}"/>
+                            <TextBlock Text="{x:Bind Person.Kontostand,Mode=OneWay, Converter={StaticResource io_ZahlenYen}}" Style="{StaticResource Panel_Top}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Uid="Model_Person_Karma" Style="{StaticResource Panel_Top}"/>
+                            <TextBlock Style="{StaticResource Panel_Top}">
+                                <Run Text="{x:Bind Person.Karma_Aktuell, Mode=OneWay}"/>
+                                <Run x:Uid="Slash"/>
+                                <Run Text="{x:Bind Person.Karma_Gesamt, Mode=OneWay}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    <Button.Flyout>
+                        <Flyout Opening="Flyout_Opening">
+                            <ContentControl DataContext="{x:Bind Mode=OneWay}" ContentTemplate="{StaticResource Flyout}"/>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </DataTemplate>
+            <DataTemplate x:Key="RigthPanel" x:DataType="model:CharHolder">
+                <Button HorizontalAlignment="Stretch" PointerEntered="Infos_PointerEntered" >
+                    <StackPanel Orientation="Horizontal" >
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Uid="Model_Person_Runs" Style="{StaticResource Panel_Top}"/>
+                            <TextBlock Text="{x:Bind Person.Runs,Mode=OneWay}" Style="{StaticResource Panel_Top}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Uid="Model_Person_Initiative_Kurz" Style="{StaticResource Panel_Top}"/>
+                            <TextBlock Text="{x:Bind Person.Initiative,Mode=OneWay}" Style="{StaticResource Panel_Top}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Uid="UI_Char_Schaden" HorizontalAlignment="Center" Style="{StaticResource Panel_Damage}"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                                <TextBlock Text="{x:Bind Person.Schaden_G,Mode=OneWay}" Style="{StaticResource Panel_Damage}"/>
+                                <TextBlock Text="{x:Bind Person.Schaden_K,Mode=OneWay}" Style="{StaticResource Panel_Damage}"/>
+                                <TextBlock Text="{x:Bind CTRLCyberDeck.ActiveItem.Schaden, Mode=OneWay}" Name="XAML_Header_Schaden_M_Text" Style="{StaticResource Panel_Damage}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <Button.Flyout>
+                        <Flyout Opening="Flyout_Opening">
+                            <ContentControl DataContext="{x:Bind Mode=OneWay}" ContentTemplate="{StaticResource Flyout}"/>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </DataTemplate>
+            <DataTemplate x:Key="Flyout" x:DataType="model:CharHolder">
+                <Viewbox Stretch="Fill">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Uid="Model_Person_Kontostand" Grid.Column="0" Grid.Row="0" Style="{StaticResource Panel_Top_Flyout}" />
+                        <TextBox GotFocus="EditBox_GotFocus" contract5Present:PreviewKeyDown="EditBox_PreviewKeyDown" Name="Header_Kontostand" Text="{x:Bind Person.Kontostand, Mode=TwoWay, Converter={StaticResource io_ZahlenDouble}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Style="{StaticResource Panel_Oben_Kontostand}"  />
+
+                        <TextBlock x:Uid="Model_Person_InitiativeAktuell" Grid.Column="0" Grid.Row="1" Style="{StaticResource Panel_Top_Flyout}"/>
+                        <TextBlock Text="{x:Bind Person.Initiative, Mode=OneWay}" Grid.Column="2" Grid.Row="1" Style="{StaticResource Panel_Top_Flyout}" />
+                        <RepeatButton Grid.Column="3" Grid.Row="1" Name="Initiative_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
+                        <RepeatButton Grid.Column="1" Grid.Row="1" Name="Initiative_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+
+                        <TextBlock x:Uid="Model_Person_Edge_Aktuell" Grid.Column="0" Grid.Row="2" Style="{StaticResource Panel_Top_Flyout}"/>
+                        <TextBlock Text="{x:Bind Person.Edge_Aktuell, Mode=OneWay}" Grid.Column="2" Grid.Row="2" Style="{StaticResource Panel_Top_Flyout}"/>
+                        <RepeatButton Grid.Column="3" Grid.Row="2" Name="Edge_Aktuell_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
+                        <RepeatButton Grid.Column="1" Grid.Row="2" Name="Edge_Aktuell_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+
+                        <TextBlock x:Uid="Model_Person_Edge_Gesamt" Grid.Column="0" Grid.Row="3"  Style="{StaticResource Panel_Top_Flyout}"/>
+                        <TextBlock Text="{x:Bind Person.Edge_Gesamt, Mode=OneWay}" Grid.Column="2" Grid.Row="3" Style="{StaticResource Panel_Top_Flyout}"/>
+                        <RepeatButton Grid.Column="3" Grid.Row="3" Name="Edge_Gesamt_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
+                        <RepeatButton Grid.Column="1" Grid.Row="3" Name="Edge_Gesamt_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+
+                        <TextBlock x:Uid="Model_Person_Karma_Aktuell" Grid.Column="0" Grid.Row="4" Style="{StaticResource Panel_Top_Flyout}"/>
+                        <TextBlock Text="{x:Bind Person.Karma_Aktuell, Mode=OneWay}" Grid.Column="2" Grid.Row="4" Style="{StaticResource Panel_Top_Flyout}" />
+                        <RepeatButton Grid.Column="3" Grid.Row="4" Name="Karma_Aktuell_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
+                        <RepeatButton Grid.Column="1" Grid.Row="4" Name="Karma_Aktuell_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+
+                        <TextBlock x:Uid="Model_Person_Karma_Gesamt" Grid.Column="0" Grid.Row="5" Style="{StaticResource Panel_Top_Flyout}" />
+                        <TextBlock Text="{x:Bind Person.Karma_Gesamt, Mode=OneWay}" Grid.Column="2" Grid.Row="5" Style="{StaticResource Panel_Top_Flyout}" />
+                        <RepeatButton Name="Karma_Gesamt_Plus" Grid.Column="3" Grid.Row="5" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
+                        <RepeatButton Name="Karma_Gesamt_Minus" Grid.Column="1" Grid.Row="5" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+
+                        <TextBlock x:Uid="Model_Person_Runs" Grid.Column="0" Grid.Row="6"  Style="{StaticResource Panel_Top_Flyout}"/>
+                        <TextBlock Text="{x:Bind Person.Runs,Mode=OneWay}" Grid.Column="2" Grid.Row="6" Style="{StaticResource Panel_Top_Flyout}"/>
+                        <RepeatButton Grid.Column="3" Grid.Row="6" Name="Runs_Plus" Style="{StaticResource Panel_Oben_Btn_Plus}" Loaded="MP_Btn_Loaded" Click="Plus_Click"/>
+                        <RepeatButton Grid.Column="1" Grid.Row="6" Name="Runs_Minus" Style="{StaticResource Panel_Oben_Btn_Minus}" Loaded="MP_Btn_Loaded" Click="Minus_Click"/>
+
+                        <Button TabIndex="0" x:Uid="UI_Btn_Bearbeiten" Style="{StaticResource STD_Button}"  Name="Person2_Edit" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center" Click="Edit_Click"/>
+
+                        <Grid x:Name="DamageSliders" Grid.RowSpan="99" Grid.Column="4" Grid.Row="1" Height="300">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{x:Bind Person.Schaden_G_max, Mode=OneWay}" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Style="{StaticResource Panel_Damage_Flyout}" Margin="0,0,5,0"/>
+                            <TextBlock Text="{x:Bind Person.Schaden_K_max, Mode=OneWay}" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" Style="{StaticResource Panel_Damage_Flyout}" Margin="0,0,5,0"/>
+                            <TextBlock Text="{x:Bind CTRLCyberDeck.ActiveItem.SchadenMax, Mode=OneWay}" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="0" Style="{StaticResource Panel_Damage_Flyout}" Margin="0,0,5,0"/>
+                            <Slider Grid.Row="1" Grid.Column="0" Value="{x:Bind Person.Schaden_G, Mode=TwoWay}" Maximum="{x:Bind Person.Schaden_G_max,Mode=OneWay}" Style="{StaticResource Panel_Oben_Schaden_Slider}"/>
+                            <Slider Grid.Row="1" Grid.Column="1" Value="{x:Bind Person.Schaden_K,Mode=TwoWay}" Maximum="{x:Bind Person.Schaden_K_max,Mode=OneWay}" Style="{StaticResource Panel_Oben_Schaden_Slider}"/>
+                            <Slider Grid.Row="1" Grid.Column="2" Value="{x:Bind CTRLCyberDeck.ActiveItem.Schaden,Mode=TwoWay}" Maximum="{x:Bind CTRLCyberDeck.ActiveItem.SchadenMax,Mode=OneWay}" Style="{StaticResource Panel_Oben_Schaden_Slider}"/>
+                            <TextBlock x:Uid="UI_Char_Schaden_Geist" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" Style="{StaticResource Panel_Damage_Flyout}"/>
+                            <TextBlock x:Uid="UI_Char_Schaden_Koerper" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2" Style="{StaticResource Panel_Damage_Flyout}"/>
+                            <TextBlock x:Uid="UI_Char_Schaden_Matrix" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="2" Style="{StaticResource Panel_Damage_Flyout}"/>
+                        </Grid>
+                    </Grid>
+                </Viewbox>
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid>
+    <Grid Background="{ThemeResource SR_MainBackgroundBrush}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -86,8 +171,8 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="InteractionPanelTop.Visibility" Value="Collapsed"/>
-                        <Setter Target="PivotHeader_GlobalFilterBox.Visibility" Value="Visible"/>
-                        <Setter Target="PivotHeader_OptionsPanel.Visibility" Value="Visible"/>
+                        <Setter Target="PivotHeader_RigthPanel.Visibility" Value="Visible"/>
+                        <Setter Target="PivotHeader_LeftPanel.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState>
@@ -95,9 +180,9 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="PivotHeader_OptionsPanel.Visibility" Value="Visible"/>
-                        <Setter Target="PivotHeader_GlobalFilterBox.Visibility" Value="Collapsed"/>
-                        <Setter Target="PivotHeader_OptionsPanel.Visibility" Value="Collapsed"/>
+                        <Setter Target="PivotHeader_LeftPanel.Visibility" Value="Visible"/>
+                        <Setter Target="PivotHeader_RigthPanel.Visibility" Value="Collapsed"/>
+                        <Setter Target="PivotHeader_LeftPanel.Visibility" Value="Collapsed"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -285,22 +370,21 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Grid x:Name="InteractionPanelTop" Background="{ThemeResource SystemControlForegroundChromeMediumBrush}">
-
+        <Grid x:Name="InteractionPanelTop">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ContentControl DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource OptionsPanel}"/>
-            <ContentPresenter Grid.Column="1" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
+            <ContentControl Grid.Column="0" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource LeftPanel}" HorizontalContentAlignment="Stretch"/>
+            <ContentControl Grid.Column="1" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource RigthPanel}" HorizontalContentAlignment="Stretch"/>
         </Grid>
-        <Pivot x:Name="Pivot" Grid.Row="1" Style="{StaticResource PivotStyle_TabsStyle}" SizeChanged="Pivot_SizeChanged">
-            <Pivot.RightHeader>
-                <ContentPresenter x:Name="PivotHeader_GlobalFilterBox" Margin="7,0,7,0" VerticalAlignment="Center" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource GlobalFindBoxTemplate}"/>
-            </Pivot.RightHeader>
+        <Pivot x:Name="Pivot" Grid.Row="1" Background="{StaticResource SystemControlForegroundAltHighBrush}" Style="{StaticResource PivotStyle_TabsStyle}" SizeChanged="Pivot_SizeChanged">
             <Pivot.LeftHeader>
-                <ContentControl x:Name="PivotHeader_OptionsPanel" Margin="7,0,7,0" HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource OptionsPanel}"/>
+                <ContentControl x:Name="PivotHeader_RigthPanel" Margin="7,0,7,0" HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource LeftPanel}"/>
             </Pivot.LeftHeader>
+            <Pivot.RightHeader>
+                <ContentControl x:Name="PivotHeader_LeftPanel"  Margin="7,0,7,0" HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource RigthPanel}"/>
+            </Pivot.RightHeader>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header >
                     <Border MaxWidth="65" x:Name="PivotHeader1Border">
@@ -722,7 +806,7 @@
                                  ScrollViewer.IsVerticalRailEnabled="True"
                                  BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}"
                                  Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"         
-                                 version1803:CharacterReceived="EditZone_CharacterReceived"
+                                 contract5Present:CharacterReceived="EditZone_CharacterReceived"
                                  notversion1803:TextChanged="EditZone_TextChanged"
                                  />
                 </Grid>

@@ -4,8 +4,10 @@ using System.Collections;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using TAPPLICATION.IO;
 using TAPPLICATION.Model;
 using TLIB;
+using TLIB.IO;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
@@ -330,85 +332,71 @@ namespace ShadowRunHelper.UI
             Model.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsNots);
         }
         #endregion
-        #region Header Button Handler
-        void Plus_Click(object sender, RoutedEventArgs e)
+        void Click_Save(object sender, RoutedEventArgs e)
         {
-            if (Model.MainObject != null)
-            {
-                string Controller_Name = (((FrameworkElement)sender).Name);
-
-                if (Controller_Name.Contains("Karma_Gesamt"))
-                {
-                    Model.MainObject.Person.Karma_Gesamt++;
-                }
-                else if (Controller_Name.Contains("Karma_Aktuell"))
-                {
-                    Model.MainObject.Person.Karma_Aktuell++;
-                }
-                else if (Controller_Name.Contains("Edge_Gesamt"))
-                {
-                    Model.MainObject.Person.Edge_Gesamt++;
-                }
-                else if (Controller_Name.Contains("Edge_Aktuell"))
-                {
-                    Model.MainObject.Person.Edge_Aktuell++;
-                }
-                else if (Controller_Name.Contains("Initiative"))
-                {
-                    Model.MainObject.Person.Initiative++;
-                }
-                else if (Controller_Name.Contains("Runs"))
-                {
-                    Model.MainObject.Person.Runs++;
-                }
-            }
+            Model?.MainObject?.SetSaveTimerTo(0, true);
         }
 
-        void Minus_Click(object sender, RoutedEventArgs e)
+        async void Click_SaveAtCurrentPlace(object sender, RoutedEventArgs e)
         {
-            if (Model.MainObject != null)
+            try
             {
-                string Controller_Name = (((FrameworkElement)sender).Name);
-
-                if (Controller_Name.Contains("Karma_Gesamt"))
-                {
-                    Model.MainObject.Person.Karma_Gesamt--;
-                }
-                else if (Controller_Name.Contains("Karma_Aktuell"))
-                {
-                    Model.MainObject.Person.Karma_Aktuell--;
-                }
-                else if (Controller_Name.Contains("Edge_Gesamt"))
-                {
-                    Model.MainObject.Person.Edge_Gesamt--;
-                }
-                else if (Controller_Name.Contains("Edge_Aktuell"))
-                {
-                    Model.MainObject.Person.Edge_Aktuell--;
-                }
-                else if (Controller_Name.Contains("Initiative"))
-                {
-                    Model.MainObject.Person.Initiative--;
-                }
-                else if (Controller_Name.Contains("Runs"))
-                {
-                    Model.MainObject.Person.Runs--;
-                }
+                var i = await SharedIO.SaveAtCurrentPlace(Model.MainObject);
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(PlatformHelper.GetString("Notification_Error_SaveFail"), ex);
             }
         }
-
-        async void Edit_Click(object sender, RoutedEventArgs e)
+        void Click_Delete(object sender, RoutedEventArgs e)
         {
-            String Controller_Name = ((String)((Button)sender).Name);
-
-            if (Controller_Name.Contains("Person2"))
-            {
-                Edit_Person_Fast dialog = new Edit_Person_Fast(Model.MainObject.Person);
-                await dialog.ShowAsync();
-            }
+            Model.RequestNavigation(ProjectPages.Administration);
+            Model.MainObject = null;
         }
 
-        #endregion
+        void Click_SubtractLifeStyleCost(object sender, RoutedEventArgs e)
+        {
+            Model.MainObject.SubtractLifeStyleCost();
+        }
+        void Click_CharSettings(object sender, RoutedEventArgs e)
+        {
+            var d = new CharSettingsDialog();
+            d.ShowAsync();
+        }
+
+        async void Click_SaveExtern(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var i = await SharedIO.Save(Model.MainObject, Info: new FileInfoClass() { Fileplace = Place.Extern, Token = "Export" });
+                Model.MainObject.FileInfo.Fileplace = i.Fileplace;
+                Model.MainObject.FileInfo.Filepath = i.Filepath;
+                Model.MainObject.FileInfo.Filename = i.Filename;
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(PlatformHelper.GetString("Notification_Error_FileExportFail"), ex);
+            }
+        }
+        void Click_UI_TxT_CSV_Cat_Exportport(object sender, RoutedEventArgs e)
+        {
+            SharedUIActions.UI_TxT_CSV_Cat_Exportport(Model.MainObject);
+        }
+        void Click_Repair(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Model.MainObject?.Repair();
+            }
+            catch (Exception ex)
+            {
+                Model.NewNotification(PlatformHelper.GetString("Notification_Error_RepairFail"), ex);
+            }
+        }
+        void Click_OpenFolder(object sender, RoutedEventArgs e)
+        {
+            SharedIO.CurrentIO.OpenFolder(Model.MainObject.FileInfo);
+        }
         #region ButtonHandling
 
         void Ui_Nav_Char(object sender, RoutedEventArgs e)
@@ -494,9 +482,31 @@ namespace ShadowRunHelper.UI
 
         #endregion
 
-        void EditBox_GotFocus(object sender, RoutedEventArgs e) => SharePageFunctions.EditBox_SelectAll(sender, e);
+        #region Fav Stuff
+        Button FavButton = null;
+        private void FavButton_Loaded(object sender, RoutedEventArgs e)
+        {
+            FavButton = sender as Button;
+        }
+        void FavListItemClick(object sender, ItemClickEventArgs e)
+        {
+            //PendingScrollEntry = e.ClickedItem as Thing;
 
-        void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
+            //FavButton.Flyout.Hide();
 
+            //Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == PendingScrollEntry.ThingType).Pivot;
+            //ScrollIntoBlock();
+        }
+        #endregion
+
+        private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+
+        }
+
+        private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+
+        }
     }
 }

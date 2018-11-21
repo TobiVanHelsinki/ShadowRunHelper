@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 using TAPPLICATION.IO;
 using TLIB;
 using TLIB.IO;
+using Windows.Devices.Input;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelper.UI
@@ -126,56 +128,7 @@ namespace ShadowRunHelper.UI
 
         #endregion
         #region Gui-Model Stuff
-        void Click_Save(object sender, RoutedEventArgs e)
-        {
-            MainObject?.SetSaveTimerTo(0, true);
-        }
-
-        async void Click_SaveAtCurrentPlace(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var i = await SharedIO.SaveAtCurrentPlace(Model.MainObject);
-            }
-            catch (Exception ex)
-            {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_SaveFail"), ex);
-            }
-        }
-
-        async void Click_SaveExtern(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var i = await SharedIO.Save(Model.MainObject, Info: new FileInfoClass() { Fileplace = Place.Extern, Token = "Export" });
-                Model.MainObject.FileInfo.Fileplace = i.Fileplace;
-                Model.MainObject.FileInfo.Filepath = i.Filepath;
-                Model.MainObject.FileInfo.Filename = i.Filename;
-            }
-            catch (Exception ex)
-            {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_FileExportFail"), ex);
-            }
-        }
-        void Click_UI_TxT_CSV_Cat_Exportport(object sender, RoutedEventArgs e)
-        {
-                SharedUIActions.UI_TxT_CSV_Cat_Exportport(Model.MainObject);
-        }
-        void Click_Repair(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Model.MainObject?.Repair();
-            }
-            catch (Exception ex)
-            {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_RepairFail"), ex);
-            }
-        }
-        void Click_OpenFolder(object sender, RoutedEventArgs e)
-        {
-            SharedIO.CurrentIO.OpenFolder(Model.MainObject.FileInfo);
-        }
+       
 
         async void Edit_Person_Click(object sender, RoutedEventArgs e)
         {
@@ -186,16 +139,6 @@ namespace ShadowRunHelper.UI
             catch (Exception)
             {
             }
-        }
-        void Click_Delete(object sender, RoutedEventArgs e)
-        {
-            Model.RequestNavigation(ProjectPages.Administration);
-            Model.MainObject = null;
-        }
-
-        void Click_SubtractLifeStyleCost(object sender, RoutedEventArgs e)
-        {
-            MainObject.SubtractLifeStyleCost();
         }
         #endregion
         #region Char Settings
@@ -210,27 +153,6 @@ namespace ShadowRunHelper.UI
         void ResetButton_Click(object sender, RoutedEventArgs e)
         {
             MainObject.Settings.ResetCategoryOptions();
-        }
-        void Click_CharSettings(object sender, RoutedEventArgs e)
-        {
-            var d = new CharSettingsDialog();
-            d.ShowAsync();
-        }
-        #endregion
-        #region Fav Stuff
-        Button FavButton = null;
-        private void FavButton_Loaded(object sender, RoutedEventArgs e)
-        {
-            FavButton = sender as Button;
-        }
-        void FavListItemClick(object sender, ItemClickEventArgs e)
-        {
-            PendingScrollEntry = e.ClickedItem as Thing;
-
-            FavButton.Flyout.Hide();
-
-            Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == PendingScrollEntry.ThingType).Pivot;
-            ScrollIntoBlock();
         }
         #endregion
         #region instant search Stuff
@@ -379,7 +301,118 @@ namespace ShadowRunHelper.UI
 
 
         #endregion
+        public int CustFontSize { get; set; }
+        public PointerDeviceType CurrentPointerDeviceType { get; set; }
 
+        void Infos_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            CurrentPointerDeviceType = e.Pointer.PointerDeviceType;
+        }
+
+        void Flyout_Opening(object sender, object e)
+        {
+            switch (CurrentPointerDeviceType)
+            {
+                case PointerDeviceType.Touch:
+                    (sender as Flyout).Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Top;
+                    CustFontSize = 35;
+                    break;
+                case PointerDeviceType.Pen:
+                case PointerDeviceType.Mouse:
+                    (sender as Flyout).Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Top;
+                    CustFontSize = 25;
+                    break;
+                default:
+                    break;
+            }
+        }
+        void MP_Btn_Loaded(object sender, RoutedEventArgs e)
+        {
+            (sender as Control).FontSize = CustFontSize < 6 ? (sender as Control).FontSize : CustFontSize;
+        }
+        #region Header Button Handler
+        void Plus_Click(object sender, RoutedEventArgs e)
+        {
+            if (Model.MainObject != null)
+            {
+                string Controller_Name = (((FrameworkElement)sender).Name);
+
+                if (Controller_Name.Contains("Karma_Gesamt"))
+                {
+                    Model.MainObject.Person.Karma_Gesamt++;
+                }
+                else if (Controller_Name.Contains("Karma_Aktuell"))
+                {
+                    Model.MainObject.Person.Karma_Aktuell++;
+                }
+                else if (Controller_Name.Contains("Edge_Gesamt"))
+                {
+                    Model.MainObject.Person.Edge_Gesamt++;
+                }
+                else if (Controller_Name.Contains("Edge_Aktuell"))
+                {
+                    Model.MainObject.Person.Edge_Aktuell++;
+                }
+                else if (Controller_Name.Contains("Initiative"))
+                {
+                    Model.MainObject.Person.Initiative++;
+                }
+                else if (Controller_Name.Contains("Runs"))
+                {
+                    Model.MainObject.Person.Runs++;
+                }
+            }
+        }
+
+        void Minus_Click(object sender, RoutedEventArgs e)
+        {
+            if (Model.MainObject != null)
+            {
+                string Controller_Name = (((FrameworkElement)sender).Name);
+
+                if (Controller_Name.Contains("Karma_Gesamt"))
+                {
+                    Model.MainObject.Person.Karma_Gesamt--;
+                }
+                else if (Controller_Name.Contains("Karma_Aktuell"))
+                {
+                    Model.MainObject.Person.Karma_Aktuell--;
+                }
+                else if (Controller_Name.Contains("Edge_Gesamt"))
+                {
+                    Model.MainObject.Person.Edge_Gesamt--;
+                }
+                else if (Controller_Name.Contains("Edge_Aktuell"))
+                {
+                    Model.MainObject.Person.Edge_Aktuell--;
+                }
+                else if (Controller_Name.Contains("Initiative"))
+                {
+                    Model.MainObject.Person.Initiative--;
+                }
+                else if (Controller_Name.Contains("Runs"))
+                {
+                    Model.MainObject.Person.Runs--;
+                }
+            }
+        }
+
+        async void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            String Controller_Name = ((String)((Button)sender).Name);
+
+            if (Controller_Name.Contains("Person2"))
+            {
+                Edit_Person_Fast dialog = new Edit_Person_Fast(Model.MainObject.Person);
+                await dialog.ShowAsync();
+            }
+        }
+
+        #endregion
+
+        void EditBox_GotFocus(object sender, RoutedEventArgs e) => SharePageFunctions.EditBox_SelectAll(sender, e);
+
+        void EditBox_PreviewKeyDown(object sender, KeyRoutedEventArgs e) => SharePageFunctions.EditBox_UpDownKeys(sender, e);
 
     }
 }

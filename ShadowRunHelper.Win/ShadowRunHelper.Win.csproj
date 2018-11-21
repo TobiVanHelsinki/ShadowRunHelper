@@ -130,12 +130,6 @@
     <PRIResource Include="ApplicationInsights.config" />
     <PRIResource Include="Strings\de\Resources.resw" />
     <PRIResource Include="Strings\en\Resources.resw" />
-    <None Include="Strings\Übersetzungshilfen\CAT27000_Shadowrun 5_CharacterSheet.pdf" />
-    <None Include="Strings\Übersetzungshilfen\ResxTranslator_v2.3_release_signed.zip" />
-    <None Include="Strings\Übersetzungshilfen\SR4_Charbogen_Standard.pdf" />
-    <None Include="Strings\Übersetzungshilfen\sr5sheets10.pdf" />
-    <None Include="Strings\Übersetzungshilfen\SR5_Blankodokumente.pdf" />
-    <None Include="Strings\Übersetzungshilfen\SR_Anarchy_Charakterbogen.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
