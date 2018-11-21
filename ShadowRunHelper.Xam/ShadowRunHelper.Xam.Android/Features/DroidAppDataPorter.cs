@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TLIB;
 using TLIB.IO;
-using TLIB.PlatformHelper;
 
 namespace ShadowRunHelper
 {
@@ -37,13 +37,13 @@ namespace ShadowRunHelper
                         var m = Convert.ChangeType(item.NEW.Item2, item.OLD.PropertyType);
                         item.OLD?.SetMethod.Invoke(SettingsModel.I, new object[] { m });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         ErrorList.Add(item.OLD.Name);
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             // Import Chars
@@ -61,7 +61,7 @@ namespace ShadowRunHelper
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             InProgress = false;
@@ -72,11 +72,11 @@ namespace ShadowRunHelper
                 {
                     Errors += item + "\n";
                 }
-                Model.AppModel.Instance.NewNotification(StringHelper.GetString("AppImportErrors") + "\n\n" + Errors, false);
+                Model.AppModel.Instance.NewNotification(PlatformHelper.GetString("AppImportErrors") + "\n\n" + Errors, false);
             }
             else
             {
-                Model.AppModel.Instance.NewNotification(StringHelper.GetString("AppImportNoErrors"), false);
+                Model.AppModel.Instance.NewNotification(PlatformHelper.GetString("AppImportNoErrors"), false);
 
             }
         }

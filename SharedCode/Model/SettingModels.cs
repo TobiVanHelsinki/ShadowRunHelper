@@ -160,9 +160,11 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    SharedSettingsModel.I.FOLDERMODE_PATH = (await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass() { Fileplace = Place.Extern, Token = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.AskUser)).Filepath;
+                    var info = new FileInfoClass(Place.Extern, "", "") { Token = Constants.ACCESSTOKEN_FOLDERMODE };
+                    var folder = await SharedIO.CurrentIO.GetFolderInfo(info, UserDecision.AskUser);
+                    SharedSettingsModel.I.FOLDERMODE_PATH = folder.Filepath;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     SharedSettingsModel.Instance.FOLDERMODE = false;
                     return;
@@ -178,7 +180,7 @@ namespace ShadowRunHelper
                 var s = new FileInfoClass(!FolderMode ? Place.Extern : (InternRoam ? Place.Roaming : Place.Local), "", (!FolderMode ? externpath : internpath));
                 await SharedIO.CurrentIO.MoveAllFiles(t, s, Constants.LST_FILETYPES_CHAR);
             }
-            catch (IsOKException ex)
+            catch (IsOKException)
             {
             }
             catch (Exception ex)

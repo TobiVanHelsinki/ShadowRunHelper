@@ -38,7 +38,7 @@ namespace ShadowRunHelper.Model
                         T.Wait();
                     }
                 }
-                catch (System.Exception ex)
+                catch (System.Exception)
                 {
                     if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
                 }

@@ -7,6 +7,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;RELEASE</DefineConstants>
+    <NoWarn>1701;1702;2008;CS0168;CS4014</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

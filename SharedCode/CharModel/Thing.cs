@@ -212,7 +212,7 @@ namespace ShadowRunHelper.CharModel
             {
                 return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }
@@ -229,7 +229,7 @@ namespace ShadowRunHelper.CharModel
                 {
                     return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return 0;
                 }
@@ -384,7 +384,6 @@ namespace ShadowRunHelper.CharModel
         }
         static object ConvertToRightType(object Value, object Target)
         {
-            object ret;
             switch (Target)
             {
                 case int i:

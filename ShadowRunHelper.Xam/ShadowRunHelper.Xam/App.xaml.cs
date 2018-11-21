@@ -11,6 +11,8 @@ namespace ShadowRunHelper.Xam
         {
 
             InitializeComponent();
+            TAPPLICATION_Xamarin.Init.Do();
+            TLIB_Xamarin.Init.Do();
 
             AppHolder.InitModel();
 

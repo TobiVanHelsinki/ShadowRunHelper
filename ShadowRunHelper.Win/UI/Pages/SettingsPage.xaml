@@ -55,8 +55,8 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{x:Bind OccuredAt, Mode=OneWay, Converter={StaticResource o_LastTime}, ConverterParameter=Break}" TextWrapping="Wrap" Margin="0,0,10,0"/>
-                    <TextBlock Grid.Column="1" Text="{x:Bind Message, Mode=OneWay}" TextWrapping="Wrap"/>
+                    <TextBlock Text="{x:Bind OccuredAt, Converter={StaticResource o_LastTime}, ConverterParameter=Break}" TextWrapping="Wrap" Margin="0,0,10,0"/>
+                    <TextBlock Grid.Column="1" Text="{x:Bind Message}" TextWrapping="Wrap"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="NotificationX" x:DataType="TLIBModel:Notification">
@@ -197,7 +197,7 @@
             <PivotItem.Header>
                 <TextBlock x:Uid="UI_Optionen_U_Hilfe" Style="{StaticResource ueberschrift1}"/>
             </PivotItem.Header>
-            <ListView ItemsSource="{x:Bind Help, Mode=OneWay}">
+            <ListView ItemsSource="{x:Bind Help}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="model:HelpEntry">
                         <StackPanel Orientation="Vertical">

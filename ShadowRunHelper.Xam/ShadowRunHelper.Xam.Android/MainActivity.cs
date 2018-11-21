@@ -21,13 +21,6 @@ namespace ShadowRunHelper.Xam.Droid
             Features.AppInformation = new DroidAppInformation();
             Features.AppDataPorter = new DroidAppDataPorter();
 
-            TLIB.PlatformHelper.ModelHelper.Platform = new TLIB.Code.Android.ModelHelper();
-            System.Diagnostics.Debug.WriteLine("In OnCreate");
-            TLIB.PlatformHelper.StringHelper.Platform = new TLIB.Code.Android.StringHelper();
-
-            TAPPLICATION.IO.SharedIO.CurrentIO = new TLIB.Code.Android.IO();
-            TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TLIB.Code.Android.Settings();
-
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             base.OnCreate(savedInstanceState);

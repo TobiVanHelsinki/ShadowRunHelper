@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ShadowRunHelper.Xam"
-             x:Class="ShadowRunHelper.Xam.MainPage">
+             xmlns:parts="clr-namespace:ShadowRunHelper.Xam.UI.Parts"
+             x:Class="ShadowRunHelper.Xam.MainPage"
+             BackgroundColor="AliceBlue">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Uid="Ui_Nav_Char" Icon="Contact" Clicked="Ui_Nav_Char" />
         <ToolbarItem x:Uid="Ui_Nav_Admin" Icon="People" Clicked="Ui_Nav_Admin"/>
@@ -10,28 +11,27 @@
         <ToolbarItem Text="CreateDebugChar" Icon="Add" Clicked="CreateDebugChar"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid Style="{StaticResource MainGrid}" VerticalOptions="Fill" x:Name="AppTitleBar" />
+        <StackLayout BackgroundColor="Red">
+            <Grid VerticalOptions="Fill" x:Name="AppTitleBar" />
+            <Label Text="Hallo" BackgroundColor="GreenYellow"/>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="TitleColumnL" Width="0"/>
+                    <ColumnDefinition x:Name="TitleColumnL" Width="100"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition x:Name="TitleColumnR" Width="0"/>
+                    <ColumnDefinition x:Name="TitleColumnR" Width="10"/>
                 </Grid.ColumnDefinitions>
-                <Frame x:Name="StatusControlBorder" Grid.Column="1">
-                    <ContentView HorizontalOptions="Fill" x:Name="StatusControl" ControlTemplate="{StaticResource Status}"
-                            BindingContext="{Binding Model.MainObject, Mode=OneWay}" 
-                            IsEnabled="{Binding Model.MainObject, Converter={StaticResource o_Null2Bool}, Mode=OneWay}"
+                <Frame x:Name="StatusControlBorder" Grid.Column="1" BackgroundColor="Aqua">
+                    <ContentView HorizontalOptions="Fill" 
+                                 ControlTemplate="{Binding View1}"
+                                 x:Name="StatusControl" 
+                                 BindingContext="{Binding , Mode=OneWay}" 
+                                 BackgroundColor="Bisque"
                 />
                 </Frame>
+                <parts:View1></parts:View1>
             </Grid>
 
-            <Frame Grid.Row="1" x:Name="MyFrame"/>
+            <!--<Frame Grid.Row="1" x:Name="MyFrame"/>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -57,7 +57,7 @@
                     <Label x:Name="TipText" Grid.Row="1" Margin="15,0,0,0"  Style="{StaticResource TextInhaltKlein}" VerticalOptions="Start"/>
                     <Label x:Uid="UI_Txt_DisableTips" Grid.Row="2" Margin="15,8,0,0"/>
                 </Grid>
-            </Grid>
-        </Grid>
+            </Grid>-->
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

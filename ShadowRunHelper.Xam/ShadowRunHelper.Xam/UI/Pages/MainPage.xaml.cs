@@ -10,6 +10,7 @@ namespace ShadowRunHelper.Xam
 {
     public partial class MainPage : ContentPage
     {
+        public CharHolder CurrentChar { get; set; }
         public MainPage()
         {
             InitializeComponent();
@@ -17,7 +18,7 @@ namespace ShadowRunHelper.Xam
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            CharHolder NewChar = CharHolder.CreateCharWithStandardContent();
+            CurrentChar = CharHolder.CreateCharWithStandardContent();
 
 
         }
