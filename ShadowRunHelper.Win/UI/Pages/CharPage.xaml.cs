@@ -50,13 +50,13 @@ namespace ShadowRunHelper.UI
         void AdjustHeaderWidth()
         {
             var w = Pivot.ActualWidth / 6;
-            if (w> 30 && w <= 65 && Math.Round(w) != Math.Round(PivotHeader1Border.MaxWidth))
+            if (w > 30 && w <= 65 && Math.Round(w) != Math.Round(PivotHeader1.MaxWidth))
             {
-                PivotHeader1Border.MaxWidth = w;
-                PivotHeader2Border.MaxWidth = w;
-                PivotHeader3Border.MaxWidth = w;
-                PivotHeader4Border.MaxWidth = w;
-                PivotHeader5Border.MaxWidth = w;
+                PivotHeader1.MaxWidth = w;
+                PivotHeader2.MaxWidth = w;
+                PivotHeader3.MaxWidth = w;
+                PivotHeader4.MaxWidth = w;
+                PivotHeader5.MaxWidth = w;
             }
         }
         #endregion

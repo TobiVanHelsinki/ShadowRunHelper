@@ -55,11 +55,11 @@ namespace ShadowRunHelper.UI
         Random r = new Random();
         void Debug3(object sender, RoutedEventArgs e)
         {
-            Model.NewNotification(" Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test" + r.Next(), isLightNotification: true);
+            Model.NewNotification(" Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test" + r.Next(), true);
         }
         void Debug4(object sender, RoutedEventArgs e)
         {
-            Model.NewNotification("Test" + r.Next(), isLightNotification: false);
+            Model.NewNotification("Test" + r.Next(), false);
         }
 #endif
         void CreateDebugChar(object sender, RoutedEventArgs e)
@@ -248,8 +248,7 @@ namespace ShadowRunHelper.UI
                 Model.NewNotification(
                     string.Format(
                         PlatformHelper.GetString("Notification_NewVersion"),Constants.APP_VERSION_BUILD_DELIM
-                        )
-                    ,true,10);
+                        ), 10);
                 SettingsModel.I.LAST_APP_VERSION = Constants.APP_VERSION_BUILD_DELIM;
             }
             if (Features.AppDataPorter.InProgress)

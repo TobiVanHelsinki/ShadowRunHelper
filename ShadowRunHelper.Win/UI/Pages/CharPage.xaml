@@ -378,7 +378,8 @@
             <ContentControl Grid.Column="0" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource LeftPanel}" HorizontalContentAlignment="Stretch"/>
             <ContentControl Grid.Column="1" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource RigthPanel}" HorizontalContentAlignment="Stretch"/>
         </Grid>
-        <Pivot x:Name="Pivot" Grid.Row="1" Background="{StaticResource SystemControlForegroundAltHighBrush}" Style="{StaticResource PivotStyle_TabsStyle}" SizeChanged="Pivot_SizeChanged">
+        <Pivot x:Name="Pivot" Grid.Row="1" Background="{StaticResource SystemControlForegroundAltHighBrush}" 
+               Style="{StaticResource PivotStyle_TabsStyle}" SizeChanged="Pivot_SizeChanged">
             <Pivot.LeftHeader>
                 <ContentControl x:Name="PivotHeader_RigthPanel" Margin="7,0,7,0" HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource LeftPanel}"/>
             </Pivot.LeftHeader>
@@ -386,10 +387,8 @@
                 <ContentControl x:Name="PivotHeader_LeftPanel"  Margin="7,0,7,0" HorizontalAlignment="Center" VerticalAlignment="Center" DataContext="{x:Bind Model.MainObject, Mode=OneWay}" ContentTemplate="{StaticResource RigthPanel}"/>
             </Pivot.RightHeader>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
-                <PivotItem.Header >
-                    <Border MaxWidth="65" x:Name="PivotHeader1Border">
-                        <ui:TabHeader x:Uid="Char_View_Pivot_Aktion" Glyph="&#xE945;" />
-                    </Border>
+                <PivotItem.Header>
+                    <ui:TabHeader x:Name="PivotHeader1" x:Uid="Char_View_Pivot_Aktion" Glyph="&#xE945;" />
                 </PivotItem.Header>
                 <Border x:Name="MainContentBorder">
                     <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
@@ -412,9 +411,7 @@
             </PivotItem>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
-                    <Border MaxWidth="65" x:Name="PivotHeader2Border">
-                        <ui:TabHeader x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
-                    </Border>
+                    <ui:TabHeader x:Name="PivotHeader2" x:Uid="Char_View_Pivot_Item" Glyph="&#xE960;" />
                 </PivotItem.Header>
                 <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
                     <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
@@ -431,9 +428,7 @@
             </PivotItem>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
-                    <Border MaxWidth="65" x:Name="PivotHeader3Border">
-                        <ui:TabHeader x:Uid="Char_View_Pivot_Kampf" Glyph="&#xE730;" />
-                    </Border>
+                    <ui:TabHeader x:Name="PivotHeader3" x:Uid="Char_View_Pivot_Kampf" Glyph="&#xE730;" />
                 </PivotItem.Header>
                 <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
                     <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
@@ -447,9 +442,7 @@
             </PivotItem>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
-                    <Border MaxWidth="65" x:Name="PivotHeader4Border">
-                        <ui:TabHeader x:Uid="Char_View_Pivot_Person" Glyph="&#xE2AF;" />
-                    </Border>
+                    <ui:TabHeader x:Name="PivotHeader4" x:Uid="Char_View_Pivot_Person" Glyph="&#xE2AF;" />
                 </PivotItem.Header>
                 <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
                     <Grid Style="{StaticResource Pivot_Item_Grid}">
@@ -622,9 +615,7 @@
             </PivotItem>
             <PivotItem Style="{StaticResource PivotItem_TabsStyle}">
                 <PivotItem.Header>
-                    <Border MaxWidth="65" x:Name="PivotHeader5Border">
-                        <ui:TabHeader x:Uid="Char_View_Pivot_Notizen" Glyph="&#xE193;" />
-                    </Border>
+                    <ui:TabHeader x:Name="PivotHeader5" x:Uid="Char_View_Pivot_Notizen" Glyph="&#xE193;" />
                 </PivotItem.Header>
                 <!--<TextBox Name="NoteTextBox" Text="{x:Bind Model.MainObject.Person.Notizen, Mode=TwoWay}" Style="{StaticResource NotesBox}"/>-->
                 <Grid>
