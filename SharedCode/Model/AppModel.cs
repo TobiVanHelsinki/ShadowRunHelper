@@ -97,12 +97,7 @@ public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptio
             get { return _PendingScrollEntry; }
             set { if (_PendingScrollEntry != value) { _PendingScrollEntry = value; NotifyPropertyChanged(); } }
         }
-        Thing _PendingScrollEntry;
-        public Thing PendingScrollEntry
-        {
-            get { return _PendingScrollEntry; }
-            set { if (_PendingScrollEntry != value) { _PendingScrollEntry = value; NotifyPropertyChanged(); } }
-        }
+
 
     }
 }

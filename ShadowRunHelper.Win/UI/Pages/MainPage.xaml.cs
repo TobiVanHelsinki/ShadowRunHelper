@@ -1,6 +1,8 @@
-﻿using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -218,7 +220,7 @@ namespace ShadowRunHelper.UI
             AppTitlebar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
             AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
 
-            TitleColumnR.MinWidth = CurrentTitlebar.SystemOverlayRightInset;
+            TitleColumnR.MinWidth = CurrentTitlebar.SystemOverlayRightInset - 40;
             TitleColumnL.MinWidth = CurrentTitlebar.SystemOverlayLeftInset;
 
             Window.Current.SetTitleBar(AppTitleBar);
@@ -428,23 +430,51 @@ namespace ShadowRunHelper.UI
         }
         void FavListItemClick(object sender, ItemClickEventArgs e)
         {
-            PendingScrollEntry = e.ClickedItem as Thing;
-
+            Model.PendingScrollEntry = e.ClickedItem as Thing;
+            (sender as ListView).SelectedItem = null;
             FavButton.Flyout.Hide();
 
-            Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == PendingScrollEntry.ThingType).Pivot;
-            ScrollIntoBlock();
         }
         #endregion
-
-        private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        IEnumerable<CategoryOption> LokalCategoryOptions => Model.MainObject.Settings.CategoryOptions;
+        void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-
+            switch (args.Reason)
+            {
+                case AutoSuggestionBoxTextChangeReason.UserInput:
+                    (sender as AutoSuggestBox).ItemsSource = Model.MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where(x => x.SimilaritiesTo(sender.Text) > 0).OrderByDescending(x => x.SimilaritiesTo(sender.Text));
+                    break;
+                case AutoSuggestionBoxTextChangeReason.ProgrammaticChange:
+                    break;
+                case AutoSuggestionBoxTextChangeReason.SuggestionChosen:
+                default:
+                    break;
+            }
         }
 
-        private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
+            try
+            {
+                if (args.ChosenSuggestion != null)
+                {
+                    Model.PendingScrollEntry = (args.ChosenSuggestion as Thing);
+                }
+                else
+                {
+                    Model.PendingScrollEntry = (sender.ItemsSource as IOrderedEnumerable<Thing>).FirstOrDefault();
 
+                    Model.PendingScrollEntry = Model.MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).OrderByDescending(x => x.SimilaritiesTo(sender.Text)).FirstOrDefault();
+                }
+                sender.ItemsSource = null;
+                if (Model.PendingScrollEntry == null)
+                {
+                    return;
+                }
+            }
+            catch { return; }
+            sender.Text = "";
+            sender.IsSuggestionListOpen = false;
         }
     }
 }

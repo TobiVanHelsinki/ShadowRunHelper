@@ -1,13 +1,9 @@
 ﻿using Microsoft.Toolkit.Uwp.UI.Controls;
-using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TAPPLICATION.IO;
-using TLIB;
-using TLIB.IO;
 using Windows.Devices.Input;
 using Windows.System;
 using Windows.UI.Xaml;
@@ -27,10 +23,8 @@ namespace ShadowRunHelper.UI
 
         public CharPage()
         {
-            //Debug_TimeAnalyser.Start("CharPage()");
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
-            //Debug_TimeAnalyser.Stop("CharPage()");
             Model.PropertyChanged += Model_PropertyChanged;
         }
 
@@ -40,8 +34,15 @@ namespace ShadowRunHelper.UI
             {
                 LoadNotes();
             }
+            else if(e.PropertyName == nameof(Model.MainObject) && MainObject != null)
+            {
+            }
+            else if(e.PropertyName == nameof(Model.PendingScrollEntry) && Model.PendingScrollEntry != null)
+            {
+                Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == Model.PendingScrollEntry.ThingType).Pivot;
+                ScrollIntoBlock();
+            }
         }
-
 
         #region GUI Stuff
         private void Pivot_SizeChanged(object sender, SizeChangedEventArgs e) => AdjustHeaderWidth();
@@ -62,7 +63,6 @@ namespace ShadowRunHelper.UI
         #region Navigation stuff
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //Debug_TimeAnalyser.Start("PChar.OnNavigatedTo");
             if (SettingsModel.I.DISPLAY_REQUEST)
             {
                 try
@@ -108,11 +108,12 @@ namespace ShadowRunHelper.UI
                     break;
             }
             AdjustHeaderWidth();
-            //Debug_TimeAnalyser.Stop("PChar.OnNavigatedTo");
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+
             if (SettingsModel.I.DISPLAY_REQUEST)
             {
                 try
@@ -158,59 +159,18 @@ namespace ShadowRunHelper.UI
         #region instant search Stuff
 
         List<(CategoryBlock Block, ScrollViewer sv)> LoadedCategoryBlocks = new List<(CategoryBlock Block, ScrollViewer sv)>();
-        IEnumerable<CategoryOption> LokalCategoryOptions => MainObject.Settings.CategoryOptions;
 
-        void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        void ScrollViewer_Loaded(object sender, RoutedEventArgs e)
         {
-            switch (args.Reason)
-            {
-                case AutoSuggestionBoxTextChangeReason.UserInput:
-                    (sender as AutoSuggestBox).ItemsSource = MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where(x=> x.SimilaritiesTo(sender.Text) > 0 ).OrderByDescending(x => x.SimilaritiesTo(sender.Text));
-                    break;
-                case AutoSuggestionBoxTextChangeReason.ProgrammaticChange:
-                    break;
-                case AutoSuggestionBoxTextChangeReason.SuggestionChosen:
-                default:
-                    break;
-            }
-        }
-
-        void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
-        {
-            try
-            {
-                if (args.ChosenSuggestion != null)
-                {
-                    Model.PendingScrollEntry = (args.ChosenSuggestion as Thing);
-                }
-                else
-                {
-                    Model.PendingScrollEntry = (sender.ItemsSource as IOrderedEnumerable<Thing>).FirstOrDefault();
-
-                    Model.PendingScrollEntry = MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).OrderByDescending(x => x.SimilaritiesTo(sender.Text)).FirstOrDefault();
-                }
-                sender.ItemsSource = null;
-                if (Model.PendingScrollEntry == null)
-                {
-                    return;
-                }
-                Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == Model.PendingScrollEntry.ThingType).Pivot;
-            }
-            catch { return; }
             ScrollIntoBlock();
-            sender.Text = "";
-            sender.IsSuggestionListOpen = false;
+            (sender as FrameworkElement).Loaded -= ScrollViewer_Loaded;
         }
 
         void CategoryBlockLoading(FrameworkElement sender, object args)
         {
             LoadedCategoryBlocks.Add((sender as CategoryBlock, ((sender as CategoryBlock).Parent as Panel).Parent as ScrollViewer));
         }
-        void ScrollViewer_Loaded(object sender, RoutedEventArgs e)
-        {
-            ScrollIntoBlock();
-            (sender as FrameworkElement).Loaded -= ScrollViewer_Loaded;
-        }
+
         void ScrollIntoBlock()
         {
             if (Model.PendingScrollEntry == null)
@@ -221,18 +181,7 @@ namespace ShadowRunHelper.UI
             {
                 // Listenauswahl
                 var (Block, sv) = LoadedCategoryBlocks.FirstOrDefault(x=>x.Block.Controller.eDataTyp == Model.PendingScrollEntry.ThingType);
-                double offset = 0;
-                foreach (var item in ((sv as ScrollViewer).Content as Panel).Children)
-                {
-                    if (item.Equals(Block))
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        offset += item.DesiredSize.Height;
-                    }
-                }
+                double offset = (sv.Content as Panel).Children.TakeWhile(x => !x.Equals(Block)).Sum(x => x.DesiredSize.Height);
                 // Scroll into ListView
                 offset += Block.GetPositionAtListView(Model.PendingScrollEntry);
                 Block.Select(Model.PendingScrollEntry);
