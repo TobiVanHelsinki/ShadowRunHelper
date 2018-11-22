@@ -22,7 +22,7 @@ namespace ShadowRunHelper.UI
     {
         readonly AppModel Model = AppModel.Instance;
         public static readonly DependencyProperty ControllerProperty =
-                   DependencyProperty.Register("Controller", typeof(IController), typeof(CategoryBlock), new PropertyMetadata(0));
+                   DependencyProperty.Register("Controller", typeof(IController), typeof(CategoryBlock), new PropertyMetadata(null));
         public IController Controller
         {
             get { return (IController)GetValue(ControllerProperty); }
@@ -50,93 +50,97 @@ namespace ShadowRunHelper.UI
 
                 var Current = TypeHelper.ThingTypeProperties.FirstOrDefault(t => t.ThingType == Controller.eDataTyp);
 
-                CategoryName.Text = ResourceLoader.GetForCurrentView().GetString(Current.DisplayNamePlural);
-                switch (Controller.eDataTyp)
-                {
-                    case ThingDefs.Handlung:
-                        ListView.ItemsSource = Model.MainObject.CTRLHandlung.Data;
-                        break;
-                    case ThingDefs.Fertigkeit:
-                        ListView.ItemsSource = Model.MainObject.CTRLFertigkeit.Data;
-                        break;
-                    case ThingDefs.Item:
-                        ListView.ItemsSource = Model.MainObject.CTRLItem.Data;
-                        break;
-                    case ThingDefs.Programm:
-                        ListView.ItemsSource = Model.MainObject.CTRLProgramm.Data;
-                        break;
-                    case ThingDefs.Munition:
-                        ListView.ItemsSource = Model.MainObject.CTRLMunition.Data;
-                        break;
-                    case ThingDefs.Implantat:
-                        ListView.ItemsSource = Model.MainObject.CTRLImplantat.Data;
-                        break;
-                    case ThingDefs.Vorteil:
-                        ListView.ItemsSource = Model.MainObject.CTRLVorteil.Data;
-                        break;
-                    case ThingDefs.Nachteil:
-                        ListView.ItemsSource = Model.MainObject.CTRLNachteil.Data;
-                        break;
-                    case ThingDefs.Connection:
-                        ListView.ItemsSource = Model.MainObject.CTRLConnection.Data;
-                        break;
-                    case ThingDefs.Sin:
-                        ListView.ItemsSource = Model.MainObject.CTRLSin.Data;
-                        break;
-                    case ThingDefs.Nahkampfwaffe:
-                        ListView.ItemsSource = Model.MainObject.CTRLNahkampfwaffe.Data;
-                        break;
-                    case ThingDefs.Fernkampfwaffe:
-                        ListView.ItemsSource = Model.MainObject.CTRLFernkampfwaffe.Data;
-                        break;
-                    case ThingDefs.Kommlink:
-                        ListView.ItemsSource = Model.MainObject.CTRLKommlink.Data;
-                        break;
-                    case ThingDefs.CyberDeck:
-                        ListView.ItemsSource = Model.MainObject.CTRLCyberDeck.Data;
-                        break;
-                    case ThingDefs.Vehikel:
-                        ListView.ItemsSource = Model.MainObject.CTRLVehikel.Data;
-                        break;
-                    case ThingDefs.Panzerung:
-                        ListView.ItemsSource = Model.MainObject.CTRLPanzerung.Data;
-                        break;
-                    case ThingDefs.Adeptenkraft:
-                        ListView.ItemsSource = Model.MainObject.CTRLAdeptenkraft.Data;
-                        break;
-                    case ThingDefs.Geist:
-                        ListView.ItemsSource = Model.MainObject.CTRLGeist.Data;
-                        break;
-                    case ThingDefs.Foki:
-                        ListView.ItemsSource = Model.MainObject.CTRLFoki.Data;
-                        break;
-                    case ThingDefs.Stroemung:
-                        ListView.ItemsSource = Model.MainObject.CTRLStroemung.Data;
-                        break;
-                    case ThingDefs.Tradition:
-                        ListView.ItemsSource = Model.MainObject.CTRLTradition.Data;
-                        break;
-                    case ThingDefs.Zaubersprueche:
-                        ListView.ItemsSource = Model.MainObject.CTRLZaubersprueche.Data;
-                        break;
-                    case ThingDefs.KomplexeForm:
-                        ListView.ItemsSource = Model.MainObject.CTRLKomplexeForm.Data;
-                        break;
-                    case ThingDefs.Sprite:
-                        ListView.ItemsSource = Model.MainObject.CTRLSprite.Data;
-                        break;
-                    case ThingDefs.Widgets:
-                        ListView.ItemsSource = Model.MainObject.CTRLWidgets.Data;
-                        break;
-                    case ThingDefs.Wandlung:
-                        ListView.ItemsSource = Model.MainObject.CTRLWandlung.Data;
-                        break;
-                    case ThingDefs.Initiation:
-                        ListView.ItemsSource = Model.MainObject.CTRLInitiation.Data;
-                        break;
-                    default:
-                        break;
-                }
+                CategoryName.Text = PlatformHelper.GetString(Current.DisplayNamePlural);
+                //ListView.ItemsSource = null;
+                //ListView.ItemsSource = Controller.GetElements();
+
+                //switch (Controller.eDataTyp)
+                //{
+                //    case ThingDefs.Handlung:
+                //        ListView.ItemsSource = Model.MainObject.CTRLHandlung.Data;
+                //        break;
+                //    case ThingDefs.Fertigkeit:
+                //        ListView.ItemsSource = Model.MainObject.CTRLFertigkeit.Data;
+                //        break;
+                //    case ThingDefs.Item:
+                //        ListView.ItemsSource = Model.MainObject.CTRLItem.Data;
+                //        break;
+                //    case ThingDefs.Programm:
+                //        ListView.ItemsSource = Model.MainObject.CTRLProgramm.Data;
+                //        break;
+                //    case ThingDefs.Munition:
+                //        ListView.ItemsSource = Model.MainObject.CTRLMunition.Data;
+                //        break;
+                //    case ThingDefs.Implantat:
+                //        ListView.ItemsSource = Model.MainObject.CTRLImplantat.Data;
+                //        break;
+                //    case ThingDefs.Vorteil:
+                //        ListView.ItemsSource = Model.MainObject.CTRLVorteil.Data;
+                //        break;
+                //    case ThingDefs.Nachteil:
+                //        ListView.ItemsSource = Model.MainObject.CTRLNachteil.Data;
+                //        break;
+                //    case ThingDefs.Connection:
+                //        ListView.ItemsSource = Model.MainObject.CTRLConnection.Data;
+                //        break;
+                //    case ThingDefs.Sin:
+                //        ListView.ItemsSource = Model.MainObject.CTRLSin.Data;
+                //        break;
+                //    case ThingDefs.Nahkampfwaffe:
+                //        ListView.ItemsSource = Model.MainObject.CTRLNahkampfwaffe.Data;
+                //        break;
+                //    case ThingDefs.Fernkampfwaffe:
+                //        ListView.ItemsSource = Model.MainObject.CTRLFernkampfwaffe.Data;
+                //        break;
+                //    case ThingDefs.Kommlink:
+                //        ListView.ItemsSource = Model.MainObject.CTRLKommlink.Data;
+                //        break;
+                //    case ThingDefs.CyberDeck:
+                //        ListView.ItemsSource = Model.MainObject.CTRLCyberDeck.Data;
+                //        break;
+                //    case ThingDefs.Vehikel:
+                //        ListView.ItemsSource = Model.MainObject.CTRLVehikel.Data;
+                //        break;
+                //    case ThingDefs.Panzerung:
+                //        ListView.ItemsSource = Model.MainObject.CTRLPanzerung.Data;
+                //        break;
+                //    case ThingDefs.Adeptenkraft:
+                //        ListView.ItemsSource = Model.MainObject.CTRLAdeptenkraft.Data;
+                //        break;
+                //    case ThingDefs.Geist:
+                //        ListView.ItemsSource = Model.MainObject.CTRLGeist.Data;
+                //        break;
+                //    case ThingDefs.Foki:
+                //        ListView.ItemsSource = Model.MainObject.CTRLFoki.Data;
+                //        break;
+                //    case ThingDefs.Stroemung:
+                //        ListView.ItemsSource = Model.MainObject.CTRLStroemung.Data;
+                //        break;
+                //    case ThingDefs.Tradition:
+                //        ListView.ItemsSource = Model.MainObject.CTRLTradition.Data;
+                //        break;
+                //    case ThingDefs.Zaubersprueche:
+                //        ListView.ItemsSource = Model.MainObject.CTRLZaubersprueche.Data;
+                //        break;
+                //    case ThingDefs.KomplexeForm:
+                //        ListView.ItemsSource = Model.MainObject.CTRLKomplexeForm.Data;
+                //        break;
+                //    case ThingDefs.Sprite:
+                //        ListView.ItemsSource = Model.MainObject.CTRLSprite.Data;
+                //        break;
+                //    case ThingDefs.Widgets:
+                //        ListView.ItemsSource = Model.MainObject.CTRLWidgets.Data;
+                //        break;
+                //    case ThingDefs.Wandlung:
+                //        ListView.ItemsSource = Model.MainObject.CTRLWandlung.Data;
+                //        break;
+                //    case ThingDefs.Initiation:
+                //        ListView.ItemsSource = Model.MainObject.CTRLInitiation.Data;
+                //        break;
+                //    default:
+                //        break;
+                //}
+
                 if (Controller.eDataTyp == ThingDefs.Vorteil || Controller.eDataTyp == ThingDefs.Nachteil)
                 {
                     HeadLine.ContentTemplate = Eigenschaft_E;

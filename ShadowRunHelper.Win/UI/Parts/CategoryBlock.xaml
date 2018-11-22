@@ -427,7 +427,7 @@
             </Button>
         </Grid>
         <ContentPresenter x:Name="HeadLine" />
-        <ListView x:Name="ListView" 
+        <ListView x:Name="ListView" ItemsSource="{Binding Data, Mode=OneWay}"
                                   Style="{StaticResource Category_Items}" 
                                   ItemContainerStyle="{StaticResource ListViewItemStyle}" 
                                   SelectionChanged="ListView_SelectionChanged" 
