@@ -419,68 +419,6 @@ namespace ShadowRunHelper.UI
         }
 
         #endregion
-        #region DynamicSize
-
-        public int CustFontSize { get; set; }
-        public PointerDeviceType CurrentPointerDeviceType { get; set; }
-        void Infos_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            CurrentPointerDeviceType = e.Pointer.PointerDeviceType;
-            switch (e.Pointer.PointerDeviceType)
-            {
-                case PointerDeviceType.Pen:
-                case PointerDeviceType.Mouse:
-                    CustFontSize = 25;
-                    break;
-                case PointerDeviceType.Touch:
-                default:
-                    CustFontSize = 45;
-                    break;
-            }
-        }
-
-        void Flyout_Opening(object sender, object e)
-        {
-            switch (CurrentPointerDeviceType)
-            {
-                case PointerDeviceType.Touch:
-                    (sender as Flyout).Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Full;
-                    break;
-                case PointerDeviceType.Pen:
-                    (sender as Flyout).Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Top;
-                    break;
-                case PointerDeviceType.Mouse:
-                    (sender as Flyout).Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Top;
-                    break;
-                default:
-                    break;
-            }
-        }
-        void Flyout_Closed(object sender, object e)
-        {
-            (sender as Flyout).Placement = Windows.UI.Xaml.Controls.Primitives.FlyoutPlacementMode.Top;
-        }
-        void MP_Btn_Loaded(object sender, RoutedEventArgs e)
-        {
-            (sender as Control).FontSize = CustFontSize;
-        }
-
-        void Viewbox_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (CurrentPointerDeviceType == PointerDeviceType.Touch)
-            {
-                var ViewBox = sender as FrameworkElement;
-                var Parent = ((sender as FrameworkElement).Parent as FlyoutPresenter);
-                if (ViewBox.ActualWidth >= Parent.ActualWidth)
-                {
-                    ViewBox.Width = Parent.ActualWidth;
-                    ViewBox.Height = Parent.ActualHeight;
-                }
-            }
-        }
-
-
-        #endregion
 
         #region Fav Stuff
         Button FavButton = null;
@@ -490,12 +428,12 @@ namespace ShadowRunHelper.UI
         }
         void FavListItemClick(object sender, ItemClickEventArgs e)
         {
-            //PendingScrollEntry = e.ClickedItem as Thing;
+            PendingScrollEntry = e.ClickedItem as Thing;
 
-            //FavButton.Flyout.Hide();
+            FavButton.Flyout.Hide();
 
-            //Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == PendingScrollEntry.ThingType).Pivot;
-            //ScrollIntoBlock();
+            Pivot.SelectedIndex = TypeHelper.ThingTypeProperties.Find(x => x.ThingType == PendingScrollEntry.ThingType).Pivot;
+            ScrollIntoBlock();
         }
         #endregion
 

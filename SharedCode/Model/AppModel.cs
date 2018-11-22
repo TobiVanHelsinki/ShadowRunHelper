@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.IO;
+﻿using ShadowRunHelper.CharModel;
+using ShadowRunHelper.IO;
 using TAPPLICATION.Model;
 using TLIB;
 using TLIB.IO;
@@ -90,5 +91,18 @@ public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptio
             get { return _CharInProgress; }
             set { if (_CharInProgress != value) { _CharInProgress = value; NotifyPropertyChanged(nameof(IsCharInProgress)); NotifyPropertyChanged(); } }
         }
+        Thing _PendingScrollEntry;
+        public Thing PendingScrollEntry
+        {
+            get { return _PendingScrollEntry; }
+            set { if (_PendingScrollEntry != value) { _PendingScrollEntry = value; NotifyPropertyChanged(); } }
+        }
+        Thing _PendingScrollEntry;
+        public Thing PendingScrollEntry
+        {
+            get { return _PendingScrollEntry; }
+            set { if (_PendingScrollEntry != value) { _PendingScrollEntry = value; NotifyPropertyChanged(); } }
+        }
+
     }
 }
