@@ -217,8 +217,8 @@ namespace ShadowRunHelper
                     return PlatformHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
                 }
             }
-            catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+            catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
                 return "N/A";
             }
         }

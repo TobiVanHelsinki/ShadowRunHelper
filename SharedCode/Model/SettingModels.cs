@@ -160,8 +160,8 @@ namespace ShadowRunHelper
                     var folder = await SharedIO.CurrentIO.GetFolderInfo(info, UserDecision.AskUser);
                     SharedSettingsModel.I.FOLDERMODE_PATH = folder.Filepath;
                 }
-                catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+                catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
                     SharedSettingsModel.Instance.FOLDERMODE = false;
                     return;
                 }

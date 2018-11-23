@@ -76,7 +76,7 @@
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <Pivot x:Name="MainNavigation" SelectionChanged="MainNavigation_SelectionChanged">
+    <Pivot x:Name="MainNavigation" SelectionChanged="MainNavigation_SelectionChanged"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <PivotItem Tag="31">
             <PivotItem.Header>
                 <TextBlock x:Uid="UI_Optionen_U_Infos" Style="{StaticResource ueberschrift1}"/>

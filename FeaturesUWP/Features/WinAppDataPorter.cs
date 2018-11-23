@@ -60,8 +60,8 @@ namespace ShadowRunHelper
                     {
                         await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), item.Item1, CharHolderIO.GetCurrentSavePath()), UserDecision.AskUser);
                     }
-                    catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+                    catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
                         ErrorList.Add(item.Item1);
                     }
                 }

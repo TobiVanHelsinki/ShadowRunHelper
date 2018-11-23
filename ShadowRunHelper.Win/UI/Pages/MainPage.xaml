@@ -10,7 +10,6 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:model="using:ShadowRunHelper.Model"
-    xmlns:ui="using:ShadowRunHelper.UI"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -92,7 +91,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Style="{StaticResource Panel_Oben_Parts_Stack}">
+                            <StackPanel IsHitTestVisible="False" Margin="10,0,0,0" VerticalAlignment="Center" Style="{StaticResource Panel_Oben_Parts_Stack}">
                                 <TextBlock Text="{x:Bind Person.Alias,Mode=OneWay}" Style="{StaticResource Panel_Top}"/>
                                 <TextBlock Text="{x:Bind Person.Char_Typ,Mode=OneWay}" Style="{StaticResource Panel_Top}"/>
                             </StackPanel>
@@ -153,14 +152,14 @@
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid Style="{StaticResource MainGrid}" VerticalAlignment="Stretch" x:Name="AppTitleBar" />
-        <Grid>
+        <Grid Style="{StaticResource MainGrid}" Grid.ColumnSpan="99" Grid.RowSpan="99" x:Name="AppTitleBar"/>
+        <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="TitleColumnL" Width="0"/>
                 <ColumnDefinition Width="*"/>
@@ -207,15 +206,21 @@
             </Grid>
         </Grid>
 
-        <Border Grid.Row="2" Background="{ThemeResource SR_MainBackgroundBrush}" Height="{Binding ElementName=MainBarBorder, Path=ActualHeight, Mode=OneWay}"/>
-        <Border Grid.Row="2" x:Name="MainBarBorder" Background="Transparent">
-            <CommandBar x:Name="MainBar1" Background="Transparent" HorizontalAlignment="Left" DefaultLabelPosition="Right" >
-                <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char" Foreground="FloralWhite" />
-                <AppBarButton x:Name="Nav_Admin" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin" Foreground="FloralWhite" />
-                <AppBarButton x:Name="Nav_Settings" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings" Foreground="FloralWhite"/>
-                <AppBarButton x:Name="Debug_CreateDebugChar" Visibility="Collapsed" Label="CreateDebugChar" Icon="Add" Click="CreateDebugChar"/>
-            </CommandBar>
-        </Border>
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border IsHitTestVisible="False" Grid.Row="2" Grid.Column="1" Background="{ThemeResource SR_MainBackgroundBrush}" Height="{Binding ElementName=MainBarBorder, Path=ActualHeight, Mode=OneWay}"/>
+            <Border Grid.Row="2" x:Name="MainBarBorder" Background="Transparent">
+                <CommandBar IsDynamicOverflowEnabled="False" x:Name="MainBar1" Background="Transparent" HorizontalAlignment="Left" DefaultLabelPosition="Right" >
+                    <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char" Foreground="FloralWhite" />
+                    <AppBarButton x:Name="Nav_Admin" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin" Foreground="FloralWhite" />
+                    <AppBarButton x:Name="Nav_Settings" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings" Foreground="FloralWhite"/>
+                    <AppBarButton x:Name="Debug_CreateDebugChar" Visibility="Collapsed" Label="CreateDebugChar" Icon="Add" Click="CreateDebugChar"/>
+                </CommandBar>
+            </Border>
+        </Grid>
 
         <controls:InAppNotification  x:Name="ExampleInAppNotification"
                                      Grid.RowSpan="3"

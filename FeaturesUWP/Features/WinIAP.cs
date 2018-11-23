@@ -26,8 +26,8 @@ namespace ShadowRunHelper
                         AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE) || 
                         AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE_365);
                 }
-                catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+                catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
                     Constants.IAP_HIDEADS = false;
                     Model.AppModel.Instance.NewNotification("Error_LoadPurchases");
                     //Debug_TimeAnalyser.Stop("IAP GetAddons");

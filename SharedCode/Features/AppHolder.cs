@@ -73,9 +73,9 @@ namespace ShadowRunHelper
             {
                 Features.Analytics.Init();
             }
-            catch (Exception)
- { TAPPLICATION.Debugging.TraceException(); TAPPLICATION.Debugging.TraceException();
-                TAPPLICATION.Debugging.TraceException();
+            catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex); TAPPLICATION.Debugging.TraceException(ex);
+                TAPPLICATION.Debugging.TraceException(ex);
             }
         }
 
@@ -110,8 +110,8 @@ namespace ShadowRunHelper
                     }
                     Settings.CHARINTEMPSTORE = true;
                 }
-                catch (Exception)
- { TAPPLICATION.Debugging.TraceException(); }
+                catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex); }
             }
         }
 
@@ -153,8 +153,8 @@ namespace ShadowRunHelper
                     }
                 }
             }
-            catch (Exception)
- { TAPPLICATION.Debugging.TraceException(); }
+            catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex); }
             finally
             {
                 Model.CharInProgress = null;

@@ -36,14 +36,14 @@ namespace ShadowRunHelper
                         var m = Convert.ChangeType(item.NEW.Item2, item.OLD.PropertyType);
                         item.OLD?.SetMethod.Invoke(SettingsModel.I, new object[] { m });
                     }
-                    catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+                    catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
                         ErrorList.Add(item.OLD.Name);
                     }
                 }
             }
-            catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+            catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
             }
             // Import Chars
             try
@@ -54,14 +54,14 @@ namespace ShadowRunHelper
                     {
                         await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), item.Item1, CharHolderIO.GetCurrentSavePath()), UserDecision.AskUser);
                     }
-                    catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+                    catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
                         ErrorList.Add(item.Item1);
                     }
                 }
             }
-            catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+            catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
             }
             InProgress = false;
             if (ErrorList.Count != 0)

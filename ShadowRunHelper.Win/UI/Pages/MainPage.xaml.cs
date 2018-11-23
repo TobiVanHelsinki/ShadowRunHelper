@@ -72,8 +72,8 @@ namespace ShadowRunHelper.UI
                 {
                     NewThing = Model.MainObject.Add(item.ThingType);
                 }
-                catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+                catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
                     continue;
                 }
                 NewThing.Bezeichner = "TestName";
@@ -219,7 +219,7 @@ namespace ShadowRunHelper.UI
             AppTitlebar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
             AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
 
-            TitleColumnR.MinWidth = CurrentTitlebar.SystemOverlayRightInset - 40;
+            TitleColumnR.MinWidth = CurrentTitlebar.SystemOverlayRightInset - 15;
             TitleColumnL.MinWidth = CurrentTitlebar.SystemOverlayLeftInset;
 
             Window.Current.SetTitleBar(AppTitleBar);

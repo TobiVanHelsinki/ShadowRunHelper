@@ -49,8 +49,8 @@ namespace ShadowRunHelper.IO
                     {
                         Dic.Add(Headar[j], itemstring);
                     }
-                    catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+                    catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
                         continue;
                     }
                     j++;
