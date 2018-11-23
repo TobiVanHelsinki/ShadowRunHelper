@@ -47,7 +47,7 @@ namespace ShadowRunHelper.UI
 
         void CurrentThing_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (CurrentThing.IsSeperator)
+            if (CurrentThing?.IsSeperator == true)
             {
                 Default = Seperator;
                 Expanded = Seperator;
