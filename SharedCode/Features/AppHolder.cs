@@ -75,7 +75,8 @@ namespace ShadowRunHelper
                 Features.Analytics.Init();
             }
             catch (Exception)
-            {
+ { DebugOperations.TraceException();
+                DebugOperations.TraceException();
             }
         }
 

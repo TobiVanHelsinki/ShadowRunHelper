@@ -1,11 +1,10 @@
-﻿using System;
+﻿using ShadowRunHelper.Model;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using TLIB;
 
 namespace ShadowRunHelper
 {
-    public class Debug_TimeAnalyser
+    public static class DebugOperations
     {
         public static readonly Dictionary<string, (DateTime StartTime, DateTime StopTime)> Dict = new Dictionary<string, (DateTime StartTime, DateTime StopTime)>();
 
@@ -21,6 +20,14 @@ namespace ShadowRunHelper
         //    Dict[Name] = (Dict[Name].StartTime, DateTime.Now);
         //}
         const int Padding = 15;
+
+        public static void TraceException(
+        [System.Runtime.CompilerServices.CallerMemberName] string memberName = "",
+        [System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "",
+        [System.Runtime.CompilerServices.CallerLineNumber] int sourceLineNumber = 0)
+        {
+            AppModel.Instance.NewNotification(@"Exception from "+memberName+" at:" + sourceFilePath+":"+ sourceLineNumber);
+        }
         //public static void Finish()
         //{
         //    string Not = "";

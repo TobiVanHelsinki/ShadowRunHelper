@@ -22,12 +22,7 @@ namespace ShadowRunHelper
             Init.Do();
             TAPPLICATION_UWP.Init.Do();
             TLIB_UWP.Init.Do();
-
             AppHolder.InitModel();
-            //Windows.Storage.StorageFile f;
-            //f.ex
-
-            //SharedCode.IO.TestIO.Do(Windows.Storage.ApplicationData.Current.RoamingFolder.Path);
         }
 
         #region Entry-Points
