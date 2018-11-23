@@ -139,8 +139,8 @@ namespace ShadowRunHelper.UI
 
                     new Tutorial(1, 4).ShowAsync();
                 }
-                catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+                catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
                 }
                 SettingsModel.I.TUT_SHOWN_1 = true;
             }
@@ -220,8 +220,8 @@ namespace ShadowRunHelper.UI
             {
                 await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
             }
-            catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+            catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
 
             }
             ChangeProgress(false);
@@ -270,8 +270,8 @@ namespace ShadowRunHelper.UI
                     await messageDialog.ShowAsync();
                     return Success;
                 }
-                catch (Exception)
- { TAPPLICATION.Debugging.TraceException();
+                catch (Exception ex)
+ { TAPPLICATION.Debugging.TraceException(ex);
                     return false;
                 }
             }
@@ -383,7 +383,7 @@ namespace ShadowRunHelper.UI
             ChangeProgress(true);
             try
             {
-                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass() { Fileplace = Place.Extern, Token = "Export" });
+                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass() { Fileplace = Place.Extern, Filename = CharToSave.FileInfo.Filename, Token = "Export" });
             }
             catch (Exception ex)
             {
