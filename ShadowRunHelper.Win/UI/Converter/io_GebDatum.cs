@@ -16,7 +16,7 @@ namespace ShadowRunHelper.UI.Converter
                 return ((DateTimeOffset)value).Date.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern).Trim();
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
                 return SharedConstants.ERROR_TOKEN;
             }
         }

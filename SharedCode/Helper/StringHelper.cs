@@ -16,7 +16,7 @@ namespace ShadowRunHelper.Helper
                 Current = TLIB.PlatformHelper.GetString(strID + Counter);
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
                 Current = null;
             }
             if (!string.IsNullOrEmpty(Current))

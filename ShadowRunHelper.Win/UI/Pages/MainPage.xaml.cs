@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using TAPPLICATION.IO;
 using TAPPLICATION.Model;
 using TLIB;
-using TLIB.IO;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
@@ -74,7 +73,7 @@ namespace ShadowRunHelper.UI
                     NewThing = Model.MainObject.Add(item.ThingType);
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                     continue;
                 }
                 NewThing.Bezeichner = "TestName";

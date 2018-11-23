@@ -10,7 +10,6 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using TAPPLICATION.Model;
 using TLIB;
-using TLIB.IO;
 
 namespace ShadowRunHelper.Model
 {

@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using TAPPLICATION.IO;
 using TLIB;
-using TLIB.IO;
 using Windows.Foundation.Metadata;
 using Windows.Services.Store;
 
@@ -28,7 +27,7 @@ namespace ShadowRunHelper
                         AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE_365);
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                     Constants.IAP_HIDEADS = false;
                     Model.AppModel.Instance.NewNotification("Error_LoadPurchases");
                     //Debug_TimeAnalyser.Stop("IAP GetAddons");

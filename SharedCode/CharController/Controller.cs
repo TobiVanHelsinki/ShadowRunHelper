@@ -57,7 +57,7 @@ namespace ShadowRunHelper.CharController
                 Data.Clear();
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
                 return false;
             }
             return true;

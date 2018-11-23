@@ -50,7 +50,7 @@ namespace ShadowRunHelper.IO
                         Dic.Add(Headar[j], itemstring);
                     }
                     catch (Exception)
-                    {
+ { TAPPLICATION.Debugging.TraceException();
                         continue;
                     }
                     j++;

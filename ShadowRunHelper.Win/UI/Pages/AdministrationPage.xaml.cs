@@ -10,7 +10,6 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TAPPLICATION.IO;
 using TLIB;
-using TLIB.IO;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -141,7 +140,7 @@ namespace ShadowRunHelper.UI
                     new Tutorial(1, 4).ShowAsync();
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                 }
                 SettingsModel.I.TUT_SHOWN_1 = true;
             }
@@ -222,7 +221,7 @@ namespace ShadowRunHelper.UI
                 await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
 
             }
             ChangeProgress(false);
@@ -272,7 +271,7 @@ namespace ShadowRunHelper.UI
                     return Success;
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                     return false;
                 }
             }

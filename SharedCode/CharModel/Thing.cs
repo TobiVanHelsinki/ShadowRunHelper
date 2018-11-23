@@ -213,7 +213,7 @@ namespace ShadowRunHelper.CharModel
                 return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
                 return 0;
             }
         }
@@ -230,7 +230,7 @@ namespace ShadowRunHelper.CharModel
                     return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                     return 0;
                 }
             }
@@ -284,7 +284,7 @@ namespace ShadowRunHelper.CharModel
                     target = (Thing)Activator.CreateInstance(this.GetType());
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                     return false;
                 }
             }
@@ -295,7 +295,7 @@ namespace ShadowRunHelper.CharModel
                     item.SetValue(target, item.GetValue(this));
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                     ret = false;
                 }
             }
@@ -309,7 +309,7 @@ namespace ShadowRunHelper.CharModel
                     CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                     ret = false;
                 }
             }

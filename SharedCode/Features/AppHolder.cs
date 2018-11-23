@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using TAPPLICATION;
 using TAPPLICATION.IO;
 using TLIB;
-using TLIB.IO;
 
 [assembly: NeutralResourcesLanguageAttribute("en")]
 namespace ShadowRunHelper
@@ -75,8 +74,8 @@ namespace ShadowRunHelper
                 Features.Analytics.Init();
             }
             catch (Exception)
- { DebugOperations.TraceException();
-                DebugOperations.TraceException();
+ { TAPPLICATION.Debugging.TraceException(); TAPPLICATION.Debugging.TraceException();
+                TAPPLICATION.Debugging.TraceException();
             }
         }
 
@@ -111,7 +110,8 @@ namespace ShadowRunHelper
                     }
                     Settings.CHARINTEMPSTORE = true;
                 }
-                catch (Exception) { }
+                catch (Exception)
+ { TAPPLICATION.Debugging.TraceException(); }
             }
         }
 
@@ -153,7 +153,8 @@ namespace ShadowRunHelper
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception)
+ { TAPPLICATION.Debugging.TraceException(); }
             finally
             {
                 Model.CharInProgress = null;

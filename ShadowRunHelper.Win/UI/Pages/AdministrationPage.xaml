@@ -4,8 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Ad="using:Microsoft.Advertising.WinRT.UI"
-    xmlns:TLIBIO="using:TLIB.IO"
+    xmlns:TLIB="using:TLIB"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -26,7 +25,7 @@
                     <TextBlock Grid.Column="3" x:Uid="UI_CharVerwaltung_E_FileDate" Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Normal" x:Key="Normal" x:DataType="TLIBIO:FileInfoClass">
+            <DataTemplate x:Name="Normal" x:Key="Normal" x:DataType="TLIB:FileInfoClass">
                 <UserControl>
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
@@ -69,7 +68,7 @@
                     </Grid>
                 </UserControl>
             </DataTemplate>
-            <DataTemplate x:Name="Active" x:Key="Active" x:DataType="TLIBIO:FileInfoClass">
+            <DataTemplate x:Name="Active" x:Key="Active" x:DataType="TLIB:FileInfoClass">
                 <Grid Margin="0,5,0,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>

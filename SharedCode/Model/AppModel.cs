@@ -2,7 +2,6 @@
 using ShadowRunHelper.IO;
 using TAPPLICATION.Model;
 using TLIB;
-using TLIB.IO;
 
 namespace ShadowRunHelper.Model
 {

@@ -218,7 +218,7 @@ namespace ShadowRunHelper
                 }
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
                 return "N/A";
             }
         }

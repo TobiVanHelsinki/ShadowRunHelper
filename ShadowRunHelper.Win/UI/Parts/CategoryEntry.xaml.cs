@@ -80,7 +80,7 @@ namespace ShadowRunHelper.UI
                 await new EditThingDialog(((Thing)((FrameworkElement)sender).DataContext)).ShowAsync();
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
             }
         }
         async void Edit_Attribut(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
@@ -90,7 +90,7 @@ namespace ShadowRunHelper.UI
                 await new EditThingDialog(((Thing)((FrameworkElement)sender).DataContext)).ShowAsync();
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
             }
         }
         void Del_Click(object sender, RoutedEventArgs e)

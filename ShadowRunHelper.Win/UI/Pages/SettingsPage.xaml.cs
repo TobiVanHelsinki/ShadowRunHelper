@@ -40,7 +40,7 @@ namespace ShadowRunHelper.UI
                 }
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
             }
             if (Settings.IAP_PREMIUM_BADGE)
             {
@@ -64,7 +64,7 @@ namespace ShadowRunHelper.UI
                     ((ListViewItem)(sender as ListView).ContainerFromItem(item)).ContentTemplate = Notification;
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                 }
             }
             foreach (var item in e.AddedItems)
@@ -77,11 +77,11 @@ namespace ShadowRunHelper.UI
                         o.ContentTemplate = NotificationX;
                     }
                     catch (Exception)
-                    {
+ { TAPPLICATION.Debugging.TraceException();
                     }
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                 }
             }
         }

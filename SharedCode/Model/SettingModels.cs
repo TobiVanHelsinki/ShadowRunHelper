@@ -4,7 +4,6 @@ using TAPPLICATION;
 using TAPPLICATION.IO;
 using TAPPLICATION.Model;
 using TLIB;
-using TLIB.IO;
 
 namespace ShadowRunHelper
 {
@@ -162,7 +161,7 @@ namespace ShadowRunHelper
                     SharedSettingsModel.I.FOLDERMODE_PATH = folder.Filepath;
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                     SharedSettingsModel.Instance.FOLDERMODE = false;
                     return;
                 }

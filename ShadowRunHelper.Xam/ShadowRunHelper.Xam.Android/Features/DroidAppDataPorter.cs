@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TLIB;
-using TLIB.IO;
 
 namespace ShadowRunHelper
 {
@@ -38,13 +37,13 @@ namespace ShadowRunHelper
                         item.OLD?.SetMethod.Invoke(SettingsModel.I, new object[] { m });
                     }
                     catch (Exception)
-                    {
+ { TAPPLICATION.Debugging.TraceException();
                         ErrorList.Add(item.OLD.Name);
                     }
                 }
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
             }
             // Import Chars
             try
@@ -56,13 +55,13 @@ namespace ShadowRunHelper
                         await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), item.Item1, CharHolderIO.GetCurrentSavePath()), UserDecision.AskUser);
                     }
                     catch (Exception)
-                    {
+ { TAPPLICATION.Debugging.TraceException();
                         ErrorList.Add(item.Item1);
                     }
                 }
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
             }
             InProgress = false;
             if (ErrorList.Count != 0)

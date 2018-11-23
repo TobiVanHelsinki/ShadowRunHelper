@@ -71,7 +71,7 @@ namespace ShadowRunHelper.UI
                     Char_DisplayRequest.RequestActive();
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                 }
             }
             switch (((ProjectPagesOptions)e.Parameter))
@@ -83,7 +83,7 @@ namespace ShadowRunHelper.UI
                         await new Edit_Person_Detail(MainObject.Person).ShowAsync();
                     }
                     catch (Exception)
-                    {
+ { TAPPLICATION.Debugging.TraceException();
                     }
                     break;
                 case ProjectPagesOptions.Char_Action:
@@ -121,7 +121,7 @@ namespace ShadowRunHelper.UI
                     Char_DisplayRequest.RequestRelease();
                 }
                 catch (Exception)
-                {
+ { TAPPLICATION.Debugging.TraceException();
                 }
             }
             base.OnNavigatedFrom(e);
@@ -138,7 +138,7 @@ namespace ShadowRunHelper.UI
                 await new Edit_Person_Detail(MainObject.Person).ShowAsync();
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
             }
         }
         #endregion
@@ -188,7 +188,7 @@ namespace ShadowRunHelper.UI
                 sv.ChangeView(null, offset - 100, null);
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
                 return;
             }
             Model.PendingScrollEntry = null;
@@ -227,7 +227,7 @@ namespace ShadowRunHelper.UI
                 EditZone.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, MainObject.Person.Notizen);
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
             }
         }
         void SaveNotes()
@@ -241,7 +241,7 @@ namespace ShadowRunHelper.UI
                 }
             }
             catch (Exception)
-            {
+ { TAPPLICATION.Debugging.TraceException();
             }
         }
 

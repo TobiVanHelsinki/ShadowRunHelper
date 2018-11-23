@@ -3,7 +3,6 @@ using System;
 using System.Linq;
 using TAPPLICATION.IO;
 using TLIB;
-using TLIB.IO;
 
 namespace ShadowRunHelper.UI
 {
