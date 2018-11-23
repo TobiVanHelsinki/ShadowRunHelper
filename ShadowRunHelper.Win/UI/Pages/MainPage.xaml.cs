@@ -368,7 +368,7 @@ namespace ShadowRunHelper.UI
         {
             try
             {
-                var i = await SharedIO.Save(Model.MainObject, Info: new FileInfoClass() { Fileplace = Place.Extern, Filename = Model.MainObject.FileInfo.Filename Token = "Export" });
+                var i = await SharedIO.Save(Model.MainObject, Info: new FileInfoClass() { Fileplace = Place.Extern, Filename = Model.MainObject.FileInfo.Filename, Token = "Export" });
                 Model.MainObject.FileInfo.Fileplace = i.Fileplace;
                 Model.MainObject.FileInfo.Filepath = i.Filepath;
                 Model.MainObject.FileInfo.Filename = i.Filename;
