@@ -134,10 +134,7 @@ namespace ShadowRunHelper.CharController
         {
             Essenz.Wert = 6;
             Essenz.Wert += Person.Essenz;
-            foreach (var item in lstImplantateRef.Where(x=>x.Besitz == true))
-            {
-                Essenz.Wert -= item.Essenz;
-            }
+            Essenz.Wert -= lstImplantateRef.Where(x => x.Besitz == true).Sum(x => x.Essenz);
         }
 
         protected void RefreshLimitSchadenG()
