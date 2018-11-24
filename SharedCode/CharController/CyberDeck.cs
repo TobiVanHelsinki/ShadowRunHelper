@@ -1,6 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -75,17 +74,15 @@ namespace ShadowRunHelper.CharController
                 return;
             }
             bIsRefreshInProgress = true;
-            //Data.First(i => i.Aktiv == true).Copy(ActiveItem);
-            foreach (CyberDeck item in Data)
+            var item = Data.FirstOrDefault(x => x.Aktiv == true);
+            if (item != null)
             {
-                if (item.Aktiv == true)
-                {
-                    item.Copy(ActiveItem);
-                    bIsRefreshInProgress = false;
-                    return;
-                }
+                item.Copy(ActiveItem);
             }
-            ActiveItem.Reset();
+            else
+            {
+                ActiveItem.Reset();
+            }
             bIsRefreshInProgress = false;
         }
         /// <summary>
@@ -98,14 +95,10 @@ namespace ShadowRunHelper.CharController
                 return;
             }
             bIsRefreshInProgress = true;
-            foreach (CyberDeck item in Data)
+            var item = Data.FirstOrDefault(x => x.Aktiv == true);
+            if (item != null)
             {
-                if (item.Aktiv == true)
-                {
-                    item.Schaden = ActiveItem.Schaden;
-                    bIsRefreshInProgress = false;
-                    return;
-                }
+                item.Schaden = ActiveItem.Schaden;
             }
             bIsRefreshInProgress = false;
         }

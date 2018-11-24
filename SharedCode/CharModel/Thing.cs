@@ -355,23 +355,14 @@ namespace ShadowRunHelper.CharModel
         #region CSV
         public virtual string ToCSV(char Delimiter)
         {
-            string strReturn = "";
-            foreach (var item in GetProperties(this).Reverse())
-            {
-                strReturn += item.GetValue(this);
-                strReturn += Delimiter;
-            }
-            return strReturn;
+            return GetProperties(this).Reverse().Select
+                (item => item.GetValue(this) + Delimiter.ToString()).Aggregate((a, s) => a + s);
         }
         public virtual string HeaderToCSV(char Delimiter)
         {
-            string strReturn = "";
-            foreach (var item in GetProperties(this).Reverse())
-            {
-                strReturn += PlatformHelper.GetString("Model_"+ item.DeclaringType.Name + "_"+ item.Name + "/Text");
-                strReturn += Delimiter;
-            }
-            return strReturn;
+            return GetProperties(this).Reverse().Select
+                (item => PlatformHelper.GetString("Model_" + item.DeclaringType.Name + "_" + item.Name + "/Text") + Delimiter.ToString())
+                .Aggregate((a, s) => a + s);
         }
         public virtual void FromCSV(Dictionary<string, string> dic)
         {
@@ -379,7 +370,7 @@ namespace ShadowRunHelper.CharModel
             foreach (var item in dic)
             {
                 var currentProp = Props.FirstOrDefault(p => p.Item1 == item.Key);
-                currentProp.Item2?.SetValue(this, ConvertToRightType(item.Value, currentProp.Item2.GetValue(this)));
+                currentProp.p?.SetValue(this, ConvertToRightType(item.Value, currentProp.p.GetValue(this)));
             }
         }
         static object ConvertToRightType(object Value, object Target)

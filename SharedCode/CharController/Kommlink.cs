@@ -1,7 +1,5 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -38,15 +36,15 @@ namespace ShadowRunHelper.CharController
 
         void Refresh()
         {
-            foreach (var item in Data)
+            var item = Data.FirstOrDefault(x => x.Aktiv == true);
+            if (item != null)
             {
-                if (item.Aktiv == true)
-                {
-                    item.Copy(ActiveItem);
-                    return;
-                }
+                item.Copy(ActiveItem);
             }
-            ActiveItem.Reset();
+            else
+            {
+                ActiveItem.Reset();
+            }
         }
 
         public override IEnumerable<AllListEntry> GetElementsForThingList()
