@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SharedCodeTest
 {
-    public static class Helper
+    public static class Test_CharHolder
     {
         public static CharHolder CreatetestChar()
         {
@@ -32,7 +32,7 @@ namespace SharedCodeTest
             TLIB_CORE.Init.Do();
             AppModel.Initialize();
             SettingsModel.Initialize();
-            var Char = Helper.CreatetestChar();
+            var Char = Test_CharHolder.CreatetestChar();
             Assert.IsTrue(Char.CTRLAttribut.Charisma.Wert == 0);
             Assert.IsTrue(Char.CTRLAttribut.Logik.Wert == 0);
             Assert.IsTrue(Char.CTRLVorteil.Data[0].Wert == 0);

@@ -407,7 +407,7 @@ namespace ShadowRunHelper.Model
                 RefreshListFav();
             }
             HasChanges = true;
-            if (SettingsModel.I.AUTO_SAVE)
+            if (SettingsModel.I?.AUTO_SAVE == true)
             {
                 SetSaveTimerTo(SettingsModel.I.AUTO_SAVE_INTERVAL_MS);
             }

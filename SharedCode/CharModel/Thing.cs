@@ -241,7 +241,6 @@ namespace ShadowRunHelper.CharModel
             return true;
         }
 
-
         #endregion
         public static IEnumerable<PropertyInfo> GetProperties(object obj)
         {

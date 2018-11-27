@@ -5,7 +5,7 @@ using TLIB;
 
 namespace ShadowRunHelper.Model
 {
-    public class AppModel : TAPPLICATION.Model.SharedAppModel<CharHolder>
+    public class AppModel : SharedAppModel<CharHolder>
     {
         public static AppModel Initialize()
         {
@@ -56,17 +56,34 @@ namespace ShadowRunHelper.Model
 
         AppModel() : base()
         {
-            PropertyChanged += (x,y)=> {
-                if (y.PropertyName == nameof(MainObject) && MainObject != null) Features.Activities.GenerateCharActivityAsync(MainObject);
-                if (y.PropertyName == nameof(MainObject) && MainObject == null) Features.Activities.StopCurrentCharActivity();
-            };
+            PropertyChanged += AppModel_PropertyChanged;
+        }
+
+        private void AppModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(MainObject):
+                    if (MainObject != null)
+                    {
+                        Features.Activities.GenerateCharActivityAsync(MainObject);
+                    }
+                    else
+                    {
+                        Features.Activities.StopCurrentCharActivity();
+                    }
+                    break;
+                default:
+                    break;
             }
+        }
+
         ~AppModel() 
         {
             Features.Activities.StopCurrentCharActivity();
         }
 
-public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptions PageOptions);
+        public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptions PageOptions);
         public event NavigationEventHandler NavigationRequested;
         public void RequestNavigation(ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
         {
