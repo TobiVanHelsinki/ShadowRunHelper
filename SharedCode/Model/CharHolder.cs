@@ -244,7 +244,7 @@ namespace ShadowRunHelper.Model
                     else
                     {
                         Features.Analytics.TrackEvent("Err_CharRepair_Hard");
-                        AppModel.Instance.NewNotification(String.Format(PlatformHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
+                        AppModel.Instance?.NewNotification(String.Format(PlatformHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }
                 foreach (var item in TargetCollection)
@@ -361,7 +361,7 @@ namespace ShadowRunHelper.Model
         public void RefreshListFav()
         {
             Favorites.Clear();
-            Favorites.AddRange(ThingList.Where(x => x.IsFavorite).OrderBy(x=>x.FavoriteIndex));
+            Favorites.AddRange(ThingList.Where(x => x?.IsFavorite == true).OrderBy(x=>x.FavoriteIndex));
         }
         void SaveFavoritesOrdering(object sender, NotifyCollectionChangedEventArgs e)
         {

@@ -7,7 +7,7 @@ namespace ShadowRunHelper.UI
 {
     public sealed partial class LinkListEntry : UserControl
     {
-        CharHolder Model => AppModel.Instance.MainObject;
+        CharHolder Model => AppModel.Instance?.MainObject;
         public LinkListEntry()
         {
             InitializeComponent();

@@ -50,7 +50,7 @@ namespace ShadowRunHelper.Model
         {
             get
             {
-                return (AppModel)instance;
+                return instance as AppModel;
             }
         }
 

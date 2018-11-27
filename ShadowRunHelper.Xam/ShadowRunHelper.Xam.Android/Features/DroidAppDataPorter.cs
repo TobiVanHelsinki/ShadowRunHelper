@@ -71,11 +71,11 @@ namespace ShadowRunHelper
                 {
                     Errors += item + "\n";
                 }
-                Model.AppModel.Instance.NewNotification(PlatformHelper.GetString("AppImportErrors") + "\n\n" + Errors, false);
+                Model.AppModel.Instance?.NewNotification(PlatformHelper.GetString("AppImportErrors") + "\n\n" + Errors, false);
             }
             else
             {
-                Model.AppModel.Instance.NewNotification(PlatformHelper.GetString("AppImportNoErrors"), false);
+                Model.AppModel.Instance?.NewNotification(PlatformHelper.GetString("AppImportNoErrors"), false);
 
             }
         }

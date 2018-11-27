@@ -28,7 +28,7 @@ namespace ShadowRunHelper.CharController
         void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             Refresh();
-            foreach (var item in Data)
+            foreach (var item in Data.Where(x => x != null))
             {
                 item.PropertyChanged -= (x, y) => Refresh();
                 item.PropertyChanged += (x, y) => Refresh();

@@ -11,8 +11,8 @@ namespace ShadowRunHelper.UI
 {
     public sealed partial class NotificationsDialog : ContentDialog
     {
-        readonly ObservableCollection<Notification> Notifications = AppModel.Instance.lstNotifications;
-        readonly IEnumerable<Notification> NewNotifications = AppModel.Instance.lstNotifications.Where(x=>!x.IsRead);
+        readonly ObservableCollection<Notification> Notifications = AppModel.Instance?.lstNotifications;
+        readonly IEnumerable<Notification> NewNotifications = AppModel.Instance?.lstNotifications.Where(x=>!x.IsRead);
 
         public int NotificationsMax
         {

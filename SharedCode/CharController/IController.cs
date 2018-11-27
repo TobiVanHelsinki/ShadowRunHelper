@@ -58,7 +58,9 @@ namespace ShadowRunHelper.CharController
     public interface IController<T> : IController
     {
         ObservableCollection<T> Data { get;}
-        //string Data2CSV(char strDelimiter, char strNewLine, ObservableCollection<T> DataToUse);
-
+        T this[int index]
+        {
+            get;
+        }
     }
 }

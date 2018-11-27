@@ -20,7 +20,7 @@ namespace ShadowRunHelper.Model
             }
             else
             {
-                AppModel.Instance.NewNotification(PlatformHelper.GetString("Notification_Warning_NotAddLinkedEntry"));
+                AppModel.Instance?.NewNotification(PlatformHelper.GetString("Notification_Warning_NotAddLinkedEntry"));
             }
         }
 

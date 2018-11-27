@@ -73,7 +73,7 @@ namespace ShadowRunHelper
             else
             {
                 // Seite ist aktiv, wir versuchen, den Char anzuzeigen
-                AppModel.Instance.RequestNavigation(SettingsModel.I.LAST_PAGE);
+                AppModel.Instance?.RequestNavigation(SettingsModel.I.LAST_PAGE);
             }
             w.Stop();
             //def.Complete();

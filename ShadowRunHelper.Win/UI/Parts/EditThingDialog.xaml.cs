@@ -144,13 +144,13 @@ namespace ShadowRunHelper.UI
         void CreateHandlung(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             var Fert = Data as Fertigkeit;
-            var Handl = Model.AppModel.Instance.MainObject.Add(ThingDefs.Handlung);
+            var Handl = Model.AppModel.Instance?.MainObject.Add(ThingDefs.Handlung);
             if (Fert.TryCopy(Handl))
             {
-                Model.AppModel.Instance.lstNotifications.Add(new TAPPLICATION.Model.Notification(PlatformHelper.GetString("Error_ObjectCopy")) { IsRead = true});
+                Model.AppModel.Instance?.lstNotifications.Add(new TAPPLICATION.Model.Notification(PlatformHelper.GetString("Error_ObjectCopy")) { IsRead = true});
             }
             Handl.Wert = 0;
-            var FertEntry = Model.AppModel.Instance.MainObject.LinkList.Find(x=>x.Object == Fert);
+            var FertEntry = Model.AppModel.Instance?.MainObject.LinkList.Find(x=>x.Object == Fert);
             if (FertEntry != null)
             {
                 Handl.LinkedThings.Add(FertEntry);
@@ -164,7 +164,7 @@ namespace ShadowRunHelper.UI
 
         void AttributZusammensetzungBearbeiten(object sender, RoutedEventArgs e)
         {
-            LinkListChoice dialog = new LinkListChoice(Model.AppModel.Instance.MainObject, ((Attribut)((Button)sender).DataContext).LinkedThings, Filter: CharModel.Attribut.Filter);
+            LinkListChoice dialog = new LinkListChoice(Model.AppModel.Instance?.MainObject, ((Attribut)((Button)sender).DataContext).LinkedThings, Filter: CharModel.Attribut.Filter);
             Hide();
 
             dialog.ShowAsync();

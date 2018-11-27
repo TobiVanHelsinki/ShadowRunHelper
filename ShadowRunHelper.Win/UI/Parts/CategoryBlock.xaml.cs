@@ -40,7 +40,7 @@ namespace ShadowRunHelper.UI
                 ListView.Tag = (int)Controller.eDataTyp;
                 DataContext = Controller;
 
-                CTRLOption = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
+                CTRLOption = AppModel.Instance?.MainObject.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
                 if (CTRLOption != null)
                 {
                     CTRLOption.PropertyChanged += (o, e) => { if (e.PropertyName == nameof(CTRLOption.Visibility)) CheckVisibility(); };

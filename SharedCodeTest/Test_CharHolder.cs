@@ -1,30 +1,11 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShadowRunHelper;
-using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using System.Linq;
 
 namespace SharedCodeTest
 {
-    public static class Test_CharHolder
-    {
-        public static CharHolder CreatetestChar()
-        {
-            CharHolder Ret = new CharHolder();
-            var H1 = new Handlung() { Bezeichner = "Handlung1" };
-            Ret.Add(H1);
-            var V1 = new Vorteil() { Bezeichner = "Vorteil1" };
-            Ret.Add(V1);
-
-            H1.LinkedThings.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Charisma));
-            H1.LinkedThings.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Logik));
-            H1.GegenZusammensetzung.Add(Ret.LinkList.First(x => x.Object == V1));
-
-            return Ret;
-        }
-    }
     [TestClass]
-    public class ConnectionTests
+    public class Test_CharHolder
     {
         [TestMethod]
         public void TestOfAddition()
@@ -32,7 +13,7 @@ namespace SharedCodeTest
             TLIB_CORE.Init.Do();
             AppModel.Initialize();
             SettingsModel.Initialize();
-            var Char = Test_CharHolder.CreatetestChar();
+            var Char = TestHelper.CreateTestChar_SaveLoad();
             Assert.IsTrue(Char.CTRLAttribut.Charisma.Wert == 0);
             Assert.IsTrue(Char.CTRLAttribut.Logik.Wert == 0);
             Assert.IsTrue(Char.CTRLVorteil.Data[0].Wert == 0);

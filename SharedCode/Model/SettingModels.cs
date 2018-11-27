@@ -146,7 +146,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                AppModel.Instance.NewNotification(PlatformHelper.GetString("Error_CopyFiles"), ex);
+                AppModel.Instance?.NewNotification(PlatformHelper.GetString("Error_CopyFiles"), ex);
             }
         }
         static async void FolderMode_Toggled()
@@ -181,7 +181,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                AppModel.Instance.NewNotification(PlatformHelper.GetString("Error_CopyFiles"), ex);
+                AppModel.Instance?.NewNotification(PlatformHelper.GetString("Error_CopyFiles"), ex);
             }
         }
         #endregion

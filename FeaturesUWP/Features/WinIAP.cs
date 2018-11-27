@@ -29,7 +29,7 @@ namespace ShadowRunHelper
                 catch (Exception ex)
  { TAPPLICATION.Debugging.TraceException(ex);
                     Constants.IAP_HIDEADS = false;
-                    Model.AppModel.Instance.NewNotification("Error_LoadPurchases");
+                    Model.AppModel.Instance?.NewNotification("Error_LoadPurchases");
                     //Debug_TimeAnalyser.Stop("IAP GetAddons");
                 }
                 SettingsModel.Instance.IAP_HIDEADS = Constants.IAP_HIDEADS;
@@ -98,12 +98,12 @@ namespace ShadowRunHelper
             switch (result.Status)
             {
                 case StorePurchaseStatus.Succeeded:
-                    Model.AppModel.Instance.NewNotification(PlatformHelper.GetString("IAP_Succeeded"));
+                    Model.AppModel.Instance?.NewNotification(PlatformHelper.GetString("IAP_Succeeded"));
                     break;
                 case StorePurchaseStatus.NotPurchased:
                     break;
                 default:
-                    Model.AppModel.Instance.NewNotification(PlatformHelper.GetString("IAP_Error"));
+                    Model.AppModel.Instance?.NewNotification(PlatformHelper.GetString("IAP_Error"));
                     break;
             }
             await CheckLicence(true);

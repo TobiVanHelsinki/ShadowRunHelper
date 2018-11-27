@@ -248,7 +248,7 @@ namespace ShadowRunHelper.UI
             ChangeProgress(true);
             Model.MainObject = CharHolder.CreateCharWithStandardContent();
             SettingsModel.I.COUNT_CREATIONS++;
-            AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
+            AppModel.Instance?.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
             ChangeProgress(false);
             Model.CharInProgress = null;
         }
@@ -309,7 +309,7 @@ namespace ShadowRunHelper.UI
             if (Model.MainObject != null)
             {
                 Visibility = Visibility.Collapsed;
-                AppModel.Instance.RequestNavigation(ProjectPages.Char);
+                AppModel.Instance?.RequestNavigation(ProjectPages.Char);
             }
             ChangeProgress(false);
             Model.CharInProgress = null;
