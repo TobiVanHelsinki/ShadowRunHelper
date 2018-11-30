@@ -1586,7 +1586,10 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
     <value>Teilen</value>
   </data>
   <data name="VersionHistory" xml:space="preserve">
-    <value>Version 
+    <value>Version 1.9.1
+[new] BackUp Versionierung: Die Optionen, an einen gespeicherten Char Zeit oder Fortschritt anzuhängen führten zu zu vielen Fehlern und Ausnahmen. Daher wurden sie entfernt. Stattdessen gibt es nun eine BackUp Versionierung, die beide Optionen zusammenfasst und sinnvoller ist.
+[new] Neu gestalteter Header für die Char-Page.
+Version 1.8.5
 [fix] Aus Datei geladene Chars wurden nicht gespeichert, wenn die Optionen Fortschritt oder Zeit aktiv waren
 Version 1.8.4:
 [new] Lebensstilkosten Button
