@@ -59,7 +59,7 @@ namespace ShadowRunHelper
             Settings.FORCE_LOAD_CHAR_ON_START = true;
             Settings.LAST_SAVE_INFO = new FileInfoClass(Place.Extern, Name, Path)
             {
-                Token = SharedConstants.ACCESSTOKEN_FILEACTIVATED
+                Token = Constants.ACCESSTOKEN_FILEACTIVATED
             };
             if (!FirstStart)
             {

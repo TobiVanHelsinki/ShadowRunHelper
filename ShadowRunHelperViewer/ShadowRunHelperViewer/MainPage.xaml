@@ -4,11 +4,18 @@
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              x:Class="ShadowRunHelperViewer.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Choose File" Clicked="ChooseFile"/>
+            <Label Text="{x:Binding AppModel.MainObject.FileInfo.Filename}"/>
+        </StackLayout>
+        <StackLayout Grid.Row="1">
+            <Label Text="{x:Binding AppModel.MainObject.Person.Alias}"/>
+        </StackLayout>
+    </Grid>
 
 </ContentPage>

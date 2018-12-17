@@ -7,6 +7,9 @@ namespace ShadowRunHelper
 {
     public class Constants : SharedConstants
     {
+        public const string ACCESSTOKEN_FOLDERMODE = "ACCESSTOKEN_FOLDERMODE";
+        public const string ACCESSTOKEN_FILEACTIVATED = "ACCESSTOKEN_FILEACTIVATED";
+
         public const string THING_DELETED_TOKEN = "THING_DELETED_TOKEN";
         public const string TESTEXCEPTIONTEXT = "TESTEXCEPTIONTEXT";
 
