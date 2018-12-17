@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F1654E38-625B-44E7-84F2-BF5392F6B536}</ProjectGuid>
+    <ProjectGuid>{829DDA0F-3EE7-477C-B9CD-3352F3217830}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>ShadowRunHelper.Xam.Droid</RootNamespace>
-    <AssemblyName>ShadowRunHelper.Xam.Android</AssemblyName>
+    <RootNamespace>ShadowRunHelperViewer.Droid</RootNamespace>
+    <AssemblyName>ShadowRunHelperViewer.Android</AssemblyName>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -26,12 +26,11 @@
     <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;RELEASE</DefineConstants>
+    <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <LangVersion>latest</LangVersion>
-    <NoWarn>;CS1998</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,7 +42,6 @@
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <LangVersion>latest</LangVersion>
-    <NoWarn>;CS1998</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -51,23 +49,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-      <Reference Include="TAPPLICATION">
-        <HintPath>..\..\..\TLIB\TAPPLICATION\bin\$(Configuration)\netstandard1.0\TAPPLICATION.dll</HintPath>
-      </Reference>
-      <Reference Include="TLIB">
-        <HintPath>..\..\..\TLIB\TLIB\bin\$(Configuration)\netstandard1.0\TLIB.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-    <ItemGroup>
-    <PackageReference Include="Microsoft.AppCenter">
-      <Version>1.11.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AppCenter.Analytics">
-      <Version>1.11.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>1.11.0</Version>
-    </PackageReference>
+    <Reference Include="TAPPLICATION">
+      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\$(Configuration)\netstandard1.0\TAPPLICATION.dll</HintPath>
+    </Reference>
+    <Reference Include="TLIB">
+      <HintPath>..\..\..\TLIB\TLIB\bin\$(Configuration)\netstandard1.0\TLIB.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
@@ -77,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,15 +81,15 @@
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
-    <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-hdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-mdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
@@ -115,9 +104,9 @@
       <Project>{63a5e683-5a51-4c45-a9de-ca0c26c6ec5a}</Project>
       <Name>SharedCode</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ShadowRunHelper.Xam\ShadowRunHelper.Xam.csproj">
-      <Project>{A3D0763C-0A75-4798-9B86-CF48BF7DC0B0}</Project>
-      <Name>ShadowRunHelper.Xam</Name>
+    <ProjectReference Include="..\ShadowRunHelperViewer\ShadowRunHelperViewer.csproj">
+      <Project>{FFDE0ACB-F82C-4577-98A1-435FA77A183A}</Project>
+      <Name>ShadowRunHelperViewer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\..\FeaturesDroid\FeaturesDroid.projitems" Label="Shared" />

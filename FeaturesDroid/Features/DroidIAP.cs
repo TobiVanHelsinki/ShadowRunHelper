@@ -2,7 +2,7 @@
 
 namespace ShadowRunHelper
 {
-    public class WinIAP : IIAP
+    public class DroidIAP : IIAP
     {
         public async Task CheckLicence(bool force = false)
         {
