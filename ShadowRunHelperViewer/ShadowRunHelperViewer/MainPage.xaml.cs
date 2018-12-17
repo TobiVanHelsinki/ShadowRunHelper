@@ -2,10 +2,6 @@
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TLIB;
 using Xamarin.Forms;
 
@@ -16,7 +12,7 @@ namespace ShadowRunHelperViewer
         public AppModel AppModel => AppModel.Instance;
         public MainPage()
         {
-            AppModel.MainObject = CharHolder.CreateCharWithStandardContent();
+            //AppModel.MainObject = CharHolder.CreateCharWithStandardContent();
             InitializeComponent();
             BindingContext = this;
         }

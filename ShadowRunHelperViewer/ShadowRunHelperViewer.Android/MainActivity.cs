@@ -1,11 +1,7 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using CarouselView.FormsPlugin.Android;
 using ShadowRunHelper;
 
 namespace ShadowRunHelperViewer.Droid
@@ -21,6 +17,7 @@ namespace ShadowRunHelperViewer.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+            CarouselViewRenderer.Init();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
