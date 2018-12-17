@@ -9,19 +9,27 @@
     <ContentView.Content>
         <tvs:TabViewControl HeaderTabTextFontSize="12">
             <tvs:TabViewControl.ItemSource>
-                <tvs:TabItem HeaderText="First Tab">
-                    <StackLayout>
-                        <Label Text="{x:Binding }"/>
-                        <Label Text="{x:Binding Person}"/>
-                        <Label Text="{x:Binding Person.Alias}"/>
-                        <Button Text="Go back to main page from first page" Clicked="GoBackClicked"/>
-                    </StackLayout>
+                <tvs:TabItem HeaderText="Action">
+                    <ScrollView>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <!--<RowDefinition Height="Auto"/>-->
+                            </Grid.RowDefinitions>
+                            <Label Text="{x:Binding Person.Alias}"/>
+                            <local:GController Grid.Row="1" Controller="{x:Binding CTRLHandlung, Mode=OneWay}"/>
+                            <local:GController Grid.Row="2" Controller="{x:Binding CTRLFertigkeit}"/>
+                            <!--<local:GController Grid.Row="3"/>-->
+                        </Grid>
+                    </ScrollView>
                 </tvs:TabItem>
                 <tvs:TabItem HeaderText="Second Tab">
-                    <Button Text="Go back to main page from second page" Clicked="GoBackClicked"/>
+                    <Button Text="Go back to main page from first page"/>
                 </tvs:TabItem>
                 <tvs:TabItem HeaderText="Third Tab">
-                    <Button Text="Go back to main page from third page" Clicked="GoBackClicked"/>
+                    <Button Text="Go back to main page from first page"/>
                 </tvs:TabItem>
             </tvs:TabViewControl.ItemSource>
         </tvs:TabViewControl>

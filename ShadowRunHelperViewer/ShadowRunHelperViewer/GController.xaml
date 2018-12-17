@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
+             x:Class="ShadowRunHelperViewer.GController">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <Label x:Name="Headline" BackgroundColor="BlanchedAlmond"/>
+            <ListView x:Name="Items" ItemsSource="{Binding Data, Mode=TwoWay}" BindingContextChanged="Items_BindingContextChanged" BackgroundColor="AntiqueWhite">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="charmodel:Thing">
+                        <ViewCell>
+                            <Frame BorderColor="Accent" HeightRequest="30" Padding="0" Margin="0">
+                                <Grid Padding="0" Margin="0" VerticalOptions="CenterAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{x:Binding Bezeichner}" />
+                                    <Label Grid.Column="1" Text="{x:Binding Wert}" HorizontalOptions="End"/>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

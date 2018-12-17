@@ -39,6 +39,9 @@
     <EmbeddedResource Update="CategoryView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="GController.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <Import Project="..\..\..\TLIB\TAPPLICATION_Xamarin\TAPPLICATION_Xamarin.projitems" Label="Shared" />
