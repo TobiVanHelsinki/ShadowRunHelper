@@ -11,7 +11,7 @@ namespace ShadowRunHelper.CharController
     public class AttributController : Controller<Attribut>
     {
         [JsonIgnore]
-        public new ObservableCollection<Attribut> Data;
+        public new ObservableCollection<Attribut> Data { get; protected set; }
 
         public Attribut Konsti;// those have to point at a sepcific list element
         public Attribut Geschick;

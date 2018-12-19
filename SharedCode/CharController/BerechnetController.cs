@@ -13,7 +13,7 @@ namespace ShadowRunHelper.CharController
     public class BerechnetController : Controller<Berechnet>
     {
         [JsonIgnore]
-        public new ObservableCollection<Berechnet> Data; 
+        public new ObservableCollection<Berechnet> Data { get; protected set; }
 
         Berechnet essenz = new Berechnet();
         AllListEntry MI_Essenz;

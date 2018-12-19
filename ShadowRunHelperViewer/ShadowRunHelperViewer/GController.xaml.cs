@@ -29,7 +29,11 @@ namespace ShadowRunHelperViewer
             if (Controller != null)
             {
                 Headline.Text = TypeHelper.ThingDefToString(Controller.eDataTyp, true);
-                Headline.Text = "temp test cat " + DateTime.Now;
+                Headline.Text = "Kategorieüberschrift " + DateTime.Now;
+            }
+            else
+            {
+
             }
         }
 

@@ -2,33 +2,62 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
+             xmlns:micro="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
              xmlns:tvs="clr-namespace:Xam.Plugin.TabView;assembly=Xam.Plugin.TabView"
              xmlns:model="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
              x:Class="ShadowRunHelperViewer.CategoryView"
-             x:DataType="model:CharHolder">
+             x:DataType="model:CharHolder"
+             >
     <ContentView.Content>
-        <tvs:TabViewControl HeaderTabTextFontSize="12">
+        <tvs:TabViewControl HeaderTabTextFontSize="12" x:Name="TableView">
             <tvs:TabViewControl.ItemSource>
                 <tvs:TabItem HeaderText="Action">
-                    <ScrollView>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                                <!--<RowDefinition Height="Auto"/>-->
-                            </Grid.RowDefinitions>
-                            <Label Text="{x:Binding Person.Alias}"/>
-                            <local:GController Grid.Row="1" BindingContext="{x:Binding CTRLHandlung}"/>
-                            <local:GController Grid.Row="2" BindingContext="{x:Binding CTRLFertigkeit}"/>
-                        </Grid>
-                    </ScrollView>
+                        <StackLayout>
+                            <local:GController BindingContext="{x:Binding CTRLHandlung}"/>
+                            <local:GController BindingContext="{x:Binding CTRLFertigkeit}"/>
+                            <local:GController BindingContext="{x:Binding CTRLZaubersprueche}"/>
+                            <local:GController BindingContext="{x:Binding CTRLAdeptenkraft}"/>
+                            <local:GController BindingContext="{x:Binding CTRLKomplexeForm}"/>
+                        </StackLayout>
                 </tvs:TabItem>
-                <tvs:TabItem HeaderText="Second Tab">
-                    <Button Text="Go back to main page from first page"/>
+                <tvs:TabItem HeaderText="Items">
+                    <StackLayout>
+                        <local:GController BindingContext="{x:Binding CTRLItem}"/>
+                        <local:GController BindingContext="{x:Binding CTRLKommlink}"/>
+                        <local:GController BindingContext="{x:Binding CTRLCyberDeck}"/>
+                        <local:GController BindingContext="{x:Binding CTRLProgramm}"/>
+                        <local:GController BindingContext="{x:Binding CTRLFoki}"/>
+                        <local:GController BindingContext="{x:Binding CTRLGeist}"/>
+                        <local:GController BindingContext="{x:Binding CTRLWidgets}"/>
+                        <local:GController BindingContext="{x:Binding CTRLSprite}"/>
+                    </StackLayout>
                 </tvs:TabItem>
-                <tvs:TabItem HeaderText="Third Tab">
-                    <Button Text="Go back to main page from first page"/>
+                <tvs:TabItem HeaderText="battle">
+                    <StackLayout>
+                        <local:GController BindingContext="{x:Binding CTRLFernkampfwaffe}"/>
+                        <local:GController BindingContext="{x:Binding CTRLNahkampfwaffe}"/>
+                        <local:GController BindingContext="{x:Binding CTRLPanzerung}"/>
+                        <local:GController BindingContext="{x:Binding CTRLVehikel}"/>
+                        <local:GController BindingContext="{x:Binding CTRLMunition}"/>
+                    </StackLayout>
+                </tvs:TabItem>
+                <tvs:TabItem HeaderText="person">
+                    <StackLayout>
+                        <local:GController BindingContext="{x:Binding CTRLAttribut}"/>
+                        <local:GController BindingContext="{x:Binding CTRLBerechnet}"/>
+                        <local:GController BindingContext="{x:Binding CTRLConnection}"/>
+                        <local:GController BindingContext="{x:Binding CTRLImplantat}"/>
+                        <local:GController BindingContext="{x:Binding CTRLTradition}"/>
+                        <local:GController BindingContext="{x:Binding CTRLStroemung}"/>
+                        <local:GController BindingContext="{x:Binding CTRLSin}"/>
+                        <local:GController BindingContext="{x:Binding CTRLInitiation}"/>
+                        <local:GController BindingContext="{x:Binding CTRLWandlung}"/>
+                        <local:GController BindingContext="{x:Binding CTRLVorteil}"/>
+                        <local:GController BindingContext="{x:Binding CTRLNachteil}"/>
+                    </StackLayout>
+                </tvs:TabItem>
+                <tvs:TabItem HeaderText="Notes">
+                    <Label Text="{x:Binding Person.Notizen}"/>
                 </tvs:TabItem>
             </tvs:TabViewControl.ItemSource>
         </tvs:TabViewControl>

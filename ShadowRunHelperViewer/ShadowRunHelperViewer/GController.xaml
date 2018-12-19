@@ -5,19 +5,28 @@
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Content>
         <StackLayout Orientation="Vertical">
-            <Label x:Name="Headline" BackgroundColor="BlanchedAlmond"/>
+            <Label x:Name="Headline" BackgroundColor="BlanchedAlmond" HorizontalOptions="CenterAndExpand"/>
             <ListView ItemsSource="{x:Binding Data}" BackgroundColor="LightSkyBlue">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="charmodel:Thing">
                         <ViewCell>
-                            <Frame BorderColor="Accent" HeightRequest="30" Padding="0" Margin="0">
-                                <Grid Padding="0" Margin="0" VerticalOptions="CenterAndExpand">
+                            <Frame BorderColor="Accent" Padding="0" Margin="0">
+                                <Grid Padding="0" Margin="0" MinimumHeightRequest="10" VerticalOptions="Start">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Text="{x:Binding Bezeichner}" />
-                                    <Label Grid.Column="1" Text="{x:Binding Wert}" HorizontalOptions="End"/>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Column="0" Text="{x:Binding Typ}"/>
+                                    <Label Grid.Column="1" Text="{x:Binding Bezeichner}"/>
+                                    <Label Grid.Column="2" Text="{x:Binding Wert}"/>
+                                    <Label Grid.Column="3" Text="{x:Binding Zusatz}"/>
+                                    <Label Grid.Row="1" Text="{x:Binding Notiz}"/>
                                 </Grid>
                             </Frame>
                         </ViewCell>
