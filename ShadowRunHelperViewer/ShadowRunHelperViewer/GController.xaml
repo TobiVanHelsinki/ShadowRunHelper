@@ -6,7 +6,7 @@
     <ContentView.Content>
         <StackLayout Orientation="Vertical">
             <Label x:Name="Headline" BackgroundColor="BlanchedAlmond"/>
-            <ListView x:Name="Items" ItemsSource="{Binding Data, Mode=TwoWay}" BindingContextChanged="Items_BindingContextChanged" BackgroundColor="AntiqueWhite">
+            <ListView ItemsSource="{x:Binding Data}" BackgroundColor="LightSkyBlue">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="charmodel:Thing">
                         <ViewCell>

@@ -3,49 +3,47 @@ using ShadowRunHelper;
 using ShadowRunHelper.CharController;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ShadowRunHelperViewer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class GController : ContentView
+	public partial class GController : ContentView, INotifyPropertyChanged
 	{
+        #region NotifyPropertyChanged
+		public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+        IController _Controller;
         public IController Controller
         {
-            get { return (IController)GetValue(ControllerProperty); }
-            set { SetValue(ControllerProperty, value); }
+            get { return _Controller; }
+            set { if (_Controller != value) { _Controller = value; NotifyPropertyChanged(); } }
         }
-
         private void OnControllerChanged()
         {
             if (Controller != null)
             {
                 Headline.Text = TypeHelper.ThingDefToString(Controller.eDataTyp, true);
-                Headline.Text = "temp test cat";
-                BindingContext = Controller;
+                Headline.Text = "temp test cat " + DateTime.Now;
             }
         }
 
-        // Using a DependencyProperty as the backing store for Controller.  This enables animation, styling, binding, etc...
-        public static readonly BindableProperty ControllerProperty =
-            BindableProperty.CreateAttached(nameof(Controller), typeof(IController), typeof(CategoryView), null, BindingMode.OneWay, propertyChanged: (a,b,c)=> meth(a,b,c));
-
-        private static void meth(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (oldValue != null && newValue == null && bindable != null)
-            {
-                (bindable as GController).Controller = newValue as IController;
-            }
-            (bindable as GController)?.OnControllerChanged();
-        }
-
-        public GController ()
+        public GController()
 		{
 			InitializeComponent ();
-		}
-
-        private void Items_BindingContextChanged(object sender, EventArgs e)
-        {
-
+            BindingContextChanged += GController_BindingContextChanged;
         }
+
+        private void GController_BindingContextChanged(object sender, EventArgs e)
+        {
+            Controller = BindingContext as IController;
+            OnControllerChanged();
+        }
+
     }
 }

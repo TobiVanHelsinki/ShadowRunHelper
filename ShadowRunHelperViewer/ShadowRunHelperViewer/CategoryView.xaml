@@ -19,9 +19,8 @@
                                 <!--<RowDefinition Height="Auto"/>-->
                             </Grid.RowDefinitions>
                             <Label Text="{x:Binding Person.Alias}"/>
-                            <local:GController Grid.Row="1" Controller="{x:Binding CTRLHandlung, Mode=OneWay}"/>
-                            <local:GController Grid.Row="2" Controller="{x:Binding CTRLFertigkeit}"/>
-                            <!--<local:GController Grid.Row="3"/>-->
+                            <local:GController Grid.Row="1" BindingContext="{x:Binding CTRLHandlung}"/>
+                            <local:GController Grid.Row="2" BindingContext="{x:Binding CTRLFertigkeit}"/>
                         </Grid>
                     </ScrollView>
                 </tvs:TabItem>
