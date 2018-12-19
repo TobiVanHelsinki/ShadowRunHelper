@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using ShadowRunHelper;
 using ShadowRunHelper.CharController;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ShadowRunHelper.Model;
 
 namespace ShadowRunHelperViewer
 {
@@ -28,6 +30,11 @@ namespace ShadowRunHelperViewer
         {
             if (Controller != null)
             {
+                var Setting = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x=>x.ThingType == Controller.eDataTyp);
+                if (Setting != null)
+                {
+                    IsVisible = Setting.Visibility;
+                }
                 Headline.Text = TypeHelper.ThingDefToString(Controller.eDataTyp, true);
                 Headline.Text = "Kategorieüberschrift " + DateTime.Now;
             }

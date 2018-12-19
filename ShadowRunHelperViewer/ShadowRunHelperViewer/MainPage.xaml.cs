@@ -12,7 +12,7 @@ namespace ShadowRunHelperViewer
         public AppModel AppModel => AppModel.Instance;
         public MainPage()
         {
-            AppModel.MainObject = CharHolderTest.TestAllCats(2);
+            //AppModel.MainObject = CharHolderTest.TestAllCats(2);
             InitializeComponent();
             BindingContext = this;
         }

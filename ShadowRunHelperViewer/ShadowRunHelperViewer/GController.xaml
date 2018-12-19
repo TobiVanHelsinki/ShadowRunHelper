@@ -11,7 +11,7 @@
                     <DataTemplate x:DataType="charmodel:Thing">
                         <ViewCell>
                             <Frame BorderColor="Accent" Padding="0" Margin="0">
-                                <Grid Padding="0" Margin="0" MinimumHeightRequest="10" VerticalOptions="Start">
+                                <Grid Padding="0" Margin="0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*" />
