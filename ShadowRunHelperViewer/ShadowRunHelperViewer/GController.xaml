@@ -4,9 +4,20 @@
              xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Content>
-        <StackLayout Orientation="Vertical">
-            <Label x:Name="Headline" BackgroundColor="BlanchedAlmond" HorizontalOptions="CenterAndExpand"/>
-            <ListView ItemsSource="{x:Binding Data}" BackgroundColor="LightSkyBlue">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="BlanchedAlmond">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="Headline" HorizontalOptions="Center"/>
+                <Button Text="Show/Hide" Clicked="Button_Clicked" Grid.Column="1"/>
+            </Grid>
+            <ListView x:Name="Items" ItemsSource="{x:Binding Data}" BackgroundColor="LightSkyBlue" Grid.Row="1">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="charmodel:Thing">
                         <ViewCell>
@@ -34,6 +45,6 @@
                 </ListView.ItemTemplate>
 
             </ListView>
-        </StackLayout>
+        </Grid>
     </ContentView.Content>
 </ContentView>

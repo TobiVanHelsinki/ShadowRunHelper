@@ -13,47 +13,47 @@
             <tvs:TabViewControl.ItemSource>
                 <tvs:TabItem HeaderText="Action">
                         <StackLayout>
-                            <local:GController BindingContext="{x:Binding CTRLHandlung}"/>
-                            <local:GController BindingContext="{x:Binding CTRLFertigkeit}"/>
-                            <local:GController BindingContext="{x:Binding CTRLZaubersprueche}"/>
-                            <local:GController BindingContext="{x:Binding CTRLAdeptenkraft}"/>
-                            <local:GController BindingContext="{x:Binding CTRLKomplexeForm}"/>
+                            <local:GController BindingContext="{x:Binding CTRLHandlung}" Expand="True"/>
+                            <local:GController BindingContext="{x:Binding CTRLFertigkeit}" Expand="False"/>
+                            <local:GController BindingContext="{x:Binding CTRLZaubersprueche}" Expand="False"/>
+                            <local:GController BindingContext="{x:Binding CTRLAdeptenkraft}" Expand="False"/>
+                            <local:GController BindingContext="{x:Binding CTRLKomplexeForm}" Expand="False"/>
                         </StackLayout>
                 </tvs:TabItem>
                 <tvs:TabItem HeaderText="Items">
                     <StackLayout>
-                        <local:GController BindingContext="{x:Binding CTRLItem}"/>
-                        <local:GController BindingContext="{x:Binding CTRLKommlink}"/>
-                        <local:GController BindingContext="{x:Binding CTRLCyberDeck}"/>
-                        <local:GController BindingContext="{x:Binding CTRLProgramm}"/>
-                        <local:GController BindingContext="{x:Binding CTRLFoki}"/>
-                        <local:GController BindingContext="{x:Binding CTRLGeist}"/>
-                        <local:GController BindingContext="{x:Binding CTRLWidgets}"/>
-                        <local:GController BindingContext="{x:Binding CTRLSprite}"/>
+                        <local:GController BindingContext="{x:Binding CTRLItem}" Expand="True"/>
+                        <local:GController BindingContext="{x:Binding CTRLKommlink}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLCyberDeck}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLProgramm}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLFoki}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLGeist}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLWidgets}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLSprite}" Expand="False"/>
                     </StackLayout>
                 </tvs:TabItem>
-                <tvs:TabItem HeaderText="battle">
+                <tvs:TabItem HeaderText="Battle">
                     <StackLayout>
-                        <local:GController BindingContext="{x:Binding CTRLFernkampfwaffe}"/>
-                        <local:GController BindingContext="{x:Binding CTRLNahkampfwaffe}"/>
-                        <local:GController BindingContext="{x:Binding CTRLPanzerung}"/>
-                        <local:GController BindingContext="{x:Binding CTRLVehikel}"/>
-                        <local:GController BindingContext="{x:Binding CTRLMunition}"/>
+                        <local:GController BindingContext="{x:Binding CTRLFernkampfwaffe}" Expand="True"/>
+                        <local:GController BindingContext="{x:Binding CTRLNahkampfwaffe}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLPanzerung}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLVehikel}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLMunition}" Expand="False"/>
                     </StackLayout>
                 </tvs:TabItem>
-                <tvs:TabItem HeaderText="person">
+                <tvs:TabItem HeaderText="Person">
                     <StackLayout>
-                        <local:GController BindingContext="{x:Binding CTRLAttribut}"/>
-                        <local:GController BindingContext="{x:Binding CTRLBerechnet}"/>
-                        <local:GController BindingContext="{x:Binding CTRLConnection}"/>
-                        <local:GController BindingContext="{x:Binding CTRLImplantat}"/>
-                        <local:GController BindingContext="{x:Binding CTRLTradition}"/>
-                        <local:GController BindingContext="{x:Binding CTRLStroemung}"/>
-                        <local:GController BindingContext="{x:Binding CTRLSin}"/>
-                        <local:GController BindingContext="{x:Binding CTRLInitiation}"/>
-                        <local:GController BindingContext="{x:Binding CTRLWandlung}"/>
-                        <local:GController BindingContext="{x:Binding CTRLVorteil}"/>
-                        <local:GController BindingContext="{x:Binding CTRLNachteil}"/>
+                        <local:GController BindingContext="{x:Binding CTRLAttribut}" Expand="True"/>
+                        <local:GController BindingContext="{x:Binding CTRLBerechnet}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLConnection}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLImplantat}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLTradition}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLStroemung}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLSin}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLInitiation}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLWandlung}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLVorteil}" Expand="False"/>
+                        <local:GController BindingContext="{x:Binding CTRLNachteil}" Expand="False"/>
                     </StackLayout>
                 </tvs:TabItem>
                 <tvs:TabItem HeaderText="Notes">
