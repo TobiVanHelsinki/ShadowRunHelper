@@ -2,16 +2,17 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
-             xmlns:micro="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
              xmlns:tvs="clr-namespace:Xam.Plugin.TabView;assembly=Xam.Plugin.TabView"
              xmlns:model="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
              x:Class="ShadowRunHelperViewer.CategoryView"
              x:DataType="model:CharHolder"
+             xmlns:i18n="clr-namespace:ShadowRunHelperViewer"
              >
     <ContentView.Content>
         <tvs:TabViewControl HeaderTabTextFontSize="12" x:Name="TableView">
             <tvs:TabViewControl.ItemSource>
-                <tvs:TabItem HeaderText="Action">
+                <tvs:TabItem HeaderText="{i18n:Translate PivotHeader_Action}">
+                    <ScrollView>
                         <StackLayout>
                             <local:GController BindingContext="{x:Binding CTRLHandlung}" Expand="True"/>
                             <local:GController BindingContext="{x:Binding CTRLFertigkeit}" Expand="False"/>
@@ -19,6 +20,7 @@
                             <local:GController BindingContext="{x:Binding CTRLAdeptenkraft}" Expand="False"/>
                             <local:GController BindingContext="{x:Binding CTRLKomplexeForm}" Expand="False"/>
                         </StackLayout>
+                    </ScrollView>
                 </tvs:TabItem>
                 <tvs:TabItem HeaderText="Items">
                     <StackLayout>

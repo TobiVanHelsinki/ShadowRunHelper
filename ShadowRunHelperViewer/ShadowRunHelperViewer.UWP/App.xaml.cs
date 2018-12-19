@@ -36,8 +36,6 @@ namespace ShadowRunHelperViewer.UWP
             Init.Do();
             TAPPLICATION_UWP.Init.Do();
             TLIB_UWP.Init.Do();
-
-          
         }
 
         /// <summary>

@@ -40,7 +40,6 @@ namespace ShadowRunHelperViewer
                         var prop = charHolder.GetType().GetProperties().Where(x => x.GetValue(charHolder) == ctrl).FirstOrDefault();
                         item.SetBinding(GController.BindingContextProperty, prop?.Name);
                         //{ BindingContext = charHolder.CTRLList.FirstOrDefault(x => x.eDataTyp == Category.ThingType) };
-                        System.Diagnostics.Debug.WriteLine("<local:GController BindingContext=\"{x:Binding "+ prop?.Name + "}\"/>");
                     }
                 }
                 for (int i = 0; i < count; i++) // need to remove old items at bottom, because view cannot have zero items

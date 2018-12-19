@@ -1,0 +1,5 @@
+﻿- strings
+- header
+- allg infos
+- templates für jeden eintrag
+-- expandable einträge

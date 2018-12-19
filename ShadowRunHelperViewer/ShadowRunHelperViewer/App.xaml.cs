@@ -11,8 +11,8 @@ namespace ShadowRunHelperViewer
         public App()
         {
             InitializeComponent();
-            TAPPLICATION_Xamarin.Init.Do();
-            TLIB_Xamarin.Init.Do();
+            //TAPPLICATION_Xamarin.Init.Do();
+            //TLIB_Xamarin.Init.Do();
 
             AppHolder.InitModel();
 
