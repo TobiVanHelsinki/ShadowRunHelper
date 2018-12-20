@@ -19,7 +19,10 @@ namespace ShadowRunHelperViewer
             //BindingContextChanged += CategoryView_BindingContextChanged_AddCategoriesProgramamticly;
             BindingContextChanged += CategoryView_BindingContextChanged_AddCategoriesButtonsProgramamticly;
             InitializeComponent();
+            Buttons = new List<StackLayout>() { s1, s2, s3, s4 };
         }
+
+        IEnumerable<StackLayout> Buttons;
 
         private void CategoryView_BindingContextChanged_AddCategoriesButtonsProgramamticly(object sender, EventArgs e)
         {
@@ -29,11 +32,11 @@ namespace ShadowRunHelperViewer
             }
             if (this is ContentView Content)
             {
-                foreach (var item in Buttons.Children.OfType<StackLayout>().SelectMany(x=>x.Children).OfType<Button>())
+                foreach (var item in Buttons.SelectMany(x=>x.Children).OfType<Button>())
                 {
                     item.Clicked -= B_Clicked;
                 }
-                foreach (var item in Buttons.Children.OfType<StackLayout>())
+                foreach (var item in Buttons)
                 {
                     item.Children.Clear();
                 }
@@ -73,15 +76,9 @@ namespace ShadowRunHelperViewer
             (sender as Button)?.Resources?.TryGetValue("GC", out gc);
             if (gc is GController GC)
             {
-                GC.IsVisible = true;
-                GC.PropertyChanged += GC_PropertyChanged;
+                GC.IsVisible = !GC.IsVisible;
             }
         }
-
-        private void GC_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-        }
-
 
         //private void CategoryView_BindingContextChanged_AddCategoriesProgramamticly(object sender, System.EventArgs e)
         //{

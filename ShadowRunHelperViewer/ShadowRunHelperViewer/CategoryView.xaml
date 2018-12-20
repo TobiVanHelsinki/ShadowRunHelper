@@ -8,24 +8,25 @@
              x:DataType="model:CharHolder"
              >
     <ContentView.Content>
-        <Grid>
+        <Grid HorizontalOptions="Fill">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
             <ScrollView>
-                <Grid x:Name="Buttons" HorizontalOptions="Fill">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Row="0" Grid.Column="0" x:Name="s1" HorizontalOptions="Fill"/>
-                    <StackLayout Grid.Row="1" Grid.Column="0" x:Name="s2" HorizontalOptions="Fill"/>
-                    <StackLayout Grid.Row="0" Grid.Column="1" x:Name="s3" HorizontalOptions="Fill"/>
-                    <StackLayout Grid.Row="1" Grid.Column="1" x:Name="s4" HorizontalOptions="Fill"/>
-                </Grid>
+                <StackLayout>
+                    <StackLayout x:Name="s1" HorizontalOptions="Fill" Margin="0,0,0,7"/>
+                    <StackLayout x:Name="s2" HorizontalOptions="Fill"/>
+                </StackLayout>
             </ScrollView>
-            <StackLayout x:Name="Controllers"  BackgroundColor="White" HorizontalOptions="Start" VerticalOptions="Start">
+            <ScrollView Grid.Column="2">
+                <StackLayout>
+                    <StackLayout x:Name="s3" HorizontalOptions="Fill" Margin="0,0,0,7"/>
+                    <StackLayout x:Name="s4" HorizontalOptions="Fill"/>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Grid.Column="1" x:Name="Controllers">
                 <local:GController BindingContext="{x:Binding CTRLHandlung}" Expand="True"/>
                 <local:GController BindingContext="{x:Binding CTRLFertigkeit}" Expand="True"/>
                 <local:GController BindingContext="{x:Binding CTRLZaubersprueche}" Expand="True"/>

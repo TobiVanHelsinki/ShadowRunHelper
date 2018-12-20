@@ -15,7 +15,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label x:Name="Headline" HorizontalOptions="Center"/>
-                <Button Text="Back" Clicked="ChangeVis" Grid.Column="1"/>
+                <Button Text="Hide" Clicked="ChangeVis" Grid.Column="1"/>
                 <!--<Button Text="Show/Hide" Clicked="ChangeListVis" Grid.Column="1"/>-->
             </Grid>
             <ListView x:Name="Items" ItemsSource="{x:Binding Data}" BackgroundColor="LightSkyBlue" Grid.Row="1">
