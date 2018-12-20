@@ -1,5 +1,4 @@
 ﻿using ShadowRunHelper;
-using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +14,10 @@ namespace ShadowRunHelperViewer
             //TLIB_Xamarin.Init.Do();
 
             AppHolder.InitModel();
+            if (SettingsModel.I.FIRST_START)
+            {
+                SettingsModel.I.InitSettings();
+            }
 
             MainPage = new MainPage();
         }
