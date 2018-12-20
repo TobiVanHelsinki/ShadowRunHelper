@@ -33,7 +33,6 @@ namespace ShadowRunHelperViewer
                 var Setting = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x=>x.ThingType == Controller.eDataTyp);
                 IsVisible = Setting != null ? Setting.Visibility : true;
                 Headline.Text = TypeHelper.ThingDefToString(Controller.eDataTyp, true);
-                Headline.Text = "Kategorieüberschrift " + DateTime.Now;
             }
             else
             {
@@ -69,9 +68,13 @@ namespace ShadowRunHelperViewer
             Controller = BindingContext as IController;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void ChangeListVis(object sender, EventArgs e)
         {
             Items.IsVisible = !Items.IsVisible;
+        }
+        private void ChangeVis(object sender, EventArgs e)
+        {
+            IsVisible = false;
         }
     }
 }
