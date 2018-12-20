@@ -1,5 +1,8 @@
 ﻿- strings
+-- tech erforscht, aber atm nicht soo wichtig
 - header
-- allg infos
+-- angefangen
+- personen info
+-- angefangen
 - templates für jeden eintrag
 -- expandable einträge

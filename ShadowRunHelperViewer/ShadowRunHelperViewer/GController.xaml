@@ -3,6 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              x:Class="ShadowRunHelperViewer.GController">
+    <ContentView.Resources>
+
+        <DataTemplate x:Key="STDPlate" x:DataType="charmodel:Thing">
+            <ViewCell>
+                <Frame BorderColor="Accent" Padding="0" Margin="0">
+                    <Grid Padding="0" Margin="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Text="{x:Binding Typ}"/>
+                        <Label Grid.Column="1" Text="{x:Binding Bezeichner}"/>
+                        <Label Grid.Column="2" Text="{x:Binding Wert}"/>
+                        <Label Grid.Column="3" Text="{x:Binding Zusatz}"/>
+                        <Label Grid.Row="1" Text="{x:Binding Notiz}"/>
+                    </Grid>
+                </Frame>
+            </ViewCell>
+        </DataTemplate>
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -18,34 +44,7 @@
                 <Button Text="Hide" Clicked="ChangeVis" Grid.Column="1"/>
                 <!--<Button Text="Show/Hide" Clicked="ChangeListVis" Grid.Column="1"/>-->
             </Grid>
-            <ListView x:Name="Items" ItemsSource="{x:Binding Data}" BackgroundColor="LightSkyBlue" Grid.Row="1">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="charmodel:Thing">
-                        <ViewCell>
-                            <Frame BorderColor="Accent" Padding="0" Margin="0">
-                                <Grid Padding="0" Margin="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Label Grid.Column="0" Text="{x:Binding Typ}"/>
-                                    <Label Grid.Column="1" Text="{x:Binding Bezeichner}"/>
-                                    <Label Grid.Column="2" Text="{x:Binding Wert}"/>
-                                    <Label Grid.Column="3" Text="{x:Binding Zusatz}"/>
-                                    <Label Grid.Row="1" Text="{x:Binding Notiz}"/>
-                                </Grid>
-                            </Frame>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-
-            </ListView>
+            <ListView x:Name="Items" ItemsSource="{x:Binding Data}" BackgroundColor="LightYellow" Grid.Row="1" ItemTemplate="{StaticResource STDPlate}"/>
         </Grid>
     </ContentView.Content>
 </ContentView>
