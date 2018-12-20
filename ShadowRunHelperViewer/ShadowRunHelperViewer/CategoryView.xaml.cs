@@ -40,12 +40,24 @@ namespace ShadowRunHelperViewer
                 {
                     item.Children.Clear();
                 }
+                var bs1 = new Button
+                {
+                    Text = "Favorites" + " (" + (BindingContext as CharHolder)?.Favorites?.Count() + ")"
+                };
+                bs1.Clicked += Bs1_Clicked;
+                s1.Children.Add(bs1);
+                var bs2 = new Button
+                {
+                    Text = "Additional Info"
+                };
+                bs2.Clicked += Bs2_Clicked;
+                s1.Children.Add(bs2);
                 foreach (var Category in TypeHelper.ThingTypeProperties.Where(x => x.Usable).OrderBy(x => x.Pivot).ThenBy(x => x.Order))
                 {
                     var gc = Controllers.Children.OfType<GController>().FirstOrDefault(x=>x.Controller.eDataTyp == Category.ThingType);
                     var b = new Button
                     {
-                        Text = PlatformHelper.GetString(Category.DisplayNamePlural) + "(" + gc?.Controller?.GetElements().Count() + ")"
+                        Text = PlatformHelper.GetString(Category.DisplayNamePlural) + " (" + gc?.Controller?.GetElements().Count() + ")"
                     };
                     switch (Category.Pivot)
                     {
@@ -68,6 +80,16 @@ namespace ShadowRunHelperViewer
                     b.Resources.Add("GC",gc);
                 }
             }
+        }
+
+        private void Bs1_Clicked(object sender, EventArgs e)
+        {
+            Favs.IsVisible = !Favs.IsVisible;
+        }
+
+        private void Bs2_Clicked(object sender, EventArgs e)
+        {
+            Notes.IsVisible = !Notes.IsVisible;
         }
 
         private void B_Clicked(object sender, EventArgs e)

@@ -7,16 +7,20 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackLayout Orientation="Horizontal">
-            <Button Text="Choose File" Clicked="ChooseFile"/>
-            <Label Text="{x:Binding AppModel.MainObject.FileInfo.Filename}"/>
-        </StackLayout>
-        <StackLayout Grid.Row="1">
-            <Label Text="{x:Binding AppModel.MainObject.Person.Alias}"/>
-        </StackLayout>
-        <local:CategoryView Grid.Row="2" BindingContext="{x:Binding AppModel.MainObject, Mode=OneWay}"/>
+        <ScrollView>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Choose File" Clicked="ChooseFile"/>
+                <Label Text="{x:Binding AppModel.MainObject.FileInfo.FilePath}"/>
+                <Label Text="{x:Binding AppModel.MainObject.FileInfo.Filename}"/>
+                <Label Text="{x:Binding AppModel.MainObject.Person.Kontostand}"/>
+                <Label Text="{x:Binding AppModel.MainObject.Person.Edge_Aktuell}"/>
+                <Label Text="{x:Binding AppModel.MainObject.Person.Edge_Gesamt}"/>
+                <Label Text="{x:Binding AppModel.MainObject.Person.Karma}"/>
+                <Label Text="{x:Binding AppModel.MainObject.Person.Karma_Gesamt}"/>
+            </StackLayout>
+        </ScrollView>
+        <local:CategoryView Grid.Row="1" BindingContext="{x:Binding AppModel.MainObject, Mode=OneWay}"/>
     </Grid>
 </ContentPage>

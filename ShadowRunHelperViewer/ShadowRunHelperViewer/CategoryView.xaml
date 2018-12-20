@@ -2,8 +2,8 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
-             xmlns:tvs="clr-namespace:Xam.Plugin.TabView;assembly=Xam.Plugin.TabView"
              xmlns:model="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
+             xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              x:Class="ShadowRunHelperViewer.CategoryView"
              x:DataType="model:CharHolder"
              >
@@ -16,14 +16,14 @@
             </Grid.ColumnDefinitions>
             <ScrollView>
                 <StackLayout>
-                    <StackLayout x:Name="s1" HorizontalOptions="Fill" Margin="0,0,0,7"/>
-                    <StackLayout x:Name="s2" HorizontalOptions="Fill"/>
+                    <StackLayout x:Name="s1" Margin="0,0,0,7"/>
+                    <StackLayout x:Name="s2"/>
                 </StackLayout>
             </ScrollView>
             <ScrollView Grid.Column="2">
                 <StackLayout>
-                    <StackLayout x:Name="s3" HorizontalOptions="Fill" Margin="0,0,0,7"/>
-                    <StackLayout x:Name="s4" HorizontalOptions="Fill"/>
+                    <StackLayout x:Name="s3" Margin="0,0,0,7"/>
+                    <StackLayout x:Name="s4"/>
                 </StackLayout>
             </ScrollView>
             <StackLayout Grid.Column="1" x:Name="Controllers">
@@ -56,7 +56,45 @@
                 <local:GController BindingContext="{x:Binding CTRLWandlung}" Expand="True"/>
                 <local:GController BindingContext="{x:Binding CTRLVorteil}" Expand="True"/>
                 <local:GController BindingContext="{x:Binding CTRLNachteil}" Expand="True"/>
-                <Label Text="{x:Binding Person.Notizen}"/>
+                <StackLayout x:Name="Favs" BackgroundColor="LightGoldenrodYellow">
+                    <Label Text="Favorites"/>
+                    <ListView ItemsSource="{x:Binding Favorites}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="charmodel:Thing">
+                                <ViewCell>
+                                    <Frame BorderColor="Accent" Padding="0" Margin="0">
+                                        <Grid Padding="0" Margin="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Column="0" Text="{x:Binding Typ}"/>
+                                            <Label Grid.Column="1" Text="{x:Binding Bezeichner}"/>
+                                            <Label Grid.Column="2" Text="{x:Binding Wert}"/>
+                                            <Label Grid.Column="3" Text="{x:Binding Zusatz}"/>
+                                            <Label Grid.Row="1" Text="{x:Binding Notiz}"/>
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <ScrollView x:Name="Notes">
+                    <StackLayout>
+                        <Label Text="{x:Binding Person.Notizen}" BackgroundColor="AntiqueWhite"/>
+                        <Grid x:Name="PersonArray">
+                            <!--TODO-->
+                            <Label Text="{x:Binding Person.Alias}"/>
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
             </StackLayout>
         </Grid>
     </ContentView.Content>
