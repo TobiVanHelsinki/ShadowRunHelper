@@ -1,37 +1,80 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
+             xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Resources>
+        <ContentPage x:Key="d" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:common="clr-namespace:MyApp;assembly=MyApp"
+             >
+            <StackLayout>
+                <Label>sdfdsfd</Label>
+            </StackLayout>
+        </ContentPage>
+        <Style x:Key="TemplateGrid" TargetType="Grid">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <Style x:Key="TemplateStack" TargetType="StackLayout">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <ControlTemplate x:Key="Thing_H_Left">
+            <StackLayout Style="{StaticResource TemplateStack}">
+                <Label Text="Typ"/>
+                <Label Text="Bezeichner"/>
+            </StackLayout>
+        </ControlTemplate>
+        <ControlTemplate x:Key="Thing_Left" x:DataType="CharModel:Thing">
+            <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
+                <Label Text="{x:Binding Typ}"/>
+                <Label Text="{x:Binding Bezeichner}"/>
+            </StackLayout>
+        </ControlTemplate>
+        <ControlTemplate x:Key="Thing_H_Rigth">
+            <StackLayout Style="{StaticResource TemplateStack}">
+                <Label Text="Zusatz"/>
+                <Label Text="Wert"/>
+            </StackLayout>
+        </ControlTemplate>
+        <ControlTemplate x:Key="Thing_Rigth" x:DataType="CharModel:Thing">
+            <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
+                <Label Text="{x:Binding Wert}"/>
+                <Label Text="{x:Binding Zusatz}"/>
+            </StackLayout>
+        </ControlTemplate>
+        <ControlTemplate x:Key="Thing_H">
+            <Grid Style="{StaticResource TemplateGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_H_Left}"/>
+                <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_H_Rigth}"/>
+            </Grid>
+        </ControlTemplate>
 
-        <DataTemplate x:Key="STDPlate" x:DataType="charmodel:Thing">
+        <DataTemplate x:Key="Thing" x:DataType="CharModel:Thing">
             <ViewCell>
-                <Frame BorderColor="Accent" Padding="0" Margin="0">
-                    <Grid Padding="0" Margin="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Label Grid.Column="0" Text="{x:Binding Typ}"/>
-                        <Label Grid.Column="1" Text="{x:Binding Bezeichner}"/>
-                        <Label Grid.Column="2" Text="{x:Binding Wert}"/>
-                        <Label Grid.Column="3" Text="{x:Binding Zusatz}"/>
-                        <Label Grid.Row="1" Text="{x:Binding Notiz}"/>
-                    </Grid>
-                </Frame>
+                <Grid Style="{StaticResource TemplateGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Left}"/>
+                    <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Rigth}"/>
+                </Grid>
             </ViewCell>
         </DataTemplate>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -44,7 +87,8 @@
                 <Button Text="Hide" Clicked="ChangeVis" Grid.Column="1"/>
                 <!--<Button Text="Show/Hide" Clicked="ChangeListVis" Grid.Column="1"/>-->
             </Grid>
-            <ListView x:Name="Items" ItemsSource="{x:Binding Data}" BackgroundColor="LightYellow" Grid.Row="1" ItemTemplate="{StaticResource STDPlate}"/>
+            <ContentView Grid.Row="1" ControlTemplate="{StaticResource Thing_H}"/>
+            <ListView x:Name="Items" ItemsSource="{x:Binding Data}" BackgroundColor="LightYellow" Grid.Row="2" ItemTemplate="{StaticResource Thing}"/>
         </Grid>
     </ContentView.Content>
 </ContentView>

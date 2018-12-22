@@ -76,5 +76,30 @@ namespace ShadowRunHelperViewer
         {
             IsVisible = false;
         }
+
+        private void Grid_BindingContextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tEST(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Outer(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Viewzell(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ViewCell_Appearing(object sender, EventArgs e)
+        {
+
+        }
     }
 }
