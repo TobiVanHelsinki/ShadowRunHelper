@@ -7,6 +7,7 @@ using Xamarin.Forms.Xaml;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using ShadowRunHelper.Model;
+using PropertyChangingEventArgs = Xamarin.Forms.PropertyChangingEventArgs;
 
 namespace ShadowRunHelperViewer
 {
@@ -30,6 +31,10 @@ namespace ShadowRunHelperViewer
         {
             if (Controller != null)
             {
+                Resources.TryGetValue(TypeHelper.ThingDefToString(Controller.eDataTyp, false), out object X);
+                CurrentTemplate = X as DataTemplate;
+                Items.ItemTemplate = CurrentTemplate ?? FallbackTemplate;
+
                 var Setting = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x=>x.ThingType == Controller.eDataTyp);
                 IsVisible = Setting != null ? Setting.Visibility : true;
                 Headline.Text = TypeHelper.ThingDefToString(Controller.eDataTyp, true);
@@ -56,9 +61,14 @@ namespace ShadowRunHelperViewer
             }
         }
 
+        DataTemplate CurrentTemplate;
+        private readonly DataTemplate FallbackTemplate;
         public GController()
-		{
-			InitializeComponent();
+        {
+            InitializeComponent();
+            Resources.TryGetValue("Fallback", out object X);
+            FallbackTemplate = X as DataTemplate;
+
             OnControllerChanged();
             BindingContextChanged += GController_BindingContextChanged;
         }
@@ -77,29 +87,18 @@ namespace ShadowRunHelperViewer
             IsVisible = false;
         }
 
-        private void Grid_BindingContextChanged(object sender, EventArgs e)
+        private void ViewCell_Tapped(object sender, EventArgs e)
         {
-
-        }
-
-        private void tEST(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Outer(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Viewzell(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ViewCell_Appearing(object sender, EventArgs e)
-        {
-
+            if (sender is Element el2)
+            {
+                if (el2.FindByName("Extendet") is View cv)
+                {
+                    //cv.IsVisible = !cv.IsVisible;
+                    //cv.HeightRequest = cv.HeightRequest == 0 ? 20 : 0;
+                    //cv.ControlTemplate = cv.ControlTemplate == CurrentTemplate ? null : CurrentTemplate;
+                }
+            }
         }
     }
+
 }

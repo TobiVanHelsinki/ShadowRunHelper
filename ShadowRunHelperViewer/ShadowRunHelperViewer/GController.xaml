@@ -4,14 +4,6 @@
              xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Resources>
-        <ContentPage x:Key="d" xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:common="clr-namespace:MyApp;assembly=MyApp"
-             >
-            <StackLayout>
-                <Label>sdfdsfd</Label>
-            </StackLayout>
-        </ContentPage>
         <Style x:Key="TemplateGrid" TargetType="Grid">
             <Setter Property="Margin" Value="0"/>
             <Setter Property="Padding" Value="0"/>
@@ -21,6 +13,7 @@
             <Setter Property="Margin" Value="0"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
+        
         <ControlTemplate x:Key="Thing_H_Left">
             <StackLayout Style="{StaticResource TemplateStack}">
                 <Label Text="Typ"/>
@@ -33,6 +26,7 @@
                 <Label Text="{x:Binding Bezeichner}"/>
             </StackLayout>
         </ControlTemplate>
+
         <ControlTemplate x:Key="Thing_H_Rigth">
             <StackLayout Style="{StaticResource TemplateStack}">
                 <Label Text="Zusatz"/>
@@ -45,6 +39,7 @@
                 <Label Text="{x:Binding Zusatz}"/>
             </StackLayout>
         </ControlTemplate>
+        
         <ControlTemplate x:Key="Thing_H">
             <Grid Style="{StaticResource TemplateGrid}">
                 <Grid.ColumnDefinitions>
@@ -56,17 +51,70 @@
                 <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_H_Rigth}"/>
             </Grid>
         </ControlTemplate>
+        <ControlTemplate x:Key="Thing" x:DataType="CharModel:Thing">
+            <Grid Style="{StaticResource TemplateGrid}" BindingContext="{TemplateBinding BindingContext}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Left}"/>
+                <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Rigth}"/>
+            </Grid>
+        </ControlTemplate>
 
-        <DataTemplate x:Key="Thing" x:DataType="CharModel:Thing">
-            <ViewCell>
+        <DataTemplate x:Key="Fallback" x:DataType="CharModel:Thing">
+            <ViewCell Tapped="ViewCell_Tapped">
+                <ContentView ControlTemplate="{StaticResource Thing}"/>
+            </ViewCell>
+        </DataTemplate>
+        <DataTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
+            <ViewCell Tapped="ViewCell_Tapped">
                 <Grid Style="{StaticResource TemplateGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Left}"/>
-                    <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Rigth}"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ContentView Grid.ColumnSpan="2" ControlTemplate="{StaticResource Thing}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="SchadenTyp"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding SchadenTyp}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="DK"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{x:Binding DKCalced}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Praezision"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{x:Binding PraezisionCalced}"/>
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+        <DataTemplate x:Key="Nahkampfwaffe" x:DataType="CharModel:Nahkampfwaffe">
+            <ViewCell Tapped="ViewCell_Tapped">
+                <Grid Style="{StaticResource TemplateGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ContentView Grid.ColumnSpan="2" ControlTemplate="{StaticResource Thing}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="SchadenTyp"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding SchadenTyp}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="DK"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{x:Binding DKCalced}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Reichweite"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{x:Binding Reichweite}"/>
                 </Grid>
             </ViewCell>
         </DataTemplate>
@@ -88,7 +136,9 @@
                 <!--<Button Text="Show/Hide" Clicked="ChangeListVis" Grid.Column="1"/>-->
             </Grid>
             <ContentView Grid.Row="1" ControlTemplate="{StaticResource Thing_H}"/>
-            <ListView x:Name="Items" ItemsSource="{x:Binding Data}" BackgroundColor="LightYellow" Grid.Row="2" ItemTemplate="{StaticResource Thing}"/>
+            <ListView x:Name="Items" Grid.Row="2" 
+                      ItemsSource="{x:Binding Data}"
+                      BackgroundColor="LightYellow" HasUnevenRows="True"/>
         </Grid>
     </ContentView.Content>
 </ContentView>

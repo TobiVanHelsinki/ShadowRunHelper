@@ -6,3 +6,5 @@
 -- angefangen
 - templates für jeden eintrag
 -- expandable einträge
+- session änderbares edge und schaden
+-- ein aus klappen der menüleisten
