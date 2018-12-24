@@ -311,8 +311,8 @@ namespace ShadowRunHelper.UI
                 Visibility = Visibility.Collapsed;
                 AppModel.Instance?.RequestNavigation(ProjectPages.Char);
             }
-            ChangeProgress(false);
             Model.CharInProgress = null;
+            ChangeProgress(false);
         }
 
         async void Click_Loeschen_OtherChar(object sender, RoutedEventArgs e)

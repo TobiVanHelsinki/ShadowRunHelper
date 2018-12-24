@@ -31,7 +31,8 @@ namespace ShadowRunHelperViewer
         {
             if (Controller != null)
             {
-                Resources.TryGetValue(TypeHelper.ThingDefToString(Controller.eDataTyp, false), out object X);
+                string key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
+                Resources.TryGetValue(key, out object X);
                 CurrentTemplate = X as DataTemplate;
                 Items.ItemTemplate = CurrentTemplate ?? FallbackTemplate;
 

@@ -16,7 +16,11 @@ namespace ShadowRunHelperViewer
             AppHolder.InitModel();
             if (SettingsModel.I.FIRST_START)
             {
+#if DEBUG
+                //SettingsModel.I.InitSettings(); //TODO incomment when not testing
+#else
                 SettingsModel.I.InitSettings();
+#endif
             }
 
             MainPage = new MainPage();

@@ -12,6 +12,8 @@ namespace ShadowRunHelperViewer.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Init.Do();
+            TLIB_Xamarin.Init.Do();
+            TAPPLICATION_Xamarin.Init.Do();
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
