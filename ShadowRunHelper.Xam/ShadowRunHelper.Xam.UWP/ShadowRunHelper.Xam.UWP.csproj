@@ -183,11 +183,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="TAPPLICATION">
-      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\$(Configuration)\netstandard1.0\TAPPLICATION.dll</HintPath>
+    <Reference Include="TAPPLICATION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\TLIB\OutgoingReferences\TAPPLICATION.dll</HintPath>
     </Reference>
-    <Reference Include="TLIB">
-      <HintPath>..\..\..\TLIB\TLIB\bin\$(Configuration)\netstandard1.0\TLIB.dll</HintPath>
+    <Reference Include="TLIB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\TLIB\OutgoingReferences\TLIB.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="..\..\FeaturesUWP\FeaturesUWP.projitems" Label="Shared" />

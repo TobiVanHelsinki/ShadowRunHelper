@@ -22,10 +22,10 @@
 
   <ItemGroup>
     <Reference Include="TAPPLICATION">
-      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Release\netstandard1.0\TAPPLICATION.dll</HintPath>
+      <HintPath>..\..\..\TLIB\OutgoingReferences\TAPPLICATION.dll</HintPath>
     </Reference>
     <Reference Include="TLIB">
-      <HintPath>..\..\..\TLIB\TLIB\bin\Release\netstandard1.0\TLIB.dll</HintPath>
+      <HintPath>..\..\..\TLIB\OutgoingReferences\TLIB.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -51,6 +51,21 @@
     <EmbeddedResource Update="GController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="CategoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="GController.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
   </ItemGroup>
 
   <Import Project="..\..\..\TLIB\TAPPLICATION_Xamarin\TAPPLICATION_Xamarin.projitems" Label="Shared" />

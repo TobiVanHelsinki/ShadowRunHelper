@@ -17,10 +17,10 @@
 
   <ItemGroup>
     <Reference Include="TAPPLICATION">
-      <HintPath>..\..\TLIB\TAPPLICATION\bin\Release\netstandard1.0\TAPPLICATION.dll</HintPath>
+      <HintPath>..\..\TLIB\OutgoingReferences\TAPPLICATION.dll</HintPath>
     </Reference>
     <Reference Include="TLIB">
-      <HintPath>..\..\TLIB\TAPPLICATION\bin\Release\netstandard1.0\TLIB.dll</HintPath>
+      <HintPath>..\..\TLIB\OutgoingReferences\TLIB.dll</HintPath>
     </Reference>
   </ItemGroup>
 

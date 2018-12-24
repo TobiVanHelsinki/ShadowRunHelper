@@ -54,14 +54,15 @@
     <ProjectReference Include="..\..\SharedCode\SharedCode.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+   <ItemGroup>
     <Reference Include="TAPPLICATION">
-      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard1.0\TAPPLICATION.dll</HintPath>
+      <HintPath>..\..\..\TLIB\OutgoingReferences\TAPPLICATION.dll</HintPath>
     </Reference>
     <Reference Include="TLIB">
-      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\Debug\netstandard1.0\TLIB.dll</HintPath>
+      <HintPath>..\..\..\TLIB\OutgoingReferences\TLIB.dll</HintPath>
     </Reference>
   </ItemGroup>
+
 
   <ItemGroup>
     <None Update="App.xaml">
@@ -80,6 +81,5 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
-
   <Import Project="..\..\..\TLIB\TAPPLICATION_Xamarin\TAPPLICATION_Xamarin.projitems" Label="Shared" />
 </Project>

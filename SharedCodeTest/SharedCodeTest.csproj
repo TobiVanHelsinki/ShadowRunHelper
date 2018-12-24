@@ -18,10 +18,10 @@
 
   <ItemGroup>
     <Reference Include="TAPPLICATION">
-      <HintPath>..\..\TLIB\TAPPLICATION\bin\$(Configuration)\netstandard1.0\TAPPLICATION.dll</HintPath>
+      <HintPath>..\..\TLIB\OutgoingReferences\TAPPLICATION.dll</HintPath>
     </Reference>
     <Reference Include="TLIB">
-      <HintPath>..\..\TLIB\TLIB\bin\$(Configuration)\netstandard1.0\TLIB.dll</HintPath>
+      <HintPath>..\..\TLIB\OutgoingReferences\TLIB.dll</HintPath>
     </Reference>
     <Reference Include="TLIB_CORE">
       <HintPath>..\..\TLIB\TLIB_CORE\bin\$(Configuration)\netcoreapp2.1\TLIB_CORE.dll</HintPath>

@@ -411,14 +411,13 @@
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
+ <ItemGroup>
     <Reference Include="TAPPLICATION">
-      <HintPath>..\..\TLIB\TAPPLICATION\bin\$(Configuration)\netstandard1.0\TAPPLICATION.dll</HintPath>
+      <HintPath>..\..\..\TLIB\OutgoingReferences\TAPPLICATION.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="TLIB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\TLIB\TLIB\bin\$(Configuration)\netstandard1.0\TLIB.dll</HintPath>
+    <Reference Include="TLIB">
+      <HintPath>..\..\..\TLIB\OutgoingReferences\TLIB.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

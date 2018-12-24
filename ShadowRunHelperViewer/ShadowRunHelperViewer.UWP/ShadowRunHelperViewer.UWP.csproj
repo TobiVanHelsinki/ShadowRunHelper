@@ -190,14 +190,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="TAPPLICATION">
-      <HintPath>..\..\..\TLIB\TAPPLICATION\bin\$(Configuration)\netstandard1.0\TAPPLICATION.dll</HintPath>
-    </Reference>
-    <Reference Include="TLIB">
-      <HintPath>..\..\..\TLIB\TLIB\bin\$(Configuration)\netstandard1.0\TLIB.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <PRIResource Include="Strings\de\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +197,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ShadowRunHelperViewer.UWP_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="TAPPLICATION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\TLIB\OutgoingReferences\TAPPLICATION.dll</HintPath>
+    </Reference>
+    <Reference Include="TLIB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\TLIB\OutgoingReferences\TLIB.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="..\..\FeaturesUWP\FeaturesUWP.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

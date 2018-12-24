@@ -13,7 +13,7 @@ namespace ShadowRunHelper
         public Task<(List<(string, object)> set, List<(string, string)> files)> Loading { get; set; }
         public async Task<(List<(string, object)> set, List<(string, string)> files)> LoadAppPacket(object FileHandle)
         {
-            return (new List<(string, object)>(), new List<(string, string)> ());
+            return (new List<(string, object)>(), new List<(string, string)>());
         }
 
         public List<string> Forbidden { get; set; } = new List<string>() { "I", "Instance", "LastAppVersion", "LastSaveInfo", "LastPage", "ORDNERMODE", "ORDNERMODE_PFAD" };
@@ -25,7 +25,7 @@ namespace ShadowRunHelper
             //Import Settings
             try
             {
-                foreach (var item in set.Join(SettingsModel.I.GetType().GetProperties(), s=>s.Item1, s=>s.Name, (NEW, OLD)=>(NEW,OLD)))
+                foreach (var item in set.Join(SettingsModel.I.GetType().GetProperties(), s => s.Item1, s => s.Name, (NEW, OLD) => (NEW, OLD)))
                 {
                     if (Forbidden.Contains(item.NEW.Item1))
                     {
@@ -37,13 +37,15 @@ namespace ShadowRunHelper
                         item.OLD?.SetMethod.Invoke(SettingsModel.I, new object[] { m });
                     }
                     catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+                    {
+                        TAPPLICATION.Debugging.TraceException(ex);
                         ErrorList.Add(item.OLD.Name);
                     }
                 }
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+            {
+                TAPPLICATION.Debugging.TraceException(ex);
             }
             // Import Chars
             try
@@ -55,13 +57,15 @@ namespace ShadowRunHelper
                         await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), item.Item1, CharHolderIO.GetCurrentSavePath()), UserDecision.AskUser);
                     }
                     catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+                    {
+                        TAPPLICATION.Debugging.TraceException(ex);
                         ErrorList.Add(item.Item1);
                     }
                 }
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+            {
+                TAPPLICATION.Debugging.TraceException(ex);
             }
             InProgress = false;
             if (ErrorList.Count != 0)
@@ -76,7 +80,6 @@ namespace ShadowRunHelper
             else
             {
                 Model.AppModel.Instance?.NewNotification(PlatformHelper.GetString("AppImportNoErrors"), false);
-
             }
         }
     }
