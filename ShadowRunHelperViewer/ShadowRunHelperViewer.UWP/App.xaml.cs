@@ -35,6 +35,7 @@ namespace ShadowRunHelperViewer.UWP
             this.Suspending += OnSuspending;
             Init.Do();
             TAPPLICATION_Xamarin.Init.Do();
+            TLIB_Xamarin.Init.Do();
             //TAPPLICATION_UWP.Init.Do();
             //TLIB_UWP.Init.Do();
         }

@@ -411,16 +411,6 @@
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
- <ItemGroup>
-    <Reference Include="TAPPLICATION">
-      <HintPath>..\..\..\TLIB\OutgoingReferences\TAPPLICATION.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="TLIB">
-      <HintPath>..\..\..\TLIB\OutgoingReferences\TLIB.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.Advertising.Xaml, Version=10.0">
       <Name>Microsoft Advertising SDK for XAML</Name>
@@ -428,6 +418,14 @@
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="TAPPLICATION">
+      <HintPath>..\..\TLIB\OutgoingReferences\TAPPLICATION.dll</HintPath>
+    </Reference>
+    <Reference Include="TLIB">
+      <HintPath>..\..\TLIB\OutgoingReferences\TLIB.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="..\FeaturesUWP\FeaturesUWP.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

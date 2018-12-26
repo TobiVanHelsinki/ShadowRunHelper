@@ -197,10 +197,10 @@ namespace ShadowRunHelper.UI
             Summorys.Clear();
             try
             {
-                var List = await CharHolderIO.CurrentIO.GetListofFiles(new FileInfoClass() { Fileplace = CharHolderIO.GetCurrentSavePlace(), Filepath = CharHolderIO.GetCurrentSavePath(), Token = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.ThrowError, Constants.LST_FILETYPES_CHAR);
+                var List = await CharHolderIO.CurrentIO.GetListofFiles(new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), "", CharHolderIO.GetCurrentSavePath()) { Token = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.ThrowError, Constants.LST_FILETYPES_CHAR);
                 foreach (var item in List.OrderByDescending((x) => x.DateModified))
                 {
-                    Summorys.Add(new FileInfoClass() { Filename = item.Filename, DateModified = item.DateModified, Filepath = item.Filepath, Fileplace = item.Fileplace, Size = item.Size });
+                    Summorys.Add(new FileInfoClass(item.Fileplace, item.Filename, item.Filepath) { DateModified = item.DateModified, Size = item.Size });
                 }
             }
             catch (Exception ex)
@@ -244,7 +244,7 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
-            Model.CharInProgress = new FileInfoClass() { Filename = "new Char", Filepath = " sketch" };
+            Model.CharInProgress = new FileInfoClass(Place.Extern, "new Char", " sketch");
             ChangeProgress(true);
             Model.MainObject = CharHolder.CreateCharWithStandardContent();
             SettingsModel.I.COUNT_CREATIONS++;
@@ -383,7 +383,7 @@ namespace ShadowRunHelper.UI
             ChangeProgress(true);
             try
             {
-                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass() { Fileplace = Place.Extern, Filename = CharToSave.FileInfo.Filename, Token = "Export" });
+                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass(Place.Extern, CharToSave.FileInfo.Filename, "") { Token = "Export" });
             }
             catch (Exception ex)
             {

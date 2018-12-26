@@ -73,19 +73,19 @@ namespace ShadowRunHelper.Model
         public List<Thing> ThingList { get; } = new List<Thing>();
         [Newtonsoft.Json.JsonIgnore]
         public ObservableCollection<Thing> Favorites { get; } = new ObservableCollection<Thing>();
-        
+
         #endregion
         #region IO and Display Stuff
 
         [Newtonsoft.Json.JsonIgnore]
-        public FileInfoClass FileInfo { get; set; } = new FileInfoClass();
+        public FileInfoClass FileInfo { get; set; } = new FileInfoClass(Place.NotDefined, "", "");
 
         public string MakeName(bool UseProgress = false)
         {
             if (FileInfo.Token == Constants.ACCESSTOKEN_FILEACTIVATED)
             {
                 // No Name Chanign Allowed when Activated through File
-                return FileInfo.Filename;
+                return FileInfo.Name;
             }
             string strSaveName = "";
 
@@ -108,7 +108,7 @@ namespace ShadowRunHelper.Model
             }
             else
             {
-                strSaveName += FileInfo.Filename;
+                strSaveName += FileInfo.Name;
             }
 
             if (string.IsNullOrEmpty(strSaveName) || string.IsNullOrWhiteSpace(strSaveName))
@@ -346,7 +346,7 @@ namespace ShadowRunHelper.Model
         {
             if (e.PropertyName == nameof(Person.Alias) || e.PropertyName == nameof(Person.Char_Typ))
             {
-                FileInfo.Filename = MakeName(false);
+                FileInfo.Name = MakeName(false);
             }
         }
 
@@ -506,7 +506,7 @@ namespace ShadowRunHelper.Model
             ret.Repair();
             ret.Settings.Refresh();
             ret.RefreshListeners();
-            ret.FileInfo.Filename = ret.MakeName();
+            ret.FileInfo.Name = ret.MakeName();
             return ret;
         }
     }

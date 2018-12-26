@@ -162,8 +162,8 @@ namespace ShadowRunHelper.IO
         }
         public static async Task CopyFileToCurrentLocation(string oldlocation, string oldname, string newname)
         {
-            var TargetFileClass = new FileInfoClass() { Filename = newname, Filepath = GetCurrentSavePath(), Fileplace = GetCurrentSavePlace(), Token = Constants.ACCESSTOKEN_FOLDERMODE };
-            var SourceFileClass = new FileInfoClass() { Filename = oldname, Filepath = oldlocation, Fileplace = Place.Assets };
+            var TargetFileClass = new FileInfoClass(GetCurrentSavePlace(), newname, GetCurrentSavePath());
+            var SourceFileClass = new FileInfoClass(Place.Assets, oldname, oldlocation);
             await CurrentIO.Copy(TargetFileClass, SourceFileClass, UserDecision.ThrowError);
         }
     }
