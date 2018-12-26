@@ -59,7 +59,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Text="{x:Bind Filename, Mode=OneWay}"/>
+                        <TextBlock Grid.Column="0" Text="{x:Bind Name, Mode=OneWay}"/>
                         <StackPanel Grid.Column="1" x:Name="DetailsPanel" Orientation="Horizontal">
                             <TextBlock Text="{x:Bind Size, Mode=OneWay, Converter={StaticResource o_FileSize}}" Style="{StaticResource UnimportandInformation}"/>
                             <TextBlock x:Uid="Slash" Margin="10,0,10,0" Style="{StaticResource UnimportandInformation}"/>
@@ -116,7 +116,7 @@
                 <TextBlock Style="{StaticResource Chars}">
                             <Run x:Uid="Ui_Admin_Filename"/>
                             <Run x:Uid="Doppelpunkt"/>
-                            <Run Text="{x:Bind Model.MainObject.FileInfo.Filename, Mode=OneWay}"/>
+                            <Run Text="{x:Bind Model.MainObject.FileInfo.Name, Mode=OneWay}"/>
                 </TextBlock>
                 <TextBlock x:Uid="SymbolChanges" Visibility="{x:Bind Model.MainObject.HasChanges, Mode=OneWay}"/>
                 <ToolTipService.ToolTip>

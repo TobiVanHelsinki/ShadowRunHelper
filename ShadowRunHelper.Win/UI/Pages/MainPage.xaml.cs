@@ -172,7 +172,7 @@ namespace ShadowRunHelper.UI
             if (Model.IsCharInProgress)
             {
                 //LoadingCharField.Visibility = Visibility.Visible;
-                //LoadingCharField.Text = "Loading " + Model.CharInProgress.Filename;
+                //LoadingCharField.Text = "Loading " + Model.CharInProgress.Name;
                 //TODO
             }
             else
@@ -371,7 +371,7 @@ namespace ShadowRunHelper.UI
                 var i = await SharedIO.Save(Model.MainObject, Info: new FileInfoClass(Place.Extern, Model.MainObject.FileInfo.Name, "") { Token = "Export" });
                 Model.MainObject.FileInfo.Fileplace = i.Fileplace;
                 Model.MainObject.FileInfo.Filepath = i.Filepath;
-                Model.MainObject.FileInfo.Filename = i.Name;
+                Model.MainObject.FileInfo.Name = i.Name;
             }
             catch (Exception ex)
             {

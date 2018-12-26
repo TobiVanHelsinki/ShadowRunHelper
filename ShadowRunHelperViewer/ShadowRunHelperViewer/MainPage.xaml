@@ -13,7 +13,7 @@
             <StackLayout Orientation="Horizontal">
                 <Button Text="Choose File" Clicked="ChooseFile"/>
                 <Label Text="{x:Binding AppModel.MainObject.FileInfo.FilePath}"/>
-                <Label Text="{x:Binding AppModel.MainObject.FileInfo.Filename}"/>
+                <Label Text="{x:Binding AppModel.MainObject.FileInfo.Name}"/>
                 <Label Text="{x:Binding AppModel.MainObject.Person.Kontostand}"/>
                 <Label Text="{x:Binding AppModel.MainObject.Person.Edge_Aktuell}"/>
                 <Label Text="{x:Binding AppModel.MainObject.Person.Edge_Gesamt}"/>

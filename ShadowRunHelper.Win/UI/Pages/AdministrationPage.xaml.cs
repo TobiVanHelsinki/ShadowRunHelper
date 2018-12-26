@@ -200,7 +200,7 @@ namespace ShadowRunHelper.UI
                 var List = await CharHolderIO.CurrentIO.GetListofFiles(new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), "", CharHolderIO.GetCurrentSavePath()) { Token = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.ThrowError, Constants.LST_FILETYPES_CHAR);
                 foreach (var item in List.OrderByDescending((x) => x.DateModified))
                 {
-                    Summorys.Add(new FileInfoClass(item.Fileplace, item.Filename, item.Filepath) { DateModified = item.DateModified, Size = item.Size });
+                    Summorys.Add(new FileInfoClass(item.Fileplace, item.Name, item.Filepath) { DateModified = item.DateModified, Size = item.Size });
                 }
             }
             catch (Exception ex)
@@ -359,7 +359,7 @@ namespace ShadowRunHelper.UI
 
             Input dialog = new Input
             {
-                InputValue = OldFile.Filename.Remove(OldFile.Filename.Length - Constants.DATEIENDUNG_CHAR.Length, Constants.DATEIENDUNG_CHAR.Length)
+                InputValue = OldFile.Name.Remove(OldFile.Name.Length - Constants.DATEIENDUNG_CHAR.Length, Constants.DATEIENDUNG_CHAR.Length)
             };
             await dialog.ShowAsync();
             if (dialog.InputValue != null)
@@ -383,7 +383,7 @@ namespace ShadowRunHelper.UI
             ChangeProgress(true);
             try
             {
-                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass(Place.Extern, CharToSave.FileInfo.Filename, "") { Token = "Export" });
+                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass(Place.Extern, CharToSave.FileInfo.Name, "") { Token = "Export" });
             }
             catch (Exception ex)
             {
