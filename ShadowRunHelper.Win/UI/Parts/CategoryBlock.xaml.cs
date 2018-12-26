@@ -171,7 +171,8 @@ namespace ShadowRunHelper.UI
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             try
             {
-                strRead = (await SharedIO.CurrentIO.LoadFileContent(new FileInfoClass(Place.Extern,"","") { Token = "import"}, Constants.LST_FILETYPES_CSV, UserDecision.AskUser)).strFileContent;
+                var file = await SharedIO.CurrentIO.FilePicker(Constants.LST_FILETYPES_CSV);
+                strRead = await SharedIO.CurrentIO.LoadFileContent(file);
             }
             catch (IsOKException ex)
             {

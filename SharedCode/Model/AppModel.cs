@@ -29,12 +29,12 @@ namespace ShadowRunHelper.Model
                 var BackUpFile = new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), FileName, CharHolderIO.GetCurrentSavePath()+BackUpFolderName);
                 try
                 {
-                    var T = CharHolderIO.CurrentIO.GetFileInfo(BackUpFile, UserDecision.ThrowError);
-                    T.Wait();
-                    if (T.Result == null)
+                    //var T = CharHolderIO.CurrentIO.GetFileInfo(BackUpFile, UserDecision.ThrowError);
+                    //T.Wait();
+                    if (/*T.Result == null*/ BackUpFile.SystemFileInfo?.Exists != true)
                     {
                         System.Diagnostics.Debug.WriteLine("SaveBackUp " + e.ToString());
-                        T = CharHolderIO.Save(e, UserDecision.ThrowError, BackUpFile);
+                        var T = CharHolderIO.Save(e, UserDecision.ThrowError, BackUpFile);
                         T.Wait();
                     }
                 }

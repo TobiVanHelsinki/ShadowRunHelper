@@ -1,5 +1,6 @@
 ﻿using ShadowRunHelper.Model;
 using System;
+using System.IO;
 using TAPPLICATION;
 using TAPPLICATION.IO;
 using TAPPLICATION.Model;
@@ -140,8 +141,8 @@ namespace ShadowRunHelper
                 var b = SharedSettingsModel.Instance.INTERN_SYNC;
                 var localpath = SharedIO.CurrentIO.GetCompleteInternPath(Place.Local);
                 var roampath = SharedIO.CurrentIO.GetCompleteInternPath(Place.Roaming);
-                var t = new FileInfoClass(b ? Place.Roaming : Place.Local, "", (b ? roampath : localpath) + SharedConstants.INTERN_SAVE_CONTAINER + @"\");
-                var s = new FileInfoClass(b ? Place.Local : Place.Roaming, "", (b ? localpath : roampath) + SharedConstants.INTERN_SAVE_CONTAINER + @"\");
+                var t = new DirectoryInfo((b ? roampath : localpath) + SharedConstants.INTERN_SAVE_CONTAINER + @"\");
+                var s = new DirectoryInfo((b ? localpath : roampath) + SharedConstants.INTERN_SAVE_CONTAINER + @"\");
                 await SharedIO.CurrentIO.MoveAllFiles(t, s);
             }
             catch (Exception ex)
@@ -157,11 +158,12 @@ namespace ShadowRunHelper
                 try
                 {
                     var info = new FileInfoClass(Place.Extern, "", "") { Token = Constants.ACCESSTOKEN_FOLDERMODE };
-                    var folder = await SharedIO.CurrentIO.GetFolderInfo(info, UserDecision.AskUser);
-                    SharedSettingsModel.I.FOLDERMODE_PATH = folder.Filepath;
+                    var folder = await SharedIO.CurrentIO.FolderPicker();
+                    SharedSettingsModel.I.FOLDERMODE_PATH = folder.FullName;
                 }
                 catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+                {
+                    TAPPLICATION.Debugging.TraceException(ex);
                     SharedSettingsModel.Instance.FOLDERMODE = false;
                     return;
                 }
@@ -172,8 +174,8 @@ namespace ShadowRunHelper
 
                 var internpath = SharedIO.CurrentIO.GetCompleteInternPath(InternRoam ? Place.Roaming : Place.Local) + SharedConstants.INTERN_SAVE_CONTAINER + @"\";
                 var externpath = SharedSettingsModel.Instance.FOLDERMODE_PATH;
-                var t = new FileInfoClass(FolderMode ? Place.Extern : (InternRoam ? Place.Roaming : Place.Local), "", (FolderMode ? externpath : internpath));
-                var s = new FileInfoClass(!FolderMode ? Place.Extern : (InternRoam ? Place.Roaming : Place.Local), "", (!FolderMode ? externpath : internpath));
+                var t = new DirectoryInfo(FolderMode ? externpath : internpath);
+                var s = new DirectoryInfo(!FolderMode ? externpath : internpath);
                 await SharedIO.CurrentIO.MoveAllFiles(t, s, Constants.LST_FILETYPES_CHAR);
             }
             catch (IsOKException)

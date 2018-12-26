@@ -2,6 +2,7 @@
 using ShadowRunHelper.IO;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -58,10 +59,11 @@ namespace ShadowRunHelper
                 {
                     try
                     {
-                        await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), item.Item1, CharHolderIO.GetCurrentSavePath()), UserDecision.AskUser);
+                        await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfo(CharHolderIO.GetCurrentSavePath()+ item.Item1));
                     }
                     catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ {
+                        TAPPLICATION.Debugging.TraceException(ex);
                         ErrorList.Add(item.Item1);
                     }
                 }

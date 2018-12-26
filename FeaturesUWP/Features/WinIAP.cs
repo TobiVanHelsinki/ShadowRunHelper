@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using TAPPLICATION.IO;
 using TLIB;
@@ -40,11 +41,16 @@ namespace ShadowRunHelper
             }
             if (!Constants.IAP_HIDEADS)
             {
-                var Info = await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass(Place.Local, "", SharedIO.CurrentIO.GetCompleteInternPath(Place.Local) + @"noads\"), UserDecision.ThrowError);
-                if (Info != null)
+                var b = new FileInfo(SharedIO.CurrentIO.GetCompleteInternPath(Place.Local) + @"noads\").Exists;
+                if (b)
                 {
                     Constants.IAP_HIDEADS = true;
                 }
+                //var Info = await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass(Place.Local, "", SharedIO.CurrentIO.GetCompleteInternPath(Place.Local) + @"noads\"), UserDecision.ThrowError);
+                //if (Info != null)
+                //{
+                //    Constants.IAP_HIDEADS = true;
+                //}
             }
         }
 

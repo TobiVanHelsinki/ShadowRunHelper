@@ -6,6 +6,7 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TAPPLICATION;
@@ -144,7 +145,7 @@ namespace ShadowRunHelper.IO
         }
         public static async Task CopyPreSavedCharToCurrentLocation(PreSavedChar chartype)
         {
-            string pap = CurrentIO.GetCompleteInternPath(Place.Assets);
+            string pap = await CurrentIO.GetCompleteInternPath(Place.Assets);
 
             switch (chartype)
             {
@@ -162,9 +163,9 @@ namespace ShadowRunHelper.IO
         }
         public static async Task CopyFileToCurrentLocation(string oldlocation, string oldname, string newname)
         {
-            var TargetFileClass = new FileInfoClass(GetCurrentSavePlace(), newname, GetCurrentSavePath());
-            var SourceFileClass = new FileInfoClass(Place.Assets, oldname, oldlocation);
-            await CurrentIO.Copy(TargetFileClass, SourceFileClass, UserDecision.ThrowError);
+            var Target = new FileInfo(GetCurrentSavePath() + newname);
+            var Source  = new FileInfo(oldlocation+ oldname);
+            await CurrentIO.CopyTo(Target, Source);
         }
     }
 }

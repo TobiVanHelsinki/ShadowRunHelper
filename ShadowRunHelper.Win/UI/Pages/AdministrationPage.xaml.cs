@@ -5,6 +5,7 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -197,10 +198,11 @@ namespace ShadowRunHelper.UI
             Summorys.Clear();
             try
             {
-                var List = await CharHolderIO.CurrentIO.GetListofFiles(new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), "", CharHolderIO.GetCurrentSavePath()) { Token = Constants.ACCESSTOKEN_FOLDERMODE }, UserDecision.ThrowError, Constants.LST_FILETYPES_CHAR);
-                foreach (var item in List.OrderByDescending((x) => x.DateModified))
+                var List = await CharHolderIO.CurrentIO.GetListofFiles(new DirectoryInfo(CharHolderIO.GetCurrentSavePath()), Constants.LST_FILETYPES_CHAR);
+                foreach (var item in List.OrderByDescending((x) => x.LastWriteTime))
                 {
-                    Summorys.Add(new FileInfoClass(item.Fileplace, item.Name, item.Filepath) { DateModified = item.DateModified, Size = item.Size });
+                    //Summorys.Add(new FileInfoClass(item.Fileplace, item.Name, item.Filepath) { DateModified = item.DateModified, Size = item.Size });
+                    Summorys.Add(item);
                 }
             }
             catch (Exception ex)
@@ -230,7 +232,7 @@ namespace ShadowRunHelper.UI
         void Click_OpenSTDFolder(object sender, RoutedEventArgs e)
         {
             ChangeProgress(true);
-            SharedIO.CurrentIO.OpenFolder(new FileInfoClass(SharedIO.GetCurrentSavePlace(), "", SharedIO.GetCurrentSavePath()));
+            SharedIO.CurrentIO.OpenFolder(new DirectoryInfo(SharedIO.GetCurrentSavePath()));
             ChangeProgress(false);
         }
 
@@ -409,8 +411,8 @@ namespace ShadowRunHelper.UI
                 ChangeProgress(true);
                 try
                 {
-                    var TargetInfo = await SharedIO.CurrentIO.GetFolderInfo(new FileInfoClass(Place.Extern) { Token = "EXPORT"});
-                    var SourceInfo = new FileInfoClass(SharedIO.GetCurrentSavePlace(), "", SharedIO.GetCurrentSavePath());
+                    var TargetInfo = await SharedIO.CurrentIO.FolderPicker();
+                    var SourceInfo = new DirectoryInfo(SharedIO.GetCurrentSavePath());
                     await SharedIO.CurrentIO.CopyAllFiles(TargetInfo, SourceInfo);
                 }
                 catch (Exception ex)
