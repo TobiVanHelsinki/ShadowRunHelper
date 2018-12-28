@@ -123,7 +123,7 @@
                 <ToolTipService.ToolTip>
                     <TextBlock Style="{StaticResource Chars}">
                             <Run x:Uid="Ui_Admin_Filepath"/><Run x:Uid="Doppelpunkt"/>
-                            <Run Text="{x:Bind Model.MainObject.FileInfo.Filepath, Mode=OneWay}"/>
+                            <Run Text="{x:Bind Model.MainObject.FileInfo.Directory.FullName, Mode=OneWay}"/>
                     </TextBlock>
                 </ToolTipService.ToolTip>
             </StackPanel>

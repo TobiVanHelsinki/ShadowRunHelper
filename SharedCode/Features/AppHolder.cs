@@ -183,7 +183,7 @@ namespace ShadowRunHelper
         public static void App_UnhandledException(string Message, Exception ex)
         {
             Settings.LAST_SAVE_INFO = null;
-            Model.MainObject.FileInfo.Name = "EmergencySave" + Model.MainObject.FileInfo.Name;
+            Model.MainObject.FileInfo.ChangeName("EmergencySave" + Model.MainObject.FileInfo.Name);
             SharedIO.SaveAtOriginPlace(Model.MainObject).Wait();
             var param = new Dictionary<string, string>
             {

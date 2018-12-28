@@ -3,6 +3,7 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -368,10 +369,12 @@ namespace ShadowRunHelper.UI
         {
             try
             {
-                var i = await SharedIO.Save(Model.MainObject, Info: new CustomFileInfo(Place.Extern, Model.MainObject.FileInfo.Name, "") { Token = "Export" });
-                Model.MainObject.FileInfo.Fileplace = i.Fileplace;
-                Model.MainObject.FileInfo.Filepath = i.Filepath;
-                Model.MainObject.FileInfo.Name = i.Name;
+
+                var Folder = await SharedIO.CurrentIO.PickFolder("Export"); //TODO wie lange soll dieses token gelten?
+                var File = new FileInfo(Folder.FullName + Model.MainObject.FileInfo.Name);
+                FileInfo SavePlace = await SharedIO.Save(Model.MainObject, Info: File);
+                Model.MainObject.FileInfo = SavePlace;
+                Model.MainObject.FileInfo.Fileplace = Place.Extern;
             }
             catch (Exception ex)
             {

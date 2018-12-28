@@ -346,7 +346,7 @@ namespace ShadowRunHelper.Model
         {
             if (e.PropertyName == nameof(Person.Alias) || e.PropertyName == nameof(Person.Char_Typ))
             {
-                FileInfo.Name = MakeName(false);
+                FileInfo.ChangeName(MakeName(false));
             }
         }
 
@@ -506,7 +506,7 @@ namespace ShadowRunHelper.Model
             ret.Repair();
             ret.Settings.Refresh();
             ret.RefreshListeners();
-            ret.FileInfo.Name = ret.MakeName();
+            ret.FileInfo.ChangeName(ret.MakeName());
             return ret;
         }
     }
