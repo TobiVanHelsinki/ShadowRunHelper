@@ -14,7 +14,7 @@ namespace ShadowRunHelper.UI.Converter
             {
                 DT = (DateTime)value;
             }
-            else if(value is DateTimeOffset)
+            else if (value is DateTimeOffset)
             {
                 DT = (DateTimeOffset)value;
             }
@@ -22,11 +22,11 @@ namespace ShadowRunHelper.UI.Converter
             {
                 return "---";
             }
-          
+
             string retdate = DT.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
             string rettime = DT.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern);
 
-            return retdate + (parameter as string == "Break" ? "\n" :" ") +  rettime;
+            return retdate + (parameter as string == "Break" ? "\n" : " ") + rettime;
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {

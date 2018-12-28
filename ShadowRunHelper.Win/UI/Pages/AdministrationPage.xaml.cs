@@ -28,7 +28,7 @@ namespace ShadowRunHelper.UI
 
         #endregion
         readonly AppModel Model = AppModel.Instance;
-        readonly ObservableCollection<FileInfoClass> Summorys = new ObservableCollection<FileInfoClass>();
+        readonly ObservableCollection<FileInfo> Summorys = new ObservableCollection<FileInfo>();
 
         public AdministrationPage()
         {
@@ -296,7 +296,7 @@ namespace ShadowRunHelper.UI
 
             this.Fade(easingType: EasingType.Sine).StartAsync();
 
-            var file = ((sender as Button).DataContext as FileInfoClass);
+            var file = ((sender as FrameworkElement).DataContext as FileInfo);
             Model.CharInProgress = file;
             ChangeProgress(true);
             try
@@ -385,7 +385,8 @@ namespace ShadowRunHelper.UI
             ChangeProgress(true);
             try
             {
-                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass(Place.Extern, CharToSave.FileInfo.Name, "") { Token = "Export" });
+                var ExportFolder = SharedIO.CurrentIO.PickFolder("Export");
+                await CharHolderIO.Save(CharToSave, Info: new FileInfoClass(Place.Extern, CharToSave.FileInfo.Name, ""));
             }
             catch (Exception ex)
             {
@@ -411,9 +412,9 @@ namespace ShadowRunHelper.UI
                 ChangeProgress(true);
                 try
                 {
-                    var TargetInfo = await SharedIO.CurrentIO.FolderPicker();
+                    var TargetInfo = await SharedIO.CurrentIO.PickFolder();
                     var SourceInfo = new DirectoryInfo(SharedIO.GetCurrentSavePath());
-                    await SharedIO.CurrentIO.CopyAllFiles(TargetInfo, SourceInfo);
+                    await SharedIO.CurrentIO.CopyAllFiles(SourceInfo, TargetInfo);
                 }
                 catch (Exception ex)
                 {

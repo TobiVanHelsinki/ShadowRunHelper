@@ -53,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\TLIB\TAPPLICATION_Xamarin\TAPPLICATION_Xamarin.csproj" />
     <ProjectReference Include="..\..\SharedCode\SharedCode.csproj" />
   </ItemGroup>
 
@@ -83,5 +84,4 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="..\..\..\TLIB\TAPPLICATION_Xamarin\TAPPLICATION_Xamarin.projitems" Label="Shared" />
 </Project>

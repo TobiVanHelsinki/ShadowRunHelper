@@ -143,7 +143,7 @@ namespace ShadowRunHelper
                 var roampath = SharedIO.CurrentIO.GetCompleteInternPath(Place.Roaming);
                 var t = new DirectoryInfo((b ? roampath : localpath) + SharedConstants.INTERN_SAVE_CONTAINER + @"\");
                 var s = new DirectoryInfo((b ? localpath : roampath) + SharedConstants.INTERN_SAVE_CONTAINER + @"\");
-                await SharedIO.CurrentIO.MoveAllFiles(t, s);
+                await SharedIO.CurrentIO.MoveAllFiles(s, t);
             }
             catch (Exception ex)
             {
@@ -157,8 +157,7 @@ namespace ShadowRunHelper
             {
                 try
                 {
-                    var info = new FileInfoClass(Place.Extern, "", "") { Token = Constants.ACCESSTOKEN_FOLDERMODE };
-                    var folder = await SharedIO.CurrentIO.FolderPicker();
+                    var folder = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_FOLDERMODE);
                     SharedSettingsModel.I.FOLDERMODE_PATH = folder.FullName;
                 }
                 catch (Exception ex)
@@ -167,23 +166,23 @@ namespace ShadowRunHelper
                     SharedSettingsModel.Instance.FOLDERMODE = false;
                     return;
                 }
-            }
-            try
-            {
-                var InternRoam = SharedSettingsModel.Instance.INTERN_SYNC;
+                try //copy all data from prev folder to current
+                {
+                    var InternRoam = SharedSettingsModel.Instance.INTERN_SYNC;
 
-                var internpath = SharedIO.CurrentIO.GetCompleteInternPath(InternRoam ? Place.Roaming : Place.Local) + SharedConstants.INTERN_SAVE_CONTAINER + @"\";
-                var externpath = SharedSettingsModel.Instance.FOLDERMODE_PATH;
-                var t = new DirectoryInfo(FolderMode ? externpath : internpath);
-                var s = new DirectoryInfo(!FolderMode ? externpath : internpath);
-                await SharedIO.CurrentIO.MoveAllFiles(t, s, Constants.LST_FILETYPES_CHAR);
-            }
-            catch (IsOKException)
-            {
-            }
-            catch (Exception ex)
-            {
-                AppModel.Instance?.NewNotification(PlatformHelper.GetString("Error_CopyFiles"), ex);
+                    var internpath = SharedIO.CurrentIO.GetCompleteInternPath(InternRoam ? Place.Roaming : Place.Local) + SharedConstants.INTERN_SAVE_CONTAINER + @"\";
+                    var externpath = SharedSettingsModel.Instance.FOLDERMODE_PATH;
+                    var t = new DirectoryInfo(FolderMode ? externpath : internpath);
+                    var s = new DirectoryInfo(!FolderMode ? externpath : internpath);
+                    await SharedIO.CurrentIO.MoveAllFiles(s, t, Constants.LST_FILETYPES_CHAR);
+                }
+                catch (IsOKException)
+                {
+                }
+                catch (Exception ex)
+                {
+                    AppModel.Instance?.NewNotification(PlatformHelper.GetString("Error_CopyFiles"), ex);
+                }
             }
         }
         #endregion

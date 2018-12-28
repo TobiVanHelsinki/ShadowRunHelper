@@ -2,12 +2,14 @@
 using Newtonsoft.Json.Linq;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-
+using SharedCode.Properties;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Threading.Tasks;
 using TAPPLICATION;
 using TAPPLICATION.IO;
@@ -50,14 +52,22 @@ namespace ShadowRunHelper.IO
             throw new NotImplementedException();
         }
     }
-
     public class CharHolderIO : SharedIO<CharHolder>
     {
+        public static void CustomErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
+        {
+            //if (AppModel.Instance?.lstNotifications.Contains(JSON_Error_Notification) == false)
+            //{
+            //    AppModel.Instance?.lstNotifications.Insert(0, JSON_Error_Notification);
+            //}
+            //JSON_Error_Notification.Message += "\n\t" + a.ErrorContext.Path;
+            a.ErrorContext.Handled = true;
+        }
         internal static CharHolder ConvertWithRightVersion(string strAppVersion, string strFileVersion, string fileContent)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings()
             {
-                Error = ErrorHandler,
+                Error = CustomErrorHandler,
                 PreserveReferencesHandling = PreserveReferencesHandling.All
             };
             settings.Converters.Add(new UnknownThingConverter());
@@ -143,23 +153,40 @@ namespace ShadowRunHelper.IO
             ExampleChar = 1,
             PreDBChar = 2,
         }
+        private static string FormatResourceName(Assembly assembly, string resourceName)
+        {
+            return assembly.GetName().Name + "." + resourceName.Replace(" ", "_")
+                                                               .Replace("\\", ".")
+                                                               .Replace("/", ".");
+        }
+
+       
         public static async Task CopyPreSavedCharToCurrentLocation(PreSavedChar chartype)
         {
-            string pap = await CurrentIO.GetCompleteInternPath(Place.Assets);
-
+            var assembly = typeof(CharHolderIO).GetTypeInfo().Assembly;
+            string RessourceName;
+            string TargetName;
+            var Language = Constants.AVAILIBLE_EXAMPLE_LANGUAGES.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName) ? CultureInfo.CurrentCulture.TwoLetterISOLanguageName : Constants.DEFAULT_EXAMPLE_LANGUAGE;
             switch (chartype)
             {
                 case PreSavedChar.ExampleChar:
-                    await CopyFileToCurrentLocation(
-                        pap + @"Assets\Example\",
-                        Constants.AVAILIBLE_EXAMPLE_LANGUAGES.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName) ? CultureInfo.CurrentCulture.TwoLetterISOLanguageName : Constants.DEFAULT_EXAMPLE_LANGUAGE,
-                        PlatformHelper.GetString("ExampleChar") + Constants.DATEIENDUNG_CHAR);
+                    RessourceName = "SharedCode.Assets.Example." + Language + Constants.DATEIENDUNG_CHAR;
+                    TargetName = PlatformHelper.GetString("ExampleChar") + Constants.DATEIENDUNG_CHAR;
                     break;
                 case PreSavedChar.PreDBChar:
+                    RessourceName = "SharedCode.Assets.DB." + Language + Constants.DATEIENDUNG_CHAR;
+                    TargetName = PlatformHelper.GetString("ExampleChar") + Constants.DATEIENDUNG_CHAR;
                     break;
                 default:
-                    break;
+                    return;
             }
+            Stream resourcestream = assembly.GetManifestResourceStream(RessourceName);
+            string path = GetCurrentSavePath();
+            using (var fileStream = File.Create(path + TargetName))
+            {
+                resourcestream.CopyTo(fileStream);
+            }
+            resourcestream.Flush();
         }
         public static async Task CopyFileToCurrentLocation(string oldlocation, string oldname, string newname)
         {

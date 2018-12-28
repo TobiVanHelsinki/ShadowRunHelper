@@ -9,16 +9,37 @@ namespace ShadowRunHelper.UI.Converter
         #region IValueConverter Members 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (((ulong)value) > 1000000)
+            dynamic number;
+            if (value is ulong ul)
             {
-                return (((ulong)value) / 1000000) + " MB   ";
+                number = ul;
             }
-            if (((ulong)value) > 1000)
+            else if (value is long l)
             {
-                return (((ulong)value) / 1000) + " KB   ";
+                number = l;
             }
-            return ((ulong)value) + " B   ";
-            //return String.Format("{0:N}", ((ulong)value))+" Byte ";
+            else if (value is uint ui)
+            {
+                number = ui;
+            }
+            else if (value is int i)
+            {
+                number = i;
+            }
+            else
+            {
+                number = 0;
+            }
+            if (number > 1000000)
+            {
+                return (number / 1000000) + " MB   ";
+            }
+            if (number > 1000)
+            {
+                return (number / 1000) + " KB   ";
+            }
+            return number + " B   ";
+            //return String.Format("{0:N}", number)+" Byte ";
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
