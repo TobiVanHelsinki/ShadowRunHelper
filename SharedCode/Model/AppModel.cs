@@ -26,7 +26,7 @@ namespace ShadowRunHelper.Model
             {
                 var FileName = (e as CharHolder)?.MakeName(true);
                 string BackUpFolderName = @"\BackUp";
-                var BackUpFile = new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), FileName, CharHolderIO.GetCurrentSavePath()+BackUpFolderName);
+                var BackUpFile = new CustomFileInfo(CharHolderIO.GetCurrentSavePlace(), FileName, CharHolderIO.GetCurrentSavePath()+BackUpFolderName);
                 try
                 {
                     //var T = CharHolderIO.CurrentIO.GetFileInfo(BackUpFile, UserDecision.ThrowError);
@@ -101,8 +101,8 @@ namespace ShadowRunHelper.Model
         {
             get { return CharInProgress != null; }
         }
-        FileInfoClass _CharInProgress;
-        public FileInfoClass CharInProgress
+        CustomFileInfo _CharInProgress;
+        public CustomFileInfo CharInProgress
         {
             get { return _CharInProgress; }
             set { if (_CharInProgress != value) { _CharInProgress = value; NotifyPropertyChanged(nameof(IsCharInProgress)); NotifyPropertyChanged(); } }

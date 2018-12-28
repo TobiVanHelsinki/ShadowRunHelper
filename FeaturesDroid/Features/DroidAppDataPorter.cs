@@ -54,7 +54,7 @@ namespace ShadowRunHelper
                 {
                     try
                     {
-                        await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfoClass(CharHolderIO.GetCurrentSavePlace(), item.Item1, CharHolderIO.GetCurrentSavePath()));
+                        await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new CustomFileInfo(CharHolderIO.GetCurrentSavePlace(), item.Item1, CharHolderIO.GetCurrentSavePath()));
                     }
                     catch (Exception ex)
                     {

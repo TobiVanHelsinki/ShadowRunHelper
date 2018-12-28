@@ -22,7 +22,7 @@ namespace ShadowRunHelperViewer
         {
             try
             {
-                AppModel.MainObject = await CharHolderIO.Load(new FileInfoClass(Place.Extern, "", ""), Constants.LST_FILETYPES_CHAR);
+                AppModel.MainObject = await CharHolderIO.Load(new CustomFileInfo(Place.Extern, "", ""), Constants.LST_FILETYPES_CHAR);
             }
             catch (Exception)
             {

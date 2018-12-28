@@ -18,7 +18,7 @@ namespace ShadowRunHelper.UI
                     ret += item.Data2CSV(';', '\n');
                 }
                 var ContentList = CharToSave.CTRLList.Select(c => (TypeHelper.ThingDefToString(c.eDataTyp, true) + Constants.DATEIENDUNG_CSV, c.Data2CSV(';', '\n')));
-                SharedIO.SaveTextesToFiles(ContentList, new FileInfoClass(Place.Extern,"","") { Token = "CSV_TEMP" });
+                SharedIO.SaveTextesToFiles(ContentList, new CustomFileInfo(Place.Extern,"","") { Token = "CSV_TEMP" });
             }
             catch (Exception ex)
             {
