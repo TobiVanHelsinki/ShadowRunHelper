@@ -374,7 +374,6 @@ namespace ShadowRunHelper.UI
                 var File = new FileInfo(Folder.FullName + Model.MainObject.FileInfo.Name);
                 FileInfo SavePlace = await SharedIO.Save(Model.MainObject, Info: File);
                 Model.MainObject.FileInfo = SavePlace;
-                Model.MainObject.FileInfo.Fileplace = Place.Extern;
             }
             catch (Exception ex)
             {

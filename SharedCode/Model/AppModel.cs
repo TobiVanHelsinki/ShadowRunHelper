@@ -26,7 +26,7 @@ namespace ShadowRunHelper.Model
             {
                 var FileName = (e as CharHolder)?.MakeName(true);
                 string BackUpFolderName = @"\BackUp";
-                var BackUpFile = new CustomFileInfo(CharHolderIO.GetCurrentSavePlace(), FileName, CharHolderIO.GetCurrentSavePath()+BackUpFolderName);
+                var BackUpFile = new CustomFileInfo(FileName, CharHolderIO.GetCurrentSavePath()+BackUpFolderName);
                 try
                 {
                     //var T = CharHolderIO.CurrentIO.GetFileInfo(BackUpFile, UserDecision.ThrowError);

@@ -57,7 +57,7 @@ namespace ShadowRunHelper
         public static void FileActivated(string Name, string Path)
         {
             Settings.FORCE_LOAD_CHAR_ON_START = true;
-            Settings.LAST_SAVE_INFO = new CustomFileInfo(Place.Extern, Name, Path)
+            Settings.LAST_SAVE_INFO = new CustomFileInfo(Name, Path)
             {
                 Token = Constants.ACCESSTOKEN_FILEACTIVATED
             };
@@ -125,7 +125,7 @@ namespace ShadowRunHelper
                     Model.CharInProgress = info;
                     var TMPChar = await CharHolderIO.Load(info, eUD: UserDecision.ThrowError);
 
-                    if (TMPChar.FileInfo.Fileplace == Place.Temp)
+                    if (TMPChar.FileInfo.Directory.FullName.Contains(await SharedIO.CurrentIO.GetCompleteInternPath(Place.Temp)))
                     {
                         CharHolderIO.SaveAtCurrentPlace(TMPChar, UserDecision.ThrowError);
                     }

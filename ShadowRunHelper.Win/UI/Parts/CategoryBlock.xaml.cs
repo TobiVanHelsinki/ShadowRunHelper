@@ -202,7 +202,7 @@ namespace ShadowRunHelper.UI
             try
             {
                 string output = Controller.Data2CSV(';', '\n');
-                SharedIO.CurrentIO.SaveFileContent(output, new CustomFileInfo(Place.Extern, TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV,"") { Token = "CSV_TEMP" });
+                SharedIO.CurrentIO.SaveFileContent(output, new CustomFileInfo(TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV,"") { Token = "CSV_TEMP" });
             }
             catch (IsOKException ex)
             {
@@ -220,7 +220,8 @@ namespace ShadowRunHelper.UI
             {
                 var selected2 = ListView.SelectedItems.Select(i => i as Thing);
                 string output = IO.CSV_Converter.Data2CSV(';', '\n', selected2);
-                SharedIO.CurrentIO.SaveFileContent(output, new CustomFileInfo(Place.Extern, TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV,"") { Token = "CSV_TEMP" });
+                //TODO ask for folder
+                SharedIO.CurrentIO.SaveFileContent(output, new CustomFileInfo(TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV,"") { Token = "CSV_TEMP" });
             }
             catch (IsOKException ex)
             {

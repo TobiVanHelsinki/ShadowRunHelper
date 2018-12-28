@@ -246,7 +246,7 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
-            Model.CharInProgress = new CustomFileInfo(Place.Extern, "new Char", " sketch");
+            Model.CharInProgress = new CustomFileInfo("new Char", " sketch");
             ChangeProgress(true);
             Model.MainObject = CharHolder.CreateCharWithStandardContent();
             SettingsModel.I.COUNT_CREATIONS++;
@@ -386,7 +386,7 @@ namespace ShadowRunHelper.UI
             try
             {
                 var ExportFolder = SharedIO.CurrentIO.PickFolder("Export");
-                await CharHolderIO.Save(CharToSave, Info: new CustomFileInfo(Place.Extern, CharToSave.FileInfo.Name, ""));
+                await CharHolderIO.Save(CharToSave, Info: new CustomFileInfo(CharToSave.FileInfo.Name, ""));
             }
             catch (Exception ex)
             {

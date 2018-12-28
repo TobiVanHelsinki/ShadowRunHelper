@@ -78,7 +78,7 @@ namespace ShadowRunHelper.Model
         #region IO and Display Stuff
 
         [Newtonsoft.Json.JsonIgnore]
-        public CustomFileInfo FileInfo { get; set; } = new CustomFileInfo(Place.NotDefined, "", "");
+        public CustomFileInfo FileInfo { get; set; } = new CustomFileInfo("", "");
 
         public string MakeName(bool UseProgress = false)
         {

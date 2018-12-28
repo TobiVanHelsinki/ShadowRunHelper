@@ -1,6 +1,7 @@
 ﻿using ShadowRunHelper.Model;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using TAPPLICATION.IO;
 using TLIB;
 
@@ -8,7 +9,7 @@ namespace ShadowRunHelper.UI
 {
     public static class SharedUIActions
     {
-        public static void UI_TxT_CSV_Cat_Exportport(CharHolder CharToSave)
+        public static async Task UI_TxT_CSV_Cat_Exportport(CharHolder CharToSave)
         {
             try
             {
@@ -18,7 +19,8 @@ namespace ShadowRunHelper.UI
                     ret += item.Data2CSV(';', '\n');
                 }
                 var ContentList = CharToSave.CTRLList.Select(c => (TypeHelper.ThingDefToString(c.eDataTyp, true) + Constants.DATEIENDUNG_CSV, c.Data2CSV(';', '\n')));
-                SharedIO.SaveTextesToFiles(ContentList, new CustomFileInfo(Place.Extern,"","") { Token = "CSV_TEMP" });
+                var folder = await SharedIO.CurrentIO.PickFolder();
+                SharedIO.SaveTextesToFiles(ContentList, new CustomFileInfo("", folder.FullName) { Token = "CSV_TEMP" });
             }
             catch (Exception ex)
             {
