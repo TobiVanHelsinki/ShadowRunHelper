@@ -2,6 +2,7 @@
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Resources;
 using System.Threading.Tasks;
 using TAPPLICATION;
@@ -57,10 +58,8 @@ namespace ShadowRunHelper
         public static void FileActivated(string Name, string Path)
         {
             Settings.FORCE_LOAD_CHAR_ON_START = true;
-            Settings.LAST_SAVE_INFO = new CustomFileInfo(Name, Path)
-            {
-                Token = Constants.ACCESSTOKEN_FILEACTIVATED
-            };
+            AppModel.Instance.IsFileActivated = true;
+            Settings.LAST_SAVE_INFO = new FileInfo(Path + Name);
             if (!FirstStart)
             {
                 CharLoadingHandling();

@@ -201,7 +201,7 @@ namespace ShadowRunHelper.UI
                 var List = await CharHolderIO.CurrentIO.GetListofFiles(new DirectoryInfo(CharHolderIO.GetCurrentSavePath()), Constants.LST_FILETYPES_CHAR);
                 foreach (var item in List.OrderByDescending((x) => x.LastWriteTime))
                 {
-                    //Summorys.Add(new CustomFileInfo(item.Fileplace, item.Name, item.Filepath) { DateModified = item.DateModified, Size = item.Size });
+                    //Summorys.Add(new FileInfo(item.Fileplace, item.Name, item.Filepath) { DateModified = item.DateModified, Size = item.Size });
                     Summorys.Add(item);
                 }
             }
@@ -246,7 +246,6 @@ namespace ShadowRunHelper.UI
             {
                 return;
             }
-            Model.CharInProgress = new CustomFileInfo("new Char", " sketch");
             ChangeProgress(true);
             Model.MainObject = CharHolder.CreateCharWithStandardContent();
             SettingsModel.I.COUNT_CREATIONS++;
@@ -327,7 +326,7 @@ namespace ShadowRunHelper.UI
             {
                 try
                 {
-                    await CharHolderIO.CurrentIO.RemoveFile(((CustomFileInfo)((Button)sender).DataContext));
+                    await CharHolderIO.CurrentIO.RemoveFile(((FileInfo)((Button)sender).DataContext));
                 }
                 catch (Exception ex)
                 {
@@ -350,14 +349,14 @@ namespace ShadowRunHelper.UI
                 return;
             }
             ChangeProgress(true);
-            var x = await CharHolderIO.Load(((CustomFileInfo)((Button)sender).DataContext));
+            var x = await CharHolderIO.Load(((FileInfo)((Button)sender).DataContext));
             Click_Datei_Export(x);
             ChangeProgress(false);
         }
 
         async void Rename_Click(object sender, RoutedEventArgs e)
         {
-            CustomFileInfo OldFile = (((CustomFileInfo)((Button)sender).DataContext));
+            FileInfo OldFile = (((FileInfo)((Button)sender).DataContext));
 
             Input dialog = new Input
             {
@@ -385,8 +384,8 @@ namespace ShadowRunHelper.UI
             ChangeProgress(true);
             try
             {
-                var ExportFolder = SharedIO.CurrentIO.PickFolder("Export");
-                await CharHolderIO.Save(CharToSave, Info: new CustomFileInfo(CharToSave.FileInfo.Name, ""));
+                var ExportFolder = await SharedIO.CurrentIO.PickFolder("Export");
+                await CharHolderIO.Save(CharToSave, Info: new FileInfo(ExportFolder.FullName + CharToSave.FileInfo.Name));
             }
             catch (Exception ex)
             {
@@ -400,7 +399,7 @@ namespace ShadowRunHelper.UI
             if (!IsOperationInProgres)
             {
             ChangeProgress(true);
-                SharedUIActions.UI_TxT_CSV_Cat_Exportport(await CharHolderIO.Load(((sender as Button).DataContext as CustomFileInfo), null, UserDecision.ThrowError));
+                SharedUIActions.UI_TxT_CSV_Cat_Exportport(await CharHolderIO.Load(((sender as Button).DataContext as FileInfo), null, UserDecision.ThrowError));
             ChangeProgress(false);
             }
         }

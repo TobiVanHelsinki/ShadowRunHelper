@@ -2,6 +2,8 @@
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
+using System.IO;
+using TAPPLICATION.IO;
 using TLIB;
 using Xamarin.Forms;
 
@@ -23,7 +25,8 @@ namespace ShadowRunHelperViewer
             try
             {
                 //TODO
-                AppModel.MainObject = await CharHolderIO.Load(new CustomFileInfo("", ""), Constants.LST_FILETYPES_CHAR);
+                var File = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR);
+                AppModel.MainObject = await CharHolderIO.Load(File, Constants.LST_FILETYPES_CHAR);
             }
             catch (Exception)
             {

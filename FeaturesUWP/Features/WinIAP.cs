@@ -46,7 +46,7 @@ namespace ShadowRunHelper
                 {
                     Constants.IAP_HIDEADS = true;
                 }
-                //var Info = await SharedIO.CurrentIO.GetFolderInfo(new CustomFileInfo(Place.Local, "", SharedIO.CurrentIO.GetCompleteInternPath(Place.Local) + @"noads\"), UserDecision.ThrowError);
+                //var Info = await SharedIO.CurrentIO.GetFolderInfo(new FileInfo(Place.Local, "", SharedIO.CurrentIO.GetCompleteInternPath(Place.Local) + @"noads\"), UserDecision.ThrowError);
                 //if (Info != null)
                 //{
                 //    Constants.IAP_HIDEADS = true;

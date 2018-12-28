@@ -1,5 +1,6 @@
 ﻿using ShadowRunHelper.Model;
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TAPPLICATION.IO;
@@ -20,7 +21,7 @@ namespace ShadowRunHelper.UI
                 }
                 var ContentList = CharToSave.CTRLList.Select(c => (TypeHelper.ThingDefToString(c.eDataTyp, true) + Constants.DATEIENDUNG_CSV, c.Data2CSV(';', '\n')));
                 var folder = await SharedIO.CurrentIO.PickFolder();
-                SharedIO.SaveTextesToFiles(ContentList, new CustomFileInfo("", folder.FullName) { Token = "CSV_TEMP" });
+                SharedIO.SaveTextesToFiles(ContentList, folder);
             }
             catch (Exception ex)
             {

@@ -397,7 +397,7 @@ namespace ShadowRunHelper.UI
         }
         void Click_OpenFolder(object sender, RoutedEventArgs e)
         {
-            SharedIO.CurrentIO.OpenFolder(Model.MainObject.FileInfo.SystemFileInfo.Directory);
+            SharedIO.CurrentIO.OpenFolder(Model.MainObject.FileInfo.Directory);
         }
         #region ButtonHandling
 

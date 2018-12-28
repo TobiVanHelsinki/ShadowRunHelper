@@ -7,7 +7,9 @@ using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using TAPPLICATION.IO;
 using TLIB;
 using Windows.ApplicationModel.DataTransfer;
@@ -197,12 +199,13 @@ namespace ShadowRunHelper.UI
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Import");
         }
 
-        private void UI_TxT_CSV_Cat_Export_Click(object sender, RoutedEventArgs e)
+        async void UI_TxT_CSV_Cat_Export_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 string output = Controller.Data2CSV(';', '\n');
-                SharedIO.CurrentIO.SaveFileContent(output, new CustomFileInfo(TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV,"") { Token = "CSV_TEMP" });
+                var Path = await SharedIO.CurrentIO.PickFolder();
+                SharedIO.CurrentIO.SaveFileContent(output, new FileInfo(Path.FullName + TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV));
             }
             catch (IsOKException ex)
             {
@@ -214,14 +217,15 @@ namespace ShadowRunHelper.UI
             }
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export");
         }
-        private void UI_TxT_CSV_Cat_Export_Selected(object sender, RoutedEventArgs e)
+        async void UI_TxT_CSV_Cat_Export_Selected(object sender, RoutedEventArgs e)
         {
             try
             {
                 var selected2 = ListView.SelectedItems.Select(i => i as Thing);
                 string output = IO.CSV_Converter.Data2CSV(';', '\n', selected2);
                 //TODO ask for folder
-                SharedIO.CurrentIO.SaveFileContent(output, new CustomFileInfo(TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV,"") { Token = "CSV_TEMP" });
+                var Path = await SharedIO.CurrentIO.PickFolder();
+                SharedIO.CurrentIO.SaveFileContent(output, new FileInfo(Path.FullName + TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV));
             }
             catch (IsOKException ex)
             {
@@ -396,10 +400,10 @@ namespace ShadowRunHelper.UI
             }
             e.Handled = true;
         }
-        public static void ErrorHandler(object o, ErrorEventArgs a)
-        {
-            a.ErrorContext.Handled = true;
-        }
+        //public static void ErrorHandler(object o, ErrorEventArgs a)
+        //{
+        //    a.ErrorContext.Handled = true;
+        //}
         #endregion
 
         private void UI_TxT_Cat_AddSep(object sender, RoutedEventArgs e)

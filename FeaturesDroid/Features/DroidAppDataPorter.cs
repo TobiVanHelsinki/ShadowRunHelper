@@ -1,6 +1,7 @@
 ﻿using ShadowRunHelper.IO;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TLIB;
@@ -55,7 +56,7 @@ namespace ShadowRunHelper
                     try
                     {
                 //TODO
-                        await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new CustomFileInfo(item.Item1, CharHolderIO.GetCurrentSavePath()));
+                        await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfo(CharHolderIO.GetCurrentSavePath() + item.Item1));
                     }
                     catch (Exception ex)
                     {

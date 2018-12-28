@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -78,15 +79,10 @@ namespace ShadowRunHelper.Model
         #region IO and Display Stuff
 
         [Newtonsoft.Json.JsonIgnore]
-        public CustomFileInfo FileInfo { get; set; } = new CustomFileInfo("", "");
+        public FileInfo FileInfo { get; set; }
 
-        public string MakeName(bool UseProgress = false)
+        public string MakeName(bool UseProgress)
         {
-            if (FileInfo.Token == Constants.ACCESSTOKEN_FILEACTIVATED)
-            {
-                // No Name Chanign Allowed when Activated through File
-                return FileInfo.Name;
-            }
             string strSaveName = "";
 
             string AddNameAndType(string Name)
@@ -346,7 +342,10 @@ namespace ShadowRunHelper.Model
         {
             if (e.PropertyName == nameof(Person.Alias) || e.PropertyName == nameof(Person.Char_Typ))
             {
-                FileInfo.ChangeName(MakeName(false));
+                if (!AppModel.Instance.IsFileActivated)
+                {
+                    FileInfo.ChangeName(MakeName(false));
+                }
             }
         }
 
@@ -506,7 +505,7 @@ namespace ShadowRunHelper.Model
             ret.Repair();
             ret.Settings.Refresh();
             ret.RefreshListeners();
-            ret.FileInfo.ChangeName(ret.MakeName());
+            ret.FileInfo.ChangeName(ret.MakeName(false));
             return ret;
         }
     }

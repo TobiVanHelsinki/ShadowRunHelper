@@ -1,5 +1,6 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.IO;
+using System.IO;
 using TAPPLICATION.Model;
 using TLIB;
 
@@ -26,12 +27,12 @@ namespace ShadowRunHelper.Model
             {
                 var FileName = (e as CharHolder)?.MakeName(true);
                 string BackUpFolderName = @"\BackUp";
-                var BackUpFile = new CustomFileInfo(FileName, CharHolderIO.GetCurrentSavePath()+BackUpFolderName);
+                var BackUpFile = new FileInfo(CharHolderIO.GetCurrentSavePath() + BackUpFolderName + FileName);
                 try
                 {
                     //var T = CharHolderIO.CurrentIO.GetFileInfo(BackUpFile, UserDecision.ThrowError);
                     //T.Wait();
-                    if (/*T.Result == null*/ BackUpFile.SystemFileInfo?.Exists != true)
+                    if (/*T.Result == null*/ BackUpFile?.Exists != true)
                     {
                         System.Diagnostics.Debug.WriteLine("SaveBackUp " + e.ToString());
                         var T = CharHolderIO.Save(e, UserDecision.ThrowError, BackUpFile);
@@ -101,8 +102,8 @@ namespace ShadowRunHelper.Model
         {
             get { return CharInProgress != null; }
         }
-        CustomFileInfo _CharInProgress;
-        public CustomFileInfo CharInProgress
+        FileInfo _CharInProgress; // TODO new Datastructure is needed
+        public FileInfo CharInProgress
         {
             get { return _CharInProgress; }
             set { if (_CharInProgress != value) { _CharInProgress = value; NotifyPropertyChanged(nameof(IsCharInProgress)); NotifyPropertyChanged(); } }
@@ -114,6 +115,6 @@ namespace ShadowRunHelper.Model
             set { if (_PendingScrollEntry != value) { _PendingScrollEntry = value; NotifyPropertyChanged(); } }
         }
 
-
+        public bool IsFileActivated { get; set; }
     }
 }
