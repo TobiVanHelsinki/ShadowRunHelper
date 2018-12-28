@@ -405,7 +405,6 @@ namespace ShadowRunHelper.UI
                 ChangeProgress(true);
                 try
                 {
-                    var x = Constants.ACCESSTOKEN_EXPORT;
                     var TargetInfo = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_EXPORT);
                     await SharedIO.CurrentIO.CopyAllFiles(SharedIO.CurrentSaveDir, TargetInfo, Constants.LST_FILETYPES_CHAR);
                 }

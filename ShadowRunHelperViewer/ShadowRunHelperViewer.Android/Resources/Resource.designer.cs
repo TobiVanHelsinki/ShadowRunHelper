@@ -2216,8 +2216,6 @@ namespace ShadowRunHelperViewer.Droid
 			global::Com.ViewPagerIndicator.Resource.Styleable.CirclePageIndicator_vpiStrokeWidth = global::ShadowRunHelperViewer.Droid.Resource.Styleable.CirclePageIndicator_vpiStrokeWidth;
 			global::Com.ViewPagerIndicator.Resource.Styleable.ViewPagerIndicator = global::ShadowRunHelperViewer.Droid.Resource.Styleable.ViewPagerIndicator;
 			global::Com.ViewPagerIndicator.Resource.Styleable.ViewPagerIndicator_vpiCirclePageIndicatorStyle = global::ShadowRunHelperViewer.Droid.Resource.Styleable.ViewPagerIndicator_vpiCirclePageIndicatorStyle;
-			global::PCLStorage.Resource.String.ApplicationName = global::ShadowRunHelperViewer.Droid.Resource.String.ApplicationName;
-			global::PCLStorage.Resource.String.Hello = global::ShadowRunHelperViewer.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::ShadowRunHelperViewer.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -6271,12 +6269,6 @@ namespace ShadowRunHelperViewer.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a003d
-			public const int ApplicationName = 2131361853;
-			
-			// aapt resource value: 0x7f0a003c
-			public const int Hello = 2131361852;
-			
 			// aapt resource value: 0x7f0a0015
 			public const int abc_action_bar_home_description = 2131361813;
 			
@@ -6373,8 +6365,8 @@ namespace ShadowRunHelperViewer.Droid
 			// aapt resource value: 0x7f0a0035
 			public const int character_counter_pattern = 2131361845;
 			
-			// aapt resource value: 0x7f0a003e
-			public const int library_name = 2131361854;
+			// aapt resource value: 0x7f0a003c
+			public const int library_name = 2131361852;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int mr_button_content_description = 2131361792;
