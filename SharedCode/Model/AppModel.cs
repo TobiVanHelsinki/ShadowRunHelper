@@ -1,6 +1,7 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.IO;
 using System.IO;
+using TAPPLICATION.IO;
 using TAPPLICATION.Model;
 using TLIB;
 
@@ -26,18 +27,13 @@ namespace ShadowRunHelper.Model
             if (SettingsModel.I.BACKUP_VERSIONING)
             {
                 var FileName = (e as CharHolder)?.MakeName(true);
-                string BackUpFolderName = @"\BackUp";
-                var BackUpFile = new FileInfo(CharHolderIO.GetCurrentSavePath() + BackUpFolderName + FileName);
+                var BackUpFolder = new DirectoryInfo(Path.Combine(SharedIO.CurrentSavePath, "BackUp"));
+                SharedIO.CurrentIO.CreateFolder(BackUpFolder).Wait();
+                var BackUpFile = new FileInfo(Path.Combine(BackUpFolder.FullName, FileName));
                 try
                 {
-                    //var T = CharHolderIO.CurrentIO.GetFileInfo(BackUpFile, UserDecision.ThrowError);
-                    //T.Wait();
-                    if (/*T.Result == null*/ BackUpFile?.Exists != true)
-                    {
-                        System.Diagnostics.Debug.WriteLine("SaveBackUp " + e.ToString());
-                        var T = CharHolderIO.Save(e, UserDecision.ThrowError, BackUpFile);
-                        T.Wait();
-                    }
+                    System.Diagnostics.Debug.WriteLine("SaveBackUp " + e.ToString());
+                    SharedIO.Save(e, BackUpFile).Wait();
                 }
                 catch (System.Exception)
                 {

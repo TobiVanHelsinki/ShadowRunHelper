@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ShadowRunHelper.IO
 {
@@ -50,7 +49,8 @@ namespace ShadowRunHelper.IO
                         Dic.Add(Headar[j], itemstring);
                     }
                     catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+                    {
+                        TAPPLICATION.Debugging.TraceException(ex);
                         continue;
                     }
                     j++;

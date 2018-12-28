@@ -54,20 +54,11 @@ namespace ShadowRunHelper.IO
     }
     public class CharHolderIO : SharedIO<CharHolder>
     {
-        public static void CustomErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
-        {
-            //if (AppModel.Instance?.lstNotifications.Contains(JSON_Error_Notification) == false)
-            //{
-            //    AppModel.Instance?.lstNotifications.Insert(0, JSON_Error_Notification);
-            //}
-            //JSON_Error_Notification.Message += "\n\t" + a.ErrorContext.Path;
-            a.ErrorContext.Handled = true;
-        }
         internal static CharHolder ConvertWithRightVersion(string strAppVersion, string strFileVersion, string fileContent)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings()
             {
-                Error = CustomErrorHandler,
+                Error = ErrorHandler,
                 PreserveReferencesHandling = PreserveReferencesHandling.All
             };
             settings.Converters.Add(new UnknownThingConverter());
@@ -153,14 +144,7 @@ namespace ShadowRunHelper.IO
             ExampleChar = 1,
             PreDBChar = 2,
         }
-        private static string FormatResourceName(Assembly assembly, string resourceName)
-        {
-            return assembly.GetName().Name + "." + resourceName.Replace(" ", "_")
-                                                               .Replace("\\", ".")
-                                                               .Replace("/", ".");
-        }
 
-       
         public static async Task CopyPreSavedCharToCurrentLocation(PreSavedChar chartype)
         {
             var assembly = typeof(CharHolderIO).GetTypeInfo().Assembly;
@@ -181,18 +165,21 @@ namespace ShadowRunHelper.IO
                     return;
             }
             Stream resourcestream = assembly.GetManifestResourceStream(RessourceName);
-            string path = GetCurrentSavePath();
-            using (var fileStream = File.Create(path + TargetName))
+            var info = new FileInfo(Path.Combine(CurrentSavePath, TargetName));
+            string content;
+            using (var reader = new StreamReader(resourcestream))
             {
-                resourcestream.CopyTo(fileStream);
+                content = reader.ReadToEnd();
             }
-            resourcestream.Flush();
+            CurrentIO.SaveFileContent(content, info);
         }
         public static async Task CopyFileToCurrentLocation(string oldlocation, string oldname, string newname)
         {
-            var Target = new FileInfo(GetCurrentSavePath() + newname);
+            var Target = new FileInfo(CurrentSavePath + newname);
             var Source  = new FileInfo(oldlocation+ oldname);
             await CurrentIO.CopyTo(Target, Source);
         }
+
+        
     }
 }

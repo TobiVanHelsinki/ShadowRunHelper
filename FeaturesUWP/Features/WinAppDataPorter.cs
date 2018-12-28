@@ -59,7 +59,7 @@ namespace ShadowRunHelper
                 {
                     try
                     {
-                        await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfo(CharHolderIO.GetCurrentSavePath()+ item.Item1));
+                        await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfo(CharHolderIO.CurrentSavePath + item.Item1));
                     }
                     catch (Exception ex)
  {

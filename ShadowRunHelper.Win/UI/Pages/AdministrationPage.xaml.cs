@@ -28,7 +28,7 @@ namespace ShadowRunHelper.UI
 
         #endregion
         readonly AppModel Model = AppModel.Instance;
-        readonly ObservableCollection<FileInfo> Summorys = new ObservableCollection<FileInfo>();
+        readonly ObservableCollection<ExtendetFileInfo> Summorys = new ObservableCollection<ExtendetFileInfo>();
 
         public AdministrationPage()
         {
@@ -198,12 +198,7 @@ namespace ShadowRunHelper.UI
             Summorys.Clear();
             try
             {
-                var List = await CharHolderIO.CurrentIO.GetListofFiles(new DirectoryInfo(CharHolderIO.GetCurrentSavePath()), Constants.LST_FILETYPES_CHAR);
-                foreach (var item in List.OrderByDescending((x) => x.LastWriteTime))
-                {
-                    //Summorys.Add(new FileInfo(item.Fileplace, item.Name, item.Filepath) { DateModified = item.DateModified, Size = item.Size });
-                    Summorys.Add(item);
-                }
+                Summorys.AddRange(await SharedIO.CurrentIO.GetFiles(new DirectoryInfo(SharedIO.CurrentSavePath), Constants.LST_FILETYPES_CHAR));
             }
             catch (Exception ex)
             {
@@ -223,8 +218,8 @@ namespace ShadowRunHelper.UI
                 await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
-
+            {
+                TAPPLICATION.Debugging.TraceException(ex);
             }
             ChangeProgress(false);
             await Summorys_Aktualisieren();
@@ -232,7 +227,7 @@ namespace ShadowRunHelper.UI
         void Click_OpenSTDFolder(object sender, RoutedEventArgs e)
         {
             ChangeProgress(true);
-            SharedIO.CurrentIO.OpenFolder(new DirectoryInfo(SharedIO.GetCurrentSavePath()));
+            SharedIO.CurrentIO.OpenFolder(new DirectoryInfo(SharedIO.CurrentSavePath));
             ChangeProgress(false);
         }
 
@@ -295,12 +290,12 @@ namespace ShadowRunHelper.UI
 
             this.Fade(easingType: EasingType.Sine).StartAsync();
 
-            var file = ((sender as FrameworkElement).DataContext as FileInfo);
+            var file = (FileInfo)((sender as FrameworkElement).DataContext as ExtendetFileInfo);
             Model.CharInProgress = file;
             ChangeProgress(true);
             try
             {
-                Model.MainObject = await CharHolderIO.Load(file, null, UserDecision.ThrowError);
+                Model.MainObject = await CharHolderIO.Load(file);
                 SettingsModel.I.COUNT_LOADINGS++;
             }
             catch (Exception ex)
@@ -326,7 +321,7 @@ namespace ShadowRunHelper.UI
             {
                 try
                 {
-                    await CharHolderIO.CurrentIO.RemoveFile(((FileInfo)((Button)sender).DataContext));
+                    await SharedIO.CurrentIO.RemoveFile((sender as FrameworkElement).DataContext as ExtendetFileInfo);
                 }
                 catch (Exception ex)
                 {
@@ -349,14 +344,13 @@ namespace ShadowRunHelper.UI
                 return;
             }
             ChangeProgress(true);
-            var x = await CharHolderIO.Load(((FileInfo)((Button)sender).DataContext));
-            Click_Datei_Export(x);
+            Click_Datei_Export(await CharHolderIO.Load((sender as FrameworkElement).DataContext as ExtendetFileInfo));
             ChangeProgress(false);
         }
 
         async void Rename_Click(object sender, RoutedEventArgs e)
         {
-            FileInfo OldFile = (((FileInfo)((Button)sender).DataContext));
+            var OldFile = (sender as FrameworkElement).DataContext as ExtendetFileInfo;
 
             Input dialog = new Input
             {
@@ -384,8 +378,8 @@ namespace ShadowRunHelper.UI
             ChangeProgress(true);
             try
             {
-                var ExportFolder = await SharedIO.CurrentIO.PickFolder("Export");
-                await CharHolderIO.Save(CharToSave, Info: new FileInfo(ExportFolder.FullName + CharToSave.FileInfo.Name));
+                var ExportFolder = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_EXPORT);
+                await CharHolderIO.Save(CharToSave, Info: new FileInfo(ExportFolder.Path() + CharToSave.FileInfo.Name));
             }
             catch (Exception ex)
             {
@@ -398,9 +392,9 @@ namespace ShadowRunHelper.UI
         {
             if (!IsOperationInProgres)
             {
-            ChangeProgress(true);
-                SharedUIActions.UI_TxT_CSV_Cat_Exportport(await CharHolderIO.Load(((sender as Button).DataContext as FileInfo), null, UserDecision.ThrowError));
-            ChangeProgress(false);
+                ChangeProgress(true);
+                SharedUIActions.UI_TxT_CSV_Cat_Exportport(await CharHolderIO.Load((sender as FrameworkElement).DataContext as ExtendetFileInfo));
+                ChangeProgress(false);
             }
         }
 
@@ -411,9 +405,9 @@ namespace ShadowRunHelper.UI
                 ChangeProgress(true);
                 try
                 {
-                    var TargetInfo = await SharedIO.CurrentIO.PickFolder();
-                    var SourceInfo = new DirectoryInfo(SharedIO.GetCurrentSavePath());
-                    await SharedIO.CurrentIO.CopyAllFiles(SourceInfo, TargetInfo);
+                    var x = Constants.ACCESSTOKEN_EXPORT;
+                    var TargetInfo = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_EXPORT);
+                    await SharedIO.CurrentIO.CopyAllFiles(SharedIO.CurrentSaveDir, TargetInfo, Constants.LST_FILETYPES_CHAR);
                 }
                 catch (Exception ex)
                 {

@@ -104,7 +104,7 @@ namespace ShadowRunHelper.Model
             }
             else
             {
-                strSaveName += FileInfo.Name;
+                strSaveName += FileInfo?.Name;
             }
 
             if (string.IsNullOrEmpty(strSaveName) || string.IsNullOrWhiteSpace(strSaveName))
@@ -342,9 +342,9 @@ namespace ShadowRunHelper.Model
         {
             if (e.PropertyName == nameof(Person.Alias) || e.PropertyName == nameof(Person.Char_Typ))
             {
-                if (!AppModel.Instance.IsFileActivated)
+                if (!AppModel.Instance.IsFileActivated) // Should not be automated, ask user
                 {
-                    FileInfo.ChangeName(MakeName(false));
+                    FileInfo?.ChangeName(MakeName(false));
                 }
             }
         }
@@ -505,7 +505,7 @@ namespace ShadowRunHelper.Model
             ret.Repair();
             ret.Settings.Refresh();
             ret.RefreshListeners();
-            ret.FileInfo.ChangeName(ret.MakeName(false));
+            ret.FileInfo = new FileInfo(IO.CharHolderIO.CurrentSavePath + ret.MakeName(false));
             return ret;
         }
     }

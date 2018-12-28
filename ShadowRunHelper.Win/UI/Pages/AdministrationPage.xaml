@@ -6,6 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:TLIB="using:TLIB"
     xmlns:io="using:System.IO"
+    xmlns:ui="using:ShadowRunHelper.UI"
+    xmlns:io1="using:TAPPLICATION.IO"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -26,7 +28,7 @@
                     <TextBlock Grid.Column="3" x:Uid="UI_CharVerwaltung_E_FileDate" Style="{StaticResource ListView_Item_Text}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="Normal" x:Key="Normal" x:DataType="io:FileInfo">
+            <DataTemplate x:Name="Normal" x:Key="Normal" x:DataType="io1:ExtendetFileInfo">
                 <UserControl>
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
@@ -64,12 +66,12 @@
                         <StackPanel Grid.Column="1" x:Name="DetailsPanel" Orientation="Horizontal">
                             <TextBlock Text="{x:Bind Length, Mode=OneWay, Converter={StaticResource o_FileSize}}" Style="{StaticResource UnimportandInformation}"/>
                             <TextBlock x:Uid="Slash" Margin="10,0,10,0" Style="{StaticResource UnimportandInformation}"/>
-                            <TextBlock Text="{x:Bind LastWriteTime, Mode=OneWay, Converter={StaticResource o_LastTime}}" Style="{StaticResource UnimportandInformation}"/>
+                            <TextBlock Text="{x:Bind LastAccessTime, Mode=OneWay, Converter={StaticResource o_LastTime}}" Style="{StaticResource UnimportandInformation}"/>
                         </StackPanel>
                     </Grid>
                 </UserControl>
             </DataTemplate>
-            <DataTemplate x:Name="Active" x:Key="Active" x:DataType="io:FileInfo">
+            <DataTemplate x:Name="Active" x:Key="Active" x:DataType="io1:ExtendetFileInfo">
                 <Grid Margin="0,5,0,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>

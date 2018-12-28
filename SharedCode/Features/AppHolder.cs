@@ -7,6 +7,7 @@ using System.Resources;
 using System.Threading.Tasks;
 using TAPPLICATION;
 using TAPPLICATION.IO;
+using TAPPLICATION.Model;
 using TLIB;
 
 [assembly: NeutralResourcesLanguageAttribute("en")]
@@ -100,7 +101,7 @@ namespace ShadowRunHelper
                 {
                     if (Settings.AUTO_SAVE)
                     {
-                        Settings.LAST_SAVE_INFO = await SharedIO.SaveAtOriginPlace(Model.MainObject, UserDecision.ThrowError);
+                        Settings.LAST_SAVE_INFO = await SharedIO.SaveAtOriginPlace(Model.MainObject);
                         Settings.COUNT_SAVINGS++;
                     }
                     else
@@ -122,11 +123,11 @@ namespace ShadowRunHelper
                 {
                     var info = Settings.LAST_SAVE_INFO;
                     Model.CharInProgress = info;
-                    var TMPChar = await CharHolderIO.Load(info, eUD: UserDecision.ThrowError);
+                    var TMPChar = await CharHolderIO.Load(info);
 
                     if (TMPChar.FileInfo.Directory.FullName.Contains(await SharedIO.CurrentIO.GetCompleteInternPath(Place.Temp)))
                     {
-                        CharHolderIO.SaveAtCurrentPlace(TMPChar, UserDecision.ThrowError);
+                        CharHolderIO.SaveAtCurrentPlace(TMPChar);
                     }
                     var OldChar = Model.MainObject;
                     Model.MainObject = TMPChar;
@@ -135,7 +136,7 @@ namespace ShadowRunHelper
                     {
                         try
                         {
-                            CharHolderIO.SaveAtOriginPlace(OldChar, UserDecision.ThrowError);
+                            CharHolderIO.SaveAtOriginPlace(OldChar);
                         }
                         catch (Exception ex)
                         {
@@ -181,15 +182,21 @@ namespace ShadowRunHelper
         /// <returns></returns>
         public static void App_UnhandledException(string Message, Exception ex)
         {
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine(ex.Message);
+#endif
             Settings.LAST_SAVE_INFO = null;
-            Model.MainObject.FileInfo.ChangeName("EmergencySave" + Model.MainObject.FileInfo.Name);
-            SharedIO.SaveAtOriginPlace(Model.MainObject).Wait();
+            if (Model?.MainObject is IMainType Main && Main?.FileInfo is FileInfo Info)
+            {
+                Info.ChangeName("EmergencySave" + Info.Name);
+                SharedIO.SaveAtOriginPlace(Main).Wait();
+            }
             var param = new Dictionary<string, string>
             {
                 { "Message", Message },
                 { "EXMessage", ex.Message },
                 { "StackTrace", ex.StackTrace },
-                { "InnerException", ex.InnerException.Message }
+                { "InnerException", ex?.InnerException?.Message ?? "no inner exception"}
             };
             Features.Analytics.TrackEvent("App_UnhandledExceptionAsync", param);
         }

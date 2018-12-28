@@ -170,10 +170,10 @@ namespace ShadowRunHelper.UI
         private async void UI_TxT_CSV_Cat_Import_Click(object sender, RoutedEventArgs e)
         {
             string strRead = "";
-            var CTRL = ((sender as FrameworkElement).DataContext as IController);
+            var CTRL = (sender as FrameworkElement).DataContext as IController;
             try
             {
-                var file = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CSV);
+                var file = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CSV, Constants.ACCESSTOKEN_IMPORT);
                 strRead = await SharedIO.CurrentIO.LoadFileContent(file);
             }
             catch (IsOKException ex)
@@ -204,8 +204,9 @@ namespace ShadowRunHelper.UI
             try
             {
                 string output = Controller.Data2CSV(';', '\n');
-                var Path = await SharedIO.CurrentIO.PickFolder();
-                SharedIO.CurrentIO.SaveFileContent(output, new FileInfo(Path.FullName + TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV));
+                var targetdir = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_EXPORT);
+                var targetfile = new FileInfo(Path.Combine(targetdir.FullName, TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV));
+                SharedIO.CurrentIO.SaveFileContent(output, targetfile);
             }
             catch (IsOKException ex)
             {
@@ -222,10 +223,10 @@ namespace ShadowRunHelper.UI
             try
             {
                 var selected2 = ListView.SelectedItems.Select(i => i as Thing);
-                string output = IO.CSV_Converter.Data2CSV(';', '\n', selected2);
-                //TODO ask for folder
-                var Path = await SharedIO.CurrentIO.PickFolder();
-                SharedIO.CurrentIO.SaveFileContent(output, new FileInfo(Path.FullName + TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV));
+                string output = CSV_Converter.Data2CSV(';', '\n', selected2);
+                var targetdir = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_EXPORT);
+                var targetfile = new FileInfo(Path.Combine(targetdir.FullName, TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV));
+                SharedIO.CurrentIO.SaveFileContent(output, targetfile);
             }
             catch (IsOKException ex)
             {
