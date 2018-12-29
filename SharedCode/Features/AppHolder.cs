@@ -39,6 +39,7 @@ namespace ShadowRunHelper
                 Task.Run(() => Features.IAP.CheckLicence()),
                 Task.Run(AppCenterConfiguration),
                 Task.Run(SetConstantStuff),
+                Task.Run(CreateFolder),
                 Task.Run(RegisterAppInstance)
                 );
             Task.WaitAll(
@@ -85,6 +86,18 @@ namespace ShadowRunHelper
             SharedConstants.APP_PUBLISHER_MAIL = Constants.APP_PUBLISHER_MAIL_TvH;
             SharedConstants.APP_PUBLISHER = Constants.APP_PUBLISHER_TvH;
             SharedConstants.APP_STORE_ID = Constants.APP_STORE_ID_SRE;
+        }
+
+        static async void CreateFolder()
+        {
+            try
+            {
+                SharedIO.CurrentIO.CreateFolder(new DirectoryInfo(Path.Combine(await SharedIO.CurrentIO.GetCompleteInternPath(Place.Local), SharedConstants.INTERN_SAVE_CONTAINER)));
+                SharedIO.CurrentIO.CreateFolder(new DirectoryInfo(Path.Combine(await SharedIO.CurrentIO.GetCompleteInternPath(Place.Roaming), SharedConstants.INTERN_SAVE_CONTAINER)));
+            }
+            catch (Exception)
+            {
+            }
         }
         #endregion
 
