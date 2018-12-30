@@ -45,6 +45,7 @@ namespace ShadowRunHelper
             Task.WaitAll(
                 Task.Run(CharLoadingHandling)
                 );
+            SharedCode.Test.DoSmt();
         }
 
         public static async void StartInit()

@@ -136,7 +136,7 @@
                 <!--<Button Text="Show/Hide" Clicked="ChangeListVis" Grid.Column="1"/>-->
             </Grid>
             <ContentView Grid.Row="1" ControlTemplate="{StaticResource Thing_H}"/>
-            <ListView x:Name="Items" Grid.Row="2" 
+            <ListView x:Name="Items" Grid.Row="2"
                       ItemsSource="{x:Binding Data}"
                       BackgroundColor="LightYellow" HasUnevenRows="True"/>
         </Grid>
