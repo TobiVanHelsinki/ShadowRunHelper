@@ -505,7 +505,13 @@ namespace ShadowRunHelper.Model
             ret.Repair();
             ret.Settings.Refresh();
             ret.RefreshListeners();
-            ret.FileInfo = new FileInfo(IO.CharHolderIO.CurrentSavePath + ret.MakeName(false));
+            try
+            {
+                ret.FileInfo = new FileInfo(IO.CharHolderIO.CurrentSavePath + ret.MakeName(false));
+            }
+            catch (Exception)
+            {
+            }
             return ret;
         }
     }

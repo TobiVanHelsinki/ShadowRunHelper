@@ -91,8 +91,15 @@ namespace ShadowRunHelper
         {
             if (instance == null)
             {
-                SharedIO.CurrentIO?.CreateSaveContainer();
                 instance = new SettingsModel();
+                try
+                {
+                    SharedIO.CurrentIO?.CreateSaveContainer();
+                }
+                catch (Exception ex)
+                {
+                    TAPPLICATION.Debugging.TraceException(ex);
+                }
             }
             instance.PropertyChanged += SettingsChanged;
 
