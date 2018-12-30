@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using TAPPLICATION;
 using TLIB;
 
 namespace ShadowRunHelper.CharController
@@ -42,7 +43,7 @@ namespace ShadowRunHelper.CharController
         public CyberDeckController()
         {
             ActiveItem.PropertyChanged += (x, y) => RefreshOriginDeck();
-            //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_CyberDeck__Aktiv/Text");
+            //ActiveItem.Bezeichner = CrossCustomManager.GetString("Model_CyberDeck__Aktiv/Text");
             MI_V = new AllListEntry(ActiveItem, ("Model_Thing_Wert/Text"), "Wert");
             MI_A = new AllListEntry(ActiveItem, ("Model_CyberDeck_Angriff/Text"), "Angriff");
             MI_S = new AllListEntry(ActiveItem, ("Model_CyberDeck_Schleicher/Text"), "Schleicher");

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using TAPPLICATION;
 using TLIB;
 
 namespace ShadowRunHelper.CharModel
@@ -360,12 +361,12 @@ namespace ShadowRunHelper.CharModel
         public virtual string HeaderToCSV(char Delimiter)
         {
             return GetProperties(this).Reverse().Select
-                (item => PlatformHelper.GetString("Model_" + item.DeclaringType.Name + "_" + item.Name + "/Text") + Delimiter.ToString())
+                (item => CustomManager.GetString("Model_" + item.DeclaringType.Name + "_" + item.Name + "/Text") + Delimiter.ToString())
                 .Aggregate((a, s) => a + s);
         }
         public virtual void FromCSV(Dictionary<string, string> dic)
         {
-            var Props = GetProperties(this).Reverse().Select(p => (PlatformHelper.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"),p));
+            var Props = GetProperties(this).Reverse().Select(p => (CustomManager.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"),p));
             foreach (var item in dic)
             {
                 var currentProp = Props.FirstOrDefault(p => p.Item1 == item.Key);

@@ -25,7 +25,7 @@ namespace ShadowRunHelper.CharController
         public VehikelController()
         {
             ActiveItem = new Vehikel();
-            //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_Vehikel__Aktiv/Text");
+            //ActiveItem.Bezeichner = CrossCustomManager.GetString("Model_Vehikel__Aktiv/Text");
             MI_1 = new AllListEntry(ActiveItem, ("Model_Vehikel_Wert/Text"), "Wert");
             MI_2 = new AllListEntry(ActiveItem, ("Model_Vehikel_Sitze/Text"), "Sitze");
             MI_3 = new AllListEntry(ActiveItem, ("Model_Vehikel_Sensor/Text"), "Sensor");

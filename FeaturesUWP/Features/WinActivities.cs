@@ -19,7 +19,7 @@ namespace ShadowRunHelper
             var name = Char.MakeName(false);
             UserActivity userActivity = await channel.GetOrCreateUserActivityAsync(name);
 
-            userActivity.VisualElements.DisplayText = PlatformHelper.GetString("Activity_PlayedWith") + name.Remove(name.Length - Constants.DATEIENDUNG_CHAR.Length);
+            userActivity.VisualElements.DisplayText = CustomManager.GetString("Activity_PlayedWith") + name.Remove(name.Length - Constants.DATEIENDUNG_CHAR.Length);
             userActivity.ActivationUri = new Uri(Constants.PROTOCOL_CHAR + Char.FileInfo?.FullName);
 
             await userActivity.SaveAsync();

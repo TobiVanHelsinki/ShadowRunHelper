@@ -12,8 +12,8 @@ namespace ShadowRunHelper.UI
         public Input()
         {
             InitializeComponent();
-            PrimaryButtonText = PlatformHelper.GetString("OK");
-            SecondaryButtonText = PlatformHelper.GetString("Cancel"); 
+            PrimaryButtonText = CustomManager.GetString("OK");
+            SecondaryButtonText = CustomManager.GetString("Cancel"); 
 
         }
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

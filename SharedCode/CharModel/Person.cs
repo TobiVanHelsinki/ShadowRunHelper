@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using TAPPLICATION;
 using TLIB;
 
 namespace ShadowRunHelper.CharModel
@@ -279,7 +280,7 @@ namespace ShadowRunHelper.CharModel
         #endregion
 
         #region Details
-        string alias = PlatformHelper.GetString("Model_Person_Alias_STD/Text");
+        string alias = CustomManager.GetString("Model_Person_Alias_STD/Text");
         [Used_UserAttribute]
         public string Alias
         {

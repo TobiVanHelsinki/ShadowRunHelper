@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using TAPPLICATION;
 using TLIB;
 
 namespace ShadowRunHelper
@@ -210,11 +211,11 @@ namespace ShadowRunHelper
             {
                 if (Mehrzahl)
                 {
-                    return PlatformHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
+                    return CustomManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
                 }
                 else
                 {
-                    return PlatformHelper.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
+                    return CustomManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
                 }
             }
             catch (Exception ex)

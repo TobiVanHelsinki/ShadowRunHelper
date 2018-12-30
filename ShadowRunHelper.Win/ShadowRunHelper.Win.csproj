@@ -402,11 +402,6 @@
       <Name>TAPPLICATION_UWP</Name>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\..\TLIB\TLIB_UWP\TLIB_UWP.csproj">
-      <Project>{c5730c21-1458-4107-a344-2937faeb0247}</Project>
-      <Name>TLIB_UWP</Name>
-      <Private>True</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.Advertising.Xaml, Version=10.0">
@@ -434,6 +429,10 @@
       <UserProperties Strings_4de_4Resources_1resw__JSONSchema="http://json.schemastore.org/apple-app-site-association" />
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>copy $(SolutionDir)SharedCode\Strings\Resources.de.resx $(ProjectDir)Strings\de\Resources.resw
+copy $(SolutionDir)SharedCode\Strings\Resources.resx $(ProjectDir)Strings\en\Resources.resw</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

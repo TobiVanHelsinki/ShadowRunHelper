@@ -1,6 +1,7 @@
 ﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.IO;
 using System.IO;
+using TAPPLICATION;
 using TAPPLICATION.IO;
 using TAPPLICATION.Model;
 using TLIB;

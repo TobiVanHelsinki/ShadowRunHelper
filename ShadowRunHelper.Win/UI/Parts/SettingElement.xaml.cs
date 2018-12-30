@@ -7,8 +7,8 @@ namespace ShadowRunHelper.Win.UI
 {
     public sealed partial class SettingElement : UserControl
     {
-        string ja = PlatformHelper.GetString("UI_Optionen_Toggle/OnContent");
-        string nein = PlatformHelper.GetString("UI_Optionen_Toggle/OffContent");
+        string ja = CustomManager.GetString("UI_Optionen_Toggle/OnContent");
+        string nein = CustomManager.GetString("UI_Optionen_Toggle/OffContent");
         public SettingElement()
         {
             this.InitializeComponent();

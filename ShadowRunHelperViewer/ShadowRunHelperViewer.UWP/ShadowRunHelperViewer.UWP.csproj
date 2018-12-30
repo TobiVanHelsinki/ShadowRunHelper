@@ -176,10 +176,6 @@
       <Project>{97d66a85-f340-4678-ae0c-e7e996e748ee}</Project>
       <Name>TAPPLICATION_UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\TLIB\TLIB_UWP\TLIB_UWP.csproj">
-      <Project>{c5730c21-1458-4107-a344-2937faeb0247}</Project>
-      <Name>TLIB_UWP</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\SharedCode\SharedCode.csproj">
       <Project>{63a5e683-5a51-4c45-a9de-ca0c26c6ec5a}</Project>
       <Name>SharedCode</Name>

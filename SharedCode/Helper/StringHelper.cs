@@ -13,7 +13,7 @@ namespace ShadowRunHelper.Helper
             Loop:
             try
             {
-                Current = TLIB.PlatformHelper.GetString(strID + Counter);
+                Current = CustomManager.GetString(strID + Counter);
             }
             catch (Exception ex)
             {

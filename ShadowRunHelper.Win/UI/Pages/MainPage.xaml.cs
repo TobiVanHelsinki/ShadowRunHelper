@@ -244,20 +244,20 @@ namespace ShadowRunHelper.UI
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
             if (SettingsModel.I.LAST_APP_VERSION != Constants.APP_VERSION_BUILD_DELIM)
             {
-                Model.NewNotification(PlatformHelper.GetString("VersionHistory"), true, 0);
+                Model.NewNotification(CustomManager.GetString("VersionHistory"), true, 0);
                 Model.NewNotification(
                     string.Format(
-                        PlatformHelper.GetString("Notification_NewVersion"),Constants.APP_VERSION_BUILD_DELIM
+                        CustomManager.GetString("Notification_NewVersion"),Constants.APP_VERSION_BUILD_DELIM
                         ), 10);
                 SettingsModel.I.LAST_APP_VERSION = Constants.APP_VERSION_BUILD_DELIM;
             }
             if (Features.AppDataPorter.InProgress)
             {
                 //Ask User, If YES, Import all
-                new MultiButtonMessageDialog(PlatformHelper.GetString("Request_AppImport/Title")
-                    , PlatformHelper.GetString("Request_AppImport/Text")
-                    , (PlatformHelper.GetString("Request_AppImport/Yes"), () => Features.AppDataPorter.ImportAppPacket())
-                    , (PlatformHelper.GetString("Request_AppImport/No"), null)
+                new MultiButtonMessageDialog(CustomManager.GetString("Request_AppImport/Title")
+                    , CustomManager.GetString("Request_AppImport/Text")
+                    , (CustomManager.GetString("Request_AppImport/Yes"), () => Features.AppDataPorter.ImportAppPacket())
+                    , (CustomManager.GetString("Request_AppImport/No"), null)
                     ).ShowAsync();
             }
         }
@@ -302,8 +302,8 @@ namespace ShadowRunHelper.UI
                     try
                     {
                         var messageDialog = new MessageDialog(item.Message);
-                        messageDialog.Commands.Add(new UICommand(PlatformHelper.GetString("Close")));
-                        messageDialog.Commands.Add(new UICommand(PlatformHelper.GetString("UI_Cntnt_GoTo_Notifications/Content"), (x) => GoToNotifications()));
+                        messageDialog.Commands.Add(new UICommand(CustomManager.GetString("Close")));
+                        messageDialog.Commands.Add(new UICommand(CustomManager.GetString("UI_Cntnt_GoTo_Notifications/Content"), (x) => GoToNotifications()));
                         messageDialog.DefaultCommandIndex = 0;
                         await messageDialog.ShowAsync();
                         item.IsRead = true;
@@ -347,7 +347,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_SaveFail"), ex);
+                Model.NewNotification(CustomManager.GetString("Notification_Error_SaveFail"), ex);
             }
         }
         void Click_Delete(object sender, RoutedEventArgs e)
@@ -378,7 +378,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_FileExportFail"), ex);
+                Model.NewNotification(CustomManager.GetString("Notification_Error_FileExportFail"), ex);
             }
         }
         void Click_UI_TxT_CSV_Cat_Exportport(object sender, RoutedEventArgs e)
@@ -393,7 +393,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_RepairFail"), ex);
+                Model.NewNotification(CustomManager.GetString("Notification_Error_RepairFail"), ex);
             }
         }
         void Click_OpenFolder(object sender, RoutedEventArgs e)

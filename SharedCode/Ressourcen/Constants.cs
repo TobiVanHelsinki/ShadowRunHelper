@@ -49,11 +49,11 @@ namespace ShadowRunHelper
         #endregion
         #region Help
         public static List<HelpEntry> HelpList = new List<HelpEntry>() {
-            new HelpEntry() { Paragraph = PlatformHelper.GetString("Help4_CharAdministration"), Text = PlatformHelper.GetString("Help4") },
-            new HelpEntry() { Paragraph = PlatformHelper.GetString("Help5_CharAdministration_FileName"), Text = PlatformHelper.GetString("Help5") },
-            new HelpEntry() { Paragraph = PlatformHelper.GetString("Help3_LinkedItems"), Text = PlatformHelper.GetString("Help3") },
-            new HelpEntry() { Paragraph = PlatformHelper.GetString("Help1_ActiveItems"), Text = PlatformHelper.GetString("Help1") },
-            new HelpEntry() { Paragraph = PlatformHelper.GetString("Help2_AutoCalc"), Text = PlatformHelper.GetString("Help2") },
+            new HelpEntry() { Paragraph = CustomManager.GetString("Help4_CharAdministration"), Text = CustomManager.GetString("Help4") },
+            new HelpEntry() { Paragraph = CustomManager.GetString("Help5_CharAdministration_FileName"), Text = CustomManager.GetString("Help5") },
+            new HelpEntry() { Paragraph = CustomManager.GetString("Help3_LinkedItems"), Text = CustomManager.GetString("Help3") },
+            new HelpEntry() { Paragraph = CustomManager.GetString("Help1_ActiveItems"), Text = CustomManager.GetString("Help1") },
+            new HelpEntry() { Paragraph = CustomManager.GetString("Help2_AutoCalc"), Text = CustomManager.GetString("Help2") },
         };
         #endregion
         #region Orga-Stuff

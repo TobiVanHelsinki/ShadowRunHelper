@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using TAPPLICATION;
 using TAPPLICATION.IO;
 using TLIB;
 using Windows.UI.Xaml;
@@ -202,7 +203,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(PlatformHelper.GetString("Error_LoadCharFolder"), ex);
+                Model.NewNotification(CustomManager.GetString("Error_LoadCharFolder"), ex);
             }
             Summorys_AktualisierenInProgress = false;
         }
@@ -257,11 +258,11 @@ namespace ShadowRunHelper.UI
                 {
                     bool Success = false;
                     var messageDialog = new MultiButtonMessageDialog(
-                        PlatformHelper.GetString("Request_NotSave/Title"),
-                        PlatformHelper.GetString("Request_NotSave/Text"),
-                        (PlatformHelper.GetString("Request_NotSave/Yes"), () => { Success = true; Model.MainObject.SetSaveTimerTo(0, true); }),
-                        (PlatformHelper.GetString("Request_NotSave/No"), () => { Success = true; }),
-                        (PlatformHelper.GetString("Request_NotSave/Break"), () => { Success = false; })
+                        CustomManager.GetString("Request_NotSave/Title"),
+                        CustomManager.GetString("Request_NotSave/Text"),
+                        (CustomManager.GetString("Request_NotSave/Yes"), () => { Success = true; Model.MainObject.SetSaveTimerTo(0, true); }),
+                        (CustomManager.GetString("Request_NotSave/No"), () => { Success = true; }),
+                        (CustomManager.GetString("Request_NotSave/Break"), () => { Success = false; })
                     );
                     await messageDialog.ShowAsync();
                     return Success;
@@ -300,7 +301,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_LoadFail"), ex);
+                Model.NewNotification(CustomManager.GetString("Notification_Error_LoadFail"), ex);
             }
             if (Model.MainObject != null)
             {
@@ -325,13 +326,13 @@ namespace ShadowRunHelper.UI
                 }
                 catch (Exception ex)
                 {
-                    Model.NewNotification(PlatformHelper.GetString("Notification_Error_DelFail"), ex);
+                    Model.NewNotification(CustomManager.GetString("Notification_Error_DelFail"), ex);
                 }
             }
-            await new MultiButtonMessageDialog(PlatformHelper.GetString("Request_Delete/Title")
-                , PlatformHelper.GetString("Request_Delete/Text")
-                , (PlatformHelper.GetString("Request_Delete/Yes"), Delete)
-                , (PlatformHelper.GetString("Request_Delete/No"),null)
+            await new MultiButtonMessageDialog(CustomManager.GetString("Request_Delete/Title")
+                , CustomManager.GetString("Request_Delete/Text")
+                , (CustomManager.GetString("Request_Delete/Yes"), Delete)
+                , (CustomManager.GetString("Request_Delete/No"),null)
                 ).ShowAsync();
             await Summorys_Aktualisieren();
             SettingsModel.I.COUNT_DELETIONS++;
@@ -383,7 +384,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_FileExportFail"), ex);
+                Model.NewNotification(CustomManager.GetString("Notification_Error_FileExportFail"), ex);
             }
             ChangeProgress(false);
         }

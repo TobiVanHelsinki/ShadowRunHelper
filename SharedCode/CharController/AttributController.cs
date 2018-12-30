@@ -89,16 +89,16 @@ namespace ShadowRunHelper.CharController
 
         void RefreshIdentifiers()
         {
-            Konsti.Bezeichner = PlatformHelper.GetString("Model_Attribut_Konsti/Text");
-            Geschick.Bezeichner = PlatformHelper.GetString("Model_Attribut_Geschick/Text");
-            Reaktion.Bezeichner = PlatformHelper.GetString("Model_Attribut_Reaktion/Text");
-            Staerke.Bezeichner = PlatformHelper.GetString("Model_Attribut_Staerke/Text");
-            Charisma.Bezeichner = PlatformHelper.GetString("Model_Attribut_Charisma/Text");
-            Logik.Bezeichner = PlatformHelper.GetString("Model_Attribut_Logik/Text");
-            Intuition.Bezeichner = PlatformHelper.GetString("Model_Attribut_Intuition/Text");
-            Willen.Bezeichner = PlatformHelper.GetString("Model_Attribut_Willen/Text");
-            Magie.Bezeichner = PlatformHelper.GetString("Model_Attribut_Magie/Text");
-            Resonanz.Bezeichner = PlatformHelper.GetString("Model_Attribut_Resonanz/Text");
+            Konsti.Bezeichner = CustomManager.GetString("Model_Attribut_Konsti/Text");
+            Geschick.Bezeichner = CustomManager.GetString("Model_Attribut_Geschick/Text");
+            Reaktion.Bezeichner = CustomManager.GetString("Model_Attribut_Reaktion/Text");
+            Staerke.Bezeichner = CustomManager.GetString("Model_Attribut_Staerke/Text");
+            Charisma.Bezeichner = CustomManager.GetString("Model_Attribut_Charisma/Text");
+            Logik.Bezeichner = CustomManager.GetString("Model_Attribut_Logik/Text");
+            Intuition.Bezeichner = CustomManager.GetString("Model_Attribut_Intuition/Text");
+            Willen.Bezeichner = CustomManager.GetString("Model_Attribut_Willen/Text");
+            Magie.Bezeichner = CustomManager.GetString("Model_Attribut_Magie/Text");
+            Resonanz.Bezeichner = CustomManager.GetString("Model_Attribut_Resonanz/Text");
         }
 
         // Implement IController ##########################

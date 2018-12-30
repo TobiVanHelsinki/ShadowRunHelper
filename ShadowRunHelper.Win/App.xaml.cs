@@ -20,7 +20,6 @@ namespace ShadowRunHelper
 
             Init.Do();
             TAPPLICATION_UWP.Init.Do();
-            TLIB_UWP.Init.Do();
             AppHolder.InitModel();
         }
 

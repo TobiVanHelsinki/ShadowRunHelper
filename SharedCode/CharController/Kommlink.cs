@@ -16,7 +16,7 @@ namespace ShadowRunHelper.CharController
         public KommlinkController()
         {
             ActiveItem = new Kommlink();
-            //ActiveItem.Bezeichner = CrossPlatformHelper.GetString("Model_Kommlink__Aktiv/Text");
+            //ActiveItem.Bezeichner = CrossCustomManager.GetString("Model_Kommlink__Aktiv/Text");
             MI_V = new AllListEntry(ActiveItem, ("Model_Thing_Wert/Text"), "Wert");
             MI_F = new AllListEntry(ActiveItem, ("Model_Kommlink_Firewall/Text"),"Firewall");
             MI_D = new AllListEntry(ActiveItem, ("Model_Kommlink_Datenverarbeitung/Text"), "Datenverarbeitung");

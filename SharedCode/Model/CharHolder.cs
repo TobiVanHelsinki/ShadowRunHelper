@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using TAPPLICATION;
 using TAPPLICATION.Model;
 using TLIB;
 
@@ -97,10 +98,10 @@ namespace ShadowRunHelper.Model
                 strSaveName = AddNameAndType(strSaveName);
                 strSaveName += ",";
                 strSaveName += Person.Runs.ToString();
-                strSaveName += PlatformHelper.GetString("Model_Person_Runs/Text");
+                strSaveName += CustomManager.GetString("Model_Person_Runs/Text");
                 strSaveName += ",";
                 strSaveName += Person.Karma_Gesamt.ToString();
-                strSaveName += PlatformHelper.GetString("Model_Person_Karma/Text");
+                strSaveName += CustomManager.GetString("Model_Person_Karma/Text");
             }
             else
             {
@@ -240,7 +241,7 @@ namespace ShadowRunHelper.Model
                     else
                     {
                         Features.Analytics.TrackEvent("Err_CharRepair_Hard");
-                        AppModel.Instance?.NewNotification(String.Format(PlatformHelper.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
+                        AppModel.Instance?.NewNotification(String.Format(CustomManager.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }
                 foreach (var item in TargetCollection)
@@ -482,22 +483,22 @@ namespace ShadowRunHelper.Model
         {
             var ret = new CharHolder();
             var item = new Handlung();
-            item.Bezeichner = PlatformHelper.GetString("Content_Selbstbeherrschung");
+            item.Bezeichner = CustomManager.GetString("Content_Selbstbeherrschung");
             item.LinkedThings.Add(ret.CTRLAttribut.MI_Charisma);
             item.LinkedThings.Add(ret.CTRLAttribut.MI_Willen);
             ret.Add(item);
             item = new Handlung();
-            item.Bezeichner = PlatformHelper.GetString("Content_Menschenkenntnis");
+            item.Bezeichner = CustomManager.GetString("Content_Menschenkenntnis");
             item.LinkedThings.Add(ret.CTRLAttribut.MI_Intuition);
             item.LinkedThings.Add(ret.CTRLAttribut.MI_Charisma);
             ret.Add(item);
             item = new Handlung();
-            item.Bezeichner = PlatformHelper.GetString("Content_Erinnerung");
+            item.Bezeichner = CustomManager.GetString("Content_Erinnerung");
             item.LinkedThings.Add(ret.CTRLAttribut.MI_Logik);
             item.LinkedThings.Add(ret.CTRLAttribut.MI_Willen);
             ret.Add(item);
             item = new Handlung();
-            item.Bezeichner = PlatformHelper.GetString("Content_Schadenswiderstand");
+            item.Bezeichner = CustomManager.GetString("Content_Schadenswiderstand");
             item.LinkedThings.Add(ret.CTRLAttribut.MI_Konsti);
             item.LinkedThings.Add(ret.CTRLPanzerung.MI_Wert);
             ret.Add(item);

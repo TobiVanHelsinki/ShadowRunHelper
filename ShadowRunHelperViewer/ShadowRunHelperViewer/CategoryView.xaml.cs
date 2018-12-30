@@ -57,7 +57,7 @@ namespace ShadowRunHelperViewer
                     var gc = Controllers.Children.OfType<GController>().FirstOrDefault(x=>x.Controller.eDataTyp == Category.ThingType);
                     var b = new Button
                     {
-                        Text = PlatformHelper.GetString(Category.DisplayNamePlural) + " (" + gc?.Controller?.GetElements().Count() + ")"
+                        Text = CustomManager.GetString(Category.DisplayNamePlural) + " (" + gc?.Controller?.GetElements().Count() + ")"
                     };
                     switch (Category.Pivot)
                     {

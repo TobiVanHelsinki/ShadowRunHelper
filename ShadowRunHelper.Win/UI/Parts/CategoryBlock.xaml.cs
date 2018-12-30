@@ -51,7 +51,7 @@ namespace ShadowRunHelper.UI
 
                 var Current = TypeHelper.ThingTypeProperties.FirstOrDefault(t => t.ThingType == Controller.eDataTyp);
 
-                CategoryName.Text = PlatformHelper.GetString(Current.DisplayNamePlural);
+                CategoryName.Text = CustomManager.GetString(Current.DisplayNamePlural);
                 //ListView.ItemsSource = null;
                 //ListView.ItemsSource = Controller.GetElements();
 
@@ -182,7 +182,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_CSVImportFail") + "1", ex);
+                Model.NewNotification(CustomManager.GetString("Notification_Error_CSVImportFail") + "1", ex);
             }
             try
             {
@@ -194,7 +194,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_CSVImportFail") + "2", ex);
+                Model.NewNotification(CustomManager.GetString("Notification_Error_CSVImportFail") + "2", ex);
             }
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Import");
         }
@@ -214,7 +214,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_CSVExportFail") + "2", ex);
+                Model.NewNotification(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export");
         }
@@ -234,7 +234,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_CSVExportFail") + "2", ex);
+                Model.NewNotification(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export_Selected");
         }
@@ -251,7 +251,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(PlatformHelper.GetString("Notification_Error_LogicFail"), ex);
+                Model.NewNotification(CustomManager.GetString("Notification_Error_LogicFail"), ex);
             }
         }
         #endregion

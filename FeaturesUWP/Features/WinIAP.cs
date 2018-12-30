@@ -104,12 +104,12 @@ namespace ShadowRunHelper
             switch (result.Status)
             {
                 case StorePurchaseStatus.Succeeded:
-                    Model.AppModel.Instance?.NewNotification(PlatformHelper.GetString("IAP_Succeeded"));
+                    Model.AppModel.Instance?.NewNotification(CustomManager.GetString("IAP_Succeeded"));
                     break;
                 case StorePurchaseStatus.NotPurchased:
                     break;
                 default:
-                    Model.AppModel.Instance?.NewNotification(PlatformHelper.GetString("IAP_Error"));
+                    Model.AppModel.Instance?.NewNotification(CustomManager.GetString("IAP_Error"));
                     break;
             }
             await CheckLicence(true);

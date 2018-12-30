@@ -1,6 +1,7 @@
 ﻿using ShadowRunHelper.Model;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using TAPPLICATION;
 using TLIB;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
@@ -73,7 +74,7 @@ namespace ShadowRunHelper.UI
             RelativMaxStateCount = Ende-Start + 1;
             
             InitializeComponent();
-            Title = PlatformHelper.GetString(string.Format("Tut_TitleState_{0,0:D2}", Start));
+            Title = CustomManager.GetString(string.Format("Tut_TitleState_{0,0:D2}", Start));
             ViewModel.TutorialStateChanged += StateChanged;
             ViewModel.TutorialChangedState(StateCounter, true);
         }
@@ -84,7 +85,7 @@ namespace ShadowRunHelper.UI
             {
                 try
                 {
-                    TutorialText.Text = PlatformHelper.GetString(string.Format("Tut_State_{0,0:D2}", StateNumber));
+                    TutorialText.Text = CustomManager.GetString(string.Format("Tut_State_{0,0:D2}", StateNumber));
                 }
                 catch (System.Exception ex)
                 {

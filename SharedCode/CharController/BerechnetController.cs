@@ -74,15 +74,15 @@ namespace ShadowRunHelper.CharController
 
         void RefreshIdentifiers()
         {
-            Essenz.Bezeichner = PlatformHelper.GetString("Model_Berechnet_Essenz/Text");
-            Limit_K.Bezeichner = PlatformHelper.GetString("Model_Berechnet_Limit_K/Text");
-            Limit_G.Bezeichner = PlatformHelper.GetString("Model_Berechnet_Limit_G/Text");
-            Limit_S.Bezeichner = PlatformHelper.GetString("Model_Berechnet_Limit_S/Text");
-            Laufen.Bezeichner = PlatformHelper.GetString("Model_Berechnet_Laufen/Text");
-            Rennen.Bezeichner = PlatformHelper.GetString("Model_Berechnet_Rennen/Text");
-            Tragen.Bezeichner = PlatformHelper.GetString("Model_Berechnet_Tragen/Text");
-            MaxDamageG.Bezeichner = PlatformHelper.GetString("Model_Person_Schaden_G_max/Text");
-            MaxDamageK.Bezeichner = PlatformHelper.GetString("Model_Person_Schaden_K_max/Text");
+            Essenz.Bezeichner = CustomManager.GetString("Model_Berechnet_Essenz/Text");
+            Limit_K.Bezeichner = CustomManager.GetString("Model_Berechnet_Limit_K/Text");
+            Limit_G.Bezeichner = CustomManager.GetString("Model_Berechnet_Limit_G/Text");
+            Limit_S.Bezeichner = CustomManager.GetString("Model_Berechnet_Limit_S/Text");
+            Laufen.Bezeichner = CustomManager.GetString("Model_Berechnet_Laufen/Text");
+            Rennen.Bezeichner = CustomManager.GetString("Model_Berechnet_Rennen/Text");
+            Tragen.Bezeichner = CustomManager.GetString("Model_Berechnet_Tragen/Text");
+            MaxDamageG.Bezeichner = CustomManager.GetString("Model_Person_Schaden_G_max/Text");
+            MaxDamageK.Bezeichner = CustomManager.GetString("Model_Person_Schaden_K_max/Text");
         }
 
         public void SetDependencies(Person p, ObservableCollection<Implantat> i, AttributController a)
