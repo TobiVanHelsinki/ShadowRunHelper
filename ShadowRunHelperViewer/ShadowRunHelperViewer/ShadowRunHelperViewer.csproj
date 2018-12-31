@@ -31,13 +31,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="CategoryView.xaml.cs">
-      <DependentUpon>CategoryView.xaml</DependentUpon>
+    <Compile Update="CharView.xaml.cs">
+      <DependentUpon>CharView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="CategoryView.xaml">
+    <EmbeddedResource Update="CharView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GController.xaml">

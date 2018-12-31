@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="51394e72-1d74-4076-a522-bda18985d31b" Publisher="CN=42f64c50-2f55-4458-b40d-6a01c3632fb1" Version="1.0.2.0" />
+  <Identity Name="ShadowRunHelperViewer" Publisher="CN=Tobiv" Version="1.0.2.0" />
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>ShadowRunHelperViewer.UWP</DisplayName>
-    <PublisherDisplayName>42f64c50-2f55-4458-b40d-6a01c3632fb1</PublisherDisplayName>
+    <DisplayName>ShadowRunHelperViewer</DisplayName>
+    <PublisherDisplayName>Tobi van Helsinki</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ShadowRunHelperViewer.UWP.App">
-      <uap:VisualElements DisplayName="ShadowRunHelperViewer.UWP" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="ShadowRunHelperViewer.UWP" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="ShadowRunHelperViewer" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Eine leichte Version des ShadowRunHelpers" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -24,6 +24,12 @@
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="portrait" />
+          <uap:Rotation Preference="landscape" />
+          <uap:Rotation Preference="portraitFlipped" />
+          <uap:Rotation Preference="landscapeFlipped" />
+        </uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>

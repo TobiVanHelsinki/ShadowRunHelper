@@ -1,9 +1,11 @@
 ﻿using ShadowRunHelper;
+using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using TAPPLICATION.IO;
 using TLIB;
 using Xam.Plugin.TabView;
 using Xamarin.Forms;
@@ -12,17 +14,18 @@ using Xamarin.Forms.Xaml;
 namespace ShadowRunHelperViewer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CategoryView : ContentView
+    public partial class CharView : ContentView
     {
-        public CategoryView()
+        public CharView()
         {
             //BindingContextChanged += CategoryView_BindingContextChanged_AddCategoriesProgramamticly;
             BindingContextChanged += CategoryView_BindingContextChanged_AddCategoriesButtonsProgramamticly;
             InitializeComponent();
-            Buttons = new List<StackLayout>() { s1, s2, s3, s4 };
+            ButtonsPanels = new List<StackLayout>() { s1, s2, s3, s4 };
         }
 
-        IEnumerable<StackLayout> Buttons;
+        IEnumerable<StackLayout> ButtonsPanels;
+        IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children).OfType<Button>();
 
         private void CategoryView_BindingContextChanged_AddCategoriesButtonsProgramamticly(object sender, EventArgs e)
         {
@@ -32,11 +35,11 @@ namespace ShadowRunHelperViewer
             }
             if (this is ContentView Content)
             {
-                foreach (var item in Buttons.SelectMany(x=>x.Children).OfType<Button>())
+                foreach (var item in Buttons)
                 {
                     item.Clicked -= B_Clicked;
                 }
-                foreach (var item in Buttons)
+                foreach (var item in ButtonsPanels)
                 {
                     item.Children.Clear();
                 }
@@ -102,34 +105,23 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        //private void CategoryView_BindingContextChanged_AddCategoriesProgramamticly(object sender, System.EventArgs e)
-        //{
-        //    if (BindingContext is CharHolder charHolder)
-        //    {
-        //        int count = TableView.ItemSource.Count();
-        //        foreach (var Pivot in TypeHelper.ThingTypeProperties.Where(x => x.Usable).Select(x => x.Pivot).Distinct().OrderBy(x => x)) // Pivot
-        //        {
-        //            var Stack = new StackLayout();
-        //            Stack.SetBinding(GController.BindingContextProperty, "this");
-
-        //            TabItem tab = new TabItem(Pivot.ToString(), Stack);
-        //            tab.SetBinding(GController.BindingContextProperty, "this");
-        //            TableView.AddTab(tab);
-        //            foreach (var Category in TypeHelper.ThingTypeProperties.Where(x => x.Usable).Where(x => x.Pivot == Pivot).OrderBy(x => x.Order))
-        //            {
-        //                GController item = new GController();
-        //                Stack.Children.Add(item);
-        //                var ctrl = charHolder.CTRLList.FirstOrDefault(x => x.eDataTyp == Category.ThingType);
-        //                var prop = charHolder.GetType().GetProperties().Where(x => x.GetValue(charHolder) == ctrl).FirstOrDefault();
-        //                item.SetBinding(GController.BindingContextProperty, prop?.Name);
-        //                //{ BindingContext = charHolder.CTRLList.FirstOrDefault(x => x.eDataTyp == Category.ThingType) };
-        //            }
-        //        }
-        //        for (int i = 0; i < count; i++) // need to remove old items at bottom, because view cannot have zero items
-        //        {
-        //            TableView.RemoveTab();
-        //        }
-        //    }
-        //}
+        private void Toggle(object sender, EventArgs e)
+        {
+            foreach (var item in Buttons)
+            {
+                item.IsVisible = !item.IsVisible;
+            }
+        }
+        async void ChooseFile(object sender, EventArgs e)
+        {
+            try
+            {
+                var File = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
+                AppModel.Instance.MainObject = await CharHolderIO.Load(File);
+            }
+            catch (Exception)
+            {
+            }
+        }
     }
 }

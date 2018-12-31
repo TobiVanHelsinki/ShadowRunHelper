@@ -2,25 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
-             xmlns:tvs="clr-namespace:Xam.Plugin.TabView;assembly=Xam.Plugin.TabView"
              x:Class="ShadowRunHelperViewer.MainPage">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <ScrollView>
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Choose File" Clicked="ChooseFile"/>
-                <Label Text="{x:Binding AppModel.MainObject.FileInfo.FilePath}"/>
-                <Label Text="{x:Binding AppModel.MainObject.FileInfo.Name}"/>
-                <Label Text="{x:Binding AppModel.MainObject.Person.Kontostand}"/>
-                <Label Text="{x:Binding AppModel.MainObject.Person.Edge_Aktuell}"/>
-                <Label Text="{x:Binding AppModel.MainObject.Person.Edge_Gesamt}"/>
-                <Label Text="{x:Binding AppModel.MainObject.Person.Karma}"/>
-                <Label Text="{x:Binding AppModel.MainObject.Person.Karma_Gesamt}"/>
-            </StackLayout>
-        </ScrollView>
-        <local:CategoryView Grid.Row="1" BindingContext="{x:Binding AppModel.MainObject, Mode=OneWay}"/>
-    </Grid>
+    <local:CharView Grid.Row="1" BindingContext="{x:Binding AppModel.MainObject, Mode=OneWay}"/>
 </ContentPage>
