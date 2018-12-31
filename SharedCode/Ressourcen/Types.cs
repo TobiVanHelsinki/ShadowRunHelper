@@ -167,7 +167,8 @@ namespace ShadowRunHelper
     public static class TypeHelper
     {
         public const int ThingDefsCount = 27;
-        private static List<ThingTypeProperty> thingTypeProperties = new List<ThingTypeProperty>() {
+
+        public static List<ThingTypeProperty> ThingTypeProperties { get; set; } = new List<ThingTypeProperty>() {
            new ThingTypeProperty(null,ThingDefs.Undef, -1, -1){ Usable = false },
            new ThingTypeProperty(null,ThingDefs.UndefTemp, -1, -1){ Usable = false },
            new ThingTypeProperty(typeof(Handlung),ThingDefs.Handlung, 0, 0, "Handlung"),
@@ -179,7 +180,7 @@ namespace ShadowRunHelper
            new ThingTypeProperty(typeof(Vorteil),ThingDefs.Vorteil, 3, 9, "Vorteil"),
            new ThingTypeProperty(typeof(Nachteil),ThingDefs.Nachteil, 3, 10, "Nachteil"),
            new ThingTypeProperty(typeof(Connection),ThingDefs.Connection, 3, 2, "Connection"),
-           new ThingTypeProperty(typeof(Sin),ThingDefs.Sin, 3, 6, "Sin"),
+           new ThingTypeProperty(typeof(Sin),ThingDefs.Sin, 3, 6, "SIN"),
            new ThingTypeProperty(typeof(Attribut),ThingDefs.Attribut, 3, 0, "Attribut"),
            new ThingTypeProperty(typeof(Berechnet),ThingDefs.Berechnet, 3, 1, "Berechnet"),
            new ThingTypeProperty(typeof(Nahkampfwaffe),ThingDefs.Nahkampfwaffe, 2, 1, "Nahkampfwaffe"),
@@ -201,8 +202,6 @@ namespace ShadowRunHelper
            new ThingTypeProperty(typeof(Wandlung),ThingDefs.Wandlung,3,8, "Wandlung"),
            new ThingTypeProperty(typeof(Initiation),ThingDefs.Initiation,3,7, "Initiation"),
         };
-
-        public static List<ThingTypeProperty> ThingTypeProperties { get => thingTypeProperties; set => thingTypeProperties = value; }
 
 
         public static string ThingDefToString(ThingDefs eThingDefToConvert, bool Mehrzahl)

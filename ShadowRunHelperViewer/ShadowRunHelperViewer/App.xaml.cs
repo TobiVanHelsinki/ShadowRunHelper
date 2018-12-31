@@ -1,4 +1,7 @@
 ﻿using ShadowRunHelper;
+using ShadowRunHelper.Model;
+using SharedCode.Ressourcen;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,9 +13,17 @@ namespace ShadowRunHelperViewer
         public App()
         {
             InitializeComponent();
-            //TAPPLICATION_Xamarin.Init.Do();
-            //TLIB_Xamarin.Init.Do();
-
+            var ci = DependencyService.Get<ILocale>().GetCurrentCultureInfo();
+            //ci = new System.Globalization.CultureInfo("de");
+            L10n.SetLocale(ci);
+            Strings.Culture = ci;
+            var assembly = typeof(App).Assembly; // "EmbeddedImages" should be a class in your app
+            var assembly2 = typeof(CharHolder).Assembly; // "EmbeddedImages" should be a class in your app
+            foreach (var res in assembly.GetManifestResourceNames().Concat(assembly2.GetManifestResourceNames()))
+            {
+                System.Diagnostics.Debug.WriteLine("found resource: " + res);
+            }
+            var texttest = Strings.Model_SIN__Text;
             AppHolder.InitModel();
             if (SettingsModel.I.FIRST_START)
             {

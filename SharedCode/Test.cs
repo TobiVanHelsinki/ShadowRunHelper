@@ -1,4 +1,4 @@
-﻿using SharedCode.Strings;
+﻿using SharedCode.Ressourcen;
 using System.Resources;
 
 namespace ShadowRunHelper
@@ -7,10 +7,10 @@ namespace ShadowRunHelper
     {
         public static void DoSmt()
         {
-            ResourceManager resman = Resources.ResourceManager;
+            ResourceManager resman = Strings.ResourceManager;
             var dyn = resman.GetString("Notification_Error_SaveFail");
-            var stat = Resources.Notification_Error_SaveFail;
-            var classic = Resources.Notification_Error_SaveFail;
+            var stat = Strings.Notification_Error_SaveFail;
+            var classic = Strings.Notification_Error_SaveFail;
         }
     }
 }

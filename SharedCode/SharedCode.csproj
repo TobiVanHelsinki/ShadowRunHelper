@@ -44,10 +44,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Strings\Resources.Designer.cs">
+    <Compile Update="Ressourcen\Strings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
+      <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -56,16 +56,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Strings\de.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>de.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Resources.de.resx">
+    <EmbeddedResource Update="Ressourcen\Strings.de.resx">
       <Generator></Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Resources.resx">
+    <EmbeddedResource Update="Ressourcen\Strings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
