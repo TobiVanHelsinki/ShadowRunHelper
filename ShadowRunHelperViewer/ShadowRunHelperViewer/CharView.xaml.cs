@@ -18,11 +18,12 @@ namespace ShadowRunHelperViewer
         public CharView()
         {
             InitializeComponent();
+            SizeChanged += Page_SizeChanged;
             ButtonsPanels = new List<StackLayout>() { s1, s2, s3, s4 };
             InitButtons();
             BindingContext = this;
 
-            foreach (var item in Controllers)
+            foreach (var item in ControllerPanel.Children)
             {
                 item.IsVisible = false;
             }
@@ -53,18 +54,19 @@ namespace ShadowRunHelperViewer
                     Text = "Favorites"
                 };
                 bs1.Clicked += Bs1_Clicked;
-                s1.Children.Add(bs1);
+                s5.Children.Add(bs1);
                 var bs2 = new Button
                 {
                     Text = "Additional Info"
                 };
                 bs2.Clicked += Bs2_Clicked;
-                s1.Children.Add(bs2);
+                s5.Children.Add(bs2);
                 foreach (var Category in Model.MainObject.Settings.CategoryOptions.OrderBy(x => x.Pivot).ThenBy(x => x.Order))
                 {
                     var b = new Button
                     {
-                        BindingContext = Category.ThingType // TODO wohl doch die ressources nehmen
+                        Padding = new Thickness(2),
+                        BindingContext = Category.ThingType
                     };
                     switch (Category.Pivot)
                     {
@@ -106,12 +108,94 @@ namespace ShadowRunHelperViewer
                 GC.IsVisible = !GC.IsVisible;
             }
         }
+        private void Page_SizeChanged(object sender, EventArgs e)
+        {
+            if (Width > 550)
+            {
+                if (Open)
+                {
+                    ChangeUi_Wide_Open();
+                }
+                else
+                {
+                    ChangeUi_Wide_Close();
+                }
+            }
+            else
+            {
+                if (Open)
+                {
+                    ChangeUi_Narrow_Open();
+                }
+                else
+                {
+                    ChangeUi_Narrow_Close();
+                }
+            }
+        }
+        bool Open = true;
+        bool Narrow = false;
+
+        private void ChangeUi_Narrow_Open()
+        {
+            Narrow = true;
+            Open = true;
+            LayerContent_Col0.Width = new GridLength(1, GridUnitType.Star);
+            LayerContent_Col1.Width = new GridLength(0, GridUnitType.Absolute);
+            LayerContent_Col2.Width = new GridLength(1, GridUnitType.Star);
+            PaintFrame.BackgroundColor = Color.White;
+        }
+        private void ChangeUi_Narrow_Close()
+        {
+            Narrow = true;
+            Open = false;
+            LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
+            LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
+            LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
+            PaintFrame.BackgroundColor = Color.Transparent;
+        }
+        private void ChangeUi_Wide_Open()
+        {
+            Narrow = false;
+            Open = true;
+            LayerContent_Col0.Width = new GridLength(1, GridUnitType.Auto);
+            LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
+            LayerContent_Col2.Width = new GridLength(1, GridUnitType.Auto);
+            PaintFrame.BackgroundColor = Color.Transparent;
+        }
+        private void ChangeUi_Wide_Close()
+        {
+            Narrow = false;
+            Open = false;
+            LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
+            LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
+            LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
+            PaintFrame.BackgroundColor = Color.Transparent;
+        }
 
         private void Toggle(object sender, EventArgs e)
         {
-            foreach (var item in Buttons)
+            if (Open)
             {
-                item.IsVisible = !item.IsVisible;
+                if (Narrow)
+                {
+                    ChangeUi_Narrow_Close();
+                }
+                else
+                {
+                    ChangeUi_Wide_Close();
+                }
+            }
+            else
+            {
+                if (Narrow)
+                {
+                    ChangeUi_Narrow_Open();
+                }
+                else
+                {
+                    ChangeUi_Wide_Open();
+                }
             }
         }
         async void ChooseFile(object sender, EventArgs e)

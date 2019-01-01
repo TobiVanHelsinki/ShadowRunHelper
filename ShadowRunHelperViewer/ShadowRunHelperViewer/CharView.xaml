@@ -4,14 +4,21 @@
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              x:Class="ShadowRunHelperViewer.CharView"
+             MinimumWidthRequest="50"
              >
+    <ContentView.Resources>
+        <Style x:Key="CatPanel" TargetType="Frame">
+            <Setter Property="Margin" Value="0,0,0,3"/>
+            <Setter Property="Padding" Value="6"/>
+        </Style>
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal">
                 <Button Text="Choose File" Clicked="ChooseFile"/>
                 <!--<Label Text="{x:Binding Model.MainObject.FileInfo.Name}"/>-->
                 <Label Text="{x:Binding Model.MainObject.Person.Kontostand}"/>
@@ -19,13 +26,13 @@
                 <Label Text="{x:Binding Model.MainObject.Person.Edge_Gesamt}"/>
                 <Label Text="{x:Binding Model.MainObject.Person.Karma_Aktuell}"/>
                 <Label Text="{x:Binding Model.MainObject.Person.Karma_Gesamt}"/>
-                <Button Text="Toggle" Clicked="Toggle"/>
+                <Button Text="Toggle" Clicked="Toggle" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
-            <Grid x:Name="LayerContent" HorizontalOptions="Fill" Grid.Row="1">
+            <Grid HorizontalOptions="Fill" Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" x:Name="LayerContent_Col0"/>
-                    <ColumnDefinition Width="*" x:Name="LayerContent_Col1"/>
-                    <ColumnDefinition Width="Auto" x:Name="LayerContent_Col2"/>
+                    <ColumnDefinition Width="0" x:Name="LayerContent_Col0"/>
+                    <ColumnDefinition Width="0" x:Name="LayerContent_Col1"/>
+                    <ColumnDefinition Width="0" x:Name="LayerContent_Col2"/>
                 </Grid.ColumnDefinitions>
                 <StackLayout Grid.Column="1" x:Name="ControllerPanel">
                     <local:GController BindingContext="{x:Binding Model.MainObject.CTRLHandlung}" BindingContextChanged="RefreshButton" Expand="True"/>
@@ -97,26 +104,28 @@
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
-                <Frame x:DataType="local:CharView" BackgroundColor="Accent"
-                       BindingContext="{x:Reference Name=ButtonsLeft}" WidthRequest="{Binding Path=Width, Mode=OneWay}"
-                       MinimumWidthRequest="50"/>
-            </Grid>
-            <Grid x:Name="LayerButton" HorizontalOptions="Fill" Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" x:Name="LayerButton_Col0"/>
-                    <ColumnDefinition Width="*" x:Name="LayerButton_Col1"/>
-                    <ColumnDefinition Width="Auto" x:Name="LayerButton_Col2"/>
-                </Grid.ColumnDefinitions>
+                <Frame x:Name="PaintFrame" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                 <ScrollView>
-                    <StackLayout x:Name="ButtonsLeft">
-                        <StackLayout x:Name="s1" Margin="0,0,0,7"/>
-                        <StackLayout x:Name="s2"/>
+                    <StackLayout x:Name="ButtonsLeft" BackgroundColor="White">
+                        <Frame BorderColor="Blue" Style="{StaticResource CatPanel}">
+                            <StackLayout x:Name="s1"/>
+                        </Frame>
+                        <Frame BorderColor="Green" Style="{StaticResource CatPanel}">
+                            <StackLayout x:Name="s2"/>
+                            </Frame>
+                        <Frame Margin="0" BorderColor="Gray" Style="{StaticResource CatPanel}">
+                            <StackLayout x:Name="s5"/>
+                        </Frame>
                     </StackLayout>
                 </ScrollView>
-                <ScrollView Grid.Column="2" x:Name="ButtonsRigth">
+                <ScrollView Grid.Column="2" BackgroundColor="White"  Style="{StaticResource CatPanel}">
                     <StackLayout>
-                        <StackLayout x:Name="s3" Margin="0,0,0,7"/>
-                        <StackLayout x:Name="s4"/>
+                        <Frame BorderColor="YellowGreen"  Style="{StaticResource CatPanel}">
+                            <StackLayout x:Name="s3"/>
+                        </Frame>
+                        <Frame Margin="0" BorderColor="Red" Style="{StaticResource CatPanel}">
+                            <StackLayout x:Name="s4"/>
+                        </Frame>
                     </StackLayout>
                 </ScrollView>
             </Grid>
