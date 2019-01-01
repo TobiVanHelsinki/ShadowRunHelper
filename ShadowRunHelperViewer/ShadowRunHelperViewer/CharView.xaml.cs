@@ -1,13 +1,11 @@
 ﻿using ShadowRunHelper;
+using ShadowRunHelper.CharController;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using TAPPLICATION.IO;
-using TLIB;
-using Xam.Plugin.TabView;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,36 +14,43 @@ namespace ShadowRunHelperViewer
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CharView : ContentView
     {
+        public AppModel Model => AppModel.Instance;
         public CharView()
         {
-            //BindingContextChanged += CategoryView_BindingContextChanged_AddCategoriesProgramamticly;
-            BindingContextChanged += CategoryView_BindingContextChanged_AddCategoriesButtonsProgramamticly;
             InitializeComponent();
             ButtonsPanels = new List<StackLayout>() { s1, s2, s3, s4 };
-        }
+            InitButtons();
+            BindingContext = this;
 
-        IEnumerable<StackLayout> ButtonsPanels;
-        IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children).OfType<Button>();
-
-        private void CategoryView_BindingContextChanged_AddCategoriesButtonsProgramamticly(object sender, EventArgs e)
-        {
-            foreach (var item in Controllers.Children)
+            foreach (var item in Controllers)
             {
                 item.IsVisible = false;
             }
+        }
+        IEnumerable<StackLayout> ButtonsPanels;
+        IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children).OfType<Button>();
+        IEnumerable<GController> Controllers => ControllerPanel.Children.OfType<GController>();
+
+        private void RefreshButton(object sender, EventArgs e)
+        {
+            if (sender is GController gc && gc.Controller is IController controller)
+            {
+                var B = Buttons.FirstOrDefault(x => (x.BindingContext is ThingDefs d) ? controller.eDataTyp == d : false);
+                if (B != null)
+                {
+                    B.Text = TypeHelper.ThingDefToString(controller.eDataTyp, true);
+                    B.IsVisible = gc.Setting.Visibility;
+                }
+            }
+        }
+
+        private void InitButtons()
+        {
             if (this is ContentView Content)
             {
-                foreach (var item in Buttons)
-                {
-                    item.Clicked -= B_Clicked;
-                }
-                foreach (var item in ButtonsPanels)
-                {
-                    item.Children.Clear();
-                }
                 var bs1 = new Button
                 {
-                    Text = "Favorites" + " (" + (BindingContext as CharHolder)?.Favorites?.Count() + ")"
+                    Text = "Favorites"
                 };
                 bs1.Clicked += Bs1_Clicked;
                 s1.Children.Add(bs1);
@@ -55,12 +60,11 @@ namespace ShadowRunHelperViewer
                 };
                 bs2.Clicked += Bs2_Clicked;
                 s1.Children.Add(bs2);
-                foreach (var Category in TypeHelper.ThingTypeProperties.Where(x => x.Usable).OrderBy(x => x.Pivot).ThenBy(x => x.Order))
+                foreach (var Category in Model.MainObject.Settings.CategoryOptions.OrderBy(x => x.Pivot).ThenBy(x => x.Order))
                 {
-                    var gc = Controllers.Children.OfType<GController>().FirstOrDefault(x=>x.Controller.eDataTyp == Category.ThingType);
                     var b = new Button
                     {
-                        Text = CustomManager.GetString(Category.DisplayNamePlural) + " (" + gc?.Controller?.GetElements().Count() + ")"
+                        BindingContext = Category.ThingType // TODO wohl doch die ressources nehmen
                     };
                     switch (Category.Pivot)
                     {
@@ -80,7 +84,6 @@ namespace ShadowRunHelperViewer
                             break;
                     }
                     b.Clicked += B_Clicked;
-                    b.Resources.Add("GC",gc);
                 }
             }
         }
@@ -97,10 +100,9 @@ namespace ShadowRunHelperViewer
 
         private void B_Clicked(object sender, EventArgs e)
         {
-            object gc = null;
-            (sender as Button)?.Resources?.TryGetValue("GC", out gc);
-            if (gc is GController GC)
+            if (sender is Button b && b.BindingContext is ThingDefs type)
             {
+                var GC = Controllers.First(x=>x.Controller.eDataTyp == type);
                 GC.IsVisible = !GC.IsVisible;
             }
         }
@@ -123,5 +125,6 @@ namespace ShadowRunHelperViewer
             {
             }
         }
+
     }
 }

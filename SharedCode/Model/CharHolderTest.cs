@@ -27,6 +27,7 @@ namespace ShadowRunHelper.Model
                     }
                 }
             }
+            CH.AfterLoad();
             return CH;
         }
     }

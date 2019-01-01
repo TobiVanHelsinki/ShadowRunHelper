@@ -502,10 +502,8 @@ namespace ShadowRunHelper.Model
             item.LinkedThings.Add(ret.CTRLAttribut.MI_Konsti);
             item.LinkedThings.Add(ret.CTRLPanzerung.MI_Wert);
             ret.Add(item);
+            ret.AfterLoad();
             ret.HasChanges = true;
-            ret.Repair();
-            ret.Settings.Refresh();
-            ret.RefreshListeners();
             try
             {
                 ret.FileInfo = new FileInfo(IO.CharHolderIO.CurrentSavePath + ret.MakeName(false));

@@ -2,10 +2,8 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
-             xmlns:model="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
              xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              x:Class="ShadowRunHelperViewer.CharView"
-             x:DataType="model:CharHolder"
              >
     <ContentView.Content>
         <Grid>
@@ -13,69 +11,55 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ScrollView>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                    <Button Text="Choose File" Clicked="ChooseFile"/>
-                    <!--<Label Text="{x:Binding FileInfo.Name}"/>-->
-                    <Label Text="{x:Binding Person.Kontostand}"/>
-                    <Label Text="{x:Binding Person.Edge_Aktuell}"/>
-                    <Label Text="{x:Binding Person.Edge_Gesamt}"/>
-                    <Label Text="{x:Binding Person.Karma_Aktuell}"/>
-                    <Label Text="{x:Binding Person.Karma_Gesamt}"/>
-                    <Button Text="Toggle" Clicked="Toggle"/>
-                </StackLayout>
-            </ScrollView>
-            <Grid HorizontalOptions="Fill" Grid.Row="1">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Button Text="Choose File" Clicked="ChooseFile"/>
+                <!--<Label Text="{x:Binding Model.MainObject.FileInfo.Name}"/>-->
+                <Label Text="{x:Binding Model.MainObject.Person.Kontostand}"/>
+                <Label Text="{x:Binding Model.MainObject.Person.Edge_Aktuell}"/>
+                <Label Text="{x:Binding Model.MainObject.Person.Edge_Gesamt}"/>
+                <Label Text="{x:Binding Model.MainObject.Person.Karma_Aktuell}"/>
+                <Label Text="{x:Binding Model.MainObject.Person.Karma_Gesamt}"/>
+                <Button Text="Toggle" Clicked="Toggle"/>
+            </StackLayout>
+            <Grid x:Name="LayerContent" HorizontalOptions="Fill" Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" x:Name="LayerContent_Col0"/>
+                    <ColumnDefinition Width="*" x:Name="LayerContent_Col1"/>
+                    <ColumnDefinition Width="Auto" x:Name="LayerContent_Col2"/>
                 </Grid.ColumnDefinitions>
-                <ScrollView>
-                    <StackLayout>
-                        <StackLayout x:Name="s1" Margin="0,0,0,7"/>
-                        <StackLayout x:Name="s2"/>
-                    </StackLayout>
-                </ScrollView>
-                <ScrollView Grid.Column="2">
-                    <StackLayout>
-                        <StackLayout x:Name="s3" Margin="0,0,0,7"/>
-                        <StackLayout x:Name="s4"/>
-                    </StackLayout>
-                </ScrollView>
-                <StackLayout Grid.Column="1" x:Name="Controllers">
-                    <local:GController BindingContext="{x:Binding CTRLHandlung}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLFertigkeit}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLZaubersprueche}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLAdeptenkraft}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLKomplexeForm}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLItem}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLKommlink}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLCyberDeck}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLProgramm}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLFoki}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLGeist}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLWidgets}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLSprite}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLFernkampfwaffe}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLNahkampfwaffe}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLPanzerung}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLVehikel}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLMunition}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLAttribut}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLBerechnet}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLConnection}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLImplantat}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLTradition}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLStroemung}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLSin}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLInitiation}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLWandlung}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLVorteil}" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding CTRLNachteil}" Expand="True"/>
+                <StackLayout Grid.Column="1" x:Name="ControllerPanel">
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLHandlung}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLFertigkeit}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLZaubersprueche}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLAdeptenkraft}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLKomplexeForm}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLItem}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLKommlink}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLCyberDeck}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLProgramm}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLFoki}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLGeist}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLWidgets}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLSprite}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLFernkampfwaffe}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLNahkampfwaffe}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLPanzerung}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLVehikel}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLMunition}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLAttribut}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLBerechnet}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLConnection}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLImplantat}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLTradition}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLStroemung}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLSin}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLInitiation}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLWandlung}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLVorteil}" BindingContextChanged="RefreshButton" Expand="True"/>
+                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLNachteil}" BindingContextChanged="RefreshButton" Expand="True"/>
                     <StackLayout x:Name="Favs" BackgroundColor="LightGoldenrodYellow">
                         <Label Text="Favorites"/>
-                        <ListView ItemsSource="{x:Binding Favorites}">
+                        <ListView ItemsSource="{x:Binding Model.MainObject.Favorites}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="charmodel:Thing">
                                     <ViewCell>
@@ -105,14 +89,36 @@
                     </StackLayout>
                     <ScrollView x:Name="Notes">
                         <StackLayout>
-                            <Label Text="{x:Binding Person.Notizen}" BackgroundColor="AntiqueWhite"/>
+                            <Label Text="{x:Binding Model.MainObject.Person.Notizen}" BackgroundColor="AntiqueWhite"/>
                             <Grid x:Name="PersonArray">
                                 <!--TODO-->
-                                <Label Text="{x:Binding Person.Alias}"/>
+                                <Label Text="{x:Binding Model.MainObject.Person.Alias}"/>
                             </Grid>
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
+                <Frame x:DataType="local:CharView" BackgroundColor="Accent"
+                       BindingContext="{x:Reference Name=ButtonsLeft}" WidthRequest="{Binding Path=Width, Mode=OneWay}"
+                       MinimumWidthRequest="50"/>
+            </Grid>
+            <Grid x:Name="LayerButton" HorizontalOptions="Fill" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" x:Name="LayerButton_Col0"/>
+                    <ColumnDefinition Width="*" x:Name="LayerButton_Col1"/>
+                    <ColumnDefinition Width="Auto" x:Name="LayerButton_Col2"/>
+                </Grid.ColumnDefinitions>
+                <ScrollView>
+                    <StackLayout x:Name="ButtonsLeft">
+                        <StackLayout x:Name="s1" Margin="0,0,0,7"/>
+                        <StackLayout x:Name="s2"/>
+                    </StackLayout>
+                </ScrollView>
+                <ScrollView Grid.Column="2" x:Name="ButtonsRigth">
+                    <StackLayout>
+                        <StackLayout x:Name="s3" Margin="0,0,0,7"/>
+                        <StackLayout x:Name="s4"/>
+                    </StackLayout>
+                </ScrollView>
             </Grid>
         </Grid>
     </ContentView.Content>

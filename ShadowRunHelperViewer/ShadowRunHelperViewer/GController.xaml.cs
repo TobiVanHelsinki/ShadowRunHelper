@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using ShadowRunHelper;
+﻿using ShadowRunHelper;
 using ShadowRunHelper.CharController;
+using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
+using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using ShadowRunHelper.Model;
-using PropertyChangingEventArgs = Xamarin.Forms.PropertyChangingEventArgs;
 
 namespace ShadowRunHelperViewer
 {
@@ -36,8 +36,8 @@ namespace ShadowRunHelperViewer
                 CurrentTemplate = X as DataTemplate;
                 Items.ItemTemplate = CurrentTemplate ?? FallbackTemplate;
 
-                var Setting = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x=>x.ThingType == Controller.eDataTyp);
-                IsVisible = Setting != null ? Setting.Visibility : true;
+                Setting = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x=>x.ThingType == Controller.eDataTyp);
+                IsVisible = Setting.Visibility && IsVisible;
                 Headline.Text = TypeHelper.ThingDefToString(Controller.eDataTyp, true);
             }
             else
@@ -51,6 +51,9 @@ namespace ShadowRunHelperViewer
             get { return (bool)GetValue(ExpandProperty); }
             set { SetValue(ExpandProperty, value); Items.IsVisible = value; }
         }
+
+        public CategoryOption Setting { get; private set; }
+
         public static readonly BindableProperty ExpandProperty =
             BindableProperty.Create(nameof(Expand), typeof(bool), typeof(GController), true, propertyChanged: UpdateVis);
 

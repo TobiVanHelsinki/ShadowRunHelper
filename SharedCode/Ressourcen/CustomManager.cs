@@ -27,7 +27,7 @@ namespace ShadowRunHelper
                         ret = Strings.ResourceManager.GetString(name, CultureInfo.CurrentCulture);
                         if (ret == null)
                         {
-                            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                            //if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
                         }
                     }
                 }
