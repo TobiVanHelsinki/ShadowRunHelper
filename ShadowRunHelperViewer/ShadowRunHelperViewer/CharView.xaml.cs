@@ -33,6 +33,7 @@ namespace ShadowRunHelperViewer
                 item.PropertyChanging += Item_PropertyChanging;
                 item.PropertyChanged += Item_PropertyChanged;
             }
+            ChangeUi();
         }
 
         private void Item_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

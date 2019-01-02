@@ -62,14 +62,24 @@
                 <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Rigth}"/>
             </Grid>
         </ControlTemplate>
+        <ControlTemplate x:Key="ThingX" x:DataType="CharModel:Thing">
+            <Grid Style="{StaticResource TemplateGrid}" BindingContext="{TemplateBinding BindingContext}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ContentView ControlTemplate="{StaticResource Thing}"/>
+                <Label Text="{x:Binding Notiz}"/>
+            </Grid>
+        </ControlTemplate>
 
         <DataTemplate x:Key="Fallback" x:DataType="CharModel:Thing">
-            <ViewCell Tapped="ViewCell_Tapped">
+            <ViewCell>
                 <ContentView ControlTemplate="{StaticResource Thing}"/>
             </ViewCell>
         </DataTemplate>
         <DataTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
-            <ViewCell Tapped="ViewCell_Tapped">
+            <ViewCell>
                 <Grid Style="{StaticResource TemplateGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -94,30 +104,43 @@
             </ViewCell>
         </DataTemplate>
         <DataTemplate x:Key="Nahkampfwaffe" x:DataType="CharModel:Nahkampfwaffe">
-            <ViewCell Tapped="ViewCell_Tapped">
-                <Grid Style="{StaticResource TemplateGrid}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+            <ViewCell>
+                <Grid x:Name="MainPanel" Style="{StaticResource TemplateGrid}">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <ContentView Grid.ColumnSpan="2" ControlTemplate="{StaticResource Thing}"/>
-                    <Label Grid.Row="1" Grid.Column="0" Text="SchadenTyp"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding SchadenTyp}"/>
+                    <ContentView ControlTemplate="{StaticResource Thing}"/>
+                    <Grid Grid.Row="1">
+                        <!--<Grid.Triggers>
+                            <DataTrigger TargetType="Grid" Binding="{Binding Source={x:Reference MainPanel}, Path=cl}" Value="True">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </Grid.Triggers>-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="1" Grid.Column="0" Text="SchadenTyp"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding SchadenTyp}"/>
 
-                    <Label Grid.Row="2" Grid.Column="0" Text="DK"/>
-                    <Label Grid.Row="2" Grid.Column="1" Text="{x:Binding DKCalced}"/>
+                        <Label Grid.Row="2" Grid.Column="0" Text="DK"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{x:Binding DKCalced}"/>
 
-                    <Label Grid.Row="3" Grid.Column="0" Text="Reichweite"/>
-                    <Label Grid.Row="3" Grid.Column="1" Text="{x:Binding Reichweite}"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="Reichweite"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="{x:Binding Reichweite}"/>
+
+                    </Grid>
                 </Grid>
             </ViewCell>
         </DataTemplate>
+
     </ContentView.Resources>
     <ContentView.Content>
         <Grid>
@@ -132,11 +155,11 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label x:Name="Headline" HorizontalOptions="Center"/>
-                <Button Text="Hide" Clicked="ChangeVis" Grid.Column="1"/>
-                <!--<Button Text="Show/Hide" Clicked="ChangeListVis" Grid.Column="1"/>-->
+                <Button Text="Hide" Clicked="Hide" Grid.Column="1"/>
             </Grid>
             <ContentView Grid.Row="1" ControlTemplate="{StaticResource Thing_H}"/>
             <ListView x:Name="Items" Grid.Row="2"
+                      ItemSelected="Items_ItemSelected"
                       ItemsSource="{x:Binding Data}"
                       BackgroundColor="LightYellow" HasUnevenRows="True"/>
         </Grid>

@@ -21,12 +21,18 @@ namespace ShadowRunHelperViewer
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+        #region Hold IController
         IController _Controller;
         public IController Controller
         {
             get { return _Controller; }
             set { if (_Controller != value) { _Controller = value; NotifyPropertyChanged(); OnControllerChanged(); } }
         }
+        private void GController_BindingContextChanged(object sender, EventArgs e)
+        {
+            Controller = BindingContext as IController;
+        }
+
         private void OnControllerChanged()
         {
             if (Controller != null)
@@ -34,9 +40,14 @@ namespace ShadowRunHelperViewer
                 string key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
                 Resources.TryGetValue(key, out object X);
                 CurrentTemplate = X as DataTemplate;
+                Resources.TryGetValue(key + "X", out X);
+                CurrentTemplateX = X as DataTemplate;
+
+                //ViewCell a = Items.TemplatedItems.OfType<ViewCell>().FirstOrDefault(x => x.BindingContext == e.SelectedItem);
+                //Extend
                 Items.ItemTemplate = CurrentTemplate ?? FallbackTemplate;
 
-                Setting = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x=>x.ThingType == Controller.eDataTyp);
+                Setting = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
                 IsVisible = Setting.Visibility && IsVisible;
                 Headline.Text = TypeHelper.ThingDefToString(Controller.eDataTyp, true);
             }
@@ -45,19 +56,19 @@ namespace ShadowRunHelperViewer
                 IsVisible = false;
             }
         }
-
+        #endregion
+        #region Expand Listview
         public bool Expand
         {
             get { return (bool)GetValue(ExpandProperty); }
             set { SetValue(ExpandProperty, value); Items.IsVisible = value; }
         }
 
-        public CategoryOption Setting { get; private set; }
 
         public static readonly BindableProperty ExpandProperty =
-            BindableProperty.Create(nameof(Expand), typeof(bool), typeof(GController), true, propertyChanged: UpdateVis);
+            BindableProperty.Create(nameof(Expand), typeof(bool), typeof(GController), true, propertyChanged: UpdateListVis);
 
-        private static void UpdateVis(BindableObject bindable, object oldValue, object newValue)
+        private static void UpdateListVis(BindableObject bindable, object oldValue, object newValue)
         {
             if (bindable is GController GC && newValue is bool b)
             {
@@ -65,7 +76,12 @@ namespace ShadowRunHelperViewer
             }
         }
 
+        #endregion
+        public CategoryOption Setting { get; private set; }
+
         DataTemplate CurrentTemplate;
+        DataTemplate CurrentTemplateX;
+        
         private readonly DataTemplate FallbackTemplate;
         public GController()
         {
@@ -76,31 +92,20 @@ namespace ShadowRunHelperViewer
             OnControllerChanged();
             BindingContextChanged += GController_BindingContextChanged;
         }
-
-        private void GController_BindingContextChanged(object sender, EventArgs e)
-        {
-            Controller = BindingContext as IController;
-        }
-
-        private void ChangeListVis(object sender, EventArgs e)
-        {
-            Items.IsVisible = !Items.IsVisible;
-        }
-        private void ChangeVis(object sender, EventArgs e)
+        private void Hide(object sender, EventArgs e)
         {
             IsVisible = false;
         }
 
-        private void ViewCell_Tapped(object sender, EventArgs e)
+        private void Items_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            if (sender is Element el2)
+            //ViewCell a = Items.TemplatedItems.OfType<ViewCell>().FirstOrDefault(x => x.BindingContext == e.SelectedItem);
+            //if (a != null)
             {
-                if (el2.FindByName("Extendet") is View cv)
-                {
-                    //cv.IsVisible = !cv.IsVisible;
-                    //cv.HeightRequest = cv.HeightRequest == 0 ? 20 : 0;
-                    //cv.ControlTemplate = cv.ControlTemplate == CurrentTemplate ? null : CurrentTemplate;
-                }
+                //Resources.TryGetValue("NahkampfwaffeX", out object cell);
+                //object v = (cell as DataTemplate).CreateContent();
+                //Items.TemplatedItems. = v as View;
+                //a.View = v as View;
             }
         }
     }
