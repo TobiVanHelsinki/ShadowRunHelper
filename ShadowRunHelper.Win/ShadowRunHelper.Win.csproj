@@ -430,8 +430,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PreBuildEvent>copy $(SolutionDir)SharedCode\Strings\Resources.de.resx $(ProjectDir)Strings\de\Resources.resw
-copy $(SolutionDir)SharedCode\Strings\Resources.resx $(ProjectDir)Strings\en\Resources.resw</PreBuildEvent>
+    <PreBuildEvent>copy $(SolutionDir)SharedCode\Ressourcen\Strings.de.resx $(ProjectDir)Strings\de\Resources.resw
+copy $(SolutionDir)SharedCode\Ressourcen\Strings.resx $(ProjectDir)Strings\en\Resources.resw</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

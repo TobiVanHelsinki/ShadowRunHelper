@@ -1,5 +1,4 @@
-﻿using CarouselView.FormsPlugin.UWP;
-using ShadowRunHelper;
+﻿using ShadowRunHelper;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -38,11 +37,7 @@ namespace ShadowRunHelperViewer.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            List<Assembly> assembliesToInclude = new List<Assembly>
-            {
-                typeof(CarouselViewRenderer).GetTypeInfo().Assembly
-            };
-            Xamarin.Forms.Forms.Init(e, assembliesToInclude);
+            Xamarin.Forms.Forms.Init(e);
 
             Frame rootFrame = Window.Current.Content as Frame;
 

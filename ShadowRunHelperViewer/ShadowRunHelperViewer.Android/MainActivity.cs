@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using CarouselView.FormsPlugin.Android;
 using ShadowRunHelper;
 
 namespace ShadowRunHelperViewer.Droid
@@ -21,7 +20,6 @@ namespace ShadowRunHelperViewer.Droid
             #region Init Libs
             TAPPLICATION_Droid.Init.Do();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
-            //CarouselViewRenderer.Init();
             #endregion
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
