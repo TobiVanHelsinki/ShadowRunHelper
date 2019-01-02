@@ -18,7 +18,7 @@ namespace ShadowRunHelper.Xam
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            CurrentChar = CharHolder.CreateCharWithStandardContent();
+            CurrentChar = CharHolderGenerator.CreateCharWithStandardContent();
 
 
         }

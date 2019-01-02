@@ -65,7 +65,7 @@ namespace ShadowRunHelper.UI
         void CreateDebugChar(object sender, RoutedEventArgs e)
         {
 #if DEBUG
-             Model.MainObject = CharHolder.CreateCharWithStandardContent();
+             Model.MainObject = CharHolderGenerator.CreateCharWithStandardContent();
             foreach (var item in TypeHelper.ThingTypeProperties.Where(x => x.Usable))
             {
                 CharModel.Thing NewThing;

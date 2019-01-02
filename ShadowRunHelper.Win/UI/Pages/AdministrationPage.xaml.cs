@@ -243,7 +243,7 @@ namespace ShadowRunHelper.UI
                 return;
             }
             ChangeProgress(true);
-            Model.MainObject = CharHolder.CreateCharWithStandardContent();
+            Model.MainObject = CharHolderGenerator.CreateCharWithStandardContent();
             SettingsModel.I.COUNT_CREATIONS++;
             AppModel.Instance?.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
             ChangeProgress(false);

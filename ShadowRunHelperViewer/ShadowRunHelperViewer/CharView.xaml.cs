@@ -24,6 +24,7 @@ namespace ShadowRunHelperViewer
             InitializeComponent();
             SizeChanged += Page_SizeChanged;
             ButtonsPanels = new List<StackLayout>() { s1, s2, s3, s4 };
+
             InitButtons();
             BindingContext = this;
 

@@ -4,7 +4,6 @@
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              x:Class="ShadowRunHelperViewer.CharView"
-             MinimumWidthRequest="50"
              >
     <ContentView.Resources>
         <Style x:Key="CatPanel" TargetType="Frame">
@@ -24,34 +23,44 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-                <Button Text="Load" Clicked="ChooseFile" HorizontalOptions="StartAndExpand"/>
-                <StackLayout Grid.Column="1" HorizontalOptions="Fill">
-                    <Label Text="{x:Binding Model.MainObject.Person.Alias}" Style="{StaticResource OneLineText}"/>
-                    <Label Text="{x:Binding Model.MainObject.Person.Char_Typ}" Style="{StaticResource OneLineText}"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Text="Load" Clicked="ChooseFile"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Grid.Column="1">
+                    <StackLayout Grid.Column="1" HorizontalOptions="StartAndExpand">
+                        <Label Text="{x:Binding Model.MainObject.Person.Alias}" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding Model.MainObject.Person.Char_Typ}" Style="{StaticResource OneLineText}"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Money" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding Model.MainObject.Person.Kontostand}" Style="{StaticResource OneLineText}"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="3" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Edge" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding Model.MainObject.Person.Edge_Aktuell}" Style="{StaticResource OneLineText}"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="4" HorizontalOptions="CenterAndExpand">
+                        <Label Text="All Edge" LineBreakMode="TailTruncation" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding Model.MainObject.Person.Edge_Gesamt}" Style="{StaticResource OneLineText}"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="5" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Karma" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding Model.MainObject.Person.Karma_Aktuell}" Style="{StaticResource OneLineText}"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="6" HorizontalOptions="EndAndExpand">
+                        <Label Text="All Karma" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding Model.MainObject.Person.Karma_Gesamt}" Style="{StaticResource OneLineText}"/>
+                    </StackLayout>
                 </StackLayout>
-                <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand">
-                    <Label Text="Money" Style="{StaticResource OneLineText}"/>
-                    <Label Text="{x:Binding Model.MainObject.Person.Kontostand}" Style="{StaticResource OneLineText}"/>
-                </StackLayout>
-                <StackLayout Grid.Column="3" HorizontalOptions="CenterAndExpand">
-                    <Label Text="Edge" Style="{StaticResource OneLineText}"/>
-                    <Label Text="{x:Binding Model.MainObject.Person.Edge_Aktuell}" Style="{StaticResource OneLineText}"/>
-                </StackLayout>
-                <StackLayout Grid.Column="4" HorizontalOptions="CenterAndExpand">
-                    <Label Text="All Edge" LineBreakMode="TailTruncation" Style="{StaticResource OneLineText}"/>
-                    <Label Text="{x:Binding Model.MainObject.Person.Edge_Gesamt}" Style="{StaticResource OneLineText}"/>
-                </StackLayout>
-                <StackLayout Grid.Column="5" HorizontalOptions="CenterAndExpand">
-                    <Label Text="Karma" Style="{StaticResource OneLineText}"/>
-                    <Label Text="{x:Binding Model.MainObject.Person.Karma_Aktuell}" Style="{StaticResource OneLineText}"/>
-                </StackLayout>
-                <StackLayout Grid.Column="6" HorizontalOptions="CenterAndExpand">
-                    <Label Text="All Karma" Style="{StaticResource OneLineText}"/>
-                    <Label Text="{x:Binding Model.MainObject.Person.Karma_Gesamt}" Style="{StaticResource OneLineText}"/>
-                </StackLayout>
-                <Button Text="Menu" Clicked="Toggle" Grid.Column="7" HorizontalOptions="EndAndExpand"/>
-            </StackLayout>
+                <Button Text="Menu" Clicked="Toggle" Grid.Column="2"/>
+            </Grid>
             <Grid HorizontalOptions="Fill" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col0"/>

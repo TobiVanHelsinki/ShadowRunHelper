@@ -15,7 +15,7 @@ namespace SharedCodeTest
         [TestMethod]
         public void SerializingSTDChar()
         {
-            var Should = CharHolder.CreateCharWithStandardContent();
+            var Should = CharHolderGenerator.CreateCharWithStandardContent();
             var Is = CharHolderIO.Deserialize(SharedIO.Serialize(Should));
             TestHelper.CompareCharHolder(Should, Is);
         }
