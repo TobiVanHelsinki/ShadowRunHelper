@@ -94,7 +94,6 @@
                         <Label Grid.Row="3" Grid.Column="1" Text="{x:Binding PraezisionCalced}"/>
                     </Grid>
                 </Grid>
-                
             </ViewCell>
         </DataTemplate>
         <DataTemplate x:Key="Nahkampfwaffe" x:DataType="CharModel:Nahkampfwaffe">

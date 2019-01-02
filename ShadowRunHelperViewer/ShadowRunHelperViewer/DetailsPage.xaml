@@ -7,7 +7,6 @@
     xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
     x:Class="ShadowRunHelperViewer.DetailsPage"
     >
-    <!--You can set an animation in the xaml file or in the csharp code behind-->
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Center"
@@ -20,12 +19,80 @@
             EasingOut="SinIn"
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
-    <!--You can use any elements here which are extended from Xamarin.Forms.View-->
-    <StackLayout 
-        VerticalOptions="Center" 
-        HorizontalOptions="Center" 
-        Padding="20, 20, 20, 20">
-        <Label
-            Text="{x:Binding MyThing.Bezeichner}"/>
-    </StackLayout>
+    <pages:PopupPage.Resources>
+        <Style x:Key="TemplateGrid" TargetType="Grid">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BindingContext" Value="{TemplateBinding BindingContext}"/>
+        </Style>
+        <Style x:Key="TemplateStack" TargetType="StackLayout">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <ControlTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
+            <Grid Style="{StaticResource TemplateGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!--<ContentView ControlTemplate="{StaticResource Thing}"/>-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="1" Grid.Column="0" Text="SchadenTyp"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding SchadenTyp}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="DK"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{x:Binding DKCalced}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Praezision"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{x:Binding PraezisionCalced}"/>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="Nahkampfwaffe" x:DataType="CharModel:Nahkampfwaffe">
+            <Grid Style="{StaticResource TemplateGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!--<ContentView ControlTemplate="{StaticResource Thing}"/>-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="SchadenTyp"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{x:Binding SchadenTyp}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="DK"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding DKCalced}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Reichweite"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{x:Binding Reichweite}"/>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+    </pages:PopupPage.Resources>
+    <ContentView x:Name="MainContent"
+                    BindingContext="{x:Binding MyThing}"
+                 BackgroundColor="White"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    Padding="20"/>
 </pages:PopupPage>
