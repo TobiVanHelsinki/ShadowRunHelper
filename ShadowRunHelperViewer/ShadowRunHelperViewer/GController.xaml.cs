@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper;
+﻿using Rg.Plugins.Popup.Services;
+using ShadowRunHelper;
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
@@ -38,14 +39,10 @@ namespace ShadowRunHelperViewer
             if (Controller != null)
             {
                 string key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
-                Resources.TryGetValue(key, out object X);
-                CurrentTemplate = X as DataTemplate;
-                Resources.TryGetValue(key + "X", out X);
-                CurrentTemplateX = X as DataTemplate;
+                Resources.TryGetValue(key, out object CustomTemplate);
+                Resources.TryGetValue("Thing", out object DefaultTemplate);
 
-                //ViewCell a = Items.TemplatedItems.OfType<ViewCell>().FirstOrDefault(x => x.BindingContext == e.SelectedItem);
-                //Extend
-                Items.ItemTemplate = CurrentTemplate ?? FallbackTemplate;
+                Items.ItemTemplate = CustomTemplate as DataTemplate ?? DefaultTemplate as DataTemplate;
 
                 Setting = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
                 IsVisible = Setting.Visibility && IsVisible;
@@ -79,33 +76,24 @@ namespace ShadowRunHelperViewer
         #endregion
         public CategoryOption Setting { get; private set; }
 
-        DataTemplate CurrentTemplate;
-        DataTemplate CurrentTemplateX;
-        
-        private readonly DataTemplate FallbackTemplate;
         public GController()
         {
             InitializeComponent();
-            Resources.TryGetValue("Fallback", out object X);
-            FallbackTemplate = X as DataTemplate;
-
             OnControllerChanged();
             BindingContextChanged += GController_BindingContextChanged;
         }
+
         private void Hide(object sender, EventArgs e)
         {
             IsVisible = false;
         }
 
-        private void Items_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        async void Items_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            //ViewCell a = Items.TemplatedItems.OfType<ViewCell>().FirstOrDefault(x => x.BindingContext == e.SelectedItem);
-            //if (a != null)
+            if (e.SelectedItem is Thing t)
             {
-                //Resources.TryGetValue("NahkampfwaffeX", out object cell);
-                //object v = (cell as DataTemplate).CreateContent();
-                //Items.TemplatedItems. = v as View;
-                //a.View = v as View;
+                await PopupNavigation.Instance.PushAsync(new DetailsPage(t));
+                Items.SelectedItem = null;
             }
         }
     }

@@ -12,13 +12,18 @@ namespace ShadowRunHelperViewer.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Init.Do();
-            TAPPLICATION_Droid.Init.Do();
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-            CarouselViewRenderer.Init();
+
+            #region Init Libs
+            TAPPLICATION_Droid.Init.Do();
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            //CarouselViewRenderer.Init();
+            #endregion
+
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
