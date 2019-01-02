@@ -5,6 +5,7 @@
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
+    xmlns:local="clr-namespace:ShadowRunHelperViewer"
     x:Class="ShadowRunHelperViewer.DetailsPage"
     >
     <pages:PopupPage.Animation>
@@ -20,34 +21,65 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
     <pages:PopupPage.Resources>
-        <Style x:Key="TemplateGrid" TargetType="Grid">
-            <Setter Property="Margin" Value="0"/>
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="BindingContext" Value="{TemplateBinding BindingContext}"/>
-        </Style>
-        <Style x:Key="TemplateStack" TargetType="StackLayout">
-            <Setter Property="Orientation" Value="Horizontal"/>
-            <Setter Property="Margin" Value="0"/>
-            <Setter Property="Padding" Value="0"/>
-        </Style>
-
-        <ControlTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
-            <Grid Style="{StaticResource TemplateGrid}">
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:CharModelStyles/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="TemplateGrid" TargetType="Grid">
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BindingContext" Value="{TemplateBinding BindingContext}"/>
+            </Style>
+            <Style x:Key="TemplateContentView" TargetType="ContentView">
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BindingContext" Value="{TemplateBinding BindingContext}"/>
+            </Style>
+            <Style x:Key="TemplateStack" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BindingContext" Value="{TemplateBinding BindingContext}"/>
+            </Style>
+            <ControlTemplate x:Key="Thing" x:DataType="CharModel:Thing">
+            <Grid Style="{StaticResource TemplateGrid}" BindingContext="{TemplateBinding BindingContext}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <!--<ContentView ControlTemplate="{StaticResource Thing}"/>-->
-                <Grid Grid.Row="1">
+                <Label Grid.Row="0" Grid.Column="0" Text="Bezeichner"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="{x:Binding Bezeichner}"/>
+                <Label Grid.Row="0" Grid.Column="2" Text="Wert"/>
+                <Label Grid.Row="0" Grid.Column="3" Text="{x:Binding Wert}"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Typ"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding Typ}"/>
+                <Label Grid.Row="1" Grid.Column="2" Text="Zusatz"/>
+                <Label Grid.Row="1" Grid.Column="3" Text="{x:Binding Zusatz}"/>
+                <ContentPresenter Grid.ColumnSpan="4" Grid.Row="2"/>
+                <Label Grid.Row="3" Grid.Column="0" Text="Notiz"/>
+                <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{x:Binding Notiz}"/>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
+            <ContentView ControlTemplate="{StaticResource Thing}" Style="{StaticResource TemplateContentView}">
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="1" Grid.Column="0" Text="SchadenTyp"/>
                     <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding SchadenTyp}"/>
@@ -58,7 +90,7 @@
                     <Label Grid.Row="3" Grid.Column="0" Text="Praezision"/>
                     <Label Grid.Row="3" Grid.Column="1" Text="{x:Binding PraezisionCalced}"/>
                 </Grid>
-            </Grid>
+            </ContentView>
         </ControlTemplate>
         <ControlTemplate x:Key="Nahkampfwaffe" x:DataType="CharModel:Nahkampfwaffe">
             <Grid Style="{StaticResource TemplateGrid}">
@@ -88,6 +120,7 @@
                 </Grid>
             </Grid>
         </ControlTemplate>
+            </ResourceDictionary>
     </pages:PopupPage.Resources>
     <ContentView x:Name="MainContent"
                     BindingContext="{x:Binding MyThing}"

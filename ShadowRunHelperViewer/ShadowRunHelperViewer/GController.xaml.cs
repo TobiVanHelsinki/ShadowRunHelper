@@ -40,9 +40,16 @@ namespace ShadowRunHelperViewer
             {
                 string key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
                 Resources.TryGetValue(key, out object CustomTemplate);
-                Resources.TryGetValue("Thing", out object DefaultTemplate);
+                if (CustomTemplate is DataTemplate DT)
+                {
+                    Items.ItemTemplate = DT;
+                }
 
-                Items.ItemTemplate = CustomTemplate as DataTemplate ?? DefaultTemplate as DataTemplate;
+                Resources.TryGetValue(key+"_H", out CustomTemplate);
+                if (CustomTemplate is ControlTemplate HL)
+                {
+                    Items_H.ControlTemplate = HL;
+                }
 
                 Setting = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
                 IsVisible = Setting.Visibility && IsVisible;
@@ -92,6 +99,7 @@ namespace ShadowRunHelperViewer
         {
             if (e.SelectedItem is Thing t)
             {
+                var a = Items.TemplatedItems[0].BindingContext;
                 await PopupNavigation.Instance.PushAsync(new DetailsPage(t));
                 Items.SelectedItem = null;
             }
