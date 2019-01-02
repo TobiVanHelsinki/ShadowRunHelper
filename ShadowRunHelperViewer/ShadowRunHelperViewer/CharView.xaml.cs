@@ -15,6 +15,10 @@ namespace ShadowRunHelperViewer
     public partial class CharView : ContentView
     {
         public AppModel Model => AppModel.Instance;
+        IEnumerable<StackLayout> ButtonsPanels;
+        IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children).OfType<Button>();
+        IEnumerable<GController> Controllers => ControllerPanel.Children.OfType<GController>();
+
         public CharView()
         {
             InitializeComponent();
@@ -26,25 +30,26 @@ namespace ShadowRunHelperViewer
             foreach (var item in ControllerPanel.Children)
             {
                 item.IsVisible = false;
+                item.PropertyChanging += Item_PropertyChanging;
+                item.PropertyChanged += Item_PropertyChanged;
             }
         }
-        IEnumerable<StackLayout> ButtonsPanels;
-        IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children).OfType<Button>();
-        IEnumerable<GController> Controllers => ControllerPanel.Children.OfType<GController>();
 
-        private void RefreshButton(object sender, EventArgs e)
+        private void Item_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (sender is GController gc && gc.Controller is IController controller)
+            if (e.PropertyName == nameof(IsVisible))
             {
-                var B = Buttons.FirstOrDefault(x => (x.BindingContext is ThingDefs d) ? controller.eDataTyp == d : false);
-                if (B != null)
+                if (!ControllerPanel.Children.Any(x => x.IsVisible))
                 {
-                    B.Text = TypeHelper.ThingDefToString(controller.eDataTyp, true);
-                    B.IsVisible = gc.Setting.Visibility;
+                    Open = true;
                 }
             }
         }
 
+        private void Item_PropertyChanging(object sender, PropertyChangingEventArgs e)
+        {
+        }
+        #region Menu Buttons
         private void InitButtons()
         {
             if (this is ContentView Content)
@@ -53,13 +58,13 @@ namespace ShadowRunHelperViewer
                 {
                     Text = "Favorites"
                 };
-                bs1.Clicked += Bs1_Clicked;
+                bs1.Clicked += B_Fav_Clicked;
                 s5.Children.Add(bs1);
                 var bs2 = new Button
                 {
                     Text = "Additional Info"
                 };
-                bs2.Clicked += Bs2_Clicked;
+                bs2.Clicked += B_Notes_Clicked;
                 s5.Children.Add(bs2);
                 foreach (var Category in Model.MainObject.Settings.CategoryOptions.OrderBy(x => x.Pivot).ThenBy(x => x.Order))
                 {
@@ -85,119 +90,128 @@ namespace ShadowRunHelperViewer
                         default:
                             break;
                     }
-                    b.Clicked += B_Clicked;
+                    b.Clicked += B_CTRL_Clicked;
                 }
             }
         }
 
-        private void Bs1_Clicked(object sender, EventArgs e)
+        private void RefreshButton(object sender, EventArgs e)
+        {
+            if (sender is GController gc && gc.Controller is IController controller)
+            {
+                var B = Buttons.FirstOrDefault(x => (x.BindingContext is ThingDefs d) ? controller.eDataTyp == d : false);
+                if (B != null)
+                {
+                    B.Text = TypeHelper.ThingDefToString(controller.eDataTyp, true);
+                    B.IsVisible = gc.Setting.Visibility;
+                }
+            }
+        }
+
+        private void B_Fav_Clicked(object sender, EventArgs e)
         {
             Favs.IsVisible = !Favs.IsVisible;
+            if (Narrow)
+            {
+                Open = false;
+            }
         }
 
-        private void Bs2_Clicked(object sender, EventArgs e)
+        private void B_Notes_Clicked(object sender, EventArgs e)
         {
             Notes.IsVisible = !Notes.IsVisible;
+            if (Narrow)
+            {
+                Open = false;
+            }
         }
 
-        private void B_Clicked(object sender, EventArgs e)
+        private void B_CTRL_Clicked(object sender, EventArgs e)
         {
-            if (sender is Button b && b.BindingContext is ThingDefs type)
+            if (sender is VisualElement b && b.BindingContext is ThingDefs type)
             {
-                var GC = Controllers.First(x=>x.Controller.eDataTyp == type);
+                var GC = Controllers.First(x => x.Controller.eDataTyp == type);
                 GC.IsVisible = !GC.IsVisible;
+                if (Narrow)
+                {
+                    Open = false;
+                }
+            }
+        }
+
+        #endregion
+        #region AdaptiveUI
+
+        bool _Narrow;
+        public bool Narrow
+        {
+            get { return _Narrow; }
+            set { if (_Narrow != value) { _Narrow = value; ChangeUi(); } }
+        }
+        bool _Open = true;
+        public bool Open
+        {
+            get { return _Open; }
+            set { if (_Open != value) { _Open = value; ChangeUi(); } }
+        }
+        private void ChangeUi()
+        {
+            if (Narrow)
+            {
+                if (Open)
+                {
+                    LayerContent_Col0.Width = new GridLength(1, GridUnitType.Star);
+                    LayerContent_Col1.Width = new GridLength(0, GridUnitType.Absolute);
+                    LayerContent_Col2.Width = new GridLength(1, GridUnitType.Star);
+                    HideFrame.IsVisible = true;
+                }
+                else
+                {
+                    LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
+                    LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
+                    LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
+                    HideFrame.IsVisible = false;
+                }
+            }
+            else
+            {
+                if (Open)
+                {
+                    LayerContent_Col0.Width = new GridLength(1, GridUnitType.Auto);
+                    LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
+                    LayerContent_Col2.Width = new GridLength(1, GridUnitType.Auto);
+                    HideFrame.IsVisible = false;
+                }
+                else
+                {
+                    LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
+                    LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
+                    LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
+                    HideFrame.IsVisible = false;
+                }
             }
         }
         private void Page_SizeChanged(object sender, EventArgs e)
         {
+            Narrow = Width < 550;
             if (Width > 550)
             {
-                if (Open)
-                {
-                    ChangeUi_Wide_Open();
-                }
-                else
-                {
-                    ChangeUi_Wide_Close();
-                }
+                Open = true;
             }
             else
             {
-                if (Open)
+                if (ControllerPanel.Children.Any(x=>x.IsVisible))
                 {
-                    ChangeUi_Narrow_Open();
-                }
-                else
-                {
-                    ChangeUi_Narrow_Close();
+                    Open = false;
                 }
             }
-        }
-        bool Open = true;
-        bool Narrow = false;
-
-        private void ChangeUi_Narrow_Open()
-        {
-            Narrow = true;
-            Open = true;
-            LayerContent_Col0.Width = new GridLength(1, GridUnitType.Star);
-            LayerContent_Col1.Width = new GridLength(0, GridUnitType.Absolute);
-            LayerContent_Col2.Width = new GridLength(1, GridUnitType.Star);
-            PaintFrame.BackgroundColor = Color.White;
-        }
-        private void ChangeUi_Narrow_Close()
-        {
-            Narrow = true;
-            Open = false;
-            LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
-            LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
-            LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
-            PaintFrame.BackgroundColor = Color.Transparent;
-        }
-        private void ChangeUi_Wide_Open()
-        {
-            Narrow = false;
-            Open = true;
-            LayerContent_Col0.Width = new GridLength(1, GridUnitType.Auto);
-            LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
-            LayerContent_Col2.Width = new GridLength(1, GridUnitType.Auto);
-            PaintFrame.BackgroundColor = Color.Transparent;
-        }
-        private void ChangeUi_Wide_Close()
-        {
-            Narrow = false;
-            Open = false;
-            LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
-            LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
-            LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
-            PaintFrame.BackgroundColor = Color.Transparent;
         }
 
         private void Toggle(object sender, EventArgs e)
         {
-            if (Open)
-            {
-                if (Narrow)
-                {
-                    ChangeUi_Narrow_Close();
-                }
-                else
-                {
-                    ChangeUi_Wide_Close();
-                }
-            }
-            else
-            {
-                if (Narrow)
-                {
-                    ChangeUi_Narrow_Open();
-                }
-                else
-                {
-                    ChangeUi_Wide_Open();
-                }
-            }
+            Open = !Open;
         }
+        #endregion
         async void ChooseFile(object sender, EventArgs e)
         {
             try

@@ -8,7 +8,7 @@
              >
     <ContentView.Resources>
         <Style x:Key="CatPanel" TargetType="Frame">
-            <Setter Property="Margin" Value="0,0,0,3"/>
+            <Setter Property="Margin" Value="3,0,0,3"/>
             <Setter Property="Padding" Value="6"/>
         </Style>
     </ContentView.Resources>
@@ -26,7 +26,7 @@
                 <Label Text="{x:Binding Model.MainObject.Person.Edge_Gesamt}"/>
                 <Label Text="{x:Binding Model.MainObject.Person.Karma_Aktuell}"/>
                 <Label Text="{x:Binding Model.MainObject.Person.Karma_Gesamt}"/>
-                <Button Text="Toggle" Clicked="Toggle" HorizontalOptions="EndAndExpand"/>
+                <Button Text="Menu" Clicked="Toggle" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
             <Grid HorizontalOptions="Fill" Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -104,13 +104,13 @@
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
-                <Frame x:Name="PaintFrame" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                <Frame x:Name="HideFrame" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="White"/>
                 <ScrollView>
                     <StackLayout x:Name="ButtonsLeft" BackgroundColor="White">
                         <Frame BorderColor="Blue" Style="{StaticResource CatPanel}">
                             <StackLayout x:Name="s1"/>
                         </Frame>
-                        <Frame BorderColor="Green" Style="{StaticResource CatPanel}">
+                        <Frame BorderColor="Orange" Style="{StaticResource CatPanel}">
                             <StackLayout x:Name="s2"/>
                             </Frame>
                         <Frame Margin="0" BorderColor="Gray" Style="{StaticResource CatPanel}">
@@ -120,10 +120,10 @@
                 </ScrollView>
                 <ScrollView Grid.Column="2" BackgroundColor="White"  Style="{StaticResource CatPanel}">
                     <StackLayout>
-                        <Frame BorderColor="YellowGreen"  Style="{StaticResource CatPanel}">
+                        <Frame BorderColor="Red"  Style="{StaticResource CatPanel}">
                             <StackLayout x:Name="s3"/>
                         </Frame>
-                        <Frame Margin="0" BorderColor="Red" Style="{StaticResource CatPanel}">
+                        <Frame Margin="0" BorderColor="Green" Style="{StaticResource CatPanel}">
                             <StackLayout x:Name="s4"/>
                         </Frame>
                     </StackLayout>
