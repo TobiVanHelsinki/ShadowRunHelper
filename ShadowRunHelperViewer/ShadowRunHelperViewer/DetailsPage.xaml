@@ -6,11 +6,7 @@
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
     xmlns:local="clr-namespace:ShadowRunHelperViewer"
-    xmlns:suave="clr-namespace:SuaveControls.DynamicWrapLayout;assembly=SuaveControls.DynamicWrapLayout"
-    xmlns:customcontrols="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.WrapRepeaterView"
-    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
-    x:Class="ShadowRunHelperViewer.DetailsPage"
-    >
+    x:Class="ShadowRunHelperViewer.DetailsPage">
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Center"
@@ -124,16 +120,13 @@
             </ControlTemplate>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-        <ListView
-        x:Name="MainContent"
+        <ListView x:Name="MainContent" ItemsSource="{x:Binding Source, Mode=OneWay}"
             BackgroundColor="CornflowerBlue"
-            ItemsSource="{x:Binding Source, Mode=OneWay}"
-        HorizontalOptions="Center"
-        VerticalOptions="Center"
+            HorizontalOptions="Center" VerticalOptions="Center"
             HasUnevenRows="True" SeparatorVisibility="Default" SeparatorColor="Black"
->
+        >
         <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:MyClass">
+            <DataTemplate x:DataType="local:MyClass">
                 <ViewCell>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -147,8 +140,7 @@
                         <Label Text="{x:Binding Value, Mode=OneWay}" Grid.Column="1"/>
                     </Grid>
                 </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            
-        </ListView>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </pages:PopupPage>

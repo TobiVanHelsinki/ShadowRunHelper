@@ -100,7 +100,7 @@ namespace ShadowRunHelperViewer
             if (e.SelectedItem is Thing t)
             {
                 var a = Items.TemplatedItems[0].BindingContext;
-                await PopupNavigation.Instance.PushAsync(new DetailsPage(t));
+                await PopupNavigation.Instance.PushAsync(new DetailsPage(t, false));
                 Items.SelectedItem = null;
             }
         }
