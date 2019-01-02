@@ -6,6 +6,9 @@
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
     xmlns:local="clr-namespace:ShadowRunHelperViewer"
+    xmlns:suave="clr-namespace:SuaveControls.DynamicWrapLayout;assembly=SuaveControls.DynamicWrapLayout"
+    xmlns:customcontrols="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.WrapRepeaterView"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     x:Class="ShadowRunHelperViewer.DetailsPage"
     >
     <pages:PopupPage.Animation>
@@ -42,90 +45,110 @@
                 <Setter Property="BindingContext" Value="{TemplateBinding BindingContext}"/>
             </Style>
             <ControlTemplate x:Key="Thing" x:DataType="CharModel:Thing">
-            <Grid Style="{StaticResource TemplateGrid}" BindingContext="{TemplateBinding BindingContext}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Text="Bezeichner"/>
-                <Label Grid.Row="0" Grid.Column="1" Text="{x:Binding Bezeichner}"/>
-                <Label Grid.Row="0" Grid.Column="2" Text="Wert"/>
-                <Label Grid.Row="0" Grid.Column="3" Text="{x:Binding Wert}"/>
-                <Label Grid.Row="1" Grid.Column="0" Text="Typ"/>
-                <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding Typ}"/>
-                <Label Grid.Row="1" Grid.Column="2" Text="Zusatz"/>
-                <Label Grid.Row="1" Grid.Column="3" Text="{x:Binding Zusatz}"/>
-                <ContentPresenter Grid.ColumnSpan="4" Grid.Row="2"/>
-                <Label Grid.Row="3" Grid.Column="0" Text="Notiz"/>
-                <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{x:Binding Notiz}"/>
-            </Grid>
-        </ControlTemplate>
-        <ControlTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
-            <ContentView ControlTemplate="{StaticResource Thing}" Style="{StaticResource TemplateContentView}">
-                <Grid>
+                <Grid Style="{StaticResource TemplateGrid}" BindingContext="{TemplateBinding BindingContext}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="1" Grid.Column="0" Text="SchadenTyp"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding SchadenTyp}"/>
-
-                    <Label Grid.Row="2" Grid.Column="0" Text="DK"/>
-                    <Label Grid.Row="2" Grid.Column="1" Text="{x:Binding DKCalced}"/>
-
-                    <Label Grid.Row="3" Grid.Column="0" Text="Praezision"/>
-                    <Label Grid.Row="3" Grid.Column="1" Text="{x:Binding PraezisionCalced}"/>
-                </Grid>
-            </ContentView>
-        </ControlTemplate>
-        <ControlTemplate x:Key="Nahkampfwaffe" x:DataType="CharModel:Nahkampfwaffe">
-            <Grid Style="{StaticResource TemplateGrid}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <!--<ContentView ControlTemplate="{StaticResource Thing}"/>-->
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Text="SchadenTyp"/>
-                    <Label Grid.Row="0" Grid.Column="1" Text="{x:Binding SchadenTyp}"/>
-
-                    <Label Grid.Row="1" Grid.Column="0" Text="DK"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding DKCalced}"/>
-
-                    <Label Grid.Row="2" Grid.Column="0" Text="Reichweite"/>
-                    <Label Grid.Row="2" Grid.Column="1" Text="{x:Binding Reichweite}"/>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Bezeichner"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{x:Binding Bezeichner}"/>
+                    <Label Grid.Row="0" Grid.Column="2" Text="Wert"/>
+                    <Label Grid.Row="0" Grid.Column="3" Text="{x:Binding Wert}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Typ"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding Typ}"/>
+                    <Label Grid.Row="1" Grid.Column="2" Text="Zusatz"/>
+                    <Label Grid.Row="1" Grid.Column="3" Text="{x:Binding Zusatz}"/>
+                    <ContentPresenter Grid.ColumnSpan="4" Grid.Row="2"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Notiz"/>
+                    <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{x:Binding Notiz}"/>
                 </Grid>
-            </Grid>
-        </ControlTemplate>
-            </ResourceDictionary>
+            </ControlTemplate>
+            <ControlTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
+                <!--<ContentView ControlTemplate="{StaticResource Thing}" Style="{StaticResource TemplateContentView}">-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="1" Grid.Column="0" Text="SchadenTyp"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding SchadenTyp}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="DK"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{x:Binding DKCalced}"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="Praezision"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="{x:Binding PraezisionCalced}"/>
+                    </Grid>
+                <!--</ContentView>-->
+            </ControlTemplate>
+            <ControlTemplate x:Key="Nahkampfwaffe" x:DataType="CharModel:Nahkampfwaffe">
+                <Grid Style="{StaticResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Text="SchadenTyp"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{x:Binding SchadenTyp}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="DK"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{x:Binding DKCalced}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="Reichweite"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{x:Binding Reichweite}"/>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <ContentView x:Name="MainContent"
-                    BindingContext="{x:Binding MyThing}"
-                 BackgroundColor="White"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" 
-                    Padding="20"/>
+        <ListView
+        x:Name="MainContent"
+            BackgroundColor="CornflowerBlue"
+            ItemsSource="{x:Binding Source, Mode=OneWay}"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+            HasUnevenRows="True" SeparatorVisibility="Default" SeparatorColor="Black"
+>
+        <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:MyClass">
+                <ViewCell>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{x:Binding Name, Mode=OneWay}"/>
+                        <Label Text="{x:Binding Value, Mode=OneWay}" Grid.Column="1"/>
+                    </Grid>
+                </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
 </pages:PopupPage>
