@@ -121,14 +121,15 @@
         </ResourceDictionary>
     </pages:PopupPage.Resources>
         <ListView x:Name="MainContent" ItemsSource="{x:Binding Source, Mode=OneWay}"
-            BackgroundColor="CornflowerBlue"
+            BackgroundColor="LightSteelBlue"
             HorizontalOptions="Center" VerticalOptions="Center"
             HasUnevenRows="True" SeparatorVisibility="Default" SeparatorColor="Black"
+                  Margin="20,10,20,10"
         >
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="local:MyClass">
                 <ViewCell>
-                    <Grid>
+                    <Grid Padding="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>

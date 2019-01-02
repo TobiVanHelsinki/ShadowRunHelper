@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using TLIB;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer
@@ -21,7 +22,6 @@ namespace ShadowRunHelperViewer
             MyThing = thing;
             Editable = editable;
             InitializeComponent();
-            MainContent.InputTransparent = !Editable;
         }
 
         protected override void OnAppearing()
