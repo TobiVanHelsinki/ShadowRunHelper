@@ -11,6 +11,12 @@
             <Setter Property="Margin" Value="3,0,0,3"/>
             <Setter Property="Padding" Value="6"/>
         </Style>
+        <Style x:Key="OneLineText" TargetType="Label">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="LineBreakMode" Value="TailTruncation"/>
+            <Setter Property="MaxLines" Value="1"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid>
@@ -18,15 +24,33 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Choose File" Clicked="ChooseFile"/>
-                <!--<Label Text="{x:Binding Model.MainObject.FileInfo.Name}"/>-->
-                <Label Text="{x:Binding Model.MainObject.Person.Kontostand}"/>
-                <Label Text="{x:Binding Model.MainObject.Person.Edge_Aktuell}"/>
-                <Label Text="{x:Binding Model.MainObject.Person.Edge_Gesamt}"/>
-                <Label Text="{x:Binding Model.MainObject.Person.Karma_Aktuell}"/>
-                <Label Text="{x:Binding Model.MainObject.Person.Karma_Gesamt}"/>
-                <Button Text="Menu" Clicked="Toggle" HorizontalOptions="EndAndExpand"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                <Button Text="Load" Clicked="ChooseFile" HorizontalOptions="StartAndExpand"/>
+                <StackLayout Grid.Column="1" HorizontalOptions="Fill">
+                    <Label Text="{x:Binding Model.MainObject.Person.Alias}" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding Model.MainObject.Person.Char_Typ}" Style="{StaticResource OneLineText}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Money" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding Model.MainObject.Person.Kontostand}" Style="{StaticResource OneLineText}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="3" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Edge" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding Model.MainObject.Person.Edge_Aktuell}" Style="{StaticResource OneLineText}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="4" HorizontalOptions="CenterAndExpand">
+                    <Label Text="All Edge" LineBreakMode="TailTruncation" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding Model.MainObject.Person.Edge_Gesamt}" Style="{StaticResource OneLineText}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="5" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Karma" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding Model.MainObject.Person.Karma_Aktuell}" Style="{StaticResource OneLineText}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="6" HorizontalOptions="CenterAndExpand">
+                    <Label Text="All Karma" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding Model.MainObject.Person.Karma_Gesamt}" Style="{StaticResource OneLineText}"/>
+                </StackLayout>
+                <Button Text="Menu" Clicked="Toggle" Grid.Column="7" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
             <Grid HorizontalOptions="Fill" Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -118,7 +142,7 @@
                         </Frame>
                     </StackLayout>
                 </ScrollView>
-                <ScrollView Grid.Column="2" BackgroundColor="White"  Style="{StaticResource CatPanel}">
+                <ScrollView Grid.Column="2">
                     <StackLayout>
                         <Frame BorderColor="Red"  Style="{StaticResource CatPanel}">
                             <StackLayout x:Name="s3"/>
