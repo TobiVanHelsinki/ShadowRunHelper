@@ -416,6 +416,7 @@
                 <ScrollViewer Loaded="ScrollViewer_Loaded" Style="{StaticResource Pivot_Item_ScrollViewer}">
                     <StackPanel Style="{StaticResource Pivot_Item_StackPanel}">
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLItem, Mode=OneWay}"/>
+                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLVehikel, Mode=OneWay}"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLKommlink, Mode=OneWay}"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLCyberDeck, Mode=OneWay}"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLProgramm, Mode=OneWay}"/>
@@ -435,7 +436,6 @@
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLFernkampfwaffe, Mode=OneWay}"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLNahkampfwaffe, Mode=OneWay}"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLPanzerung, Mode=OneWay}"/>
-                        <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLVehikel, Mode=OneWay}"/>
                         <ui:CategoryBlock Loading="CategoryBlockLoading" Controller="{x:Bind Model.MainObject.CTRLMunition, Mode=OneWay}"/>
                     </StackPanel>
                 </ScrollViewer>

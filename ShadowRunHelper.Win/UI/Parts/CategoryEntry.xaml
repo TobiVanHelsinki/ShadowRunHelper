@@ -90,7 +90,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <ContentPresenter Grid.ColumnSpan="3" ContentTemplate="{StaticResource HandlungItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -108,24 +108,15 @@
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="58"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="58"/>
                     </Grid.ColumnDefinitions>
                     <CheckBox Grid.Column="0" IsChecked="{x:Bind Aktiv, Mode=TwoWay}" Style="{StaticResource Category_Item_CheckBox}"/>
                     <CheckBox Grid.Column="1" IsChecked="{x:Bind Besitz, Mode=TwoWay}" Style="{StaticResource Category_Item_CheckBox}"/>
-                    <Grid Grid.Column="2" Style="{StaticResource Category_Item_Grid}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"  Style="{StaticResource Category_Item_Text}">
-                                                <Run Text="{x:Bind Typ, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}" />
-                                                <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
-                        </TextBlock>
-                        <TextBlock Grid.Column="1" Style="{StaticResource Category_Item_Text}">
-                                            <Run Text="{x:Bind Wert, Mode=OneWay}"/><Run x:Uid="Space"/><Run Text="{x:Bind Zusatz, Mode=OneWay}"/>
-                        </TextBlock>
-                        <TextBlock Grid.Column="2" Text="{x:Bind Panzerung, Mode=OneWay}" Style="{StaticResource Category_Item_Text}"/>
-                    </Grid>
+                    <TextBlock Grid.Column="2" Style="{StaticResource Category_Item_Text}">
+                                            <Run Text="{x:Bind Typ, Converter={StaticResource o_ValueOrNoting}, ConverterParameter=Points, Mode=OneWay}" />
+                                            <Run Text="{x:Bind Bezeichner, Mode=OneWay}" />
+                    </TextBlock>
+                    <TextBlock Text="{x:Bind Anzahl, Mode=OneWay}" Grid.Column="3" Style="{StaticResource Category_Item_Text}"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Name="VehikelItemX" x:DataType="CharModel:Vehikel">
@@ -137,7 +128,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource VehikelItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                        <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
 
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Thing_Zusatz"/>
@@ -225,7 +216,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" Grid.Row="0" ContentTemplate="{StaticResource FertigkeitItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
 <TextBlock Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -273,7 +264,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" Grid.Row="0" ContentTemplate="{StaticResource ItemItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
 <TextBlock Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -325,7 +316,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" Grid.Row="0" ContentTemplate="{StaticResource KommlinkItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -377,7 +368,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource CyberDeckItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                        <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Kommlink_Attribute_o" TextWrapping="Wrap"/>
                             <TextBlock Style="{StaticResource Category_Item_Text}" >
@@ -464,7 +455,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" Grid.Row="0" ContentTemplate="{StaticResource ProgrammItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                     <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource Category_Item_Text}" >
                         <Run x:Uid="Model_Item_Anzahl" FontWeight="Bold"/>
                         <Run x:Uid="Points" FontWeight="Bold"/>
@@ -521,7 +512,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource FernkampfwaffeItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                        <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Item_Anzahl"/>
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
@@ -614,7 +605,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource NahkampfwaffeItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                        <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Item_Anzahl"/>
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
@@ -698,7 +689,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource PanzerungItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                        <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Item_Anzahl"/>
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
@@ -756,7 +747,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource MunitionItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                        <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Item_Anzahl"/>
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
@@ -843,7 +834,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource ConnectionItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -881,7 +872,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource ImplantatItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                        <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -927,7 +918,7 @@
                     <ui:LinkListEntry Grid.Row="3" List="{x:Bind LinkedThings, Mode=OneWay}" Value="{x:Bind WertCalced, Mode=OneWay}" RawValue="{x:Bind Wert, Mode=OneWay}"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="SinItem" x:DataType="CharModel:Sin">
+            <DataTemplate x:Name="SINItem" x:DataType="CharModel:Sin">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -943,7 +934,7 @@
                     <TextBlock Text="{x:Bind Notiz, Mode=OneWay}" MaxLines="3" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}" HorizontalAlignment="Right"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Name="SinItemX" x:DataType="CharModel:Sin">
+            <DataTemplate x:Name="SINItemX" x:DataType="CharModel:Sin">
                 <Grid Style="{StaticResource Category_Item_Grid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -954,7 +945,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource SinItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -987,7 +978,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource EigenschaftItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                        <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}">
                                 <Run x:Uid="Model_Thing_Wert"/>
@@ -1049,7 +1040,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource AdeptenkraftItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                             <Run x:Uid="Model_Adeptenkraft_Option" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -1103,7 +1094,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource FokiItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                             <Run x:Uid="Model_Item_Anzahl" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -1153,7 +1144,7 @@
                     </Grid.RowDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource ZauberspruecheItem}"/>
                     <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal">
-                        <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                        <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                         <StackPanel Style="{StaticResource Category_Item_X_Wrap_StackPanels}">
                             <TextBlock Style="{StaticResource Category_Item_Text}" x:Uid="Model_Item_Anzahl"/>
                             <TextBlock Style="{StaticResource Category_Item_Text}" Text="{x:Bind Anzahl, Mode=OneWay}"/>
@@ -1219,7 +1210,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource GeistItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                             <Run x:Uid="Model_Item_Anzahl" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -1284,7 +1275,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource TraditionItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -1343,7 +1334,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource StroemungItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -1393,7 +1384,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter ContentTemplate="{StaticResource KomplexeFormItem}" Grid.ColumnSpan="2"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                             <Run x:Uid="Model_KomplexeForm_Option" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -1449,7 +1440,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource WidgetsItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                             <Run x:Uid="Model_Item_Anzahl" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -1504,7 +1495,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource SpriteItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text}">
                             <Run x:Uid="Model_Item_Anzahl" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -1569,7 +1560,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource InitiationItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>
@@ -1628,7 +1619,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentPresenter Grid.ColumnSpan="2" ContentTemplate="{StaticResource StroemungItem}"/>
-                    <ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>
+                    <!--<ContentPresenter ContentTemplate="{StaticResource Buttons}" Grid.RowSpan="2" Grid.Row="1"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Category_Item_Text_Note}">
                             <Run x:Uid="Model_Thing_Notiz" FontWeight="SemiBold"/>
                             <Run x:Uid="Points" FontWeight="Bold"/>

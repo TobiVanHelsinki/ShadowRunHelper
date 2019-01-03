@@ -1038,9 +1038,6 @@ Setzen Sie den externen Ordner neu.</value>
   <data name="UI_Label_DeleteChar.Label" xml:space="preserve">
     <value>Löschen</value>
   </data>
-  <data name="Model_Vehikel_Wert.Text" xml:space="preserve">
-    <value>Schaden</value>
-  </data>
   <data name="Ui_DB_Finish.Label" xml:space="preserve">
     <value>Kopieren</value>
   </data>
