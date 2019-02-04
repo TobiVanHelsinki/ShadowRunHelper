@@ -1,5 +1,4 @@
 ﻿using ShadowRunHelper;
-using ShadowRunHelper.CharController;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
@@ -16,46 +15,28 @@ namespace ShadowRunHelperViewer
     {
         public AppModel Model => AppModel.Instance;
         IEnumerable<StackLayout> ButtonsPanels;
-        IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children).OfType<Button>();
-        IEnumerable<GController> Controllers => ControllerPanel.Children.OfType<GController>();
 
         public CharView()
         {
             InitializeComponent();
             SizeChanged += Page_SizeChanged;
-            ButtonsPanels = new List<StackLayout>() { s1, s2, s3, s4 };
+            ButtonsPanels = new List<StackLayout>() { s1, s2, s3, s4, s5 };
 
-            InitButtons();
+            Model.PropertyChanged += (x, y) => InitButtons();
+
             BindingContext = this;
-
-            foreach (var item in ControllerPanel.Children)
-            {
-                item.IsVisible = false;
-                item.PropertyChanging += Item_PropertyChanging;
-                item.PropertyChanged += Item_PropertyChanged;
-            }
             ChangeUi();
         }
 
-        private void Item_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(IsVisible))
-            {
-                if (!ControllerPanel.Children.Any(x => x.IsVisible))
-                {
-                    Open = true;
-                }
-            }
-        }
-
-        private void Item_PropertyChanging(object sender, PropertyChangingEventArgs e)
-        {
-        }
         #region Menu Buttons
         private void InitButtons()
         {
             if (this is ContentView Content)
             {
+                foreach (var item in ButtonsPanels)
+                {
+                    item.Children.Clear();
+                }
                 var bs1 = new Button
                 {
                     Text = "Favorites"
@@ -73,9 +54,11 @@ namespace ShadowRunHelperViewer
                     var b = new Button
                     {
                         Padding = new Thickness(2),
-                        BindingContext = Category.ThingType
+                        BindingContext = Category.ThingType,
+                        Text = Category.ThingType.ThingDefToString(true),
+                        IsVisible = Category.Visibility,
                     };
-                    switch (Category.Pivot)
+                switch (Category.Pivot)
                     {
                         case 0:
                             s1.Children.Add(b);
@@ -93,19 +76,6 @@ namespace ShadowRunHelperViewer
                             break;
                     }
                     b.Clicked += B_CTRL_Clicked;
-                }
-            }
-        }
-
-        private void RefreshButton(object sender, EventArgs e)
-        {
-            if (sender is GController gc && gc.Controller is IController controller)
-            {
-                var B = Buttons.FirstOrDefault(x => (x.BindingContext is ThingDefs d) ? controller.eDataTyp == d : false);
-                if (B != null)
-                {
-                    B.Text = TypeHelper.ThingDefToString(controller.eDataTyp, true);
-                    B.IsVisible = gc.Setting.Visibility;
                 }
             }
         }
@@ -132,8 +102,10 @@ namespace ShadowRunHelperViewer
         {
             if (sender is VisualElement b && b.BindingContext is ThingDefs type)
             {
-                var GC = Controllers.First(x => x.Controller.eDataTyp == type);
-                GC.IsVisible = !GC.IsVisible;
+                var gc = new GController();
+                gc.SetBinding(BindingContextProperty, new Binding($"{nameof(Model)}.{nameof(Model.MainObject)}.CTRL{type.ThingDefToString(false)}"));
+                ControllerPanel.Children.Clear();
+                ControllerPanel.Children.Add(gc);
                 if (Narrow)
                 {
                     Open = false;
@@ -225,6 +197,5 @@ namespace ShadowRunHelperViewer
             {
             }
         }
-
     }
 }

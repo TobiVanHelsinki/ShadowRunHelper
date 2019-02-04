@@ -204,7 +204,7 @@ namespace ShadowRunHelper
         };
 
 
-        public static string ThingDefToString(ThingDefs eThingDefToConvert, bool Mehrzahl)
+        public static string ThingDefToString(this ThingDefs eThingDefToConvert, bool Mehrzahl)
         {
             try
             {
@@ -223,26 +223,26 @@ namespace ShadowRunHelper
                 return "N/A";
             }
         }
-        public static Type ThingDefToType(ThingDefs eThingDefToConvert)
+        public static Type ThingDefToType(this ThingDefs eThingDefToConvert)
         {
             return ThingTypeProperties.FirstOrDefault(x => x.ThingType == eThingDefToConvert).Type;
         }
 
-        public static ThingDefs TypeToThingDef(Type type)
+        public static ThingDefs TypeToThingDef(this Type type)
         {
             var t = ThingTypeProperties.FirstOrDefault(x => x.Type == type);
             return t == null ? ThingDefs.Undef : t.ThingType;
         }
 
-        public static ThingDefs Obj2ThingDef(int tag)
+        public static ThingDefs Obj2ThingDef(this int tag)
         {
             return (ThingDefs)tag;
         }
-        public static ThingDefs Obj2ThingDef(string Name)
+        public static ThingDefs Obj2ThingDef(this string Name)
         {
             return ThingTypeProperties.First(t => t.ThingType.ToString() == Name).ThingType;
         }
-        public static ThingDefs Obj2ThingDef(object tag)
+        public static ThingDefs Obj2ThingDef(this object tag)
         {
             return (ThingDefs)Int16.Parse(tag.ToString());
         }

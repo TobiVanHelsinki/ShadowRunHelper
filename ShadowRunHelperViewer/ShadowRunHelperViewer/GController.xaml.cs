@@ -52,7 +52,7 @@ namespace ShadowRunHelperViewer
                 }
 
                 Setting = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
-                IsVisible = Setting.Visibility && IsVisible;
+                IsVisible = Setting.Visibility;
                 Headline.Text = TypeHelper.ThingDefToString(Controller.eDataTyp, true);
             }
             else
@@ -61,26 +61,7 @@ namespace ShadowRunHelperViewer
             }
         }
         #endregion
-        #region Expand Listview
-        public bool Expand
-        {
-            get { return (bool)GetValue(ExpandProperty); }
-            set { SetValue(ExpandProperty, value); Items.IsVisible = value; }
-        }
-
-
-        public static readonly BindableProperty ExpandProperty =
-            BindableProperty.Create(nameof(Expand), typeof(bool), typeof(GController), true, propertyChanged: UpdateListVis);
-
-        private static void UpdateListVis(BindableObject bindable, object oldValue, object newValue)
-        {
-            if (bindable is GController GC && newValue is bool b)
-            {
-                GC.Expand = b;
-            }
-        }
-
-        #endregion
+      
         public CategoryOption Setting { get; private set; }
 
         public GController()
@@ -88,11 +69,6 @@ namespace ShadowRunHelperViewer
             InitializeComponent();
             OnControllerChanged();
             BindingContextChanged += GController_BindingContextChanged;
-        }
-
-        private void Hide(object sender, EventArgs e)
-        {
-            IsVisible = false;
         }
 
         async void Items_ItemSelected(object sender, SelectedItemChangedEventArgs e)

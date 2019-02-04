@@ -67,37 +67,9 @@
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col1"/>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col2"/>
                 </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="1" x:Name="ControllerPanel">
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLHandlung}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLFertigkeit}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLZaubersprueche}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLAdeptenkraft}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLKomplexeForm}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLItem}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLKommlink}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLCyberDeck}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLProgramm}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLFoki}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLGeist}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLWidgets}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLSprite}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLFernkampfwaffe}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLNahkampfwaffe}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLPanzerung}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLVehikel}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLMunition}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLAttribut}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLBerechnet}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLConnection}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLImplantat}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLTradition}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLStroemung}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLSin}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLInitiation}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLWandlung}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLVorteil}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <local:GController BindingContext="{x:Binding Model.MainObject.CTRLNachteil}" BindingContextChanged="RefreshButton" Expand="True"/>
-                    <StackLayout x:Name="Favs" BackgroundColor="LightGoldenrodYellow">
+                <StackLayout Grid.Column="1">
+                    <Grid x:Name="ControllerPanel"/>
+                    <StackLayout x:Name="Favs" BackgroundColor="LightGoldenrodYellow" IsVisible="True">
                         <Label Text="Favorites"/>
                         <ListView ItemsSource="{x:Binding Model.MainObject.Favorites}">
                             <ListView.ItemTemplate>
@@ -127,7 +99,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
-                    <ScrollView x:Name="Notes">
+                    <ScrollView x:Name="Notes" IsVisible="False">
                         <StackLayout>
                             <Label Text="{x:Binding Model.MainObject.Person.Notizen}" BackgroundColor="AntiqueWhite"/>
                             <Grid x:Name="PersonArray">

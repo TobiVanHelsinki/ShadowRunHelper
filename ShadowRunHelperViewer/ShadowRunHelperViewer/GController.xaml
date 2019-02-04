@@ -153,7 +153,6 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label x:Name="Headline" HorizontalOptions="Center"/>
-                <Button Text="Hide" Clicked="Hide" Grid.Column="1"/>
             </Grid>
             <ContentView Grid.Row="1" x:Name="Items_H" ControlTemplate="{StaticResource Thing_H}"/>
             <ListView x:Name="Items" Grid.Row="2"
