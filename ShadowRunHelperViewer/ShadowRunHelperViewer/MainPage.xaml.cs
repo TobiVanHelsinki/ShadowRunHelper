@@ -49,11 +49,15 @@ namespace ShadowRunHelperViewer
 
         }
 
-        private void MoreMenu(object sender, System.EventArgs e)
+        async void MoreMenu(object sender, System.EventArgs e)
         {
-            //PopupMenu menu = new PopupMenu(this, showPopupMenu);
-            //menu.Inflate(Resource.Menu.popup_menu);
-            //menu.Show();
+            //https://baskren.github.io/Forms9Patch/guides/GettingStartedWindows.html
+            //https://forums.xamarin.com/discussion/comment/185332/#Comment_185332
+
+            //https://forums.xamarin.com/discussion/comment/185332/#Comment_185332
+
+            //https://docs.microsoft.com/de-de/xamarin/xamarin-forms/app-fundamentals/navigation/pop-ups
+            //var action = await DisplayActionSheet("ActionSheet: SavePhoto?", "Cancel", "&#xE74E;", "", "", "Delete", "Photo Roll", "Email");
         }
 
         private void Save(object sender, System.EventArgs e)
