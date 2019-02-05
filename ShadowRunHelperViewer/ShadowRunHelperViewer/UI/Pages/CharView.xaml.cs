@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper;
+﻿using Rg.Plugins.Popup.Services;
+using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,18 @@ namespace ShadowRunHelperViewer
             };
             Open = false;
             BindingContext = this;
+            Infogrid.GestureRecognizers.Add(new TapGestureRecognizer { NumberOfTapsRequired = 1, Command = new Command(Infogrid_Tapped) });
+        }
+
+        async void Infogrid_Tapped()
+        {
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new ControlCenter(Model.MainObject));
+            }
+            catch (Exception)
+            {
+            }
         }
 
         #region Menu Buttons

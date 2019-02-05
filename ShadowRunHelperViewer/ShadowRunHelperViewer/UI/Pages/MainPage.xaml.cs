@@ -1,5 +1,4 @@
-﻿using Rg.Plugins.Popup.Services;
-using ShadowRunHelper;
+﻿using ShadowRunHelper;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
@@ -15,13 +14,13 @@ namespace ShadowRunHelperViewer
         public AppModel AppModel => AppModel.Instance;
         public MainPage()
         {
-            //AppModel.MainObject = CharHolderGenerator.CreateCharWithStandardContent();
-            //AppModel.MainObject = CharHolderGenerator.CreateEmtpyChar();
-            //AppModel.MainObject = CharHolderGenerator.TestAllCats(15);
             InitializeComponent();
             BindingContext = this;
+            //AppModel.MainObject = CharHolderGenerator.CreateCharWithStandardContent();
+            //AppModel.MainObject = CharHolderGenerator.CreateEmtpyChar();
+            AppModel.MainObject = CharHolderGenerator.TestAllCats(3);
         }
-
+        
         private void Toggle(object sender, EventArgs e)
         {
             if (CharView.StaticOpen is bool b)

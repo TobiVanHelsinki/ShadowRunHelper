@@ -3,19 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              x:Class="ShadowRunHelperViewer.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:CharModelStyles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid BackgroundColor="Accent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Padding="4,4,4,0" Margin="0">
-            <Grid.Resources>
-                <Style x:Key="IconButton" TargetType="Button">
-                    <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
-                    <Setter Property="FontSize" Value="Medium"/>
-                    <Setter Property="TextColor" Value="FloralWhite"/>
-                </Style>
-            </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

@@ -155,12 +155,6 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid>
-                <Grid.Resources>
-                    <Style x:Key="IconButton" TargetType="Button">
-                        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
-                        <Setter Property="FontSize" Value="Medium"/>
-                    </Style>
-                </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*" />

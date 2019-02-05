@@ -23,7 +23,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="4,0,4,4">
+            <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HorizontalOptions="Fill" Padding="4,0,4,4" x:Name="Infogrid">
                 <StackLayout.Resources>
                     <Style x:Key="IconButton" TargetType="Button">
                         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>

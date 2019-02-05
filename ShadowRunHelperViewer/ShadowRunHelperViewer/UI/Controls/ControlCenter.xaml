@@ -1,22 +1,95 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView
+<pages:PopupPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="ShadowRunHelperViewer.ControlCenter">
-    <ListView x:Name="MainListView" HasUnevenRows="True">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <ViewCell.ContextActions>
-                        <MenuItem Text="Add" Icon="Add" Clicked="Add_Clicked"></MenuItem>
-                        <MenuItem Text="Delete" Icon="Points" Clicked="Delete_Clicked"></MenuItem>
-                        <MenuItem Text="Edit" Clicked="Edit_Clicked"></MenuItem>
-                    </ViewCell.ContextActions>
-                    <Grid>
-                        <Label TextColor="Navy" Text="{Binding }" FontSize="25"></Label>
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-</ContentView>
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:local="clr-namespace:ShadowRunHelperViewer"
+    x:Class="ShadowRunHelperViewer.ControlCenter"
+    BackgroundInputTransparent="False"
+    >
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:CharModelStyles/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="PlusButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
+                <Setter Property="TextColor" Value="Default"/>
+                <Setter Property="Text" Value="&#xE710;"/>
+            </Style>
+            <Style x:Key="MinusButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
+                <Setter Property="TextColor" Value="Default"/>
+                <Setter Property="Text" Value="&#xE738;"/>
+            </Style>
+            <Style x:Key="ContentLabel" TargetType="Label">
+                <!--<Setter Property="BackgroundColor" Value="Red"/>-->
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <StackLayout Orientation="Horizontal" Padding="20" BackgroundColor="FloralWhite" HorizontalOptions="Center" VerticalOptions="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Money"/>
+            <Label Text="{x:Binding Model.Person.Kontostand}" Style="{StaticResource ContentLabel}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0"/>
+
+            <Label Text="Money I/O" Grid.Column="0" Grid.Row="1"/>
+            <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="1" Clicked="MoneyIOMinus"/>
+            <Entry Text="{x:Binding MoneyIO}" Grid.Column="2" Grid.Row="1" BackgroundColor="Transparent"/>
+            <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="1" Clicked="MoneyIOPlus"/>
+
+            <Label Text="Edge now" Grid.Column="0" Grid.Row="2"/>
+            <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="2" Clicked="EdgeMinus"/>
+            <Label Text="{x:Binding Model.Person.Edge_Aktuell}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="2"/>
+            <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="2" Clicked="EdgePlus"/>
+
+            <Label Text="All Edge" Grid.Column="0" Grid.Row="3"/>
+            <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="3" Clicked="EdgeGesamtMinus"/>
+            <Label Text="{x:Binding Model.Person.Edge_Gesamt}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="3"/>
+            <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="3" Clicked="EdgeGesamtPlus"/>
+
+            <Label Text="Karma now" Grid.Column="0" Grid.Row="4"/>
+            <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="4" Clicked="KarmaMinus"/>
+            <Label Text="{x:Binding Model.Person.Karma_Aktuell}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="4"/>
+            <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="4" Clicked="KarmaPlus"/>
+
+            <Label Text="All Karma" Grid.Column="0" Grid.Row="5"/>
+            <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="5" Clicked="KarmaGesamtMinus"/>
+            <Label Text="{x:Binding Model.Person.Karma_Gesamt}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="5"/>
+            <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="5" Clicked="KarmaGesamtPlus"/>
+
+            <Label Text="Runs" Grid.Column="0" Grid.Row="6"/>
+            <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="6" Clicked="RunsMinus"/>
+            <Label Text="{x:Binding Model.Person.Runs}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="6"/>
+            <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="6" Clicked="RunsPlus"/>
+        </Grid>
+        <Label Text="{x:Binding Model.Person.Alias}"/>
+    </StackLayout>
+</pages:PopupPage>
