@@ -4,7 +4,6 @@ using System;
 using Xamarin.Forms.Xaml;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using System.Linq;
 
@@ -32,10 +31,6 @@ namespace ShadowRunHelperViewer
             try
             {
                 BindingContext = this;
-                //foreach (Slider slider in Collection)
-                //{
-                //    slider.Rotation = 90;
-                //}
             }
             catch (Exception ex)
             {
