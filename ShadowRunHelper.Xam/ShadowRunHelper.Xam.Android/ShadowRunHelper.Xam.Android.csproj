@@ -106,10 +106,6 @@
       <Project>{63a5e683-5a51-4c45-a9de-ca0c26c6ec5a}</Project>
       <Name>SharedCode</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ShadowRunHelper.Xam\ShadowRunHelper.Xam.csproj">
-      <Project>{A3D0763C-0A75-4798-9B86-CF48BF7DC0B0}</Project>
-      <Name>ShadowRunHelper.Xam</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="..\..\FeaturesDroid\FeaturesDroid.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -54,7 +54,6 @@ namespace ShadowRunHelperViewer
             //https://baskren.github.io/Forms9Patch/guides/GettingStartedWindows.html
             //https://forums.xamarin.com/discussion/comment/185332/#Comment_185332
 
-            //https://forums.xamarin.com/discussion/comment/185332/#Comment_185332
 
             //https://docs.microsoft.com/de-de/xamarin/xamarin-forms/app-fundamentals/navigation/pop-ups
             //var action = await DisplayActionSheet("ActionSheet: SavePhoto?", "Cancel", "&#xE74E;", "", "", "Delete", "Photo Roll", "Email");

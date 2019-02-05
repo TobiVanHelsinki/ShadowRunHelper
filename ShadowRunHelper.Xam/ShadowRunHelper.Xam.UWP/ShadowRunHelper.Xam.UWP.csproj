@@ -173,10 +173,6 @@
       <Project>{63a5e683-5a51-4c45-a9de-ca0c26c6ec5a}</Project>
       <Name>SharedCode</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ShadowRunHelper.Xam\ShadowRunHelper.Xam.csproj">
-      <Project>{e67dda95-d63f-43e8-a031-2fdddae8986c}</Project>
-      <Name>ShadowRunHelper.Xam</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="TAPPLICATION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
