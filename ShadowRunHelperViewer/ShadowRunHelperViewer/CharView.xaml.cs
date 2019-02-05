@@ -1,10 +1,8 @@
 ﻿using ShadowRunHelper;
-using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TAPPLICATION.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,17 +13,19 @@ namespace ShadowRunHelperViewer
     {
         public AppModel Model => AppModel.Instance;
         IEnumerable<StackLayout> ButtonsPanels;
-
+        static CharView Instance;
         public CharView()
         {
+            Instance = this;
             InitializeComponent();
-            SizeChanged += Page_SizeChanged;
             ButtonsPanels = new List<StackLayout>() { s1, s2, s3, s4, s5 };
 
-            Model.PropertyChanged += (x, y) => InitButtons();
-
+            SizeChanged += (a, b) => SetViewParameters();
+            Model.PropertyChanged += (x, y) => {
+                InitButtons(); SetViewParameters(); Open = true;
+            };
+            Open = false;
             BindingContext = this;
-            ChangeUi();
         }
 
         #region Menu Buttons
@@ -37,18 +37,16 @@ namespace ShadowRunHelperViewer
                 {
                     item.Children.Clear();
                 }
-                var bs1 = new Button
+                foreach (var item in new string[] {"Favorites", "Notes", "Person" })
                 {
-                    Text = "Favorites"
-                };
-                bs1.Clicked += B_Fav_Clicked;
-                s5.Children.Add(bs1);
-                var bs2 = new Button
-                {
-                    Text = "Additional Info"
-                };
-                bs2.Clicked += B_Notes_Clicked;
-                s5.Children.Add(bs2);
+                    var btt = new Button
+                    {
+                        Padding = new Thickness(2),
+                        Text = item
+                    };
+                    btt.Clicked += B_Fav_Clicked;
+                    s5.Children.Add(btt);
+                }
                 foreach (var Category in Model.MainObject.Settings.CategoryOptions.OrderBy(x => x.Pivot).ThenBy(x => x.Order))
                 {
                     var b = new Button
@@ -58,7 +56,7 @@ namespace ShadowRunHelperViewer
                         Text = Category.ThingType.ThingDefToString(true),
                         IsVisible = Category.Visibility,
                     };
-                switch (Category.Pivot)
+                    switch (Category.Pivot)
                     {
                         case 0:
                             s1.Children.Add(b);
@@ -128,6 +126,17 @@ namespace ShadowRunHelperViewer
             get { return _Open; }
             set { if (_Open != value) { _Open = value; ChangeUi(); } }
         }
+        public static bool? StaticOpen
+        {
+            get { return Instance?.Open; }
+            set
+            {
+                if (Instance != null && value is bool b)
+                {
+                    Instance.Open = b;
+                }
+            }
+        }
         private void ChangeUi()
         {
             if (Narrow)
@@ -137,14 +146,14 @@ namespace ShadowRunHelperViewer
                     LayerContent_Col0.Width = new GridLength(1, GridUnitType.Star);
                     LayerContent_Col1.Width = new GridLength(0, GridUnitType.Absolute);
                     LayerContent_Col2.Width = new GridLength(1, GridUnitType.Star);
-                    HideFrame.IsVisible = true;
+                    ContentPanel.IsVisible = false;
                 }
                 else
                 {
                     LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
                     LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
                     LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
-                    HideFrame.IsVisible = false;
+                    ContentPanel.IsVisible = true;
                 }
             }
             else
@@ -154,21 +163,21 @@ namespace ShadowRunHelperViewer
                     LayerContent_Col0.Width = new GridLength(1, GridUnitType.Auto);
                     LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
                     LayerContent_Col2.Width = new GridLength(1, GridUnitType.Auto);
-                    HideFrame.IsVisible = false;
+                    ContentPanel.IsVisible = true;
                 }
                 else
                 {
                     LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
                     LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
                     LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
-                    HideFrame.IsVisible = false;
+                    ContentPanel.IsVisible = true;
                 }
             }
         }
-        private void Page_SizeChanged(object sender, EventArgs e)
+        void SetViewParameters()
         {
             Narrow = Width < 550;
-            if (Width > 550)
+            if (Width > 550 && Model.MainObject != null)
             {
                 Open = true;
             }
@@ -181,21 +190,7 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void Toggle(object sender, EventArgs e)
-        {
-            Open = !Open;
-        }
+
         #endregion
-        async void ChooseFile(object sender, EventArgs e)
-        {
-            try
-            {
-                var File = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
-                AppModel.Instance.MainObject = await CharHolderIO.Load(File);
-            }
-            catch (Exception)
-            {
-            }
-        }
     }
 }

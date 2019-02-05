@@ -80,6 +80,16 @@ namespace ShadowRunHelperViewer
                 Items.SelectedItem = null;
             }
         }
+
+        private void Add(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Options(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

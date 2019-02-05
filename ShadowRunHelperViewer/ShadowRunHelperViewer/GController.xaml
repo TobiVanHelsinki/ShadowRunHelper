@@ -40,9 +40,9 @@
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Name" x:DataType="CharModel:Thing">
-                <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
+                <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}" Spacing="0">
                     <Label x:Name="Typ" Text="{x:Binding Typ}" Style="{StaticResource STDText}"/>
-                    <Label Text=": " Style="{StaticResource STDText}">
+                    <Label Text=":" Style="{StaticResource STDText}" Margin="0,0,2,0">
                         <Label.Triggers>
                             <DataTrigger TargetType="Label"
                                     Binding="{Binding Source={x:Reference Typ},
@@ -88,10 +88,12 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}"/>
                     <ContentPresenter Grid.Column="1"/>
                     <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value}"/>
+                    <Frame Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="Black" Margin="2,0,2,0" Padding="0" HeightRequest="1"/>
                 </Grid>
             </ControlTemplate>
             
@@ -147,20 +149,32 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid BackgroundColor="BlanchedAlmond">
+            <Grid>
+                <Grid.Resources>
+                    <Style x:Key="IconButton" TargetType="Button">
+                        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+                        <Setter Property="FontSize" Value="Medium"/>
+                    </Style>
+                </Grid.Resources>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Label x:Name="Headline" HorizontalOptions="Center"/>
+                <Button Text="&#xE710;" Style="{StaticResource IconButton}" Clicked="Add" Margin="6"/>
+                <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium"/>
+                <Button Text="&#xE712;" Style="{StaticResource IconButton}" Clicked="Options" Grid.Column="2" Margin="6"/>
             </Grid>
             <ContentView Grid.Row="1" x:Name="Items_H" ControlTemplate="{StaticResource Thing_H}"/>
-            <ListView x:Name="Items" Grid.Row="2"
+            <Frame Padding="5" Margin="0" Grid.Row="2"
+                      BackgroundColor="OldLace"
+                   >
+                <ListView x:Name="Items"
                       ItemTemplate="{StaticResource Fallback}"
                       ItemSelected="Items_ItemSelected"
                       ItemsSource="{x:Binding Data}"
-                      BackgroundColor="LightYellow" 
                       HasUnevenRows="True"/>
+            </Frame>
         </Grid>
     </ContentView.Content>
 </ContentView>

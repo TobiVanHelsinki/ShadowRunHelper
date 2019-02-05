@@ -7,14 +7,15 @@
              >
     <ContentView.Resources>
         <Style x:Key="CatPanel" TargetType="Frame">
-            <Setter Property="Margin" Value="3,0,0,3"/>
-            <Setter Property="Padding" Value="6"/>
+            <Setter Property="Margin" Value="4,4,4,0"/>
+            <Setter Property="Padding" Value="4"/>
         </Style>
         <Style x:Key="OneLineText" TargetType="Label">
             <Setter Property="Margin" Value="0"/>
             <Setter Property="LineBreakMode" Value="TailTruncation"/>
             <Setter Property="MaxLines" Value="1"/>
             <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="FloralWhite"/>
         </Style>
     </ContentView.Resources>
     <ContentView.Content>
@@ -23,53 +24,92 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Button Text="Load" Clicked="ChooseFile"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Grid.Column="1">
-                    <StackLayout Grid.Column="1" HorizontalOptions="StartAndExpand">
-                        <Label Text="{x:Binding Model.MainObject.Person.Alias}" Style="{StaticResource OneLineText}"/>
-                        <Label Text="{x:Binding Model.MainObject.Person.Char_Typ}" Style="{StaticResource OneLineText}"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand">
-                        <Label Text="Money" Style="{StaticResource OneLineText}"/>
-                        <Label Text="{x:Binding Model.MainObject.Person.Kontostand}" Style="{StaticResource OneLineText}"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="3" HorizontalOptions="CenterAndExpand">
-                        <Label Text="Edge" Style="{StaticResource OneLineText}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Padding="4,0,4,4">
+                <StackLayout.Resources>
+                    <Style x:Key="IconButton" TargetType="Button">
+                        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+                        <Setter Property="FontSize" Value="Medium"/>
+                        <Setter Property="TextColor" Value="FloralWhite"/>
+                    </Style>
+                    <Style x:Key="OuterPanel" TargetType="StackLayout">
+                        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                        <Setter Property="Spacing" Value="0"/>
+                    </Style>
+                    <Style x:Key="InnerPanel" TargetType="StackLayout">
+                        <Setter Property="Orientation" Value="Horizontal"/>
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="Spacing" Value="3"/>
+                    </Style>
+                </StackLayout.Resources>
+                <StackLayout Style="{StaticResource OuterPanel}">
+                    <Label Text="{x:Binding Model.MainObject.Person.Alias}" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding Model.MainObject.Person.Char_Typ}" Style="{StaticResource OneLineText}"/>
+                </StackLayout>
+                <StackLayout Style="{StaticResource OuterPanel}">
+                    <Label Text="Money" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding Model.MainObject.Person.Kontostand}" Style="{StaticResource OneLineText}"/>
+                </StackLayout>
+                <StackLayout Style="{StaticResource OuterPanel}">
+                    <Label Text="Edge" Style="{StaticResource OneLineText}"/>
+                    <StackLayout Style="{StaticResource InnerPanel}">
                         <Label Text="{x:Binding Model.MainObject.Person.Edge_Aktuell}" Style="{StaticResource OneLineText}"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="4" HorizontalOptions="CenterAndExpand">
-                        <Label Text="All Edge" LineBreakMode="TailTruncation" Style="{StaticResource OneLineText}"/>
+                        <Label Text="/" Style="{StaticResource OneLineText}"/>
                         <Label Text="{x:Binding Model.MainObject.Person.Edge_Gesamt}" Style="{StaticResource OneLineText}"/>
                     </StackLayout>
-                    <StackLayout Grid.Column="5" HorizontalOptions="CenterAndExpand">
-                        <Label Text="Karma" Style="{StaticResource OneLineText}"/>
+                </StackLayout>
+                <StackLayout Style="{StaticResource OuterPanel}">
+                    <Label Text="Karma" Style="{StaticResource OneLineText}"/>
+                    <StackLayout Style="{StaticResource InnerPanel}">
                         <Label Text="{x:Binding Model.MainObject.Person.Karma_Aktuell}" Style="{StaticResource OneLineText}"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="6" HorizontalOptions="EndAndExpand">
-                        <Label Text="All Karma" Style="{StaticResource OneLineText}"/>
+                        <Label Text="/" Style="{StaticResource OneLineText}"/>
                         <Label Text="{x:Binding Model.MainObject.Person.Karma_Gesamt}" Style="{StaticResource OneLineText}"/>
                     </StackLayout>
                 </StackLayout>
-                <Button Text="Menu" Clicked="Toggle" Grid.Column="2"/>
-            </Grid>
-            <Grid HorizontalOptions="Fill" Grid.Row="1">
+                <StackLayout Style="{StaticResource OuterPanel}">
+                    <Label Text="Runs" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding Model.MainObject.Person.Runs}" Style="{StaticResource OneLineText}"/>
+                </StackLayout>
+                <StackLayout Style="{StaticResource OuterPanel}">
+                    <Label Text="Damage" Style="{StaticResource OneLineText}"/>
+                    <StackLayout Style="{StaticResource InnerPanel}">
+                        <Label Text="{x:Binding Model.MainObject.Person.Schaden_G}" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding Model.MainObject.Person.Schaden_K}" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding Model.MainObject.CTRLCyberDeck.ActiveItem.Schaden}" Style="{StaticResource OneLineText}"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <Grid Grid.Row="1" BackgroundColor="Snow">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col0"/>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col1"/>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col2"/>
                 </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="1">
+                <ScrollView>
+                    <StackLayout x:Name="ButtonsLeft">
+                        <Frame BorderColor="Blue" Style="{StaticResource CatPanel}">
+                            <StackLayout x:Name="s1"/>
+                        </Frame>
+                        <Frame BorderColor="Orange" Style="{StaticResource CatPanel}">
+                            <StackLayout x:Name="s2"/>
+                        </Frame>
+                        <Frame BorderColor="Gray" Style="{StaticResource CatPanel}">
+                            <StackLayout x:Name="s5"/>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+                <ScrollView Grid.Column="2">
+                    <StackLayout>
+                        <Frame BorderColor="Red" Style="{StaticResource CatPanel}">
+                            <StackLayout x:Name="s3"/>
+                        </Frame>
+                        <Frame BorderColor="Green" Style="{StaticResource CatPanel}">
+                            <StackLayout x:Name="s4"/>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout Grid.Column="1" x:Name="ContentPanel">
                     <Grid x:Name="ControllerPanel"/>
-                    <StackLayout x:Name="Favs" BackgroundColor="LightGoldenrodYellow" IsVisible="True">
+                    <StackLayout x:Name="Favs" BackgroundColor="LightGoldenrodYellow" IsVisible="False">
                         <Label Text="Favorites"/>
                         <ListView ItemsSource="{x:Binding Model.MainObject.Favorites}">
                             <ListView.ItemTemplate>
@@ -109,30 +149,6 @@
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
-                <Frame x:Name="HideFrame" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="White"/>
-                <ScrollView>
-                    <StackLayout x:Name="ButtonsLeft" BackgroundColor="White">
-                        <Frame BorderColor="Blue" Style="{StaticResource CatPanel}">
-                            <StackLayout x:Name="s1"/>
-                        </Frame>
-                        <Frame BorderColor="Orange" Style="{StaticResource CatPanel}">
-                            <StackLayout x:Name="s2"/>
-                            </Frame>
-                        <Frame Margin="0" BorderColor="Gray" Style="{StaticResource CatPanel}">
-                            <StackLayout x:Name="s5"/>
-                        </Frame>
-                    </StackLayout>
-                </ScrollView>
-                <ScrollView Grid.Column="2">
-                    <StackLayout>
-                        <Frame BorderColor="Red"  Style="{StaticResource CatPanel}">
-                            <StackLayout x:Name="s3"/>
-                        </Frame>
-                        <Frame Margin="0" BorderColor="Green" Style="{StaticResource CatPanel}">
-                            <StackLayout x:Name="s4"/>
-                        </Frame>
-                    </StackLayout>
-                </ScrollView>
             </Grid>
         </Grid>
     </ContentView.Content>

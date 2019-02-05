@@ -3,5 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              x:Class="ShadowRunHelperViewer.MainPage">
-    <local:CharView/>
+    <Grid BackgroundColor="Accent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Padding="4,4,4,0" Margin="0">
+            <Grid.Resources>
+                <Style x:Key="IconButton" TargetType="Button">
+                    <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+                    <Setter Property="FontSize" Value="Medium"/>
+                    <Setter Property="TextColor" Value="FloralWhite"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="&#xE74E;" Style="{StaticResource IconButton}" Clicked="Save"/>
+                <Button Text="&#xE712;" Style="{StaticResource IconButton}"  Clicked="MoreMenu"/>
+            </StackLayout>
+            <SearchBar Grid.Column="1" HorizontalOptions="Fill" Placeholder="Search Name or Type"/>
+            <StackLayout Orientation="Horizontal" Grid.Column="2">
+                <Button Text="&#xE779;" Style="{StaticResource IconButton}" Clicked="CharPage"/>
+                <Button Text="&#xE716;" Style="{StaticResource IconButton}" Clicked="Administration"/>
+                <Button Text="&#xE713;" Style="{StaticResource IconButton}" Clicked="Settings"/>
+                <Button Text="&#xE700;" Style="{StaticResource IconButton}" Clicked="Toggle"/>
+            </StackLayout>
+        </Grid>
+        <local:CharView Grid.Row="1" Margin="0" Padding="0" BackgroundColor="Transparent"/>
+    </Grid>
 </ContentPage>
