@@ -21,7 +21,7 @@ namespace ShadowRunHelperViewer.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             #region Forms9Patch Init
-            Forms9Patch.iOS.Settings.Initialize(this);
+            //Forms9Patch.iOS.Settings.Initialize(this);
             #endregion
             LoadApplication(new App());
 

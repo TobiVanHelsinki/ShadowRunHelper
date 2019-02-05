@@ -26,7 +26,7 @@ namespace ShadowRunHelperViewer.Droid
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             #region Forms9Patch Init
-            Forms9Patch.Droid.Settings.Initialize(this);
+            //Forms9Patch.Droid.Settings.Initialize(this);
             #endregion
             LoadApplication(new App());
         }
