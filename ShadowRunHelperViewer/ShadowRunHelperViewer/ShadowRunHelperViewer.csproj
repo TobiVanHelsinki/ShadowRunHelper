@@ -11,9 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.180" />
+    <PackageReference Include="Forms9Patch" Version="1.6.5" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
     <PackageReference Include="Xam.Plugin.PopupMenu" Version="1.1.0" />
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
+    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1029999" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,19 +32,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="CharView.xaml.cs">
+    <Compile Update="UI\Controls\ControlCenter.xaml.cs">
+      <DependentUpon>ControlCenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\Pages\CharView.xaml.cs">
       <DependentUpon>CharView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="CharView.xaml">
+    <EmbeddedResource Update="UI\Pages\CharView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="DetailsPage.xaml">
+    <EmbeddedResource Update="UI\Controls\DetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GController.xaml">
+    <EmbeddedResource Update="UI\Controls\GController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
