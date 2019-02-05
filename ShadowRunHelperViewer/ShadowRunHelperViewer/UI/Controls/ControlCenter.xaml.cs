@@ -4,6 +4,9 @@ using System;
 using Xamarin.Forms.Xaml;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
+using Xamarin.Forms;
+using System.Linq;
 
 namespace ShadowRunHelperViewer
 {
@@ -29,6 +32,10 @@ namespace ShadowRunHelperViewer
             try
             {
                 BindingContext = this;
+                //foreach (Slider slider in Collection)
+                //{
+                //    slider.Rotation = 90;
+                //}
             }
             catch (Exception ex)
             {
@@ -102,6 +109,21 @@ namespace ShadowRunHelperViewer
         private void RunsPlus(object sender, EventArgs e)
         {
             Model.Person.Runs++;
+        }
+
+        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            (sender as Slider).Value = Math.Round(e.NewValue, 0);
+        }
+
+        private void SizeDefiningElement_SizeChanged(object sender, EventArgs e)
+        {
+            var Column0Max = DamageGrid.Children.Where(x => Grid.GetColumn(x) == 0).Aggregate(0.0, (a, c) => a + c.Width);
+            var Column1Max = DamageGrid.Children.Where(x => Grid.GetColumn(x) == 1).Aggregate(0.0, (a, c) => a + c.Width);
+            var Column3Max = DamageGrid.Children.Where(x => Grid.GetColumn(x) == 3).Aggregate(0.0, (a, c) => a + c.Width);
+
+            var NewWidth = (sender as VisualElement).Width - Column0Max - Column1Max - Column3Max + 50; //HACK
+            DamageColumnSlider.Width = new GridLength(NewWidth, GridUnitType.Absolute);
         }
     }
 }
