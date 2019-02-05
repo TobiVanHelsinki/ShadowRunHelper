@@ -83,12 +83,12 @@ namespace ShadowRunHelperViewer
 
         private void Add(object sender, EventArgs e)
         {
-
+            AppModel.Instance.MainObject.Add(Controller.eDataTyp);
         }
 
         private void Options(object sender, EventArgs e)
         {
-
+            //TODO PopUp Menu
         }
     }
 

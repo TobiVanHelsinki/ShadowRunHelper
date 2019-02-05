@@ -37,14 +37,15 @@ namespace ShadowRunHelperViewer
                 {
                     item.Children.Clear();
                 }
-                foreach (var item in new string[] {"Favorites", "Notes", "Person" })
+                foreach (var item in new (string, Layout)[] {("Favorites", Favs), ("Notes", Notes), ("Person", null) })
                 {
                     var btt = new Button
                     {
                         Padding = new Thickness(2),
-                        Text = item
+                        Text = item.Item1,
+                        BindingContext = item.Item2
                     };
-                    btt.Clicked += B_Fav_Clicked;
+                    btt.Clicked += B_More_Clicked;
                     s5.Children.Add(btt);
                 }
                 foreach (var Category in Model.MainObject.Settings.CategoryOptions.OrderBy(x => x.Pivot).ThenBy(x => x.Order))
@@ -78,18 +79,15 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void B_Fav_Clicked(object sender, EventArgs e)
+        private void B_More_Clicked(object sender, EventArgs e)
         {
-            Favs.IsVisible = !Favs.IsVisible;
-            if (Narrow)
+            if (sender is Button b)
             {
-                Open = false;
+                if (b.BindingContext is Layout panel)
+                {
+                    panel.IsVisible = !panel.IsVisible;
+                }
             }
-        }
-
-        private void B_Notes_Clicked(object sender, EventArgs e)
-        {
-            Notes.IsVisible = !Notes.IsVisible;
             if (Narrow)
             {
                 Open = false;
