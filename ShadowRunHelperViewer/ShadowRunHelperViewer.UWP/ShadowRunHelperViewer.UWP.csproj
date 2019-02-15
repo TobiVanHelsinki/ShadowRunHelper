@@ -180,7 +180,7 @@
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.1.5.188</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1029999" />
+    <PackageReference Include="Xamarin.Forms" Version="3.5.0.129452" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.0-preview1-26926-04" />
   </ItemGroup>
   <ItemGroup>

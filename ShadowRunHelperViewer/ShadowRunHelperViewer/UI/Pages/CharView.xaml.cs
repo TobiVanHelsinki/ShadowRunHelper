@@ -1,9 +1,11 @@
 ﻿using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
+using ShadowRunHelper.CharController;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -112,7 +114,16 @@ namespace ShadowRunHelperViewer
             if (sender is VisualElement b && b.BindingContext is ThingDefs type)
             {
                 var gc = new GController();
-                gc.SetBinding(BindingContextProperty, new Binding($"{nameof(Model)}.{nameof(Model.MainObject)}.CTRL{type.ThingDefToString(false)}"));
+                var CTRL = typeof(CharHolder).GetProperties().FirstOrDefault(x=>x.Name == "CTRL" + type);
+                if (CTRL != null)
+                {
+                    gc.SetBinding(BindingContextProperty, new Binding($"{nameof(Model)}.{nameof(Model.MainObject)}.{CTRL.Name}"));
+                }
+                else
+                {
+                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                    Log.Write("Structual Error, Controller Name is wrong");
+                }
                 ControllerPanel.Children.Clear();
                 ControllerPanel.Children.Add(gc);
                 if (Narrow)

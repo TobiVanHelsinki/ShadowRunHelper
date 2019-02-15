@@ -113,6 +113,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+        
         protected string typ = "";
         [Used_UserAttribute]
         public string Typ

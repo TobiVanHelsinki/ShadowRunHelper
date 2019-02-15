@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper.CharModel;
+﻿using ShadowRunHelper;
+using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -44,7 +45,7 @@ namespace ShadowRunHelperViewer
             {
                 yield return new MyClass
                 {
-                    Name = item.Name + ": ",
+                    Name = CustomManager.GetString("Model_" + item.DeclaringType.Name +  "_" + item.Name + "/Text") + ": ",
                     Value = item.GetValue(MyType)?.ToString()
                 };
             };
