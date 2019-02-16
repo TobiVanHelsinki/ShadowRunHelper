@@ -4,6 +4,7 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -467,7 +468,7 @@ namespace ShadowRunHelper.CharModel
         }
     }
 
-    public class CharProperty : ObservableCollection<CharProperty>, INotifyPropertyChanged
+    public class CharProperty : INotifyPropertyChanged
         //TODO implement that it can convert from int string and so on to this type
 	{
         #region NotifyPropertyChanged
@@ -486,28 +487,49 @@ namespace ShadowRunHelper.CharModel
             set { if (_Offset.CompareTo(value) != 0) { _Offset = value; Recalculate(); NotifyPropertyChanged(); } }
         }
 
-        public List<CharProperty> Connected { get; set; }
-
-        protected override void InsertItem(int index, CharProperty item)
+        ObservableCollection<CharProperty> _Connected;
+        public ObservableCollection<CharProperty> Connected
         {
-            base.InsertItem(index, item);
-            item.PropertyChanged += Con_PropertyChanged;
-            Connected.Add(item);
-            Recalculate();
-        }
-        public void AddConnected(CharProperty Con)
-        {
-            InsertItem(0, Con);
-        }
-
-        private void Con_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            Recalculate();
+            get { return _Connected; }
+            set { if (_Connected != value) { _Connected = value; value.CollectionChanged += Connected_CollectionChanged; NotifyPropertyChanged(); } }
         }
 
         public CharProperty()
         {
-            Connected = new List<CharProperty>();
+            Connected = new ObservableCollection<CharProperty>();
+        }
+
+        private void Connected_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    foreach (CharProperty item in e.NewItems)
+                    {
+                        item.PropertyChanged += ConnectedItem_PropertyChanged;
+                    }
+                    break;
+                case NotifyCollectionChangedAction.Move:
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    foreach (CharProperty item in e.OldItems)
+                    {
+                        item.PropertyChanged -= ConnectedItem_PropertyChanged;
+                    }
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    break;
+                case NotifyCollectionChangedAction.Reset:
+                    break;
+                default:
+                    break;
+            }
+            Recalculate();
+        }
+
+        private void ConnectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Recalculate();
         }
 
         private void Recalculate()

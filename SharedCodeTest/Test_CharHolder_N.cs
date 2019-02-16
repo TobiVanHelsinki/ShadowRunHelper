@@ -21,8 +21,8 @@ namespace SharedCodeTest
             Char.Add(H1);
             Char.Add(new Vorteil() { Bezeichner = "Vorteil1" });
 
-            H1.Wert2.AddConnected(Char.CTRLAttribut.Charisma.Wert2);
-            H1.Wert2.AddConnected(Char.CTRLVorteil[0].Wert2);
+            H1.Wert2.Connected.Add(Char.CTRLAttribut.Charisma.Wert2);
+            H1.Wert2.Connected.Add(Char.CTRLVorteil[0].Wert2);
             TestNewConnections(Char);
         }
 
@@ -36,8 +36,8 @@ namespace SharedCodeTest
             Char.Add(H1);
             Char.Add(new Vorteil() { Bezeichner = "Vorteil1" });
 
-            H1.Wert2.AddConnected(Char.CTRLAttribut.Charisma.Wert2);
-            H1.Wert2.AddConnected(Char.CTRLVorteil[0].Wert2);
+            H1.Wert2.Connected.Add(Char.CTRLAttribut.Charisma.Wert2);
+            H1.Wert2.Connected.Add(Char.CTRLVorteil[0].Wert2);
 
             string Ser = SharedIO.Serialize(Char);
             TestNewConnections(CharHolderIO.Deserialize(Ser));
