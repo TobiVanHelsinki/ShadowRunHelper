@@ -41,23 +41,23 @@ namespace SharedCodeTest
         }
         private static void TestNewConnections(CharHolder Char)
         {
-            Char.CTRLAttribut.Charisma.Wert2.Offset++;
+            Char.CTRLAttribut.Charisma.Wert2.BaseValue++;
 
-            Assert.IsTrue(Char.CTRLAttribut.Charisma.Wert2.Offset == 1);
+            Assert.IsTrue(Char.CTRLAttribut.Charisma.Wert2.BaseValue == 1);
             Assert.IsTrue(Char.CTRLAttribut.Charisma.Wert2.Value == 1);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Offset == 0);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 0);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 1);
 
-            Char.CTRLVorteil.Data[0].Wert2.Offset++;
+            Char.CTRLVorteil.Data[0].Wert2.BaseValue++;
 
-            Assert.IsTrue(Char.CTRLVorteil.Data[0].Wert2.Offset == 1);
+            Assert.IsTrue(Char.CTRLVorteil.Data[0].Wert2.BaseValue == 1);
             Assert.IsTrue(Char.CTRLVorteil.Data[0].Wert2.Value == 1);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Offset == 0);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 0);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 2);
 
-            Char.CTRLHandlung.Data[0].Wert2.Offset++;
+            Char.CTRLHandlung.Data[0].Wert2.BaseValue++;
 
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Offset == 1);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 1);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 3);
         }
 

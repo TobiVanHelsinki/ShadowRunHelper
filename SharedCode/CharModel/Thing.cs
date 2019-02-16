@@ -479,7 +479,7 @@ namespace ShadowRunHelper.CharModel
         public double Value { get; private set; }
 
         double _Offset;
-        public double Offset
+        public double BaseValue
         {
             get { return _Offset; }
             set { if (_Offset.CompareTo(value) != 0) { _Offset = value; Recalculate(); NotifyPropertyChanged(); } }
@@ -509,7 +509,7 @@ namespace ShadowRunHelper.CharModel
 
         private void Recalculate()
         {
-             Value = Offset + Connected?.Select(x => x.Value).Sum() ?? 0;
+             Value = BaseValue + Connected?.Select(x => x.Value).Sum() ?? 0;
             NotifyPropertyChanged(nameof(Value));
         }
     }
