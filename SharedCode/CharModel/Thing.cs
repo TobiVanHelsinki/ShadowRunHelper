@@ -3,6 +3,7 @@ using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -466,7 +467,7 @@ namespace ShadowRunHelper.CharModel
         }
     }
 
-    public class CharProperty : INotifyPropertyChanged
+    public class CharProperty : ObservableCollection<CharProperty>, INotifyPropertyChanged
         //TODO implement that it can convert from int string and so on to this type
 	{
         #region NotifyPropertyChanged
@@ -486,15 +487,17 @@ namespace ShadowRunHelper.CharModel
         }
 
         public List<CharProperty> Connected { get; set; }
+
+        protected override void InsertItem(int index, CharProperty item)
+        {
+            base.InsertItem(index, item);
+            item.PropertyChanged += Con_PropertyChanged;
+            Connected.Add(item);
+            Recalculate();
+        }
         public void AddConnected(CharProperty Con)
         {
-            if (Connected == null)
-            {
-                Connected = new List<CharProperty>();
-            }
-            Con.PropertyChanged += Con_PropertyChanged;
-            Connected.Add(Con);
-            Recalculate();
+            InsertItem(0, Con);
         }
 
         private void Con_PropertyChanged(object sender, PropertyChangedEventArgs e)
