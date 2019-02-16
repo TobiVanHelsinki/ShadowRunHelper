@@ -490,49 +490,58 @@ namespace ShadowRunHelper.CharModel
         ObservableCollection<CharProperty> _Connected;
         public ObservableCollection<CharProperty> Connected
         {
-            get { return _Connected; }
-            set { if (_Connected != value) { _Connected = value; value.CollectionChanged += Connected_CollectionChanged; NotifyPropertyChanged(); } }
-        }
-
-        public CharProperty()
-        {
-            Connected = new ObservableCollection<CharProperty>();
-        }
-
-        private void Connected_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            switch (e.Action)
+            get
             {
-                case NotifyCollectionChangedAction.Add:
-                    foreach (CharProperty item in e.NewItems)
-                    {
-                        item.PropertyChanged += ConnectedItem_PropertyChanged;
-                    }
-                    break;
-                case NotifyCollectionChangedAction.Move:
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-                    foreach (CharProperty item in e.OldItems)
-                    {
-                        item.PropertyChanged -= ConnectedItem_PropertyChanged;
-                    }
-                    break;
-                case NotifyCollectionChangedAction.Replace:
-                    break;
-                case NotifyCollectionChangedAction.Reset:
-                    break;
-                default:
-                    break;
+                if (_Connected == null)
+                {
+                    _Connected = new ObservableCollection<CharProperty>();
+                    _Connected.CollectionChanged += Connected_CollectionChanged;
+                }
+                return _Connected;
+            }
+            set
+            {
+                if (_Connected != null)
+                {
+                    _Connected.CollectionChanged -= Connected_CollectionChanged;
+                }
+                if (_Connected != value)
+                {
+                    _Connected = value;
+                    NotifyPropertyChanged();
+                }
+                if (_Connected != null)
+                {
+                    _Connected.CollectionChanged += Connected_CollectionChanged;
+                }
+            }
+        }
+
+        void Connected_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.OldItems != null)
+            {
+                foreach (var item in e.OldItems.OfType<CharProperty>())
+                {
+                    item.PropertyChanged -= ConnectedItem_PropertyChanged;
+                }
+            }
+            if (e.NewItems != null)
+            {
+                foreach (var item in e.NewItems.OfType<CharProperty>())
+                {
+                    item.PropertyChanged += ConnectedItem_PropertyChanged;
+                }
             }
             Recalculate();
         }
 
-        private void ConnectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        void ConnectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             Recalculate();
         }
 
-        private void Recalculate()
+        void Recalculate()
         {
              Value = BaseValue + Connected?.Select(x => x.Value).Sum() ?? 0;
             NotifyPropertyChanged(nameof(Value));
