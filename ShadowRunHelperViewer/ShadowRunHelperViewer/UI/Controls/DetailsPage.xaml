@@ -138,7 +138,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Label Text="{x:Binding Name, Mode=OneWay}"/>
-                        <Label Text="{x:Binding Value, Mode=OneWay}" Grid.Column="1"/>
+                        <Entry Text="{x:Binding Value, Mode=TwoWay}" Grid.Column="1"/>
                     </Grid>
                 </ViewCell>
             </DataTemplate>

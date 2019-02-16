@@ -113,7 +113,12 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        
+        CharProperty _Wert2 = new CharProperty();
+        public CharProperty Wert2
+        {
+            get { return _Wert2; }
+            set { if (_Wert2 != value) { _Wert2 = value; NotifyPropertyChanged(); } }
+        }
         protected string typ = "";
         [Used_UserAttribute]
         public string Typ
@@ -458,6 +463,54 @@ namespace ShadowRunHelper.CharModel
             //    retval += 0.1f;
             //}
             return retval;
+        }
+    }
+
+    public class CharProperty : INotifyPropertyChanged
+        //TODO implement that it can convert from int string and so on to this type
+	{
+        #region NotifyPropertyChanged
+		public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+        public double Value { get; private set; }
+
+        double _Offset;
+        public double Offset
+        {
+            get { return _Offset; }
+            set { if (_Offset.CompareTo(value) != 0) { _Offset = value; Recalculate(); NotifyPropertyChanged(); } }
+        }
+
+        public List<CharProperty> Connected { get; set; }
+        public void AddConnected(CharProperty Con)
+        {
+            if (Connected == null)
+            {
+                Connected = new List<CharProperty>();
+            }
+            Con.PropertyChanged += Con_PropertyChanged;
+            Connected.Add(Con);
+            Recalculate();
+        }
+
+        private void Con_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Recalculate();
+        }
+
+        public CharProperty()
+        {
+            Connected = new List<CharProperty>();
+        }
+
+        private void Recalculate()
+        {
+             Value = Offset + Connected?.Select(x => x.Value).Sum() ?? 0;
+            NotifyPropertyChanged(nameof(Value));
         }
     }
 }

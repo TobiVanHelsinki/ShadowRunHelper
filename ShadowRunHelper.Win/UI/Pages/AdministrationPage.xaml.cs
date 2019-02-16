@@ -1,4 +1,4 @@
-﻿using Microsoft.Advertising.WinRT.UI;
+﻿//using Microsoft.Advertising.WinRT.UI;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
@@ -6,7 +6,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TAPPLICATION;
@@ -70,46 +69,46 @@ namespace ShadowRunHelper.UI
         {
             if (!Constants.IAP_HIDEADS)
             {
-                Ad_MainPageBottomBox.Child = new AdControl()
-                {
-                    Width = 640,
-                    Height = 100,
-                    Name = "Ad_MainPageBottom",
-                    HorizontalAlignment = HorizontalAlignment.Stretch,
-                    VerticalAlignment = VerticalAlignment.Stretch,
-                    ApplicationId = Constants.APP_STORE_ID_SRE,
-                    AdUnitId = Constants.AD_ADID_MainPageBottom
-                };
-                Ad_MainPageRightBox.Child = new AdControl()
-                {
-                    Width = 160,
-                    Height = 600,
-                    Name = "Ad_MainPageRight",
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    ApplicationId = Constants.APP_STORE_ID_SRE,
-                    AdUnitId = Constants.AD_ADID_MainPageRight
-                };
-                (Ad_MainPageRightBox.Child as AdControl).AdRefreshed += AdministrationPage_AdRefreshed;
-                (Ad_MainPageRightBox.Child as AdControl).ErrorOccurred += AdministrationPage_ErrorOccurred;
+                //Ad_MainPageBottomBox.Child = new AdControl()
+                //{
+                //    Width = 640,
+                //    Height = 100,
+                //    Name = "Ad_MainPageBottom",
+                //    HorizontalAlignment = HorizontalAlignment.Stretch,
+                //    VerticalAlignment = VerticalAlignment.Stretch,
+                //    ApplicationId = Constants.APP_STORE_ID_SRE,
+                //    AdUnitId = Constants.AD_ADID_MainPageBottom
+                //};
+                //Ad_MainPageRightBox.Child = new AdControl()
+                //{
+                //    Width = 160,
+                //    Height = 600,
+                //    Name = "Ad_MainPageRight",
+                //    HorizontalAlignment = HorizontalAlignment.Center,
+                //    VerticalAlignment = VerticalAlignment.Center,
+                //    ApplicationId = Constants.APP_STORE_ID_SRE,
+                //    AdUnitId = Constants.AD_ADID_MainPageRight
+                //};
+                //(Ad_MainPageRightBox.Child as AdControl).AdRefreshed += AdministrationPage_AdRefreshed;
+                //(Ad_MainPageRightBox.Child as AdControl).ErrorOccurred += AdministrationPage_ErrorOccurred;
             }
         }
 
-        private void AdministrationPage_ErrorOccurred(object sender, AdErrorEventArgs e)
-        {
-            if (SettingsModel.I.DEBUG_FEATURES)
-            {
-                Model.lstNotifications.Add(new TAPPLICATION.Model.Notification("AdControlRigth_AdministrationPage_ErrorOccurred " + e.ErrorMessage));
-            }
-        }
+        //private void AdministrationPage_ErrorOccurred(object sender, AdErrorEventArgs e)
+        //{
+        //    if (SettingsModel.I.DEBUG_FEATURES)
+        //    {
+        //        Model.lstNotifications.Add(new TAPPLICATION.Model.Notification("AdControlRigth_AdministrationPage_ErrorOccurred " + e.ErrorMessage));
+        //    }
+        //}
 
-        private void AdministrationPage_AdRefreshed(object sender, RoutedEventArgs e)
-        {
-            if (SettingsModel.I.DEBUG_FEATURES)
-            {
-                Model.lstNotifications.Add(new TAPPLICATION.Model.Notification("AdControlRigth_AdministrationPage_AdRefreshed"));
-            }
-        }
+        //private void AdministrationPage_AdRefreshed(object sender, RoutedEventArgs e)
+        //{
+        //    if (SettingsModel.I.DEBUG_FEATURES)
+        //    {
+        //        Model.lstNotifications.Add(new TAPPLICATION.Model.Notification("AdControlRigth_AdministrationPage_AdRefreshed"));
+        //    }
+        //}
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

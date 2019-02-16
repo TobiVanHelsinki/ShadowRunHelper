@@ -22,9 +22,9 @@ namespace SharedCodeTest
 
             return Ret;
         }
-        public static CharHolder CreateTestChar_SaveLoad()
+        public static CharHolder SaveLoadChar(CharHolder Char)
         {
-            return CharHolderIO.Deserialize(SharedIO.Serialize(CreateTestChar()));
+            return CharHolderIO.Deserialize(SharedIO.Serialize(Char));
         }
 
         public static void CompareCharHolder(CharHolder CharA, CharHolder CharB)

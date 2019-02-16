@@ -10,10 +10,9 @@ namespace SharedCodeTest
         [TestMethod]
         public void TestOfAddition()
         {
-            TLIB_CORE.Init.Do();
             AppModel.Initialize();
             SettingsModel.Initialize();
-            var Char = TestHelper.CreateTestChar_SaveLoad();
+            var Char = TestHelper.CreateTestChar();
             Assert.IsTrue(Char.CTRLAttribut.Charisma.Wert == 0);
             Assert.IsTrue(Char.CTRLAttribut.Logik.Wert == 0);
             Assert.IsTrue(Char.CTRLVorteil.Data[0].Wert == 0);

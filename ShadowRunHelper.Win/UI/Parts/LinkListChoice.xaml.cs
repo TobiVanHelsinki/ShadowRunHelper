@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using Windows.UI.Xaml.Controls;
+﻿using ShadowRunHelper.Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Windows.UI.Xaml.Data;
 using System.Linq;
-using ShadowRunHelper.Model;
-
 using TLIB;
-using Microsoft.AppCenter.Analytics;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI
 {

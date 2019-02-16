@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using TLIB;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer
@@ -41,36 +41,48 @@ namespace ShadowRunHelperViewer
 
         private static IEnumerable<MyClass> CreateItems(Thing MyType)
         {
+            //TODO Not own class here; use Custom class AS Properties
             foreach (var item in Thing.GetProperties(MyType).Reverse())
             {
-                yield return new MyClass
-                {
-                    Name = CustomManager.GetString("Model_" + item.DeclaringType.Name +  "_" + item.Name + "/Text") + ": ",
-                    Value = item.GetValue(MyType)?.ToString()
-                };
-            };
+                yield return new MyClass(MyType, item);
+            }
         }
     }
     public class MyClass : INotifyPropertyChanged
-	{
+    {
         #region NotifyPropertyChanged
-		public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-        string _Name;
+        Thing MyThing;
+        PropertyInfo Prop;
+
+        public MyClass(Thing myThing, PropertyInfo prop)
+        {
+            MyThing = myThing;
+            Prop = prop;
+            MyThing.PropertyChanged += MyThing_PropertyChanged;
+        }
+
+        private void MyThing_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == Prop.Name)
+            {
+                NotifyPropertyChanged(nameof(Value));
+            }
+        }
+
         public string Name
         {
-            get { return _Name; }
-            set { if (_Name != value) { _Name = value; NotifyPropertyChanged(); } }
+            get { return CustomManager.GetString("Model_" + Prop.DeclaringType.Name + "_" + Prop.Name + "/Text") + ": "; }
         }
-        string _Value;
-        public string Value
+        public dynamic Value
         {
-            get { return _Value; }
-            set { if (_Value != value) { _Value = value; NotifyPropertyChanged(); } }
+            get { return Prop.GetValue(MyThing); }
+            set { Prop.SetValue(MyThing, value); }
         }
     }
 }

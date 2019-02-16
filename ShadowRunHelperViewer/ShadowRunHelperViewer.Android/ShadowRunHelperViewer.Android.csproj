@@ -63,6 +63,9 @@
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.1.5.188</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Compat">
+      <Version>28.0.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.129452" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.1" />
@@ -107,9 +110,9 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\TLIB\TAPPLICATION_Droid\TAPPLICATION_Droid.csproj">
-      <Project>{0ab241c0-09cd-4871-b1fc-c228e50aa622}</Project>
-      <Name>TAPPLICATION_Droid</Name>
+    <ProjectReference Include="..\..\..\TLIB\TAPPLICATION_Xamarin\TAPPLICATION_Xamarin.csproj">
+      <Project>{22ef0a21-71af-44ed-82a1-1565e43eadab}</Project>
+      <Name>TAPPLICATION_Xamarin</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SharedCode\SharedCode.csproj">
       <Project>{63a5e683-5a51-4c45-a9de-ca0c26c6ec5a}</Project>

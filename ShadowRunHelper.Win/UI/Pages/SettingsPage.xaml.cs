@@ -1,5 +1,4 @@
-﻿using Microsoft.AppCenter.Analytics;
-using ShadowRunHelper.Model;
+﻿using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
