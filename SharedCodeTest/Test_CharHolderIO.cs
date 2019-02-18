@@ -30,9 +30,10 @@ namespace SharedCodeTest
         public void SerializingFileChar()
         {
             var FileContent = File.ReadAllText(Environment.CurrentDirectory + @"\assets\Flash.SRHChar");
-            var Should = CharHolderIO.Deserialize(FileContent);
-            var Current = CharHolderIO.Deserialize(SharedIO.Serialize(Should));
-            TestHelper.CompareCharHolder(Should, Current);
+            var Expected = CharHolderIO.Deserialize(FileContent);
+            string fileContent = SharedIO.Serialize(Expected);
+            var Actual = CharHolderIO.Deserialize(fileContent);
+            TestHelper.CompareCharHolder(Expected, Actual);
         }
     }
 }

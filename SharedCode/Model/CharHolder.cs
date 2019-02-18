@@ -343,7 +343,7 @@ namespace ShadowRunHelper.Model
         {
             if (e.PropertyName == nameof(Person.Alias) || e.PropertyName == nameof(Person.Char_Typ))
             {
-                if (!AppModel.Instance.IsFileActivated) // Should not be automated, ask user
+                if (AppModel.Instance?.IsFileActivated == false) // Should not be automated, ask user
                 {
                     FileInfo?.ChangeName(MakeName(false));
                 }

@@ -83,7 +83,7 @@ namespace SharedCodeTest
         [TestMethod]
         public void IConvertable_Test()
         {
-            var t = new Item();
+            var t = new Handlung();
             t.Wert2.BaseValue = 5;
 
             CharProperty tdp = 5;

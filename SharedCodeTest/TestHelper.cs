@@ -67,11 +67,24 @@ namespace SharedCodeTest
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
                 return;
             }
-            foreach (var item in Thing.GetProperties(El1))
+            foreach (var item in Thing.GetProperties(El1).Where(x => x.PropertyType != typeof(CharProperty)))
             {
                 object O1 = item.GetValue(El1);
                 object O2 = item.GetValue(El2);
                 Assert.IsTrue(O1 == O2 || O1.Equals(O2)); // == does just a reference comp
+            }
+            foreach (var item in Thing.GetProperties(El1).Where(x => x.PropertyType == typeof(CharProperty)))
+            {
+                var O1 = (CharProperty)item.GetValue(El1);
+                var O2 = (CharProperty)item.GetValue(El2);
+                Assert.AreEqual(O1.BaseValue, O2.BaseValue);
+                Assert.AreEqual(O1.Value, O2.Value);
+                Assert.AreEqual(O1.Connected.Count, O2.Connected.Count);
+                if (O1.Active!= O2.Active)
+                {
+                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                }
+                Assert.AreEqual(O1.Active, O2.Active);
             }
         }
     }

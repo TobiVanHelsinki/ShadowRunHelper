@@ -260,16 +260,33 @@ namespace ShadowRunHelper.CharModel
         {
             return ReflectionHelper.GetProperties(obj, typeof(Used_ListAttribute));
         }
+        public static IEnumerable<CharProperty> GetCharProperties(object obj)
+        {
+            return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute)).Where(x => x.PropertyType == typeof(CharProperty)).Select(x => x.GetValue(obj)).OfType<CharProperty>();
+        }
 
+        /// <summary>
+        /// Copies own Values into target
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public virtual Thing Copy(Thing target = null)
         {
+            //TODO Add Copy for CharProperty
             if (target == null)
             {
                 target = (Thing)Activator.CreateInstance(this.GetType());
             }
             foreach (var item in GetProperties(target))
             {
-                item.SetValue(target, item.GetValue(this));
+                if (item.PropertyType == typeof(CharProperty))
+                {
+                    item.SetValue(target, (item.GetValue(this) as CharProperty).Copy());
+                }
+                else
+                {
+                    item.SetValue(target, item.GetValue(this));
+                }
             }
 
             foreach (var pair in ReflectionHelper.GetProperties(target, typeof(Used_ListAttribute)))
@@ -328,15 +345,15 @@ namespace ShadowRunHelper.CharModel
         {
             foreach (var item in GetProperties(this))
             {
-                if (item.DeclaringType == typeof(string))
+                if (item.PropertyType == typeof(string))
                 {
                     item.SetValue(this, "");
                 }
-                else if (item.DeclaringType == typeof(char))
+                else if (item.PropertyType == typeof(char))
                 {
                     item.SetValue(this, ' ');
                 }
-                else if (item.DeclaringType == typeof(bool?))
+                else if (item.PropertyType == typeof(bool?))
                 {
                     item.SetValue(this, false);
                 }
@@ -359,6 +376,10 @@ namespace ShadowRunHelper.CharModel
                 NotifyPropertyChanged(item.Name);
             }
             NotifyPropertyChanged(Constants.THING_DELETED_TOKEN);
+            foreach (var item in GetCharProperties(this))
+            {
+                item.ParentDeleted();
+            }
         }
 
         #region CSV
@@ -532,39 +553,98 @@ namespace ShadowRunHelper.CharModel
             set { if (_Active != value) { _Active = value; Recalculate(); } }
         }
 
+        public CharProperty()
+        {
+            DeletionNotification += CharProperty_DeletionNotification;
+        }
 
+        void Recalculate()
+        {
+            var OldValue = Value;
+            Value = Active ? BaseValue + Connected?.Select(x => x.Value).Sum() ?? 0.0 : 0.0;
+            if (OldValue != Value)
+            {
+                NotifyPropertyChanged(nameof(Value));
+            }
+        }
+
+        #region Any Property Changed
         void Connected_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.OldItems != null)
             {
-                foreach (var item in e.OldItems.OfType<CharProperty>())
+                foreach (var item in e.OldItems.OfType<CharProperty>().ToList())
                 {
                     item.PropertyChanged -= ConnectedItem_PropertyChanged;
                 }
             }
             if (e.NewItems != null)
             {
-                foreach (var item in e.NewItems.OfType<CharProperty>())
+                foreach (var item in e.NewItems.OfType<CharProperty>().ToList())
                 {
-                    item.PropertyChanged += ConnectedItem_PropertyChanged;
+                    if (HasCircularReference(item) || IsForbiddenType(item))
+                    {
+                        Connected.Remove(item);
+                    }
+                    else
+                    {
+                        item.PropertyChanged += ConnectedItem_PropertyChanged;
+                    }
                 }
             }
             Recalculate();
         }
-
-        void ConnectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        bool HasCircularReference(CharProperty added) //TODO Unit test
         {
+            foreach (var item in added.Connected)
+            {
+                if (item == this || HasCircularReference(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        bool IsForbiddenType(CharProperty item)
+        {
+            //TODO Implement Filter
+            //public IEnumerable<ThingDefs> FilterOut { get; set; }
+            return false;
+        }
+
+        void ConnectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e) => Recalculate();
+        #endregion
+        #region Deletion Handling
+
+        static event EventHandler<CharProperty> DeletionNotification;
+        internal void ParentDeleted()
+        {
+            DeletionNotification.Invoke(this, this);
+        }
+
+        private void CharProperty_DeletionNotification(object sender, CharProperty e)
+        {
+            var ToRemove = Connected.Where(x => x == e).ToList();
+            foreach (var item in ToRemove)
+            {
+                Connected.Remove(item);
+            }
             Recalculate();
         }
 
-        void Recalculate()
+        internal CharProperty Copy(CharProperty target = null)
         {
-            var OldValue = Value;
-            Value = Active ? BaseValue +  Connected?.Select(x => x.Value).Sum() ?? 0.0 : 0.0;
-            if (OldValue != Value)
+            if (target == null)
             {
-                NotifyPropertyChanged(nameof(Value));
+                target = (CharProperty)Activator.CreateInstance(this.GetType());
             }
+            target.Active = Active;
+            target.BaseValue = BaseValue;
+            target.Connected.Clear();
+            target.Connected.AddRange(Connected);
+            return target;
         }
+        #endregion
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace ShadowRunHelper.CharModel
+﻿namespace ShadowRunHelper.CharModel
 {
     public class Item : Thing
     {
@@ -29,27 +27,12 @@ namespace ShadowRunHelper.CharModel
                 if (value != this.aktiv)
                 {
                     this.aktiv = value;
-                    NotifyPropertyChanged();
                     RefreshCharProperties();
+                    NotifyPropertyChanged();
                 }
             }
         }
-
-        private void RefreshCharProperties()
-        {
-            foreach (var item in GetProperties(this).Where(x => x.PropertyType == typeof(CharProperty)).Select(x => x.GetValue(this)).OfType<CharProperty>())
-            {
-                item.Active = aktiv == true;
-            }
-        }
-
         private double anzahl = 1;
-
-        public Item()
-        {
-            RefreshCharProperties();
-        }
-
         [Used_UserAttribute]
         public double Anzahl
         {
@@ -61,6 +44,18 @@ namespace ShadowRunHelper.CharModel
                     this.anzahl = value;
                     NotifyPropertyChanged();
                 }
+            }
+        }
+
+        public Item()
+        {
+            RefreshCharProperties();
+        }
+        private void RefreshCharProperties()
+        {
+            foreach (var item in GetCharProperties(this))
+            {
+                item.Active = aktiv == true;
             }
         }
 

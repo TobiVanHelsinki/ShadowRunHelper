@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
-using TLIB;
 
 namespace ShadowRunHelper.Model
 {
@@ -32,15 +33,6 @@ namespace ShadowRunHelper.Model
                 {
                     return true;
                 }
-                //if (item.Object.GetHashCode() == thisThing.GetHashCode())
-                //{
-                //    return true;
-                //}
-                //if (thisThing.Equals(item.Object))
-                //{
-                //    return true;
-                //}
-
                 if (HasCircularReference(item.Object))
                 {
                     return true;
@@ -49,7 +41,7 @@ namespace ShadowRunHelper.Model
             return false;
         }
 
-        Action CurrentTODO;
+        Action CollectionChangeCallback;
         Thing thisThing;
 
         public LinkList(Thing thing)
@@ -57,41 +49,62 @@ namespace ShadowRunHelper.Model
             thisThing = thing;
         }
 
-        public void OnCollectionChangedCall(Action TODO)
+        public void OnCollectionChangedCall(Action _CollectionChangeCallback)
         {
-            if (CurrentTODO != null)
+            if (CollectionChangeCallback != null)
             {
                 foreach (var item in this)
                 {
-                    item.Object.PropertyChanged -= (u, c) => CurrentTODO();
+                    item.Object.PropertyChanged -= CallCallback;
                 }
             }
-            CurrentTODO = TODO;
-            if (CurrentTODO != null)
+            CollectionChangeCallback = _CollectionChangeCallback;
+            if (CollectionChangeCallback != null)
             {
-                CollectionChanged += (x, y) => DoAction();
-               DoAction();
+                CollectionChanged += This_CollectionChanged;
+                This_CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, this));
             }
         }
-        void DoAction()
+
+        private void This_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            CurrentTODO();
-            foreach (var item in this)
+            CollectionChangeCallback();
+            if (e.NewItems != null)
             {
-                item.Object.PropertyChanged -= (u, c) => CurrentTODO();
-                item.Object.PropertyChanged += (u, c) => CurrentTODO();
-                item.Object.PropertyChanged -= (u, c) => CheckForDeletion(c.PropertyName, item);
-                item.Object.PropertyChanged += (u, c) => CheckForDeletion(c.PropertyName, item);
+                foreach (var item in e.NewItems.OfType<AllListEntry>().ToList())
+                {
+                    item.Object.PropertyChanged += CallCallback;
+                    item.Object.PropertyChanged += CheckForDeletion;
+                }
+            }
+            if (e.OldItems != null)
+            {
+                foreach (var item in e.OldItems.OfType<AllListEntry>().ToList())
+                {
+                    item.Object.PropertyChanged -= CallCallback;
+                    item.Object.PropertyChanged -= CheckForDeletion;
+                }
             }
         }
-        public void CheckForDeletion(string PropertyName, AllListEntry item)
+
+        void CallCallback(object sender, PropertyChangedEventArgs e) => CollectionChangeCallback();
+
+        void CheckForDeletion(object sender, PropertyChangedEventArgs e)
         {
-            if (PropertyName == Constants.THING_DELETED_TOKEN) Remove(item);
+            if (e.PropertyName == Constants.THING_DELETED_TOKEN)
+            {
+                var ToRemove = this.Where(x => x.Object == sender as Thing).ToList();
+                foreach (var item in ToRemove)
+                {
+                    Remove(item);
+                }
+            }
         }
+
 
         public double Recalculate()
         {
-            return this.Aggregate<AllListEntry, double>(0, (accvalue, next) => accvalue + next.Object.ValueOf(next.PropertyID));
+            return this.Aggregate(0.0, (accu, curr) => accu + curr.Object.ValueOf(curr.PropertyID));
         }
 
     }
