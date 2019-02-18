@@ -3,6 +3,7 @@ using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
+using System;
 using TAPPLICATION.IO;
 
 namespace SharedCodeTest
@@ -62,6 +63,17 @@ namespace SharedCodeTest
 
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 1);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 3);
+        }
+
+
+        [TestMethod]
+        public void IConvertable_Test()
+        {
+            var t = new Item();
+            t.Wert2.BaseValue = 5;
+
+            CharProperty tdp = 5;
+            Assert.AreEqual(tdp.Value, t.Wert2.Value);
         }
 
     }

@@ -469,8 +469,7 @@ namespace ShadowRunHelper.CharModel
     }
 
     public class CharProperty : INotifyPropertyChanged
-        //TODO implement that it can convert from int string and so on to this type
-	{
+    {
         #region NotifyPropertyChanged
 		public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -478,13 +477,19 @@ namespace ShadowRunHelper.CharModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+        #region Implicit Converter
+        public static implicit operator CharProperty(double d)
+        {
+            return new CharProperty { BaseValue = d };
+        }
+        #endregion
         public double Value { get; private set; }
 
-        double _Offset;
+        double _BaseValue;
         public double BaseValue
         {
-            get { return _Offset; }
-            set { if (_Offset.CompareTo(value) != 0) { _Offset = value; Recalculate(); NotifyPropertyChanged(); } }
+            get { return _BaseValue; }
+            set { if (_BaseValue.CompareTo(value) != 0) { _BaseValue = value; Recalculate(); NotifyPropertyChanged(); } }
         }
 
         ObservableCollection<CharProperty> _Connected;
