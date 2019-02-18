@@ -116,6 +116,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
         CharProperty _Wert2 = new CharProperty();
+        [Used_UserAttribute]
         public CharProperty Wert2
         {
             get { return _Wert2; }
@@ -150,6 +151,22 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        bool _IsFavorite;
+        [Used_UserAttribute]
+        public bool IsFavorite
+        {
+            get { return _IsFavorite; }
+            set { if (_IsFavorite != value) { _IsFavorite = value; NotifyPropertyChanged(); } }
+        }
+
+        int _FavoriteIndex;
+        [Used_UserAttribute]
+        public int FavoriteIndex
+        {
+            get { return _FavoriteIndex; }
+            set { if (_FavoriteIndex != value) { _FavoriteIndex = value; NotifyPropertyChanged(); } }
+        }
+
         #endregion
         #region Calculations
         LinkList _LinkedThings;
@@ -182,22 +199,6 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        bool _IsFavorite;
-        [Used_UserAttribute]
-        public bool IsFavorite
-        {
-            get { return _IsFavorite; }
-            set { if (_IsFavorite != value) { _IsFavorite = value; NotifyPropertyChanged(); } }
-        }
-
-        int _FavoriteIndex;
-        [Used_UserAttribute]
-        public int FavoriteIndex
-        {
-            get { return _FavoriteIndex; }
-            set { if (_FavoriteIndex != value) { _FavoriteIndex = value; NotifyPropertyChanged(); } }
-        }
-
         protected virtual void OnLinkedThingsChanged()
         {
             WertCalced = Wert + LinkedThings.Recalculate();
@@ -483,6 +484,7 @@ namespace ShadowRunHelper.CharModel
             return new CharProperty { BaseValue = d };
         }
         #endregion
+        [JsonIgnore]
         public double Value { get; private set; }
 
         double _BaseValue;
@@ -519,8 +521,17 @@ namespace ShadowRunHelper.CharModel
                 {
                     _Connected.CollectionChanged += Connected_CollectionChanged;
                 }
+                Recalculate();
             }
         }
+
+        bool _Active = true;
+        public bool Active
+        {
+            get { return _Active; }
+            set { if (_Active != value) { _Active = value; Recalculate(); } }
+        }
+
 
         void Connected_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -548,8 +559,12 @@ namespace ShadowRunHelper.CharModel
 
         void Recalculate()
         {
-             Value = BaseValue + Connected?.Select(x => x.Value).Sum() ?? 0;
-            NotifyPropertyChanged(nameof(Value));
+            var OldValue = Value;
+            Value = Active ? BaseValue +  Connected?.Select(x => x.Value).Sum() ?? 0.0 : 0.0;
+            if (OldValue != Value)
+            {
+                NotifyPropertyChanged(nameof(Value));
+            }
         }
     }
 }

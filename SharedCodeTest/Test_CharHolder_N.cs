@@ -20,10 +20,10 @@ namespace SharedCodeTest
             CharHolder Char = new CharHolder();
             var H1 = new Handlung() { Bezeichner = "Handlung1" };
             Char.Add(H1);
-            Char.Add(new Vorteil() { Bezeichner = "Vorteil1" });
+            Char.Add(new Item() { Bezeichner = "Item" });
 
             H1.Wert2.Connected.Add(Char.CTRLAttribut.Charisma.Wert2);
-            H1.Wert2.Connected.Add(Char.CTRLVorteil[0].Wert2);
+            H1.Wert2.Connected.Add(Char.CTRLItem[0].Wert2);
             TestNewConnections(Char);
         }
 
@@ -35,10 +35,10 @@ namespace SharedCodeTest
             CharHolder Char = new CharHolder();
             var H1 = new Handlung() { Bezeichner = "Handlung1" };
             Char.Add(H1);
-            Char.Add(new Vorteil() { Bezeichner = "Vorteil1" });
+            Char.Add(new Item() { Bezeichner = "Item" });
 
             H1.Wert2.Connected.Add(Char.CTRLAttribut.Charisma.Wert2);
-            H1.Wert2.Connected.Add(Char.CTRLVorteil[0].Wert2);
+            H1.Wert2.Connected.Add(Char.CTRLItem[0].Wert2);
 
             string Ser = SharedIO.Serialize(Char);
             TestNewConnections(CharHolderIO.Deserialize(Ser));
@@ -52,10 +52,17 @@ namespace SharedCodeTest
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 0);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 1);
 
-            Char.CTRLVorteil.Data[0].Wert2.BaseValue++;
+            Char.CTRLItem.Data[0].Wert2.BaseValue++;
 
-            Assert.IsTrue(Char.CTRLVorteil.Data[0].Wert2.BaseValue == 1);
-            Assert.IsTrue(Char.CTRLVorteil.Data[0].Wert2.Value == 1);
+            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.BaseValue == 1);
+            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.Value == 0);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 0);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 1);
+
+            Char.CTRLItem.Data[0].Aktiv = true;
+
+            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.BaseValue == 1);
+            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.Value == 1);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 0);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 2);
 
@@ -63,11 +70,29 @@ namespace SharedCodeTest
 
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 1);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 3);
+
+            Char.CTRLItem.Data[0].Aktiv = false;
+
+            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.BaseValue == 1);
+            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.Value == 0);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 1);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 2);
         }
 
 
         [TestMethod]
         public void IConvertable_Test()
+        {
+            var t = new Item();
+            t.Wert2.BaseValue = 5;
+
+            CharProperty tdp = 5;
+            Assert.AreEqual(tdp.Value, t.Wert2.Value);
+        }
+
+
+        [TestMethod]
+        public void AktiveTest()
         {
             var t = new Item();
             t.Wert2.BaseValue = 5;
