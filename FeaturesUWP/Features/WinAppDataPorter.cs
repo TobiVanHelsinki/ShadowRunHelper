@@ -43,13 +43,13 @@ namespace ShadowRunHelper
                         var m = Convert.ChangeType(item.NEW.Item2, item.OLD.PropertyType);
                         item.OLD?.SetMethod.Invoke(SettingsModel.I, new object[] { m });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         ErrorList.Add(item.OLD.Name);
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             // Import Chars
@@ -68,7 +68,7 @@ namespace ShadowRunHelper
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             InProgress = false;

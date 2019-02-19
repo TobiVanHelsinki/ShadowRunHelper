@@ -8,7 +8,12 @@
     </OnPlatform>
     <Style x:Key="IconButton" TargetType="Button">
         <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}" />
-        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="FontSize" Value="Small"/>
         <Setter Property="TextColor" Value="FloralWhite"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <!--<Setter Property="WidthRequest" Value="{StaticResource TopButtonSize}"/>-->
+        <!--<Setter Property="HeightRequest" Value="{StaticResource TopButtonSize}"/>-->
     </Style>
 </ResourceDictionary>

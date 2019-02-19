@@ -26,7 +26,7 @@ namespace ShadowRunHelper
                 {
                     Instance = AppInstance.FindOrRegisterInstanceForKey(key);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     InstanceKey = key;
                 }

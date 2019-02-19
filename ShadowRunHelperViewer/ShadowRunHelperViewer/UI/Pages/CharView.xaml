@@ -23,13 +23,9 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HorizontalOptions="Fill" Padding="4,0,4,4" x:Name="Infogrid">
+            <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" 
+                         HorizontalOptions="Fill" Padding="4,0,4,4" x:Name="Infogrid">
                 <StackLayout.Resources>
-                    <Style x:Key="IconButton" TargetType="Button">
-                        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
-                        <Setter Property="FontSize" Value="Medium"/>
-                        <Setter Property="TextColor" Value="FloralWhite"/>
-                    </Style>
                     <Style x:Key="OuterPanel" TargetType="StackLayout">
                         <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
                         <Setter Property="Spacing" Value="0"/>

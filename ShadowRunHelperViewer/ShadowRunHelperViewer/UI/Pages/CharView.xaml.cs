@@ -31,6 +31,7 @@ namespace ShadowRunHelperViewer
             Open = false;
             BindingContext = this;
             Infogrid.GestureRecognizers.Add(new TapGestureRecognizer { NumberOfTapsRequired = 1, Command = new Command(Infogrid_Tapped) });
+            SettingsModel.I.FIRST_START = false;
         }
 
         async void Infogrid_Tapped()
@@ -139,7 +140,16 @@ namespace ShadowRunHelperViewer
         {
             foreach (var item in Buttons)
             {
-                item.BackgroundColor = item.BindingContext is ThingDefs d && d == type ? Color.Accent : Color.Default;
+                if (item.BindingContext is ThingDefs d && d == type)
+                {
+                    item.BackgroundColor = Color.Accent;
+                    item.TextColor = Color.FloralWhite;
+                }
+                else
+                {
+                    item.BackgroundColor = Color.Default;
+                    item.TextColor = Color.Default;
+                }
             }
         }
 

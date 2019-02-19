@@ -149,6 +149,11 @@
     </ContentView.Resources>
     <ContentView.Content>
         <Grid>
+            <Grid.Resources>
+                <OnPlatform x:Key="ButtonSize" x:TypeArguments="GridLength">
+                    <On Platform="Android" Value="45" />
+                </OnPlatform>
+            </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -156,13 +161,16 @@
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="{StaticResource ButtonSize}"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="{StaticResource ButtonSize}"/>
                 </Grid.ColumnDefinitions>
-                <Button Text="&#xE710;" Style="{StaticResource IconButton}" Clicked="Add" Margin="6"/>
+                <!--<StackLayout Orientation="Horizontal">-->
+                    <!--<Button Text="&#xf055;" Style="{StaticResource IconButton}" Clicked="Add" Margin="6" TextColor="Default"/>-->
+                    <Button Text="&#xf067;" Style="{StaticResource IconButton}" Clicked="Add" Margin="6" TextColor="Default"/>
+                <!--</StackLayout>-->
                 <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium"/>
-                <Button Text="&#xE712;" Style="{StaticResource IconButton}" Clicked="Options" Grid.Column="2" Margin="6"/>
+                <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="Options" Grid.Column="2" Margin="6" TextColor="Default"/>
             </Grid>
             <ContentView Grid.Row="1" x:Name="Items_H" ControlTemplate="{StaticResource Thing_H}"/>
             <Frame Padding="5" Margin="0" Grid.Row="2"
