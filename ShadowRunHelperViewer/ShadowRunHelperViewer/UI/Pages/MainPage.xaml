@@ -26,15 +26,15 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <StackLayout Orientation="Horizontal">
-                <Button Text="&#xE74E;" Style="{StaticResource IconButton}" Clicked="Save"/>
-                <Button Text="&#xE712;" Style="{StaticResource IconButton}"  Clicked="MoreMenu"/>
+                <Button Text="&#xf0c7;" Style="{StaticResource IconButton}" Clicked="Save"/>
+                <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="MoreMenu"/>
             </StackLayout>
             <SearchBar Grid.Column="1" HorizontalOptions="Fill" Placeholder="Search Name or Type"/>
             <StackLayout Orientation="Horizontal" Grid.Column="2">
-                <Button Text="&#xE779;" Style="{StaticResource IconButton}" Clicked="CharPage"/>
-                <Button Text="&#xE716;" Style="{StaticResource IconButton}" Clicked="Administration"/>
-                <Button Text="&#xE713;" Style="{StaticResource IconButton}" Clicked="Settings"/>
-                <Button Text="&#xE700;" Style="{StaticResource IconButton}" Clicked="Toggle"/>
+                <Button Text="&#xf007;" Style="{StaticResource IconButton}" Clicked="CharPage"/>
+                <Button Text="&#xf0c0;" Style="{StaticResource IconButton}" Clicked="Administration"/>
+                <Button Text="&#xf013;" Style="{StaticResource IconButton}" Clicked="Settings"/>
+                <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="Toggle"/>
             </StackLayout>
         </Grid>
         <local:CharView Grid.Row="1" Margin="0" Padding="0" BackgroundColor="Transparent"/>

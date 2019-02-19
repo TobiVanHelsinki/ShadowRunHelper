@@ -16,6 +16,7 @@ namespace ShadowRunHelperViewer
     {
         public AppModel Model => AppModel.Instance;
         IEnumerable<StackLayout> ButtonsPanels;
+        IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children.OfType<Button>());
         static CharView Instance;
         public CharView()
         {
@@ -53,7 +54,7 @@ namespace ShadowRunHelperViewer
                     item.Children.Clear();
                 }
                 foreach (var item in new (string, Layout)[] {("Favorites", Favs), ("Notes", Notes), ("Person", null) })
-                {
+                { 
                     var btt = new Button
                     {
                         Padding = new Thickness(2),
@@ -113,6 +114,7 @@ namespace ShadowRunHelperViewer
         {
             if (sender is VisualElement b && b.BindingContext is ThingDefs type)
             {
+                HighlightButton(type);
                 var gc = new GController();
                 var CTRL = typeof(CharHolder).GetProperties().FirstOrDefault(x=>x.Name == "CTRL" + type);
                 if (CTRL != null)
@@ -130,6 +132,14 @@ namespace ShadowRunHelperViewer
                 {
                     Open = false;
                 }
+            }
+        }
+
+        private void HighlightButton(ThingDefs type)
+        {
+            foreach (var item in Buttons)
+            {
+                item.BackgroundColor = item.BindingContext is ThingDefs d && d == type ? Color.Accent : Color.Default;
             }
         }
 

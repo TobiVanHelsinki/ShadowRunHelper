@@ -26,7 +26,6 @@ namespace ShadowRunHelperViewer
                 SettingsModel.I.InitSettings();
 #endif
             }
-
             MainPage = new MainPage();
         }
 
