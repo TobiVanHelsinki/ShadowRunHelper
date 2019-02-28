@@ -35,7 +35,7 @@
         </uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
-        <uap:Extension Category="windows.fileTypeAssociation" Executable="ShadowRunHelper.Win.exe" EntryPoint="ShadowRunHelper.Win.App">
+        <uap:Extension Category="windows.fileTypeAssociation" Executable="ShadowRunHelper.UWP.exe" EntryPoint="ShadowRunHelper.UWP.App">
           <uap:FileTypeAssociation Name="srhchar" DesiredView="default">
             <uap:DisplayName>SRHChar</uap:DisplayName>
             <uap:Logo>Assets\FileFormatLogo.png</uap:Logo>
@@ -46,12 +46,12 @@
             </uap:SupportedFileTypes>
           </uap:FileTypeAssociation>
         </uap:Extension>
-        <uap:Extension Category="windows.protocol" Executable="ShadowRunHelper.Win.exe" EntryPoint="ShadowRunHelper.Win.App">
+        <uap:Extension Category="windows.protocol" Executable="ShadowRunHelper.UWP.exe" EntryPoint="ShadowRunHelper.UWP.App">
           <uap:Protocol Name="srch">
             <uap:DisplayName>ShadowRunHelper Char</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
-        <uap:Extension Category="windows.fileTypeAssociation" Executable="ShadowRunHelper.Win.exe" EntryPoint="ShadowRunHelper.Win.App">
+        <uap:Extension Category="windows.fileTypeAssociation" Executable="ShadowRunHelper.UWP.exe" EntryPoint="ShadowRunHelper.UWP.App">
           <uap:FileTypeAssociation Name="srhapp1">
             <uap:DisplayName>SRHApp1</uap:DisplayName>
             <uap:Logo>Assets\FileFormatLogo.png</uap:Logo>

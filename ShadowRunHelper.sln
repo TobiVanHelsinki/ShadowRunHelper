@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShadowRunHelperViewer", "Sh
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FeaturesDroid", "FeaturesDroid\FeaturesDroid.shproj", "{C4F891D9-6715-40CB-B466-FA5B3BB0FB0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Win", "ShadowRunHelper.Win\ShadowRunHelper.Win.csproj", "{20705C89-F90E-4B10-827C-BA8A0B24E14F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.UWP", "ShadowRunHelper.UWP\ShadowRunHelper.UWP.csproj", "{20705C89-F90E-4B10-827C-BA8A0B24E14F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
