@@ -1,13 +1,9 @@
-﻿using ShadowRunHelper;
+﻿using Rg.Plugins.Popup.Services;
+using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using TLIB;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer
@@ -15,7 +11,6 @@ namespace ShadowRunHelperViewer
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsPage : Rg.Plugins.Popup.Pages.PopupPage
     {
-        public ObservableCollection<MyClass> Source { get; set; } = new ObservableCollection<MyClass>();
         public Thing MyThing { get; set; }
         public bool Editable { get; set; }
         public DetailsPage(Thing thing, bool editable)
@@ -23,6 +18,7 @@ namespace ShadowRunHelperViewer
             MyThing = thing;
             Editable = editable;
             InitializeComponent();
+            MainContent.BindingContext = MyThing;
         }
 
         protected override void OnAppearing()
@@ -30,59 +26,76 @@ namespace ShadowRunHelperViewer
             try
             {
                 BindingContext = this;
-                Source.AddRange(CreateItems(MyThing));
             }
             catch (Exception ex)
             {
                 TAPPLICATION.Debugging.TraceException(ex);
             }
+            CreateItems();
             base.OnAppearing();
         }
 
-        private static IEnumerable<MyClass> CreateItems(Thing MyType)
+        void CreateItems()
         {
-            //TODO Not own class here; use Custom class AS Properties
-            foreach (var item in Thing.GetProperties(MyType).Reverse())
+            MainContent.Children.Clear();
+            var RowCounter = 0;
+            var Ignore = new string[] { nameof(Thing.FavoriteIndex), nameof(Thing.Order), nameof(Thing.ThingType) };
+            foreach (var item in Thing.GetProperties(MyThing).Reverse())
             {
-                yield return new MyClass(MyType, item);
+                if (Ignore.Contains(item.Name))
+                {
+                    continue;
+                }
+                var Name = new Label
+                {
+                    Text = CustomManager.GetString("Model_" + item.DeclaringType.Name + "_" + item.Name + "/Text") + ": ",
+                };
+                if (Name.Text == null || Name.Text == ": ")
+                {
+
+                }
+                Grid.SetRow(Name, RowCounter);
+                MainContent.Children.Add(Name);
+                View Content;
+                if (item.PropertyType == typeof(bool) || item.PropertyType == typeof(bool?))
+                {
+                    Content = new Switch();
+                    Content.SetBinding(Switch.IsToggledProperty, new Binding(item.Name));
+                }
+                else if (item.PropertyType == typeof(CharProperty))
+                {
+                    Name.Text = "Wert2";
+                    Content = new Label() { };
+                }
+                else
+                {
+                    if (Editable)
+                    {
+                       Content = new Entry();
+                       Content.SetBinding(Entry.TextProperty, new Binding(item.Name));
+                    }
+                    else
+                    {
+                        Content = new Label { VerticalOptions = LayoutOptions.Center };
+                        Content.SetBinding(Label.TextProperty, new Binding(item.Name));
+                    }
+                }
+                Grid.SetRow(Content, RowCounter);
+                Grid.SetColumn(Content, 2);
+                MainContent.Children.Add(Content);
+                RowCounter++;
             }
         }
-    }
-    public class MyClass : INotifyPropertyChanged
-    {
-        #region NotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
-        Thing MyThing;
-        PropertyInfo Prop;
 
-        public MyClass(Thing myThing, PropertyInfo prop)
+        private void Close_Clicked(object sender, EventArgs e)
         {
-            MyThing = myThing;
-            Prop = prop;
-            MyThing.PropertyChanged += MyThing_PropertyChanged;
+            PopupNavigation.Instance.PopAsync(true);
         }
 
-        private void MyThing_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void Edit_Clicked(object sender, EventArgs e)
         {
-            if (e.PropertyName == Prop.Name)
-            {
-                NotifyPropertyChanged(nameof(Value));
-            }
-        }
-
-        public string Name
-        {
-            get { return CustomManager.GetString("Model_" + Prop.DeclaringType.Name + "_" + Prop.Name + "/Text") + ": "; }
-        }
-        public dynamic Value
-        {
-            get { return Prop.GetValue(MyThing); }
-            set { Prop.SetValue(MyThing, value); }
+            Editable = !Editable;
+            CreateItems();
         }
     }
 }

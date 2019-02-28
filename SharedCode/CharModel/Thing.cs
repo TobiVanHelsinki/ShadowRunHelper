@@ -18,6 +18,7 @@ namespace ShadowRunHelper.CharModel
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public sealed class Used_UserAttribute : Attribute
     {
+        public bool UIRelevant { get; set; }
         public Used_UserAttribute() { }
     }
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
@@ -57,7 +58,7 @@ namespace ShadowRunHelper.CharModel
 
         #region Properties
         [JsonIgnore]
-        public bool IsSeperator { get => string.IsNullOrEmpty(Bezeichner) && Wert == 1337;  }
+        public bool IsSeperator { get => string.IsNullOrEmpty(Bezeichner) && Wert == 1337; }
 
         ThingDefs thingType = 0;
         public ThingDefs ThingType
@@ -160,7 +161,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         int _FavoriteIndex;
-        [Used_UserAttribute]
+        [Used_UserAttribute(UIRelevant = false)]
         public int FavoriteIndex
         {
             get { return _FavoriteIndex; }
@@ -173,6 +174,7 @@ namespace ShadowRunHelper.CharModel
         [Used_List]
         public LinkList LinkedThings
         {
+            //TODO Remove with new calc model
             get { return _LinkedThings; }
             set
             {
@@ -186,9 +188,10 @@ namespace ShadowRunHelper.CharModel
 
         private double _WertCalced = 0;
         [JsonIgnore]
-        [Used_UserAttribute]
+        [Used_UserAttribute(UIRelevant = false)]
         public double WertCalced
         {
+            //TODO Remove with new calc model
             get { return _WertCalced; }
             set
             {
@@ -201,11 +204,13 @@ namespace ShadowRunHelper.CharModel
         }
         protected virtual void OnLinkedThingsChanged()
         {
+            //TODO Remove with new calc model
             WertCalced = Wert + LinkedThings.Recalculate();
         }
 
         public double ValueOf(string ID)
         {
+            //TODO Remove with new calc model
             if (UseForCalculation())
             {
                 return InternValueOf(ID);
@@ -214,6 +219,7 @@ namespace ShadowRunHelper.CharModel
         }
         protected virtual double InternValueOf(string ID)
         {
+            //TODO Remove with new calc model
             if (ID == null || ID == "" || ID == "Wert")
             {
                 return WertCalced;
@@ -229,6 +235,7 @@ namespace ShadowRunHelper.CharModel
         }
         public double RawValueOf(string ID)
         {
+            //TODO Remove with new calc model
             if (UseForCalculation())
             {
                 if (ID == null || ID == "" || ID == "Wert")
@@ -248,6 +255,7 @@ namespace ShadowRunHelper.CharModel
         }
         protected virtual bool UseForCalculation()
         {
+            //TODO Remove with new calc model
             return true;
         }
 
@@ -258,6 +266,7 @@ namespace ShadowRunHelper.CharModel
         }
         public static IEnumerable<PropertyInfo> GetPropertiesLists(object obj)
         {
+            //TODO Remove with new calc model
             return ReflectionHelper.GetProperties(obj, typeof(Used_ListAttribute));
         }
         public static IEnumerable<CharProperty> GetCharProperties(object obj)

@@ -76,7 +76,6 @@ namespace ShadowRunHelperViewer
         {
             if (e.SelectedItem is Thing t)
             {
-                var a = Items.TemplatedItems[0].BindingContext;
                 await PopupNavigation.Instance.PushAsync(new DetailsPage(t, false));
                 Items.SelectedItem = null;
             }
@@ -132,9 +131,18 @@ namespace ShadowRunHelperViewer
 
         }
 
-        private void Edit_Clicked(object sender, EventArgs e)
+        async void Edit_Clicked(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (sender is BindableObject v && v.BindingContext is Thing t)
+                {
+                    await PopupNavigation.Instance.PushAsync(new DetailsPage(t, true));
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 
