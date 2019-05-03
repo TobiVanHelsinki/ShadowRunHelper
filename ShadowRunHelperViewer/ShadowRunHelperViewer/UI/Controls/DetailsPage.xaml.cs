@@ -31,7 +31,16 @@ namespace ShadowRunHelperViewer
             {
                 TAPPLICATION.Debugging.TraceException(ex);
             }
-            CreateItems();
+            try
+            {
+                CreateItems();
+            }
+            catch (Exception ex)
+            {
+                TLIB.Log.Write("Unexpected Error", ex);
+                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                Close_Clicked(this, new EventArgs());
+            }
             base.OnAppearing();
         }
 
@@ -52,9 +61,12 @@ namespace ShadowRunHelperViewer
                 };
                 if (Name.Text == null || Name.Text == ": ")
                 {
-
+                    //continue;
                 }
+                System.Diagnostics.Debug.WriteLine(item.Name + " - " + Name.Text);
                 Grid.SetRow(Name, RowCounter);
+                Grid.SetColumn(Name, 2);
+                RowCounter++;
                 MainContent.Children.Add(Name);
                 View Content;
                 if (item.PropertyType == typeof(bool) || item.PropertyType == typeof(bool?))
@@ -62,17 +74,64 @@ namespace ShadowRunHelperViewer
                     Content = new Switch();
                     Content.SetBinding(Switch.IsToggledProperty, new Binding(item.Name));
                 }
-                else if (item.PropertyType == typeof(CharProperty))
+                else if (item.PropertyType == typeof(CharCalcProperty))
                 {
                     Name.Text = "Wert2";
-                    Content = new Label() { };
+                    var CalcPropGrid = new Grid();
+                    CalcPropGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+                    CalcPropGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
+                    CalcPropGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
+                    CalcPropGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+                    CalcPropGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
+                    View BaseVal;
+                    if (Editable)
+                    {
+                        BaseVal = new Entry();
+                        BaseVal.SetBinding(Entry.TextProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.BaseValue)));
+                    }
+                    else
+                    {
+                        BaseVal = new Label { VerticalOptions = LayoutOptions.Center };
+                        BaseVal.SetBinding(Label.TextProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.BaseValue)));
+                    }
+                    Grid.SetColumn(BaseVal, 0);
+                    BaseVal.VerticalOptions = LayoutOptions.Center;
+                    CalcPropGrid.Children.Add(BaseVal);
+                    // ####################
+                    var PlusButton = new Button() { Text = "+" };
+                    PlusButton.Clicked += (s, e) => { }; //TODO Open char prop Pick window
+                    Grid.SetColumn(PlusButton, 1);
+                    PlusButton.VerticalOptions = LayoutOptions.Center;
+                    CalcPropGrid.Children.Add(PlusButton);
+                    // ####################
+                    var ConnectedValues = new CollectionView() { // ist beta und löst beim disposen einen fehler aus :/
+                        ItemsLayout = ListItemsLayout.HorizontalList,
+                        ItemTemplate = Resources["ConnectedTemplate"] as DataTemplate,
+                    }; 
+                    ConnectedValues.SetBinding(ItemsView.ItemsSourceProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.Connected)));
+                    ConnectedValues.VerticalOptions = LayoutOptions.Center;
+                    ConnectedValues.HeightRequest = 50;
+                    var Scroller = new ScrollView() { Content = ConnectedValues };
+                    Scroller.VerticalOptions = LayoutOptions.Center;
+                    Grid.SetColumn(Scroller, 2);
+                    CalcPropGrid.Children.Add(Scroller);
+                    // ####################
+                    View CalcedVal = new Label { VerticalOptions = LayoutOptions.Center };
+                    CalcedVal.SetBinding(Label.TextProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.Value)));
+                    Grid.SetColumn(CalcedVal, 3);
+                    CalcedVal.VerticalOptions = LayoutOptions.Center;
+                    CalcPropGrid.Children.Add(CalcedVal);
+                    // ####################
+                    Content = CalcPropGrid;
                 }
                 else
                 {
                     if (Editable)
                     {
-                       Content = new Entry();
-                       Content.SetBinding(Entry.TextProperty, new Binding(item.Name));
+                        Content = new Entry
+                        {
+                        };
+                        Content.SetBinding(Entry.TextProperty, new Binding(item.Name));
                     }
                     else
                     {
@@ -95,7 +154,16 @@ namespace ShadowRunHelperViewer
         private void Edit_Clicked(object sender, EventArgs e)
         {
             Editable = !Editable;
-            CreateItems();
+            try
+            {
+                CreateItems();
+            }
+            catch (Exception ex)
+            {
+                TLIB.Log.Write("Unexpected Error", ex);
+                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                Close_Clicked(this, new EventArgs());
+            }
         }
     }
 }

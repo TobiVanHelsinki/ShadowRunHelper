@@ -1696,4 +1696,7 @@ Version 1.7.4:
     <value>Gefällt dir die App? 
 Bewerte Sie doch im Store!</value>
   </data>
+  <data name="Model_Thing_IsFavorite.Text" xml:space="preserve">
+    <value>Favorit</value>
+  </data>
 </root>

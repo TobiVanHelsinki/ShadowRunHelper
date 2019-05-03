@@ -3,8 +3,6 @@ using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -116,13 +114,15 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        CharProperty _Wert2 = new CharProperty();
+
+        CharCalcProperty _Wert2 = new CharCalcProperty();
         [Used_UserAttribute]
-        public CharProperty Wert2
+        public CharCalcProperty Wert2
         {
             get { return _Wert2; }
             set { if (_Wert2 != value) { _Wert2 = value; NotifyPropertyChanged(); } }
         }
+
         protected string typ = "";
         [Used_UserAttribute]
         public string Typ
@@ -269,9 +269,9 @@ namespace ShadowRunHelper.CharModel
             //TODO Remove with new calc model
             return ReflectionHelper.GetProperties(obj, typeof(Used_ListAttribute));
         }
-        public static IEnumerable<CharProperty> GetCharProperties(object obj)
+        public static IEnumerable<CharCalcProperty> GetCharProperties(object obj)
         {
-            return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute)).Where(x => x.PropertyType == typeof(CharProperty)).Select(x => x.GetValue(obj)).OfType<CharProperty>();
+            return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute)).Where(x => x.PropertyType == typeof(CharCalcProperty)).Select(x => x.GetValue(obj)).OfType<CharCalcProperty>();
         }
 
         /// <summary>
@@ -288,9 +288,9 @@ namespace ShadowRunHelper.CharModel
             }
             foreach (var item in GetProperties(target))
             {
-                if (item.PropertyType == typeof(CharProperty))
+                if (item.PropertyType == typeof(CharCalcProperty))
                 {
-                    item.SetValue(target, (item.GetValue(this) as CharProperty).Copy());
+                    item.SetValue(target, (item.GetValue(this) as CharCalcProperty).Copy());
                 }
                 else
                 {
@@ -497,163 +497,5 @@ namespace ShadowRunHelper.CharModel
             //}
             return retval;
         }
-    }
-
-    public class CharProperty : INotifyPropertyChanged
-    {
-        #region NotifyPropertyChanged
-		public event PropertyChangedEventHandler PropertyChanged;
-        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
-        #region Implicit Converter
-        public static implicit operator CharProperty(double d)
-        {
-            return new CharProperty { BaseValue = d };
-        }
-        #endregion
-        [JsonIgnore]
-        public double Value { get; private set; }
-
-        double _BaseValue;
-        public double BaseValue
-        {
-            get { return _BaseValue; }
-            set { if (_BaseValue.CompareTo(value) != 0) { _BaseValue = value; Recalculate(); NotifyPropertyChanged(); } }
-        }
-
-        ObservableCollection<CharProperty> _Connected;
-        public ObservableCollection<CharProperty> Connected
-        {
-            get
-            {
-                if (_Connected == null)
-                {
-                    _Connected = new ObservableCollection<CharProperty>();
-                    _Connected.CollectionChanged += Connected_CollectionChanged;
-                }
-                return _Connected;
-            }
-            set
-            {
-                if (_Connected != null)
-                {
-                    _Connected.CollectionChanged -= Connected_CollectionChanged;
-                }
-                if (_Connected != value)
-                {
-                    _Connected = value;
-                    NotifyPropertyChanged();
-                }
-                if (_Connected != null)
-                {
-                    _Connected.CollectionChanged += Connected_CollectionChanged;
-                }
-                Recalculate();
-            }
-        }
-
-        bool _Active = true;
-        public bool Active
-        {
-            get { return _Active; }
-            set { if (_Active != value) { _Active = value; Recalculate(); } }
-        }
-
-        public CharProperty()
-        {
-            DeletionNotification += CharProperty_DeletionNotification;
-        }
-
-        void Recalculate()
-        {
-            var OldValue = Value;
-            Value = Active ? BaseValue + Connected?.Select(x => x.Value).Sum() ?? 0.0 : 0.0;
-            if (OldValue != Value)
-            {
-                NotifyPropertyChanged(nameof(Value));
-            }
-        }
-
-        #region Any Property Changed
-        void Connected_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.OldItems != null)
-            {
-                foreach (var item in e.OldItems.OfType<CharProperty>().ToList())
-                {
-                    item.PropertyChanged -= ConnectedItem_PropertyChanged;
-                }
-            }
-            if (e.NewItems != null)
-            {
-                foreach (var item in e.NewItems.OfType<CharProperty>().ToList())
-                {
-                    if (HasCircularReference(item) || IsForbiddenType(item))
-                    {
-                        Connected.Remove(item);
-                    }
-                    else
-                    {
-                        item.PropertyChanged += ConnectedItem_PropertyChanged;
-                    }
-                }
-            }
-            Recalculate();
-        }
-        bool HasCircularReference(CharProperty added) //TODO Unit test
-        {
-            foreach (var item in added.Connected)
-            {
-                if (item == this || HasCircularReference(item))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        bool IsForbiddenType(CharProperty item)
-        {
-            //TODO Implement Filter
-            //public IEnumerable<ThingDefs> FilterOut { get; set; }
-            return false;
-        }
-
-        void ConnectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e) => Recalculate();
-        #endregion
-        #region Deletion Handling
-
-        static event EventHandler<CharProperty> DeletionNotification;
-        internal void ParentDeleted()
-        {
-            DeletionNotification.Invoke(this, this);
-        }
-
-        private void CharProperty_DeletionNotification(object sender, CharProperty e)
-        {
-            var ToRemove = Connected.Where(x => x == e).ToList();
-            foreach (var item in ToRemove)
-            {
-                Connected.Remove(item);
-            }
-            Recalculate();
-        }
-
-        internal CharProperty Copy(CharProperty target = null)
-        {
-            if (target == null)
-            {
-                target = (CharProperty)Activator.CreateInstance(this.GetType());
-            }
-            target.Active = Active;
-            target.BaseValue = BaseValue;
-            target.Connected.Clear();
-            target.Connected.AddRange(Connected);
-            return target;
-        }
-        #endregion
     }
 }

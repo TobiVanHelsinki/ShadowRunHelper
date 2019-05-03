@@ -1,12 +1,11 @@
 ﻿using ShadowRunHelper;
 using System;
-using System.Collections.Generic;
-using System.Reflection;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+
 
 namespace ShadowRunHelperViewer.UWP
 {
@@ -21,8 +20,9 @@ namespace ShadowRunHelperViewer.UWP
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+            InitializeComponent();
+            Suspending += OnSuspending;
             #region Init Libs
             Init.Do();
             TAPPLICATION_UWP.Init.Do();
@@ -39,7 +39,7 @@ namespace ShadowRunHelperViewer.UWP
         {
             Xamarin.Forms.Forms.Init(e);
 
-            Frame rootFrame = Window.Current.Content as Frame;
+            var rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active

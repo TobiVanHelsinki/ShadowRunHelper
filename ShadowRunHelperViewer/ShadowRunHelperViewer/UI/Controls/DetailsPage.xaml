@@ -25,8 +25,14 @@
                 <local:CharModelStyles/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        <DataTemplate x:Key="ConnectedTemplate">
+            <StackLayout Orientation="Horizontal" BackgroundColor="Red">
+                <Label Text="{Binding Bezeichner,FallbackValue=Name}"/>
+                <Label Text="{Binding Value}" />
+            </StackLayout>
+        </DataTemplate>
     </pages:PopupPage.Resources>
-    <Frame Padding="7" Margin="13" BackgroundColor="FloralWhite" HorizontalOptions="Center" VerticalOptions="Center"
+    <Frame Padding="10" Margin="25" BackgroundColor="FloralWhite" HorizontalOptions="Center" VerticalOptions="Center"
            CornerRadius="10">
         <Grid>
             <Grid.RowDefinitions>
@@ -34,19 +40,18 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <ScrollView>
-                <Grid x:Name="MainContent">
-                    <Grid.ColumnDefinitions>
+                <StackLayout x:Name="MainContent">
+                    <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="10"/>
                         <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
+                    </Grid.ColumnDefinitions>-->
+                </StackLayout>
             </ScrollView>
             <StackLayout Orientation="Horizontal" Grid.Row="1" Margin="0,5,0,0">
                 <Button Text="Close" HorizontalOptions="CenterAndExpand" Padding="5" Clicked="Close_Clicked"/>
                 <Button Text="Edit" HorizontalOptions="CenterAndExpand" Padding="5" Clicked="Edit_Clicked"/>
             </StackLayout>
         </Grid>
-
     </Frame>
 </pages:PopupPage>
