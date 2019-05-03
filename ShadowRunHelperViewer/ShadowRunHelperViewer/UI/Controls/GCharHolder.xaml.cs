@@ -1,24 +1,26 @@
 ﻿using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
-using ShadowRunHelper.CharController;
+using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TAPPLICATION.IO;
 using TLIB;
+using Xam.Plugin;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CharView : ContentView
+    public partial class GCharHolder : ContentView
     {
         public AppModel Model => AppModel.Instance;
         IEnumerable<StackLayout> ButtonsPanels;
         IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children.OfType<Button>());
-        static CharView Instance;
-        public CharView()
+        static GCharHolder Instance;
+        public GCharHolder()
         {
             Instance = this;
             InitializeComponent();
@@ -200,20 +202,21 @@ namespace ShadowRunHelperViewer
             }
             else
             {
-                if (Open)
+                //Toggle.
+                //if (Open)
                 {
                     LayerContent_Col0.Width = new GridLength(1, GridUnitType.Auto);
                     LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
                     LayerContent_Col2.Width = new GridLength(1, GridUnitType.Auto);
                     ContentPanel.IsVisible = true;
                 }
-                else
-                {
-                    LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
-                    LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
-                    LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
-                    ContentPanel.IsVisible = true;
-                }
+                //else
+                //{
+                //    LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
+                //    LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
+                //    LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
+                //    ContentPanel.IsVisible = true;
+                //}
             }
         }
         void SetViewParameters()
@@ -233,6 +236,81 @@ namespace ShadowRunHelperViewer
         }
 
 
+        #endregion
+
+        #region Menu Stuff
+
+        private void Toggle(object sender, EventArgs e)
+        {
+            if (GCharHolder.StaticOpen is bool b)
+            {
+                GCharHolder.StaticOpen = !b;
+            }
+        }
+
+        private void Settings(object sender, System.EventArgs e)
+        {
+
+        }
+
+        async void Administration(object sender, EventArgs e)
+        {
+            try
+            {
+                var File = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
+                AppModel.Instance.MainObject = await CharHolderIO.Load(File);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void CharPage(object sender, System.EventArgs e)
+        {
+
+        }
+        (string, Action)[] MenuItems = new (string, Action)[] {
+                        (CustomManager.GetString("UI_TxT_SaveAtCurrentPlace/Text"),null),
+                        (CustomManager.GetString("UI_TxT_SaveExtern/Text"),null),
+                        (CustomManager.GetString("UI_TxT_OpenFolder/Text"),null),
+                        (CustomManager.GetString("UI_TxT_SubtractLifeStyleCost/Text"),null),
+                        (CustomManager.GetString("UI_TxT_CharSettings/Text"),null),
+                        (CustomManager.GetString("UI_TxT_Repair/Text"),null),
+                        (CustomManager.GetString("UI_TxT_Unload/Text"),Unload),
+                    };
+
+        private static void Unload()
+        {
+        }
+
+        void MoreMenu(object sender, System.EventArgs e)
+        {
+            try
+            {
+                PopupMenu Popup = new PopupMenu
+                {
+                    ItemsSource = MenuItems.Select(x => x.Item1).ToArray()
+                };
+                Popup.OnItemSelected += Popup_OnItemSelected;
+                Popup?.ShowPopup(sender as Button);
+
+                //https://baskren.github.io/Forms9Patch/guides/GettingStartedWindows.html
+                //https://docs.microsoft.com/de-de/xamarin/xamarin-forms/app-fundamentals/navigation/pop-ups
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void Popup_OnItemSelected(string item)
+        {
+            MenuItems.FirstOrDefault(x => x.Item1 == item).Item2?.Invoke();
+        }
+
+        private void Save(object sender, System.EventArgs e)
+        {
+
+        }
         #endregion
     }
 }

@@ -36,13 +36,13 @@
     <Compile Update="UI\Controls\ControlCenter.xaml.cs">
       <DependentUpon>ControlCenter.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\Pages\CharView.xaml.cs">
-      <DependentUpon>CharView.xaml</DependentUpon>
+    <Compile Update="UI\Controls\GCharHolder.xaml.cs">
+      <DependentUpon>GCharHolder.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="UI\Pages\CharView.xaml">
+    <EmbeddedResource Update="UI\Controls\GCharHolder.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="UI\Controls\DetailsPage.xaml">

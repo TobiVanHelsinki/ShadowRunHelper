@@ -2,65 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
-             x:Class="ShadowRunHelperViewer.MainPage">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <local:CharModelStyles/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <Grid BackgroundColor="Accent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Frame Margin="0" Padding="0" BackgroundColor="Transparent">
-            <Frame.Content>
-                <OnPlatform x:TypeArguments="Grid">
-                    <On Platform="UWP">
-                        <On.Value>
-                            <Grid Padding="4,4,4,0" Margin="0" ColumnSpacing="0" RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Orientation="Horizontal" Spacing="0">
-                                    <Button Text="&#xf0c7;" Style="{StaticResource IconButton}" Clicked="Save"/>
-                                    <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="MoreMenu"/>
-                                </StackLayout>
-                                <SearchBar Grid.Column="1" HorizontalOptions="Fill" Placeholder="Search Name or Type" VerticalOptions="Center"/>
-                                <StackLayout Orientation="Horizontal" Grid.Column="2" HorizontalOptions="End" Spacing="0">
-                                    <Button Text="&#xf007;" Style="{StaticResource IconButton}" Clicked="CharPage"/>
-                                    <Button Text="&#xf0c0;" Style="{StaticResource IconButton}" Clicked="Administration"/>
-                                    <Button Text="&#xf013;" Style="{StaticResource IconButton}" Clicked="Settings"/>
-                                    <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="Toggle"/>
-                                </StackLayout>
-                            </Grid>
-                        </On.Value>
-                    </On>
-                    <On Platform="Android" >
-                        <On.Value>
-                            <Grid BackgroundColor="Transparent">
-                                <FlexLayout BackgroundColor="Transparent">
-                                    <Button Text="&#xf0c7;" Style="{StaticResource IconButton}" Clicked="Save"/>
-                                    <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="MoreMenu"/>
-                                    <!--<SearchBar Grid.Column="1" HorizontalOptions="Fill" Placeholder="Search Name or Type" VerticalOptions="Center" FlexLayout.Shrink="10"/>-->
-                                    <Button Text="&#xf007;" Style="{StaticResource IconButton}" Clicked="CharPage"/>
-                                    <Button Text="&#xf0c0;" Style="{StaticResource IconButton}" Clicked="Administration"/>
-                                    <Button Text="&#xf013;" Style="{StaticResource IconButton}" Clicked="Settings"/>
-                                    <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="Toggle"/>
-                                </FlexLayout>
-                            </Grid>
-                        </On.Value>
-                    </On>
-                </OnPlatform>
-            </Frame.Content>
-        </Frame>
-        <local:CharView Grid.Row="1" Margin="0" Padding="0" BackgroundColor="Transparent"/>
-    </Grid>
+             x:Class="ShadowRunHelperViewer.MainPage" BackgroundColor="Accent">
+    <local:GCharHolder Margin="0" Padding="0" BackgroundColor="Transparent"/>
 </ContentPage>

@@ -27,12 +27,12 @@
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="PlusButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
                 <Setter Property="TextColor" Value="Default"/>
-                <Setter Property="Text" Value="&#xE710;"/>
+                <Setter Property="Text" Value="&#xf067;"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
             <Style x:Key="MinusButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
-                <Setter Property="TextColor" Value="Default"/>
-                <Setter Property="Text" Value="&#xE738;"/>
+                <Setter Property="TextColor" Value="Default" />
+                <Setter Property="Text" Value="&#xf068;"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
             <Style x:Key="ContentLabel" TargetType="Label">

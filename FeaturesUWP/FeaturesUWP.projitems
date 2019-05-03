@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Features\WinAppInformation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\WinIAP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\WinInstanceHandling.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Features\WinUi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Init.cs" />
   </ItemGroup>
 </Project>

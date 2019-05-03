@@ -1,29 +1,80 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
-             x:Class="ShadowRunHelperViewer.CharView"
+             xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode" 
+             xmlns:local="clr-namespace:ShadowRunHelperViewer" 
+             x:Class="ShadowRunHelperViewer.GCharHolder"
              >
     <ContentView.Resources>
-        <Style x:Key="CatPanel" TargetType="Frame">
-            <Setter Property="Margin" Value="4,4,4,0"/>
-            <Setter Property="Padding" Value="4"/>
-        </Style>
-        <Style x:Key="OneLineText" TargetType="Label">
-            <Setter Property="Margin" Value="0"/>
-            <Setter Property="LineBreakMode" Value="TailTruncation"/>
-            <Setter Property="MaxLines" Value="1"/>
-            <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            <Setter Property="TextColor" Value="FloralWhite"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:CharModelStyles />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="CatPanel" TargetType="Frame">
+                <Setter Property="Margin" Value="4,4,4,0" />
+                <Setter Property="Padding" Value="4" />
+            </Style>
+            <Style x:Key="OneLineText" TargetType="Label">
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+                <Setter Property="MaxLines" Value="1" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="FloralWhite" />
+            </Style>
+        </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" 
+            <Frame Margin="0" Padding="0" CornerRadius="0">
+                <Frame.Content>
+                    <OnPlatform x:TypeArguments="Grid">
+                        <On Platform="UWP">
+                            <On.Value>
+                                <Grid Padding="4,4,4,0" Margin="0" ColumnSpacing="0" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal" Spacing="0">
+                                        <Button Text="&#xf0c7;" Style="{StaticResource IconButton}" Clicked="Save" />
+                                        <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="MoreMenu" />
+                                    </StackLayout>
+                                    <SearchBar Grid.Column="1" HorizontalOptions="Fill" Placeholder="Search Name or Type" VerticalOptions="Center" />
+                                    <StackLayout Orientation="Horizontal" Grid.Column="2" HorizontalOptions="End" Spacing="0">
+                                        <Button Text="&#xf007;" Style="{StaticResource IconButton}" Clicked="CharPage" />
+                                        <Button Text="&#xf0c0;" Style="{StaticResource IconButton}" Clicked="Administration" />
+                                        <Button Text="&#xf013;" Style="{StaticResource IconButton}" Clicked="Settings" />
+                                        <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="Toggle" />
+                                        <!--x:Name="Toggle"-->
+                                    </StackLayout>
+                                </Grid>
+                            </On.Value>
+                        </On>
+                        <On Platform="Android">
+                            <On.Value>
+                                <Grid BackgroundColor="Transparent">
+                                    <FlexLayout BackgroundColor="Transparent">
+                                        <Button Text="&#xf0c7;" Style="{StaticResource IconButton}" Clicked="Save" />
+                                        <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="MoreMenu" />
+                                        <!--<SearchBar Grid.Column="1" HorizontalOptions="Fill" Placeholder="Search Name or Type" VerticalOptions="Center" FlexLayout.Shrink="10"/>-->
+                                        <Button Text="&#xf007;" Style="{StaticResource IconButton}" Clicked="CharPage" />
+                                        <Button Text="&#xf0c0;" Style="{StaticResource IconButton}" Clicked="Administration" />
+                                        <Button Text="&#xf013;" Style="{StaticResource IconButton}" Clicked="Settings" />
+                                        <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="Toggle"/>
+                                    </FlexLayout>
+                                </Grid>
+                            </On.Value>
+                        </On>
+                    </OnPlatform>
+                </Frame.Content>
+            </Frame>
+            <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="Transparent" 
                          HorizontalOptions="Fill" Padding="4,0,4,4" x:Name="Infogrid">
                 <StackLayout.Resources>
                     <Style x:Key="OuterPanel" TargetType="StackLayout">
@@ -73,7 +124,7 @@
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
-            <Grid Grid.Row="1" BackgroundColor="Snow">
+            <Grid Grid.Row="2" BackgroundColor="Snow">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col0"/>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col1"/>

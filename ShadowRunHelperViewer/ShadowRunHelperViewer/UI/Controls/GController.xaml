@@ -152,6 +152,7 @@
             <Grid.Resources>
                 <OnPlatform x:Key="ButtonSize" x:TypeArguments="GridLength">
                     <On Platform="Android" Value="45" />
+                    <On Platform="UWP, WinRT, WinPhone" Value="Auto" />
                 </OnPlatform>
             </Grid.Resources>
             <Grid.RowDefinitions>
@@ -165,10 +166,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="{StaticResource ButtonSize}"/>
                 </Grid.ColumnDefinitions>
-                <!--<StackLayout Orientation="Horizontal">-->
-                    <!--<Button Text="&#xf055;" Style="{StaticResource IconButton}" Clicked="Add" Margin="6" TextColor="Default"/>-->
-                    <Button Text="&#xf067;" Style="{StaticResource IconButton}" Clicked="Add" Margin="6" TextColor="Default"/>
-                <!--</StackLayout>-->
+                <Button Text="&#xf067;" Style="{StaticResource IconButton}" Clicked="Add" Margin="6" TextColor="Default"/>
                 <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium"/>
                 <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="Options" Grid.Column="2" Margin="6" TextColor="Default"/>
             </Grid>
