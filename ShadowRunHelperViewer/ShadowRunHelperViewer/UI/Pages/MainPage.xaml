@@ -1,10 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ShadowRunHelperViewer"
-             x:Class="ShadowRunHelperViewer.MainPage" BackgroundColor="Accent">
-    <StackLayout>
-        <local:GCharHolder Margin="0" Padding="0" BackgroundColor="Transparent"/>
-        <Button Clicked="Button_Clicked" Text="Do not click"/>
-    </StackLayout>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ShadowRunHelperViewer" x:Class="ShadowRunHelperViewer.MainPage" BackgroundColor="Accent">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:CharModelStyles />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <local:GCharHolder Margin="0" Padding="0" BackgroundColor="Transparent" />
+        <Grid Grid.Row="1" BackgroundColor="Transparent" HorizontalOptions="Center">
+            <Button Grid.Column="0" Text="&#xf007;" Style="{StaticResource IconButton}" Clicked="CharPage" />
+            <Button Grid.Column="1" Text="&#xf0c0;" Style="{StaticResource IconButton}" Clicked="Administration" />
+            <Button Grid.Column="2" Text="&#xf013;" Style="{StaticResource IconButton}" Clicked="Settings" />
+        </Grid>
+    </Grid>
 </ContentPage>

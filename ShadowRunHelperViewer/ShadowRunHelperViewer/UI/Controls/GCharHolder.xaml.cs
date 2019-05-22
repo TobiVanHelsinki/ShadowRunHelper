@@ -248,27 +248,7 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void Settings(object sender, System.EventArgs e)
-        {
 
-        }
-
-        async void Administration(object sender, EventArgs e)
-        {
-            try
-            {
-                var File = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
-                AppModel.Instance.MainObject = await CharHolderIO.Load(File);
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        private void CharPage(object sender, System.EventArgs e)
-        {
-
-        }
         (string, Action)[] MenuItems = new (string, Action)[] {
                         (CustomManager.GetString("UI_TxT_SaveAtCurrentPlace/Text"),null),
                         (CustomManager.GetString("UI_TxT_SaveExtern/Text"),null),

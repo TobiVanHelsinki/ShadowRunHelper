@@ -46,12 +46,8 @@
                                         <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="MoreMenu" />
                                     </StackLayout>
                                     <SearchBar Grid.Column="1" HorizontalOptions="Fill" Placeholder="Search Name or Type" VerticalOptions="Center" />
-                                    <StackLayout Orientation="Horizontal" Grid.Column="2" HorizontalOptions="End" Spacing="0">
-                                        <Button Text="&#xf007;" Style="{StaticResource IconButton}" Clicked="CharPage" />
-                                        <Button Text="&#xf0c0;" Style="{StaticResource IconButton}" Clicked="Administration" />
-                                        <Button Text="&#xf013;" Style="{StaticResource IconButton}" Clicked="Settings" />
+                                    <StackLayout Grid.Column="2" Orientation="Horizontal" Spacing="0">
                                         <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="Toggle" />
-                                        <!--x:Name="Toggle"-->
                                     </StackLayout>
                                 </Grid>
                             </On.Value>
@@ -62,10 +58,6 @@
                                     <FlexLayout BackgroundColor="Transparent">
                                         <Button Text="&#xf0c7;" Style="{StaticResource IconButton}" Clicked="Save" />
                                         <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="MoreMenu" />
-                                        <!--<SearchBar Grid.Column="1" HorizontalOptions="Fill" Placeholder="Search Name or Type" VerticalOptions="Center" FlexLayout.Shrink="10"/>-->
-                                        <Button Text="&#xf007;" Style="{StaticResource IconButton}" Clicked="CharPage" />
-                                        <Button Text="&#xf0c0;" Style="{StaticResource IconButton}" Clicked="Administration" />
-                                        <Button Text="&#xf013;" Style="{StaticResource IconButton}" Clicked="Settings" />
                                         <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="Toggle"/>
                                     </FlexLayout>
                                 </Grid>
