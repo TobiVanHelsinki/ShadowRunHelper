@@ -3,5 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              x:Class="ShadowRunHelperViewer.MainPage" BackgroundColor="Accent">
-    <local:GCharHolder Margin="0" Padding="0" BackgroundColor="Transparent"/>
+    <StackLayout>
+        <local:GCharHolder Margin="0" Padding="0" BackgroundColor="Transparent"/>
+        <Button Clicked="Button_Clicked" Text="Do not click"/>
+    </StackLayout>
 </ContentPage>

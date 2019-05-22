@@ -122,7 +122,5 @@ namespace ShadowRunHelper.CharController
             ClearData();
             Data.AddRange(OrderedData);
         }
-
-
     }
 }

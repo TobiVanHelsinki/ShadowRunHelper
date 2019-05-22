@@ -12,10 +12,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.6.0-preview4.19212.13" />
+    <PackageReference Include="PCLStorage" Version="1.0.2" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
     <PackageReference Include="Xam.Plugin.PopupMenu" Version="1.1.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.346134-pre9" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
   </ItemGroup>
 
   <ItemGroup>

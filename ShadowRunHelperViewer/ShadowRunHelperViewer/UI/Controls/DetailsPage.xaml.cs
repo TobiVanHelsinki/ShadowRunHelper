@@ -59,15 +59,12 @@ namespace ShadowRunHelperViewer
                 {
                     Text = CustomManager.GetString("Model_" + item.DeclaringType.Name + "_" + item.Name + "/Text") + ": ",
                 };
-                if (Name.Text == null || Name.Text == ": ")
-                {
-                    //continue;
-                }
+
                 System.Diagnostics.Debug.WriteLine(item.Name + " - " + Name.Text);
                 Grid.SetRow(Name, RowCounter);
                 Grid.SetColumn(Name, 2);
                 RowCounter++;
-                MainContent.Children.Add(Name);
+
                 View Content;
                 if (item.PropertyType == typeof(bool) || item.PropertyType == typeof(bool?))
                 {
@@ -99,7 +96,7 @@ namespace ShadowRunHelperViewer
                     CalcPropGrid.Children.Add(BaseVal);
                     // ####################
                     var PlusButton = new Button() { Text = "+" };
-                    PlusButton.Clicked += (s, e) => { }; //TODO Open char prop Pick window
+                    PlusButton.Clicked += OpenConnectedChooser;
                     Grid.SetColumn(PlusButton, 1);
                     PlusButton.VerticalOptions = LayoutOptions.Center;
                     CalcPropGrid.Children.Add(PlusButton);
@@ -135,15 +132,26 @@ namespace ShadowRunHelperViewer
                     }
                     else
                     {
-                        Content = new Label { VerticalOptions = LayoutOptions.Center };
-                        Content.SetBinding(Label.TextProperty, new Binding(item.Name));
+                        var InnerContent = new Label { VerticalOptions = LayoutOptions.Center };
+                        InnerContent.SetBinding(Label.TextProperty, new Binding(item.Name));
+                        Content = new Frame() {Content = InnerContent, BorderColor = Color.Default };
                     }
                 }
                 Grid.SetRow(Content, RowCounter);
                 Grid.SetColumn(Content, 2);
+                if (Name.Text == null || Name.Text == ": ")
+                {
+                    continue;
+                }
+                MainContent.Children.Add(Name);
                 MainContent.Children.Add(Content);
                 RowCounter++;
             }
+        }
+
+        private void OpenConnectedChooser(object sender, EventArgs e)
+        {
+            //tODO
         }
 
         private void Close_Clicked(object sender, EventArgs e)
