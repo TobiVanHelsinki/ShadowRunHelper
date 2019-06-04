@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using ShadowRunHelper;
+using Xamarin.Forms;
 
 namespace ShadowRunHelperViewer.Droid
 {
@@ -26,7 +27,7 @@ namespace ShadowRunHelperViewer.Droid
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState); // add this line to your code, it may also be called: bundle
             #endregion
-
+            Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             SetAccentColor();
             LoadApplication(new App());
