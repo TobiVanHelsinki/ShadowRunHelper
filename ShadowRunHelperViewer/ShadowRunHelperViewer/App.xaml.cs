@@ -1,7 +1,6 @@
 ﻿using ShadowRunHelper;
-using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.UI.Pages;
 using SharedCode.Ressourcen;
-using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

@@ -1,44 +1,78 @@
 ﻿using PCLStorage;
-using ShadowRunHelper;
-using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
-using System.Linq;
-using TAPPLICATION.IO;
+using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace ShadowRunHelperViewer
+namespace ShadowRunHelperViewer.UI.Pages
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        public AppModel AppModel => AppModel.Instance;
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = this;
-            //AppModel.MainObject = CharHolderGenerator.CreateCharWithStandardContent();
-            //AppModel.MainObject = CharHolderGenerator.CreateEmtpyChar();
-            AppModel.MainObject = CharHolderGenerator.TestAllCats(3);
+            NavigatoToSingleInstanceOf<AdministrationPage>();
         }
+        void CharPage(object sender, System.EventArgs e) => NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(CharHolderGenerator.TestAllCats(3)));
+        void Administration(object sender, EventArgs e) => NavigatoToSingleInstanceOf<AdministrationPage>();
+        void Settings(object sender, EventArgs e) => NavigatoToSingleInstanceOf<SettingsPage>();
 
-        async void Administration(object sender, EventArgs e)
+        public void NavigatoToSingleInstanceOf<T>(bool slpash = false, Action<T> afterLoad = null) where T : View, new()
         {
+            if (ContentPlace.Content is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
+            ContentPlace.Content = null;
+            if (slpash)
+            {
+                EnableWaiting();
+            }
             try
             {
-                var File = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
-                AppModel.Instance.MainObject = await CharHolderIO.Load(File);
+                Task.Run(() => { return new T(); }).ContinueWith((t) =>
+                {
+                    try
+                    {
+                        if (t.IsCompleted)
+                        {
+                            Device.BeginInvokeOnMainThread(() => { afterLoad?.Invoke(t.Result); ContentPlace.Content = t.Result; DisableWaiting(); });
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                    }
+                });
             }
             catch (Exception)
             {
+                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
             }
         }
 
-        private void CharPage(object sender, System.EventArgs e)
+        private void DisableWaiting()
         {
-
         }
 
-        async void Settings(object sender, EventArgs e)
+        private void EnableWaiting()
+        {
+            ContentPlace.Content = new Label
+            {
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Text = "Hey, here you can read a tipp",
+            };
+        }
+
+        #region DEBUG
+        void Decarrot(object sender, EventArgs e)
+        {
+        }
+
+        async void Debug(object sender, EventArgs e)
         {
             var rootFolder = FileSystem.Current.RoamingStorage;
             foreach (var item in (await rootFolder.GetFilesAsync()))
@@ -48,6 +82,8 @@ namespace ShadowRunHelperViewer
             var folder = await rootFolder.CreateFolderAsync("MySubFolder", CreationCollisionOption.OpenIfExists);
             var file = await folder.CreateFileAsync("answer.txt", CreationCollisionOption.ReplaceExisting);
             await file.WriteAllTextAsync("42");
+
         }
+        #endregion
     }
 }

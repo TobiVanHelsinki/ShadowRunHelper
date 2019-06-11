@@ -80,39 +80,39 @@
                     </Style>
                 </StackLayout.Resources>
                 <StackLayout Style="{StaticResource OuterPanel}">
-                    <Label Text="{x:Binding Model.MainObject.Person.Alias}" Style="{StaticResource OneLineText}"/>
-                    <Label Text="{x:Binding Model.MainObject.Person.Char_Typ}" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding MyChar.Person.Alias}" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding MyChar.Person.Char_Typ}" Style="{StaticResource OneLineText}"/>
                 </StackLayout>
                 <StackLayout Style="{StaticResource OuterPanel}">
                     <Label Text="Money" Style="{StaticResource OneLineText}"/>
-                    <Label Text="{x:Binding Model.MainObject.Person.Kontostand}" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding MyChar.Person.Kontostand}" Style="{StaticResource OneLineText}"/>
                 </StackLayout>
                 <StackLayout Style="{StaticResource OuterPanel}">
                     <Label Text="Edge" Style="{StaticResource OneLineText}"/>
                     <StackLayout Style="{StaticResource InnerPanel}">
-                        <Label Text="{x:Binding Model.MainObject.Person.Edge_Aktuell}" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding MyChar.Person.Edge_Aktuell}" Style="{StaticResource OneLineText}"/>
                         <Label Text="/" Style="{StaticResource OneLineText}"/>
-                        <Label Text="{x:Binding Model.MainObject.Person.Edge_Gesamt}" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding MyChar.Person.Edge_Gesamt}" Style="{StaticResource OneLineText}"/>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Style="{StaticResource OuterPanel}">
                     <Label Text="Karma" Style="{StaticResource OneLineText}"/>
                     <StackLayout Style="{StaticResource InnerPanel}">
-                        <Label Text="{x:Binding Model.MainObject.Person.Karma_Aktuell}" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding MyChar.Person.Karma_Aktuell}" Style="{StaticResource OneLineText}"/>
                         <Label Text="/" Style="{StaticResource OneLineText}"/>
-                        <Label Text="{x:Binding Model.MainObject.Person.Karma_Gesamt}" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding MyChar.Person.Karma_Gesamt}" Style="{StaticResource OneLineText}"/>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Style="{StaticResource OuterPanel}">
                     <Label Text="Runs" Style="{StaticResource OneLineText}"/>
-                    <Label Text="{x:Binding Model.MainObject.Person.Runs}" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{x:Binding MyChar.Person.Runs}" Style="{StaticResource OneLineText}"/>
                 </StackLayout>
                 <StackLayout Style="{StaticResource OuterPanel}">
                     <Label Text="Damage" Style="{StaticResource OneLineText}"/>
                     <StackLayout Style="{StaticResource InnerPanel}">
-                        <Label Text="{x:Binding Model.MainObject.Person.Schaden_G}" Style="{StaticResource OneLineText}"/>
-                        <Label Text="{x:Binding Model.MainObject.Person.Schaden_K}" Style="{StaticResource OneLineText}"/>
-                        <Label Text="{x:Binding Model.MainObject.CTRLCyberDeck.ActiveItem.Schaden}" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding MyChar.Person.Schaden_G}" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding MyChar.Person.Schaden_K}" Style="{StaticResource OneLineText}"/>
+                        <Label Text="{x:Binding MyChar.CTRLCyberDeck.ActiveItem.Schaden}" Style="{StaticResource OneLineText}"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
@@ -149,7 +149,7 @@
                     <Grid x:Name="ControllerPanel"/>
                     <StackLayout x:Name="Favs" BackgroundColor="LightGoldenrodYellow" IsVisible="False">
                         <Label Text="Favorites"/>
-                        <ListView ItemsSource="{x:Binding Model.MainObject.Favorites}">
+                        <ListView ItemsSource="{x:Binding MyChar.Favorites}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="charmodel:Thing">
                                     <ViewCell>
@@ -179,10 +179,10 @@
                     </StackLayout>
                     <ScrollView x:Name="Notes" IsVisible="False">
                         <StackLayout>
-                            <Label Text="{x:Binding Model.MainObject.Person.Notizen}" BackgroundColor="AntiqueWhite"/>
+                            <Label Text="{x:Binding MyChar.Person.Notizen}" BackgroundColor="AntiqueWhite"/>
                             <Grid x:Name="PersonArray">
                                 <!--TODO-->
-                                <Label Text="{x:Binding Model.MainObject.Person.Alias}"/>
+                                <Label Text="{x:Binding MyChar.Person.Alias}"/>
                             </Grid>
                         </StackLayout>
                     </ScrollView>

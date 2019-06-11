@@ -166,7 +166,6 @@ namespace ShadowRunHelper.Model
             CTRLList.Add(CTRLHandlung);
             CTRLList.Add(CTRLKomplexeForm);
 
-
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
 
             Favorites.CollectionChanged += SaveFavoritesOrdering;

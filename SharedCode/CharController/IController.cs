@@ -39,7 +39,6 @@ namespace ShadowRunHelper.CharController
         void RegisterEventAtData(Action Method);
 
         ThingDefs eDataTyp { get; }
-
         Thing AddNewThing();
         Thing AddNewThing(Thing newThing);
         void RemoveThing(Thing tToRemove);

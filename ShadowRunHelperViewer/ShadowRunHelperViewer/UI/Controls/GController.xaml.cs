@@ -23,6 +23,7 @@ namespace ShadowRunHelperViewer
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+        public CharHolder MyChar { get; set; }
         #region Hold IController
         IController _Controller;
         public IController Controller
@@ -52,7 +53,7 @@ namespace ShadowRunHelperViewer
                     Items_H.ControlTemplate = HL;
                 }
 
-                Setting = AppModel.Instance.MainObject.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
+                Setting = MyChar.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
                 IsVisible = Setting.Visibility;
                 Headline.Text = TypeHelper.ThingDefToString(Controller.eDataTyp, true);
             }
@@ -65,8 +66,9 @@ namespace ShadowRunHelperViewer
       
         public CategoryOption Setting { get; private set; }
 
-        public GController()
+        public GController(CharHolder myChar)
         {
+            MyChar = myChar;
             InitializeComponent();
             OnControllerChanged();
             BindingContextChanged += GController_BindingContextChanged;
@@ -83,7 +85,7 @@ namespace ShadowRunHelperViewer
 
         private void Add(object sender, EventArgs e)
         {
-            AppModel.Instance.MainObject.Add(Controller.eDataTyp);
+            MyChar.Add(Controller.eDataTyp);
         }
 
         (string, Action)[] MenuItems = new (string, Action)[] {

@@ -1,11 +1,11 @@
 ﻿using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
-using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using TAPPLICATION.IO;
+using System.Runtime.CompilerServices;
 using TLIB;
 using Xam.Plugin;
 using Xamarin.Forms;
@@ -14,33 +14,50 @@ using Xamarin.Forms.Xaml;
 namespace ShadowRunHelperViewer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GCharHolder : ContentView
-    {
+    public partial class GCharHolder : ContentView, INotifyPropertyChanged
+	{
+        #region NotifyPropertyChanged
+		public new event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
         public AppModel Model => AppModel.Instance;
+        CharHolder _MyChar;
+        public CharHolder MyChar
+        {
+            get { return _MyChar; }
+            set { if (_MyChar != value) { _MyChar = value; NotifyPropertyChanged(); } }
+        }
         IEnumerable<StackLayout> ButtonsPanels;
         IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children.OfType<Button>());
         static GCharHolder Instance;
-        public GCharHolder()
+        public GCharHolder(CharHolder myChar)
         {
+            this.MyChar = myChar;
             Instance = this;
             InitializeComponent();
             ButtonsPanels = new List<StackLayout>() { s1, s2, s3, s4, s5 };
 
             SizeChanged += (a, b) => SetViewParameters();
             Model.PropertyChanged += (x, y) => {
-                InitButtons(); SetViewParameters(); Open = true;
+                //TODO ich glaube das war nur nötig, wenn die UI auf charänderung agierne sollte
+                
             };
             Open = false;
             BindingContext = this;
             Infogrid.GestureRecognizers.Add(new TapGestureRecognizer { NumberOfTapsRequired = 1, Command = new Command(Infogrid_Tapped) });
             SettingsModel.I.FIRST_START = false;
+
+            InitButtons(); SetViewParameters(); Open = true;
         }
 
         async void Infogrid_Tapped()
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new ControlCenter(Model.MainObject));
+                await PopupNavigation.Instance.PushAsync(new ControlCenter(MyChar));
             }
             catch (Exception)
             {
@@ -67,7 +84,7 @@ namespace ShadowRunHelperViewer
                     btt.Clicked += B_More_Clicked;
                     s5.Children.Add(btt);
                 }
-                foreach (var Category in Model.MainObject.Settings.CategoryOptions.OrderBy(x => x.Pivot).ThenBy(x => x.Order))
+                foreach (var Category in MyChar.Settings.CategoryOptions.OrderBy(x => x.Pivot).ThenBy(x => x.Order))
                 {
                     var b = new Button
                     {
@@ -118,11 +135,11 @@ namespace ShadowRunHelperViewer
             if (sender is VisualElement b && b.BindingContext is ThingDefs type)
             {
                 HighlightButton(type);
-                var gc = new GController();
+                var gCTRL = new GController(MyChar);
                 var CTRL = typeof(CharHolder).GetProperties().FirstOrDefault(x=>x.Name == "CTRL" + type);
                 if (CTRL != null)
                 {
-                    gc.SetBinding(BindingContextProperty, new Binding($"{nameof(Model)}.{nameof(Model.MainObject)}.{CTRL.Name}"));
+                    gCTRL.SetBinding(BindingContextProperty, new Binding($"{nameof(MyChar)}.{CTRL.Name}"));
                 }
                 else
                 {
@@ -130,7 +147,7 @@ namespace ShadowRunHelperViewer
                     Log.Write("Structual Error, Controller Name is wrong");
                 }
                 ControllerPanel.Children.Clear();
-                ControllerPanel.Children.Add(gc);
+                ControllerPanel.Children.Add(gCTRL);
                 if (Narrow)
                 {
                     Open = false;
@@ -222,7 +239,7 @@ namespace ShadowRunHelperViewer
         void SetViewParameters()
         {
             Narrow = Width < 550;
-            if (Width > 550 && Model.MainObject != null)
+            if (Width > 550 && MyChar != null)
             {
                 Open = true;
             }
