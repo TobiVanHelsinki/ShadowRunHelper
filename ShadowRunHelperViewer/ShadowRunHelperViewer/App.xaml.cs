@@ -42,5 +42,6 @@ namespace ShadowRunHelperViewer
         {
             // Handle when your app resumes
         }
+
     }
 }

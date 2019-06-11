@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.Model;
+using System;
 using System.Threading;
 using Xamarin.Forms;
 
@@ -19,6 +20,14 @@ namespace ShadowRunHelperViewer
             if (Content is Grid G)
             {
                 G.Children.Add(new GCharHolder(myChar) { Margin = 0, Padding = 0, BackgroundColor = Color.Transparent });
+            }
+        }
+
+        internal void OnBackButtonPressed()
+        {
+            if (Content is Grid g && g.Children.Count > 0  && g.Children[0] is GCharHolder currentchar)
+            {
+                currentchar.MenuOpen = true;
             }
         }
     }

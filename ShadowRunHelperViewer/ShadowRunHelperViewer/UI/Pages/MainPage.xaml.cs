@@ -28,7 +28,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             ContentPlace.Content = null;
             if (slpash)
             {
-                EnableWaiting();
+                SetWaitingContent();
             }
             try
             {
@@ -38,7 +38,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                     {
                         if (t.IsCompleted)
                         {
-                            Device.BeginInvokeOnMainThread(() => { afterLoad?.Invoke(t.Result); ContentPlace.Content = t.Result; DisableWaiting(); });
+                            Device.BeginInvokeOnMainThread(() => { afterLoad?.Invoke(t.Result); ContentPlace.Content = t.Result; });
                         }
                     }
                     catch (Exception)
@@ -53,11 +53,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        private void DisableWaiting()
-        {
-        }
-
-        private void EnableWaiting()
+        private void SetWaitingContent()
         {
             ContentPlace.Content = new Label
             {
@@ -65,6 +61,15 @@ namespace ShadowRunHelperViewer.UI.Pages
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 Text = "Hey, here you can read a tipp",
             };
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (ContentPlace.Content is CharPage CP)
+            {
+                CP.OnBackButtonPressed();
+            }
+            return base.OnBackButtonPressed();
         }
 
         #region DEBUG

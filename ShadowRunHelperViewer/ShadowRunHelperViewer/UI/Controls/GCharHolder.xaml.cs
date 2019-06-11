@@ -41,17 +41,14 @@ namespace ShadowRunHelperViewer
             ButtonsPanels = new List<StackLayout>() { s1, s2, s3, s4, s5 };
 
             SizeChanged += (a, b) => SetViewParameters();
-            Model.PropertyChanged += (x, y) => {
-                //TODO ich glaube das war nur nötig, wenn die UI auf charänderung agierne sollte
-                
-            };
-            Open = false;
             BindingContext = this;
             Infogrid.GestureRecognizers.Add(new TapGestureRecognizer { NumberOfTapsRequired = 1, Command = new Command(Infogrid_Tapped) });
             SettingsModel.I.FIRST_START = false;
-
-            InitButtons(); SetViewParameters(); Open = true;
+            InitButtons();
+            SetViewParameters();
+            MenuOpen = true;
         }
+
 
         async void Infogrid_Tapped()
         {
@@ -126,7 +123,7 @@ namespace ShadowRunHelperViewer
             }
             if (Narrow)
             {
-                Open = false;
+                MenuOpen = false;
             }
         }
 
@@ -150,7 +147,7 @@ namespace ShadowRunHelperViewer
                 ControllerPanel.Children.Add(gCTRL);
                 if (Narrow)
                 {
-                    Open = false;
+                    MenuOpen = false;
                 }
             }
         }
@@ -181,28 +178,18 @@ namespace ShadowRunHelperViewer
             get { return _Narrow; }
             set { if (_Narrow != value) { _Narrow = value; ChangeUi(); } }
         }
-        bool _Open = true;
-        public bool Open
+        bool _MenuOpen = true;
+        public bool MenuOpen
         {
-            get { return _Open; }
-            set { if (_Open != value) { _Open = value; ChangeUi(); } }
+            get { return _MenuOpen; }
+            set { if (_MenuOpen != value) { _MenuOpen = value; ChangeUi(); } }
         }
-        public static bool? StaticOpen
-        {
-            get { return Instance?.Open; }
-            set
-            {
-                if (Instance != null && value is bool b)
-                {
-                    Instance.Open = b;
-                }
-            }
-        }
+
         private void ChangeUi()
         {
             if (Narrow)
             {
-                if (Open)
+                if (MenuOpen)
                 {
                     LayerContent_Col0.Width = new GridLength(1, GridUnitType.Star);
                     LayerContent_Col1.Width = new GridLength(0, GridUnitType.Absolute);
@@ -241,13 +228,13 @@ namespace ShadowRunHelperViewer
             Narrow = Width < 550;
             if (Width > 550 && MyChar != null)
             {
-                Open = true;
+                MenuOpen = true;
             }
             else
             {
                 if (ControllerPanel.Children.Any(x=>x.IsVisible))
                 {
-                    Open = false;
+                    MenuOpen = false;
                 }
             }
         }
@@ -259,10 +246,7 @@ namespace ShadowRunHelperViewer
 
         private void Toggle(object sender, EventArgs e)
         {
-            if (GCharHolder.StaticOpen is bool b)
-            {
-                GCharHolder.StaticOpen = !b;
-            }
+            MenuOpen = !MenuOpen;
         }
 
 
