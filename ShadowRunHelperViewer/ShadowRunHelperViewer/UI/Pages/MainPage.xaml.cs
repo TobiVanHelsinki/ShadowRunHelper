@@ -12,9 +12,38 @@ namespace ShadowRunHelperViewer.UI.Pages
     {
         public MainPage()
         {
+            AppModel.Instance.NavigationRequested += Instance_NavigationRequested; 
             InitializeComponent();
             NavigatoToSingleInstanceOf<AdministrationPage>();
         }
+
+        private void Instance_NavigationRequested(ShadowRunHelper.ProjectPages page, ShadowRunHelper.ProjectPagesOptions PageOptions)
+        {
+            switch (page)
+            {
+                case ShadowRunHelper.ProjectPages.undef:
+                    break;
+                case ShadowRunHelper.ProjectPages.Char:
+                    if (AppModel.Instance.MainObject is CharHolder ch)
+                    {
+                        NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(ch)); // TODO Neccesary because of activation through file double click through AppHolder
+                    }
+                    else
+                    {
+                        NavigatoToSingleInstanceOf<AdministrationPage>();
+                    }
+                    break; 
+                case ShadowRunHelper.ProjectPages.Administration:
+                    NavigatoToSingleInstanceOf<AdministrationPage>();
+                    break;
+                case ShadowRunHelper.ProjectPages.Settings:
+                    NavigatoToSingleInstanceOf<SettingsPage>();
+                    break;
+                default:
+                    break;
+            }
+        }
+
         void CharPage(object sender, System.EventArgs e) => NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(CharHolderGenerator.TestAllCats(3)));
         void Administration(object sender, EventArgs e) => NavigatoToSingleInstanceOf<AdministrationPage>();
         void Settings(object sender, EventArgs e) => NavigatoToSingleInstanceOf<SettingsPage>();

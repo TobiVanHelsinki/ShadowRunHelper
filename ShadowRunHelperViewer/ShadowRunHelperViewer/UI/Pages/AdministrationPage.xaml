@@ -3,18 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
+             xmlns:io="clr-namespace:TAPPLICATION.IO;assembly=TAPPLICATION"
              mc:Ignorable="d"
-             x:Class="ShadowRunHelperViewer.UI.Pages.AdministrationPage" BackgroundColor="Accent">
+             x:Class="ShadowRunHelperViewer.UI.Pages.AdministrationPage" 
+             BackgroundColor="FloralWhite">
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label Text="Admin your chars here!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="IntroText" Text="Welcome to ShadowRunHelper. Choose a charaktersheet from the list or create a new." HorizontalOptions="CenterAndExpand" />
+            <ListView IsPullToRefreshEnabled="True" Grid.Row="2" ItemsSource="{x:Binding CharList, Mode=TwoWay}" Refreshing="ListView_Refreshing" ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="io:ExtendetFileInfo">
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{x:Binding Name}" Grid.ColumnSpan="2" LineBreakMode="WordWrap" VerticalOptions="Start"/>
+                                <Label Text="{x:Binding LastAccessTime}" Grid.Row="1" Grid.Column="0" TextColor="SlateGray"/>
+                                <Label Text="{x:Binding Length}" Grid.Row="1" Grid.Column="1" TextColor="SlateGray"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </ContentView.Content>
 </ContentView>

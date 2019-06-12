@@ -179,7 +179,5 @@ namespace ShadowRunHelper.IO
             var Source  = new FileInfo(oldlocation+ oldname);
             await CurrentIO.CopyTo(Target, Source);
         }
-
-        
     }
 }

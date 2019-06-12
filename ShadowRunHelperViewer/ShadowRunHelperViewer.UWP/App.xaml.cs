@@ -25,7 +25,9 @@ namespace ShadowRunHelperViewer.UWP
             Suspending += OnSuspending;
             #region Init Libs
             Init.Do();
-            TAPPLICATION_UWP.Init.Do();
+            TAPPLICATION.IO.SharedIO.CurrentIO = new TAPPLICATION_UWP.IO();
+            TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TAPPLICATION_UWP.Settings();
+            TAPPLICATION.PlatformHelper.Platform = new TAPPLICATION_Xamarin.PlatformHelper();
             Rg.Plugins.Popup.Popup.Init();
             #endregion
         }

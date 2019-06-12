@@ -28,9 +28,9 @@ namespace ShadowRunHelper
         public const string DATEIENDUNG_CHAR_3 = ".SRHChar";
         public const string DATEIENDUNG_CHAR = DATEIENDUNG_CHAR_3;
         public const string DATEIENDUNG_CSV = ".csv";
-        public static readonly List<string> LST_FILETYPES_ALL = new List<string>(new string[] { Constants.DATEIENDUNG_CHAR, Constants.DATEIENDUNG_CSV });
-        public static readonly List<string> LST_FILETYPES_CSV = new List<string>(new string[] { Constants.DATEIENDUNG_CSV });
-        public static readonly List<string> LST_FILETYPES_CHAR = new List<string>(new string[] { Constants.DATEIENDUNG_CHAR });
+        public static readonly List<string> LST_FILETYPES_ALL = new List<string>() { DATEIENDUNG_CHAR, DATEIENDUNG_CSV };
+        public static readonly List<string> LST_FILETYPES_CSV = new List<string>() { DATEIENDUNG_CSV };
+        public static readonly List<string> LST_FILETYPES_CHAR = new List<string>() { DATEIENDUNG_CHAR_1, DATEIENDUNG_CHAR_2, DATEIENDUNG_CHAR_3 };
         #endregion
         #region Version Numbers
         public const string APP_VERSION_NUMBER_1_3 = "1.3";
