@@ -117,31 +117,79 @@
                 </StackLayout>
             </StackLayout>
             <Grid Grid.Row="2" BackgroundColor="Snow">
+                <Grid.Resources>
+                    <Style x:Key="LabelLayout" TargetType="StackLayout">
+                        <Setter Property="Orientation" Value="Horizontal" />
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                    <Style x:Key="LocalIconLabel" TargetType="Label" BasedOn="{StaticResource IconLabel}">
+                        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}" />
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                    <Style x:Key="LocalLabel" TargetType="Label">
+                        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}" />
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col0"/>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col1"/>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col2"/>
                 </Grid.ColumnDefinitions>
                 <ScrollView>
-                    <StackLayout x:Name="ButtonsLeft">
+                    <StackLayout>
                         <Frame BorderColor="Blue" Style="{StaticResource CatPanel}">
-                            <StackLayout x:Name="s1"/>
+                            <StackLayout>
+                                <StackLayout Style="{StaticResource LabelLayout}">
+                                    <Label Text="&#xf0e7;" Style="{StaticResource LocalIconLabel}"/>
+                                    <Label Text="Actions" Style="{StaticResource LocalLabel}"/>
+                                </StackLayout>
+                                <StackLayout x:Name="s1"/>
+                            </StackLayout>
                         </Frame>
                         <Frame BorderColor="Orange" Style="{StaticResource CatPanel}">
-                            <StackLayout x:Name="s2"/>
+                            <StackLayout>
+                                <StackLayout Style="{StaticResource LabelLayout}">
+                                    <Label Text="&#xf187;" Style="{StaticResource LocalIconLabel}"/>
+                                    <Label Text="Items" Style="{StaticResource LocalLabel}"/>
+                                </StackLayout>
+                                <StackLayout x:Name="s2"/>
+                            </StackLayout>
                         </Frame>
                         <Frame BorderColor="Gray" Style="{StaticResource CatPanel}">
-                            <StackLayout x:Name="s5"/>
+                            <StackLayout>
+                                <StackLayout Style="{StaticResource LabelLayout}">
+                                    <Label Text="&#xf303;" Style="{StaticResource LocalIconLabel}"/>
+                                    <Label Text="Notes" Style="{StaticResource LocalLabel}"/>
+                                </StackLayout>
+                                <StackLayout x:Name="s5"/>
+                            </StackLayout>
                         </Frame>
                     </StackLayout>
                 </ScrollView>
                 <ScrollView Grid.Column="2">
                     <StackLayout>
                         <Frame BorderColor="Red" Style="{StaticResource CatPanel}">
-                            <StackLayout x:Name="s3"/>
+                            <StackLayout>
+                                <StackLayout Style="{StaticResource LabelLayout}">
+                                    <Label Text="&#xf3ed;" Style="{StaticResource LocalIconLabel}"/>
+                                    <Label Text="Battle" Style="{StaticResource LocalLabel}"/>
+                                    <Label Text="&#xf714;" Style="{StaticResource LocalIconLabel}"/>
+                                </StackLayout>
+                                <StackLayout x:Name="s3"/>
+                            </StackLayout>
                         </Frame>
                         <Frame BorderColor="Green" Style="{StaticResource CatPanel}">
-                            <StackLayout x:Name="s4"/>
+                            <StackLayout>
+                                <StackLayout Style="{StaticResource LabelLayout}">
+                                    <Label Text="&#xf007;" Style="{StaticResource LocalIconLabel}"/>
+                                    <Label Text="Person" Style="{StaticResource LocalLabel}"/>
+                                </StackLayout>
+                                <StackLayout x:Name="s4"/>
+                            </StackLayout>
                         </Frame>
                     </StackLayout>
                 </ScrollView>
