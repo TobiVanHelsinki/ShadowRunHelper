@@ -290,7 +290,7 @@ namespace ShadowRunHelperViewer
 
         private void Save(object sender, System.EventArgs e)
         {
-
+            MyChar.SetSaveTimerTo(0, true);
         }
         #endregion
     }

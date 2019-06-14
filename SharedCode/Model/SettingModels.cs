@@ -29,7 +29,7 @@ namespace ShadowRunHelper
         [Setting("SETTINGS_FORCE_LOAD_CHAR_ON_START", false, SaveType.Local)]
         public bool FORCE_LOAD_CHAR_ON_START { get => Get(); set => Set(value); }
 
-        [Setting("SETTINGS_AUTO_SAVE", false, SaveType.Roaming)]
+        [Setting("SETTINGS_AUTO_SAVE", true, SaveType.Roaming)]
         public bool AUTO_SAVE { get => Get(); set => Set(value); }
 
         [Setting("IAP_BADGE", false, SaveType.Local)]
