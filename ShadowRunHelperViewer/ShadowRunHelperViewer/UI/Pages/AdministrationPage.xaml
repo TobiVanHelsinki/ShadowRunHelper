@@ -6,36 +6,63 @@
              xmlns:io="clr-namespace:TAPPLICATION.IO;assembly=TAPPLICATION"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.Pages.AdministrationPage" 
-             BackgroundColor="FloralWhite">
+             BackgroundColor="White" Padding="10,10,10,0">
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label x:Name="IntroText" Text="Welcome to ShadowRunHelper. Choose a charaktersheet from the list or create a new." HorizontalOptions="CenterAndExpand" />
-            <ListView IsPullToRefreshEnabled="True" Grid.Row="2" ItemsSource="{x:Binding CharList, Mode=TwoWay}" Refreshing="ListView_Refreshing" ItemSelected="ListView_ItemSelected">
+            <!--<Label Text="Availible SaveFiles" Grid.Row="2"/>-->
+            <StackLayout Margin="15,0,10,0" Grid.Row="3" Orientation="Horizontal">
+                <Label Text="Filename" LineBreakMode="WordWrap"/>
+                <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                    <Label Text="Filesize" TextColor="SlateGray" Margin="0,0,0,0"/>
+                    <Label Text="/" Margin="5,0,5,0" TextColor="SlateGray"/>
+                    <Label Text="LastAccessTime" TextColor="SlateGray"/>
+                </StackLayout>
+            </StackLayout>
+            <BoxView Color="Gray" Grid.Row="4" HeightRequest="1"/>
+            <ListView IsPullToRefreshEnabled="True" Grid.Row="5" ItemsSource="{x:Binding CharList, Mode=TwoWay}" Refreshing="ListView_Refreshing" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="io:ExtendetFileInfo">
                         <ViewCell>
-                            <Grid>
+                            <Grid Padding="0" Margin="0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label Text="{x:Binding Name}" Grid.ColumnSpan="2" LineBreakMode="WordWrap" VerticalOptions="Start"/>
-                                <Label Text="{x:Binding LastAccessTime}" Grid.Row="1" Grid.Column="0" TextColor="SlateGray"/>
-                                <Label Text="{x:Binding Length}" Grid.Row="1" Grid.Column="1" TextColor="SlateGray"/>
+                                <StackLayout Margin="10" Padding="0" SizeChanged="TemplateSizeChanged">
+                                    <Label Text="{x:Binding Name}" LineBreakMode="WordWrap" Margin="0"/>
+                                    <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Margin="0" Padding="0" Orientation="Horizontal">
+                                        <Label Text="{x:Binding Length}" TextColor="SlateGray"/>
+                                        <Label Text="/" Margin="5,0,5,0" TextColor="SlateGray"/>
+                                        <Label Text="{x:Binding LastAccessTime}" TextColor="SlateGray"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <BoxView Color="Black" Grid.Row="1" HeightRequest="1"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Text="New Char" Clicked="NewChar_Clicked" Margin="5"/>
+                <Button Text="Example Char" Clicked="ExampleChar_Clicked" Grid.Column="1" Margin="5"/>
+            </Grid>
         </Grid>
     </ContentView.Content>
 </ContentView>

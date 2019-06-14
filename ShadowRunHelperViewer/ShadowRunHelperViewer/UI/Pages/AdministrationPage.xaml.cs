@@ -1,5 +1,6 @@
 ﻿using ShadowRunHelper;
 using ShadowRunHelper.IO;
+using ShadowRunHelper.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -43,7 +44,9 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 if (Content is Grid g)
                 {
-                    var item = new Label() { Text = "Warning, you are saving your chars locally at the moment. It is strongly recommendet to use an synchronized folder like OneDrive, DropBox and co." };
+                    var item = new Frame { Padding = 5, Content = new Label() { BackgroundColor = Color.Crimson, Margin = 5, 
+                        Text = "Warning, you are saving your chars locally at the moment. It is strongly recommendet to use an synchronized folder like OneDrive, DropBox and co." }
+                    };
                     Grid.SetRow(item, 1);
                     g.Children.Add(item);
                 }
@@ -66,9 +69,10 @@ namespace ShadowRunHelperViewer.UI.Pages
 
 
         #region Save and Load
-        async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        //async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.SelectedItem is ExtendetFileInfo charfile)
+            if (e.Item is ExtendetFileInfo charfile)
             {
                 try
                 {
@@ -97,11 +101,59 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
         #endregion
+
         #region Copy and Move
 
         #endregion
-        #region Create
 
+        #region Create
+        void NewChar_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var newchar = CharHolderGenerator.CreateCharWithStandardContent();
+                SettingsModel.I.COUNT_CREATIONS++;
+                (Application.Current.MainPage as MainPage)?.NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(newchar));
+            }
+            catch (Exception ex)
+            {
+                Log.Write("Error reading file", ex);
+            }
+            RefreshCharList();
+        }
+
+        async void ExampleChar_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
+            }
+            catch (Exception ex)
+            {
+                Log.Write("Error reading file", ex);
+            }
+            RefreshCharList();
+        }
         #endregion
+
+        private void TemplateSizeChanged(object sender, EventArgs e)
+        {
+            if (sender is StackLayout layout)
+            {
+                var attributes = layout.FindByName<StackLayout>("attributes");
+                if (layout.Width < 500)
+                {
+                    layout.Orientation = StackOrientation.Vertical;
+                    attributes.HorizontalOptions = LayoutOptions.Start;
+                    layout.Margin = new Thickness(10,2,10,0);
+                }
+                else
+                {
+                    layout.Orientation = StackOrientation.Horizontal;
+                    attributes.HorizontalOptions = LayoutOptions.EndAndExpand;
+                    layout.Margin = new Thickness(10);
+                }
+            }
+        }
     }
 }

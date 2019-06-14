@@ -21,7 +21,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <ContentPresenter x:Name="ContentPlace"/>
-            <Grid Grid.Row="1" BackgroundColor="Transparent" HorizontalOptions="Center">
+            <Grid Grid.Row="1" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,0,0,5">
                 <Button Grid.Column="0" Text="&#xf007;" Style="{StaticResource IconButton}" Clicked="CharPage" />
                 <Button Grid.Column="1" Text="&#xf0c0;" Style="{StaticResource IconButton}" Clicked="Administration" />
                 <Button Grid.Column="2" Text="&#xf013;" Style="{StaticResource IconButton}" Clicked="Settings" />

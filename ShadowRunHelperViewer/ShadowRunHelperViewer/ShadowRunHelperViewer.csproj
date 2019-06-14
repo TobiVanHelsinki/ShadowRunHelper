@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AiForms.Layouts" Version="1.1.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.6.0-preview4.19212.13" />
     <PackageReference Include="PCLStorage" Version="1.0.2" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
