@@ -29,7 +29,9 @@ namespace ShadowRunHelper
         }
         public static void Init()
         {
+//#if !DEBUG
             if (Settings.FIRST_START)
+//#endif
             {
                 Settings.InitSettings();
             }
