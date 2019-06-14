@@ -193,10 +193,6 @@
       <Project>{97d66a85-f340-4678-ae0c-e7e996e748ee}</Project>
       <Name>TAPPLICATION_UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\TLIB\TAPPLICATION_Xamarin\TAPPLICATION_Xamarin.csproj">
-      <Project>{22ef0a21-71af-44ed-82a1-1565e43eadab}</Project>
-      <Name>TAPPLICATION_Xamarin</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\SharedCode\SharedCode.csproj">
       <Project>{63a5e683-5a51-4c45-a9de-ca0c26c6ec5a}</Project>
       <Name>SharedCode</Name>
