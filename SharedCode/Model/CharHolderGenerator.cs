@@ -87,8 +87,9 @@ namespace ShadowRunHelper.Model
             {
                 ret.FileInfo = new FileInfo(IO.CharHolderIO.CurrentSavePath + ret.MakeName(false));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                TLIB.Log.Write("Error setting newchar saveplace", ex);
             }
             return ret;
         }

@@ -1,6 +1,7 @@
 ﻿using PCLStorage;
 using ShadowRunHelper.Model;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,6 +16,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             AppModel.Instance.NavigationRequested += Instance_NavigationRequested; 
             InitializeComponent();
             NavigatoToSingleInstanceOf<AdministrationPage>();
+            TLIB.Log.NewLogArrived += Log_NewLogArrived;
         }
 
         private void Instance_NavigationRequested(ShadowRunHelper.ProjectPages page, ShadowRunHelper.ProjectPagesOptions PageOptions)
@@ -119,5 +121,16 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         }
         #endregion
+
+        private void Log_NewLogArrived(TLIB.LogMessage logmessage)
+        {
+            LogButton.IsVisible = true;
+            LogView.Text = TLIB.Log.InMemoryLog.Reverse<string>().Aggregate((a, c) => a += Environment.NewLine + c);
+        }
+
+        private void ShowLog(object sender, EventArgs e)
+        {
+            LogView.IsVisible = !LogView.IsVisible;
+        }
     }
 }
