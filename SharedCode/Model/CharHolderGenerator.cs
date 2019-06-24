@@ -89,6 +89,7 @@ namespace ShadowRunHelper.Model
             }
             catch (Exception ex)
             {
+                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
                 TLIB.Log.Write("Error setting newchar saveplace", ex);
             }
             return ret;

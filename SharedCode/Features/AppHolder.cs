@@ -15,7 +15,7 @@ namespace ShadowRunHelper
 {
     public static class AppHolder
     {
-    
+
         static AppModel Model;
         static SettingsModel Settings;
 
@@ -29,9 +29,9 @@ namespace ShadowRunHelper
         }
         public static void Init()
         {
-//#if !DEBUG
+            //#if !DEBUG
             if (Settings.FIRST_START)
-//#endif
+            //#endif
             {
                 Settings.InitSettings();
             }
@@ -78,7 +78,8 @@ namespace ShadowRunHelper
                 Features.Analytics.Init();
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex); TAPPLICATION.Debugging.TraceException(ex);
+            {
+                TAPPLICATION.Debugging.TraceException(ex); TAPPLICATION.Debugging.TraceException(ex);
                 TAPPLICATION.Debugging.TraceException(ex);
             }
         }
@@ -128,7 +129,7 @@ namespace ShadowRunHelper
                     Settings.CHARINTEMPSTORE = true;
                 }
                 catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex); }
+                { TAPPLICATION.Debugging.TraceException(ex); }
             }
         }
 
@@ -172,7 +173,7 @@ namespace ShadowRunHelper
                 }
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex); }
+            { TAPPLICATION.Debugging.TraceException(ex); }
             finally
             {
                 Model.CharInProgress = null;

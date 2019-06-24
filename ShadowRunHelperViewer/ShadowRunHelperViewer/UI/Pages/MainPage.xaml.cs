@@ -13,7 +13,7 @@ namespace ShadowRunHelperViewer.UI.Pages
     {
         public MainPage()
         {
-            AppModel.Instance.NavigationRequested += Instance_NavigationRequested; 
+            AppModel.Instance.NavigationRequested += Instance_NavigationRequested;
             InitializeComponent();
             NavigatoToSingleInstanceOf<AdministrationPage>();
             TLIB.Log.NewLogArrived += Log_NewLogArrived;
@@ -34,7 +34,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                     {
                         NavigatoToSingleInstanceOf<AdministrationPage>();
                     }
-                    break; 
+                    break;
                 case ShadowRunHelper.ProjectPages.Administration:
                     NavigatoToSingleInstanceOf<AdministrationPage>();
                     break;
@@ -61,27 +61,42 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 SetWaitingContent();
             }
-            try
+
+            Task.Run(() =>
             {
-                Task.Run(() => { return new T(); }).ContinueWith((t) =>
+                try
                 {
-                    try
-                    {
-                        if (t.IsCompleted)
-                        {
-                            Device.BeginInvokeOnMainThread(() => { afterLoad?.Invoke(t.Result); ContentPlace.Content = t.Result; });
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-                    }
-                });
-            }
-            catch (Exception)
+                    return new T();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }).ContinueWith((t) =>
             {
-                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-            }
+                if (t.IsCompleted)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        try
+                        {
+                            afterLoad?.Invoke(t.Result);
+                        }
+                        catch (Exception)
+                        {
+                            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                        }
+                        try
+                        {
+                            ContentPlace.Content = t.Result;
+                        }
+                        catch (Exception)
+                        {
+                            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                        }
+                    });
+                }
+            });
         }
 
         private void SetWaitingContent()
