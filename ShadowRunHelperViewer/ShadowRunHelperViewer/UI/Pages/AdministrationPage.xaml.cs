@@ -119,7 +119,6 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 Log.Write("Error reading file", ex);
             }
-            RefreshCharList();
         }
 
         async void ExampleChar_Clicked(object sender, EventArgs e)

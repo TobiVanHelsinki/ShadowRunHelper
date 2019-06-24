@@ -121,18 +121,29 @@ namespace ShadowRunHelperViewer.UI.Pages
         #region DEBUG
         void Decarrot(object sender, EventArgs e)
         {
+#if DEBUG
+
+#endif
         }
 
         async void Debug(object sender, EventArgs e)
         {
-            var rootFolder = FileSystem.Current.RoamingStorage;
-            foreach (var item in (await rootFolder.GetFilesAsync()))
+#if DEBUG
+            try
             {
-                System.Console.WriteLine(item.Path);
+                var rootFolder = FileSystem.Current.RoamingStorage;
+                foreach (var item in (await rootFolder.GetFilesAsync()))
+                {
+                    System.Console.WriteLine(item.Path);
+                }
+                var folder = await rootFolder.CreateFolderAsync("MySubFolder", CreationCollisionOption.OpenIfExists);
+                var file = await folder.CreateFileAsync("answer.txt", CreationCollisionOption.ReplaceExisting);
+                await file.WriteAllTextAsync("42");
             }
-            var folder = await rootFolder.CreateFolderAsync("MySubFolder", CreationCollisionOption.OpenIfExists);
-            var file = await folder.CreateFileAsync("answer.txt", CreationCollisionOption.ReplaceExisting);
-            await file.WriteAllTextAsync("42");
+            catch (Exception)
+            {
+            }
+#endif
 
         }
         #endregion
