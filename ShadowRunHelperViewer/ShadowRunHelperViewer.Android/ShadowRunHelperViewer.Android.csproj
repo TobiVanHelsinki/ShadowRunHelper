@@ -127,6 +127,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\TLIB\TAPPLICATION_Xamarin\TAPPLICATION_Xamarin.csproj">
+      <Project>{df73942f-c644-452b-bc66-2cdb584eeff8}</Project>
+      <Name>TAPPLICATION_Xamarin</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\SharedCode\SharedCode.csproj">
       <Project>{63a5e683-5a51-4c45-a9de-ca0c26c6ec5a}</Project>
       <Name>SharedCode</Name>

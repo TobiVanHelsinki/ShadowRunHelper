@@ -163,6 +163,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\..\TLIB\TAPPLICATION_Xamarin\TAPPLICATION_Xamarin.csproj">
+      <Project>{df73942f-c644-452b-bc66-2cdb584eeff8}</Project>
+      <Name>TAPPLICATION_Xamarin</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShadowRunHelperViewer\ShadowRunHelperViewer.csproj">
       <Project>{FFDE0ACB-F82C-4577-98A1-435FA77A183A}</Project>
       <Name>ShadowRunHelperViewer</Name>

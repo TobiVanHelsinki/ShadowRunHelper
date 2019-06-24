@@ -94,7 +94,7 @@ namespace ShadowRunHelper
                 instance = new SettingsModel();
                 try
                 {
-                    SharedIO.CurrentIO?.CreateSaveContainer();
+                    PlatformSettings.PrepareSettingsSavePlace();
                 }
                 catch (Exception ex)
                 {

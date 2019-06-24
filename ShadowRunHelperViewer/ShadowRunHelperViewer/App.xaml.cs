@@ -1,12 +1,10 @@
-﻿using PCLStorage;
-using ShadowRunHelper;
-using ShadowRunHelper.IO;
+﻿using ShadowRunHelper;
 using ShadowRunHelperViewer.UI.Pages;
 using SharedCode.Ressourcen;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using TAPPLICATION.IO;
+using TAPPLICATION.Model;
 using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -28,7 +26,7 @@ namespace ShadowRunHelperViewer
             AppHolder.InitModel();
             try
             {
-                CharHolderIO.CurrentIO.CreateSaveContainer();
+                SharedSettingsModel.PlatformSettings.PrepareSettingsSavePlace();
             }
             catch (Exception ex)
             {

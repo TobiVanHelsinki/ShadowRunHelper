@@ -98,8 +98,9 @@ namespace ShadowRunHelper
                 SharedIO.CurrentIO.CreateFolder(new DirectoryInfo(Path.Combine(await SharedIO.CurrentIO.GetCompleteInternPath(Place.Local), SharedConstants.INTERN_SAVE_CONTAINER)));
                 SharedIO.CurrentIO.CreateFolder(new DirectoryInfo(Path.Combine(await SharedIO.CurrentIO.GetCompleteInternPath(Place.Roaming), SharedConstants.INTERN_SAVE_CONTAINER)));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                TLIB.Log.Write("Cannot create intern folder", ex);
             }
         }
         #endregion
