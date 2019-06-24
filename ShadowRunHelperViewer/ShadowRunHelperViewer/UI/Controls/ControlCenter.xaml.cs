@@ -37,6 +37,7 @@ namespace ShadowRunHelperViewer
                 TAPPLICATION.Debugging.TraceException(ex);
             }
             base.OnAppearing();
+            SizeDefiningElement_SizeChanged(this, new EventArgs());
         }
 
         int _MoneyIO;
@@ -113,12 +114,9 @@ namespace ShadowRunHelperViewer
 
         private void SizeDefiningElement_SizeChanged(object sender, EventArgs e)
         {
-            var Column0Max = DamageGrid.Children.Where(x => Grid.GetColumn(x) == 0).Aggregate(0.0, (a, c) => a + c.Width);
-            var Column1Max = DamageGrid.Children.Where(x => Grid.GetColumn(x) == 1).Aggregate(0.0, (a, c) => a + c.Width);
-            var Column3Max = DamageGrid.Children.Where(x => Grid.GetColumn(x) == 3).Aggregate(0.0, (a, c) => a + c.Width);
-
-            var NewWidth = (sender as VisualElement).Width - Column0Max - Column1Max - Column3Max + 50; //HACK
-            DamageColumnSlider.Width = new GridLength(NewWidth, GridUnitType.Absolute);
+            var NewWidth = (sender as VisualElement).Width /*- Column1Max - Column2Max - Column3Max*/; //HACK
+            //DamageGrid.WidthRequest = NewWidth < 40 ? 40 : NewWidth;
+            //DamageGrid.MinimumWidthRequest = WidthRequest;
         }
     }
 }

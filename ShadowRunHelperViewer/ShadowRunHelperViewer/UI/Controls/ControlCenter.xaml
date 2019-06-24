@@ -40,15 +40,19 @@
                 <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
             <Style x:Key="DamageSlider" TargetType="Slider">
-                <Setter Property="BackgroundColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <!--<Setter Property="HeightRequest" Value="15"/>-->
+                <Setter Property="ThumbColor" Value="Accent"/>
+                <Setter Property="MinimumTrackColor" Value="Firebrick"/>
+                <Setter Property="MaximumTrackColor" Value="Green"/>
             </Style>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <Frame Padding="20" BackgroundColor="FloralWhite" HorizontalOptions="Center" VerticalOptions="Center"
-           CornerRadius="10" SizeChanged="SizeDefiningElement_SizeChanged">
+    <Frame Padding="20" Margin="40" BackgroundColor="FloralWhite" HorizontalOptions="Center" VerticalOptions="Center"
+           CornerRadius="10">
         <ScrollView>
-            <StackLayout Orientation="Vertical">
-                <Grid>
+            <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center">
+                <Grid HorizontalOptions="Center" SizeChanged="SizeDefiningElement_SizeChanged">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -98,30 +102,37 @@
                     <Label Text="{x:Binding Model.Person.Runs}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="6"/>
                     <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="6" Clicked="RunsPlus"/>
                 </Grid>
-                <Grid x:Name="DamageGrid">
+                <Grid x:Name="DamageGrid" VerticalOptions="Start" HorizontalOptions="Center">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" x:Name="DamageColumn0"/>
+                        <ColumnDefinition Width="*" x:Name="DamageColumn0"/>
                         <ColumnDefinition Width="Auto" x:Name="DamageColumn1"/>
-                        <ColumnDefinition Width="Auto" x:Name="DamageColumnSlider"/>
+                        <ColumnDefinition Width="Auto" x:Name="DamageColumn2"/>
                         <ColumnDefinition Width="Auto" x:Name="DamageColumn3"/>
+                        <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
                     <Label Text="Geistig" Grid.Column="0" Grid.Row="0"/>
-                    <Label Text="Körper" Grid.Column="0" Grid.Row="1"/>
-                    <Label Text="Matrix" Grid.Column="0" Grid.Row="2"/>
-                    <Label Text="{x:Binding Model.Person.Schaden_G}" Grid.Column="1" Grid.Row="0"/>
-                    <Label Text="{x:Binding Model.Person.Schaden_K}" Grid.Column="1" Grid.Row="1"/>
-                    <Label Text="{x:Binding Model.CTRLCyberDeck.ActiveItem.Schaden}" Grid.Column="1" Grid.Row="2"/>
-                    <Slider Value="{x:Binding Model.Person.Schaden_G}" Maximum="{x:Binding Model.CTRLBerechnet.MaxDamageG.Wert}" Grid.Column="2" Grid.Row="0" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
-                    <Slider Value="{x:Binding Model.Person.Schaden_K}" Maximum="{x:Binding Model.CTRLBerechnet.MaxDamageK.Wert}" Grid.Column="2" Grid.Row="1" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
-                    <Slider Value="{x:Binding Model.CTRLCyberDeck.ActiveItem.Schaden}" Maximum="{x:Binding Model.CTRLCyberDeck.ActiveItem.SchadenMax}" Grid.Column="2" Grid.Row="2" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
-                    <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageG.Wert}" Grid.Column="3" Grid.Row="0"/>
-                    <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageK.Wert}" Grid.Column="3" Grid.Row="1"/>
-                    <Label Text="{x:Binding Model.CTRLCyberDeck.ActiveItem.SchadenMax}" Grid.Column="3" Grid.Row="2"/>
+                    <Label Text="Körper" Grid.Column="0" Grid.Row="2"/>
+                    <Label Text="Matrix" Grid.Column="0" Grid.Row="4"/>
+                    <Label Text="{x:Binding Model.Person.Schaden_G, Mode=OneWay}" Grid.Column="1" Grid.Row="0"/>
+                    <Label Text="{x:Binding Model.Person.Schaden_K, Mode=OneWay}" Grid.Column="1" Grid.Row="2"/>
+                    <Label Text="{x:Binding Model.CTRLCyberDeck.ActiveItem.Schaden, Mode=OneWay}" Grid.Column="1" Grid.Row="4"/>
+                    <Slider Value="{x:Binding Model.Person.Schaden_G}" Maximum="{x:Binding Model.CTRLBerechnet.MaxDamageG.Wert}" Grid.ColumnSpan="4" Grid.Row="1" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
+                    <Slider Value="{x:Binding Model.Person.Schaden_K}" Maximum="{x:Binding Model.CTRLBerechnet.MaxDamageK.Wert}" Grid.ColumnSpan="4" Grid.Row="3" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
+                    <Slider Value="{x:Binding Model.CTRLCyberDeck.ActiveItem.Schaden}" Maximum="{x:Binding Model.CTRLCyberDeck.ActiveItem.SchadenMax}" Grid.ColumnSpan="4" Grid.Row="5" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
+                    <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageG.Wert, Mode=OneWay}" Grid.Column="3" Grid.Row="0"/>
+                    <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageK.Wert, Mode=OneWay}" Grid.Column="3" Grid.Row="2"/>
+                    <Label Text="{x:Binding Model.CTRLCyberDeck.ActiveItem.SchadenMax, Mode=OneWay}" Grid.Column="3" Grid.Row="4"/>
+                    <Label Text="/" Grid.Column="2" Grid.Row="0"/>
+                    <Label Text="/" Grid.Column="2" Grid.Row="2"/>
+                    <Label Text="/" Grid.Column="2" Grid.Row="4"/>
                 </Grid>
             </StackLayout>
         </ScrollView>
