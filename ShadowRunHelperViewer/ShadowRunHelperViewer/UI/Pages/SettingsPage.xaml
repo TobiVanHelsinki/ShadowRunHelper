@@ -3,17 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.Pages.SettingsPage">
-  <ContentView.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label Text="Settings here!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </Grid>
+    <ContentView.Content>
+        <StackLayout>
+            <Label Text="Settings here!"/>
+            <controls:SettingsControl Text="UI_Optionen_EditAfterAdd" Setting="{x:Binding Settings.START_AFTER_EDIT, Mode=TwoWay}"/>
+            <controls:SettingsControl Text="UI_Optionen_DisplayRequest" Setting="{x:Binding Path=Settings.DISPLAY_REQUEST, Mode=TwoWay}"/>
+        </StackLayout>
     </ContentView.Content>
 </ContentView>

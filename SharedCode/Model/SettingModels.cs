@@ -79,7 +79,8 @@ namespace ShadowRunHelper
         public bool LOAD_CHAR_ON_START { get => Get(); set => Set(value); }
 
         [Setting("SETTINGS_START_AFTER_EDIT", true, SaveType.Roaming)]
-        public bool START_AFTER_EDIT { get => Get(); set => Set(value); }
+        public bool START_AFTER_EDIT { get => Get();
+            set => Set(value); }
 
         [Setting("CHARINTEMPSTORE", false, SaveType.Local)]
         public bool CHARINTEMPSTORE { get => Get(); set => Set(value); }
