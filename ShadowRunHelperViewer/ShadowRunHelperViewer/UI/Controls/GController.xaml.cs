@@ -42,9 +42,39 @@ namespace ShadowRunHelperViewer
             {
                 string key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
                 Resources.TryGetValue(key, out object CustomTemplate);
+                if (CustomTemplate is null)
+                {
+                    Resources.TryGetValue("Fallback", out CustomTemplate);
+                }
                 if (CustomTemplate is DataTemplate DT)
                 {
-                    Items.ItemTemplate = DT;
+                    var section = new TableSection();
+                    /*
+                     * Template Idee:
+                     * Ein Template für jeden ThingType.
+                     * Fernkampfwaffe ist ein grid bestehend aus think left, thing rigth, einem custom mittleteil und einem contentpresenter für extended entrys
+                     */
+                    Items.Root = new TableRoot() { section };
+                    foreach (var item in Controller.GetElements())
+                    {
+                        var content = DT.CreateContent();
+                        ViewCell vc;
+                        if (content is ViewCell vcn)
+                        {
+                            vc = vcn;
+                        }
+                        else if (content is View v)
+                        {
+                            vc = new ViewCell() { View = v };
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        vc.BindingContext = item;
+                        vc.Tapped += Item_Tapped;
+                        section.Add(vc);
+                    }
                 }
 
                 Resources.TryGetValue(key+"_H", out CustomTemplate);
@@ -62,8 +92,41 @@ namespace ShadowRunHelperViewer
                 IsVisible = false;
             }
         }
+
+
+        private void Item_Tapped(object sender, EventArgs e)
+        {
+            if (sender is ViewCell vc)
+            {
+                string key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
+                Resources.TryGetValue(key + "X", out object CustomTemplate);
+                if (CustomTemplate is DataTemplate DT)
+                {
+                    if (vc.View.FindByName("Extended") is ContentView XView)
+                    {
+                        if (XView.Content is null)
+                        {
+                            if (DT.CreateContent() is View v)
+                            {
+                                XView.Content = v;
+                            }
+                        }
+                        else
+                        {
+                            XView.Content = null;
+                        }
+                        vc.ForceUpdateSize();
+                    }
+                }
+            }
+        }
+
+        private void V_Tapped1(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
-      
+
         public CategoryOption Setting { get; private set; }
 
         public GController(CharHolder myChar)
@@ -79,7 +142,7 @@ namespace ShadowRunHelperViewer
             if (e.SelectedItem is Thing t)
             {
                 await PopupNavigation.Instance.PushAsync(new DetailsPage(t, false));
-                Items.SelectedItem = null;
+                //Items.SelectedItem = null;
             }
         }
 

@@ -93,7 +93,7 @@
                     <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}"/>
                     <ContentPresenter Grid.Column="1"/>
                     <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value}"/>
-                    <Frame Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="Black" Margin="2,0,2,0" Padding="0" HeightRequest="1"/>
+                    <Frame x:Name="TestFrame" Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="Black" Margin="2,0,2,0" Padding="0" HeightRequest="1"/>
                 </Grid>
             </ControlTemplate>
             
@@ -119,13 +119,27 @@
             </ControlTemplate>
             <DataTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
                 <ViewCell>
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal">
+                            <ContentView ControlTemplate="{StaticResource Thing_Name}"/>
+                            <Label Grid.Column="3" Text="{x:Binding DKCalced}" HorizontalOptions="CenterAndExpand"/>
+                            <ContentView ControlTemplate="{StaticResource Thing_Value}" HorizontalOptions="End"/>
+                            <Label Grid.Column="3" Text="{x:Binding SchadenTyp}"/>
+                        </StackLayout>
+                        <ContentView x:Name="Extended"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="FernkampfwaffeX" x:DataType="CharModel:Fernkampfwaffe">
+                <StackLayout Orientation="Vertical">
                     <StackLayout Orientation="Horizontal">
                         <ContentView ControlTemplate="{StaticResource Thing_Name}"/>
                         <Label Grid.Column="3" Text="{x:Binding DKCalced}" HorizontalOptions="CenterAndExpand"/>
                         <ContentView ControlTemplate="{StaticResource Thing_Value}" HorizontalOptions="End"/>
                         <Label Grid.Column="3" Text="{x:Binding SchadenTyp}"/>
                     </StackLayout>
-                </ViewCell>
+                    <ContentView x:Name="Extended"/>
+                </StackLayout>
             </DataTemplate>
             <ControlTemplate x:Key="Nahkampfwaffe_H">
                 <StackLayout Orientation="Horizontal">
@@ -174,11 +188,7 @@
             <Frame Padding="5" Margin="0" Grid.Row="2"
                       BackgroundColor="OldLace"
                    >
-                <ListView x:Name="Items"
-                      ItemTemplate="{StaticResource Fallback}"
-                      ItemSelected="Items_ItemSelected"
-                      ItemsSource="{x:Binding Data}"
-                      HasUnevenRows="True"/>
+                <TableView x:Name="Items" HasUnevenRows="True" Intent="Data"  />
             </Frame>
         </Grid>
     </ContentView.Content>
