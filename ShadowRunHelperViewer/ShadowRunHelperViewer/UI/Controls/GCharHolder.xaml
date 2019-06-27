@@ -22,46 +22,66 @@
                 <Setter Property="TextColor" Value="FloralWhite" />
             </Style>
             <DataTemplate x:Key="CharPerson" x:Name="CharPerson" x:DataType="model:CharHolder">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Text="Alias"/>
-                    <Label Text="{x:Binding Person.Alias}" Grid.Column="1"/>
-                    <Label Text="MetaTyp" Grid.Row="1"/>
-                    <Label Text="{x:Binding Person.MetaTyp}" Grid.Column="1" Grid.Row="1"/>
-                    <Label Text="MetaTyp_Sub" Grid.Row="2"/>
-                    <Label Text="{x:Binding Person.MetaTyp_Sub}" Grid.Column="1" Grid.Row="2"/>
-                    <Label Text="Lebensstil" Grid.Row="3"/>
-                    <Label Text="{x:Binding Person.Lebesstil}" Grid.Column="1" Grid.Row="3"/>
-                    <Label Text="GebDatum" Grid.Row="4"/>
-                    <Label Text="{x:Binding Person.BirthDate}" Grid.Column="1" Grid.Row="4"/>
-                    <Label Text="Geschlecht" Grid.Row="5"/>
-                    <Label Text="{x:Binding Person.Geschlecht}" Grid.Column="1" Grid.Row="5"/>
-                    <Label Text="Größe" Grid.Row="6"/>
-                    <Label Text="{x:Binding Person.Groesse}" Grid.Column="1" Grid.Row="6"/>
-                    <Label Text="Gewicht" Grid.Row="7"/>
-                    <Label Text="{x:Binding Person.Gewicht}" Grid.Column="1" Grid.Row="7"/>
-                    <Label Text="EssenzMod" Grid.Row="8"/>
-                    <Label Text="{x:Binding Person.Essenz}" Grid.Column="1" Grid.Row="8"/>
-                    <Label Text="Augenfarbe" Grid.Row="9"/>
-                    <Label Text="{x:Binding Person.Augenfarbe}" Grid.Column="1" Grid.Row="9"/>
-                    <Label Text="Haarfarbe" Grid.Row="10"/>
-                    <Label Text="{x:Binding Person.Haarfarbe}" Grid.Column="1" Grid.Row="10"/>
-                    <Label Text="Hautfarbe" Grid.Row="11"/>
-                    <Label Text="{x:Binding Person.Hautfarbe}" Grid.Column="1" Grid.Row="11"/>
-                    <Label Text="StraßenRuf" Grid.Row="12"/>
-                    <Label Text="{x:Binding Person.StraßenRuf}" Grid.Column="1" Grid.Row="12"/>
-                    <Label Text="StraßenRufMod" Grid.Row="13"/>
-                    <Label Text="{x:Binding Person.StraßenRufMod}" Grid.Column="1" Grid.Row="13"/>
-                    <Label Text="Schelchter Ruf" Grid.Row="14"/>
-                    <Label Text="{x:Binding Person.SchelchterRuf}" Grid.Column="1" Grid.Row="14"/>
-                    <Label Text="Prominenz" Grid.Row="15"/>
-                    <Label Text="{x:Binding Person.Prominenz}" Grid.Column="1" Grid.Row="15"/>
-                    <Label Text="Beschreibung" Grid.Row="16"/>
-                    <Label Text="{x:Binding Person.Zusammenfassung}" Grid.Column="1" Grid.Row="16"/>
-                </Grid>
+                <ScrollView>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Alias"/>
+                        <Label Text="{x:Binding Person.Alias}" Grid.Column="1"/>
+                        <Label Text="MetaTyp" Grid.Row="1"/>
+                        <Label Text="{x:Binding Person.MetaTyp}" Grid.Column="1" Grid.Row="1"/>
+                        <Label Text="MetaTyp_Sub" Grid.Row="2"/>
+                        <Label Text="{x:Binding Person.MetaTyp_sub}" Grid.Column="1" Grid.Row="2"/>
+                        <Label Text="Lebensstil" Grid.Row="3"/>
+                        <Label Text="{x:Binding Person.Lebesstil}" Grid.Column="1" Grid.Row="3"/>
+                        <Label Text="GebDatum" Grid.Row="4"/>
+                        <Label Text="{x:Binding Person.BirthDate}" Grid.Column="1" Grid.Row="4"/>
+                        <Label Text="Geschlecht" Grid.Row="5"/>
+                        <Label Text="{x:Binding Person.Geschlecht}" Grid.Column="1" Grid.Row="5"/>
+                        <Label Text="Größe" Grid.Row="6"/>
+                        <Label Text="{x:Binding Person.Groesse}" Grid.Column="1" Grid.Row="6"/>
+                        <Label Text="Gewicht" Grid.Row="7"/>
+                        <Label Text="{x:Binding Person.Gewicht}" Grid.Column="1" Grid.Row="7"/>
+                        <Label Text="EssenzMod" Grid.Row="8"/>
+                        <Label Text="{x:Binding Person.Essenz}" Grid.Column="1" Grid.Row="8"/>
+                        <Label Text="Augenfarbe" Grid.Row="9"/>
+                        <Label Text="{x:Binding Person.Augenfarbe}" Grid.Column="1" Grid.Row="9"/>
+                        <Label Text="Haarfarbe" Grid.Row="10"/>
+                        <Label Text="{x:Binding Person.Haarfarbe}" Grid.Column="1" Grid.Row="10"/>
+                        <Label Text="Hautfarbe" Grid.Row="11"/>
+                        <Label Text="{x:Binding Person.Hautfarbe}" Grid.Column="1" Grid.Row="11"/>
+                        <Label Text="StraßenRuf" Grid.Row="12"/>
+                        <Label Text="{x:Binding Person.Strassenruf}" Grid.Column="1" Grid.Row="12"/>
+                        <Label Text="StraßenRufMod" Grid.Row="13"/>
+                        <Label Text="{x:Binding Person.StrassenrufMod}" Grid.Column="1" Grid.Row="13"/>
+                        <Label Text="Schlechter Ruf" Grid.Row="14"/>
+                        <Label Text="{x:Binding Person.SchlechterRuf}" Grid.Column="1" Grid.Row="14"/>
+                        <Label Text="Prominenz" Grid.Row="15"/>
+                        <Label Text="{x:Binding Person.Prominenz}" Grid.Column="1" Grid.Row="15"/>
+                        <Label Text="Beschreibung" Grid.Row="16"/>
+                        <Label Text="{x:Binding Person.Zusammenfassung}" Grid.Column="1" Grid.Row="16"/>
+                    </Grid>
+                </ScrollView>
             </DataTemplate>
             <DataTemplate x:Key="CharNotes" x:Name="CharNotes" x:DataType="model:CharHolder">
                 <StackLayout>
