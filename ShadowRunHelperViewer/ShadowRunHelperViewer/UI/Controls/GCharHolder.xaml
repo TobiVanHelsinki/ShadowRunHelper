@@ -2,7 +2,8 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode" 
-             xmlns:local="clr-namespace:ShadowRunHelperViewer" 
+             xmlns:local="clr-namespace:ShadowRunHelperViewer"
+             xmlns:model="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
              x:Class="ShadowRunHelperViewer.GCharHolder"
              >
     <ContentView.Resources>
@@ -21,6 +22,27 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="TextColor" Value="FloralWhite" />
             </Style>
+            <DataTemplate x:Key="CharPerson" x:Name="CharPerson" x:DataType="model:CharHolder">
+                <StackLayout>
+                    <Label Text="Alias"/>
+                    <Label Text="{x:Binding Person.Alias}"/>
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="CharNotes" x:Name="CharNotes" x:DataType="model:CharHolder">
+                <StackLayout>
+                    <Label Text="Space for some Notes"/>
+                    <Editor Text="{x:Binding Person.Notizen}"
+                            AutoSize="TextChanges" VerticalOptions="FillAndExpand"
+                            IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"
+                            />
+                </StackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="CharFavs" x:Name="CharFavs" x:DataType="model:CharHolder">
+                <StackLayout>
+                    <Label Text="Add Favorites with the switch at an thing"/>
+                    <ListView ItemsSource="{x:Binding Favorites}"/>
+                </StackLayout>
+            </DataTemplate>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -30,42 +52,19 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Frame Margin="0" Padding="0" CornerRadius="0">
-                <Frame.Content>
-                    <OnPlatform x:TypeArguments="Grid">
-                        <On Platform="UWP">
-                            <On.Value>
-                                <Grid Padding="4,4,4,0" Margin="0" ColumnSpacing="0" RowSpacing="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Orientation="Horizontal" Spacing="0">
-                                        <Button Text="&#xf0c7;" Style="{StaticResource IconButton}" Clicked="Save" />
-                                        <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="MoreMenu" />
-                                    </StackLayout>
-                                    <SearchBar Grid.Column="1" HorizontalOptions="Fill" Placeholder="Search Name or Type" VerticalOptions="Center" />
-                                    <StackLayout Grid.Column="2" Orientation="Horizontal" Spacing="0">
-                                        <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="Toggle" />
-                                    </StackLayout>
-                                </Grid>
-                            </On.Value>
-                        </On>
-                        <On Platform="Android">
-                            <On.Value>
-                                <Grid BackgroundColor="Transparent">
-                                    <FlexLayout BackgroundColor="Transparent">
-                                        <Button Text="&#xf0c7;" Style="{StaticResource IconButton}" Clicked="Save" />
-                                        <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="MoreMenu" />
-                                        <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="Toggle"/>
-                                    </FlexLayout>
-                                </Grid>
-                            </On.Value>
-                        </On>
-                    </OnPlatform>
-                </Frame.Content>
-            </Frame>
+            <Grid Margin="0" Padding="0" ColumnSpacing="3" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button Text="&#xf0c7;" Style="{StaticResource IconButton_ConstWidth}" Clicked="Save" Grid.Column="0"/>
+                <Button Text="&#xf141;" Style="{StaticResource IconButton_ConstWidth}" Clicked="MoreMenu" Grid.Column="1"/>
+                <SearchBar Placeholder="Search Name or Type" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Column="2"
+                           TextChanged="Search_TextChanged" SearchButtonPressed="Search_SearchButtonPressed"/>
+                <Button Text="&#xf0c9;" Style="{StaticResource IconButton_ConstWidth}" Clicked="Toggle" Grid.Column="3" x:Name="MenuToggleButton"/>
+            </Grid>
             <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="Transparent" 
                          HorizontalOptions="Fill" Padding="4,0,4,4" x:Name="Infogrid">
                 <StackLayout.Resources>
@@ -193,48 +192,7 @@
                         </Frame>
                     </StackLayout>
                 </ScrollView>
-                <StackLayout Grid.Column="1" x:Name="ContentPanel">
-                    <Grid x:Name="ControllerPanel"/>
-                    <StackLayout x:Name="Favs" BackgroundColor="LightGoldenrodYellow" IsVisible="False">
-                        <Label Text="Favorites"/>
-                        <ListView ItemsSource="{x:Binding MyChar.Favorites}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="charmodel:Thing">
-                                    <ViewCell>
-                                        <Frame BorderColor="Accent" Padding="0" Margin="0">
-                                            <Grid Padding="0" Margin="0">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Label Grid.Column="0" Text="{x:Binding Typ}"/>
-                                                <Label Grid.Column="1" Text="{x:Binding Bezeichner}"/>
-                                                <Label Grid.Column="2" Text="{x:Binding Wert}"/>
-                                                <Label Grid.Column="3" Text="{x:Binding Zusatz}"/>
-                                                <Label Grid.Row="1" Text="{x:Binding Notiz}"/>
-                                            </Grid>
-                                        </Frame>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
-                    <ScrollView x:Name="Notes" IsVisible="False">
-                        <StackLayout>
-                            <Label Text="{x:Binding MyChar.Person.Notizen}" BackgroundColor="AntiqueWhite"/>
-                            <Grid x:Name="PersonArray">
-                                <!--TODO-->
-                                <Label Text="{x:Binding MyChar.Person.Alias}"/>
-                            </Grid>
-                        </StackLayout>
-                    </ScrollView>
-                </StackLayout>
+                <Frame Grid.Column="1" CornerRadius="0" x:Name="ContentPanel"/>
             </Grid>
         </Grid>
     </ContentView.Content>

@@ -70,17 +70,6 @@ namespace ShadowRunHelperViewer
                 {
                     item.Children.Clear();
                 }
-                foreach (var item in new (string, Layout)[] {("Favorites", Favs), ("Notes", Notes), ("Person", null) })
-                { 
-                    var btt = new Button
-                    {
-                        Padding = new Thickness(2),
-                        Text = item.Item1,
-                        BindingContext = item.Item2
-                    };
-                    btt.Clicked += B_More_Clicked;
-                    s5.Children.Add(btt);
-                }
                 foreach (var Category in MyChar.Settings.CategoryOptions.OrderBy(x => x.Pivot).ThenBy(x => x.Order))
                 {
                     var b = new Button
@@ -109,16 +98,32 @@ namespace ShadowRunHelperViewer
                     }
                     b.Clicked += B_CTRL_Clicked;
                 }
+                foreach ((var name, var template, var layout) in new(string, DataTemplate, StackLayout)[] {
+                    ("Favorites", CharFavs, s5),
+                    ("Notes", CharNotes, s5),
+                    ("Person", CharPerson, s4) })
+                {
+                    var btt = new Button
+                    {
+                        Padding = new Thickness(2),
+                        Text = name,
+                        BindingContext = template
+                    };
+                    btt.Clicked += B_More_Clicked;
+                    layout.Children.Add(btt);
+                }
             }
         }
 
         private void B_More_Clicked(object sender, EventArgs e)
         {
-            if (sender is Button b)
+            if (sender is Button b && b.BindingContext is DataTemplate dt)
             {
-                if (b.BindingContext is Layout panel)
+                if (dt.CreateContent() is View tv)
                 {
-                    panel.IsVisible = !panel.IsVisible;
+                    tv.BindingContext = MyChar;
+                    ContentPanel.Content = tv;
+                    HighlightButton(b);
                 }
             }
             if (Narrow)
@@ -126,12 +131,12 @@ namespace ShadowRunHelperViewer
                 MenuOpen = false;
             }
         }
-
+       
         private void B_CTRL_Clicked(object sender, EventArgs e)
         {
-            if (sender is VisualElement b && b.BindingContext is ThingDefs type)
+            if (sender is Button b && b.BindingContext is ThingDefs type)
             {
-                HighlightButton(type);
+                HighlightButton(b);
                 var gCTRL = new GController(MyChar);
                 var CTRL = typeof(CharHolder).GetProperties().FirstOrDefault(x=>x.Name == "CTRL" + type);
                 if (CTRL != null)
@@ -143,30 +148,23 @@ namespace ShadowRunHelperViewer
                     if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
                     Log.Write("Structual Error, Controller Name is wrong");
                 }
-                ControllerPanel.Children.Clear();
-                ControllerPanel.Children.Add(gCTRL);
+                ContentPanel.Content = gCTRL;
                 if (Narrow)
                 {
                     MenuOpen = false;
                 }
             }
         }
-
-        private void HighlightButton(ThingDefs type)
+     
+        private void HighlightButton(Button myBtn)
         {
             foreach (var item in Buttons)
             {
-                if (item.BindingContext is ThingDefs d && d == type)
-                {
-                    item.BackgroundColor = Color.Accent;
-                    item.TextColor = Color.FloralWhite;
-                }
-                else
-                {
-                    item.BackgroundColor = Color.Default;
-                    item.TextColor = Color.Default;
-                }
+                item.BackgroundColor = Color.Default;
+                item.TextColor = Color.Default;
             }
+            myBtn.BackgroundColor = Color.Accent;
+            myBtn.TextColor = Color.FloralWhite;
         }
 
         #endregion
@@ -187,6 +185,7 @@ namespace ShadowRunHelperViewer
 
         private void ChangeUi()
         {
+            MenuToggleButton.IsVisible = Narrow;
             if (Narrow)
             {
                 if (MenuOpen)
@@ -232,7 +231,7 @@ namespace ShadowRunHelperViewer
             }
             else
             {
-                if (ControllerPanel.Children.Any(x=>x.IsVisible))
+                if (ContentPanel.Content != null )
                 {
                     MenuOpen = false;
                 }
@@ -241,7 +240,6 @@ namespace ShadowRunHelperViewer
 
 
         #endregion
-
         #region Menu Stuff
 
         private void Toggle(object sender, EventArgs e)
@@ -291,6 +289,18 @@ namespace ShadowRunHelperViewer
         private void Save(object sender, System.EventArgs e)
         {
             MyChar.SetSaveTimerTo(0, true);
+        }
+
+        #endregion
+        #region Search Stuff
+        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Search_SearchButtonPressed(object sender, EventArgs e)
+        {
+
         }
         #endregion
     }

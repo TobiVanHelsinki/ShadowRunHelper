@@ -74,7 +74,7 @@
 
                     <Label Text="Money I/O" Grid.Column="0" Grid.Row="1"/>
                     <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="1" Clicked="MoneyIOMinus"/>
-                    <Entry Text="{x:Binding MoneyIO}" Grid.Column="2" Grid.Row="1" BackgroundColor="Transparent"/>
+                    <Entry Text="{x:Binding MoneyIO}" Grid.Column="2" Grid.Row="1" BackgroundColor="Transparent" MinimumWidthRequest="50"/>
                     <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="1" Clicked="MoneyIOPlus"/>
 
                     <Label Text="Edge now" Grid.Column="0" Grid.Row="2"/>
