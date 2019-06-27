@@ -4,6 +4,8 @@ using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -44,44 +46,10 @@ namespace ShadowRunHelperViewer
         {
             if (Controller != null)
             {
-                string key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
-                Resources.TryGetValue(key, out object CustomTemplate);
-                if (CustomTemplate is null)
-                {
-                    Resources.TryGetValue("Fallback", out CustomTemplate);
-                }
-                if (CustomTemplate is DataTemplate DT)
-                {
-                    var section = new TableSection();
-                    /*
-                     * Template Idee:
-                     * Ein Template für jeden ThingType.
-                     * Fernkampfwaffe ist ein grid bestehend aus think left, thing rigth, einem custom mittleteil und einem contentpresenter für extended entrys
-                     */
-                    Items.Root = new TableRoot() { section };
-                    Items.Margin = new Thickness(0, Device.OnPlatform(-35, -35, -40), 0, 0);
-                    foreach (var item in Controller.GetElements())
-                    {
-                        var content = DT.CreateContent();
-                        ViewCell vc;
-                        if (content is ViewCell vcn)
-                        {
-                            vc = vcn;
-                        }
-                        else if (content is View v)
-                        {
-                            vc = new ViewCell() { View = v };
-                        }
-                        else
-                        {
-                            break;
-                        }
-                        vc.BindingContext = item;
-                        vc.Tapped += ItemCell_Tapped;
-                        section.Add(vc);
-                    }
-                }
-                Resources.TryGetValue(key+"_H", out CustomTemplate);
+                Controller.RegisterEventAtData(SmthChanged);
+                var key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
+                CreateItems(key);
+                Resources.TryGetValue(key + "_H", out var CustomTemplate);
                 if (CustomTemplate is ControlTemplate HL)
                 {
                     Items_H.ControlTemplate = HL;
@@ -97,12 +65,66 @@ namespace ShadowRunHelperViewer
             }
         }
 
+        private object CreateItems(string key)
+        {
+            Resources.TryGetValue(key, out object CustomTemplate);
+            if (CustomTemplate is null)
+            {
+                Resources.TryGetValue(nameof(Thing), out CustomTemplate);
+            }
+            if (CustomTemplate is DataTemplate DT)
+            {
+                var section = new TableSection();
+                /*
+                 * Template Idee:
+                 * Ein Template für jeden ThingType.
+                 * Fernkampfwaffe ist ein grid bestehend aus think left, thing rigth, einem custom mittleteil und einem contentpresenter für extended entrys
+                 * die Item und ItemX Templates müssen DataTempaltes sein
+                 */
+                Items.Root = new TableRoot() { section };
+                Items.Margin = new Thickness(0, Device.OnPlatform(-35, -35, -40), 0, 0);
+                foreach (var item in Controller.GetElements())
+                {
+                    var content = DT.CreateContent();
+                    ViewCell vc;
+                    if (content is ViewCell vcn)
+                    {
+                        vc = vcn;
+                    }
+                    else if (content is View v)
+                    {
+                        vc = new ViewCell() { View = v };
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    vc.BindingContext = item;
+                    vc.Tapped += ItemCell_Tapped;
+                    section.Add(vc);
+                }
+            }
+            return CustomTemplate;
+        }
+
+        private void SmthChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (sender is INotifyCollectionChanged list)
+            {
+                CreateItems(TypeHelper.ThingDefToString(Controller.eDataTyp, false));
+            }
+        }
+
         private void ItemCell_Tapped(object sender, EventArgs e)
         {
             if (sender is ViewCell vc)
             {
                 string key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
-                Resources.TryGetValue(key + "X", out object CustomTemplate);
+                Resources.TryGetValue(key + "X", out var CustomTemplate);
+                if (CustomTemplate is null)
+                {
+                    Resources.TryGetValue(nameof(Thing)+ "X", out CustomTemplate);
+                }
                 if (CustomTemplate is DataTemplate DT)
                 {
                     if (vc.View.FindByName("Extended") is ContentView XView)

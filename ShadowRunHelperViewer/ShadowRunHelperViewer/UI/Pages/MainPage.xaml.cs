@@ -150,8 +150,11 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         private void Log_NewLogArrived(TLIB.LogMessage logmessage)
         {
-            LogButton.IsVisible = true;
-            LogView.Text = TLIB.Log.InMemoryLog.Reverse<string>().Aggregate((a, c) => a += Environment.NewLine + c);
+            TAPPLICATION.PlatformHelper.ExecuteOnUIThreadAsync(() =>
+            {
+                LogButton.IsVisible = true;
+                LogView.Text = TLIB.Log.InMemoryLog.Reverse<string>().Aggregate((a, c) => a += Environment.NewLine + c);
+            });
         }
 
         private void ShowLog(object sender, EventArgs e)
