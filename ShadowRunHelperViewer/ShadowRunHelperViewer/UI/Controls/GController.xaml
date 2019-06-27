@@ -33,6 +33,10 @@
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
             </Style>
+            <Style x:Key="Item_Grid" TargetType="Grid">
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
             <ControlTemplate x:Key="Thing_Name_H">
                 <StackLayout Style="{StaticResource TemplateStack}">
                     <Label Text="Typ" Style="{StaticResource HeadLineText}"/>
@@ -67,6 +71,18 @@
                     <Label Text="{x:Binding Zusatz}"/>
                 </StackLayout>
             </ControlTemplate>
+            <ControlTemplate x:Key="Thing_Notes" x:DataType="CharModel:Thing">
+                <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
+                    <Label Text="{x:Binding Notiz}"/>
+                </StackLayout>
+            </ControlTemplate>
+            <ControlTemplate x:Key="Thing_Buttons" x:DataType="CharModel:Thing">
+                <StackLayout Orientation="Vertical" BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
+                    <Button Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Edit" />
+                    <Button Text="&#xf1f8;" Style="{StaticResource IconButton}" HorizontalOptions="FillAndExpand" Clicked="Thing_Delete" />
+                    <Switch IsToggled="{x:Binding IsFavorite}" WidthRequest="80"/>
+                </StackLayout>
+            </ControlTemplate>
 
             <ControlTemplate x:Key="Thing_H">
                 <Grid Style="{StaticResource TemplateGrid}">
@@ -96,49 +112,79 @@
                     <Frame x:Name="TestFrame" Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="Black" Margin="2,0,2,0" Padding="0" HeightRequest="1"/>
                 </Grid>
             </ControlTemplate>
-            
+
+            <ControlTemplate x:Key="ItemsBoxes_H">
+                <StackLayout Style="{StaticResource TemplateGrid}" HorizontalOptions="Center">
+                    <Label Text="Aktiv"/>
+                    <Label Text="Besitz"/>
+                </StackLayout>
+            </ControlTemplate>
+            <ControlTemplate x:Key="ItemsBoxes" x:DataType="CharModel:Item">
+                <StackLayout Style="{StaticResource TemplateGrid}" HorizontalOptions="Center" BindingContext="{TemplateBinding BindingContext}">
+                    <Switch IsToggled="{x:Binding Aktiv}"/>
+                    <Switch IsToggled="{x:Binding Besitz}"/>
+                </StackLayout>
+            </ControlTemplate>
+
             <DataTemplate x:Key="Fallback" x:DataType="CharModel:Thing">
                 <ViewCell>
-                    <ViewCell.ContextActions>
-                        <MenuItem Text="Add" Clicked="Add_Clicked"/>
-                        <MenuItem Text="Delete" Clicked="Delete_Clicked"/>
-                        <MenuItem Text="Edit" Clicked="Edit_Clicked"/>
-                    </ViewCell.ContextActions>
-                    <ContentView ControlTemplate="{StaticResource Thing}" Style="{StaticResource TemplateContentView}">
-                    </ContentView>
+                    <ContentView ControlTemplate="{StaticResource Thing}" Style="{StaticResource TemplateContentView}"/>
                 </ViewCell>
             </DataTemplate>
 
             <ControlTemplate x:Key="Fernkampfwaffe_H">
-                <StackLayout Orientation="Horizontal">
-                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}"/>
-                    <Label Grid.Column="3" Text="DK" HorizontalOptions="CenterAndExpand" Style="{StaticResource HeadLineText}"/>
-                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" HorizontalOptions="EndAndExpand"/>
-                    <Label Grid.Column="3" Text="SchadenTyp" Style="{StaticResource HeadLineText}"/>
-                </StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
+                    <Label Text="DK" HorizontalOptions="CenterAndExpand" Grid.Column="2" Style="{StaticResource HeadLineText}"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="3" HorizontalOptions="EndAndExpand"/>
+                    <Label Text="SchadenTyp" Grid.Column="4" Style="{StaticResource HeadLineText}"/>
+                </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
                 <ViewCell>
-                    <StackLayout Orientation="Vertical">
-                        <StackLayout Orientation="Horizontal">
-                            <ContentView ControlTemplate="{StaticResource Thing_Name}"/>
-                            <Label Grid.Column="3" Text="{x:Binding DKCalced}" HorizontalOptions="CenterAndExpand"/>
-                            <ContentView ControlTemplate="{StaticResource Thing_Value}" HorizontalOptions="End"/>
-                            <Label Grid.Column="3" Text="{x:Binding SchadenTyp}"/>
-                        </StackLayout>
-                        <ContentView x:Name="Extended"/>
-                    </StackLayout>
+                    <!--<ViewCell.ContextActions>
+                        <MenuItem Text="Add" Clicked="Add_Clicked"/>
+                        <MenuItem Text="Delete" Clicked="Delete_Clicked"/>
+                        <MenuItem Text="Edit" Clicked="Edit_Clicked"/>
+                    </ViewCell.ContextActions>-->
+                    <Grid Style="{StaticResource Item_Grid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                        <Label Text="{x:Binding SchadenTyp}" Grid.Column="3"/>
+                        <Label Text="{x:Binding DKCalced}" Grid.Column="4"/>
+                        <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
+                        <BoxView Color="Black" Grid.ColumnSpan="5" Grid.Row="2" HeightRequest="1"/>
+                    </Grid>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="FernkampfwaffeX" x:DataType="CharModel:Fernkampfwaffe">
-                <StackLayout Orientation="Vertical">
-                    <StackLayout Orientation="Horizontal">
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}"/>
-                        <Label Grid.Column="3" Text="{x:Binding DKCalced}" HorizontalOptions="CenterAndExpand"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" HorizontalOptions="End"/>
-                        <Label Grid.Column="3" Text="{x:Binding SchadenTyp}"/>
-                    </StackLayout>
-                    <ContentView x:Name="Extended"/>
+                <StackLayout Orientation="Horizontal">
+                    <ContentView ControlTemplate="{StaticResource Thing_Buttons}"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Notes}"/>
                 </StackLayout>
             </DataTemplate>
             <ControlTemplate x:Key="Nahkampfwaffe_H">
@@ -188,7 +234,7 @@
             <Frame Padding="5" Margin="0" Grid.Row="2"
                       BackgroundColor="OldLace"
                    >
-                <TableView x:Name="Items" HasUnevenRows="True" Intent="Data"  />
+                <TableView x:Name="Items" HasUnevenRows="True" Intent="Data"/>
             </Frame>
         </Grid>
     </ContentView.Content>

@@ -13,6 +13,10 @@ using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer
 {
+    public class MyClass : TableSectionBase
+    {
+
+    }
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GController : ContentView, INotifyPropertyChanged
 	{
@@ -55,6 +59,7 @@ namespace ShadowRunHelperViewer
                      * Fernkampfwaffe ist ein grid bestehend aus think left, thing rigth, einem custom mittleteil und einem contentpresenter für extended entrys
                      */
                     Items.Root = new TableRoot() { section };
+                    Items.Margin = new Thickness(0, Device.OnPlatform(-35, -35, -40), 0, 0);
                     foreach (var item in Controller.GetElements())
                     {
                         var content = DT.CreateContent();
@@ -72,11 +77,10 @@ namespace ShadowRunHelperViewer
                             break;
                         }
                         vc.BindingContext = item;
-                        vc.Tapped += Item_Tapped;
+                        vc.Tapped += ItemCell_Tapped;
                         section.Add(vc);
                     }
                 }
-
                 Resources.TryGetValue(key+"_H", out CustomTemplate);
                 if (CustomTemplate is ControlTemplate HL)
                 {
@@ -93,8 +97,7 @@ namespace ShadowRunHelperViewer
             }
         }
 
-
-        private void Item_Tapped(object sender, EventArgs e)
+        private void ItemCell_Tapped(object sender, EventArgs e)
         {
             if (sender is ViewCell vc)
             {
@@ -120,11 +123,6 @@ namespace ShadowRunHelperViewer
                 }
             }
         }
-
-        private void V_Tapped1(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
 
         public CategoryOption Setting { get; private set; }
@@ -137,18 +135,25 @@ namespace ShadowRunHelperViewer
             BindingContextChanged += GController_BindingContextChanged;
         }
 
-        async void Items_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem is Thing t)
-            {
-                await PopupNavigation.Instance.PushAsync(new DetailsPage(t, false));
-                //Items.SelectedItem = null;
-            }
-        }
-
         private void Add(object sender, EventArgs e)
         {
             MyChar.Add(Controller.eDataTyp);
+        }
+
+        async void Thing_Edit(object sender, EventArgs e)
+        {
+            if (sender is BindableObject b && b.BindingContext is Thing t)
+            {
+                await PopupNavigation.Instance.PushAsync(new DetailsPage(t, true));
+            }
+        }
+
+        private void Thing_Delete(object sender, EventArgs e)
+        {
+            if (sender is BindableObject b && b.BindingContext is Thing t)
+            {
+                MyChar.Remove(t);
+            }
         }
 
         (string, Action)[] MenuItems = new (string, Action)[] {
@@ -184,31 +189,5 @@ namespace ShadowRunHelperViewer
         {
             MenuItems.FirstOrDefault(x => x.Item1 == item).Item2?.Invoke();
         }
-
-
-        private void Add_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Delete_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        async void Edit_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                if (sender is BindableObject v && v.BindingContext is Thing t)
-                {
-                    await PopupNavigation.Instance.PushAsync(new DetailsPage(t, true));
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
     }
-
 }
