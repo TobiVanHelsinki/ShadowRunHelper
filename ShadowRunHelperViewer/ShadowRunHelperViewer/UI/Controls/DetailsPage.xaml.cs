@@ -121,12 +121,34 @@ namespace ShadowRunHelperViewer
                     // ####################
                     Content = CalcPropGrid;
                 }
-                else
+                else if(item.Name == nameof(Thing.Notiz))
+                {
+                    if (Editable)
+                    {
+                        Content = new Editor
+                        {
+                            Keyboard = Keyboard.Text,
+                            AutoSize = EditorAutoSizeOption.TextChanges,
+                            IsSpellCheckEnabled = true,
+                            IsTextPredictionEnabled = true,
+                        };
+                        //Keyboard.Create(Keyboard.Text | KeyboardFlags.Suggestions | KeyboardFlags.Spellcheck);
+                        Content.SetBinding(Editor.TextProperty, new Binding(item.Name));
+                    }
+                    else
+                    {
+                        var InnerContent = new Label { VerticalOptions = LayoutOptions.Center };
+                        InnerContent.SetBinding(Label.TextProperty, new Binding(item.Name));
+                        Content = new Frame() {Content = InnerContent, BorderColor = Color.Default };
+                    }
+                }
+                else 
                 {
                     if (Editable)
                     {
                         Content = new Entry
-                        {
+                        { 
+                            Keyboard = item.PropertyType == typeof(int) || item.PropertyType == typeof(double) ? Keyboard.Numeric : Keyboard.Text
                         };
                         Content.SetBinding(Entry.TextProperty, new Binding(item.Name));
                     }
@@ -134,7 +156,7 @@ namespace ShadowRunHelperViewer
                     {
                         var InnerContent = new Label { VerticalOptions = LayoutOptions.Center };
                         InnerContent.SetBinding(Label.TextProperty, new Binding(item.Name));
-                        Content = new Frame() {Content = InnerContent, BorderColor = Color.Default };
+                        Content = new Frame() { Content = InnerContent, BorderColor = Color.Default };
                     }
                 }
                 Grid.SetRow(Content, RowCounter);

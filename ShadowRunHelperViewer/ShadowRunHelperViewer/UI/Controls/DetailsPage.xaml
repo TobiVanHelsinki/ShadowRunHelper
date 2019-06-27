@@ -43,10 +43,7 @@
                 <StackLayout x:Name="MainContent">
                 </StackLayout>
             </ScrollView>
-            <StackLayout Orientation="Horizontal" Grid.Row="1" Margin="0,5,0,0">
-                <Button Text="Close" HorizontalOptions="CenterAndExpand" Padding="5" Clicked="Close_Clicked"/>
-                <Button Text="Edit" HorizontalOptions="CenterAndExpand" Padding="5" Clicked="Edit_Clicked"/>
-            </StackLayout>
+            <Button Text="Close" HorizontalOptions="CenterAndExpand" Grid.Row="1" Margin="0,5,0,0" Padding="5" Clicked="Close_Clicked"/>
         </Grid>
     </Frame>
 </pages:PopupPage>
