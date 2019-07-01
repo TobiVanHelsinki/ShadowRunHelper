@@ -25,7 +25,6 @@
                             <Label Text="{x:Binding Settings.FOLDERMODE_PATH, Mode=OneWay}"/>
                         </StackLayout>
                     </ViewCell>
-                    <SwitchCell Text="UI_Optionen_Intern_Sync" On="{x:Binding Settings.INTERN_SYNC}"/>
                     <SwitchCell Text="UI_Optionen_BACKUP_VERSIONING" On="{x:Binding Settings.BACKUP_VERSIONING}"/>
                 </TableSection>
                 <TableSection Title="UI_Optionen_Group_Other">

@@ -171,7 +171,10 @@ namespace ShadowRunHelper
                 catch (Exception ex)
                 {
                     TAPPLICATION.Debugging.TraceException(ex);
-                    SharedSettingsModel.Instance.FOLDERMODE = false;
+                    if (!await SharedIO.CurrentIO.HasAccess(new DirectoryInfo(SharedSettingsModel.I.FOLDERMODE_PATH)))
+                    {
+                        SharedSettingsModel.Instance.FOLDERMODE = false;
+                    }
                     return;
                 }
             }
