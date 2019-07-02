@@ -12,12 +12,13 @@
 
   <ItemGroup>
     <PackageReference Include="AiForms.Layouts" Version="1.1.0" />
+    <PackageReference Include="dotMorten.Xamarin.Forms.AutoSuggestBox" Version="0.7.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.6.0-preview4.19212.13" />
     <PackageReference Include="PCLStorage" Version="1.0.2" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
     <PackageReference Include="Xam.Plugin.PopupMenu" Version="1.1.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
   </ItemGroup>
 
   <ItemGroup>

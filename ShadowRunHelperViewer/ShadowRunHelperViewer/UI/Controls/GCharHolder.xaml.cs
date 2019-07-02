@@ -1,5 +1,7 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using dotMorten.Xamarin.Forms;
+using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
+using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
@@ -15,9 +17,9 @@ namespace ShadowRunHelperViewer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GCharHolder : ContentView, INotifyPropertyChanged
-	{
+    {
         #region NotifyPropertyChanged
-		public new event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -98,7 +100,7 @@ namespace ShadowRunHelperViewer
                     }
                     b.Clicked += B_CTRL_Clicked;
                 }
-                foreach ((var name, var template, var layout) in new(string, DataTemplate, StackLayout)[] {
+                foreach ((var name, var template, var layout) in new (string, DataTemplate, StackLayout)[] {
                     ("Favorites", CharFavs, s5),
                     ("Notes", CharNotes, s5),
                     ("Person", CharPerson, s4) })
@@ -131,14 +133,14 @@ namespace ShadowRunHelperViewer
                 MenuOpen = false;
             }
         }
-       
+
         private void B_CTRL_Clicked(object sender, EventArgs e)
         {
             if (sender is Button b && b.BindingContext is ThingDefs type)
             {
                 HighlightButton(b);
                 var gCTRL = new GController(MyChar);
-                var CTRL = typeof(CharHolder).GetProperties().FirstOrDefault(x=>x.Name == "CTRL" + type);
+                var CTRL = typeof(CharHolder).GetProperties().FirstOrDefault(x => x.Name == "CTRL" + type);
                 if (CTRL != null)
                 {
                     gCTRL.SetBinding(BindingContextProperty, new Binding($"{nameof(MyChar)}.{CTRL.Name}"));
@@ -155,7 +157,7 @@ namespace ShadowRunHelperViewer
                 }
             }
         }
-     
+
         private void HighlightButton(Button myBtn)
         {
             foreach (var item in Buttons)
@@ -231,7 +233,7 @@ namespace ShadowRunHelperViewer
             }
             else
             {
-                if (ContentPanel.Content != null )
+                if (ContentPanel.Content != null)
                 {
                     MenuOpen = false;
                 }
@@ -293,14 +295,62 @@ namespace ShadowRunHelperViewer
 
         #endregion
         #region Search Stuff
-        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        private void AutoSuggestBox_TextChanged(object sender, dotMorten.Xamarin.Forms.AutoSuggestBoxTextChangedEventArgs e)
         {
+            switch (e.Reason)
+            {
+                case AutoSuggestionBoxTextChangeReason.UserInput:
+                    if (sender is AutoSuggestBox asb)
+                    {
+                        asb.ItemsSource = MyChar.ThingList.Where(x => MyChar.Settings.CategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where(x => x.SimilaritiesTo(asb.Text) > 0).OrderByDescending(x => x.SimilaritiesTo(asb.Text)).ToList();
+                    }
+                    break;
+                case AutoSuggestionBoxTextChangeReason.ProgrammaticChange:
+                    break;
+                case AutoSuggestionBoxTextChangeReason.SuggestionChosen:
+                    break;
+                default:
+                    break;
+            }
+        }
+        IEnumerable<CategoryOption> LokalCategoryOptions => Model.MainObject.Settings.CategoryOptions;
 
+        private void AutoSuggestBox_SuggestionChosen(object sender, dotMorten.Xamarin.Forms.AutoSuggestBoxSuggestionChosenEventArgs e)
+        {
+            if (sender is AutoSuggestBox asb)
+            {
+                asb.Text = e.SelectedItem.ToString();
+            }
         }
 
-        private void Search_SearchButtonPressed(object sender, EventArgs e)
+        async void AutoSuggestBox_QuerySubmitted(object sender, dotMorten.Xamarin.Forms.AutoSuggestBoxQuerySubmittedEventArgs e)
         {
+            if (sender is AutoSuggestBox asb)
+            {
+                try
+                {
+                    if (e.ChosenSuggestion != null)
+                    {
+                        Model.PendingScrollEntry = (e.ChosenSuggestion as Thing);
+                    }
+                    else
+                    {
+                        Model.PendingScrollEntry = (asb.ItemsSource as IOrderedEnumerable<Thing>).FirstOrDefault();
 
+                        Model.PendingScrollEntry = Model.MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).OrderByDescending(x => x.SimilaritiesTo(asb.Text)).FirstOrDefault();
+                    }
+                    asb.ItemsSource = null;
+                    if (Model.PendingScrollEntry == null)
+                    {
+                        return;
+                    }
+                }
+                catch { return; }
+                asb.Text = "";
+                asb.IsSuggestionListOpen = false;
+            }
+            await PopupNavigation.Instance.PushAsync(new DetailsPage(Model.PendingScrollEntry, false));
+            Model.PendingScrollEntry = null;
         }
         #endregion
     }

@@ -102,7 +102,7 @@ namespace ShadowRunHelperViewer
                     CalcPropGrid.Children.Add(PlusButton);
                     // ####################
                     var ConnectedValues = new CollectionView() { // ist beta und löst beim disposen einen fehler aus :/
-                        ItemsLayout = ListItemsLayout.HorizontalList,
+                        //ItemsLayout = ListItemsLayout.HorizontalList,
                         ItemTemplate = Resources["ConnectedTemplate"] as DataTemplate,
                     }; 
                     ConnectedValues.SetBinding(ItemsView.ItemsSourceProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.Connected)));

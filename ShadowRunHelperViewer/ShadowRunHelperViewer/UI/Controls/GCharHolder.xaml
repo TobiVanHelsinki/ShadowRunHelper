@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              xmlns:model="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
+             xmlns:forms="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
              x:Class="ShadowRunHelperViewer.GCharHolder"
              >
     <ContentView.Resources>
@@ -116,8 +117,8 @@
                 </Grid.ColumnDefinitions>
                 <Button Text="&#xf0c7;" Style="{StaticResource IconButton_ConstWidth}" Clicked="Save" Grid.Column="0"/>
                 <Button Text="&#xf141;" Style="{StaticResource IconButton_ConstWidth}" Clicked="MoreMenu" Grid.Column="1"/>
-                <SearchBar Placeholder="Search Name or Type" VerticalOptions="Center" HorizontalOptions="Fill" Grid.Column="2"
-                           TextChanged="Search_TextChanged" SearchButtonPressed="Search_SearchButtonPressed"/>
+                <forms:AutoSuggestBox PlaceholderText="Search Name or Type" HorizontalOptions="Fill" Grid.Column="2"
+                    TextChanged="AutoSuggestBox_TextChanged" SuggestionChosen="AutoSuggestBox_SuggestionChosen" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
                 <Button Text="&#xf0c9;" Style="{StaticResource IconButton_ConstWidth}" Clicked="Toggle" Grid.Column="3" x:Name="MenuToggleButton"/>
             </Grid>
             <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="Transparent" 
