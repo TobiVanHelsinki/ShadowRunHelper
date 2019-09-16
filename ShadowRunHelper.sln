@@ -11,13 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAPPLICATION_UWP", "..\TLIB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedCodeTest", "SharedCodeTest\SharedCodeTest.csproj", "{CCFE803C-EB13-4792-BCB4-4DC6E5723811}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelperViewer.Android", "ShadowRunHelperViewer\ShadowRunHelperViewer.Android\ShadowRunHelperViewer.Android.csproj", "{829DDA0F-3EE7-477C-B9CD-3352F3217830}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelperViewer.Android", "Xamarin\ShadowRunHelperViewer.Android\ShadowRunHelperViewer.Android.csproj", "{829DDA0F-3EE7-477C-B9CD-3352F3217830}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelperViewer.iOS", "ShadowRunHelperViewer\ShadowRunHelperViewer.iOS\ShadowRunHelperViewer.iOS.csproj", "{C07F9F47-1194-496A-998A-6D6EBA5D78A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelperViewer.iOS", "Xamarin\ShadowRunHelperViewer.iOS\ShadowRunHelperViewer.iOS.csproj", "{C07F9F47-1194-496A-998A-6D6EBA5D78A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelperViewer.UWP", "ShadowRunHelperViewer\ShadowRunHelperViewer.UWP\ShadowRunHelperViewer.UWP.csproj", "{98CB95FA-B6B0-45F0-A41D-6177BA0005D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelperViewer.UWP", "Xamarin\ShadowRunHelperViewer.UWP\ShadowRunHelperViewer.UWP.csproj", "{98CB95FA-B6B0-45F0-A41D-6177BA0005D0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShadowRunHelperViewer", "ShadowRunHelperViewer\ShadowRunHelperViewer\ShadowRunHelperViewer.csproj", "{8B57F2D5-375E-4217-8393-52C955CF6195}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShadowRunHelperViewer", "Xamarin\ShadowRunHelperViewer\ShadowRunHelperViewer.csproj", "{8B57F2D5-375E-4217-8393-52C955CF6195}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FeaturesDroid", "FeaturesDroid\FeaturesDroid.shproj", "{C4F891D9-6715-40CB-B466-FA5B3BB0FB0B}"
 EndProject
@@ -38,6 +38,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelperUno.Wasm", "Uno\ShadowRunHelperUno\ShadowRunHelperUno.Wasm\ShadowRunHelperUno.Wasm.csproj", "{1C56E17A-A1DE-4FAA-A1EA-71161C641C0D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xamarin", "Xamarin", "{6B7BE462-FBAF-450E-B3BB-9B1037E9D5A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extern", "Extern", "{0CDDFFD1-A425-4B19-99A3-19F0F46CCFCE}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -857,10 +859,12 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{97D66A85-F340-4678-AE0C-E7E996E748EE} = {0CDDFFD1-A425-4B19-99A3-19F0F46CCFCE}
 		{829DDA0F-3EE7-477C-B9CD-3352F3217830} = {6B7BE462-FBAF-450E-B3BB-9B1037E9D5A4}
 		{C07F9F47-1194-496A-998A-6D6EBA5D78A1} = {6B7BE462-FBAF-450E-B3BB-9B1037E9D5A4}
 		{98CB95FA-B6B0-45F0-A41D-6177BA0005D0} = {6B7BE462-FBAF-450E-B3BB-9B1037E9D5A4}
 		{8B57F2D5-375E-4217-8393-52C955CF6195} = {6B7BE462-FBAF-450E-B3BB-9B1037E9D5A4}
+		{DF73942F-C644-452B-BC66-2CDB584EEFF8} = {0CDDFFD1-A425-4B19-99A3-19F0F46CCFCE}
 		{6279C845-92F8-4333-AB99-3D213163593C} = {88B7CF11-AEF1-4339-8EB5-C4D5F48A2BE9}
 		{24682F60-BAD7-4742-A30E-18239D053478} = {88B7CF11-AEF1-4339-8EB5-C4D5F48A2BE9}
 		{0F14EDAF-5F1B-483C-8EA0-C094473C9D17} = {88B7CF11-AEF1-4339-8EB5-C4D5F48A2BE9}

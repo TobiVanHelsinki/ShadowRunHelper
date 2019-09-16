@@ -9,6 +9,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <local:CharModelStyles/>
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="ControllerIconButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
+                <Setter Property="Padding" Value="5"/>
+            </Style>
             <Style x:Key="HeadLineText" TargetType="Label">
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="LineBreakMode" Value="TailTruncation"/>
@@ -30,10 +33,6 @@
             </Style>
             <Style x:Key="TemplateStack" TargetType="StackLayout">
                 <Setter Property="Orientation" Value="Horizontal"/>
-                <Setter Property="Margin" Value="0"/>
-                <Setter Property="Padding" Value="0"/>
-            </Style>
-            <Style x:Key="Item_Grid" TargetType="Grid">
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
             </Style>
@@ -81,9 +80,12 @@
             <ControlTemplate x:Key="Thing_Buttons" x:DataType="CharModel:Thing">
                 <StackLayout Orientation="Vertical" BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
                     <Button Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Edit" />
-                    <Button Text="&#xf1f8;" Style="{StaticResource IconButton}" HorizontalOptions="FillAndExpand" Clicked="Thing_Delete" />
-                    <Label Text="IsFavorite"/>
-                    <Switch IsToggled="{x:Binding IsFavorite}" WidthRequest="80"/>
+                    <Button Text="&#xf1f8;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Delete" />
+                    <StackLayout Orientation="Horizontal" BackgroundColor="Gray" Opacity="0.75" HorizontalOptions="Center">
+                        <Label Text="&#xf004;" Style="{StaticResource IconLabel}" Margin="5,0,0,0"
+                               VerticalOptions="Center" FontSize="Small" TextColor="FloralWhite"/>
+                        <CheckBox IsChecked="{x:Binding IsFavorite}" Color="FloralWhite" VerticalOptions="Center"/>
+                    </StackLayout>
                 </StackLayout>
             </ControlTemplate>
 
@@ -119,20 +121,24 @@
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="ThingX" x:DataType="CharModel:Thing">
-                <StackLayout Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}"/>
-                    <ContentView ControlTemplate="{StaticResource Thing_Notes}"/>
-                </StackLayout>
+                    <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Column="1"/>
+                </Grid>
             </DataTemplate>
             
             <ControlTemplate x:Key="ItemsBoxes_H">
-                <StackLayout Style="{StaticResource TemplateGrid}" HorizontalOptions="Center">
+                <StackLayout Style="{StaticResource TemplateStack}" HorizontalOptions="Center">
                     <Label Text="Aktiv"/>
                     <Label Text="Besitz"/>
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="ItemsBoxes" x:DataType="CharModel:Item">
-                <StackLayout Style="{StaticResource TemplateGrid}" HorizontalOptions="Center" BindingContext="{TemplateBinding BindingContext}">
+                <StackLayout Style="{StaticResource TemplateStack}" HorizontalOptions="Center" BindingContext="{TemplateBinding BindingContext}">
                     <Switch IsToggled="{x:Binding Aktiv}"/>
                     <Switch IsToggled="{x:Binding Besitz}"/>
                 </StackLayout>
@@ -159,12 +165,7 @@
             </ControlTemplate>
             <DataTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
                 <ViewCell>
-                    <!--<ViewCell.ContextActions>
-                        <MenuItem Text="Add" Clicked="Add_Clicked"/>
-                        <MenuItem Text="Delete" Clicked="Delete_Clicked"/>
-                        <MenuItem Text="Edit" Clicked="Edit_Clicked"/>
-                    </ViewCell.ContextActions>-->
-                    <Grid Style="{StaticResource Item_Grid}">
+                    <Grid Style="{StaticResource TemplateGrid}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -188,17 +189,37 @@
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="FernkampfwaffeX" x:DataType="CharModel:Fernkampfwaffe">
-                <StackLayout Orientation="Horizontal">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}"/>
-                    <ContentView ControlTemplate="{StaticResource Thing_Notes}"/>
-                </StackLayout>
+                    <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <CarouselView Grid.Column="1">
+                        <CarouselView.EmptyView>
+                            <Label Text="It'S empty here"/>
+                        </CarouselView.EmptyView>
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="Hallo Welt"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                </Grid>
             </DataTemplate>
             <ControlTemplate x:Key="Nahkampfwaffe_H">
                 <ContentView ControlTemplate="{StaticResource Fernkampfwaffe_H}"/>
             </ControlTemplate>
             <DataTemplate x:Key="Nahkampfwaffe" x:DataType="CharModel:Nahkampfwaffe">
                 <ViewCell>
-                    <Grid Style="{StaticResource Item_Grid}">
+                    <Grid Style="{StaticResource TemplateGrid}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -234,21 +255,23 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid>
+            <Grid Padding="0,5,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="{StaticResource ButtonSize}"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="{StaticResource ButtonSize}"/>
                 </Grid.ColumnDefinitions>
-                <Button Text="&#xf067;" Style="{StaticResource IconButton}" Clicked="Add" Margin="6" TextColor="Default"/>
+                <Button Text="&#xf067;" Style="{StaticResource ControllerIconButton}" Clicked="Add" TextColor="Default"/>
                 <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium"/>
-                <Button Text="&#xf141;" Style="{StaticResource IconButton}" Clicked="Options" Grid.Column="2" Margin="6" TextColor="Default"/>
+                <Button Text="&#xf141;" Style="{StaticResource ControllerIconButton}" Clicked="Options" Grid.Column="2" TextColor="Default"/>
             </Grid>
             <ContentView Grid.Row="1" x:Name="Items_H" ControlTemplate="{StaticResource Thing_H}"/>
-            <Frame Padding="5,0,5,0" Margin="0" Grid.Row="2" BackgroundColor="OldLace">
-                <TableView x:Name="Items" HasUnevenRows="True" Intent="Data"/>
+            <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray"/>
+            <Frame Padding="4,14,4,0" Margin="0" Grid.Row="3" BackgroundColor="Beige" CornerRadius="0">
+                <TableView x:Name="Items" HasUnevenRows="True" Intent="Data" />
             </Frame>
         </Grid>
     </ContentView.Content>
