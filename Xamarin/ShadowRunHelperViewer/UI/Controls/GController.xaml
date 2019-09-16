@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
+             mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -81,11 +84,15 @@
                 <StackLayout Orientation="Vertical" BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
                     <Button Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Edit" />
                     <Button Text="&#xf1f8;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Delete" />
-                    <StackLayout Orientation="Horizontal" BackgroundColor="Gray" Opacity="0.75" HorizontalOptions="Center">
+                    <Grid BackgroundColor="Gray" Opacity="0.75" HorizontalOptions="Center" VerticalOptions="Start">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
                         <Label Text="&#xf004;" Style="{StaticResource IconLabel}" Margin="5,0,0,0"
                                VerticalOptions="Center" FontSize="Small" TextColor="FloralWhite"/>
-                        <CheckBox IsChecked="{x:Binding IsFavorite}" Color="FloralWhite" VerticalOptions="Center"/>
-                    </StackLayout>
+                        <CheckBox IsChecked="{x:Binding IsFavorite}" Color="FloralWhite" VerticalOptions="Center" Grid.Column="1"/>
+                    </Grid>
                 </StackLayout>
             </ControlTemplate>
 
@@ -138,10 +145,14 @@
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="ItemsBoxes" x:DataType="CharModel:Item">
-                <StackLayout Style="{StaticResource TemplateStack}" HorizontalOptions="Center" BindingContext="{TemplateBinding BindingContext}">
-                    <Switch IsToggled="{x:Binding Aktiv}"/>
-                    <Switch IsToggled="{x:Binding Besitz}"/>
-                </StackLayout>
+                <Grid Style="{StaticResource TemplateGrid}" HorizontalOptions="Center" BindingContext="{TemplateBinding BindingContext}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox IsChecked="{x:Binding Aktiv}" VerticalOptions="Center" HorizontalOptions="Start" Color="Black"/>
+                    <CheckBox IsChecked="{x:Binding Besitz}" VerticalOptions="Center" HorizontalOptions="Start" Color="Black" Grid.Column="1"/>
+                </Grid>
             </ControlTemplate>
 
             <ControlTemplate x:Key="Fernkampfwaffe_H">
@@ -198,20 +209,24 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ContentView ControlTemplate="{StaticResource Thing_Buttons}"/>
-                    <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.ColumnSpan="2"/>
-                    <CarouselView Grid.Column="1">
-                        <CarouselView.EmptyView>
-                            <Label Text="It'S empty here"/>
-                        </CarouselView.EmptyView>
-                        <CarouselView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Label Text="Hallo Welt"/>
-                                </ViewCell>
-                            </DataTemplate>
-                        </CarouselView.ItemTemplate>
-                    </CarouselView>
+                    <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                    <ScrollView Orientation="Horizontal" Grid.RowSpan="2" Grid.Column="1">
+                        <StackLayout Orientation="Horizontal" x:Name="OverFlowContens" >
+                            <StackLayout Orientation="Vertical">
+                                <Label>Name</Label>
+                                <Label>Wert</Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical">
+                                <Label>Name</Label>
+                                <Label>Wert</Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical">
+                                <Label>Name</Label>
+                                <Label>Wert</Label>
+                            </StackLayout>
+                        </StackLayout>
+                  </ScrollView>
                 </Grid>
             </DataTemplate>
             <ControlTemplate x:Key="Nahkampfwaffe_H">
@@ -258,7 +273,10 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Padding="0,5,0,0">
+            <Frame Padding="4,0,4,0" Margin="0" Grid.Row="3" BackgroundColor="Beige" CornerRadius="0">
+                <TableView x:Name="Items" HasUnevenRows="True" Intent="Data" />
+            </Frame>
+            <Grid Padding="0,5,0,0" BackgroundColor="White">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="{StaticResource ButtonSize}"/>
                     <ColumnDefinition Width="*"/>
@@ -268,11 +286,8 @@
                 <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium"/>
                 <Button Text="&#xf141;" Style="{StaticResource ControllerIconButton}" Clicked="Options" Grid.Column="2" TextColor="Default"/>
             </Grid>
-            <ContentView Grid.Row="1" x:Name="Items_H" ControlTemplate="{StaticResource Thing_H}"/>
-            <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray"/>
-            <Frame Padding="4,14,4,0" Margin="0" Grid.Row="3" BackgroundColor="Beige" CornerRadius="0">
-                <TableView x:Name="Items" HasUnevenRows="True" Intent="Data" />
-            </Frame>
+            <ContentView Grid.Row="1" x:Name="Items_H" ControlTemplate="{StaticResource Thing_H}"  BackgroundColor="White"/>
+            <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray"  BackgroundColor="White"/>
         </Grid>
     </ContentView.Content>
 </ContentView>

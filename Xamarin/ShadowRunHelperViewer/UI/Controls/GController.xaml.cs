@@ -4,7 +4,6 @@ using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
@@ -15,10 +14,6 @@ using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer
 {
-    public class MyClass : TableSectionBase
-    {
-
-    }
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GController : ContentView, INotifyPropertyChanged
 	{
