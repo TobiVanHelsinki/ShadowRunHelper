@@ -23,8 +23,8 @@ namespace ShadowRunHelper
         [Setting("SETTINGS_LAST_APP_VERSION", "", SaveType.Local)]
         public string LAST_APP_VERSION { get => Get(); set => Set(value); }
 
-        [Setting("SETTINGS_LAST_PAGE", ProjectPages.Char, SaveType.Local, typeof(int))]
-        public ProjectPages LAST_PAGE { get => (ProjectPages)Get(); set => Set(value); }
+        [Setting("SETTINGS_LAST_PAGE", ProjectPages.Char, SaveType.Local)]
+        public ProjectPages LAST_PAGE { get => Get(); set => Set(value); }
 
         [Setting("SETTINGS_FORCE_LOAD_CHAR_ON_START", false, SaveType.Local)]
         public bool FORCE_LOAD_CHAR_ON_START { get => Get(); set => Set(value); }
