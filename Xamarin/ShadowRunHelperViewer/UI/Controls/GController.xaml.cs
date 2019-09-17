@@ -45,11 +45,7 @@ namespace ShadowRunHelperViewer
                 Controller.RegisterEventAtData(SmthChanged);
                 var key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
                 CreateItems(key);
-                Resources.TryGetValue(key + "_H", out var CustomTemplate);
-                if (CustomTemplate is ControlTemplate HL)
-                {
-                    Items_H.ControlTemplate = HL;
-                }
+                CreateHeadline(key);
 
                 Setting = MyChar.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
                 IsVisible = Setting.Visibility;
@@ -61,6 +57,24 @@ namespace ShadowRunHelperViewer
             }
         }
 
+        /// <summary>
+        /// Searches for a Resource with a mathing name and try to create this as headline
+        /// </summary>
+        /// <param name="key"></param>
+        private void CreateHeadline(string key)
+        {
+            Resources.TryGetValue(key + "_H", out var CustomTemplate);
+            if (CustomTemplate is ControlTemplate HL)
+            {
+                Items_H.ControlTemplate = HL;
+            }
+        }
+        /// <summary>
+        /// Searches for a Resource with a mathing name and try to create all entries with that resource as template
+        /// Fallback: ThingTempalte
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         private object CreateItems(string key)
         {
             Resources.TryGetValue(key, out object CustomTemplate);

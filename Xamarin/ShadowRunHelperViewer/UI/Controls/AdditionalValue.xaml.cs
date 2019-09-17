@@ -32,5 +32,10 @@ namespace ShadowRunHelperViewer.UI.Controls
             ValueDisplay.SetBinding(Label.TextProperty, ValuePath);
             NameDisplay.Text = Text;
         }
+
+        private void Thing_Edit(object sender, EventArgs e)
+        {
+
+        }
     }
 }

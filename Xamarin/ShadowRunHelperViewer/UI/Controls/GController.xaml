@@ -6,6 +6,7 @@
              xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
+             xmlns:layouts="clr-namespace:AiForms.Layouts;assembly=AiForms.Layouts"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Resources>
@@ -97,7 +98,7 @@
                 </StackLayout>
             </ControlTemplate>
 
-            <ControlTemplate x:Key="Thing_H">
+            <!--<ControlTemplate x:Key="Thing_H">
                 <Grid Style="{StaticResource TemplateGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -107,7 +108,7 @@
                     <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name_H}"/>
                     <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value_H}"/>
                 </Grid>
-            </ControlTemplate>
+            </ControlTemplate>-->
             <DataTemplate x:Key="Thing" x:DataType="CharModel:Thing">
                 <ViewCell>
                     <Grid Style="{StaticResource TemplateGrid}">
@@ -151,8 +152,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <CheckBox IsChecked="{x:Binding Aktiv}" VerticalOptions="Center" HorizontalOptions="Start" Color="Black"/>
-                    <CheckBox IsChecked="{x:Binding Besitz}" VerticalOptions="Center" HorizontalOptions="Start" Color="Black" Grid.Column="1"/>
+                    <CheckBox IsChecked="{x:Binding Aktiv}" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent"/>
+                    <CheckBox IsChecked="{x:Binding Besitz}" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Grid.Column="1"/>
                 </Grid>
             </ControlTemplate>
 
@@ -164,15 +165,18 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="85"/>
                         <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
-                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="2"/>
-                    <Label Text="Typ" Grid.Column="3" Style="{StaticResource HeadLineText}"/>
-                    <Label Text="DK" Grid.Column="4" Style="{StaticResource HeadLineText}"/>
+                    <StackLayout Orientation="Horizontal" Grid.Column="2">
+                        <ContentView ControlTemplate="{StaticResource Thing_Value_H}"/>
+                        <Label Text="Typ" Style="{StaticResource HeadLineText}"/>
+                        <Label Text="[" Style="{StaticResource HeadLineText}"/>
+                        <Label Text="Praezision" Style="{StaticResource HeadLineText}"/>
+                        <Label Text="]" Style="{StaticResource HeadLineText}"/>
+                        <Label Text="DK" Style="{StaticResource HeadLineText}"/>
+                    </StackLayout>
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
@@ -184,19 +188,22 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="85"/>
-                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                         <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-                        <Label Text="{x:Binding SchadenTyp}" Grid.Column="3"/>
-                        <Label Text="{x:Binding DKCalced}" Grid.Column="4"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
-                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
+                        <StackLayout Orientation="Horizontal" Grid.Column="2">
+                            <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                            <Label Text="{x:Binding SchadenTyp}" Grid.Column="3"/>
+                            <Label Text="["/>
+                            <Label Text="{x:Binding Praezision}"/>
+                            <Label Text="]"/>
+                            <Label Text="{x:Binding DKCalced}" Grid.Column="4"/>
+                        </StackLayout>
+                        <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
+                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
                     </Grid>
                 </ViewCell>
             </DataTemplate>
@@ -212,9 +219,19 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Orientation="Horizontal" Grid.RowSpan="2" Grid.Column="1">
-                        <StackLayout Orientation="Horizontal" x:Name="OverFlowContens">
-                            <controls:AdditionalValue Text="DK C" ValuePath="DKCalced"/>
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Always" Grid.Column="1">
+                        <StackLayout Orientation="Horizontal">
+                            <controls:AdditionalValue Text="Anzahl" ValuePath="Anzahl"/>
+                            <controls:AdditionalValue Text="Modi" ValuePath="Modi"/>
+                            <controls:AdditionalValue Text="RK" ValuePath="RK"/>
+                            <controls:AdditionalValue Text="Anzahl" ValuePath="Anzahl"/>
+                            <controls:AdditionalValue Text="Modi" ValuePath="Modi"/>
+                            <controls:AdditionalValue Text="RK" ValuePath="RK"/>
+                            <controls:AdditionalValue Text="Anzahl" ValuePath="Anzahl"/>
+                            <controls:AdditionalValue Text="Modi" ValuePath="Modi"/>
+                            <controls:AdditionalValue Text="RK" ValuePath="RK"/>
+                            <controls:AdditionalValue Text="Anzahl" ValuePath="Anzahl"/>
+                            <controls:AdditionalValue Text="Modi" ValuePath="Modi"/>
                             <controls:AdditionalValue Text="RK" ValuePath="RK"/>
                         </StackLayout>
                   </ScrollView>
@@ -278,7 +295,7 @@
                 <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium"/>
                 <Button Text="&#xf141;" Style="{StaticResource ControllerIconButton}" Clicked="Options" Grid.Column="2" TextColor="Default"/>
             </Grid>
-            <ContentView Grid.Row="1" x:Name="Items_H" ControlTemplate="{StaticResource Thing_H}"  BackgroundColor="White"/>
+            <ContentView Grid.Row="1" x:Name="Items_H" BackgroundColor="White"/>
             <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray"  BackgroundColor="White"/>
         </Grid>
     </ContentView.Content>

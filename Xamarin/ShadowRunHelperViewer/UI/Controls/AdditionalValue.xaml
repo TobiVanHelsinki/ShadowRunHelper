@@ -3,12 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:ShadowRunHelperViewer"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.Controls.AdditionalValue">
-  <ContentView.Content>
-      <StackLayout>
-            <Label x:Name="NameDisplay" />
-            <Label x:Name="ValueDisplay"/>
-      </StackLayout>
-  </ContentView.Content>
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:CharModelStyles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
+            <BoxView Color="LightGray" WidthRequest="1" Margin="0,0,5,0"/>
+            <StackLayout Margin="0,0,5,0">
+                <Label x:Name="NameDisplay" />
+                <Label x:Name="ValueDisplay"/>
+                <!--<Button IsEnabled="False" Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" VerticalOptions="Center" Clicked="Thing_Edit" />-->
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
 </ContentView>
