@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using TLIB;
 using Windows.ApplicationModel.UserActivities;
+using Windows.UI.Core;
 
 namespace ShadowRunHelper
 {
@@ -25,7 +26,7 @@ namespace ShadowRunHelper
             await userActivity.SaveAsync();
 
             CurrentCharActivity?.Dispose();
-            CurrentCharActivity = userActivity.CreateSession();
+            TAPPLICATION.PlatformHelper.ExecuteOnUIThreadAsync(() => CurrentCharActivity = userActivity.CreateSession());
         }
 
         public void StopCurrentCharActivity()

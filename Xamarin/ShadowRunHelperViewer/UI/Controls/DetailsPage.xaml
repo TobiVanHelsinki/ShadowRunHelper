@@ -6,6 +6,7 @@
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:local="clr-namespace:ShadowRunHelperViewer"
     x:Class="ShadowRunHelperViewer.DetailsPage"
+    SizeChanged="PopupPage_SizeChanged"
     >
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
@@ -32,18 +33,57 @@
             </StackLayout>
         </DataTemplate>
     </pages:PopupPage.Resources>
-    <Frame Padding="10" Margin="25" BackgroundColor="FloralWhite" HorizontalOptions="Center" VerticalOptions="Center"
+    <Frame x:Name="MainFrame" Padding="10" Margin="25" BackgroundColor="Beige" HorizontalOptions="Center" VerticalOptions="Center"
            CornerRadius="10">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <ScrollView>
-                <StackLayout x:Name="MainContent">
+            <Label x:Name="Headline" FontSize="Title" LineBreakMode="MiddleTruncation" MaxLines="1"/>
+            <ScrollView Grid.Row="2" x:Name="MainContent">
+                <StackLayout>
+                    <Grid Margin="0,5,10,0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Bezeichner" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Entry Text="{x:Binding Bezeichner}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Label Text="Wert" Grid.Row="0" Grid.Column="2"/>
+                        <Entry Text="{x:Binding Wert}" Grid.Row="1" Grid.Column="2"/>
+                        <Label Text="Typ" Grid.Row="2" Grid.Column="0"/>
+                        <Entry Text="{x:Binding Typ}" Grid.Row="3" Grid.Column="0"/>
+                        <Label Text="Zusatz" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+                        <Entry Text="{x:Binding Zusatz}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    </Grid>
+                    <Grid x:Name="NumberContent">
+                        <Grid.RowDefinitions>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    <StackLayout x:Name="CalcContent"/>
+                    <StackLayout x:Name="OtherContent"/>
+                    <StackLayout>
+                        <Label Text="Notiz"/>
+                        <Editor Text="{x:Binding Notiz}" Keyboard="Text" AutoSize="TextChanges" IsSpellCheckEnabled = "True" IsTextPredictionEnabled="True"/>
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
-            <Button Text="Close" HorizontalOptions="CenterAndExpand" Grid.Row="1" Margin="0,5,0,0" Padding="5" Clicked="Close_Clicked"/>
+            <Button Text="Close" HorizontalOptions="CenterAndExpand" Grid.Row="4" Margin="0,5,0,0" Padding="5" Clicked="Close_Clicked"/>
         </Grid>
     </Frame>
 </pages:PopupPage>

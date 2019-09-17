@@ -12,11 +12,9 @@ namespace ShadowRunHelperViewer
     public partial class DetailsPage : Rg.Plugins.Popup.Pages.PopupPage
     {
         public Thing MyThing { get; set; }
-        public bool Editable { get; set; }
-        public DetailsPage(Thing thing, bool editable)
+        public DetailsPage(Thing thing)
         {
             MyThing = thing;
-            Editable = editable;
             InitializeComponent();
             MainContent.BindingContext = MyThing;
         }
@@ -33,6 +31,7 @@ namespace ShadowRunHelperViewer
             }
             try
             {
+                Headline.Text = MyThing.ThingType.ThingDefToString(false);
                 CreateItems();
             }
             catch (Exception ex)
@@ -46,25 +45,25 @@ namespace ShadowRunHelperViewer
 
         void CreateItems()
         {
-            MainContent.Children.Clear();
-            var RowCounter = 0;
-            var Ignore = new string[] { nameof(Thing.FavoriteIndex), nameof(Thing.Order), nameof(Thing.ThingType) };
-            foreach (var item in Thing.GetProperties(MyThing).Reverse())
+            var NumberCounter = 0;
+            foreach (var item in Thing.GetProperties(MyThing).Reverse().Where(x => !(
+                                                                                    x.Name == nameof(Thing.IsFavorite) ||
+                                                                                    x.Name == nameof(Thing.Order) ||
+                                                                                    x.Name == nameof(Thing.ThingType) ||
+                                                                                    x.Name == nameof(Thing.Bezeichner) ||
+                                                                                    x.Name == nameof(Thing.Wert) ||
+                                                                                    x.Name == nameof(Thing.Typ) ||
+                                                                                    x.Name == nameof(Thing.Zusatz) ||
+                                                                                    x.Name == nameof(Thing.Notiz) ||
+                                                                                    x.Name == nameof(Thing.FavoriteIndex) ||
+                                                                                    x.Name == nameof(Thing.WertCalced) ||
+                                                                                    x.Name == nameof(Handlung.GegenCalced) ||
+                                                                                    x.Name == nameof(Handlung.GrenzeCalced) ||
+                                                                                    x.Name == nameof(Item.Aktiv) ||
+                                                                                    x.Name == nameof(Item.Besitz) 
+                                                                                    )))
             {
-                if (Ignore.Contains(item.Name))
-                {
-                    continue;
-                }
-                var Name = new Label
-                {
-                    Text = CustomManager.GetString("Model_" + item.DeclaringType.Name + "_" + item.Name + "/Text") + ": ",
-                };
-
-                System.Diagnostics.Debug.WriteLine(item.Name + " - " + Name.Text);
-                Grid.SetRow(Name, RowCounter);
-                Grid.SetColumn(Name, 2);
-                RowCounter++;
-
+                var Name = CreateNameLabel(item);
                 View Content;
                 if (item.PropertyType == typeof(bool) || item.PropertyType == typeof(bool?))
                 {
@@ -73,7 +72,6 @@ namespace ShadowRunHelperViewer
                 }
                 else if (item.PropertyType == typeof(CharCalcProperty))
                 {
-                    Name.Text = "Wert2";
                     var CalcPropGrid = new Grid();
                     CalcPropGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
                     CalcPropGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
@@ -81,16 +79,8 @@ namespace ShadowRunHelperViewer
                     CalcPropGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
                     CalcPropGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
                     View BaseVal;
-                    if (Editable)
-                    {
-                        BaseVal = new Entry();
-                        BaseVal.SetBinding(Entry.TextProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.BaseValue)));
-                    }
-                    else
-                    {
-                        BaseVal = new Label { VerticalOptions = LayoutOptions.Center };
-                        BaseVal.SetBinding(Label.TextProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.BaseValue)));
-                    }
+                    BaseVal = new Entry();
+                    BaseVal.SetBinding(Entry.TextProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.BaseValue)));
                     Grid.SetColumn(BaseVal, 0);
                     BaseVal.VerticalOptions = LayoutOptions.Center;
                     CalcPropGrid.Children.Add(BaseVal);
@@ -101,10 +91,11 @@ namespace ShadowRunHelperViewer
                     PlusButton.VerticalOptions = LayoutOptions.Center;
                     CalcPropGrid.Children.Add(PlusButton);
                     // ####################
-                    var ConnectedValues = new CollectionView() { // ist beta und löst beim disposen einen fehler aus :/
+                    var ConnectedValues = new CollectionView()
+                    { // ist beta und löst beim disposen einen fehler aus 
                         //ItemsLayout = ListItemsLayout.HorizontalList,
                         ItemTemplate = Resources["ConnectedTemplate"] as DataTemplate,
-                    }; 
+                    };
                     ConnectedValues.SetBinding(ItemsView.ItemsSourceProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.Connected)));
                     ConnectedValues.VerticalOptions = LayoutOptions.Center;
                     ConnectedValues.HeightRequest = 50;
@@ -121,54 +112,62 @@ namespace ShadowRunHelperViewer
                     // ####################
                     Content = CalcPropGrid;
                 }
-                else if(item.Name == nameof(Thing.Notiz))
+                else
                 {
-                    if (Editable)
+                    Content = new Entry
                     {
-                        Content = new Editor
-                        {
-                            Keyboard = Keyboard.Text,
-                            AutoSize = EditorAutoSizeOption.TextChanges,
-                            IsSpellCheckEnabled = true,
-                            IsTextPredictionEnabled = true,
-                        };
-                        //Keyboard.Create(Keyboard.Text | KeyboardFlags.Suggestions | KeyboardFlags.Spellcheck);
-                        Content.SetBinding(Editor.TextProperty, new Binding(item.Name));
-                    }
-                    else
-                    {
-                        var InnerContent = new Label { VerticalOptions = LayoutOptions.Center };
-                        InnerContent.SetBinding(Label.TextProperty, new Binding(item.Name));
-                        Content = new Frame() {Content = InnerContent, BorderColor = Color.Default };
-                    }
+                        Keyboard = item.PropertyType == typeof(int) || item.PropertyType == typeof(double) ? Keyboard.Numeric : Keyboard.Text
+                    };
+                    Content.SetBinding(Entry.TextProperty, new Binding(item.Name));
                 }
-                else 
+
+                if (item.PropertyType == typeof(double) || item.PropertyType == typeof(double?))
                 {
-                    if (Editable)
+                    if (NumberCounter % 2 == 0)
                     {
-                        Content = new Entry
-                        { 
-                            Keyboard = item.PropertyType == typeof(int) || item.PropertyType == typeof(double) ? Keyboard.Numeric : Keyboard.Text
-                        };
-                        Content.SetBinding(Entry.TextProperty, new Binding(item.Name));
+                        NumberContent.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+                        NumberContent.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
                     }
-                    else
-                    {
-                        var InnerContent = new Label { VerticalOptions = LayoutOptions.Center };
-                        InnerContent.SetBinding(Label.TextProperty, new Binding(item.Name));
-                        Content = new Frame() { Content = InnerContent, BorderColor = Color.Default };
-                    }
+
+                    Grid.SetRow(Name, NumberCounter / 2 * 2);
+                    Grid.SetRow(Content, NumberCounter / 2 * 2 + 1);
+
+                    Grid.SetColumn(Name, NumberCounter % 2);
+                    Grid.SetColumn(Content, NumberCounter % 2);
+                    NumberCounter++;
+                    NumberContent.Children.Add(Name);
+                    NumberContent.Children.Add(Content);
                 }
-                Grid.SetRow(Content, RowCounter);
-                Grid.SetColumn(Content, 2);
-                if (Name.Text == null || Name.Text == ": ")
+                else if (item.PropertyType == typeof(CharCalcProperty))
                 {
-                    continue;
+                    CalcContent.Children.Add(Name);
+                    CalcContent.Children.Add(Content);
                 }
-                MainContent.Children.Add(Name);
-                MainContent.Children.Add(Content);
-                RowCounter++;
+                else
+                {
+                    OtherContent.Children.Add(Name);
+                    OtherContent.Children.Add(Content);
+                }
             }
+        }
+
+        /// <summary>
+        /// create a label containing a localized string for this property
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        private static Label CreateNameLabel(System.Reflection.PropertyInfo item)
+        {
+            var s = "Model_" + item.DeclaringType.Name + "_" + item.Name + "/Text";
+            var v = CustomManager.GetString(s);
+            if (string.IsNullOrEmpty(v))
+            {
+                v = s;
+            }
+            return new Label
+            {
+                Text = v,
+            };
         }
 
         private void OpenConnectedChooser(object sender, EventArgs e)
@@ -176,23 +175,32 @@ namespace ShadowRunHelperViewer
             //tODO
         }
 
+        /// <summary>
+        /// Close this
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Close_Clicked(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PopAsync(true);
         }
 
-        private void Edit_Clicked(object sender, EventArgs e)
+        /// <summary>
+        /// to prevent ugly visual at big screens
+        /// border is set to feel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PopupPage_SizeChanged(object sender, EventArgs e)
         {
-            Editable = !Editable;
-            try
+            const int border = 650;
+            if (Width > border)
             {
-                CreateItems();
+                MainFrame.WidthRequest = border;
             }
-            catch (Exception ex)
+            else
             {
-                TLIB.Log.Write("Unexpected Error", ex);
-                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-                Close_Clicked(this, new EventArgs());
+                MainFrame.WidthRequest = Width;
             }
         }
     }

@@ -349,7 +349,7 @@ namespace ShadowRunHelperViewer
                 asb.Text = "";
                 asb.IsSuggestionListOpen = false;
             }
-            await PopupNavigation.Instance.PushAsync(new DetailsPage(Model.PendingScrollEntry, false));
+            await PopupNavigation.Instance.PushAsync(new DetailsPage(Model.PendingScrollEntry));
             Model.PendingScrollEntry = null;
         }
         #endregion

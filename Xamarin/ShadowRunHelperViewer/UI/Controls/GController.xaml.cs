@@ -173,7 +173,7 @@ namespace ShadowRunHelperViewer
         {
             if (sender is BindableObject b && b.BindingContext is Thing t)
             {
-                await PopupNavigation.Instance.PushAsync(new DetailsPage(t, true));
+                await PopupNavigation.Instance.PushAsync(new DetailsPage(t));
             }
         }
 
