@@ -4,6 +4,7 @@ using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
@@ -70,12 +71,9 @@ namespace ShadowRunHelperViewer
             if (CustomTemplate is DataTemplate DT)
             {
                 var section = new TableSection();
-                /*
-                 * Template Idee:
-                 * Ein Template für jeden ThingType.
-                 * Fernkampfwaffe ist ein grid bestehend aus think left, thing rigth, einem custom mittleteil und einem contentpresenter für extended entrys
-                 * die Item und ItemX Templates müssen DataTempaltes sein
-                 */
+                //var section = new List<ViewCell>();
+                //Items.ItemsSource = section;
+             
                 Items.Root = new TableRoot() { section };
                 Items.Margin = new Thickness(0, Device.OnPlatform(-35, -35, -40), 0, 0);
                 foreach (var item in Controller.GetElements())

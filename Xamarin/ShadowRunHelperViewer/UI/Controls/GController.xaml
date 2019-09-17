@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
+             xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Resources>
@@ -212,19 +213,9 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                     <ScrollView Orientation="Horizontal" Grid.RowSpan="2" Grid.Column="1">
-                        <StackLayout Orientation="Horizontal" x:Name="OverFlowContens" >
-                            <StackLayout Orientation="Vertical">
-                                <Label>Name</Label>
-                                <Label>Wert</Label>
-                            </StackLayout>
-                            <StackLayout Orientation="Vertical">
-                                <Label>Name</Label>
-                                <Label>Wert</Label>
-                            </StackLayout>
-                            <StackLayout Orientation="Vertical">
-                                <Label>Name</Label>
-                                <Label>Wert</Label>
-                            </StackLayout>
+                        <StackLayout Orientation="Horizontal" x:Name="OverFlowContens">
+                            <controls:AdditionalValue Text="DK C" ValuePath="DKCalced"/>
+                            <controls:AdditionalValue Text="RK" ValuePath="RK"/>
                         </StackLayout>
                   </ScrollView>
                 </Grid>
@@ -274,6 +265,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Frame Padding="4,0,4,0" Margin="0" Grid.Row="3" BackgroundColor="Beige" CornerRadius="0">
+                <!--<ListView x:Name="Items" HasUnevenRows="True" />-->
                 <TableView x:Name="Items" HasUnevenRows="True" Intent="Data" />
             </Frame>
             <Grid Padding="0,5,0,0" BackgroundColor="White">
