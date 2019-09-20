@@ -1,4 +1,5 @@
 ﻿using PCLStorage;
+using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using System;
 using System.Linq;
@@ -18,6 +19,12 @@ namespace ShadowRunHelperViewer.UI.Pages
             InitializeComponent();
             NavigatoToSingleInstanceOf<AdministrationPage>();
             TLIB.Log.NewLogArrived += Log_NewLogArrived;
+            AppModel.Instance.PropertyChanged += Instance_PropertyChanged;
+        }
+
+        private void Instance_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            Features.Ui.DisplayCurrentCharName();
         }
 
         private void Instance_NavigationRequested(ShadowRunHelper.ProjectPages page, ShadowRunHelper.ProjectPagesOptions PageOptions)

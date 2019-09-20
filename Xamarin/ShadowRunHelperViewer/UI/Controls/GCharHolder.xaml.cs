@@ -51,6 +51,7 @@ namespace ShadowRunHelperViewer
             MenuOpen = true;
 
             Features.Ui.TopUiSizeChanged += Ui_TopUiSizeChanged; //TODO Dispose //TODO auch auf den anderen seiten
+            Features.Ui.GetTopUiSizeChanged();
         }
 
         private void Ui_TopUiSizeChanged(double LeftSpace, double RigthSpace)
