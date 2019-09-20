@@ -1,11 +1,11 @@
 ﻿using ShadowRunHelper;
+using ShadowRunHelper.Model;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
 
 namespace ShadowRunHelperViewer.UWP
 {
@@ -20,82 +20,77 @@ namespace ShadowRunHelperViewer.UWP
         /// </summary>
         public App()
         {
+            UnhandledException += (x, y) => { AppHolder.App_UnhandledException(y.Message, y.Exception); };
+
+            EnteredBackground += App_EnteredBackground;
+            LeavingBackground += App_LeavingBackground;
             Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             InitializeComponent();
-            Suspending += OnSuspending;
-            #region Init Libs
+
             Init.Do();
             TAPPLICATION.IO.SharedIO.CurrentIO = new TAPPLICATION_UWP.IO();
             TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TAPPLICATION_UWP.Settings();
             TAPPLICATION.PlatformHelper.Platform = new TAPPLICATION_Xamarin.PlatformHelper();
             Rg.Plugins.Popup.Popup.Init();
-            #endregion
+            AppHolder.InitModel();
         }
 
-        /// <summary>
-        /// Invoked when the application is launched normally by the end user.  Other entry points
-        /// will be used such as when the application is launched to open a specific file.
-        /// </summary>
-        /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        #region Entry-Points
+        protected override void OnActivated(IActivatedEventArgs args)
         {
-            Xamarin.Forms.Forms.Init(e);
-
-            var rootFrame = Window.Current.Content as Frame;
-
-            // Do not repeat app initialization when the Window already has content,
-            // just ensure that the window is active
-            if (rootFrame == null)
+            Xamarin.Forms.Forms.Init(args);
+            if (args.Kind == ActivationKind.Protocol && args is ProtocolActivatedEventArgs uriArgs)
             {
-                // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
-
-                rootFrame.NavigationFailed += OnNavigationFailed;
-
-                Xamarin.Forms.Forms.Init(e);
-
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                var name = uriArgs.Uri.Segments[uriArgs.Uri.Segments.Length - 1];
+                name = name.Remove(name.Length - 1);
+                AppHolder.FileActivated(name, uriArgs.Uri.LocalPath.Remove(uriArgs.Uri.LocalPath.Length - name.Length));
+            }
+        }
+        protected override void OnFileActivated(FileActivatedEventArgs args)
+        {
+            Xamarin.Forms.Forms.Init(args);
+            if (args.Files[0].Name.EndsWith(Constants.DATEIENDUNG_CHAR))
+            {
+                try
                 {
-                    //TODO: Load state from previously suspended application
+                    Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace(Constants.ACCESSTOKEN_FILEACTIVATED, args.Files[0]);
                 }
+                finally { }
+                AppHolder.FileActivated(args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length));
+            }
+            else if (args.Files[0].Name.EndsWith(".SRHApp1"))
+            {
+                Features.AppDataPorter.Loading = Features.AppDataPorter.LoadAppPacket(args.Files[0]);
+            }
+        }
+        #endregion
 
-                // Place the frame in the current Window
+        void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
+        {
+            if (!(Window.Current.Content is Frame rootFrame))
+            {
+                rootFrame = new Frame();
+                rootFrame.NavigationFailed += (s, ee) => AppHolder.OnNavigationFailed(ee.SourcePageType.FullName);
                 Window.Current.Content = rootFrame;
             }
-
+            Window.Current.Activate();
             if (rootFrame.Content == null)
             {
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                // Wenn der Navigationsstapel nicht wiederhergestellt wird, zur ersten Seite navigieren
+                rootFrame.Navigate(typeof(MainPage));
             }
-            // Ensure the current window is active
-            Window.Current.Activate();
+            else
+            {
+                // Seite ist aktiv, wir versuchen, den Char anzuzeigen
+                AppModel.Instance?.RequestNavigation(SettingsModel.I.LAST_PAGE);
+            }
         }
 
-        /// <summary>
-        /// Invoked when Navigation to a certain page fails
-        /// </summary>
-        /// <param name="sender">The Frame which failed navigation</param>
-        /// <param name="e">Details about the navigation failure</param>
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
         {
-            throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
-        }
-
-        /// <summary>
-        /// Invoked when application execution is being suspended.  Application state is saved
-        /// without knowing whether the application will be terminated or resumed with the contents
-        /// of memory still intact.
-        /// </summary>
-        /// <param name="sender">The source of the suspend request.</param>
-        /// <param name="e">Details about the suspend request.</param>
-        private void OnSuspending(object sender, SuspendingEventArgs e)
-        {
-            var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: Save application state and stop any background activity
-            deferral.Complete();
+            var def = e.GetDeferral();
+            AppHolder.EnteredBackground();
+            def.Complete();
         }
     }
 }
