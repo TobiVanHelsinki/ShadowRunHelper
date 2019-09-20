@@ -162,5 +162,10 @@ namespace ShadowRunHelperViewer.UI.Pages
                 }
             }
         }
+
+        private void OpenFile(object sender, EventArgs e)
+        {
+            FilePickerExample();
+        }
     }
 }

@@ -119,11 +119,14 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         protected override bool OnBackButtonPressed()
         {
-            if (ContentPlace.Content is CharPage CP)
+            if (ContentPlace.Content is CharPage page && page.OnBackButtonPressed())
             {
-                CP.OnBackButtonPressed();
+                return true;
             }
-            return base.OnBackButtonPressed();
+            else
+            {
+                return base.OnBackButtonPressed();
+            }
         }
 
         #region DEBUG

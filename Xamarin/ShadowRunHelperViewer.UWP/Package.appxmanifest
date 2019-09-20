@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="ShadowRunHelperViewer" Publisher="CN=Tobiv" Version="1.1.9.0" />
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" 
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+         xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" 
+         xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4" 
+         xmlns:iot2="http://schemas.microsoft.com/appx/manifest/iot/windows10/2" 
+         IgnorableNamespaces="uap mp uap3 desktop4 iot2">
+  <Identity Name="ShadowRunHelperViewer" Publisher="CN=Tobiv" Version="1.1.14.0" />
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>ShadowRunHelperViewer</DisplayName>
@@ -14,7 +19,7 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ShadowRunHelperViewer.UWP.App">
+    <Application desktop4:SupportsMultipleInstances="true" iot2:SupportsMultipleInstances="true" Id="App" Executable="$targetnametoken$.exe" EntryPoint="ShadowRunHelperViewer.UWP.App">
       <uap:VisualElements DisplayName="ShadowRunHelperViewer" Square150x150Logo="Assets\Logo\Square150x150Logo.png" Square44x44Logo="Assets\Logo\Square44x44Logo.png" Description="Eine leichte Version des ShadowRunHelpers" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Logo\Wide310x150Logo.png" Square310x310Logo="Assets\Logo\LargeTile.png" Square71x71Logo="Assets\Logo\SmallTile.png" ShortName="ShadowRunHelper Lite">
           <uap:ShowNameOnTiles>

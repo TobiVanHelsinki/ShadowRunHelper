@@ -24,12 +24,18 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        internal void OnBackButtonPressed()
+        /// <summary>
+        /// return true if handled
+        /// </summary>
+        /// <returns></returns>
+        internal bool OnBackButtonPressed()
         {
             if (Content is Grid g && g.Children.Count > 0  && g.Children[0] is GCharHolder currentchar)
             {
                 currentchar.MenuOpen = true;
+                return true;
             }
+            return false;
         }
 
         public void Dispose()
