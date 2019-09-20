@@ -1,11 +1,9 @@
 ﻿using ShadowRunHelper;
 using ShadowRunHelper.Model;
-using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 
 namespace ShadowRunHelperViewer.UWP
 {
@@ -36,6 +34,19 @@ namespace ShadowRunHelperViewer.UWP
         }
 
         #region Entry-Points
+        /// <summary>
+        /// normal App launc
+        /// </summary>
+        /// <param name="args"></param>
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        {
+            Xamarin.Forms.Forms.Init(args);
+            base.OnLaunched(args);
+        }
+        /// <summary>
+        /// launch via a protocol
+        /// </summary>
+        /// <param name="args"></param>
         protected override void OnActivated(IActivatedEventArgs args)
         {
             Xamarin.Forms.Forms.Init(args);
@@ -46,6 +57,10 @@ namespace ShadowRunHelperViewer.UWP
                 AppHolder.FileActivated(name, uriArgs.Uri.LocalPath.Remove(uriArgs.Uri.LocalPath.Length - name.Length));
             }
         }
+        /// <summary>
+        /// launch vie open file 
+        /// </summary>
+        /// <param name="args"></param>
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
             Xamarin.Forms.Forms.Init(args);
@@ -65,6 +80,12 @@ namespace ShadowRunHelperViewer.UWP
         }
         #endregion
 
+        /// <summary>
+        /// Creating and activating ui
+        /// get's called after evry entry point method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
         {
             if (!(Window.Current.Content is Frame rootFrame))
@@ -86,6 +107,11 @@ namespace ShadowRunHelperViewer.UWP
             }
         }
 
+        /// <summary>
+        /// gets called if the app is minimized or closed or suspended (by system)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
         {
             var def = e.GetDeferral();

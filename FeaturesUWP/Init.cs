@@ -10,6 +10,7 @@
             Features.InstanceHandling = new WinInstanceHandling();
             Features.AppInformation = new WinAppInformation();
             Features.AppDataPorter = new WinAppDataPorter();
+            Features.Ui = new WinUi();
         }
     }
 }

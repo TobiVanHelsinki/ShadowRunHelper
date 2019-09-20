@@ -108,7 +108,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Margin="5,5,5,0" Padding="0" ColumnSpacing="3" RowSpacing="0">
+            <Grid x:Name="CharTitleBar" Margin="5,5,5,0" Padding="0" ColumnSpacing="3" RowSpacing="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />

@@ -102,7 +102,7 @@ namespace ShadowRunHelper.UI
 #if DEBUG
             Debug_CreateDebugChar.Visibility = Visibility.Visible;
 #endif
-            TaskBarStuff();
+            Features.Ui.DisplayCurrentCharName();
             TipFading = new Timer(TipFadeOut, null, -1, -1);
             TipVisibility = new Timer(TipMakeInvisible, null, -1, -1);
         }
@@ -127,7 +127,7 @@ namespace ShadowRunHelper.UI
             switch (e.PropertyName)
             {
                 case nameof(Model.MainObject):
-                    TaskBarStuff();
+                    Features.Ui.DisplayCurrentCharName();
                     break;
                 case nameof(Model.IsCharInProgress):
                     ProgressRing.IsActive = Model.IsCharInProgress;
@@ -205,11 +205,7 @@ namespace ShadowRunHelper.UI
             TipFading.Change(2000, -1);
         }
         #endregion
-        void TaskBarStuff()
-        {
-            var appView = ApplicationView.GetForCurrentView();
-            appView.Title = Model.MainObject != null ? Model.MainObject.Person.Alias : Package.Current.DisplayName;
-        }
+        
 
         public void TitleBarStuff()
         {

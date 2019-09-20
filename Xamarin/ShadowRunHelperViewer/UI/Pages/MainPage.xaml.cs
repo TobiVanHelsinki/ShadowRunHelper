@@ -11,6 +11,7 @@ namespace ShadowRunHelperViewer.UI.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+        public VisualElement ContentPlaceBackPublic => ContentPlaceBack;
         public MainPage()
         {
             AppModel.Instance.NavigationRequested += Instance_NavigationRequested;

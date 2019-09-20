@@ -18,7 +18,10 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label x:Name="IntroText" Text="Welcome to ShadowRunHelper. Choose a charaktersheet from the list or create a new." HorizontalOptions="CenterAndExpand" />
+            <Frame x:Name="TitleBar">
+                <Label x:Name="IntroText" Text="Welcome to ShadowRunHelper. Choose a charaktersheet from the list or create a new." 
+                       HorizontalOptions="CenterAndExpand" />
+            </Frame>
             <!--<Label Text="Availible SaveFiles" Grid.Row="2"/>-->
             <StackLayout Margin="15,0,10,0" Grid.Row="3" Orientation="Horizontal">
                 <Label Text="Filename" LineBreakMode="WordWrap"/>

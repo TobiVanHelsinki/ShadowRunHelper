@@ -36,7 +36,15 @@ namespace ShadowRunHelperViewer.UI.Pages
             InitializeComponent();
             BindingContext = this;
             RefreshCharList();
+
+            Features.Ui.TopUiSizeChanged += Ui_TopUiSizeChanged; //TODO Dispose
         }
+
+        private void Ui_TopUiSizeChanged(double LeftSpace, double RigthSpace)
+        {
+            TitleBar.Padding = new Thickness(LeftSpace, 0, RigthSpace, 0);
+        }
+
 
         async void RefreshCharList()
         {

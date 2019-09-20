@@ -49,8 +49,14 @@ namespace ShadowRunHelperViewer
             InitButtons();
             SetViewParameters();
             MenuOpen = true;
+
+            Features.Ui.TopUiSizeChanged += Ui_TopUiSizeChanged; //TODO Dispose //TODO auch auf den anderen seiten
         }
 
+        private void Ui_TopUiSizeChanged(double LeftSpace, double RigthSpace)
+        {
+            CharTitleBar.Padding = new Thickness(LeftSpace, 0, RigthSpace, 0);
+        }
 
         async void Infogrid_Tapped()
         {

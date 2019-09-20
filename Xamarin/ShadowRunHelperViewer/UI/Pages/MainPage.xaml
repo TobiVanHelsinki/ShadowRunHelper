@@ -20,6 +20,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+            <ContentPresenter x:Name="ContentPlaceBack"/>
             <ContentPresenter x:Name="ContentPlace"/>
             <Label BackgroundColor="Beige" x:Name="LogView" IsVisible="False"/>
             <Grid Grid.Row="1" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,0,0,5">

@@ -1,39 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ShadowRunHelper.Model;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
-namespace FeaturesUWP.Features
+namespace ShadowRunHelper
 {
-    interface IUi
-    {
-        void TaskBarStuff();
-        void TitleBarStuff();
-    }
     class WinUi : IUi
     {
-        public void TaskBarStuff()
+        bool _IsTopUiSizeEnabled;
+        public bool IsTopUiSizeEnabled
         {
-            //    var appView = ApplicationView.GetForCurrentView();
-            //    appView.Title = Model.MainObject != null ? Model.MainObject.Person.Alias : Package.Current.DisplayName;
+            get { return _IsTopUiSizeEnabled; }
+            set { if (_IsTopUiSizeEnabled != value) { _IsTopUiSizeEnabled = value; TitleBar_LayoutMetricsChanged(null, null);  } }
         }
 
-        public void TitleBarStuff()
+
+        public event TopUiSizeChangedEventHandler TopUiSizeChanged;
+
+        public void DisplayCurrentCharName()
         {
-        //    ApplicationViewTitleBar AppTitlebar = ApplicationView.GetForCurrentView().TitleBar;
-        //    CoreApplicationViewTitleBar CurrentTitlebar = CoreApplication.GetCurrentView().TitleBar;
+            var appView = ApplicationView.GetForCurrentView();
+            appView.Title = AppModel.Instance.MainObject != null ? AppModel.Instance.MainObject.Person.Alias : Package.Current.DisplayName;
+        }
 
-        //    CurrentTitlebar.ExtendViewIntoTitleBar = true;
-        //    AppTitlebar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-        //    AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
+        public void GetTopUiSizeChanged()
+        {
+            TitleBar_LayoutMetricsChanged(null, null);
+        }
 
-        //    TitleColumnR.MinWidth = CurrentTitlebar.SystemOverlayRightInset - 15;
-        //    TitleColumnL.MinWidth = CurrentTitlebar.SystemOverlayLeftInset;
+        public void RegisterTopUiSizeChanged(object VisualElement)
+        {
+            CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += TitleBar_LayoutMetricsChanged;
+            CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += TitleBar_LayoutMetricsChanged;
+            Window.Current.SetTitleBar(VisualElement as UIElement);
+        }
 
-        //    Window.Current.SetTitleBar(AppTitleBar);
+        private void TitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+        {
+            //var AppTitlebar = ApplicationView.GetForCurrentView().TitleBar;
+            //AppTitlebar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
+            //AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
+
+            var CurrentTitlebar = CoreApplication.GetCurrentView().TitleBar;
+            CurrentTitlebar.ExtendViewIntoTitleBar = IsTopUiSizeEnabled;
+            if (!IsTopUiSizeEnabled)
+            {
+                TopUiSizeChanged?.Invoke(0, 0);
+            }
+            else
+            {
+                TopUiSizeChanged?.Invoke(CurrentTitlebar.SystemOverlayLeftInset, CurrentTitlebar.SystemOverlayRightInset - 15);
+            }
+        }
     }
-}
 }
