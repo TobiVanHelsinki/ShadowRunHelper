@@ -54,7 +54,14 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        void CharPage(object sender, System.EventArgs e) => NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(CharHolderGenerator.TestAllCats(3)));
+        void CharPage(object sender, System.EventArgs e)
+        {
+            if (AppModel.Instance.MainObject != null)
+            {
+                NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(AppModel.Instance.MainObject));
+            }
+        }
+
         void Administration(object sender, EventArgs e) => NavigatoToSingleInstanceOf<AdministrationPage>();
         void Settings(object sender, EventArgs e) => NavigatoToSingleInstanceOf<SettingsPage>();
 

@@ -30,7 +30,6 @@ namespace ShadowRunHelperViewer.UWP
             TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TAPPLICATION_UWP.Settings();
             TAPPLICATION.PlatformHelper.Platform = new TAPPLICATION_Xamarin.PlatformHelper();
             Rg.Plugins.Popup.Popup.Init();
-            AppHolder.InitModel();
         }
 
         #region Entry-Points

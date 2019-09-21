@@ -18,7 +18,7 @@
                     <EntryCell Label="UI_Optionen_AutoSaveInterval" Text="{x:Binding Settings.AUTO_SAVE_INTERVAL_MS}"/>
                 </TableSection>
                 <TableSection Title="UI_Optionen_Group_File">
-                    <SwitchCell Text="UI_Optionen_Ordnermode" On="{x:Binding Settings.FOLDERMODE}"/>
+                    <SwitchCell Text="UI_Optionen_Ordnermode" On="{x:Binding Settings.FOLDERMODE, Mode=TwoWay}"/>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" IsVisible="{x:Binding Settings.FOLDERMODE}">
                             <Label Text="UI_Optionen_Ordnermode_Pfad"/>
