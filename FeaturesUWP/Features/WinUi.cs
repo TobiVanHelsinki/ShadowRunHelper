@@ -53,20 +53,26 @@ namespace ShadowRunHelper
 
         void TitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
         {
-            //var AppTitlebar = ApplicationView.GetForCurrentView().TitleBar;
-            //AppTitlebar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-            //AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
+            try
+            {
+                //var AppTitlebar = ApplicationView.GetForCurrentView().TitleBar;
+                //AppTitlebar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
+                //AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
 
-            var currentTitlebar = sender ?? CoreApplication.GetCurrentView().TitleBar;
-            //Log.Write($"IsTopUiSizeEnabled={IsCustomTitleBarEnabled}({currentTitlebar.SystemOverlayLeftInset},{currentTitlebar.SystemOverlayRightInset})");
-            currentTitlebar.ExtendViewIntoTitleBar = IsCustomTitleBarEnabled;
-            if (!IsCustomTitleBarEnabled)
-            {
-                CustomTitleBarChanges?.Invoke(0, 0, currentTitlebar.Height);
+                var currentTitlebar = sender ?? CoreApplication.GetCurrentView().TitleBar;
+                //Log.Write($"IsTopUiSizeEnabled={IsCustomTitleBarEnabled}({currentTitlebar.SystemOverlayLeftInset},{currentTitlebar.SystemOverlayRightInset})");
+                currentTitlebar.ExtendViewIntoTitleBar = IsCustomTitleBarEnabled;
+                if (!IsCustomTitleBarEnabled)
+                {
+                    CustomTitleBarChanges?.Invoke(0, 0, currentTitlebar.Height);
+                }
+                else
+                {
+                    CustomTitleBarChanges?.Invoke(currentTitlebar.SystemOverlayLeftInset, currentTitlebar.SystemOverlayRightInset, currentTitlebar.Height);
+                }
             }
-            else
+            catch (System.Exception)
             {
-                CustomTitleBarChanges?.Invoke(currentTitlebar.SystemOverlayLeftInset, currentTitlebar.SystemOverlayRightInset, currentTitlebar.Height);
             }
         }
     }

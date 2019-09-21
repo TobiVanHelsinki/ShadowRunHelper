@@ -138,7 +138,7 @@
                     TextChanged="AutoSuggestBox_TextChanged" SuggestionChosen="AutoSuggestBox_SuggestionChosen" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
                 <Button Text="&#xf141;" Style="{StaticResource IconButton_ConstWidth}" Clicked="MoreMenu" Grid.Column="4"/>
             </Grid>
-            <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="5,0,5,5" >
+            <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="5,0,5,5" >
                 <StackLayout Style="{StaticResource OuterPanel}">
                     <Label Text="Money" Style="{StaticResource OneLineText}"/>
                     <Label Text="{x:Binding MyChar.Person.Kontostand}" Style="{StaticResource OneLineText}"/>
