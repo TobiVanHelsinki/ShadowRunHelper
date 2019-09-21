@@ -18,10 +18,12 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid x:Name="TitleBar" BackgroundColor="Accent" MinimumWidthRequest="50" HeightRequest="10" Padding="10">
-                <Label x:Name="IntroText" Text="Welcome to ShadowRunHelper. Choose a charaktersheet from the list or create a new." 
+            <StackLayout x:Name="TitleBar" BackgroundColor="Accent" MinimumWidthRequest="50" MinimumHeightRequest="10" Padding="10">
+                <Label x:Name="Intro1Text" Text="Welcome to ShadowRunHelper."
                        HorizontalOptions="FillAndExpand"/>
-            </Grid>
+                <Label x:Name="Intro2Text" Text="Choose a charaktersheet from the list or create a new." 
+                       HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
             <StackLayout Margin="15,0,10,0" Grid.Row="3" Orientation="Horizontal">
                 <Label Text="Filename" LineBreakMode="WordWrap"/>
                 <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Orientation="Horizontal">

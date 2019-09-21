@@ -47,14 +47,8 @@ namespace ShadowRunHelper
         public void SetCustomTitleBar(object VisualElement)
         {
             RegisterVisualChangedEventHandlersIfNeccesary();
-            if (!(VisualElement is UIElement))
-            {
-                Log.Write("VisualElement is no UIElement");
-            }
-            else
-            {
-                Window.Current.SetTitleBar(VisualElement as UIElement);
-            }
+            Log.Write("Change SetTitleBar to: " + VisualElement?.ToString() + " " + (VisualElement as FrameworkElement)?.Name);
+            Window.Current.SetTitleBar(VisualElement as UIElement);
         }
 
         void TitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
@@ -64,15 +58,15 @@ namespace ShadowRunHelper
             //AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
 
             var currentTitlebar = sender ?? CoreApplication.GetCurrentView().TitleBar;
-            Log.Write($"IsTopUiSizeEnabled={IsCustomTitleBarEnabled}({currentTitlebar.SystemOverlayLeftInset},{currentTitlebar.SystemOverlayRightInset})");
+            //Log.Write($"IsTopUiSizeEnabled={IsCustomTitleBarEnabled}({currentTitlebar.SystemOverlayLeftInset},{currentTitlebar.SystemOverlayRightInset})");
             currentTitlebar.ExtendViewIntoTitleBar = IsCustomTitleBarEnabled;
             if (!IsCustomTitleBarEnabled)
             {
-                CustomTitleBarChanges?.Invoke(0, 0);
+                CustomTitleBarChanges?.Invoke(0, 0, currentTitlebar.Height);
             }
             else
             {
-                CustomTitleBarChanges?.Invoke(currentTitlebar.SystemOverlayLeftInset, currentTitlebar.SystemOverlayRightInset - 15);
+                CustomTitleBarChanges?.Invoke(currentTitlebar.SystemOverlayLeftInset, currentTitlebar.SystemOverlayRightInset, currentTitlebar.Height);
             }
         }
     }

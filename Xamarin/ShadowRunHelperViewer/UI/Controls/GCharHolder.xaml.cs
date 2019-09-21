@@ -51,18 +51,17 @@ namespace ShadowRunHelperViewer
             SetViewParameters();
             MenuOpen = true;
 
-            Features.Ui.CustomTitleBarChanges += Ui_TopUiSizeChanged; //TODO Dispose //TODO auch auf den anderen seiten
-            Features.Ui.TriggerCustomTitleBarChanges();
-
             Features.Ui.IsCustomTitleBarEnabled = true; //TODO Dispse?
             Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(CharTitleBar));
-
-
+            Features.Ui.SetCustomTitleBar(null);
+            Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges; //TODO Dispose
+            Features.Ui.TriggerCustomTitleBarChanges();
         }
 
-        private void Ui_TopUiSizeChanged(double LeftSpace, double RigthSpace)
+        private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
         {
-            CharTitleBar.Padding = new Thickness(LeftSpace, 0, RigthSpace, 0);
+            CharTitleBar.MinimumHeightRequest = Heigth;
+            //CharHeadControls.Padding = new Thickness(LeftSpace.LowerB(5), 5, RigthSpace.LowerB(5), 5);
         }
 
         async void Infogrid_Tapped()

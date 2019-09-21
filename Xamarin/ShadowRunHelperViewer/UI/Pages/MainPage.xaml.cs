@@ -1,7 +1,6 @@
 ﻿using PCLStorage;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.Platform;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,10 +19,6 @@ namespace ShadowRunHelperViewer.UI.Pages
             AppModel.Instance.RequestNavigation(ProjectPages.Administration);
             TLIB.Log.NewLogArrived += Log_NewLogArrived;
             AppModel.Instance.PropertyChanged += Instance_PropertyChanged;
-
-            //Features.Ui.IsCustomTitleBarEnabled = true;
-            //Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(CommandBar));
-
         }
 
         private void Instance_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -40,7 +35,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 case ShadowRunHelper.ProjectPages.Char:
                     if (AppModel.Instance.MainObject is CharHolder ch)
                     {
-                        NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(ch)); 
+                        NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(ch));
                     }
                     else
                     {

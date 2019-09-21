@@ -47,10 +47,11 @@ namespace ShadowRunHelperViewer.UI.Pages
             Features.Ui.TriggerCustomTitleBarChanges();
         }
 
-        private void CustomTitleBarChanges(double LeftSpace, double RigthSpace)
+        private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
         {
-            Log.Write("CustomTitleBarChanges");
-            IntroText.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
+            TitleBar.MinimumHeightRequest = Heigth;
+            Intro1Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
+            Intro2Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
         }
 
 
