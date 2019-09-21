@@ -103,41 +103,44 @@
     </ContentView.Resources>
     <ContentView.Content>
         <Grid>
+            <Grid.Resources>
+                <Style x:Key="OuterPanel" TargetType="StackLayout">
+                    <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                    <Setter Property="Spacing" Value="0"/>
+                </Style>
+                <Style x:Key="InnerPanel" TargetType="StackLayout">
+                    <Setter Property="Orientation" Value="Horizontal"/>
+                    <Setter Property="HorizontalOptions" Value="Center"/>
+                    <Setter Property="Spacing" Value="3"/>
+                </Style>
+            </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Grid x:Name="CharTitleBar" Margin="5,5,5,0" Padding="0" ColumnSpacing="3" RowSpacing="0">
+            <Grid Padding="5,5,5,0" ColumnSpacing="3" RowSpacing="0" BackgroundColor="Accent">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Button Text="&#xf0c7;" Style="{StaticResource IconButton_ConstWidth}" Clicked="Save" Grid.Column="0"/>
-                <Button Text="&#xf141;" Style="{StaticResource IconButton_ConstWidth}" Clicked="MoreMenu" Grid.Column="1"/>
-                <forms:AutoSuggestBox PlaceholderText="Search Name or Type" HorizontalOptions="Fill" Grid.Column="2"
-                    TextChanged="AutoSuggestBox_TextChanged" SuggestionChosen="AutoSuggestBox_SuggestionChosen" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
-                <Button Text="&#xf0c9;" Style="{StaticResource IconButton_ConstWidth}" Clicked="Toggle" Grid.Column="3" x:Name="MenuToggleButton"/>
-            </Grid>
-            <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="Transparent" 
-                         HorizontalOptions="Fill" Padding="4,0,4,4" x:Name="Infogrid">
-                <StackLayout.Resources>
-                    <Style x:Key="OuterPanel" TargetType="StackLayout">
-                        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                        <Setter Property="Spacing" Value="0"/>
-                    </Style>
-                    <Style x:Key="InnerPanel" TargetType="StackLayout">
-                        <Setter Property="Orientation" Value="Horizontal"/>
-                        <Setter Property="HorizontalOptions" Value="Center"/>
-                        <Setter Property="Spacing" Value="3"/>
-                    </Style>
-                </StackLayout.Resources>
-                <StackLayout Style="{StaticResource OuterPanel}">
+                <StackLayout Style="{StaticResource OuterPanel}" x:Name="CharTitleBar">
                     <Label Text="{x:Binding MyChar.Person.Alias}" Style="{StaticResource OneLineText}"/>
                     <Label Text="{x:Binding MyChar.Person.Char_Typ}" Style="{StaticResource OneLineText}"/>
                 </StackLayout>
+                <Button Text="&#xf0c9;" Style="{StaticResource IconButton_ConstWidth}" Clicked="Toggle" Grid.Column="1" x:Name="MenuToggleButton"/>
+                <Button Text="&#xf0c7;" Style="{StaticResource IconButton_ConstWidth}" Clicked="Save" Grid.Column="2"/>
+                <forms:AutoSuggestBox PlaceholderText="Search Name or Type" HorizontalOptions="Fill" Grid.Column="3"
+                    TextChanged="AutoSuggestBox_TextChanged" SuggestionChosen="AutoSuggestBox_SuggestionChosen" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
+                <Button Text="&#xf141;" Style="{StaticResource IconButton_ConstWidth}" Clicked="MoreMenu" Grid.Column="4"/>
+            </Grid>
+            <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="Accent" 
+                         HorizontalOptions="Fill" Padding="4,0,4,4" x:Name="Infogrid">
                 <StackLayout Style="{StaticResource OuterPanel}">
                     <Label Text="Money" Style="{StaticResource OneLineText}"/>
                     <Label Text="{x:Binding MyChar.Person.Kontostand}" Style="{StaticResource OneLineText}"/>

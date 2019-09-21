@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper;
+using ShadowRunHelperViewer.Platform;
 using ShadowRunHelperViewer.UI.Pages;
 using SharedCode.Ressourcen;
 using System;
@@ -18,9 +19,10 @@ namespace ShadowRunHelperViewer
         {
             Log.IsConsoleLogEnabled = true;
             Log.IsInMemoryLogEnabled = true;
+            Log.Mode = LogMode.Verbose;
             CreateLogFile();
             InitializeComponent();
-            var ci = DependencyService.Get<ILocale>().GetCurrentCultureInfo();
+            var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
             L10n.SetLocale(ci);
             Strings.Culture = ci;
             AppHolder.InitModel();
@@ -45,7 +47,7 @@ namespace ShadowRunHelperViewer
 
         private static async Task CreateLogFile()
         {
-            Log.LogFile = await SharedIO.CurrentIO.GetCompleteInternPath(Place.Local) + "LogFile.txt";
+            Log.LogFile = await SharedIO.CurrentIO.GetCompleteInternPath(Place.Local) + "SRLogFile.txt";
         }
 
         protected override void OnStart()

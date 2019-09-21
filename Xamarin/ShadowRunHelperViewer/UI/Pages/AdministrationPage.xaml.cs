@@ -1,6 +1,7 @@
 ﻿using ShadowRunHelper;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.Platform;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -36,13 +37,20 @@ namespace ShadowRunHelperViewer.UI.Pages
             InitializeComponent();
             BindingContext = this;
             RefreshCharList();
-
-            Features.Ui.TopUiSizeChanged += Ui_TopUiSizeChanged; //TODO Dispose
         }
 
-        private void Ui_TopUiSizeChanged(double LeftSpace, double RigthSpace)
+        public void Activate()
         {
-            TitleBar.Padding = new Thickness(LeftSpace, 0, RigthSpace, 0);
+            Features.Ui.IsCustomTitleBarEnabled = true; //TODO Dispse?
+            Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(TitleBar));
+            Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges; //TODO Dispose
+            Features.Ui.TriggerCustomTitleBarChanges();
+        }
+
+        private void CustomTitleBarChanges(double LeftSpace, double RigthSpace)
+        {
+            Log.Write("CustomTitleBarChanges");
+            IntroText.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
         }
 
 
@@ -62,7 +70,8 @@ namespace ShadowRunHelperViewer.UI.Pages
             try
             {
                 var savepathfiles = (await SharedIO.CurrentIO.GetFiles(SharedIO.CurrentSaveDir, Constants.LST_FILETYPES_CHAR)).ToList();
-                Device.BeginInvokeOnMainThread(() => { CharList.Clear(); CharList.AddRange(savepathfiles); });
+                Device.BeginInvokeOnMainThread(() => { CharList.Clear();
+                    CharList.AddRange(savepathfiles); });
             }
             catch (Exception ex)
             {
@@ -102,6 +111,9 @@ namespace ShadowRunHelperViewer.UI.Pages
                 var charfile = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
                 var newchar = await CharHolderIO.Load(charfile);
                 (Application.Current.MainPage as MainPage)?.NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(newchar));
+                //TODO das ist komplett am model vorbei, aber dafür auch flexibler
+                //TODO ich sollte überlegen, Model.MainObject abzuschaffen. für das speichern kann es sich im eigenen konstruktor registrieren
+                //Dann bekommen alle anderen nicht mehr mit, wenn sich ein object ändert. aber muss das überhaupt jemand wissen?
             }
             catch (Exception ex)
             {

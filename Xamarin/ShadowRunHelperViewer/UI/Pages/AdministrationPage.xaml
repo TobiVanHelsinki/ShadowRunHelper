@@ -6,7 +6,7 @@
              xmlns:io="clr-namespace:TAPPLICATION.IO;assembly=TAPPLICATION"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.Pages.AdministrationPage" 
-             BackgroundColor="White" Padding="10,10,10,0">
+             BackgroundColor="White">
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -18,11 +18,10 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Frame x:Name="TitleBar">
+            <Grid x:Name="TitleBar" BackgroundColor="Accent" MinimumWidthRequest="50" HeightRequest="10" Padding="10">
                 <Label x:Name="IntroText" Text="Welcome to ShadowRunHelper. Choose a charaktersheet from the list or create a new." 
-                       HorizontalOptions="CenterAndExpand" />
-            </Frame>
-            <!--<Label Text="Availible SaveFiles" Grid.Row="2"/>-->
+                       HorizontalOptions="FillAndExpand"/>
+            </Grid>
             <StackLayout Margin="15,0,10,0" Grid.Row="3" Orientation="Horizontal">
                 <Label Text="Filename" LineBreakMode="WordWrap"/>
                 <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
@@ -32,7 +31,8 @@
                 </StackLayout>
             </StackLayout>
             <BoxView Color="Gray" Grid.Row="4" HeightRequest="1"/>
-            <ListView IsPullToRefreshEnabled="True" Grid.Row="5" ItemsSource="{x:Binding CharList, Mode=TwoWay}" Refreshing="ListView_Refreshing" ItemTapped="ListView_ItemTapped">
+            <ListView IsPullToRefreshEnabled="True" Grid.Row="5" Margin="0"
+                      ItemsSource="{x:Binding CharList, Mode=TwoWay}" Refreshing="ListView_Refreshing" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="io:ExtendetFileInfo">
                         <ViewCell>

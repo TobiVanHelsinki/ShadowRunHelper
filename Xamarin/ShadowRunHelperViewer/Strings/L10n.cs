@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShadowRunHelperViewer.Platform;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
@@ -15,7 +16,7 @@ namespace ShadowRunHelperViewer
 
         public static void SetLocale(CultureInfo ci)
         {
-            DependencyService.Get<ILocale>().SetLocale(ci);
+            DependencyService.Get<ILocalize>().SetLocale(ci);
         }
 
         /// <remarks>
@@ -24,7 +25,7 @@ namespace ShadowRunHelperViewer
         [Obsolete]
         public static string Locale()
         {
-            return DependencyService.Get<ILocale>().GetCurrentCultureInfo().ToString();
+            return DependencyService.Get<ILocalize>().GetCurrentCultureInfo().ToString();
         }
 
         public static string Localize(string key, string comment)
@@ -33,7 +34,7 @@ namespace ShadowRunHelperViewer
 
             // Platform-specific
             Debug.WriteLine("Localize " + key);
-            ILocale locale = DependencyService.Get<ILocale>();
+            ILocalize locale = DependencyService.Get<ILocalize>();
             CultureInfo culture = locale.GetCurrentCultureInfo();
             string result = "";
             try

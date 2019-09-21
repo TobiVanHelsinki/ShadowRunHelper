@@ -1,6 +1,7 @@
 ﻿using PCLStorage;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.Platform;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,14 +13,17 @@ namespace ShadowRunHelperViewer.UI.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        public VisualElement ContentPlaceBackPublic => ContentPlaceBack;
         public MainPage()
         {
             AppModel.Instance.NavigationRequested += Instance_NavigationRequested;
             InitializeComponent();
-            NavigatoToSingleInstanceOf<AdministrationPage>();
+            AppModel.Instance.RequestNavigation(ProjectPages.Administration);
             TLIB.Log.NewLogArrived += Log_NewLogArrived;
             AppModel.Instance.PropertyChanged += Instance_PropertyChanged;
+
+            //Features.Ui.IsCustomTitleBarEnabled = true;
+            //Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(CommandBar));
+
         }
 
         private void Instance_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -27,7 +31,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             Features.Ui.DisplayCurrentCharName();
         }
 
-        private void Instance_NavigationRequested(ShadowRunHelper.ProjectPages page, ShadowRunHelper.ProjectPagesOptions PageOptions)
+        private void Instance_NavigationRequested(ProjectPages page, ProjectPagesOptions PageOptions = ProjectPagesOptions.Nothing)
         {
             switch (page)
             {
@@ -36,11 +40,11 @@ namespace ShadowRunHelperViewer.UI.Pages
                 case ShadowRunHelper.ProjectPages.Char:
                     if (AppModel.Instance.MainObject is CharHolder ch)
                     {
-                        NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(ch)); // TODO Neccesary because of activation through file double click through AppHolder
+                        NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(ch)); 
                     }
                     else
                     {
-                        NavigatoToSingleInstanceOf<AdministrationPage>();
+                        NavigatoToSingleInstanceOf<AdministrationPage>(false, (x) => x.Activate());
                     }
                     break;
                 case ShadowRunHelper.ProjectPages.Administration:
@@ -54,17 +58,17 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        void CharPage(object sender, System.EventArgs e)
-        {
-            if (AppModel.Instance.MainObject != null)
-            {
-                NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(AppModel.Instance.MainObject));
-            }
-        }
+        void CharPage(object sender, System.EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Char);
 
-        void Administration(object sender, EventArgs e) => NavigatoToSingleInstanceOf<AdministrationPage>();
-        void Settings(object sender, EventArgs e) => NavigatoToSingleInstanceOf<SettingsPage>();
+        void Administration(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Administration);
+        void Settings(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Settings);
 
+        /// <summary>
+        /// NavigatoToSingleInstanceOf
+        /// </summary>
+        /// <param name="slpash"></param>
+        /// <param name="afterLoad">a action that is performed at the ui threat</param>
+        /// <exception cref="ObjectDisposedException"></exception>
         public void NavigatoToSingleInstanceOf<T>(bool slpash = false, Action<T> afterLoad = null) where T : View, new()
         {
             if (ContentPlace.Content is IDisposable disposable)
@@ -95,15 +99,8 @@ namespace ShadowRunHelperViewer.UI.Pages
                     {
                         try
                         {
-                            afterLoad?.Invoke(t.Result);
-                        }
-                        catch (Exception)
-                        {
-                            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-                        }
-                        try
-                        {
                             ContentPlace.Content = t.Result;
+                            afterLoad?.Invoke(t.Result);
                         }
                         catch (Exception)
                         {

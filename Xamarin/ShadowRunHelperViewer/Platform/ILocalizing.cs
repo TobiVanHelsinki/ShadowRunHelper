@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace ShadowRunHelperViewer
+namespace ShadowRunHelperViewer.Platform
 {
     /// <summary>
     /// Implementations of this interface MUST convert iOS and Android
@@ -14,7 +14,7 @@ namespace ShadowRunHelperViewer
     ///   http://www.csharp-examples.net/culture-names/
     /// You should always test all the locales implemented in your application.
     /// </remarks>
-    public interface ILocale
+    public interface ILocalize
     {
         ///	<summary>
         /// This method must evaluate platform-specific locale settings

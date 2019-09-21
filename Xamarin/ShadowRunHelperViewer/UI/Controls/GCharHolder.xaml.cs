@@ -3,6 +3,7 @@ using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.Platform;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,8 +51,13 @@ namespace ShadowRunHelperViewer
             SetViewParameters();
             MenuOpen = true;
 
-            Features.Ui.TopUiSizeChanged += Ui_TopUiSizeChanged; //TODO Dispose //TODO auch auf den anderen seiten
-            Features.Ui.GetTopUiSizeChanged();
+            Features.Ui.CustomTitleBarChanges += Ui_TopUiSizeChanged; //TODO Dispose //TODO auch auf den anderen seiten
+            Features.Ui.TriggerCustomTitleBarChanges();
+
+            Features.Ui.IsCustomTitleBarEnabled = true; //TODO Dispse?
+            Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(CharTitleBar));
+
+
         }
 
         private void Ui_TopUiSizeChanged(double LeftSpace, double RigthSpace)
@@ -360,5 +366,6 @@ namespace ShadowRunHelperViewer
             Model.PendingScrollEntry = null;
         }
         #endregion
+
     }
 }

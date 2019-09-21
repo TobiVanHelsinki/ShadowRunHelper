@@ -1,10 +1,11 @@
 ﻿using ShadowRunHelperViewer;
+using ShadowRunHelperViewer.Platform;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(Localize))]
+[assembly: Dependency(typeof(WinLocalize))]
 namespace ShadowRunHelperViewer
 {
-    public class Localize : ILocale
+    public class WinLocalize : ILocalize
     {
         public System.Globalization.CultureInfo GetCurrentCultureInfo()
         {

@@ -1,4 +1,5 @@
 ﻿using ShadowRunHelper.Model;
+using TLIB;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.UI.ViewManagement;
@@ -9,14 +10,14 @@ namespace ShadowRunHelper
     class WinUi : IUi
     {
         bool _IsTopUiSizeEnabled;
-        public bool IsTopUiSizeEnabled
+        public bool IsCustomTitleBarEnabled
         {
             get { return _IsTopUiSizeEnabled; }
             set { if (_IsTopUiSizeEnabled != value) { _IsTopUiSizeEnabled = value; TitleBar_LayoutMetricsChanged(null, null);  } }
         }
 
 
-        public event TopUiSizeChangedEventHandler TopUiSizeChanged;
+        public event CustomTitleBarChangesEventHandler CustomTitleBarChanges;
 
         public void DisplayCurrentCharName()
         {
@@ -24,33 +25,54 @@ namespace ShadowRunHelper
             appView.Title = AppModel.Instance.MainObject != null ? AppModel.Instance.MainObject.Person.Alias : Package.Current.DisplayName;
         }
 
-        public void GetTopUiSizeChanged()
+        public void TriggerCustomTitleBarChanges()
         {
             TitleBar_LayoutMetricsChanged(null, null);
         }
 
-        public void RegisterTopUiSizeChanged(object VisualElement)
+
+        bool Registered;
+        void RegisterVisualChangedEventHandlersIfNeccesary()
         {
+            if (Registered)
+            {
+                return;
+            }
             CoreApplication.GetCurrentView().TitleBar.LayoutMetricsChanged += TitleBar_LayoutMetricsChanged;
             CoreApplication.GetCurrentView().TitleBar.IsVisibleChanged += TitleBar_LayoutMetricsChanged;
-            Window.Current.SetTitleBar(VisualElement as UIElement);
+            Registered = true;
         }
 
-        private void TitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+
+        public void SetCustomTitleBar(object VisualElement)
+        {
+            RegisterVisualChangedEventHandlersIfNeccesary();
+            if (!(VisualElement is UIElement))
+            {
+                Log.Write("VisualElement is no UIElement");
+            }
+            else
+            {
+                Window.Current.SetTitleBar(VisualElement as UIElement);
+            }
+        }
+
+        void TitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
         {
             //var AppTitlebar = ApplicationView.GetForCurrentView().TitleBar;
             //AppTitlebar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
             //AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
 
-            var CurrentTitlebar = CoreApplication.GetCurrentView().TitleBar;
-            CurrentTitlebar.ExtendViewIntoTitleBar = IsTopUiSizeEnabled;
-            if (!IsTopUiSizeEnabled)
+            var currentTitlebar = sender ?? CoreApplication.GetCurrentView().TitleBar;
+            Log.Write($"IsTopUiSizeEnabled={IsCustomTitleBarEnabled}({currentTitlebar.SystemOverlayLeftInset},{currentTitlebar.SystemOverlayRightInset})");
+            currentTitlebar.ExtendViewIntoTitleBar = IsCustomTitleBarEnabled;
+            if (!IsCustomTitleBarEnabled)
             {
-                TopUiSizeChanged?.Invoke(0, 0);
+                CustomTitleBarChanges?.Invoke(0, 0);
             }
             else
             {
-                TopUiSizeChanged?.Invoke(CurrentTitlebar.SystemOverlayLeftInset, CurrentTitlebar.SystemOverlayRightInset - 15);
+                CustomTitleBarChanges?.Invoke(currentTitlebar.SystemOverlayLeftInset, currentTitlebar.SystemOverlayRightInset - 15);
             }
         }
     }

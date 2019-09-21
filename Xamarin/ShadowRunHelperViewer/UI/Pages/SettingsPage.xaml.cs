@@ -21,6 +21,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             InitializeComponent();
             BindingContext = this;
+            Features.Ui.IsCustomTitleBarEnabled = false;
         }
     }
 }

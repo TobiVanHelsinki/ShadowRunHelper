@@ -5,8 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              mc:Ignorable="d"
-             x:Class="ShadowRunHelperViewer.UI.Pages.MainPage"
-             BackgroundColor="Accent">
+             x:Class="ShadowRunHelperViewer.UI.Pages.MainPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,10 +19,9 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <ContentPresenter x:Name="ContentPlaceBack"/>
             <ContentPresenter x:Name="ContentPlace"/>
             <Label BackgroundColor="Beige" x:Name="LogView" IsVisible="False"/>
-            <Grid Grid.Row="1" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,0,0,5">
+            <Grid x:Name="CommandBar" Grid.Row="1" BackgroundColor="Accent" HorizontalOptions="FillAndExpand" Padding="5,10,5,10">
                 <Button Grid.Column="0" Text="&#xf007;" Style="{StaticResource IconButton}" Clicked="CharPage"  />
                 <Button Grid.Column="1" Text="&#xf0c0;" Style="{StaticResource IconButton}" Clicked="Administration" />
                 <Button Grid.Column="2" Text="&#xf013;" Style="{StaticResource IconButton}" Clicked="Settings" />

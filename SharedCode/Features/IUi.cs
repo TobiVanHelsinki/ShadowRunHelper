@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ShadowRunHelper
+﻿namespace ShadowRunHelper
 {
-    public delegate void TopUiSizeChangedEventHandler(double LeftSpace, double RigthSpace);
-   public interface IUi
+    public delegate void CustomTitleBarChangesEventHandler(double LeftSpace, double RigthSpace);
+    public interface IUi
     {
-        bool IsTopUiSizeEnabled { get; set; }
+        bool IsCustomTitleBarEnabled { get; set; }
 
         void DisplayCurrentCharName();
 
-        event TopUiSizeChangedEventHandler TopUiSizeChanged;
-        void GetTopUiSizeChanged();
-        void RegisterTopUiSizeChanged(object VisualElement);
+        event CustomTitleBarChangesEventHandler CustomTitleBarChanges;
+        void TriggerCustomTitleBarChanges();
+        void SetCustomTitleBar(object VisualElement);
     }
 }

@@ -14,19 +14,19 @@
         }
         public class DroidUi : IUi
         {
-            public bool IsTopUiSizeEnabled { get ; set ; }
+            public bool IsCustomTitleBarEnabled { get ; set ; }
 
-            public event TopUiSizeChangedEventHandler TopUiSizeChanged;
+            public event CustomTitleBarChangesEventHandler CustomTitleBarChanges;
 
             public void DisplayCurrentCharName()
             {
             }
 
-            public void GetTopUiSizeChanged()
+            public void TriggerCustomTitleBarChanges()
             {
             }
 
-            public void RegisterTopUiSizeChanged(object VisualElement)
+            public void SetCustomTitleBar(object VisualElement)
             {
             }
         }
