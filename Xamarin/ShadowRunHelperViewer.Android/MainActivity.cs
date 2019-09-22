@@ -38,7 +38,7 @@ namespace ShadowRunHelperViewer.Droid
             // get the accent color from your theme
             var themeAccentColor = new TypedValue();
             this.Theme.ResolveAttribute(Resource.Attribute.colorAccent, themeAccentColor, true);
-            var droidAccentColor = new Android.Graphics.Color(themeAccentColor.Data);
+            var droidAccentColor = new Color(themeAccentColor.Data);
 
             // set Xamarin Color.Accent to match the theme's accent color
             var accentColorProp = typeof(Xamarin.Forms.Color).GetProperty(nameof(Xamarin.Forms.Color.Accent), System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
@@ -65,7 +65,7 @@ namespace ShadowRunHelperViewer.Droid
                 // Do something if there are not any pages in the `PopupStack`
             }
         }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 

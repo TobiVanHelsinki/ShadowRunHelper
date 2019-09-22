@@ -1,8 +1,9 @@
 ﻿using ShadowRunHelper;
 using ShadowRunHelperViewer.Platform;
+using ShadowRunHelperViewer.Strings;
 using ShadowRunHelperViewer.UI.Pages;
-using SharedCode.Ressourcen;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using TAPPLICATION.IO;
 using TAPPLICATION.Model;
@@ -22,9 +23,16 @@ namespace ShadowRunHelperViewer
             Log.Mode = LogMode.Verbose;
             CreateLogFile();
             InitializeComponent();
-            var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
-            L10n.SetLocale(ci);
-            Strings.Culture = ci;
+            if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
+            {
+                var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+                AppResources.Culture = ci; // set the RESX for resource localization
+                CultureInfo.CurrentUICulture = ci;
+                DependencyService.Get<ILocalize>().SetLocale(ci); // set the Thread for locale-aware methods
+
+                AppResources.Culture = new CultureInfo("fr-FR"); //TestPurpose
+            }
+
             AppHolder.InitModel();
             try
             {

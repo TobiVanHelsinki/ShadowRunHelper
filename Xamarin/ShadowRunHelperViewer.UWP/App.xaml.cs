@@ -1,6 +1,5 @@
 ﻿using ShadowRunHelper;
 using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.UWP.Platform;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -23,7 +22,7 @@ namespace ShadowRunHelperViewer.UWP
 
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
-            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+            //Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             InitializeComponent();
 
             Init.Do();

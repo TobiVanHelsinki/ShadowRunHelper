@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="KlammerAufEck.Text" xml:space="preserve">
+    <value>[</value>
+  </data>
+  <data name="KlammerZuEck.Text" xml:space="preserve">
+    <value>]</value>
+  </data>
+  <data name="Plus.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="Slash.Text" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="Bindestrich.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="Klammer_Rund_Auf.Text" xml:space="preserve">
+    <value>(</value>
+  </data>
+  <data name="Klammer_Rund_Zu.Text" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="Notification_Error_CSVExportFail" xml:space="preserve">
+    <value>Konnte nicht CSV-Exportieren</value>
+  </data>
+  <data name="Notification_Error_CSVImportFail" xml:space="preserve">
+    <value>CSV Importfehler</value>
+  </data>
+  <data name="Notification_Error_DelAllFail" xml:space="preserve">
+    <value>Alle Löschen fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_DelCurrentFail" xml:space="preserve">
+    <value>Löschen des aktuellen Char fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_DelFail" xml:space="preserve">
+    <value>Löschen fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_FileExportFail" xml:space="preserve">
+    <value>Konnte nicht Exportieren</value>
+  </data>
+  <data name="Notification_Error_FileImportFail" xml:space="preserve">
+    <value>Dateiimport fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_LoadFail" xml:space="preserve">
+    <value>Laden fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_SaveFail" xml:space="preserve">
+    <value>Speichern fehlgeschlagen, versuche, den Char zu exportieren und starte die App neu.</value>
+  </data>
+  <data name="Notification_Error_Converter_Error1.Text" xml:space="preserve">
+    <value>konnte nicht übernommen werden.</value>
+  </data>
+  <data name="Notification_Error_DisplayRequest.Text" xml:space="preserve">
+    <value>Display kann nicht automatisch aktiviert bleiben.</value>
+  </data>
+  <data name="Notification_Error_Loader_Error1.Text" xml:space="preserve">
+    <value>Der Char konnte nicht vollstädnig geladen werden. Genaure Informationen bei den Benachrichtigungen verfügbar.</value>
+  </data>
+  <data name="Doppelpunkt.Text" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="Notification_Error_Unknown" xml:space="preserve">
+    <value>Ein unbekannter Fehler ist aufgetreten, Ihr char wurde mit dem Prefix ''Emergency'' gespeichert</value>
+  </data>
+  <data name="KlammerAufRund.Text" xml:space="preserve">
+    <value>(</value>
+  </data>
+  <data name="KlammerZuRund.Text" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="Komma.Text" xml:space="preserve">
+    <value>,</value>
+  </data>
+  <data name="Notification_Error_RepairFail" xml:space="preserve">
+    <value>Fehler beim Reparieren.</value>
+  </data>
+  <data name="Error_LoadCharFolder" xml:space="preserve">
+    <value>Fehler beim einlesen des Char-Verzeichnises.
+Setzen Sie den externen Ordner neu.</value>
+  </data>
+  <data name="Notification_Error_AuswahlToLess" xml:space="preserve">
+    <value>Fehler: Einige der verknüpften Dinge wurden nicht gefunden.</value>
+  </data>
+  <data name="Notification_Error_AllListChooser" xml:space="preserve">
+    <value>Interner Fehler, AllList war leer</value>
+  </data>
+  <data name="Notification_Error_Enum" xml:space="preserve">
+    <value>Falscher Enum Wert</value>
+  </data>
+  <data name="Notification_Error_IO_Deserialize" xml:space="preserve">
+    <value>Dateieinlesen fehlgeschlagen</value>
+  </data>
+  <data name="Notification_Error_IO_FileVersion" xml:space="preserve">
+    <value>Dateiversion unbekannt</value>
+  </data>
+  <data name="Notification_Error_IO_FolderNotFoundOrNotCreated" xml:space="preserve">
+    <value>Ordner konnte nicht gefunden und nicht erstellt werden</value>
+  </data>
+  <data name="Notification_Error_IO_UserDecision" xml:space="preserve">
+    <value>Benutzerentscheidung war Fehler werfen</value>
+    <comment>User Decision to throw</comment>
+  </data>
+  <data name="Notification_Info_ConvertFromPrevious" xml:space="preserve">
+    <value>Diese Datei ist eine alte Version, sie wird nun in das aktuelleste Format konvertiert. Dadurch kann sie womöglich nicht oder nicht mit dem gesamten Funktionsumfang in früheren Versionen des Programms geöffnet werden. Die Aktuelle Version des Programms steht in den Einstellungen. Sollte die Umwandlung nicht erwünscht sein, speichere den Char einfach nicht.</value>
+  </data>
+  <data name="GlobalFilterBox.PlaceholderText" xml:space="preserve">
+    <value>Suche nach Name und Typ ...</value>
+  </data>
+  <data name="Help1" xml:space="preserve">
+    <value>Items (u.a. Waffen, CyberDecks, normale Items) können "aktiv" sein. Das bedeutet, dass sie bei automatischen Berechnungen berücksichtigt werden. So kann beispielsweise eine "Schießen"-Handlung als Limit-Wert die Präzision der aktiven Waffe verlinkt bekommen. Wird die aktive Waffe geändert, ändern sich die davon abhängigen Werte automatisch.</value>
+  </data>
+  <data name="Help1_ActiveItems" xml:space="preserve">
+    <value>Aktive Items</value>
+  </data>
+  <data name="Help2" xml:space="preserve">
+    <value>Einige Standardwerte werden automatisch aktualisiert. Essenz beginnt mit 6. Davon werden alle Essenzwerte, die bei Implantaten eingetragen sind, abgezogen. Unter "Person" gibt es ein "Essenz Mod" Feld. Der Wert dort wird auf den berechneten Wert addiert. Solltet ihr also mit Vampiren knutschen, werdet ihr in dieses Feld wohl einen negativen Wert eintragen.</value>
+  </data>
+  <data name="Help2_AutoCalc" xml:space="preserve">
+    <value>Automatische Berechnungen</value>
+  </data>
+  <data name="Help3" xml:space="preserve">
+    <value>Für Handlungen und Fertigkeiten können alle anderen Dinge verlinkt werden. Bei einer Handlung können so ihr Würfelpool für die Probe, die Gegenprobe oder das Limit automatisch aus anderen Werten berechnet werden. Ändern sich die verlinkten Werte, ändern sich davon abhängige Werte automatisch. Kategorien wie Waffen, Panzerung, Vehikel, Kommlinks und Decks können nicht einzeln gewählt werden, dafür kann jede Eigenschaft einzeln gewählt werden. Siehe dazu "Aktive Items".</value>
+  </data>
+  <data name="Help3_LinkedItems" xml:space="preserve">
+    <value>Verlinkte Einträge</value>
+  </data>
+  <data name="Help4" xml:space="preserve">
+    <value>Mit dieser App können mehrere ShadowRun Chars verwaltet werden. Alle gespeicherten Chars werden in der Liste angezeigt. Diese Liste ist im Standardfall ein interner Ordner, es kann aber jeder beliebige Ordner gewählt werden. In den Optionen gibt es verschiedene Einstellungen dafür.</value>
+  </data>
+  <data name="Help4_CharAdministration" xml:space="preserve">
+    <value>Verwaltung</value>
+  </data>
+  <data name="Help5" xml:space="preserve">
+    <value>Beim Speichern eines Chars gibt es zwei Optionen. Standardmäßig wird der Dateiname zum Speichern verwendet, mit dem der Char geladen wird. Wird die Option "Fortschritt" gewählt, werden die Anzahl Runs und Karma dem Dateinamen hinzugefügt - damit ist eine Versionierung möglich. Außerdem kann mit der Option "Zeit" die genaue Zeit mit in den Dateinamen geschrieben werden.</value>
+  </data>
+  <data name="Help5_CharAdministration_FileName" xml:space="preserve">
+    <value>Verwaltung - Dateinamen</value>
+  </data>
+  <data name="Notification_Error_FileActivation" xml:space="preserve">
+    <value>Datei konnte nicht gelesen werden.</value>
+  </data>
+  <data name="Ampersant.Text" xml:space="preserve">
+    <value>&amp;</value>
+  </data>
+  <data name="EditDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Fertig</value>
+  </data>
+  <data name="ExampleChar" xml:space="preserve">
+    <value>Beispiel Charakter</value>
+  </data>
+  <data name="PreDBChar" xml:space="preserve">
+    <value>Datenbank Charakter</value>
+  </data>
+  <data name="HelpDBIntro.Text" xml:space="preserve">
+    <value>In dieser Datenbank findest du vorgefertigte Einträge. Klicke auf einen Eintrag, um ihn auszuwählen. Mit den Befehlen unten kannst du diese Auswahl dann in deinen aktuellen Charakter übernehmen. Solltest du bereits einen Eintrag mit dem selben Namen in der selben Kategorie besitzen, wird dein Eintrag nicht überschrieben. Für Datenbankeinträge mit Verknüpfungen zu anderen Einträgen wird versucht, deine Einträge zu verknüpfen. Falls das misslingt, wird auch der verknüpfte Eintrag kopiert.</value>
+  </data>
+  <data name="of.Text" xml:space="preserve">
+    <value>von</value>
+  </data>
+  <data name="Tut_TitleState_00" xml:space="preserve">
+    <value>App Einleitung</value>
+  </data>
+  <data name="Tut_State_01" xml:space="preserve">
+    <value>Willkommen im ShadowRunHelper!
+
+Dieses Tutorial wird dir die wesentlichen Elemente der App erklären.
+
+Sollte das Tutorial den ganzen Bildschirm verdecken, (auf kleinen Displays) kannst du es durch den Auge-Button transparent machen.</value>
+  </data>
+  <data name="Tut_State_02" xml:space="preserve">
+    <value>Die Hauptnavigation. Diese 3 Buttons sind immer am unteren Rand sichtbar. Wechsle mit ihnen zwischen 
+    1. Dem Aktuellen Charakterbogen 
+    2. Der liste aller Charakterbögen 
+    3. Einstellungen, Impressum, Hilfen</value>
+  </data>
+  <data name="Tut_State_03" xml:space="preserve">
+    <value>In der aktuellen Ansicht verwaltest du alle gespeichrten Charakterbögen.
+
+Die rot umrandete Liste zeigt alle deine gespeicherten Charaktere an. 
+Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kannst du auswählen, ob sie über deinen Account synchronisieren werden sollen. Du kannst auch einen anderen Ordner als Speicherort wählen.</value>
+  </data>
+  <data name="Tut_State_04" xml:space="preserve">
+    <value>Das war's mit dem Tutorial. Du kannst einen neuen Charakter erstellen, aber besser ist es, du schaust dir erst den Beispielcharakter an.</value>
+  </data>
+  <data name="AuswahlDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Fertig</value>
+  </data>
+  <data name="AuswahlDialog.Title" xml:space="preserve">
+    <value>Auswahl</value>
+  </data>
+  <data name="Request_Delete.No" xml:space="preserve">
+    <value>Ach nein doch nicht ...</value>
+  </data>
+  <data name="Request_Delete.Text" xml:space="preserve">
+    <value>Möchtest Du die Datei wirklich löschen? Sie wird wirklich gelöscht, nicht in den Papierkorb verschoben und kann nicht wiederhergestellt werden.</value>
+  </data>
+  <data name="Request_Delete.Title" xml:space="preserve">
+    <value>Nachfrage</value>
+  </data>
+  <data name="Request_Delete.Yes" xml:space="preserve">
+    <value>Wirklich Löschen!</value>
+  </data>
+  <data name="Request_DeleteAll.No" xml:space="preserve">
+    <value>Ach nein doch nicht ...</value>
+  </data>
+  <data name="Request_DeleteAll.Text" xml:space="preserve">
+    <value>Damit zerstörst du die Existenz von ... JEDEM!, Chummer! Bist du sicher, dass du das machen willst?</value>
+  </data>
+  <data name="Request_DeleteAll.Title" xml:space="preserve">
+    <value>Nachfrage</value>
+  </data>
+  <data name="Request_DeleteAll.Yes" xml:space="preserve">
+    <value>Wirklich Löschen!</value>
+  </data>
+  <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">
+    <value>Speichern fehlgeschlagen - andere Operation in Gange</value>
+  </data>
+  <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
+    <value>Diese Version des Chars wird seid langem nicht mehr unterstützt. Bitte wende dich an den Support, wenn du ihn unbedingt konvertiert haben möchtest.</value>
+  </data>
+  <data name="FurtherSettings.Text" xml:space="preserve">
+    <value>Mehr</value>
+  </data>
+  <data name="Notification_Error_LogicFail" xml:space="preserve">
+    <value>Programmlogik Fehler</value>
+  </data>
+  <data name="Error_GetFolder" xml:space="preserve">
+    <value>Fehler, konnte nicht auf Ordner zugreifen.</value>
+  </data>
+  <data name="Error_RepairLinkList" xml:space="preserve">
+    <value>Fehler, konnte Link mit {0} nicht wiederherstellen</value>
+  </data>
+  <data name="Order.Text" xml:space="preserve">
+    <value>Sortieren</value>
+  </data>
+  <data name="Notification_Info_UpgradedChar_1_5_to_1_6" xml:space="preserve">
+    <value>Ihr Char wurde auf die neuste Version geupgraded. Er kann nicht mehr vollständig in alten App Versionen geladen werden.</value>
+  </data>
+  <data name="Notification_Warning_NotAddLinkedEntry" xml:space="preserve">
+    <value>Info: Referenz wurde nicht hinzugefügt</value>
+  </data>
+  <data name="Error_ObjectCopy" xml:space="preserve">
+    <value>Konnte nicht alles kopieren.</value>
+  </data>
+  <data name="IAP_TXT_ADS.Content" xml:space="preserve">
+    <value>Keine Werbung für ein Leben</value>
+  </data>
+  <data name="IAP_TXT_ADS_365.Content" xml:space="preserve">
+    <value>Keine Werbung für ein Jahr</value>
+  </data>
+  <data name="IAP_TXT_TEE.Content" xml:space="preserve">
+    <value>Premium-Badge hinzufügen</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Error_LoadPurchases" xml:space="preserve">
+    <value>Fehler: Ihre Käufe konnten nicht geladen werden.</value>
+  </data>
+  <data name="Notification_Error_General" xml:space="preserve">
+    <value>Nicht näher spezifizierter Fehler: </value>
+  </data>
+  <data name="Error_CopyFiles" xml:space="preserve">
+    <value>Fehler: Konnte nicht (alle) Dateien an neuen Ort kopieren.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="SymbolChanges.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="IAP_Error" xml:space="preserve">
+    <value>Fehler beim Kauf</value>
+  </data>
+  <data name="IAP_Succeeded" xml:space="preserve">
+    <value>Kauf Erfolgreich</value>
+  </data>
+  <data name="Request_NotSave.No" xml:space="preserve">
+    <value>ohne Speichern fortfahren</value>
+  </data>
+  <data name="Request_NotSave.Text" xml:space="preserve">
+    <value>Der aktuelle Char hat noch ungespeicherte Änderungen</value>
+  </data>
+  <data name="Request_NotSave.Title" xml:space="preserve">
+    <value>Warnung</value>
+  </data>
+  <data name="Request_NotSave.Yes" xml:space="preserve">
+    <value>Speichern und fortfahren</value>
+  </data>
+  <data name="Notification_Char_Loaded_File" xml:space="preserve">
+    <value>Ein Char wurde aus einer Datei geladen</value>
+  </data>
+  <data name="Notification_Char_Loaded_Start" xml:space="preserve">
+    <value>Ein Char wurde autmoatisch geladen</value>
+  </data>
+  <data name="Activity_PlayedWith" xml:space="preserve">
+    <value>Gespielt mit </value>
+  </data>
+  <data name="Notification_NewVersion" xml:space="preserve">
+    <value>Willkommen in der neuen Version: {0}. Sieh dir hier eine Liste von Neuerungen an!</value>
+  </data>
+  <data name="AppImportErrors" xml:space="preserve">
+    <value>Der Import der folgenden Einstellungen oder Dateien hat nicht geklappt.</value>
+  </data>
+  <data name="AppImportNoErrors" xml:space="preserve">
+    <value>Der Import war erfolgreich.</value>
+  </data>
+  <data name="Request_AppImport.No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="Request_AppImport.Text" xml:space="preserve">
+    <value>Möchten Sie die Inhalte einer anderen App importieren? Einstellungen werden überschrieben.</value>
+  </data>
+  <data name="Request_AppImport.Title" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Request_AppImport.Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Notification_Error_SummorysREfresh" xml:space="preserve">
+    <value>Ordner konnte nicht gelesen werden</value>
+  </data>
+  <data name="VersionHistory" xml:space="preserve">
+    <value>Version 1.9.1
+[new] BackUp Versionierung: Die Optionen, an einen gespeicherten Char Zeit oder Fortschritt anzuhängen führten zu zu vielen Fehlern und Ausnahmen. Daher wurden sie entfernt. Stattdessen gibt es nun eine BackUp Versionierung, die beide Optionen zusammenfasst und sinnvoller ist.
+[new] Neu gestalteter Header für die Char-Page.
+Version 1.8.5
+[fix] Aus Datei geladene Chars wurden nicht gespeichert, wenn die Optionen Fortschritt oder Zeit aktiv waren
+Version 1.8.4:
+[new] Lebensstilkosten Button
+Version 1.8.3:
+[new] Favoriten
+[new] Kontextmenü
+[new] Copy, Cut und Paste! (Kontextmenu)
+[new] Char-Name in der Taskbar
+Version 1.7.6:
+[new] Seperatoren
+Version 1.7.4:
+[new] Kategorieoptionen (Sortieren, Exportieren, ...)
+[new] Technomancer Kategorien
+[new] Eigene Kategorien für berechnete Werte
+[new] Verlinkungen sind jetzt möglich für Attribute und Kampfitems
+[new] Verlinkungen sind jetzt mit jedem Item möglich
+[new] Beispiel Charakter
+[new] Multifenster Option (für Windows April Update)
+[new] Drag and Drop zwischen verschiedenen Fenstern (für Windows April Update)
+[new] TimeLine Integration (für Windows April Update)
+[new] Benachrichtigungen
+[new] kein Neuladen mehr zum Anwenden der Char-Optionen
+[new] viele Tooltips für Buttons hinzugefügt
+[new] komplette englische Übersetzung
+[new] Drag and Drop zwischen Kategorien
+</value>
+  </data>
+  <data name="Tip1" xml:space="preserve">
+    <value>Windows schließt Apps manchmal aus Ressourcenmangel. Versuche die Autosave-Option, wenn du Datenverlust vermeiden willst.</value>
+  </data>
+  <data name="Tip2" xml:space="preserve">
+    <value>Benutze als externen Speicherordner einen Cloud-Ordner. So sind deine Chars sicher</value>
+  </data>
+  <data name="Tip3" xml:space="preserve">
+    <value>Kategorien, die du nicht brauchst, kannst du über das Charakterbogen-Menü ausblenden.</value>
+  </data>
+  <data name="Tip4" xml:space="preserve">
+    <value>Oben links in deinem Charakterbogen befindet sich das Charakterbogen-Menü. Schau doch mal rein.</value>
+  </data>
+  <data name="Tip5" xml:space="preserve">
+    <value>Werden Verknüpfungen manchmal nicht mehr aktualisiert? Versuche "Reparieren" im Charakterbogen-Menü.</value>
+  </data>
+  <data name="Tip10" xml:space="preserve">
+    <value>Oben rechts befindet sich das Schadensmenü. Hoffentlich musst du es nicht all zu oft benutzen.</value>
+  </data>
+  <data name="Tip11" xml:space="preserve">
+    <value>Wenn du deinen Charakterbogen jemandem zeigen willst, der die App nicht hat, kannst du ihn als csv exportieren.</value>
+  </data>
+  <data name="Tip6" xml:space="preserve">
+    <value>Du kannst in den Optionen einstellen, dass Chars mit dem aktuellen Fortschritt (Karme und Runs) gespeichert werden. So ist eine Versionierung möglich.</value>
+  </data>
+  <data name="Tip7" xml:space="preserve">
+    <value>Objekte, die "Aktiv" gestellt werden können, werden bei Berechnungen nur mitgerechnet, wenn sie aktiv sind.</value>
+  </data>
+  <data name="Tip8" xml:space="preserve">
+    <value>Der Standardwert der Essenz ist 6. Davon werden Essenzwerte bei Implantaten abgezogen.</value>
+  </data>
+  <data name="Tip9" xml:space="preserve">
+    <value>Schadensmaxima werden oben im Schadenmenü angezeigt.</value>
+  </data>
+  <data name="Tip12" xml:space="preserve">
+    <value>Tipp zu schnell weg? Tippe auf ihn!</value>
+  </data>
+  <data name="Tip13" xml:space="preserve">
+    <value>Nutze Drag'N'Drop, um Objekte zwischen Kategorien zu kopieren / verschieben.</value>
+  </data>
+  <data name="Tip14" xml:space="preserve">
+    <value>Seit dem neusten Windows-Update, kannst du die App mehrfach offen haben.</value>
+  </data>
+  <data name="Tip15" xml:space="preserve">
+    <value>Nutze Drag'N'Drop, um Objekte zwischen Apps zu kopieren / verschieben.</value>
+  </data>
+  <data name="Notification_Info_UpgradedChar" xml:space="preserve">
+    <value>Ihr Char wurde auf die neuste Version geupgraded. Er kann nicht mehr vollständig in alten App Versionen geladen werden.</value>
+  </data>
+  <data name="Tip16" xml:space="preserve">
+    <value>Die App ist unter mehreren Windowsversionen nutzbar, aber womöglich nicht mit dem vollen Funktionsumfang. Halte dein Windows am besten aktuell.</value>
+  </data>
+  <data name="Tip17" xml:space="preserve">
+    <value>Halte die Backups deiner Charakterbögen aktuell, dann bist du vor Datenschaden in Sicherheit.</value>
+  </data>
+  <data name="Request_NotSave.Break" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="Tip18" xml:space="preserve">
+    <value>Gefällt dir die App? 
+Bewerte Sie doch im Store!</value>
+  </data>
+</root>

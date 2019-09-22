@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
+             xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.Pages.MainPage"
              BackgroundColor="Accent">
@@ -29,6 +30,7 @@
             </Grid.RowDefinitions>
             <ContentPresenter x:Name="ContentPlace"/>
             <Label BackgroundColor="Beige" x:Name="LogView" IsVisible="False"/>
+            <Label Text="{resx:ModelResources Model_Thing_Bezeichner}"/>
             <Grid x:Name="CommandBar" Grid.Row="1" HorizontalOptions="FillAndExpand" Padding="5,10,5,10">
                 <Button Grid.Column="0" Text="&#xf007;" Style="{StaticResource StretchIconButton}" Clicked="CharPage"  />
                 <Button Grid.Column="1" Text="&#xf0c0;" Style="{StaticResource StretchIconButton}" Clicked="Administration" />
