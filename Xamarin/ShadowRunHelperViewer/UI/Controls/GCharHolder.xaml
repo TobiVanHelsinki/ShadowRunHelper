@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              xmlns:model="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
              xmlns:forms="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
+             xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              x:Class="ShadowRunHelperViewer.GCharHolder"
              >
     <ContentView.Resources>
@@ -134,17 +135,17 @@
                 </Grid.ColumnDefinitions>
                 <Button Text="&#xf0c9;" Style="{StaticResource IconButton_ConstWidth}" Clicked="Toggle" Grid.Column="1" x:Name="MenuToggleButton"/>
                 <Button Text="&#xf0c7;" Style="{StaticResource IconButton_ConstWidth}" Clicked="Save" Grid.Column="2"/>
-                <forms:AutoSuggestBox PlaceholderText="Search Name or Type" HorizontalOptions="Fill" Grid.Column="3"
+                <forms:AutoSuggestBox PlaceholderText="{resx:AppResources GlobalFilterBox}" HorizontalOptions="Fill" Grid.Column="3"
                     TextChanged="AutoSuggestBox_TextChanged" SuggestionChosen="AutoSuggestBox_SuggestionChosen" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
                 <Button Text="&#xf141;" Style="{StaticResource IconButton_ConstWidth}" Clicked="MoreMenu" Grid.Column="4"/>
             </Grid>
             <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="5,0,5,5" >
                 <StackLayout Style="{StaticResource OuterPanel}">
-                    <Label Text="Money" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{resx:ModelResources Person_Kontostand}" Style="{StaticResource OneLineText}"/>
                     <Label Text="{x:Binding MyChar.Person.Kontostand}" Style="{StaticResource OneLineText}"/>
                 </StackLayout>
                 <StackLayout Style="{StaticResource OuterPanel}">
-                    <Label Text="Edge" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{resx:ModelResources Person_Edge}" Style="{StaticResource OneLineText}"/>
                     <StackLayout Style="{StaticResource InnerPanel}">
                         <Label Text="{x:Binding MyChar.Person.Edge_Aktuell}" Style="{StaticResource OneLineText}"/>
                         <Label Text="/" Style="{StaticResource OneLineText}"/>
@@ -152,7 +153,7 @@
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Style="{StaticResource OuterPanel}">
-                    <Label Text="Karma" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{resx:ModelResources Person_Karma}" Style="{StaticResource OneLineText}"/>
                     <StackLayout Style="{StaticResource InnerPanel}">
                         <Label Text="{x:Binding MyChar.Person.Karma_Aktuell}" Style="{StaticResource OneLineText}"/>
                         <Label Text="/" Style="{StaticResource OneLineText}"/>
@@ -160,11 +161,11 @@
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Style="{StaticResource OuterPanel}">
-                    <Label Text="Runs" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{resx:ModelResources Person_Runs}" Style="{StaticResource OneLineText}"/>
                     <Label Text="{x:Binding MyChar.Person.Runs}" Style="{StaticResource OneLineText}"/>
                 </StackLayout>
                 <StackLayout Style="{StaticResource OuterPanel}">
-                    <Label Text="Damage" Style="{StaticResource OneLineText}"/>
+                    <Label Text="{resx:UiResources Damage}" Style="{StaticResource OneLineText}"/>
                     <StackLayout Style="{StaticResource InnerPanel}">
                         <Label Text="{x:Binding MyChar.Person.Schaden_G}" Style="{StaticResource OneLineText}"/>
                         <Label Text="{x:Binding MyChar.Person.Schaden_K}" Style="{StaticResource OneLineText}"/>
@@ -201,7 +202,7 @@
                             <StackLayout>
                                 <StackLayout Style="{StaticResource LabelLayout}">
                                     <Label Text="&#xf0e7;" Style="{StaticResource LocalIconLabel}"/>
-                                    <Label Text="Actions" Style="{StaticResource LocalLabel}"/>
+                                    <Label Text="{resx:UiResources Category_Aktion}" Style="{StaticResource LocalLabel}"/>
                                 </StackLayout>
                                 <StackLayout x:Name="s1"/>
                             </StackLayout>
@@ -210,7 +211,7 @@
                             <StackLayout>
                                 <StackLayout Style="{StaticResource LabelLayout}">
                                     <Label Text="&#xf187;" Style="{StaticResource LocalIconLabel}"/>
-                                    <Label Text="Items" Style="{StaticResource LocalLabel}"/>
+                                    <Label Text="{resx:UiResources Category_Item}" Style="{StaticResource LocalLabel}"/>
                                 </StackLayout>
                                 <StackLayout x:Name="s2"/>
                             </StackLayout>
@@ -219,7 +220,7 @@
                             <StackLayout>
                                 <StackLayout Style="{StaticResource LabelLayout}">
                                     <Label Text="&#xf303;" Style="{StaticResource LocalIconLabel}"/>
-                                    <Label Text="Notes" Style="{StaticResource LocalLabel}"/>
+                                    <Label Text="{resx:UiResources Category_Notizen}" Style="{StaticResource LocalLabel}"/>
                                 </StackLayout>
                                 <StackLayout x:Name="s5"/>
                             </StackLayout>
@@ -232,7 +233,7 @@
                             <StackLayout>
                                 <StackLayout Style="{StaticResource LabelLayout}">
                                     <Label Text="&#xf3ed;" Style="{StaticResource LocalIconLabel}"/>
-                                    <Label Text="Battle" Style="{StaticResource LocalLabel}"/>
+                                    <Label Text="{resx:UiResources Category_Kampf}" Style="{StaticResource LocalLabel}"/>
                                     <Label Text="&#xf714;" Style="{StaticResource LocalIconLabel}"/>
                                 </StackLayout>
                                 <StackLayout x:Name="s3"/>
@@ -242,7 +243,7 @@
                             <StackLayout>
                                 <StackLayout Style="{StaticResource LabelLayout}">
                                     <Label Text="&#xf007;" Style="{StaticResource LocalIconLabel}"/>
-                                    <Label Text="Person" Style="{StaticResource LocalLabel}"/>
+                                    <Label Text="{resx:UiResources Category_Person}" Style="{StaticResource LocalLabel}"/>
                                 </StackLayout>
                                 <StackLayout x:Name="s4"/>
                             </StackLayout>

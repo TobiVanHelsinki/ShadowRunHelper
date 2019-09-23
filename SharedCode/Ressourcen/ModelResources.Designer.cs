@@ -63,297 +63,297 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Active entry: ähnelt.
         /// </summary>
-        public static string _Active_Text {
+        public static string _Active {
             get {
-                return ResourceManager.GetString("_Active.Text", resourceCulture);
+                return ResourceManager.GetString("_Active", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Capacity ähnelt.
         /// </summary>
-        public static string _Kapazitaet_Text {
+        public static string _Kapazitaet {
             get {
-                return ResourceManager.GetString("_Kapazitaet.Text", resourceCulture);
+                return ResourceManager.GetString("_Kapazitaet", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Mod. ähnelt.
         /// </summary>
-        public static string _Mod_Text {
+        public static string _Mod {
             get {
-                return ResourceManager.GetString("_Mod.Text", resourceCulture);
+                return ResourceManager.GetString("_Mod", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die orig. ähnelt.
         /// </summary>
-        public static string _ORG_Text {
+        public static string _ORG {
             get {
-                return ResourceManager.GetString("_ORG.Text", resourceCulture);
+                return ResourceManager.GetString("_ORG", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Pool ähnelt.
         /// </summary>
-        public static string _Pool_Text {
+        public static string _Pool {
             get {
-                return ResourceManager.GetString("_Pool.Text", resourceCulture);
+                return ResourceManager.GetString("_Pool", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Adept Power ähnelt.
         /// </summary>
-        public static string Adeptenkraft__Text {
+        public static string Adeptenkraft_ {
             get {
-                return ResourceManager.GetString("Adeptenkraft_.Text", resourceCulture);
+                return ResourceManager.GetString("Adeptenkraft_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Options ähnelt.
         /// </summary>
-        public static string Adeptenkraft_Option_Text {
+        public static string Adeptenkraft_Option {
             get {
-                return ResourceManager.GetString("Adeptenkraft_Option.Text", resourceCulture);
+                return ResourceManager.GetString("Adeptenkraft_Option", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Adept Powers ähnelt.
         /// </summary>
-        public static string AdeptenkraftM__Text {
+        public static string AdeptenkraftM_ {
             get {
-                return ResourceManager.GetString("AdeptenkraftM_.Text", resourceCulture);
+                return ResourceManager.GetString("AdeptenkraftM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Attribut ähnelt.
         /// </summary>
-        public static string Attribut__Text {
+        public static string Attribut_ {
             get {
-                return ResourceManager.GetString("Attribut_.Text", resourceCulture);
+                return ResourceManager.GetString("Attribut_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Charisma ähnelt.
         /// </summary>
-        public static string Attribut_Charisma_Text {
+        public static string Attribut_Charisma {
             get {
-                return ResourceManager.GetString("Attribut_Charisma.Text", resourceCulture);
+                return ResourceManager.GetString("Attribut_Charisma", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Agility ähnelt.
         /// </summary>
-        public static string Attribut_Geschick_Text {
+        public static string Attribut_Geschick {
             get {
-                return ResourceManager.GetString("Attribut_Geschick.Text", resourceCulture);
+                return ResourceManager.GetString("Attribut_Geschick", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Intuition ähnelt.
         /// </summary>
-        public static string Attribut_Intuition_Text {
+        public static string Attribut_Intuition {
             get {
-                return ResourceManager.GetString("Attribut_Intuition.Text", resourceCulture);
+                return ResourceManager.GetString("Attribut_Intuition", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Body ähnelt.
         /// </summary>
-        public static string Attribut_Konsti_Text {
+        public static string Attribut_Konsti {
             get {
-                return ResourceManager.GetString("Attribut_Konsti.Text", resourceCulture);
+                return ResourceManager.GetString("Attribut_Konsti", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Logic ähnelt.
         /// </summary>
-        public static string Attribut_Logik_Text {
+        public static string Attribut_Logik {
             get {
-                return ResourceManager.GetString("Attribut_Logik.Text", resourceCulture);
+                return ResourceManager.GetString("Attribut_Logik", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Magic ähnelt.
         /// </summary>
-        public static string Attribut_Magie_Text {
+        public static string Attribut_Magie {
             get {
-                return ResourceManager.GetString("Attribut_Magie.Text", resourceCulture);
+                return ResourceManager.GetString("Attribut_Magie", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Reaction ähnelt.
         /// </summary>
-        public static string Attribut_Reaktion_Text {
+        public static string Attribut_Reaktion {
             get {
-                return ResourceManager.GetString("Attribut_Reaktion.Text", resourceCulture);
+                return ResourceManager.GetString("Attribut_Reaktion", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Resonance ähnelt.
         /// </summary>
-        public static string Attribut_Resonanz_Text {
+        public static string Attribut_Resonanz {
             get {
-                return ResourceManager.GetString("Attribut_Resonanz.Text", resourceCulture);
+                return ResourceManager.GetString("Attribut_Resonanz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Strength ähnelt.
         /// </summary>
-        public static string Attribut_Staerke_Text {
+        public static string Attribut_Staerke {
             get {
-                return ResourceManager.GetString("Attribut_Staerke.Text", resourceCulture);
+                return ResourceManager.GetString("Attribut_Staerke", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Willpower ähnelt.
         /// </summary>
-        public static string Attribut_Willen_Text {
+        public static string Attribut_Willen {
             get {
-                return ResourceManager.GetString("Attribut_Willen.Text", resourceCulture);
+                return ResourceManager.GetString("Attribut_Willen", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Attributs ähnelt.
         /// </summary>
-        public static string AttributM__Text {
+        public static string AttributM_ {
             get {
-                return ResourceManager.GetString("AttributM_.Text", resourceCulture);
+                return ResourceManager.GetString("AttributM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Calculated value ähnelt.
         /// </summary>
-        public static string Berechnet__Text {
+        public static string Berechnet_ {
             get {
-                return ResourceManager.GetString("Berechnet_.Text", resourceCulture);
+                return ResourceManager.GetString("Berechnet_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Essence ähnelt.
         /// </summary>
-        public static string Berechnet_Essenz_Text {
+        public static string Berechnet_Essenz {
             get {
-                return ResourceManager.GetString("Berechnet_Essenz.Text", resourceCulture);
+                return ResourceManager.GetString("Berechnet_Essenz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Walk ähnelt.
         /// </summary>
-        public static string Berechnet_Laufen_Text {
+        public static string Berechnet_Laufen {
             get {
-                return ResourceManager.GetString("Berechnet_Laufen.Text", resourceCulture);
+                return ResourceManager.GetString("Berechnet_Laufen", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Mental Limit ähnelt.
         /// </summary>
-        public static string Berechnet_Limit_G_Text {
+        public static string Berechnet_Limit_G {
             get {
-                return ResourceManager.GetString("Berechnet_Limit_G.Text", resourceCulture);
+                return ResourceManager.GetString("Berechnet_Limit_G", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Physical Limit ähnelt.
         /// </summary>
-        public static string Berechnet_Limit_K_Text {
+        public static string Berechnet_Limit_K {
             get {
-                return ResourceManager.GetString("Berechnet_Limit_K.Text", resourceCulture);
+                return ResourceManager.GetString("Berechnet_Limit_K", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Social Limit ähnelt.
         /// </summary>
-        public static string Berechnet_Limit_S_Text {
+        public static string Berechnet_Limit_S {
             get {
-                return ResourceManager.GetString("Berechnet_Limit_S.Text", resourceCulture);
+                return ResourceManager.GetString("Berechnet_Limit_S", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Run ähnelt.
         /// </summary>
-        public static string Berechnet_Rennen_Text {
+        public static string Berechnet_Rennen {
             get {
-                return ResourceManager.GetString("Berechnet_Rennen.Text", resourceCulture);
+                return ResourceManager.GetString("Berechnet_Rennen", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Carrie ähnelt.
         /// </summary>
-        public static string Berechnet_Tragen_Text {
+        public static string Berechnet_Tragen {
             get {
-                return ResourceManager.GetString("Berechnet_Tragen.Text", resourceCulture);
+                return ResourceManager.GetString("Berechnet_Tragen", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Calculated values ähnelt.
         /// </summary>
-        public static string BerechnetM__Text {
+        public static string BerechnetM_ {
             get {
-                return ResourceManager.GetString("BerechnetM_.Text", resourceCulture);
+                return ResourceManager.GetString("BerechnetM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Contact ähnelt.
         /// </summary>
-        public static string Connection__Text {
+        public static string Connection_ {
             get {
-                return ResourceManager.GetString("Connection_.Text", resourceCulture);
+                return ResourceManager.GetString("Connection_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Connection ähnelt.
         /// </summary>
-        public static string Connection_Einfluss_Text {
+        public static string Connection_Einfluss {
             get {
-                return ResourceManager.GetString("Connection_Einfluss.Text", resourceCulture);
+                return ResourceManager.GetString("Connection_Einfluss", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Loyalty ähnelt.
         /// </summary>
-        public static string Connection_Loyal_Text {
+        public static string Connection_Loyal {
             get {
-                return ResourceManager.GetString("Connection_Loyal.Text", resourceCulture);
+                return ResourceManager.GetString("Connection_Loyal", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Contacts ähnelt.
         /// </summary>
-        public static string ConnectionM__Text {
+        public static string ConnectionM_ {
             get {
-                return ResourceManager.GetString("ConnectionM_.Text", resourceCulture);
+                return ResourceManager.GetString("ConnectionM_", resourceCulture);
             }
         }
         
@@ -394,155 +394,155 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Active Deck ähnelt.
-        /// </summary>
-        public static string CyberDeck__Aktiv_Text {
-            get {
-                return ResourceManager.GetString("CyberDeck__Aktiv.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die CyberDeck ähnelt.
         /// </summary>
-        public static string CyberDeck__Text {
+        public static string CyberDeck_ {
             get {
-                return ResourceManager.GetString("CyberDeck_.Text", resourceCulture);
+                return ResourceManager.GetString("CyberDeck_", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Attack Original ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Active Deck ähnelt.
         /// </summary>
-        public static string CyberDeck_Angriff_o_Text {
+        public static string CyberDeck__Aktiv {
             get {
-                return ResourceManager.GetString("CyberDeck_Angriff_o.Text", resourceCulture);
+                return ResourceManager.GetString("CyberDeck__Aktiv", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Attack ähnelt.
         /// </summary>
-        public static string CyberDeck_Angriff_Text {
+        public static string CyberDeck_Angriff {
             get {
-                return ResourceManager.GetString("CyberDeck_Angriff.Text", resourceCulture);
+                return ResourceManager.GetString("CyberDeck_Angriff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Attack Original ähnelt.
+        /// </summary>
+        public static string CyberDeck_Angriff_o {
+            get {
+                return ResourceManager.GetString("CyberDeck_Angriff_o", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Dataprocessing original ähnelt.
         /// </summary>
-        public static string CyberDeck_Datenverarbeitung_o_Text {
+        public static string CyberDeck_Datenverarbeitung_o {
             get {
-                return ResourceManager.GetString("CyberDeck_Datenverarbeitung_o.Text", resourceCulture);
+                return ResourceManager.GetString("CyberDeck_Datenverarbeitung_o", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Firewall original ähnelt.
         /// </summary>
-        public static string CyberDeck_Firewall_o_Text {
+        public static string CyberDeck_Firewall_o {
             get {
-                return ResourceManager.GetString("CyberDeck_Firewall_o.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Sleaze original ähnelt.
-        /// </summary>
-        public static string CyberDeck_Schleicher_o_Text {
-            get {
-                return ResourceManager.GetString("CyberDeck_Schleicher_o.Text", resourceCulture);
+                return ResourceManager.GetString("CyberDeck_Firewall_o", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sleaze ähnelt.
         /// </summary>
-        public static string CyberDeck_Schleicher_Text {
+        public static string CyberDeck_Schleicher {
             get {
-                return ResourceManager.GetString("CyberDeck_Schleicher.Text", resourceCulture);
+                return ResourceManager.GetString("CyberDeck_Schleicher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Sleaze original ähnelt.
+        /// </summary>
+        public static string CyberDeck_Schleicher_o {
+            get {
+                return ResourceManager.GetString("CyberDeck_Schleicher_o", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die CyberDecks ähnelt.
         /// </summary>
-        public static string CyberDeckM__Text {
+        public static string CyberDeckM_ {
             get {
-                return ResourceManager.GetString("CyberDeckM_.Text", resourceCulture);
+                return ResourceManager.GetString("CyberDeckM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Effect ähnelt.
         /// </summary>
-        public static string Eigenschaft_Auswirkungen_Text {
+        public static string Eigenschaft_Auswirkungen {
             get {
-                return ResourceManager.GetString("Eigenschaft_Auswirkungen.Text", resourceCulture);
+                return ResourceManager.GetString("Eigenschaft_Auswirkungen", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Effects ähnelt.
         /// </summary>
-        public static string Eigenschaften_Auswirkung_Text {
+        public static string Eigenschaften_Auswirkung {
             get {
-                return ResourceManager.GetString("Eigenschaften_Auswirkung.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Active Ranged Weappon ähnelt.
-        /// </summary>
-        public static string Fernkampfwaffe__Aktiv_Text {
-            get {
-                return ResourceManager.GetString("Fernkampfwaffe__Aktiv.Text", resourceCulture);
+                return ResourceManager.GetString("Eigenschaften_Auswirkung", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Ranged Weapon ähnelt.
         /// </summary>
-        public static string Fernkampfwaffe__Text {
+        public static string Fernkampfwaffe_ {
             get {
-                return ResourceManager.GetString("Fernkampfwaffe_.Text", resourceCulture);
+                return ResourceManager.GetString("Fernkampfwaffe_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Active Ranged Weappon ähnelt.
+        /// </summary>
+        public static string Fernkampfwaffe__Aktiv {
+            get {
+                return ResourceManager.GetString("Fernkampfwaffe__Aktiv", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Mode ähnelt.
         /// </summary>
-        public static string FernKampfwaffe_Modi_Text {
+        public static string FernKampfwaffe_Modi {
             get {
-                return ResourceManager.GetString("FernKampfwaffe_Modi.Text", resourceCulture);
+                return ResourceManager.GetString("FernKampfwaffe_Modi", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die RC ähnelt.
         /// </summary>
-        public static string Fernkampfwaffe_RK_Text {
+        public static string Fernkampfwaffe_RK {
             get {
-                return ResourceManager.GetString("Fernkampfwaffe_RK.Text", resourceCulture);
+                return ResourceManager.GetString("Fernkampfwaffe_RK", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Ranged Weapons ähnelt.
         /// </summary>
-        public static string FernkampfwaffeM__Text {
+        public static string FernkampfwaffeM_ {
             get {
-                return ResourceManager.GetString("FernkampfwaffeM_.Text", resourceCulture);
+                return ResourceManager.GetString("FernkampfwaffeM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Skill ähnelt.
         /// </summary>
-        public static string Fertigkeit__Text {
+        public static string Fertigkeit_ {
             get {
-                return ResourceManager.GetString("Fertigkeit_.Text", resourceCulture);
+                return ResourceManager.GetString("Fertigkeit_", resourceCulture);
             }
         }
         
@@ -558,1458 +558,1458 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Skills ähnelt.
         /// </summary>
-        public static string FertigkeitM__Text {
+        public static string FertigkeitM_ {
             get {
-                return ResourceManager.GetString("FertigkeitM_.Text", resourceCulture);
+                return ResourceManager.GetString("FertigkeitM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Foci ähnelt.
         /// </summary>
-        public static string Foki__Text {
+        public static string Foki_ {
             get {
-                return ResourceManager.GetString("Foki_.Text", resourceCulture);
+                return ResourceManager.GetString("Foki_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Foci ähnelt.
         /// </summary>
-        public static string FokiM__Text {
+        public static string FokiM_ {
             get {
-                return ResourceManager.GetString("FokiM_.Text", resourceCulture);
+                return ResourceManager.GetString("FokiM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Spirit ähnelt.
         /// </summary>
-        public static string Geist__Text {
+        public static string Geist_ {
             get {
-                return ResourceManager.GetString("Geist_.Text", resourceCulture);
+                return ResourceManager.GetString("Geist_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Services ähnelt.
         /// </summary>
-        public static string Geist_Dienste_Text {
+        public static string Geist_Dienste {
             get {
-                return ResourceManager.GetString("Geist_Dienste.Text", resourceCulture);
+                return ResourceManager.GetString("Geist_Dienste", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Bound ähnelt.
         /// </summary>
-        public static string Geist_Geb_Reg_Text {
+        public static string Geist_Geb_Reg {
             get {
-                return ResourceManager.GetString("Geist_Geb_Reg.Text", resourceCulture);
+                return ResourceManager.GetString("Geist_Geb_Reg", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Spirits ähnelt.
         /// </summary>
-        public static string GeistM__Text {
+        public static string GeistM_ {
             get {
-                return ResourceManager.GetString("GeistM_.Text", resourceCulture);
+                return ResourceManager.GetString("GeistM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Action ähnelt.
         /// </summary>
-        public static string Handlung__Text {
+        public static string Handlung_ {
             get {
-                return ResourceManager.GetString("Handlung_.Text", resourceCulture);
+                return ResourceManager.GetString("Handlung_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Defend dices: ähnelt.
         /// </summary>
-        public static string Handlung_Gegen_Text {
+        public static string Handlung_Gegen {
             get {
-                return ResourceManager.GetString("Handlung_Gegen.Text", resourceCulture);
+                return ResourceManager.GetString("Handlung_Gegen", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Defense Addition ähnelt.
         /// </summary>
-        public static string Handlung_GegenZusatz_Text {
+        public static string Handlung_GegenZusatz {
             get {
-                return ResourceManager.GetString("Handlung_GegenZusatz.Text", resourceCulture);
+                return ResourceManager.GetString("Handlung_GegenZusatz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Limit: ähnelt.
         /// </summary>
-        public static string Handlung_Grenze_Text {
+        public static string Handlung_Grenze {
             get {
-                return ResourceManager.GetString("Handlung_Grenze.Text", resourceCulture);
+                return ResourceManager.GetString("Handlung_Grenze", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Limit Addition ähnelt.
         /// </summary>
-        public static string Handlung_GrenzeZusatz_Text {
+        public static string Handlung_GrenzeZusatz {
             get {
-                return ResourceManager.GetString("Handlung_GrenzeZusatz.Text", resourceCulture);
+                return ResourceManager.GetString("Handlung_GrenzeZusatz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Modifier ähnelt.
         /// </summary>
-        public static string Handlung_Mod_Text {
+        public static string Handlung_Mod {
             get {
-                return ResourceManager.GetString("Handlung_Mod.Text", resourceCulture);
+                return ResourceManager.GetString("Handlung_Mod", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Pool Addition ähnelt.
         /// </summary>
-        public static string Handlung_WertZusatz_Text {
+        public static string Handlung_WertZusatz {
             get {
-                return ResourceManager.GetString("Handlung_WertZusatz.Text", resourceCulture);
+                return ResourceManager.GetString("Handlung_WertZusatz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Dices: ähnelt.
         /// </summary>
-        public static string Handlung_Zusammensetzung_Text {
+        public static string Handlung_Zusammensetzung {
             get {
-                return ResourceManager.GetString("Handlung_Zusammensetzung.Text", resourceCulture);
+                return ResourceManager.GetString("Handlung_Zusammensetzung", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Actions ähnelt.
         /// </summary>
-        public static string HandlungM__Text {
+        public static string HandlungM_ {
             get {
-                return ResourceManager.GetString("HandlungM_.Text", resourceCulture);
+                return ResourceManager.GetString("HandlungM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Augmentation ähnelt.
         /// </summary>
-        public static string Implantat__Text {
+        public static string Implantat_ {
             get {
-                return ResourceManager.GetString("Implantat_.Text", resourceCulture);
+                return ResourceManager.GetString("Implantat_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Effects ähnelt.
         /// </summary>
-        public static string Implantat_Auswirkung_Text {
+        public static string Implantat_Auswirkung {
             get {
-                return ResourceManager.GetString("Implantat_Auswirkung.Text", resourceCulture);
+                return ResourceManager.GetString("Implantat_Auswirkung", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Essence ähnelt.
         /// </summary>
-        public static string Implantat_Essenz_Text {
+        public static string Implantat_Essenz {
             get {
-                return ResourceManager.GetString("Implantat_Essenz.Text", resourceCulture);
+                return ResourceManager.GetString("Implantat_Essenz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Capacity ähnelt.
         /// </summary>
-        public static string Implantat_Kapazitaet_Text {
+        public static string Implantat_Kapazitaet {
             get {
-                return ResourceManager.GetString("Implantat_Kapazitaet.Text", resourceCulture);
+                return ResourceManager.GetString("Implantat_Kapazitaet", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Augmentations ähnelt.
         /// </summary>
-        public static string ImplantatM__Text {
+        public static string ImplantatM_ {
             get {
-                return ResourceManager.GetString("ImplantatM_.Text", resourceCulture);
+                return ResourceManager.GetString("ImplantatM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Initiation ähnelt.
         /// </summary>
-        public static string Initiation__Text {
+        public static string Initiation_ {
             get {
-                return ResourceManager.GetString("Initiation_.Text", resourceCulture);
+                return ResourceManager.GetString("Initiation_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Name ähnelt.
         /// </summary>
-        public static string Initiation_Bezeichner_Text {
+        public static string Initiation_Bezeichner {
             get {
-                return ResourceManager.GetString("Initiation_Bezeichner.Text", resourceCulture);
+                return ResourceManager.GetString("Initiation_Bezeichner", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Metamagie ähnelt.
         /// </summary>
-        public static string Initiation_Metamagie_Text {
+        public static string Initiation_Metamagie {
             get {
-                return ResourceManager.GetString("Initiation_Metamagie.Text", resourceCulture);
+                return ResourceManager.GetString("Initiation_Metamagie", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Schutzpatron ähnelt.
         /// </summary>
-        public static string Initiation_Schutzpatron_Text {
+        public static string Initiation_Schutzpatron {
             get {
-                return ResourceManager.GetString("Initiation_Schutzpatron.Text", resourceCulture);
+                return ResourceManager.GetString("Initiation_Schutzpatron", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Grad ähnelt.
         /// </summary>
-        public static string Initiation_Wert_Text {
+        public static string Initiation_Wert {
             get {
-                return ResourceManager.GetString("Initiation_Wert.Text", resourceCulture);
+                return ResourceManager.GetString("Initiation_Wert", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Initiationen ähnelt.
         /// </summary>
-        public static string InitiationM__Text {
+        public static string InitiationM_ {
             get {
-                return ResourceManager.GetString("InitiationM_.Text", resourceCulture);
+                return ResourceManager.GetString("InitiationM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Item ähnelt.
         /// </summary>
-        public static string Item__Text {
+        public static string Item_ {
             get {
-                return ResourceManager.GetString("Item_.Text", resourceCulture);
+                return ResourceManager.GetString("Item_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Active ähnelt.
         /// </summary>
-        public static string Item_Aktiv_Text {
+        public static string Item_Aktiv {
             get {
-                return ResourceManager.GetString("Item_Aktiv.Text", resourceCulture);
+                return ResourceManager.GetString("Item_Aktiv", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Quantity ähnelt.
         /// </summary>
-        public static string Item_Anzahl_Text {
+        public static string Item_Anzahl {
             get {
-                return ResourceManager.GetString("Item_Anzahl.Text", resourceCulture);
+                return ResourceManager.GetString("Item_Anzahl", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Owned ähnelt.
         /// </summary>
-        public static string Item_Besitz_Text {
+        public static string Item_Besitz {
             get {
-                return ResourceManager.GetString("Item_Besitz.Text", resourceCulture);
+                return ResourceManager.GetString("Item_Besitz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Items ähnelt.
         /// </summary>
-        public static string ItemM__Text {
+        public static string ItemM_ {
             get {
-                return ResourceManager.GetString("ItemM_.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Active Commlink ähnelt.
-        /// </summary>
-        public static string Kommlink__Aktiv_Text {
-            get {
-                return ResourceManager.GetString("Kommlink__Aktiv.Text", resourceCulture);
+                return ResourceManager.GetString("ItemM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Commlink ähnelt.
         /// </summary>
-        public static string Kommlink__Text {
+        public static string Kommlink_ {
             get {
-                return ResourceManager.GetString("Kommlink_.Text", resourceCulture);
+                return ResourceManager.GetString("Kommlink_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Active Commlink ähnelt.
+        /// </summary>
+        public static string Kommlink__Aktiv {
+            get {
+                return ResourceManager.GetString("Kommlink__Aktiv", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Attributes ähnelt.
         /// </summary>
-        public static string Kommlink_Attribute_o_Text {
+        public static string Kommlink_Attribute {
             get {
-                return ResourceManager.GetString("Kommlink_Attribute_o.Text", resourceCulture);
+                return ResourceManager.GetString("Kommlink_Attribute", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Attributes ähnelt.
         /// </summary>
-        public static string Kommlink_Attribute_Text {
+        public static string Kommlink_Attribute_o {
             get {
-                return ResourceManager.GetString("Kommlink_Attribute.Text", resourceCulture);
+                return ResourceManager.GetString("Kommlink_Attribute_o", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Data Processing ähnelt.
         /// </summary>
-        public static string Kommlink_Datenverarbeitung_Text {
+        public static string Kommlink_Datenverarbeitung {
             get {
-                return ResourceManager.GetString("Kommlink_Datenverarbeitung.Text", resourceCulture);
+                return ResourceManager.GetString("Kommlink_Datenverarbeitung", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Firewall ähnelt.
         /// </summary>
-        public static string Kommlink_Firewall_Text {
+        public static string Kommlink_Firewall {
             get {
-                return ResourceManager.GetString("Kommlink_Firewall.Text", resourceCulture);
+                return ResourceManager.GetString("Kommlink_Firewall", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Programms ähnelt.
         /// </summary>
-        public static string Kommlink_Programmanzahl_Text {
+        public static string Kommlink_Programmanzahl {
             get {
-                return ResourceManager.GetString("Kommlink_Programmanzahl.Text", resourceCulture);
+                return ResourceManager.GetString("Kommlink_Programmanzahl", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Condition ähnelt.
         /// </summary>
-        public static string Kommlink_Schaden_Text {
+        public static string Kommlink_Schaden {
             get {
-                return ResourceManager.GetString("Kommlink_Schaden.Text", resourceCulture);
+                return ResourceManager.GetString("Kommlink_Schaden", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Condition Limit ähnelt.
         /// </summary>
-        public static string Kommlink_SchadenMax_Text {
+        public static string Kommlink_SchadenMax {
             get {
-                return ResourceManager.GetString("Kommlink_SchadenMax.Text", resourceCulture);
+                return ResourceManager.GetString("Kommlink_SchadenMax", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Commlinks ähnelt.
         /// </summary>
-        public static string KommlinkM__Text {
+        public static string KommlinkM_ {
             get {
-                return ResourceManager.GetString("KommlinkM_.Text", resourceCulture);
+                return ResourceManager.GetString("KommlinkM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Complex Form ähnelt.
         /// </summary>
-        public static string KomplexeForm__Text {
+        public static string KomplexeForm_ {
             get {
-                return ResourceManager.GetString("KomplexeForm_.Text", resourceCulture);
+                return ResourceManager.GetString("KomplexeForm_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Option ähnelt.
         /// </summary>
-        public static string KomplexeForm_Option_Text {
+        public static string KomplexeForm_Option {
             get {
-                return ResourceManager.GetString("KomplexeForm_Option.Text", resourceCulture);
+                return ResourceManager.GetString("KomplexeForm_Option", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Complex Forms ähnelt.
         /// </summary>
-        public static string KomplexeFormM__Text {
+        public static string KomplexeFormM_ {
             get {
-                return ResourceManager.GetString("KomplexeFormM_.Text", resourceCulture);
+                return ResourceManager.GetString("KomplexeFormM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Duration ähnelt.
         /// </summary>
-        public static string KomplexForm_Duration_Text {
+        public static string KomplexForm_Duration {
             get {
-                return ResourceManager.GetString("KomplexForm_Duration.Text", resourceCulture);
+                return ResourceManager.GetString("KomplexForm_Duration", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Fading ähnelt.
         /// </summary>
-        public static string KomplexForm_Fading_Text {
+        public static string KomplexForm_Fading {
             get {
-                return ResourceManager.GetString("KomplexForm_Fading.Text", resourceCulture);
+                return ResourceManager.GetString("KomplexForm_Fading", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Target ähnelt.
         /// </summary>
-        public static string KomplexForm_Target_Text {
+        public static string KomplexForm_Target {
             get {
-                return ResourceManager.GetString("KomplexForm_Target.Text", resourceCulture);
+                return ResourceManager.GetString("KomplexForm_Target", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Munition ähnelt.
         /// </summary>
-        public static string Munition__Text {
+        public static string Munition_ {
             get {
-                return ResourceManager.GetString("Munition_.Text", resourceCulture);
+                return ResourceManager.GetString("Munition_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Munitions ähnelt.
         /// </summary>
-        public static string MunitionM__Text {
+        public static string MunitionM_ {
             get {
-                return ResourceManager.GetString("MunitionM_.Text", resourceCulture);
+                return ResourceManager.GetString("MunitionM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Disadvantage ähnelt.
         /// </summary>
-        public static string Nachteil__Text {
+        public static string Nachteil_ {
             get {
-                return ResourceManager.GetString("Nachteil_.Text", resourceCulture);
+                return ResourceManager.GetString("Nachteil_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Disadvantages ähnelt.
         /// </summary>
-        public static string NachteilM__Text {
+        public static string NachteilM_ {
             get {
-                return ResourceManager.GetString("NachteilM_.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Active Melee Weapon ähnelt.
-        /// </summary>
-        public static string Nahkampfwaffe__Aktiv_Text {
-            get {
-                return ResourceManager.GetString("Nahkampfwaffe__Aktiv.Text", resourceCulture);
+                return ResourceManager.GetString("NachteilM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Melee Weapon ähnelt.
         /// </summary>
-        public static string Nahkampfwaffe__Text {
+        public static string Nahkampfwaffe_ {
             get {
-                return ResourceManager.GetString("Nahkampfwaffe_.Text", resourceCulture);
+                return ResourceManager.GetString("Nahkampfwaffe_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Active Melee Weapon ähnelt.
+        /// </summary>
+        public static string Nahkampfwaffe__Aktiv {
+            get {
+                return ResourceManager.GetString("Nahkampfwaffe__Aktiv", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Reach ähnelt.
         /// </summary>
-        public static string Nahkampfwaffe_Reichweite_Text {
+        public static string Nahkampfwaffe_Reichweite {
             get {
-                return ResourceManager.GetString("Nahkampfwaffe_Reichweite.Text", resourceCulture);
+                return ResourceManager.GetString("Nahkampfwaffe_Reichweite", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Melee Weapons ähnelt.
         /// </summary>
-        public static string NahkampfwaffeM__Text {
+        public static string NahkampfwaffeM_ {
             get {
-                return ResourceManager.GetString("NahkampfwaffeM_.Text", resourceCulture);
+                return ResourceManager.GetString("NahkampfwaffeM_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Armor ähnelt.
+        /// </summary>
+        public static string Panzerung_ {
+            get {
+                return ResourceManager.GetString("Panzerung_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Active Armor ähnelt.
         /// </summary>
-        public static string Panzerung__Aktiv_Text {
+        public static string Panzerung__Aktiv {
             get {
-                return ResourceManager.GetString("Panzerung__Aktiv.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Armor ähnelt.
-        /// </summary>
-        public static string Panzerung__Text {
-            get {
-                return ResourceManager.GetString("Panzerung_.Text", resourceCulture);
+                return ResourceManager.GetString("Panzerung__Aktiv", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Capacity ähnelt.
         /// </summary>
-        public static string Panzerung_Kapazitaet_Text {
+        public static string Panzerung_Kapazitaet {
             get {
-                return ResourceManager.GetString("Panzerung_Kapazitaet.Text", resourceCulture);
+                return ResourceManager.GetString("Panzerung_Kapazitaet", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Armors ähnelt.
         /// </summary>
-        public static string PanzerungM__Text {
+        public static string PanzerungM_ {
             get {
-                return ResourceManager.GetString("PanzerungM_.Text", resourceCulture);
+                return ResourceManager.GetString("PanzerungM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Personal data ähnelt.
         /// </summary>
-        public static string Person__Text {
+        public static string Person_ {
             get {
-                return ResourceManager.GetString("Person_.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Name ähnelt.
-        /// </summary>
-        public static string Person_Alias_STD_Text {
-            get {
-                return ResourceManager.GetString("Person_Alias_STD.Text", resourceCulture);
+                return ResourceManager.GetString("Person_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Alias ähnelt.
         /// </summary>
-        public static string Person_Alias_Text {
+        public static string Person_Alias {
             get {
-                return ResourceManager.GetString("Person_Alias.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Alias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Name ähnelt.
+        /// </summary>
+        public static string Person_Alias_STD {
+            get {
+                return ResourceManager.GetString("Person_Alias_STD", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Eyecolour ähnelt.
         /// </summary>
-        public static string Person_Augenfarbe_Text {
+        public static string Person_Augenfarbe {
             get {
-                return ResourceManager.GetString("Person_Augenfarbe.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Augenfarbe", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Personal description ähnelt.
         /// </summary>
-        public static string Person_Beschreibung__Text {
+        public static string Person_Beschreibung_ {
             get {
-                return ResourceManager.GetString("Person_Beschreibung_.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Beschreibung_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Char Type ähnelt.
         /// </summary>
-        public static string Person_Char_Typ_Text {
+        public static string Person_Char_Typ {
             get {
-                return ResourceManager.GetString("Person_Char_Typ.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Edge current ähnelt.
-        /// </summary>
-        public static string Person_Edge_Aktuell_Text {
-            get {
-                return ResourceManager.GetString("Person_Edge_Aktuell.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Edge everall ähnelt.
-        /// </summary>
-        public static string Person_Edge_Gesamt_Text {
-            get {
-                return ResourceManager.GetString("Person_Edge_Gesamt.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Char_Typ", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Edge ähnelt.
         /// </summary>
-        public static string Person_Edge_Text {
+        public static string Person_Edge {
             get {
-                return ResourceManager.GetString("Person_Edge.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Edge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Edge current ähnelt.
+        /// </summary>
+        public static string Person_Edge_Aktuell {
+            get {
+                return ResourceManager.GetString("Person_Edge_Aktuell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Edge everall ähnelt.
+        /// </summary>
+        public static string Person_Edge_Gesamt {
+            get {
+                return ResourceManager.GetString("Person_Edge_Gesamt", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Essence mod ähnelt.
         /// </summary>
-        public static string Person_Essenz_Text {
+        public static string Person_Essenz {
             get {
-                return ResourceManager.GetString("Person_Essenz.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Essenz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Date of Birth ähnelt.
         /// </summary>
-        public static string Person_Geburtsdatum_Text {
+        public static string Person_Geburtsdatum {
             get {
-                return ResourceManager.GetString("Person_Geburtsdatum.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Geburtsdatum", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Birthday ähnelt.
         /// </summary>
-        public static string Person_Geburtstag_Text {
+        public static string Person_Geburtstag {
             get {
-                return ResourceManager.GetString("Person_Geburtstag.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Geburtstag", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sex ähnelt.
         /// </summary>
-        public static string Person_Geschlecht_Text {
+        public static string Person_Geschlecht {
             get {
-                return ResourceManager.GetString("Person_Geschlecht.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Geschlecht", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Weight ähnelt.
         /// </summary>
-        public static string Person_Gewicht_Text {
+        public static string Person_Gewicht {
             get {
-                return ResourceManager.GetString("Person_Gewicht.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Gewicht", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Height ähnelt.
         /// </summary>
-        public static string Person_Groesse_Text {
+        public static string Person_Groesse {
             get {
-                return ResourceManager.GetString("Person_Groesse.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Groesse", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Haircolor ähnelt.
         /// </summary>
-        public static string Person_Haarfarbe_Text {
+        public static string Person_Haarfarbe {
             get {
-                return ResourceManager.GetString("Person_Haarfarbe.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Haarfarbe", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Skincolor ähnelt.
         /// </summary>
-        public static string Person_Hautfarbe_Text {
+        public static string Person_Hautfarbe {
             get {
-                return ResourceManager.GetString("Person_Hautfarbe.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Ini ähnelt.
-        /// </summary>
-        public static string Person_Initiative_Kurz_Text {
-            get {
-                return ResourceManager.GetString("Person_Initiative_Kurz.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Hautfarbe", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Initiative  ähnelt.
         /// </summary>
-        public static string Person_Initiative_Text {
+        public static string Person_Initiative {
             get {
-                return ResourceManager.GetString("Person_Initiative.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Initiative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ini ähnelt.
+        /// </summary>
+        public static string Person_Initiative_Kurz {
+            get {
+                return ResourceManager.GetString("Person_Initiative_Kurz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current initiative ähnelt.
         /// </summary>
-        public static string Person_InitiativeAktuell_Text {
+        public static string Person_InitiativeAktuell {
             get {
-                return ResourceManager.GetString("Person_InitiativeAktuell.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Karma Current ähnelt.
-        /// </summary>
-        public static string Person_Karma_Aktuell_Text {
-            get {
-                return ResourceManager.GetString("Person_Karma_Aktuell.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Karma total ähnelt.
-        /// </summary>
-        public static string Person_Karma_Gesamt_Text {
-            get {
-                return ResourceManager.GetString("Person_Karma_Gesamt.Text", resourceCulture);
+                return ResourceManager.GetString("Person_InitiativeAktuell", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Karma ähnelt.
         /// </summary>
-        public static string Person_Karma_Text {
+        public static string Person_Karma {
             get {
-                return ResourceManager.GetString("Person_Karma.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Karma", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Karma Current ähnelt.
+        /// </summary>
+        public static string Person_Karma_Aktuell {
+            get {
+                return ResourceManager.GetString("Person_Karma_Aktuell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Karma total ähnelt.
+        /// </summary>
+        public static string Person_Karma_Gesamt {
+            get {
+                return ResourceManager.GetString("Person_Karma_Gesamt", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Bank balance ähnelt.
         /// </summary>
-        public static string Person_Kontostand_Text {
+        public static string Person_Kontostand {
             get {
-                return ResourceManager.GetString("Person_Kontostand.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Kontostand", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Lifestyle ähnelt.
         /// </summary>
-        public static string Person_Lebensstil_Text {
+        public static string Person_Lebensstil {
             get {
-                return ResourceManager.GetString("Person_Lebensstil.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Lebensstil", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Lifestyle cost ähnelt.
         /// </summary>
-        public static string Person_LifestyleCost_Text {
+        public static string Person_LifestyleCost {
             get {
-                return ResourceManager.GetString("Person_LifestyleCost.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Metasubtype ähnelt.
-        /// </summary>
-        public static string Person_MetaTyp_sub_Text {
-            get {
-                return ResourceManager.GetString("Person_MetaTyp_sub.Text", resourceCulture);
+                return ResourceManager.GetString("Person_LifestyleCost", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Metatype ähnelt.
         /// </summary>
-        public static string Person_MetaTyp_Text {
+        public static string Person_MetaTyp {
             get {
-                return ResourceManager.GetString("Person_MetaTyp.Text", resourceCulture);
+                return ResourceManager.GetString("Person_MetaTyp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Metasubtype ähnelt.
+        /// </summary>
+        public static string Person_MetaTyp_sub {
+            get {
+                return ResourceManager.GetString("Person_MetaTyp_sub", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Notes ähnelt.
         /// </summary>
-        public static string Person_Notizen_Text {
+        public static string Person_Notizen {
             get {
-                return ResourceManager.GetString("Person_Notizen.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Notizen", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Public Awareness ähnelt.
         /// </summary>
-        public static string Person_Prominenz_Text {
+        public static string Person_Prominenz {
             get {
-                return ResourceManager.GetString("Person_Prominenz.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Prominenz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Runs ähnelt.
         /// </summary>
-        public static string Person_Runs_Text {
+        public static string Person_Runs {
             get {
-                return ResourceManager.GetString("Person_Runs.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Max. Physical-Damage modifier ähnelt.
-        /// </summary>
-        public static string Person_Schaden_G_max_mod_Text {
-            get {
-                return ResourceManager.GetString("Person_Schaden_G_max_mod.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Mental Damage Maximum ähnelt.
-        /// </summary>
-        public static string Person_Schaden_G_max_Text {
-            get {
-                return ResourceManager.GetString("Person_Schaden_G_max.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Runs", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Mental Damage ähnelt.
         /// </summary>
-        public static string Person_Schaden_G_Text {
+        public static string Person_Schaden_G {
             get {
-                return ResourceManager.GetString("Person_Schaden_G.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Schaden_G", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Max. Mental-Damage modifier ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Mental Damage Maximum ähnelt.
         /// </summary>
-        public static string Person_Schaden_K_max_mod_Text {
+        public static string Person_Schaden_G_max {
             get {
-                return ResourceManager.GetString("Person_Schaden_K_max_mod.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Schaden_G_max", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Physical Damage Maximum ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Max. Physical-Damage modifier ähnelt.
         /// </summary>
-        public static string Person_Schaden_K_max_Text {
+        public static string Person_Schaden_G_max_mod {
             get {
-                return ResourceManager.GetString("Person_Schaden_K_max.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Schaden_G_max_mod", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Physical Damage  ähnelt.
         /// </summary>
-        public static string Person_Schaden_K_Text {
+        public static string Person_Schaden_K {
             get {
-                return ResourceManager.GetString("Person_Schaden_K.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Schaden_K", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Physical Damage Maximum ähnelt.
+        /// </summary>
+        public static string Person_Schaden_K_max {
+            get {
+                return ResourceManager.GetString("Person_Schaden_K_max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Max. Mental-Damage modifier ähnelt.
+        /// </summary>
+        public static string Person_Schaden_K_max_mod {
+            get {
+                return ResourceManager.GetString("Person_Schaden_K_max_mod", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Bad reputation ähnelt.
         /// </summary>
-        public static string Person_SchlechterRuf_Text {
+        public static string Person_SchlechterRuf {
             get {
-                return ResourceManager.GetString("Person_SchlechterRuf.Text", resourceCulture);
+                return ResourceManager.GetString("Person_SchlechterRuf", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Street Cred ähnelt.
         /// </summary>
-        public static string Person_Strassenruf_Text {
+        public static string Person_Strassenruf {
             get {
-                return ResourceManager.GetString("Person_Strassenruf.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Strassenruf", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Street Cred mod ähnelt.
         /// </summary>
-        public static string Person_StrassenrufMod_Text {
+        public static string Person_StrassenrufMod {
             get {
-                return ResourceManager.GetString("Person_StrassenrufMod.Text", resourceCulture);
+                return ResourceManager.GetString("Person_StrassenrufMod", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Summary ähnelt.
         /// </summary>
-        public static string Person_Zusammenfassung_Text {
+        public static string Person_Zusammenfassung {
             get {
-                return ResourceManager.GetString("Person_Zusammenfassung.Text", resourceCulture);
+                return ResourceManager.GetString("Person_Zusammenfassung", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Program ähnelt.
         /// </summary>
-        public static string Programm__Text {
+        public static string Programm_ {
             get {
-                return ResourceManager.GetString("Programm_.Text", resourceCulture);
+                return ResourceManager.GetString("Programm_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Effects ähnelt.
         /// </summary>
-        public static string Programm_Optionen_Text {
+        public static string Programm_Optionen {
             get {
-                return ResourceManager.GetString("Programm_Optionen.Text", resourceCulture);
+                return ResourceManager.GetString("Programm_Optionen", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Programs ähnelt.
         /// </summary>
-        public static string ProgrammM__Text {
+        public static string ProgrammM_ {
             get {
-                return ResourceManager.GetString("ProgrammM_.Text", resourceCulture);
+                return ResourceManager.GetString("ProgrammM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die SIN ähnelt.
         /// </summary>
-        public static string SIN__Text {
+        public static string SIN_ {
             get {
-                return ResourceManager.GetString("SIN_.Text", resourceCulture);
+                return ResourceManager.GetString("SIN_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die SINs ähnelt.
         /// </summary>
-        public static string SINM__Text {
+        public static string SINM_ {
             get {
-                return ResourceManager.GetString("SINM_.Text", resourceCulture);
+                return ResourceManager.GetString("SINM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sprite ähnelt.
         /// </summary>
-        public static string Sprite__Text {
+        public static string Sprite_ {
             get {
-                return ResourceManager.GetString("Sprite_.Text", resourceCulture);
+                return ResourceManager.GetString("Sprite_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Services ähnelt.
         /// </summary>
-        public static string Sprite_Dienste_Text {
+        public static string Sprite_Dienste {
             get {
-                return ResourceManager.GetString("Sprite_Dienste.Text", resourceCulture);
+                return ResourceManager.GetString("Sprite_Dienste", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Registered ähnelt.
         /// </summary>
-        public static string Sprite_Geb_Reg_Text {
+        public static string Sprite_Geb_Reg {
             get {
-                return ResourceManager.GetString("Sprite_Geb_Reg.Text", resourceCulture);
+                return ResourceManager.GetString("Sprite_Geb_Reg", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sprites ähnelt.
         /// </summary>
-        public static string SpriteM__Text {
+        public static string SpriteM_ {
             get {
-                return ResourceManager.GetString("SpriteM_.Text", resourceCulture);
+                return ResourceManager.GetString("SpriteM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Submersion ähnelt.
         /// </summary>
-        public static string Stroemung__Text {
+        public static string Stroemung_ {
             get {
-                return ResourceManager.GetString("Stroemung_.Text", resourceCulture);
+                return ResourceManager.GetString("Stroemung_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Name ähnelt.
         /// </summary>
-        public static string Stroemung_Bezeichner_Text {
+        public static string Stroemung_Bezeichner {
             get {
-                return ResourceManager.GetString("Stroemung_Bezeichner.Text", resourceCulture);
+                return ResourceManager.GetString("Stroemung_Bezeichner", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Echoes ähnelt.
         /// </summary>
-        public static string Stroemung_Echos_Text {
+        public static string Stroemung_Echos {
             get {
-                return ResourceManager.GetString("Stroemung_Echos.Text", resourceCulture);
+                return ResourceManager.GetString("Stroemung_Echos", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Paragon ähnelt.
         /// </summary>
-        public static string Stroemung_Paragon_Text {
+        public static string Stroemung_Paragon {
             get {
-                return ResourceManager.GetString("Stroemung_Paragon.Text", resourceCulture);
+                return ResourceManager.GetString("Stroemung_Paragon", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Grade ähnelt.
         /// </summary>
-        public static string Stroemung_Wert_Text {
+        public static string Stroemung_Wert {
             get {
-                return ResourceManager.GetString("Stroemung_Wert.Text", resourceCulture);
+                return ResourceManager.GetString("Stroemung_Wert", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Submersions ähnelt.
         /// </summary>
-        public static string StroemungM__Text {
+        public static string StroemungM_ {
             get {
-                return ResourceManager.GetString("StroemungM_.Text", resourceCulture);
+                return ResourceManager.GetString("StroemungM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Name ähnelt.
         /// </summary>
-        public static string Thing_Bezeichner_Text {
+        public static string Thing_Bezeichner {
             get {
-                return ResourceManager.GetString("Thing_Bezeichner.Text", resourceCulture);
+                return ResourceManager.GetString("Thing_Bezeichner", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Favorit ähnelt.
         /// </summary>
-        public static string Thing_IsFavorite_Text {
+        public static string Thing_IsFavorite {
             get {
-                return ResourceManager.GetString("Thing_IsFavorite.Text", resourceCulture);
+                return ResourceManager.GetString("Thing_IsFavorite", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Note ähnelt.
         /// </summary>
-        public static string Thing_Notiz_Text {
+        public static string Thing_Notiz {
             get {
-                return ResourceManager.GetString("Thing_Notiz.Text", resourceCulture);
+                return ResourceManager.GetString("Thing_Notiz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die ThingType ähnelt.
         /// </summary>
-        public static string Thing_ThingTyp_Text {
+        public static string Thing_ThingTyp {
             get {
-                return ResourceManager.GetString("Thing_ThingTyp.Text", resourceCulture);
+                return ResourceManager.GetString("Thing_ThingTyp", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Type ähnelt.
         /// </summary>
-        public static string Thing_Typ_Text {
+        public static string Thing_Typ {
             get {
-                return ResourceManager.GetString("Thing_Typ.Text", resourceCulture);
+                return ResourceManager.GetString("Thing_Typ", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Rating ähnelt.
         /// </summary>
-        public static string Thing_Wert_Text {
+        public static string Thing_Wert {
             get {
-                return ResourceManager.GetString("Thing_Wert.Text", resourceCulture);
+                return ResourceManager.GetString("Thing_Wert", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Value ähnelt.
         /// </summary>
-        public static string Thing_Wert_W_Text {
+        public static string Thing_Wert_W {
             get {
-                return ResourceManager.GetString("Thing_Wert_W.Text", resourceCulture);
+                return ResourceManager.GetString("Thing_Wert_W", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Addition ähnelt.
         /// </summary>
-        public static string Thing_Zusatz_Text {
+        public static string Thing_Zusatz {
             get {
-                return ResourceManager.GetString("Thing_Zusatz.Text", resourceCulture);
+                return ResourceManager.GetString("Thing_Zusatz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Tradition ähnelt.
         /// </summary>
-        public static string Tradition__Text {
+        public static string Tradition_ {
             get {
-                return ResourceManager.GetString("Tradition_.Text", resourceCulture);
+                return ResourceManager.GetString("Tradition_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die NameEN ähnelt.
         /// </summary>
-        public static string Tradition_Bezeichner_Text {
+        public static string Tradition_Bezeichner {
             get {
-                return ResourceManager.GetString("Tradition_Bezeichner.Text", resourceCulture);
+                return ResourceManager.GetString("Tradition_Bezeichner", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Metamagic ähnelt.
         /// </summary>
-        public static string Tradition_Metamagie_Text {
+        public static string Tradition_Metamagie {
             get {
-                return ResourceManager.GetString("Tradition_Metamagie.Text", resourceCulture);
+                return ResourceManager.GetString("Tradition_Metamagie", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Totem ähnelt.
         /// </summary>
-        public static string Tradition_Schutzpatron_Text {
+        public static string Tradition_Schutzpatron {
             get {
-                return ResourceManager.GetString("Tradition_Schutzpatron.Text", resourceCulture);
+                return ResourceManager.GetString("Tradition_Schutzpatron", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Grade ähnelt.
         /// </summary>
-        public static string Tradition_Wert_Text {
+        public static string Tradition_Wert {
             get {
-                return ResourceManager.GetString("Tradition_Wert.Text", resourceCulture);
+                return ResourceManager.GetString("Tradition_Wert", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Traditions ähnelt.
         /// </summary>
-        public static string TraditionM__Text {
+        public static string TraditionM_ {
             get {
-                return ResourceManager.GetString("TraditionM_.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Active vehicle ähnelt.
-        /// </summary>
-        public static string Vehikel__Aktiv_Text {
-            get {
-                return ResourceManager.GetString("Vehikel__Aktiv.Text", resourceCulture);
+                return ResourceManager.GetString("TraditionM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Vehicle ähnelt.
         /// </summary>
-        public static string Vehikel__Text {
+        public static string Vehikel_ {
             get {
-                return ResourceManager.GetString("Vehikel_.Text", resourceCulture);
+                return ResourceManager.GetString("Vehikel_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Active vehicle ähnelt.
+        /// </summary>
+        public static string Vehikel__Aktiv {
+            get {
+                return ResourceManager.GetString("Vehikel__Aktiv", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Acceleration ähnelt.
         /// </summary>
-        public static string Vehikel_Beschleunigung_Text {
+        public static string Vehikel_Beschleunigung {
             get {
-                return ResourceManager.GetString("Vehikel_Beschleunigung.Text", resourceCulture);
+                return ResourceManager.GetString("Vehikel_Beschleunigung", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Speed ähnelt.
         /// </summary>
-        public static string Vehikel_Geschwindigkeit_Text {
+        public static string Vehikel_Geschwindigkeit {
             get {
-                return ResourceManager.GetString("Vehikel_Geschwindigkeit.Text", resourceCulture);
+                return ResourceManager.GetString("Vehikel_Geschwindigkeit", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Weight ähnelt.
         /// </summary>
-        public static string Vehikel_Gewicht_Text {
+        public static string Vehikel_Gewicht {
             get {
-                return ResourceManager.GetString("Vehikel_Gewicht.Text", resourceCulture);
+                return ResourceManager.GetString("Vehikel_Gewicht", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Handling ähnelt.
         /// </summary>
-        public static string Vehikel_Handling_Text {
+        public static string Vehikel_Handling {
             get {
-                return ResourceManager.GetString("Vehikel_Handling.Text", resourceCulture);
+                return ResourceManager.GetString("Vehikel_Handling", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Armor ähnelt.
         /// </summary>
-        public static string Vehikel_Panzerung_Text {
+        public static string Vehikel_Panzerung {
             get {
-                return ResourceManager.GetString("Vehikel_Panzerung.Text", resourceCulture);
+                return ResourceManager.GetString("Vehikel_Panzerung", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Pilot ähnelt.
         /// </summary>
-        public static string Vehikel_Pilot_Text {
+        public static string Vehikel_Pilot {
             get {
-                return ResourceManager.GetString("Vehikel_Pilot.Text", resourceCulture);
+                return ResourceManager.GetString("Vehikel_Pilot", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Body ähnelt.
         /// </summary>
-        public static string Vehikel_Rumpf_Text {
+        public static string Vehikel_Rumpf {
             get {
-                return ResourceManager.GetString("Vehikel_Rumpf.Text", resourceCulture);
+                return ResourceManager.GetString("Vehikel_Rumpf", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sensor ähnelt.
         /// </summary>
-        public static string Vehikel_Sensor_Text {
+        public static string Vehikel_Sensor {
             get {
-                return ResourceManager.GetString("Vehikel_Sensor.Text", resourceCulture);
+                return ResourceManager.GetString("Vehikel_Sensor", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Seats ähnelt.
         /// </summary>
-        public static string Vehikel_Sitze_Text {
+        public static string Vehikel_Sitze {
             get {
-                return ResourceManager.GetString("Vehikel_Sitze.Text", resourceCulture);
+                return ResourceManager.GetString("Vehikel_Sitze", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Damage ähnelt.
         /// </summary>
-        public static string Vehikel_Wert_Text {
+        public static string Vehikel_Wert {
             get {
-                return ResourceManager.GetString("Vehikel_Wert.Text", resourceCulture);
+                return ResourceManager.GetString("Vehikel_Wert", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Vehicles ähnelt.
         /// </summary>
-        public static string VehikelM__Text {
+        public static string VehikelM_ {
             get {
-                return ResourceManager.GetString("VehikelM_.Text", resourceCulture);
+                return ResourceManager.GetString("VehikelM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Advantage ähnelt.
         /// </summary>
-        public static string Vorteil__Text {
+        public static string Vorteil_ {
             get {
-                return ResourceManager.GetString("Vorteil_.Text", resourceCulture);
+                return ResourceManager.GetString("Vorteil_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Advantages ähnelt.
         /// </summary>
-        public static string VorteilM__Text {
+        public static string VorteilM_ {
             get {
-                return ResourceManager.GetString("VorteilM_.Text", resourceCulture);
+                return ResourceManager.GetString("VorteilM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die AP ähnelt.
         /// </summary>
-        public static string Waffe_DK_Text {
+        public static string Waffe_DK {
             get {
-                return ResourceManager.GetString("Waffe_DK.Text", resourceCulture);
+                return ResourceManager.GetString("Waffe_DK", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Precision ähnelt.
         /// </summary>
-        public static string Waffe_Praezision_Text {
+        public static string Waffe_Praezision {
             get {
-                return ResourceManager.GetString("Waffe_Praezision.Text", resourceCulture);
+                return ResourceManager.GetString("Waffe_Praezision", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Damage type (M/P) ähnelt.
         /// </summary>
-        public static string Waffe_SchadenTyp_Text {
+        public static string Waffe_SchadenTyp {
             get {
-                return ResourceManager.GetString("Waffe_SchadenTyp.Text", resourceCulture);
+                return ResourceManager.GetString("Waffe_SchadenTyp", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Damage ähnelt.
         /// </summary>
-        public static string Waffe_Wert_Text {
+        public static string Waffe_Wert {
             get {
-                return ResourceManager.GetString("Waffe_Wert.Text", resourceCulture);
+                return ResourceManager.GetString("Waffe_Wert", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Submersion ähnelt.
         /// </summary>
-        public static string Wandlung__Text {
+        public static string Wandlung_ {
             get {
-                return ResourceManager.GetString("Wandlung_.Text", resourceCulture);
+                return ResourceManager.GetString("Wandlung_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Name ähnelt.
         /// </summary>
-        public static string Wandlung_Bezeichner_Text {
+        public static string Wandlung_Bezeichner {
             get {
-                return ResourceManager.GetString("Wandlung_Bezeichner.Text", resourceCulture);
+                return ResourceManager.GetString("Wandlung_Bezeichner", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Echos ähnelt.
         /// </summary>
-        public static string Wandlung_Echos_Text {
+        public static string Wandlung_Echos {
             get {
-                return ResourceManager.GetString("Wandlung_Echos.Text", resourceCulture);
+                return ResourceManager.GetString("Wandlung_Echos", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Paragon ähnelt.
         /// </summary>
-        public static string Wandlung_Paragon_Text {
+        public static string Wandlung_Paragon {
             get {
-                return ResourceManager.GetString("Wandlung_Paragon.Text", resourceCulture);
+                return ResourceManager.GetString("Wandlung_Paragon", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Grad ähnelt.
         /// </summary>
-        public static string Wandlung_Wert_Text {
+        public static string Wandlung_Wert {
             get {
-                return ResourceManager.GetString("Wandlung_Wert.Text", resourceCulture);
+                return ResourceManager.GetString("Wandlung_Wert", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Submersions ähnelt.
         /// </summary>
-        public static string WandlungM__Text {
+        public static string WandlungM_ {
             get {
-                return ResourceManager.GetString("WandlungM_.Text", resourceCulture);
+                return ResourceManager.GetString("WandlungM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Widget ähnelt.
         /// </summary>
-        public static string Widgets__Text {
+        public static string Widgets_ {
             get {
-                return ResourceManager.GetString("Widgets_.Text", resourceCulture);
+                return ResourceManager.GetString("Widgets_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Widgets ähnelt.
         /// </summary>
-        public static string WidgetsM__Text {
+        public static string WidgetsM_ {
             get {
-                return ResourceManager.GetString("WidgetsM_.Text", resourceCulture);
+                return ResourceManager.GetString("WidgetsM_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Spell ähnelt.
         /// </summary>
-        public static string Zaubersprueche__Text {
+        public static string Zaubersprueche_ {
             get {
-                return ResourceManager.GetString("Zaubersprueche_.Text", resourceCulture);
+                return ResourceManager.GetString("Zaubersprueche_", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Duration ähnelt.
         /// </summary>
-        public static string Zaubersprueche_Dauer_Text {
+        public static string Zaubersprueche_Dauer {
             get {
-                return ResourceManager.GetString("Zaubersprueche_Dauer.Text", resourceCulture);
+                return ResourceManager.GetString("Zaubersprueche_Dauer", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Drain ähnelt.
         /// </summary>
-        public static string Zaubersprueche_Entzug_Text {
+        public static string Zaubersprueche_Entzug {
             get {
-                return ResourceManager.GetString("Zaubersprueche_Entzug.Text", resourceCulture);
+                return ResourceManager.GetString("Zaubersprueche_Entzug", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Range ähnelt.
         /// </summary>
-        public static string Zaubersprueche_Reichweite_Text {
+        public static string Zaubersprueche_Reichweite {
             get {
-                return ResourceManager.GetString("Zaubersprueche_Reichweite.Text", resourceCulture);
+                return ResourceManager.GetString("Zaubersprueche_Reichweite", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Spells ähnelt.
         /// </summary>
-        public static string ZauberspruecheM__Text {
+        public static string ZauberspruecheM_ {
             get {
-                return ResourceManager.GetString("ZauberspruecheM_.Text", resourceCulture);
+                return ResourceManager.GetString("ZauberspruecheM_", resourceCulture);
             }
         }
     }

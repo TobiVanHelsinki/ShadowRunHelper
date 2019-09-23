@@ -1,5 +1,6 @@
 ﻿
 using ShadowRunHelper.CharModel;
+using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -125,11 +126,11 @@ namespace ShadowRunHelper
         }
         public string DisplayNameSingular
         {
-            get { return "Model_" + _DisplayName + "_/Text"; }
+            get { return "" + _DisplayName + "_"; }
         }
         public string DisplayNamePlural
         {
-            get { return "Model_" + _DisplayName + "M_/Text"; }
+            get { return "" + _DisplayName + "M_"; }
         }
 
         bool _Usable = true;
@@ -210,11 +211,11 @@ namespace ShadowRunHelper
             {
                 if (Mehrzahl)
                 {
-                    return CustomManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
+                    return ModelResources.ResourceManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
                 }
                 else
                 {
-                    return CustomManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
+                    return ModelResources.ResourceManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
                 }
             }
             catch (Exception ex)

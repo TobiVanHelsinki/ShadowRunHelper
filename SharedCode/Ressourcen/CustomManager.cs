@@ -12,19 +12,17 @@ namespace ShadowRunHelper
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
             }
             string ret;
-            ret = Strings.ResourceManager.GetString(s, CultureInfo.CurrentCulture);
+            ret = ModelResources.ResourceManager.GetString(s, CultureInfo.CurrentCulture);
             if (ret == null)
             {
-                string name2 = s.Replace("/", "_");
-                ret = Strings.ResourceManager.GetString(name2, CultureInfo.CurrentCulture);
+                ret = AppResources.ResourceManager.GetString(s, CultureInfo.CurrentCulture);
                 if (ret == null)
                 {
-                    string name1 = s.Replace("/", ".");
-                    ret = Strings.ResourceManager.GetString(name1, CultureInfo.CurrentCulture);
+                    ret = UiResources.ResourceManager.GetString(s, CultureInfo.CurrentCulture);
                     if (ret == null)
                     {
-                        string name = s.Replace("/", "");
-                        ret = Strings.ResourceManager.GetString(name, CultureInfo.CurrentCulture);
+                        s = s.Replace("/", ".").Replace("/", "").Replace("/", "_");
+                        ret = Strings.ResourceManager.GetString(s, CultureInfo.CurrentCulture);
                         if (ret == null)
                         {
                             //if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();

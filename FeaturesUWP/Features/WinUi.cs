@@ -22,7 +22,7 @@ namespace ShadowRunHelper
         public void DisplayCurrentCharName()
         {
             var appView = ApplicationView.GetForCurrentView();
-            appView.Title = AppModel.Instance.MainObject != null ? AppModel.Instance.MainObject.Person.Alias : Package.Current.DisplayName;
+            appView.Title = AppModel.Instance?.MainObject?.Person?.Alias ?? Package.Current.DisplayName;
         }
 
         public void TriggerCustomTitleBarChanges()
