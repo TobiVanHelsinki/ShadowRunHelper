@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:io="clr-namespace:TAPPLICATION.IO;assembly=TAPPLICATION"
+             xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.Pages.AdministrationPage" 
              BackgroundColor="White">
@@ -19,17 +20,17 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackLayout x:Name="TitleBar" BackgroundColor="Accent" MinimumWidthRequest="50" MinimumHeightRequest="10" Padding="10">
-                <Label x:Name="Intro1Text" Text="Welcome to ShadowRunHelper."
+                <Label x:Name="Intro1Text" Text="{resx:UiResources WelcomeGreetings}"
                        HorizontalOptions="FillAndExpand"/>
-                <Label x:Name="Intro2Text" Text="Choose a charaktersheet from the list or create a new." 
+                <Label x:Name="Intro2Text" Text="{resx:UiResources IntroAdministration}" 
                        HorizontalOptions="FillAndExpand"/>
             </StackLayout>
             <StackLayout Margin="15,0,10,0" Grid.Row="3" Orientation="Horizontal">
-                <Label Text="Filename" LineBreakMode="WordWrap"/>
+                <Label Text="{resx:UiResources FileName}" LineBreakMode="WordWrap"/>
                 <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                    <Label Text="Filesize" TextColor="SlateGray" Margin="0,0,0,0"/>
+                    <Label Text="{resx:UiResources FileSize}" TextColor="SlateGray" Margin="0,0,0,0"/>
                     <Label Text="/" Margin="5,0,5,0" TextColor="SlateGray"/>
-                    <Label Text="LastAccessTime" TextColor="SlateGray"/>
+                    <Label Text="{resx:UiResources FileDate}" TextColor="SlateGray"/>
                 </StackLayout>
             </StackLayout>
             <BoxView Color="Gray" Grid.Row="4" HeightRequest="1"/>
@@ -66,9 +67,9 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Text="New Char" Clicked="NewChar_Clicked" Margin="5"/>
-                <Button Text="Example Char" Clicked="ExampleChar_Clicked" Grid.Column="1" Margin="5"/>
-                <Button Text="Open File" Clicked="OpenFile" Grid.Column="2" Margin="5"/>
+                <Button Text="{resx:UiResources NewChar}" AutomationProperties.HelpText="{resx:UiResources NewCharX}" Clicked="NewChar_Clicked" Margin="5"/>
+                <Button Text="{resx:UiResources CreateExampleChar}" AutomationProperties.HelpText="{resx:UiResources CreateExampleCharX}" Clicked="ExampleChar_Clicked" Grid.Column="1" Margin="5"/>
+                <Button Text="{resx:UiResources ImportChar}" Clicked="OpenFile" Grid.Column="2" Margin="5"/>
             </Grid>
         </Grid>
     </ContentView.Content>

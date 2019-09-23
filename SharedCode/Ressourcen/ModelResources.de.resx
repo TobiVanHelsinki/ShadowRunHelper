@@ -117,663 +117,663 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Attribut_.Text" xml:space="preserve">
+  <data name="Attribut_" xml:space="preserve">
     <value>Attribut</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="AttributM_.Text" xml:space="preserve">
+  <data name="AttributM_" xml:space="preserve">
     <value>Attribute</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Thing_Bezeichner.Text" xml:space="preserve">
+  <data name="Thing_Bezeichner" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="ConnectionM_.Text" xml:space="preserve">
+  <data name="ConnectionM_" xml:space="preserve">
     <value>Connections</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Connection_.Text" xml:space="preserve">
+  <data name="Connection_" xml:space="preserve">
     <value>Connection</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="Connection_Loyal.Text" xml:space="preserve">
+  <data name="Connection_Loyal" xml:space="preserve">
     <value>Loyalität</value>
   </data>
-  <data name="CyberDeckM_.Text" xml:space="preserve">
+  <data name="CyberDeckM_" xml:space="preserve">
     <value>CyberDecks</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="CyberDeck_.Text" xml:space="preserve">
+  <data name="CyberDeck_" xml:space="preserve">
     <value>CyberDeck</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="CyberDeck_Angriff.Text" xml:space="preserve">
+  <data name="CyberDeck_Angriff" xml:space="preserve">
     <value>Angriff</value>
   </data>
-  <data name="CyberDeck_Schleicher.Text" xml:space="preserve">
+  <data name="CyberDeck_Schleicher" xml:space="preserve">
     <value>Schleicher</value>
   </data>
-  <data name="FernkampfwaffeM_.Text" xml:space="preserve">
+  <data name="FernkampfwaffeM_" xml:space="preserve">
     <value>Fernkampfwaffen</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Fernkampfwaffe_.Text" xml:space="preserve">
+  <data name="Fernkampfwaffe_" xml:space="preserve">
     <value>Fernkampfwaffe</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="FernKampfwaffe_Modi.Text" xml:space="preserve">
+  <data name="FernKampfwaffe_Modi" xml:space="preserve">
     <value>Modi</value>
   </data>
-  <data name="Fertigkeit_.Text" xml:space="preserve">
+  <data name="Fertigkeit_" xml:space="preserve">
     <value>Fertigkeit</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="Handlung_.Text" xml:space="preserve">
+  <data name="Handlung_" xml:space="preserve">
     <value>Handlung</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="FertigkeitM_.Text" xml:space="preserve">
+  <data name="FertigkeitM_" xml:space="preserve">
     <value>Fertigkeiten</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="HandlungM_.Text" xml:space="preserve">
+  <data name="HandlungM_" xml:space="preserve">
     <value>Aktionen</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Handlung_Grenze.Text" xml:space="preserve">
+  <data name="Handlung_Grenze" xml:space="preserve">
     <value>Limit:</value>
   </data>
-  <data name="Handlung_Mod.Text" xml:space="preserve">
+  <data name="Handlung_Mod" xml:space="preserve">
     <value>Modifier</value>
   </data>
-  <data name="Handlung_Zusammensetzung.Text" xml:space="preserve">
+  <data name="Handlung_Zusammensetzung" xml:space="preserve">
     <value>Würfeln mit:</value>
   </data>
-  <data name="ItemM_.Text" xml:space="preserve">
+  <data name="ItemM_" xml:space="preserve">
     <value>Items</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Item_.Text" xml:space="preserve">
+  <data name="Item_" xml:space="preserve">
     <value>Item</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="Item_Aktiv.Text" xml:space="preserve">
+  <data name="Item_Aktiv" xml:space="preserve">
     <value>Aktiv</value>
   </data>
-  <data name="Item_Anzahl.Text" xml:space="preserve">
+  <data name="Item_Anzahl" xml:space="preserve">
     <value>Anzahl</value>
   </data>
-  <data name="Item_Besitz.Text" xml:space="preserve">
+  <data name="Item_Besitz" xml:space="preserve">
     <value>Besitz</value>
   </data>
-  <data name="KommlinkM_.Text" xml:space="preserve">
+  <data name="KommlinkM_" xml:space="preserve">
     <value>Kommlinks</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Kommlink_.Text" xml:space="preserve">
+  <data name="Kommlink_" xml:space="preserve">
     <value>Kommlink</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="Kommlink_Attribute.Text" xml:space="preserve">
+  <data name="Kommlink_Attribute" xml:space="preserve">
     <value>Attribute</value>
   </data>
-  <data name="Kommlink_Datenverarbeitung.Text" xml:space="preserve">
+  <data name="Kommlink_Datenverarbeitung" xml:space="preserve">
     <value>Datenverarbeitung</value>
   </data>
-  <data name="Kommlink_Firewall.Text" xml:space="preserve">
+  <data name="Kommlink_Firewall" xml:space="preserve">
     <value>Firewall</value>
   </data>
-  <data name="Kommlink_Programmanzahl.Text" xml:space="preserve">
+  <data name="Kommlink_Programmanzahl" xml:space="preserve">
     <value>Programmanzahl</value>
   </data>
-  <data name="NahkampfwaffeM_.Text" xml:space="preserve">
+  <data name="NahkampfwaffeM_" xml:space="preserve">
     <value>Nahkampfwaffen</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Nahkampfwaffe_.Text" xml:space="preserve">
+  <data name="Nahkampfwaffe_" xml:space="preserve">
     <value>Nahkampfwaffe</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="Nahkampfwaffe_Reichweite.Text" xml:space="preserve">
+  <data name="Nahkampfwaffe_Reichweite" xml:space="preserve">
     <value>Reichweite</value>
   </data>
-  <data name="Thing_Notiz.Text" xml:space="preserve">
+  <data name="Thing_Notiz" xml:space="preserve">
     <value>Notiz</value>
   </data>
-  <data name="Panzerung_.Text" xml:space="preserve">
+  <data name="Panzerung_" xml:space="preserve">
     <value>Panzerung</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="PanzerungM_.Text" xml:space="preserve">
+  <data name="PanzerungM_" xml:space="preserve">
     <value>Panzerungen</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Programm_.Text" xml:space="preserve">
+  <data name="Programm_" xml:space="preserve">
     <value>Programm</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="ProgrammM_.Text" xml:space="preserve">
+  <data name="ProgrammM_" xml:space="preserve">
     <value>Programme</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Programm_Optionen.Text" xml:space="preserve">
+  <data name="Programm_Optionen" xml:space="preserve">
     <value>Auswirkungen</value>
   </data>
-  <data name="Thing_Typ.Text" xml:space="preserve">
+  <data name="Thing_Typ" xml:space="preserve">
     <value>Typ</value>
   </data>
-  <data name="Vehikel_.Text" xml:space="preserve">
+  <data name="Vehikel_" xml:space="preserve">
     <value>Vehikel</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="VehikelM_.Text" xml:space="preserve">
+  <data name="VehikelM_" xml:space="preserve">
     <value>Vehikel</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Vehikel_Beschleunigung.Text" xml:space="preserve">
+  <data name="Vehikel_Beschleunigung" xml:space="preserve">
     <value>Beschleunigung</value>
   </data>
-  <data name="Vehikel_Geschwindigkeit.Text" xml:space="preserve">
+  <data name="Vehikel_Geschwindigkeit" xml:space="preserve">
     <value>Geschwindigkeit</value>
   </data>
-  <data name="Vehikel_Gewicht.Text" xml:space="preserve">
+  <data name="Vehikel_Gewicht" xml:space="preserve">
     <value>Gewicht</value>
   </data>
-  <data name="Vehikel_Handling.Text" xml:space="preserve">
+  <data name="Vehikel_Handling" xml:space="preserve">
     <value>Handling</value>
   </data>
-  <data name="Vehikel_Panzerung.Text" xml:space="preserve">
+  <data name="Vehikel_Panzerung" xml:space="preserve">
     <value>Panzer</value>
   </data>
-  <data name="Vehikel_Pilot.Text" xml:space="preserve">
+  <data name="Vehikel_Pilot" xml:space="preserve">
     <value>Pilot</value>
   </data>
-  <data name="Vehikel_Rumpf.Text" xml:space="preserve">
+  <data name="Vehikel_Rumpf" xml:space="preserve">
     <value>Rumpf</value>
   </data>
-  <data name="Vehikel_Sensor.Text" xml:space="preserve">
+  <data name="Vehikel_Sensor" xml:space="preserve">
     <value>Sensor</value>
   </data>
-  <data name="Vehikel_Sitze.Text" xml:space="preserve">
+  <data name="Vehikel_Sitze" xml:space="preserve">
     <value>Sitze</value>
   </data>
-  <data name="Waffe_DK.Text" xml:space="preserve">
+  <data name="Waffe_DK" xml:space="preserve">
     <value>DK</value>
   </data>
-  <data name="Thing_Zusatz.Text" xml:space="preserve">
+  <data name="Thing_Zusatz" xml:space="preserve">
     <value>Zusatz</value>
   </data>
-  <data name="Person_Edge.Text" xml:space="preserve">
+  <data name="Person_Edge" xml:space="preserve">
     <value>Edge</value>
   </data>
-  <data name="Person_Essenz.Text" xml:space="preserve">
+  <data name="Person_Essenz" xml:space="preserve">
     <value>Essenz mod</value>
   </data>
-  <data name="Person_InitiativeAktuell.Text" xml:space="preserve">
+  <data name="Person_InitiativeAktuell" xml:space="preserve">
     <value>Aktuelle Initiative</value>
   </data>
-  <data name="Person_Karma.Text" xml:space="preserve">
+  <data name="Person_Karma" xml:space="preserve">
     <value>Karma</value>
   </data>
-  <data name="Person_Kontostand.Text" xml:space="preserve">
+  <data name="Person_Kontostand" xml:space="preserve">
     <value>Geld</value>
   </data>
-  <data name="Eigenschaften_Auswirkung.Text" xml:space="preserve">
+  <data name="Eigenschaften_Auswirkung" xml:space="preserve">
     <value>Auswirkungen</value>
   </data>
-  <data name="Implantat_.Text" xml:space="preserve">
+  <data name="Implantat_" xml:space="preserve">
     <value>Implantat</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="ImplantatM_.Text" xml:space="preserve">
+  <data name="ImplantatM_" xml:space="preserve">
     <value>Implantate</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Implantat_Essenz.Text" xml:space="preserve">
+  <data name="Implantat_Essenz" xml:space="preserve">
     <value>Essenz</value>
   </data>
-  <data name="NachteilM_.Text" xml:space="preserve">
+  <data name="NachteilM_" xml:space="preserve">
     <value>Nachteile</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Nachteil_.Text" xml:space="preserve">
+  <data name="Nachteil_" xml:space="preserve">
     <value>Nachteil</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="Person_.Text" xml:space="preserve">
+  <data name="Person_" xml:space="preserve">
     <value>Personenangaben</value>
     <comment>Mehrzahl?</comment>
   </data>
-  <data name="Person_Alias.Text" xml:space="preserve">
+  <data name="Person_Alias" xml:space="preserve">
     <value>Alias</value>
   </data>
-  <data name="Person_Beschreibung_.Text" xml:space="preserve">
+  <data name="Person_Beschreibung_" xml:space="preserve">
     <value>Personbeschreibung</value>
   </data>
-  <data name="Person_Notizen.Text" xml:space="preserve">
+  <data name="Person_Notizen" xml:space="preserve">
     <value>Notizen</value>
   </data>
-  <data name="SINM_.Text" xml:space="preserve">
+  <data name="SINM_" xml:space="preserve">
     <value>SINs</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="VorteilM_.Text" xml:space="preserve">
+  <data name="VorteilM_" xml:space="preserve">
     <value>Vorteile</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="SIN_.Text" xml:space="preserve">
+  <data name="SIN_" xml:space="preserve">
     <value>SIN</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="Vorteil_.Text" xml:space="preserve">
+  <data name="Vorteil_" xml:space="preserve">
     <value>Vorteil</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="Waffe_SchadenTyp.Text" xml:space="preserve">
+  <data name="Waffe_SchadenTyp" xml:space="preserve">
     <value>Schadenstyp (G/K)</value>
   </data>
-  <data name="Kommlink_Attribute_o.Text" xml:space="preserve">
+  <data name="Kommlink_Attribute_o" xml:space="preserve">
     <value>Attribute Orginal</value>
   </data>
-  <data name="Stroemung_Echos.Text" xml:space="preserve">
+  <data name="Stroemung_Echos" xml:space="preserve">
     <value>Echos</value>
   </data>
-  <data name="Person_Char_Typ.Text" xml:space="preserve">
+  <data name="Person_Char_Typ" xml:space="preserve">
     <value>Char Typ</value>
   </data>
-  <data name="Person_Runs.Text" xml:space="preserve">
+  <data name="Person_Runs" xml:space="preserve">
     <value>Runs</value>
   </data>
-  <data name="Person_MetaTyp.Text" xml:space="preserve">
+  <data name="Person_MetaTyp" xml:space="preserve">
     <value>MetaTyp</value>
   </data>
-  <data name="Person_MetaTyp_sub.Text" xml:space="preserve">
+  <data name="Person_MetaTyp_sub" xml:space="preserve">
     <value>MetaSubTyp</value>
   </data>
-  <data name="Person_Lebensstil.Text" xml:space="preserve">
+  <data name="Person_Lebensstil" xml:space="preserve">
     <value>Lebensstil</value>
   </data>
-  <data name="Person_Geburtsdatum.Text" xml:space="preserve">
+  <data name="Person_Geburtsdatum" xml:space="preserve">
     <value>Geburtsdatum</value>
   </data>
-  <data name="Person_Geschlecht.Text" xml:space="preserve">
+  <data name="Person_Geschlecht" xml:space="preserve">
     <value>Geschlecht</value>
   </data>
-  <data name="Stroemung_.Text" xml:space="preserve">
+  <data name="Stroemung_" xml:space="preserve">
     <value>Strömung</value>
   </data>
-  <data name="Person_Gewicht.Text" xml:space="preserve">
+  <data name="Person_Gewicht" xml:space="preserve">
     <value>Gewicht</value>
   </data>
-  <data name="Person_Augenfarbe.Text" xml:space="preserve">
+  <data name="Person_Augenfarbe" xml:space="preserve">
     <value>Augenfarbe</value>
   </data>
-  <data name="Person_Haarfarbe.Text" xml:space="preserve">
+  <data name="Person_Haarfarbe" xml:space="preserve">
     <value>Haarfarbe</value>
   </data>
-  <data name="Person_Hautfarbe.Text" xml:space="preserve">
+  <data name="Person_Hautfarbe" xml:space="preserve">
     <value>Hautfarbe</value>
   </data>
-  <data name="Person_Zusammenfassung.Text" xml:space="preserve">
+  <data name="Person_Zusammenfassung" xml:space="preserve">
     <value>Zusammenfassung</value>
   </data>
-  <data name="Person_Karma_Aktuell.Text" xml:space="preserve">
+  <data name="Person_Karma_Aktuell" xml:space="preserve">
     <value>Karma Aktuell</value>
   </data>
-  <data name="Person_Karma_Gesamt.Text" xml:space="preserve">
+  <data name="Person_Karma_Gesamt" xml:space="preserve">
     <value>Karma Gesamt</value>
   </data>
-  <data name="Person_Edge_Aktuell.Text" xml:space="preserve">
+  <data name="Person_Edge_Aktuell" xml:space="preserve">
     <value>Edge Aktuell</value>
   </data>
-  <data name="Person_Edge_Gesamt.Text" xml:space="preserve">
+  <data name="Person_Edge_Gesamt" xml:space="preserve">
     <value>Edge Gesamt</value>
   </data>
-  <data name="Person_Schaden_K.Text" xml:space="preserve">
+  <data name="Person_Schaden_K" xml:space="preserve">
     <value>KörperSchaden</value>
   </data>
-  <data name="Person_Schaden_K_max.Text" xml:space="preserve">
+  <data name="Person_Schaden_K_max" xml:space="preserve">
     <value>KörperSchaden maximal</value>
   </data>
-  <data name="Person_Schaden_G.Text" xml:space="preserve">
+  <data name="Person_Schaden_G" xml:space="preserve">
     <value>GeistSchaden</value>
   </data>
-  <data name="Person_Schaden_G_max.Text" xml:space="preserve">
+  <data name="Person_Schaden_G_max" xml:space="preserve">
     <value>GeistSchaden maximal</value>
   </data>
-  <data name="Person_Initiative.Text" xml:space="preserve">
+  <data name="Person_Initiative" xml:space="preserve">
     <value>Initiative</value>
   </data>
-  <data name="Munition_.Text" xml:space="preserve">
+  <data name="Munition_" xml:space="preserve">
     <value>Munition</value>
     <comment>Einzahl</comment>
   </data>
-  <data name="MunitionM_.Text" xml:space="preserve">
+  <data name="MunitionM_" xml:space="preserve">
     <value>Munition</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="StroemungM_.Text" xml:space="preserve">
+  <data name="StroemungM_" xml:space="preserve">
     <value>Strömungen</value>
   </data>
-  <data name="Stroemung_Wert.Text" xml:space="preserve">
+  <data name="Stroemung_Wert" xml:space="preserve">
     <value>Grad</value>
   </data>
-  <data name="Handlung_Gegen.Text" xml:space="preserve">
+  <data name="Handlung_Gegen" xml:space="preserve">
     <value>Wehren mit:</value>
   </data>
-  <data name="Attribut_Charisma.Text" xml:space="preserve">
+  <data name="Attribut_Charisma" xml:space="preserve">
     <value>Charisma</value>
   </data>
-  <data name="Berechnet_Essenz.Text" xml:space="preserve">
+  <data name="Berechnet_Essenz" xml:space="preserve">
     <value>Essenz</value>
   </data>
-  <data name="Attribut_Intuition.Text" xml:space="preserve">
+  <data name="Attribut_Intuition" xml:space="preserve">
     <value>Intuition</value>
   </data>
-  <data name="Attribut_Konsti.Text" xml:space="preserve">
+  <data name="Attribut_Konsti" xml:space="preserve">
     <value>Konstitution</value>
   </data>
-  <data name="Berechnet_Limit_G.Text" xml:space="preserve">
+  <data name="Berechnet_Limit_G" xml:space="preserve">
     <value>Geistiges Limit</value>
   </data>
-  <data name="Berechnet_Limit_K.Text" xml:space="preserve">
+  <data name="Berechnet_Limit_K" xml:space="preserve">
     <value>Körperliches Limit</value>
   </data>
-  <data name="Berechnet_Limit_S.Text" xml:space="preserve">
+  <data name="Berechnet_Limit_S" xml:space="preserve">
     <value>Soziales Limit</value>
   </data>
-  <data name="Attribut_Logik.Text" xml:space="preserve">
+  <data name="Attribut_Logik" xml:space="preserve">
     <value>Logik</value>
   </data>
-  <data name="Attribut_Reaktion.Text" xml:space="preserve">
+  <data name="Attribut_Reaktion" xml:space="preserve">
     <value>Reaktion</value>
   </data>
-  <data name="Attribut_Staerke.Text" xml:space="preserve">
+  <data name="Attribut_Staerke" xml:space="preserve">
     <value>Stärke</value>
   </data>
-  <data name="Attribut_Willen.Text" xml:space="preserve">
+  <data name="Attribut_Willen" xml:space="preserve">
     <value>Willenskraft</value>
   </data>
-  <data name="Attribut_Geschick.Text" xml:space="preserve">
+  <data name="Attribut_Geschick" xml:space="preserve">
     <value>Geschicklichkeit</value>
   </data>
-  <data name="Thing_Wert.Text" xml:space="preserve">
+  <data name="Thing_Wert" xml:space="preserve">
     <value>Stufe</value>
   </data>
-  <data name="Thing_ThingTyp.Text" xml:space="preserve">
+  <data name="Thing_ThingTyp" xml:space="preserve">
     <value>Eigenschaftstyp</value>
   </data>
-  <data name="Connection_Einfluss.Text" xml:space="preserve">
+  <data name="Connection_Einfluss" xml:space="preserve">
     <value>Einfluss</value>
   </data>
-  <data name="CyberDeck_Angriff_o.Text" xml:space="preserve">
+  <data name="CyberDeck_Angriff_o" xml:space="preserve">
     <value>Angriff Original</value>
   </data>
-  <data name="CyberDeck_Datenverarbeitung_o.Text" xml:space="preserve">
+  <data name="CyberDeck_Datenverarbeitung_o" xml:space="preserve">
     <value>Datenverarbeitung Original</value>
   </data>
-  <data name="CyberDeck_Firewall_o.Text" xml:space="preserve">
+  <data name="CyberDeck_Firewall_o" xml:space="preserve">
     <value>Firewall Original</value>
   </data>
-  <data name="CyberDeck_Schleicher_o.Text" xml:space="preserve">
+  <data name="CyberDeck_Schleicher_o" xml:space="preserve">
     <value>Schleicher Original</value>
   </data>
-  <data name="Eigenschaft_Auswirkungen.Text" xml:space="preserve">
+  <data name="Eigenschaft_Auswirkungen" xml:space="preserve">
     <value>Auswirkungen</value>
   </data>
-  <data name="Stroemung_Paragon.Text" xml:space="preserve">
+  <data name="Stroemung_Paragon" xml:space="preserve">
     <value>Paragon</value>
   </data>
-  <data name="Zaubersprueche_Entzug.Text" xml:space="preserve">
+  <data name="Zaubersprueche_Entzug" xml:space="preserve">
     <value>Entzug</value>
   </data>
-  <data name="CyberDeck__Aktiv.Text" xml:space="preserve">
+  <data name="CyberDeck__Aktiv" xml:space="preserve">
     <value>Aktives Deck</value>
   </data>
-  <data name="Fernkampfwaffe__Aktiv.Text" xml:space="preserve">
+  <data name="Fernkampfwaffe__Aktiv" xml:space="preserve">
     <value>Aktive Fernkampfwaffe</value>
   </data>
-  <data name="Kommlink__Aktiv.Text" xml:space="preserve">
+  <data name="Kommlink__Aktiv" xml:space="preserve">
     <value>Aktives Kommlink</value>
   </data>
-  <data name="Nahkampfwaffe__Aktiv.Text" xml:space="preserve">
+  <data name="Nahkampfwaffe__Aktiv" xml:space="preserve">
     <value>Aktive Nahkampfwaffe</value>
   </data>
-  <data name="Panzerung__Aktiv.Text" xml:space="preserve">
+  <data name="Panzerung__Aktiv" xml:space="preserve">
     <value>Aktive Panzerung</value>
   </data>
-  <data name="Vehikel__Aktiv.Text" xml:space="preserve">
+  <data name="Vehikel__Aktiv" xml:space="preserve">
     <value>Aktives Auto</value>
   </data>
-  <data name="Waffe_Wert.Text" xml:space="preserve">
+  <data name="Waffe_Wert" xml:space="preserve">
     <value>Schaden</value>
   </data>
-  <data name="Kommlink_Schaden.Text" xml:space="preserve">
+  <data name="Kommlink_Schaden" xml:space="preserve">
     <value>Schaden</value>
   </data>
-  <data name="Kommlink_SchadenMax.Text" xml:space="preserve">
+  <data name="Kommlink_SchadenMax" xml:space="preserve">
     <value>Schadenslimit</value>
   </data>
-  <data name="Thing_Wert_W.Text" xml:space="preserve">
+  <data name="Thing_Wert_W" xml:space="preserve">
     <value>Wert</value>
   </data>
-  <data name="Attribut_Magie.Text" xml:space="preserve">
+  <data name="Attribut_Magie" xml:space="preserve">
     <value>Magie</value>
   </data>
-  <data name="AdeptenkraftM_.Text" xml:space="preserve">
+  <data name="AdeptenkraftM_" xml:space="preserve">
     <value>Adeptenkräfte</value>
   </data>
-  <data name="Adeptenkraft_.Text" xml:space="preserve">
+  <data name="Adeptenkraft_" xml:space="preserve">
     <value>Adeptenkraft</value>
   </data>
-  <data name="Adeptenkraft_Option.Text" xml:space="preserve">
+  <data name="Adeptenkraft_Option" xml:space="preserve">
     <value>Option</value>
   </data>
-  <data name="Attribut_Resonanz.Text" xml:space="preserve">
+  <data name="Attribut_Resonanz" xml:space="preserve">
     <value>Resonanz</value>
   </data>
-  <data name="FokiM_.Text" xml:space="preserve">
+  <data name="FokiM_" xml:space="preserve">
     <value>Foki</value>
   </data>
-  <data name="Foki_.Text" xml:space="preserve">
+  <data name="Foki_" xml:space="preserve">
     <value>Foki</value>
   </data>
-  <data name="GeistM_.Text" xml:space="preserve">
+  <data name="GeistM_" xml:space="preserve">
     <value>Geister</value>
   </data>
-  <data name="Geist_.Text" xml:space="preserve">
+  <data name="Geist_" xml:space="preserve">
     <value>Geist</value>
   </data>
-  <data name="Geist_Dienste.Text" xml:space="preserve">
+  <data name="Geist_Dienste" xml:space="preserve">
     <value>Dienste</value>
   </data>
-  <data name="Geist_Geb_Reg.Text" xml:space="preserve">
+  <data name="Geist_Geb_Reg" xml:space="preserve">
     <value>Gebunden</value>
   </data>
-  <data name="Person_Geburtstag.Text" xml:space="preserve">
+  <data name="Person_Geburtstag" xml:space="preserve">
     <value>Geburtstag</value>
   </data>
-  <data name="Person_Prominenz.Text" xml:space="preserve">
+  <data name="Person_Prominenz" xml:space="preserve">
     <value>Prominenz</value>
   </data>
-  <data name="Person_SchlechterRuf.Text" xml:space="preserve">
+  <data name="Person_SchlechterRuf" xml:space="preserve">
     <value>Schlechter Ruf</value>
   </data>
-  <data name="Person_Strassenruf.Text" xml:space="preserve">
+  <data name="Person_Strassenruf" xml:space="preserve">
     <value>Straßenruf</value>
   </data>
-  <data name="Person_StrassenrufMod.Text" xml:space="preserve">
+  <data name="Person_StrassenrufMod" xml:space="preserve">
     <value>Straßenruf Mod</value>
   </data>
-  <data name="Zaubersprueche_Reichweite.Text" xml:space="preserve">
+  <data name="Zaubersprueche_Reichweite" xml:space="preserve">
     <value>Reichweite</value>
   </data>
-  <data name="Zaubersprueche_Dauer.Text" xml:space="preserve">
+  <data name="Zaubersprueche_Dauer" xml:space="preserve">
     <value>Dauer</value>
   </data>
-  <data name="Zaubersprueche_.Text" xml:space="preserve">
+  <data name="Zaubersprueche_" xml:space="preserve">
     <value>Zauberspruch</value>
   </data>
-  <data name="ZauberspruecheM_.Text" xml:space="preserve">
+  <data name="ZauberspruecheM_" xml:space="preserve">
     <value>Zaubersprüche</value>
   </data>
-  <data name="Waffe_Praezision.Text" xml:space="preserve">
+  <data name="Waffe_Praezision" xml:space="preserve">
     <value>Präzision</value>
   </data>
-  <data name="Stroemung_Bezeichner.Text" xml:space="preserve">
+  <data name="Stroemung_Bezeichner" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="TraditionM_.Text" xml:space="preserve">
+  <data name="TraditionM_" xml:space="preserve">
     <value>Traditionen</value>
   </data>
-  <data name="Tradition_.Text" xml:space="preserve">
+  <data name="Tradition_" xml:space="preserve">
     <value>Tradition</value>
   </data>
-  <data name="Tradition_Bezeichner.Text" xml:space="preserve">
+  <data name="Tradition_Bezeichner" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Tradition_Metamagie.Text" xml:space="preserve">
+  <data name="Tradition_Metamagie" xml:space="preserve">
     <value>Metamagie</value>
   </data>
-  <data name="Tradition_Schutzpatron.Text" xml:space="preserve">
+  <data name="Tradition_Schutzpatron" xml:space="preserve">
     <value>Schutzpatron</value>
   </data>
-  <data name="Tradition_Wert.Text" xml:space="preserve">
+  <data name="Tradition_Wert" xml:space="preserve">
     <value>Grad</value>
   </data>
-  <data name="Panzerung_Kapazitaet.Text" xml:space="preserve">
+  <data name="Panzerung_Kapazitaet" xml:space="preserve">
     <value>Kapazität</value>
   </data>
-  <data name="Person_Groesse.Text" xml:space="preserve">
+  <data name="Person_Groesse" xml:space="preserve">
     <value>Größe</value>
   </data>
-  <data name="Implantat_Kapazitaet.Text" xml:space="preserve">
+  <data name="Implantat_Kapazitaet" xml:space="preserve">
     <value>Kapazität</value>
   </data>
-  <data name="Fernkampfwaffe_RK.Text" xml:space="preserve">
+  <data name="Fernkampfwaffe_RK" xml:space="preserve">
     <value>RK</value>
   </data>
-  <data name="_Kapazitaet.Text" xml:space="preserve">
+  <data name="_Kapazitaet" xml:space="preserve">
     <value>Kapazität</value>
   </data>
-  <data name="Implantat_Auswirkung.Text" xml:space="preserve">
+  <data name="Implantat_Auswirkung" xml:space="preserve">
     <value>Auswirkungen</value>
   </data>
-  <data name="_Pool.Text" xml:space="preserve">
+  <data name="_Pool" xml:space="preserve">
     <value>Pool</value>
   </data>
-  <data name="Person_Alias_STD.Text" xml:space="preserve">
+  <data name="Person_Alias_STD" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Person_Initiative_Kurz.Text" xml:space="preserve">
+  <data name="Person_Initiative_Kurz" xml:space="preserve">
     <value>Ini</value>
   </data>
-  <data name="Vehikel_Wert.Text" xml:space="preserve">
+  <data name="Vehikel_Wert" xml:space="preserve">
     <value>Schaden</value>
   </data>
-  <data name="BerechnetM_.Text" xml:space="preserve">
+  <data name="BerechnetM_" xml:space="preserve">
     <value>Berechnete Werte</value>
   </data>
-  <data name="Berechnet_.Text" xml:space="preserve">
+  <data name="Berechnet_" xml:space="preserve">
     <value>Berechneter Wert</value>
   </data>
-  <data name="Berechnet_Laufen.Text" xml:space="preserve">
+  <data name="Berechnet_Laufen" xml:space="preserve">
     <value>Laufen</value>
   </data>
-  <data name="Berechnet_Rennen.Text" xml:space="preserve">
+  <data name="Berechnet_Rennen" xml:space="preserve">
     <value>Rennen</value>
   </data>
-  <data name="Berechnet_Tragen.Text" xml:space="preserve">
+  <data name="Berechnet_Tragen" xml:space="preserve">
     <value>Tragen</value>
   </data>
-  <data name="KomplexeFormM_.Text" xml:space="preserve">
+  <data name="KomplexeFormM_" xml:space="preserve">
     <value>Komplexe Formen</value>
   </data>
-  <data name="KomplexeForm_.Text" xml:space="preserve">
+  <data name="KomplexeForm_" xml:space="preserve">
     <value>Komplexe Form</value>
   </data>
-  <data name="KomplexeForm_Option.Text" xml:space="preserve">
+  <data name="KomplexeForm_Option" xml:space="preserve">
     <value>Option</value>
   </data>
-  <data name="WidgetsM_.Text" xml:space="preserve">
+  <data name="WidgetsM_" xml:space="preserve">
     <value>Widgets</value>
   </data>
-  <data name="Widgets_.Text" xml:space="preserve">
+  <data name="Widgets_" xml:space="preserve">
     <value>Widget</value>
   </data>
-  <data name="SpriteM_.Text" xml:space="preserve">
+  <data name="SpriteM_" xml:space="preserve">
     <value>Sprites</value>
   </data>
-  <data name="Sprite_.Text" xml:space="preserve">
+  <data name="Sprite_" xml:space="preserve">
     <value>Sprite</value>
   </data>
-  <data name="Sprite_Dienste.Text" xml:space="preserve">
+  <data name="Sprite_Dienste" xml:space="preserve">
     <value>Dienste</value>
   </data>
-  <data name="Sprite_Geb_Reg.Text" xml:space="preserve">
+  <data name="Sprite_Geb_Reg" xml:space="preserve">
     <value>Registriert</value>
   </data>
-  <data name="WandlungM_.Text" xml:space="preserve">
+  <data name="WandlungM_" xml:space="preserve">
     <value>Wandlungen</value>
   </data>
-  <data name="Wandlung_.Text" xml:space="preserve">
+  <data name="Wandlung_" xml:space="preserve">
     <value>Wandlung</value>
   </data>
-  <data name="Wandlung_Bezeichner.Text" xml:space="preserve">
+  <data name="Wandlung_Bezeichner" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Wandlung_Echos.Text" xml:space="preserve">
+  <data name="Wandlung_Echos" xml:space="preserve">
     <value>Echos</value>
   </data>
-  <data name="Wandlung_Paragon.Text" xml:space="preserve">
+  <data name="Wandlung_Paragon" xml:space="preserve">
     <value>Paragon</value>
   </data>
-  <data name="Wandlung_Wert.Text" xml:space="preserve">
+  <data name="Wandlung_Wert" xml:space="preserve">
     <value>Grad</value>
   </data>
-  <data name="InitiationM_.Text" xml:space="preserve">
+  <data name="InitiationM_" xml:space="preserve">
     <value>Initiationen</value>
   </data>
-  <data name="Initiation_.Text" xml:space="preserve">
+  <data name="Initiation_" xml:space="preserve">
     <value>Initiation</value>
   </data>
-  <data name="Initiation_Bezeichner.Text" xml:space="preserve">
+  <data name="Initiation_Bezeichner" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Initiation_Metamagie.Text" xml:space="preserve">
+  <data name="Initiation_Metamagie" xml:space="preserve">
     <value>Metamagie</value>
   </data>
-  <data name="Initiation_Schutzpatron.Text" xml:space="preserve">
+  <data name="Initiation_Schutzpatron" xml:space="preserve">
     <value>Schutzpatron</value>
   </data>
-  <data name="Initiation_Wert.Text" xml:space="preserve">
+  <data name="Initiation_Wert" xml:space="preserve">
     <value>Grad</value>
   </data>
-  <data name="Person_Schaden_G_max_mod.Text" xml:space="preserve">
+  <data name="Person_Schaden_G_max_mod" xml:space="preserve">
     <value>Max.G-Schaden modifier</value>
   </data>
-  <data name="Person_Schaden_K_max_mod.Text" xml:space="preserve">
+  <data name="Person_Schaden_K_max_mod" xml:space="preserve">
     <value>Max.K-Schaden modifier</value>
   </data>
-  <data name="_ORG.Text" xml:space="preserve">
+  <data name="_ORG" xml:space="preserve">
     <value>orig.</value>
   </data>
-  <data name="_Active.Text" xml:space="preserve">
+  <data name="_Active" xml:space="preserve">
     <value>Aktiver Eintrag:</value>
   </data>
-  <data name="_Mod.Text" xml:space="preserve">
+  <data name="_Mod" xml:space="preserve">
     <value>Mod.</value>
   </data>
   <data name="Fertigkeit_CreateHandlung" xml:space="preserve">
     <value>Handlung anlegen</value>
   </data>
-  <data name="Handlung_GegenZusatz.Text" xml:space="preserve">
+  <data name="Handlung_GegenZusatz" xml:space="preserve">
     <value>Gegen Zusatz</value>
   </data>
-  <data name="Handlung_GrenzeZusatz.Text" xml:space="preserve">
+  <data name="Handlung_GrenzeZusatz" xml:space="preserve">
     <value>Grenze Zusatz</value>
   </data>
-  <data name="Handlung_WertZusatz.Text" xml:space="preserve">
+  <data name="Handlung_WertZusatz" xml:space="preserve">
     <value>Wert Zusatz</value>
   </data>
   <data name="Content_Erinnerung" xml:space="preserve">
@@ -788,19 +788,19 @@
   <data name="Content_Selbstbeherrschung" xml:space="preserve">
     <value>Selbstbeherrschung</value>
   </data>
-  <data name="KomplexForm_Duration.Text" xml:space="preserve">
+  <data name="KomplexForm_Duration" xml:space="preserve">
     <value>Dauer</value>
   </data>
-  <data name="KomplexForm_Fading.Text" xml:space="preserve">
+  <data name="KomplexForm_Fading" xml:space="preserve">
     <value>Schwund</value>
   </data>
-  <data name="KomplexForm_Target.Text" xml:space="preserve">
+  <data name="KomplexForm_Target" xml:space="preserve">
     <value>Ziel</value>
   </data>
-  <data name="Person_LifestyleCost.Text" xml:space="preserve">
+  <data name="Person_LifestyleCost" xml:space="preserve">
     <value>Lebensstilkosten</value>
   </data>
-  <data name="Thing_IsFavorite.Text" xml:space="preserve">
+  <data name="Thing_IsFavorite" xml:space="preserve">
     <value>Favorit</value>
   </data>
 </root>

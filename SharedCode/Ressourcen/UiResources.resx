@@ -117,492 +117,450 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Category_Aktion.Label" xml:space="preserve">
+  <data name="Category_Aktion" xml:space="preserve">
     <value>Actions</value>
   </data>
-  <data name="Category_Item.Label" xml:space="preserve">
+  <data name="Category_Item" xml:space="preserve">
     <value>Items</value>
   </data>
-  <data name="Category_Kampf.Label" xml:space="preserve">
+  <data name="Category_Kampf" xml:space="preserve">
     <value>Battle</value>
   </data>
-  <data name="Category_Notizen.Label" xml:space="preserve">
+  <data name="Category_Notizen" xml:space="preserve">
     <value>Notes</value>
   </data>
-  <data name="Category_Person.Label" xml:space="preserve">
+  <data name="Category_Person" xml:space="preserve">
     <value>Person</value>
   </data>
-  <data name="Category_Settings.Label" xml:space="preserve">
+  <data name="Category_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="Btn_Bearbeiten.Content" xml:space="preserve">
+  <data name="Bearbeiten" xml:space="preserve">
     <value>Edit</value>
   </data>
-  <data name="Btn_Loeschen.Content" xml:space="preserve">
+  <data name="Loeschen" xml:space="preserve">
     <value>Delete</value>
   </data>
-  <data name="CharVerwaltung_Btn_Alle_Chars_Loeschen.Label" xml:space="preserve">
+  <data name="Alle_Chars_Loeschen" xml:space="preserve">
     <value>Delete all Chars</value>
   </data>
-  <data name="Label_LoadChar.Label" xml:space="preserve">
+  <data name="LoadChar" xml:space="preserve">
     <value>Load</value>
   </data>
-  <data name="Label_DeleteChar.Label" xml:space="preserve">
+  <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
-  <data name="CharVerwaltung_Btn_Neu.Label" xml:space="preserve">
+  <data name="NewChar" xml:space="preserve">
     <value>Create new char</value>
   </data>
-  <data name="CharVerwaltung_Einleitung1.Text" xml:space="preserve">
+  <data name="Einleitung1" xml:space="preserve">
     <value>Current savefiles:</value>
   </data>
-  <data name="CharVerwaltung_Einleitung2.Text" xml:space="preserve">
+  <data name="Einleitung2" xml:space="preserve">
     <value>Available savefiles:</value>
   </data>
-  <data name="Optionen_AutoSave.Text" xml:space="preserve">
-    <value>Auto-Save current char at changes</value>
+  <data name="Optionen_AutoSave" xml:space="preserve">
+    <value>After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. A value between 2 and 10 seconds is okay.</value>
   </data>
-  <data name="Optionen_LoadOnStart.Text" xml:space="preserve">
-    <value>Load last used char at App start</value>
+  <data name="Optionen_LoadOnStart" xml:space="preserve">
+    <value>The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time.</value>
   </data>
-  <data name="Char_Schaden.Text" xml:space="preserve">
+  <data name="Char_Schaden" xml:space="preserve">
     <value>Damage:</value>
   </data>
-  <data name="Optionen_Inhaber.Text" xml:space="preserve">
+  <data name="Optionen_Inhaber" xml:space="preserve">
     <value>App owener</value>
   </data>
-  <data name="Optionen_U_Kontakt.Text" xml:space="preserve">
+  <data name="Optionen_U_Kontakt" xml:space="preserve">
     <value>Contact</value>
   </data>
-  <data name="Optionen_Legal.Text" xml:space="preserve">
+  <data name="Optionen_Legal" xml:space="preserve">
     <value>ShadowRun is a registered trademark of Pegasus Games.
 Icons made by Freepik https://www.flaticon.com are licensed by Creative Commons BY 3.0.</value>
   </data>
-  <data name="Optionen_U_Infos.Text" xml:space="preserve">
+  <data name="Optionen_U_Infos" xml:space="preserve">
     <value>Information</value>
   </data>
-  <data name="Optionen_U_Einstellungen.Text" xml:space="preserve">
+  <data name="Optionen_U_Einstellungen" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="Optionen_U_Hilfe.Text" xml:space="preserve">
+  <data name="Optionen_U_Hilfe" xml:space="preserve">
     <value>Help</value>
   </data>
-  <data name="Optionen_U_Rechtliches.Text" xml:space="preserve">
+  <data name="Optionen_U_Rechtliches" xml:space="preserve">
     <value>Legal</value>
   </data>
-  <data name="Optionen_Ordnermode.OffText" xml:space="preserve">
-    <value>Intern Save</value>
+  <data name="Optionen_Ordnermode" xml:space="preserve">
+    <value>Select a Exernen storage folder.</value>
   </data>
-  <data name="Optionen_Ordnermode.OnText" xml:space="preserve">
-    <value>Extern Save</value>
-  </data>
-  <data name="Optionen_Ordnermode.Text" xml:space="preserve">
-    <value>Save at folder</value>
-  </data>
-  <data name="Optionen_Ordnermode_Pfad.Text" xml:space="preserve">
+  <data name="Optionen_Ordnermode_Pfad" xml:space="preserve">
     <value>Path</value>
   </data>
-  <data name="Optionen_Bewerten.Text" xml:space="preserve">
+  <data name="Optionen_Bewerten" xml:space="preserve">
     <value>Rate this App at the Store</value>
   </data>
-  <data name="Optionen_Datenschutz.Text" xml:space="preserve">
+  <data name="Optionen_Datenschutz" xml:space="preserve">
     <value>This app does not collect any personal information and therefore does not disclose it.
 This app can be used to open files and folders on the file system. The app stores those folders and files only for later use. All files remain on the file system or Microsoft account.</value>
   </data>
-  <data name="Optionen_KontaktBtn.Content" xml:space="preserve">
+  <data name="Optionen_KontaktBtn" xml:space="preserve">
     <value>write email</value>
   </data>
-  <data name="Optionen_U_Datenschutz.Text" xml:space="preserve">
+  <data name="Optionen_U_Datenschutz" xml:space="preserve">
     <value>Privacy Policy</value>
   </data>
-  <data name="Optionen_Toggle.OffContent" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="Optionen_EditAfterAdd.Text" xml:space="preserve">
-    <value>Edit after adding</value>
-  </data>
-  <data name="Nav_Char.Label" xml:space="preserve">
-    <value>Character Sheet</value>
-  </data>
-  <data name="Nav_Admin.Label" xml:space="preserve">
-    <value>Administration</value>
-  </data>
-  <data name="Nav_Settings.Label" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="Optionen_DisplayRequest.Text" xml:space="preserve">
-    <value>Hold Char Page active</value>
-  </data>
-  <data name="TxT_Repair.Text" xml:space="preserve">
-    <value>Auto-Fix</value>
-  </data>
-  <data name="Optionen_FileNameUseDate.Text" xml:space="preserve">
-    <value>Add date and time to filename</value>
-  </data>
-  <data name="Optionen_FileNameUseProgres.Text" xml:space="preserve">
-    <value>Add progress to filename</value>
-  </data>
-  <data name="Optionen_Kontakt_Mail.Text" xml:space="preserve">
-    <value>email</value>
-  </data>
-  <data name="Optionen_U_Notifications.Text" xml:space="preserve">
-    <value>Notifications</value>
-  </data>
-  <data name="Optionen_ThrownException.Text" xml:space="preserve">
-    <value>Original Exception</value>
-  </data>
-  <data name="Optionen_Intern_Sync.Text" xml:space="preserve">
-    <value>sync intern files</value>
-  </data>
-  <data name="Optionen_Beta_Features.Text" xml:space="preserve">
-    <value>Activate Beta-Features</value>
-  </data>
-  <data name="Optionen_App.Text" xml:space="preserve">
-    <value>App</value>
-  </data>
-  <data name="Optionen_AppLinkBtn.Content" xml:space="preserve">
-    <value>Open Storeentry for this App</value>
-  </data>
-  <data name="Optionen_MoreAppsBtn.Content" xml:space="preserve">
-    <value>more of my apps</value>
-  </data>
-  <data name="Optionen_RateBtn.Content" xml:space="preserve">
-    <value>Rate this App</value>
-  </data>
-  <data name="Optionen_DisplayRequest.Tip" xml:space="preserve">
-    <value>Prevent the Screen from locking</value>
-  </data>
-  <data name="Optionen_Intern_Sync.Tip" xml:space="preserve">
-    <value>This will synchronize the files you have stored internally over all your Windows 10 devices. Synchronization occurs only if you have enabled the general sync option in WIndows and both devices have sufficient power and a Internetconnection.</value>
-  </data>
-  <data name="Optionen_Ordnermode.Tip" xml:space="preserve">
-    <value>Select a Exernen storage folder.</value>
-  </data>
-  <data name="Optionen_U_Einstellungen_Tip.Text" xml:space="preserve">
-    <value>Hold the mouse or finger on a ? to get more information.</value>
-  </data>
-  <data name="Optionen_AutoSaveInterval.Text" xml:space="preserve">
-    <value>Watingtime for changes in seconds</value>
-  </data>
-  <data name="Optionen_AutoSave.Tip" xml:space="preserve">
-    <value>After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. A value between 2 and 10 seconds is okay.</value>
-  </data>
-  <data name="CharVerwaltung_E_FileDate.Text" xml:space="preserve">
-    <value>modification date</value>
-  </data>
-  <data name="CharVerwaltung_E_FileName.Text" xml:space="preserve">
-    <value>file name</value>
-  </data>
-  <data name="CharVerwaltung_E_FileSize.Text" xml:space="preserve">
-    <value>file size</value>
-  </data>
-  <data name="CharVerwaltung_Intern_Save_Display_String" xml:space="preserve">
-    <value>Save Intern</value>
-  </data>
-  <data name="Optionen_U_Statistics.Text" xml:space="preserve">
-    <value>Statistics</value>
-  </data>
-  <data name="Statistics_AppStart.Text" xml:space="preserve">
-    <value>Number of appstarts</value>
-  </data>
-  <data name="CharVerwaltung_Btn_Create_ExampleChar.Label" xml:space="preserve">
-    <value>Create Example Char</value>
-  </data>
-  <data name="Statistics_Creations.Text" xml:space="preserve">
-    <value>Number of new chars</value>
-  </data>
-  <data name="Statistics_Deletions.Text" xml:space="preserve">
-    <value>Number of deleted chars</value>
-  </data>
-  <data name="Statistics_Loadings.Text" xml:space="preserve">
-    <value>Number of loaded chars</value>
-  </data>
-  <data name="Statistics_Savings.Text" xml:space="preserve">
-    <value>Number of saved chars</value>
-  </data>
-  <data name="DB_Finish.Label" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="DB_FinishClose.Label" xml:space="preserve">
-    <value>Copy and Exit</value>
-  </data>
-  <data name="DB_Help.Label" xml:space="preserve">
-    <value>Help on/off</value>
-  </data>
-  <data name="TxT_SaveAtCurrentPlace.Text" xml:space="preserve">
-    <value>Save at current Folder</value>
-  </data>
-  <data name="Optionen_TutorialMainShown.Text" xml:space="preserve">
-    <value>Read "Char Administration" Guide</value>
-  </data>
-  <data name="CharVerwaltung_Btn_Datei_Import.Label" xml:space="preserve">
-    <value>Char Import</value>
-  </data>
-  <data name="Label_File_Export.Label" xml:space="preserve">
-    <value>Char Export</value>
-  </data>
-  <data name="Char_Schaden_Geist.Text" xml:space="preserve">
-    <value>Mental</value>
-  </data>
-  <data name="Char_Schaden_Koerper.Text" xml:space="preserve">
-    <value>Physical</value>
-  </data>
-  <data name="Char_Schaden_Matrix.Text" xml:space="preserve">
-    <value>Matrix</value>
-  </data>
-  <data name="Label_CSV_Export.Label" xml:space="preserve">
-    <value>CSV Export</value>
-  </data>
-  <data name="CharVerwaltung_Btn_CSV_Import.Label" xml:space="preserve">
-    <value>CSV Import</value>
-  </data>
-  <data name="DB_Nav.Label" xml:space="preserve">
-    <value>Database</value>
-  </data>
-  <data name="Char_Btn_Speichern.Label" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="Label_Rename.Label" xml:space="preserve">
-    <value>Rename</value>
-  </data>
-  <data name="TxT_CSV_Cat_Export.Text" xml:space="preserve">
-    <value>CSV Export</value>
-  </data>
-  <data name="TxT_SaveExtern.Text" xml:space="preserve">
-    <value>Save at extern Folder</value>
-  </data>
-  <data name="Optionen_U_CharPageConfig.Text" xml:space="preserve">
-    <value>Choose categories</value>
-  </data>
-  <data name="Settings_Btn_Speichern.Content" xml:space="preserve">
-    <value>Reload to see changes</value>
-  </data>
-  <data name="CNT_Reset.Content" xml:space="preserve">
-    <value>Reset</value>
-  </data>
-  <data name="TxT_CSV_Cat_Import.Text" xml:space="preserve">
-    <value>CSV Import</value>
-  </data>
-  <data name="TxT_Cat_Truncate.Text" xml:space="preserve">
-    <value>truncate category</value>
-  </data>
-  <data name="TxT_CSV_Cat_Export_Selected.Text" xml:space="preserve">
-    <value>CSV Export (just selected)</value>
-  </data>
-  <data name="TxT_Cat_Order_ABC.Text" xml:space="preserve">
-    <value>alphabeticly</value>
-  </data>
-  <data name="TxT_Cat_Order_Orig.Text" xml:space="preserve">
-    <value>Load saved order</value>
-  </data>
-  <data name="TxT_Cat_Order_Save.Text" xml:space="preserve">
-    <value>Save current order</value>
-  </data>
-  <data name="TxT_Cat_Order_Type.Text" xml:space="preserve">
-    <value>after "type"</value>
-  </data>
-  <data name="Btn_Bearbeiten_Munition.Content" xml:space="preserve">
-    <value>Choose Ammunition</value>
-  </data>
-  <data name="Btn_Bearbeiten_LinkedThings.Content" xml:space="preserve">
-    <value>Edit Links</value>
-  </data>
-  <data name="Optionen_U_Buy.Text" xml:space="preserve">
-    <value>Buy</value>
-  </data>
-  <data name="Admin_Filename.Text" xml:space="preserve">
-    <value>Filename</value>
-  </data>
-  <data name="Admin_Filepath.Text" xml:space="preserve">
-    <value>Filepath</value>
-  </data>
-  <data name="TxT_OpenFolder.Text" xml:space="preserve">
-    <value>open folder</value>
-  </data>
-  <data name="TxT_OpenFolderSTD.Label" xml:space="preserve">
-    <value>open saveplace</value>
-  </data>
-  <data name="Optionen_U_Buying_Header.Text" xml:space="preserve">
-    <value>Here you have the possibility to make purchases. You can turn off advertising with the first two options. The third option supports the developer and adds an exclusive Badge to your app.</value>
-  </data>
-  <data name="Optionen_U_Buying_Note.Text" xml:space="preserve">
-    <value>Note: Having apps in the store costs 18€ per year. It would be cool if the app would at least cover the costs.</value>
-  </data>
-  <data name="Optionen_FileNameUseProgres.Tip" xml:space="preserve">
-    <value>The file name is generated automatically and contains: Name of the char, karma, number of runs.</value>
-  </data>
-  <data name="Optionen_LoadOnStart.Tip" xml:space="preserve">
-    <value>The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time.</value>
-  </data>
-  <data name="TxT_Save.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="Optionen_EditAfterAdd.Tip" xml:space="preserve">
-    <value>Error not specified in detail: </value>
-  </data>
-  <data name="Optionen_Group_Char.Text" xml:space="preserve">
-    <value>Current Char</value>
-  </data>
-  <data name="Optionen_Group_File.Text" xml:space="preserve">
-    <value>file management</value>
-  </data>
-  <data name="Optionen_Group_IO.Text" xml:space="preserve">
-    <value>Saving and loading</value>
-  </data>
-  <data name="Optionen_Group_Other.Text" xml:space="preserve">
-    <value>Other</value>
-  </data>
-  <data name="TxT_CSV_Cat_Export.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Saves this category in CSV format (Excel compatible) in a folder.</value>
-  </data>
-  <data name="TxT_OpenFolder.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Opens the folder of the current file</value>
-  </data>
-  <data name="TxT_Repair.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Sometimes errors occur at the link system. Then you can try this function.</value>
-  </data>
-  <data name="TxT_SaveAtCurrentPlace.ToolTipService.ToolTip" xml:space="preserve">
-    <value>If you opened the file externally (e.g. from another program) you can save it to your normal location.</value>
-  </data>
-  <data name="TxT_SaveExtern.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Select a new location for this file</value>
-  </data>
-  <data name="TxT_Unload.Text" xml:space="preserve">
-    <value>unloading</value>
-  </data>
-  <data name="TxT_Unload.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Removes only the loaded char from the app. Storage files are not affected.</value>
-  </data>
-  <data name="TxT_Cat_UncheckAll.Text" xml:space="preserve">
-    <value>Deselect All</value>
-  </data>
-  <data name="TxT_ExportAll.Label" xml:space="preserve">
-    <value>Save all in external folder</value>
-  </data>
-  <data name="TxT_ExportAll.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Copies all files listed here to another folder</value>
-  </data>
-  <data name="CharVerwaltung_Btn_Create_ExampleChar.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Load the example/turorial character sheet into the current folder</value>
-  </data>
-  <data name="CharVerwaltung_Btn_Neu.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Use it to create a new character sheet</value>
-  </data>
-  <data name="TxT_OpenFolderSTD.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Open the folder where all your character sheets are located.</value>
-  </data>
-  <data name="Label_CSV_Export.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Saves this character sheet in CSV format (Excel compatible) in a folder. Several files are created.</value>
-  </data>
-  <data name="Label_DeleteChar.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Deletes this file.</value>
-  </data>
-  <data name="Label_File_Export.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Copy this file to another location.</value>
-  </data>
-  <data name="Label_LoadChar.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Opens this file.</value>
-  </data>
-  <data name="TxT_CSV_Cat_Export_Selected.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Saves selected entries of this category in CSV format (Excel compatible) in a folder.</value>
-  </data>
-  <data name="TxT_CSV_Cat_Import.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Select a CSV file whose content will be imported into this category. If the import and export categories are not identical, not all information is imported.</value>
-  </data>
-  <data name="TxT_Cat_Order_Orig.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Loads the previously saved sequence of the entry of this category.</value>
-  </data>
-  <data name="TxT_Cat_Order_Save.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Saves the current sequence of the entry of this category.</value>
-  </data>
-  <data name="TxT_Cat_Truncate.ToolTipService.ToolTip" xml:space="preserve">
-    <value>This clears the entire category.</value>
-  </data>
-  <data name="TxT_Cat_UncheckAll.ToolTipService.ToolTip" xml:space="preserve">
-    <value>This collapses all expanded entries.</value>
-  </data>
-  <data name="TxT_CSV_Export.Text" xml:space="preserve">
-    <value>CSV Export</value>
-  </data>
-  <data name="TxT_CSV_Export.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Saves this character sheet in CSV format (Excel compatible) in a folder. Several files are created.</value>
-  </data>
-  <data name="TxT_Save.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Saves the character sheet.</value>
-  </data>
-  <data name="Optionen_Version.Text" xml:space="preserve">
-    <value>Version</value>
-  </data>
-  <data name="Cntnt_GoTo_Notifications.Content" xml:space="preserve">
-    <value>Open notifications</value>
-  </data>
-  <data name="Optionen_Toggle.OnContent" xml:space="preserve">
+  <data name="Optionen_Toggle" xml:space="preserve">
     <value>Yes</value>
   </data>
-  <data name="TxT_Cat_AddSep.Text" xml:space="preserve">
-    <value>Add Seperator</value>
+  <data name="Optionen_EditAfterAdd" xml:space="preserve">
+    <value>Error not specified in detail: </value>
   </data>
-  <data name="Optionen_Debug_Mode.Text" xml:space="preserve">
-    <value>Debug Mode</value>
+  <data name="Nav_Char" xml:space="preserve">
+    <value>Character Sheet</value>
   </data>
-  <data name="Optionen_Debug_Mode.Tip" xml:space="preserve">
-    <value>Enables various Notifications about time and stuff</value>
+  <data name="Nav_Admin" xml:space="preserve">
+    <value>Administration</value>
   </data>
-  <data name="CNT_Close.Content" xml:space="preserve">
-    <value>Close</value>
+  <data name="Nav_Settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
-  <data name="TxT_CharSettings.Text" xml:space="preserve">
-    <value>Character sheet settings</value>
+  <data name="Optionen_DisplayRequest" xml:space="preserve">
+    <value>Prevent the Screen from locking</value>
   </data>
-  <data name="TxT_CharSettings.ToolTipService.ToolTip" xml:space="preserve">
-    <value>This allows you to configure this view.</value>
+  <data name="Repair" xml:space="preserve">
+    <value>Auto-Fix</value>
   </data>
-  <data name="CLS_Close.Content" xml:space="preserve">
-    <value>Close</value>
+  <data name="Optionen_FileNameUseDate" xml:space="preserve">
+    <value>Add date and time to filename</value>
   </data>
-  <data name="TxT_Copy.Text" xml:space="preserve">
+  <data name="Optionen_FileNameUseProgres" xml:space="preserve">
+    <value>The file name is generated automatically and contains: Name of the char, karma, number of runs.</value>
+  </data>
+  <data name="Optionen_Kontakt_Mail" xml:space="preserve">
+    <value>email</value>
+  </data>
+  <data name="Optionen_U_Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="Optionen_ThrownException" xml:space="preserve">
+    <value>Original Exception</value>
+  </data>
+  <data name="Optionen_Intern_Sync" xml:space="preserve">
+    <value>This will synchronize the files you have stored internally over all your Windows 10 devices. Synchronization occurs only if you have enabled the general sync option in WIndows and both devices have sufficient power and a Internetconnection.</value>
+  </data>
+  <data name="Optionen_Beta_Features" xml:space="preserve">
+    <value>Activate Beta-Features</value>
+  </data>
+  <data name="Optionen_App" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="Optionen_AppLinkBtn" xml:space="preserve">
+    <value>Open Storeentry for this App</value>
+  </data>
+  <data name="Optionen_MoreAppsBtn" xml:space="preserve">
+    <value>more of my apps</value>
+  </data>
+  <data name="Optionen_RateBtn" xml:space="preserve">
+    <value>Rate this App</value>
+  </data>
+  <data name="Optionen_U_Einstellungen_Tip" xml:space="preserve">
+    <value>Hold the mouse or finger on a ? to get more information.</value>
+  </data>
+  <data name="Optionen_AutoSaveInterval" xml:space="preserve">
+    <value>Watingtime for changes in seconds</value>
+  </data>
+  <data name="FileDate" xml:space="preserve">
+    <value>modification date</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>file name</value>
+  </data>
+  <data name="FileSize" xml:space="preserve">
+    <value>file size</value>
+  </data>
+  <data name="Intern_Save_Display" xml:space="preserve">
+    <value>Save Intern</value>
+  </data>
+  <data name="Optionen_U_Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="Statistics_AppStart" xml:space="preserve">
+    <value>Number of appstarts</value>
+  </data>
+  <data name="CreateExampleChar" xml:space="preserve">
+    <value>Create Example Char</value>
+  </data>
+  <data name="Statistics_Creations" xml:space="preserve">
+    <value>Number of new chars</value>
+  </data>
+  <data name="Statistics_Deletions" xml:space="preserve">
+    <value>Number of deleted chars</value>
+  </data>
+  <data name="Statistics_Loadings" xml:space="preserve">
+    <value>Number of loaded chars</value>
+  </data>
+  <data name="Statistics_Savings" xml:space="preserve">
+    <value>Number of saved chars</value>
+  </data>
+  <data name="DB_Finish" xml:space="preserve">
     <value>Copy</value>
   </data>
-  <data name="TxT_Cut.Text" xml:space="preserve">
+  <data name="DB_FinishClose" xml:space="preserve">
+    <value>Copy and Exit</value>
+  </data>
+  <data name="DB_Help" xml:space="preserve">
+    <value>Help on/off</value>
+  </data>
+  <data name="SaveAtCurrentPlace" xml:space="preserve">
+    <value>Save at current Folder</value>
+  </data>
+  <data name="Optionen_TutorialMainShown" xml:space="preserve">
+    <value>Read "Char Administration" Guide</value>
+  </data>
+  <data name="ImportChar" xml:space="preserve">
+    <value>Char Import</value>
+  </data>
+  <data name="File_Export" xml:space="preserve">
+    <value>Char Export</value>
+  </data>
+  <data name="Char_Schaden_Geist" xml:space="preserve">
+    <value>Mental</value>
+  </data>
+  <data name="Char_Schaden_Koerper" xml:space="preserve">
+    <value>Physical</value>
+  </data>
+  <data name="Char_Schaden_Matrix" xml:space="preserve">
+    <value>Matrix</value>
+  </data>
+  <data name="CSV_Export" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="CSV_Import" xml:space="preserve">
+    <value>CSV Import</value>
+  </data>
+  <data name="DB_Nav" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="Char_Speichern" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="CSV_Cat_Export" xml:space="preserve">
+    <value>CSV Export</value>
+  </data>
+  <data name="SaveExtern" xml:space="preserve">
+    <value>Save at extern Folder</value>
+  </data>
+  <data name="Optionen_U_CharPageConfig" xml:space="preserve">
+    <value>Choose categories</value>
+  </data>
+  <data name="Settings_Speichern" xml:space="preserve">
+    <value>Reload to see changes</value>
+  </data>
+  <data name="CNT_Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="CSV_Cat_Import" xml:space="preserve">
+    <value>CSV Import</value>
+  </data>
+  <data name="Cat_Truncate" xml:space="preserve">
+    <value>truncate category</value>
+  </data>
+  <data name="CSV_Cat_Export_Selected" xml:space="preserve">
+    <value>CSV Export (just selected)</value>
+  </data>
+  <data name="Cat_Order_ABC" xml:space="preserve">
+    <value>alphabeticly</value>
+  </data>
+  <data name="Cat_Order_Orig" xml:space="preserve">
+    <value>Load saved order</value>
+  </data>
+  <data name="Cat_Order_Save" xml:space="preserve">
+    <value>Save current order</value>
+  </data>
+  <data name="Cat_Order_Type" xml:space="preserve">
+    <value>after "type"</value>
+  </data>
+  <data name="Bearbeiten_Munition" xml:space="preserve">
+    <value>Choose Ammunition</value>
+  </data>
+  <data name="Bearbeiten_LinkedThings" xml:space="preserve">
+    <value>Edit Links</value>
+  </data>
+  <data name="Optionen_U_Buy" xml:space="preserve">
+    <value>Buy</value>
+  </data>
+  <data name="Admin_Filename" xml:space="preserve">
+    <value>Filename</value>
+  </data>
+  <data name="Admin_Filepath" xml:space="preserve">
+    <value>Filepath</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>open folder</value>
+  </data>
+  <data name="OpenFolderSTD" xml:space="preserve">
+    <value>open saveplace</value>
+  </data>
+  <data name="Optionen_U_Buying_Header" xml:space="preserve">
+    <value>Here you have the possibility to make purchases. You can turn off advertising with the first two options. The third option supports the developer and adds an exclusive Badge to your app.</value>
+  </data>
+  <data name="Optionen_U_Buying_Note" xml:space="preserve">
+    <value>Note: Having apps in the store costs 18€ per year. It would be cool if the app would at least cover the costs.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Optionen_Group_Char" xml:space="preserve">
+    <value>Current Char</value>
+  </data>
+  <data name="Optionen_Group_File" xml:space="preserve">
+    <value>file management</value>
+  </data>
+  <data name="Optionen_Group_IO" xml:space="preserve">
+    <value>Saving and loading</value>
+  </data>
+  <data name="Optionen_Group_Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="CSV_Cat_ExportX" xml:space="preserve">
+    <value>Saves this category in CSV format (Excel compatible) in a folder.</value>
+  </data>
+  <data name="OpenFolderX" xml:space="preserve">
+    <value>Opens the folder of the current file</value>
+  </data>
+  <data name="RepairX" xml:space="preserve">
+    <value>Sometimes errors occur at the link system. Then you can try this function.</value>
+  </data>
+  <data name="SaveAtCurrentPlaceX" xml:space="preserve">
+    <value>If you opened the file externally (e.g. from another program) you can save it to your normal location.</value>
+  </data>
+  <data name="SaveExternX" xml:space="preserve">
+    <value>Select a new location for this file</value>
+  </data>
+  <data name="Unload" xml:space="preserve">
+    <value>unloading</value>
+  </data>
+  <data name="UnloadX" xml:space="preserve">
+    <value>Removes only the loaded char from the app. Storage files are not affected.</value>
+  </data>
+  <data name="Cat_UncheckAll" xml:space="preserve">
+    <value>Deselect All</value>
+  </data>
+  <data name="ExportAll" xml:space="preserve">
+    <value>Save all in external folder</value>
+  </data>
+  <data name="ExportAllX" xml:space="preserve">
+    <value>Copies all files listed here to another folder</value>
+  </data>
+  <data name="CreateExampleCharX" xml:space="preserve">
+    <value>Load the example/turorial character sheet into the current folder</value>
+  </data>
+  <data name="NeuCharX" xml:space="preserve">
+    <value>Use it to create a new character sheet</value>
+  </data>
+  <data name="OpenFolderSTDX" xml:space="preserve">
+    <value>Open the folder where all your character sheets are located.</value>
+  </data>
+  <data name="CSV_ExportX" xml:space="preserve">
+    <value>Saves this character sheet in CSV format (Excel compatible) in a folder. Several files are created.</value>
+  </data>
+  <data name="DeleteCharX" xml:space="preserve">
+    <value>Deletes this file.</value>
+  </data>
+  <data name="File_ExportX" xml:space="preserve">
+    <value>Copy this file to another location.</value>
+  </data>
+  <data name="LoadCharX" xml:space="preserve">
+    <value>Opens this file.</value>
+  </data>
+  <data name="CSV_Cat_Export_SelectedX" xml:space="preserve">
+    <value>Saves selected entries of this category in CSV format (Excel compatible) in a folder.</value>
+  </data>
+  <data name="CSV_Cat_ImportX" xml:space="preserve">
+    <value>Select a CSV file whose content will be imported into this category. If the import and export categories are not identical, not all information is imported.</value>
+  </data>
+  <data name="Cat_Order_OrigX" xml:space="preserve">
+    <value>Loads the previously saved sequence of the entry of this category.</value>
+  </data>
+  <data name="Cat_Order_SaveX" xml:space="preserve">
+    <value>Saves the current sequence of the entry of this category.</value>
+  </data>
+  <data name="Cat_TruncateX" xml:space="preserve">
+    <value>This clears the entire category.</value>
+  </data>
+  <data name="Cat_UncheckAllX" xml:space="preserve">
+    <value>This collapses all expanded entries.</value>
+  </data>
+  <data name="SaveX" xml:space="preserve">
+    <value>Saves the character sheet.</value>
+  </data>
+  <data name="Optionen_Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Cntnt_GoTo_Notifications" xml:space="preserve">
+    <value>Open notifications</value>
+  </data>
+  <data name="Cat_AddSep" xml:space="preserve">
+    <value>Add Seperator</value>
+  </data>
+  <data name="Optionen_Debug_Mode" xml:space="preserve">
+    <value>Enables various Notifications about time and stuff</value>
+  </data>
+  <data name="CNT_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CharSettings" xml:space="preserve">
+    <value>Character sheet settings</value>
+  </data>
+  <data name="CharSettingsX" xml:space="preserve">
+    <value>This allows you to configure this view.</value>
+  </data>
+  <data name="CLS_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Cut" xml:space="preserve">
     <value>Cut</value>
   </data>
-  <data name="TxT_Delete.Text" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="TxT_Edit.Text" xml:space="preserve">
+  <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
-  <data name="TxT_Fav.Text" xml:space="preserve">
+  <data name="Fav" xml:space="preserve">
     <value>Favorize</value>
   </data>
-  <data name="TxT_FavUn.Text" xml:space="preserve">
+  <data name="FavUn" xml:space="preserve">
     <value>Defavorize</value>
   </data>
-  <data name="TxT_Paste.Text" xml:space="preserve">
+  <data name="Paste" xml:space="preserve">
     <value>Paste</value>
   </data>
-  <data name="TxT_Share.Text" xml:space="preserve">
+  <data name="Share" xml:space="preserve">
     <value>Share</value>
   </data>
-  <data name="Txt_DisableTips.Text" xml:space="preserve">
+  <data name="DisableTips" xml:space="preserve">
     <value>Tips can be deactivated in the settings.</value>
   </data>
-  <data name="txt_TipHeader.Text" xml:space="preserve">
+  <data name="TipHeader" xml:space="preserve">
     <value>Tip</value>
   </data>
-  <data name="Optionen_Disable_Tips.Text" xml:space="preserve">
-    <value>Disable tips</value>
-  </data>
-  <data name="Optionen_Disable_Tips.Tip" xml:space="preserve">
+  <data name="Optionen_Disable_Tips" xml:space="preserve">
     <value>Disable the tips while loading.</value>
   </data>
-  <data name="TxT_SubtractLifeStyleCost.Text" xml:space="preserve">
+  <data name="SubtractLifeStyleCost" xml:space="preserve">
     <value>Subtract Lifestyle cost</value>
   </data>
-  <data name="Optionen_BACKUP_VERSIONING.Text" xml:space="preserve">
-    <value>BackUp versioning</value>
-  </data>
-  <data name="Optionen_BACKUP_VERSIONING.Tip" xml:space="preserve">
+  <data name="Optionen_BACKUP_VERSIONING" xml:space="preserve">
     <value>Each time Run or Karma is changed, a copy of the char is created in a BackUp folder.</value>
+  </data>
+  <data name="IntroAdministration" xml:space="preserve">
+    <value>Choose a charaktersheet from the list or create a new.</value>
+  </data>
+  <data name="WelcomeGreetings" xml:space="preserve">
+    <value>Welcome to ShadowRunHelper.</value>
   </data>
 </root>

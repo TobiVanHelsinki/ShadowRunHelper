@@ -4,7 +4,6 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
-             xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.Pages.MainPage"
              BackgroundColor="Accent">
@@ -21,6 +20,7 @@
                 <ResourceDictionary>
                     <Style x:Key="StretchIconButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
                         <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
                     </Style>
                 </ResourceDictionary>
             </Grid.Resources>
@@ -30,14 +30,13 @@
             </Grid.RowDefinitions>
             <ContentPresenter x:Name="ContentPlace"/>
             <Label BackgroundColor="Beige" x:Name="LogView" IsVisible="False"/>
-            <Label Text="{resx:ModelResources Model_Thing_Bezeichner}"/>
-            <Grid x:Name="CommandBar" Grid.Row="1" HorizontalOptions="FillAndExpand" Padding="5,10,5,10">
+            <Grid x:Name="CommandBar" Grid.Row="1" HorizontalOptions="FillAndExpand" Padding="5,0,5,5" ColumnSpacing="6">
                 <Button Grid.Column="0" Text="&#xf007;" Style="{StaticResource StretchIconButton}" Clicked="CharPage"  />
                 <Button Grid.Column="1" Text="&#xf0c0;" Style="{StaticResource StretchIconButton}" Clicked="Administration" />
                 <Button Grid.Column="2" Text="&#xf013;" Style="{StaticResource StretchIconButton}" Clicked="Settings" />
-                <Button Grid.Column="3" Text="&#xf188;" Style="{StaticResource StretchIconButton}" Clicked="Debug" />
-                <Button Grid.Column="4" Text="&#xf787;" Style="{StaticResource StretchIconButton}" Clicked="Decarrot" />
-                <Button Grid.Column="5" Text="&#xf071;" Style="{StaticResource StretchIconButton}" Clicked="ShowLog" IsVisible="False" x:Name="LogButton"/>
+                <!--<Button Grid.Column="3" Text="&#xf188;" Style="{StaticResource StretchIconButton}" Clicked="Debug" />-->
+                <!--<Button Grid.Column="4" Text="&#xf787;" Style="{StaticResource StretchIconButton}" Clicked="Decarrot" />-->
+                <!--<Button Grid.Column="5" Text="&#xf071;" Style="{StaticResource StretchIconButton}" Clicked="ShowLog" IsVisible="False" x:Name="LogButton"/>-->
             </Grid>
         </Grid>
     </ContentPage.Content>

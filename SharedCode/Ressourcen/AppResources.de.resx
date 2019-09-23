@@ -117,27 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="KlammerAufEck.Text" xml:space="preserve">
-    <value>[</value>
-  </data>
-  <data name="KlammerZuEck.Text" xml:space="preserve">
-    <value>]</value>
-  </data>
-  <data name="Plus.Text" xml:space="preserve">
-    <value>+</value>
-  </data>
-  <data name="Slash.Text" xml:space="preserve">
-    <value>/</value>
-  </data>
-  <data name="Bindestrich.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="Klammer_Rund_Auf.Text" xml:space="preserve">
-    <value>(</value>
-  </data>
-  <data name="Klammer_Rund_Zu.Text" xml:space="preserve">
-    <value>)</value>
-  </data>
   <data name="Notification_Error_CSVExportFail" xml:space="preserve">
     <value>Konnte nicht CSV-Exportieren</value>
   </data>
@@ -165,32 +144,20 @@
   <data name="Notification_Error_SaveFail" xml:space="preserve">
     <value>Speichern fehlgeschlagen, versuche, den Char zu exportieren und starte die App neu.</value>
   </data>
-  <data name="Notification_Error_Converter_Error1.Text" xml:space="preserve">
+  <data name="Notification_Error_Converter_Error1" xml:space="preserve">
     <value>konnte nicht übernommen werden.</value>
   </data>
-  <data name="Notification_Error_DisplayRequest.Text" xml:space="preserve">
+  <data name="Notification_Error_DisplayRequest" xml:space="preserve">
     <value>Display kann nicht automatisch aktiviert bleiben.</value>
   </data>
-  <data name="Notification_Error_Loader_Error1.Text" xml:space="preserve">
+  <data name="Notification_Error_Loader_Error1" xml:space="preserve">
     <value>Der Char konnte nicht vollstädnig geladen werden. Genaure Informationen bei den Benachrichtigungen verfügbar.</value>
   </data>
-  <data name="Doppelpunkt.Text" xml:space="preserve">
+  <data name="Doppelpunkt" xml:space="preserve">
     <value>:</value>
   </data>
   <data name="Notification_Error_Unknown" xml:space="preserve">
     <value>Ein unbekannter Fehler ist aufgetreten, Ihr char wurde mit dem Prefix ''Emergency'' gespeichert</value>
-  </data>
-  <data name="KlammerAufRund.Text" xml:space="preserve">
-    <value>(</value>
-  </data>
-  <data name="KlammerZuRund.Text" xml:space="preserve">
-    <value>)</value>
-  </data>
-  <data name="Komma.Text" xml:space="preserve">
-    <value>,</value>
-  </data>
-  <data name="Notification_Error_RepairFail" xml:space="preserve">
-    <value>Fehler beim Reparieren.</value>
   </data>
   <data name="Error_LoadCharFolder" xml:space="preserve">
     <value>Fehler beim einlesen des Char-Verzeichnises.
@@ -221,7 +188,7 @@ Setzen Sie den externen Ordner neu.</value>
   <data name="Notification_Info_ConvertFromPrevious" xml:space="preserve">
     <value>Diese Datei ist eine alte Version, sie wird nun in das aktuelleste Format konvertiert. Dadurch kann sie womöglich nicht oder nicht mit dem gesamten Funktionsumfang in früheren Versionen des Programms geöffnet werden. Die Aktuelle Version des Programms steht in den Einstellungen. Sollte die Umwandlung nicht erwünscht sein, speichere den Char einfach nicht.</value>
   </data>
-  <data name="GlobalFilterBox.PlaceholderText" xml:space="preserve">
+  <data name="GlobalFilterBox" xml:space="preserve">
     <value>Suche nach Name und Typ ...</value>
   </data>
   <data name="Help1" xml:space="preserve">
@@ -257,10 +224,10 @@ Setzen Sie den externen Ordner neu.</value>
   <data name="Notification_Error_FileActivation" xml:space="preserve">
     <value>Datei konnte nicht gelesen werden.</value>
   </data>
-  <data name="Ampersant.Text" xml:space="preserve">
+  <data name="Ampersant" xml:space="preserve">
     <value>&amp;</value>
   </data>
-  <data name="EditDialog.PrimaryButtonText" xml:space="preserve">
+  <data name="EditDialog" xml:space="preserve">
     <value>Fertig</value>
   </data>
   <data name="ExampleChar" xml:space="preserve">
@@ -269,10 +236,10 @@ Setzen Sie den externen Ordner neu.</value>
   <data name="PreDBChar" xml:space="preserve">
     <value>Datenbank Charakter</value>
   </data>
-  <data name="HelpDBIntro.Text" xml:space="preserve">
+  <data name="HelpDBIntro" xml:space="preserve">
     <value>In dieser Datenbank findest du vorgefertigte Einträge. Klicke auf einen Eintrag, um ihn auszuwählen. Mit den Befehlen unten kannst du diese Auswahl dann in deinen aktuellen Charakter übernehmen. Solltest du bereits einen Eintrag mit dem selben Namen in der selben Kategorie besitzen, wird dein Eintrag nicht überschrieben. Für Datenbankeinträge mit Verknüpfungen zu anderen Einträgen wird versucht, deine Einträge zu verknüpfen. Falls das misslingt, wird auch der verknüpfte Eintrag kopiert.</value>
   </data>
-  <data name="of.Text" xml:space="preserve">
+  <data name="of" xml:space="preserve">
     <value>von</value>
   </data>
   <data name="Tut_TitleState_00" xml:space="preserve">
@@ -300,34 +267,34 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Tut_State_04" xml:space="preserve">
     <value>Das war's mit dem Tutorial. Du kannst einen neuen Charakter erstellen, aber besser ist es, du schaust dir erst den Beispielcharakter an.</value>
   </data>
-  <data name="AuswahlDialog.PrimaryButtonText" xml:space="preserve">
+  <data name="AuswahlDialog" xml:space="preserve">
     <value>Fertig</value>
   </data>
-  <data name="AuswahlDialog.Title" xml:space="preserve">
+  <data name="AuswahlDialog" xml:space="preserve">
     <value>Auswahl</value>
   </data>
-  <data name="Request_Delete.No" xml:space="preserve">
+  <data name="Request_Delete" xml:space="preserve">
     <value>Ach nein doch nicht ...</value>
   </data>
-  <data name="Request_Delete.Text" xml:space="preserve">
+  <data name="Request_Delete" xml:space="preserve">
     <value>Möchtest Du die Datei wirklich löschen? Sie wird wirklich gelöscht, nicht in den Papierkorb verschoben und kann nicht wiederhergestellt werden.</value>
   </data>
-  <data name="Request_Delete.Title" xml:space="preserve">
+  <data name="Request_Delete" xml:space="preserve">
     <value>Nachfrage</value>
   </data>
-  <data name="Request_Delete.Yes" xml:space="preserve">
+  <data name="Request_Delete" xml:space="preserve">
     <value>Wirklich Löschen!</value>
   </data>
-  <data name="Request_DeleteAll.No" xml:space="preserve">
+  <data name="Request_DeleteAll" xml:space="preserve">
     <value>Ach nein doch nicht ...</value>
   </data>
-  <data name="Request_DeleteAll.Text" xml:space="preserve">
+  <data name="Request_DeleteAll" xml:space="preserve">
     <value>Damit zerstörst du die Existenz von ... JEDEM!, Chummer! Bist du sicher, dass du das machen willst?</value>
   </data>
-  <data name="Request_DeleteAll.Title" xml:space="preserve">
+  <data name="Request_DeleteAll" xml:space="preserve">
     <value>Nachfrage</value>
   </data>
-  <data name="Request_DeleteAll.Yes" xml:space="preserve">
+  <data name="Request_DeleteAll" xml:space="preserve">
     <value>Wirklich Löschen!</value>
   </data>
   <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">
@@ -336,7 +303,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
     <value>Diese Version des Chars wird seid langem nicht mehr unterstützt. Bitte wende dich an den Support, wenn du ihn unbedingt konvertiert haben möchtest.</value>
   </data>
-  <data name="FurtherSettings.Text" xml:space="preserve">
+  <data name="FurtherSettings" xml:space="preserve">
     <value>Mehr</value>
   </data>
   <data name="Notification_Error_LogicFail" xml:space="preserve">
@@ -348,7 +315,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Error_RepairLinkList" xml:space="preserve">
     <value>Fehler, konnte Link mit {0} nicht wiederherstellen</value>
   </data>
-  <data name="Order.Text" xml:space="preserve">
+  <data name="Order" xml:space="preserve">
     <value>Sortieren</value>
   </data>
   <data name="Notification_Info_UpgradedChar_1_5_to_1_6" xml:space="preserve">
@@ -360,13 +327,13 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Error_ObjectCopy" xml:space="preserve">
     <value>Konnte nicht alles kopieren.</value>
   </data>
-  <data name="IAP_TXT_ADS.Content" xml:space="preserve">
+  <data name="IAP_TXT_ADS" xml:space="preserve">
     <value>Keine Werbung für ein Leben</value>
   </data>
-  <data name="IAP_TXT_ADS_365.Content" xml:space="preserve">
+  <data name="IAP_TXT_ADS_365" xml:space="preserve">
     <value>Keine Werbung für ein Jahr</value>
   </data>
-  <data name="IAP_TXT_TEE.Content" xml:space="preserve">
+  <data name="IAP_TXT_TEE" xml:space="preserve">
     <value>Premium-Badge hinzufügen</value>
   </data>
   <data name="Close" xml:space="preserve">
@@ -387,7 +354,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Cancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
-  <data name="SymbolChanges.Text" xml:space="preserve">
+  <data name="SymbolChanges" xml:space="preserve">
     <value>*</value>
   </data>
   <data name="IAP_Error" xml:space="preserve">
@@ -396,16 +363,16 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="IAP_Succeeded" xml:space="preserve">
     <value>Kauf Erfolgreich</value>
   </data>
-  <data name="Request_NotSave.No" xml:space="preserve">
+  <data name="Request_NotSave" xml:space="preserve">
     <value>ohne Speichern fortfahren</value>
   </data>
-  <data name="Request_NotSave.Text" xml:space="preserve">
+  <data name="Request_NotSave" xml:space="preserve">
     <value>Der aktuelle Char hat noch ungespeicherte Änderungen</value>
   </data>
-  <data name="Request_NotSave.Title" xml:space="preserve">
+  <data name="Request_NotSave" xml:space="preserve">
     <value>Warnung</value>
   </data>
-  <data name="Request_NotSave.Yes" xml:space="preserve">
+  <data name="Request_NotSave" xml:space="preserve">
     <value>Speichern und fortfahren</value>
   </data>
   <data name="Notification_Char_Loaded_File" xml:space="preserve">
@@ -426,16 +393,16 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="AppImportNoErrors" xml:space="preserve">
     <value>Der Import war erfolgreich.</value>
   </data>
-  <data name="Request_AppImport.No" xml:space="preserve">
+  <data name="Request_AppImport" xml:space="preserve">
     <value>Nein</value>
   </data>
-  <data name="Request_AppImport.Text" xml:space="preserve">
+  <data name="Request_AppImport" xml:space="preserve">
     <value>Möchten Sie die Inhalte einer anderen App importieren? Einstellungen werden überschrieben.</value>
   </data>
-  <data name="Request_AppImport.Title" xml:space="preserve">
+  <data name="Request_AppImport" xml:space="preserve">
     <value>Import</value>
   </data>
-  <data name="Request_AppImport.Yes" xml:space="preserve">
+  <data name="Request_AppImport" xml:space="preserve">
     <value>Ja</value>
   </data>
   <data name="Notification_Error_SummorysREfresh" xml:space="preserve">
@@ -527,7 +494,7 @@ Version 1.7.4:
   <data name="Tip17" xml:space="preserve">
     <value>Halte die Backups deiner Charakterbögen aktuell, dann bist du vor Datenschaden in Sicherheit.</value>
   </data>
-  <data name="Request_NotSave.Break" xml:space="preserve">
+  <data name="Request_NotSave" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
   <data name="Tip18" xml:space="preserve">

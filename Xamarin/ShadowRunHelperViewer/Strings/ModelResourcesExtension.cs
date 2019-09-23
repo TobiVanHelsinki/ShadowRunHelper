@@ -1,50 +1,11 @@
-﻿using ShadowRunHelperViewer.Platform;
-using System;
-using System.Globalization;
-using System.Reflection;
-using System.Resources;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using SharedCode.Ressourcen;
 
 namespace ShadowRunHelperViewer.Strings
 {
-    // You exclude the 'Extension' suffix when using in XAML
-    [ContentProperty("Text")]
-    public class ModelResourcesExtension : IMarkupExtension
+    public class ModelResourcesExtension : ResourcesExtension
     {
-        readonly CultureInfo ci = null;
-        const string ResourceId = nameof(ShadowRunHelperViewer) + "." + nameof(Strings) + "." + nameof(ModelResources);
-
-        static readonly Lazy<ResourceManager> ResMgr = new Lazy<ResourceManager>(
-            () => new ResourceManager(ResourceId, IntrospectionExtensions.GetTypeInfo(typeof(AppResourcesExtension)).Assembly));
-
-        public string Text { get; set; }
-
-        public ModelResourcesExtension()
+        public ModelResourcesExtension() : base(ModelResources.ResourceManager)
         {
-            if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
-            {
-                ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
-            }
-        }
-
-        public object ProvideValue(IServiceProvider serviceProvider)
-        {
-            if (Text == null)
-                return string.Empty;
-
-            var translation = ResMgr.Value.GetString(Text, ci);
-            if (translation == null)
-            {
-#if DEBUG
-                throw new ArgumentException(
-                    string.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, ci.Name),
-                    "Text");
-#else
-                translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
-#endif
-            }
-            return translation;
         }
     }
 }

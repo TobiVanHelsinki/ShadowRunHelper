@@ -162,8 +162,8 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             TAPPLICATION.PlatformHelper.ExecuteOnUIThreadAsync(() =>
             {
-                LogButton.IsVisible = true;
-                LogView.Text = TLIB.Log.InMemoryLog.Reverse<string>().Aggregate((a, c) => a += Environment.NewLine + c);
+                //LogButton.IsVisible = true;
+                //LogView.Text = TLIB.Log.InMemoryLog.Reverse<string>().Aggregate((a, c) => a += Environment.NewLine + c);
             });
         }
 
