@@ -1645,7 +1645,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Rating ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Level ähnelt.
         /// </summary>
         public static string Thing_Wert {
             get {
