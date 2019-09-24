@@ -241,11 +241,37 @@ namespace ShadowRunHelper
         }
         public static ThingDefs Obj2ThingDef(this string Name)
         {
-            return ThingTypeProperties.First(t => t.ThingType.ToString() == Name).ThingType;
+            return ThingTypeProperties.FirstOrDefault(t => t.ThingType.ToString() == Name)?.ThingType ?? ThingDefs.Undef;
         }
         public static ThingDefs Obj2ThingDef(this object tag)
         {
             return (ThingDefs)Int16.Parse(tag.ToString());
+        }
+
+        /// <summary>
+        /// climbs the ThingDefs hierarchi up until the method found something for that type
+        /// How it works:
+        /// uses method at the name of the type of key.
+        /// if result is null, gets the ancestor of type of key and repeats this until ancestor is thing or result is not null
+        /// </summary>
+        /// <param name="key">the key from wich in hierarchi you whish to start searching</param>
+        /// <param name="method">the method takes the TypeName as string</param>
+        /// <returns></returns>
+        public static T HierarchieUpSearch<T>(this ThingDefs key, Func<string, T> method)
+        {
+            var ancestor = key.ThingDefToType();
+            if (ancestor is null)
+            {
+                return default;
+            }
+            T result;
+            do
+            {
+                result = method(ancestor.Name);
+                ancestor = ancestor.BaseType;
+            }
+            while (result is null && ancestor != typeof(Thing));
+            return result;
         }
     }
 

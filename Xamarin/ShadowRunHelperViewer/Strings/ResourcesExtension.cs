@@ -8,9 +8,13 @@ using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer.Strings
 {
+    /// <summary>
+    /// This Class acts for an base class for any type of dot net resources.
+    /// it provides an Markupextension for usage in xamarin forms projects
+    /// </summary>
     // You exclude the 'Extension' suffix when using in XAML
     [ContentProperty("Text")]
-    public class ResourcesExtension : IMarkupExtension
+    public abstract class ResourcesExtension : IMarkupExtension
     {
         readonly CultureInfo ci = null;
         readonly ResourceManager ResMgr;
@@ -26,12 +30,14 @@ namespace ShadowRunHelperViewer.Strings
                 ci = CultureInfo.CurrentCulture;
             }
         }
-        public string Text { get; set; }
+        public virtual string Text { get; set; }
 
-        public object ProvideValue(IServiceProvider serviceProvider)
+        /// <summary>
+        /// returns a string from the resource file or null
+        /// </summary>
+        /// <returns></returns>
+        public virtual string ProvideString()
         {
-            if (Text == null)
-                return string.Empty;
             try
             {
                 var translation = ResMgr.GetString(Text, ci);
@@ -57,7 +63,18 @@ namespace ShadowRunHelperViewer.Strings
             {
                 Log.Write("No Translation for " + Text, ex);
             }
-            return Text + "." + ci?.Name;
+            return null;
+        }
+
+        /// <summary>
+        /// allways retuns a string that may be present in the resource file or consits of the Text value and the current language
+        /// </summary>
+        /// <param name="serviceProvider">can be null</param>
+        /// <returns></returns>
+        public virtual object ProvideValue(IServiceProvider serviceProvider)
+        {
+            if (Text == null) return string.Empty;
+            return ProvideString() ?? Text + "." + ci?.Name;
         }
 
     }

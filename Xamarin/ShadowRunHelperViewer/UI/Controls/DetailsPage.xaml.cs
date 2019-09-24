@@ -1,8 +1,11 @@
 ﻿using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
+using ShadowRunHelperViewer.Strings;
+using SharedCode.Ressourcen;
 using System;
 using System.Linq;
+using System.Reflection;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -60,10 +63,11 @@ namespace ShadowRunHelperViewer
                                                                                     x.Name == nameof(Handlung.GegenCalced) ||
                                                                                     x.Name == nameof(Handlung.GrenzeCalced) ||
                                                                                     x.Name == nameof(Item.Aktiv) ||
-                                                                                    x.Name == nameof(Item.Besitz) 
+                                                                                    x.Name == nameof(Item.Besitz)
                                                                                     )))
             {
                 var Name = CreateNameLabel(item);
+                
                 View Content;
                 if (item.PropertyType == typeof(bool) || item.PropertyType == typeof(bool?))
                 {
@@ -156,17 +160,12 @@ namespace ShadowRunHelperViewer
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private static Label CreateNameLabel(System.Reflection.PropertyInfo item)
+        private Label CreateNameLabel(PropertyInfo item)
         {
-            var s = "Model_" + item.DeclaringType.Name + "_" + item.Name + "/Text";
-            var v = CustomManager.GetString(s);
-            if (string.IsNullOrEmpty(v))
-            {
-                v = s;
-            }
+            var v = MyThing.ThingType.HierarchieUpSearch(s => new ModelResourcesExtension() { Text = s + "_" + item.Name }.ProvideString());
             return new Label
             {
-                Text = v,
+                Text = v ?? item.Name
             };
         }
 

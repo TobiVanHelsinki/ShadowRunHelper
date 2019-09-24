@@ -62,19 +62,13 @@ namespace ShadowRunHelperViewer
         /// <param name="key"></param>
         private void CreateHeadline(ThingDefs key)
         {
-            var ancestor = key.ThingDefToType();
-            object CustomTemplate;
-            do
-            {
-                Resources.TryGetValue(ancestor.Name + "_H", out CustomTemplate);
-                ancestor = key.ThingDefToType().BaseType;
-            }
-            while (CustomTemplate is null);
+            var CustomTemplate = key.HierarchieUpSearch(s => { Resources.TryGetValue(s + "_H", out object CustomTemplate); return CustomTemplate; });
             if (CustomTemplate is ControlTemplate HL)
             {
                 Items_H.ControlTemplate = HL;
             }
         }
+
         /// <summary>
         /// Searches for a Resource with a mathing name and try to create all entries with that resource as template
         /// Fallback: ThingTempalte
@@ -83,14 +77,7 @@ namespace ShadowRunHelperViewer
         /// <returns></returns>
         private object CreateItems(ThingDefs key)
         {
-            var ancestor = key.ThingDefToType();
-            object CustomTemplate;
-            do 
-            {
-                Resources.TryGetValue(ancestor.Name, out CustomTemplate);
-                ancestor = key.ThingDefToType().BaseType;
-            }
-            while (CustomTemplate is null);
+            var CustomTemplate = key.HierarchieUpSearch(s => { Resources.TryGetValue(s, out object CustomTemplate); return CustomTemplate; });
             if (CustomTemplate is DataTemplate DT)
             {
                 var section = new TableSection();
