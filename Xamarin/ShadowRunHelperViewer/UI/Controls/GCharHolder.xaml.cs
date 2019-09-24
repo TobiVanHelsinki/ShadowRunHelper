@@ -4,6 +4,7 @@ using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
+using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -261,15 +262,14 @@ namespace ShadowRunHelperViewer
             MenuOpen = !MenuOpen;
         }
 
-
-        (string, Action)[] MenuItems = new (string, Action)[] {
-                        (CustomManager.GetString("UI_TxT_SaveAtCurrentPlace/Text"),null),
-                        (CustomManager.GetString("UI_TxT_SaveExtern/Text"),null),
-                        (CustomManager.GetString("UI_TxT_OpenFolder/Text"),null),
-                        (CustomManager.GetString("UI_TxT_SubtractLifeStyleCost/Text"),null),
-                        (CustomManager.GetString("UI_TxT_CharSettings/Text"),null),
-                        (CustomManager.GetString("UI_TxT_Repair/Text"),null),
-                        (CustomManager.GetString("UI_TxT_Unload/Text"),Unload),
+        readonly (string, Action)[] MenuItems = new (string, Action)[] {
+                        (UiResources.SaveAtCurrentPlace,null),
+                        (UiResources.SaveExtern,null),
+                        (UiResources.OpenFolder,null),
+                        (UiResources.SubtractLifeStyleCost,null),
+                        (UiResources.CharSettings,null),
+                        (UiResources.Repair,null),
+                        (UiResources.Unload,Unload),
                     };
 
         private static void Unload()

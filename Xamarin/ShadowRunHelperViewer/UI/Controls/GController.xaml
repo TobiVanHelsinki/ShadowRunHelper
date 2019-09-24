@@ -6,7 +6,7 @@
              xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
-             xmlns:layouts="clr-namespace:AiForms.Layouts;assembly=AiForms.Layouts"
+             xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Resources>
@@ -27,6 +27,7 @@
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="LineBreakMode" Value="CharacterWrap"/>
                 <Setter Property="MaxLines" Value="2"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
             <Style x:Key="TemplateGrid" TargetType="Grid">
                 <Setter Property="Margin" Value="0"/>
@@ -47,7 +48,7 @@
 
             <ControlTemplate x:Key="Thing_Name_H">
                 <StackLayout Style="{StaticResource TemplateStack}">
-                    <Label Text="Name" Style="{StaticResource HeadLineText}"/>
+                    <Label Text="{resx:ModelResources Thing_Bezeichner}" Style="{StaticResource HeadLineText}"/>
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Name" x:DataType="CharModel:Thing">
@@ -68,7 +69,7 @@
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Value_H">
                 <StackLayout Style="{StaticResource TemplateStack}">
-                    <Label Text="Wert" Style="{StaticResource HeadLineText}"/>
+                    <Label Text="{resx:ModelResources Thing_Wert}" Style="{StaticResource HeadLineText}"/>
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Value" x:DataType="CharModel:Thing">
@@ -98,7 +99,7 @@
                 </StackLayout>
             </ControlTemplate>
 
-            <!--<ControlTemplate x:Key="Thing_H">
+            <ControlTemplate x:Key="Thing_H">
                 <Grid Style="{StaticResource TemplateGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -108,7 +109,7 @@
                     <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name_H}"/>
                     <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value_H}"/>
                 </Grid>
-            </ControlTemplate>-->
+            </ControlTemplate>
             <DataTemplate x:Key="Thing" x:DataType="CharModel:Thing">
                 <ViewCell>
                     <Grid Style="{StaticResource TemplateGrid}">
@@ -157,6 +158,104 @@
                 </Grid>
             </ControlTemplate>
 
+            <ControlTemplate x:Key="CyberDeck_H">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="2"/>
+                    <Label Text="{resx:ModelResources _Damage}" Style="{StaticResource HeadLineText}" Grid.Column="3"/>
+                    <Label Text="{resx:ModelResources Kommlink_Attribute}" Style="{StaticResource HeadLineText}" Grid.Column="4"/>
+                </Grid>
+            </ControlTemplate>
+            <DataTemplate x:Key="CyberDeck" x:DataType="CharModel:CyberDeck">
+                <ViewCell>
+                    <Grid Style="{StaticResource TemplateGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                        <Label Text="{x:Binding Schaden}" Grid.Column="3" Style="{StaticResource STDText}"/>
+                        <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center">
+                            <Label Text="{x:Binding Angriff}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                            <Label Text="/" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Schleicher}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                            <Label Text="/" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Firewall}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                            <Label Text="/" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Datenverarbeitung}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                        </StackLayout>
+                        <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
+                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="CyberDeckX" x:DataType="CharModel:CyberDeck">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Always" Grid.Column="1">
+                        <StackLayout Orientation="Horizontal">
+                            <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
+                            <BoxView Color="LightGray" WidthRequest="1" Margin="0,0,5,0"/>
+                            <StackLayout Margin="0,0,5,0" HorizontalOptions="Center">
+                                <Label Text="{resx:ModelResources Kommlink_Attribute_o}"  Style="{StaticResource STDText}"/>
+                                <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center">
+                                    <Label Text="{x:Binding Angriff_o}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="/" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Schleicher_o}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="/" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Firewall_o}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="/" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Datenverarbeitung_o}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                </StackLayout>
+                            </StackLayout>
+                            <BoxView Color="LightGray" WidthRequest="1" Margin="0,0,5,0"/>
+                            <StackLayout Margin="0,0,5,0" HorizontalOptions="Center">
+                                <Label Text="{resx:ModelResources Kommlink_Attribute}"  Style="{StaticResource STDText}"/>
+                                <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center">
+                                    <Label Text="{x:Binding Angriff}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="/" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Schleicher}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="/" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Firewall}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="/" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Datenverarbeitung}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+            </DataTemplate>
+            
             <ControlTemplate x:Key="Fernkampfwaffe_H">
                 <Grid>
                     <Grid.RowDefinitions>

@@ -165,9 +165,6 @@
   <data name="Optionen_LoadOnStart" xml:space="preserve">
     <value>The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time.</value>
   </data>
-  <data name="Char_Schaden" xml:space="preserve">
-    <value>Damage:</value>
-  </data>
   <data name="Optionen_Inhaber" xml:space="preserve">
     <value>App owener</value>
   </data>

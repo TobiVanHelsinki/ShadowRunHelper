@@ -168,9 +168,6 @@
   <data name="Optionen_LoadOnStart" xml:space="preserve">
     <value>Letzten Char bei Starten automatisch laden?</value>
   </data>
-  <data name="Char_Schaden" xml:space="preserve">
-    <value>Schaden:</value>
-  </data>
   <data name="Char_Schaden_Geist" xml:space="preserve">
     <value>Geistig</value>
   </data>
@@ -595,8 +592,5 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="SubtractLifeStyleCost" xml:space="preserve">
     <value>Lebensstilkosten abziehen</value>
-  </data>
-    <data name="Damage" xml:space="preserve">
-    <value>Schaden</value>
   </data>
 </root>
