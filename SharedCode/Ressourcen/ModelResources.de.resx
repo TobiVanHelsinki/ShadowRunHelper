@@ -527,8 +527,14 @@
   <data name="Stroemung_Paragon" xml:space="preserve">
     <value>Paragon</value>
   </data>
-  <data name="Zaubersprueche_Entzug" xml:space="preserve">
-    <value>Entzug</value>
+  <data name="SuperNaturalSkills_Duration" xml:space="preserve">
+    <value>Dauer</value>
+  </data>
+  <data name="SuperNaturalSkills_Target" xml:space="preserve">
+    <value>Ziel</value>
+  </data>
+  <data name="KomplexeForm_Fading" xml:space="preserve">
+    <value>Schwund</value>
   </data>
   <data name="CyberDeck__Aktiv" xml:space="preserve">
     <value>Aktives Deck</value>
@@ -601,12 +607,6 @@
   </data>
   <data name="Person_StrassenrufMod" xml:space="preserve">
     <value>Straßenruf Mod</value>
-  </data>
-  <data name="Zaubersprueche_Reichweite" xml:space="preserve">
-    <value>Reichweite</value>
-  </data>
-  <data name="Zaubersprueche_Dauer" xml:space="preserve">
-    <value>Dauer</value>
   </data>
   <data name="Zaubersprueche_" xml:space="preserve">
     <value>Zauberspruch</value>
@@ -685,9 +685,6 @@
   </data>
   <data name="KomplexeForm_" xml:space="preserve">
     <value>Komplexe Form</value>
-  </data>
-  <data name="KomplexeForm_Option" xml:space="preserve">
-    <value>Option</value>
   </data>
   <data name="WidgetsM_" xml:space="preserve">
     <value>Widgets</value>
@@ -776,19 +773,16 @@
   <data name="Content_Selbstbeherrschung" xml:space="preserve">
     <value>Selbstbeherrschung</value>
   </data>
-  <data name="KomplexForm_Duration" xml:space="preserve">
-    <value>Dauer</value>
-  </data>
   <data name="KomplexForm_Fading" xml:space="preserve">
     <value>Schwund</value>
-  </data>
-  <data name="KomplexForm_Target" xml:space="preserve">
-    <value>Ziel</value>
   </data>
   <data name="Person_LifestyleCost" xml:space="preserve">
     <value>Lebensstilkosten</value>
   </data>
   <data name="Thing_IsFavorite" xml:space="preserve">
     <value>Favorit</value>
+  </data>
+  <data name="Zaubersprueche_Fading" xml:space="preserve">
+    <value>Entzug</value>
   </data>
 </root>

@@ -115,15 +115,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Options ähnelt.
-        /// </summary>
-        public static string Adeptenkraft_Option {
-            get {
-                return ResourceManager.GetString("Adeptenkraft_Option", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Adept Powers ähnelt.
         /// </summary>
         public static string AdeptenkraftM_ {
@@ -484,15 +475,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Effects ähnelt.
-        /// </summary>
-        public static string Eigenschaften_Auswirkung {
-            get {
-                return ResourceManager.GetString("Eigenschaften_Auswirkung", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Ranged Weapon ähnelt.
         /// </summary>
         public static string Fernkampfwaffe_ {
@@ -592,24 +574,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Services ähnelt.
-        /// </summary>
-        public static string Geist_Dienste {
-            get {
-                return ResourceManager.GetString("Geist_Dienste", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Bound ähnelt.
-        /// </summary>
-        public static string Geist_Geb_Reg {
-            get {
-                return ResourceManager.GetString("Geist_Geb_Reg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Spirits ähnelt.
         /// </summary>
         public static string GeistM_ {
@@ -696,6 +660,24 @@ namespace SharedCode.Ressourcen {
         public static string HandlungM_ {
             get {
                 return ResourceManager.GetString("HandlungM_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Services ähnelt.
+        /// </summary>
+        public static string Helper_Dienste {
+            get {
+                return ResourceManager.GetString("Helper_Dienste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Registered ähnelt.
+        /// </summary>
+        public static string Helper_Geb_Reg {
+            get {
+                return ResourceManager.GetString("Helper_Geb_Reg", resourceCulture);
             }
         }
         
@@ -943,11 +925,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Option ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fading ähnelt.
         /// </summary>
-        public static string KomplexeForm_Option {
+        public static string KomplexeForm_Fading {
             get {
-                return ResourceManager.GetString("KomplexeForm_Option", resourceCulture);
+                return ResourceManager.GetString("KomplexeForm_Fading", resourceCulture);
             }
         }
         
@@ -1519,24 +1501,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Services ähnelt.
-        /// </summary>
-        public static string Sprite_Dienste {
-            get {
-                return ResourceManager.GetString("Sprite_Dienste", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Registered ähnelt.
-        /// </summary>
-        public static string Sprite_Geb_Reg {
-            get {
-                return ResourceManager.GetString("Sprite_Geb_Reg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sprites ähnelt.
         /// </summary>
         public static string SpriteM_ {
@@ -1600,6 +1564,24 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Duration ähnelt.
+        /// </summary>
+        public static string SuperNaturalSkills_Duration {
+            get {
+                return ResourceManager.GetString("SuperNaturalSkills_Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Target ähnelt.
+        /// </summary>
+        public static string SuperNaturalSkills_Target {
+            get {
+                return ResourceManager.GetString("SuperNaturalSkills_Target", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Name ähnelt.
         /// </summary>
         public static string Thing_Bezeichner {
@@ -1645,7 +1627,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Level ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Rating ähnelt.
         /// </summary>
         public static string Thing_Wert {
             get {
@@ -1978,29 +1960,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Duration ähnelt.
-        /// </summary>
-        public static string Zaubersprueche_Dauer {
-            get {
-                return ResourceManager.GetString("Zaubersprueche_Dauer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Drain ähnelt.
         /// </summary>
         public static string Zaubersprueche_Entzug {
             get {
                 return ResourceManager.GetString("Zaubersprueche_Entzug", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Range ähnelt.
-        /// </summary>
-        public static string Zaubersprueche_Reichweite {
-            get {
-                return ResourceManager.GetString("Zaubersprueche_Reichweite", resourceCulture);
             }
         }
         

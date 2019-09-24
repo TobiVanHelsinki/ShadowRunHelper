@@ -171,9 +171,6 @@
   <data name="Adeptenkraft_" xml:space="preserve">
     <value>Adept Power</value>
   </data>
-  <data name="Adeptenkraft_Option" xml:space="preserve">
-    <value>Options</value>
-  </data>
   <data name="Attribut_Resonanz" xml:space="preserve">
     <value>Resonance</value>
   </data>
@@ -281,9 +278,6 @@
   </data>
   <data name="FertigkeitM_" xml:space="preserve">
     <value>Skills</value>
-  </data>
-  <data name="Eigenschaften_Auswirkung" xml:space="preserve">
-    <value>Effects</value>
   </data>
   <data name="Connection_Einfluss" xml:space="preserve">
     <value>Connection</value>
@@ -478,7 +472,7 @@
     <value>Munitions</value>
   </data>
   <data name="Thing_Wert" xml:space="preserve">
-    <value>Level</value>
+    <value>Rating</value>
   </data>
   <data name="Thing_ThingTyp" xml:space="preserve">
     <value>ThingType</value>
@@ -573,11 +567,11 @@
   <data name="Zaubersprueche_" xml:space="preserve">
     <value>Spell</value>
   </data>
-  <data name="Zaubersprueche_Dauer" xml:space="preserve">
+  <data name="SuperNaturalSkills_Duration" xml:space="preserve">
     <value>Duration</value>
   </data>
-  <data name="Zaubersprueche_Reichweite" xml:space="preserve">
-    <value>Range</value>
+  <data name="SuperNaturalSkills_Target" xml:space="preserve">
+    <value>Target</value>
   </data>
   <data name="Vehikel_Wert" xml:space="preserve">
     <value>Damage</value>
@@ -602,6 +596,9 @@
   </data>
   <data name="Zaubersprueche_Entzug" xml:space="preserve">
     <value>Drain</value>
+  </data>
+  <data name="KomplexeForm_Fading" xml:space="preserve">
+    <value>Fading</value>
   </data>
   <data name="Stroemung_Paragon" xml:space="preserve">
     <value>Paragon</value>
@@ -653,9 +650,6 @@
   </data>
   <data name="KomplexeForm_" xml:space="preserve">
     <value>Complex Form</value>
-  </data>
-  <data name="KomplexeForm_Option" xml:space="preserve">
-    <value>Option</value>
   </data>
   <data name="WidgetsM_" xml:space="preserve">
     <value>Widgets</value>

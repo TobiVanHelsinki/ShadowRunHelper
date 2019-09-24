@@ -155,7 +155,108 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Column="1"/>
                 </Grid>
             </DataTemplate>
+
+            <ControlTemplate x:Key="Zaubersprueche_H">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="0"/>
+                    <Label Text="{resx:ModelResources SuperNaturalSkills_Target}" Style="{StaticResource HeadLineText}" Grid.Column="1"/>
+                    <Label Text="{resx:ModelResources SuperNaturalSkills_Duration}" Style="{StaticResource HeadLineText}" Grid.Column="2"/>
+                    <Label Text="{resx:ModelResources Zaubersprueche_Fading}" Style="{StaticResource HeadLineText}" Grid.Column="3"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="4"/>
+                </Grid>
+            </ControlTemplate>
+            <ControlTemplate x:Key="KomplexeForm_H">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="0"/>
+                    <Label Text="{resx:ModelResources SuperNaturalSkills_Target}" Style="{StaticResource HeadLineText}" Grid.Column="1"/>
+                    <Label Text="{resx:ModelResources SuperNaturalSkills_Duration}" Style="{StaticResource HeadLineText}" Grid.Column="2"/>
+                    <Label Text="{resx:ModelResources KomplexeForm_Fading}" Style="{StaticResource HeadLineText}" Grid.Column="3"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="4"/>
+                </Grid>
+            </ControlTemplate>
+            <DataTemplate x:Key="SuperNaturalSkills" x:DataType="CharModel:SuperNaturalSkills">
+                <ViewCell>
+                    <Grid Style="{StaticResource TemplateGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+                        <Label Text="{x:Binding Target}" Style="{StaticResource STDText}" Grid.Column="1"/>
+                        <Label Text="{x:Binding Duration}" Style="{StaticResource STDText}" Grid.Column="2"/>
+                        <Label Text="{x:Binding Fading}" Style="{StaticResource STDText}" Grid.Column="3"/>
+                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="4"/>
+                        <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
+                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
             
+            <ControlTemplate x:Key="Eigenschaft_H">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="0" VerticalOptions="Center"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="1" VerticalOptions="Center"/>
+                    <Label Text="{resx:ModelResources Eigenschaft_Auswirkungen}" Style="{StaticResource HeadLineText}" Grid.Column="2"/>
+                </Grid>
+            </ControlTemplate>
+            <DataTemplate x:Key="Eigenschaft" x:DataType="CharModel:Eigenschaft">
+                <ViewCell>
+                    <Grid Style="{StaticResource TemplateGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="1"/>
+                        <Label Text="{x:Binding Auswirkungen}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
+                        <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
+                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+          
             <x:Int16 x:Key="ItemsBoxesWidth">50</x:Int16>
             <ControlTemplate x:Key="ItemsBoxes_H">
                 <Grid Style="{StaticResource TemplateGrid}" HorizontalOptions="Center">
@@ -280,16 +381,16 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                     <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
-                            <controls:AdditionalValue Text="Anzahl" ValuePath="Anzahl"/>
-                            <controls:AdditionalValue Text="Sitze" ValuePath="Sitze"/>
-                            <controls:AdditionalValue Text="Geschwindigkeit" ValuePath="Geschwindigkeit"/>
-                            <controls:AdditionalValue Text="Beschleunigung" ValuePath="Beschleunigung"/>
-                            <controls:AdditionalValue Text="Panzer" ValuePath="Panzer"/>
-                            <controls:AdditionalValue Text="Rumpf" ValuePath="Rumpf"/>
-                            <controls:AdditionalValue Text="Handling" ValuePath="Handling"/>
-                            <controls:AdditionalValue Text="Pilot" ValuePath="Pilot"/>
-                            <controls:AdditionalValue Text="Sensor" ValuePath="Sensor"/>
-                            <controls:AdditionalValue Text="Gewicht" ValuePath="Gewicht"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Sitze}" ValuePath="Sitze"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Geschwindigkeit}" ValuePath="Geschwindigkeit"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Beschleunigung}" ValuePath="Beschleunigung"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Panzerung}" ValuePath="Panzer"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Rumpf}" ValuePath="Rumpf"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Handling}" ValuePath="Handling"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Pilot}" ValuePath="Pilot"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Sensor}" ValuePath="Sensor"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Gewicht}" ValuePath="Gewicht"/>
                         </StackLayout>
                     </ScrollView>
                 </Grid>
@@ -509,11 +610,11 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
                     <StackLayout Orientation="Horizontal" Grid.Column="2">
                         <ContentView ControlTemplate="{StaticResource Thing_Value_H}"/>
-                        <Label Text="Typ" Style="{StaticResource HeadLineText}"/>
+                        <Label Text="{resx:ModelResources Waffe_SchadenTyp}" Style="{StaticResource HeadLineText}"/>
                         <Label Text="[" Style="{StaticResource HeadLineText}"/>
-                        <Label Text="Praezision" Style="{StaticResource HeadLineText}"/>
+                        <Label Text="{resx:ModelResources Waffe_Praezision}" Style="{StaticResource HeadLineText}"/>
                         <Label Text="]" Style="{StaticResource HeadLineText}"/>
-                        <Label Text="DK" Style="{StaticResource HeadLineText}"/>
+                        <Label Text="{resx:ModelResources Waffe_DK}" Style="{StaticResource HeadLineText}"/>
                     </StackLayout>
                 </Grid>
             </ControlTemplate>
@@ -559,9 +660,9 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                     <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                          <StackLayout Style="{StaticResource AdditionalValuePanel}">
-                            <controls:AdditionalValue Text="Anzahl" ValuePath="Anzahl"/>
-                            <controls:AdditionalValue Text="Modi" ValuePath="Modi"/>
-                            <controls:AdditionalValue Text="RK" ValuePath="RK"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources FernKampfwaffe_Modi}" ValuePath="Modi"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources FernKampfwaffe_RK}" ValuePath="RK"/>
                         </StackLayout>
                   </ScrollView>
                 </Grid>
@@ -612,10 +713,10 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                     <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                          <StackLayout Style="{StaticResource AdditionalValuePanel}">
-                            <controls:AdditionalValue Text="Anzahl" ValuePath="Anzahl"/>
-                            <controls:AdditionalValue Text="Praezision" ValuePath="Praezision"/>
-                            <controls:AdditionalValue Text="Reichweite" ValuePath="Reichweite"/>
-                            <controls:AdditionalValue Text="DK" ValuePath="DK"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Praezision"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Nahkampfwaffe_Reichweite}" ValuePath="Reichweite"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK"/>
                         </StackLayout>
                     </ScrollView>
                 </Grid>
@@ -671,8 +772,8 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                     <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
-                            <controls:AdditionalValue Text="Anzahl" ValuePath="Anzahl"/>
-                            <controls:AdditionalValue Text="Kapazitaet" ValuePath="Kapazitaet"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Panzerung_Kapazitaet}" ValuePath="Kapazitaet"/>
                         </StackLayout>
                     </ScrollView>
                 </Grid>
@@ -728,11 +829,11 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                     <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
-                            <controls:AdditionalValue Text="Anzahl" ValuePath="Anzahl"/>
-                            <controls:AdditionalValue Text="DK" ValuePath="DK"/>
-                            <controls:AdditionalValue Text="Praezision" ValuePath="Praezision"/>
-                            <controls:AdditionalValue Text="Schaden" ValuePath="Wert"/>
-                            <controls:AdditionalValue Text="SchadenTyp" ValuePath="SchadenTyp"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Praezision"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Waffe_Wert}" ValuePath="Wert"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Waffe_SchadenTyp}" ValuePath="SchadenTyp"/>
                         </StackLayout>
                     </ScrollView>
                 </Grid>

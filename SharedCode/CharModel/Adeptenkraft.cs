@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Adeptenkraft : Thing
+    public class Adeptenkraft : Eigenschaft
     {
         string _Option = "";
-        [Used_UserAttribute]
+        [Used_UserAttribute] //TODO zusammenführen mit Auswirkungen 
         public string Option
         {
             get { return _Option; }
