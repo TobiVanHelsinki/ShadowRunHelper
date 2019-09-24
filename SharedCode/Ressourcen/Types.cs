@@ -270,7 +270,7 @@ namespace ShadowRunHelper
                 result = method(ancestor.Name);
                 ancestor = ancestor.BaseType;
             }
-            while (result is null && ancestor != typeof(Thing));
+            while (result is null && ancestor != typeof(Thing).BaseType);
             return result;
         }
     }

@@ -165,7 +165,7 @@ namespace ShadowRunHelperViewer
             var v = MyThing.ThingType.HierarchieUpSearch(s => new ModelResourcesExtension() { Text = s + "_" + item.Name }.ProvideString());
             return new Label
             {
-                Text = v ?? item.Name
+                Text = v ?? "NoValueFor: " + item.Name
             };
         }
 
