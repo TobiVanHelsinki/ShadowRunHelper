@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelperUno.iOS", "U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelperUno.UWP", "Uno\ShadowRunHelperUno\ShadowRunHelperUno.UWP\ShadowRunHelperUno.UWP.csproj", "{3832F451-A69C-4E67-976F-02E173770CB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelperUno.Wasm", "Uno\ShadowRunHelperUno\ShadowRunHelperUno.Wasm\ShadowRunHelperUno.Wasm.csproj", "{1C56E17A-A1DE-4FAA-A1EA-71161C641C0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShadowRunHelperUno.Wasm", "Uno\ShadowRunHelperUno\ShadowRunHelperUno.Wasm\ShadowRunHelperUno.Wasm.csproj", "{1C56E17A-A1DE-4FAA-A1EA-71161C641C0D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xamarin", "Xamarin", "{6B7BE462-FBAF-450E-B3BB-9B1037E9D5A4}"
 EndProject
@@ -43,7 +43,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extern", "Extern", "{0CDDFF
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Uno\ShadowRunHelperUno\ShadowRunHelperUno.Shared\ShadowRunHelperUno.Shared.projitems*{0f14edaf-5f1b-483c-8ea0-c094473c9d17}*SharedItemsImports = 4
 		FeaturesUWP\FeaturesUWP.projitems*{20705c89-f90e-4b10-827c-ba8a0b24e14f}*SharedItemsImports = 4
+		Uno\ShadowRunHelperUno\ShadowRunHelperUno.Shared\ShadowRunHelperUno.Shared.projitems*{24682f60-bad7-4742-a30e-18239d053478}*SharedItemsImports = 4
 		Uno\ShadowRunHelperUno\ShadowRunHelperUno.Shared\ShadowRunHelperUno.Shared.projitems*{3832f451-a69c-4e67-976f-02e173770cb9}*SharedItemsImports = 4
 		FeaturesUWP\FeaturesUWP.projitems*{3a21f712-6d9b-40ee-ba96-d91e040c4045}*SharedItemsImports = 13
 		Uno\ShadowRunHelperUno\ShadowRunHelperUno.Shared\ShadowRunHelperUno.Shared.projitems*{6279c845-92f8-4333-ab99-3d213163593c}*SharedItemsImports = 13

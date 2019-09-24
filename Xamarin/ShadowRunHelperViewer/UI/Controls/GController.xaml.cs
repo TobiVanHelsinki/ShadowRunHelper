@@ -43,9 +43,8 @@ namespace ShadowRunHelperViewer
             if (Controller != null)
             {
                 Controller.RegisterEventAtData(SmthChanged);
-                var key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
-                CreateItems(key);
-                CreateHeadline(key);
+                CreateItems(Controller.eDataTyp);
+                CreateHeadline(Controller.eDataTyp);
 
                 Setting = MyChar.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
                 IsVisible = Setting.Visibility;
@@ -61,9 +60,16 @@ namespace ShadowRunHelperViewer
         /// Searches for a Resource with a mathing name and try to create this as headline
         /// </summary>
         /// <param name="key"></param>
-        private void CreateHeadline(string key)
+        private void CreateHeadline(ThingDefs key)
         {
-            Resources.TryGetValue(key + "_H", out var CustomTemplate);
+            var ancestor = key.ThingDefToType();
+            object CustomTemplate;
+            do
+            {
+                Resources.TryGetValue(ancestor.Name + "_H", out CustomTemplate);
+                ancestor = key.ThingDefToType().BaseType;
+            }
+            while (CustomTemplate is null);
             if (CustomTemplate is ControlTemplate HL)
             {
                 Items_H.ControlTemplate = HL;
@@ -75,13 +81,16 @@ namespace ShadowRunHelperViewer
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        private object CreateItems(string key)
+        private object CreateItems(ThingDefs key)
         {
-            Resources.TryGetValue(key, out object CustomTemplate);
-            if (CustomTemplate is null)
+            var ancestor = key.ThingDefToType();
+            object CustomTemplate;
+            do 
             {
-                Resources.TryGetValue(nameof(Thing), out CustomTemplate);
+                Resources.TryGetValue(ancestor.Name, out CustomTemplate);
+                ancestor = key.ThingDefToType().BaseType;
             }
+            while (CustomTemplate is null);
             if (CustomTemplate is DataTemplate DT)
             {
                 var section = new TableSection();
@@ -118,7 +127,7 @@ namespace ShadowRunHelperViewer
         {
             if (sender is INotifyCollectionChanged list)
             {
-                CreateItems(TypeHelper.ThingDefToString(Controller.eDataTyp, false));
+                CreateItems(Controller.eDataTyp);
             }
         }
 

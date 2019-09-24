@@ -581,10 +581,10 @@
   <data name="Geist_" xml:space="preserve">
     <value>Geist</value>
   </data>
-  <data name="Geist_Dienste" xml:space="preserve">
+  <data name="Helper_Dienste" xml:space="preserve">
     <value>Dienste</value>
   </data>
-  <data name="Geist_Geb_Reg" xml:space="preserve">
+  <data name="Helper_Geb_Reg" xml:space="preserve">
     <value>Gebunden</value>
   </data>
   <data name="Person_Geburtstag" xml:space="preserve">
@@ -700,12 +700,6 @@
   </data>
   <data name="Sprite_" xml:space="preserve">
     <value>Sprite</value>
-  </data>
-  <data name="Sprite_Dienste" xml:space="preserve">
-    <value>Dienste</value>
-  </data>
-  <data name="Sprite_Geb_Reg" xml:space="preserve">
-    <value>Registriert</value>
   </data>
   <data name="WandlungM_" xml:space="preserve">
     <value>Wandlungen</value>

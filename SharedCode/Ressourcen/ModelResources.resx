@@ -303,9 +303,6 @@
   <data name="Geist_" xml:space="preserve">
     <value>Spirit</value>
   </data>
-  <data name="Geist_Geb_Reg" xml:space="preserve">
-    <value>Bound</value>
-  </data>
   <data name="Handlung_Grenze" xml:space="preserve">
     <value>Limit:</value>
   </data>
@@ -344,9 +341,6 @@
   </data>
   <data name="Implantat_Kapazitaet" xml:space="preserve">
     <value>Capacity</value>
-  </data>
-  <data name="Geist_Dienste" xml:space="preserve">
-    <value>Services</value>
   </data>
   <data name="Implantat_Auswirkung" xml:space="preserve">
     <value>Effects</value>
@@ -675,10 +669,10 @@
   <data name="Sprite_" xml:space="preserve">
     <value>Sprite</value>
   </data>
-  <data name="Sprite_Dienste" xml:space="preserve">
+  <data name="Helper_Dienste" xml:space="preserve">
     <value>Services</value>
   </data>
-  <data name="Sprite_Geb_Reg" xml:space="preserve">
+  <data name="Helper_Geb_Reg" xml:space="preserve">
     <value>Registered</value>
   </data>
   <data name="WandlungM_" xml:space="preserve">

@@ -18,11 +18,12 @@
                 <Setter Property="Padding" Value="5"/>
             </Style>
             <Style x:Key="STDText" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="LineBreakMode" Value="CharacterWrap"/>
                 <Setter Property="MaxLines" Value="2"/>
             </Style>
-            <Style x:Key="STDTextCenter" TargetType="Label">
+            <Style x:Key="STDTextCenter" TargetType="Label" BasedOn="{StaticResource STDText}">
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
             <Style x:Key="HeadLineText" TargetType="Label" BasedOn="{StaticResource STDText}">
@@ -143,6 +144,9 @@
             </DataTemplate>
             <DataTemplate x:Key="ThingX" x:DataType="CharModel:Thing">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
@@ -215,19 +219,6 @@
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
                     </Grid>
                 </ViewCell>
-            </DataTemplate>
-            <DataTemplate x:Key="ItemX" x:DataType="CharModel:Item">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
-                    <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="0" Grid.Column="1"/>
-                </Grid>
             </DataTemplate>
 
             <ControlTemplate x:Key="Vehikel_H">
@@ -461,6 +452,47 @@
                         </StackLayout>
                     </ScrollView>
                 </Grid>
+            </DataTemplate>
+
+            <ControlTemplate x:Key="Programm_H">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
+                    <Label Text="{resx:ModelResources Programm_Optionen}" Style="{StaticResource HeadLineText}" Grid.Column="2"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="3"/>
+                </Grid>
+            </ControlTemplate>
+            <DataTemplate x:Key="Programm" x:DataType="CharModel:Programm">
+                <ViewCell>
+                    <Grid Style="{StaticResource TemplateGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                        <Label Text="{x:Binding Optionen}" Style="{StaticResource STDText}" Grid.Column="2" />
+                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="3"/>
+                        <ContentView x:Name="Extended" Grid.ColumnSpan="4" Grid.Row="1"/>
+                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
+                    </Grid>
+                </ViewCell>
             </DataTemplate>
 
             <ControlTemplate x:Key="Fernkampfwaffe_H">
@@ -701,6 +733,70 @@
                             <controls:AdditionalValue Text="Praezision" ValuePath="Praezision"/>
                             <controls:AdditionalValue Text="Schaden" ValuePath="Wert"/>
                             <controls:AdditionalValue Text="SchadenTyp" ValuePath="SchadenTyp"/>
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+            </DataTemplate>
+
+            <ControlTemplate x:Key="Helper_H">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="2"/>
+                    <Label Text="{resx:ModelResources Helper_Dienste}" Style="{StaticResource HeadLineText}" Grid.Column="3"/>
+                    <Label Text="{resx:ModelResources Helper_Geb_Reg}" Style="{StaticResource HeadLineText}" Grid.Column="4"/>
+                </Grid>
+            </ControlTemplate>
+            <DataTemplate x:Key="Helper" x:DataType="CharModel:Helper">
+                <ViewCell>
+                    <Grid Style="{StaticResource TemplateGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                        <Label Text="{x:Binding Dienste}" Grid.Column="3" Style="{StaticResource STDText}"/>
+                        <Label Text="{x:Binding Geb_Reg}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                        <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
+                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="HelperX" x:DataType="CharModel:Helper">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
+                        <StackLayout Style="{StaticResource AdditionalValuePanel}">
+                            <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                         </StackLayout>
                     </ScrollView>
                 </Grid>
