@@ -16,7 +16,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             AppModel.Instance.NavigationRequested += Instance_NavigationRequested;
             InitializeComponent();
-            AppModel.Instance.RequestNavigation(ProjectPages.Administration);
+            //AppModel.Instance.RequestNavigation(ProjectPages.Administration);
             TLIB.Log.NewLogArrived += Log_NewLogArrived;
             AppModel.Instance.PropertyChanged += Instance_PropertyChanged;
         }
