@@ -1,4 +1,5 @@
-﻿using ShadowRunHelper;
+﻿
+using ShadowRunHelper;
 using ShadowRunHelperViewer.UI.Pages;
 using System;
 using System.Threading.Tasks;

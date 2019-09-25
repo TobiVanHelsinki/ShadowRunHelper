@@ -569,6 +569,15 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Fav" xml:space="preserve">
     <value>Favorisieren</value>
   </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Fertig</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="GlobalFilterBox" xml:space="preserve">
+    <value>Suche nach Einträgen ...</value>
+  </data>
   <data name="FavUn" xml:space="preserve">
     <value>Defavorisieren</value>
   </data>

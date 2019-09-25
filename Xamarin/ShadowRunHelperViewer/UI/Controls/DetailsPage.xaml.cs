@@ -1,22 +1,28 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Strings;
+using ShadowRunHelperViewer.UI.Controls;
 using SharedCode.Ressourcen;
 using System;
 using System.Linq;
 using System.Reflection;
+using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailsPage : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class DetailsPage : PopupPage
     {
         public Thing MyThing { get; set; }
-        public DetailsPage(Thing thing)
+        readonly CharHolder MyChar;
+        public DetailsPage(Thing thing, CharHolder mychar)
         {
+            MyChar = mychar;
             MyThing = thing;
             InitializeComponent();
             MainContent.BindingContext = MyThing;
@@ -35,7 +41,7 @@ namespace ShadowRunHelperViewer
             try
             {
                 Headline.Text = MyThing.ThingType.ThingDefToString(false);
-                CreateItems();
+                CreateView();
             }
             catch (Exception ex)
             {
@@ -46,8 +52,12 @@ namespace ShadowRunHelperViewer
             base.OnAppearing();
         }
 
-        void CreateItems()
+        void CreateView()
         {
+            NumberContent.Children.Clear();
+            CalcContent.Children.Clear();
+            OtherContent.Children.Clear();
+
             var NumberCounter = 0;
             foreach (var item in Thing.GetProperties(MyThing).Reverse().Where(x => !(
                                                                                     x.Name == nameof(Thing.IsFavorite) ||
@@ -124,7 +134,6 @@ namespace ShadowRunHelperViewer
                     };
                     Content.SetBinding(Entry.TextProperty, new Binding(item.Name));
                 }
-
                 if (item.PropertyType == typeof(double) || item.PropertyType == typeof(double?))
                 {
                     if (NumberCounter % 2 == 0)
@@ -169,9 +178,32 @@ namespace ShadowRunHelperViewer
             };
         }
 
-        private void OpenConnectedChooser(object sender, EventArgs e)
+        async void OpenConnectedChooser(object sender, EventArgs e)
         {
-            //tODO
+            //var page = new LinkListChooser(MyChar, MyThing.Wert2.Connected.Select(x => x.Connected.Select(y => y.)));
+            var page = new LinkListChooser(MyChar, null);
+            await PopupNavigation.Instance.PushAsync(page);
+            page.Disappearing += Page_Disappearing;
+        }
+
+        private void Page_Disappearing(object sender, EventArgs e)
+        {
+            if (sender is LinkListChooser page && page.Result)
+            {
+                if (MyThing is Handlung h)
+                {
+                    h.Wert2.Connected.Clear();
+                    h.Wert2.Connected.AddRange(page.Selected.Select(x => x.Object.Wert2));
+                }
+                try
+                {
+                    CreateView();
+                }
+                catch (Exception)
+                {
+                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                }
+            }
         }
 
         /// <summary>

@@ -169,7 +169,7 @@ namespace ShadowRunHelperViewer
         {
             if (sender is BindableObject b && b.BindingContext is Thing t)
             {
-                await PopupNavigation.Instance.PushAsync(new DetailsPage(t));
+                await PopupNavigation.Instance.PushAsync(new DetailsPage(t, MyChar));
             }
         }
 
@@ -181,7 +181,7 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        (string, Action)[] MenuItems = new (string, Action)[] {
+        readonly (string, Action)[] MenuItems = new (string, Action)[] {
                         (CustomManager.GetString("UI_TxT_Cat_AddSep/Text"),null),
                         (CustomManager.GetString("UI_TxT_Cat_UncheckAll/Text"),null),
                         (CustomManager.GetString("UI_TxT_Cat_Order_ABC/Text"),null),

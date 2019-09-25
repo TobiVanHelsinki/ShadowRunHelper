@@ -188,9 +188,6 @@ Setzen Sie den externen Ordner neu.</value>
   <data name="Notification_Info_ConvertFromPrevious" xml:space="preserve">
     <value>Diese Datei ist eine alte Version, sie wird nun in das aktuelleste Format konvertiert. Dadurch kann sie womöglich nicht oder nicht mit dem gesamten Funktionsumfang in früheren Versionen des Programms geöffnet werden. Die Aktuelle Version des Programms steht in den Einstellungen. Sollte die Umwandlung nicht erwünscht sein, speichere den Char einfach nicht.</value>
   </data>
-  <data name="GlobalFilterBox" xml:space="preserve">
-    <value>Suche nach Name und Typ ...</value>
-  </data>
   <data name="Help1" xml:space="preserve">
     <value>Items (u.a. Waffen, CyberDecks, normale Items) können "aktiv" sein. Das bedeutet, dass sie bei automatischen Berechnungen berücksichtigt werden. So kann beispielsweise eine "Schießen"-Handlung als Limit-Wert die Präzision der aktiven Waffe verlinkt bekommen. Wird die aktive Waffe geändert, ändern sich die davon abhängigen Werte automatisch.</value>
   </data>
@@ -226,9 +223,6 @@ Setzen Sie den externen Ordner neu.</value>
   </data>
   <data name="Ampersant" xml:space="preserve">
     <value>&amp;</value>
-  </data>
-  <data name="EditDialog" xml:space="preserve">
-    <value>Fertig</value>
   </data>
   <data name="ExampleChar" xml:space="preserve">
     <value>Beispiel Charakter</value>

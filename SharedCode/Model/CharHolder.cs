@@ -13,6 +13,10 @@ using TAPPLICATION;
 using TAPPLICATION.Model;
 using TLIB;
 
+//TODO List aller things mit active things erstellen ->select ->alle CalculaitonValues
+//diese liste anzeigen im chooser, evtl gruppiert nach kats, things
+//auswählen von dingen gibt liste aller CalcValues zurück, diese wird dann eingegeben
+
 namespace ShadowRunHelper.Model
 {
     /// <summary>
@@ -73,6 +77,8 @@ namespace ShadowRunHelper.Model
         public List<AllListEntry> LinkList { get; } = new List<AllListEntry>();
         [Newtonsoft.Json.JsonIgnore]
         public List<Thing> ThingList { get; } = new List<Thing>();
+        [Newtonsoft.Json.JsonIgnore]
+        public IEnumerable<CharCalcProperty> ConnectronList => LinkList.SelectMany(x => x.Object.GetType().GetProperties().Where(p => p.PropertyType == typeof(CharCalcProperty)).Select(p => p.GetValue(x.Object, null) as CharCalcProperty));
         [Newtonsoft.Json.JsonIgnore]
         public ObservableCollection<Thing> Favorites { get; } = new ObservableCollection<Thing>();
 

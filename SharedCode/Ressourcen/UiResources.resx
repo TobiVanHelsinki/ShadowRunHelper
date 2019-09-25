@@ -168,6 +168,15 @@
   <data name="Optionen_Inhaber" xml:space="preserve">
     <value>App owener</value>
   </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="GlobalFilterBox" xml:space="preserve">
+    <value>Search for entries ...</value>
+  </data>
   <data name="Optionen_U_Kontakt" xml:space="preserve">
     <value>Contact</value>
   </data>

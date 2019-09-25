@@ -220,12 +220,6 @@ If the tutorial covers the whole screen (on small displays) you can make it tran
 The red highlighted list shows all your saved characters. 
 By default, chars are saved within the app. In the options you can choose whether they should be synchronized via your account. You can also choose a different folder as the location.</value>
   </data>
-  <data name="GlobalFilterBox" xml:space="preserve">
-    <value>Search for Name and Type ...</value>
-  </data>
-  <data name="EditDialog" xml:space="preserve">
-    <value>Finish</value>
-  </data>
   <data name="ExampleChar" xml:space="preserve">
     <value>Example Char</value>
   </data>

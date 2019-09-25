@@ -361,7 +361,7 @@ namespace ShadowRunHelperViewer
                 asb.Text = "";
                 asb.IsSuggestionListOpen = false;
             }
-            await PopupNavigation.Instance.PushAsync(new DetailsPage(Model.PendingScrollEntry));
+            await PopupNavigation.Instance.PushAsync(new DetailsPage(Model.PendingScrollEntry, MyChar));
             Model.PendingScrollEntry = null;
         }
         #endregion
