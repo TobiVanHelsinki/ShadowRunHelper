@@ -8,8 +8,8 @@
                 xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
     xmlns:local="clr-namespace:ShadowRunHelperViewer"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-    xmlns:model="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
     xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
+    xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
     mc:Ignorable="d"
                 x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
     <pages:PopupPage.Animation>
@@ -37,23 +37,47 @@
             </StackLayout>
         </DataTemplate>
     </pages:PopupPage.Resources>
-    <Frame x:Name="MainFrame" Padding="10" Margin="25" BackgroundColor="Beige" HorizontalOptions="Center" VerticalOptions="Center"
-           CornerRadius="10">
+    <Frame x:Name="MainFrame" Padding="0,10,0,10" Margin="0" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center" SizeChanged="MainFrame_SizeChanged">
         <StackLayout>
-            <Label Text="Hello Xamarin.Forms!" />
-            <ListView ItemsSource="{x:Binding MyChar.LinkList}" SelectionMode="None">
+            <ListView ItemsSource="{x:Binding MyChar.Connectrons}" SelectionMode="None">
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="model:AllListEntry">
-                        <ViewCell Tapped="ViewCell_Tapped">
+                    <DataTemplate x:DataType="charmodel:Thing">
+                        <ViewCell Appearing="ViewCell_Appearing">
                             <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <CheckBox x:Name="Selected" CheckedChanged="Selected_CheckedChanged"/>
-                                <Label Text="{x:Binding Object.Bezeichner}" Grid.Column="1"/>
-                                <Label Text="{x:Binding Object.Wert}" Grid.Column="2"/>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Padding="10,0,10,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{x:Binding Typ}" Grid.Column="0"/>
+                                    <Label Text=":" Grid.Column="1"/>
+                                    <Label Text="{x:Binding Bezeichner}" Grid.Column="2"/>
+                                </Grid>
+                                <ScrollView Grid.Row="1" Margin="15,0,10,0">
+                                    <StackLayout x:Name="CalcItemsList" Orientation="Horizontal">
+                                        <StackLayout.Resources>
+                                            <DataTemplate x:Key="Template" x:DataType="controls:DetailsModel">
+                                                <Grid BackgroundColor="AntiqueWhite">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="{x:Binding Name}" Margin="80,0,0,0" VerticalOptions="Center"/>
+                                                    <CheckBox x:Name="Selected" Color="Default" HorizontalOptions="FillAndExpand" VerticalOptions="Center" CheckedChanged="Selected_CheckedChanged"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </StackLayout.Resources>
+                                    </StackLayout>
+                                </ScrollView>
+                                <BoxView Grid.Row="2" HeightRequest="1" BackgroundColor="Gray"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

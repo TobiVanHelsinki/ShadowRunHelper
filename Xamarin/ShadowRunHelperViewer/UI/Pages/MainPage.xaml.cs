@@ -4,6 +4,7 @@ using ShadowRunHelper.Model;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -97,8 +98,9 @@ namespace ShadowRunHelperViewer.UI.Pages
                             ContentPlace.Content = t.Result;
                             afterLoad?.Invoke(t.Result);
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
+                            Log.Write("Could not Set Content", ex, logType: LogType.Error);
                             if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
                         }
                     });

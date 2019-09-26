@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ShadowRunHelper.CharModel
@@ -42,6 +43,15 @@ namespace ShadowRunHelper.CharModel
         {
             LinkedThings.FilterOut = (Filter);
         }
+
+        [JsonIgnore]
+        CharCalcProperty _MyProperty = new CharCalcProperty();
+        public CharCalcProperty MyProperty
+        {
+            get { return _MyProperty; }
+            set { if (_MyProperty != value) { _MyProperty = value; NotifyPropertyChanged(); } }
+        }
+
 
 
     }

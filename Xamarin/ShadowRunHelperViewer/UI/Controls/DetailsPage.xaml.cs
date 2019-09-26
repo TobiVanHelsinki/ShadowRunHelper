@@ -105,14 +105,15 @@ namespace ShadowRunHelperViewer
                     PlusButton.VerticalOptions = LayoutOptions.Center;
                     CalcPropGrid.Children.Add(PlusButton);
                     // ####################
-                    var ConnectedValues = new CollectionView()
+                    var ConnectedValues = new CollectionView
                     { // ist beta und löst beim disposen einen fehler aus 
-                        //ItemsLayout = ListItemsLayout.HorizontalList,
+                        ItemsLayout = ListItemsLayout.Horizontal,
                         ItemTemplate = Resources["ConnectedTemplate"] as DataTemplate,
+                        VerticalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        HeightRequest = 50
                     };
                     ConnectedValues.SetBinding(ItemsView.ItemsSourceProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.Connected)));
-                    ConnectedValues.VerticalOptions = LayoutOptions.Center;
-                    ConnectedValues.HeightRequest = 50;
                     var Scroller = new ScrollView() { Content = ConnectedValues };
                     Scroller.VerticalOptions = LayoutOptions.Center;
                     Grid.SetColumn(Scroller, 2);
@@ -182,8 +183,14 @@ namespace ShadowRunHelperViewer
         {
             //var page = new LinkListChooser(MyChar, MyThing.Wert2.Connected.Select(x => x.Connected.Select(y => y.)));
             var page = new LinkListChooser(MyChar, null);
-            await PopupNavigation.Instance.PushAsync(page);
             page.Disappearing += Page_Disappearing;
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(page);
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void Page_Disappearing(object sender, EventArgs e)
@@ -193,11 +200,11 @@ namespace ShadowRunHelperViewer
                 if (MyThing is Handlung h)
                 {
                     h.Wert2.Connected.Clear();
-                    h.Wert2.Connected.AddRange(page.Selected.Select(x => x.Object.Wert2));
+                    h.Wert2.Connected.AddRange(page.Selected);
                 }
                 try
                 {
-                    CreateView();
+                    //CreateView();
                 }
                 catch (Exception)
                 {

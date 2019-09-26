@@ -497,5 +497,29 @@ namespace ShadowRunHelper.CharModel
             //}
             return retval;
         }
+
+   
+    }
+
+    public static class ThingExt
+    {
+        /// <summary>
+        /// returns infos about all members whoose type is CharCalcProperty
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<PropertyInfo> GetCalcProps(this Thing t, Type type)
+        {
+            //TLIB.ReflectionHelper.GetProperties();
+            return t.GetType().GetProperties().Where(p => p.PropertyType == type);
+        }
+
+        /// <summary>
+        /// returns all members whoose type is CharCalcProperty
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<CharCalcProperty> GetCalcs(this Thing t)
+        {
+            return t.GetCalcProps(typeof(CharCalcProperty)).Select(p => p.GetValue(t, null) as CharCalcProperty);
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace ShadowRunHelperViewer
     {
         public App()
         {
+
             Log.IsConsoleLogEnabled = true;
             Log.IsInMemoryLogEnabled = true;
             Log.Mode = LogMode.Verbose;
