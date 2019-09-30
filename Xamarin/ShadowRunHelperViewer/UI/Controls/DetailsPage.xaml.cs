@@ -214,16 +214,6 @@ namespace ShadowRunHelperViewer
         }
 
         /// <summary>
-        /// Close this
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Close_Clicked(object sender, EventArgs e)
-        {
-            PopupNavigation.Instance.PopAsync(true);
-        }
-
-        /// <summary>
         /// to prevent ugly visual at big screens
         /// border is set to feel
         /// </summary>
@@ -241,5 +231,26 @@ namespace ShadowRunHelperViewer
                 MainFrame.WidthRequest = Width;
             }
         }
+
+        /// <summary>
+        /// Removes mything and close the page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Delete_Clicked(object sender, EventArgs e)
+        {
+            MyChar.Remove(MyThing);
+            Close_Clicked(sender, e);
+        }
+        /// <summary>
+        /// Close this
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Close_Clicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PopAsync(true);
+        }
+
     }
 }

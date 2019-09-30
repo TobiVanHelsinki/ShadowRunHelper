@@ -38,13 +38,11 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label x:Name="Headline" FontSize="Title" LineBreakMode="MiddleTruncation" MaxLines="1"/>
-            <ScrollView Grid.Row="2" x:Name="MainContent">
+            <ScrollView Grid.Row="1" x:Name="MainContent">
                 <StackLayout>
                     <Grid Margin="0,5,10,0" Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -83,7 +81,17 @@
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
-            <Button Text="Close" HorizontalOptions="CenterAndExpand" Grid.Row="4" Margin="0,5,0,0" Padding="5" Clicked="Close_Clicked"/>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Text="Save and Close" HorizontalOptions="CenterAndExpand" Grid.Column="1" Margin="0,5,0,0" Padding="5" Clicked="Close_Clicked"/>
+                <Button Text="Delete this" HorizontalOptions="CenterAndExpand" Grid.Column="3" Margin="0,5,0,0" Padding="5" Clicked="Delete_Clicked"/>
+            </Grid>
         </Grid>
     </Frame>
 </pages:PopupPage>

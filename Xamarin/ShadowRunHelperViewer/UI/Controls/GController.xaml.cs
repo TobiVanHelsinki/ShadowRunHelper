@@ -80,12 +80,8 @@ namespace ShadowRunHelperViewer
             var CustomTemplate = key.HierarchieUpSearch(s => { Resources.TryGetValue(s, out object CustomTemplate); return CustomTemplate; });
             if (CustomTemplate is DataTemplate DT)
             {
-                var section = new TableSection();
-                //var section = new List<ViewCell>();
-                //Items.ItemsSource = section;
-             
+                var section = new TableSection("");
                 Items.Root = new TableRoot() { section };
-                Items.Margin = new Thickness(0, Device.OnPlatform(-35, -35, -40), 0, 0);
                 foreach (var item in Controller.GetElements())
                 {
                     var content = DT.CreateContent();
@@ -170,14 +166,6 @@ namespace ShadowRunHelperViewer
             if (sender is BindableObject b && b.BindingContext is Thing t)
             {
                 await PopupNavigation.Instance.PushAsync(new DetailsPage(t, MyChar));
-            }
-        }
-
-        private void Thing_Delete(object sender, EventArgs e)
-        {
-            if (sender is BindableObject b && b.BindingContext is Thing t)
-            {
-                MyChar.Remove(t);
             }
         }
 

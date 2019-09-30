@@ -97,7 +97,7 @@
             <DataTemplate x:Key="CharFavs" x:Name="CharFavs" x:DataType="model:CharHolder">
                 <StackLayout>
                     <Label Text="Add Favorites with the switch at an thing"/>
-                    <ListView ItemsSource="{x:Binding Favorites}"/>
+                    <ListView ItemsSource="{x:Binding Favorites}" />
                 </StackLayout>
             </DataTemplate>
         </ResourceDictionary>
@@ -139,7 +139,7 @@
                     TextChanged="AutoSuggestBox_TextChanged" SuggestionChosen="AutoSuggestBox_SuggestionChosen" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
                 <Button Text="&#xf141;" Style="{StaticResource IconButton_ConstWidth}" Clicked="MoreMenu" Grid.Column="4"/>
             </Grid>
-            <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="5,0,5,5" >
+            <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="5,0,5,5">
                 <StackLayout Style="{StaticResource OuterPanel}">
                     <Label Text="{resx:ModelResources Person_Kontostand}" Style="{StaticResource OneLineText}"/>
                     <Label Text="{x:Binding MyChar.Person.Kontostand}" Style="{StaticResource OneLineText}"/>
@@ -173,7 +173,7 @@
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
-            <Grid Grid.Row="3" BackgroundColor="White">
+            <Grid Grid.Row="3" BackgroundColor="Beige" ColumnSpacing="0">
                 <Grid.Resources>
                     <Style x:Key="LabelLayout" TargetType="StackLayout">
                         <Setter Property="Orientation" Value="Horizontal" />
@@ -196,7 +196,7 @@
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col1"/>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col2"/>
                 </Grid.ColumnDefinitions>
-                <ScrollView>
+                <ScrollView BackgroundColor="White">
                     <StackLayout>
                         <Frame BorderColor="Blue" Style="{StaticResource CatPanel}">
                             <StackLayout>
@@ -227,7 +227,7 @@
                         </Frame>
                     </StackLayout>
                 </ScrollView>
-                <ScrollView Grid.Column="2">
+                <ScrollView Grid.Column="2" BackgroundColor="White">
                     <StackLayout>
                         <Frame BorderColor="Red" Style="{StaticResource CatPanel}">
                             <StackLayout>

@@ -32,9 +32,10 @@
                 <Setter Property="MaxLines" Value="1"/>
             </Style>
             <Style x:Key="TemplateGrid" TargetType="Grid">
-                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="ColumnSpacing" Value="0"/>
+                <Setter Property="RowSpacing" Value="0"/>
                 <Setter Property="Margin" Value="0"/>
-                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Padding" Value="5,5,5,0"/>
             </Style>
             <Style x:Key="TemplateContentView" TargetType="ContentView">
                 <Setter Property="VerticalOptions" Value="Center"/>
@@ -42,10 +43,10 @@
                 <Setter Property="Padding" Value="0"/>
             </Style>
             <Style x:Key="TemplateStack" TargetType="StackLayout">
-                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Spacing" Value="0"/>
                 <Setter Property="Orientation" Value="Horizontal"/>
                 <Setter Property="Margin" Value="0"/>
-                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Padding" Value="5,5,5,0"/>
             </Style>
             <Style x:Key="AdditionalValueScrollView" TargetType="ScrollView">
                 <Setter Property="Orientation" Value="Horizontal"/>
@@ -55,7 +56,7 @@
                 <Setter Property="Orientation" Value="Horizontal"/>
             </Style>
             <ControlTemplate x:Key="SeparatorLine">
-                <BoxView Color="Black" HeightRequest="1"/>
+                <BoxView Color="Black" HeightRequest="1" Margin="-5,5,-5,0"/>
             </ControlTemplate>
 
             <ControlTemplate x:Key="Thing_Name_H">
@@ -64,7 +65,7 @@
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Name" x:DataType="CharModel:Thing">
-                <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}" Spacing="0">
+                <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
                     <Label x:Name="Typ" Text="{x:Binding Typ}" Style="{StaticResource STDText}"/>
                     <Label Text=":" Style="{StaticResource STDText}" Margin="0,0,2,0">
                         <Label.Triggers>
@@ -96,17 +97,15 @@
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Buttons" x:DataType="CharModel:Thing">
-                <StackLayout Orientation="Vertical" BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
+                <StackLayout Orientation="Vertical" BindingContext="{TemplateBinding BindingContext}" Spacing="4" Style="{StaticResource TemplateStack}">
                     <Button Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Edit" />
-                    <Button Text="&#xf1f8;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Delete" />
-                    <Grid BackgroundColor="Gray" Opacity="0.75" HorizontalOptions="Center" VerticalOptions="Start">
+                    <!--<Button Text="&#xf1f8;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Delete" />-->
+                    <Grid BackgroundColor="Gray" Opacity="0.75" HorizontalOptions="Center" VerticalOptions="Start" Padding="5,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="&#xf004;" Style="{StaticResource IconLabel}" Margin="5,0,0,0"
-                               VerticalOptions="Center" FontSize="Small" TextColor="FloralWhite"/>
-                        <CheckBox IsChecked="{x:Binding IsFavorite}" Color="FloralWhite" VerticalOptions="Center" Grid.Column="1"/>
+                        <Label Text="&#xf004;" Style="{StaticResource IconLabel}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Small" TextColor="FloralWhite"/>
+                        <CheckBox IsChecked="{x:Binding IsFavorite}" Color="FloralWhite" VerticalOptions="Center"/>
                     </Grid>
                 </StackLayout>
             </ControlTemplate>
@@ -135,7 +134,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}"/>
+                        <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}" />
                         <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value}"/>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
@@ -1031,29 +1030,36 @@
                     <On Platform="Android" Value="45" />
                     <On Platform="UWP, WinRT, WinPhone" Value="Auto" />
                 </OnPlatform>
+                <OnPlatform x:Key="Offset" x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0,0,0,0" />
+                    <On Platform="UWP, WinRT, WinPhone" Value="0,-45,0,0" />
+                </OnPlatform>
             </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Frame Padding="4,0,4,0" Margin="0" Grid.Row="3" BackgroundColor="Beige" CornerRadius="0">
-                <!--<ListView x:Name="Items" HasUnevenRows="True" />-->
-                <TableView x:Name="Items" HasUnevenRows="True" Intent="Data" />
-            </Frame>
-            <Grid Padding="0,5,0,0" BackgroundColor="White">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="{StaticResource ButtonSize}"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="{StaticResource ButtonSize}"/>
-                </Grid.ColumnDefinitions>
-                <Button Text="&#xf067;" Style="{StaticResource ControllerIconButton}" Clicked="Add" TextColor="Default"/>
-                <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium"/>
-                <Button Text="&#xf141;" Style="{StaticResource ControllerIconButton}" Clicked="Options" Grid.Column="2" TextColor="Default"/>
+            <TableView x:Name="Items" HasUnevenRows="True" Intent="Data" Grid.Row="1"
+                       Margin="{StaticResource Offset}"/>
+            <Grid BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Padding="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ButtonSize}"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="{StaticResource ButtonSize}"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="&#xf067;" Style="{StaticResource ControllerIconButton}" Clicked="Add" TextColor="Default"/>
+                    <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium"/>
+                    <Button Text="&#xf141;" Style="{StaticResource ControllerIconButton}" Clicked="Options" Grid.Column="2" TextColor="Default"/>
+                </Grid>
+                <ContentView Grid.Row="1" x:Name="Items_H"/>
+                <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray"/>
             </Grid>
-            <ContentView Grid.Row="1" x:Name="Items_H" BackgroundColor="White"/>
-            <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray"  BackgroundColor="White"/>
         </Grid>
     </ContentView.Content>
 </ContentView>
