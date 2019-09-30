@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 using System.Linq;
+using ShadowRunHelperViewer.UI.Resources;
 
 namespace ShadowRunHelperViewer
 {
@@ -118,5 +119,7 @@ namespace ShadowRunHelperViewer
             //DamageGrid.WidthRequest = NewWidth < 40 ? 40 : NewWidth;
             //DamageGrid.MinimumWidthRequest = WidthRequest;
         }
+
+        private void PopupPage_SizeChanged(object sender, EventArgs e) => (MainFrame.WidthRequest, MainFrame.HeightRequest) = Common.MaximumDimensions(Width, Height);
     }
 }

@@ -11,7 +11,8 @@
     xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
     xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
     mc:Ignorable="d"
-                x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
+                x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser"
+    SizeChanged="PopupPage_SizeChanged">
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Center"
@@ -37,7 +38,7 @@
             </StackLayout>
         </DataTemplate>
     </pages:PopupPage.Resources>
-    <Frame x:Name="MainFrame" Padding="0,10,0,10" Margin="0" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center" SizeChanged="MainFrame_SizeChanged">
+    <Frame x:Name="MainFrame" Padding="0,10,0,10" Margin="0" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
         <StackLayout>
             <ListView ItemsSource="{x:Binding MyChar.Connectrons}" SelectionMode="None">
                 <ListView.ItemTemplate>

@@ -2,6 +2,7 @@
 using Rg.Plugins.Popup.Services;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.UI.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,23 +98,8 @@ namespace ShadowRunHelperViewer.UI.Controls
             }
         }
 
-        bool SizeUpdateInProgress;
-        private void MainFrame_SizeChanged(object sender, EventArgs e)
-        {
-            if (sender is Frame f && !SizeUpdateInProgress)
-            {
-                SizeUpdateInProgress = true;
-                if (f.Height > 500)
-                {
-                    f.HeightRequest = 500;
-                }
-                if (f.Width > 800)
-                {
-                    f.HeightRequest = 800;
-                }
-                SizeUpdateInProgress = false;
-            }
-        }
+        void PopupPage_SizeChanged(object sender, EventArgs e) => (MainFrame.WidthRequest, MainFrame.HeightRequest) = Common.MaximumDimensions(Width, Height);
+
     }
 
     /// <summary>

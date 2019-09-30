@@ -5,6 +5,7 @@ using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Strings;
 using ShadowRunHelperViewer.UI.Controls;
+using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
 using System;
 using System.Linq;
@@ -219,18 +220,7 @@ namespace ShadowRunHelperViewer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PopupPage_SizeChanged(object sender, EventArgs e)
-        {
-            const int border = 650;
-            if (Width > border)
-            {
-                MainFrame.WidthRequest = border;
-            }
-            else
-            {
-                MainFrame.WidthRequest = Width;
-            }
-        }
+        private void PopupPage_SizeChanged(object sender, EventArgs e) => (MainFrame.WidthRequest, MainFrame.HeightRequest) = Common.MaximumDimensions(Width, Height);
 
         /// <summary>
         /// Removes mything and close the page

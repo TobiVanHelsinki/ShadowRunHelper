@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:ShadowRunHelperViewer"
     x:Class="ShadowRunHelperViewer.ControlCenter"
     BackgroundInputTransparent="False"
+    SizeChanged="PopupPage_SizeChanged"
     >
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
@@ -48,7 +49,7 @@
             </Style>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <Frame Padding="20" Margin="40" BackgroundColor="FloralWhite" HorizontalOptions="Center" VerticalOptions="Center"
+    <Frame x:Name="MainFrame" Padding="20" Margin="40" BackgroundColor="FloralWhite" HorizontalOptions="Center" VerticalOptions="Center"
            CornerRadius="10">
         <ScrollView>
             <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center">
