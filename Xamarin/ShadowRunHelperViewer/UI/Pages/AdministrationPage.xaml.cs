@@ -94,6 +94,10 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 try
                 {
+                    foreach (var item in AppModel.Instance.MainObjects.ToList())
+                    {
+                        AppModel.Instance.RemoveMainObject(item);
+                    }
                     var newchar = await CharHolderIO.Load(charfile);
                     (Application.Current.MainPage as MainPage)?.NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(newchar));
                 }

@@ -40,6 +40,7 @@ namespace ShadowRunHelperViewer
         public GCharHolder(CharHolder myChar)
         {
             this.MyChar = myChar;
+            Model.AddMainObject(myChar);
             Instance = this;
             InitializeComponent();
             ButtonsPanels = new List<StackLayout>() { s1, s2, s3, s4, s5 };

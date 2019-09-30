@@ -135,7 +135,6 @@ namespace ShadowRunHelper
 
         static async Task CharLoadingHandling()
         {
-            //TODO This is still Single MainObject Orienteded
             try
             {
                 if ((Settings.CHARINTEMPSTORE && !FirstStart || Settings.LOAD_CHAR_ON_START && FirstStart) && Model.MainObject == null || Settings.FORCE_LOAD_CHAR_ON_START)

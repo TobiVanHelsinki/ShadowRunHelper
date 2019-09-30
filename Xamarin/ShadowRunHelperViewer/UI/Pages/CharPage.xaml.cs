@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace ShadowRunHelperViewer
 {
-    public partial class CharPage : ContentView, IDisposable
+    public partial class CharPage : ContentView
     {
         public AppModel AppModel => AppModel.Instance;
         public CharPage()
@@ -20,7 +20,6 @@ namespace ShadowRunHelperViewer
             if (Content is Grid G)
             {
                 G.Children.Add(new GCharHolder(myChar) { Margin = 0, Padding = 0, BackgroundColor = Color.Transparent });
-                AppModel.AddMainObject(myChar);
             }
         }
 
@@ -36,14 +35,6 @@ namespace ShadowRunHelperViewer
                 return true;
             }
             return false;
-        }
-
-        public void Dispose()
-        {
-            if (Content is Grid G && G.Children.Count > 0 && G.Children[0] is GCharHolder gChar)
-            {
-                AppModel.RemoveMainObject(gChar.MyChar);
-            }
         }
     }
 }
