@@ -126,7 +126,7 @@ namespace ShadowRunHelper.CharController
 
         public static void RefreshIdentifiers(object controller)
         {
-            foreach (var item in controller.GetType().GetProperties().Where(x => x.PropertyType == typeof(T)))
+            foreach (var item in controller.GetType().GetProperties().Where(x => x.PropertyType == typeof(T) && x.CanRead && x.CanWrite))
             {
                 try
                 {

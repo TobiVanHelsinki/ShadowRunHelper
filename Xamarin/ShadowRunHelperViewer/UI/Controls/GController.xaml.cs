@@ -159,7 +159,11 @@ namespace ShadowRunHelperViewer
         {
             try
             {
-                MyChar.Add(Controller.eDataTyp);
+                var thing = MyChar.Add(Controller.eDataTyp);
+                if (SettingsModel.I.START_AFTER_EDIT)
+                {
+                    PopupNavigation.Instance.PushAsync(new DetailsPage(thing, MyChar));
+                }
             }
             catch (NotSupportedException) { }
             catch (Exception ex)
