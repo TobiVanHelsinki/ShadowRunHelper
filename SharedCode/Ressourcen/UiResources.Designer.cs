@@ -115,6 +115,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Cancel ähnelt.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Add Seperator ähnelt.
         /// </summary>
         public static string Cat_AddSep {
@@ -264,15 +273,6 @@ namespace SharedCode.Ressourcen {
         public static string Category_Settings {
             get {
                 return ResourceManager.GetString("Category_Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Damage: ähnelt.
-        /// </summary>
-        public static string Char_Schaden {
-            get {
-                return ResourceManager.GetString("Char_Schaden", resourceCulture);
             }
         }
         
@@ -484,6 +484,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Damage ähnelt.
+        /// </summary>
+        public static string Damage {
+            get {
+                return ResourceManager.GetString("Damage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Copy ähnelt.
         /// </summary>
         public static string DB_Finish {
@@ -651,6 +660,33 @@ namespace SharedCode.Ressourcen {
         public static string FileSize {
             get {
                 return ResourceManager.GetString("FileSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Finish ähnelt.
+        /// </summary>
+        public static string Finish {
+            get {
+                return ResourceManager.GetString("Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die General Input ähnelt.
+        /// </summary>
+        public static string GeneralInput {
+            get {
+                return ResourceManager.GetString("GeneralInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search for entries ... ähnelt.
+        /// </summary>
+        public static string GlobalFilterBox {
+            get {
+                return ResourceManager.GetString("GlobalFilterBox", resourceCulture);
             }
         }
         

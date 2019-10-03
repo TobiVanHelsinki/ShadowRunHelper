@@ -312,9 +312,6 @@
   <data name="Person_Essenz" xml:space="preserve">
     <value>Essenz mod</value>
   </data>
-  <data name="Person_InitiativeAktuell" xml:space="preserve">
-    <value>Aktuelle Initiative</value>
-  </data>
   <data name="Person_Karma" xml:space="preserve">
     <value>Karma</value>
   </data>
@@ -433,16 +430,16 @@
     <value>Edge Gesamt</value>
   </data>
   <data name="Person_Schaden_K" xml:space="preserve">
-    <value>KörperSchaden</value>
+    <value>Körperlicher Schaden</value>
   </data>
   <data name="Person_Schaden_K_max" xml:space="preserve">
-    <value>KörperSchaden maximal</value>
+    <value>Körperlicher Schaden maximal</value>
   </data>
   <data name="Person_Schaden_G" xml:space="preserve">
-    <value>GeistSchaden</value>
+    <value>Geistiger Schaden</value>
   </data>
   <data name="Person_Schaden_G_max" xml:space="preserve">
-    <value>GeistSchaden maximal</value>
+    <value>Geistiger Schaden maximal</value>
   </data>
   <data name="Person_Initiative" xml:space="preserve">
     <value>Initiative</value>

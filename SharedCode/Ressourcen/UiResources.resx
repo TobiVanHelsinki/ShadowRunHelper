@@ -572,4 +572,7 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Damage" xml:space="preserve">
     <value>Damage</value>
   </data>
+  <data name="GeneralInput" xml:space="preserve">
+    <value>General Input</value>
+  </data>
 </root>

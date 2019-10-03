@@ -1,17 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
                     x:Class="ShadowRunHelperViewer.CharModelStyles">
     <OnPlatform x:Key="FontAwesomeSolid" x:TypeArguments="x:String">
         <On Platform="UWP, WinRT, WinPhone" Value="/Assets/Fonts/iconize-fontawesome-solid.ttf#Font Awesome 5 Free Solid" />
         <On Platform="Android" Value="Fonts/iconize-fontawesome-solid.ttf#Font Awesome 5 Free Solid" />
         <On Platform="iOS" Value="Font Awesome 5 Free" />
     </OnPlatform>
-    <!--<Style x:Key="IconLabel" TargetType="Label">
-        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}" />
-        <Setter Property="FontSize" Value="Small"/>
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-        <Setter Property="Margin" Value="0"/>
-    </Style>-->
+    <resources:IO_NuYen x:Key="IO_NuYen"/>
     <Style x:Key="IconButton" TargetType="Button">
         <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}" />
         <Setter Property="FontSize" Value="Small"/>

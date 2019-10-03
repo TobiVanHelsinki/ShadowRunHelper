@@ -41,70 +41,140 @@ namespace ShadowRunHelperViewer
             SizeDefiningElement_SizeChanged(this, new EventArgs());
         }
 
-        int _MoneyIO;
-        public int MoneyIO
+        int _GeneralInput;
+        public int GeneralInput
         {
-            get { return _MoneyIO; }
-            set { if (_MoneyIO != value) { _MoneyIO = value; NotifyPropertyChanged(); } }
+            get { return _GeneralInput; }
+            set { if (_GeneralInput != value) { _GeneralInput = value; NotifyPropertyChanged(); } }
         }
 
-        private void MoneyIOMinus(object sender, EventArgs e)
+        private void MoneyPlus(object sender, EventArgs e)
         {
-            Model.Person.Kontostand -= MoneyIO;
-            MoneyIO = 0;
+            if (GeneralInput != 0)
+            {
+                Model.Person.Kontostand += GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
+            Model.Person.Kontostand++;
+        }
+        private void MoneyMinus(object sender, EventArgs e)
+        {
+            if (GeneralInput != 0)
+            {
+                Model.Person.Kontostand -= GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
+            Model.Person.Kontostand--;
         }
 
-        private void MoneyIOPlus(object sender, EventArgs e)
-        {
-            Model.Person.Kontostand += MoneyIO;
-            MoneyIO = 0;
-        }
         private void EdgePlus(object sender, EventArgs e)
         {
+            if (GeneralInput != 0)
+            {
+                Model.Person.Edge_Aktuell += GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
             Model.Person.Edge_Aktuell++;
         }
         private void EdgeMinus(object sender, EventArgs e)
         {
+            if (GeneralInput != 0)
+            {
+                Model.Person.Edge_Aktuell -= GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
             Model.Person.Edge_Aktuell--;
         }
 
         private void EdgeGesamtPlus(object sender, EventArgs e)
         {
+            if (GeneralInput != 0)
+            {
+                Model.Person.Edge_Gesamt += GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
             Model.Person.Edge_Gesamt++;
         }
 
         private void EdgeGesamtMinus(object sender, EventArgs e)
         {
+            if (GeneralInput != 0)
+            {
+                Model.Person.Edge_Gesamt -= GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
             Model.Person.Edge_Gesamt--;
         }
 
         private void KarmaGesamtMinus(object sender, EventArgs e)
         {
+            if (GeneralInput != 0)
+            {
+                Model.Person.Karma_Gesamt -= GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
             Model.Person.Karma_Gesamt--;
         }
 
         private void KarmaGesamtPlus(object sender, EventArgs e)
         {
+            if (GeneralInput != 0)
+            {
+                Model.Person.Karma_Gesamt += GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
             Model.Person.Karma_Gesamt++;
         }
 
         private void KarmaMinus(object sender, EventArgs e)
         {
+            if (GeneralInput != 0)
+            {
+                Model.Person.Karma_Aktuell -= GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
             Model.Person.Karma_Aktuell--;
         }
 
         private void KarmaPlus(object sender, EventArgs e)
         {
+            if (GeneralInput != 0)
+            {
+                Model.Person.Karma_Aktuell += GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
             Model.Person.Karma_Aktuell++;
         }
 
         private void RunsMinus(object sender, EventArgs e)
         {
+            if (GeneralInput != 0)
+            {
+                Model.Person.Runs -= GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
             Model.Person.Runs--;
         }
 
         private void RunsPlus(object sender, EventArgs e)
         {
+            if (GeneralInput != 0)
+            {
+                Model.Person.Runs += GeneralInput;
+                GeneralInput = 0;
+                return;
+            }
             Model.Person.Runs++;
         }
 

@@ -5,6 +5,7 @@
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:local="clr-namespace:ShadowRunHelperViewer"
+    xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
     x:Class="ShadowRunHelperViewer.ControlCenter"
     BackgroundInputTransparent="False"
     SizeChanged="PopupPage_SizeChanged"
@@ -30,11 +31,13 @@
                 <Setter Property="TextColor" Value="Default"/>
                 <Setter Property="Text" Value="&#xf067;"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Padding" Value="2"/>
             </Style>
             <Style x:Key="MinusButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
                 <Setter Property="TextColor" Value="Default" />
                 <Setter Property="Text" Value="&#xf068;"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Padding" Value="2"/>
             </Style>
             <Style x:Key="ContentLabel" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center"/>
@@ -70,38 +73,38 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Money"/>
-                    <Label Text="{x:Binding Model.Person.Kontostand}" Style="{StaticResource ContentLabel}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0"/>
+                    <Label Text="{resx:ModelResources Person_Kontostand}" Grid.Column="0" Grid.Row="0"/>
+                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="0" Clicked="MoneyMinus"/>
+                    <Label Text="{x:Binding Model.Person.Kontostand, Converter={StaticResource IO_NuYen}}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="0"/>
+                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="0" Clicked="MoneyPlus"/>
 
-                    <Label Text="Money I/O" Grid.Column="0" Grid.Row="1"/>
-                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="1" Clicked="MoneyIOMinus"/>
-                    <Entry Text="{x:Binding MoneyIO}" Grid.Column="2" Grid.Row="1" BackgroundColor="Transparent" MinimumWidthRequest="50"/>
-                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="1" Clicked="MoneyIOPlus"/>
+                    <Label Text="{resx:ModelResources Person_Edge_Aktuell}" Grid.Column="0" Grid.Row="1"/>
+                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="1" Clicked="EdgeMinus"/>
+                    <Label Text="{x:Binding Model.Person.Edge_Aktuell}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="1"/>
+                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="1" Clicked="EdgePlus"/>
 
-                    <Label Text="Edge now" Grid.Column="0" Grid.Row="2"/>
-                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="2" Clicked="EdgeMinus"/>
-                    <Label Text="{x:Binding Model.Person.Edge_Aktuell}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="2"/>
-                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="2" Clicked="EdgePlus"/>
+                    <Label Text="{resx:ModelResources Person_Edge_Gesamt}" Grid.Column="0" Grid.Row="2"/>
+                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="2" Clicked="EdgeGesamtMinus"/>
+                    <Label Text="{x:Binding Model.Person.Edge_Gesamt}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="2"/>
+                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="2" Clicked="EdgeGesamtPlus"/>
 
-                    <Label Text="All Edge" Grid.Column="0" Grid.Row="3"/>
-                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="3" Clicked="EdgeGesamtMinus"/>
-                    <Label Text="{x:Binding Model.Person.Edge_Gesamt}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="3"/>
-                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="3" Clicked="EdgeGesamtPlus"/>
+                    <Label Text="{resx:ModelResources Person_Karma_Aktuell}" Grid.Column="0" Grid.Row="3"/>
+                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="3" Clicked="KarmaMinus"/>
+                    <Label Text="{x:Binding Model.Person.Karma_Aktuell}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="3"/>
+                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="3" Clicked="KarmaPlus"/>
 
-                    <Label Text="Karma now" Grid.Column="0" Grid.Row="4"/>
-                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="4" Clicked="KarmaMinus"/>
-                    <Label Text="{x:Binding Model.Person.Karma_Aktuell}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="4"/>
-                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="4" Clicked="KarmaPlus"/>
+                    <Label Text="{resx:ModelResources Person_Karma_Gesamt}" Grid.Column="0" Grid.Row="4"/>
+                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="4" Clicked="KarmaGesamtMinus"/>
+                    <Label Text="{x:Binding Model.Person.Karma_Gesamt}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="4"/>
+                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="4" Clicked="KarmaGesamtPlus"/>
 
-                    <Label Text="All Karma" Grid.Column="0" Grid.Row="5"/>
-                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="5" Clicked="KarmaGesamtMinus"/>
-                    <Label Text="{x:Binding Model.Person.Karma_Gesamt}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="5"/>
-                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="5" Clicked="KarmaGesamtPlus"/>
+                    <Label Text="{resx:ModelResources Person_Runs}" Grid.Column="0" Grid.Row="5"/>
+                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="5" Clicked="RunsMinus"/>
+                    <Label Text="{x:Binding Model.Person.Runs}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="5"/>
+                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="5" Clicked="RunsPlus"/>
 
-                    <Label Text="Runs" Grid.Column="0" Grid.Row="6"/>
-                    <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="6" Clicked="RunsMinus"/>
-                    <Label Text="{x:Binding Model.Person.Runs}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="6"/>
-                    <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="6" Clicked="RunsPlus"/>
+                    <Label Text="{resx:UiResources GeneralInput}" Grid.Column="0" Grid.Row="6"/>
+                    <Entry Text="{x:Binding GeneralInput}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" BackgroundColor="Transparent" HorizontalTextAlignment="Center" MinimumWidthRequest="50"/>
                 </Grid>
                 <Grid x:Name="DamageGrid" VerticalOptions="Start" HorizontalOptions="Center">
                     <Grid.RowDefinitions>
@@ -119,9 +122,9 @@
                         <ColumnDefinition Width="Auto" x:Name="DamageColumn3"/>
                         <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
-                    <Label Text="Geistig" Grid.Column="0" Grid.Row="0"/>
-                    <Label Text="Körper" Grid.Column="0" Grid.Row="2"/>
-                    <Label Text="Matrix" Grid.Column="0" Grid.Row="4"/>
+                    <Label Text="{resx:ModelResources Person_Schaden_G}" Grid.Column="0" Grid.Row="0"/>
+                    <Label Text="{resx:ModelResources Person_Schaden_K}" Grid.Column="0" Grid.Row="2"/>
+                    <Label Text="{resx:UiResources Char_Schaden_Matrix}" Grid.Column="0" Grid.Row="4"/>
                     <Label Text="{x:Binding Model.Person.Schaden_G, Mode=OneWay}" Grid.Column="1" Grid.Row="0"/>
                     <Label Text="{x:Binding Model.Person.Schaden_K, Mode=OneWay}" Grid.Column="1" Grid.Row="2"/>
                     <Label Text="{x:Binding Model.CTRLCyberDeck.ActiveItem.Schaden, Mode=OneWay}" Grid.Column="1" Grid.Row="4"/>

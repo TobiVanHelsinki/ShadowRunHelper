@@ -1249,15 +1249,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current initiative ähnelt.
-        /// </summary>
-        public static string Person_InitiativeAktuell {
-            get {
-                return ResourceManager.GetString("Person_InitiativeAktuell", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Karma ähnelt.
         /// </summary>
         public static string Person_Karma {

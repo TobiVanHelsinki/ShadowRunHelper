@@ -229,9 +229,6 @@
   <data name="Kommlink_Firewall" xml:space="preserve">
     <value>Firewall</value>
   </data>
-  <data name="Person_InitiativeAktuell" xml:space="preserve">
-    <value>Current initiative</value>
-  </data>
   <data name="Person_Karma" xml:space="preserve">
     <value>Karma</value>
   </data>
