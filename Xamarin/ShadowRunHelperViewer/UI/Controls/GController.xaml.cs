@@ -9,6 +9,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using TLIB;
 using Xam.Plugin;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -158,7 +159,15 @@ namespace ShadowRunHelperViewer
 
         private void Add(object sender, EventArgs e)
         {
-            MyChar.Add(Controller.eDataTyp);
+            try
+            {
+                MyChar.Add(Controller.eDataTyp);
+            }
+            catch (NotSupportedException) { }
+            catch (Exception ex)
+            {
+                Log.Write("Could not add object", ex, logType: LogType.Error);
+            }
         }
 
         async void Thing_Edit(object sender, EventArgs e)
