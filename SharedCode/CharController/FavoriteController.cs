@@ -1,9 +1,7 @@
-﻿using Newtonsoft.Json;
-using ShadowRunHelper.CharModel;
+﻿using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace ShadowRunHelper.CharController
 {
@@ -12,7 +10,7 @@ namespace ShadowRunHelper.CharController
         public FavoriteController() : base(ThingDefs.Favorite)
         {
         }
-   
+
         // Implement IController ##########################
         public override IEnumerable<AllListEntry> GetElementsForThingList()
         {
@@ -20,6 +18,9 @@ namespace ShadowRunHelper.CharController
         }
 
         //Override cController ############################
-
+        public override void RegisterEventAtData(Action Method)
+        {
+            //do not call base to prevent dead loops
+        }
     }
 }

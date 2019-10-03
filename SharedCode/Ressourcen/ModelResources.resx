@@ -756,4 +756,16 @@
   <data name="Thing_IsFavorite" xml:space="preserve">
     <value>Favorit</value>
   </data>
+  <data name="FavoriteM_" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="Favorite_" xml:space="preserve">
+    <value>Favorite</value>
+  </data>
+  <data name="NoteM_" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Note_" xml:space="preserve">
+    <value>Note</value>
+  </data>
 </root>

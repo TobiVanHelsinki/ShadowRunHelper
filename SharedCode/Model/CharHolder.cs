@@ -67,6 +67,7 @@ namespace ShadowRunHelper.Model
         public Controller<Fertigkeit> CTRLFertigkeit { get; } = new Controller<Fertigkeit>();
         public Controller<Handlung> CTRLHandlung { get; } = new Controller<Handlung>();
         public Controller<Note> CTRLNote { get; } = new Controller<Note>();
+        [Newtonsoft.Json.JsonIgnore]
         public FavoriteController CTRLFavorite { get; } = new FavoriteController();
         public Person Person { get; } = new Person();
         public CharSettings Settings { get; } = new CharSettings();
@@ -136,49 +137,12 @@ namespace ShadowRunHelper.Model
         {
             SaveTimer = new Timer((x) => { SaveRequest?.Invoke(x, this); HasChanges = false; }, this, Timeout.Infinite, Timeout.Infinite);
             // To Autosave
-            CTRLList.Add(CTRLAttribut);
-            CTRLList.Add(CTRLBerechnet);
-            CTRLList.Add(CTRLFertigkeit);
-            CTRLList.Add(CTRLItem);
-
-            CTRLList.Add(CTRLFernkampfwaffe);
-            CTRLList.Add(CTRLNahkampfwaffe);
-            CTRLList.Add(CTRLPanzerung);
-
-            CTRLList.Add(CTRLImplantat);
-
-            CTRLList.Add(CTRLAdeptenkraft);
-            CTRLList.Add(CTRLZaubersprueche);
-            CTRLList.Add(CTRLFoki);
-            CTRLList.Add(CTRLWidgets);
-
-            CTRLList.Add(CTRLCyberDeck);
-            CTRLList.Add(CTRLProgramm);
-
-            CTRLList.Add(CTRLVehikel);
-
-            CTRLList.Add(CTRLNachteil);
-            CTRLList.Add(CTRLVorteil);
-            CTRLList.Add(CTRLTradition);
-            CTRLList.Add(CTRLStroemung);
-            CTRLList.Add(CTRLGeist);
-
-            CTRLList.Add(CTRLInitiation);
-            CTRLList.Add(CTRLWandlung);
-            CTRLList.Add(CTRLSprite);
-
-
-            CTRLList.Add(CTRLMunition);
-            CTRLList.Add(CTRLConnection);
-            CTRLList.Add(CTRLKommlink);
-            CTRLList.Add(CTRLSin);
-
-            CTRLList.Add(CTRLHandlung);
-            CTRLList.Add(CTRLKomplexeForm);
+         
+            CTRLList = GetType().GetProperties().Where(x => typeof(IController).IsAssignableFrom(x.PropertyType)).Select(x=>x.GetValue(this, null) as IController).ToList();
 
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
-
             Favorites.CollectionChanged += SaveFavoritesOrdering;
+            
             RefreshLists();
             RefreshListeners();
         }
@@ -339,7 +303,6 @@ namespace ShadowRunHelper.Model
             foreach (var item in CTRLList)
             {
                 item.RegisterEventAtData(AnyPropertyChanged);
-                item.RegisterEventAtData(RefreshLists);
                 foreach (var item2 in item.GetElements())
                 {
                     item2.PropertyChanged -= AnyPropertyChanged;
@@ -367,14 +330,20 @@ namespace ShadowRunHelper.Model
             ThingList.AddRange(CTRLList.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
             RefreshListFav();
         }
+        bool RefreshInProgress;
         public void RefreshListFav()
         {
-            Favorites.Clear();
-            Favorites.AddRange(ThingList.Where(x => x?.IsFavorite == true).OrderBy(x=>x.FavoriteIndex));
-            CTRLFavorite.ClearData();
-            foreach (var item in Favorites)
+            if (!RefreshInProgress)
             {
-                CTRLFavorite.AddNewThing(item);
+                RefreshInProgress = true;
+                Favorites.Clear();
+                Favorites.AddRange(ThingList.Where(x => x?.IsFavorite == true).OrderBy(x => x.FavoriteIndex));
+                CTRLFavorite.ClearData();
+                foreach (var item in Favorites)
+                {
+                    CTRLFavorite.AddNewThing(item);
+                }
+                RefreshInProgress = false;
             }
         }
         void SaveFavoritesOrdering(object sender, NotifyCollectionChangedEventArgs e)

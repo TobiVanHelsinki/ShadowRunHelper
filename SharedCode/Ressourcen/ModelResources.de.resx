@@ -782,4 +782,16 @@
   <data name="Zaubersprueche_Fading" xml:space="preserve">
     <value>Entzug</value>
   </data>
+  <data name="FavoriteM_" xml:space="preserve">
+    <value>Favoriten</value>
+  </data>
+  <data name="Favorite_" xml:space="preserve">
+    <value>Favorit</value>
+  </data>
+  <data name="NoteM_" xml:space="preserve">
+    <value>Notizen</value>
+  </data>
+  <data name="Note_" xml:space="preserve">
+    <value>Notiz</value>
+  </data>
 </root>

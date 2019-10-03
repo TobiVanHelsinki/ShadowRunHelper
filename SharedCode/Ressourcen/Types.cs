@@ -128,11 +128,11 @@ namespace ShadowRunHelper
         }
         public string DisplayNameSingular
         {
-            get { return "" + _DisplayName + "_"; }
+            get { return _DisplayName + "_"; }
         }
         public string DisplayNamePlural
         {
-            get { return "" + _DisplayName + "M_"; }
+            get { return _DisplayName + "M_"; }
         }
 
         bool _Usable = true;

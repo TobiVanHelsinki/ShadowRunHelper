@@ -118,8 +118,6 @@ namespace ShadowRunHelperViewer
                     b.Clicked += B_CTRL_Clicked;
                 }
                 foreach ((var name, var template, var layout) in new (string, DataTemplate, StackLayout)[] {
-                    ("Favorites", CharFavs, s5),
-                    ("Notes", CharNotes, s5),
                     ("Person", CharPerson, s4) })
                 {
                     var btt = new Button

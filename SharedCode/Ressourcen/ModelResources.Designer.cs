@@ -475,6 +475,24 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Favorite ähnelt.
+        /// </summary>
+        public static string Favorite_ {
+            get {
+                return ResourceManager.GetString("Favorite_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Favorites ähnelt.
+        /// </summary>
+        public static string FavoriteM_ {
+            get {
+                return ResourceManager.GetString("FavoriteM_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Ranged Weapon ähnelt.
         /// </summary>
         public static string Fernkampfwaffe_ {
@@ -1038,6 +1056,24 @@ namespace SharedCode.Ressourcen {
         public static string NahkampfwaffeM_ {
             get {
                 return ResourceManager.GetString("NahkampfwaffeM_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Note ähnelt.
+        /// </summary>
+        public static string Note_ {
+            get {
+                return ResourceManager.GetString("Note_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Notes ähnelt.
+        /// </summary>
+        public static string NoteM_ {
+            get {
+                return ResourceManager.GetString("NoteM_", resourceCulture);
             }
         }
         
