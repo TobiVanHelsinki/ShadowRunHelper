@@ -135,20 +135,11 @@
   <data name="Category_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="Bearbeiten" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="Loeschen" xml:space="preserve">
-    <value>Delete</value>
-  </data>
   <data name="Alle_Chars_Loeschen" xml:space="preserve">
     <value>Delete all Chars</value>
   </data>
   <data name="LoadChar" xml:space="preserve">
-    <value>Load</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Open</value>
   </data>
   <data name="NewChar" xml:space="preserve">
     <value>Create new char</value>
@@ -209,14 +200,8 @@ Icons made by Freepik https://www.flaticon.com are licensed by Creative Commons 
     <value>This app does not collect any personal information and therefore does not disclose it.
 This app can be used to open files and folders on the file system. The app stores those folders and files only for later use. All files remain on the file system or Microsoft account.</value>
   </data>
-  <data name="Optionen_KontaktBtn" xml:space="preserve">
-    <value>write email</value>
-  </data>
   <data name="Optionen_U_Datenschutz" xml:space="preserve">
     <value>Privacy Policy</value>
-  </data>
-  <data name="Optionen_Toggle" xml:space="preserve">
-    <value>Yes</value>
   </data>
   <data name="Optionen_EditAfterAdd" xml:space="preserve">
     <value>Error not specified in detail: </value>
@@ -278,12 +263,6 @@ This app can be used to open files and folders on the file system. The app store
   <data name="FileDate" xml:space="preserve">
     <value>modification date</value>
   </data>
-  <data name="FileName" xml:space="preserve">
-    <value>file name</value>
-  </data>
-  <data name="FileSize" xml:space="preserve">
-    <value>file size</value>
-  </data>
   <data name="Intern_Save_Display" xml:space="preserve">
     <value>Save Intern</value>
   </data>
@@ -308,25 +287,13 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Statistics_Savings" xml:space="preserve">
     <value>Number of saved chars</value>
   </data>
-  <data name="DB_Finish" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="DB_FinishClose" xml:space="preserve">
-    <value>Copy and Exit</value>
-  </data>
-  <data name="DB_Help" xml:space="preserve">
-    <value>Help on/off</value>
-  </data>
   <data name="SaveAtCurrentPlace" xml:space="preserve">
     <value>Save at current Folder</value>
   </data>
   <data name="Optionen_TutorialMainShown" xml:space="preserve">
     <value>Read "Char Administration" Guide</value>
   </data>
-  <data name="ImportChar" xml:space="preserve">
-    <value>Char Import</value>
-  </data>
-  <data name="File_Export" xml:space="preserve">
+  <data name="FileExport" xml:space="preserve">
     <value>Char Export</value>
   </data>
   <data name="Char_Schaden_Geist" xml:space="preserve">
@@ -338,23 +305,11 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Char_Schaden_Matrix" xml:space="preserve">
     <value>Matrix</value>
   </data>
-  <data name="CSV_Export" xml:space="preserve">
-    <value>CSV Export</value>
+  <data name="FileDeleteTip" xml:space="preserve">
+    <value>Delete this file permanently</value>
   </data>
-  <data name="CSV_Import" xml:space="preserve">
-    <value>CSV Import</value>
-  </data>
-  <data name="DB_Nav" xml:space="preserve">
-    <value>Database</value>
-  </data>
-  <data name="Char_Speichern" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="Rename" xml:space="preserve">
+  <data name="FileRename" xml:space="preserve">
     <value>Rename</value>
-  </data>
-  <data name="CSV_Cat_Export" xml:space="preserve">
-    <value>CSV Export</value>
   </data>
   <data name="SaveExtern" xml:space="preserve">
     <value>Save at extern Folder</value>
@@ -367,9 +322,6 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="CNT_Reset" xml:space="preserve">
     <value>Reset</value>
-  </data>
-  <data name="CSV_Cat_Import" xml:space="preserve">
-    <value>CSV Import</value>
   </data>
   <data name="Cat_Truncate" xml:space="preserve">
     <value>truncate category</value>
@@ -398,12 +350,6 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Optionen_U_Buy" xml:space="preserve">
     <value>Buy</value>
   </data>
-  <data name="Admin_Filename" xml:space="preserve">
-    <value>Filename</value>
-  </data>
-  <data name="Admin_Filepath" xml:space="preserve">
-    <value>Filepath</value>
-  </data>
   <data name="OpenFolder" xml:space="preserve">
     <value>open folder</value>
   </data>
@@ -415,9 +361,6 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="Optionen_U_Buying_Note" xml:space="preserve">
     <value>Note: Having apps in the store costs 18€ per year. It would be cool if the app would at least cover the costs.</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Save</value>
   </data>
   <data name="Optionen_Group_Char" xml:space="preserve">
     <value>Current Char</value>
@@ -437,13 +380,13 @@ This app can be used to open files and folders on the file system. The app store
   <data name="OpenFolderX" xml:space="preserve">
     <value>Opens the folder of the current file</value>
   </data>
-  <data name="RepairX" xml:space="preserve">
+  <data name="RepairTip" xml:space="preserve">
     <value>Sometimes errors occur at the link system. Then you can try this function.</value>
   </data>
-  <data name="SaveAtCurrentPlaceX" xml:space="preserve">
+  <data name="SaveAtCurrentPlaceTip" xml:space="preserve">
     <value>If you opened the file externally (e.g. from another program) you can save it to your normal location.</value>
   </data>
-  <data name="SaveExternX" xml:space="preserve">
+  <data name="SaveExternTip" xml:space="preserve">
     <value>Select a new location for this file</value>
   </data>
   <data name="Unload" xml:space="preserve">
@@ -467,19 +410,19 @@ This app can be used to open files and folders on the file system. The app store
   <data name="NeuCharX" xml:space="preserve">
     <value>Use it to create a new character sheet</value>
   </data>
-  <data name="OpenFolderSTDX" xml:space="preserve">
+  <data name="OpenFolderSTDTip" xml:space="preserve">
     <value>Open the folder where all your character sheets are located.</value>
   </data>
   <data name="CSV_ExportX" xml:space="preserve">
     <value>Saves this character sheet in CSV format (Excel compatible) in a folder. Several files are created.</value>
   </data>
-  <data name="DeleteCharX" xml:space="preserve">
-    <value>Deletes this file.</value>
+  <data name="CharImport" xml:space="preserve">
+    <value>Char Import</value>
   </data>
-  <data name="File_ExportX" xml:space="preserve">
+  <data name="FileExportTip" xml:space="preserve">
     <value>Copy this file to another location.</value>
   </data>
-  <data name="LoadCharX" xml:space="preserve">
+  <data name="LoadCharTip" xml:space="preserve">
     <value>Opens this file.</value>
   </data>
   <data name="CSV_Cat_Export_SelectedX" xml:space="preserve">
@@ -500,7 +443,7 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Cat_UncheckAllX" xml:space="preserve">
     <value>This collapses all expanded entries.</value>
   </data>
-  <data name="SaveX" xml:space="preserve">
+  <data name="SaveTip" xml:space="preserve">
     <value>Saves the character sheet.</value>
   </data>
   <data name="Optionen_Version" xml:space="preserve">
@@ -515,17 +458,11 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Optionen_Debug_Mode" xml:space="preserve">
     <value>Enables various Notifications about time and stuff</value>
   </data>
-  <data name="CNT_Close" xml:space="preserve">
-    <value>Close</value>
-  </data>
   <data name="CharSettings" xml:space="preserve">
     <value>Character sheet settings</value>
   </data>
   <data name="CharSettingsX" xml:space="preserve">
     <value>This allows you to configure this view.</value>
-  </data>
-  <data name="CLS_Close" xml:space="preserve">
-    <value>Close</value>
   </data>
   <data name="Copy" xml:space="preserve">
     <value>Copy</value>
@@ -560,11 +497,11 @@ This app can be used to open files and folders on the file system. The app store
   <data name="SubtractLifeStyleCost" xml:space="preserve">
     <value>Subtract Lifestyle cost</value>
   </data>
-  <data name="Optionen_BACKUP_VERSIONING" xml:space="preserve">
-    <value>Each time Run or Karma is changed, a copy of the char is created in a BackUp folder.</value>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
   </data>
-  <data name="IntroAdministration" xml:space="preserve">
-    <value>Choose a charaktersheet from the list or create a new.</value>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
   </data>
   <data name="WelcomeGreetings" xml:space="preserve">
     <value>Welcome to ShadowRunHelper.</value>
@@ -574,5 +511,32 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="GeneralInput" xml:space="preserve">
     <value>General Input</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="WarningLocalSaveplace" xml:space="preserve">
+    <value>Warning, you are saving your chars locally at the moment. It is strongly recommendet to use an synchronized folder like OneDrive, DropBox and co.</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportTip" xml:space="preserve">
+    <value>Copy this file to another location.</value>
+  </data>
+  <data name="FileSize" xml:space="preserve">
+    <value>Filesize</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Filename</value>
+  </data>
+  <data name="IntroAdministration" xml:space="preserve">
+    <value>Select a Entry from the list below to load a charactersheet or create a new one.</value>
   </data>
 </root>

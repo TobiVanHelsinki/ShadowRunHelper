@@ -20,6 +20,7 @@ namespace ShadowRunHelperViewer
             Log.IsConsoleLogEnabled = true;
             Log.IsInMemoryLogEnabled = true;
             Log.Mode = LogMode.Verbose;
+            Log.DisplayChoiceRequested += TLIB.Choice.Xamarin.TLIBChoice_Xamarin.Log_DisplayQuestionRequested;
             CreateLogFile();
             InitializeComponent();
             AppHolder.InitModel();

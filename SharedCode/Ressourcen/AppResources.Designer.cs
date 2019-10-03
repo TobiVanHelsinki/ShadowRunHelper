@@ -70,15 +70,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die &amp; ähnelt.
-        /// </summary>
-        public static string Ampersant_Text {
-            get {
-                return ResourceManager.GetString("Ampersant.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The import of the following settings or files failed. ähnelt.
         /// </summary>
         public static string AppImportErrors {
@@ -97,29 +88,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Finish ähnelt.
-        /// </summary>
-        public static string AuswahlDialog_PrimaryButtonText {
-            get {
-                return ResourceManager.GetString("AuswahlDialog.PrimaryButtonText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die selection ähnelt.
         /// </summary>
-        public static string AuswahlDialog_Title {
+        public static string AuswahlDialog {
             get {
-                return ResourceManager.GetString("AuswahlDialog.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die - ähnelt.
-        /// </summary>
-        public static string Bindestrich_Text {
-            get {
-                return ResourceManager.GetString("Bindestrich.Text", resourceCulture);
+                return ResourceManager.GetString("AuswahlDialog", resourceCulture);
             }
         }
         
@@ -142,20 +115,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die : ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Copy ähnelt.
         /// </summary>
-        public static string Doppelpunkt_Text {
+        public static string CopiedFileName {
             get {
-                return ResourceManager.GetString("Doppelpunkt.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Finish ähnelt.
-        /// </summary>
-        public static string EditDialog_PrimaryButtonText {
-            get {
-                return ResourceManager.GetString("EditDialog.PrimaryButtonText", resourceCulture);
+                return ResourceManager.GetString("CopiedFileName", resourceCulture);
             }
         }
         
@@ -225,18 +189,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die more ähnelt.
         /// </summary>
-        public static string FurtherSettings_Text {
+        public static string FurtherSettings {
             get {
-                return ResourceManager.GetString("FurtherSettings.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Search for Name and Type ... ähnelt.
-        /// </summary>
-        public static string GlobalFilterBox_PlaceholderText {
-            get {
-                return ResourceManager.GetString("GlobalFilterBox.PlaceholderText", resourceCulture);
+                return ResourceManager.GetString("FurtherSettings", resourceCulture);
             }
         }
         
@@ -333,9 +288,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die In this database you will find predefined entries. Click on an entry to select it. With the commands below you can then apply this selection to your current character. If you already have an entry with the same name in the same category, your entry will not be overwritten. For database entries with links to other entries, the system tries to link your entries. If this fails, the linked entry is also copied. ähnelt.
         /// </summary>
-        public static string HelpDBIntro_Text {
+        public static string HelpDBIntro {
             get {
-                return ResourceManager.GetString("HelpDBIntro.Text", resourceCulture);
+                return ResourceManager.GetString("HelpDBIntro", resourceCulture);
             }
         }
         
@@ -358,92 +313,29 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No Ads for one year ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Lifetime no Ads ähnelt.
         /// </summary>
-        public static string IAP_TXT_ADS_365_Content {
+        public static string IAP_TXT_ADS {
             get {
-                return ResourceManager.GetString("IAP_TXT_ADS_365.Content", resourceCulture);
+                return ResourceManager.GetString("IAP_TXT_ADS", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Lifetime no Ads ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die No Ads for one year ähnelt.
         /// </summary>
-        public static string IAP_TXT_ADS_Content {
+        public static string IAP_TXT_ADS_365 {
             get {
-                return ResourceManager.GetString("IAP_TXT_ADS.Content", resourceCulture);
+                return ResourceManager.GetString("IAP_TXT_ADS_365", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Add Premium-Badge ähnelt.
         /// </summary>
-        public static string IAP_TXT_TEE_Content {
+        public static string IAP_TXT_TEE {
             get {
-                return ResourceManager.GetString("IAP_TXT_TEE.Content", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ( ähnelt.
-        /// </summary>
-        public static string Klammer_Rund_Auf_Text {
-            get {
-                return ResourceManager.GetString("Klammer_Rund_Auf.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ) ähnelt.
-        /// </summary>
-        public static string Klammer_Rund_Zu_Text {
-            get {
-                return ResourceManager.GetString("Klammer_Rund_Zu.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die [ ähnelt.
-        /// </summary>
-        public static string KlammerAufEck_Text {
-            get {
-                return ResourceManager.GetString("KlammerAufEck.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ( ähnelt.
-        /// </summary>
-        public static string KlammerAufRund_Text {
-            get {
-                return ResourceManager.GetString("KlammerAufRund.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ] ähnelt.
-        /// </summary>
-        public static string KlammerZuEck_Text {
-            get {
-                return ResourceManager.GetString("KlammerZuEck.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ) ähnelt.
-        /// </summary>
-        public static string KlammerZuRund_Text {
-            get {
-                return ResourceManager.GetString("KlammerZuRund.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die , ähnelt.
-        /// </summary>
-        public static string Komma_Text {
-            get {
-                return ResourceManager.GetString("Komma.Text", resourceCulture);
+                return ResourceManager.GetString("IAP_TXT_TEE", resourceCulture);
             }
         }
         
@@ -486,9 +378,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die could not store ähnelt.
         /// </summary>
-        public static string Notification_Error_Converter_Error1_Text {
+        public static string Notification_Error_Converter_Error1 {
             get {
-                return ResourceManager.GetString("Notification_Error_Converter_Error1.Text", resourceCulture);
+                return ResourceManager.GetString("Notification_Error_Converter_Error1", resourceCulture);
             }
         }
         
@@ -540,9 +432,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Display can not stay activated ähnelt.
         /// </summary>
-        public static string Notification_Error_DisplayRequest_Text {
+        public static string Notification_Error_DisplayRequest {
             get {
-                return ResourceManager.GetString("Notification_Error_DisplayRequest.Text", resourceCulture);
+                return ResourceManager.GetString("Notification_Error_DisplayRequest", resourceCulture);
             }
         }
         
@@ -630,9 +522,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die There was an Error during loading you char. More information at the Notifications. ähnelt.
         /// </summary>
-        public static string Notification_Error_Loader_Error1_Text {
+        public static string Notification_Error_Loader_Error1 {
             get {
-                return ResourceManager.GetString("Notification_Error_Loader_Error1.Text", resourceCulture);
+                return ResourceManager.GetString("Notification_Error_Loader_Error1", resourceCulture);
             }
         }
         
@@ -756,9 +648,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die of ähnelt.
         /// </summary>
-        public static string of_Text {
+        public static string of {
             get {
-                return ResourceManager.GetString("of.Text", resourceCulture);
+                return ResourceManager.GetString("of", resourceCulture);
             }
         }
         
@@ -774,18 +666,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die order item ähnelt.
         /// </summary>
-        public static string Order_Text {
+        public static string Order {
             get {
-                return ResourceManager.GetString("Order.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die + ähnelt.
-        /// </summary>
-        public static string Plus_Text {
-            get {
-                return ResourceManager.GetString("Plus.Text", resourceCulture);
+                return ResourceManager.GetString("Order", resourceCulture);
             }
         }
         
@@ -799,173 +682,47 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No ähnelt.
-        /// </summary>
-        public static string Request_AppImport_No {
-            get {
-                return ResourceManager.GetString("Request_AppImport.No", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do you want to import the contents of another app? Settings are overwritten. ähnelt.
-        /// </summary>
-        public static string Request_AppImport_Text {
-            get {
-                return ResourceManager.GetString("Request_AppImport.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Import ähnelt.
-        /// </summary>
-        public static string Request_AppImport_Title {
-            get {
-                return ResourceManager.GetString("Request_AppImport.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Yes ähnelt.
         /// </summary>
-        public static string Request_AppImport_Yes {
+        public static string Request_AppImport {
             get {
-                return ResourceManager.GetString("Request_AppImport.Yes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No ähnelt.
-        /// </summary>
-        public static string Request_Delete_No {
-            get {
-                return ResourceManager.GetString("Request_Delete.No", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Really delete? ähnelt.
-        /// </summary>
-        public static string Request_Delete_Text {
-            get {
-                return ResourceManager.GetString("Request_Delete.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die request ähnelt.
-        /// </summary>
-        public static string Request_Delete_Title {
-            get {
-                return ResourceManager.GetString("Request_Delete.Title", resourceCulture);
+                return ResourceManager.GetString("Request_AppImport", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Really delete! ähnelt.
         /// </summary>
-        public static string Request_Delete_Yes {
+        public static string Request_Delete {
             get {
-                return ResourceManager.GetString("Request_Delete.Yes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No ähnelt.
-        /// </summary>
-        public static string Request_DeleteAll_No {
-            get {
-                return ResourceManager.GetString("Request_DeleteAll.No", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This will destroy the existence of... EVERYONE!, Chummer! Are you sure you want to do this? ähnelt.
-        /// </summary>
-        public static string Request_DeleteAll_Text {
-            get {
-                return ResourceManager.GetString("Request_DeleteAll.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die request ähnelt.
-        /// </summary>
-        public static string Request_DeleteAll_Title {
-            get {
-                return ResourceManager.GetString("Request_DeleteAll.Title", resourceCulture);
+                return ResourceManager.GetString("Request_Delete", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Really delete! ähnelt.
         /// </summary>
-        public static string Request_DeleteAll_Yes {
+        public static string Request_DeleteAll {
             get {
-                return ResourceManager.GetString("Request_DeleteAll.Yes", resourceCulture);
+                return ResourceManager.GetString("Request_DeleteAll", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Cancel ähnelt.
         /// </summary>
-        public static string Request_NotSave_Break {
+        public static string Request_NotSave {
             get {
-                return ResourceManager.GetString("Request_NotSave.Break", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die continue without saving ähnelt.
-        /// </summary>
-        public static string Request_NotSave_No {
-            get {
-                return ResourceManager.GetString("Request_NotSave.No", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The current character has unsaved changes ähnelt.
-        /// </summary>
-        public static string Request_NotSave_Text {
-            get {
-                return ResourceManager.GetString("Request_NotSave.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Warning ähnelt.
-        /// </summary>
-        public static string Request_NotSave_Title {
-            get {
-                return ResourceManager.GetString("Request_NotSave.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save and Continue ähnelt.
-        /// </summary>
-        public static string Request_NotSave_Yes {
-            get {
-                return ResourceManager.GetString("Request_NotSave.Yes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die / ähnelt.
-        /// </summary>
-        public static string Slash_Text {
-            get {
-                return ResourceManager.GetString("Slash.Text", resourceCulture);
+                return ResourceManager.GetString("Request_NotSave", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die * ähnelt.
         /// </summary>
-        public static string SymbolChanges_Text {
+        public static string SymbolChanges {
             get {
-                return ResourceManager.GetString("SymbolChanges.Text", resourceCulture);
+                return ResourceManager.GetString("SymbolChanges", resourceCulture);
             }
         }
         

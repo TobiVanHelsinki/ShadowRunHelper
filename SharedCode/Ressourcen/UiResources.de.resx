@@ -132,26 +132,14 @@
   <data name="Category_Person" xml:space="preserve">
     <value>Person</value>
   </data>
-  <data name="Speichern" xml:space="preserve">
-    <value>Speichern</value>
-  </data>
-  <data name="Bearbeiten" xml:space="preserve">
-    <value>Bearbeiten</value>
-  </data>
-  <data name="Loeschen" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="DB_Nav" xml:space="preserve">
-    <value>Datenbank</value>
-  </data>
   <data name="CharImport" xml:space="preserve">
     <value>Char Import</value>
   </data>
-  <data name="File_Export" xml:space="preserve">
+  <data name="FileExport" xml:space="preserve">
     <value>Char Export</value>
   </data>
   <data name="LoadChar" xml:space="preserve">
-    <value>Laden</value>
+    <value>Öffnen</value>
   </data>
   <data name="NewChar" xml:space="preserve">
     <value>Neuen Char erstellen</value>
@@ -209,26 +197,14 @@ Icons von Freepik https://www.flaticon.com sind lizensiert unter der Creative Co
     <value>Diese App sammelt keine persönlichen Daten und gibt sie deswegen auch nicht weiter.
 Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. Die App speichert diese Ordner und Dateien nur zur späteren Verwendung. Alle Dateien verbleiben auf dem Dateisystem oder im Microsoft Account.</value>
   </data>
-  <data name="Optionen_KontaktBtn" xml:space="preserve">
-    <value>E-Mail Schreiben</value>
-  </data>
   <data name="Optionen_U_Datenschutz" xml:space="preserve">
     <value>Datenschutzerklärung</value>
   </data>
   <data name="Char_Schaden_Koerper" xml:space="preserve">
     <value>Körper</value>
   </data>
-  <data name="Optionen_Toggle" xml:space="preserve">
-    <value>Ja</value>
-  </data>
   <data name="Optionen_EditAfterAdd" xml:space="preserve">
     <value>Nachdem du ein Objekt erstellt hast, wird sofort der bearbeiten Dialog aufgerufen.</value>
-  </data>
-  <data name="CSV_Export" xml:space="preserve">
-    <value>CSV Export</value>
-  </data>
-  <data name="CSV_Import" xml:space="preserve">
-    <value>CSV Import</value>
   </data>
   <data name="Nav_Char" xml:space="preserve">
     <value>Charakterbogen</value>
@@ -244,9 +220,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="Repair" xml:space="preserve">
     <value>Reparieren</value>
-  </data>
-  <data name="Optionen_BACKUP_VERSIONING" xml:space="preserve">
-    <value>Bei jeder Änderung von Run oder Karma wird in einem BackUp Ordner eine Kopie des Chars erstellt.</value>
   </data>
   <data name="Optionen_Kontakt_Mail" xml:space="preserve">
     <value>eMail</value>
@@ -278,14 +251,14 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Optionen_U_Einstellungen_Tip" xml:space="preserve">
     <value>Halte mit der Maus oder dem Finger auf das ?, um mehr Informationen zu erhalten.</value>
   </data>
-  <data name="E_FileDate" xml:space="preserve">
-    <value>Änderungsdatum</value>
+  <data name="NeuCharX" xml:space="preserve">
+    <value>Erstelle damit einen neuen Charakterbogen</value>
   </data>
-  <data name="E_FileName" xml:space="preserve">
-    <value>Dateiname</value>
+  <data name="CreateExampleCharX" xml:space="preserve">
+    <value>Laden den Beispiel/Turorial-Charakterbogen in den aktuellen Ordner</value>
   </data>
-  <data name="E_FileSize" xml:space="preserve">
-    <value>Dateigröße</value>
+  <data name="SaveExternTip" xml:space="preserve">
+    <value>Wähle einen neuen Speicherort für diese Datei aus.</value>
   </data>
   <data name="Intern_Save_Display" xml:space="preserve">
     <value>Interne Speicherung</value>
@@ -296,8 +269,8 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Statistics_AppStart" xml:space="preserve">
     <value>Anzahl Appstarts</value>
   </data>
-  <data name="Create_ExampleChar" xml:space="preserve">
-    <value>Beispiel Charakter erstellen</value>
+  <data name="SaveAtCurrentPlaceTip" xml:space="preserve">
+    <value>Hast du die Datei extern geöffnet (z.B. aus einem anderne Programm heraus) kannst Du sie an deinem normalen Speicherort speichern.</value>
   </data>
   <data name="Statistics_Creations" xml:space="preserve">
     <value>Charaktere erstellt</value>
@@ -311,18 +284,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Statistics_Savings" xml:space="preserve">
     <value>Charaktere gespeichert</value>
   </data>
-  <data name="DeleteChar" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
-  <data name="DB_Finish" xml:space="preserve">
-    <value>Kopieren</value>
-  </data>
-  <data name="DB_FinishClose" xml:space="preserve">
-    <value>Kopieren und Beenden</value>
-  </data>
-  <data name="DB_Help" xml:space="preserve">
-    <value>Hilfe an/aus</value>
-  </data>
   <data name="Optionen_AutoSaveInterval" xml:space="preserve">
     <value>Wartezeit für Änderungen in Sekunden</value>
   </data>
@@ -335,11 +296,8 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Alle_Chars_Loeschen" xml:space="preserve">
     <value>Alle Chars Löschen</value>
   </data>
-  <data name="Rename" xml:space="preserve">
+  <data name="FileRename" xml:space="preserve">
     <value>Umbenennen</value>
-  </data>
-  <data name="CSV_Cat_Export" xml:space="preserve">
-    <value>CSV Export</value>
   </data>
   <data name="SaveExtern" xml:space="preserve">
     <value>Speichern in externem Ordner</value>
@@ -352,9 +310,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="CNT_Reset" xml:space="preserve">
     <value>Zurücksetzen</value>
-  </data>
-  <data name="CSV_Cat_Import" xml:space="preserve">
-    <value>CSV Import</value>
   </data>
   <data name="Cat_Truncate" xml:space="preserve">
     <value>Kategorie leeren</value>
@@ -386,12 +341,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Optionen_U_Buy" xml:space="preserve">
     <value>Kaufen</value>
   </data>
-  <data name="Admin_Filename" xml:space="preserve">
-    <value>Dateiname</value>
-  </data>
-  <data name="Admin_Filepath" xml:space="preserve">
-    <value>Dateipfad</value>
-  </data>
   <data name="OpenFolder" xml:space="preserve">
     <value>Ordner öffnen</value>
   </data>
@@ -416,23 +365,17 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Optionen_Group_Other" xml:space="preserve">
     <value>Anderes</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Speichern</value>
-  </data>
   <data name="CSV_Cat_ExportX" xml:space="preserve">
     <value>Speichert diese Kategorie im CSV Format (Excel Kompatible) in einem Ordner.</value>
   </data>
   <data name="OpenFolderX" xml:space="preserve">
     <value>Öffnet den Ordner der aktuellen Datei</value>
   </data>
-  <data name="RepairX" xml:space="preserve">
+  <data name="RepairTip" xml:space="preserve">
     <value>Manchmal kommt es zu Fehlern bei Verknüpfungen. Dann kannst du diese Funktion versuchen.</value>
   </data>
-  <data name="SaveAtCurrentPlaceX" xml:space="preserve">
-    <value>Hast du die Datei extern geöffnet (z.B. aus einem anderne Programm heraus) kannst Du sie an deinem normalen Speicherort speichern.</value>
-  </data>
-  <data name="SaveExternX" xml:space="preserve">
-    <value>Wähle einen neuen Speicherort für diese Datei aus.</value>
+  <data name="CreateExampleChar" xml:space="preserve">
+    <value>Beispiel Charakter erstellen</value>
   </data>
   <data name="Unload" xml:space="preserve">
     <value>Entladen</value>
@@ -449,26 +392,20 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="ExportAllX" xml:space="preserve">
     <value>Kopiert alle hier aufgelisteten Dateien in einen anderen Ordner</value>
   </data>
-  <data name="Create_ExampleCharX" xml:space="preserve">
-    <value>Laden den Beispiel/Turorial-Charakterbogen in den aktuellen Ordner</value>
+  <data name="Reset" xml:space="preserve">
+    <value>Zurücksetzen</value>
   </data>
-  <data name="NeuX" xml:space="preserve">
-    <value>Erstelle damit einen neuen Charakterbogen</value>
-  </data>
-  <data name="OpenFolderSTDX" xml:space="preserve">
-    <value>Öffne den Ordner, in dem alle deine Charakterbögen liegen.</value>
+  <data name="FileDate" xml:space="preserve">
+    <value>Änderungsdatum</value>
   </data>
   <data name="CSV_ExportX" xml:space="preserve">
     <value>Speichert diesen Charakterbogen im CSV Format (Excel Kompatible) in einem Ordner. Es werden mehrere Dateien angelegt.</value>
   </data>
-  <data name="DeleteCharX" xml:space="preserve">
-    <value>Löscht diese Datei.</value>
+  <data name="FileDeleteTip" xml:space="preserve">
+    <value>Löscht diese Datei unwiederruflich</value>
   </data>
-  <data name="File_ExportX" xml:space="preserve">
+  <data name="FileExportTip" xml:space="preserve">
     <value>Kopiert diese Datei an einen anderen Ort.</value>
-  </data>
-  <data name="LoadCharX" xml:space="preserve">
-    <value>Öffnet diese Datei.</value>
   </data>
   <data name="CSV_Cat_Export_SelectedX" xml:space="preserve">
     <value>Speichert ausgewählte Einträge dieser Kategorie im CSV Format (Excel Kompatible) in einem Ordner.</value>
@@ -488,8 +425,8 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Cat_UncheckAllX" xml:space="preserve">
     <value>Damit werden alle aufgeklappten Einträge zugeklappt.</value>
   </data>
-  <data name="SaveX" xml:space="preserve">
-    <value>Speichert den Charakterbogen.</value>
+  <data name="Rename" xml:space="preserve">
+    <value>Umbenennen</value>
   </data>
   <data name="Optionen_Version" xml:space="preserve">
     <value>Version</value>
@@ -509,20 +446,11 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="CharSettingsX" xml:space="preserve">
     <value>Damit kannst du diese Ansicht konfigurieren.</value>
   </data>
-  <data name="CLS_Close" xml:space="preserve">
-    <value>Schließen</value>
-  </data>
-  <data name="CNT_Close" xml:space="preserve">
-    <value>Schließen</value>
-  </data>
   <data name="Copy" xml:space="preserve">
     <value>Kopieren</value>
   </data>
   <data name="Cut" xml:space="preserve">
     <value>Ausschneiden</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Löschen</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Bearbeiten</value>
@@ -565,5 +493,44 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="Damage" xml:space="preserve">
     <value>Schaden</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="WarningLocalSaveplace" xml:space="preserve">
+    <value>Warnung, du speicherst deine Dateien nur lokal. Das kann zu Datenverlust führen. Am besten wählst du einen externen Speicherort aus.</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="OpenFolderSTDTip" xml:space="preserve">
+    <value>Öffne den Ordner, in dem alle deine Charakterbögen liegen.</value>
+  </data>
+  <data name="LoadCharTip" xml:space="preserve">
+    <value>Öffnet diese Datei.</value>
+  </data>
+  <data name="SaveTip" xml:space="preserve">
+    <value>Speichert den Charakterbogen.</value>
+  </data>
+  <data name="WelcomeGreetings" xml:space="preserve">
+    <value>Willkommen im ShadowRunHelper</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportTip" xml:space="preserve">
+    <value>Kopiert diese Datei an einen anderen Ort.</value>
+  </data>
+  <data name="FileSize" xml:space="preserve">
+    <value>Dateigröße</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>Dateiname</value>
+  </data>
+  <data name="IntroAdministration" xml:space="preserve">
+    <value>Wähle einen Eintrag aus der Liste, um einen Charakterbogen zu öffnen oder erstelle einen neuen.</value>
   </data>
 </root>

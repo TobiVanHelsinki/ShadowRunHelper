@@ -262,31 +262,10 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
     <value>Das war's mit dem Tutorial. Du kannst einen neuen Charakter erstellen, aber besser ist es, du schaust dir erst den Beispielcharakter an.</value>
   </data>
   <data name="AuswahlDialog" xml:space="preserve">
-    <value>Fertig</value>
-  </data>
-  <data name="AuswahlDialog" xml:space="preserve">
     <value>Auswahl</value>
   </data>
   <data name="Request_Delete" xml:space="preserve">
-    <value>Ach nein doch nicht ...</value>
-  </data>
-  <data name="Request_Delete" xml:space="preserve">
-    <value>Möchtest Du die Datei wirklich löschen? Sie wird wirklich gelöscht, nicht in den Papierkorb verschoben und kann nicht wiederhergestellt werden.</value>
-  </data>
-  <data name="Request_Delete" xml:space="preserve">
-    <value>Nachfrage</value>
-  </data>
-  <data name="Request_Delete" xml:space="preserve">
     <value>Wirklich Löschen!</value>
-  </data>
-  <data name="Request_DeleteAll" xml:space="preserve">
-    <value>Ach nein doch nicht ...</value>
-  </data>
-  <data name="Request_DeleteAll" xml:space="preserve">
-    <value>Damit zerstörst du die Existenz von ... JEDEM!, Chummer! Bist du sicher, dass du das machen willst?</value>
-  </data>
-  <data name="Request_DeleteAll" xml:space="preserve">
-    <value>Nachfrage</value>
   </data>
   <data name="Request_DeleteAll" xml:space="preserve">
     <value>Wirklich Löschen!</value>
@@ -358,16 +337,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
     <value>Kauf Erfolgreich</value>
   </data>
   <data name="Request_NotSave" xml:space="preserve">
-    <value>ohne Speichern fortfahren</value>
-  </data>
-  <data name="Request_NotSave" xml:space="preserve">
-    <value>Der aktuelle Char hat noch ungespeicherte Änderungen</value>
-  </data>
-  <data name="Request_NotSave" xml:space="preserve">
-    <value>Warnung</value>
-  </data>
-  <data name="Request_NotSave" xml:space="preserve">
-    <value>Speichern und fortfahren</value>
+    <value>Abbrechen</value>
   </data>
   <data name="Notification_Char_Loaded_File" xml:space="preserve">
     <value>Ein Char wurde aus einer Datei geladen</value>
@@ -386,15 +356,6 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   </data>
   <data name="AppImportNoErrors" xml:space="preserve">
     <value>Der Import war erfolgreich.</value>
-  </data>
-  <data name="Request_AppImport" xml:space="preserve">
-    <value>Nein</value>
-  </data>
-  <data name="Request_AppImport" xml:space="preserve">
-    <value>Möchten Sie die Inhalte einer anderen App importieren? Einstellungen werden überschrieben.</value>
-  </data>
-  <data name="Request_AppImport" xml:space="preserve">
-    <value>Import</value>
   </data>
   <data name="Request_AppImport" xml:space="preserve">
     <value>Ja</value>
@@ -488,11 +449,11 @@ Version 1.7.4:
   <data name="Tip17" xml:space="preserve">
     <value>Halte die Backups deiner Charakterbögen aktuell, dann bist du vor Datenschaden in Sicherheit.</value>
   </data>
-  <data name="Request_NotSave" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
   <data name="Tip18" xml:space="preserve">
     <value>Gefällt dir die App? 
 Bewerte Sie doch im Store!</value>
+  </data>
+  <data name="CopiedFileName" xml:space="preserve">
+    <value>Kopie</value>
   </data>
 </root>

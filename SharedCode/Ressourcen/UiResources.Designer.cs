@@ -61,38 +61,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Filename ähnelt.
-        /// </summary>
-        public static string Admin_Filename {
-            get {
-                return ResourceManager.GetString("Admin_Filename", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Filepath ähnelt.
-        /// </summary>
-        public static string Admin_Filepath {
-            get {
-                return ResourceManager.GetString("Admin_Filepath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Delete all Chars ähnelt.
         /// </summary>
         public static string Alle_Chars_Loeschen {
             get {
                 return ResourceManager.GetString("Alle_Chars_Loeschen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Edit ähnelt.
-        /// </summary>
-        public static string Bearbeiten {
-            get {
-                return ResourceManager.GetString("Bearbeiten", resourceCulture);
             }
         }
         
@@ -304,11 +277,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Char Import ähnelt.
         /// </summary>
-        public static string Char_Speichern {
+        public static string CharImport {
             get {
-                return ResourceManager.GetString("Char_Speichern", resourceCulture);
+                return ResourceManager.GetString("CharImport", resourceCulture);
             }
         }
         
@@ -327,24 +300,6 @@ namespace SharedCode.Ressourcen {
         public static string CharSettingsX {
             get {
                 return ResourceManager.GetString("CharSettingsX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Close ähnelt.
-        /// </summary>
-        public static string CLS_Close {
-            get {
-                return ResourceManager.GetString("CLS_Close", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Close ähnelt.
-        /// </summary>
-        public static string CNT_Close {
-            get {
-                return ResourceManager.GetString("CNT_Close", resourceCulture);
             }
         }
         
@@ -394,15 +349,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CSV Export ähnelt.
-        /// </summary>
-        public static string CSV_Cat_Export {
-            get {
-                return ResourceManager.GetString("CSV_Cat_Export", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die CSV Export (just selected) ähnelt.
         /// </summary>
         public static string CSV_Cat_Export_Selected {
@@ -430,15 +376,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CSV Import ähnelt.
-        /// </summary>
-        public static string CSV_Cat_Import {
-            get {
-                return ResourceManager.GetString("CSV_Cat_Import", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Select a CSV file whose content will be imported into this category. If the import and export categories are not identical, not all information is imported. ähnelt.
         /// </summary>
         public static string CSV_Cat_ImportX {
@@ -448,29 +385,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CSV Export ähnelt.
-        /// </summary>
-        public static string CSV_Export {
-            get {
-                return ResourceManager.GetString("CSV_Export", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Saves this character sheet in CSV format (Excel compatible) in a folder. Several files are created. ähnelt.
         /// </summary>
         public static string CSV_ExportX {
             get {
                 return ResourceManager.GetString("CSV_ExportX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CSV Import ähnelt.
-        /// </summary>
-        public static string CSV_Import {
-            get {
-                return ResourceManager.GetString("CSV_Import", resourceCulture);
             }
         }
         
@@ -493,56 +412,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Copy ähnelt.
-        /// </summary>
-        public static string DB_Finish {
-            get {
-                return ResourceManager.GetString("DB_Finish", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Copy and Exit ähnelt.
-        /// </summary>
-        public static string DB_FinishClose {
-            get {
-                return ResourceManager.GetString("DB_FinishClose", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Help on/off ähnelt.
-        /// </summary>
-        public static string DB_Help {
-            get {
-                return ResourceManager.GetString("DB_Help", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Database ähnelt.
-        /// </summary>
-        public static string DB_Nav {
-            get {
-                return ResourceManager.GetString("DB_Nav", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Delete ähnelt.
         /// </summary>
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Deletes this file. ähnelt.
-        /// </summary>
-        public static string DeleteCharX {
-            get {
-                return ResourceManager.GetString("DeleteCharX", resourceCulture);
             }
         }
         
@@ -619,24 +493,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Char Export ähnelt.
-        /// </summary>
-        public static string File_Export {
-            get {
-                return ResourceManager.GetString("File_Export", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Copy this file to another location. ähnelt.
-        /// </summary>
-        public static string File_ExportX {
-            get {
-                return ResourceManager.GetString("File_ExportX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die modification date ähnelt.
         /// </summary>
         public static string FileDate {
@@ -646,20 +502,38 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die file name ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
         /// </summary>
-        public static string FileName {
+        public static string FileDeleteTip {
             get {
-                return ResourceManager.GetString("FileName", resourceCulture);
+                return ResourceManager.GetString("FileDeleteTip", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die file size ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Char Export ähnelt.
         /// </summary>
-        public static string FileSize {
+        public static string FileExport {
             get {
-                return ResourceManager.GetString("FileSize", resourceCulture);
+                return ResourceManager.GetString("FileExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Copy this file to another location. ähnelt.
+        /// </summary>
+        public static string FileExportTip {
+            get {
+                return ResourceManager.GetString("FileExportTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Rename ähnelt.
+        /// </summary>
+        public static string FileRename {
+            get {
+                return ResourceManager.GetString("FileRename", resourceCulture);
             }
         }
         
@@ -691,15 +565,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Char Import ähnelt.
-        /// </summary>
-        public static string ImportChar {
-            get {
-                return ResourceManager.GetString("ImportChar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save Intern ähnelt.
         /// </summary>
         public static string Intern_Save_Display {
@@ -709,16 +574,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Choose a charaktersheet from the list or create a new. ähnelt.
-        /// </summary>
-        public static string IntroAdministration {
-            get {
-                return ResourceManager.GetString("IntroAdministration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Load ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open ähnelt.
         /// </summary>
         public static string LoadChar {
             get {
@@ -729,18 +585,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Opens this file. ähnelt.
         /// </summary>
-        public static string LoadCharX {
+        public static string LoadCharTip {
             get {
-                return ResourceManager.GetString("LoadCharX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Delete ähnelt.
-        /// </summary>
-        public static string Loeschen {
-            get {
-                return ResourceManager.GetString("Loeschen", resourceCulture);
+                return ResourceManager.GetString("LoadCharTip", resourceCulture);
             }
         }
         
@@ -790,6 +637,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No ähnelt.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die open folder ähnelt.
         /// </summary>
         public static string OpenFolder {
@@ -810,9 +666,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Open the folder where all your character sheets are located. ähnelt.
         /// </summary>
-        public static string OpenFolderSTDX {
+        public static string OpenFolderSTDTip {
             get {
-                return ResourceManager.GetString("OpenFolderSTDX", resourceCulture);
+                return ResourceManager.GetString("OpenFolderSTDTip", resourceCulture);
             }
         }
         
@@ -858,15 +714,6 @@ namespace SharedCode.Ressourcen {
         public static string Optionen_AutoSaveInterval {
             get {
                 return ResourceManager.GetString("Optionen_AutoSaveInterval", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Each time Run or Karma is changed, a copy of the char is created in a BackUp folder. ähnelt.
-        /// </summary>
-        public static string Optionen_BACKUP_VERSIONING {
-            get {
-                return ResourceManager.GetString("Optionen_BACKUP_VERSIONING", resourceCulture);
             }
         }
         
@@ -1016,15 +863,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die write email ähnelt.
-        /// </summary>
-        public static string Optionen_KontaktBtn {
-            get {
-                return ResourceManager.GetString("Optionen_KontaktBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die ShadowRun is a registered trademark of Pegasus Games.
         ///Icons made by Freepik https://www.flaticon.com are licensed by Creative Commons BY 3.0. ähnelt.
         /// </summary>
@@ -1085,15 +923,6 @@ namespace SharedCode.Ressourcen {
         public static string Optionen_ThrownException {
             get {
                 return ResourceManager.GetString("Optionen_ThrownException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Yes ähnelt.
-        /// </summary>
-        public static string Optionen_Toggle {
-            get {
-                return ResourceManager.GetString("Optionen_Toggle", resourceCulture);
             }
         }
         
@@ -1262,18 +1091,18 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sometimes errors occur at the link system. Then you can try this function. ähnelt.
         /// </summary>
-        public static string RepairX {
+        public static string RepairTip {
             get {
-                return ResourceManager.GetString("RepairX", resourceCulture);
+                return ResourceManager.GetString("RepairTip", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reset ähnelt.
         /// </summary>
-        public static string Save {
+        public static string Reset {
             get {
-                return ResourceManager.GetString("Save", resourceCulture);
+                return ResourceManager.GetString("Reset", resourceCulture);
             }
         }
         
@@ -1289,9 +1118,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die If you opened the file externally (e.g. from another program) you can save it to your normal location. ähnelt.
         /// </summary>
-        public static string SaveAtCurrentPlaceX {
+        public static string SaveAtCurrentPlaceTip {
             get {
-                return ResourceManager.GetString("SaveAtCurrentPlaceX", resourceCulture);
+                return ResourceManager.GetString("SaveAtCurrentPlaceTip", resourceCulture);
             }
         }
         
@@ -1307,18 +1136,18 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Select a new location for this file ähnelt.
         /// </summary>
-        public static string SaveExternX {
+        public static string SaveExternTip {
             get {
-                return ResourceManager.GetString("SaveExternX", resourceCulture);
+                return ResourceManager.GetString("SaveExternTip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Saves the character sheet. ähnelt.
         /// </summary>
-        public static string SaveX {
+        public static string SaveTip {
             get {
-                return ResourceManager.GetString("SaveX", resourceCulture);
+                return ResourceManager.GetString("SaveTip", resourceCulture);
             }
         }
         
@@ -1422,11 +1251,29 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Warning, you are saving your chars locally at the moment. It is strongly recommendet to use an synchronized folder like OneDrive, DropBox and co. ähnelt.
+        /// </summary>
+        public static string WarningLocalSaveplace {
+            get {
+                return ResourceManager.GetString("WarningLocalSaveplace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Welcome to ShadowRunHelper. ähnelt.
         /// </summary>
         public static string WelcomeGreetings {
             get {
                 return ResourceManager.GetString("WelcomeGreetings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Yes ähnelt.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

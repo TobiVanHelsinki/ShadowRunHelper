@@ -257,31 +257,10 @@ By default, chars are saved within the app. In the options you can choose whethe
     <value>There are two options for saving a char. By default, the file name is used to store the char. If the option "Progress" is selected, the filename will contain the number of runs and karma - so a versioning is possible. In addition, the "Time" option can be used to add the exact time to the filename.</value>
   </data>
   <data name="AuswahlDialog" xml:space="preserve">
-    <value>Finish</value>
-  </data>
-  <data name="AuswahlDialog" xml:space="preserve">
     <value>selection</value>
   </data>
   <data name="Request_Delete" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="Request_Delete" xml:space="preserve">
-    <value>Really delete?</value>
-  </data>
-  <data name="Request_Delete" xml:space="preserve">
-    <value>request</value>
-  </data>
-  <data name="Request_Delete" xml:space="preserve">
     <value>Really delete!</value>
-  </data>
-  <data name="Request_DeleteAll" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="Request_DeleteAll" xml:space="preserve">
-    <value>This will destroy the existence of... EVERYONE!, Chummer! Are you sure you want to do this?</value>
-  </data>
-  <data name="Request_DeleteAll" xml:space="preserve">
-    <value>request</value>
   </data>
   <data name="Request_DeleteAll" xml:space="preserve">
     <value>Really delete!</value>
@@ -353,16 +332,7 @@ By default, chars are saved within the app. In the options you can choose whethe
     <value>Purchase Successful</value>
   </data>
   <data name="Request_NotSave" xml:space="preserve">
-    <value>continue without saving</value>
-  </data>
-  <data name="Request_NotSave" xml:space="preserve">
-    <value>The current character has unsaved changes</value>
-  </data>
-  <data name="Request_NotSave" xml:space="preserve">
-    <value>Warning</value>
-  </data>
-  <data name="Request_NotSave" xml:space="preserve">
-    <value>Save and Continue</value>
+    <value>Cancel</value>
   </data>
   <data name="Notification_Char_Loaded_File" xml:space="preserve">
     <value>A Char was loaded from file</value>
@@ -416,15 +386,6 @@ Version 1.7.4:
   </data>
   <data name="AppImportNoErrors" xml:space="preserve">
     <value>The import was successful.</value>
-  </data>
-  <data name="Request_AppImport" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="Request_AppImport" xml:space="preserve">
-    <value>Do you want to import the contents of another app? Settings are overwritten.</value>
-  </data>
-  <data name="Request_AppImport" xml:space="preserve">
-    <value>Import</value>
   </data>
   <data name="Request_AppImport" xml:space="preserve">
     <value>Yes</value>
@@ -483,10 +444,10 @@ Version 1.7.4:
   <data name="Tip17" xml:space="preserve">
     <value>Keep your character sheet backups up to date and you'll be safe from data corruption.</value>
   </data>
-  <data name="Request_NotSave" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
   <data name="Tip18" xml:space="preserve">
     <value>Do you like the App? Give a rating at the Store!</value>
+  </data>
+  <data name="CopiedFileName" xml:space="preserve">
+    <value>Copy</value>
   </data>
 </root>

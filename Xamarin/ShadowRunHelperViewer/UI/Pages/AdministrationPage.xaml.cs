@@ -2,11 +2,14 @@
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
+using SharedCode.Ressourcen;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using TAPPLICATION.IO;
 using TLIB;
 using Xamarin.Forms;
@@ -16,21 +19,16 @@ namespace ShadowRunHelperViewer.UI.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdministrationPage : ContentView, INotifyPropertyChanged
-	{
+    {
         #region NotifyPropertyChanged
-		public new event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
 
-        ObservableCollection<ExtendetFileInfo> _CharList = new ObservableCollection<ExtendetFileInfo>();
-        public ObservableCollection<ExtendetFileInfo> CharList
-        {
-            get { return _CharList; }
-            set { if (_CharList != value) { _CharList = value; NotifyPropertyChanged(); } }
-        }
+        public ObservableCollection<ExtendetFileInfo> CharList { get; set; } = new ObservableCollection<ExtendetFileInfo>();
 
         public AdministrationPage()
         {
@@ -38,41 +36,26 @@ namespace ShadowRunHelperViewer.UI.Pages
             BindingContext = this;
             RefreshCharList();
         }
-
-        public void Activate()
+        async void ListView_Refreshing(object sender, EventArgs e)
         {
-            Features.Ui.IsCustomTitleBarEnabled = true; //TODO Dispse?
-            Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(TitleBar));
-            Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges; //TODO Dispose
-            Features.Ui.TriggerCustomTitleBarChanges();
-        }
-
-        private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
-        {
-            TitleBar.MinimumHeightRequest = Heigth;
-            Intro1Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
-            Intro2Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
-        }
-
-
-        async void RefreshCharList()
-        {
-            if (!SettingsModel.I.FOLDERMODE)
+            if (sender is ListView lv)
             {
-                if (Content is Grid g)
-                {
-                    var item = new Frame { Padding = 5, Content = new Label() { BackgroundColor = Color.Crimson, Margin = 5, 
-                        Text = "Warning, you are saving your chars locally at the moment. It is strongly recommendet to use an synchronized folder like OneDrive, DropBox and co." }
-                    };
-                    Grid.SetRow(item, 1);
-                    g.Children.Add(item);
-                }
+                await RefreshCharList();
+                lv.EndRefresh();
             }
+        }
+
+        async Task RefreshCharList()
+        {
+            WarningFrame.IsVisible = !SettingsModel.I.FOLDERMODE;
             try
             {
                 var savepathfiles = (await SharedIO.CurrentIO.GetFiles(SharedIO.CurrentSaveDir, Constants.LST_FILETYPES_CHAR)).ToList();
-                Device.BeginInvokeOnMainThread(() => { CharList.Clear();
-                    CharList.AddRange(savepathfiles); });
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    CharList.Clear();
+                    CharList.AddRange(savepathfiles);
+                });
             }
             catch (Exception ex)
             {
@@ -80,14 +63,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        private void ListView_Refreshing(object sender, EventArgs e)
-        {
-            RefreshCharList();
-        }
-
-
-        #region Save and Load
-        //async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        #region Open Files
         async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item is ExtendetFileInfo charfile)
@@ -108,14 +84,19 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-
+        private void OpenFile(object sender, EventArgs e)
+        {
+            FilePickerExample();
+        }
         async void FilePickerExample()
         {
             try
             {
                 var charfile = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
                 var newchar = await CharHolderIO.Load(charfile);
-                (Application.Current.MainPage as MainPage)?.NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(newchar));
+                AppModel.Instance.AddMainObject(newchar);
+                AppModel.Instance.RequestNavigation(ProjectPages.Char);
+                //(Application.Current.MainPage as MainPage)?.NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(newchar));
                 //TODO das ist komplett am model vorbei, aber dafür auch flexibler
                 //TODO ich sollte überlegen, Model.MainObject abzuschaffen. für das speichern kann es sich im eigenen konstruktor registrieren
                 //Dann bekommen alle anderen nicht mehr mit, wenn sich ein object ändert. aber muss das überhaupt jemand wissen?
@@ -127,8 +108,66 @@ namespace ShadowRunHelperViewer.UI.Pages
         }
         #endregion
 
-        #region Copy and Move
+        #region Other File Action
 
+        private void FileRename(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FileCopy(object sender, EventArgs e)
+        {
+            if (sender is MenuItem v && v.BindingContext is ExtendetFileInfo file)
+            {
+                try
+                {
+                    var newName = Path.Combine(Path.GetDirectoryName(file.FullName),
+                    Path.GetFileNameWithoutExtension(file.FullName) + "-" + AppResources.CopiedFileName +
+                    Path.GetExtension(file.FullName));
+                    SharedIO.CurrentIO.CopyTo(file, new FileInfo(newName));
+                    RefreshCharList();
+                }
+                catch (PathTooLongException ex)
+                {
+                    Log.Write("Path too long", ex, logType: LogType.Error);
+                }
+                catch (Exception ex2)
+                {
+                    Log.Write("Error at copy", ex2, logType: LogType.Error);
+                }
+            }
+        }
+
+        private void FileDelete(object sender, EventArgs e)
+        {
+            if (sender is MenuItem v && v.BindingContext is ExtendetFileInfo file)
+            {
+                Log.DisplayChoice(UiResources.Delete, UiResources.FileDeleteTip, new Options() { },
+                    (UiResources.Yes, async () => { await SharedIO.CurrentIO.RemoveFile(file); RefreshCharList(); }),
+                    (UiResources.No, ()=> { })
+                    );
+            }
+        }
+
+        async void FileExport(object sender, EventArgs e)
+        {
+            if (sender is MenuItem v && v.BindingContext is ExtendetFileInfo file)
+            {
+                try
+                {
+                    var saveDir = await SharedIO.CurrentIO.PickFolder("ExportChar");
+                    await SharedIO.CurrentIO.CopyTo(file, new FileInfo(Path.Combine(saveDir.FullName, Path.GetFileName(file.FullName))));
+                }
+                catch (PathTooLongException ex)
+                {
+                    Log.Write("Path too long", ex, logType: LogType.Error);
+                }
+                catch (Exception ex2)
+                {
+                    Log.Write("Error at copy", ex2, logType: LogType.Error);
+                }
+            }
+        }
         #endregion
 
         #region Create
@@ -160,6 +199,26 @@ namespace ShadowRunHelperViewer.UI.Pages
         }
         #endregion
 
+        #region Design
+
+        public void Activate()
+        {
+            Features.Ui.IsCustomTitleBarEnabled = true; //TODO Dispse?
+            Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(TitleBar));
+            Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges; //TODO Dispose
+            Features.Ui.TriggerCustomTitleBarChanges();
+        }
+
+        private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
+        {
+            TitleBar.MinimumHeightRequest = Heigth;
+            Intro1Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
+            Intro2Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
+        }
+        #endregion
+
+        #region Responsive Design
+
         private void TemplateSizeChanged(object sender, EventArgs e)
         {
             if (sender is StackLayout layout)
@@ -169,7 +228,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 {
                     layout.Orientation = StackOrientation.Vertical;
                     attributes.HorizontalOptions = LayoutOptions.Start;
-                    layout.Margin = new Thickness(10,2,10,0);
+                    layout.Margin = new Thickness(10, 2, 10, 0);
                 }
                 else
                 {
@@ -179,10 +238,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 }
             }
         }
+        #endregion
 
-        private void OpenFile(object sender, EventArgs e)
-        {
-            FilePickerExample();
-        }
     }
 }

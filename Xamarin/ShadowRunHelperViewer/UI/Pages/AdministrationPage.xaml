@@ -25,6 +25,9 @@
                 <Label x:Name="Intro2Text" Text="{resx:UiResources IntroAdministration}" 
                        HorizontalOptions="FillAndExpand"/>
             </StackLayout>
+            <Frame Padding="5" Grid.Row="1" IsVisible="False" x:Name="WarningFrame">
+                <Label Text="{resx:UiResources WarningLocalSaveplace}" BackgroundColor="Crimson" Margin="5"/>
+            </Frame>
             <StackLayout Margin="15,0,10,0" Grid.Row="3" Orientation="Horizontal">
                 <Label Text="{resx:UiResources FileName}" LineBreakMode="WordWrap"/>
                 <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
@@ -34,11 +37,17 @@
                 </StackLayout>
             </StackLayout>
             <BoxView Color="Gray" Grid.Row="4" HeightRequest="1"/>
-            <ListView IsPullToRefreshEnabled="True" Grid.Row="5" Margin="0"
+            <ListView IsPullToRefreshEnabled="True" Grid.Row="5" Margin="0" RefreshControlColor="Accent"
                       ItemsSource="{x:Binding CharList, Mode=TwoWay}" Refreshing="ListView_Refreshing" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="io:ExtendetFileInfo">
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="FileRename" Text="{resx:UiResources Rename}" AutomationProperties.HelpText="{resx:UiResources FileRenameX}" />
+                                <MenuItem Clicked="FileExport" Text="{resx:UiResources Export}" AutomationProperties.HelpText="{resx:UiResources FileExportX}" />
+                                <MenuItem Clicked="FileCopy" Text="{resx:UiResources Copy}" AutomationProperties.HelpText="{resx:UiResources FileCopyX}"/>
+                                <MenuItem Clicked="FileDelete" Text="{resx:UiResources Delete}" AutomationProperties.HelpText="{resx:UiResources FileDeleteX}" IsDestructive="True" />
+                            </ViewCell.ContextActions>
                             <Grid Padding="0" Margin="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
