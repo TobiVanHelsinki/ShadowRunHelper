@@ -84,6 +84,8 @@ namespace ShadowRunHelper
         Widgets = 28,
         Wandlung = 29,
         Initiation = 30,
+        Note = 31,
+        Favorite = 32, 
     }
     public class ThingTypeProperty : INotifyPropertyChanged
     {
@@ -202,6 +204,8 @@ namespace ShadowRunHelper
            new ThingTypeProperty(typeof(Widgets),ThingDefs.Widgets,1,7, "Widgets"),
            new ThingTypeProperty(typeof(Wandlung),ThingDefs.Wandlung,3,8, "Wandlung"),
            new ThingTypeProperty(typeof(Initiation),ThingDefs.Initiation,3,7, "Initiation"),
+           new ThingTypeProperty(typeof(Note),ThingDefs.Note,4,0, "Note"),
+           new ThingTypeProperty(typeof(Note),ThingDefs.Favorite,4,1, "Favorite"),
         };
 
 
@@ -209,19 +213,25 @@ namespace ShadowRunHelper
         {
             try
             {
+                string ret;
                 if (Mehrzahl)
                 {
-                    return ModelResources.ResourceManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
+                    ret=ModelResources.ResourceManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
                 }
                 else
                 {
-                    return ModelResources.ResourceManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
+                    ret = ModelResources.ResourceManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNameSingular);
                 }
+                if (string.IsNullOrEmpty(ret))
+                {
+                    ret = "NA: " + eThingDefToConvert.ToString();
+                }
+                return ret;
             }
             catch (Exception ex)
             {
                 TAPPLICATION.Debugging.TraceException(ex);
-                return "N/A";
+                return "NA: " + eThingDefToConvert.ToString();
             }
         }
         public static Type ThingDefToType(this ThingDefs eThingDefToConvert)

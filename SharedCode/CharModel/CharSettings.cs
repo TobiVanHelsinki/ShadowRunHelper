@@ -56,6 +56,10 @@ namespace ShadowRunHelper.CharModel
             var std = TypeHelper.ThingTypeProperties.First(x => x.ThingType == ThingType);
             return !Visibility || Order != std.Order || Pivot != std.Pivot;
         }
+        public override string ToString()
+        {
+            return ThingType + "/"+ Pivot + "/" + Order + "/" + (Visibility ? "" : "Not") + "Visible";
+        }
 
     }
 

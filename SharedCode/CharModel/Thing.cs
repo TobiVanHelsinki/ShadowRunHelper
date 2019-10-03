@@ -31,7 +31,7 @@ namespace ShadowRunHelper.CharModel
     }
 
 
-    public abstract class Thing : INotifyPropertyChanged, ICSV
+    public class Thing : INotifyPropertyChanged, ICSV
     {
         public const uint nThingPropertyCount = 5;
         #region INotifyPropertyChanged

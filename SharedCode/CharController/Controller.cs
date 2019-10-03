@@ -74,10 +74,10 @@ namespace ShadowRunHelper.CharController
         /// <summary>
         /// Konstruktor fuer neu
         /// </summary>
-        public Controller()
+        public Controller(ThingDefs OtherDef = ThingDefs.Undef)
         {
             Data = new ObservableCollection<T>();
-            _eDataTyp = TypeHelper.TypeToThingDef(typeof(T));
+            _eDataTyp = OtherDef == ThingDefs.Undef ? TypeHelper.TypeToThingDef(typeof(T)) : OtherDef;
         }
 
 

@@ -66,6 +66,8 @@ namespace ShadowRunHelper.Model
         public PanzerungController CTRLPanzerung { get; } = new PanzerungController();
         public Controller<Fertigkeit> CTRLFertigkeit { get; } = new Controller<Fertigkeit>();
         public Controller<Handlung> CTRLHandlung { get; } = new Controller<Handlung>();
+        public Controller<Note> CTRLNote { get; } = new Controller<Note>();
+        public FavoriteController CTRLFavorite { get; } = new FavoriteController();
         public Person Person { get; } = new Person();
         public CharSettings Settings { get; } = new CharSettings();
         #endregion
@@ -369,6 +371,11 @@ namespace ShadowRunHelper.Model
         {
             Favorites.Clear();
             Favorites.AddRange(ThingList.Where(x => x?.IsFavorite == true).OrderBy(x=>x.FavoriteIndex));
+            CTRLFavorite.ClearData();
+            foreach (var item in Favorites)
+            {
+                CTRLFavorite.AddNewThing(item);
+            }
         }
         void SaveFavoritesOrdering(object sender, NotifyCollectionChangedEventArgs e)
         {

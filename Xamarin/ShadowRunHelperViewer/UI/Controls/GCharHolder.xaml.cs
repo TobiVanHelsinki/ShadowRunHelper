@@ -109,6 +109,9 @@ namespace ShadowRunHelperViewer
                         case 3:
                             s4.Children.Add(b);
                             break;
+                        case 4:
+                            s5.Children.Add(b);
+                            break;
                         default:
                             break;
                     }

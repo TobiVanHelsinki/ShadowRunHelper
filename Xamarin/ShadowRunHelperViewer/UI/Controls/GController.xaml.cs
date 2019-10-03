@@ -76,7 +76,7 @@ namespace ShadowRunHelperViewer
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        private object CreateItems(ThingDefs key)
+        private void CreateItems(ThingDefs key)
         {
             var CustomTemplate = key.HierarchieUpSearch(s => { Resources.TryGetValue(s, out object CustomTemplate); return CustomTemplate; });
             if (CustomTemplate is DataTemplate DT)
@@ -104,7 +104,6 @@ namespace ShadowRunHelperViewer
                     section.Add(vc);
                 }
             }
-            return CustomTemplate;
         }
 
         private void SmthChanged(object sender, PropertyChangedEventArgs e)
@@ -117,10 +116,9 @@ namespace ShadowRunHelperViewer
 
         private void ItemCell_Tapped(object sender, EventArgs e)
         {
-            if (sender is ViewCell vc)
+            if (sender is ViewCell vc && vc.BindingContext is Thing item)
             {
-                string key = TypeHelper.ThingDefToString(Controller.eDataTyp, false);
-                Resources.TryGetValue(key + "X", out var CustomTemplate);
+                var CustomTemplate = item.ThingType.HierarchieUpSearch(s => { Resources.TryGetValue(s + "X", out object CustomTemplate); return CustomTemplate; });
                 if (CustomTemplate is null)
                 {
                     Resources.TryGetValue(nameof(Thing)+ "X", out CustomTemplate);
