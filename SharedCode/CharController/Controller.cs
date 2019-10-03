@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using TLIB;
 using System.ComponentModel;
+using SharedCode.Ressourcen;
 
 namespace ShadowRunHelper.CharController
 {
@@ -122,5 +123,23 @@ namespace ShadowRunHelper.CharController
             ClearData();
             Data.AddRange(OrderedData);
         }
+
+        public static void RefreshIdentifiers(object controller)
+        {
+            foreach (var item in controller.GetType().GetProperties().Where(x => x.PropertyType == typeof(T)))
+            {
+                try
+                {
+                    if (item.GetValue(controller) is T thing)
+                    {
+                        thing.Bezeichner = ModelResources.ResourceManager.GetString(typeof(T).Name + "_" + item.Name);
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
     }
 }

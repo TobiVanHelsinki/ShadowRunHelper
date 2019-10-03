@@ -13,16 +13,16 @@ namespace ShadowRunHelper.CharController
         [JsonIgnore]
         public new ObservableCollection<Attribut> Data { get; protected set; }
 
-        public Attribut Konsti;// those have to point at a sepcific list element
-        public Attribut Geschick;
-        public Attribut Reaktion;
-        public Attribut Staerke;
-        public Attribut Charisma;
-        public Attribut Logik;
-        public Attribut Intuition;
-        public Attribut Willen;
-        public Attribut Magie;
-        public Attribut Resonanz;
+        public Attribut Konsti { get; set; } = new Attribut();// those have to point at a sepcific list element
+        public Attribut Geschick { get; set; } = new Attribut();
+        public Attribut Reaktion { get; set; } = new Attribut();
+        public Attribut Staerke { get; set; } = new Attribut();
+        public Attribut Charisma { get; set; } = new Attribut();
+        public Attribut Logik { get; set; } = new Attribut();
+        public Attribut Intuition { get; set; } = new Attribut();
+        public Attribut Willen { get; set; } = new Attribut();
+        public Attribut Magie { get; set; } = new Attribut();
+        public Attribut Resonanz { get; set; } = new Attribut();
 
         [JsonIgnore]
         public AllListEntry MI_Konsti { get; set; }
@@ -59,7 +59,7 @@ namespace ShadowRunHelper.CharController
             Willen = new Attribut();
             Magie = new Attribut();
             Resonanz = new Attribut();
-            RefreshIdentifiers();
+            RefreshIdentifiers(this);
 
             MI_Konsti = new AllListEntry(Konsti);
             MI_Geschick = new AllListEntry(Geschick);
@@ -87,24 +87,10 @@ namespace ShadowRunHelper.CharController
             };
         }
 
-        void RefreshIdentifiers()
-        {
-            Konsti.Bezeichner = CustomManager.GetString("Model_Attribut_Konsti/Text");
-            Geschick.Bezeichner = CustomManager.GetString("Model_Attribut_Geschick/Text");
-            Reaktion.Bezeichner = CustomManager.GetString("Model_Attribut_Reaktion/Text");
-            Staerke.Bezeichner = CustomManager.GetString("Model_Attribut_Staerke/Text");
-            Charisma.Bezeichner = CustomManager.GetString("Model_Attribut_Charisma/Text");
-            Logik.Bezeichner = CustomManager.GetString("Model_Attribut_Logik/Text");
-            Intuition.Bezeichner = CustomManager.GetString("Model_Attribut_Intuition/Text");
-            Willen.Bezeichner = CustomManager.GetString("Model_Attribut_Willen/Text");
-            Magie.Bezeichner = CustomManager.GetString("Model_Attribut_Magie/Text");
-            Resonanz.Bezeichner = CustomManager.GetString("Model_Attribut_Resonanz/Text");
-        }
-
         // Implement IController ##########################
         public override IEnumerable<AllListEntry> GetElementsForThingList()
         {
-            RefreshIdentifiers();
+            RefreshIdentifiers(this);
             var lstReturn = new List<AllListEntry>
             {
                 MI_Charisma,

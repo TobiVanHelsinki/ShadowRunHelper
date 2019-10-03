@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,33 +16,24 @@ namespace ShadowRunHelper.CharController
         [JsonIgnore]
         public new ObservableCollection<Berechnet> Data { get; protected set; }
 
-        Berechnet essenz = new Berechnet();
-        AllListEntry MI_Essenz;
-        public Berechnet Essenz { get => essenz; set => essenz = value; }
-        Berechnet _Limit_K = new Berechnet();
-        AllListEntry MI_Limit_K;
-        public Berechnet Limit_K { get => _Limit_K; set => _Limit_K = value; }
-        Berechnet _Limit_G = new Berechnet();
-        AllListEntry MI_Limit_G;
-        public Berechnet Limit_G { get => _Limit_G; set => _Limit_G = value; }
-        Berechnet _Limit_S = new Berechnet();
-        AllListEntry MI_Limit_S;
-        public Berechnet Limit_S { get => _Limit_S; set => _Limit_S = value; }
-        Berechnet _Laufen = new Berechnet();
-        AllListEntry MI_Laufen;
-        public Berechnet Laufen { get => _Laufen; set => _Laufen = value; }
-        Berechnet _Rennen = new Berechnet();
-        AllListEntry MI_Rennen;
-        public Berechnet Rennen { get => _Rennen; set => _Rennen = value; }
-        Berechnet _Tragen = new Berechnet();
-        AllListEntry MI_Tragen;
-        public Berechnet Tragen { get => _Tragen; set => _Tragen = value; }
-        Berechnet _MaxDamageK = new Berechnet();
-        AllListEntry MI_MaxDamageK;
-        public Berechnet MaxDamageK { get => _MaxDamageK; set => _MaxDamageK = value; }
-        Berechnet _MaxDamageG = new Berechnet();
-        AllListEntry MI_MaxDamageG;
-        public Berechnet MaxDamageG { get => _MaxDamageG; set => _MaxDamageG = value; }
+        readonly AllListEntry MI_Essenz;
+        public Berechnet Essenz { get; set; } = new Berechnet();
+        readonly AllListEntry MI_Limit_K;
+        public Berechnet Limit_K { get; set; } = new Berechnet();
+        readonly AllListEntry MI_Limit_G;
+        public Berechnet Limit_G { get; set; } = new Berechnet();
+        readonly AllListEntry MI_Limit_S;
+        public Berechnet Limit_S { get; set; } = new Berechnet();
+        readonly AllListEntry MI_Laufen;
+        public Berechnet Laufen { get; set; } = new Berechnet();
+        readonly AllListEntry MI_Rennen;
+        public Berechnet Rennen { get; set; } = new Berechnet();
+        readonly AllListEntry MI_Tragen;
+        public Berechnet Tragen { get; set; } = new Berechnet();
+        readonly AllListEntry MI_MaxDamageK;
+        public Berechnet MaxDamageK { get; set; } = new Berechnet();
+        readonly AllListEntry MI_MaxDamageG;
+        public Berechnet MaxDamageG { get; set; } = new Berechnet();
 
 
         AttributController AttributeRef;
@@ -51,7 +43,7 @@ namespace ShadowRunHelper.CharController
         // Start Stuff ########################################################
         public BerechnetController()
         {
-            RefreshIdentifiers();
+            RefreshIdentifiers(this);
             MI_Essenz = new AllListEntry(Essenz, "");
             MI_Limit_K = new AllListEntry(Limit_K, "");
             MI_Limit_G = new AllListEntry(Limit_G, "");
@@ -62,27 +54,16 @@ namespace ShadowRunHelper.CharController
             MI_MaxDamageG = new AllListEntry(MaxDamageG, "");
             MI_MaxDamageK = new AllListEntry(MaxDamageK, "");
 
-            Data = new ObservableCollection<Berechnet>();
-            Data.Add(Essenz);
-            Data.Add(Limit_K);
-            Data.Add(Limit_G);
-            Data.Add(Limit_S);
-            Data.Add(Laufen);
-            Data.Add(Rennen);
-            Data.Add(Tragen);
-        }
-
-        void RefreshIdentifiers()
-        {
-            Essenz.Bezeichner = CustomManager.GetString("Model_Berechnet_Essenz/Text");
-            Limit_K.Bezeichner = CustomManager.GetString("Model_Berechnet_Limit_K/Text");
-            Limit_G.Bezeichner = CustomManager.GetString("Model_Berechnet_Limit_G/Text");
-            Limit_S.Bezeichner = CustomManager.GetString("Model_Berechnet_Limit_S/Text");
-            Laufen.Bezeichner = CustomManager.GetString("Model_Berechnet_Laufen/Text");
-            Rennen.Bezeichner = CustomManager.GetString("Model_Berechnet_Rennen/Text");
-            Tragen.Bezeichner = CustomManager.GetString("Model_Berechnet_Tragen/Text");
-            MaxDamageG.Bezeichner = CustomManager.GetString("Model_Person_Schaden_G_max/Text");
-            MaxDamageK.Bezeichner = CustomManager.GetString("Model_Person_Schaden_K_max/Text");
+            Data = new ObservableCollection<Berechnet>
+            {
+                Essenz,
+                Limit_K,
+                Limit_G,
+                Limit_S,
+                Laufen,
+                Rennen,
+                Tragen
+            };
         }
 
         public void SetDependencies(Person p, ObservableCollection<Implantat> i, AttributController a)
@@ -112,8 +93,8 @@ namespace ShadowRunHelper.CharController
             RefreshLimitK();
             RefreshLimitSchadenG();
             RefreshLimitSchadenK();
-            RefreshLaufen(); 
-            RefreshRennen(); 
+            RefreshLaufen();
+            RefreshRennen();
             RefreshTragen();
         }
 
@@ -151,7 +132,7 @@ namespace ShadowRunHelper.CharController
         //Physical Limit: (STR x2 + BOD + REA) / 3
         protected void RefreshLimitK()
         {
-            Limit_K.Wert = Math.Ceiling( (AttributeRef.Staerke.ValueOf("Wert") * 2 + AttributeRef.Konsti.ValueOf("Wert") + AttributeRef.Reaktion.ValueOf("Wert")) / 3);
+            Limit_K.Wert = Math.Ceiling((AttributeRef.Staerke.ValueOf("Wert") * 2 + AttributeRef.Konsti.ValueOf("Wert") + AttributeRef.Reaktion.ValueOf("Wert")) / 3);
         }
 
         //Mental Limit: (LOG x2 + INT +WIL) / 3
@@ -169,7 +150,7 @@ namespace ShadowRunHelper.CharController
 
         protected void RefreshLaufen()
         {
-            Laufen.Wert = AttributeRef.Geschick.ValueOf("Wert") * 2; 
+            Laufen.Wert = AttributeRef.Geschick.ValueOf("Wert") * 2;
         }
         protected void RefreshRennen()
         {
@@ -185,7 +166,7 @@ namespace ShadowRunHelper.CharController
         // Implement IController ##########################
         public override IEnumerable<AllListEntry> GetElementsForThingList()
         {
-            RefreshIdentifiers();
+            RefreshIdentifiers(this);
             var lstReturn = new List<AllListEntry>
             {
                 MI_Essenz,
