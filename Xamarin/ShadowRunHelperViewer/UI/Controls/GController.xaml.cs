@@ -50,6 +50,12 @@ namespace ShadowRunHelperViewer
                 Setting = MyChar.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
                 IsVisible = Setting.Visibility;
                 Headline.Text = TypeHelper.ThingDefToString(Controller.eDataTyp, true);
+                var att = Controller.GetType().GetCustomAttributes(typeof(ShadowRunHelperControllerAttribute), true).FirstOrDefault() as ShadowRunHelperControllerAttribute;
+                if (att?.SupportsEdit == false)
+                {
+                    CatAddButton.IsVisible = false;
+                    CatMoreButton.IsVisible = false;
+                }
             }
             else
             {

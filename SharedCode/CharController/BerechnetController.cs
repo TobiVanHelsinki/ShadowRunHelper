@@ -11,6 +11,7 @@ using TLIB;
 
 namespace ShadowRunHelper.CharController
 {
+    [ShadowRunHelperController(SupportsEdit=false)]
     public class BerechnetController : Controller<Berechnet>
     {
         [JsonIgnore]

@@ -1052,9 +1052,9 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="{StaticResource ButtonSize}"/>
                     </Grid.ColumnDefinitions>
-                    <Button Text="&#xf067;" Style="{StaticResource ControllerIconButton}" Clicked="Add" TextColor="Default"/>
+                    <Button Text="&#xf067;" x:Name="CatAddButton" Style="{StaticResource ControllerIconButton}" Clicked="Add" TextColor="Default"/>
                     <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium"/>
-                    <Button Text="&#xf141;" Style="{StaticResource ControllerIconButton}" Clicked="Options" Grid.Column="2" TextColor="Default"/>
+                    <Button Text="&#xf141;" x:Name="CatMoreButton" Style="{StaticResource ControllerIconButton}" Clicked="Options" Grid.Column="2" TextColor="Default"/>
                 </Grid>
                 <ContentView Grid.Row="1" x:Name="Items_H"/>
                 <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray"/>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharController
 {
+    [ShadowRunHelperController(SupportsEdit=false)]
     public class FavoriteController : Controller<Thing>
     {
         public FavoriteController() : base(ThingDefs.Favorite)

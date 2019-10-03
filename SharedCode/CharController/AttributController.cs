@@ -4,10 +4,10 @@ using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using TLIB;
 
 namespace ShadowRunHelper.CharController
 {
+    [ShadowRunHelperController(SupportsEdit=false)]
     public class AttributController : Controller<Attribut>
     {
         [JsonIgnore]
@@ -137,4 +137,5 @@ namespace ShadowRunHelper.CharController
             throw new NotSupportedException();
         }
     }
+
 }
