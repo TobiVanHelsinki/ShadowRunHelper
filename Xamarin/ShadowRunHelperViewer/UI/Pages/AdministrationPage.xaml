@@ -78,35 +78,15 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <ScrollView Grid.Row="6" VerticalScrollBarVisibility="Never" BackgroundColor="LightGray">
-                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
-                    <!--<flex:FlexButton
-    WidthRequest="76"
-    HeightRequest="76"
-    CornerRadius="38"
-    HorizontalOptions="Center"
-    Icon="lightbulb.png"
-    ForegroundColor="#ffffff"
-    HighlightForegroundColor="#49516F"
-    BackgroundColor="#6279B8"
-    HighlightBackgroundColor="#8EA4D2" />-->
-
-                    <!--<resources:ContentButton Clicked="NewChar_Clicked" Margin="5">
-                        <StackLayout>
-                            <Label Text="&#xf013;" Style="{StaticResource IconLabel}"/>
-                            <Label Text="{resx:UiResources NewChar}"/>
-                        </StackLayout>
-                    </resources:ContentButton>-->
-                    <Button Text="{resx:UiResources NewChar}" Clicked="NewChar_Clicked" Margin="5"/>
-                    <Button Text="{resx:UiResources ImportChar}" Clicked="OpenFile" Grid.Column="2" Margin="5"/>
-                    <Button Text="{resx:UiResources CreateExampleChar}" AutomationProperties.HelpText="{resx:UiResources CreateExampleCharX}" Clicked="ExampleChar_Clicked" Grid.Column="1" Margin="5"/>
+            <ScrollView Grid.Row="6" Style="{StaticResource CommandBar}">
+                <StackLayout Style="{StaticResource CommandBarStack}">
+                    <Button Text="{resx:UiResources NewChar}" Clicked="NewChar_Clicked" Style="{StaticResource CommandBarButton}"/>
+                    <Button Text="{resx:UiResources ImportChar}" Clicked="OpenFile" Style="{StaticResource CommandBarButton}"/>
+                    <Button Text="{resx:UiResources CreateExampleChar}" Clicked="ExampleChar_Clicked" Style="{StaticResource CommandBarButton}"/>
+                    <Button Text="{resx:UiResources CreateExampleChar}" Clicked="ExampleChar_Clicked" Style="{StaticResource CommandBarButton}"/>
+                    <Button Text="{resx:UiResources CreateExampleChar}" Clicked="ExampleChar_Clicked" Style="{StaticResource CommandBarButton}"/>
                 </StackLayout>
             </ScrollView>
-            <!--<Grid Grid.Row="6">
-                <Button Text="{resx:UiResources NewChar}" AutomationProperties.HelpText="{resx:UiResources NewCharX}" Clicked="NewChar_Clicked" Margin="5"/>
-                <Button Text="{resx:UiResources CreateExampleChar}" AutomationProperties.HelpText="{resx:UiResources CreateExampleCharX}" Clicked="ExampleChar_Clicked" Grid.Column="1" Margin="5"/>
-                <Button Text="{resx:UiResources ImportChar}" Clicked="OpenFile" Grid.Column="2" Margin="5"/>
-            </Grid>-->
         </Grid>
     </ContentView.Content>
 </ContentView>

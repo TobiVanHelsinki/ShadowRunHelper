@@ -15,12 +15,13 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <Grid RowSpacing="0">
             <Grid.Resources>
                 <ResourceDictionary>
                     <Style x:Key="StretchIconButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
                         <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                         <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                        <Setter Property="Padding" Value="8"/>
                     </Style>
                 </ResourceDictionary>
             </Grid.Resources>
@@ -29,7 +30,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <ContentPresenter x:Name="ContentPlace"/>
-            <Grid x:Name="CommandBar" Grid.Row="1" Padding="5,0,5,5" Margin="0,0,0,5" ColumnSpacing="6">
+            <Grid x:Name="CommandBar" Grid.Row="1" ColumnSpacing="10">
                 <Button Grid.Column="0" Text="&#xf007;" Style="{StaticResource StretchIconButton}" Clicked="CharPage"  />
                 <Button Grid.Column="1" Text="&#xf0c0;" Style="{StaticResource StretchIconButton}" Clicked="Administration" />
                 <Button Grid.Column="2" Text="&#xf013;" Style="{StaticResource StretchIconButton}" Clicked="Settings" />

@@ -6,17 +6,51 @@
              mc:Ignorable="d"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
+             xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
+             xmlns:local="clr-namespace:ShadowRunHelperViewer"
              x:Class="ShadowRunHelperViewer.UI.Pages.MiscPage">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:CharModelStyles />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        <DataTemplate x:Key="Settings">
+            <controlsother:SettingsView />
+        </DataTemplate>
+        <DataTemplate x:Key="Infos">
+            <Label Text="Info"/>
+        </DataTemplate>
+        <DataTemplate x:Key="Buy">
+            <Label Text="Buy"/>
+        </DataTemplate>
+        <DataTemplate x:Key="Log">
+            <Label Text="Log"/>
+        </DataTemplate>
+        <DataTemplate x:Key="Help">
+            <Label Text="Help"/>
+        </DataTemplate>
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackLayout x:Name="TitleBar" BackgroundColor="Accent" MinimumWidthRequest="50" MinimumHeightRequest="10" Padding="10">
                 <Label x:Name="Intro1Text" Text="{resx:UiResources TitleMiscPage}" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
-            <controlsother:SettingsView Grid.Row="1"/>
+            <ContentView x:Name="Content" Grid.Row="1"/>
+            <ScrollView Grid.Row="2" Style="{StaticResource CommandBar}">
+                <StackLayout Style="{StaticResource CommandBarStack}">
+                    <Button Text="{resx:UiResources Optionen_U_Infos}" resources:Tag.Tag="Infos" Clicked="NavigateTo" Style="{StaticResource CommandBarButton}"/>
+                    <Button Text="{resx:UiResources Optionen_U_Einstellungen}" resources:Tag.Tag="Settings" Clicked="NavigateTo" Style="{StaticResource CommandBarButton}"/>
+                    <Button Text="{resx:UiResources Optionen_U_Buy}" resources:Tag.Tag="Buy" Clicked="NavigateTo" Style="{StaticResource CommandBarButton}"/>
+                    <Button Text="{resx:UiResources Optionen_U_Notifications}" resources:Tag.Tag="Log" Clicked="NavigateTo" Style="{StaticResource CommandBarButton}"/>
+                    <Button Text="{resx:UiResources Optionen_U_Hilfe}" resources:Tag.Tag="Help" Clicked="NavigateTo" Style="{StaticResource CommandBarButton}"/>
+                </StackLayout>
+            </ScrollView>
         </Grid>
     </ContentView.Content>
 </ContentView>

@@ -1,5 +1,6 @@
 ﻿using ShadowRunHelper;
 using ShadowRunHelperViewer.Platform;
+using ShadowRunHelperViewer.UI.Resources;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -42,5 +43,15 @@ namespace ShadowRunHelperViewer.UI.Pages
         }
         #endregion
 
+        private void NavigateTo(object sender, EventArgs e)
+        {
+            if (sender is Button b && b.GetValue(Tag.TagProperty) is string s)
+            {
+                if (Resources.ContainsKey(s) && Resources[s] is DataTemplate dt)
+                {
+                    Content.Content = dt.CreateContent() as View;
+                }
+            }
+        }
     }
 }

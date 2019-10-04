@@ -9,7 +9,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentView.Resources>
-    <Grid>
+    <Grid RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
