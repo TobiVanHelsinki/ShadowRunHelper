@@ -83,8 +83,6 @@
                     <Button Text="{resx:UiResources NewChar}" Clicked="NewChar_Clicked" Style="{StaticResource CommandBarButton}"/>
                     <Button Text="{resx:UiResources ImportChar}" Clicked="OpenFile" Style="{StaticResource CommandBarButton}"/>
                     <Button Text="{resx:UiResources CreateExampleChar}" Clicked="ExampleChar_Clicked" Style="{StaticResource CommandBarButton}"/>
-                    <Button Text="{resx:UiResources CreateExampleChar}" Clicked="ExampleChar_Clicked" Style="{StaticResource CommandBarButton}"/>
-                    <Button Text="{resx:UiResources CreateExampleChar}" Clicked="ExampleChar_Clicked" Style="{StaticResource CommandBarButton}"/>
                 </StackLayout>
             </ScrollView>
         </Grid>
