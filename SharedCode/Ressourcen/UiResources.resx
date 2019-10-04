@@ -151,10 +151,10 @@
     <value>Available savefiles:</value>
   </data>
   <data name="Optionen_AutoSave" xml:space="preserve">
-    <value>After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. A value between 2 and 10 seconds is okay.</value>
+    <value>Automated saves for chars</value>
   </data>
   <data name="Optionen_LoadOnStart" xml:space="preserve">
-    <value>The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time.</value>
+    <value>Load last char at startup</value>
   </data>
   <data name="Optionen_Inhaber" xml:space="preserve">
     <value>App owener</value>
@@ -204,7 +204,7 @@ This app can be used to open files and folders on the file system. The app store
     <value>Privacy Policy</value>
   </data>
   <data name="Optionen_EditAfterAdd" xml:space="preserve">
-    <value>Error not specified in detail: </value>
+    <value>Edit after add</value>
   </data>
   <data name="Nav_Char" xml:space="preserve">
     <value>Character Sheet</value>
@@ -216,16 +216,10 @@ This app can be used to open files and folders on the file system. The app store
     <value>Settings</value>
   </data>
   <data name="Optionen_DisplayRequest" xml:space="preserve">
-    <value>Prevent the Screen from locking</value>
+    <value>Prevent ScreenLock</value>
   </data>
   <data name="Repair" xml:space="preserve">
     <value>Auto-Fix</value>
-  </data>
-  <data name="Optionen_FileNameUseDate" xml:space="preserve">
-    <value>Add date and time to filename</value>
-  </data>
-  <data name="Optionen_FileNameUseProgres" xml:space="preserve">
-    <value>The file name is generated automatically and contains: Name of the char, karma, number of runs.</value>
   </data>
   <data name="Optionen_Kontakt_Mail" xml:space="preserve">
     <value>email</value>
@@ -235,9 +229,6 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="Optionen_ThrownException" xml:space="preserve">
     <value>Original Exception</value>
-  </data>
-  <data name="Optionen_Intern_Sync" xml:space="preserve">
-    <value>This will synchronize the files you have stored internally over all your Windows 10 devices. Synchronization occurs only if you have enabled the general sync option in WIndows and both devices have sufficient power and a Internetconnection.</value>
   </data>
   <data name="Optionen_Beta_Features" xml:space="preserve">
     <value>Activate Beta-Features</value>
@@ -366,13 +357,10 @@ This app can be used to open files and folders on the file system. The app store
     <value>Current Char</value>
   </data>
   <data name="Optionen_Group_File" xml:space="preserve">
-    <value>file management</value>
+    <value>Filemanagement</value>
   </data>
   <data name="Optionen_Group_IO" xml:space="preserve">
     <value>Saving and loading</value>
-  </data>
-  <data name="Optionen_Group_Other" xml:space="preserve">
-    <value>Other</value>
   </data>
   <data name="CSV_Cat_ExportX" xml:space="preserve">
     <value>Saves this category in CSV format (Excel compatible) in a folder.</value>
@@ -407,9 +395,6 @@ This app can be used to open files and folders on the file system. The app store
   <data name="CreateExampleCharX" xml:space="preserve">
     <value>Load the example/turorial character sheet into the current folder</value>
   </data>
-  <data name="NeuCharX" xml:space="preserve">
-    <value>Use it to create a new character sheet</value>
-  </data>
   <data name="OpenFolderSTDTip" xml:space="preserve">
     <value>Open the folder where all your character sheets are located.</value>
   </data>
@@ -421,9 +406,6 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="FileExportTip" xml:space="preserve">
     <value>Copy this file to another location.</value>
-  </data>
-  <data name="LoadCharTip" xml:space="preserve">
-    <value>Opens this file.</value>
   </data>
   <data name="CSV_Cat_Export_SelectedX" xml:space="preserve">
     <value>Saves selected entries of this category in CSV format (Excel compatible) in a folder.</value>
@@ -454,9 +436,6 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="Cat_AddSep" xml:space="preserve">
     <value>Add Seperator</value>
-  </data>
-  <data name="Optionen_Debug_Mode" xml:space="preserve">
-    <value>Enables various Notifications about time and stuff</value>
   </data>
   <data name="CharSettings" xml:space="preserve">
     <value>Character sheet settings</value>
@@ -490,9 +469,6 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="TipHeader" xml:space="preserve">
     <value>Tip</value>
-  </data>
-  <data name="Optionen_Disable_Tips" xml:space="preserve">
-    <value>Disable the tips while loading.</value>
   </data>
   <data name="SubtractLifeStyleCost" xml:space="preserve">
     <value>Subtract Lifestyle cost</value>
@@ -538,5 +514,38 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="IntroAdministration" xml:space="preserve">
     <value>Select a Entry from the list below to load a charactersheet or create a new one.</value>
+  </data>
+  <data name="ImportChar" xml:space="preserve">
+    <value>Import Char</value>
+  </data>
+  <data name="TitleOtherPage" xml:space="preserve">
+    <value>Info and Settings</value>
+  </data>
+  <data name="TitleAdministrationPage" xml:space="preserve">
+    <value>Welcome to ShadowRunHelper.</value>
+  </data>
+  <data name="TitleMiscPage" xml:space="preserve">
+    <value>Info and Settings</value>
+  </data>
+  <data name="IntroSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Optionen_BACKUP_VERSIONING" xml:space="preserve">
+    <value>BackUp versioning</value>
+  </data>
+  <data name="Optionen_AutoSaveTip" xml:space="preserve">
+    <value>After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. A value between 2 and 10 seconds is okay.</value>
+  </data>
+  <data name="Optionen_LoadOnStartTip" xml:space="preserve">
+    <value>The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time.</value>
+  </data>
+  <data name="Optionen_DisplayRequestTip" xml:space="preserve">
+    <value>Prevent the Screen from locking</value>
+  </data>
+  <data name="Optionen_EditAfterAddTip" xml:space="preserve">
+    <value>After you have created an object, the edit dialog is called immediately.</value>
   </data>
 </root>

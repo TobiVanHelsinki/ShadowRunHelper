@@ -29,14 +29,10 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <ContentPresenter x:Name="ContentPlace"/>
-            <Label BackgroundColor="Beige" x:Name="LogView" IsVisible="False"/>
-            <Grid x:Name="CommandBar" Grid.Row="1" HorizontalOptions="FillAndExpand" Padding="5,0,5,5" ColumnSpacing="6">
+            <Grid x:Name="CommandBar" Grid.Row="1" Padding="5,0,5,5" Margin="0,0,0,5" ColumnSpacing="6">
                 <Button Grid.Column="0" Text="&#xf007;" Style="{StaticResource StretchIconButton}" Clicked="CharPage"  />
                 <Button Grid.Column="1" Text="&#xf0c0;" Style="{StaticResource StretchIconButton}" Clicked="Administration" />
                 <Button Grid.Column="2" Text="&#xf013;" Style="{StaticResource StretchIconButton}" Clicked="Settings" />
-                <!--<Button Grid.Column="3" Text="&#xf188;" Style="{StaticResource StretchIconButton}" Clicked="Debug" />-->
-                <!--<Button Grid.Column="4" Text="&#xf787;" Style="{StaticResource StretchIconButton}" Clicked="Decarrot" />-->
-                <!--<Button Grid.Column="5" Text="&#xf071;" Style="{StaticResource StretchIconButton}" Clicked="ShowLog" IsVisible="False" x:Name="LogButton"/>-->
             </Grid>
         </Grid>
     </ContentPage.Content>

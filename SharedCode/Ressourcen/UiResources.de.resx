@@ -151,10 +151,10 @@
     <value>Verfügbare Speicherdateien:</value>
   </data>
   <data name="Optionen_AutoSave" xml:space="preserve">
-    <value>Nach einer Änderung wird die angegebene Zeit gewartet, bis dein Char gespeichert wird. Wenn du schnell und viel änderst, dann gib besser einen größeren Wert an. Ein Wert zwischen 2 und 10 Sekunden ist angemessen.</value>
+    <value>Char bei Änderung automatisch speichern</value>
   </data>
   <data name="Optionen_LoadOnStart" xml:space="preserve">
-    <value>Der Char, der beim Schließen der App aktiv war, wird beim Starten geladen. Achtung, dies erhöht die App-Ladezeit.</value>
+    <value>Letzten Char beim Start automatisch laden</value>
   </data>
   <data name="Char_Schaden_Geist" xml:space="preserve">
     <value>Geistig</value>
@@ -204,7 +204,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Körper</value>
   </data>
   <data name="Optionen_EditAfterAdd" xml:space="preserve">
-    <value>Nachdem du ein Objekt erstellt hast, wird sofort der bearbeiten Dialog aufgerufen.</value>
+    <value>Bearbeiten nach hinzufügren</value>
   </data>
   <data name="Nav_Char" xml:space="preserve">
     <value>Charakterbogen</value>
@@ -216,7 +216,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Einstellungen</value>
   </data>
   <data name="Optionen_DisplayRequest" xml:space="preserve">
-    <value>Damit verhinderst du, dass dein Bildschirm ausgeht, wenn du einen Char offen hast.</value>
+    <value>Sperrbildschirm verhindern</value>
   </data>
   <data name="Repair" xml:space="preserve">
     <value>Reparieren</value>
@@ -229,9 +229,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="Optionen_ThrownException" xml:space="preserve">
     <value>Original Exception</value>
-  </data>
-  <data name="Optionen_Intern_Sync" xml:space="preserve">
-    <value>Aktiviert Windows10 Geräte-Synchronisation. Achtung: Die Synchronisation kann etwas langsam sein.</value>
   </data>
   <data name="Optionen_Beta_Features" xml:space="preserve">
     <value>Beta-Features aktivieren</value>
@@ -250,9 +247,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="Optionen_U_Einstellungen_Tip" xml:space="preserve">
     <value>Halte mit der Maus oder dem Finger auf das ?, um mehr Informationen zu erhalten.</value>
-  </data>
-  <data name="NeuCharX" xml:space="preserve">
-    <value>Erstelle damit einen neuen Charakterbogen</value>
   </data>
   <data name="CreateExampleCharX" xml:space="preserve">
     <value>Laden den Beispiel/Turorial-Charakterbogen in den aktuellen Ordner</value>
@@ -362,9 +356,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Optionen_Group_IO" xml:space="preserve">
     <value>Speichern und Laden</value>
   </data>
-  <data name="Optionen_Group_Other" xml:space="preserve">
-    <value>Anderes</value>
-  </data>
   <data name="CSV_Cat_ExportX" xml:space="preserve">
     <value>Speichert diese Kategorie im CSV Format (Excel Kompatible) in einem Ordner.</value>
   </data>
@@ -437,9 +428,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Cat_AddSep" xml:space="preserve">
     <value>Seperator hinzufügen</value>
   </data>
-  <data name="Optionen_Debug_Mode" xml:space="preserve">
-    <value>Verschiedene Benachrichtigungen über Zeit und andere Dinge</value>
-  </data>
   <data name="CharSettings" xml:space="preserve">
     <value>Charakterbogen Einstellungen</value>
   </data>
@@ -482,9 +470,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="TipHeader" xml:space="preserve">
     <value>Tipp</value>
   </data>
-  <data name="Optionen_Disable_Tips" xml:space="preserve">
-    <value>Deaktiviere die Tipp-anzeige während des Ladens</value>
-  </data>
   <data name="SubtractLifeStyleCost" xml:space="preserve">
     <value>Lebensstilkosten abziehen</value>
   </data>
@@ -505,9 +490,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="OpenFolderSTDTip" xml:space="preserve">
     <value>Öffne den Ordner, in dem alle deine Charakterbögen liegen.</value>
-  </data>
-  <data name="LoadCharTip" xml:space="preserve">
-    <value>Öffnet diese Datei.</value>
   </data>
   <data name="SaveTip" xml:space="preserve">
     <value>Speichert den Charakterbogen.</value>
@@ -532,5 +514,38 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="IntroAdministration" xml:space="preserve">
     <value>Wähle einen Eintrag aus der Liste, um einen Charakterbogen zu öffnen oder erstelle einen neuen.</value>
+  </data>
+  <data name="ImportChar" xml:space="preserve">
+    <value>Char Importieren</value>
+  </data>
+  <data name="TitleOtherPage" xml:space="preserve">
+    <value>Info und Einstellungen</value>
+  </data>
+  <data name="TitleAdministrationPage" xml:space="preserve">
+    <value>Willkommen im ShadowRunHelper</value>
+  </data>
+  <data name="TitleMiscPage" xml:space="preserve">
+    <value>Info und Einstellungen</value>
+  </data>
+  <data name="IntroSettings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="Optionen_BACKUP_VERSIONING" xml:space="preserve">
+    <value>BackUp Versionierung</value>
+  </data>
+  <data name="Optionen_AutoSaveTip" xml:space="preserve">
+    <value>Nach einer Änderung wird die angegebene Zeit gewartet, bis dein Char gespeichert wird. Wenn du schnell und viel änderst, dann gib besser einen größeren Wert an. Ein Wert zwischen 2 und 10 Sekunden ist angemessen.</value>
+  </data>
+  <data name="Optionen_LoadOnStartTip" xml:space="preserve">
+    <value>Der Char, der beim Schließen der App aktiv war, wird beim Starten geladen. Achtung, dies erhöht die App-Ladezeit.</value>
+  </data>
+  <data name="Optionen_DisplayRequestTip" xml:space="preserve">
+    <value>Damit verhinderst du, dass dein Bildschirm ausgeht, wenn du einen Char offen hast.</value>
+  </data>
+  <data name="Optionen_EditAfterAddTip" xml:space="preserve">
+    <value>Nachdem du ein Objekt erstellt hast, wird sofort der bearbeiten Dialog aufgerufen.</value>
   </data>
 </root>

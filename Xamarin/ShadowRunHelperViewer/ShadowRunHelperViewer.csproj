@@ -46,9 +46,15 @@
     <Compile Update="UI\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="UI\Pages\MiscPage.xaml.cs">
+      <DependentUpon>MiscPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="UI\ControlsOther\SettingsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="UI\Controls\AdditionalValue.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -70,22 +76,13 @@
     <EmbeddedResource Update="UI\Pages\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="UI\Pages\SettingsPage.xaml">
+    <EmbeddedResource Update="UI\Pages\MiscPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <None Update="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="CategoryView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="GController.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
   </ItemGroup>

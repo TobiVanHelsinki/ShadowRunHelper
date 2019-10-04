@@ -457,6 +457,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export ähnelt.
+        /// </summary>
+        public static string Export {
+            get {
+                return ResourceManager.GetString("Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save all in external folder ähnelt.
         /// </summary>
         public static string ExportAll {
@@ -471,6 +480,15 @@ namespace SharedCode.Ressourcen {
         public static string ExportAllX {
             get {
                 return ResourceManager.GetString("ExportAllX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Copy this file to another location. ähnelt.
+        /// </summary>
+        public static string ExportTip {
+            get {
+                return ResourceManager.GetString("ExportTip", resourceCulture);
             }
         }
         
@@ -502,7 +520,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Delete this file permanently ähnelt.
         /// </summary>
         public static string FileDeleteTip {
             get {
@@ -529,11 +547,29 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Filename ähnelt.
+        /// </summary>
+        public static string FileName {
+            get {
+                return ResourceManager.GetString("FileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Rename ähnelt.
         /// </summary>
         public static string FileRename {
             get {
                 return ResourceManager.GetString("FileRename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Filesize ähnelt.
+        /// </summary>
+        public static string FileSize {
+            get {
+                return ResourceManager.GetString("FileSize", resourceCulture);
             }
         }
         
@@ -565,6 +601,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Import Char ähnelt.
+        /// </summary>
+        public static string ImportChar {
+            get {
+                return ResourceManager.GetString("ImportChar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save Intern ähnelt.
         /// </summary>
         public static string Intern_Save_Display {
@@ -574,20 +619,29 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Select a Entry from the list below to load a charactersheet or create a new one. ähnelt.
+        /// </summary>
+        public static string IntroAdministration {
+            get {
+                return ResourceManager.GetString("IntroAdministration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
+        /// </summary>
+        public static string IntroSettings {
+            get {
+                return ResourceManager.GetString("IntroSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Open ähnelt.
         /// </summary>
         public static string LoadChar {
             get {
                 return ResourceManager.GetString("LoadChar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Opens this file. ähnelt.
-        /// </summary>
-        public static string LoadCharTip {
-            get {
-                return ResourceManager.GetString("LoadCharTip", resourceCulture);
             }
         }
         
@@ -615,15 +669,6 @@ namespace SharedCode.Ressourcen {
         public static string Nav_Settings {
             get {
                 return ResourceManager.GetString("Nav_Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Use it to create a new character sheet ähnelt.
-        /// </summary>
-        public static string NeuCharX {
-            get {
-                return ResourceManager.GetString("NeuCharX", resourceCulture);
             }
         }
         
@@ -700,7 +745,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. A value between 2 and 10 seconds is okay. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Automated saves for chars ähnelt.
         /// </summary>
         public static string Optionen_AutoSave {
             get {
@@ -714,6 +759,24 @@ namespace SharedCode.Ressourcen {
         public static string Optionen_AutoSaveInterval {
             get {
                 return ResourceManager.GetString("Optionen_AutoSaveInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. A value between 2 and 10 seconds is okay. ähnelt.
+        /// </summary>
+        public static string Optionen_AutoSaveTip {
+            get {
+                return ResourceManager.GetString("Optionen_AutoSaveTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die BackUp versioning ähnelt.
+        /// </summary>
+        public static string Optionen_BACKUP_VERSIONING {
+            get {
+                return ResourceManager.GetString("Optionen_BACKUP_VERSIONING", resourceCulture);
             }
         }
         
@@ -746,25 +809,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Enables various Notifications about time and stuff ähnelt.
-        /// </summary>
-        public static string Optionen_Debug_Mode {
-            get {
-                return ResourceManager.GetString("Optionen_Debug_Mode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Disable the tips while loading. ähnelt.
-        /// </summary>
-        public static string Optionen_Disable_Tips {
-            get {
-                return ResourceManager.GetString("Optionen_Disable_Tips", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Prevent the Screen from locking ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Prevent ScreenLock ähnelt.
         /// </summary>
         public static string Optionen_DisplayRequest {
             get {
@@ -773,7 +818,16 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Error not specified in detail:  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Prevent the Screen from locking ähnelt.
+        /// </summary>
+        public static string Optionen_DisplayRequestTip {
+            get {
+                return ResourceManager.GetString("Optionen_DisplayRequestTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Edit after add ähnelt.
         /// </summary>
         public static string Optionen_EditAfterAdd {
             get {
@@ -782,20 +836,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Add date and time to filename ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die After you have created an object, the edit dialog is called immediately. ähnelt.
         /// </summary>
-        public static string Optionen_FileNameUseDate {
+        public static string Optionen_EditAfterAddTip {
             get {
-                return ResourceManager.GetString("Optionen_FileNameUseDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The file name is generated automatically and contains: Name of the char, karma, number of runs. ähnelt.
-        /// </summary>
-        public static string Optionen_FileNameUseProgres {
-            get {
-                return ResourceManager.GetString("Optionen_FileNameUseProgres", resourceCulture);
+                return ResourceManager.GetString("Optionen_EditAfterAddTip", resourceCulture);
             }
         }
         
@@ -809,7 +854,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die file management ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Filemanagement ähnelt.
         /// </summary>
         public static string Optionen_Group_File {
             get {
@@ -827,29 +872,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Other ähnelt.
-        /// </summary>
-        public static string Optionen_Group_Other {
-            get {
-                return ResourceManager.GetString("Optionen_Group_Other", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die App owener ähnelt.
         /// </summary>
         public static string Optionen_Inhaber {
             get {
                 return ResourceManager.GetString("Optionen_Inhaber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This will synchronize the files you have stored internally over all your Windows 10 devices. Synchronization occurs only if you have enabled the general sync option in WIndows and both devices have sufficient power and a Internetconnection. ähnelt.
-        /// </summary>
-        public static string Optionen_Intern_Sync {
-            get {
-                return ResourceManager.GetString("Optionen_Intern_Sync", resourceCulture);
             }
         }
         
@@ -873,11 +900,20 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Load last char at startup ähnelt.
         /// </summary>
         public static string Optionen_LoadOnStart {
             get {
                 return ResourceManager.GetString("Optionen_LoadOnStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time. ähnelt.
+        /// </summary>
+        public static string Optionen_LoadOnStartTip {
+            get {
+                return ResourceManager.GetString("Optionen_LoadOnStartTip", resourceCulture);
             }
         }
         
@@ -1229,6 +1265,42 @@ namespace SharedCode.Ressourcen {
         public static string TipHeader {
             get {
                 return ResourceManager.GetString("TipHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Welcome to ShadowRunHelper. ähnelt.
+        /// </summary>
+        public static string TitleAdministrationPage {
+            get {
+                return ResourceManager.GetString("TitleAdministrationPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Info and Settings ähnelt.
+        /// </summary>
+        public static string TitleMiscPage {
+            get {
+                return ResourceManager.GetString("TitleMiscPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Info and Settings ähnelt.
+        /// </summary>
+        public static string TitleOtherPage {
+            get {
+                return ResourceManager.GetString("TitleOtherPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
+        /// </summary>
+        public static string TitleSettings {
+            get {
+                return ResourceManager.GetString("TitleSettings", resourceCulture);
             }
         }
         

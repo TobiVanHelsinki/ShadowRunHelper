@@ -2,7 +2,6 @@
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using TLIB;
 using Xamarin.Forms;
@@ -17,8 +16,6 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             AppModel.Instance.NavigationRequested += Instance_NavigationRequested;
             InitializeComponent();
-            //AppModel.Instance.RequestNavigation(ProjectPages.Administration);
-            TLIB.Log.NewLogArrived += Log_NewLogArrived;
             AppModel.Instance.PropertyChanged += Instance_PropertyChanged;
         }
 
@@ -31,23 +28,24 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             switch (page)
             {
-                case ShadowRunHelper.ProjectPages.undef:
+                case ProjectPages.undef:
                     break;
-                case ShadowRunHelper.ProjectPages.Char:
+                case ProjectPages.Char:
                     if (AppModel.Instance.MainObject is CharHolder ch)
                     {
                         NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(ch));
                     }
                     else
                     {
-                        NavigatoToSingleInstanceOf<AdministrationPage>(false, (x) => x.Activate());
+                        goto Administration;
                     }
                     break;
-                case ShadowRunHelper.ProjectPages.Administration:
-                    NavigatoToSingleInstanceOf<AdministrationPage>();
+                case ProjectPages.Administration:
+                    Administration:
+                        NavigatoToSingleInstanceOf<AdministrationPage>(false, (x) => x.Activate());
                     break;
-                case ShadowRunHelper.ProjectPages.Settings:
-                    NavigatoToSingleInstanceOf<SettingsPage>();
+                case ProjectPages.Settings:
+                    NavigatoToSingleInstanceOf<MiscPage>(false, (x) => x.Activate());
                     break;
                 default:
                     break;
@@ -130,48 +128,5 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        #region DEBUG
-        void Decarrot(object sender, EventArgs e)
-        {
-#if DEBUG
-            //sssss
-#endif
-        }
-
-        async void Debug(object sender, EventArgs e)
-        {
-#if DEBUG
-            try
-            {
-                var rootFolder = FileSystem.Current.RoamingStorage;
-                foreach (var item in (await rootFolder.GetFilesAsync()))
-                {
-                    System.Console.WriteLine(item.Path);
-                }
-                var folder = await rootFolder.CreateFolderAsync("MySubFolder", CreationCollisionOption.OpenIfExists);
-                var file = await folder.CreateFileAsync("answer.txt", CreationCollisionOption.ReplaceExisting);
-                await file.WriteAllTextAsync("42");
-            }
-            catch (Exception)
-            {
-            }
-#endif
-
-        }
-        #endregion
-
-        private void Log_NewLogArrived(TLIB.LogMessage logmessage)
-        {
-            TAPPLICATION.PlatformHelper.ExecuteOnUIThreadAsync(() =>
-            {
-                //LogButton.IsVisible = true;
-                //LogView.Text = TLIB.Log.InMemoryLog.Reverse<string>().Aggregate((a, c) => a += Environment.NewLine + c);
-            });
-        }
-
-        private void ShowLog(object sender, EventArgs e)
-        {
-            LogView.IsVisible = !LogView.IsVisible;
-        }
     }
 }
