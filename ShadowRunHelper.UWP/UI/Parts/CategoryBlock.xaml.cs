@@ -87,7 +87,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CustomManager.GetString("Notification_Error_CSVImportFail") + "1", ex);
+                Log.Write(CustomManager.GetString("Notification_Error_CSVImportFail") + "1", ex);
             }
             try
             {
@@ -99,7 +99,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CustomManager.GetString("Notification_Error_CSVImportFail") + "2", ex);
+                Log.Write(CustomManager.GetString("Notification_Error_CSVImportFail") + "2", ex);
             }
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Import");
         }
@@ -119,7 +119,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
+                Log.Write(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export");
         }
@@ -139,7 +139,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
+                Log.Write(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export_Selected");
         }
@@ -156,7 +156,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CustomManager.GetString("Notification_Error_LogicFail"), ex);
+                Log.Write(CustomManager.GetString("Notification_Error_LogicFail"), ex);
             }
         }
         #endregion
@@ -222,7 +222,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification("", ex);
+                Log.Write("", ex);
             }
         }
 
@@ -322,7 +322,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification("", ex);
+                Log.Write("", ex);
             }
         }
     }

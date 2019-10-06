@@ -25,7 +25,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                AppModel.Instance?.NewNotification(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
+                Log.Write(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
             }
             Features.Analytics.TrackEvent("Admin_UI_TxT_CSV_Cat_Export");
         }

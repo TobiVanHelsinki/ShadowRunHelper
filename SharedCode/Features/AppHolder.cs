@@ -79,8 +79,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                TAPPLICATION.Debugging.TraceException(ex); TAPPLICATION.Debugging.TraceException(ex);
-                TAPPLICATION.Debugging.TraceException(ex);
+                Log.Write("Could not Analytics.Init", ex, logType: LogType.Error);
             }
         }
 
@@ -129,7 +128,7 @@ namespace ShadowRunHelper
                     Settings.CHARINTEMPSTORE = true;
                 }
                 catch (Exception ex)
-                { TAPPLICATION.Debugging.TraceException(ex); }
+                { Log.Write("Could not EnteredBackground", ex, logType: LogType.Error); }
             }
         }
 
@@ -158,21 +157,21 @@ namespace ShadowRunHelper
                         }
                         catch (Exception ex)
                         {
-                            Model.NewNotification(CustomManager.GetString("Notification_Error_FileActivation"), ex);
+                            Log.Write(CustomManager.GetString("Notification_Error_FileActivation"), ex);
                         }
                     }
                     if (Settings.FORCE_LOAD_CHAR_ON_START)
                     {
-                        Model.NewNotification(CustomManager.GetString("Notification_Char_Loaded_File"));
+                        Log.Write(CustomManager.GetString("Notification_Char_Loaded_File"));
                     }
                     else
                     {
-                        Model.NewNotification(CustomManager.GetString("Notification_Char_Loaded_Start"));
+                        Log.Write(CustomManager.GetString("Notification_Char_Loaded_Start"));
                     }
                 }
             }
             catch (Exception ex)
-            { TAPPLICATION.Debugging.TraceException(ex); }
+            { Log.Write("Could not", ex, logType: LogType.Error); }
             finally
             {
                 Model.CharInProgress = null;

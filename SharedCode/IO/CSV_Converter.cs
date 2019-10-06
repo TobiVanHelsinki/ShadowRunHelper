@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TLIB;
 
 namespace ShadowRunHelper.IO
 {
@@ -50,7 +51,7 @@ namespace ShadowRunHelper.IO
                     }
                     catch (Exception ex)
                     {
-                        TAPPLICATION.Debugging.TraceException(ex);
+                        Log.Write("Could not", ex, logType: LogType.Error);
                         continue;
                     }
                     j++;

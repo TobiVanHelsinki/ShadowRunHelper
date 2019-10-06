@@ -7,7 +7,6 @@
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.ControlsOther.SettingsView">
     <ContentView.Content>
-        <Frame Padding="10,0,10,0" BackgroundColor="White" CornerRadius="0">
             <TableView>
                 <TableRoot Title="{resx:UiResources TitleSettings}">
                     <TableSection Title="{resx:UiResources Optionen_Group_Char}">
@@ -31,6 +30,5 @@
                     </TableSection>
                 </TableRoot>
             </TableView>
-        </Frame>
     </ContentView.Content>
 </ContentView>

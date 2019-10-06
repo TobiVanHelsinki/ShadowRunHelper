@@ -202,7 +202,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CustomManager.GetString("Error_LoadCharFolder"), ex);
+                Log.Write(CustomManager.GetString("Error_LoadCharFolder"), ex);
             }
             Summorys_AktualisierenInProgress = false;
         }
@@ -300,7 +300,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CustomManager.GetString("Notification_Error_LoadFail"), ex);
+                Log.Write(CustomManager.GetString("Notification_Error_LoadFail"), ex);
             }
             if (Model.MainObject != null)
             {
@@ -325,7 +325,7 @@ namespace ShadowRunHelper.UI
                 }
                 catch (Exception ex)
                 {
-                    Model.NewNotification(CustomManager.GetString("Notification_Error_DelFail"), ex);
+                    Log.Write(CustomManager.GetString("Notification_Error_DelFail"), ex);
                 }
             }
             await new MultiButtonMessageDialog(CustomManager.GetString("Request_Delete/Title")
@@ -367,7 +367,7 @@ namespace ShadowRunHelper.UI
                 }
                 catch (Exception ex)
                 {
-                    Model.NewNotification("Error", ex);
+                    Log.Write("Error", ex);
                 }
                 ChangeProgress(false);
                 await Summorys_Aktualisieren();
@@ -383,7 +383,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CustomManager.GetString("Notification_Error_FileExportFail"), ex);
+                Log.Write(CustomManager.GetString("Notification_Error_FileExportFail"), ex);
             }
             ChangeProgress(false);
         }
@@ -410,7 +410,7 @@ namespace ShadowRunHelper.UI
                 }
                 catch (Exception ex)
                 {
-                    Model.NewNotification("Error", ex);
+                    Log.Write("Error", ex);
                 }
                 ChangeProgress(false);
             }

@@ -39,14 +39,14 @@ namespace ShadowRunHelper
                     }
                     catch (Exception ex)
                     {
-                        TAPPLICATION.Debugging.TraceException(ex);
+                        Log.Write("Could not", ex, logType: LogType.Error);
                         ErrorList.Add(item.OLD.Name);
                     }
                 }
             }
             catch (Exception ex)
             {
-                TAPPLICATION.Debugging.TraceException(ex);
+                Log.Write("Could not", ex, logType: LogType.Error);
             }
             // Import Chars
             try
@@ -60,14 +60,14 @@ namespace ShadowRunHelper
                     }
                     catch (Exception ex)
                     {
-                        TAPPLICATION.Debugging.TraceException(ex);
+                        Log.Write("Could not", ex, logType: LogType.Error);
                         ErrorList.Add(item.Item1);
                     }
                 }
             }
             catch (Exception ex)
             {
-                TAPPLICATION.Debugging.TraceException(ex);
+                Log.Write("Could not", ex, logType: LogType.Error);
             }
             InProgress = false;
             if (ErrorList.Count != 0)
@@ -77,11 +77,11 @@ namespace ShadowRunHelper
                 {
                     Errors += item + "\n";
                 }
-                Model.AppModel.Instance?.NewNotification(CustomManager.GetString("AppImportErrors") + "\n\n" + Errors, false);
+                Log.Write(CustomManager.GetString("AppImportErrors") + "\n\n" + Errors, false);
             }
             else
             {
-                Model.AppModel.Instance?.NewNotification(CustomManager.GetString("AppImportNoErrors"), false);
+                Log.Write(CustomManager.GetString("AppImportNoErrors"), false);
             }
         }
     }

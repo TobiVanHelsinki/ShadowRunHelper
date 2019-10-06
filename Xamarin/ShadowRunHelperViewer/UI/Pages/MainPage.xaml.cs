@@ -45,7 +45,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                         NavigatoToSingleInstanceOf<AdministrationPage>(false, (x) => x.Activate());
                     break;
                 case ProjectPages.Settings:
-                    NavigatoToSingleInstanceOf<MiscPage>(false, (x) => x.Activate());
+                    NavigatoToSingleInstanceOf<MiscPage>(false, (x) => x.AfterLoad());
                     break;
                 default:
                     break;

@@ -55,11 +55,11 @@ namespace ShadowRunHelper.UI
         Random r = new Random();
         void Debug3(object sender, RoutedEventArgs e)
         {
-            Model.NewNotification(" Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test" + r.Next(), true);
+            Log.Write(" Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test" + r.Next(), true);
         }
         void Debug4(object sender, RoutedEventArgs e)
         {
-            Model.NewNotification("Test" + r.Next(), false);
+            Log.Write("Test" + r.Next(), false);
         }
 #endif
         void CreateDebugChar(object sender, RoutedEventArgs e)
@@ -240,8 +240,8 @@ namespace ShadowRunHelper.UI
             NavigationRequested(ProjectPages.Char, ProjectPagesOptions.Nothing);
             if (SettingsModel.I.LAST_APP_VERSION != Constants.APP_VERSION_BUILD_DELIM)
             {
-                Model.NewNotification(CustomManager.GetString("VersionHistory"), true, 0);
-                Model.NewNotification(
+                Log.Write(CustomManager.GetString("VersionHistory"), true, 0);
+                Log.Write(
                     string.Format(
                         CustomManager.GetString("Notification_NewVersion"),Constants.APP_VERSION_BUILD_DELIM
                         ), 10);
@@ -343,7 +343,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CustomManager.GetString("Notification_Error_SaveFail"), ex);
+                Log.Write(CustomManager.GetString("Notification_Error_SaveFail"), ex);
             }
         }
         void Click_Delete(object sender, RoutedEventArgs e)
@@ -374,7 +374,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CustomManager.GetString("Notification_Error_FileExportFail"), ex);
+                Log.Write(CustomManager.GetString("Notification_Error_FileExportFail"), ex);
             }
         }
         void Click_UI_TxT_CSV_Cat_Exportport(object sender, RoutedEventArgs e)
@@ -389,7 +389,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                Model.NewNotification(CustomManager.GetString("Notification_Error_RepairFail"), ex);
+                Log.Write(CustomManager.GetString("Notification_Error_RepairFail"), ex);
             }
         }
         void Click_OpenFolder(object sender, RoutedEventArgs e)

@@ -229,7 +229,8 @@ namespace ShadowRunHelper.CharModel
                 return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ {
+                Log.Write("Could not", ex, logType: LogType.Error);
                 return 0;
             }
         }
@@ -247,7 +248,8 @@ namespace ShadowRunHelper.CharModel
                     return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
                 }
                 catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ { 
+                    Log.Write("Could not", ex, logType: LogType.Error);
                     return 0;
                 }
             }
@@ -319,7 +321,8 @@ namespace ShadowRunHelper.CharModel
                     target = (Thing)Activator.CreateInstance(this.GetType());
                 }
                 catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ {
+                    Log.Write("Could not", ex, logType: LogType.Error);
                     return false;
                 }
             }
@@ -330,7 +333,8 @@ namespace ShadowRunHelper.CharModel
                     item.SetValue(target, item.GetValue(this));
                 }
                 catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ {
+                    Log.Write("Could not", ex, logType: LogType.Error);
                     ret = false;
                 }
             }
@@ -344,7 +348,8 @@ namespace ShadowRunHelper.CharModel
                     CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
                 }
                 catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ {
+                    Log.Write("Could not", ex, logType: LogType.Error);
                     ret = false;
                 }
             }

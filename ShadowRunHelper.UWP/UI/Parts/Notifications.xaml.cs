@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using TAPPLICATION.Model;
+using TLIB;
 using Windows.Foundation.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -11,8 +12,8 @@ namespace ShadowRunHelper.UI
 {
     public sealed partial class NotificationsDialog : ContentDialog
     {
-        readonly ObservableCollection<Notification> Notifications = AppModel.Instance?.lstNotifications;
-        readonly IEnumerable<Notification> NewNotifications = AppModel.Instance?.lstNotifications.Where(x=>!x.IsRead);
+        readonly ObservableCollection<LogMessage> Notifications = AppModel.Instance?.lstNotifications;
+        readonly IEnumerable<LogMessage> NewNotifications = AppModel.Instance?.lstNotifications/*.Where(x=>!x.IsRead)*/;
 
         public int NotificationsMax
         {
@@ -20,7 +21,7 @@ namespace ShadowRunHelper.UI
         }
         public int NotificationsUnread
         {
-            get { return NewNotifications.Where(x=> !x.IsRead).Count(); }
+            get { return NewNotifications./*Where(x=> !x.IsRead).*/Count(); }
         }
 
 

@@ -214,7 +214,7 @@ namespace ShadowRunHelper.Model
                     else
                     {
                         Features.Analytics.TrackEvent("Err_CharRepair_Hard");
-                        AppModel.Instance?.NewNotification(String.Format(CustomManager.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
+                        Log.Write(String.Format(CustomManager.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
                     }
                 }
                 foreach (var item in TargetCollection)

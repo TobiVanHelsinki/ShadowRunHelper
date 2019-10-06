@@ -8,6 +8,7 @@
              xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
              xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
+             xmlns:tlib="clr-namespace:TLIB;assembly=TLIB"
              x:Class="ShadowRunHelperViewer.UI.Pages.MiscPage">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -18,21 +19,181 @@
         <DataTemplate x:Key="Settings">
             <controlsother:SettingsView />
         </DataTemplate>
-        <DataTemplate x:Key="Infos">
-            <Label Text="Info"/>
+        <DataTemplate x:Key="Infos" >
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout.Resources>
+                        <Style TargetType="Label" x:Key="HeadLine2">
+                            <Setter Property="Margin" Value="0,15,0,5"/>
+                            <Setter Property="FontSize" Value="24" />
+                        </Style>
+                        <Style TargetType="Label" x:Key="STDText">
+                            <Setter Property="LineBreakMode" Value="WordWrap"/>
+                        </Style>
+                        <Style TargetType="Label" x:Key="LinkText">
+                            <Setter Property="LineBreakMode" Value="WordWrap"/>
+                            <Setter Property="TextColor" Value="Blue"/>
+                            <Setter Property="TextDecorations" Value="Underline"/>
+                        </Style>
+                    </StackLayout.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout>
+                            <Label Style="{StaticResource HeadLine2}" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{resx:UiResources Optionen_Version}"/>
+                                        <Span Text=": "/>
+                                        <Span Text="{x:Binding AppVersionBuild}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Text="{resx:UiResources Optionen_U_Kontakt}" Style="{StaticResource HeadLine2}"/>
+                            <Label Style="{StaticResource STDText}" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{resx:UiResources Optionen_Inhaber}"/>
+                                        <Span Text=": "/>
+                                        <Span Text="{x:Binding Inhaber}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label Style="{StaticResource STDText}" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{resx:UiResources Optionen_Kontakt_Mail}"/>
+                                        <Span Text=": "/>
+                                        <Span Text="{x:Binding EMail}" TextColor="Blue" TextDecorations="Underline">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppKontaktEmail}" />
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label Text="{resx:UiResources Optionen_App}" Style="{StaticResource HeadLine2}"/>
+                            <Label Text="{resx:UiResources Optionen_AppLinkBtn}" Style="{StaticResource LinkText}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppLink}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label Text="{resx:UiResources Optionen_RateBtn}" Style="{StaticResource LinkText}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppReviewLink}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label Text="{resx:UiResources Optionen_MoreAppsBtn}" Style="{StaticResource LinkText}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding MoreAppsLink}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <Image Grid.Column="1" BackgroundColor="Gold" x:Name="PremiumBadgeImage" IsVisible="False" HorizontalOptions="End" VerticalOptions="Start" Source="/Assets/premium-badge.png"/>
+                    </Grid>
+
+                    <Label Text="{resx:UiResources Optionen_U_Statistics}"  Style="{StaticResource HeadLine2}"/>
+                    <Label Style="{StaticResource STDText}" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{resx:UiResources Statistics_AppStart}"/>
+                                <Span Text=": "/>
+                                <Span Text="{x:Binding Settings.START_COUNT}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Style="{StaticResource STDText}" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{resx:UiResources Statistics_Loadings}"/>
+                                <Span Text=": "/>
+                                <Span Text="{x:Binding Settings.COUNT_LOADINGS}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Style="{StaticResource STDText}" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{resx:UiResources Statistics_Savings}"/>
+                                <Span Text=": "/>
+                                <Span Text="{x:Binding Settings.COUNT_SAVINGS}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Style="{StaticResource STDText}" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{resx:UiResources Statistics_Creations}"/>
+                                <Span Text=": "/>
+                                <Span Text="{x:Binding Settings.COUNT_CREATIONS}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Style="{StaticResource STDText}" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{resx:UiResources Statistics_Deletions}"/>
+                                <Span Text=": "/>
+                                <Span Text="{x:Binding Settings.COUNT_DELETIONS}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Text="{resx:UiResources Optionen_U_Rechtliches}"  Style="{StaticResource HeadLine2}"/>
+                    <Label Text="{resx:UiResources Optionen_Legal}"  Style="{StaticResource STDText}"/>
+                    <Label Text="{resx:UiResources Optionen_U_Datenschutz}" Style="{StaticResource HeadLine2}"/>
+                    <Label Text="{resx:UiResources Optionen_Datenschutz}"  Style="{StaticResource STDText}"/>
+                </StackLayout>
+            </ScrollView>
         </DataTemplate>
         <DataTemplate x:Key="Buy">
             <Label Text="Buy"/>
         </DataTemplate>
         <DataTemplate x:Key="Log">
-            <Label Text="Log"/>
+            <ListView ItemsSource="{x:Binding Logs}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="tlib:LogMessage">
+                        <ViewCell Tapped="ViewCell_Tapped">
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CellTapped"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Column="0" Text="{x:Binding ArrivedAt}"/>
+                                <Label Grid.Column="1" Text="{x:Binding LogType}"/>
+                                <Label Grid.Column="2" Text="{x:Binding Message}"/>
+                                <Grid Grid.Row="1" x:Name="Extendet" IsVisible="False">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Text="{x:Binding Caller}"/>
+                                    <Label Grid.Row="1" Text="{x:Binding CombinedMessage}"/>
+                                    <Label Grid.Row="2" Text="{x:Binding ThrownException}"/>
+                                </Grid>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </DataTemplate>
         <DataTemplate x:Key="Help">
             <Label Text="Help"/>
         </DataTemplate>
     </ContentView.Resources>
     <ContentView.Content>
-        <Grid>
+        <Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -41,7 +202,7 @@
             <StackLayout x:Name="TitleBar" BackgroundColor="Accent" MinimumWidthRequest="50" MinimumHeightRequest="10" Padding="10">
                 <Label x:Name="Intro1Text" Text="{resx:UiResources TitleMiscPage}" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
-            <ContentView x:Name="Content" Grid.Row="1"/>
+            <ContentView x:Name="Content" Grid.Row="1" BackgroundColor="White" Padding="10,0,10,0"/>
             <ScrollView Grid.Row="2" Style="{StaticResource CommandBar}">
                 <StackLayout Style="{StaticResource CommandBarStack}">
                     <Button Text="{resx:UiResources Optionen_U_Infos}" resources:Tag.Tag="Infos" Clicked="NavigateTo" Style="{StaticResource CommandBarButton}"/>

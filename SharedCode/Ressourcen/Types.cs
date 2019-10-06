@@ -230,7 +230,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                TAPPLICATION.Debugging.TraceException(ex);
+                Log.Write("Could not", ex, logType: LogType.Error);
                 return "NA: " + eThingDefToConvert.ToString();
             }
         }

@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using TLIB;
 
 namespace ShadowRunHelper.Model
 {
@@ -21,7 +22,7 @@ namespace ShadowRunHelper.Model
             }
             else
             {
-                AppModel.Instance?.NewNotification(CustomManager.GetString("Notification_Warning_NotAddLinkedEntry"));
+                Log.Write(CustomManager.GetString("Notification_Warning_NotAddLinkedEntry"));
             }
         }
 

@@ -99,7 +99,7 @@ namespace ShadowRunHelper
                 }
                 catch (Exception ex)
                 {
-                    TAPPLICATION.Debugging.TraceException(ex);
+                    Log.Write("Could not", ex, logType: LogType.Error);
                 }
             }
             instance.PropertyChanged += SettingsChanged;
@@ -155,7 +155,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                AppModel.Instance?.NewNotification(CustomManager.GetString("Error_CopyFiles"), ex);
+                Log.Write(CustomManager.GetString("Error_CopyFiles"), ex);
             }
         }
         static async void FolderMode_Toggled()
@@ -170,7 +170,7 @@ namespace ShadowRunHelper
                 }
                 catch (Exception ex)
                 {
-                    TAPPLICATION.Debugging.TraceException(ex);
+                    Log.Write("Could not", ex, logType: LogType.Error);
                     if (!await SharedIO.CurrentIO.HasAccess(new DirectoryInfo(SharedSettingsModel.I.FOLDERMODE_PATH)))
                     {
                         SharedSettingsModel.Instance.FOLDERMODE = false;
@@ -192,7 +192,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                AppModel.Instance?.NewNotification(CustomManager.GetString("Error_CopyFiles"), ex);
+                Log.Write(CustomManager.GetString("Error_CopyFiles"), ex);
             }
         }
         #endregion

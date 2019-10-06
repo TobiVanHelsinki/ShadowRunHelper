@@ -31,14 +31,7 @@ namespace ShadowRunHelperViewer
 
         protected override void OnAppearing()
         {
-            try
-            {
-                BindingContext = this;
-            }
-            catch (Exception ex)
-            {
-                TAPPLICATION.Debugging.TraceException(ex);
-            }
+            BindingContext = this;
             try
             {
                 Headline.Text = MyThing.ThingType.ThingDefToString(false);

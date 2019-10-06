@@ -29,14 +29,7 @@ namespace ShadowRunHelperViewer
 
         protected override void OnAppearing()
         {
-            try
-            {
-                BindingContext = this;
-            }
-            catch (Exception ex)
-            {
-                TAPPLICATION.Debugging.TraceException(ex);
-            }
+            BindingContext = this;
             base.OnAppearing();
             SizeDefiningElement_SizeChanged(this, new EventArgs());
         }

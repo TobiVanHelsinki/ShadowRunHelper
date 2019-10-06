@@ -61,7 +61,8 @@ namespace ShadowRunHelper.CharController
                 Data.Clear();
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+            {
+                Log.Write("Could not", ex, logType: LogType.Error);
                 return false;
             }
             return true;

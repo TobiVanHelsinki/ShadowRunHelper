@@ -63,7 +63,7 @@ namespace ShadowRunHelper
                     }
                     catch (Exception ex)
  {
-                        TAPPLICATION.Debugging.TraceException(ex);
+                        Log.Write("Could not save", ex, logType: LogType.Error);
                         ErrorList.Add(item.Item1);
                     }
                 }
@@ -79,12 +79,11 @@ namespace ShadowRunHelper
                 {
                     Errors += item + "\n";
                 }
-                Model.AppModel.Instance?.NewNotification(CustomManager.GetString("AppImportErrors") + "\n\n" + Errors, false);
+                Log.Write(CustomManager.GetString("AppImportErrors"), logType: LogType.Error);
             }
             else
             {
-                Model.AppModel.Instance?.NewNotification(CustomManager.GetString("AppImportNoErrors"), false);
-
+                Log.Write(CustomManager.GetString("AppImportNoErrors"), logType: LogType.Error);
             }
         }
     }

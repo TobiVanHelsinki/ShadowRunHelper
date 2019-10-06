@@ -28,10 +28,9 @@ namespace ShadowRunHelper
                         AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE_365);
                 }
                 catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+                {
+                    Log.Write("Could not Get IAP", ex, logType: LogType.Error);
                     Constants.IAP_HIDEADS = false;
-                    Model.AppModel.Instance?.NewNotification("Error_LoadPurchases");
-                    //Debug_TimeAnalyser.Stop("IAP GetAddons");
                 }
                 SettingsModel.Instance.IAP_HIDEADS = Constants.IAP_HIDEADS;
             }
@@ -104,12 +103,12 @@ namespace ShadowRunHelper
             switch (result.Status)
             {
                 case StorePurchaseStatus.Succeeded:
-                    Model.AppModel.Instance?.NewNotification(CustomManager.GetString("IAP_Succeeded"));
+                    Log.Write(CustomManager.GetString("IAP_Succeeded"));
                     break;
                 case StorePurchaseStatus.NotPurchased:
                     break;
                 default:
-                    Model.AppModel.Instance?.NewNotification(CustomManager.GetString("IAP_Error"));
+                    Log.Write(CustomManager.GetString("IAP_Error"), logType: LogType.Error);
                     break;
             }
             await CheckLicence(true);
