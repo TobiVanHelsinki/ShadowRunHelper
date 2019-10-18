@@ -1,4 +1,5 @@
-﻿
+﻿///Author: Tobi van Helsinki
+
 using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
@@ -6,7 +7,7 @@ namespace ShadowRunHelper.CharModel
     public class Adeptenkraft : Eigenschaft
     {
         string _Option = "";
-        [Used_UserAttribute] //TODO zusammenführen mit Auswirkungen 
+        [Used_UserAttribute] //TODO zusammenführen mit Auswirkungen
         public string Option
         {
             get { return _Option; }
@@ -19,10 +20,12 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
+
+        public static new IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
             {
                 ThingDefs.Handlung, ThingDefs.Fertigkeit
             };
+
         public Adeptenkraft() : base()
         {
             LinkedThings.FilterOut = Filter;

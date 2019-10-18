@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
@@ -22,11 +24,12 @@ namespace ShadowRunHelperViewer.UI.Pages
     {
         #region NotifyPropertyChanged
         public new event PropertyChangedEventHandler PropertyChanged;
+
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+        #endregion NotifyPropertyChanged
 
         public ObservableCollection<ExtendetFileInfo> CharList { get; set; } = new ObservableCollection<ExtendetFileInfo>();
 
@@ -36,7 +39,8 @@ namespace ShadowRunHelperViewer.UI.Pages
             BindingContext = this;
             RefreshCharList();
         }
-        async void ListView_Refreshing(object sender, EventArgs e)
+
+        private async void ListView_Refreshing(object sender, EventArgs e)
         {
             if (sender is ListView lv)
             {
@@ -45,7 +49,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        async Task RefreshCharList()
+        private async Task RefreshCharList()
         {
             WarningFrame.IsVisible = !SettingsModel.I.FOLDERMODE;
             try
@@ -64,7 +68,8 @@ namespace ShadowRunHelperViewer.UI.Pages
         }
 
         #region Open Files
-        async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item is ExtendetFileInfo charfile)
             {
@@ -88,7 +93,8 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             FilePickerExample();
         }
-        async void FilePickerExample()
+
+        private async void FilePickerExample()
         {
             try
             {
@@ -106,13 +112,12 @@ namespace ShadowRunHelperViewer.UI.Pages
                 Log.Write("Error reading file", ex);
             }
         }
-        #endregion
+        #endregion Open Files
 
         #region Other File Action
 
         private void FileRename(object sender, EventArgs e)
         {
-
         }
 
         private void FileCopy(object sender, EventArgs e)
@@ -143,13 +148,15 @@ namespace ShadowRunHelperViewer.UI.Pages
             if (sender is MenuItem v && v.BindingContext is ExtendetFileInfo file)
             {
                 Log.DisplayChoice(UiResources.Delete, UiResources.FileDeleteTip, new Options() { },
-                    (UiResources.Yes, async () => { await SharedIO.CurrentIO.RemoveFile(file); RefreshCharList(); }),
-                    (UiResources.No, ()=> { })
+                    (UiResources.Yes, async () => { await SharedIO.CurrentIO.RemoveFile(file); RefreshCharList(); }
+                ),
+                    (UiResources.No, () => { }
+                )
                     );
             }
         }
 
-        async void FileExport(object sender, EventArgs e)
+        private async void FileExport(object sender, EventArgs e)
         {
             if (sender is MenuItem v && v.BindingContext is ExtendetFileInfo file)
             {
@@ -168,10 +175,11 @@ namespace ShadowRunHelperViewer.UI.Pages
                 }
             }
         }
-        #endregion
+        #endregion Other File Action
 
         #region Create
-        void NewChar_Clicked(object sender, EventArgs e)
+
+        private void NewChar_Clicked(object sender, EventArgs e)
         {
             try
             {
@@ -185,7 +193,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        async void ExampleChar_Clicked(object sender, EventArgs e)
+        private async void ExampleChar_Clicked(object sender, EventArgs e)
         {
             try
             {
@@ -197,7 +205,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
             RefreshCharList();
         }
-        #endregion
+        #endregion Create
 
         #region Design
 
@@ -215,7 +223,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             Intro1Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
             Intro2Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
         }
-        #endregion
+        #endregion Design
 
         #region Responsive Design
 
@@ -238,7 +246,6 @@ namespace ShadowRunHelperViewer.UI.Pages
                 }
             }
         }
-        #endregion
-
+        #endregion Responsive Design
     }
 }

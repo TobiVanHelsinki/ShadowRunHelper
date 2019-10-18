@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper.IO;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
@@ -11,42 +13,54 @@ using TAPPLICATION.Model;
 using TLIB;
 
 [assembly: NeutralResourcesLanguageAttribute("en")]
+
 namespace ShadowRunHelper
 {
     public static class AppHolder
     {
-
         static AppModel Model;
         static SettingsModel Settings;
 
         static bool FirstStart = true;
 
         #region Init
+
         public static void InitModel()
         {
-            Settings = SettingsModel.Initialize();
-            Model = AppModel.Initialize();
+            if (Settings is null)
+            {
+                Settings = SettingsModel.Initialize();
+            }
+            if (Model is null)
+            {
+                Model = AppModel.Initialize();
+            }
         }
+
         public static void Init()
         {
-            //#if !DEBUG
             if (Settings.FIRST_START)
-            //#endif
             {
                 Settings.InitSettings();
             }
             Settings.START_COUNT++;
-
-            Task.WaitAll(
-                Task.Run(() => Features.IAP.CheckLicence()),
-                Task.Run(AppCenterConfiguration),
-                Task.Run(SetConstantStuff),
-                Task.Run(CreateFolder),
-                Task.Run(RegisterAppInstance)
-                );
-            Task.WaitAll(
-                Task.Run(CharLoadingHandling)
-                );
+            try
+            {
+                Task.WaitAll(
+                    Task.Run(() => Features.IAP.CheckLicence()),
+                    Task.Run(AppCenterConfiguration),
+                    Task.Run(SetConstantStuff),
+                    Task.Run(CreateFolder),
+                    Task.Run(RegisterAppInstance)
+                    );
+                Task.Run(CharLoadingHandling).Wait();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+            catch (AggregateException)
+            {
+            }
             Test.DoSmt();
         }
 
@@ -62,16 +76,25 @@ namespace ShadowRunHelper
 
         public static void FileActivated(string Name, string Path)
         {
+            InitModel();
             Settings.FORCE_LOAD_CHAR_ON_START = true;
             AppModel.Instance.IsFileActivated = true;
-            Settings.LAST_SAVE_INFO = new FileInfo(Path + Name);
+            try
+            {
+                Settings.LAST_SAVE_INFO = new FileInfo(Path + Name);
+            }
+            catch (Exception)
+            {
+                Settings.LAST_SAVE_INFO = null;
+            }
+
             if (!FirstStart)
             {
                 CharLoadingHandling();
             }
         }
 
-        static void AppCenterConfiguration()
+        private static void AppCenterConfiguration()
         {
             try
             {
@@ -83,7 +106,7 @@ namespace ShadowRunHelper
             }
         }
 
-        static void SetConstantStuff()
+        private static void SetConstantStuff()
         {
             SharedConstants.APP_VERSION_BUILD_DELIM = String.Format("{0}.{1}.{2}.{3}", Features.AppInformation.Version_Major, Features.AppInformation.Version_Minor, Features.AppInformation.Version_Build, Features.AppInformation.Version_Revision);
             SharedConstants.APP_PUBLISHER_MAIL = Constants.APP_PUBLISHER_MAIL_TvH;
@@ -91,7 +114,7 @@ namespace ShadowRunHelper
             SharedConstants.APP_STORE_ID = Constants.APP_STORE_ID_SRE;
         }
 
-        static async void CreateFolder()
+        private static async void CreateFolder()
         {
             try
             {
@@ -103,7 +126,7 @@ namespace ShadowRunHelper
                 TLIB.Log.Write("Cannot create intern folder", ex);
             }
         }
-        #endregion
+        #endregion Init
 
         internal static void LeavingBackground()
         {
@@ -132,7 +155,7 @@ namespace ShadowRunHelper
             }
         }
 
-        static async Task CharLoadingHandling()
+        private static async Task CharLoadingHandling()
         {
             try
             {
@@ -179,9 +202,8 @@ namespace ShadowRunHelper
                 FirstStart = false;
                 Settings.LAST_SAVE_INFO = null;
                 Settings.CHARINTEMPSTORE = false;
-                Model.RequestNavigation(ProjectPages.Char); //TODO ThreadSave 
+                Model.RequestNavigation(ProjectPages.Char); //TODO ThreadSave
             }
-
         }
 
         #region Exception Handling
@@ -217,6 +239,6 @@ namespace ShadowRunHelper
             };
             Features.Analytics.TrackEvent("App_UnhandledExceptionAsync", param);
         }
-        #endregion
+        #endregion Exception Handling
     }
 }
