@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿///Author: Tobi van Helsinki
+
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
@@ -17,7 +19,7 @@ using TLIB;
 
 namespace ShadowRunHelper.IO
 {
-    class UnknownThingConverter : JsonConverter
+    internal class UnknownThingConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {
@@ -52,6 +54,7 @@ namespace ShadowRunHelper.IO
             throw new NotImplementedException();
         }
     }
+
     public class CharHolderIO : SharedIO<CharHolder>
     {
         internal static CharHolder ConvertWithRightVersion(string strAppVersion, string strFileVersion, string fileContent)
@@ -70,7 +73,7 @@ namespace ShadowRunHelper.IO
                     Log.Write(CustomManager.GetString("Notification_Info_NotSupportedVersion"), false);
                     throw new IO_FileVersion();
                 case Constants.CHARFILE_VERSION_1_5:
-                    List<(string old, string @new)> replacements = new List<(string old, string @new)>
+                    var replacements = new List<(string old, string @new)>
             {
                 //Adept Stuff Refactoring
                 ("\"CTRLAdeptenkraft_KomplexeForm\"", "\"CTRLAdeptenkraft\""),
@@ -104,6 +107,11 @@ namespace ShadowRunHelper.IO
                     Log.Write(CustomManager.GetString("Notification_Info_UpgradedChar"), false);
                     break;
                 case Constants.CHARFILE_VERSION_1_7:
+                    //TODO Convert from LinkedThings to Connected Values
+                    ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
+                    Log.Write(CustomManager.GetString("Notification_Info_UpgradedChar"), false);
+                    break;
+                case Constants.CHARFILE_VERSION_1_8:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     break;
                 default:
@@ -112,25 +120,26 @@ namespace ShadowRunHelper.IO
             ReturnCharHolder.AfterLoad();
             return ReturnCharHolder;
         }
+
         public static string PlainTextToRtf(string plainText)
         {
-            string escapedPlainText = plainText == null? "" : plainText.Replace(@"\", @"\\").Replace("{", @"\{").Replace("}", @"\}").Replace(@"\r}", @"\r\n}");
-            string rtf = 
+            string escapedPlainText = plainText == null ? "" : plainText.Replace(@"\", @"\\").Replace("{", @"\{").Replace("}", @"\}").Replace(@"\r}", @"\r\n}");
+            string rtf =
 @"{\rtf1\fbidis\ansi\ansicpg1252\deff0\nouicompat\deflang1031{\fonttbl{\f0\fnil Segoe UI;}}
 {\colortbl ;\red0\green0\blue0;}
-{\*\generator Riched20 10.0.17134}\viewkind4\uc1 
+{\*\generator Riched20 10.0.17134}\viewkind4\uc1
 \pard\tx720\cf1\f0\fs23\par
 \par
 
 ";
             rtf += escapedPlainText.Replace(Environment.NewLine, @" \par ").Replace("\n", @" \par ").Replace("\r", @" \par ");
-            rtf += 
+            rtf +=
 @"\pard\tx720\par
 }";
             return rtf;
         }
 
-        static string RefactorJSONString(string Input, List<(string old, string @new)> replacements)
+        private static string RefactorJSONString(string Input, List<(string old, string @new)> replacements)
         {
             string Ret = Input;
             foreach (var (old, @new) in replacements)
@@ -139,6 +148,7 @@ namespace ShadowRunHelper.IO
             }
             return Ret;
         }
+
         public enum PreSavedChar
         {
             ExampleChar = 1,
@@ -173,10 +183,11 @@ namespace ShadowRunHelper.IO
             }
             CurrentIO.SaveFileContent(content, info);
         }
+
         public static async Task CopyFileToCurrentLocation(string oldlocation, string oldname, string newname)
         {
             var Target = new FileInfo(CurrentSavePath + newname);
-            var Source  = new FileInfo(oldlocation+ oldname);
+            var Source = new FileInfo(oldlocation + oldname);
             await CurrentIO.CopyTo(Target, Source);
         }
     }
