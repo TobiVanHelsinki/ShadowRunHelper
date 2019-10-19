@@ -1,4 +1,6 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿///Author: Tobi van Helsinki
+
+using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
@@ -17,16 +19,19 @@ using Xamarin.Forms.Xaml;
 namespace ShadowRunHelperViewer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class GController : ContentView, INotifyPropertyChanged
-	{
+    public partial class GController : ContentView, INotifyPropertyChanged
+    {
         #region NotifyPropertyChanged
-		public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+        #endregion NotifyPropertyChanged
+
         public CharHolder MyChar { get; set; }
+
         #region Hold IController
         IController _Controller;
         public IController Controller
@@ -34,6 +39,7 @@ namespace ShadowRunHelperViewer
             get { return _Controller; }
             set { if (_Controller != value) { _Controller = value; NotifyPropertyChanged(); OnControllerChanged(); } }
         }
+
         private void GController_BindingContextChanged(object sender, EventArgs e)
         {
             Controller = BindingContext as IController;
@@ -127,7 +133,7 @@ namespace ShadowRunHelperViewer
                 var CustomTemplate = item.ThingType.HierarchieUpSearch(s => { Resources.TryGetValue(s + "X", out object CustomTemplate); return CustomTemplate; });
                 if (CustomTemplate is null)
                 {
-                    Resources.TryGetValue(nameof(Thing)+ "X", out CustomTemplate);
+                    Resources.TryGetValue(nameof(Thing) + "X", out CustomTemplate);
                 }
                 if (CustomTemplate is DataTemplate DT)
                 {
@@ -149,7 +155,7 @@ namespace ShadowRunHelperViewer
                 }
             }
         }
-        #endregion
+        #endregion Hold IController
 
         public CategoryOption Setting { get; private set; }
 
@@ -178,7 +184,7 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        async void Thing_Edit(object sender, EventArgs e)
+        private async void Thing_Edit(object sender, EventArgs e)
         {
             if (sender is BindableObject b && b.BindingContext is Thing t)
             {

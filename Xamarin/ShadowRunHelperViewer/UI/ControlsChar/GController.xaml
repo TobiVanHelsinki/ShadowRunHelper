@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -72,7 +72,7 @@
                             <DataTrigger TargetType="Label"
                                     Binding="{Binding Source={x:Reference Typ},
                                     Path=Text.Length}"
-                                    Value="0">     
+                                    Value="0">
                                 <Setter Property="IsVisible" Value="False"/>
                             </DataTrigger>
                         </Label.Triggers>
@@ -87,7 +87,7 @@
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Value" x:DataType="CharModel:Thing">
                 <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
-                    <Label Text="{x:Binding Wert}"/>
+                    <Label Text="{x:Binding WertCalced}"/>
                     <Label Text="{x:Binding Zusatz}"/>
                 </StackLayout>
             </ControlTemplate>
@@ -98,7 +98,7 @@
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Buttons" x:DataType="CharModel:Thing">
                 <StackLayout Orientation="Vertical" BindingContext="{TemplateBinding BindingContext}" Spacing="4" Style="{StaticResource TemplateStack}">
-                    <Button Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Edit" />
+                    <Button Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Edit"/>
                     <Grid BackgroundColor="Gray" Opacity="0.75" HorizontalOptions="Center" VerticalOptions="Start" Padding="5,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -133,7 +133,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}" />
+                        <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}"/>
                         <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value}"/>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
@@ -217,7 +217,7 @@
                     </Grid>
                 </ViewCell>
             </DataTemplate>
-            
+
             <ControlTemplate x:Key="Eigenschaft_H">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -254,7 +254,7 @@
                     </Grid>
                 </ViewCell>
             </DataTemplate>
-          
+
             <x:Int16 x:Key="ItemsBoxesWidth">50</x:Int16>
             <ControlTemplate x:Key="ItemsBoxes_H">
                 <Grid Style="{StaticResource TemplateGrid}" HorizontalOptions="Center">
@@ -278,7 +278,7 @@
                     <CheckBox IsChecked="{x:Binding Besitz}" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Grid.Column="1"/>
                 </Grid>
             </ControlTemplate>
-            
+
             <ControlTemplate x:Key="Item_H">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -313,7 +313,7 @@
                         <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                         <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
                         <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-                        <Label Text="{x:Binding Anzahl}" Style="{StaticResource STDText}" Grid.Column="3" />
+                        <Label Text="{x:Binding Anzahl}" Style="{StaticResource STDText}" Grid.Column="3"/>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="4" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
                     </Grid>
@@ -455,7 +455,7 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                     <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
-                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
+                        <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <BoxView Color="LightGray" WidthRequest="1" Margin="0,0,5,0"/>
                             <StackLayout Margin="0,0,5,0" HorizontalOptions="Center">
@@ -470,7 +470,7 @@
                     </ScrollView>
                 </Grid>
             </DataTemplate>
-            
+
             <ControlTemplate x:Key="CyberDeck_H">
                 <ContentView ControlTemplate="{StaticResource Kommlink_H}"/>
             </ControlTemplate>
@@ -520,7 +520,7 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                     <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
-                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
+                        <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <BoxView Color="LightGray" WidthRequest="1" Margin="0,0,5,0"/>
                             <StackLayout Margin="0,0,5,0" HorizontalOptions="Center">
@@ -586,7 +586,7 @@
                         </Grid.ColumnDefinitions>
                         <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                         <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <Label Text="{x:Binding Optionen}" Style="{StaticResource STDText}" Grid.Column="2" />
+                        <Label Text="{x:Binding Optionen}" Style="{StaticResource STDText}" Grid.Column="2"/>
                         <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="3"/>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="4" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
@@ -600,7 +600,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                       <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
@@ -657,15 +657,15 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                     <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
-                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
+                        <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources FernKampfwaffe_Modi}" ValuePath="Modi"/>
                             <controls:AdditionalValue Text="{resx:ModelResources FernKampfwaffe_RK}" ValuePath="RK"/>
                         </StackLayout>
-                  </ScrollView>
+                    </ScrollView>
                 </Grid>
             </DataTemplate>
-            
+
             <ControlTemplate x:Key="Nahkampfwaffe_H">
                 <ContentView ControlTemplate="{StaticResource Fernkampfwaffe_H}"/>
             </ControlTemplate>
@@ -710,7 +710,7 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                     <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
-                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
+                        <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Praezision"/>
                             <controls:AdditionalValue Text="{resx:ModelResources Nahkampfwaffe_Reichweite}" ValuePath="Reichweite"/>
@@ -726,7 +726,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                       <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
@@ -978,7 +978,7 @@
                     </Grid>
                 </ViewCell>
             </DataTemplate>
-            
+
             <ControlTemplate x:Key="Wandlung_H">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -1019,19 +1019,18 @@
                     </Grid>
                 </ViewCell>
             </DataTemplate>
-            
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <Grid.Resources>
                 <OnPlatform x:Key="ButtonSize" x:TypeArguments="GridLength">
-                    <On Platform="Android" Value="45" />
-                    <On Platform="UWP, WinRT, WinPhone" Value="Auto" />
+                    <On Platform="Android" Value="45"/>
+                    <On Platform="UWP, WinRT, WinPhone" Value="Auto"/>
                 </OnPlatform>
                 <OnPlatform x:Key="Offset" x:TypeArguments="Thickness">
-                    <On Platform="Android" Value="0,0,0,0" />
-                    <On Platform="UWP, WinRT, WinPhone" Value="0,-45,0,0" />
+                    <On Platform="Android" Value="0,0,0,0"/>
+                    <On Platform="UWP, WinRT, WinPhone" Value="0,-45,0,0"/>
                 </OnPlatform>
             </Grid.Resources>
             <Grid.RowDefinitions>
