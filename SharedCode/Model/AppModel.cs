@@ -1,5 +1,8 @@
-﻿using ShadowRunHelper.CharModel;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper.CharModel;
 using ShadowRunHelper.IO;
+using System;
 using System.IO;
 using TAPPLICATION;
 using TAPPLICATION.IO;
@@ -21,26 +24,24 @@ namespace ShadowRunHelper.Model
             return Instance;
         }
 
-        static void Instance_MainObjectSaved(object sender, IMainType e)
+        private static void Instance_MainObjectSaved(object sender, IMainType e)
         {
-            System.Diagnostics.Debug.WriteLine("Instance_MainObjectSaved");
+            Log.Write("MainObjectSaved");
             SettingsModel.I.COUNT_SAVINGS++;
             if (SettingsModel.I.BACKUP_VERSIONING)
             {
                 var FileName = (e as CharHolder)?.MakeName(true);
-                var BackUpFolder = new DirectoryInfo(Path.Combine(SharedIO.CurrentSavePath, "BackUp"));
-                SharedIO.CurrentIO.CreateFolder(BackUpFolder).Wait();
-                var BackUpFile = new FileInfo(Path.Combine(BackUpFolder.FullName, FileName));
                 try
                 {
-                    System.Diagnostics.Debug.WriteLine("SaveBackUp " + e.ToString());
+                    var BackUpFolder = new DirectoryInfo(Path.Combine(SharedIO.CurrentSavePath, "BackUp"));
+                    SharedIO.CurrentIO.CreateFolder(BackUpFolder).Wait();
+                    var BackUpFile = new FileInfo(Path.Combine(BackUpFolder.FullName, FileName));
                     SharedIO.Save(e, BackUpFile).Wait();
                 }
-                catch (System.Exception)
+                catch (Exception ex)
                 {
-                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                    Log.Write("Could not save BackUpChar", ex, logType: LogType.Error);
                 }
-
             }
         }
 
@@ -52,7 +53,7 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        AppModel() : base()
+        private AppModel() : base()
         {
             PropertyChanged += AppModel_PropertyChanged;
         }
@@ -76,22 +77,24 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        ~AppModel() 
+        ~AppModel()
         {
             Features.Activities.StopCurrentCharActivity();
         }
 
         public delegate void NavigationEventHandler(ProjectPages page, ProjectPagesOptions PageOptions);
         public event NavigationEventHandler NavigationRequested;
+
         public void RequestNavigation(ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
         {
-            PlatformHelper.ExecuteOnUIThreadAsync(()=>NavigationRequested?.Invoke(p, po));
+            PlatformHelper.ExecuteOnUIThreadAsync(() => NavigationRequested?.Invoke(p, po));
         }
 
         public void TutorialChangedState(int StateNumber, bool Highlight = false)
         {
             TutorialStateChanged(StateNumber, Highlight);
         }
+
         public delegate void TutorialStateChangeRequestEventHandler(int StateNumber, bool Highlight);
         public event TutorialStateChangeRequestEventHandler TutorialStateChanged;
 
@@ -99,12 +102,14 @@ namespace ShadowRunHelper.Model
         {
             get { return CharInProgress != null; }
         }
+
         FileInfo _CharInProgress; // TODO new Datastructure is needed
         public FileInfo CharInProgress
         {
             get { return _CharInProgress; }
             set { if (_CharInProgress != value) { _CharInProgress = value; NotifyPropertyChanged(nameof(IsCharInProgress)); NotifyPropertyChanged(); } }
         }
+
         Thing _PendingScrollEntry;
         public Thing PendingScrollEntry
         {

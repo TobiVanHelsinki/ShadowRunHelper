@@ -102,6 +102,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 var newchar = await CharHolderIO.Load(charfile);
                 AppModel.Instance.AddMainObject(newchar);
                 AppModel.Instance.RequestNavigation(ProjectPages.Char);
+                SharedIO.SaveAtCurrentPlace(newchar);
                 //(Application.Current.MainPage as MainPage)?.NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(newchar));
                 //TODO das ist komplett am model vorbei, aber dafür auch flexibler
                 //TODO ich sollte überlegen, Model.MainObject abzuschaffen. für das speichern kann es sich im eigenen konstruktor registrieren

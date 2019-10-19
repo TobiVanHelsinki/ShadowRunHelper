@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿///Author: Tobi van Helsinki
+
+using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -12,18 +14,22 @@ namespace ShadowRunHelper.CharModel
     public class CharCalcProperty : INotifyPropertyChanged
     {
         #region NotifyPropertyChanged
-		public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+        #endregion NotifyPropertyChanged
+
         #region Implicit Converter
+
         public static implicit operator CharCalcProperty(double d)
         {
-            return new CharCalcProperty { BaseValue = d };
+            return new CharCalcProperty("implicit from " + d, new Thing()) { BaseValue = d };
         }
-        #endregion
+        #endregion Implicit Converter
+
         [JsonIgnore]
         public double Value { get; private set; }
 
@@ -65,6 +71,20 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        string _Name;
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; NotifyPropertyChanged(); }
+        }
+
+        Thing _Owner;
+        public Thing Owner
+        {
+            get { return _Owner; }
+            set { _Owner = value; NotifyPropertyChanged(); }
+        }
+
         bool _Active = true;
         public bool Active
         {
@@ -77,7 +97,14 @@ namespace ShadowRunHelper.CharModel
             DeletionNotification += CharProperty_DeletionNotification;
         }
 
-        void Recalculate()
+        public CharCalcProperty(string name, Thing owner)
+        {
+            Name = name;
+            Owner = owner;
+            DeletionNotification += CharProperty_DeletionNotification;
+        }
+
+        private void Recalculate()
         {
             var OldValue = Value;
             Value = Active ? BaseValue + Connected?.Select(x => x.Value).Sum() ?? 0.0 : 0.0;
@@ -88,7 +115,8 @@ namespace ShadowRunHelper.CharModel
         }
 
         #region Any Property Changed
-        void Connected_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+
+        private void Connected_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.OldItems != null)
             {
@@ -113,7 +141,8 @@ namespace ShadowRunHelper.CharModel
             }
             Recalculate();
         }
-        bool HasCircularReference(CharCalcProperty added) //TODO Unit test
+
+        private bool HasCircularReference(CharCalcProperty added) //TODO Unit test
         {
             foreach (var item in added.Connected)
             {
@@ -125,18 +154,20 @@ namespace ShadowRunHelper.CharModel
             return false;
         }
 
-        bool IsForbiddenType(CharCalcProperty item)
+        private bool IsForbiddenType(CharCalcProperty item)
         {
             //TODO Implement Filter
             //public IEnumerable<ThingDefs> FilterOut { get; set; }
             return false;
         }
 
-        void ConnectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e) => Recalculate();
-        #endregion
+        private void ConnectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e) => Recalculate();
+        #endregion Any Property Changed
+
         #region Deletion Handling
 
-        static event EventHandler<CharCalcProperty> DeletionNotification;
+        private static event EventHandler<CharCalcProperty> DeletionNotification;
+
         internal void ParentDeleted()
         {
             DeletionNotification.Invoke(this, this);
@@ -164,6 +195,6 @@ namespace ShadowRunHelper.CharModel
             target.Connected.AddRange(Connected);
             return target;
         }
-        #endregion
+        #endregion Deletion Handling
     }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -13,19 +13,19 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <local:CharModelStyles />
+                <local:CharModelStyles/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         <DataTemplate x:Key="Settings">
-            <controlsother:SettingsView />
+            <controlsother:SettingsView/>
         </DataTemplate>
-        <DataTemplate x:Key="Infos" >
+        <DataTemplate x:Key="Infos">
             <ScrollView>
                 <StackLayout>
                     <StackLayout.Resources>
                         <Style TargetType="Label" x:Key="HeadLine2">
                             <Setter Property="Margin" Value="0,15,0,5"/>
-                            <Setter Property="FontSize" Value="24" />
+                            <Setter Property="FontSize" Value="24"/>
                         </Style>
                         <Style TargetType="Label" x:Key="STDText">
                             <Setter Property="LineBreakMode" Value="WordWrap"/>
@@ -42,7 +42,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackLayout>
-                            <Label Style="{StaticResource HeadLine2}" >
+                            <Label Style="{StaticResource HeadLine2}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{resx:UiResources Optionen_Version}"/>
@@ -52,7 +52,7 @@
                                 </Label.FormattedText>
                             </Label>
                             <Label Text="{resx:UiResources Optionen_U_Kontakt}" Style="{StaticResource HeadLine2}"/>
-                            <Label Style="{StaticResource STDText}" >
+                            <Label Style="{StaticResource STDText}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{resx:UiResources Optionen_Inhaber}"/>
@@ -61,14 +61,14 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label Style="{StaticResource STDText}" >
+                            <Label Style="{StaticResource STDText}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{resx:UiResources Optionen_Kontakt_Mail}"/>
                                         <Span Text=": "/>
                                         <Span Text="{x:Binding EMail}" TextColor="Blue" TextDecorations="Underline">
                                             <Span.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppKontaktEmail}" />
+                                                <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppKontaktEmail}"/>
                                             </Span.GestureRecognizers>
                                         </Span>
                                     </FormattedString>
@@ -78,17 +78,17 @@
                             <Label Text="{resx:UiResources Optionen_App}" Style="{StaticResource HeadLine2}"/>
                             <Label Text="{resx:UiResources Optionen_AppLinkBtn}" Style="{StaticResource LinkText}">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppLink}" />
+                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppLink}"/>
                                 </Label.GestureRecognizers>
                             </Label>
                             <Label Text="{resx:UiResources Optionen_RateBtn}" Style="{StaticResource LinkText}">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppReviewLink}" />
+                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppReviewLink}"/>
                                 </Label.GestureRecognizers>
                             </Label>
                             <Label Text="{resx:UiResources Optionen_MoreAppsBtn}" Style="{StaticResource LinkText}">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding MoreAppsLink}" />
+                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding MoreAppsLink}"/>
                                 </Label.GestureRecognizers>
                             </Label>
                         </StackLayout>
@@ -96,7 +96,7 @@
                     </Grid>
 
                     <Label Text="{resx:UiResources Optionen_U_Statistics}"  Style="{StaticResource HeadLine2}"/>
-                    <Label Style="{StaticResource STDText}" >
+                    <Label Style="{StaticResource STDText}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{resx:UiResources Statistics_AppStart}"/>
@@ -105,7 +105,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label Style="{StaticResource STDText}" >
+                    <Label Style="{StaticResource STDText}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{resx:UiResources Statistics_Loadings}"/>
@@ -114,7 +114,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label Style="{StaticResource STDText}" >
+                    <Label Style="{StaticResource STDText}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{resx:UiResources Statistics_Savings}"/>
@@ -123,7 +123,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label Style="{StaticResource STDText}" >
+                    <Label Style="{StaticResource STDText}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{resx:UiResources Statistics_Creations}"/>
@@ -132,7 +132,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label Style="{StaticResource STDText}" >
+                    <Label Style="{StaticResource STDText}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{resx:UiResources Statistics_Deletions}"/>
@@ -152,7 +152,7 @@
             <Label Text="Buy"/>
         </DataTemplate>
         <DataTemplate x:Key="Log">
-            <ListView ItemsSource="{x:Binding Logs}">
+            <ListView ItemsSource="{x:Binding Logs}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="tlib:LogMessage">
                         <ViewCell Tapped="ViewCell_Tapped">
@@ -172,7 +172,7 @@
                                 <Label Grid.Column="0" Text="{x:Binding ArrivedAt}"/>
                                 <Label Grid.Column="1" Text="{x:Binding LogType}"/>
                                 <Label Grid.Column="2" Text="{x:Binding Message}"/>
-                                <Grid Grid.Row="1" x:Name="Extendet" IsVisible="False">
+                                <Grid Grid.Row="1" Grid.ColumnSpan="3" x:Name="Extendet" IsVisible="False">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>

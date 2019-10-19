@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper.CharModel;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,7 +19,7 @@ namespace ShadowRunHelper.CharController
         /// </summary>
         public ObservableCollection<T> Data { get; protected set; }
 
-        public T this[int index]=> Data[index];
+        public T this[int index] => Data[index];
 
         public virtual IEnumerable<Thing> GetElements() => Data;
 
@@ -29,12 +31,14 @@ namespace ShadowRunHelper.CharController
             Data.CollectionChanged -= (x, y) => Method();
             Data.CollectionChanged += (x, y) => Method();
         }
+
         public void RegisterEventAtData(Action<object, PropertyChangedEventArgs> Method)
         {
             //TODO nicht mit annoynmen meth
             Data.CollectionChanged -= (x, y) => Method(x, new PropertyChangedEventArgs(""));
             Data.CollectionChanged += (x, y) => Method(x, new PropertyChangedEventArgs(""));
         }
+
         public virtual Thing AddNewThing()
         {
             var newThing = Activator.CreateInstance<T>();
@@ -42,12 +46,14 @@ namespace ShadowRunHelper.CharController
             Data.Add(newThing);
             return newThing;
         }
+
         public virtual Thing AddNewThing(Thing newThing)
         {
             Data.Add((T)newThing);
             newThing.Order = Data.Max(x => x.Order) + 1;
             return newThing;
         }
+
         public virtual void RemoveThing(Thing tToRemove)
         {
             tToRemove.NotifiyDeletion();
@@ -82,8 +88,8 @@ namespace ShadowRunHelper.CharController
             _eDataTyp = OtherDef == ThingDefs.Undef ? TypeHelper.TypeToThingDef(typeof(T)) : OtherDef;
         }
 
-
         #region CSV
+
         public string Data2CSV(char strDelimiter, char strNewLine)
         {
             return IO.CSV_Converter.Data2CSV(strDelimiter, strNewLine, Data);
@@ -93,7 +99,7 @@ namespace ShadowRunHelper.CharController
         {
             Data.AddRange(IO.CSV_Converter.CSV2Data<T>(strDelimiter, strNewLine, strReadFile));
         }
-        #endregion
+        #endregion CSV
 
         public void SaveCurrentOrdering()
         {
@@ -129,18 +135,21 @@ namespace ShadowRunHelper.CharController
         {
             foreach (var item in controller.GetType().GetProperties().Where(x => x.PropertyType == typeof(T) && x.CanRead && x.CanWrite))
             {
-                try
+                if (item.GetValue(controller) is T thing)
                 {
-                    if (item.GetValue(controller) is T thing)
+                    var name = typeof(T).Name + "_" + item.Name;
+                    try
                     {
-                        thing.Bezeichner = ModelResources.ResourceManager.GetString(typeof(T).Name + "_" + item.Name);
+                        thing.Bezeichner = ModelResources.ResourceManager.GetString(name);
                     }
-                }
-                catch (Exception)
-                {
+                    catch (Exception ex)
+                    {
+                        thing.Bezeichner = Constants.NoResourceFallback;
+                        Log.Write("Could not get res string for " + name, ex, logType: LogType.Error);
+                    }
+                    thing.Bezeichner = Constants.NoResourceFallback;
                 }
             }
         }
-
     }
 }

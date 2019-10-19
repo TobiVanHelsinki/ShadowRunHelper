@@ -99,5 +99,7 @@ namespace ShadowRunHelper
         "----";
 #endif
         #endregion
+
+        public const string NoResourceFallback = "---";
     }
 }

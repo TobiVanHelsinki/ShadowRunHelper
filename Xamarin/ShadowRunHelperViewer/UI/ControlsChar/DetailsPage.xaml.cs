@@ -1,4 +1,6 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿///Author: Tobi van Helsinki
+
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
@@ -8,6 +10,7 @@ using ShadowRunHelperViewer.UI.Controls;
 using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
 using System;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
 using TLIB;
@@ -21,6 +24,7 @@ namespace ShadowRunHelperViewer
     {
         public Thing MyThing { get; set; }
         readonly CharHolder MyChar;
+
         public DetailsPage(Thing thing, CharHolder mychar)
         {
             MyChar = mychar;
@@ -46,7 +50,8 @@ namespace ShadowRunHelperViewer
             base.OnAppearing();
         }
 
-        void CreateView()
+        /// <summary>Creates the view.</summary>
+        private void CreateView()
         {
             NumberContent.Children.Clear();
             CalcContent.Children.Clear();
@@ -71,7 +76,7 @@ namespace ShadowRunHelperViewer
                                                                                     )))
             {
                 var Name = CreateNameLabel(item);
-                
+
                 View Content;
                 if (item.PropertyType == typeof(bool) || item.PropertyType == typeof(bool?))
                 {
@@ -80,46 +85,10 @@ namespace ShadowRunHelperViewer
                 }
                 else if (item.PropertyType == typeof(CharCalcProperty))
                 {
-                    var CalcPropGrid = new Grid();
-                    CalcPropGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
-                    CalcPropGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
-                    CalcPropGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
-                    CalcPropGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-                    CalcPropGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
-                    View BaseVal;
-                    BaseVal = new Entry();
-                    BaseVal.SetBinding(Entry.TextProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.BaseValue)));
-                    Grid.SetColumn(BaseVal, 0);
-                    BaseVal.VerticalOptions = LayoutOptions.Center;
-                    CalcPropGrid.Children.Add(BaseVal);
-                    // ####################
-                    var PlusButton = new Button() { Text = "+" };
-                    PlusButton.Clicked += OpenConnectedChooser;
-                    Grid.SetColumn(PlusButton, 1);
-                    PlusButton.VerticalOptions = LayoutOptions.Center;
-                    CalcPropGrid.Children.Add(PlusButton);
-                    // ####################
-                    var ConnectedValues = new CollectionView
-                    { // ist beta und löst beim disposen einen fehler aus 
-                        ItemsLayout = ListItemsLayout.Horizontal,
-                        ItemTemplate = Resources["ConnectedTemplate"] as DataTemplate,
-                        VerticalOptions = LayoutOptions.Center,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        HeightRequest = 50
-                    };
-                    ConnectedValues.SetBinding(ItemsView.ItemsSourceProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.Connected)));
-                    var Scroller = new ScrollView() { Content = ConnectedValues };
-                    Scroller.VerticalOptions = LayoutOptions.Center;
-                    Grid.SetColumn(Scroller, 2);
-                    CalcPropGrid.Children.Add(Scroller);
-                    // ####################
-                    View CalcedVal = new Label { VerticalOptions = LayoutOptions.Center };
-                    CalcedVal.SetBinding(Label.TextProperty, new Binding(item.Name + "." + nameof(CharCalcProperty.Value)));
-                    Grid.SetColumn(CalcedVal, 3);
-                    CalcedVal.VerticalOptions = LayoutOptions.Center;
-                    CalcPropGrid.Children.Add(CalcedVal);
-                    // ####################
-                    Content = CalcPropGrid;
+                    Content = (Resources["CharCalcPropertyTemplate"] as DataTemplate).CreateContent() as View;
+                    var charCalcProperty = item.GetValue(MyThing) as CharCalcProperty;
+                    AddConnectedValuesToViewAndRegister(Content, charCalcProperty);
+                    Content.BindingContext = charCalcProperty;
                 }
                 else
                 {
@@ -159,6 +128,27 @@ namespace ShadowRunHelperViewer
             }
         }
 
+        private void AddConnectedValuesToViewAndRegister(View Content, CharCalcProperty charCalcProperty)
+        {
+            charCalcProperty.Connected.CollectionChanged += Connected_CollectionChanged;
+            void Connected_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+            {
+                AddConnectedValuesToView(Content, charCalcProperty);
+            }
+            AddConnectedValuesToView(Content, charCalcProperty);
+        }
+
+        private void AddConnectedValuesToView(View Content, CharCalcProperty charCalcProperty)
+        {
+            var panel = Content.FindByName<StackLayout>("CalcPropertyPanel");
+            foreach (var item in charCalcProperty.Connected)
+            {
+                var item1 = (Resources["ConnectedTemplate"] as DataTemplate).CreateContent() as View;
+                item1.BindingContext = item;
+                panel.Children.Add(item1);
+            }
+        }
+
         /// <summary>
         /// create a label containing a localized string for this property
         /// </summary>
@@ -173,7 +163,7 @@ namespace ShadowRunHelperViewer
             };
         }
 
-        async void OpenConnectedChooser(object sender, EventArgs e)
+        private async void OpenConnectedChooser(object sender, EventArgs e)
         {
             //var page = new LinkListChooser(MyChar, MyThing.Wert2.Connected.Select(x => x.Connected.Select(y => y.)));
             var page = new LinkListChooser(MyChar, null);
@@ -196,14 +186,6 @@ namespace ShadowRunHelperViewer
                     h.Wert2.Connected.Clear();
                     h.Wert2.Connected.AddRange(page.Selected);
                 }
-                try
-                {
-                    //CreateView();
-                }
-                catch (Exception)
-                {
-                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-                }
             }
         }
 
@@ -225,6 +207,7 @@ namespace ShadowRunHelperViewer
             MyChar.Remove(MyThing);
             Close_Clicked(sender, e);
         }
+
         /// <summary>
         /// Close this
         /// </summary>
@@ -234,6 +217,5 @@ namespace ShadowRunHelperViewer
         {
             PopupNavigation.Instance.PopAsync(true);
         }
-
     }
 }

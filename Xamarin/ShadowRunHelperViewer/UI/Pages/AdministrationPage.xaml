@@ -7,12 +7,12 @@
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              mc:Ignorable="d"
-             x:Class="ShadowRunHelperViewer.UI.Pages.AdministrationPage" 
+             x:Class="ShadowRunHelperViewer.UI.Pages.AdministrationPage"
              BackgroundColor="White">
     <ContentView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <local:CharModelStyles />
+                <local:CharModelStyles/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentView.Resources>
@@ -29,8 +29,8 @@
             </Grid.RowDefinitions>
             <StackLayout x:Name="TitleBar" BackgroundColor="Accent" MinimumWidthRequest="50" MinimumHeightRequest="10" Padding="10">
                 <Label x:Name="Intro1Text" Text="{resx:UiResources TitleAdministrationPage}"
-                       HorizontalOptions="FillAndExpand"/>
-                <Label x:Name="Intro2Text" Text="{resx:UiResources IntroAdministration}" 
+                       HorizontalOptions="FillAndExpand" FontAttributes="Bold"/>
+                <Label x:Name="Intro2Text" Text="{resx:UiResources IntroAdministration}"
                        HorizontalOptions="FillAndExpand"/>
             </StackLayout>
             <Frame Padding="5" Grid.Row="1" IsVisible="False" x:Name="WarningFrame">
@@ -51,10 +51,10 @@
                     <DataTemplate x:DataType="io:ExtendetFileInfo">
                         <ViewCell>
                             <ViewCell.ContextActions>
-                                <MenuItem Clicked="FileRename" Text="{resx:UiResources Rename}" AutomationProperties.HelpText="{resx:UiResources FileRenameX}" />
-                                <MenuItem Clicked="FileExport" Text="{resx:UiResources Export}" AutomationProperties.HelpText="{resx:UiResources FileExportX}" />
+                                <MenuItem Clicked="FileRename" Text="{resx:UiResources Rename}" AutomationProperties.HelpText="{resx:UiResources FileRenameX}"/>
+                                <MenuItem Clicked="FileExport" Text="{resx:UiResources Export}" AutomationProperties.HelpText="{resx:UiResources FileExportX}"/>
                                 <MenuItem Clicked="FileCopy" Text="{resx:UiResources Copy}" AutomationProperties.HelpText="{resx:UiResources FileCopyX}"/>
-                                <MenuItem Clicked="FileDelete" Text="{resx:UiResources Delete}" AutomationProperties.HelpText="{resx:UiResources FileDeleteX}" IsDestructive="True" />
+                                <MenuItem Clicked="FileDelete" Text="{resx:UiResources Delete}" AutomationProperties.HelpText="{resx:UiResources FileDeleteX}" IsDestructive="True"/>
                             </ViewCell.ContextActions>
                             <Grid Padding="0" Margin="0">
                                 <Grid.ColumnDefinitions>

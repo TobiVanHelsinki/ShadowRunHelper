@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿///Author: Tobi van Helsinki
+
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,6 +22,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         private string modi = "";
         [Used_User]
         public string Modi
@@ -34,6 +37,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
             {
                 ThingDefs.Handlung, ThingDefs.Fertigkeit, ThingDefs.Connection, ThingDefs.Sin
@@ -42,17 +46,15 @@ namespace ShadowRunHelper.CharModel
         public Fernkampfwaffe() : base()
         {
             LinkedThings.FilterOut = (Filter);
+            _MyProperty = new CharCalcProperty(nameof(MyProperty), this);
         }
 
         [JsonIgnore]
-        CharCalcProperty _MyProperty = new CharCalcProperty();
+        CharCalcProperty _MyProperty;
         public CharCalcProperty MyProperty
         {
             get { return _MyProperty; }
             set { if (_MyProperty != value) { _MyProperty = value; NotifyPropertyChanged(); } }
         }
-
-
-
     }
 }

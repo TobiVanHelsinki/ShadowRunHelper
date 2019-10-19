@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿///Author: Tobi van Helsinki
+
+using Newtonsoft.Json;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System;
@@ -12,30 +14,39 @@ using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
-
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public sealed class Used_UserAttribute : Attribute
     {
         public bool UIRelevant { get; set; }
-        public Used_UserAttribute() { }
+
+        public Used_UserAttribute()
+        {
+        }
     }
+
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public sealed class Used_CalcAttribute : Attribute
     {
-        public Used_CalcAttribute() { }
+        public Used_CalcAttribute()
+        {
+        }
     }
+
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public sealed class Used_ListAttribute : Attribute
     {
-        public Used_ListAttribute() { }
+        public Used_ListAttribute()
+        {
+        }
     }
-
 
     public class Thing : INotifyPropertyChanged, ICSV
     {
         public const uint nThingPropertyCount = 5;
+
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
@@ -45,9 +56,11 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        #endregion
+        #endregion INotifyPropertyChanged
+
         public Thing()
         {
+            _Wert2 = new CharCalcProperty(nameof(Wert2), this);
             LinkedThings = new LinkList(this);
             ThingType = TypeHelper.TypeToThingDef(GetType());
             LinkedThings.OnCollectionChangedCall(OnLinkedThingsChanged);
@@ -71,6 +84,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         public int Order { get; set; }
         protected string notiz = "";
         [Used_UserAttribute]
@@ -86,6 +100,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         protected string zusatz = "";
         [Used_UserAttribute]
         public string Zusatz
@@ -100,6 +115,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         protected double wert = 0;
         [Used_UserAttribute]
         public virtual double Wert
@@ -115,7 +131,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        CharCalcProperty _Wert2 = new CharCalcProperty();
+        CharCalcProperty _Wert2;
         [Used_UserAttribute]
         public CharCalcProperty Wert2
         {
@@ -137,6 +153,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         protected string bezeichner = "";
         [Used_User]
         public string Bezeichner
@@ -168,7 +185,8 @@ namespace ShadowRunHelper.CharModel
             set { if (_FavoriteIndex != value) { _FavoriteIndex = value; NotifyPropertyChanged(); } }
         }
 
-        #endregion
+        #endregion Properties
+
         #region Calculations
         LinkList _LinkedThings;
         [Used_List]
@@ -202,6 +220,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         protected virtual void OnLinkedThingsChanged()
         {
             //TODO Remove with new calc model
@@ -217,6 +236,7 @@ namespace ShadowRunHelper.CharModel
             }
             return 0;
         }
+
         protected virtual double InternValueOf(string ID)
         {
             //TODO Remove with new calc model
@@ -229,11 +249,12 @@ namespace ShadowRunHelper.CharModel
                 return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
             }
             catch (Exception ex)
- {
+            {
                 Log.Write("Could not", ex, logType: LogType.Error);
                 return 0;
             }
         }
+
         public double RawValueOf(string ID)
         {
             //TODO Remove with new calc model
@@ -248,29 +269,33 @@ namespace ShadowRunHelper.CharModel
                     return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
                 }
                 catch (Exception ex)
- { 
+                {
                     Log.Write("Could not", ex, logType: LogType.Error);
                     return 0;
                 }
             }
             return 0;
         }
+
         protected virtual bool UseForCalculation()
         {
             //TODO Remove with new calc model
             return true;
         }
 
-        #endregion
+        #endregion Calculations
+
         public static IEnumerable<PropertyInfo> GetProperties(object obj)
         {
             return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute));
         }
+
         public static IEnumerable<PropertyInfo> GetPropertiesLists(object obj)
         {
             //TODO Remove with new calc model
             return ReflectionHelper.GetProperties(obj, typeof(Used_ListAttribute));
         }
+
         public static IEnumerable<CharCalcProperty> GetCharProperties(object obj)
         {
             return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute)).Where(x => x.PropertyType == typeof(CharCalcProperty)).Select(x => x.GetValue(obj)).OfType<CharCalcProperty>();
@@ -321,7 +346,7 @@ namespace ShadowRunHelper.CharModel
                     target = (Thing)Activator.CreateInstance(this.GetType());
                 }
                 catch (Exception ex)
- {
+                {
                     Log.Write("Could not", ex, logType: LogType.Error);
                     return false;
                 }
@@ -333,7 +358,7 @@ namespace ShadowRunHelper.CharModel
                     item.SetValue(target, item.GetValue(this));
                 }
                 catch (Exception ex)
- {
+                {
                     Log.Write("Could not", ex, logType: LogType.Error);
                     ret = false;
                 }
@@ -348,13 +373,14 @@ namespace ShadowRunHelper.CharModel
                     CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
                 }
                 catch (Exception ex)
- {
+                {
                     Log.Write("Could not", ex, logType: LogType.Error);
                     ret = false;
                 }
             }
             return ret;
         }
+
         public virtual void Reset()
         {
             foreach (var item in GetProperties(this))
@@ -397,27 +423,31 @@ namespace ShadowRunHelper.CharModel
         }
 
         #region CSV
+
         public virtual string ToCSV(char Delimiter)
         {
             return GetProperties(this).Reverse().Select
                 (item => item.GetValue(this) + Delimiter.ToString()).Aggregate((a, s) => a + s);
         }
+
         public virtual string HeaderToCSV(char Delimiter)
         {
             return GetProperties(this).Reverse().Select
                 (item => CustomManager.GetString("Model_" + item.DeclaringType.Name + "_" + item.Name + "/Text") + Delimiter.ToString())
                 .Aggregate((a, s) => a + s);
         }
+
         public virtual void FromCSV(Dictionary<string, string> dic)
         {
-            var Props = GetProperties(this).Reverse().Select(p => (CustomManager.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"),p));
+            var Props = GetProperties(this).Reverse().Select(p => (CustomManager.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"), p));
             foreach (var item in dic)
             {
                 var currentProp = Props.FirstOrDefault(p => p.Item1 == item.Key);
                 currentProp.p?.SetValue(this, ConvertToRightType(item.Value, currentProp.p.GetValue(this)));
             }
         }
-        static object ConvertToRightType(object Value, object Target)
+
+        private static object ConvertToRightType(object Value, object Target)
         {
             switch (Target)
             {
@@ -437,7 +467,7 @@ namespace ShadowRunHelper.CharModel
                     return Value;
             }
         }
-        #endregion
+        #endregion CSV
 
         public override string ToString()
         {
@@ -476,7 +506,6 @@ namespace ShadowRunHelper.CharModel
             var mytextes = mytext.Split(' ', '-', '/', '_');
             if (mytext.Contains("charis"))
             {
-
             }
 
             float retval = 0;
@@ -502,8 +531,6 @@ namespace ShadowRunHelper.CharModel
             //}
             return retval;
         }
-
-   
     }
 
     public static class ThingExt
