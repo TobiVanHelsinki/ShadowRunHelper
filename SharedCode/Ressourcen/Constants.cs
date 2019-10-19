@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper.Model;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using TAPPLICATION;
 using TLIB;
@@ -17,7 +19,7 @@ namespace ShadowRunHelper
 
         public static string[] AVAILIBLE_DB_LANGUAGES = new string[] { "de" };
         public const string DEFAULT_DB_LANGUAGE = "de";
-        public static string[] AVAILIBLE_EXAMPLE_LANGUAGES = new string[] { "de" , "en" };
+        public static string[] AVAILIBLE_EXAMPLE_LANGUAGES = new string[] { "de", "en" };
         public const string DEFAULT_EXAMPLE_LANGUAGE = "en";
 
         public const string PROTOCOL_CHAR = "srch://";
@@ -31,23 +33,30 @@ namespace ShadowRunHelper
         public static readonly List<string> LST_FILETYPES_ALL = new List<string>() { DATEIENDUNG_CHAR, DATEIENDUNG_CSV };
         public static readonly List<string> LST_FILETYPES_CSV = new List<string>() { DATEIENDUNG_CSV };
         public static readonly List<string> LST_FILETYPES_CHAR = new List<string>() { DATEIENDUNG_CHAR_1, DATEIENDUNG_CHAR_2, DATEIENDUNG_CHAR_3 };
-        #endregion
+        #endregion File Endings
+
         #region Version Numbers
         public const string APP_VERSION_NUMBER_1_3 = "1.3";
         public const string APP_VERSION_NUMBER_1_5 = "1.5";
         public const string APP_VERSION_NUMBER_1_7 = "1.7";
-        public const string APP_VERSION_NUMBER = APP_VERSION_NUMBER_1_7;
+        public const string APP_VERSION_NUMBER_2_2 = "2.2";
+        public const string APP_VERSION_NUMBER_3_0 = "2.0";
+        public const string APP_VERSION_NUMBER = APP_VERSION_NUMBER_3_0;
 
         public const string CHARFILE_VERSION_1_3 = "1130"; //old version
         public const string CHARFILE_VERSION_1_5 = "1.5";
         public const string CHARFILE_VERSION_1_6 = "1.6";
         public const string CHARFILE_VERSION_1_7 = "1.7";
-        public const string CHARFILE_VERSION = CHARFILE_VERSION_1_7;
-        #endregion
+        public const string CHARFILE_VERSION_1_8 = "1.8";
+        public const string CHARFILE_VERSION = CHARFILE_VERSION_1_8;
+        #endregion Version Numbers
+
         #region Tips
         public static List<string> TipList = Helper.StringHelper.GetStrings("Tip");
-        #endregion
+        #endregion Tips
+
         #region Help
+
         public static List<HelpEntry> HelpList = new List<HelpEntry>() {
             new HelpEntry() { Paragraph = CustomManager.GetString("Help4_CharAdministration"), Text = CustomManager.GetString("Help4") },
             new HelpEntry() { Paragraph = CustomManager.GetString("Help5_CharAdministration_FileName"), Text = CustomManager.GetString("Help5") },
@@ -55,18 +64,21 @@ namespace ShadowRunHelper
             new HelpEntry() { Paragraph = CustomManager.GetString("Help1_ActiveItems"), Text = CustomManager.GetString("Help1") },
             new HelpEntry() { Paragraph = CustomManager.GetString("Help2_AutoCalc"), Text = CustomManager.GetString("Help2") },
         };
-        #endregion
+        #endregion Help
+
         #region Orga-Stuff
 #if BETA
         public const string APP_STORE_ID_SRE = "9ncxwgx1kr8s";
 #elif RELEASE
+
         //public const string APP_STORE_ID_SRC = "9nblggh4rhvx";
         public const string APP_STORE_ID_SRE = "9n7sf3p3fp5j";
 #endif
         public const string APP_PUBLISHER_MAIL_TvH = "TobiVanHelsinki@live.de";
         public const string APP_PUBLISHER_TvH = "Tobi van Helsinki";
 
-        #endregion
+        #endregion Orga-Stuff
+
         #region IAPs
         public static List<string> IAP_STORE_LIST_ADDON_TYPES = new List<string>() { "Durable", "Consumable", "UnmanagedConsumable" };
 #if BETA
@@ -78,7 +90,7 @@ namespace ShadowRunHelper
 #elif RELEASE
         public const string AD_ADID_MainPageRight = "1100025839";
         public const string AD_ADID_MainPageBottom = "1100028115";
-        
+
         //public const string IAP_FEATUREID_ADFREE_365 = "9NKHSRWSBMRD";
         //public const string IAP_FEATUREID_ADFREE = "9NMBBTFVKW84";
         //public const string IAP_FEATUREID_TEE = "9PJF3SD71T40";
@@ -88,17 +100,19 @@ namespace ShadowRunHelper
 #endif
 
         public static bool IAP_HIDEADS { get; set; }
-        #endregion
+        #endregion IAPs
+
         #region Diagnostics
+
         public const string AppCenterID =
 #if BETA
             "cea0f814-f9f7-46b1-ba58-760607a60559";
 #elif RELEASE
             "20914a32-ddd2-4d7d-93af-97206a32f332";
-#else   
+#else
         "----";
 #endif
-        #endregion
+        #endregion Diagnostics
 
         public const string NoResourceFallback = "---";
     }
