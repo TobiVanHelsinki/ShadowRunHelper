@@ -1,4 +1,6 @@
-﻿using PCLStorage;
+﻿///Author: Tobi van Helsinki
+
+using PCLStorage;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using System;
@@ -41,8 +43,8 @@ namespace ShadowRunHelperViewer.UI.Pages
                     }
                     break;
                 case ProjectPages.Administration:
-                    Administration:
-                        NavigatoToSingleInstanceOf<AdministrationPage>(false, (x) => x.Activate());
+                Administration:
+                    NavigatoToSingleInstanceOf<AdministrationPage>(false, (x) => x?.Activate());
                     break;
                 case ProjectPages.Settings:
                     NavigatoToSingleInstanceOf<MiscPage>(false, (x) => x.AfterLoad());
@@ -52,10 +54,11 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        void CharPage(object sender, System.EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Char);
+        private void CharPage(object sender, System.EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Char);
 
-        void Administration(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Administration);
-        void Settings(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Settings);
+        private void Administration(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Administration);
+
+        private void Settings(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Settings);
 
         /// <summary>
         /// NavigatoToSingleInstanceOf
@@ -74,36 +77,46 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 SetWaitingContent();
             }
-
-            Task.Run(() =>
+            try
             {
-                try
-                {
-                    return new T();
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }).ContinueWith((t) =>
+                var t = new T();
+                ContentPlace.Content = t;
+                afterLoad?.Invoke(t);
+            }
+            catch (Exception ex)
             {
-                if (t.IsCompleted)
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        try
-                        {
-                            ContentPlace.Content = t.Result;
-                            afterLoad?.Invoke(t.Result);
-                        }
-                        catch (Exception ex)
-                        {
-                            Log.Write("Could not Set Content", ex, logType: LogType.Error);
-                            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-                        }
-                    });
-                }
-            });
+                Log.Write("Could not Set Content", ex, logType: LogType.Error);
+                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+            }
+            //Task.Run(() =>
+            //{
+            //    try
+            //    {
+            //        return new T();
+            //    }
+            //    catch (Exception)
+            //    {
+            //        return null;
+            //    }
+            //}).ContinueWith((t) =>
+            //{
+            //    if (t.IsCompleted)
+            //    {
+            //        Device.BeginInvokeOnMainThread(() =>
+            //        {
+            //            try
+            //            {
+            //                ContentPlace.Content = t.Result;
+            //                afterLoad?.Invoke(t.Result);
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                Log.Write("Could not Set Content", ex, logType: LogType.Error);
+            //                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+            //            }
+            //        });
+            //    }
+            //});
         }
 
         private void SetWaitingContent()
@@ -127,6 +140,5 @@ namespace ShadowRunHelperViewer.UI.Pages
                 return base.OnBackButtonPressed();
             }
         }
-
     }
 }

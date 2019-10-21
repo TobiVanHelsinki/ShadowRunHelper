@@ -1,4 +1,5 @@
-﻿
+﻿///Author: Tobi van Helsinki
+
 using ShadowRunHelper;
 using ShadowRunHelperViewer.UI.Pages;
 using System;
@@ -10,13 +11,13 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
 namespace ShadowRunHelperViewer
 {
     public partial class App : Application
     {
         public App()
         {
-
             Log.IsConsoleLogEnabled = true;
             Log.IsInMemoryLogEnabled = true;
             Log.Mode = LogMode.Verbose;
@@ -62,6 +63,5 @@ namespace ShadowRunHelperViewer
         {
             // Handle when your app resumes
         }
-
     }
 }

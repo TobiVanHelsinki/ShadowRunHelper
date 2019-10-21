@@ -57,6 +57,14 @@ namespace ShadowRunHelper.IO
 
     public class CharHolderIO : SharedIO<CharHolder>
     {
+        /// <summary>
+        /// ConvertWithRightVersion
+        /// </summary>
+        /// <param name="strAppVersion"></param>
+        /// <param name="strFileVersion"></param>
+        /// <param name="fileContent"></param>
+        /// <returns></returns>
+        /// <exception cref="ShadowRunHelper.IO_FileVersion"></exception>
         internal static CharHolder ConvertWithRightVersion(string strAppVersion, string strFileVersion, string fileContent)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings()

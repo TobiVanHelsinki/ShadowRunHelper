@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper.CharController;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,7 @@ using TAPPLICATION;
 using TAPPLICATION.Model;
 using TLIB;
 
-//TODO 
+//TODO
 //diese liste anzeigen im chooser, evtl gruppiert nach kats, things
 //auswählen von dingen gibt liste aller CalcValues zurück, diese wird dann eingegeben
 
@@ -26,13 +28,16 @@ namespace ShadowRunHelper.Model
     {
         #region vars
         // Admin Version Numbers ##############################################
-        public string APP_VERSION_NUMBER { get { return Constants.APP_VERSION_NUMBER; } }
-        public string FILE_VERSION_NUMBER { get { return Constants.CHARFILE_VERSION; } }
-        #endregion
-        #region  Char Model DATA 
+        public string APP_VERSION_NUMBER => Constants.APP_VERSION_NUMBER;
+
+        public string FILE_VERSION_NUMBER => Constants.CHARFILE_VERSION;
+        #endregion vars
+
+        #region Char Model DATA
         // the various controlers
         // First Gen
         public Controller<Item> CTRLItem { get; } = new Controller<Item>();
+
         public Controller<Programm> CTRLProgramm { get; } = new Controller<Programm>();
         public Controller<Munition> CTRLMunition { get; } = new Controller<Munition>();
         public Controller<Vorteil> CTRLVorteil { get; } = new Controller<Vorteil>();
@@ -41,6 +46,7 @@ namespace ShadowRunHelper.Model
         public Controller<Sin> CTRLSin { get; } = new Controller<Sin>();
         // Second Gen
         public Controller<Adeptenkraft> CTRLAdeptenkraft { get; } = new Controller<Adeptenkraft>();
+
         public Controller<Foki> CTRLFoki { get; } = new Controller<Foki>();
         public Controller<Geist> CTRLGeist { get; } = new Controller<Geist>();
         public Controller<Stroemung> CTRLStroemung { get; } = new Controller<Stroemung>();
@@ -48,6 +54,7 @@ namespace ShadowRunHelper.Model
         public Controller<Zaubersprueche> CTRLZaubersprueche { get; } = new Controller<Zaubersprueche>();
         // Third Gen
         public Controller<KomplexeForm> CTRLKomplexeForm { get; } = new Controller<KomplexeForm>();
+
         public Controller<Widgets> CTRLWidgets { get; } = new Controller<Widgets>();
         public Controller<Sprite> CTRLSprite { get; } = new Controller<Sprite>();
         public Controller<Wandlung> CTRLWandlung { get; } = new Controller<Wandlung>();
@@ -55,6 +62,7 @@ namespace ShadowRunHelper.Model
 
         // Importand ordering
         public AttributController CTRLAttribut { get; } = new AttributController();
+
         public BerechnetController CTRLBerechnet { get; } = new BerechnetController();
         public Controller<Implantat> CTRLImplantat { get; } = new Controller<Implantat>();
 
@@ -69,25 +77,33 @@ namespace ShadowRunHelper.Model
         public Controller<Note> CTRLNote { get; } = new Controller<Note>();
         [Newtonsoft.Json.JsonIgnore]
         public FavoriteController CTRLFavorite { get; } = new FavoriteController();
+
         public Person Person { get; } = new Person();
         public CharSettings Settings { get; } = new CharSettings();
-        #endregion
+        #endregion Char Model DATA
+
         #region EASY ACCESS STUFF
 
         [Newtonsoft.Json.JsonIgnore]
         public List<IController> CTRLList { get; } = new List<IController>();
+
         [Newtonsoft.Json.JsonIgnore]
         public List<AllListEntry> LinkList { get; } = new List<AllListEntry>();
+
         [Newtonsoft.Json.JsonIgnore]
         public List<Thing> ThingList { get; } = new List<Thing>();
-        [Newtonsoft.Json.JsonIgnore] 
-        public IEnumerable<CharCalcProperty> ConnectronProps => LinkList.SelectMany(x => x.Object.GetType().GetProperties().Where(p => p.PropertyType == typeof(CharCalcProperty)).Select(p => p.GetValue(x.Object, null) as CharCalcProperty));
+
         [Newtonsoft.Json.JsonIgnore]
-        public IEnumerable<Thing> Connectrons => LinkList.Select(x => x.Object);
+        public IEnumerable<CharCalcProperty> ConnectronProps => LinkList.SelectMany(x => x.Object.GetType().GetProperties().Where(p => p.PropertyType == typeof(CharCalcProperty)).Select(p => p.GetValue(x.Object) as CharCalcProperty));
+
+        [Newtonsoft.Json.JsonIgnore]
+        public IEnumerable<IEnumerable<Thing>> Connectrons => LinkList.Select(x => x.Object).GroupBy(x => x.ThingType);
+
         [Newtonsoft.Json.JsonIgnore]
         public ObservableCollection<Thing> Favorites { get; } = new ObservableCollection<Thing>();
 
-        #endregion
+        #endregion EASY ACCESS STUFF
+
         #region IO and Display Stuff
 
         [Newtonsoft.Json.JsonIgnore]
@@ -95,7 +111,7 @@ namespace ShadowRunHelper.Model
 
         public string MakeName(bool UseProgress)
         {
-            string strSaveName = "";
+            var strSaveName = "";
 
             string AddNameAndType(string Name)
             {
@@ -131,26 +147,30 @@ namespace ShadowRunHelper.Model
         {
             return MakeName(true) + " " + base.ToString();
         }
-        #endregion
+        #endregion IO and Display Stuff
+
         #region INI Stuff
+
         public CharHolder()
         {
             SaveTimer = new Timer((x) => { SaveRequest?.Invoke(x, this); HasChanges = false; }, this, Timeout.Infinite, Timeout.Infinite);
             // To Autosave
-         
-            CTRLList = GetType().GetProperties().Where(x => typeof(IController).IsAssignableFrom(x.PropertyType)).Select(x=>x.GetValue(this, null) as IController).ToList();
+
+            CTRLList = GetType().GetProperties().Where(x => typeof(IController).IsAssignableFrom(x.PropertyType)).Select(x => x.GetValue(this) as IController).ToList();
 
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
             Favorites.CollectionChanged += SaveFavoritesOrdering;
-            
+
             RefreshLists();
             RefreshListeners();
         }
 
-        #endregion
-        #region DATA HANDLING STUFF 
+        #endregion INI Stuff
+
+        #region DATA HANDLING STUFF
         public event PropertyChangedEventHandler PropertyChanged;
-        void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
@@ -164,6 +184,7 @@ namespace ShadowRunHelper.Model
         }
 
 #if DEBUG
+
         public void CustomProgrammerStuff()
         {
             //foreach (var item in CTRLHandlung.Data)
@@ -183,8 +204,8 @@ namespace ShadowRunHelper.Model
                 var TargetCollection = new ObservableCollection<AllListEntry>();
                 foreach (var item in SourceCollection)
                 {
-                    AllListEntry NewEntry = LinkList.Find(
-                        x => x.Object == item.Object && 
+                    var NewEntry = LinkList.Find(
+                        x => x.Object == item.Object &&
                         x.PropertyID == item.PropertyID);
                     if (NewEntry == null)
                     {
@@ -214,7 +235,7 @@ namespace ShadowRunHelper.Model
                     else
                     {
                         Features.Analytics.TrackEvent("Err_CharRepair_Hard");
-                        Log.Write(String.Format(CustomManager.GetString("Error_RepairLinkList"),item.Object.Bezeichner + item.PropertyID));
+                        Log.Write(string.Format(CustomManager.GetString("Error_RepairLinkList"), item.Object.Bezeichner + item.PropertyID));
                     }
                 }
                 foreach (var item in TargetCollection)
@@ -246,6 +267,13 @@ namespace ShadowRunHelper.Model
             CustomProgrammerStuff();
 #endif
         }
+
+        /// <summary>
+        /// ThingDef2CTRL
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException">Ignore.</exception>
         public IController ThingDef2CTRL(ThingDefs tag)
         {
             return CTRLList.First(c => c.eDataTyp == tag);
@@ -257,9 +285,10 @@ namespace ShadowRunHelper.Model
         /// <exception cref="NotSupportedException" />
         /// <param name="thingDefs"></param>
         /// <returns></returns>
+        /// <exception cref="InvalidOperationException">Ignore.</exception>
         public Thing Add(ThingDefs thingDefs)
         {
-            Thing returnThing = CTRLList.First(c => c.eDataTyp == thingDefs).AddNewThing();
+            var returnThing = CTRLList.First(c => c.eDataTyp == thingDefs).AddNewThing();
             RegisterNewThing(returnThing);
             return returnThing;
         }
@@ -270,19 +299,30 @@ namespace ShadowRunHelper.Model
         /// <exception cref="NotSupportedException" />
         /// <param name="thingDefs"></param>
         /// <returns></returns>
+        /// <exception cref="InvalidOperationException">Ignore.</exception>
         public void Add(Thing NewThing)
         {
             CTRLList.First(c => c.eDataTyp == NewThing.ThingType).AddNewThing(NewThing);
             RegisterNewThing(NewThing);
         }
-        void RegisterNewThing(Thing NewThing)
+
+        private void RegisterNewThing(Thing NewThing)
         {
             NewThing.PropertyChanged += AnyPropertyChanged;
-            NewThing.PropertyChanged += (x, y) => {
+            NewThing.PropertyChanged += (x, y) =>
+            {
                 if (y.PropertyName == nameof(Thing.IsFavorite))
+                {
                     RefreshLists();
+                }
             };
         }
+
+        /// <summary>
+        /// Remove
+        /// </summary>
+        /// <param name="tToRemove"></param>
+        /// <exception cref="InvalidOperationException">Ignore.</exception>
         public void Remove(Thing tToRemove)
         {
             CTRLList.First(c => c.eDataTyp == tToRemove.ThingType).RemoveThing(tToRemove);
@@ -325,12 +365,14 @@ namespace ShadowRunHelper.Model
         public void RefreshLists()
         {
             LinkList.Clear();
-            LinkList.AddRange(CTRLList.Aggregate(new List<AllListEntry>(),(l,c)=>l.Concat(c.GetElementsForThingList()).ToList()));
+            LinkList.AddRange(CTRLList.Aggregate(new List<AllListEntry>(), (l, c) => l.Concat(c.GetElementsForThingList()).ToList()));
             ThingList.Clear();
             ThingList.AddRange(CTRLList.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
             RefreshListFav();
         }
-        bool RefreshInProgress;
+
+        private bool RefreshInProgress;
+
         public void RefreshListFav()
         {
             if (!RefreshInProgress)
@@ -346,34 +388,38 @@ namespace ShadowRunHelper.Model
                 RefreshInProgress = false;
             }
         }
-        void SaveFavoritesOrdering(object sender, NotifyCollectionChangedEventArgs e)
+
+        private void SaveFavoritesOrdering(object sender, NotifyCollectionChangedEventArgs e)
         {
-            for (int i = 0; i < Favorites.Count; i++)
+            for (var i = 0; i < Favorites.Count; i++)
             {
                 Favorites[i].FavoriteIndex = i;
             }
             HasChanges = true;
         }
 
-        #endregion
-        #region AUTO_SAVE_STUFF 
+        #endregion DATA HANDLING STUFF
+
+        #region AUTO_SAVE_STUFF
+
         [Newtonsoft.Json.JsonIgnore]
-        bool _HasChanges = false;
+        private bool _HasChanges = false;
         [Newtonsoft.Json.JsonIgnore]
         public bool HasChanges
         {
-            get { return _HasChanges; }
+            get => _HasChanges;
             set
             {
                 if (value != _HasChanges)
                 {
-                     _HasChanges = value;
+                    _HasChanges = value;
                     NotifyPropertyChanged();
                 }
             }
         }
+
         [Newtonsoft.Json.JsonIgnore]
-        System.Threading.Timer SaveTimer;
+        private readonly System.Threading.Timer SaveTimer;
         /// <summary>
         /// fire if you want to get the char saved
         /// </summary>
@@ -383,7 +429,7 @@ namespace ShadowRunHelper.Model
         /// handler method if any property get's changed
         /// note: as this method handles the saves, the "HasChanges" var should be excepted
         /// </summary>
-        void AnyPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void AnyPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(Thing.IsFavorite))
             {
@@ -400,27 +446,38 @@ namespace ShadowRunHelper.Model
         {
             if (HasChanges || ForceSave)
             {
-                SaveTimer.Change(Time, Timeout.Infinite);
-                return true;
+                try
+                {
+                    SaveTimer.Change(Time, Timeout.Infinite);
+                    return true;
+                }
+                catch (ObjectDisposedException ex)
+                {
+                    Log.Write("Could not set save timer", ex, logType: LogType.Error);
+                }
             }
             return false;
         }
-        #endregion
+        #endregion AUTO_SAVE_STUFF
+
         #region DnD
-        readonly List<Thing> MoveList = new List<Thing>();
-        bool _IsItemsPrepared;
+        private readonly List<Thing> MoveList = new List<Thing>();
+        private bool _IsItemsPrepared;
         public bool IsItemsPrepared
         {
-            get { return _IsItemsPrepared; }
+            get => _IsItemsPrepared;
             set { if (_IsItemsPrepared != value) { _IsItemsPrepared = value; NotifyPropertyChanged(); } }
         }
+
         public bool? IsItemsMove { get; set; }
+
         public void ClearPreparedItems()
         {
             MoveList.Clear();
             IsItemsPrepared = false;
             IsItemsMove = null;
         }
+
         public void PrepareToMoveOrCopy(Thing item)
         {
             if (item != null && !MoveList.Contains(item))
@@ -429,6 +486,12 @@ namespace ShadowRunHelper.Model
                 IsItemsPrepared = true;
             }
         }
+
+        /// <summary>
+        /// CopyPreparedItems
+        /// </summary>
+        /// <param name="NEW_CTRL"></param>
+        /// <exception cref="InvalidOperationException">Ignore.</exception>
         public void CopyPreparedItems(ThingDefs NEW_CTRL)
         {
             foreach (var OLD_THING in MoveList)
@@ -441,6 +504,12 @@ namespace ShadowRunHelper.Model
             IsItemsPrepared = false;
             IsItemsMove = null;
         }
+
+        /// <summary>
+        /// MovePreparedItems
+        /// </summary>
+        /// <param name="NEW_CTRL"></param>
+        /// <exception cref="InvalidOperationException">Ignore.</exception>
         public void MovePreparedItems(ThingDefs NEW_CTRL)
         {
             foreach (var OLD_THING in MoveList)
@@ -454,7 +523,8 @@ namespace ShadowRunHelper.Model
             IsItemsPrepared = false;
             IsItemsMove = null;
         }
-        #endregion
+        #endregion DnD
+
         public void SubtractLifeStyleCost()
         {
             if (Person != null)

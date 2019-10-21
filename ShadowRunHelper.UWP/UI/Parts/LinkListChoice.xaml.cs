@@ -11,12 +11,20 @@ namespace ShadowRunHelper.UI
 
     public partial class LinkListChoice : ContentDialog
     {
-        LinkList LinkList;
-        List<AllListEntry> AllThings;
-        bool isMultichoice;
-        CharHolder CurrentChar;
-        IEnumerable<ThingDefs> FilterOut;
+        readonly LinkList LinkList;
+        readonly List<AllListEntry> AllThings;
+        readonly bool isMultichoice;
+        readonly CharHolder CurrentChar;
+        readonly IEnumerable<ThingDefs> FilterOut;
 
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="Char"></param>
+        /// <param name="data"></param>
+        /// <param name="Multichoice"></param>
+        /// <param name="Filter"></param>
+        /// <exception cref="ShadowRunHelper.AllListChooserError"></exception>
         public LinkListChoice(CharHolder Char, LinkList data, bool Multichoice = true, IEnumerable<ThingDefs> Filter = null)
         {
             InitializeComponent();

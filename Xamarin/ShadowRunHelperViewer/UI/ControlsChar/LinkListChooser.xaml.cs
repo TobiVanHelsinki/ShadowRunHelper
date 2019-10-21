@@ -1,4 +1,6 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿///Author: Tobi van Helsinki
+
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
@@ -20,10 +22,9 @@ namespace ShadowRunHelperViewer.UI.Controls
         /// Was the Choice successfull
         /// </summary>
         public bool Result { get; set; }
+
         public LinkListChooser(CharHolder myChar, IEnumerable<CharCalcProperty> preSelection)
         {
-            //https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/
-            //can grouping, multiple selection mode, scroll into. should be used evry where if possible
             MyChar = myChar;
             InitializeComponent();
             BindingContext = this;
@@ -32,9 +33,13 @@ namespace ShadowRunHelperViewer.UI.Controls
 
         private void Select(IEnumerable<CharCalcProperty> preSelection)
         {
+            foreach (var item in preSelection)
+            {
+            }
         }
 
         public List<CharCalcProperty> Selected = new List<CharCalcProperty>();
+
         private void Cancel_Clicked(object sender, System.EventArgs e)
         {
             PopupNavigation.Instance.PopAsync(true);
@@ -98,8 +103,7 @@ namespace ShadowRunHelperViewer.UI.Controls
             }
         }
 
-        void PopupPage_SizeChanged(object sender, EventArgs e) => (MainFrame.WidthRequest, MainFrame.HeightRequest) = Common.MaximumDimensions(Width, Height);
-
+        private void PopupPage_SizeChanged(object sender, EventArgs e) => (MainFrame.WidthRequest, MainFrame.HeightRequest) = Common.MaximumDimensions(Width, Height);
     }
 
     /// <summary>
