@@ -185,8 +185,8 @@ namespace ShadowRunHelperViewer
             {
                 if (MyThing is Handlung h)
                 {
-                    h.Wert2.Connected.Clear();
-                    h.Wert2.Connected.AddRange(page.Selected);
+                    h.Value.Connected.Clear();
+                    h.Value.Connected.AddRange(page.Selected);
                 }
             }
         }

@@ -46,7 +46,7 @@ namespace ShadowRunHelperViewer.UWP.Renderers
         <TextBlock Text=""{Binding  }""/>
         <TextBlock Margin=""4,0,0,0"">
             <Run Text=""("" Margin=""0""/>
-            <Run Text=""" + Count + @""" Margin=""0""/>
+            <Run Text=""" + count + @""" Margin=""0""/>
             <Run Text="")"" Margin=""0""/>
         </TextBlock>
     </StackPanel>

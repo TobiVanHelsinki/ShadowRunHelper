@@ -62,7 +62,7 @@ namespace ShadowRunHelperViewer.UI.Controls
             {
                 if (Selected.Contains(entry.CalcProperty))
                 {
-                    panel.BackgroundColor = Color.Default;
+                    panel.BackgroundColor = Color.Transparent;
                     Selected.Remove(entry.CalcProperty);
                 }
                 else

@@ -56,9 +56,9 @@
             </DataTemplate>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <Frame x:Name="MainFrame" Padding="10" Margin="25" BackgroundColor="Beige" HorizontalOptions="Center" VerticalOptions="Center"
-           CornerRadius="10">
-        <Grid>
+    <Frame x:Name="MainFrame" Margin="20" BackgroundColor="Beige" HorizontalOptions="Center" VerticalOptions="Center"
+           CornerRadius="0">
+        <Grid Margin="00">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
