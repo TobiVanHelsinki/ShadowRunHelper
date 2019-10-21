@@ -22,8 +22,8 @@ namespace SharedCodeTest
             Char.Add(H1);
             Char.Add(new Item() { Bezeichner = "Item" });
 
-            H1.Wert2.Connected.Add(Char.CTRLAttribut.Charisma.Wert2);
-            H1.Wert2.Connected.Add(Char.CTRLItem[0].Wert2);
+            H1.Value.Connected.Add(Char.CTRLAttribut.Charisma.Value);
+            H1.Value.Connected.Add(Char.CTRLItem[0].Value);
             TestNewConnections(Char);
         }
 
@@ -37,46 +37,46 @@ namespace SharedCodeTest
             Char.Add(H1);
             Char.Add(new Item() { Bezeichner = "Item" });
 
-            H1.Wert2.Connected.Add(Char.CTRLAttribut.Charisma.Wert2);
-            H1.Wert2.Connected.Add(Char.CTRLItem[0].Wert2);
+            H1.Value.Connected.Add(Char.CTRLAttribut.Charisma.Value);
+            H1.Value.Connected.Add(Char.CTRLItem[0].Value);
 
             string Ser = SharedIO.Serialize(Char);
             TestNewConnections(CharHolderIO.Deserialize(Ser));
         }
         private static void TestNewConnections(CharHolder Char)
         {
-            Char.CTRLAttribut.Charisma.Wert2.BaseValue++;
+            Char.CTRLAttribut.Charisma.Value.BaseValue++;
 
-            Assert.IsTrue(Char.CTRLAttribut.Charisma.Wert2.BaseValue == 1);
-            Assert.IsTrue(Char.CTRLAttribut.Charisma.Wert2.Value == 1);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 0);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 1);
+            Assert.IsTrue(Char.CTRLAttribut.Charisma.Value.BaseValue == 1);
+            Assert.IsTrue(Char.CTRLAttribut.Charisma.Value.Value == 1);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.BaseValue == 0);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.Value == 1);
 
-            Char.CTRLItem.Data[0].Wert2.BaseValue++;
+            Char.CTRLItem.Data[0].Value.BaseValue++;
 
-            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.BaseValue == 1);
-            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.Value == 0);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 0);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 1);
+            Assert.IsTrue(Char.CTRLItem.Data[0].Value.BaseValue == 1);
+            Assert.IsTrue(Char.CTRLItem.Data[0].Value.Value == 0);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.BaseValue == 0);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.Value == 1);
 
             Char.CTRLItem.Data[0].Aktiv = true;
 
-            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.BaseValue == 1);
-            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.Value == 1);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 0);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 2);
+            Assert.IsTrue(Char.CTRLItem.Data[0].Value.BaseValue == 1);
+            Assert.IsTrue(Char.CTRLItem.Data[0].Value.Value == 1);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.BaseValue == 0);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.Value == 2);
 
-            Char.CTRLHandlung.Data[0].Wert2.BaseValue++;
+            Char.CTRLHandlung.Data[0].Value.BaseValue++;
 
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 1);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 3);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.BaseValue == 1);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.Value == 3);
 
             Char.CTRLItem.Data[0].Aktiv = false;
 
-            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.BaseValue == 1);
-            Assert.IsTrue(Char.CTRLItem.Data[0].Wert2.Value == 0);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.BaseValue == 1);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert2.Value == 2);
+            Assert.IsTrue(Char.CTRLItem.Data[0].Value.BaseValue == 1);
+            Assert.IsTrue(Char.CTRLItem.Data[0].Value.Value == 0);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.BaseValue == 1);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.Value == 2);
         }
 
 
@@ -84,10 +84,10 @@ namespace SharedCodeTest
         public void IConvertable_Test()
         {
             var t = new Handlung();
-            t.Wert2.BaseValue = 5;
+            t.Value.BaseValue = 5;
 
             CharCalcProperty tdp = 5;
-            Assert.AreEqual(tdp.Value, t.Wert2.Value);
+            Assert.AreEqual(tdp.Value, t.Value.Value);
         }
 
 
@@ -95,10 +95,10 @@ namespace SharedCodeTest
         public void AktiveTest()
         {
             var t = new Item();
-            t.Wert2.BaseValue = 5;
+            t.Value.BaseValue = 5;
 
             CharCalcProperty tdp = 5;
-            Assert.AreEqual(tdp.Value, t.Wert2.Value);
+            Assert.AreEqual(tdp.Value, t.Value.Value);
         }
 
     }

@@ -116,6 +116,9 @@ SizeChanged="PopupPage_SizeChanged">
                 </ListView.ItemTemplate>
             </ListView>
             <Grid Margin="5,0,5,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
                 <Button Text="{resx:UiResources Finish}" Clicked="Finish_Clicked" Grid.Column="0"/>
                 <Button Text="{resx:UiResources Cancel}" Clicked="Cancel_Clicked" Grid.Column="1"/>
             </Grid>

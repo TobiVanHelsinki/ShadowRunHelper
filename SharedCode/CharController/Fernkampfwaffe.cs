@@ -1,6 +1,8 @@
-﻿using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
+﻿///Author: Tobi van Helsinki
 
+using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
+using SharedCode.Ressourcen;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -13,21 +15,21 @@ namespace ShadowRunHelper.CharController
         AllListEntry MI_DK;
         AllListEntry MI_RK;
         AllListEntry MI_Pr;
-        public Fernkampfwaffe ActiveItem; 
+        public Fernkampfwaffe ActiveItem;
 
         public FernkampfwaffeController()
         {
             ActiveItem = new Fernkampfwaffe();
-            //ActiveItem.Bezeichner = CrossCustomManager.GetString("Model_Fernkampfwaffe__Aktiv/Text");
-            MI_Wert = new AllListEntry(ActiveItem, ("Model_Waffe_Wert/Text"), "Wert");
-            MI_DK = new AllListEntry(ActiveItem, ("Model_Waffe_DK/Text"), "DK");
-            MI_Pr = new AllListEntry(ActiveItem, ("Model_Waffe_Praezision/Text"), "Praezision");
-            MI_RK = new AllListEntry(ActiveItem, ("Model_Fernkampfwaffe_RK/Text"), "RK");
+            //ActiveItem.Bezeichner = CrossCustomManager.GetString("Model_Fernkampfwaffe__Aktiv");
+            MI_Wert = new AllListEntry(ActiveItem, ModelResources.Waffe_Wert, "Wert");
+            MI_DK = new AllListEntry(ActiveItem, ModelResources.Waffe_DK, "DK");
+            MI_Pr = new AllListEntry(ActiveItem, ("Waffe_Praezision"), "Praezision");
+            MI_RK = new AllListEntry(ActiveItem, ModelResources.Fernkampfwaffe_RK, "RK");
 
             Data.CollectionChanged += Data_CollectionChanged;
         }
 
-        void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             Refresh();
             foreach (var item in Data)
@@ -37,7 +39,7 @@ namespace ShadowRunHelper.CharController
             }
         }
 
-        void Refresh()
+        private void Refresh()
         {
             var item = Data.FirstOrDefault(x => x.Aktiv == true);
             if (item != null)

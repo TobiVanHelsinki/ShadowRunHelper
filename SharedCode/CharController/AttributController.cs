@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿///Author: Tobi van Helsinki
+
+using Newtonsoft.Json;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System;
@@ -7,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace ShadowRunHelper.CharController
 {
-    [ShadowRunHelperController(SupportsEdit=false)]
+    [ShadowRunHelperController(SupportsEdit = false)]
     public class AttributController : Controller<Attribut>
     {
         [JsonIgnore]
@@ -26,23 +28,31 @@ namespace ShadowRunHelper.CharController
 
         [JsonIgnore]
         public AllListEntry MI_Konsti { get; set; }
+
         [JsonIgnore]
         public AllListEntry MI_Geschick { get; set; }
+
         [JsonIgnore]
         public AllListEntry MI_Reaktion { get; set; }
+
         [JsonIgnore]
         public AllListEntry MI_Staerke { get; set; }
+
         [JsonIgnore]
         public AllListEntry MI_Charisma { get; set; }
+
         [JsonIgnore]
         public AllListEntry MI_Logik { get; set; }
+
         [JsonIgnore]
         public AllListEntry MI_Intuition { get; set; }
+
         [JsonIgnore]
         public AllListEntry MI_Willen { get; set; }
 
         [JsonIgnore]
         public AllListEntry MI_Magie { get; set; }
+
         [JsonIgnore]
         public AllListEntry MI_Resonanz { get; set; }
 
@@ -69,8 +79,8 @@ namespace ShadowRunHelper.CharController
             MI_Logik = new AllListEntry(Logik);
             MI_Intuition = new AllListEntry(Intuition);
             MI_Willen = new AllListEntry(Willen);
-            MI_Magie= new AllListEntry(Magie);
-            MI_Resonanz= new AllListEntry(Resonanz);
+            MI_Magie = new AllListEntry(Magie);
+            MI_Resonanz = new AllListEntry(Resonanz);
 
             Data = new ObservableCollection<Attribut>
             {
@@ -137,5 +147,4 @@ namespace ShadowRunHelper.CharController
             throw new NotSupportedException();
         }
     }
-
 }

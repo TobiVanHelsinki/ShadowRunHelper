@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿///Author: Tobi van Helsinki
+
+using Newtonsoft.Json;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using SharedCode.Ressourcen;
@@ -11,7 +13,7 @@ using TLIB;
 
 namespace ShadowRunHelper.CharController
 {
-    [ShadowRunHelperController(SupportsEdit=false)]
+    [ShadowRunHelperController(SupportsEdit = false)]
     public class BerechnetController : Controller<Berechnet>
     {
         [JsonIgnore]
@@ -35,7 +37,6 @@ namespace ShadowRunHelper.CharController
         public Berechnet MaxDamageK { get; set; } = new Berechnet();
         readonly AllListEntry MI_MaxDamageG;
         public Berechnet MaxDamageG { get; set; } = new Berechnet();
-
 
         AttributController AttributeRef;
         Person Person;
@@ -99,8 +100,9 @@ namespace ShadowRunHelper.CharController
             RefreshTragen();
         }
 
-        void MyEventHandler(object x, PropertyChangedEventArgs y) => RefreshEssenz();
-        void RegisterEssenzRefreshers()
+        private void MyEventHandler(object x, PropertyChangedEventArgs y) => RefreshEssenz();
+
+        private void RegisterEssenzRefreshers()
         {
             foreach (var item in lstImplantateRef)
             {
@@ -124,6 +126,7 @@ namespace ShadowRunHelper.CharController
             Person.Schaden_G_max = 8 + Math.Ceiling(AttributeRef.Willen.ValueOf("Wert") / 2) + Person.Schaden_G_max_mod;
             MaxDamageG.Wert = Person.Schaden_G_max;
         }
+
         protected void RefreshLimitSchadenK()
         {
             Person.Schaden_K_max = 8 + Math.Ceiling(AttributeRef.Konsti.ValueOf("Wert") / 2) + Person.Schaden_K_max_mod;
@@ -153,16 +156,17 @@ namespace ShadowRunHelper.CharController
         {
             Laufen.Wert = AttributeRef.Geschick.ValueOf("Wert") * 2;
         }
+
         protected void RefreshRennen()
         {
             Rennen.Wert = AttributeRef.Geschick.ValueOf("Wert") * 4;
         }
+
         protected void RefreshTragen()
         {
             Tragen.Wert = AttributeRef.Staerke.ValueOf("Wert") * 10; //5 und 15 auch mgl TODO
         }
-        #endregion
-
+        #endregion Refresh Methods
 
         // Implement IController ##########################
         public override IEnumerable<AllListEntry> GetElementsForThingList()

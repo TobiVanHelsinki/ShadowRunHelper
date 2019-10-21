@@ -30,10 +30,10 @@ namespace ShadowRunHelper.Model
                     }
                 }
             }
-            CH.CTRLItem[0].Wert2.BaseValue = 123;
+            CH.CTRLItem[0].Value.BaseValue = 123;
             CH.CTRLHandlung[0].Bezeichner = "Handlung mit Cons";
-            CH.CTRLHandlung[0].Wert2.BaseValue = 55;
-            CH.CTRLHandlung[0].Wert2.Connected.Add(CH.CTRLItem[0].Wert2);
+            CH.CTRLHandlung[0].Value.BaseValue = 55;
+            CH.CTRLHandlung[0].Value.Connected.Add(CH.CTRLItem[0].Value);
             CH.AfterLoad();
             return CH;
         }

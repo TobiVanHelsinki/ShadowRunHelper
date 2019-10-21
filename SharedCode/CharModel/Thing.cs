@@ -60,7 +60,7 @@ namespace ShadowRunHelper.CharModel
 
         public Thing()
         {
-            _Wert2 = new CharCalcProperty(nameof(Wert2), this);
+            _Value = new CharCalcProperty(nameof(Value), this);
             LinkedThings = new LinkList(this);
             ThingType = TypeHelper.TypeToThingDef(GetType());
             LinkedThings.OnCollectionChangedCall(OnLinkedThingsChanged);
@@ -131,12 +131,12 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        CharCalcProperty _Wert2;
+        CharCalcProperty _Value;
         [Used_UserAttribute]
-        public CharCalcProperty Wert2
+        public CharCalcProperty Value
         {
-            get { return _Wert2; }
-            set { if (_Wert2 != value) { _Wert2 = value; NotifyPropertyChanged(); } }
+            get { return _Value; }
+            set { if (_Value != value) { _Value = value; NotifyPropertyChanged(); } }
         }
 
         protected string typ = "";

@@ -131,7 +131,7 @@ namespace ShadowRunHelper.CharController
             Data.AddRange(OrderedData);
         }
 
-        public static void RefreshIdentifiers(object controller)
+        public void RefreshIdentifiers(object controller)
         {
             foreach (var item in controller.GetType().GetProperties().Where(x => x.PropertyType == typeof(T) && x.CanRead && x.CanWrite))
             {

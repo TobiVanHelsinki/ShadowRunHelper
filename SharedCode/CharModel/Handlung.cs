@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿///Author: Tobi van Helsinki
+
+using Newtonsoft.Json;
 using ShadowRunHelper.Model;
 using System.Collections.Generic;
 
@@ -8,6 +10,7 @@ namespace ShadowRunHelper.CharModel
     {
         [Used_List]
         public LinkList GrenzeZusammensetzung { get; set; }
+
         [Used_List]
         public LinkList GegenZusammensetzung { get; set; }
 
@@ -25,6 +28,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         double grenzeCalced = 0;
         [JsonIgnore]
         [Used_UserAttribute]
@@ -55,6 +59,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         double gegenCalced = 0;
         [JsonIgnore]
         [Used_UserAttribute]
@@ -71,6 +76,22 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        CharCalcProperty _Against;
+        [Used_UserAttribute]
+        public CharCalcProperty Against
+        {
+            get { return _Against; }
+            set { if (_Against != value) { _Against = value; NotifyPropertyChanged(); } }
+        }
+
+        CharCalcProperty _Limit;
+        [Used_UserAttribute]
+        public CharCalcProperty Limit
+        {
+            get { return _Limit; }
+            set { if (_Limit != value) { _Limit = value; NotifyPropertyChanged(); } }
+        }
+
         public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
             {
                 ThingDefs.Handlung, ThingDefs.Connection
@@ -78,18 +99,24 @@ namespace ShadowRunHelper.CharModel
 
         public Handlung() : base()
         {
+            _Limit = new CharCalcProperty(nameof(Limit), this);
+            _Against = new CharCalcProperty(nameof(Against), this);
             LinkedThings.FilterOut = Filter;
-            GrenzeZusammensetzung = new LinkList(this);
-            GrenzeZusammensetzung.FilterOut = Filter;
-            GegenZusammensetzung = new LinkList(this);
-            GegenZusammensetzung.FilterOut = Filter;
+            GrenzeZusammensetzung = new LinkList(this)
+            {
+                FilterOut = Filter
+            };
+            GegenZusammensetzung = new LinkList(this)
+            {
+                FilterOut = Filter
+            };
 
             PropertyChanged += This_PropertyChanged;
             GrenzeZusammensetzung.OnCollectionChangedCall(UpdateGrenze);
             GegenZusammensetzung.OnCollectionChangedCall(UpdateGegen);
         }
 
-        void This_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void This_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(Grenze))
             {
@@ -101,11 +128,12 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        void UpdateGrenze()
+        private void UpdateGrenze()
         {
             GrenzeCalced = Grenze + GrenzeZusammensetzung.Recalculate();
         }
-        void UpdateGegen()
+
+        private void UpdateGegen()
         {
             GegenCalced = Gegen + GegenZusammensetzung.Recalculate();
         }
