@@ -50,7 +50,7 @@ namespace ShadowRunHelper.CharController
         public virtual Thing AddNewThing(Thing newThing)
         {
             Data.Add((T)newThing);
-            newThing.Order = Data.Max(x => x.Order) + 1;
+            newThing.Order = Data.MaxOrDefault(x => x.Order) + 1;
             return newThing;
         }
 
@@ -147,7 +147,6 @@ namespace ShadowRunHelper.CharController
                         thing.Bezeichner = Constants.NoResourceFallback;
                         Log.Write("Could not get res string for " + name, ex, logType: LogType.Error);
                     }
-                    thing.Bezeichner = Constants.NoResourceFallback;
                 }
             }
         }
