@@ -165,15 +165,17 @@ namespace ShadowRunHelperViewer
 
         private async void OpenConnectedChooser(object sender, EventArgs e)
         {
-            //var page = new LinkListChooser(MyChar, MyThing.Wert2.Connected.Select(x => x.Connected.Select(y => y.)));
-            var page = new LinkListChooser(MyChar, null);
-            page.Disappearing += Page_Disappearing;
-            try
+            if (sender is BindableObject b && b.BindingContext is CharCalcProperty prop)
             {
-                await PopupNavigation.Instance.PushAsync(page);
-            }
-            catch (Exception)
-            {
+                var page = new LinkListChooser(MyChar, prop.Connected);
+                page.Disappearing += Page_Disappearing;
+                try
+                {
+                    await PopupNavigation.Instance.PushAsync(page);
+                }
+                catch (Exception)
+                {
+                }
             }
         }
 
