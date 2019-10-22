@@ -58,17 +58,17 @@ namespace ShadowRunHelperViewer.UI.Controls
         /// <param name="e"></param>
         private void Selected_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            if (sender is CheckBox box && box.BindingContext is DetailsModel entry && box.Parent is Layout panel)
+            if (sender is CheckBox box && box.BindingContext is CharCalcProperty entry && box.Parent is Layout panel)
             {
-                if (Selected.Contains(entry.CalcProperty))
+                if (Selected.Contains(entry))
                 {
                     panel.BackgroundColor = Color.Transparent;
-                    Selected.Remove(entry.CalcProperty);
+                    Selected.Remove(entry);
                 }
                 else
                 {
                     panel.BackgroundColor = Color.Accent;
-                    Selected.Add(entry.CalcProperty);
+                    Selected.Add(entry);
                 }
             }
         }
@@ -89,7 +89,7 @@ namespace ShadowRunHelperViewer.UI.Controls
                            select (item, view);
                 foreach (var (prop, view) in list)
                 {
-                    view.BindingContext = new DetailsModel(prop.GetValue(t, null) as CharCalcProperty, prop.Name);
+                    view.BindingContext = prop.GetValue(t) as CharCalcProperty;
                     lv.Children.Add(view);
                 }
                 if (!list.Any() && v is ViewCell vc)
@@ -104,20 +104,5 @@ namespace ShadowRunHelperViewer.UI.Controls
         }
 
         private void PopupPage_SizeChanged(object sender, EventArgs e) => (MainFrame.WidthRequest, MainFrame.HeightRequest) = Common.MaximumDimensions(Width, Height);
-    }
-
-    /// <summary>
-    /// A special Model, just used at this view
-    /// </summary>
-    public class DetailsModel
-    {
-        public CharCalcProperty CalcProperty { get; set; }
-        public string Name { get; set; }
-
-        public DetailsModel(CharCalcProperty calcProperty, string name)
-        {
-            CalcProperty = calcProperty;
-            Name = name;
-        }
     }
 }

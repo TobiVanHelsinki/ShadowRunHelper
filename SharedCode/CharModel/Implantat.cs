@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿///Author: Tobi van Helsinki
+
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ShadowRunHelper.CharModel
@@ -19,6 +22,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         private double kapazitaet = 0;
         [Used_UserAttribute]
         public double Kapazitaet
@@ -33,8 +37,10 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         private string _Auswirkung = "";
-        [Used_UserAttribute]
+        //[Used_UserAttribute]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public string Auswirkung
         {
             get { return _Auswirkung; }
@@ -61,6 +67,5 @@ namespace ShadowRunHelper.CharModel
             LinkedThings.FilterOut = (Filter);
             Aktiv = true;
         }
-
     }
 }

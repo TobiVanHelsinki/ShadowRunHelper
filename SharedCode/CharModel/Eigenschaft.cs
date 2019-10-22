@@ -8,7 +8,7 @@ namespace ShadowRunHelper.CharModel
     public abstract class Eigenschaft : Thing
     {
         private string auswirkungen = "";
-        [Used_UserAttribute]
+        //[Used_UserAttribute]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public string Auswirkungen
         {

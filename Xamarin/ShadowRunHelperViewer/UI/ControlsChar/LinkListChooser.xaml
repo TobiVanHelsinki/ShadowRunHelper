@@ -67,7 +67,7 @@ SizeChanged="PopupPage_SizeChanged">
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Grid ColumnSpacing="0" Margin="5,0,0,0">
+                                <Grid Margin="5,0,0,0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
@@ -85,11 +85,10 @@ SizeChanged="PopupPage_SizeChanged">
                                     </Label>
                                     <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{Binding Bezeichner}"/>
                                 </Grid>
-                                <ScrollView Grid.Row="1" Margin="5,0,10,0">
-                                    <StackLayout x:Name="CalcItemsList" Orientation="Horizontal">
+                                <ScrollView Grid.Row="1" Margin="0,0,10,0">
+                                    <StackLayout x:Name="CalcItemsList" Orientation="Horizontal" Spacing="0">
                                         <StackLayout.Resources>
-                                            <DataTemplate x:Key="Template" x:DataType="controls:DetailsModel">
-                                                <!--<Frame CornerRadius="1" BorderColor="DarkSlateGray" Padding="2,0,0,0" Margin="2">-->
+                                            <DataTemplate x:Key="Template" x:DataType="charmodel:CharCalcProperty">
                                                 <Grid>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto"/>
@@ -97,19 +96,29 @@ SizeChanged="PopupPage_SizeChanged">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="Auto"/>
                                                         <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
                                                     </Grid.ColumnDefinitions>
-                                                    <BoxView WidthRequest="1"/>
-                                                    <Label Grid.Column="1" Text="{x:Binding Name}" Margin="50,0,0,0" VerticalOptions="Center"/>
-                                                    <CheckBox Grid.Column="1" x:Name="Selected" Color="Accent" HorizontalOptions="FillAndExpand" VerticalOptions="Center" CheckedChanged="Selected_CheckedChanged"/>
-                                                    <BoxView Grid.Column="2" WidthRequest="1"/>
+                                                    <Grid ColumnSpacing="0" Margin="50,0,0,0" VerticalOptions="Center" Grid.Column="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Style="{StaticResource STDText}" Grid.Column="0" Text="{Binding Name}"/>
+                                                        <Label Style="{StaticResource STDText}" Grid.Column="1" Text="("/>
+                                                        <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{Binding Value}"/>
+                                                        <Label Style="{StaticResource STDText}" Grid.Column="3" Text=")"/>
+                                                    </Grid>
+                                                    <BoxView Grid.Column="1" WidthRequest="1" Color="SlateGray"/>
+                                                    <CheckBox Grid.Column="0" Grid.ColumnSpan="1" x:Name="Selected" Color="Accent"
+                                                              HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="5,0,0,0"
+                                                              CheckedChanged="Selected_CheckedChanged"/>
                                                 </Grid>
-                                                <!--</Frame>-->
                                             </DataTemplate>
                                         </StackLayout.Resources>
                                     </StackLayout>
                                 </ScrollView>
-                                <BoxView Grid.Row="2" HeightRequest="1" BackgroundColor="Gray"/>
+                                <BoxView Grid.Row="2" HeightRequest="1" BackgroundColor="SlateGray"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

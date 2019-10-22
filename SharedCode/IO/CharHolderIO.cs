@@ -70,7 +70,7 @@ namespace ShadowRunHelper.IO
             var target = (Thing)Activator.CreateInstance(TypeHelper.ThingDefToType((ThingDefs)jsonObject.GetValue(nameof(Thing.ThingType)).Value<long>()));
             serializer.Populate(jsonObject.CreateReader(), target);
 
-            if (target is Adeptenkraft a)
+            if (target is Adeptenkraft a && !string.IsNullOrEmpty(a.Option))
             {
                 if (a.Zusatz.Length == 0)
                 {
@@ -80,8 +80,9 @@ namespace ShadowRunHelper.IO
                 {
                     a.Zusatz = ", " + a.Option;
                 }
+                a.Option = null;
             }
-            if (target is Eigenschaft e)
+            if (target is Eigenschaft e && !string.IsNullOrEmpty(e.Auswirkungen))
             {
                 if (e.Zusatz.Length == 0)
                 {
@@ -91,6 +92,19 @@ namespace ShadowRunHelper.IO
                 {
                     e.Zusatz = ", " + e.Auswirkungen;
                 }
+                e.Auswirkungen = null;
+            }
+            if (target is Implantat i && !string.IsNullOrEmpty(i.Auswirkung))
+            {
+                if (i.Zusatz.Length == 0)
+                {
+                    i.Zusatz = i.Auswirkung;
+                }
+                else
+                {
+                    i.Zusatz = ", " + i.Auswirkung;
+                }
+                i.Auswirkung = null;
             }
             return target;
         }
