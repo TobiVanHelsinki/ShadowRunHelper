@@ -11,7 +11,7 @@ using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class CharCalcProperty : INotifyPropertyChanged, IConvertible
+    public class CharCalcProperty : INotifyPropertyChanged/*, IConvertible*/
     {
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -24,29 +24,28 @@ namespace ShadowRunHelper.CharModel
 
         #region Implicit Converter
 
-        public static explicit operator CharCalcProperty(double d)
-        {
-            return new CharCalcProperty("implicit from " + d, new Thing()) { BaseValue = d };
-        }
+        public static implicit operator CharCalcProperty(double d) => new CharCalcProperty("implicit from " + d, new Thing()) { BaseValue = d };
 
-        public static explicit operator double(CharCalcProperty c)
-        {
-            return c.Value;
-        }
+        public static implicit operator CharCalcProperty(int d) => new CharCalcProperty("implicit from " + d, new Thing()) { BaseValue = d };
+
+        //public static explicit operator double(CharCalcProperty c)
+        //{
+        //    return c.Value;
+        //}
 
         #endregion Implicit Converter
 
         [JsonIgnore]
         public double Value { get; private set; }
 
-        double _BaseValue;
+        private double _BaseValue;
         public double BaseValue
         {
-            get { return _BaseValue; }
+            get => _BaseValue;
             set { if (_BaseValue.CompareTo(value) != 0) { _BaseValue = value; Recalculate(); NotifyPropertyChanged(); } }
         }
 
-        ObservableCollection<CharCalcProperty> _Connected;
+        private ObservableCollection<CharCalcProperty> _Connected;
         public ObservableCollection<CharCalcProperty> Connected
         {
             get
@@ -77,37 +76,39 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        string _Name;
+        private string _Name;
         public string Name
         {
-            get { return _Name; }
+            get => _Name;
             set { _Name = value; NotifyPropertyChanged(); }
         }
 
-        Thing _Owner;
+        private Thing _Owner;
         public Thing Owner
         {
-            get { return _Owner; }
+            get => _Owner;
             set { _Owner = value; NotifyPropertyChanged(); }
         }
 
-        bool _Active = true;
+        private bool _Active = true;
         public bool Active
         {
-            get { return _Active; }
+            get => _Active;
             set { if (_Active != value) { _Active = value; Recalculate(); } }
         }
 
-        public CharCalcProperty()
-        {
-            DeletionNotification += CharProperty_DeletionNotification;
-        }
+        public CharCalcProperty() => DeletionNotification += CharProperty_DeletionNotification;
 
         public CharCalcProperty(string name, Thing owner)
         {
             Name = name;
             Owner = owner;
             DeletionNotification += CharProperty_DeletionNotification;
+        }
+
+        public override string ToString()
+        {
+            return "Owner: " + Owner + ", Name: " + Name + ", Value: " + Value;
         }
 
         private void Recalculate()
@@ -167,7 +168,10 @@ namespace ShadowRunHelper.CharModel
             return false;
         }
 
-        private void ConnectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e) => Recalculate();
+        private void ConnectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Recalculate();
+        }
         #endregion Any Property Changed
 
         #region Deletion Handling
@@ -193,7 +197,7 @@ namespace ShadowRunHelper.CharModel
         {
             if (target == null)
             {
-                target = (CharCalcProperty)Activator.CreateInstance(this.GetType());
+                target = (CharCalcProperty)Activator.CreateInstance(GetType());
             }
             target.Active = Active;
             target.BaseValue = BaseValue;

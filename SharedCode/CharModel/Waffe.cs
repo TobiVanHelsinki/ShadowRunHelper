@@ -21,68 +21,8 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        /// <summary>
-        /// Praezision
-        /// </summary>
-        //double _Praezision = 0;
-        //[Used_UserAttribute]
-        //public double Praezision
-        //{
-        //    get { return _Praezision; }
-        //    set
-        //    {
-        //        if (value != _Praezision)
-        //        {
-        //            _Praezision = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
-
-        //double _DK = 0;
-        //[Used_UserAttribute]
-        //public double DK
-        //{
-        //    get { return _DK; }
-        //    set
-        //    {
-        //        if (value != _DK)
-        //        {
-        //            _DK = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
-
-        //double _PraezisionCalced = 0;
-        //public double PraezisionCalced
-        //{
-        //    get { return _PraezisionCalced; }
-        //    set
-        //    {
-        //        if (value != _PraezisionCalced)
-        //        {
-        //            _PraezisionCalced = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
-
-        //double _DK_Calced = 0; // DK
-        //public double DKCalced
-        //{
-        //    get { return _DK_Calced; }
-        //    set
-        //    {
-        //        if (value != _DK_Calced)
-        //        {
-        //            _DK_Calced = value;
-        //            NotifyPropertyChanged();
-        //        }
-        //    }
-        //}
-
         CharCalcProperty _DK;
+        [Used_User]
         public CharCalcProperty DK
         {
             get { return _DK; }
@@ -90,6 +30,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         CharCalcProperty _Precision;
+        [Used_User]
         public CharCalcProperty Precision
         {
             get => _Precision;
@@ -109,6 +50,8 @@ namespace ShadowRunHelper.CharModel
             switch (ID)
             {
                 case "Praezision":
+                    return Precision.Value;
+                case "Precision":
                     return Precision.Value;
                 case "DK":
                     return DK.Value;

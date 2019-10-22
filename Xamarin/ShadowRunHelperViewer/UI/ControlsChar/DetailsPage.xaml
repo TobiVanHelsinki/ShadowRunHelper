@@ -80,7 +80,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Text="Bezeichner" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
-                        <Entry Text="{x:Binding Bezeichner}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Entry Text="{x:Binding Bezeichner}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"/>
                         <Label Text="Typ" Grid.Row="2" Grid.Column="0"/>
                         <Entry Text="{x:Binding Typ}" Grid.Row="3" Grid.Column="0"/>
                         <Label Text="Zusatz" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>

@@ -75,23 +75,14 @@ namespace ShadowRunHelper.IO
             Type Should = TypeHelper.ThingDefToType((ThingDefs)IntThingType);
             Thing target = (Thing)Activator.CreateInstance(Should);
             serializer.Populate(jsonObject.CreateReader(), target);
-#if DEBUG
-            if (target == null && System.Diagnostics.Debugger.IsAttached)
-            {
-                System.Diagnostics.Debugger.Break();
-            }
-#endif
-            if (target.Value is null)
-            {
-                target.Value = new CharCalcProperty();
-            }
+
             //if (target.LinkedThings.Any())
             //{
             //    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
             //}
             target.Value.BaseValue = target.Wert;
             target.Value.Connected.Clear();
-            target.Value.Connected.AddRange(target.LinkedThings.Select(x=>x.Object.Value)); //TODO nicht einfach nur den value nehmen, es könnte ja auch ein anderes property sein. 
+            target.Value.Connected.AddRange(target.LinkedThings.Select(x => x.Object.Value)); //TODO nicht einfach nur den value nehmen, es könnte ja auch ein anderes property sein.
             //TODO Daher also erstmal alle properties, die man auswähöen sollen kann als CharCalcProp machen
             //TODO Danach anhand von x.Property (string) eine auswahl treffen.
             target.Wert = 0;
@@ -105,6 +96,11 @@ namespace ShadowRunHelper.IO
                 h.Gegen = 0;
                 h.GegenZusammensetzung.Clear();
                 h.GegenZusammensetzung.OnCollectionChangedCall(null);
+            }
+            if (target is Waffe w)
+            {
+                w.DK.BaseValue = jsonObject.GetValue("DK")?.Value<double>() ?? 0.0;
+                w.Precision.BaseValue = jsonObject.GetValue("Precision")?.Value<double>() ?? 0.0;
             }
             return target;
         }
@@ -141,25 +137,22 @@ namespace ShadowRunHelper.IO
                     Log.Write(CustomManager.GetString("Notification_Info_NotSupportedVersion"), false);
                     throw new IO_FileVersion();
                 case Constants.CHARFILE_VERSION_1_5:
-                    var replacements = new List<(string old, string @new)>
-            {
-                //Adept Stuff Refactoring
-                ("\"CTRLAdeptenkraft_KomplexeForm\"", "\"CTRLAdeptenkraft\""),
-                ("\"CTRLFoki_Widgets\"", "\"CTRLFoki\""),
-                ("\"CTRLGeist_Sprite\"", "\"CTRLGeist\""),
-                ("\"CTRLStroemung_Wandlung\"", "\"CTRLStroemung\""),
-                ("\"CTRLTradition_Initiation\"", "\"CTRLTradition\""),
-                //Linked Thing Stuff
-                ("\"PoolZusammensetzung\"", "\"LinkedThings\""),
-                ("\"Pool\"", "\"WertCalced\""),
-                //ModelRefactoring Thing Stuff
-                ("\"PB\"", "\"DK\""),
-                ("\"Rueckstoss\"", "\"RK\""),
-                ("\"WertZusammensetzung\"", "\"LinkedThings\""),
-                //ModelRefactoring Linked List Stuff
-                ("\"strProperty\"", "\"PropertyID\""),
-    };
-                    fileContent = RefactorJSONString(fileContent, replacements);
+                    fileContent = RefactorJSONString(fileContent, new List<(string old, string @new)> {
+                        //Adept Stuff Refactoring
+                        ("\"CTRLAdeptenkraft_KomplexeForm\"", "\"CTRLAdeptenkraft\""),
+                        ("\"CTRLFoki_Widgets\"", "\"CTRLFoki\""),
+                        ("\"CTRLGeist_Sprite\"", "\"CTRLGeist\""),
+                        ("\"CTRLStroemung_Wandlung\"", "\"CTRLStroemung\""),
+                        ("\"CTRLTradition_Initiation\"", "\"CTRLTradition\""),
+                        //Linked Thing Stuff
+                        ("\"PoolZusammensetzung\"", "\"LinkedThings\""),
+                        ("\"Pool\"", "\"WertCalced\""),
+                        //ModelRefactoring Thing Stuff
+                        ("\"PB\"", "\"DK\""),
+                        ("\"Rueckstoss\"", "\"RK\""),
+                        ("\"WertZusammensetzung\"", "\"LinkedThings\""),
+                        //ModelRefactoring Linked List Stuff
+                        ("\"strProperty\"", "\"PropertyID\""), });
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     foreach (var item in ReturnCharHolder.CTRLHandlung.Data)
                     {
@@ -175,7 +168,8 @@ namespace ShadowRunHelper.IO
                     Log.Write(CustomManager.GetString("Notification_Info_UpgradedChar"), false);
                     break;
                 case Constants.CHARFILE_VERSION_1_7:
-                    //TODO Convert from LinkedThings to Connected Values
+                    fileContent = RefactorJSONString(fileContent, new List<(string old, string @new)> {
+                        ("\"Praezision\"", "\"Precision\""), });
                     settings.Converters.Add(new Version1_7To1_8ConnectedThingsConverter());
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     Log.Write(CustomManager.GetString("Notification_Info_UpgradedChar"), false);
