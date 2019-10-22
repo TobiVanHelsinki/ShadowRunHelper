@@ -246,8 +246,9 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="1"/>
-                        <Label Text="{x:Binding Auswirkungen}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
+                        <!--<ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="1"/>-->
+                        <Label Text="{x:Binding Value.Value}" Style="{StaticResource STDTextCenter}" Grid.Column="1"/>
+                        <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
                     </Grid>

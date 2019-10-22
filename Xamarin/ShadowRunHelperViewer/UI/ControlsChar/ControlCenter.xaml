@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage 
+<pages:PopupPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
@@ -8,10 +8,9 @@
     xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
     x:Class="ShadowRunHelperViewer.ControlCenter"
     BackgroundInputTransparent="False"
-    SizeChanged="PopupPage_SizeChanged"
-    >
+    SizeChanged="PopupPage_SizeChanged">
     <pages:PopupPage.Animation>
-        <animations:ScaleAnimation 
+        <animations:ScaleAnimation
             PositionIn="Center"
             PositionOut="Center"
             ScaleIn="1.2"
@@ -31,13 +30,13 @@
                 <Setter Property="TextColor" Value="Default"/>
                 <Setter Property="Text" Value="&#xf067;"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="Padding" Value="2"/>
+                <Setter Property="Padding" Value="10"/>
             </Style>
             <Style x:Key="MinusButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
-                <Setter Property="TextColor" Value="Default" />
+                <Setter Property="TextColor" Value="Default"/>
                 <Setter Property="Text" Value="&#xf068;"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="Padding" Value="2"/>
+                <Setter Property="Padding" Value="10"/>
             </Style>
             <Style x:Key="ContentLabel" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center"/>
@@ -128,11 +127,11 @@
                     <Label Text="{x:Binding Model.Person.Schaden_G, Mode=OneWay}" Grid.Column="1" Grid.Row="0"/>
                     <Label Text="{x:Binding Model.Person.Schaden_K, Mode=OneWay}" Grid.Column="1" Grid.Row="2"/>
                     <Label Text="{x:Binding Model.CTRLCyberDeck.ActiveItem.Schaden, Mode=OneWay}" Grid.Column="1" Grid.Row="4"/>
-                    <Slider Value="{x:Binding Model.Person.Schaden_G}" Maximum="{x:Binding Model.CTRLBerechnet.MaxDamageG.Wert}" Grid.ColumnSpan="4" Grid.Row="1" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
-                    <Slider Value="{x:Binding Model.Person.Schaden_K}" Maximum="{x:Binding Model.CTRLBerechnet.MaxDamageK.Wert}" Grid.ColumnSpan="4" Grid.Row="3" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
-                    <Slider Value="{x:Binding Model.CTRLCyberDeck.ActiveItem.Schaden}" Maximum="{x:Binding Model.CTRLCyberDeck.ActiveItem.SchadenMax}" Grid.ColumnSpan="4" Grid.Row="5" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
-                    <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageG.Wert, Mode=OneWay}" Grid.Column="3" Grid.Row="0"/>
-                    <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageK.Wert, Mode=OneWay}" Grid.Column="3" Grid.Row="2"/>
+                    <Slider Maximum="{x:Binding Model.CTRLBerechnet.MaxDamageG.Value.Value}" Value="{x:Binding Model.Person.Schaden_G}" Grid.ColumnSpan="4" Grid.Row="1" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
+                    <Slider Maximum="{x:Binding Model.CTRLBerechnet.MaxDamageK.Value.Value}" Value="{x:Binding Model.Person.Schaden_K}" Grid.ColumnSpan="4" Grid.Row="3" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
+                    <Slider Maximum="{x:Binding Model.CTRLCyberDeck.ActiveItem.SchadenMax}" Value="{x:Binding Model.CTRLCyberDeck.ActiveItem.Schaden}" Grid.ColumnSpan="4" Grid.Row="5" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
+                    <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageG.Value.Value, Mode=OneWay}" Grid.Column="3" Grid.Row="0"/>
+                    <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageK.Value.Value, Mode=OneWay}" Grid.Column="3" Grid.Row="2"/>
                     <Label Text="{x:Binding Model.CTRLCyberDeck.ActiveItem.SchadenMax, Mode=OneWay}" Grid.Column="3" Grid.Row="4"/>
                     <Label Text="/" Grid.Column="2" Grid.Row="0"/>
                     <Label Text="/" Grid.Column="2" Grid.Row="2"/>
