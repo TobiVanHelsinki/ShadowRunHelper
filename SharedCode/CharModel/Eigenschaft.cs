@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿///Author: Tobi van Helsinki
+
+using System;
+using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -6,6 +9,7 @@ namespace ShadowRunHelper.CharModel
     {
         private string auswirkungen = "";
         [Used_UserAttribute]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public string Auswirkungen
         {
             get { return auswirkungen; }
@@ -18,6 +22,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
             {
                 ThingDefs.Handlung, ThingDefs.Fertigkeit

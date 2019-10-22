@@ -4,16 +4,13 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using SharedCode.Properties;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Resources;
 using System.Threading.Tasks;
-using TAPPLICATION;
 using TAPPLICATION.IO;
 using TLIB;
 
@@ -30,15 +27,15 @@ namespace ShadowRunHelper.IO
         {
             //http://skrift.io/articles/archive/bulletproof-interface-deserialization-in-jsonnet/
             var jsonObject = JObject.Load(reader);
-            if (jsonObject.TryGetValue("$ref", out JToken isRef))
+            if (jsonObject.TryGetValue("$ref", out var isRef))
             {
-                object o = serializer.Deserialize(jsonObject.CreateReader());
+                var o = serializer.Deserialize(jsonObject.CreateReader());
                 return o;
             }
-            JToken ThingTypeValue = jsonObject.GetValue(nameof(Thing.ThingType));
-            var IntThingType = ThingTypeValue.Value<Int64>();
-            Type Should = TypeHelper.ThingDefToType((ThingDefs)IntThingType);
-            Thing target = (Thing)Activator.CreateInstance(Should);
+            var ThingTypeValue = jsonObject.GetValue(nameof(Thing.ThingType));
+            var IntThingType = ThingTypeValue.Value<long>();
+            var Should = TypeHelper.ThingDefToType((ThingDefs)IntThingType);
+            var target = (Thing)Activator.CreateInstance(Should);
             serializer.Populate(jsonObject.CreateReader(), target);
 #if DEBUG
             if (target == null && System.Diagnostics.Debugger.IsAttached)
@@ -46,6 +43,55 @@ namespace ShadowRunHelper.IO
                 System.Diagnostics.Debugger.Break();
             }
 #endif
+            return target;
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    internal class RemoveUnusedProps : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return typeof(Eigenschaft).IsAssignableFrom(objectType);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            var jsonObject = JObject.Load(reader);
+            if (jsonObject.TryGetValue("$ref", out var isRef))
+            {
+                var o = serializer.Deserialize(jsonObject.CreateReader());
+                return o;
+            }
+            var target = (Thing)Activator.CreateInstance(TypeHelper.ThingDefToType((ThingDefs)jsonObject.GetValue(nameof(Thing.ThingType)).Value<long>()));
+            serializer.Populate(jsonObject.CreateReader(), target);
+
+            if (target is Adeptenkraft a)
+            {
+                if (a.Zusatz.Length == 0)
+                {
+                    a.Zusatz = a.Option;
+                }
+                else
+                {
+                    a.Zusatz = ", " + a.Option;
+                }
+            }
+            if (target is Eigenschaft e)
+            {
+                if (e.Zusatz.Length == 0)
+                {
+                    e.Zusatz = e.Auswirkungen;
+                }
+                else
+                {
+                    e.Zusatz = ", " + e.Auswirkungen;
+                }
+            }
             return target;
         }
 
@@ -65,15 +111,15 @@ namespace ShadowRunHelper.IO
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             var jsonObject = JObject.Load(reader);
-            if (jsonObject.TryGetValue("$ref", out JToken isRef))
+            if (jsonObject.TryGetValue("$ref", out var isRef))
             {
-                object o = serializer.Deserialize(jsonObject.CreateReader());
+                var o = serializer.Deserialize(jsonObject.CreateReader());
                 return o;
             }
-            JToken ThingTypeValue = jsonObject.GetValue(nameof(Thing.ThingType));
-            var IntThingType = ThingTypeValue.Value<Int64>();
-            Type Should = TypeHelper.ThingDefToType((ThingDefs)IntThingType);
-            Thing target = (Thing)Activator.CreateInstance(Should);
+            var ThingTypeValue = jsonObject.GetValue(nameof(Thing.ThingType));
+            var IntThingType = ThingTypeValue.Value<long>();
+            var Should = TypeHelper.ThingDefToType((ThingDefs)IntThingType);
+            var target = (Thing)Activator.CreateInstance(Should);
             serializer.Populate(jsonObject.CreateReader(), target);
 
             //if (target.LinkedThings.Any())
@@ -129,7 +175,7 @@ namespace ShadowRunHelper.IO
         /// <exception cref="ShadowRunHelper.IO_FileVersion"></exception>
         internal static CharHolder ConvertWithRightVersion(string strAppVersion, string strFileVersion, string fileContent)
         {
-            JsonSerializerSettings settings = new JsonSerializerSettings()
+            var settings = new JsonSerializerSettings()
             {
                 Error = ErrorHandler,
                 PreserveReferencesHandling = PreserveReferencesHandling.All
@@ -181,6 +227,7 @@ namespace ShadowRunHelper.IO
                     Log.Write(CustomManager.GetString("Notification_Info_UpgradedChar"), false);
                     break;
                 case Constants.CHARFILE_VERSION_1_8:
+                    settings.Converters.Add(new RemoveUnusedProps());
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     break;
                 default:
@@ -192,8 +239,8 @@ namespace ShadowRunHelper.IO
 
         public static string PlainTextToRtf(string plainText)
         {
-            string escapedPlainText = plainText == null ? "" : plainText.Replace(@"\", @"\\").Replace("{", @"\{").Replace("}", @"\}").Replace(@"\r}", @"\r\n}");
-            string rtf =
+            var escapedPlainText = plainText == null ? "" : plainText.Replace(@"\", @"\\").Replace("{", @"\{").Replace("}", @"\}").Replace(@"\r}", @"\r\n}");
+            var rtf =
 @"{\rtf1\fbidis\ansi\ansicpg1252\deff0\nouicompat\deflang1031{\fonttbl{\f0\fnil Segoe UI;}}
 {\colortbl ;\red0\green0\blue0;}
 {\*\generator Riched20 10.0.17134}\viewkind4\uc1
@@ -210,7 +257,7 @@ namespace ShadowRunHelper.IO
 
         private static string RefactorJSONString(string Input, List<(string old, string @new)> replacements)
         {
-            string Ret = Input;
+            var Ret = Input;
             foreach (var (old, @new) in replacements)
             {
                 Ret = Ret.Replace(old, @new);
@@ -243,7 +290,7 @@ namespace ShadowRunHelper.IO
                 default:
                     return;
             }
-            Stream resourcestream = assembly.GetManifestResourceStream(RessourceName);
+            var resourcestream = assembly.GetManifestResourceStream(RessourceName);
             var info = new FileInfo(Path.Combine(CurrentSavePath, TargetName));
             string content;
             using (var reader = new StreamReader(resourcestream))
