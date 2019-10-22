@@ -46,15 +46,6 @@ namespace ShadowRunHelper.CharModel
         public Fernkampfwaffe() : base()
         {
             LinkedThings.FilterOut = (Filter);
-            _MyProperty = new CharCalcProperty(nameof(MyProperty), this);
-        }
-
-        [JsonIgnore]
-        CharCalcProperty _MyProperty;
-        public CharCalcProperty MyProperty
-        {
-            get { return _MyProperty; }
-            set { if (_MyProperty != value) { _MyProperty = value; NotifyPropertyChanged(); } }
         }
     }
 }

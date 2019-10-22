@@ -1,20 +1,22 @@
-﻿using System.Collections.Generic;
+﻿///Author: Tobi van Helsinki
+
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ShadowRunHelper.CharModel
 {
     public class Panzerung : Item
     {
-        private double kapazitaet = 0;
+        private CharCalcProperty _Capacity;
         [Used_UserAttribute]
-        public double Kapazitaet
+        public CharCalcProperty Capacity
         {
-            get { return kapazitaet; }
+            get { return _Capacity; }
             set
             {
-                if (value != this.kapazitaet)
+                if (value != this._Capacity)
                 {
-                    this.kapazitaet = value;
+                    this._Capacity = value;
                     NotifyPropertyChanged();
                 }
             }

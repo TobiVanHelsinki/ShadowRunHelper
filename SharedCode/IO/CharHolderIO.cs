@@ -55,6 +55,66 @@ namespace ShadowRunHelper.IO
         }
     }
 
+    internal class Version1_7To1_8ConnectedThingsConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return typeof(Thing).IsAssignableFrom(objectType);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            var jsonObject = JObject.Load(reader);
+            if (jsonObject.TryGetValue("$ref", out JToken isRef))
+            {
+                object o = serializer.Deserialize(jsonObject.CreateReader());
+                return o;
+            }
+            JToken ThingTypeValue = jsonObject.GetValue(nameof(Thing.ThingType));
+            var IntThingType = ThingTypeValue.Value<Int64>();
+            Type Should = TypeHelper.ThingDefToType((ThingDefs)IntThingType);
+            Thing target = (Thing)Activator.CreateInstance(Should);
+            serializer.Populate(jsonObject.CreateReader(), target);
+#if DEBUG
+            if (target == null && System.Diagnostics.Debugger.IsAttached)
+            {
+                System.Diagnostics.Debugger.Break();
+            }
+#endif
+            if (target.Value is null)
+            {
+                target.Value = new CharCalcProperty();
+            }
+            //if (target.LinkedThings.Any())
+            //{
+            //    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+            //}
+            target.Value.BaseValue = target.Wert;
+            target.Value.Connected.Clear();
+            target.Value.Connected.AddRange(target.LinkedThings.Select(x=>x.Object.Value)); //TODO nicht einfach nur den value nehmen, es könnte ja auch ein anderes property sein. 
+            //TODO Daher also erstmal alle properties, die man auswähöen sollen kann als CharCalcProp machen
+            //TODO Danach anhand von x.Property (string) eine auswahl treffen.
+            target.Wert = 0;
+            target.LinkedThings.Clear();
+            target.LinkedThings.OnCollectionChangedCall(null);
+            if (target is Handlung h)
+            {
+                h.Limit.BaseValue = h.Gegen;
+                h.Limit.Connected.Clear();
+                h.Limit.Connected.AddRange(h.GegenZusammensetzung.Select(x => x.Object.Value)); //TODO siehe oben
+                h.Gegen = 0;
+                h.GegenZusammensetzung.Clear();
+                h.GegenZusammensetzung.OnCollectionChangedCall(null);
+            }
+            return target;
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class CharHolderIO : SharedIO<CharHolder>
     {
         /// <summary>
@@ -116,6 +176,7 @@ namespace ShadowRunHelper.IO
                     break;
                 case Constants.CHARFILE_VERSION_1_7:
                     //TODO Convert from LinkedThings to Connected Values
+                    settings.Converters.Add(new Version1_7To1_8ConnectedThingsConverter());
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     Log.Write(CustomManager.GetString("Notification_Info_UpgradedChar"), false);
                     break;

@@ -1,12 +1,14 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿///Author: Tobi van Helsinki
+
+namespace ShadowRunHelper.CharModel
 {
     public class CyberDeck : Kommlink
     {
-        private double firewall_o =0;
+        private double firewall_o;
         [Used_UserAttribute]
         public double Firewall_o
         {
-            get { return firewall_o; }
+            get => firewall_o;
             set
             {
                 if (value != firewall_o)
@@ -16,11 +18,12 @@
                 }
             }
         }
-        private double datenverarbeitung_o=0;
+
+        private double datenverarbeitung_o;
         [Used_UserAttribute]
         public double Datenverarbeitung_o
         {
-            get { return datenverarbeitung_o; }
+            get => datenverarbeitung_o;
             set
             {
                 if (value != datenverarbeitung_o)
@@ -30,11 +33,12 @@
                 }
             }
         }
-        private double angriff = 0;
+
+        private CharCalcProperty angriff;
         [Used_UserAttribute]
-        public double Angriff
+        public CharCalcProperty Angriff
         {
-            get { return angriff; }
+            get => angriff;
             set
             {
                 if (value != angriff)
@@ -44,10 +48,11 @@
                 }
             }
         }
-        private double angriff_o=0;
+
+        private double angriff_o;
         public double Angriff_o
         {
-            get { return angriff_o; }
+            get => angriff_o;
             set
             {
                 if (value != angriff_o)
@@ -57,11 +62,12 @@
                 }
             }
         }
-        private double schleicher = 0;
+
+        private CharCalcProperty schleicher;
         [Used_UserAttribute]
-        public double Schleicher
+        public CharCalcProperty Schleicher
         {
-            get { return schleicher; }
+            get => schleicher;
             set
             {
                 if (value != schleicher)
@@ -72,11 +78,11 @@
             }
         }
 
-        private double schleicher_o=0;
+        private double schleicher_o;
         [Used_UserAttribute]
         public double Schleicher_o
         {
-            get { return schleicher_o; }
+            get => schleicher_o;
             set
             {
                 if (value != schleicher_o)
@@ -87,5 +93,4 @@
             }
         }
     }
-
 }

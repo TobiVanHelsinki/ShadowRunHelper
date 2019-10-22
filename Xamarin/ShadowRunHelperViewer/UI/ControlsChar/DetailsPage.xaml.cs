@@ -39,6 +39,11 @@ namespace ShadowRunHelperViewer
             try
             {
                 Headline.Text = MyThing.ThingType.ThingDefToString(false);
+                if (MyThing.ThingType == ThingDefs.Attribut || MyThing.ThingType == ThingDefs.Berechnet)
+                {
+                    NotesContent.IsVisible = false;
+                    StandardThingContents.IsVisible = false;
+                }
                 CreateView();
             }
             catch (Exception ex)
@@ -159,7 +164,7 @@ namespace ShadowRunHelperViewer
             var v = MyThing.ThingType.HierarchieUpSearch(s => new ModelResourcesExtension() { Text = s + "_" + item.Name }.ProvideString());
             return new Label
             {
-                Text = v ?? "NoValueFor: " + item.Name
+                Text = v ?? "//" + item.Name + "\\"
             };
         }
 

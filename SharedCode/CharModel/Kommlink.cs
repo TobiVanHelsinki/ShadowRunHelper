@@ -1,4 +1,6 @@
-﻿using System;
+﻿///Author: Tobi van Helsinki
+
+using System;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -18,9 +20,10 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double firewall = 0;
+
+        private CharCalcProperty firewall;
         [Used_UserAttribute]
-        public double Firewall
+        public CharCalcProperty Firewall
         {
             get { return firewall; }
             set
@@ -32,9 +35,10 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
-        private double datenverarbeitung = 0;
+
+        private CharCalcProperty datenverarbeitung;
         [Used_UserAttribute]
-        public double Datenverarbeitung
+        public CharCalcProperty Datenverarbeitung
         {
             get { return datenverarbeitung; }
             set
@@ -76,11 +80,13 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         public Kommlink() : base()
         {
             PropertyChanged += (x, y) => RefreshSchadenLimit();
         }
-        void RefreshSchadenLimit()
+
+        private void RefreshSchadenLimit()
         {
             SchadenMax = 8 + Math.Ceiling(Wert / 2);
         }

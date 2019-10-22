@@ -86,7 +86,7 @@
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Value" x:DataType="CharModel:Thing">
                 <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
-                    <Label Text="{x:Binding WertCalced}"/>
+                    <Label Text="{x:Binding Value.Value}"/>
                     <Label Text="{x:Binding Zusatz}"/>
                 </StackLayout>
             </ControlTemplate>
@@ -634,9 +634,9 @@
                             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
                             <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
                             <Label Text="[" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Praezision}" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Precision.Value}" Style="{StaticResource STDText}"/>
                             <Label Text="]" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding DKCalced}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding DK.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
                         </StackLayout>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
@@ -687,9 +687,9 @@
                             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
                             <Label Text="{x:Binding SchadenTyp}" Grid.Column="3"/>
                             <Label Text="["/>
-                            <Label Text="{x:Binding Praezision}"/>
+                            <Label Text="{x:Binding Precision.Value}"/>
                             <Label Text="]"/>
-                            <Label Text="{x:Binding DKCalced}" Grid.Column="4"/>
+                            <Label Text="{x:Binding DK.Value}" Grid.Column="4"/>
                         </StackLayout>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>

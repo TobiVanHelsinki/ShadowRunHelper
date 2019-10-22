@@ -60,7 +60,16 @@ namespace ShadowRunHelper.CharModel
 
         public Thing()
         {
-            _Value = new CharCalcProperty(nameof(Value), this);
+            foreach (var item in this.GetType().GetProperties().Where(x=>x.PropertyType == typeof(CharCalcProperty)))
+            {
+                try
+                {
+                    item.SetValue(this, new CharCalcProperty(item.Name, this));
+                }
+                catch (Exception)
+                {
+                }
+            }
             LinkedThings = new LinkList(this);
             ThingType = TypeHelper.TypeToThingDef(GetType());
             LinkedThings.OnCollectionChangedCall(OnLinkedThingsChanged);
@@ -190,9 +199,9 @@ namespace ShadowRunHelper.CharModel
         #region Calculations
         LinkList _LinkedThings;
         [Used_List]
+        [Obsolete("Deprecated, remove with new CharCalcProperty")]
         public LinkList LinkedThings
         {
-            //TODO Remove with new calc model
             get { return _LinkedThings; }
             set
             {
@@ -207,9 +216,9 @@ namespace ShadowRunHelper.CharModel
         private double _WertCalced = 0;
         [JsonIgnore]
         [Used_UserAttribute(UIRelevant = false)]
+        [Obsolete("Deprecated, remove with new CharCalcProperty")]
         public double WertCalced
         {
-            //TODO Remove with new calc model
             get { return _WertCalced; }
             set
             {
@@ -221,15 +230,15 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        [Obsolete("Deprecated, remove with new CharCalcProperty")]
         protected virtual void OnLinkedThingsChanged()
         {
-            //TODO Remove with new calc model
             WertCalced = Wert + LinkedThings.Recalculate();
         }
 
+        [Obsolete("Deprecated, remove with new CharCalcProperty")]
         public double ValueOf(string ID)
         {
-            //TODO Remove with new calc model
             if (UseForCalculation())
             {
                 return InternValueOf(ID);
@@ -237,16 +246,33 @@ namespace ShadowRunHelper.CharModel
             return 0;
         }
 
+        [Obsolete("Deprecated, remove with new CharCalcProperty")]
         protected virtual double InternValueOf(string ID)
         {
-            //TODO Remove with new calc model
             if (ID == null || ID == "" || ID == "Wert")
             {
                 return WertCalced;
             }
             try
             {
-                return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
+                var v = GetProperties(this).First(x => x.Name == ID).GetValue(this);
+                if (v is double d)
+                {
+                    return d;
+                }
+                if (v is int i)
+                {
+                    return i;
+                }
+                if (v is CharCalcProperty c)
+                {
+                    return c.Value;
+                }
+                if (v is null)
+                {
+                    return 0;
+                }
+                return (double)v;
             }
             catch (Exception ex)
             {
@@ -255,9 +281,9 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        [Obsolete("Deprecated, remove with new CharCalcProperty")]
         public double RawValueOf(string ID)
         {
-            //TODO Remove with new calc model
             if (UseForCalculation())
             {
                 if (ID == null || ID == "" || ID == "Wert")
@@ -277,9 +303,9 @@ namespace ShadowRunHelper.CharModel
             return 0;
         }
 
+        [Obsolete("Deprecated, remove with new CharCalcProperty")]
         protected virtual bool UseForCalculation()
         {
-            //TODO Remove with new calc model
             return true;
         }
 
@@ -290,9 +316,9 @@ namespace ShadowRunHelper.CharModel
             return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute));
         }
 
+        [Obsolete("Deprecated, remove with new CharCalcProperty")]
         public static IEnumerable<PropertyInfo> GetPropertiesLists(object obj)
         {
-            //TODO Remove with new calc model
             return ReflectionHelper.GetProperties(obj, typeof(Used_ListAttribute));
         }
 
@@ -308,7 +334,6 @@ namespace ShadowRunHelper.CharModel
         /// <returns></returns>
         public virtual Thing Copy(Thing target = null)
         {
-            //TODO Add Copy for CharProperty
             if (target == null)
             {
                 target = (Thing)Activator.CreateInstance(this.GetType());
@@ -317,7 +342,7 @@ namespace ShadowRunHelper.CharModel
             {
                 if (item.PropertyType == typeof(CharCalcProperty))
                 {
-                    item.SetValue(target, (item.GetValue(this) as CharCalcProperty).Copy());
+                    item.SetValue(target, (item.GetValue(this) as CharCalcProperty)?.Copy());
                 }
                 else
                 {
@@ -451,17 +476,17 @@ namespace ShadowRunHelper.CharModel
         {
             switch (Target)
             {
-                case int i:
-                    Int32.TryParse(Value.ToString(), out var I);
+                case int _:
+                    int.TryParse(Value.ToString(), out var I);
                     return I;
-                case double d:
-                    Double.TryParse(Value.ToString(), out var D);
+                case double _:
+                    double.TryParse(Value.ToString(), out var D);
                     return D;
-                case char c:
-                    Char.TryParse(Value.ToString(), out var C);
-                    return c;
-                case bool b:
-                    Boolean.TryParse(Value.ToString(), out var B);
+                case char _:
+                    char.TryParse(Value.ToString(), out var C);
+                    return C;
+                case bool _:
+                    bool.TryParse(Value.ToString(), out var B);
                     return B;
                 default:
                     return Value;

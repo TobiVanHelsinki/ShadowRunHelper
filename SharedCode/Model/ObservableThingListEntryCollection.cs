@@ -69,7 +69,7 @@ namespace ShadowRunHelper.Model
 
         private void This_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            CollectionChangeCallback();
+            CollectionChangeCallback?.Invoke();
             if (e.NewItems != null)
             {
                 foreach (var item in e.NewItems.OfType<AllListEntry>().ToList())
@@ -88,7 +88,7 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        void CallCallback(object sender, PropertyChangedEventArgs e) => CollectionChangeCallback();
+        void CallCallback(object sender, PropertyChangedEventArgs e) => CollectionChangeCallback?.Invoke();
 
         void CheckForDeletion(object sender, PropertyChangedEventArgs e)
         {

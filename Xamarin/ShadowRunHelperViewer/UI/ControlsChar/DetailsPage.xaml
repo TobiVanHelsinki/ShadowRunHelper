@@ -67,7 +67,7 @@
             <Label x:Name="Headline" FontSize="Title" LineBreakMode="MiddleTruncation" MaxLines="1"/>
             <ScrollView Grid.Row="1" x:Name="MainContent">
                 <StackLayout>
-                    <Grid Margin="0,5,10,0" Grid.Row="1">
+                    <Grid Margin="0,5,0,0" Grid.Row="1" x:Name="StandardThingContents">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -79,10 +79,8 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="Bezeichner" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Label Text="Bezeichner" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
                         <Entry Text="{x:Binding Bezeichner}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                        <Label Text="Wert" Grid.Row="0" Grid.Column="2"/>
-                        <Entry Text="{x:Binding Wert}" Grid.Row="1" Grid.Column="2"/>
                         <Label Text="Typ" Grid.Row="2" Grid.Column="0"/>
                         <Entry Text="{x:Binding Typ}" Grid.Row="3" Grid.Column="0"/>
                         <Label Text="Zusatz" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
@@ -98,7 +96,7 @@
                     </Grid>
                     <StackLayout x:Name="CalcContent"/>
                     <StackLayout x:Name="OtherContent"/>
-                    <StackLayout>
+                    <StackLayout x:Name="NotesContent">
                         <Label Text="Notiz"/>
                         <Editor Text="{x:Binding Notiz}" Keyboard="Text" AutoSize="TextChanges" IsSpellCheckEnabled = "True" IsTextPredictionEnabled="True"/>
                     </StackLayout>
