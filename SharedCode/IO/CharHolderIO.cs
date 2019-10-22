@@ -80,7 +80,7 @@ namespace ShadowRunHelper.IO
             //{
             //    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
             //}
-            target.Value.BaseValue = target.Wert;
+            target.Value.BaseValue = jsonObject.GetValue("Wert")?.Value<double>() ?? 0.0;
             target.Value.Connected.Clear();
             target.Value.Connected.AddRange(target.LinkedThings.Select(x => x.Object.Value)); //TODO nicht einfach nur den value nehmen, es könnte ja auch ein anderes property sein.
             //TODO Daher also erstmal alle properties, die man auswähöen sollen kann als CharCalcProp machen
@@ -90,10 +90,16 @@ namespace ShadowRunHelper.IO
             target.LinkedThings.OnCollectionChangedCall(null);
             if (target is Handlung h)
             {
-                h.Limit.BaseValue = h.Gegen;
+                h.Limit.BaseValue = jsonObject.GetValue("Grenze")?.Value<double>() ?? 0.0;
+                h.Limit.BaseValue = jsonObject.GetValue("Grenze")?.Value<double>() ?? 0.0;
                 h.Limit.Connected.Clear();
-                h.Limit.Connected.AddRange(h.GegenZusammensetzung.Select(x => x.Object.Value)); //TODO siehe oben
-                h.Gegen = 0;
+                h.Limit.Connected.AddRange(h.GrenzeZusammensetzung.Select(x => x.Object.Value)); //TODO siehe oben
+                h.GrenzeZusammensetzung.Clear();
+                h.GrenzeZusammensetzung.OnCollectionChangedCall(null);
+
+                h.Against.BaseValue = jsonObject.GetValue("Gegen")?.Value<double>() ?? 0.0;
+                h.Against.Connected.Clear();
+                h.Against.Connected.AddRange(h.GegenZusammensetzung.Select(x => x.Object.Value)); //TODO siehe oben
                 h.GegenZusammensetzung.Clear();
                 h.GegenZusammensetzung.OnCollectionChangedCall(null);
             }
