@@ -2,6 +2,7 @@
 
 using Newtonsoft.Json;
 using ShadowRunHelper.Model;
+using System;
 using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
@@ -9,13 +10,17 @@ namespace ShadowRunHelper.CharModel
     public class Handlung : Thing
     {
         [Used_List]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public LinkList GrenzeZusammensetzung { get; set; }
 
         [Used_List]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public LinkList GegenZusammensetzung { get; set; }
 
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         double grenze = 0;
         [Used_UserAttribute]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public double Grenze
         {
             get { return grenze; }
@@ -29,9 +34,11 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         double grenzeCalced = 0;
         [JsonIgnore]
         [Used_UserAttribute]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public double GrenzeCalced
         {
             get { return grenzeCalced; }
@@ -45,8 +52,10 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         double gegen = 0;
         [Used_UserAttribute]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public double Gegen
         {
             get { return gegen; }
@@ -60,9 +69,11 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         double gegenCalced = 0;
         [JsonIgnore]
         [Used_UserAttribute]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public double GegenCalced
         {
             get { return gegenCalced; }
@@ -99,8 +110,6 @@ namespace ShadowRunHelper.CharModel
 
         public Handlung() : base()
         {
-            _Limit = new CharCalcProperty(nameof(Limit), this);
-            _Against = new CharCalcProperty(nameof(Against), this);
             LinkedThings.FilterOut = Filter;
             GrenzeZusammensetzung = new LinkList(this)
             {
@@ -116,6 +125,7 @@ namespace ShadowRunHelper.CharModel
             GegenZusammensetzung.OnCollectionChangedCall(UpdateGegen);
         }
 
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         private void This_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(Grenze))
@@ -128,11 +138,13 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         private void UpdateGrenze()
         {
             GrenzeCalced = Grenze + GrenzeZusammensetzung.Recalculate();
         }
 
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         private void UpdateGegen()
         {
             GegenCalced = Gegen + GegenZusammensetzung.Recalculate();

@@ -60,7 +60,7 @@ namespace ShadowRunHelper.CharModel
 
         public Thing()
         {
-            foreach (var item in this.GetType().GetProperties().Where(x=>x.PropertyType == typeof(CharCalcProperty)))
+            foreach (var item in this.GetType().GetProperties().Where(x => x.PropertyType == typeof(CharCalcProperty)))
             {
                 try
                 {
@@ -125,8 +125,10 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         protected double wert = 0;
         [Used_UserAttribute]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public virtual double Wert
         {
             get { return wert; }
@@ -199,7 +201,7 @@ namespace ShadowRunHelper.CharModel
         #region Calculations
         LinkList _LinkedThings;
         [Used_List]
-        [Obsolete("Deprecated, remove with new CharCalcProperty")]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public LinkList LinkedThings
         {
             get { return _LinkedThings; }
@@ -216,7 +218,7 @@ namespace ShadowRunHelper.CharModel
         private double _WertCalced = 0;
         [JsonIgnore]
         [Used_UserAttribute(UIRelevant = false)]
-        [Obsolete("Deprecated, remove with new CharCalcProperty")]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public double WertCalced
         {
             get { return _WertCalced; }
@@ -230,13 +232,13 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        [Obsolete("Deprecated, remove with new CharCalcProperty")]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         protected virtual void OnLinkedThingsChanged()
         {
             WertCalced = Wert + LinkedThings.Recalculate();
         }
 
-        [Obsolete("Deprecated, remove with new CharCalcProperty")]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public double ValueOf(string ID)
         {
             if (UseForCalculation())
@@ -246,7 +248,7 @@ namespace ShadowRunHelper.CharModel
             return 0;
         }
 
-        [Obsolete("Deprecated, remove with new CharCalcProperty")]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         protected virtual double InternValueOf(string ID)
         {
             if (ID == null || ID == "" || ID == "Wert")
@@ -281,7 +283,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        [Obsolete("Deprecated, remove with new CharCalcProperty")]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public double RawValueOf(string ID)
         {
             if (UseForCalculation())
@@ -303,7 +305,7 @@ namespace ShadowRunHelper.CharModel
             return 0;
         }
 
-        [Obsolete("Deprecated, remove with new CharCalcProperty")]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         protected virtual bool UseForCalculation()
         {
             return true;
@@ -316,7 +318,7 @@ namespace ShadowRunHelper.CharModel
             return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute));
         }
 
-        [Obsolete("Deprecated, remove with new CharCalcProperty")]
+        [Obsolete(Constants.ObsoleteCalcProperty)]
         public static IEnumerable<PropertyInfo> GetPropertiesLists(object obj)
         {
             return ReflectionHelper.GetProperties(obj, typeof(Used_ListAttribute));
@@ -497,7 +499,7 @@ namespace ShadowRunHelper.CharModel
         public override string ToString()
         {
             return
-                ValueOf("Wert") + " "
+                Value.Value + "/"
                 + (!string.IsNullOrEmpty(typ) ? typ + ": " : "")
                 + bezeichner
                 + (!string.IsNullOrEmpty(Zusatz) ? " +" + Zusatz : "");
