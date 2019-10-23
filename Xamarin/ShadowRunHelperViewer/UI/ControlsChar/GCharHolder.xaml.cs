@@ -1,4 +1,6 @@
-﻿using dotMorten.Xamarin.Forms;
+﻿///Author: Tobi van Helsinki
+
+using dotMorten.Xamarin.Forms;
 using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
@@ -22,28 +24,31 @@ namespace ShadowRunHelperViewer
     {
         #region NotifyPropertyChanged
         public new event PropertyChangedEventHandler PropertyChanged;
+
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+        #endregion NotifyPropertyChanged
+
         public AppModel Model => AppModel.Instance;
-        CharHolder _MyChar;
+
+        private CharHolder _MyChar;
         public CharHolder MyChar
         {
-            get { return _MyChar; }
+            get => _MyChar;
             set { if (_MyChar != value) { _MyChar = value; NotifyPropertyChanged(); } }
         }
-        IEnumerable<StackLayout> ButtonsPanels;
-        IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children.OfType<Button>());
-        static GCharHolder Instance;
+
+        private readonly IEnumerable<StackLayout> ButtonsPanels;
+        private IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children.OfType<Button>());
+
         public GCharHolder(CharHolder myChar)
         {
-            this.MyChar = myChar;
+            MyChar = myChar;
             Model.AddMainObject(myChar);
-            Instance = this;
             InitializeComponent();
-            ButtonsPanels = new List<StackLayout>() { s1, s2, s3, s4, s5 };
+            ButtonsPanels = new[] { s1, s2, s3, s4, s5 };
 
             SizeChanged += (a, b) => SetViewParameters();
             BindingContext = this;
@@ -66,7 +71,7 @@ namespace ShadowRunHelperViewer
             //CharHeadControls.Padding = new Thickness(LeftSpace.LowerB(5), 5, RigthSpace.LowerB(5), 5);
         }
 
-        async void Infogrid_Tapped()
+        private async void Infogrid_Tapped()
         {
             try
             {
@@ -77,7 +82,8 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        #region Menu Buttons
+        #region Category Buttons
+
         private void InitButtons()
         {
             if (this is ContentView Content)
@@ -162,7 +168,11 @@ namespace ShadowRunHelperViewer
                 }
                 else
                 {
-                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                    if (System.Diagnostics.Debugger.IsAttached)
+                    {
+                        System.Diagnostics.Debugger.Break();
+                    }
+
                     Log.Write("Structual Error, Controller Name is wrong");
                 }
                 ContentPanel.Content = gCTRL;
@@ -184,19 +194,21 @@ namespace ShadowRunHelperViewer
             myBtn.TextColor = Color.FloralWhite;
         }
 
-        #endregion
+        #endregion Category Buttons
+
         #region AdaptiveUI
 
-        bool _Narrow;
+        private bool _Narrow;
         public bool Narrow
         {
-            get { return _Narrow; }
+            get => _Narrow;
             set { if (_Narrow != value) { _Narrow = value; ChangeUi(); } }
         }
-        bool _MenuOpen = true;
+
+        private bool _MenuOpen = true;
         public bool MenuOpen
         {
-            get { return _MenuOpen; }
+            get => _MenuOpen;
             set { if (_MenuOpen != value) { _MenuOpen = value; ChangeUi(); } }
         }
 
@@ -239,7 +251,8 @@ namespace ShadowRunHelperViewer
                 //}
             }
         }
-        void SetViewParameters()
+
+        private void SetViewParameters()
         {
             Narrow = Width < 550;
             if (Width > 550 && MyChar != null)
@@ -255,16 +268,16 @@ namespace ShadowRunHelperViewer
             }
         }
 
+        #endregion AdaptiveUI
 
-        #endregion
-        #region Menu Stuff
+        #region Char Actions
 
         private void Toggle(object sender, EventArgs e)
         {
             MenuOpen = !MenuOpen;
         }
 
-        readonly (string, Action)[] MenuItems = new (string, Action)[] {
+        private readonly (string, Action)[] MenuItems = new (string, Action)[] {
                         (UiResources.SaveAtCurrentPlace,null),
                         (UiResources.SaveExtern,null),
                         (UiResources.OpenFolder,null),
@@ -274,15 +287,11 @@ namespace ShadowRunHelperViewer
                         (UiResources.Unload,Unload),
                     };
 
-        private static void Unload()
-        {
-        }
-
-        void MoreMenu(object sender, System.EventArgs e)
+        private void MoreMenu(object sender, System.EventArgs e)
         {
             try
             {
-                PopupMenu Popup = new PopupMenu
+                var Popup = new PopupMenu
                 {
                     ItemsSource = MenuItems.Select(x => x.Item1).ToArray()
                 };
@@ -307,66 +316,43 @@ namespace ShadowRunHelperViewer
             MyChar.SetSaveTimerTo(0, true);
         }
 
-        #endregion
+        private static void Unload()
+        {
+        }
+        #endregion Char Actions
+
         #region Search Stuff
-        private void AutoSuggestBox_TextChanged(object sender, dotMorten.Xamarin.Forms.AutoSuggestBoxTextChangedEventArgs e)
-        {
-            switch (e.Reason)
-            {
-                case AutoSuggestionBoxTextChangeReason.UserInput:
-                    if (sender is AutoSuggestBox asb)
-                    {
-                        asb.ItemsSource = MyChar.ThingList.Where(x => MyChar.Settings.CategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where(x => x.SimilaritiesTo(asb.Text) > 0).OrderByDescending(x => x.SimilaritiesTo(asb.Text)).ToList();
-                    }
-                    break;
-                case AutoSuggestionBoxTextChangeReason.ProgrammaticChange:
-                    break;
-                case AutoSuggestionBoxTextChangeReason.SuggestionChosen:
-                    break;
-                default:
-                    break;
-            }
-        }
-        IEnumerable<CategoryOption> LokalCategoryOptions => Model.MainObject.Settings.CategoryOptions;
 
-        private void AutoSuggestBox_SuggestionChosen(object sender, dotMorten.Xamarin.Forms.AutoSuggestBoxSuggestionChosenEventArgs e)
+        /// <summary>
+        /// AutoSuggestBox_TextChanged
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="InvalidOperationException">Ignore.</exception>
+        private void AutoSuggestBox_TextChanged(object sender, AutoSuggestBoxTextChangedEventArgs e)
         {
             if (sender is AutoSuggestBox asb)
             {
-                asb.Text = e.SelectedItem.ToString();
-            }
-        }
-
-        async void AutoSuggestBox_QuerySubmitted(object sender, dotMorten.Xamarin.Forms.AutoSuggestBoxQuerySubmittedEventArgs e)
-        {
-            if (sender is AutoSuggestBox asb)
-            {
-                try
+                if (e.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
                 {
-                    if (e.ChosenSuggestion != null)
-                    {
-                        Model.PendingScrollEntry = (e.ChosenSuggestion as Thing);
-                    }
-                    else
-                    {
-                        Model.PendingScrollEntry = (asb.ItemsSource as IOrderedEnumerable<Thing>).FirstOrDefault();
-
-                        Model.PendingScrollEntry = Model.MainObject.ThingList.Where(x => LokalCategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).OrderByDescending(x => x.SimilaritiesTo(asb.Text)).FirstOrDefault();
-                    }
-                    asb.ItemsSource = null;
-                    if (Model.PendingScrollEntry == null)
-                    {
-                        return;
-                    }
+                    asb.ItemsSource = MyChar.ThingList.Where(x => MyChar.Settings.CategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where(x => x.SimilaritiesTo(asb.Text) > 0).OrderByDescending(x => x.SimilaritiesTo(asb.Text)).ToList();
                 }
-                catch { return; }
-                asb.Text = "";
-                asb.IsSuggestionListOpen = false;
             }
-            await PopupNavigation.Instance.PushAsync(new DetailsPage(Model.PendingScrollEntry, MyChar));
-            Model.PendingScrollEntry = null;
         }
-        #endregion
 
+        private async void AutoSuggestBox_QuerySubmitted(object sender, AutoSuggestBoxQuerySubmittedEventArgs e)
+        {
+            if (sender is AutoSuggestBox asb)
+            {
+                if ((e.ChosenSuggestion as Thing ?? asb.ItemsSource?.OfType<Thing>()?.FirstOrDefault()) is Thing t)
+                {
+                    await PopupNavigation.Instance.PushAsync(new DetailsPage(t, MyChar));
+                    asb.Text = "";
+                    asb.ItemsSource = null;
+                    asb.IsSuggestionListOpen = false;
+                }
+            }
+        }
+        #endregion Search Stuff
     }
 }

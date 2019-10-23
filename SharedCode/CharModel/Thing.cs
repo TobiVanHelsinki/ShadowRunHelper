@@ -499,10 +499,10 @@ namespace ShadowRunHelper.CharModel
         public override string ToString()
         {
             return
-                Value.Value + "/"
+                Value.Value + " "
                 + (!string.IsNullOrEmpty(typ) ? typ + ": " : "")
                 + bezeichner
-                + (!string.IsNullOrEmpty(Zusatz) ? " +" + Zusatz : "");
+                + (!string.IsNullOrEmpty(Zusatz) ? " " + Zusatz : "");
         }
 
         /// <summary>
