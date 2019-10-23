@@ -173,7 +173,7 @@ namespace ShadowRunHelperViewer
             try
             {
                 var thing = MyChar.Add(Controller.eDataTyp);
-                if (SettingsModel.I.START_AFTER_EDIT)
+                if (SettingsModel.I.START_AFTER_EDIT && thing.ThingType != ThingDefs.Note)
                 {
                     PopupNavigation.Instance.PushAsync(new DetailsPage(thing, MyChar));
                 }
@@ -225,6 +225,14 @@ namespace ShadowRunHelperViewer
         private void Popup_OnItemSelected(string item)
         {
             MenuItems.FirstOrDefault(x => x.Item1 == item).Item2?.Invoke();
+        }
+
+        private void Thing_Delete(object sender, EventArgs e)
+        {
+            if (sender is BindableObject b && b.BindingContext is Thing t)
+            {
+                MyChar.Remove(t);
+            }
         }
     }
 }

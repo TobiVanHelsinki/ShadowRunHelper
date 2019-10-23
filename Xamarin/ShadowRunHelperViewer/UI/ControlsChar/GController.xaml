@@ -152,21 +152,19 @@
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Column="1"/>
                 </Grid>
             </DataTemplate>
+
             <ControlTemplate x:Key="Handlung_H">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
-                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
-                    <StackLayout Orientation="Horizontal" Grid.Column="2">
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="0"/>
+                    <StackLayout Orientation="Horizontal" Grid.Column="1">
                         <ContentView ControlTemplate="{StaticResource Thing_Value_H}"/>
-                        <Label Text="{resx:ModelResources Thing_Wert}" Style="{StaticResource HeadLineText}"/>
                         <Label Text="[" Style="{StaticResource HeadLineText}"/>
                         <Label Text="{resx:ModelResources Handlung_Limit}" Style="{StaticResource HeadLineText}"/>
                         <Label Text="]" Style="{StaticResource HeadLineText}"/>
@@ -186,18 +184,51 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-                        <StackLayout Orientation="Horizontal" Grid.Column="2">
-                            <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="1"/>
-                            <Label Text="{x:Binding Value.Value}" Style="{StaticResource STDText}" Grid.Column="3"/>
+                        <StackLayout Orientation="Horizontal" Grid.Column="1">
+                            <ContentView ControlTemplate="{StaticResource Thing_Value}"/>
                             <Label Text="[" Style="{StaticResource STDText}"/>
                             <Label Text="{x:Binding Limit.Value}" Style="{StaticResource STDText}"/>
                             <Label Text="]" Style="{StaticResource STDText}"/>
                         </StackLayout>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
-                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                        <ContentView x:Name="Extended" Grid.ColumnSpan="2" Grid.Row="1"/>
+                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="2" Grid.Row="2"/>
                     </Grid>
                 </ViewCell>
             </DataTemplate>
+
+            <ControlTemplate x:Key="Note_H">
+                <Grid>
+                </Grid>
+            </ControlTemplate>
+            <DataTemplate x:Key="Note" x:DataType="CharModel:Note">
+                <ViewCell>
+                    <Grid Style="{StaticResource TemplateGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid HorizontalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Entry x:Name="Typ" Text="{x:Binding Typ}"/>
+                            <Label Text=":" Style="{StaticResource STDText}" Margin="0,0,2,0" Grid.Column="1"/>
+                            <Entry Text="{x:Binding Bezeichner}" Grid.Column="2"/>
+                        </Grid>
+                        <Button Text="&#xf2ed;" Style="{StaticResource ControllerIconButton}" Grid.Column="1" Clicked="Thing_Delete"/>
+                        <Editor Text="{x:Binding Text}" Grid.ColumnSpan="2" Grid.Row="1" Keyboard="Text" AutoSize="TextChanges" IsSpellCheckEnabled = "True" IsTextPredictionEnabled="True"/>
+                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="2" Grid.Row="2"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+
             <ControlTemplate x:Key="Zaubersprueche_H">
                 <Grid>
                     <Grid.RowDefinitions>

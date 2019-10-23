@@ -1,4 +1,5 @@
-﻿
+﻿///Author: Tobi van Helsinki
+
 using ShadowRunHelper.CharModel;
 using SharedCode.Ressourcen;
 using System;
@@ -23,6 +24,7 @@ namespace ShadowRunHelper
         Administration = 2,
         Settings = 3,
     }
+
     public enum ProjectPagesOptions
     {
         Nothing = 0,
@@ -49,6 +51,7 @@ namespace ShadowRunHelper
         EMPTY_CHAR = 0,
         IN_USE = 1,
     }
+
     public enum ThingDefs
     {
         UndefTemp = -2,
@@ -85,11 +88,13 @@ namespace ShadowRunHelper
         Wandlung = 29,
         Initiation = 30,
         Note = 31,
-        Favorite = 32, 
+        Favorite = 32,
     }
+
     public class ThingTypeProperty : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
@@ -114,22 +119,26 @@ namespace ShadowRunHelper
             get { return _vis; }
             set { _vis = value; NotifyPropertyChanged(); }
         }
+
         int _pivot;
         public int Pivot
         {
             get { return _pivot; }
             set { _pivot = value; NotifyPropertyChanged(); }
         }
+
         string _DisplayName = "";
         public string DisplayName
         {
             get { return _DisplayName; }
             set { _DisplayName = value; NotifyPropertyChanged(); NotifyPropertyChanged("DisplayNameSingular"); NotifyPropertyChanged("DisplayNamePlural"); }
         }
+
         public string DisplayNameSingular
         {
             get { return _DisplayName + "_"; }
         }
+
         public string DisplayNamePlural
         {
             get { return _DisplayName + "M_"; }
@@ -167,6 +176,7 @@ namespace ShadowRunHelper
             return DisplayNamePlural;
         }
     }
+
     public static class TypeHelper
     {
         public const int ThingDefsCount = 27;
@@ -205,9 +215,8 @@ namespace ShadowRunHelper
            new ThingTypeProperty(typeof(Wandlung),ThingDefs.Wandlung,3,8, "Wandlung"),
            new ThingTypeProperty(typeof(Initiation),ThingDefs.Initiation,3,7, "Initiation"),
            new ThingTypeProperty(typeof(Note),ThingDefs.Note,4,0, "Note"),
-           new ThingTypeProperty(typeof(Note),ThingDefs.Favorite,4,1, "Favorite"),
+           new ThingTypeProperty(typeof(Thing),ThingDefs.Favorite,4,1, "Favorite"),
         };
-
 
         public static string ThingDefToString(this ThingDefs eThingDefToConvert, bool Mehrzahl)
         {
@@ -216,7 +225,7 @@ namespace ShadowRunHelper
                 string ret;
                 if (Mehrzahl)
                 {
-                    ret=ModelResources.ResourceManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
+                    ret = ModelResources.ResourceManager.GetString(ThingTypeProperties.Find(x => x.ThingType == eThingDefToConvert).DisplayNamePlural);
                 }
                 else
                 {
@@ -234,6 +243,7 @@ namespace ShadowRunHelper
                 return "NA: " + eThingDefToConvert.ToString();
             }
         }
+
         public static Type ThingDefToType(this ThingDefs eThingDefToConvert)
         {
             return ThingTypeProperties.FirstOrDefault(x => x.ThingType == eThingDefToConvert).Type;
@@ -249,10 +259,12 @@ namespace ShadowRunHelper
         {
             return (ThingDefs)tag;
         }
+
         public static ThingDefs Obj2ThingDef(this string Name)
         {
             return ThingTypeProperties.FirstOrDefault(t => t.ThingType.ToString() == Name)?.ThingType ?? ThingDefs.Undef;
         }
+
         public static ThingDefs Obj2ThingDef(this object tag)
         {
             return (ThingDefs)Int16.Parse(tag.ToString());
@@ -284,5 +296,4 @@ namespace ShadowRunHelper
             return result;
         }
     }
-
 }

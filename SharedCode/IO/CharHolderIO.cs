@@ -238,17 +238,28 @@ namespace ShadowRunHelper.IO
                         ("\"Praezision\"", "\"Precision\""), });
                     settings.Converters.Add(new Version1_7To1_8ConnectedThingsConverter());
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
+                    OldNoteToNewNotes(ReturnCharHolder);
                     Log.Write(CustomManager.GetString("Notification_Info_UpgradedChar"), false);
                     break;
                 case Constants.CHARFILE_VERSION_1_8:
                     settings.Converters.Add(new RemoveUnusedProps());
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
+                    OldNoteToNewNotes(ReturnCharHolder);
                     break;
                 default:
                     throw new IO_FileVersion();
             }
             ReturnCharHolder.AfterLoad();
             return ReturnCharHolder;
+        }
+
+        private static void OldNoteToNewNotes(CharHolder ReturnCharHolder)
+        {
+            if (!string.IsNullOrEmpty(ReturnCharHolder.Person.Notizen))
+            {
+                (ReturnCharHolder.CTRLNote.AddNewThing() as Note).Text = ReturnCharHolder.Person.Notizen;
+                ReturnCharHolder.Person.Notizen = "";
+            }
         }
 
         public static string PlainTextToRtf(string plainText)
