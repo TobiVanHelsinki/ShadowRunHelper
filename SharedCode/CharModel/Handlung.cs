@@ -81,17 +81,17 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        CharCalcProperty _Against;
+        ConnectProperty _Against;
         [Used_UserAttribute]
-        public CharCalcProperty Against
+        public ConnectProperty Against
         {
             get { return _Against; }
             set { if (_Against != value) { _Against = value; NotifyPropertyChanged(); } }
         }
 
-        CharCalcProperty _Limit;
+        ConnectProperty _Limit;
         [Used_UserAttribute]
-        public CharCalcProperty Limit
+        public ConnectProperty Limit
         {
             get { return _Limit; }
             set { if (_Limit != value) { _Limit = value; NotifyPropertyChanged(); } }
@@ -104,7 +104,7 @@ namespace ShadowRunHelper.CharModel
 
         public Handlung() : base()
         {
-            LinkedThings.FilterOut = Filter;
+            //LinkedThings.FilterOut = Filter;
             GrenzeZusammensetzung = new LinkList(this)
             {
                 FilterOut = Filter
@@ -114,34 +114,34 @@ namespace ShadowRunHelper.CharModel
                 FilterOut = Filter
             };
 
-            PropertyChanged += This_PropertyChanged;
-            GrenzeZusammensetzung.OnCollectionChangedCall(UpdateGrenze);
-            GegenZusammensetzung.OnCollectionChangedCall(UpdateGegen);
+            //PropertyChanged += This_PropertyChanged;
+            //GrenzeZusammensetzung.OnCollectionChangedCall(UpdateGrenze);
+            //GegenZusammensetzung.OnCollectionChangedCall(UpdateGegen);
         }
 
-        [Obsolete(Constants.ObsoleteCalcProperty)]
-        private void This_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(Grenze))
-            {
-                UpdateGrenze();
-            }
-            if (e.PropertyName == nameof(Gegen))
-            {
-                UpdateGegen();
-            }
-        }
+        //[Obsolete(Constants.ObsoleteCalcProperty)]
+        //private void This_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        //{
+        //    if (e.PropertyName == nameof(Grenze))
+        //    {
+        //        UpdateGrenze();
+        //    }
+        //    if (e.PropertyName == nameof(Gegen))
+        //    {
+        //        UpdateGegen();
+        //    }
+        //}
 
-        [Obsolete(Constants.ObsoleteCalcProperty)]
-        private void UpdateGrenze()
-        {
-            GrenzeCalced = Grenze + GrenzeZusammensetzung.Recalculate();
-        }
+        //[Obsolete(Constants.ObsoleteCalcProperty)]
+        //private void UpdateGrenze()
+        //{
+        //    GrenzeCalced = Grenze + GrenzeZusammensetzung.Recalculate();
+        //}
 
-        [Obsolete(Constants.ObsoleteCalcProperty)]
-        private void UpdateGegen()
-        {
-            GegenCalced = Gegen + GegenZusammensetzung.Recalculate();
-        }
+        //[Obsolete(Constants.ObsoleteCalcProperty)]
+        //private void UpdateGegen()
+        //{
+        //    GegenCalced = Gegen + GegenZusammensetzung.Recalculate();
+        //}
     }
 }

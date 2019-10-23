@@ -21,9 +21,9 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        private CharCalcProperty firewall;
+        private ConnectProperty firewall;
         [Used_UserAttribute]
-        public CharCalcProperty Firewall
+        public ConnectProperty Firewall
         {
             get { return firewall; }
             set
@@ -36,9 +36,9 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        private CharCalcProperty datenverarbeitung;
+        private ConnectProperty datenverarbeitung;
         [Used_UserAttribute]
-        public CharCalcProperty Datenverarbeitung
+        public ConnectProperty Datenverarbeitung
         {
             get { return datenverarbeitung; }
             set

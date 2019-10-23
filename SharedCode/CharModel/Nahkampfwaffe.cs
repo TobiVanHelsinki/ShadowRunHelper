@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿///Author: Tobi van Helsinki
+
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ShadowRunHelper.CharModel
@@ -19,6 +21,7 @@ namespace ShadowRunHelper.CharModel
                 }
             }
         }
+
         public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
             {
                 ThingDefs.Handlung, ThingDefs.Fertigkeit, ThingDefs.Connection, ThingDefs.Sin
@@ -26,7 +29,7 @@ namespace ShadowRunHelper.CharModel
 
         public Nahkampfwaffe()
         {
-            LinkedThings.FilterOut = (Filter);
+            //LinkedThings.FilterOut = (Filter);
         }
     }
 }

@@ -67,16 +67,16 @@ namespace SharedCodeTest
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
                 return;
             }
-            foreach (var item in Thing.GetProperties(El1).Where(x => x.PropertyType != typeof(CharCalcProperty)))
+            foreach (var item in Thing.GetProperties(El1).Where(x => x.PropertyType != typeof(ConnectProperty)))
             {
                 object O1 = item.GetValue(El1);
                 object O2 = item.GetValue(El2);
                 Assert.IsTrue(O1 == O2 || O1.Equals(O2)); // == does just a reference comp
             }
-            foreach (var item in Thing.GetProperties(El1).Where(x => x.PropertyType == typeof(CharCalcProperty)))
+            foreach (var item in Thing.GetProperties(El1).Where(x => x.PropertyType == typeof(ConnectProperty)))
             {
-                var O1 = (CharCalcProperty)item.GetValue(El1);
-                var O2 = (CharCalcProperty)item.GetValue(El2);
+                var O1 = (ConnectProperty)item.GetValue(El1);
+                var O2 = (ConnectProperty)item.GetValue(El2);
                 Assert.AreEqual(O1.BaseValue, O2.BaseValue);
                 Assert.AreEqual(O1.Value, O2.Value);
                 Assert.AreEqual(O1.Connected.Count, O2.Connected.Count);

@@ -87,17 +87,17 @@ namespace ShadowRunHelper.Model
         [Newtonsoft.Json.JsonIgnore]
         public List<IController> CTRLList { get; } = new List<IController>();
 
-        [Newtonsoft.Json.JsonIgnore]
-        public List<AllListEntry> LinkList { get; } = new List<AllListEntry>();
+        //[Newtonsoft.Json.JsonIgnore]
+        //public List<AllListEntry> LinkList { get; } = new List<AllListEntry>();
 
         [Newtonsoft.Json.JsonIgnore]
-        public List<Thing> ThingList { get; } = new List<Thing>();
+        public List<Thing> Things { get; } = new List<Thing>();
 
         [Newtonsoft.Json.JsonIgnore]
-        public IEnumerable<CharCalcProperty> ConnectronProps => LinkList.SelectMany(x => x.Object.GetType().GetProperties().Where(p => p.PropertyType == typeof(CharCalcProperty)).Select(p => p.GetValue(x.Object) as CharCalcProperty));
+        public IEnumerable<IEnumerable<Thing>> GroupedThings => Connects.Select(x => x.Owner).GroupBy(x => x.ThingType);
 
         [Newtonsoft.Json.JsonIgnore]
-        public IEnumerable<IEnumerable<Thing>> Connectrons => LinkList.Select(x => x.Object).GroupBy(x => x.ThingType);
+        public List<ConnectProperty> Connects { get; } = new List<ConnectProperty>();
 
         [Newtonsoft.Json.JsonIgnore]
         public ObservableCollection<Thing> Favorites { get; } = new ObservableCollection<Thing>();
@@ -199,33 +199,33 @@ namespace ShadowRunHelper.Model
         public void Repair()
         {
             //declare submethod
-            void RepairThingListRefs(ObservableCollection<AllListEntry> SourceCollection)
+            void RepairThingListRefs(List<ConnectProperty> SourceCollection)
             {
-                var TargetCollection = new ObservableCollection<AllListEntry>();
+                var TargetCollection = new ObservableCollection<ConnectProperty>();
                 foreach (var item in SourceCollection)
                 {
-                    var NewEntry = LinkList.Find(
-                        x => x.Object == item.Object &&
-                        x.PropertyID == item.PropertyID);
+                    var NewEntry = Connects.FirstOrDefault(
+                        x => x.Owner == item.Owner &&
+                        x.Name == item.Name);
                     if (NewEntry == null)
                     {
-                        NewEntry = LinkList.Find(x =>
-                        x.Object.Bezeichner == item.Object.Bezeichner &&
-                        x.Object.ThingType == item.Object.ThingType &&
-                        x.PropertyID == item.PropertyID);
+                        NewEntry = Connects.FirstOrDefault(x =>
+                        x.Owner.Bezeichner == item.Owner.Bezeichner &&
+                        x.Owner.ThingType == item.Owner.ThingType &&
+                        x.Name == item.Name);
                     }
                     if (NewEntry == null)
                     {
-                        NewEntry = LinkList.Find(x =>
-                        x.Object.Bezeichner == item.Object.Bezeichner &&
-                        x.PropertyID == item.PropertyID);
+                        NewEntry = Connects.FirstOrDefault(x =>
+                        x.Owner.Bezeichner == item.Owner.Bezeichner &&
+                        x.Name == item.Name);
                         Features.Analytics.TrackEvent("Err_CharRepair_Soft");
                     }
                     if (NewEntry == null)
                     {
-                        NewEntry = LinkList.Find(x =>
-                        x.Object.ThingType == item.Object.ThingType &&
-                        x.PropertyID == item.PropertyID);
+                        NewEntry = Connects.FirstOrDefault(x =>
+                        x.Owner.ThingType == item.Owner.ThingType &&
+                        x.Name == item.Name);
                         Features.Analytics.TrackEvent("Err_CharRepair_Soft");
                     }
                     if (NewEntry != null)
@@ -235,7 +235,7 @@ namespace ShadowRunHelper.Model
                     else
                     {
                         Features.Analytics.TrackEvent("Err_CharRepair_Hard");
-                        Log.Write(string.Format(CustomManager.GetString("Error_RepairLinkList"), item.Object.Bezeichner + item.PropertyID));
+                        Log.Write(string.Format(CustomManager.GetString("Error_RepairLinkList"), item.Owner.Bezeichner + item.Name));
                     }
                 }
                 foreach (var item in TargetCollection)
@@ -257,9 +257,18 @@ namespace ShadowRunHelper.Model
             {
                 foreach (var thing in ctrl.GetElements())
                 {
+                    foreach (var prop in Thing.GetCalculationProperties(thing))
+                    {
+                        var obj = prop.GetValue(thing);
+                        if (obj is ConnectProperty calc)
+                        {
+                            calc.Owner = thing;
+                            calc.Name = calc.Name;
+                        }
+                    }
                     foreach (var list in Thing.GetPropertiesLists(thing))
                     {
-                        RepairThingListRefs(list.GetValue(thing) as LinkList);
+                        RepairThingListRefs(Connects);
                     }
                 }
             }
@@ -327,8 +336,8 @@ namespace ShadowRunHelper.Model
         {
             CTRLList.First(c => c.eDataTyp == tToRemove.ThingType).RemoveThing(tToRemove);
             tToRemove.PropertyChanged -= AnyPropertyChanged;
-            LinkList.RemoveAll((x) => x.Object == tToRemove);
-            ThingList.RemoveAll((x) => x == tToRemove);
+            Connects.RemoveAll((x) => x.Owner == tToRemove);
+            Things.RemoveAll((x) => x == tToRemove);
         }
 
         public void RefreshListeners()
@@ -364,10 +373,10 @@ namespace ShadowRunHelper.Model
 
         public void RefreshLists()
         {
-            LinkList.Clear();
-            LinkList.AddRange(CTRLList.Aggregate(new List<AllListEntry>(), (l, c) => l.Concat(c.GetElementsForThingList()).ToList()));
-            ThingList.Clear();
-            ThingList.AddRange(CTRLList.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
+            Things.Clear();
+            Things.AddRange(CTRLList.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
+            Connects.Clear();
+            Connects.AddRange(Things.SelectMany(x => x.GetCalcs()));
             RefreshListFav();
         }
 
@@ -379,7 +388,7 @@ namespace ShadowRunHelper.Model
             {
                 RefreshInProgress = true;
                 Favorites.Clear();
-                Favorites.AddRange(ThingList.Where(x => x?.IsFavorite == true).OrderBy(x => x.FavoriteIndex));
+                Favorites.AddRange(Things.Where(x => x?.IsFavorite == true).OrderBy(x => x.FavoriteIndex));
                 CTRLFavorite.ClearData();
                 foreach (var item in Favorites)
                 {

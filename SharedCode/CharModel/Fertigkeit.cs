@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿///Author: Tobi van Helsinki
+
+using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -11,19 +13,19 @@ namespace ShadowRunHelper.CharModel
 
         public Fertigkeit() : base()
         {
-            LinkedThings.FilterOut = (Filter);
+            //LinkedThings.FilterOut = (Filter);
         }
 
-        protected override double InternValueOf(string ID)
-        {
-            if (ID == null || ID == "" || ID == "Wert")
-            {
-                return Wert;
-            }
-            else
-            {
-                return base.InternValueOf(ID);
-            }
-        }
+        //protected override double InternValueOf(string ID)
+        //{
+        //    if (ID == null || ID == "" || ID == "Wert")
+        //    {
+        //        return Wert;
+        //    }
+        //    else
+        //    {
+        //        return base.InternValueOf(ID);
+        //    }
+        //}
     }
 }

@@ -28,14 +28,14 @@ namespace ShadowRunHelperViewer.UI.Controls
         /// <value>
         /// My property.
         /// </value>
-        readonly CharCalcProperty MyProperty;
+        readonly ConnectProperty MyProperty;
 
         /// <summary>
         /// Current Selected Items
         /// </summary>
-        readonly List<CharCalcProperty> Selected = new List<CharCalcProperty>();
+        readonly List<ConnectProperty> Selected = new List<ConnectProperty>();
 
-        public LinkListChooser(CharHolder myChar, CharCalcProperty property)
+        public LinkListChooser(CharHolder myChar, ConnectProperty property)
         {
             MyChar = myChar;
             MyProperty = property;
@@ -63,7 +63,7 @@ namespace ShadowRunHelperViewer.UI.Controls
         /// <param name="e"></param>
         private void Selected_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            if (sender is CheckBox box && box.BindingContext is CharCalcProperty entry && box.Parent is Layout panel)
+            if (sender is CheckBox box && box.BindingContext is ConnectProperty entry && box.Parent is Layout panel)
             {
                 if (box.IsChecked)
                 {
@@ -94,13 +94,13 @@ namespace ShadowRunHelperViewer.UI.Controls
             if (sender is Element v && v.FindByName("CalcItemsList") is StackLayout lv && v.BindingContext is Thing t)
             {
                 var template = lv.Resources["Template"] as DataTemplate;
-                var list = from item in t.GetCalcProps(typeof(CharCalcProperty))
+                var list = from item in t.GetCalcProps(typeof(ConnectProperty))
                            let a = template.CreateContent()
                            let view = template.CreateContent() as View
                            select (item, view);
                 foreach (var (prop, view) in list)
                 {
-                    var charCalcProperty = prop.GetValue(t) as CharCalcProperty;
+                    var charCalcProperty = prop.GetValue(t) as ConnectProperty;
                     view.BindingContext = charCalcProperty;
                     if (Selected.Contains(charCalcProperty))
                     {

@@ -7,9 +7,9 @@ namespace ShadowRunHelper.CharModel
 {
     public class Panzerung : Item
     {
-        private CharCalcProperty _Capacity;
+        private ConnectProperty _Capacity;
         [Used_UserAttribute]
-        public CharCalcProperty Capacity
+        public ConnectProperty Capacity
         {
             get { return _Capacity; }
             set
@@ -29,7 +29,7 @@ namespace ShadowRunHelper.CharModel
 
         public Panzerung() : base()
         {
-            LinkedThings.FilterOut = (Filter);
+            //LinkedThings.FilterOut = (Filter);
         }
     }
 }

@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿///Author: Tobi van Helsinki
+
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ShadowRunHelper.CharModel
 {
     public class Attribut : Thing
     {
-        public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x => 
+        public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x =>
         x.ThingType != ThingDefs.Implantat &&
         x.ThingType != ThingDefs.Vorteil &&
         x.ThingType != ThingDefs.Nachteil
@@ -13,7 +15,7 @@ namespace ShadowRunHelper.CharModel
 
         public Attribut() : base()
         {
-            LinkedThings.FilterOut = Filter;
+            //LinkedThings.FilterOut = Filter;
         }
     }
 }

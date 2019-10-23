@@ -90,10 +90,10 @@ namespace ShadowRunHelperViewer
                     Content = new Switch();
                     Content.SetBinding(Switch.IsToggledProperty, new Binding(item.Name));
                 }
-                else if (item.PropertyType == typeof(CharCalcProperty))
+                else if (item.PropertyType == typeof(ConnectProperty))
                 {
-                    Content = (Resources["CharCalcPropertyTemplate"] as DataTemplate).CreateContent() as View;
-                    var charCalcProperty = item.GetValue(MyThing) as CharCalcProperty;
+                    Content = (Resources["ConnectPropertyTemplate"] as DataTemplate).CreateContent() as View;
+                    var charCalcProperty = item.GetValue(MyThing) as ConnectProperty;
                     AddConnectedValuesToViewAndRegister(Content, charCalcProperty);
                     Content.BindingContext = charCalcProperty;
                 }
@@ -122,7 +122,7 @@ namespace ShadowRunHelperViewer
                     NumberContent.Children.Add(Name);
                     NumberContent.Children.Add(Content);
                 }
-                else if (item.PropertyType == typeof(CharCalcProperty))
+                else if (item.PropertyType == typeof(ConnectProperty))
                 {
                     CalcContent.Children.Add(Name);
                     CalcContent.Children.Add(Content);
@@ -135,7 +135,7 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void AddConnectedValuesToViewAndRegister(View Content, CharCalcProperty charCalcProperty)
+        private void AddConnectedValuesToViewAndRegister(View Content, ConnectProperty charCalcProperty)
         {
             charCalcProperty.Connected.CollectionChanged += Connected_CollectionChanged;
             void Connected_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -145,7 +145,7 @@ namespace ShadowRunHelperViewer
             AddConnectedValuesToView(Content, charCalcProperty);
         }
 
-        private void AddConnectedValuesToView(View Content, CharCalcProperty charCalcProperty)
+        private void AddConnectedValuesToView(View Content, ConnectProperty charCalcProperty)
         {
             var panel = Content.FindByName<StackLayout>("CalcPropertyPanel");
             panel.Children.Clear();
@@ -173,7 +173,7 @@ namespace ShadowRunHelperViewer
 
         private async void OpenConnectedChooser(object sender, EventArgs e)
         {
-            if (sender is BindableObject b && b.BindingContext is CharCalcProperty prop)
+            if (sender is BindableObject b && b.BindingContext is ConnectProperty prop)
             {
                 var page = new LinkListChooser(MyChar, prop);
                 try

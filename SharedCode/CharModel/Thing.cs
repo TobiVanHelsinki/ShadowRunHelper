@@ -60,11 +60,11 @@ namespace ShadowRunHelper.CharModel
 
         public Thing()
         {
-            foreach (var item in this.GetType().GetProperties().Where(x => x.PropertyType == typeof(CharCalcProperty)))
+            foreach (var item in this.GetType().GetProperties().Where(x => x.PropertyType == typeof(ConnectProperty)))
             {
                 try
                 {
-                    item.SetValue(this, new CharCalcProperty(item.Name, this));
+                    item.SetValue(this, new ConnectProperty(item.Name, this));
                 }
                 catch (Exception)
                 {
@@ -72,8 +72,8 @@ namespace ShadowRunHelper.CharModel
             }
             LinkedThings = new LinkList(this);
             ThingType = TypeHelper.TypeToThingDef(GetType());
-            LinkedThings.OnCollectionChangedCall(OnLinkedThingsChanged);
-            PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") OnLinkedThingsChanged(); };
+            //LinkedThings.OnCollectionChangedCall(OnLinkedThingsChanged);
+            //PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") OnLinkedThingsChanged(); };
         }
 
         #region Properties
@@ -142,9 +142,9 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        CharCalcProperty _Value;
+        ConnectProperty _Value;
         [Used_UserAttribute]
-        public CharCalcProperty Value
+        public ConnectProperty Value
         {
             get { return _Value; }
             set { if (_Value != value) { _Value = value; NotifyPropertyChanged(); } }
@@ -200,7 +200,6 @@ namespace ShadowRunHelper.CharModel
 
         #region Calculations
         LinkList _LinkedThings;
-        [Used_List]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public LinkList LinkedThings
         {
@@ -217,7 +216,6 @@ namespace ShadowRunHelper.CharModel
 
         private double _WertCalced = 0;
         [JsonIgnore]
-        [Used_UserAttribute(UIRelevant = false)]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public double WertCalced
         {
@@ -232,78 +230,78 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        [Obsolete(Constants.ObsoleteCalcProperty)]
-        protected virtual void OnLinkedThingsChanged()
-        {
-            WertCalced = Wert + LinkedThings.Recalculate();
-        }
+        //[Obsolete(Constants.ObsoleteCalcProperty)]
+        //protected virtual void OnLinkedThingsChanged()
+        //{
+        //    WertCalced = Wert + LinkedThings.Recalculate();
+        //}
 
-        [Obsolete(Constants.ObsoleteCalcProperty)]
-        public double ValueOf(string ID)
-        {
-            if (UseForCalculation())
-            {
-                return InternValueOf(ID);
-            }
-            return 0;
-        }
+        //[Obsolete(Constants.ObsoleteCalcProperty)]
+        //public double ValueOf(string ID)
+        //{
+        //    if (UseForCalculation())
+        //    {
+        //        return InternValueOf(ID);
+        //    }
+        //    return 0;
+        //}
 
-        [Obsolete(Constants.ObsoleteCalcProperty)]
-        protected virtual double InternValueOf(string ID)
-        {
-            if (ID == null || ID == "" || ID == "Wert")
-            {
-                return WertCalced;
-            }
-            try
-            {
-                var v = GetProperties(this).First(x => x.Name == ID).GetValue(this);
-                if (v is double d)
-                {
-                    return d;
-                }
-                if (v is int i)
-                {
-                    return i;
-                }
-                if (v is CharCalcProperty c)
-                {
-                    return c.Value;
-                }
-                if (v is null)
-                {
-                    return 0;
-                }
-                return (double)v;
-            }
-            catch (Exception ex)
-            {
-                Log.Write("Could not", ex, logType: LogType.Error);
-                return 0;
-            }
-        }
+        //[Obsolete(Constants.ObsoleteCalcProperty)]
+        //protected virtual double InternValueOf(string ID)
+        //{
+        //    if (ID == null || ID == "" || ID == "Wert")
+        //    {
+        //        return WertCalced;
+        //    }
+        //    try
+        //    {
+        //        var v = GetProperties(this).First(x => x.Name == ID).GetValue(this);
+        //        if (v is double d)
+        //        {
+        //            return d;
+        //        }
+        //        if (v is int i)
+        //        {
+        //            return i;
+        //        }
+        //        if (v is ConnectProperty c)
+        //        {
+        //            return c.Value;
+        //        }
+        //        if (v is null)
+        //        {
+        //            return 0;
+        //        }
+        //        return (double)v;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log.Write("Could not", ex, logType: LogType.Error);
+        //        return 0;
+        //    }
+        //}
 
-        [Obsolete(Constants.ObsoleteCalcProperty)]
-        public double RawValueOf(string ID)
-        {
-            if (UseForCalculation())
-            {
-                if (ID == null || ID == "" || ID == "Wert")
-                {
-                    return Wert;
-                }
-                try
-                {
-                    return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
-                }
-                catch (Exception ex)
-                {
-                    Log.Write("Could not", ex, logType: LogType.Error);
-                    return 0;
-                }
-            }
-            return 0;
-        }
+        //[Obsolete(Constants.ObsoleteCalcProperty)]
+        //public double RawValueOf(string ID)
+        //{
+        //    if (UseForCalculation())
+        //    {
+        //        if (ID == null || ID == "" || ID == "Wert")
+        //        {
+        //            return Wert;
+        //        }
+        //        try
+        //        {
+        //            return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Log.Write("Could not", ex, logType: LogType.Error);
+        //            return 0;
+        //        }
+        //    }
+        //    return 0;
+        //}
 
         [Obsolete(Constants.ObsoleteCalcProperty)]
         protected virtual bool UseForCalculation()
@@ -324,9 +322,14 @@ namespace ShadowRunHelper.CharModel
             return ReflectionHelper.GetProperties(obj, typeof(Used_ListAttribute));
         }
 
-        public static IEnumerable<CharCalcProperty> GetCharProperties(object obj)
+        public static IEnumerable<ConnectProperty> GetCharProperties(object obj)
         {
-            return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute)).Where(x => x.PropertyType == typeof(CharCalcProperty)).Select(x => x.GetValue(obj)).OfType<CharCalcProperty>();
+            return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute)).Where(x => x.PropertyType == typeof(ConnectProperty)).Select(x => x.GetValue(obj)).OfType<ConnectProperty>();
+        }
+
+        public static IEnumerable<PropertyInfo> GetCalculationProperties(object obj)
+        {
+            return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute)).Where(x => x.PropertyType == typeof(ConnectProperty));
         }
 
         /// <summary>
@@ -342,9 +345,9 @@ namespace ShadowRunHelper.CharModel
             }
             foreach (var item in GetProperties(target))
             {
-                if (item.PropertyType == typeof(CharCalcProperty))
+                if (item.PropertyType == typeof(ConnectProperty))
                 {
-                    item.SetValue(target, (item.GetValue(this) as CharCalcProperty)?.Copy());
+                    item.SetValue(target, (item.GetValue(this) as ConnectProperty)?.Copy());
                 }
                 else
                 {
@@ -563,7 +566,7 @@ namespace ShadowRunHelper.CharModel
     public static class ThingExt
     {
         /// <summary>
-        /// returns infos about all members whoose type is CharCalcProperty
+        /// returns infos about all members whoose type is ConnectProperty
         /// </summary>
         /// <returns></returns>
         public static IEnumerable<PropertyInfo> GetCalcProps(this Thing t, Type type)
@@ -573,12 +576,12 @@ namespace ShadowRunHelper.CharModel
         }
 
         /// <summary>
-        /// returns all members whoose type is CharCalcProperty
+        /// returns all members whoose type is ConnectProperty
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<CharCalcProperty> GetCalcs(this Thing t)
+        public static IEnumerable<ConnectProperty> GetCalcs(this Thing t)
         {
-            return t.GetCalcProps(typeof(CharCalcProperty)).Select(p => p.GetValue(t, null) as CharCalcProperty);
+            return t.GetCalcProps(typeof(ConnectProperty)).Select(p => p.GetValue(t, null) as ConnectProperty);
         }
     }
 }

@@ -48,7 +48,7 @@ SizeChanged="PopupPage_SizeChanged">
     </pages:PopupPage.Resources>
     <Frame x:Name="MainFrame" Padding="0" CornerRadius="0" BackgroundColor="Beige" Margin="0" HorizontalOptions="Center" VerticalOptions="Center">
         <StackLayout>
-            <ListView ItemsSource="{x:Binding MyChar.Connectrons}" SelectionMode="None" IsGroupingEnabled="True"
+            <ListView ItemsSource="{x:Binding MyChar.GroupedThings}" SelectionMode="None" IsGroupingEnabled="True"
                       GroupDisplayBinding="{x:Binding Key}"
                       GroupShortNameBinding="{Binding Key}">
                 <ListView.GroupHeaderTemplate>
@@ -89,7 +89,7 @@ SizeChanged="PopupPage_SizeChanged">
                                 <ScrollView Grid.Row="1" Margin="0,0,10,0">
                                     <StackLayout x:Name="CalcItemsList" Orientation="Horizontal" Spacing="0">
                                         <StackLayout.Resources>
-                                            <DataTemplate x:Key="Template" x:DataType="charmodel:CharCalcProperty">
+                                            <DataTemplate x:Key="Template" x:DataType="charmodel:ConnectProperty">
                                                 <Grid>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto"/>

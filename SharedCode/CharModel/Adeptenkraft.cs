@@ -29,7 +29,7 @@ namespace ShadowRunHelper.CharModel
 
         public Adeptenkraft() : base()
         {
-            LinkedThings.FilterOut = Filter;
+            //LinkedThings.FilterOut = Filter;
         }
     }
 }

@@ -27,7 +27,7 @@
                 <local:CharModelStyles/>
             </ResourceDictionary.MergedDictionaries>
             <resources:o_ProbabilityConverter x:Key="o_ProbabilityConverter"/>
-            <DataTemplate x:Key="CharCalcPropertyTemplate" x:DataType="charmodel:CharCalcProperty">
+            <DataTemplate x:Key="ConnectPropertyTemplate" x:DataType="charmodel:ConnectProperty">
                 <Grid Margin="3">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -59,7 +59,7 @@
                     </StackLayout>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Key="ConnectedTemplate" x:DataType="charmodel:CharCalcProperty">
+            <DataTemplate x:Key="ConnectedTemplate" x:DataType="charmodel:ConnectProperty">
                 <StackLayout Spacing="0">
                     <StackLayout Orientation="Horizontal" Spacing="2">
                         <Label Text="{x:Binding Owner.Bezeichner, FallbackValue=-Owner-}" LineBreakMode="MiddleTruncation" HorizontalOptions="Start"/>

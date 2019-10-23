@@ -11,7 +11,7 @@ using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class CharCalcProperty : INotifyPropertyChanged
+    public class ConnectProperty : INotifyPropertyChanged
     {
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -24,7 +24,7 @@ namespace ShadowRunHelper.CharModel
 
         #region Implicit Converter
 
-        public static implicit operator CharCalcProperty(double d) => new CharCalcProperty("implicit from " + d, new Thing()) { BaseValue = d };
+        public static implicit operator ConnectProperty(double d) => new ConnectProperty("implicit from " + d, new Thing()) { BaseValue = d };
 
         #endregion Implicit Converter
 
@@ -38,14 +38,14 @@ namespace ShadowRunHelper.CharModel
             set { if (_BaseValue.CompareTo(value) != 0) { _BaseValue = value; Recalculate(); NotifyPropertyChanged(); } }
         }
 
-        private ObservableCollection<CharCalcProperty> _Connected;
-        public ObservableCollection<CharCalcProperty> Connected
+        private ObservableCollection<ConnectProperty> _Connected;
+        public ObservableCollection<ConnectProperty> Connected
         {
             get
             {
                 if (_Connected == null)
                 {
-                    _Connected = new ObservableCollection<CharCalcProperty>();
+                    _Connected = new ObservableCollection<ConnectProperty>();
                     _Connected.CollectionChanged += Connected_CollectionChanged;
                 }
                 return _Connected;
@@ -90,9 +90,9 @@ namespace ShadowRunHelper.CharModel
             set { if (_Active != value) { _Active = value; Recalculate(); } }
         }
 
-        public CharCalcProperty() => DeletionNotification += CharProperty_DeletionNotification;
+        public ConnectProperty() => DeletionNotification += CharProperty_DeletionNotification;
 
-        public CharCalcProperty(string name, Thing owner)
+        public ConnectProperty(string name, Thing owner)
         {
             Name = name;
             Owner = owner;
@@ -120,14 +120,14 @@ namespace ShadowRunHelper.CharModel
         {
             if (e.OldItems != null)
             {
-                foreach (var item in e.OldItems.OfType<CharCalcProperty>().ToList())
+                foreach (var item in e.OldItems.OfType<ConnectProperty>().ToList())
                 {
                     item.PropertyChanged -= ConnectedItem_PropertyChanged;
                 }
             }
             if (e.NewItems != null)
             {
-                foreach (var item in e.NewItems.OfType<CharCalcProperty>().ToList())
+                foreach (var item in e.NewItems.OfType<ConnectProperty>().ToList())
                 {
                     if (HasCircularReference(item) || IsForbiddenType(item))
                     {
@@ -142,7 +142,7 @@ namespace ShadowRunHelper.CharModel
             Recalculate();
         }
 
-        private bool HasCircularReference(CharCalcProperty added) //TODO Unit test
+        private bool HasCircularReference(ConnectProperty added) //TODO Unit test
         {
             foreach (var item in added.Connected)
             {
@@ -154,7 +154,7 @@ namespace ShadowRunHelper.CharModel
             return false;
         }
 
-        private bool IsForbiddenType(CharCalcProperty item)
+        private bool IsForbiddenType(ConnectProperty item)
         {
             //TODO Implement Filter
             //public IEnumerable<ThingDefs> FilterOut { get; set; }
@@ -169,14 +169,14 @@ namespace ShadowRunHelper.CharModel
 
         #region Deletion Handling
 
-        private static event EventHandler<CharCalcProperty> DeletionNotification;
+        private static event EventHandler<ConnectProperty> DeletionNotification;
 
         internal void ParentDeleted()
         {
             DeletionNotification.Invoke(this, this);
         }
 
-        private void CharProperty_DeletionNotification(object sender, CharCalcProperty e)
+        private void CharProperty_DeletionNotification(object sender, ConnectProperty e)
         {
             var ToRemove = Connected.Where(x => x == e).ToList();
             foreach (var item in ToRemove)
@@ -186,11 +186,11 @@ namespace ShadowRunHelper.CharModel
             Recalculate();
         }
 
-        internal CharCalcProperty Copy(CharCalcProperty target = null)
+        internal ConnectProperty Copy(ConnectProperty target = null)
         {
             if (target == null)
             {
-                target = (CharCalcProperty)Activator.CreateInstance(GetType());
+                target = (ConnectProperty)Activator.CreateInstance(GetType());
             }
             target.Active = Active;
             target.BaseValue = BaseValue;

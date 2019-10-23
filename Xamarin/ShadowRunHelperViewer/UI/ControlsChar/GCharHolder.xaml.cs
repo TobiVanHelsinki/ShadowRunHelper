@@ -335,7 +335,7 @@ namespace ShadowRunHelperViewer
             {
                 if (e.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
                 {
-                    asb.ItemsSource = MyChar.ThingList.Where(x => MyChar.Settings.CategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where(x => x.SimilaritiesTo(asb.Text) > 0).OrderByDescending(x => x.SimilaritiesTo(asb.Text)).ToList();
+                    asb.ItemsSource = MyChar.Things.Where(x => MyChar.Settings.CategoryOptions.First(y => y.ThingType == x.ThingType).Visibility).Where(x => x.SimilaritiesTo(asb.Text) > 0).OrderByDescending(x => x.SimilaritiesTo(asb.Text)).ToList();
                 }
             }
         }

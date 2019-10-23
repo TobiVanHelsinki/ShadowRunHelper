@@ -141,27 +141,14 @@ namespace ShadowRunHelper.IO
             //    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
             //}
             target.Value.BaseValue = jsonObject.GetValue("Wert")?.Value<double>() ?? 0.0;
-            target.Value.Connected.Clear();
-            target.Value.Connected.AddRange(target.LinkedThings.Select(x => x.Object.Value)); //TODO nicht einfach nur den value nehmen, es könnte ja auch ein anderes property sein.
-            //TODO Daher also erstmal alle properties, die man auswähöen sollen kann als CharCalcProp machen
-            //TODO Danach anhand von x.Property (string) eine auswahl treffen.
-            target.Wert = 0;
-            target.LinkedThings.Clear();
-            target.LinkedThings.OnCollectionChangedCall(null);
+            LinkList2CalcProp(target.LinkedThings, target.Value);
             if (target is Handlung h)
             {
                 h.Limit.BaseValue = jsonObject.GetValue("Grenze")?.Value<double>() ?? 0.0;
-                h.Limit.BaseValue = jsonObject.GetValue("Grenze")?.Value<double>() ?? 0.0;
-                h.Limit.Connected.Clear();
-                h.Limit.Connected.AddRange(h.GrenzeZusammensetzung.Select(x => x.Object.Value)); //TODO siehe oben
-                h.GrenzeZusammensetzung.Clear();
-                h.GrenzeZusammensetzung.OnCollectionChangedCall(null);
+                LinkList2CalcProp(h.GrenzeZusammensetzung, h.Limit);
 
                 h.Against.BaseValue = jsonObject.GetValue("Gegen")?.Value<double>() ?? 0.0;
-                h.Against.Connected.Clear();
-                h.Against.Connected.AddRange(h.GegenZusammensetzung.Select(x => x.Object.Value)); //TODO siehe oben
-                h.GegenZusammensetzung.Clear();
-                h.GegenZusammensetzung.OnCollectionChangedCall(null);
+                LinkList2CalcProp(h.GegenZusammensetzung, h.Against);
             }
             if (target is Waffe w)
             {
@@ -169,6 +156,52 @@ namespace ShadowRunHelper.IO
                 w.Precision.BaseValue = jsonObject.GetValue("Precision")?.Value<double>() ?? 0.0;
             }
             return target;
+        }
+
+        private static void LinkList2CalcProp(LinkList linkedThings, ConnectProperty calc)
+        {
+            //TODO nicht einfach nur den value nehmen, es könnte ja auch ein anderes property sein.
+            //TODO Danach anhand von x.Property (string) eine auswahl treffen.
+
+            calc.Connected.Clear();
+            calc.Connected.AddRange(linkedThings?.Select(x => (x.PropertyID switch
+            {
+                "Gegen" => (x.Object as Handlung).Against,
+                "Grenze" => (x.Object as Handlung).Limit,
+                "DK" => (x.Object as Waffe).DK,
+                "Precision" => (x.Object as Waffe).Precision,
+                "Praezision" => (x.Object as Waffe).Precision,
+                "RK" => (x.Object as Fernkampfwaffe).RK,
+                "Reichweite" => (x.Object as Nahkampfwaffe).Reichweite,
+                "Kapazitaet" => (x.Object as Panzerung).Capacity,
+                "Angriff" => (x.Object as CyberDeck).Angriff,
+                "Schleicher" => (x.Object as CyberDeck).Schleicher,
+                "Firewall" => (x.Object as Kommlink).Firewall,
+                "Datenverarbeitung" => (x.Object as Kommlink).Datenverarbeitung,
+                "Sitze" => (x.Object as Vehikel).Sitze,
+                "Sensor" => (x.Object as Vehikel).Sensor,
+                "Rumpf" => (x.Object as Vehikel).Rumpf,
+                "Pilot" => (x.Object as Vehikel).Pilot,
+                "Panzerung" => (x.Object as Vehikel).Panzerung,
+                "Handling" => (x.Object as Vehikel).Handling,
+                "Gewicht" => (x.Object as Vehikel).Gewicht,
+                "Geschwindigkeit" => (x.Object as Vehikel).Geschwindigkeit,
+                "Beschleunigung" => (x.Object as Vehikel).Beschleunigung,
+                _ => x.Object.Value,
+            })));
+            foreach (var item in calc.Connected)
+            {
+                if (item.Owner is null)
+                {
+                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                }
+                if (string.IsNullOrEmpty(item.Name))
+                {
+                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                }
+            }
+            linkedThings.Clear();
+            linkedThings.OnCollectionChangedCall(null);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
@@ -250,12 +283,13 @@ namespace ShadowRunHelper.IO
                     throw new IO_FileVersion();
             }
             ReturnCharHolder.AfterLoad();
+            //TODO after Upgrade from 1.7 there are lost connections ...
             return ReturnCharHolder;
         }
 
         private static void OldNoteToNewNotes(CharHolder ReturnCharHolder)
         {
-            if (!string.IsNullOrEmpty(ReturnCharHolder.Person.Notizen))
+            if (!string.IsNullOrEmpty(ReturnCharHolder?.Person?.Notizen))
             {
                 (ReturnCharHolder.CTRLNote.AddNewThing() as Note).Text = ReturnCharHolder.Person.Notizen;
                 ReturnCharHolder.Person.Notizen = "";

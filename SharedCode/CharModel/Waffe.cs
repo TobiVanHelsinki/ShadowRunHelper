@@ -1,7 +1,5 @@
 ﻿///Author: Tobi van Helsinki
 
-using System.Linq;
-
 namespace ShadowRunHelper.CharModel
 {
     public abstract class Waffe : Item
@@ -21,44 +19,36 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        CharCalcProperty _DK;
+        ConnectProperty _DK;
         [Used_User]
-        public CharCalcProperty DK
+        public ConnectProperty DK
         {
             get { return _DK; }
             set { if (_DK != value) { _DK = value; NotifyPropertyChanged(); } }
         }
 
-        CharCalcProperty _Precision;
+        ConnectProperty _Precision;
         [Used_User]
-        public CharCalcProperty Precision
+        public ConnectProperty Precision
         {
             get => _Precision;
             set { _Precision = value; NotifyPropertyChanged(); }
         }
 
-        protected override void OnLinkedThingsChanged()
-        {
-            //var List = LinkedThings.Where(x => x.Object.ThingType == ThingDefs.Munition).Select(x => x.Object);
-            //DKCalced = DK + List.Sum(x => x.RawValueOf("DK"));
-            //PraezisionCalced = Praezision + List.Sum(x => x.RawValueOf("Praezision"));
-            base.OnLinkedThingsChanged();
-        }
-
-        protected override double InternValueOf(string ID)
-        {
-            switch (ID)
-            {
-                case "Praezision":
-                    return Precision.Value;
-                case "Precision":
-                    return Precision.Value;
-                case "DK":
-                    return DK.Value;
-                default:
-                    break;
-            }
-            return base.InternValueOf(ID);
-        }
+        //protected override double InternValueOf(string ID)
+        //{
+        //    switch (ID)
+        //    {
+        //        case "Praezision":
+        //            return Precision.Value;
+        //        case "Precision":
+        //            return Precision.Value;
+        //        case "DK":
+        //            return DK.Value;
+        //        default:
+        //            break;
+        //    }
+        //    return base.InternValueOf(ID);
+        //}
     }
 }

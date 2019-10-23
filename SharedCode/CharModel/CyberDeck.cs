@@ -34,9 +34,9 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        private CharCalcProperty angriff;
+        private ConnectProperty angriff;
         [Used_UserAttribute]
-        public CharCalcProperty Angriff
+        public ConnectProperty Angriff
         {
             get => angriff;
             set
@@ -63,9 +63,9 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        private CharCalcProperty schleicher;
+        private ConnectProperty schleicher;
         [Used_UserAttribute]
-        public CharCalcProperty Schleicher
+        public ConnectProperty Schleicher
         {
             get => schleicher;
             set

@@ -30,7 +30,7 @@ namespace ShadowRunHelper.CharModel
 
         protected Eigenschaft() : base()
         {
-            LinkedThings.FilterOut = Filter;
+            //LinkedThings.FilterOut = Filter;
         }
     }
 }

@@ -86,7 +86,7 @@ namespace SharedCodeTest
             var t = new Handlung();
             t.Value.BaseValue = 5;
 
-            CharCalcProperty tdp = 5;
+            ConnectProperty tdp = 5;
             Assert.AreEqual(tdp.Value, t.Value.Value);
         }
 
@@ -97,7 +97,7 @@ namespace SharedCodeTest
             var t = new Item();
             t.Value.BaseValue = 5;
 
-            CharCalcProperty tdp = 5;
+            ConnectProperty tdp = 5;
             Assert.AreEqual(tdp.Value, t.Value.Value);
         }
 

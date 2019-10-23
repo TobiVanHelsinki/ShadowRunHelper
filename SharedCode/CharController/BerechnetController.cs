@@ -74,20 +74,20 @@ namespace ShadowRunHelper.CharController
             Person = p;
             lstImplantateRef = i;
 
-            Essenz.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Essenz.Wert) || y.PropertyName == nameof(Essenz.WertCalced)) RefreshLimitS(); };
+            Essenz.Value.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Essenz.Value.BaseValue) || y.PropertyName == nameof(Essenz.Value.Value)) RefreshLimitS(); };
             Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Essenz)) RefreshEssenz(); };
             Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Schaden_G_max_mod)) RefreshLimitSchadenG(); };
             Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Schaden_K_max_mod)) RefreshLimitSchadenK(); };
             lstImplantateRef.CollectionChanged += (x, y) => RegisterEssenzRefreshers();
 
-            AttributeRef.Geschick.PropertyChanged += (x, y) => { RefreshLaufen(); RefreshRennen(); };
-            AttributeRef.Konsti.PropertyChanged += (x, y) => { RefreshLimitK(); RefreshLimitSchadenK(); };
-            AttributeRef.Reaktion.PropertyChanged += (x, y) => RefreshLimitK();
-            AttributeRef.Staerke.PropertyChanged += (x, y) => { RefreshTragen(); RefreshLimitK(); };
-            AttributeRef.Charisma.PropertyChanged += (x, y) => RefreshLimitS();
-            AttributeRef.Logik.PropertyChanged += (x, y) => RefreshLimitG();
-            AttributeRef.Intuition.PropertyChanged += (x, y) => RefreshLimitG();
-            AttributeRef.Willen.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); RefreshLimitSchadenG(); };
+            AttributeRef.Geschick.Value.PropertyChanged += (x, y) => { RefreshLaufen(); RefreshRennen(); };
+            AttributeRef.Konsti.Value.PropertyChanged += (x, y) => { RefreshLimitK(); RefreshLimitSchadenK(); };
+            AttributeRef.Reaktion.Value.PropertyChanged += (x, y) => RefreshLimitK();
+            AttributeRef.Staerke.Value.PropertyChanged += (x, y) => { RefreshTragen(); RefreshLimitK(); };
+            AttributeRef.Charisma.Value.PropertyChanged += (x, y) => RefreshLimitS();
+            AttributeRef.Logik.Value.PropertyChanged += (x, y) => RefreshLimitG();
+            AttributeRef.Intuition.Value.PropertyChanged += (x, y) => RefreshLimitG();
+            AttributeRef.Willen.Value.PropertyChanged += (x, y) => { RefreshLimitS(); RefreshLimitG(); RefreshLimitSchadenG(); };
 
             RefreshEssenz();
             RefreshLimitS();
@@ -116,55 +116,55 @@ namespace ShadowRunHelper.CharController
 
         protected void RefreshEssenz()
         {
-            Essenz.Wert = 6;
-            Essenz.Wert += Person.Essenz;
-            Essenz.Wert -= lstImplantateRef.Where(x => x.Besitz == true).Sum(x => x.Essenz);
+            Essenz.Value.BaseValue = 6;
+            Essenz.Value.BaseValue += Person.Essenz;
+            Essenz.Value.BaseValue -= lstImplantateRef.Where(x => x.Besitz == true).Sum(x => x.Essenz);
         }
 
         protected void RefreshLimitSchadenG()
         {
-            Person.Schaden_G_max = 8 + Math.Ceiling(AttributeRef.Willen.ValueOf("Wert") / 2) + Person.Schaden_G_max_mod;
-            MaxDamageG.Wert = Person.Schaden_G_max;
+            Person.Schaden_G_max = 8 + Math.Ceiling(AttributeRef.Willen.Value.Value / 2) + Person.Schaden_G_max_mod;
+            MaxDamageG.Value.BaseValue = Person.Schaden_G_max;
         }
 
         protected void RefreshLimitSchadenK()
         {
-            Person.Schaden_K_max = 8 + Math.Ceiling(AttributeRef.Konsti.ValueOf("Wert") / 2) + Person.Schaden_K_max_mod;
-            MaxDamageK.Wert = Person.Schaden_K_max;
+            Person.Schaden_K_max = 8 + Math.Ceiling(AttributeRef.Konsti.Value.Value / 2) + Person.Schaden_K_max_mod;
+            MaxDamageK.Value.BaseValue = Person.Schaden_K_max;
         }
 
         //Physical Limit: (STR x2 + BOD + REA) / 3
         protected void RefreshLimitK()
         {
-            Limit_K.Wert = Math.Ceiling((AttributeRef.Staerke.ValueOf("Wert") * 2 + AttributeRef.Konsti.ValueOf("Wert") + AttributeRef.Reaktion.ValueOf("Wert")) / 3);
+            Limit_K.Value.BaseValue = Math.Ceiling((AttributeRef.Staerke.Value.Value * 2 + AttributeRef.Konsti.Value.Value + AttributeRef.Reaktion.Value.Value) / 3);
         }
 
         //Mental Limit: (LOG x2 + INT +WIL) / 3
 
         protected void RefreshLimitG()
         {
-            Limit_G.Wert = Math.Ceiling((AttributeRef.Logik.ValueOf("Wert") * 2 + AttributeRef.Intuition.ValueOf("Wert") + AttributeRef.Willen.ValueOf("Wert")) / 3);
+            Limit_G.Value.BaseValue = Math.Ceiling((AttributeRef.Logik.Value.Value * 2 + AttributeRef.Intuition.Value.Value + AttributeRef.Willen.Value.Value) / 3);
         }
         //Social Limit: (CHA x2 + WIL + Essence) /3
 
         protected void RefreshLimitS()
         {
-            Limit_S.Wert = Math.Ceiling((AttributeRef.Charisma.ValueOf("Wert") * 2 + AttributeRef.Willen.ValueOf("Wert") + Essenz.ValueOf("Wert")) / 3);
+            Limit_S.Value.BaseValue = Math.Ceiling((AttributeRef.Charisma.Value.Value * 2 + AttributeRef.Willen.Value.Value + Essenz.Value.Value) / 3);
         }
 
         protected void RefreshLaufen()
         {
-            Laufen.Wert = AttributeRef.Geschick.ValueOf("Wert") * 2;
+            Laufen.Value.BaseValue = AttributeRef.Geschick.Value.Value * 2;
         }
 
         protected void RefreshRennen()
         {
-            Rennen.Wert = AttributeRef.Geschick.ValueOf("Wert") * 4;
+            Rennen.Value.BaseValue = AttributeRef.Geschick.Value.Value * 4;
         }
 
         protected void RefreshTragen()
         {
-            Tragen.Wert = AttributeRef.Staerke.ValueOf("Wert") * 10; //5 und 15 auch mgl TODO
+            Tragen.Value.BaseValue = AttributeRef.Staerke.Value.Value * 10; //5 und 15 auch mgl TODO
         }
         #endregion Refresh Methods
 

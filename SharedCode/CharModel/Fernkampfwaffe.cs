@@ -45,7 +45,7 @@ namespace ShadowRunHelper.CharModel
 
         public Fernkampfwaffe() : base()
         {
-            LinkedThings.FilterOut = (Filter);
+            //LinkedThings.FilterOut = (Filter);
         }
     }
 }

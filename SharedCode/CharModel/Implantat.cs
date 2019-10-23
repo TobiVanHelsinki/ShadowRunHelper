@@ -64,7 +64,7 @@ namespace ShadowRunHelper.CharModel
 
         public Implantat()
         {
-            LinkedThings.FilterOut = (Filter);
+            //LinkedThings.FilterOut = (Filter);
             Aktiv = true;
         }
     }
