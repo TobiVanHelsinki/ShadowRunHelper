@@ -1260,6 +1260,24 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remove UPPERCASE ähnelt.
+        /// </summary>
+        public static string TextRefactoring_Case {
+            get {
+                return ResourceManager.GetString("TextRefactoring_Case", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remove LineBreaks in Notes ähnelt.
+        /// </summary>
+        public static string TextRefactoring_NewLine {
+            get {
+                return ResourceManager.GetString("TextRefactoring_NewLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Tip ähnelt.
         /// </summary>
         public static string TipHeader {

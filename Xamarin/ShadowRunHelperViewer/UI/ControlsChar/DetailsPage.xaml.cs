@@ -13,7 +13,9 @@ using System;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using TLIB;
+using Xam.Plugin;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -223,6 +225,72 @@ namespace ShadowRunHelperViewer
         private void Close_Clicked(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PopAsync(true);
+        }
+
+        private void More_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var Popup = new PopupMenu
+                {
+                    ItemsSource = MenuItems.Select(x => x.Item1).ToArray()
+                };
+                Popup.OnItemSelected += Popup_OnItemSelected;
+                Popup?.ShowPopup(sender as Button);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void Popup_OnItemSelected(string item)
+        {
+            MenuItems.FirstOrDefault(x => x.Item1 == item).Item2?.Invoke();
+        }
+
+        private (string, Action)[] MenuItems => new (string, Action)[] {
+                        (UiResources.TextRefactoring_Case,TextRefactoring_Case),
+                        (UiResources.TextRefactoring_NewLine,TextRefactoring_NewLine),
+                    };
+
+        /// <summary>
+        /// Take the Name of MyThing and convert all words in lowercase with one leading uppercase
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Ignore.</exception>
+        public void TextRefactoring_Case()
+        {
+            var text = MyThing.Bezeichner.Replace("\r", " ").Replace("\n", " ").Replace("  ", " ");
+            var builder = new StringBuilder();
+            foreach (var word in text.Split(' ', '-'))
+            {
+                if (word.Length == 1)
+                {
+                    builder.Append(word);
+                }
+                else if (word.Length > 2)
+                {
+                    builder.Append(word.First());
+                    builder.Append(word.Skip(1).Select(x => char.ToLower(x)).ToArray());
+                }
+                builder.Append(' ');
+            }
+            MyThing.Bezeichner = builder.ToString(0, builder.Length - 1);
+        }
+
+        /// <summary>
+        /// Removed all but the first newline of MyThing.Notes. Also removes \r.
+        /// </summary>
+        public void TextRefactoring_NewLine()
+        {
+            var text = MyThing.Notiz.Replace("\r", "\n").Replace("\n\n", "\n").Trim().Trim('\n');
+            var firstindex = text.IndexOf("\n");
+            if (firstindex > -1)
+            {
+                var firstline = text.Substring(0, firstindex);
+                var rest = text.Substring(firstindex + 1, text.Length - firstindex - 1);
+                text = firstline + "\n" + rest.Replace("\n", " ");
+            }
+            MyThing.Notiz = text;
         }
     }
 }

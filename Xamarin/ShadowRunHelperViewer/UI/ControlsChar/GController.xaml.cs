@@ -209,7 +209,7 @@ namespace ShadowRunHelperViewer
         {
             try
             {
-                PopupMenu Popup = new PopupMenu
+                var Popup = new PopupMenu
                 {
                     ItemsSource = MenuItems.Select(x => x.Item1).ToArray()
                 };

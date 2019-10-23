@@ -548,4 +548,10 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Optionen_EditAfterAddTip" xml:space="preserve">
     <value>After you have created an object, the edit dialog is called immediately.</value>
   </data>
+  <data name="TextRefactoring_Case" xml:space="preserve">
+    <value>Remove UPPERCASE</value>
+  </data>
+  <data name="TextRefactoring_NewLine" xml:space="preserve">
+    <value>Remove LineBreaks in Notes</value>
+  </data>
 </root>
