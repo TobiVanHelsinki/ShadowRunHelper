@@ -251,6 +251,8 @@ namespace ShadowRunHelperViewer
         private (string, Action)[] MenuItems => new (string, Action)[] {
                         (UiResources.TextRefactoring_Case,TextRefactoring_Case),
                         (UiResources.TextRefactoring_NewLine,TextRefactoring_NewLine),
+                        ("CopyTo",CopyTo),
+                        ("MoveTo",MoveTo),
                     };
 
         /// <summary>
@@ -291,6 +293,28 @@ namespace ShadowRunHelperViewer
                 text = firstline + "\n" + rest.Replace("\n", " ");
             }
             MyThing.Notiz = text;
+        }
+
+        private void CopyTo()
+        {
+            try
+            {
+                PopupNavigation.Instance.PushAsync(new ThingCopyChooser(MyThing, MyChar, false));
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void MoveTo()
+        {
+            try
+            {
+                PopupNavigation.Instance.PushAsync(new ThingCopyChooser(MyThing, MyChar, true));
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

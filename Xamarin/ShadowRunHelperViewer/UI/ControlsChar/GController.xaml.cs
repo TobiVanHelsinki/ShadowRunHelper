@@ -5,6 +5,7 @@ using ShadowRunHelper;
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;

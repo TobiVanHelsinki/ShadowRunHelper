@@ -34,6 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="UI\ControlsChar\ThingCopyChooser.xaml.cs">
+      <DependentUpon>ThingCopyChooser.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UI\Controls\ControlCenter.xaml.cs">
       <DependentUpon>ControlCenter.xaml</DependentUpon>
     </Compile>
