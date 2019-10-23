@@ -8,6 +8,7 @@ using ShadowRunHelperViewer.UI.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,29 +17,32 @@ namespace ShadowRunHelperViewer.UI.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LinkListChooser : PopupPage
     {
+        /// <summary>
+        /// Public for ui binding
+        /// </summary>
         public CharHolder MyChar { get; }
 
         /// <summary>
-        /// Was the Choice successfull
+        /// Gets my property.
         /// </summary>
-        public bool Result { get; set; }
+        /// <value>
+        /// My property.
+        /// </value>
+        readonly CharCalcProperty MyProperty;
 
-        public LinkListChooser(CharHolder myChar, IEnumerable<CharCalcProperty> preSelection)
+        /// <summary>
+        /// Current Selected Items
+        /// </summary>
+        readonly List<CharCalcProperty> Selected = new List<CharCalcProperty>();
+
+        public LinkListChooser(CharHolder myChar, CharCalcProperty property)
         {
             MyChar = myChar;
+            MyProperty = property;
+            Selected.AddRange(MyProperty.Connected);
             InitializeComponent();
             BindingContext = this;
-            Select(preSelection);
         }
-
-        private void Select(IEnumerable<CharCalcProperty> preSelection)
-        {
-            foreach (var item in preSelection)
-            {
-            }
-        }
-
-        public List<CharCalcProperty> Selected = new List<CharCalcProperty>();
 
         private void Cancel_Clicked(object sender, System.EventArgs e)
         {
@@ -47,7 +51,8 @@ namespace ShadowRunHelperViewer.UI.Controls
 
         private void Finish_Clicked(object sender, System.EventArgs e)
         {
-            Result = true;
+            MyProperty.Connected.Clear();
+            MyProperty.Connected.AddRange(Selected);
             Cancel_Clicked(sender, e);
         }
 
@@ -60,15 +65,21 @@ namespace ShadowRunHelperViewer.UI.Controls
         {
             if (sender is CheckBox box && box.BindingContext is CharCalcProperty entry && box.Parent is Layout panel)
             {
-                if (Selected.Contains(entry))
+                if (box.IsChecked)
                 {
-                    panel.BackgroundColor = Color.Transparent;
-                    Selected.Remove(entry);
+                    panel.BackgroundColor = Color.Accent;
+                    if (!Selected.Contains(entry))
+                    {
+                        Selected.Add(entry);
+                    }
                 }
                 else
                 {
-                    panel.BackgroundColor = Color.Accent;
-                    Selected.Add(entry);
+                    panel.BackgroundColor = Color.Transparent;
+                    if (Selected.Contains(entry))
+                    {
+                        Selected.Remove(entry);
+                    }
                 }
             }
         }
@@ -89,7 +100,15 @@ namespace ShadowRunHelperViewer.UI.Controls
                            select (item, view);
                 foreach (var (prop, view) in list)
                 {
-                    view.BindingContext = prop.GetValue(t) as CharCalcProperty;
+                    var charCalcProperty = prop.GetValue(t) as CharCalcProperty;
+                    view.BindingContext = charCalcProperty;
+                    if (Selected.Contains(charCalcProperty))
+                    {
+                        if (view.FindByName("Selected") is CheckBox b)
+                        {
+                            b.IsChecked = true;
+                        }
+                    }
                     lv.Children.Add(view);
                 }
                 if (!list.Any() && v is ViewCell vc)

@@ -5,7 +5,8 @@
              xmlns:model="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
              xmlns:forms="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
-             x:Class="ShadowRunHelperViewer.GCharHolder">
+             x:Class="ShadowRunHelperViewer.GCharHolder"
+             x:DataType="local:GCharHolder">
     <ContentView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -101,7 +102,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Grid>
+        <Grid x:DataType="local:GCharHolder">
             <Grid.Resources>
                 <Style x:Key="OuterPanel" TargetType="StackLayout">
                     <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
@@ -122,6 +123,8 @@
             <StackLayout x:Name="CharTitleBar" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                 <Label Text="{x:Binding MyChar.Person.Alias}" Style="{StaticResource OneLineText}"/>
                 <Label Text="{x:Binding MyChar.Person.Char_Typ}" Style="{StaticResource OneLineText}"/>
+                <Label Text="*" IsVisible="{x:Binding MyChar.HasChanges}"/>
+                <!--todo geht nicht-->
             </StackLayout>
             <Grid x:Name="CharHeadControls" Padding="5" ColumnSpacing="3" Grid.Row="1" Margin="0" RowSpacing="0">
                 <Grid.ColumnDefinitions>

@@ -57,7 +57,7 @@
         <ScrollView>
             <StackLayout>
                 <Label Text="Copy To"/>
-                <ListView x:Name="Lists" ItemTapped="Lists_ItemTapped">
+                <ListView x:Name="Lists">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="shadowrunhelper:ThingTypeProperty">
                             <ViewCell Tapped="ViewCell_Tapped">

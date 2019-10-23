@@ -148,6 +148,7 @@ namespace ShadowRunHelperViewer
         private void AddConnectedValuesToView(View Content, CharCalcProperty charCalcProperty)
         {
             var panel = Content.FindByName<StackLayout>("CalcPropertyPanel");
+            panel.Children.Clear();
             foreach (var item in charCalcProperty.Connected)
             {
                 var item1 = (Resources["ConnectedTemplate"] as DataTemplate).CreateContent() as View;
@@ -174,26 +175,13 @@ namespace ShadowRunHelperViewer
         {
             if (sender is BindableObject b && b.BindingContext is CharCalcProperty prop)
             {
-                var page = new LinkListChooser(MyChar, prop.Connected);
-                page.Disappearing += Page_Disappearing;
+                var page = new LinkListChooser(MyChar, prop);
                 try
                 {
                     await PopupNavigation.Instance.PushAsync(page);
                 }
                 catch (Exception)
                 {
-                }
-            }
-        }
-
-        private void Page_Disappearing(object sender, EventArgs e)
-        {
-            if (sender is LinkListChooser page && page.Result)
-            {
-                if (MyThing is Handlung h)
-                {
-                    h.Value.Connected.Clear();
-                    h.Value.Connected.AddRange(page.Selected);
                 }
             }
         }

@@ -9,17 +9,14 @@ namespace ShadowRunHelper.CharModel
 {
     public class Handlung : Thing
     {
-        [Used_List]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public LinkList GrenzeZusammensetzung { get; set; }
 
-        [Used_List]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public LinkList GegenZusammensetzung { get; set; }
 
         [Obsolete(Constants.ObsoleteCalcProperty)]
         double grenze = 0;
-        [Used_UserAttribute]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public double Grenze
         {
@@ -37,7 +34,6 @@ namespace ShadowRunHelper.CharModel
         [Obsolete(Constants.ObsoleteCalcProperty)]
         double grenzeCalced = 0;
         [JsonIgnore]
-        [Used_UserAttribute]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public double GrenzeCalced
         {
@@ -54,7 +50,6 @@ namespace ShadowRunHelper.CharModel
 
         [Obsolete(Constants.ObsoleteCalcProperty)]
         double gegen = 0;
-        [Used_UserAttribute]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public double Gegen
         {
@@ -72,7 +67,6 @@ namespace ShadowRunHelper.CharModel
         [Obsolete(Constants.ObsoleteCalcProperty)]
         double gegenCalced = 0;
         [JsonIgnore]
-        [Used_UserAttribute]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public double GegenCalced
         {
