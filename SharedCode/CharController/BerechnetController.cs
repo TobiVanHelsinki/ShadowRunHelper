@@ -9,7 +9,7 @@ using System.Linq;
 namespace ShadowRunHelper.CharController
 {
     [ShadowRunHelperController(SupportsEdit = false)]
-    public class BerechnetController : Controller<Berechnet>
+    public class BerechnetController : OwnDataController<Berechnet>
     {
         #region Properties
         public Berechnet Essenz { get; set; } = new Berechnet();
@@ -29,28 +29,6 @@ namespace ShadowRunHelper.CharController
         private Person Person;
         private ObservableCollection<Implantat> lstImplantateRef;
         #endregion References
-
-        private ObservableCollection<Berechnet> MyData;
-
-        #region Override Controller
-        public override ObservableCollection<Berechnet> Data { get => MyData; protected set => MyData = value; }
-
-        #endregion Override Controller
-
-        public BerechnetController()
-        {
-            RefreshIdentifiers(this);
-            Data = new ObservableCollection<Berechnet>
-            {
-                Essenz,
-                Limit_K,
-                Limit_G,
-                Limit_S,
-                Laufen,
-                Rennen,
-                Tragen
-            };
-        }
 
         public void SetDependencies(Person p, ObservableCollection<Implantat> i, AttributController a)
         {

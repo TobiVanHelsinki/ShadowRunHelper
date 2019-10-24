@@ -61,29 +61,29 @@ namespace ShadowRunHelper.Model
             {
                 Bezeichner = CustomManager.GetString("Content_Selbstbeherrschung")
             };
-            item.LinkedThings.Add(ret.CTRLAttribut.MI_Charisma);
-            item.LinkedThings.Add(ret.CTRLAttribut.MI_Willen);
+            item.Value.Connected.Add(ret.CTRLAttribut.Charisma.Value);
+            item.Value.Connected.Add(ret.CTRLAttribut.Willen.Value);
             ret.Add(item);
             item = new Handlung
             {
                 Bezeichner = CustomManager.GetString("Content_Menschenkenntnis")
             };
-            item.LinkedThings.Add(ret.CTRLAttribut.MI_Intuition);
-            item.LinkedThings.Add(ret.CTRLAttribut.MI_Charisma);
+            item.Value.Connected.Add(ret.CTRLAttribut.Intuition.Value);
+            item.Value.Connected.Add(ret.CTRLAttribut.Charisma.Value);
             ret.Add(item);
             item = new Handlung
             {
                 Bezeichner = CustomManager.GetString("Content_Erinnerung")
             };
-            item.LinkedThings.Add(ret.CTRLAttribut.MI_Logik);
-            item.LinkedThings.Add(ret.CTRLAttribut.MI_Willen);
+            item.Value.Connected.Add(ret.CTRLAttribut.Logik.Value);
+            item.Value.Connected.Add(ret.CTRLAttribut.Willen.Value);
             ret.Add(item);
             item = new Handlung
             {
                 Bezeichner = CustomManager.GetString("Content_Schadenswiderstand")
             };
-            item.LinkedThings.Add(ret.CTRLAttribut.MI_Konsti);
-            //item.LinkedThings.Add(ret.CTRLPanzerung.ActiveItem.Value);
+            item.Value.Connected.Add(ret.CTRLAttribut.Konsti.Value);
+            item.Value.Connected.Add(ret.CTRLPanzerung.ActiveItem.Value);
             ret.Add(item);
             ret.AfterLoad();
             ret.HasChanges = true;

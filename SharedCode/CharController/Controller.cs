@@ -73,10 +73,7 @@ namespace ShadowRunHelper.CharController
 
         public virtual Thing AddNewThing()
         {
-            var newThing = Activator.CreateInstance<T>();
-            newThing.Order = Data.MaxOrDefault(x => x.Order) + 1;
-            Data.Add(newThing);
-            return newThing;
+            return AddNewThing(Activator.CreateInstance<T>());
         }
 
         public virtual Thing AddNewThing(Thing newThing)
@@ -127,42 +124,13 @@ namespace ShadowRunHelper.CharController
 
         public void OrderData(Ordering order)
         {
-            IEnumerable<T> OrderedData;
-            switch (order)
-            {
-                case Ordering.ABC:
-                    OrderedData = Data.OrderBy(x => x.Bezeichner).ToList();
-                    break;
-                case Ordering.Type:
-                    OrderedData = Data.OrderBy(x => x.Typ).ToList();
-                    break;
-                case Ordering.Original:
-                default:
-                    OrderedData = Data.OrderBy(x => x.Order).ToList();
-                    break;
-            }
             ClearData();
-            Data.AddRange(OrderedData);
-        }
-
-        public void RefreshIdentifiers(object controller)
-        {
-            foreach (var item in controller.GetType().GetProperties().Where(x => x.PropertyType == typeof(T) && x.CanRead && x.CanWrite))
+            Data.AddRange(Data.OrderBy(x => order switch
             {
-                if (item.GetValue(controller) is T thing)
-                {
-                    var name = typeof(T).Name + "_" + item.Name;
-                    try
-                    {
-                        thing.Bezeichner = ModelResources.ResourceManager.GetString(name);
-                    }
-                    catch (Exception ex)
-                    {
-                        thing.Bezeichner = Constants.NoResourceFallback;
-                        Log.Write("Could not get res string for " + name, ex, logType: LogType.Error);
-                    }
-                }
-            }
+                Ordering.ABC => x.Bezeichner,
+                Ordering.Type => x.Typ,
+                _ => x.Order.ToString()
+            }));
         }
     }
 }
