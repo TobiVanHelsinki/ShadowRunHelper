@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper.CharModel;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper.CharModel;
 using System;
 using System.IO;
 using System.Linq;
@@ -37,6 +39,7 @@ namespace ShadowRunHelper.Model
             CH.AfterLoad();
             return CH;
         }
+
         public static CharHolder CreateEmtpyChar()
         {
             var ret = new CharHolder();
@@ -50,6 +53,7 @@ namespace ShadowRunHelper.Model
             }
             return ret;
         }
+
         public static CharHolder CreateCharWithStandardContent()
         {
             var ret = new CharHolder();
@@ -79,7 +83,7 @@ namespace ShadowRunHelper.Model
                 Bezeichner = CustomManager.GetString("Content_Schadenswiderstand")
             };
             item.LinkedThings.Add(ret.CTRLAttribut.MI_Konsti);
-            item.LinkedThings.Add(ret.CTRLPanzerung.MI_Wert);
+            //item.LinkedThings.Add(ret.CTRLPanzerung.ActiveItem.Value);
             ret.Add(item);
             ret.AfterLoad();
             ret.HasChanges = true;

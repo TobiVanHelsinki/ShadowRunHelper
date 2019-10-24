@@ -104,14 +104,19 @@ namespace ShadowRunHelper.CharModel
             DeletionNotification += CharProperty_DeletionNotification;
         }
 
-        public ConnectProperty Clone()
+        public ConnectProperty TryCloneInto(ConnectProperty target)
         {
-            var target = new ConnectProperty
+            if (target is null)
             {
-                Active = Active,
-                BaseValue = BaseValue
-            };
+                target = new ConnectProperty
+                {
+                };
+            }
             target.Connected.AddRange(Connected);
+            target.Active = Active;
+            target.DisplayName = DisplayName;
+            target.Name = Name;
+            target.BaseValue = BaseValue;
             return target;
         }
 

@@ -196,7 +196,7 @@ namespace ShadowRunHelper.CharModel
         /// </summary>
         /// <param name="target"></param>
         /// <returns>true if no erros occured, false if some properties migth not get copied</returns>
-        public virtual bool TryCopy(Thing target = null)
+        public virtual bool TryCloneInto(Thing target = null)
         {
             var retval = true;
             if (target == null)
@@ -211,11 +211,25 @@ namespace ShadowRunHelper.CharModel
                     return false;
                 }
             }
-            foreach (var item in GetProperties())
+            foreach (var item in GetProperties().Where(x => x.PropertyType != typeof(ConnectProperty)))
             {
                 try
                 {
                     item.SetValue(target, item.GetValue(this));
+                }
+                catch (Exception ex)
+                {
+                    Log.Write("Could not", ex, logType: LogType.Error);
+                    retval = false;
+                }
+            }
+            foreach (var item in GetProperties().Where(x => x.PropertyType == typeof(ConnectProperty)))
+            {
+                try
+                {
+                    var oldconnectprop = item.GetValue(this) as ConnectProperty;
+                    var newconnectprop = item.GetValue(target) as ConnectProperty;
+                    oldconnectprop.TryCloneInto(newconnectprop);
                 }
                 catch (Exception ex)
                 {

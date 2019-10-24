@@ -2,18 +2,46 @@
 
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+using SharedCode.Ressourcen;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System;
-using System.Linq;
-using TLIB;
+using System.Collections.Specialized;
 using System.ComponentModel;
-using SharedCode.Ressourcen;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using TLIB;
 
 namespace ShadowRunHelper.CharController
 {
-    public class Controller<T> : IController<T> where T : Thing, new()
+    public class Controller<T> : INotifyPropertyChanged, IController<T> where T : Thing, new()
     {
+        #region NotifyPropertyChanged
+        public virtual event PropertyChangedEventHandler PropertyChanged;
+        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        {
+            add
+            {
+                if (!PropertyChanged?.GetInvocationList()?.Contains(value) == true)
+                {
+                    PropertyChanged += value;
+                }
+            }
+            remove
+            {
+                if (PropertyChanged?.GetInvocationList()?.Contains(value) == true)
+                {
+                    PropertyChanged -= value;
+                }
+            }
+        }
+
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion NotifyPropertyChanged
+
         /// <summary>
         /// GUI-Binding Target
         /// </summary>
@@ -21,10 +49,13 @@ namespace ShadowRunHelper.CharController
 
         public T this[int index] => Data[index];
 
-        public virtual IEnumerable<Thing> GetElements() => Data;
+        public virtual IEnumerable<Thing> GetElements()
+        {
+            return Data;
+        }
 
         protected readonly ThingDefs _eDataTyp;
-        public ThingDefs eDataTyp { get => _eDataTyp; }
+        public ThingDefs eDataTyp => _eDataTyp;
 
         public virtual void RegisterEventAtData(Action Method)
         {
@@ -34,9 +65,9 @@ namespace ShadowRunHelper.CharController
 
         public void RegisterEventAtData(Action<object, PropertyChangedEventArgs> Method)
         {
-            //TODO nicht mit annoynmen meth
-            Data.CollectionChanged -= (x, y) => Method(x, new PropertyChangedEventArgs(""));
-            Data.CollectionChanged += (x, y) => Method(x, new PropertyChangedEventArgs(""));
+            void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) => Method(sender, new PropertyChangedEventArgs(nameof(Data)));
+            Data.CollectionChanged -= Data_CollectionChanged;
+            Data.CollectionChanged += Data_CollectionChanged;
         }
 
         public virtual Thing AddNewThing()
@@ -90,7 +121,7 @@ namespace ShadowRunHelper.CharController
 
         public void SaveCurrentOrdering()
         {
-            int i = 1;
+            var i = 1;
             foreach (var item in Data)
             {
                 item.Order = i;

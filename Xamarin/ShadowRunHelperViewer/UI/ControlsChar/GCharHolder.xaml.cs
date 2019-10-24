@@ -57,7 +57,7 @@ namespace ShadowRunHelperViewer
             InitButtons();
             SetViewParameters();
             MenuOpen = true;
-
+            var a = MyChar.CTRLCyberDeck.ActiveItem.Schaden;
             Features.Ui.IsCustomTitleBarEnabled = true; //TODO Dispse?
             Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(CharTitleBar));
             Features.Ui.SetCustomTitleBar(null);

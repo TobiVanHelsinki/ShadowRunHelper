@@ -59,12 +59,12 @@ namespace ShadowRunHelper.Model
 
         public BerechnetController CTRLBerechnet { get; } = new BerechnetController();
         public Controller<Implantat> CTRLImplantat { get; } = new Controller<Implantat>();
-        public NahkampfwaffeController CTRLNahkampfwaffe { get; } = new NahkampfwaffeController();
-        public FernkampfwaffeController CTRLFernkampfwaffe { get; } = new FernkampfwaffeController();
-        public KommlinkController CTRLKommlink { get; } = new KommlinkController();
-        public CyberDeckController CTRLCyberDeck { get; } = new CyberDeckController();
-        public VehikelController CTRLVehikel { get; } = new VehikelController();
-        public PanzerungController CTRLPanzerung { get; } = new PanzerungController();
+        public ActiveItemController<Nahkampfwaffe> CTRLNahkampfwaffe { get; } = new ActiveItemController<Nahkampfwaffe>();
+        public ActiveItemController<Fernkampfwaffe> CTRLFernkampfwaffe { get; } = new ActiveItemController<Fernkampfwaffe>();
+        public ActiveItemController<Kommlink> CTRLKommlink { get; } = new ActiveItemController<Kommlink>();
+        public ActiveItemController<CyberDeck> CTRLCyberDeck { get; } = new ActiveItemController<CyberDeck>();
+        public ActiveItemController<Vehikel> CTRLVehikel { get; } = new ActiveItemController<Vehikel>();
+        public ActiveItemController<Panzerung> CTRLPanzerung { get; } = new ActiveItemController<Panzerung>();
         public Controller<Fertigkeit> CTRLFertigkeit { get; } = new Controller<Fertigkeit>();
         public Controller<Handlung> CTRLHandlung { get; } = new Controller<Handlung>();
         public Controller<Note> CTRLNote { get; } = new Controller<Note>();
@@ -508,7 +508,7 @@ namespace ShadowRunHelper.Model
             {
                 var OLD_CTRL = Controlers.First(x => x.eDataTyp == OLD_THING.ThingType);
                 var NEW_THING = Add(NEW_CTRL);
-                OLD_THING.TryCopy(NEW_THING);
+                OLD_THING.TryCloneInto(NEW_THING);
             }
             MoveList.Clear();
             IsItemsPrepared = false;
@@ -526,7 +526,7 @@ namespace ShadowRunHelper.Model
             {
                 var OLD_CTRL = Controlers.First(x => x.eDataTyp == OLD_THING.ThingType);
                 var NEW_THING = Add(NEW_CTRL);
-                OLD_THING.TryCopy(NEW_THING);
+                OLD_THING.TryCloneInto(NEW_THING);
                 OLD_CTRL.RemoveThing(OLD_THING);
             }
             MoveList.Clear();
