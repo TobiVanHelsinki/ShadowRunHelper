@@ -48,7 +48,6 @@ namespace ShadowRunHelper.CharController
             var propertyInfo = typeof(T).GetProperty(e.PropertyName);
             if (propertyInfo.PropertyType.IsValueType)
             {
-                //TODO Check, this should trigger when moving slider
                 propertyInfo.SetValue(item, propertyInfo.GetValue(ActiveItem));
             }
             bIsRefreshInProgress = false;

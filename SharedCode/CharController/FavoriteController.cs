@@ -1,21 +1,15 @@
-﻿using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper.CharModel;
 using System;
-using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharController
 {
-    [ShadowRunHelperController(SupportsEdit=false)]
+    [ShadowRunHelperController(SupportsEdit = false)]
     public class FavoriteController : Controller<Thing>
     {
         public FavoriteController() : base(ThingDefs.Favorite)
         {
-        }
-
-        // Implement IController ##########################
-        public override IEnumerable<AllListEntry> GetElementsForThingList()
-        {
-            return Array.Empty<AllListEntry>();
         }
 
         //Override cController ############################

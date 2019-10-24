@@ -12,12 +12,6 @@ namespace ShadowRunHelper.CharController
     public interface IController
     {
         /// <summary>
-        /// To populate the Link List - will be overridden by singlecontroller
-        /// </summary>
-        /// <returns></returns>
-        IEnumerable<AllListEntry> GetElementsForThingList();
-
-        /// <summary>
         /// To populate the "All Things" List just return your data. used for search
         /// </summary>
         /// <returns></returns>

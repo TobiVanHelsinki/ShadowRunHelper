@@ -1,61 +1,45 @@
 ﻿///Author: Tobi van Helsinki
 
-using Newtonsoft.Json;
 using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
-using SharedCode.Ressourcen;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using TLIB;
 
 namespace ShadowRunHelper.CharController
 {
     [ShadowRunHelperController(SupportsEdit = false)]
     public class BerechnetController : Controller<Berechnet>
     {
-        [JsonIgnore]
-        public new ObservableCollection<Berechnet> Data { get; protected set; }
-
-        readonly AllListEntry MI_Essenz;
+        #region Properties
         public Berechnet Essenz { get; set; } = new Berechnet();
-        readonly AllListEntry MI_Limit_K;
+
         public Berechnet Limit_K { get; set; } = new Berechnet();
-        readonly AllListEntry MI_Limit_G;
         public Berechnet Limit_G { get; set; } = new Berechnet();
-        readonly AllListEntry MI_Limit_S;
         public Berechnet Limit_S { get; set; } = new Berechnet();
-        readonly AllListEntry MI_Laufen;
         public Berechnet Laufen { get; set; } = new Berechnet();
-        readonly AllListEntry MI_Rennen;
         public Berechnet Rennen { get; set; } = new Berechnet();
-        readonly AllListEntry MI_Tragen;
         public Berechnet Tragen { get; set; } = new Berechnet();
-        readonly AllListEntry MI_MaxDamageK;
         public Berechnet MaxDamageK { get; set; } = new Berechnet();
-        readonly AllListEntry MI_MaxDamageG;
         public Berechnet MaxDamageG { get; set; } = new Berechnet();
+        #endregion Properties
 
-        AttributController AttributeRef;
-        Person Person;
-        ObservableCollection<Implantat> lstImplantateRef;
+        #region References
+        private AttributController AttributeRef;
+        private Person Person;
+        private ObservableCollection<Implantat> lstImplantateRef;
+        #endregion References
 
-        // Start Stuff ########################################################
+        private ObservableCollection<Berechnet> MyData;
+
+        #region Override Controller
+        public override ObservableCollection<Berechnet> Data { get => MyData; protected set => MyData = value; }
+
+        #endregion Override Controller
+
         public BerechnetController()
         {
             RefreshIdentifiers(this);
-            MI_Essenz = new AllListEntry(Essenz, "");
-            MI_Limit_K = new AllListEntry(Limit_K, "");
-            MI_Limit_G = new AllListEntry(Limit_G, "");
-            MI_Limit_S = new AllListEntry(Limit_S, "");
-            MI_Laufen = new AllListEntry(Laufen, "");
-            MI_Rennen = new AllListEntry(Rennen, "");
-            MI_Tragen = new AllListEntry(Tragen, "");
-            MI_MaxDamageG = new AllListEntry(MaxDamageG, "");
-            MI_MaxDamageK = new AllListEntry(MaxDamageK, "");
-
             Data = new ObservableCollection<Berechnet>
             {
                 Essenz,
@@ -74,10 +58,10 @@ namespace ShadowRunHelper.CharController
             Person = p;
             lstImplantateRef = i;
 
-            Essenz.Value.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Essenz.Value.BaseValue) || y.PropertyName == nameof(Essenz.Value.Value)) RefreshLimitS(); };
-            Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Essenz)) RefreshEssenz(); };
-            Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Schaden_G_max_mod)) RefreshLimitSchadenG(); };
-            Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Schaden_K_max_mod)) RefreshLimitSchadenK(); };
+            Essenz.Value.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Essenz.Value.BaseValue) || y.PropertyName == nameof(Essenz.Value.Value)) { RefreshLimitS(); } };
+            Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Essenz)) { RefreshEssenz(); } };
+            Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Schaden_G_max_mod)) { RefreshLimitSchadenG(); } };
+            Person.PropertyChanged += (x, y) => { if (y.PropertyName == nameof(Person.Schaden_K_max_mod)) { RefreshLimitSchadenK(); } };
             lstImplantateRef.CollectionChanged += (x, y) => RegisterEssenzRefreshers();
 
             AttributeRef.Geschick.Value.PropertyChanged += (x, y) => { RefreshLaufen(); RefreshRennen(); };
@@ -100,13 +84,11 @@ namespace ShadowRunHelper.CharController
             RefreshTragen();
         }
 
-        private void MyEventHandler(object x, PropertyChangedEventArgs y) => RefreshEssenz();
-
         private void RegisterEssenzRefreshers()
         {
+            void MyEventHandler(object x, PropertyChangedEventArgs y) => RefreshEssenz();
             foreach (var item in lstImplantateRef)
             {
-                item.PropertyChanged -= MyEventHandler;
                 item.PropertyChanged += MyEventHandler;
             }
             RefreshEssenz();
@@ -167,48 +149,5 @@ namespace ShadowRunHelper.CharController
             Tragen.Value.BaseValue = AttributeRef.Staerke.Value.Value * 10; //5 und 15 auch mgl TODO
         }
         #endregion Refresh Methods
-
-        // Implement IController ##########################
-        public override IEnumerable<AllListEntry> GetElementsForThingList()
-        {
-            RefreshIdentifiers(this);
-            var lstReturn = new List<AllListEntry>
-            {
-                MI_Essenz,
-                MI_Limit_K,
-                MI_Limit_G,
-                MI_Limit_S,
-                MI_Laufen,
-                MI_Rennen,
-                MI_Tragen
-            };
-            return lstReturn;
-        }
-
-        //Override cController ############################
-        public override IEnumerable<Thing> GetElements()
-        {
-            var lstReturn = new List<Thing>
-            {
-                Essenz,
-                Limit_K,
-                Limit_G,
-                Limit_S,
-                Laufen,
-                Rennen,
-                Tragen
-            };
-            return lstReturn;
-        }
-
-        public override Thing AddNewThing()
-        {
-            throw new NotSupportedException();
-        }
-
-        public override void RemoveThing(Thing tRem)
-        {
-            throw new NotSupportedException();
-        }
     }
 }

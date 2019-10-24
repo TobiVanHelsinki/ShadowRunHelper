@@ -26,19 +26,36 @@ namespace ShadowRunHelper.CharModel
 
     public class Thing : INotifyPropertyChanged
     {
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
+        #region NotifyPropertyChanged
+        public virtual event PropertyChangedEventHandler PropertyChanged;
+        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        {
+            add
+            {
+                if (!PropertyChanged?.GetInvocationList()?.Contains(value) == true)
+                {
+                    PropertyChanged += value;
+                }
+            }
+            remove
+            {
+                if (PropertyChanged?.GetInvocationList()?.Contains(value) == true)
+                {
+                    PropertyChanged -= value;
+                }
+            }
+        }
 
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
+            //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             if (IsSeperator)
             {
                 PlatformHelper.CallPropertyChanged(PropertyChanged, this, nameof(IsSeperator));
             }
         }
-
-        #endregion INotifyPropertyChanged
+        #endregion NotifyPropertyChanged
 
         public virtual IEnumerable<ThingDefs> Filter { get; private set; } = new List<ThingDefs>();
 

@@ -45,7 +45,7 @@ namespace ShadowRunHelper.CharController
         /// <summary>
         /// GUI-Binding Target
         /// </summary>
-        public ObservableCollection<T> Data { get; protected set; }
+        public virtual ObservableCollection<T> Data { get; protected set; }
 
         public T this[int index] => Data[index];
 
@@ -59,8 +59,9 @@ namespace ShadowRunHelper.CharController
 
         public virtual void RegisterEventAtData(Action Method)
         {
-            Data.CollectionChanged -= (x, y) => Method();
-            Data.CollectionChanged += (x, y) => Method();
+            void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) => Method();
+            Data.CollectionChanged -= Data_CollectionChanged;
+            Data.CollectionChanged += Data_CollectionChanged;
         }
 
         public void RegisterEventAtData(Action<object, PropertyChangedEventArgs> Method)
@@ -103,11 +104,6 @@ namespace ShadowRunHelper.CharController
                 return false;
             }
             return true;
-        }
-
-        public virtual IEnumerable<AllListEntry> GetElementsForThingList()
-        {
-            return Data.Select(item => new AllListEntry(item));
         }
 
         /// <summary>
