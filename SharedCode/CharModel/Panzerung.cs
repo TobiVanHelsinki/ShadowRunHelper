@@ -1,7 +1,6 @@
 ﻿///Author: Tobi van Helsinki
 
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ShadowRunHelper.CharModel
 {
@@ -11,25 +10,22 @@ namespace ShadowRunHelper.CharModel
         [Used_UserAttribute]
         public ConnectProperty Capacity
         {
-            get { return _Capacity; }
+            get => _Capacity;
             set
             {
-                if (value != this._Capacity)
+                if (value != _Capacity)
                 {
-                    this._Capacity = value;
+                    _Capacity = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
+        public override IEnumerable<ThingDefs> Filter => StaticFilter;
+
+        private static readonly IEnumerable<ThingDefs> StaticFilter = new[]
             {
                 ThingDefs.Handlung, ThingDefs.Fertigkeit, ThingDefs.Connection, ThingDefs.Sin
             };
-
-        public Panzerung() : base()
-        {
-            //LinkedThings.FilterOut = (Filter);
-        }
     }
 }

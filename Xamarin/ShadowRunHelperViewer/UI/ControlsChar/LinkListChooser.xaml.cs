@@ -94,7 +94,7 @@ namespace ShadowRunHelperViewer.UI.Controls
             if (sender is Element v && v.FindByName("CalcItemsList") is StackLayout lv && v.BindingContext is Thing t)
             {
                 var template = lv.Resources["Template"] as DataTemplate;
-                var list = from item in t.GetCalcProps(typeof(ConnectProperty))
+                var list = from item in t.GetPropertiesConnects()
                            let a = template.CreateContent()
                            let view = template.CreateContent() as View
                            select (item, view);

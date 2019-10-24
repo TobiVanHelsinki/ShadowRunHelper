@@ -1,3 +1,5 @@
+///Author: Tobi van Helsinki
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
@@ -17,7 +19,7 @@ namespace SharedCodeTest
             Assert.IsTrue(Char.CTRLAttribut.Logik.Wert == 0);
             Assert.IsTrue(Char.CTRLVorteil.Data[0].Wert == 0);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert == 0);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].WertCalced == 0);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.Value == 0);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Gegen == 0);
 
             Char.CTRLAttribut.Charisma.Wert++;
@@ -27,7 +29,7 @@ namespace SharedCodeTest
             Assert.IsTrue(Char.CTRLVorteil.Data[0].Wert == 0);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Gegen == 0);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert == 0);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].WertCalced == 1);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.Value == 1);
 
             Char.CTRLVorteil.Data[0].Wert++;
 
@@ -35,7 +37,7 @@ namespace SharedCodeTest
             Assert.IsTrue(Char.CTRLAttribut.Logik.Wert == 0);
             Assert.IsTrue(Char.CTRLVorteil.Data[0].Wert == 1);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].Wert == 0);
-            Assert.IsTrue(Char.CTRLHandlung.Data[0].WertCalced == 1);
+            Assert.IsTrue(Char.CTRLHandlung.Data[0].Value.Value == 1);
             Assert.IsTrue(Char.CTRLHandlung.Data[0].GegenCalced == 1);
         }
     }

@@ -8,7 +8,6 @@ namespace ShadowRunHelper.CharModel
     public abstract class Eigenschaft : Thing
     {
         private string auswirkungen = "";
-        //[Used_UserAttribute]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public string Auswirkungen
         {
@@ -23,14 +22,11 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
+        public override IEnumerable<ThingDefs> Filter => StaticFilter;
+
+        static readonly IEnumerable<ThingDefs> StaticFilter = new[]
             {
                 ThingDefs.Handlung, ThingDefs.Fertigkeit
             };
-
-        protected Eigenschaft() : base()
-        {
-            //LinkedThings.FilterOut = Filter;
-        }
     }
 }

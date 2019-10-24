@@ -97,7 +97,9 @@ namespace ShadowRunHelper.CharModel
             set { if (_Limit != value) { _Limit = value; NotifyPropertyChanged(); } }
         }
 
-        public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
+        public override IEnumerable<ThingDefs> Filter => StaticFilter;
+
+        private static readonly IEnumerable<ThingDefs> StaticFilter = new[]
             {
                 ThingDefs.Handlung, ThingDefs.Connection
             };
@@ -113,35 +115,6 @@ namespace ShadowRunHelper.CharModel
             {
                 FilterOut = Filter
             };
-
-            //PropertyChanged += This_PropertyChanged;
-            //GrenzeZusammensetzung.OnCollectionChangedCall(UpdateGrenze);
-            //GegenZusammensetzung.OnCollectionChangedCall(UpdateGegen);
         }
-
-        //[Obsolete(Constants.ObsoleteCalcProperty)]
-        //private void This_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        //{
-        //    if (e.PropertyName == nameof(Grenze))
-        //    {
-        //        UpdateGrenze();
-        //    }
-        //    if (e.PropertyName == nameof(Gegen))
-        //    {
-        //        UpdateGegen();
-        //    }
-        //}
-
-        //[Obsolete(Constants.ObsoleteCalcProperty)]
-        //private void UpdateGrenze()
-        //{
-        //    GrenzeCalced = Grenze + GrenzeZusammensetzung.Recalculate();
-        //}
-
-        //[Obsolete(Constants.ObsoleteCalcProperty)]
-        //private void UpdateGegen()
-        //{
-        //    GegenCalced = Gegen + GegenZusammensetzung.Recalculate();
-        //}
     }
 }

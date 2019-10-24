@@ -94,4 +94,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UI\" />
+  </ItemGroup>
+
 </Project>

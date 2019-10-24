@@ -468,7 +468,7 @@
   <data name="MunitionM_" xml:space="preserve">
     <value>Munitions</value>
   </data>
-  <data name="Thing_Wert" xml:space="preserve">
+  <data name="Thing_Value" xml:space="preserve">
     <value>Rating</value>
   </data>
   <data name="Thing_ThingTyp" xml:space="preserve">

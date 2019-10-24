@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿///Author: Tobi van Helsinki
+
+using Newtonsoft.Json;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 
@@ -12,8 +14,10 @@ namespace ShadowRunHelper.CharController
     {
         [JsonIgnore]
         public AllListEntry MI_Wert { get; set; }
+
         [JsonIgnore]
         public AllListEntry MI_Kapa { get; set; }
+
         public Panzerung ActiveItem;
 
         public PanzerungController()
@@ -21,11 +25,11 @@ namespace ShadowRunHelper.CharController
             ActiveItem = new Panzerung();
             MI_Wert = new AllListEntry(ActiveItem, ("Model_Thing_Wert/Text"), "Wert");
             MI_Kapa = new AllListEntry(ActiveItem, ("Model_Panzerung_Kapazitaet/Text"), "Kapazitaet");
-            
+
             Data.CollectionChanged += Data_CollectionChanged;
         }
 
-        void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             Refresh();
             foreach (var item in Data.Where(x => x != null))
@@ -35,12 +39,12 @@ namespace ShadowRunHelper.CharController
             }
         }
 
-        void Refresh()
+        private void Refresh()
         {
             var item = Data.FirstOrDefault(x => x.Aktiv == true);
             if (item != null)
             {
-                item.Copy(ActiveItem);
+                item.TryCopy(ActiveItem);
             }
             else
             {
@@ -56,6 +60,5 @@ namespace ShadowRunHelper.CharController
             lstReturn.AddRange(Data.Select(item => new AllListEntry(item)));
             return lstReturn;
         }
-
     }
 }

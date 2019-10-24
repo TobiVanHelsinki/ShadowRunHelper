@@ -1,5 +1,7 @@
 ﻿///Author: Tobi van Helsinki
 
+using System.Collections.Generic;
+
 namespace ShadowRunHelper.CharModel
 {
     public abstract class Waffe : Item
@@ -35,20 +37,11 @@ namespace ShadowRunHelper.CharModel
             set { _Precision = value; NotifyPropertyChanged(); }
         }
 
-        //protected override double InternValueOf(string ID)
-        //{
-        //    switch (ID)
-        //    {
-        //        case "Praezision":
-        //            return Precision.Value;
-        //        case "Precision":
-        //            return Precision.Value;
-        //        case "DK":
-        //            return DK.Value;
-        //        default:
-        //            break;
-        //    }
-        //    return base.InternValueOf(ID);
-        //}
+        public override IEnumerable<ThingDefs> Filter => StaticFilter;
+
+        static readonly IEnumerable<ThingDefs> StaticFilter = new[]
+            {
+                ThingDefs.Handlung, ThingDefs.Fertigkeit, ThingDefs.Connection, ThingDefs.Sin
+            };
     }
 }

@@ -39,7 +39,6 @@ namespace ShadowRunHelper.CharModel
         }
 
         private string _Auswirkung = "";
-        //[Used_UserAttribute]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public string Auswirkung
         {
@@ -54,17 +53,16 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x =>
-    x.ThingType != ThingDefs.Item &&
-    //x.ThingType != ThingDefs.Panzerung &&
-    //x.ThingType != ThingDefs.Implantat &&
-    x.ThingType != ThingDefs.Vorteil &&
-    x.ThingType != ThingDefs.Nachteil
-).Select(x => x.ThingType);
+        public override IEnumerable<ThingDefs> Filter => StaticFilter;
+
+        private static readonly IEnumerable<ThingDefs> StaticFilter = TypeHelper.ThingTypeProperties.Where(x =>
+         x.ThingType != ThingDefs.Item &&
+         x.ThingType != ThingDefs.Vorteil &&
+         x.ThingType != ThingDefs.Nachteil
+        ).Select(x => x.ThingType);
 
         public Implantat()
         {
-            //LinkedThings.FilterOut = (Filter);
             Aktiv = true;
         }
     }

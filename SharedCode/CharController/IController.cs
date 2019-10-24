@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper.CharModel;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System;
 using System.Collections.Generic;
@@ -22,28 +24,25 @@ namespace ShadowRunHelper.CharController
         IEnumerable<Thing> GetElements();
 
         /// <summary>
-        /// retval: List of Tuple: item1 (ThingType) is Name for waht is at the string (attribut or cyberdeck orso)
-        /// </summary>
-        /// <param name="strDelimiter"></param>
-        /// <returns></returns>
-        /// 
-        string Data2CSV(char strDelimiter, char strNewLine);
-
-        void CSV2Data(char strDelimiter, char strNewLine, string strReadFile);
-
-        /// <summary>
         /// Used to pass throgh the possibility to acces the Data Object for registration of its HasChanged-Methods without knowing its type
         /// </summary>
         /// <param name="Method"></param>
         void RegisterEventAtData(Action<object, PropertyChangedEventArgs> Method);
+
         void RegisterEventAtData(Action Method);
 
         ThingDefs eDataTyp { get; }
+
         Thing AddNewThing();
+
         Thing AddNewThing(Thing newThing);
+
         void RemoveThing(Thing tToRemove);
+
         bool ClearData();
+
         void OrderData(Ordering order);
+
         void SaveCurrentOrdering();
     }
 
@@ -56,7 +55,7 @@ namespace ShadowRunHelper.CharController
 
     public interface IController<T> : IController
     {
-        ObservableCollection<T> Data { get;}
+        ObservableCollection<T> Data { get; }
         T this[int index]
         {
             get;

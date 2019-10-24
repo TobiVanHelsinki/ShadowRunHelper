@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper.CharModel;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -10,15 +12,17 @@ using TLIB;
 
 namespace ShadowRunHelper.CharController
 {
-    public class CyberDeckController : Controller<CyberDeck>,  INotifyPropertyChanged
+    public class CyberDeckController : Controller<CyberDeck>, INotifyPropertyChanged
     {
         #region event
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
-        #endregion
+        #endregion event
+
         AllListEntry MI_V;
         AllListEntry MI_A;
         AllListEntry MI_S;
@@ -53,20 +57,21 @@ namespace ShadowRunHelper.CharController
             Data.CollectionChanged += Data_CollectionChanged;
         }
 
-        void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             RefreshActiveDeck();
             foreach (var item in Data)
             {
-                item.PropertyChanged -= (x,y) => RefreshActiveDeck();
-                item.PropertyChanged += (x,y) => RefreshActiveDeck();
+                item.PropertyChanged -= (x, y) => RefreshActiveDeck();
+                item.PropertyChanged += (x, y) => RefreshActiveDeck();
             }
         }
         bool bIsRefreshInProgress = false;
+
         /// <summary>
         /// sets a new active deck from the list of all decks. should occur, when user changes active decks
         /// </summary>
-        void RefreshActiveDeck()
+        private void RefreshActiveDeck()
         {
             // aber ich könnte auch einfach statt active deck immer ein anderes einsetzen. dann müssten sich aber die registriere immer neu registrieren ...
             // außer, ich schaffe es, nur den registrierten besheid zu geben, sie sollen sich auf ein neues ziel registrieren!
@@ -78,7 +83,7 @@ namespace ShadowRunHelper.CharController
             var item = Data.FirstOrDefault(x => x.Aktiv == true);
             if (item != null)
             {
-                item.Copy(ActiveItem);
+                item.TryCopy(ActiveItem);
             }
             else
             {
@@ -86,10 +91,11 @@ namespace ShadowRunHelper.CharController
             }
             bIsRefreshInProgress = false;
         }
+
         /// <summary>
         /// copy changes from the active deck var to the original deck. this occurs, when the sliders of the main page are used to set deck damage.
         /// </summary>
-        void RefreshOriginDeck()
+        private void RefreshOriginDeck()
         {
             if (bIsRefreshInProgress)
             {

@@ -1,8 +1,8 @@
 ﻿///Author: Tobi van Helsinki
 
 using Newtonsoft.Json;
-using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
+using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ using TLIB;
 
 namespace ShadowRunHelper.CharModel
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public sealed class Used_UserAttribute : Attribute
     {
         public bool UIRelevant { get; set; }
@@ -24,26 +24,8 @@ namespace ShadowRunHelper.CharModel
         }
     }
 
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
-    public sealed class Used_CalcAttribute : Attribute
+    public class Thing : INotifyPropertyChanged
     {
-        public Used_CalcAttribute()
-        {
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
-    public sealed class Used_ListAttribute : Attribute
-    {
-        public Used_ListAttribute()
-        {
-        }
-    }
-
-    public class Thing : INotifyPropertyChanged, ICSV
-    {
-        public const uint nThingPropertyCount = 5;
-
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -58,32 +40,16 @@ namespace ShadowRunHelper.CharModel
 
         #endregion INotifyPropertyChanged
 
-        public Thing()
-        {
-            foreach (var item in this.GetType().GetProperties().Where(x => x.PropertyType == typeof(ConnectProperty)))
-            {
-                try
-                {
-                    item.SetValue(this, new ConnectProperty(item.Name, this));
-                }
-                catch (Exception)
-                {
-                }
-            }
-            LinkedThings = new LinkList(this);
-            ThingType = TypeHelper.TypeToThingDef(GetType());
-            //LinkedThings.OnCollectionChangedCall(OnLinkedThingsChanged);
-            //PropertyChanged += (s, e) => { if (e.PropertyName == "Wert") OnLinkedThingsChanged(); };
-        }
+        public virtual IEnumerable<ThingDefs> Filter { get; private set; } = new List<ThingDefs>();
 
         #region Properties
         [JsonIgnore]
-        public bool IsSeperator { get => string.IsNullOrEmpty(Bezeichner) && Wert == 1337; }
+        public bool IsSeperator => string.IsNullOrEmpty(Bezeichner) && Value?.Value == 1337;
 
-        ThingDefs thingType = 0;
+        private ThingDefs thingType = 0;
         public ThingDefs ThingType
         {
-            get { return thingType; }
+            get => thingType;
             set
             {
                 if (value != thingType)
@@ -96,10 +62,10 @@ namespace ShadowRunHelper.CharModel
 
         public int Order { get; set; }
         protected string notiz = "";
-        [Used_UserAttribute]
+        [Used_User]
         public string Notiz
         {
-            get { return notiz; }
+            get => notiz;
             set
             {
                 if (value != notiz)
@@ -111,10 +77,10 @@ namespace ShadowRunHelper.CharModel
         }
 
         protected string zusatz = "";
-        [Used_UserAttribute]
+        [Used_User]
         public string Zusatz
         {
-            get { return zusatz; }
+            get => zusatz;
             set
             {
                 if (value != zusatz)
@@ -127,11 +93,11 @@ namespace ShadowRunHelper.CharModel
 
         [Obsolete(Constants.ObsoleteCalcProperty)]
         protected double wert = 0;
-        [Used_UserAttribute]
+        [Used_User]
         [Obsolete(Constants.ObsoleteCalcProperty)]
         public virtual double Wert
         {
-            get { return wert; }
+            get => wert;
             set
             {
                 if (value != wert)
@@ -142,16 +108,16 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        ConnectProperty _Value;
-        [Used_UserAttribute]
+        private ConnectProperty _Value;
+        [Used_User]
         public ConnectProperty Value
         {
-            get { return _Value; }
+            get => _Value;
             set { if (_Value != value) { _Value = value; NotifyPropertyChanged(); } }
         }
 
         protected string typ = "";
-        [Used_UserAttribute]
+        [Used_User]
         public string Typ
         {
             get => typ;
@@ -180,324 +146,41 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        bool _IsFavorite;
-        [Used_UserAttribute]
+        private bool _IsFavorite;
+        [Used_User]
         public bool IsFavorite
         {
-            get { return _IsFavorite; }
+            get => _IsFavorite;
             set { if (_IsFavorite != value) { _IsFavorite = value; NotifyPropertyChanged(); } }
         }
 
-        int _FavoriteIndex;
-        [Used_UserAttribute(UIRelevant = false)]
+        private int _FavoriteIndex;
+        [Used_User(UIRelevant = false)]
         public int FavoriteIndex
         {
-            get { return _FavoriteIndex; }
+            get => _FavoriteIndex;
             set { if (_FavoriteIndex != value) { _FavoriteIndex = value; NotifyPropertyChanged(); } }
         }
 
         #endregion Properties
 
-        #region Calculations
-        LinkList _LinkedThings;
-        [Obsolete(Constants.ObsoleteCalcProperty)]
-        public LinkList LinkedThings
+        public Thing()
         {
-            get { return _LinkedThings; }
-            set
+            foreach (var item in GetType().GetProperties().Where(x => x.PropertyType == typeof(ConnectProperty)))
             {
-                if (_LinkedThings != value && value != null)
-                {
-                    _LinkedThings = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private double _WertCalced = 0;
-        [JsonIgnore]
-        [Obsolete(Constants.ObsoleteCalcProperty)]
-        public double WertCalced
-        {
-            get { return _WertCalced; }
-            set
-            {
-                if (value != _WertCalced)
-                {
-                    _WertCalced = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        //[Obsolete(Constants.ObsoleteCalcProperty)]
-        //protected virtual void OnLinkedThingsChanged()
-        //{
-        //    WertCalced = Wert + LinkedThings.Recalculate();
-        //}
-
-        //[Obsolete(Constants.ObsoleteCalcProperty)]
-        //public double ValueOf(string ID)
-        //{
-        //    if (UseForCalculation())
-        //    {
-        //        return InternValueOf(ID);
-        //    }
-        //    return 0;
-        //}
-
-        //[Obsolete(Constants.ObsoleteCalcProperty)]
-        //protected virtual double InternValueOf(string ID)
-        //{
-        //    if (ID == null || ID == "" || ID == "Wert")
-        //    {
-        //        return WertCalced;
-        //    }
-        //    try
-        //    {
-        //        var v = GetProperties(this).First(x => x.Name == ID).GetValue(this);
-        //        if (v is double d)
-        //        {
-        //            return d;
-        //        }
-        //        if (v is int i)
-        //        {
-        //            return i;
-        //        }
-        //        if (v is ConnectProperty c)
-        //        {
-        //            return c.Value;
-        //        }
-        //        if (v is null)
-        //        {
-        //            return 0;
-        //        }
-        //        return (double)v;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Log.Write("Could not", ex, logType: LogType.Error);
-        //        return 0;
-        //    }
-        //}
-
-        //[Obsolete(Constants.ObsoleteCalcProperty)]
-        //public double RawValueOf(string ID)
-        //{
-        //    if (UseForCalculation())
-        //    {
-        //        if (ID == null || ID == "" || ID == "Wert")
-        //        {
-        //            return Wert;
-        //        }
-        //        try
-        //        {
-        //            return (double)GetProperties(this).First(x => x.Name == ID).GetValue(this);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Log.Write("Could not", ex, logType: LogType.Error);
-        //            return 0;
-        //        }
-        //    }
-        //    return 0;
-        //}
-
-        [Obsolete(Constants.ObsoleteCalcProperty)]
-        protected virtual bool UseForCalculation()
-        {
-            return true;
-        }
-
-        #endregion Calculations
-
-        public static IEnumerable<PropertyInfo> GetProperties(object obj)
-        {
-            return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute));
-        }
-
-        [Obsolete(Constants.ObsoleteCalcProperty)]
-        public static IEnumerable<PropertyInfo> GetPropertiesLists(object obj)
-        {
-            return ReflectionHelper.GetProperties(obj, typeof(Used_ListAttribute));
-        }
-
-        public static IEnumerable<ConnectProperty> GetCharProperties(object obj)
-        {
-            return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute)).Where(x => x.PropertyType == typeof(ConnectProperty)).Select(x => x.GetValue(obj)).OfType<ConnectProperty>();
-        }
-
-        public static IEnumerable<PropertyInfo> GetCalculationProperties(object obj)
-        {
-            return ReflectionHelper.GetProperties(obj, typeof(Used_UserAttribute)).Where(x => x.PropertyType == typeof(ConnectProperty));
-        }
-
-        /// <summary>
-        /// Copies own Values into target
-        /// </summary>
-        /// <param name="target"></param>
-        /// <returns></returns>
-        public virtual Thing Copy(Thing target = null)
-        {
-            if (target == null)
-            {
-                target = (Thing)Activator.CreateInstance(this.GetType());
-            }
-            foreach (var item in GetProperties(target))
-            {
-                if (item.PropertyType == typeof(ConnectProperty))
-                {
-                    item.SetValue(target, (item.GetValue(this) as ConnectProperty)?.Copy());
-                }
-                else
-                {
-                    item.SetValue(target, item.GetValue(this));
-                }
-            }
-
-            foreach (var pair in ReflectionHelper.GetProperties(target, typeof(Used_ListAttribute)))
-            {
-                var CollectionTarget = (pair.GetValue(target) as LinkList);
-                var CollectionThis = (pair.GetValue(this) as LinkList);
-                CollectionTarget.Clear();
-                CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
-            }
-
-            return target;
-        }
-
-        public virtual bool TryCopy(Thing target = null)
-        {
-            bool ret = true;
-            if (target == null)
-            {
+                ThingType = TypeHelper.TypeToThingDef(GetType());
+                //Create New ConnectProps
                 try
                 {
-                    target = (Thing)Activator.CreateInstance(this.GetType());
+                    var display = ModelResources.ResourceManager.GetStringSafe(item.DeclaringType.Name + "_" + item.Name);
+                    item.SetValue(this, new ConnectProperty(item.Name, this, display));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Log.Write("Could not", ex, logType: LogType.Error);
-                    return false;
                 }
             }
-            foreach (var item in GetProperties(target))
-            {
-                try
-                {
-                    item.SetValue(target, item.GetValue(this));
-                }
-                catch (Exception ex)
-                {
-                    Log.Write("Could not", ex, logType: LogType.Error);
-                    ret = false;
-                }
-            }
-            foreach (var pair in ReflectionHelper.GetProperties(target, typeof(Used_ListAttribute)))
-            {
-                try
-                {
-                    var CollectionTarget = (pair.GetValue(target) as LinkList);
-                    var CollectionThis = (pair.GetValue(this) as LinkList);
-                    CollectionTarget.Clear();
-                    CollectionTarget.AddRange(CollectionThis.Select(item => new AllListEntry(item.Object.Copy(), item.DisplayName, item.PropertyID)));
-                }
-                catch (Exception ex)
-                {
-                    Log.Write("Could not", ex, logType: LogType.Error);
-                    ret = false;
-                }
-            }
-            return ret;
+            LinkedThings = new LinkList(this);
         }
-
-        public virtual void Reset()
-        {
-            foreach (var item in GetProperties(this))
-            {
-                if (item.PropertyType == typeof(string))
-                {
-                    item.SetValue(this, "");
-                }
-                else if (item.PropertyType == typeof(char))
-                {
-                    item.SetValue(this, ' ');
-                }
-                else if (item.PropertyType == typeof(bool?))
-                {
-                    item.SetValue(this, false);
-                }
-                else
-                {
-                    item.SetValue(this, default);
-                }
-            }
-            foreach (var item in ReflectionHelper.GetProperties(this, typeof(Used_ListAttribute)))
-            {
-                (item.GetValue(this) as LinkList).Clear();
-            }
-        }
-
-        public void NotifiyDeletion()
-        {
-            Reset();
-            foreach (var item in GetProperties(this))
-            {
-                NotifyPropertyChanged(item.Name);
-            }
-            NotifyPropertyChanged(Constants.THING_DELETED_TOKEN);
-            foreach (var item in GetCharProperties(this))
-            {
-                item.ParentDeleted();
-            }
-        }
-
-        #region CSV
-
-        public virtual string ToCSV(char Delimiter)
-        {
-            return GetProperties(this).Reverse().Select
-                (item => item.GetValue(this) + Delimiter.ToString()).Aggregate((a, s) => a + s);
-        }
-
-        public virtual string HeaderToCSV(char Delimiter)
-        {
-            return GetProperties(this).Reverse().Select
-                (item => CustomManager.GetString("Model_" + item.DeclaringType.Name + "_" + item.Name + "/Text") + Delimiter.ToString())
-                .Aggregate((a, s) => a + s);
-        }
-
-        public virtual void FromCSV(Dictionary<string, string> dic)
-        {
-            var Props = GetProperties(this).Reverse().Select(p => (CustomManager.GetString("Model_" + p.DeclaringType.Name + "_" + p.Name + "/Text"), p));
-            foreach (var item in dic)
-            {
-                var currentProp = Props.FirstOrDefault(p => p.Item1 == item.Key);
-                currentProp.p?.SetValue(this, ConvertToRightType(item.Value, currentProp.p.GetValue(this)));
-            }
-        }
-
-        private static object ConvertToRightType(object Value, object Target)
-        {
-            switch (Target)
-            {
-                case int _:
-                    int.TryParse(Value.ToString(), out var I);
-                    return I;
-                case double _:
-                    double.TryParse(Value.ToString(), out var D);
-                    return D;
-                case char _:
-                    char.TryParse(Value.ToString(), out var C);
-                    return C;
-                case bool _:
-                    bool.TryParse(Value.ToString(), out var B);
-                    return B;
-                default:
-                    return Value;
-            }
-        }
-        #endregion CSV
 
         public override string ToString()
         {
@@ -507,6 +190,85 @@ namespace ShadowRunHelper.CharModel
                 + bezeichner
                 + (!string.IsNullOrEmpty(Zusatz) ? " " + Zusatz : "");
         }
+
+        /// <summary>
+        /// Copies own Values into target if possible
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns>true if no erros occured, false if some properties migth not get copied</returns>
+        public virtual bool TryCopy(Thing target = null)
+        {
+            var retval = true;
+            if (target == null)
+            {
+                try
+                {
+                    target = (Thing)Activator.CreateInstance(GetType());
+                }
+                catch (Exception ex)
+                {
+                    Log.Write("Could not", ex, logType: LogType.Error);
+                    return false;
+                }
+            }
+            foreach (var item in GetProperties())
+            {
+                try
+                {
+                    item.SetValue(target, item.GetValue(this));
+                }
+                catch (Exception ex)
+                {
+                    Log.Write("Could not", ex, logType: LogType.Error);
+                    retval = false;
+                }
+            }
+            return retval;
+        }
+
+        /// <summary>
+        /// Sets all used members to default.
+        /// </summary>
+        public virtual void Reset()
+        {
+            foreach (var item in GetProperties())
+            {
+                try
+                {
+                    if (item.PropertyType.IsValueType)
+                    {
+                        item.SetValue(this, Activator.CreateInstance(item.PropertyType));
+                    }
+                    else
+                    {
+                        item.SetValue(this, null);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Write("Could not Reset Property: " + item.Name, ex, logType: LogType.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// No clue
+        /// </summary>
+        public void NotifiyDeletion()
+        {
+            Reset();
+            foreach (var item in GetProperties())
+            {
+                NotifyPropertyChanged(item.Name);
+            }
+            NotifyPropertyChanged(Constants.THING_DELETED_TOKEN);
+            foreach (var item in GetConnects())
+            {
+                item.ParentDeleted();
+            }
+        }
+
+        #region SearchAndCompare
 
         /// <summary>
         /// Determines, if the Both Things have same Name und ThingType, so that they can be seen as "the same"
@@ -539,7 +301,7 @@ namespace ShadowRunHelper.CharModel
             }
 
             float retval = 0;
-            if (this.ToString().ToLower().StartsWith(searchtext))
+            if (ToString().ToLower().StartsWith(searchtext))
             {
                 retval += 0.7f;
             }
@@ -561,27 +323,55 @@ namespace ShadowRunHelper.CharModel
             //}
             return retval;
         }
-    }
 
-    public static class ThingExt
-    {
+        #endregion SearchAndCompare
+
+        #region Obsolete Calculations
+        private LinkList _LinkedThings;
+        [Obsolete(Constants.ObsoleteCalcProperty)]
+        public LinkList LinkedThings
+        {
+            get => _LinkedThings;
+            set
+            {
+                if (_LinkedThings != value && value != null)
+                {
+                    _LinkedThings = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        #endregion Obsolete Calculations
+
+        #region Helper Methods to get certain Properties
+
         /// <summary>
-        /// returns infos about all members whoose type is ConnectProperty
+        /// Gets all properties with the Used_UserAttribute.
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<PropertyInfo> GetCalcProps(this Thing t, Type type)
+        public IEnumerable<PropertyInfo> GetProperties()
         {
-            //TLIB.ReflectionHelper.GetProperties();
-            return t.GetType().GetProperties().Where(p => p.PropertyType == type);
+            return ReflectionHelper.GetProperties(this, typeof(Used_UserAttribute));
         }
 
         /// <summary>
-        /// returns all members whoose type is ConnectProperty
+        /// Gets all properties with the Used_UserAttribute oftype ConnectProperty
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<ConnectProperty> GetCalcs(this Thing t)
+        public IEnumerable<PropertyInfo> GetPropertiesConnects()
         {
-            return t.GetCalcProps(typeof(ConnectProperty)).Select(p => p.GetValue(t, null) as ConnectProperty);
+            return GetProperties().Where(p => p.PropertyType == typeof(ConnectProperty));
         }
+
+        /// <summary>
+        /// Gets references to the objects instances of all properties with the Used_UserAttribute oftype ConnectProperty
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<ConnectProperty> GetConnects()
+        {
+            return GetPropertiesConnects().Select(x => x.GetValue(this) as ConnectProperty);
+        }
+        #endregion Helper Methods to get certain Properties
     }
 }

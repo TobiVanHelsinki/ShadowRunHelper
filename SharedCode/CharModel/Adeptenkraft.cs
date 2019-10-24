@@ -16,20 +16,10 @@ namespace ShadowRunHelper.CharModel
             {
                 if (value != this._Option)
                 {
-                    this._Option = value;
+                    _Option = value;
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public static new IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
-            {
-                ThingDefs.Handlung, ThingDefs.Fertigkeit
-            };
-
-        public Adeptenkraft() : base()
-        {
-            //LinkedThings.FilterOut = Filter;
         }
     }
 }

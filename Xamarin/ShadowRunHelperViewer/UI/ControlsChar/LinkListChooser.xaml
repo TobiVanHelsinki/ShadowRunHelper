@@ -39,12 +39,6 @@ SizeChanged="PopupPage_SizeChanged">
                 <Setter Property="MaxLines" Value="2"/>
             </Style>
         </ResourceDictionary>
-        <DataTemplate x:Key="ConnectedTemplate">
-            <StackLayout Orientation="Horizontal" BackgroundColor="Red">
-                <Label Text="{Binding Bezeichner,FallbackValue=Name}"/>
-                <Label Text="{Binding Value}"/>
-            </StackLayout>
-        </DataTemplate>
     </pages:PopupPage.Resources>
     <Frame x:Name="MainFrame" Padding="0" CornerRadius="0" BackgroundColor="Beige" Margin="0" HorizontalOptions="Center" VerticalOptions="Center">
         <StackLayout>
@@ -105,9 +99,9 @@ SizeChanged="PopupPage_SizeChanged">
                                                             <ColumnDefinition Width="Auto"/>
                                                             <ColumnDefinition Width="Auto"/>
                                                         </Grid.ColumnDefinitions>
-                                                        <Label Style="{StaticResource STDText}" Grid.Column="0" Text="{Binding Name}"/>
+                                                        <Label Style="{StaticResource STDText}" Grid.Column="0" Text="{x:Binding DisplayName}"/>
                                                         <Label Style="{StaticResource STDText}" Grid.Column="1" Text="("/>
-                                                        <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{Binding Value}"/>
+                                                        <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{x:Binding Value}"/>
                                                         <Label Style="{StaticResource STDText}" Grid.Column="3" Text=")"/>
                                                     </Grid>
                                                     <BoxView Grid.Column="1" WidthRequest="1" Color="SlateGray"/>

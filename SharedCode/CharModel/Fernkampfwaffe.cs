@@ -1,9 +1,5 @@
 ﻿///Author: Tobi van Helsinki
 
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace ShadowRunHelper.CharModel
 {
     public class Fernkampfwaffe : Waffe
@@ -12,7 +8,7 @@ namespace ShadowRunHelper.CharModel
         [Used_User]
         public double RK //RK
         {
-            get { return _RK; }
+            get => _RK;
             set
             {
                 if (value != _RK)
@@ -27,7 +23,7 @@ namespace ShadowRunHelper.CharModel
         [Used_User]
         public string Modi
         {
-            get { return modi; }
+            get => modi;
             set
             {
                 if (value != modi)
@@ -36,16 +32,6 @@ namespace ShadowRunHelper.CharModel
                     NotifyPropertyChanged();
                 }
             }
-        }
-
-        public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
-            {
-                ThingDefs.Handlung, ThingDefs.Fertigkeit, ThingDefs.Connection, ThingDefs.Sin
-            };
-
-        public Fernkampfwaffe() : base()
-        {
-            //LinkedThings.FilterOut = (Filter);
         }
     }
 }

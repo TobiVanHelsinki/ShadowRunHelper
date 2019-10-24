@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿///Author: Tobi van Helsinki
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
@@ -16,12 +18,13 @@ namespace SharedCodeTest
             Ret.Add(H1);
             Ret.Add(new Vorteil() { Bezeichner = "Vorteil1" });
 
-            H1.LinkedThings.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Charisma));
-            H1.LinkedThings.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Logik));
-            H1.GegenZusammensetzung.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLVorteil[0]));
+            //H1.LinkedThings.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Charisma));
+            //H1.LinkedThings.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Logik));
+            //H1.GegenZusammensetzung.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLVorteil[0]));
 
             return Ret;
         }
+
         public static CharHolder SaveLoadChar(CharHolder Char)
         {
             return CharHolderIO.Deserialize(SharedIO.Serialize(Char));
@@ -44,13 +47,13 @@ namespace SharedCodeTest
             {
                 CompareThing(A, B);
             }
-            foreach (var item in Thing.GetProperties(CharA.Person))
+            foreach (var item in TLIB.ReflectionHelper.GetProperties(CharA.Person, typeof(Used_UserAttribute)))
             {
                 object O1 = item.GetValue(CharA.Person);
                 object O2 = item.GetValue(CharB.Person);
                 Assert.IsTrue(O1 == O2 || O1.Equals(O2)); // == does just a reference comp
             }
-            foreach (var (CTRLA, CTRLB) in CharA.CTRLList.Zip(CharB.CTRLList, (a, b) => (a, b)))
+            foreach (var (CTRLA, CTRLB) in CharA.Controlers.Zip(CharB.Controlers, (a, b) => (a, b)))
             {
                 Assert.AreEqual(CTRLA.eDataTyp, CTRLB.eDataTyp);
                 Assert.AreEqual(CTRLA.GetElements().Count(), CTRLB.GetElements().Count());
@@ -60,6 +63,7 @@ namespace SharedCodeTest
                 }
             }
         }
+
         public static void CompareThing(Thing El1, Thing El2)
         {
             if (El1 == null && El2 == null)
@@ -67,20 +71,20 @@ namespace SharedCodeTest
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
                 return;
             }
-            foreach (var item in Thing.GetProperties(El1).Where(x => x.PropertyType != typeof(ConnectProperty)))
+            foreach (var item in El1.GetProperties().Where(x => x.PropertyType != typeof(ConnectProperty)))
             {
                 object O1 = item.GetValue(El1);
                 object O2 = item.GetValue(El2);
                 Assert.IsTrue(O1 == O2 || O1.Equals(O2)); // == does just a reference comp
             }
-            foreach (var item in Thing.GetProperties(El1).Where(x => x.PropertyType == typeof(ConnectProperty)))
+            foreach (var item in El1.GetProperties().Where(x => x.PropertyType == typeof(ConnectProperty)))
             {
                 var O1 = (ConnectProperty)item.GetValue(El1);
                 var O2 = (ConnectProperty)item.GetValue(El2);
                 Assert.AreEqual(O1.BaseValue, O2.BaseValue);
                 Assert.AreEqual(O1.Value, O2.Value);
                 Assert.AreEqual(O1.Connected.Count, O2.Connected.Count);
-                if (O1.Active!= O2.Active)
+                if (O1.Active != O2.Active)
                 {
                     if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
                 }

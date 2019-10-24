@@ -7,15 +7,12 @@ namespace ShadowRunHelper.CharModel
 {
     public class Attribut : Thing
     {
-        public static IEnumerable<ThingDefs> Filter = TypeHelper.ThingTypeProperties.Where(x =>
-        x.ThingType != ThingDefs.Implantat &&
-        x.ThingType != ThingDefs.Vorteil &&
-        x.ThingType != ThingDefs.Nachteil
-        ).Select(x => x.ThingType);
+        public override IEnumerable<ThingDefs> Filter => StaticFilter;
 
-        public Attribut() : base()
-        {
-            //LinkedThings.FilterOut = Filter;
-        }
+        private static readonly IEnumerable<ThingDefs> StaticFilter = TypeHelper.ThingTypeProperties.Where(x =>
+         x.ThingType != ThingDefs.Implantat &&
+         x.ThingType != ThingDefs.Vorteil &&
+         x.ThingType != ThingDefs.Nachteil
+        ).Select(x => x.ThingType);
     }
 }

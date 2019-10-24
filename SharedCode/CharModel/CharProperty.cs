@@ -1,6 +1,7 @@
 ﻿///Author: Tobi van Helsinki
 
 using Newtonsoft.Json;
+using SharedCode.Ressourcen;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -24,7 +25,7 @@ namespace ShadowRunHelper.CharModel
 
         #region Implicit Converter
 
-        public static implicit operator ConnectProperty(double d) => new ConnectProperty("implicit from " + d, new Thing()) { BaseValue = d };
+        public static implicit operator ConnectProperty(double d) => new ConnectProperty("implicit", new Thing(), "_NoValue_") { BaseValue = d };
 
         #endregion Implicit Converter
 
@@ -76,6 +77,9 @@ namespace ShadowRunHelper.CharModel
             set { _Name = value; NotifyPropertyChanged(); }
         }
 
+        [JsonIgnore]
+        public string DisplayName { get; private set; }
+
         private Thing _Owner;
         public Thing Owner
         {
@@ -92,11 +96,23 @@ namespace ShadowRunHelper.CharModel
 
         public ConnectProperty() => DeletionNotification += CharProperty_DeletionNotification;
 
-        public ConnectProperty(string name, Thing owner)
+        public ConnectProperty(string name, Thing owner, string displayName)
         {
+            DisplayName = displayName;
             Name = name;
             Owner = owner;
             DeletionNotification += CharProperty_DeletionNotification;
+        }
+
+        public ConnectProperty Clone()
+        {
+            var target = new ConnectProperty
+            {
+                Active = Active,
+                BaseValue = BaseValue
+            };
+            target.Connected.AddRange(Connected);
+            return target;
         }
 
         public override string ToString()
@@ -114,7 +130,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        #region Any Property Changed
+        #region Adding
 
         private void Connected_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -131,7 +147,7 @@ namespace ShadowRunHelper.CharModel
                 {
                     if (HasCircularReference(item) || IsForbiddenType(item))
                     {
-                        Connected.Remove(item);
+                        Connected.Remove(item); //TODO Collection kann nicht geändert werden während collection changed
                     }
                     else
                     {
@@ -165,7 +181,7 @@ namespace ShadowRunHelper.CharModel
         {
             Recalculate();
         }
-        #endregion Any Property Changed
+        #endregion Adding
 
         #region Deletion Handling
 
@@ -184,19 +200,6 @@ namespace ShadowRunHelper.CharModel
                 Connected.Remove(item);
             }
             Recalculate();
-        }
-
-        internal ConnectProperty Copy(ConnectProperty target = null)
-        {
-            if (target == null)
-            {
-                target = (ConnectProperty)Activator.CreateInstance(GetType());
-            }
-            target.Active = Active;
-            target.BaseValue = BaseValue;
-            target.Connected.Clear();
-            target.Connected.AddRange(Connected);
-            return target;
         }
         #endregion Deletion Handling
     }

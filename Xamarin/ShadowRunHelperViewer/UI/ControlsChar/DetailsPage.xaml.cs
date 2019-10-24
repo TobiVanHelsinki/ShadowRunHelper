@@ -65,7 +65,7 @@ namespace ShadowRunHelperViewer
             OtherContent.Children.Clear();
 
             var NumberCounter = 0;
-            foreach (var item in Thing.GetProperties(MyThing).Reverse().Where(x => !(
+            foreach (var item in MyThing.GetProperties().Reverse().Where(x => !(
                                                                                     x.Name == nameof(Thing.IsFavorite) ||
                                                                                     x.Name == nameof(Thing.Order) ||
                                                                                     x.Name == nameof(Thing.ThingType) ||
@@ -75,7 +75,6 @@ namespace ShadowRunHelperViewer
                                                                                     x.Name == nameof(Thing.Zusatz) ||
                                                                                     x.Name == nameof(Thing.Notiz) ||
                                                                                     x.Name == nameof(Thing.FavoriteIndex) ||
-                                                                                    x.Name == nameof(Thing.WertCalced) ||
                                                                                     x.Name == nameof(Handlung.GegenCalced) ||
                                                                                     x.Name == nameof(Handlung.GrenzeCalced) ||
                                                                                     x.Name == nameof(Item.Aktiv) ||

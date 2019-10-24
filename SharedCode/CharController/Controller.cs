@@ -88,19 +88,6 @@ namespace ShadowRunHelper.CharController
             _eDataTyp = OtherDef == ThingDefs.Undef ? TypeHelper.TypeToThingDef(typeof(T)) : OtherDef;
         }
 
-        #region CSV
-
-        public string Data2CSV(char strDelimiter, char strNewLine)
-        {
-            return IO.CSV_Converter.Data2CSV(strDelimiter, strNewLine, Data);
-        }
-
-        public void CSV2Data(char strDelimiter, char strNewLine, string strReadFile)
-        {
-            Data.AddRange(IO.CSV_Converter.CSV2Data<T>(strDelimiter, strNewLine, strReadFile));
-        }
-        #endregion CSV
-
         public void SaveCurrentOrdering()
         {
             int i = 1;

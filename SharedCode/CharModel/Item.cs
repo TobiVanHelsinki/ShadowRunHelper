@@ -1,8 +1,9 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿///Author: Tobi van Helsinki
+
+namespace ShadowRunHelper.CharModel
 {
     public class Item : Thing
     {
-
         private bool? besitz = true;
         [Used_UserAttribute]
         public bool? Besitz
@@ -17,6 +18,7 @@
                 }
             }
         }
+
         private bool? aktiv = false;
         [Used_UserAttribute]
         public bool? Aktiv
@@ -26,12 +28,13 @@
             {
                 if (value != this.aktiv)
                 {
-                    this.aktiv = value;
+                    aktiv = value;
                     RefreshCharProperties();
                     NotifyPropertyChanged();
                 }
             }
         }
+
         private double anzahl = 1;
         [Used_UserAttribute]
         public double Anzahl
@@ -51,17 +54,13 @@
         {
             RefreshCharProperties();
         }
+
         private void RefreshCharProperties()
         {
-            foreach (var item in GetCharProperties(this))
+            foreach (var item in GetConnects())
             {
                 item.Active = aktiv == true;
             }
-        }
-
-        protected override bool UseForCalculation()
-        {
-            return aktiv == false ? false : true;
         }
     }
 }

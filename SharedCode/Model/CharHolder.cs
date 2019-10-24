@@ -15,10 +15,6 @@ using TAPPLICATION;
 using TAPPLICATION.Model;
 using TLIB;
 
-//TODO
-//diese liste anzeigen im chooser, evtl gruppiert nach kats, things
-//auswählen von dingen gibt liste aller CalcValues zurück, diese wird dann eingegeben
-
 namespace ShadowRunHelper.Model
 {
     /// <summary>
@@ -27,7 +23,6 @@ namespace ShadowRunHelper.Model
     public class CharHolder : IMainType, INotifyPropertyChanged
     {
         #region vars
-        // Admin Version Numbers ##############################################
         public string APP_VERSION_NUMBER => Constants.APP_VERSION_NUMBER;
 
         public string FILE_VERSION_NUMBER => Constants.CHARFILE_VERSION;
@@ -59,13 +54,11 @@ namespace ShadowRunHelper.Model
         public Controller<Sprite> CTRLSprite { get; } = new Controller<Sprite>();
         public Controller<Wandlung> CTRLWandlung { get; } = new Controller<Wandlung>();
         public Controller<Initiation> CTRLInitiation { get; } = new Controller<Initiation>();
-
         // Importand ordering
         public AttributController CTRLAttribut { get; } = new AttributController();
 
         public BerechnetController CTRLBerechnet { get; } = new BerechnetController();
         public Controller<Implantat> CTRLImplantat { get; } = new Controller<Implantat>();
-
         public NahkampfwaffeController CTRLNahkampfwaffe { get; } = new NahkampfwaffeController();
         public FernkampfwaffeController CTRLFernkampfwaffe { get; } = new FernkampfwaffeController();
         public KommlinkController CTRLKommlink { get; } = new KommlinkController();
@@ -83,22 +76,33 @@ namespace ShadowRunHelper.Model
         #endregion Char Model DATA
 
         #region EASY ACCESS STUFF
-
+        /// <summary>
+        /// Gets the controlers.
+        /// </summary>
         [Newtonsoft.Json.JsonIgnore]
-        public List<IController> CTRLList { get; } = new List<IController>();
+        public List<IController> Controlers { get; } = new List<IController>();
 
-        //[Newtonsoft.Json.JsonIgnore]
-        //public List<AllListEntry> LinkList { get; } = new List<AllListEntry>();
-
+        /// <summary>
+        /// Gets all things
         [Newtonsoft.Json.JsonIgnore]
         public List<Thing> Things { get; } = new List<Thing>();
 
+        /// <summary>
+        /// Gets all things grouped after ThingType
+        /// Important BindingTarget
+        /// </summary>
         [Newtonsoft.Json.JsonIgnore]
-        public IEnumerable<IEnumerable<Thing>> GroupedThings => Connects.Select(x => x.Owner).GroupBy(x => x.ThingType);
+        public IEnumerable<IEnumerable<Thing>> GroupedThings => Things.GroupBy(x => x.ThingType);
 
+        /// <summary>
+        /// Gets all connects of all things
+        /// </summary>
         [Newtonsoft.Json.JsonIgnore]
         public List<ConnectProperty> Connects { get; } = new List<ConnectProperty>();
 
+        /// <summary>
+        /// Gets all the things that have the favorites property set
+        /// </summary>
         [Newtonsoft.Json.JsonIgnore]
         public ObservableCollection<Thing> Favorites { get; } = new ObservableCollection<Thing>();
 
@@ -156,7 +160,7 @@ namespace ShadowRunHelper.Model
             SaveTimer = new Timer((x) => { SaveRequest?.Invoke(x, this); HasChanges = false; }, this, Timeout.Infinite, Timeout.Infinite);
             // To Autosave
 
-            CTRLList = GetType().GetProperties().Where(x => typeof(IController).IsAssignableFrom(x.PropertyType)).Select(x => x.GetValue(this) as IController).ToList();
+            Controlers = GetType().GetProperties().Where(x => typeof(IController).IsAssignableFrom(x.PropertyType)).Select(x => x.GetValue(this) as IController).ToList();
 
             CTRLBerechnet.SetDependencies(Person, CTRLImplantat.Data, CTRLAttribut);
             Favorites.CollectionChanged += SaveFavoritesOrdering;
@@ -253,11 +257,11 @@ namespace ShadowRunHelper.Model
             }
             // start repair
             RefreshLists();
-            foreach (var ctrl in CTRLList)
+            foreach (var ctrl in Controlers)
             {
                 foreach (var thing in ctrl.GetElements())
                 {
-                    foreach (var prop in Thing.GetCalculationProperties(thing))
+                    foreach (var prop in thing.GetPropertiesConnects())
                     {
                         var obj = prop.GetValue(thing);
                         if (obj is ConnectProperty calc)
@@ -266,10 +270,7 @@ namespace ShadowRunHelper.Model
                             calc.Name = calc.Name;
                         }
                     }
-                    foreach (var list in Thing.GetPropertiesLists(thing))
-                    {
-                        RepairThingListRefs(Connects);
-                    }
+                    RepairThingListRefs(Connects);
                 }
             }
 #if DEBUG
@@ -285,7 +286,7 @@ namespace ShadowRunHelper.Model
         /// <exception cref="InvalidOperationException">Ignore.</exception>
         public IController ThingDef2CTRL(ThingDefs tag)
         {
-            return CTRLList.First(c => c.eDataTyp == tag);
+            return Controlers.First(c => c.eDataTyp == tag);
         }
 
         /// <summary>
@@ -297,7 +298,7 @@ namespace ShadowRunHelper.Model
         /// <exception cref="InvalidOperationException">Ignore.</exception>
         public Thing Add(ThingDefs thingDefs)
         {
-            var returnThing = CTRLList.First(c => c.eDataTyp == thingDefs).AddNewThing();
+            var returnThing = Controlers.First(c => c.eDataTyp == thingDefs).AddNewThing();
             RegisterNewThing(returnThing);
             return returnThing;
         }
@@ -311,7 +312,7 @@ namespace ShadowRunHelper.Model
         /// <exception cref="InvalidOperationException">Ignore.</exception>
         public void Add(Thing NewThing)
         {
-            CTRLList.First(c => c.eDataTyp == NewThing.ThingType).AddNewThing(NewThing);
+            Controlers.First(c => c.eDataTyp == NewThing.ThingType).AddNewThing(NewThing);
             RegisterNewThing(NewThing);
         }
 
@@ -334,7 +335,7 @@ namespace ShadowRunHelper.Model
         /// <exception cref="InvalidOperationException">Ignore.</exception>
         public void Remove(Thing tToRemove)
         {
-            CTRLList.First(c => c.eDataTyp == tToRemove.ThingType).RemoveThing(tToRemove);
+            Controlers.First(c => c.eDataTyp == tToRemove.ThingType).RemoveThing(tToRemove);
             tToRemove.PropertyChanged -= AnyPropertyChanged;
             Connects.RemoveAll((x) => x.Owner == tToRemove);
             Things.RemoveAll((x) => x == tToRemove);
@@ -349,7 +350,7 @@ namespace ShadowRunHelper.Model
             Person.PropertyChanged -= RefreshFileName;
             Person.PropertyChanged += RefreshFileName;
             Settings.PropertyChanged += AnyPropertyChanged;
-            foreach (var item in CTRLList)
+            foreach (var item in Controlers)
             {
                 item.RegisterEventAtData(AnyPropertyChanged);
                 foreach (var item2 in item.GetElements())
@@ -374,9 +375,9 @@ namespace ShadowRunHelper.Model
         public void RefreshLists()
         {
             Things.Clear();
-            Things.AddRange(CTRLList.Aggregate(new List<Thing>(), (l, c) => l.Concat(c.GetElements()).ToList()));
+            Things.AddRange(Controlers.SelectMany(x => x.GetElements()));
             Connects.Clear();
-            Connects.AddRange(Things.SelectMany(x => x.GetCalcs()));
+            Connects.AddRange(Things.SelectMany(x => x.GetConnects()));
             RefreshListFav();
         }
 
@@ -428,7 +429,7 @@ namespace ShadowRunHelper.Model
         }
 
         [Newtonsoft.Json.JsonIgnore]
-        private readonly System.Threading.Timer SaveTimer;
+        private readonly Timer SaveTimer;
         /// <summary>
         /// fire if you want to get the char saved
         /// </summary>
@@ -469,7 +470,7 @@ namespace ShadowRunHelper.Model
         }
         #endregion AUTO_SAVE_STUFF
 
-        #region DnD
+        #region Copying and Moving of items
         private readonly List<Thing> MoveList = new List<Thing>();
         private bool _IsItemsPrepared;
         public bool IsItemsPrepared
@@ -505,7 +506,7 @@ namespace ShadowRunHelper.Model
         {
             foreach (var OLD_THING in MoveList)
             {
-                var OLD_CTRL = CTRLList.First(x => x.eDataTyp == OLD_THING.ThingType);
+                var OLD_CTRL = Controlers.First(x => x.eDataTyp == OLD_THING.ThingType);
                 var NEW_THING = Add(NEW_CTRL);
                 OLD_THING.TryCopy(NEW_THING);
             }
@@ -523,7 +524,7 @@ namespace ShadowRunHelper.Model
         {
             foreach (var OLD_THING in MoveList)
             {
-                var OLD_CTRL = CTRLList.First(x => x.eDataTyp == OLD_THING.ThingType);
+                var OLD_CTRL = Controlers.First(x => x.eDataTyp == OLD_THING.ThingType);
                 var NEW_THING = Add(NEW_CTRL);
                 OLD_THING.TryCopy(NEW_THING);
                 OLD_CTRL.RemoveThing(OLD_THING);
@@ -532,7 +533,7 @@ namespace ShadowRunHelper.Model
             IsItemsPrepared = false;
             IsItemsMove = null;
         }
-        #endregion DnD
+        #endregion Copying and Moving of items
 
         public void SubtractLifeStyleCost()
         {

@@ -39,7 +39,7 @@ namespace ShadowRunHelper.CharController
             var item = Data.FirstOrDefault(x => x.Aktiv == true);
             if (item != null)
             {
-                item.Copy(ActiveItem);
+                item.TryCopy(ActiveItem);
             }
             else
             {

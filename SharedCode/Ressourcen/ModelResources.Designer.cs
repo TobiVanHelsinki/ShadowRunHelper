@@ -1656,9 +1656,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Rating ähnelt.
         /// </summary>
-        public static string Thing_Wert {
+        public static string Thing_Value {
             get {
-                return ResourceManager.GetString("Thing_Wert", resourceCulture);
+                return ResourceManager.GetString("Thing_Value", resourceCulture);
             }
         }
         

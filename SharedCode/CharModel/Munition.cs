@@ -1,10 +1,11 @@
-﻿
+﻿///Author: Tobi van Helsinki
+
 using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
 {
     public class Munition : Item
-    { 
+    {
         private string schadenTyp = "";
         [Used_UserAttribute]
         public string SchadenTyp
@@ -50,7 +51,9 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        public static IEnumerable<ThingDefs> Filter = new List<ThingDefs>()
+        public override IEnumerable<ThingDefs> Filter => StaticFilter;
+
+        private static readonly IEnumerable<ThingDefs> StaticFilter = new[]
             {
                 ThingDefs.Handlung, ThingDefs.Fertigkeit
             };
