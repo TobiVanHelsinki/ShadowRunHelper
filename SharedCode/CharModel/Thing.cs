@@ -130,7 +130,32 @@ namespace ShadowRunHelper.CharModel
         public ConnectProperty Value
         {
             get => _Value;
-            set { if (_Value != value) { _Value = value; NotifyPropertyChanged(); } }
+            set
+            {
+                RefreshInnerPropertyChangedListener(ref _Value, value, this);
+                NotifyPropertyChanged();
+            }
+        }
+
+        protected static void RefreshInnerPropertyChangedListener(ref ConnectProperty _Value, ConnectProperty newValue, Thing I)
+        {
+            if (_Value != newValue)
+            {
+                if (_Value != null)
+                {
+                    _Value.PropertyChanged -= I.ConnectProperty_PropertyChanged;
+                }
+                _Value = newValue;
+                if (_Value != null)
+                {
+                    _Value.PropertyChanged += I.ConnectProperty_PropertyChanged;
+                }
+            }
+        }
+
+        private void ConnectProperty_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            NotifyPropertyChanged(e.PropertyName);
         }
 
         protected string typ = "";
@@ -190,7 +215,8 @@ namespace ShadowRunHelper.CharModel
                 try
                 {
                     var display = ModelResources.ResourceManager.GetStringSafe(item.DeclaringType.Name + "_" + item.Name);
-                    item.SetValue(this, new ConnectProperty(item.Name, this, display));
+                    var value = new ConnectProperty(item.Name, this, display);
+                    item.SetValue(this, value);
                 }
                 catch (Exception)
                 {
@@ -266,12 +292,24 @@ namespace ShadowRunHelper.CharModel
             {
                 try
                 {
-                    if (item.PropertyType.IsValueType)
+                    try
                     {
-                        item.SetValue(this, Activator.CreateInstance(item.PropertyType));
+                        if (item.PropertyType == typeof(string))
+                        {
+                            item.SetValue(this, "");
+                        }
+                        else
+                        {
+                            item.SetValue(this, Activator.CreateInstance(item.PropertyType));
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
+#if DEBUG
+                        if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+#else
+                        Log.Write("Could not Reset Property: " + item.Name,ex,logType: LogType.Error);
+#endif
                         item.SetValue(this, null);
                     }
                 }
@@ -401,7 +439,7 @@ namespace ShadowRunHelper.CharModel
         /// <returns></returns>
         public IEnumerable<ConnectProperty> GetConnects()
         {
-            return GetPropertiesConnects().Select(x => x.GetValue(this) as ConnectProperty);
+            return GetPropertiesConnects().Select(x => x.GetValue(this)).OfType<ConnectProperty>();
         }
         #endregion Helper Methods to get certain Properties
     }

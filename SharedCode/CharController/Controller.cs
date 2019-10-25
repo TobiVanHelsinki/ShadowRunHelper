@@ -49,7 +49,12 @@ namespace ShadowRunHelper.CharController
 
         public T this[int index] => Data[index];
 
-        public virtual IEnumerable<Thing> GetElements()
+        public virtual IEnumerable<Thing> GetData()
+        {
+            return Data;
+        }
+
+        public virtual IEnumerable<Thing> GetAllData()
         {
             return Data;
         }

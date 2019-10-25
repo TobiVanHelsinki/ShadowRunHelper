@@ -43,7 +43,7 @@ namespace ShadowRunHelper.CharModel
             {
                 if (value != angriff)
                 {
-                    angriff = value;
+                    RefreshInnerPropertyChangedListener(ref angriff, value, this);
                     NotifyPropertyChanged();
                 }
             }
@@ -72,6 +72,7 @@ namespace ShadowRunHelper.CharModel
             {
                 if (value != schleicher)
                 {
+                    RefreshInnerPropertyChangedListener(ref schleicher, value, this);
                     schleicher = value;
                     NotifyPropertyChanged();
                 }

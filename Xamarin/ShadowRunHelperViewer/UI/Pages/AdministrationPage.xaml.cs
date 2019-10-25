@@ -198,7 +198,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             try
             {
-                await CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
+                CharHolderIO.CopyPreSavedCharToCurrentLocation(CharHolderIO.PreSavedChar.ExampleChar);
             }
             catch (Exception ex)
             {

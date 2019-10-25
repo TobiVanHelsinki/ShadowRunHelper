@@ -96,7 +96,7 @@ namespace ShadowRunHelperViewer
             {
                 var section = new TableSection("");
                 Items.Root = new TableRoot() { section };
-                foreach (var item in Controller.GetElements())
+                foreach (var item in Controller.GetData())
                 {
                     var content = DT.CreateContent();
                     ViewCell vc;

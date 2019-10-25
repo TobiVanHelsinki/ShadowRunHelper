@@ -25,7 +25,7 @@ namespace ShadowRunHelper.CharModel
 
         #region Implicit Converter
 
-        public static implicit operator ConnectProperty(double d) => new ConnectProperty("implicit", new Thing(), "_NoValue_") { BaseValue = d };
+        public static implicit operator ConnectProperty(double d) => new ConnectProperty("implicit", new Thing(), "implicit") { BaseValue = d };
 
         #endregion Implicit Converter
 
@@ -78,7 +78,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         [JsonIgnore]
-        public string DisplayName { get; private set; }
+        public string DisplayName { get; set; }
 
         private Thing _Owner;
         public Thing Owner
@@ -96,22 +96,15 @@ namespace ShadowRunHelper.CharModel
 
         public ConnectProperty() => DeletionNotification += CharProperty_DeletionNotification;
 
-        public ConnectProperty(string name, Thing owner, string displayName)
+        public ConnectProperty(string name, Thing owner, string displayName) : this()
         {
             DisplayName = displayName;
             Name = name;
             Owner = owner;
-            DeletionNotification += CharProperty_DeletionNotification;
         }
 
         public ConnectProperty TryCloneInto(ConnectProperty target)
         {
-            if (target is null)
-            {
-                target = new ConnectProperty
-                {
-                };
-            }
             target.Connected.AddRange(Connected);
             target.Active = Active;
             target.DisplayName = DisplayName;

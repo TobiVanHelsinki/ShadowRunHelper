@@ -30,7 +30,7 @@ namespace ShadowRunHelper.CharModel
             {
                 if (value != this.firewall)
                 {
-                    this.firewall = value;
+                    RefreshInnerPropertyChangedListener(ref firewall, value, this);
                     NotifyPropertyChanged();
                 }
             }
@@ -45,7 +45,7 @@ namespace ShadowRunHelper.CharModel
             {
                 if (value != this.datenverarbeitung)
                 {
-                    this.datenverarbeitung = value;
+                    RefreshInnerPropertyChangedListener(ref datenverarbeitung, value, this);
                     NotifyPropertyChanged();
                 }
             }

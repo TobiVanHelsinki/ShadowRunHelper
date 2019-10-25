@@ -15,7 +15,7 @@ namespace ShadowRunHelper.CharModel
             {
                 if (value != _Capacity)
                 {
-                    _Capacity = value;
+                    RefreshInnerPropertyChangedListener(ref _Capacity, value, this);
                     NotifyPropertyChanged();
                 }
             }

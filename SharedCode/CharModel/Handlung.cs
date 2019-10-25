@@ -86,7 +86,14 @@ namespace ShadowRunHelper.CharModel
         public ConnectProperty Against
         {
             get { return _Against; }
-            set { if (_Against != value) { _Against = value; NotifyPropertyChanged(); } }
+            set
+            {
+                if (_Against != value)
+                {
+                    RefreshInnerPropertyChangedListener(ref _Against, value, this);
+                    NotifyPropertyChanged();
+                }
+            }
         }
 
         ConnectProperty _Limit;
@@ -94,7 +101,14 @@ namespace ShadowRunHelper.CharModel
         public ConnectProperty Limit
         {
             get { return _Limit; }
-            set { if (_Limit != value) { _Limit = value; NotifyPropertyChanged(); } }
+            set
+            {
+                if (_Limit != value)
+                {
+                    RefreshInnerPropertyChangedListener(ref _Limit, value, this);
+                    NotifyPropertyChanged();
+                }
+            }
         }
 
         public override IEnumerable<ThingDefs> Filter => StaticFilter;

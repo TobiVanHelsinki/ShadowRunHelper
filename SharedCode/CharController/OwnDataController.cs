@@ -17,17 +17,17 @@ namespace ShadowRunHelper.CharController
     /// <seealso cref="ShadowRunHelper.CharController.Controller{T}" />
     public class OwnDataController<T> : Controller<T> where T : Thing, new()
     {
-        protected ObservableCollection<T> MyData;
+        //protected ObservableCollection<T> MyData;
 
         #region Override Controller
-        public override ObservableCollection<T> Data { get => MyData; protected set => MyData = value; }
+        public override ObservableCollection<T> Data { get => new ObservableCollection<T>(OwnThings.Select(x => x.GetValue(this)).OfType<T>()); protected set { } }
         #endregion Override Controller
 
         public OwnDataController() : base()
         {
             RefreshIdentifiers();
-            Data = new ObservableCollection<T>();
-            Data.AddRange(OwnThings.Select(x => x.GetValue(this)).OfType<T>());
+            //Data = new ObservableCollection<T>();
+            //Data.AddRange(OwnThings.Select(x => x.GetValue(this)).OfType<T>());
         }
 
         private IEnumerable<PropertyInfo> OwnThings => GetType().GetProperties().Where(x => x.PropertyType == typeof(T) && x.CanRead && x.CanWrite);

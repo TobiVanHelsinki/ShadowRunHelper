@@ -16,12 +16,11 @@ using TLIB;
 
 namespace ShadowRunHelper.IO
 {
+#pragma warning disable CS0618 // Typ oder Element ist veraltet
+
     internal class UnknownThingConverter : JsonConverter
     {
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(Thing);
-        }
+        public override bool CanConvert(Type objectType) => objectType == typeof(Thing);
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
@@ -54,11 +53,24 @@ namespace ShadowRunHelper.IO
 
     internal class RemoveUnusedProps : JsonConverter
     {
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(Eigenschaft).IsAssignableFrom(objectType);
-        }
+        public override bool CanConvert(Type objectType) => typeof(Eigenschaft).IsAssignableFrom(objectType);
 
+        /// <summary>
+        /// ReadJson
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="objectType"></param>
+        /// <param name="existingValue"></param>
+        /// <param name="serializer"></param>
+        /// <returns></returns>
+        /// <exception cref="JsonReaderException">Ignore.</exception>
+        /// <exception cref="TargetInvocationException">Ignore.</exception>
+        /// <exception cref="MethodAccessException">Ignore.</exception>
+        /// <exception cref="MemberAccessException">Ignore.</exception>
+        /// <exception cref="System.Runtime.InteropServices.InvalidComObjectException">Ignore.</exception>
+        /// <exception cref="MissingMethodException">Ignore.</exception>
+        /// <exception cref="System.Runtime.InteropServices.COMException">Ignore.</exception>
+        /// <exception cref="TypeLoadException">Ignore.</exception>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             var jsonObject = JObject.Load(reader);
@@ -117,18 +129,30 @@ namespace ShadowRunHelper.IO
 
     internal class Version1_7To1_8ConnectedThingsConverter : JsonConverter
     {
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(Thing).IsAssignableFrom(objectType);
-        }
+        public override bool CanConvert(Type objectType) => typeof(Thing).IsAssignableFrom(objectType);
 
+        /// <summary>
+        /// ReadJson
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="objectType"></param>
+        /// <param name="existingValue"></param>
+        /// <param name="serializer"></param>
+        /// <returns></returns>
+        /// <exception cref="TargetInvocationException">Ignore.</exception>
+        /// <exception cref="MethodAccessException">Ignore.</exception>
+        /// <exception cref="MemberAccessException">Ignore.</exception>
+        /// <exception cref="System.Runtime.InteropServices.InvalidComObjectException">Ignore.</exception>
+        /// <exception cref="MissingMethodException">Ignore.</exception>
+        /// <exception cref="System.Runtime.InteropServices.COMException">Ignore.</exception>
+        /// <exception cref="TypeLoadException">Ignore.</exception>
+        /// <exception cref="JsonReaderException">Ignore.</exception>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             var jsonObject = JObject.Load(reader);
             if (jsonObject.TryGetValue("$ref", out var isRef))
             {
-                var o = serializer.Deserialize(jsonObject.CreateReader());
-                return o;
+                return serializer.Deserialize(jsonObject.CreateReader());
             }
             var ThingTypeValue = jsonObject.GetValue(nameof(Thing.ThingType));
             var IntThingType = ThingTypeValue.Value<long>();
@@ -160,9 +184,6 @@ namespace ShadowRunHelper.IO
 
         private static void LinkList2CalcProp(LinkList linkedThings, ConnectProperty calc)
         {
-            //TODO nicht einfach nur den value nehmen, es könnte ja auch ein anderes property sein.
-            //TODO Danach anhand von x.Property (string) eine auswahl treffen.
-
             calc.Connected.Clear();
             calc.Connected.AddRange(linkedThings?.Select(x => (x.PropertyID switch
             {
@@ -210,6 +231,8 @@ namespace ShadowRunHelper.IO
         }
     }
 
+#pragma warning restore CS0618 // Typ oder Element ist veraltet
+
     public class CharHolderIO : SharedIO<CharHolder>
     {
         /// <summary>
@@ -219,7 +242,7 @@ namespace ShadowRunHelper.IO
         /// <param name="strFileVersion"></param>
         /// <param name="fileContent"></param>
         /// <returns></returns>
-        /// <exception cref="ShadowRunHelper.IO_FileVersion"></exception>
+        /// <exception cref="ShadowRunHelper.IO_FileVersion">To old file version</exception>
         internal static CharHolder ConvertWithRightVersion(string strAppVersion, string strFileVersion, string fileContent)
         {
             var settings = new JsonSerializerSettings()
@@ -255,9 +278,11 @@ namespace ShadowRunHelper.IO
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     foreach (var item in ReturnCharHolder.CTRLHandlung.Data)
                     {
+#pragma warning disable CS0618 // Typ oder Element ist veraltet
                         item.Wert = 0;
                         item.Grenze = 0;
                         item.Gegen = 0;
+#pragma warning restore CS0618 // Typ oder Element ist veraltet
                     }
                     Log.Write(CustomManager.GetString("Notification_Info_UpgradedChar_1_5_to_1_6"), false);
                     break;
@@ -283,7 +308,6 @@ namespace ShadowRunHelper.IO
                     throw new IO_FileVersion();
             }
             ReturnCharHolder.AfterLoad();
-            //TODO after Upgrade from 1.7 there are lost connections ...
             return ReturnCharHolder;
         }
 
@@ -330,7 +354,19 @@ namespace ShadowRunHelper.IO
             PreDBChar = 2,
         }
 
-        public static async Task CopyPreSavedCharToCurrentLocation(PreSavedChar chartype)
+        /// <summary>
+        /// CopyPreSavedCharToCurrentLocation
+        /// </summary>
+        /// <param name="chartype"></param>
+        /// <exception cref="FileLoadException"></exception>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="BadImageFormatException"></exception>
+        /// <exception cref="System.Security.SecurityException"></exception>
+        /// <exception cref="UnauthorizedAccessException"></exception>
+        /// <exception cref="PathTooLongException"></exception>
+        /// <exception cref="OutOfMemoryException"></exception>
+        /// <exception cref="IOException"></exception>
+        public static void CopyPreSavedCharToCurrentLocation(PreSavedChar chartype)
         {
             var assembly = typeof(CharHolderIO).GetTypeInfo().Assembly;
             string RessourceName;
@@ -359,6 +395,16 @@ namespace ShadowRunHelper.IO
             CurrentIO.SaveFileContent(content, info);
         }
 
+        /// <summary>
+        /// use this method to rename files and to move files
+        /// </summary>
+        /// <param name="oldlocation"></param>
+        /// <param name="oldname"></param>
+        /// <param name="newname"></param>
+        /// <returns></returns>
+        /// <exception cref="System.Security.SecurityException"></exception>
+        /// <exception cref="UnauthorizedAccessException"></exception>
+        /// <exception cref="PathTooLongException"></exception>
         public static async Task CopyFileToCurrentLocation(string oldlocation, string oldname, string newname)
         {
             var Target = new FileInfo(CurrentSavePath + newname);

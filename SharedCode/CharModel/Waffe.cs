@@ -26,7 +26,15 @@ namespace ShadowRunHelper.CharModel
         public ConnectProperty DK
         {
             get { return _DK; }
-            set { if (_DK != value) { _DK = value; NotifyPropertyChanged(); } }
+            set
+            {
+                if (_DK != value)
+                {
+                    RefreshInnerPropertyChangedListener(ref _DK, value, this);
+
+                    NotifyPropertyChanged();
+                }
+            }
         }
 
         ConnectProperty _Precision;
@@ -34,7 +42,11 @@ namespace ShadowRunHelper.CharModel
         public ConnectProperty Precision
         {
             get => _Precision;
-            set { _Precision = value; NotifyPropertyChanged(); }
+            set
+            {
+                RefreshInnerPropertyChangedListener(ref _Precision, value, this);
+                NotifyPropertyChanged();
+            }
         }
 
         public override IEnumerable<ThingDefs> Filter => StaticFilter;

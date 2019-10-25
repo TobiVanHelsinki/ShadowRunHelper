@@ -2,6 +2,7 @@
 
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
+using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -187,95 +188,75 @@ namespace ShadowRunHelper.Model
             HasChanges = false;
         }
 
-#if DEBUG
-
-        public void CustomProgrammerStuff()
-        {
-            //foreach (var item in CTRLHandlung.Data)
-            //{
-            //    item.Wert = 0;
-            //    item.Gegen = 0;
-            //    item.Grenze = 0;
-            //}
-        }
-#endif
-
         public void Repair()
         {
-            //declare submethod
-            void RepairThingListRefs(List<ConnectProperty> SourceCollection)
+            RefreshLists();
+            //repair implicit created items
+            foreach (var thing in Things)
             {
-                var TargetCollection = new ObservableCollection<ConnectProperty>();
-                foreach (var item in SourceCollection)
+                foreach (var prop in thing.GetPropertiesConnects())
                 {
-                    var NewEntry = Connects.FirstOrDefault(
-                        x => x.Owner == item.Owner &&
-                        x.Name == item.Name);
-                    if (NewEntry == null)
+                    if (prop.GetValue(thing) is ConnectProperty calc)
                     {
-                        NewEntry = Connects.FirstOrDefault(x =>
-                        x.Owner.Bezeichner == item.Owner.Bezeichner &&
-                        x.Owner.ThingType == item.Owner.ThingType &&
-                        x.Name == item.Name);
+                        calc.Owner = thing;
+                        calc.Name = prop.Name;
+                        calc.DisplayName = ModelResources.ResourceManager.GetStringSafe(prop.DeclaringType.Name + "_" + prop.Name);
                     }
-                    if (NewEntry == null)
+                }
+            }
+            foreach (var origconnect in Connects)
+            {
+                var repairedConnects = new List<ConnectProperty>();
+                foreach (var reconnect in origconnect.Connected)
+                {
+                    var newconnect = Connects.FirstOrDefault(
+                        x => x.Owner == reconnect.Owner &&
+                        x.Name == reconnect.Name);
+                    if (newconnect == null)
                     {
-                        NewEntry = Connects.FirstOrDefault(x =>
-                        x.Owner.Bezeichner == item.Owner.Bezeichner &&
-                        x.Name == item.Name);
-                        Features.Analytics.TrackEvent("Err_CharRepair_Soft");
+                        newconnect = Connects.FirstOrDefault(x =>
+                        x.Owner.Bezeichner == reconnect.Owner.Bezeichner &&
+                        x.Owner.ThingType == reconnect.Owner.ThingType &&
+                        x.Name == reconnect.Name);
+                        Log.Write("Cannot find the rigth-A connection for " + reconnect.Owner.Bezeichner + " with the property: " + reconnect.Name);
                     }
-                    if (NewEntry == null)
+                    if (newconnect == null)
                     {
-                        NewEntry = Connects.FirstOrDefault(x =>
-                        x.Owner.ThingType == item.Owner.ThingType &&
-                        x.Name == item.Name);
-                        Features.Analytics.TrackEvent("Err_CharRepair_Soft");
+                        newconnect = Connects.FirstOrDefault(x =>
+                        x.Owner.Bezeichner == reconnect.Owner.Bezeichner &&
+                        x.Name == reconnect.Name);
+                        Log.Write("Cannot find the rigth-B connection for " + reconnect.Owner.Bezeichner + " with the property: " + reconnect.Name);
                     }
-                    if (NewEntry != null)
+                    if (newconnect == null)
                     {
-                        TargetCollection.Add(NewEntry);
+                        newconnect = Connects.FirstOrDefault(x =>
+                        x.Owner.ThingType == reconnect.Owner.ThingType &&
+                        x.Name == reconnect.Name);
+                        Log.Write("Cannot find the rigth-C connection for " + reconnect.Owner.Bezeichner + " with the property: " + reconnect.Name);
+                    }
+                    if (newconnect != null)
+                    {
+                        repairedConnects.Add(newconnect);
                     }
                     else
                     {
-                        Features.Analytics.TrackEvent("Err_CharRepair_Hard");
-                        Log.Write(string.Format(CustomManager.GetString("Error_RepairLinkList"), item.Owner.Bezeichner + item.Name));
+                        Log.Write("Cannot find a connect for " + reconnect.Owner.Bezeichner + " with the property: " + reconnect.Name);
                     }
                 }
-                foreach (var item in TargetCollection)
+                //Add new Connects to the connect list
+                foreach (var item in repairedConnects)
                 {
-                    if (!SourceCollection.Contains(item))
+                    if (!origconnect.Connected.Contains(item))
                     {
-                        SourceCollection.Add(item);
+                        origconnect.Connected.Add(item);
                     }
                 }
-                var tmpcol = SourceCollection.Except(TargetCollection).ToList();
-                foreach (var item in tmpcol)
+                //Remove the wrong items, for wich we found the correct ones
+                foreach (var item in origconnect.Connected.Except(repairedConnects).ToList())
                 {
-                    SourceCollection.Remove(item);
+                    origconnect.Connected.Remove(item);
                 }
             }
-            // start repair
-            RefreshLists();
-            foreach (var ctrl in Controlers)
-            {
-                foreach (var thing in ctrl.GetElements())
-                {
-                    foreach (var prop in thing.GetPropertiesConnects())
-                    {
-                        var obj = prop.GetValue(thing);
-                        if (obj is ConnectProperty calc)
-                        {
-                            calc.Owner = thing;
-                            calc.Name = calc.Name;
-                        }
-                    }
-                    RepairThingListRefs(Connects);
-                }
-            }
-#if DEBUG
-            CustomProgrammerStuff();
-#endif
         }
 
         /// <summary>
@@ -353,7 +334,7 @@ namespace ShadowRunHelper.Model
             foreach (var item in Controlers)
             {
                 item.RegisterEventAtData(AnyPropertyChanged);
-                foreach (var item2 in item.GetElements())
+                foreach (var item2 in item.GetAllData())
                 {
                     item2.PropertyChanged -= AnyPropertyChanged;
                     item2.PropertyChanged += AnyPropertyChanged;
@@ -375,7 +356,7 @@ namespace ShadowRunHelper.Model
         public void RefreshLists()
         {
             Things.Clear();
-            Things.AddRange(Controlers.SelectMany(x => x.GetElements()));
+            Things.AddRange(Controlers.SelectMany(x => x.GetAllData()));
             Connects.Clear();
             Connects.AddRange(Things.SelectMany(x => x.GetConnects()));
             RefreshListFav();

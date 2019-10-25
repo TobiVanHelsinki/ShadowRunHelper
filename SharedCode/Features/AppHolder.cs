@@ -39,6 +39,12 @@ namespace ShadowRunHelper
 
         public static void Init()
         {
+#if DEBUG
+            Log.IsConsoleLogEnabled = true;
+#endif
+            Log.IsFileLogEnabled = true;
+            Log.IsInMemoryLogEnabled = true;
+            Log.InMemoryLogMaxCount = 1000;
             if (Settings.FIRST_START)
             {
                 Settings.InitSettings();

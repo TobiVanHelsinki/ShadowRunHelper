@@ -12,10 +12,16 @@ namespace ShadowRunHelper.CharController
     public interface IController
     {
         /// <summary>
-        /// To populate the "All Things" List just return your data. used for search
+        /// returns all connectable things of this controller
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Thing> GetElements();
+        IEnumerable<Thing> GetAllData();
+
+        /// <summary>
+        /// Returns all things of this controller
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<Thing> GetData();
 
         /// <summary>
         /// Used to pass throgh the possibility to acces the Data Object for registration of its HasChanged-Methods without knowing its type

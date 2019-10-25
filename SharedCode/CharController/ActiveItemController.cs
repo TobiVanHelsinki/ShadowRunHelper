@@ -1,7 +1,8 @@
 ﻿///Author: Tobi van Helsinki
 
 using ShadowRunHelper.CharModel;
-using System;
+using SharedCode.Ressourcen;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
@@ -14,9 +15,17 @@ namespace ShadowRunHelper.CharController
 
         public ActiveItemController()
         {
-            ActiveItem = new T();
+            ActiveItem = new T
+            {
+                Bezeichner = ModelResources._Active
+            };
             ActiveItem.PropertyChanged += RefreshOriginItem;
             Data.CollectionChanged += Data_CollectionChanged;
+        }
+
+        public override IEnumerable<Thing> GetAllData()
+        {
+            return new[] { ActiveItem }.Concat(base.GetAllData());
         }
 
         protected bool bIsRefreshInProgress = false;
@@ -44,12 +53,18 @@ namespace ShadowRunHelper.CharController
                 return;
             }
             bIsRefreshInProgress = true;
-            var item = Data.FirstOrDefault(x => x.Aktiv == true);
+            var originitem = Data.FirstOrDefault(x => x.Aktiv == true);
+            ActiveItem.Bezeichner = originitem?.Bezeichner;
             var propertyInfo = typeof(T).GetProperty(e.PropertyName);
-            if (propertyInfo.PropertyType.IsValueType)
+            if (propertyInfo?.PropertyType?.IsValueType == true)
             {
-                propertyInfo.SetValue(item, propertyInfo.GetValue(ActiveItem));
+                propertyInfo.SetValue(originitem, propertyInfo.GetValue(ActiveItem));
             }
+            else
+            {
+                ActiveItem.TryCloneInto(originitem);
+            }
+            //ActiveItem.Bezeichner = ModelResources._Active; //TODO after some time in comment and leave a new message when upgrading from 1.7
             bIsRefreshInProgress = false;
         }
 
@@ -58,23 +73,22 @@ namespace ShadowRunHelper.CharController
         /// </summary>
         protected virtual void RefreshActiveItem(object sender, PropertyChangedEventArgs e)
         {
-            // aber ich könnte auch einfach statt active deck immer ein anderes einsetzen. dann müssten sich aber die registriere immer neu registrieren ...
-            // außer, ich schaffe es, nur den registrierten besheid zu geben, sie sollen sich auf ein neues ziel registrieren!
             if (bIsRefreshInProgress)
             {
                 return;
             }
             bIsRefreshInProgress = true;
 
-            var item = Data.FirstOrDefault(x => x.Aktiv == true);
-            if (item != null)
+            var originitem = Data.FirstOrDefault(x => x.Aktiv == true);
+            if (originitem != null)
             {
-                item.TryCloneInto(ActiveItem);
+                originitem.TryCloneInto(ActiveItem);
             }
             else
             {
                 ActiveItem.Reset();
             }
+            //ActiveItem.Bezeichner = ModelResources._Active; //TODO after some time in comment and leave a new message when upgrading from 1.7
             bIsRefreshInProgress = false;
         }
     }

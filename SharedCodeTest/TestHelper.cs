@@ -56,8 +56,8 @@ namespace SharedCodeTest
             foreach (var (CTRLA, CTRLB) in CharA.Controlers.Zip(CharB.Controlers, (a, b) => (a, b)))
             {
                 Assert.AreEqual(CTRLA.eDataTyp, CTRLB.eDataTyp);
-                Assert.AreEqual(CTRLA.GetElements().Count(), CTRLB.GetElements().Count());
-                foreach (var (El1, El2) in CTRLA.GetElements().Zip(CTRLB.GetElements(), (a, b) => (a, b)))
+                Assert.AreEqual(CTRLA.GetAllData().Count(), CTRLB.GetAllData().Count());
+                foreach (var (El1, El2) in CTRLA.GetAllData().Zip(CTRLB.GetAllData(), (a, b) => (a, b)))
                 {
                     CompareThing(El1, El2);
                 }
