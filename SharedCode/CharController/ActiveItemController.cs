@@ -11,7 +11,7 @@ namespace ShadowRunHelper.CharController
 {
     public class ActiveItemController<T> : Controller<T> where T : Item, new()
     {
-        public T ActiveItem { get; }
+        public T ActiveItem { get; set; }
 
         public ActiveItemController()
         {
@@ -64,7 +64,7 @@ namespace ShadowRunHelper.CharController
             {
                 ActiveItem.TryCloneInto(originitem);
             }
-            //ActiveItem.Bezeichner = ModelResources._Active; //TODO after some time in comment and leave a new message when upgrading from 1.7
+            ActiveItem.Bezeichner = ModelResources._Active; //TODO after some time in comment and leave a new message when upgrading from 1.7
             bIsRefreshInProgress = false;
         }
 
@@ -88,7 +88,7 @@ namespace ShadowRunHelper.CharController
             {
                 ActiveItem.Reset();
             }
-            //ActiveItem.Bezeichner = ModelResources._Active; //TODO after some time in comment and leave a new message when upgrading from 1.7
+            ActiveItem.Bezeichner = ModelResources._Active; //TODO after some time in comment and leave a new message when upgrading from 1.7
             bIsRefreshInProgress = false;
         }
     }
