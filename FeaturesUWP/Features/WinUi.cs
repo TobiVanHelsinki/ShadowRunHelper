@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper.Model;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper.Model;
 using TLIB;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
@@ -13,9 +15,8 @@ namespace ShadowRunHelper
         public bool IsCustomTitleBarEnabled
         {
             get { return _IsTopUiSizeEnabled; }
-            set { if (_IsTopUiSizeEnabled != value) { _IsTopUiSizeEnabled = value; TitleBar_LayoutMetricsChanged(null, null);  } }
+            set { if (_IsTopUiSizeEnabled != value) { _IsTopUiSizeEnabled = value; TitleBar_LayoutMetricsChanged(null, null); } }
         }
-
 
         public event CustomTitleBarChangesEventHandler CustomTitleBarChanges;
 
@@ -30,7 +31,6 @@ namespace ShadowRunHelper
             TitleBar_LayoutMetricsChanged(null, null);
         }
 
-
         bool Registered;
         void RegisterVisualChangedEventHandlersIfNeccesary()
         {
@@ -43,7 +43,6 @@ namespace ShadowRunHelper
             Registered = true;
         }
 
-
         public void SetCustomTitleBar(object VisualElement)
         {
             RegisterVisualChangedEventHandlersIfNeccesary();
@@ -55,9 +54,9 @@ namespace ShadowRunHelper
         {
             try
             {
-                //var AppTitlebar = ApplicationView.GetForCurrentView().TitleBar;
-                //AppTitlebar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-                //AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
+                var AppTitlebar = ApplicationView.GetForCurrentView().TitleBar;
+                AppTitlebar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
+                AppTitlebar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
 
                 var currentTitlebar = sender ?? CoreApplication.GetCurrentView().TitleBar;
                 //Log.Write($"IsTopUiSizeEnabled={IsCustomTitleBarEnabled}({currentTitlebar.SystemOverlayLeftInset},{currentTitlebar.SystemOverlayRightInset})");

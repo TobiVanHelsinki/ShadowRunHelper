@@ -21,7 +21,7 @@ using Xamarin.Forms.Xaml;
 namespace ShadowRunHelperViewer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GCharHolder : ContentView, INotifyPropertyChanged
+    public partial class GCharHolder : ContentView, INotifyPropertyChanged, IDisposable
     {
         #region NotifyPropertyChanged
         public new event PropertyChangedEventHandler PropertyChanged;
@@ -41,6 +41,16 @@ namespace ShadowRunHelperViewer
             set { if (_MyChar != value) { _MyChar = value; NotifyPropertyChanged(); } }
         }
 
+        public virtual void Dispose()
+        {
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool t)
+        {
+            Features.Ui.CustomTitleBarChanges -= CustomTitleBarChanges;
+        }
+
         private readonly IEnumerable<StackLayout> ButtonsPanels;
         private IEnumerable<Button> Buttons => ButtonsPanels.SelectMany(x => x.Children.OfType<Button>());
 
@@ -58,18 +68,17 @@ namespace ShadowRunHelperViewer
             InitButtons();
             SetViewParameters();
             MenuOpen = true;
-            var a = MyChar.CTRLCyberDeck.ActiveItem.Schaden;
-            Features.Ui.IsCustomTitleBarEnabled = true; //TODO Dispse?
+            Features.Ui.IsCustomTitleBarEnabled = true;
             //Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(CharTitleBar));
             Features.Ui.SetCustomTitleBar(null);
-            Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges; //TODO Dispose
+            Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
             Features.Ui.TriggerCustomTitleBarChanges();
         }
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
         {
             CharTitleBar.MinimumHeightRequest = Heigth;
-            //CharHeadControls.Padding = new Thickness(LeftSpace.LowerB(5), 5, RigthSpace.LowerB(5), 5);
+            CharHeadControls.Padding = new Thickness(LeftSpace.LowerB(5), 5, RigthSpace.LowerB(5), 5);
         }
 
         private async void Infogrid_Tapped()

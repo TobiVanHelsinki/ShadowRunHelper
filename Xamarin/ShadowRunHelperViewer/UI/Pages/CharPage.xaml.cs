@@ -1,18 +1,34 @@
-﻿using ShadowRunHelper.Model;
+﻿///Author: Tobi van Helsinki
+
+using ShadowRunHelper.Model;
 using System;
 using System.Threading;
 using Xamarin.Forms;
 
 namespace ShadowRunHelperViewer
 {
-    public partial class CharPage : ContentView
+    public partial class CharPage : ContentView, IDisposable
     {
         public AppModel AppModel => AppModel.Instance;
+
         public CharPage()
         {
             InitializeComponent();
             BindingContext = this;
             Thread.Sleep(50); //Enable Waiting INdicator
+        }
+
+        public virtual void Dispose()
+        {
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool t)
+        {
+            if (Content is Grid g && g.Children.Count > 0 && g.Children[0] is IDisposable currentchar)
+            {
+                currentchar.Dispose();
+            }
         }
 
         public void Activate(CharHolder myChar)
@@ -29,7 +45,7 @@ namespace ShadowRunHelperViewer
         /// <returns></returns>
         internal bool OnBackButtonPressed()
         {
-            if (Content is Grid g && g.Children.Count > 0  && g.Children[0] is GCharHolder currentchar)
+            if (Content is Grid g && g.Children.Count > 0 && g.Children[0] is GCharHolder currentchar)
             {
                 currentchar.MenuOpen = true;
                 return true;
