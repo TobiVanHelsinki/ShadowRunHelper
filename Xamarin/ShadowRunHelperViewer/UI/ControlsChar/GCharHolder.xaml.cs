@@ -6,6 +6,7 @@ using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
+using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
@@ -123,30 +124,82 @@ namespace ShadowRunHelperViewer
                     }
                     b.Clicked += B_CTRL_Clicked;
                 }
-                foreach ((var name, var template, var layout) in new (string, DataTemplate, StackLayout)[] {
-                    ("Person", CharPerson, s4) })
+                var btt = new Button
                 {
-                    var btt = new Button
-                    {
-                        Padding = new Thickness(2),
-                        Text = name,
-                        BindingContext = template
-                    };
-                    btt.Clicked += B_More_Clicked;
-                    layout.Children.Add(btt);
-                }
+                    Padding = new Thickness(2),
+                    Text = ModelResources.Person_,
+                };
+                btt.Clicked += CreatePersonView;
+                s4.Children.Add(btt);
             }
         }
 
-        private void B_More_Clicked(object sender, EventArgs e)
+        private void EditPerson_Click(object sender, EventArgs e)
         {
-            if (sender is Button b && b.BindingContext is DataTemplate dt)
+            CreatePersonView(this, new EventArgs());
+        }
+
+        /// <summary>
+        /// CreatePersonView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="InvalidOperationException">Ignore.</exception>
+        /// <exception cref="TypeLoadException">Ignore.</exception>
+        private void CreatePersonView(object sender, EventArgs e)
+        {
+            var EditMode = false;
+            if (sender is Button b)
             {
-                if (dt.CreateContent() is View tv)
+                HighlightButton(b);
+            }
+            else if (sender is GCharHolder)
+            {
+                EditMode = true;
+            }
+            else
+            {
+                return;
+            }
+            if (CharPerson.CreateContent() is View v && v.FindByName("ContentLayout") is Layout<View> contentLayout)
+            {
+                v.BindingContext = MyChar.Person;
+                ContentPanel.Content = v;
+                var entryTemplate = v.Resources["EntryTemplate"] as DataTemplate;
+                foreach (var item in ReflectionHelper.GetProperties(MyChar.Person, typeof(Used_UserAttribute)).Where(x => x.GetCustomAttributes(true).OfType<Used_UserAttribute>().FirstOrDefault().UIRelevant))
                 {
-                    tv.BindingContext = MyChar;
-                    ContentPanel.Content = tv;
-                    HighlightButton(b);
+                    var entry = entryTemplate.CreateContent() as View;
+                    entry.FindByName<Label>("Type").Text = ModelResources.ResourceManager.GetStringSafe(nameof(Person) + "_" + item.Name);
+
+                    View entrycontent;
+                    if (EditMode)
+                    {
+                        if (item.PropertyType == typeof(DateTime))
+                        {
+                            entrycontent = new DatePicker
+                            {
+                                Format = "d"
+                            };
+                            entrycontent.SetBinding(DatePicker.DateProperty, item.Name);
+                        }
+                        else
+                        {
+                            entrycontent = new Entry();
+                            entrycontent.Margin = new Thickness(entrycontent.Margin.VerticalThickness + 4);
+                            entrycontent.SetBinding(Entry.TextProperty, item.Name);
+                        }
+                    }
+                    else
+                    {
+                        entrycontent = new Label();
+                        entrycontent.SetBinding(Label.TextProperty, item.Name);
+                        if (item.PropertyType == typeof(DateTime))
+                        {
+                            entrycontent.SetBinding(Label.TextProperty, item.Name, stringFormat: "{0:d}");
+                        }
+                    }
+                    entry.FindByName<Layout<View>>("ContentPanel").Children.Add(entrycontent);
+                    contentLayout.Children.Add(entry);
                 }
             }
             if (Narrow)

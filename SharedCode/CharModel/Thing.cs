@@ -17,7 +17,7 @@ namespace ShadowRunHelper.CharModel
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public sealed class Used_UserAttribute : Attribute
     {
-        public bool UIRelevant { get; set; }
+        public bool UIRelevant { get; set; } = true;
 
         public Used_UserAttribute()
         {
@@ -183,7 +183,7 @@ namespace ShadowRunHelper.CharModel
 
         public Thing()
         {
-            foreach (var item in GetType().GetProperties().Where(x => x.PropertyType == typeof(ConnectProperty)))
+            foreach (var item in GetPropertiesConnects())
             {
                 ThingType = TypeHelper.TypeToThingDef(GetType());
                 //Create New ConnectProps

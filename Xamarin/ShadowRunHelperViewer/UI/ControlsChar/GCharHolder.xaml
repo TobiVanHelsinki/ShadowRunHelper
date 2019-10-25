@@ -5,6 +5,7 @@
              xmlns:model="clr-namespace:ShadowRunHelper.Model;assembly=SharedCode"
              xmlns:forms="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
+             xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
              x:Class="ShadowRunHelperViewer.GCharHolder"
              x:DataType="local:GCharHolder">
     <ContentView.Resources>
@@ -24,64 +25,35 @@
                 <Setter Property="TextColor" Value="FloralWhite"/>
             </Style>
             <DataTemplate x:Key="CharPerson" x:Name="CharPerson" x:DataType="model:CharHolder">
-                <ScrollView>
+                <ScrollView Padding="5">
+                    <ScrollView.Resources>
+                        <DataTemplate x:Key="EntryTemplate">
+                            <Frame BorderColor="Accent" BackgroundColor="Transparent" Padding="4" CornerRadius="0">
+                                <StackLayout VerticalOptions="Start">
+                                    <Label x:Name="Type" FontAttributes="Italic"/>
+                                    <Grid x:Name="ContentPanel" BackgroundColor="Transparent"/>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </ScrollView.Resources>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Text="Alias"/>
-                        <Label Text="{x:Binding Person.Alias}" Grid.Column="1"/>
-                        <Label Text="MetaTyp" Grid.Row="1"/>
-                        <Label Text="{x:Binding Person.MetaTyp}" Grid.Column="1" Grid.Row="1"/>
-                        <Label Text="MetaTyp_Sub" Grid.Row="2"/>
-                        <Label Text="{x:Binding Person.MetaTyp_sub}" Grid.Column="1" Grid.Row="2"/>
-                        <Label Text="Lebensstil" Grid.Row="3"/>
-                        <Label Text="{x:Binding Person.Lebesstil}" Grid.Column="1" Grid.Row="3"/>
-                        <Label Text="GebDatum" Grid.Row="4"/>
-                        <Label Text="{x:Binding Person.BirthDate}" Grid.Column="1" Grid.Row="4"/>
-                        <Label Text="Geschlecht" Grid.Row="5"/>
-                        <Label Text="{x:Binding Person.Geschlecht}" Grid.Column="1" Grid.Row="5"/>
-                        <Label Text="Größe" Grid.Row="6"/>
-                        <Label Text="{x:Binding Person.Groesse}" Grid.Column="1" Grid.Row="6"/>
-                        <Label Text="Gewicht" Grid.Row="7"/>
-                        <Label Text="{x:Binding Person.Gewicht}" Grid.Column="1" Grid.Row="7"/>
-                        <Label Text="EssenzMod" Grid.Row="8"/>
-                        <Label Text="{x:Binding Person.Essenz}" Grid.Column="1" Grid.Row="8"/>
-                        <Label Text="Augenfarbe" Grid.Row="9"/>
-                        <Label Text="{x:Binding Person.Augenfarbe}" Grid.Column="1" Grid.Row="9"/>
-                        <Label Text="Haarfarbe" Grid.Row="10"/>
-                        <Label Text="{x:Binding Person.Haarfarbe}" Grid.Column="1" Grid.Row="10"/>
-                        <Label Text="Hautfarbe" Grid.Row="11"/>
-                        <Label Text="{x:Binding Person.Hautfarbe}" Grid.Column="1" Grid.Row="11"/>
-                        <Label Text="StraßenRuf" Grid.Row="12"/>
-                        <Label Text="{x:Binding Person.Strassenruf}" Grid.Column="1" Grid.Row="12"/>
-                        <Label Text="StraßenRufMod" Grid.Row="13"/>
-                        <Label Text="{x:Binding Person.StrassenrufMod}" Grid.Column="1" Grid.Row="13"/>
-                        <Label Text="Schlechter Ruf" Grid.Row="14"/>
-                        <Label Text="{x:Binding Person.SchlechterRuf}" Grid.Column="1" Grid.Row="14"/>
-                        <Label Text="Prominenz" Grid.Row="15"/>
-                        <Label Text="{x:Binding Person.Prominenz}" Grid.Column="1" Grid.Row="15"/>
-                        <Label Text="Beschreibung" Grid.Row="16"/>
-                        <Label Text="{x:Binding Person.Zusammenfassung}" Grid.Column="1" Grid.Row="16"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{resx:ModelResources Person_}" FontAttributes="Bold"/>
+                            <Button Text="&#xf4ff;" Style="{StaticResource IconButton_ConstWidth}" Clicked="EditPerson_Click" Grid.Column="1"/>
+                        </Grid>
+                        <resources:WrapLayout x:Name="ContentLayout" HorizontalOptions="Start" Grid.Row="1"/>
+                        <Label Text="{resx:ModelResources Person_Zusammenfasung}" Grid.Row="2"/>
+                        <Editor Text="{x:Binding Person.Zusammenfassung}" Grid.Row="3" MinimumHeightRequest="30" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
                     </Grid>
                 </ScrollView>
             </DataTemplate>
