@@ -212,27 +212,30 @@ namespace ShadowRunHelper.Model
                     var newconnect = Connects.FirstOrDefault(
                         x => x.Owner == reconnect.Owner &&
                         x.Name == reconnect.Name);
-                    if (newconnect == null)
+                    if (newconnect is null)
                     {
-                        newconnect = Connects.FirstOrDefault(x =>
-                        x.Owner.Bezeichner == reconnect.Owner.Bezeichner &&
-                        x.Owner.ThingType == reconnect.Owner.ThingType &&
-                        x.Name == reconnect.Name);
-                        Log.Write("Cannot find the rigth-A connection for " + reconnect.Owner.Bezeichner + " with the property: " + reconnect.Name);
-                    }
-                    if (newconnect == null)
-                    {
-                        newconnect = Connects.FirstOrDefault(x =>
-                        x.Owner.Bezeichner == reconnect.Owner.Bezeichner &&
-                        x.Name == reconnect.Name);
-                        Log.Write("Cannot find the rigth-B connection for " + reconnect.Owner.Bezeichner + " with the property: " + reconnect.Name);
-                    }
-                    if (newconnect == null)
-                    {
+#if DEBUG
+                        if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+#endif
+                        Log.Write("Cannot find the correct connection reference for " + reconnect.Owner.Bezeichner + " with the property: " + reconnect.Name);
                         newconnect = Connects.FirstOrDefault(x =>
                         x.Owner.ThingType == reconnect.Owner.ThingType &&
+                        x.Owner.Bezeichner == reconnect.Owner.Bezeichner &&
                         x.Name == reconnect.Name);
-                        Log.Write("Cannot find the rigth-C connection for " + reconnect.Owner.Bezeichner + " with the property: " + reconnect.Name);
+                    }
+                    if (newconnect is null)
+                    {
+                        Log.Write("Cannot find a bezeichner-thingtype-matching connection for " + reconnect.Owner.Bezeichner + " with the property: " + reconnect.Name);
+                        newconnect = Connects.FirstOrDefault(x =>
+                        x.Owner.Bezeichner == reconnect.Owner.Bezeichner &&
+                        x.Name == reconnect.Name);
+                    }
+                    if (newconnect is null)
+                    {
+                        Log.Write("Cannot find a bezeichner-matching connection for " + reconnect.Owner.Bezeichner + " with the property: " + reconnect.Name);
+                        newconnect = Connects.FirstOrDefault(x =>
+                        x.Owner.ThingType == reconnect.Owner.ThingType &&
+                        x.Name == reconnect.Name);
                     }
                     if (newconnect != null)
                     {

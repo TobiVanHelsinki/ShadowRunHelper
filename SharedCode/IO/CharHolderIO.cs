@@ -210,17 +210,6 @@ namespace ShadowRunHelper.IO
                 "Beschleunigung" => (x.Object as Vehikel).Beschleunigung,
                 _ => x.Object.Value,
             })));
-            foreach (var item in calc.Connected)
-            {
-                if (item.Owner is null)
-                {
-                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-                }
-                if (string.IsNullOrEmpty(item.Name))
-                {
-                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-                }
-            }
             linkedThings.Clear();
             linkedThings.OnCollectionChangedCall(null);
         }
