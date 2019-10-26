@@ -1,10 +1,8 @@
 ﻿///Author: Tobi van Helsinki
 
-using PCLStorage;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using System;
-using System.Threading.Tasks;
 using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,11 +12,26 @@ namespace ShadowRunHelperViewer.UI.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+        public static MainPage Instance;
+
+        public static async void Test()
+        {
+            var answere = await Instance.DisplayActionSheet("Titleee", "No!", "Kaboom", "Ice", "Tea", "shark");
+            Log.Write(answere, true);
+        }
+
         public MainPage()
         {
             AppModel.Instance.NavigationRequested += Instance_NavigationRequested;
             InitializeComponent();
             AppModel.Instance.PropertyChanged += Instance_PropertyChanged;
+            Log.DisplayMessageRequested += Log_DisplayMessageRequested;
+            Instance = this;
+        }
+
+        private void Log_DisplayMessageRequested(LogMessage logmessage)
+        {
+            DisplayAlert(logmessage.LogType.ToString(), logmessage.Message, "OK");
         }
 
         private void Instance_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

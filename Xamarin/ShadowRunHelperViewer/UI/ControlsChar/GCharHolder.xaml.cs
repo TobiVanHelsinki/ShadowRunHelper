@@ -78,7 +78,7 @@ namespace ShadowRunHelperViewer
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
         {
             CharTitleBar.MinimumHeightRequest = Heigth;
-            CharHeadControls.Padding = new Thickness(LeftSpace.LowerB(5), 5, RigthSpace.LowerB(5), 5);
+            //CharHeadControls.Padding = new Thickness(LeftSpace.LowerB(5), 5, RigthSpace.LowerB(5), 5);
         }
 
         private async void Infogrid_Tapped()
@@ -316,8 +316,8 @@ namespace ShadowRunHelperViewer
 
         private void SetViewParameters()
         {
-            Narrow = Width < 550;
-            if (Width > 550 && MyChar != null)
+            Narrow = Width < 650;
+            if (Width > 650 && MyChar != null)
             {
                 MenuOpen = true;
             }
