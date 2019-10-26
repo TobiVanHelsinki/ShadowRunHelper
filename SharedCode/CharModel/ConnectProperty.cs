@@ -32,6 +32,9 @@ namespace ShadowRunHelper.CharModel
         [JsonIgnore]
         public double Value { get; private set; }
 
+        [JsonIgnore]
+        public double TrueValue { get; private set; }
+
         private double _BaseValue;
         public double BaseValue
         {
@@ -120,8 +123,14 @@ namespace ShadowRunHelper.CharModel
 
         private void Recalculate()
         {
+            var OldTrueValue = TrueValue;
             var OldValue = Value;
-            Value = Active ? BaseValue + Connected?.Select(x => x.Value).Sum() ?? 0.0 : 0.0;
+            TrueValue = BaseValue + Connected?.Select(x => x.Value).Sum() ?? 0.0;
+            Value = Active ? TrueValue : 0.0;
+            if (OldTrueValue != TrueValue)
+            {
+                NotifyPropertyChanged(nameof(TrueValue));
+            }
             if (OldValue != Value)
             {
                 NotifyPropertyChanged(nameof(Value));

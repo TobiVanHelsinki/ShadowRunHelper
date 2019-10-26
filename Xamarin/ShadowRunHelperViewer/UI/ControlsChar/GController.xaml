@@ -86,7 +86,7 @@
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Value" x:DataType="CharModel:Thing">
                 <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
-                    <Label Text="{x:Binding Value.Value}"/>
+                    <Label Text="{x:Binding Value.TrueValue}"/>
                     <Label Text="{x:Binding Zusatz}"/>
                 </StackLayout>
             </ControlTemplate>
@@ -187,7 +187,7 @@
                         <StackLayout Orientation="Horizontal" Grid.Column="1">
                             <ContentView ControlTemplate="{StaticResource Thing_Value}"/>
                             <Label Text="[" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Limit.Value}" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Limit.TrueValue}" Style="{StaticResource STDText}"/>
                             <Label Text="]" Style="{StaticResource STDText}"/>
                         </StackLayout>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="2" Grid.Row="1"/>
@@ -341,7 +341,7 @@
                         </Grid.ColumnDefinitions>
                         <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
                         <!--<ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="1"/>-->
-                        <Label Text="{x:Binding Value.Value}" Style="{StaticResource STDTextCenter}" Grid.Column="1"/>
+                        <Label Text="{x:Binding Value.TrueValue}" Style="{StaticResource STDTextCenter}" Grid.Column="1"/>
                         <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
@@ -527,9 +527,9 @@
                         <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
                         <Label Text="{x:Binding Schaden}" Grid.Column="3" Style="{StaticResource STDText}"/>
                         <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center">
-                            <Label Text="{x:Binding Firewall.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Firewall.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                             <Label Text="/" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Datenverarbeitung.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Datenverarbeitung.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                         </StackLayout>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
@@ -555,9 +555,9 @@
                             <StackLayout Margin="0,0,5,0" HorizontalOptions="Center">
                                 <Label Text="{resx:ModelResources Kommlink_Attribute}"  Style="{StaticResource STDText}"/>
                                 <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center">
-                                    <Label Text="{x:Binding Firewall.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Firewall.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                                     <Label Text="/" Style="{StaticResource STDText}"/>
-                                    <Label Text="{x:Binding Datenverarbeitung.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Datenverarbeitung.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
@@ -588,13 +588,13 @@
                         <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
                         <Label Text="{x:Binding Schaden}" Grid.Column="3" Style="{StaticResource STDText}"/>
                         <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center">
-                            <Label Text="{x:Binding Angriff.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Angriff.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                             <Label Text="/" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Schleicher.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Schleicher.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                             <Label Text="/" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Firewall.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Firewall.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                             <Label Text="/" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Datenverarbeitung.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Datenverarbeitung.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                         </StackLayout>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
@@ -633,13 +633,13 @@
                             <StackLayout Margin="0,0,5,0" HorizontalOptions="Center">
                                 <Label Text="{resx:ModelResources Kommlink_Attribute}"  Style="{StaticResource STDText}"/>
                                 <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center">
-                                    <Label Text="{x:Binding Angriff.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Angriff.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                                     <Label Text="/" Style="{StaticResource STDText}"/>
-                                    <Label Text="{x:Binding Schleicher.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Schleicher.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                                     <Label Text="/" Style="{StaticResource STDText}"/>
-                                    <Label Text="{x:Binding Firewall.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Firewall.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                                     <Label Text="/" Style="{StaticResource STDText}"/>
-                                    <Label Text="{x:Binding Datenverarbeitung.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                                    <Label Text="{x:Binding Datenverarbeitung.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
@@ -729,9 +729,9 @@
                             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
                             <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
                             <Label Text="[" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Precision.Value}" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding Precision.TrueValue}" Style="{StaticResource STDText}"/>
                             <Label Text="]" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding DK.Value}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                            <Label Text="{x:Binding DK.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                         </StackLayout>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
@@ -782,9 +782,9 @@
                             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
                             <Label Text="{x:Binding SchadenTyp}" Grid.Column="3"/>
                             <Label Text="["/>
-                            <Label Text="{x:Binding Precision.Value}"/>
+                            <Label Text="{x:Binding Precision.TrueValue}"/>
                             <Label Text="]"/>
-                            <Label Text="{x:Binding DK.Value}" Grid.Column="4"/>
+                            <Label Text="{x:Binding DK.TrueValue}" Grid.Column="4"/>
                         </StackLayout>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
@@ -806,9 +806,9 @@
                     <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
-                            <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Precision.Value"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Precision.TrueValue"/>
                             <controls:AdditionalValue Text="{resx:ModelResources Nahkampfwaffe_Reichweite}" ValuePath="Reichweite"/>
-                            <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK.Value"/>
+                            <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK.TrueValue"/>
                         </StackLayout>
                     </ScrollView>
                 </Grid>
