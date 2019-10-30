@@ -51,6 +51,7 @@
             <Style x:Key="AdditionalValueScrollView" TargetType="ScrollView">
                 <Setter Property="Orientation" Value="Horizontal"/>
                 <Setter Property="HorizontalScrollBarVisibility" Value="Always"/>
+                <Setter Property="VerticalScrollBarVisibility" Value="Always"/>
             </Style>
             <Style x:Key="AdditionalValuePanel" TargetType="StackLayout">
                 <Setter Property="Orientation" Value="Horizontal"/>
@@ -429,9 +430,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0" Grid.RowSpan="2" VerticalOptions="Center"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center"/>
-                    <Label Text="{resx:ModelResources Vehikel_Handling}" Style="{StaticResource HeadLineText}" Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="Start"/>
-                    <Label Text="{resx:ModelResources Vehikel_Beschleunigung}" Style="{StaticResource HeadLineText}" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="Center"/>
-                    <Label Text="{resx:ModelResources Vehikel_Panzerung}" Style="{StaticResource HeadLineText}" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="End"/>
+                    <Label Text="{resx:ModelResources Thing_Zusatz}" Style="{StaticResource HeadLineText}" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="End"/>
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Vehikel" x:DataType="CharModel:Vehikel">
@@ -444,18 +443,14 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                            <ColumnDefinition Width="8*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                         <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <Label Text="{x:Binding Handling}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
-                        <Label Text="{x:Binding Beschleunigung}" Style="{StaticResource STDTextCenter}" Grid.Column="3"/>
-                        <Label Text="{x:Binding Panzerung}" Style="{StaticResource STDTextCenter}" Grid.Column="4"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
-                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
+                        <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
+                        <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
+                        <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
                     </Grid>
                 </ViewCell>
             </DataTemplate>
@@ -471,7 +466,10 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
+                        <ScrollView.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Up,Down,Left,Rigth" Swiped="TableViewDownswipe"/>
+                        </ScrollView.GestureRecognizers>
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Sitze}" ValuePath="Sitze"/>
@@ -548,7 +546,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <BoxView Color="LightGray" WidthRequest="1" Margin="0,0,5,0"/>
@@ -613,7 +611,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <BoxView Color="LightGray" WidthRequest="1" Margin="0,0,5,0"/>
@@ -750,7 +748,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources FernKampfwaffe_Modi}" ValuePath="Modi"/>
@@ -803,7 +801,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Precision.TrueValue"/>
@@ -862,7 +860,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources Panzerung_Kapazitaet}" ValuePath="Kapazitaet"/>
@@ -919,7 +917,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK"/>
@@ -987,7 +985,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                         </StackLayout>
@@ -1132,7 +1130,14 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TableView x:Name="Items" HasUnevenRows="True" Intent="Data" Grid.Row="1"
-                       Margin="{StaticResource Offset}"/>
+                       Margin="{StaticResource Offset}">
+                <TableView.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Up" Swiped="TableViewUpswipe"/>
+                    <SwipeGestureRecognizer Direction="Left" Swiped="TableViewLeftswipe"/>
+                    <SwipeGestureRecognizer Direction="Right" Swiped="TableViewRigthswipe"/>
+                    <SwipeGestureRecognizer Direction="Down" Swiped="TableViewDownswipe"/>
+                </TableView.GestureRecognizers>
+            </TableView>
             <Grid BackgroundColor="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

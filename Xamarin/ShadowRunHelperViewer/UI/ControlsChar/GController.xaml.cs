@@ -234,5 +234,33 @@ namespace ShadowRunHelperViewer
                 MyChar.Remove(t);
             }
         }
+
+        private void TableViewDownswipe(object sender, SwipedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Down");
+        }
+
+        private void TableViewUpswipe(object sender, SwipedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Up");
+        }
+
+        private void TableViewRigthswipe(object sender, SwipedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Rigth");
+        }
+
+        private void TableViewLeftswipe(object sender, SwipedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Left");
+        }
+
+        private void ScrollView_ScrolledXToY(object sender, ScrolledEventArgs e)
+        {
+            if (sender is ScrollView scroller)
+            {
+                scroller.ScrollToAsync(e.ScrollY + e.ScrollX, 0, true);
+            }
+        }
     }
 }
