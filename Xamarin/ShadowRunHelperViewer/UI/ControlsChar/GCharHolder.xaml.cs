@@ -1,9 +1,12 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using dotMorten.Xamarin.Forms;
 using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
+using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
 using ShadowRunHelperViewer.UI.Resources;
@@ -11,8 +14,10 @@ using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using TAPPLICATION.IO;
 using TLIB;
 using Xam.Plugin;
 using Xamarin.Forms;
@@ -339,13 +344,13 @@ namespace ShadowRunHelperViewer
             MenuOpen = !MenuOpen;
         }
 
-        private readonly (string, Action)[] MenuItems = new (string, Action)[] {
-                        (UiResources.SaveAtCurrentPlace,null),
-                        (UiResources.SaveExtern,null),
-                        (UiResources.OpenFolder,null),
-                        (UiResources.SubtractLifeStyleCost,null),
-                        (UiResources.CharSettings,null),
-                        (UiResources.Repair,null),
+        private (string, Action)[] MenuItems => new (string, Action)[] {
+                        (UiResources.SaveAtCurrentPlace,()=>{SharedIO.SaveAtCurrentPlace(MyChar); }),
+                        (UiResources.SaveExtern,async ()=>{SharedIO.Save(MyChar, new FileInfo(Path.Combine((await SharedIO.CurrentIO.PickFolder()).FullName, MyChar.FileInfo.Name))); }),
+                        (UiResources.OpenFolder,()=>{SharedIO.CurrentIO.OpenFolder(MyChar.FileInfo.Directory); }),
+                        (UiResources.SubtractLifeStyleCost,MyChar.SubtractLifeStyleCost),
+                        (UiResources.CharSettings,()=>{ }),
+                        (UiResources.Repair,MyChar.Repair),
                         (UiResources.Unload,Unload),
                     };
 
