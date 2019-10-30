@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using Newtonsoft.Json;
 using ShadowRunHelper.Model;
@@ -208,9 +210,9 @@ namespace ShadowRunHelper.CharModel
 
         public Thing()
         {
+            ThingType = TypeHelper.TypeToThingDef(GetType());
             foreach (var item in GetPropertiesConnects())
             {
-                ThingType = TypeHelper.TypeToThingDef(GetType());
                 //Create New ConnectProps
                 try
                 {
@@ -220,19 +222,18 @@ namespace ShadowRunHelper.CharModel
                 }
                 catch (Exception)
                 {
+                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
                 }
             }
             LinkedThings = new LinkList(this);
         }
 
-        public override string ToString()
-        {
-            return
-                Value.Value + " "
+        public override string ToString() =>
+            string.Format("{0:00}", Value.Value) + "|"
+                + ThingType + "|"
                 + (!string.IsNullOrEmpty(typ) ? typ + ": " : "")
                 + bezeichner
                 + (!string.IsNullOrEmpty(Zusatz) ? " " + Zusatz : "");
-        }
 
         /// <summary>
         /// Copies own Values into target if possible
@@ -292,30 +293,37 @@ namespace ShadowRunHelper.CharModel
             {
                 try
                 {
-                    try
+                    if (item.PropertyType == typeof(string))
                     {
-                        if (item.PropertyType == typeof(string))
+                        item.SetValue(this, "");
+                    }
+                    else if (item.PropertyType == typeof(ConnectProperty))
+                    {
+                        if (item.GetValue(this) is ConnectProperty cp)
                         {
-                            item.SetValue(this, "");
+                            cp.Reset();
                         }
                         else
                         {
-                            item.SetValue(this, Activator.CreateInstance(item.PropertyType));
+#if DEBUG
+                            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+#else
+                            Log.Write("Could not Reset ConnectProperty: " + item.Name,ex,logType: LogType.Error);
+#endif
                         }
                     }
-                    catch (Exception ex)
+                    else
                     {
-#if DEBUG
-                        if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-#else
-                        Log.Write("Could not Reset Property: " + item.Name,ex,logType: LogType.Error);
-#endif
-                        item.SetValue(this, null);
+                        item.SetValue(this, Activator.CreateInstance(item.PropertyType));
                     }
                 }
                 catch (Exception ex)
                 {
-                    Log.Write("Could not Reset Property: " + item.Name, ex, logType: LogType.Error);
+#if DEBUG
+                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+#else
+                    Log.Write("Could not Reset Property: " + item.Name,ex,logType: LogType.Error);
+#endif
                 }
             }
         }

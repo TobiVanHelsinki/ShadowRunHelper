@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using ShadowRunHelper.CharModel;
 using SharedCode.Ressourcen;
@@ -54,15 +56,22 @@ namespace ShadowRunHelper.CharController
             }
             bIsRefreshInProgress = true;
             var originitem = Data.FirstOrDefault(x => x.Aktiv == true);
-            ActiveItem.Bezeichner = originitem?.Bezeichner;
-            var propertyInfo = typeof(T).GetProperty(e.PropertyName);
-            if (propertyInfo?.PropertyType?.IsValueType == true)
+            if (originitem != null)
             {
-                propertyInfo.SetValue(originitem, propertyInfo.GetValue(ActiveItem));
+                ActiveItem.Bezeichner = originitem?.Bezeichner;
+                var propertyInfo = typeof(T).GetProperty(e.PropertyName);
+                if (propertyInfo?.PropertyType?.IsValueType == true)
+                {
+                    propertyInfo.SetValue(originitem, propertyInfo.GetValue(ActiveItem));
+                }
+                else
+                {
+                    ActiveItem.TryCloneInto(originitem);
+                }
             }
             else
             {
-                ActiveItem.TryCloneInto(originitem);
+                ActiveItem.Reset();
             }
             ActiveItem.Bezeichner = ModelResources._Active;
             bIsRefreshInProgress = false;

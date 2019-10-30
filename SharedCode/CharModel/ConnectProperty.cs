@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using Newtonsoft.Json;
 using SharedCode.Ressourcen;
@@ -116,10 +118,7 @@ namespace ShadowRunHelper.CharModel
             return target;
         }
 
-        public override string ToString()
-        {
-            return "Owner: " + Owner + ", Name: " + Name + ", Value: " + Value;
-        }
+        public override string ToString() => "Prop:" + (Name ?? "(null)") + "|Owner:" + (Owner?.ToString() ?? "(null)");
 
         private void Recalculate()
         {
@@ -135,6 +134,30 @@ namespace ShadowRunHelper.CharModel
             {
                 NotifyPropertyChanged(nameof(Value));
             }
+        }
+
+        /// <summary>
+        /// Sets properties used for connections and value to default value
+        /// </summary>
+        /// <returns></returns>
+        public ConnectProperty Reset()
+        {
+            Connected.Clear();
+            Active = false;
+            BaseValue = 0;
+            return this;
+        }
+
+        /// <summary>
+        /// Removes the parent and property information.
+        /// </summary>
+        /// <returns></returns>
+        public ConnectProperty ResetParent()
+        {
+            Owner = null;
+            Name = null;
+            DisplayName = null;
+            return this;
         }
 
         #region Adding

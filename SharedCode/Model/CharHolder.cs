@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
@@ -188,6 +190,10 @@ namespace ShadowRunHelper.Model
             HasChanges = false;
         }
 
+        /// <summary>
+        /// Repair
+        /// </summary>
+        /// <exception cref="System.Security.SecurityException">Ignore.</exception>
         public void Repair()
         {
             RefreshLists();
@@ -199,11 +205,24 @@ namespace ShadowRunHelper.Model
                     if (prop.GetValue(thing) is ConnectProperty calc)
                     {
                         calc.Owner = thing;
+#if DEBUG
+                        if (calc.Owner is null)
+                        {
+                            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                        }
+#endif
                         calc.Name = prop.Name;
                         calc.DisplayName = ModelResources.ResourceManager.GetStringSafe(prop.DeclaringType.Name + "_" + prop.Name);
                     }
+#if DEBUG
+                    else
+                    {
+                        if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                    }
+#endif
                 }
             }
+            //repair lost connections
             foreach (var origconnect in Connects)
             {
                 var repairedConnects = new List<ConnectProperty>();
