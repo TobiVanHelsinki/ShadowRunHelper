@@ -1,13 +1,11 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
 
 using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using SharedCode.Ressourcen;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
@@ -32,32 +30,31 @@ namespace ShadowRunHelperViewer
         #endregion NotifyPropertyChanged
 
         public CharHolder MyChar { get; set; }
+        public CategoryOption MyControllerSettings { get; private set; }
 
-        #region Hold IController
-        IController _Controller;
-        public IController Controller
+        private IController _MyController;
+        public IController MyController
         {
-            get { return _Controller; }
-            set { if (_Controller != value) { _Controller = value; NotifyPropertyChanged(); OnControllerChanged(); } }
+            get => _MyController;
+            set { if (_MyController != value) { _MyController = value; NotifyPropertyChanged(); OnControllerChanged(); } }
         }
 
-        private void GController_BindingContextChanged(object sender, EventArgs e)
-        {
-            Controller = BindingContext as IController;
-        }
+        #region Control MyController, Items Visual and Header Visual
+
+        private void GController_BindingContextChanged(object sender, EventArgs e) => MyController = BindingContext as IController;
 
         private void OnControllerChanged()
         {
-            if (Controller != null)
+            if (MyController != null)
             {
-                Controller.RegisterEventAtData(SmthChanged);
-                CreateItems(Controller.eDataTyp);
-                CreateHeadline(Controller.eDataTyp);
+                MyController.RegisterEventAtData(ControlerDataChanged);
+                CreateItems(MyController.eDataTyp);
+                CreateHeadline(MyController.eDataTyp);
 
-                Setting = MyChar.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == Controller.eDataTyp);
-                IsVisible = Setting.Visibility;
-                Headline.Text = TypeHelper.ThingDefToString(Controller.eDataTyp, true);
-                var att = Controller.GetType().GetCustomAttributes(typeof(ShadowRunHelperControllerAttribute), true).FirstOrDefault() as ShadowRunHelperControllerAttribute;
+                MyControllerSettings = MyChar.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == MyController.eDataTyp);
+                IsVisible = MyControllerSettings.Visibility;
+                Headline.Text = TypeHelper.ThingDefToString(MyController.eDataTyp, true);
+                var att = MyController.GetType().GetCustomAttributes(typeof(ShadowRunHelperControllerAttribute), true).FirstOrDefault() as ShadowRunHelperControllerAttribute;
                 if (att?.SupportsEdit == false)
                 {
                     CatAddButton.IsVisible = false;
@@ -76,7 +73,7 @@ namespace ShadowRunHelperViewer
         /// <param name="key"></param>
         private void CreateHeadline(ThingDefs key)
         {
-            var CustomTemplate = key.HierarchieUpSearch(s => { Resources.TryGetValue(s + "_H", out object CustomTemplate); return CustomTemplate; });
+            var CustomTemplate = key.HierarchieUpSearch(s => { Resources.TryGetValue(s + "_H", out var CustomTemplate); return CustomTemplate; });
             if (CustomTemplate is ControlTemplate HL)
             {
                 Items_H.ControlTemplate = HL;
@@ -91,12 +88,12 @@ namespace ShadowRunHelperViewer
         /// <returns></returns>
         private void CreateItems(ThingDefs key)
         {
-            var CustomTemplate = key.HierarchieUpSearch(s => { Resources.TryGetValue(s, out object CustomTemplate); return CustomTemplate; });
+            var CustomTemplate = key.HierarchieUpSearch(s => { Resources.TryGetValue(s, out var CustomTemplate); return CustomTemplate; });
             if (CustomTemplate is DataTemplate DT)
             {
                 var section = new TableSection("");
                 Items.Root = new TableRoot() { section };
-                foreach (var item in Controller.GetData())
+                foreach (var item in MyController.GetData())
                 {
                     var content = DT.CreateContent();
                     ViewCell vc;
@@ -112,6 +109,8 @@ namespace ShadowRunHelperViewer
                     {
                         break;
                     }
+                    //vc.Appearing += Vc_Appearing;
+                    //vc.Disappearing += Vc_Disappearing;
                     vc.BindingContext = item;
                     vc.Tapped += ItemCell_Tapped;
                     section.Add(vc);
@@ -119,19 +118,24 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void SmthChanged(object sender, PropertyChangedEventArgs e)
+        private void ControlerDataChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (sender is INotifyCollectionChanged list)
+            if (sender is INotifyCollectionChanged)
             {
-                CreateItems(Controller.eDataTyp);
+                CreateItems(MyController.eDataTyp);
             }
         }
 
+        /// <summary>
+        /// Toggles between normal and expandet state
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ItemCell_Tapped(object sender, EventArgs e)
         {
             if (sender is ViewCell vc && vc.BindingContext is Thing item)
             {
-                var CustomTemplate = item.ThingType.HierarchieUpSearch(s => { Resources.TryGetValue(s + "X", out object CustomTemplate); return CustomTemplate; });
+                var CustomTemplate = item.ThingType.HierarchieUpSearch(s => { Resources.TryGetValue(s + "X", out var CustomTemplate); return CustomTemplate; });
                 if (CustomTemplate is null)
                 {
                     Resources.TryGetValue(nameof(Thing) + "X", out CustomTemplate);
@@ -156,9 +160,7 @@ namespace ShadowRunHelperViewer
                 }
             }
         }
-        #endregion Hold IController
-
-        public CategoryOption Setting { get; private set; }
+        #endregion Control MyController, Items Visual and Header Visual
 
         public GController(CharHolder myChar)
         {
@@ -166,13 +168,16 @@ namespace ShadowRunHelperViewer
             InitializeComponent();
             OnControllerChanged();
             BindingContextChanged += GController_BindingContextChanged;
+            SetHeaderVisible(!SettingsModel.I.MINIMIZED_HEADER);
         }
+
+        #region Controller Actions
 
         private void Add(object sender, EventArgs e)
         {
             try
             {
-                var thing = MyChar.Add(Controller.eDataTyp);
+                var thing = MyChar.Add(MyController.eDataTyp);
                 if (SettingsModel.I.START_AFTER_EDIT && thing.ThingType != ThingDefs.Note)
                 {
                     PopupNavigation.Instance.PushAsync(new DetailsPage(thing, MyChar));
@@ -185,25 +190,17 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private async void Thing_Edit(object sender, EventArgs e)
-        {
-            if (sender is BindableObject b && b.BindingContext is Thing t)
-            {
-                await PopupNavigation.Instance.PushAsync(new DetailsPage(t, MyChar));
-            }
-        }
-
-        readonly (string, Action)[] MenuItems = new (string, Action)[] {
-                        (CustomManager.GetString("UI_TxT_Cat_AddSep/Text"),null),
-                        (CustomManager.GetString("UI_TxT_Cat_UncheckAll/Text"),null),
-                        (CustomManager.GetString("UI_TxT_Cat_Order_ABC/Text"),null),
-                        (CustomManager.GetString("UI_TxT_Cat_Order_Type/Text"),null),
-                        (CustomManager.GetString("UI_TxT_Cat_Order_Save/Text"),null),
-                        (CustomManager.GetString("UI_TxT_Cat_Order_Orig/Text"),null),
-                        (CustomManager.GetString("UI_TxT_CSV_Cat_Export/Text"),null),
-                        (CustomManager.GetString("UI_TxT_CSV_Cat_Export_Selected/Text"),null),
-                        (CustomManager.GetString("UI_TxT_CSV_Cat_Import/Text"),null),
-                        (CustomManager.GetString("UI_TxT_Cat_Truncate/Text"),null),
+        private (string, Action)[] MenuItems => new (string, Action)[] {
+                        (CustomManager.GetString("TxT_Cat_AddSep/Text"),()=>{ }),
+                        (CustomManager.GetString("TxT_Cat_UncheckAll/Text"),()=>{ }),
+                        (CustomManager.GetString("TxT_Cat_Order_ABC/Text"),()=>{ }),
+                        (CustomManager.GetString("TxT_Cat_Order_Type/Text"),()=>{ }),
+                        (CustomManager.GetString("TxT_Cat_Order_Save/Text"),()=>{ }),
+                        (CustomManager.GetString("TxT_Cat_Order_Orig/Text"),()=>{ }),
+                        (CustomManager.GetString("TxT_CSV_Cat_Export/Text"),()=>{ }),
+                        (CustomManager.GetString("TxT_CSV_Cat_Export_Selected/Text"),()=>{ }),
+                        (CustomManager.GetString("TxT_CSV_Cat_Import/Text"),()=>{ }),
+                        (CustomManager.GetString("TxT_Cat_Truncate/Text"),()=>{ }),
                     };
 
         private void Options(object sender, EventArgs e)
@@ -226,6 +223,17 @@ namespace ShadowRunHelperViewer
         {
             MenuItems.FirstOrDefault(x => x.Item1 == item).Item2?.Invoke();
         }
+        #endregion Controller Actions
+
+        #region Items Actions
+
+        private async void Thing_Edit(object sender, EventArgs e)
+        {
+            if (sender is BindableObject b && b.BindingContext is Thing t)
+            {
+                await PopupNavigation.Instance.PushAsync(new DetailsPage(t, MyChar));
+            }
+        }
 
         private void Thing_Delete(object sender, EventArgs e)
         {
@@ -235,32 +243,37 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void TableViewDownswipe(object sender, SwipedEventArgs e)
+        #endregion Items Actions
+
+        #region Dynamic Header
+
+        public void SetHeaderVisible(bool visible)
         {
-            System.Diagnostics.Debug.WriteLine("Down");
+            Items_H.IsVisible = visible;
+            CatAddButton.IsVisible = visible;
+            CatMoreButton.IsVisible = visible;
+            Headline.FontSize = Device.GetNamedSize(visible ? NamedSize.Medium : NamedSize.Micro, typeof(Label));
         }
 
-        private void TableViewUpswipe(object sender, SwipedEventArgs e)
+        private void HeaderSwitch(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Up");
+            SetHeaderVisible(!Items_H.IsVisible);
         }
 
-        private void TableViewRigthswipe(object sender, SwipedEventArgs e)
+        private void HeaderHide(object sender, SwipedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Rigth");
+            SetHeaderVisible(false);
         }
 
-        private void TableViewLeftswipe(object sender, SwipedEventArgs e)
+        private void HeaderShow(object sender, SwipedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Left");
+            SetHeaderVisible(true);
         }
 
-        private void ScrollView_ScrolledXToY(object sender, ScrolledEventArgs e)
+        private void HeaderShow(object sender, EventArgs e)
         {
-            if (sender is ScrollView scroller)
-            {
-                scroller.ScrollToAsync(e.ScrollY + e.ScrollX, 0, true);
-            }
+            SetHeaderVisible(true);
         }
+        #endregion Dynamic Header
     }
 }

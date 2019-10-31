@@ -308,7 +308,7 @@ namespace ShadowRunHelper.CharModel
 #if DEBUG
                             if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
 #else
-                            Log.Write("Could not Reset ConnectProperty: " + item.Name,ex,logType: LogType.Error);
+                            Log.Write("Could not Reset ConnectProperty: " + item.Name, logType: LogType.Error);
 #endif
                         }
                     }
@@ -322,7 +322,7 @@ namespace ShadowRunHelper.CharModel
 #if DEBUG
                     if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
 #else
-                    Log.Write("Could not Reset Property: " + item.Name,ex,logType: LogType.Error);
+                    Log.Write("Could not Reset Property: " + item.Name, ex, logType: LogType.Error);
 #endif
                 }
             }

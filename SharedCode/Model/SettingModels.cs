@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper.Model;
+﻿//Author: Tobi van Helsinki
+
+using ShadowRunHelper.Model;
 using System;
 using System.IO;
 using TAPPLICATION;
@@ -11,6 +13,9 @@ namespace ShadowRunHelper
     public class SettingsModel : SharedSettingsModel
     {
         #region Settings
+        [Setting("SETTINGS_MINIMIZED_HEADER", false, SaveType.Roaming)]
+        public bool MINIMIZED_HEADER { get => Get(); set => Set(value); }
+
         [Setting("SETTINGS_BACKUP_VERSIONING", false, SaveType.Roaming)]
         public bool BACKUP_VERSIONING { get => Get(); set => Set(value); }
 
@@ -46,6 +51,7 @@ namespace ShadowRunHelper
 
         [Setting("SETTINGS_COUNT_LOADINGS", 0, SaveType.Roaming)]
         public int COUNT_LOADINGS { get => Get(); set => Set(value); }
+
         [Setting("SETTINGS_COUNT_SAVINGS", 0, SaveType.Roaming)]
         public int COUNT_SAVINGS { get => Get(); set => Set(value); }
 
@@ -56,7 +62,9 @@ namespace ShadowRunHelper
         public int COUNT_CREATIONS { get => Get(); set => Set(value); }
 
         [Setting("SETTINGS_AUTO_SAVE_INTERVAL", 0, SaveType.Roaming)]
-        public int AUTO_SAVE_INTERVAL_MS { get {  return Get(); }
+        public int AUTO_SAVE_INTERVAL_MS
+        {
+            get { return Get(); }
             set
             {
                 if (value > 100000)
@@ -79,8 +87,11 @@ namespace ShadowRunHelper
         public bool LOAD_CHAR_ON_START { get => Get(); set => Set(value); }
 
         [Setting("SETTINGS_START_AFTER_EDIT", true, SaveType.Roaming)]
-        public bool START_AFTER_EDIT { get => Get();
-            set => Set(value); }
+        public bool START_AFTER_EDIT
+        {
+            get => Get();
+            set => Set(value);
+        }
 
         [Setting("CHARINTEMPSTORE", false, SaveType.Local)]
         public bool CHARINTEMPSTORE { get => Get(); set => Set(value); }
@@ -88,6 +99,7 @@ namespace ShadowRunHelper
         #endregion Settings
 
         #region Start, Konstruktor, Listener
+
         public static new SettingsModel Initialize()
         {
             if (instance == null)
@@ -121,7 +133,7 @@ namespace ShadowRunHelper
                     break;
             }
         }
-        #endregion
+        #endregion Start, Konstruktor, Listener
 
         #region Singleton Model Thigns
         public static new SettingsModel Instance
@@ -131,6 +143,7 @@ namespace ShadowRunHelper
                 return (SettingsModel)instance;
             }
         }
+
         public static new SettingsModel I
         {
             get
@@ -139,10 +152,11 @@ namespace ShadowRunHelper
             }
         }
 
-        #endregion
+        #endregion Singleton Model Thigns
 
         #region Constraints
-        static async void Intern_Sync_Toggled()
+
+        private static async void Intern_Sync_Toggled()
         {
             try
             {
@@ -158,7 +172,8 @@ namespace ShadowRunHelper
                 Log.Write(CustomManager.GetString("Error_CopyFiles"), ex);
             }
         }
-        static async void FolderMode_Toggled()
+
+        private static async void FolderMode_Toggled()
         {
             var FolderMode = SharedSettingsModel.Instance.FOLDERMODE;
             if (FolderMode)
@@ -195,8 +210,6 @@ namespace ShadowRunHelper
                 Log.Write(CustomManager.GetString("Error_CopyFiles"), ex);
             }
         }
-        #endregion
-
+        #endregion Constraints
     }
-
 }

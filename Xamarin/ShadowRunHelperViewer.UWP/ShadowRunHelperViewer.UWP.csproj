@@ -24,12 +24,12 @@
     <AppxBundle>Never</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <PackageCertificateThumbprint>AB3D6943A05A732650244D4742136CB8BED4DC7B</PackageCertificateThumbprint>
-    <AppInstallerUpdateFrequency>36</AppInstallerUpdateFrequency>
+    <AppInstallerUpdateFrequency>12</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>Hourly</AppInstallerCheckForUpdateFrequency>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <AppInstallerUri>http://apps.t-imperium.de/ShadowRunHelperViewer.UWP/</AppInstallerUri>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
-    <HoursBetweenUpdateChecks>36</HoursBetweenUpdateChecks>
+    <HoursBetweenUpdateChecks>12</HoursBetweenUpdateChecks>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">

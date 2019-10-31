@@ -35,7 +35,8 @@
                 <Setter Property="ColumnSpacing" Value="0"/>
                 <Setter Property="RowSpacing" Value="0"/>
                 <Setter Property="Margin" Value="0"/>
-                <Setter Property="Padding" Value="5,5,5,0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
             <Style x:Key="TemplateContentView" TargetType="ContentView">
                 <Setter Property="VerticalOptions" Value="Center"/>
@@ -46,7 +47,8 @@
                 <Setter Property="Spacing" Value="0"/>
                 <Setter Property="Orientation" Value="Horizontal"/>
                 <Setter Property="Margin" Value="0"/>
-                <Setter Property="Padding" Value="5,5,5,0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
             <Style x:Key="AdditionalValueScrollView" TargetType="ScrollView">
                 <Setter Property="Orientation" Value="Horizontal"/>
@@ -87,8 +89,8 @@
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Value" x:DataType="CharModel:Thing">
                 <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
-                    <Label Text="{x:Binding Value.TrueValue}"/>
-                    <Label Text="{x:Binding Zusatz}"/>
+                    <Label Text="{x:Binding Value.TrueValue}" Style="{StaticResource STDText}"/>
+                    <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDText}"/>
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Notes" x:DataType="CharModel:Thing">
@@ -350,7 +352,7 @@
                 </ViewCell>
             </DataTemplate>
 
-            <x:Int16 x:Key="ItemsBoxesWidth">50</x:Int16>
+            <x:Int16 x:Key="ItemsBoxesWidth">65</x:Int16>
             <ControlTemplate x:Key="ItemsBoxes_H">
                 <Grid Style="{StaticResource TemplateGrid}" HorizontalOptions="Center">
                     <Grid.RowDefinitions>
@@ -360,17 +362,23 @@
                     <Grid.ColumnDefinitions>
                     </Grid.ColumnDefinitions>
                     <Label Text="Aktiv" HorizontalOptions="Start"/>
-                    <Label Text="Besitz" Grid.Row="1" HorizontalOptions="End"/>
+                    <Label Text="Besitz" Grid.Row="1" HorizontalOptions="End" Margin="3,0,0,0"/>
                 </Grid>
             </ControlTemplate>
             <ControlTemplate x:Key="ItemsBoxes" x:DataType="CharModel:Item">
-                <Grid Style="{StaticResource TemplateGrid}" HorizontalOptions="Center" BindingContext="{TemplateBinding BindingContext}">
+                <Grid Style="{StaticResource TemplateGrid}" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0" x:Name="SizeDefEl" HorizontalOptions="Center" BindingContext="{TemplateBinding BindingContext}">
                     <Grid.ColumnDefinitions>
+                        <!--<ColumnDefinition Width="Auto"/>-->
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <CheckBox IsChecked="{x:Binding Aktiv}" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Margin="0,0,5,0"/>
-                    <CheckBox IsChecked="{x:Binding Besitz}" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Grid.Column="1"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <!--<RowDefinition Height="Auto"/>-->
+                    </Grid.RowDefinitions>
+                    <CheckBox IsChecked="{x:Binding Aktiv}" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Margin="0,0,0,0"/>
+                    <CheckBox IsChecked="{x:Binding Besitz}" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Grid.Column="1" Margin="0">
+                    </CheckBox>
                 </Grid>
             </ControlTemplate>
 
@@ -419,18 +427,15 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                        <ColumnDefinition Width="8*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0" Grid.RowSpan="2" VerticalOptions="Center"/>
-                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center"/>
-                    <Label Text="{resx:ModelResources Thing_Zusatz}" Style="{StaticResource HeadLineText}" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="End"/>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
+                    <Label Text="{resx:ModelResources Thing_Zusatz}" Style="{StaticResource HeadLineText}" Grid.Column="2" HorizontalOptions="End"/>
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Vehikel" x:DataType="CharModel:Vehikel">
@@ -466,10 +471,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
-                        <ScrollView.GestureRecognizers>
-                            <SwipeGestureRecognizer Direction="Up,Down,Left,Rigth" Swiped="TableViewDownswipe"/>
-                        </ScrollView.GestureRecognizers>
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Sitze}" ValuePath="Sitze"/>
@@ -546,7 +548,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <BoxView Color="LightGray" WidthRequest="1" Margin="0,0,5,0"/>
@@ -611,7 +613,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <BoxView Color="LightGray" WidthRequest="1" Margin="0,0,5,0"/>
@@ -698,12 +700,12 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
-                    <StackLayout Orientation="Horizontal" Grid.Column="2">
+                    <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{StaticResource TemplateStack}">
                         <ContentView ControlTemplate="{StaticResource Thing_Value_H}"/>
-                        <Label Text="{resx:ModelResources Waffe_SchadenTyp}" Style="{StaticResource HeadLineText}"/>
-                        <Label Text="[" Style="{StaticResource HeadLineText}"/>
+                        <Label Text="{resx:ModelResources Waffe_SchadenTyp}" Style="{StaticResource HeadLineText}" Margin="1,0,0,0"/>
+                        <Label Text="[" Style="{StaticResource HeadLineText}" Margin="1,0,0,0"/>
                         <Label Text="{resx:ModelResources Waffe_Praezision}" Style="{StaticResource HeadLineText}"/>
-                        <Label Text="]" Style="{StaticResource HeadLineText}"/>
+                        <Label Text="]" Style="{StaticResource HeadLineText}" Margin="0,0,1,0"/>
                         <Label Text="{resx:ModelResources Waffe_DK}" Style="{StaticResource HeadLineText}"/>
                     </StackLayout>
                 </Grid>
@@ -723,12 +725,12 @@
                         </Grid.ColumnDefinitions>
                         <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                         <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <StackLayout Orientation="Horizontal" Grid.Column="2">
+                        <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{StaticResource TemplateStack}">
                             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
                             <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
-                            <Label Text="[" Style="{StaticResource STDText}"/>
+                            <Label Text="[" Style="{StaticResource STDText}" Margin="1,0,0,0"/>
                             <Label Text="{x:Binding Precision.TrueValue}" Style="{StaticResource STDText}"/>
-                            <Label Text="]" Style="{StaticResource STDText}"/>
+                            <Label Text="]" Style="{StaticResource STDText}" Margin="0,0,1,0"/>
                             <Label Text="{x:Binding DK.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
                         </StackLayout>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
@@ -748,7 +750,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources FernKampfwaffe_Modi}" ValuePath="Modi"/>
@@ -776,13 +778,13 @@
                         </Grid.ColumnDefinitions>
                         <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                         <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <StackLayout Orientation="Horizontal" Grid.Column="2">
+                        <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{StaticResource TemplateStack}">
                             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-                            <Label Text="{x:Binding SchadenTyp}" Grid.Column="3"/>
-                            <Label Text="["/>
-                            <Label Text="{x:Binding Precision.TrueValue}"/>
-                            <Label Text="]"/>
-                            <Label Text="{x:Binding DK.TrueValue}" Grid.Column="4"/>
+                            <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
+                            <Label Text="[" Style="{StaticResource STDText}" Margin="1,0,0,0"/>
+                            <Label Text="{x:Binding Precision.TrueValue}" Style="{StaticResource STDText}"/>
+                            <Label Text="]" Style="{StaticResource STDText}" Margin="0,0,1,0"/>
+                            <Label Text="{x:Binding DK.TrueValue}" Style="{StaticResource STDText}" Grid.Column="4"/>
                         </StackLayout>
                         <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
                         <ContentView ControlTemplate="{StaticResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
@@ -801,7 +803,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Precision.TrueValue"/>
@@ -860,7 +862,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources Panzerung_Kapazitaet}" ValuePath="Kapazitaet"/>
@@ -917,7 +919,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                             <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK"/>
@@ -985,7 +987,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Buttons}" Grid.Row="0" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Scrolled="ScrollView_ScrolledXToY" Grid.Column="1">
+                    <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                         <StackLayout Style="{StaticResource AdditionalValuePanel}">
                             <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                         </StackLayout>
@@ -1132,30 +1134,34 @@
             <TableView x:Name="Items" HasUnevenRows="True" Intent="Data" Grid.Row="1"
                        Margin="{StaticResource Offset}">
                 <TableView.GestureRecognizers>
-                    <SwipeGestureRecognizer Direction="Up" Swiped="TableViewUpswipe"/>
-                    <SwipeGestureRecognizer Direction="Left" Swiped="TableViewLeftswipe"/>
-                    <SwipeGestureRecognizer Direction="Right" Swiped="TableViewRigthswipe"/>
-                    <SwipeGestureRecognizer Direction="Down" Swiped="TableViewDownswipe"/>
+                    <SwipeGestureRecognizer Direction="Up" Swiped="HeaderHide"/>
+                    <SwipeGestureRecognizer Direction="Down" Swiped="HeaderShow"/>
                 </TableView.GestureRecognizers>
             </TableView>
-            <Grid BackgroundColor="White">
+            <Grid BackgroundColor="White" x:Name="Header">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Grid Padding="0,5,0,0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="HeaderSwitch"/>
+                    <ClickGestureRecognizer Clicked="HeaderSwitch"/>
+                    <SwipeGestureRecognizer Direction="Down" Swiped="HeaderHide"/>
+                    <SwipeGestureRecognizer Direction="Up" Swiped="HeaderShow"/>
+                </Grid.GestureRecognizers>
+                <Grid Padding="0,0,0,0" ColumnSpacing="0" RowSpacing="0" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="{StaticResource ButtonSize}"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="{StaticResource ButtonSize}"/>
                     </Grid.ColumnDefinitions>
-                    <Button Text="&#xf067;" x:Name="CatAddButton" Style="{StaticResource ControllerIconButton}" Clicked="Add" TextColor="Default"/>
-                    <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium"/>
-                    <Button Text="&#xf141;" x:Name="CatMoreButton" Style="{StaticResource ControllerIconButton}" Clicked="Options" Grid.Column="2" TextColor="Default"/>
+                    <Button Text="&#xf067;" x:Name="CatAddButton" Style="{StaticResource ControllerIconButton}" Clicked="Add" TextColor="Default" Margin="2"/>
+                    <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium" Padding="0" Margin="0"/>
+                    <Button Text="&#xf141;" x:Name="CatMoreButton" Style="{StaticResource ControllerIconButton}" Clicked="Options" Grid.Column="2" TextColor="Default" Margin="2"/>
                 </Grid>
                 <ContentView Grid.Row="1" x:Name="Items_H"/>
-                <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray"/>
+                <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray" Margin="0"/>
             </Grid>
         </Grid>
     </ContentView.Content>

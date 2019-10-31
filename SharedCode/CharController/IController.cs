@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
@@ -44,6 +46,8 @@ namespace ShadowRunHelper.CharController
         void OrderData(Ordering order);
 
         void SaveCurrentOrdering();
+
+        int IndexOf(Thing t);
     }
 
     public enum Ordering
