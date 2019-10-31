@@ -200,7 +200,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackLayout x:Name="TitleBar" BackgroundColor="Accent" MinimumWidthRequest="50" MinimumHeightRequest="10" Padding="10">
-                <Label x:Name="Intro1Text" Text="{resx:UiResources TitleMiscPage}" HorizontalOptions="FillAndExpand"/>
+                <Label x:Name="Intro1Text" FontSize="Subtitle" Text="{resx:UiResources TitleMiscPage}" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
             <ContentView x:Name="Content" Grid.Row="1" BackgroundColor="White" Padding="10,0,10,0"/>
             <ScrollView Grid.Row="2" Style="{StaticResource CommandBar}">
