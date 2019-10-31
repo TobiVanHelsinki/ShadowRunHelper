@@ -253,6 +253,7 @@ namespace ShadowRunHelperViewer
             CatAddButton.IsVisible = visible;
             CatMoreButton.IsVisible = visible;
             Headline.FontSize = Device.GetNamedSize(visible ? NamedSize.Medium : NamedSize.Micro, typeof(Label));
+            SettingsModel.I.MINIMIZED_HEADER = !visible;
         }
 
         private void HeaderSwitch(object sender, EventArgs e)
