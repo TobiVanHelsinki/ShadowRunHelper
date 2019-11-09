@@ -4,10 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.ControlsOther.SettingsView">
     <ContentView.Content>
         <TableView>
+            <TableView.Resources>
+                <controlsother:SpacingConverter x:Key="SpacingConverter"/>
+            </TableView.Resources>
             <TableRoot Title="{resx:UiResources TitleSettings}">
                 <TableSection Title="{resx:UiResources Optionen_Group_Char}">
                     <SwitchCell Text="{resx:UiResources Optionen_EditAfterAdd}" On="{x:Binding Settings.START_AFTER_EDIT}"/>
@@ -29,6 +33,14 @@
                         </StackLayout>
                     </ViewCell>
                     <SwitchCell Text="{resx:UiResources Optionen_BACKUP_VERSIONING}" On="{x:Binding Settings.BACKUP_VERSIONING}"/>
+                </TableSection>
+                <TableSection Title="{resx:UiResources Optionen_Group_Style}">
+                    <ViewCell>
+                        <StackLayout>
+                            <Picker ItemsSource="{x:Binding Styles}" SelectedItem="{x:Binding Settings.CurrentStyleName}"/>
+                            <Picker ItemsSource="{x:Binding Spacings}" SelectedItem="{x:Binding Settings.CurrentSpacingStrategy, Converter={StaticResource SpacingConverter} }"/>
+                        </StackLayout>
+                    </ViewCell>
                 </TableSection>
             </TableRoot>
         </TableView>

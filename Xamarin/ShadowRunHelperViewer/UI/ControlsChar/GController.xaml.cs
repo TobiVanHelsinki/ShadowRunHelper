@@ -5,6 +5,9 @@ using ShadowRunHelper;
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.UI.ControlsOther;
+using ShadowRunHelperViewer.UI.Resources;
+using SharedCode.Ressourcen;
 using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -166,9 +169,48 @@ namespace ShadowRunHelperViewer
         {
             MyChar = myChar;
             InitializeComponent();
+            CreateStyle();
             OnControllerChanged();
             BindingContextChanged += GController_BindingContextChanged;
             SetHeaderVisible(!SettingsModel.I.MINIMIZED_HEADER);
+        }
+
+        private void CreateStyle()
+        {
+            foreach (var (name, type, setter) in new[] {
+                ("TemplateStack", typeof(StackLayout), new (BindableProperty, object)[] {
+                    (StackLayout.SpacingProperty, 0),
+                    (StackLayout.OrientationProperty, Orientation.Horizontal),
+                    (MarginProperty, SettingsModel.I.CurrentSpacingStrategy),
+                    (VerticalOptionsProperty, LayoutOptions.Center ),
+                }),
+                ("TemplateGrid", typeof(Grid), new (BindableProperty, object)[] {
+                    (Grid.ColumnSpacingProperty, 0),
+                    (Grid.RowSpacingProperty, 0),
+                    (MarginProperty, SettingsModel.I.CurrentSpacingStrategy),
+                    (VerticalOptionsProperty, LayoutOptions.Center ),
+                }),
+                ("SeparatorLine", typeof(BoxView), new (BindableProperty, object)[] {
+                    (HeightRequestProperty, 1),
+                    (MarginProperty, new Thickness(-5,5,-5,0)),
+                    (BackgroundColorProperty, StyleManager.ForegroundColor),
+                }),
+                })
+            {
+                try
+                {
+                    var style = new Style(type);
+                    foreach (var (prop, value) in setter)
+                    {
+                        style.Setters.Add(new Setter() { Property = prop, Value = value });
+                    }
+                    Resources.Add(name, style);
+                }
+                catch (Exception ex)
+                {
+                    Log.Write("Could not create resource", ex, logType: LogType.Error);
+                }
+            }
         }
 
         #region Controller Actions
@@ -191,16 +233,15 @@ namespace ShadowRunHelperViewer
         }
 
         private (string, Action)[] MenuItems => new (string, Action)[] {
-                        (CustomManager.GetString("TxT_Cat_AddSep/Text"),()=>{ }),
-                        (CustomManager.GetString("TxT_Cat_UncheckAll/Text"),()=>{ }),
-                        (CustomManager.GetString("TxT_Cat_Order_ABC/Text"),()=>{ }),
-                        (CustomManager.GetString("TxT_Cat_Order_Type/Text"),()=>{ }),
-                        (CustomManager.GetString("TxT_Cat_Order_Save/Text"),()=>{ }),
-                        (CustomManager.GetString("TxT_Cat_Order_Orig/Text"),()=>{ }),
-                        (CustomManager.GetString("TxT_CSV_Cat_Export/Text"),()=>{ }),
-                        (CustomManager.GetString("TxT_CSV_Cat_Export_Selected/Text"),()=>{ }),
-                        (CustomManager.GetString("TxT_CSV_Cat_Import/Text"),()=>{ }),
-                        (CustomManager.GetString("TxT_Cat_Truncate/Text"),()=>{ }),
+                        (UiResources.Cat_AddSep,()=>{ }),
+                        (UiResources.Cat_UncheckAll,()=>{ }),
+                        (UiResources.Cat_Order_ABC,()=>{ }),
+                        (UiResources.Cat_Order_Type,()=>{ }),
+                        (UiResources.Cat_Order_Save,()=>{ }),
+                        (UiResources.Cat_Order_Orig,()=>{ }),
+                        (UiResources.CSV_Cat_ExportX,()=>{ }),
+                        (UiResources.CSV_Cat_Export_Selected,()=>{ }),
+                        (UiResources.CSV_Cat_ImportX,()=>{ }),
                     };
 
         private void Options(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using ShadowRunHelper.Model;
 using System.Collections.Generic;
@@ -102,6 +104,18 @@ namespace ShadowRunHelper
 #endif
 
         public static bool IAP_HIDEADS { get; set; }
+        public const string StyleDark = "Dark";
+        public const string StyleBrigth = "Brigth";
+        public const string StyleScaryGreen = "ScaryGreen";
+        public static IEnumerable<string> StyleNames = new[] { StyleDark, StyleBrigth, StyleScaryGreen };
+        public const string SpacingCompact = "Compact";
+        public const int SpacingCompactValue = 0;
+        public const string SpacingMedium = "Medium";
+        public const int SpacingMediumValue = 2;
+        public const string SpacingWide = "Wide";
+        public const int SpacingWideValue = 4;
+        public static IEnumerable<string> Spacings = new[] { SpacingCompact, SpacingMedium, SpacingWide };
+
         #endregion IAPs
 
         #region Diagnostics

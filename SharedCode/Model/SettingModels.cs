@@ -1,6 +1,5 @@
 ﻿//Author: Tobi van Helsinki
 
-using ShadowRunHelper.Model;
 using System;
 using System.IO;
 using TAPPLICATION;
@@ -13,6 +12,13 @@ namespace ShadowRunHelper
     public class SettingsModel : SharedSettingsModel
     {
         #region Settings
+
+        [Setting("SETTINGS_CURRENT_SPACING_STRATEGY", 2, SaveType.Roaming)]
+        public int CurrentSpacingStrategy { get => Get(); set => Set(value); }
+
+        [Setting("SETTINGS_CURRENT_STYLE_NAME", "", SaveType.Roaming)]
+        public string CurrentStyleName { get => Get(); set => Set(value); }
+
         [Setting("SETTINGS_MINIMIZED_HEADER", false, SaveType.Roaming)]
         public bool MINIMIZED_HEADER { get => Get(); set => Set(value); }
 
