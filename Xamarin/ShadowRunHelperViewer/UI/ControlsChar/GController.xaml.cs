@@ -180,7 +180,7 @@ namespace ShadowRunHelperViewer
             foreach (var (name, type, setter) in new[] {
                 ("TemplateStack", typeof(StackLayout), new (BindableProperty, object)[] {
                     (StackLayout.SpacingProperty, 0),
-                    (StackLayout.OrientationProperty, Orientation.Horizontal),
+                    (StackLayout.OrientationProperty, StackOrientation.Horizontal),
                     (MarginProperty, SettingsModel.I.CurrentSpacingStrategy),
                     (VerticalOptionsProperty, LayoutOptions.Center ),
                 }),

@@ -46,12 +46,12 @@
             </Style>
 
             <ControlTemplate x:Key="Thing_Name_H">
-                <StackLayout Style="{StaticResource TemplateStack}">
+                <StackLayout Style="{DynamicResource TemplateStack}">
                     <Label Text="{resx:ModelResources Thing_Bezeichner}" Style="{StaticResource HeadLineText}"/>
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Name" x:DataType="CharModel:Thing">
-                <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
+                <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{DynamicResource TemplateStack}">
                     <Label x:Name="Typ" Text="{x:Binding Typ}" Style="{StaticResource STDText}"/>
                     <Label Text=":" Style="{StaticResource STDText}" Margin="0,0,2,0">
                         <Label.Triggers>
@@ -66,23 +66,23 @@
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Value_H">
-                <StackLayout Style="{StaticResource TemplateStack}">
+                <StackLayout Style="{DynamicResource TemplateStack}">
                     <Label Text="{resx:ModelResources Thing_Wert}" Style="{StaticResource HeadLineText}"/>
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Value" x:DataType="CharModel:Thing">
-                <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
+                <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{DynamicResource TemplateStack}" Orientation="Horizontal">
                     <Label Text="{x:Binding Value.TrueValue}" Style="{StaticResource STDText}"/>
                     <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDText}"/>
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Notes" x:DataType="CharModel:Thing">
-                <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource TemplateStack}">
+                <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{DynamicResource TemplateStack}">
                     <Label Text="{x:Binding Notiz}"/>
                 </StackLayout>
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Buttons" x:DataType="CharModel:Thing">
-                <StackLayout Orientation="Vertical" BindingContext="{TemplateBinding BindingContext}" Spacing="4" Style="{StaticResource TemplateStack}">
+                <StackLayout Orientation="Vertical" BindingContext="{TemplateBinding BindingContext}" Spacing="4" Style="{DynamicResource TemplateStack}">
                     <Button Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Edit"/>
                     <Grid BackgroundColor="Gray" Opacity="0.75" HorizontalOptions="Center" VerticalOptions="Start" Padding="5,0,0,0">
                         <Grid.ColumnDefinitions>
@@ -683,7 +683,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
-                    <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{StaticResource TemplateStack}">
+                    <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{DynamicResource TemplateStack}">
                         <ContentView ControlTemplate="{StaticResource Thing_Value_H}"/>
                         <Label Text="{resx:ModelResources Waffe_SchadenTyp}" Style="{StaticResource HeadLineText}" Margin="1,0,0,0"/>
                         <Label Text="[" Style="{StaticResource HeadLineText}" Margin="1,0,0,0"/>
@@ -708,7 +708,7 @@
                         </Grid.ColumnDefinitions>
                         <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                         <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{StaticResource TemplateStack}">
+                        <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{DynamicResource TemplateStack}">
                             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
                             <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
                             <Label Text="[" Style="{StaticResource STDText}" Margin="1,0,0,0"/>
@@ -761,7 +761,7 @@
                         </Grid.ColumnDefinitions>
                         <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                         <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{StaticResource TemplateStack}">
+                        <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{DynamicResource TemplateStack}">
                             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
                             <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
                             <Label Text="[" Style="{StaticResource STDText}" Margin="1,0,0,0"/>
