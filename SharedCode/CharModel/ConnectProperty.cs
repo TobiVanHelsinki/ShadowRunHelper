@@ -79,7 +79,13 @@ namespace ShadowRunHelper.CharModel
         public string Name
         {
             get => _Name;
-            set { _Name = value; NotifyPropertyChanged(); }
+            set
+            {
+                if (_Name != value)
+                {
+                    _Name = value; NotifyPropertyChanged();
+                }
+            }
         }
 
         [JsonIgnore]
@@ -89,7 +95,13 @@ namespace ShadowRunHelper.CharModel
         public Thing Owner
         {
             get => _Owner;
-            set { _Owner = value; NotifyPropertyChanged(); }
+            set
+            {
+                if (_Owner != value)
+                {
+                    _Owner = value; NotifyPropertyChanged();
+                }
+            }
         }
 
         private bool _Active = true;
