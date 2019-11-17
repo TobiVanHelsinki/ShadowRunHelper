@@ -59,6 +59,7 @@ namespace ShadowRunHelper.CharModel
         }
         #endregion NotifyPropertyChanged
 
+        [JsonIgnore]
         public virtual IEnumerable<ThingDefs> Filter { get; private set; } = new List<ThingDefs>();
 
         #region Properties

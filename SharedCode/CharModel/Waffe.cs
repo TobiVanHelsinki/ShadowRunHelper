@@ -1,5 +1,8 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
 
+///Author: Tobi van Helsinki
+
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
@@ -49,6 +52,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        [JsonIgnore]
         public override IEnumerable<ThingDefs> Filter => StaticFilter;
 
         static readonly IEnumerable<ThingDefs> StaticFilter = new[]
