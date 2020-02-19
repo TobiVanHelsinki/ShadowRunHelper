@@ -118,6 +118,8 @@ namespace ShadowRunHelperViewer
                     vc.Tapped += ItemCell_Tapped;
                     section.Add(vc);
                 }
+
+                //ItemsNew.ItemTemplate = Resources["ThingNew"] as DataTemplate;
             }
         }
 
@@ -129,14 +131,29 @@ namespace ShadowRunHelperViewer
             }
         }
 
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            if (sender is Grid view)
+            {
+                ItemToggleViewMode(view);
+                view.ForceLayout();
+                if (view.Parent is CollectionView cv)
+                {
+                }
+                view.HeightRequest = 60;
+            }
+        }
+
+        private void ItemCell_Tapped(object sender, EventArgs e) => ItemToggleViewMode((sender as ViewCell)?.View);
+
         /// <summary>
         /// Toggles between normal and expandet state
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void ItemCell_Tapped(object sender, EventArgs e)
+        private void ItemToggleViewMode(View view)
         {
-            if (sender is ViewCell vc && vc.BindingContext is Thing item)
+            if (view.BindingContext is Thing item)
             {
                 var CustomTemplate = item.ThingType.HierarchieUpSearch(s => { Resources.TryGetValue(s + "X", out var CustomTemplate); return CustomTemplate; });
                 if (CustomTemplate is null)
@@ -145,7 +162,7 @@ namespace ShadowRunHelperViewer
                 }
                 if (CustomTemplate is DataTemplate DT)
                 {
-                    if (vc.View.FindByName("Extended") is ContentView XView)
+                    if (view.FindByName("Extended") is ContentView XView)
                     {
                         if (XView.Content is null)
                         {
@@ -158,7 +175,6 @@ namespace ShadowRunHelperViewer
                         {
                             XView.Content = null;
                         }
-                        vc.ForceUpdateSize();
                     }
                 }
             }

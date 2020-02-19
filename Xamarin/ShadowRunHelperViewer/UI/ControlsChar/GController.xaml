@@ -105,6 +105,27 @@
                     <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value_H}"/>
                 </Grid>
             </ControlTemplate>
+            <DataTemplate x:Key="ThingNew" x:DataType="CharModel:Thing">
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Grid.GestureRecognizers>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}"/>
+                    <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value}"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                </Grid>
+            </DataTemplate>
             <DataTemplate x:Key="Thing" x:DataType="CharModel:Thing">
                 <ViewCell>
                     <Grid Style="{DynamicResource TemplateGrid}">
@@ -1096,6 +1117,21 @@
                     </Grid>
                 </ViewCell>
             </DataTemplate>
+            <Style TargetType="Grid">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
+                                        Value="LightSkyBlue"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -1113,6 +1149,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <!--<RowDefinition Height="*"/>-->
             </Grid.RowDefinitions>
             <TableView x:Name="Items" HasUnevenRows="True" Intent="Data" Grid.Row="1"
                        Margin="{StaticResource Offset}">
@@ -1121,6 +1158,15 @@
                     <SwipeGestureRecognizer Direction="Down" Swiped="HeaderShow"/>
                 </TableView.GestureRecognizers>
             </TableView>
+            <!--<CollectionView x:Name="ItemsNew" Grid.Row="2"
+                            ItemsSource="{Binding Data, Mode=OneWay}"
+                            ItemSizingStrategy="MeasureAllItems"
+                            ItemsUpdatingScrollMode="KeepScrollOffset"
+                            SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="0"/>
+                </CollectionView.ItemsLayout>
+            </CollectionView>-->
             <Grid BackgroundColor="White" x:Name="Header">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
