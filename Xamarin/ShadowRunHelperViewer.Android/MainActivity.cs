@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Author: Tobi van Helsinki
+
+using System;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -26,8 +28,10 @@ namespace ShadowRunHelperViewer.Droid
             TAPPLICATION_Xamarin.Init.Do();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState); // add this line to your code, it may also be called: bundle
-            #endregion
-            Forms.SetFlags("CollectionView_Experimental");
+            #endregion Init Libs
+
+            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+            Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             SetAccentColor();
             LoadApplication(new App());
@@ -65,6 +69,7 @@ namespace ShadowRunHelperViewer.Droid
                 // Do something if there are not any pages in the `PopupStack`
             }
         }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

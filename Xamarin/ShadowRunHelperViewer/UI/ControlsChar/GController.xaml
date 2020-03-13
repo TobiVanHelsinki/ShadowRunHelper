@@ -7,7 +7,9 @@
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
+             xmlns:controlschar="clr-namespace:ShadowRunHelperViewer.UI.ControlsChar"
              mc:Ignorable="d"
+             SizeChanged="ContentView_SizeChanged"
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -83,13 +85,13 @@
             </ControlTemplate>
             <ControlTemplate x:Key="Thing_Buttons" x:DataType="CharModel:Thing">
                 <StackLayout Orientation="Vertical" BindingContext="{TemplateBinding BindingContext}" Spacing="4" Style="{DynamicResource TemplateStack}">
-                    <Button Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Edit"/>
+                    <!--<Button Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" Clicked="Thing_Edit"/>-->
                     <Grid BackgroundColor="Gray" Opacity="0.75" HorizontalOptions="Center" VerticalOptions="Start" Padding="5,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="&#xf004;" Style="{StaticResource IconLabel}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Small" TextColor="FloralWhite"/>
-                        <CheckBox IsChecked="{x:Binding IsFavorite}" Color="FloralWhite" VerticalOptions="Center"/>
+                        <!--<Label Text="&#xf004;" Style="{StaticResource IconLabel}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Small" TextColor="FloralWhite"/>-->
+                        <!--<CheckBox IsChecked="{x:Binding IsFavorite}" Color="FloralWhite" VerticalOptions="Center"/>-->
                     </Grid>
                 </StackLayout>
             </ControlTemplate>
@@ -105,29 +107,15 @@
                     <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value_H}"/>
                 </Grid>
             </ControlTemplate>
-            <DataTemplate x:Key="ThingNew" x:DataType="CharModel:Thing">
-                <Grid Style="{DynamicResource TemplateGrid}">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                    </Grid.GestureRecognizers>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}"/>
-                    <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value}"/>
-                    <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
-                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-                </Grid>
-            </DataTemplate>
+
             <DataTemplate x:Key="Thing" x:DataType="CharModel:Thing">
-                <ViewCell>
+                <SwipeView>
+                    <SwipeView.LeftItems>
+                        <SwipeItems>
+                            <SwipeItem Text="Favorite" BackgroundColor="LightGreen" Clicked="Thing_Fav"/>
+                            <SwipeItem Text="Delete" BackgroundColor="LightPink" IsDestructive="True" Clicked="Thing_Delete"/>
+                        </SwipeItems>
+                    </SwipeView.LeftItems>
                     <Grid Style="{DynamicResource TemplateGrid}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -144,7 +132,7 @@
                         <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
                         <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
                     </Grid>
-                </ViewCell>
+                </SwipeView>
             </DataTemplate>
             <DataTemplate x:Key="ThingX" x:DataType="CharModel:Thing">
                 <Grid>
@@ -179,28 +167,26 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Handlung" x:DataType="CharModel:Handlung">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-                        <StackLayout Orientation="Horizontal" Grid.Column="1">
-                            <ContentView ControlTemplate="{StaticResource Thing_Value}"/>
-                            <Label Text="[" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Limit.TrueValue}" Style="{StaticResource STDText}"/>
-                            <Label Text="]" Style="{StaticResource STDText}"/>
-                        </StackLayout>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="2" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="2" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+                    <StackLayout Orientation="Horizontal" Grid.Column="1">
+                        <ContentView ControlTemplate="{StaticResource Thing_Value}"/>
+                        <Label Text="[" Style="{StaticResource STDText}"/>
+                        <Label Text="{x:Binding Limit.TrueValue}" Style="{StaticResource STDText}"/>
+                        <Label Text="]" Style="{StaticResource STDText}"/>
+                    </StackLayout>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="2" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="2" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
 
             <ControlTemplate x:Key="Note_H">
@@ -208,24 +194,22 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Note" x:DataType="CharModel:Note">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-                        <Button Text="&#xf2ed;" Style="{StaticResource ControllerIconButton}" Grid.Column="1" Clicked="Thing_Delete"/>
-                        <!--<Editor Text="{x:Binding Text}" Grid.ColumnSpan="2" Grid.Row="1" Keyboard="Text" AutoSize="TextChanges" IsSpellCheckEnabled = "True" IsTextPredictionEnabled="True"/>-->
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="2" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="2" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+                    <Button Text="&#xf2ed;" Style="{StaticResource ControllerIconButton}" Grid.Column="1" Clicked="Thing_Delete"/>
+                    <!--<Editor Text="{x:Binding Text}" Grid.ColumnSpan="2" Grid.Row="1" Keyboard="Text" AutoSize="TextChanges" IsSpellCheckEnabled = "True" IsTextPredictionEnabled="True"/>-->
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="2" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="2" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Key="NoteX" x:DataType="CharModel:Note">
                 <Grid Style="{DynamicResource TemplateGrid}">
@@ -293,29 +277,27 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="SuperNaturalSkills" x:DataType="CharModel:SuperNaturalSkills">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-                        <Label Text="{x:Binding Target}" Style="{StaticResource STDText}" Grid.Column="1"/>
-                        <Label Text="{x:Binding Duration}" Style="{StaticResource STDText}" Grid.Column="2"/>
-                        <Label Text="{x:Binding Fading}" Style="{StaticResource STDText}" Grid.Column="3"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="4"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+                    <Label Text="{x:Binding Target}" Style="{StaticResource STDText}" Grid.Column="1"/>
+                    <Label Text="{x:Binding Duration}" Style="{StaticResource STDText}" Grid.Column="2"/>
+                    <Label Text="{x:Binding Fading}" Style="{StaticResource STDText}" Grid.Column="3"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="4"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
 
             <ControlTemplate x:Key="Eigenschaft_H">
@@ -334,26 +316,24 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Eigenschaft" x:DataType="CharModel:Eigenschaft">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-                        <!--<ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="1"/>-->
-                        <Label Text="{x:Binding Value.TrueValue}" Style="{StaticResource STDTextCenter}" Grid.Column="1"/>
-                        <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+                    <!--<ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="1"/>-->
+                    <Label Text="{x:Binding Value.TrueValue}" Style="{StaticResource STDTextCenter}" Grid.Column="1"/>
+                    <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
 
             <x:Int16 x:Key="ItemsBoxesWidth">65</x:Int16>
@@ -404,27 +384,25 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Item" x:DataType="CharModel:Item">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-                        <Label Text="{x:Binding Anzahl}" Style="{StaticResource STDText}" Grid.Column="3"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="4" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                    <Label Text="{x:Binding Anzahl}" Style="{StaticResource STDText}" Grid.Column="3"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="4" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
 
             <ControlTemplate x:Key="Vehikel_H">
@@ -443,25 +421,23 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Vehikel" x:DataType="CharModel:Vehikel">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                    <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Key="VehikelX" x:DataType="CharModel:Vehikel">
                 <Grid>
@@ -512,33 +488,31 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Kommlink" x:DataType="CharModel:Kommlink">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="3*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-                        <Label Text="{x:Binding Schaden}" Grid.Column="3" Style="{StaticResource STDText}"/>
-                        <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center">
-                            <Label Text="{x:Binding Firewall.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
-                            <Label Text="/" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Datenverarbeitung.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
-                        </StackLayout>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                    <Label Text="{x:Binding Schaden}" Grid.Column="3" Style="{StaticResource STDText}"/>
+                    <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center">
+                        <Label Text="{x:Binding Firewall.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                        <Label Text="/" Style="{StaticResource STDText}"/>
+                        <Label Text="{x:Binding Datenverarbeitung.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                    </StackLayout>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Key="KommlinkX" x:DataType="CharModel:Kommlink">
                 <Grid>
@@ -573,37 +547,35 @@
                 <ContentView ControlTemplate="{StaticResource Kommlink_H}"/>
             </ControlTemplate>
             <DataTemplate x:Key="CyberDeck" x:DataType="CharModel:CyberDeck">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="3*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-                        <Label Text="{x:Binding Schaden}" Grid.Column="3" Style="{StaticResource STDText}"/>
-                        <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center">
-                            <Label Text="{x:Binding Angriff.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
-                            <Label Text="/" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Schleicher.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
-                            <Label Text="/" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Firewall.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
-                            <Label Text="/" Style="{StaticResource STDText}"/>
-                            <Label Text="{x:Binding Datenverarbeitung.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
-                        </StackLayout>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                    <Label Text="{x:Binding Schaden}" Grid.Column="3" Style="{StaticResource STDText}"/>
+                    <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center">
+                        <Label Text="{x:Binding Angriff.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                        <Label Text="/" Style="{StaticResource STDText}"/>
+                        <Label Text="{x:Binding Schleicher.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                        <Label Text="/" Style="{StaticResource STDText}"/>
+                        <Label Text="{x:Binding Firewall.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                        <Label Text="/" Style="{StaticResource STDText}"/>
+                        <Label Text="{x:Binding Datenverarbeitung.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                    </StackLayout>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Key="CyberDeckX" x:DataType="CharModel:CyberDeck">
                 <Grid>
@@ -669,27 +641,25 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Programm" x:DataType="CharModel:Programm">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <Label Text="{x:Binding Optionen}" Style="{StaticResource STDText}" Grid.Column="2"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="3"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="4" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                    <Label Text="{x:Binding Optionen}" Style="{StaticResource STDText}" Grid.Column="2"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="3"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="4" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
 
             <ControlTemplate x:Key="Fernkampfwaffe_H">
@@ -715,32 +685,30 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Fernkampfwaffe" x:DataType="CharModel:Fernkampfwaffe">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{DynamicResource TemplateStack}">
-                            <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-                            <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
-                            <Label Text="[" Style="{StaticResource STDText}" Margin="1,0,0,0"/>
-                            <Label Text="{x:Binding Precision.TrueValue}" Style="{StaticResource STDText}"/>
-                            <Label Text="]" Style="{StaticResource STDText}" Margin="0,0,1,0"/>
-                            <Label Text="{x:Binding DK.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
-                        </StackLayout>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                    <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{DynamicResource TemplateStack}">
+                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                        <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
+                        <Label Text="[" Style="{StaticResource STDText}" Margin="1,0,0,0"/>
+                        <Label Text="{x:Binding Precision.TrueValue}" Style="{StaticResource STDText}"/>
+                        <Label Text="]" Style="{StaticResource STDText}" Margin="0,0,1,0"/>
+                        <Label Text="{x:Binding DK.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                    </StackLayout>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Key="FernkampfwaffeX" x:DataType="CharModel:Fernkampfwaffe">
                 <Grid>
@@ -768,32 +736,30 @@
                 <ContentView ControlTemplate="{StaticResource Fernkampfwaffe_H}"/>
             </ControlTemplate>
             <DataTemplate x:Key="Nahkampfwaffe" x:DataType="CharModel:Nahkampfwaffe">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{DynamicResource TemplateStack}">
-                            <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-                            <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
-                            <Label Text="[" Style="{StaticResource STDText}" Margin="1,0,0,0"/>
-                            <Label Text="{x:Binding Precision.TrueValue}" Style="{StaticResource STDText}"/>
-                            <Label Text="]" Style="{StaticResource STDText}" Margin="0,0,1,0"/>
-                            <Label Text="{x:Binding DK.TrueValue}" Style="{StaticResource STDText}" Grid.Column="4"/>
-                        </StackLayout>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                    <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{DynamicResource TemplateStack}">
+                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                        <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
+                        <Label Text="[" Style="{StaticResource STDText}" Margin="1,0,0,0"/>
+                        <Label Text="{x:Binding Precision.TrueValue}" Style="{StaticResource STDText}"/>
+                        <Label Text="]" Style="{StaticResource STDText}" Margin="0,0,1,0"/>
+                        <Label Text="{x:Binding DK.TrueValue}" Style="{StaticResource STDText}" Grid.Column="4"/>
+                    </StackLayout>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Key="NahkampfwaffeX" x:DataType="CharModel:Nahkampfwaffe">
                 <Grid>
@@ -834,25 +800,23 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Panzerung" x:DataType="CharModel:Panzerung">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Key="PanzerungX" x:DataType="CharModel:Panzerung">
                 <Grid>
@@ -891,25 +855,23 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Munition" x:DataType="CharModel:Munition">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Key="MunitionX" x:DataType="CharModel:Munition">
                 <Grid>
@@ -955,29 +917,27 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Helper" x:DataType="CharModel:Helper">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-                        <Label Text="{x:Binding Dienste}" Grid.Column="3" Style="{StaticResource STDText}"/>
-                        <Label Text="{x:Binding Geb_Reg}" Grid.Column="4" Style="{StaticResource STDText}"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                    <Label Text="{x:Binding Dienste}" Grid.Column="3" Style="{StaticResource STDText}"/>
+                    <Label Text="{x:Binding Geb_Reg}" Grid.Column="4" Style="{StaticResource STDText}"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="5" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Key="HelperX" x:DataType="CharModel:Helper">
                 <Grid>
@@ -1015,25 +975,23 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Connection" x:DataType="CharModel:Connection">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-                        <Label Text="{x:Binding Einfluss}" Grid.Column="1" Style="{StaticResource STDText}"/>
-                        <Label Text="{x:Binding Loyal}" Grid.Column="2" Style="{StaticResource STDText}"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+                    <Label Text="{x:Binding Einfluss}" Grid.Column="1" Style="{StaticResource STDText}"/>
+                    <Label Text="{x:Binding Loyal}" Grid.Column="2" Style="{StaticResource STDText}"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="3" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
 
             <ControlTemplate x:Key="Initiation_H">
@@ -1054,27 +1012,25 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Initiation" x:DataType="CharModel:Initiation">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="1"/>
-                        <Label Text="{x:Binding Metamagie}" Grid.Column="2" Style="{StaticResource STDText}"/>
-                        <Label Text="{x:Binding Schutzpatron}" Grid.Column="3" Style="{StaticResource STDText}"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="4" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="1"/>
+                    <Label Text="{x:Binding Metamagie}" Grid.Column="2" Style="{StaticResource STDText}"/>
+                    <Label Text="{x:Binding Schutzpatron}" Grid.Column="3" Style="{StaticResource STDText}"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="4" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
 
             <ControlTemplate x:Key="Wandlung_H">
@@ -1095,27 +1051,25 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Wandlung" x:DataType="CharModel:Wandlung">
-                <ViewCell>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-                        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="1"/>
-                        <Label Text="{x:Binding Echos}" Grid.Column="2" Style="{StaticResource STDText}"/>
-                        <Label Text="{x:Binding Paragon}" Grid.Column="3" Style="{StaticResource STDText}"/>
-                        <ContentView x:Name="Extended" Grid.ColumnSpan="4" Grid.Row="1"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
-                    </Grid>
-                </ViewCell>
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="1"/>
+                    <Label Text="{x:Binding Echos}" Grid.Column="2" Style="{StaticResource STDText}"/>
+                    <Label Text="{x:Binding Paragon}" Grid.Column="3" Style="{StaticResource STDText}"/>
+                    <ContentView x:Name="Extended" Grid.ColumnSpan="4" Grid.Row="1"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
+                </Grid>
             </DataTemplate>
             <Style TargetType="Grid">
                 <Setter Property="VisualStateManager.VisualStateGroups">
@@ -1141,33 +1095,17 @@
                     <On Platform="Android" Value="45"/>
                     <On Platform="UWP, WinRT, WinPhone" Value="Auto"/>
                 </OnPlatform>
-                <OnPlatform x:Key="Offset" x:TypeArguments="Thickness">
-                    <On Platform="Android" Value="0,0,0,0"/>
-                    <On Platform="UWP, WinRT, WinPhone" Value="0,-45,0,0"/>
-                </OnPlatform>
             </Grid.Resources>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <!--<RowDefinition Height="*"/>-->
+                <RowDefinition Height="Auto" x:Name="HeaderRow"/>
+                <RowDefinition Height="*" x:Name="ItemsRow"/>
+                <RowDefinition Height="0" x:Name="DetailRow"/>
             </Grid.RowDefinitions>
-            <TableView x:Name="Items" HasUnevenRows="True" Intent="Data" Grid.Row="1"
-                       Margin="{StaticResource Offset}">
-                <TableView.GestureRecognizers>
-                    <SwipeGestureRecognizer Direction="Up" Swiped="HeaderHide"/>
-                    <SwipeGestureRecognizer Direction="Down" Swiped="HeaderShow"/>
-                </TableView.GestureRecognizers>
-            </TableView>
-            <!--<CollectionView x:Name="ItemsNew" Grid.Row="2"
-                            ItemsSource="{Binding Data, Mode=OneWay}"
-                            ItemSizingStrategy="MeasureAllItems"
-                            ItemsUpdatingScrollMode="KeepScrollOffset"
-                            SelectionMode="Single">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="0"/>
-                </CollectionView.ItemsLayout>
-            </CollectionView>-->
-            <Grid BackgroundColor="White" x:Name="Header">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" x:Name="ItemsColumn"/>
+                <ColumnDefinition Width="0" x:Name="DetailColumn"/>
+            </Grid.ColumnDefinitions>
+            <Grid BackgroundColor="White" x:Name="Header" Grid.ColumnSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -1192,6 +1130,31 @@
                 <ContentView Grid.Row="1" x:Name="Items_H"/>
                 <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray" Margin="0"/>
             </Grid>
+            <CollectionView x:Name="Items" Grid.Row="1"
+                            ItemsSource="{Binding Data, Mode=OneWay}"
+                            ItemSizingStrategy="MeasureAllItems"
+                            ItemsUpdatingScrollMode="KeepScrollOffset"
+                            SelectionChanged="Items_SelectionChanged"
+                            SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="0"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Fill">
+                        <Label Text=";;No Items to display."
+                            FontAttributes="Bold" FontSize="18"
+                            HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Text=";;Create new items witht the + Button."
+                            FontAttributes="Italic" FontSize="12"
+                            HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Up" Swiped="HeaderHide"/>
+                    <SwipeGestureRecognizer Direction="Down" Swiped="HeaderShow"/>
+                </CollectionView.GestureRecognizers>
+            </CollectionView>
+            <controlschar:DetailsView x:Name="DetailsPane" ClosingRequested="DetailsPane_ClosingRequested"/>
         </Grid>
     </ContentView.Content>
 </ContentView>

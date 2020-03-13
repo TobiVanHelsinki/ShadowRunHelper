@@ -47,8 +47,7 @@ namespace ShadowRunHelperViewer
         {
             if (Content is Grid g && g.Children.Count > 0 && g.Children[0] is GCharHolder currentchar)
             {
-                currentchar.MenuOpen = true;
-                return true;
+                return currentchar.OnBackButtonPressed();
             }
             return false;
         }

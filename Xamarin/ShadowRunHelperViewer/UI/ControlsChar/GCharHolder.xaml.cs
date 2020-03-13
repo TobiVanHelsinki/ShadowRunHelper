@@ -9,6 +9,7 @@ using ShadowRunHelper.CharModel;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
+using ShadowRunHelperViewer.UI;
 using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
 using System;
@@ -38,12 +39,21 @@ namespace ShadowRunHelperViewer
         #endregion NotifyPropertyChanged
 
         public AppModel Model => AppModel.Instance;
-
         private CharHolder _MyChar;
         public CharHolder MyChar
         {
             get => _MyChar;
             set { if (_MyChar != value) { _MyChar = value; NotifyPropertyChanged(); } }
+        }
+
+        internal bool OnBackButtonPressed()
+        {
+            MenuOpen = true;
+            if (ContentPanel.Content is GController gCtrl)
+            {
+                return gCtrl.OnBackButtonPressed();
+            }
+            return true;
         }
 
         public virtual void Dispose()
@@ -260,7 +270,6 @@ namespace ShadowRunHelperViewer
             myBtn.BackgroundColor = Color.Accent;
             myBtn.TextColor = Color.FloralWhite;
         }
-
         #endregion Category Buttons
 
         #region AdaptiveUI
@@ -321,8 +330,8 @@ namespace ShadowRunHelperViewer
 
         private void SetViewParameters()
         {
-            Narrow = Width < 650;
-            if (Width > 650 && MyChar != null)
+            Narrow = Width < UIConstants.MinWidthDesktop;
+            if (Width > UIConstants.MinWidthDesktop && MyChar != null)
             {
                 MenuOpen = true;
             }

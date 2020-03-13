@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper;
+﻿//Author: Tobi van Helsinki
+
+using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -13,7 +15,7 @@ namespace ShadowRunHelperViewer.UWP
     sealed partial class App : Application
     {
         /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
+        /// Initializes the singleton application object. This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
@@ -23,6 +25,7 @@ namespace ShadowRunHelperViewer.UWP
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
             Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+            Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             InitializeComponent();
 
             Init.Do();
@@ -33,6 +36,7 @@ namespace ShadowRunHelperViewer.UWP
         }
 
         #region Entry-Points
+
         /// <summary>
         /// normal App launc
         /// </summary>
@@ -42,6 +46,7 @@ namespace ShadowRunHelperViewer.UWP
             Xamarin.Forms.Forms.Init(args);
             base.OnLaunched(args);
         }
+
         /// <summary>
         /// launch via a protocol
         /// </summary>
@@ -56,8 +61,9 @@ namespace ShadowRunHelperViewer.UWP
                 AppHolder.FileActivated(name, uriArgs.Uri.LocalPath.Remove(uriArgs.Uri.LocalPath.Length - name.Length));
             }
         }
+
         /// <summary>
-        /// launch vie open file 
+        /// launch vie open file
         /// </summary>
         /// <param name="args"></param>
         protected override void OnFileActivated(FileActivatedEventArgs args)
@@ -77,15 +83,14 @@ namespace ShadowRunHelperViewer.UWP
                 Features.AppDataPorter.Loading = Features.AppDataPorter.LoadAppPacket(args.Files[0]);
             }
         }
-        #endregion
+        #endregion Entry-Points
 
         /// <summary>
-        /// Creating and activating ui
-        /// get's called after evry entry point method
+        /// Creating and activating ui get's called after evry entry point method
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
+        private void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
         {
             if (!(Window.Current.Content is Frame rootFrame))
             {
@@ -111,7 +116,7 @@ namespace ShadowRunHelperViewer.UWP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
+        private void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
         {
             var def = e.GetDeferral();
             AppHolder.EnteredBackground();
