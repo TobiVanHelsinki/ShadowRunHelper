@@ -44,6 +44,12 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
                     NotesContent.IsVisible = false;
                     StandardThingContents.IsVisible = false;
                 }
+                if (MyThing.ThingType == ThingDefs.Note)
+                {
+                    NotesContent.IsVisible = false;
+                    CalcContent.IsVisible = false;
+                    NumberContent.IsVisible = false;
+                }
                 CreateView();
             }
             catch (Exception ex)
@@ -54,7 +60,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
                     System.Diagnostics.Debugger.Break();
                 }
 
-                Close_Clicked(this, new EventArgs());
+                ClosingRequested?.Invoke(this, new EventArgs());
             }
         }
 
@@ -75,7 +81,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
                                                                                     x.Name == nameof(Thing.Bezeichner) ||
                                                                                     x.Name == nameof(Thing.Wert) ||
                                                                                     x.Name == nameof(Thing.Typ) ||
-                                                                                    x.Name == nameof(Thing.Zusatz) ||
+                                                                                    //x.Name == nameof(Thing.Zusatz) ||
                                                                                     x.Name == nameof(Thing.Notiz) ||
                                                                                     x.Name == nameof(Thing.FavoriteIndex) ||
                                                                                     x.Name == nameof(Handlung.GegenCalced) ||
@@ -87,6 +93,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
                 var Name = CreateNameLabel(item);
 
                 View Content;
+                //Part 2: Create content of rigth type
                 if (item.PropertyType == typeof(bool) || item.PropertyType == typeof(bool?))
                 {
                     Content = new Switch();
@@ -99,6 +106,11 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
                     AddConnectedValuesToViewAndRegister(Content, charCalcProperty);
                     Content.BindingContext = charCalcProperty;
                 }
+                else if (item.DeclaringType == typeof(Note) && item.Name == nameof(Note.Text))
+                {
+                    Content = (Resources["EditorTemplate"] as DataTemplate).CreateContent() as View;
+                    Content.BindingContext = MyThing;
+                }
                 else
                 {
                     Content = new Entry
@@ -107,6 +119,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
                     };
                     Content.SetBinding(Entry.TextProperty, new Binding(item.Name));
                 }
+                //Part 2: Add it to the rigth panel
                 if (item.PropertyType == typeof(double) || item.PropertyType == typeof(double?))
                 {
                     if (NumberCounter % 2 == 0)
@@ -193,7 +206,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
         private void Delete_Clicked(object sender, EventArgs e)
         {
             MyChar.Remove(MyThing);
-            Close_Clicked(sender, e);
+            ClosingRequested?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -291,6 +304,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             try
             {
                 PopupNavigation.Instance.PushAsync(new ThingCopyChooser(MyThing, MyChar, true));
+                ClosingRequested?.Invoke(this, new EventArgs());
             }
             catch (Exception)
             {

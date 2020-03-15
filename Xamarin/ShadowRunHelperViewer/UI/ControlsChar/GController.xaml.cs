@@ -19,6 +19,10 @@ using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer
 {
+    /// <summary>
+    /// </summary>
+    /// <seealso cref="Xamarin.Forms.ContentView"/>
+    /// <seealso cref="System.ComponentModel.INotifyPropertyChanged"/>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GController : ContentView, INotifyPropertyChanged
     {
@@ -99,6 +103,7 @@ namespace ShadowRunHelperViewer
         private void OnControllerChanged()
         {
             DetailsOpen = false;
+            PreviousMode = ViewModes.NotSet;
             if (MyController != null)
             {
                 SelectTemplate(MyController.eDataTyp);
@@ -153,12 +158,22 @@ namespace ShadowRunHelperViewer
 
         #region Details
         private bool _DetailsOpen;
+        /// <summary>
+        /// Controls the UI State dependend at the Details Status
+        /// </summary>
         public bool DetailsOpen
         {
             get => _DetailsOpen;
             set { _DetailsOpen = value; SelectDetailsViewMode(); }
         }
 
+        /// <summary>
+        /// Handles the SelectionChanged event of the Items control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">
+        /// The <see cref="Xamarin.Forms.SelectionChangedEventArgs"/> instance containing the event data.
+        /// </param>
         private void Items_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection.FirstOrDefault() is Thing t)
@@ -183,55 +198,108 @@ namespace ShadowRunHelperViewer
             return false;
         }
 
-        private void DetailsPane_ClosingRequested(object sender, EventArgs e) => DetailsOpen = false;
+        private void DetailsPane_ClosingRequested(object sender, EventArgs e)
+        {
+            DetailsOpen = false;
+        }
 
-        private void ContentView_SizeChanged(object sender, EventArgs e) => SelectDetailsViewMode();
+        private void ContentView_SizeChanged(object sender, EventArgs e)
+        {
+            SelectDetailsViewMode();
+        }
+
+        public enum ViewModes
+        {
+            NotSet, NoDetails, Wide, Tall, Mobile
+        }
+
+        private ViewModes PreviousMode = ViewModes.NotSet;
 
         private void SelectDetailsViewMode()
         {
             if (DetailsOpen)
             {
-                DetailsPane.IsVisible = true;
                 if (Height > UIConstants.MinHeightDesktop && Height > Width)
                 {
-                    ItemsColumn.Width = new GridLength(1, GridUnitType.Star);
-                    ItemsRow.Height = new GridLength(1, GridUnitType.Star);
-                    Items.IsVisible = true;
-                    DetailRow.Height = new GridLength(1, GridUnitType.Star);
-                    DetailColumn.Width = new GridLength(0);
-                    Grid.SetColumn(DetailsPane, 0);
-                    Grid.SetRow(DetailsPane, 2);
+                    SetViewMode(ViewModes.Tall);
                 }
                 else if (Width > UIConstants.MinWidthDesktop && Height <= Width)
                 {
-                    ItemsColumn.Width = new GridLength(1, GridUnitType.Star);
-                    ItemsRow.Height = new GridLength(1, GridUnitType.Star);
-                    Items.IsVisible = true;
-                    DetailRow.Height = new GridLength(0);
-                    DetailColumn.Width = new GridLength(1, GridUnitType.Star);
-                    Grid.SetColumn(DetailsPane, 1);
-                    Grid.SetRow(DetailsPane, 1);
+                    SetViewMode(ViewModes.Wide);
                 }
                 else
                 {
-                    ItemsColumn.Width = new GridLength(0);
-                    ItemsRow.Height = new GridLength(0);
-                    Items.IsVisible = false;
-                    DetailRow.Height = new GridLength(1, GridUnitType.Star);
-                    DetailColumn.Width = new GridLength(1, GridUnitType.Star);
-                    Grid.SetColumn(DetailsPane, 1);
-                    Grid.SetRow(DetailsPane, 2);
+                    SetViewMode(ViewModes.Mobile);
                 }
             }
             else
             {
-                ItemsColumn.Width = new GridLength(1, GridUnitType.Star);
-                ItemsRow.Height = new GridLength(1, GridUnitType.Star);
-                Items.IsVisible = true;
-                DetailRow.Height = new GridLength(0);
-                DetailColumn.Width = new GridLength(0);
-                DetailsPane.IsVisible = false;
-                Items.SelectedItem = null;
+                SetViewMode(ViewModes.NoDetails);
+            }
+        }
+
+        public void SetViewMode(ViewModes newMode)
+        {
+            if (PreviousMode == newMode)
+            {
+                return;
+            }
+            PreviousMode = newMode;
+            switch (newMode)
+            {
+                case ViewModes.NotSet:
+                    break;
+                case ViewModes.NoDetails:
+                    Items.IsVisible = true;
+                    Header.IsVisible = true;
+                    DetailRow.Height = new GridLength(0);
+                    DetailColumn.Width = new GridLength(0);
+                    Grid.SetColumnSpan(DetailsBorder, 1);
+                    Grid.SetRowSpan(DetailsBorder, 2);
+                    DetailsPane.IsVisible = false;
+                    Items.SelectedItem = null;
+                    DetailsBorder.IsVisible = false;
+                    DetailsBorder.BorderColor = Color.Transparent;
+                    break;
+                case ViewModes.Wide:
+                    Items.IsVisible = true;
+                    Header.IsVisible = true;
+                    DetailRow.Height = new GridLength(0);
+                    DetailColumn.Width = new GridLength(1, GridUnitType.Star);
+                    Grid.SetColumn(DetailsBorder, 1);
+                    Grid.SetRow(DetailsBorder, 1);
+                    Grid.SetColumnSpan(DetailsBorder, 1);
+                    Grid.SetRowSpan(DetailsBorder, 1);
+                    DetailsPane.IsVisible = true;
+                    DetailsBorder.IsVisible = true;
+                    DetailsBorder.BorderColor = Color.Accent;
+                    break;
+                case ViewModes.Tall:
+                    Items.IsVisible = true;
+                    Header.IsVisible = true;
+                    DetailRow.Height = new GridLength(1.5, GridUnitType.Star);
+                    DetailColumn.Width = new GridLength(0);
+                    Grid.SetColumn(DetailsBorder, 0);
+                    Grid.SetRow(DetailsBorder, 2);
+                    Grid.SetColumnSpan(DetailsBorder, 1);
+                    Grid.SetRowSpan(DetailsBorder, 1);
+                    DetailsPane.IsVisible = true;
+                    DetailsBorder.IsVisible = true;
+                    DetailsBorder.BorderColor = Color.Accent;
+                    break;
+                case ViewModes.Mobile:
+                    Items.IsVisible = false;
+                    Header.IsVisible = false;
+                    Grid.SetColumn(DetailsBorder, 0);
+                    Grid.SetRow(DetailsBorder, 0);
+                    Grid.SetColumnSpan(DetailsBorder, 2);
+                    Grid.SetRowSpan(DetailsBorder, 3);
+                    DetailsPane.IsVisible = true;
+                    DetailsBorder.IsVisible = true;
+                    DetailsBorder.BorderColor = Color.Transparent;
+                    break;
+                default:
+                    break;
             }
         }
         #endregion Details
