@@ -223,8 +223,8 @@ namespace ShadowRunHelperViewer.UI.Pages
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
         {
             TitleBar.MinimumHeightRequest = Heigth;
-            Intro1Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
-            Intro2Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
+            Intro1Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, /*Math.Abs(RigthSpace)*/5, 0);
+            Intro2Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, /*Math.Abs(RigthSpace)*/5, 0);
         }
         #endregion Design
 

@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using ShadowRunHelper;
 using ShadowRunHelperViewer.UI.Pages;

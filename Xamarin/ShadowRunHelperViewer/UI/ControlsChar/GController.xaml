@@ -9,7 +9,6 @@
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:controlschar="clr-namespace:ShadowRunHelperViewer.UI.ControlsChar"
              mc:Ignorable="d"
-             SizeChanged="ContentView_SizeChanged"
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Resources>
         <ResourceDictionary>

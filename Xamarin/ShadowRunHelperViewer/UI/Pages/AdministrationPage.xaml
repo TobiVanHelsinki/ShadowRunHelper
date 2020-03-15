@@ -29,9 +29,9 @@
             </Grid.RowDefinitions>
             <StackLayout x:Name="TitleBar" BackgroundColor="Accent" MinimumWidthRequest="50" MinimumHeightRequest="10" Padding="10">
                 <Label x:Name="Intro1Text" FontSize="Subtitle" Text="{resx:UiResources TitleAdministrationPage}"
-                       HorizontalOptions="FillAndExpand"/>
+                       HorizontalOptions="FillAndExpand" MaxLines="2"/>
                 <Label x:Name="Intro2Text" Text="{resx:UiResources IntroAdministration}"
-                       HorizontalOptions="FillAndExpand"/>
+                       HorizontalOptions="FillAndExpand" MaxLines="5"/>
             </StackLayout>
             <Frame Padding="5" Grid.Row="1" IsVisible="False" x:Name="WarningFrame">
                 <Label Text="{resx:UiResources WarningLocalSaveplace}" BackgroundColor="Crimson" Margin="5"/>

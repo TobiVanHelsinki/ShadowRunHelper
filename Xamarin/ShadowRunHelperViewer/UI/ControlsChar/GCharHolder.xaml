@@ -98,7 +98,7 @@
                 <Label Text="*" IsVisible="{x:Binding MyChar.HasChanges}"/>
                 <!--todo geht nicht-->
             </StackLayout>
-            <Grid x:Name="CharHeadControls" Padding="5" ColumnSpacing="3" Grid.Row="1" Margin="0" RowSpacing="0">
+            <Grid x:Name="CharHeadControls" Padding="5" ColumnSpacing="3" Grid.Row="1" Margin="60,0,0,0" RowSpacing="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>

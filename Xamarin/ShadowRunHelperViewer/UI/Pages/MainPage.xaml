@@ -5,36 +5,77 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              mc:Ignorable="d"
+             SizeChanged="ContentPage_SizeChanged"
              x:Class="ShadowRunHelperViewer.UI.Pages.MainPage"
              BackgroundColor="Accent">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <local:CharModelStyles />
+                <local:CharModelStyles/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid RowSpacing="0">
-            <Grid.Resources>
-                <ResourceDictionary>
-                    <Style x:Key="StretchIconButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
-                        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                        <Setter Property="Padding" Value="8"/>
-                    </Style>
-                </ResourceDictionary>
-            </Grid.Resources>
+        <Grid RowSpacing="0" ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" x:Name="MenuColumn"/>
+                <!--<ColumnDefinition Width="60" x:Name="MenuBtnColumn"/>-->
+                <ColumnDefinition Width="*" x:Name="ContentColumn"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ContentPresenter x:Name="ContentPlace"/>
-            <Grid x:Name="CommandBar" Grid.Row="1" ColumnSpacing="10">
-                <Button Grid.Column="0" Text="&#xf007;" Style="{StaticResource StretchIconButton}" Clicked="CharPage"  />
-                <Button Grid.Column="1" Text="&#xf0c0;" Style="{StaticResource StretchIconButton}" Clicked="Administration" />
-                <Button Grid.Column="2" Text="&#xf013;" Style="{StaticResource StretchIconButton}" Clicked="Settings" />
+            <ContentPresenter x:Name="ContentPlace" Grid.RowSpan="2"/>
+            <Grid Grid.Row="1" BackgroundColor="Accent" x:Name="MainMenu">
+                <Grid.Resources>
+                    <Style x:Key="IconAndTextButton" TargetType="Button">
+                        <Setter Property="ContentLayout" Value="Left, 5"/>
+                        <Setter Property="BackgroundColor" Value="Gainsboro"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Welcome to Xamarin.Forms!" MaxLines="1" LineBreakMode="TailTruncation" Grid.Row="1"/>
+                <Button Text="Char View" Clicked="CharPage" Grid.Row="2" Style="{StaticResource IconAndTextButton}">
+                    <Button.ImageSource>
+                        <FontImageSource Glyph="&#xf007;" Size="22" FontFamily="{DynamicResource FontAwesomeSolid}"/>
+                    </Button.ImageSource>
+                </Button>
+                <Button Text="  File Flash.shr" Grid.Row="3" Clicked="Button_Clicked"/>
+                <Button Text="  Char Actions" Grid.Row="4"/>
+                <Button Text="Other Actions" Grid.Row="5"/>
+                <Button Text="Char Admin" Clicked="Administration" Grid.Row="6" Style="{StaticResource IconAndTextButton}">
+                    <Button.ImageSource>
+                        <FontImageSource Glyph="&#xf0c0;" Size="22" FontFamily="{DynamicResource FontAwesomeSolid}"/>
+                    </Button.ImageSource>
+                </Button>
+                <Button Text="Settings" Clicked="Settings" Grid.Row="12" Style="{StaticResource IconAndTextButton}">
+                    <Button.ImageSource>
+                        <FontImageSource Glyph="&#xf013;" Size="22" FontFamily="{DynamicResource FontAwesomeSolid}"/>
+                    </Button.ImageSource>
+                </Button>
             </Grid>
+            <Frame Padding="5,27,5,5">
+                <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" HorizontalOptions="Start" Clicked="ToggleMenu" FontSize="22"
+                    Padding="5" BackgroundColor="Accent" WidthRequest="60"/>
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

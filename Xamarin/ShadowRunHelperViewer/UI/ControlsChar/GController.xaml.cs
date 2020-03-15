@@ -9,7 +9,7 @@ using ShadowRunHelper;
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.UI;
+using ShadowRunHelperViewer.UI.Pages;
 using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
 using TLIB;
@@ -53,6 +53,7 @@ namespace ShadowRunHelperViewer
             OnControllerChanged();
             BindingContextChanged += GController_BindingContextChanged;
             SetHeaderVisible(!SettingsModel.I.MINIMIZED_HEADER);
+            MainPage.Instance.ViewModeChanged += MainPage_ViewModeChanged;
         }
 
         private void CreateStyle()
@@ -103,7 +104,6 @@ namespace ShadowRunHelperViewer
         private void OnControllerChanged()
         {
             DetailsOpen = false;
-            PreviousMode = ViewModes.NotSet;
             if (MyController != null)
             {
                 SelectTemplate(MyController.eDataTyp);
@@ -164,8 +164,74 @@ namespace ShadowRunHelperViewer
         public bool DetailsOpen
         {
             get => _DetailsOpen;
-            set { _DetailsOpen = value; SelectDetailsViewMode(); }
+            set { _DetailsOpen = value; SetViewMode(MainPage.Instance.CurrentViewMode); }
         }
+
+        public void SetViewMode(ViewModes newMode)
+        {
+            if (DetailsOpen)
+            {
+                switch (newMode)
+                {
+                    case ViewModes.NotSet:
+                        break;
+                    case ViewModes.Wide:
+                        Items.IsVisible = true;
+                        Header.IsVisible = true;
+                        DetailRow.Height = new GridLength(0);
+                        DetailColumn.Width = new GridLength(1, GridUnitType.Star);
+                        Grid.SetColumn(DetailsBorder, 1);
+                        Grid.SetRow(DetailsBorder, 1);
+                        Grid.SetColumnSpan(DetailsBorder, 1);
+                        Grid.SetRowSpan(DetailsBorder, 1);
+                        DetailsPane.IsVisible = true;
+                        DetailsBorder.IsVisible = true;
+                        DetailsBorder.BorderColor = Color.Accent;
+                        break;
+                    case ViewModes.Tall:
+                        Items.IsVisible = true;
+                        Header.IsVisible = true;
+                        DetailRow.Height = new GridLength(1.5, GridUnitType.Star);
+                        DetailColumn.Width = new GridLength(0);
+                        Grid.SetColumn(DetailsBorder, 0);
+                        Grid.SetRow(DetailsBorder, 2);
+                        Grid.SetColumnSpan(DetailsBorder, 1);
+                        Grid.SetRowSpan(DetailsBorder, 1);
+                        DetailsPane.IsVisible = true;
+                        DetailsBorder.IsVisible = true;
+                        DetailsBorder.BorderColor = Color.Accent;
+                        break;
+                    case ViewModes.Mobile:
+                        Items.IsVisible = false;
+                        Header.IsVisible = false;
+                        Grid.SetColumn(DetailsBorder, 0);
+                        Grid.SetRow(DetailsBorder, 0);
+                        Grid.SetColumnSpan(DetailsBorder, 2);
+                        Grid.SetRowSpan(DetailsBorder, 3);
+                        DetailsPane.IsVisible = true;
+                        DetailsBorder.IsVisible = true;
+                        DetailsBorder.BorderColor = Color.Transparent;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                Items.IsVisible = true;
+                Header.IsVisible = true;
+                DetailRow.Height = new GridLength(0);
+                DetailColumn.Width = new GridLength(0);
+                Grid.SetColumnSpan(DetailsBorder, 1);
+                Grid.SetRowSpan(DetailsBorder, 2);
+                DetailsPane.IsVisible = false;
+                Items.SelectedItem = null;
+                DetailsBorder.IsVisible = false;
+                DetailsBorder.BorderColor = Color.Transparent;
+            }
+        }
+
+        private void MainPage_ViewModeChanged(object sender, EventArgs e) => SetViewMode(MainPage.Instance.CurrentViewMode);
 
         /// <summary>
         /// Handles the SelectionChanged event of the Items control.
@@ -178,14 +244,9 @@ namespace ShadowRunHelperViewer
         {
             if (e.CurrentSelection.FirstOrDefault() is Thing t)
             {
-                DisplayDetails(t);
+                DetailsOpen = true;
+                DetailsPane.Activate(t, MyChar);
             }
-        }
-
-        private void DisplayDetails(Thing item)
-        {
-            DetailsOpen = true;
-            DetailsPane.Activate(item, MyChar);
         }
 
         internal bool OnBackButtonPressed()
@@ -203,105 +264,6 @@ namespace ShadowRunHelperViewer
             DetailsOpen = false;
         }
 
-        private void ContentView_SizeChanged(object sender, EventArgs e)
-        {
-            SelectDetailsViewMode();
-        }
-
-        public enum ViewModes
-        {
-            NotSet, NoDetails, Wide, Tall, Mobile
-        }
-
-        private ViewModes PreviousMode = ViewModes.NotSet;
-
-        private void SelectDetailsViewMode()
-        {
-            if (DetailsOpen)
-            {
-                if (Height > UIConstants.MinHeightDesktop && Height > Width)
-                {
-                    SetViewMode(ViewModes.Tall);
-                }
-                else if (Width > UIConstants.MinWidthDesktop && Height <= Width)
-                {
-                    SetViewMode(ViewModes.Wide);
-                }
-                else
-                {
-                    SetViewMode(ViewModes.Mobile);
-                }
-            }
-            else
-            {
-                SetViewMode(ViewModes.NoDetails);
-            }
-        }
-
-        public void SetViewMode(ViewModes newMode)
-        {
-            if (PreviousMode == newMode)
-            {
-                return;
-            }
-            PreviousMode = newMode;
-            switch (newMode)
-            {
-                case ViewModes.NotSet:
-                    break;
-                case ViewModes.NoDetails:
-                    Items.IsVisible = true;
-                    Header.IsVisible = true;
-                    DetailRow.Height = new GridLength(0);
-                    DetailColumn.Width = new GridLength(0);
-                    Grid.SetColumnSpan(DetailsBorder, 1);
-                    Grid.SetRowSpan(DetailsBorder, 2);
-                    DetailsPane.IsVisible = false;
-                    Items.SelectedItem = null;
-                    DetailsBorder.IsVisible = false;
-                    DetailsBorder.BorderColor = Color.Transparent;
-                    break;
-                case ViewModes.Wide:
-                    Items.IsVisible = true;
-                    Header.IsVisible = true;
-                    DetailRow.Height = new GridLength(0);
-                    DetailColumn.Width = new GridLength(1, GridUnitType.Star);
-                    Grid.SetColumn(DetailsBorder, 1);
-                    Grid.SetRow(DetailsBorder, 1);
-                    Grid.SetColumnSpan(DetailsBorder, 1);
-                    Grid.SetRowSpan(DetailsBorder, 1);
-                    DetailsPane.IsVisible = true;
-                    DetailsBorder.IsVisible = true;
-                    DetailsBorder.BorderColor = Color.Accent;
-                    break;
-                case ViewModes.Tall:
-                    Items.IsVisible = true;
-                    Header.IsVisible = true;
-                    DetailRow.Height = new GridLength(1.5, GridUnitType.Star);
-                    DetailColumn.Width = new GridLength(0);
-                    Grid.SetColumn(DetailsBorder, 0);
-                    Grid.SetRow(DetailsBorder, 2);
-                    Grid.SetColumnSpan(DetailsBorder, 1);
-                    Grid.SetRowSpan(DetailsBorder, 1);
-                    DetailsPane.IsVisible = true;
-                    DetailsBorder.IsVisible = true;
-                    DetailsBorder.BorderColor = Color.Accent;
-                    break;
-                case ViewModes.Mobile:
-                    Items.IsVisible = false;
-                    Header.IsVisible = false;
-                    Grid.SetColumn(DetailsBorder, 0);
-                    Grid.SetRow(DetailsBorder, 0);
-                    Grid.SetColumnSpan(DetailsBorder, 2);
-                    Grid.SetRowSpan(DetailsBorder, 3);
-                    DetailsPane.IsVisible = true;
-                    DetailsBorder.IsVisible = true;
-                    DetailsBorder.BorderColor = Color.Transparent;
-                    break;
-                default:
-                    break;
-            }
-        }
         #endregion Details
 
         #region Controller Actions

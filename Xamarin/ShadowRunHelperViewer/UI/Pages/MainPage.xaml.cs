@@ -1,14 +1,19 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
 
+using System;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
-using System;
 using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer.UI.Pages
 {
+    public enum ViewModes
+    {
+        NotSet, Wide, Tall, Mobile
+    }
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
@@ -20,6 +25,38 @@ namespace ShadowRunHelperViewer.UI.Pages
             Log.Write(answere, true);
         }
 
+        #region ViewMode
+        public event EventHandler ViewModeChanged;
+
+        private ViewModes _CurrentViewMode;
+        public ViewModes CurrentViewMode
+        {
+            get => _CurrentViewMode;
+            set { if (_CurrentViewMode != value) { _CurrentViewMode = value; ViewModeChanged?.Invoke(this, new EventArgs()); } }
+        }
+
+        private void ContentPage_SizeChanged(object sender, EventArgs e)
+        {
+            if (Height > UIConstants.MinHeightDesktop && Height > Width)
+            {
+                CurrentViewMode = ViewModes.Tall;
+            }
+            else if (Width > UIConstants.MinWidthDesktop && Height <= Width)
+            {
+                CurrentViewMode = ViewModes.Wide;
+            }
+            else if (Width <= UIConstants.MinWidthDesktop && Height <= UIConstants.MinHeightDesktop)
+            {
+                CurrentViewMode = ViewModes.Mobile;
+            }
+            else
+            {
+                CurrentViewMode = ViewModes.NotSet;
+            }
+            IsMenuOpen = Width > UIConstants.MinWidthDesktop;
+        }
+        #endregion ViewMode
+
         public MainPage()
         {
             AppModel.Instance.NavigationRequested += Instance_NavigationRequested;
@@ -27,6 +64,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             AppModel.Instance.PropertyChanged += Instance_PropertyChanged;
             Log.DisplayMessageRequested += Log_DisplayMessageRequested;
             Instance = this;
+            ViewModeChanged += MainPage_ViewModeChanged;
         }
 
         private void Log_DisplayMessageRequested(LogMessage logmessage)
@@ -67,11 +105,20 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        private void CharPage(object sender, System.EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Char);
+        private void CharPage(object sender, System.EventArgs e)
+        {
+            AppModel.Instance.RequestNavigation(ProjectPages.Char);
+        }
 
-        private void Administration(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Administration);
+        private void Administration(object sender, EventArgs e)
+        {
+            AppModel.Instance.RequestNavigation(ProjectPages.Administration);
+        }
 
-        private void Settings(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Settings);
+        private void Settings(object sender, EventArgs e)
+        {
+            AppModel.Instance.RequestNavigation(ProjectPages.Settings);
+        }
 
         /// <summary>
         /// NavigatoToSingleInstanceOf
@@ -99,7 +146,10 @@ namespace ShadowRunHelperViewer.UI.Pages
             catch (Exception ex)
             {
                 Log.Write("Could not Set Content", ex, logType: LogType.Error);
-                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    System.Diagnostics.Debugger.Break();
+                }
             }
             //Task.Run(() =>
             //{
@@ -152,6 +202,57 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 return base.OnBackButtonPressed();
             }
+        }
+
+        #region Menu
+        private bool _IsMenuOpen;
+        public bool IsMenuOpen
+        {
+            get => _IsMenuOpen;
+            set { _IsMenuOpen = value; SetMenuAppearence(); }
+        }
+
+        private void SetMenuAppearence()
+        {
+            switch (CurrentViewMode)
+            {
+                case ViewModes.Mobile://Floating Menu
+                case ViewModes.Tall:
+                    Grid.SetColumnSpan(ContentPlace, 2);
+                    Grid.SetColumn(ContentPlace, 0);
+                    break;
+                case ViewModes.NotSet:
+                case ViewModes.Wide:
+                default:
+                    //Splitmenu
+                    Grid.SetColumnSpan(ContentPlace, 1);
+                    Grid.SetColumn(ContentPlace, 1);
+                    break;
+            }
+            if (IsMenuOpen)
+            {
+                MainMenu.IsVisible = true;
+                MenuColumn.Width = new GridLength(1, GridUnitType.Auto);
+            }
+            else
+            {
+                MainMenu.IsVisible = false;
+                MenuColumn.Width = new GridLength(0, GridUnitType.Absolute);
+            }
+        }
+
+        private void MainPage_ViewModeChanged(object sender, EventArgs e) => SetMenuAppearence();
+
+        private void ToggleMenu(object sender, EventArgs e) => IsMenuOpen = !IsMenuOpen;
+
+        #endregion Menu
+
+        private int i = 10;
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            MenuColumn.Width = new GridLength(i, GridUnitType.Absolute);
+            i += 10;
         }
     }
 }
