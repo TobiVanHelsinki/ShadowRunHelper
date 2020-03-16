@@ -41,7 +41,7 @@ namespace ShadowRunHelper
         SettingsOptions = 32,
         SettingsCategories = 33,
         SettingsHelp = 34,
-        SettingsNots = 35,
+        SettingsLog = 35,
         SettingsBuy = 36,
         Import = 37,
     }

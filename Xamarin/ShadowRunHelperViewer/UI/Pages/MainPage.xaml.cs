@@ -151,7 +151,7 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         #region Navigation
 
-        private void Instance_NavigationRequested(ProjectPages page, ProjectPagesOptions PageOptions = ProjectPagesOptions.Nothing)
+        private void Instance_NavigationRequested(ProjectPages page, ProjectPagesOptions pageOptions = ProjectPagesOptions.Nothing)
         {
             switch (page)
             {
@@ -160,7 +160,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 case ProjectPages.Char:
                     if (AppModel.Instance?.MainObject is CharHolder ch)
                     {
-                        NavigatoToSingleInstanceOf<CharPage>(true, (x) => SetSubMenuItems(x.Activate(ch)));
+                        NavigatoToSingleInstanceOf<CharPage>(true, (x) => SetSubMenuItems(x.Activate(pageOptions, ch)));
                     }
                     else
                     {
@@ -169,10 +169,10 @@ namespace ShadowRunHelperViewer.UI.Pages
                     break;
                 case ProjectPages.Administration:
                 Administration:
-                    NavigatoToSingleInstanceOf<AdministrationPage>(false, (x) => SetSubMenuItems(x?.Activate()));
+                    NavigatoToSingleInstanceOf<AdministrationPage>(false, (x) => SetSubMenuItems(x?.Activate(pageOptions)));
                     break;
                 case ProjectPages.Settings:
-                    NavigatoToSingleInstanceOf<MiscPage>(false, (x) => SetSubMenuItems(x.AfterLoad()));
+                    NavigatoToSingleInstanceOf<MiscPage>(false, (x) => SetSubMenuItems(x.AfterLoad(pageOptions)));
                     break;
                 default:
                     break;
@@ -191,7 +191,7 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         private void Nav_Settings(object sender, EventArgs e)
         {
-            AppModel.Instance.RequestNavigation(ProjectPages.Settings);
+            AppModel.Instance.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsOptions);
         }
 
         private void Nav_Info(object sender, EventArgs e)

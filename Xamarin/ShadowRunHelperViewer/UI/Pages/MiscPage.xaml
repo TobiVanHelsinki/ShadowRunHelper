@@ -197,21 +197,21 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <StackLayout x:Name="TitleBar" BackgroundColor="Accent" MinimumWidthRequest="50" MinimumHeightRequest="10" Padding="10">
-                <Label x:Name="Intro1Text" FontSize="Subtitle" Text="{resx:UiResources TitleMiscPage}" HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
-            <ContentView x:Name="Content" Grid.Row="1" BackgroundColor="White" Padding="10,0,10,0"/>
-            <ScrollView Grid.Row="2" Style="{StaticResource CommandBar}">
-                <StackLayout Style="{StaticResource CommandBarStack}">
-                    <Button Text="{resx:UiResources Optionen_U_Infos}" resources:Tag.Tag="Infos" Clicked="NavigateTo" Style="{StaticResource CommandBarButton}"/>
-                    <Button Text="{resx:UiResources Optionen_U_Einstellungen}" resources:Tag.Tag="Settings" Clicked="NavigateTo" Style="{StaticResource CommandBarButton}"/>
-                    <Button Text="{resx:UiResources Optionen_U_Buy}" resources:Tag.Tag="Buy" Clicked="NavigateTo" Style="{StaticResource CommandBarButton}"/>
-                    <Button Text="{resx:UiResources Optionen_U_Notifications}" resources:Tag.Tag="Log" Clicked="NavigateTo" Style="{StaticResource CommandBarButton}"/>
-                    <Button Text="{resx:UiResources Optionen_U_Hilfe}" resources:Tag.Tag="Help" Clicked="NavigateTo" Style="{StaticResource CommandBarButton}"/>
+            <Grid BackgroundColor="Accent" MinimumWidthRequest="50" MinimumHeightRequest="10" Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <controlsother:HamburgerButton/>
+                <StackLayout x:Name="TitleBar" Grid.Column="1">
+                    <Label x:Name="Intro1Text" FontSize="Subtitle" Text="{resx:UiResources TitleMiscPage}" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
-            </ScrollView>
+            </Grid>
+            <ContentView x:Name="Content" Grid.Row="1" BackgroundColor="White" Padding="10,0,10,0"/>
         </Grid>
     </ContentView.Content>
 </ContentView>

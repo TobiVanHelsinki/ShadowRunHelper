@@ -63,7 +63,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <!--<Grid>-->
         <sfnav:SfNavigationDrawer x:Name="MenuDrawer">
             <sfnav:SfNavigationDrawer.DefaultDrawerSettings>
                 <sfnav:DrawerSettings x:Name="MenuDrawerDefault" Position="Left" Transition="Push" Duration="100"
@@ -151,7 +150,5 @@
                 </Grid>
             </sfnav:SfNavigationDrawer.ContentView>
         </sfnav:SfNavigationDrawer>
-        <!--<controlsother:HamburgerButton Clicked="ToggleMenu"  Padding="5,5,5,5" HorizontalOptions="Start" VerticalOptions="Start"/>-->
-        <!--</Grid>-->
     </ContentPage.Content>
 </ContentPage>

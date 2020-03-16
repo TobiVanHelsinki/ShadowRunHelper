@@ -43,7 +43,7 @@ namespace ShadowRunHelperViewer
         /// </summary>
         /// <param name="myChar"></param>
         /// <returns></returns>
-        public IEnumerable<SubMenuAction> Activate(CharHolder myChar)
+        public IEnumerable<SubMenuAction> Activate(ProjectPagesOptions pageOptions, CharHolder myChar)
         {
             if (Content is Grid G)
             {

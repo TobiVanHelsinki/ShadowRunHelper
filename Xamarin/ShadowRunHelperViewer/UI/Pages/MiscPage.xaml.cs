@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper;
+﻿//Author: Tobi van Helsinki
+
+using ShadowRunHelper;
 using ShadowRunHelperViewer.Platform;
 using ShadowRunHelperViewer.UI.Resources;
 using System;
@@ -12,6 +14,7 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using TLIB;
 using System.Collections.ObjectModel;
+using SharedCode.Ressourcen;
 
 namespace ShadowRunHelperViewer.UI.Pages
 {
@@ -20,11 +23,13 @@ namespace ShadowRunHelperViewer.UI.Pages
     {
         #region NotifyPropertyChanged
         public new event PropertyChangedEventHandler PropertyChanged;
+
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+        #endregion NotifyPropertyChanged
+
         public SettingsModel Settings => SettingsModel.Instance;
         public AppModel Model => AppModel.Instance;
         public string AppKontaktEmail => SharedConstants.APP_PUBLISHER_MAILTO;
@@ -50,14 +55,36 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         #region Design
 
-        public IEnumerable<SubMenuAction> AfterLoad()
+        public IEnumerable<SubMenuAction> AfterLoad(ProjectPagesOptions pageOptions)
         {
             Features.Ui.IsCustomTitleBarEnabled = true; //TODO Dispse?
             Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(TitleBar));
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges; //TODO Dispose
             Features.Ui.TriggerCustomTitleBarChanges();
-            NavigateTo("Infos");
-            return Array.Empty<SubMenuAction>();
+            switch (pageOptions)
+            {
+                case ProjectPagesOptions.SettingsOptions:
+                    NavigateTo("Settings");
+                    break;
+                case ProjectPagesOptions.SettingsHelp:
+                    NavigateTo("Help");
+                    break;
+                case ProjectPagesOptions.SettingsLog:
+                    NavigateTo("Log");
+                    break;
+                case ProjectPagesOptions.SettingsBuy:
+                    NavigateTo("Buy");
+                    break;
+                default:
+                    NavigateTo("Infos");
+                    break;
+            }
+            return new[] {
+                    new SubMenuAction(UiResources.Optionen_U_Infos,"\xf129",new Command(()=>NavigateTo("Infos"))),
+                    new SubMenuAction(UiResources.Optionen_U_Buy,"\xf07a",new Command(()=>NavigateTo("Buy"))),
+                    new SubMenuAction(UiResources.Optionen_U_Notifications,"\xf0f3",new Command(()=>NavigateTo("Log"))),
+                    new SubMenuAction(UiResources.Optionen_U_Hilfe,"\xf128",new Command(()=>NavigateTo("Help"))),
+                };
         }
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
@@ -65,9 +92,9 @@ namespace ShadowRunHelperViewer.UI.Pages
             TitleBar.MinimumHeightRequest = Heigth;
             Intro1Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
         }
-        #endregion
+        #endregion Design
 
-        void NavigateTo(object sender, EventArgs e)
+        private void NavigateTo(object sender, EventArgs e)
         {
             if (sender is Button b && b.GetValue(Tag.TagProperty) is string s)
             {
@@ -80,14 +107,14 @@ namespace ShadowRunHelperViewer.UI.Pages
             if (Resources.ContainsKey(key) && Resources[key] is DataTemplate dt)
             {
                 Content.Content = dt.CreateContent() as View;
+
                 #region AfterLoads
                 AfterLoads();
-                #endregion
-
+                #endregion AfterLoads
             }
         }
 
-        void AfterLoads()
+        private void AfterLoads()
         {
             if (Content.Content.FindByName("PremiumBadgeImage") is Image image)
             {
@@ -97,12 +124,10 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         private void OpenLink(object sender, EventArgs e)
         {
-
         }
 
         private void ViewCell_Tapped(object sender, EventArgs e)
         {
-
         }
 
         private void CellTapped(object sender, EventArgs e)

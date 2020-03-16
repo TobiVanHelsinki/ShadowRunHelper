@@ -217,7 +217,7 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         #region Design
 
-        public IEnumerable<SubMenuAction> Activate()
+        public IEnumerable<SubMenuAction> Activate(ProjectPagesOptions pageOptions)
         {
             Features.Ui.IsCustomTitleBarEnabled = true; //TODO Dispse?
             Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(TitleBar));
