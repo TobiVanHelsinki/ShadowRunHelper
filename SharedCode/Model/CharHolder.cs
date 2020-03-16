@@ -32,8 +32,7 @@ namespace ShadowRunHelper.Model
         #endregion vars
 
         #region Char Model DATA
-        // the various controlers
-        // First Gen
+        // the various controlers First Gen
         public Controller<Item> CTRLItem { get; } = new Controller<Item>();
 
         public Controller<Programm> CTRLProgramm { get; } = new Controller<Programm>();
@@ -85,14 +84,12 @@ namespace ShadowRunHelper.Model
         [Newtonsoft.Json.JsonIgnore]
         public List<IController> Controlers { get; } = new List<IController>();
 
-        /// <summary>
-        /// Gets all things
+        /// <summary> Gets all things
         [Newtonsoft.Json.JsonIgnore]
         public List<Thing> Things { get; } = new List<Thing>();
 
         /// <summary>
-        /// Gets all things grouped after ThingType
-        /// Important BindingTarget
+        /// Gets all things grouped after ThingType Important BindingTarget
         /// </summary>
         [Newtonsoft.Json.JsonIgnore]
         public IEnumerable<IEnumerable<Thing>> GroupedThings => Things.GroupBy(x => x.ThingType);
@@ -279,6 +276,7 @@ namespace ShadowRunHelper.Model
                     origconnect.Connected.Remove(item);
                 }
             }
+            //TODO user notification. über das ergebnis
         }
 
         /// <summary>
@@ -293,9 +291,10 @@ namespace ShadowRunHelper.Model
         }
 
         /// <summary>
-        /// Adds a Thing of the given ThingDef to the right controller and register it and returns it, if all is ok, otherways throw
+        /// Adds a Thing of the given ThingDef to the right controller and register it and returns
+        /// it, if all is ok, otherways throw
         /// </summary>
-        /// <exception cref="NotSupportedException" />
+        /// <exception cref="NotSupportedException"/>
         /// <param name="thingDefs"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">Ignore.</exception>
@@ -309,7 +308,7 @@ namespace ShadowRunHelper.Model
         /// <summary>
         /// Adds the Thing to the right Controller and register it
         /// </summary>
-        /// <exception cref="NotSupportedException" />
+        /// <exception cref="NotSupportedException"/>
         /// <param name="thingDefs"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">Ignore.</exception>
@@ -346,7 +345,8 @@ namespace ShadowRunHelper.Model
 
         public void RefreshListeners()
         {
-            // Don't register AnyPropertyChanged() at the PropertyChanged  Event of this Class -> endless loop;
+            // Don't register AnyPropertyChanged() at the PropertyChanged Event of this Class ->
+            // endless loop;
             Person.PropertyChanged -= AnyPropertyChanged;
             Settings.PropertyChanged -= AnyPropertyChanged;
             Person.PropertyChanged += AnyPropertyChanged;

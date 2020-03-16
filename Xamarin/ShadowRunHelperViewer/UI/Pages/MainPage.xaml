@@ -7,6 +7,8 @@
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:sfnav="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
              xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:pages="clr-namespace:ShadowRunHelperViewer.UI.Pages"
+             xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
              mc:Ignorable="d"
              SizeChanged="ContentPage_SizeChanged"
              x:Class="ShadowRunHelperViewer.UI.Pages.MainPage"
@@ -16,150 +18,140 @@
             <ResourceDictionary.MergedDictionaries>
                 <local:CharModelStyles/>
             </ResourceDictionary.MergedDictionaries>
-            <x:Double x:Key="IconSizeL1">20</x:Double>
-            <x:Double x:Key="IconSizeL2">16</x:Double>
-            <Style x:Key="IconAndTextButton" TargetType="Button">
-                <Setter Property="ContentLayout" Value="Left, 5"/>
-                <Setter Property="BackgroundColor" Value="Gainsboro"/>
-                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
-            </Style>
-            <Style x:Key="MenuButtonL1" TargetType="Button" BasedOn="{StaticResource IconAndTextButton}">
-                <Setter Property="MinimumHeightRequest" Value="50"/>
+            <Style x:Key="SF_MenuButtonL1" TargetType="sfbtn:SfButton" BasedOn="{StaticResource SF_STDButton}">
                 <Setter Property="FontSize" Value="Small"/>
-                <Setter Property="CornerRadius" Value="2"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="BackgroundColor" Value="#D8D6D7"/>
             </Style>
-            <Style x:Key="MenuButtonL2" TargetType="Button" BasedOn="{StaticResource MenuButtonL1}">
+            <Style x:Key="SF_MenuIconLabelL1" TargetType="Label" BasedOn="{StaticResource IconLabel}">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="MinimumHeightRequest" Value="50"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="SF_MenuLabelL1" TargetType="Label" BasedOn="{StaticResource STDLabel}">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="MinimumHeightRequest" Value="50"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="BackgroundColor" Value="#D8D6D7"/>
+                <Setter Property="Grid.Column" Value="1"/>
+            </Style>
+            <Style x:Key="SF_MenuButtonL2" TargetType="sfbtn:SfButton" BasedOn="{StaticResource SF_MenuButtonL1}">
                 <Setter Property="FontSize" Value="Micro"/>
-                <Setter Property="Margin" Value="13,0,0,0"/>
             </Style>
+            <Style x:Key="SF_MenuIconLabelL2" TargetType="Label" BasedOn="{StaticResource SF_MenuIconLabelL1}">
+                <Setter Property="FontSize" Value="Micro"/>
+            </Style>
+            <Style x:Key="SF_MenuLabelL2" TargetType="Label" BasedOn="{StaticResource SF_MenuLabelL1}">
+                <Setter Property="FontSize" Value="Micro"/>
+            </Style>
+            <DataTemplate x:Key="SubMenuItemTemplate" x:DataType="pages:SubMenuAction">
+                <ViewCell>
+                    <sfbtn:SfButton Grid.Row="1" Style="{StaticResource SF_MenuButtonL2}" Command="{x:Binding ClickHandler}">
+                        <sfbtn:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{x:Binding Icon}" Style="{StaticResource SF_MenuIconLabelL2}"/>
+                                <Label Text="{x:Binding Text}" Style="{StaticResource SF_MenuLabelL2}"/>
+                            </Grid>
+                        </sfbtn:SfButton.Content>
+                    </sfbtn:SfButton>
+                </ViewCell>
+            </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
-            <sfnav:SfNavigationDrawer x:Name="MenuDrawer">
-                <sfnav:SfNavigationDrawer.DefaultDrawerSettings>
-                    <sfnav:DrawerSettings x:Name="MenuDrawerDefault" Position="Left" Transition="Push" Duration="100"
+        <!--<Grid>-->
+        <sfnav:SfNavigationDrawer x:Name="MenuDrawer">
+            <sfnav:SfNavigationDrawer.DefaultDrawerSettings>
+                <sfnav:DrawerSettings x:Name="MenuDrawerDefault" Position="Left" Transition="Push" Duration="100"
                                           EnableSwipeGesture="True" TouchThreshold="500" PropertyChanged="SfNavigationDrawer_PropertyChanged"
                                           DrawerHeaderHeight="160" DrawerHeight="300" DrawerFooterHeight="100" DrawerWidth="200">
-                        <sfnav:DrawerSettings.DrawerHeaderView>
-                            <Grid BackgroundColor="#33cc33">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Button Grid.Row="1" Style="{StaticResource MenuButtonL1}" Text="{resx:UiResources Nav_Char}" Clicked="CharPage">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf007;" Size="{StaticResource IconSizeL1}" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>
-                                <Button Text="{resx:UiResources Nav_Admin}" Clicked="Administration" Grid.Row="2" Style="{StaticResource MenuButtonL1}">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf0c0;" Size="{StaticResource IconSizeL1}" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>
-                            </Grid>
-                        </sfnav:DrawerSettings.DrawerHeaderView>
-                        <sfnav:DrawerSettings.DrawerFooterView>
-                            <Grid BackgroundColor="#29a329">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <sfbtn:SfButton Grid.Row="1">
-                                    <sfbtn:SfButton.Content>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Text="&#xf013;" Style="{StaticResource IconLabel}"/>
-                                            <Label Grid.Column="1" Text="{resx:UiResources Nav_Settings}"/>
-                                        </Grid>
-                                    </sfbtn:SfButton.Content>
-                                </sfbtn:SfButton>
-                                <!--<Button Text="{resx:UiResources Nav_Settings}" HorizontalOptions="FillAndExpand" Clicked="Settings" Grid.Row="1" Style="{StaticResource MenuButtonL1}">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf013;" Size="44" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>-->
-                                <Button Text="{resx:UiResources Nav_Info}" Clicked="Settings" Grid.Row="2" Style="{StaticResource MenuButtonL1}">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf013;" Size="{StaticResource IconSizeL1}" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>
-                            </Grid>
-                        </sfnav:DrawerSettings.DrawerFooterView>
-                        <sfnav:DrawerSettings.DrawerContentView>
-                            <Grid BackgroundColor="#2eb82e">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Grid.Row="1" Style="{StaticResource MenuButtonL2}" Text="{resx:UiResources Save}" Clicked="Char_Save">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf0c7;" Size="{StaticResource IconSizeL2}" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>
-                                <Button Grid.Row="2" Style="{StaticResource MenuButtonL2}" Text="{resx:UiResources SubtractLifeStyleCost}" Clicked="Char_SubtractLifeStyleCost">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf155;" Size="{StaticResource IconSizeL2}" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>
-                                <Button Grid.Row="3" Style="{StaticResource MenuButtonL2}" Text="{resx:UiResources SaveAtCurrentPlace}" Clicked="Char_SaveIntern">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf0c7;" Size="{StaticResource IconSizeL2}" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>
-                                <Button Grid.Row="4" Style="{StaticResource MenuButtonL2}" Text="{resx:UiResources SaveExtern}" Clicked="Char_SaveExtern">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf0c7;" Size="{StaticResource IconSizeL2}" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>
-                                <Button Grid.Row="5" Style="{StaticResource MenuButtonL2}" Text="{resx:UiResources OpenFolder}" Clicked="Char_OpenFolder">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf07c;" Size="{StaticResource IconSizeL2}" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>
-                                <Button Grid.Row="6" Style="{StaticResource MenuButtonL2}" Text="{resx:UiResources CharSettings}" Clicked="Char_CharSettings">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf4fe;" Size="{StaticResource IconSizeL2}" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>
-                                <Button Grid.Row="7" Style="{StaticResource MenuButtonL2}" Text="{resx:UiResources Repair}" Clicked="Char_Repair">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf6e3;" Size="{StaticResource IconSizeL2}" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>
-                                <Button Grid.Row="8" Style="{StaticResource MenuButtonL2}" Text="{resx:UiResources Unload}" Clicked="Char_Unload">
-                                    <Button.ImageSource>
-                                        <FontImageSource Glyph="&#xf410;" Size="{StaticResource IconSizeL2}" FontFamily="{DynamicResource FontAwesomeSolid}"/>
-                                    </Button.ImageSource>
-                                </Button>
-                            </Grid>
-                        </sfnav:DrawerSettings.DrawerContentView>
-                    </sfnav:DrawerSettings>
-                </sfnav:SfNavigationDrawer.DefaultDrawerSettings>
-                <sfnav:SfNavigationDrawer.ContentView>
-                    <Grid>
-                        <ContentPresenter x:Name="ContentPlace" Grid.RowSpan="1"/>
-                    </Grid>
-                </sfnav:SfNavigationDrawer.ContentView>
-            </sfnav:SfNavigationDrawer>
-            <Frame x:Name="HamburgerFrame" Padding="5,27,5,5" HorizontalOptions="Start" VerticalOptions="Start">
-                <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="ToggleMenu" FontSize="22" Padding="5" WidthRequest="60"/>
-            </Frame>
-        </Grid>
+                    <sfnav:DrawerSettings.DrawerHeaderView>
+                        <Grid BackgroundColor="#33cc33" Padding="5" RowSpacing="5" x:Name="MenuDrawerHeader">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <controlsother:HamburgerButton Grid.Row="1" WidthRequest="60" HeightRequest="60" HorizontalOptions="Start"/>
+
+                            <sfbtn:SfButton Grid.Row="2" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_CharPage">
+                                <sfbtn:SfButton.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="&#xf007;" Style="{StaticResource SF_MenuIconLabelL1}"/>
+                                        <Label Text="{resx:UiResources Nav_Char}" Style="{StaticResource SF_MenuLabelL1}"/>
+                                    </Grid>
+                                </sfbtn:SfButton.Content>
+                            </sfbtn:SfButton>
+                            <sfbtn:SfButton Grid.Row="3" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_Admin">
+                                <sfbtn:SfButton.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="&#xf0c0;" Style="{StaticResource SF_MenuIconLabelL1}"/>
+                                        <Label Text="{resx:UiResources Nav_Admin}" Style="{StaticResource SF_MenuLabelL1}"/>
+                                    </Grid>
+                                </sfbtn:SfButton.Content>
+                            </sfbtn:SfButton>
+                        </Grid>
+                    </sfnav:DrawerSettings.DrawerHeaderView>
+                    <sfnav:DrawerSettings.DrawerFooterView>
+                        <Grid BackgroundColor="#29a329" Padding="5" RowSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <sfbtn:SfButton Grid.Row="1" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_Settings">
+                                <sfbtn:SfButton.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="&#xf013;" Style="{StaticResource SF_MenuIconLabelL1}"/>
+                                        <Label Text="{resx:UiResources Nav_Settings}" Style="{StaticResource SF_MenuLabelL1}"/>
+                                    </Grid>
+                                </sfbtn:SfButton.Content>
+                            </sfbtn:SfButton>
+                            <sfbtn:SfButton Grid.Row="2" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_Info">
+                                <sfbtn:SfButton.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="&#xf129;" Style="{StaticResource SF_MenuIconLabelL1}" Padding="5,0,3,0"/>
+                                        <Label Text="{resx:UiResources Nav_Info}" Style="{StaticResource SF_MenuLabelL1}"/>
+                                    </Grid>
+                                </sfbtn:SfButton.Content>
+                            </sfbtn:SfButton>
+                        </Grid>
+                    </sfnav:DrawerSettings.DrawerFooterView>
+                    <sfnav:DrawerSettings.DrawerContentView>
+                        <Grid BackgroundColor="#2eb82e" Padding="10,5,5,5" RowSpacing="5">
+                            <ListView ItemsSource="{x:Binding SubMenuItems}" ItemTemplate="{StaticResource SubMenuItemTemplate}"/>
+                        </Grid>
+                    </sfnav:DrawerSettings.DrawerContentView>
+                </sfnav:DrawerSettings>
+            </sfnav:SfNavigationDrawer.DefaultDrawerSettings>
+            <sfnav:SfNavigationDrawer.ContentView>
+                <Grid>
+                    <ContentPresenter x:Name="ContentPlace" Grid.RowSpan="1"/>
+                </Grid>
+            </sfnav:SfNavigationDrawer.ContentView>
+        </sfnav:SfNavigationDrawer>
+        <!--<controlsother:HamburgerButton Clicked="ToggleMenu"  Padding="5,5,5,5" HorizontalOptions="Start" VerticalOptions="Start"/>-->
+        <!--</Grid>-->
     </ContentPage.Content>
 </ContentPage>

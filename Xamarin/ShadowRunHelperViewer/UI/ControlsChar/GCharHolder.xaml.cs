@@ -89,12 +89,6 @@ namespace ShadowRunHelperViewer
             Features.Ui.SetCustomTitleBar(null);
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
             Features.Ui.TriggerCustomTitleBarChanges();
-            MainPage.Instance.ViewModeChanged += MainPage_ViewModeChanged; ;
-        }
-
-        private void MainPage_ViewModeChanged(ViewModes oldMode, ViewModes newMode, double leftTopSpacing)
-        {
-            //CharHeadControls.Margin = new Thickness(MainPage.Instance.IsMenuOpen ? 0 : leftTopSpacing, 0, 0, 0);
         }
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)

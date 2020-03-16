@@ -231,7 +231,7 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void MainPage_ViewModeChanged(ViewModes oldMode, ViewModes newMode, double leftTopSpacing) => SetViewMode(newMode);
+        private void MainPage_ViewModeChanged(ViewModes oldMode, ViewModes newMode) => SetViewMode(newMode);
 
         /// <summary>
         /// Handles the SelectionChanged event of the Items control.

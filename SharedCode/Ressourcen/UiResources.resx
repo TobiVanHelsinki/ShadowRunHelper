@@ -378,7 +378,7 @@ This app can be used to open files and folders on the file system. The app store
     <value>Select a new location for this file</value>
   </data>
   <data name="Unload" xml:space="preserve">
-    <value>unloading</value>
+    <value>Close</value>
   </data>
   <data name="UnloadX" xml:space="preserve">
     <value>Removes only the loaded char from the app. Storage files are not affected.</value>
@@ -559,5 +559,8 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="Nav_Info" xml:space="preserve">
+    <value>Information</value>
   </data>
 </root>

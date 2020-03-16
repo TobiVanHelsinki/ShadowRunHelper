@@ -1,13 +1,12 @@
 ﻿//Author: Tobi van Helsinki
 
-///Author: Tobi van Helsinki
-
 using ShadowRunHelper;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
 using SharedCode.Ressourcen;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
@@ -40,7 +39,10 @@ namespace ShadowRunHelperViewer.UI.Pages
             InitializeComponent();
             BindingContext = this;
             RefreshCharList();
+            Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
         }
+
+        #region Char List
 
         private async void ListView_Refreshing(object sender, EventArgs e)
         {
@@ -68,6 +70,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 Log.Write("Error reading directory", ex);
             }
         }
+        #endregion Char List
 
         #region Open Files
 
@@ -82,7 +85,8 @@ namespace ShadowRunHelperViewer.UI.Pages
                         AppModel.Instance.RemoveMainObject(item);
                     }
                     var newchar = await CharHolderIO.Load(charfile);
-                    (Application.Current.MainPage as MainPage)?.NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(newchar));
+                    AppModel.Instance.MainObject = (newchar);
+                    AppModel.Instance.RequestNavigation(ProjectPages.Char);
                 }
                 catch (Exception ex)
                 {
@@ -188,7 +192,8 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 var newchar = CharHolderGenerator.CreateCharWithStandardContent();
                 SettingsModel.I.COUNT_CREATIONS++;
-                (Application.Current.MainPage as MainPage)?.NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(newchar));
+                AppModel.Instance.MainObject = (newchar);
+                AppModel.Instance.RequestNavigation(ProjectPages.Char);
             }
             catch (Exception ex)
             {
@@ -212,12 +217,17 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         #region Design
 
-        public void Activate()
+        public IEnumerable<SubMenuAction> Activate()
         {
             Features.Ui.IsCustomTitleBarEnabled = true; //TODO Dispse?
             Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(TitleBar));
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges; //TODO Dispose
             Features.Ui.TriggerCustomTitleBarChanges();
+            return new[] {
+                    new SubMenuAction(UiResources.NewChar,"\xf234",new Command(()=>NewChar_Clicked(this, new EventArgs()))),
+                    new SubMenuAction(UiResources.ImportChar,"\xf56f",new Command(()=>OpenFile(this, new EventArgs()))),
+                    new SubMenuAction(UiResources.CreateExampleChar,"\xf501",new Command(()=>ExampleChar_Clicked(this, new EventArgs()))),
+                };
         }
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
@@ -226,9 +236,6 @@ namespace ShadowRunHelperViewer.UI.Pages
             Intro1Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, /*Math.Abs(RigthSpace)*/5, 0);
             Intro2Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, /*Math.Abs(RigthSpace)*/5, 0);
         }
-        #endregion Design
-
-        #region Responsive Design
 
         private void TemplateSizeChanged(object sender, EventArgs e)
         {
@@ -249,6 +256,6 @@ namespace ShadowRunHelperViewer.UI.Pages
                 }
             }
         }
-        #endregion Responsive Design
+        #endregion Design
     }
 }

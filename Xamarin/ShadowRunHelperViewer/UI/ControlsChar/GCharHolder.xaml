@@ -6,6 +6,7 @@
              xmlns:forms="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
+             xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
              x:Class="ShadowRunHelperViewer.GCharHolder"
              x:DataType="local:GCharHolder">
     <ContentView.Resources>
@@ -98,8 +99,13 @@
                 <Label Text="*" IsVisible="{x:Binding MyChar.HasChanges}"/>
                 <!--todo geht nicht-->
             </StackLayout>
-            <Grid x:Name="CharHeadControls" Padding="5" ColumnSpacing="3" Grid.Row="1" Margin="60,0,0,0" RowSpacing="0">
-                <forms:AutoSuggestBox PlaceholderText="{resx:UiResources GlobalFilterBox}" TextChanged="AutoSuggestBox_TextChanged" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
+            <Grid x:Name="CharHeadControls" Padding="5" ColumnSpacing="3" Grid.Row="1" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <controlsother:HamburgerButton/>
+                <forms:AutoSuggestBox Grid.Column="1" PlaceholderText="{resx:UiResources GlobalFilterBox}" TextChanged="AutoSuggestBox_TextChanged" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
             </Grid>
             <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="5,0,5,5">
                 <StackLayout Style="{StaticResource OuterPanel}">

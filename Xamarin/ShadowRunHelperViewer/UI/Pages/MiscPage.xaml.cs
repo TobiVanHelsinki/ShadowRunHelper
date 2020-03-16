@@ -17,24 +17,24 @@ namespace ShadowRunHelperViewer.UI.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MiscPage : ContentView, INotifyPropertyChanged
-	{
+    {
         #region NotifyPropertyChanged
-		public new event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
         public SettingsModel Settings => SettingsModel.Instance;
-        public AppModel Model  => AppModel.Instance;
-        public string AppKontaktEmail  => SharedConstants.APP_PUBLISHER_MAILTO;
-        public string Inhaber  => SharedConstants.APP_PUBLISHER;
-        public string AppVersionBuild  => SharedConstants.APP_VERSION_BUILD_DELIM;
-        public string AppReviewLink  => SharedConstants.APP_STORE_REVIEW_LINK;
-        public string EMail  => SharedConstants.APP_PUBLISHER_MAIL;
-        public string MoreAppsLink  => SharedConstants.APP_MORE_APPS;
-        public string AppLink  => SharedConstants.APP_STORE_LINK;
-        public List<HelpEntry> Help  => Constants.HelpList;
+        public AppModel Model => AppModel.Instance;
+        public string AppKontaktEmail => SharedConstants.APP_PUBLISHER_MAILTO;
+        public string Inhaber => SharedConstants.APP_PUBLISHER;
+        public string AppVersionBuild => SharedConstants.APP_VERSION_BUILD_DELIM;
+        public string AppReviewLink => SharedConstants.APP_STORE_REVIEW_LINK;
+        public string EMail => SharedConstants.APP_PUBLISHER_MAIL;
+        public string MoreAppsLink => SharedConstants.APP_MORE_APPS;
+        public string AppLink => SharedConstants.APP_STORE_LINK;
+        public List<HelpEntry> Help => Constants.HelpList;
         public ObservableCollection<LogMessage> Logs => Model.lstNotifications;
 
         public MiscPage()
@@ -50,13 +50,14 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         #region Design
 
-        public void AfterLoad()
+        public IEnumerable<SubMenuAction> AfterLoad()
         {
             Features.Ui.IsCustomTitleBarEnabled = true; //TODO Dispse?
             Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(TitleBar));
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges; //TODO Dispose
             Features.Ui.TriggerCustomTitleBarChanges();
             NavigateTo("Infos");
+            return Array.Empty<SubMenuAction>();
         }
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)

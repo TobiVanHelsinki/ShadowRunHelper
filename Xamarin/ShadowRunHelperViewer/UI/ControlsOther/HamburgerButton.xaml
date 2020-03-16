@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:ShadowRunHelperViewer"
+             mc:Ignorable="d"
+             x:Class="ShadowRunHelperViewer.UI.ControlsOther.HamburgerButton">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:CharModelStyles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="ToggleMenu" FontSize="22" Padding="5" HeightRequest="30" WidthRequest="30"
+                HorizontalOptions="Fill" VerticalOptions="Fill"/>
+    </ContentView.Content>
+</ContentView>

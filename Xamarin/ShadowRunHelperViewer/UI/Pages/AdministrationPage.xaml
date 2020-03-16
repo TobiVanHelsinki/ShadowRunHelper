@@ -6,6 +6,7 @@
              xmlns:io="clr-namespace:TAPPLICATION.IO;assembly=TAPPLICATION"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
+             xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.Pages.AdministrationPage"
              BackgroundColor="White">
@@ -27,12 +28,22 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <StackLayout x:Name="TitleBar" BackgroundColor="Accent" MinimumWidthRequest="50" MinimumHeightRequest="10" Padding="10">
-                <Label x:Name="Intro1Text" FontSize="Subtitle" Text="{resx:UiResources TitleAdministrationPage}"
+            <Grid BackgroundColor="Accent" MinimumWidthRequest="50" MinimumHeightRequest="10" Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <controlsother:HamburgerButton HorizontalOptions="FillAndExpand"/>
+                <StackLayout x:Name="TitleBar" Grid.Column="1">
+                    <Label x:Name="Intro1Text" FontSize="Subtitle" Text="{resx:UiResources TitleAdministrationPage}"
                        HorizontalOptions="FillAndExpand" MaxLines="2"/>
-                <Label x:Name="Intro2Text" Text="{resx:UiResources IntroAdministration}"
+                    <Label x:Name="Intro2Text" Text="{resx:UiResources IntroAdministration}"
                        HorizontalOptions="FillAndExpand" MaxLines="5"/>
-            </StackLayout>
+                </StackLayout>
+            </Grid>
             <Frame Padding="5" Grid.Row="1" IsVisible="False" x:Name="WarningFrame">
                 <Label Text="{resx:UiResources WarningLocalSaveplace}" BackgroundColor="Crimson" Margin="5"/>
             </Frame>
@@ -78,13 +89,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <ScrollView Grid.Row="6" Style="{StaticResource CommandBar}">
-                <StackLayout Style="{StaticResource CommandBarStack}">
-                    <Button Text="{resx:UiResources NewChar}" Clicked="NewChar_Clicked" Style="{StaticResource CommandBarButton}"/>
-                    <Button Text="{resx:UiResources ImportChar}" Clicked="OpenFile" Style="{StaticResource CommandBarButton}"/>
-                    <Button Text="{resx:UiResources CreateExampleChar}" Clicked="ExampleChar_Clicked" Style="{StaticResource CommandBarButton}"/>
-                </StackLayout>
-            </ScrollView>
         </Grid>
     </ContentView.Content>
 </ContentView>

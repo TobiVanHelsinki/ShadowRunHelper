@@ -1,13 +1,15 @@
 ﻿//Author: Tobi van Helsinki
 
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
-using System.Threading;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using Syncfusion.SfNavigationDrawer.XForms;
-using TAPPLICATION.IO;
 using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -19,21 +21,61 @@ namespace ShadowRunHelperViewer.UI.Pages
         NotSet, Wide, Tall, Mobile
     }
 
+    public class SubMenuAction
+    {
+        public SubMenuAction(string text, string icon, ICommand clickHandler)
+        {
+            Text = text;
+            Icon = icon;
+            ClickHandler = clickHandler;
+        }
+
+        public string Text { get; set; }
+        public string Icon { get; set; }
+        public ICommand ClickHandler { get; set; }
+    }
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
         public static MainPage Instance;
 
+        #region NotifyPropertyChanged
+        public virtual event PropertyChangedEventHandler PropertyChanged;
+        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        {
+            add
+            {
+                if (!PropertyChanged?.GetInvocationList()?.Contains(value) == true)
+                {
+                    PropertyChanged += value;
+                }
+            }
+            remove
+            {
+                if (PropertyChanged?.GetInvocationList()?.Contains(value) == true)
+                {
+                    PropertyChanged -= value;
+                }
+            }
+        }
+
+        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion NotifyPropertyChanged
+
         #region ViewMode
 
-        public delegate void ViewModeChangedEventHandler(ViewModes oldMode, ViewModes newMode, double leftTopSpacing);
+        public delegate void ViewModeChangedEventHandler(ViewModes oldMode, ViewModes newMode);
         public event ViewModeChangedEventHandler ViewModeChanged;
 
         private ViewModes _CurrentViewMode;
         public ViewModes CurrentViewMode
         {
             get => _CurrentViewMode;
-            set { if (_CurrentViewMode != value) { ViewModeChanged?.Invoke(_CurrentViewMode, value, HamburgerFrame.Width); _CurrentViewMode = value; } }
+            set { if (_CurrentViewMode != value) { ViewModeChanged?.Invoke(_CurrentViewMode, value); _CurrentViewMode = value; } }
         }
 
         private void ContentPage_SizeChanged(object sender, EventArgs e)
@@ -84,6 +126,7 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
         {
+            MenuDrawerHeader.Margin = new Thickness(0, Heigth, 0, 0);
         }
 
         private void Log_DisplayMessageRequested(LogMessage logmessage)
@@ -117,7 +160,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 case ProjectPages.Char:
                     if (AppModel.Instance?.MainObject is CharHolder ch)
                     {
-                        NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(ch));
+                        NavigatoToSingleInstanceOf<CharPage>(true, (x) => SetSubMenuItems(x.Activate(ch)));
                     }
                     else
                     {
@@ -126,29 +169,34 @@ namespace ShadowRunHelperViewer.UI.Pages
                     break;
                 case ProjectPages.Administration:
                 Administration:
-                    NavigatoToSingleInstanceOf<AdministrationPage>(false, (x) => x?.Activate());
+                    NavigatoToSingleInstanceOf<AdministrationPage>(false, (x) => SetSubMenuItems(x?.Activate()));
                     break;
                 case ProjectPages.Settings:
-                    NavigatoToSingleInstanceOf<MiscPage>(false, (x) => x.AfterLoad());
+                    NavigatoToSingleInstanceOf<MiscPage>(false, (x) => SetSubMenuItems(x.AfterLoad()));
                     break;
                 default:
                     break;
             }
         }
 
-        private void CharPage(object sender, System.EventArgs e)
+        private void Nav_CharPage(object sender, System.EventArgs e)
         {
             AppModel.Instance.RequestNavigation(ProjectPages.Char);
         }
 
-        private void Administration(object sender, EventArgs e)
+        private void Nav_Admin(object sender, EventArgs e)
         {
             AppModel.Instance.RequestNavigation(ProjectPages.Administration);
         }
 
-        private void Settings(object sender, EventArgs e)
+        private void Nav_Settings(object sender, EventArgs e)
         {
             AppModel.Instance.RequestNavigation(ProjectPages.Settings);
+        }
+
+        private void Nav_Info(object sender, EventArgs e)
+        {
+            AppModel.Instance.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsMain);
         }
 
         /// <summary>
@@ -157,7 +205,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         /// <param name="slpash"></param>
         /// <param name="afterLoad">a action that is performed at the ui threat</param>
         /// <exception cref="ObjectDisposedException"></exception>
-        public void NavigatoToSingleInstanceOf<T>(bool slpash = false, Action<T> afterLoad = null) where T : View, new()
+        private void NavigatoToSingleInstanceOf<T>(bool slpash = false, Action<T> afterLoad = null) where T : View, new()
         {
             if (ContentPlace.Content is IDisposable disposable)
             {
@@ -219,7 +267,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         public bool IsMenuOpen
         {
             get => _IsMenuOpen;
-            set { if (_IsMenuOpen != value) { _IsMenuOpen = value; MenuDrawerDefault.IsOpen = IsMenuOpen; ViewModeChanged?.Invoke(CurrentViewMode, CurrentViewMode, HamburgerFrame.Width); } }
+            set { if (_IsMenuOpen != value) { _IsMenuOpen = value; MenuDrawerDefault.IsOpen = IsMenuOpen; ViewModeChanged?.Invoke(CurrentViewMode, CurrentViewMode); } }
         }
 
         /// <summary>
@@ -244,52 +292,23 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        private void ToggleMenu(object sender, EventArgs e) => IsMenuOpen = !IsMenuOpen;
+        public void ToggleMenu(object sender, EventArgs e)
+        {
+            IsMenuOpen = !IsMenuOpen;
+        }
 
+        private ObservableCollection<SubMenuAction> _SubMenuItems = new ObservableCollection<SubMenuAction>();
+        public ObservableCollection<SubMenuAction> SubMenuItems
+        {
+            get => _SubMenuItems;
+            set { if (_SubMenuItems != value) { _SubMenuItems = value; NotifyPropertyChanged(); } }
+        }
+
+        private void SetSubMenuItems(IEnumerable<SubMenuAction> actions)
+        {
+            SubMenuItems.Clear();
+            SubMenuItems.AddRange(actions);
+        }
         #endregion Menu
-
-        #region Char Menu
-
-        private void Char_Save(object sender, EventArgs e)
-        {
-            AppModel.Instance?.MainObject?.SetSaveTimerTo(0, true);
-        }
-
-        private void Char_SaveIntern(object sender, EventArgs e)
-        {
-            SharedIO.SaveAtCurrentPlace(AppModel.Instance?.MainObject);
-        }
-
-        private async void Char_SaveExtern(object sender, EventArgs e)
-        {
-            SharedIO.Save(AppModel.Instance?.MainObject, new FileInfo(Path.Combine((await SharedIO.CurrentIO.PickFolder()).FullName, AppModel.Instance?.MainObject?.FileInfo.Name)));
-        }
-
-        private void Char_OpenFolder(object sender, EventArgs e)
-        {
-            SharedIO.CurrentIO.OpenFolder(AppModel.Instance?.MainObject?.FileInfo.Directory);
-        }
-
-        private void Char_SubtractLifeStyleCost(object sender, EventArgs e)
-        {
-            AppModel.Instance?.MainObject?.SubtractLifeStyleCost();
-        }
-
-        private void Char_CharSettings(object sender, EventArgs e)
-        {
-            // TODO Display a full screen element with navigation
-        }
-
-        private void Char_Repair(object sender, EventArgs e)
-        {
-            AppModel.Instance?.MainObject?.Repair();
-        }
-
-        private void Char_Unload(object sender, EventArgs e)
-        {
-            AppModel.Instance?.RemoveMainObject(AppModel.Instance?.MainObject);
-            AppModel.Instance.RequestNavigation(ProjectPages.Administration);
-        }
-        #endregion Char Menu
     }
 }

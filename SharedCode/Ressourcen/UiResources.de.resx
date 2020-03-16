@@ -369,7 +369,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Beispiel Charakter erstellen</value>
   </data>
   <data name="Unload" xml:space="preserve">
-    <value>Entladen</value>
+    <value>Schließen</value>
   </data>
   <data name="UnloadX" xml:space="preserve">
     <value>Entfernt nur den geladenen Char aus der App. Speicherdateien werden nicht beeinflusst.</value>
@@ -553,5 +553,8 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="Save" xml:space="preserve">
     <value>Speichern</value>
+  </data>
+  <data name="Nav_Info" xml:space="preserve">
+    <value>Informationen</value>
   </data>
 </root>
