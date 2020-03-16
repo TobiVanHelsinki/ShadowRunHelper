@@ -554,4 +554,10 @@ This app can be used to open files and folders on the file system. The app store
   <data name="TextRefactoring_NewLine" xml:space="preserve">
     <value>Remove LineBreaks in Notes</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>

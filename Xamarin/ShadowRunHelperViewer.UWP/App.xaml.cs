@@ -22,6 +22,8 @@ namespace ShadowRunHelperViewer.UWP
         {
             UnhandledException += (x, y) => { AppHolder.App_UnhandledException(y.Message, y.Exception); };
 
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
+
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
             Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");

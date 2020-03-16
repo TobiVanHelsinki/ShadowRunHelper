@@ -20,6 +20,7 @@ namespace ShadowRunHelperViewer
     {
         public App()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
             Log.IsConsoleLogEnabled = true;
             Log.IsInMemoryLogEnabled = true;
             Log.Mode = LogMode.Verbose;

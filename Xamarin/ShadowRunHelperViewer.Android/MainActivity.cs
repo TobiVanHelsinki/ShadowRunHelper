@@ -1,6 +1,5 @@
 ﻿//Author: Tobi van Helsinki
 
-using System;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -17,6 +16,11 @@ namespace ShadowRunHelperViewer.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
+            //AssetManager assets = this.Assets;
+            //Typeface font = Typeface.CreateFromAsset(assets, "Fonts/iconize-fontawesome-solid.ttf");
+            //var tf = Android.Graphics.Typeface.CreateFromAsset(Context.Assets, "Fonts/iconize-fontawesome-solid.ttf");
+
             Init.Do();
 
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -41,7 +45,7 @@ namespace ShadowRunHelperViewer.Droid
         {
             // get the accent color from your theme
             var themeAccentColor = new TypedValue();
-            this.Theme.ResolveAttribute(Resource.Attribute.colorAccent, themeAccentColor, true);
+            Theme.ResolveAttribute(Resource.Attribute.colorAccent, themeAccentColor, true);
             var droidAccentColor = new Color(themeAccentColor.Data);
 
             // set Xamarin Color.Accent to match the theme's accent color

@@ -199,6 +199,12 @@
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.2.0.223</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Buttons">
+      <Version>17.4.0.55</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer">
+      <Version>17.4.0.55</Version>
+    </PackageReference>
     <PackageReference Include="TLIB">
       <Version>3.3.7</Version>
     </PackageReference>
@@ -207,6 +213,10 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.4.0.55" /> -->
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.4.0.55" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\TLIB\TAPPLICATION_UWP\TAPPLICATION_UWP.csproj">

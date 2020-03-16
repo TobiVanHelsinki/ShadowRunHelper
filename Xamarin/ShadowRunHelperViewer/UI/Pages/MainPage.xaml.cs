@@ -1,8 +1,13 @@
 ﻿//Author: Tobi van Helsinki
 
 using System;
+using System.ComponentModel;
+using System.IO;
+using System.Threading;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
+using Syncfusion.SfNavigationDrawer.XForms;
+using TAPPLICATION.IO;
 using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -19,20 +24,16 @@ namespace ShadowRunHelperViewer.UI.Pages
     {
         public static MainPage Instance;
 
-        public static async void Test()
-        {
-            var answere = await Instance.DisplayActionSheet("Titleee", "No!", "Kaboom", "Ice", "Tea", "shark");
-            Log.Write(answere, true);
-        }
-
         #region ViewMode
-        public event EventHandler ViewModeChanged;
+
+        public delegate void ViewModeChangedEventHandler(ViewModes oldMode, ViewModes newMode, double leftTopSpacing);
+        public event ViewModeChangedEventHandler ViewModeChanged;
 
         private ViewModes _CurrentViewMode;
         public ViewModes CurrentViewMode
         {
             get => _CurrentViewMode;
-            set { if (_CurrentViewMode != value) { _CurrentViewMode = value; ViewModeChanged?.Invoke(this, new EventArgs()); } }
+            set { if (_CurrentViewMode != value) { ViewModeChanged?.Invoke(_CurrentViewMode, value, HamburgerFrame.Width); _CurrentViewMode = value; } }
         }
 
         private void ContentPage_SizeChanged(object sender, EventArgs e)
@@ -53,9 +54,22 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 CurrentViewMode = ViewModes.NotSet;
             }
-            IsMenuOpen = Width > UIConstants.MinWidthDesktop;
+            IsMenuOpen = false;
+            MenuDrawerDefault.TouchThreshold = (float)Width;
         }
         #endregion ViewMode
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (ContentPlace.Content is CharPage page)
+            {
+                return page.OnBackButtonPressed();
+            }
+            else
+            {
+                return base.OnBackButtonPressed();
+            }
+        }
 
         public MainPage()
         {
@@ -64,7 +78,12 @@ namespace ShadowRunHelperViewer.UI.Pages
             AppModel.Instance.PropertyChanged += Instance_PropertyChanged;
             Log.DisplayMessageRequested += Log_DisplayMessageRequested;
             Instance = this;
-            ViewModeChanged += MainPage_ViewModeChanged;
+            BindingContext = this;
+            Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
+        }
+
+        private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
+        {
         }
 
         private void Log_DisplayMessageRequested(LogMessage logmessage)
@@ -72,10 +91,22 @@ namespace ShadowRunHelperViewer.UI.Pages
             DisplayAlert(logmessage.LogType.ToString(), logmessage.Message, "OK");
         }
 
-        private void Instance_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void Instance_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             Features.Ui.DisplayCurrentCharName();
         }
+
+        private void SetWaitingContent()
+        {
+            ContentPlace.Content = new Label
+            {
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Text = "Hey, here you can read a tipp",
+            };
+        }
+
+        #region Navigation
 
         private void Instance_NavigationRequested(ProjectPages page, ProjectPagesOptions PageOptions = ProjectPagesOptions.Nothing)
         {
@@ -84,7 +115,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 case ProjectPages.undef:
                     break;
                 case ProjectPages.Char:
-                    if (AppModel.Instance.MainObject is CharHolder ch)
+                    if (AppModel.Instance?.MainObject is CharHolder ch)
                     {
                         NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(ch));
                     }
@@ -181,78 +212,84 @@ namespace ShadowRunHelperViewer.UI.Pages
             //    }
             //});
         }
-
-        private void SetWaitingContent()
-        {
-            ContentPlace.Content = new Label
-            {
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Hey, here you can read a tipp",
-            };
-        }
-
-        protected override bool OnBackButtonPressed()
-        {
-            if (ContentPlace.Content is CharPage page && page.OnBackButtonPressed())
-            {
-                return true;
-            }
-            else
-            {
-                return base.OnBackButtonPressed();
-            }
-        }
+        #endregion Navigation
 
         #region Menu
         private bool _IsMenuOpen;
         public bool IsMenuOpen
         {
             get => _IsMenuOpen;
-            set { _IsMenuOpen = value; SetMenuAppearence(); }
+            set { if (_IsMenuOpen != value) { _IsMenuOpen = value; MenuDrawerDefault.IsOpen = IsMenuOpen; ViewModeChanged?.Invoke(CurrentViewMode, CurrentViewMode, HamburgerFrame.Width); } }
         }
 
-        private void SetMenuAppearence()
+        /// <summary>
+        /// Syncs the IsMenuOpen Property with the drawer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="ObjectDisposedException"></exception>
+        private void SfNavigationDrawer_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            switch (CurrentViewMode)
+            if (e.PropertyName == nameof(SfNavigationDrawer.IsOpen))
             {
-                case ViewModes.Mobile://Floating Menu
-                case ViewModes.Tall:
-                    Grid.SetColumnSpan(ContentPlace, 2);
-                    Grid.SetColumn(ContentPlace, 0);
-                    break;
-                case ViewModes.NotSet:
-                case ViewModes.Wide:
-                default:
-                    //Splitmenu
-                    Grid.SetColumnSpan(ContentPlace, 1);
-                    Grid.SetColumn(ContentPlace, 1);
-                    break;
-            }
-            if (IsMenuOpen)
-            {
-                MainMenu.IsVisible = true;
-                MenuColumn.Width = new GridLength(1, GridUnitType.Auto);
-            }
-            else
-            {
-                MainMenu.IsVisible = false;
-                MenuColumn.Width = new GridLength(0, GridUnitType.Absolute);
+                IsMenuOpen = MenuDrawerDefault.IsOpen;
             }
         }
 
-        private void MainPage_ViewModeChanged(object sender, EventArgs e) => SetMenuAppearence();
+        private void SfNavigationDrawer_PropertyChanged(object sender, Xamarin.Forms.PropertyChangingEventArgs e)
+        {
+            if (e.PropertyName == nameof(SfNavigationDrawer.IsOpen))
+            {
+                IsMenuOpen = MenuDrawerDefault.IsOpen;
+            }
+        }
 
         private void ToggleMenu(object sender, EventArgs e) => IsMenuOpen = !IsMenuOpen;
 
         #endregion Menu
 
-        private int i = 10;
+        #region Char Menu
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void Char_Save(object sender, EventArgs e)
         {
-            MenuColumn.Width = new GridLength(i, GridUnitType.Absolute);
-            i += 10;
+            AppModel.Instance?.MainObject?.SetSaveTimerTo(0, true);
         }
+
+        private void Char_SaveIntern(object sender, EventArgs e)
+        {
+            SharedIO.SaveAtCurrentPlace(AppModel.Instance?.MainObject);
+        }
+
+        private async void Char_SaveExtern(object sender, EventArgs e)
+        {
+            SharedIO.Save(AppModel.Instance?.MainObject, new FileInfo(Path.Combine((await SharedIO.CurrentIO.PickFolder()).FullName, AppModel.Instance?.MainObject?.FileInfo.Name)));
+        }
+
+        private void Char_OpenFolder(object sender, EventArgs e)
+        {
+            SharedIO.CurrentIO.OpenFolder(AppModel.Instance?.MainObject?.FileInfo.Directory);
+        }
+
+        private void Char_SubtractLifeStyleCost(object sender, EventArgs e)
+        {
+            AppModel.Instance?.MainObject?.SubtractLifeStyleCost();
+        }
+
+        private void Char_CharSettings(object sender, EventArgs e)
+        {
+            // TODO Display a full screen element with navigation
+        }
+
+        private void Char_Repair(object sender, EventArgs e)
+        {
+            AppModel.Instance?.MainObject?.Repair();
+        }
+
+        private void Char_Unload(object sender, EventArgs e)
+        {
+            AppModel.Instance?.RemoveMainObject(AppModel.Instance?.MainObject);
+            AppModel.Instance.RequestNavigation(ProjectPages.Administration);
+        }
+        #endregion Char Menu
     }
 }

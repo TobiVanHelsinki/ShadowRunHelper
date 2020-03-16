@@ -646,6 +646,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die More ähnelt.
+        /// </summary>
+        public static string More {
+            get {
+                return ResourceManager.GetString("More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Administration ähnelt.
         /// </summary>
         public static string Nav_Admin {
@@ -1139,6 +1148,15 @@ namespace SharedCode.Ressourcen {
         public static string Reset {
             get {
                 return ResourceManager.GetString("Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save ähnelt.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

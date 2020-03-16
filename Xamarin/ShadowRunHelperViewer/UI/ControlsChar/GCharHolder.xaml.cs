@@ -10,6 +10,7 @@ using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
 using ShadowRunHelperViewer.UI;
+using ShadowRunHelperViewer.UI.Pages;
 using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
 using System;
@@ -88,12 +89,17 @@ namespace ShadowRunHelperViewer
             Features.Ui.SetCustomTitleBar(null);
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
             Features.Ui.TriggerCustomTitleBarChanges();
+            MainPage.Instance.ViewModeChanged += MainPage_ViewModeChanged; ;
+        }
+
+        private void MainPage_ViewModeChanged(ViewModes oldMode, ViewModes newMode, double leftTopSpacing)
+        {
+            //CharHeadControls.Margin = new Thickness(MainPage.Instance.IsMenuOpen ? 0 : leftTopSpacing, 0, 0, 0);
         }
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
         {
             CharTitleBar.MinimumHeightRequest = Heigth;
-            //CharHeadControls.Padding = new Thickness(LeftSpace.LowerB(5), 5, RigthSpace.LowerB(5), 5);
         }
 
         private async void Infogrid_Tapped()
@@ -290,7 +296,6 @@ namespace ShadowRunHelperViewer
 
         private void ChangeUi()
         {
-            MenuToggleButton.IsVisible = Narrow;
             if (Narrow)
             {
                 if (MenuOpen)
@@ -345,57 +350,6 @@ namespace ShadowRunHelperViewer
         }
 
         #endregion AdaptiveUI
-
-        #region Char Actions
-
-        private void Toggle(object sender, EventArgs e)
-        {
-            MenuOpen = !MenuOpen;
-        }
-
-        private (string, Action)[] MenuItems => new (string, Action)[] {
-                        (UiResources.SaveAtCurrentPlace,()=>{SharedIO.SaveAtCurrentPlace(MyChar); }),
-                        (UiResources.SaveExtern,async ()=>{SharedIO.Save(MyChar, new FileInfo(Path.Combine((await SharedIO.CurrentIO.PickFolder()).FullName, MyChar.FileInfo.Name))); }),
-                        (UiResources.OpenFolder,()=>{SharedIO.CurrentIO.OpenFolder(MyChar.FileInfo.Directory); }),
-                        (UiResources.SubtractLifeStyleCost,MyChar.SubtractLifeStyleCost),
-                        (UiResources.CharSettings,()=>{ }),
-                        (UiResources.Repair,MyChar.Repair),
-                        (UiResources.Unload,Unload),
-                    };
-
-        private void MoreMenu(object sender, System.EventArgs e)
-        {
-            try
-            {
-                var Popup = new PopupMenu
-                {
-                    ItemsSource = MenuItems.Select(x => x.Item1).ToArray()
-                };
-                Popup.OnItemSelected += Popup_OnItemSelected;
-                Popup?.ShowPopup(sender as Button);
-
-                //https://baskren.github.io/Forms9Patch/guides/GettingStartedWindows.html
-                //https://docs.microsoft.com/de-de/xamarin/xamarin-forms/app-fundamentals/navigation/pop-ups
-            }
-            catch (Exception)
-            {
-            }
-        }
-
-        private void Popup_OnItemSelected(string item)
-        {
-            MenuItems.FirstOrDefault(x => x.Item1 == item).Item2?.Invoke();
-        }
-
-        private void Save(object sender, System.EventArgs e)
-        {
-            MyChar.SetSaveTimerTo(0, true);
-        }
-
-        private static void Unload()
-        {
-        }
-        #endregion Char Actions
 
         #region Search Stuff
 

@@ -282,7 +282,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Wartezeit für Änderungen in Sekunden</value>
   </data>
   <data name="SaveAtCurrentPlace" xml:space="preserve">
-    <value>Speichern in aktuellem Ordner</value>
+    <value>Importieren</value>
   </data>
   <data name="Optionen_TutorialMainShown" xml:space="preserve">
     <value>Tutorial abgeschlossen</value>
@@ -294,7 +294,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Umbenennen</value>
   </data>
   <data name="SaveExtern" xml:space="preserve">
-    <value>Speichern in externem Ordner</value>
+    <value>Exportieren</value>
   </data>
   <data name="Optionen_U_CharPageConfig" xml:space="preserve">
     <value>Kategorien auswählen</value>
@@ -429,7 +429,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Seperator hinzufügen</value>
   </data>
   <data name="CharSettings" xml:space="preserve">
-    <value>Charakterbogen Einstellungen</value>
+    <value>Char-Optionen</value>
   </data>
   <data name="CharSettingsX" xml:space="preserve">
     <value>Damit kannst du diese Ansicht konfigurieren.</value>
@@ -471,7 +471,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Tipp</value>
   </data>
   <data name="SubtractLifeStyleCost" xml:space="preserve">
-    <value>Lebensstilkosten abziehen</value>
+    <value>Lebensstil bezahlen</value>
   </data>
   <data name="GeneralInput" xml:space="preserve">
     <value>Generelle Eingabe</value>
@@ -547,5 +547,11 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="Optionen_EditAfterAddTip" xml:space="preserve">
     <value>Nachdem du ein Objekt erstellt hast, wird sofort der bearbeiten Dialog aufgerufen.</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>Mehr</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Speichern</value>
   </data>
 </root>
