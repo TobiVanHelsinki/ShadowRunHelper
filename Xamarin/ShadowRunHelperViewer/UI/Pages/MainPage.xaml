@@ -90,7 +90,7 @@
                                 </Grid.RowDefinitions>
                                 <controlsother:HamburgerButton Grid.Row="1" WidthRequest="60" HeightRequest="60" HorizontalOptions="Start"/>
 
-                                <sfbtn:SfButton Grid.Row="2" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_CharPage">
+                                <sfbtn:SfButton x:Name="NavCharBtn" Grid.Row="2" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_CharPage">
                                     <sfbtn:SfButton.Content>
                                         <Grid>
                                             <Grid.ColumnDefinitions>

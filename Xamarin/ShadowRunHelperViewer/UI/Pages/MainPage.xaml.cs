@@ -67,6 +67,52 @@ namespace ShadowRunHelperViewer.UI.Pages
         }
         #endregion NotifyPropertyChanged
 
+        public MainPage()
+        {
+            AppModel.Instance.NavigationRequested += Instance_NavigationRequested;
+            InitializeComponent();
+            AppModel.Instance.PropertyChanged += AppModel_PropertyChanged;
+            AppModel_PropertyChanged(this, new PropertyChangedEventArgs(""));
+            Log.DisplayMessageRequested += Log_DisplayMessageRequested;
+            Instance = this;
+            BindingContext = this;
+            Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
+            DisableBusy();
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (ContentPlace.Content is CharPage page)
+            {
+                return page.OnBackButtonPressed();
+            }
+            else
+            {
+                return base.OnBackButtonPressed();
+            }
+        }
+
+        private void Log_DisplayMessageRequested(LogMessage logmessage)
+        {
+            DisplayAlert(logmessage.LogType.ToString(), logmessage.Message, "OK");
+        }
+
+        private void AppModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            NavCharBtn.IsEnabled = AppModel.Instance.MainObject != null;
+            Features.Ui.DisplayCurrentCharName();
+        }
+
+        #region Design
+
+        private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
+        {
+            MenuDrawerHeader.Margin = new Thickness(0, Heigth, 0, 0);
+            //TODO auch DrawerHeaderHeight beeinflussen (odersogar "nur"); dann auf mobile testen, ob space weg ist.
+        }
+
+        #endregion Design
+
         #region ViewMode
 
         public delegate void ViewModeChangedEventHandler(ViewModes oldMode, ViewModes newMode);
@@ -104,46 +150,6 @@ namespace ShadowRunHelperViewer.UI.Pages
             Busyindicator.ViewBoxWidth = newSize;
         }
         #endregion ViewMode
-
-        protected override bool OnBackButtonPressed()
-        {
-            if (ContentPlace.Content is CharPage page)
-            {
-                return page.OnBackButtonPressed();
-            }
-            else
-            {
-                return base.OnBackButtonPressed();
-            }
-        }
-
-        public MainPage()
-        {
-            AppModel.Instance.NavigationRequested += Instance_NavigationRequested;
-            InitializeComponent();
-            AppModel.Instance.PropertyChanged += Instance_PropertyChanged;
-            Log.DisplayMessageRequested += Log_DisplayMessageRequested;
-            Instance = this;
-            BindingContext = this;
-            Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
-            //DisableBusy();
-        }
-
-        private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
-        {
-            MenuDrawerHeader.Margin = new Thickness(0, Heigth, 0, 0);
-            //TODO auch DrawerHeaderHeight beeinflussen (odersogar "nur"); dann auf mobile testen, ob space weg ist.
-        }
-
-        private void Log_DisplayMessageRequested(LogMessage logmessage)
-        {
-            DisplayAlert(logmessage.LogType.ToString(), logmessage.Message, "OK");
-        }
-
-        private void Instance_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            Features.Ui.DisplayCurrentCharName();
-        }
 
         private void SetWaitingContent()
         {

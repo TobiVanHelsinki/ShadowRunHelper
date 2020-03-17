@@ -119,7 +119,6 @@ namespace ShadowRunHelperViewer.UI.Pages
                         AppModel.Instance.RemoveMainObject(item);
                     }
                     var newchar = await CharHolderIO.Load(charfile);
-                    System.Threading.Thread.Sleep(5000);
                     AppModel.Instance.MainObject = (newchar);
                     AppModel.Instance.RequestNavigation(ProjectPages.Char);
                 }
