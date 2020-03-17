@@ -18,7 +18,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Grid>
+        <Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -38,25 +38,28 @@
                 </Grid.ColumnDefinitions>
                 <controlsother:HamburgerButton HorizontalOptions="FillAndExpand"/>
                 <StackLayout x:Name="TitleBar" Grid.Column="1">
-                    <Label x:Name="Intro1Text" FontSize="Subtitle" Text="{resx:UiResources TitleAdministrationPage}"
+                    <Label x:Name="Intro1Text" FontSize="Title" Text="{resx:UiResources TitleAdministrationPage}"
                        HorizontalOptions="FillAndExpand" MaxLines="2"/>
-                    <Label x:Name="Intro2Text" Text="{resx:UiResources IntroAdministration}"
+                    <Label x:Name="Intro2Text" FontSize="Default" Text="{resx:UiResources IntroAdministration}"
                        HorizontalOptions="FillAndExpand" MaxLines="5"/>
                 </StackLayout>
             </Grid>
-            <Frame Padding="5" Grid.Row="1" IsVisible="False" x:Name="WarningFrame">
-                <Label Text="{resx:UiResources WarningLocalSaveplace}" BackgroundColor="Crimson" Margin="5"/>
+            <Frame Margin="5" Padding="5" Grid.Row="1" IsVisible="False" x:Name="WarningFrame" BackgroundColor="Crimson" CornerRadius="5">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OfflineFolderChooser"/>
+                </Frame.GestureRecognizers>
+                <Label Text="{resx:UiResources WarningLocalSaveplace}" TextColor="FloralWhite" FontSize="Medium"/>
             </Frame>
-            <StackLayout Margin="15,0,10,0" Grid.Row="3" Orientation="Horizontal">
-                <Label Text="{resx:UiResources FileName}" LineBreakMode="WordWrap"/>
+            <StackLayout Margin="10,0,10,5" Grid.Row="3" Orientation="Horizontal">
+                <Label Text="{resx:UiResources FileName}" LineBreakMode="WordWrap" FontSize="Subtitle"/>
                 <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                    <Label Text="{resx:UiResources FileSize}" TextColor="SlateGray" Margin="0,0,0,0"/>
-                    <Label Text="/" Margin="5,0,5,0" TextColor="SlateGray"/>
-                    <Label Text="{resx:UiResources FileDate}" TextColor="SlateGray"/>
+                    <Label Text="{resx:UiResources FileSize}" TextColor="SlateGray" FontSize="Subtitle"/>
+                    <Label Text="/" Margin="5,0,5,0" TextColor="SlateGray" FontSize="Subtitle"/>
+                    <Label Text="{resx:UiResources FileDate}" TextColor="SlateGray" FontSize="Subtitle"/>
                 </StackLayout>
             </StackLayout>
             <BoxView Color="Gray" Grid.Row="4" HeightRequest="1"/>
-            <ListView IsPullToRefreshEnabled="True" Grid.Row="5" Margin="0" RefreshControlColor="Accent"
+            <ListView IsPullToRefreshEnabled="True" Grid.Row="5" Margin="5,0,5,0" RefreshControlColor="Accent"
                       ItemsSource="{x:Binding CharList, Mode=TwoWay}" Refreshing="ListView_Refreshing" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="io:ExtendetFileInfo">
@@ -67,7 +70,7 @@
                                 <MenuItem Clicked="FileCopy" Text="{resx:UiResources Duplicate}" AutomationProperties.HelpText="{resx:UiResources FileCopyX}"/>
                                 <MenuItem Clicked="FileDelete" Text="{resx:UiResources Delete}" AutomationProperties.HelpText="{resx:UiResources FileDeleteX}" IsDestructive="True"/>
                             </ViewCell.ContextActions>
-                            <Grid Padding="0" Margin="0">
+                            <Grid Padding="0" Margin="0" RowSpacing="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
@@ -76,7 +79,7 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <StackLayout Margin="10" Padding="0" SizeChanged="TemplateSizeChanged">
-                                    <Label Text="{x:Binding Name}" LineBreakMode="WordWrap" Margin="0"/>
+                                    <Label Text="{x:Binding Name}" LineBreakMode="WordWrap" Margin="0" FontSize="Small"/>
                                     <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Margin="0" Padding="0" Orientation="Horizontal">
                                         <Label Text="{x:Binding Length}" TextColor="SlateGray"/>
                                         <Label Text="/" Margin="5,0,5,0" TextColor="SlateGray"/>

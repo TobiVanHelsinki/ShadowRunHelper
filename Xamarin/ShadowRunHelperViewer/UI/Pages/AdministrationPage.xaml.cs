@@ -38,8 +38,39 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             InitializeComponent();
             BindingContext = this;
+
             RefreshCharList();
+            SettingsModel.I.PropertyChanged += Settings_PropertyChanged;
+
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
+        }
+
+        /// <summary>
+        /// When the offline warning is tapped, this method changes the setting for foldermode;
+        /// triggering the user to choose a path.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void OfflineFolderChooser(object sender, EventArgs e)
+        {
+            SettingsModel.I.FOLDERMODE_PATH = "";
+            SettingsModel.I.FOLDERMODE = true;
+        }
+
+        /// <summary>
+        /// if the settings of the folder containing save data are changed while this page is open,
+        /// the list needs to get refreshed. this is the case when the user dismisses the offline warning
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">
+        /// The <see cref="PropertyChangedEventArgs"/> instance containing the event data.
+        /// </param>
+        private async void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(SettingsModel.I.FOLDERMODE) || e.PropertyName == nameof(SettingsModel.I.FOLDERMODE_PATH))
+            {
+                await RefreshCharList();
+            }
         }
 
         #region Char List

@@ -192,7 +192,14 @@ namespace ShadowRunHelper
                 catch (Exception ex)
                 {
                     Log.Write("Could not", ex, logType: LogType.Error);
-                    if (!await SharedIO.CurrentIO.HasAccess(new DirectoryInfo(SharedSettingsModel.I.FOLDERMODE_PATH)))
+                    try
+                    {
+                        if (!await SharedIO.CurrentIO.HasAccess(new DirectoryInfo(SharedSettingsModel.I.FOLDERMODE_PATH)))
+                        {
+                            SharedSettingsModel.Instance.FOLDERMODE = false;
+                        }
+                    }
+                    catch (Exception)
                     {
                         SharedSettingsModel.Instance.FOLDERMODE = false;
                     }
@@ -215,6 +222,7 @@ namespace ShadowRunHelper
             {
                 Log.Write(CustomManager.GetString("Error_CopyFiles"), ex);
             }
+            I.NotifyPropertyChanged(nameof(FOLDERMODE_PATH));
         }
         #endregion Constraints
     }

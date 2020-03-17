@@ -127,6 +127,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
         {
             MenuDrawerHeader.Margin = new Thickness(0, Heigth, 0, 0);
+            //TODO auch DrawerHeaderHeight beeinflussen (odersogar "nur"); dann auf mobile testen, ob space weg ist.
         }
 
         private void Log_DisplayMessageRequested(LogMessage logmessage)
