@@ -93,7 +93,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     CharList.Clear();
-                    CharList.AddRange(savepathfiles);
+                    CharList.AddRange(savepathfiles.OrderByDescending(x => x.LastAccessTime));
                 });
             }
             catch (Exception ex)

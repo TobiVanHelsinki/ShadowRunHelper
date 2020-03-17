@@ -53,9 +53,9 @@
             <StackLayout Margin="10,0,10,5" Grid.Row="3" Orientation="Horizontal">
                 <Label Text="{resx:UiResources FileName}" LineBreakMode="WordWrap" FontSize="Subtitle"/>
                 <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                    <Label Text="{resx:UiResources FileSize}" TextColor="SlateGray" FontSize="Subtitle"/>
-                    <Label Text="/" Margin="5,0,5,0" TextColor="SlateGray" FontSize="Subtitle"/>
                     <Label Text="{resx:UiResources FileDate}" TextColor="SlateGray" FontSize="Subtitle"/>
+                    <Label Text="/" Margin="5,0,5,0" TextColor="SlateGray" FontSize="Subtitle"/>
+                    <Label Text="{resx:UiResources FileSize}" TextColor="SlateGray" FontSize="Subtitle"/>
                 </StackLayout>
             </StackLayout>
             <BoxView Color="Gray" Grid.Row="4" HeightRequest="1"/>
@@ -78,12 +78,14 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <StackLayout Margin="10" Padding="0" SizeChanged="TemplateSizeChanged">
-                                    <Label Text="{x:Binding Name}" LineBreakMode="WordWrap" Margin="0" FontSize="Small"/>
-                                    <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Margin="0" Padding="0" Orientation="Horizontal">
-                                        <Label Text="{x:Binding Length}" TextColor="SlateGray"/>
-                                        <Label Text="/" Margin="5,0,5,0" TextColor="SlateGray"/>
-                                        <Label Text="{x:Binding LastAccessTime}" TextColor="SlateGray"/>
+                                <StackLayout Margin="10" Padding="0" SizeChanged="TemplateSizeChanged" VerticalOptions="Center">
+                                    <Label Text="{x:Binding Name}" LineBreakMode="WordWrap" Margin="0" FontSize="Small" VerticalOptions="Center"/>
+                                    <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Margin="0" Padding="0" Orientation="Horizontal" Spacing="0" VerticalOptions="Center">
+                                        <Label Text="{x:Binding LastAccessTime, Converter={StaticResource O_HumanizeTime}}" TextColor="SlateGray" VerticalOptions="Center"/>
+                                        <Label Text="(" Margin="5,0,0,0" TextColor="SlateGray" FontSize="Caption" VerticalOptions="Center"/>
+                                        <Label Text="{x:Binding LastAccessTime}" TextColor="SlateGray" FontSize="Caption" VerticalOptions="Center"/>
+                                        <Label Text=")" Margin="0,0,5,0" TextColor="SlateGray" FontSize="Caption" VerticalOptions="Center"/>
+                                        <Label Text="{x:Binding Length, Converter={StaticResource O_HumanizeFileSize}}" TextColor="SlateGray" FontSize="Caption" VerticalOptions="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <BoxView Color="Black" Grid.Row="1" HeightRequest="1"/>
