@@ -235,6 +235,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 case ProjectPages.Char:
                     if (AppModel.Instance?.MainObject is CharHolder ch)
                     {
+                        ContentPlace.PropertyChanged -= ContentPlace_PropertyChanged;
                         CreateContentAndNavigateTo<CharPage>((x) => SetSubMenuItems(x.Activate(pageOptions, ch)));
                     }
                     else
@@ -244,10 +245,12 @@ namespace ShadowRunHelperViewer.UI.Pages
                     break;
                 case ProjectPages.Administration:
                 Administration:
+                    ContentPlace.PropertyChanged -= ContentPlace_PropertyChanged;
                     CreateContentAndNavigateTo<AdministrationPage>((x) => SetSubMenuItems(x?.Activate(pageOptions)));
                     ContentPlace.PropertyChanged += ContentPlace_PropertyChanged;
                     break;
                 case ProjectPages.Settings:
+                    ContentPlace.PropertyChanged -= ContentPlace_PropertyChanged;
                     CreateContentAndNavigateTo<MiscPage>((x) => SetSubMenuItems(x.AfterLoad(pageOptions)));
                     break;
                 default:
