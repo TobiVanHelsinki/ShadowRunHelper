@@ -8,8 +8,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Plugin.Toast;
+using Plugin.Toasts;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
+using SharedCode.Ressourcen;
 using Syncfusion.SfNavigationDrawer.XForms;
 using TLIB;
 using Xamarin.Forms;
@@ -79,16 +82,33 @@ namespace ShadowRunHelperViewer.UI.Pages
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
             DisableBusy();
         }
+        bool doubleBackToExitPressedOnce = false;
 
         protected override bool OnBackButtonPressed()
         {
-            if (ContentPlace.Content is CharPage page)
+            if (doubleBackToExitPressedOnce)
             {
-                return page.OnBackButtonPressed();
+                base.OnBackButtonPressed();
+                return false;
             }
             else
             {
-                return base.OnBackButtonPressed();
+                if (ContentPlace.Content is CharPage page)
+                {
+                    if (page.OnBackButtonPressed())
+                    {
+                        return true;
+                    }
+                }
+
+                doubleBackToExitPressedOnce = true;
+                CrossToastPopUp.Current.ShowToastMessage(UiResources.TapAgainToExit);
+                Device.StartTimer(TimeSpan.FromSeconds(2), () =>
+                {
+                    doubleBackToExitPressedOnce = false;
+                    return false;
+                });
+                return true;
             }
         }
 
@@ -151,16 +171,6 @@ namespace ShadowRunHelperViewer.UI.Pages
         }
         #endregion ViewMode
 
-        private void SetWaitingContent()
-        {
-            ContentPlace.Content = new Label
-            {
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = "Hey, here you can read a tipp",
-            };
-        }
-
         #region BuisyIndicator
 
         private readonly IEnumerable<Syncfusion.SfBusyIndicator.XForms.AnimationTypes> AllowedAnimationTypes = new[] {
@@ -218,7 +228,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 case ProjectPages.Char:
                     if (AppModel.Instance?.MainObject is CharHolder ch)
                     {
-                        NavigatoToSingleInstanceOf<CharPage>(true, (x) => SetSubMenuItems(x.Activate(pageOptions, ch)));
+                        NavigatoToSingleInstanceOf<CharPage>((x) => SetSubMenuItems(x.Activate(pageOptions, ch)));
                     }
                     else
                     {
@@ -227,10 +237,10 @@ namespace ShadowRunHelperViewer.UI.Pages
                     break;
                 case ProjectPages.Administration:
                 Administration:
-                    NavigatoToSingleInstanceOf<AdministrationPage>(false, (x) => SetSubMenuItems(x?.Activate(pageOptions)));
+                    NavigatoToSingleInstanceOf<AdministrationPage>((x) => SetSubMenuItems(x?.Activate(pageOptions)));
                     break;
                 case ProjectPages.Settings:
-                    NavigatoToSingleInstanceOf<MiscPage>(false, (x) => SetSubMenuItems(x.AfterLoad(pageOptions)));
+                    NavigatoToSingleInstanceOf<MiscPage>((x) => SetSubMenuItems(x.AfterLoad(pageOptions)));
                     break;
                 default:
                     break;
@@ -260,20 +270,15 @@ namespace ShadowRunHelperViewer.UI.Pages
         /// <summary>
         /// NavigatoToSingleInstanceOf
         /// </summary>
-        /// <param name="slpash"></param>
         /// <param name="afterLoad">a action that is performed at the ui threat</param>
         /// <exception cref="ObjectDisposedException"></exception>
-        private void NavigatoToSingleInstanceOf<T>(bool slpash = false, Action<T> afterLoad = null) where T : View, new()
+        private void NavigatoToSingleInstanceOf<T>(Action<T> afterLoad = null) where T : View, new()
         {
             if (ContentPlace.Content is IDisposable disposable)
             {
                 disposable.Dispose();
             }
             ContentPlace.Content = null;
-            if (slpash)
-            {
-                SetWaitingContent();
-            }
             try
             {
                 var t = new T();
@@ -282,41 +287,8 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
             catch (Exception ex)
             {
-                Log.Write("Could not Set Content", ex, logType: LogType.Error);
-                if (System.Diagnostics.Debugger.IsAttached)
-                {
-                    System.Diagnostics.Debugger.Break();
-                }
+                Log.Write("Could not Set Content", ex);
             }
-            //Task.Run(() =>
-            //{
-            //    try
-            //    {
-            //        return new T();
-            //    }
-            //    catch (Exception)
-            //    {
-            //        return null;
-            //    }
-            //}).ContinueWith((t) =>
-            //{
-            //    if (t.IsCompleted)
-            //    {
-            //        Device.BeginInvokeOnMainThread(() =>
-            //        {
-            //            try
-            //            {
-            //                ContentPlace.Content = t.Result;
-            //                afterLoad?.Invoke(t.Result);
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                Log.Write("Could not Set Content", ex, logType: LogType.Error);
-            //                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-            //            }
-            //        });
-            //    }
-            //});
         }
         #endregion Navigation
 

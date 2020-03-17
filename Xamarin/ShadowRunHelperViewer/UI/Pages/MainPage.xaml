@@ -37,17 +37,17 @@
                 <Setter Property="Grid.Column" Value="1"/>
             </Style>
             <Style x:Key="SF_MenuButtonL2" TargetType="sfbtn:SfButton" BasedOn="{StaticResource SF_MenuButtonL1}">
-                <Setter Property="FontSize" Value="Micro"/>
+                <Setter Property="FontSize" Value="Small"/>
             </Style>
             <Style x:Key="SF_MenuIconLabelL2" TargetType="Label" BasedOn="{StaticResource SF_MenuIconLabelL1}">
-                <Setter Property="FontSize" Value="Micro"/>
+                <Setter Property="FontSize" Value="Small"/>
             </Style>
             <Style x:Key="SF_MenuLabelL2" TargetType="Label" BasedOn="{StaticResource SF_MenuLabelL1}">
-                <Setter Property="FontSize" Value="Micro"/>
+                <Setter Property="FontSize" Value="Small"/>
             </Style>
             <DataTemplate x:Key="SubMenuItemTemplate" x:DataType="pages:SubMenuAction">
                 <ViewCell>
-                    <sfbtn:SfButton Grid.Row="1" Style="{StaticResource SF_MenuButtonL2}" Command="{x:Binding ClickHandler}">
+                    <sfbtn:SfButton Grid.Row="1" Style="{StaticResource SF_MenuButtonL2}" Command="{x:Binding ClickHandler}" Margin="0,5,0,5">
                         <sfbtn:SfButton.Content>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -150,7 +150,7 @@
                             </Grid>
                         </sfnav:DrawerSettings.DrawerFooterView>
                         <sfnav:DrawerSettings.DrawerContentView>
-                            <Grid BackgroundColor="#2eb82e" Padding="10,5,5,5" RowSpacing="5">
+                            <Grid BackgroundColor="#2eb82e" Padding="10,5,5,5">
                                 <ListView ItemsSource="{x:Binding SubMenuItems}" ItemTemplate="{StaticResource SubMenuItemTemplate}"/>
                             </Grid>
                         </sfnav:DrawerSettings.DrawerContentView>

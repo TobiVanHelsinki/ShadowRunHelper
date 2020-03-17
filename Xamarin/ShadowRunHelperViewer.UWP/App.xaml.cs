@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.Reflection;
+using Plugin.Toasts.UWP;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using Syncfusion.SfBusyIndicator.XForms.UWP;
@@ -31,6 +32,9 @@ namespace ShadowRunHelperViewer.UWP
             UnhandledException += (x, y) => { AppHolder.App_UnhandledException(y.Message, y.Exception); };
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
+
+            Xamarin.Forms.DependencyService.Register<ToastNotification>(); // Register your dependency
+            ToastNotification.Init();
 
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;

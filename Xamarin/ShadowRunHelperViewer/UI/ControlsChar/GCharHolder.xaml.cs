@@ -49,12 +49,29 @@ namespace ShadowRunHelperViewer
 
         internal bool OnBackButtonPressed()
         {
-            MenuOpen = true;
             if (ContentPanel.Content is GController gCtrl)
             {
-                return gCtrl.OnBackButtonPressed();
+                if (gCtrl.OnBackButtonPressed())
+                {
+                    return true;
+                }
+                else
+                {
+                    if (!MenuOpen)
+                    {
+                        MenuOpen = true;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
-            return true;
+            else
+            {
+                return false;
+            }
         }
 
         public virtual void Dispose()

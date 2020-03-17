@@ -1287,6 +1287,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Tap again to exit ähnelt.
+        /// </summary>
+        public static string TapAgainToExit {
+            get {
+                return ResourceManager.GetString("TapAgainToExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Remove UPPERCASE ähnelt.
         /// </summary>
         public static string TextRefactoring_Case {

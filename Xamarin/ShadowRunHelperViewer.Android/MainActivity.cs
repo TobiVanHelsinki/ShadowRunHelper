@@ -6,6 +6,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
+using Plugin.Toasts;
 using ShadowRunHelper;
 using Xamarin.Forms;
 
@@ -17,9 +18,9 @@ namespace ShadowRunHelperViewer.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
-            //AssetManager assets = this.Assets;
-            //Typeface font = Typeface.CreateFromAsset(assets, "Fonts/iconize-fontawesome-solid.ttf");
-            //var tf = Android.Graphics.Typeface.CreateFromAsset(Context.Assets, "Fonts/iconize-fontawesome-solid.ttf");
+
+            DependencyService.Register<ToastNotification>(); // Register your dependency
+            ToastNotification.Init(this);
 
             Init.Do();
 

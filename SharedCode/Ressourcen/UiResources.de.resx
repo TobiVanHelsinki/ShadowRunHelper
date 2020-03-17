@@ -557,4 +557,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Nav_Info" xml:space="preserve">
     <value>Informationen</value>
   </data>
+  <data name="TapAgainToExit" xml:space="preserve">
+    <value>Nochmal drücken zum beenden</value>
+  </data>
 </root>
