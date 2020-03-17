@@ -2,6 +2,7 @@
 
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.UI;
 using ShadowRunHelperViewer.UI.Pages;
 using SharedCode.Ressourcen;
 using System;
@@ -14,7 +15,7 @@ using Xamarin.Forms;
 
 namespace ShadowRunHelperViewer
 {
-    public partial class CharPage : ContentView, IDisposable
+    public partial class CharPage : ContentView, IDisposable, IBackButton
     {
         public AppModel AppModel => AppModel.Instance;
 
@@ -90,7 +91,7 @@ namespace ShadowRunHelperViewer
         /// return true if handled
         /// </summary>
         /// <returns></returns>
-        internal bool OnBackButtonPressed()
+        public new bool OnBackButtonPressed()
         {
             if (Content is Grid g && g.Children.Count > 0 && g.Children[0] is GCharHolder currentchar)
             {

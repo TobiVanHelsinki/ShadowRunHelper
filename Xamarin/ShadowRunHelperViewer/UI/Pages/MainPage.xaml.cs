@@ -99,7 +99,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
             else
             {
-                if (ContentPlace.Content is CharPage page)
+                if (ContentPlace.Content is IBackButton page)
                 {
                     if (page.OnBackButtonPressed())
                     {

@@ -44,7 +44,7 @@ namespace ShadowRunHelperViewer
             {
                 Log.Write("Error initing app", ex);
             }
-            MainPage = new MainPage();
+            MainPage = /*new NavigationPage*/(new MainPage());
         }
 
         private static async Task CreateLogFile()
