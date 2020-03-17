@@ -1,7 +1,10 @@
 ﻿//Author: Tobi van Helsinki
 
+using System.Collections.Generic;
+using System.Reflection;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
+using Syncfusion.SfBusyIndicator.XForms.UWP;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -14,6 +17,11 @@ namespace ShadowRunHelperViewer.UWP
     /// </summary>
     sealed partial class App : Application
     {
+        /// <summary>
+        /// Additional assemblies to include
+        /// </summary>
+        readonly List<Assembly> assembliesToInclude = new List<Assembly>();
+
         /// <summary>
         /// Initializes the singleton application object. This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -35,6 +43,8 @@ namespace ShadowRunHelperViewer.UWP
             TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TAPPLICATION_UWP.Settings();
             TAPPLICATION.PlatformHelper.Platform = new TAPPLICATION_Xamarin.PlatformHelper();
             Rg.Plugins.Popup.Popup.Init();
+
+            assembliesToInclude.Add(typeof(SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
         }
 
         #region Entry-Points
@@ -45,7 +55,7 @@ namespace ShadowRunHelperViewer.UWP
         /// <param name="args"></param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            Xamarin.Forms.Forms.Init(args);
+            Xamarin.Forms.Forms.Init(args, assembliesToInclude);
             base.OnLaunched(args);
         }
 
@@ -55,7 +65,7 @@ namespace ShadowRunHelperViewer.UWP
         /// <param name="args"></param>
         protected override void OnActivated(IActivatedEventArgs args)
         {
-            Xamarin.Forms.Forms.Init(args);
+            Xamarin.Forms.Forms.Init(args, assembliesToInclude);
             if (args.Kind == ActivationKind.Protocol && args is ProtocolActivatedEventArgs uriArgs)
             {
                 var name = uriArgs.Uri.Segments[uriArgs.Uri.Segments.Length - 1];

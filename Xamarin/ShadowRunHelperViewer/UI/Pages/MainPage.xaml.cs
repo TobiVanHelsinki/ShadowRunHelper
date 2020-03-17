@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
@@ -98,6 +99,9 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
             IsMenuOpen = false;
             MenuDrawerDefault.TouchThreshold = (float)Width;
+            var newSize = (int)Math.Max(Math.Min(Busyindicator.Height, Busyindicator.Width), 50);
+            Busyindicator.ViewBoxHeight = newSize;
+            Busyindicator.ViewBoxWidth = newSize;
         }
         #endregion ViewMode
 
@@ -122,6 +126,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             Instance = this;
             BindingContext = this;
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
+            //DisableBusy();
         }
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
@@ -149,6 +154,52 @@ namespace ShadowRunHelperViewer.UI.Pages
                 Text = "Hey, here you can read a tipp",
             };
         }
+
+        #region BuisyIndicator
+
+        private readonly IEnumerable<Syncfusion.SfBusyIndicator.XForms.AnimationTypes> AllowedAnimationTypes = new[] {
+            Syncfusion.SfBusyIndicator.XForms.AnimationTypes.Ball,
+            Syncfusion.SfBusyIndicator.XForms.AnimationTypes.Box,
+            Syncfusion.SfBusyIndicator.XForms.AnimationTypes.DoubleCircle,
+            Syncfusion.SfBusyIndicator.XForms.AnimationTypes.HorizontalPulsingBox,
+            Syncfusion.SfBusyIndicator.XForms.AnimationTypes.MovieTimer,
+            Syncfusion.SfBusyIndicator.XForms.AnimationTypes.Rectangle,
+            Syncfusion.SfBusyIndicator.XForms.AnimationTypes.RollingBall,
+            Syncfusion.SfBusyIndicator.XForms.AnimationTypes.SingleCircle,
+            Syncfusion.SfBusyIndicator.XForms.AnimationTypes.SlicedCircle,
+            Syncfusion.SfBusyIndicator.XForms.AnimationTypes.ZoomingTarget,
+        };
+
+        private void ChangeAnimation(object sender, EventArgs e) => Busyindicator.AnimationType = (Syncfusion.SfBusyIndicator.XForms.AnimationTypes)1 + (int)Busyindicator.AnimationType;
+
+        public async Task EnableBusy(bool withTip = true, bool blockUI = true, string tipText = null)
+        {
+            Busyindicator.AnimationType = AllowedAnimationTypes.RandomElement();
+            Busyindicator.IsEnabled = true;
+            busyindicatorContainer.IsVisible = true;
+            Busyindicator.IsBusy = true;
+            Busyindicator.EnableAnimation = true;
+            await busyindicatorContainer.FadeTo(100, 250);
+            if (withTip)
+            {
+                TipText.Text = tipText ?? Constants.TipList.RandomElement();
+            }
+            if (blockUI)
+            {
+                MenuDrawer.IsEnabled = false;
+            }
+        }
+
+        public async Task DisableBusy()
+        {
+            await busyindicatorContainer.FadeTo(0, 1500);
+            Busyindicator.IsEnabled = false;
+            busyindicatorContainer.IsVisible = false;
+            Busyindicator.IsBusy = false;
+            Busyindicator.EnableAnimation = false;
+            MenuDrawer.IsEnabled = true;
+        }
+        #endregion BuisyIndicator
 
         #region Navigation
 

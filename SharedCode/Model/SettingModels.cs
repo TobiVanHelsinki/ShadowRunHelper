@@ -182,19 +182,20 @@ namespace ShadowRunHelper
         private static async void FolderMode_Toggled()
         {
             var FolderMode = SharedSettingsModel.Instance.FOLDERMODE;
+            var tempFolderModePath = "";
             if (FolderMode)
             {
                 try
                 {
                     var folder = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_FOLDERMODE);
-                    SharedSettingsModel.I.FOLDERMODE_PATH = folder.FullName;
+                    tempFolderModePath = folder.FullName;
                 }
                 catch (Exception ex)
                 {
                     Log.Write("Could not", ex, logType: LogType.Error);
                     try
                     {
-                        if (!await SharedIO.CurrentIO.HasAccess(new DirectoryInfo(SharedSettingsModel.I.FOLDERMODE_PATH)))
+                        if (!await SharedIO.CurrentIO.HasAccess(new DirectoryInfo(tempFolderModePath)))
                         {
                             SharedSettingsModel.Instance.FOLDERMODE = false;
                         }
@@ -210,7 +211,7 @@ namespace ShadowRunHelper
             {
                 var InternRoam = SharedSettingsModel.Instance.INTERN_SYNC;
                 var internpath = await SharedIO.CurrentIO.GetCompleteInternPath(InternRoam ? Place.Roaming : Place.Local) + SharedConstants.INTERN_SAVE_CONTAINER;
-                var externpath = SharedSettingsModel.Instance.FOLDERMODE_PATH;
+                var externpath = tempFolderModePath;
                 var t = new DirectoryInfo(FolderMode ? externpath : internpath);
                 var s = new DirectoryInfo(!FolderMode ? externpath : internpath);
                 await SharedIO.CurrentIO.MoveAllFiles(s, t, Constants.LST_FILETYPES_CHAR);
@@ -222,7 +223,7 @@ namespace ShadowRunHelper
             {
                 Log.Write(CustomManager.GetString("Error_CopyFiles"), ex);
             }
-            I.NotifyPropertyChanged(nameof(FOLDERMODE_PATH));
+            SharedSettingsModel.I.FOLDERMODE_PATH = tempFolderModePath;
         }
         #endregion Constraints
     }

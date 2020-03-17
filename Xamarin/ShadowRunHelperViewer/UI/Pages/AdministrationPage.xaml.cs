@@ -53,6 +53,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void OfflineFolderChooser(object sender, EventArgs e)
         {
+            MainPage.Instance.EnableBusy();
             SettingsModel.I.FOLDERMODE_PATH = "";
             SettingsModel.I.FOLDERMODE = true;
         }
@@ -67,9 +68,10 @@ namespace ShadowRunHelperViewer.UI.Pages
         /// </param>
         private async void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(SettingsModel.I.FOLDERMODE) || e.PropertyName == nameof(SettingsModel.I.FOLDERMODE_PATH))
+            if (!SettingsModel.I.FOLDERMODE && e.PropertyName == nameof(SettingsModel.I.FOLDERMODE) || e.PropertyName == nameof(SettingsModel.I.FOLDERMODE_PATH))
             {
                 await RefreshCharList();
+                MainPage.Instance.DisableBusy();
             }
         }
 
@@ -109,6 +111,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             if (e.Item is ExtendetFileInfo charfile)
             {
+                MainPage.Instance.EnableBusy();
                 try
                 {
                     foreach (var item in AppModel.Instance.MainObjects.ToList())
@@ -116,6 +119,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                         AppModel.Instance.RemoveMainObject(item);
                     }
                     var newchar = await CharHolderIO.Load(charfile);
+                    System.Threading.Thread.Sleep(5000);
                     AppModel.Instance.MainObject = (newchar);
                     AppModel.Instance.RequestNavigation(ProjectPages.Char);
                 }
@@ -123,6 +127,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 {
                     Log.Write("Error reading file", ex);
                 }
+                MainPage.Instance.DisableBusy();
             }
         }
 
@@ -258,6 +263,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                     new SubMenuAction(UiResources.NewChar,"\xf234",new Command(()=>NewChar_Clicked(this, new EventArgs()))),
                     new SubMenuAction(UiResources.ImportChar,"\xf56f",new Command(()=>OpenFile(this, new EventArgs()))),
                     new SubMenuAction(UiResources.CreateExampleChar,"\xf501",new Command(()=>ExampleChar_Clicked(this, new EventArgs()))),
+                    new SubMenuAction(UiResources.OpenFolder,"\xf07c",new Command(()=> SharedIO.CurrentIO.OpenFolder(SharedIO.CurrentSaveDir))),
                 };
         }
 
