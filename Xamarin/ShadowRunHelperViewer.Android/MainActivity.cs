@@ -2,7 +2,6 @@
 
 using System;
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
@@ -41,6 +40,12 @@ namespace ShadowRunHelperViewer.Droid
             LoadApplication(new App());
         }
 
+        /// <summary>
+        /// Called when [back pressed]. Instead of ending, the app is pushed in the back. This is,
+        /// to prevent an unintende behaivior. This was: The app get's two times initialized when
+        /// back button was pressed. this caused errors at SyncFusionsNavigationDrawer and at some
+        /// events, that got multiple times fires
+        /// </summary>
         public override void OnBackPressed()
         {
             base.OnBackPressed();

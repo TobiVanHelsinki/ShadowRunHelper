@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Plugin.Toast;
@@ -73,11 +74,11 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             AppModel.Instance.NavigationRequested += Instance_NavigationRequested;
             InitializeComponent();
+            BindingContext = this;
             AppModel.Instance.PropertyChanged += AppModel_PropertyChanged;
             AppModel_PropertyChanged(this, new PropertyChangedEventArgs(""));
             Log.DisplayMessageRequested += Log_DisplayMessageRequested;
             Instance = this;
-            BindingContext = this;
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
             DisableBusy();
         }
@@ -234,7 +235,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 case ProjectPages.Char:
                     if (AppModel.Instance?.MainObject is CharHolder ch)
                     {
-                        NavigatoToSingleInstanceOf<CharPage>((x) => SetSubMenuItems(x.Activate(pageOptions, ch)));
+                        CreateContentAndNavigateTo<CharPage>((x) => SetSubMenuItems(x.Activate(pageOptions, ch)));
                     }
                     else
                     {
@@ -243,34 +244,31 @@ namespace ShadowRunHelperViewer.UI.Pages
                     break;
                 case ProjectPages.Administration:
                 Administration:
-                    NavigatoToSingleInstanceOf<AdministrationPage>((x) => SetSubMenuItems(x?.Activate(pageOptions)));
+                    CreateContentAndNavigateTo<AdministrationPage>((x) => SetSubMenuItems(x?.Activate(pageOptions)));
+                    ContentPlace.PropertyChanged += ContentPlace_PropertyChanged;
                     break;
                 case ProjectPages.Settings:
-                    NavigatoToSingleInstanceOf<MiscPage>((x) => SetSubMenuItems(x.AfterLoad(pageOptions)));
+                    CreateContentAndNavigateTo<MiscPage>((x) => SetSubMenuItems(x.AfterLoad(pageOptions)));
                     break;
                 default:
                     break;
             }
         }
 
-        private void Nav_CharPage(object sender, System.EventArgs e)
+        /// <summary>
+        /// HACK Workaround tp prevent empty page at android after loading. problem is: the content
+        /// get's set to "null" after init
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">
+        /// The <see cref="PropertyChangedEventArgs"/> instance containing the event data.
+        /// </param>
+        private void ContentPlace_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            AppModel.Instance.RequestNavigation(ProjectPages.Char);
-        }
-
-        private void Nav_Admin(object sender, EventArgs e)
-        {
-            AppModel.Instance.RequestNavigation(ProjectPages.Administration);
-        }
-
-        private void Nav_Settings(object sender, EventArgs e)
-        {
-            AppModel.Instance.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsOptions);
-        }
-
-        private void Nav_Info(object sender, EventArgs e)
-        {
-            AppModel.Instance.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsMain);
+            if (e.PropertyName == nameof(ContentView.Content) && ContentPlace.Content == null)
+            {
+                AppModel.Instance.RequestNavigation(ProjectPages.Administration);
+            }
         }
 
         /// <summary>
@@ -278,7 +276,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         /// </summary>
         /// <param name="afterLoad">a action that is performed at the ui threat</param>
         /// <exception cref="ObjectDisposedException"></exception>
-        private void NavigatoToSingleInstanceOf<T>(Action<T> afterLoad = null) where T : View, new()
+        private void CreateContentAndNavigateTo<T>(Action<T> afterLoad = null) where T : View, new()
         {
             if (ContentPlace.Content is IDisposable disposable)
             {
@@ -296,6 +294,14 @@ namespace ShadowRunHelperViewer.UI.Pages
                 Log.Write("Could not Set Content", ex);
             }
         }
+
+        private void Nav_CharPage(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Char);
+
+        private void Nav_Admin(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Administration);
+
+        private void Nav_Settings(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsOptions);
+
+        private void Nav_Info(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsMain);
         #endregion Navigation
 
         #region Menu
