@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using TAPPLICATION;
-using TLIB;
 
 namespace ShadowRunHelper.Model
 {

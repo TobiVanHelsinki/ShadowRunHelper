@@ -2,7 +2,6 @@
 
 using System.Collections.Generic;
 using System.Reflection;
-using Plugin.Toasts.UWP;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using Syncfusion.SfBusyIndicator.XForms.UWP;
@@ -31,24 +30,21 @@ namespace ShadowRunHelperViewer.UWP
         {
             UnhandledException += (x, y) => { AppHolder.App_UnhandledException(y.Message, y.Exception); };
 
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
-
-            Xamarin.Forms.DependencyService.Register<ToastNotification>(); // Register your dependency
-            ToastNotification.Init();
-
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
-            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
-            Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
+            //Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
+            //Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             InitializeComponent();
 
-            Init.Do();
+            #region Init Libs
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
+            assembliesToInclude.Add(typeof(SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
             TAPPLICATION.IO.SharedIO.CurrentIO = new TAPPLICATION_UWP.IO();
             TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TAPPLICATION_UWP.Settings();
             TAPPLICATION.PlatformHelper.Platform = new TAPPLICATION_Xamarin.PlatformHelper();
             Rg.Plugins.Popup.Popup.Init();
-
-            assembliesToInclude.Add(typeof(SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
+            Init.Do();
+            #endregion Init Libs
         }
 
         #region Entry-Points

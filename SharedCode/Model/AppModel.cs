@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.IO;
@@ -90,6 +92,7 @@ namespace ShadowRunHelper.Model
             PlatformHelper.ExecuteOnUIThreadAsync(() => NavigationRequested?.Invoke(p, po));
         }
 
+        [Obsolete]
         public void TutorialChangedState(int StateNumber, bool Highlight = false)
         {
             TutorialStateChanged(StateNumber, Highlight);

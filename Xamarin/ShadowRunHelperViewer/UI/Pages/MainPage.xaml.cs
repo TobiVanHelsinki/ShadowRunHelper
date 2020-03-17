@@ -9,7 +9,6 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Plugin.Toast;
-using Plugin.Toasts;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using SharedCode.Ressourcen;
@@ -82,14 +81,21 @@ namespace ShadowRunHelperViewer.UI.Pages
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
             DisableBusy();
         }
-        bool doubleBackToExitPressedOnce = false;
+
+        public bool OnKeyDown(string key)
+        {
+            return false;
+        }
+
+        public bool ShallExit = false;
+        public bool isDoubleBackPressed = false;
 
         protected override bool OnBackButtonPressed()
         {
-            if (doubleBackToExitPressedOnce)
+            if (isDoubleBackPressed)
             {
-                base.OnBackButtonPressed();
-                return false;
+                ShallExit = true;
+                return true;
             }
             else
             {
@@ -101,11 +107,11 @@ namespace ShadowRunHelperViewer.UI.Pages
                     }
                 }
 
-                doubleBackToExitPressedOnce = true;
-                CrossToastPopUp.Current.ShowToastMessage(UiResources.TapAgainToExit);
-                Device.StartTimer(TimeSpan.FromSeconds(2), () =>
+                isDoubleBackPressed = true;
+                CrossToastPopUp.Current.ShowToastMessage(UiResources.TapAgainToExit, Plugin.Toast.Abstractions.ToastLength.Short);
+                Device.StartTimer(TimeSpan.FromSeconds(3), () =>
                 {
-                    doubleBackToExitPressedOnce = false;
+                    isDoubleBackPressed = false;
                     return false;
                 });
                 return true;

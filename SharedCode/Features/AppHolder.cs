@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
@@ -208,7 +210,7 @@ namespace ShadowRunHelper
                 FirstStart = false;
                 Settings.LAST_SAVE_INFO = null;
                 Settings.CHARINTEMPSTORE = false;
-                Model.RequestNavigation(ProjectPages.Char); //TODO ThreadSave
+                Model.RequestNavigation(ProjectPages.Char);
             }
         }
 

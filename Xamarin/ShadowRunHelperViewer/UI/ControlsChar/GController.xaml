@@ -95,29 +95,29 @@
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Thing" x:DataType="CharModel:Thing">
-                <SwipeView>
-                    <SwipeView.LeftItems>
+                <!--<SwipeView>-->
+                <!--<SwipeView.LeftItems>
                         <SwipeItems>
                             <SwipeItem Text="Favorite" BackgroundColor="LightGreen" Clicked="Thing_Fav"/>
                             <SwipeItem Text="Delete" BackgroundColor="LightPink" IsDestructive="True" Clicked="Thing_Delete"/>
                         </SwipeItems>
-                    </SwipeView.LeftItems>
-                    <Grid Style="{DynamicResource TemplateGrid}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}"/>
-                        <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value}"/>
-                        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-                    </Grid>
-                </SwipeView>
+                    </SwipeView.LeftItems>-->
+                <Grid Style="{DynamicResource TemplateGrid}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}"/>
+                    <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value}"/>
+                    <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
+                </Grid>
+                <!--</SwipeView>-->
             </DataTemplate>
 
             <ControlTemplate x:Key="Handlung_H">
@@ -1036,7 +1036,11 @@
                 <ContentView Grid.Row="1" x:Name="Items_H"/>
                 <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray" Margin="0"/>
             </Grid>
-            <CollectionView x:Name="Items" Grid.Row="1"
+            <ListView  x:Name="Items" Grid.Row="1"
+                       ItemsSource="{Binding Data, Mode=OneWay}"
+                            SelectionMode="Single">
+            </ListView>
+            <!--<CollectionView x:Name="Items" Grid.Row="1"
                             ItemsSource="{Binding Data, Mode=OneWay}"
                             ItemSizingStrategy="MeasureAllItems"
                             ItemsUpdatingScrollMode="KeepScrollOffset"
@@ -1059,7 +1063,7 @@
                     <SwipeGestureRecognizer Direction="Up" Swiped="HeaderHide"/>
                     <SwipeGestureRecognizer Direction="Down" Swiped="HeaderShow"/>
                 </CollectionView.GestureRecognizers>
-            </CollectionView>
+            </CollectionView>-->
             <Frame x:Name="DetailsBorder"  BorderColor="Accent" Padding="0" Margin="0">
                 <controlschar:DetailsView x:Name="DetailsPane" ClosingRequested="DetailsPane_ClosingRequested"/>
             </Frame>
