@@ -1,6 +1,7 @@
 ﻿//Author: Tobi van Helsinki
 
 using System;
+using System.IO;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -9,6 +10,7 @@ using Android.Util;
 using Android.Views;
 using ShadowRunHelper;
 using ShadowRunHelperViewer.UI.Pages;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ShadowRunHelperViewer.Droid
@@ -38,6 +40,30 @@ namespace ShadowRunHelperViewer.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             SetAccentColor();
             LoadApplication(new App());
+            //DispalyFolderPaths();
+        }
+
+        /// <summary>
+        /// Displays all folderpaths that have a name
+        /// </summary>
+        private static void DisplayFolderPaths()
+        {
+            for (int i = 0; i < 60; i++)
+            {
+                try
+                {
+                    System.Diagnostics.Debug.WriteLine((System.Environment.SpecialFolder)i + ":" + System.Environment.GetFolderPath((System.Environment.SpecialFolder)i));
+                }
+                catch (Exception)
+                {
+                }
+            }
+            System.Diagnostics.Debug.WriteLine("ExternalStorageDirectory:" + global::Android.OS.Environment.ExternalStorageDirectory.AbsolutePath);
+            System.Diagnostics.Debug.WriteLine("ExternalStorageState:" + global::Android.OS.Environment.ExternalStorageState);
+            System.Diagnostics.Debug.WriteLine("RoamingStorage:" + PCLStorage.FileSystem.Current.RoamingStorage?.Path);
+            System.Diagnostics.Debug.WriteLine("LocalStorage:" + PCLStorage.FileSystem.Current.LocalStorage?.Path);
+            System.Diagnostics.Debug.WriteLine("AppDataDirectory:" + FileSystem.AppDataDirectory);
+            System.Diagnostics.Debug.WriteLine("CacheDirectory:" + FileSystem.CacheDirectory);
         }
 
         /// <summary>
