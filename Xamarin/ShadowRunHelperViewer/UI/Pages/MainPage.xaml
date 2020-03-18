@@ -65,17 +65,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height=".25*"/>
-                <RowDefinition Height=".5*"/>
-                <RowDefinition Height=".25*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".3*"/>
-                <ColumnDefinition Width=".4*"/>
-                <ColumnDefinition Width=".3*"/>
-            </Grid.ColumnDefinitions>
-            <sfnav:SfNavigationDrawer x:Name="MenuDrawer" Grid.ColumnSpan="3" Grid.RowSpan="3">
+            <sfnav:SfNavigationDrawer x:Name="MenuDrawer">
                 <sfnav:SfNavigationDrawer.DefaultDrawerSettings>
                     <sfnav:DrawerSettings x:Name="MenuDrawerDefault" Position="Left" Transition="Push" Duration="100"
                                           EnableSwipeGesture="True" TouchThreshold="50" PropertyChanged="SfNavigationDrawer_PropertyChanged"
@@ -162,24 +152,20 @@
                     </Grid>
                 </sfnav:SfNavigationDrawer.ContentView>
             </sfnav:SfNavigationDrawer>
-            <Grid x:Name="busyindicatorContainer" Grid.RowSpan="3" Grid.ColumnSpan="3">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Frame BackgroundColor="LightSlateGray" CornerRadius="5" Grid.Row="1" Margin="5" Padding="5">
-                    <StackLayout Orientation="Vertical">
-                        <Label Grid.Row="1" Text="{resx:UiResources TipHeader}" FontAttributes="Bold" FontSize="Subtitle"/>
-                        <Label Grid.Row="2" x:Name="TipText"/>
-                        <Label Grid.Row="3" Text="{resx:UiResources DisableTips}" FontSize="Caption" TextColor="LightGray"/>
-                    </StackLayout>
-                </Frame>
+            <StackLayout Orientation="Vertical" x:Name="busyindicatorContainer" VerticalOptions="Center" HorizontalOptions="Center">
                 <busy:SfBusyIndicator x:Name="Busyindicator" Margin="0">
                     <busy:SfBusyIndicator.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ChangeAnimation"/>
                     </busy:SfBusyIndicator.GestureRecognizers>
                 </busy:SfBusyIndicator>
-            </Grid>
+                <Frame BackgroundColor="LightSlateGray" CornerRadius="5" Grid.Row="1" Margin="5" Padding="5" VerticalOptions="Start">
+                    <StackLayout Orientation="Vertical">
+                        <Label Grid.Row="1" Text="{resx:UiResources TipHeader}" FontAttributes="Bold" FontSize="Subtitle"/>
+                        <Label Grid.Row="2" x:Name="TipText" LineBreakMode="WordWrap"/>
+                        <Label Grid.Row="3" Text="{resx:UiResources DisableTips}" FontSize="Caption" TextColor="LightGray"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

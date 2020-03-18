@@ -198,11 +198,6 @@ namespace ShadowRunHelperViewer.UI.Pages
         public async Task EnableBusy(bool withTip = true, bool blockUI = true, string tipText = null)
         {
             Busyindicator.AnimationType = AllowedAnimationTypes.RandomElement();
-            Busyindicator.IsEnabled = true;
-            busyindicatorContainer.IsVisible = true;
-            Busyindicator.IsBusy = true;
-            Busyindicator.EnableAnimation = true;
-            await busyindicatorContainer.FadeTo(100, 250);
             if (withTip)
             {
                 TipText.Text = tipText ?? Constants.TipList.RandomElement();
@@ -211,6 +206,11 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 MenuDrawer.IsEnabled = false;
             }
+            Busyindicator.IsEnabled = true;
+            busyindicatorContainer.IsVisible = true;
+            Busyindicator.IsBusy = true;
+            Busyindicator.EnableAnimation = true;
+            await busyindicatorContainer.FadeTo(100, 250);
         }
 
         public async Task DisableBusy()

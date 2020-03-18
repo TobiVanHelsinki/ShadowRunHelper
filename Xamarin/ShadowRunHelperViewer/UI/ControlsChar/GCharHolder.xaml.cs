@@ -13,6 +13,7 @@ using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.UI;
+using ShadowRunHelperViewer.UI.Pages;
 using SharedCode.Ressourcen;
 using TLIB;
 using Xamarin.Forms;
@@ -91,19 +92,21 @@ namespace ShadowRunHelperViewer
             Model.AddMainObject(myChar);
             InitializeComponent();
             ButtonsPanels = new[] { s1, s2, s3, s4, s5 };
-
-            SizeChanged += (a, b) => SetViewParameters();
             BindingContext = this;
             Infogrid.GestureRecognizers.Add(new TapGestureRecognizer { NumberOfTapsRequired = 1, Command = new Command(Infogrid_Tapped) });
             SettingsModel.I.FIRST_START = false;
             InitButtons();
-            SetViewParameters();
-            MenuOpen = true;
+            MainPage.Instance.ViewModeChanged += Instance_ViewModeChanged;
+            Instance_ViewModeChanged(ViewModes.NotSet, MainPage.Instance.CurrentViewMode);
             Features.Ui.IsCustomTitleBarEnabled = true;
             //Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(CharTitleBar));
             Features.Ui.SetCustomTitleBar(null);
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
             Features.Ui.TriggerCustomTitleBarChanges();
+            if (MainPage.Instance.CurrentViewMode == ViewModes.Tall || MainPage.Instance.CurrentViewMode == ViewModes.Wide)
+            {
+                ActivateControllerOfType(MyChar.Favorites.Count == 0 ? ThingDefs.Handlung : ThingDefs.Favorite);
+            }
         }
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
@@ -241,7 +244,7 @@ namespace ShadowRunHelperViewer
                     contentLayout.Children.Add(entry);
                 }
             }
-            if (Narrow)
+            if (MainPage.Instance.CurrentViewMode == ViewModes.Mobile || MainPage.Instance.CurrentViewMode == ViewModes.Tall)
             {
                 MenuOpen = false;
             }
@@ -251,21 +254,43 @@ namespace ShadowRunHelperViewer
         {
             if (sender is Button b && b.BindingContext is ThingDefs type)
             {
-                HighlightButton(b);
-                var gCTRL = new GController(MyChar);
-                var CTRL = typeof(CharHolder).GetProperties().FirstOrDefault(x => x.Name == "CTRL" + type);
-                if (CTRL != null)
+                ActivateControllerOfType(type);
+            }
+        }
+
+        private void ActivateControllerOfType(ThingDefs type)
+        {
+            HighlightButton(type);
+            var gCTRL = new GController(MyChar);
+            var CTRL = typeof(CharHolder).GetProperties().FirstOrDefault(x => x.Name == "CTRL" + type);
+            if (CTRL != null)
+            {
+                gCTRL.SetBinding(BindingContextProperty, new Binding($"{nameof(MyChar)}.{CTRL.Name}"));
+            }
+            else
+            {
+                Log.Write("Structual Error, Controller Name is wrong");
+            }
+            ContentPanel.Content = gCTRL;
+            if (MainPage.Instance.CurrentViewMode == ViewModes.Mobile || MainPage.Instance.CurrentViewMode == ViewModes.Tall)
+            {
+                MenuOpen = false;
+            }
+        }
+
+        private void HighlightButton(ThingDefs type)
+        {
+            foreach (var item in Buttons)
+            {
+                if (item.BindingContext is ThingDefs t && t == type)
                 {
-                    gCTRL.SetBinding(BindingContextProperty, new Binding($"{nameof(MyChar)}.{CTRL.Name}"));
+                    item.BackgroundColor = Color.Accent;
+                    item.TextColor = Color.FloralWhite;
                 }
                 else
                 {
-                    Log.Write("Structual Error, Controller Name is wrong");
-                }
-                ContentPanel.Content = gCTRL;
-                if (Narrow)
-                {
-                    MenuOpen = false;
+                    item.BackgroundColor = Color.Default;
+                    item.TextColor = Color.Default;
                 }
             }
         }
@@ -284,33 +309,51 @@ namespace ShadowRunHelperViewer
 
         #region AdaptiveUI
 
-        private bool _Narrow;
-        public bool Narrow
+        private void Instance_ViewModeChanged(ViewModes oldMode, ViewModes newMode)
         {
-            get => _Narrow;
-            set { if (_Narrow != value) { _Narrow = value; ChangeUi(); } }
+            MenuOpen = newMode switch
+            {
+                ViewModes.Mobile => ContentPanel.Content == null,
+                ViewModes.Tall => ContentPanel.Content == null,
+                _ => true,
+            };
+            ChangeMenubackButtonAppearance(newMode);
+            ChangeMenuAppearance(newMode);
         }
 
         private bool _MenuOpen = true;
         public bool MenuOpen
         {
             get => _MenuOpen;
-            set { if (_MenuOpen != value) { _MenuOpen = value; ChangeUi(); } }
+            set
+            {
+                if (_MenuOpen != value)
+                {
+                    _MenuOpen = value;
+                    ChangeMenuAppearance(MainPage.Instance.CurrentViewMode);
+                    ChangeMenubackButtonAppearance(MainPage.Instance.CurrentViewMode);
+                }
+            }
         }
 
-        private void ChangeUi()
+        private void ChangeMenubackButtonAppearance(ViewModes newMode)
         {
-            if (Narrow)
+            MenuToggleButton.IsVisible = !MenuOpen && (newMode == ViewModes.Mobile || newMode == ViewModes.Tall);
+        }
+
+        private void ChangeMenuAppearance(ViewModes newMode)
+        {
+            if (newMode == ViewModes.Mobile || newMode == ViewModes.Tall)
             {
                 if (MenuOpen)
-                {
+                { // just menus are visible
                     LayerContent_Col0.Width = new GridLength(1, GridUnitType.Star);
                     LayerContent_Col1.Width = new GridLength(0, GridUnitType.Absolute);
                     LayerContent_Col2.Width = new GridLength(1, GridUnitType.Star);
                     ContentPanel.IsVisible = false;
                 }
                 else
-                {
+                { // just content is visible
                     LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
                     LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
                     LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
@@ -318,41 +361,18 @@ namespace ShadowRunHelperViewer
                 }
             }
             else
-            {
-                //Toggle.
-                //if (Open)
-                {
-                    LayerContent_Col0.Width = new GridLength(1, GridUnitType.Auto);
-                    LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
-                    LayerContent_Col2.Width = new GridLength(1, GridUnitType.Auto);
-                    ContentPanel.IsVisible = true;
-                }
-                //else
-                //{
-                //    LayerContent_Col0.Width = new GridLength(0, GridUnitType.Absolute);
-                //    LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
-                //    LayerContent_Col2.Width = new GridLength(0, GridUnitType.Absolute);
-                //    ContentPanel.IsVisible = true;
-                //}
+            { // all is visible
+                LayerContent_Col0.Width = new GridLength(1, GridUnitType.Auto);
+                LayerContent_Col1.Width = new GridLength(1, GridUnitType.Star);
+                LayerContent_Col2.Width = new GridLength(1, GridUnitType.Auto);
+                ContentPanel.IsVisible = true;
             }
         }
 
-        private void SetViewParameters()
+        private void ToggleMenu(object sender, EventArgs e)
         {
-            Narrow = Width < UIConstants.MinWidthDesktop;
-            if (Width > UIConstants.MinWidthDesktop && MyChar != null)
-            {
-                MenuOpen = true;
-            }
-            else
-            {
-                if (ContentPanel.Content != null)
-                {
-                    MenuOpen = false;
-                }
-            }
+            MenuOpen = !MenuOpen;
         }
-
         #endregion AdaptiveUI
 
         #region Search Stuff
