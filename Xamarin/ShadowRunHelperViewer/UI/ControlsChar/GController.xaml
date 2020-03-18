@@ -352,6 +352,7 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                                  SelectionChanged="Items_SelectionChanged"
                                  ItemTemplate="{StaticResource ThingDataTempalteSelector}"
                                  ItemSpacing="2"
+                                 AutoFitMode="Height"
                                  AllowSwiping="True"
                                  DragStartMode="OnHold"
                                  SwipeEnded="Items_SwipeEnded">

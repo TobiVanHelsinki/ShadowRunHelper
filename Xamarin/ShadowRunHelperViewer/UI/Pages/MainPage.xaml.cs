@@ -74,13 +74,14 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             AppModel.Instance.NavigationRequested += Instance_NavigationRequested;
             InitializeComponent();
+            DisableBusy();
             BindingContext = this;
             AppModel.Instance.PropertyChanged += AppModel_PropertyChanged;
             AppModel_PropertyChanged(this, new PropertyChangedEventArgs(""));
             Log.DisplayMessageRequested += Log_DisplayMessageRequested;
             Instance = this;
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
-            DisableBusy();
+            ContentPage_SizeChanged(this, new EventArgs());
         }
 
         public bool OnKeyDown(string key)
