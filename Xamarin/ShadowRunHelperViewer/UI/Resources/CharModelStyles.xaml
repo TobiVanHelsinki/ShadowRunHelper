@@ -11,6 +11,7 @@
     <resources:IO_NuYen x:Key="IO_NuYen"/>
     <resources:O_HumanizeTime x:Key="O_HumanizeTime"/>
     <resources:O_HumanizeFileSize x:Key="O_HumanizeFileSize"/>
+    <resources:IO_BoolInvert x:Key="IO_BoolInvert"/>
 
     <Style x:Key="SF_STDButton" TargetType="sfbtn:SfButton">
         <Setter Property="CornerRadius" Value="3"/>

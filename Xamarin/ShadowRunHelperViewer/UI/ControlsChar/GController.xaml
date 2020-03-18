@@ -9,6 +9,7 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
              xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:controlschar="clr-namespace:ShadowRunHelperViewer.UI.ControlsChar"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Resources>
@@ -32,11 +33,6 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="LineBreakMode" Value="TailTruncation"/>
                 <Setter Property="MaxLines" Value="1"/>
-            </Style>
-            <Style x:Key="TemplateContentView" TargetType="ContentView">
-                <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="Margin" Value="0"/>
-                <Setter Property="Padding" Value="0"/>
             </Style>
             <Style x:Key="AdditionalValueScrollView" TargetType="ScrollView">
                 <Setter Property="Orientation" Value="Horizontal"/>
@@ -96,13 +92,6 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                 </Grid>
             </ControlTemplate>
             <DataTemplate x:Key="Thing" x:DataType="CharModel:Thing">
-                <!--<SwipeView>-->
-                <!--<SwipeView.LeftItems>
-                        <SwipeItems>
-                            <SwipeItem Text="Favorite" BackgroundColor="LightGreen" Clicked="Thing_Fav"/>
-                            <SwipeItem Text="Delete" BackgroundColor="LightPink" IsDestructive="True" Clicked="Thing_Delete"/>
-                        </SwipeItems>
-                    </SwipeView.LeftItems>-->
                 <Grid Style="{DynamicResource TemplateGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -118,7 +107,6 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                     <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value}"/>
                     <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
                 </Grid>
-                <!--</SwipeView>-->
             </DataTemplate>
 
             <ControlTemplate x:Key="Handlung_H">
@@ -975,21 +963,6 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                     <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="4" Grid.Row="2"/>
                 </Grid>
             </DataTemplate>
-            <Style TargetType="Grid">
-                <Setter Property="VisualStateManager.VisualStateGroups">
-                    <VisualStateGroupList>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal"/>
-                            <VisualState x:Name="Selected">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor"
-                                        Value="LightSkyBlue"/>
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateGroupList>
-                </Setter>
-            </Style>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -1037,38 +1010,30 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                 <ContentView Grid.Row="1" x:Name="Items_H"/>
                 <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray" Margin="0"/>
             </Grid>
-            <!--<ListView  x:Name="Items" Grid.Row="1"
-                       ItemsSource="{Binding Data, Mode=OneWay}"
-                            SelectionMode="Single">
-            </ListView>-->
             <listview:SfListView x:Name="Items" Grid.Row="1"
                        ItemsSource="{Binding Data, Mode=OneWay}"
                                  SelectionMode="SingleDeselect"
-                                 SelectionChanged="Items_SelectionChanged"/>
-            <!--<CollectionView x:Name="Items" Grid.Row="1"
-                            ItemsSource="{Binding Data, Mode=OneWay}"
-                            ItemSizingStrategy="MeasureAllItems"
-                            ItemsUpdatingScrollMode="KeepScrollOffset"
-                            SelectionChanged="Items_SelectionChanged"
-                            SelectionMode="Single">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="0"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.EmptyView>
-                    <StackLayout VerticalOptions="Fill">
-                        <Label Text=";;No Items to display."
-                            FontAttributes="Bold" FontSize="18"
-                            HorizontalOptions="Center" VerticalOptions="Center"/>
-                        <Label Text=";;Create new items witht the + Button."
-                            FontAttributes="Italic" FontSize="12"
-                            HorizontalOptions="Center" VerticalOptions="Center"/>
-                    </StackLayout>
-                </CollectionView.EmptyView>
-                <CollectionView.GestureRecognizers>
-                    <SwipeGestureRecognizer Direction="Up" Swiped="HeaderHide"/>
-                    <SwipeGestureRecognizer Direction="Down" Swiped="HeaderShow"/>
-                </CollectionView.GestureRecognizers>
-            </CollectionView>-->
+                                 SelectionChanged="Items_SelectionChanged"
+                                 ItemSpacing="2"
+                                 AllowSwiping="True"
+                                 DragStartMode="OnHold"
+                                 ItemDragging="Items_ItemDragging"
+                                 SwipeEnded="Items_SwipeEnded">
+                <listview:SfListView.RightSwipeTemplate>
+                    <DataTemplate x:DataType="CharModel:Thing">
+                        <Grid>
+                            <Grid BackgroundColor="Orange" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Column="0">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Label Text="&#xf7a9;" Style="{DynamicResource IconLabel}" IsVisible="{Binding IsFavorite}"/>
+                                    <Label Text="&#xf004;" Style="{DynamicResource IconLabel}" IsVisible="{Binding IsFavorite, Converter={StaticResource IO_BoolInvert}}"/>
+                                    <Label Text="{resx:UiResources FavUn}" Style="{DynamicResource STDTextCenter}" IsVisible="{Binding IsFavorite}"/>
+                                    <Label Text="{resx:UiResources Fav}" Style="{DynamicResource STDTextCenter}" IsVisible="{Binding IsFavorite, Converter={StaticResource IO_BoolInvert}}"/>
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </listview:SfListView.RightSwipeTemplate>
+            </listview:SfListView>
             <Frame x:Name="DetailsBorder"  BorderColor="Accent" Padding="0" Margin="0">
                 <controlschar:DetailsView x:Name="DetailsPane" ClosingRequested="DetailsPane_ClosingRequested"/>
             </Frame>

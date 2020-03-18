@@ -12,6 +12,7 @@ using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.UI.Pages;
 using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
+using Syncfusion.ListView.XForms;
 using TLIB;
 using Xam.Plugin;
 using Xamarin.Forms;
@@ -54,26 +55,30 @@ namespace ShadowRunHelperViewer
             BindingContextChanged += GController_BindingContextChanged;
             SetHeaderVisible(!SettingsModel.I.MINIMIZED_HEADER);
             MainPage.Instance.ViewModeChanged += MainPage_ViewModeChanged;
+            Items.DragDropController.UpdateSource = true;
         }
 
         private void CreateStyle()
         {
-            foreach (var (name, type, setter) in new[] {
-                ("TemplateStack", typeof(StackLayout), new (BindableProperty, object)[] {
+            foreach (var (name, type, basedon, setter) in new[] {
+                ("TemplateStack", typeof(StackLayout),"", new (BindableProperty, object)[] {
                     (StackLayout.SpacingProperty, 0),
                     (StackLayout.OrientationProperty, StackOrientation.Horizontal),
                     (MarginProperty, SettingsModel.I.CurrentSpacingStrategy),
                     (VerticalOptionsProperty, LayoutOptions.Center ),
                 }),
-                ("TemplateGrid", typeof(Grid), new (BindableProperty, object)[] {
+                ("TemplateGrid", typeof(Grid),"", new (BindableProperty, object)[] {
                     (Grid.ColumnSpacingProperty, 0),
                     (Grid.RowSpacingProperty, 0),
+                    (PaddingProperty, 3),
+                    (BackgroundColorProperty, Color.Beige),
                     (MarginProperty, SettingsModel.I.CurrentSpacingStrategy),
                     (VerticalOptionsProperty, LayoutOptions.Center ),
                 }),
-                ("SeparatorLine", typeof(BoxView), new (BindableProperty, object)[] {
-                    (HeightRequestProperty, 1),
-                    (MarginProperty, new Thickness(-5,5,-5,0)),
+                ("SeparatorLine", typeof(BoxView),"", new (BindableProperty, object)[] {
+                    (HeightRequestProperty, 0),
+                    //(MarginProperty, new Thickness(-5,5,-5,0)),
+                    (MarginProperty, new Thickness(0)),
                     (BackgroundColorProperty, StyleManager.ForegroundColor),
                 }),
                 })
@@ -81,6 +86,10 @@ namespace ShadowRunHelperViewer
                 try
                 {
                     var style = new Style(type);
+                    if (!string.IsNullOrEmpty(basedon))
+                    {
+                        style.BaseResourceKey = basedon;
+                    }
                     foreach (var (prop, value) in setter)
                     {
                         style.Setters.Add(new Setter() { Property = prop, Value = value });
@@ -376,5 +385,25 @@ namespace ShadowRunHelperViewer
             SetHeaderVisible(true);
         }
         #endregion Dynamic Header
+
+        private void Items_SwipeEnded(object sender, Syncfusion.ListView.XForms.SwipeEndedEventArgs e)
+        {
+            if (e.SwipeOffset > 70)
+            {
+                if (e.SwipeDirection == Syncfusion.ListView.XForms.SwipeDirection.Left && e.ItemData is Thing t)
+                {
+                    t.IsFavorite = !t.IsFavorite;
+                }
+                e.SwipeOffset = 0;
+            }
+        }
+
+        private void Items_ItemDragging(object sender, ItemDraggingEventArgs e)
+        {
+            //if (e.Action == DragAction.Drop)
+            //{
+            //    ViewModel.ToDoList.MoveTo(1, 5);
+            //}
+        }
     }
 }
