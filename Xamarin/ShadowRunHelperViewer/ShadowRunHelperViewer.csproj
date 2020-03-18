@@ -46,8 +46,56 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="UI\CharTemplates\WandlungTemplate.xaml.cs">
+      <DependentUpon>WandlungTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\NahkampfwaffeTemplate.xaml.cs">
+      <DependentUpon>NahkampfwaffeTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UI\CharTemplates\HandlungTemplate.xaml.cs">
       <DependentUpon>HandlungTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\EigenschaftTemplate.xaml.cs">
+      <DependentUpon>EigenschaftTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\KommlinkTemplate.xaml.cs">
+      <DependentUpon>KommlinkTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\CyberDeckTemplate.xaml.cs">
+      <DependentUpon>CyberDeckTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\MunitionTemplate.xaml.cs">
+      <DependentUpon>MunitionTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\HelperTemplate.xaml.cs">
+      <DependentUpon>HelperTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\ConnectionTemplate.xaml.cs">
+      <DependentUpon>ConnectionTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\InitiationTemplate.xaml.cs">
+      <DependentUpon>InitiationTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\ProgrammTemplate.xaml.cs">
+      <DependentUpon>ProgrammTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\FernkampfwaffeTemplate.xaml.cs">
+      <DependentUpon>FernkampfwaffeTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\PanzerungTemplate.xaml.cs">
+      <DependentUpon>PanzerungTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\VehikelTemplate.xaml.cs">
+      <DependentUpon>VehikelTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\ItemTemplate.xaml.cs">
+      <DependentUpon>ItemTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\SuperNaturalSkillsTemplate.xaml.cs">
+      <DependentUpon>SuperNaturalSkillsTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\NoteTemplate.xaml.cs">
+      <DependentUpon>NoteTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Update="UI\CharTemplates\ThingTemplate.xaml.cs">
       <DependentUpon>ThingTemplate.xaml</DependentUpon>

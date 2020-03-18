@@ -83,4 +83,21 @@
             <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value_H}"/>
         </Grid>
     </ControlTemplate>
+    <x:Int16 x:Key="ItemsBoxesWidth">65</x:Int16>
+    <ControlTemplate x:Key="ItemsBoxes" x:DataType="CharModel:Item">
+        <Grid Style="{DynamicResource TemplateGrid}" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0" x:Name="SizeDefEl" HorizontalOptions="Center" BindingContext="{TemplateBinding BindingContext}">
+            <Grid.ColumnDefinitions>
+                <!--<ColumnDefinition Width="Auto"/>-->
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!--<RowDefinition Height="Auto"/>-->
+            </Grid.RowDefinitions>
+            <CheckBox IsChecked="{x:Binding Aktiv}" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Margin="0,0,0,0"/>
+            <CheckBox IsChecked="{x:Binding Besitz}" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Grid.Column="1" Margin="0">
+            </CheckBox>
+        </Grid>
+    </ControlTemplate>
 </ResourceDictionary>

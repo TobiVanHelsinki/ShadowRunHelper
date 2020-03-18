@@ -5,5 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.CharTemplates.SeparatorTemplate">
-    <BoxView HeightRequest="1" Color="Gray"/>
+    <Grid Style="{DynamicResource TemplateGrid}">
+        <BoxView HeightRequest="1" Color="Gray" HorizontalOptions="Fill" VerticalOptions="Center"/>
+    </Grid>
 </ViewCell>
