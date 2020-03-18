@@ -100,6 +100,11 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
             else
             {
+                if (IsMenuOpen)
+                {
+                    IsMenuOpen = false;
+                    return true;
+                }
                 if (ContentPlace.Content is IBackButton page)
                 {
                     if (page.OnBackButtonPressed())
