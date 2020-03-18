@@ -35,8 +35,6 @@ namespace ShadowRunHelperViewer.Droid
             Init.Do();
             #endregion Init Libs
 
-            //Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
-            //Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             SetAccentColor();
             LoadApplication(new App());
