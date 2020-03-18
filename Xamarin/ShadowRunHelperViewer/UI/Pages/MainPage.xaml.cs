@@ -228,6 +228,7 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         private void Instance_NavigationRequested(ProjectPages page, ProjectPagesOptions pageOptions = ProjectPagesOptions.Nothing)
         {
+            System.Diagnostics.Debug.WriteLine("                           MainPage NavigationRequested");
             switch (page)
             {
                 case ProjectPages.undef:
@@ -281,16 +282,21 @@ namespace ShadowRunHelperViewer.UI.Pages
         /// <exception cref="ObjectDisposedException"></exception>
         private void CreateContentAndNavigateTo<T>(Action<T> afterLoad = null) where T : View, new()
         {
-            if (ContentPlace.Content is IDisposable disposable)
-            {
-                disposable.Dispose();
-            }
-            ContentPlace.Content = null;
+            System.Diagnostics.Debug.WriteLine("                           MainPage CreateContentAndNavigateTo");
             try
             {
+                var oldContent = ContentPlace.Content;
+                System.Diagnostics.Debug.WriteLine("                           MainPage new T");
                 var t = new T();
+                System.Diagnostics.Debug.WriteLine("                           Set new T to Content");
                 ContentPlace.Content = t;
+                System.Diagnostics.Debug.WriteLine("                           afterLoad is " + afterLoad?.ToString() ?? "null");
                 afterLoad?.Invoke(t);
+                System.Diagnostics.Debug.WriteLine("                           Dispose");
+                if (oldContent is IDisposable disposable)
+                {
+                    disposable.Dispose();
+                }
             }
             catch (Exception ex)
             {

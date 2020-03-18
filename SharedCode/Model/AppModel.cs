@@ -89,6 +89,7 @@ namespace ShadowRunHelper.Model
 
         public void RequestNavigation(ProjectPages p, ProjectPagesOptions po = ProjectPagesOptions.Nothing)
         {
+            System.Diagnostics.Debug.WriteLine("                           AppModelRequest");
             PlatformHelper.ExecuteOnUIThreadAsync(() => NavigationRequested?.Invoke(p, po));
         }
 

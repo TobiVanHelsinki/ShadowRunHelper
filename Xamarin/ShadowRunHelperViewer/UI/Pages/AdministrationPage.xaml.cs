@@ -107,7 +107,68 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         #region Open Files
 
-        private static void LoadFileInBackground(ExtendetFileInfo charfile, Action<CharHolder> p = null)
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item is ExtendetFileInfo charfile)
+            {
+                switch (Device.RuntimePlatform)
+                {
+                    case Device.Android:
+                        LoadFileInBackgroundSynchron(charfile);
+                        break;
+                    default:
+                        await LoadFileInBackgroundAsync(charfile);
+                        break;
+                }
+            }
+        }
+
+        private async void OpenFile(object sender, EventArgs e)
+        {
+            var charfile = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    try
+                    {
+                        LoadFileInBackgroundSynchron(new ExtendetFileInfo(charfile.FullName), (newchar) => SharedIO.SaveAtCurrentPlace(newchar));
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Write("Error reading file", ex);
+                    }
+                    break;
+                default:
+                    try
+                    {
+                        await LoadFileInBackgroundAsync(new ExtendetFileInfo(charfile.FullName), (newchar) => SharedIO.SaveAtCurrentPlace(newchar));
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Write("Error reading file", ex);
+                    }
+                    break;
+            }
+        }
+
+        private async Task LoadFileInBackgroundAsync(ExtendetFileInfo charfile, Action<CharHolder> afterLoad = null)
+        {
+            MainPage.Instance.EnableBusy();
+            try
+            {
+                var newchar = await CharHolderIO.Load(charfile);
+                AppModel.Instance.MainObject = (newchar);
+                AppModel.Instance.RequestNavigation(ProjectPages.Char);
+                afterLoad?.Invoke(newchar);
+            }
+            catch (Exception ex)
+            {
+                Log.Write("Error reading file", ex);
+            }
+            MainPage.Instance.DisableBusy();
+        }
+
+        private static void LoadFileInBackgroundSynchron(ExtendetFileInfo charfile, Action<CharHolder> afterLoad = null)
         {
             MainPage.Instance.EnableBusy();
             var b = new BackgroundWorker();
@@ -131,10 +192,14 @@ namespace ShadowRunHelperViewer.UI.Pages
                 if (e.Result is CharHolder newchar)
                 {
                     AppModel.Instance.MainObject = newchar;
+                    System.Diagnostics.Debug.WriteLine("                           Admin1");
                     AppModel.Instance.RequestNavigation(ProjectPages.Char);
-                    p?.Invoke(newchar);
+                    System.Diagnostics.Debug.WriteLine("                           Admin2");
+                    afterLoad?.Invoke(newchar);
+                    System.Diagnostics.Debug.WriteLine("                           Admin3");
                 }
                 MainPage.Instance.DisableBusy();
+                System.Diagnostics.Debug.WriteLine("                           Admin4");
             };
             try
             {
@@ -143,27 +208,6 @@ namespace ShadowRunHelperViewer.UI.Pages
             catch (InvalidOperationException)
             {
                 //TODO Report
-            }
-        }
-
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            if (e.Item is ExtendetFileInfo charfile)
-            {
-                LoadFileInBackground(charfile);
-            }
-        }
-
-        private async void OpenFile(object sender, EventArgs e)
-        {
-            try
-            {
-                var charfile = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
-                LoadFileInBackground(new ExtendetFileInfo(charfile.FullName), (newchar) => SharedIO.SaveAtCurrentPlace(newchar));
-            }
-            catch (Exception ex)
-            {
-                Log.Write("Error reading file", ex);
             }
         }
         #endregion Open Files
