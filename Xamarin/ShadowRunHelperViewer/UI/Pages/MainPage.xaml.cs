@@ -178,6 +178,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             IsMenuOpen = false;
             //MenuDrawerDefault.TouchThreshold = (float)Width;
             var newSize = (int)Math.Max(Math.Min(Busyindicator.Height, Busyindicator.Width) / 4, 50);
+            //TipText.WidthRequest = newSize;
             Busyindicator.ViewBoxHeight = newSize;
             Busyindicator.ViewBoxWidth = newSize;
         }
