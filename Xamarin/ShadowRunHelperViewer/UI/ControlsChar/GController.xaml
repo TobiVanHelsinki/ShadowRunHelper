@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -1036,10 +1037,14 @@
                 <ContentView Grid.Row="1" x:Name="Items_H"/>
                 <BoxView Grid.Row="2" HeightRequest="2" Color="LightGray" Margin="0"/>
             </Grid>
-            <ListView  x:Name="Items" Grid.Row="1"
+            <!--<ListView  x:Name="Items" Grid.Row="1"
                        ItemsSource="{Binding Data, Mode=OneWay}"
                             SelectionMode="Single">
-            </ListView>
+            </ListView>-->
+            <listview:SfListView x:Name="Items" Grid.Row="1"
+                       ItemsSource="{Binding Data, Mode=OneWay}"
+                                 SelectionMode="SingleDeselect"
+                                 SelectionChanged="Items_SelectionChanged"/>
             <!--<CollectionView x:Name="Items" Grid.Row="1"
                             ItemsSource="{Binding Data, Mode=OneWay}"
                             ItemSizingStrategy="MeasureAllItems"

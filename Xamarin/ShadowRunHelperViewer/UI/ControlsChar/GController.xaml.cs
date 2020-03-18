@@ -240,9 +240,9 @@ namespace ShadowRunHelperViewer
         /// <param name="e">
         /// The <see cref="Xamarin.Forms.SelectionChangedEventArgs"/> instance containing the event data.
         /// </param>
-        private void Items_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Items_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            if (e.CurrentSelection.FirstOrDefault() is Thing t)
+            if (e.AddedItems.FirstOrDefault() is Thing t)
             {
                 DetailsOpen = true;
                 DetailsPane.Activate(t, MyChar);

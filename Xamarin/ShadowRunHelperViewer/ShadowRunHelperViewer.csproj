@@ -21,6 +21,7 @@
     <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.4.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.4.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="17.4.0.55" />
     <PackageReference Include="TLIB" Version="3.3.7" />
     <PackageReference Include="Xam.Plugin.PopupMenu" Version="1.1.0" />

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
+using Syncfusion.ListView.XForms.UWP;
 using Syncfusion.SfBusyIndicator.XForms.UWP;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -39,6 +40,8 @@ namespace ShadowRunHelperViewer.UWP
             #region Init Libs
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
             assembliesToInclude.Add(typeof(SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
+            assembliesToInclude.Add(typeof(SfListViewRenderer).GetTypeInfo().Assembly);
+            SfListViewRenderer.Init();
             TAPPLICATION.IO.SharedIO.CurrentIO = new TAPPLICATION_UWP.IO();
             TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TAPPLICATION_UWP.Settings();
             TAPPLICATION.PlatformHelper.Platform = new TAPPLICATION_Xamarin.PlatformHelper();
