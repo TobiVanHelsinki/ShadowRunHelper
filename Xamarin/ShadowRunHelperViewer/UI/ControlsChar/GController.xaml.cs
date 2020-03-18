@@ -10,9 +10,7 @@ using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.UI.Pages;
-using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
-using Syncfusion.ListView.XForms;
 using TLIB;
 using Xam.Plugin;
 using Xamarin.Forms;
@@ -50,57 +48,11 @@ namespace ShadowRunHelperViewer
         {
             MyChar = myChar;
             InitializeComponent();
-            CreateStyle();
             OnControllerChanged();
             BindingContextChanged += GController_BindingContextChanged;
             SetHeaderVisible(!SettingsModel.I.MINIMIZED_HEADER);
             MainPage.Instance.ViewModeChanged += MainPage_ViewModeChanged;
             Items.DragDropController.UpdateSource = true;
-        }
-
-        private void CreateStyle()
-        {
-            foreach (var (name, type, basedon, setter) in new[] {
-                ("TemplateStack", typeof(StackLayout),"", new (BindableProperty, object)[] {
-                    (StackLayout.SpacingProperty, 0),
-                    (StackLayout.OrientationProperty, StackOrientation.Horizontal),
-                    (MarginProperty, SettingsModel.I.CurrentSpacingStrategy),
-                    (VerticalOptionsProperty, LayoutOptions.Center ),
-                }),
-                ("TemplateGrid", typeof(Grid),"", new (BindableProperty, object)[] {
-                    (Grid.ColumnSpacingProperty, 0),
-                    (Grid.RowSpacingProperty, 0),
-                    (PaddingProperty, 3),
-                    (BackgroundColorProperty, Color.Beige),
-                    (MarginProperty, SettingsModel.I.CurrentSpacingStrategy),
-                    (VerticalOptionsProperty, LayoutOptions.Center ),
-                }),
-                ("SeparatorLine", typeof(BoxView),"", new (BindableProperty, object)[] {
-                    (HeightRequestProperty, 0),
-                    //(MarginProperty, new Thickness(-5,5,-5,0)),
-                    (MarginProperty, new Thickness(0)),
-                    (BackgroundColorProperty, StyleManager.ForegroundColor),
-                }),
-                })
-            {
-                try
-                {
-                    var style = new Style(type);
-                    if (!string.IsNullOrEmpty(basedon))
-                    {
-                        style.BaseResourceKey = basedon;
-                    }
-                    foreach (var (prop, value) in setter)
-                    {
-                        style.Setters.Add(new Setter() { Property = prop, Value = value });
-                    }
-                    Resources.Add(name, style);
-                }
-                catch (Exception ex)
-                {
-                    Log.Write("Could not create resource", ex, logType: LogType.Error);
-                }
-            }
         }
 
         #region Control MyController, Items Visual and Header Visual
@@ -115,8 +67,10 @@ namespace ShadowRunHelperViewer
             DetailsOpen = false;
             if (MyController != null)
             {
-                SelectTemplate(MyController.eDataTyp);
-                CreateHeadline(MyController.eDataTyp);
+                if (MyController.eDataTyp.HierarchieUpSearch(s => { _ = Resources.TryGetValue(s + "_H", out var CustomTemplate); return CustomTemplate; }) is ControlTemplate HL)
+                {
+                    Items_H.ControlTemplate = HL;
+                }
 
                 MyControllerSettings = MyChar.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == MyController.eDataTyp);
                 IsVisible = MyControllerSettings.Visibility;
@@ -138,35 +92,6 @@ namespace ShadowRunHelperViewer
             else
             {
                 IsVisible = false;
-            }
-        }
-
-        /// <summary>
-        /// Searches for a Resource with a mathing name and try to create this as headline
-        /// </summary>
-        /// <param name="key"></param>
-        private void CreateHeadline(ThingDefs key)
-        {
-            var CustomTemplate = key.HierarchieUpSearch(s => { Resources.TryGetValue(s + "_H", out var CustomTemplate); return CustomTemplate; });
-            if (CustomTemplate is ControlTemplate HL)
-            {
-                Items_H.ControlTemplate = HL;
-            }
-        }
-
-        /// <summary>
-        /// Searches for a Resource with a mathing name and try to create all entries with that
-        /// resource as template
-        /// Fallback: ThingTempalte
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        private void SelectTemplate(ThingDefs key)
-        {
-            var CustomTemplate = key.HierarchieUpSearch(s => { Resources.TryGetValue(s, out var CustomTemplate); return CustomTemplate; });
-            if (CustomTemplate is DataTemplate DT)
-            {
-                Items.ItemTemplate = DT;
             }
         }
 
@@ -247,7 +172,10 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void MainPage_ViewModeChanged(ViewModes oldMode, ViewModes newMode) => SetViewMode(newMode);
+        private void MainPage_ViewModeChanged(ViewModes oldMode, ViewModes newMode)
+        {
+            SetViewMode(newMode);
+        }
 
         /// <summary>
         /// Handles the SelectionChanged event of the Items control.
@@ -352,6 +280,18 @@ namespace ShadowRunHelperViewer
                 MyChar.Remove(t);
             }
         }
+
+        private void Items_SwipeEnded(object sender, Syncfusion.ListView.XForms.SwipeEndedEventArgs e)
+        {
+            if (e.SwipeOffset > 70)
+            {
+                if (e.SwipeDirection == Syncfusion.ListView.XForms.SwipeDirection.Left && e.ItemData is Thing t)
+                {
+                    t.IsFavorite = !t.IsFavorite;
+                }
+                e.SwipeOffset = 0;
+            }
+        }
         #endregion Items Actions
 
         #region Dynamic Header
@@ -385,25 +325,5 @@ namespace ShadowRunHelperViewer
             SetHeaderVisible(true);
         }
         #endregion Dynamic Header
-
-        private void Items_SwipeEnded(object sender, Syncfusion.ListView.XForms.SwipeEndedEventArgs e)
-        {
-            if (e.SwipeOffset > 70)
-            {
-                if (e.SwipeDirection == Syncfusion.ListView.XForms.SwipeDirection.Left && e.ItemData is Thing t)
-                {
-                    t.IsFavorite = !t.IsFavorite;
-                }
-                e.SwipeOffset = 0;
-            }
-        }
-
-        private void Items_ItemDragging(object sender, ItemDraggingEventArgs e)
-        {
-            //if (e.Action == DragAction.Drop)
-            //{
-            //    ViewModel.ToDoList.MoveTo(1, 5);
-            //}
-        }
     }
 }

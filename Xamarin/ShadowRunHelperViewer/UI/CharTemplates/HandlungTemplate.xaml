@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:chartemplates="clr-namespace:ShadowRunHelperViewer.UI.CharTemplates"
+             mc:Ignorable="d"
+             x:Class="ShadowRunHelperViewer.UI.CharTemplates.HandlungTemplate">
+    <Grid Style="{DynamicResource TemplateGrid}">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <chartemplates:SharedCharTemplateResources/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+        <StackLayout Orientation="Horizontal" Grid.Column="1">
+            <ContentView ControlTemplate="{StaticResource Thing_Value}"/>
+            <Label Text="[" Style="{StaticResource STDText}"/>
+            <Label Text="{x:Binding Limit.TrueValue}" Style="{StaticResource STDText}"/>
+            <Label Text="]" Style="{StaticResource STDText}"/>
+        </StackLayout>
+        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="2" Grid.Row="2"/>
+    </Grid>
+</ViewCell>

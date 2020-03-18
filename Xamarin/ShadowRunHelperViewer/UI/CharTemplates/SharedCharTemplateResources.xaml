@@ -1,0 +1,86 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                                 xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
+             xmlns:local="clr-namespace:ShadowRunHelperViewer"
+             xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
+             xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
+             xmlns:controlschar="clr-namespace:ShadowRunHelperViewer.UI.ControlsChar"
+                    x:Class="ShadowRunHelperViewer.UI.CharTemplates.SharedCharTemplateResources">
+    <ResourceDictionary.MergedDictionaries>
+        <local:CharModelStyles/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="ControllerIconButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+    <Style x:Key="STDText" TargetType="Label">
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="LineBreakMode" Value="CharacterWrap"/>
+        <Setter Property="MaxLines" Value="2"/>
+    </Style>
+    <Style x:Key="STDTextCenter" TargetType="Label" BasedOn="{StaticResource STDText}">
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="HeadLineText" TargetType="Label" BasedOn="{StaticResource STDText}">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="LineBreakMode" Value="TailTruncation"/>
+        <Setter Property="MaxLines" Value="1"/>
+    </Style>
+    <Style x:Key="AdditionalValueScrollView" TargetType="ScrollView">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Always"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Always"/>
+    </Style>
+    <Style x:Key="AdditionalValuePanel" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal"/>
+    </Style>
+
+    <ControlTemplate x:Key="Thing_Name_H">
+        <StackLayout Style="{DynamicResource TemplateStack}">
+            <Label Text="{resx:ModelResources Thing_Bezeichner}" Style="{StaticResource HeadLineText}"/>
+        </StackLayout>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Thing_Name" x:DataType="CharModel:Thing">
+        <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{DynamicResource TemplateStack}">
+            <Label x:Name="Typ" Text="{x:Binding Typ}" Style="{StaticResource STDText}"/>
+            <Label Text=":" Style="{StaticResource STDText}" Margin="0,0,2,0">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                    Binding="{Binding Source={x:Reference Typ}, Path=Text.Length}"
+                                    Value="0">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <Label Text="{x:Binding Bezeichner}" Style="{StaticResource STDText}"/>
+        </StackLayout>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Thing_Value_H">
+        <StackLayout Style="{DynamicResource TemplateStack}">
+            <Label Text="{resx:ModelResources Thing_Wert}" Style="{StaticResource HeadLineText}"/>
+        </StackLayout>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Thing_Value" x:DataType="CharModel:Thing">
+        <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{DynamicResource TemplateStack}" Orientation="Horizontal">
+            <Label Text="{x:Binding Value.TrueValue}" Style="{StaticResource STDText}"/>
+            <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDText}"/>
+        </StackLayout>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Thing_Notes" x:DataType="CharModel:Thing">
+        <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{DynamicResource TemplateStack}">
+            <Label Text="{x:Binding Notiz}" LineBreakMode="WordWrap"/>
+        </StackLayout>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="Thing_H">
+        <Grid Style="{DynamicResource TemplateGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name_H}"/>
+            <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value_H}"/>
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>

@@ -46,6 +46,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="UI\CharTemplates\HandlungTemplate.xaml.cs">
+      <DependentUpon>HandlungTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\ThingTemplate.xaml.cs">
+      <DependentUpon>ThingTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\SeparatorTemplate.xaml.cs">
+      <DependentUpon>SeparatorTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UI\ControlsChar\ThingCopyChooser.xaml.cs">
       <DependentUpon>ThingCopyChooser.xaml</DependentUpon>
     </Compile>
@@ -63,6 +72,9 @@
     </Compile>
     <Compile Update="UI\Pages\MiscPage.xaml.cs">
       <DependentUpon>MiscPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\CharTemplates\SharedCharTemplateResources.xaml.cs">
+      <DependentUpon>SharedCharTemplateResources.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
