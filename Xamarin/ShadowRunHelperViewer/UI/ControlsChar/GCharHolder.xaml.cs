@@ -2,26 +2,19 @@
 
 ///Author: Tobi van Helsinki
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using dotMorten.Xamarin.Forms;
 using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
-using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.Platform;
 using ShadowRunHelperViewer.UI;
-using ShadowRunHelperViewer.UI.Pages;
-using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using TAPPLICATION.IO;
 using TLIB;
-using Xam.Plugin;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -49,6 +42,11 @@ namespace ShadowRunHelperViewer
 
         internal bool OnBackButtonPressed()
         {
+            if (PopupNavigation.Instance.PopupStack.Count != 0)
+            {
+                PopupNavigation.Instance.PopAsync();
+                return true;
+            }
             if (ContentPanel.Content is GController gCtrl)
             {
                 if (gCtrl.OnBackButtonPressed())
@@ -207,7 +205,7 @@ namespace ShadowRunHelperViewer
                 v.BindingContext = MyChar.Person;
                 ContentPanel.Content = v;
                 var entryTemplate = v.Resources["EntryTemplate"] as DataTemplate;
-                foreach (var item in ReflectionHelper.GetProperties(MyChar.Person, typeof(Used_UserAttribute)).Where(x => x.GetCustomAttributes(true).OfType<Used_UserAttribute>().FirstOrDefault().UIRelevant))
+                foreach (var item in ReflectionHelper.GetPropertiesWithAttribute(MyChar.Person, typeof(Used_UserAttribute)).Where(x => x.GetCustomAttributes(true).OfType<Used_UserAttribute>().FirstOrDefault().UIRelevant))
                 {
                     var entry = entryTemplate.CreateContent() as View;
                     entry.FindByName<Label>("Type").Text = ModelResources.ResourceManager.GetStringSafe(nameof(Person) + "_" + item.Name);
@@ -262,11 +260,6 @@ namespace ShadowRunHelperViewer
                 }
                 else
                 {
-                    if (System.Diagnostics.Debugger.IsAttached)
-                    {
-                        System.Diagnostics.Debugger.Break();
-                    }
-
                     Log.Write("Structual Error, Controller Name is wrong");
                 }
                 ContentPanel.Content = gCTRL;

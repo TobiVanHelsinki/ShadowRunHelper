@@ -1,5 +1,6 @@
 ﻿//Author: Tobi van Helsinki
 
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using ShadowRunHelper;
@@ -8,6 +9,7 @@ using Syncfusion.ListView.XForms.UWP;
 using Syncfusion.SfBusyIndicator.XForms.UWP;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -33,6 +35,7 @@ namespace ShadowRunHelperViewer.UWP
 
             EnteredBackground += App_EnteredBackground;
             LeavingBackground += App_LeavingBackground;
+
             //Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             //Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             InitializeComponent();
@@ -50,6 +53,11 @@ namespace ShadowRunHelperViewer.UWP
             #endregion Init Libs
         }
 
+        private void MainPage_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            UI.Pages.MainPage.Instance.SendBackButtonPressed();
+        }
+
         #region Entry-Points
 
         /// <summary>
@@ -59,6 +67,7 @@ namespace ShadowRunHelperViewer.UWP
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             Xamarin.Forms.Forms.Init(args, assembliesToInclude);
+            SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
             base.OnLaunched(args);
         }
 
@@ -69,6 +78,7 @@ namespace ShadowRunHelperViewer.UWP
         protected override void OnActivated(IActivatedEventArgs args)
         {
             Xamarin.Forms.Forms.Init(args, assembliesToInclude);
+            SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
             if (args.Kind == ActivationKind.Protocol && args is ProtocolActivatedEventArgs uriArgs)
             {
                 var name = uriArgs.Uri.Segments[uriArgs.Uri.Segments.Length - 1];
@@ -84,6 +94,7 @@ namespace ShadowRunHelperViewer.UWP
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
             Xamarin.Forms.Forms.Init(args);
+            SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
             if (args.Files[0].Name.EndsWith(Constants.DATEIENDUNG_CHAR))
             {
                 try

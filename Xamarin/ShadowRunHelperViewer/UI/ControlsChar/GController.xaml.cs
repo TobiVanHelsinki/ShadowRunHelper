@@ -27,7 +27,7 @@ namespace ShadowRunHelperViewer
     public partial class GController : ContentView, INotifyPropertyChanged
     {
         #region NotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -112,11 +112,18 @@ namespace ShadowRunHelperViewer
                 MyControllerSettings = MyChar.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == MyController.eDataTyp);
                 IsVisible = MyControllerSettings.Visibility;
                 Headline.Text = TypeHelper.ThingDefToString(MyController.eDataTyp, true);
-                var att = MyController.GetType().GetCustomAttributes(typeof(ShadowRunHelperControllerAttribute), true).FirstOrDefault() as ShadowRunHelperControllerAttribute;
-                if (att?.SupportsEdit == false)
+                try
                 {
-                    CatAddButton.IsVisible = false;
-                    CatMoreButton.IsVisible = false;
+                    var att = MyController.GetType().GetCustomAttributes(typeof(ShadowRunHelperControllerAttribute), true).FirstOrDefault() as ShadowRunHelperControllerAttribute;
+                    if (att?.SupportsEdit == false)
+                    {
+                        CatAddButton.IsVisible = false;
+                        CatMoreButton.IsVisible = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Write("Getting Controller Attribute failed", ex);
                 }
             }
             else
