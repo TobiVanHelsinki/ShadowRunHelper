@@ -1,10 +1,5 @@
 ﻿//Author: Tobi van Helsinki
 
-using ShadowRunHelper;
-using ShadowRunHelper.IO;
-using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.Platform;
-using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +8,11 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using ShadowRunHelper;
+using ShadowRunHelper.IO;
+using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.Platform;
+using SharedCode.Ressourcen;
 using TAPPLICATION.IO;
 using TLIB;
 using Xamarin.Forms;
@@ -107,47 +107,59 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         #region Open Files
 
-        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private static void LoadFileInBackground(ExtendetFileInfo charfile, Action<CharHolder> p = null)
         {
-            if (e.Item is ExtendetFileInfo charfile)
+            MainPage.Instance.EnableBusy();
+            var b = new BackgroundWorker();
+            b.DoWork += async (object sender, DoWorkEventArgs e) =>
             {
-                MainPage.Instance.EnableBusy();
-                try
+                if (e.Argument is ExtendetFileInfo charfile)
                 {
-                    foreach (var item in AppModel.Instance.MainObjects.ToList())
+                    System.Threading.Thread.Sleep(1000);
+                    try
                     {
-                        AppModel.Instance.RemoveMainObject(item);
+                        e.Result = await CharHolderIO.Load(charfile);
                     }
-                    var newchar = await CharHolderIO.Load(charfile);
-                    AppModel.Instance.MainObject = (newchar);
-                    AppModel.Instance.RequestNavigation(ProjectPages.Char);
+                    catch (Exception ex)
+                    {
+                        Log.Write("Error reading file", ex);
+                    }
                 }
-                catch (Exception ex)
+            };
+            b.RunWorkerCompleted += (object sender, RunWorkerCompletedEventArgs e) =>
+            {
+                if (e.Result is CharHolder newchar)
                 {
-                    Log.Write("Error reading file", ex);
+                    AppModel.Instance.MainObject = newchar;
+                    AppModel.Instance.RequestNavigation(ProjectPages.Char);
+                    p?.Invoke(newchar);
                 }
                 MainPage.Instance.DisableBusy();
+            };
+            try
+            {
+                b.RunWorkerAsync(charfile);
+            }
+            catch (InvalidOperationException)
+            {
+                //TODO Report
             }
         }
 
-        private void OpenFile(object sender, EventArgs e)
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            FilePickerExample();
+            if (e.Item is ExtendetFileInfo charfile)
+            {
+                LoadFileInBackground(charfile);
+            }
         }
 
-        private async void FilePickerExample()
+        private async void OpenFile(object sender, EventArgs e)
         {
             try
             {
                 var charfile = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
-                var newchar = await CharHolderIO.Load(charfile);
-                AppModel.Instance.AddMainObject(newchar);
-                AppModel.Instance.RequestNavigation(ProjectPages.Char);
-                await SharedIO.SaveAtCurrentPlace(newchar);
-                //(Application.Current.MainPage as MainPage)?.NavigatoToSingleInstanceOf<CharPage>(true, (x) => x.Activate(newchar));
-                //TODO das ist komplett am model vorbei, aber dafür auch flexibler
-                //TODO ich sollte überlegen, Model.MainObject abzuschaffen. für das speichern kann es sich im eigenen konstruktor registrieren
-                //Dann bekommen alle anderen nicht mehr mit, wenn sich ein object ändert. aber muss das überhaupt jemand wissen?
+                LoadFileInBackground(new ExtendetFileInfo(charfile.FullName), (newchar) => SharedIO.SaveAtCurrentPlace(newchar));
             }
             catch (Exception ex)
             {
