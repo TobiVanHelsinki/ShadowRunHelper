@@ -315,7 +315,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Einstellungen</value>
   </data>
   <data name="Cat_Order_ABC" xml:space="preserve">
-    <value>Alphabetisch</value>
+    <value>Sortieren nach Alphabet</value>
   </data>
   <data name="Cat_Order_Orig" xml:space="preserve">
     <value>Sortierung laden</value>
@@ -324,7 +324,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Sortierung speichern</value>
   </data>
   <data name="Cat_Order_Type" xml:space="preserve">
-    <value>Nach "Typ"</value>
+    <value>Sortieren nach "Typ"</value>
   </data>
   <data name="Bearbeiten_Munition" xml:space="preserve">
     <value>Munition auswählen</value>

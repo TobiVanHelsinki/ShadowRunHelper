@@ -75,19 +75,7 @@ namespace ShadowRunHelperViewer
                 MyControllerSettings = MyChar.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == MyController.eDataTyp);
                 IsVisible = MyControllerSettings.Visibility;
                 Headline.Text = TypeHelper.ThingDefToString(MyController.eDataTyp, true);
-                try
-                {
-                    var att = MyController.GetType().GetCustomAttributes(typeof(ShadowRunHelperControllerAttribute), true).FirstOrDefault() as ShadowRunHelperControllerAttribute;
-                    if (att?.SupportsEdit == false)
-                    {
-                        CatAddButton.IsVisible = false;
-                        CatMoreButton.IsVisible = false;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Log.Write("Getting Controller Attribute failed", ex);
-                }
+                SetHeaderVisible(!SettingsModel.I.MINIMIZED_HEADER);
             }
             else
             {
@@ -230,16 +218,27 @@ namespace ShadowRunHelperViewer
         }
 
         private (string, Action)[] MenuItems => new (string, Action)[] {
-                        (UiResources.Cat_AddSep,()=>{ }),
-                        (UiResources.Cat_UncheckAll,()=>{ }),
-                        (UiResources.Cat_Order_ABC,()=>{ }),
-                        (UiResources.Cat_Order_Type,()=>{ }),
-                        (UiResources.Cat_Order_Save,()=>{ }),
-                        (UiResources.Cat_Order_Orig,()=>{ }),
-                        (UiResources.CSV_Cat_ExportX,()=>{ }),
-                        (UiResources.CSV_Cat_Export_Selected,()=>{ }),
-                        (UiResources.CSV_Cat_ImportX,()=>{ }),
+                        (UiResources.Cat_AddSep,()=>{try
+                                                    {
+                                                        var newThing  = Activator.CreateInstance(MyController.eDataTyp.ThingDefToType()) as Thing;
+                                                        newThing.IsSeperator = true;
+                                                        MyChar.Add(newThing);
+                                                    }
+                                                    catch (Exception ex)
+                                                    {
+                                                        Log.Write("", ex);
+                                                    }}),
+                        //(UiResources.Cat_UncheckAll,()=>{ }),
+                        (UiResources.Cat_Order_ABC,()=>MyController.OrderData(Ordering.ABC)),
+                        (UiResources.Cat_Order_Type,()=>MyController.OrderData(Ordering.Type)),
+                        (UiResources.Cat_Order_Save,()=> MyController.SaveCurrentOrdering()),
+                        (UiResources.Cat_Order_Orig,()=> MyController.OrderData(Ordering.Original)),
+                        //(UiResources.CSV_Cat_ExportX,()=>{ }),
+                        //(UiResources.CSV_Cat_Export_Selected,()=>{ }),
+                        //(UiResources.CSV_Cat_ImportX,()=>{ }),
                     };
+
+        //((sender as FrameworkElement).DataContext as IController).SaveCurrentOrdering();
 
         private void Options(object sender, EventArgs e)
         {
@@ -265,22 +264,6 @@ namespace ShadowRunHelperViewer
 
         #region Items Actions
 
-        private void Thing_Fav(object sender, EventArgs e)
-        {
-            if (sender is BindableObject b && b.BindingContext is Thing t)
-            {
-                t.IsFavorite = !t.IsFavorite;
-            }
-        }
-
-        private void Thing_Delete(object sender, EventArgs e)
-        {
-            if (sender is BindableObject b && b.BindingContext is Thing t)
-            {
-                MyChar.Remove(t);
-            }
-        }
-
         private void Items_SwipeEnded(object sender, Syncfusion.ListView.XForms.SwipeEndedEventArgs e)
         {
             if (e.SwipeOffset > 70)
@@ -298,9 +281,20 @@ namespace ShadowRunHelperViewer
 
         public void SetHeaderVisible(bool visible)
         {
+            try
+            {
+                var att = MyController?.GetType().GetCustomAttributes(typeof(ShadowRunHelperControllerAttribute), true)?.FirstOrDefault() as ShadowRunHelperControllerAttribute;
+                if (att?.SupportsEdit == false)
+                {
+                    CatAddButton.IsVisible = false;
+                    CatMoreButton.IsVisible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Write("Getting Controller Attribute failed", ex);
+            }
             Items_H.IsVisible = visible;
-            CatAddButton.IsVisible = visible;
-            CatMoreButton.IsVisible = visible;
             Headline.FontSize = Device.GetNamedSize(visible ? NamedSize.Medium : NamedSize.Micro, typeof(Label));
             SettingsModel.I.MINIMIZED_HEADER = !visible;
         }

@@ -1,4 +1,6 @@
-﻿using ShadowRunHelper.CharController;
+﻿//Author: Tobi van Helsinki
+
+using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
@@ -16,6 +18,7 @@ namespace ShadowRunHelper.UI
     public sealed partial class CategoryBlock : UserControl
     {
         readonly AppModel Model = AppModel.Instance;
+
         public static readonly DependencyProperty ControllerProperty =
                    DependencyProperty.Register("Controller", typeof(IController), typeof(CategoryBlock), new PropertyMetadata(null));
         public IController Controller
@@ -24,11 +27,13 @@ namespace ShadowRunHelper.UI
             set { SetValue(ControllerProperty, value); OnControllerChanged(); }
         }
 
-        CategoryOption CTRLOption { get; set; }
+        private CategoryOption CTRLOption { get; set; }
+
         public void CheckVisibility()
         {
             Visibility = (CTRLOption?.Visibility == false) ? Visibility.Collapsed : Visibility.Visible;
         }
+
         private void OnControllerChanged()
         {
             try
@@ -46,7 +51,7 @@ namespace ShadowRunHelper.UI
                 var Current = TypeHelper.ThingTypeProperties.FirstOrDefault(t => t.ThingType == Controller.eDataTyp);
 
                 CategoryName.Text = CustomManager.GetString(Current.DisplayNamePlural);
-              
+
                 if (Controller.eDataTyp == ThingDefs.Vorteil || Controller.eDataTyp == ThingDefs.Nachteil)
                 {
                     HeadLine.ContentTemplate = Eigenschaft_E;
@@ -62,7 +67,6 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-
             }
         }
 
@@ -72,6 +76,7 @@ namespace ShadowRunHelper.UI
         }
 
         #region CategoryStuff
+
         private async void UI_TxT_CSV_Cat_Import_Click(object sender, RoutedEventArgs e)
         {
             string strRead = "";
@@ -91,7 +96,7 @@ namespace ShadowRunHelper.UI
             }
             try
             {
-                CTRL.CSV2Data(';', '\n', strRead);
+                //CTRL.CSV2Data(';', '\n', strRead);
             }
             catch (IsOKException ex)
             {
@@ -104,50 +109,52 @@ namespace ShadowRunHelper.UI
             Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Import");
         }
 
-        async void UI_TxT_CSV_Cat_Export_Click(object sender, RoutedEventArgs e)
+        private async void UI_TxT_CSV_Cat_Export_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string output = Controller.Data2CSV(';', '\n');
-                var targetdir = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_EXPORT);
-                var targetfile = new FileInfo(Path.Combine(targetdir.FullName, TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV));
-                SharedIO.CurrentIO.SaveFileContent(output, targetfile);
-            }
-            catch (IsOKException ex)
-            {
-                return;
-            }
-            catch (Exception ex)
-            {
-                Log.Write(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
-            }
-            Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export");
-        }
-        async void UI_TxT_CSV_Cat_Export_Selected(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var selected2 = ListView.SelectedItems.Select(i => i as Thing);
-                string output = CSV_Converter.Data2CSV(';', '\n', selected2);
-                var targetdir = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_EXPORT);
-                var targetfile = new FileInfo(Path.Combine(targetdir.FullName, TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV));
-                SharedIO.CurrentIO.SaveFileContent(output, targetfile);
-            }
-            catch (IsOKException ex)
-            {
-                return;
-            }
-            catch (Exception ex)
-            {
-                Log.Write(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
-            }
-            Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export_Selected");
+            //try
+            //{
+            //    string output = Controller.Data2CSV(';', '\n');
+            //    var targetdir = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_EXPORT);
+            //    var targetfile = new FileInfo(Path.Combine(targetdir.FullName, TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV));
+            //    SharedIO.CurrentIO.SaveFileContent(output, targetfile);
+            //}
+            //catch (IsOKException ex)
+            //{
+            //    return;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Log.Write(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
+            //}
+            //Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export");
         }
 
-        void UI_TxT_Cat_UncheckAll(object sender, RoutedEventArgs e)
+        private async void UI_TxT_CSV_Cat_Export_Selected(object sender, RoutedEventArgs e)
+        {
+            //try
+            //{
+            //    var selected2 = ListView.SelectedItems.Select(i => i as Thing);
+            //    string output = CSV_Converter.Data2CSV(';', '\n', selected2);
+            //    var targetdir = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_EXPORT);
+            //    var targetfile = new FileInfo(Path.Combine(targetdir.FullName, TypeHelper.ThingDefToString(Controller.eDataTyp, true) + Constants.DATEIENDUNG_CSV));
+            //    SharedIO.CurrentIO.SaveFileContent(output, targetfile);
+            //}
+            //catch (IsOKException ex)
+            //{
+            //    return;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Log.Write(CustomManager.GetString("Notification_Error_CSVExportFail") + "2", ex);
+            //}
+            //Features.Analytics.TrackEvent("Char_UI_TxT_CSV_Cat_Export_Selected");
+        }
+
+        private void UI_TxT_Cat_UncheckAll(object sender, RoutedEventArgs e)
         {
             ListView.SelectedIndex = -1;
         }
+
         private void UI_TxT_Cat_Truncate(object sender, RoutedEventArgs e)
         {
             try
@@ -159,36 +166,38 @@ namespace ShadowRunHelper.UI
                 Log.Write(CustomManager.GetString("Notification_Error_LogicFail"), ex);
             }
         }
-        #endregion
+        #endregion CategoryStuff
+
         #region Ordering
-        void UI_TxT_Cat_Order_Type(object sender, RoutedEventArgs e)
+
+        private void UI_TxT_Cat_Order_Type(object sender, RoutedEventArgs e)
         {
             Features.Analytics.TrackEvent("Char_UI_TxT_Cat_Order_Type");
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             CTRL.OrderData(Ordering.Type);
         }
 
-        void UI_TxT_Cat_Order_ABC(object sender, RoutedEventArgs e)
+        private void UI_TxT_Cat_Order_ABC(object sender, RoutedEventArgs e)
         {
             Features.Analytics.TrackEvent("Char_UI_TxT_Cat_Order_ABC");
             var CTRL = ((sender as FrameworkElement).DataContext as IController);
             CTRL.OrderData(Ordering.ABC);
         }
+
         private void UI_TxT_Cat_Order_Orig(object sender, RoutedEventArgs e)
         {
             Features.Analytics.TrackEvent("Char_UI_TxT_Cat_Order_Orig");
-            var CTRL = ((sender as FrameworkElement).DataContext as IController);
-            CTRL.OrderData(Ordering.Original);
+            ((sender as FrameworkElement).DataContext as IController).OrderData(Ordering.Original);
         }
+
         private void UI_TxT_Cat_Order_Save(object sender, RoutedEventArgs e)
         {
             ((sender as FrameworkElement).DataContext as IController).SaveCurrentOrdering();
         }
 
+        #endregion Ordering
 
-        #endregion
-
-        void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
@@ -205,11 +214,10 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-
             }
         }
 
-        async void Add_Click(object sender, RoutedEventArgs e)
+        private async void Add_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -218,7 +226,6 @@ namespace ShadowRunHelper.UI
                 {
                     await new EditThingDialog(newThing).ShowAsync();
                 }
-
             }
             catch (Exception ex)
             {
@@ -253,6 +260,7 @@ namespace ShadowRunHelper.UI
         }
 
         #region DnD
+
         private void ListView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
         {
             e.Data.RequestedOperation = DataPackageOperation.Move | DataPackageOperation.Copy;
@@ -298,7 +306,7 @@ namespace ShadowRunHelper.UI
             {
                 var txt = await e.DataView.GetTextAsync();
                 var newch = CharHolderIO.Deserialize(txt);
-                foreach (var item in newch.ThingList)
+                foreach (var item in newch.Things)
                 {
                     Model.MainObject.Add(item);
                 }
@@ -310,7 +318,7 @@ namespace ShadowRunHelper.UI
         //{
         //    a.ErrorContext.Handled = true;
         //}
-        #endregion
+        #endregion DnD
 
         private void UI_TxT_Cat_AddSep(object sender, RoutedEventArgs e)
         {

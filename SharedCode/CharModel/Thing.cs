@@ -64,7 +64,20 @@ namespace ShadowRunHelper.CharModel
 
         #region Properties
         [JsonIgnore]
-        public bool IsSeperator => string.IsNullOrEmpty(Bezeichner) && Value?.Value == 1337;
+        public bool IsSeperator
+        {
+            get
+            {
+                return string.IsNullOrEmpty(Bezeichner) && Value?.Value == 1337;
+            }
+            set
+            {
+                Bezeichner = "";
+                Value.Connected.Clear();
+                Value.BaseValue = value ? 1337 : 0;
+                Value.Active = value;
+            }
+        }
 
         private ThingDefs thingType = 0;
         public ThingDefs ThingType
@@ -349,7 +362,8 @@ namespace ShadowRunHelper.CharModel
         #region SearchAndCompare
 
         /// <summary>
-        /// Determines, if the Both Things have same Name und ThingType, so that they can be seen as "the same"
+        /// Determines, if the Both Things have same Name und ThingType, so that they can be seen as
+        /// "the same"
         /// </summary>
         /// <param name="t1"></param>
         /// <param name="t2"></param>
@@ -359,16 +373,12 @@ namespace ShadowRunHelper.CharModel
             return t1.ThingType == t2.ThingType ? t1.Bezeichner == t2.Bezeichner ? true : false : false;
         }
 
-        /// <summary>
-        /// Checks, if this object has Similarities to the parameter, will be overridden by others
-        /// </summary>
-        /// <param name="i_t"></param>
-        /// <returns> 1    -> type   correct, name correct </returns>
-        /// <returns> >0.5 -> type   correct, name somehow</returns>
-        /// <returns> 0.5  -> type incorrect, name correct</returns>
-        /// <returns> <0.5  -> type incorrect, name somehow</returns>
-        /// <returns> <0.5 -> type   correct, name incorrect</returns>
-        /// <returns> 0    -> type incorrect, name incorrect</returns>
+        /// <summary> Checks, if this object has Similarities to the parameter, will be overridden
+        /// by others </summary> <param name="i_t"></param> <returns> 1 -> type correct, name
+        /// correct </returns> <returns> >0.5 -> type correct, name somehow</returns> <returns> 0.5
+        /// -> type incorrect, name correct</returns> <returns> <0.5 -> type incorrect, name
+        /// somehow</returns> <returns> <0.5 -> type correct, name incorrect</returns> <returns> 0
+        /// -> type incorrect, name incorrect</returns>
         public virtual float SimilaritiesTo(string text)
         {
             var searchtext = text.ToLower();
@@ -443,7 +453,8 @@ namespace ShadowRunHelper.CharModel
         }
 
         /// <summary>
-        /// Gets references to the objects instances of all properties with the Used_UserAttribute oftype ConnectProperty
+        /// Gets references to the objects instances of all properties with the Used_UserAttribute
+        /// oftype ConnectProperty
         /// </summary>
         /// <returns></returns>
         public IEnumerable<ConnectProperty> GetConnects()

@@ -106,7 +106,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die alphabeticly ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Sort alphabeticly ähnelt.
         /// </summary>
         public static string Cat_Order_ABC {
             get {
@@ -151,7 +151,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die after &quot;type&quot; ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Sort after &quot;type&quot; ähnelt.
         /// </summary>
         public static string Cat_Order_Type {
             get {

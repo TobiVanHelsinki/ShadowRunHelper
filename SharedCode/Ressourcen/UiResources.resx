@@ -321,7 +321,7 @@ This app can be used to open files and folders on the file system. The app store
     <value>CSV Export (just selected)</value>
   </data>
   <data name="Cat_Order_ABC" xml:space="preserve">
-    <value>alphabeticly</value>
+    <value>Sort alphabeticly</value>
   </data>
   <data name="Cat_Order_Orig" xml:space="preserve">
     <value>Load saved order</value>
@@ -330,7 +330,7 @@ This app can be used to open files and folders on the file system. The app store
     <value>Save current order</value>
   </data>
   <data name="Cat_Order_Type" xml:space="preserve">
-    <value>after "type"</value>
+    <value>Sort after "type"</value>
   </data>
   <data name="Bearbeiten_Munition" xml:space="preserve">
     <value>Choose Ammunition</value>
