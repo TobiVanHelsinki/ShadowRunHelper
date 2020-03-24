@@ -369,10 +369,7 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void ToggleMenu(object sender, EventArgs e)
-        {
-            MenuOpen = !MenuOpen;
-        }
+        private void ToggleMenu(object sender, EventArgs e) => OnBackButtonPressed();
         #endregion AdaptiveUI
 
         #region Search Stuff

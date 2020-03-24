@@ -103,6 +103,12 @@
     <Compile Update="UI\CharTemplates\SeparatorTemplate.xaml.cs">
       <DependentUpon>SeparatorTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Update="UI\ControlsChar\CharSettingsPopupPage.xaml.cs">
+      <DependentUpon>CharSettingsPopupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\ControlsChar\CharSettingsView.xaml.cs">
+      <DependentUpon>CharSettingsView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UI\ControlsChar\ThingCopyChooser.xaml.cs">
       <DependentUpon>ThingCopyChooser.xaml</DependentUpon>
     </Compile>
@@ -127,6 +133,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="UI\ControlsChar\CharSettingsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UI\ControlsChar\CharSettingsPopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="UI\ControlsChar\DetailsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

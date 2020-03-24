@@ -6,31 +6,31 @@
              xmlns:chartemplates="clr-namespace:ShadowRunHelperViewer.UI.CharTemplates"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.CharTemplates.SuperNaturalSkillsTemplate">
-    <Grid Style="{DynamicResource TemplateGrid}">
-        <Grid.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
-                    <chartemplates:SharedCharTemplateResources/>
-                </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
-        </Grid.Resources>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-        <Label Text="{x:Binding Target}" Style="{StaticResource STDText}" Grid.Column="1"/>
-        <Label Text="{x:Binding Duration}" Style="{StaticResource STDText}" Grid.Column="2"/>
-        <Label Text="{x:Binding Fading}" Style="{StaticResource STDText}" Grid.Column="3"/>
-        <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="4"/>
-        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="5" Grid.Row="2"/>
-    </Grid>
+    <Frame Style="{DynamicResource ItemFrame}">
+        <Grid Style="{DynamicResource TemplateGrid}">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <chartemplates:SharedCharTemplateResources/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+            <Label Text="{x:Binding Target}" Style="{StaticResource STDText}" Grid.Column="1"/>
+            <Label Text="{x:Binding Duration}" Style="{StaticResource STDText}" Grid.Column="2"/>
+            <Label Text="{x:Binding Fading}" Style="{StaticResource STDText}" Grid.Column="3"/>
+            <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="4"/>
+        </Grid>    </Frame>
 </ViewCell>

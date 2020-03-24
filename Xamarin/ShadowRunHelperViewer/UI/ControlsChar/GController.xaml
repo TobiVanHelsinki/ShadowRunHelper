@@ -17,7 +17,6 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                 <chartemplates:SharedCharTemplateResources/>
             </ResourceDictionary.MergedDictionaries>
             <local:ThingDataTempalteSelector x:Key="ThingDataTempalteSelector"/>
-
             <ControlTemplate x:Key="Handlung_H">
                 <Grid>
                     <Grid.RowDefinitions>
