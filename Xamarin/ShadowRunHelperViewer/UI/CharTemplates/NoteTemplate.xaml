@@ -6,25 +6,25 @@
              xmlns:chartemplates="clr-namespace:ShadowRunHelperViewer.UI.CharTemplates"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.CharTemplates.NoteTemplate">
-    <Grid Style="{DynamicResource TemplateGrid}">
-        <Grid.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
-                    <chartemplates:SharedCharTemplateResources/>
-                </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
-        </Grid.Resources>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-        <!--<Button Text="&#xf2ed;" Style="{StaticResource ControllerIconButton}" Grid.Column="1" Clicked="Thing_Delete"/>-->
-        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="2" Grid.Row="2"/>
-    </Grid>
+    <Frame Style="{DynamicResource ItemFrame}">
+        <Grid Style="{DynamicResource TemplateGrid}">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <chartemplates:SharedCharTemplateResources/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+            <!--<Button Text="&#xf2ed;" Style="{StaticResource ControllerIconButton}" Grid.Column="1" Clicked="Thing_Delete"/>-->
+        </Grid>    </Frame>
 </ViewCell>

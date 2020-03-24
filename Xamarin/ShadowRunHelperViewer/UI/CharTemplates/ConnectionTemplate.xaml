@@ -6,27 +6,27 @@
              xmlns:chartemplates="clr-namespace:ShadowRunHelperViewer.UI.CharTemplates"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.CharTemplates.ConnectionTemplate">
-    <Grid Style="{DynamicResource TemplateGrid}">
-        <Grid.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
-                    <chartemplates:SharedCharTemplateResources/>
-                </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
-        </Grid.Resources>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-        <Label Text="{x:Binding Einfluss}" Grid.Column="1" Style="{StaticResource STDText}"/>
-        <Label Text="{x:Binding Loyal}" Grid.Column="2" Style="{StaticResource STDText}"/>
-        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-    </Grid>
+    <Frame Style="{DynamicResource ItemFrame}">
+        <Grid Style="{DynamicResource TemplateGrid}">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <chartemplates:SharedCharTemplateResources/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+            <Label Text="{x:Binding Einfluss}" Grid.Column="1" Style="{StaticResource STDText}"/>
+            <Label Text="{x:Binding Loyal}" Grid.Column="2" Style="{StaticResource STDText}"/>
+        </Grid>    </Frame>
 </ViewCell>

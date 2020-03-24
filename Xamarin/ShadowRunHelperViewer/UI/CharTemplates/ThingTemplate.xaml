@@ -6,26 +6,26 @@
              xmlns:chartemplates="clr-namespace:ShadowRunHelperViewer.UI.CharTemplates"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.CharTemplates.ThingTemplate">
-    <Grid Style="{DynamicResource TemplateGrid}">
-        <Grid.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
-                    <chartemplates:SharedCharTemplateResources/>
-                </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
-        </Grid.Resources>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}"/>
-        <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value}"/>
-        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-    </Grid>
+    <Frame Style="{DynamicResource ItemFrame}">
+        <Grid Style="{DynamicResource TemplateGrid}">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <chartemplates:SharedCharTemplateResources/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ContentView Grid.Column="0" ControlTemplate="{StaticResource Thing_Name}"/>
+            <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value}"/>
+        </Grid>    </Frame>
 </ViewCell>

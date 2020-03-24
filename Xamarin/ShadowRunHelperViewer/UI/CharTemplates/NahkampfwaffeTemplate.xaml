@@ -8,53 +8,53 @@
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.CharTemplates.NahkampfwaffeTemplate">
-    <Grid Style="{DynamicResource TemplateGrid}">
-        <Grid.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
-                    <chartemplates:SharedCharTemplateResources/>
-                </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
-        </Grid.Resources>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-        <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-        <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{DynamicResource TemplateStack}">
-            <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-            <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
-            <Label Text="[" Style="{StaticResource STDText}" Margin="1,0,0,0"/>
-            <Label Text="{x:Binding Precision.TrueValue}" Style="{StaticResource STDText}"/>
-            <Label Text="]" Style="{StaticResource STDText}" Margin="0,0,1,0"/>
-            <Label Text="{x:Binding DK.TrueValue}" Style="{StaticResource STDText}" Grid.Column="4"/>
-        </StackLayout>
-        <Grid Grid.ColumnSpan="3" Grid.Row="1">
+    <Frame Style="{DynamicResource ItemFrame}">
+        <Grid Style="{DynamicResource TemplateGrid}">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <chartemplates:SharedCharTemplateResources/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Grid.Resources>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
-            <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
-                <StackLayout Style="{StaticResource AdditionalValuePanel}">
-                    <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
-                    <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Precision.TrueValue"/>
-                    <controls:AdditionalValue Text="{resx:ModelResources Nahkampfwaffe_Reichweite}" ValuePath="Reichweite"/>
-                    <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK.TrueValue"/>
-                </StackLayout>
-            </ScrollView>
-        </Grid>
-        <BoxView Style="{DynamicResource SeparatorLine}" Grid.ColumnSpan="3" Grid.Row="2"/>
-    </Grid>
+            <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+            <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+            <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{DynamicResource TemplateStack}">
+                <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
+                <Label Text="[" Style="{StaticResource STDText}" Margin="1,0,0,0"/>
+                <Label Text="{x:Binding Precision.TrueValue}" Style="{StaticResource STDText}"/>
+                <Label Text="]" Style="{StaticResource STDText}" Margin="0,0,1,0"/>
+                <Label Text="{x:Binding DK.TrueValue}" Style="{StaticResource STDText}" Grid.Column="4"/>
+            </StackLayout>
+            <Grid Grid.ColumnSpan="3" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
+                    <StackLayout Style="{StaticResource AdditionalValuePanel}">
+                        <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
+                        <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Precision.TrueValue"/>
+                        <controls:AdditionalValue Text="{resx:ModelResources Nahkampfwaffe_Reichweite}" ValuePath="Reichweite"/>
+                        <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK.TrueValue"/>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </Grid>    </Frame>
 </ViewCell>

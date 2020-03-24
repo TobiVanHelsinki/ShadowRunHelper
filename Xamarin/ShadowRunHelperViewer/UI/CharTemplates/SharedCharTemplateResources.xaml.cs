@@ -19,7 +19,6 @@ namespace ShadowRunHelperViewer.UI.CharTemplates
                     (StackLayout.SpacingProperty, 0),
                     (StackLayout.OrientationProperty, StackOrientation.Horizontal),
                     (Layout.PaddingProperty, new Thickness(SettingsModel.I.CurrentSpacingStrategy)),
-                    //(Layout.PaddingProperty, new Thickness(0)),
                     (View.MarginProperty, new Thickness(0)),
                     (View.VerticalOptionsProperty, LayoutOptions.Center ),
                 }),
@@ -27,16 +26,15 @@ namespace ShadowRunHelperViewer.UI.CharTemplates
                     (Grid.ColumnSpacingProperty, 0),
                     (Grid.RowSpacingProperty, 0),
                     (Layout.PaddingProperty, new Thickness(SettingsModel.I.CurrentSpacingStrategy)),
-                    //(Layout.PaddingProperty, new Thickness(0)),
                     (View.MarginProperty, new Thickness(0)),
-                    (VisualElement.BackgroundColorProperty, Color.Beige),
                     (View.VerticalOptionsProperty, LayoutOptions.Center ),
                 }),
-                ("SeparatorLine", typeof(BoxView),"", new (BindableProperty, object)[] {
-                    (VisualElement.HeightRequestProperty, 0),
-                    //(View.MarginProperty, new Thickness(-5,5,-5,0)),
-                    (View.MarginProperty, new Thickness(0)),
-                    (VisualElement.BackgroundColorProperty, StyleManager.ForegroundColor),
+                ("ItemFrame", typeof(Frame),"", new (BindableProperty, object)[] {
+                    (Layout.PaddingProperty, new Thickness(SettingsModel.I.CurrentSpacingStrategy)),
+                    (View.MarginProperty, new Thickness(SettingsModel.I.CurrentSpacingStrategy)),
+                    (Frame.CornerRadiusProperty, 3f),
+                    (Frame.BorderColorProperty, Color.Black),
+                    (VisualElement.BackgroundColorProperty, StyleManager.BackgroundColor),
                 }),
                 })
             {
