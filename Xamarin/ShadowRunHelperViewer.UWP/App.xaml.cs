@@ -45,7 +45,6 @@ namespace ShadowRunHelperViewer.UWP
             assembliesToInclude.Add(typeof(SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
             assembliesToInclude.Add(typeof(SfListViewRenderer).GetTypeInfo().Assembly);
             assembliesToInclude.Add(typeof(SfBorderRenderer).GetTypeInfo().Assembly);
-            assembliesToInclude.Add(typeof(SfSegmentedControlRenderer).GetTypeInfo().Assembly);
             SfListViewRenderer.Init();
             TAPPLICATION.IO.SharedIO.CurrentIO = new TAPPLICATION_UWP.IO();
             TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TAPPLICATION_UWP.Settings();

@@ -30,11 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--<PackageReference Include="Syncfusion.Xamarin.Core" Version="17.4.0.55" />-->
-    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.4.0.55" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\TLIB\TLIBChoice.Xamarin\TLIBChoice.Xamarin.csproj" />
     <ProjectReference Include="..\..\SharedCode\SharedCode.csproj" />
   </ItemGroup>
