@@ -483,7 +483,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>Nein</value>
   </data>
   <data name="WarningLocalSaveplace" xml:space="preserve">
-    <value>Warnung, du speicherst deine Dateien nur lokal. Das kann zu Datenverlust führen. Am besten wählst du einen externen Speicherort aus.</value>
+    <value>Warnung, du speicherst deine Dateien nur lokal. Das kann zu Datenverlust führen. Am besten wählst du einen externen Speicherort aus. Dafür kannst du auf diese Meldung klicken.</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>

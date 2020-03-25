@@ -21,12 +21,12 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+            <ContentView ControlTemplate="{StaticResource ItemsBoxesSlim}" Grid.Column="0"/>
             <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
             <Label Text="{x:Binding Anzahl}" Style="{StaticResource STDText}" Grid.Column="3"/>

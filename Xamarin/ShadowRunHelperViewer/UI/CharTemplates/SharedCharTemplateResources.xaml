@@ -1,10 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                                  xmlns:CharModel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
-             xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
-             xmlns:controlschar="clr-namespace:ShadowRunHelperViewer.UI.ControlsChar"
                     x:Class="ShadowRunHelperViewer.UI.CharTemplates.SharedCharTemplateResources">
     <ResourceDictionary.MergedDictionaries>
         <local:CharModelStyles/>
@@ -83,21 +82,50 @@
             <ContentView Grid.Column="2" ControlTemplate="{StaticResource Thing_Value_H}"/>
         </Grid>
     </ControlTemplate>
-    <x:Int16 x:Key="ItemsBoxesWidth">65</x:Int16>
+
+    <x:Double x:Key="ItemsBoxesWidth">80</x:Double>
+    <x:Double x:Key="ItemsBoxesWidth2">160</x:Double>
     <ControlTemplate x:Key="ItemsBoxes" x:DataType="CharModel:Item">
-        <Grid Style="{DynamicResource TemplateGrid}" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0" x:Name="SizeDefEl" HorizontalOptions="Center" BindingContext="{TemplateBinding BindingContext}">
+        <Grid Style="{DynamicResource TemplateGrid}" WidthRequest="70" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0" x:Name="SizeDefEl" HorizontalOptions="Center" BindingContext="{TemplateBinding BindingContext}">
             <Grid.ColumnDefinitions>
-                <!--<ColumnDefinition Width="Auto"/>-->
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <!--<RowDefinition Height="Auto"/>-->
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <CheckBox IsChecked="{x:Binding Aktiv}" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Margin="0,0,0,0"/>
-            <CheckBox IsChecked="{x:Binding Besitz}" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Grid.Column="1" Margin="0">
-            </CheckBox>
+            <Label Grid.Row="0" Grid.Column="1" Text="{resx:ModelResources Item_Aktiv}" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="{resx:ModelResources Item_Besitz}" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <CheckBox Grid.Row="0" Grid.Column="0" IsChecked="{x:Binding Aktiv}" VerticalOptions="Center" HorizontalOptions="End" Color="Accent"/>
+            <CheckBox Grid.Row="1" Grid.Column="0" IsChecked="{x:Binding Besitz}" VerticalOptions="Center" HorizontalOptions="End" Color="Accent"/>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="ItemsBoxesSlim" x:DataType="CharModel:Item">
+        <Grid Style="{DynamicResource TemplateGrid}" WidthRequest="150" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0" x:Name="SizeDefEl" HorizontalOptions="Center" BindingContext="{TemplateBinding BindingContext}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!--<sfsegmentedcontrol:SfSegmentedControl SelectionTextColor="Gray">
+                <sfseg
+                -->
+            <!--<ListCollection:List x:TypeArguments="x:String">
+                    <x:String>Item 1</x:String>
+                    <x:String>Item 2</x:String>
+                    <x:String>Item 3</x:String>
+                </ListCollection:List>-->
+            <!--
+            </sfsegmentedcontrol:SfSegmentedControl>-->
+            <Label Grid.Row="0" Grid.Column="1" Text="{resx:ModelResources Item_Aktiv}" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <Label Grid.Row="0" Grid.Column="3" Text="{resx:ModelResources Item_Besitz}" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <CheckBox Grid.Row="0" Grid.Column="0" IsChecked="{x:Binding Aktiv}" VerticalOptions="Center" HorizontalOptions="End" Color="Accent"/>
+            <CheckBox Grid.Row="0" Grid.Column="2" IsChecked="{x:Binding Besitz}" VerticalOptions="Center" HorizontalOptions="End" Color="Accent"/>
         </Grid>
     </ControlTemplate>
 </ResourceDictionary>

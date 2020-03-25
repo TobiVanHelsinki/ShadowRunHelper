@@ -23,11 +23,10 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                <ColumnDefinition Width="0"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
             <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
             <Grid Grid.ColumnSpan="3" Grid.Row="1">
@@ -39,9 +38,9 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <!--<ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>-->
                 <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                     <StackLayout Style="{StaticResource AdditionalValuePanel}">
+                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                         <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                         <controls:AdditionalValue Text="{resx:ModelResources Panzerung_Kapazitaet}" ValuePath="Kapazitaet"/>
                     </StackLayout>

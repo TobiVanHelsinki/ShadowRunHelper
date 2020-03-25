@@ -23,13 +23,12 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{StaticResource ItemsBoxesWidth}"/>
+                <ColumnDefinition Width="0"/>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
             <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
             <Label Text="{x:Binding Schaden}" Grid.Column="3" Style="{StaticResource STDText}"/>
@@ -47,9 +46,9 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <!--<ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>-->
                 <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                     <StackLayout Style="{StaticResource AdditionalValuePanel}">
+                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                         <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                         <BoxView Color="LightGray" WidthRequest="1" Margin="0,0,5,0"/>
                         <StackLayout Margin="0,0,5,0" HorizontalOptions="Center">

@@ -1377,7 +1377,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Warning, you are saving your chars locally at the moment. It is strongly recommendet to use an synchronized folder like OneDrive, DropBox and co. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Warning, you are saving your chars locally at the moment. It is strongly recommendet to use an synchronized folder like OneDrive or DropBox or an SD Card. Tap on this message to do so. ähnelt.
         /// </summary>
         public static string WarningLocalSaveplace {
             get {

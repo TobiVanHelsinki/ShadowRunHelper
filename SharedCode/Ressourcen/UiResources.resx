@@ -492,7 +492,7 @@ This app can be used to open files and folders on the file system. The app store
     <value>No</value>
   </data>
   <data name="WarningLocalSaveplace" xml:space="preserve">
-    <value>Warning, you are saving your chars locally at the moment. It is strongly recommendet to use an synchronized folder like OneDrive, DropBox and co.</value>
+    <value>Warning, you are saving your chars locally at the moment. It is strongly recommendet to use an synchronized folder like OneDrive or DropBox or an SD Card. Tap on this message to do so.</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
