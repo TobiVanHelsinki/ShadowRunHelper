@@ -1,8 +1,11 @@
 ﻿//Author: Tobi van Helsinki
 
 using System;
+using System.Linq;
 using ShadowRunHelper;
 using ShadowRunHelperViewer.UI.Resources;
+using SharedCode.Ressourcen;
+using Syncfusion.XForms.Buttons;
 using TLIB;
 using Xamarin.Forms;
 

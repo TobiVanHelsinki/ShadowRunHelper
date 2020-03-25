@@ -7,6 +7,8 @@ using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using Syncfusion.ListView.XForms.UWP;
 using Syncfusion.SfBusyIndicator.XForms.UWP;
+using Syncfusion.XForms.UWP.Border;
+using Syncfusion.XForms.UWP.Buttons;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Core;
@@ -42,7 +44,8 @@ namespace ShadowRunHelperViewer.UWP
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
             assembliesToInclude.Add(typeof(SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
             assembliesToInclude.Add(typeof(SfListViewRenderer).GetTypeInfo().Assembly);
-            assembliesToInclude.Add(typeof(Syncfusion.XForms.UWP.Buttons.SfSegmentedControlRenderer).GetTypeInfo().Assembly);
+            assembliesToInclude.Add(typeof(SfBorderRenderer).GetTypeInfo().Assembly);
+            assembliesToInclude.Add(typeof(SfSegmentedControlRenderer).GetTypeInfo().Assembly);
             SfListViewRenderer.Init();
             TAPPLICATION.IO.SharedIO.CurrentIO = new TAPPLICATION_UWP.IO();
             TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TAPPLICATION_UWP.Settings();

@@ -768,4 +768,10 @@
   <data name="Note_" xml:space="preserve">
     <value>Note</value>
   </data>
+  <data name="Item_Lager" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="Item_State" xml:space="preserve">
+    <value>State</value>
+  </data>
 </root>

@@ -835,6 +835,24 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stock ähnelt.
+        /// </summary>
+        public static string Item_Lager {
+            get {
+                return ResourceManager.GetString("Item_Lager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die State ähnelt.
+        /// </summary>
+        public static string Item_State {
+            get {
+                return ResourceManager.GetString("Item_State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Items ähnelt.
         /// </summary>
         public static string ItemM_ {

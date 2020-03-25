@@ -1,20 +1,52 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
 
+using Newtonsoft.Json;
+
+///Author: Tobi van Helsinki
 namespace ShadowRunHelper.CharModel
 {
     public class Item : Thing
     {
+        [JsonIgnore]
+        public bool? State
+        {
+            get => Aktiv == true ? true : (Besitz == true ? null : (bool?)false);
+            set
+            {
+                if (value != State)
+                {
+                    if (value == true)
+                    {
+                        Aktiv = true;
+                        Besitz = true;
+                    }
+                    else if (value == null)
+                    {
+                        Aktiv = false;
+                        Besitz = true;
+                    }
+                    else
+                    {
+                        Aktiv = false;
+                        Besitz = false;
+                    }
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         private bool? besitz = true;
         [Used_UserAttribute]
         public bool? Besitz
         {
-            get { return besitz; }
+            get => besitz;
             set
             {
-                if (value != this.besitz)
+                if (value != besitz)
                 {
-                    this.besitz = value;
+                    besitz = value;
                     NotifyPropertyChanged();
+                    NotifyPropertyChanged(nameof(State));
                 }
             }
         }
@@ -23,14 +55,19 @@ namespace ShadowRunHelper.CharModel
         [Used_UserAttribute]
         public bool? Aktiv
         {
-            get { return aktiv; }
+            get => aktiv;
             set
             {
-                if (value != this.aktiv)
+                if (value != aktiv)
                 {
                     aktiv = value;
+                    if (aktiv == true)
+                    {
+                        Besitz = true;
+                    }
                     RefreshCharProperties();
                     NotifyPropertyChanged();
+                    NotifyPropertyChanged(nameof(State));
                 }
             }
         }
@@ -39,21 +76,18 @@ namespace ShadowRunHelper.CharModel
         [Used_UserAttribute]
         public double Anzahl
         {
-            get { return anzahl; }
+            get => anzahl;
             set
             {
-                if (value != this.anzahl)
+                if (value != anzahl)
                 {
-                    this.anzahl = value;
+                    anzahl = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public Item()
-        {
-            RefreshCharProperties();
-        }
+        public Item() => RefreshCharProperties();
 
         private void RefreshCharProperties()
         {

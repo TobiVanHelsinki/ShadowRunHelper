@@ -794,4 +794,10 @@
   <data name="Note_" xml:space="preserve">
     <value>Notiz</value>
   </data>
+  <data name="Item_Lager" xml:space="preserve">
+    <value>Lager</value>
+  </data>
+  <data name="Item_State" xml:space="preserve">
+    <value>Status</value>
+  </data>
 </root>
