@@ -281,19 +281,20 @@ namespace ShadowRunHelperViewer
 
         public void SetHeaderVisible(bool visible)
         {
+            bool supportsEdit = true;
             try
             {
-                var att = MyController?.GetType().GetCustomAttributes(typeof(ShadowRunHelperControllerAttribute), true)?.FirstOrDefault() as ShadowRunHelperControllerAttribute;
-                if (att?.SupportsEdit == false)
+                if (MyController?.GetType().GetCustomAttributes(typeof(ShadowRunHelperControllerAttribute), true)?.FirstOrDefault() is ShadowRunHelperControllerAttribute shadowRunHelperControllerAttribute)
                 {
-                    CatAddButton.IsVisible = false;
-                    CatMoreButton.IsVisible = false;
+                    supportsEdit = shadowRunHelperControllerAttribute.SupportsEdit;
                 }
             }
             catch (Exception ex)
             {
                 Log.Write("Getting Controller Attribute failed", ex);
             }
+            CatAddButton.IsVisible = visible && supportsEdit;
+            CatMoreButton.IsVisible = visible && supportsEdit;
             Items_H.IsVisible = visible;
             Headline.FontSize = Device.GetNamedSize(visible ? NamedSize.Medium : NamedSize.Micro, typeof(Label));
             SettingsModel.I.MINIMIZED_HEADER = !visible;
