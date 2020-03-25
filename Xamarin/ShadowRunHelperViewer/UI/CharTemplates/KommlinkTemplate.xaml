@@ -47,7 +47,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <!--<ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>-->
                 <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
                     <StackLayout Style="{StaticResource AdditionalValuePanel}">
                         <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>

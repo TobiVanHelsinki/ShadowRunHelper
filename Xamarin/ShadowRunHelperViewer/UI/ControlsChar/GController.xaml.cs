@@ -160,10 +160,7 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void MainPage_ViewModeChanged(ViewModes oldMode, ViewModes newMode)
-        {
-            SetViewMode(newMode);
-        }
+        private void MainPage_ViewModeChanged(ViewModes oldMode, ViewModes newMode) => SetViewMode(newMode);
 
         /// <summary>
         /// Handles the SelectionChanged event of the Items control.
@@ -205,9 +202,10 @@ namespace ShadowRunHelperViewer
             try
             {
                 var thing = MyChar.Add(MyController.eDataTyp);
-                if (SettingsModel.I.START_AFTER_EDIT && thing.ThingType != ThingDefs.Note)
+                if (SettingsModel.I.START_AFTER_EDIT)
                 {
-                    PopupNavigation.Instance.PushAsync(new DetailsPage(thing, MyChar));
+                    DetailsOpen = true;
+                    DetailsPane.Activate(thing, MyChar);
                 }
             }
             catch (NotSupportedException) { }
