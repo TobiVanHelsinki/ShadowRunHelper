@@ -484,6 +484,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error while importing ähnelt.
+        /// </summary>
+        public static string Notification_Error_Import {
+            get {
+                return ResourceManager.GetString("Notification_Error_Import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Reading file failed ähnelt.
         /// </summary>
         public static string Notification_Error_IO_Deserialize {
@@ -633,6 +642,15 @@ namespace SharedCode.Ressourcen {
         public static string Notification_NewVersion {
             get {
                 return ResourceManager.GetString("Notification_NewVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Char was successfully imported and is now available at the current saveplace ähnelt.
+        /// </summary>
+        public static string Notification_Success_Import {
+            get {
+                return ResourceManager.GetString("Notification_Success_Import", resourceCulture);
             }
         }
         

@@ -456,4 +456,10 @@ Bewerte Sie doch im Store!</value>
   <data name="CopiedFileName" xml:space="preserve">
     <value>Kopie</value>
   </data>
+  <data name="Notification_Error_Import" xml:space="preserve">
+    <value>Fehler beim Importieren</value>
+  </data>
+  <data name="Notification_Success_Import" xml:space="preserve">
+    <value>Char wurde erfolgreich importiert und steht nun am aktuellen Speicherplatz zur Verfügung</value>
+  </data>
 </root>

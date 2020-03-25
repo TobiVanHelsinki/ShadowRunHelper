@@ -450,4 +450,10 @@ Version 1.7.4:
   <data name="CopiedFileName" xml:space="preserve">
     <value>Copy</value>
   </data>
+  <data name="Notification_Error_Import" xml:space="preserve">
+    <value>Error while importing</value>
+  </data>
+  <data name="Notification_Success_Import" xml:space="preserve">
+    <value>Char was successfully imported and is now available at the current saveplace</value>
+  </data>
 </root>

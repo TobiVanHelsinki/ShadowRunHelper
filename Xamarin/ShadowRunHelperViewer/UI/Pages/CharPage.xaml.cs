@@ -71,7 +71,7 @@ namespace ShadowRunHelperViewer
             }
             catch (Exception)
             {
-                //TODO Handle
+                Log.Write(AppResources.Notification_Error_FileExportFail, true);
             }
         }
 
@@ -80,11 +80,11 @@ namespace ShadowRunHelperViewer
             try
             {
                 SharedIO.SaveAtCurrentPlace(myChar);
-                //TODO user notification. entweder hier oder gleich in die methode
+                Log.Write(AppResources.Notification_Success_Import, true);
             }
             catch (Exception)
             {
-                //TODO Handle
+                Log.Write(AppResources.Notification_Error_Import, true);
             }
         }
 
@@ -92,7 +92,7 @@ namespace ShadowRunHelperViewer
         /// return true if handled
         /// </summary>
         /// <returns></returns>
-        public new bool OnBackButtonPressed()
+        public bool OnBackButtonPressed()
         {
             if (Content is Grid g && g.Children.Count > 0 && g.Children[0] is GCharHolder currentchar)
             {
