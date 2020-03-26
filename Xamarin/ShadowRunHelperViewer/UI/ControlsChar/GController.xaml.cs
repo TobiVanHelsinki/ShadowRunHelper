@@ -173,9 +173,14 @@ namespace ShadowRunHelperViewer
         {
             if (e.AddedItems.FirstOrDefault() is Thing t)
             {
-                DetailsOpen = true;
-                DetailsPane.Activate(t, MyChar);
+                ActivateDetails(t);
             }
+        }
+
+        public void ActivateDetails(Thing t)
+        {
+            DetailsOpen = true;
+            DetailsPane.Activate(t, MyChar);
         }
 
         internal bool OnBackButtonPressed()

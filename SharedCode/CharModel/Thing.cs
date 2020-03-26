@@ -240,11 +240,11 @@ namespace ShadowRunHelper.CharModel
             LinkedThings = new LinkList(this);
         }
 
-        public override string ToString() =>
-            string.Format("{0:00}", Value.Value) + "|"
-                + ThingType + "|"
+        public override string ToString() => ""
                 + (!string.IsNullOrEmpty(typ) ? typ + ": " : "")
                 + bezeichner
+                + " (" + ThingType + ") "
+                + string.Format("{0:00}", Value.Value)
                 + (!string.IsNullOrEmpty(Zusatz) ? " " + Zusatz : "");
 
         /// <summary>
@@ -382,9 +382,6 @@ namespace ShadowRunHelper.CharModel
             var searchtext = text.ToLower();
             var mytext = ToString().ToLower();
             var mytextes = mytext.Split(' ', '-', '/', '_');
-            if (mytext.Contains("charis"))
-            {
-            }
 
             float retval = 0;
             if (ToString().ToLower().StartsWith(searchtext))

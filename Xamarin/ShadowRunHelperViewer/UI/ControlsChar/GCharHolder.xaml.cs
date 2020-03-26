@@ -103,10 +103,10 @@ namespace ShadowRunHelperViewer
             Features.Ui.SetCustomTitleBar(null);
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
             Features.Ui.TriggerCustomTitleBarChanges();
-            if (MainPage.Instance.CurrentViewMode == ViewModes.Tall || MainPage.Instance.CurrentViewMode == ViewModes.Wide)
-            {
-                ActivateControllerOfType(MyChar.Favorites.Count == 0 ? ThingDefs.Handlung : ThingDefs.Favorite);
-            }
+            //if (MainPage.Instance.CurrentViewMode == ViewModes.Tall || MainPage.Instance.CurrentViewMode == ViewModes.Wide)
+            //{
+            ActivateControllerOfType(MyChar.Favorites.Count == 0 ? ThingDefs.Handlung : ThingDefs.Favorite);
+            //}
         }
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
@@ -382,7 +382,7 @@ namespace ShadowRunHelperViewer
         /// <exception cref="InvalidOperationException">Ignore.</exception>
         private void AutoSuggestBox_TextChanged(object sender, AutoSuggestBoxTextChangedEventArgs e)
         {
-            if (sender is AutoSuggestBox asb)
+            if (sender is AutoSuggestBox asb && !string.IsNullOrEmpty(asb.Text))
             {
                 if (e.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
                 {
@@ -391,15 +391,18 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private async void AutoSuggestBox_QuerySubmitted(object sender, AutoSuggestBoxQuerySubmittedEventArgs e)
+        private void AutoSuggestBox_QuerySubmitted(object sender, AutoSuggestBoxQuerySubmittedEventArgs e)
         {
             if (sender is AutoSuggestBox asb)
             {
                 if ((e.ChosenSuggestion as Thing ?? asb.ItemsSource?.OfType<Thing>()?.FirstOrDefault()) is Thing t)
                 {
-                    await PopupNavigation.Instance.PushAsync(new DetailsPage(t, MyChar));
+                    if (ContentPanel.Content is GController gctrl)
+                    {
+                        gctrl.ActivateDetails(t);
+                    }
                     asb.Text = "";
-                    asb.ItemsSource = null;
+                    asb.ItemsSource = new string[0];
                     asb.IsSuggestionListOpen = false;
                 }
             }
