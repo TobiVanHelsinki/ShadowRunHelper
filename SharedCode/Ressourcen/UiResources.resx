@@ -566,4 +566,10 @@ This app can be used to open files and folders on the file system. The app store
   <data name="TapAgainToExit" xml:space="preserve">
     <value>Tap again to exit</value>
   </data>
+  <data name="OffText" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="OnText" xml:space="preserve">
+    <value>On</value>
+  </data>
 </root>

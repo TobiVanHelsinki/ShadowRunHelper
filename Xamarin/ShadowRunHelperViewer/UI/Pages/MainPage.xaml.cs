@@ -6,12 +6,12 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Plugin.Toast;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.UI.ControlsOther;
 using SharedCode.Ressourcen;
 using Syncfusion.SfNavigationDrawer.XForms;
 using TLIB;
@@ -200,7 +200,10 @@ namespace ShadowRunHelperViewer.UI.Pages
             Syncfusion.SfBusyIndicator.XForms.AnimationTypes.ZoomingTarget,
         };
 
-        private void ChangeAnimation(object sender, EventArgs e) => Busyindicator.AnimationType = (Syncfusion.SfBusyIndicator.XForms.AnimationTypes)1 + (int)Busyindicator.AnimationType;
+        private void ChangeAnimation(object sender, EventArgs e)
+        {
+            Busyindicator.AnimationType = (Syncfusion.SfBusyIndicator.XForms.AnimationTypes)1 + (int)Busyindicator.AnimationType;
+        }
 
         public async Task EnableBusy(bool withTip = true, bool blockUI = true, string tipText = null)
         {
@@ -259,6 +262,10 @@ namespace ShadowRunHelperViewer.UI.Pages
                     break;
                 case ProjectPages.Settings:
                     ContentPlace.PropertyChanged -= ContentPlace_PropertyChanged;
+                    CreateContentAndNavigateTo<SettingsView>((x) => SetSubMenuItems(x.AfterLoad(pageOptions)));
+                    break;
+                case ProjectPages.Info:
+                    ContentPlace.PropertyChanged -= ContentPlace_PropertyChanged;
                     CreateContentAndNavigateTo<MiscPage>((x) => SetSubMenuItems(x.AfterLoad(pageOptions)));
                     break;
                 default:
@@ -311,13 +318,25 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        private void Nav_CharPage(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Char);
+        private void Nav_CharPage(object sender, EventArgs e)
+        {
+            AppModel.Instance.RequestNavigation(ProjectPages.Char);
+        }
 
-        private void Nav_Admin(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Administration);
+        private void Nav_Admin(object sender, EventArgs e)
+        {
+            AppModel.Instance.RequestNavigation(ProjectPages.Administration);
+        }
 
-        private void Nav_Settings(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsOptions);
+        private void Nav_Settings(object sender, EventArgs e)
+        {
+            AppModel.Instance.RequestNavigation(ProjectPages.Settings);
+        }
 
-        private void Nav_Info(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Settings, ProjectPagesOptions.SettingsMain);
+        private void Nav_Info(object sender, EventArgs e)
+        {
+            AppModel.Instance.RequestNavigation(ProjectPages.Info);
+        }
         #endregion Navigation
 
         #region Menu

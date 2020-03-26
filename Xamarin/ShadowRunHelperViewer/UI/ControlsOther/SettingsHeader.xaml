@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ShadowRunHelperViewer.UI.ControlsOther.SettingsHeader">
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <BoxView HeightRequest="2" VerticalOptions="Center" Color="Gray"/>
+            <Label Text="{x:Binding Text}" Grid.Column="1"/>
+            <BoxView HeightRequest="2" Grid.Column="2" VerticalOptions="Center" Color="Gray"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

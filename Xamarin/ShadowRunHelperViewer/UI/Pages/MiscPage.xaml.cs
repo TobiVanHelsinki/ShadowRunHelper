@@ -50,7 +50,8 @@ namespace ShadowRunHelperViewer.UI.Pages
         }
         public ICommand ClickCommand => new Command<string>((url) =>
         {
-            Device.OpenUri(new System.Uri(url));
+            _ = Xamarin.Essentials.Launcher.TryOpenAsync(new Uri(url));
+            //Device.OpenUri(new System.Uri(url));
         });
 
         #region Design
@@ -63,9 +64,6 @@ namespace ShadowRunHelperViewer.UI.Pages
             Features.Ui.TriggerCustomTitleBarChanges();
             switch (pageOptions)
             {
-                case ProjectPagesOptions.SettingsOptions:
-                    NavigateTo("Settings");
-                    break;
                 case ProjectPagesOptions.SettingsHelp:
                     NavigateTo("Help");
                     break;
@@ -107,10 +105,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             if (Resources.ContainsKey(key) && Resources[key] is DataTemplate dt)
             {
                 Content.Content = dt.CreateContent() as View;
-
-                #region AfterLoads
                 AfterLoads();
-                #endregion AfterLoads
             }
         }
 
@@ -119,22 +114,6 @@ namespace ShadowRunHelperViewer.UI.Pages
             if (Content.Content.FindByName("PremiumBadgeImage") is Image image)
             {
                 image.IsVisible = Settings.IAP_PREMIUM_BADGE;
-            }
-        }
-
-        private void OpenLink(object sender, EventArgs e)
-        {
-        }
-
-        private void ViewCell_Tapped(object sender, EventArgs e)
-        {
-        }
-
-        private void CellTapped(object sender, EventArgs e)
-        {
-            if (sender is View v && v.FindByName("Extendet") is View x)
-            {
-                x.IsVisible = !x.IsVisible;
             }
         }
     }

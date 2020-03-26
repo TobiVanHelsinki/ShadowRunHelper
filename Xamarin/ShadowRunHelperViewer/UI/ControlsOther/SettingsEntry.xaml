@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             x:Class="ShadowRunHelperViewer.UI.ControlsOther.SettingsEntry">
+    <ContentView.Content>
+        <StackLayout x:Name="ToolTipPanel">
+            <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                <Label x:Name="TextLabel" Text="{x:Binding Text}" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OpenTip"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <buttons:SfSwitch x:Name="SettingsSwitch" IsOn="{x:Binding Setting, Mode=TwoWay}"/>
+                <Label Text="{x:Binding OnText}" x:Name="LabelOnText"/>
+                <Label Text="{x:Binding OffText}" x:Name="LabelOffText"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

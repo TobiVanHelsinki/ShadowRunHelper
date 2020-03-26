@@ -23,6 +23,7 @@ namespace ShadowRunHelper
         Char = 1,
         Administration = 2,
         Settings = 3,
+        Info = 4,
     }
 
     public enum ProjectPagesOptions

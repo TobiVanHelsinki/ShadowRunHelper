@@ -6,7 +6,6 @@
              mc:Ignorable="d"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
-             xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              xmlns:tlib="clr-namespace:TLIB;assembly=TLIB"
              x:Class="ShadowRunHelperViewer.UI.Pages.MiscPage">
@@ -16,9 +15,6 @@
                 <local:CharModelStyles/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        <DataTemplate x:Key="Settings">
-            <controlsother:SettingsView/>
-        </DataTemplate>
         <DataTemplate x:Key="Infos">
             <ScrollView>
                 <StackLayout>
@@ -68,7 +64,7 @@
                                         <Span Text=": "/>
                                         <Span Text="{x:Binding EMail}" TextColor="Blue" TextDecorations="Underline">
                                             <Span.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppKontaktEmail}"/>
+                                                <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppKontaktEmail}"/>
                                             </Span.GestureRecognizers>
                                         </Span>
                                     </FormattedString>
@@ -78,17 +74,17 @@
                             <Label Text="{resx:UiResources Optionen_App}" Style="{StaticResource HeadLine2}"/>
                             <Label Text="{resx:UiResources Optionen_AppLinkBtn}" Style="{StaticResource LinkText}">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppLink}"/>
+                                    <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppLink}"/>
                                 </Label.GestureRecognizers>
                             </Label>
                             <Label Text="{resx:UiResources Optionen_RateBtn}" Style="{StaticResource LinkText}">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppReviewLink}"/>
+                                    <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppReviewLink}"/>
                                 </Label.GestureRecognizers>
                             </Label>
                             <Label Text="{resx:UiResources Optionen_MoreAppsBtn}" Style="{StaticResource LinkText}">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OpenLink" Command="{Binding ClickCommand}" CommandParameter="{x:Binding MoreAppsLink}"/>
+                                    <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="{x:Binding MoreAppsLink}"/>
                                 </Label.GestureRecognizers>
                             </Label>
                         </StackLayout>
@@ -155,10 +151,10 @@
             <ListView ItemsSource="{x:Binding Logs}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="tlib:LogMessage">
-                        <ViewCell Tapped="ViewCell_Tapped">
+                        <ViewCell>
                             <Grid>
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="CellTapped"/>
+                                    <TapGestureRecognizer/>
                                 </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>

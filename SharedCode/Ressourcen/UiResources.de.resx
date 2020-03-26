@@ -560,4 +560,10 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="TapAgainToExit" xml:space="preserve">
     <value>Nochmal drücken zum beenden</value>
   </data>
+  <data name="OffText" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="OnText" xml:space="preserve">
+    <value>Ja</value>
+  </data>
 </root>
