@@ -109,37 +109,34 @@ namespace ShadowRunHelperViewer
                         Header.IsVisible = true;
                         DetailRow.Height = new GridLength(0);
                         DetailColumn.Width = new GridLength(1, GridUnitType.Star);
-                        Grid.SetColumn(DetailsBorder, 1);
-                        Grid.SetRow(DetailsBorder, 1);
-                        Grid.SetColumnSpan(DetailsBorder, 1);
-                        Grid.SetRowSpan(DetailsBorder, 1);
+                        Grid.SetColumn(DetailsPane, 1);
+                        Grid.SetRow(DetailsPane, 1);
+                        Grid.SetColumnSpan(DetailsPane, 1);
+                        Grid.SetRowSpan(DetailsPane, 1);
                         DetailsPane.IsVisible = true;
-                        DetailsBorder.IsVisible = true;
-                        DetailsBorder.BorderColor = Color.Accent;
+                        DetailsPane.IsVisible = true;
                         break;
                     case ViewModes.Tall:
                         Items.IsVisible = true;
                         Header.IsVisible = true;
                         DetailRow.Height = new GridLength(1.5, GridUnitType.Star);
                         DetailColumn.Width = new GridLength(0);
-                        Grid.SetColumn(DetailsBorder, 0);
-                        Grid.SetRow(DetailsBorder, 2);
-                        Grid.SetColumnSpan(DetailsBorder, 1);
-                        Grid.SetRowSpan(DetailsBorder, 1);
+                        Grid.SetColumn(DetailsPane, 0);
+                        Grid.SetRow(DetailsPane, 2);
+                        Grid.SetColumnSpan(DetailsPane, 1);
+                        Grid.SetRowSpan(DetailsPane, 1);
                         DetailsPane.IsVisible = true;
-                        DetailsBorder.IsVisible = true;
-                        DetailsBorder.BorderColor = Color.Accent;
+                        DetailsPane.IsVisible = true;
                         break;
                     case ViewModes.Mobile:
                         Items.IsVisible = false;
                         Header.IsVisible = false;
-                        Grid.SetColumn(DetailsBorder, 0);
-                        Grid.SetRow(DetailsBorder, 0);
-                        Grid.SetColumnSpan(DetailsBorder, 2);
-                        Grid.SetRowSpan(DetailsBorder, 3);
+                        Grid.SetColumn(DetailsPane, 0);
+                        Grid.SetRow(DetailsPane, 0);
+                        Grid.SetColumnSpan(DetailsPane, 2);
+                        Grid.SetRowSpan(DetailsPane, 3);
                         DetailsPane.IsVisible = true;
-                        DetailsBorder.IsVisible = true;
-                        DetailsBorder.BorderColor = Color.Transparent;
+                        DetailsPane.IsVisible = true;
                         break;
                     default:
                         break;
@@ -151,12 +148,11 @@ namespace ShadowRunHelperViewer
                 Header.IsVisible = true;
                 DetailRow.Height = new GridLength(0);
                 DetailColumn.Width = new GridLength(0);
-                Grid.SetColumnSpan(DetailsBorder, 1);
-                Grid.SetRowSpan(DetailsBorder, 2);
+                Grid.SetColumnSpan(DetailsPane, 1);
+                Grid.SetRowSpan(DetailsPane, 2);
                 DetailsPane.IsVisible = false;
                 Items.SelectedItem = null;
-                DetailsBorder.IsVisible = false;
-                DetailsBorder.BorderColor = Color.Transparent;
+                DetailsPane.IsVisible = false;
             }
         }
 
@@ -240,8 +236,6 @@ namespace ShadowRunHelperViewer
                         //(UiResources.CSV_Cat_Export_Selected,()=>{ }),
                         //(UiResources.CSV_Cat_ImportX,()=>{ }),
                     };
-
-        //((sender as FrameworkElement).DataContext as IController).SaveCurrentOrdering();
 
         private void Options(object sender, EventArgs e)
         {

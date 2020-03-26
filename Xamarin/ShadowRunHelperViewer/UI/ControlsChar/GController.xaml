@@ -353,9 +353,7 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                     </DataTemplate>
                 </listview:SfListView.RightSwipeTemplate>
             </listview:SfListView>
-            <Frame x:Name="DetailsBorder"  BorderColor="Accent" Padding="0" Margin="0">
-                <controlschar:DetailsView x:Name="DetailsPane" ClosingRequested="DetailsPane_ClosingRequested"/>
-            </Frame>
+            <controlschar:DetailsView x:Name="DetailsPane" ClosingRequested="DetailsPane_ClosingRequested"/>
         </Grid>
     </ContentView.Content>
 </ContentView>
