@@ -122,7 +122,7 @@
     <Compile Update="UI\Pages\MiscPage.xaml.cs">
       <DependentUpon>MiscPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\SharedCharTemplateResources.xaml.cs">
+    <Compile Update="UI\ControlsChar\SharedCharTemplateResources.xaml.cs">
       <DependentUpon>SharedCharTemplateResources.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
