@@ -1,9 +1,12 @@
-﻿namespace ShadowRunHelperViewer.UI.Resources
+﻿//Author: Tobi van Helsinki
+
+namespace ShadowRunHelperViewer.UI.Resources
 {
-    static class Common
+    internal static class Common
     {
-        const int WidthBorder = 650;
-        const int HeightBorder = 650;
+        const int WidthBorder = 450;
+        const int HeightBorder = 600;
+
         public static (double, double) MaximumDimensions(double width, double height)
         {
             return (width > WidthBorder ? WidthBorder : width, height > HeightBorder ? HeightBorder : height);
