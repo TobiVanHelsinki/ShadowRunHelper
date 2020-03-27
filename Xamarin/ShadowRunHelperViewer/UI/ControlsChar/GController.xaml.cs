@@ -173,6 +173,10 @@ namespace ShadowRunHelperViewer
             }
         }
 
+        /// <summary>
+        /// Central Method to show a details window in the current controler.
+        /// </summary>
+        /// <param name="t">The t.</param>
         public void ActivateDetails(Thing t)
         {
             if (t.ThingType != ThingDefs.Berechnet)
@@ -180,6 +184,15 @@ namespace ShadowRunHelperViewer
                 DetailsOpen = true;
                 DetailsPane.Activate(t, MyChar);
             }
+        }
+
+        /// <summary>
+        /// Central Method to hide a details window in the current controler.
+        /// </summary>
+        /// <param name="t">The t.</param>
+        public void DeactivateDetails()
+        {
+            DetailsOpen = false;
         }
 
         internal bool OnBackButtonPressed()
@@ -192,10 +205,7 @@ namespace ShadowRunHelperViewer
             return false;
         }
 
-        private void DetailsPane_ClosingRequested(object sender, EventArgs e)
-        {
-            DetailsOpen = false;
-        }
+        private void DetailsPane_ClosingRequested(object sender, EventArgs e) => DeactivateDetails();
 
         #endregion Details
 
