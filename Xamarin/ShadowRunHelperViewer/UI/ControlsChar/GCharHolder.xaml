@@ -58,20 +58,6 @@
                     </Grid>
                 </ScrollView>
             </DataTemplate>
-            <DataTemplate x:Key="CharNotes" x:Name="CharNotes" x:DataType="model:CharHolder">
-                <StackLayout>
-                    <Label Text="Space for some Notes"/>
-                    <Editor Text="{x:Binding Person.Notizen}"
-                            AutoSize="TextChanges" VerticalOptions="FillAndExpand"
-                            IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
-                </StackLayout>
-            </DataTemplate>
-            <DataTemplate x:Key="CharFavs" x:Name="CharFavs" x:DataType="model:CharHolder">
-                <StackLayout>
-                    <Label Text="Add Favorites with the switch at an thing"/>
-                    <ListView ItemsSource="{x:Binding Favorites}"/>
-                </StackLayout>
-            </DataTemplate>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
