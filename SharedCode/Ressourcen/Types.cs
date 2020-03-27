@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using ShadowRunHelper.CharModel;
 using SharedCode.Ressourcen;
@@ -272,10 +274,9 @@ namespace ShadowRunHelper
         }
 
         /// <summary>
-        /// climbs the ThingDefs hierarchi up until the method found something for that type
-        /// How it works:
-        /// uses method at the name of the type of key.
-        /// if result is null, gets the ancestor of type of key and repeats this until ancestor is thing or result is not null
+        /// climbs the ThingDefs hierarchi up until the method found something for that type How it
+        /// works: uses method at the name of the type of key. if result is null, gets the ancestor
+        /// of type of key and repeats this until ancestor is thing or result is not null
         /// </summary>
         /// <param name="key">the key from wich in hierarchi you whish to start searching</param>
         /// <param name="method">the method takes the TypeName as string</param>

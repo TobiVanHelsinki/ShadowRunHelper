@@ -104,6 +104,12 @@
     <Compile Update="UI\ControlsChar\CharSettingsView.xaml.cs">
       <DependentUpon>CharSettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="UI\ControlsChar\LinkListChooser.xaml.cs">
+      <DependentUpon>LinkListChooser.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\ControlsChar\LinkListChooserPopup.xaml.cs">
+      <DependentUpon>LinkListChooserPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UI\ControlsChar\ThingCopyChooser.xaml.cs">
       <DependentUpon>ThingCopyChooser.xaml</DependentUpon>
     </Compile>

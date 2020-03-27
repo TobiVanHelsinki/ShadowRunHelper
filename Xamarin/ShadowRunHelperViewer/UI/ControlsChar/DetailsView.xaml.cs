@@ -12,6 +12,7 @@ using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Strings;
 using ShadowRunHelperViewer.UI.Controls;
 using SharedCode.Ressourcen;
+using TLIB;
 using Xam.Plugin;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -25,10 +26,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
 
         private CharHolder MyChar;
 
-        public DetailsView()
-        {
-            InitializeComponent();
-        }
+        public DetailsView() => InitializeComponent();
 
         public void Activate(Thing thing, CharHolder mychar)
         {
@@ -54,15 +52,24 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             }
             catch (Exception ex)
             {
-                TLIB.Log.Write("Unexpected Error", ex);
-                if (System.Diagnostics.Debugger.IsAttached)
-                {
-                    System.Diagnostics.Debugger.Break();
-                }
-
+                Log.Write("Unexpected Error", ex);
                 ClosingRequested?.Invoke(this, new EventArgs());
             }
         }
+
+        public event EventHandler ClosingRequested;
+
+        /// <summary>
+        /// Close this
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Close_Clicked(object sender, EventArgs e)
+        {
+            ClosingRequested?.Invoke(this, new EventArgs());
+        }
+
+        #region Create UI
 
         /// <summary>
         /// Creates the view.
@@ -182,18 +189,28 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
                 Text = v ?? "//" + item.Name + "\\"
             };
         }
+        #endregion Create UI
 
-        private async void OpenConnectedChooser(object sender, EventArgs e)
+        #region Item Options
+
+        private void OpenConnectedChooser(object sender, EventArgs e)
         {
             if (sender is BindableObject b && b.BindingContext is ConnectProperty prop)
             {
-                var page = new LinkListChooser(MyChar, prop);
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(page);
+                    var page = new LinkListChooser(MyChar, prop);
+                    page.ClosingRequested += (s, e) =>
+                    {
+                        LinkListFrame.Content = null;
+                        LinkListFrame.IsVisible = false;
+                    };
+                    LinkListFrame.Content = page;
+                    LinkListFrame.IsVisible = true;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Log.Write("Could not Create " + nameof(LinkListChooser), ex, logType: LogType.Error);
                 }
             }
         }
@@ -208,17 +225,6 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             MyChar.Remove(MyThing);
             ClosingRequested?.Invoke(this, new EventArgs());
         }
-
-        /// <summary>
-        /// Close this
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Close_Clicked(object sender, EventArgs e)
-        {
-            ClosingRequested?.Invoke(this, new EventArgs());
-        }
-        public event EventHandler ClosingRequested;
 
         private void More_Clicked(object sender, EventArgs e)
         {
@@ -310,5 +316,6 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             {
             }
         }
+        #endregion Item Options
     }
 }

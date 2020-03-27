@@ -63,7 +63,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Frame Style="{DynamicResource ItemFrame}">
+        <Frame Style="{DynamicResource ItemFrame}" x:Name="MainFrame">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -123,6 +123,7 @@
                         </StackLayout>
                     </StackLayout>
                 </ScrollView>
+                <Frame x:Name="LinkListFrame" BackgroundColor="Beige" IsVisible="False" Grid.RowSpan="2" Padding="0" Margin="0"/>
             </Grid>
         </Frame>
     </ContentView.Content>

@@ -1,21 +1,62 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
 
-using Rg.Plugins.Popup.Pages;
-using Rg.Plugins.Popup.Services;
-using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.UI.Resources;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using ShadowRunHelper;
+using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
+using Syncfusion.DataSource.Extensions;
+using Syncfusion.ListView.XForms;
 using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer.UI.Controls
 {
+    public class O_GetCalcPropertiesConvertert : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is Thing t)
+            {
+                return t.GetPropertiesConnects().Select(x => x.GetValue(t));
+            }
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+        }
+    }
+
+    public class ThingDefGroupComparer : IComparer<GroupResult>
+    {
+        //TODO custom Sort for this case
+
+        public int Compare(GroupResult x, GroupResult y)
+        {
+            if ((ThingDefs)x.Key > (ThingDefs)y.Key)
+            {
+                //GroupResult y is stacked into top of the group i.e., Ascending.
+                //GroupResult x is stacked at the bottom of the group i.e., Descending.
+                return 1;
+            }
+            else if ((ThingDefs)x.Key < (ThingDefs)y.Key)
+            {
+                //GroupResult x is stacked into top of the group i.e., Ascending.
+                //GroupResult y is stacked at the bottom of the group i.e., Descending.
+                return -1;
+            }
+
+            return 0;
+        }
+    }
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LinkListChooser : PopupPage
+    public partial class LinkListChooser : ContentView
     {
         /// <summary>
         /// Public for ui binding
@@ -25,15 +66,13 @@ namespace ShadowRunHelperViewer.UI.Controls
         /// <summary>
         /// Gets my property.
         /// </summary>
-        /// <value>
-        /// My property.
-        /// </value>
-        readonly ConnectProperty MyProperty;
+        /// <value>My property.</value>
+        private readonly ConnectProperty MyProperty;
 
         /// <summary>
         /// Current Selected Items
         /// </summary>
-        readonly List<ConnectProperty> Selected = new List<ConnectProperty>();
+        private readonly List<ConnectProperty> Selected = new List<ConnectProperty>();
 
         public LinkListChooser(CharHolder myChar, ConnectProperty property)
         {
@@ -44,9 +83,10 @@ namespace ShadowRunHelperViewer.UI.Controls
             BindingContext = this;
         }
 
+        public event EventHandler ClosingRequested;
         private void Cancel_Clicked(object sender, System.EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync(true);
+            ClosingRequested?.Invoke(this, new EventArgs());
         }
 
         private void Finish_Clicked(object sender, System.EventArgs e)
@@ -122,6 +162,31 @@ namespace ShadowRunHelperViewer.UI.Controls
             }
         }
 
-        private void PopupPage_SizeChanged(object sender, EventArgs e) => (MainFrame.WidthRequest, MainFrame.HeightRequest) = Common.MaximumDimensions(Width, Height);
+        private void SfItems_GroupExpanding(object sender, GroupExpandCollapseChangedEventArgs e)
+        {
+            if (e.Groups.Count > 0)
+            {
+                foreach (var otherGroup in SfItems.DataSource.Groups)
+                {
+                    if (e.Groups[0].Key != otherGroup.Key)
+                    {
+                        SfItems.CollapseGroup(otherGroup);
+                    }
+                }
+            }
+        }
+
+        private void SfItems_Loaded(object sender, ListViewLoadedEventArgs e)
+        {
+            (sender as SfListView).CollapseAll();
+        }
+
+        private void CheckBoxLoaded(object sender, EventArgs e)
+        {
+            if (sender is CheckBox v && v.BindingContext is ConnectProperty cp)
+            {
+                v.IsChecked = Selected.Contains(cp);
+            }
+        }
     }
 }

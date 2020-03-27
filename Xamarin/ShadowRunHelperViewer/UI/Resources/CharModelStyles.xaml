@@ -14,7 +14,14 @@
     <resources:IO_BoolInvert x:Key="IO_BoolInvert"/>
     <resources:O_ThingDef2String x:Key="O_ThingDef2String"/>
     <resources:O_ItemState2String x:Key="O_ItemState2String"/>
+    <resources:IO_DebugConverter x:Key="IO_DebugConverter"/>
 
+    <Style x:Key="STDText" TargetType="Label">
+        <Setter Property="VerticalOptions" Value="Start"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="LineBreakMode" Value="CharacterWrap"/>
+        <Setter Property="MaxLines" Value="2"/>
+    </Style>
     <Style x:Key="SF_STDButton" TargetType="sfbtn:SfButton">
         <Setter Property="CornerRadius" Value="3"/>
         <Setter Property="Margin" Value="0"/>
