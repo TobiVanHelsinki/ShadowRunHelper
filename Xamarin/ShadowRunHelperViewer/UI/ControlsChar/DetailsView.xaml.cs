@@ -76,6 +76,9 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
         /// </summary>
         private void CreateView()
         {
+            LinkListFrame.Content = null;
+            LinkListFrame.IsVisible = false;
+
             NumberContent.Children.Clear();
             CalcContent.Children.Clear();
             OtherContent.Children.Clear();

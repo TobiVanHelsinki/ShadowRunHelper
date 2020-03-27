@@ -84,8 +84,11 @@ namespace ShadowRunHelperViewer.UI.Controls
         }
 
         public event EventHandler ClosingRequested;
+
         private void Cancel_Clicked(object sender, System.EventArgs e)
         {
+            //TODO in Backbutton kette aufnehmen
+            //Closing fehler untersuchen
             ClosingRequested?.Invoke(this, new EventArgs());
         }
 
