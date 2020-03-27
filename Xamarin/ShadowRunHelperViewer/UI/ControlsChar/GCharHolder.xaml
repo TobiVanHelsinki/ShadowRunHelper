@@ -99,9 +99,9 @@
                 <ColumnDefinition Width="0" x:Name="WideCol2"/>
             </Grid.ColumnDefinitions>
             <Frame Grid.ColumnSpan="3" Grid.RowSpan="3" BackgroundColor="Accent" x:Name="WindowsDropFrame"/>
-            <StackLayout x:Name="CharTitleBar" BackgroundColor="Transparent" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout x:Name="CharTitleBar" BackgroundColor="Transparent" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="0">
                 <Label Text="{x:Binding MyChar.Person.Alias}" Style="{StaticResource OneLineText}" FontSize="Medium"/>
-                <Label Text="," FontSize="Medium"/>
+                <Label Text=", " Style="{StaticResource OneLineText}" FontSize="Medium"/>
                 <Label Text="{x:Binding MyChar.Person.Char_Typ}" Style="{StaticResource OneLineText}" FontSize="Medium"/>
                 <Label Text="*" IsVisible="{x:Binding MyChar.HasChanges}" FontSize="Medium"/>
             </StackLayout>
