@@ -99,11 +99,17 @@
                 <ColumnDefinition Width="0" x:Name="WideCol2"/>
             </Grid.ColumnDefinitions>
             <Frame Grid.ColumnSpan="3" Grid.RowSpan="3" BackgroundColor="Accent" x:Name="WindowsDropFrame"/>
-            <StackLayout x:Name="CharTitleBar" BackgroundColor="Transparent" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="0">
-                <Label Text="{x:Binding MyChar.Person.Alias}" Style="{StaticResource OneLineText}" FontSize="Medium"/>
-                <Label Text=", " Style="{StaticResource OneLineText}" FontSize="Medium"/>
-                <Label Text="{x:Binding MyChar.Person.Char_Typ}" Style="{StaticResource OneLineText}" FontSize="Medium"/>
-                <Label Text="*" IsVisible="{x:Binding MyChar.HasChanges}" FontSize="Medium"/>
+            <StackLayout x:Name="CharTitleBar" InputTransparent="True" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="0">
+                <Label Style="{StaticResource OneLineText}" FontSize="Medium">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Binding MyChar.Person.Alias}"/>
+                            <Span Text=", "/>
+                            <Span Text="{x:Binding MyChar.Person.Char_Typ}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="*" IsVisible="{x:Binding MyChar.HasChanges}" Style="{StaticResource OneLineText}" FontSize="Medium"/>
             </StackLayout>
             <Grid x:Name="CharHeadControls" Padding="5" ColumnSpacing="3" Grid.Row="1" RowSpacing="0" VerticalOptions="Center">
                 <Grid.ColumnDefinitions>
@@ -115,7 +121,7 @@
                 <forms:AutoSuggestBox Grid.Column="1" PlaceholderText="{resx:UiResources GlobalFilterBox}" TextChanged="AutoSuggestBox_TextChanged" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
                 <Button x:Name="MenuToggleButton" Text="&#xf060;" Grid.Column="2" Style="{StaticResource IconButton}" Clicked="ToggleMenu" FontSize="22" Padding="5" HeightRequest="30" WidthRequest="30"/>
             </Grid>
-            <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" Margin="5" VerticalOptions="Center">
+            <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" Margin="15,5,15,5" VerticalOptions="Center">
                 <StackLayout Style="{StaticResource OuterPanel}">
                     <Label Text="{resx:ModelResources Person_Kontostand}" Style="{StaticResource OneLineText}"/>
                     <Label Text="{x:Binding MyChar.Person.Kontostand, Converter={StaticResource IO_NuYen}}" Style="{StaticResource OneLineText}"/>

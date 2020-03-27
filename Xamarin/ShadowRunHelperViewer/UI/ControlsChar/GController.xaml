@@ -16,7 +16,7 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
             <ResourceDictionary.MergedDictionaries>
                 <chartemplates:SharedCharTemplateResources/>
             </ResourceDictionary.MergedDictionaries>
-            <local:ThingDataTempalteSelector x:Key="ThingDataTempalteSelector"/>
+            <local:ThingDataTemplateSelector x:Key="ThingDataTemplateSelector"/>
             <ControlTemplate x:Key="Handlung_H">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -27,7 +27,7 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="0"/>
-                    <StackLayout Orientation="Horizontal" Grid.Column="1">
+                    <StackLayout Orientation="Horizontal" Grid.Column="1" Spacing="0">
                         <ContentView ControlTemplate="{StaticResource Thing_Value_H}"/>
                         <Label Text="[" Style="{StaticResource HeadLineText}"/>
                         <Label Text="{resx:ModelResources Handlung_Limit}" Style="{StaticResource HeadLineText}"/>
@@ -83,13 +83,13 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="0" VerticalOptions="Center"/>
-                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="1" VerticalOptions="Center"/>
-                    <Label Text="{resx:ModelResources Eigenschaft_Auswirkungen}" Style="{StaticResource HeadLineText}" Grid.Column="2"/>
+                    <Label Text="{resx:ModelResources Eigenschaft_Auswirkungen}" Grid.Column="1" Style="{StaticResource HeadLineText}" HorizontalOptions="End" Margin="5,0,5,0"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End"/>
                 </Grid>
             </ControlTemplate>
             <ControlTemplate x:Key="Item_H">
@@ -109,6 +109,7 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                     <Label Text="{resx:ModelResources Item_Anzahl}" Style="{StaticResource HeadLineText}" Grid.Column="3"/>
                 </Grid>
             </ControlTemplate>
+
             <ControlTemplate x:Key="Vehikel_H">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -332,7 +333,7 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                        ItemsSource="{Binding Data, Mode=OneWay}"
                                  SelectionMode="SingleDeselect"
                                  SelectionChanged="Items_SelectionChanged"
-                                 ItemTemplate="{StaticResource ThingDataTempalteSelector}"
+                                 ItemTemplate="{StaticResource ThingDataTemplateSelector}"
                                  ItemSpacing="2"
                                  AutoFitMode="Height"
                                  AllowSwiping="True"

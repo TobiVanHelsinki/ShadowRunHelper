@@ -25,7 +25,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
-            <StackLayout Orientation="Horizontal" Grid.Column="1">
+            <StackLayout Orientation="Horizontal" Grid.Column="1" Spacing="0">
                 <ContentView ControlTemplate="{StaticResource Thing_Value}"/>
                 <Label Text="[" Style="{StaticResource STDText}"/>
                 <Label Text="{x:Binding Limit.TrueValue}" Style="{StaticResource STDText}"/>

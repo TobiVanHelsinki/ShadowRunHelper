@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace ShadowRunHelperViewer
 {
-    internal class ThingDataTempalteSelector : DataTemplateSelector
+    internal class ThingDataTemplateSelector : DataTemplateSelector
     {
         private readonly DataTemplate SeparatorTemplate;
         private readonly DataTemplate ThingTemplate;
@@ -29,7 +29,7 @@ namespace ShadowRunHelperViewer
         private readonly DataTemplate InitiationTemplate;
         private readonly DataTemplate WandlungTemplate;
 
-        public ThingDataTempalteSelector()
+        public ThingDataTemplateSelector()
         {
             SeparatorTemplate = new DataTemplate(typeof(SeparatorTemplate));
             ThingTemplate = new DataTemplate(typeof(ThingTemplate));
@@ -70,7 +70,10 @@ namespace ShadowRunHelperViewer
                         ThingDefs.Zaubersprueche => SuperNaturalSkillsTemplate,
                         ThingDefs.KomplexeForm => SuperNaturalSkillsTemplate,
                         ThingDefs.Eigenschaft => EigenschaftTemplate,
+                        ThingDefs.Vorteil => EigenschaftTemplate,
+                        ThingDefs.Nachteil => EigenschaftTemplate,
                         ThingDefs.Item => ItemTemplate,
+                        ThingDefs.Implantat => ItemTemplate,
                         ThingDefs.Vehikel => VehikelTemplate,
                         ThingDefs.Kommlink => KommlinkTemplate,
                         ThingDefs.CyberDeck => CyberDeckTemplate,
