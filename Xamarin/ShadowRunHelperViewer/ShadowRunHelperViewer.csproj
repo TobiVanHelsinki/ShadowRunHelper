@@ -41,61 +41,61 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="UI\CharTemplates\WandlungTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\WandlungTemplate.xaml.cs">
       <DependentUpon>WandlungTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\NahkampfwaffeTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\NahkampfwaffeTemplate.xaml.cs">
       <DependentUpon>NahkampfwaffeTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\HandlungTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\HandlungTemplate.xaml.cs">
       <DependentUpon>HandlungTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\EigenschaftTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\EigenschaftTemplate.xaml.cs">
       <DependentUpon>EigenschaftTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\KommlinkTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\KommlinkTemplate.xaml.cs">
       <DependentUpon>KommlinkTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\CyberDeckTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\CyberDeckTemplate.xaml.cs">
       <DependentUpon>CyberDeckTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\MunitionTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\MunitionTemplate.xaml.cs">
       <DependentUpon>MunitionTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\HelperTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\HelperTemplate.xaml.cs">
       <DependentUpon>HelperTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\ConnectionTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\ConnectionTemplate.xaml.cs">
       <DependentUpon>ConnectionTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\InitiationTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\InitiationTemplate.xaml.cs">
       <DependentUpon>InitiationTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\ProgrammTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\ProgrammTemplate.xaml.cs">
       <DependentUpon>ProgrammTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\FernkampfwaffeTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\FernkampfwaffeTemplate.xaml.cs">
       <DependentUpon>FernkampfwaffeTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\PanzerungTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\PanzerungTemplate.xaml.cs">
       <DependentUpon>PanzerungTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\VehikelTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\VehikelTemplate.xaml.cs">
       <DependentUpon>VehikelTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\ItemTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\ItemTemplate.xaml.cs">
       <DependentUpon>ItemTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\SuperNaturalSkillsTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\SuperNaturalSkillsTemplate.xaml.cs">
       <DependentUpon>SuperNaturalSkillsTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\NoteTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\NoteTemplate.xaml.cs">
       <DependentUpon>NoteTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\ThingTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\ThingTemplate.xaml.cs">
       <DependentUpon>ThingTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\CharTemplates\SeparatorTemplate.xaml.cs">
+    <Compile Update="UI\ThingTemplates\SeparatorTemplate.xaml.cs">
       <DependentUpon>SeparatorTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Update="UI\ControlsChar\CharSettingsPopupPage.xaml.cs">
@@ -104,13 +104,13 @@
     <Compile Update="UI\ControlsChar\CharSettingsView.xaml.cs">
       <DependentUpon>CharSettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\ControlsChar\LinkListChooser.xaml.cs">
+    <Compile Update="UI\ThingDetails\LinkListChooser.xaml.cs">
       <DependentUpon>LinkListChooser.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\ControlsChar\LinkListChooserPopup.xaml.cs">
+    <Compile Update="UI\ThingDetails\LinkListChooserPopup.xaml.cs">
       <DependentUpon>LinkListChooserPopup.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\ControlsChar\ThingCopyChooser.xaml.cs">
+    <Compile Update="UI\ThingDetails\ThingCopyChooser.xaml.cs">
       <DependentUpon>ThingCopyChooser.xaml</DependentUpon>
     </Compile>
     <Compile Update="UI\Controls\ControlCenter.xaml.cs">
@@ -140,7 +140,7 @@
     <EmbeddedResource Update="UI\ControlsChar\CharSettingsPopupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="UI\ControlsChar\DetailsView.xaml">
+    <EmbeddedResource Update="UI\ThingDetails\DetailsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="UI\ControlsOther\HamburgerButton.xaml">

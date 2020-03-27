@@ -15,44 +15,81 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
             <ResourceDictionary.MergedDictionaries>
                 <local:CharModelStyles/>
             </ResourceDictionary.MergedDictionaries>
-            <controls:O_GetCalcPropertiesConvertert x:Key="O_GetCalcPropertiesConvertert"/>
-            <DataTemplate x:Key="LinkListThingTemplate" x:DataType="charmodel:Thing">
-                <ViewCell>
-                    <Grid RowSpacing="1">
+            <DataTemplate x:Key="LinkListThingTemplateSimple" x:DataType="charmodel:Thing">
+                <!--<ViewCell>-->
+                <Grid RowSpacing="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox x:Name="Selected"
+                              BindingContextChanged="CheckBoxLoaded" CheckedChanged="Selected_CheckedChanged"
+                              Color="Accent" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="5,0,0,0"/>
+                    <Grid Grid.Column="1" Margin="5,0,0,0" VerticalOptions="Center" ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Style="{StaticResource STDText}" Grid.Column="0" Text="{x:Binding Typ}" x:Name="Typ"/>
+                        <Label Style="{StaticResource STDText}" Grid.Column="1" Text=":">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Typ}, Path=Text.Length}" Value="0">
+                                    <Setter Property="IsVisible" Value="False"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{x:Binding Bezeichner}"/>
+                        <Label Style="{StaticResource STDText}" Grid.Column="3" Text="{x:Binding Zusatz}"/>
+                    </Grid>
+                    <BoxView Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="SlateGray"/>
+                </Grid>
+                <!--</ViewCell>-->
+            </DataTemplate>
+            <DataTemplate x:Key="LinkListThingTemplateExtendet" x:DataType="charmodel:Thing">
+                <!--<ViewCell>-->
+                <Grid RowSpacing="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Margin="5,0,0,0" VerticalOptions="Center" ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Grid Margin="5,0,0,0" VerticalOptions="Center" ColumnSpacing="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Label Style="{StaticResource STDText}" Grid.Column="0" Text="{x:Binding Typ}" x:Name="Typ"/>
-                            <Label Style="{StaticResource STDText}" Grid.Column="1" Text=":">
-                                <Label.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Typ}, Path=Text.Length}" Value="0">
-                                        <Setter Property="IsVisible" Value="False"/>
-                                    </DataTrigger>
-                                </Label.Triggers>
-                            </Label>
-                            <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{x:Binding Bezeichner}"/>
-                            <Label Style="{StaticResource STDText}" Grid.Column="3" Text="{x:Binding Zusatz}"/>
-                        </Grid>
-                        <xforms:SfListView Grid.Row="1" VerticalOptions="Start" Orientation="Horizontal"
+                        <Label Style="{StaticResource STDText}" Grid.Column="0" Text="{x:Binding Typ}" x:Name="Typ"/>
+                        <Label Style="{StaticResource STDText}" Grid.Column="1" Text=":">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Typ}, Path=Text.Length}" Value="0">
+                                    <Setter Property="IsVisible" Value="False"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{x:Binding Bezeichner}"/>
+                        <Label Style="{StaticResource STDText}" Grid.Column="3" Text="{x:Binding Zusatz}"/>
+                    </Grid>
+                    <xforms:SfListView Grid.Row="1" VerticalOptions="Start" Orientation="Horizontal"
                                            AutoFitMode="Height"
                                            IsScrollBarVisible="False"
                                            IsScrollingEnabled="False"
                                            ItemTemplate="{StaticResource LinkListPropertyTemplate}"
                                            ItemsSource="{Binding ., Converter={StaticResource O_GetCalcPropertiesConvertert}}"/>
-                        <BoxView Grid.Row="2" HeightRequest="1" BackgroundColor="SlateGray"/>
-                    </Grid>
-                </ViewCell>
+                    <BoxView Grid.Row="2" HeightRequest="1" BackgroundColor="SlateGray"/>
+                </Grid>
+                <!--</ViewCell>-->
             </DataTemplate>
             <DataTemplate x:Key="LinkListPropertyTemplate" x:DataType="charmodel:ConnectProperty">
                 <Grid>
@@ -79,10 +116,9 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                         <Label Style="{StaticResource STDText}" Grid.Column="3" Text=")"/>
                     </Grid>
                     <BoxView Grid.Column="1" WidthRequest="1" Color="SlateGray"/>
-                    <!--<buttons:SfCheckBox-->
-                    <CheckBox Grid.Column="0" Grid.ColumnSpan="1" x:Name="Selected" Color="Accent" BindingContextChanged="CheckBoxLoaded"
-                                                              HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="5,0,0,0"
-                                                              CheckedChanged="Selected_CheckedChanged"/>
+                    <CheckBox Grid.Column="0" Grid.ColumnSpan="1" x:Name="Selected"
+                              BindingContextChanged="CheckBoxLoaded" CheckedChanged="Selected_CheckedChanged"
+                              Color="Accent" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="5,0,0,0"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="LinkListHeaderTemplate">
@@ -99,6 +135,7 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                     </StackLayout>
                 </Grid>
             </DataTemplate>
+            <controls:O_GetCalcPropertiesConvertert x:Key="O_GetCalcPropertiesConvertert"/>
         </ResourceDictionary>
     </ContentView.Resources>
     <Grid>
@@ -109,8 +146,15 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
         <xforms:SfListView x:Name="SfItems" ItemsSource="{x:Binding MyChar.Things}" SelectionMode="None" Loaded="SfItems_Loaded"
                             ItemSize="60" RowSpacing="2"
                             IsScrollBarVisible="True"
-                            ItemTemplate="{StaticResource LinkListThingTemplate}" GroupHeaderTemplate="{StaticResource LinkListHeaderTemplate}"
+                            GroupHeaderTemplate="{StaticResource LinkListHeaderTemplate}"
                             AllowGroupExpandCollapse="True" IsStickyGroupHeader="True" GroupExpanded="SfItems_GroupExpanding">
+            <xforms:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ContentPresenter BindingContextChanged="ItemLoaded"/>
+                    </ViewCell>
+                </DataTemplate>
+            </xforms:SfListView.ItemTemplate>
             <xforms:SfListView.DataSource>
                 <data:DataSource>
                     <data:DataSource.GroupDescriptors>

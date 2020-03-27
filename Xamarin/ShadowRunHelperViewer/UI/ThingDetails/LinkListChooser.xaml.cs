@@ -92,7 +92,7 @@ namespace ShadowRunHelperViewer.UI.Controls
             ClosingRequested?.Invoke(this, new EventArgs());
         }
 
-        private void Finish_Clicked(object sender, System.EventArgs e)
+        private void Finish_Clicked(object sender, EventArgs e)
         {
             MyProperty.Connected.Clear();
             MyProperty.Connected.AddRange(Selected);
@@ -106,11 +106,17 @@ namespace ShadowRunHelperViewer.UI.Controls
         /// <param name="e"></param>
         private void Selected_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            if (sender is CheckBox box && box.BindingContext is ConnectProperty entry && box.Parent is Layout panel)
+            if (sender is CheckBox box && box.Parent is Layout panel)
             {
+                var entry = box.BindingContext switch
+                {
+                    ConnectProperty p => p,
+                    Thing t => t.Value,
+                    _ => throw new ArgumentException(),
+                };
                 if (box.IsChecked)
                 {
-                    panel.BackgroundColor = Color.Accent;
+                    //panel.BackgroundColor = Color.Accent;
                     if (!Selected.Contains(entry))
                     {
                         Selected.Add(entry);
@@ -118,49 +124,11 @@ namespace ShadowRunHelperViewer.UI.Controls
                 }
                 else
                 {
-                    panel.BackgroundColor = Color.Transparent;
+                    //panel.BackgroundColor = Color.Transparent;
                     if (Selected.Contains(entry))
                     {
                         Selected.Remove(entry);
                     }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Populates the Item with matching Properties
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ViewCell_Appearing(object sender, EventArgs e)
-        {
-            if (sender is Element v && v.FindByName("CalcItemsList") is StackLayout lv && v.BindingContext is Thing t)
-            {
-                var template = lv.Resources["Template"] as DataTemplate;
-                var list = from item in t.GetPropertiesConnects()
-                           let a = template.CreateContent()
-                           let view = template.CreateContent() as View
-                           select (item, view);
-                foreach (var (prop, view) in list)
-                {
-                    var charCalcProperty = prop.GetValue(t) as ConnectProperty;
-                    view.BindingContext = charCalcProperty;
-                    if (Selected.Contains(charCalcProperty))
-                    {
-                        if (view.FindByName("Selected") is CheckBox b)
-                        {
-                            b.IsChecked = true;
-                        }
-                    }
-                    lv.Children.Add(view);
-                }
-                if (!list.Any() && v is ViewCell vc)
-                {
-                    vc.View.IsVisible = false;
-                }
-                if (list.Count() == 1)
-                {
-                    //TODO maybe Introduce special UI for just this one element;
                 }
             }
         }
@@ -189,6 +157,23 @@ namespace ShadowRunHelperViewer.UI.Controls
             if (sender is CheckBox v && v.BindingContext is ConnectProperty cp)
             {
                 v.IsChecked = Selected.Contains(cp);
+            }
+        }
+
+        private void ItemLoaded(object sender, EventArgs e)
+        {
+            if (sender is ContentPresenter cp && cp.BindingContext is Thing t)
+            {
+                if (t.GetPropertiesConnects().Count() > 1)
+                {
+                    cp.Content = (Resources["LinkListThingTemplateExtendet"] as DataTemplate).CreateContent() as View;
+                    cp.Content.BindingContext = t;
+                }
+                else
+                {
+                    cp.Content = (Resources["LinkListThingTemplateSimple"] as DataTemplate).CreateContent() as View;
+                    cp.Content.BindingContext = t;
+                }
             }
         }
     }
