@@ -175,8 +175,11 @@ namespace ShadowRunHelperViewer
 
         public void ActivateDetails(Thing t)
         {
-            DetailsOpen = true;
-            DetailsPane.Activate(t, MyChar);
+            if (t.ThingType != ThingDefs.Berechnet)
+            {
+                DetailsOpen = true;
+                DetailsPane.Activate(t, MyChar);
+            }
         }
 
         internal bool OnBackButtonPressed()
