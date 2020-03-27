@@ -75,7 +75,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Grid x:DataType="local:GCharHolder">
+        <Grid x:DataType="local:GCharHolder" ColumnSpacing="10" RowSpacing="0">
             <Grid.Resources>
                 <Style x:Key="OuterPanel" TargetType="StackLayout">
                     <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
@@ -93,13 +93,19 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackLayout x:Name="CharTitleBar" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                <Label Text="{x:Binding MyChar.Person.Alias}" Style="{StaticResource OneLineText}"/>
-                <Label Text="{x:Binding MyChar.Person.Char_Typ}" Style="{StaticResource OneLineText}"/>
-                <Label Text="*" IsVisible="{x:Binding MyChar.HasChanges}"/>
-                <!--todo geht nicht-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0" x:Name="WideCol1"/>
+                <ColumnDefinition Width="0" x:Name="WideCol2"/>
+            </Grid.ColumnDefinitions>
+            <Frame Grid.ColumnSpan="3" Grid.RowSpan="3" BackgroundColor="Accent" x:Name="WindowsDropFrame"/>
+            <StackLayout x:Name="CharTitleBar" BackgroundColor="Transparent" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="{x:Binding MyChar.Person.Alias}" Style="{StaticResource OneLineText}" FontSize="Medium"/>
+                <Label Text="," FontSize="Medium"/>
+                <Label Text="{x:Binding MyChar.Person.Char_Typ}" Style="{StaticResource OneLineText}" FontSize="Medium"/>
+                <Label Text="*" IsVisible="{x:Binding MyChar.HasChanges}" FontSize="Medium"/>
             </StackLayout>
-            <Grid x:Name="CharHeadControls" Padding="5" ColumnSpacing="3" Grid.Row="1" RowSpacing="0">
+            <Grid x:Name="CharHeadControls" Padding="5" ColumnSpacing="3" Grid.Row="1" RowSpacing="0" VerticalOptions="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -109,7 +115,7 @@
                 <forms:AutoSuggestBox Grid.Column="1" PlaceholderText="{resx:UiResources GlobalFilterBox}" TextChanged="AutoSuggestBox_TextChanged" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
                 <Button x:Name="MenuToggleButton" Text="&#xf060;" Grid.Column="2" Style="{StaticResource IconButton}" Clicked="ToggleMenu" FontSize="22" Padding="5" HeightRequest="30" WidthRequest="30"/>
             </Grid>
-            <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="5,0,5,5">
+            <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" Margin="5" VerticalOptions="Center">
                 <StackLayout Style="{StaticResource OuterPanel}">
                     <Label Text="{resx:ModelResources Person_Kontostand}" Style="{StaticResource OneLineText}"/>
                     <Label Text="{x:Binding MyChar.Person.Kontostand, Converter={StaticResource IO_NuYen}}" Style="{StaticResource OneLineText}"/>
@@ -143,7 +149,7 @@
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
-            <Grid Grid.Row="3" BackgroundColor="White" ColumnSpacing="0">
+            <Grid Grid.Row="3" BackgroundColor="White" ColumnSpacing="0" Grid.ColumnSpan="3">
                 <Grid.Resources>
                     <Style x:Key="LabelLayout" TargetType="StackLayout">
                         <Setter Property="Orientation" Value="Horizontal"/>

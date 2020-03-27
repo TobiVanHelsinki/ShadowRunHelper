@@ -1,7 +1,5 @@
 ﻿//Author: Tobi van Helsinki
 
-///Author: Tobi van Helsinki
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +10,7 @@ using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.Platform;
 using ShadowRunHelperViewer.UI;
 using ShadowRunHelperViewer.UI.Pages;
 using SharedCode.Ressourcen;
@@ -99,14 +98,15 @@ namespace ShadowRunHelperViewer
             MainPage.Instance.ViewModeChanged += Instance_ViewModeChanged;
             Instance_ViewModeChanged(ViewModes.NotSet, MainPage.Instance.CurrentViewMode);
             Features.Ui.IsCustomTitleBarEnabled = true;
-            //Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(CharTitleBar));
             Features.Ui.SetCustomTitleBar(null);
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges;
             Features.Ui.TriggerCustomTitleBarChanges();
-            //if (MainPage.Instance.CurrentViewMode == ViewModes.Tall || MainPage.Instance.CurrentViewMode == ViewModes.Wide)
-            //{
             ActivateControllerOfType(MyChar.Favorites.Count == 0 ? ThingDefs.Handlung : ThingDefs.Favorite);
-            //}
+        }
+
+        public void AfterLoad()
+        {
+            Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(WindowsDropFrame));
         }
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
@@ -319,6 +319,34 @@ namespace ShadowRunHelperViewer
             };
             ChangeMenubackButtonAppearance(newMode);
             ChangeMenuAppearance(newMode);
+            if (newMode != ViewModes.Wide)
+            {
+                WideCol1.Width = new GridLength(0);
+                WideCol2.Width = new GridLength(0);
+                Grid.SetColumn(CharTitleBar, 0);
+                Grid.SetColumn(CharHeadControls, 0);
+                Grid.SetColumn(Infogrid, 0);
+                Grid.SetColumnSpan(CharTitleBar, 3);
+                Grid.SetColumnSpan(CharHeadControls, 3);
+                Grid.SetColumnSpan(Infogrid, 3);
+                Grid.SetRow(CharTitleBar, 0);
+                Grid.SetRow(CharHeadControls, 1);
+                Grid.SetRow(Infogrid, 2);
+            }
+            else
+            {
+                WideCol1.Width = new GridLength(1, GridUnitType.Star);
+                WideCol2.Width = new GridLength(1, GridUnitType.Star);
+                Grid.SetColumn(CharTitleBar, 2);
+                Grid.SetColumn(CharHeadControls, 0);
+                Grid.SetColumn(Infogrid, 1);
+                Grid.SetColumnSpan(CharTitleBar, 1);
+                Grid.SetColumnSpan(CharHeadControls, 1);
+                Grid.SetColumnSpan(Infogrid, 1);
+                Grid.SetRow(CharTitleBar, 0);
+                Grid.SetRow(CharHeadControls, 0);
+                Grid.SetRow(Infogrid, 0);
+            }
         }
 
         private bool _MenuOpen = true;
