@@ -71,22 +71,16 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".5*"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width=".5*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width=".5*"/>
                     </Grid.ColumnDefinitions>
                     <Button Text="&#xf0d7;" Clicked="More_Clicked"
-                            Grid.Column="1" HorizontalOptions="Start" Margin="0,5,0,0" Padding="5" Style="{StaticResource IconButton}"/>
+                            Grid.Column="0" HorizontalOptions="Start" Margin="0,5,0,0" Padding="5" Style="{StaticResource IconButton}"/>
                     <Label x:Name="Headline" FontSize="Title" LineBreakMode="MiddleTruncation" MaxLines="1"
-                            Grid.Column="2" HorizontalOptions="CenterAndExpand" Margin="0,5,0,0" Padding="5"/>
-                    <Button Text="&#xf2ed;" Clicked="Delete_Clicked"
-                            Grid.Column="3" HorizontalOptions="End" Margin="0,5,0,0" Padding="5" Style="{StaticResource IconButton}"/>
+                            Grid.Column="1" HorizontalOptions="CenterAndExpand" Margin="0,5,0,0" Padding="5"/>
                     <Button Text="&#xf00d;" Clicked="Close_Clicked"
-                            Grid.Column="5" HorizontalOptions="End" Margin="0,5,0,0" Padding="5" Style="{StaticResource IconButton}"/>
+                            Grid.Column="2" HorizontalOptions="End" Margin="0,5,0,0" Padding="5" Style="{StaticResource IconButton}"/>
                 </Grid>
                 <ScrollView Grid.Row="1" x:Name="MainContent">
                     <StackLayout>

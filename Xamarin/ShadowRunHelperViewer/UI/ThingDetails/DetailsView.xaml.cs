@@ -221,9 +221,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
         /// <summary>
         /// Removes mything and close the page
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Delete_Clicked(object sender, EventArgs e)
+        private void Delete_Clicked()
         {
             MyChar.Remove(MyThing);
             ClosingRequested?.Invoke(this, new EventArgs());
@@ -251,10 +249,11 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
         }
 
         private (string, Action)[] MenuItems => new (string, Action)[] {
+                        (UiResources.Delete,Delete_Clicked),
                         (UiResources.TextRefactoring_Case,TextRefactoring_Case),
                         (UiResources.TextRefactoring_NewLine,TextRefactoring_NewLine),
-                        ("CopyTo",CopyTo),
-                        ("MoveTo",MoveTo),
+                        ("//CopyTo",CopyTo),
+                        ("//MoveTo",MoveTo),
                     };
 
         /// <summary>
