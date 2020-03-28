@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using dotMorten.Xamarin.Forms;
 using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
-using ShadowRunHelperViewer.UI;
 using ShadowRunHelperViewer.UI.Pages;
 using SharedCode.Ressourcen;
 using TLIB;
@@ -257,10 +257,26 @@ namespace ShadowRunHelperViewer
                 ActivateControllerOfType(type);
             }
         }
+        public ICommand OpenCategory => new Command<string>(canExecute: (string arg) => true, execute: (string arg) =>
+        {
+            var pivot = int.Parse(arg);
+            var stackLayout = new StackLayout();
+            foreach (var typeInThisCategory in TypeHelper.ThingTypeProperties.Where(x => x.Pivot == pivot).OrderBy(x => x.Order))
+            {
+                stackLayout.Children.Add(CreateControllerOfType(typeInThisCategory.ThingType));
+            }
+            ContentPanel.Content = /*new ScrollView() { Content = */stackLayout /*}*/;
+            HighlightButton(null);
+        });
 
         private void ActivateControllerOfType(ThingDefs type)
         {
             HighlightButton(type);
+            ContentPanel.Content = CreateControllerOfType(type);
+        }
+
+        private GController CreateControllerOfType(ThingDefs type)
+        {
             var gCTRL = new GController(MyChar);
             var CTRL = typeof(CharHolder).GetProperties().FirstOrDefault(x => x.Name == "CTRL" + type);
             if (CTRL != null)
@@ -271,11 +287,11 @@ namespace ShadowRunHelperViewer
             {
                 Log.Write("Structual Error, Controller Name is wrong");
             }
-            ContentPanel.Content = gCTRL;
             if (MainPage.Instance.CurrentViewMode == ViewModes.Mobile || MainPage.Instance.CurrentViewMode == ViewModes.Tall)
             {
                 MenuOpen = false;
             }
+            return gCTRL;
         }
 
         private void HighlightButton(ThingDefs type)
@@ -302,8 +318,11 @@ namespace ShadowRunHelperViewer
                 item.BackgroundColor = Color.Default;
                 item.TextColor = Color.Default;
             }
-            myBtn.BackgroundColor = Color.Accent;
-            myBtn.TextColor = Color.FloralWhite;
+            if (myBtn != null)
+            {
+                myBtn.BackgroundColor = Color.Accent;
+                myBtn.TextColor = Color.FloralWhite;
+            }
         }
         #endregion Category Buttons
 
@@ -336,7 +355,7 @@ namespace ShadowRunHelperViewer
             else
             {
                 WideCol1.Width = new GridLength(1, GridUnitType.Star);
-                WideCol2.Width = new GridLength(1, GridUnitType.Auto);
+                WideCol2.Width = new GridLength(1, GridUnitType.Star);
                 Grid.SetColumn(CharTitleBar, 2);
                 Grid.SetColumn(CharHeadControls, 0);
                 Grid.SetColumn(Infogrid, 1);
@@ -397,7 +416,10 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void ToggleMenu(object sender, EventArgs e) => OnBackButtonPressed();
+        private void ToggleMenu(object sender, EventArgs e)
+        {
+            OnBackButtonPressed();
+        }
         #endregion AdaptiveUI
 
         #region Search Stuff

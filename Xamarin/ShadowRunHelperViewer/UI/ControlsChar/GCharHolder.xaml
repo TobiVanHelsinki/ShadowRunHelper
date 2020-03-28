@@ -168,6 +168,9 @@
                     <StackLayout>
                         <Frame BorderColor="Blue" Style="{StaticResource CatPanel}">
                             <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCategory}" CommandParameter="0"/>
+                                </StackLayout.GestureRecognizers>
                                 <StackLayout Style="{StaticResource LabelLayout}">
                                     <Label Text="&#xf0e7;" Style="{StaticResource LocalIconLabel}"/>
                                     <Label Text="{resx:UiResources Category_Aktion}" Style="{StaticResource LocalLabel}"/>
@@ -177,6 +180,9 @@
                         </Frame>
                         <Frame BorderColor="Orange" Style="{StaticResource CatPanel}">
                             <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCategory}" CommandParameter="1"/>
+                                </StackLayout.GestureRecognizers>
                                 <StackLayout Style="{StaticResource LabelLayout}">
                                     <Label Text="&#xf187;" Style="{StaticResource LocalIconLabel}"/>
                                     <Label Text="{resx:UiResources Category_Item}" Style="{StaticResource LocalLabel}"/>
@@ -199,6 +205,9 @@
                     <StackLayout>
                         <Frame BorderColor="Red" Style="{StaticResource CatPanel}">
                             <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCategory}" CommandParameter="2"/>
+                                </StackLayout.GestureRecognizers>
                                 <StackLayout Style="{StaticResource LabelLayout}">
                                     <Label Text="&#xf3ed;" Style="{StaticResource LocalIconLabel}"/>
                                     <Label Text="{resx:UiResources Category_Kampf}" Style="{StaticResource LocalLabel}"/>
@@ -209,6 +218,9 @@
                         </Frame>
                         <Frame BorderColor="Green" Style="{StaticResource CatPanel}">
                             <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCategory}" CommandParameter="3"/>
+                                </StackLayout.GestureRecognizers>
                                 <StackLayout Style="{StaticResource LabelLayout}">
                                     <Label Text="&#xf007;" Style="{StaticResource LocalIconLabel}"/>
                                     <Label Text="{resx:UiResources Category_Person}" Style="{StaticResource LocalLabel}"/>
