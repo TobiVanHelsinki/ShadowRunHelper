@@ -20,34 +20,21 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
+            <ContentView ControlTemplate="{StaticResource ItemsBoxesSlim}" Grid.Column="0"/>
             <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-            <Grid Grid.ColumnSpan="3" Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
-                    <StackLayout Style="{StaticResource AdditionalValuePanel}">
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Precision"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Waffe_Wert}" ValuePath="Wert"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Waffe_SchadenTyp}" ValuePath="SchadenTyp"/>
-                    </StackLayout>
-                </ScrollView>
-            </Grid>
+            <StackLayout Style="{StaticResource AdditionalValuePanel}" Grid.ColumnSpan="3" Grid.Row="1">
+                <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Precision"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Waffe_Wert}" ValuePath="Wert"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Waffe_SchadenTyp}" ValuePath="SchadenTyp"/>
+            </StackLayout>
         </Grid>    </Frame>
 </ViewCell>

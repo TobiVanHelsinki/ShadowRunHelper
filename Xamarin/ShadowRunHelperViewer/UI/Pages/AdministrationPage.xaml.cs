@@ -292,6 +292,21 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
+        private void DebugChar_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var newchar = CharHolderGenerator.TestAllCats(10);
+                SettingsModel.I.COUNT_CREATIONS++;
+                AppModel.Instance.MainObject = (newchar);
+                AppModel.Instance.RequestNavigation(ProjectPages.Char);
+            }
+            catch (Exception ex)
+            {
+                Log.Write("Error reading file", ex);
+            }
+        }
+
         private async void ExampleChar_Clicked(object sender, EventArgs e)
         {
             try
@@ -319,6 +334,9 @@ namespace ShadowRunHelperViewer.UI.Pages
                     new SubMenuAction(UiResources.ImportChar,"\xf56f",new Command(()=>OpenFile(this, new EventArgs()))),
                     new SubMenuAction(UiResources.CreateExampleChar,"\xf501",new Command(()=>ExampleChar_Clicked(this, new EventArgs()))),
                     new SubMenuAction(UiResources.OpenFolder,"\xf07c",new Command(()=> SharedIO.CurrentIO.OpenFolder(SharedIO.CurrentSaveDir))),
+#if DEBUG
+                new SubMenuAction("Debug Char","\xf188",new Command(()=> DebugChar_Clicked(this, new EventArgs()))),
+#endif
                 };
         }
 

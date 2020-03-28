@@ -336,7 +336,7 @@ namespace ShadowRunHelperViewer
             else
             {
                 WideCol1.Width = new GridLength(1, GridUnitType.Star);
-                WideCol2.Width = new GridLength(1, GridUnitType.Star);
+                WideCol2.Width = new GridLength(1, GridUnitType.Auto);
                 Grid.SetColumn(CharTitleBar, 2);
                 Grid.SetColumn(CharHeadControls, 0);
                 Grid.SetColumn(Infogrid, 1);

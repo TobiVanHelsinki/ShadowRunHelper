@@ -29,11 +29,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+            <ContentView ControlTemplate="{StaticResource ItemsBoxesSlim}" Grid.Column="0"/>
             <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
             <Label Text="{x:Binding Dienste}" Grid.Column="3" Style="{StaticResource STDText}"/>
-            <!--<Label Text="{x:Binding Geb_Reg}" Grid.Column="4" Style="{StaticResource STDText}"/>-->
             <CheckBox IsChecked="{x:Binding Geb_Reg}" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Margin="0,0,0,0"/>
         </Grid>    </Frame>
 </ViewCell>

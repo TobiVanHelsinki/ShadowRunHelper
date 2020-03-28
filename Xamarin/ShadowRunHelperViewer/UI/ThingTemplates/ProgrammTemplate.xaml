@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+            <ContentView ControlTemplate="{StaticResource ItemsBoxesSlim}" Grid.Column="0"/>
             <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
             <Label Text="{x:Binding Optionen}" Style="{StaticResource STDText}" Grid.Column="2"/>
             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="3"/>

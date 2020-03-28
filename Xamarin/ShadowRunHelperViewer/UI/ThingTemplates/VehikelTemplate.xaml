@@ -20,7 +20,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -29,31 +28,18 @@
             </Grid.ColumnDefinitions>
             <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
             <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
-            <Grid Grid.ColumnSpan="3" Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <!--<ContentView ControlTemplate="{StaticResource Thing_Notes}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>-->
-                <ScrollView Style="{StaticResource AdditionalValueScrollView}" Grid.Column="1">
-                    <StackLayout Style="{StaticResource AdditionalValuePanel}">
-                        <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Sitze}" ValuePath="Sitze"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Geschwindigkeit}" ValuePath="Geschwindigkeit"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Beschleunigung}" ValuePath="Beschleunigung"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Panzerung}" ValuePath="Panzer"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Rumpf}" ValuePath="Rumpf"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Handling}" ValuePath="Handling"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Pilot}" ValuePath="Pilot"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Sensor}" ValuePath="Sensor"/>
-                        <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Gewicht}" ValuePath="Gewicht"/>
-                    </StackLayout>
-                </ScrollView>
-            </Grid>
+            <StackLayout Style="{StaticResource AdditionalValuePanel}" Grid.ColumnSpan="3" Grid.Row="1">
+                <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Sitze}" ValuePath="Sitze"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Geschwindigkeit}" ValuePath="Geschwindigkeit"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Beschleunigung}" ValuePath="Beschleunigung"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Panzerung}" ValuePath="Panzer"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Rumpf}" ValuePath="Rumpf"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Handling}" ValuePath="Handling"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Pilot}" ValuePath="Pilot"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Sensor}" ValuePath="Sensor"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Gewicht}" ValuePath="Gewicht"/>
+            </StackLayout>
         </Grid>    </Frame>
 </ViewCell>
