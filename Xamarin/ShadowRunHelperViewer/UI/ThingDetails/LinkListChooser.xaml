@@ -14,7 +14,7 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
     <ContentView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <local:CharModelStyles/>
+                <local:SharedStyles/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Key="LinkListThingTemplateSimple" x:DataType="charmodel:Thing">
                 <Grid RowSpacing="1">

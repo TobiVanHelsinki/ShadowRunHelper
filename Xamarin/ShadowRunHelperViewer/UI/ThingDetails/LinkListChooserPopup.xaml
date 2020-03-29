@@ -25,7 +25,7 @@ SizeChanged="PopupPage_SizeChanged">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <local:CharModelStyles/>
+                <local:SharedStyles/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>

@@ -9,7 +9,7 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <local:CharModelStyles/>
+                <local:SharedStyles/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentView.Resources>

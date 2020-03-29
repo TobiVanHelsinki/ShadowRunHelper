@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
                     xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-                    x:Class="ShadowRunHelperViewer.CharModelStyles">
+                    x:Class="ShadowRunHelperViewer.SharedStyles">
     <OnPlatform x:Key="FontAwesomeSolid" x:TypeArguments="x:String">
         <On Platform="UWP, WinRT, WinPhone" Value="/Assets/Fonts/iconize-fontawesome-solid.ttf#Font Awesome 5 Free Solid"/>
         <On Platform="Android" Value="Fonts/iconize-fontawesome-solid.ttf#Font Awesome 5 Free Solid"/>
@@ -74,7 +74,14 @@
     </Style>
     <Style x:Key="CommandBarButton" TargetType="Button">
         <Setter Property="TextColor" Value="FloralWhite"/>
-        <!--<Setter Property="FontSize" Value="Medium"/>-->
         <Setter Property="Padding" Value="5"/>
+    </Style>
+    <Style x:Key="HeadLineText" TargetType="Label" BasedOn="{StaticResource STDText}">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="LineBreakMode" Value="TailTruncation"/>
+        <Setter Property="MaxLines" Value="1"/>
+    </Style>
+    <Style x:Key="STDTextCenter" TargetType="Label" BasedOn="{StaticResource STDText}">
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
     </Style>
 </ResourceDictionary>

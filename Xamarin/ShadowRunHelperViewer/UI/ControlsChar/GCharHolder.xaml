@@ -6,13 +6,13 @@
              xmlns:forms="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
-             xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
+             xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther" xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="ShadowRunHelperViewer.GCharHolder"
              x:DataType="local:GCharHolder">
     <ContentView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <local:CharModelStyles/>
+                <local:SharedStyles/>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="CatPanel" TargetType="Frame">
                 <Setter Property="Margin" Value="4,4,4,0"/>
@@ -29,11 +29,18 @@
                 <ScrollView Padding="5">
                     <ScrollView.Resources>
                         <DataTemplate x:Key="EntryTemplate">
-                            <Frame BorderColor="Accent" BackgroundColor="Transparent" Padding="4" CornerRadius="0">
-                                <StackLayout VerticalOptions="Start">
+                            <Frame MinimumWidthRequest="200" Style="{DynamicResource ItemFrame}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
                                     <Label x:Name="Type" FontAttributes="Italic"/>
-                                    <Grid x:Name="ContentPanel" BackgroundColor="Transparent"/>
-                                </StackLayout>
+                                    <Grid x:Name="ContentPanel" Grid.Column="1"  BackgroundColor="Transparent"/>
+                                </Grid>
                             </Frame>
                         </DataTemplate>
                     </ScrollView.Resources>
@@ -42,19 +49,32 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Label Text="{resx:ModelResources Person_}" FontAttributes="Bold"/>
-                            <Button Text="&#xf4ff;" Style="{StaticResource IconButton_ConstWidth}" Clicked="EditPerson_Click" Grid.Column="1"/>
+                            <Label Text="{resx:ModelResources Person_}" Style="{StaticResource HeadLineText}"/>
+                            <sfbtn:SfButton Grid.Column="1" Style="{StaticResource IconTextButton}" Clicked="EditPerson_Click">
+                                <sfbtn:SfButton.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="&#xf4ff;" Style="{StaticResource IconLabel}"/>
+                                        <Label Text="{resx:UiResources Edit}" Style="{StaticResource IconLabelText}"/>
+                                    </Grid>
+                                </sfbtn:SfButton.Content>
+                            </sfbtn:SfButton>
                         </Grid>
-                        <resources:WrapLayout x:Name="ContentLayout" HorizontalOptions="Start" Grid.Row="1"/>
-                        <Label Text="{resx:ModelResources Person_Zusammenfasung}" Grid.Row="2"/>
-                        <Editor Text="{x:Binding Person.Zusammenfassung}" Grid.Row="3" MinimumHeightRequest="30" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
+                        <Grid/>
+                        <resources:WrapLayout x:Name="ContentLayout" HorizontalOptions="CenterAndExpand" Grid.Row="1"/>
+                        <Label Text="{resx:ModelResources Person_Zusammenfasung}" Grid.Row="2" Style="{StaticResource HeadLineText}"/>
+                        <Editor Text="{x:Binding Person.Zusammenfassung}" Grid.Row="3" MinimumHeightRequest="30"
+                                IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
                     </Grid>
                 </ScrollView>
             </DataTemplate>

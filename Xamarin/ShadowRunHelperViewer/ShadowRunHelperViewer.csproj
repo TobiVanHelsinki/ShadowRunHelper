@@ -42,6 +42,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="UI\Resources\SharedStyles.xaml.cs">
+      <DependentUpon>SharedStyles.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UI\ThingTemplates\WandlungTemplate.xaml.cs">
       <DependentUpon>WandlungTemplate.xaml</DependentUpon>
     </Compile>
@@ -129,8 +132,8 @@
     <Compile Update="UI\Pages\MiscPage.xaml.cs">
       <DependentUpon>MiscPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\Resources\SharedCharTemplateResources.xaml.cs">
-      <DependentUpon>SharedCharTemplateResources.xaml</DependentUpon>
+    <Compile Update="UI\Resources\SharedCharStyles.xaml.cs">
+      <DependentUpon>SharedCharStyles.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 

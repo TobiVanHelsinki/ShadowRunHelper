@@ -21,7 +21,7 @@
                 <sflist:SfListView.Resources>
                     <ResourceDictionary>
                         <ResourceDictionary.MergedDictionaries>
-                            <chartemplates:SharedCharTemplateResources/>
+                            <chartemplates:SharedCharStyles/>
                         </ResourceDictionary.MergedDictionaries>
                     </ResourceDictionary>
                 </sflist:SfListView.Resources>
