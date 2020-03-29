@@ -29,8 +29,8 @@
                 <ScrollView Padding="5">
                     <ScrollView.Resources>
                         <DataTemplate x:Key="EntryTemplate">
-                            <Frame MinimumWidthRequest="200" Style="{DynamicResource ItemFrame}">
-                                <Grid>
+                            <Frame VerticalOptions="FillAndExpand">
+                                <Grid WidthRequest="250" Margin="5" VerticalOptions="Center">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
@@ -56,8 +56,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Label Text="{resx:ModelResources Person_}" Style="{StaticResource HeadLineText}"/>
-                            <sfbtn:SfButton Grid.Column="1" Style="{StaticResource IconTextButton}" Clicked="EditPerson_Click">
+                            <Label Text="{resx:ModelResources Person_}" Style="{StaticResource SubTitle}"/>
+                            <sfbtn:SfButton Grid.Column="1" Style="{StaticResource SfButtonSTD}" Clicked="EditPerson_Click">
                                 <sfbtn:SfButton.Content>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -65,7 +65,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <Label Text="&#xf4ff;" Style="{StaticResource IconLabel}"/>
-                                        <Label Text="{resx:UiResources Edit}" Style="{StaticResource IconLabelText}"/>
+                                        <Label Text="{resx:UiResources Edit}" Style="{StaticResource LabelForSfButtonSTD}"/>
                                     </Grid>
                                 </sfbtn:SfButton.Content>
                             </sfbtn:SfButton>

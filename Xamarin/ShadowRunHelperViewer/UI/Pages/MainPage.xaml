@@ -19,17 +19,16 @@
             <ResourceDictionary.MergedDictionaries>
                 <local:SharedStyles/>
             </ResourceDictionary.MergedDictionaries>
-            <Style x:Key="SF_MenuButtonL1" TargetType="sfbtn:SfButton" BasedOn="{StaticResource SF_STDButton}">
+            <Style x:Key="SF_MenuButtonL1" TargetType="sfbtn:SfButton" BasedOn="{StaticResource SfButtonSTD}">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="Padding" Value="5"/>
-                <Setter Property="BackgroundColor" Value="#D8D6D7"/>
             </Style>
             <Style x:Key="SF_MenuIconLabelL1" TargetType="Label" BasedOn="{StaticResource IconLabel}">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="MinimumHeightRequest" Value="50"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
-            <Style x:Key="SF_MenuLabelL1" TargetType="Label" BasedOn="{StaticResource STDLabel}">
+            <Style x:Key="SF_MenuLabelL1" TargetType="Label" BasedOn="{StaticResource STDText}">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="MinimumHeightRequest" Value="50"/>
                 <Setter Property="VerticalOptions" Value="Center"/>

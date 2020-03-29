@@ -183,7 +183,7 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <buttons:SfButton Grid.Column="0" Style="{StaticResource IconTextButton}" Clicked="Finish_Clicked">
+            <buttons:SfButton Grid.Column="0" Style="{StaticResource SfButtonSTD}" Clicked="Finish_Clicked">
                 <buttons:SfButton.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -191,11 +191,11 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Text="&#xf00c;" Style="{StaticResource IconLabel}"/>
-                        <Label Text="{resx:UiResources Finish}" Style="{StaticResource IconLabelText}"/>
+                        <Label Text="{resx:UiResources Finish}" Style="{StaticResource LabelForSfButtonSTD}"/>
                     </Grid>
                 </buttons:SfButton.Content>
             </buttons:SfButton>
-            <buttons:SfButton Grid.Column="1" Style="{StaticResource IconTextButton}" Clicked="Cancel_Clicked">
+            <buttons:SfButton Grid.Column="1" Style="{StaticResource SfButtonSTD}" Clicked="Cancel_Clicked">
                 <buttons:SfButton.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -203,7 +203,7 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Text="&#xf00d;" Style="{StaticResource IconLabel}"/>
-                        <Label Text="{resx:UiResources Cancel}" Style="{StaticResource IconLabelText}"/>
+                        <Label Text="{resx:UiResources Cancel}" Style="{StaticResource LabelForSfButtonSTD}"/>
                     </Grid>
                 </buttons:SfButton.Content>
             </buttons:SfButton>

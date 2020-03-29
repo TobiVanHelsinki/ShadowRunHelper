@@ -321,7 +321,7 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Button Text="&#xf067;" x:Name="CatAddButton" Style="{StaticResource ControllerIconButton}" Clicked="Add" TextColor="Default" Margin="2"/>
-                    <Label x:Name="Headline" HorizontalOptions="Center" Grid.Column="1" VerticalOptions="Center" FontSize="Medium" Padding="0" Margin="0"/>
+                    <Label x:Name="Headline" Grid.Column="1" Style="{StaticResource SubTitle}"/>
                     <Button Text="&#xf141;" x:Name="CatMoreButton" Style="{StaticResource ControllerIconButton}" Clicked="Options" Grid.Column="2" TextColor="Default" Margin="2"/>
                 </Grid>
                 <ContentView Grid.Row="1" x:Name="Items_H"/>
