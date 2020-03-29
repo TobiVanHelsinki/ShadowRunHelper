@@ -69,6 +69,20 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             ClosingRequested?.Invoke(this, new EventArgs());
         }
 
+        internal bool OnBackButtonPressed()
+        {
+            if (LinkListFrame.IsVisible)
+            {
+                LinkListFrame.Content = null;
+                LinkListFrame.IsVisible = false;
+            }
+            else
+            {
+                ClosingRequested?.Invoke(this, new EventArgs());
+            }
+            return true;
+        }
+
         #region Create UI
 
         /// <summary>

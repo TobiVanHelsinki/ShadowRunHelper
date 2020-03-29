@@ -3,8 +3,6 @@
 * english strings
 
 --------Animation-----------------------------------------------
-* ladebildschirm auch beim start
-* animation beim charladen
 
 ---------- UX -------------------------------
 * Laufen, Rennen -> Umrechnung in km/h
@@ -21,10 +19,5 @@
 
 * Verknüpfungen Modell für Zirkelbezüge verbessern
 
----------- Store -------------------------------
-* Store: Neue Bilder, neue Texte
-
 ++++++++++ Generelles TODO für Neue Verknüpfungen -------------
 * Filter anlegen und im Konstruktor setzen
-* Im UI Template Element Linked List angeben
-* im LinkedEntryEdit Handler spezialfälle einstellen

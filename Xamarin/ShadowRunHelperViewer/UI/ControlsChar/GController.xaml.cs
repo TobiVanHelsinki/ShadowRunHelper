@@ -199,8 +199,15 @@ namespace ShadowRunHelperViewer
         {
             if (DetailsOpen)
             {
-                DetailsOpen = false;
-                return true;
+                if (DetailsPane?.OnBackButtonPressed() == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    DetailsOpen = false;
+                    return true;
+                }
             }
             return false;
         }
