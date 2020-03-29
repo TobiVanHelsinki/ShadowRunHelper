@@ -51,6 +51,17 @@
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
+    <Style x:Key="IconLabelText" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BackgroundColor" Value="#D8D6D7"/>
+        <Setter Property="Grid.Column" Value="1"/>
+    </Style>
+    <Style x:Key="IconTextButton" TargetType="sfbtn:SfButton">
+        <Setter Property="BackgroundColor" Value="#D8D6D7"/>
+    </Style>
+
     <Style TargetType="ScrollView" x:Key="CommandBar">
         <Setter Property="Orientation" Value="Horizontal"/>
         <Setter Property="BackgroundColor" Value="LightGray"/>

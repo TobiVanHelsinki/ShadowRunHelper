@@ -214,6 +214,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer">
       <Version>17.4.0.55</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout">
+      <Version>17.4.0.55</Version>
+    </PackageReference>
     <PackageReference Include="TLIB">
       <Version>3.3.7</Version>
     </PackageReference>

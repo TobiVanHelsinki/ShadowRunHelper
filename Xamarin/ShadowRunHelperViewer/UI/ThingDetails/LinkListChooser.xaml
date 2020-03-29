@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView
 xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:popuplayout="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
 xmlns:local="clr-namespace:ShadowRunHelperViewer"
 xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
-    xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable" xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable" xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
     mc:Ignorable="d"
 x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
     <ContentView.Resources>
@@ -16,7 +17,6 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                 <local:CharModelStyles/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Key="LinkListThingTemplateSimple" x:DataType="charmodel:Thing">
-                <!--<ViewCell>-->
                 <Grid RowSpacing="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -31,6 +31,7 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                               Color="Accent" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="5,0,0,0"/>
                     <Grid Grid.Column="1" Margin="5,0,0,0" VerticalOptions="Center" ColumnSpacing="0">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -51,45 +52,58 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                     </Grid>
                     <BoxView Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="SlateGray"/>
                 </Grid>
-                <!--</ViewCell>-->
             </DataTemplate>
             <DataTemplate x:Key="LinkListThingTemplateExtendet" x:DataType="charmodel:Thing">
-                <!--<ViewCell>-->
-                <Grid RowSpacing="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid Margin="5,0,0,0" VerticalOptions="Center" ColumnSpacing="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Label Style="{StaticResource STDText}" Grid.Column="0" Text="{x:Binding Typ}" x:Name="Typ"/>
-                        <Label Style="{StaticResource STDText}" Grid.Column="1" Text=":">
-                            <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Typ}, Path=Text.Length}" Value="0">
-                                    <Setter Property="IsVisible" Value="False"/>
-                                </DataTrigger>
-                            </Label.Triggers>
-                        </Label>
-                        <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{x:Binding Bezeichner}"/>
-                        <Label Style="{StaticResource STDText}" Grid.Column="3" Text="{x:Binding Zusatz}"/>
-                    </Grid>
-                    <xforms:SfListView Grid.Row="1" VerticalOptions="Start" Orientation="Horizontal"
+                <popuplayout:SfPopupLayout x:Name="popup" Grid.Row="1">
+                    <popuplayout:SfPopupLayout.PopupView>
+                        <popuplayout:PopupView AutoSizeMode="None" AnimationMode="Zoom">
+                            <popuplayout:PopupView.PopupStyle>
+                                <popuplayout:PopupStyle OverlayOpacity="0"/>
+                            </popuplayout:PopupView.PopupStyle>
+                            <popuplayout:PopupView.ContentTemplate>
+                                <DataTemplate>
+                                    <xforms:SfListView Grid.Row="1" VerticalOptions="Start" Orientation="Vertical"
                                            AutoFitMode="Height"
-                                           IsScrollBarVisible="False"
-                                           IsScrollingEnabled="False"
                                            ItemTemplate="{StaticResource LinkListPropertyTemplate}"
                                            ItemsSource="{Binding ., Converter={StaticResource O_GetCalcPropertiesConvertert}}"/>
-                    <BoxView Grid.Row="2" HeightRequest="1" BackgroundColor="SlateGray"/>
-                </Grid>
-                <!--</ViewCell>-->
+                                </DataTemplate>
+                            </popuplayout:PopupView.ContentTemplate>
+                        </popuplayout:PopupView>
+                    </popuplayout:SfPopupLayout.PopupView>
+                    <popuplayout:SfPopupLayout.Content>
+                        <Grid RowSpacing="1" VerticalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClickToShowPopup_Clicked"/>
+                            </Grid.GestureRecognizers>
+                            <Grid Margin="5,0,0,0" VerticalOptions="Center" ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Style="{StaticResource STDText}" Grid.Column="0" Text="{x:Binding Typ}" x:Name="Typ"/>
+                                <Label Style="{StaticResource STDText}" Grid.Column="1" Text=":">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Typ}, Path=Text.Length}" Value="0">
+                                            <Setter Property="IsVisible" Value="False"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{x:Binding Bezeichner}"/>
+                                <Label Style="{StaticResource STDText}" Grid.Column="3" Text="{x:Binding Zusatz}"/>
+                            </Grid>
+                            <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="SlateGray"/>
+                        </Grid>
+                    </popuplayout:SfPopupLayout.Content>
+                </popuplayout:SfPopupLayout>
             </DataTemplate>
             <DataTemplate x:Key="LinkListPropertyTemplate" x:DataType="charmodel:ConnectProperty">
                 <Grid>
@@ -98,9 +112,8 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Grid ColumnSpacing="0" Margin="50,0,0,0" VerticalOptions="Center" Grid.Column="0">
+                    <Grid ColumnSpacing="0" Margin="50,0,0,0" VerticalOptions="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -115,7 +128,6 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                         <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{x:Binding Value}"/>
                         <Label Style="{StaticResource STDText}" Grid.Column="3" Text=")"/>
                     </Grid>
-                    <BoxView Grid.Column="1" WidthRequest="1" Color="SlateGray"/>
                     <CheckBox Grid.Column="0" Grid.ColumnSpan="1" x:Name="Selected"
                               BindingContextChanged="CheckBoxLoaded" CheckedChanged="Selected_CheckedChanged"
                               Color="Accent" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="5,0,0,0"/>
@@ -140,11 +152,11 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
     </ContentView.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <xforms:SfListView x:Name="SfItems" ItemsSource="{x:Binding MyChar.Things}" SelectionMode="None" Loaded="SfItems_Loaded"
-                            ItemSize="60" RowSpacing="2"
+        <xforms:SfListView x:Name="SfItems" Grid.Row="1" ItemsSource="{x:Binding MyChar.Things}" SelectionMode="None" Loaded="SfItems_Loaded"
+                            ItemSize="40" RowSpacing="2"
                             IsScrollBarVisible="True"
                             GroupHeaderTemplate="{StaticResource LinkListHeaderTemplate}"
                             AllowGroupExpandCollapse="True" IsStickyGroupHeader="True" GroupExpanded="SfItems_GroupExpanding">
@@ -167,12 +179,34 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                 </data:DataSource>
             </xforms:SfListView.DataSource>
         </xforms:SfListView>
-        <Grid Margin="5,0,5,5" Grid.Row="1">
+        <Grid Margin="5,0,5,5" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Button Text="{resx:UiResources Finish}" Clicked="Finish_Clicked" Grid.Column="0"/>
-            <Button Text="{resx:UiResources Cancel}" Clicked="Cancel_Clicked" Grid.Column="1"/>
+            <buttons:SfButton Grid.Column="0" Style="{StaticResource IconTextButton}" Clicked="Finish_Clicked">
+                <buttons:SfButton.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="&#xf00c;" Style="{StaticResource IconLabel}"/>
+                        <Label Text="{resx:UiResources Finish}" Style="{StaticResource IconLabelText}"/>
+                    </Grid>
+                </buttons:SfButton.Content>
+            </buttons:SfButton>
+            <buttons:SfButton Grid.Column="1" Style="{StaticResource IconTextButton}" Clicked="Cancel_Clicked">
+                <buttons:SfButton.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="&#xf00d;" Style="{StaticResource IconLabel}"/>
+                        <Label Text="{resx:UiResources Cancel}" Style="{StaticResource IconLabelText}"/>
+                    </Grid>
+                </buttons:SfButton.Content>
+            </buttons:SfButton>
         </Grid>
     </Grid>
 </ContentView>

@@ -23,6 +23,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="17.4.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.4.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="17.4.0.55" />
     <PackageReference Include="TLIB" Version="3.3.7" />
     <PackageReference Include="Xam.Plugin.PopupMenu" Version="1.1.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />

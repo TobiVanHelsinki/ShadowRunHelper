@@ -27,6 +27,7 @@ namespace ShadowRunHelperViewer.Droid
 
             #region Init Libs
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
+            Syncfusion.XForms.Android.PopupLayout.SfPopupLayoutRenderer.Init();
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             TAPPLICATION_Xamarin.Init.Do();

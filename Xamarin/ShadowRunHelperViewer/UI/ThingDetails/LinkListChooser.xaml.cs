@@ -7,8 +7,10 @@ using System.Linq;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.UI.Resources;
 using Syncfusion.DataSource.Extensions;
 using Syncfusion.ListView.XForms;
+using Syncfusion.XForms.PopupLayout;
 using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -106,7 +108,7 @@ namespace ShadowRunHelperViewer.UI.Controls
         /// <param name="e"></param>
         private void Selected_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            if (sender is CheckBox box && box.Parent is Layout panel)
+            if (sender is CheckBox box)
             {
                 var entry = box.BindingContext switch
                 {
@@ -116,7 +118,6 @@ namespace ShadowRunHelperViewer.UI.Controls
                 };
                 if (box.IsChecked)
                 {
-                    //panel.BackgroundColor = Color.Accent;
                     if (!Selected.Contains(entry))
                     {
                         Selected.Add(entry);
@@ -124,7 +125,6 @@ namespace ShadowRunHelperViewer.UI.Controls
                 }
                 else
                 {
-                    //panel.BackgroundColor = Color.Transparent;
                     if (Selected.Contains(entry))
                     {
                         Selected.Remove(entry);
@@ -174,6 +174,15 @@ namespace ShadowRunHelperViewer.UI.Controls
                     cp.Content = (Resources["LinkListThingTemplateSimple"] as DataTemplate).CreateContent() as View;
                     cp.Content.BindingContext = t;
                 }
+            }
+        }
+
+        private void ClickToShowPopup_Clicked(object sender, EventArgs e)
+        {
+            if (Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
+            {
+                popup.ShowAtTouchPoint();
+                //popup.ShowRelativeToView(sender as View ?? popup, RelativePosition.AlignBottom, 0, 0);
             }
         }
     }

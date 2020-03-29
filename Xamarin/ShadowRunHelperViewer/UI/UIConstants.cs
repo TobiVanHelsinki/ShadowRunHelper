@@ -4,7 +4,7 @@ namespace ShadowRunHelperViewer.UI
 {
     public static class UIConstants
     {
-        public const int MinWidthDesktop = 650;
+        public const int MinWidthDesktop = 725;
         public const int MinHeightDesktop = 600;
     }
 }
