@@ -31,7 +31,8 @@
         <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
         <Setter Property="FontSize" Value="Small"/>
         <Setter Property="TextColor" Value="FloralWhite"/>
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
     </Style>
     <Style x:Key="IconLabel" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
@@ -39,15 +40,17 @@
         <Setter Property="HorizontalOptions" Value="Center"/>
     </Style>
     <Style x:Key="LabelForSfButtonSTD" TargetType="Label">
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="BackgroundColor" Value="#D8D6D7"/>
         <Setter Property="Grid.Column" Value="1"/>
     </Style>
     <Style x:Key="SfButtonSTD" TargetType="sfbtn:SfButton">
         <Setter Property="CornerRadius" Value="3"/>
         <Setter Property="BackgroundColor" Value="#D8D6D7"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="Padding" Value="3"/>
     </Style>
     <Style x:Key="HeadLineText" TargetType="Label" BasedOn="{StaticResource STDText}">
         <Setter Property="Margin" Value="0"/>

@@ -29,17 +29,17 @@
                 <ScrollView Padding="5">
                     <ScrollView.Resources>
                         <DataTemplate x:Key="EntryTemplate">
-                            <Frame VerticalOptions="FillAndExpand">
-                                <Grid WidthRequest="250" Margin="5" VerticalOptions="Center">
+                            <Frame Style="{DynamicResource ItemFrame}" Margin="0">
+                                <Grid WidthRequest="220" Style="{DynamicResource TemplateGrid}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <Label x:Name="Type" FontAttributes="Italic"/>
-                                    <Grid x:Name="ContentPanel" Grid.Column="1"  BackgroundColor="Transparent"/>
+                                    <Grid x:Name="ContentPanel" Grid.Column="1" BackgroundColor="Transparent"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -51,30 +51,23 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Text="{resx:ModelResources Person_}" Style="{StaticResource SubTitle}"/>
-                            <sfbtn:SfButton Grid.Column="1" Style="{StaticResource SfButtonSTD}" Clicked="EditPerson_Click">
-                                <sfbtn:SfButton.Content>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Text="&#xf4ff;" Style="{StaticResource IconLabel}"/>
-                                        <Label Text="{resx:UiResources Edit}" Style="{StaticResource LabelForSfButtonSTD}"/>
-                                    </Grid>
-                                </sfbtn:SfButton.Content>
-                            </sfbtn:SfButton>
-                        </Grid>
-                        <Grid/>
+                        <Label Text="{resx:ModelResources Person_}" Style="{StaticResource SubTitle}"/>
                         <resources:WrapLayout x:Name="ContentLayout" HorizontalOptions="CenterAndExpand" Grid.Row="1"/>
-                        <Label Text="{resx:ModelResources Person_Zusammenfasung}" Grid.Row="2" Style="{StaticResource HeadLineText}"/>
+                        <Label Text="{resx:ModelResources Person_Beschreibung_}" Grid.Row="2" Style="{StaticResource SubTitle}"/>
                         <Editor Text="{x:Binding Person.Zusammenfassung}" Grid.Row="3" MinimumHeightRequest="30"
                                 IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
+                        <sfbtn:SfButton HorizontalOptions="End" VerticalOptions="Start" Style="{StaticResource SfButtonSTD}" Clicked="EditPerson_Click" BackgroundColor="AntiqueWhite">
+                            <sfbtn:SfButton.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="&#xf4ff;" Style="{StaticResource IconLabel}"/>
+                                    <Label Text="{resx:UiResources Edit}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                                </Grid>
+                            </sfbtn:SfButton.Content>
+                        </sfbtn:SfButton>
                     </Grid>
                 </ScrollView>
             </DataTemplate>
