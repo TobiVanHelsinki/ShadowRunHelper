@@ -43,6 +43,7 @@ namespace ShadowRunHelperViewer.UWP
             InitializeComponent();
 
             #region Init Libs
+            assembliesToInclude.Add(typeof(dotMorten.Xamarin.Forms.AutoSuggestBox).GetTypeInfo().Assembly);
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
             assembliesToInclude.Add(typeof(SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
             assembliesToInclude.Add(typeof(SfListViewRenderer).GetTypeInfo().Assembly);
