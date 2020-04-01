@@ -52,6 +52,7 @@ namespace ShadowRunHelperViewer.UWP
             assembliesToInclude.Add(typeof(SfPopupLayoutRenderer).GetTypeInfo().Assembly);
             assembliesToInclude.Add(typeof(SfNavigationDrawerRenderer).GetTypeInfo().Assembly);
             assembliesToInclude.Add(typeof(SfPopupLayoutRenderer).GetTypeInfo().Assembly);
+            assembliesToInclude.Add(typeof(Rg.Plugins.Popup.Popup).GetTypeInfo().Assembly);
             SfListViewRenderer.Init();
             SfPopupLayoutRenderer.Init();
             TAPPLICATION.IO.SharedIO.CurrentIO = new TAPPLICATION_UWP.IO();
