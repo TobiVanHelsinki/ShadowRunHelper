@@ -7,6 +7,7 @@ using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using Syncfusion.ListView.XForms.UWP;
 using Syncfusion.SfBusyIndicator.XForms.UWP;
+using Syncfusion.SfNavigationDrawer.XForms.UWP;
 using Syncfusion.XForms.UWP.Border;
 using Syncfusion.XForms.UWP.Buttons;
 using Syncfusion.XForms.UWP.PopupLayout;
@@ -43,12 +44,15 @@ namespace ShadowRunHelperViewer.UWP
 
             #region Init Libs
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
-            Syncfusion.XForms.UWP.PopupLayout.SfPopupLayoutRenderer.Init();
             assembliesToInclude.Add(typeof(SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
             assembliesToInclude.Add(typeof(SfListViewRenderer).GetTypeInfo().Assembly);
             assembliesToInclude.Add(typeof(SfBorderRenderer).GetTypeInfo().Assembly);
+            assembliesToInclude.Add(typeof(SfButtonRenderer).GetTypeInfo().Assembly);
+            assembliesToInclude.Add(typeof(SfPopupLayoutRenderer).GetTypeInfo().Assembly);
+            assembliesToInclude.Add(typeof(SfNavigationDrawerRenderer).GetTypeInfo().Assembly);
             assembliesToInclude.Add(typeof(SfPopupLayoutRenderer).GetTypeInfo().Assembly);
             SfListViewRenderer.Init();
+            SfPopupLayoutRenderer.Init();
             TAPPLICATION.IO.SharedIO.CurrentIO = new TAPPLICATION_UWP.IO();
             TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TAPPLICATION_UWP.Settings();
             TAPPLICATION.PlatformHelper.Platform = new TAPPLICATION_Xamarin.PlatformHelper();
