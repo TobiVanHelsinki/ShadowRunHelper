@@ -4,15 +4,14 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.UI.Pages;
-using SharedCode.Ressourcen;
+using ShadowRunHelperViewer.UI.Resources;
+using Syncfusion.XForms.PopupLayout;
 using TLIB;
-using Xam.Plugin;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -55,45 +54,11 @@ namespace ShadowRunHelperViewer
             Items.DragDropController.UpdateSource = true;
         }
 
-        #region Control MyController, Items Visual and Header Visual
+        #region ViewMode
 
-        private void GController_BindingContextChanged(object sender, EventArgs e)
+        private void MainPage_ViewModeChanged(ViewModes oldMode, ViewModes newMode)
         {
-            MyController = BindingContext as IController;
-        }
-
-        private void OnControllerChanged()
-        {
-            DetailsOpen = false;
-            if (MyController != null)
-            {
-                if (MyController.eDataTyp.HierarchieUpSearch(s => { _ = Resources.TryGetValue(s + "_H", out var CustomTemplate); return CustomTemplate; }) is ControlTemplate HL)
-                {
-                    Items_H.ControlTemplate = HL;
-                }
-
-                MyControllerSettings = MyChar.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == MyController.eDataTyp);
-                IsVisible = MyControllerSettings.Visibility;
-                Headline.Text = TypeHelper.ThingDefToString(MyController.eDataTyp, true);
-                SetHeaderVisible(!SettingsModel.I.MINIMIZED_HEADER);
-            }
-            else
-            {
-                IsVisible = false;
-            }
-        }
-
-        #endregion Control MyController, Items Visual and Header Visual
-
-        #region Details
-        private bool _DetailsOpen;
-        /// <summary>
-        /// Controls the UI State dependend at the Details Status
-        /// </summary>
-        public bool DetailsOpen
-        {
-            get => _DetailsOpen;
-            set { _DetailsOpen = value; SetViewMode(MainPage.Instance.CurrentViewMode); }
+            SetViewMode(newMode);
         }
 
         public void SetViewMode(ViewModes newMode)
@@ -156,7 +121,48 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void MainPage_ViewModeChanged(ViewModes oldMode, ViewModes newMode) => SetViewMode(newMode);
+        #endregion
+
+        #region Control MyController, Items Visual and Header Visual
+
+        private void GController_BindingContextChanged(object sender, EventArgs e)
+        {
+            MyController = BindingContext as IController;
+        }
+
+        private void OnControllerChanged()
+        {
+            DetailsOpen = false;
+            if (MyController != null)
+            {
+                if (MyController.eDataTyp.HierarchieUpSearch(s => { _ = Resources.TryGetValue(s + "_H", out var CustomTemplate); return CustomTemplate; }) is ControlTemplate HL)
+                {
+                    Items_H.ControlTemplate = HL;
+                }
+
+                MyControllerSettings = MyChar.Settings.CategoryOptions.FirstOrDefault(x => x.ThingType == MyController.eDataTyp);
+                IsVisible = MyControllerSettings.Visibility;
+                Headline.Text = TypeHelper.ThingDefToString(MyController.eDataTyp, true);
+                SetHeaderVisible(!SettingsModel.I.MINIMIZED_HEADER);
+            }
+            else
+            {
+                IsVisible = false;
+            }
+        }
+
+        #endregion Control MyController, Items Visual and Header Visual
+
+        #region Details
+        private bool _DetailsOpen;
+        /// <summary>
+        /// Controls the UI State dependend at the Details Status
+        /// </summary>
+        public bool DetailsOpen
+        {
+            get => _DetailsOpen;
+            set { _DetailsOpen = value; SetViewMode(MainPage.Instance.CurrentViewMode); }
+        }
 
         /// <summary>
         /// Handles the SelectionChanged event of the Items control.
@@ -212,7 +218,10 @@ namespace ShadowRunHelperViewer
             return false;
         }
 
-        private void DetailsPane_ClosingRequested(object sender, EventArgs e) => DeactivateDetails();
+        private void DetailsPane_ClosingRequested(object sender, EventArgs e)
+        {
+            DeactivateDetails();
+        }
 
         #endregion Details
 
@@ -236,47 +245,51 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private (string, Action)[] MenuItems => new (string, Action)[] {
-                        (UiResources.Cat_AddSep,()=>{try
-                                                    {
-                                                        var newThing  = Activator.CreateInstance(MyController.eDataTyp.ThingDefToType()) as Thing;
-                                                        newThing.IsSeperator = true;
-                                                        MyChar.Add(newThing);
-                                                    }
-                                                    catch (Exception ex)
-                                                    {
-                                                        Log.Write("", ex);
-                                                    }}),
-                        //(UiResources.Cat_UncheckAll,()=>{ }),
-                        (UiResources.Cat_Order_ABC,()=>MyController.OrderData(Ordering.ABC)),
-                        (UiResources.Cat_Order_Type,()=>MyController.OrderData(Ordering.Type)),
-                        (UiResources.Cat_Order_Save,()=> MyController.SaveCurrentOrdering()),
-                        (UiResources.Cat_Order_Orig,()=> MyController.OrderData(Ordering.Original)),
-                        //(UiResources.CSV_Cat_ExportX,()=>{ }),
-                        //(UiResources.CSV_Cat_Export_Selected,()=>{ }),
-                        //(UiResources.CSV_Cat_ImportX,()=>{ }),
-                    };
-
-        private void Options(object sender, EventArgs e)
+        private void CatMoreMenu(object sender, EventArgs e)
+        {
+            if (Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
+            {
+                popup.PopupView.ContentTemplate = Resources["CatMoreTemplate"] as DataTemplate;
+                popup.PopupView.AnimationMode = AnimationMode.SlideOnRight;
+                popup.PopupView.AutoSizeMode = AutoSizeMode.Both;
+                popup.PopupView.ShowHeader = false;
+                popup.PopupView.ShowFooter = false;
+                popup.ShowRelativeToView(sender as View ?? popup, RelativePosition.AlignToRightOf);
+            }
+        }
+        private void AddSep(object sender, EventArgs e)
         {
             try
             {
-                var Popup = new PopupMenu
-                {
-                    ItemsSource = MenuItems.Select(x => x.Item1).ToArray()
-                };
-                Popup.OnItemSelected += Popup_OnItemSelected;
-                Popup?.ShowPopup(sender as Button);
+                var newThing = Activator.CreateInstance(MyController.eDataTyp.ThingDefToType()) as Thing;
+                newThing.IsSeperator = true;
+                MyChar.Add(newThing);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.Write("", ex);
             }
+        }
+        public void OrderABC(object sender, EventArgs e)
+        {
+            MyController.OrderData(Ordering.ABC);
         }
 
-        private void Popup_OnItemSelected(string item)
+        public void OrderType(object sender, EventArgs e)
         {
-            MenuItems.FirstOrDefault(x => x.Item1 == item).Item2?.Invoke();
+            MyController.OrderData(Ordering.Type);
         }
+
+        public void OrderSave(object sender, EventArgs e)
+        {
+            MyController.SaveCurrentOrdering();
+        }
+
+        public void OrderLoad(object sender, EventArgs e)
+        {
+            MyController.OrderData(Ordering.Original);
+        }
+
         #endregion Controller Actions
 
         #region Items Actions
@@ -298,7 +311,7 @@ namespace ShadowRunHelperViewer
 
         public void SetHeaderVisible(bool visible)
         {
-            bool supportsEdit = true;
+            var supportsEdit = true;
             try
             {
                 if (MyController?.GetType().GetCustomAttributes(typeof(ShadowRunHelperControllerAttribute), true)?.FirstOrDefault() is ShadowRunHelperControllerAttribute shadowRunHelperControllerAttribute)
@@ -311,7 +324,7 @@ namespace ShadowRunHelperViewer
                 Log.Write("Getting Controller Attribute failed", ex);
             }
             CatAddButton.IsVisible = visible && supportsEdit;
-            CatMoreButton.IsVisible = visible && supportsEdit;
+            //CatMoreButton.IsVisible = visible && supportsEdit;
             Items_H.IsVisible = visible;
             Headline.FontSize = Device.GetNamedSize(visible ? NamedSize.Medium : NamedSize.Micro, typeof(Label));
             SettingsModel.I.MINIMIZED_HEADER = !visible;
@@ -337,5 +350,6 @@ namespace ShadowRunHelperViewer
             SetHeaderVisible(true);
         }
         #endregion Dynamic Header
+
     }
 }

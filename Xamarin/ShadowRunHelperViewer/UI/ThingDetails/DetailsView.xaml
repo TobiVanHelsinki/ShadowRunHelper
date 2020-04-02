@@ -4,8 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
+             xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
-             xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
+             xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode" xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.ControlsChar.DetailsView"
              Margin="3">
@@ -15,6 +16,70 @@
                 <local:SharedStyles/>
             </ResourceDictionary.MergedDictionaries>
             <resources:o_ProbabilityConverter x:Key="o_ProbabilityConverter"/>
+            <DataTemplate x:Key="CatMoreTemplate">
+                <StackLayout VerticalOptions="Start">
+                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="Delete_Clicked">
+                        <sfbtn:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="&#xf007;" Style="{StaticResource IconLabel}"/>
+                                <Label Text="{resx:UiResources Delete}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                            </Grid>
+                        </sfbtn:SfButton.Content>
+                    </sfbtn:SfButton>
+                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="TextRefactoring_Case">
+                        <sfbtn:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="&#xf007;" Style="{StaticResource IconLabel}"/>
+                                <Label Text="{resx:UiResources TextRefactoring_Case}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                            </Grid>
+                        </sfbtn:SfButton.Content>
+                    </sfbtn:SfButton>
+                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="TextRefactoring_NewLine">
+                        <sfbtn:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="&#xf007;" Style="{StaticResource IconLabel}"/>
+                                <Label Text="{resx:UiResources TextRefactoring_NewLine}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                            </Grid>
+                        </sfbtn:SfButton.Content>
+                    </sfbtn:SfButton>
+                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="CopyTo">
+                        <sfbtn:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="&#xf007;" Style="{StaticResource IconLabel}"/>
+                                <Label Text="{resx:UiResources CopyTo}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                            </Grid>
+                        </sfbtn:SfButton.Content>
+                    </sfbtn:SfButton>
+                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="MoveTo">
+                        <sfbtn:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="&#xf007;" Style="{StaticResource IconLabel}"/>
+                                <Label Text="{resx:UiResources MoveTo}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                            </Grid>
+                        </sfbtn:SfButton.Content>
+                    </sfbtn:SfButton>
+                </StackLayout>
+            </DataTemplate>
             <DataTemplate x:Key="ConnectPropertyTemplate" x:DataType="charmodel:ConnectProperty">
                 <Grid Margin="3">
                     <Grid.RowDefinitions>

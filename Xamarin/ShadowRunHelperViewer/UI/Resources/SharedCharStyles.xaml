@@ -10,6 +10,8 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="ControllerIconButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
         <Setter Property="Padding" Value="5"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="TextColor" Value="Default"/>
     </Style>
     <Style x:Key="AdditionalValueScrollView" TargetType="ScrollView">
         <Setter Property="Orientation" Value="Horizontal"/>

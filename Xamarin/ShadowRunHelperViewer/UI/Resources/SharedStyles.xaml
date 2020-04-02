@@ -15,7 +15,6 @@
     <resources:O_ThingDef2String x:Key="O_ThingDef2String"/>
     <resources:O_ItemState2String x:Key="O_ItemState2String"/>
     <resources:IO_DebugConverter x:Key="IO_DebugConverter"/>
-
     <Style x:Key="STDText" TargetType="Label">
         <Setter Property="VerticalOptions" Value="Start"/>
         <Setter Property="Margin" Value="0"/>
@@ -39,7 +38,7 @@
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="HorizontalOptions" Value="Center"/>
     </Style>
-    <Style x:Key="LabelForSfButtonSTD" TargetType="Label">
+    <Style x:Key="LabelForSfButtonSTD" TargetType="Label" BasedOn="{StaticResource STDText}">
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="Margin" Value="0"/>
@@ -51,6 +50,8 @@
         <Setter Property="BackgroundColor" Value="#D8D6D7"/>
         <Setter Property="Margin" Value="3"/>
         <Setter Property="Padding" Value="3"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
     </Style>
     <Style x:Key="HeadLineText" TargetType="Label" BasedOn="{StaticResource STDText}">
         <Setter Property="Margin" Value="0"/>

@@ -11,9 +11,10 @@ using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Strings;
 using ShadowRunHelperViewer.UI.Controls;
+using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
+using Syncfusion.XForms.PopupLayout;
 using TLIB;
-using Xam.Plugin;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -53,8 +54,17 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             catch (Exception ex)
             {
                 Log.Write("Unexpected Error", ex);
-                ClosingRequested?.Invoke(this, new EventArgs());
+                CloseSelf();
             }
+        }
+
+        public void CloseSelf()
+        {
+            if (Common.FindParent<SfPopupLayout>(this) is SfPopupLayout popup)
+            {
+                popup.IsOpen = false;
+            }
+            ClosingRequested?.Invoke(this, new EventArgs());
         }
 
         public event EventHandler ClosingRequested;
@@ -64,10 +74,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Close_Clicked(object sender, EventArgs e)
-        {
-            ClosingRequested?.Invoke(this, new EventArgs());
-        }
+        private void Close_Clicked(object sender, EventArgs e) => CloseSelf();
 
         internal bool OnBackButtonPressed()
         {
@@ -78,7 +85,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             }
             else
             {
-                ClosingRequested?.Invoke(this, new EventArgs());
+                CloseSelf();
             }
             return true;
         }
@@ -207,9 +214,6 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             };
         }
         #endregion Create UI
-
-        #region Item Options
-
         private void OpenConnectedChooser(object sender, EventArgs e)
         {
             if (sender is BindableObject b && b.BindingContext is ConnectProperty prop)
@@ -232,49 +236,36 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             }
         }
 
-        /// <summary>
-        /// Removes mything and close the page
-        /// </summary>
-        private void Delete_Clicked()
-        {
-            MyChar.Remove(MyThing);
-            ClosingRequested?.Invoke(this, new EventArgs());
-        }
+
+        #region More 
 
         private void More_Clicked(object sender, EventArgs e)
         {
-            try
+            if (Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
             {
-                var Popup = new PopupMenu
-                {
-                    ItemsSource = MenuItems.Select(x => x.Item1).ToArray()
-                };
-                Popup.OnItemSelected += Popup_OnItemSelected;
-                Popup?.ShowPopup(sender as Button);
-            }
-            catch (Exception)
-            {
+                popup.PopupView.ContentTemplate = Resources["CatMoreTemplate"] as DataTemplate;
+                popup.PopupView.AnimationMode = AnimationMode.SlideOnTop;
+                popup.PopupView.AutoSizeMode = AutoSizeMode.Both;
+                popup.PopupView.ShowHeader = false;
+                popup.PopupView.ShowFooter = false;
+                popup.ShowRelativeToView(sender as View ?? popup, RelativePosition.AlignToRightOf);
             }
         }
 
-        private void Popup_OnItemSelected(string item)
+        /// <summary>
+        /// Removes mything and close the page
+        /// </summary>
+        private void Delete_Clicked(object sender, EventArgs e)
         {
-            MenuItems.FirstOrDefault(x => x.Item1 == item).Item2?.Invoke();
+            MyChar.Remove(MyThing);
+            CloseSelf();
         }
-
-        private (string, Action)[] MenuItems => new (string, Action)[] {
-                        (UiResources.Delete,Delete_Clicked),
-                        (UiResources.TextRefactoring_Case,TextRefactoring_Case),
-                        (UiResources.TextRefactoring_NewLine,TextRefactoring_NewLine),
-                        ("//CopyTo",CopyTo),
-                        ("//MoveTo",MoveTo),
-                    };
 
         /// <summary>
         /// Take the Name of MyThing and convert all words in lowercase with one leading uppercase
         /// </summary>
         /// <exception cref="InvalidOperationException">Ignore.</exception>
-        public void TextRefactoring_Case()
+        public void TextRefactoring_Case(object sender, EventArgs e)
         {
             var text = MyThing.Bezeichner.Replace("\r", " ").Replace("\n", " ").Replace("  ", " ");
             var builder = new StringBuilder();
@@ -297,7 +288,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
         /// <summary>
         /// Removed all but the first newline of MyThing.Notes. Also removes \r.
         /// </summary>
-        public void TextRefactoring_NewLine()
+        public void TextRefactoring_NewLine(object sender, EventArgs e)
         {
             var text = MyThing.Notiz.Replace("\r", "\n").Replace("\n\n", "\n").Trim().Trim('\n');
             var firstindex = text.IndexOf("\n");
@@ -310,7 +301,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             MyThing.Notiz = text;
         }
 
-        private void CopyTo()
+        private void CopyTo(object sender, EventArgs e)
         {
             try
             {
@@ -321,17 +312,18 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             }
         }
 
-        private void MoveTo()
+        private void MoveTo(object sender, EventArgs e)
         {
             try
             {
                 PopupNavigation.Instance.PushAsync(new ThingCopyChooser(MyThing, MyChar, true));
-                ClosingRequested?.Invoke(this, new EventArgs());
+                CloseSelf();
             }
             catch (Exception)
             {
             }
         }
         #endregion Item Options
+
     }
 }

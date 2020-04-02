@@ -9,7 +9,7 @@
              xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:pages="clr-namespace:ShadowRunHelperViewer.UI.Pages"
              xmlns:busy="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
+             xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther" xmlns:popuplayout="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
              mc:Ignorable="d"
              SizeChanged="ContentPage_SizeChanged"
              x:Class="ShadowRunHelperViewer.UI.Pages.MainPage"
@@ -63,108 +63,112 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
-            <sfnav:SfNavigationDrawer x:Name="MenuDrawer">
-                <sfnav:SfNavigationDrawer.DefaultDrawerSettings>
-                    <sfnav:DrawerSettings x:Name="MenuDrawerDefault" Position="Left" Transition="Push" Duration="100"
+        <popuplayout:SfPopupLayout Grid.Column="2" x:Name="CatMoreButton">
+            <popuplayout:SfPopupLayout.Content>
+                <Grid>
+                    <sfnav:SfNavigationDrawer x:Name="MenuDrawer">
+                        <sfnav:SfNavigationDrawer.DefaultDrawerSettings>
+                            <sfnav:DrawerSettings x:Name="MenuDrawerDefault" Position="Left" Transition="Push" Duration="100"
                                           EnableSwipeGesture="True" TouchThreshold="50" PropertyChanged="SfNavigationDrawer_PropertyChanged"
                                           DrawerHeaderHeight="160" DrawerHeight="300" DrawerFooterHeight="100" DrawerWidth="200">
-                        <sfnav:DrawerSettings.DrawerHeaderView>
-                            <Grid BackgroundColor="#33cc33" Padding="5" RowSpacing="5" x:Name="MenuDrawerHeader">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <controlsother:HamburgerButton Grid.Row="1" WidthRequest="60" HeightRequest="60" HorizontalOptions="Start"/>
+                                <sfnav:DrawerSettings.DrawerHeaderView>
+                                    <Grid BackgroundColor="#33cc33" Padding="5" RowSpacing="5" x:Name="MenuDrawerHeader">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <controlsother:HamburgerButton Grid.Row="1" WidthRequest="60" HeightRequest="60" HorizontalOptions="Start"/>
 
-                                <sfbtn:SfButton x:Name="NavCharBtn" Grid.Row="2" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_CharPage">
-                                    <sfbtn:SfButton.Content>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Text="&#xf007;" Style="{StaticResource SF_MenuIconLabelL1}"/>
-                                            <Label Text="{resx:UiResources Nav_Char}" Style="{StaticResource SF_MenuLabelL1}"/>
-                                        </Grid>
-                                    </sfbtn:SfButton.Content>
-                                </sfbtn:SfButton>
-                                <sfbtn:SfButton Grid.Row="3" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_Admin">
-                                    <sfbtn:SfButton.Content>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Text="&#xf0c0;" Style="{StaticResource SF_MenuIconLabelL1}"/>
-                                            <Label Text="{resx:UiResources Nav_Admin}" Style="{StaticResource SF_MenuLabelL1}"/>
-                                        </Grid>
-                                    </sfbtn:SfButton.Content>
-                                </sfbtn:SfButton>
+                                        <sfbtn:SfButton x:Name="NavCharBtn" Grid.Row="2" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_CharPage">
+                                            <sfbtn:SfButton.Content>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="&#xf007;" Style="{StaticResource SF_MenuIconLabelL1}"/>
+                                                    <Label Text="{resx:UiResources Nav_Char}" Style="{StaticResource SF_MenuLabelL1}"/>
+                                                </Grid>
+                                            </sfbtn:SfButton.Content>
+                                        </sfbtn:SfButton>
+                                        <sfbtn:SfButton Grid.Row="3" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_Admin">
+                                            <sfbtn:SfButton.Content>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="&#xf0c0;" Style="{StaticResource SF_MenuIconLabelL1}"/>
+                                                    <Label Text="{resx:UiResources Nav_Admin}" Style="{StaticResource SF_MenuLabelL1}"/>
+                                                </Grid>
+                                            </sfbtn:SfButton.Content>
+                                        </sfbtn:SfButton>
+                                    </Grid>
+                                </sfnav:DrawerSettings.DrawerHeaderView>
+                                <sfnav:DrawerSettings.DrawerFooterView>
+                                    <Grid BackgroundColor="#29a329" Padding="5" RowSpacing="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <sfbtn:SfButton Grid.Row="1" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_Settings">
+                                            <sfbtn:SfButton.Content>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="&#xf013;" Style="{StaticResource SF_MenuIconLabelL1}"/>
+                                                    <Label Text="{resx:UiResources Nav_Settings}" Style="{StaticResource SF_MenuLabelL1}"/>
+                                                </Grid>
+                                            </sfbtn:SfButton.Content>
+                                        </sfbtn:SfButton>
+                                        <sfbtn:SfButton Grid.Row="2" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_Info">
+                                            <sfbtn:SfButton.Content>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="&#xf129;" Style="{StaticResource SF_MenuIconLabelL1}" Padding="5,0,3,0"/>
+                                                    <Label Text="{resx:UiResources Nav_Info}" Style="{StaticResource SF_MenuLabelL1}"/>
+                                                </Grid>
+                                            </sfbtn:SfButton.Content>
+                                        </sfbtn:SfButton>
+                                    </Grid>
+                                </sfnav:DrawerSettings.DrawerFooterView>
+                                <sfnav:DrawerSettings.DrawerContentView>
+                                    <Grid BackgroundColor="#2eb82e" Padding="10,5,5,5">
+                                        <ListView ItemsSource="{x:Binding SubMenuItems}" ItemTemplate="{StaticResource SubMenuItemTemplate}"/>
+                                    </Grid>
+                                </sfnav:DrawerSettings.DrawerContentView>
+                            </sfnav:DrawerSettings>
+                        </sfnav:SfNavigationDrawer.DefaultDrawerSettings>
+                        <sfnav:SfNavigationDrawer.ContentView>
+                            <Grid>
+                                <ContentPresenter x:Name="ContentPlace" Grid.RowSpan="1"/>
                             </Grid>
-                        </sfnav:DrawerSettings.DrawerHeaderView>
-                        <sfnav:DrawerSettings.DrawerFooterView>
-                            <Grid BackgroundColor="#29a329" Padding="5" RowSpacing="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <sfbtn:SfButton Grid.Row="1" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_Settings">
-                                    <sfbtn:SfButton.Content>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Text="&#xf013;" Style="{StaticResource SF_MenuIconLabelL1}"/>
-                                            <Label Text="{resx:UiResources Nav_Settings}" Style="{StaticResource SF_MenuLabelL1}"/>
-                                        </Grid>
-                                    </sfbtn:SfButton.Content>
-                                </sfbtn:SfButton>
-                                <sfbtn:SfButton Grid.Row="2" Style="{StaticResource SF_MenuButtonL1}" Clicked="Nav_Info">
-                                    <sfbtn:SfButton.Content>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Text="&#xf129;" Style="{StaticResource SF_MenuIconLabelL1}" Padding="5,0,3,0"/>
-                                            <Label Text="{resx:UiResources Nav_Info}" Style="{StaticResource SF_MenuLabelL1}"/>
-                                        </Grid>
-                                    </sfbtn:SfButton.Content>
-                                </sfbtn:SfButton>
-                            </Grid>
-                        </sfnav:DrawerSettings.DrawerFooterView>
-                        <sfnav:DrawerSettings.DrawerContentView>
-                            <Grid BackgroundColor="#2eb82e" Padding="10,5,5,5">
-                                <ListView ItemsSource="{x:Binding SubMenuItems}" ItemTemplate="{StaticResource SubMenuItemTemplate}"/>
-                            </Grid>
-                        </sfnav:DrawerSettings.DrawerContentView>
-                    </sfnav:DrawerSettings>
-                </sfnav:SfNavigationDrawer.DefaultDrawerSettings>
-                <sfnav:SfNavigationDrawer.ContentView>
-                    <Grid>
-                        <ContentPresenter x:Name="ContentPlace" Grid.RowSpan="1"/>
-                    </Grid>
-                </sfnav:SfNavigationDrawer.ContentView>
-            </sfnav:SfNavigationDrawer>
-            <StackLayout Orientation="Vertical" x:Name="busyindicatorContainer" VerticalOptions="Center" HorizontalOptions="Center">
-                <busy:SfBusyIndicator x:Name="Busyindicator" Margin="0">
-                    <busy:SfBusyIndicator.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ChangeAnimation"/>
-                    </busy:SfBusyIndicator.GestureRecognizers>
-                </busy:SfBusyIndicator>
-                <Frame BackgroundColor="LightSlateGray" CornerRadius="5" Grid.Row="1" Margin="5" Padding="5" VerticalOptions="Start" HorizontalOptions="Center">
-                    <StackLayout Orientation="Vertical">
-                        <Label Grid.Row="1" Text="{resx:UiResources TipHeader}" FontAttributes="Bold" FontSize="Subtitle"/>
-                        <Label Grid.Row="2" x:Name="TipText" LineBreakMode="WordWrap"/>
-                        <Label Grid.Row="3" Text="{resx:UiResources DisableTips}" FontSize="Caption" TextColor="LightGray"/>
+                        </sfnav:SfNavigationDrawer.ContentView>
+                    </sfnav:SfNavigationDrawer>
+                    <StackLayout Orientation="Vertical" x:Name="busyindicatorContainer" VerticalOptions="Center" HorizontalOptions="Center">
+                        <busy:SfBusyIndicator x:Name="Busyindicator" Margin="0">
+                            <busy:SfBusyIndicator.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ChangeAnimation"/>
+                            </busy:SfBusyIndicator.GestureRecognizers>
+                        </busy:SfBusyIndicator>
+                        <Frame BackgroundColor="LightSlateGray" CornerRadius="5" Grid.Row="1" Margin="5" Padding="5" VerticalOptions="Start" HorizontalOptions="Center">
+                            <StackLayout Orientation="Vertical">
+                                <Label Grid.Row="1" Text="{resx:UiResources TipHeader}" FontAttributes="Bold" FontSize="Subtitle"/>
+                                <Label Grid.Row="2" x:Name="TipText" LineBreakMode="WordWrap"/>
+                                <Label Grid.Row="3" Text="{resx:UiResources DisableTips}" FontSize="Caption" TextColor="LightGray"/>
+                            </StackLayout>
+                        </Frame>
                     </StackLayout>
-                </Frame>
-            </StackLayout>
-        </Grid>
+                </Grid>
+            </popuplayout:SfPopupLayout.Content>
+        </popuplayout:SfPopupLayout>
     </ContentPage.Content>
 </ContentPage>

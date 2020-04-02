@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView
 xmlns="http://xamarin.com/schemas/2014/forms"
-xmlns:popuplayout="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
 xmlns:local="clr-namespace:ShadowRunHelperViewer"
+xmlns:popuplayout="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
 xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
-    xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable" xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
-    mc:Ignorable="d"
+xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
+xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable" 
+xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
+xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+mc:Ignorable="d"
 x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -53,57 +56,44 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                     <BoxView Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="SlateGray"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Key="LinkListThingTemplateExtendet" x:DataType="charmodel:Thing">
-                <popuplayout:SfPopupLayout x:Name="popup" Grid.Row="1">
-                    <popuplayout:SfPopupLayout.PopupView>
-                        <popuplayout:PopupView AutoSizeMode="None" AnimationMode="Zoom">
-                            <popuplayout:PopupView.PopupStyle>
-                                <popuplayout:PopupStyle OverlayOpacity="0"/>
-                            </popuplayout:PopupView.PopupStyle>
-                            <popuplayout:PopupView.ContentTemplate>
-                                <DataTemplate>
-                                    <xforms:SfListView Grid.Row="1" VerticalOptions="Start" Orientation="Vertical"
+            <DataTemplate x:Key="MultipleConnectedValuesTemplate">
+                <xforms:SfListView Grid.Row="1" VerticalOptions="Start" Orientation="Vertical"
                                            AutoFitMode="Height"
                                            ItemTemplate="{StaticResource LinkListPropertyTemplate}"
                                            ItemsSource="{Binding ., Converter={StaticResource O_GetCalcPropertiesConvertert}}"/>
-                                </DataTemplate>
-                            </popuplayout:PopupView.ContentTemplate>
-                        </popuplayout:PopupView>
-                    </popuplayout:SfPopupLayout.PopupView>
-                    <popuplayout:SfPopupLayout.Content>
-                        <Grid RowSpacing="1" VerticalOptions="Center">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ClickToShowPopup_Clicked"/>
-                            </Grid.GestureRecognizers>
-                            <Grid Margin="5,0,0,0" VerticalOptions="Center" ColumnSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Label Style="{StaticResource STDText}" Grid.Column="0" Text="{x:Binding Typ}" x:Name="Typ"/>
-                                <Label Style="{StaticResource STDText}" Grid.Column="1" Text=":">
-                                    <Label.Triggers>
-                                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Typ}, Path=Text.Length}" Value="0">
-                                            <Setter Property="IsVisible" Value="False"/>
-                                        </DataTrigger>
-                                    </Label.Triggers>
-                                </Label>
-                                <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{x:Binding Bezeichner}"/>
-                                <Label Style="{StaticResource STDText}" Grid.Column="3" Text="{x:Binding Zusatz}"/>
-                            </Grid>
-                            <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="SlateGray"/>
-                        </Grid>
-                    </popuplayout:SfPopupLayout.Content>
-                </popuplayout:SfPopupLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="LinkListThingTemplateExtendet" x:DataType="charmodel:Thing">
+                <Grid RowSpacing="1" VerticalOptions="Center" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ClickToShowPopup_Clicked"/>
+                    </Grid.GestureRecognizers>
+                    <Grid Margin="5,0,0,0" VerticalOptions="Center" ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Style="{StaticResource STDText}" Grid.Column="0" Text="{x:Binding Typ}" x:Name="Typ"/>
+                        <Label Style="{StaticResource STDText}" Grid.Column="1" Text=":">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Typ}, Path=Text.Length}" Value="0">
+                                    <Setter Property="IsVisible" Value="False"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{x:Binding Bezeichner}"/>
+                        <Label Style="{StaticResource STDText}" Grid.Column="3" Text="{x:Binding Zusatz}"/>
+                    </Grid>
+                    <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="SlateGray"/>
+                </Grid>
             </DataTemplate>
             <DataTemplate x:Key="LinkListPropertyTemplate" x:DataType="charmodel:ConnectProperty">
                 <Grid>

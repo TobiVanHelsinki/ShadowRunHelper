@@ -89,8 +89,6 @@ namespace ShadowRunHelperViewer.UI.Controls
 
         private void Cancel_Clicked(object sender, System.EventArgs e)
         {
-            //TODO in Backbutton kette aufnehmen
-            //Closing fehler untersuchen
             ClosingRequested?.Invoke(this, new EventArgs());
         }
 
@@ -181,9 +179,19 @@ namespace ShadowRunHelperViewer.UI.Controls
         {
             if (Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
             {
+                popup.PopupView.ContentTemplate = Resources["MultipleConnectedValuesTemplate"] as DataTemplate;
+                popup.PopupView.PopupStyle.OverlayOpacity = 0;
+                popup.PopupView.AnimationMode = AnimationMode.Zoom;
+                popup.PopupView.AutoSizeMode = AutoSizeMode.None;
+                popup.PopupView.ShowHeader = false;
+                popup.PopupView.ShowFooter = false;
                 popup.ShowAtTouchPoint();
-                //popup.ShowRelativeToView(sender as View ?? popup, RelativePosition.AlignBottom, 0, 0);
+                //popup.ShowRelativeToView(sender as View ?? popup, RelativePosition.AlignToRightOf);
             }
+        }
+        private void CatMoreMenu(object sender, EventArgs e)
+        {
+
         }
     }
 }
