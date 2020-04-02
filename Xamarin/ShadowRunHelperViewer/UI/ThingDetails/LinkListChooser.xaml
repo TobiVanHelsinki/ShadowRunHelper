@@ -6,7 +6,6 @@ xmlns:d="http://xamarin.com/schemas/2014/forms/design"
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
 xmlns:local="clr-namespace:ShadowRunHelperViewer"
-xmlns:popuplayout="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
 xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
 xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
 xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable" 
@@ -57,8 +56,8 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="MultipleConnectedValuesTemplate">
-                <xforms:SfListView Grid.Row="1" VerticalOptions="Start" Orientation="Vertical"
-                                           AutoFitMode="Height"
+                <xforms:SfListView Orientation="Vertical" WidthRequest="250" HeightRequest="130"
+                                           SelectionMode="None"
                                            ItemTemplate="{StaticResource LinkListPropertyTemplate}"
                                            ItemsSource="{Binding ., Converter={StaticResource O_GetCalcPropertiesConvertert}}"/>
             </DataTemplate>
@@ -96,7 +95,7 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="LinkListPropertyTemplate" x:DataType="charmodel:ConnectProperty">
-                <Grid>
+                <Grid HorizontalOptions="Start">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>

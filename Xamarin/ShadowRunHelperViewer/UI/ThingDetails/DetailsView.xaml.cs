@@ -12,7 +12,6 @@ using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Strings;
 using ShadowRunHelperViewer.UI.Controls;
 using ShadowRunHelperViewer.UI.Resources;
-using SharedCode.Ressourcen;
 using Syncfusion.XForms.PopupLayout;
 using TLIB;
 using Xamarin.Forms;
@@ -74,7 +73,10 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Close_Clicked(object sender, EventArgs e) => CloseSelf();
+        private void Close_Clicked(object sender, EventArgs e)
+        {
+            CloseSelf();
+        }
 
         internal bool OnBackButtonPressed()
         {

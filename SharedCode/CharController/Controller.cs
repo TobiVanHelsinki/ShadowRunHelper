@@ -137,12 +137,13 @@ namespace ShadowRunHelper.CharController
         public void OrderData(Ordering order)
         {
             ClearData();
-            Data.AddRange(Data.OrderBy(x => order switch
+            var dataTemp = Data;
+            Data.AddRange(dataTemp.OrderBy(x => (order switch
             {
                 Ordering.ABC => x.Bezeichner,
                 Ordering.Type => x.Typ,
                 _ => x.Order.ToString()
-            }));
+            })));
         }
     }
 }

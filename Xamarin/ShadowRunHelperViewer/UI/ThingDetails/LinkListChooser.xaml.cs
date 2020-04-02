@@ -177,7 +177,7 @@ namespace ShadowRunHelperViewer.UI.Controls
 
         private void ClickToShowPopup_Clicked(object sender, EventArgs e)
         {
-            if (Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
+            if (sender is View v && Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
             {
                 popup.PopupView.ContentTemplate = Resources["MultipleConnectedValuesTemplate"] as DataTemplate;
                 popup.PopupView.PopupStyle.OverlayOpacity = 0;
@@ -185,13 +185,9 @@ namespace ShadowRunHelperViewer.UI.Controls
                 popup.PopupView.AutoSizeMode = AutoSizeMode.None;
                 popup.PopupView.ShowHeader = false;
                 popup.PopupView.ShowFooter = false;
+                popup.PopupView.BindingContext = v.BindingContext;
                 popup.ShowAtTouchPoint();
-                //popup.ShowRelativeToView(sender as View ?? popup, RelativePosition.AlignToRightOf);
             }
-        }
-        private void CatMoreMenu(object sender, EventArgs e)
-        {
-
         }
     }
 }

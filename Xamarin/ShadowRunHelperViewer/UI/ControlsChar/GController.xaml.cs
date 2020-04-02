@@ -245,16 +245,17 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        private void CatMoreMenu(object sender, EventArgs e)
+        private void MoreMenu(object sender, EventArgs e)
         {
-            if (Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
+            if (sender is View v && Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
             {
                 popup.PopupView.ContentTemplate = Resources["CatMoreTemplate"] as DataTemplate;
-                popup.PopupView.AnimationMode = AnimationMode.SlideOnRight;
+                popup.PopupView.AnimationMode = AnimationMode.SlideOnTop;
                 popup.PopupView.AutoSizeMode = AutoSizeMode.Both;
                 popup.PopupView.ShowHeader = false;
                 popup.PopupView.ShowFooter = false;
-                popup.ShowRelativeToView(sender as View ?? popup, RelativePosition.AlignToRightOf);
+                popup.PopupView.BindingContext = v.BindingContext;
+                popup.ShowRelativeToView(v, RelativePosition.AlignToLeftOf);
             }
         }
         private void AddSep(object sender, EventArgs e)

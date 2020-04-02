@@ -15,6 +15,12 @@
     <resources:O_ThingDef2String x:Key="O_ThingDef2String"/>
     <resources:O_ItemState2String x:Key="O_ItemState2String"/>
     <resources:IO_DebugConverter x:Key="IO_DebugConverter"/>
+
+    <OnPlatform x:Key="ButtonSize" x:TypeArguments="x:Double">
+        <On Platform="Android" Value="45"/>
+        <On Platform="UWP, WinRT, WinPhone" Value="-1"/>
+    </OnPlatform>
+
     <Style x:Key="STDText" TargetType="Label">
         <Setter Property="VerticalOptions" Value="Start"/>
         <Setter Property="Margin" Value="0"/>
@@ -32,6 +38,7 @@
         <Setter Property="TextColor" Value="FloralWhite"/>
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="WidthRequest" Value="{StaticResource ButtonSize}"/>
     </Style>
     <Style x:Key="IconLabel" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
@@ -50,8 +57,6 @@
         <Setter Property="BackgroundColor" Value="#D8D6D7"/>
         <Setter Property="Margin" Value="3"/>
         <Setter Property="Padding" Value="3"/>
-        <Setter Property="VerticalOptions" Value="Center"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
     </Style>
     <Style x:Key="HeadLineText" TargetType="Label" BasedOn="{StaticResource STDText}">
         <Setter Property="Margin" Value="0"/>

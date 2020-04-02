@@ -12,7 +12,9 @@ using ShadowRunHelper;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
+using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
+using Syncfusion.XForms.PopupLayout;
 using TAPPLICATION.IO;
 using TLIB;
 using Xamarin.Forms;
@@ -214,13 +216,27 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         #region Other File Action
 
+        private void MoreMenu(object sender, EventArgs e)
+        {
+            if (sender is View v && Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
+            {
+                popup.PopupView.ContentTemplate = Resources["MoreTemplate"] as DataTemplate;
+                popup.PopupView.AnimationMode = AnimationMode.Zoom;
+                popup.PopupView.AutoSizeMode = AutoSizeMode.Both;
+                popup.PopupView.ShowHeader = false;
+                popup.PopupView.ShowFooter = false;
+                popup.PopupView.BindingContext = v.BindingContext;
+                popup.ShowAtTouchPoint();
+                popup.ShowRelativeToView(v ?? popup, RelativePosition.AlignToLeftOf);
+            }
+        }
         private void FileRename(object sender, EventArgs e)
         {
         }
 
         private void FileCopy(object sender, EventArgs e)
         {
-            if (sender is MenuItem v && v.BindingContext is ExtendetFileInfo file)
+            if (sender is View v && v.BindingContext is ExtendetFileInfo file && Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
             {
                 try
                 {
@@ -229,6 +245,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                     Path.GetExtension(file.FullName));
                     SharedIO.CurrentIO.CopyTo(file, new FileInfo(newName));
                     RefreshCharList();
+                    popup.IsOpen = false;
                 }
                 catch (PathTooLongException ex)
                 {
@@ -240,23 +257,21 @@ namespace ShadowRunHelperViewer.UI.Pages
                 }
             }
         }
-
         private void FileDelete(object sender, EventArgs e)
         {
-            if (sender is MenuItem v && v.BindingContext is ExtendetFileInfo file)
+            if (sender is View v && v.BindingContext is ExtendetFileInfo file && Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
             {
                 Log.DisplayChoice(UiResources.Delete, UiResources.FileDeleteTip, new Options() { },
-                    (UiResources.Yes, async () => { await SharedIO.CurrentIO.RemoveFile(file); RefreshCharList(); }
-                ),
-                    (UiResources.No, () => { }
-                )
+                    (UiResources.Yes, async () => { await SharedIO.CurrentIO.RemoveFile(file); RefreshCharList(); }),
+                    (UiResources.No, () => { } )
                     );
+                popup.IsOpen = false;
             }
         }
 
         private async void FileExport(object sender, EventArgs e)
         {
-            if (sender is MenuItem v && v.BindingContext is ExtendetFileInfo file)
+            if (sender is View v && v.BindingContext is ExtendetFileInfo file && Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
             {
                 try
                 {
@@ -271,6 +286,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 {
                     Log.Write("Error at copy", ex2, logType: LogType.Error);
                 }
+                popup.IsOpen = false;
             }
         }
         #endregion Other File Action

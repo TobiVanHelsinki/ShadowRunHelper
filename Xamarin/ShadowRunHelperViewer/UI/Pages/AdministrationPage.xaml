@@ -6,7 +6,7 @@
              xmlns:io="clr-namespace:TAPPLICATION.IO;assembly=TAPPLICATION"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
-             xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
+             xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther" xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.Pages.AdministrationPage"
              BackgroundColor="White">
@@ -15,6 +15,58 @@
             <ResourceDictionary.MergedDictionaries>
                 <local:SharedStyles/>
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="MoreTemplate">
+                <StackLayout WidthRequest="250">
+                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="FileRename">
+                        <sfbtn:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="&#xf246;" Style="{StaticResource IconLabel}"/>
+                                <Label Text="{resx:UiResources Rename}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                            </Grid>
+                        </sfbtn:SfButton.Content>
+                    </sfbtn:SfButton>
+                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="FileExport">
+                        <sfbtn:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="&#xf56e;" Style="{StaticResource IconLabel}"/>
+                                <Label Text="{resx:UiResources Export}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                            </Grid>
+                        </sfbtn:SfButton.Content>
+                    </sfbtn:SfButton>
+                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="FileCopy">
+                        <sfbtn:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="&#xf0c5;" Style="{StaticResource IconLabel}"/>
+                                <Label Text="{resx:UiResources Duplicate}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                            </Grid>
+                        </sfbtn:SfButton.Content>
+                    </sfbtn:SfButton>
+                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="FileDelete">
+                        <sfbtn:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="&#xf2ed;" Style="{StaticResource IconLabel}"/>
+                                <Label Text="{resx:UiResources Delete}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                            </Grid>
+                        </sfbtn:SfButton.Content>
+                    </sfbtn:SfButton>
+                </StackLayout>
+            </DataTemplate>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -64,12 +116,6 @@
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="io:ExtendetFileInfo">
                         <ViewCell>
-                            <ViewCell.ContextActions>
-                                <MenuItem Clicked="FileRename" Text="{resx:UiResources Rename}" AutomationProperties.HelpText="{resx:UiResources FileRenameX}"/>
-                                <MenuItem Clicked="FileExport" Text="{resx:UiResources Export}" AutomationProperties.HelpText="{resx:UiResources FileExportX}"/>
-                                <MenuItem Clicked="FileCopy" Text="{resx:UiResources Duplicate}" AutomationProperties.HelpText="{resx:UiResources FileCopyX}"/>
-                                <MenuItem Clicked="FileDelete" Text="{resx:UiResources Delete}" AutomationProperties.HelpText="{resx:UiResources FileDeleteX}" IsDestructive="True"/>
-                            </ViewCell.ContextActions>
                             <Grid Padding="0" Margin="0" RowSpacing="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -86,6 +132,7 @@
                                         <Label Text="{x:Binding LastAccessTime}" TextColor="SlateGray" FontSize="Caption" VerticalOptions="Center"/>
                                         <Label Text=")" Margin="0,0,5,0" TextColor="SlateGray" FontSize="Caption" VerticalOptions="Center"/>
                                         <Label Text="{x:Binding Length, Converter={StaticResource O_HumanizeFileSize}}" TextColor="SlateGray" FontSize="Caption" VerticalOptions="Center"/>
+                                        <Button Text="&#xf141;" Clicked="MoreMenu" Style="{StaticResource IconButton}" VerticalOptions="End" Margin="2" Padding="2"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <BoxView Color="Black" Grid.Row="1" HeightRequest="1"/>
