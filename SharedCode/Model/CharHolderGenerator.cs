@@ -1,11 +1,10 @@
 ﻿//Author: Tobi van Helsinki
 
-///Author: Tobi van Helsinki
-
 using ShadowRunHelper.CharModel;
 using System;
 using System.IO;
 using System.Linq;
+using TAPPLICATION.IO;
 
 namespace ShadowRunHelper.Model
 {
@@ -13,7 +12,15 @@ namespace ShadowRunHelper.Model
     {
         public static CharHolder TestAllCats(int count = 1)
         {
-            var CH = new CharHolder();
+            var testChar = new CharHolder();
+            try
+            {
+                testChar.FileInfo = new FileInfo(Path.Combine(SharedIO.CurrentSavePath, "CompleteTestChar" + Constants.DATEIENDUNG_CHAR));
+            }
+            catch (Exception)
+            {
+            }
+
             var c = 0;
             foreach (var item in TypeHelper.ThingTypeProperties.Where(x => x.Usable))
             {
@@ -21,8 +28,8 @@ namespace ShadowRunHelper.Model
                 {
                     try
                     {
-                        var newThing = CH.Add(item.ThingType);
-                        newThing.Bezeichner = "Test";
+                        var newThing = testChar.Add(item.ThingType);
+                        newThing.Bezeichner = "Test " + i;
                         newThing.Notiz = @"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
                         newThing.Typ = item.Type.Name;
                         newThing.Value.BaseValue = c++;
@@ -34,12 +41,12 @@ namespace ShadowRunHelper.Model
                     }
                 }
             }
-            CH.CTRLItem[0].Value.BaseValue = 123;
-            CH.CTRLHandlung[0].Bezeichner = "Handlung mit Cons";
-            CH.CTRLHandlung[0].Value.BaseValue = 55;
-            CH.CTRLHandlung[0].Value.Connected.Add(CH.CTRLItem[0].Value);
-            CH.AfterLoad();
-            return CH;
+            testChar.CTRLItem[0].Value.BaseValue = 123;
+            testChar.CTRLHandlung[0].Bezeichner = "Handlung mit Cons";
+            testChar.CTRLHandlung[0].Value.BaseValue = 55;
+            testChar.CTRLHandlung[0].Value.Connected.Add(testChar.CTRLItem[0].Value);
+            testChar.AfterLoad();
+            return testChar;
         }
 
         public static CharHolder CreateEmtpyChar()
