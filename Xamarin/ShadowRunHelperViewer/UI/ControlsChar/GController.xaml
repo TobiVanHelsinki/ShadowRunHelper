@@ -8,7 +8,7 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:controlschar="clr-namespace:ShadowRunHelperViewer.UI.ControlsChar"
-             xmlns:chartemplates="clr-namespace:ShadowRunHelperViewer.UI.CharTemplates" xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:chartemplates="clr-namespace:ShadowRunHelperViewer.UI.CharTemplates" xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.GController">
     <ContentView.Resources>
@@ -409,6 +409,9 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                 </listview:SfListView.RightSwipeTemplate>
             </listview:SfListView>
             <controlschar:DetailsView x:Name="DetailsPane" ClosingRequested="DetailsPane_ClosingRequested"/>
+            <controlsother:EmptyListView Grid.Row="1" ItemsSource="{Binding Data, Mode=OneWay}" Clicked="Add"
+                                         WidthRequest="300" BodyText="{resx:UiResources EmptyCat}"/>
+
         </Grid>
     </ContentView.Content>
 </ContentView>

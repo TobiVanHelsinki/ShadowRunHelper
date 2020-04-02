@@ -323,7 +323,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        private async void ExampleChar_Clicked(object sender, EventArgs e)
+        private void ExampleChar_Clicked(object sender, EventArgs e)
         {
             try
             {
@@ -383,5 +383,6 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
         #endregion Design
+      
     }
 }
