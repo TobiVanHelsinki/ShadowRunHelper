@@ -27,7 +27,6 @@ namespace ShadowRunHelperViewer.Droid
 
             #region Init Libs
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
-            Syncfusion.XForms.Android.PopupLayout.SfPopupLayoutRenderer.Init();
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             TAPPLICATION_Xamarin.Init.Do();
@@ -37,6 +36,7 @@ namespace ShadowRunHelperViewer.Droid
             #endregion Init Libs
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Syncfusion.XForms.Android.PopupLayout.SfPopupLayoutRenderer.Init();
             SetAccentColor();
             LoadApplication(new App());
             //DispalyFolderPaths();
