@@ -1,10 +1,14 @@
-﻿using SharedCode.Ressourcen;
+﻿//Author: Tobi van Helsinki
+
+using SharedCode.Ressourcen;
+using System;
 using System.Globalization;
 
 namespace ShadowRunHelper
 {
     public static class CustomManager
     {
+        [Obsolete]
         public static string GetString(string s)
         {
             if (Strings.Error_CopyFiles == null)
