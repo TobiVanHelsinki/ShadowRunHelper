@@ -92,6 +92,7 @@ namespace ShadowRunHelper
         Initiation = 30,
         Note = 31,
         Favorite = 32,
+        Drones = 33,
     }
 
     public class ThingTypeProperty : INotifyPropertyChanged
@@ -182,7 +183,7 @@ namespace ShadowRunHelper
 
     public static class TypeHelper
     {
-        public const int ThingDefsCount = 27;
+        public const int ThingDefsCount = 28;
 
         public static List<ThingTypeProperty> ThingTypeProperties { get; set; } = new List<ThingTypeProperty>() {
            new ThingTypeProperty(null,ThingDefs.Undef, -1, -1){ Usable = false },
@@ -219,6 +220,7 @@ namespace ShadowRunHelper
            new ThingTypeProperty(typeof(Initiation),ThingDefs.Initiation,3,7, "Initiation"),
            new ThingTypeProperty(typeof(Note),ThingDefs.Note,4,0, "Note"),
            new ThingTypeProperty(typeof(Thing),ThingDefs.Favorite,4,1, "Favorite"),
+           new ThingTypeProperty(typeof(Drones),ThingDefs.Drones, 2, 5, nameof(Drones)),
         };
 
         public static string ThingDefToString(this ThingDefs eThingDefToConvert, bool Mehrzahl)

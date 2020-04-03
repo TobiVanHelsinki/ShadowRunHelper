@@ -866,4 +866,10 @@
   <data name="Content_Widerstand_Note" xml:space="preserve">
     <value>Toxinwiderstand, Erschöpfung, Krankheitswiderstand</value>
   </data>
+  <data name="DronesM_" xml:space="preserve">
+    <value>Dronen</value>
+  </data>
+  <data name="Drones_" xml:space="preserve">
+    <value>Drone</value>
+  </data>
 </root>

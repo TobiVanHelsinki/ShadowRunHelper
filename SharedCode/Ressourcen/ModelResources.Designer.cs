@@ -664,6 +664,24 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Drone ähnelt.
+        /// </summary>
+        public static string Drones_ {
+            get {
+                return ResourceManager.GetString("Drones_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Drones ähnelt.
+        /// </summary>
+        public static string DronesM_ {
+            get {
+                return ResourceManager.GetString("DronesM_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Effect ähnelt.
         /// </summary>
         public static string Eigenschaft_Auswirkungen {

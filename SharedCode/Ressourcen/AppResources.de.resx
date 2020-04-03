@@ -366,6 +366,7 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="VersionHistory" xml:space="preserve">
     <value>Version 1.9.5
 [new] Neue Chars haben mehr Eigenschaften
+[new] Category is: Drones
 Version 1.9.1
 [new] BackUp Versionierung: Die Optionen, an einen gespeicherten Char Zeit oder Fortschritt anzuhängen führten zu zu vielen Fehlern und Ausnahmen. Daher wurden sie entfernt. Stattdessen gibt es nun eine BackUp Versionierung, die beide Optionen zusammenfasst und sinnvoller ist.
 [new] Neu gestalteter Header für die Char-Page.

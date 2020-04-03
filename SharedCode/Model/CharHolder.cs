@@ -66,6 +66,7 @@ namespace ShadowRunHelper.Model
         public ActiveItemController<Kommlink> CTRLKommlink { get; } = new ActiveItemController<Kommlink>();
         public ActiveItemController<CyberDeck> CTRLCyberDeck { get; } = new ActiveItemController<CyberDeck>();
         public ActiveItemController<Vehikel> CTRLVehikel { get; } = new ActiveItemController<Vehikel>();
+        public ActiveItemController<Drones> CTRLDrones { get; } = new ActiveItemController<Drones>();
         public ActiveItemController<Panzerung> CTRLPanzerung { get; } = new ActiveItemController<Panzerung>();
         public Controller<Fertigkeit> CTRLFertigkeit { get; } = new Controller<Fertigkeit>();
         public Controller<Handlung> CTRLHandlung { get; } = new Controller<Handlung>();

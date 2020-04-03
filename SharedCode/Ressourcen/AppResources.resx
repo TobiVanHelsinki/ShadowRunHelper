@@ -349,6 +349,7 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="VersionHistory" xml:space="preserve">
     <value>Version 1.9.5
 [new] New Char have more Contents
+[new] Category is: Drones
 Version 1.9.1
 [new] BackUp Versioning: The options to append time or progress to a saved char led to too many errors and exceptions. Therefore, they have been removed. Instead, there is now a BackUp versioning that combines both options and makes more sense.
 new] Redesigned Char Page header.
