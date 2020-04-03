@@ -30,16 +30,16 @@
                     <ScrollView.Resources>
                         <DataTemplate x:Key="EntryTemplate">
                             <Frame Style="{DynamicResource ItemFrame}" Margin="0">
-                                <Grid WidthRequest="220" Style="{DynamicResource TemplateGrid}">
+                                <Grid x:Name="EntryPanel" WidthRequest="170" Style="{DynamicResource TemplateGrid}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
-                                    <Label x:Name="Type" FontAttributes="Italic"/>
-                                    <Grid x:Name="ContentPanel" Grid.Column="1" BackgroundColor="Transparent"/>
+                                    <Label x:Name="Type" Style="{DynamicResource STDText}"/>
+                                    <Grid  Grid.Row="1" HorizontalOptions="End" BackgroundColor="Transparent"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -52,7 +52,7 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Label Text="{resx:ModelResources Person_}" Style="{StaticResource SubTitle}"/>
-                        <resources:WrapLayout x:Name="ContentLayout" HorizontalOptions="CenterAndExpand" Grid.Row="1"/>
+                        <resources:WrapLayout x:Name="PersonDetailsPanel" HorizontalOptions="CenterAndExpand" Grid.Row="1"/>
                         <Label Text="{resx:ModelResources Person_Beschreibung_}" Grid.Row="2" Style="{StaticResource SubTitle}"/>
                         <Editor Text="{x:Binding Person.Zusammenfassung}" Grid.Row="3" MinimumHeightRequest="30"
                                 IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>

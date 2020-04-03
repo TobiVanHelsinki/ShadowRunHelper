@@ -300,7 +300,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 var newchar = CharHolderGenerator.CreateCharWithStandardContent();
                 SettingsModel.I.COUNT_CREATIONS++;
                 AppModel.Instance.MainObject = (newchar);
-                AppModel.Instance.RequestNavigation(ProjectPages.Char);
+                AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
             }
             catch (Exception ex)
             {

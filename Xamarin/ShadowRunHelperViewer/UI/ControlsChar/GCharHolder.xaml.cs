@@ -13,6 +13,7 @@ using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
 using ShadowRunHelperViewer.UI.Pages;
+using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Ressourcen;
 using TLIB;
 using Xamarin.Forms;
@@ -104,9 +105,14 @@ namespace ShadowRunHelperViewer
             ActivateControllerOfType(MyChar.Favorites.Count == 0 ? ThingDefs.Handlung : ThingDefs.Favorite);
         }
 
-        public void AfterLoad()
+        public void AfterLoad(ProjectPagesOptions pageOptions)
         {
             Features.Ui.SetCustomTitleBar(DependencyService.Get<IFormsInteractions>().GetRenderer(WindowsDropFrame));
+
+            if (pageOptions == ProjectPagesOptions.CharNewChar)
+            {
+                CreatePersonView(this, new EventArgs());
+            }
         }
 
         private void CustomTitleBarChanges(double LeftSpace, double RigthSpace, double Heigth)
@@ -203,7 +209,7 @@ namespace ShadowRunHelperViewer
             {
                 return;
             }
-            if (CharPerson.CreateContent() is View v && v.FindByName("ContentLayout") is Layout<View> contentLayout)
+            if (CharPerson.CreateContent() is View v && v.FindByName("PersonDetailsPanel") is Layout<View> contentLayout)
             {
                 v.BindingContext = MyChar.Person;
                 ContentPanel.Content = v;
@@ -226,21 +232,29 @@ namespace ShadowRunHelperViewer
                         }
                         else
                         {
-                            entrycontent = new Entry();
-                            entrycontent.Margin = new Thickness(entrycontent.Margin.VerticalThickness + 4);
-                            entrycontent.SetBinding(Entry.TextProperty, item.Name);
+                            entrycontent = new Entry()
+                            {
+                                Margin = new Thickness(SettingsModel.I.CurrentSpacingStrategy),
+                                HorizontalOptions = LayoutOptions.Fill,
+                            };
+                            entrycontent.SetBinding(Entry.TextProperty, item.Name, BindingMode.TwoWay);
+                            entrycontent.Focus(); //without content is not shown
                         }
                     }
                     else
                     {
-                        entrycontent = new Label();
+                        entrycontent = new Label
+                        {
+                            HorizontalOptions = LayoutOptions.End
+                        };
                         entrycontent.SetBinding(Label.TextProperty, item.Name);
                         if (item.PropertyType == typeof(DateTime))
                         {
                             entrycontent.SetBinding(Label.TextProperty, item.Name, stringFormat: "{0:d}");
                         }
                     }
-                    entry.FindByName<Layout<View>>("ContentPanel").Children.Add(entrycontent);
+                    Grid.SetRow(entrycontent, 1);
+                    entry.FindByName<Layout<View>>("EntryPanel").Children.Add(entrycontent);
                     contentLayout.Children.Add(entry);
                 }
             }

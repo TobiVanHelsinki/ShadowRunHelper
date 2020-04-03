@@ -51,7 +51,7 @@ namespace ShadowRunHelperViewer
             {
                 var gChar = new GCharHolder(myChar) { Margin = 0, Padding = 0, BackgroundColor = Color.Transparent };
                 G.Children.Add(gChar);
-                gChar.AfterLoad();
+                gChar.AfterLoad(pageOptions);
                 return new[] {
                     new SubMenuAction(UiResources.Save,"\xf0c7",new Command(()=> myChar.SetSaveTimerTo(0, true))),
                     new SubMenuAction(UiResources.SaveAtCurrentPlace,"\xf56f",new Command(()=> SaveIntern(myChar))),

@@ -446,36 +446,6 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        double schaden_K_max;
-        [Used_UserAttribute]
-        public double Schaden_K_max
-        {
-            get { return schaden_K_max; }
-            set
-            {
-                if (value != schaden_K_max)
-                {
-                    schaden_K_max = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        double schaden_G_max;
-        [Used_UserAttribute]
-        public double Schaden_G_max
-        {
-            get { return schaden_G_max; }
-            set
-            {
-                if (value != schaden_G_max)
-                {
-                    schaden_G_max = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
         double schaden_K_max_mod;
         [Used_UserAttribute]
         public double Schaden_K_max_mod

@@ -1,10 +1,10 @@
 ﻿///Author: Tobi van Helsinki
 
-using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using ShadowRunHelper.CharModel;
 
 namespace ShadowRunHelper.CharController
 {
@@ -83,14 +83,14 @@ namespace ShadowRunHelper.CharController
 
         protected void RefreshLimitSchadenG()
         {
-            Person.Schaden_G_max = 8 + Math.Ceiling(AttributeRef.Willen.Value.Value / 2) + Person.Schaden_G_max_mod;
-            MaxDamageG.Value.BaseValue = Person.Schaden_G_max;
+            MaxDamageG.Value.BaseValue = 8 + Math.Ceiling(AttributeRef.Willen.Value.Value / 2) + Person.Schaden_G_max_mod;
+            //Person.Schaden_G_max = MaxDamageG.Value.BaseValue;
         }
 
         protected void RefreshLimitSchadenK()
         {
-            Person.Schaden_K_max = 8 + Math.Ceiling(AttributeRef.Konsti.Value.Value / 2) + Person.Schaden_K_max_mod;
-            MaxDamageK.Value.BaseValue = Person.Schaden_K_max;
+            MaxDamageK.Value.BaseValue = 8 + Math.Ceiling(AttributeRef.Konsti.Value.Value / 2) + Person.Schaden_K_max_mod;
+            //Person.Schaden_K_max=MaxDamageK.Value.BaseValue;
         }
 
         //Physical Limit: (STR x2 + BOD + REA) / 3
