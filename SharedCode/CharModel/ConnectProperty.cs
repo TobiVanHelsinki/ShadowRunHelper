@@ -134,15 +134,33 @@ namespace ShadowRunHelper.CharModel
 
         private void Recalculate()
         {
-            var OldTrueValue = TrueValue;
-            var OldValue = Value;
-            TrueValue = BaseValue + Connected?.Select(x => x.Value).Sum() ?? 0.0;
+            var oldTrueValue = TrueValue;
+            var oldValue = Value;
+            var tempSum = 0.0;
+            foreach (var item in Connected)
+            {
+                if (HasCircularReference(item) || IsForbiddenType(item))
+                {
+                    Log.Write("Thing has caused a circular reference: " + item.Owner + "." + item.DisplayName + ". I will try to remove it asap.", logType: LogType.Error, true);
+                    try
+                    {
+                        Connected.Remove(item);
+                    }
+                    catch { }
+                }
+                else
+                {
+                    tempSum += item.Value;
+                }
+            }
+            TrueValue = BaseValue + tempSum;
+            //TrueValue = BaseValue + Connected?.Select(x => x.Value).Sum() ?? 0.0;
             Value = Active ? TrueValue : 0.0;
-            if (OldTrueValue != TrueValue)
+            if (oldTrueValue != TrueValue)
             {
                 NotifyPropertyChanged(nameof(TrueValue));
             }
-            if (OldValue != Value)
+            if (oldValue != Value)
             {
                 NotifyPropertyChanged(nameof(Value));
             }
@@ -187,11 +205,7 @@ namespace ShadowRunHelper.CharModel
             {
                 foreach (var item in e.NewItems.OfType<ConnectProperty>().ToList())
                 {
-                    if (HasCircularReference(item) || IsForbiddenType(item))
-                    {
-                        Connected.Remove(item); //TODO Collection kann nicht geändert werden während collection changed
-                    }
-                    else
+                    if (!HasCircularReference(item) && !IsForbiddenType(item))
                     {
                         item.PropertyChanged += ConnectedItem_PropertyChanged;
                     }
@@ -214,8 +228,6 @@ namespace ShadowRunHelper.CharModel
 
         private bool IsForbiddenType(ConnectProperty item)
         {
-            //TODO Implement Filter
-            //public IEnumerable<ThingDefs> FilterOut { get; set; }
             return false;
         }
 

@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using ShadowRunHelper.CharModel;
 using System;
@@ -6,11 +8,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
-using TLIB;
 
 namespace ShadowRunHelper.Model
 {
+    [Obsolete("But needs to stay for compatibility to old save files")]
     public class LinkList : ObservableCollection<AllListEntry>
     {
         public IEnumerable<ThingDefs> FilterOut { get; set; }
