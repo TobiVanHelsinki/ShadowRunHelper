@@ -84,6 +84,12 @@ namespace ShadowRunHelperViewer.UI.Pages
             ContentPage_SizeChanged(this, new EventArgs());
         }
 
+        protected override void OnAppearing()
+        {
+            AppHolder.CheckVersion();
+            base.OnAppearing();
+        }
+
         public bool OnKeyDown(string key)
         {
             return false;
@@ -125,16 +131,34 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        private void Log_DisplayMessageRequested(LogMessage logmessage)
-        {
-            DisplayAlert(logmessage.LogType.ToString(), logmessage.Message, "OK");
-        }
-
         private void AppModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             NavCharBtn.IsEnabled = AppModel.Instance.MainObject != null;
             Features.Ui.DisplayCurrentCharName();
         }
+
+        #region Notifications
+
+        private async void Log_DisplayMessageRequested(LogMessage logmessage)
+        {
+            if (logmessage.LogType == LogType.Error)
+            {
+                DisplayAlert(logmessage.LogType.ToString(), logmessage.Message, "OK");
+            }
+            else
+            {
+                NotificationPanel.IsVisible = true;
+                NotificationPanel.Opacity = 225;
+                NotificationHeaderText.Text = logmessage.LogType.ToString();
+                NotificationText.Text = logmessage.Message;
+                await Task.Delay(1000);
+                await NotificationPanel.FadeTo(0, 2000, Easing.Linear);
+                NotificationPanel.IsVisible = false;
+            }
+        }
+
+        private void NotificationTap(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Info, ProjectPagesOptions.SettingsLog);
+        #endregion Notifications
 
         #region Design
 
@@ -182,6 +206,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             //TipText.WidthRequest = newSize;
             Busyindicator.ViewBoxHeight = newSize;
             Busyindicator.ViewBoxWidth = newSize;
+            NotificationPanel.WidthRequest = Width / 3;
         }
         #endregion ViewMode
 

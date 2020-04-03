@@ -167,6 +167,16 @@
                             </StackLayout>
                         </Frame>
                     </StackLayout>
+                    <Frame x:Name="NotificationPanel" BackgroundColor="Accent" CornerRadius="5" Margin="5" Padding="5,5,50,100"
+                              VerticalOptions="End" HorizontalOptions="End" IsVisible="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="NotificationTap"/>
+                        </Frame.GestureRecognizers>
+                        <StackLayout Orientation="Vertical">
+                            <Label x:Name="NotificationHeaderText" LineBreakMode="NoWrap" FontSize="Large"/>
+                            <Label x:Name="NotificationText" LineBreakMode="WordWrap" FontSize="Medium"/>
+                        </StackLayout>
+                    </Frame>
                 </Grid>
             </popuplayout:SfPopupLayout.Content>
         </popuplayout:SfPopupLayout>

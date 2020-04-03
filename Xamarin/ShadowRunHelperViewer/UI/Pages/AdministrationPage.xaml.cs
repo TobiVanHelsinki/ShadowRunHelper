@@ -352,6 +352,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                     new SubMenuAction(UiResources.OpenFolder,"\xf07c",new Command(()=> SharedIO.CurrentIO.OpenFolder(SharedIO.CurrentSaveDir))),
 #if DEBUG
                 new SubMenuAction("Debug Char","\xf188",new Command(()=> DebugChar_Clicked(this, new EventArgs()))),
+                new SubMenuAction("Debug Message","\xf188",new Command(()=> Log.Write("Ein Wilder Test erscheint!", LogType.Warning, true))),
 #endif
                 };
         }

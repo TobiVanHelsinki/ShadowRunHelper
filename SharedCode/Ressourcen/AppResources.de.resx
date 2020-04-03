@@ -364,7 +364,9 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
     <value>Ordner konnte nicht gelesen werden</value>
   </data>
   <data name="VersionHistory" xml:space="preserve">
-    <value>Version 1.9.1
+    <value>Version 1.9.5
+[new] Neue Chars haben mehr Eigenschaften
+Version 1.9.1
 [new] BackUp Versionierung: Die Optionen, an einen gespeicherten Char Zeit oder Fortschritt anzuhängen führten zu zu vielen Fehlern und Ausnahmen. Daher wurden sie entfernt. Stattdessen gibt es nun eine BackUp Versionierung, die beide Optionen zusammenfasst und sinnvoller ist.
 [new] Neu gestalteter Header für die Char-Page.
 Version 1.8.5

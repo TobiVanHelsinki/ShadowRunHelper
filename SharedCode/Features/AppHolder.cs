@@ -1,9 +1,8 @@
 ﻿//Author: Tobi van Helsinki
 
-///Author: Tobi van Helsinki
-
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
+using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -116,7 +115,7 @@ namespace ShadowRunHelper
 
         private static void SetConstantStuff()
         {
-            SharedConstants.APP_VERSION_BUILD_DELIM = String.Format("{0}.{1}.{2}.{3}", Features.AppInformation.Version_Major, Features.AppInformation.Version_Minor, Features.AppInformation.Version_Build, Features.AppInformation.Version_Revision);
+            SharedConstants.APP_VERSION_BUILD_DELIM = string.Format("{0}.{1}.{2}.{3}", Features.AppInformation.Version_Major, Features.AppInformation.Version_Minor, Features.AppInformation.Version_Build, Features.AppInformation.Version_Revision);
             SharedConstants.APP_PUBLISHER_MAIL = Constants.APP_PUBLISHER_MAIL_TvH;
             SharedConstants.APP_PUBLISHER = Constants.APP_PUBLISHER_TvH;
             SharedConstants.APP_STORE_ID = Constants.APP_STORE_ID_SRE;
@@ -211,6 +210,16 @@ namespace ShadowRunHelper
                 Settings.LAST_SAVE_INFO = null;
                 Settings.CHARINTEMPSTORE = false;
                 Model.RequestNavigation(ProjectPages.Char);
+            }
+        }
+
+        public static void CheckVersion()
+        {
+            //if (SettingsModel.I.LAST_APP_VERSION != SharedConstants.APP_VERSION_BUILD_DELIM)
+            {
+                Log.Write(AppResources.VersionHistory);
+                Log.Write(string.Format(AppResources.Notification_NewVersion, SharedConstants.APP_VERSION_BUILD_DELIM), true);
+                SettingsModel.I.LAST_APP_VERSION = SharedConstants.APP_VERSION_BUILD_DELIM;
             }
         }
 
