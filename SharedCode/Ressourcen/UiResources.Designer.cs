@@ -349,6 +349,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create something new! ähnelt.
+        /// </summary>
+        public static string CreateSomethingNew {
+            get {
+                return ResourceManager.GetString("CreateSomethingNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die CSV Export (just selected) ähnelt.
         /// </summary>
         public static string CSV_Cat_Export_Selected {
@@ -453,6 +462,15 @@ namespace SharedCode.Ressourcen {
         public static string Einleitung2 {
             get {
                 return ResourceManager.GetString("Einleitung2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Its empty here ... ähnelt.
+        /// </summary>
+        public static string EmptyHere {
+            get {
+                return ResourceManager.GetString("EmptyHere", resourceCulture);
             }
         }
         

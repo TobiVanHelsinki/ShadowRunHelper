@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using SharedCode.Ressourcen;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,19 +27,19 @@ namespace ShadowRunHelperViewer.UI.ControlsOther
 
         public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(System.Collections.IEnumerable), typeof(EmptyListView), null, propertyChanged: ItemsSourceChanged);
 
-        private string _TitleText;
+        private string _TitleText = UiResources.EmptyHere;
         public string TitleText
         {
             get => _TitleText;
             set { if (_TitleText != value) { _TitleText = value; NotifyPropertyChanged(); } }
         }
-        private string _BodyText;
+        private string _BodyText = UiResources.CreateSomethingNew;
         public string BodyText
         {
             get => _BodyText;
             set { if (_BodyText != value) { _BodyText = value; NotifyPropertyChanged(); } }
         }
-        private string _Icon;
+        private string _Icon = "\xf067";
         public string Icon
         {
             get => _Icon;

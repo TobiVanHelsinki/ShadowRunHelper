@@ -18,7 +18,7 @@
       <StackLayout HorizontalOptions="Center" VerticalOptions="Center" x:Name="MainContent">
             <Label Text="{Binding TitleText}" FontSize="Medium" />
             <Label Text="{Binding BodyText}" />
-            <Button Text="{Binding Icon, FallbackValue=&#xf067;}" HorizontalOptions="Fill" SizeChanged="Button_SizeChanged" Style="{StaticResource IconButton}" Clicked="Button_Clicked"/>
+            <Button Text="{Binding Icon}" FontAttributes="Bold" HorizontalOptions="Fill" SizeChanged="Button_SizeChanged" Style="{StaticResource IconButton}" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentView.Content>
 </ContentView>

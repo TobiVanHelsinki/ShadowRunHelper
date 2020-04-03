@@ -141,7 +141,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <controlsother:EmptyListView Grid.Row="5" ItemsSource="{Binding CharList, Mode=OneWay}" Clicked="NewChar_Clicked"
-                                         WidthRequest="300" TitleText="{resx:UiResources EmptyHere}" BodyText="{resx:UiResources EmptyCharText}" Icon="&#xf234;"/>
+                                         WidthRequest="300" BodyText="{resx:UiResources CreateNewChar}" Icon="&#xf234;"/>
         </Grid>
     </ContentView.Content>
 </ContentView>

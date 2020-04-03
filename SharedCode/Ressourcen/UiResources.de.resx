@@ -566,4 +566,13 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="OnText" xml:space="preserve">
     <value>Ja</value>
   </data>
+  <data name="CreateNewChar" xml:space="preserve">
+    <value>Erstelle einen neuen Char</value>
+  </data>
+  <data name="CreateSomethingNew" xml:space="preserve">
+    <value>Erschaffe doch etwas neues!</value>
+  </data>
+  <data name="EmptyHere" xml:space="preserve">
+    <value>Es ist so leer hier ...</value>
+  </data>
 </root>

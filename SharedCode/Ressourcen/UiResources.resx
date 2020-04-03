@@ -572,4 +572,10 @@ This app can be used to open files and folders on the file system. The app store
   <data name="OnText" xml:space="preserve">
     <value>On</value>
   </data>
+  <data name="CreateSomethingNew" xml:space="preserve">
+    <value>Create something new!</value>
+  </data>
+  <data name="EmptyHere" xml:space="preserve">
+    <value>Its empty here ...</value>
+  </data>
 </root>
