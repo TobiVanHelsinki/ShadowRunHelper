@@ -112,6 +112,7 @@ namespace ShadowRunHelperViewer
             if (pageOptions == ProjectPagesOptions.CharNewChar)
             {
                 CreatePersonView(this, new EventArgs());
+                HighlightButton(s4.Children.OfType<Button>().LastOrDefault());
             }
         }
 
