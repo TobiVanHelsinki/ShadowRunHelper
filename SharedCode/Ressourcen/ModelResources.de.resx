@@ -800,4 +800,70 @@
   <data name="Item_State" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="Content_Akrobatik" xml:space="preserve">
+    <value>Akrobatik</value>
+  </data>
+  <data name="Content_Ausweichen" xml:space="preserve">
+    <value>Ausweichen</value>
+  </data>
+  <data name="Content_Bodenfahrzeuge" xml:space="preserve">
+    <value>Bodenfahrzeuge</value>
+  </data>
+  <data name="Content_Computer" xml:space="preserve">
+    <value>Computer</value>
+  </data>
+  <data name="Content_ErsteHilfe" xml:space="preserve">
+    <value>Erste Hilfe</value>
+  </data>
+  <data name="Content_FeuerwaffeFertigkeit" xml:space="preserve">
+    <value>Feuerwaffe (genauer spezifizieren)</value>
+  </data>
+  <data name="Content_FeuerwaffeHandlung" xml:space="preserve">
+    <value>Schießen (Fertigkeit spezifizieren)</value>
+  </data>
+  <data name="Content_Ini" xml:space="preserve">
+    <value>Initiative</value>
+  </data>
+  <data name="Content_Matrixsuche" xml:space="preserve">
+    <value>Matrixsuche</value>
+  </data>
+  <data name="Content_Muttersprache" xml:space="preserve">
+    <value>Muttersprache: (spezifizieren)</value>
+  </data>
+  <data name="Content_Nahkampf" xml:space="preserve">
+    <value>Nahkampf</value>
+  </data>
+  <data name="Content_Schleichen" xml:space="preserve">
+    <value>Schleichen</value>
+  </data>
+  <data name="Content_SmartLink" xml:space="preserve">
+    <value>SmartLink</value>
+  </data>
+  <data name="Content_SmartLinkPrecision" xml:space="preserve">
+    <value>SmartLink Präzision</value>
+  </data>
+  <data name="Content_Typ_Elektronik" xml:space="preserve">
+    <value>Elektronik</value>
+  </data>
+  <data name="Content_Typ_Matrix" xml:space="preserve">
+    <value>Matrix</value>
+  </data>
+  <data name="Content_Typ_Mental" xml:space="preserve">
+    <value>Mental</value>
+  </data>
+  <data name="Content_Typ_Physisch" xml:space="preserve">
+    <value>Physisch</value>
+  </data>
+  <data name="Content_Typ_Sprache" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="Content_Wahrnehmung" xml:space="preserve">
+    <value>Wahrnehmung</value>
+  </data>
+  <data name="Content_Widerstand" xml:space="preserve">
+    <value>Widerstand</value>
+  </data>
+  <data name="Content_Widerstand_Note" xml:space="preserve">
+    <value>Toxinwiderstand, Erschöpfung, Krankheitswiderstand</value>
+  </data>
 </root>

@@ -70,139 +70,14 @@ namespace ShadowRunHelper.Model
 
             #region STD Content
             {
-                var item = new Handlung
-                {
-                    Bezeichner = ModelResources.Content_Selbstbeherrschung,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Charisma.Value);
-                item.Value.Connected.Add(ret.CTRLAttribut.Willen.Value);
-                ret.Add(item);
-                item = new Handlung
-                {
-                    Bezeichner = ModelResources.Content_Menschenkenntnis,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Intuition.Value);
-                item.Value.Connected.Add(ret.CTRLAttribut.Charisma.Value);
-                ret.Add(item);
-                item = new Handlung
-                {
-                    Bezeichner = ModelResources.Content_Erinnerung,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Logik.Value);
-                item.Value.Connected.Add(ret.CTRLAttribut.Willen.Value);
-                ret.Add(item);
-                item = new Handlung
-                {
-                    Bezeichner = ModelResources.Content_Schadenswiderstand,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Konsti.Value);
-                item.Value.Connected.Add(ret.CTRLPanzerung.ActiveItem.Value);
-                ret.Add(item);
-                // -------------------------------- V2
-                item = new Handlung
-                {
-                    Typ = ModelResources.Content_Typ_Physisch,
-                    Bezeichner = ModelResources.Content_Ausweichen,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Reaktion.Value);
-                item.Value.Connected.Add(ret.CTRLAttribut.Intuition.Value);
-                ret.Add(item);
-
-                item = new Handlung
-                {
-                    Typ = ModelResources.Content_Typ_Physisch,
-                    Bezeichner = ModelResources.Content_Ini,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Reaktion.Value);
-                item.Value.Connected.Add(ret.CTRLAttribut.Intuition.Value);
-                ret.Add(item);
-
-                item = new Handlung
-                {
-                    Typ = ModelResources.Content_Typ_Physisch,
-                    Bezeichner = ModelResources.Content_Widerstand,
-                    Notiz = ModelResources.Content_Widerstand_Note,//(Toxinwiderstand, Erschöpfung, Krankheitswiderstand )
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Konsti.Value);
-                item.Value.Connected.Add(ret.CTRLAttribut.Willen.Value);
-                ret.Add(item);
-
-                item = new Handlung
-                {
-                    Bezeichner = ModelResources.Content_Matrixsuche,
-                };
-                item.Value.Connected.Add(ret.CTRLFertigkeit.Data.Where(x => x.Bezeichner == ModelResources.Content_Computer).Value);
-                item.Value.Connected.Add(ret.CTRLAttribut.Intuition.Value);
-                ret.Add(item);
-
-                item = new Handlung
-                {
-                    Bezeichner = ModelResources.Content_FeuerwaffeHandlung,
-                };
-                item.Value.Connected.Add(ret.CTRLFertigkeit.Data.Where(x => x.Bezeichner == ModelResources.Content_Feuerwaffe).Value);
-                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
-                item.Limit.Connected.Add(ret.CTRLFernkampfwaffe.ActiveItem.Precision);
-                item.Value.Connected.Add(ret.CTRLItem.Data.Where(x => x.Bezeichner == ModelResources.Content_SmartLink).Value);
-                item.Limit.Connected.Add(ret.CTRLItem.Data.Where(x => x.Bezeichner == ModelResources.Content_SmartLinkPrecision).Value);
-                ret.Add(item);
-            }
-            //--------Fertigkeiten
-            {
-                var item = new Fertigkeit
-                {
-                    Bezeichner = ModelResources.Content_WaffenloserNahkampf,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
-                ret.Add(item);
-
-                item = new Fertigkeit
-                {
-                    Bezeichner = ModelResources.Content_Akrobatik,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
-                ret.Add(item);
-                item = new Fertigkeit
-                {
-                    Bezeichner = ModelResources.Content_Schleichen,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
-                ret.Add(item);
-                item = new Fertigkeit
-                {
-                    Bezeichner = ModelResources.Content_Bodenfahrzeuge,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
-                ret.Add(item);
-                item = new Fertigkeit
-                {
-                    Bezeichner = ModelResources.Content_Matrixsuche,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
-                ret.Add(item);
-                item = new Fertigkeit
-                {
-                    Bezeichner = ModelResources.Content_Wahrnehmung,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
-                ret.Add(item);
-                item = new Fertigkeit
-                {
-                    Bezeichner = ModelResources.Content_ErsteHilfe,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
-                ret.Add(item);
-                item = new Fertigkeit
-                {
-                    Bezeichner = ModelResources.Content_FeuerwaffeFertigkeit,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
-                ret.Add(item);
-                item = new Fertigkeit
-                {
-                    Bezeichner = ModelResources.Content_Muttersprache,
-                };
-                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
-                ret.Add(item);
+                ret.CTRLAttribut.Konsti.Value.BaseValue = 1;
+                ret.CTRLAttribut.Geschick.Value.BaseValue = 1;
+                ret.CTRLAttribut.Reaktion.Value.BaseValue = 1;
+                ret.CTRLAttribut.Staerke.Value.BaseValue = 1;
+                ret.CTRLAttribut.Charisma.Value.BaseValue = 1;
+                ret.CTRLAttribut.Logik.Value.BaseValue = 1;
+                ret.CTRLAttribut.Intuition.Value.BaseValue = 1;
+                ret.CTRLAttribut.Willen.Value.BaseValue = 1;
             }
             {
                 var item = new Item
@@ -218,11 +93,149 @@ namespace ShadowRunHelper.Model
                     Bezeichner = ModelResources.Content_SmartLinkPrecision,
                 };
                 item.Value.BaseValue = 2;
-                item.Aktiv = false;
+                item.Aktiv = true;
                 item.Besitz = true;
                 ret.Add(item);
             }
+            {
+                var item = new Fertigkeit
+                {
+                    Bezeichner = ModelResources.Content_Wahrnehmung,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Intuition.Value);
+                ret.Add(item);
+                item = new Fertigkeit
+                {
+                    Bezeichner = ModelResources.Content_Schleichen,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Intuition.Value);
+                ret.Add(item);
+                item = new Fertigkeit
+                {
+                    Bezeichner = ModelResources.Content_Akrobatik,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
+                ret.Add(item);
 
+                item = new Fertigkeit
+                {
+                    Bezeichner = ModelResources.Content_ErsteHilfe,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Logik.Value);
+                ret.Add(item);
+                item = new Fertigkeit
+                {
+                    Bezeichner = ModelResources.Content_Bodenfahrzeuge,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
+                ret.Add(item);
+                item = new Fertigkeit
+                {
+                    Bezeichner = ModelResources.Content_FeuerwaffeFertigkeit,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
+                ret.Add(item);
+                item = new Fertigkeit
+                {
+                    Bezeichner = ModelResources.Content_Nahkampf,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
+                ret.Add(item);
+                item = new Fertigkeit
+                {
+                    Typ = ModelResources.Content_Typ_Elektronik,
+                    Bezeichner = ModelResources.Content_Computer,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Logik.Value);
+                ret.Add(item);
+                item = new Fertigkeit
+                {
+                    Typ = ModelResources.Content_Typ_Sprache,
+                    Bezeichner = ModelResources.Content_Muttersprache,
+                };
+                item.Value.BaseValue = 99;
+                ret.Add(item);
+            }
+            {
+                var item = new Handlung
+                {
+                    Typ = ModelResources.Content_Typ_Physisch,
+                    Bezeichner = ModelResources.Content_Ini,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Reaktion.Value);
+                item.Value.Connected.Add(ret.CTRLAttribut.Intuition.Value);
+                ret.Add(item);
+                item = new Handlung
+                {
+                    Typ = ModelResources.Content_Typ_Physisch,
+                    Bezeichner = ModelResources.Content_FeuerwaffeHandlung,
+                };
+                item.Value.Connected.Add(ret.CTRLFertigkeit.Data.FirstOrDefault(x => x.Bezeichner == ModelResources.Content_FeuerwaffeFertigkeit).Value);
+                item.Value.Connected.Add(ret.CTRLAttribut.Geschick.Value);
+                item.Limit.Connected.Add(ret.CTRLFernkampfwaffe.ActiveItem.Precision);
+                item.Value.Connected.Add(ret.CTRLItem.Data.FirstOrDefault(x => x.Bezeichner == ModelResources.Content_SmartLink).Value);
+                item.Limit.Connected.Add(ret.CTRLItem.Data.FirstOrDefault(x => x.Bezeichner == ModelResources.Content_SmartLinkPrecision).Value);
+                ret.Add(item);
+                item = new Handlung
+                {
+                    Typ = ModelResources.Content_Typ_Physisch,
+                    Bezeichner = ModelResources.Content_Ausweichen,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Reaktion.Value);
+                item.Value.Connected.Add(ret.CTRLAttribut.Intuition.Value);
+                ret.Add(item);
+                item = new Handlung
+                {
+                    Typ = ModelResources.Content_Typ_Physisch,
+                    Bezeichner = ModelResources.Content_Schadenswiderstand,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Konsti.Value);
+                item.Value.Connected.Add(ret.CTRLPanzerung.ActiveItem.Value);
+                ret.Add(item);
+                item = new Handlung
+                {
+                    Typ = ModelResources.Content_Typ_Physisch,
+                    Bezeichner = ModelResources.Content_Widerstand,
+                    Notiz = ModelResources.Content_Widerstand_Note,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Konsti.Value);
+                item.Value.Connected.Add(ret.CTRLAttribut.Willen.Value);
+                ret.Add(item);
+
+                item = new Handlung
+                {
+                    Typ = ModelResources.Content_Typ_Mental,
+                    Bezeichner = ModelResources.Content_Selbstbeherrschung,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Charisma.Value);
+                item.Value.Connected.Add(ret.CTRLAttribut.Willen.Value);
+                ret.Add(item);
+                item = new Handlung
+                {
+                    Typ = ModelResources.Content_Typ_Mental,
+                    Bezeichner = ModelResources.Content_Menschenkenntnis,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Intuition.Value);
+                item.Value.Connected.Add(ret.CTRLAttribut.Charisma.Value);
+                ret.Add(item);
+                item = new Handlung
+                {
+                    Typ = ModelResources.Content_Typ_Mental,
+                    Bezeichner = ModelResources.Content_Erinnerung,
+                };
+                item.Value.Connected.Add(ret.CTRLAttribut.Logik.Value);
+                item.Value.Connected.Add(ret.CTRLAttribut.Willen.Value);
+                ret.Add(item);
+
+                item = new Handlung
+                {
+                    Typ = ModelResources.Content_Typ_Matrix,
+                    Bezeichner = ModelResources.Content_Matrixsuche,
+                };
+                item.Value.Connected.Add(ret.CTRLFertigkeit.Data.FirstOrDefault(x => x.Bezeichner == ModelResources.Content_Computer).Value);
+                item.Value.Connected.Add(ret.CTRLAttribut.Intuition.Value);
+                ret.Add(item);
+            }
             #endregion STD Content
 
             ret.AfterLoad();

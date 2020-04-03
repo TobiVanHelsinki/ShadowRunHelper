@@ -349,11 +349,92 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Akrobatik {
+            get {
+                return ResourceManager.GetString("Content_Akrobatik", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Ausweichen {
+            get {
+                return ResourceManager.GetString("Content_Ausweichen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Bodenfahrzeuge {
+            get {
+                return ResourceManager.GetString("Content_Bodenfahrzeuge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Computer {
+            get {
+                return ResourceManager.GetString("Content_Computer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die memento ähnelt.
         /// </summary>
         public static string Content_Erinnerung {
             get {
                 return ResourceManager.GetString("Content_Erinnerung", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_ErsteHilfe {
+            get {
+                return ResourceManager.GetString("Content_ErsteHilfe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_FeuerwaffeFertigkeit {
+            get {
+                return ResourceManager.GetString("Content_FeuerwaffeFertigkeit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_FeuerwaffeHandlung {
+            get {
+                return ResourceManager.GetString("Content_FeuerwaffeHandlung", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Ini {
+            get {
+                return ResourceManager.GetString("Content_Ini", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Matrixsuche {
+            get {
+                return ResourceManager.GetString("Content_Matrixsuche", resourceCulture);
             }
         }
         
@@ -367,6 +448,24 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Muttersprache {
+            get {
+                return ResourceManager.GetString("Content_Muttersprache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Nahkampf {
+            get {
+                return ResourceManager.GetString("Content_Nahkampf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die damage resistance ähnelt.
         /// </summary>
         public static string Content_Schadenswiderstand {
@@ -376,11 +475,110 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Schleichen {
+            get {
+                return ResourceManager.GetString("Content_Schleichen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die self-control ähnelt.
         /// </summary>
         public static string Content_Selbstbeherrschung {
             get {
                 return ResourceManager.GetString("Content_Selbstbeherrschung", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_SmartLink {
+            get {
+                return ResourceManager.GetString("Content_SmartLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_SmartLinkPrecision {
+            get {
+                return ResourceManager.GetString("Content_SmartLinkPrecision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Eletric ähnelt.
+        /// </summary>
+        public static string Content_Typ_Elektronik {
+            get {
+                return ResourceManager.GetString("Content_Typ_Elektronik", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Matrix ähnelt.
+        /// </summary>
+        public static string Content_Typ_Matrix {
+            get {
+                return ResourceManager.GetString("Content_Typ_Matrix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Mental ähnelt.
+        /// </summary>
+        public static string Content_Typ_Mental {
+            get {
+                return ResourceManager.GetString("Content_Typ_Mental", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Typ_Physisch {
+            get {
+                return ResourceManager.GetString("Content_Typ_Physisch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Language ähnelt.
+        /// </summary>
+        public static string Content_Typ_Sprache {
+            get {
+                return ResourceManager.GetString("Content_Typ_Sprache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Wahrnehmung {
+            get {
+                return ResourceManager.GetString("Content_Wahrnehmung", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        /// </summary>
+        public static string Content_Widerstand {
+            get {
+                return ResourceManager.GetString("Content_Widerstand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Toxinwiderstand, Erschöpfung, Krankheitswiderstand ähnelt.
+        /// </summary>
+        public static string Content_Widerstand_Note {
+            get {
+                return ResourceManager.GetString("Content_Widerstand_Note", resourceCulture);
             }
         }
         

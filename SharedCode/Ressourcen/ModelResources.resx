@@ -774,4 +774,70 @@
   <data name="Item_State" xml:space="preserve">
     <value>State</value>
   </data>
+  <data name="Content_Akrobatik" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Ausweichen" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Bodenfahrzeuge" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Computer" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_ErsteHilfe" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_FeuerwaffeFertigkeit" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_FeuerwaffeHandlung" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Ini" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Matrixsuche" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Muttersprache" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Nahkampf" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Schleichen" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_SmartLink" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_SmartLinkPrecision" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Typ_Elektronik" xml:space="preserve">
+    <value>Eletric</value>
+  </data>
+  <data name="Content_Typ_Matrix" xml:space="preserve">
+    <value>Matrix</value>
+  </data>
+  <data name="Content_Typ_Mental" xml:space="preserve">
+    <value>Mental</value>
+  </data>
+  <data name="Content_Typ_Physisch" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Typ_Sprache" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Content_Wahrnehmung" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Widerstand" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Content_Widerstand_Note" xml:space="preserve">
+    <value>Toxinwiderstand, Erschöpfung, Krankheitswiderstand</value>
+  </data>
 </root>
