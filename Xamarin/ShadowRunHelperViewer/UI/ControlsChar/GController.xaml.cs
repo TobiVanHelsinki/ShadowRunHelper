@@ -121,7 +121,7 @@ namespace ShadowRunHelperViewer
             }
         }
 
-        #endregion
+        #endregion ViewMode
 
         #region Control MyController, Items Visual and Header Visual
 
@@ -258,6 +258,7 @@ namespace ShadowRunHelperViewer
                 popup.ShowRelativeToView(v, RelativePosition.AlignToLeftOf);
             }
         }
+
         private void AddSep(object sender, EventArgs e)
         {
             try
@@ -271,6 +272,7 @@ namespace ShadowRunHelperViewer
                 Log.Write("", ex);
             }
         }
+
         public void OrderABC(object sender, EventArgs e)
         {
             MyController.OrderData(Ordering.ABC);
@@ -325,8 +327,10 @@ namespace ShadowRunHelperViewer
                 Log.Write("Getting Controller Attribute failed", ex);
             }
             CatAddButton.IsVisible = visible && supportsEdit;
-            //CatMoreButton.IsVisible = visible && supportsEdit;
+            CatMoreButton.IsVisible = visible && supportsEdit;
             Items_H.IsVisible = visible;
+            HeaderExpandIcon1.IsVisible = !visible;
+            HeaderExpandIcon2.IsVisible = !visible;
             Headline.FontSize = Device.GetNamedSize(visible ? NamedSize.Medium : NamedSize.Micro, typeof(Label));
             SettingsModel.I.MINIMIZED_HEADER = !visible;
         }
@@ -351,6 +355,5 @@ namespace ShadowRunHelperViewer
             SetHeaderVisible(true);
         }
         #endregion Dynamic Header
-
     }
 }

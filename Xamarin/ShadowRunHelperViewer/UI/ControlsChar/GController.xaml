@@ -8,8 +8,8 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:controlschar="clr-namespace:ShadowRunHelperViewer.UI.ControlsChar"
-             xmlns:chartemplates="clr-namespace:ShadowRunHelperViewer.UI.CharTemplates" 
-             xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:chartemplates="clr-namespace:ShadowRunHelperViewer.UI.CharTemplates"
+             xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.GController">
@@ -380,8 +380,10 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Button x:Name="CatAddButton" Grid.Column="0" Text="&#xf067;" Clicked="Add" Style="{StaticResource ControllerIconButton}"/>
+                    <Label x:Name="HeaderExpandIcon1" Grid.Column="0" Text="&#xf13a;" Style="{StaticResource IconLabel}"/>
                     <Label x:Name="Headline" Grid.Column="1" Style="{StaticResource SubTitle}"/>
                     <Button x:Name="CatMoreButton" Grid.Column="2" Text="&#xf141;" Clicked="MoreMenu" Style="{StaticResource ControllerIconButton}"/>
+                    <Label x:Name="HeaderExpandIcon2" Grid.Column="2" Text="&#xf13a;" Style="{StaticResource IconLabel}"/>
                 </Grid>
                 <ContentView Grid.Row="1" x:Name="Items_H"/>
             </Grid>
