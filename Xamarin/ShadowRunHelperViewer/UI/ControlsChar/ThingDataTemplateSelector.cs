@@ -87,6 +87,7 @@ namespace ShadowRunHelperViewer
                         ThingDefs.Connection => ConnectionTemplate,
                         ThingDefs.Initiation => InitiationTemplate,
                         ThingDefs.Wandlung => WandlungTemplate,
+                        ThingDefs.Drones => VehikelTemplate,
                         _ => ThingTemplate,
                     };
                 }
