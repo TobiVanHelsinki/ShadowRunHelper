@@ -347,7 +347,11 @@ By default, chars are saved within the app. In the options you can choose whethe
     <value>Welcome to the new version: {0}. Check out a list of new features here!</value>
   </data>
   <data name="VersionHistory" xml:space="preserve">
-    <value>Version 1.9.5
+    <value>Version 1.9.7
+[new] Indicator Icons for minimized Header
+[fix] Template for drones
+[fix] Windows "open with" Dialog
+Version 1.9.5Version 1.9.5
 [new] New Char have more Contents
 [new] Category is: Drones
 Version 1.9.1

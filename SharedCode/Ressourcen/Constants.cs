@@ -40,12 +40,6 @@ namespace ShadowRunHelper
         #endregion File Endings
 
         #region Version Numbers
-        public const string APP_VERSION_NUMBER_1_3 = "1.3";
-        public const string APP_VERSION_NUMBER_1_5 = "1.5";
-        public const string APP_VERSION_NUMBER_1_7 = "1.7";
-        public const string APP_VERSION_NUMBER_2_2 = "2.2";
-        public const string APP_VERSION_NUMBER_3_0 = "2.0";
-        public const string APP_VERSION_NUMBER = APP_VERSION_NUMBER_3_0;
 
         public const string CHARFILE_VERSION_1_3 = "1130"; //old version
         public const string CHARFILE_VERSION_1_5 = "1.5";

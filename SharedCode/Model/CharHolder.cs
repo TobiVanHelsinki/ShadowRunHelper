@@ -26,7 +26,7 @@ namespace ShadowRunHelper.Model
     public class CharHolder : IMainType, INotifyPropertyChanged
     {
         #region vars
-        public string APP_VERSION_NUMBER => Constants.APP_VERSION_NUMBER;
+        public string APP_VERSION_NUMBER => "ND";
 
         public string FILE_VERSION_NUMBER => Constants.CHARFILE_VERSION;
         #endregion vars

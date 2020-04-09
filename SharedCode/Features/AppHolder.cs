@@ -81,14 +81,19 @@ namespace ShadowRunHelper
             Features.InstanceHandling.CreateInstance();
         }
 
-        public static void FileActivated(string Name, string Path)
+        public static void FileActivated(string name, string path)
+        {
+            FileActivated(Path.Combine(path, name));
+        }
+
+        public static void FileActivated(string fullPath)
         {
             InitModel();
             Settings.FORCE_LOAD_CHAR_ON_START = true;
             AppModel.Instance.IsFileActivated = true;
             try
             {
-                Settings.LAST_SAVE_INFO = new FileInfo(Path + Name);
+                Settings.LAST_SAVE_INFO = new FileInfo(fullPath);
             }
             catch (Exception)
             {

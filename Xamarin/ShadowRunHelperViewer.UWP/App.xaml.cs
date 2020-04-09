@@ -91,9 +91,7 @@ namespace ShadowRunHelperViewer.UWP
             SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
             if (args.Kind == ActivationKind.Protocol && args is ProtocolActivatedEventArgs uriArgs)
             {
-                var name = uriArgs.Uri.Segments[uriArgs.Uri.Segments.Length - 1];
-                name = name.Remove(name.Length - 1);
-                AppHolder.FileActivated(name, uriArgs.Uri.LocalPath.Remove(uriArgs.Uri.LocalPath.Length - name.Length));
+                AppHolder.FileActivated(uriArgs.Uri.LocalPath);
             }
         }
 
@@ -112,7 +110,7 @@ namespace ShadowRunHelperViewer.UWP
                     Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace(Constants.ACCESSTOKEN_FILEACTIVATED, args.Files[0]);
                 }
                 finally { }
-                AppHolder.FileActivated(args.Files[0].Name, args.Files[0].Path.Substring(0, args.Files[0].Path.Length - args.Files[0].Name.Length));
+                AppHolder.FileActivated(args.Files[0].Path);
             }
             else if (args.Files[0].Name.EndsWith(".SRHApp1"))
             {
