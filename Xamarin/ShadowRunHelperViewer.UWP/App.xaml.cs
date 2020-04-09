@@ -98,12 +98,12 @@ namespace ShadowRunHelperViewer.UWP
         }
 
         /// <summary>
-        /// launch vie open file
+        /// launch via open file
         /// </summary>
         /// <param name="args"></param>
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
-            Xamarin.Forms.Forms.Init(args);
+            Xamarin.Forms.Forms.Init(args, assembliesToInclude);
             SystemNavigationManager.GetForCurrentView().BackRequested += MainPage_BackRequested;
             if (args.Files[0].Name.EndsWith(Constants.DATEIENDUNG_CHAR))
             {
