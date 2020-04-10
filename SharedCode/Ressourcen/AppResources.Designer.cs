@@ -962,7 +962,9 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Version 1.9.7
+        ///   Sucht eine lokalisierte Zeichenfolge, die Version 1.9.8
+        ///[fix] Input of . or , was not possible
+        ///Version 1.9.7
         ///[new] Indicator Icons for minimized Header
         ///[fix] Template for drones
         ///[fix] Windows &quot;open with&quot; Dialog
@@ -970,9 +972,7 @@ namespace SharedCode.Ressourcen {
         ///[new] New Char have more Contents
         ///[new] Category is: Drones
         ///Version 1.9.1
-        ///[new] BackUp Versioning: The options to append time or progress to a saved char led to too many errors and exceptions. Therefore, they have been removed. Instead, there is now a BackUp versioning that combines both options and makes more sense.
-        ///new] Redesigned Char Page header.
-        ///Versio [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///[new] BackUp Versioning: The options to append time or progress to a saved char led to too many errors and exceptions. Therefore, they have been removed. Instead, there is now a BackUp versioning that combines both options and makes [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         public static string VersionHistory {
             get {

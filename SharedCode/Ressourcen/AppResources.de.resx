@@ -364,7 +364,9 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
     <value>Ordner konnte nicht gelesen werden</value>
   </data>
   <data name="VersionHistory" xml:space="preserve">
-    <value>Version 1.9.7
+    <value>Version 1.9.8
+[fix] Eingabe von . oder , führte zu Fehlern
+Version 1.9.7
 [new] Icons bei minimierten Headern
 [fix] Template für Drohnes
 [fix] Windows "öffnen mit" Dialog
