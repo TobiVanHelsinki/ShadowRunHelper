@@ -1,26 +1,30 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿//Author: Tobi van Helsinki
+
+using Rg.Plugins.Popup.Pages;
 using ShadowRunHelper.Model;
 using System;
 using Xamarin.Forms.Xaml;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
-using System.Linq;
 using ShadowRunHelperViewer.UI.Resources;
 
 namespace ShadowRunHelperViewer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ControlCenter : PopupPage,  INotifyPropertyChanged
-	{
+    public partial class ControlCenter : PopupPage, INotifyPropertyChanged
+    {
         #region NotifyPropertyChanged
-		public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+        #endregion NotifyPropertyChanged
+
         public CharHolder Model { get; set; }
+
         public ControlCenter(CharHolder Char)
         {
             Model = Char;
@@ -34,8 +38,8 @@ namespace ShadowRunHelperViewer
             SizeDefiningElement_SizeChanged(this, new EventArgs());
         }
 
-        int _GeneralInput;
-        public int GeneralInput
+        double _GeneralInput;
+        public double GeneralInput
         {
             get { return _GeneralInput; }
             set { if (_GeneralInput != value) { _GeneralInput = value; NotifyPropertyChanged(); } }
@@ -51,6 +55,7 @@ namespace ShadowRunHelperViewer
             }
             Model.Person.Kontostand++;
         }
+
         private void MoneyMinus(object sender, EventArgs e)
         {
             if (GeneralInput != 0)
@@ -72,6 +77,7 @@ namespace ShadowRunHelperViewer
             }
             Model.Person.Edge_Aktuell++;
         }
+
         private void EdgeMinus(object sender, EventArgs e)
         {
             if (GeneralInput != 0)

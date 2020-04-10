@@ -150,7 +150,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
                     {
                         Keyboard = item.PropertyType == typeof(int) || item.PropertyType == typeof(double) ? Keyboard.Numeric : Keyboard.Text
                     };
-                    Content.SetBinding(Entry.TextProperty, new Binding(item.Name));
+                    Content.SetBinding(Entry.TextProperty, new Binding(item.Name, converter: new IO_Calculation()));
                 }
                 //Part 2: Add it to the rigth panel
                 if (item.PropertyType == typeof(double) || item.PropertyType == typeof(double?))
@@ -216,6 +216,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             };
         }
         #endregion Create UI
+
         private void OpenConnectedChooser(object sender, EventArgs e)
         {
             if (sender is BindableObject b && b.BindingContext is ConnectProperty prop)
@@ -238,8 +239,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             }
         }
 
-
-        #region More 
+        #region More
 
         private void More_Clicked(object sender, EventArgs e)
         {
@@ -325,7 +325,6 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             {
             }
         }
-        #endregion Item Options
-
+        #endregion More
     }
 }

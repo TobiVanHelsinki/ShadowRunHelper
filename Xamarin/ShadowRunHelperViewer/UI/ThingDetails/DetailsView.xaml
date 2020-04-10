@@ -91,7 +91,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Entry Text="{x:Binding BaseValue}" VerticalOptions="Center"/>
+                    <Entry Text="{x:Binding BaseValue, Converter={StaticResource IO_Calculation}}" VerticalOptions="Center"/>
                     <Button Text="+" VerticalOptions="Center" Grid.Column="1" Clicked="OpenConnectedChooser"/>
                     <ScrollView Grid.Column="2" VerticalOptions="Start">
                         <StackLayout x:Name="CalcPropertyPanel" VerticalOptions="Start"/>

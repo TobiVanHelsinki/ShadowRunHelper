@@ -103,7 +103,7 @@
                     <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="5" Clicked="RunsPlus"/>
 
                     <Label Text="{resx:UiResources GeneralInput}" Grid.Column="0" Grid.Row="6"/>
-                    <Entry Text="{x:Binding GeneralInput}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" BackgroundColor="Transparent" HorizontalTextAlignment="Center" MinimumWidthRequest="50"/>
+                    <Entry Text="{x:Binding GeneralInput, Converter={StaticResource IO_Calculation}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" BackgroundColor="Transparent" HorizontalTextAlignment="Center" MinimumWidthRequest="50"/>
                 </Grid>
                 <Grid x:Name="DamageGrid" VerticalOptions="Start" HorizontalOptions="Center">
                     <Grid.RowDefinitions>

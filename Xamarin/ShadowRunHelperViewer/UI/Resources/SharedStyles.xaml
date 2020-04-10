@@ -15,6 +15,7 @@
     <resources:O_ThingDef2String x:Key="O_ThingDef2String"/>
     <resources:O_ItemState2String x:Key="O_ItemState2String"/>
     <resources:IO_DebugConverter x:Key="IO_DebugConverter"/>
+    <resources:IO_Calculation x:Key="IO_Calculation"/>
 
     <OnPlatform x:Key="ButtonSize" x:TypeArguments="x:Double">
         <On Platform="Android" Value="45"/>
