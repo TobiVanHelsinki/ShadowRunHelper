@@ -58,6 +58,7 @@ namespace ShadowRunHelperViewer
                     new SubMenuAction(UiResources.SaveExtern,"\xf56e",new Command(()=> SaveExtern(myChar))),
                     new SubMenuAction(UiResources.OpenFolder,"\xf07c",new Command(()=> SharedIO.CurrentIO.OpenFolder(myChar.FileInfo.Directory))),
                     new SubMenuAction(UiResources.CharSettings,"\xf4fe",new Command(()=>  Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new CharSettingsPopupPage(myChar)))),
+                    new SubMenuAction(UiResources.SubtractLifeStyleCost,"\xf155",new Command(()=>  myChar.SubtractLifeStyleCost())),
                     new SubMenuAction(UiResources.Repair,"\xf6e3",new Command(()=> myChar.Repair())),
                     new SubMenuAction(UiResources.Unload,"\xf235",new Command(()=>{ AppModel.Instance?.RemoveMainObject(myChar); AppModel.Instance.RequestNavigation(ProjectPages.Administration);})),
                 };
