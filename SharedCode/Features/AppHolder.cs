@@ -220,7 +220,7 @@ namespace ShadowRunHelper
 
         public static void CheckVersion()
         {
-            //if (SettingsModel.I.LAST_APP_VERSION != SharedConstants.APP_VERSION_BUILD_DELIM)
+            if (SettingsModel.I.LAST_APP_VERSION != SharedConstants.APP_VERSION_BUILD_DELIM)
             {
                 Log.Write(AppResources.VersionHistory);
                 Log.Write(string.Format(AppResources.Notification_NewVersion, SharedConstants.APP_VERSION_BUILD_DELIM), true);

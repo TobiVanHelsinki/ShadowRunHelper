@@ -347,7 +347,9 @@ By default, chars are saved within the app. In the options you can choose whethe
     <value>Welcome to the new version: {0}. Check out a list of new features here!</value>
   </data>
   <data name="VersionHistory" xml:space="preserve">
-    <value>Version 1.9.8
+    <value>Version 1.9.9
+[problem] Zusatz got deleted at edit and replaced by a 0 (fix)
+Version 1.9.8
 [fix] Input of . or , was not possible
 Version 1.9.7
 [new] Indicator Icons for minimized Header
