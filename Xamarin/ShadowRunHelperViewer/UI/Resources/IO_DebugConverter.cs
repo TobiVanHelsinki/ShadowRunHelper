@@ -1,4 +1,6 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
+
+///Author: Tobi van Helsinki
 
 using System;
 using System.Globalization;
@@ -10,7 +12,7 @@ namespace ShadowRunHelperViewer.UI.Resources
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return "xD:" + value;
+            return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

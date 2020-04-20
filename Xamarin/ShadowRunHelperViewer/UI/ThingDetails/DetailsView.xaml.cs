@@ -150,11 +150,12 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
                     {
                         Keyboard = item.PropertyType == typeof(int) || item.PropertyType == typeof(double) ? Keyboard.Numeric : Keyboard.Text
                     };
-                    Content.SetBinding(Entry.TextProperty, new Binding(item.Name, converter: new IO_Calculation()));
+                    Content.SetBinding(Entry.TextProperty, new Binding(item.Name));
                 }
                 //Part 2: Add it to the rigth panel
                 if (item.PropertyType == typeof(double) || item.PropertyType == typeof(double?))
                 {
+                    Content.SetBinding(Entry.TextProperty, new Binding(item.Name, converter: new IO_Calculation()));
                     if (NumberCounter % 2 == 0)
                     {
                         NumberContent.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
