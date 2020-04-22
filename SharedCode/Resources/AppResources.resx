@@ -262,9 +262,6 @@ By default, chars are saved within the app. In the options you can choose whethe
   <data name="Info_NotSupportedVersion" xml:space="preserve">
     <value>This Fileversion is outdated. If you want to upgrade this char, please contact support.</value>
   </data>
-  <data name="FurtherSettings" xml:space="preserve">
-    <value>more</value>
-  </data>
   <data name="Error_LogicFail" xml:space="preserve">
     <value>Programlogic-error</value>
   </data>
@@ -272,7 +269,7 @@ By default, chars are saved within the app. In the options you can choose whethe
     <value>Error, couldn't get folder</value>
   </data>
   <data name="Error_RepairLinkList" xml:space="preserve">
-    <value>Could not restore link item: {0} </value>
+    <value>The link with {0} could not be restored</value>
   </data>
   <data name="Error_SaveFail_OPInProgress" xml:space="preserve">
     <value>Saving not possible, an other operation is in progress</value>
@@ -297,9 +294,6 @@ By default, chars are saved within the app. In the options you can choose whethe
   </data>
   <data name="IAP_TXT_TEE" xml:space="preserve">
     <value>Add Premium-Badge</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>Close</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
@@ -330,9 +324,6 @@ By default, chars are saved within the app. In the options you can choose whethe
   </data>
   <data name="Info_Char_Loaded_Start" xml:space="preserve">
     <value>A Char was automaticly loaded</value>
-  </data>
-  <data name="w" xml:space="preserve">
-    <value>You played with </value>
   </data>
   <data name="Info_NewVersion" xml:space="preserve">
     <value>Welcome to the new version: {0}. Check out a list of new features here!</value>
@@ -446,7 +437,7 @@ Version 1.7.4:
     <value>Do you like the App? Give a rating at the Store!</value>
   </data>
   <data name="CopiedFileName" xml:space="preserve">
-    <value>Copy</value>
+    <value>(Copy)</value>
   </data>
   <data name="Error_Import" xml:space="preserve">
     <value>Error while importing</value>

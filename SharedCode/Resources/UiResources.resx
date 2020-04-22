@@ -132,14 +132,8 @@
   <data name="Category_Person" xml:space="preserve">
     <value>Person</value>
   </data>
-  <data name="Category_Settings" xml:space="preserve">
-    <value>Settings</value>
-  </data>
   <data name="Open" xml:space="preserve">
     <value>Open</value>
-  </data>
-  <data name="NewChar" xml:space="preserve">
-    <value>Create new char</value>
   </data>
   <data name="Einleitung1" xml:space="preserve">
     <value>Current savefiles:</value>
@@ -284,9 +278,6 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Char_Schaden_Matrix" xml:space="preserve">
     <value>Matrix</value>
   </data>
-  <data name="FileRename" xml:space="preserve">
-    <value>Rename</value>
-  </data>
   <data name="SaveExtern" xml:space="preserve">
     <value>Save at extern Folder</value>
   </data>
@@ -338,10 +329,10 @@ This app can be used to open files and folders on the file system. The app store
   <data name="SaveExternTip" xml:space="preserve">
     <value>Select a new location for this file</value>
   </data>
-  <data name="Unload" xml:space="preserve">
+  <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
-  <data name="UnloadX" xml:space="preserve">
+  <data name="CloseX" xml:space="preserve">
     <value>Removes only the loaded char from the app. Storage files are not affected.</value>
   </data>
   <data name="ExportAll" xml:space="preserve">
@@ -434,14 +425,8 @@ This app can be used to open files and folders on the file system. The app store
   <data name="ImportChar" xml:space="preserve">
     <value>Import Char</value>
   </data>
-  <data name="TitleOtherPage" xml:space="preserve">
-    <value>Info and Settings</value>
-  </data>
   <data name="TitleMiscPage" xml:space="preserve">
     <value>Info and Settings</value>
-  </data>
-  <data name="TitleSettings" xml:space="preserve">
-    <value>Settings</value>
   </data>
   <data name="Options_BACKUP_VERSIONING" xml:space="preserve">
     <value>BackUp versioning</value>
@@ -499,5 +484,20 @@ This app can be used to open files and folders on the file system. The app store
   </data>
   <data name="MoveTo" xml:space="preserve">
     <value>Move to other category</value>
+  </data>
+  <data name="Options_MinimizedHeader" xml:space="preserve">
+    <value>Minimized Header</value>
+  </data>
+  <data name="Options_FormatSavefile" xml:space="preserve">
+    <value>Format the Savefiles</value>
+  </data>
+  <data name="Options_Group_Design" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="Options_Spacing" xml:space="preserve">
+    <value>Spacing</value>
+  </data>
+  <data name="Options_Colors" xml:space="preserve">
+    <value>Colorscheme</value>
   </data>
 </root>

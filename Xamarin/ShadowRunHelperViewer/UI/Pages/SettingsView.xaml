@@ -26,7 +26,7 @@
                 </Grid.ColumnDefinitions>
                 <controlsother:HamburgerButton/>
                 <StackLayout x:Name="TitleBar" Grid.Column="1">
-                    <Label x:Name="Intro1Text" FontSize="Subtitle" Text="{resx:UiResources TitleSettings}" HorizontalOptions="FillAndExpand"/>
+                    <Label x:Name="Intro1Text" FontSize="Subtitle" Text="{resx:UiResources Settings}" HorizontalOptions="FillAndExpand"/>
                     <Label x:Name="Intro2Text" FontSize="Caption" Text="{resx:UiResources Settings_Tip}" HorizontalOptions="FillAndExpand" LineBreakMode="WordWrap"/>
                 </StackLayout>
             </Grid>
@@ -34,7 +34,7 @@
                 <StackLayout Padding="10">
                     <controlsother:SettingsHeader Text="Options_Group_Char"/>
                     <controlsother:SettingsEntry Text="Options_EditAfterAdd" Setting="{x:Binding Settings.START_AFTER_EDIT, Mode=TwoWay}"/>
-                    <controlsother:SettingsEntry Text="Options_MINIMIZED_HEADER" Setting="{x:Binding Settings.MINIMIZED_HEADER}"/>
+                    <controlsother:SettingsEntry Text="Options_MinimizedHeader" Setting="{x:Binding Settings.MINIMIZED_HEADER}"/>
                     <controlsother:SettingsEntry Text="Options_DisplayRequest" Setting="{x:Binding Settings.DISPLAY_REQUEST}"/>
                     <controlsother:SettingsHeader Text="Options_Group_IO"/>
                     <controlsother:SettingsEntry Text="Options_LoadOnStart" Setting="{x:Binding Settings.LOAD_CHAR_ON_START}"/>
@@ -43,7 +43,7 @@
                         <Label Text="{resx:UiResources Options_AutoSaveInterval}" VerticalOptions="Center"/>
                         <Entry Keyboard="Numeric" Text="{x:Binding Settings.AUTO_SAVE_INTERVAL_MS}"/>
                     </StackLayout>
-                    <controlsother:SettingsEntry Text="Options_FORMAT_SAVEFILE" Setting="{x:Binding Settings.FORMAT_SAVEFILE}"/>
+                    <controlsother:SettingsEntry Text="Options_FormatSavefile" Setting="{x:Binding Settings.FORMAT_SAVEFILE}"/>
                     <controlsother:SettingsHeader Text="Options_Group_File"/>
                     <controlsother:SettingsEntry Text="Options_Ordnermode" Setting="{x:Binding Settings.FOLDERMODE}"/>
                     <StackLayout Orientation="Horizontal" IsVisible="{x:Binding Settings.FOLDERMODE}" Margin="0,0,0,5">
@@ -52,7 +52,9 @@
                     </StackLayout>
                     <controlsother:SettingsEntry Text="Options_BACKUP_VERSIONING" Setting="{x:Binding Settings.BACKUP_VERSIONING}"/>
                     <controlsother:SettingsHeader Text="Options_Group_Design"/>
+                    <Label Text="{resx:UiResources Options_Colors}"/>
                     <Picker ItemsSource="{x:Binding Styles}" SelectedItem="{x:Binding Settings.CurrentStyleName}"/>
+                    <Label Text="{resx:UiResources Options_Spacing}"/>
                     <Picker ItemsSource="{x:Binding Spacings}" SelectedItem="{x:Binding Settings.CurrentSpacingStrategy, Converter={StaticResource SpacingConverter} }"/>
                 </StackLayout>
             </ScrollView>

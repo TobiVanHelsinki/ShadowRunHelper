@@ -88,16 +88,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Close ähnelt.
-        /// </summary>
-        public static string Close {
-            get {
-                return ResourceManager.GetString("Close", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Copy ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die (Copy) ähnelt.
         /// </summary>
         public static string CopiedFileName {
             get {
@@ -358,7 +349,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Could not restore link item: {0}  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The link with {0} could not be restored ähnelt.
         /// </summary>
         public static string Error_RepairLinkList {
             get {
@@ -408,15 +399,6 @@ namespace SharedCode.Resources {
         public static string ExampleChar {
             get {
                 return ResourceManager.GetString("ExampleChar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die more ähnelt.
-        /// </summary>
-        public static string FurtherSettings {
-            get {
-                return ResourceManager.GetString("FurtherSettings", resourceCulture);
             }
         }
         
@@ -934,15 +916,6 @@ namespace SharedCode.Resources {
         public static string VersionHistory {
             get {
                 return ResourceManager.GetString("VersionHistory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die You played with  ähnelt.
-        /// </summary>
-        public static string w {
-            get {
-                return ResourceManager.GetString("w", resourceCulture);
             }
         }
         

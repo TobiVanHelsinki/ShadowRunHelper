@@ -350,7 +350,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             Features.Ui.CustomTitleBarChanges += CustomTitleBarChanges; //TODO Dispose
             Features.Ui.TriggerCustomTitleBarChanges();
             return new[] {
-                    new SubMenuAction(UiResources.NewChar,"\xf234",new Command(()=>NewChar_Clicked(this, new EventArgs()))),
+                    new SubMenuAction(UiResources.CreateNewChar,"\xf234",new Command(()=>NewChar_Clicked(this, new EventArgs()))),
                     new SubMenuAction(UiResources.ImportChar,"\xf56f",new Command(()=>OpenFile(this, new EventArgs()))),
                     new SubMenuAction(UiResources.CreateExampleChar,"\xf501",new Command(()=>ExampleChar_Clicked(this, new EventArgs()))),
                     new SubMenuAction(UiResources.OpenFolder,"\xf07c",new Command(()=> SharedIO.CurrentIO.OpenFolder(SharedIO.CurrentSaveDir))),

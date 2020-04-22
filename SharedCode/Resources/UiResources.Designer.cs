@@ -178,15 +178,6 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
-        /// </summary>
-        public static string Category_Settings {
-            get {
-                return ResourceManager.GetString("Category_Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Mental ähnelt.
         /// </summary>
         public static string Char_Schaden_Geist {
@@ -228,6 +219,24 @@ namespace SharedCode.Resources {
         public static string CharSettings {
             get {
                 return ResourceManager.GetString("CharSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Close ähnelt.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Removes only the loaded char from the app. Storage files are not affected. ähnelt.
+        /// </summary>
+        public static string CloseX {
+            get {
+                return ResourceManager.GetString("CloseX", resourceCulture);
             }
         }
         
@@ -430,15 +439,6 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Rename ähnelt.
-        /// </summary>
-        public static string FileRename {
-            get {
-                return ResourceManager.GetString("FileRename", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Filesize ähnelt.
         /// </summary>
         public static string FileSize {
@@ -507,15 +507,6 @@ namespace SharedCode.Resources {
         public static string MoveTo {
             get {
                 return ResourceManager.GetString("MoveTo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Create new char ähnelt.
-        /// </summary>
-        public static string NewChar {
-            get {
-                return ResourceManager.GetString("NewChar", resourceCulture);
             }
         }
         
@@ -637,6 +628,15 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Colorscheme ähnelt.
+        /// </summary>
+        public static string Options_Colors {
+            get {
+                return ResourceManager.GetString("Options_Colors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die This app does not collect any personal information and therefore does not disclose it.
         ///This app can be used to open files and folders on the file system. The app stores those folders and files only for later use. All files remain on the file system or Microsoft account. ähnelt.
         /// </summary>
@@ -683,11 +683,29 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Format the Savefiles ähnelt.
+        /// </summary>
+        public static string Options_FormatSavefile {
+            get {
+                return ResourceManager.GetString("Options_FormatSavefile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current Char ähnelt.
         /// </summary>
         public static string Options_Group_Char {
             get {
                 return ResourceManager.GetString("Options_Group_Char", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Design ähnelt.
+        /// </summary>
+        public static string Options_Group_Design {
+            get {
+                return ResourceManager.GetString("Options_Group_Design", resourceCulture);
             }
         }
         
@@ -756,6 +774,15 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Minimized Header ähnelt.
+        /// </summary>
+        public static string Options_MinimizedHeader {
+            get {
+                return ResourceManager.GetString("Options_MinimizedHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die more of my apps ähnelt.
         /// </summary>
         public static string Options_MoreAppsBtn {
@@ -788,6 +815,15 @@ namespace SharedCode.Resources {
         public static string Options_RateBtn {
             get {
                 return ResourceManager.GetString("Options_RateBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Spacing ähnelt.
+        /// </summary>
+        public static string Options_Spacing {
+            get {
+                return ResourceManager.GetString("Options_Spacing", resourceCulture);
             }
         }
         
@@ -1148,42 +1184,6 @@ namespace SharedCode.Resources {
         public static string TitleMiscPage {
             get {
                 return ResourceManager.GetString("TitleMiscPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Info and Settings ähnelt.
-        /// </summary>
-        public static string TitleOtherPage {
-            get {
-                return ResourceManager.GetString("TitleOtherPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
-        /// </summary>
-        public static string TitleSettings {
-            get {
-                return ResourceManager.GetString("TitleSettings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Close ähnelt.
-        /// </summary>
-        public static string Unload {
-            get {
-                return ResourceManager.GetString("Unload", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Removes only the loaded char from the app. Storage files are not affected. ähnelt.
-        /// </summary>
-        public static string UnloadX {
-            get {
-                return ResourceManager.GetString("UnloadX", resourceCulture);
             }
         }
         

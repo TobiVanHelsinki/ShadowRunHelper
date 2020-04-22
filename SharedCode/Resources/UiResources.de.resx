@@ -138,9 +138,6 @@
   <data name="Open" xml:space="preserve">
     <value>Öffnen</value>
   </data>
-  <data name="NewChar" xml:space="preserve">
-    <value>Neuen Char erstellen</value>
-  </data>
   <data name="Einleitung1" xml:space="preserve">
     <value>Aktuelle Speicherdatei:</value>
   </data>
@@ -275,9 +272,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Options_TutorialMainShown" xml:space="preserve">
     <value>Tutorial abgeschlossen</value>
   </data>
-  <data name="FileRename" xml:space="preserve">
-    <value>Umbenennen</value>
-  </data>
   <data name="SaveExtern" xml:space="preserve">
     <value>Exportieren</value>
   </data>
@@ -286,9 +280,6 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Zurücksetzen</value>
-  </data>
-  <data name="Category_Settings" xml:space="preserve">
-    <value>Einstellungen</value>
   </data>
   <data name="Cat_Order_ABC" xml:space="preserve">
     <value>Sortieren nach Alphabet</value>
@@ -329,10 +320,10 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="CreateExampleChar" xml:space="preserve">
     <value>Beispiel Charakter erstellen</value>
   </data>
-  <data name="Unload" xml:space="preserve">
+  <data name="Close" xml:space="preserve">
     <value>Schließen</value>
   </data>
-  <data name="UnloadX" xml:space="preserve">
+  <data name="CloseX" xml:space="preserve">
     <value>Entfernt nur den geladenen Char aus der App. Speicherdateien werden nicht beeinflusst.</value>
   </data>
   <data name="ExportAll" xml:space="preserve">
@@ -434,14 +425,8 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="ImportChar" xml:space="preserve">
     <value>Char Importieren</value>
   </data>
-  <data name="TitleOtherPage" xml:space="preserve">
-    <value>Info und Einstellungen</value>
-  </data>
   <data name="TitleMiscPage" xml:space="preserve">
     <value>Info und Einstellungen</value>
-  </data>
-  <data name="TitleSettings" xml:space="preserve">
-    <value>Einstellungen</value>
   </data>
   <data name="Options_BACKUP_VERSIONING" xml:space="preserve">
     <value>BackUp Versionierung</value>
@@ -499,5 +484,20 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   </data>
   <data name="MoveTo" xml:space="preserve">
     <value>In andere Kategorie verschieben</value>
+  </data>
+  <data name="Options_MinimizedHeader" xml:space="preserve">
+    <value>Minimierter Kopf</value>
+  </data>
+  <data name="Options_FormatSavefile" xml:space="preserve">
+    <value>Formatiert die Speicherdateien</value>
+  </data>
+  <data name="Options_Group_Design" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="Options_Spacing" xml:space="preserve">
+    <value>Abstände</value>
+  </data>
+  <data name="Options_Colors" xml:space="preserve">
+    <value>Farbschema</value>
   </data>
 </root>

@@ -267,9 +267,6 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Info_NotSupportedVersion" xml:space="preserve">
     <value>Diese Version des Chars wird seid langem nicht mehr unterstützt. Bitte wende dich an den Support, wenn du ihn unbedingt konvertiert haben möchtest.</value>
   </data>
-  <data name="FurtherSettings" xml:space="preserve">
-    <value>Mehr</value>
-  </data>
   <data name="Error_LogicFail" xml:space="preserve">
     <value>Programmlogik Fehler</value>
   </data>
@@ -300,9 +297,6 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="IAP_TXT_TEE" xml:space="preserve">
     <value>Premium-Badge hinzufügen</value>
   </data>
-  <data name="Close" xml:space="preserve">
-    <value>Schließen</value>
-  </data>
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
@@ -332,9 +326,6 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   </data>
   <data name="Info_Char_Loaded_Start" xml:space="preserve">
     <value>Ein Char wurde autmoatisch geladen</value>
-  </data>
-  <data name="w" xml:space="preserve">
-    <value>Gespielt mit </value>
   </data>
   <data name="Info_NewVersion" xml:space="preserve">
     <value>Willkommen in der neuen Version: {0}. Sieh dir hier eine Liste von Neuerungen an!</value>
@@ -449,7 +440,7 @@ Version 1.7.4:
 Bewerte Sie doch im Store!</value>
   </data>
   <data name="CopiedFileName" xml:space="preserve">
-    <value>Kopie</value>
+    <value>(Kopie)</value>
   </data>
   <data name="Error_Import" xml:space="preserve">
     <value>Fehler beim Importieren</value>
