@@ -42,5 +42,7 @@ namespace ShadowRunHelperViewer.UI.Resources
         internal static Color AccentColor => Color.Accent;
         internal static Color AccentHighColor => Color.Accent.AddLuminosity(.2);
         internal static Color AccentLowColor => Color.Accent.AddLuminosity(-.2);
+
+        public static float CornerRadius => 3;  //TODO introduce option
     }
 }

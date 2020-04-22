@@ -101,17 +101,11 @@
     <Compile Update="UI\ThingTemplates\SeparatorTemplate.xaml.cs">
       <DependentUpon>SeparatorTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\ControlsChar\CharSettingsPopupPage.xaml.cs">
-      <DependentUpon>CharSettingsPopupPage.xaml</DependentUpon>
-    </Compile>
     <Compile Update="UI\ControlsChar\CharSettingsView.xaml.cs">
       <DependentUpon>CharSettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Update="UI\ThingDetails\LinkListChooser.xaml.cs">
       <DependentUpon>LinkListChooser.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="UI\ThingDetails\LinkListChooserPopup.xaml.cs">
-      <DependentUpon>LinkListChooserPopup.xaml</DependentUpon>
     </Compile>
     <Compile Update="UI\ThingDetails\ThingCopyChooser.xaml.cs">
       <DependentUpon>ThingCopyChooser.xaml</DependentUpon>
@@ -140,10 +134,10 @@
     <EmbeddedResource Update="UI\ControlsChar\CharSettingsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="UI\ControlsChar\CharSettingsPopupPage.xaml">
+    <EmbeddedResource Update="UI\ControlsOther\EmptyListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="UI\ControlsOther\EmptyListView.xaml">
+    <EmbeddedResource Update="UI\Resources\RgPopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="UI\ThingDetails\DetailsView.xaml">

@@ -1,13 +1,20 @@
 ﻿//Author: Tobi van Helsinki
 
+using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelperViewer.UI.Resources;
 using TLIB;
+using Xamarin.Forms;
 
 namespace ShadowRunHelperViewer
 {
     public partial class SharedStyles
     {
+        public static void DisplayDefaultPopUp(View v)
+        {
+            PopupNavigation.Instance.PushAsync(new RgPopUp(v));
+        }
+
         public SharedStyles()
         {
             Add("Spacing", SettingsModel.I.CurrentSpacingStrategy);
@@ -21,7 +28,7 @@ namespace ShadowRunHelperViewer
             Add("CurrentAccentHighColor", StyleManager.AccentHighColor);
             Add("CurrentAccentLowColor", StyleManager.AccentLowColor);
             Add("CurrentButtonColor", StyleManager.ButtonColor);
-            Add("CornerRadiusSize", 3); //TODO introduce option
+            Add("CornerRadiusSize", StyleManager.CornerRadius);
 
             InitializeComponent();
         }

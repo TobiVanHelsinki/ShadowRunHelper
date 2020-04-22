@@ -1,18 +1,16 @@
 ﻿//Author: Tobi van Helsinki
 
-using Rg.Plugins.Popup.Pages;
-using ShadowRunHelper.Model;
 using System;
-using Xamarin.Forms.Xaml;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ShadowRunHelper.Model;
 using Xamarin.Forms;
-using ShadowRunHelperViewer.UI.Resources;
+using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ControlCenter : PopupPage, INotifyPropertyChanged
+    public partial class ControlCenter : ContentView, INotifyPropertyChanged
     {
         #region NotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -29,19 +27,13 @@ namespace ShadowRunHelperViewer
         {
             Model = Char;
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
             BindingContext = this;
-            base.OnAppearing();
-            SizeDefiningElement_SizeChanged(this, new EventArgs());
         }
 
-        double _GeneralInput;
+        private double _GeneralInput;
         public double GeneralInput
         {
-            get { return _GeneralInput; }
+            get => _GeneralInput;
             set { if (_GeneralInput != value) { _GeneralInput = value; NotifyPropertyChanged(); } }
         }
 
@@ -181,14 +173,5 @@ namespace ShadowRunHelperViewer
         {
             (sender as Slider).Value = Math.Round(e.NewValue, 0);
         }
-
-        private void SizeDefiningElement_SizeChanged(object sender, EventArgs e)
-        {
-            var NewWidth = (sender as VisualElement).Width /*- Column1Max - Column2Max - Column3Max*/; //HACK
-            //DamageGrid.WidthRequest = NewWidth < 40 ? 40 : NewWidth;
-            //DamageGrid.MinimumWidthRequest = WidthRequest;
-        }
-
-        private void PopupPage_SizeChanged(object sender, EventArgs e) => (MainFrame.WidthRequest, MainFrame.HeightRequest) = Common.MaximumDimensions(Width, Height);
     }
 }

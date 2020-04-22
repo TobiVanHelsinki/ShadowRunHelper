@@ -125,7 +125,8 @@ namespace ShadowRunHelperViewer
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new ControlCenter(MyChar));
+                SharedStyles.DisplayDefaultPopUp(new ControlCenter(MyChar));
+                //await PopupNavigation.Instance.PushAsync(new ControlCenter(MyChar));
             }
             catch (Exception)
             {

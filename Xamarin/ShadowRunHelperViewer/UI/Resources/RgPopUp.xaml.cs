@@ -2,21 +2,19 @@
 
 using System;
 using Rg.Plugins.Popup.Pages;
-using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.UI.Resources;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ShadowRunHelperViewer.UI.Controls
+namespace ShadowRunHelperViewer.UI.Resources
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LinkListChooserPopup : PopupPage
+    public partial class RgPopUp : PopupPage
     {
-        public LinkListChooserPopup(CharHolder myChar, ConnectProperty property)
+        public RgPopUp(View v)
         {
             InitializeComponent();
             BindingContext = this;
-            Content = new LinkListChooser(myChar, property);
+            MainFrame.Content = v;
         }
 
         private void PopupPage_SizeChanged(object sender, EventArgs e)
