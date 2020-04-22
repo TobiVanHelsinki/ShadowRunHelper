@@ -53,7 +53,16 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
     <ControlTemplate x:Key="Thing_Value" x:DataType="CharModel:Thing">
         <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource HeadlinePanel}">
             <Label Text="{x:Binding Value.TrueValue}" Style="{StaticResource HeadLineText}"/>
-            <Label Text="{x:Binding Zusatz}" Style="{StaticResource HeadLineText}"/>
+            <Label Text="+" Style="{StaticResource HeadLineText}" Margin="0,0,2,0">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                    Binding="{Binding Source={x:Reference Zusatz}, Path=Text.Length}"
+                                    Value="0">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <Label x:Name="Zusatz" Text="{x:Binding Zusatz}" Style="{StaticResource HeadLineText}"/>
         </StackLayout>
     </ControlTemplate>
 
