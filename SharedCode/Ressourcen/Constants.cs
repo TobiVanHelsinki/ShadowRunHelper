@@ -2,10 +2,10 @@
 
 ///Author: Tobi van Helsinki
 
-using ShadowRunHelper.Model;
 using System.Collections.Generic;
+using ShadowRunHelper.Model;
+using SharedCode.Ressourcen;
 using TAPPLICATION;
-using TLIB;
 
 namespace ShadowRunHelper
 {
@@ -56,11 +56,11 @@ namespace ShadowRunHelper
         #region Help
 
         public static List<HelpEntry> HelpList = new List<HelpEntry>() {
-            new HelpEntry() { Paragraph = CustomManager.GetString("Help4_CharAdministration"), Text = CustomManager.GetString("Help4") },
-            new HelpEntry() { Paragraph = CustomManager.GetString("Help5_CharAdministration_FileName"), Text = CustomManager.GetString("Help5") },
-            new HelpEntry() { Paragraph = CustomManager.GetString("Help3_LinkedItems"), Text = CustomManager.GetString("Help3") },
-            new HelpEntry() { Paragraph = CustomManager.GetString("Help1_ActiveItems"), Text = CustomManager.GetString("Help1") },
-            new HelpEntry() { Paragraph = CustomManager.GetString("Help2_AutoCalc"), Text = CustomManager.GetString("Help2") },
+            new HelpEntry() { Paragraph = AppResources.Help4_CharAdministration, Text = AppResources.Help4 },
+            new HelpEntry() { Paragraph = AppResources.Help5_CharAdministration_FileName, Text = AppResources.Help5},
+            new HelpEntry() { Paragraph = AppResources.Help3_LinkedItems, Text = AppResources.Help3},
+            new HelpEntry() { Paragraph = AppResources.Help1_ActiveItems, Text = AppResources.Help1},
+            new HelpEntry() { Paragraph = AppResources.Help2_AutoCalc, Text = AppResources.Help2},
         };
         #endregion Help
 

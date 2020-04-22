@@ -1,6 +1,9 @@
-﻿using System;
+﻿//Author: Tobi van Helsinki
+
+using System;
 using System.IO;
 using System.Threading.Tasks;
+using SharedCode.Ressourcen;
 using TAPPLICATION.IO;
 using TLIB;
 using Windows.Foundation.Metadata;
@@ -12,7 +15,7 @@ namespace ShadowRunHelper
     {
         public async Task CheckLicence(bool force = false)
         {
-            if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract",4))
+            if (!ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 4))
             {
                 Constants.IAP_HIDEADS = true;
                 return;
@@ -24,7 +27,7 @@ namespace ShadowRunHelper
                 {
                     var AddOns = await StoreContext.GetDefault().GetUserCollectionAsync(Constants.IAP_STORE_LIST_ADDON_TYPES);
                     Constants.IAP_HIDEADS =
-                        AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE) || 
+                        AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE) ||
                         AddOns.Products.ContainsKey(Constants.IAP_FEATUREID_ADFREE_365);
                 }
                 catch (Exception ex)
@@ -57,19 +60,19 @@ namespace ShadowRunHelper
         {
             var context = StoreContext.GetDefault();
 
-            StorePurchaseResult result = await context.RequestPurchaseAsync(FEATUREID);
+            var result = await context.RequestPurchaseAsync(FEATUREID);
 
             // Capture the error message for the operation, if any.
-            string extendedError = string.Empty;
+            var extendedError = string.Empty;
             if (result.ExtendedError != null)
             {
                 extendedError = result.ExtendedError.Message;
             }
-            string Text="";
+            var Text = "";
             switch (result.Status)
             {
                 case StorePurchaseStatus.AlreadyPurchased:
-                    Text= "The user has already purchased the product.";
+                    Text = "The user has already purchased the product.";
                     break;
 
                 case StorePurchaseStatus.Succeeded:
@@ -81,34 +84,34 @@ namespace ShadowRunHelper
                     break;
 
                 case StorePurchaseStatus.NotPurchased:
-                    Text= "The purchase did not complete. " +
+                    Text = "The purchase did not complete. " +
                         "The user may have cancelled the purchase. ExtendedError: " + extendedError;
                     break;
 
                 case StorePurchaseStatus.NetworkError:
-                    Text= "The purchase was unsuccessful due to a network error. " +
+                    Text = "The purchase was unsuccessful due to a network error. " +
                         "ExtendedError: " + extendedError;
                     break;
 
                 case StorePurchaseStatus.ServerError:
-                    Text= "The purchase was unsuccessful due to a server error. " +
+                    Text = "The purchase was unsuccessful due to a server error. " +
                         "ExtendedError: " + extendedError;
                     break;
 
                 default:
-                    Text= "The purchase was unsuccessful due to an unknown error. " +
+                    Text = "The purchase was unsuccessful due to an unknown error. " +
                         "ExtendedError: " + extendedError;
                     break;
             }
             switch (result.Status)
             {
                 case StorePurchaseStatus.Succeeded:
-                    Log.Write(CustomManager.GetString("IAP_Succeeded"));
+                    Log.Write(AppResources.IAP_Succeeded);
                     break;
                 case StorePurchaseStatus.NotPurchased:
                     break;
                 default:
-                    Log.Write(CustomManager.GetString("IAP_Error"), logType: LogType.Error);
+                    Log.Write(AppResources.IAP_Error, logType: LogType.Error);
                     break;
             }
             await CheckLicence(true);

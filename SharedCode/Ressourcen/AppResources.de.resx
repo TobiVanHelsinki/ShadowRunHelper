@@ -457,4 +457,7 @@ Bewerte Sie doch im Store!</value>
   <data name="Info_Success_Import" xml:space="preserve">
     <value>Char wurde erfolgreich importiert und steht nun am aktuellen Speicherplatz zur Verfügung</value>
   </data>
+  <data name="PlayedWith" xml:space="preserve">
+    <value>Gespielt mit</value>
+  </data>
 </root>

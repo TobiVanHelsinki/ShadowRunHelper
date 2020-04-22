@@ -1,9 +1,7 @@
-﻿///Author: Tobi van Helsinki
+﻿//Author: Tobi van Helsinki
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
+///Author: Tobi van Helsinki
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,6 +9,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
+using SharedCode.Ressourcen;
 using TAPPLICATION.IO;
 using TLIB;
 
@@ -20,7 +23,10 @@ namespace ShadowRunHelper.IO
 
     internal class UnknownThingConverter : JsonConverter
     {
-        public override bool CanConvert(Type objectType) => objectType == typeof(Thing);
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(Thing);
+        }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
@@ -53,7 +59,10 @@ namespace ShadowRunHelper.IO
 
     internal class RemoveUnusedProps : JsonConverter
     {
-        public override bool CanConvert(Type objectType) => typeof(Eigenschaft).IsAssignableFrom(objectType);
+        public override bool CanConvert(Type objectType)
+        {
+            return typeof(Eigenschaft).IsAssignableFrom(objectType);
+        }
 
         /// <summary>
         /// ReadJson
@@ -129,7 +138,10 @@ namespace ShadowRunHelper.IO
 
     internal class Version1_7To1_8ConnectedThingsConverter : JsonConverter
     {
-        public override bool CanConvert(Type objectType) => typeof(Thing).IsAssignableFrom(objectType);
+        public override bool CanConvert(Type objectType)
+        {
+            return typeof(Thing).IsAssignableFrom(objectType);
+        }
 
         /// <summary>
         /// ReadJson
@@ -245,7 +257,7 @@ namespace ShadowRunHelper.IO
             switch (strFileVersion)
             {
                 case Constants.CHARFILE_VERSION_1_3:
-                    Log.Write(CustomManager.GetString("Info_NotSupportedVersion"), true);
+                    Log.Write(AppResources.Info_NotSupportedVersion, true);
                     throw new IO_FileVersion();
                 case Constants.CHARFILE_VERSION_1_5:
                     fileContent = RefactorJSONString(fileContent, new List<(string old, string @new)> {
@@ -273,12 +285,12 @@ namespace ShadowRunHelper.IO
                         item.Gegen = 0;
 #pragma warning restore CS0618 // Typ oder Element ist veraltet
                     }
-                    Log.Write(CustomManager.GetString("Info_UpgradedChar"), true);
+                    Log.Write(AppResources.Info_UpgradedChar, true);
                     break;
                 case Constants.CHARFILE_VERSION_1_6:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     ReturnCharHolder.Person.Notizen = PlainTextToRtf(ReturnCharHolder.Person.Notizen);
-                    Log.Write(CustomManager.GetString("Info_UpgradedChar"), true);
+                    Log.Write(AppResources.Info_UpgradedChar, true);
                     break;
                 case Constants.CHARFILE_VERSION_1_7:
                     fileContent = RefactorJSONString(fileContent, new List<(string old, string @new)> {
@@ -286,7 +298,7 @@ namespace ShadowRunHelper.IO
                     settings.Converters.Add(new Version1_7To1_8ConnectedThingsConverter());
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     OldNoteToNewNotes(ReturnCharHolder);
-                    Log.Write(CustomManager.GetString("Info_UpgradedChar"), true);
+                    Log.Write(AppResources.Info_UpgradedChar, true);
                     break;
                 case Constants.CHARFILE_VERSION_1_8:
                     settings.Converters.Add(new RemoveUnusedProps());
@@ -365,11 +377,11 @@ namespace ShadowRunHelper.IO
             {
                 case PreSavedChar.ExampleChar:
                     RessourceName = "SharedCode.Assets.Example." + Language + Constants.DATEIENDUNG_CHAR;
-                    TargetName = CustomManager.GetString("ExampleChar") + Constants.DATEIENDUNG_CHAR;
+                    TargetName = AppResources.ExampleChar + Constants.DATEIENDUNG_CHAR;
                     break;
                 case PreSavedChar.PreDBChar:
                     RessourceName = "SharedCode.Assets.DB." + Language + Constants.DATEIENDUNG_CHAR;
-                    TargetName = CustomManager.GetString("ExampleChar") + Constants.DATEIENDUNG_CHAR;
+                    TargetName = AppResources.ExampleChar + Constants.DATEIENDUNG_CHAR;
                     break;
                 default:
                     return;

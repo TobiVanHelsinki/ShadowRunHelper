@@ -1,4 +1,7 @@
-﻿using ShadowRunHelper.IO;
+﻿//Author: Tobi van Helsinki
+
+using ShadowRunHelper.IO;
+using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -55,7 +58,7 @@ namespace ShadowRunHelper
                 {
                     try
                     {
-                //TODO
+                        //TODO
                         await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfo(Path.Combine(TAPPLICATION.IO.SharedIO.CurrentSavePath, item.Item1)));
                     }
                     catch (Exception ex)
@@ -77,11 +80,11 @@ namespace ShadowRunHelper
                 {
                     Errors += item + "\n";
                 }
-                Log.Write(CustomManager.GetString("AppImportErrors") + "\n\n" + Errors, false);
+                Log.Write(AppResources.AppImportErrors + "\n\n" + Errors, false);
             }
             else
             {
-                Log.Write(CustomManager.GetString("AppImportNoErrors"), false);
+                Log.Write(AppResources.AppImportNoErrors, false);
             }
         }
     }

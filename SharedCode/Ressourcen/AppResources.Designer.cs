@@ -655,6 +655,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Played with ähnelt.
+        /// </summary>
+        public static string PlayedWith {
+            get {
+                return ResourceManager.GetString("PlayedWith", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Database charakter ähnelt.
         /// </summary>
         public static string PreDBChar {

@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using SharedCode.Ressourcen;
 using TAPPLICATION;
 using TAPPLICATION.IO;
 using TAPPLICATION.Model;
@@ -175,7 +176,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                Log.Write(CustomManager.GetString("Error_CopyFiles"), ex);
+                Log.Write(AppResources.Error_CopyFiles, ex);
             }
         }
 
@@ -221,7 +222,7 @@ namespace ShadowRunHelper
             }
             catch (Exception ex)
             {
-                Log.Write(CustomManager.GetString("Error_CopyFiles"), ex);
+                Log.Write(AppResources.Error_CopyFiles, ex);
             }
             SharedSettingsModel.I.FOLDERMODE_PATH = tempFolderModePath;
         }

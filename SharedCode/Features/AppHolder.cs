@@ -1,13 +1,13 @@
 ﻿//Author: Tobi van Helsinki
 
-using ShadowRunHelper.IO;
-using ShadowRunHelper.Model;
-using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Resources;
 using System.Threading.Tasks;
+using ShadowRunHelper.IO;
+using ShadowRunHelper.Model;
+using SharedCode.Ressourcen;
 using TAPPLICATION;
 using TAPPLICATION.IO;
 using TAPPLICATION.Model;
@@ -19,10 +19,9 @@ namespace ShadowRunHelper
 {
     public static class AppHolder
     {
-        static AppModel Model;
-        static SettingsModel Settings;
-
-        static bool FirstStart = true;
+        private static AppModel Model;
+        private static SettingsModel Settings;
+        private static bool FirstStart = true;
 
         #region Init
 
@@ -192,16 +191,16 @@ namespace ShadowRunHelper
                         }
                         catch (Exception ex)
                         {
-                            Log.Write(CustomManager.GetString("Error_FileActivation"), ex);
+                            Log.Write(AppResources.Error_FileActivation, ex);
                         }
                     }
                     if (Settings.FORCE_LOAD_CHAR_ON_START)
                     {
-                        Log.Write(CustomManager.GetString("Info_Char_Loaded_File"));
+                        Log.Write(AppResources.Info_Char_Loaded_File);
                     }
                     else
                     {
-                        Log.Write(CustomManager.GetString("Info_Char_Loaded_Start"));
+                        Log.Write(AppResources.Info_Char_Loaded_Start);
                     }
                 }
             }

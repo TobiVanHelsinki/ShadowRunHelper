@@ -1,11 +1,13 @@
-﻿using Newtonsoft.Json;
-using ShadowRunHelper.IO;
+﻿//Author: Tobi van Helsinki
+
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using ShadowRunHelper.IO;
+using SharedCode.Ressourcen;
 using TLIB;
 using Windows.Storage;
 
@@ -27,12 +29,12 @@ namespace ShadowRunHelper
 
         public async Task ImportAppPacket()
         {
-            List<string> ErrorList = new List<string>();
+            var ErrorList = new List<string>();
             var (set, files) = await Loading;
             //Import Settings
             try
             {
-                foreach (var item in set.Join(SettingsModel.I.GetType().GetProperties(), s=>s.Item1, s=>s.Name, (NEW, OLD)=>(NEW,OLD)))
+                foreach (var item in set.Join(SettingsModel.I.GetType().GetProperties(), s => s.Item1, s => s.Name, (NEW, OLD) => (NEW, OLD)))
                 {
                     if (Forbidden.Contains(item.NEW.Item1))
                     {
@@ -62,7 +64,7 @@ namespace ShadowRunHelper
                         await CharHolderIO.CurrentIO.SaveFileContent(item.Item2, new FileInfo(CharHolderIO.CurrentSavePath + item.Item1));
                     }
                     catch (Exception ex)
- {
+                    {
                         Log.Write("Could not save", ex, logType: LogType.Error);
                         ErrorList.Add(item.Item1);
                     }
@@ -74,16 +76,16 @@ namespace ShadowRunHelper
             InProgress = false;
             if (ErrorList.Count != 0)
             {
-                string Errors = "";
+                var Errors = "";
                 foreach (var item in ErrorList)
                 {
                     Errors += item + "\n";
                 }
-                Log.Write(CustomManager.GetString("AppImportErrors"), logType: LogType.Error);
+                Log.Write(AppResources.AppImportErrors, logType: LogType.Error);
             }
             else
             {
-                Log.Write(CustomManager.GetString("AppImportNoErrors"), logType: LogType.Error);
+                Log.Write(AppResources.AppImportNoErrors, logType: LogType.Error);
             }
         }
     }

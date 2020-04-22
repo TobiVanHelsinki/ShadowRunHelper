@@ -1,10 +1,5 @@
 ﻿//Author: Tobi van Helsinki
 
-///Author: Tobi van Helsinki
-
-using ShadowRunHelper.CharController;
-using ShadowRunHelper.CharModel;
-using SharedCode.Ressourcen;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +9,9 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using ShadowRunHelper.CharController;
+using ShadowRunHelper.CharModel;
+using SharedCode.Ressourcen;
 using TAPPLICATION;
 using TAPPLICATION.Model;
 using TLIB;
@@ -130,10 +128,10 @@ namespace ShadowRunHelper.Model
                 strSaveName = AddNameAndType(strSaveName);
                 strSaveName += ",";
                 strSaveName += Person.Runs.ToString();
-                strSaveName += CustomManager.GetString("Model_Person_Runs/Text");
+                strSaveName += ModelResources.Person_Runs;
                 strSaveName += ",";
                 strSaveName += Person.Karma_Gesamt.ToString();
-                strSaveName += CustomManager.GetString("Model_Person_Karma/Text");
+                strSaveName += ModelResources.Person_Karma;
             }
             else
             {
@@ -206,7 +204,10 @@ namespace ShadowRunHelper.Model
 #if DEBUG
                         if (calc.Owner is null)
                         {
-                            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                            if (System.Diagnostics.Debugger.IsAttached)
+                            {
+                                System.Diagnostics.Debugger.Break();
+                            }
                         }
 #endif
                         calc.Name = prop.Name;
@@ -215,7 +216,10 @@ namespace ShadowRunHelper.Model
 #if DEBUG
                     else
                     {
-                        if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                        if (System.Diagnostics.Debugger.IsAttached)
+                        {
+                            System.Diagnostics.Debugger.Break();
+                        }
                     }
 #endif
                 }
@@ -232,7 +236,10 @@ namespace ShadowRunHelper.Model
                     if (newconnect is null)
                     {
 #if DEBUG
-                        if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                        if (System.Diagnostics.Debugger.IsAttached)
+                        {
+                            System.Diagnostics.Debugger.Break();
+                        }
 #endif
                         Log.Write("Cannot find the correct connection reference for " + reconnect.Owner.Bezeichner + " with the property: " + reconnect.Name);
                         newconnect = Connects.FirstOrDefault(x =>

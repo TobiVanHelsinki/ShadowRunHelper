@@ -1,13 +1,11 @@
 ﻿//Author: Tobi van Helsinki
 
-///Author: Tobi van Helsinki
-
-using ShadowRunHelper.CharModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using ShadowRunHelper.CharModel;
 
 namespace ShadowRunHelper.Model
 {
@@ -26,7 +24,7 @@ namespace ShadowRunHelper.Model
         //}
         //else
         //{
-        //    Log.Write(CustomManager.GetString("Warning_NotAddLinkedEntry"));
+        //    Log.Write(AppResources.Warning_NotAddLinkedEntry"));
         //}
         //}
 
@@ -46,13 +44,10 @@ namespace ShadowRunHelper.Model
             return false;
         }
 
-        Action CollectionChangeCallback;
-        Thing thisThing;
+        private readonly Action CollectionChangeCallback;
+        private readonly Thing thisThing;
 
-        public LinkList(Thing thing)
-        {
-            thisThing = thing;
-        }
+        public LinkList(Thing thing) => thisThing = thing;
 
         public void OnCollectionChangedCall(Action _CollectionChangeCallback)
         {
@@ -92,7 +87,10 @@ namespace ShadowRunHelper.Model
             //}
         }
 
-        private void CallCallback(object sender, PropertyChangedEventArgs e) => CollectionChangeCallback?.Invoke();
+        private void CallCallback(object sender, PropertyChangedEventArgs e)
+        {
+            CollectionChangeCallback?.Invoke();
+        }
 
         private void CheckForDeletion(object sender, PropertyChangedEventArgs e)
         {

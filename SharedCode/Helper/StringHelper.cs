@@ -1,5 +1,8 @@
-﻿using System;
+﻿//Author: Tobi van Helsinki
+
+using System;
 using System.Collections.Generic;
+using SharedCode.Ressourcen;
 using TLIB;
 
 namespace ShadowRunHelper.Helper
@@ -11,10 +14,10 @@ namespace ShadowRunHelper.Helper
             var ret = new List<string>();
             var Counter = 1;
             string Current;
-            Loop:
+        Loop:
             try
             {
-                Current = CustomManager.GetString(strID + Counter);
+                Current = AppResources.ResourceManager.GetStringSafe(strID + Counter);
             }
             catch (Exception ex)
             {
@@ -29,6 +32,5 @@ namespace ShadowRunHelper.Helper
             }
             return ret;
         }
-
     }
 }

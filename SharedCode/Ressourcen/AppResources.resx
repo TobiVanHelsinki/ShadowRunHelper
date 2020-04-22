@@ -454,4 +454,7 @@ Version 1.7.4:
   <data name="Info_Success_Import" xml:space="preserve">
     <value>Char was successfully imported and is now available at the current saveplace</value>
   </data>
+  <data name="PlayedWith" xml:space="preserve">
+    <value>Played with</value>
+  </data>
 </root>
