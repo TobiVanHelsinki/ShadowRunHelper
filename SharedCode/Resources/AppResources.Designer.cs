@@ -115,56 +115,11 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die could not store ähnelt.
-        /// </summary>
-        public static string Error_Converter_Error1 {
-            get {
-                return ResourceManager.GetString("Error_Converter_Error1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Fehler: Konnte nicht (alle) Dateien an neuen Ort kopieren. ähnelt.
         /// </summary>
         public static string Error_CopyFiles {
             get {
                 return ResourceManager.GetString("Error_CopyFiles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CSV Export failed ähnelt.
-        /// </summary>
-        public static string Error_CSVExportFail {
-            get {
-                return ResourceManager.GetString("Error_CSVExportFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CVS Import failed ähnelt.
-        /// </summary>
-        public static string Error_CSVImportFail {
-            get {
-                return ResourceManager.GetString("Error_CSVImportFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Could not delete all ähnelt.
-        /// </summary>
-        public static string Error_DelAllFail {
-            get {
-                return ResourceManager.GetString("Error_DelAllFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Could not delete current character ähnelt.
-        /// </summary>
-        public static string Error_DelCurrentFail {
-            get {
-                return ResourceManager.GetString("Error_DelCurrentFail", resourceCulture);
             }
         }
         
@@ -282,15 +237,6 @@ namespace SharedCode.Resources {
         public static string Error_IO_UserDecision {
             get {
                 return ResourceManager.GetString("Error_IO_UserDecision", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die There was an Error during loading you char. More information at the Notifications. ähnelt.
-        /// </summary>
-        public static string Error_Loader_Error1 {
-            get {
-                return ResourceManager.GetString("Error_Loader_Error1", resourceCulture);
             }
         }
         
@@ -651,15 +597,6 @@ namespace SharedCode.Resources {
         public static string PlayedWith {
             get {
                 return ResourceManager.GetString("PlayedWith", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Database charakter ähnelt.
-        /// </summary>
-        public static string PreDBChar {
-            get {
-                return ResourceManager.GetString("PreDBChar", resourceCulture);
             }
         }
         

@@ -117,18 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Error_CSVExportFail" xml:space="preserve">
-    <value>CSV Export failed</value>
-  </data>
-  <data name="Error_CSVImportFail" xml:space="preserve">
-    <value>CVS Import failed</value>
-  </data>
-  <data name="Error_DelAllFail" xml:space="preserve">
-    <value>Could not delete all</value>
-  </data>
-  <data name="Error_DelCurrentFail" xml:space="preserve">
-    <value>Could not delete current character</value>
-  </data>
   <data name="Error_DelFail" xml:space="preserve">
     <value>Could not delete</value>
   </data>
@@ -144,14 +132,8 @@
   <data name="Error_SaveFail" xml:space="preserve">
     <value>Error during saving. Try to export your char and restart the App.</value>
   </data>
-  <data name="Error_Converter_Error1" xml:space="preserve">
-    <value>could not store</value>
-  </data>
   <data name="Error_DisplayRequest" xml:space="preserve">
     <value>Display can not stay activated</value>
-  </data>
-  <data name="Error_Loader_Error1" xml:space="preserve">
-    <value>There was an Error during loading you char. More information at the Notifications.</value>
   </data>
   <data name="Error_Unknown" xml:space="preserve">
     <value>A unknown Error occured. You char was saved with a "Emergency" prefix.</value>
@@ -188,9 +170,6 @@
   </data>
   <data name="Error_FileActivation" xml:space="preserve">
     <value>Error: Could not read file</value>
-  </data>
-  <data name="PreDBChar" xml:space="preserve">
-    <value>Database charakter</value>
   </data>
   <data name="of" xml:space="preserve">
     <value>of</value>
@@ -237,9 +216,6 @@ By default, chars are saved within the app. In the options you can choose whethe
   </data>
   <data name="Help5_CharAdministration_FileName" xml:space="preserve">
     <value>Char administration - Filenames</value>
-  </data>
-  <data name="HelpDBIntro" xml:space="preserve">
-    <value>In this database you will find predefined entries. Click on an entry to select it. With the commands below you can then apply this selection to your current character. If you already have an entry with the same name in the same category, your entry will not be overwritten. For database entries with links to other entries, the system tries to link your entries. If this fails, the linked entry is also copied.</value>
   </data>
   <data name="Help1" xml:space="preserve">
     <value>Items (e. g. weapons, CyberDecks, normal items) can be "active". This means that they are taken into automatic calculations. For example, the limit value  of an "shooting"-action can be linked to the precision of the active weapon. If the active weapon is changed, the dependent values change automatically.</value>
@@ -306,9 +282,6 @@ By default, chars are saved within the app. In the options you can choose whethe
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
-  </data>
-  <data name="SymbolChanges" xml:space="preserve">
-    <value>*</value>
   </data>
   <data name="Error_General" xml:space="preserve">
     <value>Some Error</value>

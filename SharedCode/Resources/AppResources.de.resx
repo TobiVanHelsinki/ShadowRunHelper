@@ -117,18 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Error_CSVExportFail" xml:space="preserve">
-    <value>Konnte nicht CSV-Exportieren</value>
-  </data>
-  <data name="Error_CSVImportFail" xml:space="preserve">
-    <value>CSV Importfehler</value>
-  </data>
-  <data name="Error_DelAllFail" xml:space="preserve">
-    <value>Alle Löschen fehlgeschlagen</value>
-  </data>
-  <data name="Error_DelCurrentFail" xml:space="preserve">
-    <value>Löschen des aktuellen Char fehlgeschlagen</value>
-  </data>
   <data name="Error_DelFail" xml:space="preserve">
     <value>Löschen fehlgeschlagen</value>
   </data>
@@ -144,14 +132,8 @@
   <data name="Error_SaveFail" xml:space="preserve">
     <value>Speichern fehlgeschlagen, versuche, den Char zu exportieren und starte die App neu.</value>
   </data>
-  <data name="Error_Converter_Error1" xml:space="preserve">
-    <value>konnte nicht übernommen werden</value>
-  </data>
   <data name="Error_DisplayRequest" xml:space="preserve">
     <value>Display kann nicht automatisch aktiviert bleiben</value>
-  </data>
-  <data name="Error_Loader_Error1" xml:space="preserve">
-    <value>Der Char konnte nicht vollstädnig geladen werden. Genaure Informationen bei den Benachrichtigungen verfügbar.</value>
   </data>
   <data name="Error_Unknown" xml:space="preserve">
     <value>Ein unbekannter Fehler ist aufgetreten, Ihr char wurde mit dem Prefix ''Emergency'' gespeichert.</value>
@@ -223,9 +205,6 @@ Setzen Sie den externen Ordner neu!</value>
   </data>
   <data name="ExampleChar" xml:space="preserve">
     <value>Beispiel Charakter</value>
-  </data>
-  <data name="PreDBChar" xml:space="preserve">
-    <value>Datenbank Charakter</value>
   </data>
   <data name="HelpDBIntro" xml:space="preserve">
     <value>In dieser Datenbank findest du vorgefertigte Einträge. Klicke auf einen Eintrag, um ihn auszuwählen. Mit den Befehlen unten kannst du diese Auswahl dann in deinen aktuellen Charakter übernehmen. Solltest du bereits einen Eintrag mit dem selben Namen in der selben Kategorie besitzen, wird dein Eintrag nicht überschrieben. Für Datenbankeinträge mit Verknüpfungen zu anderen Einträgen wird versucht, deine Einträge zu verknüpfen. Falls das misslingt, wird auch der verknüpfte Eintrag kopiert.</value>
