@@ -118,380 +118,386 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Category_Aktion" xml:space="preserve">
-    <value>Aktionen</value>
+    <value>Actions</value>
   </data>
   <data name="Category_Item" xml:space="preserve">
     <value>Items</value>
   </data>
   <data name="Category_Kampf" xml:space="preserve">
-    <value>Kampf</value>
+    <value>Battle</value>
   </data>
   <data name="Category_Notizen" xml:space="preserve">
-    <value>Notizen</value>
+    <value>Notes</value>
   </data>
   <data name="Category_Person" xml:space="preserve">
     <value>Person</value>
   </data>
-  <data name="FileExport" xml:space="preserve">
-    <value>Char Export</value>
+  <data name="Category_Settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Öffnen</value>
+    <value>Open</value>
   </data>
   <data name="NewChar" xml:space="preserve">
-    <value>Neuen Char erstellen</value>
+    <value>Create new char</value>
   </data>
   <data name="Einleitung1" xml:space="preserve">
-    <value>Aktuelle Speicherdatei:</value>
+    <value>Current savefiles:</value>
   </data>
   <data name="Einleitung2" xml:space="preserve">
-    <value>Verfügbare Speicherdateien:</value>
+    <value>Available savefiles:</value>
   </data>
   <data name="Options_AutoSave" xml:space="preserve">
-    <value>Char bei Änderung automatisch speichern</value>
+    <value>Automated saves for chars</value>
   </data>
   <data name="Options_LoadOnStart" xml:space="preserve">
-    <value>Letzten Char beim Start automatisch laden</value>
-  </data>
-  <data name="Char_Schaden_Geist" xml:space="preserve">
-    <value>Geistig</value>
-  </data>
-  <data name="Char_Schaden_Matrix" xml:space="preserve">
-    <value>Matrix Schaden</value>
+    <value>Load last char at startup</value>
   </data>
   <data name="Options_Inhaber" xml:space="preserve">
-    <value>App-Inhaber</value>
+    <value>App owener</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="SearchForEntries" xml:space="preserve">
+    <value>Search for entries ...</value>
   </data>
   <data name="Options_U_Kontakt" xml:space="preserve">
-    <value>Kontakt</value>
+    <value>Contact</value>
   </data>
   <data name="Options_Legal" xml:space="preserve">
-    <value>ShadowRun ist eine eingetragene Marke von Pegasus Games.
-Icons von Freepik https://www.flaticon.com sind lizensiert unter der Creative Commons BY 3.0.</value>
+    <value>ShadowRun is a registered trademark of Pegasus Games.
+Icons made by Freepik https://www.flaticon.com are licensed by Creative Commons BY 3.0.</value>
   </data>
   <data name="Options_U_Infos" xml:space="preserve">
-    <value>Informationen</value>
+    <value>Information</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Settings</value>
   </data>
   <data name="Options_U_Hilfe" xml:space="preserve">
-    <value>Hilfe</value>
+    <value>Help</value>
   </data>
   <data name="Options_U_Rechtliches" xml:space="preserve">
-    <value>Rechtliches</value>
+    <value>Legal</value>
   </data>
   <data name="Options_Ordnermode" xml:space="preserve">
-    <value>Wähle einen exernen Speicherordner aus.</value>
+    <value>Select a Exernen storage folder.</value>
   </data>
   <data name="Options_Ordnermode_Pfad" xml:space="preserve">
-    <value>Pfad</value>
+    <value>Path</value>
   </data>
   <data name="Options_Bewerten" xml:space="preserve">
-    <value>Diese App im Store Bewerten</value>
+    <value>Rate this App at the Store</value>
   </data>
   <data name="Options_Datenschutz" xml:space="preserve">
-    <value>Diese App sammelt keine persönlichen Daten und gibt sie deswegen auch nicht weiter.
-Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. Die App speichert diese Ordner und Dateien nur zur späteren Verwendung. Alle Dateien verbleiben auf dem Dateisystem oder im Microsoft Account.</value>
+    <value>This app does not collect any personal information and therefore does not disclose it.
+This app can be used to open files and folders on the file system. The app stores those folders and files only for later use. All files remain on the file system or Microsoft account.</value>
   </data>
   <data name="Options_U_Datenschutz" xml:space="preserve">
-    <value>Datenschutzerklärung</value>
-  </data>
-  <data name="Char_Schaden_Koerper" xml:space="preserve">
-    <value>Körper</value>
+    <value>Privacy Policy</value>
   </data>
   <data name="Options_EditAfterAdd" xml:space="preserve">
-    <value>Bearbeiten nach hinzufügren</value>
+    <value>Edit after add</value>
   </data>
   <data name="CharacterSheet" xml:space="preserve">
-    <value>Charakterbogen</value>
+    <value>Character Sheet</value>
   </data>
   <data name="Administration" xml:space="preserve">
-    <value>Verwaltung</value>
+    <value>Administration</value>
   </data>
   <data name="Options_DisplayRequest" xml:space="preserve">
-    <value>Sperrbildschirm verhindern</value>
+    <value>Prevent ScreenLock</value>
   </data>
   <data name="Repair" xml:space="preserve">
-    <value>Reparieren</value>
+    <value>Auto-Fix</value>
   </data>
   <data name="Options_Kontakt_Mail" xml:space="preserve">
-    <value>eMail</value>
+    <value>email</value>
   </data>
   <data name="Options_U_Notifications" xml:space="preserve">
-    <value>Benachrichtigungen</value>
+    <value>Notifications</value>
   </data>
   <data name="Options_ThrownException" xml:space="preserve">
     <value>Original Exception</value>
   </data>
   <data name="Options_Beta_Features" xml:space="preserve">
-    <value>Beta-Features aktivieren</value>
+    <value>Activate Beta-Features</value>
   </data>
   <data name="Options_App" xml:space="preserve">
     <value>App</value>
   </data>
   <data name="Options_AppLinkBtn" xml:space="preserve">
-    <value>Diese App im Store öffnen</value>
+    <value>Open Storeentry for this App</value>
   </data>
   <data name="Options_MoreAppsBtn" xml:space="preserve">
-    <value>Mehr Apps von mir</value>
+    <value>more of my apps</value>
   </data>
   <data name="Options_RateBtn" xml:space="preserve">
-    <value>Diese App im Store Bewerten</value>
+    <value>Rate this App</value>
   </data>
   <data name="Settings_Tip" xml:space="preserve">
-    <value>Halte mit der Maus oder dem Finger auf das ?, um mehr Informationen zu erhalten.</value>
-  </data>
-  <data name="SaveExternTip" xml:space="preserve">
-    <value>Wähle einen neuen Speicherort für diese Datei aus</value>
-  </data>
-  <data name="Options_U_Statistics" xml:space="preserve">
-    <value>Statistiken</value>
-  </data>
-  <data name="Statistics_AppStart" xml:space="preserve">
-    <value>Anzahl Appstarts</value>
-  </data>
-  <data name="SaveAtCurrentPlaceTip" xml:space="preserve">
-    <value>Hast du die Datei extern geöffnet (z.B. aus einem anderne Programm heraus) kannst Du sie an deinem normalen Speicherort speichern.</value>
-  </data>
-  <data name="Statistics_Creations" xml:space="preserve">
-    <value>Charaktere erstellt</value>
-  </data>
-  <data name="Statistics_Deletions" xml:space="preserve">
-    <value>Charaktere gelöscht</value>
-  </data>
-  <data name="Statistics_Loadings" xml:space="preserve">
-    <value>Charaktere geladen</value>
-  </data>
-  <data name="Statistics_Savings" xml:space="preserve">
-    <value>Charaktere gespeichert</value>
+    <value>Hold the mouse or finger on a ? to get more information.</value>
   </data>
   <data name="Options_AutoSaveInterval" xml:space="preserve">
-    <value>Wartezeit für Änderungen in Sekunden</value>
-  </data>
-  <data name="SaveAtCurrentPlace" xml:space="preserve">
-    <value>Importieren</value>
-  </data>
-  <data name="Options_TutorialMainShown" xml:space="preserve">
-    <value>Tutorial abgeschlossen</value>
-  </data>
-  <data name="FileRename" xml:space="preserve">
-    <value>Umbenennen</value>
-  </data>
-  <data name="SaveExtern" xml:space="preserve">
-    <value>Exportieren</value>
-  </data>
-  <data name="Options_U_CharPageConfig" xml:space="preserve">
-    <value>Kategorien auswählen</value>
-  </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Zurücksetzen</value>
-  </data>
-  <data name="Category_Settings" xml:space="preserve">
-    <value>Einstellungen</value>
-  </data>
-  <data name="Cat_Order_ABC" xml:space="preserve">
-    <value>Sortieren nach Alphabet</value>
-  </data>
-  <data name="Cat_Order_Orig" xml:space="preserve">
-    <value>Sortierung laden</value>
-  </data>
-  <data name="Cat_Order_Save" xml:space="preserve">
-    <value>Sortierung speichern</value>
-  </data>
-  <data name="Cat_Order_Type" xml:space="preserve">
-    <value>Sortieren nach "Typ"</value>
-  </data>
-  <data name="Options_U_Buy" xml:space="preserve">
-    <value>Kaufen</value>
-  </data>
-  <data name="OpenFolder" xml:space="preserve">
-    <value>Ordner öffnen</value>
-  </data>
-  <data name="Options_U_Buying_Header" xml:space="preserve">
-    <value>Hier hast du die Möglichkeit, Käufe zu tätigen. Du kannst mit den ersten beiden Optionen die Werbung abschalten. Mit der dritten Option unterstützt du dem Entwickler für diese App und erhältst einen exklusiven Premiumbadge.</value>
-  </data>
-  <data name="Options_U_Buying_Note" xml:space="preserve">
-    <value>Notiz am Rande: Apps im Store zu haben kostet im Jahr 18€. Es wäre cool, wenn die App daher wenigstens Kostendeckend arbeiten würde.</value>
-  </data>
-  <data name="Options_Group_Char" xml:space="preserve">
-    <value>Aktueller Char</value>
-  </data>
-  <data name="Options_Group_File" xml:space="preserve">
-    <value>Dateiverwaltung</value>
-  </data>
-  <data name="Options_Group_IO" xml:space="preserve">
-    <value>Speichern und Laden</value>
-  </data>
-  <data name="RepairTip" xml:space="preserve">
-    <value>Manchmal kommt es zu Fehlern bei Verknüpfungen. Dann kannst du diese Funktion versuchen.</value>
-  </data>
-  <data name="CreateExampleChar" xml:space="preserve">
-    <value>Beispiel Charakter erstellen</value>
-  </data>
-  <data name="Unload" xml:space="preserve">
-    <value>Schließen</value>
-  </data>
-  <data name="UnloadX" xml:space="preserve">
-    <value>Entfernt nur den geladenen Char aus der App. Speicherdateien werden nicht beeinflusst.</value>
-  </data>
-  <data name="ExportAll" xml:space="preserve">
-    <value>Alle in externem Ordner speichern</value>
+    <value>Watingtime for changes in seconds</value>
   </data>
   <data name="FileDate" xml:space="preserve">
-    <value>Änderungsdatum</value>
+    <value>modification date</value>
+  </data>
+  <data name="Options_U_Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="Statistics_AppStart" xml:space="preserve">
+    <value>Number of appstarts</value>
+  </data>
+  <data name="CreateExampleChar" xml:space="preserve">
+    <value>Create Example Char</value>
+  </data>
+  <data name="Statistics_Creations" xml:space="preserve">
+    <value>Number of new chars</value>
+  </data>
+  <data name="Statistics_Deletions" xml:space="preserve">
+    <value>Number of deleted chars</value>
+  </data>
+  <data name="Statistics_Loadings" xml:space="preserve">
+    <value>Number of loaded chars</value>
+  </data>
+  <data name="Statistics_Savings" xml:space="preserve">
+    <value>Number of saved chars</value>
+  </data>
+  <data name="SaveAtCurrentPlace" xml:space="preserve">
+    <value>Save at current Folder</value>
+  </data>
+  <data name="Options_TutorialMainShown" xml:space="preserve">
+    <value>Read "Char Administration" Guide</value>
+  </data>
+  <data name="FileExport" xml:space="preserve">
+    <value>Char Export</value>
+  </data>
+  <data name="Char_Schaden_Geist" xml:space="preserve">
+    <value>Mental</value>
+  </data>
+  <data name="Char_Schaden_Koerper" xml:space="preserve">
+    <value>Physical</value>
+  </data>
+  <data name="Char_Schaden_Matrix" xml:space="preserve">
+    <value>Matrix</value>
+  </data>
+  <data name="FileRename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="SaveExtern" xml:space="preserve">
+    <value>Save at extern Folder</value>
+  </data>
+  <data name="Options_U_CharPageConfig" xml:space="preserve">
+    <value>Choose categories</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Cat_Order_ABC" xml:space="preserve">
+    <value>Sort alphabeticly</value>
+  </data>
+  <data name="Cat_Order_Orig" xml:space="preserve">
+    <value>Load saved order</value>
+  </data>
+  <data name="Cat_Order_Save" xml:space="preserve">
+    <value>Save current order</value>
+  </data>
+  <data name="Cat_Order_Type" xml:space="preserve">
+    <value>Sort after "type"</value>
+  </data>
+  <data name="Options_U_Buy" xml:space="preserve">
+    <value>Buy</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>open folder</value>
+  </data>
+  <data name="Options_U_Buying_Header" xml:space="preserve">
+    <value>Here you have the possibility to make purchases. You can turn off advertising with the first two options. The third option supports the developer and adds an exclusive Badge to your app.</value>
+  </data>
+  <data name="Options_U_Buying_Note" xml:space="preserve">
+    <value>Note: Having apps in the store costs 18€ per year. It would be cool if the app would at least cover the costs.</value>
+  </data>
+  <data name="Options_Group_Char" xml:space="preserve">
+    <value>Current Char</value>
+  </data>
+  <data name="Options_Group_File" xml:space="preserve">
+    <value>Filemanagement</value>
+  </data>
+  <data name="Options_Group_IO" xml:space="preserve">
+    <value>Saving and loading</value>
+  </data>
+  <data name="RepairTip" xml:space="preserve">
+    <value>Sometimes errors occur at the link system. Then you can try this function.</value>
+  </data>
+  <data name="SaveAtCurrentPlaceTip" xml:space="preserve">
+    <value>If you opened the file externally (e.g. from another program) you can save it to your normal location.</value>
+  </data>
+  <data name="SaveExternTip" xml:space="preserve">
+    <value>Select a new location for this file</value>
+  </data>
+  <data name="Unload" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="UnloadX" xml:space="preserve">
+    <value>Removes only the loaded char from the app. Storage files are not affected.</value>
+  </data>
+  <data name="ExportAll" xml:space="preserve">
+    <value>Save all in external folder</value>
   </data>
   <data name="Cat_Order_OrigX" xml:space="preserve">
-    <value>Lädt die zuvor gesicherte Reihenfolge der Eintrag dieser Kategorie.</value>
+    <value>Loads the previously saved sequence of the entry of this category.</value>
   </data>
   <data name="Cat_Order_SaveX" xml:space="preserve">
-    <value>Sichert die derzeitige Reihenfolge der Eintrag dieser Kategorie.</value>
+    <value>Saves the current sequence of the entry of this category.</value>
   </data>
-  <data name="Rename" xml:space="preserve">
-    <value>Umbenennen</value>
+  <data name="SaveTip" xml:space="preserve">
+    <value>Saves the character sheet.</value>
   </data>
   <data name="Options_Version" xml:space="preserve">
     <value>Version</value>
   </data>
   <data name="OpenNotifications" xml:space="preserve">
-    <value>Benachrichtigungen öffnen</value>
+    <value>Open notifications</value>
   </data>
   <data name="Cat_AddSep" xml:space="preserve">
-    <value>Seperator hinzufügen</value>
+    <value>Add Seperator</value>
   </data>
   <data name="CharSettings" xml:space="preserve">
-    <value>Char-Optionen</value>
+    <value>Character sheet settings</value>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>Kopieren</value>
+    <value>Copy</value>
   </data>
   <data name="Cut" xml:space="preserve">
-    <value>Ausschneiden</value>
+    <value>Cut</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Bearbeiten</value>
+    <value>Edit</value>
   </data>
   <data name="Fav" xml:space="preserve">
-    <value>Favorisieren</value>
-  </data>
-  <data name="Finish" xml:space="preserve">
-    <value>Fertig</value>
-  </data>
-  <data name="SearchForEntries" xml:space="preserve">
-    <value>Suche nach Einträgen ...</value>
+    <value>Favorize</value>
   </data>
   <data name="FavUn" xml:space="preserve">
-    <value>Defavorisieren</value>
+    <value>Defavorize</value>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>Einfügen</value>
+    <value>Paste</value>
   </data>
   <data name="Share" xml:space="preserve">
-    <value>Teilen</value>
+    <value>Share</value>
   </data>
   <data name="DisableTips" xml:space="preserve">
-    <value>Tipps können in den Einstellungen deaktiviert werden.</value>
+    <value>Tips can be deactivated in the settings.</value>
   </data>
   <data name="TipHeader" xml:space="preserve">
-    <value>Tipp</value>
+    <value>Tip</value>
   </data>
   <data name="SubtractLifeStyleCost" xml:space="preserve">
-    <value>Lebensstil bezahlen</value>
+    <value>Subtract Lifestyle cost</value>
   </data>
-  <data name="GeneralInput" xml:space="preserve">
-    <value>Generelle Eingabe</value>
-  </data>
-  <data name="Damage" xml:space="preserve">
-    <value>Schaden</value>
-  </data>
-  <data name="WarningLocalSaveplace" xml:space="preserve">
-    <value>Warnung, du speicherst deine Dateien nur lokal. Das kann zu Datenverlust führen. Am besten wählst du einen externen Speicherort aus. Dafür kannst du auf diese Meldung klicken.</value>
-  </data>
-  <data name="SaveTip" xml:space="preserve">
-    <value>Speichert den Charakterbogen.</value>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
   </data>
   <data name="WelcomeGreetings" xml:space="preserve">
-    <value>Willkommen im ShadowRunHelper</value>
+    <value>Welcome to ShadowRunHelper</value>
+  </data>
+  <data name="Damage" xml:space="preserve">
+    <value>Damage</value>
+  </data>
+  <data name="GeneralInput" xml:space="preserve">
+    <value>General Input</value>
+  </data>
+  <data name="WarningLocalSaveplace" xml:space="preserve">
+    <value>Warning, you are saving your chars locally at the moment. It is strongly recommendet to use an synchronized folder like OneDrive or DropBox or an SD Card. Tap on this message to do so.</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Löschen</value>
+    <value>Delete</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Export</value>
   </data>
   <data name="ExportTip" xml:space="preserve">
-    <value>Kopiert diese Datei an einen anderen Ort.</value>
+    <value>Copy this file to another location.</value>
   </data>
   <data name="FileSize" xml:space="preserve">
-    <value>Dateigröße</value>
+    <value>Filesize</value>
   </data>
   <data name="FileName" xml:space="preserve">
-    <value>Dateiname</value>
+    <value>Filename</value>
   </data>
   <data name="IntroAdministration" xml:space="preserve">
-    <value>Wähle einen Eintrag aus der Liste, um einen Charakterbogen zu öffnen oder erstelle einen neuen.</value>
+    <value>Select a Entry from the list below to load a charactersheet or create a new one.</value>
   </data>
   <data name="ImportChar" xml:space="preserve">
-    <value>Char Importieren</value>
+    <value>Import Char</value>
   </data>
   <data name="TitleOtherPage" xml:space="preserve">
-    <value>Info und Einstellungen</value>
+    <value>Info and Settings</value>
   </data>
   <data name="TitleMiscPage" xml:space="preserve">
-    <value>Info und Einstellungen</value>
+    <value>Info and Settings</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Settings</value>
   </data>
   <data name="Options_BACKUP_VERSIONING" xml:space="preserve">
-    <value>BackUp Versionierung</value>
+    <value>BackUp versioning</value>
   </data>
   <data name="Options_AutoSaveTip" xml:space="preserve">
-    <value>Nach einer Änderung wird die angegebene Zeit gewartet, bis dein Char gespeichert wird. Wenn du schnell und viel änderst, dann gib besser einen größeren Wert an. Ein Wert zwischen 2 und 10 Sekunden ist angemessen.</value>
+    <value>After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. A value between 2 and 10 seconds is okay.</value>
   </data>
   <data name="Options_LoadOnStartTip" xml:space="preserve">
-    <value>Der Char, der beim Schließen der App aktiv war, wird beim Starten geladen. Achtung, dies erhöht die App-Ladezeit.</value>
+    <value>The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time.</value>
   </data>
   <data name="Options_DisplayRequestTip" xml:space="preserve">
-    <value>Damit verhinderst du, dass dein Bildschirm ausgeht, wenn du einen Char offen hast.</value>
+    <value>Prevent the Screen from locking, if have an open char.</value>
   </data>
   <data name="Options_EditAfterAddTip" xml:space="preserve">
-    <value>Nachdem du ein Objekt erstellt hast, wird sofort der bearbeiten Dialog aufgerufen.</value>
-  </data>
-  <data name="More" xml:space="preserve">
-    <value>Mehr</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Speichern</value>
-  </data>
-  <data name="Information" xml:space="preserve">
-    <value>Informationen</value>
-  </data>
-  <data name="TapAgainToExit" xml:space="preserve">
-    <value>Nochmal drücken zum beenden</value>
-  </data>
-  <data name="OffText" xml:space="preserve">
-    <value>Nein</value>
-  </data>
-  <data name="OnText" xml:space="preserve">
-    <value>Ja</value>
-  </data>
-  <data name="CreateNewChar" xml:space="preserve">
-    <value>Erstelle einen neuen Char</value>
-  </data>
-  <data name="CreateSomethingNew" xml:space="preserve">
-    <value>Erschaffe doch etwas neues!</value>
-  </data>
-  <data name="EmptyHere" xml:space="preserve">
-    <value>Es ist so leer hier ...</value>
+    <value>After you have created an object, the edit dialog is called immediately.</value>
   </data>
   <data name="TextRefactoring_Case" xml:space="preserve">
-    <value>GROßBUCHSTABEN normalisieren</value>
+    <value>Change UPPER CASE to Normal case in name and note</value>
   </data>
   <data name="TextRefactoring_NewLine" xml:space="preserve">
-    <value>Zeilenumbrüche in Notizen entfernen</value>
+    <value>Remove LineBreaks in Notes</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="TapAgainToExit" xml:space="preserve">
+    <value>Tap again to exit</value>
+  </data>
+  <data name="OffText" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="OnText" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="CreateSomethingNew" xml:space="preserve">
+    <value>Create something new!</value>
+  </data>
+  <data name="EmptyHere" xml:space="preserve">
+    <value>Its empty here ...</value>
+  </data>
+  <data name="CreateNewChar" xml:space="preserve">
+    <value>Create new char</value>
   </data>
   <data name="FileDeleteTip" xml:space="preserve">
-    <value>Löscht diese Datei unwiederruflich</value>
+    <value>Deletes this file permanently</value>
+  </data>
+  <data name="CopyTo" xml:space="preserve">
+    <value>Copy to other category</value>
+  </data>
+  <data name="MoveTo" xml:space="preserve">
+    <value>Move to other category</value>
   </data>
 </root>

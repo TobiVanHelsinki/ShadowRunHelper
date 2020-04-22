@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SharedCode.Ressourcen {
+namespace SharedCode.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SharedCode.Ressourcen {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SharedCode.Ressourcen.UiResources", typeof(UiResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SharedCode.Resources.UiResources", typeof(UiResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -237,6 +237,15 @@ namespace SharedCode.Ressourcen {
         public static string Copy {
             get {
                 return ResourceManager.GetString("Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Copy to other category ähnelt.
+        /// </summary>
+        public static string CopyTo {
+            get {
+                return ResourceManager.GetString("CopyTo", resourceCulture);
             }
         }
         
@@ -489,6 +498,15 @@ namespace SharedCode.Ressourcen {
         public static string More {
             get {
                 return ResourceManager.GetString("More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Move to other category ähnelt.
+        /// </summary>
+        public static string MoveTo {
+            get {
+                return ResourceManager.GetString("MoveTo", resourceCulture);
             }
         }
         

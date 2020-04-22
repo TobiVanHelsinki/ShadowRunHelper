@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SharedCode.Ressourcen {
+namespace SharedCode.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SharedCode.Ressourcen {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SharedCode.Ressourcen.ModelResources", typeof(ModelResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SharedCode.Resources.ModelResources", typeof(ModelResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

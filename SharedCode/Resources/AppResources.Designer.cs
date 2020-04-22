@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SharedCode.Ressourcen {
+namespace SharedCode.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SharedCode.Ressourcen {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SharedCode.Ressourcen.AppResources", typeof(AppResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SharedCode.Resources.AppResources", typeof(AppResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -295,15 +295,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Error reading the char directory. Reset the external folder! ähnelt.
-        /// </summary>
-        public static string Error_OpenFolder {
-            get {
-                return ResourceManager.GetString("Error_OpenFolder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die There was an Error during loading you char. More information at the Notifications. ähnelt.
         /// </summary>
         public static string Error_Loader_Error1 {
@@ -345,6 +336,15 @@ namespace SharedCode.Ressourcen {
         public static string Error_ObjectCopy {
             get {
                 return ResourceManager.GetString("Error_ObjectCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error reading the char directory. Reset the external folder! ähnelt.
+        /// </summary>
+        public static string Error_OpenFolder {
+            get {
+                return ResourceManager.GetString("Error_OpenFolder", resourceCulture);
             }
         }
         

@@ -50,7 +50,7 @@ namespace ShadowRunHelper
         #endregion Version Numbers
 
         #region Tips
-        public static List<string> TipList = Helper.StringHelper.GetStrings("Tip");
+        public static List<string> TipList = Helper.StringHelper.GetStringsWithIncreasinIDs("Tip");
         #endregion Tips
 
         #region Help
