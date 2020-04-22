@@ -739,46 +739,46 @@
     <value>State</value>
   </data>
   <data name="Content_Akrobatik" xml:space="preserve">
-    <value />
+    <value>Acrobatics</value>
   </data>
   <data name="Content_Ausweichen" xml:space="preserve">
-    <value />
+    <value>Evasion</value>
   </data>
   <data name="Content_Bodenfahrzeuge" xml:space="preserve">
-    <value />
+    <value>Ground vehicles</value>
   </data>
   <data name="Content_Computer" xml:space="preserve">
-    <value />
+    <value>Computer</value>
   </data>
   <data name="Content_ErsteHilfe" xml:space="preserve">
-    <value />
+    <value>first aid</value>
   </data>
   <data name="Content_FeuerwaffeFertigkeit" xml:space="preserve">
-    <value />
+    <value>Firearm (specify more precisely)</value>
   </data>
   <data name="Content_FeuerwaffeHandlung" xml:space="preserve">
-    <value />
+    <value>Shooting (specify skill)</value>
   </data>
   <data name="Content_Ini" xml:space="preserve">
-    <value />
+    <value>Initiative</value>
   </data>
   <data name="Content_Matrixsuche" xml:space="preserve">
-    <value />
+    <value>Matrix search</value>
   </data>
   <data name="Content_Muttersprache" xml:space="preserve">
-    <value />
+    <value>Mother tongue: (specify)</value>
   </data>
   <data name="Content_Nahkampf" xml:space="preserve">
-    <value />
+    <value>Close Combat</value>
   </data>
   <data name="Content_Schleichen" xml:space="preserve">
-    <value />
+    <value>Creep</value>
   </data>
   <data name="Content_SmartLink" xml:space="preserve">
-    <value />
+    <value>SmartLink</value>
   </data>
   <data name="Content_SmartLinkPrecision" xml:space="preserve">
-    <value />
+    <value>SmartLink Precision</value>
   </data>
   <data name="Content_Typ_Elektronik" xml:space="preserve">
     <value>Eletric</value>
@@ -790,16 +790,16 @@
     <value>Mental</value>
   </data>
   <data name="Content_Typ_Physisch" xml:space="preserve">
-    <value />
+    <value>Physical</value>
   </data>
   <data name="Content_Typ_Sprache" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="Content_Wahrnehmung" xml:space="preserve">
-    <value />
+    <value>Perception</value>
   </data>
   <data name="Content_Widerstand" xml:space="preserve">
-    <value />
+    <value>Resistance</value>
   </data>
   <data name="Content_Widerstand_Note" xml:space="preserve">
     <value>Toxinwiderstand, Erschöpfung, Krankheitswiderstand</value>

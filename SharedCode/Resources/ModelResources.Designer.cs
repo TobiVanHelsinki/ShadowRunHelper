@@ -367,7 +367,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Acrobatics ähnelt.
         /// </summary>
         public static string Content_Akrobatik {
             get {
@@ -376,7 +376,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Evasion ähnelt.
         /// </summary>
         public static string Content_Ausweichen {
             get {
@@ -385,7 +385,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ground vehicles ähnelt.
         /// </summary>
         public static string Content_Bodenfahrzeuge {
             get {
@@ -394,7 +394,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Computer ähnelt.
         /// </summary>
         public static string Content_Computer {
             get {
@@ -412,7 +412,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die first aid ähnelt.
         /// </summary>
         public static string Content_ErsteHilfe {
             get {
@@ -421,7 +421,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Firearm (specify more precisely) ähnelt.
         /// </summary>
         public static string Content_FeuerwaffeFertigkeit {
             get {
@@ -430,7 +430,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Shooting (specify skill) ähnelt.
         /// </summary>
         public static string Content_FeuerwaffeHandlung {
             get {
@@ -439,7 +439,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Initiative ähnelt.
         /// </summary>
         public static string Content_Ini {
             get {
@@ -448,7 +448,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Matrix search ähnelt.
         /// </summary>
         public static string Content_Matrixsuche {
             get {
@@ -466,7 +466,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Mother tongue: (specify) ähnelt.
         /// </summary>
         public static string Content_Muttersprache {
             get {
@@ -475,7 +475,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Close Combat ähnelt.
         /// </summary>
         public static string Content_Nahkampf {
             get {
@@ -493,7 +493,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Creep ähnelt.
         /// </summary>
         public static string Content_Schleichen {
             get {
@@ -511,7 +511,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die SmartLink ähnelt.
         /// </summary>
         public static string Content_SmartLink {
             get {
@@ -520,7 +520,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die SmartLink Precision ähnelt.
         /// </summary>
         public static string Content_SmartLinkPrecision {
             get {
@@ -556,7 +556,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Physical ähnelt.
         /// </summary>
         public static string Content_Typ_Physisch {
             get {
@@ -574,7 +574,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Perception ähnelt.
         /// </summary>
         public static string Content_Wahrnehmung {
             get {
@@ -583,7 +583,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Resistance ähnelt.
         /// </summary>
         public static string Content_Widerstand {
             get {
