@@ -2,7 +2,6 @@
 
 using System;
 using System.Globalization;
-using Humanizer;
 using SharedCode.Resources;
 using Xamarin.Forms;
 

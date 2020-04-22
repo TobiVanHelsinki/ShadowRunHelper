@@ -1,10 +1,8 @@
 ﻿//Author: Tobi van Helsinki
 
-///Author: Tobi van Helsinki
-
 using System.Collections.Generic;
 using ShadowRunHelper.Model;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using TAPPLICATION;
 
 namespace ShadowRunHelper
@@ -50,7 +48,7 @@ namespace ShadowRunHelper
         #endregion Version Numbers
 
         #region Tips
-        public static List<string> TipList = Helper.StringHelper.GetStringsWithIncreasinIDs("Tip");
+        public static List<string> TipList = ResourceHelper.GetStringsWithIncreasinIDs("Tip");
         #endregion Tips
 
         #region Help

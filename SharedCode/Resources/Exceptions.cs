@@ -1,8 +1,7 @@
 ﻿//Author: Tobi van Helsinki
 
 using System;
-using SharedCode.Ressourcen;
-using TLIB;
+using SharedCode.Resources;
 
 namespace ShadowRunHelper
 {

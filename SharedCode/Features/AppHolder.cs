@@ -67,7 +67,6 @@ namespace ShadowRunHelper
             catch (AggregateException)
             {
             }
-            Test.DoSmt();
         }
 
         public static async void StartInit()

@@ -1,17 +1,15 @@
 ﻿//Author: Tobi van Helsinki
 
-///Author: Tobi van Helsinki
-
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Resources;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using TLIB;
 
 namespace ShadowRunHelper
 {
-    internal static class ResourceHelper
+    public static class ResourceHelper
     {
         public static List<string> GetStringsWithIncreasinIDs(string strID)
         {
