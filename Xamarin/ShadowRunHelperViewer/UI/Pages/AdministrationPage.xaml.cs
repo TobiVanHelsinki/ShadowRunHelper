@@ -13,7 +13,7 @@ using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
 using ShadowRunHelperViewer.UI.Resources;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using Syncfusion.XForms.PopupLayout;
 using TAPPLICATION.IO;
 using TLIB;

@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using TLIB;
 using System.Collections.ObjectModel;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 
 namespace ShadowRunHelperViewer.UI.Pages
 {

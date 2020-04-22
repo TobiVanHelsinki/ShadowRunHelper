@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using ShadowRunHelper.CharController;
 using ShadowRunHelper.CharModel;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using TAPPLICATION;
 using TAPPLICATION.Model;
 using TLIB;

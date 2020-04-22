@@ -3,7 +3,7 @@
 using System;
 using System.Globalization;
 using Humanizer;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using Xamarin.Forms;
 
 namespace ShadowRunHelperViewer.UI.Resources

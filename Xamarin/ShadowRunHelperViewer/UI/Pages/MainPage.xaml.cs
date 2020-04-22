@@ -12,7 +12,7 @@ using Plugin.Toast;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.UI.ControlsOther;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using Syncfusion.SfNavigationDrawer.XForms;
 using TLIB;
 using Xamarin.Forms;

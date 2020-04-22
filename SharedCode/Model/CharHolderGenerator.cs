@@ -1,7 +1,7 @@
 ﻿//Author: Tobi van Helsinki
 
 using ShadowRunHelper.CharModel;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using System;
 using System.IO;
 using System.Linq;

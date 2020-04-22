@@ -1,4 +1,4 @@
-﻿using SharedCode.Ressourcen;
+﻿using SharedCode.Resources;
 
 namespace ShadowRunHelperViewer.Strings
 {

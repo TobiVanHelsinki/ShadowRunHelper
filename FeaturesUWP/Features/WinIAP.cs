@@ -3,7 +3,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using TAPPLICATION.IO;
 using TLIB;
 using Windows.Foundation.Metadata;

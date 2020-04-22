@@ -1,5 +1,4 @@
-﻿///Author: Tobi van Helsinki
-
+﻿
 using System;
 
 namespace ShadowRunHelper.CharModel

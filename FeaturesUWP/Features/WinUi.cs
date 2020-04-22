@@ -1,5 +1,4 @@
-﻿///Author: Tobi van Helsinki
-
+﻿
 using ShadowRunHelper.Model;
 using TLIB;
 using Windows.ApplicationModel;

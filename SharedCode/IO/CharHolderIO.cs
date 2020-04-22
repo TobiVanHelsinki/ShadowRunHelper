@@ -1,7 +1,5 @@
 ﻿//Author: Tobi van Helsinki
 
-///Author: Tobi van Helsinki
-
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,7 +11,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using TAPPLICATION.IO;
 using TLIB;
 

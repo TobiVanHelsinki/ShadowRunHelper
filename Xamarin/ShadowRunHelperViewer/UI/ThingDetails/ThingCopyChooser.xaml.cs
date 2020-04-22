@@ -1,5 +1,4 @@
-﻿///Author: Tobi van Helsinki
-
+﻿
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;

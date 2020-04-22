@@ -1,7 +1,7 @@
 ﻿//Author: Tobi van Helsinki
 
 using ShadowRunHelper.Model;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using System;
 using System.Threading.Tasks;
 using TLIB;

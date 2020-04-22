@@ -2,7 +2,7 @@
 
 using Newtonsoft.Json;
 using ShadowRunHelper.Model;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

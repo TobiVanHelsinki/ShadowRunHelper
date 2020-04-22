@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

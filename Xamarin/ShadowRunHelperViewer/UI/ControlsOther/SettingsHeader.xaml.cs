@@ -1,7 +1,7 @@
 ﻿//Author: Tobi van Helsinki
 
 using ShadowRunHelper;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ShadowRunHelper.IO;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using TLIB;
 using Windows.Storage;
 

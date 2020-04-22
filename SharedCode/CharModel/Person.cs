@@ -1,7 +1,6 @@
-﻿///Author: Tobi van Helsinki
-
+﻿
 using Newtonsoft.Json;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using System;
 using System.ComponentModel;
 using System.Linq;

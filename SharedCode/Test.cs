@@ -1,6 +1,6 @@
 ﻿//Author: Tobi van Helsinki
 
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using System.Resources;
 
 namespace ShadowRunHelper

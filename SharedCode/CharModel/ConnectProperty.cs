@@ -1,9 +1,8 @@
 ﻿//Author: Tobi van Helsinki
 
-///Author: Tobi van Helsinki
 
 using Newtonsoft.Json;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;

@@ -2,7 +2,6 @@
 
 using Newtonsoft.Json;
 
-///Author: Tobi van Helsinki
 namespace ShadowRunHelper.CharModel
 {
     public class Item : Thing

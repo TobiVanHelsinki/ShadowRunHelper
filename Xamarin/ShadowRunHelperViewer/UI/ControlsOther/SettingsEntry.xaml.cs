@@ -3,7 +3,7 @@
 using System;
 using ShadowRunHelper;
 using ShadowRunHelperViewer.UI.Pages;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

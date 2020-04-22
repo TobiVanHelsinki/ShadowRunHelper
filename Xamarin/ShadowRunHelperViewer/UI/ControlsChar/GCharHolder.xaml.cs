@@ -14,7 +14,7 @@ using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
 using ShadowRunHelperViewer.UI.Pages;
 using ShadowRunHelperViewer.UI.Resources;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

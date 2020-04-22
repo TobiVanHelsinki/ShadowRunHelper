@@ -1,5 +1,4 @@
-﻿///Author: Tobi van Helsinki
-
+﻿
 using ShadowRunHelperViewer.UWP.Renderers;
 using System.IO;
 using System.Linq;

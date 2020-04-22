@@ -2,7 +2,7 @@
 
 using System;
 using System.IO;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using TAPPLICATION;
 using TAPPLICATION.IO;
 using TAPPLICATION.Model;

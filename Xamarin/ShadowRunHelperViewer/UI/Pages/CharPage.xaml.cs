@@ -5,7 +5,7 @@ using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.UI;
 using ShadowRunHelperViewer.UI.ControlsChar;
 using ShadowRunHelperViewer.UI.Pages;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using System;
 using System.Collections.Generic;
 using System.IO;

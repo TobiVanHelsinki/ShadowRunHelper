@@ -7,7 +7,7 @@ using System.Resources;
 using System.Threading.Tasks;
 using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
-using SharedCode.Ressourcen;
+using SharedCode.Resources;
 using TAPPLICATION;
 using TAPPLICATION.IO;
 using TAPPLICATION.Model;

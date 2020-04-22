@@ -1,5 +1,4 @@
-﻿///Author: Tobi van Helsinki
-
+﻿
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.IO;
