@@ -474,7 +474,7 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
     <value>GROßBUCHSTABEN normalisieren</value>
   </data>
   <data name="TextRefactoring_NewLine" xml:space="preserve">
-    <value>Zeilenumbrüche in Notizen entfernen</value>
+    <value>Zeilenumbrüche entfernen</value>
   </data>
   <data name="FileDeleteTip" xml:space="preserve">
     <value>Löscht diese Datei unwiederruflich</value>

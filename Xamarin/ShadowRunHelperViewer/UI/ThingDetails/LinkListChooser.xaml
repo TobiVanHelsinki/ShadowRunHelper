@@ -7,8 +7,8 @@ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:charmodel="clr-namespace:ShadowRunHelper.CharModel;assembly=SharedCode"
 xmlns:local="clr-namespace:ShadowRunHelperViewer"
 xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
-xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
-xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable" 
+xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
 xmlns:controls="clr-namespace:ShadowRunHelperViewer.UI.Controls"
 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
 mc:Ignorable="d"
@@ -192,7 +192,7 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Text="&#xf00d;" Style="{StaticResource IconLabel}"/>
-                        <Label Text="{resx:UiResources Cancel}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                        <Label Text="{resx:AppResources Cancel}" Style="{StaticResource LabelForSfButtonSTD}"/>
                     </Grid>
                 </buttons:SfButton.Content>
             </buttons:SfButton>

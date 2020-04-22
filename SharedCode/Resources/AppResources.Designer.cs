@@ -439,15 +439,6 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die In this database you will find predefined entries. Click on an entry to select it. With the commands below you can then apply this selection to your current character. If you already have an entry with the same name in the same category, your entry will not be overwritten. For database entries with links to other entries, the system tries to link your entries. If this fails, the linked entry is also copied. ähnelt.
-        /// </summary>
-        public static string HelpDBIntro {
-            get {
-                return ResourceManager.GetString("HelpDBIntro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Purchase not successful ähnelt.
         /// </summary>
         public static string IAP_Error {
@@ -606,15 +597,6 @@ namespace SharedCode.Resources {
         public static string ReallyDeleteExMark {
             get {
                 return ResourceManager.GetString("ReallyDeleteExMark", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die * ähnelt.
-        /// </summary>
-        public static string SymbolChanges {
-            get {
-                return ResourceManager.GetString("SymbolChanges", resourceCulture);
             }
         }
         
