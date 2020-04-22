@@ -22,6 +22,30 @@
         <On Platform="UWP, WinRT, WinPhone" Value="-1"/>
     </OnPlatform>
 
+    <Style x:Key="TemplateStack" TargetType="StackLayout">
+        <Setter Property="Spacing" Value="0"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="{StaticResource Spacing}"/>
+    </Style>
+
+    <Style x:Key="TemplateGrid" TargetType="Grid">
+        <Setter Property="ColumnSpacing" Value="0"/>
+        <Setter Property="RowSpacing" Value="0"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="{StaticResource Spacing}"/>
+    </Style>
+
+    <Style x:Key="ItemFrame" TargetType="Frame">
+        <Setter Property="Margin" Value="{StaticResource Spacing}"/>
+        <Setter Property="Padding" Value="{StaticResource Spacing}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusSize}"/>
+        <Setter Property="BorderColor" Value="{StaticResource CurrentForegroundColor}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource CurrentBackgroundColor}"/>
+    </Style>
+
     <Style x:Key="STDText" TargetType="Label">
         <Setter Property="VerticalOptions" Value="Start"/>
         <Setter Property="Margin" Value="0"/>
@@ -29,14 +53,14 @@
         <Setter Property="MaxLines" Value="2"/>
     </Style>
     <Style x:Key="STDButton" TargetType="Button">
-        <Setter Property="CornerRadius" Value="3"/>
-        <Setter Property="Margin" Value="0"/>
-        <Setter Property="Padding" Value="0"/>
+        <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusSize}"/>
+        <Setter Property="Margin" Value="{StaticResource Spacing}"/>
+        <Setter Property="Padding" Value="{StaticResource SpacingS}"/>
+        <Setter Property="TextColor" Value="{StaticResource CurrentTextColor}"/>
     </Style>
     <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource STDButton}">
         <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
         <Setter Property="FontSize" Value="Small"/>
-        <Setter Property="TextColor" Value="FloralWhite"/>
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="WidthRequest" Value="{StaticResource ButtonSize}"/>
@@ -54,10 +78,11 @@
         <Setter Property="Grid.Column" Value="1"/>
     </Style>
     <Style x:Key="SfButtonSTD" TargetType="sfbtn:SfButton">
-        <Setter Property="CornerRadius" Value="3"/>
-        <Setter Property="BackgroundColor" Value="#D8D6D7"/>
-        <Setter Property="Margin" Value="3"/>
-        <Setter Property="Padding" Value="3"/>
+        <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusSize}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource CurrentButtonColor}"/>
+        <Setter Property="Margin" Value="{StaticResource Spacing}"/>
+        <Setter Property="Padding" Value="{StaticResource SpacingS}"/>
+        <Setter Property="TextColor" Value="{StaticResource CurrentTextColor}"/>
     </Style>
     <Style x:Key="HeadLineText" TargetType="Label" BasedOn="{StaticResource STDText}">
         <Setter Property="Margin" Value="0"/>
