@@ -1,20 +1,19 @@
-﻿
-using Rg.Plugins.Popup.Pages;
+﻿//Author: Tobi van Helsinki
+
+using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.UI.Resources;
-using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ThingCopyChooser : PopupPage, INotifyPropertyChanged
+    public partial class ThingCopyChooser : ContentView, INotifyPropertyChanged
     {
         #region NotifyPropertyChanged
         public new event PropertyChangedEventHandler PropertyChanged;
@@ -36,18 +35,18 @@ namespace ShadowRunHelperViewer
             MyChar = mychar;
             Move = move;
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
             BindingContext = this;
-            base.OnAppearing();
             Lists.ItemsSource = TypeHelper.ThingTypeProperties;
-        }
-
-        private void PopupPage_SizeChanged(object sender, EventArgs e)
-        {
-            (MainFrame.WidthRequest, MainFrame.HeightRequest) = Common.MaximumDimensions(Width, Height);
+            if (Move)
+            {
+                MoveText.IsVisible = true;
+                CopyText.IsVisible = false;
+            }
+            else
+            {
+                MoveText.IsVisible = false;
+                CopyText.IsVisible = true;
+            }
         }
 
         private void ViewCell_Tapped(object sender, EventArgs e)

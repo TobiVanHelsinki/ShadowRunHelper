@@ -311,7 +311,8 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
         {
             try
             {
-                PopupNavigation.Instance.PushAsync(new ThingCopyChooser(MyThing, MyChar, false));
+                SharedStyles.DisplayDefaultPopUp(new ThingCopyChooser(MyThing, MyChar, false));
+                CloseSelf();
             }
             catch (Exception)
             {
@@ -322,7 +323,7 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
         {
             try
             {
-                PopupNavigation.Instance.PushAsync(new ThingCopyChooser(MyThing, MyChar, true));
+                SharedStyles.DisplayDefaultPopUp(new ThingCopyChooser(MyThing, MyChar, true));
                 CloseSelf();
             }
             catch (Exception)
