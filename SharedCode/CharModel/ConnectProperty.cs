@@ -1,6 +1,5 @@
 ﻿//Author: Tobi van Helsinki
 
-
 using Newtonsoft.Json;
 using SharedCode.Resources;
 using System;
@@ -30,9 +29,15 @@ namespace ShadowRunHelper.CharModel
 
         #endregion Implicit Converter
 
+        /// <summary>
+        /// Returns the calculated value if active = true, 0 otherwise.
+        /// </summary>
         [JsonIgnore]
         public double Value { get; private set; }
 
+        /// <summary>
+        /// Returns the calculated value.
+        /// </summary>
         [JsonIgnore]
         public double TrueValue { get; private set; }
 

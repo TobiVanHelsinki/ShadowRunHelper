@@ -1,53 +1,22 @@
 ﻿//Author: Tobi van Helsinki
 
-
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace ShadowRunHelper.CharModel
 {
-    public class Munition : Item
+    public class Munition : Waffe
     {
-        private string schadenTyp = "";
-        [Used_UserAttribute]
-        public string SchadenTyp
-        {
-            get { return schadenTyp; }
-            set
-            {
-                if (value != schadenTyp)
-                {
-                    schadenTyp = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private double pool = 0;
-        [Used_UserAttribute]
+        [Obsolete]
         public double Praezision
         {
-            get { return pool; }
+            get { return Precision.TrueValue; }
             set
             {
-                if (value != pool)
+                if (value != Precision.BaseValue)
                 {
-                    pool = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        double _DK = 0;
-        [Used_UserAttribute]
-        public double DK
-        {
-            get { return _DK; }
-            set
-            {
-                if (value != _DK)
-                {
-                    _DK = value;
+                    Precision.BaseValue = value;
                     NotifyPropertyChanged();
                 }
             }

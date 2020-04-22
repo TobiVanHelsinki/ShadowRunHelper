@@ -28,13 +28,14 @@
             </Grid.ColumnDefinitions>
             <ContentView ControlTemplate="{StaticResource ItemsBoxesSlim}" Grid.Column="0"/>
             <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-            <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+            <StackLayout Orientation="Horizontal" Grid.Column="2" Style="{DynamicResource TemplateStack}">
+                <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+                <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
+            </StackLayout>
             <StackLayout Style="{StaticResource AdditionalValuePanel}" Grid.ColumnSpan="3" Grid.Row="1">
                 <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
-                <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK"/>
-                <controls:AdditionalValue Text="{resx:ModelResources Waffe_Precision}" ValuePath="Precision"/>
-                <controls:AdditionalValue Text="{resx:ModelResources Waffe_Wert}" ValuePath="Wert"/>
-                <controls:AdditionalValue Text="{resx:ModelResources Waffe_SchadenTyp}" ValuePath="SchadenTyp"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Waffe_Precision}" ValuePath="Precision.TrueValue"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK.TrueValue"/>
             </StackLayout>
         </Grid>    </Frame>
 </ViewCell>
