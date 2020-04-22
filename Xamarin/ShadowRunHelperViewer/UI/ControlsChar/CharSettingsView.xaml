@@ -43,7 +43,7 @@
                 </sflist:SfListView.ItemTemplate>
             </sflist:SfListView>
             <Button Grid.Row="1" Grid.Column="0" Text="{resx:UiResources Unload}" Clicked="Close"/>
-            <Button Grid.Row="1" Grid.Column="1" Text="{resx:UiResources CNT_Reset}" Clicked="Reset"/>
+            <Button Grid.Row="1" Grid.Column="1" Text="{resx:UiResources Reset}" Clicked="Reset"/>
         </Grid>
     </ContentView.Content>
 </ContentView>

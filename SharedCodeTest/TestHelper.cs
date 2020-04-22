@@ -25,7 +25,7 @@ namespace SharedCodeTest
             return Ret;
         }
 
-        public static CharHolder SaveLoadChar(CharHolder Char)
+        public static CharHolder SaveOpen(CharHolder Char)
         {
             return CharHolderIO.Deserialize(SharedIO.Serialize(Char));
         }

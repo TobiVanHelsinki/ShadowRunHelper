@@ -297,9 +297,9 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Error reading the char directory. Reset the external folder! ähnelt.
         /// </summary>
-        public static string Error_LoadCharFolder {
+        public static string Error_OpenFolder {
             get {
-                return ResourceManager.GetString("Error_LoadCharFolder", resourceCulture);
+                return ResourceManager.GetString("Error_OpenFolder", resourceCulture);
             }
         }
         
@@ -624,6 +624,15 @@ namespace SharedCode.Ressourcen {
         public static string Info_UpgradedChar {
             get {
                 return ResourceManager.GetString("Info_UpgradedChar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No ähnelt.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         

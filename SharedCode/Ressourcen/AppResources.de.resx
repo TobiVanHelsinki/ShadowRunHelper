@@ -156,7 +156,7 @@
   <data name="Error_Unknown" xml:space="preserve">
     <value>Ein unbekannter Fehler ist aufgetreten, Ihr char wurde mit dem Prefix ''Emergency'' gespeichert.</value>
   </data>
-  <data name="Error_LoadCharFolder" xml:space="preserve">
+  <data name="Error_OpenFolder" xml:space="preserve">
     <value>Fehler beim einlesen des Char-Verzeichnises.
 Setzen Sie den externen Ordner neu!</value>
   </data>
@@ -459,5 +459,8 @@ Bewerte Sie doch im Store!</value>
   </data>
   <data name="PlayedWith" xml:space="preserve">
     <value>Gespielt mit</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nein</value>
   </data>
 </root>

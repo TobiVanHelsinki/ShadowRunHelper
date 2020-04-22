@@ -78,10 +78,10 @@ namespace ShadowRunHelperViewer.UI.Pages
                     break;
             }
             return new[] {
-                    new SubMenuAction(UiResources.Optionen_U_Infos,"\xf129",new Command(()=>NavigateTo("Infos"))),
-                    new SubMenuAction(UiResources.Optionen_U_Buy,"\xf07a",new Command(()=>NavigateTo("Buy"))),
-                    new SubMenuAction(UiResources.Optionen_U_Notifications,"\xf0f3",new Command(()=>NavigateTo("Log"))),
-                    new SubMenuAction(UiResources.Optionen_U_Hilfe,"\xf128",new Command(()=>NavigateTo("Help"))),
+                    new SubMenuAction(UiResources.Options_U_Infos,"\xf129",new Command(()=>NavigateTo("Infos"))),
+                    new SubMenuAction(UiResources.Options_U_Buy,"\xf07a",new Command(()=>NavigateTo("Buy"))),
+                    new SubMenuAction(UiResources.Options_U_Notifications,"\xf0f3",new Command(()=>NavigateTo("Log"))),
+                    new SubMenuAction(UiResources.Options_U_Hilfe,"\xf128",new Command(()=>NavigateTo("Help"))),
                 };
         }
 

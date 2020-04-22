@@ -61,38 +61,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Delete all Chars ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Administration ähnelt.
         /// </summary>
-        public static string Alle_Chars_Loeschen {
+        public static string Administration {
             get {
-                return ResourceManager.GetString("Alle_Chars_Loeschen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Edit Links ähnelt.
-        /// </summary>
-        public static string Bearbeiten_LinkedThings {
-            get {
-                return ResourceManager.GetString("Bearbeiten_LinkedThings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Choose Ammunition ähnelt.
-        /// </summary>
-        public static string Bearbeiten_Munition {
-            get {
-                return ResourceManager.GetString("Bearbeiten_Munition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Cancel ähnelt.
-        /// </summary>
-        public static string Cancel {
-            get {
-                return ResourceManager.GetString("Cancel", resourceCulture);
+                return ResourceManager.GetString("Administration", resourceCulture);
             }
         }
         
@@ -156,42 +129,6 @@ namespace SharedCode.Ressourcen {
         public static string Cat_Order_Type {
             get {
                 return ResourceManager.GetString("Cat_Order_Type", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die truncate category ähnelt.
-        /// </summary>
-        public static string Cat_Truncate {
-            get {
-                return ResourceManager.GetString("Cat_Truncate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This clears the entire category. ähnelt.
-        /// </summary>
-        public static string Cat_TruncateX {
-            get {
-                return ResourceManager.GetString("Cat_TruncateX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Deselect All ähnelt.
-        /// </summary>
-        public static string Cat_UncheckAll {
-            get {
-                return ResourceManager.GetString("Cat_UncheckAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This collapses all expanded entries. ähnelt.
-        /// </summary>
-        public static string Cat_UncheckAllX {
-            get {
-                return ResourceManager.GetString("Cat_UncheckAllX", resourceCulture);
             }
         }
         
@@ -277,11 +214,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Char Import ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Character Sheet ähnelt.
         /// </summary>
-        public static string CharImport {
+        public static string CharacterSheet {
             get {
-                return ResourceManager.GetString("CharImport", resourceCulture);
+                return ResourceManager.GetString("CharacterSheet", resourceCulture);
             }
         }
         
@@ -291,33 +228,6 @@ namespace SharedCode.Ressourcen {
         public static string CharSettings {
             get {
                 return ResourceManager.GetString("CharSettings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This allows you to configure this view. ähnelt.
-        /// </summary>
-        public static string CharSettingsX {
-            get {
-                return ResourceManager.GetString("CharSettingsX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Reset ähnelt.
-        /// </summary>
-        public static string CNT_Reset {
-            get {
-                return ResourceManager.GetString("CNT_Reset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Open notifications ähnelt.
-        /// </summary>
-        public static string Cntnt_GoTo_Notifications {
-            get {
-                return ResourceManager.GetString("Cntnt_GoTo_Notifications", resourceCulture);
             }
         }
         
@@ -340,11 +250,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Load the example/turorial character sheet into the current folder ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create new char ähnelt.
         /// </summary>
-        public static string CreateExampleCharX {
+        public static string CreateNewChar {
             get {
-                return ResourceManager.GetString("CreateExampleCharX", resourceCulture);
+                return ResourceManager.GetString("CreateNewChar", resourceCulture);
             }
         }
         
@@ -354,51 +264,6 @@ namespace SharedCode.Ressourcen {
         public static string CreateSomethingNew {
             get {
                 return ResourceManager.GetString("CreateSomethingNew", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CSV Export (just selected) ähnelt.
-        /// </summary>
-        public static string CSV_Cat_Export_Selected {
-            get {
-                return ResourceManager.GetString("CSV_Cat_Export_Selected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Saves selected entries of this category in CSV format (Excel compatible) in a folder. ähnelt.
-        /// </summary>
-        public static string CSV_Cat_Export_SelectedX {
-            get {
-                return ResourceManager.GetString("CSV_Cat_Export_SelectedX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Saves this category in CSV format (Excel compatible) in a folder. ähnelt.
-        /// </summary>
-        public static string CSV_Cat_ExportX {
-            get {
-                return ResourceManager.GetString("CSV_Cat_ExportX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select a CSV file whose content will be imported into this category. If the import and export categories are not identical, not all information is imported. ähnelt.
-        /// </summary>
-        public static string CSV_Cat_ImportX {
-            get {
-                return ResourceManager.GetString("CSV_Cat_ImportX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Saves this character sheet in CSV format (Excel compatible) in a folder. Several files are created. ähnelt.
-        /// </summary>
-        public static string CSV_ExportX {
-            get {
-                return ResourceManager.GetString("CSV_ExportX", resourceCulture);
             }
         }
         
@@ -493,15 +358,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Copies all files listed here to another folder ähnelt.
-        /// </summary>
-        public static string ExportAllX {
-            get {
-                return ResourceManager.GetString("ExportAllX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Copy this file to another location. ähnelt.
         /// </summary>
         public static string ExportTip {
@@ -538,7 +394,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Delete this file permanently ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Deletes this file permanently ähnelt.
         /// </summary>
         public static string FileDeleteTip {
             get {
@@ -552,15 +408,6 @@ namespace SharedCode.Ressourcen {
         public static string FileExport {
             get {
                 return ResourceManager.GetString("FileExport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Copy this file to another location. ähnelt.
-        /// </summary>
-        public static string FileExportTip {
-            get {
-                return ResourceManager.GetString("FileExportTip", resourceCulture);
             }
         }
         
@@ -610,15 +457,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Search for entries ... ähnelt.
-        /// </summary>
-        public static string GlobalFilterBox {
-            get {
-                return ResourceManager.GetString("GlobalFilterBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Import Char ähnelt.
         /// </summary>
         public static string ImportChar {
@@ -628,11 +466,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save Intern ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Information ähnelt.
         /// </summary>
-        public static string Intern_Save_Display {
+        public static string Information {
             get {
-                return ResourceManager.GetString("Intern_Save_Display", resourceCulture);
+                return ResourceManager.GetString("Information", resourceCulture);
             }
         }
         
@@ -646,24 +484,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
-        /// </summary>
-        public static string IntroSettings {
-            get {
-                return ResourceManager.GetString("IntroSettings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Open ähnelt.
-        /// </summary>
-        public static string LoadChar {
-            get {
-                return ResourceManager.GetString("LoadChar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die More ähnelt.
         /// </summary>
         public static string More {
@@ -673,56 +493,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Administration ähnelt.
-        /// </summary>
-        public static string Nav_Admin {
-            get {
-                return ResourceManager.GetString("Nav_Admin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Character Sheet ähnelt.
-        /// </summary>
-        public static string Nav_Char {
-            get {
-                return ResourceManager.GetString("Nav_Char", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Information ähnelt.
-        /// </summary>
-        public static string Nav_Info {
-            get {
-                return ResourceManager.GetString("Nav_Info", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
-        /// </summary>
-        public static string Nav_Settings {
-            get {
-                return ResourceManager.GetString("Nav_Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Create new char ähnelt.
         /// </summary>
         public static string NewChar {
             get {
                 return ResourceManager.GetString("NewChar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No ähnelt.
-        /// </summary>
-        public static string No {
-            get {
-                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -745,6 +520,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open ähnelt.
+        /// </summary>
+        public static string Open {
+            get {
+                return ResourceManager.GetString("Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die open folder ähnelt.
         /// </summary>
         public static string OpenFolder {
@@ -754,101 +538,83 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die open saveplace ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open notifications ähnelt.
         /// </summary>
-        public static string OpenFolderSTD {
+        public static string OpenNotifications {
             get {
-                return ResourceManager.GetString("OpenFolderSTD", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Open the folder where all your character sheets are located. ähnelt.
-        /// </summary>
-        public static string OpenFolderSTDTip {
-            get {
-                return ResourceManager.GetString("OpenFolderSTDTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Opens the folder of the current file ähnelt.
-        /// </summary>
-        public static string OpenFolderX {
-            get {
-                return ResourceManager.GetString("OpenFolderX", resourceCulture);
+                return ResourceManager.GetString("OpenNotifications", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die App ähnelt.
         /// </summary>
-        public static string Optionen_App {
+        public static string Options_App {
             get {
-                return ResourceManager.GetString("Optionen_App", resourceCulture);
+                return ResourceManager.GetString("Options_App", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Open Storeentry for this App ähnelt.
         /// </summary>
-        public static string Optionen_AppLinkBtn {
+        public static string Options_AppLinkBtn {
             get {
-                return ResourceManager.GetString("Optionen_AppLinkBtn", resourceCulture);
+                return ResourceManager.GetString("Options_AppLinkBtn", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Automated saves for chars ähnelt.
         /// </summary>
-        public static string Optionen_AutoSave {
+        public static string Options_AutoSave {
             get {
-                return ResourceManager.GetString("Optionen_AutoSave", resourceCulture);
+                return ResourceManager.GetString("Options_AutoSave", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Watingtime for changes in seconds ähnelt.
         /// </summary>
-        public static string Optionen_AutoSaveInterval {
+        public static string Options_AutoSaveInterval {
             get {
-                return ResourceManager.GetString("Optionen_AutoSaveInterval", resourceCulture);
+                return ResourceManager.GetString("Options_AutoSaveInterval", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die After a change, the specified time is waited until your char is saved. If you change many things quickly, then a larger value is better. A value between 2 and 10 seconds is okay. ähnelt.
         /// </summary>
-        public static string Optionen_AutoSaveTip {
+        public static string Options_AutoSaveTip {
             get {
-                return ResourceManager.GetString("Optionen_AutoSaveTip", resourceCulture);
+                return ResourceManager.GetString("Options_AutoSaveTip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die BackUp versioning ähnelt.
         /// </summary>
-        public static string Optionen_BACKUP_VERSIONING {
+        public static string Options_BACKUP_VERSIONING {
             get {
-                return ResourceManager.GetString("Optionen_BACKUP_VERSIONING", resourceCulture);
+                return ResourceManager.GetString("Options_BACKUP_VERSIONING", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Activate Beta-Features ähnelt.
         /// </summary>
-        public static string Optionen_Beta_Features {
+        public static string Options_Beta_Features {
             get {
-                return ResourceManager.GetString("Optionen_Beta_Features", resourceCulture);
+                return ResourceManager.GetString("Options_Beta_Features", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Rate this App at the Store ähnelt.
         /// </summary>
-        public static string Optionen_Bewerten {
+        public static string Options_Bewerten {
             get {
-                return ResourceManager.GetString("Optionen_Bewerten", resourceCulture);
+                return ResourceManager.GetString("Options_Bewerten", resourceCulture);
             }
         }
         
@@ -856,90 +622,90 @@ namespace SharedCode.Ressourcen {
         ///   Sucht eine lokalisierte Zeichenfolge, die This app does not collect any personal information and therefore does not disclose it.
         ///This app can be used to open files and folders on the file system. The app stores those folders and files only for later use. All files remain on the file system or Microsoft account. ähnelt.
         /// </summary>
-        public static string Optionen_Datenschutz {
+        public static string Options_Datenschutz {
             get {
-                return ResourceManager.GetString("Optionen_Datenschutz", resourceCulture);
+                return ResourceManager.GetString("Options_Datenschutz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Prevent ScreenLock ähnelt.
         /// </summary>
-        public static string Optionen_DisplayRequest {
+        public static string Options_DisplayRequest {
             get {
-                return ResourceManager.GetString("Optionen_DisplayRequest", resourceCulture);
+                return ResourceManager.GetString("Options_DisplayRequest", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Prevent the Screen from locking ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Prevent the Screen from locking, if have an open char. ähnelt.
         /// </summary>
-        public static string Optionen_DisplayRequestTip {
+        public static string Options_DisplayRequestTip {
             get {
-                return ResourceManager.GetString("Optionen_DisplayRequestTip", resourceCulture);
+                return ResourceManager.GetString("Options_DisplayRequestTip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Edit after add ähnelt.
         /// </summary>
-        public static string Optionen_EditAfterAdd {
+        public static string Options_EditAfterAdd {
             get {
-                return ResourceManager.GetString("Optionen_EditAfterAdd", resourceCulture);
+                return ResourceManager.GetString("Options_EditAfterAdd", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die After you have created an object, the edit dialog is called immediately. ähnelt.
         /// </summary>
-        public static string Optionen_EditAfterAddTip {
+        public static string Options_EditAfterAddTip {
             get {
-                return ResourceManager.GetString("Optionen_EditAfterAddTip", resourceCulture);
+                return ResourceManager.GetString("Options_EditAfterAddTip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current Char ähnelt.
         /// </summary>
-        public static string Optionen_Group_Char {
+        public static string Options_Group_Char {
             get {
-                return ResourceManager.GetString("Optionen_Group_Char", resourceCulture);
+                return ResourceManager.GetString("Options_Group_Char", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Filemanagement ähnelt.
         /// </summary>
-        public static string Optionen_Group_File {
+        public static string Options_Group_File {
             get {
-                return ResourceManager.GetString("Optionen_Group_File", resourceCulture);
+                return ResourceManager.GetString("Options_Group_File", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Saving and loading ähnelt.
         /// </summary>
-        public static string Optionen_Group_IO {
+        public static string Options_Group_IO {
             get {
-                return ResourceManager.GetString("Optionen_Group_IO", resourceCulture);
+                return ResourceManager.GetString("Options_Group_IO", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die App owener ähnelt.
         /// </summary>
-        public static string Optionen_Inhaber {
+        public static string Options_Inhaber {
             get {
-                return ResourceManager.GetString("Optionen_Inhaber", resourceCulture);
+                return ResourceManager.GetString("Options_Inhaber", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die email ähnelt.
         /// </summary>
-        public static string Optionen_Kontakt_Mail {
+        public static string Options_Kontakt_Mail {
             get {
-                return ResourceManager.GetString("Optionen_Kontakt_Mail", resourceCulture);
+                return ResourceManager.GetString("Options_Kontakt_Mail", resourceCulture);
             }
         }
         
@@ -947,207 +713,189 @@ namespace SharedCode.Ressourcen {
         ///   Sucht eine lokalisierte Zeichenfolge, die ShadowRun is a registered trademark of Pegasus Games.
         ///Icons made by Freepik https://www.flaticon.com are licensed by Creative Commons BY 3.0. ähnelt.
         /// </summary>
-        public static string Optionen_Legal {
+        public static string Options_Legal {
             get {
-                return ResourceManager.GetString("Optionen_Legal", resourceCulture);
+                return ResourceManager.GetString("Options_Legal", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Load last char at startup ähnelt.
         /// </summary>
-        public static string Optionen_LoadOnStart {
+        public static string Options_LoadOnStart {
             get {
-                return ResourceManager.GetString("Optionen_LoadOnStart", resourceCulture);
+                return ResourceManager.GetString("Options_LoadOnStart", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The char that was active when the app was closed is loaded at startup. Attention, this increases the app loading time. ähnelt.
         /// </summary>
-        public static string Optionen_LoadOnStartTip {
+        public static string Options_LoadOnStartTip {
             get {
-                return ResourceManager.GetString("Optionen_LoadOnStartTip", resourceCulture);
+                return ResourceManager.GetString("Options_LoadOnStartTip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die more of my apps ähnelt.
         /// </summary>
-        public static string Optionen_MoreAppsBtn {
+        public static string Options_MoreAppsBtn {
             get {
-                return ResourceManager.GetString("Optionen_MoreAppsBtn", resourceCulture);
+                return ResourceManager.GetString("Options_MoreAppsBtn", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Select a Exernen storage folder. ähnelt.
         /// </summary>
-        public static string Optionen_Ordnermode {
+        public static string Options_Ordnermode {
             get {
-                return ResourceManager.GetString("Optionen_Ordnermode", resourceCulture);
+                return ResourceManager.GetString("Options_Ordnermode", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Path ähnelt.
         /// </summary>
-        public static string Optionen_Ordnermode_Pfad {
+        public static string Options_Ordnermode_Pfad {
             get {
-                return ResourceManager.GetString("Optionen_Ordnermode_Pfad", resourceCulture);
+                return ResourceManager.GetString("Options_Ordnermode_Pfad", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Rate this App ähnelt.
         /// </summary>
-        public static string Optionen_RateBtn {
+        public static string Options_RateBtn {
             get {
-                return ResourceManager.GetString("Optionen_RateBtn", resourceCulture);
+                return ResourceManager.GetString("Options_RateBtn", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Original Exception ähnelt.
         /// </summary>
-        public static string Optionen_ThrownException {
+        public static string Options_ThrownException {
             get {
-                return ResourceManager.GetString("Optionen_ThrownException", resourceCulture);
+                return ResourceManager.GetString("Options_ThrownException", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Read &quot;Char Administration&quot; Guide ähnelt.
         /// </summary>
-        public static string Optionen_TutorialMainShown {
+        public static string Options_TutorialMainShown {
             get {
-                return ResourceManager.GetString("Optionen_TutorialMainShown", resourceCulture);
+                return ResourceManager.GetString("Options_TutorialMainShown", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Buy ähnelt.
         /// </summary>
-        public static string Optionen_U_Buy {
+        public static string Options_U_Buy {
             get {
-                return ResourceManager.GetString("Optionen_U_Buy", resourceCulture);
+                return ResourceManager.GetString("Options_U_Buy", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Here you have the possibility to make purchases. You can turn off advertising with the first two options. The third option supports the developer and adds an exclusive Badge to your app. ähnelt.
         /// </summary>
-        public static string Optionen_U_Buying_Header {
+        public static string Options_U_Buying_Header {
             get {
-                return ResourceManager.GetString("Optionen_U_Buying_Header", resourceCulture);
+                return ResourceManager.GetString("Options_U_Buying_Header", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Note: Having apps in the store costs 18€ per year. It would be cool if the app would at least cover the costs. ähnelt.
         /// </summary>
-        public static string Optionen_U_Buying_Note {
+        public static string Options_U_Buying_Note {
             get {
-                return ResourceManager.GetString("Optionen_U_Buying_Note", resourceCulture);
+                return ResourceManager.GetString("Options_U_Buying_Note", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Choose categories ähnelt.
         /// </summary>
-        public static string Optionen_U_CharPageConfig {
+        public static string Options_U_CharPageConfig {
             get {
-                return ResourceManager.GetString("Optionen_U_CharPageConfig", resourceCulture);
+                return ResourceManager.GetString("Options_U_CharPageConfig", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Privacy Policy ähnelt.
         /// </summary>
-        public static string Optionen_U_Datenschutz {
+        public static string Options_U_Datenschutz {
             get {
-                return ResourceManager.GetString("Optionen_U_Datenschutz", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
-        /// </summary>
-        public static string Optionen_U_Einstellungen {
-            get {
-                return ResourceManager.GetString("Optionen_U_Einstellungen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Hold the mouse or finger on a ? to get more information. ähnelt.
-        /// </summary>
-        public static string Optionen_U_Einstellungen_Tip {
-            get {
-                return ResourceManager.GetString("Optionen_U_Einstellungen_Tip", resourceCulture);
+                return ResourceManager.GetString("Options_U_Datenschutz", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Help ähnelt.
         /// </summary>
-        public static string Optionen_U_Hilfe {
+        public static string Options_U_Hilfe {
             get {
-                return ResourceManager.GetString("Optionen_U_Hilfe", resourceCulture);
+                return ResourceManager.GetString("Options_U_Hilfe", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Information ähnelt.
         /// </summary>
-        public static string Optionen_U_Infos {
+        public static string Options_U_Infos {
             get {
-                return ResourceManager.GetString("Optionen_U_Infos", resourceCulture);
+                return ResourceManager.GetString("Options_U_Infos", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Contact ähnelt.
         /// </summary>
-        public static string Optionen_U_Kontakt {
+        public static string Options_U_Kontakt {
             get {
-                return ResourceManager.GetString("Optionen_U_Kontakt", resourceCulture);
+                return ResourceManager.GetString("Options_U_Kontakt", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Notifications ähnelt.
         /// </summary>
-        public static string Optionen_U_Notifications {
+        public static string Options_U_Notifications {
             get {
-                return ResourceManager.GetString("Optionen_U_Notifications", resourceCulture);
+                return ResourceManager.GetString("Options_U_Notifications", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Legal ähnelt.
         /// </summary>
-        public static string Optionen_U_Rechtliches {
+        public static string Options_U_Rechtliches {
             get {
-                return ResourceManager.GetString("Optionen_U_Rechtliches", resourceCulture);
+                return ResourceManager.GetString("Options_U_Rechtliches", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Statistics ähnelt.
         /// </summary>
-        public static string Optionen_U_Statistics {
+        public static string Options_U_Statistics {
             get {
-                return ResourceManager.GetString("Optionen_U_Statistics", resourceCulture);
+                return ResourceManager.GetString("Options_U_Statistics", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Version ähnelt.
         /// </summary>
-        public static string Optionen_Version {
+        public static string Options_Version {
             get {
-                return ResourceManager.GetString("Optionen_Version", resourceCulture);
+                return ResourceManager.GetString("Options_Version", resourceCulture);
             }
         }
         
@@ -1251,11 +999,29 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Reload to see changes ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search for entries ... ähnelt.
         /// </summary>
-        public static string Settings_Speichern {
+        public static string SearchForEntries {
             get {
-                return ResourceManager.GetString("Settings_Speichern", resourceCulture);
+                return ResourceManager.GetString("SearchForEntries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hold the mouse or finger on a ? to get more information. ähnelt.
+        /// </summary>
+        public static string Settings_Tip {
+            get {
+                return ResourceManager.GetString("Settings_Tip", resourceCulture);
             }
         }
         
@@ -1332,7 +1098,7 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remove UPPERCASE ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Change UPPER CASE to Normal case in name and note ähnelt.
         /// </summary>
         public static string TextRefactoring_Case {
             get {
@@ -1355,15 +1121,6 @@ namespace SharedCode.Ressourcen {
         public static string TipHeader {
             get {
                 return ResourceManager.GetString("TipHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Welcome to ShadowRunHelper. ähnelt.
-        /// </summary>
-        public static string TitleAdministrationPage {
-            get {
-                return ResourceManager.GetString("TitleAdministrationPage", resourceCulture);
             }
         }
         
@@ -1422,20 +1179,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Welcome to ShadowRunHelper. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Welcome to ShadowRunHelper ähnelt.
         /// </summary>
         public static string WelcomeGreetings {
             get {
                 return ResourceManager.GetString("WelcomeGreetings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Yes ähnelt.
-        /// </summary>
-        public static string Yes {
-            get {
-                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

@@ -41,17 +41,17 @@
                             <Label Style="{StaticResource HeadLine2}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{resx:UiResources Optionen_Version}"/>
+                                        <Span Text="{resx:UiResources Options_Version}"/>
                                         <Span Text=": "/>
                                         <Span Text="{x:Binding AppVersionBuild}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label Text="{resx:UiResources Optionen_U_Kontakt}" Style="{StaticResource HeadLine2}"/>
+                            <Label Text="{resx:UiResources Options_U_Kontakt}" Style="{StaticResource HeadLine2}"/>
                             <Label Style="{StaticResource STDText}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{resx:UiResources Optionen_Inhaber}"/>
+                                        <Span Text="{resx:UiResources Options_Inhaber}"/>
                                         <Span Text=": "/>
                                         <Span Text="{x:Binding Inhaber}"/>
                                     </FormattedString>
@@ -60,7 +60,7 @@
                             <Label Style="{StaticResource STDText}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{resx:UiResources Optionen_Kontakt_Mail}"/>
+                                        <Span Text="{resx:UiResources Options_Kontakt_Mail}"/>
                                         <Span Text=": "/>
                                         <Span Text="{x:Binding EMail}" TextColor="Blue" TextDecorations="Underline">
                                             <Span.GestureRecognizers>
@@ -71,18 +71,18 @@
                                 </Label.FormattedText>
                             </Label>
 
-                            <Label Text="{resx:UiResources Optionen_App}" Style="{StaticResource HeadLine2}"/>
-                            <Label Text="{resx:UiResources Optionen_AppLinkBtn}" Style="{StaticResource LinkText}">
+                            <Label Text="{resx:UiResources Options_App}" Style="{StaticResource HeadLine2}"/>
+                            <Label Text="{resx:UiResources Options_AppLinkBtn}" Style="{StaticResource LinkText}">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppLink}"/>
                                 </Label.GestureRecognizers>
                             </Label>
-                            <Label Text="{resx:UiResources Optionen_RateBtn}" Style="{StaticResource LinkText}">
+                            <Label Text="{resx:UiResources Options_RateBtn}" Style="{StaticResource LinkText}">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="{x:Binding AppReviewLink}"/>
                                 </Label.GestureRecognizers>
                             </Label>
-                            <Label Text="{resx:UiResources Optionen_MoreAppsBtn}" Style="{StaticResource LinkText}">
+                            <Label Text="{resx:UiResources Options_MoreAppsBtn}" Style="{StaticResource LinkText}">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="{x:Binding MoreAppsLink}"/>
                                 </Label.GestureRecognizers>
@@ -91,7 +91,7 @@
                         <Image Grid.Column="1" BackgroundColor="Gold" x:Name="PremiumBadgeImage" IsVisible="False" HorizontalOptions="End" VerticalOptions="Start" Source="/Assets/premium-badge.png"/>
                     </Grid>
 
-                    <Label Text="{resx:UiResources Optionen_U_Statistics}"  Style="{StaticResource HeadLine2}"/>
+                    <Label Text="{resx:UiResources Options_U_Statistics}"  Style="{StaticResource HeadLine2}"/>
                     <Label Style="{StaticResource STDText}">
                         <Label.FormattedText>
                             <FormattedString>
@@ -137,10 +137,10 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label Text="{resx:UiResources Optionen_U_Rechtliches}"  Style="{StaticResource HeadLine2}"/>
-                    <Label Text="{resx:UiResources Optionen_Legal}"  Style="{StaticResource STDText}"/>
-                    <Label Text="{resx:UiResources Optionen_U_Datenschutz}" Style="{StaticResource HeadLine2}"/>
-                    <Label Text="{resx:UiResources Optionen_Datenschutz}"  Style="{StaticResource STDText}"/>
+                    <Label Text="{resx:UiResources Options_U_Rechtliches}"  Style="{StaticResource HeadLine2}"/>
+                    <Label Text="{resx:UiResources Options_Legal}"  Style="{StaticResource STDText}"/>
+                    <Label Text="{resx:UiResources Options_U_Datenschutz}" Style="{StaticResource HeadLine2}"/>
+                    <Label Text="{resx:UiResources Options_Datenschutz}"  Style="{StaticResource STDText}"/>
                 </StackLayout>
             </ScrollView>
         </DataTemplate>

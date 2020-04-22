@@ -343,22 +343,22 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
 
-        private void Nav_CharPage(object sender, EventArgs e)
+        private void CharacterSheetPage(object sender, EventArgs e)
         {
             AppModel.Instance.RequestNavigation(ProjectPages.Char);
         }
 
-        private void Nav_Admin(object sender, EventArgs e)
+        private void Administration(object sender, EventArgs e)
         {
             AppModel.Instance.RequestNavigation(ProjectPages.Administration);
         }
 
-        private void Nav_Settings(object sender, EventArgs e)
+        private void Settings(object sender, EventArgs e)
         {
             AppModel.Instance.RequestNavigation(ProjectPages.Settings);
         }
 
-        private void Nav_Info(object sender, EventArgs e)
+        private void Information(object sender, EventArgs e)
         {
             AppModel.Instance.RequestNavigation(ProjectPages.Info);
         }

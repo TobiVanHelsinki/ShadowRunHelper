@@ -117,7 +117,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <controlsother:HamburgerButton/>
-                <forms:AutoSuggestBox Grid.Column="2" PlaceholderText="{resx:UiResources GlobalFilterBox}" TextChanged="AutoSuggestBox_TextChanged" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
+                <forms:AutoSuggestBox Grid.Column="2" PlaceholderText="{resx:UiResources SearchForEntries}" TextChanged="AutoSuggestBox_TextChanged" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
                 <Button x:Name="MenuToggleButton" Text="&#xf060;" Grid.Column="1" Style="{StaticResource IconButton}" Clicked="ToggleMenu" FontSize="22" Padding="5" HeightRequest="30" WidthRequest="30"/>
             </Grid>
             <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" Margin="15,5,15,5" VerticalOptions="Center">

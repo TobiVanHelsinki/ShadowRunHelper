@@ -230,6 +230,7 @@ namespace ShadowRunHelperViewer.UI.Pages
                 popup.ShowRelativeToView(v ?? popup, RelativePosition.AlignToLeftOf);
             }
         }
+
         private void FileRename(object sender, EventArgs e)
         {
         }
@@ -257,13 +258,16 @@ namespace ShadowRunHelperViewer.UI.Pages
                 }
             }
         }
+
         private void FileDelete(object sender, EventArgs e)
         {
             if (sender is View v && v.BindingContext is ExtendetFileInfo file && Common.FindParent<SfPopupLayout>(sender as Element) is SfPopupLayout popup)
             {
                 Log.DisplayChoice(UiResources.Delete, UiResources.FileDeleteTip, new Options() { },
-                    (UiResources.Yes, async () => { await SharedIO.CurrentIO.RemoveFile(file); RefreshCharList(); }),
-                    (UiResources.No, () => { } )
+                    (AppResources.Yes, async () => { await SharedIO.CurrentIO.RemoveFile(file); RefreshCharList(); }
+                ),
+                    (AppResources.No, () => { }
+                )
                     );
                 popup.IsOpen = false;
             }
@@ -384,6 +388,5 @@ namespace ShadowRunHelperViewer.UI.Pages
             }
         }
         #endregion Design
-      
     }
 }

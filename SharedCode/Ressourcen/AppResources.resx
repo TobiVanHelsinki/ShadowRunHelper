@@ -379,7 +379,7 @@ Version 1.7.4:
 [new] complete English translation
 [new] Drag and Drop between categories</value>
   </data>
-  <data name="Error_LoadCharFolder" xml:space="preserve">
+  <data name="Error_OpenFolder" xml:space="preserve">
     <value>Error reading the char directory. Reset the external folder!</value>
   </data>
   <data name="AppImportErrors" xml:space="preserve">
@@ -456,5 +456,8 @@ Version 1.7.4:
   </data>
   <data name="PlayedWith" xml:space="preserve">
     <value>Played with</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
   </data>
 </root>

@@ -89,7 +89,7 @@
                 </Grid.ColumnDefinitions>
                 <controlsother:HamburgerButton HorizontalOptions="FillAndExpand"/>
                 <StackLayout x:Name="TitleBar" Grid.Column="1">
-                    <Label x:Name="Intro1Text" FontSize="Title" Text="{resx:UiResources TitleAdministrationPage}"
+                    <Label x:Name="Intro1Text" FontSize="Title" Text="{resx:UiResources WelcomeGreetings}"
                        HorizontalOptions="FillAndExpand" MaxLines="2"/>
                     <Label x:Name="Intro2Text" FontSize="Default" Text="{resx:UiResources IntroAdministration}"
                        HorizontalOptions="FillAndExpand" MaxLines="5"/>
