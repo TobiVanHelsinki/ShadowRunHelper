@@ -9,9 +9,8 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
         <local:SharedStyles/>
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="ControllerIconButton" TargetType="Button" BasedOn="{StaticResource IconButton}">
-        <Setter Property="Padding" Value="5"/>
-        <Setter Property="Margin" Value="2"/>
-        <Setter Property="TextColor" Value="Default"/>
+        <Setter Property="Padding" Value="{StaticResource SpacingL}"/>
+        <Setter Property="Margin" Value="{StaticResource Spacing}"/>
     </Style>
     <Style x:Key="AdditionalValueScrollView" TargetType="ScrollView">
         <Setter Property="Orientation" Value="Horizontal"/>
@@ -29,8 +28,8 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
     </ControlTemplate>
     <ControlTemplate x:Key="Thing_Name" x:DataType="CharModel:Thing">
         <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{DynamicResource TemplateStack}">
-            <Label x:Name="Typ" Text="{x:Binding Typ}" Style="{StaticResource STDText}"/>
-            <Label Text=":" Style="{StaticResource STDText}" Margin="0,0,2,0">
+            <Label x:Name="Typ" Text="{x:Binding Typ}" Style="{StaticResource HeadLineText}"/>
+            <Label Text=":" Style="{StaticResource HeadLineText}" Margin="0,0,2,0">
                 <Label.Triggers>
                     <DataTrigger TargetType="Label"
                                     Binding="{Binding Source={x:Reference Typ}, Path=Text.Length}"
@@ -39,7 +38,7 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
-            <Label Text="{x:Binding Bezeichner}" Style="{StaticResource STDText}"/>
+            <Label Text="{x:Binding Bezeichner}" Style="{StaticResource HeadLineText}"/>
         </StackLayout>
     </ControlTemplate>
     <ControlTemplate x:Key="Thing_Value_H">
@@ -49,13 +48,8 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
     </ControlTemplate>
     <ControlTemplate x:Key="Thing_Value" x:DataType="CharModel:Thing">
         <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{DynamicResource TemplateStack}" Orientation="Horizontal">
-            <Label Text="{x:Binding Value.TrueValue}" Style="{StaticResource STDText}"/>
-            <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDText}"/>
-        </StackLayout>
-    </ControlTemplate>
-    <ControlTemplate x:Key="Thing_Notes" x:DataType="CharModel:Thing">
-        <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{DynamicResource TemplateStack}">
-            <Label Text="{x:Binding Notiz}" LineBreakMode="WordWrap"/>
+            <Label Text="{x:Binding Value.TrueValue}" Style="{StaticResource HeadLineText}"/>
+            <Label Text="{x:Binding Zusatz}" Style="{StaticResource HeadLineText}"/>
         </StackLayout>
     </ControlTemplate>
 
@@ -71,7 +65,7 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
         </Grid>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="ItemsBoxesH" x:DataType="CharModel:Item">
+    <ControlTemplate x:Key="ItemsBoxes_H" x:DataType="CharModel:Item">
         <Grid Style="{DynamicResource TemplateGrid}" WidthRequest="100" ColumnSpacing="0" RowSpacing="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -79,7 +73,7 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Text="{resx:ModelResources Item_State}" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label Text="{resx:ModelResources Item_State}" HorizontalOptions="Center" Style="{StaticResource HeadLineText}"/>
         </Grid>
     </ControlTemplate>
     <ControlTemplate x:Key="ItemsBoxesSlim" x:DataType="CharModel:Item">
@@ -91,8 +85,8 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Grid.Column="1" Text="{x:Binding State, Converter={StaticResource O_ItemState2String}}" Margin="4,0,4,0" VerticalOptions="Center"/>
-            <sfsegmentedcontrol:SfSwitch AllowIndeterminateState="True" IsOn="{x:Binding State}" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Grid.Column="1" Text="{x:Binding State, Converter={StaticResource O_ItemState2String}}" Margin="4,0,4,0" Style="{StaticResource HeadLineText}"/>
+            <sfsegmentedcontrol:SfSwitch AllowIndeterminateState="True" IsOn="{x:Binding State}" Grid.Column="0" HorizontalOptions="Center">
                 <sfsegmentedcontrol:SfSwitch.WidthRequest>
                     <OnPlatform x:TypeArguments="x:Double">
                         <OnPlatform.Platforms>
@@ -114,8 +108,8 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="1" Text="{x:Binding State, Converter={StaticResource O_ItemState2String}}" Margin="4,0,4,0" VerticalOptions="Center"/>
-            <sfsegmentedcontrol:SfSwitch AllowIndeterminateState="True" IsOn="{x:Binding State}" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Grid.Row="1" Text="{x:Binding State, Converter={StaticResource O_ItemState2String}}" Margin="4,0,4,0" Style="{StaticResource HeadLineText}"/>
+            <sfsegmentedcontrol:SfSwitch AllowIndeterminateState="True" IsOn="{x:Binding State}" Grid.Column="0" HorizontalOptions="Center">
                 <sfsegmentedcontrol:SfSwitch.WidthRequest>
                     <OnPlatform x:TypeArguments="x:Double">
                         <OnPlatform.Platforms>

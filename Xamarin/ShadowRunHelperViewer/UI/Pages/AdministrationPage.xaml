@@ -95,7 +95,7 @@
                        HorizontalOptions="FillAndExpand" MaxLines="5"/>
                 </StackLayout>
             </Grid>
-            <Frame Margin="5" Padding="5" Grid.Row="1" IsVisible="False" x:Name="WarningFrame" BackgroundColor="Crimson" CornerRadius="5">
+            <Frame Margin="5" Padding="5" Grid.Row="1" IsVisible="False" x:Name="WarningFrame" BackgroundColor="Crimson" CornerRadius="{StaticResource CornerRadiusF}">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OfflineFolderChooser"/>
                 </Frame.GestureRecognizers>

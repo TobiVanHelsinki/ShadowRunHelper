@@ -26,7 +26,7 @@ namespace ShadowRunHelperViewer.UI.Resources
         public static Color AltBackgroundColor => SettingsModel.I.CurrentStyleName switch
         {
             Constants.StyleBrigth => CosmicLatte,
-            Constants.StyleDark => Color.Gray,
+            Constants.StyleDark => Color.FromHex("FF333333"),
             Constants.StyleScaryGreen => Color.DarkGreen,
             _ => Color.Transparent,
         };
@@ -85,6 +85,7 @@ namespace ShadowRunHelperViewer.UI.Resources
         public static Color AccentInverseBinary => Color.Accent.Luminosity > .5 ? Color.Black : Color.White; //TODO mit TextColor verbinden
         public static Color AccentInverse => Color.Accent.WithSaturation((Color.Accent.Saturation + 0.5) % 1).WithLuminosity((Color.Accent.Luminosity + 0.5) % 1).WithHue((Color.Accent.Hue + 0.5) % 1);
 
-        public static float CornerRadius => 3;  //TODO introduce option
+        public static int CornerRadiusN => 3;  //TODO introduce option
+        public static float CornerRadiusF => CornerRadiusN;  //TODO introduce option
     }
 }

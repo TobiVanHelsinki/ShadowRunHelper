@@ -41,7 +41,7 @@
     <Style x:Key="ItemFrame" TargetType="Frame">
         <Setter Property="Margin" Value="{StaticResource Spacing}"/>
         <Setter Property="Padding" Value="{StaticResource Spacing}"/>
-        <Setter Property="CornerRadius" Value="{StaticResource CornerRadius}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusF}"/>
         <Setter Property="BorderColor" Value="{StaticResource ElementBorderColor}"/>
         <Setter Property="BackgroundColor" Value="{StaticResource AltBackgroundColor}"/>
     </Style>
@@ -54,10 +54,11 @@
         <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
     </Style>
     <Style x:Key="STDButton" TargetType="Button">
-        <Setter Property="CornerRadius" Value="{StaticResource CornerRadius}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusN}"/>
         <Setter Property="Margin" Value="{StaticResource Spacing}"/>
         <Setter Property="Padding" Value="{StaticResource SpacingS}"/>
         <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource ElementBackgroundColor}"/>
     </Style>
     <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource STDButton}">
         <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
@@ -79,7 +80,7 @@
         <Setter Property="Grid.Column" Value="1"/>
     </Style>
     <Style x:Key="SfButtonSTD" TargetType="sfbtn:SfButton">
-        <Setter Property="CornerRadius" Value="{StaticResource CornerRadius}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusF}"/>
         <Setter Property="BackgroundColor" Value="{StaticResource ElementBackgroundColor}"/>
         <Setter Property="Margin" Value="{StaticResource Spacing}"/>
         <Setter Property="Padding" Value="{StaticResource SpacingS}"/>
