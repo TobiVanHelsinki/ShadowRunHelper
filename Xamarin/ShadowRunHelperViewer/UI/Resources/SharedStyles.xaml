@@ -41,9 +41,9 @@
     <Style x:Key="ItemFrame" TargetType="Frame">
         <Setter Property="Margin" Value="{StaticResource Spacing}"/>
         <Setter Property="Padding" Value="{StaticResource Spacing}"/>
-        <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusSize}"/>
-        <Setter Property="BorderColor" Value="{StaticResource CurrentForegroundColor}"/>
-        <Setter Property="BackgroundColor" Value="{StaticResource CurrentBackgroundColor}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource CornerRadius}"/>
+        <Setter Property="BorderColor" Value="{StaticResource ElementBorderColor}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource AltBackgroundColor}"/>
     </Style>
 
     <Style x:Key="STDText" TargetType="Label">
@@ -51,12 +51,13 @@
         <Setter Property="Margin" Value="0"/>
         <Setter Property="LineBreakMode" Value="CharacterWrap"/>
         <Setter Property="MaxLines" Value="2"/>
+        <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
     </Style>
     <Style x:Key="STDButton" TargetType="Button">
-        <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusSize}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource CornerRadius}"/>
         <Setter Property="Margin" Value="{StaticResource Spacing}"/>
         <Setter Property="Padding" Value="{StaticResource SpacingS}"/>
-        <Setter Property="TextColor" Value="{StaticResource CurrentTextColor}"/>
+        <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
     </Style>
     <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource STDButton}">
         <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
@@ -65,7 +66,7 @@
         <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="WidthRequest" Value="{StaticResource ButtonSize}"/>
     </Style>
-    <Style x:Key="IconLabel" TargetType="Label">
+    <Style x:Key="IconLabel" TargetType="Label" BasedOn="{StaticResource STDText}">
         <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="HorizontalOptions" Value="Center"/>
@@ -78,11 +79,11 @@
         <Setter Property="Grid.Column" Value="1"/>
     </Style>
     <Style x:Key="SfButtonSTD" TargetType="sfbtn:SfButton">
-        <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusSize}"/>
-        <Setter Property="BackgroundColor" Value="{StaticResource CurrentButtonColor}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource CornerRadius}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource ElementBackgroundColor}"/>
         <Setter Property="Margin" Value="{StaticResource Spacing}"/>
         <Setter Property="Padding" Value="{StaticResource SpacingS}"/>
-        <Setter Property="TextColor" Value="{StaticResource CurrentTextColor}"/>
+        <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
     </Style>
     <Style x:Key="HeadLineText" TargetType="Label" BasedOn="{StaticResource STDText}">
         <Setter Property="Margin" Value="0"/>

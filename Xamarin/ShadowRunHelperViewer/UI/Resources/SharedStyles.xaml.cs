@@ -17,18 +17,16 @@ namespace ShadowRunHelperViewer
 
         public SharedStyles()
         {
-            Add("Spacing", SettingsModel.I.CurrentSpacingStrategy);
-            Add("SpacingS", (SettingsModel.I.CurrentSpacingStrategy - 1).LowerB(0));
-            Add("SpacingM", SettingsModel.I.CurrentSpacingStrategy);
-            Add("SpacingL", SettingsModel.I.CurrentSpacingStrategy + 2);
-            Add("CurrentBackgroundColor", StyleManager.BackgroundColor);
-            Add("CurrentForegroundColor", StyleManager.ForegroundColor);
-            Add("CurrentTextColor", StyleManager.TextColor);
-            Add("CurrentAccentColor", StyleManager.AccentColor);
-            Add("CurrentAccentHighColor", StyleManager.AccentHighColor);
-            Add("CurrentAccentLowColor", StyleManager.AccentLowColor);
-            Add("CurrentButtonColor", StyleManager.ButtonColor);
-            Add("CornerRadiusSize", StyleManager.CornerRadius);
+            foreach (var item in typeof(StyleManager).GetProperties())
+            {
+                try
+                {
+                    Add(item.Name, item.GetValue(null));
+                }
+                catch (System.Exception)
+                {
+                }
+            }
 
             InitializeComponent();
         }

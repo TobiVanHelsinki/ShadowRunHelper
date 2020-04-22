@@ -18,12 +18,12 @@
                 <Setter Property="Margin" Value="4,4,4,0"/>
                 <Setter Property="Padding" Value="4"/>
             </Style>
-            <Style x:Key="OneLineText" TargetType="Label">
+            <Style x:Key="OneLineText" TargetType="Label" BasedOn="{StaticResource STDText}">
                 <Setter Property="Margin" Value="0"/>
                 <Setter Property="LineBreakMode" Value="TailTruncation"/>
                 <Setter Property="MaxLines" Value="1"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                <Setter Property="TextColor" Value="FloralWhite"/>
+                <Setter Property="TextColor" Value="{StaticResource AccentInverseBinary}"/>
             </Style>
             <DataTemplate x:Key="CharPerson" x:Name="CharPerson" x:DataType="model:CharHolder">
                 <ScrollView Padding="5">
@@ -56,7 +56,7 @@
                         <Label Text="{resx:ModelResources Person_Beschreibung_}" Grid.Row="2" Style="{StaticResource SubTitle}"/>
                         <Editor Text="{x:Binding Person.Zusammenfassung}" Grid.Row="3" MinimumHeightRequest="30"
                                 IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
-                        <sfbtn:SfButton HorizontalOptions="End" VerticalOptions="Start" Style="{StaticResource SfButtonSTD}" Clicked="EditPerson_Click" BackgroundColor="AntiqueWhite">
+                        <sfbtn:SfButton HorizontalOptions="End" VerticalOptions="Start" Style="{StaticResource SfButtonSTD}" Clicked="EditPerson_Click" BackgroundColor="{StaticResource ElementBackgroundColor}">
                             <sfbtn:SfButton.Content>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -97,7 +97,7 @@
                 <ColumnDefinition Width="0" x:Name="WideCol1"/>
                 <ColumnDefinition Width="0" x:Name="WideCol2"/>
             </Grid.ColumnDefinitions>
-            <Frame Grid.ColumnSpan="3" Grid.RowSpan="3" BackgroundColor="Accent" x:Name="WindowsDropFrame"/>
+            <Frame Grid.ColumnSpan="3" Grid.RowSpan="3" BackgroundColor="{StaticResource AccentColor}" x:Name="WindowsDropFrame"/>
             <StackLayout x:Name="CharTitleBar" InputTransparent="True" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="0">
                 <Label Style="{StaticResource OneLineText}" FontSize="Medium">
                     <Label.FormattedText>
@@ -117,7 +117,10 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <controlsother:HamburgerButton/>
-                <forms:AutoSuggestBox Grid.Column="2" PlaceholderText="{resx:UiResources SearchForEntries}" TextChanged="AutoSuggestBox_TextChanged" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
+                <forms:AutoSuggestBox Grid.Column="2" PlaceholderText="{resx:UiResources SearchForEntries}" TextChanged="AutoSuggestBox_TextChanged" QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                      BackgroundColor="{StaticResource ElementBackgroundColorSemi}"
+                                      PlaceholderTextColor="{StaticResource AltTextColor}"
+                                      TextColor="{StaticResource TextColor}"/>
                 <Button x:Name="MenuToggleButton" Text="&#xf060;" Grid.Column="1" Style="{StaticResource IconButton}" Clicked="ToggleMenu" FontSize="22" Padding="5" HeightRequest="30" WidthRequest="30"/>
             </Grid>
             <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" Margin="15,5,15,5" VerticalOptions="Center">
@@ -154,20 +157,10 @@
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
-            <Grid Grid.Row="3" BackgroundColor="White" ColumnSpacing="0" Grid.ColumnSpan="3">
+            <Grid Grid.Row="3" BackgroundColor="{StaticResource BackgroundColor}" ColumnSpacing="0" Grid.ColumnSpan="3">
                 <Grid.Resources>
                     <Style x:Key="LabelLayout" TargetType="StackLayout">
                         <Setter Property="Orientation" Value="Horizontal"/>
-                        <Setter Property="HorizontalOptions" Value="Center"/>
-                        <Setter Property="Margin" Value="0"/>
-                    </Style>
-                    <Style x:Key="LocalIconLabel" TargetType="Label" BasedOn="{StaticResource IconLabel}">
-                        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
-                        <Setter Property="HorizontalOptions" Value="Center"/>
-                        <Setter Property="Margin" Value="0"/>
-                    </Style>
-                    <Style x:Key="LocalLabel" TargetType="Label">
-                        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
                         <Setter Property="HorizontalOptions" Value="Center"/>
                         <Setter Property="Margin" Value="0"/>
                     </Style>
@@ -177,7 +170,7 @@
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col1"/>
                     <ColumnDefinition Width="0" x:Name="LayerContent_Col2"/>
                 </Grid.ColumnDefinitions>
-                <ScrollView BackgroundColor="White">
+                <ScrollView>
                     <StackLayout>
                         <Frame BorderColor="Blue" Style="{StaticResource CatPanel}">
                             <StackLayout>
@@ -185,8 +178,8 @@
                                     <TapGestureRecognizer Command="{Binding OpenCategory}" CommandParameter="0"/>
                                 </StackLayout.GestureRecognizers>
                                 <StackLayout Style="{StaticResource LabelLayout}">
-                                    <Label Text="&#xf0e7;" Style="{StaticResource LocalIconLabel}"/>
-                                    <Label Text="{resx:UiResources Category_Aktion}" Style="{StaticResource LocalLabel}"/>
+                                    <Label Text="&#xf0e7;" Style="{StaticResource IconLabel}"/>
+                                    <Label Text="{resx:UiResources Category_Aktion}" Style="{StaticResource STDTextCenter}"/>
                                 </StackLayout>
                                 <StackLayout x:Name="s1"/>
                             </StackLayout>
@@ -197,8 +190,8 @@
                                     <TapGestureRecognizer Command="{Binding OpenCategory}" CommandParameter="1"/>
                                 </StackLayout.GestureRecognizers>
                                 <StackLayout Style="{StaticResource LabelLayout}">
-                                    <Label Text="&#xf187;" Style="{StaticResource LocalIconLabel}"/>
-                                    <Label Text="{resx:UiResources Category_Item}" Style="{StaticResource LocalLabel}"/>
+                                    <Label Text="&#xf187;" Style="{StaticResource IconLabel}"/>
+                                    <Label Text="{resx:UiResources Category_Item}" Style="{StaticResource STDTextCenter}"/>
                                 </StackLayout>
                                 <StackLayout x:Name="s2"/>
                             </StackLayout>
@@ -206,15 +199,15 @@
                         <Frame BorderColor="Gray" Style="{StaticResource CatPanel}">
                             <StackLayout>
                                 <StackLayout Style="{StaticResource LabelLayout}">
-                                    <Label Text="&#xf303;" Style="{StaticResource LocalIconLabel}"/>
-                                    <Label Text="{resx:UiResources Category_Notizen}" Style="{StaticResource LocalLabel}"/>
+                                    <Label Text="&#xf303;" Style="{StaticResource IconLabel}"/>
+                                    <Label Text="{resx:UiResources Category_Notizen}" Style="{StaticResource STDTextCenter}"/>
                                 </StackLayout>
                                 <StackLayout x:Name="s5"/>
                             </StackLayout>
                         </Frame>
                     </StackLayout>
                 </ScrollView>
-                <ScrollView Grid.Column="2" BackgroundColor="White">
+                <ScrollView Grid.Column="2">
                     <StackLayout>
                         <Frame BorderColor="Red" Style="{StaticResource CatPanel}">
                             <StackLayout>
@@ -222,9 +215,9 @@
                                     <TapGestureRecognizer Command="{Binding OpenCategory}" CommandParameter="2"/>
                                 </StackLayout.GestureRecognizers>
                                 <StackLayout Style="{StaticResource LabelLayout}">
-                                    <Label Text="&#xf3ed;" Style="{StaticResource LocalIconLabel}"/>
-                                    <Label Text="{resx:UiResources Category_Kampf}" Style="{StaticResource LocalLabel}"/>
-                                    <Label Text="&#xf714;" Style="{StaticResource LocalIconLabel}"/>
+                                    <Label Text="&#xf3ed;" Style="{StaticResource IconLabel}"/>
+                                    <Label Text="{resx:UiResources Category_Kampf}" Style="{StaticResource STDTextCenter}"/>
+                                    <Label Text="&#xf714;" Style="{StaticResource IconLabel}"/>
                                 </StackLayout>
                                 <StackLayout x:Name="s3"/>
                             </StackLayout>
@@ -235,8 +228,8 @@
                                     <TapGestureRecognizer Command="{Binding OpenCategory}" CommandParameter="3"/>
                                 </StackLayout.GestureRecognizers>
                                 <StackLayout Style="{StaticResource LabelLayout}">
-                                    <Label Text="&#xf007;" Style="{StaticResource LocalIconLabel}"/>
-                                    <Label Text="{resx:UiResources Category_Person}" Style="{StaticResource LocalLabel}"/>
+                                    <Label Text="&#xf007;" Style="{StaticResource IconLabel}"/>
+                                    <Label Text="{resx:UiResources Category_Person}" Style="{StaticResource STDTextCenter}"/>
                                 </StackLayout>
                                 <StackLayout x:Name="s4"/>
                             </StackLayout>

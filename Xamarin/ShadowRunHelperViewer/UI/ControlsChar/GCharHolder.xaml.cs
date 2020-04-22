@@ -151,6 +151,9 @@ namespace ShadowRunHelperViewer
                         BindingContext = Category.ThingType,
                         Text = Category.ThingType.ThingDefToString(true),
                         IsVisible = Category.Visibility,
+                        BackgroundColor = StyleManager.ElementBackgroundColor,
+                        BorderColor = StyleManager.ElementBorderColor,
+                        TextColor = StyleManager.TextColor,
                     };
                     switch (Category.Pivot)
                     {
@@ -316,13 +319,13 @@ namespace ShadowRunHelperViewer
             {
                 if (item.BindingContext is ThingDefs t && t == type)
                 {
-                    item.BackgroundColor = Color.Accent;
-                    item.TextColor = Color.FloralWhite;
+                    item.BackgroundColor = StyleManager.AccentColor;
+                    item.TextColor = StyleManager.AccentInverseBinary;
                 }
                 else
                 {
-                    item.BackgroundColor = Color.Default;
-                    item.TextColor = Color.Default;
+                    item.BackgroundColor = StyleManager.ElementBackgroundColor;
+                    item.TextColor = StyleManager.TextColor;
                 }
             }
         }
@@ -331,13 +334,13 @@ namespace ShadowRunHelperViewer
         {
             foreach (var item in Buttons)
             {
-                item.BackgroundColor = Color.Default;
-                item.TextColor = Color.Default;
+                item.BackgroundColor = StyleManager.ElementBackgroundColor;
+                item.TextColor = StyleManager.TextColor;
             }
             if (myBtn != null)
             {
-                myBtn.BackgroundColor = Color.Accent;
-                myBtn.TextColor = Color.FloralWhite;
+                myBtn.BackgroundColor = StyleManager.AccentColor;
+                myBtn.TextColor = StyleManager.AccentInverseBinary;
             }
         }
         #endregion Category Buttons
