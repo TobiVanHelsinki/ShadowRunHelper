@@ -844,7 +844,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Limit: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Limit ähnelt.
         /// </summary>
         public static string Handlung_Limit {
             get {

@@ -240,7 +240,7 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                         <ContentView ControlTemplate="{StaticResource Thing_Value_H}"/>
                         <Label Text="{resx:ModelResources Waffe_SchadenTyp}" Style="{StaticResource HeadLineText}" Margin="1,0,0,0"/>
                         <Label Text="[" Style="{StaticResource HeadLineText}" Margin="1,0,0,0"/>
-                        <Label Text="{resx:ModelResources Waffe_Praezision}" Style="{StaticResource HeadLineText}"/>
+                        <Label Text="{resx:ModelResources Waffe_Precision}" Style="{StaticResource HeadLineText}"/>
                         <Label Text="]" Style="{StaticResource HeadLineText}" Margin="0,0,1,0"/>
                         <Label Text="{resx:ModelResources Waffe_DK}" Style="{StaticResource HeadLineText}"/>
                     </StackLayout>

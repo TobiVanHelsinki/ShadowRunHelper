@@ -20,14 +20,18 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
     <Style x:Key="AdditionalValuePanel" TargetType="StackLayout">
         <Setter Property="Orientation" Value="Horizontal"/>
     </Style>
+    <Style x:Key="HeadlinePanel" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="0"/>
+    </Style>
 
     <ControlTemplate x:Key="Thing_Name_H">
-        <StackLayout Style="{DynamicResource TemplateStack}">
+        <StackLayout Style="{StaticResource HeadlinePanel}">
             <Label Text="{resx:ModelResources Thing_Bezeichner}" Style="{StaticResource HeadLineText}"/>
         </StackLayout>
     </ControlTemplate>
     <ControlTemplate x:Key="Thing_Name" x:DataType="CharModel:Thing">
-        <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{DynamicResource TemplateStack}">
+        <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource HeadlinePanel}">
             <Label x:Name="Typ" Text="{x:Binding Typ}" Style="{StaticResource HeadLineText}"/>
             <Label Text=":" Style="{StaticResource HeadLineText}" Margin="0,0,2,0">
                 <Label.Triggers>
@@ -42,19 +46,19 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
         </StackLayout>
     </ControlTemplate>
     <ControlTemplate x:Key="Thing_Value_H">
-        <StackLayout Style="{DynamicResource TemplateStack}">
-            <Label Text="{resx:ModelResources Thing_Wert}" Style="{StaticResource HeadLineText}"/>
+        <StackLayout Style="{StaticResource HeadlinePanel}">
+            <Label Text="{resx:ModelResources Thing_Value}" Style="{StaticResource HeadLineText}"/>
         </StackLayout>
     </ControlTemplate>
     <ControlTemplate x:Key="Thing_Value" x:DataType="CharModel:Thing">
-        <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{DynamicResource TemplateStack}" Orientation="Horizontal">
+        <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource HeadlinePanel}">
             <Label Text="{x:Binding Value.TrueValue}" Style="{StaticResource HeadLineText}"/>
             <Label Text="{x:Binding Zusatz}" Style="{StaticResource HeadLineText}"/>
         </StackLayout>
     </ControlTemplate>
 
     <ControlTemplate x:Key="Thing_H">
-        <Grid Style="{DynamicResource TemplateGrid}">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -66,7 +70,7 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
     </ControlTemplate>
 
     <ControlTemplate x:Key="ItemsBoxes_H" x:DataType="CharModel:Item">
-        <Grid Style="{DynamicResource TemplateGrid}" WidthRequest="100" ColumnSpacing="0" RowSpacing="0">
+        <Grid WidthRequest="100" ColumnSpacing="0" RowSpacing="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
@@ -77,7 +81,7 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
         </Grid>
     </ControlTemplate>
     <ControlTemplate x:Key="ItemsBoxesSlim" x:DataType="CharModel:Item">
-        <Grid Style="{DynamicResource TemplateGrid}" ColumnSpacing="0" RowSpacing="0" BindingContext="{TemplateBinding BindingContext}">
+        <Grid ColumnSpacing="0" RowSpacing="0" BindingContext="{TemplateBinding BindingContext}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -100,7 +104,7 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
         </Grid>
     </ControlTemplate>
     <ControlTemplate x:Key="ItemsBoxes" x:DataType="CharModel:Item">
-        <Grid Style="{DynamicResource TemplateGrid}" ColumnSpacing="0" RowSpacing="0" BindingContext="{TemplateBinding BindingContext}">
+        <Grid ColumnSpacing="0" RowSpacing="0" BindingContext="{TemplateBinding BindingContext}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>

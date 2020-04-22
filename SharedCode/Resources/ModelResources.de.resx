@@ -184,7 +184,7 @@
     <comment>Mehrzahl</comment>
   </data>
   <data name="Handlung_Limit" xml:space="preserve">
-    <value>Limit:</value>
+    <value>Limit</value>
   </data>
   <data name="ItemM_" xml:space="preserve">
     <value>Items</value>
