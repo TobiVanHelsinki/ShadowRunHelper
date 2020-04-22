@@ -32,7 +32,7 @@
             <StackLayout Style="{StaticResource AdditionalValuePanel}" Grid.ColumnSpan="3" Grid.Row="1">
                 <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                 <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK"/>
-                <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Precision"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Waffe_Precision}" ValuePath="Precision"/>
                 <controls:AdditionalValue Text="{resx:ModelResources Waffe_Wert}" ValuePath="Wert"/>
                 <controls:AdditionalValue Text="{resx:ModelResources Waffe_SchadenTyp}" ValuePath="SchadenTyp"/>
             </StackLayout>

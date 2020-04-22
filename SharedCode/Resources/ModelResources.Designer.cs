@@ -70,6 +70,15 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Damage ähnelt.
+        /// </summary>
+        public static string _Damage {
+            get {
+                return ResourceManager.GetString("_Damage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Capacity ähnelt.
         /// </summary>
         public static string _Kapazitaet {
@@ -111,6 +120,15 @@ namespace SharedCode.Resources {
         public static string Adeptenkraft_ {
             get {
                 return ResourceManager.GetString("Adeptenkraft_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Option ähnelt.
+        /// </summary>
+        public static string Adeptenkraft_Option {
+            get {
+                return ResourceManager.GetString("Adeptenkraft_Option", resourceCulture);
             }
         }
         
@@ -682,15 +700,6 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Effect ähnelt.
-        /// </summary>
-        public static string Eigenschaft_Auswirkungen {
-            get {
-                return ResourceManager.GetString("Eigenschaft_Auswirkungen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Favorite ähnelt.
         /// </summary>
         public static string Favorite_ {
@@ -828,63 +837,18 @@ namespace SharedCode.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Defend dices: ähnelt.
         /// </summary>
-        public static string Handlung_Gegen {
+        public static string Handlung_Against {
             get {
-                return ResourceManager.GetString("Handlung_Gegen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Defense Addition ähnelt.
-        /// </summary>
-        public static string Handlung_GegenZusatz {
-            get {
-                return ResourceManager.GetString("Handlung_GegenZusatz", resourceCulture);
+                return ResourceManager.GetString("Handlung_Against", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Limit: ähnelt.
         /// </summary>
-        public static string Handlung_Grenze {
+        public static string Handlung_Limit {
             get {
-                return ResourceManager.GetString("Handlung_Grenze", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Limit Addition ähnelt.
-        /// </summary>
-        public static string Handlung_GrenzeZusatz {
-            get {
-                return ResourceManager.GetString("Handlung_GrenzeZusatz", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Modifier ähnelt.
-        /// </summary>
-        public static string Handlung_Mod {
-            get {
-                return ResourceManager.GetString("Handlung_Mod", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Pool Addition ähnelt.
-        /// </summary>
-        public static string Handlung_WertZusatz {
-            get {
-                return ResourceManager.GetString("Handlung_WertZusatz", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Dices: ähnelt.
-        /// </summary>
-        public static string Handlung_Zusammensetzung {
-            get {
-                return ResourceManager.GetString("Handlung_Zusammensetzung", resourceCulture);
+                return ResourceManager.GetString("Handlung_Limit", resourceCulture);
             }
         }
         
@@ -1195,33 +1159,6 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Duration ähnelt.
-        /// </summary>
-        public static string KomplexForm_Duration {
-            get {
-                return ResourceManager.GetString("KomplexForm_Duration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Fading ähnelt.
-        /// </summary>
-        public static string KomplexForm_Fading {
-            get {
-                return ResourceManager.GetString("KomplexForm_Fading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Target ähnelt.
-        /// </summary>
-        public static string KomplexForm_Target {
-            get {
-                return ResourceManager.GetString("KomplexForm_Target", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Munition ähnelt.
         /// </summary>
         public static string Munition_ {
@@ -1501,7 +1438,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Initiative  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Initiative ähnelt.
         /// </summary>
         public static string Person_Initiative {
             get {
@@ -1645,7 +1582,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Physical Damage  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Physical Damage ähnelt.
         /// </summary>
         public static string Person_Schaden_K {
             get {
@@ -1897,15 +1834,6 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Value ähnelt.
-        /// </summary>
-        public static string Thing_Wert_W {
-            get {
-                return ResourceManager.GetString("Thing_Wert_W", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Addition ähnelt.
         /// </summary>
         public static string Thing_Zusatz {
@@ -2068,15 +1996,6 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Damage ähnelt.
-        /// </summary>
-        public static string Vehikel_Wert {
-            get {
-                return ResourceManager.GetString("Vehikel_Wert", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Vehicles ähnelt.
         /// </summary>
         public static string VehikelM_ {
@@ -2115,9 +2034,9 @@ namespace SharedCode.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Precision ähnelt.
         /// </summary>
-        public static string Waffe_Praezision {
+        public static string Waffe_Precision {
             get {
-                return ResourceManager.GetString("Waffe_Praezision", resourceCulture);
+                return ResourceManager.GetString("Waffe_Precision", resourceCulture);
             }
         }
         
@@ -2133,9 +2052,9 @@ namespace SharedCode.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Damage ähnelt.
         /// </summary>
-        public static string Waffe_Wert {
+        public static string Waffe_Value {
             get {
-                return ResourceManager.GetString("Waffe_Wert", resourceCulture);
+                return ResourceManager.GetString("Waffe_Value", resourceCulture);
             }
         }
         
@@ -2223,9 +2142,9 @@ namespace SharedCode.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Drain ähnelt.
         /// </summary>
-        public static string Zaubersprueche_Entzug {
+        public static string Zaubersprueche_Fading {
             get {
-                return ResourceManager.GetString("Zaubersprueche_Entzug", resourceCulture);
+                return ResourceManager.GetString("Zaubersprueche_Fading", resourceCulture);
             }
         }
         

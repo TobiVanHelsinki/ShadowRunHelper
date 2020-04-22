@@ -183,14 +183,8 @@
     <value>Aktionen</value>
     <comment>Mehrzahl</comment>
   </data>
-  <data name="Handlung_Grenze" xml:space="preserve">
+  <data name="Handlung_Limit" xml:space="preserve">
     <value>Limit:</value>
-  </data>
-  <data name="Handlung_Mod" xml:space="preserve">
-    <value>Modifier</value>
-  </data>
-  <data name="Handlung_Zusammensetzung" xml:space="preserve">
-    <value>Würfeln mit:</value>
   </data>
   <data name="ItemM_" xml:space="preserve">
     <value>Items</value>
@@ -317,9 +311,6 @@
   </data>
   <data name="Person_Kontostand" xml:space="preserve">
     <value>Geld</value>
-  </data>
-  <data name="Eigenschaften_Auswirkung" xml:space="preserve">
-    <value>Auswirkungen</value>
   </data>
   <data name="Implantat_" xml:space="preserve">
     <value>Implantat</value>
@@ -458,7 +449,7 @@
   <data name="Stroemung_Wert" xml:space="preserve">
     <value>Grad</value>
   </data>
-  <data name="Handlung_Gegen" xml:space="preserve">
+  <data name="Handlung_Against" xml:space="preserve">
     <value>Wehren mit:</value>
   </data>
   <data name="Attribut_Charisma" xml:space="preserve">
@@ -497,9 +488,6 @@
   <data name="Attribut_Geschick" xml:space="preserve">
     <value>Geschicklichkeit</value>
   </data>
-  <data name="Thing_Wert" xml:space="preserve">
-    <value>Stufe</value>
-  </data>
   <data name="Thing_ThingTyp" xml:space="preserve">
     <value>Eigenschaftstyp</value>
   </data>
@@ -517,9 +505,6 @@
   </data>
   <data name="CyberDeck_Schleicher_o" xml:space="preserve">
     <value>Schleicher Original</value>
-  </data>
-  <data name="Eigenschaft_Auswirkungen" xml:space="preserve">
-    <value>Auswirkungen</value>
   </data>
   <data name="Stroemung_Paragon" xml:space="preserve">
     <value>Paragon</value>
@@ -553,9 +538,6 @@
   </data>
   <data name="Kommlink_SchadenMax" xml:space="preserve">
     <value>Schadenslimit</value>
-  </data>
-  <data name="Thing_Wert_W" xml:space="preserve">
-    <value>Wert</value>
   </data>
   <data name="Attribut_Magie" xml:space="preserve">
     <value>Magie</value>
@@ -611,7 +593,7 @@
   <data name="ZauberspruecheM_" xml:space="preserve">
     <value>Zaubersprüche</value>
   </data>
-  <data name="Waffe_Praezision" xml:space="preserve">
+  <data name="Waffe_Precision" xml:space="preserve">
     <value>Präzision</value>
   </data>
   <data name="Stroemung_Bezeichner" xml:space="preserve">
@@ -749,15 +731,6 @@
   <data name="Fertigkeit_CreateHandlung" xml:space="preserve">
     <value>Handlung anlegen</value>
   </data>
-  <data name="Handlung_GegenZusatz" xml:space="preserve">
-    <value>Gegen Zusatz</value>
-  </data>
-  <data name="Handlung_GrenzeZusatz" xml:space="preserve">
-    <value>Grenze Zusatz</value>
-  </data>
-  <data name="Handlung_WertZusatz" xml:space="preserve">
-    <value>Wert Zusatz</value>
-  </data>
   <data name="Content_Erinnerung" xml:space="preserve">
     <value>Erinnerung</value>
   </data>
@@ -769,9 +742,6 @@
   </data>
   <data name="Content_Selbstbeherrschung" xml:space="preserve">
     <value>Selbstbeherrschung</value>
-  </data>
-  <data name="KomplexForm_Fading" xml:space="preserve">
-    <value>Schwund</value>
   </data>
   <data name="Person_LifestyleCost" xml:space="preserve">
     <value>Lebensstilkosten</value>
@@ -871,5 +841,14 @@
   </data>
   <data name="Drones_" xml:space="preserve">
     <value>Drone</value>
+  </data>
+  <data name="Thing_Value" xml:space="preserve">
+    <value>Stufe</value>
+  </data>
+  <data name="Kommlink_Schaden" xml:space="preserve">
+    <value>Schaden</value>
+  </data>
+  <data name="Waffe_Value" xml:space="preserve">
+    <value>Schaden</value>
   </data>
 </root>

@@ -119,6 +119,9 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
                                                                                     x.Name == nameof(Thing.FavoriteIndex) ||
                                                                                     x.Name == nameof(Handlung.GegenCalced) ||
                                                                                     x.Name == nameof(Handlung.GrenzeCalced) ||
+                                                                                    x.Name == nameof(SuperNaturalSkills.Reichweite) ||
+                                                                                    x.Name == nameof(SuperNaturalSkills.Dauer) ||
+                                                                                    x.Name == nameof(SuperNaturalSkills.Entzug) ||
                                                                                     x.Name == nameof(Item.Aktiv) ||
                                                                                     x.Name == nameof(Item.Besitz)
                                                                                     )))

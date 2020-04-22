@@ -39,7 +39,7 @@
             <StackLayout Style="{StaticResource AdditionalValuePanel}" Grid.ColumnSpan="3" Grid.Row="1">
                 <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                 <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
-                <controls:AdditionalValue Text="{resx:ModelResources Waffe_Praezision}" ValuePath="Precision.TrueValue"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Waffe_Precision}" ValuePath="Precision.TrueValue"/>
                 <controls:AdditionalValue Text="{resx:ModelResources Nahkampfwaffe_Reichweite}" ValuePath="Reichweite"/>
                 <controls:AdditionalValue Text="{resx:ModelResources Waffe_DK}" ValuePath="DK.TrueValue"/>
             </StackLayout>

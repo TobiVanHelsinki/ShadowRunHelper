@@ -239,7 +239,7 @@
     <value>Karma total</value>
   </data>
   <data name="Person_Initiative" xml:space="preserve">
-    <value>Initiative </value>
+    <value>Initiative</value>
   </data>
   <data name="Kommlink__Aktiv" xml:space="preserve">
     <value>Active Commlink</value>
@@ -279,9 +279,6 @@
   <data name="Connection_Einfluss" xml:space="preserve">
     <value>Connection</value>
   </data>
-  <data name="Eigenschaft_Auswirkungen" xml:space="preserve">
-    <value>Effect</value>
-  </data>
   <data name="FokiM_" xml:space="preserve">
     <value>Foci</value>
   </data>
@@ -294,14 +291,8 @@
   <data name="Geist_" xml:space="preserve">
     <value>Spirit</value>
   </data>
-  <data name="Handlung_Grenze" xml:space="preserve">
+  <data name="Handlung_Limit" xml:space="preserve">
     <value>Limit:</value>
-  </data>
-  <data name="Handlung_Mod" xml:space="preserve">
-    <value>Modifier</value>
-  </data>
-  <data name="Handlung_Zusammensetzung" xml:space="preserve">
-    <value>Dices:</value>
   </data>
   <data name="ItemM_" xml:space="preserve">
     <value>Items</value>
@@ -327,7 +318,7 @@
   <data name="Implantat_Essenz" xml:space="preserve">
     <value>Essence</value>
   </data>
-  <data name="Handlung_Gegen" xml:space="preserve">
+  <data name="Handlung_Against" xml:space="preserve">
     <value>Defend dices:</value>
   </data>
   <data name="Implantat_Kapazitaet" xml:space="preserve">
@@ -451,7 +442,7 @@
     <value>Edge everall</value>
   </data>
   <data name="Person_Schaden_K" xml:space="preserve">
-    <value>Physical Damage </value>
+    <value>Physical Damage</value>
   </data>
   <data name="Person_Schaden_K_max" xml:space="preserve">
     <value>Physical Damage Maximum</value>
@@ -488,9 +479,6 @@
   </data>
   <data name="Kommlink_SchadenMax" xml:space="preserve">
     <value>Condition Limit</value>
-  </data>
-  <data name="Thing_Wert_W" xml:space="preserve">
-    <value>Value</value>
   </data>
   <data name="Person_Geburtstag" xml:space="preserve">
     <value>Birthday</value>
@@ -549,13 +537,13 @@
   <data name="Waffe_SchadenTyp" xml:space="preserve">
     <value>Damage type (M/P)</value>
   </data>
-  <data name="Waffe_Praezision" xml:space="preserve">
+  <data name="Waffe_Precision" xml:space="preserve">
     <value>Precision</value>
   </data>
   <data name="Vehikel__Aktiv" xml:space="preserve">
     <value>Active vehicle</value>
   </data>
-  <data name="Waffe_Wert" xml:space="preserve">
+  <data name="Waffe_Value" xml:space="preserve">
     <value>Damage</value>
   </data>
   <data name="ZauberspruecheM_" xml:space="preserve">
@@ -569,9 +557,6 @@
   </data>
   <data name="SuperNaturalSkills_Target" xml:space="preserve">
     <value>Target</value>
-  </data>
-  <data name="Vehikel_Wert" xml:space="preserve">
-    <value>Damage</value>
   </data>
   <data name="Person_MetaTyp" xml:space="preserve">
     <value>Metatype</value>
@@ -590,9 +575,6 @@
   </data>
   <data name="Vorteil_" xml:space="preserve">
     <value>Advantage</value>
-  </data>
-  <data name="Zaubersprueche_Entzug" xml:space="preserve">
-    <value>Drain</value>
   </data>
   <data name="KomplexeForm_Fading" xml:space="preserve">
     <value>Fading</value>
@@ -720,24 +702,6 @@
   <data name="_ORG" xml:space="preserve">
     <value>orig.</value>
   </data>
-  <data name="Handlung_GegenZusatz" xml:space="preserve">
-    <value>Defense Addition</value>
-  </data>
-  <data name="Handlung_GrenzeZusatz" xml:space="preserve">
-    <value>Limit Addition</value>
-  </data>
-  <data name="Handlung_WertZusatz" xml:space="preserve">
-    <value>Pool Addition</value>
-  </data>
-  <data name="KomplexForm_Duration" xml:space="preserve">
-    <value>Duration</value>
-  </data>
-  <data name="KomplexForm_Fading" xml:space="preserve">
-    <value>Fading</value>
-  </data>
-  <data name="KomplexForm_Target" xml:space="preserve">
-    <value>Target</value>
-  </data>
   <data name="Person_LifestyleCost" xml:space="preserve">
     <value>Lifestyle cost</value>
   </data>
@@ -845,5 +809,14 @@
   </data>
   <data name="Drones_" xml:space="preserve">
     <value>Drone</value>
+  </data>
+  <data name="_Damage" xml:space="preserve">
+    <value>Damage</value>
+  </data>
+  <data name="Adeptenkraft_Option" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="Zaubersprueche_Fading" xml:space="preserve">
+    <value>Drain</value>
   </data>
 </root>
