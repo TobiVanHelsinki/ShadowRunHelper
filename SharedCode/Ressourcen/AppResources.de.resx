@@ -117,75 +117,72 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Notification_Error_CSVExportFail" xml:space="preserve">
+  <data name="Error_CSVExportFail" xml:space="preserve">
     <value>Konnte nicht CSV-Exportieren</value>
   </data>
-  <data name="Notification_Error_CSVImportFail" xml:space="preserve">
+  <data name="Error_CSVImportFail" xml:space="preserve">
     <value>CSV Importfehler</value>
   </data>
-  <data name="Notification_Error_DelAllFail" xml:space="preserve">
+  <data name="Error_DelAllFail" xml:space="preserve">
     <value>Alle Löschen fehlgeschlagen</value>
   </data>
-  <data name="Notification_Error_DelCurrentFail" xml:space="preserve">
+  <data name="Error_DelCurrentFail" xml:space="preserve">
     <value>Löschen des aktuellen Char fehlgeschlagen</value>
   </data>
-  <data name="Notification_Error_DelFail" xml:space="preserve">
+  <data name="Error_DelFail" xml:space="preserve">
     <value>Löschen fehlgeschlagen</value>
   </data>
-  <data name="Notification_Error_FileExportFail" xml:space="preserve">
+  <data name="Error_FileExportFail" xml:space="preserve">
     <value>Konnte nicht Exportieren</value>
   </data>
-  <data name="Notification_Error_FileImportFail" xml:space="preserve">
+  <data name="Error_FileImportFail" xml:space="preserve">
     <value>Dateiimport fehlgeschlagen</value>
   </data>
-  <data name="Notification_Error_LoadFail" xml:space="preserve">
+  <data name="Error_LoadFail" xml:space="preserve">
     <value>Laden fehlgeschlagen</value>
   </data>
-  <data name="Notification_Error_SaveFail" xml:space="preserve">
+  <data name="Error_SaveFail" xml:space="preserve">
     <value>Speichern fehlgeschlagen, versuche, den Char zu exportieren und starte die App neu.</value>
   </data>
-  <data name="Notification_Error_Converter_Error1" xml:space="preserve">
-    <value>konnte nicht übernommen werden.</value>
+  <data name="Error_Converter_Error1" xml:space="preserve">
+    <value>konnte nicht übernommen werden</value>
   </data>
-  <data name="Notification_Error_DisplayRequest" xml:space="preserve">
-    <value>Display kann nicht automatisch aktiviert bleiben.</value>
+  <data name="Error_DisplayRequest" xml:space="preserve">
+    <value>Display kann nicht automatisch aktiviert bleiben</value>
   </data>
-  <data name="Notification_Error_Loader_Error1" xml:space="preserve">
+  <data name="Error_Loader_Error1" xml:space="preserve">
     <value>Der Char konnte nicht vollstädnig geladen werden. Genaure Informationen bei den Benachrichtigungen verfügbar.</value>
   </data>
-  <data name="Doppelpunkt" xml:space="preserve">
-    <value>:</value>
-  </data>
-  <data name="Notification_Error_Unknown" xml:space="preserve">
-    <value>Ein unbekannter Fehler ist aufgetreten, Ihr char wurde mit dem Prefix ''Emergency'' gespeichert</value>
+  <data name="Error_Unknown" xml:space="preserve">
+    <value>Ein unbekannter Fehler ist aufgetreten, Ihr char wurde mit dem Prefix ''Emergency'' gespeichert.</value>
   </data>
   <data name="Error_LoadCharFolder" xml:space="preserve">
     <value>Fehler beim einlesen des Char-Verzeichnises.
-Setzen Sie den externen Ordner neu.</value>
+Setzen Sie den externen Ordner neu!</value>
   </data>
-  <data name="Notification_Error_AuswahlToLess" xml:space="preserve">
-    <value>Fehler: Einige der verknüpften Dinge wurden nicht gefunden.</value>
+  <data name="Error_AuswahlToLess" xml:space="preserve">
+    <value>Fehler: Einige der verknüpften Dinge wurden nicht gefunden</value>
   </data>
-  <data name="Notification_Error_AllListChooser" xml:space="preserve">
+  <data name="Error_AllListChooser" xml:space="preserve">
     <value>Interner Fehler, AllList war leer</value>
   </data>
-  <data name="Notification_Error_Enum" xml:space="preserve">
+  <data name="Error_Enum" xml:space="preserve">
     <value>Falscher Enum Wert</value>
   </data>
-  <data name="Notification_Error_IO_Deserialize" xml:space="preserve">
+  <data name="Error_IO_Deserialize" xml:space="preserve">
     <value>Dateieinlesen fehlgeschlagen</value>
   </data>
-  <data name="Notification_Error_IO_FileVersion" xml:space="preserve">
+  <data name="Error_IO_FileVersion" xml:space="preserve">
     <value>Dateiversion unbekannt</value>
   </data>
-  <data name="Notification_Error_IO_FolderNotFoundOrNotCreated" xml:space="preserve">
+  <data name="Error_IO_FolderNotFoundOrNotCreated" xml:space="preserve">
     <value>Ordner konnte nicht gefunden und nicht erstellt werden</value>
   </data>
-  <data name="Notification_Error_IO_UserDecision" xml:space="preserve">
+  <data name="Error_IO_UserDecision" xml:space="preserve">
     <value>Benutzerentscheidung war Fehler werfen</value>
     <comment>User Decision to throw</comment>
   </data>
-  <data name="Notification_Info_ConvertFromPrevious" xml:space="preserve">
+  <data name="Info_ConvertFromPrevious" xml:space="preserve">
     <value>Diese Datei ist eine alte Version, sie wird nun in das aktuelleste Format konvertiert. Dadurch kann sie womöglich nicht oder nicht mit dem gesamten Funktionsumfang in früheren Versionen des Programms geöffnet werden. Die Aktuelle Version des Programms steht in den Einstellungen. Sollte die Umwandlung nicht erwünscht sein, speichere den Char einfach nicht.</value>
   </data>
   <data name="Help1" xml:space="preserve">
@@ -218,11 +215,11 @@ Setzen Sie den externen Ordner neu.</value>
   <data name="Help5_CharAdministration_FileName" xml:space="preserve">
     <value>Verwaltung - Dateinamen</value>
   </data>
-  <data name="Notification_Error_FileActivation" xml:space="preserve">
-    <value>Datei konnte nicht gelesen werden.</value>
+  <data name="Error_FileActivation" xml:space="preserve">
+    <value>Datei konnte nicht gelesen werden</value>
   </data>
-  <data name="Ampersant" xml:space="preserve">
-    <value>&amp;</value>
+  <data name="Error_RepairFail" xml:space="preserve">
+    <value>Das automatische reparieren hat nicht geklappt. Es könnte noch immer verknüpfte Werte geben, die ins Leere laufen oder falsch sind.</value>
   </data>
   <data name="ExampleChar" xml:space="preserve">
     <value>Beispiel Charakter</value>
@@ -261,29 +258,23 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Tut_State_04" xml:space="preserve">
     <value>Das war's mit dem Tutorial. Du kannst einen neuen Charakter erstellen, aber besser ist es, du schaust dir erst den Beispielcharakter an.</value>
   </data>
-  <data name="AuswahlDialog" xml:space="preserve">
-    <value>Auswahl</value>
-  </data>
-  <data name="Request_Delete" xml:space="preserve">
+  <data name="ReallyDeleteExMark" xml:space="preserve">
     <value>Wirklich Löschen!</value>
   </data>
-  <data name="Request_DeleteAll" xml:space="preserve">
-    <value>Wirklich Löschen!</value>
-  </data>
-  <data name="Notification_Error_SaveFail_OPInProgress" xml:space="preserve">
+  <data name="Error_SaveFail_OPInProgress" xml:space="preserve">
     <value>Speichern fehlgeschlagen - andere Operation in Gange</value>
   </data>
-  <data name="Notification_Info_NotSupportedVersion" xml:space="preserve">
+  <data name="Info_NotSupportedVersion" xml:space="preserve">
     <value>Diese Version des Chars wird seid langem nicht mehr unterstützt. Bitte wende dich an den Support, wenn du ihn unbedingt konvertiert haben möchtest.</value>
   </data>
   <data name="FurtherSettings" xml:space="preserve">
     <value>Mehr</value>
   </data>
-  <data name="Notification_Error_LogicFail" xml:space="preserve">
+  <data name="Error_LogicFail" xml:space="preserve">
     <value>Programmlogik Fehler</value>
   </data>
   <data name="Error_GetFolder" xml:space="preserve">
-    <value>Fehler, konnte nicht auf Ordner zugreifen.</value>
+    <value>Fehler, konnte nicht auf Ordner zugreifen</value>
   </data>
   <data name="Error_RepairLinkList" xml:space="preserve">
     <value>Fehler, konnte Link mit {0} nicht wiederherstellen</value>
@@ -291,14 +282,14 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="Order" xml:space="preserve">
     <value>Sortieren</value>
   </data>
-  <data name="Notification_Info_UpgradedChar_1_5_to_1_6" xml:space="preserve">
+  <data name="Info_UpgradedChar" xml:space="preserve">
     <value>Ihr Char wurde auf die neuste Version geupgraded. Er kann nicht mehr vollständig in alten App Versionen geladen werden.</value>
   </data>
-  <data name="Notification_Warning_NotAddLinkedEntry" xml:space="preserve">
-    <value>Info: Referenz wurde nicht hinzugefügt</value>
+  <data name="Warning_NotAddLinkedEntry" xml:space="preserve">
+    <value>Warnung: Referenz wurde nicht hinzugefügt</value>
   </data>
   <data name="Error_ObjectCopy" xml:space="preserve">
-    <value>Konnte nicht alles kopieren.</value>
+    <value>Konnte nicht alles kopieren</value>
   </data>
   <data name="IAP_TXT_ADS" xml:space="preserve">
     <value>Keine Werbung für ein Leben</value>
@@ -316,10 +307,10 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
     <value>OK</value>
   </data>
   <data name="Error_LoadPurchases" xml:space="preserve">
-    <value>Fehler: Ihre Käufe konnten nicht geladen werden.</value>
+    <value>Fehler: Ihre Käufe konnten nicht geladen werden</value>
   </data>
-  <data name="Notification_Error_General" xml:space="preserve">
-    <value>Nicht näher spezifizierter Fehler: </value>
+  <data name="Error_General" xml:space="preserve">
+    <value>Nicht näher spezifizierter Fehler</value>
   </data>
   <data name="Error_CopyFiles" xml:space="preserve">
     <value>Fehler: Konnte nicht (alle) Dateien an neuen Ort kopieren.</value>
@@ -336,19 +327,16 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="IAP_Succeeded" xml:space="preserve">
     <value>Kauf Erfolgreich</value>
   </data>
-  <data name="Request_NotSave" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
-  <data name="Notification_Char_Loaded_File" xml:space="preserve">
+  <data name="Info_Char_Loaded_File" xml:space="preserve">
     <value>Ein Char wurde aus einer Datei geladen</value>
   </data>
-  <data name="Notification_Char_Loaded_Start" xml:space="preserve">
+  <data name="Info_Char_Loaded_Start" xml:space="preserve">
     <value>Ein Char wurde autmoatisch geladen</value>
   </data>
-  <data name="Activity_PlayedWith" xml:space="preserve">
+  <data name="w" xml:space="preserve">
     <value>Gespielt mit </value>
   </data>
-  <data name="Notification_NewVersion" xml:space="preserve">
+  <data name="Info_NewVersion" xml:space="preserve">
     <value>Willkommen in der neuen Version: {0}. Sieh dir hier eine Liste von Neuerungen an!</value>
   </data>
   <data name="AppImportErrors" xml:space="preserve">
@@ -357,10 +345,10 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
   <data name="AppImportNoErrors" xml:space="preserve">
     <value>Der Import war erfolgreich.</value>
   </data>
-  <data name="Request_AppImport" xml:space="preserve">
+  <data name="Yes" xml:space="preserve">
     <value>Ja</value>
   </data>
-  <data name="Notification_Error_SummorysREfresh" xml:space="preserve">
+  <data name="Error_SummorysREfresh" xml:space="preserve">
     <value>Ordner konnte nicht gelesen werden</value>
   </data>
   <data name="VersionHistory" xml:space="preserve">
@@ -403,8 +391,7 @@ Version 1.7.4:
 [new] kein Neuladen mehr zum Anwenden der Char-Optionen
 [new] viele Tooltips für Buttons hinzugefügt
 [new] komplette englische Übersetzung
-[new] Drag and Drop zwischen Kategorien
-</value>
+[new] Drag and Drop zwischen Kategorien</value>
   </data>
   <data name="Tip1" xml:space="preserve">
     <value>Windows schließt Apps manchmal aus Ressourcenmangel. Versuche die Autosave-Option, wenn du Datenverlust vermeiden willst.</value>
@@ -451,9 +438,6 @@ Version 1.7.4:
   <data name="Tip15" xml:space="preserve">
     <value>Nutze Drag'N'Drop, um Objekte zwischen Apps zu kopieren / verschieben.</value>
   </data>
-  <data name="Notification_Info_UpgradedChar" xml:space="preserve">
-    <value>Ihr Char wurde auf die neuste Version geupgraded. Er kann nicht mehr vollständig in alten App Versionen geladen werden.</value>
-  </data>
   <data name="Tip16" xml:space="preserve">
     <value>Die App ist unter mehreren Windowsversionen nutzbar, aber womöglich nicht mit dem vollen Funktionsumfang. Halte dein Windows am besten aktuell.</value>
   </data>
@@ -467,10 +451,10 @@ Bewerte Sie doch im Store!</value>
   <data name="CopiedFileName" xml:space="preserve">
     <value>Kopie</value>
   </data>
-  <data name="Notification_Error_Import" xml:space="preserve">
+  <data name="Error_Import" xml:space="preserve">
     <value>Fehler beim Importieren</value>
   </data>
-  <data name="Notification_Success_Import" xml:space="preserve">
+  <data name="Info_Success_Import" xml:space="preserve">
     <value>Char wurde erfolgreich importiert und steht nun am aktuellen Speicherplatz zur Verfügung</value>
   </data>
 </root>

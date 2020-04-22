@@ -192,16 +192,16 @@ namespace ShadowRunHelper
                         }
                         catch (Exception ex)
                         {
-                            Log.Write(CustomManager.GetString("Notification_Error_FileActivation"), ex);
+                            Log.Write(CustomManager.GetString("Error_FileActivation"), ex);
                         }
                     }
                     if (Settings.FORCE_LOAD_CHAR_ON_START)
                     {
-                        Log.Write(CustomManager.GetString("Notification_Char_Loaded_File"));
+                        Log.Write(CustomManager.GetString("Info_Char_Loaded_File"));
                     }
                     else
                     {
-                        Log.Write(CustomManager.GetString("Notification_Char_Loaded_Start"));
+                        Log.Write(CustomManager.GetString("Info_Char_Loaded_Start"));
                     }
                 }
             }
@@ -223,7 +223,7 @@ namespace ShadowRunHelper
             if (SettingsModel.I.LAST_APP_VERSION != SharedConstants.APP_VERSION_BUILD_DELIM)
             {
                 Log.Write(AppResources.VersionHistory);
-                Log.Write(string.Format(AppResources.Notification_NewVersion, SharedConstants.APP_VERSION_BUILD_DELIM), true);
+                Log.Write(string.Format(AppResources.Info_NewVersion, SharedConstants.APP_VERSION_BUILD_DELIM), true);
                 SettingsModel.I.LAST_APP_VERSION = SharedConstants.APP_VERSION_BUILD_DELIM;
             }
         }

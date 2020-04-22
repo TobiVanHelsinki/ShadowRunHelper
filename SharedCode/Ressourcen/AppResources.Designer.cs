@@ -61,15 +61,6 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die You played with  ähnelt.
-        /// </summary>
-        public static string Activity_PlayedWith {
-            get {
-                return ResourceManager.GetString("Activity_PlayedWith", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The import of the following settings or files failed. ähnelt.
         /// </summary>
         public static string AppImportErrors {
@@ -84,15 +75,6 @@ namespace SharedCode.Ressourcen {
         public static string AppImportNoErrors {
             get {
                 return ResourceManager.GetString("AppImportNoErrors", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die selection ähnelt.
-        /// </summary>
-        public static string AuswahlDialog {
-            get {
-                return ResourceManager.GetString("AuswahlDialog", resourceCulture);
             }
         }
         
@@ -124,6 +106,33 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Intern Error - AllList was Empty ähnelt.
+        /// </summary>
+        public static string Error_AllListChooser {
+            get {
+                return ResourceManager.GetString("Error_AllListChooser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error: Some linked items were not found ähnelt.
+        /// </summary>
+        public static string Error_AuswahlToLess {
+            get {
+                return ResourceManager.GetString("Error_AuswahlToLess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die could not store ähnelt.
+        /// </summary>
+        public static string Error_Converter_Error1 {
+            get {
+                return ResourceManager.GetString("Error_Converter_Error1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Fehler: Konnte nicht (alle) Dateien an neuen Ort kopieren. ähnelt.
         /// </summary>
         public static string Error_CopyFiles {
@@ -133,7 +142,106 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Error, couldn&apos;t get folder. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die CSV Export failed ähnelt.
+        /// </summary>
+        public static string Error_CSVExportFail {
+            get {
+                return ResourceManager.GetString("Error_CSVExportFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CVS Import failed ähnelt.
+        /// </summary>
+        public static string Error_CSVImportFail {
+            get {
+                return ResourceManager.GetString("Error_CSVImportFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Could not delete all ähnelt.
+        /// </summary>
+        public static string Error_DelAllFail {
+            get {
+                return ResourceManager.GetString("Error_DelAllFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Could not delete current character ähnelt.
+        /// </summary>
+        public static string Error_DelCurrentFail {
+            get {
+                return ResourceManager.GetString("Error_DelCurrentFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Could not delete ähnelt.
+        /// </summary>
+        public static string Error_DelFail {
+            get {
+                return ResourceManager.GetString("Error_DelFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Display can not stay activated ähnelt.
+        /// </summary>
+        public static string Error_DisplayRequest {
+            get {
+                return ResourceManager.GetString("Error_DisplayRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wrong Enum value ähnelt.
+        /// </summary>
+        public static string Error_Enum {
+            get {
+                return ResourceManager.GetString("Error_Enum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error: Could not read file ähnelt.
+        /// </summary>
+        public static string Error_FileActivation {
+            get {
+                return ResourceManager.GetString("Error_FileActivation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Could not export ähnelt.
+        /// </summary>
+        public static string Error_FileExportFail {
+            get {
+                return ResourceManager.GetString("Error_FileExportFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fileimport failed ähnelt.
+        /// </summary>
+        public static string Error_FileImportFail {
+            get {
+                return ResourceManager.GetString("Error_FileImportFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Some Error ähnelt.
+        /// </summary>
+        public static string Error_General {
+            get {
+                return ResourceManager.GetString("Error_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error, couldn&apos;t get folder ähnelt.
         /// </summary>
         public static string Error_GetFolder {
             get {
@@ -142,11 +250,74 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Error reading the char directory. Reset the external folder. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error while importing ähnelt.
+        /// </summary>
+        public static string Error_Import {
+            get {
+                return ResourceManager.GetString("Error_Import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reading file failed ähnelt.
+        /// </summary>
+        public static string Error_IO_Deserialize {
+            get {
+                return ResourceManager.GetString("Error_IO_Deserialize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die unknown fileversion ähnelt.
+        /// </summary>
+        public static string Error_IO_FileVersion {
+            get {
+                return ResourceManager.GetString("Error_IO_FileVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die could not find and create folder ähnelt.
+        /// </summary>
+        public static string Error_IO_FolderNotFoundOrNotCreated {
+            get {
+                return ResourceManager.GetString("Error_IO_FolderNotFoundOrNotCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die userdecision was throwing this error ähnelt.
+        /// </summary>
+        public static string Error_IO_UserDecision {
+            get {
+                return ResourceManager.GetString("Error_IO_UserDecision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error reading the char directory. Reset the external folder! ähnelt.
         /// </summary>
         public static string Error_LoadCharFolder {
             get {
                 return ResourceManager.GetString("Error_LoadCharFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die There was an Error during loading you char. More information at the Notifications. ähnelt.
+        /// </summary>
+        public static string Error_Loader_Error1 {
+            get {
+                return ResourceManager.GetString("Error_Loader_Error1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Loading failed ähnelt.
+        /// </summary>
+        public static string Error_LoadFail {
+            get {
+                return ResourceManager.GetString("Error_LoadFail", resourceCulture);
             }
         }
         
@@ -160,6 +331,15 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Programlogic-error ähnelt.
+        /// </summary>
+        public static string Error_LogicFail {
+            get {
+                return ResourceManager.GetString("Error_LogicFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Could not copy all ähnelt.
         /// </summary>
         public static string Error_ObjectCopy {
@@ -169,11 +349,56 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The automatic repair failed. There could still be linked values that are empty or wrong. ähnelt.
+        /// </summary>
+        public static string Error_RepairFail {
+            get {
+                return ResourceManager.GetString("Error_RepairFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Could not restore link item: {0}  ähnelt.
         /// </summary>
         public static string Error_RepairLinkList {
             get {
                 return ResourceManager.GetString("Error_RepairLinkList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error during saving. Try to export your char and restart the App. ähnelt.
+        /// </summary>
+        public static string Error_SaveFail {
+            get {
+                return ResourceManager.GetString("Error_SaveFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Saving not possible, an other operation is in progress ähnelt.
+        /// </summary>
+        public static string Error_SaveFail_OPInProgress {
+            get {
+                return ResourceManager.GetString("Error_SaveFail_OPInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error reading folder ähnelt.
+        /// </summary>
+        public static string Error_SummorysREfresh {
+            get {
+                return ResourceManager.GetString("Error_SummorysREfresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die A unknown Error occured. You char was saved with a &quot;Emergency&quot; prefix. ähnelt.
+        /// </summary>
+        public static string Error_Unknown {
+            get {
+                return ResourceManager.GetString("Error_Unknown", resourceCulture);
             }
         }
         
@@ -342,324 +567,63 @@ namespace SharedCode.Ressourcen {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die A Char was loaded from file ähnelt.
         /// </summary>
-        public static string Notification_Char_Loaded_File {
+        public static string Info_Char_Loaded_File {
             get {
-                return ResourceManager.GetString("Notification_Char_Loaded_File", resourceCulture);
+                return ResourceManager.GetString("Info_Char_Loaded_File", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die A Char was automaticly loaded ähnelt.
         /// </summary>
-        public static string Notification_Char_Loaded_Start {
+        public static string Info_Char_Loaded_Start {
             get {
-                return ResourceManager.GetString("Notification_Char_Loaded_Start", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Intern Error - AllList was Empty ähnelt.
-        /// </summary>
-        public static string Notification_Error_AllListChooser {
-            get {
-                return ResourceManager.GetString("Notification_Error_AllListChooser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Error: Some linked items were not found ähnelt.
-        /// </summary>
-        public static string Notification_Error_AuswahlToLess {
-            get {
-                return ResourceManager.GetString("Notification_Error_AuswahlToLess", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die could not store ähnelt.
-        /// </summary>
-        public static string Notification_Error_Converter_Error1 {
-            get {
-                return ResourceManager.GetString("Notification_Error_Converter_Error1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CSV Export failed ähnelt.
-        /// </summary>
-        public static string Notification_Error_CSVExportFail {
-            get {
-                return ResourceManager.GetString("Notification_Error_CSVExportFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die CVS Import failed ähnelt.
-        /// </summary>
-        public static string Notification_Error_CSVImportFail {
-            get {
-                return ResourceManager.GetString("Notification_Error_CSVImportFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Could not delete all ähnelt.
-        /// </summary>
-        public static string Notification_Error_DelAllFail {
-            get {
-                return ResourceManager.GetString("Notification_Error_DelAllFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Could not delete current character ähnelt.
-        /// </summary>
-        public static string Notification_Error_DelCurrentFail {
-            get {
-                return ResourceManager.GetString("Notification_Error_DelCurrentFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Could not delete ähnelt.
-        /// </summary>
-        public static string Notification_Error_DelFail {
-            get {
-                return ResourceManager.GetString("Notification_Error_DelFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Display can not stay activated ähnelt.
-        /// </summary>
-        public static string Notification_Error_DisplayRequest {
-            get {
-                return ResourceManager.GetString("Notification_Error_DisplayRequest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Wrong Enum value ähnelt.
-        /// </summary>
-        public static string Notification_Error_Enum {
-            get {
-                return ResourceManager.GetString("Notification_Error_Enum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Error: Could not read file ähnelt.
-        /// </summary>
-        public static string Notification_Error_FileActivation {
-            get {
-                return ResourceManager.GetString("Notification_Error_FileActivation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Could not export ähnelt.
-        /// </summary>
-        public static string Notification_Error_FileExportFail {
-            get {
-                return ResourceManager.GetString("Notification_Error_FileExportFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Fileimport failed ähnelt.
-        /// </summary>
-        public static string Notification_Error_FileImportFail {
-            get {
-                return ResourceManager.GetString("Notification_Error_FileImportFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Some Error ähnelt.
-        /// </summary>
-        public static string Notification_Error_General {
-            get {
-                return ResourceManager.GetString("Notification_Error_General", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Error while importing ähnelt.
-        /// </summary>
-        public static string Notification_Error_Import {
-            get {
-                return ResourceManager.GetString("Notification_Error_Import", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Reading file failed ähnelt.
-        /// </summary>
-        public static string Notification_Error_IO_Deserialize {
-            get {
-                return ResourceManager.GetString("Notification_Error_IO_Deserialize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die unknown fileversion ähnelt.
-        /// </summary>
-        public static string Notification_Error_IO_FileVersion {
-            get {
-                return ResourceManager.GetString("Notification_Error_IO_FileVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die could not find and create folder ähnelt.
-        /// </summary>
-        public static string Notification_Error_IO_FolderNotFoundOrNotCreated {
-            get {
-                return ResourceManager.GetString("Notification_Error_IO_FolderNotFoundOrNotCreated", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die userdecision was throwing this error ähnelt.
-        /// </summary>
-        public static string Notification_Error_IO_UserDecision {
-            get {
-                return ResourceManager.GetString("Notification_Error_IO_UserDecision", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die There was an Error during loading you char. More information at the Notifications. ähnelt.
-        /// </summary>
-        public static string Notification_Error_Loader_Error1 {
-            get {
-                return ResourceManager.GetString("Notification_Error_Loader_Error1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Loading failed ähnelt.
-        /// </summary>
-        public static string Notification_Error_LoadFail {
-            get {
-                return ResourceManager.GetString("Notification_Error_LoadFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Programlogic-error ähnelt.
-        /// </summary>
-        public static string Notification_Error_LogicFail {
-            get {
-                return ResourceManager.GetString("Notification_Error_LogicFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die AutoFix Error ähnelt.
-        /// </summary>
-        public static string Notification_Error_RepairFail {
-            get {
-                return ResourceManager.GetString("Notification_Error_RepairFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Error during saving. Try to export your char and restart the App. ähnelt.
-        /// </summary>
-        public static string Notification_Error_SaveFail {
-            get {
-                return ResourceManager.GetString("Notification_Error_SaveFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Saving not possible, an other operation is in progress ähnelt.
-        /// </summary>
-        public static string Notification_Error_SaveFail_OPInProgress {
-            get {
-                return ResourceManager.GetString("Notification_Error_SaveFail_OPInProgress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Error reading folder ähnelt.
-        /// </summary>
-        public static string Notification_Error_SummorysREfresh {
-            get {
-                return ResourceManager.GetString("Notification_Error_SummorysREfresh", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die A unknown Error occured. You char was saved with a &quot;Emergency&quot; prefix. ähnelt.
-        /// </summary>
-        public static string Notification_Error_Unknown {
-            get {
-                return ResourceManager.GetString("Notification_Error_Unknown", resourceCulture);
+                return ResourceManager.GetString("Info_Char_Loaded_Start", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die This file is a old version. It will now be converted to the most recent file version. Because of that, it might not be full readable at old versions of the app. ähnelt.
         /// </summary>
-        public static string Notification_Info_ConvertFromPrevious {
+        public static string Info_ConvertFromPrevious {
             get {
-                return ResourceManager.GetString("Notification_Info_ConvertFromPrevious", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This Fileversion is outdated. If you want to upgrade this char, please contact support. ähnelt.
-        /// </summary>
-        public static string Notification_Info_NotSupportedVersion {
-            get {
-                return ResourceManager.GetString("Notification_Info_NotSupportedVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Your char was upgraded to the newest version. you cannot open it in older app versions properly. ähnelt.
-        /// </summary>
-        public static string Notification_Info_UpgradedChar {
-            get {
-                return ResourceManager.GetString("Notification_Info_UpgradedChar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Your char was upgraded to the newest version. you cannot open it in older app versions properly. ähnelt.
-        /// </summary>
-        public static string Notification_Info_UpgradedChar_1_5_to_1_6 {
-            get {
-                return ResourceManager.GetString("Notification_Info_UpgradedChar_1_5_to_1_6", resourceCulture);
+                return ResourceManager.GetString("Info_ConvertFromPrevious", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Welcome to the new version: {0}. Check out a list of new features here! ähnelt.
         /// </summary>
-        public static string Notification_NewVersion {
+        public static string Info_NewVersion {
             get {
-                return ResourceManager.GetString("Notification_NewVersion", resourceCulture);
+                return ResourceManager.GetString("Info_NewVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die This Fileversion is outdated. If you want to upgrade this char, please contact support. ähnelt.
+        /// </summary>
+        public static string Info_NotSupportedVersion {
+            get {
+                return ResourceManager.GetString("Info_NotSupportedVersion", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Char was successfully imported and is now available at the current saveplace ähnelt.
         /// </summary>
-        public static string Notification_Success_Import {
+        public static string Info_Success_Import {
             get {
-                return ResourceManager.GetString("Notification_Success_Import", resourceCulture);
+                return ResourceManager.GetString("Info_Success_Import", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Info: Reference wasn&apos;t added ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Your char was upgraded to the newest version. you cannot open it in older app versions properly. ähnelt.
         /// </summary>
-        public static string Notification_Warning_NotAddLinkedEntry {
+        public static string Info_UpgradedChar {
             get {
-                return ResourceManager.GetString("Notification_Warning_NotAddLinkedEntry", resourceCulture);
+                return ResourceManager.GetString("Info_UpgradedChar", resourceCulture);
             }
         }
         
@@ -700,38 +664,11 @@ namespace SharedCode.Ressourcen {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Yes ähnelt.
-        /// </summary>
-        public static string Request_AppImport {
-            get {
-                return ResourceManager.GetString("Request_AppImport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Really delete! ähnelt.
         /// </summary>
-        public static string Request_Delete {
+        public static string ReallyDeleteExMark {
             get {
-                return ResourceManager.GetString("Request_Delete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Really delete! ähnelt.
-        /// </summary>
-        public static string Request_DeleteAll {
-            get {
-                return ResourceManager.GetString("Request_DeleteAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Cancel ähnelt.
-        /// </summary>
-        public static string Request_NotSave {
-            get {
-                return ResourceManager.GetString("Request_NotSave", resourceCulture);
+                return ResourceManager.GetString("ReallyDeleteExMark", resourceCulture);
             }
         }
         
@@ -979,6 +916,33 @@ namespace SharedCode.Ressourcen {
         public static string VersionHistory {
             get {
                 return ResourceManager.GetString("VersionHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die You played with  ähnelt.
+        /// </summary>
+        public static string w {
+            get {
+                return ResourceManager.GetString("w", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Warning: Reference wasn&apos;t added ähnelt.
+        /// </summary>
+        public static string Warning_NotAddLinkedEntry {
+            get {
+                return ResourceManager.GetString("Warning_NotAddLinkedEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Yes ähnelt.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

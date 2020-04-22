@@ -74,7 +74,7 @@ namespace ShadowRunHelperViewer
             }
             catch (Exception)
             {
-                Log.Write(AppResources.Notification_Error_FileExportFail, true);
+                Log.Write(AppResources.Error_FileExportFail, true);
             }
         }
 
@@ -83,11 +83,11 @@ namespace ShadowRunHelperViewer
             try
             {
                 SharedIO.SaveAtCurrentPlace(myChar);
-                Log.Write(AppResources.Notification_Success_Import, true);
+                Log.Write(AppResources.Info_Success_Import, true);
             }
             catch (Exception)
             {
-                Log.Write(AppResources.Notification_Error_Import, true);
+                Log.Write(AppResources.Error_Import, true);
             }
         }
 

@@ -26,7 +26,7 @@ namespace ShadowRunHelper.Model
         //}
         //else
         //{
-        //    Log.Write(CustomManager.GetString("Notification_Warning_NotAddLinkedEntry"));
+        //    Log.Write(CustomManager.GetString("Warning_NotAddLinkedEntry"));
         //}
         //}
 
