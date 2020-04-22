@@ -1,6 +1,5 @@
 ﻿//Author: Tobi van Helsinki
 
-
 using Newtonsoft.Json;
 using System.Collections.Generic;
 

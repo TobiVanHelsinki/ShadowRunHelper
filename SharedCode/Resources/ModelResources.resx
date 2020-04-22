@@ -465,7 +465,7 @@
   <data name="Thing_ThingTyp" xml:space="preserve">
     <value>ThingType</value>
   </data>
-  <data name="Panzerung_Kapazitaet" xml:space="preserve">
+  <data name="Panzerung_Capacity" xml:space="preserve">
     <value>Capacity</value>
   </data>
   <data name="Nahkampfwaffe__Aktiv" xml:space="preserve">
@@ -818,5 +818,8 @@
   </data>
   <data name="Zaubersprueche_Fading" xml:space="preserve">
     <value>Drain</value>
+  </data>
+  <data name="Sprite_Geb_Reg" xml:space="preserve">
+    <value>Registered</value>
   </data>
 </root>

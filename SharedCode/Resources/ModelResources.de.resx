@@ -617,7 +617,7 @@
   <data name="Tradition_Wert" xml:space="preserve">
     <value>Grad</value>
   </data>
-  <data name="Panzerung_Kapazitaet" xml:space="preserve">
+  <data name="Panzerung_Capacity" xml:space="preserve">
     <value>Kapazität</value>
   </data>
   <data name="Person_Groesse" xml:space="preserve">
@@ -850,5 +850,8 @@
   </data>
   <data name="Waffe_Value" xml:space="preserve">
     <value>Schaden</value>
+  </data>
+  <data name="Sprite_Geb_Reg" xml:space="preserve">
+    <value>Registriert</value>
   </data>
 </root>

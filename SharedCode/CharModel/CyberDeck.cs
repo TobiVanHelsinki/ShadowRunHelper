@@ -1,4 +1,5 @@
-﻿
+﻿//Author: Tobi van Helsinki
+
 namespace ShadowRunHelper.CharModel
 {
     public class CyberDeck : Kommlink
@@ -49,6 +50,7 @@ namespace ShadowRunHelper.CharModel
         }
 
         private double angriff_o;
+        [Used_UserAttribute]
         public double Angriff_o
         {
             get => angriff_o;

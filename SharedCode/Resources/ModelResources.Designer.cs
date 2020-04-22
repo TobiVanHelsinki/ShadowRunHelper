@@ -1269,9 +1269,9 @@ namespace SharedCode.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Capacity ähnelt.
         /// </summary>
-        public static string Panzerung_Kapazitaet {
+        public static string Panzerung_Capacity {
             get {
-                return ResourceManager.GetString("Panzerung_Kapazitaet", resourceCulture);
+                return ResourceManager.GetString("Panzerung_Capacity", resourceCulture);
             }
         }
         
@@ -1695,6 +1695,15 @@ namespace SharedCode.Resources {
         public static string Sprite_ {
             get {
                 return ResourceManager.GetString("Sprite_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Registered ähnelt.
+        /// </summary>
+        public static string Sprite_Geb_Reg {
+            get {
+                return ResourceManager.GetString("Sprite_Geb_Reg", resourceCulture);
             }
         }
         
