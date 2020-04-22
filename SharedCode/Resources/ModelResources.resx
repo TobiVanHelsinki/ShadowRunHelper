@@ -411,7 +411,7 @@
   <data name="Person_Lebensstil" xml:space="preserve">
     <value>Lifestyle</value>
   </data>
-  <data name="Person_Geburtsdatum" xml:space="preserve">
+  <data name="Person_BirthDate" xml:space="preserve">
     <value>Date of Birth</value>
   </data>
   <data name="Person_Geschlecht" xml:space="preserve">
@@ -480,8 +480,8 @@
   <data name="Kommlink_SchadenMax" xml:space="preserve">
     <value>Condition Limit</value>
   </data>
-  <data name="Person_Geburtstag" xml:space="preserve">
-    <value>Birthday</value>
+  <data name="Person_BirthDate2" xml:space="preserve">
+    <value>Date of Birth</value>
   </data>
   <data name="Stroemung_Bezeichner" xml:space="preserve">
     <value>Name</value>

@@ -1330,6 +1330,24 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Date of Birth ähnelt.
+        /// </summary>
+        public static string Person_BirthDate {
+            get {
+                return ResourceManager.GetString("Person_BirthDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Date of Birth ähnelt.
+        /// </summary>
+        public static string Person_BirthDate2 {
+            get {
+                return ResourceManager.GetString("Person_BirthDate2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Char Type ähnelt.
         /// </summary>
         public static string Person_Char_Typ {
@@ -1371,24 +1389,6 @@ namespace SharedCode.Resources {
         public static string Person_Essenz {
             get {
                 return ResourceManager.GetString("Person_Essenz", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Date of Birth ähnelt.
-        /// </summary>
-        public static string Person_Geburtsdatum {
-            get {
-                return ResourceManager.GetString("Person_Geburtsdatum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Birthday ähnelt.
-        /// </summary>
-        public static string Person_Geburtstag {
-            get {
-                return ResourceManager.GetString("Person_Geburtstag", resourceCulture);
             }
         }
         

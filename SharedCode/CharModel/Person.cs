@@ -1,4 +1,5 @@
-﻿
+﻿//Author: Tobi van Helsinki
+
 using Newtonsoft.Json;
 using SharedCode.Resources;
 using System;

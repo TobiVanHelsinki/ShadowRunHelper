@@ -384,7 +384,7 @@
   <data name="Person_Lebensstil" xml:space="preserve">
     <value>Lebensstil</value>
   </data>
-  <data name="Person_Geburtsdatum" xml:space="preserve">
+  <data name="Person_BirthDate" xml:space="preserve">
     <value>Geburtsdatum</value>
   </data>
   <data name="Person_Geschlecht" xml:space="preserve">
@@ -572,8 +572,8 @@
   <data name="Helper_Geb_Reg" xml:space="preserve">
     <value>Gebunden</value>
   </data>
-  <data name="Person_Geburtstag" xml:space="preserve">
-    <value>Geburtstag</value>
+  <data name="Person_BirthDate2" xml:space="preserve">
+    <value>Geburtsdatum</value>
   </data>
   <data name="Person_Prominenz" xml:space="preserve">
     <value>Prominenz</value>
