@@ -1,9 +1,7 @@
 ﻿//Author: Tobi van Helsinki
 
 using Rg.Plugins.Popup.Services;
-using ShadowRunHelper;
 using ShadowRunHelperViewer.UI.Resources;
-using TLIB;
 using Xamarin.Forms;
 
 namespace ShadowRunHelperViewer

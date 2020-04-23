@@ -4,9 +4,18 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
-             xmlns:sflist="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:chartemplates="clr-namespace:ShadowRunHelperViewer.UI.CharTemplates"
+             xmlns:sflist="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:local="clr-namespace:ShadowRunHelperViewer"
              mc:Ignorable="d"
-             x:Class="ShadowRunHelperViewer.UI.ControlsChar.CharSettingsView">
+             x:Class="ShadowRunHelperViewer.UI.ControlsChar.CharSettingsView"
+             HorizontalOptions="FillAndExpand">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:SharedStyles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -18,13 +27,6 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <sflist:SfListView ItemsSource="{x:Binding MyChar.Settings.CategoryOptions}" Grid.ColumnSpan="2">
-                <sflist:SfListView.Resources>
-                    <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                            <chartemplates:SharedCharStyles/>
-                        </ResourceDictionary.MergedDictionaries>
-                    </ResourceDictionary>
-                </sflist:SfListView.Resources>
                 <sflist:SfListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -34,7 +36,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="100"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="{x:Binding ThingType, Converter={StaticResource O_ThingDef2String}}"/>
+                                    <Label Text="{x:Binding ThingType, Converter={StaticResource O_ThingDef2String}}" LineBreakMode="TailTruncation" Style="{StaticResource STDText}"/>
                                     <Switch IsToggled="{x:Binding Visibility}" Grid.Column="1"/>
                                 </Grid>
                             </Frame>
@@ -42,8 +44,8 @@
                     </DataTemplate>
                 </sflist:SfListView.ItemTemplate>
             </sflist:SfListView>
-            <Button Grid.Row="1" Grid.Column="0" Text="{resx:UiResources Close}" Clicked="Close"/>
-            <Button Grid.Row="1" Grid.Column="1" Text="{resx:UiResources Reset}" Clicked="Reset"/>
+            <Button Grid.Row="1" Grid.Column="0" Text="{resx:UiResources Close}" Clicked="Close" Style="{StaticResource STDButton}"/>
+            <Button Grid.Row="1" Grid.Column="1" Text="{resx:UiResources Reset}" Clicked="Reset" Style="{StaticResource STDButton}"/>
         </Grid>
     </ContentView.Content>
 </ContentView>

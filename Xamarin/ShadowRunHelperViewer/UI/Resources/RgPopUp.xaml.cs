@@ -13,8 +13,8 @@ namespace ShadowRunHelperViewer.UI.Resources
         public RgPopUp(View v)
         {
             InitializeComponent();
-            BindingContext = this;
             MainFrame.Content = v;
+            BindingContext = this;
         }
 
         private void PopupPage_SizeChanged(object sender, EventArgs e)

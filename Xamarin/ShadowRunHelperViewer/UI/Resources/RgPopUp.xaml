@@ -30,6 +30,8 @@
     </pages:PopupPage.Animation>
     <pages:PopupPage.Content>
         <Frame x:Name="MainFrame" Margin="20" HorizontalOptions="Center" VerticalOptions="Center"
-               CornerRadius="{StaticResource CornerRadiusF}" BackgroundColor="{StaticResource BackgroundColor}"/>
+               CornerRadius="{StaticResource CornerRadiusF}"
+               BorderColor="{StaticResource ForegroundColor}"
+               BackgroundColor="{StaticResource BackgroundColor}"/>
     </pages:PopupPage.Content>
 </pages:PopupPage>
