@@ -141,10 +141,14 @@ namespace ShadowRunHelper
             get { return _DisplayName + "_"; }
         }
 
+        public string DisplayNameSingularResolved => ModelResources.ResourceManager.GetStringSafe(DisplayNameSingular);
+
         public string DisplayNamePlural
         {
             get { return _DisplayName + "M_"; }
         }
+
+        public string DisplayNamePluralResolved => ModelResources.ResourceManager.GetStringSafe(DisplayNamePlural);
 
         bool _Usable = true;
         public bool Usable

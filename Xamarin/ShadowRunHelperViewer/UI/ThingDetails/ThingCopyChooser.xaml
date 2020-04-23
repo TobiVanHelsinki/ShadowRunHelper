@@ -14,16 +14,16 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ScrollView>
-        <StackLayout>
+        <StackLayout BackgroundColor="{StaticResource BackgroundColor}">
             <Label x:Name="CopyText" Text="{resx:UiResources CopyTo}"/>
             <Label x:Name="MoveText" Text="{resx:UiResources MoveTo}"/>
             <ListView x:Name="Lists">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="shadowrunhelper:ThingTypeProperty">
                         <ViewCell Tapped="ViewCell_Tapped">
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{x:Binding DisplayNamePlural}"/>
-                            </StackLayout>
+                            <Frame Style="{StaticResource ItemFrame}">
+                                <Label Text="{x:Binding DisplayNamePluralResolved}" Style="{StaticResource STDText}"/>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

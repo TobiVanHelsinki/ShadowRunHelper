@@ -2,11 +2,13 @@
 
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
+using SharedCode.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -36,7 +38,9 @@ namespace ShadowRunHelperViewer
             Move = move;
             InitializeComponent();
             BindingContext = this;
-            Lists.ItemsSource = TypeHelper.ThingTypeProperties;
+            Lists.ItemsSource = TypeHelper.ThingTypeProperties
+                .Where(x => x.Usable)
+                .Where(x => x.ThingType != ThingDefs.Attribut && x.ThingType != ThingDefs.Berechnet && x.ThingType != ThingDefs.Note);
             if (Move)
             {
                 MoveText.IsVisible = true;
