@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:ShadowRunHelperViewer"
-             x:Class="ShadowRunHelperViewer.UI.ControlsOther.EmptyListView" 
+             x:Class="ShadowRunHelperViewer.UI.ControlsOther.EmptyListView"
              HorizontalOptions="Center" VerticalOptions="Center">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -15,9 +15,9 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-      <StackLayout HorizontalOptions="Center" VerticalOptions="Center" x:Name="MainContent">
-            <Label Text="{Binding TitleText}" FontSize="Medium" />
-            <Label Text="{Binding BodyText}" />
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" x:Name="MainContent" BackgroundColor="{StaticResource BackgroundColor}">
+            <Label Text="{Binding TitleText}" FontSize="Medium" Style="{StaticResource STDText}"/>
+            <Label Text="{Binding BodyText}"  Style="{StaticResource STDText}"/>
             <Button Text="{Binding Icon}" FontAttributes="Bold" HorizontalOptions="Fill" SizeChanged="Button_SizeChanged" Style="{StaticResource IconButton}" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentView.Content>

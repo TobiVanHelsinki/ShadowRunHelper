@@ -14,7 +14,8 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="ToggleMenu" FontSize="22" Padding="5" HeightRequest="30" WidthRequest="30"
-                HorizontalOptions="Fill" VerticalOptions="Fill"/>
+        <Button Text="&#xf0c9;" Style="{StaticResource IconButton}" Clicked="ToggleMenu" FontSize="22"
+                BorderColor="Transparent" BackgroundColor="{StaticResource AccentColor}" TextColor="{StaticResource AccentInverseBinary}"
+                Padding="5" HeightRequest="30" WidthRequest="30" HorizontalOptions="Fill" VerticalOptions="Fill"/>
     </ContentView.Content>
 </ContentView>
