@@ -53,6 +53,12 @@
         <Setter Property="MaxLines" Value="2"/>
         <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
     </Style>
+
+    <Style x:Key="UnimportandText" TargetType="Label" BasedOn="{StaticResource STDText}">
+        <Setter Property="TextColor" Value="{StaticResource UnimportandTextColor}"/>
+        <Setter Property="FontSize" Value="Subtitle"/>
+    </Style>
+
     <Style x:Key="STDButton" TargetType="Button">
         <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusN}"/>
         <Setter Property="Margin" Value="{StaticResource Spacing}"/>
@@ -109,6 +115,4 @@
         <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
         <Setter Property="BackgroundColor" Value="{StaticResource AltBackgroundColor}"/>
     </Style>
-
-    
 </ResourceDictionary>

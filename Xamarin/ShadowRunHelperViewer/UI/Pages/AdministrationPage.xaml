@@ -16,7 +16,7 @@
                 <local:SharedStyles/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Key="MoreTemplate">
-                <StackLayout WidthRequest="250">
+                <StackLayout WidthRequest="250" BackgroundColor="{StaticResource BackgroundColor}">
                     <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="FileRename">
                         <sfbtn:SfButton.Content>
                             <Grid>
@@ -70,7 +70,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Grid RowSpacing="0">
+        <Grid RowSpacing="0" BackgroundColor="{StaticResource BackgroundColor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -90,23 +90,23 @@
                 <controlsother:HamburgerButton HorizontalOptions="FillAndExpand"/>
                 <StackLayout x:Name="TitleBar" Grid.Column="1">
                     <Label x:Name="Intro1Text" FontSize="Title" Text="{resx:UiResources WelcomeGreetings}"
-                       HorizontalOptions="FillAndExpand" MaxLines="2"/>
+                       HorizontalOptions="FillAndExpand" MaxLines="2" Style="{StaticResource STDText}"/>
                     <Label x:Name="Intro2Text" FontSize="Default" Text="{resx:UiResources IntroAdministration}"
-                       HorizontalOptions="FillAndExpand" MaxLines="5"/>
+                       HorizontalOptions="FillAndExpand" MaxLines="5" Style="{StaticResource STDText}"/>
                 </StackLayout>
             </Grid>
             <Frame Margin="5" Padding="5" Grid.Row="1" IsVisible="False" x:Name="WarningFrame" BackgroundColor="Crimson" CornerRadius="{StaticResource CornerRadiusF}">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OfflineFolderChooser"/>
                 </Frame.GestureRecognizers>
-                <Label Text="{resx:UiResources WarningLocalSaveplace}" TextColor="FloralWhite" FontSize="Medium"/>
+                <Label Text="{resx:UiResources WarningLocalSaveplace}" TextColor="FloralWhite" FontSize="Medium" Style="{StaticResource STDText}"/>
             </Frame>
             <StackLayout Margin="10,0,10,5" Grid.Row="3" Orientation="Horizontal">
-                <Label Text="{resx:UiResources FileName}" LineBreakMode="WordWrap" FontSize="Subtitle"/>
+                <Label Text="{resx:UiResources FileName}" LineBreakMode="WordWrap" FontSize="Subtitle" Style="{StaticResource STDText}"/>
                 <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                    <Label Text="{resx:UiResources FileDate}" TextColor="SlateGray" FontSize="Subtitle"/>
-                    <Label Text="/" Margin="5,0,5,0" TextColor="SlateGray" FontSize="Subtitle"/>
-                    <Label Text="{resx:UiResources FileSize}" TextColor="SlateGray" FontSize="Subtitle"/>
+                    <Label Text="{resx:UiResources FileDate}" Style="{StaticResource UnimportandText}"/>
+                    <Label Text="/" Margin="5,0,5,0" Style="{StaticResource STDText}"/>
+                    <Label Text="{resx:UiResources FileSize}" Style="{StaticResource UnimportandText}"/>
                 </StackLayout>
             </StackLayout>
             <BoxView Color="{StaticResource ForegroundColor}" Grid.Row="4" HeightRequest="1"/>
@@ -115,27 +115,29 @@
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="io:ExtendetFileInfo">
                         <ViewCell>
-                            <Grid Padding="0" Margin="0" RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <StackLayout Margin="10" Padding="0" SizeChanged="TemplateSizeChanged" VerticalOptions="Center">
-                                    <Label Text="{x:Binding Name}" LineBreakMode="WordWrap" Margin="0" FontSize="Small" VerticalOptions="Center"/>
-                                    <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Margin="0" Padding="0" Orientation="Horizontal" Spacing="0" VerticalOptions="Center">
-                                        <Label Text="{x:Binding LastAccessTime, Converter={StaticResource O_HumanizeTime}}" TextColor="SlateGray" VerticalOptions="Center"/>
-                                        <Label Text="(" Margin="5,0,0,0" TextColor="SlateGray" FontSize="Caption" VerticalOptions="Center"/>
-                                        <Label Text="{x:Binding LastAccessTime}" TextColor="SlateGray" FontSize="Caption" VerticalOptions="Center"/>
-                                        <Label Text=")" Margin="0,0,5,0" TextColor="SlateGray" FontSize="Caption" VerticalOptions="Center"/>
-                                        <Label Text="{x:Binding Length, Converter={StaticResource O_HumanizeFileSize}}" TextColor="SlateGray" FontSize="Caption" VerticalOptions="Center"/>
-                                        <Button Text="&#xf141;" Clicked="MoreMenu" Style="{StaticResource IconButton}" VerticalOptions="End" Margin="2" Padding="2"/>
+                            <Frame Style="{StaticResource ItemFrame}">
+                                <Grid Padding="0" Margin="0" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Margin="10" Padding="0" SizeChanged="TemplateSizeChanged" VerticalOptions="Center">
+                                        <Label Text="{x:Binding Name}" LineBreakMode="WordWrap" Margin="0" FontSize="Small" VerticalOptions="Center" Style="{StaticResource STDText}"/>
+                                        <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Margin="0" Padding="0" Orientation="Horizontal" Spacing="0" VerticalOptions="Center">
+                                            <Label Text="{x:Binding LastAccessTime, Converter={StaticResource O_HumanizeTime}}" Style="{StaticResource UnimportandText}" VerticalOptions="Center"/>
+                                            <Label Text="(" Margin="5,0,0,0" Style="{StaticResource UnimportandText}" FontSize="Caption" VerticalOptions="Center"/>
+                                            <Label Text="{x:Binding LastAccessTime}" Style="{StaticResource UnimportandText}" FontSize="Caption" VerticalOptions="Center"/>
+                                            <Label Text=")" Margin="0,0,5,0" Style="{StaticResource UnimportandText}" FontSize="Caption" VerticalOptions="Center"/>
+                                            <Label Text="{x:Binding Length, Converter={StaticResource O_HumanizeFileSize}}" Style="{StaticResource UnimportandText}" FontSize="Caption" VerticalOptions="Center"/>
+                                            <Button Text="&#xf141;" Clicked="MoreMenu" Style="{StaticResource IconButton}" VerticalOptions="End" Margin="2" Padding="2"/>
+                                        </StackLayout>
                                     </StackLayout>
-                                </StackLayout>
-                                <BoxView Color="{StaticResource BackgroundColor}" Grid.Row="1" HeightRequest="1"/>
-                            </Grid>
+                                    <BoxView Color="{StaticResource BackgroundColor}" Grid.Row="1" HeightRequest="1"/>
+                                </Grid>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

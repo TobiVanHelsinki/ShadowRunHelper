@@ -78,6 +78,13 @@ namespace ShadowRunHelperViewer.UI.Resources
             _ => Color.Black.AddLuminosity(.2),
         };
 
+        public static Color UnimportandTextColor => SettingsModel.I.CurrentStyleName switch
+        {
+            Constants.StyleDark => Color.LightGray,
+            Constants.StyleScaryGreen => Color.DarkGreen,
+            _ => Color.DarkGray,
+        };
+
         public static Color AccentColor => Color.Accent;
         public static Color AccentHighColor => Color.Accent.AddLuminosity(.2);
         public static Color AccentLowColor => Color.Accent.AddLuminosity(-.2);
