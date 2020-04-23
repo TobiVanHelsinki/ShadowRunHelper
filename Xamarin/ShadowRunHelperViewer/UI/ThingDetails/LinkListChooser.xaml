@@ -22,7 +22,6 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                 <Grid RowSpacing="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -52,25 +51,22 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                         <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{x:Binding Bezeichner}"/>
                         <Label Style="{StaticResource STDText}" Grid.Column="3" Text="{x:Binding Zusatz}"/>
                     </Grid>
-                    <BoxView Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="1" BackgroundColor="SlateGray"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="MultipleConnectedValuesTemplate">
-                <xforms:SfListView Orientation="Vertical" WidthRequest="250" HeightRequest="130"
+                <Frame Style="{StaticResource ItemFrame}" WidthRequest="250" HeightRequest="130">
+                    <xforms:SfListView Orientation="Vertical"
                                            SelectionMode="None"
                                            ItemTemplate="{StaticResource LinkListPropertyTemplate}"
                                            ItemsSource="{Binding ., Converter={StaticResource O_GetCalcPropertiesConvertert}}"/>
+                </Frame>
             </DataTemplate>
             <DataTemplate x:Key="LinkListThingTemplateExtendet" x:DataType="charmodel:Thing">
-                <Grid RowSpacing="1" VerticalOptions="Center" Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ClickToShowPopup_Clicked"/>
-                    </Grid.GestureRecognizers>
-                    <Grid Margin="5,0,0,0" VerticalOptions="Center" ColumnSpacing="0">
+                <Frame Style="{StaticResource ItemFrame}">
+                    <Grid Grid.Row="1" Margin="5,0,0,0" VerticalOptions="Center" ColumnSpacing="0">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ClickToShowPopup_Clicked"/>
+                        </Grid.GestureRecognizers>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -91,8 +87,7 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                         <Label Style="{StaticResource STDText}" Grid.Column="2" Text="{x:Binding Bezeichner}"/>
                         <Label Style="{StaticResource STDText}" Grid.Column="3" Text="{x:Binding Zusatz}"/>
                     </Grid>
-                    <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="SlateGray"/>
-                </Grid>
+                </Frame>
             </DataTemplate>
             <DataTemplate x:Key="LinkListPropertyTemplate" x:DataType="charmodel:ConnectProperty">
                 <Grid HorizontalOptions="Start">
@@ -123,17 +118,23 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="LinkListHeaderTemplate">
-                <Grid BackgroundColor="#E4E4E4">
+                <Grid BackgroundColor="{StaticResource AltBackgroundColor}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Text="{Binding Key}" VerticalOptions="Center" FontSize="Medium"/>
-                    <StackLayout Orientation="Horizontal" Grid.Column="1" VerticalOptions="Center">
-                        <Label Text="("/>
-                        <Label Text="{Binding Count}"/>
-                        <Label Text=")"/>
-                    </StackLayout>
+                    <Label Text="{Binding Key}" VerticalOptions="Center" FontSize="Medium" Style="{StaticResource STDText}"/>
+                    <Label Grid.Column="1" VerticalOptions="Center" Style="{StaticResource STDText}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="("/>
+                                    <Span Text="{Binding Count}"/>
+                                    <Span Text=")"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                 </Grid>
             </DataTemplate>
             <controls:O_GetCalcPropertiesConvertert x:Key="O_GetCalcPropertiesConvertert"/>

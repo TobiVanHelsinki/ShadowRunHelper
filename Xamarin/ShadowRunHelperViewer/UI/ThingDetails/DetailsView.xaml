@@ -184,7 +184,7 @@
                         </StackLayout>
                     </StackLayout>
                 </ScrollView>
-                <Frame x:Name="LinkListFrame" BackgroundColor="Beige" IsVisible="False" Grid.RowSpan="2" Padding="0" Margin="0"/>
+                <Frame x:Name="LinkListFrame" IsVisible="False" Grid.RowSpan="2" Padding="0" Margin="0" Style="{StaticResource ItemFrame}"/>
             </Grid>
         </Frame>
     </ContentView.Content>
