@@ -22,7 +22,50 @@
                 </Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <buttons:SfSwitch x:Name="SettingsSwitch" IsOn="{x:Binding Setting, Mode=TwoWay}"/>
+                <buttons:SfSwitch x:Name="SettingsSwitch" IsOn="{x:Binding Setting, Mode=TwoWay}">
+                    <!--<buttons:SfSwitch.SwitchSettings>
+                        <buttons:DefaultSwitchSettings x:TypeArguments="buttons:OffState"
+                                TrackBorderColor="{StaticResource ForegroundColor}"
+                                ThumbColor="{StaticResource ForegroundColor}"/>
+                    </buttons:SfSwitch.SwitchSettings>-->
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Off">
+                                <VisualState.Setters>
+                                    <Setter Property="SwitchSettings">
+                                        <Setter.Value>
+                                            <buttons:DefaultSwitchSettings x:TypeArguments="buttons:OffState"
+                                TrackBorderColor="{StaticResource ForegroundColor}"
+                                ThumbColor="{StaticResource ForegroundColor}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="On">
+                                <VisualState.Setters>
+                                    <Setter Property="SwitchSettings">
+                                        <Setter.Value>
+                                            <buttons:DefaultSwitchSettings x:TypeArguments="buttons:OnState"
+                                TrackBorderColor="{StaticResource ForegroundColor}"
+                                ThumbColor="{StaticResource ForegroundColor}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Indeterminate">
+                                <VisualState.Setters>
+                                    <Setter Property="SwitchSettings">
+                                        <Setter.Value>
+                                            <buttons:DefaultSwitchSettings x:TypeArguments="buttons:IndeterminateState"
+                                TrackBorderColor="{StaticResource ForegroundColor}"
+                                ThumbColor="{StaticResource ForegroundColor}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </buttons:SfSwitch>
                 <Label Text="{x:Binding OnText}" x:Name="LabelOnText" Style="{StaticResource STDText}"/>
                 <Label Text="{x:Binding OffText}" x:Name="LabelOffText" Style="{StaticResource STDText}"/>
             </StackLayout>
