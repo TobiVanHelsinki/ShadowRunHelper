@@ -17,7 +17,7 @@ namespace ShadowRunHelper
         [Setting("SETTINGS_CURRENT_SPACING_STRATEGY", 2, SaveType.Roaming)]
         public int CurrentSpacingStrategy { get => Get(); set => Set(value); }
 
-        [Setting("SETTINGS_CURRENT_STYLE_NAME", "", SaveType.Roaming)]
+        [Setting("SETTINGS_CURRENT_STYLE_NAME", Constants.StyleDark, SaveType.Roaming)]
         public string CurrentStyleName { get => Get(); set => Set(value); }
 
         [Setting("SETTINGS_MINIMIZED_HEADER", false, SaveType.Roaming)]
