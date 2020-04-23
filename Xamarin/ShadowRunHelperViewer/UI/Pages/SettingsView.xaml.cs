@@ -9,35 +9,12 @@ using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform;
 using ShadowRunHelperViewer.UI.Pages;
+using SharedCode.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer.UI.ControlsOther
 {
-    internal class SpacingConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return value switch
-            {
-                Constants.SpacingCompactValue => Constants.SpacingCompact,
-                Constants.SpacingMediumValue => Constants.SpacingMedium,
-                Constants.SpacingWideValue => Constants.SpacingWide,
-                _ => "Error",
-            };
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return value switch
-            {
-                Constants.SpacingCompact => Constants.SpacingCompactValue,
-                Constants.SpacingWide => Constants.SpacingWideValue,
-                _ => Constants.SpacingMediumValue,
-            };
-        }
-    }
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsView : ContentView, INotifyPropertyChanged
     {
@@ -78,7 +55,6 @@ namespace ShadowRunHelperViewer.UI.ControlsOther
 
         private void ScrollView_BindingContextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -229,7 +229,7 @@ namespace ShadowRunHelperViewer
                         {
                             entrycontent = new Entry()
                             {
-                                Margin = new Thickness(SettingsModel.I.CurrentSpacingStrategy),
+                                Margin = new Thickness(StyleManager.Spacing),
                                 HorizontalOptions = LayoutOptions.Fill,
                             };
                             entrycontent.SetBinding(Entry.TextProperty, item.Name, BindingMode.TwoWay);

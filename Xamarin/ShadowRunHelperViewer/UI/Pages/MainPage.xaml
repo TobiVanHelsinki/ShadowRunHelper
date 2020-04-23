@@ -32,7 +32,6 @@
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="MinimumHeightRequest" Value="50"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="BackgroundColor" Value="#D8D6D7"/>
                 <Setter Property="Grid.Column" Value="1"/>
             </Style>
             <Style x:Key="SF_MenuButtonL2" TargetType="sfbtn:SfButton" BasedOn="{StaticResource SF_MenuButtonL1}">
@@ -70,9 +69,9 @@
                         <sfnav:SfNavigationDrawer.DefaultDrawerSettings>
                             <sfnav:DrawerSettings x:Name="MenuDrawerDefault" Position="Left" Transition="Push" Duration="100"
                                           EnableSwipeGesture="True" TouchThreshold="20" PropertyChanged="SfNavigationDrawer_PropertyChanged"
-                                          DrawerHeaderHeight="160" DrawerHeight="300" DrawerFooterHeight="100" DrawerWidth="200">
+                                          DrawerHeaderHeight="180" DrawerFooterHeight="100" DrawerWidth="200">
                                 <sfnav:DrawerSettings.DrawerHeaderView>
-                                    <Grid BackgroundColor="#33cc33" Padding="5" RowSpacing="5" x:Name="MenuDrawerHeader">
+                                    <Grid BackgroundColor="{StaticResource AccentHighColor}" Padding="5" RowSpacing="5" x:Name="MenuDrawerHeader">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="Auto"/>
@@ -108,7 +107,7 @@
                                     </Grid>
                                 </sfnav:DrawerSettings.DrawerHeaderView>
                                 <sfnav:DrawerSettings.DrawerFooterView>
-                                    <Grid BackgroundColor="#29a329" Padding="5" RowSpacing="5">
+                                    <Grid BackgroundColor="{StaticResource AccentLowColor}" Padding="5" RowSpacing="5">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="Auto"/>
@@ -141,8 +140,8 @@
                                     </Grid>
                                 </sfnav:DrawerSettings.DrawerFooterView>
                                 <sfnav:DrawerSettings.DrawerContentView>
-                                    <Grid BackgroundColor="#2eb82e" Padding="10,5,5,5">
-                                        <ListView ItemsSource="{x:Binding SubMenuItems}" ItemTemplate="{StaticResource SubMenuItemTemplate}"/>
+                                    <Grid BackgroundColor="{StaticResource AccentColor}" Padding="10,0,5,0">
+                                        <ListView ItemsSource="{x:Binding SubMenuItems}" HasUnevenRows="True" ItemTemplate="{StaticResource SubMenuItemTemplate}"/>
                                     </Grid>
                                 </sfnav:DrawerSettings.DrawerContentView>
                             </sfnav:DrawerSettings>
@@ -173,8 +172,8 @@
                             <TapGestureRecognizer Tapped="NotificationTap"/>
                         </Frame.GestureRecognizers>
                         <StackLayout Orientation="Vertical">
-                            <Label x:Name="NotificationHeaderText" LineBreakMode="NoWrap" FontSize="Large"/>
-                            <Label x:Name="NotificationText" LineBreakMode="WordWrap" FontSize="Medium"/>
+                            <Label x:Name="NotificationHeaderText" LineBreakMode="NoWrap" FontSize="Large" Style="{StaticResource STDText}"/>
+                            <Label x:Name="NotificationText" LineBreakMode="WordWrap" FontSize="Medium" Style="{StaticResource STDText}"/>
                         </StackLayout>
                     </Frame>
                 </Grid>

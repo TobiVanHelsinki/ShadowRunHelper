@@ -12,6 +12,7 @@ using Plugin.Toast;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.UI.ControlsOther;
+using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Resources;
 using Syncfusion.SfNavigationDrawer.XForms;
 using TLIB;
@@ -72,6 +73,9 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         public MainPage()
         {
+            System.Diagnostics.Debug.WriteLine("AccentColor: " + StyleManager.AccentColor.ToHex());
+            System.Diagnostics.Debug.WriteLine("AccentLowColor: " + StyleManager.AccentLowColor.ToHex());
+            System.Diagnostics.Debug.WriteLine("AccentHighColor: " + StyleManager.AccentHighColor.ToHex());
             AppModel.Instance.NavigationRequested += Instance_NavigationRequested;
             InitializeComponent();
             DisableBusy();

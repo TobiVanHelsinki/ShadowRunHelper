@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     xmlns:resources="clr-namespace:ShadowRunHelperViewer.UI.Resources"
-                    xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                    xmlns:sfbtn="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:converter="clr-namespace:ShadowRunHelperViewer.UI.Converter"
                     x:Class="ShadowRunHelperViewer.SharedStyles">
     <OnPlatform x:Key="FontAwesomeSolid" x:TypeArguments="x:String">
         <On Platform="UWP, WinRT, WinPhone" Value="/Assets/Fonts/iconize-fontawesome-solid.ttf#Font Awesome 5 Free Solid"/>
@@ -48,6 +48,7 @@
 
     <Style x:Key="STDText" TargetType="Label">
         <Setter Property="VerticalOptions" Value="Start"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="LineBreakMode" Value="CharacterWrap"/>
         <Setter Property="MaxLines" Value="2"/>

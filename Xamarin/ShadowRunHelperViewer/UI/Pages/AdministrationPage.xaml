@@ -110,32 +110,39 @@
                 </StackLayout>
             </StackLayout>
             <BoxView Color="{StaticResource ForegroundColor}" Grid.Row="4" HeightRequest="1"/>
-            <ListView IsPullToRefreshEnabled="True" Grid.Row="5" Margin="5,0,5,0" RefreshControlColor="Accent"
+            <ListView IsPullToRefreshEnabled="True" Grid.Row="5" Margin="5,0,5,0" RefreshControlColor="Accent" HasUnevenRows="True"
                       ItemsSource="{x:Binding CharList, Mode=TwoWay}" Refreshing="ListView_Refreshing" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="io:ExtendetFileInfo">
                         <ViewCell>
                             <Frame Style="{StaticResource ItemFrame}">
-                                <Grid Padding="0" Margin="0" RowSpacing="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
+                                <Grid Margin="10" SizeChanged="TemplateSizeChanged">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
-                                    <StackLayout Margin="10" Padding="0" SizeChanged="TemplateSizeChanged" VerticalOptions="Center">
-                                        <Label Text="{x:Binding Name}" LineBreakMode="WordWrap" Margin="0" FontSize="Small" VerticalOptions="Center" Style="{StaticResource STDText}"/>
-                                        <StackLayout x:Name="attributes" HorizontalOptions="EndAndExpand" Margin="0" Padding="0" Orientation="Horizontal" Spacing="0" VerticalOptions="Center">
-                                            <Label Text="{x:Binding LastAccessTime, Converter={StaticResource O_HumanizeTime}}" Style="{StaticResource UnimportandText}" VerticalOptions="Center"/>
-                                            <Label Text="(" Margin="5,0,0,0" Style="{StaticResource UnimportandText}" FontSize="Caption" VerticalOptions="Center"/>
-                                            <Label Text="{x:Binding LastAccessTime}" Style="{StaticResource UnimportandText}" FontSize="Caption" VerticalOptions="Center"/>
-                                            <Label Text=")" Margin="0,0,5,0" Style="{StaticResource UnimportandText}" FontSize="Caption" VerticalOptions="Center"/>
-                                            <Label Text="{x:Binding Length, Converter={StaticResource O_HumanizeFileSize}}" Style="{StaticResource UnimportandText}" FontSize="Caption" VerticalOptions="Center"/>
-                                            <Button Text="&#xf141;" Clicked="MoreMenu" Style="{StaticResource IconButton}" VerticalOptions="End" Margin="2" Padding="2"/>
-                                        </StackLayout>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{x:Binding Name}" LineBreakMode="WordWrap" FontSize="Small" Grid.Row="0" Grid.Column="0" Style="{StaticResource STDText}"/>
+                                    <StackLayout x:Name="attributes" Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center">
+                                        <Label Text="{x:Binding LastAccessTime, Converter={StaticResource O_HumanizeTime}}" FontSize="Caption" Style="{StaticResource UnimportandText}"/>
+                                        <Label Style="{StaticResource UnimportandText}" FontSize="Caption">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="("/>
+                                                        <Span Text="{x:Binding LastAccessTime}"/>
+                                                        <Span Text=")"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Text="{x:Binding Length, Converter={StaticResource O_HumanizeFileSize}}" Style="{StaticResource UnimportandText}" FontSize="Caption"/>
                                     </StackLayout>
-                                    <BoxView Color="{StaticResource BackgroundColor}" Grid.Row="1" HeightRequest="1"/>
+                                    <Button Text="&#xf141;" Clicked="MoreMenu" Grid.RowSpan="2" Grid.Column="2" Style="{StaticResource IconButton}"/>
                                 </Grid>
                             </Frame>
                         </ViewCell>

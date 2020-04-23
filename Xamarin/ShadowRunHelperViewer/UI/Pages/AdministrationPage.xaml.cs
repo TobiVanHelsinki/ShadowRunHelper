@@ -370,19 +370,23 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         private void TemplateSizeChanged(object sender, EventArgs e)
         {
-            if (sender is StackLayout layout)
+            if (sender is View layout)
             {
                 var attributes = layout.FindByName<StackLayout>("attributes");
                 if (layout.Width < 500)
                 {
-                    layout.Orientation = StackOrientation.Vertical;
-                    attributes.HorizontalOptions = LayoutOptions.Start;
+                    //layout.Orientation = StackOrientation.Vertical;
+                    //attributes.HorizontalOptions = LayoutOptions.Start;
+                    Grid.SetRow(attributes, 1);
+                    Grid.SetColumn(attributes, 0);
                     layout.Margin = new Thickness(10, 2, 10, 0);
                 }
                 else
                 {
-                    layout.Orientation = StackOrientation.Horizontal;
-                    attributes.HorizontalOptions = LayoutOptions.EndAndExpand;
+                    Grid.SetRow(attributes, 0);
+                    Grid.SetColumn(attributes, 1);
+                    //layout.Orientation = StackOrientation.Horizontal;
+                    //attributes.HorizontalOptions = LayoutOptions.EndAndExpand;
                     layout.Margin = new Thickness(10);
                 }
             }

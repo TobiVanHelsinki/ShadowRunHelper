@@ -13,7 +13,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <local:SharedStyles/>
             </ResourceDictionary.MergedDictionaries>
-            <controlsother:SpacingConverter x:Key="SpacingConverter"/>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -59,9 +58,9 @@
                     <controlsother:SettingsEntry Text="Options_BACKUP_VERSIONING" Setting="{x:Binding Settings.BACKUP_VERSIONING}"/>
                     <controlsother:SettingsHeader Text="Options_Group_Design"/>
                     <Label Text="{resx:UiResources Options_Colors}" Style="{StaticResource STDText}"/>
-                    <Picker ItemsSource="{x:Binding Styles}" SelectedItem="{x:Binding Settings.CurrentStyleName}"/>
+                    <Picker ItemsSource="{x:Binding Styles}" SelectedItem="{x:Binding Settings.CurrentStyleName, Converter={StaticResource IO_ResourceManagerConverter}, ConverterParameter=UiResources}"/>
                     <Label Text="{resx:UiResources Options_Spacing}" Style="{StaticResource STDText}"/>
-                    <Picker ItemsSource="{x:Binding Spacings}" SelectedItem="{x:Binding Settings.CurrentSpacingStrategy, Converter={StaticResource SpacingConverter} }"/>
+                    <Picker ItemsSource="{x:Binding Spacings}" SelectedItem="{x:Binding Settings.CurrentSpacingStrategy, Converter={StaticResource IO_ResourceManagerConverter}, ConverterParameter=UiResources}"/>
                 </StackLayout>
             </ScrollView>
         </Grid>
