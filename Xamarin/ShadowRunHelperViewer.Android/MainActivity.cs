@@ -1,7 +1,6 @@
 ﻿//Author: Tobi van Helsinki
 
 using System;
-using System.IO;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -47,7 +46,7 @@ namespace ShadowRunHelperViewer.Droid
         /// </summary>
         private static void DisplayFolderPaths()
         {
-            for (int i = 0; i < 60; i++)
+            for (var i = 0; i < 60; i++)
             {
                 try
                 {
