@@ -158,11 +158,11 @@
                                 <TapGestureRecognizer Tapped="ChangeAnimation"/>
                             </busy:SfBusyIndicator.GestureRecognizers>
                         </busy:SfBusyIndicator>
-                        <Frame BackgroundColor="LightSlateGray" CornerRadius="{StaticResource CornerRadiusF}" Grid.Row="1" Margin="5" Padding="5" VerticalOptions="Start" HorizontalOptions="Center">
+                        <Frame BackgroundColor="{StaticResource ElementBackgroundColor}" CornerRadius="{StaticResource CornerRadiusF}" Grid.Row="1" Margin="5" Padding="5" VerticalOptions="Start" HorizontalOptions="Center">
                             <StackLayout Orientation="Vertical">
-                                <Label Grid.Row="1" Text="{resx:UiResources TipHeader}" FontAttributes="Bold" FontSize="Subtitle"/>
-                                <Label Grid.Row="2" x:Name="TipText" LineBreakMode="WordWrap"/>
-                                <Label Grid.Row="3" Text="{resx:UiResources DisableTips}" FontSize="Caption" TextColor="LightGray"/>
+                                <Label Grid.Row="1" Text="{resx:UiResources TipHeader}" FontAttributes="Bold" FontSize="Subtitle" Style="{StaticResource STDText}"/>
+                                <Label Grid.Row="2" x:Name="TipText" LineBreakMode="WordWrap" Style="{StaticResource STDText}"/>
+                                <Label Grid.Row="3" Text="{resx:UiResources DisableTips}" FontSize="Caption" Style="{StaticResource UnimportandText}"/>
                             </StackLayout>
                         </Frame>
                     </StackLayout>

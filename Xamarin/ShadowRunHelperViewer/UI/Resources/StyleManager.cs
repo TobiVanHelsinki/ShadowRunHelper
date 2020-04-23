@@ -48,12 +48,13 @@ namespace ShadowRunHelperViewer.UI.Resources
             _ => Color.LightGray, //this was from sf: #D8D6D7
         };
 
-        public static Color ElementBackgroundColorSemi => SettingsModel.I.CurrentStyleName switch
-        {
-            Constants.StyleDark => Color.FromRgba(Color.SlateGray.R, Color.SlateGray.G, Color.SlateGray.B, 210),
-            Constants.StyleScaryGreen => Color.Green,
-            _ => Color.FromRgba(Color.LightGray.R, Color.LightGray.G, Color.LightGray.B, 210),
-        };
+        public static Color ElementBackgroundColorSemi => Color.Transparent;
+        //SettingsModel.I.CurrentStyleName switch
+        //{
+        //    Constants.StyleDark => Color.FromRgba(Color.SlateGray.R, Color.SlateGray.G, Color.SlateGray.B, 210),
+        //    Constants.StyleScaryGreen => Color.Green,
+        //    _ => Color.FromRgba(Color.LightGray.R, Color.LightGray.G, Color.LightGray.B, 30),
+        //};
 
         public static Color ElementBorderColor => SettingsModel.I.CurrentStyleName switch
         {
@@ -94,6 +95,7 @@ namespace ShadowRunHelperViewer.UI.Resources
         public static Color AccentHighColor => Color.Accent.AddLuminosity(.06); //#33cc33
         public static Color AccentLowColor => Color.Accent.AddLuminosity(-.06); //#29a329
         public static Color AccentInverseBinary => Color.Accent.Luminosity > .5 ? Color.Black : Color.White; //TODO mit TextColor verbinden
+        public static Color AltAccentInverseBinary => AccentInverseBinary.AddLuminosity(-.2);
         public static Color AccentInverse => Color.Accent.WithSaturation((Color.Accent.Saturation + 0.5) % 1).WithLuminosity((Color.Accent.Luminosity + 0.5) % 1).WithHue((Color.Accent.Hue + 0.5) % 1);
     }
 }

@@ -39,7 +39,7 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <Label x:Name="Type" Style="{DynamicResource STDText}"/>
-                                    <Grid  Grid.Row="1" HorizontalOptions="End" BackgroundColor="Transparent"/>
+                                    <Grid Grid.Row="1" HorizontalOptions="End" BackgroundColor="Transparent"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -119,9 +119,9 @@
                 <controlsother:HamburgerButton/>
                 <forms:AutoSuggestBox Grid.Column="2" PlaceholderText="{resx:UiResources SearchForEntries}" TextChanged="AutoSuggestBox_TextChanged" QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                       BackgroundColor="{StaticResource ElementBackgroundColorSemi}"
-                                      PlaceholderTextColor="{StaticResource AltTextColor}"
-                                      TextColor="{StaticResource TextColor}"/>
-                <Button x:Name="MenuToggleButton" Text="&#xf060;" Grid.Column="1" Style="{StaticResource IconButton}" Clicked="ToggleMenu" FontSize="22" Padding="5" HeightRequest="30" WidthRequest="30"/>
+                                      PlaceholderTextColor="{StaticResource AltAccentInverseBinary}"
+                                      TextColor="{StaticResource AccentInverseBinary}"/>
+                <Button x:Name="MenuToggleButton" Text="&#xf060;" Grid.Column="1" Style="{StaticResource IconButton}" BackgroundColor="{StaticResource AccentColor}" TextColor="{StaticResource AccentInverseBinary}" Clicked="ToggleMenu" FontSize="22" Padding="5" HeightRequest="30" WidthRequest="30"/>
             </Grid>
             <StackLayout x:Name="Infogrid" Grid.Row="2" Orientation="Horizontal" Margin="15,5,15,5" VerticalOptions="Center">
                 <StackLayout Style="{StaticResource OuterPanel}">
