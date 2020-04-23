@@ -121,17 +121,7 @@ namespace ShadowRunHelperViewer
             CharTitleBar.MinimumHeightRequest = Heigth;
         }
 
-        private async void Infogrid_Tapped()
-        {
-            try
-            {
-                SharedStyles.DisplayDefaultPopUp(new ControlCenter(MyChar));
-                //await PopupNavigation.Instance.PushAsync(new ControlCenter(MyChar));
-            }
-            catch (Exception)
-            {
-            }
-        }
+        private void Infogrid_Tapped() => _ = RgPopUp.DisplayDefaultPopUp(new ControlCenter(MyChar));
 
         #region Category Buttons
 

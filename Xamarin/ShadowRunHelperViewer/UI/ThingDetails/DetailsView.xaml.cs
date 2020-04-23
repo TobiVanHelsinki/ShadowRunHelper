@@ -311,26 +311,14 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
 
         private void CopyTo(object sender, EventArgs e)
         {
-            try
-            {
-                SharedStyles.DisplayDefaultPopUp(new ThingCopyChooser(MyThing, MyChar, false));
-                CloseSelf();
-            }
-            catch (Exception)
-            {
-            }
+            _ = RgPopUp.DisplayDefaultPopUp(new ThingCopyChooser(MyThing, MyChar, false));
+            CloseSelf();
         }
 
         private void MoveTo(object sender, EventArgs e)
         {
-            try
-            {
-                SharedStyles.DisplayDefaultPopUp(new ThingCopyChooser(MyThing, MyChar, true));
-                CloseSelf();
-            }
-            catch (Exception)
-            {
-            }
+            _ = RgPopUp.DisplayDefaultPopUp(new ThingCopyChooser(MyThing, MyChar, true));
+            CloseSelf();
         }
         #endregion More
     }

@@ -5,6 +5,7 @@ using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.UI;
 using ShadowRunHelperViewer.UI.ControlsChar;
 using ShadowRunHelperViewer.UI.Pages;
+using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Resources;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace ShadowRunHelperViewer
                     new SubMenuAction(UiResources.SaveAtCurrentPlace,"\xf56f",new Command(()=> SaveIntern(myChar))),
                     new SubMenuAction(UiResources.SaveExtern,"\xf56e",new Command(()=> SaveExtern(myChar))),
                     new SubMenuAction(UiResources.OpenFolder,"\xf07c",new Command(()=> SharedIO.CurrentIO.OpenFolder(myChar.FileInfo.Directory))),
-                    new SubMenuAction(UiResources.CharSettings,"\xf4fe",new Command(()=> SharedStyles.DisplayDefaultPopUp(new CharSettingsView(myChar)))),
+                    new SubMenuAction(UiResources.CharSettings,"\xf4fe",new Command(()=> _ = RgPopUp.DisplayDefaultPopUp(new CharSettingsView(myChar)))),
                     new SubMenuAction(UiResources.SubtractLifeStyleCost,"\xf155",new Command(()=>  myChar.SubtractLifeStyleCost())),
                     new SubMenuAction(UiResources.Repair,"\xf6e3",new Command(()=> myChar.Repair())),
                     new SubMenuAction(UiResources.Close,"\xf235",new Command(()=>{ AppModel.Instance?.RemoveMainObject(myChar); AppModel.Instance.RequestNavigation(ProjectPages.Administration);})),
