@@ -14,6 +14,8 @@
                 <local:SharedStyles/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        <controlsother:SpacingConverter x:Key="SpacingConverter"/>
+        <controlsother:StyleConverter x:Key="StyleConverter"/>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid RowSpacing="0">
@@ -58,9 +60,9 @@
                     <controlsother:SettingsEntry Text="Options_BACKUP_VERSIONING" Setting="{x:Binding Settings.BACKUP_VERSIONING}"/>
                     <controlsother:SettingsHeader Text="Options_Group_Design"/>
                     <Label Text="{resx:UiResources Options_Colors}" Style="{StaticResource STDText}"/>
-                    <Picker ItemsSource="{x:Binding Styles}" SelectedItem="{x:Binding Settings.CurrentStyleName, Converter={StaticResource IO_ResourceManagerConverter}, ConverterParameter=UiResources}"/>
+                    <Picker ItemsSource="{x:Binding Styles}" SelectedItem="{x:Binding Settings.CurrentStyleName, Converter={StaticResource StyleConverter}}"/>
                     <Label Text="{resx:UiResources Options_Spacing}" Style="{StaticResource STDText}"/>
-                    <Picker ItemsSource="{x:Binding Spacings}" SelectedItem="{x:Binding Settings.CurrentSpacingStrategy, Converter={StaticResource IO_ResourceManagerConverter}, ConverterParameter=UiResources}"/>
+                    <Picker ItemsSource="{x:Binding Spacings}" SelectedItem="{x:Binding Settings.CurrentSpacingStrategy, Converter={StaticResource SpacingConverter} }"/>
                 </StackLayout>
             </ScrollView>
         </Grid>

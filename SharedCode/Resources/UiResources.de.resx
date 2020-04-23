@@ -500,4 +500,22 @@ Mit dieser App können Dateien und Ordner auf dem Dateisystem geöffnet werden. 
   <data name="Options_Colors" xml:space="preserve">
     <value>Farbschema</value>
   </data>
+  <data name="SpacingCompact" xml:space="preserve">
+    <value>Kompakt</value>
+  </data>
+  <data name="SpacingMedium" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="SpacingWide" xml:space="preserve">
+    <value>Großzügig</value>
+  </data>
+  <data name="StyleBrigth" xml:space="preserve">
+    <value>Hell</value>
+  </data>
+  <data name="StyleDark" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="StyleScaryGreen" xml:space="preserve">
+    <value>Giftgrün</value>
+  </data>
 </root>

@@ -500,4 +500,22 @@ This app can be used to open files and folders on the file system. The app store
   <data name="Options_Colors" xml:space="preserve">
     <value>Colorscheme</value>
   </data>
+  <data name="SpacingMedium" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="SpacingCompact" xml:space="preserve">
+    <value>Compact</value>
+  </data>
+  <data name="SpacingWide" xml:space="preserve">
+    <value>Wide</value>
+  </data>
+  <data name="StyleDark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="StyleScaryGreen" xml:space="preserve">
+    <value>Scary Green</value>
+  </data>
+  <data name="StyleBrigth" xml:space="preserve">
+    <value>Brigth</value>
+  </data>
 </root>

@@ -1089,6 +1089,33 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Compact ähnelt.
+        /// </summary>
+        public static string SpacingCompact {
+            get {
+                return ResourceManager.GetString("SpacingCompact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Normal ähnelt.
+        /// </summary>
+        public static string SpacingMedium {
+            get {
+                return ResourceManager.GetString("SpacingMedium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wide ähnelt.
+        /// </summary>
+        public static string SpacingWide {
+            get {
+                return ResourceManager.GetString("SpacingWide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Number of appstarts ähnelt.
         /// </summary>
         public static string Statistics_AppStart {
@@ -1130,6 +1157,33 @@ namespace SharedCode.Resources {
         public static string Statistics_Savings {
             get {
                 return ResourceManager.GetString("Statistics_Savings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Brigth ähnelt.
+        /// </summary>
+        public static string StyleBrigth {
+            get {
+                return ResourceManager.GetString("StyleBrigth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Dark ähnelt.
+        /// </summary>
+        public static string StyleDark {
+            get {
+                return ResourceManager.GetString("StyleDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Scary Green ähnelt.
+        /// </summary>
+        public static string StyleScaryGreen {
+            get {
+                return ResourceManager.GetString("StyleScaryGreen", resourceCulture);
             }
         }
         

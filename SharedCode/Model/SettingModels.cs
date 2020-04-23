@@ -14,8 +14,8 @@ namespace ShadowRunHelper
     {
         #region Settings
 
-        [Setting("SETTINGS_CURRENT_SPACING_STRATEGY", 2, SaveType.Roaming)]
-        public int CurrentSpacingStrategy { get => Get(); set => Set(value); }
+        [Setting("SETTINGS_CURRENT_SPACING_STRATEGY", Constants.SpacingMedium, SaveType.Roaming)]
+        public string CurrentSpacingStrategy { get => Get(); set => Set(value); }
 
         [Setting("SETTINGS_CURRENT_STYLE_NAME", Constants.StyleDark, SaveType.Roaming)]
         public string CurrentStyleName { get => Get(); set => Set(value); }

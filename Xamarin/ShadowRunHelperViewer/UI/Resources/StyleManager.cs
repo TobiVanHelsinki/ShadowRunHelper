@@ -9,11 +9,16 @@ namespace ShadowRunHelperViewer.UI.Resources
     public static class StyleManager
     {
         //Spacings
-        public static double Spacing => SettingsModel.I.CurrentSpacingStrategy;
+        public static double Spacing => SettingsModel.I.CurrentSpacingStrategy switch
+        {
+            Constants.SpacingWide => 5,
+            Constants.SpacingCompact => 1,
+            _ => 3,
+        };
 
-        public static double SpacingS => (SettingsModel.I.CurrentSpacingStrategy - 1).LowerB(0);
-        public static double SpacingM => SettingsModel.I.CurrentSpacingStrategy;
-        public static double SpacingL => SettingsModel.I.CurrentSpacingStrategy + 2;
+        public static double SpacingS => (Spacing - 1).LowerB(0);
+        public static double SpacingM => Spacing;
+        public static double SpacingL => Spacing + 2;
 
         //Sizes
         public static int CornerRadiusN => 3;  //TODO introduce option
@@ -40,7 +45,7 @@ namespace ShadowRunHelperViewer.UI.Resources
         {
             Constants.StyleDark => Color.SlateGray,
             Constants.StyleScaryGreen => Color.Green,
-            _ => Color.LightGray,
+            _ => Color.LightGray, //this was from sf: #D8D6D7
         };
 
         public static Color ElementBackgroundColorSemi => SettingsModel.I.CurrentStyleName switch
@@ -85,9 +90,9 @@ namespace ShadowRunHelperViewer.UI.Resources
             _ => Color.DarkGray,
         };
 
-        public static Color AccentColor => Color.Accent;
-        public static Color AccentHighColor => Color.Accent.AddLuminosity(.2);
-        public static Color AccentLowColor => Color.Accent.AddLuminosity(-.2);
+        public static Color AccentColor => Color.Accent; //#2eb82e
+        public static Color AccentHighColor => Color.Accent.AddLuminosity(.06); //#33cc33
+        public static Color AccentLowColor => Color.Accent.AddLuminosity(-.06); //#29a329
         public static Color AccentInverseBinary => Color.Accent.Luminosity > .5 ? Color.Black : Color.White; //TODO mit TextColor verbinden
         public static Color AccentInverse => Color.Accent.WithSaturation((Color.Accent.Saturation + 0.5) % 1).WithLuminosity((Color.Accent.Luminosity + 0.5) % 1).WithHue((Color.Accent.Hue + 0.5) % 1);
     }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
@@ -15,6 +16,64 @@ using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer.UI.ControlsOther
 {
+    internal class SpacingConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value switch
+            {
+                Constants.SpacingCompact => UiResources.SpacingCompact,
+                Constants.SpacingWide => UiResources.SpacingWide,
+                _ => UiResources.SpacingMedium,
+            };
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value as string == UiResources.SpacingCompact)
+            {
+                return Constants.SpacingCompact;
+            }
+            else if (value as string == UiResources.SpacingWide)
+            {
+                return Constants.SpacingWide;
+            }
+            else
+            {
+                return Constants.SpacingMedium;
+            }
+        }
+    }
+
+    internal class StyleConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value switch
+            {
+                Constants.StyleDark => UiResources.StyleDark,
+                Constants.StyleScaryGreen => UiResources.StyleScaryGreen,
+                _ => UiResources.StyleBrigth,
+            };
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value as string == UiResources.StyleDark)
+            {
+                return Constants.StyleDark;
+            }
+            else if (value as string == UiResources.StyleScaryGreen)
+            {
+                return Constants.StyleScaryGreen;
+            }
+            else
+            {
+                return Constants.StyleBrigth;
+            }
+        }
+    }
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsView : ContentView, INotifyPropertyChanged
     {
@@ -29,8 +88,8 @@ namespace ShadowRunHelperViewer.UI.ControlsOther
 
         public AppModel Model => AppModel.Instance;
         public SettingsModel Settings => SettingsModel.Instance;
-        public IEnumerable<string> Styles => Constants.StyleNames;
-        public IEnumerable<string> Spacings => Constants.Spacings;
+        public string[] Styles => Constants.StyleNames.Select(x => UiResources.ResourceManager.GetStringSafe(x)).ToArray();
+        public string[] Spacings => Constants.Spacings.Select(x => UiResources.ResourceManager.GetStringSafe(x)).ToArray();
 
         public SettingsView()
         {
