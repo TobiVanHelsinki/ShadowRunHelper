@@ -22,7 +22,7 @@
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="Padding" Value="10"/>
             </Style>
-            <Style x:Key="ContentLabel" TargetType="Label">
+            <Style x:Key="ContentLabel" TargetType="Label" BasedOn="{StaticResource STDText}">
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
@@ -54,38 +54,38 @@
                     <ColumnDefinition Width="60"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="{resx:ModelResources Person_Kontostand}" Grid.Column="0" Grid.Row="0"/>
+                <Label Text="{resx:ModelResources Person_Kontostand}" Grid.Column="0" Grid.Row="0" Style="{StaticResource STDText}"/>
                 <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="0" Clicked="MoneyMinus"/>
                 <Label Text="{x:Binding Model.Person.Kontostand, Converter={StaticResource IO_NuYen}}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="0"/>
                 <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="0" Clicked="MoneyPlus"/>
 
-                <Label Text="{resx:ModelResources Person_Edge_Aktuell}" Grid.Column="0" Grid.Row="1"/>
+                <Label Text="{resx:ModelResources Person_Edge_Aktuell}" Grid.Column="0" Grid.Row="1" Style="{StaticResource STDText}"/>
                 <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="1" Clicked="EdgeMinus"/>
                 <Label Text="{x:Binding Model.Person.Edge_Aktuell}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="1"/>
                 <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="1" Clicked="EdgePlus"/>
 
-                <Label Text="{resx:ModelResources Person_Edge_Gesamt}" Grid.Column="0" Grid.Row="2"/>
+                <Label Text="{resx:ModelResources Person_Edge_Gesamt}" Grid.Column="0" Grid.Row="2" Style="{StaticResource STDText}"/>
                 <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="2" Clicked="EdgeGesamtMinus"/>
                 <Label Text="{x:Binding Model.Person.Edge_Gesamt}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="2"/>
                 <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="2" Clicked="EdgeGesamtPlus"/>
 
-                <Label Text="{resx:ModelResources Person_Karma_Aktuell}" Grid.Column="0" Grid.Row="3"/>
+                <Label Text="{resx:ModelResources Person_Karma_Aktuell}" Grid.Column="0" Grid.Row="3" Style="{StaticResource STDText}"/>
                 <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="3" Clicked="KarmaMinus"/>
                 <Label Text="{x:Binding Model.Person.Karma_Aktuell}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="3"/>
                 <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="3" Clicked="KarmaPlus"/>
 
-                <Label Text="{resx:ModelResources Person_Karma_Gesamt}" Grid.Column="0" Grid.Row="4"/>
+                <Label Text="{resx:ModelResources Person_Karma_Gesamt}" Grid.Column="0" Grid.Row="4" Style="{StaticResource STDText}"/>
                 <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="4" Clicked="KarmaGesamtMinus"/>
                 <Label Text="{x:Binding Model.Person.Karma_Gesamt}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="4"/>
                 <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="4" Clicked="KarmaGesamtPlus"/>
 
-                <Label Text="{resx:ModelResources Person_Runs}" Grid.Column="0" Grid.Row="5"/>
+                <Label Text="{resx:ModelResources Person_Runs}" Grid.Column="0" Grid.Row="5" Style="{StaticResource STDText}"/>
                 <Button Style="{StaticResource MinusButton}" Grid.Column="1" Grid.Row="5" Clicked="RunsMinus"/>
                 <Label Text="{x:Binding Model.Person.Runs}" Style="{StaticResource ContentLabel}" Grid.Column="2" Grid.Row="5"/>
                 <Button Style="{StaticResource PlusButton}" Grid.Column="3" Grid.Row="5" Clicked="RunsPlus"/>
 
-                <Label Text="{resx:UiResources GeneralInput}" Grid.Column="0" Grid.Row="6"/>
-                <Entry Text="{x:Binding GeneralInput, Converter={StaticResource IO_Calculation}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" BackgroundColor="Transparent" HorizontalTextAlignment="Center" MinimumWidthRequest="50"/>
+                <Label Text="{resx:UiResources GeneralInput}" Grid.Column="0" Grid.Row="6" Style="{StaticResource STDText}"/>
+                <Entry Text="{x:Binding GeneralInput, Converter={StaticResource IO_Calculation}}" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" BackgroundColor="Transparent" HorizontalTextAlignment="Center" MinimumWidthRequest="50" Style="{StaticResource STDInput}"/>
             </Grid>
             <Grid x:Name="DamageGrid" VerticalOptions="Start" HorizontalOptions="Center">
                 <Grid.RowDefinitions>
@@ -103,21 +103,21 @@
                     <ColumnDefinition Width="Auto" x:Name="DamageColumn3"/>
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="{resx:ModelResources Person_Schaden_G}" Grid.Column="0" Grid.Row="0"/>
-                <Label Text="{resx:ModelResources Person_Schaden_K}" Grid.Column="0" Grid.Row="2"/>
-                <Label Text="{resx:UiResources Char_Schaden_Matrix}" Grid.Column="0" Grid.Row="4"/>
-                <Label Text="{x:Binding Model.Person.Schaden_G, Mode=OneWay}" Grid.Column="1" Grid.Row="0"/>
-                <Label Text="{x:Binding Model.Person.Schaden_K, Mode=OneWay}" Grid.Column="1" Grid.Row="2"/>
-                <Label Text="{x:Binding Model.CTRLCyberDeck.ActiveItem.Schaden, Mode=OneWay}" Grid.Column="1" Grid.Row="4"/>
+                <Label Text="{resx:ModelResources Person_Schaden_G}" Grid.Column="0" Grid.Row="0" Style="{StaticResource STDText}"/>
+                <Label Text="{resx:ModelResources Person_Schaden_K}" Grid.Column="0" Grid.Row="2" Style="{StaticResource STDText}"/>
+                <Label Text="{resx:UiResources Char_Schaden_Matrix}" Grid.Column="0" Grid.Row="4" Style="{StaticResource STDText}"/>
+                <Label Text="{x:Binding Model.Person.Schaden_G, Mode=OneWay}" Grid.Column="1" Grid.Row="0" Style="{StaticResource STDText}"/>
+                <Label Text="{x:Binding Model.Person.Schaden_K, Mode=OneWay}" Grid.Column="1" Grid.Row="2" Style="{StaticResource STDText}"/>
+                <Label Text="{x:Binding Model.CTRLCyberDeck.ActiveItem.Schaden, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Style="{StaticResource STDText}"/>
                 <Slider Maximum="{x:Binding Model.CTRLBerechnet.MaxDamageG.Value.Value}" Value="{x:Binding Model.Person.Schaden_G}" Grid.ColumnSpan="4" Grid.Row="1" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
                 <Slider Maximum="{x:Binding Model.CTRLBerechnet.MaxDamageK.Value.Value}" Value="{x:Binding Model.Person.Schaden_K}" Grid.ColumnSpan="4" Grid.Row="3" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
                 <Slider Maximum="{x:Binding Model.CTRLCyberDeck.ActiveItem.SchadenMax}" Value="{x:Binding Model.CTRLCyberDeck.ActiveItem.Schaden}" Grid.ColumnSpan="4" Grid.Row="5" ValueChanged="Slider_ValueChanged" Style="{StaticResource DamageSlider}"/>
-                <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageG.Value.Value, Mode=OneWay}" Grid.Column="3" Grid.Row="0"/>
-                <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageK.Value.Value, Mode=OneWay}" Grid.Column="3" Grid.Row="2"/>
-                <Label Text="{x:Binding Model.CTRLCyberDeck.ActiveItem.SchadenMax, Mode=OneWay}" Grid.Column="3" Grid.Row="4"/>
-                <Label Text="/" Grid.Column="2" Grid.Row="0"/>
-                <Label Text="/" Grid.Column="2" Grid.Row="2"/>
-                <Label Text="/" Grid.Column="2" Grid.Row="4"/>
+                <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageG.Value.Value, Mode=OneWay}" Grid.Column="3" Grid.Row="0" Style="{StaticResource STDText}"/>
+                <Label Text="{x:Binding Model.CTRLBerechnet.MaxDamageK.Value.Value, Mode=OneWay}" Grid.Column="3" Grid.Row="2" Style="{StaticResource STDText}"/>
+                <Label Text="{x:Binding Model.CTRLCyberDeck.ActiveItem.SchadenMax, Mode=OneWay}" Grid.Column="3" Grid.Row="4" Style="{StaticResource STDText}"/>
+                <Label Text="/" Grid.Column="2" Grid.Row="0" Style="{StaticResource STDText}"/>
+                <Label Text="/" Grid.Column="2" Grid.Row="2" Style="{StaticResource STDText}"/>
+                <Label Text="/" Grid.Column="2" Grid.Row="4" Style="{StaticResource STDText}"/>
             </Grid>
         </StackLayout>
     </ScrollView>
