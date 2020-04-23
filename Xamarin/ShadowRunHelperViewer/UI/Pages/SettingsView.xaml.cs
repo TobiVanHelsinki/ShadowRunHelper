@@ -75,5 +75,10 @@ namespace ShadowRunHelperViewer.UI.ControlsOther
             TitleBar.MinimumHeightRequest = Heigth;
             Intro1Text.Margin = new Thickness(Math.Abs(LeftSpace), 0, Math.Abs(RigthSpace), 0);
         }
+
+        private void ScrollView_BindingContextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

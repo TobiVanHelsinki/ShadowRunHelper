@@ -5,10 +5,16 @@
              xmlns:resx="clr-namespace:ShadowRunHelperViewer.Strings"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controlsother="clr-namespace:ShadowRunHelperViewer.UI.ControlsOther"
+             xmlns:local="clr-namespace:ShadowRunHelperViewer"
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.ControlsOther.SettingsView">
     <ContentView.Resources>
-        <controlsother:SpacingConverter x:Key="SpacingConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:SharedStyles/>
+            </ResourceDictionary.MergedDictionaries>
+            <controlsother:SpacingConverter x:Key="SpacingConverter"/>
+        </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid RowSpacing="0">
@@ -30,7 +36,7 @@
                     <Label x:Name="Intro2Text" FontSize="Caption" Text="{resx:UiResources Settings_Tip}" HorizontalOptions="FillAndExpand" LineBreakMode="WordWrap"/>
                 </StackLayout>
             </Grid>
-            <ScrollView Grid.Row="1" BackgroundColor="White">
+            <ScrollView Grid.Row="1" BackgroundColor="{DynamicResource BackgroundColor}" BindingContextChanged="ScrollView_BindingContextChanged">
                 <StackLayout Padding="10">
                     <controlsother:SettingsHeader Text="Options_Group_Char"/>
                     <controlsother:SettingsEntry Text="Options_EditAfterAdd" Setting="{x:Binding Settings.START_AFTER_EDIT, Mode=TwoWay}"/>
@@ -40,21 +46,21 @@
                     <controlsother:SettingsEntry Text="Options_LoadOnStart" Setting="{x:Binding Settings.LOAD_CHAR_ON_START}"/>
                     <controlsother:SettingsEntry Text="Options_AutoSave" Setting="{x:Binding Settings.AUTO_SAVE}"/>
                     <StackLayout Orientation="Horizontal" IsVisible="{x:Binding Settings.FOLDERMODE}">
-                        <Label Text="{resx:UiResources Options_AutoSaveInterval}" VerticalOptions="Center"/>
-                        <Entry Keyboard="Numeric" Text="{x:Binding Settings.AUTO_SAVE_INTERVAL_MS}"/>
+                        <Label Text="{resx:UiResources Options_AutoSaveInterval}" VerticalOptions="Center" Style="{StaticResource STDText}"/>
+                        <Entry Keyboard="Numeric" Text="{x:Binding Settings.AUTO_SAVE_INTERVAL_MS}" Style="{StaticResource STDInput}"/>
                     </StackLayout>
                     <controlsother:SettingsEntry Text="Options_FormatSavefile" Setting="{x:Binding Settings.FORMAT_SAVEFILE}"/>
                     <controlsother:SettingsHeader Text="Options_Group_File"/>
                     <controlsother:SettingsEntry Text="Options_Ordnermode" Setting="{x:Binding Settings.FOLDERMODE}"/>
                     <StackLayout Orientation="Horizontal" IsVisible="{x:Binding Settings.FOLDERMODE}" Margin="0,0,0,5">
-                        <Label Text="{resx:UiResources Options_Ordnermode_Pfad}"/>
-                        <Label Text="{x:Binding Settings.FOLDERMODE_PATH, Mode=OneWay}"/>
+                        <Label Text="{resx:UiResources Options_Ordnermode_Pfad}" Style="{StaticResource STDText}"/>
+                        <Label Text="{x:Binding Settings.FOLDERMODE_PATH, Mode=OneWay}" Style="{StaticResource STDText}"/>
                     </StackLayout>
                     <controlsother:SettingsEntry Text="Options_BACKUP_VERSIONING" Setting="{x:Binding Settings.BACKUP_VERSIONING}"/>
                     <controlsother:SettingsHeader Text="Options_Group_Design"/>
-                    <Label Text="{resx:UiResources Options_Colors}"/>
+                    <Label Text="{resx:UiResources Options_Colors}" Style="{StaticResource STDText}"/>
                     <Picker ItemsSource="{x:Binding Styles}" SelectedItem="{x:Binding Settings.CurrentStyleName}"/>
-                    <Label Text="{resx:UiResources Options_Spacing}"/>
+                    <Label Text="{resx:UiResources Options_Spacing}" Style="{StaticResource STDText}"/>
                     <Picker ItemsSource="{x:Binding Spacings}" SelectedItem="{x:Binding Settings.CurrentSpacingStrategy, Converter={StaticResource SpacingConverter} }"/>
                 </StackLayout>
             </ScrollView>
