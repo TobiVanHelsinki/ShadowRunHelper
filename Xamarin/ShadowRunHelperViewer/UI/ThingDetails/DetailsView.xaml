@@ -121,7 +121,7 @@
                         <Label Text="{x:Binding Name, FallbackValue=-Name-}" Grid.Row="1" HorizontalOptions="Start" Style="{StaticResource STDText}"/>
                         <Label Text="{x:Binding Value, FallbackValue=-Value-}" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" Style="{StaticResource STDText}"/>
                     </StackLayout>
-                    <BoxView HeightRequest="1" Margin="1,0,0,0" Color="DarkSlateGray" HorizontalOptions="Fill" VerticalOptions="Start"/>
+                    <BoxView HeightRequest="1" Margin="1,0,0,0" Color="{StaticResource ForegroundColor}" HorizontalOptions="Fill" VerticalOptions="Start"/>
                 </StackLayout>
             </DataTemplate>
             <DataTemplate x:Key="EditorTemplate" x:DataType="charmodel:Note">

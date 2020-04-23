@@ -109,7 +109,7 @@
                     <Label Text="{resx:UiResources FileSize}" TextColor="SlateGray" FontSize="Subtitle"/>
                 </StackLayout>
             </StackLayout>
-            <BoxView Color="Gray" Grid.Row="4" HeightRequest="1"/>
+            <BoxView Color="{StaticResource ForegroundColor}" Grid.Row="4" HeightRequest="1"/>
             <ListView IsPullToRefreshEnabled="True" Grid.Row="5" Margin="5,0,5,0" RefreshControlColor="Accent"
                       ItemsSource="{x:Binding CharList, Mode=TwoWay}" Refreshing="ListView_Refreshing" ItemTapped="ListView_ItemTapped">
                 <ListView.ItemTemplate>
@@ -134,7 +134,7 @@
                                         <Button Text="&#xf141;" Clicked="MoreMenu" Style="{StaticResource IconButton}" VerticalOptions="End" Margin="2" Padding="2"/>
                                     </StackLayout>
                                 </StackLayout>
-                                <BoxView Color="Black" Grid.Row="1" HeightRequest="1"/>
+                                <BoxView Color="{StaticResource BackgroundColor}" Grid.Row="1" HeightRequest="1"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

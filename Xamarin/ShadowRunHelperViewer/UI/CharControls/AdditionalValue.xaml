@@ -15,10 +15,10 @@
     </ContentView.Resources>
     <ContentView.Content>
         <StackLayout Orientation="Horizontal" VerticalOptions="Start">
-            <BoxView Color="LightGray" WidthRequest="1" Margin="0,0,5,0"/>
+            <BoxView Color="{StaticResource ForegroundColor}" WidthRequest="1" Margin="0,0,5,0"/>
             <StackLayout Margin="0,0,5,0">
-                <Label x:Name="NameDisplay"/>
-                <Label x:Name="ValueDisplay"/>
+                <Label x:Name="NameDisplay" Style="{StaticResource STDText}"/>
+                <Label x:Name="ValueDisplay" Style="{StaticResource STDText}"/>
                 <!--<Button IsEnabled="False" Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" VerticalOptions="Center" Clicked="Thing_Edit" />-->
             </StackLayout>
         </StackLayout>

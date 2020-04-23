@@ -6,5 +6,5 @@
              mc:Ignorable="d"
              x:Class="ShadowRunHelperViewer.UI.CharTemplates.SeparatorTemplate">
     <Grid Style="{DynamicResource TemplateGrid}">
-        <BoxView HeightRequest="1" Color="Gray" HorizontalOptions="Fill" VerticalOptions="Center"/>
+        <BoxView HeightRequest="1" Color="{StaticResource ForegroundColor}" HorizontalOptions="Fill" VerticalOptions="Center"/>
     </Grid></ViewCell>

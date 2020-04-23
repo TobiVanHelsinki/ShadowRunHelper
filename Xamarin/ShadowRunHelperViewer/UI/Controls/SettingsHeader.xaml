@@ -12,9 +12,9 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <BoxView HeightRequest="2" VerticalOptions="Center" Color="Gray"/>
+            <BoxView HeightRequest="2" VerticalOptions="Center" Color="{StaticResource ForegroundColor}"/>
             <Label Text="{x:Binding Text}" Grid.Column="1"/>
-            <BoxView HeightRequest="2" Grid.Column="2" VerticalOptions="Center" Color="Gray"/>
+            <BoxView HeightRequest="2" Grid.Column="2" VerticalOptions="Center" Color="{StaticResource ForegroundColor}"/>
         </Grid>
     </ContentView.Content>
 </ContentView>
