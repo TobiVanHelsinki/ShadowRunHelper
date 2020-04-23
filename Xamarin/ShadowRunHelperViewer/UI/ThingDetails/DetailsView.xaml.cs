@@ -151,7 +151,8 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
                 {
                     Content = new Entry
                     {
-                        Keyboard = item.PropertyType == typeof(int) || item.PropertyType == typeof(double) ? Keyboard.Numeric : Keyboard.Text
+                        Keyboard = item.PropertyType == typeof(int) || item.PropertyType == typeof(double) ? Keyboard.Numeric : Keyboard.Text,
+                        Style = Resources.MergedDictionaries.Any() ? Resources.MergedDictionaries.FirstOrDefault()["STDInput"] as Style : null,
                     };
                     Content.SetBinding(Entry.TextProperty, new Binding(item.Name));
                 }
@@ -216,7 +217,8 @@ namespace ShadowRunHelperViewer.UI.ControlsChar
             var v = MyThing.ThingType.HierarchieUpSearch(s => new ModelResourcesExtension() { Text = s + "_" + item.Name }.ProvideString());
             return new Label
             {
-                Text = v ?? "//" + item.Name + "\\"
+                Text = v ?? "//" + item.Name + "\\",
+                Style = Resources.MergedDictionaries.Any() ? Resources.MergedDictionaries.FirstOrDefault()["STDText"] as Style : null,
             };
         }
         #endregion Create UI

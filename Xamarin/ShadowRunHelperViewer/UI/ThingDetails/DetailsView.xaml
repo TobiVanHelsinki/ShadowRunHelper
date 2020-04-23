@@ -17,68 +17,70 @@
             </ResourceDictionary.MergedDictionaries>
             <resources:o_ProbabilityConverter x:Key="o_ProbabilityConverter"/>
             <DataTemplate x:Key="CatMoreTemplate">
-                <StackLayout WidthRequest="250">
-                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="Delete_Clicked">
-                        <sfbtn:SfButton.Content>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="&#xf2ed;" Style="{StaticResource IconLabel}"/>
-                                <Label Text="{resx:UiResources Delete}" Style="{StaticResource LabelForSfButtonSTD}"/>
-                            </Grid>
-                        </sfbtn:SfButton.Content>
-                    </sfbtn:SfButton>
-                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="TextRefactoring_Case">
-                        <sfbtn:SfButton.Content>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="&#xf12c;" Style="{StaticResource IconLabel}"/>
-                                <Label Text="{resx:UiResources TextRefactoring_Case}" Style="{StaticResource LabelForSfButtonSTD}"/>
-                            </Grid>
-                        </sfbtn:SfButton.Content>
-                    </sfbtn:SfButton>
-                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="TextRefactoring_NewLine">
-                        <sfbtn:SfButton.Content>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="&#xf039;" Style="{StaticResource IconLabel}"/>
-                                <Label Text="{resx:UiResources TextRefactoring_NewLine}" Style="{StaticResource LabelForSfButtonSTD}"/>
-                            </Grid>
-                        </sfbtn:SfButton.Content>
-                    </sfbtn:SfButton>
-                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="CopyTo">
-                        <sfbtn:SfButton.Content>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="&#xf48b;" Style="{StaticResource IconLabel}"/>
-                                <Label Text="{resx:UiResources CopyTo}" Style="{StaticResource LabelForSfButtonSTD}"/>
-                            </Grid>
-                        </sfbtn:SfButton.Content>
-                    </sfbtn:SfButton>
-                    <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="MoveTo">
-                        <sfbtn:SfButton.Content>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="&#xf48b;" Style="{StaticResource IconLabel}"/>
-                                <Label Text="{resx:UiResources MoveTo}" Style="{StaticResource LabelForSfButtonSTD}"/>
-                            </Grid>
-                        </sfbtn:SfButton.Content>
-                    </sfbtn:SfButton>
-                </StackLayout>
+                <Frame WidthRequest="250" Style="{StaticResource ItemFrame}">
+                    <StackLayout>
+                        <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="Delete_Clicked">
+                            <sfbtn:SfButton.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="&#xf2ed;" Style="{StaticResource IconLabel}"/>
+                                    <Label Text="{resx:UiResources Delete}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                                </Grid>
+                            </sfbtn:SfButton.Content>
+                        </sfbtn:SfButton>
+                        <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="TextRefactoring_Case">
+                            <sfbtn:SfButton.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="&#xf12c;" Style="{StaticResource IconLabel}"/>
+                                    <Label Text="{resx:UiResources TextRefactoring_Case}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                                </Grid>
+                            </sfbtn:SfButton.Content>
+                        </sfbtn:SfButton>
+                        <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="TextRefactoring_NewLine">
+                            <sfbtn:SfButton.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="&#xf039;" Style="{StaticResource IconLabel}"/>
+                                    <Label Text="{resx:UiResources TextRefactoring_NewLine}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                                </Grid>
+                            </sfbtn:SfButton.Content>
+                        </sfbtn:SfButton>
+                        <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="CopyTo">
+                            <sfbtn:SfButton.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="&#xf48b;" Style="{StaticResource IconLabel}"/>
+                                    <Label Text="{resx:UiResources CopyTo}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                                </Grid>
+                            </sfbtn:SfButton.Content>
+                        </sfbtn:SfButton>
+                        <sfbtn:SfButton Style="{StaticResource SfButtonSTD}" Clicked="MoveTo">
+                            <sfbtn:SfButton.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="&#xf48b;" Style="{StaticResource IconLabel}"/>
+                                    <Label Text="{resx:UiResources MoveTo}" Style="{StaticResource LabelForSfButtonSTD}"/>
+                                </Grid>
+                            </sfbtn:SfButton.Content>
+                        </sfbtn:SfButton>
+                    </StackLayout>
+                </Frame>
             </DataTemplate>
             <DataTemplate x:Key="ConnectPropertyTemplate" x:DataType="charmodel:ConnectProperty">
                 <Grid Margin="3">
@@ -91,14 +93,14 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Entry Text="{x:Binding BaseValue, Converter={StaticResource IO_Calculation}}" VerticalOptions="Center"/>
-                    <Button Text="+" VerticalOptions="Center" Grid.Column="1" Clicked="OpenConnectedChooser"/>
+                    <Entry Text="{x:Binding BaseValue, Converter={StaticResource IO_Calculation}}" VerticalOptions="Center" Style="{StaticResource STDInput}"/>
+                    <Button Text="&#xf067;" VerticalOptions="Center" Grid.Column="1" Clicked="OpenConnectedChooser" Style="{StaticResource IconButton}"/>
                     <ScrollView Grid.Column="2" VerticalOptions="Start">
                         <StackLayout x:Name="CalcPropertyPanel" VerticalOptions="Start"/>
                     </ScrollView>
                     <StackLayout Grid.Column="3" VerticalOptions="Center" Margin="2,0,3,0">
-                        <Label Text="{x:Binding Value}" FontAttributes="Bold"/>
-                        <Label>
+                        <Label Text="{x:Binding Value}" FontAttributes="Bold" Style="{StaticResource STDText}"/>
+                        <Label Style="{StaticResource STDText}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <FormattedString.Spans>
@@ -115,15 +117,15 @@
             <DataTemplate x:Key="ConnectedTemplate" x:DataType="charmodel:ConnectProperty">
                 <StackLayout Spacing="0">
                     <StackLayout Orientation="Horizontal" Spacing="2">
-                        <Label Text="{x:Binding Owner.Bezeichner, FallbackValue=-Owner-}" LineBreakMode="MiddleTruncation" HorizontalOptions="Start"/>
-                        <Label Text="{x:Binding Name, FallbackValue=-Name-}" Grid.Row="1" HorizontalOptions="Start"/>
-                        <Label Text="{x:Binding Value, FallbackValue=-Value-}" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start"/>
+                        <Label Text="{x:Binding Owner.Bezeichner, FallbackValue=-Owner-}" LineBreakMode="MiddleTruncation" HorizontalOptions="Start" Style="{StaticResource STDText}"/>
+                        <Label Text="{x:Binding Name, FallbackValue=-Name-}" Grid.Row="1" HorizontalOptions="Start" Style="{StaticResource STDText}"/>
+                        <Label Text="{x:Binding Value, FallbackValue=-Value-}" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" Style="{StaticResource STDText}"/>
                     </StackLayout>
                     <BoxView HeightRequest="1" Margin="1,0,0,0" Color="DarkSlateGray" HorizontalOptions="Fill" VerticalOptions="Start"/>
                 </StackLayout>
             </DataTemplate>
             <DataTemplate x:Key="EditorTemplate" x:DataType="charmodel:Note">
-                <Editor Text="{x:Binding Text}" Grid.ColumnSpan="2" Grid.Row="1" Keyboard="Text" AutoSize="TextChanges" IsSpellCheckEnabled = "True" IsTextPredictionEnabled="True"/>
+                <Editor Text="{x:Binding Text}" Grid.ColumnSpan="2" Grid.Row="1" Keyboard="Text" AutoSize="TextChanges" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True" Style="{StaticResource STDEditor}"/>
             </DataTemplate>
         </ResourceDictionary>
     </ContentView.Resources>
@@ -143,7 +145,7 @@
                     <Button Text="&#xf141;" Clicked="More_Clicked"
                             Grid.Column="0" HorizontalOptions="Start" Margin="0,5,0,0" Padding="5" Style="{StaticResource IconButton}"/>
                     <Label x:Name="Headline" FontSize="Title" LineBreakMode="MiddleTruncation" MaxLines="1"
-                            Grid.Column="1" HorizontalOptions="CenterAndExpand" Margin="0,5,0,0" Padding="5"/>
+                            Grid.Column="1" HorizontalOptions="CenterAndExpand" Margin="0,5,0,0" Padding="5" Style="{StaticResource STDText}"/>
                     <Button Text="&#xf00d;" Clicked="Close_Clicked"
                             Grid.Column="2" HorizontalOptions="End" Margin="0,5,0,0" Padding="5" Style="{StaticResource IconButton}"/>
                 </Grid>
@@ -161,10 +163,10 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Text="Bezeichner" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
-                            <Entry Text="{x:Binding Bezeichner}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
-                            <Label Text="Typ" Grid.Row="0" Grid.Column="0"/>
-                            <Entry Text="{x:Binding Typ}" Grid.Row="1" Grid.Column="0"/>
+                            <Label Text="Bezeichner" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource STDText}"/>
+                            <Entry Text="{x:Binding Bezeichner}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource STDInput}"/>
+                            <Label Text="Typ" Grid.Row="0" Grid.Column="0" Style="{StaticResource STDText}"/>
+                            <Entry Text="{x:Binding Typ}" Grid.Row="1" Grid.Column="0" Style="{StaticResource STDInput}"/>
                         </Grid>
                         <Grid x:Name="NumberContent">
                             <Grid.RowDefinitions>
@@ -177,8 +179,8 @@
                         <StackLayout x:Name="CalcContent"/>
                         <StackLayout x:Name="OtherContent"/>
                         <StackLayout x:Name="NotesContent">
-                            <Label Text="Notiz"/>
-                            <Editor Text="{x:Binding Notiz}" Keyboard="Text" AutoSize="TextChanges" IsSpellCheckEnabled = "True" IsTextPredictionEnabled="True"/>
+                            <Label Text="Notiz" Style="{StaticResource STDText}"/>
+                            <Editor Text="{x:Binding Notiz}" Keyboard="Text" AutoSize="TextChanges" IsSpellCheckEnabled = "True" IsTextPredictionEnabled="True" Style="{StaticResource STDEditor}"/>
                         </StackLayout>
                     </StackLayout>
                 </ScrollView>
