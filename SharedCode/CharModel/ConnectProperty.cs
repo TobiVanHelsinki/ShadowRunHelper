@@ -48,14 +48,58 @@ namespace ShadowRunHelper.CharModel
             set { if (_BaseValue.CompareTo(value) != 0) { _BaseValue = value; Recalculate(); NotifyPropertyChanged(); } }
         }
 
-        private ObservableCollection<ConnectProperty> _Connected;
-        public ObservableCollection<ConnectProperty> Connected
+        public class DistinctCollection : ObservableCollection<ConnectProperty>
+        {
+            private readonly ConnectProperty Owner;
+
+            public DistinctCollection(ConnectProperty owner)
+            {
+                Owner = owner;
+            }
+
+            private bool HasCircularReference(ConnectProperty added) //TODO Unit test
+            {
+                foreach (var item in added.Connected)
+                {
+                    if (item == Owner || HasCircularReference(item))
+                    {
+                        Log.Write("Thing has caused a circular reference: " + item.Owner + "." + item.DisplayName + ". I will try to remove it asap.", logType: LogType.Error, true);
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            private bool IsForbiddenType(ConnectProperty item)
+            {
+                return false;
+            }
+
+            protected override void InsertItem(int index, ConnectProperty item)
+            {
+                if (!(item is null || Contains(item) || HasCircularReference(item) || IsForbiddenType(item)))
+                {
+                    base.InsertItem(index, item);
+                }
+            }
+
+            protected override void SetItem(int index, ConnectProperty item)
+            {
+                if (!(item is null || Contains(index) || HasCircularReference(item) || IsForbiddenType(item)))
+                {
+                    base.SetItem(index, item);
+                }
+            }
+        }
+
+        private DistinctCollection _Connected;
+        public DistinctCollection Connected
         {
             get
             {
                 if (_Connected == null)
                 {
-                    _Connected = new ObservableCollection<ConnectProperty>();
+                    _Connected = new DistinctCollection(this);
                     _Connected.CollectionChanged += Connected_CollectionChanged;
                 }
                 return _Connected;
@@ -143,19 +187,19 @@ namespace ShadowRunHelper.CharModel
             var tempSum = 0.0;
             foreach (var item in Connected)
             {
-                if (HasCircularReference(item) || IsForbiddenType(item))
-                {
-                    Log.Write("Thing has caused a circular reference: " + item.Owner + "." + item.DisplayName + ". I will try to remove it asap.", logType: LogType.Error, true);
-                    try
-                    {
-                        Connected.Remove(item);
-                    }
-                    catch { }
-                }
-                else
-                {
-                    tempSum += item.Value;
-                }
+                //if (HasCircularReference(item) || IsForbiddenType(item))
+                //{
+                //Log.Write("Thing has caused a circular reference: " + item.Owner + "." + item.DisplayName + ". I will try to remove it asap.", logType: LogType.Error, true);
+                //try
+                //{
+                //    Connected.Remove(item);
+                //}
+                //catch { }
+                //}
+                //else
+                //{
+                tempSum += item.Value;
+                //}
             }
             TrueValue = BaseValue + tempSum;
             //TrueValue = BaseValue + Connected?.Select(x => x.Value).Sum() ?? 0.0;
@@ -209,31 +253,31 @@ namespace ShadowRunHelper.CharModel
             {
                 foreach (var item in e.NewItems.OfType<ConnectProperty>().ToList())
                 {
-                    if (!HasCircularReference(item) && !IsForbiddenType(item))
-                    {
-                        item.PropertyChanged += ConnectedItem_PropertyChanged;
-                    }
+                    //if (!HasCircularReference(item) && !IsForbiddenType(item))
+                    //{
+                    item.PropertyChanged += ConnectedItem_PropertyChanged;
+                    //}
                 }
             }
             Recalculate();
         }
 
-        private bool HasCircularReference(ConnectProperty added) //TODO Unit test
-        {
-            foreach (var item in added.Connected)
-            {
-                if (item == this || HasCircularReference(item))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        //private bool HasCircularReference(ConnectProperty added) //TODO Unit test
+        //{
+        //    foreach (var item in added.Connected)
+        //    {
+        //        if (item == this || HasCircularReference(item))
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
 
-        private bool IsForbiddenType(ConnectProperty item)
-        {
-            return false;
-        }
+        //private bool IsForbiddenType(ConnectProperty item)
+        //{
+        //    return false;
+        //}
 
         private void ConnectedItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
