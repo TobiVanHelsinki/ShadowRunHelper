@@ -152,9 +152,24 @@ namespace ShadowRunHelperViewer.UI.Controls
 
         private void CheckBoxLoaded(object sender, EventArgs e)
         {
-            if (sender is CheckBox v && v.BindingContext is ConnectProperty cp)
+            if (sender is CheckBox v)
             {
-                v.IsChecked = Selected.Contains(cp);
+                if (v.BindingContext is ConnectProperty cp)
+                {
+                    v.IsChecked = Selected.Contains(cp);
+                }
+                else if (v.BindingContext is Thing t)
+                {
+                    v.IsChecked = Selected.Any(x => t.GetConnects().Contains(x));
+                }
+            }
+        }
+
+        private void ExtendetFrameLoaded(object sender, EventArgs e)
+        {
+            if (sender is Frame f && f.BindingContext is Thing t)
+            {
+                f.BorderColor = Selected.Any(x => t.GetConnects().Contains(x)) ? StyleManager.AccentColor : Color.Transparent;
             }
         }
 

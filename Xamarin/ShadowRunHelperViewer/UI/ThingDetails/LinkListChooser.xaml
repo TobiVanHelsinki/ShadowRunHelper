@@ -62,7 +62,7 @@ x:Class="ShadowRunHelperViewer.UI.Controls.LinkListChooser">
                 </Frame>
             </DataTemplate>
             <DataTemplate x:Key="LinkListThingTemplateExtendet" x:DataType="charmodel:Thing">
-                <Frame Style="{StaticResource ItemFrame}">
+                <Frame Style="{StaticResource ItemFrame}" BindingContextChanged="ExtendetFrameLoaded">
                     <Grid Grid.Row="1" Margin="5,0,0,0" VerticalOptions="Center" ColumnSpacing="0">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="ClickToShowPopup_Clicked"/>
