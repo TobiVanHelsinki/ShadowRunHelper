@@ -111,7 +111,7 @@ namespace ShadowRunHelper.CharModel
         [Used_User]
         public string Zusatz
         {
-            get => zusatz;
+            get => zusatz.TrimStart('+', ' ');
             set
             {
                 if (value != zusatz)
