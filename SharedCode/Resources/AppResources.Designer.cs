@@ -818,7 +818,9 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Version 1.9.9
+        ///   Sucht eine lokalisierte Zeichenfolge, die Version 1.9.13
+        ///[new] Styles for Items and Combat
+        ///Version 1.9.9
         ///[problem] Zusatz got deleted at edit and replaced by a 0 (fix)
         ///Version 1.9.8
         ///[fix] Input of . or , was not possible
@@ -830,7 +832,7 @@ namespace SharedCode.Resources {
         ///[new] New Char have more Contents
         ///[new] Category is: Drones
         ///Version 1.9.1
-        ///[new] BackUp Versioning: The options to append time or progress to a saved char led to too many errors and exceptions. Therefore, they have been removed. [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///[new] BackUp Versioning: The options to append time or progress to a saved char led to too many errors [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         public static string VersionHistory {
             get {

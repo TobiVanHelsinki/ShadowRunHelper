@@ -316,7 +316,9 @@ Standardmäßig werden Chars innerhalb der App gespeichert. In den Optionen kann
     <value>Ordner konnte nicht gelesen werden</value>
   </data>
   <data name="VersionHistory" xml:space="preserve">
-    <value>Version 1.9.9
+    <value>Version 1.9.13
+[new] Styles für Items und Kampf
+Version 1.9.9
 [problem] Zusatz wurde geöscht beim bearbeiten und durch eine 0 ersetzt (fix)
 Version 1.9.8
 [fix] Eingabe von . oder , führte zu Fehlern
