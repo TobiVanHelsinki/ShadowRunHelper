@@ -286,10 +286,11 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
+                    <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="2"/>
                 </Grid>
