@@ -22,19 +22,33 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+            <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+            <Label Grid.Column="1" Style="{StaticResource STDText}">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference ModificationsLabel}, Path=Text.Length}" Value="0">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                </Label.Triggers>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="("/>
+                            <Span x:Name="ModificationsLabel" Text="{x:Binding Modifications}"/>
+                            <Span Text=")"/>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-            <Label Text="{x:Binding Schaden}" Grid.Column="3" Style="{StaticResource STDText}"/>
-
-            <StackLayout Style="{StaticResource AdditionalValuePanel}" Grid.ColumnSpan="4" Grid.Row="1">
+            <StackLayout Style="{StaticResource AdditionalValuePanel}" Grid.ColumnSpan="3" Grid.Row="1">
                 <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                 <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
-                <BoxView Color="{StaticResource ForegroundColor}" WidthRequest="1" Margin="0,0,5,0"/>
+                <controls:AdditionalValue Text="{resx:ModelResources Kommlink_Schaden}" ValuePath="Schaden"/>
+                <BoxView Color="{StaticResource ForegroundColor}" WidthRequest="1"/>
                 <StackLayout Margin="0,0,5,0" HorizontalOptions="Center" Spacing="0">
                     <Label Text="{resx:ModelResources Kommlink_Attribute}"  Style="{StaticResource STDText}"/>
                     <StackLayout Orientation="Horizontal" Grid.Column="4" HorizontalOptions="Center" Spacing="0">

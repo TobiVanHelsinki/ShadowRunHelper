@@ -88,6 +88,8 @@ namespace ShadowRunHelperViewer
                         ThingDefs.Initiation => InitiationTemplate,
                         ThingDefs.Wandlung => WandlungTemplate,
                         ThingDefs.Drones => VehikelTemplate,
+                        ThingDefs.Foki => ItemTemplate,
+                        ThingDefs.Widgets => ItemTemplate,
                         _ => ThingTemplate,
                     };
                 }

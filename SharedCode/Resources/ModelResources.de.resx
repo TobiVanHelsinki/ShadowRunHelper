@@ -854,7 +854,7 @@
   <data name="Sprite_Geb_Reg" xml:space="preserve">
     <value>Registriert</value>
   </data>
-  <data name="Waffe_Modifications" xml:space="preserve">
+  <data name="Item_Modifications" xml:space="preserve">
     <value>Modifikationen</value>
   </data>
 </root>

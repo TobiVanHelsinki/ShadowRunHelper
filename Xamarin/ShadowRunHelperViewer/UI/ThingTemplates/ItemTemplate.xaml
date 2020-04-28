@@ -20,13 +20,30 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <ContentView ControlTemplate="{StaticResource ItemsBoxesSlim}" Grid.Column="0"/>
             <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-            <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
-            <Label Text="{x:Binding Anzahl}" Style="{StaticResource STDText}" Grid.Column="3"/>
+            <Label Grid.Column="2" Style="{StaticResource STDText}">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference ModificationsLabel}, Path=Text.Length}" Value="0">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                </Label.Triggers>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="("/>
+                            <Span x:Name="ModificationsLabel" Text="{x:Binding Modifications}"/>
+                            <Span Text=")"/>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="3"/>
+            <Label Text="{x:Binding Anzahl}" Style="{StaticResource STDText}" Grid.Column="4"/>
         </Grid>    </Frame>
 </ViewCell>

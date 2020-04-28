@@ -19,18 +19,15 @@
             </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="0"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ContentView ControlTemplate="{StaticResource ItemsBoxesSlim}" Grid.Column="0"/>
-            <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
+            <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
             <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
             <Label Text="{x:Binding Dienste}" Grid.Column="3" Style="{StaticResource STDText}"/>
             <CheckBox IsChecked="{x:Binding Geb_Reg}" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Start" Color="Accent" Margin="0,0,0,0"/>

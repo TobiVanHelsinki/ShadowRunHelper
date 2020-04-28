@@ -70,36 +70,35 @@ namespace ShadowRunHelperViewer
                     case ViewModes.NotSet:
                         break;
                     case ViewModes.Wide:
-                        Items.IsVisible = true;
-                        Header.IsVisible = true;
+                        MainContent.IsVisible = true;
                         DetailRow.Height = new GridLength(0);
                         DetailColumn.Width = new GridLength(1, GridUnitType.Star);
                         Grid.SetColumn(DetailsPane, 1);
-                        Grid.SetRow(DetailsPane, 1);
-                        Grid.SetColumnSpan(DetailsPane, 1);
-                        Grid.SetRowSpan(DetailsPane, 1);
+                        Grid.SetRow(DetailsPane, 0);
+                        //Grid.SetColumnSpan(DetailsPane, 1);
+                        //Grid.SetRowSpan(DetailsPane, 1);
                         DetailsPane.IsVisible = true;
                         DetailsPane.IsVisible = true;
                         break;
                     case ViewModes.Tall:
-                        Items.IsVisible = true;
-                        Header.IsVisible = true;
+                        MainContent.IsVisible = true;
                         DetailRow.Height = new GridLength(1.5, GridUnitType.Star);
                         DetailColumn.Width = new GridLength(0);
                         Grid.SetColumn(DetailsPane, 0);
-                        Grid.SetRow(DetailsPane, 2);
-                        Grid.SetColumnSpan(DetailsPane, 1);
-                        Grid.SetRowSpan(DetailsPane, 1);
+                        Grid.SetRow(DetailsPane, 1);
+                        //Grid.SetColumnSpan(DetailsPane, 1);
+                        //Grid.SetRowSpan(DetailsPane, 1);
                         DetailsPane.IsVisible = true;
                         DetailsPane.IsVisible = true;
                         break;
                     case ViewModes.Mobile:
-                        Items.IsVisible = false;
-                        Header.IsVisible = false;
+                        MainContent.IsVisible = false;
+                        DetailRow.Height = new GridLength(1, GridUnitType.Star);
+                        DetailColumn.Width = new GridLength(1, GridUnitType.Star);
                         Grid.SetColumn(DetailsPane, 0);
                         Grid.SetRow(DetailsPane, 0);
-                        Grid.SetColumnSpan(DetailsPane, 2);
-                        Grid.SetRowSpan(DetailsPane, 3);
+                        //Grid.SetColumnSpan(DetailsPane, 2);
+                        //Grid.SetRowSpan(DetailsPane, 3);
                         DetailsPane.IsVisible = true;
                         DetailsPane.IsVisible = true;
                         break;
@@ -110,7 +109,7 @@ namespace ShadowRunHelperViewer
             else
             {
                 Items.IsVisible = true;
-                Header.IsVisible = true;
+                MainContent.IsVisible = true;
                 DetailRow.Height = new GridLength(0);
                 DetailColumn.Width = new GridLength(0);
                 Grid.SetColumnSpan(DetailsPane, 1);

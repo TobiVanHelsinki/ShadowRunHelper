@@ -29,7 +29,7 @@
             <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
             <Label Grid.Column="1" Style="{StaticResource STDText}">
                 <Label.Triggers>
-                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference ModificationsLabel}, Path=Text.Length}" Value="{x:Null}">
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference ModificationsLabel}, Path=Text.Length}" Value="0">
                         <Setter Property="IsVisible" Value="False"/>
                     </DataTrigger>
                 </Label.Triggers>

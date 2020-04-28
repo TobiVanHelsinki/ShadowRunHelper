@@ -165,14 +165,26 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
-                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="2"/>
-                    <Label Text="{resx:ModelResources Item_Anzahl}" Style="{StaticResource HeadLineText}" Grid.Column="3"/>
+                    <Label Grid.Column="2" Style="{StaticResource STDText}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="("/>
+                                    <Span Text="{resx:ModelResources Item_Modifications}"/>
+                                    <Span Text=")"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="3"/>
+                    <Label Text="{resx:ModelResources Item_Anzahl}" Style="{StaticResource STDText}" Grid.Column="4"/>
                 </Grid>
             </ControlTemplate>
             <ControlTemplate x:Key="Vehikel_H">
@@ -181,12 +193,21 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0"/>
-                        <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
-                    <Label Text="{resx:ModelResources Thing_Zusatz}" Style="{StaticResource HeadLineText}" Grid.Column="2" HorizontalOptions="End"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="0"/>
+                    <Label Grid.Column="1" Style="{StaticResource STDText}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <!--<Span Text="("/>-->
+                                    <Span Text="{resx:ModelResources Item_Modifications}"/>
+                                    <!--<Span Text=")"/>-->
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                 </Grid>
             </ControlTemplate>
             <ControlTemplate x:Key="Kommlink_H">
@@ -195,14 +216,23 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="0"/>
+                    <Label Grid.Column="1" Style="{StaticResource STDText}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="("/>
+                                    <Span Text="{resx:ModelResources Item_Modifications}"/>
+                                    <Span Text=")"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                     <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="2"/>
-                    <Label Text="{resx:ModelResources _Damage}" Style="{StaticResource HeadLineText}" Grid.Column="3"/>
                 </Grid>
             </ControlTemplate>
             <ControlTemplate x:Key="CyberDeck_H">
@@ -241,13 +271,12 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                             <FormattedString>
                                 <FormattedString.Spans>
                                     <Span Text="("/>
-                                    <Span Text="{resx:ModelResources Waffe_Modifications}"/>
+                                    <Span Text="{resx:ModelResources Item_Modifications}"/>
                                     <Span Text=")"/>
                                 </FormattedString.Spans>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <!--<Label Text="{resx:ModelResources Waffe_Modifications}" Style="{StaticResource HeadLineText}" Grid.Column="1" HorizontalOptions="End" Margin="0,0,10,0"/>-->
                     <ContentView ControlTemplate="{StaticResource Waffe_Value_H}" Grid.Column="2"/>
                 </Grid>
             </ControlTemplate>
@@ -271,14 +300,13 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="0"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <ContentView ControlTemplate="{StaticResource ItemsBoxes_H}" Grid.Column="0"/>
-                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="1"/>
+                    <ContentView ControlTemplate="{StaticResource Thing_Name_H}" Grid.Column="0"/>
                     <ContentView ControlTemplate="{StaticResource Thing_Value_H}" Grid.Column="2"/>
                     <Label Text="{resx:ModelResources Helper_Dienste}" Style="{StaticResource HeadLineText}" Grid.Column="3"/>
                     <Label Text="{resx:ModelResources Helper_Geb_Reg}" Style="{StaticResource HeadLineText}" Grid.Column="4"/>
@@ -336,46 +364,55 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Grid ColumnSpacing="0" RowSpacing="0">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" x:Name="HeaderRow"/>
-                <RowDefinition Height="*" x:Name="ItemsRow"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="0" x:Name="DetailRow"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" x:Name="ItemsColumn"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="0" x:Name="DetailColumn"/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name="Header" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0">
+            <Grid x:Name="MainContent" ColumnSpacing="0" RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0"/>
                 </Grid.RowDefinitions>
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="HeaderSwitch"/>
-                    <ClickGestureRecognizer Clicked="HeaderSwitch"/>
-                    <SwipeGestureRecognizer Direction="Down" Swiped="HeaderHide"/>
-                    <SwipeGestureRecognizer Direction="Up" Swiped="HeaderShow"/>
-                </Grid.GestureRecognizers>
-                <Grid ColumnSpacing="0" RowSpacing="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0"/>
+                </Grid.ColumnDefinitions>
+                <Grid  Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="CatAddButton" Grid.Column="0" Text="&#xf067;" Clicked="Add" Style="{StaticResource ControllerIconButton}"/>
-                    <Label x:Name="HeaderExpandIcon1" Grid.Column="0" Text="&#xf13a;" Style="{StaticResource IconLabel}"/>
-                    <Label x:Name="Headline" Grid.Column="1" Style="{StaticResource SubTitle}"/>
-                    <Button x:Name="CatMoreButton" Grid.Column="2" Text="&#xf141;" Clicked="MoreMenu" Style="{StaticResource ControllerIconButton}"/>
-                    <Label x:Name="HeaderExpandIcon2" Grid.Column="2" Text="&#xf13a;" Style="{StaticResource IconLabel}"/>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="HeaderSwitch"/>
+                        <ClickGestureRecognizer Clicked="HeaderSwitch"/>
+                        <SwipeGestureRecognizer Direction="Down" Swiped="HeaderHide"/>
+                        <SwipeGestureRecognizer Direction="Up" Swiped="HeaderShow"/>
+                    </Grid.GestureRecognizers>
+                    <Grid ColumnSpacing="0" RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="CatAddButton" Grid.Column="0" Text="&#xf067;" Clicked="Add" Style="{StaticResource ControllerIconButton}"/>
+                        <Label x:Name="HeaderExpandIcon1" Grid.Column="0" Text="&#xf13a;" Style="{StaticResource IconLabel}"/>
+                        <Label x:Name="Headline" Grid.Column="1" Style="{StaticResource SubTitle}"/>
+                        <Button x:Name="CatMoreButton" Grid.Column="2" Text="&#xf141;" Clicked="MoreMenu" Style="{StaticResource ControllerIconButton}"/>
+                        <Label x:Name="HeaderExpandIcon2" Grid.Column="2" Text="&#xf13a;" Style="{StaticResource IconLabel}"/>
+                    </Grid>
+                    <ContentView Grid.Row="1" x:Name="Items_H"/>
                 </Grid>
-                <ContentView Grid.Row="1" x:Name="Items_H"/>
-            </Grid>
-            <listview:SfListView x:Name="Items" Grid.Row="1"
+                <listview:SfListView x:Name="Items" Grid.Row="1"
                        ItemsSource="{Binding Data, Mode=OneWay}"
                                  SelectionMode="SingleDeselect"
                                  SelectionChanged="Items_SelectionChanged"
@@ -385,24 +422,25 @@ xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfL
                                  AllowSwiping="True"
                                  DragStartMode="OnHold"
                                  SwipeEnded="Items_SwipeEnded">
-                <listview:SfListView.RightSwipeTemplate>
-                    <DataTemplate x:DataType="CharModel:Thing">
-                        <Grid>
-                            <Grid BackgroundColor="Orange" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Column="0">
-                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label Text="&#xf7a9;" Style="{DynamicResource IconLabel}" IsVisible="{Binding IsFavorite}"/>
-                                    <Label Text="&#xf004;" Style="{DynamicResource IconLabel}" IsVisible="{Binding IsFavorite, Converter={StaticResource IO_BoolInvert}}"/>
-                                    <Label Text="{resx:UiResources FavUn}" Style="{DynamicResource LabelForSfButtonSTDCenter}" IsVisible="{Binding IsFavorite}"/>
-                                    <Label Text="{resx:UiResources Fav}" Style="{DynamicResource LabelForSfButtonSTDCenter}" IsVisible="{Binding IsFavorite, Converter={StaticResource IO_BoolInvert}}"/>
-                                </StackLayout>
+                    <listview:SfListView.RightSwipeTemplate>
+                        <DataTemplate x:DataType="CharModel:Thing">
+                            <Grid>
+                                <Grid BackgroundColor="Orange" HorizontalOptions="Fill" VerticalOptions="Fill" Grid.Column="0">
+                                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                        <Label Text="&#xf7a9;" Style="{DynamicResource IconLabel}" IsVisible="{Binding IsFavorite}"/>
+                                        <Label Text="&#xf004;" Style="{DynamicResource IconLabel}" IsVisible="{Binding IsFavorite, Converter={StaticResource IO_BoolInvert}}"/>
+                                        <Label Text="{resx:UiResources FavUn}" Style="{DynamicResource LabelForSfButtonSTDCenter}" IsVisible="{Binding IsFavorite}"/>
+                                        <Label Text="{resx:UiResources Fav}" Style="{DynamicResource LabelForSfButtonSTDCenter}" IsVisible="{Binding IsFavorite, Converter={StaticResource IO_BoolInvert}}"/>
+                                    </StackLayout>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </DataTemplate>
-                </listview:SfListView.RightSwipeTemplate>
-            </listview:SfListView>
-            <controlschar:DetailsView x:Name="DetailsPane" ClosingRequested="DetailsPane_ClosingRequested"/>
-            <controlsother:EmptyListView Grid.Row="1" ItemsSource="{Binding Data, Mode=OneWay}" Clicked="Add"
+                        </DataTemplate>
+                    </listview:SfListView.RightSwipeTemplate>
+                </listview:SfListView>
+                <controlsother:EmptyListView Grid.Row="1" ItemsSource="{Binding Data, Mode=OneWay}" Clicked="Add"
                                          WidthRequest="300"/>
+            </Grid>
+            <controlschar:DetailsView x:Name="DetailsPane" ClosingRequested="DetailsPane_ClosingRequested"/>
         </Grid>
     </ContentView.Content>
 </ContentView>

@@ -22,13 +22,12 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="1"/>
-            <Label Text="{x:Binding Zusatz}" Style="{StaticResource STDTextCenter}" Grid.Column="2"/>
-            <StackLayout Style="{StaticResource AdditionalValuePanel}" Grid.ColumnSpan="3" Grid.Row="1">
+            <ContentView ControlTemplate="{StaticResource Thing_Name}" Grid.Column="0"/>
+            <Label Text="{x:Binding Modifications}" Style="{StaticResource STDTextCenter}" Grid.Column="1"/>
+            <StackLayout Style="{StaticResource AdditionalValuePanel}" Grid.ColumnSpan="2" Grid.Row="1">
                 <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>
                 <controls:AdditionalValue Text="{resx:ModelResources Item_Anzahl}" ValuePath="Anzahl"/>
                 <controls:AdditionalValue Text="{resx:ModelResources Vehikel_Sitze}" ValuePath="Sitze"/>

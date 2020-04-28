@@ -86,6 +86,21 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
+        string _Modifications;
+        [Used_User]
+        public string Modifications
+        {
+            get { return _Modifications ?? ""; }
+            set
+            {
+                if (_Modifications != value)
+                {
+                    _Modifications = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public Item() => RefreshCharProperties();
 
         private void RefreshCharProperties()

@@ -1,6 +1,8 @@
-﻿namespace ShadowRunHelper.CharModel
+﻿//Author: Tobi van Helsinki
+
+namespace ShadowRunHelper.CharModel
 {
-    public class Helper : Item
+    public class Helper : Thing
     {
         string _Dienste = "";
         [Used_UserAttribute]
@@ -16,6 +18,7 @@
                 }
             }
         }
+
         bool? Registriert = false;
         [Used_UserAttribute]
         public bool? Geb_Reg

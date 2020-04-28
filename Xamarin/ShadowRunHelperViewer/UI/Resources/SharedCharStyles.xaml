@@ -88,7 +88,7 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Text="{resx:ModelResources Item_State}" HorizontalOptions="Center" Style="{StaticResource HeadLineText}"/>
+            <Label Text="{resx:ModelResources Item_State}" HorizontalOptions="Center" Style="{StaticResource HeadLineText}" HorizontalTextAlignment="Center"/>
         </Grid>
     </ControlTemplate>
     <ControlTemplate x:Key="ItemsBoxesSlim" x:DataType="CharModel:Item">

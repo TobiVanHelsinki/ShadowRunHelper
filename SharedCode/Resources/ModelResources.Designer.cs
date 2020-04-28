@@ -1024,6 +1024,15 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Modifications ähnelt.
+        /// </summary>
+        public static string Item_Modifications {
+            get {
+                return ResourceManager.GetString("Item_Modifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die State ähnelt.
         /// </summary>
         public static string Item_State {
@@ -2037,15 +2046,6 @@ namespace SharedCode.Resources {
         public static string Waffe_DK {
             get {
                 return ResourceManager.GetString("Waffe_DK", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Modifications ähnelt.
-        /// </summary>
-        public static string Waffe_Modifications {
-            get {
-                return ResourceManager.GetString("Waffe_Modifications", resourceCulture);
             }
         }
         
