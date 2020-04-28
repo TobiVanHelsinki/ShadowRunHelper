@@ -50,7 +50,7 @@ namespace ShadowRunHelper.CharModel
             }
         }
 
-        string _Modifications;
+        string _Modifications = "";
         [Used_User]
         public string Modifications
         {

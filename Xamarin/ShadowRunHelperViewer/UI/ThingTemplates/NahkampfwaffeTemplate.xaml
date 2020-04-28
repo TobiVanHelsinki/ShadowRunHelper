@@ -28,7 +28,22 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <ContentView ControlTemplate="{StaticResource Thing_Name}"/>
-            <Label Text="{x:Binding Modifications}" Grid.Column="1" Style="{StaticResource STDText}" HorizontalOptions="End" Margin="0,0,10,0"/>
+            <Label Grid.Column="1" Style="{StaticResource STDText}">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference ModificationsLabel}, Path=Text.Length}" Value="{x:Null}">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                </Label.Triggers>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="("/>
+                            <Span x:Name="ModificationsLabel" Text="{x:Binding Modifications}"/>
+                            <Span Text=")"/>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
             <ContentView ControlTemplate="{StaticResource Waffe_Value}" Grid.Column="2"/>
             <StackLayout Style="{StaticResource AdditionalValuePanel}" Grid.ColumnSpan="3" Grid.Row="1">
                 <ContentView ControlTemplate="{StaticResource ItemsBoxes}" Grid.Column="0"/>

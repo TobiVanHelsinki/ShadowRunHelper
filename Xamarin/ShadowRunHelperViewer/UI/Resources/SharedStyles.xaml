@@ -32,7 +32,7 @@
 
     <Style x:Key="TemplateGrid" TargetType="Grid">
         <Setter Property="ColumnSpacing" Value="{StaticResource SpacingS}"/>
-        <Setter Property="RowSpacing" Value="0"/>
+        <Setter Property="RowSpacing" Value="{StaticResource SpacingS}"/>
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="{StaticResource Spacing}"/>

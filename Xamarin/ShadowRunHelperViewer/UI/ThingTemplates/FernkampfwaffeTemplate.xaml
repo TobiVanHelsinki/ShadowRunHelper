@@ -30,9 +30,7 @@
             <ContentView ControlTemplate="{StaticResource Thing_Name}"/>
             <Label Grid.Column="1" Style="{StaticResource STDText}">
                 <Label.Triggers>
-                    <DataTrigger TargetType="Label"
-                                    Binding="{Binding Modifications.Length}"
-                                    Value="0">
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference ModificationsLabel}, Path=Text.Length}" Value="{x:Null}">
                         <Setter Property="IsVisible" Value="False"/>
                     </DataTrigger>
                 </Label.Triggers>
@@ -40,7 +38,7 @@
                     <FormattedString>
                         <FormattedString.Spans>
                             <Span Text="("/>
-                            <Span Text="{x:Binding Modifications}"/>
+                            <Span x:Name="ModificationsLabel" Text="{x:Binding Modifications}"/>
                             <Span Text=")"/>
                         </FormattedString.Spans>
                     </FormattedString>
