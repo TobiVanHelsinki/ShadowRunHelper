@@ -361,7 +361,7 @@
     <comment>Einzahl</comment>
   </data>
   <data name="Waffe_SchadenTyp" xml:space="preserve">
-    <value>Schadenstyp (G/K)</value>
+    <value>Schadenstyp</value>
   </data>
   <data name="Kommlink_Attribute_o" xml:space="preserve">
     <value>Attribute Orginal</value>
@@ -853,5 +853,8 @@
   </data>
   <data name="Sprite_Geb_Reg" xml:space="preserve">
     <value>Registriert</value>
+  </data>
+  <data name="Waffe_Modifications" xml:space="preserve">
+    <value>Modifikationen</value>
   </data>
 </root>

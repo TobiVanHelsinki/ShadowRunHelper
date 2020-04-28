@@ -23,7 +23,7 @@
     </OnPlatform>
 
     <Style x:Key="TemplateStack" TargetType="StackLayout">
-        <Setter Property="Spacing" Value="0"/>
+        <Setter Property="Spacing" Value="{StaticResource SpacingS}"/>
         <Setter Property="Orientation" Value="Horizontal"/>
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="Margin" Value="0"/>
@@ -31,7 +31,7 @@
     </Style>
 
     <Style x:Key="TemplateGrid" TargetType="Grid">
-        <Setter Property="ColumnSpacing" Value="0"/>
+        <Setter Property="ColumnSpacing" Value="{StaticResource SpacingS}"/>
         <Setter Property="RowSpacing" Value="0"/>
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="Margin" Value="0"/>

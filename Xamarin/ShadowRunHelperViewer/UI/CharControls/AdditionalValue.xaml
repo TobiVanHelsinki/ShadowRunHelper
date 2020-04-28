@@ -14,12 +14,11 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
-            <BoxView Color="{StaticResource ForegroundColor}" WidthRequest="1" Margin="0,0,5,0"/>
-            <StackLayout Margin="0,0,5,0">
-                <Label x:Name="NameDisplay" Style="{StaticResource STDText}"/>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start" Spacing="{StaticResource Spacing}">
+            <BoxView Color="{StaticResource ForegroundColor}" WidthRequest="1"/>
+            <StackLayout Spacing="0">
+                <Label x:Name="NameDisplay" Style="{StaticResource STDText}" MaxLines="1" LineBreakMode="NoWrap"/>
                 <Label x:Name="ValueDisplay" Style="{StaticResource STDText}"/>
-                <!--<Button IsEnabled="False" Text="&#xf044;" Style="{StaticResource IconButton}" HorizontalOptions="Fill" VerticalOptions="Center" Clicked="Thing_Edit" />-->
             </StackLayout>
         </StackLayout>
     </ContentView.Content>

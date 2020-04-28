@@ -535,7 +535,7 @@
     <value>Seats</value>
   </data>
   <data name="Waffe_SchadenTyp" xml:space="preserve">
-    <value>Damage type (M/P)</value>
+    <value>Damage type</value>
   </data>
   <data name="Waffe_Precision" xml:space="preserve">
     <value>Precision</value>
@@ -821,5 +821,8 @@
   </data>
   <data name="Sprite_Geb_Reg" xml:space="preserve">
     <value>Registered</value>
+  </data>
+  <data name="Waffe_Modifications" xml:space="preserve">
+    <value>Modifications</value>
   </data>
 </root>

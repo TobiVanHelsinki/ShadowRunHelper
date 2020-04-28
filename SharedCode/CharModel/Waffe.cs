@@ -1,6 +1,5 @@
 ﻿//Author: Tobi van Helsinki
 
-
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -48,6 +47,21 @@ namespace ShadowRunHelper.CharModel
             {
                 RefreshInnerPropertyChangedListener(ref _Precision, value, this);
                 NotifyPropertyChanged();
+            }
+        }
+
+        string _Modifications;
+        [Used_User]
+        public string Modifications
+        {
+            get { return _Modifications; }
+            set
+            {
+                if (_Modifications != value)
+                {
+                    _Modifications = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
 

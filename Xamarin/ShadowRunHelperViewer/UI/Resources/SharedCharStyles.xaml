@@ -19,6 +19,7 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
     </Style>
     <Style x:Key="AdditionalValuePanel" TargetType="StackLayout">
         <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="{StaticResource Spacing}"/>
     </Style>
     <Style x:Key="HeadlinePanel" TargetType="StackLayout">
         <Setter Property="Orientation" Value="Horizontal"/>
@@ -50,6 +51,7 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
             <Label Text="{resx:ModelResources Thing_Value}" Style="{StaticResource HeadLineText}"/>
         </StackLayout>
     </ControlTemplate>
+
     <ControlTemplate x:Key="Thing_Value" x:DataType="CharModel:Thing">
         <StackLayout BindingContext="{TemplateBinding BindingContext}" Style="{StaticResource HeadlinePanel}">
             <Label Text="{x:Binding Value.TrueValue}" Style="{StaticResource HeadLineText}"/>
@@ -134,5 +136,24 @@ xmlns:sfsegmentedcontrol="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncf
                 </sfsegmentedcontrol:SfSwitch.WidthRequest>
             </sfsegmentedcontrol:SfSwitch>
         </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Waffe_Value_H">
+        <StackLayout Style="{StaticResource HeadlinePanel}">
+            <Label Text="{resx:ModelResources Waffe_Value}" Style="{StaticResource HeadLineText}"/>
+            <Label Text="[" Style="{StaticResource HeadLineText}" Margin="1,0,0,0"/>
+            <Label Text="{resx:ModelResources Waffe_Precision}" Style="{StaticResource HeadLineText}"/>
+            <Label Text="]" Style="{StaticResource HeadLineText}" Margin="0,0,1,0"/>
+        </StackLayout>
+    </ControlTemplate>
+    <ControlTemplate x:Key="Waffe_Value">
+        <StackLayout Orientation="Horizontal" Grid.Column="2" Spacing="0" BindingContext="{TemplateBinding BindingContext}">
+            <ContentView ControlTemplate="{StaticResource Thing_Value}" Grid.Column="2"/>
+            <Label Text="{x:Binding SchadenTyp}" Style="{StaticResource STDText}" Grid.Column="3"/>
+            <Label Text="[" Style="{StaticResource STDText}" Margin="1,0,0,0"/>
+            <Label Text="{x:Binding Precision.TrueValue}" Style="{StaticResource STDText}"/>
+            <Label Text="]" Style="{StaticResource STDText}" Margin="0,0,1,0"/>
+            <Label Text="{resx:ModelResources Waffe_DK}" Style="{StaticResource HeadLineText}"/>
+            <Label Text="{x:Binding DK.TrueValue}" Grid.Column="4" Style="{StaticResource STDText}"/>
+        </StackLayout>
     </ControlTemplate>
 </ResourceDictionary>

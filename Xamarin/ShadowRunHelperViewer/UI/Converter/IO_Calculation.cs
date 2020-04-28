@@ -22,7 +22,14 @@ namespace ShadowRunHelperViewer.UI.Resources
         {
             if (value is string strOrigin)
             {
-                return NumberHelper.CalcToDouble(strOrigin, true);
+                try
+                {
+                    return NumberHelper.CalcToDouble(strOrigin, true);
+                }
+                catch (Exception)
+                {
+                    return 0.0;
+                }
             }
             return default;
         }

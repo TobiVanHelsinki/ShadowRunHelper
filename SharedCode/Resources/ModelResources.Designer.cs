@@ -2041,6 +2041,15 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Modifications ähnelt.
+        /// </summary>
+        public static string Waffe_Modifications {
+            get {
+                return ResourceManager.GetString("Waffe_Modifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Precision ähnelt.
         /// </summary>
         public static string Waffe_Precision {
@@ -2050,7 +2059,7 @@ namespace SharedCode.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Damage type (M/P) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Damage type ähnelt.
         /// </summary>
         public static string Waffe_SchadenTyp {
             get {
