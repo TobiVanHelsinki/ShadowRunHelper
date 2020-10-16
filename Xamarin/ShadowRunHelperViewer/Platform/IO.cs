@@ -3,7 +3,6 @@
 using ShadowRunHelper.IO;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -143,11 +142,9 @@ namespace ShadowRunHelperViewer.Platform.Xamarin
                     //    }),
                     PickerTitle = "Select a file to open"
                 });
-                var newName = fileResult.FileName.Contains('\n') ? fileResult.FileName.Split('\n').Where(x => !string.IsNullOrEmpty(x)).LastOrDefault() : fileResult.FileName;
-                var key = new FileInfo(new FileInfo(fileResult.FullPath).ChangeName(newName).FullName).FullName; //because FileInfo changes the string multiple times.
-                key = AddToCache(key, await fileResult.OpenReadAsync());
-                Debug.WriteLine(key);
-                return new FileInfo(key);
+                var picked = new FileInfo(fileResult.FileName); //because FileInfo changes the string multiple times.
+                _ = AddToCache(picked.FullName, await fileResult.OpenReadAsync());
+                return picked;
             }
             catch (Exception ex)
             {

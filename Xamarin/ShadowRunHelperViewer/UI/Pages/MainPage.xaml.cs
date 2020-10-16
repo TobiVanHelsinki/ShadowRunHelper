@@ -144,22 +144,25 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         #region Notifications
 
-        private async void Log_DisplayMessageRequested(LogMessage logmessage)
+        private void Log_DisplayMessageRequested(LogMessage logmessage)
         {
-            if (logmessage.LogType == LogType.Error)
+            ShadowRunHelper.Helper.PlatformHelper.Platform.ExecuteOnUIThreadAsync(async () =>
             {
-                DisplayAlert(logmessage.LogType.ToString(), logmessage.Message, "OK");
-            }
-            else
-            {
-                NotificationPanel.IsVisible = true;
-                NotificationPanel.Opacity = 225;
-                //NotificationHeaderText.Text = logmessage.LogType.ToString();
-                //NotificationText.Text = logmessage.Message; //casuss thread error
-                await Task.Delay(1000);
-                await NotificationPanel.FadeTo(0, 2000, Easing.Linear);
-                NotificationPanel.IsVisible = false;
-            }
+                if (logmessage.LogType == LogType.Error)
+                {
+                    _ = DisplayAlert(logmessage.LogType.ToString(), logmessage.Message, "OK");
+                }
+                else
+                {
+                    NotificationPanel.IsVisible = true;
+                    NotificationPanel.Opacity = 225;
+                    NotificationHeaderText.Text = logmessage.LogType.ToString();
+                    NotificationText.Text = logmessage.Message; //casuss thread error
+                    await Task.Delay(1000);
+                    _ = await NotificationPanel.FadeTo(0, 2000, Easing.Linear);
+                    NotificationPanel.IsVisible = false;
+                }
+            });
         }
 
         private void NotificationTap(object sender, EventArgs e) => AppModel.Instance.RequestNavigation(ProjectPages.Info, ProjectPagesOptions.SettingsLog);
