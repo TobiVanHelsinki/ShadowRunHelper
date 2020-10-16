@@ -16,7 +16,6 @@
     <PackageReference Include="Humanizer.Core" Version="2.8.26" />
     <PackageReference Include="Humanizer.Core.de" Version="2.8.26" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="PCLStorage" Version="1.0.2" />
     <PackageReference Include="Plugin.Toast" Version="2.2.0" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.6" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.40" />

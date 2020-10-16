@@ -75,16 +75,18 @@ namespace ShadowRunHelperViewer.Platform.Xamarin
 
         public async Task<string> GetCompleteInternPath(Place place)
         {
+            //var a = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            //var b = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+            //var c = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string ret;
             switch (place)
             {
                 case Place.Roaming:
-                    ret = PCLStorage.FileSystem.Current.RoamingStorage?.Path ?? PCLStorage.FileSystem.Current.LocalStorage.Path;
-                    break;
                 case Place.Local:
-                    ret = PCLStorage.FileSystem.Current.LocalStorage.Path;
+                    ret = FileSystem.AppDataDirectory;
                     break;
                 case Place.Assets:
+                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
                     ret = FileSystem.AppDataDirectory; //TODO Test. Eventuell muss noch ein "assets" dran
                     //TODO aber vielleicht kann man assets auch durch app dir ersetzen, wäre sinnvoller
                     break;
