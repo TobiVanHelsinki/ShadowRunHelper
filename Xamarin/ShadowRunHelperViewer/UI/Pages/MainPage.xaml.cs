@@ -154,8 +154,8 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 NotificationPanel.IsVisible = true;
                 NotificationPanel.Opacity = 225;
-                NotificationHeaderText.Text = logmessage.LogType.ToString();
-                NotificationText.Text = logmessage.Message;
+                //NotificationHeaderText.Text = logmessage.LogType.ToString();
+                //NotificationText.Text = logmessage.Message; //casuss thread error
                 await Task.Delay(1000);
                 await NotificationPanel.FadeTo(0, 2000, Easing.Linear);
                 NotificationPanel.IsVisible = false;

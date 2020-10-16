@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Author: Tobi van Helsinki
+
+using System;
 using System.IO;
 using TLIB;
 

@@ -3,6 +3,7 @@
 using ShadowRunHelper.IO;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +14,14 @@ namespace ShadowRunHelperViewer.Platform.Xamarin
 {
     public class IO : StandardIO, IPlatformIO
     {
+        /// <summary>
+        /// LoadFileContent
+        /// </summary>
+        /// <param name="Info"></param>
+        /// <returns></returns>
+        /// <exception cref="AccessViolationException"></exception>
+        /// <exception cref="OutOfMemoryException"></exception>
+        /// <exception cref="IOException"></exception>
         public override async Task<string> LoadFileContent(FileInfo Info)
         {
             if (Cache.TryGetValue(Info.FullName, out var retval)) // use cached version
@@ -93,15 +102,23 @@ namespace ShadowRunHelperViewer.Platform.Xamarin
         {
             throw new NotImplementedException();
         }
-        static Dictionary<string, Stream> Cache = new Dictionary<string, Stream>();
+        static readonly Dictionary<string, Stream> Cache = new Dictionary<string, Stream>();
 
-        private static void AddToCache(string key, Stream data)
+        private static string AddToCache(string key, Stream data)
         {
-            if (Cache.Count > 10)
+            if (Cache.ContainsKey(key))
             {
-                Cache.Remove(Cache.Keys.First());
+                Cache[key] = data;
             }
-            Cache.Add(key, data);
+            else
+            {
+                if (Cache.Count > 10)
+                {
+                    Cache.Remove(Cache.Keys.First());
+                }
+                Cache.Add(key, data);
+            }
+            return Cache.Last().Key;
         }
 
         /// <summary>
@@ -113,37 +130,29 @@ namespace ShadowRunHelperViewer.Platform.Xamarin
         /// <exception cref="IsOKException"></exception>
         public async Task<FileInfo> PickFile(IEnumerable<string> lststrFileEndings, string Token = null)
         {
-            throw new NotImplementedException();
-            //try
-            //{
-            //    var result = await FilePicker.PickAsync(new PickOptions()
-            //    {
-            //        FileTypes = new FilePickerFileType(
-            //            new Dictionary<DevicePlatform, IEnumerable<string>>
-            //            {
-            //                { DevicePlatform.Android, lststrFileEndings.Select(x=> "text/"+x)},
-            //                { DevicePlatform.iOS, lststrFileEndings.Select(x=> "public"+x)},
-            //                { DevicePlatform.UWP, lststrFileEndings },
-            //            }),
-            //        PickerTitle = "Select a file to open"
-            //    });
-            //    return await result.OpenReadAsync();
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw new IsOKException("Error picking File", ex);
-            //}
-            //var fileData = await CrossFilePicker.Current.PickFile(); //TODO lädt pfad in flaschem format
-            //if (fileData != null)
-            //{
-            //    var file = new FileInfo(Path.Combine(fileData.FilePath, fileData.FileName));
-            //    AddToCache(file.FullName, fileData.GetStream());
-            //    return file;
-            //}
-            //else
-            //{
-            //    throw new IsOKException();
-            //}
+            try
+            {
+                var fileResult = await FilePicker.PickAsync(new PickOptions()
+                {
+                    //FileTypes = new FilePickerFileType(
+                    //    new Dictionary<DevicePlatform, IEnumerable<string>>
+                    //    {
+                    //        { DevicePlatform.Android, lststrFileEndings.Select(x=> "document/"+x/*.TrimStart('')*/)},
+                    //        { DevicePlatform.iOS, lststrFileEndings.Select(x=> "public"+x.TrimStart('.'))},
+                    //        { DevicePlatform.UWP, lststrFileEndings },
+                    //    }),
+                    PickerTitle = "Select a file to open"
+                });
+                var newName = fileResult.FileName.Contains('\n') ? fileResult.FileName.Split('\n').Where(x => !string.IsNullOrEmpty(x)).LastOrDefault() : fileResult.FileName;
+                var key = new FileInfo(new FileInfo(fileResult.FullPath).ChangeName(newName).FullName).FullName; //because FileInfo changes the string multiple times.
+                key = AddToCache(key, await fileResult.OpenReadAsync());
+                Debug.WriteLine(key);
+                return new FileInfo(key);
+            }
+            catch (Exception ex)
+            {
+                throw new IsOKException("Error picking File", ex);
+            }
         }
 
         public Task<DirectoryInfo> PickFolder(string Token = null)

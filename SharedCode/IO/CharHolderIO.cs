@@ -283,12 +283,12 @@ namespace ShadowRunHelper.IO
                         item.Gegen = 0;
 #pragma warning restore CS0618 // Typ oder Element ist veraltet
                     }
-                    Log.Write(AppResources.Info_UpgradedChar, true);
+                    Log.Write(AppResources.Info_UpgradedChar, true);//causes thread error 
                     break;
                 case Constants.CHARFILE_VERSION_1_6:
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     ReturnCharHolder.Person.Notizen = PlainTextToRtf(ReturnCharHolder.Person.Notizen);
-                    Log.Write(AppResources.Info_UpgradedChar, true);
+                    Log.Write(AppResources.Info_UpgradedChar, true); //causes thread error 
                     break;
                 case Constants.CHARFILE_VERSION_1_7:
                     fileContent = RefactorJSONString(fileContent, new List<(string old, string @new)> {
@@ -296,7 +296,7 @@ namespace ShadowRunHelper.IO
                     settings.Converters.Add(new Version1_7To1_8ConnectedThingsConverter());
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
                     OldNoteToNewNotes(ReturnCharHolder);
-                    Log.Write(AppResources.Info_UpgradedChar, true);
+                    Log.Write(AppResources.Info_UpgradedChar, true); //causes thread error 
                     break;
                 case Constants.CHARFILE_VERSION_1_8:
                     settings.Converters.Add(new RemoveUnusedProps());
