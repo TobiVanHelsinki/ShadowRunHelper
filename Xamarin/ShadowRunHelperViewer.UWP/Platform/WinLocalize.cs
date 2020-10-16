@@ -1,9 +1,12 @@
-﻿using ShadowRunHelperViewer;
-using ShadowRunHelperViewer.Platform;
+﻿//Author: Tobi van Helsinki
+
+using ShadowRunHelperViewer.Platform.UWP;
+using ShadowRunHelperViewer.Platform.Xamarin;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(WinLocalize))]
-namespace ShadowRunHelperViewer
+
+namespace ShadowRunHelperViewer.Platform.UWP
 {
     public class WinLocalize : ILocalize
     {

@@ -1,10 +1,13 @@
-﻿using ShadowRunHelperViewer.Platform;
-using ShadowRunHelperViewer.UWP.Platform;
+﻿//Author: Tobi van Helsinki
+
+using ShadowRunHelperViewer.Platform.UWP;
+using ShadowRunHelperViewer.Platform.Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
 
 [assembly: Dependency(typeof(WinFormsInteractions))]
-namespace ShadowRunHelperViewer.UWP.Platform
+
+namespace ShadowRunHelperViewer.Platform.UWP
 {
     public class WinFormsInteractions : IFormsInteractions
     {

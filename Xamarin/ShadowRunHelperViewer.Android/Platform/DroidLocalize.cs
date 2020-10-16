@@ -1,12 +1,14 @@
-﻿using ShadowRunHelperViewer.Platform;
+﻿//Author: Tobi van Helsinki
+
+using ShadowRunHelperViewer.Platform.Xamarin;
 using System.Globalization;
 using System.Threading;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(ShadowRunHelperViewer.Android.Platform.Localize))]
-namespace ShadowRunHelperViewer.Android.Platform
-{
+[assembly: Dependency(typeof(ShadowRunHelperViewer.Platform.Android.Localize))]
 
+namespace ShadowRunHelperViewer.Platform.Android
+{
     public class Localize : ILocalize
     {
         public void SetLocale(CultureInfo ci)
@@ -14,10 +16,11 @@ namespace ShadowRunHelperViewer.Android.Platform
             Thread.CurrentThread.CurrentCulture = ci;
             Thread.CurrentThread.CurrentUICulture = ci;
         }
+
         public CultureInfo GetCurrentCultureInfo()
         {
-            var androidLocale = Java.Util.Locale.Default;
-            var netLanguage = AndroidToDotnetLanguage(androidLocale.ToString().Replace("_", "-"));
+            Java.Util.Locale androidLocale = Java.Util.Locale.Default;
+            string netLanguage = AndroidToDotnetLanguage(androidLocale.ToString().Replace("_", "-"));
             // this gets called a lot - try/catch can be expensive so consider caching or something
             CultureInfo ci;
             try
@@ -26,11 +29,11 @@ namespace ShadowRunHelperViewer.Android.Platform
             }
             catch (CultureNotFoundException)
             {
-                // iOS locale not valid .NET culture (eg. "en-ES" : English in Spain)
-                // fallback to first characters, in this case "en"
+                // iOS locale not valid .NET culture (eg. "en-ES" : English in Spain) fallback to
+                // first characters, in this case "en"
                 try
                 {
-                    var fallback = ToDotnetFallbackLanguage(new PlatformCulture(netLanguage));
+                    string fallback = ToDotnetFallbackLanguage(new PlatformCulture(netLanguage));
                     ci = new CultureInfo(fallback);
                 }
                 catch (CultureNotFoundException)
@@ -41,9 +44,10 @@ namespace ShadowRunHelperViewer.Android.Platform
             }
             return ci;
         }
-        string AndroidToDotnetLanguage(string androidLanguage)
+
+        private string AndroidToDotnetLanguage(string androidLanguage)
         {
-            var netLanguage = androidLanguage;
+            string netLanguage = androidLanguage;
             //certain languages need to be converted to CultureInfo equivalent
             switch (androidLanguage)
             {
@@ -58,21 +62,22 @@ namespace ShadowRunHelperViewer.Android.Platform
                 case "gsw-CH":  // "Schwiizertüütsch (Swiss German)" not supported .NET culture
                     netLanguage = "de-CH"; // closest supported
                     break;
-                    // add more application-specific cases here (if required)
-                    // ONLY use cultures that have been tested and known to work
+                    // add more application-specific cases here (if required) ONLY use cultures that
+                    // have been tested and known to work
             }
             return netLanguage;
         }
-        string ToDotnetFallbackLanguage(PlatformCulture platCulture)
+
+        private string ToDotnetFallbackLanguage(PlatformCulture platCulture)
         {
-            var netLanguage = platCulture.LanguageCode; // use the first part of the identifier (two chars, usually);
+            string netLanguage = platCulture.LanguageCode; // use the first part of the identifier (two chars, usually);
             switch (platCulture.LanguageCode)
             {
                 case "gsw":
                     netLanguage = "de-CH"; // equivalent to German (Switzerland) for this app
                     break;
-                    // add more application-specific cases here (if required)
-                    // ONLY use cultures that have been tested and known to work
+                    // add more application-specific cases here (if required) ONLY use cultures that
+                    // have been tested and known to work
             }
             return netLanguage;
         }

@@ -1,5 +1,12 @@
 ﻿//Author: Tobi van Helsinki
 
+using ShadowRunHelper;
+using ShadowRunHelper.IO;
+using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.Platform.Xamarin;
+using ShadowRunHelperViewer.UI.Resources;
+using SharedCode.Resources;
+using Syncfusion.XForms.PopupLayout;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,14 +15,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using ShadowRunHelper;
-using ShadowRunHelper.IO;
-using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.Platform;
-using ShadowRunHelperViewer.UI.Resources;
-using SharedCode.Resources;
-using Syncfusion.XForms.PopupLayout;
-using TAPPLICATION.IO;
 using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -93,7 +92,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             WarningFrame.IsVisible = !SettingsModel.I.FOLDERMODE;
             try
             {
-                var savepathfiles = (await SharedIO.CurrentIO.GetFiles(SharedIO.CurrentSaveDir, Constants.LST_FILETYPES_CHAR)).ToList();
+                List<ExtendetFileInfo> savepathfiles = (await SharedIO.CurrentIO.GetFiles(SharedIO.CurrentSaveDir, Constants.LST_FILETYPES_CHAR)).ToList();
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     CharList.Clear();
@@ -127,7 +126,7 @@ namespace ShadowRunHelperViewer.UI.Pages
 
         private async void OpenFile(object sender, EventArgs e)
         {
-            var charfile = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
+            FileInfo charfile = await SharedIO.CurrentIO.PickFile(Constants.LST_FILETYPES_CHAR, "NextChar");
             switch (Device.RuntimePlatform)
             {
                 case Device.Android:
@@ -158,7 +157,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             MainPage.Instance.EnableBusy();
             try
             {
-                var newchar = await CharHolderIO.Load(charfile);
+                CharHolder newchar = await CharHolderIO.Load(charfile);
                 AppModel.Instance.MainObject = (newchar);
                 AppModel.Instance.RequestNavigation(ProjectPages.Char);
                 afterLoad?.Invoke(newchar);
@@ -173,7 +172,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         private static void LoadFileInBackgroundSynchron(ExtendetFileInfo charfile, Action<CharHolder> afterLoad = null)
         {
             MainPage.Instance.EnableBusy();
-            var b = new BackgroundWorker();
+            BackgroundWorker b = new BackgroundWorker();
             b.DoWork += async (object sender, DoWorkEventArgs e) =>
             {
                 if (e.Argument is ExtendetFileInfo charfile)
@@ -241,7 +240,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 try
                 {
-                    var newName = Path.Combine(Path.GetDirectoryName(file.FullName),
+                    string newName = Path.Combine(Path.GetDirectoryName(file.FullName),
                     Path.GetFileNameWithoutExtension(file.FullName) + "-" + AppResources.CopiedFileName +
                     Path.GetExtension(file.FullName));
                     SharedIO.CurrentIO.CopyTo(file, new FileInfo(newName));
@@ -279,7 +278,7 @@ namespace ShadowRunHelperViewer.UI.Pages
             {
                 try
                 {
-                    var saveDir = await SharedIO.CurrentIO.PickFolder("ExportChar");
+                    DirectoryInfo saveDir = await SharedIO.CurrentIO.PickFolder("ExportChar");
                     await SharedIO.CurrentIO.CopyTo(file, new FileInfo(Path.Combine(saveDir.FullName, Path.GetFileName(file.FullName))));
                 }
                 catch (PathTooLongException ex)
@@ -301,7 +300,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             try
             {
-                var newchar = CharHolderGenerator.CreateCharWithStandardContent();
+                CharHolder newchar = CharHolderGenerator.CreateCharWithStandardContent();
                 SettingsModel.I.COUNT_CREATIONS++;
                 AppModel.Instance.MainObject = (newchar);
                 AppModel.Instance.RequestNavigation(ProjectPages.Char, ProjectPagesOptions.CharNewChar);
@@ -316,7 +315,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             try
             {
-                var newchar = CharHolderGenerator.TestAllCats(10);
+                CharHolder newchar = CharHolderGenerator.TestAllCats(10);
                 SettingsModel.I.COUNT_CREATIONS++;
                 AppModel.Instance.MainObject = (newchar);
                 AppModel.Instance.RequestNavigation(ProjectPages.Char);
@@ -372,7 +371,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         {
             if (sender is View layout)
             {
-                var attributes = layout.FindByName<StackLayout>("attributes");
+                StackLayout attributes = layout.FindByName<StackLayout>("attributes");
                 if (layout.Width < 500)
                 {
                     //layout.Orientation = StackOrientation.Vertical;

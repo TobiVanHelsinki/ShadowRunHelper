@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//Author: Tobi van Helsinki
+
 using Xamarin.Forms;
 
-namespace ShadowRunHelperViewer.Platform
+namespace ShadowRunHelperViewer.Platform.Xamarin
 {
     public interface IFormsInteractions
     {

@@ -91,6 +91,7 @@ namespace ShadowRunHelperViewer.UI.Pages
         protected override void OnAppearing()
         {
             AppHolder.CheckVersion();
+            AppHolder.CharLoadingHandling().Wait();
             base.OnAppearing();
         }
 

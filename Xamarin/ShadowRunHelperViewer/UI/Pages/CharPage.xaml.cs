@@ -1,17 +1,17 @@
 ﻿//Author: Tobi van Helsinki
 
 using ShadowRunHelper;
+using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.UI;
-using ShadowRunHelperViewer.UI.ControlsChar;
-using ShadowRunHelperViewer.UI.Pages;
-using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Resources;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using TAPPLICATION.IO;
+using ShadowRunHelperViewer.UI;
+using ShadowRunHelperViewer.UI.ControlsChar;
+using ShadowRunHelperViewer.UI.Pages;
+using ShadowRunHelperViewer.UI.Resources;
 using TLIB;
 using Xamarin.Forms;
 
@@ -50,7 +50,7 @@ namespace ShadowRunHelperViewer
         {
             if (Content is Grid G)
             {
-                var gChar = new GCharHolder(myChar) { Margin = 0, Padding = 0, BackgroundColor = Color.Transparent };
+                GCharHolder gChar = new GCharHolder(myChar) { Margin = 0, Padding = 0, BackgroundColor = Color.Transparent };
                 G.Children.Add(gChar);
                 gChar.AfterLoad(pageOptions);
                 return new[] {

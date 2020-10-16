@@ -1,4 +1,6 @@
-﻿using ShadowRunHelperViewer.Platform;
+﻿//Author: Tobi van Helsinki
+
+using ShadowRunHelperViewer.Platform.Xamarin;
 using System;
 using System.Globalization;
 using System.Resources;
@@ -9,15 +11,16 @@ using Xamarin.Forms.Xaml;
 namespace ShadowRunHelperViewer.Strings
 {
     /// <summary>
-    /// This Class acts for an base class for any type of dot net resources.
-    /// it provides an Markupextension for usage in xamarin forms projects
+    /// This Class acts for an base class for any type of dot net resources. it provides an
+    /// Markupextension for usage in xamarin forms projects
     /// </summary>
     // You exclude the 'Extension' suffix when using in XAML
     [ContentProperty("Text")]
     public abstract class ResourcesExtension : IMarkupExtension
     {
-        readonly CultureInfo ci = null;
-        readonly ResourceManager ResMgr;
+        private readonly CultureInfo ci = null;
+        private readonly ResourceManager ResMgr;
+
         public ResourcesExtension(ResourceManager resMgr)
         {
             ResMgr = resMgr;
@@ -40,7 +43,7 @@ namespace ShadowRunHelperViewer.Strings
         {
             try
             {
-                var translation = ResMgr.GetString(Text, ci);
+                string translation = ResMgr.GetString(Text, ci);
 
                 if (translation != null)
                 {
@@ -67,15 +70,19 @@ namespace ShadowRunHelperViewer.Strings
         }
 
         /// <summary>
-        /// allways retuns a string that may be present in the resource file or consits of the Text value and the current language
+        /// allways retuns a string that may be present in the resource file or consits of the Text
+        /// value and the current language
         /// </summary>
         /// <param name="serviceProvider">can be null</param>
         /// <returns></returns>
         public virtual object ProvideValue(IServiceProvider serviceProvider)
         {
-            if (Text == null) return string.Empty;
+            if (Text == null)
+            {
+                return string.Empty;
+            }
+
             return ProvideString() ?? Text + "." + ci?.Name;
         }
-
     }
 }

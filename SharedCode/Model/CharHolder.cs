@@ -1,5 +1,9 @@
 ﻿//Author: Tobi van Helsinki
 
+using ShadowRunHelper.CharController;
+using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Helper;
+using SharedCode.Resources;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,11 +13,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using ShadowRunHelper.CharController;
-using ShadowRunHelper.CharModel;
-using SharedCode.Resources;
-using TAPPLICATION;
-using TAPPLICATION.Model;
 using TLIB;
 
 namespace ShadowRunHelper.Model
@@ -114,7 +113,7 @@ namespace ShadowRunHelper.Model
 
         public string MakeName(bool UseProgress)
         {
-            var strSaveName = "";
+            string strSaveName = "";
 
             string AddNameAndType(string Name)
             {
@@ -194,9 +193,9 @@ namespace ShadowRunHelper.Model
         {
             RefreshLists();
             //repair implicit created items
-            foreach (var thing in Things)
+            foreach (Thing thing in Things)
             {
-                foreach (var prop in thing.GetPropertiesConnects())
+                foreach (System.Reflection.PropertyInfo prop in thing.GetPropertiesConnects())
                 {
                     if (prop.GetValue(thing) is ConnectProperty calc)
                     {
@@ -225,12 +224,12 @@ namespace ShadowRunHelper.Model
                 }
             }
             //repair lost connections
-            foreach (var origconnect in Connects)
+            foreach (ConnectProperty origconnect in Connects)
             {
-                var repairedConnects = new List<ConnectProperty>();
-                foreach (var reconnect in origconnect.Connected)
+                List<ConnectProperty> repairedConnects = new List<ConnectProperty>();
+                foreach (ConnectProperty reconnect in origconnect.Connected)
                 {
-                    var newconnect = Connects.FirstOrDefault(
+                    ConnectProperty newconnect = Connects.FirstOrDefault(
                         x => x.Owner == reconnect.Owner &&
                         x.Name == reconnect.Name);
                     if (newconnect is null)
@@ -271,7 +270,7 @@ namespace ShadowRunHelper.Model
                     }
                 }
                 //Add new Connects to the connect list
-                foreach (var item in repairedConnects)
+                foreach (ConnectProperty item in repairedConnects)
                 {
                     if (!origconnect.Connected.Contains(item))
                     {
@@ -279,7 +278,7 @@ namespace ShadowRunHelper.Model
                     }
                 }
                 //Remove the wrong items, for wich we found the correct ones
-                foreach (var item in origconnect.Connected.Except(repairedConnects).ToList())
+                foreach (ConnectProperty item in origconnect.Connected.Except(repairedConnects).ToList())
                 {
                     origconnect.Connected.Remove(item);
                 }
@@ -308,7 +307,7 @@ namespace ShadowRunHelper.Model
         /// <exception cref="InvalidOperationException">Ignore.</exception>
         public Thing Add(ThingDefs thingDefs)
         {
-            var returnThing = Controlers.First(c => c.eDataTyp == thingDefs).AddNewThing();
+            Thing returnThing = Controlers.First(c => c.eDataTyp == thingDefs).AddNewThing();
             RegisterNewThing(returnThing);
             return returnThing;
         }
@@ -361,10 +360,10 @@ namespace ShadowRunHelper.Model
             Person.PropertyChanged -= RefreshFileName;
             Person.PropertyChanged += RefreshFileName;
             Settings.PropertyChanged += AnyPropertyChanged;
-            foreach (var item in Controlers)
+            foreach (IController item in Controlers)
             {
                 item.RegisterEventAtData(AnyPropertyChanged);
-                foreach (var item2 in item.GetAllData())
+                foreach (Thing item2 in item.GetAllData())
                 {
                     item2.PropertyChanged -= AnyPropertyChanged;
                     item2.PropertyChanged += AnyPropertyChanged;
@@ -402,7 +401,7 @@ namespace ShadowRunHelper.Model
                 Favorites.Clear();
                 Favorites.AddRange(Things.Where(x => x?.IsFavorite == true).OrderBy(x => x.FavoriteIndex));
                 CTRLFavorite.ClearData();
-                foreach (var item in Favorites)
+                foreach (Thing item in Favorites)
                 {
                     CTRLFavorite.AddNewThing(item);
                 }
@@ -412,7 +411,7 @@ namespace ShadowRunHelper.Model
 
         private void SaveFavoritesOrdering(object sender, NotifyCollectionChangedEventArgs e)
         {
-            for (var i = 0; i < Favorites.Count; i++)
+            for (int i = 0; i < Favorites.Count; i++)
             {
                 Favorites[i].FavoriteIndex = i;
             }
@@ -515,10 +514,10 @@ namespace ShadowRunHelper.Model
         /// <exception cref="InvalidOperationException">Ignore.</exception>
         public void CopyPreparedItems(ThingDefs NEW_CTRL)
         {
-            foreach (var OLD_THING in MoveList)
+            foreach (Thing OLD_THING in MoveList)
             {
-                var OLD_CTRL = Controlers.First(x => x.eDataTyp == OLD_THING.ThingType);
-                var NEW_THING = Add(NEW_CTRL);
+                IController OLD_CTRL = Controlers.First(x => x.eDataTyp == OLD_THING.ThingType);
+                Thing NEW_THING = Add(NEW_CTRL);
                 OLD_THING.TryCloneInto(NEW_THING);
             }
             MoveList.Clear();
@@ -533,10 +532,10 @@ namespace ShadowRunHelper.Model
         /// <exception cref="InvalidOperationException">Ignore.</exception>
         public void MovePreparedItems(ThingDefs NEW_CTRL)
         {
-            foreach (var OLD_THING in MoveList)
+            foreach (Thing OLD_THING in MoveList)
             {
-                var OLD_CTRL = Controlers.First(x => x.eDataTyp == OLD_THING.ThingType);
-                var NEW_THING = Add(NEW_CTRL);
+                IController OLD_CTRL = Controlers.First(x => x.eDataTyp == OLD_THING.ThingType);
+                Thing NEW_THING = Add(NEW_CTRL);
                 OLD_THING.TryCloneInto(NEW_THING);
                 OLD_CTRL.RemoveThing(OLD_THING);
             }

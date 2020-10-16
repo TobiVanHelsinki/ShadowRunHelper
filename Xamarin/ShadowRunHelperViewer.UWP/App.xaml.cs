@@ -1,16 +1,14 @@
 ﻿//Author: Tobi van Helsinki
 
-using System;
-using System.Collections.Generic;
-using System.Reflection;
 using ShadowRunHelper;
-using ShadowRunHelper.Model;
 using Syncfusion.ListView.XForms.UWP;
 using Syncfusion.SfBusyIndicator.XForms.UWP;
 using Syncfusion.SfNavigationDrawer.XForms.UWP;
 using Syncfusion.XForms.UWP.Border;
 using Syncfusion.XForms.UWP.Buttons;
 using Syncfusion.XForms.UWP.PopupLayout;
+using System.Collections.Generic;
+using System.Reflection;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Core;
@@ -22,12 +20,12 @@ namespace ShadowRunHelperViewer.UWP
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : Application
+    public sealed partial class App : Application
     {
         /// <summary>
         /// Additional assemblies to include
         /// </summary>
-        readonly List<Assembly> assembliesToInclude = new List<Assembly>();
+        private readonly List<Assembly> assembliesToInclude = new List<Assembly>();
 
         /// <summary>
         /// Initializes the singleton application object. This is the first line of authored code
@@ -55,17 +53,17 @@ namespace ShadowRunHelperViewer.UWP
             assembliesToInclude.Add(typeof(Rg.Plugins.Popup.Popup).GetTypeInfo().Assembly);
             SfListViewRenderer.Init();
             SfPopupLayoutRenderer.Init();
-            TAPPLICATION.IO.SharedIO.CurrentIO = new TAPPLICATION_UWP.IO();
-            TAPPLICATION.Model.SharedSettingsModel.PlatformSettings = new TAPPLICATION_UWP.Settings();
-            TAPPLICATION.PlatformHelper.Platform = new TAPPLICATION_Xamarin.PlatformHelper();
+
+            ShadowRunHelperViewer.Platform.Xamarin.Init.Do();
+            ShadowRunHelperViewer.Platform.UWP.Init.Do();
+
             Rg.Plugins.Popup.Popup.Init();
-            Init.Do();
             #endregion Init Libs
         }
 
         private void MainPage_BackRequested(object sender, BackRequestedEventArgs e)
         {
-            UI.Pages.MainPage.Instance.SendBackButtonPressed();
+            ShadowRunHelperViewer.UI.Pages.MainPage.Instance.SendBackButtonPressed();
         }
 
         #region Entry-Points
@@ -141,7 +139,7 @@ namespace ShadowRunHelperViewer.UWP
             else
             {
                 // Seite ist aktiv, wir versuchen, den Char anzuzeigen
-                AppModel.Instance?.RequestNavigation(SettingsModel.I.LAST_PAGE);
+                ShadowRunHelper.Model.AppModel.Instance?.RequestNavigation(SettingsModel.I.LAST_PAGE);
             }
         }
 
@@ -152,7 +150,7 @@ namespace ShadowRunHelperViewer.UWP
         /// <param name="e"></param>
         private void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)
         {
-            var def = e.GetDeferral();
+            Windows.Foundation.Deferral def = e.GetDeferral();
             AppHolder.EnteredBackground();
             def.Complete();
         }

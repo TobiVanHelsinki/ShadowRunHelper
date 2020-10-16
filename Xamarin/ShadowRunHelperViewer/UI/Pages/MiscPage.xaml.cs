@@ -1,20 +1,19 @@
 ﻿//Author: Tobi van Helsinki
 
 using ShadowRunHelper;
-using ShadowRunHelperViewer.Platform;
+using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.Platform.Xamarin;
 using ShadowRunHelperViewer.UI.Resources;
+using SharedCode.Resources;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using TAPPLICATION;
-using ShadowRunHelper.Model;
-using System.Collections.Generic;
 using System.Windows.Input;
 using TLIB;
-using System.Collections.ObjectModel;
-using SharedCode.Resources;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace ShadowRunHelperViewer.UI.Pages
 {

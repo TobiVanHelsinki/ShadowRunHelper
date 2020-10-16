@@ -14,7 +14,7 @@ using Xamarin.Forms;
 
 namespace ShadowRunHelperViewer.Droid
 {
-    [Activity(Label = "ShadowRunHelperViewer", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "DevShadowRunHelper", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -28,10 +28,10 @@ namespace ShadowRunHelperViewer.Droid
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            TAPPLICATION_Xamarin.Init.Do();
+            ShadowRunHelperViewer.Platform.Xamarin.Init.Do();
+            ShadowRunHelperViewer.Platform.Android.Init.Do();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState); // add this line to your code, it may also be called: bundle
-            Init.Do();
             #endregion Init Libs
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

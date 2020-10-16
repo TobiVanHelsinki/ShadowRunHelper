@@ -3,9 +3,9 @@
 using System;
 using System.IO;
 using SharedCode.Resources;
-using TAPPLICATION;
-using TAPPLICATION.IO;
-using TAPPLICATION.Model;
+using ShadowRunHelper;
+using ShadowRunHelper.IO;
+using ShadowRunHelper.Model;
 using TLIB;
 
 namespace ShadowRunHelper

@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
 using SharedCode.Resources;
-using TAPPLICATION.IO;
+using ShadowRunHelper.IO;
 using TLIB;
 
 namespace ShadowRunHelper.IO

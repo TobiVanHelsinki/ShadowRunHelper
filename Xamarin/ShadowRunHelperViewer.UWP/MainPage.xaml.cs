@@ -1,4 +1,6 @@
-﻿namespace ShadowRunHelperViewer.UWP
+﻿//Author: Tobi van Helsinki
+
+namespace ShadowRunHelperViewer.UWP
 {
     public sealed partial class MainPage
     {

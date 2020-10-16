@@ -5,7 +5,7 @@ using SharedCode.Resources;
 using System;
 using System.IO;
 using System.Linq;
-using TAPPLICATION.IO;
+using ShadowRunHelper.IO;
 
 namespace ShadowRunHelper.Model
 {
@@ -56,7 +56,7 @@ namespace ShadowRunHelper.Model
             ret.AfterLoad();
             try
             {
-                ret.FileInfo = new FileInfo(TAPPLICATION.IO.SharedIO.CurrentSavePath + ret.MakeName(false));
+                ret.FileInfo = new FileInfo(ShadowRunHelper.IO.SharedIO.CurrentSavePath + ret.MakeName(false));
             }
             catch (Exception)
             {

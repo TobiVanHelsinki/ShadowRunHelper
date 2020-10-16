@@ -1,6 +1,8 @@
-﻿using System;
+﻿//Author: Tobi van Helsinki
 
-namespace ShadowRunHelperViewer.Platform
+using System;
+
+namespace ShadowRunHelperViewer.Platform.Xamarin
 {
     public class PlatformCulture
     {
@@ -27,10 +29,10 @@ namespace ShadowRunHelperViewer.Platform
         public string PlatformString { get; private set; }
         public string LanguageCode { get; private set; }
         public string LocaleCode { get; private set; }
+
         public override string ToString()
         {
             return PlatformString;
         }
     }
 }
-

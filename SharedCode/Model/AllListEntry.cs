@@ -1,20 +1,19 @@
-﻿using ShadowRunHelper.CharModel;
+﻿//Author: Tobi van Helsinki
+
+using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Helper;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TAPPLICATION;
 
 namespace ShadowRunHelper.Model
 {
     public class AllListEntry : INotifyPropertyChanged
     {
-        string _DisplayName = "";
+        private string _DisplayName = "";
         [Newtonsoft.Json.JsonIgnore]
         public string DisplayName
         {
-            get
-            {
-                return _DisplayName;
-            }
+            get => _DisplayName;
             set
             {
                 if (value != _DisplayName && value != "" && value != null)
@@ -24,13 +23,11 @@ namespace ShadowRunHelper.Model
                 }
             }
         }
-        Thing _Object /*= new Thing()*/;
+
+        private Thing _Object /*= new Thing()*/;
         public Thing Object
         {
-            get
-            {
-                return _Object;
-            }
+            get => _Object;
             set
             {
                 if (_Object != value && value != null)
@@ -40,17 +37,14 @@ namespace ShadowRunHelper.Model
                 }
                 else
                 {
-
                 }
             }
         }
-        string _PropertyID = "";
+
+        private string _PropertyID = "";
         public string PropertyID
         {
-            get
-            {
-                return _PropertyID;
-            }
+            get => _PropertyID;
             set
             {
                 if (value != _PropertyID && value != null)
@@ -67,12 +61,14 @@ namespace ShadowRunHelper.Model
             PropertyID = newPropID;
             DisplayName = newDisplayName;
         }
+
         public AllListEntry()
         {
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }

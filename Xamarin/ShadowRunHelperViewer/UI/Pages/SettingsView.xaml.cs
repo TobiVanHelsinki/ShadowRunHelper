@@ -1,16 +1,16 @@
 ﻿//Author: Tobi van Helsinki
 
+using ShadowRunHelper;
+using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.Platform.Xamarin;
+using ShadowRunHelperViewer.UI.Pages;
+using SharedCode.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using ShadowRunHelper;
-using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.Platform;
-using ShadowRunHelperViewer.UI.Pages;
-using SharedCode.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

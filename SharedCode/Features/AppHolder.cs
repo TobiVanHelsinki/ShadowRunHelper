@@ -1,16 +1,13 @@
 ﻿//Author: Tobi van Helsinki
 
+using ShadowRunHelper.IO;
+using ShadowRunHelper.Model;
+using SharedCode.Resources;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Resources;
 using System.Threading.Tasks;
-using ShadowRunHelper.IO;
-using ShadowRunHelper.Model;
-using SharedCode.Resources;
-using TAPPLICATION;
-using TAPPLICATION.IO;
-using TAPPLICATION.Model;
 using TLIB;
 
 [assembly: NeutralResourcesLanguageAttribute("en")]
@@ -59,7 +56,6 @@ namespace ShadowRunHelper
                     Task.Run(CreateFolder),
                     Task.Run(RegisterAppInstance)
                     );
-                Task.Run(CharLoadingHandling).Wait();
             }
             catch (ObjectDisposedException)
             {
@@ -165,21 +161,22 @@ namespace ShadowRunHelper
             }
         }
 
-        private static async Task CharLoadingHandling()
+        public static async Task CharLoadingHandling() //todo was private
         {
             try
             {
                 if ((Settings.CHARINTEMPSTORE && !FirstStart || Settings.LOAD_CHAR_ON_START && FirstStart) && Model.MainObject == null || Settings.FORCE_LOAD_CHAR_ON_START)
                 {
-                    var info = Settings.LAST_SAVE_INFO;
+                    FileInfo info = Settings.LAST_SAVE_INFO;
                     Model.CharInProgress = info;
-                    var TMPChar = await CharHolderIO.Load(info);
+                    CharHolder TMPChar = await CharHolderIO.Load(info);
 
                     if (TMPChar.FileInfo.Directory.FullName.Contains(await SharedIO.CurrentIO.GetCompleteInternPath(Place.Temp)))
                     {
                         CharHolderIO.SaveAtCurrentPlace(TMPChar);
                     }
-                    var OldChar = Model.MainObject;
+
+                    CharHolder OldChar = Model.MainObject;
                     Model.MainObject = TMPChar;
                     Settings.COUNT_LOADINGS++;
                     if (OldChar != null)
@@ -250,7 +247,7 @@ namespace ShadowRunHelper
                 Info.ChangeName("EmergencySave" + Info.Name);
                 SharedIO.SaveAtOriginPlace(Main).Wait();
             }
-            var param = new Dictionary<string, string>
+            Dictionary<string, string> param = new Dictionary<string, string>
             {
                 { "Message", Message },
                 { "EXMessage", ex.Message },

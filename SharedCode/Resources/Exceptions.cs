@@ -45,11 +45,11 @@ namespace ShadowRunHelper
         { }
     }
 
-    public class Enum : Exception
+    public class EnumException : Exception
     {
         internal static string msg = AppResources.Error_Enum;
 
-        public Enum(Exception ex = null) : base(msg, ex)
+        public EnumException(Exception ex = null) : base(msg, ex)
         { }
     }
 }

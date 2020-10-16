@@ -1,12 +1,11 @@
 ﻿//Author: Tobi van Helsinki
 
-
 using ShadowRunHelper;
-using ShadowRunHelperViewer.UI.Pages;
+using ShadowRunHelper.IO;
+using ShadowRunHelper.Model;
 using System;
 using System.Threading.Tasks;
-using TAPPLICATION.IO;
-using TAPPLICATION.Model;
+using ShadowRunHelperViewer.UI.Pages;
 using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

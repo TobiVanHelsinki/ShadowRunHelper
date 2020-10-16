@@ -13,7 +13,7 @@ namespace ShadowRunHelperViewer.UI.Resources
         {
             if (!double.TryParse(value.ToString(), out var dValue))
             {
-                return TAPPLICATION.SharedConstants.ERROR_TOKEN;
+                return ShadowRunHelper.SharedConstants.ERROR_TOKEN;
             }
             return dValue.ToString();
         }

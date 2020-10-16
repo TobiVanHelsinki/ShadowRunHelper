@@ -1,13 +1,13 @@
 ﻿//Author: Tobi van Helsinki
 
 using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Helper;
 using SharedCode.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using TAPPLICATION;
 using TLIB;
 
 namespace ShadowRunHelper
@@ -101,66 +101,61 @@ namespace ShadowRunHelper
         {
             PlatformHelper.CallPropertyChanged(PropertyChanged, this, propertyName);
         }
-        Type _Type;
+
+        private Type _Type;
         public Type Type
         {
-            get { return _Type; }
+            get => _Type;
             set { _Type = value; NotifyPropertyChanged(); }
         }
 
-        ThingDefs _ThingType = ThingDefs.UndefTemp;
+        private ThingDefs _ThingType = ThingDefs.UndefTemp;
         public ThingDefs ThingType
         {
-            get { return _ThingType; }
+            get => _ThingType;
             set { _ThingType = value; NotifyPropertyChanged(); }
         }
 
-        bool _vis = true;
+        private bool _vis = true;
         public bool Visibility
         {
-            get { return _vis; }
+            get => _vis;
             set { _vis = value; NotifyPropertyChanged(); }
         }
 
-        int _pivot;
+        private int _pivot;
         public int Pivot
         {
-            get { return _pivot; }
+            get => _pivot;
             set { _pivot = value; NotifyPropertyChanged(); }
         }
 
-        string _DisplayName = "";
+        private string _DisplayName = "";
         public string DisplayName
         {
-            get { return _DisplayName; }
+            get => _DisplayName;
             set { _DisplayName = value; NotifyPropertyChanged(); NotifyPropertyChanged("DisplayNameSingular"); NotifyPropertyChanged("DisplayNamePlural"); }
         }
 
-        public string DisplayNameSingular
-        {
-            get { return _DisplayName + "_"; }
-        }
+        public string DisplayNameSingular => _DisplayName + "_";
 
         public string DisplayNameSingularResolved => ModelResources.ResourceManager.GetStringSafe(DisplayNameSingular);
 
-        public string DisplayNamePlural
-        {
-            get { return _DisplayName + "M_"; }
-        }
+        public string DisplayNamePlural => _DisplayName + "M_";
 
         public string DisplayNamePluralResolved => ModelResources.ResourceManager.GetStringSafe(DisplayNamePlural);
 
-        bool _Usable = true;
+        private bool _Usable = true;
         public bool Usable
         {
-            get { return _Usable; }
+            get => _Usable;
             set { _Usable = value; NotifyPropertyChanged(); }
         }
 
-        int _Order;
+        private int _Order;
         public int Order
         {
-            get { return _Order; }
+            get => _Order;
             set { _Order = value; NotifyPropertyChanged(); }
         }
 
@@ -258,7 +253,7 @@ namespace ShadowRunHelper
 
         public static ThingDefs TypeToThingDef(this Type type)
         {
-            var t = ThingTypeProperties.FirstOrDefault(x => x.Type == type);
+            ThingTypeProperty t = ThingTypeProperties.FirstOrDefault(x => x.Type == type);
             return t == null ? ThingDefs.Undef : t.ThingType;
         }
 
@@ -274,7 +269,7 @@ namespace ShadowRunHelper
 
         public static ThingDefs Obj2ThingDef(this object tag)
         {
-            return (ThingDefs)Int16.Parse(tag.ToString());
+            return (ThingDefs)short.Parse(tag.ToString());
         }
 
         /// <summary>
@@ -287,7 +282,7 @@ namespace ShadowRunHelper
         /// <returns></returns>
         public static T HierarchieUpSearch<T>(this ThingDefs key, Func<string, T> method)
         {
-            var ancestor = key.ThingDefToType();
+            Type ancestor = key.ThingDefToType();
             if (ancestor is null)
             {
                 return default;

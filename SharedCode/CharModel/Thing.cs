@@ -1,6 +1,7 @@
 ﻿//Author: Tobi van Helsinki
 
 using Newtonsoft.Json;
+using ShadowRunHelper.Helper;
 using ShadowRunHelper.Model;
 using SharedCode.Resources;
 using System;
@@ -9,7 +10,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using TAPPLICATION;
 using TLIB;
 
 namespace ShadowRunHelper.CharModel
@@ -64,10 +64,7 @@ namespace ShadowRunHelper.CharModel
         [JsonIgnore]
         public bool IsSeperator
         {
-            get
-            {
-                return string.IsNullOrEmpty(Bezeichner) && Value?.Value == 1337;
-            }
+            get => string.IsNullOrEmpty(Bezeichner) && Value?.Value == 1337;
             set
             {
                 Bezeichner = "";
@@ -223,29 +220,35 @@ namespace ShadowRunHelper.CharModel
         public Thing()
         {
             ThingType = TypeHelper.TypeToThingDef(GetType());
-            foreach (var item in GetPropertiesConnects())
+            foreach (PropertyInfo item in GetPropertiesConnects())
             {
                 //Create New ConnectProps
                 try
                 {
-                    var display = ModelResources.ResourceManager.GetStringSafe(item.DeclaringType.Name + "_" + item.Name);
-                    var value = new ConnectProperty(item.Name, this, display);
+                    string display = ModelResources.ResourceManager.GetStringSafe(item.DeclaringType.Name + "_" + item.Name);
+                    ConnectProperty value = new ConnectProperty(item.Name, this, display);
                     item.SetValue(this, value);
                 }
                 catch (Exception)
                 {
-                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                    if (System.Diagnostics.Debugger.IsAttached)
+                    {
+                        System.Diagnostics.Debugger.Break();
+                    }
                 }
             }
             LinkedThings = new LinkList(this);
         }
 
-        public override string ToString() => ""
-                + (!string.IsNullOrEmpty(typ) ? typ + ": " : "")
-                + bezeichner
-                + " (" + ThingType + ") "
-                + string.Format("{0:00}", Value.Value)
-                + (!string.IsNullOrEmpty(Zusatz) ? " " + Zusatz : "");
+        public override string ToString()
+        {
+            return ""
++ (!string.IsNullOrEmpty(typ) ? typ + ": " : "")
++ bezeichner
++ " (" + ThingType + ") "
++ string.Format("{0:00}", Value.Value)
++ (!string.IsNullOrEmpty(Zusatz) ? " " + Zusatz : "");
+        }
 
         /// <summary>
         /// Copies own Values into target if possible
@@ -254,7 +257,7 @@ namespace ShadowRunHelper.CharModel
         /// <returns>true if no erros occured, false if some properties migth not get copied</returns>
         public virtual bool TryCloneInto(Thing target = null)
         {
-            var retval = true;
+            bool retval = true;
             if (target == null)
             {
                 try
@@ -267,7 +270,7 @@ namespace ShadowRunHelper.CharModel
                     return false;
                 }
             }
-            foreach (var item in GetProperties().Where(x => x.PropertyType != typeof(ConnectProperty)))
+            foreach (PropertyInfo item in GetProperties().Where(x => x.PropertyType != typeof(ConnectProperty)))
             {
                 try
                 {
@@ -279,12 +282,12 @@ namespace ShadowRunHelper.CharModel
                     retval = false;
                 }
             }
-            foreach (var item in GetProperties().Where(x => x.PropertyType == typeof(ConnectProperty)))
+            foreach (PropertyInfo item in GetProperties().Where(x => x.PropertyType == typeof(ConnectProperty)))
             {
                 try
                 {
-                    var oldconnectprop = item.GetValue(this) as ConnectProperty;
-                    var newconnectprop = item.GetValue(target) as ConnectProperty;
+                    ConnectProperty oldconnectprop = item.GetValue(this) as ConnectProperty;
+                    ConnectProperty newconnectprop = item.GetValue(target) as ConnectProperty;
                     oldconnectprop.TryCloneInto(newconnectprop);
                 }
                 catch (Exception ex)
@@ -301,7 +304,7 @@ namespace ShadowRunHelper.CharModel
         /// </summary>
         public virtual void Reset()
         {
-            foreach (var item in GetProperties())
+            foreach (PropertyInfo item in GetProperties())
             {
                 try
                 {
@@ -318,7 +321,10 @@ namespace ShadowRunHelper.CharModel
                         else
                         {
 #if DEBUG
-                            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                            if (System.Diagnostics.Debugger.IsAttached)
+                            {
+                                System.Diagnostics.Debugger.Break();
+                            }
 #else
                             Log.Write("Could not Reset ConnectProperty: " + item.Name, logType: LogType.Error);
 #endif
@@ -332,7 +338,10 @@ namespace ShadowRunHelper.CharModel
                 catch (Exception ex)
                 {
 #if DEBUG
-                    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                    if (System.Diagnostics.Debugger.IsAttached)
+                    {
+                        System.Diagnostics.Debugger.Break();
+                    }
 #else
                     Log.Write("Could not Reset Property: " + item.Name, ex, logType: LogType.Error);
 #endif
@@ -346,12 +355,12 @@ namespace ShadowRunHelper.CharModel
         public void NotifiyDeletion()
         {
             Reset();
-            foreach (var item in GetProperties())
+            foreach (PropertyInfo item in GetProperties())
             {
                 NotifyPropertyChanged(item.Name);
             }
             NotifyPropertyChanged(Constants.THING_DELETED_TOKEN);
-            foreach (var item in GetConnects())
+            foreach (ConnectProperty item in GetConnects())
             {
                 item.ParentDeleted();
             }
@@ -379,9 +388,9 @@ namespace ShadowRunHelper.CharModel
         /// -> type incorrect, name incorrect</returns>
         public virtual float SimilaritiesTo(string text)
         {
-            var searchtext = text.ToLower();
-            var mytext = ToString().ToLower();
-            var mytextes = mytext.Split(' ', '-', '/', '_');
+            string searchtext = text.ToLower();
+            string mytext = ToString().ToLower();
+            string[] mytextes = mytext.Split(' ', '-', '/', '_');
 
             float retval = 0;
             if (ToString().ToLower().StartsWith(searchtext))
@@ -390,7 +399,7 @@ namespace ShadowRunHelper.CharModel
             }
             else
             {
-                var t = mytextes.FirstOrDefault(x => x.StartsWith(searchtext));
+                string t = mytextes.FirstOrDefault(x => x.StartsWith(searchtext));
                 if (!string.IsNullOrEmpty(t))
                 {
                     retval += 0.4f - Array.IndexOf(mytextes, t) * 0.02f;

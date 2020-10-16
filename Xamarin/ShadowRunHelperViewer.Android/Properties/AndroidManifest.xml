@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.9.13" package="TobiVanHelsinki.ShadowRunHelperViewer" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="29" android:targetSdkVersion="30" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	<application android:label="ShadowRunHelperViewer.Android" android:icon="@mipmap/icon"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          android:versionCode="1"
+          android:versionName="1.9.13"
+          package="TobiVanHelsinki.ShadowRunHelperDev"
+          android:installLocation="auto">
+  <uses-sdk android:minSdkVersion="24"
+            android:targetSdkVersion="30"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  <application android:label="DevShadowRunHelper"
+               android:icon="@mipmap/icon"></application>
 </manifest>

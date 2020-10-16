@@ -1,20 +1,20 @@
 ﻿//Author: Tobi van Helsinki
 
+using dotMorten.Xamarin.Forms;
+using Rg.Plugins.Popup.Services;
+using ShadowRunHelper;
+using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Model;
+using ShadowRunHelperViewer.Platform.Xamarin;
+using ShadowRunHelperViewer.UI.Pages;
+using ShadowRunHelperViewer.UI.Resources;
+using SharedCode.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using dotMorten.Xamarin.Forms;
-using Rg.Plugins.Popup.Services;
-using ShadowRunHelper;
-using ShadowRunHelper.CharModel;
-using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.Platform;
-using ShadowRunHelperViewer.UI.Pages;
-using ShadowRunHelperViewer.UI.Resources;
-using SharedCode.Resources;
 using TLIB;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -121,7 +121,10 @@ namespace ShadowRunHelperViewer
             CharTitleBar.MinimumHeightRequest = Heigth;
         }
 
-        private void Infogrid_Tapped() => _ = RgPopUp.DisplayDefaultPopUp(new ControlCenter(MyChar));
+        private void Infogrid_Tapped()
+        {
+            _ = RgPopUp.DisplayDefaultPopUp(new ControlCenter(MyChar));
+        }
 
         #region Category Buttons
 
@@ -129,13 +132,13 @@ namespace ShadowRunHelperViewer
         {
             if (this is ContentView Content)
             {
-                foreach (var item in ButtonsPanels)
+                foreach (StackLayout item in ButtonsPanels)
                 {
                     item.Children.Clear();
                 }
-                foreach (var Category in MyChar.Settings.CategoryOptions.OrderBy(x => x.Pivot).ThenBy(x => x.Order))
+                foreach (CategoryOption Category in MyChar.Settings.CategoryOptions.OrderBy(x => x.Pivot).ThenBy(x => x.Order))
                 {
-                    var b = new Button
+                    Button b = new Button
                     {
                         Padding = new Thickness(2),
                         BindingContext = Category.ThingType,
@@ -167,7 +170,7 @@ namespace ShadowRunHelperViewer
                     }
                     b.Clicked += B_CTRL_Clicked;
                 }
-                var btt = new Button
+                Button btt = new Button
                 {
                     Padding = new Thickness(2),
                     Text = ModelResources.Person_,
@@ -191,7 +194,7 @@ namespace ShadowRunHelperViewer
         /// <exception cref="TypeLoadException">Ignore.</exception>
         private void CreatePersonView(object sender, EventArgs e)
         {
-            var EditMode = false;
+            bool EditMode = false;
             if (sender is Button b)
             {
                 HighlightButton(b);
@@ -208,10 +211,10 @@ namespace ShadowRunHelperViewer
             {
                 v.BindingContext = MyChar.Person;
                 ContentPanel.Content = v;
-                var entryTemplate = v.Resources["EntryTemplate"] as DataTemplate;
-                foreach (var item in ReflectionHelper.GetPropertiesWithAttribute(MyChar.Person, typeof(Used_UserAttribute)).Where(x => x.GetCustomAttributes(true).OfType<Used_UserAttribute>().FirstOrDefault().UIRelevant))
+                DataTemplate entryTemplate = v.Resources["EntryTemplate"] as DataTemplate;
+                foreach (System.Reflection.PropertyInfo item in ReflectionHelper.GetPropertiesWithAttribute(MyChar.Person, typeof(Used_UserAttribute)).Where(x => x.GetCustomAttributes(true).OfType<Used_UserAttribute>().FirstOrDefault().UIRelevant))
                 {
-                    var entry = entryTemplate.CreateContent() as View;
+                    View entry = entryTemplate.CreateContent() as View;
                     entry.FindByName<Label>("Type").Text = ModelResources.ResourceManager.GetStringSafe(nameof(Person) + "_" + item.Name);
 
                     View entrycontent;
@@ -268,9 +271,9 @@ namespace ShadowRunHelperViewer
         }
         public ICommand OpenCategory => new Command<string>(canExecute: (string arg) => true, execute: (string arg) =>
         {
-            var pivot = int.Parse(arg);
-            var stackLayout = new StackLayout();
-            foreach (var typeInThisCategory in TypeHelper.ThingTypeProperties.Where(x => x.Pivot == pivot).OrderBy(x => x.Order))
+            int pivot = int.Parse(arg);
+            StackLayout stackLayout = new StackLayout();
+            foreach (ThingTypeProperty typeInThisCategory in TypeHelper.ThingTypeProperties.Where(x => x.Pivot == pivot).OrderBy(x => x.Order))
             {
                 stackLayout.Children.Add(CreateControllerOfType(typeInThisCategory.ThingType));
             }
@@ -286,8 +289,8 @@ namespace ShadowRunHelperViewer
 
         private GController CreateControllerOfType(ThingDefs type)
         {
-            var gCTRL = new GController(MyChar);
-            var CTRL = typeof(CharHolder).GetProperties().FirstOrDefault(x => x.Name == "CTRL" + type);
+            GController gCTRL = new GController(MyChar);
+            System.Reflection.PropertyInfo CTRL = typeof(CharHolder).GetProperties().FirstOrDefault(x => x.Name == "CTRL" + type);
             if (CTRL != null)
             {
                 gCTRL.SetBinding(BindingContextProperty, new Binding($"{nameof(MyChar)}.{CTRL.Name}"));
@@ -305,7 +308,7 @@ namespace ShadowRunHelperViewer
 
         private void HighlightButton(ThingDefs type)
         {
-            foreach (var item in Buttons)
+            foreach (Button item in Buttons)
             {
                 if (item.BindingContext is ThingDefs t && t == type)
                 {
@@ -322,7 +325,7 @@ namespace ShadowRunHelperViewer
 
         private void HighlightButton(Button myBtn)
         {
-            foreach (var item in Buttons)
+            foreach (Button item in Buttons)
             {
                 item.BackgroundColor = StyleManager.ElementBackgroundColor;
                 item.TextColor = StyleManager.TextColor;

@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using ShadowRunHelper.Model;
 using SharedCode.Resources;
-using TAPPLICATION;
+using ShadowRunHelper;
 
 namespace ShadowRunHelper
 {

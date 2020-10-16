@@ -2,12 +2,10 @@
 
 
 using ShadowRunHelper.CharModel;
+using ShadowRunHelper.Helper;
 using ShadowRunHelper.IO;
 using System;
 using System.IO;
-using TAPPLICATION;
-using TAPPLICATION.IO;
-using TAPPLICATION.Model;
 using TLIB;
 
 namespace ShadowRunHelper.Model
@@ -31,12 +29,12 @@ namespace ShadowRunHelper.Model
             SettingsModel.I.COUNT_SAVINGS++;
             if (SettingsModel.I.BACKUP_VERSIONING)
             {
-                var FileName = (e as CharHolder)?.MakeName(true);
+                string FileName = (e as CharHolder)?.MakeName(true);
                 try
                 {
-                    var BackUpFolder = new DirectoryInfo(Path.Combine(SharedIO.CurrentSavePath, "BackUp"));
+                    DirectoryInfo BackUpFolder = new DirectoryInfo(Path.Combine(SharedIO.CurrentSavePath, "BackUp"));
                     SharedIO.CurrentIO.CreateFolder(BackUpFolder).Wait();
-                    var BackUpFile = new FileInfo(Path.Combine(BackUpFolder.FullName, FileName));
+                    FileInfo BackUpFile = new FileInfo(Path.Combine(BackUpFolder.FullName, FileName));
                     SharedIO.Save(e, BackUpFile).Wait();
                 }
                 catch (Exception ex)
@@ -46,13 +44,7 @@ namespace ShadowRunHelper.Model
             }
         }
 
-        public static new AppModel Instance
-        {
-            get
-            {
-                return instance as AppModel;
-            }
-        }
+        public static new AppModel Instance => instance as AppModel;
 
         private AppModel() : base()
         {
@@ -101,22 +93,19 @@ namespace ShadowRunHelper.Model
         public delegate void TutorialStateChangeRequestEventHandler(int StateNumber, bool Highlight);
         public event TutorialStateChangeRequestEventHandler TutorialStateChanged;
 
-        public bool IsCharInProgress
-        {
-            get { return CharInProgress != null; }
-        }
+        public bool IsCharInProgress => CharInProgress != null;
 
-        FileInfo _CharInProgress; // TODO new Datastructure is needed
+        private FileInfo _CharInProgress; // TODO new Datastructure is needed
         public FileInfo CharInProgress
         {
-            get { return _CharInProgress; }
+            get => _CharInProgress;
             set { if (_CharInProgress != value) { _CharInProgress = value; NotifyPropertyChanged(nameof(IsCharInProgress)); NotifyPropertyChanged(); } }
         }
 
-        Thing _PendingScrollEntry;
+        private Thing _PendingScrollEntry;
         public Thing PendingScrollEntry
         {
-            get { return _PendingScrollEntry; }
+            get => _PendingScrollEntry;
             set { if (_PendingScrollEntry != value) { _PendingScrollEntry = value; NotifyPropertyChanged(); } }
         }
 
