@@ -6,6 +6,7 @@ using ShadowRunHelper.Model;
 using ShadowRunHelperViewer.Platform.Xamarin;
 using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Resources;
+using Syncfusion.Licensing;
 using Syncfusion.XForms.PopupLayout;
 using System;
 using System.Collections.Generic;
@@ -52,11 +53,26 @@ namespace ShadowRunHelperViewer.UI.Pages
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void OfflineFolderChooser(object sender, EventArgs e)
+        private async void OfflineFolderChooser(object sender, EventArgs e)
         {
             MainPage.Instance.EnableBusy();
-            SettingsModel.I.FOLDERMODE_PATH = "";
-            SettingsModel.I.FOLDERMODE = true;
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    MessagingCenter.Subscribe<object, object>(this, "FolderModeChoosen", (sender, e) =>
+                    {
+                        if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                        MessagingCenter.Unsubscribe<MainPage>(this, "FolderModeChoosen");
+                        SettingsModel.I.FOLDERMODE_PATH = "";
+                        SettingsModel.I.FOLDERMODE = true;
+                    });
+                    _ = await SharedIO.CurrentIO.PickFolder();
+                    break;
+                default:
+                    SettingsModel.I.FOLDERMODE_PATH = "";
+                    SettingsModel.I.FOLDERMODE = true;
+                    break;
+            }
         }
 
         /// <summary>

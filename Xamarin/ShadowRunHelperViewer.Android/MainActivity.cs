@@ -21,6 +21,7 @@ namespace ShadowRunHelperViewer.Droid
     {
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
+            //FolderModeChoosen
             MessagingCenter.Send(this, resultCode.ToString(), data);
             ShadowRunHelperViewer.Platform.Android.IO.message = data;
             base.OnActivityResult(requestCode, resultCode, data);

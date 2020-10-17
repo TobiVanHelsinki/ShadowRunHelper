@@ -1,13 +1,9 @@
 ﻿//Author: Tobi van Helsinki
-using Android.App;
 using Android.Content;
 using ShadowRunHelper.IO;
 using ShadowRunHelperViewer.Droid;
-using ShadowRunHelperViewer.UI.Pages;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using Application = Android.App.Application;
 
 namespace ShadowRunHelperViewer.Platform.Android
@@ -26,23 +22,23 @@ namespace ShadowRunHelperViewer.Platform.Android
         /// <exception cref="ActivityNotFoundException"></exception>
         public override async Task<DirectoryInfo> PickFolder(string Token = null)
         {
-            var activity = Application.Context as MainActivity;
+            MainActivity activity = Application.Context as MainActivity;
             activity.Intent = new Intent();
             activity.Intent.SetAction(Intent.ActionOpenDocumentTree);
-            var REQUEST_CODE_OPEN_DIRECTORY = 1;
-            DirectoryInfo result = null;
-            MessagingCenter.Subscribe<Activity>(this, REQUEST_CODE_OPEN_DIRECTORY.ToString(), (sender) =>
-            {
-                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-                //result = new DirectoryInfo(args.ToUri(IntentUriType.Scheme));
-            });
-            MessagingCenter.Subscribe<Activity, Intent>(this, REQUEST_CODE_OPEN_DIRECTORY.ToString(), (sender, args) =>
-            {
-                if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-                result = new DirectoryInfo(args.ToUri(IntentUriType.Scheme));
-            });
+            int REQUEST_CODE_OPEN_DIRECTORY = 1;
+            //DirectoryInfo result = null;
+            //MessagingCenter.Subscribe<Activity>(this, REQUEST_CODE_OPEN_DIRECTORY.ToString(), (sender) =>
+            //{
+            //    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+            //    //result = new DirectoryInfo(args.ToUri(IntentUriType.Scheme));
+            //});
+            //MessagingCenter.Subscribe<Activity, Intent>(this, REQUEST_CODE_OPEN_DIRECTORY.ToString(), (sender, args) =>
+            //{
+            //    if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+            //    result = new DirectoryInfo(args.ToUri(IntentUriType.Scheme));
+            //});
             activity.StartActivityForResult(activity.Intent, REQUEST_CODE_OPEN_DIRECTORY);
-            activity.StartLockTask();
+            //activity.StartLockTask();
 
             //activity.OnActivityResult += (object sender, ActivityResultEventArgs e) =>
             //{
@@ -56,8 +52,8 @@ namespace ShadowRunHelperViewer.Platform.Android
             {
                 //Thread.Sleep(500);
             }
-            if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-            return result;
+            //if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+            return new DirectoryInfo("");
         }
     }
 }
