@@ -2,8 +2,10 @@
 
 using System;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Preferences;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
@@ -17,6 +19,13 @@ namespace ShadowRunHelperViewer.Droid
     [Activity(Label = "DevShadowRunHelper", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            MessagingCenter.Send(this, resultCode.ToString(), data);
+            ShadowRunHelperViewer.Platform.Android.IO.message = data;
+            base.OnActivityResult(requestCode, resultCode, data);
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;

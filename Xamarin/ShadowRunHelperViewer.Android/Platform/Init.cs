@@ -8,6 +8,7 @@ namespace ShadowRunHelperViewer.Platform.Android
     {
         public static void Do()
         {
+            ShadowRunHelper.IO.SharedIO.CurrentIO = new IO();
             Features.Activities = new DroidActivities();
             Features.Analytics = new DroidAnalytics();
             Features.IAP = new DroidIAP();

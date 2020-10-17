@@ -146,8 +146,9 @@ namespace ShadowRunHelperViewer.Platform.Xamarin
             }
         }
 
-        public Task<DirectoryInfo> PickFolder(string Token = null)
+        public virtual Task<DirectoryInfo> PickFolder(string Token = null)
         {
+            var startPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             //TODO test
             //Android Code
             //Intent intent = new Intent(Intent.ActionOpenDocumentTree);

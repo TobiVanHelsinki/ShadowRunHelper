@@ -125,6 +125,7 @@
     <Compile Include="Platform\DroidLocalize.cs" />
     <Compile Include="Platform\DroidFormsInteractions.cs" />
     <Compile Include="Platform\Init.cs" />
+    <Compile Include="Platform\IO.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
