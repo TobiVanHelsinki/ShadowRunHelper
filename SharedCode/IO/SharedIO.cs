@@ -70,8 +70,7 @@ namespace ShadowRunHelper.IO
         /// <returns>Task<FileInfo> The place where it is actually saved</returns>
         public static async Task<FileInfo> SaveAtOriginPlace(IMainType Object)
         {
-            if (Object.FileInfo.Directory.FullName.Contains(await CurrentIO.GetCompleteInternPath(Place.Temp))
-                || Object.FileInfo.Directory.FullName.Contains(await CurrentIO.GetCompleteInternPath(Place.Assets)))
+            if (Object.FileInfo.Directory.FullName.Contains(await CurrentIO.GetCompleteInternPath(Place.Temp)))
             {
                 return await SaveAtCurrentPlace(Object);
             }

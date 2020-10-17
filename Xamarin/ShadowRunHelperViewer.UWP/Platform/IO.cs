@@ -235,8 +235,6 @@ namespace ShadowRunHelperViewer.Platform.UWP
                     return ApplicationData.Current.LocalFolder.Path + Path.DirectorySeparatorChar;
                 case Place.Roaming:
                     return ApplicationData.Current.RoamingFolder.Path + Path.DirectorySeparatorChar;
-                case Place.Assets:
-                    return Windows.ApplicationModel.Package.Current.InstalledLocation.Path + Path.DirectorySeparatorChar;
                 default:
                     throw new NotImplementedException();
             }
