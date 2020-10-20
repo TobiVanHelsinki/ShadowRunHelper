@@ -11,7 +11,7 @@ namespace ShadowRunHelper
     {
         public const string ObsoleteCalcProperty = "Obsolete with Version 1.8 and the new CalcProperty System";
 
-        public const string ACCESSTOKEN_FOLDERMODE = "ACCESSTOKEN_FOLDERMODE";
+        public const string ACCESSTOKEN_FOLDERMODE = "5664"; // Number because of Andoird
         public const string ACCESSTOKEN_FILEACTIVATED = "ACCESSTOKEN_FILEACTIVATED";
         public const string ACCESSTOKEN_EXPORT = "Export";
         public const string ACCESSTOKEN_IMPORT = "Import";

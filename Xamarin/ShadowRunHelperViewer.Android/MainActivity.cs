@@ -1,29 +1,31 @@
 ﻿//Author: Tobi van Helsinki
 
-using System;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Preferences;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using ShadowRunHelper;
 using ShadowRunHelperViewer.UI.Pages;
+using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ShadowRunHelperViewer.Droid
 {
     [Activity(Label = "DevShadowRunHelper", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, Android.App.Application.IActivityLifecycleCallbacks
     {
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            //FolderModeChoosen
-            MessagingCenter.Send(this, resultCode.ToString(), data);
-            ShadowRunHelperViewer.Platform.Droid.IO.message = data;
+            var musicResolver = this.ContentResolver;
+            var musicUri = Android.Provider.MediaStore.Downloads..FileColumns.ExternalContentUri;
+            var musicUri = Android.Provider.MediaStore.Audio.Media.ExternalContentUri;
+            var musicCursor = musicResolver.Query(musicUri, null, null, null, null);
+
+            MessagingCenter.Send(nameof(MainActivity), Constants.ACCESSTOKEN_FOLDERMODE, data.DataString);
             base.OnActivityResult(requestCode, resultCode, data);
         }
 
@@ -56,7 +58,7 @@ namespace ShadowRunHelperViewer.Droid
         /// </summary>
         private static void DisplayFolderPaths()
         {
-            for (var i = 0; i < 60; i++)
+            for (int i = 0; i < 60; i++)
             {
                 try
                 {
@@ -93,15 +95,15 @@ namespace ShadowRunHelperViewer.Droid
         private void SetAccentColor()
         {
             // get the accent color from your theme
-            var themeAccentColor = new TypedValue();
+            TypedValue themeAccentColor = new TypedValue();
             Theme.ResolveAttribute(Resource.Attribute.colorAccent, themeAccentColor, true);
-            var droidAccentColor = new Color(themeAccentColor.Data);
+            Color droidAccentColor = new Color(themeAccentColor.Data);
 
             // set Xamarin Color.Accent to match the theme's accent color
             try
             {
-                var accentColorProp = typeof(Xamarin.Forms.Color).GetProperty(nameof(Xamarin.Forms.Color.Accent), System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
-                var xamarinAccentColor = new Xamarin.Forms.Color(droidAccentColor.R / 255.0, droidAccentColor.G / 255.0, droidAccentColor.B / 255.0, droidAccentColor.A / 255.0);
+                System.Reflection.PropertyInfo accentColorProp = typeof(Xamarin.Forms.Color).GetProperty(nameof(Xamarin.Forms.Color.Accent), System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+                Color xamarinAccentColor = new Xamarin.Forms.Color(droidAccentColor.R / 255.0, droidAccentColor.G / 255.0, droidAccentColor.B / 255.0, droidAccentColor.A / 255.0);
                 xamarinAccentColor = new Color(21.0 / 255.0, 161.0 / 255.0, 21.0 / 255.0, 1); // a nice green
                 accentColorProp.SetValue(null, xamarinAccentColor, System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static, null, null, System.Globalization.CultureInfo.CurrentCulture);
             }
@@ -124,6 +126,38 @@ namespace ShadowRunHelperViewer.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        internal static Context ActivityContext { get; private set; }
+
+        public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
+        {
+            ActivityContext = activity;
+        }
+
+        public void OnActivityResumed(Activity activity)
+        {
+            ActivityContext = activity;
+        }
+
+        public void OnActivityStarted(Activity activity)
+        {
+            ActivityContext = activity;
+        }
+
+        public void OnActivityDestroyed(Activity activity)
+        {
+        }
+
+        public void OnActivityPaused(Activity activity)
+        {
+        }
+
+        public void OnActivitySaveInstanceState(Activity activity, Bundle outState)
+        {
+        }
+
+        public void OnActivityStopped(Activity activity)
+        {
         }
     }
 }

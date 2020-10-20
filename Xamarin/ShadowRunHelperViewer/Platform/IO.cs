@@ -157,7 +157,7 @@ namespace ShadowRunHelperViewer.Platform.Xam
             throw new NotImplementedException();
         }
 
-        public async Task<bool> HasAccess(FileInfo Path)
+        public virtual async Task<bool> HasAccess(FileInfo Path)
         {
             try
             {
@@ -169,7 +169,7 @@ namespace ShadowRunHelperViewer.Platform.Xam
             }
         }
 
-        public async Task<bool> HasAccess(DirectoryInfo Path)
+        public virtual async Task<bool> HasAccess(DirectoryInfo Path)
         {
             try
             {

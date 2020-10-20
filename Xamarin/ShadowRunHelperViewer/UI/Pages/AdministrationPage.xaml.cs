@@ -59,14 +59,15 @@ namespace ShadowRunHelperViewer.UI.Pages
             switch (Device.RuntimePlatform)
             {
                 case Device.Android:
-                    MessagingCenter.Subscribe<object, object>(this, "FolderModeChoosen", (sender, e) =>
+                    MessagingCenter.Subscribe<string, string>(this, Constants.ACCESSTOKEN_FOLDERMODE, (sender, arg) =>
                     {
-                        if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
-                        MessagingCenter.Unsubscribe<MainPage>(this, "FolderModeChoosen");
-                        SettingsModel.I.FOLDERMODE_PATH = "";
+                        // Do something whenever the "Hi" message is received
+                        MessagingCenter.Unsubscribe<string, string>(this, Constants.ACCESSTOKEN_FOLDERMODE);
+                        SettingsModel.I.FOLDERMODE_PATH = arg;
                         SettingsModel.I.FOLDERMODE = true;
+                        MainPage.Instance.DisableBusy();
                     });
-                    _ = await SharedIO.CurrentIO.PickFolder();
+                    _ = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_FOLDERMODE);
                     break;
                 default:
                     SettingsModel.I.FOLDERMODE_PATH = "";

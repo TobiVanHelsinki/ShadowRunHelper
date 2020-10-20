@@ -182,39 +182,25 @@ namespace ShadowRunHelper
 
         private static async void FolderMode_Toggled()
         {
-            var FolderMode = SharedSettingsModel.Instance.FOLDERMODE;
-            var tempFolderModePath = "";
-            if (FolderMode)
+            try
             {
-                try
+                if (SharedSettingsModel.Instance.FOLDERMODE && !await SharedIO.CurrentIO.HasAccess(new DirectoryInfo(SharedSettingsModel.Instance.FOLDERMODE_PATH)))
                 {
-                    var folder = await SharedIO.CurrentIO.PickFolder(Constants.ACCESSTOKEN_FOLDERMODE);
-                    tempFolderModePath = folder.FullName;
-                }
-                catch (Exception ex)
-                {
-                    Log.Write("Could not", ex, logType: LogType.Error);
-                    try
-                    {
-                        if (!await SharedIO.CurrentIO.HasAccess(new DirectoryInfo(tempFolderModePath)))
-                        {
-                            SharedSettingsModel.Instance.FOLDERMODE = false;
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        SharedSettingsModel.Instance.FOLDERMODE = false;
-                    }
-                    return;
+                    SharedSettingsModel.Instance.FOLDERMODE = false;
                 }
             }
+            catch (Exception ex)
+            {
+                Log.Write("No access to extern folder", ex, logType: LogType.Error);
+            }
+
             try //copy all data from prev folder to current
             {
                 var InternRoam = SharedSettingsModel.Instance.INTERN_SYNC;
                 var internpath = await SharedIO.CurrentIO.GetCompleteInternPath(InternRoam ? Place.Roaming : Place.Local) + SharedConstants.INTERN_SAVE_CONTAINER;
-                var externpath = tempFolderModePath;
-                var t = new DirectoryInfo(FolderMode ? externpath : internpath);
-                var s = new DirectoryInfo(!FolderMode ? externpath : internpath);
+                var externpath = SharedSettingsModel.Instance.FOLDERMODE_PATH;
+                var t = new DirectoryInfo(SharedSettingsModel.Instance.FOLDERMODE ? externpath : internpath);
+                var s = new DirectoryInfo(!SharedSettingsModel.Instance.FOLDERMODE ? externpath : internpath);
                 await SharedIO.CurrentIO.MoveAllFiles(s, t, Constants.LST_FILETYPES_CHAR);
             }
             catch (IsOKException)
@@ -224,7 +210,6 @@ namespace ShadowRunHelper
             {
                 Log.Write(AppResources.Error_CopyFiles, ex);
             }
-            SharedSettingsModel.I.FOLDERMODE_PATH = tempFolderModePath;
         }
         #endregion Constraints
     }
