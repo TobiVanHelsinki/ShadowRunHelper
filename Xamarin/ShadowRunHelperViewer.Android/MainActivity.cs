@@ -23,7 +23,7 @@ namespace ShadowRunHelperViewer.Droid
         {
             //FolderModeChoosen
             MessagingCenter.Send(this, resultCode.ToString(), data);
-            ShadowRunHelperViewer.Platform.Android.IO.message = data;
+            ShadowRunHelperViewer.Platform.Droid.IO.message = data;
             base.OnActivityResult(requestCode, resultCode, data);
         }
 
@@ -39,7 +39,7 @@ namespace ShadowRunHelperViewer.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             ShadowRunHelperViewer.Platform.Xamarin.Init.Do();
-            ShadowRunHelperViewer.Platform.Android.Init.Do();
+            ShadowRunHelperViewer.Platform.Droid.Init.Do();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState); // add this line to your code, it may also be called: bundle
             #endregion Init Libs

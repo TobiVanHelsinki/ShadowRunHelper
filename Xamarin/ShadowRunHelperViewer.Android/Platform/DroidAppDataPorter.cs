@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TLIB;
 
-namespace ShadowRunHelperViewer.Platform.Android
+namespace ShadowRunHelperViewer.Platform.Droid
 {
     public class DroidAppDataPorter : IAppDataPorter
     {

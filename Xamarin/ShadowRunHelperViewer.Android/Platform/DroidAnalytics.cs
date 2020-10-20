@@ -3,7 +3,7 @@
 using ShadowRunHelper;
 using System.Collections.Generic;
 
-namespace ShadowRunHelperViewer.Platform.Android
+namespace ShadowRunHelperViewer.Platform.Droid
 {
     internal class DroidAnalytics : IAnalytics
     {

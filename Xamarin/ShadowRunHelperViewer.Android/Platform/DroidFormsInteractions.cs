@@ -1,13 +1,13 @@
 ﻿//Author: Tobi van Helsinki
 
-using ShadowRunHelperViewer.Platform.Android;
+using ShadowRunHelperViewer.Platform.Droid;
 using ShadowRunHelperViewer.Platform.Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: Dependency(typeof(AndroidFormsInteractions))]
 
-namespace ShadowRunHelperViewer.Platform.Android
+namespace ShadowRunHelperViewer.Platform.Droid
 {
     public class AndroidFormsInteractions : IFormsInteractions
     {

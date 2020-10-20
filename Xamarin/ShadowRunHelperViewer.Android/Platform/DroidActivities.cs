@@ -4,7 +4,7 @@ using ShadowRunHelper;
 using ShadowRunHelper.Model;
 using System.Threading.Tasks;
 
-namespace ShadowRunHelperViewer.Platform.Android
+namespace ShadowRunHelperViewer.Platform.Droid
 {
     public class DroidActivities : IActivities
     {

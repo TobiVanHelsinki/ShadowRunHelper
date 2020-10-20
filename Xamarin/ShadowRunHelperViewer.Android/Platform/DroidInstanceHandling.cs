@@ -2,7 +2,7 @@
 
 using ShadowRunHelper;
 
-namespace ShadowRunHelperViewer.Platform.Android
+namespace ShadowRunHelperViewer.Platform.Droid
 {
     internal class DroidInstanceHandling : IInstanceHandling
     {

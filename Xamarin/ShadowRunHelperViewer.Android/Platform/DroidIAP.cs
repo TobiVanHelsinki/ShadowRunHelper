@@ -3,7 +3,7 @@
 using ShadowRunHelper;
 using System.Threading.Tasks;
 
-namespace ShadowRunHelperViewer.Platform.Android
+namespace ShadowRunHelperViewer.Platform.Droid
 {
     public class DroidIAP : IIAP
     {

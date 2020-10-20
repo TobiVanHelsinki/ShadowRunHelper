@@ -1,12 +1,10 @@
 ﻿//Author: Tobi van Helsinki
 using Android.Content;
 using ShadowRunHelper.IO;
-using ShadowRunHelperViewer.Droid;
 using System.IO;
 using System.Threading.Tasks;
-using Application = Android.App.Application;
 
-namespace ShadowRunHelperViewer.Platform.Android
+namespace ShadowRunHelperViewer.Platform.Droid
 {
     public class IO : Xamarin.IO, IPlatformIO
     {
@@ -22,9 +20,11 @@ namespace ShadowRunHelperViewer.Platform.Android
         /// <exception cref="ActivityNotFoundException"></exception>
         public override async Task<DirectoryInfo> PickFolder(string Token = null)
         {
-            MainActivity activity = Application.Context as MainActivity;
+            var a = Android.App.Application.Context;
+            Android.App.Activity activity = a as Android.App.Activity;
             activity.Intent = new Intent();
             activity.Intent.SetAction(Intent.ActionOpenDocumentTree);
+            activity.Intent.AddCategory(Intent.CategoryOpenable);
             int REQUEST_CODE_OPEN_DIRECTORY = 1;
             //DirectoryInfo result = null;
             //MessagingCenter.Subscribe<Activity>(this, REQUEST_CODE_OPEN_DIRECTORY.ToString(), (sender) =>

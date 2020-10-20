@@ -5,9 +5,9 @@ using System.Globalization;
 using System.Threading;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(ShadowRunHelperViewer.Platform.Android.Localize))]
+[assembly: Dependency(typeof(ShadowRunHelperViewer.Platform.Droid.Localize))]
 
-namespace ShadowRunHelperViewer.Platform.Android
+namespace ShadowRunHelperViewer.Platform.Droid
 {
     public class Localize : ILocalize
     {
