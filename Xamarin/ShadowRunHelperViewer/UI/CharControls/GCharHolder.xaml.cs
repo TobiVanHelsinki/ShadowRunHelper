@@ -5,7 +5,7 @@ using Rg.Plugins.Popup.Services;
 using ShadowRunHelper;
 using ShadowRunHelper.CharModel;
 using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.Platform.Xamarin;
+using ShadowRunHelperViewer.Platform.Xam;
 using ShadowRunHelperViewer.UI.Pages;
 using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Resources;

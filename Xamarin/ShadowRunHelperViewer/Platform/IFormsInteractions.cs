@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-namespace ShadowRunHelperViewer.Platform.Xamarin
+namespace ShadowRunHelperViewer.Platform.Xam
 {
     public interface IFormsInteractions
     {

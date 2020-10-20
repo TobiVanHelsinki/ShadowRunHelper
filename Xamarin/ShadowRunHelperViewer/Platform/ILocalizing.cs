@@ -2,7 +2,7 @@
 
 using System.Globalization;
 
-namespace ShadowRunHelperViewer.Platform.Xamarin
+namespace ShadowRunHelperViewer.Platform.Xam
 {
     /// <summary>
     /// Implementations of this interface MUST convert iOS and Android platform-specific locales to

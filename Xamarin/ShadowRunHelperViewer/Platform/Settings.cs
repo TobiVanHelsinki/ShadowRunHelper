@@ -4,7 +4,7 @@ using ShadowRunHelper.Model;
 using TLIB.Settings;
 using Xamarin.Essentials;
 
-namespace ShadowRunHelperViewer.Platform.Xamarin
+namespace ShadowRunHelperViewer.Platform.Xam
 {
     public class Settings : IPlatformSettings
     {

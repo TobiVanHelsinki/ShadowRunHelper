@@ -54,7 +54,7 @@ namespace ShadowRunHelperViewer.UWP
             SfListViewRenderer.Init();
             SfPopupLayoutRenderer.Init();
 
-            ShadowRunHelperViewer.Platform.Xamarin.Init.Do();
+            ShadowRunHelperViewer.Platform.Xam.Init.Do();
             ShadowRunHelperViewer.Platform.UWP.Init.Do();
 
             Rg.Plugins.Popup.Popup.Init();

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using TLIB;
 using Xamarin.Essentials;
 
-namespace ShadowRunHelperViewer.Platform.Xamarin
+namespace ShadowRunHelperViewer.Platform.Xam
 {
     public class IO : StandardIO, IPlatformIO
     {

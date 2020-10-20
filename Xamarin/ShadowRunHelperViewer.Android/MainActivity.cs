@@ -38,7 +38,7 @@ namespace ShadowRunHelperViewer.Droid
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(LocalConstants.SyncFusion_LICENSEKEY);
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            ShadowRunHelperViewer.Platform.Xamarin.Init.Do();
+            ShadowRunHelperViewer.Platform.Xam.Init.Do();
             ShadowRunHelperViewer.Platform.Droid.Init.Do();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState); // add this line to your code, it may also be called: bundle

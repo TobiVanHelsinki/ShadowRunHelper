@@ -1,6 +1,6 @@
 ﻿//Author: Tobi van Helsinki
 
-using ShadowRunHelperViewer.Platform.Xamarin;
+using ShadowRunHelperViewer.Platform.Xam;
 using System.Globalization;
 using System.Threading;
 using Xamarin.Forms;

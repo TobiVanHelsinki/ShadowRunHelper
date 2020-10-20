@@ -2,15 +2,15 @@
 
 using ShadowRunHelper;
 
-namespace ShadowRunHelperViewer.Platform.Xamarin
+namespace ShadowRunHelperViewer.Platform.Xam
 {
     public class Init
     {
         public static void Do()
         {
-            ShadowRunHelper.IO.SharedIO.CurrentIO = new ShadowRunHelperViewer.Platform.Xamarin.IO();
-            ShadowRunHelper.Model.SharedSettingsModel.PlatformSettings = new ShadowRunHelperViewer.Platform.Xamarin.Settings();
-            ShadowRunHelper.Helper.PlatformHelper.Platform = new ShadowRunHelperViewer.Platform.Xamarin.PlatformHelper();
+            ShadowRunHelper.IO.SharedIO.CurrentIO = new ShadowRunHelperViewer.Platform.Xam.IO();
+            ShadowRunHelper.Model.SharedSettingsModel.PlatformSettings = new ShadowRunHelperViewer.Platform.Xam.Settings();
+            ShadowRunHelper.Helper.PlatformHelper.Platform = new ShadowRunHelperViewer.Platform.Xam.PlatformHelper();
         }
     }
 }

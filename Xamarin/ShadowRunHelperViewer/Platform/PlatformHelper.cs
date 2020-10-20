@@ -7,7 +7,7 @@ using TLIB;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace ShadowRunHelperViewer.Platform.Xamarin
+namespace ShadowRunHelperViewer.Platform.Xam
 {
     public class PlatformHelper : IPlatformHelper
     {

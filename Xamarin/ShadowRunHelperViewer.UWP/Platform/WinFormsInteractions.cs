@@ -1,7 +1,7 @@
 ﻿//Author: Tobi van Helsinki
 
 using ShadowRunHelperViewer.Platform.UWP;
-using ShadowRunHelperViewer.Platform.Xamarin;
+using ShadowRunHelperViewer.Platform.Xam;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
 

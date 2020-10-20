@@ -2,7 +2,7 @@
 
 using ShadowRunHelper;
 using ShadowRunHelper.Model;
-using ShadowRunHelperViewer.Platform.Xamarin;
+using ShadowRunHelperViewer.Platform.Xam;
 using ShadowRunHelperViewer.UI.Resources;
 using SharedCode.Resources;
 using System;

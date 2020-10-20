@@ -2,7 +2,7 @@
 
 using System;
 
-namespace ShadowRunHelperViewer.Platform.Xamarin
+namespace ShadowRunHelperViewer.Platform.Xam
 {
     public class PlatformCulture
     {

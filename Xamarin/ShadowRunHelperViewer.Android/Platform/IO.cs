@@ -3,10 +3,13 @@ using Android.Content;
 using ShadowRunHelper.IO;
 using System.IO;
 using System.Threading.Tasks;
+using Android.Content;
+
+using Xamarin.Forms.Platform.Android;
 
 namespace ShadowRunHelperViewer.Platform.Droid
 {
-    public class IO : Xamarin.IO, IPlatformIO
+    public class IO : Xam.IO, IPlatformIO
     {
         public static object message;
 
@@ -21,10 +24,12 @@ namespace ShadowRunHelperViewer.Platform.Droid
         public override async Task<DirectoryInfo> PickFolder(string Token = null)
         {
             var a = Android.App.Application.Context;
-            Android.App.Activity activity = a as Android.App.Activity;
+            //Android.App.Activity activity = a as Android.App.Activity;
+            Xamarin.Forms.Forms.Context.StartActivity();
+            MainApplication.ActivityContext;
+            Android.App.Activity activity = a.GetActivity();
             activity.Intent = new Intent();
             activity.Intent.SetAction(Intent.ActionOpenDocumentTree);
-            activity.Intent.AddCategory(Intent.CategoryOpenable);
             int REQUEST_CODE_OPEN_DIRECTORY = 1;
             //DirectoryInfo result = null;
             //MessagingCenter.Subscribe<Activity>(this, REQUEST_CODE_OPEN_DIRECTORY.ToString(), (sender) =>
