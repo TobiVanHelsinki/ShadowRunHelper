@@ -27,17 +27,19 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ShadowRunHelper.Shared", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{CBCCCBD4-F79D-4B60-933D-CA40CC62F769}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Mobile", "ShadowRunHelper\ShadowRunHelper.Mobile\ShadowRunHelper.Mobile.csproj", "{DA038E0C-B971-44F1-AF4D-EBC9A747C4D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShadowRunHelper.Mobile", "ShadowRunHelper\ShadowRunHelper.Mobile\ShadowRunHelper.Mobile.csproj", "{DA038E0C-B971-44F1-AF4D-EBC9A747C4D5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.UWP", "ShadowRunHelper\ShadowRunHelper.UWP\ShadowRunHelper.UWP.csproj", "{24CDF01E-FC0C-43CB-AF7E-248D97F26DA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Wasm", "ShadowRunHelper\ShadowRunHelper.Wasm\ShadowRunHelper.Wasm.csproj", "{018501D2-813F-45B5-9704-45BE6BEC3388}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShadowRunHelper.Wasm", "ShadowRunHelper\ShadowRunHelper.Wasm\ShadowRunHelper.Wasm.csproj", "{018501D2-813F-45B5-9704-45BE6BEC3388}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Skia.Wpf.Host", "ShadowRunHelper\ShadowRunHelper.Skia.Wpf.Host\ShadowRunHelper.Skia.Wpf.Host.csproj", "{2B207885-EBBD-4D04-85EC-82E28D01AD23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShadowRunHelper.Skia.Wpf.Host", "ShadowRunHelper\ShadowRunHelper.Skia.Wpf.Host\ShadowRunHelper.Skia.Wpf.Host.csproj", "{2B207885-EBBD-4D04-85EC-82E28D01AD23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Skia.Wpf", "ShadowRunHelper\ShadowRunHelper.Skia.Wpf\ShadowRunHelper.Skia.Wpf.csproj", "{E87D9FB3-7144-408A-A3B2-2DEB8FD4C764}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShadowRunHelper.Skia.Wpf", "ShadowRunHelper\ShadowRunHelper.Skia.Wpf\ShadowRunHelper.Skia.Wpf.csproj", "{E87D9FB3-7144-408A-A3B2-2DEB8FD4C764}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.Skia.Gtk", "ShadowRunHelper\ShadowRunHelper.Skia.Gtk\ShadowRunHelper.Skia.Gtk.csproj", "{C8EFDA15-6AFF-4888-8040-92FFACBBCA2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShadowRunHelper.Skia.Gtk", "ShadowRunHelper\ShadowRunHelper.Skia.Gtk\ShadowRunHelper.Skia.Gtk.csproj", "{C8EFDA15-6AFF-4888-8040-92FFACBBCA2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunHelper.UWP", "ShadowRunHelper.UWP\ShadowRunHelper.UWP.csproj", "{20705C89-F90E-4B10-827C-BA8A0B24E14F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -914,6 +916,90 @@ Global
 		{C8EFDA15-6AFF-4888-8040-92FFACBBCA2E}.Release|x64.Build.0 = Release|Any CPU
 		{C8EFDA15-6AFF-4888-8040-92FFACBBCA2E}.Release|x86.ActiveCfg = Release|Any CPU
 		{C8EFDA15-6AFF-4888-8040-92FFACBBCA2E}.Release|x86.Build.0 = Release|Any CPU
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|Any CPU.ActiveCfg = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|Any CPU.Build.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|Any CPU.Deploy.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|ARM.ActiveCfg = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|ARM.Build.0 = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|ARM.Deploy.0 = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|ARM64.ActiveCfg = Debug|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|ARM64.Build.0 = Debug|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|ARM64.Deploy.0 = Debug|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|iPhone.ActiveCfg = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|iPhone.Build.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|iPhone.Deploy.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|iPhoneSimulator.Build.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|iPhoneSimulator.Deploy.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|x64.ActiveCfg = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|x64.Build.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|x64.Deploy.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|x86.ActiveCfg = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|x86.Build.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Ad-Hoc|x86.Deploy.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|Any CPU.ActiveCfg = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|Any CPU.Build.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|Any CPU.Deploy.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|ARM.ActiveCfg = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|ARM.Build.0 = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|ARM.Deploy.0 = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|ARM64.ActiveCfg = Debug|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|ARM64.Build.0 = Debug|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|ARM64.Deploy.0 = Debug|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|iPhone.ActiveCfg = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|iPhone.Build.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|iPhone.Deploy.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|iPhoneSimulator.ActiveCfg = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|iPhoneSimulator.Build.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|iPhoneSimulator.Deploy.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|x64.ActiveCfg = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|x64.Build.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|x64.Deploy.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|x86.ActiveCfg = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|x86.Build.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.AppStore|x86.Deploy.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|Any CPU.Build.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|Any CPU.Deploy.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|ARM.Build.0 = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|ARM.Deploy.0 = Debug|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|ARM64.Build.0 = Debug|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|iPhone.ActiveCfg = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|iPhone.Build.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|iPhone.Deploy.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|iPhoneSimulator.ActiveCfg = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|iPhoneSimulator.Build.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|iPhoneSimulator.Deploy.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x64.ActiveCfg = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x64.Build.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x64.Deploy.0 = Debug|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x86.ActiveCfg = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x86.Build.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Debug|x86.Deploy.0 = Debug|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|Any CPU.ActiveCfg = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|Any CPU.Build.0 = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|Any CPU.Deploy.0 = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|ARM.ActiveCfg = Release|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|ARM.Build.0 = Release|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|ARM.Deploy.0 = Release|ARM
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|ARM64.ActiveCfg = Release|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|ARM64.Build.0 = Release|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|ARM64.Deploy.0 = Release|ARM64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|iPhone.ActiveCfg = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|iPhone.Build.0 = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|iPhone.Deploy.0 = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|iPhoneSimulator.ActiveCfg = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|iPhoneSimulator.Build.0 = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|iPhoneSimulator.Deploy.0 = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x64.ActiveCfg = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x64.Build.0 = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x64.Deploy.0 = Release|x64
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x86.ActiveCfg = Release|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x86.Build.0 = Release|x86
+		{20705C89-F90E-4B10-827C-BA8A0B24E14F}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -934,9 +1020,9 @@ Global
 		{C8EFDA15-6AFF-4888-8040-92FFACBBCA2E} = {CBCCCBD4-F79D-4B60-933D-CA40CC62F769}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5A4EAAD7-E1EC-4603-8AF3-063EAAC0E78B}
-		RESX_CodeReferences = {"Items":[{"Expression":"\\W($File.$Key)\\W","Extensions":".cs,.xaml,.cshtml","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\W($File.$Key)\\W","Extensions":".vbhtml","IsCaseSensitive":false,"SingleLineComment":null},{"Expression":"ResourceManager.GetString\\(\"($Key)\"\\)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"typeof\\((\\w+\\.)*($File)\\).+\"($Key)\"|\"($Key)\".+typeof\\((\\w+\\.)*($File)\\)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\W($Key)\\W","Extensions":".vb","IsCaseSensitive":false,"SingleLineComment":"'"},{"Expression":"\\W($File::$Key)\\W","Extensions":".cpp,.c,.hxx,.h","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"&lt;%\\$\\s+Resources:\\s*($File)\\s*,\\s*($Key)\\s*%&gt;","Extensions":".aspx,.ascx,.master","IsCaseSensitive":true,"SingleLineComment":null},{"Expression":"StringResourceKey\\.($Key)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\.($Key)","Extensions":".ts,.html","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"{resx:$File $Key}","Extensions":".xaml","IsCaseSensitive":true,"SingleLineComment":null},{"Expression":"$File.ResourceManager.GetStringSafe($Key);","Extensions":".cs","IsCaseSensitive":false,"SingleLineComment":null},{"Expression":"","Extensions":".xaml","IsCaseSensitive":false,"SingleLineComment":null}]}
 		RESX_RemoveEmptyEntries = True
+		RESX_CodeReferences = {"Items":[{"Expression":"\\W($File.$Key)\\W","Extensions":".cs,.xaml,.cshtml","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\W($File.$Key)\\W","Extensions":".vbhtml","IsCaseSensitive":false,"SingleLineComment":null},{"Expression":"ResourceManager.GetString\\(\"($Key)\"\\)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"typeof\\((\\w+\\.)*($File)\\).+\"($Key)\"|\"($Key)\".+typeof\\((\\w+\\.)*($File)\\)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\W($Key)\\W","Extensions":".vb","IsCaseSensitive":false,"SingleLineComment":"'"},{"Expression":"\\W($File::$Key)\\W","Extensions":".cpp,.c,.hxx,.h","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"&lt;%\\$\\s+Resources:\\s*($File)\\s*,\\s*($Key)\\s*%&gt;","Extensions":".aspx,.ascx,.master","IsCaseSensitive":true,"SingleLineComment":null},{"Expression":"StringResourceKey\\.($Key)","Extensions":".cs","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"\\.($Key)","Extensions":".ts,.html","IsCaseSensitive":true,"SingleLineComment":"\/\/"},{"Expression":"{resx:$File $Key}","Extensions":".xaml","IsCaseSensitive":true,"SingleLineComment":null},{"Expression":"$File.ResourceManager.GetStringSafe($Key);","Extensions":".cs","IsCaseSensitive":false,"SingleLineComment":null},{"Expression":"","Extensions":".xaml","IsCaseSensitive":false,"SingleLineComment":null}]}
+		SolutionGuid = {5A4EAAD7-E1EC-4603-8AF3-063EAAC0E78B}
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true
