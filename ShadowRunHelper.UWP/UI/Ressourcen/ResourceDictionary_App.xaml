@@ -1,0 +1,119 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:conv="using:ShadowRunHelper.UI.Converter"
+    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,5)"
+    xmlns:contract5NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,5)"
+>
+    <conv:io_ZahlenDouble x:Key="io_ZahlenDouble"/>
+    <conv:o_ZahlenYen x:Key="io_ZahlenYen"/>
+    <conv:io_GebDatum x:Key="io_GebDatum"/>
+    <conv:o_AllListEntry x:Key="o_AllListEntry"/>
+    <conv:o_ThingDef2String x:Key="o_ThingDef2String"/>
+    <conv:o_FileSize x:Key="o_FileSize"/>
+    <conv:o_Null2Bool x:Key="o_Null2Bool"/>
+    <conv:o_NullOrDefault2Bool x:Key="o_NullOrDefault2Bool"/>
+    <conv:o_Null2Visibility x:Key="o_Null2Visibility"/>
+    <conv:o_Bool2Visibility x:Key="o_Bool2Visibility"/>
+    <conv:o_ValueOrNoting x:Key="o_ValueOrNoting"/>
+    <conv:o_LastTime x:Key="o_LastTime"/>
+    <conv:io_Mult1K x:Key="io_Mult1K"/>
+    
+    
+    <contract5NotPresent:SolidColorBrush x:Key="SR_MainBackgroundBrush" 
+                                         Color="{ThemeResource SystemAccentColor}"/>
+    <contract5Present:AcrylicBrush x:Key="SR_MainBackgroundBrush" 
+                                   TintColor="{ThemeResource SystemAccentColor}" 
+                                   FallbackColor="{ThemeResource SystemAccentColor}"
+                                   BackgroundSource="HostBackdrop" 
+                                   TintOpacity="0.5"/>
+
+    <contract5NotPresent:SolidColorBrush x:Key="SR_NotificationBrush" 
+                                         Color="{ThemeResource SystemAltHighColor}"/>
+    <contract5Present:AcrylicBrush x:Key="SR_NotificationBrush"
+                                   TintColor="{ThemeResource SystemAltHighColor}" 
+                                   BackgroundSource="Backdrop" 
+                                   FallbackColor="{ThemeResource SystemAltHighColor}" 
+                                   TintOpacity="0.75"/>
+    
+
+    <contract5NotPresent:Style TargetType="Button" x:Key="STD_Button"/>
+    <contract5Present:Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}" x:Key="STD_Button"/>
+
+    <contract5NotPresent:Style TargetType="RepeatButton" x:Key="STD_RepeatButton"/>
+    <contract5Present:Style TargetType="RepeatButton" BasedOn="{StaticResource RepeatButtonRevealStyle}" x:Key="STD_RepeatButton"/>
+
+    
+    <Style TargetType="ScrollViewer" x:Key="ScrollViewer">
+        <Setter Property="VerticalScrollMode" Value="Enabled"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Visible"/>
+        <Setter Property="HorizontalScrollMode" Value="Auto"/>
+    </Style>
+    <Style TargetType="RelativePanel" x:Key="RelativePanel">
+        <Setter Property="RelativePanel.HorizontalAlignment" Value="Center"/>
+        <Setter Property="MinWidth" Value="300"/>
+    </Style>
+
+    <Style TargetType="ListViewItem" x:Key="ListViewItemStyle">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrushes}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="MinHeight" Value="0" />
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TextInhaltKlein">
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="TextInhaltGross">
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="EditTextBoxBase">
+        <Setter Property="Margin" Value="3,1,3,1"/>
+    </Style>
+    <Style TargetType="TextBox" x:Key="Zahlen" BasedOn="{StaticResource EditTextBoxBase}">
+        <Setter Property="InputScope" Value="Digits"/>
+    </Style>
+
+    <Style BasedOn="{StaticResource Zahlen}" TargetType="TextBox" x:Key="EditZahlen">
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="EditTextBox" BasedOn="{StaticResource EditTextBoxBase}">
+    </Style>
+    <Style TargetType="TextBox" x:Key="NotesBox" BasedOn="{StaticResource EditTextBoxBase}">
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="PlaceholderText" Value="..."/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="EditTextBlock">
+    </Style>
+    <Style TargetType="Border" x:Key="Tut1Highlight">
+        <Setter Property="BorderBrush" Value="Red"/>
+        <Setter Property="BorderThickness" Value="10"/>
+    </Style>
+    <Style TargetType="Border" x:Key="Tut1Unhighlight">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="ListViewItem" x:Key="AllListEntry_ListView">
+        <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
+        <Setter Property="BorderThickness" Value="1,0,0,0"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="5,0,5,0"/>
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="MinWidth" Value="0" />
+    </Style>
+    <contract5NotPresent:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible">
+        <Setter Property="ToolTipService.Placement" Value="Right"/>
+    </contract5NotPresent:Style>
+    <contract5Present:Style TargetType="MenuFlyoutItem" x:Key="MenuFlyoutItemRevealStyle_IfPossible"/>
+
+    <Style TargetType="TextBlock" x:Key="UnimportandInformation">
+        <Setter Property="Foreground" Value="{ThemeResource UnimportandInformationBrush}" />
+    </Style>
+</ResourceDictionary>

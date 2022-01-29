@@ -1,0 +1,61 @@
+﻿<ContentDialog
+    x:Class="ShadowRunHelper.UI.CharSettingsDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ShadowRunHelper.Win.UI.Parts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:CharModel="using:ShadowRunHelper.CharModel"
+    mc:Ignorable="d"
+    >
+    <ContentDialog.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <CollectionViewSource x:Name="GroupedCategoryOptions" IsSourceGrouped="true" />
+        </ResourceDictionary>
+    </ContentDialog.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListView ItemsSource="{Binding Source={StaticResource GroupedCategoryOptions}}"
+                              ShowsScrollingPlaceholders="True"
+                              SelectionMode="None"
+                  Grid.ColumnSpan="2"
+                              >
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}" FontSize="30" />
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="CharModel:CategoryOption">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <ToggleSwitch IsOn="{x:Bind Visibility, Mode=TwoWay}"/>
+                        <TextBlock VerticalAlignment="Center" Grid.Column="1" Text="{x:Bind ThingType, Converter={StaticResource o_ThingDef2String}}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Uid="UI_CNT_Close" Click="CloseButton_Click" Grid.Row="1" HorizontalAlignment="Stretch" Margin="5"/>
+        <Button x:Uid="UI_CNT_Reset" Click="ResetButton_Click" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5"/>
+    </Grid>
+</ContentDialog>

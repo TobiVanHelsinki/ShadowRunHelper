@@ -1,0 +1,34 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+>
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ResourceDictionary_App.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <Style TargetType="TextBlock" x:Key="Chars">
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Margin" Value="4,2,4,4"/>
+    </Style>
+
+    <Style TargetType="Grid" x:Key="ListView_E">
+        <Setter Property="BorderBrush" Value="{ThemeResource BorderBrushes}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Padding" Value="10,0,5,0"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="ListView_Item_Text">
+        <Setter Property="Margin" Value="5,2,5,2"/>
+    </Style>
+    <Style TargetType="ListViewItem" x:Key="ListViewItemStyle">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="10,0,10,0 " />
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,247 @@
+﻿<Page
+    x:Class="ShadowRunHelper.UI.MainPage"
+    x:Name="Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:contract5Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:model="using:ShadowRunHelper.Model"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_MainPage.xaml"/>
+                <ResourceDictionary Source="../Ressourcen/ResourceDictionary_Char.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Name="Status" x:Key="Status" x:DataType="model:CharHolder">
+                <UserControl>
+                    <Grid x:Name="MainGrid" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <VisualStateManager.VisualStateGroups>
+                            <!-- DamagePanel -->
+                            <VisualStateGroup>
+                                <VisualState>
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowHeight="350"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="DamageSliders.Height" Value="330"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState>
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowHeight="300"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="DamageSliders.Height" Value="280"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState>
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowHeight="250"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="DamageSliders.Height" Value="230"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState>
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowHeight="200"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="DamageSliders.Height" Value="180"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState>
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowHeight="150"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="DamageSliders.Height" Value="130"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState>
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowHeight="100"/>
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="DamageSliders.Height" Value="80"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState>
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowHeight="0" />
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="DamageSliders.Height" Value="50"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid Grid.Column="1" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel IsHitTestVisible="False" Margin="10,0,0,0" VerticalAlignment="Center" Style="{StaticResource Panel_Oben_Parts_Stack}">
+                                <TextBlock Text="{x:Bind Person.Alias,Mode=OneWay}" Style="{StaticResource Panel_Top}"/>
+                                <TextBlock Text="{x:Bind Person.Char_Typ,Mode=OneWay}" Style="{StaticResource Panel_Top}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="5">
+                                <Button Click="Click_Save" Style="{StaticResource STD_Button}" VerticalAlignment="Stretch">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xE74E;" FontFamily="Segoe MDL2 Assets" FontSize="19" Margin="0,0,5,0"/>
+                                        <!--<TextBlock x:Uid="UI_TxT_Save"/>-->
+                                        <TextBlock x:Uid="SymbolChanges" Visibility="{x:Bind HasChanges, Mode=OneWay}"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Margin="5,0,0,0" Style="{StaticResource STD_Button}" VerticalAlignment="Stretch">
+                                    <Button.Flyout>
+                                        <MenuFlyout>
+                                            <MenuFlyoutItem x:Uid="UI_TxT_SaveAtCurrentPlace" Icon="Save" Click="Click_SaveAtCurrentPlace" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                            <MenuFlyoutItem x:Uid="UI_TxT_SaveExtern" Icon="SaveLocal" Click="Click_SaveExtern" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                            <MenuFlyoutItem x:Uid="UI_TxT_CSV_Export" Icon="SaveLocal" Click="Click_UI_TxT_CSV_Cat_Exportport" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                            <MenuFlyoutItem x:Uid="UI_TxT_OpenFolder" Icon="OpenLocal" Click="Click_OpenFolder" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                            <MenuFlyoutSeparator/>
+                                            <MenuFlyoutItem x:Uid="UI_TxT_SubtractLifeStyleCost" Click="Click_SubtractLifeStyleCost" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}">
+                                                <MenuFlyoutItem.Icon >
+                                                    <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x1F4B2;">
+                                                        <FontIcon.RenderTransform>
+                                                            <ScaleTransform ScaleX="1.74"/>
+                                                        </FontIcon.RenderTransform>
+                                                    </FontIcon>
+                                                </MenuFlyoutItem.Icon>
+                                            </MenuFlyoutItem>
+                                            <MenuFlyoutSeparator/>
+                                            <MenuFlyoutItem x:Uid="UI_TxT_CharSettings" Icon="Setting" Click="Click_CharSettings" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                            <MenuFlyoutItem x:Uid="UI_TxT_Repair" Icon="Repair" Click="Click_Repair" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                            <MenuFlyoutItem x:Uid="UI_TxT_Unload" Icon="Delete" Click="Click_Delete" Style="{StaticResource MenuFlyoutItemRevealStyle_IfPossible}"/>
+                                        </MenuFlyout>
+                                    </Button.Flyout>
+                                </Button>
+                                <Button Content="&#xE728;" FontFamily="Segoe MDL2 Assets" Margin="5,0,0,0" Style="{StaticResource STD_Button}" VerticalAlignment="Stretch" Loaded="FavButton_Loaded">
+                                    <Button.Flyout >
+                                        <Flyout Placement="Bottom">
+                                            <ListView ItemsSource="{x:Bind Favorites, Mode=OneWay}"
+                                          CanReorderItems="True" AllowDrop="True"
+                                          IsItemClickEnabled="True" ItemClick="FavListItemClick"
+                                          />
+                                        </Flyout>
+                                    </Button.Flyout>
+                                </Button>
+                            </StackPanel>
+
+                            <AutoSuggestBox Grid.Column="2" x:Name="GlobalFilterBox" x:Uid="GlobalFilterBox" QueryIcon="Find"
+                                HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"           VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                                TextChanged="AutoSuggestBox_TextChanged"
+                                QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                ItemsSource="{x:Bind ThingList, Mode=OneWay}"
+                                Margin="5"
+                                />
+                        </Grid>
+                    </Grid>
+                </UserControl>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Style="{StaticResource MainGrid}" Grid.ColumnSpan="99" Grid.RowSpan="99" x:Name="AppTitleBar"/>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="TitleColumnL" Width="0"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition x:Name="TitleColumnR" Width="0"/>
+            </Grid.ColumnDefinitions>
+            <Border x:Name="StatusControlBorder" Grid.Column="1">
+                <ContentControl HorizontalContentAlignment="Stretch" x:Name="StatusControl" ContentTemplate="{StaticResource Status}"
+                            DataContext="{x:Bind Model.MainObject, Mode=OneWay}" 
+                            IsEnabled="{x:Bind Model.MainObject, Converter={StaticResource o_Null2Bool}, Mode=OneWay}"
+                />
+            </Border>
+        </Grid>
+
+        <Frame Grid.Row="1" Name="MyFrame"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ProgressRing Grid.ColumnSpan="3" Grid.RowSpan="3" x:Name="ProgressRing" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="50"/>
+            <TextBlock Grid.Column="1" Grid.Row="0" x:Name="LoadingCharField"
+                       FontSize="20" TextWrapping="Wrap"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Grid Grid.Column="1" Grid.Row="1" x:Name="TipTextWindow" CornerRadius="8" Padding="10" Background="{StaticResource SR_NotificationBrush}" Tapped="TipTextWindow_Tapped" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <interactivity:Interaction.Behaviors>
+                    <behaviors:Fade x:Name="Tip_Fade"
+                      Delay="0"
+                      EasingType="Linear"/>
+                </interactivity:Interaction.Behaviors>
+                <TextBlock x:Uid="ui_txt_TipHeader" TextWrapping="Wrap" FontSize="{StaticResource TextStyleExtraLargeFontSize}"/>
+                <TextBlock x:Name="TipText" Grid.Row="1" Margin="15,0,0,0" TextWrapping="Wrap" Style="{StaticResource TextInhaltKlein}" VerticalAlignment="Top"/>
+                <TextBlock x:Uid="UI_Txt_DisableTips" Grid.Row="2" Foreground="LightGray" TextWrapping="Wrap" Margin="15,8,0,0"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border IsHitTestVisible="False" Grid.Row="2" Grid.Column="1" Background="{ThemeResource SR_MainBackgroundBrush}" Height="{Binding ElementName=MainBarBorder, Path=ActualHeight, Mode=OneWay}"/>
+            <Border Grid.Row="2" x:Name="MainBarBorder" Background="Transparent">
+                <CommandBar IsDynamicOverflowEnabled="False" x:Name="MainBar1" Background="Transparent" HorizontalAlignment="Left" DefaultLabelPosition="Right" >
+                    <AppBarButton x:Name="Nav_Char" IsEnabled="{x:Bind Model.MainObject, Mode=OneWay, Converter={StaticResource o_Null2Bool}}" x:Uid="Ui_Nav_Char" Icon="Contact" Click="Ui_Nav_Char" Foreground="FloralWhite" />
+                    <AppBarButton x:Name="Nav_Admin" x:Uid="Ui_Nav_Admin" Icon="People" Click="Ui_Nav_Admin" Foreground="FloralWhite" />
+                    <AppBarButton x:Name="Nav_Settings" x:Uid="Ui_Nav_Settings" Icon="Setting" Click="Ui_Nav_Settings" Foreground="FloralWhite"/>
+                    <AppBarButton x:Name="Debug_CreateDebugChar" Visibility="Collapsed" Label="CreateDebugChar" Icon="Add" Click="CreateDebugChar"/>
+                </CommandBar>
+            </Border>
+        </Grid>
+
+        <controls:InAppNotification  x:Name="ExampleInAppNotification"
+                                     Grid.RowSpan="3"
+                                     PointerPressed="ExampleInAppNotification_PointerPressed"
+                                     ShowDismissButton="True"
+                                     VerticalAlignment="Bottom"
+                                     HorizontalAlignment="Right"
+                                     Padding="15,12,15,10"
+                                     AnimationDuration="00:00:00.5000000"
+                                     Background="{ThemeResource SR_NotificationBrush}"
+                                     BorderThickness="2"
+                                     BorderBrush="{ThemeResource InkToolbarAccentColorThemeBrush}"
+                                     Closing="ExampleInAppNotification_Closing"
+        >
+            <interactivity:Interaction.Behaviors>
+                <behaviors:Fade x:Name="Notification_Fade"
+              Value="0"
+              Duration="500"
+              Delay="0"
+              EasingType="Linear"/>
+            </interactivity:Interaction.Behaviors>
+        </controls:InAppNotification>
+    </Grid>
+</Page>

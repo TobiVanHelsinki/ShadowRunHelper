@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4" xmlns:iot2="http://schemas.microsoft.com/appx/manifest/iot/windows10/2" IgnorableNamespaces="uap mp uap3 desktop4 iot2">
+  <Identity Name="21863TobivanHelsinki.ShadowRunHelper" Publisher="CN=D02849C2-745B-495E-891A-5F7C07581158" Version="2.0.2.0" />
+  <mp:PhoneIdentity PhoneProductId="cc97c360-f896-4889-9181-554b4cebb92e" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>ShadowRunHelper</DisplayName>
+    <PublisherDisplayName>Tobi van Helsinki</PublisherDisplayName>
+    <Logo>Assets\Logo\NewStoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+  <Resources>
+    <!--<Resource Language="x-generate" />-->
+    <Resource Language="en" />
+    <Resource Language="de" />
+  </Resources>
+  <Applications>
+    <Application desktop4:SupportsMultipleInstances="false" iot2:SupportsMultipleInstances="true" Id="App" Executable="$targetnametoken$.exe" EntryPoint="ShadowRunHelper.App">
+      <uap:VisualElements DisplayName="ShadowRunHelper" Square150x150Logo="Assets\Logo\Square150x150Logo.png" Square44x44Logo="Assets\Logo\Square44x44Logo.png" Description="Die beste App, um deine ShadowRun Charachter zu hegen und pflegen!" BackgroundColor="transparent">
+        <uap:LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\Logo\BadgeLogo.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Logo\Wide310x150Logo.png" Square310x310Logo="Assets\Logo\Square310x310Logo.png" Square71x71Logo="Assets\Logo\Square71x71Logo.png" ShortName="ShadowRunHelper">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\Logo\SplashScreen.png" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="portrait" />
+          <uap:Rotation Preference="landscape" />
+          <uap:Rotation Preference="portraitFlipped" />
+          <uap:Rotation Preference="landscapeFlipped" />
+        </uap:InitialRotationPreference>
+      </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.fileTypeAssociation" Executable="ShadowRunHelper.UWP.exe" EntryPoint="ShadowRunHelper.UWP.App">
+          <uap:FileTypeAssociation Name="srhchar" DesiredView="default">
+            <uap:DisplayName>SRHChar</uap:DisplayName>
+            <uap:Logo>Assets\FileFormatLogo.png</uap:Logo>
+            <uap:InfoTip>ShadowRun Charachter</uap:InfoTip>
+            <uap:EditFlags OpenIsSafe="true" />
+            <uap:SupportedFileTypes>
+              <uap:FileType>.SRHChar</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+        <uap:Extension Category="windows.protocol" Executable="ShadowRunHelper.UWP.exe" EntryPoint="ShadowRunHelper.UWP.App">
+          <uap:Protocol Name="srch">
+            <uap:DisplayName>ShadowRunHelper Char</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+        <uap:Extension Category="windows.fileTypeAssociation" Executable="ShadowRunHelper.UWP.exe" EntryPoint="ShadowRunHelper.UWP.App">
+          <uap:FileTypeAssociation Name="srhapp1">
+            <uap:DisplayName>SRHApp1</uap:DisplayName>
+            <uap:Logo>Assets\FileFormatLogo.png</uap:Logo>
+            <uap:InfoTip>ShadowRunHelper App Packet</uap:InfoTip>
+            <uap:EditFlags OpenIsSafe="true" />
+            <uap:SupportedFileTypes>
+              <uap:FileType>.SRHApp1</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
