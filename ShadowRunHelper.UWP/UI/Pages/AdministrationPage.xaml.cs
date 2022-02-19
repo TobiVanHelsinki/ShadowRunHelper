@@ -141,7 +141,7 @@ namespace ShadowRunHelper.UI
                     new Tutorial(1, 4).ShowAsync();
                 }
                 catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ { 
                 }
                 SettingsModel.I.TUT_SHOWN_1 = true;
             }
@@ -219,7 +219,7 @@ namespace ShadowRunHelper.UI
             }
             catch (Exception ex)
             {
-                TAPPLICATION.Debugging.TraceException(ex);
+                
             }
             ChangeProgress(false);
             await Summorys_Aktualisieren();
@@ -267,7 +267,7 @@ namespace ShadowRunHelper.UI
                     return Success;
                 }
                 catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ { 
                     return false;
                 }
             }

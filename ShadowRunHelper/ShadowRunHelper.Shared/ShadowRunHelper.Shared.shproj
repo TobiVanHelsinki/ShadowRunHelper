@@ -1,13 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<PropertyGroup Label="Globals">
-		<ProjectGuid>6279c845-92f8-4333-ab99-3d213163593c</ProjectGuid>
-		<MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
-	</PropertyGroup>
-	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-	<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.Default.props" />
-	<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.props" />
-	<PropertyGroup />
-	<Import Project="ShadowRunHelper.Shared.projitems" Label="Shared" />
-	<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>6279c845-92f8-4333-ab99-3d213163593c</ProjectGuid>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.Default.props" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.props" />
+  <PropertyGroup />
+  <Import Project="ShadowRunHelper.Shared.projitems" Label="Shared" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
+  <ItemGroup>
+    <_Globbed_Compile Remove="Platform\IFormsInteractions.cs" />
+    <_Globbed_Compile Remove="Platform\ILocalizing.cs" />
+    <_Globbed_Compile Remove="Platform\Init.cs" />
+    <_Globbed_Compile Remove="Platform\IO.cs" />
+    <_Globbed_Compile Remove="Platform\PlatformCulture.cs" />
+    <_Globbed_Compile Remove="Platform\PlatformHelper.cs" />
+    <_Globbed_Compile Remove="Platform\Settings.cs" />
+    <_Globbed_Compile Remove="UI\Converter\io_GebDatum.cs" />
+    <_Globbed_Compile Remove="UI\Converter\io_Mult1K.cs" />
+    <_Globbed_Compile Remove="UI\Converter\io_Zahlen.cs" />
+    <_Globbed_Compile Remove="UI\Converter\o_AllListEntry.cs" />
+    <_Globbed_Compile Remove="UI\Converter\o_FileSize.cs" />
+    <_Globbed_Compile Remove="UI\Converter\o_LastTime.cs" />
+    <_Globbed_Compile Remove="UI\Converter\o_NullConverter.cs" />
+    <_Globbed_Compile Remove="UI\Converter\o_ThingDef2String.cs" />
+    <_Globbed_Compile Remove="UI\Converter\o_ValueOrNoting.cs" />
+    <_Globbed_Compile Remove="UI\Converter\o_ZahlenYen.cs" />
+    <_Globbed_Compile Remove="UI\Parts\CategoryBlock.xaml.cs" />
+    <_Globbed_Compile Remove="UI\Parts\CategoryEntry.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <_Globbled_Page Remove="UI\Parts\CategoryBlock.xaml" />
+    <_Globbled_Page Remove="UI\Parts\CategoryEntry.xaml" />
+    <_Globbled_Page Remove="UI\Ressourcen\ResourceDictionary_App.xaml" />
+    <_Globbled_Page Remove="UI\Ressourcen\ResourceDictionary_Char.xaml" />
+    <_Globbled_Page Remove="UI\Ressourcen\ResourceDictionary_Char_Verwaltung.xaml" />
+    <_Globbled_Page Remove="UI\Ressourcen\ResourceDictionary_MainPage.xaml" />
+    <_Globbled_Page Remove="UI\Ressourcen\ResourceDictionary_Settings.xaml" />
+  </ItemGroup>
 </Project>

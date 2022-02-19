@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
@@ -11,6 +11,9 @@
   </ItemGroup>
   <ItemGroup>
     <UpToDateCheckInput Include="..\ShadowRunHelper.Shared\**\*.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SharedCode\SharedCode.csproj" />
   </ItemGroup>
   <Import Project="..\ShadowRunHelper.Shared\ShadowRunHelper.Shared.projitems" Label="Shared" />
 </Project>

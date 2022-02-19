@@ -58,11 +58,11 @@ namespace ShadowRunHelper.Model
                 case nameof(MainObject):
                     if (MainObject != null)
                     {
-                        Features.Activities.GenerateCharActivityAsync(MainObject);
+                        Features.Activities?.GenerateCharActivityAsync(MainObject);
                     }
                     else
                     {
-                        Features.Activities.StopCurrentCharActivity();
+                        Features.Activities?.StopCurrentCharActivity();
                     }
                     break;
                 default:

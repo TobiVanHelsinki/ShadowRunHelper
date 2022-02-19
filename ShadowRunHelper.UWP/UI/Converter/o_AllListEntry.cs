@@ -14,7 +14,7 @@ namespace ShadowRunHelper.UI.Converter
             switch ((string)parameter)
             {
                 case "Wert":
-                    return item.Object.ValueOf(item.PropertyID).ToString();
+                    return item.Object.Wert.ToString();
                 case "Bezeichner":
                     if (item?.PropertyID == "")
                     {
@@ -22,7 +22,7 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return CustomManager.GetString("Model__Active/Text") + " " + CustomManager.GetString(item.DisplayName);
+                        return "xxx"; //CustomManager.GetString("Model__Active/Text") + " " + CustomManager.GetString(item.DisplayName);
                     }
                 case "BezeichnerLang":
                     if (item?.PropertyID == "")
@@ -31,10 +31,10 @@ namespace ShadowRunHelper.UI.Converter
                     }
                     else
                     {
-                        return TypeHelper.ThingDefToString(item.Object.ThingType, false) + " " + CustomManager.GetString(item.DisplayName);
+                        return TypeHelper.ThingDefToString(item.Object.ThingType, false) + " " + "xxx"; //CustomManager.GetString(item.DisplayName);
                     }
                 case "Zusatz":
-                    return item.Object.ValueOf("Zusatz").ToString();
+                    return item.Object.Zusatz.ToString();
                 default:
                     return value;
             }

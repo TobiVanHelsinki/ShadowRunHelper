@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using TAPPLICATION;
 using Windows.UI.Xaml.Data;
 
 namespace ShadowRunHelper.UI.Converter
@@ -16,7 +15,7 @@ namespace ShadowRunHelper.UI.Converter
                 return ((DateTimeOffset)value).Date.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern).Trim();
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+            {
                 return SharedConstants.ERROR_TOKEN;
             }
         }

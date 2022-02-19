@@ -27,5 +27,8 @@
   <ItemGroup Condition="'$(TargetFramework)'=='net6.0-ios' or '$(TargetFramework)'=='net6.0-maccatalyst'">
     <PackageReference Include="Uno.Extensions.Logging.OSLog" Version="1.2.0-dev.2" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SharedCode\SharedCode.csproj" />
+  </ItemGroup>
   <Import Project="..\ShadowRunHelper.Shared\ShadowRunHelper.Shared.projitems" Label="Shared" />
 </Project>

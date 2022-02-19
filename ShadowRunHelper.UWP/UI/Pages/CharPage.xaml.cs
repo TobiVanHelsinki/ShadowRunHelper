@@ -71,7 +71,7 @@ namespace ShadowRunHelper.UI
                     Char_DisplayRequest.RequestActive();
                 }
                 catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ { 
                 }
             }
             switch (((ProjectPagesOptions)e.Parameter))
@@ -83,7 +83,7 @@ namespace ShadowRunHelper.UI
                         await new Edit_Person_Detail(MainObject.Person).ShowAsync();
                     }
                     catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ { 
                     }
                     break;
                 case ProjectPagesOptions.Char_Action:
@@ -121,7 +121,7 @@ namespace ShadowRunHelper.UI
                     Char_DisplayRequest.RequestRelease();
                 }
                 catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ { 
                 }
             }
             base.OnNavigatedFrom(e);
@@ -138,7 +138,7 @@ namespace ShadowRunHelper.UI
                 await new Edit_Person_Detail(MainObject.Person).ShowAsync();
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ { 
             }
         }
         #endregion
@@ -188,7 +188,7 @@ namespace ShadowRunHelper.UI
                 sv.ChangeView(null, offset - 100, null);
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ { 
                 return;
             }
             Model.PendingScrollEntry = null;
@@ -227,7 +227,7 @@ namespace ShadowRunHelper.UI
                 EditZone.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, MainObject.Person.Notizen);
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ { 
             }
         }
         void SaveNotes()
@@ -241,7 +241,7 @@ namespace ShadowRunHelper.UI
                 }
             }
             catch (Exception ex)
- { TAPPLICATION.Debugging.TraceException(ex);
+ { 
             }
         }
 
