@@ -67,7 +67,7 @@ namespace ShadowRunHelper
             TLIB.Log.InMemoryLogMaxCount = 100;
             TLIB.Log.IsInMemoryLogEnabled = true;
             TLIB.Log.IsFileLogEnabled = false;
-            TLIB.Log.IsConsoleLogEnabled = true;
+            TLIB.Log.IsConsoleLogEnabled = false;
             SettingsModel.Initialize();
             this.InitializeComponent();
             //NavigationCacheMode = NavigationCacheMode.Required;

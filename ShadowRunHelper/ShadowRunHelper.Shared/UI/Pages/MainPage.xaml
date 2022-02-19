@@ -27,7 +27,7 @@
         <ScrollViewer Grid.Row="1">
           <StackPanel>
                 <TextBlock Text="Attribute" FontWeight="Bold" FontSize="15"/>
-                <ListView x:Name="TestList" ItemsSource="{x:Bind MainObject.CTRLAttribut.Data, Mode=OneWay}" VerticalAlignment="Stretch" Background="AntiqueWhite">
+                <ListView ItemsSource="{x:Bind MainObject.CTRLAttribut.Data, Mode=OneWay}" VerticalAlignment="Stretch" Background="AntiqueWhite">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="charmodel:Attribut">
                             <StackPanel Orientation="Horizontal">
