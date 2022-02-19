@@ -95,6 +95,7 @@ namespace SharedCodeTest
         public void AktiveTest()
         {
             var t = new Item();
+            t.Aktiv = true;
             t.Value.BaseValue = 5;
 
             ConnectProperty tdp = 5;

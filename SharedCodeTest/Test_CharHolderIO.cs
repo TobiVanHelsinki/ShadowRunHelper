@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Linq;
 using ShadowRunHelper.IO;
+using ShadowRunHelper;
 
 namespace SharedCodeTest
 {
@@ -15,6 +16,9 @@ namespace SharedCodeTest
         [TestMethod]
         public void SerializingSTDChar()
         {
+            AppModel.Initialize();
+            SettingsModel.Initialize();
+
             var Should = CharHolderGenerator.CreateCharWithStandardContent();
             var Is = CharHolderIO.Deserialize(SharedIO.Serialize(Should));
             TestHelper.CompareCharHolder(Should, Is);
@@ -22,6 +26,8 @@ namespace SharedCodeTest
         [TestMethod]
         public void SerializingTestChar()
         {
+            AppModel.Initialize();
+            SettingsModel.Initialize();
             var Should = TestHelper.CreateTestChar();
             var Current = CharHolderIO.Deserialize(SharedIO.Serialize(Should));
             TestHelper.CompareCharHolder(Should, Current);
@@ -29,6 +35,8 @@ namespace SharedCodeTest
         [TestMethod]
         public void SerializingFileChar()
         {
+            AppModel.Initialize();
+            _ = SettingsModel.Initialize();
             var FileContent = File.ReadAllText(Environment.CurrentDirectory + @"\assets\Flash.SRHChar");
             var Expected = CharHolderIO.Deserialize(FileContent);
             string fileContent = SharedIO.Serialize(Expected);

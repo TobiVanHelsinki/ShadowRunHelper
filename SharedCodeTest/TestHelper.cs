@@ -12,16 +12,16 @@ namespace SharedCodeTest
     {
         public static CharHolder CreateTestChar()
         {
-            CharHolder Ret = new CharHolder();
+            CharHolder myChar = new CharHolder();
             var H1 = new Handlung() { Bezeichner = "Handlung1" };
-            Ret.Add(H1);
-            Ret.Add(new Vorteil() { Bezeichner = "Vorteil1" });
+            myChar.Add(H1);
+            myChar.Add(new Vorteil() { Bezeichner = "Vorteil1" });
+            myChar.RefreshLists();  
+            H1.Value.Connected.Add(myChar.Connects.First(x => x.Owner == myChar.CTRLAttribut.Charisma));
+            H1.Value.Connected.Add(myChar.Connects.First(x => x.Owner == myChar.CTRLAttribut.Logik));
+            H1.Against.Connected.Add(myChar.Connects.First(x => x.Owner == myChar.CTRLVorteil[0]));
 
-            //H1.LinkedThings.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Charisma));
-            //H1.LinkedThings.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLAttribut.Logik));
-            //H1.GegenZusammensetzung.Add(Ret.LinkList.First(x => x.Object == Ret.CTRLVorteil[0]));
-
-            return Ret;
+            return myChar;
         }
 
         public static CharHolder SaveOpen(CharHolder Char)
@@ -31,7 +31,7 @@ namespace SharedCodeTest
 
         public static void CompareCharHolder(CharHolder CharA, CharHolder CharB)
         {
-            Assert.AreEqual(CharA.HasChanges, CharB.HasChanges);
+            //Assert.AreEqual(CharA.HasChanges, CharB.HasChanges);
 
             Assert.AreEqual(CharA.Settings.CategoryOptions.Count(), CharB.Settings.CategoryOptions.Count());
             foreach (var (CatA, CatB) in CharA.Settings.CategoryOptions.Join(CharB.Settings.CategoryOptions, x => x.ThingType, x => x.ThingType, (x, y) => (x, y)))
