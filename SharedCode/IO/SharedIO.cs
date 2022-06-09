@@ -124,10 +124,12 @@ namespace ShadowRunHelper.IO
         /// <param name="a"></param>
         public static void ErrorHandler(object o, Newtonsoft.Json.Serialization.ErrorEventArgs a)
         {
-            var JSON_Error_Notification = new LogMessage(LogType.Error, "Error during deserialization. Your content migth be not complete.", DateTime.Now, nameof(SharedIO), null, "");
-            JSON_Error_Notification.Message += "\n\t" + a.ErrorContext.Path;
-            SharedAppModel.Instance?.lstNotifications.Insert(0, JSON_Error_Notification);
-            a.ErrorContext.Handled = true;
+            //var JSON_Error_Notification = new LogMessage(LogType.Error, "Error during deserialization. Your content migth be not complete.", DateTime.Now, nameof(SharedIO), null, "");
+            //JSON_Error_Notification.Message += "\n\t" + a.ErrorContext.Path;
+            //SharedAppModel.Instance?.lstNotifications.Insert(0, JSON_Error_Notification);
+            Log.Write("Error during deserialization. Your content migth be not complete a.ErrorContext.Path:" + a.ErrorContext.Path);
+            a.ErrorContext.Handled = true; 
+
         }
 
         #region Serialization
@@ -176,6 +178,7 @@ namespace ShadowRunHelper.IO
             string strAppVersion = o.Value<string>(SharedConstants.STRING_APP_VERSION_NUMBER);
             string strFileVersion = o.Value<string>(SharedConstants.STRING_FILE_VERSION_NUMBER);
 
+            //Log.Write("start MainTypeConvert");
             return MainTypeConvert(strAppVersion, strFileVersion, fileContent);
         }
 
@@ -194,6 +197,7 @@ namespace ShadowRunHelper.IO
                     Error = ErrorHandler,
                     PreserveReferencesHandling = PreserveReferencesHandling.All
                 };
+                //Log.Write("Deserialize Object now");
                 return JsonConvert.DeserializeObject<CurrentType>(fileContent, settings);
             };
 

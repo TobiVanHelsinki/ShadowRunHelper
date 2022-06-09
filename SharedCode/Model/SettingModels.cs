@@ -118,7 +118,7 @@ namespace ShadowRunHelper
                 }
                 catch (Exception ex)
                 {
-                    Log.Write("Could not", ex, logType: LogType.Error);
+                    Log.Write("Could not init Settingsmodel", ex, logType: LogType.Error);
                 }
             }
             instance.PropertyChanged += SettingsChanged;

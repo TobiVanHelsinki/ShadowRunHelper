@@ -23,7 +23,7 @@ namespace ShadowRunHelper.Model
     public class CharHolder : IMainType, INotifyPropertyChanged
     {
         #region vars
-        public string APP_VERSION_NUMBER => "ND";
+        public string APP_VERSION_NUMBER => "4";
 
         public string FILE_VERSION_NUMBER => Constants.CHARFILE_VERSION;
         #endregion vars
@@ -113,6 +113,7 @@ namespace ShadowRunHelper.Model
 
         public string MakeName(bool UseProgress)
         {
+            Log.Write("MakeName");
             string strSaveName = "";
 
             string AddNameAndType(string Name)
@@ -124,6 +125,7 @@ namespace ShadowRunHelper.Model
 
             if (UseProgress)
             {
+            Log.Write("UseProgress");
                 strSaveName = AddNameAndType(strSaveName);
                 strSaveName += ",";
                 strSaveName += Person.Runs.ToString();
@@ -141,6 +143,7 @@ namespace ShadowRunHelper.Model
             {
                 strSaveName = AddNameAndType(strSaveName);
             }
+            Log.Write("return ");
 
             return strSaveName.EndsWith(Constants.DATEIENDUNG_CHAR) ? strSaveName : strSaveName += Constants.DATEIENDUNG_CHAR;
         }
@@ -191,6 +194,7 @@ namespace ShadowRunHelper.Model
         /// <exception cref="System.Security.SecurityException">Ignore.</exception>
         public void Repair()
         {
+            Log.Write("Repairing Char");
             RefreshLists();
             //repair implicit created items
             foreach (Thing thing in Things)
@@ -352,6 +356,7 @@ namespace ShadowRunHelper.Model
 
         public void RefreshListeners()
         {
+            Log.Write("RefreshListeners");
             // Don't register AnyPropertyChanged() at the PropertyChanged Event of this Class ->
             // endless loop;
             Person.PropertyChanged -= AnyPropertyChanged;

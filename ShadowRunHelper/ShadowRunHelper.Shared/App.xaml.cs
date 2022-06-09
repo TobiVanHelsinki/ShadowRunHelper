@@ -28,6 +28,13 @@ namespace ShadowRunHelper
 #if HAS_UNO || NETFX_CORE
             this.Suspending += OnSuspending;
 #endif
+
+//#if WINDOWS_UWP
+            ShadowRunHelper.IO.SharedIO.CurrentIO = new ShadowRunHelperViewer.Platform.UWP.IO();
+            ShadowRunHelper.Model.SharedSettingsModel.PlatformSettings = new ShadowRunHelperViewer.Platform.UWP.Settings();
+            ShadowRunHelper.Helper.PlatformHelper.Platform = new ShadowRunHelperViewer.Platform.UWP.PlatformHelper();
+//#endif
+
         }
 
         /// <summary>

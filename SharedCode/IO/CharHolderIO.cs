@@ -244,6 +244,9 @@ namespace ShadowRunHelper.IO
         /// <exception cref="ShadowRunHelper.IO_FileVersion">To old file version</exception>
         internal static CharHolder ConvertWithRightVersion(string strAppVersion, string strFileVersion, string fileContent)
         {
+            //Log.Write("strAppVersion"+ strAppVersion);
+            //Log.Write("strFileVersion" + strFileVersion);
+            //Log.Write("fileContent Length" + fileContent.Length);
             var settings = new JsonSerializerSettings()
             {
                 Error = ErrorHandler,
@@ -301,6 +304,7 @@ namespace ShadowRunHelper.IO
                 case Constants.CHARFILE_VERSION_1_8:
                     settings.Converters.Add(new RemoveUnusedProps());
                     ReturnCharHolder = JsonConvert.DeserializeObject<CharHolder>(fileContent, settings);
+                    //Log.Write("DeserializeObject finished: " + (ReturnCharHolder is not null).ToString());
                     OldNoteToNewNotes(ReturnCharHolder);
                     break;
                 default:
@@ -314,6 +318,7 @@ namespace ShadowRunHelper.IO
         {
             if (!string.IsNullOrEmpty(ReturnCharHolder?.Person?.Notizen))
             {
+                //Log.Write("Upgrade Notes");
                 (ReturnCharHolder.CTRLNote.AddNewThing() as Note).Text = ReturnCharHolder.Person.Notizen;
                 ReturnCharHolder.Person.Notizen = "";
             }

@@ -59,7 +59,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{x:Bind LogType}"/>
-                        <TextBlock Grid.Column="2" Text="{x:Bind Message}" Margin="10,0,0,0" TextWrapping="Wrap"/>
+                        <TextBlock Grid.Column="2" Text="{x:Bind CombinedMessage}" Margin="10,0,0,0" TextWrapping="Wrap"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

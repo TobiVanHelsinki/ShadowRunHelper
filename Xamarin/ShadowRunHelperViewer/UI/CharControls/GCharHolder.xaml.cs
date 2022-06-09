@@ -271,11 +271,13 @@ namespace ShadowRunHelperViewer
         }
         public ICommand OpenCategory => new Command<string>(canExecute: (string arg) => true, execute: (string arg) =>
         {
+            //TODO anstatt alle öffnen -> eigene darstellung designen und nur aktive anzeigen.
             int pivot = int.Parse(arg);
             StackLayout stackLayout = new StackLayout();
             foreach (ThingTypeProperty typeInThisCategory in TypeHelper.ThingTypeProperties.Where(x => x.Pivot == pivot).OrderBy(x => x.Order))
             {
-                stackLayout.Children.Add(CreateControllerOfType(typeInThisCategory.ThingType));
+                var item = CreateControllerOfType(typeInThisCategory.ThingType);
+                stackLayout.Children.Add(item);
             }
             ContentPanel.Content = /*new ScrollView() { Content = */stackLayout /*}*/;
             HighlightButton(null);
