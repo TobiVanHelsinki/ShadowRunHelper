@@ -15,6 +15,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -50,7 +51,27 @@
                 </ListView>
             </StackPanel>
         </ScrollViewer>
-        <ListView Grid.Row="2" x:Name="LogList" ItemsSource="{x:Bind Model.lstNotifications}" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Stretch" Background="#FF71FF00">
+        <NavigationView Grid.Row="2" x:Name="rootNavigationView" Header="Category Title" ItemInvoked="NavView_ItemInvoked">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Section 1" x:Name="Section1Content" />
+                <NavigationViewItem Content="Section 2" x:Name="Section2Content" />
+                <NavigationViewItem Content="Section 3" x:Name="Section3Content" />
+            </NavigationView.MenuItems>
+        </NavigationView>
+
+        <Page x:Class="AppName.Section1Page">
+            <TextBlock Text="Content of section 1."/>
+        </Page>
+
+        <Page x:Class="AppName.Section2Page">
+            <TextBlock Text="Content of section 2."/>
+        </Page>
+
+        <Page x:Class="AppName.Section3Page">
+            <TextBlock Text="Content of section 3."/>
+        </Page>
+
+        <ListView Grid.Row="3" x:Name="LogList" ItemsSource="{x:Bind Model.lstNotifications}" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Stretch" Background="#FF71FF00">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="TLIB:LogMessage">
                     <Grid Background="#88FFFFFF" Padding="3">

@@ -126,5 +126,10 @@ namespace ShadowRunHelper
             //var a = TestList.ItemsSource;
             var b = NameBlock;
         }
+
+        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+
+        }
     }
 }
