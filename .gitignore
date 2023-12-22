@@ -220,3 +220,4 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 /Xamarin/ShadowRunHelperViewer/LocalConstants.cs
+/Xamarin/ShadowRunHelperViewer.UWP/Package.StoreAssociation.xml
