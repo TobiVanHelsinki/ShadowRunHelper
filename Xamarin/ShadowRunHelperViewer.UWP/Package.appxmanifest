@@ -5,10 +5,10 @@
          xmlns:desktop4="http://schemas.microsoft.com/appx/manifest/desktop/windows10/4" 
          xmlns:iot2="http://schemas.microsoft.com/appx/manifest/iot/windows10/2" 
          IgnorableNamespaces="uap mp uap3 desktop4 iot2">
-  <Identity Name="ShadowRunHelperViewer" Publisher="CN=ImperiSoft, O=ImperiSoft, C=DE" Version="1.10.2.0" />
-  <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="21863TobivanHelsinki.ShadowRunHelperBeta" Publisher="CN=D02849C2-745B-495E-891A-5F7C07581158" Version="1.9.5.0" />
+  <mp:PhoneIdentity PhoneProductId="ae8daf65-12ee-4af3-b55a-3b00caaf43c5" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>ShadowRunHelperViewer</DisplayName>
+    <DisplayName>ShadowRunHelper-Beta</DisplayName>
     <PublisherDisplayName>Tobi van Helsinki</PublisherDisplayName>
     <Logo>Assets\Logo\StoreLogo.png</Logo>
   </Properties>
@@ -20,7 +20,7 @@
   </Resources>
   <Applications>
     <Application desktop4:SupportsMultipleInstances="true" iot2:SupportsMultipleInstances="true" Id="App" Executable="$targetnametoken$.exe" EntryPoint="ShadowRunHelperViewer.UWP.App">
-      <uap:VisualElements DisplayName="ShadowRunHelperViewer" Square150x150Logo="Assets\Logo\Square150x150Logo.png" Square44x44Logo="Assets\Logo\Square44x44Logo.png" Description="Xamarin-Version des ShadowRunHelpers" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="ShadowRunHelper-Beta" Square150x150Logo="Assets\Logo\Square150x150Logo.png" Square44x44Logo="Assets\Logo\Square44x44Logo.png" Description="Xamarin-Version des ShadowRunHelpers" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Logo\Wide310x150Logo.png" Square310x310Logo="Assets\Logo\LargeTile.png" Square71x71Logo="Assets\Logo\SmallTile.png" ShortName="ShadowRunHelper Lite">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -52,6 +52,5 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
-    <uap:Capability Name="documentsLibrary"/>
     </Capabilities>
 </Package>
