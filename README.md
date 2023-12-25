@@ -1,15 +1,18 @@
 <p align="center">
   <a href="https://github.com/TobiVanHelsinki/ShadowRunHelper">
-    <img src="https://github.com/TobiVanHelsinki/ShadowRunHelper/blob/master/ShadowRunHelper.Win/Assets/Logo/Logo.png" width=80 height=80>
+    <img src="https://github.com/TobiVanHelsinki/ShadowRunHelper/blob/master/SharedCode/Assets/Logo.png" width=80 height=80>
   </a>
 
   <h3 align="center">ShadowRunHelper</h3>
 
   <p align="center">
     Your intelligent Shadowrun charactersheet App for Windows 10.
-  <br>
     <br>
-    <a href="https://www.microsoft.com/store/productId/9NBLGGH4RHVX">Download</a>
+    <a href="https://www.microsoft.com/store/productId/9NBLGGH4RHVX">Download Current Version - Xamainr</a>
+    <br>
+    <a href="https://www.microsoft.com/store/productId/9N7SF3P3FP5J">Download Classic Version - Pure UWP</a>
+    <br>
+    <a href="https://www.microsoft.com/store/productId/9NCXWGX1KR8S">Download Beta</a>
   </p>
 </p>
 
