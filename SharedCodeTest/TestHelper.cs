@@ -5,6 +5,7 @@ using ShadowRunHelper.IO;
 using ShadowRunHelper.Model;
 using System.Linq;
 using ShadowRunHelper.IO;
+using System.Diagnostics;
 
 namespace SharedCodeTest
 {
@@ -20,7 +21,7 @@ namespace SharedCodeTest
             H1.Value.Connected.Add(myChar.Connects.First(x => x.Owner == myChar.CTRLAttribut.Charisma));
             H1.Value.Connected.Add(myChar.Connects.First(x => x.Owner == myChar.CTRLAttribut.Logik));
             H1.Against.Connected.Add(myChar.Connects.First(x => x.Owner == myChar.CTRLVorteil[0]));
-
+            myChar.AfterLoad();
             return myChar;
         }
 
@@ -74,6 +75,13 @@ namespace SharedCodeTest
             {
                 object O1 = item.GetValue(El1);
                 object O2 = item.GetValue(El2);
+                if (/*O1 != O2 ||*/ !O1.Equals(O2))
+                {
+                    if (Debugger.IsAttached)
+                    {
+                        Debugger.Break();
+                    }
+                }
                 Assert.IsTrue(O1 == O2 || O1.Equals(O2)); // == does just a reference comp
             }
             foreach (var item in El1.GetProperties().Where(x => x.PropertyType == typeof(ConnectProperty)))
