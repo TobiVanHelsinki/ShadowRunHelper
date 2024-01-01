@@ -57,6 +57,7 @@
                         <Label Text="{resx:UiResources Options_Ordnermode_Pfad}" Style="{StaticResource STDText}"/>
                         <Label Text="{x:Binding Settings.FOLDERMODE_PATH, Mode=OneWay}" Style="{StaticResource STDText}"/>
                     </StackLayout>
+                    <controlsother:SettingsEntry Text="Options_Roaming" Setting="{x:Binding Settings.INTERN_SYNC}"/>
                     <controlsother:SettingsEntry Text="Options_BACKUP_VERSIONING" Setting="{x:Binding Settings.BACKUP_VERSIONING}"/>
                     <controlsother:SettingsHeader Text="Options_Group_Design"/>
                     <Label Text="{resx:UiResources Options_Colors}" Style="{StaticResource STDText}"/>
