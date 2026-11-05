@@ -221,3 +221,8 @@ _Pvt_Extensions/
 ModelManifest.xml
 /Xamarin/ShadowRunHelperViewer/LocalConstants.cs
 /Xamarin/ShadowRunHelperViewer.UWP/Package.StoreAssociation.xml
+# Private characters and other files for developing and testing the converter
+srhchar-to-foundry/dev-test/
+
+.devcontainer
+.claude/settings.local.json

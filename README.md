@@ -46,6 +46,9 @@ The app uses the following NuGet packages to work:
 ## Current and planned features
 Comming Soon
 
+## Foundry VTT converter
+[srhchar-to-foundry](srhchar-to-foundry/README.md) converts `.SRHChar` files into JSON files for the built-in import of Foundry VTT.
+
 ## Bugs and feature requests
 Comming Soon
 

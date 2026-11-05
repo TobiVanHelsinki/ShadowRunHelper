@@ -1,0 +1,6001 @@
+{
+ "name": "Vorlage",
+ "type": "character",
+ "img": "icons/svg/mystery-man.svg",
+ "folder": null,
+ "flags": {},
+ "ownership": {
+  "default": 0
+ },
+ "prototypeToken": {
+  "name": "Vorlage",
+  "displayName": 0,
+  "actorLink": false,
+  "width": 1,
+  "height": 1,
+  "depth": 1,
+  "texture": {
+   "src": "icons/svg/mystery-man.svg",
+   "anchorX": 0.5,
+   "anchorY": 0.5,
+   "fit": "contain",
+   "scaleX": 1,
+   "scaleY": 1,
+   "tint": "#ffffff",
+   "alphaThreshold": 0.75
+  },
+  "lockRotation": false,
+  "rotation": 0,
+  "alpha": 1,
+  "disposition": -1,
+  "displayBars": 0,
+  "bar1": {
+   "attribute": "track.physical"
+  },
+  "bar2": {
+   "attribute": "track.stun"
+  },
+  "light": {
+   "negative": false,
+   "priority": 0,
+   "alpha": 0.5,
+   "angle": 360,
+   "bright": 0,
+   "color": null,
+   "coloration": 1,
+   "dim": 0,
+   "attenuation": 0.5,
+   "luminosity": 0.5,
+   "saturation": 0,
+   "contrast": 0,
+   "shadows": 0,
+   "animation": {
+    "type": null,
+    "speed": 5,
+    "intensity": 5,
+    "reverse": false
+   },
+   "darkness": {
+    "min": 0,
+    "max": 1
+   }
+  },
+  "sight": {
+   "enabled": false,
+   "range": 0,
+   "angle": 360,
+   "visionMode": "basic",
+   "color": null,
+   "attenuation": 0.1,
+   "brightness": 0,
+   "saturation": 0,
+   "contrast": 0
+  },
+  "detectionModes": {},
+  "occludable": {
+   "radius": 0
+  },
+  "ring": {
+   "enabled": false,
+   "colors": {
+    "ring": null,
+    "background": null
+   },
+   "effects": 1,
+   "subject": {
+    "scale": 1,
+    "texture": null
+   }
+  },
+  "turnMarker": {
+   "mode": 1,
+   "animation": null,
+   "src": null,
+   "disposition": false
+  },
+  "movementAction": null,
+  "flags": {},
+  "randomImg": false,
+  "appendNumber": false,
+  "prependAdjective": false
+ },
+ "system": {
+  "description": {
+   "value": "",
+   "chat": "",
+   "source": ""
+  },
+  "importFlags": null,
+  "skillset": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT",
+  "skills": {
+   "active": {},
+   "language": {},
+   "knowledge": {
+    "street": {},
+    "academic": {},
+    "professional": {},
+    "interests": {}
+   }
+  },
+  "favorites": [],
+  "hidden_items": [],
+  "situation_modifiers": {
+   "environmental": {
+    "active": {}
+   },
+   "noise": {
+    "active": {}
+   },
+   "background_count": {
+    "active": {}
+   }
+  },
+  "inventories": {
+   "All": {
+    "name": "All",
+    "type": "all",
+    "itemIds": [],
+    "showAll": true,
+    "label": "SR5.Labels.Inventory.All"
+   }
+  },
+  "category_visibility": {
+   "default": true
+  },
+  "metatype": "human",
+  "is_critter": false,
+  "is_npc": false,
+  "npc": {
+   "is_grunt": false
+  },
+  "full_defense_attribute": "willpower",
+  "matrix_full_defense_attribute": "willpower",
+  "special": "mundane",
+  "attributes": {
+   "body": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "physical"
+   },
+   "agility": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "physical"
+   },
+   "reaction": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "physical"
+   },
+   "strength": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "physical"
+   },
+   "willpower": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "mental"
+   },
+   "logic": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "mental"
+   },
+   "intuition": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "mental"
+   },
+   "charisma": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "social"
+   },
+   "magic": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "mental"
+   },
+   "resonance": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "mental"
+   },
+   "essence": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false
+   },
+   "edge": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "uses": 0,
+    "max": 0
+   },
+   "attack": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "attack"
+   },
+   "sleaze": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "sleaze"
+   },
+   "data_processing": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "data_processing"
+   },
+   "firewall": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "limit": "firewall"
+   },
+   "rating": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false
+   },
+   "initiation": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false
+   },
+   "submersion": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false
+   }
+  },
+  "limits": {
+   "social": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "attribute": "",
+    "label": "",
+    "hidden": false
+   },
+   "mental": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "attribute": "",
+    "label": "",
+    "hidden": false
+   },
+   "physical": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "attribute": "",
+    "label": "",
+    "hidden": false
+   },
+   "astral": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "attribute": "",
+    "label": "",
+    "hidden": false
+   },
+   "magic": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "attribute": "",
+    "label": "",
+    "hidden": false
+   },
+   "initiation": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "attribute": "",
+    "label": "",
+    "hidden": false
+   },
+   "attack": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "attribute": "",
+    "label": "",
+    "hidden": false
+   },
+   "sleaze": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "attribute": "",
+    "label": "",
+    "hidden": false
+   },
+   "firewall": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "attribute": "",
+    "label": "",
+    "hidden": false
+   },
+   "data_processing": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "attribute": "",
+    "label": "",
+    "hidden": false
+   }
+  },
+  "armor": {
+   "rating": {
+    "base": 0,
+    "value": 0,
+    "changes": []
+   },
+   "hardened": {
+    "base": 0,
+    "value": 0,
+    "changes": []
+   },
+   "elements": {
+    "acid": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "cold": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "electricity": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "fire": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "pollutant": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "radiation": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "water": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    }
+   },
+   "immunities": {
+    "acid": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "cold": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "electricity": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "fire": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "pollutant": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "radiation": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "water": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "normal_weapons": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    }
+   },
+   "label": ""
+  },
+  "values": {
+   "recoil": {
+    "base": 0,
+    "value": 0,
+    "changes": []
+   },
+   "recoil_compensation": {
+    "base": 0,
+    "value": 0,
+    "changes": []
+   },
+   "control_rig_rating": {
+    "base": 0,
+    "value": 0,
+    "changes": []
+   }
+  },
+  "wounds": {
+   "base": 0,
+   "value": 0,
+   "changes": []
+  },
+  "initiative": {
+   "current": {
+    "constant": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "dice": {
+     "base": 1,
+     "value": 1,
+     "changes": [],
+     "text": "1d6"
+    },
+    "attribute_a": "reaction",
+    "attribute_b": "intuition"
+   },
+   "blitz": false,
+   "perception": "meatspace",
+   "meatspace": {
+    "constant": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "dice": {
+     "base": 1,
+     "value": 1,
+     "changes": [],
+     "text": "1d6"
+    },
+    "attribute_a": "reaction",
+    "attribute_b": "intuition"
+   },
+   "astral": {
+    "constant": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "dice": {
+     "base": 2,
+     "value": 2,
+     "changes": [],
+     "text": "2d6"
+    },
+    "attribute_a": "intuition",
+    "attribute_b": "intuition"
+   },
+   "matrix": {
+    "constant": {
+     "base": 0,
+     "value": 0,
+     "changes": []
+    },
+    "dice": {
+     "base": 3,
+     "value": 3,
+     "changes": [],
+     "text": "3d6"
+    },
+    "attribute_a": "intuition",
+    "attribute_b": "data_processing"
+   }
+  },
+  "visibilityChecks": {
+   "astral": {
+    "hasAura": true,
+    "astralActive": false,
+    "affectedBySpell": false
+   },
+   "matrix": {
+    "hasIcon": true,
+    "runningSilent": false
+   },
+   "meat": {
+    "hasHeat": true
+   }
+  },
+  "track": {
+   "physical": {
+    "value": 0,
+    "max": 0,
+    "base": 0,
+    "changes": [],
+    "label": "",
+    "disabled": false,
+    "overflow": {
+     "value": 0,
+     "max": 0
+    },
+    "wounds": 0,
+    "pain_tolerance": 0
+   },
+   "stun": {
+    "value": 0,
+    "max": 0,
+    "base": 0,
+    "changes": [],
+    "label": "",
+    "disabled": false,
+    "wounds": 0,
+    "pain_tolerance": 0
+   }
+  },
+  "movement": {
+   "walk": {
+    "base": 0,
+    "value": 0,
+    "changes": []
+   },
+   "run": {
+    "base": 0,
+    "value": 0,
+    "changes": []
+   },
+   "sprint": 0,
+   "swimming": 0
+  },
+  "magic": {
+   "attribute": "logic",
+   "projecting": false,
+   "initiation": 0
+  },
+  "matrix": {
+   "attack": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "device_att": ""
+   },
+   "sleaze": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "device_att": ""
+   },
+   "data_processing": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "device_att": ""
+   },
+   "firewall": {
+    "base": 0,
+    "value": 0,
+    "changes": [],
+    "label": "",
+    "hidden": false,
+    "applies_special": false,
+    "device_att": ""
+   },
+   "condition_monitor": {
+    "value": 0,
+    "max": 0
+   },
+   "rating": 0,
+   "name": "",
+   "device": "",
+   "is_cyberdeck": false,
+   "vr": false,
+   "link_locked": false,
+   "hot_sim": false,
+   "running_silent": false,
+   "marks": [],
+   "grid": {
+    "uuid": null
+   },
+   "updatedConnections": 0
+  },
+  "technomancer": {
+   "attribute": "willpower",
+   "submersion": 0
+  },
+  "karma": {
+   "value": 0,
+   "max": 0
+  },
+  "nuyen": 0,
+  "notoriety": 0,
+  "public_awareness": 0,
+  "street_cred": 0,
+  "modifiers": {
+   "physical_limit": 0,
+   "astral_limit": 0,
+   "social_limit": 0,
+   "mental_limit": 0,
+   "stun_track": 0,
+   "matrix_track": 0,
+   "physical_track": 0,
+   "physical_overflow_track": 0,
+   "walk": 0,
+   "run": 0,
+   "wound_tolerance": 0,
+   "pain_tolerance_stun": 0,
+   "pain_tolerance_physical": 0,
+   "armor": 0,
+   "multi_defense": 0,
+   "reach": 0,
+   "defense": 0,
+   "defense_dodge": 0,
+   "defense_parry": 0,
+   "defense_block": 0,
+   "defense_melee": 0,
+   "defense_ranged": 0,
+   "soak": 0,
+   "recoil": 0,
+   "drain": 0,
+   "fade": 0,
+   "essence": 0,
+   "public_grid": 0,
+   "mark_damage": 0,
+   "place_two_marks": 0,
+   "place_three_marks": 0,
+   "composure": 0,
+   "lift_carry": 0,
+   "judge_intentions": 0,
+   "memory": 0,
+   "global": 0
+  }
+ },
+ "items": [
+  {
+   "name": "Sneaking",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-sneaking.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "First Aid",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-first_aid.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Heavy Weapons",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/combat-heavy_weapons.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Swimming",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-swimming.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "strength",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Animal Handling",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-animal_handling.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "charisma",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Hacking",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-hacking.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Summoning",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-summoning.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "magic",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Exotic Ranged Weapon",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/combat-exotic_ranged.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Locksmith",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-locksmith.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Unarmed Combat",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/combat-unarmed_combat.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Banishing",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-banishing.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "magic",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Assensing",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-assensing.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "intuition",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Forgery",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-forgery.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Pistols",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/combat-pistols.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Negotiation",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/social-negotiation.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "charisma",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "action": {
+      "opposed": {
+       "type": "",
+       "test": "OpposedTest",
+       "description": "",
+       "mod": 0,
+       "skill": "negotiation",
+       "attribute": "charisma",
+       "attribute2": "",
+       "armor": false,
+       "resist": {
+        "test": "",
+        "skill": "",
+        "attribute": "",
+        "attribute2": "",
+        "armor": false,
+        "mod": 0
+       }
+      }
+     },
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Archery",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/combat-archery.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Blades",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/combat-blades.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Computer",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-computer.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Disguise",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-disguise.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "intuition",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Automatics",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/combat-automatics.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Automotive Mechanic",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-automotive_mechanic.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Ritual Spellcasting",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-ritual_spellcasting.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "magic",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Cybercombat",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-cybercombat.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Medicine",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-medicine.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Escape Artist",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-escape_artist.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Chemistry",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-chemistry.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Impersonation",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/social-impersonation.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "charisma",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "action": {
+      "opposed": {
+       "type": "",
+       "test": "OpposedTest",
+       "description": "",
+       "mod": 0,
+       "skill": "perception",
+       "attribute": "intuition",
+       "attribute2": "",
+       "armor": false,
+       "resist": {
+        "test": "",
+        "skill": "",
+        "attribute": "",
+        "attribute2": "",
+        "armor": false,
+        "mod": 0
+       }
+      }
+     },
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Palming",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-palming.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Pilot Aircraft",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/vehicle-pilot_aircraft.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "reaction",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Artisan",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-artisan.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "intuition",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Navigation",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-navigation.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "intuition",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Cybertechnology",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-cybertechnology.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Decompiling",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/resonance-decompiling.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "resonance",
+     "specializations": [],
+     "group": "",
+     "requirement": "resonance",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Intimidation",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/social-intimidation.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "charisma",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "action": {
+      "opposed": {
+       "type": "",
+       "test": "OpposedTest",
+       "description": "",
+       "mod": 0,
+       "skill": "intimidation",
+       "attribute": "willpower",
+       "attribute2": "",
+       "armor": false,
+       "resist": {
+        "test": "",
+        "skill": "",
+        "attribute": "",
+        "attribute2": "",
+        "armor": false,
+        "mod": 0
+       }
+      }
+     },
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Hardware",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-hardware.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Gymnastics",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-gymnastics.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Pilot Ground Craft",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/vehicle-pilot_ground_craft.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "reaction",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Artificing",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-artificing.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "magic",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Performance",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/social-performance.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "charisma",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "action": {
+      "opposed": {
+       "type": "",
+       "test": "OpposedTest",
+       "description": "",
+       "mod": 0,
+       "skill": "",
+       "attribute": "charisma",
+       "attribute2": "willpower",
+       "armor": false,
+       "resist": {
+        "test": "",
+        "skill": "",
+        "attribute": "",
+        "attribute2": "",
+        "armor": false,
+        "mod": 0
+       }
+      }
+     },
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Instruction",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/social-instruction.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "charisma",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Spellcasting",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-spellcasting.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "magic",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Nautical Mechanic",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-nautical_mechanic.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Pilot Watercraft",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/vehicle-pilot_watercraft.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "reaction",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Electronic Warfare",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-electronic_warfare.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Con",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/social-con.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "charisma",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "action": {
+      "opposed": {
+       "type": "",
+       "test": "OpposedTest",
+       "description": "",
+       "mod": 0,
+       "skill": "con",
+       "attribute": "charisma",
+       "attribute2": "",
+       "armor": false,
+       "resist": {
+        "test": "",
+        "skill": "",
+        "attribute": "",
+        "attribute2": "",
+        "armor": false,
+        "mod": 0
+       }
+      }
+     },
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Diving",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-diving.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "body",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Software",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-software.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Binding",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-binding.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "magic",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Aeronautics Mechanic",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-aeronautics_mechanic.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Industrial Mechanic",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-industrial_mechanic.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Arcana",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-arcana.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Armorer",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-armorer.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Demolitions",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-demolitions.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Clubs",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/combat-clubs.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Pilot Aerospace",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/vehicle-pilot_aerospace.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "reaction",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Disenchanting",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-disenchanting.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "magic",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Running",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-running.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "strength",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Leadership",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/social-leadership.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "charisma",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "action": {
+      "opposed": {
+       "type": "",
+       "test": "OpposedTest",
+       "description": "",
+       "mod": 0,
+       "skill": "leadership",
+       "attribute": "willpower",
+       "attribute2": "",
+       "armor": false,
+       "resist": {
+        "test": "",
+        "skill": "",
+        "attribute": "",
+        "attribute2": "",
+        "armor": false,
+        "mod": 0
+       }
+      }
+     },
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Free-Fall",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-free-fall.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "body",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Exotic Melee Weapon",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/combat-exotic_melee.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Compiling",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/resonance-compiling.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "resonance",
+     "specializations": [],
+     "group": "",
+     "requirement": "resonance",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Registering",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/resonance-registering.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "resonance",
+     "specializations": [],
+     "group": "",
+     "requirement": "resonance",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Perception",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-perception.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "intuition",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Gunnery",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/vehicle-gunnery.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Etiquette",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/social-etiquette.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "charisma",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "action": {
+      "opposed": {
+       "type": "",
+       "test": "OpposedTest",
+       "description": "",
+       "mod": 0,
+       "skill": "perception",
+       "attribute": "charisma",
+       "attribute2": "",
+       "armor": false,
+       "resist": {
+        "test": "",
+        "skill": "",
+        "attribute": "",
+        "attribute2": "",
+        "armor": false,
+        "mod": 0
+       }
+      }
+     },
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Counterspelling",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-counterspelling.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "magic",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Pilot Walker",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/vehicle-pilot_walker.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "reaction",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Pilot Exotic Vehicle",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/vehicle-pilot_exotic_vehicle.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "reaction",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Tracking",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-tracking.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "intuition",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Astral Combat",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-astral_combat.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "willpower",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Flight",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/special-flight.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Alchemy",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/magical-alchemy.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "magic",
+     "specializations": [],
+     "group": "",
+     "requirement": "magic",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Biotechnology",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/technical-biotechnology.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": false,
+     "attribute": "logic",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Survival",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/physical-survival.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "willpower",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Throwing Weapons",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/combat-throwing_weapons.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  },
+  {
+   "name": "Longarms",
+   "type": "skill",
+   "img": "systems/shadowrun5e/dist/icons/skills/combat-longarms.webp",
+   "flags": {
+    "shadowrun5e": {
+     "embeddedItems": []
+    }
+   },
+   "system": {
+    "description": {
+     "value": "",
+     "chat": "",
+     "source": ""
+    },
+    "importFlags": null,
+    "type": "skill",
+    "skill": {
+     "category": "active",
+     "rating": 0,
+     "defaulting": true,
+     "attribute": "agility",
+     "specializations": [],
+     "group": "",
+     "requirement": "mundane",
+     "language": {
+      "isNative": false
+     },
+     "knowledgeType": "academic",
+     "action": {
+      "opposed": {
+       "armor": false,
+       "attribute": "",
+       "attribute2": "",
+       "description": "",
+       "mod": 0,
+       "resist": {
+        "armor": false,
+        "attribute": "",
+        "attribute2": "",
+        "mod": 0,
+        "skill": "",
+        "test": ""
+       },
+       "skill": "",
+       "test": "OpposedTest",
+       "type": ""
+      }
+     },
+     "limit": {
+      "attribute": ""
+     }
+    },
+    "group": {
+     "skills": [],
+     "rating": 0
+    },
+    "set": {
+     "skills": [],
+     "groups": [],
+     "default": {
+      "type": ""
+     }
+    },
+    "source": {
+     "uuid": "Compendium.shadowrun5e.sr5e-skill-sets.Item.mp2xUdgp6v096fgT"
+    }
+   }
+  }
+ ],
+ "effects": [],
+ "_stats": {
+  "coreVersion": "14.370",
+  "systemId": "shadowrun5e",
+  "systemVersion": "0.37.9"
+ }
+}
